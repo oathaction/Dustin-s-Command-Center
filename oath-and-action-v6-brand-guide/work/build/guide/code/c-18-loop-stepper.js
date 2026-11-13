@@ -2,8 +2,11 @@
 // for its data-oa-hold (about 250 ms a word, never under 6 seconds, with reduced motion too) and becomes Pause while it
 // plays. Next, Previous and Reset stop playback. The status line says each step; the current step carries
 // aria-current="step". A button that cannot act keeps focus, takes aria-disabled and points to the line that says why.
+// The root takes data-oa-live once the script runs, so a page can hide the buttons until they work, and data-oa-at,
+// the current step's number (0 at the start), so a drawing beside the list can follow it.
 (function () {
   document.querySelectorAll('[data-oa-stepper]').forEach(function (box) {
+    box.setAttribute('data-oa-live', '');
     var steps = Array.prototype.slice.call(box.querySelectorAll('.oa-stepper-step'));
     var play = box.querySelector('.oa-stepper-play');
     var word = play.querySelector('.oa-stepper-word');
@@ -25,6 +28,7 @@
       }
     }
     function show() {
+      box.setAttribute('data-oa-at', String(i));
       steps.forEach(function (s, k) {
         if (k === i - 1) s.setAttribute('aria-current', 'step'); else s.removeAttribute('aria-current');
         if (k >= i) s.setAttribute('data-oa-ahead', ''); else s.removeAttribute('data-oa-ahead');

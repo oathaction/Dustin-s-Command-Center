@@ -1349,8 +1349,8 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
          caption='<strong>Fails Rule 18.22.</strong> The loop starts on its own when the page loads, repeats without end '
                  'and offers no button to pause it.',
          alt='Failure case: do not publish. A panel at 360 px for Loop R1 from our systems atlas, showing “Step 1 of 3” and '
-             'its sentence, “Wealth concentration raises money in politics.”, with no buttons at all. A note reads “Starts '
-             'by itself on load and repeats with no way to stop it.”',
+             'its sentence, “Concentration of household wealth raises money spent to influence politics.”, with no buttons '
+             'at all. A note reads “Starts by itself on load and repeats with no way to stop it.”',
          notes='Picture of a fault: motion that starts by itself with no pause (SC 2.2.2).'))
 
 # ---- 18.23 Diagram controls -------------------------------------------------------------------------------------
@@ -1628,7 +1628,7 @@ FAIL_HTML = {
     22: fplate('.f18-loop{border:1px solid var(--edge);padding:12px;font:var(--oa-type-body-small)}'
                '.f18-loop b{font:var(--oa-type-ui)}.f18-k{font:var(--oa-type-caption);color:var(--sec);margin-bottom:8px}',
                '<p class="f18-k">From our systems atlas, Loop R1</p><div class="f18-loop"><p><b>Step 1 of 3</b></p>'
-               '<p>Wealth concentration raises money in politics.</p></div>',
+               '<p>Concentration of household wealth raises money spent to influence politics.</p></div>',
                'Starts by itself on load and repeats with no way to stop it.', illus=False),
     23: fplate('.f18-dg{position:relative;height:150px}.f18-tip{position:absolute;left:150px;top:28px;padding:4px 8px;'
                'background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);'
@@ -1951,7 +1951,8 @@ KEYS = {
         step('Tab', '.oa-stepper-prev', [st('.oa-stepper-prev', attr='aria-disabled', **{'is': 'true'})]),
         step('Tab', '.oa-stepper-next'),
         step('Enter', '.oa-stepper-next', [st('.oa-stepper-step:nth-child(1)', attr='aria-current', **{'is': 'step'})],
-             status_has='Step 1 of 3: Wealth concentration raises money in politics.', status_el='.oa-stepper-status'),
+             status_has='Step 1 of 3: Concentration of household wealth raises money spent to influence politics.',
+             status_el='.oa-stepper-status'),
         step('Enter', '.oa-stepper-next', [st('.oa-stepper-step:nth-child(2)', attr='aria-current', **{'is': 'step'})],
              status_has='Step 2 of 3:', status_el='.oa-stepper-status'),
         step('Enter', '.oa-stepper-next', [st('.oa-stepper-next', attr='aria-disabled', **{'is': 'true'})],
@@ -1967,7 +1968,7 @@ KEYS = {
             step('Enter', '.oa-stepper-play', [st('.oa-stepper-word', text='Play')])], setup={'reducedMotion': True})],
     23: [path('One Tab stop, the arrow keys inside, Enter opens the panel, Escape returns to the part', [
         step('Tab', '.oa-diagram-node:nth-child(1) .oa-diagram-item'),
-        step('ArrowRight', '.oa-diagram-node:nth-child(2) .oa-diagram-item', [st('.oa-diagram-readout', text_has='Money in politics')]),
+        step('ArrowRight', '.oa-diagram-node:nth-child(2) .oa-diagram-item', [st('.oa-diagram-readout', text_has='Money spent to influence politics')]),
         step('End', '.oa-diagram-node:nth-child(3) .oa-diagram-item'),
         step('Home', '.oa-diagram-node:nth-child(1) .oa-diagram-item'),
         step('Enter', '.oa-diagram-panel-name', [st('.oa-diagram-node:nth-child(1) .oa-diagram-item', attr='aria-pressed', **{'is': 'true'}),

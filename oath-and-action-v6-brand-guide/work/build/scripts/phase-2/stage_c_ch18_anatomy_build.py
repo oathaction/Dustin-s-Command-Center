@@ -1124,9 +1124,10 @@ def p23():
     drawing.a['data-oa-chosen'] = ''
     items[1].a['aria-pressed'] = 'true'
     focus(items[0])
-    say(readout, 'Wealth concentration. How much of the nation’s wealth the top tenth of households hold.')
+    say(readout, 'Concentration of household wealth. How much of the nation’s wealth the top tenth of households '
+                 'hold.')
     panel.a.pop('hidden', None)
-    say(q(panel, 'oa-diagram-panel-name'), 'Money in politics')
+    say(q(panel, 'oa-diagram-panel-name'), 'Money spent to influence politics')
     say(q(panel, 'oa-diagram-panel-text'), 'The money spent to influence elections and policy: campaign gifts, outside '
                                            'groups and lobbying.')
     bracket(items[0], 1)

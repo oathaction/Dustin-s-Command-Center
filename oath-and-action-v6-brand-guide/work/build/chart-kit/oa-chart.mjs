@@ -215,8 +215,8 @@ export function run_spec(spec, o) {
     (o.grounds && o.grounds.length ? o.grounds : ['newsprint']).forEach((g, gi) => {
       let hc;
       try { hc = K.html_card(spec, chk.rows, { ground: g, tokens: TOK[g] }); } catch (e) { res.faults.push(`html on ${g}: ${e.message}`); return; }
-      res.cards[g] = hc.html;
-      if (!gi) res.faults.push(...C.check_html(spec, hc.html, chk.rows));
+      res.cards[g] = K.hold(spec, hc.html);   // as the figure prints it, held phrases in .oac-nw (IM-E1)
+      if (!gi) res.faults.push(...C.check_html(spec, res.cards[g], chk.rows));
       hc.marks.forEach((d, i) => res.faults.push(...C.check_drawing({ kit: 1, id: spec.id, form: spec.form }, d, TOK[g], `${g}, mark ${i + 1}`)));
     });
     return res;
@@ -613,7 +613,7 @@ async function card_captures(items, o) {
           await p.addStyleTag({ content: 'html{filter:none}' });
         }
       }
-      for (const v of seen.values()) res.faults.push(`cards: ${v.first} (at ${v.ws.length} column width${v.ws.length > 1 ? 's' : ''}: ${span_list([...new Set(v.ws)].sort((a, b) => a - b))})`);
+      for (const v of seen.values()) { const u = [...new Set(v.ws)].sort((a, b) => a - b); res.faults.push(`cards: ${v.first} (at ${u.length} column width${u.length > 1 ? 's' : ''}: ${span_list(u)})`); }
       await ctx.close();
     }
   } finally {
@@ -1391,6 +1391,31 @@ async function self_test() {
       K.forms['tile-map-shift-arrows'] = real;
       pass(floor && a558.n === 0 && !a558.f.length && a618.n === 51 && !a618.f.length && p558.n === 51 && p558.f.length === 1 && /51 cell\(s\)/.test(p558.f[0]),
         'DR-261, D3-1546: stage_min is a floor; the stacked tile forced into 558 px fails the cell check (51 tiles), and the real form passes at 558 and 618' + (p558.f.length ? '' : ': not caught')); }
+    { // R4-3 (round 4): a card form builds HTML in Node; check_html catches each planted fault; the figure carries no island
+      // and no drawing script, and the page bundle leaves a card file out; IM-E1: a held phrase prints inside .oac-nw
+      const nm = 'oa-self-test-cards';
+      K.register_chart({ form: nm, name: 'T', family: 'infographics', encode: {}, labels: [], phone: 'same', html: h => '<ul class="oac-h-cards" role="list">' + h.rows.map((r, i) =>
+        `<li class="oac-h-item"${h.row(i)}><p class="oac-h-name">${h.words(r.k)}</p><dl class="oac-h-fields"><dt class="oac-h-k">Term</dt><dd class="oac-h-v">${h.esc(r.t)}</dd></dl>` +
+        h.mark(60, 10, c => { c.rect(0, 0, 6 * r.n, 10, { fill: 'subject', data: { key: r.k, value: r.n } }); }) + '</li>').join('') + '</ul>' });
+      const sp = { kit: 1, id: 'T4', form: nm, alt: 'Two cards.', title: 'Two cards on Public Law 119-12.', typography: { hold: ['Public Law 119-12'] }, table: { caption: 'C', columns: [{ field: 'k', label: 'K', format: 'text', row_header: true }] } };
+      const rows = [{ k: 'One', t: '8 years', n: 3 }, { k: 'Two', t: '14 years', n: 5 }];
+      const hc = K.html_card(sp, rows, { tokens: TOK.newsprint }), good = C.check_html(sp, hc.html, rows);
+      const plant = (from, to) => C.check_html(sp, hc.html.replace(from, to), rows);
+      const caught = [
+        plant(' role="list"', '').some(x => /role="list"/.test(x)),
+        plant('oac-h-name', 'oac-h-title').some(x => /class oac-h-title/.test(x)),
+        plant(' data-oa-row="1"', '').some(x => /print in no item/.test(x)),
+        plant(' data-oa-row="1"', ' data-oa-row="0"').some(x => /printed by two items/.test(x)),
+        plant('<p class="oac-h-name">Two</p>', '<h3>Two</h3>').some(x => /<h3> is not a card element/.test(x)),
+        plant('>Term</dt><dd class="oac-h-v">14', '>Length</dt><dd class="oac-h-v">14').some(x => /same fields/.test(x)),
+        plant('8 years', 'eight years — at most').some(x => /em dash/.test(x)),
+        plant('<p class="oac-h-name">One', '<p class="oac-h-name" style="color:red">One').some(x => /attribute style/.test(x))];
+      const fig = K.figure(sp, rows, { id: 'oac-t4', tokens: TOK.newsprint }), isl = island_table(sp, rows, {}, {});
+      delete K.forms[nm];
+      pass(!good.length && hc.marks.length === 2 && caught.every(Boolean) && /data-oa-static data-oa-html data-oa-drawn="html"/.test(fig) && !/oac-noscript/.test(fig) && /<details class="oac-eq" data-role="equivalent"><summary>/.test(fig)
+        && /<span class="oac-nw">Public Law 119-12<\/span>/.test(fig) && isl === '' && /aria-hidden="true"/.test(hc.html)
+        && K.typeset(sp, 'Public Law 119-12 passed') === 'Public Law 119-12 passed',
+        'R4-3, IM-E1: a card form\'s HTML passes clean and check_html catches eight planted faults; the card figure carries no island or scripts-off line, its table folded; a held phrase prints in .oac-nw' + (good.length ? ': ' + good[0] : '') + (caught.every(Boolean) ? '' : ': missed ' + caught.map((x, i) => x ? null : i + 1).filter(Boolean).join(', '))); }
     { // board 2 (A1): a table caption's {data_file} fills in the visible caption, the table's name and the summary's hidden words
       const sp = { id: 'T', title: 'A title.', table: { caption: 'Every row is in {data_file}', columns: [{ field: 'k', label: 'Key', format: 'text', row_header: true }] } };
       const fig = [false, true].map(g => K.figure(sp, [{ k: 'A' }], { id: 'oac-t', guide: g }));

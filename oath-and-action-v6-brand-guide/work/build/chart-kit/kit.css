@@ -69,6 +69,55 @@
   .oac-src { flex-direction: column; }
 }
 
+/* R4-3 (round 4): cards as HTML text (oac-h-*). Words are live text in the reading order; lists keep role="list" in the
+   markup; edges are borders, so they print and hold in forced colors; no fixed height, no reordering, nothing nowrap but
+   .oac-nw. Each text class sets one size from the chart type tokens. */
+.oac-html { margin-top: 22px; }
+.oac-h-cards, .oac-h-facts, .oac-h-steps, .oac-h-dates { list-style: none; margin: 0; padding: 0; }
+.oac-h-cards, .oac-h-facts { display: grid; gap: 16px; }
+.oac-h-cards { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+.oac-h-facts { grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); }
+.oac-h-cards > .oac-h-item, .oac-h-facts > .oac-h-item { border: 1px solid var(--oa-color-border-hairline); padding: 14px 16px 16px; min-width: 0; }
+.oac-h-dates > .oac-h-item { border-top: 1px solid var(--oa-color-border-hairline); padding: 10px 0 12px; }
+.oac-h-name { margin: 0; font: var(--oa-font-weight-bold) var(--oa-chart-type-measure-size)/24px var(--oa-font-family-reading); color: var(--oa-color-text-primary); }
+.oac-h-big { display: block; margin: 0 0 4px; font: var(--oa-font-weight-extrabold) var(--oa-chart-type-title-size)/var(--oa-chart-type-title-leading) var(--oa-font-family-display); letter-spacing: -0.02em; color: var(--oa-color-text-primary); }
+.oac-h-body { margin: 6px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-label)/23px var(--oa-font-family-reading); max-width: 38em; }
+.oac-h-small { margin: 6px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-note)/var(--oa-chart-type-note-leading) var(--oa-font-family-reading); max-width: 38em; }
+.oac-h-src { margin: 8px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-tick)/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-h-fields { margin: 10px 0 0; }
+.oac-h-k { margin: 10px 0 0; font: var(--oa-font-weight-semibold) var(--oa-chart-type-tick)/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-h-k:first-child { margin-top: 0; }
+.oac-h-v { margin: 2px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-label)/23px var(--oa-font-family-reading); }
+.oac-h-tag, .oac-h-tag-strong { display: inline-block; padding: 0 6px; border: 1px solid var(--oa-color-text-primary); font: var(--oa-font-weight-bold) var(--oa-chart-type-tick)/18px var(--oa-font-family-reading); }
+.oac-h-tag-strong { background: var(--oa-color-text-primary); color: var(--oa-color-surface); }
+.oac-h-mark { display: block; margin: 8px 0 0; }
+.oac-h-mark > svg.oac-svg { max-width: none; }
+.oac-nw { white-space: nowrap; }
+/* steps: the number on a 24 px disc in the subject ink, its numeral in the label ink on the subject, the discs joined by a
+   line in the subject ink (the data lead's ruling (b)); an optional step (.oac-h-branch) on a disc edged in the context ink
+   with a text-ink numeral, named optional in its words */
+.oac-h-steps { counter-reset: oac-step; }
+.oac-h-steps > .oac-h-item { position: relative; counter-increment: oac-step; padding: 0 0 18px 40px; min-height: 24px; }
+.oac-h-steps > .oac-h-item::before { content: counter(oac-step); position: absolute; left: 0; top: 0; width: 24px; height: 24px; box-sizing: border-box; border-radius: 50%;
+  background: var(--oa-chart-color-subject); color: var(--oa-chart-color-label-on-subject); border: 1.5px solid var(--oa-chart-color-subject);
+  font: var(--oa-font-weight-bold) var(--oa-chart-type-tick)/21px var(--oa-font-family-reading); text-align: center; }
+.oac-h-steps > .oac-h-item:not(:last-child)::after { content: ""; position: absolute; left: 11px; top: 24px; bottom: 0; width: 2px; background: var(--oa-chart-color-subject); }
+.oac-h-steps > .oac-h-item.oac-h-branch::before { background: var(--oa-color-surface); color: var(--oa-color-text-primary); border-color: var(--oa-chart-color-context); }
+.oac-h-steps > .oac-h-item > :first-child { margin-top: 0; line-height: 24px; }
+@container (max-width: 479px) {
+  .oac-h-big { font-size: var(--oa-chart-type-title-phone-size); line-height: var(--oa-chart-type-title-phone-leading); }
+}
+@media (forced-colors: active) {
+  .oac-h-steps > .oac-h-item::before { forced-color-adjust: none; background: Canvas; color: CanvasText; border-color: CanvasText; }
+  .oac-h-steps > .oac-h-item:not(:last-child)::after { forced-color-adjust: none; background: CanvasText; }
+  .oac-h-steps > .oac-h-item.oac-h-branch::before { border-style: dashed; }
+  .oac-h-tag-strong { forced-color-adjust: none; background: CanvasText; color: Canvas; border-color: CanvasText; }
+}
+@media print {
+  .oac-art.oac-html { break-inside: auto; }
+  .oac-h-item { break-inside: avoid; }
+}
+
 /* The drawing: text */
 .oac-svg { overflow: visible; }
 .oac-t { font-family: var(--oa-font-family-reading); }

@@ -429,13 +429,21 @@ def pair_w(la, lb, lo=PW, room=ROW_ROOM):
         for wa in range(ba, room - bb + 1):
             for wb in range(bb, room - wa + 1):
                 ra, rb = _rows_n(la, wa), _rows_n(lb, wb)
+                if not (pill_shape(wa, ra) and pill_shape(wb, rb)):
+                    continue
                 k = (max(ra, rb), ra + rb, wa + wb, abs(wa - wb))
                 if best is None or k < best[0]:
                     best = (k, wa, wb)
         if best and best[0][0] <= MAX_ROWS:
             break
-    need(best is not None, f"two pills cannot share a {W} px row: {la!r}, {lb!r}")
+    if best is None:            # no pair of pill shapes fits the row: the caller re-lays the drawing (ruling (e), step 2)
+        return pill_w(la), pill_w(lb), 99
     return best[1], best[2], best[0][0]
+
+
+def pill_shape(w_, rows):
+    """A pill stays a pill: at least half again as wide as it is tall, so a short title on three rows never draws a disc."""
+    return w_ >= 1.5 * max(rows * LH + 22, 44)
 
 
 def stack_w(labels, scale=None):
@@ -642,6 +650,7 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     # the loop's ID sits on one line under the lower row, between the lower arch's two upright ends with 12 px to spare
     # each side; where DR-265's wider pills bring those ends too close, it takes two rows and the arch drops 18 px more
     two_rows = bool(inside) and (tw(f"Loop {inside[0]} ", 700) + tw(inside[1]) > p2.cx - p3.cx - 24)
+    id_x = (p2.cx + p3.cx) / 2      # the ID's middle: the lower arch's middle, so 12 px stay clear at each upright end
     bot_y = max(p2.bot, p3.bot) + RISE + (LH if two_rows else 0)
     paths = [([(xr, p1.bot + 2), (xr, p2.top - 2)], "right"),
              ([(p2.cx, p2.bot + 2), (p2.cx, bot_y), (p3.cx, bot_y), (p3.cx, p3.bot + 2)], "below"),
@@ -659,9 +668,9 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     out.append(p1.svg() + p2.svg() + p3.svg())
     if inside and two_rows:
         need(max(tw(f"Loop {inside[0]}", 700), tw(inside[1])) <= p2.cx - p3.cx - 24, "the loop's ID crowds its lower arch")
-        out.append(loop_id((p2.cx + p3.cx) / 2, max(p2.bot, p3.bot) + 28, *inside, two=True))
+        out.append(loop_id(id_x, max(p2.bot, p3.bot) + 28, *inside, two=True))
     elif inside:
-        out.append(loop_id(W / 2, max(p2.bot, p3.bot) + 28, *inside))
+        out.append(loop_id(id_x, max(p2.bot, p3.bot) + 28, *inside))
     n2 = len(step_words(2, lids[1], ("weakest step",) if weakest == 1 else ())) if lids[1] else 1
     h = bot_y + 34 + (n2 - 1) * LH
     return "".join(out), h
@@ -1100,7 +1109,12 @@ def drawn_loop(n, stations, steps, numbered=True, weakest=None, inside=None, thi
                  ([(p2.cx, p2.bot + 2), (p2.cx, bot_y), (p3.cx, bot_y), (p3.cx, p3.bot + 2)], "below"),
                  ([(xl, p3.top - 2), (xl, p1.bot + 2)], "left")]
         pills = [p1, p2, p3]
-        mid = (W / 2, max(p2.bot, p3.bot) + 28)
+        two_rows = bool(inside) and (tw(f"Loop {inside[0]} ", 700) + tw(inside[1]) > p2.cx - p3.cx - 24)
+        if two_rows:
+            bot_y += LH
+            paths[1] = ([(p2.cx, p2.bot + 2), (p2.cx, bot_y), (p3.cx, bot_y), (p3.cx, p3.bot + 2)], "below")
+            need(max(tw(f"Loop {inside[0]}", 700), tw(inside[1])) <= p2.cx - p3.cx - 24, "the loop's ID crowds its lower arch")
+        mid = ((p2.cx + p3.cx) / 2, max(p2.bot, p3.bot) + 28)
     else:
         raise SystemExit("drawn_loop draws three stations")
     out = []
@@ -1112,7 +1126,7 @@ def drawn_loop(n, stations, steps, numbered=True, weakest=None, inside=None, thi
         out.append(verb_at(pts, st["sign"], rows, side))
     out.append("".join(p.svg() for p in pills))
     if inside:
-        out.append(loop_id(*mid, *inside))
+        out.append(loop_id(*mid, *inside, two=two_rows))
     return "".join(out), bot_y + 34 + (LH if weakest == 1 else 0)
 
 

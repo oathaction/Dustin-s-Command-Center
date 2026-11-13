@@ -1110,7 +1110,7 @@
       "id": "18.14",
       "title": "Name each download for its file, type and size.",
       "rule": [
-        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 95 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
+        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 105 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
         "A file that is not ready keeps its control in place and in the Tab order, with aria-disabled, a dashed edge and a line that says why and when it will be ready. A press does nothing, and focus stays."
       ],
       "tokens": [
