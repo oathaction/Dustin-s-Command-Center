@@ -2655,7 +2655,10 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.22, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
-                "fonts": 0.5, "chart kit": 0.55, "map geometry": 0.25}
+                "fonts": 0.5, "chart kit": 0.56, "map geometry": 0.25}
+# Round 4 (November 13, 2026, the main session's call): the chart kit's part rises from 0.55 to 0.56 MB once all 97 forms are
+# registered (549,966 bytes on the 21:21 strict build); chapter 14's stop of 2,803,941 bytes and the 15.5 MB projection
+# (15,050,450) do not move, as D3-345's rise from 0.22 MB reasoned. The four card forms (R4-3) ride on no page.
 # Phase 3 (round 0): head and shell rise from 0.20 to 0.22 MB, since tokens.css, inlined in the head, carries the palette
 # proposal's chart tokens (6.0.0-gate3.1, about 10 KB); the projection still holds the page under 15.5 MB.
 # Phase 3 (the proposal's section 3, DR-227): chapters 13, 14 and 15 take their ceilings from guide_charts.CEILING, where

@@ -4,20 +4,24 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 ## Status
 
-- 20:56 UTC. Read the data lead's rulings (a) to (c) and applied them to S89. Drafts exist for S89 (`process-explainer`, SVG) and S93 (`annotated-illustration`, the page in SVG); both build with 0 faults, sweep not yet run. S90, S91, S92 and S94 (call 8's cards) and S93's callout list wait on the engineer's R4-3 contract; S95 waits on R4-4. Ceiling: 13,172 bytes a plate with its frame.
+- 21:23 UTC. S89 to S94 built in the repository, each PASS with the sweep (0 faults). Applied the editor's words (first look, 21:03 and 21:17) and the data lead's MI-1, MI-2, MI-4, MI-5, MI-6 and the 7508A ruling. Open: MI-3 (S90's current spending, waiting on the research lead's reading of the Bureau's documentation); IM-E4 (S91's three cards side by side); IM-E5 (the dot-plot card mode, for S95); the editor's ED4-4 (S89's source line words, a sidecar variant); the design director's read. S95's spec and the rewritten `social-data-card` are drafted; the spec waits in scratch until the dot plot's card mode lands, so no `build --all` meets it half-made.
+- 21:16 UTC. The engineer landed R4-3 and R4-4; the four card forms and their specs moved from scratch into the kit.
+- 20:56 UTC. Read the data lead's rulings (a) to (c) and applied them to S89.
 - 20:40 UTC. Started.
 
 ## Summary
 
-| Spec | Form | State | Bytes with frame (kit build) |
+| Spec | Form | State | Bytes with frame (kit build, 21:22 UTC) |
 |---|---|---|---|
-| S89 | `process-explainer` | Draft, rulings applied; waiting on R-2's source line variant and the editor | about 10,200 |
-| S90 | `by-the-numbers` | Waiting on R4-3 | |
-| S91 | `comparison-cards` | Waiting on R4-3 | |
-| S92 | `step-by-step` | Waiting on R4-3 | |
-| S93 | `annotated-illustration` | Page drawing drafted; callout list waits on R4-3 | about 7,300 |
-| S94 | `calendar` | Waiting on R4-3 | |
-| S95 | `social-data-card` | Waiting on R4-4 | |
+| S89 | `process-explainer` (drawing) | Signed off by the data lead (21:14); editor's words applied | 10,222 |
+| S90 | `by-the-numbers` (HTML text) | Signed off with MI-3 open (words) | 6,372 |
+| S91 | `comparison-cards` (HTML text) | Signed off but for MI-4, now applied; cards two and one at 720 px until IM-E4 | 7,109 |
+| S92 | `step-by-step` (HTML text) | Signed off | 9,307 |
+| S93 | `annotated-illustration` (drawing) | Signed off whole (MI-2 fixed) | 7,317 |
+| S94 | `calendar` (HTML text and one year mark) | MI-5 and MI-6 applied, for the data lead's read | 11,960 |
+| S95 | `social-data-card` (two crops) | Module rewritten to R4-4; spec in scratch, waiting on IM-E5 | not built |
+
+Entries 14.135 to 14.141 are written; the chapter generator, run with `--rounds 1,2,3,4`, takes in 14.135 to 14.140 and holds 14.141 among the planned numbers until S95's spec lands (its one fault, "no spec s95.json", says so). Every figure in a title, note, card or alt is checked by `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures` (all pass; S95 checked from its scratch spec with `--specs`).
 
 ## Routine calls
 
@@ -26,6 +30,16 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 - D3-xxx | S93's page is redrawn in Inter at the kit's sizes, with line breaks the drawing's measure sets, not the page's | The kit sets no type under 13 px and carries only Inter and Inter Tight; the words are the page's own, and the note says the drawing is a redraw
 - D3-xxx | S93's running head draws the page's dash as a rule one em wide, so no em dash prints | Chapter 02 bars the em dash in reader text; DR-79 drew one the same way in W21's before
 - D3-xxx | S93 numbers its parts on the page and in the callout list, with no leader lines | Ruling (b) puts the callouts' words in HTML text beside or under the page, where a leader from the drawing cannot reach them; the numbers carry the link at every width
+
+- D3-xxx | S93 stays a drawing, its callouts drawn beside the page in the SVG, with the table giving every part, its words as printed and what it tells, in the order the parts sit on the page | The engineer's R4-3 keeps the annotated illustration a drawing through `draw`; the accessibility lead's reading order for a drawing is its text equivalent, which the table now follows (row 11 before row 10)
+- D3-xxx | S93 numbers its parts by their place on the page, so row 11 (the margin short title, added by the research lead) prints as 10 and row 10 (the U.S. Code note) as 11, the table's Number column mapping both | The research lead kept row numbers fixed; a reader meets the margin's short title above the code note, and the callout list follows the page
+- D3-xxx | S90 sets six facts: New York's and Idaho's spending per pupil take a fact each | Five facts left a hole in the grid's second row; six fill two rows of three at a desk and three of two at 656 px, and each figure is one row's value
+- D3-xxx | S90 leaves row 5, the COVID-19 relief sum, out of its cards and table by `where`, and prints it in the note | The brief and the data lead's condition put the $39.2 billion in the note; the source line also carries it
+- D3-xxx | S94's year mark draws at 224 px, the art box at a 256 px window, with every month a row, a hairline for its days and each event a 6 px square on its day | `h.mark` draws at a fixed size and never scales its words, so the mark is drawn at the narrowest width the page can give it
+- D3-xxx | S94's list holds one item a day, with every event on it; its table gives the date, what falls due and the law | Grouping by day spares the date line three times; the table stays lean since the list already carries who and each consequence as live text, which kept the plate near 12,000 bytes with its frame
+- D3-xxx | S92 and S94 end each step's "what happens" line with a period the spec adds (S92's `labels.stop`), and S94's events stay phrases, as a date book sets them | The research lead's summaries are sentences stored without a stop; chapter 02 asks a full sentence of every line but labels
+- D3-xxx | The four card forms register `html` and no `draw`, so the guide's page carries none of their code | R4-3, item 1; a card form adds no byte to the renderer
+- D3-xxx | `social-data-card` sets the evidence word at 36 px, the title at 62 px on the tall crop and 54 px on the square, the inner form at k = 36/13 through `c.inner`, and the card's own source line, which names where every state's rate is, at 36 px under a 2 px hairline | R4-4's floor (36 px at true size) and the data lead's condition that the card say where the full list is; the inner form's own words (IM-E5's condition) say each dot is a state
 
 ## Requests
 
