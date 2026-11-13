@@ -1,0 +1,52 @@
+{
+  "kit": 1,
+  "id": "S85",
+  "form": "icon-array",
+  "family": "proportion-and-overlap",
+  "tier": "core",
+  "dataset": "v7-union-membership",
+  "reader_question": "How many of every 100 workers belong to a union?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Bureau of Labor Statistics’ count of union members, as the atlas records it",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "One in ten U.S. wage and salary workers belonged to a union in 2025.",
+  "measure_line": "Union members as a share of employed wage and salary workers, 2025 annual average, drawn as people out of 100, United States",
+  "notes": [
+    "In 1983, 20.1 percent of wage and salary workers belonged to a union. In 2025, 5.9 percent of workers in the private sector did and 32.9 percent in the public sector, 14.7 million members in all.",
+    "The Bureau says the 2025 average, which leaves out October, is not strictly comparable with other years’ averages."
+  ],
+  "chart_notes": [
+    "Each square stands for one worker in 100: the 10 union members are filled, in the text’s ink, and the 90 others are open."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A grid of 100 squares, one for each worker in 100. The first row of 10 is filled for union members in 2025, and the other 90 are open.",
+  "table": {
+    "caption": "Union members as a share of employed wage and salary workers",
+    "columns": [
+      { "field": "group", "label": "Workers", "format": "text", "row_header": true },
+      { "field": "year", "label": "Year", "format": "text" },
+      { "field": "members_pct", "label": "Union members, percent", "format": "number:1" },
+      { "field": "members_millions", "label": "Union members, millions", "format": "number:1", "empty": "Not in the atlas’s record" }
+    ]
+  },
+  "encode": { "value": "members_pct", "category": "group" },
+  "labels": {
+    "draw": { "year": 2025, "group": "All wage and salary workers" },
+    "filled": "{n} union members",
+    "open": "{n} not members",
+    "topic": { "id": "CL-050", "words": "Worker bargaining" }
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D07",
+  "states": [],
+  "notes_internal": [
+    "Maker A, round 4. Data plan row 115, rule 14.79. Domain D07 (V7 I101). Draft before the data lead's rulings."
+  ]
+}
