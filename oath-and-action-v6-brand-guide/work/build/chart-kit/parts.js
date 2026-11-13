@@ -1020,15 +1020,53 @@
       } else rest.push({ it: it, p: p });
     });
     // a name set beside its shape sits on the ground or another shape, so it takes the label ink on a halo, never its
-    // step's ink (o.beside_fill sets another)
-    // and only where the ground or a light fill lies under the whole name (its corners and middle), so it reads in its ink
+    // step's ink (o.beside_fill sets another), and only where the ground or a light fill lies under the whole of it (its
+    // corners and middle)
     var LIGHT = [null, 'surface', 'none', 'land', 'light-fill', 'track', 'band', 'seq-1', 'mag-1', 'div-3', 'plate'];
     var light_under = function (b) {
       return [[b.x, b.y], [b.x + b.w, b.y], [b.x, b.y + b.h], [b.x + b.w, b.y + b.h], [b.x + b.w / 2, b.y + b.h / 2]].every(function (q) { return LIGHT.indexOf(c.fill_under(q[0], q[1])) >= 0; });
     };
+    if (o.beside === false) return { inside: inside, beside: [], unplaced: rest.map(function (r) { return r.it; }) };
+    // names whose label point lies in the map's eastern part (past o.column of its width, default 0.8; false for none) go
+    // to a column on the ocean to the east, north to south in the order of their points, each with a leader: the small
+    // northeastern states. The column stays inside the map's box; a name that would run past its foot, sit on a fill or a
+    // word, or whose leader would cross a word, is left for the table: fit the map narrower than the drawing to leave the
+    // column its room (map_fit's w, about 44 px less). o.beside: false sets no name beside its shape (a phone map that
+    // leaves them to the table).
+    var column = [], col_left = [];
+    if (o.column !== false && rest.length) {
+      var cut = T.ox + (T.box[0] + (o.column || 0.8) * T.box[2]) * T.k;
+      var cs = rest.filter(function (r) { return r.p[0] > cut; }).sort(function (a, b) { return a.p[1] - b.p[1]; });
+      rest = rest.filter(function (r) { return cs.indexOf(r) < 0; });
+      if (cs.length) {
+        var lh = Math.round(size * 1.3), wmax = 0, xs = 0, y = -Infinity;
+        cs.forEach(function (r) { wmax = Math.max(wmax, c.measure(r.it.words, role, r.it.weight || 400)); xs = Math.max(xs, r.p[0]); });
+        cs.forEach(function (r) { y = Math.max(r.p[1], y + lh); r.cy = y; });
+        // the column starts east of the land along the rows it spans, so its names sit on the ocean
+        var ylo = cs[0].cy - size, yhi = cs[cs.length - 1].cy + size;
+        L.arcs.forEach(function (pts) { pts.forEach(function (q) { var py = T.oy + q[1] * T.k; if (py >= ylo && py <= yhi) xs = Math.max(xs, T.ox + q[0] * T.k); }); });
+        var cx = Math.min(xs + 10, c.width - wmax - 1);
+        var over = cs[cs.length - 1].cy + size / 2 - (T.y + T.h), room = cs[0].cy - (T.y + size / 2);
+        if (over > 0) { var up = Math.min(over, Math.max(0, room)); cs.forEach(function (r) { r.cy -= up; }); }
+        cs.forEach(function (r) { r.box = lbox(cx, r.cy + 0.35 * size, c.measure(r.it.words, role, r.it.weight || 400), size, 'start'); });
+        var keep = cs.filter(function (r) {
+          if (r.cy + size / 2 > T.y + T.h + 0.5) return false;
+          if (!o.beside_fill && !light_under(r.box)) return false;
+          if (c.texts.some(function (t) { return overlaps(r.box, t, 1); })) return false;
+          var L2 = { x1: r.p[0], y1: r.p[1], x2: cx - 3, y2: r.cy };
+          return !c.texts.some(function (t) { return K.leader_crosses(L2, t); }) && !cs.some(function (q) { return q !== r && K.leader_crosses(L2, q.box); });
+        });
+        col_left = cs.filter(function (r) { return keep.indexOf(r) < 0; }).map(function (r) { return r.it; });
+        keep.forEach(function (r) { c.line(r.p[0], r.p[1], cx - 3, r.cy, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); });
+        keep.forEach(function (r) {
+          var tb = c.text(cx, r.cy + 0.35 * size, String(r.it.words), { role: role, weight: r.it.weight || 400, fill: o.beside_fill, halo: o.halo !== false });
+          column.push({ item: r.it, box: tb });
+        });
+      }
+    }
     var pl = P.place_labels(c, rest.map(function (r) { return { x: r.p[0], y: r.p[1], r: 1.5, words: r.it.words, weight: r.it.weight, fill: o.beside_fill, src: r.it }; }),
       { role: role, reach: o.reach || [16, 30, 46, 64], avoid: o.avoid, top: o.top, bottom: o.bottom, halo: o.halo, ok: o.beside_fill ? null : light_under });
-    return { inside: inside, beside: pl.placed.map(function (x) { return { item: x.item.src, box: x.box }; }), unplaced: pl.unplaced.map(function (x) { return x.src; }) };
+    return { inside: inside, beside: column.concat(pl.placed.map(function (x) { return { item: x.item.src, box: x.box }; })), unplaced: col_left.concat(pl.unplaced.map(function (x) { return x.src; })) };
   };
   // map_insets(c, L, T, o): a thin frame round the features of each code in o.codes (default Alaska and Hawaii, the
   // states whose geoid starts 02 and 15), o.pad px out (default 4), in o.stroke (default 'gridline'), 1 px. Returns the

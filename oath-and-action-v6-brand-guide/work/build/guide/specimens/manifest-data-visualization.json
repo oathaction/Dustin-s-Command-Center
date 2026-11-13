@@ -803,6 +803,24 @@
   "illustrative": false,
   "notes": "S65, funnel: the chart kit draws it from work/build/chart-kit/specs/s65.json (contract R1-C3)"
  },
+ "s-14-94-sketch": {
+  "chapter": "14",
+  "rule": "14.94",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Four lines, one for each year’s starting group, falling from 100 percent as the years since the start pass, with the latest group in the text’s ink.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-95-sketch": {
+  "chapter": "14",
+  "rule": "14.95",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "A step line falling from 100 percent as time passes, with small ticks where people left before the event and a thin line where half the group had reached it.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
  "s-14-s66": {
   "chapter": "14",
   "rule": "14.96",
@@ -831,7 +849,7 @@
   "chapter": "14",
   "rule": "14.99",
   "width_px": null,
-  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, 3 select committees and 4 joint committees shared with the Senate. Each committee lists its subcommittees under it, 109 in all; Appropriations has the most, 12, and the Budget, Ethics, two select committees and the joint committees have none.",
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate. Each committee lists its subcommittees under it, 109 in all; Appropriations has the most, 12, and the Budget, Ethics, two select committees and the joint committees have none.",
   "illustrative": false,
   "notes": "S69, org-chart: the chart kit draws it from work/build/chart-kit/specs/s69.json (contract R1-C3)"
  },
@@ -872,7 +890,7 @@
   "chapter": "14",
   "rule": "14.104",
   "width_px": null,
-  "alt": "Two committees side by side, each a box with links to the committees it paid, each link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee, $181.4 million to 51 state party committees and $81,000 to two other committees. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
+  "alt": "Two committees side by side, each a box with links to the committees it transferred money to, each link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee and $181.4 million to 51 state party committees, $899.4 million in all. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
   "illustrative": false,
   "notes": "S73, network-diagram: the chart kit draws it from work/build/chart-kit/specs/s73.json (contract R1-C3)"
  },
@@ -892,6 +910,33 @@
   "illustrative": false,
   "notes": "S75, arc-diagram: the chart kit draws it from work/build/chart-kit/specs/s75.json (contract R1-C3)"
  },
+ "s-14-107-sketch": {
+  "chapter": "14",
+  "rule": "14.107",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Four arcs around a circle, one for each group, joined by gray ribbons as wide as the flows between them, with one ribbon in the text’s ink.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-108-sketch": {
+  "chapter": "14",
+  "rule": "14.108",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Five nodes joined by solid lines for one kind of tie and dashed lines for another, each kind named in a key.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-109-sketch": {
+  "chapter": "14",
+  "rule": "14.109",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Four nodes joined by plain lines with no arrowheads, each line as thick as the tie it draws.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
  "s-14-s76": {
   "chapter": "14",
   "rule": "14.110",
@@ -899,6 +944,15 @@
   "alt": "Bands of money flowing into one node for all 2024 House campaigns and out of it, each as wide as its dollars. In: cash on hand at the start, $355.3 million; contributions from individuals, $1,384.1 million; from PACs and other political committees, $429.9 million; loans from the candidates, $228.5 million; and smaller lines. Out: spending, $2,045.3 million; refunds and loan repayments; and cash on hand at the end, $487.8 million.",
   "illustrative": false,
   "notes": "S76, sankey: the chart kit draws it from work/build/chart-kit/specs/s76.json (contract R1-C3)"
+ },
+ "s-14-111-sketch": {
+  "chapter": "14",
+  "rule": "14.111",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Two columns of three stacked blocks, joined by gray bands as wide as the people who stayed or moved between them, with one band in the text’s ink.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
  },
  "s-14-s77": {
   "chapter": "14",

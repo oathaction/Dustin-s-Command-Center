@@ -3802,6 +3802,82 @@
    }
   },
   {
+   "id": "14.94",
+   "title": "Use a cohort chart to follow groups that started at different times.",
+   "rule": [
+    "Use a cohort chart, a reference form, to track groups that began at different times, such as the people who enrolled in a program each year, on one clock that starts when each group began. Draw one line a group, the years since its start across and the share still enrolled up from 100 percent, and name each line at its end by its start year. Keep to four groups, or set the one the title names in the text’s ink and the rest in gray (Rule 14.8)."
+   ],
+   "why": {
+    "text": [
+     "Lining groups up by the time since they started sets each against the others at the same stage. The clock that starts at each group’s own start needs explaining, so the form suits reports and specialists more than a quick read."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a cohort chart with one line a group in the subject ink or the context ink, labeled at its end, on a shared start-time axis.",
+   "sketch_alt": "Four lines, one for each year’s starting group, falling from 100 percent as the years since the start pass, with the latest group in the text’s ink.",
+   "related_rules": [
+    "14.8",
+    "14.10"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks whether people who started later stay longer or leave sooner than those who started earlier.",
+   "use_instead": [
+    {
+     "when": "One group and the time until an event",
+     "rule": "14.95"
+    },
+    {
+     "when": "One measure across calendar years",
+     "rule": "14.30"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-94-sketch",
+    "caption": "Four lines, one for each year’s starting group, falling from 100 percent as the years since the start pass, with the latest group in the text’s ink.",
+    "kind": "sketch",
+    "label": "Cohort chart, a sketch"
+   }
+  },
+  {
+   "id": "14.95",
+   "title": "Use a survival curve to show how long until an event happens.",
+   "rule": [
+    "Use a survival curve, a reference form, to show the share of a group that has not yet reached an event, such as a case still open or a person still enrolled, at each point after its start. Draw a step line from 100 percent that drops at each event, mark each person who left before the event with a small tick, and print the time at which half the group had reached it. Name the group, the start and the event in the measure line."
+   ],
+   "why": {
+    "text": [
+     "A step line keeps each drop at the moment it happened, so the curve shows when the event comes fastest. People whose outcome is not yet known stay in the count until they leave, which a plain share of those who reached the event would miss."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a survival curve as a step line in the subject ink, with ticks for people who left before the event.",
+   "sketch_alt": "A step line falling from 100 percent as time passes, with small ticks where people left before the event and a thin line where half the group had reached it.",
+   "related_rules": [
+    "14.11",
+    "14.36"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how long cases or people last before something happens to them.",
+   "use_instead": [
+    {
+     "when": "Several groups by their start date",
+     "rule": "14.94"
+    },
+    {
+     "when": "Counts of people at fixed stages",
+     "rule": "14.93"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-95-sketch",
+    "caption": "A step line falling from 100 percent as time passes, with small ticks where people left before the event and a thin line where half the group had reached it.",
+    "kind": "sketch",
+    "label": "Survival curve, a sketch"
+   }
+  },
+  {
    "id": "14.96",
    "title": "Use a process diagram to show how a decision is made, step by step, and where others can step in.",
    "rule": [
@@ -4241,6 +4317,118 @@
    }
   },
   {
+   "id": "14.107",
+   "title": "Use a chord diagram only for flows among a few groups, for specialists.",
+   "rule": [
+    "Use a chord diagram, a reference form, to show flows both ways among a few groups: each group an arc on a circle, sized by its total, and each flow a ribbon between two arcs, as wide at each end as the amount it carries from that side. Keep to five groups or fewer, name each arc outside the circle, and draw the ribbons gray, with the one the title names in the text’s ink."
+   ],
+   "why": {
+    "text": [
+     "A circle shows every pair and both directions in one view, but ribbons that bend around it are hard to compare by width. A matrix or a Sankey gives the same amounts more exactly to a general reader."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a chord diagram with ribbons in the context ink and the named ribbon in the subject ink.",
+   "sketch_alt": "Four arcs around a circle, one for each group, joined by gray ribbons as wide as the flows between them, with one ribbon in the text’s ink.",
+   "related_rules": [
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how much flows each way among a few groups, such as people moving among four regions.",
+   "use_instead": [
+    {
+     "when": "Flows from sources to uses in one direction",
+     "rule": "14.110"
+    },
+    {
+     "when": "Counts between many groups",
+     "rule": "14.105"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-107-sketch",
+    "caption": "Four arcs around a circle, one for each group, joined by gray ribbons as wide as the flows between them, with one ribbon in the text’s ink.",
+    "kind": "sketch",
+    "label": "Chord diagram, a sketch"
+   }
+  },
+  {
+   "id": "14.108",
+   "title": "Use a multi-network only where the kinds of links are the story.",
+   "rule": [
+    "Use a multi-network, a reference form, to draw more than one kind of link among the same nodes, such as shared money and shared staff among a set of groups. Give each kind of link its own line style, solid or dashed, in one ink, name each style in a key, and keep to three kinds; past that, draw one panel for each kind with every node in the same place."
+   ],
+   "why": {
+    "text": [
+     "Line styles tell kinds apart in grayscale and for readers who see color differently, where a hue for each kind would fail. More than three kinds tangle, and panels with fixed places keep each kind readable."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a multi-network with K.parts.node and K.parts.link, one dash a kind of link, in the context ink.",
+   "sketch_alt": "Five nodes joined by solid lines for one kind of tie and dashed lines for another, each kind named in a key.",
+   "related_rules": [
+    "14.5",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how two or three kinds of ties overlap among the same people or groups.",
+   "use_instead": [
+    {
+     "when": "One kind of link with an amount",
+     "rule": "14.104"
+    },
+    {
+     "when": "Links counted between groups",
+     "rule": "14.105"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-108-sketch",
+    "caption": "Five nodes joined by solid lines for one kind of tie and dashed lines for another, each kind named in a key.",
+    "kind": "sketch",
+    "label": "Multi-network, a sketch"
+   }
+  },
+  {
+   "id": "14.109",
+   "title": "Draw a tie that runs both ways as one line with no arrowhead.",
+   "rule": [
+    "Use symmetrical links, a reference form, where a tie means the same from either end, such as two agencies that share board members: draw each tie as one plain line with no arrowhead, as thick as its strength where it has one. Where a tie runs one way, give it an arrowhead (Rule 14.104), and where the two ways carry different amounts, draw two arcs, each with its own arrowhead and width."
+   ],
+   "why": {
+    "text": [
+     "An arrowhead claims a direction, and on a shared tie it would invent one. One plain line says the tie is shared."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw each tie with K.parts.link and no arrow, its width the tie’s strength.",
+   "sketch_alt": "Four nodes joined by plain lines with no arrowheads, each line as thick as the tie it draws.",
+   "related_rules": [
+    "14.104"
+   ],
+   "entry": true,
+   "use_when": "The reader asks who is tied to whom, and each tie means the same from either end.",
+   "use_instead": [
+    {
+     "when": "Ties that run one way, with amounts",
+     "rule": "14.104"
+    },
+    {
+     "when": "Flows both ways among a few groups",
+     "rule": "14.107"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-109-sketch",
+    "caption": "Four nodes joined by plain lines with no arrowheads, each line as thick as the tie it draws.",
+    "kind": "sketch",
+    "label": "Symmetrical links, a sketch"
+   }
+  },
+  {
    "id": "14.110",
    "title": "Use a Sankey to show money into one account and out of it.",
    "rule": [
@@ -4278,6 +4466,44 @@
    "correct": {
     "specimen": "s-14-s76",
     "caption": "Where did the money for 2024 House campaigns come from, and where did it go?"
+   }
+  },
+  {
+   "id": "14.111",
+   "title": "Use an alluvial chart only where the same people are counted at each time.",
+   "rule": [
+    "Use an alluvial chart, a reference form, to show how one group’s choices changed between two or three times, such as the plans the same people chose in two years of a panel survey: each time a column of stacked blocks, and bands between the columns as wide as the people who moved from one block to another. Draw it only from data that follow the same people; a survey that asks different people each time cannot show who moved."
+   ],
+   "why": {
+    "text": [
+     "Bands between columns show who stayed and who switched, which two separate totals cannot. The bands mean something only when each person is the same at both times."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw an alluvial chart with K.parts.flow_band between two stacked columns, bands in the context ink and the named band in the subject ink.",
+   "sketch_alt": "Two columns of three stacked blocks, joined by gray bands as wide as the people who stayed or moved between them, with one band in the text’s ink.",
+   "related_rules": [
+    "14.8",
+    "14.110"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how the same people moved between choices from one time to the next.",
+   "use_instead": [
+    {
+     "when": "Totals at two times, from different people",
+     "rule": "14.20"
+    },
+    {
+     "when": "Money into one account and out of it",
+     "rule": "14.110"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-111-sketch",
+    "caption": "Two columns of three stacked blocks, joined by gray bands as wide as the people who stayed or moved between them, with one band in the text’s ink.",
+    "kind": "sketch",
+    "label": "Alluvial, a sketch"
    }
   },
   {
@@ -4998,12 +5224,6 @@
   "14.82",
   "14.83",
   "14.84",
-  "14.94",
-  "14.95",
-  "14.107",
-  "14.108",
-  "14.109",
-  "14.111",
   "14.117",
   "14.118",
   "14.119",

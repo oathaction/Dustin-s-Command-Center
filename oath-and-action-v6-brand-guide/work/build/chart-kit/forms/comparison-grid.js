@@ -54,15 +54,15 @@
         c.arrange('phone');
         c.line(0, 0.5, W, 0.5, { stroke: 'label', width: 1, mark: false });
         c.rows.forEach(function (r) {
-          var top = y + pad, cw2 = ek ? W - Math.min(110, W * 0.32) - g : W;
-          var nb = c.text(0, top + size * 0.93, ty(r[en]), { role: 'label', weight: 700, max: cw2, leading: llh });
-          var bb = nb.bottom;
+          var top = y + pad;
+          var nb = c.text(0, top + size * 0.93, ty(r[en]), { role: 'label', weight: 700, max: W, leading: llh });
+          var yy = nb.bottom + 6;
           if (ek) {
-            var bx = cw2 + g, lb = c.text(bx, top + tick * 0.95, L.count_label || '', { role: 'tick', fill: 'secondary', max: W - bx });
-            bar(bx, lb.bottom + 4 + tick * 0.93, W - bx, r);
-            bb = Math.max(bb, lb.bottom + 4 + tick * 1.2);
+            // the count first, its name over a bar as wide as the drawing allows
+            var lb = c.text(0, yy + tick * 0.93, L.count_label || '', { role: 'tick', weight: 600, fill: 'secondary', max: W });
+            bar(0, lb.bottom + 3 + tick * 0.93, Math.min(W, 260), r);
+            yy = lb.bottom + 3 + tick * 1.2 + 7;
           }
-          var yy = bb + 6;
           cols.forEach(function (cl) {
             var hb2 = c.text(0, yy + tick * 0.93, cl.label, { role: 'tick', weight: 600, fill: 'secondary', max: W });
             var tb = c.text(0, hb2.bottom + 1 + tick * 0.93, ty(r[cl.field]), { role: 'tick', fill: 'label', max: W, leading: lh });

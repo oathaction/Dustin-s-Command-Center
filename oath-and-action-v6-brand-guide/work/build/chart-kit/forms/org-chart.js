@@ -53,7 +53,7 @@
           }));
           items.forEach(function (it) {
             var w = cw - (it.parent ? sub_in : 0);
-            var s = P.node_size(c, it.words, Object.assign({ max: w + 0.5, min: w, named: it.named, sub: it.sub, roles: it.parent ? ['tick'] : ['label'], pad: it.parent ? [8, 4] : [10, 7] }, szo));
+            var s = P.node_size(c, it.words, Object.assign({ max: w + 0.5, min: w, named: it.named, sub: it.sub, roles: it.parent ? ['tick'] : ['label'], pad: it.parent ? [8, 4] : [10, 7], weight: it.parent ? 400 : 700 }, szo));
             it.w = w; it.h = s ? s.h : 40;
           });
           var t = P.tree(items, { dir: 'indent', indent: sub_in, row_gap: 4 });

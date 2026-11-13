@@ -39,10 +39,10 @@
       // a place's row: its name, then each leaf's own name (less the place) and count
       var row_words = function (place, ls) {
         var parts = ls.map(function (r) {
-          if (L.shared_level && String(r[el]) === String(L.shared_level)) return fill(L.shared_words, { n: r[ec] });
+          if (L.shared_level && String(r[el]) === String(L.shared_level)) return fill(L.shared_words, { n: r[ec] }).replace(/ /g, '\u00a0');
           var sg = (L.single || 'District of') + ' ' + place, nm = short(r[en]);
           nm = nm === place ? '' : nm.split(' ' + sg).join('').split(sg).join('').trim();
-          return (nm ? nm + ' ' : '') + r[ec];
+          return (nm ? nm + '\u00a0' : '') + r[ec];   // a leaf's name holds its count
         });
         var odd = L.apart_level && ls.some(function (r) { return String(r[el]) === String(L.apart_level); });
         return { words: ty(place + ': ' + parts.join(', ') + (odd && L.apart_words ? ', ' + L.apart_words : '')), odd: odd };

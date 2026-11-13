@@ -605,7 +605,7 @@
    "source": "s68.json"
   },
   {
-   "example": "The House splits its work among 20 standing committees and 3 select committees, which divide it again among 109 subcommittees.",
+   "example": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
    "domain": "D04",
    "states": [],
    "rule": "14.99",
@@ -626,14 +626,14 @@
    "source": "s71.json"
   },
   {
-   "example": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with 7 Democrats and 1 independent joining 52 Republicans, and the House 222 to 209 two days later.",
+   "example": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with seven Democrats and one independent joining 52 Republicans, and the House 222 to 209 two days later.",
    "domain": "D04",
    "states": [],
    "rule": "14.102",
    "source": "s72.json"
   },
   {
-   "example": "The Harris Victory Fund sent $899.5 million to 55 committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million to two.",
+   "example": "The Harris Victory Fund sent $899.4 million to 53 committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million to two.",
    "domain": "D03",
    "states": [],
    "rule": "14.104",

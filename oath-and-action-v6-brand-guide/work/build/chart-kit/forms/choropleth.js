@@ -34,30 +34,19 @@
     }
     if (L.ids.some(function (id) { return id.slice(0, 2) === '02'; })) K.parts.map_insets(c, L, T);
     var bottom = T.y + T.h, unplaced = [], avoid = [];
-    // DC, whose outline draws under a pixel: a small square east of it in its class fill, named, kept inside the drawing
-    var dc = o.items.filter(function (it) { return it.id === '11'; })[0];
-    if (o.dc && dc && L.labels) {
-      var p = T.pt(L.labels[L.index['11']]), s = Math.max(7, Math.min(11, T.k * 12)), tw = c.measure(o.dc, 'tick', 600);
-      var dx = Math.min(p[0] + T.k * 46, c.width - s - 5 - tw), dy = p[1] + T.k * 22;
-      c.line(p[0], p[1], dx, dy + s / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-      c.rect(dx, dy, s, s, { fill: fill_of(dc), data: dc.data });
-      if (dc.cls === 1) c.rect(dx + 0.5, dy + 0.5, s - 1, s - 1, { stroke: 'context', width: 1, mark: false });
-      c.text(dx + s + 4, dy + s - 1, o.dc, { role: 'tick', weight: 600, halo: true });
-      avoid.push({ x: dx - 2, y: dy - 2, w: s + 4, h: s + 4 });
-    }
     if (o.codes) {
       // names claim room largest shape first: inside the shape in its step's label ink (the kit's map_labels, which here
       // places none beside); the rest beside with a leader, on the ground's halo, clear of every word and leader, over the ground or the lightest step only
       var items = o.items.filter(function (it) { return it.code && it.id !== '11' && L.index[it.id] !== undefined; })
         .sort(function (a, b) { return L.labels[L.index[b.id]][2] - L.labels[L.index[a.id]][2] || (a.id < b.id ? -1 : 1); });
-      var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)) }; }), { role: 'tick', reach: [], top: Infinity });
+      var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)) }; }), { role: 'tick', reach: [], top: Infinity, inset: 1 });
       var dark = o.items.filter(function (it) { return it.cls > 1; }).map(function (it) { return L.rings(L.index[it.id]).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); }); });
       var in_dark = function (x, y) { return dark.some(function (ps) { return ps.some(function (rs) { return K.in_poly(rs, x, y); }); }); };
       var hit = function (a, b2) { return a.x < b2.x + b2.w + 2 && b2.x < a.x + a.w + 2 && a.y < b2.y + b2.h + 2 && b2.y < a.y + a.h + 2; };
       var size = c.size('tick');
       r1.unplaced.forEach(function (it) {
         var q = T.pt(L.labels[L.index[it.id]]), w = c.measure(it.words, 'tick', 600), pick = null;
-        [14, 24, 36, 50].forEach(function (d) {
+        (c.phone ? [8, 16] : [10, 20, 32]).forEach(function (d) {
           [[1, 0], [-1, 0], [0, -1], [0, 1], [0.7, -0.7], [0.7, 0.7], [-0.7, -0.7], [-0.7, 0.7]].forEach(function (v) {
             if (pick) return;
             var cx = q[0] + v[0] * (d + w / 2), base = q[1] + v[1] * (d + size / 2) + size * 0.32, b = c.text_box(cx, base, it.words, { role: 'tick', weight: 600, anchor: 'middle' }); b.base = base;
@@ -75,8 +64,30 @@
         c.line(q[0], q[1], pick.ex - ux * 2, pick.ey - uy * 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
         c.text(pick.b.x + pick.b.w / 2, pick.b.base, it.words, { role: 'tick', weight: 600, anchor: 'middle', halo: true });
       });
-      c.texts.forEach(function (t) { bottom = Math.max(bottom, t.y + t.h); });
     }
+    // DC, whose outline draws under a pixel: a small square in its class fill with a leader and its name, at the first
+    // spot east or south of it clear of every word, leader and darker step, drawn after the codes
+    var dc = o.items.filter(function (it) { return it.id === '11'; })[0];
+    if (o.dc && dc && L.labels) {
+      var p0 = T.pt(L.labels[L.index['11']]), s = Math.max(7, Math.min(11, T.k * 12)), tw = c.measure(o.dc, 'tick', 600), dpick = null;
+      [[46, 40], [60, 30], [60, 50], [40, 60], [70, 70], [30, 80], [80, 10], [90, 40]].forEach(function (v) {
+        if (dpick) return;
+        var dx = p0[0] + T.k * v[0], dy = p0[1] + T.k * v[1], tb = c.text_box(dx + s + 4, dy + s - 1, o.dc, { role: 'tick', weight: 600 });
+        var box = { x: dx - 2, y: Math.min(dy, tb.y) - 2, w: s + 6 + tb.w + 2, h: Math.max(s, tb.h) + 4 };
+        if (box.x + box.w > c.width) return;
+        if (c.texts.some(function (t) { return box.x < t.x + t.w && t.x < box.x + box.w && box.y < t.y + t.h && t.y < box.y + box.h; })) return;
+        if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, box); })) return;
+        if (c.texts.some(function (t) { return K.seg_hits_box(p0[0], p0[1], dx, dy + s / 2, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); })) return;
+        dpick = [dx, dy];
+      });
+      if (dpick) {
+        c.line(p0[0], p0[1], dpick[0], dpick[1] + s / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        c.rect(dpick[0], dpick[1], s, s, { fill: fill_of(dc), data: dc.data });
+        if (dc.cls === 1) c.rect(dpick[0] + 0.5, dpick[1] + 0.5, s - 1, s - 1, { stroke: 'context', width: 1, mark: false });
+        c.text(dpick[0] + s + 4, dpick[1] + s - 1, o.dc, { role: 'tick', weight: 600, halo: true });
+      } else unplaced.push(o.dc);
+    }
+    c.texts.forEach(function (t) { bottom = Math.max(bottom, t.y + t.h); });
     return { T: T, bottom: bottom, unplaced: unplaced };
   };
   // a row's class: from labels.class_field, or by labels.bins
