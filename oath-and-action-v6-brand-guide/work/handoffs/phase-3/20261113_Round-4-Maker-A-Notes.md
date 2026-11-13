@@ -70,6 +70,12 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 | MA-9 | S87's "Both" takes a leader under the circles where it cannot fit inside; PASS at 1440, 390, 328, 288 and 256 px pages and in the sweep |
 | MA-10 | S88's area check named in `notes_internal` |
 
+## The editor's words
+
+- First look (20:57) and second look (21:03): applied to S85 to S88 as given (S85's note 1 and chart note; S86's title, note and chart note; S87's note 1 and the TRICARE note; S88's title without "of them", its short cross-reference and the TRICARE note).
+- The design director's ask, ruled 21:24: S86's measure line drops "; each circle’s area is in proportion to its count", and the key's eyebrow title reads "Circle area shows the count", so the sentence the editor counted on stands beside the circles.
+- Entries and sketches, read 21:12: all ten rows applied: 14.79 ("rows of 10", "the name and typed chip chapter 10 gives it", the why's figures and "a Civic Line drawing"); 14.80 (the 2022 count of county governments; "track gray"); 14.81 ("track gray"); 14.82 (the why ends on its last reason); 14.83 (the why and the sketch caption's second sentence name the reader); 14.84 (`sketch_alt` in two sentences, its first equal to the sketch's first `<desc>`, which ends at "four times as large.").
+
 ## The design director's requests
 
 Read at 21:22 UTC; all eleven applied by 21:30 UTC. No figure or word changed; DD-A5 and DD-A6 waited for the data lead's yes (21:25 UTC).

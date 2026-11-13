@@ -94,6 +94,9 @@
         "CFR ",
         "CFR "
       ]
+    ],
+    "hold": [
+      "fiscal 2028"
     ]
   },
   "notes_internal": [
@@ -104,6 +107,7 @@
     "Note 2 as the data lead ruled under R-2 (21:09 UTC): 26 U.S.C. 7508A in force, with all four causes, after Public Laws 119-29 and 119-64; no 2027 date depends on it.",
     "The year mark draws 224 px wide, the art box at a 256 px window, so it never scales and never overflows; its squares are 6 px.",
     "Editor's words (21:17 UTC) applied: title and note 2 with \"written\", the law's word in subsection (c).",
-    "Data lead MI-5 (21:21 UTC): the title counts deadlines (16 on 13 days; the six tax deadlines fall on five days). MI-6: the year mark draws 224 px wide, so nothing overflows at a 256 px window."
+    "Data lead MI-5 (21:21 UTC): the title counts deadlines (16 on 13 days; the six tax deadlines fall on five days). MI-6: the year mark draws 224 px wide, so nothing overflows at a 256 px window.",
+    "Design director DD-I16 and DD-I20 (21:28 UTC): each kind of date sits on a line of its own and its consequence on the next, so a wrapped consequence never starts under the tag; \"fiscal 2028\" held on one line."
   ]
 }

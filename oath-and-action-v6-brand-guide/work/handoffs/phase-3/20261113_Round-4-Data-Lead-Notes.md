@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:32 UTC. S95 read against IM-E5: IM-E6's label band accepted; two asks for one build (a 2 px gap between dots, S19's grade line on the card).
 - 21:25 UTC. DR-271 applied: byte figures are reported, not sign-off conditions; data conditions stand. MI-7 is with the infographics maker.
 - 21:25 UTC. The design director's DD-A5, DD-A6 and DD-I7 answered yes, with conditions; MI-3 answered by the research lead, words for S90 set.
 - 21:24 UTC. S94 signed off whole; S91 waits on one phrase (MI-7: Puerto Rico's district judges serve for life, so "outside the territories" misleads).
@@ -140,6 +141,19 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### S95 read against IM-E5's five conditions, and IM-E6 (21:32 UTC, for the engineer and the infographics maker)
+
+Looked at the infographics maker's exports: 1080 by 1350 on Newsprint and 1080 by 1080 on Charcoal, true size. Read by script from the two SVGs (the inner group's scale is 2.769).
+1. **One scale: met.** The vertical scale runs from 0 to S19's 700 with integer ticks at 0, 200, 400 and 600. The tick step follows the card's height, as S19's own phone drawing thins its ticks, so the condition is read as the same domain and format.
+2. **Rank across: met.** No ticks or numbers across; "Each dot is a state, highest at the left."
+3. **Every dot alone: just short.** 50 columns at a pitch of 6.0 inner px (16.6 px true) on the tall crop and 6.2 on the square; dots 5.38 and 5.56 inner px across with their edges, leaving 1.72 and 1.77 px between columns at true size against the 2 px I set. The six open rings' strokes are 3.08 px at true size (at least 2.8: met). **Ask:** set the card's dot radius so the gap is at least 2 px at true size (outer radius at most 2.64 inner px on the tall crop, 2.74 on the square). That is a change of about 0.05 inner px, so build it with IM-E6.
+4. **Labels clear: Mississippi met, Massachusetts open.** "Mississippi 652" sits above its dot, clear; "All states together: 318" sits above the line where no dot falls. **IM-E6 meets condition 4:** a label band under the zero line, inside the card's height, holding "Massachusetts 96" alone, in the same label ink and weight as "Mississippi 652". It ends at or near Massachusetts's column, with a hairline leader in the leader ink from the label to 2 px short of the dot. The leader crosses only the zero gridline and no other dot, the zero gridline stays whole, and the band adds no tick or number.
+5. **Both crops: met for the dots.** Every one of the 50 states draws on both crops.
+
+**One of my R4-4 conditions is not met: the grade line.** The card prints "Finding" and S19's title (whose words carry the period, "at the end of 2023", and the measure, "sentenced prisoners per 100,000 residents"), the open dots' key and the source with its table. It drops S19's grade line, "Documented: counts the states report to the Bureau of Justice Statistics". Print it under "Finding" at 36 px or more on both crops, since a card is the view most often shared alone.
+
+With the gap, IM-E6 and the grade line built once, I sign S95 off from both crops on both grounds.
 
 ### IM-E5, S95's card mode with the ranks across: accepted, with five conditions (21:17 UTC, for the infographics maker and the engineer)
 

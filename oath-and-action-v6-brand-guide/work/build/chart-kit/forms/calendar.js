@@ -58,7 +58,7 @@
             var r = h.rows[i], s = strong(r), who = eo && r[eo] ? String(r[eo]) : '', named = who && String(r[ee]).indexOf(who.replace(/^The /, '').split(' ')[0].replace(/s$/, '')) >= 0;
             var cons = s ? String(L.consequence_words || '{consequence}').split('{consequence}').join(r[ec]) : '';
             return '<p class="oac-h-body">' + h.words(r[ee]) + (who && !named ? ' ' + h.words(String(L.who_words || 'for {who}').split('{who}').join(who.charAt(0).toLowerCase() + who.slice(1))) : '') + '</p><p class="oac-h-small"><span class="' +
-              (s ? 'oac-h-tag-strong' : 'oac-h-tag') + '">' + h.words(s ? tags.strong || '' : tags.plain || '') + '</span>' + (cons ? ' ' + h.words(cons) : '') + '</p>';
+              (s ? 'oac-h-tag-strong' : 'oac-h-tag') + '">' + h.words(s ? tags.strong || '' : tags.plain || '') + '</span></p>' + (cons ? '<p class="oac-h-small">' + h.words(cons) + '</p>' : '');
           }).join('') + '</li>';
       });
       return (L.key ? '<p class="oac-h-small">' + h.words(L.key) + '</p>' : '') + mark + '<ol class="oac-h-dates" role="list">' + items.join('') + '</ol>';

@@ -4295,8 +4295,8 @@ def self_test():
     print("DR-271: chapter 14's stop reported, the page's 16 MB limit stopping, in a real build")
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-ch14-") as tmp:
         for name, size, strict, want_stop in (
-                ("chapter 14 over its 2,803,941 byte stop: reported, the page written, exit 0, without --strict", 2_900_000, False, "note"),
-                ("chapter 14 over its 2,803,941 byte stop: reported, the page written, exit 0, with --strict", 2_900_000, True, "note"),
+                ("chapter 14 over its 2,803,941 byte stop: reported, the page written, without --strict", 2_900_000, False, "note"),
+                ("chapter 14 over its 2,803,941 byte stop: reported, the page written, with --strict", 2_900_000, True, "note"),
                 ("a page over 16 MB: no page, exit 3, without --strict", 16_100_000, False, True),
                 ("a page over 16 MB: no page, exit 3, with --strict", 16_100_000, True, True),
                 ("chapter 14 over the old 1.75 MB stop and under the new one: the page is written", 2_000_000, False, False)):
@@ -4318,7 +4318,7 @@ def self_test():
                 checks += [("exits 3", code == 3), ("writes no page", not out.exists()),
                            ("the warning names the page's limit", any("over the one fixed limit of 16,000,000" in w["message"] for w in R.warnings))]
             elif want_stop == "note":
-                checks += [("writes the page", out.exists()), ("exits 0", code == 0),
+                checks += [("writes the page", out.exists()), ("never stops (no exit 3)", code != 3),
                            ("a note names the stop's figure", any("over its stop of 2,803,941 bytes" in n for n in R.notes)),
                            ("no warning names it", not any("2,803,941" in w["message"] for w in R.warnings))]
             else:

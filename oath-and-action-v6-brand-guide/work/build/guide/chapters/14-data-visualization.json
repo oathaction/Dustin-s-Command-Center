@@ -3461,11 +3461,11 @@
    "id": "14.79",
    "title": "Use an icon array to make a share countable as people out of 100.",
    "rule": [
-    "Draw 100 plain unit marks in rows of ten, read from the top left, and fill one in the subject ink for each person the share counts; leave the rest open, with a thin edge in the context ink and no fill. Round the share to whole people and print the published figure in the table. Draw one share, and give a comparison the publisher qualifies, such as another year, in a note. A Civic Line drawing may head the chart once, at 48 px beside the word chapter 10 gives it, as the chart’s subject and outside the grid; the marks stay plain squares (Rules 10.1, 10.4 and 10.6)."
+    "Draw 100 plain unit marks in rows of 10, read from the top left, and fill one in the subject ink for each person the share counts; leave the rest open, with a thin edge in the context ink and no fill. Round the share to whole people and print the published figure in the table. Draw one share, and give a comparison the publisher qualifies, such as another year, in a note. A Civic Line drawing may head the chart once, at 48 px beside the name and typed chip chapter 10 gives it, as the chart’s subject and outside the grid; the marks stay plain squares (Rules 10.1, 10.4 and 10.6)."
    ],
    "why": {
     "text": [
-     "A reader counts ten filled squares in a row of ten faster than a reader turns 10.0 percent into people, and a grid of 100 makes one in ten something to see. Filled against open holds in gray print and for a reader who sees no color. A symbol drawn in each square would give a topic drawing a second meaning, one person, so the squares stay plain."
+     "A reader counts 10 filled squares in a row of 10 faster than they can turn 10.0 percent into people, and a grid of 100 makes one in ten something to see. Filled against open holds in gray print and for a reader who sees no color. A symbol drawn in each square would give a Civic Line drawing a second meaning, one person, so the squares stay plain."
     ]
    },
    "tokens": [],
@@ -3501,7 +3501,7 @@
    "id": "14.80",
    "title": "Use proportional symbols when counts run too far apart for a bar.",
    "rule": [
-    "Draw one circle for each count, its area in proportion to the count on one scale for every circle, the radius by the square root (Rule 14.4). Name each circle and print its count beside it, or inside the circle the title names, which takes the subject ink; the rest take the track ink with a thin edge. Add a key of nested circles at round counts that reaches past the largest. A count whose circle would draw under a few pixels prints in words beside the circles, with the reason."
+    "Draw one circle for each count, its area in proportion to the count on one scale for every circle, the radius by the square root (Rule 14.4). Name each circle and print its count beside it, or inside the circle the title names, which takes the subject ink; the rest take the track gray with a thin edge. Add a key of nested circles at round counts that reaches past the largest. A count whose circle would draw under a few pixels prints in words beside the circles, with the reason."
    ],
    "why": {
     "text": [
@@ -3517,7 +3517,7 @@
     "14.52"
    ],
    "entry": true,
-   "use_when": "The reader asks how many there are of each kind, and the counts span so wide a range that a bar for the smallest would vanish, such as the country’s 39,555 special districts and its 3,031 counties.",
+   "use_when": "The reader asks how many there are of each kind, and the counts span so wide a range that a bar for the smallest would vanish, such as the 39,555 special districts and 3,031 county governments the Census Bureau counted in 2022.",
    "use_instead": [
     {
      "when": "The counts sit close enough to rank by length",
@@ -3541,7 +3541,7 @@
    "id": "14.81",
    "title": "Use a Venn diagram to name the groups two overlapping sets make.",
    "rule": [
-    "Draw two circles of one size inside a frame for everyone, each named, so the drawing holds four groups: the first alone, both, the second alone and neither. Print each group’s count and share inside it, shade the overlap in the track ink, and say in a note that the circles’ sizes carry no count. Name a group above another only where the gap passes its margin of error (Rule 14.9)."
+    "Draw two circles of one size inside a frame for everyone, each named, so the drawing holds four groups: the first alone, both, the second alone and neither. Print each group’s count and share inside it, shade the overlap in the track gray, and say in a note that the circles’ sizes carry no count. Name a group above another only where the gap passes its margin of error (Rule 14.9)."
    ],
    "why": {
     "text": [
@@ -3585,7 +3585,7 @@
    ],
    "why": {
     "text": [
-     "A Venn diagram of one size can make a small overlap look as large as a big group. Drawn at true area, the overlap shows its real weight. The kit checks every circle’s radius and the shared area against their counts at every width."
+     "A Venn diagram with circles of one size can make a small overlap look as large as a big group. Drawn at true area, the overlap shows its real weight."
     ]
    },
    "tokens": [],
@@ -3625,13 +3625,13 @@
    ],
    "why": {
     "text": [
-     "Packed circles give a reader the spread of sizes at a glance, but circles of near sizes cannot be told apart by eye, and their order on the page follows the packing. Forms with a scale or a shared baseline let a reader read each value."
+     "Packed circles give a reader the spread of sizes at a glance, but a reader cannot tell circles of near sizes apart by eye, and their order on the page follows the packing. Forms with a scale or a shared baseline let a reader read each value."
     ]
    },
    "tokens": [],
    "related": [],
    "builders": "No kit form: draw packed circles only as a sketch for planning; build proportional-symbols, treemap or ranked-bar for a reader.",
-   "sketch_alt": "Packed circles for an illustrative city budget, one circle for each line, its area in proportion to the amount, the four largest named. The sizes read at a glance, and no value can be read off the drawing.",
+   "sketch_alt": "Packed circles for an illustrative city budget, one circle for each line, its area in proportion to the amount, the four largest named. The sizes read at a glance, and a reader can read no value off the drawing.",
    "related_rules": [
     "14.80",
     "14.52",
@@ -3674,7 +3674,7 @@
    "tokens": [],
    "related": [],
    "builders": "No form: the kit draws no rose chart. The sketch, work/build/guide/specimens/s-14-84-sketch.html, draws a rose chart beside bars of the same values; build the better choice with ranked-bar or column.",
-   "sketch_alt": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large, and bars of the same values show it twice as long. The bars give each value as a length.",
+   "sketch_alt": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large. Bars of the same values show it twice as long.",
    "related_rules": [
     "14.4"
    ],
@@ -3692,7 +3692,7 @@
    ],
    "correct": {
     "specimen": "s-14-84-sketch",
-    "caption": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large, and bars of the same values show it twice as long.",
+    "caption": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large.",
     "kind": "avoid",
     "label": "Rose chart, a form that misleads"
    }
@@ -5705,7 +5705,7 @@
    "id": "14.135",
    "title": "Use a process explainer to show the steps of a public process and who acts at each one.",
    "rule": [
-    "Give each level of government, and the public where it acts, a column named in words at its head, and set each step in a box across the columns of those who act at it, numbered in the order the law sets and joined by arrows in the text’s ink. A step some cases take in place of another sits under it with a gray edge and a line that says when it applies; steps that follow one step side by side share a row, each with its own arrow. Print each time as the law’s limit, never as a wait, and the date of the law once, in the grade line. Name every actor in words, since no symbol means a governor, an agency or the President, and give the table every step in reading order with where it leads. On a phone the steps run down one column, each naming who acts."
+    "Give each level of government, and the public where it acts, a column named in words at its head, and set each step in a box across the columns of those who act at it, numbered in the order the law sets and joined by arrows in the text’s ink. A step some cases take in place of another sits under it with a gray edge and a line that says when it applies; steps that follow one step side by side share a row, each with its own arrow. Print each time as the law’s limit, and the date of the law once, in the grade line. Name every actor in words, since no symbol means a governor, an agency or the President, and give the table every step in reading order with where it leads. On a phone the steps run down one column, each naming who acts."
    ],
    "why": {
     "text": [
@@ -5925,6 +5925,41 @@
     "specimen": "s-14-s94",
     "caption": "Which dates does federal law set for the budget and for taxes in 2027?"
    }
+  },
+  {
+   "id": "14.141",
+   "title": "Use a social data card to carry one chart’s finding into a feed at the platform’s sizes.",
+   "rule": [
+    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text, the finding in a sentence or two, and keep the full table with the chart."
+   ],
+   "why": {
+    "text": [
+     "A feed shows a card at about a third of its size, so only large type and a few labels read there. Keeping the chart’s own title, inks and named marks makes the card the same finding as the chart, and the source line sends a reader to every value."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form social-data-card around the form encode.of names: node work/build/chart-kit/oa-chart.mjs build s95; card.crops sets the crops, card.post the words to post, labels.card_source the card’s source line and labels.card_inner what the inner form reads (dot-plot: label named, ranks across).",
+   "related_rules": [
+    "14.18",
+    "14.85"
+   ],
+   "entry": true,
+   "use_when": "A finding from a core chart goes to Substack, email or a social feed as a still image.",
+   "use_instead": [
+    {
+     "when": "The reader needs every value, or the post links to the full chart",
+     "rule": "14.18"
+    },
+    {
+     "when": "One figure carries the finding alone",
+     "rule": "14.85"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s95",
+    "caption": "How many residents per 100,000 does each state hold in prison?"
+   }
   }
  ],
  "related_chapters": [
@@ -5970,7 +6005,5 @@
   "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
   "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ],
- "planned_rules": [
-  "14.141"
- ]
+ "planned_rules": []
 }

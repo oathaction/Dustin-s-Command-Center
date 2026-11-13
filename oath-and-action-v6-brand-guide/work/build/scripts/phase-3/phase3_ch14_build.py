@@ -41,6 +41,7 @@ DOMAIN_SHARE = 1 / 4      # DR-229: no atlas domain supplies more than one examp
 STATE_SHARE = 1 / 5       # and no state more than one in five
 ENTRY_DROP = {"use_when", "use_instead", "specimen", "tier", "correct", "failure", "examples", "caption"}
 SKETCH_LIMIT = {"reference": 4096, "avoid": 4096}   # R1-C1; D3-486 raises the avoid sketch to 4,096 bytes for its pair
+NOTES = []   # DR-271 (round 4): a byte allocation past its figure is reported here, never a fault
 SVG_WIDTH = re.compile(r'<svg\b[^>]*?\swidth="([\d.]+)"')
 DESC = re.compile(r"<desc\b[^>]*>(.*?)</desc>", re.S)
 # R2-3 (contract R2-C3): a sentence ends at a period, question mark or exclamation mark followed by a space and a capital
@@ -240,7 +241,7 @@ def outputs(rounds):
             if len(ws) > 2 or (len(ws) == 2 and not avoid):
                 faults.append(f"Rule {rid}: {sk}.html holds {len(ws)} drawings; a sketch holds one, or an avoid entry's pair (D3-486)")
             if (SPECIMENS / f"{sk}.html").exists() and (SPECIMENS / f"{sk}.html").stat().st_size > limit:
-                faults.append(f"Rule {rid}: {sk}.html weighs {(SPECIMENS / f'{sk}.html').stat().st_size:,} bytes, over its {limit:,} (R1-C1)")
+                NOTES.append(f"Rule {rid}: {sk}.html weighs {(SPECIMENS / f'{sk}.html').stat().st_size:,} bytes, over its {limit:,} (R1-C1), reported (DR-271)")
         rules.append(rule)
     # the groups whose first rule is built
     ids = [r["id"] for r in rules]
@@ -289,6 +290,8 @@ def main():
         p.write_text(files[p])
     for f in faults:
         print(f"  fault: {f}")
+    for n in NOTES:
+        print(f"  note: {n}")
     print(f"phase3_ch14_build: {counts['rules']} rules ({counts['entries']} entries, {counts['plates']} chart plates), "
           f"{counts['examples']} examples logged, {counts['planned']} numbers planned for later rounds; {len(files)} files, {len(stale)} written; "
           f"{len(faults)} fault(s)")

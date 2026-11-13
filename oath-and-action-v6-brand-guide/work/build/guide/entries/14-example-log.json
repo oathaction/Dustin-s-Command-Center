@@ -7,13 +7,13 @@
   3,
   4
  ],
- "examples": 107,
+ "examples": 108,
  "by_domain": {
   "D01": 6,
   "D02": 12,
   "D03": 7,
   "D04": 13,
-  "D05": 6,
+  "D05": 7,
   "D06": 6,
   "D07": 10,
   "D08": 16,
@@ -29,9 +29,9 @@
   "GA": 1,
   "ID": 1,
   "IL": 2,
-  "MA": 1,
+  "MA": 2,
   "MI": 2,
-  "MS": 1,
+  "MS": 2,
   "MT": 1,
   "NC": 1,
   "ND": 2,
@@ -837,7 +837,7 @@
    "source": "s42.json"
   },
   {
-   "example": "A governor or a tribe’s chief executive has 30 days under the law to ask the President to declare a disaster, which opens federal help to people and governments.",
+   "example": "Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help.",
    "domain": "D04",
    "states": [],
    "rule": "14.135",
@@ -854,32 +854,42 @@
    "source": "s90.json"
   },
   {
-   "example": "District judges hold office for life once the President appoints them and the Senate consents, and other judges choose bankruptcy and magistrate judges for terms of 14 years and eight years.",
+   "example": "District judges serve for life except in Guam, the Northern Mariana Islands and the Virgin Islands; judges pick bankruptcy judges for 14 years and full-time magistrate judges for eight.",
    "domain": "D05",
    "states": [],
    "rule": "14.137",
    "source": "s91.json"
   },
   {
-   "example": "A federal agency has 20 working days under the law to answer a request for its records, and a requester it turns down can appeal, ask for mediation or sue.",
+   "example": "A federal agency has 20 working days under the law to answer a records request, and a requester it turns down can appeal, ask for mediation or sue.",
    "domain": "D01",
    "states": [],
    "rule": "14.138",
    "source": "s92.json"
   },
   {
-   "example": "The first page of Public Law 119-12 gives its number, the Congress that passed it, where it starts in the Statutes at Large, the day it was approved and the bill it began as.",
+   "example": "Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as.",
    "domain": "D04",
    "states": [],
    "rule": "14.139",
    "source": "s93.json"
   },
   {
-   "example": "Federal law sets 16 budget and tax dates in 2027, and seven of them, the six tax dates and the start of the fiscal year, carry a consequence in law.",
+   "example": "Federal law sets 16 deadlines on 13 days of 2027 for the budget and taxes, and attaches a consequence to seven: the six tax deadlines and the fiscal year’s start.",
    "domain": "D08",
    "states": [],
    "rule": "14.140",
    "source": "s94.json"
+  },
+  {
+   "example": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
+   "domain": "D05",
+   "states": [
+    "MS",
+    "MA"
+   ],
+   "rule": "14.141",
+   "source": "s95.json"
   }
  ]
 }

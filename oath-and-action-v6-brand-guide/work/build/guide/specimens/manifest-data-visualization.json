@@ -768,7 +768,7 @@
   "rule": "14.83",
   "width_px": 320,
   "illustrative": true,
-  "alt": "Packed circles for an illustrative city budget, one circle for each line, its area in proportion to the amount, the four largest named. The sizes read at a glance, and no value can be read off the drawing.",
+  "alt": "Packed circles for an illustrative city budget, one circle for each line, its area in proportion to the amount, the four largest named. The sizes read at a glance, and a reader can read no value off the drawing.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
   "fit_switch": false
  },
@@ -777,7 +777,7 @@
   "rule": "14.84",
   "width_px": null,
   "illustrative": true,
-  "alt": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large, and bars of the same values show it twice as long. The bars give each value as a length.",
+  "alt": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large. Bars of the same values show it twice as long.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s01": {
@@ -1177,7 +1177,7 @@
   "chapter": "14",
   "rule": "14.135",
   "width_px": null,
-  "alt": "A diagram of the steps from a disaster to federal help, read in order, with who acts at each step. Step 1, local governments and the state respond, and the governor puts the state’s emergency plan into effect. Step 2, the state and FEMA assess the damage together, with local officials. Step 3, the governor, or a tribal government’s chief executive, asks the President for a major disaster declaration within 30 days of the incident; for an emergency or the threat of one, the request is for an emergency declaration, within 5 days after the need becomes apparent and no later than 30 days. Step 4, FEMA reviews the request and recommends. Step 5, the President declares a major disaster or an emergency, or denies the request. Step 6, FEMA names the areas and the kinds of help. Then two steps side by side: the state asks for public assistance for each local government or other applicant within 30 days of the designation, and residents register for individual help within 60 days of the declaration.",
+  "alt": "A diagram of the steps from a disaster to federal help, read in order, with who acts at each step. Step 1, local governments and the state respond, and the governor puts the state’s emergency plan into effect. Step 2, the state and FEMA assess the damage together, with local officials. Step 3, the governor, or a tribal government’s chief executive, asks the President for a major disaster declaration within 30 days of the incident; for an emergency or the threat of one, the request is for an emergency declaration, within five days after the need becomes apparent and no later than 30 days. Step 4, FEMA reviews the request and recommends. Step 5, the President declares a major disaster or an emergency, or denies the request. Step 6, FEMA names the areas and the kinds of help. Then two steps side by side: the state asks for public assistance for each local government or other applicant within 30 days of the designation, and residents register for individual help within 60 days of the declaration.",
   "illustrative": false,
   "notes": "S89, process-explainer: the chart kit draws it from work/build/chart-kit/specs/s89.json (contract R1-C3)"
  },
@@ -1209,7 +1209,7 @@
   "chapter": "14",
   "rule": "14.139",
   "width_px": null,
-  "alt": "A drawing of the first page of Public Law 119-12 with its eleven parts numbered, from the running head and the law’s number at the top to the short title section and the two notes in its margin.",
+  "alt": "A drawing of the first page of Public Law 119-12 with its eleven parts numbered in the order they sit on the page, from the running head and the law’s number at the top to the short title section and the two notes in its margin.",
   "illustrative": false,
   "notes": "S93, annotated-illustration: the chart kit draws it from work/build/chart-kit/specs/s93.json (contract R1-C3)"
  },
@@ -1217,8 +1217,16 @@
   "chapter": "14",
   "rule": "14.140",
   "width_px": null,
-  "alt": "The 16 budget and tax dates federal law sets in 2027, each marked by whether the law attaches a consequence to missing it.",
+  "alt": "The 16 budget and tax deadlines federal law sets on 13 days of 2027, each marked by whether the law attaches a consequence to missing it.",
   "illustrative": false,
   "notes": "S94, calendar: the chart kit draws it from work/build/chart-kit/specs/s94.json (contract R1-C3)"
+ },
+ "s-14-s95": {
+  "chapter": "14",
+  "rule": "14.141",
+  "width_px": null,
+  "alt": "Dots for the 50 states’ imprisonment rates at the end of 2023, highest at the left, beside a dashed line for all states together at 318 per 100,000. Mississippi held the most, 652 per 100,000 residents, and Massachusetts the fewest, 96.",
+  "illustrative": false,
+  "notes": "S95, social-data-card: the chart kit draws it from work/build/chart-kit/specs/s95.json (contract R1-C3)"
  }
 }
