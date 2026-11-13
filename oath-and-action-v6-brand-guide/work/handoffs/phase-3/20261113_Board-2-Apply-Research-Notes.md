@@ -53,6 +53,7 @@ One thing for the caller: repair log row RL63, Missouri's Proposition A, also st
 - Row 45: the 20 numbered loops; 25 variables, 24 with a label unlike their title, A5 the one alike; one label per variable across loops; the three label and title pairs quoted; the averages; R9's E2 label; B2's "A4 hardship" step; item 16 is the conceptual chains row.
 - D6 and FEC lines: D6's `type` "flow" and `kind_plain` opening; item 8 is the D6 row; 0 atlas fields match "joint fundrais" or "JFC"; both FEC sidecars are kind public and state lines 22, 28C and 21B; both CSVs exist.
 - `git status` before and after: only the issue list and this file changed in the repository.
+- DR-269 (20:40 to 20:43 UTC): the verify script, extended, runs 133 checks, all passing, including the 22 Proposition A fields as printed, the two shared with the 45, the total of 65, the three nameless fields, RL63's `direction`, `margin`, `jurisdiction` and `instrument`, the widened fix and DR-269 in the closing and change log lines. Missouri's pages fetched and logged with their times in `.../research/dl/mo/fetch-log.tsv`: the 2026 ballot measures page (200, 43,841 bytes), the results page (200, 40,813 bytes, SHA-256 6c622e87...a75c), and enr.sos.mo.gov (403, a Cloudflare block page of 5,663 bytes).
 
 ## Not tested
 
@@ -64,10 +65,23 @@ One thing for the caller: repair log row RL63, Missouri's Proposition A, also st
 - Prose fields that use a label's words as ordinary phrases (for example "safe seats" in 58 fields, 7 of them in loops): counted, not judged, and not named in the row.
 - Which guide plates print loop labels today.
 - How the table renders in a Markdown viewer; the check script read eight rows of four cells each.
+- Missouri's unofficial or certified result for Proposition A: the unofficial results site blocked the reader, and no secondary source was read for it.
+
+## Routine calls, DR-269
+
+Added 20:43 UTC, after Dustin's answers on the round 4 plan (DR-266 to DR-270). DR-269 puts Missouri's Proposition A in row 39.
+
+- D3-xxx | Row 39 keeps the 45 fields of Alaska's and Massachusetts's measures as printed and adds Missouri's as a second group, with the overlap named | The 45 were approved under DR-264; a second group lets the editor see what DR-269 added, and the two shared fields (PW15 `who_can_change_the_rules`, the history chip `events_chips[28]`) are named so the total of 65 can be checked
+- D3-xxx | Missouri's 22 fields are counted by the same kind of rule as the 45: a match on "Proposition A" or the URL slug "proposition-a" | The 45 counted K1703's URL by its petition number, so K1707's URL counts here too; every match is Missouri's 2026 referendum (21 say so in their own words, and CL1733's `limitation` sits on a claim about Missouri's map), and no other state's Proposition A appears in the model
+- D3-xxx | Three fields that call it "the pending referendum" without its name (L56 and R4a `qualification`, CL1713 `supports`) are listed apart and left out of the 22 | They need the same rewrite, but they do not name the measure, as RL62's and RL64's `direction` fields did not; the list says which they are
+- D3-xxx | RL63's `direction` and `margin` are named beside its `rule`, as RL62's and RL64's are | They read "pending" and "pending (election Nov 3, 2026)"
+- D3-xxx | Row 39 says what Missouri's Secretary of State showed at 20:40 to 20:42 UTC, and only that: Proposition A is listed among the measures certified for the ballot; the results page gives official totals through the August 4, 2026 primary and none for November 3; the unofficial results site, enr.sos.mo.gov, refused this reader with a Cloudflare block (HTTP 403) | The coordinator asked for what the site shows today; with no result read, the row says "voters cast ballots on all three", not that any was decided
+- D3-xxx | The fix keeps the board's words, widened as the coordinator asked: "rewrite the places that name each of the three measures from its state's certified result, with its date, once all three certify" | DR-269's "all three update by one rule"; "each state's" becomes "its state's" because each measure belongs to one state
+- D3-xxx | No Missouri certification date is printed | None was read; Alaska's November 25 date stays as the board wrote it
 
 ## Files
 
-- Modified: `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (the section "Added November 13, 2026" and one change log line; 22 lines added, none removed).
+- Modified: `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (the section "Added November 13, 2026" and one change log line; 22 lines added, none removed; then, under DR-269, row 39, the closing line and the change log line).
 - Created: `work/handoffs/phase-3/20261113_Board-2-Apply-Research-Notes.md` (this file).
-- Scratch only, outside the repository: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/scripts/v71_apply_check.py` (the first read of every value), `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/scripts/v71_rows_verify.py` (the 121 checks), their outputs in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/out/`, and the Archives page in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/dl/article-v/archives-transcript.html`.
+- Scratch only, outside the repository: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/scripts/v71_apply_check.py` (the first read of every value), `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/scripts/v71_rows_verify.py` (121 checks, 133 after DR-269), their outputs in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/out/`, the Archives page in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/dl/article-v/archives-transcript.html`, and Missouri's three pages in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/research/dl/mo/`.
 - Unchanged: Atlas V7, `work/research/atlas-v7-docs/`, `source/`, `deliverables/`, `work/ledger/` and `work/build/data/`.
