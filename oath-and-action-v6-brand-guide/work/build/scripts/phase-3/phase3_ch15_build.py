@@ -3439,7 +3439,7 @@ CSS.update({
            ".p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}"),
     "ch1": ".ch1{flex-direction:column;align-items:flex-start}" + chooser_css(["R-03", "R-04"]),
     "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
-           ".pn .oa-disclosure-set{margin-top:16px}"),
+           ".pn .oa-disclosure-set{margin-top:16px}@media print{.lv>.oa-choice{display:none}}"),
     "pon": ".pon{display:none}",
     "ld": (".ld{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:var(--oa-type-body-small);"
            "color:var(--oa-color-text-secondary)}.ld .on{color:var(--oa-color-text-primary);font-weight:var(--oa-font-weight-bold);"

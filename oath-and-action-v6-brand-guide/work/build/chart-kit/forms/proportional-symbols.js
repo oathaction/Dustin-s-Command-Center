@@ -68,6 +68,9 @@
         var tw = 0;
         circ.forEach(function (r) { tw = Math.max(tw, name_w(r, W * 0.48).w, c.measure(fv(r[ev]), 'label', 400, true)); });
         R = Math.max(12, Math.min(84, Math.floor((W - 14 - tw) / 2)));
+        // the key shares the scale, so the circles shrink until its steps fit the width side by side
+        var kneed = function (Rr) { return (L.key_steps || []).reduce(function (t, st) { return t + Math.max(2 * Math.sqrt(st / maxv) * Rr, c.measure(fv(st), 'tick', 400, true)) + 6; }, -6); };
+        while (R > 12 && kneed(R) > W) R -= 1;
         circ.forEach(function (r) {
           var rad = Math.sqrt(+r[ev] / maxv) * R, nw = name_w(r, W - 2 * R - 14), th = nw.n * lh + lh;
           var h = Math.max(2 * rad, th), cy = y + h / 2;

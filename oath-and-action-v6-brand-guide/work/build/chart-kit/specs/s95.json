@@ -91,11 +91,12 @@
       "MS",
       "MA"
     ],
-    "card_source": "Source and every state’s rate: Bureau of Justice Statistics, Prisoners in 2023, Table 7, year-end 2023. Chart: Oath & Action",
+    "card_source": "Source and every state’s rate: Bureau of Justice Statistics, Prisoners in 2023, Table 7. Chart: Oath & Action",
     "card_inner": {
       "label": "named",
       "ranks": "across"
-    }
+    },
+    "card_note": "Each dot is a state, from the highest rate at the left to the lowest."
   },
   "formats": {
     "value": "integer",
