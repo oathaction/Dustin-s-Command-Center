@@ -144,7 +144,7 @@ November 13, 2026, from 04:36 UTC (clock read from `date -u`). Brief: `work/hand
 
 ### Summary
 
-Every maker B item in the fix brief and its addendum is done but S73's title, which the editor writes from the build on all seven committees (BC-M1), and B-S4's measure line, which I applied from the editor's words. S73 now draws every joint fundraising committee the FEC designates that paid either nominee's campaign (three for Harris, four for Trump), one sender bar a nominee, receivers folded by kind, bars solid and links light with a party-ink edge; its table names each fund in every row. S76 draws the research lead's per-candidate transfers with its out line. S77's limits read first; S74 marks its diagonal and carries the forced-colors second edge; S65 names the states and the procedural reason in the rules' words; sketch 14.94 holds its inset. All six specs PASS with the sweep (six check files, 0 faults, 0 warnings); `--figures` and `--check` 0 faults; the chapter build 0 faults; my strict build exits 0 with 0 warnings. The quick guide check is running (see Tested).
+Every maker B item in the fix brief and its addendum is done but S73's title, which the editor writes from the build on all seven committees (BC-M1), and B-S4's measure line, which I applied from the editor's words. S73 now draws every joint fundraising committee the FEC designates that paid either nominee's campaign (three for Harris, four for Trump), one sender bar a nominee, receivers folded by kind, bars solid and links light with a party-ink edge; its table names each fund in every row. S76 draws the research lead's per-candidate transfers with its out line. S77's limits read first; S74 marks its diagonal and carries the forced-colors second edge; S65 names the states and the procedural reason in the rules' words; sketch 14.94 holds its inset. All six specs PASS with the sweep (six check files, 0 faults, 0 warnings); `--figures` and `--check` 0 faults; the chapter build 0 faults; my strict build exits 0 with 0 warnings. The quick guide check on that build ran to its end: FAIL with 2 failures, both the cartographer's entry 14.117 (“the studio’s tile grid”, a studio word), none on my plates, sketch or entries.
 
 ### Items, by code
 
@@ -194,11 +194,14 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 
 ### Requests, review fix pass
 
+- **To the main session, for the cartographer:** the quick guide check fails entry 14.117's “the studio’s tile grid” as a studio word in reader text (`#rule-14-117`, at 1440 and 390 px).
+
 - **To the editor:** S73's title from the build on all seven committees (BC-M1). My draft, for you to replace: “Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees in the 2024 cycle, and Donald J. Trump’s four sent $679.8 million to 56.” (28 words; `--figures` reads its sums and counts, and fails a title that sets 53 against two). Then the second pass on every word I changed (list under “Items, by code”).
 - **To the research lead:** the data check over the two derived files my script rewrote: `fec-jfc-transfers-2024-by-node` (now from `fec-jfc-transfers-2024-all-committees`, 125 rows, four added columns) and `govinfo-snap-application-path` (its sidecar gains the `date_in_grade_line` source variant, D3-1327). `--check` 0 faults.
 - **To the data lead:** sign-off of S73 (B-S1, BC-M1, BC-S2), S74 (BC-S14's line, chosen over the frame, which failed the guard at 256 px; AX-S1), S76 (ST-S2, BC-S2), S77 (B-S3, BC-S13), S65 (BC-S9, ST-S11) and sketch 14.94 (SK-S1).
 
 - **RB3F-G1, to the engineer: `width_key` with `band` and more than one step fails the key check (04:43 UTC).** With `band: 'light-fill', edge: 'party'`, S73's key of three widths ($10, $50 and $100 million) fails 42 times at every width and on both grounds: "key: light-fill and light-fill differ by 0.0 in lightness, under 10, with no pattern or direct label". The band branch registers each step with `c.key({fill, outline})`, which the key check reads as categories; the stroke branch passes `pattern: true`. Please register a band key's steps so the check reads them as widths of one ink (as the stroke branch does), so S73's key can draw its bands as its links draw (BC-S2). Until then S73's key stays on strokes in the party-mark ink, and S73 passes; S76's key of one step draws `band: 'light-fill'` and passes.
+  Landed (relayed by the main session); S73's key draws as bands and passes. The research lead's data check over both rewritten derived files landed too: 0 faults.
 
 ### Tested, review fix pass
 
@@ -214,10 +217,11 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 - The research lead's data check over both derived files I rewrote: 0 faults (relayed by the main session).
 - After my own look at S76 at 256 px on Charcoal, its two transfer lines take “Transfers in, net” and “Transfers out, net” under 480 px; S76 rebuilt the same way at 05:09 UTC, after the container restart: PASS, 0 faults, 0 warnings, its check file read; looked at at 256 px Newsprint. `--figures` and `--check` rerun: 0 faults each.
 - The first quick guide check (from 05:01 UTC) was cut off by the container's restart and is not counted. A fresh `phase3_ch14_build.py` (0 faults) and strict build (`<scratch>/guide2/guide.html`, exit 0, 0 warnings, 11,256,325 bytes, my plates unchanged in bytes) at 05:09 UTC; the quick guide check on it with `--no-captures` started 05:09 UTC.
+- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide2/guide.html --quick --no-captures`, run to its end (05:09 to 05:36 UTC), whole output read: FAIL, 2 failures, 2 widths, 344 rules, 694 specimens, 3,295 same-page links. Both failures are one finding at 1440 and 390 px: “the studio”, a studio word, in `#rule-14-117` (“the studio’s tile grid”), the cartographer's entry. Its results file names none of my six plates, sketch 14.94 or my twelve entries.
 
 ### Not tested, review fix pass
 
-- The quick guide check: see Tested for the run on `guide2`; the first run was lost to the container's restart.
+- A second quick guide check after S76's phone words: the run on `guide2` came after them, so none was needed; the first run, on `guide`, was lost to the container's restart.
 - S73, S76, S77 and S65 in the guide page at any width; plates read from the kit's pages only.
 - Forced colors beyond Chromium's emulation for S74; S73's and S77's drawings in forced colors; print and 200 percent text beyond the kit's checks; no screen reader or real device.
 - S75 looked at after its no-break spaces (its drawing did not change; built PASS).
