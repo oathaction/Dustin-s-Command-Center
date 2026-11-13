@@ -7,8 +7,16 @@
   "dataset": "census-cog-2022-governments-by-type",
   "sort": [
     {
-      "field": "order",
-      "order": "asc"
+      "field": "level",
+      "values": [
+        "federal",
+        "state",
+        "local"
+      ]
+    },
+    {
+      "field": "governments",
+      "order": "desc"
     }
   ],
   "reader_question": "How many governments of each kind does the country have?",
@@ -21,7 +29,7 @@
     "The Census Bureau counts a school system run by a state, county, city or township as part of that government, so the 12,546 independent school districts leave those systems out."
   ],
   "chart_notes": [
-    "The circle the title names, special districts, takes the text’s ink, with its count inside; the others are gray with a thin edge, named beside. The federal government and the 50 states print in words, since at this scale the federal government’s circle would be under a pixel across and the states’ a few pixels."
+    "The circles run largest first. The circle the title names, special districts, takes the text’s ink, with its count inside; the others are gray with a thin edge, named beside. The federal government and the 50 states print in words beside the key, since at this scale the federal government’s circle would be under a pixel across and the states’ a few pixels."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -75,11 +83,11 @@
     ],
     "words": "Not drawn: {list}, too few to draw at this scale.",
     "key_steps": [
-      40000,
+      1000,
       10000,
-      1000
+      40000
     ],
-    "key_title": "Circle area shows the count",
+    "key_title": "Governments",
     "word": "{v} {name}"
   },
   "formats": {
@@ -91,7 +99,7 @@
   "states": [],
   "notes_internal": [
     "Maker A, round 4. Data plan row 116, rule 14.80. Domain D04 (V7 I165). Source line: the sidecar's printed line.",
-    "Data lead rulings (a) subject ink on special districts, the title's named kind, no red (an area, round 3 principle 3); (b) five circles at true area on one scale, the others in the track ink with a 1 px context-ink edge (RF-1, MA-4), a key of three nested circles at 1,000, 10,000 and 40,000 in the context ink (MA-5), the federal government and the states in words over the circles with a hairline under them; (c) the grade line. MA-6: 'were' for a 2022 count.",
+    "Data lead rulings (a) subject ink on special districts, the title's named kind, no red (an area, round 3 principle 3); (b) five circles at true area on one scale, the others in the track ink with a 1 px context-ink edge (RF-1, MA-4), a size key at 1,000, 10,000 and 40,000 (MA-5), set in S16's grammar, and the federal government and the states in words in the key's band, with no hairline (the design director's DD-A5 and DD-A6, the data lead's yes at 21:25 UTC); circles largest first (DD-A4); (c) the grade line. MA-6: 'were' for a 2022 count.",
     "Checks by script (maker_a_round4_derive.py --figures, check S86): 39,555 the largest local kind, 43.5 percent of the 90,837 local governments and no majority; 90,888 the U.S. total with the federal government and 50 states; every count in the alt equals the file; the county circle at least 12 px across at 256 px."
   ]
 }

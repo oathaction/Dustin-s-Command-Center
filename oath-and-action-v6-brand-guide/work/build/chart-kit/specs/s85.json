@@ -81,5 +81,11 @@
     "Data lead rulings (a) subject ink on the 10 members, no red (an area form, RF-1); (b) one 10 by 10 grid of plain unit marks at every width, the 90 others open with a 1 px context-ink edge and no fill (RF-2), the key in the file's words, CL-050 once at 48 px in the icon ink, outside the grid; (c) the grade line. Q-A1: CL-050 prints 'Worker bargaining power' with the chip 'Variable A2' (Rule 10.6, an atlas symbol).",
     "Checks by script (maker_a_round4_derive.py --figures, check S85): 10.0 percent rounds to 10 of 100; 1983 20.1, private 5.9, public 32.9 and 14.7 million as in note 1; CL-050's label and chip equal the editor's label table (work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json) and chapter 10's list of 41."
   ],
-  "source_line": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To? The 2025 average covers 11 months, since the October 2025 survey was not collected."
+  "source_line": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To? The 2025 average covers 11 months, since the October 2025 survey was not collected.",
+  "typography": {
+    "nbsp": true,
+    "hold": [
+      "October 15, 2026"
+    ]
+  }
 }

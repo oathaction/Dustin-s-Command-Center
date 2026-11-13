@@ -14,6 +14,8 @@ The six drafts are sound in their bones: each answers its reader question, the i
 
 Beside chapter 14's earlier forms: S89 shares S66's box grammar exactly (number badge, title, actor in the secondary ink, the limit in the text ink, a branch in a gray edge with its eyebrow), and its own lesson is the lanes, so the lanes must read as a calm, even structure. S86's nested key and S16's side-by-side key are two grammars for one job in one chapter; one should go. S85, S87 and S88 teach forms the chapter has not drawn before and need no change to sit beside S47.
 
+The four cards set their words as live text, as call 8 asks, and read cleanly on a phone. At a desk they lose the exactness the drawn plates have: S91's cards hold the same fields at different heights, so the comparison the form exists for takes a hunt; S90's facts float their source lines at three heights inside boxes stretched to the row; S94's consequence lines wrap back under their chips. Those are the three Musts. The Shoulds bring the cards into the chapter's family: S90 separated by hairlines as S60 is, S92's eyebrow and actor in the secondary ink as S66, S77 and S89 set them, S94's list marked with its own year's squares rather than heavy chips.
+
 ## Requests to maker A
 
 **S85, icon array**
