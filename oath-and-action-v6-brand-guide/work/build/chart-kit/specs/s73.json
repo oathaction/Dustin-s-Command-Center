@@ -1,0 +1,117 @@
+{
+ "kit": 1,
+ "id": "S73",
+ "form": "network-diagram",
+ "family": "relationships",
+ "tier": "extended",
+ "dataset": "fec-jfc-transfers-2024",
+ "reader_question": "Where did each 2024 presidential nominee’s joint fundraising committee send what it raised?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: disbursements the committees reported to the Federal Election Commission",
+ "title": "Kamala D. Harris’s main joint fundraising committee sent $899.5 million to 55 committees in the 2024 cycle, and Donald J. Trump’s sent $273.8 million to two.",
+ "measure_line": "Dollars each nominee’s joint fundraising committee paid to other committees, 2023 to 2024 election cycle; a link’s width is its dollars, on one scale for both",
+ "notes": [
+  "Each nominee had more than one joint fundraising committee. Each drawn here is the one that sent the most to its nominee’s campaign, read the same way for both.",
+  "A joint fundraising committee raises money for several committees at once and splits it among them by agreement."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Two committees, each a node with links running to the committees it paid. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee, $181.4 million to 51 state party committees and $81,000 to two other committees. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
+ "table": {
+  "caption": "Payments by each nominee’s joint fundraising committee to other committees, 2023 to 2024 cycle",
+  "columns": [
+   {
+    "field": "jfc_name",
+    "label": "From",
+    "format": "text"
+   },
+   {
+    "field": "recipient_name",
+    "label": "To",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "recipient_state",
+    "label": "State",
+    "format": "text"
+   },
+   {
+    "field": "amount",
+    "label": "Dollars",
+    "format": "dollars"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D03",
+ "states": [],
+ "encode": {
+  "source": "jfc_name",
+  "target": "recipient_name",
+  "value": "amount",
+  "target_key": "recipient_id",
+  "kind": "recipient_type"
+ },
+ "labels": {
+  "nodes": [
+   {
+    "keys": [
+     "C00703975"
+    ],
+    "name": "Harris for President"
+   },
+   {
+    "keys": [
+     "C00010603"
+    ],
+    "name": "Democratic National Committee"
+   },
+   {
+    "source": "HARRIS VICTORY FUND",
+    "kind": [
+     "Party - Qualified"
+    ],
+    "name": "{n} state party committees"
+   },
+   {
+    "source": "HARRIS VICTORY FUND",
+    "rest": true,
+    "name": "{n} other committees"
+   },
+   {
+    "keys": [
+     "C00828541"
+    ],
+    "name": "Donald J. Trump for President 2024"
+   },
+   {
+    "keys": [
+     "C00003418"
+    ],
+    "name": "Republican National Committee"
+   }
+  ],
+  "sources": {
+   "HARRIS VICTORY FUND": "Harris Victory Fund",
+   "TRUMP NATIONAL COMMITTEE JFC, INC.": "Trump National Committee JFC"
+  },
+  "sub": {
+   "HARRIS VICTORY FUND": "For Kamala D. Harris, {total}",
+   "TRUMP NATIONAL COMMITTEE JFC, INC.": "For Donald J. Trump, {total}"
+  },
+  "value": "${v}",
+  "unit": 4000000,
+  "key_value": 100000000,
+  "key": "A link this wide carries ${v}",
+  "named": []
+ },
+ "formats": {
+  "value": "millions:1"
+ },
+ "notes_internal": [
+  "Maker B, round 3. Data plan row 94 with change 8, rule 14.104. Draft words, before the data lead's rulings."
+ ]
+}

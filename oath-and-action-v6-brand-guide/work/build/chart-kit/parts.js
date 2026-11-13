@@ -447,6 +447,8 @@
           if (taken.some(function (t) { return overlaps(b, t, pad); }) || c.texts.some(function (t) { return overlaps(b, t, pad); })) continue;
           if (dots.some(function (t, j) { return j !== n && t.w > 0 && overlaps(b, t, 1); })) continue;
           if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, b); })) continue;
+          // R3-5: nor on a link between nodes
+          if (c.ink.some(function (s) { return s.link && K.stroke_crosses(s, b); })) continue;
           if (o.clear_paths && on_path(b)) continue;
           if (ring) {
             var L = leader_of(it, b);
@@ -481,5 +483,285 @@
     var out = order.map(function (k) { return by[k]; });
     out.series = ser;
     return out;
+  };
+
+  // ---- Round 3 (contract R3-5): nodes, links, trees and flows ------------------------------------------------------
+  // The words a node's text sits on take the ink that reads on its fill (palette rule R3): words on the subject ink take
+  // label-on-subject, on group 1 to 3 on-cat-1 to on-cat-3; on the ground, the light fill, a band or a track, the label ink.
+  var ON_FILL = { subject: 'label-on-subject', 'cat-1': 'on-cat-1', 'cat-2': 'on-cat-2', 'cat-3': 'on-cat-3' };
+  // the lines a node's words break into inside an inner width aw, trying each role in turn (fit_label's model): the first
+  // role whose lines fit within maxl lines and ah px, or null
+  var node_fit = function (c, words, aw, ah, o) {
+    var roles = o.roles || ['label', 'tick'], wgt = o.weight || (o.named ? 700 : 600), maxl = o.lines || 3;
+    var ss = c.size('tick'), slh = Math.round(ss * 1.25), sgap = 3;
+    var sub = o.sub === undefined || o.sub === null || o.sub === '' ? null : K.wrap(o.sub, ss, aw, 400, 'reading'), sw = 0;
+    if (sub) sub.forEach(function (ln) { sw = Math.max(sw, c.measure(ln, ss, 400)); });
+    if (sub && (sub.length > (o.sub_lines || 2) || sw > aw)) return null;
+    var sh = sub ? sgap + ss + (sub.length - 1) * slh : 0;
+    for (var i = 0; i < roles.length; i++) {
+      var role = roles[i], size = c.size(role), lh = Math.round(size * 1.25);
+      var lines = K.wrap(words, size, aw, wgt, 'reading'), wide = 0;
+      lines.forEach(function (ln) { wide = Math.max(wide, c.measure(ln, size, wgt)); });
+      var th = size + (lines.length - 1) * lh;
+      if (lines.length > maxl || wide > aw + 0.01 || (ah !== null && th + sh > ah)) continue;
+      return { role: role, size: size, lh: lh, lines: lines, wide: Math.max(wide, sw), th: th, sh: sh, sub: sub, slh: slh, sgap: sgap, wgt: wgt, ss: ss };
+    }
+    return null;
+  };
+  var node_pad = function (o) { var p = o.pad === undefined ? [10, 7] : [].concat(o.pad); return { x: p[0], y: p.length > 1 ? p[1] : p[0] }; };
+  // node_size(c, words, o): the smallest box a node needs for its words at most o.max px wide (default 200), at least
+  // o.min px (default 0), on up to o.lines lines (default 3), o.pad [x, y] inside (default [10, 7]), with o.sub under the
+  // words; o.roles and o.weight as node(). Returns {w, h} for a layout, or null where the words cannot fit o.max.
+  P.node_size = function (c, words, o) {
+    o = o || {};
+    var pd = node_pad(o), max = o.max === undefined ? 200 : o.max, f = node_fit(c, words, max - 2 * pd.x, null, o);
+    if (!f) return null;
+    return { w: Math.ceil(Math.max(o.min || 0, f.wide + 2 * pd.x)), h: Math.ceil(f.th + f.sh + 2 * pd.y + (f.size * 0.241)), lines: f.lines.length, role: f.role };
+  };
+  // node(c, box, words, o): a node box {x, y, w, h} with its words inside, or nothing. o.fill the box's fill (default
+  // 'surface') and o.stroke its 1 px edge (default 'context', so a box on the ground reads at 3 to 1; false for none; a
+  // subject-ink box needs none); o.width the edge's width; o.dash; o.named sets the words in 700 (else 600, or o.weight);
+  // o.roles (default ['label', 'tick']), o.lines (default 3), o.pad ([x, y], default [10, 7]), o.align ('middle', default, or
+  // 'start'), o.sub (a second block in the tick size, weight 400, on up to o.sub_lines lines, default 2); o.text the text
+  // role over the fill (default from the fill: label-on-subject on the subject ink, on-cat-1 to 3 on a group's fill);
+  // o.data, o.job, o.fc pass to the box. Where the words do not fit, it draws nothing and returns null, so the form gives
+  // the box more room, shortens the words or sets them beside it. Returns {x, y, w, h, cx, cy, text, sub}.
+  P.node = function (c, box, words, o) {
+    o = o || {};
+    var pd = node_pad(o), aw = box.w - 2 * pd.x, ah = box.h - 2 * pd.y + 0.5;
+    if (aw <= 0) return null;
+    var f = node_fit(c, words, aw, ah, o);
+    if (!f) return null;
+    var fill = o.fill || 'surface', ink = o.text || ON_FILL[fill];
+    var st = o.stroke === undefined ? (fill === 'subject' || fill === 'point' ? null : 'context') : o.stroke;
+    c.rect(box.x, box.y, box.w, box.h, Object.assign({ fill: fill, data: o.data, job: o.job, fc: o.fc, kind: o.kind || 'node', mark: o.mark }, o.pattern ? { pattern: o.pattern, fill: undefined } : {}));
+    if (st) c.rect(box.x + 0.5, box.y + 0.5, box.w - 1, box.h - 1, { stroke: st, width: o.width || c.t('line-hairline'), dash: o.dash, mark: false });
+    var mid = o.align !== 'start', x = mid ? box.x + box.w / 2 : box.x + pd.x;
+    var bh = f.th + f.sh, y = box.y + (mid ? (box.h - bh) / 2 : pd.y) + 0.864 * f.size;
+    var tb = c.text(x, y, String(words), { role: f.role, weight: f.wgt, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: f.lh, fill: ink });
+    var sb = null;
+    if (f.sub) sb = c.text(x, y + 0.136 * f.size + (f.lines.length - 1) * f.lh + f.sgap + 0.864 * f.ss, String(o.sub), { role: 'tick', weight: 400, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: f.slh, fill: ink });
+    return { x: box.x, y: box.y, w: box.w, h: box.h, cx: box.x + box.w / 2, cy: box.y + box.h / 2, text: tb, sub: sb };
+  };
+  // the point where the segment from a box's center toward (tx, ty) leaves the box (a point box returns itself)
+  var edge_toward = function (b, tx, ty) {
+    var cx = b.x + (b.w || 0) / 2, cy = b.y + (b.h || 0) / 2, dx = tx - cx, dy = ty - cy;
+    if (!b.w && !b.h) return [cx, cy];
+    var sx = dx ? (b.w / 2) / Math.abs(dx) : Infinity, sy = dy ? (b.h / 2) / Math.abs(dy) : Infinity, s = Math.min(sx, sy);
+    return isFinite(s) ? [cx + dx * s, cy + dy * s] : [cx, cy];
+  };
+  var center = function (b) { return [b.x + (b.w || 0) / 2, b.y + (b.h || 0) / 2]; };
+  // link(c, a, b, o): a link from node a to node b, each a box {x, y, w, h} (a point is a box with no size), drawn to the
+  // boxes' edges so it never runs under their words. Draw links before the nodes' words. o.shape: 'straight' (default:
+  // center toward center, cut at each edge), 'elbow' (o.dir 'down': from a's bottom to b's top, turning at o.bend, a y,
+  // default halfway; 'right': from a's right side to b's left side, turning at o.bend, an x) or 'arc' (a's center to b's,
+  // a circular arc bowing to o.side 'above' (default) or 'below', o.sag its height as a share of the chord, default 0.5, a
+  // half circle: the arc diagram). o.arrow: true draws a head at b where direction matters, its tip on b's edge, in the
+  // link's ink (o.head [length, half width], default the arrow tokens); o.arrow 'both' at both ends. o.stroke (default
+  // 'context'), o.width (default the baseline, 1.5 px), o.dash; o.data {key, from, to, value} makes it a mark the checks
+  // read (a weighted link); o.job. The layout guard fails a link through a word (R3-5). Returns {pts, from, to}.
+  P.link = function (c, a, b, o) {
+    o = o || {};
+    var shape = o.shape || 'straight', pts, curve = null, R = K.round;
+    var ac = center(a), bc = center(b);
+    if (shape === 'elbow') {
+      if (o.dir === 'right') {
+        var x0 = a.x + (a.w || 0), x1 = b.x, xm = o.bend === undefined ? (x0 + x1) / 2 : o.bend;
+        pts = [[x0, ac[1]], [xm, ac[1]], [xm, bc[1]], [x1, bc[1]]];
+      } else {
+        var y0 = a.y + (a.h || 0), y1 = b.y, ym = o.bend === undefined ? (y0 + y1) / 2 : o.bend;
+        pts = [[ac[0], y0], [ac[0], ym], [bc[0], ym], [bc[0], y1]];
+      }
+      // a run with no turn (a child straight under its parent) is one segment
+      pts = pts.filter(function (p, i) { return i === 0 || i === pts.length - 1 || Math.abs(p[0] - pts[i - 1][0]) > 0.01 || Math.abs(p[1] - pts[i - 1][1]) > 0.01; });
+    } else if (shape === 'arc') {
+      var p0 = (a.w || a.h) ? edge_toward(a, bc[0], bc[1]) : ac, p1 = (b.w || b.h) ? edge_toward(b, ac[0], ac[1]) : bc;
+      var dx = p1[0] - p0[0], dy = p1[1] - p0[1], L = Math.sqrt(dx * dx + dy * dy) || 1, h = (o.sag === undefined ? 0.5 : o.sag) * L;
+      var sgn = (o.side === 'below' ? 1 : -1) * (dx >= 0 ? 1 : -1);
+      // the circle through both ends whose arc rises h above the chord's middle
+      var r = (h * h + L * L / 4) / (2 * h), nx = -dy / L * sgn, ny = dx / L * sgn;
+      var mx = (p0[0] + p1[0]) / 2, my = (p0[1] + p1[1]) / 2, ox = mx - nx * (r - h), oy = my - ny * (r - h);
+      var t0 = Math.atan2(p0[1] - oy, p0[0] - ox), t1 = Math.atan2(p1[1] - oy, p1[0] - ox), mid = Math.atan2(my + ny * h - oy, mx + nx * h - ox);
+      // sweep from t0 to t1 through mid
+      var norm = function (t) { while (t < 0) t += 2 * Math.PI; while (t >= 2 * Math.PI) t -= 2 * Math.PI; return t; };
+      var ccw = norm(mid - t0) < norm(t1 - t0), span = ccw ? norm(t1 - t0) : -norm(t0 - t1);
+      var n = Math.max(8, Math.ceil(Math.abs(span) * r / 6));
+      pts = [];
+      for (var i = 0; i <= n; i++) { var t = t0 + span * i / n; pts.push([ox + r * Math.cos(t), oy + r * Math.sin(t)]); }
+      curve = { r: r, large: Math.abs(span) > Math.PI ? 1 : 0, sweep: span > 0 ? 1 : 0 };
+    } else {
+      pts = [edge_toward(a, bc[0], bc[1]), edge_toward(b, ac[0], ac[1])];
+    }
+    var stroke = o.stroke || 'context', width = o.width || c.t('line-baseline');
+    var hl = (o.head && o.head[0]) || c.t('arrow-head-length'), hw = (o.head && o.head[1]) || c.t('arrow-head-half-width');
+    var heads = o.arrow === 'both' ? ['end', 'start'] : o.arrow ? ['end'] : [];
+    var tips = [];
+    // a head's tip sits on the end; the line stops at its base
+    heads.forEach(function (at) {
+      var e = at === 'end' ? pts.length - 1 : 0, prev = at === 'end' ? pts.length - 2 : 1;
+      var tip = pts[e], q = pts[prev], dx = tip[0] - q[0], dy = tip[1] - q[1], L = Math.sqrt(dx * dx + dy * dy) || 1;
+      var ux = dx / L, uy = dy / L, base = [tip[0] - ux * hl, tip[1] - uy * hl];
+      tips.push([[tip[0], tip[1]], [base[0] - uy * hw, base[1] + ux * hw], [base[0] + uy * hw, base[1] - ux * hw]]);
+      pts[e] = [tip[0] - ux * (hl - 0.5), tip[1] - uy * (hl - 0.5)];
+    });
+    var d = 'M' + pts.map(function (p) { return R(p[0]) + ',' + R(p[1]); }).join('L');
+    if (curve) d = 'M' + R(pts[0][0]) + ',' + R(pts[0][1]) + 'A' + R(curve.r) + ',' + R(curve.r) + ' 0 ' + curve.large + ' ' + curve.sweep + ' ' + R(pts[pts.length - 1][0]) + ',' + R(pts[pts.length - 1][1]);
+    var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
+    var bx = [Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys)];
+    c.path(d, { fill: 'none', stroke: stroke, width: width, dash: o.dash, link: true, pts: [pts], data: o.data, job: o.job, kind: 'link', mark: o.data ? undefined : false }, o.data ? bx : undefined);
+    tips.forEach(function (tp) { c.polygon(tp, { fill: stroke, mark: false, job: o.job }); });
+    return { pts: pts, from: pts[0], to: pts[pts.length - 1] };
+  };
+  // tree(items, o): a tidy tree layout; draws nothing. items [{id, parent, w, h}] in reading order (a parent before its
+  // children, siblings in the order they read); a node with no parent, or one the list lacks, is a root (several roots sit
+  // side by side; an unknown parent is listed in .faults). o.dir 'down' (default: the root on top, an org chart), 'right'
+  // (the root on the left, a hierarchy read across) or 'indent' (one node a row, each indented o.indent px, default 20,
+  // under its parent: the phone arrangement). o.gap px between siblings (default 16), o.level px between levels (default
+  // 32). Returns {nodes: [{id, x, y, w, h, cx, cy, depth, parent, children, bend, item}], by: {id: node}, order: [ids in
+  // reading order, depth first], links: [{from, to, bend}], width, height, faults}; .bend is the y (down) or x (right) where
+  // the elbow into that node turns, halfway across the gap above it. Positions start at 0, 0; the form offsets them.
+  P.tree = function (items, o) {
+    o = o || {};
+    var dir = o.dir || 'down', gap = o.gap === undefined ? 16 : o.gap, level = o.level === undefined ? 32 : o.level;
+    var by = {}, roots = [], faults = [];
+    items.forEach(function (it) { by[String(it.id)] = { id: String(it.id), w: +it.w || 0, h: +it.h || 0, item: it, children: [], parent: null }; });
+    items.forEach(function (it) {
+      var n = by[String(it.id)], p = it.parent === undefined || it.parent === null || it.parent === '' ? null : String(it.parent);
+      if (p !== null && by[p] && p !== n.id) { n.parent = p; by[p].children.push(n); }
+      else { if (p !== null) faults.push('tree: ' + n.id + ' names a parent, ' + p + ', the list lacks'); roots.push(n); }
+    });
+    var order = [], seenv = {};
+    var walk = function (n, d) { if (seenv[n.id]) { faults.push('tree: ' + n.id + ' is reached twice (a loop)'); return; } seenv[n.id] = 1; n.depth = d; order.push(n.id); n.children.forEach(function (k) { walk(k, d + 1); }); };
+    roots.forEach(function (r) { walk(r, 0); });
+    var nodes = order.map(function (id) { return by[id]; });
+    if (dir === 'indent') {
+      var ind = o.indent === undefined ? 20 : o.indent, y = 0, wmax = 0;
+      nodes.forEach(function (n, i) { n.x = n.depth * ind; n.y = y; n.bend = n.x - ind / 2; y += n.h + (i < nodes.length - 1 ? (o.row_gap === undefined ? 8 : o.row_gap) : 0); wmax = Math.max(wmax, n.x + n.w); });
+      nodes.forEach(function (n) { n.cx = n.x + n.w / 2; n.cy = n.y + n.h / 2; });
+      return { nodes: nodes, by: by, order: order, links: nodes.filter(function (n) { return n.parent; }).map(function (n) { return { from: n.parent, to: n.id, bend: n.bend }; }), width: wmax, height: y, faults: faults };
+    }
+    // breadth: across siblings (x when down, y when right); depth: along the levels
+    var down = dir !== 'right', br = function (n) { return down ? n.w : n.h; }, dp = function (n) { return down ? n.h : n.w; };
+    // each subtree's contour, per depth below its root: the least and greatest breadth, relative to the root's middle
+    var lay = function (n) {
+      if (!n.children.length) return { l: [-br(n) / 2], r: [br(n) / 2] };
+      var acc = null, offs = [];
+      n.children.forEach(function (k) {
+        var ct = lay(k), sh = 0;
+        if (acc) {
+          sh = -Infinity;
+          for (var d2 = 0; d2 < Math.min(acc.r.length, ct.l.length); d2++) sh = Math.max(sh, acc.r[d2] - ct.l[d2] + gap);
+          for (var d3 = 0; d3 < ct.l.length; d3++) {
+            if (d3 < acc.l.length) acc.r[d3] = ct.r[d3] + sh; else { acc.l.push(ct.l[d3] + sh); acc.r.push(ct.r[d3] + sh); }
+          }
+        } else acc = { l: ct.l.slice(), r: ct.r.slice() };
+        offs.push(sh);
+      });
+      var mid = (offs[0] + offs[offs.length - 1]) / 2;
+      n.children.forEach(function (k, i) { k.rel = offs[i] - mid; });
+      return { l: [-br(n) / 2].concat(acc.l.map(function (v) { return v - mid; })), r: [br(n) / 2].concat(acc.r.map(function (v) { return v - mid; })) };
+    };
+    var at = 0, lo = Infinity, hi = -Infinity, prevr = null;
+    roots.forEach(function (rt) {
+      var ct = lay(rt), sh = 0;
+      if (prevr) { sh = -Infinity; for (var d2 = 0; d2 < Math.min(prevr.length, ct.l.length); d2++) sh = Math.max(sh, prevr[d2] - ct.l[d2] + gap); }
+      rt.rel = sh;
+      var nr = prevr ? prevr.slice() : [];
+      ct.r.forEach(function (v, d2) { nr[d2] = v + sh; });
+      prevr = nr;
+    });
+    var place = function (n, base) { n.mid = base + n.rel; n.children.forEach(function (k) { place(k, n.mid); }); };
+    roots.forEach(function (rt) { place(rt, at); });
+    // each level as deep as its deepest node; nodes centered in it
+    var depth_size = [];
+    nodes.forEach(function (n) { depth_size[n.depth] = Math.max(depth_size[n.depth] || 0, dp(n)); lo = Math.min(lo, n.mid - br(n) / 2); hi = Math.max(hi, n.mid + br(n) / 2); });
+    var start = [0];
+    for (var d4 = 1; d4 < depth_size.length; d4++) start[d4] = start[d4 - 1] + depth_size[d4 - 1] + level;
+    nodes.forEach(function (n) {
+      var b0 = n.mid - br(n) / 2 - lo, d0 = start[n.depth] + (depth_size[n.depth] - dp(n)) / 2;
+      if (down) { n.x = b0; n.y = d0; } else { n.x = d0; n.y = b0; }
+      n.cx = n.x + n.w / 2; n.cy = n.y + n.h / 2;
+      n.bend = n.depth ? start[n.depth] - level / 2 : null;
+      delete n.mid; delete n.rel;
+    });
+    var deep = depth_size.length ? start[depth_size.length - 1] + depth_size[depth_size.length - 1] : 0;
+    return { nodes: nodes, by: by, order: order, links: nodes.filter(function (n) { return n.parent; }).map(function (n) { return { from: n.parent, to: n.id, bend: n.bend }; }),
+      width: down ? hi - lo : deep, height: down ? deep : hi - lo, faults: faults };
+  };
+  // flows(links, o): one unit for every band and line width; draws nothing. links [{from, to, value, key}]. o.max_px the
+  // width, in px, of the node with the most through it (default 120), or o.unit px per unit of value; o.gap px between
+  // bands at a node (default 0); o.open: nodes allowed to take in more or less than they send (an account with cash at
+  // hand counts its opening and closing balance as links, so it balances). Returns {unit, px(v), nodes: {id: {in, out,
+  // through, size, ins: [links], outs: [links]}}, links: [{from, to, value, key, w, out_at, in_at}], faults}: each link's w
+  // in px; out_at its offset from the top of its source's outgoing stack, in_at from the top of its target's incoming
+  // stack, in the links' order. A node with links both in and out whose two sums differ (past a millionth of the larger)
+  // and is not in o.open is a fault: the Sankey's widths must sum at each node.
+  P.flows = function (links, o) {
+    o = o || {};
+    var nodes = {}, gap = o.gap || 0, faults = [];
+    var nd = function (id) { id = String(id); return nodes[id] || (nodes[id] = { id: id, in: 0, out: 0, ins: [], outs: [] }); };
+    var ls = links.map(function (l) {
+      var v = +l.value, out = { from: String(l.from), to: String(l.to), value: v, key: l.key === undefined ? String(l.from) + '>' + String(l.to) : l.key, row: l };
+      if (!(v >= 0)) faults.push('flows: the link ' + out.key + ' has no value of zero or more');
+      nd(out.from).out += v > 0 ? v : 0; nd(out.from).outs.push(out);
+      nd(out.to).in += v > 0 ? v : 0; nd(out.to).ins.push(out);
+      return out;
+    });
+    var most = 0;
+    Object.keys(nodes).forEach(function (k) { var n = nodes[k]; n.through = Math.max(n.in, n.out); most = Math.max(most, n.through); });
+    var unit = o.unit || (most > 0 ? (o.max_px || 120) / most : 1);
+    var px = function (v) { return v * unit; };
+    var open = (o.open || []).map(String);
+    Object.keys(nodes).forEach(function (k) {
+      var n = nodes[k], pos = 0;
+      n.outs.forEach(function (l) { l.w = px(l.value); l.out_at = pos; pos += l.w + gap; });
+      pos = 0;
+      n.ins.forEach(function (l) { l.in_at = pos; pos += px(l.value) + gap; });
+      n.size = px(n.through) + gap * Math.max(0, Math.max(n.ins.length, n.outs.length) - 1);
+      if (n.ins.length && n.outs.length && open.indexOf(k) < 0 && Math.abs(n.in - n.out) > 1e-6 * Math.max(n.in, n.out))
+        faults.push('flows: ' + k + ' takes in ' + n.in + ' and sends ' + n.out + '; the bands must sum at each node (list it in o.open only where the record shows a balance)');
+    });
+    return { unit: unit, px: px, nodes: nodes, links: ls, faults: faults };
+  };
+  // flow_band(c, x0, y0, x1, y1, w, o): a Sankey band of one width w px from a source edge at x0 (its top at y0) to a target
+  // edge at x1 (its top at y1), curving across the gap. o.fill (default 'band'), o.pattern; o.edge its two edges as 1 px
+  // lines (default 'context', as K.parts.band, so a light band reads at 3 to 1; false for none); o.data {key, from, to,
+  // value} for the checks; o.job. A band is recorded for the band check. Returns {top: [[x, y]...], bottom}.
+  P.flow_band = function (c, x0, y0, x1, y1, w, o) {
+    o = o || {};
+    var R = K.round, xm = (x0 + x1) / 2, n = 16, top = [], bot = [];
+    var bez = function (t, a, b) { var u = 1 - t; return [u * u * u * x0 + 3 * u * u * t * xm + 3 * u * t * t * xm + t * t * t * x1, u * u * u * a + 3 * u * u * t * a + 3 * u * t * t * b + t * t * t * b]; };
+    for (var i = 0; i <= n; i++) { top.push(bez(i / n, y0, y1)); bot.push(bez(i / n, y0 + w, y1 + w)); }
+    var edge = o.edge === undefined || o.edge === true ? (o.pattern ? null : 'context') : o.edge || null;
+    var d = 'M' + R(x0) + ',' + R(y0) + 'C' + R(xm) + ',' + R(y0) + ' ' + R(xm) + ',' + R(y1) + ' ' + R(x1) + ',' + R(y1) +
+      'L' + R(x1) + ',' + R(y1 + w) + 'C' + R(xm) + ',' + R(y1 + w) + ' ' + R(xm) + ',' + R(y0 + w) + ' ' + R(x0) + ',' + R(y0 + w) + 'Z';
+    var outline = top.concat(bot.slice().reverse());
+    var ys = outline.map(function (p) { return p[1]; });
+    (c.bands = c.bands || []).push({ fill: o.pattern ? null : (o.fill || 'band'), pattern: o.pattern || null, edge: edge, edge_width: edge ? (o.edge_width || c.t('line-hairline')) : 0,
+      line: 0, top: Math.min.apply(null, ys), bottom: Math.max.apply(null, ys), heights: [w], runs: 1, flow: true });
+    c.path(d, { fill: o.pattern ? undefined : (o.fill || 'band'), pattern: o.pattern, pts: [outline], data: o.data, job: o.job, kind: 'flow', mark: o.data ? undefined : false },
+      o.data ? [Math.min(x0, x1), Math.min.apply(null, ys), Math.abs(x1 - x0), Math.max.apply(null, ys) - Math.min.apply(null, ys)] : undefined);
+    if (edge) {
+      var es = { fill: 'none', stroke: edge, width: o.edge_width || c.t('line-hairline'), mark: false };
+      c.path('M' + R(x0) + ',' + R(y0) + 'C' + R(xm) + ',' + R(y0) + ' ' + R(xm) + ',' + R(y1) + ' ' + R(x1) + ',' + R(y1), Object.assign({ pts: [top] }, es));
+      c.path('M' + R(x0) + ',' + R(y0 + w) + 'C' + R(xm) + ',' + R(y0 + w) + ' ' + R(xm) + ',' + R(y1 + w) + ' ' + R(x1) + ',' + R(y1 + w), Object.assign({ pts: [bot] }, es));
+    }
+    return { top: top, bottom: bot };
+  };
+  // width_key(c, x, y, unit, steps, o): a key for line or band widths in one unit: a short stroke at each step's width
+  // with its value beside it (o.fmt a format, default 'integer'; o.words a list of printed words in place of the values;
+  // o.stroke default 'context'; o.len px, default 28; o.title words above it). Returns its height.
+  P.width_key = function (c, x, y, unit, steps, o) {
+    o = o || {};
+    var len = o.len || 28, cy = y, size = c.size('tick');
+    if (o.title) { var tt = c.text(x, cy + size, o.title, { role: 'tick', weight: 600, max: o.max }); cy = tt.bottom + 6; }
+    steps.forEach(function (v, i) {
+      var w = Math.max(0.5, v * unit), mid = cy + Math.max(w, size) / 2;
+      c.line(x, mid, x + len, mid, { stroke: o.stroke || 'context', width: w, mark: false });
+      c.text(x + len + 8, mid + 0.35 * size, (o.words && o.words[i]) || K.fmt(v, o.fmt || 'integer'), { role: 'tick' });
+      cy += Math.max(w, size) + 8;
+    });
+    c.key(steps.map(function () { return { fill: o.stroke || 'context', pattern: true }; }));
+    return cy - y;
   };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

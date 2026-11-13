@@ -44,7 +44,23 @@ What round 2's words pass found most often, so you can write it right the first 
 
 ## Words for the cartographer
 
-(Waiting for S78 to S84, S07, S12, S16, entries 14.113 to 14.124 and sketches 14.113 and 14.124.)
+### First look (00:55): entries 14.114 to 14.116
+
+Read against S07, S12 and S16 as board 1 approved them. The cartographer applies these; a later read follows once the data lead's rulings land, since one of them may set where the national figure on a map is stated.
+
+| File | Field | Old words | New words | Why |
+|---|---|---|---|---|
+| 14-114 | rule.0 | solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key with its count. | solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key. | S07's key gives no count for its first class ("Bans it in all elections, with the year it became law"), and S07 is a board 1 drawing that changes in placement only, so the entry says what its specimen shows |
+| 14-114 | why.text.0 | large and empty states take most of the page | large, thinly settled states take most of the page | "Empty" overstates (W20) and reads as a judgment of the place |
+| 14-115 | rule.0 | Give each state one square holding a flat arrow whose length follows its shift on one scale across the map, | Give each state one square holding an arrow that points the way the measure moved, its length set by the shift on one scale across the map, | "Flat arrow" leaves the reader to guess what flat means; S12's arrows point the way the margin moved |
+| 14-115 | rule.0 | Name the direction in words in the key, as “toward the Republican nominee”, and draw every party in neutral ink (Rule 14.7). | Name the direction in words in the key, as “toward the Republican nominee”, so no color stands for a party (Rule 14.7). | S12 draws no party mark: its arrows carry the direction and the key's words name it |
+| 14-115 | rule.0 | Set the national figure beside the key with its own label and arrow, never as a square, and frame | Set the national figure beside the key, outside the grid of states, with its own label and arrow, and frame | W09: say where it sits, with no "never" turn |
+| 14-116 | rule.0 | and name each one by its code, inside the circle where it fits and beside it, with a leader where needed, where it does not. | and print each state’s code inside its circle, or beside it with a leader where the circle is too small to hold it. | Two "where" clauses in a row; one plain sentence says the same |
+| 14-116 | why.text.0 | A shaded state lets its land speak for it, so a large, empty state outweighs a small, crowded one. | On a map of shaded states, land sets how much of the page each state takes, so a large state with few people outweighs a small, crowded one. | "Lets its land speak for it" is a figure of speech a listener has to decode (W01); "empty", as in 14.114 |
+
+Read and kept: the three titles; 14.114's use_when, use_instead and builders; 14.115's phone paragraph (Rule 14.12) and why; 14.116's use_when, use_instead, builders, and its "Mark the national rate on the step key with its label, apart from the circles on the map".
+
+**For S16's move to the 2024 outlines (R3-4):** its note 4 names the old file, "Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license)." Once S16 draws the 2024 file, that note names the 2024 file in the research lead's sidecar words, with no us-atlas credit, or the note says something untrue. Its other words stay, as the brief asks, unless a check fails.
 
 ## Requests
 

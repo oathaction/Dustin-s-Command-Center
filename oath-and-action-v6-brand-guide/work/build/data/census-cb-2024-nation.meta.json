@@ -1,0 +1,56 @@
+{
+ "file": "census-cb-2024-nation.geojson",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "2024 Cartographic Boundary File (SHP), United States, 1:20,000,000",
+ "table_id": "cb_2024_us_nation_20m",
+ "url": [
+  "https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_nation_20m.zip",
+  "https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html",
+  "https://www.census.gov/programs-surveys/geography/technical-documentation/naming-convention/cartographic-boundary-file.html"
+ ],
+ "observation_period": "2024 vintage",
+ "geography": "The United States clipped to a generalized coastline: the 50 states, DC and Puerto Rico, one MultiPolygon of 82 parts. The metadata includes the island areas \"when scale appropriate\"; at 1:20,000,000 the file holds none",
+ "universe_or_base": "The nation’s outline in the Bureau’s 1:20,000,000 file; boundaries only, no data values",
+ "unit": "decimal degrees of longitude and latitude, NAD83",
+ "date_retrieved": "2026-11-13",
+ "vintage": "2024 Cartographic Boundary Files (GENZ2024), posted April 10, 2025; metadata dated May 2025",
+ "qualification": "Generalized for display at 1:20,000,000 or smaller and clipped to a simplified coastline, so some small areas and offshore parts are left out; not for measuring area or perimeter, geocoding addresses, or settling precise boundaries (the Bureau’s terms). A boundary file carries no data values: a map’s CSV joins on geoid or code. The kit projects and simplifies at build.",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "the Bureau’s GEOID for the nation, \"US\""
+  },
+  "code": {
+   "type": "code",
+   "description": "\"US\", the code contract C1 gives the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "name as the Bureau prints it (NAME)"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Cartographic Boundary Files, 2024, United States outline, 1:20,000,000. Retrieved November 13, 2026.",
+ "ledger_row": "P7-219d",
+ "domain": "all",
+ "states": [],
+ "geometry_type": "Polygon and MultiPolygon",
+ "source_resolution": "1:20,000,000",
+ "raw_file": "cb_2024_us_nation_20m.zip",
+ "raw_file_sha256": "3316da94609c0e72e9194a4052e54e49db05519ebc6738799256701242436213",
+ "feature_count": 1,
+ "coordinates": "NAD83 longitude and latitude as published, unprojected and unsimplified",
+ "terms_of_use": {
+  "file_metadata": "Use Constraints: The intended display scale for this file is 1:20,000,000. This file should not be displayed at scales larger than 1:20,000,000. These products are free to use in a product or publication, however acknowledgement must be given to the U.S. Census Bureau as the source. The boundary information is for visual display at appropriate small scales only. Cartographic boundary files should not be used for geographic analysis including area or perimeter calculation. Files should not be used for geocoding addresses. Files should not be used for determining precise geographic area relationships.",
+  "file_metadata_access": "Access constraints: None",
+  "product_page": "The cartographic boundary files are simplified representations of select geographic areas from the Census Bureau’s Master Address File/Topologically Integrated Geographic Encoding and Referencing (MAF/TIGER) System. These boundary files are specifically designed for small scale thematic mapping. ... For more details about these files, including their appropriate usage, please see our Cartographic Boundary File Description page.",
+  "description_page": "Limitations. These files should not be used for: geographic analysis including area or perimeter calculation. geocoding addresses. determining precise geographic area relationships. Some small geographic areas are excluded from these files. Geographic areas may not align with the same areas from another year.",
+  "read": "Read November 13, 2026: the use and access constraints in the zip’s own ISO metadata (cb_2024_us_nation_20m.shp.iso.xml), quoted word for word; the product page (https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.2024.html) and the description page it names for appropriate usage (https://www.census.gov/programs-surveys/geography/technical-documentation/naming-convention/cartographic-boundary-file.html). Neither page states a license. A work of the U.S. government, with no U.S. copyright (17 U.S.C. 105); the credit the metadata asks for is the printed source line."
+ },
+ "notes": [
+  "Converted by work/build/scripts/phase-3/research_geometry_freeze.py with its own shapefile reader (Python standard library), checked against pyshp 3.1.8 feature by feature, run with python3 -I.",
+  "Coordinates are rounded to six decimals (about 0.1 meter), as R1-C7 allows. Every vertex is kept; no two in a row became equal in rounding.",
+  "Rings follow RFC 7946, section 3.1.6: outer rings counterclockwise, holes clockwise. That is the reverse of the shapefile’s order, so each ring’s vertices run in the reverse of the Bureau’s sequence, with no value changed. d3-geo expects the shapefile’s order and would need each ring reversed; a planar projection fills either way.",
+  "Alaska’s Aleutian Islands west of the 180th meridian carry positive longitudes, as the Bureau publishes them; a projection must place them beside the rest of Alaska."
+ ]
+}

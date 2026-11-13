@@ -1,0 +1,71 @@
+{
+ "kit": 1,
+ "id": "S65",
+ "form": "funnel",
+ "family": "behavior",
+ "tier": "extended",
+ "dataset": [
+  "cms-medicaid-chip-renewal-funnel",
+  "cms-medicaid-chip-renewal-outcomes"
+ ],
+ "reader_question": "Of the people whose Medicaid or CHIP coverage came up for renewal, how many had a decision, how many were not cut off for paperwork, and how many kept coverage?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: counts the states reported to the Centers for Medicare & Medicaid Services",
+ "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 49.0 million kept coverage and 16.0 million ended for a procedural reason.",
+ "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States; a person due in two of the months counts twice",
+ "notes": [
+  "Each stage holds only the renewals still in the stage above it. Pending renewals are set apart: the states had not decided them three months after they were due."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Four bars from one left edge, each shorter than the one above. Of 76.7 million renewals due, 71.9 million were decided and 4.9 million were pending; 55.9 million were not ended for a procedural reason, after 16.0 million were; 49.0 million kept coverage, after 6.9 million were found ineligible.",
+ "table": {
+  "caption": "Medicaid and CHIP renewals due April 2023 to March 2024, by stage, United States",
+  "columns": [
+   {"field": "stage", "label": "Stage", "format": "text", "row_header": true},
+   {"field": "people", "label": "People", "format": "integer"},
+   {"field": "share_of_due", "label": "Share of renewals due", "format": "number:4"},
+   {"field": "role", "label": "Kind of row", "format": "text"}
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D04",
+ "states": [],
+ "source_line": "Source: Centers for Medicare & Medicaid Services, Medicaid and CHIP Updated Renewal Outcomes, renewals due April 2023 to March 2024, United States. Retrieved November 12, 2026. Stages summed by Oath & Action from the national rows; pending renewals set apart.",
+ "encode": {
+  "category": "stage",
+  "value": "people",
+  "key": "stage_id",
+  "role": "role"
+ },
+ "labels": {
+  "losses": {
+   "decided": "pending",
+   "not_ended_procedural": "ended_procedural",
+   "kept": "ended_ineligible"
+  },
+  "names": {
+   "due": "Renewals due",
+   "decided": "Decided",
+   "not_ended_procedural": "Not ended for a procedural reason",
+   "kept": "Kept coverage",
+   "pending": "Pending, set apart",
+   "ended_procedural": "Ended for a procedural reason",
+   "ended_ineligible": "Found ineligible"
+  },
+  "short": {
+   "not_ended_procedural": "Not ended for a procedural reason"
+  },
+  "named": ["ended_procedural"],
+  "set_apart": ["pending"]
+ },
+ "formats": {
+  "value": "millions:1",
+  "share": "percent:1"
+ },
+ "notes_internal": [
+  "Maker B, round 3. Data plan row 83 with change 11, rule 14.93. Draft words, before the data lead's rulings."
+ ]
+}

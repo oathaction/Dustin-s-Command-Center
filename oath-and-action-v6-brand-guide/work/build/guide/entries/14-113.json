@@ -1,0 +1,39 @@
+{
+ "id": "14.113",
+ "title": "Use a flow map only when the routes between places answer the question.",
+ "rule": [
+  "Use a flow map, a reference form, to show how many people, goods or dollars moved between places: a line from each origin to each destination over a plain map, as wide as the amount it carries on one scale, with an arrowhead where it arrives and a key of two widths. Draw the lines under the place names, keep the few largest flows and say how many the map leaves out, and give every flow’s amount in the table."
+ ],
+ "use_when": "A reader asks where people or money went from a few places, and the routes matter as much as the amounts.",
+ "use_instead": [
+  {
+   "when": "The amounts matter and the places do not",
+   "rule": "14.110"
+  },
+  {
+   "when": "Moves among many places, in both directions",
+   "rule": "14.105"
+  },
+  {
+   "when": "Each place’s total moving in or out, with no routes",
+   "rule": "14.116"
+  }
+ ],
+ "why": {
+  "text": [
+   "A line between two places gives a route a reader can follow, and its width shows how much moved along it. Past a few dozen lines the routes cross into a tangle, so the form suits a few large flows or a single origin."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-113-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.4",
+  "14.110"
+ ],
+ "builders": "No kit form: draw each flow as a curve in the subject ink under the place dots and names, its stroke width set by one scale (amount per pixel) with a key of two widths, and an arrowhead at the destination.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Curved lines run from one place to four others over a plain map, each line as wide as the number of people who moved along it, with a key of two widths."
+}

@@ -32,7 +32,7 @@
       var v = function (x) { return K.fmt(x, f.value || 'integer'); };
       var p = function (x) { return K.fmt(100 * x / base, f.share || 'percent:1'); };
       var x0 = 0, x1 = W - 1, sx = function (x) { return x0 + (x1 - x0) * x / base; };
-      var bh = c.t(ph ? 'bar-phone-height' : 'bar-height'), y = 0, prev = null, bars = [];
+      var bh = c.t(ph ? 'bar-phone-height' : 'bar-height'), y = 0, prev = null;
       stages.forEach(function (r, i) {
         var k = String(r[ek]), isn = named.indexOf(k) >= 0, wt = isn ? 700 : 400;
         // the stage's name, and its count with its share of the base flush right where both fit on one line
@@ -65,12 +65,9 @@
             bottom = tb.bottom;
           }
         }
-        bars.push({ y: by, h: bh });
         prev = r;
         y = Math.ceil(bottom) + (ph ? 14 : 16);
       });
-      // the shared left edge every bar starts from
-      c.line(x0 + 0.5, bars[0].y - 3, x0 + 0.5, bars[bars.length - 1].y + bh + 3, { stroke: 'baseline', width: 1, mark: false });
       c.height(y - (ph ? 14 : 16) + 2);
     }
   });

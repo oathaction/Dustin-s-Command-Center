@@ -343,6 +343,7 @@
     this.warnings = [];
     this.ink = [];   // K-S2 (round 1 fix pass): the box of every shape drawn, marks or not, so the check finds one outside the drawing
     this._tf = 0;
+    this._m = null;   // R3-2 (round 3): the affine of the moved or scaled group being drawn, [a, d, e, f] (x' = a x + e, y' = d y + f)
     this._seq = 0;   // the order shapes and words are drawn in, so the checks know what a halo knocks out (AX S2)
     this._h = 0;
     this._arr = null;
@@ -386,15 +387,52 @@
         !solids.some(function (s) { return s.seq > b.seq && s.seq < t.seq && K.covers(s, t); });
     });
   };
-  // a shape's box for the drawing-edge check; shapes inside a moved group (a map's projection) are left out
+  // a shape's box for the drawing-edge check
   // CD A-M2 (round 2 fix pass): with its painted area (a, the fill's) and stroke length (len), so the checks measure the
   // share of a view a color covers; o.stroke and o.width ride along
+  // R3-2 (round 3): a shape inside a moved or scaled group (c.group({transform: 'translate(x,y) scale(k)'}), a map's
+  // projection) is read through the group's transform, so the red share, crossing and edge checks reach it; only a group
+  // whose transform the kit cannot read (a rotation) is still left out. R3-5: o.link marks a link between nodes, which the
+  // layout guard reads as a line no word may sit under
   Ctx.prototype._ink = function (kind, x, y, w, h, o, geo) {
     if (this._tf) return;
-    var g = geo || {};
-    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: o && o._poly,
+    var g = geo || {}, M = this._m, poly = o && o._poly;
+    var rec = { kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: poly,
       stroke: o && o.stroke, sw: o && o.stroke ? (+o.width || 1) : 0, a: g.a === undefined ? w * h : g.a, len: g.len === undefined ? 2 * (w + h) : g.len,
-      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash), strike: !!(o && o.strike) });
+      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash), strike: !!(o && o.strike), link: !!(o && o.link) };
+    if (M) K.map_ink(rec, M);
+    this.ink.push(rec);
+  };
+  // R3-2: one record mapped through an axis-aligned affine [a, d, e, f]: its box, points, ring, paint and stroke width
+  K.map_ink = function (b, M) {
+    var a = M[0], d = M[1], e = M[2], f = M[3], k = Math.sqrt(Math.abs(a * d));
+    var pt = function (q) { return [a * q[0] + e, d * q[1] + f]; };
+    var mv = function (S) { return S.map(function (pts) { return pts.map(pt); }); };
+    var x0 = a * b.x + e, x1 = a * (b.x + b.w) + e, y0 = d * b.y + f, y1 = d * (b.y + b.h) + f;
+    b.x = Math.min(x0, x1); b.w = Math.abs(x1 - x0); b.y = Math.min(y0, y1); b.h = Math.abs(y1 - y0);
+    if (b.a !== undefined) b.a *= Math.abs(a * d);
+    if (b.len !== undefined) b.len *= k;
+    if (b.sw) b.sw *= k;
+    if (b.seg) b.seg = pt(b.seg.slice(0, 2)).concat(pt(b.seg.slice(2, 4)));
+    if (b.ring) b.ring = pt(b.ring).concat([b.ring[2] * k]);
+    var same = b.subs && b.subs === b.poly;
+    if (b.subs) b.subs = mv(b.subs);
+    if (b.poly) b.poly = same ? b.subs : mv(b.poly);
+    if (b.r !== undefined) b.r *= k;
+    return b;
+  };
+  // R3-2: the affine a transform attribute gives, or null where it holds anything but translate and scale
+  K.parse_transform = function (t) {
+    var s = String(t || '').trim(), M = [1, 1, 0, 0], re = /(translate|scale)\(\s*(-?[\d.]+(?:e-?\d+)?)(?:[\s,]+(-?[\d.]+(?:e-?\d+)?))?\s*\)\s*/gy, m, at = 0;
+    if (!s) return null;
+    while ((m = re.exec(s))) {
+      var p = +m[2], q = m[3] === undefined ? (m[1] === 'scale' ? p : 0) : +m[3];
+      // the new step applies first, inside the steps before it: x' = M (step x)
+      if (m[1] === 'translate') { M = [M[0], M[1], M[0] * p + M[2], M[1] * q + M[3]]; }
+      else { M = [M[0] * p, M[1] * q, M[2], M[3]]; }
+      at = re.lastIndex;
+    }
+    return at === s.length ? M : null;
   };
   // the area inside each subpath (shoelace) and the length along them, for a path's paint
   function poly_geo(subs, closed) {
@@ -492,7 +530,10 @@
   };
   Ctx.prototype._push = function (s) { (this._grp || this._els).push(s); };
   Ctx.prototype.group = function (o) {
-    var self = this, prev = this._grp, buf = [], tf = !!(o && o.transform), pjob = this._job;
+    var self = this, prev = this._grp, buf = [], pjob = this._job, pm = this._m;
+    // R3-2: a translate and scale group maps its shapes into the drawing for the checks; any other transform hides them
+    var gm = o && o.transform ? K.parse_transform(o.transform) : null, tf = !!(o && o.transform) && !gm;
+    if (gm) this._m = pm ? [pm[0] * gm[0], pm[1] * gm[1], pm[0] * gm[2] + pm[2], pm[1] * gm[3] + pm[3]] : gm;
     this._grp = buf;
     if (tf) this._tf++;
     if (o && o.job !== undefined && o.job !== null) this._job = o.job;
@@ -500,13 +541,20 @@
       end: function () {
         self._grp = prev;
         self._job = pjob;
+        self._m = pm;
         if (tf) self._tf--;
         var a = data_of(o || {}, { 'class': cls_of(o || {}), transform: o && o.transform });
         self._push('<g' + attrs(a) + '>' + buf.join('') + '</g>');
       }
     };
   };
-  Ctx.prototype.mark = function (m) { if (m.job === undefined || m.job === null) m.job = this._job; this.marks.push(m); return m; };
+  Ctx.prototype.mark = function (m) {
+    if (m.job === undefined || m.job === null) m.job = this._job;
+    if (this._tf) return m;
+    if (this._m) { K.map_ink(m, this._m); m.moved = true; }
+    this.marks.push(m);
+    return m;
+  };
   Ctx.prototype.rect = function (x, y, w, h, o) {
     o = o || {};
     if (w < 0) { x += w; w = -w; }
@@ -534,7 +582,10 @@
     this._push('<line' + attrs(a) + '/>');
     this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o, { a: 0, len: Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)), seg: [x1, y1, x2, y2] });
     // a leader is kept for the guard, which fails one that runs through a label (D3-93)
-    if (o.stroke === 'leader' && !this._grp_t) this.leaders.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
+    if (o.stroke === 'leader' && !this._tf) {
+      var Lm = this._m ? K.map_ink({ x: 0, y: 0, w: 0, h: 0, seg: [x1, y1, x2, y2] }, this._m).seg : [x1, y1, x2, y2];
+      this.leaders.push({ x1: Lm[0], y1: Lm[1], x2: Lm[2], y2: Lm[3] });
+    }
     if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {}, job: o.job });
   };
   Ctx.prototype.path = function (d, o, box) {
@@ -542,14 +593,18 @@
     var a = data_of(o, { d: d, 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<path' + attrs(a) + '/>');
-    var pb = path_box(String(d)) || box;
+    // R3-5 (round 3): a curve (an arc, a flow band) may pass its points as o.pts, subpaths of [x, y], so the checks read it
+    // as they read a path of straight lines; the element keeps its curve
+    var ptsd = o.pts ? 'M' + o.pts.map(function (sp) { return sp.map(function (q) { return q[0] + ',' + q[1]; }).join('L'); }).join('M') + (/Z\s*$/i.test(String(d)) ? 'Z' : '') : null;
+    var dd = ptsd || String(d);
+    var pb = path_box(dd) || box;
     // A-E1: a filled path keeps its outline, so a word set on it reads its fill (fill_under, the forced-colors check)
-    var poly = o.fill && o.fill !== 'none' ? path_poly(String(d)) : null;
+    var poly = o.fill && o.fill !== 'none' ? path_poly(dd) : null;
     // its paint: the area inside its outline and the length along it, read from its points (a curve: from its box)
     var pg = poly ? poly_geo(poly, true) : null;
-    var pts = poly || path_poly(String(d));
-    if (!pg) { pg = pts ? poly_geo(pts, /Z/i.test(String(d))) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
-    if (pg && pts) { pg.subs = pts; pg.closed = /Z/i.test(String(d)); }
+    var pts = poly || path_poly(dd);
+    if (!pg) { pg = pts ? poly_geo(pts, /Z/i.test(dd)) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
+    if (pg && pts) { pg.subs = pts; pg.closed = /Z/i.test(dd); }
     if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o, pg || { a: pb[2] * pb[3], len: pb[2] + pb[3] });
     if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, fc: o.fc, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
   };
@@ -605,7 +660,9 @@
     // second pass (maker A's flag): in forced colors a mark in GrayText (seq-3, div-5, mag-3, cat-2, context) is a mid ink in
     // both themes, so a word set on one takes Canvas, as a word on a dark fill does; on context beside a red point, whose
     // marks take the ground (access S10), it keeps CanvasText (kit.css)
-    var under = K.FC_ON_DARK.indexOf(o.fill) < 0 ? this.fill_under(x0 + w / 2, y - size * 0.35) : null;
+    var M = this._m, ux = x0 + w / 2, uy = y - size * 0.35;
+    if (M) { ux = M[0] * ux + M[2]; uy = M[1] * uy + M[3]; }
+    var under = K.FC_ON_DARK.indexOf(o.fill) < 0 ? this.fill_under(ux, uy) : null;
     var on_gray = !!under && K.FC[under] === 'GrayText';
     if (on_gray) { cls.push('oac-fc-on-gray'); if (under === 'context') cls.push('oac-fc-on-context'); }
     // BC S1 (round 2 fix pass): a word on the ground with no halo carries two markers the draw resolves once every shape is
@@ -623,6 +680,13 @@
       overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill,
       on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++, hm: hm,
       margin_of: o.margin_of === undefined || o.margin_of === null ? undefined : String(o.margin_of), margin_note: !!o.margin_note };
+    // R3-2: words inside a moved or scaled group are read where they print, at the size they print (a knockout would sit in
+    // the group's own units, so the kit clears them with the halo instead)
+    if (M) {
+      var k = Math.sqrt(Math.abs(M[0] * M[1]));
+      box.x = M[0] * box.x + M[2]; box.y = M[1] * box.y + M[3]; box.w *= Math.abs(M[0]); box.h *= Math.abs(M[1]);
+      box.top = M[1] * box.top + M[3]; box.bottom = M[1] * box.bottom + M[3]; box.size *= k; box.moved = true;
+    }
     this.texts.push(box);
     return box;
   };
@@ -750,9 +814,10 @@
     var hits = function (b, k) { return b.x < k.x + k.w && k.x < b.x + b.w && b.y < k.y + k.h && k.y < b.y + b.h; };
     c.texts.forEach(function (t) {
       if (!t.hm) return;
-      if (!K.crossed_by(c.ink, t, function (b) { return b.seq < t.seq && K.QUIET_STROKES.indexOf(b.stroke) >= 0; }).length) return;
+      // R3-5: a link is never cleared this way; the layout guard fails one through a word (K.guard)
+      if (!K.crossed_by(c.ink, t, function (b) { return b.seq < t.seq && !b.link && K.QUIET_STROKES.indexOf(b.stroke) >= 0; }).length) return;
       var k = { x: Math.max(0, t.x - 2), y: t.y, w: Math.min(width, t.x + t.w + 2) - Math.max(0, t.x - 2), h: t.h };
-      var touch = c.ink.some(function (b) { return b.seq < t.seq && !quiet(b) && !(b.fill === 'surface' || (b.fill === 'none' && !b.stroke)) && hits({ x: b.x - 0.5, y: b.y - 0.5, w: b.w + 1, h: b.h + 1 }, k); }) ||
+      var touch = !!t.moved || c.ink.some(function (b) { return b.seq < t.seq && !quiet(b) && !(b.fill === 'surface' || (b.fill === 'none' && !b.stroke)) && hits({ x: b.x - 0.5, y: b.y - 0.5, w: b.w + 1, h: b.h + 1 }, k); }) ||
         c.texts.some(function (o2) { return o2 !== t && o2.seq < t.seq && hits(o2, k); });
       if (touch) halo_on[t.hm] = true;
       else knock_on[t.hm] = '<rect x="' + r1(k.x) + '" y="' + r1(k.y - lift_dy) + '" width="' + r1(k.w) + '" height="' + r1(k.h) + '" class="oac-f-surface"/>';
@@ -832,6 +897,17 @@
           out.push('texts overlap: "' + a.words.slice(0, 30) + '" and "' + b.words.slice(0, 30) + '"');
       }
     }
+    // R3-5 (round 3): a link between nodes never runs under a word: one drawn after the word, or before a word set with no
+    // halo or knockout, fails (K.parts.link draws links to the edges of their nodes; K.parts.clear_label sets words on one)
+    var links = (c.ink || []).filter(function (b) { return b.link; }), seen = {};
+    if (links.length) tx.forEach(function (t) {
+      if (t.overlap_ok) return;
+      K.crossed_by(c.ink, t, function (b) { return b.link && (b.seq > t.seq || !t.halo); }).forEach(function () {
+        if (seen[t.words]) return;
+        seen[t.words] = 1;
+        out.push('a link crosses "' + t.words.slice(0, 30) + '"; draw links before the words and route them round, or set the words on the link with K.parts.clear_label');
+      });
+    });
     // a leader may end at its own label but never run through one (D3-93)
     (c.leaders || []).forEach(function (l) {
       tx.forEach(function (b) {

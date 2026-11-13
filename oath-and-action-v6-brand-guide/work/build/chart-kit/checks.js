@@ -463,7 +463,8 @@ function crossing_faults(d, at) {
     const x0 = t.x + 1.5, x1 = t.x + t.w - 1.5, y0 = t.y + 1.5, y1 = t.y + t.h - 1.5;
     const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
     // a stroke across the word: drawn after it (over its letters, halo or not), or before it on a word with no halo
-    for (const b of K.crossed_by(ink, t, b => CROSS_SKIP.indexOf(b.stroke) < 0 && (b.seq > t.seq || !t.halo))) {
+    // R3-5: a link through a word is the layout guard's fault (K.guard), reported there once
+    for (const b of K.crossed_by(ink, t, b => !b.link && CROSS_SKIP.indexOf(b.stroke) < 0 && (b.seq > t.seq || !t.halo))) {
       const k = 's|' + t.words + '|' + b.stroke + '|' + (b.seq > t.seq);
       if (seen.has(k)) continue;
       seen.add(k);
