@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "A Venn diagram of one size can make a small overlap look as large as a big group. Drawn at true area, the overlap shows its real weight. The kit checks every circle’s radius and the shared area against their counts at every width."
+      "A Venn diagram with circles of one size can make a small overlap look as large as a big group. Drawn at true area, the overlap shows its real weight."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

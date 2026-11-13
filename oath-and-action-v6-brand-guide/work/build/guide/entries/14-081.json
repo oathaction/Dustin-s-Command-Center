@@ -2,7 +2,7 @@
   "id": "14.81",
   "title": "Use a Venn diagram to name the groups two overlapping sets make.",
   "rule": [
-    "Draw two circles of one size inside a frame for everyone, each named, so the drawing holds four groups: the first alone, both, the second alone and neither. Print each group’s count and share inside it, shade the overlap in the track ink, and say in a note that the circles’ sizes carry no count. Name a group above another only where the gap passes its margin of error (Rule 14.9)."
+    "Draw two circles of one size inside a frame for everyone, each named, so the drawing holds four groups: the first alone, both, the second alone and neither. Print each group’s count and share inside it, shade the overlap in the track gray, and say in a note that the circles’ sizes carry no count. Name a group above another only where the gap passes its margin of error (Rule 14.9)."
   ],
   "use_when": "The reader asks who falls in one group, the other, both or neither, and the four counts matter more than their sizes, such as people with private health coverage, public coverage, both or none.",
   "use_instead": [

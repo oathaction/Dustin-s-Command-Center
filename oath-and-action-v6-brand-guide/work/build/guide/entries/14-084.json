@@ -30,5 +30,5 @@
   "builders": "No form: the kit draws no rose chart. The sketch, work/build/guide/specimens/s-14-84-sketch.html, draws a rose chart beside bars of the same values; build the better choice with ranked-bar or column.",
   "correct": null,
   "failure": null,
-  "sketch_alt": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large, and bars of the same values show it twice as long. The bars give each value as a length."
+  "sketch_alt": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large. Bars of the same values show it twice as long."
 }

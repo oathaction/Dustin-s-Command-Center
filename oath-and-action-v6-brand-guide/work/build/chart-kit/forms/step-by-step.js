@@ -28,7 +28,7 @@
           p('oac-h-name', r[es]) +
           p('oac-h-small', eo && r[eo] && String(r[eo]) !== String(L.you) ? r[eo] : '') +
           p('oac-h-body', ew && r[ew] ? String(r[ew]) + (L.stop && !/[.?!]$/.test(String(r[ew])) ? L.stop : '') : '') +
-          p('oac-h-small', el && r[el] ? String(L.limit_words || '{limit}').split('{limit}').join(r[el]) : '') +
+          (el && r[el] ? '<p class="oac-h-small">' + String(L.limit_words || '{limit}').split('{limit}').map(function (w) { return h.words(w); }).join('<strong>' + h.words(r[el]) + '</strong>') + '</p>' : '') +
           p('oac-h-src', eb ? r[eb] : '') + '</li>';
       }).join('') + '</ol>';
     }

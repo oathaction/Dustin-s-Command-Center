@@ -2,9 +2,9 @@
   "id": "14.80",
   "title": "Use proportional symbols when counts run too far apart for a bar.",
   "rule": [
-    "Draw one circle for each count, its area in proportion to the count on one scale for every circle, the radius by the square root (Rule 14.4). Name each circle and print its count beside it, or inside the circle the title names, which takes the subject ink; the rest take the track ink with a thin edge. Add a key of nested circles at round counts that reaches past the largest. A count whose circle would draw under a few pixels prints in words beside the circles, with the reason."
+    "Draw one circle for each count, its area in proportion to the count on one scale for every circle, the radius by the square root (Rule 14.4). Name each circle and print its count beside it, or inside the circle the title names, which takes the subject ink; the rest take the track gray with a thin edge. Add a key of nested circles at round counts that reaches past the largest. A count whose circle would draw under a few pixels prints in words beside the circles, with the reason."
   ],
-  "use_when": "The reader asks how many there are of each kind, and the counts span so wide a range that a bar for the smallest would vanish, such as the country’s 39,555 special districts and its 3,031 counties.",
+  "use_when": "The reader asks how many there are of each kind, and the counts span so wide a range that a bar for the smallest would vanish, such as the 39,555 special districts and 3,031 county governments the Census Bureau counted in 2022.",
   "use_instead": [
     {
       "when": "The counts sit close enough to rank by length",
