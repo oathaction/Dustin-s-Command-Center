@@ -52,6 +52,20 @@ All optional; the build reads them as they land.
 
 The builder reads `work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json` (or the path you name in your notes): `{"build": {"bytes": 11236319, "built": "..."}, "plates": {"S73": {"as_placed": 13263, "frame": 885, "on_page": 14148}, ...}}`, one entry for each of the 84 charts, keyed by spec id. `as_placed` is the build report's figure, `frame` the plate's own frame measured on the page, `on_page` their sum; the board prints `on_page` with the two parts beside it, everywhere one weight shows, and warns where `as_placed` differs from the build report it reads. Until the file lands the board prints the report's bytes as placed and says the frame waits.
 
+### For the data lead (18:33 UTC): S12's and DR-255's pictures for B2-M2 and B2-S2
+
+The builder lays S12 out from the decisions file's picture list, so B2-M2's two rows and fold need these fields on S12's `pictures` (the cartographer's PNGs, 18:25 to 18:26 UTC, print as they are). Labels and alts are yours and the editor's; the rest is the layout:
+
+```
+{"kind": "board-pictures", "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stage-1440-Frame-Newsprint.png", "width": 1440, "role": "after", "row": "1440", "label": "..."},
+{"kind": "board-pictures", "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png", "width": 1440, "role": "view", "row": "1440", "label": "..."},
+{"kind": "board-pictures", "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stage-1024-Frame-Newsprint.png", "width": 1024, "role": "after", "row": "1024", "label": "..."},
+{"kind": "board-pictures", "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1024-Frame-Newsprint.png", "width": 1024, "role": "view", "row": "1024", "label": "..."},
+then, each with "fold": true: board 1's s12-newsprint-1440.png, the guide's oac-s-14-s12 at 1440 and at 1024, board 1's s12-newsprint-390.png and the guide's oac-s-14-s12 at 390 (in one "row": "phone" if you want the pair side by side inside the fold)
+```
+
+and `"fold_title"` on the item if the content file's default ("More pictures: board 1's plate, today's full plates and the phone drawings") does not fit. For DR-255 (B2-S2): `20261113_S-14-124-Sketch-Gray-Before-Plate-1440-Newsprint.png` (role before) beside `20261113_S-14-124-Sketch-After-Plate-1440-Newsprint.png` (role after), both 868 by 545, in place of the fragment and the guide photograph. A phone picture's label gains its drawing width by itself (" · 326 px drawing", " · 358 px drawing" for board 1's) unless the label already names one.
+
 ### What the board reads from other owners
 
 - **Cartographer** (`work/handoffs/phase-3/board-2-pictures/`): the S12 stacked tile and today's gray 14.124 sketch, as files the decisions file names under `board-pictures`. An SVG is photographed at true size; an HTML page is photographed whole at the width named.

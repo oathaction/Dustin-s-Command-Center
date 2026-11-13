@@ -1,25 +1,35 @@
 {
- "built": "2026-11-13T18:25:20.454731+00:00",
+ "built": "2026-11-13T18:33:06.228057+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 11236252,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T18:25:31"
+  "built": "2026-11-13T18:33:16"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
   "state": "signed off",
-  "updated_utc": "2026-11-13T18:20:45Z",
+  "updated_utc": "2026-11-13T18:31:17Z",
   "schema": "board-2-decisions/1"
  },
  "plate_bytes": {
   "file": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json",
-  "build": null
+  "page": {
+   "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide.html",
+   "bytes": 11236230,
+   "sha256": "8a01b67e784a302cedc19b482187253407e3c16042993eccda579234821710a8",
+   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide-Build-Report.json",
+   "report_built": "2026-11-13T18:02:58",
+   "rules": 344,
+   "specimens_placed": 638
+  },
+  "measured_utc": "2026-11-13T18:22:52Z"
  },
  "shots": {
-  "taken": [
+  "taken": [],
+  "reused": [
    "ch14-opener",
    "dec-fig-s-14-124-sketch-1440",
    "dec-oac-s-14-s05-1440",
@@ -253,8 +263,7 @@
    "sketch-14.92",
    "sketch-14.94",
    "sketch-14.95"
-  ],
-  "reused": []
+  ]
  },
  "guide_widths": {
   "S01": {
@@ -595,16 +604,12 @@
   }
  },
  "kit_builds": {
-  "rebuilt": [
-   "S09",
-   "S10",
-   "S21",
-   "S73"
-  ],
+  "rebuilt": [],
   "reused": [
    "S05",
    "S06",
    "S08",
+   "S09",
    "S11",
    "S13",
    "S15",
@@ -616,11 +621,13 @@
    "S03",
    "S04",
    "S07",
+   "S10",
    "S14",
    "S17",
    "S18",
    "S19",
    "S20",
+   "S21",
    "S22",
    "S23",
    "S24",
@@ -671,6 +678,7 @@
    "S70",
    "S71",
    "S72",
+   "S73",
    "S74",
    "S75",
    "S76",
@@ -928,9 +936,10 @@
    "status": "built",
    "weight": {
     "placed": 8557,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 741,
+    "on_page": 9298,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -959,9 +968,10 @@
    "status": "new",
    "weight": {
     "placed": 4259,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 730,
+    "on_page": 4989,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -990,9 +1000,10 @@
    "status": "new",
    "weight": {
     "placed": 4221,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 755,
+    "on_page": 4976,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1021,9 +1032,10 @@
    "status": "new",
    "weight": {
     "placed": 10541,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 749,
+    "on_page": 11290,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1052,9 +1064,10 @@
    "status": "built",
    "weight": {
     "placed": 4713,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 761,
+    "on_page": 5474,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1083,9 +1096,10 @@
    "status": "new",
    "weight": {
     "placed": 4430,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 739,
+    "on_page": 5169,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1114,9 +1128,10 @@
    "status": "new",
    "weight": {
     "placed": 5703,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 734,
+    "on_page": 6431,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1145,9 +1160,10 @@
    "status": "new",
    "weight": {
     "placed": 5083,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 759,
+    "on_page": 5842,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1176,9 +1192,10 @@
    "status": "new",
    "weight": {
     "placed": 6227,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 747,
+    "on_page": 6974,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1207,9 +1224,10 @@
    "status": "built",
    "weight": {
     "placed": 14248,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 760,
+    "on_page": 15008,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1238,9 +1256,10 @@
    "status": "new",
    "weight": {
     "placed": 9368,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 751,
+    "on_page": 10119,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1269,9 +1288,10 @@
    "status": "new",
    "weight": {
     "placed": 22806,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 744,
+    "on_page": 23550,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1300,9 +1320,10 @@
    "status": "new",
    "weight": {
     "placed": 9626,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 755,
+    "on_page": 10381,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1343,9 +1364,10 @@
    "status": "built",
    "weight": {
     "placed": 10655,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 783,
+    "on_page": 11438,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1374,9 +1396,10 @@
    "status": "built",
    "weight": {
     "placed": 30312,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 757,
+    "on_page": 31069,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1405,9 +1428,10 @@
    "status": "new",
    "weight": {
     "placed": 14193,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 757,
+    "on_page": 14950,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1436,9 +1460,10 @@
    "status": "built",
    "weight": {
     "placed": 11368,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 732,
+    "on_page": 12100,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1467,9 +1492,10 @@
    "status": "new",
    "weight": {
     "placed": 5849,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 752,
+    "on_page": 6601,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1498,9 +1524,10 @@
    "status": "built",
    "weight": {
     "placed": 33488,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 752,
+    "on_page": 34240,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1529,9 +1556,10 @@
    "status": "new",
    "weight": {
     "placed": 5210,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 733,
+    "on_page": 5943,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1560,9 +1588,10 @@
    "status": "new",
    "weight": {
     "placed": 6098,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 768,
+    "on_page": 6866,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1591,9 +1620,10 @@
    "status": "new",
    "weight": {
     "placed": 8142,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 757,
+    "on_page": 8899,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1622,9 +1652,10 @@
    "status": "built",
    "weight": {
     "placed": 13027,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 774,
+    "on_page": 13791,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1653,9 +1684,10 @@
    "status": "new",
    "weight": {
     "placed": 7049,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 764,
+    "on_page": 7813,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1684,9 +1716,10 @@
    "status": "new",
    "weight": {
     "placed": 16583,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 751,
+    "on_page": 17334,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1715,9 +1748,10 @@
    "status": "new",
    "weight": {
     "placed": 11324,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 757,
+    "on_page": 12081,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1746,9 +1780,10 @@
    "status": "new",
    "weight": {
     "placed": 10079,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 797,
+    "on_page": 10876,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1813,9 +1848,10 @@
    "status": "built",
    "weight": {
     "placed": 7427,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 745,
+    "on_page": 8166,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1844,9 +1880,10 @@
    "status": "new",
    "weight": {
     "placed": 9988,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 753,
+    "on_page": 10741,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1875,9 +1912,10 @@
    "status": "new",
    "weight": {
     "placed": 8313,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 754,
+    "on_page": 9067,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1906,9 +1944,10 @@
    "status": "built",
    "weight": {
     "placed": 21780,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 746,
+    "on_page": 22526,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1937,9 +1976,10 @@
    "status": "new",
    "weight": {
     "placed": 6884,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 731,
+    "on_page": 7615,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1968,9 +2008,10 @@
    "status": "new",
    "weight": {
     "placed": 11096,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 728,
+    "on_page": 11824,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -1999,9 +2040,10 @@
    "status": "new",
    "weight": {
     "placed": 5338,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 732,
+    "on_page": 6070,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2030,9 +2072,10 @@
    "status": "new",
    "weight": {
     "placed": 3860,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 738,
+    "on_page": 4598,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2097,9 +2140,10 @@
    "status": "new",
    "weight": {
     "placed": 5527,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 733,
+    "on_page": 6260,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2128,9 +2172,10 @@
    "status": "new",
    "weight": {
     "placed": 9798,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 742,
+    "on_page": 10540,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2159,9 +2204,10 @@
    "status": "new",
    "weight": {
     "placed": 6626,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 752,
+    "on_page": 7378,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2190,9 +2236,10 @@
    "status": "new",
    "weight": {
     "placed": 7633,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 757,
+    "on_page": 8390,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2221,9 +2268,10 @@
    "status": "new",
    "weight": {
     "placed": 11454,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 753,
+    "on_page": 12207,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2312,9 +2360,10 @@
    "status": "new",
    "weight": {
     "placed": 9710,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 796,
+    "on_page": 10506,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2343,9 +2392,10 @@
    "status": "new",
    "weight": {
     "placed": 11004,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 773,
+    "on_page": 11777,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2374,9 +2424,10 @@
    "status": "new",
    "weight": {
     "placed": 14640,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 741,
+    "on_page": 15381,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2441,9 +2492,10 @@
    "status": "new",
    "weight": {
     "placed": 11137,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 777,
+    "on_page": 11914,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2472,9 +2524,10 @@
    "status": "new",
    "weight": {
     "placed": 11448,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 774,
+    "on_page": 12222,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2503,9 +2556,10 @@
    "status": "built",
    "weight": {
     "placed": 16077,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 1113,
+    "on_page": 17190,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2534,9 +2588,10 @@
    "status": "new",
    "weight": {
     "placed": 6719,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 775,
+    "on_page": 7494,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2601,9 +2656,10 @@
    "status": "built",
    "weight": {
     "placed": 6927,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 749,
+    "on_page": 7676,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2632,9 +2688,10 @@
    "status": "new",
    "weight": {
     "placed": 9092,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 727,
+    "on_page": 9819,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2663,9 +2720,10 @@
    "status": "new",
    "weight": {
     "placed": 3896,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 809,
+    "on_page": 4705,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2694,9 +2752,10 @@
    "status": "new",
    "weight": {
     "placed": 5189,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 743,
+    "on_page": 5932,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2725,9 +2784,10 @@
    "status": "new",
    "weight": {
     "placed": 10346,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 736,
+    "on_page": 11082,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2756,9 +2816,10 @@
    "status": "new",
    "weight": {
     "placed": 3750,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 737,
+    "on_page": 4487,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2787,9 +2848,10 @@
    "status": "new",
    "weight": {
     "placed": 5832,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 847,
+    "on_page": 6679,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2842,9 +2904,10 @@
    "status": "new",
    "weight": {
     "placed": 9432,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 778,
+    "on_page": 10210,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2873,9 +2936,10 @@
    "status": "new",
    "weight": {
     "placed": 12340,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 796,
+    "on_page": 13136,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2904,9 +2968,10 @@
    "status": "new",
    "weight": {
     "placed": 9125,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 753,
+    "on_page": 9878,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2935,9 +3000,10 @@
    "status": "new",
    "weight": {
     "placed": 13807,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 746,
+    "on_page": 14553,
+    "ceiling": 14556,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2966,9 +3032,10 @@
    "status": "new",
    "weight": {
     "placed": 10349,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 765,
+    "on_page": 11114,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -2997,9 +3064,10 @@
    "status": "new",
    "weight": {
     "placed": 12037,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 764,
+    "on_page": 12801,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3028,9 +3096,10 @@
    "status": "new",
    "weight": {
     "placed": 7309,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 784,
+    "on_page": 8093,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3071,9 +3140,10 @@
    "status": "new",
    "weight": {
     "placed": 13263,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 796,
+    "on_page": 14059,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3102,9 +3172,10 @@
    "status": "new",
    "weight": {
     "placed": 11029,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 731,
+    "on_page": 11760,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3133,9 +3204,10 @@
    "status": "new",
    "weight": {
     "placed": 7181,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 755,
+    "on_page": 7936,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3200,9 +3272,10 @@
    "status": "new",
    "weight": {
     "placed": 6945,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 765,
+    "on_page": 7710,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3243,9 +3316,10 @@
    "status": "new",
    "weight": {
     "placed": 6997,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 780,
+    "on_page": 7777,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3298,9 +3372,10 @@
    "status": "built",
    "weight": {
     "placed": 13619,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 732,
+    "on_page": 14351,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3329,9 +3404,10 @@
    "status": "built",
    "weight": {
     "placed": 13278,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 764,
+    "on_page": 14042,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3360,9 +3436,10 @@
    "status": "built",
    "weight": {
     "placed": 10198,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 735,
+    "on_page": 10933,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3391,9 +3468,10 @@
    "status": "new",
    "weight": {
     "placed": 8781,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 753,
+    "on_page": 9534,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3422,9 +3500,10 @@
    "status": "new",
    "weight": {
     "placed": 3569,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 807,
+    "on_page": 4376,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3453,9 +3532,10 @@
    "status": "new",
    "weight": {
     "placed": 6156,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 784,
+    "on_page": 6940,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3484,9 +3564,10 @@
    "status": "new",
    "weight": {
     "placed": 12905,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 749,
+    "on_page": 13654,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3515,9 +3596,10 @@
    "status": "new",
    "weight": {
     "placed": 13234,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 805,
+    "on_page": 14039,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3546,9 +3628,10 @@
    "status": "new",
    "weight": {
     "placed": 12713,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 723,
+    "on_page": 13436,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3577,9 +3660,10 @@
    "status": "new",
    "weight": {
     "placed": 10738,
-    "frame": null,
-    "on_page": null,
-    "ceiling": 15000
+    "frame": 752,
+    "on_page": 11490,
+    "ceiling": 14106,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3608,9 +3692,10 @@
    "status": "built",
    "weight": {
     "placed": 16673,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 757,
+    "on_page": 17430,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3639,9 +3724,10 @@
    "status": "new",
    "weight": {
     "placed": 10283,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 760,
+    "on_page": 11043,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3670,9 +3756,10 @@
    "status": "built",
    "weight": {
     "placed": 16077,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 1113,
+    "on_page": 17190,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3701,9 +3788,10 @@
    "status": "built",
    "weight": {
     "placed": 33488,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 752,
+    "on_page": 34240,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3732,9 +3820,10 @@
    "status": "new",
    "weight": {
     "placed": 16268,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 752,
+    "on_page": 17020,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3763,9 +3852,10 @@
    "status": "new",
    "weight": {
     "placed": 10072,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 739,
+    "on_page": 10811,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3794,9 +3884,10 @@
    "status": "new",
    "weight": {
     "placed": 10406,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 748,
+    "on_page": 11154,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3825,9 +3916,10 @@
    "status": "new",
    "weight": {
     "placed": 8799,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 739,
+    "on_page": 9538,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3856,9 +3948,10 @@
    "status": "new",
    "weight": {
     "placed": 3408,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 773,
+    "on_page": 4181,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3887,9 +3980,10 @@
    "status": "new",
    "weight": {
     "placed": 2454,
-    "frame": null,
-    "on_page": null,
-    "ceiling": null
+    "frame": 803,
+    "on_page": 3257,
+    "ceiling": null,
+    "within": true
    },
    "faults": 0,
    "kit_windows": [
@@ -3932,7 +4026,7 @@
   "state": "signed off",
   "pictures_waiting": []
  },
- "panel_1_words": 5870,
+ "panel_1_words": 5888,
  "rules": {
   "14.1": {
    "plates": 2,
@@ -4156,123 +4250,133 @@
   },
   "heaviest": [
    [
-    33488,
+    34240,
     "S13",
     "14.34",
     "Small-multiple area sparklines",
     {
      "placed": 33488,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 752,
+     "on_page": 34240,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    30312,
+    31069,
     "S05",
     "14.30",
     "Multi-line with one highlighted",
     {
      "placed": 30312,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 757,
+     "on_page": 31069,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    22806,
+    23550,
     "S25",
     "14.27",
     "Diverging bar",
     {
      "placed": 22806,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 744,
+     "on_page": 23550,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    21780,
+    22526,
     "S08",
     "14.49",
     "Unit chart or waffle",
     {
      "placed": 21780,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 746,
+     "on_page": 22526,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    16673,
+    17430,
     "S15",
     "14.125",
     "Results table with margin cells",
     {
      "placed": 16673,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 757,
+     "on_page": 17430,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    16583,
+    17334,
     "S33",
     "14.40",
     "Indexed line",
     {
      "placed": 16583,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 751,
+     "on_page": 17334,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    16268,
-    "S37",
-    "14.129",
-    "Heat table",
-    {
-     "placed": 16268,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
-    }
-   ],
-   [
-    16077,
+    17190,
     "S06",
     "14.76",
     "Scenario directions",
     {
      "placed": 16077,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 1113,
+     "on_page": 17190,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    14640,
+    17020,
+    "S37",
+    "14.129",
+    "Heat table",
+    {
+     "placed": 16268,
+     "frame": 752,
+     "on_page": 17020,
+     "ceiling": null,
+     "within": true
+    }
+   ],
+   [
+    15381,
     "S56",
     "14.69",
     "Connected scatter",
     {
      "placed": 14640,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 741,
+     "on_page": 15381,
+     "ceiling": null,
+     "within": true
     }
    ],
    [
-    14248,
+    15008,
     "S11",
     "14.25",
     "Shift arrows (from, to)",
     {
      "placed": 14248,
-     "frame": null,
-     "on_page": null,
-     "ceiling": null
+     "frame": 760,
+     "on_page": 15008,
+     "ceiling": null,
+     "within": true
     }
    ]
   ]
@@ -4397,7 +4501,7 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:25 UTC, with exit 0, no warnings, 11,236,252 bytes, 344 rules and 638 examples placed",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:33 UTC, with exit 0, no warnings, 11,236,252 bytes, 344 rules and 638 examples placed",
   "Quick guide check": "run by the main session on a copy of the committed build of 11,235,128 bytes, before your answers landed, at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures; this board’s strict build after them is 11,236,252 bytes, and the main session’s check of the final build replaces this line when it runs",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
   "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart at every whole width from 256 px, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
@@ -4416,11 +4520,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 1040263,
+ "html_bytes": 1040853,
  "images": 312,
  "image_bytes": 40879944,
  "folder_files": 316,
- "folder_bytes": 42116363,
+ "folder_bytes": 42120100,
  "largest_image": [
   496612,
   "20261113_Form-S37-Grayscale.webp"
@@ -4970,11 +5074,16 @@
   "this build’s share per plate is 13236; work/build/chart-kit/plate-share.json keeps 13237, as found"
  ],
  "warnings": [
-  "two replies name the same item",
-  "reply 5 names None, which no item or group holds"
+  "the engineer measured the plates on a 11,236,230-byte build and this board’s strict build is 11,236,252",
+  "S21: the engineer measured 5,697 bytes as placed and this build’s report gives 5,703",
+  "S09: the engineer measured 13,017 bytes as placed and this build’s report gives 13,027",
+  "S10: the engineer measured 7,421 bytes as placed and this build’s report gives 7,427",
+  "S09: the engineer measured 13,017 bytes as placed and this build’s report gives 13,027",
+  "S10: the engineer measured 7,421 bytes as placed and this build’s report gives 7,427",
+  "S21: the engineer measured 5,697 bytes as placed and this build’s report gives 5,703"
  ],
- "seconds": 274,
- "words": 61500,
+ "seconds": 15,
+ "words": 61746,
  "check": {
   "page": {
    "failures": [

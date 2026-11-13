@@ -109,6 +109,8 @@ class BoardError(Exception):
 
 
 def warn(msg):
+    if msg in WARN:
+        return
     WARN.append(msg)
     print('warning', msg)
 
@@ -1062,9 +1064,9 @@ def plate_weight(G, sid, chk=None):
         if placed is not None and e.get('bytes_as_placed') is not None and int(e['bytes_as_placed']) != int(placed):
             warn(f'{sid}: the engineer measured {e["bytes_as_placed"]:,} bytes as placed and this build’s report gives {placed:,}')
         frame_b = int(e.get('frame_bytes', 0)) + int(e.get('added_on_page', 0))
-        on_page = int(e['total']) if e.get('total') is not None else (placed + frame_b if placed is not None else None)
         if placed is None:
             placed = e.get('bytes_as_placed')
+        on_page = placed + frame_b if placed is not None else None
     ce = e.get('ceiling') or {}
     ceiling = ce.get('bytes') if ce.get('measure') == 'total' else None
     return {'placed': placed, 'frame': frame_b, 'on_page': on_page, 'ceiling': ceiling, 'within': e.get('within_ceiling')}
@@ -1307,9 +1309,9 @@ def count_panel():
     r9 = k.get('rule_01_9') or {}
     out = [f'<p class="intro">{esc(S["lede"])}</p>']
     facts = []
+    bt = (r9.get('built') or {}).get('examples') if r9 else None
     if r9:
         lim = r9.get('limits', {})
-        bt = (r9.get('built') or {}).get('examples')
         if bt is not None:
             facts.append((S['facts']['built'], f'{bt}'))
         facts += [(S['facts']['total'], f'{r9.get("total_examples", "?")}'), (S['facts']['ruling'], f'{r9.get("ruling_g", "?")}'),
@@ -1324,7 +1326,8 @@ def count_panel():
             name_k = 'domain' if key == 'by_domain' else 'state'
             out.append(f'<h3 class="sub">{esc(h)}</h3>')
             out.append(bar_rows([(str(x.get('title') or x.get(name_k, '')), int(x.get('count', 0)), x.get('limit'), bool(x.get('passes', True))) for x in rows], S['cols'],
-                                fill(S['caption'], {'what': h.lower()})))
+                                fill(S['caption'], {'what': h.lower(), 'base': r9.get('total_examples', '?'), 'built': bt if bt is not None else '?',
+                                                    'planned': (r9.get('total_examples') - bt) if bt is not None and r9.get('total_examples') is not None else '?'})))
     dr = k.get('dr_229') or {}
     if dr:
         out.append(f'<h3 class="sub">{esc(S["dr229_h"])}</h3>')
@@ -1344,7 +1347,8 @@ def count_panel():
                 if x.get('passes') is False and re.search(S['not_applied_re'], str(x.get('test', '')), flags=re.I):
                     fail(f'the election table prints “No” for {x.get("where") or x.get("spec")}, whose test was not applied ({x.get("test")})')
             yn = lambda v: S['not_applied'] if v is None else ((S['pass_words'] if v else S['fail_words']) if isinstance(v, bool) else v)
-            out.append(rows_table([{c: yn(x.get(c)) if c == 'passes' else x.get(c, '') for c in cols} for x in ex], S['dr229_caption']))
+            out.append(rows_table([{c: yn(x.get(c)) if c == 'passes' else x.get(c, '') for c in cols} for x in ex],
+                                  fill(S['dr229_caption'], {'built': bt if bt is not None else '?', 'n': len(ex)})))
         if dr.get('note'):
             QUOTED.append(dr['note'])
             out.append(f'<p>{esc(dr["note"])}</p>')

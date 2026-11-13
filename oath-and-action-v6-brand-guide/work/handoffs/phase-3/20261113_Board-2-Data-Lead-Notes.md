@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 18:32 UTC. Ruled: S06, S37 and S42 curl their apostrophes (printed words only, drawings byte-identical); S12's column figure is 558 px. "Guide words final" follows the editor's change.
 - 18:31 UTC. **B2-M6 confirmed** on the 18:25 run but for two builder items (reply `item` keys added at 18:30; count captions to print). All my fix round items are in.
 - 18:21 UTC. **Fix round items written** into the decisions file (B2-M1 five replies, B2-M2, B2-M3, B2-M5, B2-S4, B2-S7, B2-S8, B2-S11); S73's cut and the editor's two counts signed off; B2-M6 waits on the builder's rerun.
 - 18:19 UTC. **B2-M5 ruled: keep** S03's and S08's November 10 count until certification ("Fix round"). The guide preview need not wait.
@@ -51,6 +52,11 @@ Applied by one guarded script at 18:20 UTC (each old phrase must be found, or no
 ### S73's cut and the counts it moves: signed off (18:21 UTC)
 
 The main session's final strict build measures S73 at 13,263 bytes as placed, about 14,074 with its 811-byte frame, under D3-1328's 14,106. The words were signed off at 17:54; the weight now is too. The nine-into-eight count and the seventeen-in-nineteen count are right as the decisions file now states them.
+
+### Two rulings for the guide's last build (18:32 UTC)
+
+- **S06, S37 and S42 take `"typography": {"curl_quotes": true}`, as S09, S10 and S21 did. For the editor:** printed words only (D3-519); the data and each CSV export stay as stored. By `grep` on the builder's 1,440 px SVGs, none of the three drawings holds a straight apostrophe, so each drawing must come out byte-identical; please confirm that with the kit after the change, and if any drawing moves, hold the change and tell me. S06 is a board 1 chart: a curl in its table text changes no drawing, so panel 1 needs no new row.
+- **S12's 1,024 px figure is 558 px, for the builder:** the guide's column at a 1,024 px window, from the cartographer's measure file (`guide_column`, "558 px at 1024"), so the 1,024 px frame scrolls 466 px. The measure file's 556 is the part of the drawing visible inside the frame's edges; the board prints 558 wherever it names the column, labels included.
 
 ### Routine calls, fix round
 

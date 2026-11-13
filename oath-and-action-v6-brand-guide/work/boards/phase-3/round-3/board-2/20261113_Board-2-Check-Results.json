@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "checked": "2026-11-13T18:29:54.880Z",
+ "checked": "2026-11-13T18:33:21.264Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 2910,
+   "texts": 2935,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -42,7 +42,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 560753,
+   "height": 560314,
    "axe": [
     {
      "id": "html-has-lang",
@@ -58,7 +58,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 3080,
+   "texts": 3105,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -91,7 +91,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 609388,
+   "height": 609576,
    "axe": [
     {
      "id": "html-has-lang",
@@ -107,7 +107,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 3080,
+   "texts": 3105,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -140,7 +140,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 619133,
+   "height": 619319,
    "axe": [
     {
      "id": "html-has-lang",

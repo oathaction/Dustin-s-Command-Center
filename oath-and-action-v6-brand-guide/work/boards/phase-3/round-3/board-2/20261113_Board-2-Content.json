@@ -205,12 +205,12 @@
     "Limit",
     "Within it"
    ],
-   "caption": "Chapter 14’s examples {what}, against Rule 01.9’s limit",
+   "caption": "Chapter 14’s {base} examples {what}, the {built} built and round 4’s {planned} as planned, against Rule 01.9’s limit",
    "pass_words": "Yes",
    "fail_words": "No",
    "dr229_h": "Election data",
    "dr229_count": "{n} examples draw on election data.",
-   "dr229_caption": "The examples that draw on election data",
+   "dr229_caption": "The {n} of chapter 14’s {built} built examples that draw on election data",
    "dr229_facts": {
     "election_domain": "In elections and representation",
     "voting_under_taking_part": "Reported voting, counted under taking part",
