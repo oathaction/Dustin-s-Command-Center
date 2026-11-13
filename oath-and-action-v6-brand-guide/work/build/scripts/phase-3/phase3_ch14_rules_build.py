@@ -892,21 +892,28 @@ def rule_14_6(B):
          "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
          # RF-17's two findings, and RF-1 (D3-890, BC M1, CD A-M2): Rule 05.1's share, stated once here
          "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since "
-         "two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named "
-         "mark that would pass that share, such as a part of a treemap, pie or donut, or a tall column in a short run, takes Charcoal at the "
-         "subject weight as well. Red never codes a series, a group, a step on a scale or a sign, such as a deficit or a loss."],
+         "two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width. An area’s "
+         "size follows its data, so a named area takes Charcoal at any size: a part of a treemap, pie, donut or funnel, a region on a map, a "
+         "node or a cell, or a line or band whose width carries an amount, such as a flow. A named mark that would pass that share, such as "
+         "a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or "
+         "in a process, or a sign, such as a deficit or a loss."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
         [("The point", "Pillar Red with a 1 px Charcoal keyline", "oa.chart.color.point.onNewsprint"),
          ("Its label", "Beside the mark, in the text ink"),
          ("A chart of one mark", "One line, bar or path in Charcoal at the subject weight, the title’s value labeled",
           "oa.chart.color.subject.onNewsprint"),
+         ("A diagram’s path", "The path the question follows in Charcoal at the subject weight, the branches it leaves in the context ink, "
+                              "no red", "oa.chart.color.subject.onNewsprint"),
          ("A comparison", "The light fill, with its label", "oa.chart.color.lightFill.onNewsprint"),
          ("An error, a step, a sign or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
          ("Two findings", "Both in Charcoal at the subject weight, each with its label"),
-         ("Past 5 percent of the drawing", "Charcoal at the subject weight, with the label (Rule 05.1)", "oa.chart.color.subject.onNewsprint"),
-         ("A total or national line", "Dashed in the text’s ink, with its own label", "oa.chart.color.label.onNewsprint"),
-         ("Red never", "Codes a series, a group, a step on a scale or a sign, such as a deficit or a loss")],
+         ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1)", "oa.chart.color.subject.onNewsprint"),
+         # ruling (b) of round 2 (D3-677) and round 3's map case: one row for every place a total or national figure sits
+         ("A total or national figure", "Across a plot, a line dashed in the text’s ink; as a point, an open ring; in a list, the first row, "
+                                        "set apart; on a map, beside it with its name and value. Each takes its own label",
+          "oa.chart.color.label.onNewsprint"),
+         ("Red never", "Codes a series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss")],
         ["05.1", "05.3", "05.5", "05.7", "01.1", "01.2", "14.7", "14.12"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
         "where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and "
