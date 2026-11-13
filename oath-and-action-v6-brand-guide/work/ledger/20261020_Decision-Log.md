@@ -5816,3 +5816,11 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 |---|---|---|
 | D3-1531 | ST2-M1's split is by payment date at July 21, 2024, for every fund on both sides, carried as two columns on the line 22 rows | One date test read both ways (DR-93); columns let every figure a note prints be checked by script against the rows |
 | D3-1532 | A committee's names in the cycle come from its filed Form 1 files, not the FEC's committee history | The history gives one name a two-year cycle, the latest, and the filings list prints today's name on old filings |
+
+### Main session, round 3 review close
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1533 | Round 3's review closes on the committed state: strict build exit 0, 0 warnings, 11,235,128 bytes, 344 rules, 638 specimens; `phase3_ch14_build.py --check` 87 of 87 files current; `oa-chart.mjs build --all --no-png` 84 of 84 PASS, 84 check files, 0 faults, 0 warnings; data check 125 tables, 0 faults; `geo_build.py --check` current; V7 check PASS, 0 failures; quick guide check with photographs PASS at 1440 and 390 px and the four-width check PASS at 1440, 1024, 390 and 360 px, each 344 rules, 694 specimens, 3,296 same-page links, 0 failures; share per plate 13,322 for round 4's 13 specimens; projection 15,044,827 of 15,500,000; the creative director's rescore puts all five items at 4 or more | The brief's close: every owner reported, the data lead signed off every change, and the checks pass on the build board 2 will show |
+| D3-1534 | D3-1373's failure is closed: the four-width check passes at 360 px on a quiet machine, chapter 18's bill tracker included, so the earlier `codeMatch` result was the load's | V14 and V21: a check under load checked nothing; the quiet rerun is the result |
+| D3-1535 | This chat hands off before board 2 with handoff V23 (`work/handoffs/phase-3/20261113_Next-Session-Handoff_V23.md`), work tracker row `c03` set done; the five questions asked in this chat go to board 2 unanswered, with their recommendations | V22 section 2C and DR-252: round 3's review, fix pass, second pass and rescore are done, and board 2 runs in its own chat |
