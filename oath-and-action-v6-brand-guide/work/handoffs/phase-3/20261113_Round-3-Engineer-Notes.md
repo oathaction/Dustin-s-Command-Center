@@ -120,6 +120,10 @@ Strict build exit 1 on three far-over plates, all maker A's: S72 81,880 bytes, S
 
 Exit 0, no warning. Page 11,218,725; projected 15,044,385; chapter 14 with the kit 2,211,215 of 2,803,941; renderer 509,938; map geometry 133,117 of 250,000; rules with the opener 175,657 of 212,288; chapter 15 307,066. **Share per plate for the 13 still to come: 14,719** (84 placed, 87 forms registered). Round 3's 20 plates on the page with their frames (a plate frame measures about 750 bytes, not the 1,300 R3-8 allowed): S69 14,584; S81 13,351; S82 13,293; S67 13,283; S83 13,207; S71 12,149; S74 11,671; S72 11,296; S84 10,820; S66 9,943; S70 9,688; S73 9,595; S68 9,453; S78 9,063; S75 7,914; S77 7,410; S76 7,253; S80 6,508; S65 6,243; S79 4,310. Only S69 is over 13,852 (by 732), under D3-1097's 15,000. `phase3_ch14_build.py --check` read 84 of 87 files current: the chapter files lag the newest entries until an owner reruns the generator.
 
+### Weight, strict build at 02:41 UTC (clock read), after the later requests
+
+Exit 1 on one line: S84's bare CL1516, which passes once the cartographer adds CL1516 to S84's `v7.ids` (C-E6 now requires its chip). Page 11,226,936; projected 15,044,385; chapter 14 with the kit 2,219,426 of 2,803,941; renderer 512,348; map geometry 133,117 of 250,000; rules with the opener 175,796 of 212,288. **Share per plate for the 13 still to come: 14,089.**
+
 ## Routine calls
 
 - D3-xxx | Links are read by the layout guard as lines no word may sit under, and the kit never clears one with a knockout | R3-5 asks the guard to read links; a gridline's knockout would hide a link that runs through a node's words
