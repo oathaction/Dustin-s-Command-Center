@@ -270,6 +270,9 @@ function audit(page) {
         // access S3 (Phase 3 round 1 fix pass): a stage that holds a kit figure is described by the figure's own alt, which
         // names its drawing, so the stage carries no description of its own
         const kitAlt = norm(((s.querySelector('figure.oac-fig .oac-alt') || {}).textContent) || '');
+        // R4-3 (round 4): a card figure (HTML text, no drawing) is named once by its short alt, the cards' group label
+        const card = s.querySelector('figure.oac-fig[data-oa-html] > .oac-art.oac-html[role="group"]');
+        const cardAlt = norm((card && card.getAttribute('aria-label')) || '');
         const d = (s.getAttribute('aria-describedby') || '').split(/\s+/).map((x) => document.getElementById(x)).filter(Boolean).map((x) => norm(x.textContent)).join(' ');
         // AX S6 (round 2 fix pass): a sketch stage is a group whose drawings are images, each named by its own title, under
         // the figure's caption, the alt's first sentence; it needs no description of its own
@@ -277,7 +280,7 @@ function audit(page) {
         const fig = s.closest('figure');
         const cap = norm(((fig && fig.querySelector('figcaption')) || {}).textContent || '');
         const skNamed = sk.length > 0 && cap.length >= 15 && sk.every((v) => v.getAttribute('role') === 'img' && (norm(v.getAttribute('aria-label')) || v.getAttribute('aria-labelledby') || v.querySelector(':scope > title')));
-        if (d.length < 15 && kitAlt.length < 15 && !skNamed) sp.noAlt.push({ specimen: id, label: d, role });
+        if (d.length < 15 && kitAlt.length < 15 && cardAlt.length < 15 && !skNamed) sp.noAlt.push({ specimen: id, label: d || cardAlt, role });
       }
     });
     document.querySelectorAll('img').forEach((im) => { if (!im.hasAttribute('alt')) sp.imgNoAlt.push({ src: (im.getAttribute('src') || '').slice(0, 60), where: where(im) }); });
@@ -2409,6 +2412,8 @@ const PLANTS = [
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
   { key: 'aliases', fault: 'the #grid alias removed from 08 The lockmark', js: () => { document.getElementById('grid').remove(); } },
   { key: 'specimenAlt', fault: 'a specimen stage with no alt', js: () => { document.querySelector('[data-specimen][role="img"]').removeAttribute('aria-label'); } },
+  { key: 'specimenAlt', fault: 'a card figure (R4-3) whose group label is too short to name it', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="plate-stage" data-specimen="s-14-t-card" role="group" aria-label="Cards, specimen"><figure class="oac-fig" data-oa-html><div class="oac-art oac-html" role="group" aria-label="Six facts"><ul class="oac-h-facts" role="list"><li class="oac-h-item">A fact</li></ul></div></figure></div>'); } },
+  { key: 'specimenAlt', expect: false, fault: 'a card figure (R4-3) named by its group label of 15 characters or more (allowed: must not be flagged)', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="plate-stage" data-specimen="s-14-t-card" role="group" aria-label="Cards, specimen"><figure class="oac-fig" data-oa-html><div class="oac-art oac-html" role="group" aria-label="Six facts on what public school systems spend"><ul class="oac-h-facts" role="list"><li class="oac-h-item">A fact</li></ul></div></figure></div>'); } },
   { key: 'imgAlt', fault: 'an <img> with no alt', js: () => { const i = document.createElement('img'); i.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACw='; i.width = 20; i.height = 20; document.querySelector('.rule .why').append(i); } },
   { key: 'svgNames', fault: 'an inline SVG neither named nor hidden', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<svg width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="currentColor"/></svg>'); } },
   { key: 'pendingSpecimens', fault: 'a specimen file missing', js: () => { document.querySelector('[data-specimen]').setAttribute('data-pending', 'true'); } },

@@ -25,6 +25,8 @@ Started 20:39 UTC (clock read). **Row done at 21:57 UTC (clock read); ready for 
 - **Snapshot (finished by 21:51):** every spec of the round's starting commit (829d0db8, 103 specs, 1,133 drawings and figures) drawn with that commit's kit and tokens and with today's: **16 differ, all named for board 3**: S12's 8 (the stacked tile at 720 and 1024 px and its phone at 328 and 358 px, both grounds), S07's 4 and S78's 4 phone drawings (the tile gap). Every other drawing is byte-identical.
 - **Next:** the closing checks (running: the guide check's self-test, the kit's self-test and `build --all --no-png` with the sweep), then the strict build and weight report.
 
+- **After the hand-back (the main session's closing check, 22:33 UTC):** `specimenAlt` failed on S90, S91, S92 and S94, since `guide_check.js` read a kit figure's alt only from `.oac-alt`, and R4-3 names a card figure by its group label (`.oac-art.oac-html[role="group"][aria-label]`), as the accessibility lead tested. **Fixed (from 23:04 UTC):** the test also accepts that label at 15 characters or more; every other case is unchanged. Two self-test plants: a card figure with a 9-character label is caught, one with a full label is left alone. **Proved (clock read 23:28 UTC):** `guide_check.js --self-test` PASS, the clean demo passes, 131 of 131 planted faults caught, 39 of 39 allowed cases left alone; `--quick --no-captures` on the main session's `close2/guide-check-copy.html`: PASS, 2 widths, 360 rules, 713 specimens, 3,399 same-page links, **0 failures**.
+
 ## Summary
 
 - **R4-2:** the stacked tile measured (share 13,235 to 13,172), signed off, landed: S12's only desk tile, `stage_min` (a floor for the stage), and D3-1546's check (`c.cell`), proved by the planted 558 px case. The cartographer set `"stage_min": 618`.
@@ -202,6 +204,7 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 
 - D3-xxx | The chapter generator defaults to rounds 1 to 4 | ED4-6: the brief's closing run takes no flag, and with round 3's default it would drop round 4's 13 entries; DR-253 set round 3's default the same way
 - D3-xxx | A pivot's row header takes the spec's typography | ED4-3: its cells already did (C-E7); only S37 holds a straight mark there, so no other chart moves
+- D3-xxx | The guide check reads a card figure's alt from its group label, at 15 characters or more | R4-3 names an HTML card figure once by its short alt on the cards' group, which the accessibility lead tested; the check had read only the SVG figure's `.oac-alt` (V18: the check was at fault)
 - D3-xxx | A specimen's keyboard path is named by its manifest's `"keys"` and walked from `work/build/guide/specimens/<id>.keys.json` | The accessibility lead's request 2; the walk is the code sets' own, so one reader of oa-keys/1 serves both
 - D3-xxx | S12's 1 px case shrinks the drawing to its column rather than moving the frame's switch point | At a 617 px column the stacked tile does not fit (it needs 618), so drawing at the column would fall back to the phone's steps; a shrink of 1 px in 618 moves no word off the type scale
 - D3-xxx | The design director's orphan guard is opt-in, `typography.pretty` | Applied to every drawing it would move words in 61 specs, 56 of them signed off
