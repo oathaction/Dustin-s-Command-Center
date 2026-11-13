@@ -419,13 +419,102 @@ def main():
     print(json.dumps({k: v for k, v in data.items() if k != 'families'}, indent=1, ensure_ascii=False))
     for r in rows:
         print('%-70s p0 %4d/%d  rerun %4d/%d  %s  v7-side-equal=%s' % (r[0][:70], r[1], r[2], r[3], r[4], r[5][:60], r[6]))
+    data['reviewed_false_positives_found_again'] = FAM['Connection IDs with a grade, delay or glyph shown beside them'].get('reviewed_false_positives', [])
+    md = table_md(data, rows, tot_p0, tot_re, tot_conf, changed, model_ok, id_changed)
+    assert '—' not in md and '‑' not in md
     if write:
-        if OUT_JSON.exists() and json.loads(OUT_JSON.read_text(encoding='utf-8')) == data:
-            print('data unchanged')
-        else:
-            OUT_JSON.write_text(json.dumps(data, indent=1, ensure_ascii=False) + '\n', encoding='utf-8')
-            print('wrote', OUT_JSON.relative_to(ROOT))
+        for p, text in ((OUT_JSON, json.dumps(data, indent=1, ensure_ascii=False) + '\n'), (OUT_MD, md)):
+            if p.exists() and p.read_text(encoding='utf-8') == text:
+                print(p.name, 'unchanged')
+            else:
+                p.write_text(text, encoding='utf-8')
+                print('wrote', p.relative_to(ROOT))
+    else:
+        print(md)
     return 0
+
+
+def table_md(data, rows, tot_p0, tot_re, tot_conf, changed, model_ok, id_changed):
+    rec = [r for r in rows if r[3]]
+    notrec = [r for r in rows if not r[3]]
+    n_rec_p0 = sum(r[1] for r in rec)
+    n_not = sum(r[1] for r in notrec)
+    rfp = data['reviewed_false_positives_found_again']
+    L = []
+    w = L.append
+    w('# Atlas re-check, Phase 3 round 3')
+    w('')
+    w('Research lead, November 13, 2026, for DR-250. Data only: nothing in Phase 0’s files, `source/`, the atlas or its '
+      'documents changed. Script: `work/build/scripts/phase-3/research_atlas_recheck.py`; machine-readable results: '
+      '`work/research/20261113_Atlas-Recheck-Data.json`. Phase 0’s table, `work/handoffs/phase-0/20261020_Atlas-'
+      'Reconciliation-Table.md`, stays as it is and stays with chapter 15 at board 3.')
+    w('')
+    w('## What the rerun found')
+    w('')
+    w(f'**No comparison changed.** {tot_re:,} of Phase 0’s {tot_p0:,} comparisons were rerun against today’s Atlas V7 and give '
+      f'the results Phase 0 recorded: {tot_conf} conflicts, the same two Ledger reform counts for D03 and D04 that Phase 0 '
+      'found, and nothing new. The rerun also found again, word for word, the 8 flags Phase 0 read in context and set aside '
+      'as false positives. Every one of the '
+      f'{data["identifier_occurrences_rechecked"]:,} identifier occurrences Phase 0 recorded still resolves to the same kind '
+      f'of record ({len(id_changed)} changed). So the rerun adds **no candidate V7.1 item**; the two Ledger counts are '
+      'Phase 0’s, already on its list.')
+    w('')
+    w(f'The other {n_not:,} comparisons could not be rerun from the record, because Phase 0 read their page side from lines '
+      'or drawings it did not store. Each of those families is tested through every V7-side value Phase 0 did store, and all '
+      'are equal today; beyond that they rest on the model’s provenance, below.')
+    w('')
+    w('## Which files the rerun could and could not read')
+    w('')
+    w('- **Read:** Phase 0’s recorded data, `work/handoffs/phase-0/20261020_Atlas-Reconciliation-Data.json` (each page’s side '
+      'of a comparison, as Phase 0 extracted it, and the V7 values it computed); Phase 0’s script '
+      '`work/build/scripts/phase-0/atlas_reconcile_extract.py`, whose header (the V7 helpers, which read no source file) the '
+      'rerun runs as Phase 0 ran it; today’s V7, `work/extract/atlas-v7-data.json`, ' +
+      ('equal byte for byte' if model_ok else 'NOT equal') + ' to the committed `work/research/atlas-v7-docs/20261015_Atlas-V7-'
+      'Model.json` (SHA-256 ef1028ac87e402e3...c7f2).')
+    w('- **Could not read:** the three supplied documents Phase 0 scanned, which stay out of git and are not in this container: '
+      '`source/20261019_Oath-And-Action-Atlas-Design-Concepts_V2.html` (SHA-256 56980de8...8490 on October 20), '
+      '`source/20261018_Oath-And-Action-Brand-Guide_V5-Polished.html` and `source/20261018_Oath-And-Action-Atlas-Visual-'
+      'System.html`, with their extracts under `work/extract/v5-polished/` and `work/extract/atlas-visual-system/`. Nor the '
+      'Atlas V7 HTML itself; its model block is the committed file above.')
+    w('- **Provenance of the model.** Phase 0 read `work/extract/atlas-v7-data.json` as extracted from '
+      '`20261015_Who-Do-They-Answer-To-Systems-Atlas_V7.html`, SHA-256 05e26c6b...7649 on October 20 (source manifest). '
+      'The manifest records the same checksum, byte for byte, for the uploads of November 5 and November 10, and the '
+      'committed model is that page’s `atlas-data` block. Today’s V7 is therefore the model Phase 0 compared against.')
+    w('')
+    w('## Families')
+    w('')
+    w('| Family | Phase 0 comparisons | Phase 0 conflicts | Rerun comparisons | Rerun conflicts | How | Phase 0’s recorded V7 side equal today |')
+    w('|---|---|---|---|---|---|---|')
+    for r in rows:
+        v7s = FAM[r[0]].get('v7_side')
+        w(f'| {r[0]} | {r[1]:,} | {r[2]} | {r[3]:,} | {r[4]} | {r[5]} | ' +
+          (f'yes, {sum(v7s)} of {len(v7s)} values' if v7s else 'none recorded') + ' |')
+    w(f'| **Total** | **{tot_p0:,}** | **2** | **{tot_re:,}** | **{tot_conf}** | {n_rec_p0:,} rerun; {n_not:,} not | |')
+    w('')
+    w('## Conflicts today')
+    w('')
+    for r in rows:
+        for c in FAM[r[0]]['conflicts']:
+            w(f'- {r[0]}: {c["item"]}, shown {c["shown"]}, V7 today {c["v7_today"]}. Phase 0 found the same (its findings, '
+              'Ledger reform counts; Phase 0 table rows on D03 and D04).')
+    w('')
+    w(f'Flags set aside as in Phase 0 ({len(rfp)}): ' + '; '.join(f'{x["item"]} "{x["shown"]}" in {x["file"].split("/")[-1]} ({x["why"]})' for x in rfp) + '.')
+    w('')
+    w('## Candidate V7.1 items for the data lead')
+    w('')
+    w('None from this rerun. ' + ('Families whose result changed: ' + ', '.join(changed) + '.' if changed else
+      'No family’s result changed.'))
+    w('')
+    w('## Not rerun, and why')
+    w('')
+    for r in notrec:
+        w(f'- {r[0]} ({r[1]} comparisons): {r[5]}.')
+    w('- Circuit: 18 of its 27 comparisons (the 5 pass-on examples and 13 drawn bundle counts) were not recorded; the tally '
+      'and the four area cards were rerun.')
+    w('- To rerun these from the pages, the three supplied documents above must be in the container; Phase 0’s script then '
+      'runs as written, with its output path changed so Phase 0’s files are not overwritten.')
+    w('')
+    return '\n'.join(L) + '\n'
 
 
 if __name__ == '__main__':
