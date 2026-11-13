@@ -353,6 +353,9 @@ def figures():
     for piece in ('C00867937, “2024 RNC VICTORY” (first filed 2024-01-31) then “TRUMP 47 COMMITTEE” (filed as a new name 2024-03-14) then “TRUMP 47 COMMITTEE, INC.”', 'C00873893, “TRUMP NATIONAL COMMITTEE JFC” (first filed 2024-03-20) then “TRUMP NATIONAL COMMITTEE JFC, INC.”', 'C00770941, “TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE” (on file 2022-12-05);', 'C00855114, “TRUMP BILIRAKIS VICTORY FUND” (first filed 2023-10-30)', 'C00828541, “DONALD J. TRUMP FOR PRESIDENT 2024, INC.” (filed as a new name 2022-12-05) then “NEVER SURRENDER, INC.” (filed as a new name 2024-11-12)'):
         same('S73', piece in names, True, 'the Republican names in the cycle: ' + piece[:30])
     want('S73', t, 'The Republican campaign kept one candidate through the cycle, so its funds are not split; the Trump 47 Committee was named 2024 RNC Victory until March 14, 2024', 'the Republican side, one test (ST2-M1 point 3)')
+    same('S73', 'two, both from the Trump National Committee JFC on December 11, 2024' in names and '$19,128,807.19 in all, inside the drawn amount' in names, True, 'drawn payments after the November 12, 2024 rename (the research lead\'s check)')
+    want('S73', t, 'and the campaign committee took the name Never Surrender, Inc. on November 12, 2024', 'the November 12 rename, named once (D3-1509)')
+    same('S73', sp['source_line'], meta('fec-jfc-transfers-2024-all-committees')['source_line_variants']['with_form_1'], 'the source line is the with_form_1 variant, as stored')
     same('S73', any(w in sp['title'] for w in ('53', 'to two')), False, 'the title sets no one fund\'s reach against another\'s (BC-M1)')
     n22 = [r for r in nodes if r['amount_lines'] == '22']
     nk = lambda r: r['node'] + ' (' + r['nominee'] + ')'

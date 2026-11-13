@@ -150,4 +150,61 @@ No red and blue anywhere, no Prussian for a party, and no party named by color. 
 
 November 13, 2026, from 06:53 UTC (clock read with `date -u`). Build read: the fix pass's closing strict build (`.../round-3-fix/close/guide.html`, 11,231,784 bytes, 0 warnings), copied to `.../round-3-review/brand-craft/second/` before any capture. Read first: the fix brief and its addendum (D3-1329, D3-1330), the data lead's "Review fix pass", "Sign-off, review fix pass" and "Rulings on the brand and craft report (BC)", the owners' "Review fix pass" sections, and the decision log from D3-1319 to D3-1498.
 
-Status: in progress (word and table checks done; captures running).
+The container restarted at about 07:00; the scratch captures survived and this section was finished from them at 07:10 UTC. Since the closing build, S73 is being reworded under ST2-M1 and S12's stage is getting a visible scroll hint (RS-1); I judged those two from `s73.json`, `s12.json` and the owners' notes, not from that build.
+
+### Score for this lens, second pass: 4 of 5
+
+Every title now passes the party test from both sides, S73's comparison holds across every fund the rule finds, the two diagram tables print their links, and the maps keep their codes and closest races on Charcoal; S16's phone codes, S12's hidden scroll and the avoid sketch's colors keep the lens from 5.
+
+### Each BC item
+
+| Item | Status | What I saw |
+|---|---|---|
+| BC-M1, S73's comparison | **Closed another way under D3-1330 and D3-1361**, with ST2-M1's rewording in progress | All seven designated funds drawn, one bar a side, receivers folded by kind by one rule; "54 other committees" against "56" holds across all of them. ST2-M1's ruling removes the nominees' possessive (the Democratic funds carried Biden's name until July 21, 2024). Judged from the spec and the editor's draft: notes 1, 2, 4 and 5 and the bar heads now read "the Democratic campaign" and "the Republican campaign" in one frame, note 2 splits the Democratic funds at July 21 and reads the same test on the Republican side ("kept one candidate through the cycle", the 2024 RNC Victory rename named once). The draft title, "Joint fundraising committees that paid the 2024 Democratic presidential campaign sent $955.9 million to 54 other committees, and those that paid the Republican campaign sent $679.8 million to 56", reads alike from the left and the right. Until it lands, the spec still prints the possessive title, and the chart note still says "both nominees’ committees" |
+| BC-M2, S73's and S68's tables | **Closed** (D3-1331, D3-1333) | In the closing build S73's "From" names a fund in all 20 rows and both refund rows print "28C, refund"; S68 prints "None drawn" for the four bodies with no line |
+| BC-M3, S71's "round 0" | **Closed** | "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona"; "round 0" appears nowhere in the build |
+| BC-S1, S80's land | **Closed under D3-1363** | A framed "Detroit area" inset in both panels numbers the 6th and 10th to 13th at 720 px on both grounds and at 358 px in the guide; note 3 says each district elects one member whatever its area; entry 14.119 says the same and points to Rule 14.121 |
+| BC-S2, S73's nodes and S76's key | **Closed** (D3-1356, D3-1364) | S73's bars solid, links in the light fill with a party-ink edge, so nodes and links read apart on both grounds at 720 to 256 px; S76's key band in the band fill with its edge |
+| BC-S3, S81's no estimate | **Closed under D3-1365** | Hatched swatch and county on Charcoal, apart from "Under $50,000" |
+| BC-S4, S82's closest races | **Closed under D3-1366** | On Charcoal at 358 px, enlarged three times from the true-size capture, an under-5 seat is a dark fill inside a bright full edge and a ghost a faint inset outline; grid 2 px inside the drawing |
+| BC-S5, map codes | **S78, S80 and S82 closed** under D3-1325 and D3-1367 (S82's ND, VT and WY in the note, D-4). **S16 not closed** | S16 at 358 px: CT, TN and VA now sit by their circles, but VT's code moved 86 px west of its circle to sit above Michigan beside "WV", and KY's 73 px east to sit beside North Carolina, both further than board 1 placed them (measured from the SVG). In the guide at 390 and 360 px S16 draws under 340 px, where its form codes only circles that hold their code (KR2): 42 of 51 places uncoded. That was so before the fix pass too, and I missed it in the first pass; D3-1329's test at 358 px is a width the guide never gives S16 on a phone |
+| BC-S6, S79's neighbors | **Closed** (C-S5) | The view sits in a thin frame, so the neighbors' lines end at a drawn edge; "Kern County" on a short leader up into the county |
+| BC-S7, S69 and S70 order | **Closed** (D3-1404, D3-1405) | Both read in order down each column, S69 by printed name. Small: S69's joint committees sort "Joint Committee on the Library" after "Taxation" by letter case |
+| BC-S8, S66's spine | **Closed** (D3-1400) | One even gap between the five steps; step 1's branches run on beside steps 2 and 3 |
+| BC-S9, S65 from the right | **Closed under D3-1368** | "states ended 16.0 million ... they found ineligible"; note 1's example rests on 42 CFR 435.916, and it says the record does not count how many were still eligible |
+| BC-S10, one side named | **Closed** under A-S2's ruling (D3-1395) and D3-1369 | S72's title gives both tallies only; entry 14.115 names both directions |
+| BC-S11, words left by C-1 | **Closed** (D3-1340) | No "gray" left in 14.119 or 14.124; 14.124's caption is one finding, with no contrasting pair |
+| BC-S12, typography and edges | **Closed**, one new break | S65's "16.0 million" and S75's "S. 3349" hold; S67 prints "1,966,852 to 906,851"; S71's "38" ends inside the drawing; S66 spells out the Office of Management and Budget. New: S73's title broke "Donald / J. Trump’s" at 720 px (the creative director's RS-2); the ST2-M1 title names no person, which ends it |
+| BC-S13, S77's claim | **Closed** (D3-1370) | Note 1 ends "a state may move faster than they require" |
+| BC-S14, S74's diagonal | **Closed** (D3-1371) | A gridline-ink line broken round each count, keyed and noted, visible on both grounds |
+| BC-S15, the rail | **Closed** | At 1440 px with group 13 and Rule 14.100 at the top, the active entry shows whole; at Rule 14.115 too |
+| Question 1, the avoid sketch's colors | **Waiting on Dustin** (D3-1322) | The misleading half now draws Party B's five places as large blocks around Party A's seven small ones (D3-1360), so land standing in for votes shows even in gray. Party color still shows only in words, and the key still reads "Party A, shown red" beside a light gray swatch. My recommendation stands: literal red and blue in that half only; if gray stays, the key reads "Party A: red in the form this stands for" |
+
+### New faults since the fix pass
+
+- **N1. S12's stage hides most of the title's states (C-M2's fix; the creative director's RS-1).** At 1440 px the stage shows 723 of the drawing's 1024 px, and at 1024 px 558; New York, New Jersey and Florida, three of the title's four states, sit outside the frame, the cut tiles at the right edge are the only cue, and the plate's hint stays hidden (I read the frame's sizes and the hint's `hidden` in Chromium). Per the coordinator a visible hint is landing; it needs to show at every width where the stage scrolls. Owners: engineer, cartographer.
+- **N2. S16's VT and KY codes (BC-S5 above).** Owner: cartographer, inside ruling (e); and lower the form's 340 px threshold, or give the guide's 326 px drawing its outside codes, so a phone reader in the guide meets the coded map board 1 approved. Board 2 should show S16 at 326 px as the guide places it.
+- **N3. On Charcoal the band-ink ghosts thin the context (D3-1366).** In S80's Democratic panel at 720 px, Michigan's outline is nearly gone, so the 3rd and 8th float with no state around them; on S80 and S82 the key's "Outline" swatch all but vanishes. A 1 px context-ink edge on the state's outer line only (as S81 and S83 draw their land), and on the key swatch, keeps the ghosts below the lightest won seat. Owner: cartographer.
+- **N4. S73's table prints filed capitals** ("Other committees: TAMMY BALDWIN FOR SENATE", "SAVE AMERICA; DONALD J. TRUMP REPUBLICAN N…") beside title-case rows, more rows of it now; the creative director's RS-3. Owner: maker B, editor.
+
+### Weight, second pass
+
+Measured from the closing build: S73 13,504, S82 13,915, S81 13,612, S83 13,393, S12 14,028 (board 1); S69 14,556, over 14,106 but down from 14,591, so it did not grow (D3-1328); none over 15,000. The build report gives the share per plate 13,592 for round 4's 13 (down from 14,106), chapter 14 with the kit 2,223,832, map geometry 133,117 of 250,000, rules with the opener 175,678 of 212,288, and the projection 15,044,827 of 15,500,000.
+
+### Tested, second pass
+
+- `node work/build/chart-kit/oa-chart.mjs build` S65 to S84, S07, S12, S16 at page widths 1440, 390, 328 and 288 on both grounds, sweep on, into `.../brand-craft/second/kit-out`: 23 of 23 PASS, 0 faults.
+- Looked at from those captures: S65, S66, S68, S73, S80 at 720 px on Newsprint; S73 and S80 at 720 px on Charcoal; S69 and S70 whole at 720 px; S74's grid, S76's key and S71's right column at 2x; S73 at 358, 296 and 256 px on Charcoal; S78's desk map at 2x and its tile grid at 358, 296 and 256 px on Charcoal; S82's desk panels on Newsprint and at 358 px on Charcoal in color (enlarged three times) and in grayscale; S81's key on Charcoal; S79's view; S16 at 358 px beside board 1's 390 px captures on both grounds; S12's 1024 px drawing beside board 1's.
+- S16's code positions against their circles at 358 px, and its "Not labeled" lists at every width, read by script from the SVGs; `forms/bubble-map.js` read for its 340 px threshold.
+- The closing guide in Chromium, one browser at a time: entries 14.96, 14.99, 14.100, 14.104, 14.115, 14.116, 14.119, 14.121 and 14.124 at 1440 px and 14.104, 14.115, 14.116, 14.119, 14.121 and 14.124 at 390 px (1x); S16 in the guide at 390 px beside my first-pass capture; S12's frame width, scroll width and hint read at 1440 and 1024 px windows, with a viewport capture at 1440; the rule rail at groups 13 and 15 and Rules 14.100 and 14.115 at 1440 and 1024 px.
+- Page tables of S73, S68 and S71 and the plate bytes of all 23 plates parsed by script from the closing build; fixed words counted in it; the build report's weight read by script.
+- Read: `s73.json`, `s12.json` and every changed spec's and entry's words; the data lead's ST2-M1 ruling and the editor's ST2-M1 draft; the creative director's second-pass Should fixes.
+
+### Not tested, second pass
+
+- S73 as ST2-M1 rewords it and S12's scroll hint: neither is in the closing build; judged from the spec and notes only.
+- Charcoal inside the guide (the guide stays on Newsprint); grayscale beyond S82; forced colors; S81's key at 256 px for "2020 to 2024" (seen at 720 px only).
+- S67, S72, S75, S77, S83 and S84 by eye in this pass (built, PASS).
+- The avoid sketch on Charcoal; the eight reference sketches again (unchanged but 14.94, which the data lead looked at).
+- Every figure in the new notes against the data; the derived files.
+- The guide check (the main session runs it).
