@@ -11,7 +11,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 - **RB3-G1 LANDED (01:55 UTC):** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED (03:50):** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
 - **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
 - **Checks, 03:45 UTC:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **04:30 UTC:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below).
-- **A-E1 and A-E2 LANDED (04:35):** `table.group.by` as a list, aggregates `list` and `count_set`.
+- **A-E1 and A-E2 LANDED (04:35):** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED (04:50):** the page check reads a grouped table's rows from the island.
 
 ## Contracts
 
@@ -141,6 +141,7 @@ Strict build exit 1 on three far-over plates, all maker A's: S72 81,880 bytes, S
 - D3-xxx | `data_round0_build.py` carries the Ballotpedia publisher in `LINE_FIXES` (ENG-R3-1) | A rerun to a scratch folder writes all 34 of its files equal byte for byte to the folder as it stands
 - D3-xxx | `phase3_ch14_build.py` builds rounds 1, 2 and 3 by default (DR-253) | Dustin's permission, as round 2's default did for its round; run with no flag it writes what `--rounds 1,2,3` writes (80 of 80 files current both ways), and lists 7 faults, the map entries 14.117 to 14.123 not yet written
 - D3-xxx | Each step's label ink is a text and fill role (`on-seq-N`, `on-mag-N`, `on-div-N`) | Ruling (b) sets codes and district marks in the step's label ink; the tokens existed, the kit had no class for them
+- D3-xxx | The page check reads a grouped table's rows back from the island and compares its printed rows with the data's groups (RB3-G2) | A grouped table prints no data row; the island holds every row, and the group count proves the page printed each group
 - D3-xxx | A map name that does not fit its shape goes to an eastern column first, then beside through `place_labels`, never onto a dark fill | The small northeastern states read as a list on the ocean; a name over another state's dark step fails forced colors and reads badly
 
 ## Requests log
@@ -155,6 +156,8 @@ Taken in the order they arrived:
 | C-E2, S82's tile layout through `c.extra` | cartographer | Read; nothing to do: the island carries it compressed |
 | A-E1, `table.group.by` as a list of columns | maker A | **Done** (04:35): the key joins the values with ", "; `check` fails a `by` or group column missing from the data; self-test case; told the main session for maker A |
 | A-E2, aggregates `list` and `count_set` | maker A | **Done** with A-E1 |
+| RB3-G2, the page check counts a grouped table's rows | maker B | **Done** (04:50): read back from the island, as `K.rows_from_table` does, and the page's grouped rows compared with the data's groups; S73 and S82 pass `build` with captures; told the main session for maker B |
+| C-E3, the same fault on S82 | cartographer | **Done** by RB3-G2's fix |
 
 To others:
 - **Cartographer:** S16's spec still prints the 2017 credit ("via us-atlas 3.0.1"); replace it with the 2024 files' credit. S16 may move onto `map_fit` to show all of Alaska. De Baca County (35011) has no estimate: per the data lead, the land ink with the context edge and a note. S81 reads a class column (DL-E1 variant B); ruling (c)'s breaks give four classes.

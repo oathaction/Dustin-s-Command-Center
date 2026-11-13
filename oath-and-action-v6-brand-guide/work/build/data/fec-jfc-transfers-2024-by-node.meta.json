@@ -13,7 +13,7 @@
  ],
  "observation_period": "2023 to 2024 election cycle",
  "geography": "United States",
- "universe_or_base": "For each major-party nominee, the joint fundraising committee that transferred the most to the nominee’s principal campaign committee in the 2024 cycle, and every committee it paid",
+ "universe_or_base": "For each major-party nominee, the joint fundraising committee that transferred the most to the nominee’s principal campaign committee in the 2024 cycle, and every committee it paid on line 22 (transfers) or line 28C (refunds)",
  "unit": "dollars; transactions",
  "date_retrieved": "2026-11-12",
  "vintage": "FEC processed filings as the API served them on November 12, 2026",
