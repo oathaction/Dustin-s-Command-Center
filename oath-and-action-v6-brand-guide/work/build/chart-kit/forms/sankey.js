@@ -50,7 +50,7 @@
           var g = groups[l.key] || null, w = Math.max(1, l.w), r = l.row.row || l.row;
           if (g !== last && (g || last)) yy += 12;
           var gh = 0;
-          if (g && g !== last) gh = Math.ceil(c.wrap(g, 'tick', cw, 700).length * tk * 1.25) + 2;
+          if (g && g !== last) gh = Math.ceil(c.wrap(g, 'tick', cw - 8, 700).length * Math.round(tk * 1.25)) + 4;
           var words = [nm(r), '$' + fv(l.value)];
           var th = Math.ceil(c.wrap(words[0], 'label', cw - 8, 400).length * lb * 1.25 + tk * 1.25) + 2;
           out.push({ l: l, r: r, g: g !== last ? g : null, gy: yy, y: yy + gh, h: Math.max(w, th), w: w, words: words });

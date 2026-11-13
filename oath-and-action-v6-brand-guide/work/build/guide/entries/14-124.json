@@ -1,0 +1,39 @@
+{
+ "id": "14.124",
+ "title": "Avoid coloring a map by party, which takes a side before the reader reads it.",
+ "rule": [
+  "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words: one panel for each party, named with the seats it won, each place filled in its winner’s panel and outlined in the other, and the margin in gray steps that darken as it widens (Rule 14.7). Show a shift with arrows and the direction named in words."
+ ],
+ "use_when": "Never: a reader who asks which party won each place, and by how much, gets a fairer answer from gray panels by party.",
+ "use_instead": [
+  {
+   "when": "Every House seat, who won it and by how much",
+   "rule": "14.121"
+  },
+  {
+   "when": "One state’s districts on their real shapes",
+   "rule": "14.119"
+  },
+  {
+   "when": "How far each state moved between two elections",
+   "rule": "14.115"
+  }
+ ],
+ "why": {
+  "text": [
+   "Red and blue are the parties’ own colors, so a map in them reads as one side’s scoreboard before anyone reads a number. On real shapes the color also lets land stand in for votes, and a party that wins large, thinly settled places looks bigger than its count."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-124-sketch",
+ "tier": "avoid",
+ "tokens": [],
+ "related": [
+  "14.7",
+  "14.6"
+ ],
+ "builders": "No kit form, by design; draw district-map (s80) or district-tile-map (s82): labels.panels names each party with its seats, and the margin takes the gray magnitude steps.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "The same invented results drawn twice: shaded from one party’s color to the other’s, the map takes a side at a glance, while two gray panels, one for each party’s seats, show who won each place and by how much with no color for either party."
+}

@@ -40,7 +40,8 @@ For the engineer and the cartographer: Alaska's Aleutians west of 180 degrees ca
 
 ## Data check over derived files
 
-(Waiting for the makers.)
+- **`govinfo-snap-application-path` (maker B, S77), 01:25 UTC: 0 faults.** My own script (`check_derived_snap.py`, scratch) recomputed it from `govinfo-snap-application-steps`: 5 rows, main path by order then the branch; all 8 carried columns equal the source row for row; `next_step` names the next main step, the first also names the branch, and the last main step and the branch each end; `path_words` matches `path`; the sidecar's domain, states, ledger row, publisher, addresses, period, vintage and retrieval date equal the source sidecar's; `kind`, `derived_from` and `derivation` present; no em dash, U+2011 or straight quote in the printed line. Maker B's `--check`: 0 faults. Data check: 120 tables, 0 faults. No new ledger row; listed under P7-208. **Wording point for maker B and the data lead** (7 CFR 273.2(i), read on eCFR November 13, 2026): an expedited household is still interviewed within the 7 days ((i)(3)(iii)), and verification it postpones comes due by the second or third month of participation ((i)(4)(iii)(A) and (B): "the household must reapply and satisfy all verification requirements which were postponed"). "Interview; or expedited service" and "None: the branch ends with benefits" say less than the rule; suggested branch next step: "Postponed proof, due by the second or third month of benefits".
+- Waiting: the cartographer's class column for S81 (`cartographer_round3_derive.py`).
 
 ## Routine calls
 

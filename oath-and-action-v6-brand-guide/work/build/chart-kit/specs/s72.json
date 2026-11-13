@@ -1,0 +1,64 @@
+{
+  "kit": 1,
+  "id": "S72",
+  "form": "roll-call-grid",
+  "family": "structure",
+  "tier": "extended",
+  "dataset": "congress-hr5371-roll-calls-by-member",
+  "reader_question": "How did each senator and representative vote on the November 2025 bill that ended the shutdown?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Senate’s and the House Clerk’s roll call records",
+  "title": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with 7 Democrats and 1 independent joining 52 Republicans, and the House 222 to 209 two days later.",
+  "measure_line": "How each member voted on H.R. 5371, the continuing appropriations act that became Public Law 119-37: the Senate’s vote on passage, November 10, 2025, and the House’s vote to agree to the Senate’s changes, November 12, 2025",
+  "notes": [
+    "The House had 433 members on November 12, 2025, and 2 of its 435 seats were vacant. Six Democrats voted yes in the House and two Republicans voted no; one member of each party did not vote.",
+    "In the Senate, one Republican voted no, and the two independents, whom the record lists apart from both parties, split one yes and one no."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "One square for each member of Congress on the bill that ended the November 2025 shutdown. Senate, November 10, 2025, on passage of the bill: passed 60 to 40. Democrats, 45: 7 yes, 38 no. Independents, 2: 1 yes, 1 no. Republicans, 53: 52 yes, 1 no. House, November 12, 2025, on the motion to concur in the Senate amendment: passed 222 to 209. Democrats, 214: 6 yes, 207 no, 1 not voting. Two seats vacant. Republicans, 219: 216 yes, 2 no, 1 not voting.",
+  "table": {
+    "caption": "How each member voted on H.R. 5371, Senate vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025, as each record lists them",
+    "columns": [
+      { "field": "member", "label": "Member", "format": "text", "row_header": true },
+      { "field": "chamber", "label": "Chamber", "format": "text" },
+      { "field": "party", "label": "Party", "format": "text", "words": { "D": "Democrat", "R": "Republican", "I": "Independent" } },
+      { "field": "state", "label": "State", "format": "text" },
+      { "field": "vote_cast", "label": "Vote, as recorded", "format": "text" }
+    ]
+  },
+  "chart_notes": [
+    "Each square is one member, in the party ink: solid for yes, an outline for no, shaded for a member who did not vote, and a faint outline for a vacant seat. Each party is named in words with its count; independents are listed as the Senate record lists them, apart from both parties."
+  ],
+  "phone": "differs",
+  "phone_note": "Where a party’s name and 12 squares a row do not fit side by side, the name sits above its squares.",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "sort": [
+    { "field": "chamber", "values": ["Senate", "House"] },
+    { "field": "party", "values": ["D", "I", "R"] },
+    { "field": "vote_cast", "values": ["Yea", "Nay", "Present", "Not Voting"] },
+    { "field": "member" }
+  ],
+  "encode": { "chamber": "chamber", "party": "party", "vote": "vote_cast", "roll": "vote", "date": "vote_date", "question": "question", "result": "result" },
+  "labels": {
+    "chambers": ["Senate", "House"],
+    "seats": { "Senate": 100, "House": 435 },
+    "parties": ["D", "I", "R"],
+    "party_words": { "D": ["Democrat", "Democrats"], "I": ["Independent", "Independents"], "R": ["Republican", "Republicans"] },
+    "votes": ["Yea", "Nay", "Present", "Not Voting"],
+    "vote_words": { "Yea": "yes", "Nay": "no", "Present": "present", "Not Voting": "not voting" },
+    "vacant": ["Vacant seat", "Vacant seats"],
+    "key": { "yes": "Yes", "no": "No", "not": "Did not vote", "vacant": "Vacant seat" },
+    "head": "{roll}, {date}",
+    "ask": "The question: “{question}.” The result: “{result}.”"
+  },
+  "typography": { "curl_quotes": true, "nbsp": true },
+  "notes_internal": [
+    "Maker A, round 3. Data plan row 92 with the sign-off's conditions on party, rule 14.102. Domain D04 from the sidecar (V7 I054).",
+    "Data lead ruling (b): every seat in the party-mark ink; yes solid, no in outline at S61's 1.2 px, not voting in the light fill with no edge, vacant seats as ghost outlines named; Democrats first, then independents as the record lists them, folded into no party, then Republicans; within each group yes, no, not voting. Vacant seats sit between, S48's order.",
+    "The House's 435 seats are set by law (2 U.S.C. 2a); the Senate's 100 by the Constitution. Vacant seats are seats less members recorded: House 435 less 433, Senate 100 less 100. Which two House seats were vacant is not in the file and the drawing does not say."
+  ]
+}

@@ -17,17 +17,19 @@ The command runs in **Node**, a program that runs JavaScript outside a browser, 
 
 The contracts behind this recipe are in `work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md`, under "Contracts":
 C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 the words. Round 2's contracts (R2-C1 to
-R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md`.
+R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md`. Round 3's
+(R3-2 maps, R3-3 the county map's measure, R3-5 nodes, links, trees and flows) are in
+`work/handoffs/phase-3/20261113_Round-3-Engineer-Notes.md`, under "Contracts".
 
 ## What is here
 
 | File | What it does |
 |---|---|
 | `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
-| `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`); since round 2's fix pass, words set clear of a line (`clear_label`) and a listing's row names and values in one weight (`row_name`, `row_value`). Each part's call is in the comment above it |
+| `parts.js` | Drawing parts the forms share (since round 3 also nodes, links, trees and flows, and the map parts with `K.geo`): keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`); since round 2's fix pass, words set clear of a line (`clear_label`) and a listing's row names and values in one weight (`row_name`, `row_value`). Each part's call is in the comment above it |
 | `forms/*.js` | One file per chart form, 65 files (November 12, 2026, round 2). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
-| `geo.js` | The state tiles and the map, for the map forms |
+| `geo.js` | The map geometry, carried once a page: the studio's state tiles and four layers from the 2024 Census boundary files (states, counties, Michigan's districts, California's counties), projected and simplified at build by `tools/geo_build.py` (round 3). Never edit it by hand |
 | `kit.css` | The figure's style. It uses only `var(--oa-...)` tokens from `tokens.css` |
 | `words.json` | The words every figure prints the same way, such as "Source:". The editor owns them |
 | `checks.js`, `oa-chart.mjs` | The checks and the command |
@@ -143,6 +145,41 @@ runs through: a knockout of the ground behind the word. Any other line through a
 with `K.parts.clear_label` where they must sit on it), and so does a dot or bar half under a word. A stroke drawn
 through words on purpose, such as a step struck out, takes `strike: true`. **Red.** Pillar Red stays within 5 percent
 of a drawing (Rule 05.1); the kit measures it at every width and fails a drawing past it.
+
+## Diagrams: nodes, links, trees and flows (round 3)
+
+A diagram draws through five shared parts (contract R3-5), never its own copies:
+
+- `K.parts.node_size(c, words, {max})` gives the box a node's words need; `K.parts.node(c, box, words, o)` draws the box
+  and its words, or draws nothing and returns `null` where they do not fit.
+- `K.parts.link(c, a, b, {shape, arrow})` draws a link to the edges of its two nodes: `straight`, `elbow` (`dir` `down`
+  or `right`) or `arc` (the arc diagram). **Draw links before the nodes' words.** A link is a line no word may sit
+  under; the layout guard fails one that crosses a word ("a link crosses"). Set words that must sit on a link with
+  `K.parts.clear_label`.
+- `K.parts.tree(items, {dir})` lays out an org chart, a hierarchy or a decision tree (`down`, `right`, or `indent` for
+  the phone); its `order` is the reading order the table prints (R3-6).
+- `K.parts.flows(links, {max_px})` gives every band and line width one unit and fails a node whose bands do not sum;
+  `K.parts.flow_band` draws a Sankey band with its edges; `K.parts.width_key` keys the widths.
+
+## Maps (round 3)
+
+A map's spec names its data file first and the boundary file second:
+`"dataset": ["census-acs5-county-median-household-income", "census-cb-2024-counties"]`. The kit never reads the boundary
+file into the chart's rows; `geo.js` carries its shapes once for every map. The layers are `states`, `counties`,
+`cd119-mi` and `counties-ca`; ask the engineer for another. A form draws through the map parts:
+
+```js
+var L = K.geo('counties'), T = K.parts.map_fit(c, L, { y: top });          // the layer, and where it draws
+K.parts.map_shapes(c, L, T, items, { merge: true });                       // fills, one path a class
+K.parts.map_mesh(c, L, T, { between: function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }, stroke: 'context', width: 0.5 });
+K.parts.map_labels(c, K.geo('states'), T, names);                          // codes on their shapes, or beside with leaders
+K.parts.map_insets(c, L, T);                                               // Alaska's and Hawaii's frames
+```
+
+`K.parts.map_dots` draws a dot density map from counts and a recorded seed as one path, and `K.parts.map_scale` a scale
+bar. A chart of thousands of places groups its table: `"table": {"columns": [...], "group": {"by": "state", "columns":
+[{"label": "State", "agg": "key", "state_name": true}, {"label": "Counties", "agg": "count"}, ...]}}`. The page prints one
+row a state; the CSV export lists every row. The full calls are in the round 3 notes.
 
 ## The keys a spec takes
 
@@ -261,5 +298,8 @@ editing an export. Embedding the fonts in each export waits for Phase 5's packag
 - **`chart: Pillar Red covers ... percent`**: a named mark too large for the red point takes the subject ink (Rule 14.6).
 - **`band: a band in ... measures ... to 1`**: draw its edges, `K.parts.band(c, pts, {edge: 'context'})`, the default.
 - **`interval: ...`**: see "Estimates with their intervals" above; the message names the field or width.
+- **`layout guard: a link crosses "..."`**: draw the links before the words, route them round the words, or set the
+  words on the link with `K.parts.clear_label`.
+- **`dataset census-cb-...: no layer in geo.js is drawn from it`**: ask the engineer for the layer.
 - **`source: the source line printed (...) covers ...`**: the line is for another measure than the chart draws; print the
   variant the message names.
