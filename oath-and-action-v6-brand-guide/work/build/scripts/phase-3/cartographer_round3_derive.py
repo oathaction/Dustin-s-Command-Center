@@ -558,8 +558,8 @@ def house_classes(lay):
             "margin_class": {"type": "integer", "description": "1 under 5 points, 2 under 10, 3 under 20, 4 at 20 or more and unopposed"},
             "seat_kind": {"type": "category", "description": "kind of seat, in the source file's words"},
             "mark": {"type": "category", "description": "dot, unopposed on the ballot; ring, decided another way; empty otherwise"},
-            "party": {"type": "category", "description": "the winner's party as one letter, D or R, the column the tile map's panels read (its island carries 435 of them; the table and the CSV print winner_group in words)"},
             "close_seat": {"type": "text", "description": "a close race as S82's table names it: the district, the winner's party and the margin as printed (\"7 (Republican, 3.7)\", \"at large (Republican, 2.0)\"), only where the margin as printed is under 5 points; empty otherwise"},
+            "party": {"type": "category", "description": "the winner's party as one letter, D or R, the column the tile map's panels read (its island carries 435 of them; the table and the CSV print winner_group in words)"},
             "col": {"type": "integer", "description": "tile layout column"},
             "row": {"type": "integer", "description": "tile layout row"}
         },

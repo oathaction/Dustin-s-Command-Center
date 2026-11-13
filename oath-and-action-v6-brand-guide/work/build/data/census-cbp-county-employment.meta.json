@@ -15,7 +15,7 @@
   "https://www.census.gov/programs-surveys/cbp/technical-documentation/methodology.html"
  ],
  "observation_period": "2023; employees in the pay period including March 12",
- "geography": "Every county in the 50 states and DC that the file lists (3142); Puerto Rico and the island areas left out",
+ "geography": "Every county in the 50 states and DC that the file lists (3142); Puerto Rico left out, though County Business Patterns 2023 covers its 78 municipios (read November 13, 2026); the island areas are not in the file",
  "universe_or_base": "Paid employees of private establishments; government, the self-employed and most farm and household workers are not counted",
  "unit": "employees; establishments",
  "date_retrieved": "2026-11-12",

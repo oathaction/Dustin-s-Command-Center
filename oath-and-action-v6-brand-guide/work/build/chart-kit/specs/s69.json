@@ -90,7 +90,7 @@
     }
   },
   "chart_notes": [
-    "Each committee’s box gives its count of subcommittees, each named on a row under it. Committees run in order of the names printed, down each column. Standing committees drop “Committee on”; the table gives each full name."
+    "Each committee’s box gives its count of subcommittees, each named on a row under it. Standing committees drop “Committee on”; the table gives each full name."
   ],
   "phone": "differs",
   "phone_note": "Under two columns of 220 px, the committees run in one column down the page.",

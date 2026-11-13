@@ -143,7 +143,7 @@ November 13, 2026, from 04:34 UTC (clock read). Brief: `work/handoffs/phase-3/20
 ### Summary
 
 - 04:3x. Started with the items no ruling waits on.
-- 05:1x. Most items in: S68's table and boxes, S71's cells and title, S66's words and spine, S67's and S72's titles, S72's order and forced colors, S69's and S70's columns, S69's subcommittee rows. Waiting: the engineer's A-E8 (S70's phone part at a desk), the research lead's check of the route grid and request R-A2, the editor's call 9 and second pass.
+- 04:5x. Most items in: S68's table and boxes, S71's cells and title, S66's words and spine, S67's and S72's titles, S72's order and forced colors, S69's and S70's columns, S69's subcommittee rows. Waiting: the engineer's A-E8 (S70's phone part at a desk), the research lead's check of the route grid and request R-A2, the editor's call 9 and second pass.
 
 | Item | Spec or file | Status |
 |---|---|---|
@@ -195,3 +195,12 @@ November 13, 2026, from 04:34 UTC (clock read). Brief: `work/handoffs/phase-3/20
 - **R-A1, data check:** `usgov-v7-route-grid` (with sidecar) is rewritten by `maker_a_round3_derive.py`: SS's `sources` and FR's `what_it_takes` take plain words (A-M1, ST-S10), named in the sidecar's `derivation` and the script's REWORD table; every other value as stored.
 - **R-A2, `usgov-route-requirements.csv` (yours):** the data lead's A-M1 ruling asks the same two cells in your file: SS `sources` "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona"; FR `what_it_takes` "... while precedents set by majority vote changed the vote needed to end debate on nominations in 2013 and 2017". My script passes either version; once you change it I rerun the script so the grid's `derivation` stops naming the change.
 
+
+### Tested, review fix pass
+
+- (Kept current as the pass goes.) `maker_a_round3_derive.py --figures`: 44 checks, 0 failed; `--check`: the grid equals what the script computes.
+- S72 captured in forced colors (Playwright `forcedColors: 'active'`, light and dark) from its kit page at 1440 px: "did not vote" fills with the system gray and no edge, apart from "no"'s outline; vacant seats in gray outline.
+
+### Not tested, review fix pass
+
+- (Kept current as the pass goes.)

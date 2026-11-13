@@ -7,6 +7,8 @@ Run, with the downloads in folders of their own:
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s11 --dl <folder with meta-e6205a51.json, renewals.csv>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s2 --dl <any folder; reads only frozen files>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py bc_m1 --dl <folder with the FEC downloads below>
+    python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s4 --dl <folder with the Census API reads for state 72>
+    python3 -I work/build/scripts/phase-3/research_review_fix_round3.py bc_s9 --dl <folder with ecfr-435-916-20231001.xml, fr-2024-06566.htm, gi-1396a.htm>
 
 Add --write to write. Each item reads its downloads, checks them against the hashes the sidecars record, asserts every
 frozen field it does not mean to change, and sets values rather than appending, so a rerun writes nothing. It refuses
@@ -29,6 +31,13 @@ to write when a check fails.
   rule (nominee campaign, national party committee, state party committee, other committee), stated in the sidecar.
   dl holds agg-to-<campaign>.json (2), committees-payers.json, agg-<jfc>.json (7), sbr-<jfc>-<recipient>.json for the
   five new funds' pairs, committees-recipients.json and detail-<recipient>.json (the FEC's Form 1 party type).
+- st_s4 (ST-S4): the geography line of each public file behind S78, S81 and S83 says whether the publisher's table
+  covers Puerto Rico; all three do (the Census API returns state 72 for B28002 and S2801, B19013 by municipio and County
+  Business Patterns 2023 by municipio), so each says the file leaves Puerto Rico out. The Department of Labor's history
+  file already holds it (S84).
+- bc_s9 (BC-S9): the CMS sidecars' note on the procedural reason adds the regulation's words (42 CFR 435.916(a)(3)(iii)
+  as in force in 2023) and CMS's own gloss in its 2024 rule (89 FR 22780, at 22800 and 22781), so a note can say what a
+  procedural ending is from a primary source.
 """
 import argparse
 import csv
@@ -526,8 +535,90 @@ def bc_m1(dl, write):
         f'{len(body)} rows; Harris {usd(h22)} on line 22 to {hn}, Trump {usd(t22)} to {tn}; '
         + ' | '.join(f'{nom}: {kinds_words(k)}' for nom, (k, _) in summ.items()))
 
+def st_s4(dl, write):
+    rd = lambda f: json.loads((dl / f).read_text(encoding='utf-8'))
+    b28 = rd('b28002-acs1-2025-pr.json')
+    s28 = rd('s2801-acs1-2025-pr-full.json')
+    inc = rd('b19013-acs5-2024-pr.json')
+    cbp = rd('cbp-2023-pr.json')
+    cbs = rd('cbp-2023-pr-state.json')
+    assert b28[1][0] == 'Puerto Rico' and b28[1][-1] == '72' and int(b28[1][1]) > 0
+    assert s28[1][0] == 'Puerto Rico' and s28[1][-1] == '72' and float(s28[1][1]) > 0
+    assert len(inc) - 1 == 78 and all(r[3] == '72' for r in inc[1:])
+    assert len(cbp) - 1 == 78 and all(r[4] == '72' for r in cbp[1:])
+    assert cbs[1][0] == 'Puerto Rico'
+    files = []
+    words = {
+        'census-acs-broadband-by-state': (
+            '50 states and DC, with a United States row (code US) to set apart',
+            '50 states and DC, with a United States row (code US) to set apart; Puerto Rico left out, though the Bureau '
+            'publishes B28002 and S2801 for it (state 72, read November 13, 2026)'),
+        'census-acs5-county-median-household-income': (
+            'Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out; Connecticut by its '
+            'nine planning regions; and the United States as the first row (code US)',
+            'Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out, though the Bureau '
+            'publishes B19013 for its 78 municipios (read November 13, 2026); Connecticut by its nine planning regions; '
+            'and the United States as the first row (code US)'),
+        'census-cbp-county-employment': (
+            'Every county in the 50 states and DC that the file lists (3142); Puerto Rico and the island areas left out',
+            'Every county in the 50 states and DC that the file lists (3142); Puerto Rico left out, though County Business '
+            'Patterns 2023 covers its 78 municipios (read November 13, 2026); the island areas are not in the file'),
+    }
+    for name, (old, new) in words.items():
+        mp = OUT / f'{name}.meta.json'
+        m, end = read_meta(mp)
+        assert m['geography'] in (old, new), (name, m['geography'])
+        m['geography'] = new
+        files.append((mp, dump_meta(m, end)))
+    return files, ('Puerto Rico published in all three: B28002 and S2801 (state 72), B19013 (78 municipios), CBP 2023 '
+                   '(78 municipios); DOL history already holds PR, GU, VI; geography lines say each file leaves it out')
 
-ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2, 'bc_m1': bc_m1}
+
+def bc_s9(dl, write):
+    import html as _html
+    import re as _re
+    norm = lambda s: _re.sub(r'\s+', ' ', _html.unescape(_re.sub(r'<[^>]+>', ' ', s))).strip()
+    ecfr = norm((dl / 'ecfr-435-916-20231001.xml').read_text(encoding='utf-8'))
+    fr = norm((dl / 'fr-2024-06566.htm').read_text(encoding='utf-8', errors='replace'))
+    q1 = ('Reconsider in a timely manner the eligibility of an individual who is terminated for failure to submit the '
+          'renewal form or necessary information, if the individual subsequently submits the renewal form within 90 days '
+          'after the date of termination, or a longer period elected by the State, without requiring a new application')
+    q2 = ('individuals who are terminated for procedural reasons (that is, because they did not respond to the State\'s '
+          'request for additional information)')
+    q3 = 'losing coverage due to procedural reasons, including, for example, failure to return paperwork'
+    assert q1 in ecfr and '[77 FR 17210, Mar. 23, 2012]' in ecfr
+    page = lambda q: [g for g in _re.findall(r'\[\[Page (\d+)\]\]', fr[:fr.index(q)])][-1]
+    assert q2 in fr and q3 in fr and page(q2) == '22800' and page(q3) == '22781'
+    usc = norm((dl / 'gi-1396a.htm').read_text(encoding='utf-8', errors='replace'))
+    assert ('(B) The number of individuals whose coverage for medical assistance, child health assistance, or '
+            'pregnancy-related assistance was so terminated for procedural reasons.') in usc
+    note = (
+        'What a procedural ending is, in the rules’ words (BC-S9, read November 13, 2026). The renewal rule in force '
+        'through the file’s period, 42 CFR 435.916(a)(3)(iii) (77 FR 17210, March 23, 2012; eCFR as of October 1, 2023), '
+        'tells the state to “Reconsider in a timely manner the eligibility of an individual who is terminated for failure '
+        'to submit the renewal form or necessary information, if the individual subsequently submits the renewal form '
+        'within 90 days after the date of termination”. CMS’s 2024 eligibility rule (89 FR 22780, April 2, 2024) speaks '
+        'of “individuals who are terminated for procedural reasons (that is, because they did not respond to the State’s '
+        'request for additional information)” (at 22800) and of “losing coverage due to procedural reasons, including, '
+        'for example, failure to return paperwork” (at 22781). Section 1902(tt)(1) of the Social Security Act, under '
+        'which states reported these counts, names the two kinds apart: those terminated and, of them, those terminated '
+        '“for procedural reasons”. No record read says how many people ended for a procedural reason were still '
+        'eligible, or which reason was most common.')
+    files = []
+    for name in ('cms-medicaid-chip-renewal-outcomes', 'cms-medicaid-chip-renewal-funnel'):
+        mp = OUT / f'{name}.meta.json'
+        m, end = read_meta(mp)
+        m['notes'] = set_note(list(m.get('notes') or []), 'What a procedural ending is, in the rules’ words', note)
+        for u in ('https://www.ecfr.gov/api/versioner/v1/full/2023-10-01/title-42.xml?part=435&section=435.916',
+                  'https://www.govinfo.gov/content/pkg/FR-2024-04-02/html/2024-06566.htm',
+                  'https://www.govinfo.gov/content/pkg/USCODE-2024-title42/html/USCODE-2024-title42-chap7-subchapXIX-sec1396a.htm'):
+            if u not in m['url']:
+                m['url'].append(u)
+        files.append((mp, dump_meta(m, end)))
+    return files, 'note added to both CMS sidecars: 42 CFR 435.916(a)(3)(iii) and 89 FR 22800, 22781'
+
+
+ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2, 'bc_m1': bc_m1, 'st_s4': st_s4, 'bc_s9': bc_s9}
 
 
 def main():

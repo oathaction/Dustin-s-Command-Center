@@ -9,7 +9,7 @@
   "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=us:1"
  ],
  "observation_period": "2020 to 2024 (five years pooled)",
- "geography": "Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out; Connecticut by its nine planning regions; and the United States as the first row (code US)",
+ "geography": "Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out, though the Bureau publishes B19013 for its 78 municipios (read November 13, 2026); Connecticut by its nine planning regions; and the United States as the first row (code US)",
  "universe_or_base": "Households",
  "unit": "2024 dollars, with 90 percent margins of error",
  "date_retrieved": "2026-11-12",

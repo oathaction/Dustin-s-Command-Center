@@ -11,7 +11,7 @@
   "https://api.census.gov/data/2025/acs/acs1/subject?get=NAME,S2801_C01_001E,S2801_C01_001M,S2801_C01_014E,S2801_C01_014M,S2801_C01_017E,S2801_C01_017M,S2801_C02_014E,S2801_C02_014M,S2801_C02_017E,S2801_C02_017M&for=state:*"
  ],
  "observation_period": "Calendar year 2025",
- "geography": "50 states and DC, with a United States row (code US) to set apart",
+ "geography": "50 states and DC, with a United States row (code US) to set apart; Puerto Rico left out, though the Bureau publishes B28002 and S2801 for it (state 72, read November 13, 2026)",
  "universe_or_base": "Households",
  "unit": "households, with 90 percent margins of error; percentages computed by the studio and stored to four decimals; households_moe is the published margin of the households total (B28002_001M); broadband_any_pct_moe_s2801 and broadband_fixed_pct_moe_s2801 are the shares’ 90 percent margins in percentage points as the Bureau publishes them in S2801, to one decimal; broadband_fixed_pct_moe_formula is the studio’s check by the Bureau’s formula for a proportion",
  "date_retrieved": "2026-11-12",
