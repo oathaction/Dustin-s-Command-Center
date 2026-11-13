@@ -122,6 +122,8 @@ LINE_FIXES = {
             "P60-277 (September 13, 2022) printed the same 2020 and 2021 rates.")},
     },
     'ballotpedia-rcv-prohibitions-by-state': {
+        # ENG-R3-1 (round 3, the research lead's R3-A1): the publisher as the sidecar now names it
+        'publisher': 'Ballotpedia, a secondary source',
         'printed': ("Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, "
                     "50 states and DC. Retrieved November 6, 2026. Ohio's and Tennessee's bans cover some elections; the other 17 cover all."),
     },
@@ -256,6 +258,8 @@ def public_meta(name, spec):
     variants.update(spec.get('extra_variants', {}))
     fx = LINE_FIXES.get(name)
     if fx:
+        if fx.get('publisher'):
+            meta['publisher'] = fx['publisher']
         if fx.get('printed'):
             meta['printed_source_line'] = smart(fx['printed'])
         if fx.get('end_from'):
