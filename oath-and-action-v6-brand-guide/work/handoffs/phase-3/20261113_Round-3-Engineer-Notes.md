@@ -222,7 +222,7 @@ To others:
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 04:52 UTC. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:02 UTC. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
 
 ### Summary
 
@@ -235,9 +235,12 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **AX-S1 kit side LANDED:** forced-colors classes `region` (a merged map fill, no edge), `muted` (GrayText, no edge) and `forced` (a mark drawn in forced colors only), and the key's `fc` and `forced_edge`. S81 and S83 take `region` with no spec change; S72 and S74 need their makers' one-line changes. Told the main session.
 - **Found and fixed in passing:** the page's island did not carry a spec's `typography`, so S81's new no-break spaces drew in Node and not on the page (a parity fault). The island now carries it.
 - **AX-S2's accessible name LANDED:** `guide_build.py` gives a sketch title named together with its desc a closing period.
-- **AX-S6 code LANDED:** `--data DIR`; a weight line in `build`'s output; the retrieval dates of a source line written for two or more datasets; a warning where a map form's national figure is not set. The README's round 3 section is next.
-
-(More items follow as they land.)
+- **AX-S6 and call 8 LANDED:** `--data DIR`; a weight line in `build`'s output and in each check file; the retrieval dates of a source line written for two or more datasets; a warning where a map form's national figure is not set; the README's round 3 section ("A county map, start to finish", round 3's starter rows, the fix pass keys, the commands, the new faults). The designer log as the test: V1 now reaches its own folder with `--data` and fails only on what the designer had to fix; V2's wrong retrieval date fails; V4 passes and weighs 12,664 bytes, the designer's own figure.
+- **ST-M2 items 1 and 2 LANDED:** `{data_file}` in a caption, note or chart note prints `words.json`'s `data_file`, and `phase3_ch14_build.py` fills the same placeholder in an entry's words; the export check of the nine charts is below.
+- **BC-S15 LANDED:** the side list's top snap no longer pushes the current rule under the list's foot. In a strict build at 1440 by 900 px, before: 30 of 289 grouped-chapter rules left the current link cut; after: 0 of 289.
+- **A-E8 LANDED (maker A):** a desk's phone part reads every row as `c.all_rows`; S69's part reads "20 standing committees" where it read "2". Told the main session.
+- **BC-S5:** the kit side is call 7's `map_labels`. S16 draws through `bubble-map.js`'s own search, not `map_labels`; its codes at board 1's places are the cartographer's `labels.offsets_phone` (board 1's 358 px drawing is kept only as a picture, `work/boards/phase-3/round-0/specimens/s16-newsprint-390.png`, and git keeps no copy of the 2017 geometry to redraw it).
+- **BC-S12** names no engineer item.
 
 ### Items done, by code
 
@@ -255,6 +258,10 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 | ST-M2 item 1 | `{data_file}` in a caption or note prints `words.json`'s `data_file` | `kit.js` `K.fill_words`, `words.json` |
 | AX-S6 | `--data DIR`; weight line; retrieval dates; national figure warning | `oa-chart.mjs`, `checks.js` |
 | (in passing) | the island carries `typography` (S81 parity) | `oa-chart.mjs` `DRAW_KEYS` |
+| ST-M2 item 1 (entries) | `{data_file}` filled in entry files | `phase3_ch14_build.py` `fill_words` |
+| BC-S15 | `snapTop` keeps the current rule whole | `work/build/guide/shell/guide-shell.js` |
+| A-E8 | `c.all_rows` for a desk's phone part | `kit.js` (`Ctx`, `K.draw`, `K.mount`) |
+| AX-S6, call 8 | README round 3 | `README.md` |
 
 ### Routine calls, review fix pass
 
@@ -275,6 +282,10 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - D3-xxx | `--data DIR` is read first and `work/build/data/` after it, per dataset | A derived file sits beside the frozen files it was derived from, with nothing written into `work/build/data/`
 - D3-xxx | The retrieval dates are read only where a line written for two or more datasets says "Retrieved"; an atlas dataset is left out | Atlas charts print a snapshot, not a retrieval; the designer's fault was a wrong date in such a line
 - D3-xxx | The weight line measures as `load-table` places an entry, with a 750-byte frame; it warns past 15,000 only from S65 on | D3-1328 governs round 3's plates; older plates were placed under their own rounds' limits
+- D3-xxx | Where the side list's first line sits cut under its top and showing it whole would push the current rule under the foot, the cut line leaves the top instead | BC-S15 asks for the current rule whole; round 2's BC S17 asks for no line cut at the top; both hold
+- D3-xxx | A desk's phone part passes every row as `c.all_rows`, drawn rows unchanged | A-E8: a group's count must read the whole set while the part draws its first rows
+- D3-xxx | A kit self-test fixture that copied a derived sidecar becomes a plain table | Since `--data`, a derived sidecar's sources are found in `work/build/data/`, and the fixture's invented publisher names none of them
+- D3-xxx | The README points a designer to Rule 13.1's Estimate for a model's figures and keeps a survey's published estimates a Finding | The data lead's ruling on AX-S6
 
 ### Contract changes, review fix pass
 
@@ -287,6 +298,8 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - `fc` on any mark: `total` (as before), `region`, `muted`, `forced`. `K.parts.key` entries take `fc` (a filled swatch) and `forced_edge` (an outlined swatch).
 - `{data_file}` in a table caption, a note or a chart note prints `words.json`'s `data_file`. `words.json` adds `data_file` and `stage_scroll`.
 - `oa-chart.mjs build` and `check` take `--data DIR`.
+- `Ctx.all_rows` (`K.draw`'s `all_rows` option): every row where the kit draws only some.
+- `checks.js` exports `retrieved_dates(line)`.
 
 ### Requests sent
 
@@ -294,6 +307,23 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **Maker A:** S72's "not voting" rect and its key entry take `fc: 'muted'` (AX-S1).
 - **Cartographer:** `"stage": 1024` in `s12.json` and its alt for each width (call 6); S78 at 358 px still leaves 19 states uncoded, so call 7's tile grid phone drawing applies; S80's 10th and 12th need the form to label each panel's own districts (C-S1).
 - **Editor:** `{data_file}` for the nine places of ST-M2 item 1.
+
+### ST-M2 item 2: what each chart's CSV export holds
+
+Read by script from the kit's own export (`C.to_csv` of the rows the chart draws, every column of its dataset), November 13, 05:00 UTC:
+
+| Chart | Data file | Rows exported | What its words promise | Holds it |
+|---|---|---|---|---|
+| S69 | `clerk-house-committees-119.csv` | 136 of 136 | each subcommittee's seats | yes: `subcommittee`, `majority_seats`, `minority_seats` on every row |
+| S70 | `uscode-federal-courts-circuits-districts.csv` | 111 of 111 | each court | yes: `court`, `parent`, `judgeships`, `statute` |
+| S72 | `congress-hr5371-roll-calls-by-member.csv` | 533 of 533 | every member | yes: `member`, `party`, `state`, `vote_cast` |
+| S73 | `fec-jfc-transfers-2024-by-node.csv` (as it stood; maker B is moving S73 to the six-fund file) | 57 of 57 | every recipient with lines 21B and 28C | yes: `recipient_name`, `amount`, `amount_lines` (22 or 28C), `line_21b_amount` |
+| S74 | `v7-region-connection-matrix.json` | 44 of the file's 100 cells (the 56 with no connection are left out by `where`) | the connections in each cell by atlas ID | yes: `link_ids` on every cell with a connection, 118 connections |
+| S81 | `census-acs5-county-median-household-income-classes.csv` | 3,144 of 3,144 | every county's estimate, margin and class | yes: `median_household_income`, `moe`, `income_class` (the nation is not a row; the map prints it beside itself) |
+| S82 | `clerk-house-results-2024-classes.csv` | 435 of 435 | every seat with its winner and margin | yes: `winner`, `margin_pct`, `margin_printed` |
+| S83 | `census-cbp-county-employment-dots.csv` | 3,144 of 3,144 | each county's flag in the Bureau's words | yes: `emp_noise_flag`, `emp_noise_words` |
+
+No export lacks a column its words promise. Phase 5's package can ship these exports as they are.
 
 ### Tested, review fix pass
 

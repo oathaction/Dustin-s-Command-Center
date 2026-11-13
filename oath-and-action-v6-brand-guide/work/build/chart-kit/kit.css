@@ -123,6 +123,8 @@
 .oac-f-on-mag-1 { fill: var(--oa-chart-color-magnitude-label-step1); } .oac-f-on-mag-2 { fill: var(--oa-chart-color-magnitude-label-step2); } .oac-f-on-mag-3 { fill: var(--oa-chart-color-magnitude-label-step3); } .oac-f-on-mag-4 { fill: var(--oa-chart-color-magnitude-label-step4); }
 .oac-f-on-div-1 { fill: var(--oa-chart-color-diverging-label-step1); } .oac-f-on-div-2 { fill: var(--oa-chart-color-diverging-label-step2); } .oac-f-on-div-3 { fill: var(--oa-chart-color-diverging-label-step3); } .oac-f-on-div-4 { fill: var(--oa-chart-color-diverging-label-step4); } .oac-f-on-div-5 { fill: var(--oa-chart-color-diverging-label-step5); }
 .oac-s-ghost { stroke: var(--oa-chart-color-ghost); fill: none; }
+/* BC-S4 (round 3 fix pass): an outline in the band ink, quieter than the ghost on Charcoal (S82's empty seats there) */
+.oac-s-band { stroke: var(--oa-chart-color-band); fill: none; }
 .oac-f-none { fill: none; }
 .oac-svg line, .oac-svg path, .oac-svg polyline { vector-effect: non-scaling-stroke; }
 
@@ -147,7 +149,7 @@
   .oac-svg .oac-f-none.oac-fc-plate { fill: Canvas; }   /* a plate under words on a hatch (CD KR1) */
   .oac-svg :is(.oac-f-seq-2, .oac-f-seq-4, .oac-f-div-2, .oac-f-div-4, .oac-f-mag-2, .oac-f-cat-3, .oac-f-cat-4):not(.oac-t) { stroke: CanvasText; stroke-width: 1px; }
   .oac-svg [class*="oac-s-"] { stroke: CanvasText; }
-  .oac-svg :is(.oac-s-context, .oac-s-secondary, .oac-s-gridline, .oac-s-ghost, .oac-s-leader, .oac-s-track, .oac-s-light-fill, .oac-s-cat-2) { stroke: GrayText; }
+  .oac-svg :is(.oac-s-context, .oac-s-secondary, .oac-s-gridline, .oac-s-ghost, .oac-s-band, .oac-s-leader, .oac-s-track, .oac-s-light-fill, .oac-s-cat-2) { stroke: GrayText; }
   .oac-svg .oac-s-surface { stroke: Canvas; }
   .oac-svg .oac-fc-bg { fill: Canvas; } .oac-svg .oac-fc-ink { stroke: CanvasText; } .oac-svg .oac-fc-gray { stroke: GrayText; }
   .oac-svg .oac-t { fill: CanvasText; paint-order: stroke; stroke: Canvas; stroke-width: 3px; stroke-linejoin: round; }

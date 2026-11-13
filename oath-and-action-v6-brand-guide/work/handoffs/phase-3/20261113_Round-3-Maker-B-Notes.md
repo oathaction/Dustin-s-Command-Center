@@ -201,4 +201,21 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 
 ### Tested, review fix pass
 
+- Clock read with `date -u` at 04:36, 04:40, 04:43, 04:54, 04:59, 05:01 and 05:02 UTC.
+- `node work/build/chart-kit/oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-out`, sweep on (every whole width from 256 to 720 px), at 04:59 UTC: 6 of 6 PASS, 0 faults, 0 warnings; six check files read, each `faults` and `warnings` empty; the whole log read. Weights with the frame, by the kit: S65 6,577; S73 13,453; S74 11,707; S75 7,806; S76 7,560; S77 7,632 bytes, each under D3-1328's 14,106. Earlier builds of single specs as each item landed, each PASS but those named here: S73 with a three-step band key failed 42 key faults before RB3F-G1 landed; S74's frame variant of the diagonal failed 6 guard faults at 256 px and its forced edge 9 before the counts took a knockout.
+- S73's page table read in Chromium with scripts on and off (`page_table.cjs`, scratch): after ST-M1, “From” named the fund in all seven rows and the refunds printed “28C, refund”; after BC-M1, 20 rows, “From” named in every row, the refunds last.
+- Looked at, from the kit's captures: S73 at 1440 px Newsprint (before and after B-S1, and after BC-M1), 390 px Charcoal (after B-S1) and 390 px Charcoal beside 390 px Newsprint in grayscale (after BC-M1); S76 at 1440 px Newsprint and 256 px Charcoal; S77 at 1440 px Newsprint (before and after B-S3), 256 px Charcoal and 1440 px Charcoal; S74 at 1440 px Newsprint (a 2x crop of the grid), 256 px Charcoal and 1440 px Charcoal in grayscale, and in forced colors (Chromium's emulation, light and dark) at 1440 and 256 px; S65 at 1440 px Newsprint.
+- Sketch 14.94 rendered in Chromium (`sketch_render.cjs`, scratch) with `tokens.css`, `kit.css` and the guide's fonts on Newsprint and Charcoal and in grayscale at device scale 2, and looked at; every word's `getBBox` 10 px or more inside the frame but “Illustrative data”, which keeps D3-966's place at the inset's corner as in all 30 sketches; 2,730 bytes.
+- `python3 -I work/build/scripts/phase-3/maker_b_round3_derive.py --figures`: 0 faults, with new checks for S65 (BC-S9's title and the sidecars' quoted rules), S73 (all seven funds: every row carried, counts by kind counted once, both title clauses, the alt for both nominees, line 21B and line 28C for both, DC and Guam, the one hairline), S76 (per-candidate transfers 436 in and 84 out from the by-candidate file, money in and out, the 297 campaigns and H4IN05195's $1,500,000.00 recomputed from the by-candidate file, 97.8 percent) and S77 (the limits' words, no claim of missed limits). `--check`: 0 faults after rewriting both derived files.
+- My six specs, twelve entries and sketch 14.94 scanned by script for em dashes, U+2011, straight apostrophes, ink words and “subject ink” outside builders' lines: none.
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`: 128 rules, 114 entries, 84 plates, 0 faults (0 files written).
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide/guide.html`: exit 0, 0 warnings, 11,253,510 bytes. My plates as the guide places them: S65 5,842; S73 12,718; S74 11,082; S75 7,181; S76 6,935; S77 7,007 bytes. The build's note gives chapter 14's share per plate for the 13 still to come as 11,931 bytes.
+- The research lead's data check over both derived files I rewrote: 0 faults (relayed by the main session).
+
 ### Not tested, review fix pass
+
+- The quick guide check: running at the time of writing (see the line added under Tested when it ends).
+- S73, S76, S77 and S65 in the guide page at any width; plates read from the kit's pages only.
+- Forced colors beyond Chromium's emulation for S74; S73's and S77's drawings in forced colors; print and 200 percent text beyond the kit's checks; no screen reader or real device.
+- S75 looked at after its no-break spaces (its drawing did not change; built PASS).
+- The FEC, CMS and eCFR sources themselves: the figures come from the frozen files and the research lead's sidecars.

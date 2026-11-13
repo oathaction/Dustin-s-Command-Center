@@ -255,7 +255,7 @@ def figures():
     for ty_ in ('standing', 'select', 'joint'):
         us = sorted(((short(v[0]), k) for k, v in com.items() if v[1] == ty_), key=lambda z: (z[0].lower(), z[0]))
         want += [k for _, k in us]
-    check('S69', s['sort'][1]['values'] == want, 'committees in order of their printed names, by kind (BC-S7)')
+    check('S69', s['sort'][1]['field'] == 'committee' and s['sort'][1]['values'] == [com[k][0] for k in want], 'committees in order of their printed names, by kind (BC-S7)')
     check('S69', com['BU00'][2] == 0 and com['SO00'][2] == 0 and [v[0] for v in com.values() if v[1] == 'standing' and v[2] == 0] == ['Committee on the Budget', 'Committee on Ethics'], 'Budget and Ethics have none')
     # S70: 94 districts, 13 appeals, 179, 673, 4, 9, the circuits' figures in the alt
     s, rows = spec('s70'), read_csv('uscode-federal-courts-circuits-districts')

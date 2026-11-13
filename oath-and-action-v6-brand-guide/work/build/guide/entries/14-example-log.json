@@ -698,7 +698,7 @@
    "source": "s16.json"
   },
   {
-   "example": "In the Census Bureau’s 2025 survey, home broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC, and under 71 percent in nine states.",
+   "example": "In the Census Bureau’s 2025 survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 percent in nine.",
    "domain": "D01",
    "states": [],
    "rule": "14.117",
