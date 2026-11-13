@@ -401,13 +401,55 @@ def judges(dl, write):
             (cm, json.dumps(m2, indent=1, ensure_ascii=False) + end2)], '677 = 673 + 4 (GU 1, MP 1, VI 2)'
 
 
+def rl4(dl, write):
+    """RL-4: every line 21B row of both joint fundraising committees in the 2024 cycle, read for payees that are
+    committees outside the file. dl holds the keyset pages, <committee>-NNNN.json, as the FEC API served them."""
+    name = 'fec-jfc-transfers-2024'
+    mp = OUT / f'{name}.meta.json'
+    m = read_meta(mp)
+    inside = {(r['jfc_id'], r['recipient_id']) for r in csv.DictReader(io.StringIO((OUT / f'{name}.csv').read_text(encoding='utf-8')))}
+    found, total_rows = {}, {}
+    for cid, want in (('C00873893', 6580), ('C00744946', 16472)):
+        res, counts = [], set()
+        for p in sorted(dl.glob(f'{cid}-*.json')):
+            d = json.loads(p.read_text())
+            res += d['results']
+            counts.add(d['pagination']['count'])
+        assert counts == {want} and len(res) == want and len({x['sub_id'] for x in res}) == want, (cid, len(res), counts)
+        assert all(x['line_number'] == '21B' for x in res)
+        total_rows[cid] = want
+        com = [x for x in res if not x.get('memo_code') and (x.get('recipient_committee_id') or x.get('entity_type') in ('COM', 'PAC', 'PTY', 'CCM'))]
+        assert all(x.get('recipient_committee_id') for x in com)
+        by = collections.defaultdict(lambda: [0, 0.0, ''])
+        for x in com:
+            if (cid, x['recipient_committee_id']) in inside:
+                continue
+            b = by[x['recipient_committee_id']]
+            b[0] += 1
+            b[1] += x['disbursement_amount']
+            b[2] = x['recipient_name']
+        found[cid] = sorted(by.items(), key=lambda kv: -kv[1][1])
+    assert not found['C00873893'] and len(found['C00744946']) == 7, found
+    out = found['C00744946']
+    tot = sum(v[1] for _, v in out)
+    lst = '; '.join(f'{v[2]} ({k}), ${v[1]:,.2f} in {v[0]} {"payment" if v[0] == 1 else "payments"}' for k, v in out)
+    note = (f'Line 21B to committees outside the file (RL-4, read November 13, 2026, every line 21B row of the cycle: '
+            f'{total_rows["C00744946"]:,} for the Harris Victory Fund and {total_rows["C00873893"]:,} for the Trump National '
+            f'Committee JFC). The Trump National Committee JFC paid no committee on line 21B. The Harris Victory Fund paid '
+            f'seven committees outside the file ${tot:,.2f} on line 21B: {lst}. Two memo entries name the Biden Victory Fund '
+            'and the Harris Victory Fund with no committee ID; memo entries are not payments. None of these committees is '
+            'drawn, and none is in amount.')
+    m['notes'] = set_note(list(m.get('notes') or []), 'Line 21B to committees outside the file', note)
+    return [(mp, dump_meta(m))], f'Harris Victory Fund: 7 committees outside the file, ${tot:,.2f}; Trump JFC: none'
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges'])
+    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges', 'rl4'])
     ap.add_argument('--dl', required=True)
     ap.add_argument('--write', action='store_true')
     a = ap.parse_args()
-    files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3, 'judges': judges}[a.item](Path(a.dl), a.write)
+    files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3, 'judges': judges, 'rl4': rl4}[a.item](Path(a.dl), a.write)
     for p, text in files:
         print(f'{p.name}: {put(p, text, a.write)}')
     print(f'{a.item}: {summary}')
