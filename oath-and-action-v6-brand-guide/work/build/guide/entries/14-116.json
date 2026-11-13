@@ -2,7 +2,7 @@
  "id": "14.116",
  "title": "Use a bubble map when the size of each place matters as much as its rate.",
  "rule": [
-  "Set a circle at each state’s center over the land, its area in proportion to a count such as citizens 18 and over (Rule 14.4), and shade it by a rate in the sequential steps, with a key for each. Move circles apart only where they would overlap, and name each one by its code, inside the circle where it fits and beside it, with a leader where needed, where it does not. Mark the national rate on the step key with its label, apart from the circles on the map. Ring only the circles the title names, and single out a survey rate only where its gap passes the margin of error (Rule 14.9)."
+  "Set a circle at each state’s center over the land, its area in proportion to a count such as citizens 18 and over (Rule 14.4), and shade it by a rate in the sequential steps, with a key for each. Move circles apart only where they would overlap, and print each state’s code inside its circle, or beside it with a leader where the circle is too small to hold it (Rule 14.3). Mark the national rate on the step key with its label (Rule 14.6). Ring only the circles the title names, and single out a survey rate only where its gap passes the margin of error (Rule 14.9)."
  ],
  "use_when": "The reader asks where a rate ran high or low and where most of the people are, such as which of the largest states reported low turnout.",
  "use_instead": [
@@ -21,7 +21,7 @@
  ],
  "why": {
   "text": [
-   "A shaded state lets its land speak for it, so a large, empty state outweighs a small, crowded one. A circle sized by people gives each state its weight on the page, and its shade adds the rate without a second map."
+   "On a map of shaded states, land sets how much of the page each state takes, so a large state with few people outweighs a small, crowded one. A circle sized by people gives each state its weight on the page, and its shade adds the rate without a second map."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

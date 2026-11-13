@@ -5,10 +5,11 @@
  "title_or_table": "American Community Survey 5-year estimates, Table B19013, Median Household Income in the Past 12 Months (in 2024 inflation-adjusted dollars)",
  "table_id": "ACS 2020-2024 5-year, B19013_001",
  "url": [
-  "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=county:*"
+  "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=county:*",
+  "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=us:1"
  ],
  "observation_period": "2020 to 2024 (five years pooled)",
- "geography": "Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out; Connecticut by its nine planning regions",
+ "geography": "Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out; Connecticut by its nine planning regions; and the United States as the first row (code US)",
  "universe_or_base": "Households",
  "unit": "2024 dollars, with 90 percent margins of error",
  "date_retrieved": "2026-11-12",
@@ -17,7 +18,7 @@
  "columns": {
   "geoid": {
    "type": "id",
-   "description": "county FIPS code, state and county"
+   "description": "county FIPS code, state and county; US for the nation"
   },
   "name": {
    "type": "text",
@@ -25,7 +26,7 @@
   },
   "state": {
    "type": "code",
-   "description": "USPS state code"
+   "description": "USPS state code; US for the nation"
   },
   "median_household_income": {
    "type": "integer",
@@ -43,6 +44,14 @@
  "domain": "D08",
  "states": [],
  "notes": [
-  "Counties with no published median: 1."
- ]
+  "Counties with no published median: 1.",
+  "The United States row (RL-1), first in the file: $80,734 with a 90 percent margin of $166, from the same table and release (for=us:1), read November 13, 2026. The same call for every county returned all 3,144 frozen values unchanged. A map sets the nation apart beside it, never as a region."
+ ],
+ "source_line_variants": {
+  "with_united_states": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC, and the United States. Retrieved November 12 and 13, 2026. Survey estimates in 2024 dollars; margins are wide in small counties."
+ },
+ "raw_files_sha256_prefix": {
+  "us.json (2026-11-13)": "509f02c77c632eed",
+  "county.json (2026-11-13)": "107e61b1bcc8f34d"
+ }
 }

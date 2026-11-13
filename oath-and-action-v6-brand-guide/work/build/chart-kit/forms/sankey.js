@@ -10,7 +10,8 @@
  * encode: side (category: labels.in marks a line in, any other value a line out), key (id), category (text), value.
  * labels: in (default "in"), node (the node's name), names ({key: printed name}), short ({key: name under 480 px}),
  * groups ({key: group name}), track ([keys]), named ([keys]), max_px (the node's height, default 360; 300 on a phone),
- * key_steps ([measures]), key_title, key_hairline, open (true: the node need not balance).
+ * key_steps ([measures]), key_title, key_hairline (words under the key, {v} the measure of one pixel), open (true: the
+ * node need not balance).
  * formats: value, value_phone (under 480 px), key. Maker B, round 3. */
 (function (K) {
   'use strict';
@@ -33,7 +34,7 @@
       var y = 0;
       if (L.key_steps) {
         y += P.width_key(c, 0, y, fl.unit, L.key_steps, { words: L.key_steps.map(function (s) { return '$' + K.fmt(s, f.key || f.value || 'integer'); }), stroke: 'context', len: 32, title: L.key_title, max: W });
-        if (L.key_hairline) y = c.text(0, y + tk * 0.9, L.key_hairline, { role: 'tick', max: W }).bottom;
+        if (L.key_hairline) y = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join('$' + K.fmt(1 / fl.unit, f.key || f.value || 'integer')), { role: 'tick', max: W }).bottom;
         y += 16;
       }
       // the node's name over the node, centered, then the two sides under it

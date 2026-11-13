@@ -35,5 +35,5 @@
  "builders": "No kit form: draw each flow as a curve in the subject ink under the place dots and names, its stroke width set by one scale (amount per pixel) with a key of two widths, and an arrowhead at the destination.",
  "correct": null,
  "failure": null,
- "sketch_alt": "Curved lines run from one place to four others over a plain map, each line as wide as the number of people who moved along it, with a key of two widths."
+ "sketch_alt": "Curved lines run from one place to four others over a plain map, each as wide as the invented number of people who moved along it, with a key of two widths."
 }

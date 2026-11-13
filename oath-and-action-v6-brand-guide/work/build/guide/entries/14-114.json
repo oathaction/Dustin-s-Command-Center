@@ -2,7 +2,7 @@
  "id": "14.114",
  "title": "Use a tile-grid map to show each state’s status, every state the same size.",
  "rule": [
-  "Draw each state and the District of Columbia as one square of the same size, on a grid that keeps each state beside its neighbors, with Alaska and Hawaii at its corners, and print each state’s two-letter code in its square. Tell the categories apart by fill and outline as well as shade, so the key still reads in gray print: solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key with its count. Print one more fact under the code, such as the year a law took effect, wherever the square holds it. Where the squares grow too small for their codes, leave the codes out and say under the map that the table names every state."
+  "Draw each state and the District of Columbia as one square of the same size, on a grid that keeps each state beside its neighbors, with Alaska and Hawaii at its corners, and print each state’s two-letter code in its square. Tell the categories apart by fill and outline as well as shade, so the key still reads in gray print: solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key. Print one more fact under the code, such as the year a law took effect, wherever the square holds it. Where the squares grow too small for their codes, leave the codes out and say under the map that the table names every state."
  ],
  "use_when": "The reader asks which states have a law or status, and each state counts once, whatever its size or population.",
  "use_instead": [
@@ -25,7 +25,7 @@
  ],
  "why": {
   "text": [
-   "On a map of real shapes, large and empty states take most of the page, so a status held mostly by small eastern states looks rare. Equal squares give every state the same weight, and the code in each square names the place in words."
+   "On a map of real shapes, large, thinly settled states take most of the page, so a status held mostly by small eastern states looks rare. Equal squares give every state the same weight, and the code in each square names the place in words."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

@@ -7,7 +7,12 @@
  "url": [
   "https://api.census.gov/data/2023/cbp?get=NAME,EMP,EMP_N,ESTAB,NAICS2017&for=county:*&NAICS2017=00",
   "https://api.census.gov/data/2023/cbp?get=NAME,EMP,ESTAB,NAICS2017&for=us:*&NAICS2017=00",
-  "https://api.census.gov/data/2023/cbp/variables.json"
+  "https://api.census.gov/data/2023/cbp/variables.json",
+  "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23co.zip",
+  "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23st.zip",
+  "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23us.zip",
+  "https://www2.census.gov/programs-surveys/cbp/technical-documentation/records-layouts/2020_record_layouts/county-layout-2020.txt",
+  "https://www.census.gov/programs-surveys/cbp/technical-documentation/methodology.html"
  ],
  "observation_period": "2023; employees in the pay period including March 12",
  "geography": "Every county in the 50 states and DC that the file lists (3142); Puerto Rico and the island areas left out",
@@ -15,7 +20,7 @@
  "unit": "employees; establishments",
  "date_retrieved": "2026-11-12",
  "vintage": "CBP 2023 release",
- "qualification": "Counts private-sector paid employees where they work, not where they live. The Bureau adds noise to protect employers; the data API returned the same noise range code (0) for every county total, and the code’s meaning was not read, so no county is marked. Kalawao County, Hawaii, and King County, Texas, are not in the file.",
+ "qualification": "Counts private-sector paid employees where they work, not where they live. The Bureau adds noise to each establishment’s figures to protect employers, and flags each published count by how much noise changed it: G, less than 2 percent (2,735 counties); H, 2 to under 5 percent (378); J, 5 percent or more (29). The flags come from the Bureau’s downloadable 2023 county file, whose counts equal the data API’s in every row; the API’s own noise range code returned 0 for every county, and its variable list defines no values for it. Kalawao County, Hawaii, and King County, Texas, are not in the file.",
  "columns": {
   "geoid": {
    "type": "id",
@@ -38,6 +43,14 @@
    "type": "integer",
    "description": "establishments with paid employees",
    "unit": "establishments"
+  },
+  "emp_noise_flag": {
+   "type": "category",
+   "description": "the Bureau’s noise flag for paid_employees, from its 2023 county file: G low, H medium, J high"
+  },
+  "emp_noise_words": {
+   "type": "text",
+   "description": "the flag’s meaning, in the record layout’s words"
   }
  },
  "printed_source_line": "Source: U.S. Census Bureau, County Business Patterns, paid employees by county, 2023, counties of the 50 states and DC. Retrieved November 12, 2026. Private-sector paid employees only, counted where they work.",
@@ -45,7 +58,16 @@
  "domain": "D07",
  "states": [],
  "notes": [
-  "The counties sum to 132,151,802 paid employees; the national row, all sectors, gives 139,831,742. The difference was not traced today.",
-  "Noise range codes returned: {'0': 3142}."
- ]
+  "The counties sum to 132,151,802 paid employees; the national row, all sectors, gives 139,831,742, 7,679,940 more (RL-2). The Bureau’s 2023 county file holds 50 \"statewide\" records (county code 999), 7,679,935 employees in all; the methodology page says \"Employers without a fixed location within a state (or of unknown county location) are included under a “statewide” classification. This incomplete detail causes only slight understatement of county employment,\" and that employee-leasing establishments may be published statewide. The largest are Florida 1,927,806, California 1,017,858, Texas 602,614. The last 5 are in the state totals of Hawaii (3) and Texas (2) beyond their counties and statewide records: the two states whose one county the file leaves out (Kalawao County and King County). Counties, statewide records and those 5 sum to the national total, and the 51 state totals sum to it exactly. Read November 13, 2026.",
+  "Noise range codes returned: {'0': 3142}.",
+  "Noise flags (RL-2): the record layout for 2020 to 2023 defines \"G 0 to < 2% noise (low noise)\", \"H 2 to < 5% noise (medium noise)\" and \"J >= 5% noise (high noise)\". A table marks the J counties at least; a count flagged H or J differs from the unperturbed figure by the share its flag gives."
+ ],
+ "source_line_variants": {
+  "with_noise_flags": "Source: U.S. Census Bureau, County Business Patterns, paid employees by county, 2023, counties of the 50 states and DC, with the Bureau’s noise flags. Retrieved November 12 and 13, 2026. Private-sector paid employees only, counted where they work."
+ },
+ "raw_files_sha256_prefix": {
+  "cbp23co.zip (2026-11-13)": "e9539e96ceb91608",
+  "cbp23st.zip (2026-11-13)": "9fc306ecc4f96330",
+  "cbp23us.zip (2026-11-13)": "3f9018f807f1ffd7"
+ }
 }

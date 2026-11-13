@@ -1,0 +1,89 @@
+{
+ "file": "usgov-v7-route-grid.csv",
+ "kind": "derived",
+ "publisher": "U.S. National Archives (the Constitution); U.S. Government Publishing Office (U.S. Code, CFR, Senate rules); U.S. Senate; state constitutions and election offices; Internal Revenue Service; Oath & Action’s systems atlas, Who Do They Answer To?",
+ "title_or_table": "The atlas’s eleven routes to change, each with what the official texts require of it",
+ "table_id": "v7-routes joined to usgov-route-requirements by route code",
+ "url": [
+  "https://www.archives.gov/founding-docs/constitution-transcript",
+  "https://www.govinfo.gov/content/pkg/CDOC-113sdoc18/pdf/CDOC-113sdoc18.pdf",
+  "https://www.archives.gov/federal-register/constitution",
+  "work/extract/atlas-v7-data.json"
+ ],
+ "observation_period": "Routes as of October 15, 2026 (Atlas V7 snapshot); law and rules as read November 11 and 12, 2026",
+ "geography": "United States, with state examples named in each row",
+ "universe_or_base": "V7’s eleven routes, each with its count of reform profiles and what the official texts require",
+ "unit": "routes; route entries (reform profiles that list a route)",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Atlas V7 snapshot of October 15, 2026; official pages read November 11 and 12, 2026",
+ "qualification": "A summary of each route’s formal requirements, not of how hard it is; V7 rates feasibility separately. State and local rows name the examples read, and other states differ. Route entries count reforms that list a route, not how likely a change is; V7 rates feasibility per reform.",
+ "columns": {
+  "route": {
+   "type": "code",
+   "description": "V7 route code"
+  },
+  "name": {
+   "type": "text",
+   "description": "V7 route name, verbatim"
+  },
+  "v7_who": {
+   "type": "text",
+   "description": "who acts, as V7 states it, verbatim"
+  },
+  "v7_instrument": {
+   "type": "text",
+   "description": "the route’s instrument, as V7 states it, verbatim"
+  },
+  "route_entries": {
+   "type": "integer",
+   "description": "reform profiles in V7 that list this route",
+   "unit": "route entries"
+  },
+  "who_decides": {
+   "type": "text",
+   "description": "who decides, from the official texts (usgov-route-requirements)"
+  },
+  "what_it_takes": {
+   "type": "text",
+   "description": "the votes or approvals the official texts require"
+  },
+  "how_it_can_be_undone": {
+   "type": "text",
+   "description": "how a change made this way can be undone"
+  },
+  "sources": {
+   "type": "text",
+   "description": "the official texts behind the row"
+  },
+  "url": {
+   "type": "text",
+   "description": "one address per row; the workflow sources file lists every page"
+  },
+  "date_read": {
+   "type": "date",
+   "description": "the last date the route’s texts were read"
+  },
+  "date_read_words": {
+   "type": "text",
+   "description": "the date or dates the route’s texts were read, in words"
+  }
+ },
+ "printed_source_line": "Source: U.S. National Archives (the Constitution); U.S. Government Publishing Office (U.S. Code, CFR, Senate rules); U.S. Senate; state constitutions and election offices; Internal Revenue Service; requirements for each route as of November 12, 2026, retrieved November 11 and 12, 2026. Oath & Action’s systems atlas, Who Do They Answer To?, routes to change, as of October 15, 2026. Formal requirements only; state rows name examples.",
+ "ledger_row": "pending: the research lead’s data check (R2-2)",
+ "domain": "all",
+ "domain_note": "Draws all eleven routes, which serve reforms in every domain (data lead check 1)",
+ "states": [
+  "MA",
+  "NE",
+  "VA",
+  "AZ",
+  "CA",
+  "WA",
+  "MN"
+ ],
+ "derived_from": [
+  "v7-routes.json",
+  "usgov-route-requirements.csv"
+ ],
+ "derivation": "Each of V7’s eleven routes, in V7’s order, joined by route code to the row of usgov-route-requirements with the same code, every value copied as stored; date_read and date_read_words give the dates the workflow sources file records for the route’s texts (the dates in its section’s rows). Script: work/build/scripts/phase-3/maker_a_round3_derive.py."
+}

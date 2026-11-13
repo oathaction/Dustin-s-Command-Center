@@ -2,7 +2,7 @@
  "id": "14.115",
  "title": "Use a tile map of arrows to show where a measure moved, every state on one scale.",
  "rule": [
-  "Give each state one square holding a flat arrow whose length follows its shift on one scale across the map, with the state’s code and the shift printed above the arrow. Name the direction in words in the key, as “toward the Republican nominee”, and draw every party in neutral ink (Rule 14.7). Set the national figure beside the key with its own label and arrow, apart from the squares, and frame each state whose leader changed.",
+  "Give each state one square holding an arrow that points the way the measure moved, its length set by the shift on one scale across the map, with the state’s code and the shift printed above the arrow. Name the direction in words in the key, as “toward the Republican nominee”, so no color stands for a party (Rule 14.7). Set the national figure beside the key with its own label and arrow (Rule 14.6), and frame each state whose leader changed.",
   "On a phone, where an arrow would be too short to read, each square takes a gray step by the size of its shift, and two lists under the map name the largest and smallest shifts with their figures (Rule 14.12)."
  ],
  "use_when": "The reader asks where a measure moved between two dates and how far, state by state, such as a presidential margin from one election to the next.",
