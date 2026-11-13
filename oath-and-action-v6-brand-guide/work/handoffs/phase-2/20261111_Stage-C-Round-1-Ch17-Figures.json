@@ -1,7 +1,7 @@
 {
  "about": "Every figure chapter 17 prints, with the method that produced it. Contrast is WCAG 2.x relative luminance on the token hex values in tokens.json; motion values are read from tokens.json.",
  "built": "2026-11-11",
- "token_set_version": "6.0.0-gate2.9",
+ "token_set_version": "6.0.0-gate3.2",
  "figures": {
   "Charcoal at 40 percent opacity over Newsprint": {
    "value": "2.48",

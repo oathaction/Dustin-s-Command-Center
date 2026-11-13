@@ -292,13 +292,24 @@ def tracker_motion_svg():
 
 
 # ------------------------------------------------------------------------------------------------ the mechanism link
-# Loop R1's first link from our systems atlas, as chapter 11's stepper words it (DR-195): "Wealth concentration raises
-# money in politics." Two nodes and the link between them. Plain nodes, untagged: they are a diagram, not status marks.
+# Loop R1's first link from our systems atlas, as chapter 11's stepper words it (DR-195): "Concentration of household
+# wealth raises money spent to influence politics." Two nodes and the link between them. Plain nodes, untagged: they are
+# a diagram, not status marks. Each node takes its variable's own title from the atlas (DR-265, DR-267), read here.
+_V7 = json.loads((ROOT / 'work/extract/atlas-v7-data.json').read_text())
+if [c for c, _ in _V7['loops']['R1']['chain'][:2]] != ['A1', 'B1'] or _V7['loops']['R1']['chain'][0][1] != '+':
+    raise SystemExit('Loop R1 no longer opens with A1 raising B1; reread the mechanism link')
+R1_A, R1_B = (_V7['nodes'][c]['title'] for c in ('A1', 'B1'))
+
+
+def _lo(s):
+    return s[0].lower() + s[1:]
+
+
 #
 # CD-S3 and CA-S5: each node's name sits centered under its node, on one baseline with the other. The drawing therefore
 # flows with its column up to 26rem: the nodes stand at fixed shares of its width, 28 and 78.5 percent, the centers of
-# the two name columns under it (0 to 56 percent and 57 to 100 percent), so both names
-# fit on one line at 14 px from about 290 px, and each wraps to two lines, still centered, below that. The nodes, the line and the arrowhead keep their true sizes at every width; only the
+# the two name columns under it (0 to 56 percent and 57 to 100 percent), so each title wraps at 14 px onto two lines,
+# or three at the narrowest, still centered under its node. The nodes, the line and the arrowhead keep their true sizes at every width; only the
 # link's length changes. The line runs from center to center under a halo of the ground around each node, 4 px wide,
 # so it shows from 4 px past the first node to the arrowhead's point, 4 px short of the second, as before.
 MH = 40
@@ -357,7 +368,7 @@ def mech_motion_svg():
     return _svg(''.join(body))
 
 
-MECH_NAMES = '<p class="nn"><span>Wealth concentration</span><span>Money in politics</span></p>'
+MECH_NAMES = f'<p class="nn"><span>{R1_A}</span><span>{R1_B}</span></p>'
 MECH_CSS = ('.lk{max-width:' + MECH_MAX + '}.dgl{width:100%;max-width:' + MECH_MAX + ';height:' + str(MH) + 'px}'
             '.dg .hal{fill:var(--oa-color-surface)}'
             '.nn{display:grid;grid-template-columns:' + NAME_COLS + ';align-items:start;margin-top:6px;' + ty('caption') + '}'
@@ -843,13 +854,13 @@ def s17_2_failure():
 
 # ---- 17.3 correct: the player's parts (a picture), 17.4 correct: the same player live
 MECH_WORDS = {
-    'start': 'First frame: wealth concentration, where Loop R1 starts.',
-    'end': 'Last frame: wealth concentration raises money in politics.',
+    'start': f'First frame: {_lo(R1_A)}, where Loop R1 starts.',
+    'end': f'Last frame: {_lo(R1_A)} raises {_lo(R1_B)}.',
     'run': 'Playing.', 'pause': 'Paused.'}
 M_LAND_AT = STD + STAG
 M_END = M_LAND_AT + STD
 MECH_TIMELINE = [
-    f'0{NB}ms: the link draws from wealth concentration toward money in politics, over the standard {ms_words(STD)} with the enter easing.',
+    f'0{NB}ms: the link draws from {_lo(R1_A)} toward {_lo(R1_B)}, over the standard {ms_words(STD)} with the enter easing.',
     f'{ms_words(M_LAND_AT)}: the arrowhead and the second node land, over the standard {ms_words(STD)} with the enter easing.',
     f'{ms_words(M_END)}: at rest. Under reduced motion the last frame shows at 0{NB}ms.']
 MECH_KICK = 'From our systems atlas, Loop R1'
@@ -898,8 +909,8 @@ def s17_3_correct():
             f'<ol class="key">{key}</ol></div>')
     alt = ('The parts of a motion player, numbered 1 to 7 from top to bottom, drawn from the player for Loop R1’s first '
            f'link in Rule 17.4, under its heading, the loop’s name, {MECH_TITLE}, and the line “{MECH_GRADE}” '
-           '1, the stage at its first frame, where a player of a state or a mechanism rests: two nodes, wealth '
-           'concentration filled and money in politics empty. A player of the wordmark or the lockmark rests on its '
+           f'1, the stage at its first frame, where a player of a state or a mechanism rests: two nodes, {_lo(R1_A)} '
+           f'filled and {_lo(R1_B)} empty. A player of the wordmark or the lockmark rests on its '
            'master. 2, the status line, which says what the frame shows. 3, the Play button, which turns to Pause while '
            'the motion runs and to Play again at its end. 4, Reset the link, unavailable at rest with a dashed edge, its number '
            'set off its top left corner. 5, Slow motion, a check box that plays at one tenth speed. 6, the reason line: '
@@ -939,10 +950,9 @@ def s17_4_correct():
     body = mech_player(False)
     alt = ('A live player for the first link of Loop R1 from our systems atlas, “Wealth and political influence reinforce '
            f'each other”, with the line “{MECH_GRADE}” '
-           'At the first frame the node for wealth concentration is filled and the node for money in '
-           f'politics is empty. Play draws the link from the first node to the second over {STD} ms, then the arrowhead '
-           f'and the second node land, {M_END} ms in all, and the status line says “Last frame: wealth concentration '
-           'raises money in politics.” A check box, Preview reduced motion, sets this player’s motion tokens to 0 '
+           f'At the first frame the node for {_lo(R1_A)} is filled and the node for {_lo(R1_B)} '
+           f'is empty. Play draws the link from the first node to the second over {STD} ms, then the arrowhead '
+           f'and the second node land, {M_END} ms in all, and the status line says “{MECH_WORDS["end"]}” A check box, Preview reduced motion, sets this player’s motion tokens to 0 '
            'ms, so Play draws the last frame at once, as it does for every player when a device asks for reduced motion. '
            'A line says what this device asks for, and when it asks for reduced motion the preview is checked and '
            'unavailable with its reason. Slow motion plays at one tenth speed. The still view draws the first and last '
@@ -1670,8 +1680,8 @@ def build_chapter():
             'Drawing the last frame keeps every fact the motion shows and removes the movement alone.'],
             'basis': 'Media Queries Level 5, W3C Working Draft, February 19, 2026'},
         'correct': {'specimen': 's-17-4-correct', 'caption':
-                    'Live. The first link of Loop R1 from our systems atlas draws from wealth concentration to money in '
-                    'politics, and the arrowhead and the second node land. Turn on Preview reduced motion, or set your '
+                    f'Live. The first link of Loop R1 from our systems atlas draws from {_lo(R1_A)} to {_lo(R1_B)}, '
+                    'and the arrowhead and the second node land. Turn on Preview reduced motion, or set your '
                     'device to reduce motion, and Play draws the last frame at once. The line under the check boxes says '
                     'what your device asks for now.'},
         'failure': {'specimen': 's-17-4-failure', 'caption':

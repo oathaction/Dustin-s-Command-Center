@@ -208,6 +208,22 @@ export function run_spec(spec, o) {
   res.rows = chk.rows;
   res.datasets = chk.datasets;
   if (!K.forms[spec.form] || !chk.rows || !chk.rows.length) return res;
+  // R4-4 (round 4): a social card's crops, each drawn at its true size and checked there (the 36 px floor, the crop's height);
+  // no column width, narrow width or sweep applies, since a card never reflows
+  if (spec.card !== undefined) {
+    const cr = spec.card && spec.card.crops;
+    if (!Array.isArray(cr) || !cr.length || cr.some(x => !Array.isArray(x) || x.length !== 2 || x.some(v => !Number.isInteger(v) || v < 480 || v > 2160)))
+      res.faults.push('card: crops is a list of [width, height] in whole px from 480 to 2160, such as [[1080, 1350], [1080, 1080]] (R4-4, DR-268)');
+    else {
+      for (const g of o.grounds) for (const c of cr) {
+        let d;
+        try { d = K.draw(spec, chk.rows, { width: c[0], crop: c, ground: g, tokens: TOK[g], extra: extra_rows(chk) }); } catch (e) { res.faults.push(`draw ${c[0]} by ${c[1]} on ${g}: ${e.message}`); continue; }
+        res.faults.push(...C.check_drawing(spec, d, TOK[g], `${g} ${c[0]} by ${c[1]}`));
+        res.drawings.push({ ground: g, page: c[0], crop: `${c[0]}x${c[1]}`, width: d.width, height: d.height, svg: d.svg, bytes: Buffer.byteLength(d.svg) });
+      }
+    }
+    return res;
+  }
   // R4-3 (round 4): a card form builds its HTML in Node; the checks read that HTML (check_html) and every mark h.mark drew;
   // its sizes, overflow, overlap and reading order are read in the browser by build (card_checks)
   if (K.is_card(spec)) {
@@ -268,11 +284,12 @@ export function used_columns(spec, columns) {
 // The keys a page needs to draw: no words the figure already prints (method load-table)
 // typography rides along (round 3 fix pass): c.text sets a drawing's words through it, so a page without it drew S81's key
 // without its no-break spaces and failed parity
-const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'stage_min', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone', 'typography'];
+const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'stage_min', 'card', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone', 'typography'];
 export function draw_spec(spec) {
   const out = {};
   DRAW_KEYS.forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });
   if (out.table) out.table = Object.assign({}, out.table, { caption: undefined });
+  if (out.card) out.card = { crops: out.card.crops };   // R4-4: the page draws the crops; the post's words print in the figure
   if (spec.form === 'social-data-card') ['evidence_label', 'title', 'source_line'].forEach(k => { out[k] = spec[k]; });
   return out;
 }
@@ -405,8 +422,10 @@ async function captures(items, o) {
       const page_file = path.join(dir, spec.id.toLowerCase() + '.html');
       fs.writeFileSync(page_file, html);
       const stem = file_stem(spec, o.date);
-      for (const w of o.widths) {
-        for (const dpr of [1, 2]) {
+      // R4-4 (round 4): a card's crops show at true size on a 1440 px page, so one pass at 1x gives true-pixel PNGs
+      const crops = spec.card && spec.card.crops ? spec.card.crops.map(c => `${c[0]}x${c[1]}`) : [null];
+      for (const w of (crops[0] ? [1440] : o.widths)) {
+        for (const dpr of (crops[0] ? [1] : [1, 2])) {
           const ctx = await browser.newContext({ viewport: { width: w, height: 1000 }, deviceScaleFactor: dpr });
           const p = await ctx.newPage();
           const errors = [];
@@ -417,13 +436,13 @@ async function captures(items, o) {
           await p.evaluate(() => window.OAChart && OAChart.draw_all && OAChart.draw_all());
           await p.waitForFunction(() => Array.from(document.querySelectorAll('figure.oac-fig')).every(f => f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error')), null, { timeout: 15000 });
           errors.forEach(e => res.faults.push(`page error at ${w}: ${e}`));
-          for (const g of o.grounds) {
-            const fid = `#oac-${spec.id.toLowerCase()}-${g}`;
-            const node = res.drawings.find(d => d.ground === g && d.page === w);
-            const info = await p.evaluate(({ fid, node_svg, title, alt, fonts_note }) => {
+          for (const g of o.grounds) for (const crop of crops) {
+            const fid = `#oac-${spec.id.toLowerCase()}-${g}`, sel = crop ? `[data-oa-crop="${crop}"] svg.oac-svg` : 'svg.oac-svg';
+            const node = res.drawings.find(d => d.ground === g && (crop ? d.crop === crop : d.page === w));
+            const info = await p.evaluate(({ fid, sel, node_svg, title, alt, fonts_note }) => {
               const f = document.querySelector(fid);
               const err = f.getAttribute('data-oa-error');
-              const svg = f.querySelector('svg.oac-svg');
+              const svg = f.querySelector(sel);
               const tb = f.querySelector('table.oac-table');
               const out = { err, rows: tb && tb.hasAttribute('data-oa-lean') ? (tb.querySelector('tbody th[scope=row]') && tb.querySelectorAll('thead th').length > 1 && tb.querySelectorAll('tbody td[data-x]').length + tb.querySelectorAll('tbody td').length !== tb.querySelectorAll('tbody tr').length * (tb.querySelectorAll('thead th').length - 1) ? 0 : 0) : f.querySelectorAll('[data-oa-row]').length };
               if (tb && tb.hasAttribute('data-oa-lean')) out.rows = (isl => window.OAChart.rows_from_table(tb, isl.spec, isl))(window.OAChart.island(f.querySelector('script[data-oa-chart-data]'))).length;
@@ -487,7 +506,7 @@ async function captures(items, o) {
               const back = new DOMParser().parseFromString(out.export, 'image/svg+xml');
               out.export_ok = !back.querySelector('parsererror') && !!back.querySelector('svg > title') && !!back.querySelector('svg > desc') && out.export.indexOf('var(') < 0 && out.export.indexOf(' class=') < 0;
               return out;
-            }, { fid, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt, fonts_note: K.words.export_fonts });
+            }, { fid, sel, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt, fonts_note: K.words.export_fonts });
             if (info.err) { res.faults.push(`page: ${g} ${w}: ${info.err}`); continue; }
             if (dpr === 1) {
               if (!info.parity) res.faults.push(`parity: the page's drawing at ${w} on ${g} differs from the Node drawing the exports use`);
@@ -497,8 +516,16 @@ async function captures(items, o) {
               if (t.group && info.groups !== t.groups.length) res.faults.push(`table: the page prints ${info.groups} grouped rows for the data's ${t.groups.length} groups (${g} ${w})`);
               (info.empty_cols || []).forEach(lab => res.faults.push(`table: the page prints the column "${lab}" empty in every row (${g} ${w}, AX-M1)`));
               if (!info.export_ok) res.faults.push(`svg export: not standalone or no title and desc (${g} ${w})`);
-              fs.writeFileSync(path.join(dir, `${stem}-${title_case(g)}-${w}.svg`), info.export);
+              fs.writeFileSync(path.join(dir, `${stem}-${title_case(g)}-${crop || w}.svg`), info.export);
+              if (crop) {
+                // R4-4: the card's PNG at true pixels, exactly its crop
+                const pf = path.join(dir, `${stem}-${crop}-${title_case(g)}.png`);
+                await (await p.$(fid + ' ' + sel)).screenshot({ path: pf });
+                const sz = png_size(fs.readFileSync(pf)), want = crop.split('x').map(Number);
+                if (sz.w !== want[0] || sz.h !== want[1]) res.faults.push(`png: ${path.basename(pf)} is ${sz.w} by ${sz.h}, the card's crop ${want[0]} by ${want[1]}`);
+              }
               const fig = await p.$(fid);
+              if (crop !== crops[crops.length - 1]) continue;   // the figure's proofs once, after its last crop
               await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${w}.png`) });
               await p.addStyleTag({ content: 'html{filter:grayscale(1)}' });
               await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${w}-grayscale.png`) });

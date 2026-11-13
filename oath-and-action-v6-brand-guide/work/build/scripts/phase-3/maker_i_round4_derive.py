@@ -140,16 +140,21 @@ def s93():
     r = {x["order"]: x for x in rows("govinfo-pl-119-12-first-page")}
     keys = [str(b["key"]) for b in s["labels"]["layout"]]
     check(sid, "the page draws every part but the citation, which the running head holds", sorted(keys + ["4"], key=int) == sorted(r, key=int), f"{keys}")
+    check(sid, "row 11's margin short title sits beside section 1 with row 10", [b.get("beside") for b in s["labels"]["layout"] if b["key"] in (10, 11)] == [9, 9])
     head = r["1"]["printed_text"].split("; ")
     check(sid, "the running head's last piece is the Statutes at Large citation", head[-1] == r["4"]["printed_text"], f"{head[-1]!r} {r['4']['printed_text']!r}")
     check(sid, "the running head's first piece is the Public Law number in capitals", head[0] == r["2"]["printed_text"].upper())
     for b in s["labels"]["layout"]:
         for br in b.get("breaks", []) + ([b["lead"]] if b.get("lead") else []):
             check(sid, f"row {b['key']} holds \"{br}\" where the page breaks a line", br in r[str(b["key"])]["printed_text"])
-    t = words(s)
-    for k in ("2", "4", "5", "6"):
-        p = r[k]["printed_text"].replace("[", "").replace("]", "").replace("–", "-")
-        check(sid, f"the alt or title names row {k}'s words", p.split()[0] in t)
+    # the drawing's words reach a screen reader through its table, which prints every part with its words as printed and
+    # what it tells, in the order the parts sit on the page; the alt stays short (the accessibility lead, R4-3 item 5)
+    cols = [c["field"] for c in s["table"]["columns"]]
+    check(sid, "the table prints each part, its words as printed and what it tells", all(f in cols for f in ("part", "printed_text", "what_it_tells")), f"{cols}")
+    order = [str(v) for v in s["sort"][0]["values"]]
+    check(sid, "the parts read top to bottom: the margin short title (row 11) before the U.S. Code note (row 10)", order.index("11") < order.index("10") and sorted(order, key=int) == sorted(r, key=int))
+    nums = s["table"]["columns"][0].get("words", {})
+    check(sid, "the table's numbers match the drawing's: each part's place in that order", all(nums.get(k) == str(i + 1) for i, k in enumerate(order)))
     em = "—"
     check(sid, "no em dash in any word field", em not in json.dumps(s, ensure_ascii=False))
 
