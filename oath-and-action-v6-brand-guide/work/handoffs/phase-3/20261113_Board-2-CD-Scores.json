@@ -1,8 +1,297 @@
 {
- "title": "Creative director’s score of board 2 (in progress)",
+ "title": "Creative director\u2019s score of board 2, the 114 forms of rounds 1 to 3, as the builder's run 6 left it",
  "date": "2026-11-13",
+ "written_utc": "2026-11-13T18:14:23Z",
  "author": "Creative director (oa-creative-director), subagent of the main session",
- "state": "in progress",
+ "basis": "work/handoffs/phase-3/20261113_Board-2-Brief.md, Part B; Master Brief section 6 rubric; the board as the builder's run 6 left it (17:50 UTC, 986,621 bytes, SHA-256 362326e978435040\u2026, 310 pictures), frozen in scratch and wrapped with a doctype, html lang, charset and viewport; Playwright with Chromium at 1440 and 390 px (panel 1 also at 0.5x and 2x), every image scrolled into view; 26 forms across all 14 families, maps among them; all 28 sketches, the avoid sketches first; tables and folds opened; board 1 measured the same way for the bar",
  "review": "work/handoffs/phase-3/20261113_CD-Review-Of-Board-2.md",
- "items": []
+ "threshold": "4 on every criterion; the board ships when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "board_2",
+   "name": "Board 2 as built (run 6, 17:50 UTC)",
+   "anchor": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
+   "stage": "Phase 3, board 2, first score",
+   "scores": {
+    "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 3,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "The forms panel composes 84 charts at true size on both grounds in one house anatomy, but panel 1 sets the S12 choice across 14,220 px with the recommended stacked tile about 5,000 px below its recommendation, and sketch 14.124's gray \u201cbefore\u201d is a bare 613 px drawing above an 868 px plate.",
+    "clarity": "Panel 1 opens with four group names and counts where board 1 opened with the answers and the reply line, its 30 items carry no numbers for \u201cname the item\u201d, and studio codes and file names sit on its face (C-M2, D3-1515, DR-256, D3-689, P7-226, fec-jfc-transfers-2024, \u201cdata lead change 8\u201d).",
+    "brand_fidelity": "The board's own chrome uses eight token colors and no Pillar Red, the type and rhythm read as Oath & Action with the wordmark covered, red and blue appear only in the decided avoid half under its do-not-publish bar, and the S73, issue-title, H.R. 7008 and loop-label items apply one test to both sides.",
+    "usefulness": "Eight forms-changed items ask \u201cApprove \u2026 as drawn\u201d with no picture and no link to the form in panel 2, the V7.1 items never say which are new to the October list, and the cover promises fifteen minutes for 7,457 words and 15 pictures.",
+    "evidence_honesty": "S16's and S78's items claim every state code on a phone where the 326 px pictures beside them leave four and three to a note, S73 prints 14,087 bytes under its ceiling where the page measures 14,148 over it, one chart carries two \u201cas placed\u201d figures, and the R-01 item says the guide prints no outcome where S03 and S08 print one.",
+    "accessibility": "The wrapped copy passes the board check at 1440, 390 and 360 px with no type under 13 px and no low contrast, every picture draws at its natural size with a labeled, focusable frame, and tables are live text, though panel 1's alt text names the item instead of the picture (B2-S3)."
+   },
+   "must_fix": [
+    "B2-M1",
+    "B2-M2",
+    "B2-M3",
+    "B2-M4",
+    "B2-M5",
+    "B2-M6",
+    "B2-M7"
+   ],
+   "should_fix": [
+    "B2-S1",
+    "B2-S2",
+    "B2-S3",
+    "B2-S4",
+    "B2-S5",
+    "B2-S6",
+    "B2-S7",
+    "B2-S8",
+    "B2-S9",
+    "B2-S10",
+    "B2-S11",
+    "B2-S12"
+   ],
+   "must_fix_count": 7,
+   "should_fix_count": 12,
+   "ready": false,
+   "to_ready": "Land B2-M1 to B2-M7: craft, clarity and usefulness reach 4 with M1, M2 and M7; evidence honesty with M3 to M6."
+  }
+ ],
+ "totals": {
+  "must_fix": 7,
+  "should_fix": 12,
+  "under_4": [
+   "board_2.craft",
+   "board_2.clarity",
+   "board_2.usefulness",
+   "board_2.evidence_honesty"
+  ],
+  "ready": [],
+  "not_ready": [
+   "board_2"
+  ]
+ },
+ "lowest_score_by_item": {
+  "board_2": 3
+ },
+ "must_fix": {
+  "B2-M1": {
+   "title": "Panel 1 opens without the replies Dustin owes.",
+   "where": "Panel 1 (#p-decide), its lede and group list; the reply line at the panel's end",
+   "what": "The first screen lists four groups with counts (5, 10, 10, 5). The five replies (S12's choice; the rest of the board 1 group; the forms group; the V7.1 group; the loop label question) and the reply line come after 44,000 px. Thirty items carry no number. The cover says panel 1 takes about fifteen minutes; it holds 7,457 words.",
+   "fix": "Open panel 1 with the five replies as a numbered list, one line each with the recommendation and a same-page link, then the reply line; number those five on their items. Fold the two long \u201cAnswered\u201d tables closed. Bring the panel within fifteen minutes or change the cover's line to what it takes.",
+   "owner": "Builder (layout, content file); editor (words); data lead (the five lines)",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-M2": {
+   "title": "S12's pictures stand apart from its recommendation.",
+   "where": "#d-S12",
+   "what": "The item is 14,220 px tall at 1440. Board 1's full plate and the as-built 1,440 px plate, each with notes, source and a phone drawing, come before the stacked tile, which is the cartographer's whole 1,440 px page in a 1,312 px column and scrolls sideways over empty space. The creative director's view quoted is the round 3 risk note, which asked for this layout and gives a 723 px figure since corrected.",
+   "fix": "Under the recommendation, one row at a 1,440 px window: the as-built frame as a reader sees it (943 of 1,024 px) beside the stacked tile cropped to its 723 px drawing; then one row at a 1,024 px window: the frame in the 558 px column beside the stacked tile in its 618 px frame. Move board 1's plate, the full as-built plates and the phone pair into a fold. Replace the creative director's view with the review's \u201cMy view on S12\u201d.",
+   "owner": "Builder; cartographer (the stacked tile photographed at its drawing's box at both widths); data lead (views)",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-M3": {
+   "title": "Panel 1 claims every state code on a phone where its pictures show codes missing.",
+   "where": "#d-S16 and #d-S78, \u201cWhat changed\u201d; S12's phone pair",
+   "what": "S16's item says all 51 carry a code at a 358 px phone drawing, where board 1 named two in a note. At a 390 px window the guide draws 326 px, and today's S16 picture beside the claim leaves DC, DE, ME and NH to its note, four where board 1 had two (MA, NJ). S78's item says every state carries its code on the tile grid; its 326 px picture leaves WA, WV and WY unlabeled, as S12's phone does. The phone labels give no drawing width.",
+   "fix": "State what 326 px shows in both items, label each phone picture with its drawing width (board 1's 358, today's 326), and list codes at 326 px on S12, S16 and S78 as a round 4 guide item.",
+   "owner": "Data lead (words, sign-off); editor; builder (labels); cartographer and engineer (the guide fix, round 4)",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-M4": {
+   "title": "Two byte figures for one chart, and S73 shown under a ceiling it passes.",
+   "where": "Each chart's weight line in panel 2; panel 5's ten heaviest charts",
+   "what": "Panel 2 gives S13 33,473 bytes as placed and S05 30,297; panel 5 gives 33,488 and 30,312 for the same measure. S73 reads 14,087 bytes with its frame, under D3-1328's 14,106, from the kit's 750-byte frame estimate; the engineer measures 14,148 on the page, 42 over, and the data lead has ruled a trim (D3-1545).",
+   "fix": "One measure on the whole board: the build report's bytes as placed plus each plate's own frame, named once at the top of panel 2; S73 printed after the editor's trim, with its ceiling.",
+   "owner": "Builder; engineer (each plate's page measure); editor (S73's trim); data lead (sign-off)",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-M5": {
+   "title": "The R-01 item says the guide prints no outcome; two guide charts print one.",
+   "where": "#d-R-01, recommendation; S03 (form 14.15) and S08 (form 14.49), note 1",
+   "what": "The item says the guide prints the atlas's status with its snapshot date and no outcome. S03's and S08's notes print unofficial outcomes for Massachusetts Question 3, Missouri Proposition A and Alaska Measure 2, Alaska's at 47.4 to 52.6 in the count of November 10; the item gives the count of November 12, 47.19 to 52.81.",
+   "fix": "Say where the guide prints outcomes and from which count; the data lead rules whether S03's and S08's notes take the November 12 count before the board ships or wait for certification, and the item says which.",
+   "owner": "Data lead (words, ruling); editor (S03 and S08 note words)",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-M6": {
+   "title": "The board predates the signed-off decisions file.",
+   "where": "Panel 1's board 1 group; panel 2's board 1 lines; panel 4's election table",
+   "what": "Run 6 (17:50 UTC) names three changed board 1 drawings where the 17:51 file names four (S05's brackets) and eleven moves where it names thirteen; S04 and S08 say their drawing differs from board 1's with no reason; the election table prints \u201cNo\u201d for ten examples the test was never applied to; the data lead's view repeats the recommendation word for word.",
+   "fix": "Rerun on the current file; make the build fail on a board 1 drawing that differs and panel 1 does not name, and on a \u201cNo\u201d where the test was not applied.",
+   "owner": "Builder; data lead (confirms)",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-M7": {
+   "title": "Eight approvals \u201cas drawn\u201d with no drawing.",
+   "where": "\u201cForms whose tier or data changed\u201d: S73, S76, S78, S80, S59, S54 and S55, S41, S20",
+   "what": "Each item asks Dustin to approve a drawing and shows none; its one link opens the guide preview, not yet published as version 9. S73 (seven committees in place of two), S78 (the phone tile grid) and S80 (the Detroit inset) change what a reader sees.",
+   "fix": "Set each item's Newsprint picture from panel 2 beside its recommendation (the same file, no new one) and link each to its form in panel 2.",
+   "owner": "Builder",
+   "items": [
+    "board_2"
+   ]
+  }
+ },
+ "should_fix": {
+  "B2-S1": {
+   "title": "Studio codes and file names on the face",
+   "what_and_fix": "C-M2, D3-1515, DR-256, DR-64, D3-689, dataset names in \u201cThe plan said\u201d and \u201cAs built\u201d (fec-jfc-transfers-2024 and seven more), research ledger P7 numbers, \u201cdata lead change 8\u201d, \u201csource variant fixed_with_s2801_margin\u201d, RL-3, \u201cFEC sidecars\u201d, list item numbers, CL1359 and CL1363. Plain words on the face, codes in the reference line; the 17:51 file already fixes DR-64 and RL-3.",
+   "owner": "Editor; data lead",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S2": {
+   "title": "The gray before of sketch 14.124 is not like for like",
+   "what_and_fix": "A bare 613 by 233 px drawing with no heading, bar or caption sits above the 868 by 545 px plate. Photograph the gray half in the same plate from the cartographer's Gray-Before-Plate page at 868 px.",
+   "owner": "Builder; cartographer",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S3": {
+   "title": "Panel 1's alt text names the item, not the picture",
+   "what_and_fix": "\u201cBoard 1 on a phone: S12, the shift arrows map at a desk\u201d; \u201cBefore: gray: Sketch 14.124 in red and blue\u201d. Say what each of the 15 pictures shows, as panel 2's Newsprint alts do.",
+   "owner": "Builder; editor",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S4": {
+   "title": "The V7.1 items do not say which are new",
+   "what_and_fix": "The lede says seven are new; no item says so. One line on each: new to the list, or on the October list as item N.",
+   "owner": "Data lead",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S5": {
+   "title": "Recommended: Done",
+   "what_and_fix": "The five answered items carry a \u201cRecommended\u201d chip with \u201cDone.\u201d Use one \u201cDone\u201d chip.",
+   "owner": "Builder; editor",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S6": {
+   "title": "The Tested panel",
+   "what_and_fix": "The quick guide check line reports a run on the 11,235,128-byte build, before Part A, beside a strict build of 11,236,319, without saying so; Not tested omits the 180 links to version 9, checked against this build's anchors only. Say both, and print the main session's final check when it runs.",
+   "owner": "Builder",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S7": {
+   "title": "Panel 4's base",
+   "what_and_fix": "The count tables are of 108 examples (97 built and round 4's 11 planned) and the election paragraph of 97; name the base in each caption.",
+   "owner": "Data lead; editor",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S8": {
+   "title": "S12's figures",
+   "what_and_fix": "The column at a 1,024 px window is 556 px in the words and 558 in the measure file and the picture (so the frame scrolls 466 px, not 468); panel 2 labels S12 a 1,024 px drawing at a 1440 px window where that window shows 943 px. One figure from the measure file; label panel 2's picture as the drawing the frame scrolls through.",
+   "owner": "Data lead; builder",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S9": {
+   "title": "S73's count names neither side",
+   "what_and_fix": "\u201cboth sides reached a similar number of committees: 54 and 56\u201d. Write \u201cthe Democratic funds 54, the Republican funds 56\u201d (DR-124).",
+   "owner": "Editor",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S10": {
+   "title": "DR-258's reason",
+   "what_and_fix": "\u201cthe other 668 needed the three files\u201d; none of the 668 read V5 Polished. Write \u201cneeded Concepts V2 and the Atlas Visual System\u201d.",
+   "owner": "Editor",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S11": {
+   "title": "No figure, ink or word changed",
+   "what_and_fix": "S12's row adds a note naming the codes with no room, and \u201cS01, S02, S07, S15 and S16 drew the same\u201d reads as unchanged where panel 2 marks four of them changed. Write \u201cNo figure or ink changed; S12's phone adds a note\u201d, and say what \u201cdrew the same\u201d compares.",
+   "owner": "Data lead; editor",
+   "items": [
+    "board_2"
+   ]
+  },
+  "B2-S12": {
+   "title": "At 390 px the phone drawing sits at the far end of each frame",
+   "what_and_fix": "A reader on a phone scrolls 744 px past the desk drawing to reach the one made for that width, and on Charcoal the phone drawing's text meets the panel edge. Below 760 px show the phone drawing first or print \u201cPhone drawing at the right\u201d over the frame; give composed Charcoal pictures a 16 px inner margin.",
+   "owner": "Builder",
+   "items": [
+    "board_2"
+   ]
+  }
+ },
+ "named_places": {
+  "1_fifteen_minutes": "Panel 1 is 44,610 px tall at 1440 with 7,457 words (board 1's was 11,695 px); S12 alone is 14,220 px, and its recommended stacked tile first shows about 5,000 px below the recommendation. No list of the five replies at the top (B2-M1, B2-M2, B2-M7).",
+  "2_left_and_right": "Each recommendation applies one test to both sides: S73 reads all seven funds by one rule, the issue-title item one grade test whoever the actor is, figure 7 names both provisions of H.R. 7008, the loop labels give way to plain titles. S73's 54 and 56 need their sides named (B2-S9).",
+  "3_one_reference": "All 114 forms keep one anatomy; avoid sketches lead their families; every picture draws at its natural size on both grounds with a grayscale fold and a live table.",
+  "4_numbers_traceable": "S12's measures, the Rule 01.9 and election counts (rerun by script, equal), the spend figures and DR-258's split trace to their files; the byte figures conflict (B2-M4) and three claims conflict with the board's own pictures or files (B2-M3, B2-M5, B2-M6).",
+  "5_studio_words": "Codes and file names on panel 1's face and panel 4's heading (B2-S1)."
+ },
+ "my_view_on_s12": "I agree with the stacked tile. At a 1,440 px window it shows the whole map in the column, every code, figure and arrow, with the chapter list in place; the scrolling frame hides Maine and Rhode Island and the list. Shorter arrows cost little, since every tile prints its figure. The cartographer\u2019s 618 px replaces my 723.",
+ "distinctiveness_test": [
+  {
+   "view": "The board with its wordmark covered",
+   "verdict": "Reads as Oath & Action: Newsprint ground, Inter Tight display, one charcoal rule, evidence chips, no red in its own chrome."
+  },
+  {
+   "view": "Panel 2 at 1440 px",
+   "verdict": "Reads as one reference: the same anatomy for every form, desk and phone side by side at true size."
+  }
+ ],
+ "risks_for_dustin": [
+  "Sketch 14.124's red and blue are decided (DR-255), and the creative director's dissent for gray stays recorded. On the board the half sits under its bar with both colors named in its key; a screenshot of that half alone can still travel. No change asked.",
+  "At the 326 px most phones get, S12, S16 and S78 each leave three or four state codes to a note (B2-M3); the guide fix belongs to round 4.",
+  "Panel 2 runs 456,528 px at 1440. It holds as a reference; round 5's selection guide should become chapter 14's front door."
+ ],
+ "questions_for_dustin": []
 }

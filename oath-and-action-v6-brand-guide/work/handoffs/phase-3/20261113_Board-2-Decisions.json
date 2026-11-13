@@ -479,7 +479,7 @@
      "title": "Tiers",
      "answer": "No form changed its tier. All 114 forms of rounds 1 to 3 carry the tier the coverage plan gave them: 50 core, 36 extended, 21 reference and 7 to avoid.",
      "what_changed": "Nothing.",
-     "why": "A script read each form’s tier in the coverage plan, the chapter 14 plan, the data plans, each entry and each spec.",
+     "why": "A script read each form’s tier in the coverage plan, the chapter 14 plan, the data plans, each guide entry and each chart’s settings file.",
      "recommendation": "No decision needed.",
      "refs": [
       "DR-62",
