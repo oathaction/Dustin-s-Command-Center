@@ -34,6 +34,7 @@ What round 2's words pass found most often, so you can write it right the first 
 - 02:39. **Maker B's second look, done:** two changes (S76's note 3, entry 14.108), logged under "Words for maker B, second look"; S76 passes the kit with the sweep and maker B's figure check reports 0 faults, so no string changes. **Rule 14.7's "Seats on a map" row follows the data lead's C-1** (the margin in steps of one sequential ink), and three of my cartographer words that C-1 makes stale are listed for the cartographer.
 - 02:40. **S65's share column prints percents** (`fraction-percent:1`, label without "0 to 1"), at the main session's word; PASS with the sweep, figure check 0 faults. **My S79 error, logged:** I had changed `labels.point`, a data key, which took the red point off the locator; the cartographer restored it, and my rebuild shows the red back. I now leave mark and ink keys to their owners.
 - 02:43. **Maker A's second look, done:** three changes (S68's alt on the two diamond lines, S71's alt, entry 14.96's why), logged under "Words for maker A, second look"; S68 and S71 pass the kit with the sweep, and maker A's figure check passes 35 of 35, so no string changes.
+- 03:05. **The cartographer's second look, done:** the data lead's C-5 in entry 14.124's builders line, logged under "Words for the cartographer, second look"; every other word the cartographer changed read and kept. `phase3_ch14_build.py --check`: 87 of 87 current after a chapter rebuild.
 
 ## Routine calls
 
@@ -57,6 +58,7 @@ What round 2's words pass found most often, so you can write it right the first 
 - D3-xxx | S80's and S82's titles keep "was decided by" and "were decided by" | The race idiom names its plain actor, and the cartographer's figure check reads both titles word for word
 - D3-xxx | Four maps' notes say "The map draws Alaska and Hawaii apart and not to scale" | One wording for the family, W02
 - D3-xxx | The editor leaves `labels.point`, `labels.named` and every key that picks a mark or an ink to the spec's owner, and sends a change to one through the main session | My change to S79's `labels.point` took the view's only red point off the map while the kit still passed; such a key is data, not words
+- D3-xxx | Entry 14.124's builders line says the margin takes sequential steps 2 to 5 | The data lead's C-5, after C-1
 - D3-xxx | S65's share column prints percents through the engineer's `fraction-percent:1`, and its label drops "0 to 1" | The main session's item (D3-1101); the drawing and the table now print shares one way
 - D3-xxx | Group 11's line reads "Funnels, cohort charts and survival curves follow people through a process and show at which stage, or how soon, they leave it." | A cohort chart and a survival curve show how soon people leave (14.94, 14.95), and "people move … in funnels" put the people inside the chart
 - D3-xxx | Group 13's line reads "Networks, matrices and arc diagrams show who is connected to whom, with a width or a shade for each link’s amount or count." | S74's note says a matrix cell's count "gives no measure of their strength", so "how strongly" was untrue for the matrix
@@ -280,6 +282,16 @@ The main session told me the cartographer had reported finished, so I wrote thes
 
 Read and kept: every title but S81's. S80's "was decided by 3.7 points" and S82's "36 of the 435 races were decided by under 5 points" keep the race idiom: an election is decided by its margin, the voters are the plain actor, and the cartographer's figure check reads both titles word for word. S78's title and notes 1 and 2's figures, its class words and key; S79's title, measure line, notes 1 and 2 and alt; S80's measure line, notes and labels; S81's measure line, note 1 (the data lead's words), alt and table words; S82's measure line, notes 2 and 3's facts, alt, phone note and labels; S83's title, measure line, notes 2 to 4's sentences on the counts (the data lead's words), alt and phone note; S84's title, measure line, notes 1 and 2's facts, alt and labels; S16 whole, its note 5 now naming the 2024 files (my first look). Entries 14.113 to 14.116 after the first look, 14.123 whole, every title, use_when, use_instead and builders line of the twelve; both sketch captions, each its drawing's first `<desc>` word for word.
 
+### Words for the cartographer, second look (D3-669), 03:05 UTC
+
+The cartographer finished C-1 to C-4 and D-1, kept my 30 changes but S79's `labels.point` (my error, above), and applied my three replacements after C-1. At the main session's word I made the data lead's C-5 and read every reader word the cartographer changed since my pass ("Sign-off fixes" in its notes): S80's and S82's alts, keys and panel words; S79's new table words; S84's note 1 with its claim chip; entry 14.119's ending; entry 14.124's rule, caption and sketch words. One change, written straight in:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| 14-124 | builders | and the margin takes the gray magnitude steps. | and the margin takes sequential steps 2 to 5. | The data lead's C-5: S80 and S82 draw the margin on sequential steps 2 to 5 since C-1 |
+
+Read and kept: S82's alt ("four steps of one ink"); S80's alt; both maps' step, key, ghost and mark words; S79's table words, "Lake Isabella, a census-designated place" and "Bakersfield, a city", which meet the H02 point my `labels.point` change had aimed at; S84's note 1, the claim now a typed chip; 14.119's ending, my replacement; 14.124's rule ("steps of one ink"), its caption in D-1's words, which is its drawing's first `<desc>`, and the sketch's key and description words. No mark or ink key touched. `phase3_ch14_build.py --check` reported the chapter file stale after the change; I ran the chapter build (0 faults, 1 file written), and `--check` then reports 87 of 87 files current. The rules generator's `--check-only` passes.
+
 ### Suggestions after the data lead's C-1 and D-1 (02:35 UTC), for the cartographer to apply
 
 The data lead's C-1 moves the district maps' margin from gray steps to sequential steps 2 to 5, so three of my words above go stale. I have already moved Rule 14.7's spec row "Seats on a map" to the same facts ("each seat filled in its winner’s panel and empty in the other, its margin in steps of one sequential ink, the closest still a clear fill (Rule 14.5)"), so the entries can keep pointing to it.
@@ -362,6 +374,7 @@ Read and kept: the three titles; 14.114's use_when, use_instead and builders; 14
 - Modified, round 3's second run: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (group lines 11, 13 and 14), which rewrote `work/build/guide/entries/14-chapter.json` and `work/build/guide/specimens/s-14-opener.html` (groups 11 to 15 linked); `phase3_ch14_build.py` (the engineer's) rewrote `work/build/guide/chapters/14-data-visualization.json` and the manifest as every run does.
 - Modified, words only, in maker B's files (D3-669): `work/build/chart-kit/specs/` s65, s73, s74, s75, s76, s77 (`.json`); `work/build/guide/entries/` 14-094, 14-104, 14-105, 14-106, 14-107, 14-110, 14-112 (`.json`). No sketch file changed.
 - Modified, the cartographer's pass (D3-669), words only: `work/build/chart-kit/specs/` s78 to s84 (`.json`); `work/build/guide/entries/` 14-113, 14-114, 14-117 to 14-122, 14-124 (`.json`); `work/build/guide/specimens/s-14-124-sketch.html` (its second `<desc>`). Mine: `phase3_ch14_rules_build.py` (group line 15; Rule 14.7's C-1 row), which rewrote `14-007.json` and `14-chapter.json`.
+- Modified, the cartographer's second look, words only: `work/build/guide/entries/14-124.json` (its builders line); `phase3_ch14_build.py` rewrote `work/build/guide/chapters/14-data-visualization.json`.
 - Modified, maker A's second look, words only: `work/build/chart-kit/specs/s68.json`, `s71.json`; `work/build/guide/entries/14-096.json`.
 - Modified, maker B's second look: words in `work/build/chart-kit/specs/s76.json` and `work/build/guide/entries/14-108.json`; S65's share column's label and format in `work/build/chart-kit/specs/s65.json` (the main session's item).
 - Created: this file.
