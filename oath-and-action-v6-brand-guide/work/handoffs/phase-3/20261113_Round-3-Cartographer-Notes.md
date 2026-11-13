@@ -157,3 +157,23 @@ Created: `work/build/chart-kit/forms/choropleth.js`, `locator-map.js`, `district
 Modified: `work/build/chart-kit/specs/s16.json` (note 5's map credit, R3-4).
 Written by running the engineer's generator (not edited by hand): the chapter, manifest and fragments `phase3_ch14_build.py --rounds 1,2,3` writes.
 Scratch only: tools, captures, kit-out, the strict build and its report, under the scratch folder above.
+
+## Review fix pass
+
+November 13, 2026, from 04:36 UTC (clock read from `date -u`). Brief: `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md`, the "Cartographer" paragraph and calls D3-1321 to D3-1325 and D3-1328, under the round 3 brief's calls 1 to 13. Rulings read: the data lead's "Review fix pass" (ST and AX rulings, 04:24 to 04:33 UTC). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/cartographer/`.
+
+### Summary
+
+In progress. Order: items no ruling and no kit change touches first (ST-M4's list column and phone note, ST-S1, ST-S3, ST-S5, ST-S7, ST-S12, ST-S4's S82 and S84 notes, AX-S3, C-S5, C-S6, SK-S2, Q2's unequal places); then C-M1, C-S1 and C-S2 once the engineer's `map_labels` change lands (call 7); C-M2 with the engineer (call 6); ST-S9's sort once the engineer adds it. Waiting on Dustin, left as they are: the download words (call 3), the avoid sketch's colors (call 4), S16's range words (call 5).
+
+### Items done, by code
+
+(filled as each lands)
+
+### Routine calls, review fix pass
+
+### Requests, review fix pass
+
+### Tested, review fix pass
+
+### Not tested, review fix pass

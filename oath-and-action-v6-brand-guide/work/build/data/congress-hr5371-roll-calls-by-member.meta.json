@@ -70,6 +70,7 @@
  "notes": [
   "Senate question: \"On Passage of the Bill H.R. 5371\"; result: \"Bill Passed (60-40)\".",
   "House question: \"On Motion to Concur in the Senate Amendment\"; result: \"Passed\".",
-  "Counts by chamber, party and vote, from these rows: House D Nay 207; House D Not Voting 1; House D Yea 6; House R Nay 2; House R Not Voting 1; House R Yea 216; Senate D Nay 38; Senate D Yea 7; Senate I Nay 1; Senate I Yea 1; Senate R Nay 1; Senate R Yea 52"
+  "Counts by chamber, party and vote, from these rows: House D Nay 207; House D Not Voting 1; House D Yea 6; House R Nay 2; House R Not Voting 1; House R Yea 216; Senate D Nay 38; Senate D Yea 7; Senate I Nay 1; Senate I Yea 1; Senate R Nay 1; Senate R Yea 52",
+  "Names as each record prints them (ST-S8, November 13, 2026): a House member’s name is the text of the Clerk’s legislator element, accents kept (Barragán, García (IL), Sánchez, Velázquez), re-read from the same file (SHA-256 prefix dfbc7b2e76b87b86); the freeze of November 12 had read the record’s unaccented-name attribute. A senator’s name is the Senate record’s first_name and last_name joined by one space, checked against vote 618 (SHA-256 prefix ab81bac6e53d98c8); the record carries no accents (Ben Lujan as printed), and the space the record leaves after three first names (Curtis, Risch, Schmitt) is not doubled."
  ]
 }

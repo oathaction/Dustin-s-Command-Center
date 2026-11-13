@@ -81,5 +81,8 @@
  },
  "notes": [
   "Procedural reason, in CMS’s words (read November 13, 2026): its file names metric 5c “Total beneficiaries whose coverage was terminated for a procedural or administrative reason”, beside metric 5b, “Total beneficiaries determined ineligible for Medicaid and CHIP based on the return of a renewal form”. The description of CMS’s original renewal data (Medicaid and CHIP CAA Reporting Metrics, data.medicaid.gov) adds: “States that held procedural terminations reflect these data in metric 5d as pending renewals along with renewals that were due but not completed by the end of the reporting period.” The file, its data dictionary and both datasets’ descriptions give no examples of a procedural reason; CMS’s Data Sources and Metrics Definitions Overview, on medicaid.gov, refused this container (HTTP 403) and was not read."
- ]
+ ],
+ "source_line_variants": {
+  "with_release": "Source: Centers for Medicare & Medicaid Services, Medicaid and CHIP Updated Renewal Outcomes, October 2024 final release, renewals due March 2023 to March 2024, United States. Retrieved November 12, 2026. State-reported counts, updated three months after each renewal was due."
+ }
 }

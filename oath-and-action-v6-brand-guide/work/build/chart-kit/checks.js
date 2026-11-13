@@ -350,7 +350,35 @@ function check_spec(K, spec, opts) {
     const cells = t.pivot ? Object.keys(t.cell).length : t.rows.length;
     if (cells !== sel.length) f.push(`table: ${cells} table rows or cells for ${sel.length} data rows`);
   }
-  return { faults: f, rows: sel, datasets };
+  // AX-M1 (round 3 fix pass): a printed column that is empty in every row fails, so a blank column (S73's "From" under
+  // the old 'first') cannot pass again. AX-M2 (warning only, the data lead's ruling): a column with words that prints a
+  // stored value its words do not map; words_pass: true on the column where printing the stored value is meant (S82's
+  // district numbers)
+  const warnings = [];
+  if (rows && spec.table && sel.length && !spec.table.pivot) {
+    const tb = spec.table;
+    const unmapped = (col, vals) => {
+      if (!col.words || col.words_pass) return;
+      const out = [...new Set(vals.filter(v => v !== null && v !== undefined && v !== '' && col.words[String(v)] === undefined).map(String))];
+      if (out.length) warnings.push(`table: the column "${col.label}" has words and prints ${out.length} stored value${out.length > 1 ? 's' : ''} they do not map (${out.slice(0, 6).map(v => `"${v}"`).join(', ')}${out.length > 6 ? ', ...' : ''}); give each its words, or set "words_pass": true on the column where the stored value is meant to print (AX-M2)`);
+    };
+    if (tb.group) {
+      const groups = K.table_groups(spec, sel);
+      (tb.group.columns || []).forEach(col => {
+        const a = col.agg || 'key';
+        if (groups.every(g => String(K.group_cell(col, g)).trim() === '')) f.push(`table: the column "${col.label}" prints nothing in any of its ${groups.length} rows (${a}${col.field ? ` of "${col.field}"` : ''}); a printed column names something in at least one row (AX-M1)`);
+        if (a === 'first') unmapped(col, groups.map(g => g.rows[0][col.field]));
+        else if (a === 'key' && !col.state_name) unmapped(col, groups.map(g => g.key));
+      });
+    } else {
+      const t = K.table_rows(spec, sel);
+      (tb.columns || []).forEach(col => {
+        if (t.rows.every(r => String(K.cell_text(col, r, spec)).replace(/<[^>]*>/g, '').trim() === '')) f.push(`table: the column "${col.label}" prints nothing in any of its ${t.rows.length} rows; a printed column names something in at least one row (AX-M1)`);
+        unmapped(col, t.rows.map(r => r[col.field]));
+      });
+    }
+  }
+  return { faults: f, warnings, rows: sel, datasets };
 }
 
 // ---------------------------------------------------------------------------------------------------------------

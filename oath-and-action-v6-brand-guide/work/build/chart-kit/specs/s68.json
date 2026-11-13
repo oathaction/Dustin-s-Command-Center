@@ -55,7 +55,11 @@
           "5": "Approves the rule changes of PJM and other grid operators",
           "6": "Files its rule changes with the Federal Energy Regulatory Commission for approval",
           "2": "Writes the laws that define the commission’s powers",
-          "1": "The state legislature’s laws set its powers"
+          "1": "The state legislature’s laws set its powers",
+          "3": "None drawn",
+          "4": "None drawn",
+          "7": "None drawn",
+          "8": "None drawn"
         },
         "empty": "None drawn"
       },

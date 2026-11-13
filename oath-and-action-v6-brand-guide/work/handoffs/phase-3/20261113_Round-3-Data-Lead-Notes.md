@@ -685,3 +685,117 @@ Read from `work/handoffs/phase-3/20261113_Round-3-Red-Team-Access-Production.md`
 - **To maker B:** S74's authority cells carry a class the CSS can reach (AX-S1).
 - **To the cartographer:** AX-S3 (DC at every width; the "..." words and the marks note).
 - **To the editor:** AX-S3's marks note and "No state law"; AX-S6's builders' line in entry 14.120; AX-S7's gloss in Rule 14.9; AX-S8.
+
+**ST-M1, addendum (04:37 UTC).** Once `first` prints, S73's "From" cell would print the file's "HARRIS VICTORY FUND" in capitals while the drawing names "Harris Victory Fund". The column takes `words` from the spec's own `labels.sources` ("Harris Victory Fund", "Trump National Committee JFC"), so table and drawing name each fund alike. Owner: maker B.
+
+### Rulings on the creative director's report (CD)
+
+Read from `work/handoffs/phase-3/20261113_CD-Review-Of-Round-3.md` at 04:35 UTC; the scores JSON holds the same items.
+
+**A-M1. "State constitutions read in round 0" in S71's cell.** No ruling on marks; maker A rewrites the cell through `maker_a_round3_derive.py` in both files that carry it (by grep, `usgov-v7-route-grid.csv` and `usgov-route-requirements.csv`) as "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona", and the research lead reruns the data check. The cell is maker A's words, not the atlas's.
+
+**A-M2. S68's bare order numbers.** The same as ST-M3 and AX-M2: ST-M3's ruling. The CSV export's `order` column stays the atlas's order; only the printed words change.
+
+**C-M1. S78 loses state codes at phone widths.** Ruled, in CD's order, with one test I set:
+1. The engineer lets `map_labels` place a code inside any shape whose 13 px box fits with 1 px to spare, at the shape's widest interior point rather than its centroid, and leaders the rest to an eastern column as S16 does. At 1440 px every state then carries its code (West Virginia, Massachusetts and Maryland included, inside or on a leader).
+2. The test: at every drawing width from 358 px up, every state and DC has its code on or beside its shape (Rule 14.3's row). If more than six places lack a code at any width under 480 px after step 1, S78's phone drawing takes the studio's tile grid (S07's), `phone: "differs"`, with the same four classes, steps, edges, key and national figure, and every state's code on its tile. Rule 14.12 already allows the change of form.
+3. The class inks, breaks and words do not change either way. The tile phone form is a phone drawing of a round 3 form, which board 2 shows in any case.
+- Owners: engineer (`map_labels`), cartographer (S78); I sign off at 1440, 390, 358, 296 and 256 px on both grounds. Reason: a class map whose places cannot be named on a phone leaves a reader unable to find their state, and the table is a scroll away.
+
+**C-M2. S12 never draws its arrows in the guide.** Ruled, under DR-64, which reads "flat shift arrows on tile maps of shifts, with the figure printed in each tile and gray steps on phones":
+1. The figure stays in every tile. CD's second route (drop the figure so code and arrow fit) would break DR-64 and is not open without Dustin.
+2. At every desk width the guide gives S12 (558 px at a 1024 px window to 829 px at 1920), the desk form draws: code, figure and arrow in each tile, arrows on one scale with the key. The gray-step form is the phone form only. The form's fallback (`tight`, which now fires whenever "WW 88.8" will not fit on one line) may not choose the phone form above the kit's phone width.
+3. How it fits, in the engineer's order of preference: first, set code and figure on two lines inside the tile with the arrow beneath, a layout change inside the tile that keeps encoding, scale, inks and words; if the engineer's measure shows a stacked tile still fails at the narrower desk widths, the plate's stage holds the drawing at the narrowest width that fits and scrolls sideways there, as chapter 15's wide plates do (CD's first route).
+4. The alt, the reading guide and entry 14.115 then describe what draws: arrows at a desk, gray steps on a phone, as `phone_note` already says.
+5. Board 2 lists S12 among the board 1 drawings that changed, beside its 1024 px board 1 drawing, whichever route lands.
+- Owners: engineer (form and stage), cartographer (spec and alt); main session (board 2 item). I sign off at 1440 and 1024 px and at the phone width, on both grounds.
+- Reason: the entry, the alt and DR-64 all promise arrows, and a reader at a desk never sees one.
+
+**A-S1. Titles over 30 words.** Rulings where a title's finding moves; the rest is the editor's and maker A's, as the report says.
+- **S71:** "though most bills need 60 senators to end debate" leaves the title for a note, using ST-S10's words; the title keeps the routes and the count of 38 (28 words).
+- **S67:** a decision tree answers with its whole path (principle 1), so the title may name the leaves as one finding; Ohio's cost moves to the leaf and the table, which already carry it. For example: "A state ban on ranked-choice voting reaches city elections in 18 states and partly in Ohio, and elsewhere the answer turns on state home-rule law."
+- **S66:** the same principle; the editor fits it under 30 words with "Congress and the President" kept (MA-1).
+- The figure checks in `notes_internal` read the new strings (D3-1307).
+
+**A-S2. S72's title reads the two chambers differently. Ruled: name neither chamber's crossover.** Ruling (a) set S72's finding as both votes. By script, the Senate's yes votes were 52 Republicans, 7 Democrats and 1 independent, and its no votes included 1 Republican; the House's yes votes were 216 Republicans and 6 Democrats, and its no votes included 2 Republicans. A title that names one side's crossover in one chamber and no one else's reads from one side. For example: "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, and the House 222 to 209 two days later." The 20 members who voted the other way or did not vote stay named in the table (MA-6). Owner: maker A, the editor reads. Reason: DR-93 and DR-124; the grid and the table carry each party's split alike.
+
+**A-S3 and B-S4. A law's date three times.** Ruled for grade lines: the in-force date stays in the grade line (ruling (d)), the retrieval date in the source line, and the measure line drops the date (S66, S68, S71, S77). Where the two are the same date, both stay, since one says when the law was read in force and the other when the file was taken. D3-1308's board 2 item covers the atlas lines. Owner: editor.
+
+**A-S4. S69 to S71's length.** No ruling, maker A fixes as the report says (`desk_phone` showing the first part only; S69's subcommittees as named lists).
+
+**A-S5. S68's boxes and the HHS row.** No ruling on the boxes (maker A). The table's `controls` column already prints the atlas's record for order 7 as stored: "Congress appropriates LIHEAP funds and amends the Federal Power Act; HHS distributes LIHEAP grants to states, tribes and territories." If maker A adds a note, it quotes that record as stored (D3-893) and may spell out LIHEAP once as the Low Income Home Energy Assistance Program; it adds no claim of its own.
+
+**A-S6. S72's named members sort by first name.** Ruled: each group's named members print in the order of the record, by last name, as each chamber's file is ordered. The Senate's file gives full names, so they stay full, as CD's own condition allows; the sort reads the raw record's last name, so "Cortez Masto" sorts under C. Owner: maker A; the research lead adds a last-name column to the frozen file if the derive script needs one.
+
+**B-S1. S73 draws one solid mass. Ruled: bars solid, links light.** I correct ruling (b), which drew every node and link in the party-mark ink. Sender and receiver bars stay solid in the party-mark ink; every link fills with the light fill and takes a 1 px edge in the party-mark ink (on Charcoal, the Charcoal light fill with the light edge), the same for both committees, as S76 draws its bands (RF-2). Widths, unit, key and words do not change. This is no solid-against-outline split: both committees draw alike, and Rule 01.2's solid and outline stay the sides of a vote. Owner: maker B; I sign off at 1440 and 390 px on both grounds and in grayscale, where a reader must see each fund, its links and its receivers apart. Reason: a network must read as who sent what to whom.
+
+**B-S2. S73's third note.** No ruling, maker B and the editor split it as the report says; ST-S6's clause joins note 2.
+
+**B-S3. S77's limits.** Ruled: each step's limit prints on its own line in the text's ink at the label size, under the step's name, so the figures the title names read first. Words in the text's ink are no named mark, so ruling (a)'s "None" stands. Owner: maker B.
+
+**B-S5. Entry 14.109's arrowhead reference.** No ruling, maker B and the editor fix as the report says.
+
+**C-S1. S80's district numbers.** No ruling, the cartographer and engineer number each district in the panel where it is filled, as the report says; AX's note on the same labels joins it.
+
+**C-S2. S16's DC and WV.** No ruling: a leader for DC and WV's place are placement, inside ruling (e). Cartographer.
+
+**C-S3. Class counts in S78's and S81's titles. Ruled.** Each title names the survey as the source of its counts, for example "In the Census Bureau’s 2025 survey, home broadband such as cable, fiber or DSL reached ..." and "In the Census Bureau’s survey of 2020 to 2024, median household income was ...". The counts stay: they are what the drawing shows, and each note qualifies them (12 places on S78 under ST-S12; 1,707 and 182 counties on S81). Both stay Findings with ruling (d)'s grade lines; the word "estimates" stays out of the title, since Rule 13.1 keeps Estimate for a model's figure (round 2 ruling (d), S51). The editor fits the words. Owners: cartographer, editor. Reason: Rule 14.9 lets a count by class stand when the reader is told it rests on a survey and the note says how firm it is.
+
+**C-S4.** The same as ST-S9 and AX-S4: ST-S9's ruling.
+
+**C-S5. S79's neighbors and county name.** No ruling, the cartographer clips and places as the report says; the neighbors stay ghost outlines (ruling (b)).
+
+**C-S6. S82's at-large codes.** No ruling, the cartographer prints "Alaska at large" (and the same for each at-large seat) as the report says.
+
+**SK-S1.** No ruling, maker B fixes the cohort sketch's inset as the report says.
+
+**SK-S2. The avoid sketch: gray, and a pointer to Rule 14.7's failure plate.** The pointer is ruled now: entry 14.124's `why` adds one clause sending the reader to Rule 14.7's failure plate, which shows red against blue under its "do not publish" bar, so the two places teach one lesson whichever way Dustin decides Q2. Owner: cartographer, editor. CD's recommendation to keep gray is the dissent recorded under Q2 below.
+
+**R-S1. Rule 14.6's length.** No ruling on the cut; the editor shortens and I sign off. The cut keeps, in the rule or its spec rows: the named mark and its red point; the area case (a named area takes Charcoal at any size); "red never codes a series, a group or a step on a scale or in a process"; the party test's list; a diagram's path and a map's pattern with no single mark; a total or national figure set apart; two findings in the text's ink.
+
+**R-S2 and R-S3.** No ruling, the editor fixes as the report says.
+
+**Q2, updated for CD's dissent.** CD recommends keeping gray: Rule 14.7's failure plate already shows red against blue, and a map-shaped red and blue is the most shareable partisan image, which travels without its bar. ST and AX recommend literal color: the gray half reads as a form to copy. I keep my recommendation of literal color in the misleading half only, for three reasons: two of three reviewers found the gray half teaches the wrong thing; the places are invented and named Party A and Party B, so a screenshot shows no real geography or party; and the entry names color used as one side's scoreboard as the first harm, which only color can show, while the unequal places ruled now show the second harm in either ink. Dustin should weigh CD's sharing risk against it. Ruled now whichever way he decides: the unequal places (Q2) and the pointer (SK-S2).
+
+### Requests from the CD rulings
+
+- **To the engineer:** C-M1 step 1 (`map_labels`); C-M2 (the desk form at every desk width, the stacked tile or the fixed stage).
+- **To maker A:** A-M1; A-S1 for S71 and S67 with the editor; A-S2; A-S4 to A-S6.
+- **To maker B:** B-S1; B-S2 with the editor; B-S3; B-S5; SK-S1; ST-M1's addendum.
+- **To the cartographer:** C-M1 steps 2 and 3; C-M2's spec and alt; C-S1 to C-S3, C-S5, C-S6; SK-S2's pointer.
+- **To the editor:** A-S1, A-S3, B-S4, C-S3's words, R-S1 to R-S3.
+- **To the research lead:** A-M1's data check; A-S6's last-name column if needed.
+- **To the main session:** S12 on board 2's list of board 1 drawings that changed (C-M2); Q2 with CD's dissent beside my recommendation.
+
+### Routine calls, review fix pass
+
+- D3-xxx | The kit's `first` aggregate prints a group's first value whatever its type, and a printed table column empty in every row fails the page check | S73's table named no sender (ST-M1, AX-M1)
+- D3-xxx | S73's "From" column prints each fund by the drawing's name, from `labels.sources` | Table and drawing name both funds alike (Rule 01.11)
+- D3-xxx | S68's "Line of authority" maps orders 3, 4, 7 and 8 to "None drawn"; the kit warns where a `words` column prints an unmapped value unless the spec sets `words_pass` | "7" beside Congress read as a count; S82's districts need the fallback (ST-M3, AX-M2, A-M2)
+- D3-xxx | No reader text promises "the download" or "the CSV file"; each of the nine promises names the chart's data file in one phrase kept in one place, whose final wording waits on Dustin's answer to where the files live | The guide offers no per-chart download (ST-M2, AX-S5)
+- D3-xxx | S81's page keeps its class-only island and its grouped table with values and no county names | Each county's value and margin would cost about 10,600 bytes past the plate's ceiling (D3-1090)
+- D3-xxx | S82's table names its 36 races under 5 points in each state's row, with district, party and margin, in place of the count; its phone note reads "The table gives each state’s seats and names its closest races." | D3-1128: the title names those races, and the old note was false (ST-M4)
+- D3-xxx | S83's note gives the no-dot count at both units: 1,354 counties and 2.8 million employees at 10,000 a dot, 2,426 and 15.4 million at 50,000 | DL-E1's condition 4; the phone's figure was missing (ST-S1)
+- D3-xxx | S76 nets transfers candidate by candidate, $175.1 million in and $18.3 million out, and draws the out line | The note promised per-candidate netting; netting across campaigns cancels flows that never met (ST-S2)
+- D3-xxx | S76's remainder note gives the 297 campaigns that do not balance and the one campaign that leaves $1.5 million of it, with no cause | The file shows the imbalance, not its cause (ST-S2)
+- D3-xxx | Entries 14.119 and 14.124 describe the margin as steps of one ink, never gray | C-1 moved both maps to Verdigris steps 2 to 5; corrects my C-5 acceptance (ST-S3)
+- D3-xxx | Maps of the states note any territory their publisher's table holds and the map leaves out; S82 names the House's six non-voting members | Rule 13.6's universe; corrects ruling (b)'s "no round 3 file holds it" (ST-S4)
+- D3-xxx | A map's words name a place in a class only where its printed interval sits inside the class | Rule 14.9 (ST-S5)
+- D3-xxx | A class map counts interval crossings on the figures the table prints, one decimal half up; S78's note gives 11 states and DC | D3-1106's rule for printed figures; corrects ruling (c)'s 13 (ST-S12)
+- D3-xxx | S73's note 2 adds that the number of committees a fund pays is set by the agreement that formed it; the title stands | ST-S6: two documented sums, read alike, with the reason for the counts in view
+- D3-xxx | S81 adds a note that 549 of 3,143 counties sit at or above the nation's household median | A newcomer reads a county count against a household median (ST-S7)
+- D3-xxx | Grouped state tables sort by the printed name | ST-S9, AX-S4, C-S4
+- D3-xxx | Rule 14.9's class width test is the margin of error, the plus or minus figure; ruling (c)'s test 1 and D3-1103 read "the widest margin of error drawn" | A class as wide as the widest margin already keeps every place within one class of where it is drawn (AX-S7)
+- D3-xxx | In forced colors merged map land draws no stroke; S72's "did not vote" fills with GrayText; S74's authority cells take a double edge | Each keeps its normal-colors meaning in a contrast theme (AX-S1)
+- D3-xxx | S84's DC square draws in all four panels at every width, or a note names it where a panel has no room; "..." prints as "No state law" and one note keys the Department's marks [c], (d), (e) and (g) | Every panel's count includes DC; a mark needs its key (AX-S3)
+- D3-xxx | A map of a model's estimates takes Rule 13.1's Estimate kind, as S51 does; entry 14.120 says so for builders | Round 2 ruling (d); the production test's designer had no path to it (AX-S6)
+- D3-xxx | S78 labels every state at every width from 358 px through an interior placement and leaders, or takes the tile grid as its phone form if more than six places lack a code under 480 px | Rule 14.3's row and Rule 14.12 (C-M1)
+- D3-xxx | S12 draws its arrows with the figure in each tile at every desk width, stacked in the tile or in a fixed stage that scrolls; the gray steps stay the phone form | DR-64 promises arrows with figures, and the guide showed none (C-M2)
+- D3-xxx | S71's and S72's titles drop a clause: S71's 60-senator clause moves to a note, and S72 names neither chamber's crossover | One finding each; S72 read from both sides (A-S1, A-S2, DR-93, DR-124)
+- D3-xxx | A law's in-force date stays in the grade line and its retrieval date in the source line; measure lines drop the date | Ruling (d) puts the date in the grade line (A-S3, B-S4)
+- D3-xxx | S72's named members print in the record's order, by last name | The record's own order (A-S6)
+- D3-xxx | S73's links take the light fill with a 1 px party-ink edge, and its sender and receiver bars stay solid; corrects ruling (b) | A network must read as links between nodes, not one mass (B-S1)
+- D3-xxx | S77 prints each step's limit on its own line in the text's ink | The title's figures read first (B-S3)
+- D3-xxx | S78's and S81's titles name the survey as the source of their class counts, and stay Findings | Rule 14.9 with the notes' crossing counts (C-S3)
+- D3-xxx | Entry 14.124 points to Rule 14.7's failure plate | One lesson in two places whichever way the avoid sketch's colors go (SK-S2)
+- D3-xxx | The avoid sketch's misleading half draws invented places of unequal size, still in gray until Dustin decides its colors | The land-for-votes harm the entry names becomes visible (Q2, AX-S2)

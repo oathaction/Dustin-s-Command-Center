@@ -168,10 +168,11 @@ export function sweep_faults(spec, rows, extra) {
 
 // One spec, checked and drawn in Node at every width and ground
 export function run_spec(spec, o) {
-  const res = { id: spec.id, faults: [], drawings: [], spec_path: o.spec_path, spec_form: spec.form };
+  const res = { id: spec.id, faults: [], warnings: [], drawings: [], spec_path: o.spec_path, spec_form: spec.form };
   let chk;
   try { chk = C.check_spec(K, spec, o); } catch (e) { res.faults.push('spec: ' + e.message); return res; }
   res.faults.push(...chk.faults);
+  res.warnings.push(...(chk.warnings || []));
   res.rows = chk.rows;
   res.datasets = chk.datasets;
   if (!K.forms[spec.form] || !chk.rows || !chk.rows.length) return res;
@@ -369,6 +370,11 @@ async function captures(items, o) {
                 out.rows = (isl => window.OAChart.rows_from_table(tb, isl.spec, isl))(window.OAChart.island(f.querySelector('script[data-oa-chart-data]'))).length;
                 out.groups = tb.querySelectorAll('tbody tr').length;
               }
+              // AX-M1 (round 3 fix pass): a column the page prints empty in every row, read from the page itself
+              if (tb) {
+                const trs = Array.from(tb.querySelectorAll('tbody tr')), heads = Array.from(tb.querySelectorAll('thead th'));
+                out.empty_cols = trs.length ? heads.map((h, i) => trs.every(tr => !tr.children[i] || !tr.children[i].textContent.trim()) ? h.textContent.trim() : null).filter(x => x !== null) : [];
+              }
               if (!svg) return out;
               const clone = svg.cloneNode(true);
               clone.removeAttribute('aria-describedby');
@@ -424,6 +430,7 @@ async function captures(items, o) {
               const want = t.pivot ? Object.keys(t.cell).length : t.rows.length;
               if (info.rows !== want) res.faults.push(`table: the page shows ${info.rows} table rows or cells for ${want} data rows (${g} ${w})`);
               if (t.group && info.groups !== t.groups.length) res.faults.push(`table: the page prints ${info.groups} grouped rows for the data's ${t.groups.length} groups (${g} ${w})`);
+              (info.empty_cols || []).forEach(lab => res.faults.push(`table: the page prints the column "${lab}" empty in every row (${g} ${w}, AX-M1)`));
               if (!info.export_ok) res.faults.push(`svg export: not standalone or no title and desc (${g} ${w})`);
               fs.writeFileSync(path.join(dir, `${stem}-${title_case(g)}-${w}.svg`), info.export);
               const fig = await p.$(fid);
@@ -485,10 +492,12 @@ async function build(o, check_only) {
   }
   for (const { spec, res } of items) {
     const summary = { id: spec.id, form: spec.form, spec: path.relative(ROOT, res.spec_path), rows: res.rows ? res.rows.length : 0,
-      drawings: res.drawings.map(d => ({ ground: d.ground, page: d.page, width: d.width, height: d.height, svg_bytes: d.bytes })), faults: res.faults };
+      drawings: res.drawings.map(d => ({ ground: d.ground, page: d.page, width: d.width, height: d.height, svg_bytes: d.bytes })), faults: res.faults, warnings: res.warnings };
     if (!check_only) fs.writeFileSync(path.join(o.out, spec.id.toLowerCase(), `${spec.id.toLowerCase()}-check.json`), JSON.stringify(summary, null, 1));
     console.log(`${res.faults.length ? 'FAIL' : 'PASS'} ${spec.id} ${spec.form}: ${summary.rows} rows, ${res.drawings.length} drawings, ${res.faults.length} faults`);
     res.faults.slice(0, 40).forEach(f => console.log('  - ' + f));
+    // AX-M2 (round 3 fix pass): a warning prints and is written to the check file; it does not fail the spec
+    (res.warnings || []).forEach(x => console.log('  ~ warning: ' + x));
     if (res.faults.length) bad++;
   }
   // say where the files went, so a reader who does not code can find them (editor's read, K7)

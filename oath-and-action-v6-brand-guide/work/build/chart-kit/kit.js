@@ -1111,7 +1111,7 @@
   };
   // MA-9: a column's words, {group key: words}, print in place of its aggregate for those groups (any agg).
   // R3-3 (round 3, DR-249): a table grouped by a column, for a chart of thousands of rows (a county map): table.group =
-  // {by: a column, or a list of columns whose values join with ", " (A-E1), sort: 'key' (else first seen, after the spec's sort), columns: [{label, agg, field, format, words, state_name, row_header,
+  // {by: a column, or a list of columns whose values join with ", " (A-E1), sort: 'key' or 'name' (else first seen, after the spec's sort), columns: [{label, agg, field, format, words, state_name, row_header,
   // from, to, name}]}. agg: 'key' (the group's value, its words, or with state_name the state's name from the tile grid),
   // 'count' (rows in the group), 'count_in' (rows whose field is at least from and under to; either may be left out),
   // 'count_eq' (rows whose field equals value, or any value of a list: C-E1), 'count_set' (rows whose field is not
@@ -1124,7 +1124,19 @@
     var g = spec.table.group, keys = [], map = {}, by = [].concat(g.by);
     rows.forEach(function (r) { var k = by.map(function (f) { return String(r[f]); }).join(', '); if (!(k in map)) { map[k] = []; keys.push(k); } map[k].push(r); });
     if (g.sort === 'key') keys.sort();
-    return keys.map(function (k) { return { key: k, rows: map[k] }; });
+    var out = keys.map(function (k) { return { key: k, rows: map[k] }; });
+    // ST-S9, AX-S4, C-S4 (round 3 fix pass, D3-1320): sort 'name' orders the groups by the words the key column prints
+    // (a state's name, or the column's words); sort 'key' does the same where the key column prints a state's name, so
+    // "Alabama" comes before "Alaska" as a reader scanning the names expects. Case folded, then by code point, so Node
+    // and every browser give one order
+    var kc = (g.columns || []).filter(function (c) { return (c.agg || 'key') === 'key'; })[0];
+    if (kc && (g.sort === 'name' || (g.sort === 'key' && kc.state_name))) {
+      var nm = function (grp) { return String(K.group_cell(kc, grp)).toLowerCase(); };
+      out.forEach(function (grp) { grp.name = nm(grp); });
+      out.sort(function (a, b) { return a.name < b.name ? -1 : a.name > b.name ? 1 : (a.key < b.key ? -1 : a.key > b.key ? 1 : 0); });
+      out.forEach(function (grp) { delete grp.name; });
+    }
+    return out;
   };
   var GROUP_NUM = /^(count|count_in|count_eq|count_set|min|max|median|sum)$/;
   K.group_cell = function (col, grp) {
@@ -1139,6 +1151,10 @@
       if (col.state_name && root.OAChartGeo && root.OAChartGeo.tiles && root.OAChartGeo.tiles[grp.key]) return root.OAChartGeo.tiles[grp.key][3];
       return col.words && col.words[grp.key] !== undefined ? col.words[grp.key] : grp.key;
     }
+    // ST-M1, AX-M1 (round 3 fix pass): 'first' prints the group's first row through K.cell_text whatever its type, text
+    // as well as numbers (its words and its empty word included); it sat below the numeric guard and printed nothing
+    // for a text field
+    if (a === 'first') return K.cell_text(col, rs[0]);
     if (a === 'count') return K.fmt(rs.length, col.format || 'integer');
     // A-E2 (maker A): 'list', the field's non-empty values in the group in row order joined with "; "; 'count_set', the
     // rows whose field is not empty
@@ -1166,7 +1182,6 @@
     if (a === 'count_eq') { var want = [].concat(col.value).map(String); return K.fmt(rs.filter(function (r) { return want.indexOf(String(r[f])) >= 0; }).length, col.format || 'integer'); }
     if (a === 'count_in') return K.fmt(nums.filter(function (v) { return (col.from === undefined || col.from === null || v >= col.from) && (col.to === undefined || col.to === null || v < col.to); }).length, col.format || 'integer');
     if (!nums.length) return col.empty || '';
-    if (a === 'first') return K.cell_text(col, rs[0]);
     if (a === 'min' || a === 'min_name' || a === 'max' || a === 'max_name') {
       var best = vals[0];
       vals.forEach(function (r) { if (/^min/.test(a) ? +r[f] < +best[f] : +r[f] > +best[f]) best = r; });

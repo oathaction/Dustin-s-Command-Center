@@ -379,3 +379,22 @@ Read and kept: the three titles; 14.114's use_when, use_instead and builders; 14
 - Modified, maker B's second look: words in `work/build/chart-kit/specs/s76.json` and `work/build/guide/entries/14-108.json`; S65's share column's label and format in `work/build/chart-kit/specs/s65.json` (the main session's item).
 - Created: this file.
 - Scratch only: `words/words.py`, `words/b/changes.py` and `changes.json` (maker B's change list), `cap.js`, `cap2.js`, `words/c/` and `words/b/changes3.*`, the builds `guide0.html` to `guide9.html`, `kit-out/`, `kit-out-b2/`, `kit-out-c/` and the captures in `caps2/` to `caps5/`, `words/a/`.
+
+## Review fix pass
+
+November 13, 2026, round 3's review fix pass, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (its "Editor" paragraph and calls D3-1321, D3-1323 and D3-1327 bind). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/editor/`. Items: CD's R-S1 to R-S3, AX-S7 and AX-S8, ST-S10, call 9 (CD's A-S3 and B-S4), call 5's draft (ST question 3, held), then the second pass on every word the makers change. Rulings read: the data lead's "Review fix pass" (ST and AX rulings, read at 04:35 UTC). The makers' words go under "Words for maker A, review fix pass", "Words for maker B, review fix pass" and "Words for the cartographer, review fix pass" below until each reports finished; then I write them straight in (D3-669) and log each. No key that picks a mark or an ink (D3-1297). The download promise (call 3, D3-1321) and the avoid sketch's colors (call 4, D3-1322) wait on Dustin, so no "download" or "CSV file" line changes in this pass.
+
+### Summary, review fix pass
+
+- 04:37. Started. Read `CLAUDE.md`, my role file, chapter 02's writing rules, the fix brief, the round 3 brief, these notes, the data lead's "Review fix pass" (ST and AX rulings) and my items in the three reports and the reader log. Working tree clean at `dae5f197` before my first change.
+- 04:37. **R-S3 done.** Entry 14.45's builders line now ends "or the stacked area form (Rule 14.51)." in place of "or, from round 2, the stacked area form."; by search, no other entry or spec prints "round" in a reader field.
+
+### Routine calls, review fix pass
+
+- D3-xxx | Entry 14.45's builders line names Rule 14.51 for the stacked area form in place of "from round 2" | CD R-S3: a studio word in a builders line; 14.51 is the stacked area entry, and no script writes 14-045.json
+
+### Requests, review fix pass
+
+### Tested, review fix pass
+
+### Not tested, review fix pass

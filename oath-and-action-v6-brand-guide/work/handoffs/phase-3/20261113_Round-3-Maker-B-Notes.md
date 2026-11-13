@@ -137,3 +137,34 @@ November 13, 2026, after the data lead's "Sign-off, maker B" (MB-1 to MB-9), the
 
 - S65, S74 and S77 drawings after their word changes at narrow widths (their forms did not change; only titles, measure lines and notes moved, and each built PASS).
 - S73's and S76's captures at 390 px; the guide page's plates at any width.
+
+## Review fix pass
+
+November 13, 2026, from 04:36 UTC (clock read from `date -u`). Brief: `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` ("Maker B" and calls D3-1319 to D3-1328), under the round 3 brief's calls 1 to 13 and the data lead's "Review fix pass". Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/maker-b/`. Written as I go; the container can restart.
+
+### Summary
+
+In progress. Order: items no ruling touches first (SK-S1, B-S5, B-S2, AX-S1's S74 class), then the ruled items (ST-S6, ST-S2 with AX-S8), then those waiting on another owner (ST-M1 on the engineer, ST-S11 on the research lead, B-S1 and B-S3 on the data lead's CD rulings).
+
+### Items, by code
+
+| Item | Status |
+|---|---|
+| SK-S1 | to do |
+| B-S5 | to do |
+| B-S2 | to do |
+| AX-S1 (S74) | to do |
+| ST-S6 | to do |
+| ST-S2, AX-S8 (S76) | to do |
+| ST-M1, AX-M1 (S73 rebuild) | waits on the engineer's `K.group_cell` |
+| ST-S11 (S65) | waits on the research lead's release line |
+| B-S1 (S73) | waits on the data lead's CD ruling |
+| B-S3 (S77) | waits on the data lead's CD ruling |
+
+### Routine calls, review fix pass
+
+### Requests, review fix pass
+
+### Tested, review fix pass
+
+### Not tested, review fix pass
