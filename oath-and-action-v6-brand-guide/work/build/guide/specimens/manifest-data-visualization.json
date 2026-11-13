@@ -992,7 +992,7 @@
   "chapter": "14",
   "rule": "14.116",
   "width_px": null,
-  "alt": "A map of the United States with a circle on each state sized by its citizens 18 and over and shaded by the share who said they voted in November 2024. California, Texas, Florida and New York have the most citizens 18 and over; Texas at 57.9 percent, New York at 59.2 and Florida at 60.3 sit below the national 65.3 percent by more than their margins of error, while California’s 64.7 does not. Rates run from 52.8 percent in Arkansas to 79.5 percent in DC.",
+  "alt": "A map of the United States with a circle on each state sized by its citizens 18 and over and shaded by the share who said they voted in November 2024. California, Texas, Florida and New York have the most citizens 18 and over; Texas at 57.9 percent, New York at 59.2 and Florida at 60.3 sit below the national 65.3 percent by more than their margins of error, while California’s 64.7 does not. Arkansas, at 52.8 percent, sits lowest by more than its margin of error; DC, at 79.5, is highest but within the margin of Minnesota and Oregon.",
   "illustrative": false,
   "notes": "S16, bubble-map: the chart kit draws it from work/build/chart-kit/specs/s16.json (contract R1-C3)"
  },
@@ -1057,7 +1057,7 @@
   "rule": "14.124",
   "width_px": null,
   "illustrative": true,
-  "alt": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count. Beside it, two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
+  "alt": "A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count. Beside it, two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s15": {

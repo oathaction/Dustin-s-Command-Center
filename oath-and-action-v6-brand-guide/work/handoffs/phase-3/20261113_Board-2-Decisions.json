@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
- "state": "draft",
- "updated_utc": "2026-11-13T17:34:37Z",
+ "state": "signed off",
+ "updated_utc": "2026-11-13T17:35:22Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -1188,7 +1188,7 @@
  ],
  "counts": {
   "script": "work/build/scripts/phase-3/board_2_data_lead_counts.py",
-  "run_utc": "2026-11-13T17:25:28Z",
+  "run_utc": "2026-11-13T17:35:22Z",
   "rule_01_9": {
    "limits": {
     "domain": "1 in 4",
@@ -2108,7 +2108,7 @@
  },
  "checks": {
   "script": "work/build/scripts/phase-3/board_2_data_lead_counts.py",
-  "run_utc": "2026-11-13T17:25:28Z",
+  "run_utc": "2026-11-13T17:35:22Z",
   "tiers": {
    "forms": 114,
    "by_tier": {
@@ -5012,5 +5012,7 @@
     }
    ]
   }
- }
+ },
+ "signed_off_utc": "2026-11-13T17:35:22Z",
+ "signed_off_note": "Signed off by the data lead: every figure in this file read by script or from the owner's file it names; Part A (A1 to A5) signed off at 17:35 UTC. The editor owns the words."
 }
