@@ -222,18 +222,21 @@
         // classes, steps and edges, so every state keeps its code where outlines leave most of them no room; a code sits
         // on its tile in its step's label ink with 1 px to spare each side, and any that cannot is named in a note
         var tm = K.parts.tiles(c), top = y + 10, tsize = c.t('type-tile-code-phone'), lost = [], tb2 = top;
+        // where more than ten codes would find no room the tiles carry none, as S07's and S12's do, and the kit's note says so
+        var fits_code = function (code) { return tm.size - 2 >= c.measure(code, 'tick', 600) * tsize / c.size('tick'); };
+        var none = items.filter(function (it) { return it.code && G.tiles[it.code] && !fits_code(it.code); }).length > 10;
         items.forEach(function (it) {
           var t = G.tiles[it.code];
           if (!t) return;
           var x = t[0] * tm.pitch, yy = top + t[1] * tm.pitch, fl = fill_of_cls(steps, it);
           c.rect(x, yy, tm.size, tm.size, { fill: fl, data: it.data });
           if (it.cls === 1 || !it.cls) c.rect(x + 0.5, yy + 0.5, tm.size - 1, tm.size - 1, { stroke: 'context', width: 1, mark: false });
-          var cw = c.measure(it.code, 'tick', 600) * tsize / c.size('tick');
-          if (tm.size - 2 >= cw) c.text(x + tm.size / 2, yy + tm.size / 2 + tsize * 0.35, it.code, { role: 'tick', size: tsize, weight: 600, anchor: 'middle', fill: on_ink(fl) });
+          if (none) { /* no codes at this width */ } else if (fits_code(it.code)) c.text(x + tm.size / 2, yy + tm.size / 2 + tsize * 0.35, it.code, { role: 'tick', size: tsize, weight: 600, anchor: 'middle', fill: on_ink(fl) });
           else lost.push(it.code);
           tb2 = Math.max(tb2, yy + tm.size);
         });
-        if (lost.length) tb2 = c.text(0, tb2 + 20, K.word('unlabeled_marks').replace('{codes}', lost.sort().join(', ')), { role: 'note', max: W, fill: 'secondary' }).bottom;
+        if (none) tb2 = c.text(0, tb2 + 20, K.word('unlabeled_tiles'), { role: 'note', max: W, fill: 'secondary' }).bottom;
+        else if (lost.length) tb2 = c.text(0, tb2 + 20, K.word('unlabeled_marks').replace('{codes}', lost.sort().join(', ')), { role: 'note', max: W, fill: 'secondary' }).bottom;
         c.height(tb2 + 4);
         return;
       }

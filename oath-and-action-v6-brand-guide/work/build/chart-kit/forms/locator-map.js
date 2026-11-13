@@ -87,47 +87,18 @@
         var clear = pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; });
         if (fits && clear) { kpick = [cp[0] + o[0], cp[1] + o[1]]; krole = role; }
       }); });
-      // else anywhere inside the county clear of its edges and the places, nearest its middle (C-S5: its lower right at
-      // a desk), searched on a 2 px grid
-      var fits_at = function (g) {
-        var corners = [[g.x, g.y], [g.x + g.w, g.y], [g.x, g.y + g.h], [g.x + g.w, g.y + g.h]];
-        return polys.some(function (rs) {
-          if (!corners.every(function (q) { return K.in_poly(rs, q[0], q[1]); })) return false;
-          return !rs.some(function (r) { for (var i = 0; i < r.length; i++) { var p1 = r[i], p2 = r[(i + 1) % r.length]; if (K.seg_hits_box(p1[0], p1[1], p2[0], p2[1], g.x, g.y, g.x + g.w, g.y + g.h)) return true; } return false; });
-        });
-      };
-      var kbx = [Infinity, Infinity, -Infinity, -Infinity];
-      polys.forEach(function (rs) { rs[0].forEach(function (q) { kbx[0] = Math.min(kbx[0], q[0]); kbx[1] = Math.min(kbx[1], q[1]); kbx[2] = Math.max(kbx[2], q[0]); kbx[3] = Math.max(kbx[3], q[1]); }); });
-      var klines = [L.county_label], ksp = String(L.county_label).lastIndexOf(' ');
-      [['label', 1], ['tick', 1], ['tick', 2]].forEach(function (rl) {
-        if (kpick) return;
-        var role = rl[0], two = rl[1] === 2 && ksp > 0, ws = two ? [L.county_label.slice(0, ksp), L.county_label.slice(ksp + 1)] : [L.county_label];
-        var bs = ws.map(function (w) { return c.text_box(0, 0, w, { role: role, weight: 600, anchor: 'middle' }); }), lh2 = Math.round(c.size(role) * 1.2);
-        var kb0 = { w: Math.max.apply(null, bs.map(function (b) { return b.w; })), h: bs[0].h + (ws.length - 1) * lh2, y: bs[0].y }, best = null;
-        for (var gx = kbx[0] + kb0.w / 2; gx <= kbx[2] - kb0.w / 2; gx += 2) for (var gy = kbx[1]; gy <= kbx[3]; gy += 2) {
-          var g = { x: gx - kb0.w / 2 - 2, y: gy + kb0.y - 2, w: kb0.w + 4, h: kb0.h + 4 };
-          if (!pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; })) continue;
-          if (!fits_at(g)) continue;
-          var dd = Math.hypot(gx - cp[0], gy - cp[1]);
-          if (!best || dd < best[2]) best = [gx, gy, dd];
-        }
-        if (best) { kpick = [best[0], best[1]]; krole = role; klines = ws; kpick.lh = lh2; }
-      });
       var kt;
-      var kts = [];
-      if (kpick) {
-        klines.forEach(function (w, li) { kts.push(c.text(kpick[0], kpick[1] + li * (kpick.lh || 0), w, { role: krole, weight: 600, anchor: 'middle' })); });
-        kt = kts[0];
-      }
+      if (kpick) kt = c.text(kpick[0], kpick[1], L.county_label, { role: krole, weight: 600, anchor: 'middle' });
       else {
-        // under the county on the ground's halo, on a short leader up into it (C-S5), since its two places fill its middle
+        // under the county on the ground's halo, on a short leader up into it (C-S5): its two places fill its middle, and
+        // no box for its name clears them inside at any width (searched in the fix pass)
         var lowest = 0; polys.forEach(function (rs) { rs[0].forEach(function (q) { lowest = Math.max(lowest, q[1]); }); });
         var kx = cp[0], ky = lowest + 16, ktb = c.text_box(kx, ky, L.county_label, { role: 'label', weight: 600, anchor: 'middle' }), edge = null;
-        for (var yy = ktb.y - 2; yy > kbx[1] && edge === null; yy -= 1) if (polys.some(function (rs) { return K.in_poly(rs, kx, yy); })) edge = yy;
+        for (var yy = ktb.y - 2; yy > ktb.y - 120 && edge === null; yy -= 1) if (polys.some(function (rs) { return K.in_poly(rs, kx, yy); })) edge = yy;
         if (edge !== null) c.line(kx, ktb.y - 2, kx, edge - 6, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
         kt = c.text(kx, ky, L.county_label, { role: 'label', weight: 600, anchor: 'middle', halo: true });
       }
-      var pl = K.parts.place_labels(c, pts.map(function (p) { return { x: p.x, y: p.y, r: p.r, words: p.words, weight: p.weight }; }), { role: 'label', reach: [8, 18, 30], avoid: kts.length ? kts : [kt] });
+      var pl = K.parts.place_labels(c, pts.map(function (p) { return { x: p.x, y: p.y, r: p.r, words: p.words, weight: p.weight }; }), { role: 'label', reach: [8, 18, 30], avoid: [kt] });
       if (pl.unplaced.length) c.warn('places with no room for a name: ' + pl.unplaced.map(function (u) { return u.words; }).join(', '));
       if (L.state_label) {
         var sp = T.pt(K.geo.project(C, -120.6, 38.6));
