@@ -2,7 +2,7 @@
   "id": "14.98",
   "title": "Use a who-decides diagram to show who can change a rule and who only applies it.",
   "rule": [
-    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray arrow from the body that decides to the one it governs, with no plus or minus sign and no loop, as chapter 15 keeps authority apart from cause (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
+    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray line ending in an open diamond, from the body that decides to the one it governs, as chapter 15 draws authority (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
   ],
   "use_when": "The reader asks who sets something they pay or live under, such as an electric bill, and which of those bodies could change the rules behind it.",
   "use_instead": [

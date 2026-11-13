@@ -8,11 +8,12 @@
   "reader_question": "How is the House divided into committees and subcommittees?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the Clerk of the House’s committee list, as of November 12, 2026",
+  "grade_line": "Documented: the Clerk of the House’s committee list of November 3, 2026",
   "title": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
   "measure_line": "Committees and subcommittees of the U.S. House of Representatives, 119th Congress, joint committees included, as the Clerk’s file of November 3, 2026 lists them",
   "notes": [
-    "Two standing committees, Budget and Ethics, have no subcommittees, and Appropriations has the most, 12, one for each of its yearly spending bills."
+    "Two standing committees, Budget and Ethics, have no subcommittees, and Appropriations has the most, 12, one for each of its yearly spending bills.",
+    "The Clerk’s file lists the select subcommittee on January 6, 2021, as a committee of its own, and the chart follows it."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

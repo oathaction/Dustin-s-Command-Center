@@ -9,7 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the text of the Administrative Procedure Act, the Congressional Review Act and Executive Orders 12866 and 14215, as in force on November 12, 2026",
-  "title": "A federal agency makes a rule in five steps the law sets, and Congress can strike the rule down or a court can set it aside once it is final.",
+  "title": "A federal agency makes a rule in five steps the law sets, and Congress and the President can strike the rule down or a court can set it aside once it is final.",
   "measure_line": "The steps of federal rule making in 5 U.S.C. 551 and 553, with the branches for White House review, guidance, petitions, the Congressional Review Act and court review, as the law and Executive Orders 12866 and 14215 stand on November 12, 2026",
   "notes": [
     "Executive Order 14215 of February 18, 2025, sends the significant rules of independent regulatory agencies to White House review as well; the Federal Reserve’s monetary policy stays outside it.",
@@ -17,7 +17,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A diagram of how a federal agency makes a rule, read in order. A way in: anyone may petition an agency to issue, change or repeal a rule. Step 1, the agency drafts a rule; a significant draft goes to the White House’s Office of Information and Regulatory Affairs, which has 90 days to finish its review, and guidance can skip notice and comment. Step 2, the agency publishes the proposed rule. Step 3, anyone may comment. Step 4, the agency publishes the final rule at least 30 days before it takes effect, and a person harmed by it can ask a court to set it aside. Step 5, the agency reports the rule to Congress, which can pass a joint resolution of disapproval so the rule has no effect.",
+  "alt": "A diagram of how a federal agency makes a rule, read in order. A way in: anyone may petition an agency to issue, change or repeal a rule. Step 1, the agency drafts a rule; a significant draft goes to the White House’s Office of Information and Regulatory Affairs, which has 90 days to finish its review before the proposed and again before the final rule, and guidance can skip notice and comment. Step 2, the agency publishes the proposed rule. Step 3, anyone may comment. Step 4, the agency publishes the final rule at least 30 days before it takes effect, and a person harmed by it can ask a court to set it aside. Step 5, the agency reports the rule to Congress, and a joint resolution of disapproval that Congress passes and the President signs, or that survives a veto, leaves the rule with no effect.",
   "table": {
     "caption": "The steps of federal rule making and their branches, in reading order, as the law stands on November 12, 2026",
     "columns": [
@@ -62,7 +62,7 @@
         "words": {
           "10": "Step 1, if the agency takes it up",
           "1": "Step 2; for a significant rule, White House review first; guidance can skip steps 2 and 3",
-          "2": "Step 2",
+          "2": "Step 2, and again before step 4, the final rule",
           "9": "Skips steps 2 and 3, notice and comment",
           "3": "Step 3",
           "4": "Step 4",
@@ -127,7 +127,7 @@
       "2": {
         "at": 1,
         "dir": "out",
-        "words": "Before step 2, for some rules"
+        "words": "Before steps 2 and 4, for significant rules"
       },
       "9": {
         "at": 1,
