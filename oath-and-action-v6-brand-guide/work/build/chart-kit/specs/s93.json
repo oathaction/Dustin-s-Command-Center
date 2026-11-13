@@ -1,0 +1,146 @@
+{
+  "kit": 1,
+  "id": "S93",
+  "form": "annotated-illustration",
+  "family": "infographics",
+  "tier": "extended",
+  "dataset": "govinfo-pl-119-12-first-page",
+  "reader_question": "What does the first page of a law tell a reader?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: Public Law 119-12 as the Government Publishing Office publishes it, approved May 19, 2025",
+  "title": "The first page of Public Law 119-12 gives its number, the Congress that passed it, where it starts in the Statutes at Large, the day it was approved and the bill it began as.",
+  "measure_line": "The parts of the first page of Public Law 119-12, the TAKE IT DOWN Act, redrawn with the page’s own words",
+  "notes": [
+    "The drawing stops after section 1; section 2 begins lower on the same page.",
+    "The page prints a dash between the law’s number and its date in the running head; the drawing sets it as a rule."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A drawing of the first page of Public Law 119-12 with ten numbered parts. 1, the running head across the top: Public Law 119–12, May 19, 2025, 139 Stat. 55. 2, the Public Law number, Public Law 119–12. 3, the Congress, 119th Congress. 4, the Statutes at Large citation, 139 Stat. 55, volume 139, page 55. 5, the date approved, May 19, 2025, in the right margin. 6, the bill number, S. 146, under the date. 7, the long title, An Act To require covered platforms to remove nonconsensual intimate visual depictions, and for other purposes. 8, the enacting clause. 9, the short title section, which names the TAKE IT DOWN Act. 10, the margin note 47 USC 609 note, where the section sits in the United States Code.",
+  "table": {
+    "caption": "The parts of the first page of Public Law 119-12, in reading order",
+    "columns": [
+      {
+        "field": "order",
+        "label": "Number",
+        "format": "integer"
+      },
+      {
+        "field": "part",
+        "label": "Part",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "printed_text",
+        "label": "As printed",
+        "format": "text"
+      },
+      {
+        "field": "where_on_page",
+        "label": "Where on the page",
+        "format": "text"
+      },
+      {
+        "field": "what_it_tells",
+        "label": "What it tells a reader",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each numbered square marks a part of the page; the list beside the page names each part and what it tells a reader, in the same order."
+  ],
+  "phone": "differs",
+  "phone_note": "Under 600 px the list of parts follows the page; where the page’s margin column cannot hold its words, the margin’s parts follow the lines they sit beside, set flush right.",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "sort": [
+    {
+      "field": "order",
+      "order": "asc"
+    }
+  ],
+  "encode": {
+    "key": "order",
+    "part": "part",
+    "text": "printed_text",
+    "tells": "what_it_tells"
+  },
+  "labels": {
+    "layout": [
+      {
+        "key": 1,
+        "slot": "head",
+        "split": "; ",
+        "dash_at": 1,
+        "right_key": 4,
+        "gap": 0
+      },
+      {
+        "key": 2,
+        "slot": "main",
+        "size": "label",
+        "weight": 600,
+        "gap": 26
+      },
+      {
+        "key": 3,
+        "slot": "main",
+        "size": "label",
+        "weight": 400,
+        "gap": 6
+      },
+      {
+        "key": 7,
+        "slot": "main",
+        "center": true,
+        "breaks": [
+          "To require"
+        ],
+        "gap": 14
+      },
+      {
+        "key": 5,
+        "slot": "margin",
+        "beside": 7,
+        "gap": 18
+      },
+      {
+        "key": 6,
+        "slot": "margin",
+        "beside": 7
+      },
+      {
+        "key": 8,
+        "slot": "main",
+        "gap": 14
+      },
+      {
+        "key": 9,
+        "slot": "main",
+        "lead": "SECTION 1. SHORT TITLE.",
+        "gap": 14
+      },
+      {
+        "key": 10,
+        "slot": "margin",
+        "beside": 9
+      }
+    ],
+    "named": []
+  },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true,
+    "replace": []
+  },
+  "notes_internal": [
+    "Infographics maker, round 4. Data plan row 125 (data lead change 2), rule 14.139. Domain D04 from the sidecar.",
+    "Every word the page drawing prints is a row's printed_text, split only where the page breaks a line; the running head's three pieces are the row's semicolon-separated parts, joined as the page joins them, with a rule one em wide for the page's dash (DR-79's drawing of an em dash).",
+    "Layout checked against the page itself: govinfo PLAW-119publ12.pdf, page 1, fetched November 13, 2026 to the maker's scratch, rendered and read with pdftotext -layout.",
+    "DRAFT words, waiting on the data lead's rulings (a) to (c) and the editor's words pass."
+  ]
+}

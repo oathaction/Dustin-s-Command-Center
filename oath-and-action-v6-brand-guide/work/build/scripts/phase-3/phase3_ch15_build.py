@@ -232,6 +232,9 @@ LEAD = GV["lead_in"]
 MIN_RUN = GV["min_run"] * LW
 BEND = BS.BEND[LW]
 RISE = 48                 # a loop's arrows leave a pill straight for 48 px, room for the lead-in and the gap after it
+LOOP_HI = 140             # DR-265: a loop's pill may widen to 140 px where that saves a row of its title; two side by
+TOP_HI = 170              # side still leave 12 px between them, and a three-variable loop's top pill, alone in its row,
+                          # may take 170
 F = BS.f
 
 
@@ -386,9 +389,60 @@ def verb_at(pts, sign, words, side, big=False):
     return lines(x - 15 - k, y + 5 - (len(words) - 1) * LH / 2, words, "v", "end")
 
 
-def pill_w(label, pw=PW):
-    """A pill's width: the base, or wide enough for the label's longest word with PAD at each end."""
-    return max(pw, math.ceil(max(tw(w_, 600) for w_ in label.split()) + 2 * PAD + 2))
+def pill_w(label, pw=PW, hi=None):
+    """A pill's width: the base, or wide enough for the label's longest word with PAD at each end. With hi, the pill may
+    widen up to hi where that saves a row, and takes the narrowest width that holds the fewest rows (DR-265: a title
+    runs longer than the chain label it replaces)."""
+    base = max(pw, math.ceil(max(tw(w_, 600) for w_ in label.split()) + 2 * PAD + 2))
+    if not hi or hi <= base:
+        return base
+    fewest = len(wrap(label, hi - 2 * PAD))
+    return next(w_ for w_ in range(base, hi + 1) if len(wrap(label, w_ - 2 * PAD)) == fewest)
+
+
+ROW_ROOM = W - 4 - 12      # two pills side by side in one row: 2 px from each edge and 12 px between them
+
+
+def _rows_n(label, w_):
+    k = (label, w_)
+    if k not in _ROWS_N:
+        _ROWS_N[k] = len(wrap(label, w_ - 2 * PAD))
+    return _ROWS_N[k]
+
+
+_ROWS_N = {}
+
+
+def pair_w(la, lb, lo=PW):
+    """Two pills that share a row (a two-variable loop, a row of a four-variable one): the widths that set both titles in
+    the fewest rows, then the fewest rows in all, then the narrowest, inside ROW_ROOM together (DR-265)."""
+    ba, bb = pill_w(la, lo), pill_w(lb, lo)
+    best = None
+    for wa in range(ba, ROW_ROOM - bb + 1):
+        for wb in range(bb, ROW_ROOM - wa + 1):
+            ra, rb = _rows_n(la, wa), _rows_n(lb, wb)
+            k = (max(ra, rb), ra + rb, wa + wb, abs(wa - wb))
+            if best is None or k < best[0]:
+                best = (k, wa, wb)
+    need(best is not None, f"two pills cannot share a {W} px row: {la!r}, {lb!r}")
+    return best[1], best[2]
+
+
+def rows_of(label, width):
+    """A label's rows at a width: as many as the greedy wrap takes, set as evenly as the words allow, so no short word
+    stands alone on a row of its own while the row above runs full (DR-265's longer titles)."""
+    rows = wrap(label, width)
+    if len(rows) < 2:
+        return rows
+    words = label.split()
+    runs = sorted({tw(" ".join(words[i:j]), 600) for i in range(len(words)) for j in range(i + 1, len(words) + 1)})
+    for c in runs:
+        if c > width:
+            break
+        r = wrap(label, c + 0.01)
+        if len(r) == len(rows):
+            return r
+    return rows
 
 
 class Pill:
@@ -397,7 +451,7 @@ class Pill:
 
     def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False):
         pw = pill_w(label, pw)
-        self.rows = wrap(label, pw - 2 * PAD)
+        self.rows = rows_of(label, pw - 2 * PAD)
         self.h = max(len(self.rows) * LH + 22, 44)
         self.cx, self.cy, self.pw, self.thin, self.cls = cx, cy, pw, thin, cls
         self.red, self.shared = red, shared
@@ -457,7 +511,7 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
     connections and variables a reform acts on (Rule 12.5's red); shared names a variable another loop holds too
     (Rule 15.15). Returns (body, h, pills)."""
     labels = labels or [short(c) for c in codes]
-    pw = [pill_w(lb, PW if not scale else PW * sc) for lb, sc in zip(labels, scale or [1, 1])]
+    pw = list(pair_w(*labels)) if not scale else [pill_w(lb, PW * sc) for lb, sc in zip(labels, scale)]
     rows_h = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
     wrows = [len(step_words(1, x, ("weakest step",) if weakest == i else ())) if x else 1 for i, x in enumerate(lids)]
     run_y = top + 30 + (wrows[0] - 1) * LH + (3 if lids[0] in targets else 0)
@@ -491,14 +545,15 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. targets and shared
     as two_loop takes them. Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
-    hs = [max(len(wrap(lb, pill_w(lb) - 2 * PAD)) * LH + 22, 44) for lb in labels]
+    pw = [pill_w(labels[0], PW, TOP_HI), pill_w(labels[1], PW, LOOP_HI), pill_w(labels[2], PW, LOOP_HI)]
+    hs = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
     y1 = top + 4 + hs[0] / 2
     gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
     kw_ = [dict(red=c in targets, shared=c in shared) for c in codes]
-    p1 = Pill(labels[0], W / 2, y1, PW, thin, **kw_[0])
-    p2 = Pill(labels[1], W - 2 - pill_w(labels[1]) / 2, y2, PW, thin, **kw_[1])
-    p3 = Pill(labels[2], 2 + pill_w(labels[2]) / 2, y2, PW, thin, **kw_[2])
+    p1 = Pill(labels[0], W / 2, y1, pw[0], thin, **kw_[0])
+    p2 = Pill(labels[1], W - 2 - pw[1] / 2, y2, pw[1], thin, **kw_[1])
+    p3 = Pill(labels[2], 2 + pw[2] / 2, y2, pw[2], thin, **kw_[2])
     xr = (max(p1.left, p2.left) + min(p1.right, p2.right)) / 2
     xl = (max(p1.left, p3.left) + min(p1.right, p3.right)) / 2
     bot_y = max(p2.bot, p3.bot) + RISE
@@ -536,7 +591,8 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
     them. inside is (loop ID, kind); inside_rows sets words of a failure plate's own on two rows; targets and shared as
     two_loop takes them; labels overrides the short names (a failure plate's own words). Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
-    pw = [pill_w(lb) for lb in labels]
+    (w0, w1), (w3, w2) = pair_w(labels[0], labels[1]), pair_w(labels[3], labels[2])
+    pw = [w0, w1, w2, w3]
     rows = [len(step_words(1, x)) if x else 1 for x in lids]
     run_y = 30 + (rows[0] - 1) * LH + (3 if lids[0] in targets else 0)
     hs = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
@@ -2237,7 +2293,7 @@ def rule_15_15(book):
     need([link(x)["evidence"] for x in b4["links"]] == ["well-supported"] * 3, "Loop B4's grades changed")
     need(r10["evidence"].endswith("plausible for C3 to C4 (the weakest link)"), "Loop R10's weakest link changed")
     c3 = node("C3")
-    need(short("C3") == "Electoral pressure" and c3["title"] == "Risk of losing office", "Variable C3's names changed")
+    need(LOOP_NAME["C3"] == "Electoral pressure" and c3["title"] == "Risk of losing office", "Variable C3's names changed")
     ep = GLOSS["Electoral pressure"]
     need(ep == "The credible chance that an official will lose office. It can change behavior before any election removes anyone.",
          "the atlas's entry for electoral pressure changed")
@@ -2279,7 +2335,7 @@ def rule_15_15(book):
                     f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}</div>')
     meet = (f'<p class="k">Where the two loops meet</p>'
             f'<p class="nt">{vt("C3")} is the pill filled in ink in both drawings. '
-            f'The atlas calls it electoral pressure: “{e(ep)}”</p>'
+            f'The atlas’s glossary defines it as electoral pressure: “{e(ep)}”</p>'
             f'<p class="nt">Loop B4, in the atlas’s words, “{e(qual[len("The loop "):])}” Of the {words_n(len(deps))} '
             f'variables the atlas says its strength depends on, {chip("Variable", "C1")} and {chip("Variable", "C2")} sit at '
             f'the two ends of Loop R10’s first step.</p>')
@@ -2287,13 +2343,14 @@ def rule_15_15(book):
             + src("loops B4 and R10, their connections, and the glossary entry for electoral pressure"))
     book.add("s-15-15-correct", body, rule="15.15", readable=True, wide=True,
              alt=(f"Loop B4, “{b4['title']}”, beside Loop R10, “{r10['title']}”, from our systems atlas. Both pass through "
-                  "Electoral pressure, the pill filled in ink in each drawing. Loop B4 draws three pills, Public service "
-                  "quality, Electoral pressure and Sanction applied, its steps marked minus, plus and plus, balancing. Loop R10 "
-                  "draws four on a square, Safe seats, Primary decisiveness, Electoral pressure and Incumbent control of election "
-                  "rules, its steps marked plus, minus, minus and plus, reinforcing. Under each, the connection into Electoral "
-                  f"pressure and the one out of it, with the atlas’s sentences. In Loop B4: {link('L23')['sign_meaning']} "
+                  f"{short('C3')}, the pill filled in ink in each drawing. Loop B4 draws three pills, {short('D5')}, "
+                  f"{short('C3')} and {short('C5')}, its steps marked minus, plus and plus, balancing. Loop R10 "
+                  f"draws four on a square, {short('C1')}, {short('C2')}, {short('C3')} and {short('C4')}, its steps "
+                  f"marked plus, minus, minus and plus, reinforcing. Under each, the connection into {lc(short('C3'))} "
+                  f"and the one out of it, with the atlas’s sentences. In Loop B4: {link('L23')['sign_meaning']} "
                   f"{link('L24')['sign_meaning']} In Loop R10: {link('L25')['sign_meaning']} {link('L53')['sign_meaning']} "
-                  f"A note says Variable C3, risk of losing office, is the shared variable, which the atlas defines: {ep} Loop "
+                  f"A note says Variable C3, {lc(short('C3'))}, is the shared variable, which the atlas’s glossary defines as "
+                  f"electoral pressure: {ep} Loop "
                   "B4 works only where seats are competitive, and of the four variables the atlas says its strength depends "
                   "on, Variable C1 and Variable C2 sit at the two ends of Loop R10’s first step. Loop B4’s label reads Well "
                   "supported, the grade of all three steps, and under each loop its other steps print with their grades; the "
@@ -2306,7 +2363,8 @@ def rule_15_15(book):
     for lid, kind, n in specs_:
         lp = LOOP[lid]
         codes = [c for c, _ in lp["chain"]]
-        labels = [short(c) if c != "C3" or lid == "B4" else c3["title"] for c in codes]
+        # the fault: Loop B4 calls Variable C3 by its chain label there, Loop R10 by its title (DR-265's one name)
+        labels = [LOOP_NAME["C3"] if c == "C3" and lid == "B4" else short(c) for c in codes]
         if n == 3:
             b, h = three_loop(codes, lp["links"], inside=(lid, kind), labels=labels)
         else:
@@ -2314,15 +2372,15 @@ def rule_15_15(book):
         fcols.append(f'<div>{hed("Loop", lid, lp["title"])}{fig(svg_wrap(b, h))}</div>')
     fail = dnp() + f'<div class="fx pr">{"".join(fcols)}</div>'
     book.add("s-15-15-failure", fail, rule="15.15", wide=True,
-             alt=(FC + "The same two loops side by side, with the shared variable named Electoral pressure in Loop B4 and Risk "
-                  "of losing office in Loop R10, in plain pills, with no chip and no word that the two are one variable."),
+             alt=(FC + f"The same two loops side by side, with the shared variable named {LOOP_NAME['C3']} in Loop B4 and "
+                  f"{short('C3')} in Loop R10, in plain pills, with no chip and no word that the two are one variable."),
              notes="Labeled failure: the shared variable under two names and no mark, so the loops read as unrelated.")
     return {
         "id": "15.15",
         "title": "Follow a variable two loops share through each loop in turn.",
         "rule": [
             f"Loop B4, “{b4['title']}”, and Loop R10, “{r10['title']}”, both pass through Variable C3, "
-            f"{lc(c3['title'])}. Draw the two loops side by side, give the shared variable the same short name in both, and "
+            f"{lc(c3['title'])}. Draw the two loops side by side, give the shared variable its own title in both, and "
             "fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection "
             "that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
             "Then say where the loops meet, in the atlas’s words. As primaries decide more seats in Loop R10, the risk of "
@@ -2341,7 +2399,7 @@ def rule_15_15(book):
                                "no mark, so the loops read as unrelated. Both pass through Variable C3, the risk of losing office."},
         "specs": [
             {"label": "Order", "value": "The two loops side by side from 680 px, one under the other below it"},
-            {"label": "Shared variable", "value": "One short name in both drawings, its pill filled in ink with its name in the surface color",
+            {"label": "Shared variable", "value": "Its own title in both drawings, its pill filled in ink with its name in the surface color",
              "token": "oa.color.graphic.essential.onNewsprint"},
             {"label": "In and out", "value": "Under each loop, the connection into the shared variable and the one out of it, with "
                                              "their chips, grade words and the atlas’s sentences on their signs"},
@@ -2890,6 +2948,29 @@ def curly(o, skip=("specimen", "id", "before_rule", "chapter", "related", "token
     return o
 
 
+# DR-265's check: the atlas's own strings, masked before a chain label is looked for, longest first, and the places a chain
+# label may print on purpose: Rule 15.15's failure names Variable C3 by its chain label in Loop B4 (the fault), and its
+# correct plate quotes the glossary's term for the same idea
+def _strings(x, key=""):
+    if isinstance(x, dict):
+        for k, v in x.items():
+            if k != "chain_labels":
+                yield from _strings(v, k)
+    elif isinstance(x, list):
+        for v in x:
+            yield from _strings(v, key)
+    elif isinstance(x, str) and len(x) > 20:
+        yield " ".join(x.replace("’", "'").split())
+
+
+_LABELS = set(LOOP_NAME.values())
+ATLAS_STRINGS = sorted({s_ for part in (LOOP, LINK, REFORM) for s_ in _strings(part) if s_ not in _LABELS}, key=len, reverse=True)
+DR265_ALLOW = {"s-15-15-failure": ("named Electoral pressure in Loop B4",),
+               "s-15-15-correct": ("glossary defines it as electoral pressure", "glossary defines as electoral pressure",
+                                   "glossary entry for electoral pressure"),
+               "chapter": ("glossary entry \"Electoral pressure\"", "glossary entry “Electoral pressure”")}
+
+
 def check(data, book):
     fails = []
     texts = {"chapter": " ".join(C13.strings({k: v for k, v in data.items() if k not in ("sources", "plate_css")}))}
@@ -2988,13 +3069,22 @@ def check(data, book):
     for sid, frag in book.files.items():
         for m in re.finditer(r"<b>([A-Za-z ]+)</b></span></span></span> ([A-Z]\w*)", frag):
             fails.append(f"{sid}: the grade word {m.group(1)!r} runs on into {m.group(2)!r} with no period")
-    # RF-16, RF-16a: a drawing outside any loop prints the atlas's own title for D1, D2, D4 and D6, never a loop's chain label
-    for sid in ("s-15-3-correct", "s-15-3-failure", "s-15-5-correct", "s-15-5-failure", "s-15-17-correct"):
-        drawn = " ".join(" ".join(re.sub(r"<[^>]+>", " ", t).split())
-                         for t in re.findall(r"<text\b[^>]*>(.*?)</text>", book.files[sid]))
-        for c in TWO_NAMES:
-            if LOOP_NAME[c] in drawn:
-                fails.append(f"{sid}: Variable {c} drawn as {LOOP_NAME[c]!r}, its loops' label, outside a loop (RF-16)")
+    # DR-265 (with RF-16 and RF-16a before it): no plate, alt or line of the chapter prints a loop's chain label for a
+    # variable whose own title differs. The atlas's own strings (loop titles, connection names and sentences, reform
+    # titles) are masked first, since "Safe seats" sits inside Loop R10's title; DR265_ALLOW holds the one fault a
+    # failure plate draws on purpose and the glossary's own term
+    for k, t_ in texts.items():
+        flat = " ".join(re.sub(r"<[^>]+>", " ", t_).replace("’", "'").split())
+        for phrase in DR265_ALLOW.get(k.replace(" alt", ""), ()):
+            flat = flat.replace(phrase, " ")
+        for s_ in ATLAS_STRINGS:
+            if s_ in flat:
+                flat = flat.replace(s_, " ")
+        for c, lab in LOOP_NAME.items():
+            if lab != node(c)["title"]:
+                for m in re.finditer(rf"(?<![\w-]){re.escape(lab)}(?![\w-])", flat, re.I):
+                    fails.append(f"{k}: Variable {c} printed as its chain label {lab!r}, where DR-265 prints its title "
+                                 f"{node(c)['title']!r}: …{flat[max(0, m.start() - 40): m.end() + 30]}…")
     kinds = {"Variable": NODE, "Connection": LINK, "Loop": LOOP, "Reform": REFORM,
              "Route": {r["code"] for r in V7["routes"]["items"]}}
     for sid, frag in book.files.items():

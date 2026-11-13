@@ -1,0 +1,94 @@
+{
+  "kit": 1,
+  "id": "S86",
+  "form": "proportional-symbols",
+  "family": "proportion-and-overlap",
+  "tier": "extended",
+  "dataset": "census-cog-2022-governments-by-type",
+  "sort": [
+    {
+      "field": "order",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How many governments of each kind does the country have?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Census Bureau’s 2022 count of every government in the country",
+  "title": "Special districts are the most common kind of government in the country, 39,555 of the 90,888 the Census Bureau counted in 2022.",
+  "measure_line": "Governments by type, 2022, United States; each circle’s area is in proportion to its count",
+  "notes": [
+    "School systems run by a state, county, city or township count with that government, so independent school districts are not every school system."
+  ],
+  "chart_notes": [
+    "The circle the title names, special districts, takes the text’s ink; the others are gray with a thin edge. The federal government and the 50 states print in words, since their circles would draw under a pixel and a few pixels across."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Circles sized by area for five kinds of local government in 2022: special districts, 39,555, the largest; municipalities, 19,491; townships, 16,214; independent school districts, 12,546; and counties, 3,031. One federal government and 50 state governments print in words.",
+  "table": {
+    "caption": "Governments by type, 2022",
+    "columns": [
+      {
+        "field": "government_type",
+        "label": "Government, as the Census Bureau names it",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "level",
+        "label": "Level",
+        "format": "text",
+        "words": {
+          "federal": "Federal",
+          "state": "State",
+          "local": "Local"
+        }
+      },
+      {
+        "field": "governments",
+        "label": "Governments",
+        "format": "integer"
+      }
+    ]
+  },
+  "encode": {
+    "category": "government_type",
+    "value": "governments"
+  },
+  "labels": {
+    "names": {
+      "Federal government": "federal government",
+      "State governments": "state governments",
+      "County governments": "Counties",
+      "Municipal governments": "Municipalities",
+      "Township governments": "Townships",
+      "Special district governments": "Special districts",
+      "Independent school district governments": "Independent school districts"
+    },
+    "named": [
+      "Special district governments"
+    ],
+    "words_only": [
+      "Federal government",
+      "State governments"
+    ],
+    "words": "Not drawn: {list}, too few for a circle at this scale.",
+    "key_steps": [
+      10000,
+      1000
+    ],
+    "key_title": "Circle area shows the count",
+    "word": "{v} {name}"
+  },
+  "formats": {
+    "value": "integer"
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "notes_internal": [
+    "Maker A, round 4. Data plan row 116, rule 14.80. Domain D04 (V7 I165). Draft before the data lead's rulings."
+  ]
+}

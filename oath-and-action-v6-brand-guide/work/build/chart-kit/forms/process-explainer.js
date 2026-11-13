@@ -9,7 +9,7 @@
  * The table lists the steps in reading order (sort by the key with its values), each link named in a column (R3-6).
  * encode: key (integer: the step's key), path (category: main steps take labels.main), step (text: the name), level
  * (text: the levels that act, "; " between), who (text, optional: who acts), limit (text, optional: the time the law sets).
- * labels: main (default "main"), lanes ([{levels: [level, ...], label, share}]), branches ({key: {at: the key of the step
+ * labels: main (default "main"), lanes ([{levels: [level, ...], label, share, min (px: the lane's least width)}]), branches ({key: {at: the key of the step
  * it replaces, words}}), together ([[key, key], ...]: steps in one row, left to right), lines ({key: words over the
  * step's name}), named (keys the title names: a 2 px edge in the subject ink), lane_min (px, default 150). */
 (function (K) {
@@ -30,7 +30,7 @@
       // lane geometry: shares of the width less the gutters
       var tot = lanes.reduce(function (s, l) { return s + (l.share || 1); }, 0), avail = W - g * Math.max(0, lanes.length - 1), lx = [], lw = [], x = 0;
       lanes.forEach(function (l) { var w = avail * (l.share || 1) / (tot || 1); lx.push(x); lw.push(w); x += w + g; });
-      var wide = lanes.length > 1 && !c.phone && lw.every(function (w) { return w >= (L.lane_min || 150); });
+      var wide = lanes.length > 1 && !c.phone && lw.every(function (w, i) { return w >= (lanes[i].min || L.lane_min || 150); });
       var span = function (r) {
         var ix = [];
         String(r[ev] || '').split(/;\s*/).forEach(function (v) { lanes.forEach(function (l, i) { if ((l.levels || []).indexOf(v.trim()) >= 0) ix.push(i); }); });

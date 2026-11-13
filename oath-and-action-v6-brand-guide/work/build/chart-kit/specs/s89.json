@@ -122,7 +122,8 @@
           "local"
         ],
         "label": "Local governments",
-        "share": 0.8
+        "share": 0.6,
+        "min": 80
       },
       {
         "levels": [
@@ -130,7 +131,7 @@
           "tribal"
         ],
         "label": "States and tribes",
-        "share": 1.15
+        "share": 1.25
       },
       {
         "levels": [
@@ -144,7 +145,7 @@
           "resident"
         ],
         "label": "Residents",
-        "share": 0.9
+        "share": 1.0
       }
     ],
     "branches": {
@@ -159,7 +160,8 @@
         "8"
       ]
     ],
-    "named": []
+    "named": [],
+    "lane_min": 150
   },
   "typography": {
     "curl_quotes": true,
