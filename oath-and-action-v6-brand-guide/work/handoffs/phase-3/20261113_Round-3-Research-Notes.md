@@ -153,3 +153,39 @@ Modified:
 - `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md` (row 123's note, D3-1098)
 
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-5490-bd84-f6f867d97cb7/scratchpad/phase-3/round-3/research/` (downloads with fetch logs under `dl/`; scripts under `scripts/`: `fetch.sh`, `census_get.py`, `fec_pager.py`, `htmltext.py`, `iso_terms.py`, `xcheck_pyshp.py`, `dup_probe.py`, `rl2_trace.py`, `judge_trace.py`, `judge_compare.py`, `check_derived_snap.py`, `check_derived_jfc_node.py`, `check_derived_round3.py`; the pyshp venv; kit builds under `r3a1/`, `rl3/`, `judges/`; the re-check mirror).
+
+## Review fix pass
+
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Research lead" paragraph) and the data lead's rulings in "Review fix pass" of `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC; this state at 04:39 UTC. Script: `work/build/scripts/phase-3/research_review_fix_round3.py` (one item a subcommand; each checks its downloads against the hashes the sidecars record, asserts every field it does not mean to change, and writes nothing on a rerun). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/research/` (downloads under `dl/`, kit builds under `kit/`).
+
+### Summary
+
+- **ST-S8 done, 04:38 UTC.** The roll call file prints each House member as the Clerk's record prints the name, accents kept.
+- **ST-S11 done, 04:38 UTC.** A variant naming CMS's October 2024 final release, for S65.
+- In progress: ST-S2, ST-S4, ST-S6, A-M1's check, then the data check over every file this pass changes.
+
+### Items done, by code
+
+- **ST-S8.** `congress-hr5371-roll-calls-by-member.csv`: Barragan, Garcia (IL), Sanchez and Velazquez now read Barragán, García (IL), Sánchez and Velázquez, the text of the Clerk's `legislator` element in roll call 285, re-read today from a file whose SHA-256 equals the frozen raw's (dfbc7b2e76b87b86). The freeze had read the element's `unaccented-name` attribute. Found on the way: the Senate's record (vote 618, fetched today, SHA-256 equal to the frozen raw's ab81bac6e53d98c8) ends three first names with a space, and the freeze's join doubled it ("John  Curtis", "James  Risch", "Eric  Schmitt"); those now take one space. The Senate prints no accents (Ben Lujan as printed). All 433 House and 100 Senate rows checked against the records: party, state and vote equal in every row; no other name changes. Sidecar: one note saying where each chamber's names come from. S72 built before and after: PASS, 0 faults, only its CSV export differs; the page names none of the seven. Maker A rebuilds S72 and its export.
+- **ST-S11.** `cms-medicaid-chip-renewal-funnel.meta.json` (S65's first dataset) gains `source_line_variants.with_release`: "Source: Centers for Medicare & Medicaid Services, Medicaid and CHIP Updated Renewal Outcomes, October 2024 final release, renewals due April 2023 to March 2024, United States. Retrieved November 12, 2026. Stages summed by Oath & Action from the national rows; pending renewals set apart." `cms-medicaid-chip-renewal-outcomes.meta.json` gains the same insertion in its own line. Read today: data.medicaid.gov's record for dataset e6205a51 (modified 2024-11-01T00:05:00+00:00; its first file `updated-renewal-outcomes-october-2024-releasefinal.csv`), and that file, whose SHA-256 equals the frozen raw's (a21e0c7692981a16). A scratch copy of S65 printing the variant builds PASS, 0 faults (a two-dataset spec's check reads the publishers). Maker B copies the funnel's `with_release` into `s65.json`.
+
+### Routine calls, review fix pass
+
+- D3-xxx | A House member's name is the text of the Clerk's `legislator` element, and the sidecar says so | The sidecar promises the name "as the record prints it", and the element's text is what the Clerk prints; the attribute is a sort aid
+- D3-xxx | A senator's name joins the record's first and last name with one space, dropping the space the record leaves after three first names | A doubled space is an artifact of the join, not a spelling the Senate prints; the record's `member_full` uses one
+- D3-xxx | S65's release goes in a named variant on both CMS sidecars, after the title, "October 2024 final release" | The file name and the sidecar's vintage call it the October 2024 release, final; the NHE line names its release in the same place (H04)
+
+### Requests, review fix pass
+
+- **To maker A:** rebuild S72 and its CSV export after ST-S8 (the page names none of the changed members).
+- **To maker B:** copy `with_release` from `cms-medicaid-chip-renewal-funnel.meta.json` into `s65.json`'s `source_line` (ST-S11).
+
+### Tested, review fix pass
+
+- ST-S8: both raw files fetched today with SHA-256 prefixes equal to the sidecar's; every row of the file checked against them by script; a rerun writes nothing. S72 built before and after with `--no-png`: PASS both, only the CSV export differs.
+- ST-S11: the metastore record and the file read today; the file's hash equals the frozen raw's; a rerun writes nothing; S65 built from a scratch spec with the variant: PASS.
+- Data check after these writes: 124 tables, 0 faults.
+
+### Not tested, review fix pass
+
+- S65's and S72's pages and captures: I built with `--no-png`, which writes only the CSV export and the check file, so I did not see the variant printed on a page.

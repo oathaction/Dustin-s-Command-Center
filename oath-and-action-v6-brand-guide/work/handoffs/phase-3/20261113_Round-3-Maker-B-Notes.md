@@ -150,18 +150,21 @@ In progress. Order: items no ruling touches first (SK-S1, B-S5, B-S2, AX-S1's S7
 
 | Item | Status |
 |---|---|
-| SK-S1 | to do |
+| SK-S1 | Done: sketch 14.94's words held 10 px inside the frame, “Start” set at the plot's left edge, clear of the value column; frame 320 by 236 |
 | B-S5 | to do |
 | B-S2 | to do |
 | AX-S1 (S74) | to do |
 | ST-S6 | to do |
 | ST-S2, AX-S8 (S76) | to do |
-| ST-M1, AX-M1 (S73 rebuild) | waits on the engineer's `K.group_cell` |
-| ST-S11 (S65) | waits on the research lead's release line |
+| ST-M1, AX-M1 (S73 rebuild) | Done after the engineer's fix: rebuilt, PASS; the page table read with scripts on and off names the fund in all seven rows, the refunds print “28C, refund”; “From” takes `words` so each fund reads as the drawing and title name it |
+| ST-S11 (S65) | Done: `source_line` is the sidecar's `with_release` variant, copied exactly; rebuilt, PASS |
 | B-S1 (S73) | waits on the data lead's CD ruling |
 | B-S3 (S77) | waits on the data lead's CD ruling |
 
 ### Routine calls, review fix pass
+
+- D3-xxx | Sketch 14.94 frames at 320 by 236 px, its value labels end 12 px left of the plot and “Start” sits at the plot's left edge, set from its start | SK-S1 and D3-966: every word 10 px inside the frame; a left-set “Start” aligns with the lines' start and reads as the time axis, apart from the value column
+- D3-xxx | S73's table prints each fund as the drawing names it (“Harris Victory Fund”, “Trump National Committee JFC”), through the From column's `words`; the CSV keeps the FEC's stored names | ST-M1's reason: the table names both funds the way the drawing does, and the drawing and title print `labels.sources`' words
 
 ### Requests, review fix pass
 

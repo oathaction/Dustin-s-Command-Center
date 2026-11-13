@@ -77,3 +77,25 @@ Each owner writes a section "## Review fix pass" at the end of its round 3 notes
 - Read the clock with `date -u` before you write a time.
 - Report what you tested and what you did not as separate lists. Never describe a check you did not run.
 - Final message to the main session: under 200 words, the items done by code, any not done with the reason, the paths you wrote, and anything blocking.
+
+## Addendum: nonpartisanship, brand and craft items (BC)
+
+The report scores 3 of 5, with 3 Must fix and 15 Should fix: `work/handoffs/phase-3/20261113_Round-3-Red-Team-Brand-Craft.md`. Calls D3-1329 and D3-1330 settle where it meets the first three reports.
+
+**Calls on the brand and craft report**
+- **D3-1329. Faults already in hand.** BC-M2 is ST-M1 with AX-M1 (S73's "From", landed in the kit; maker B rebuilds) and ST-M3 with AX-M2 and A-M2 (S68, maker A). BC-M3 is A-M1 (S71's "round 0", maker A). BC-S5 joins call 7 (D3-1325): S16 places every state's code at least as well as board 1 did (CT, TN and VA by name), and the maps' phone codes follow the new `map_labels`. BC-S6 is C-S5 (S79's neighbors). BC-S10's and BC-S9's title words join A-S2, ST-S6 and ST-S7 under the editor.
+- **D3-1330. S73's title compares only what its one rule measures (BC-M1, with ST-S6).** The chart draws one joint fundraising committee per nominee, picked by one rule, so its title may not set the two committees' reach against each other as if it were each nominee's whole reach. The data lead rules the title first: drop the comparison of reach, or have the research lead read every joint fundraising committee of both nominees by the same rule. Maker B and the editor apply the ruling; entry 14.104 follows.
+
+**Items by owner**
+
+| Owner | Items |
+|---|---|
+| Engineer | BC-M2's check (an empty grouped column fails; landed); BC-S2's kit side (S76's width key drawn in an ink a band takes; `flows`, `flow_band`, `width_key`); BC-S5 with call 7; BC-S15 (the rule rail cuts its active entry at 1440 px); BC-S12 where it names you |
+| Maker A | BC-M2's S68 side and BC-M3 (as above); BC-S7 (S69's and S70's cards keep reading order across columns); BC-S8 (S66's main line runs empty after step 1); BC-S10's S72 or S66 side as the report names it; BC-S12 where it names you |
+| Maker B | BC-M1 (S73's title and entry 14.104, under the data lead's ruling); BC-M2's S73 rebuild; BC-S2 (S73's nodes visible; S76's key ink); BC-S9 (S65's title read from the right); BC-S13 (S77's note 1 claims a measured fact the chart does not measure); BC-S14 (S74's diagonal marked); BC-S12 where it names you |
+| Cartographer | BC-S1 (S80 lets land stand in for seats, under the data lead's ruling); BC-S3 (S81 on Charcoal: "No estimate" and "Under $50,000" one swatch); BC-S4 (S82's closest races faintest, under the data lead's ruling, with C-1); BC-S5 (call 7, S16 no worse than board 1); BC-S6 (with C-S5); BC-S10's map side; BC-S11 (words left behind by C-1); BC-S12 where it names you |
+| Editor | BC-M1's words after the ruling; BC-S9, BC-S10, BC-S11 and BC-S13's words, once each maker has reported (D3-669) |
+| Research lead | BC-M1's data side if the data lead rules to read every committee; BC-S9's figures |
+| Data lead | Rulings on BC-M1, BC-S1, BC-S4 and BC-S14; sign-off |
+
+The avoid sketch's colors (BC's question 1) still wait on Dustin (D3-1322).
