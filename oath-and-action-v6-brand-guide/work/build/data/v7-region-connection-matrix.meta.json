@@ -57,7 +57,7 @@
  "universe_or_base": "All 118 connections, counted for every pair of regions",
  "unit": "connections",
  "qualification": "A count says how many connections join two regions, not how strong they are; a plus sign means the two variables move together, not that the link is good",
- "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, as of October 15, 2026, United States. Snapshot of October 15, 2026. Counted by Oath & Action.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, snapshot of October 15, 2026, United States. Counted by Oath & Action.",
  "domain": "all",
  "domain_note": "Every connection in the model",
  "states": []

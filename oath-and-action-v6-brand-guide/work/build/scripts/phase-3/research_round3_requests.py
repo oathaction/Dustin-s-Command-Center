@@ -443,13 +443,50 @@ def rl4(dl, write):
     return [(mp, dump_meta(m))], f'Harris Victory Fund: 7 committees outside the file, ${tot:,.2f}; Trump JFC: none'
 
 
+CMS_5C = 'Total beneficiaries whose coverage was terminated for a procedural or administrative reason'
+CMS_5B = 'Total beneficiaries determined ineligible for Medicaid and CHIP based on the return of a renewal form'
+CMS_HELD = ('States that held procedural terminations reflect these data in metric 5d as pending renewals along with '
+            'renewals that were due but not completed by the end of the reporting period.')
+
+
+def cms_proc(dl, write):
+    """Maker B's RB3-R2: CMS's own words for a procedural termination (metric 5c), quoted into both renewal sidecars.
+    dl holds updated.csv (CMS's file as published) and orig-meta.json (the CAA Reporting Metrics dataset's metadata)."""
+    names = set()
+    with open(dl / 'updated.csv', encoding='utf-8-sig') as f:
+        for r in csv.DictReader(f):
+            names.add(' '.join(r['Metric name '].split()))
+    assert CMS_5C + ' (Metric 5c)' in names and CMS_5B + ' (Metric 5b)' in names, sorted(names)[:3]
+    import re as _re
+    desc = ' '.join(_re.sub(r'<[^>]+>', ' ', json.loads((dl / 'orig-meta.json').read_text())['description']).split())
+    assert CMS_HELD in desc
+    note = (f'Procedural reason, in CMS’s words (read November 13, 2026): its file names metric 5c “{CMS_5C}”, beside '
+            f'metric 5b, “{CMS_5B}”. The description of CMS’s original renewal data (Medicaid and CHIP CAA Reporting '
+            f'Metrics, data.medicaid.gov) adds: “{CMS_HELD}” The file, its data dictionary and both datasets’ '
+            'descriptions give no examples of a procedural reason; CMS’s Data Sources and Metrics Definitions Overview, '
+            'on medicaid.gov, refused this container (HTTP 403) and was not read.')
+    out = []
+    for n in ('cms-medicaid-chip-renewal-outcomes', 'cms-medicaid-chip-renewal-funnel'):
+        mp = OUT / f'{n}.meta.json'
+        m, end = read_meta_any(mp)
+        m['notes'] = set_note(list(m.get('notes') or []), 'Procedural reason, in CMS’s words', note)
+        u = 'https://data.medicaid.gov/api/1/metastore/schemas/dataset/items/ebcfc16f-8291-4c61-82a4-055846d72f3a'
+        if u not in m['url']:
+            m['url'].append(u)
+        t = json.dumps(m, indent=1, ensure_ascii=False) + end
+        assert '—' not in t and '‑' not in t
+        out.append((mp, t))
+    return out, 'metric 5c quoted in both sidecars'
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges', 'rl4'])
+    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges', 'rl4', 'cms_proc'])
     ap.add_argument('--dl', required=True)
     ap.add_argument('--write', action='store_true')
     a = ap.parse_args()
-    files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3, 'judges': judges, 'rl4': rl4}[a.item](Path(a.dl), a.write)
+    files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3, 'judges': judges, 'rl4': rl4,
+                      'cms_proc': cms_proc}[a.item](Path(a.dl), a.write)
     for p, text in files:
         print(f'{p.name}: {put(p, text, a.write)}')
     print(f'{a.item}: {summary}')

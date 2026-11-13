@@ -266,7 +266,7 @@ write('v7-links-with-regions', rows, cols, {
     'title_or_table': f'connections, {len(rows)} links with the region of each end', 'table_id': 'links; layers[].regions[].nodes',
     'observation_period': 'As of October 15, 2026', 'universe_or_base': 'Every connection in the model; every variable sits in one of V7\'s ten regions',
     'unit': 'connections', 'qualification': 'Regions are V7\'s own; V7 gives no domain to 20 variables and two domains to nine, so the matrix groups by region (data lead change 1)',
-    'printed_source_line': f'Source: {PUB}, model connections, {len(rows)} links by region, as of October 15, 2026, United States. Snapshot of October 15, 2026.',
+    'printed_source_line': f'Source: {PUB}, model connections, {len(rows)} links by region, snapshot of October 15, 2026, United States.',
     'domain': 'all', 'domain_note': 'Every connection in the model', 'states': []})
 ORDER = [r['id'] for lay in ('core', 'economy', 'technology') for r in V7['layers'][lay]['regions']]
 cells = []
@@ -287,5 +287,5 @@ write('v7-region-connection-matrix', cells, cols, {
     'title_or_table': f'connections counted by region, ten regions by ten ({filled} of 100 cells filled)', 'table_id': 'links grouped by layers[].regions',
     'observation_period': 'As of October 15, 2026', 'universe_or_base': f'All {len(rows)} connections, counted for every pair of regions',
     'unit': 'connections', 'qualification': 'A count says how many connections join two regions, not how strong they are; a plus sign means the two variables move together, not that the link is good',
-    'printed_source_line': f'Source: {PUB}, model connections counted by region, as of October 15, 2026, United States. Snapshot of October 15, 2026. Counted by Oath & Action.',
+    'printed_source_line': f'Source: {PUB}, model connections counted by region, snapshot of October 15, 2026, United States. Counted by Oath & Action.',
     'domain': 'all', 'domain_note': 'Every connection in the model', 'states': []})

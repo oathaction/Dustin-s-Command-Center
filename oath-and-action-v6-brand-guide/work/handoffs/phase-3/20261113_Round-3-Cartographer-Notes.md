@@ -19,7 +19,7 @@ Done (02:00 UTC by the container's clock), waiting on the editor's words pass an
 | 14.121 | S82 | district-tile-map | 13,038 in the build; 12,378 after the table's last column left (`fragments`, 01:45) | Done |
 | 14.122 | S83 | dot-density-map | 12,380 in the build; 12,374 with RL-2's notes (`fragments`) | Done (RL-2 and DL-E1 condition 4) |
 | 14.123 | S84 | small-multiple-maps | 10,068 | Done |
-| 14.124 | sketch `s-14-124-sketch` | avoid: party colors | entry 7,646, sketch 3,309 | Done; one choice for the data lead (below) |
+| 14.124 | sketch `s-14-124-sketch` | avoid: party colors | entry 7,646, sketch 3,309 in the first build; sketch 3,674 after the contrast fix | Done; one choice for the data lead (below) |
 
 Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map is inside D3-1097's 13,852 bytes with a 1,300-byte frame; S81 (about 13,800), S82 and S83 (about 13,680) are closest.
 
@@ -30,6 +30,7 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 - D3-xxx | Entries 14.114 to 14.116 describe S07, S12 and S16 as board 1 drew them, and cite Rules 14.3, 14.6, 14.7 and 14.9 for the cases those rules now hold | Board 1 drawings change in placement only
 - D3-xxx | Sketch 14.113 draws one origin and four destinations over a plain invented land shape, line width one scale (500 people a pixel) with a key of two widths, arrowheads at the destinations, lines under the place dots and names | A flow map's lesson is the route and its width; one origin keeps the sketch from tangling
 - D3-xxx | Sketch 14.124 draws the same 12 invented places twice: shaded on a two-hue scale whose ends are named "Party A" and "Party B", then as two gray panels by party with margin steps (`data-label="Gray panels by party"`) | The kit has no blue class, Pillar Red marks only one point a sketch, and the guide check fails red within 2 px of Prussian; the guide's diverging pair stands in for party colors, and the caption and entry name red and blue in words. The data lead may rule otherwise (request D-1)
+- D3-xxx | Sketch 14.124 draws its two keys' swatches as rects of their own, apart from the squares' merged paths (3,674 bytes) | The guide check reads the color behind a word from a filled shape's bounding box; a merged path's box reached under "Party B", "Closer" and "Wider margin" and measured them at 2.65 and 1.71 to 1 (the quick check's two failures, at 1440 and 390 px). Measured the check's way after the fix: 5.49 to 1 or more on Newsprint, 7.26 on Charcoal, for every word of both sketches
 - D3-xxx | S82's tile layout is our own, written by `cartographer_round3_derive.py` from the Gazetteer's district centers into `census-gazetteer-2024-cd119-tile-layout` (derived, R2-2): an Albers projection; Dorling circles of area equal to each state's seats, pushed apart where they overlap and pulled together where states border; the squares inside them with every gap filled; an exact transportation solution giving each state its squares; a repair that keeps every state in one piece; an exact assignment of districts inside each state; Alaska and Hawaii apart at the lower left | Data plan row 111: published layouts are study only; every step is deterministic, so `--check` reproduces the file
 - D3-xxx | The layout's settings (34 columns for the lower 48, neighbor pull 0.5, home pull 0.015, border weight 0.8) were picked by eye from about a dozen trials, the first that needed no repair and kept every neighbor on its side | California's 1st sits at the top of its block and its 52nd at the lower right; New York City sits toward New Jersey; Pennsylvania west of New Jersey
 - D3-xxx | S80 and S82 read one derived table, `clerk-house-results-2024-classes`: each race's printed margin (one decimal, half up), its class under ruling (f), its mark (dot for unopposed, ring for a race decided another way) and its tile square | Both maps take one set of classes by construction, and S82's island carries small numbers (17,264 bytes with four-decimal margins and kind words; 12,378 now)
@@ -93,6 +94,8 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 - `python3 -I work/build/scripts/phase-3/cartographer_round3_derive.py`, then `--check`: 0 faults (435 squares on a 38 by 23 grid, no state split; classes 36, 33, 85, 259 and 22 unopposed; 371, 1,138, 1,049 and 585 counties with 1,707 and 182 crossings; 13,040 and 2,402 dots).
 - `--figures`: 0 faults over 80 checks (counted) of the figures in S78 to S84's titles, notes, alts and labels, among them the national figures, class counts, crossings, the Michigan races, the seat totals, the county concentration, the panel counts and V7 claim CL1516's words, read from `work/extract/atlas-v7-data.json`.
 - A mutation test of the figure checks: scratch copies of S79, S81 and S83 with one figure changed each (39 miles, 1,770 counties, 120 counties) failed on all three.
+- The quick guide check (`guide_check.js --quick --no-captures`) on my first strict build: exit 1, two failures, both my avoid sketch's key words under contrast (above); fixed, and each sketch word measured the check's way (`svgUnder`, copied into a scratch script) on both grounds: lowest 5.49 to 1 on Newsprint, 7.26 on Charcoal.
+- `oa-chart.mjs build s80 s81 s82 s83`, sweep on, after the last word, table and edge changes: 4 of 4 PASS, 0 faults.
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 84 chart plates, 0 faults.
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, 11,217,245 bytes, no warning on my plates; chapter 14's share 14,833 bytes a plate for 13 to come.
 - Weights by the kit's `fragments` hook (load-table): S82 12,378 and S83 12,270 after the last changes.
@@ -100,8 +103,7 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 
 ## Not tested
 
-- The quick guide check on the strict build: running since 01:43 (result below when it lands).
-- S80 and S82 rebuilt after their last word and table changes (title numbers in words, S82's table column) with the sweep; the figure checks and weights ran after them.
+- The quick guide check on a second strict build with the fixed sketch: running (result below when it lands).
 - My entries placed in the guide page, by eye; forced colors, print and 200 percent text beyond the kit's emulated checks; screen readers and real devices.
 
 ## Files

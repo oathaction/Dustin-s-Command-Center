@@ -56,7 +56,7 @@
  "universe_or_base": "Every connection in the model; every variable sits in one of V7's ten regions",
  "unit": "connections",
  "qualification": "Regions are V7's own; V7 gives no domain to 20 variables and two domains to nine, so the matrix groups by region (data lead change 1)",
- "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections, 118 links by region, as of October 15, 2026, United States. Snapshot of October 15, 2026.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections, 118 links by region, snapshot of October 15, 2026, United States.",
  "domain": "all",
  "domain_note": "Every connection in the model",
  "states": []
