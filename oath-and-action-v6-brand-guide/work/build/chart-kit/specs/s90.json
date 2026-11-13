@@ -20,7 +20,7 @@
   "measure_line": "Revenue by source, current spending per pupil and enrollment of every public school system in the 50 states and DC, fiscal 2024, the 2023 to 2024 school year",
   "notes": [
     "Federal revenue includes $39.2 billion in one-time COVID-19 relief, which Oath & Action summed over every school system from the Census Bureau’s file of all its data items; it is part of the federal 12 cents.",
-    "The Census Bureau counts every public school system, those a state, county or city runs among them, and leaves out charter schools whose charter a private group holds."
+    "The Census Bureau counts every public school system, including those a state, county or city runs, and leaves out charter schools whose charter a private group holds."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -104,7 +104,7 @@
         ],
         "figure": 6,
         "format": "dollars",
-        "words": "for each pupil went to current spending, which leaves out adult education and other programs outside elementary and secondary schooling."
+        "words": "for each pupil went to current spending, the day-to-day cost of running schools, which leaves out adult education and other programs outside elementary and secondary schooling."
       },
       {
         "rows": [
@@ -142,6 +142,7 @@
     "Six facts from eight rows: fact 2 stands for the three revenue shares (rows 2 to 4); New York's and Idaho's spending (rows 7 and 8) take a fact each. Row 5, the COVID-19 relief sum, prints in the note, as the brief and the data lead's condition ask, and is left out of the cards and the table by where.",
     "Source line: the sidecar's tables_named variant (ruling (c)).",
     "Shares in cents: 45.2341, 43.1987 and 11.5672 percent round to 45, 43 and 12, which sum to 100 (ruling (b)); 88 cents is 45 plus 43 (88.43 percent unrounded).",
-    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S90."
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S90.",
+    "Editor's words (21:17 UTC) applied: the gloss of current spending (H02) and note 2."
   ]
 }

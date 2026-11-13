@@ -1,0 +1,39 @@
+{
+  "id": "14.136",
+  "title": "Use a by-the-numbers panel to answer a question with four to six facts, each naming its table.",
+  "rule": [
+    "Set each fact as one sentence in live text, its figure first and large with its unit held to it, and the table or file it comes from on a line of its own under it. Keep four to six facts, in the order a reader needs them, all in the text’s ink with no fill, bar or color by fact, since a set of facts sets no fact above the others. Round shares so they sum as printed, and put a qualification that touches a figure, such as one-time money inside a total, in a note. On a phone the facts run one a row."
+  ],
+  "use_when": "The reader asks a question that a handful of figures answer together, such as what public schools spend and where the money comes from.",
+  "use_instead": [
+    {
+      "when": "One figure answers the question",
+      "rule": "14.85"
+    },
+    {
+      "when": "A few indicators read against their own past or target",
+      "rule": "14.86"
+    },
+    {
+      "when": "The figures share one measure and a reader compares them",
+      "rule": "14.15"
+    }
+  ],
+  "why": {
+    "text": [
+      "Live text lets a reader search, copy and enlarge each fact, and the table under each figure lets a reader check it in one step. With no fact set above another, the panel reports the set as the record holds it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S90",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.85",
+    "14.86",
+    "14.134"
+  ],
+  "builders": "Form by-the-numbers: node work/build/chart-kit/oa-chart.mjs build s90; encode key, value and source; labels.facts gives each fact its rows, the row whose value prints large with its format, scale and the words around it, and the rest of its sentence. The form writes HTML text, not a drawing (contract R4-3).",
+  "correct": null,
+  "failure": null
+}

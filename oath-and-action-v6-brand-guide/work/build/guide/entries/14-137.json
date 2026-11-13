@@ -1,0 +1,34 @@
+{
+  "id": "14.137",
+  "title": "Use comparison cards to set two or three options side by side on the same fields.",
+  "rule": [
+    "Give each option a card of one width and one height with a thin edge and no fill, its name first, then the same fields in the same order on every card, each a field’s name over its value in live text. Print a field the law leaves empty in the source’s own words, never as a dash, and put a qualification that touches one card’s value under that value. Keep the cards in the order the source gives them, with no color by option, and let them run one a row on a phone."
+  ],
+  "use_when": "The reader weighs two or three options on the same handful of questions, such as how district, bankruptcy and magistrate judges are chosen and how long they serve.",
+  "use_instead": [
+    {
+      "when": "Four or more options against the same questions",
+      "rule": "14.101"
+    },
+    {
+      "when": "Many rows that each carry one value",
+      "rule": "14.133"
+    }
+  ],
+  "why": {
+    "text": [
+      "A card holds one option whole, so a reader learns each before comparing, and the same fields in the same places let the eye move across the cards to compare one field. The table gives the same rows field by field."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S91",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.101",
+    "14.127"
+  ],
+  "builders": "Form comparison-cards: node work/build/chart-kit/oa-chart.mjs build s91; encode key and name; labels.fields gives each field’s column, its name, its format and any line under one card’s value. The form writes HTML text, not a drawing (contract R4-3).",
+  "correct": null,
+  "failure": null
+}

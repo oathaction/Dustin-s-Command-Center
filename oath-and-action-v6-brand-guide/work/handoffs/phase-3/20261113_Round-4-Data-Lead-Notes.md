@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:21 UTC. S87, S88 and S93 signed off whole; S90 and S92 signed off (S90 with MI-3, words); S91 but for its title and note (MI-4); S94 waits on MI-5 and MI-6.
 - 21:17 UTC. Entries 14.135 and 14.139 read: nothing in them for me to change; I sign them off with their specimens. Waiting on: the cards S90 to S92 and S94, S95, S85's parts, MA-9, MI-2, the phone codes, DR-265's captures and 15.19 to 15.21.
 - 21:17 UTC. IM-E5 ruled: S95's card turns the ranks across, with five conditions.
 - 21:16 UTC. Maker A’s six entries and both sketches signed off.
@@ -205,6 +206,18 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 
 ## Sign-offs
 
+### Second reads: MA-9, MA-10, MI-2 and the cards S90, S91, S92 and S94 (21:21 UTC)
+
+Built to my scratch with the sweep on, kit pages 1440, 390, 296 and 256 px on both grounds (`build s87 s88 s93 s90 s91 s92 s94`, 21:19): S87, S88, S93, S90, S91 and S92 PASS with 0 faults; S94 FAIL 2 (256 px). The share per plate printed by this build is 14,927 (guide build of 21:15), up from 12,495; it moves with each strict build, so makers read it from the latest one and none passes 15,000.
+
+- **S87: signed off whole.** MA-9: at 256 px "Both, 23.8 million, 7.1%" sits on a leader from the lens (looked at Newsprint 256).
+- **S88: signed off whole.** MA-10: `notes_internal` names the form's 1 percent lens check, the kit's radius check and the derive script's check.
+- **S93: signed off whole.** MI-2 cleared (PASS at 256 px on both grounds); its words are those I read by script at 21:13.
+- **S90, by the numbers: signed off, with one words item.** Looked at: Newsprint 1440. Every figure equals the file rounded, by my reading against `census-school-system-finances-2024`: $994.9 billion (994,922,042 thousand); 45, 43 and 12 cents (45.2341, 43.1987, 11.5672 percent, summing to 100); $17,619 a pupil; New York $31,918, the most, and Idaho $11,060, the least, among 51 places counted in full (no margin, so the ranking stands); 46.4 million students; the $39.2 billion relief in the note. The charter school note matches the sidecar's universe. Each fact names its table. **MI-3:** the title and card say "spent $17,619 a pupil". That is the Bureau's current spending, which, as I understand its definition, also leaves out capital outlay and interest on debt, not only adult education. The research lead confirms from the documentation the sidecar cites (`school24doc.docx`), and the card then says what current spending leaves out in the Bureau's words. A words change on the documentation's terms needs no second read from me.
+- **S91, comparison cards: signed off but for the title and one note.** Looked at: Newsprint 1440. The cards hold the same six fields in the file's order, print 677, 345 and 593 with the territorial courts' four named in the district card, and print no president or party. **MI-4:** the title must be true of every seat it describes. "District judges hold office for life" is false for the four territorial district judges, who serve ten-year terms, and "eight years" is the full-time term only (part time is four). Name the exception and the full-time term, for example "Apart from four in the territories, district judges serve for life once the President appoints them and the Senate consents; other judges choose bankruptcy judges for 14 years and full-time magistrate judges for eight." The editor sets the words and the length. In the note, say why the courts' 345 bankruptcy judgeships exceed the table's 316: the courts' count includes temporary judgeships Congress authorized outside the table (the research lead's words).
+- **S92, step-by-step: signed off.** Looked at: Newsprint 1440. Each limit is the statute's and prints as the law's limit (10 days to decide on expediting; 20 working days plus up to 10; at least 90 days to appeal and 20 working days to decide it). The branches (steps 4 and 7) take open discs and "Optional". The note quotes V7 Issue I013's documented summary word for word, and the federal-only note is there. The note and the source line both say state laws differ; the editor may keep one.
+- **S94, calendar: two items.** Looked at: Newsprint 1440. The marks match the file: 7 filled (consequence in law) and 9 open (none stated), 16 events on 13 days, April 15 and June 15 showing both kinds. The 7508A note is as ruled. **MI-5:** the title counts events as dates. "Federal law sets 16 budget and tax dates" is 16 deadlines on 13 days, and "the six tax dates" are six deadlines on five days. Count deadlines, or say both, for example "Federal law sets 16 budget and tax deadlines on 13 days of 2027, and attaches a consequence to seven: the six tax deadlines and the start of the fiscal year." **MI-6:** at 256 px the month strip's words overflow their box on both grounds (the build's fault).
+
 ### Maker A's entries 14.79 to 14.84 and the two sketches: signed off (21:16 UTC)
 
 Read all six entries and both sketch files; checked by script.
@@ -277,15 +290,16 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - **R-1, S85's source line (ruling (c)).** A variant of `v7-union-membership.meta.json`'s printed source line without "snapshot of October 15, 2026", since the grade line prints the atlas's date once (the brief's call 1), keeping the release, its date, the universe and the 11-month limitation. Name it, for example, `snapshot_in_grade`, and tell maker A.
 - **R-2, the in-force dates (ruling (c)).** For S89, S91, S92 and S94, confirm that each statute section drawn reads the same in the Office of the Law Revision Counsel's current release (uscode.house.gov) as in the 2024 edition the files quote, or name any section you cannot confirm: 42 U.S.C. 5170 and 5191; 28 U.S.C. 133, 134, 152, 631 and 633; 5 U.S.C. 552; 2 U.S.C. 631; 31 U.S.C. 1102, 1105 and 1341; 26 U.S.C. 6072, 6081, 6651, 6654, 7503 and 7508A. The grade lines' "as in force on" dates stand on that check; a section you cannot confirm makes its grade line read "as the U.S. Code’s 2024 edition prints it", and I re-rule.
 - **R-3, a V7.1 row (ruling (f)).** The atlas's two lists of which reforms sit on which loop disagree on 12 loops (`loops[].reforms` against `reforms[].loops`: R3, R4b, R6, R7, R8, R10, R12, R13, R15, R16, R18 and B4; each time reforms from R-37 on, or R-03 and R-06, name a loop whose record omits them). A new row under DR-264's section, if it is not already listed; the guide changes nothing.
+- **MI-3 (S90).** From `school24doc.docx`, what the Bureau's current spending leaves out (capital outlay and interest on debt, if the document says so), in its words, for the infographics maker.
 - **15.20 and 15.19's facts (ruling (f)).** Read by script into your notes for the systems designer, as listed under (f).
 
 ### To maker A
 
-- MA-1 to MA-8 closed or applied. Open: **MA-9** (S87's "Both" count leadered out at 256 px) and **MA-10** (name S88's area check in `notes_internal`). S85 waits on the engineer's parts.
+- MA-1 to MA-10 closed. S85 waits on the engineer's parts.
 
 ### To the infographics maker
 
-- MI-1 closed. Open: **MI-2** (S93's line through "SECTION 1. SHORT TITLE." at 256 px). S94's note on 26 U.S.C. 7508A as ruled under R-2's answer.
+- MI-1 and MI-2 closed. Open: **MI-3** (S90's current spending defined, with the research lead), **MI-4** (S91's title true of every seat; the bankruptcy note), **MI-5** (S94's title counts deadlines), **MI-6** (S94 at 256 px). S94's note on 26 U.S.C. 7508A as ruled under R-2's answer.
 
 ### To the systems designer
 
@@ -306,6 +320,8 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 
 - 21:08 to 21:13 UTC: `build s85 s86 s87 s88 s89 s93 --widths 1440,390,296,256` with the sweep (S86, S88, S89 PASS; S85 FAIL 30, the icon and chip parts; S87 FAIL 2 and S93 FAIL 2, both at 256 px), and S87, S89, S93 again after their specs changed (same results). By script on the exported SVGs: S86's radii and key at four widths; S88's three areas and overlap against the counts at four widths (within 0.12 percent) and the uninsured circle's gap; S93's 36 word pieces against the page file; S89's source line in the built HTML. Looked at: S85 Newsprint 390; S86 Newsprint 1440, Charcoal 256; S87 Newsprint 390, Charcoal 256 grayscale; S88 Newsprint 256, Charcoal 1440 grayscale; S89 Charcoal 390; S93 Newsprint 1440.
 - Read the research lead's answers to R-1 to R-3 and the current text of 26 U.S.C. 7508A(a) and (c) in its download; maker A's six entries and both sketch files (geometry by script); the infographics maker's entries 14.135 and 14.139; IM-E5.
+
+- 21:19 UTC: `build s87 s88 s93 s90 s91 s92 s94 --widths 1440,390,296,256` with the sweep (six PASS, S94 FAIL 2 at 256 px). Looked at: S87 Newsprint 256; S90, S91, S92 and S94 Newsprint 1440. Read S90's and S88's `notes_internal`; S94's 16 marks counted against the file; S90's figures against its file; V7 Issue I013 against S92's note; S90's universe against its sidecar.
 
 ## Not tested
 

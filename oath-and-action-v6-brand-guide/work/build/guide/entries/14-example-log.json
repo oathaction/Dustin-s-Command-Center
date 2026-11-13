@@ -7,17 +7,17 @@
   3,
   4
  ],
- "examples": 103,
+ "examples": 107,
  "by_domain": {
-  "D01": 5,
+  "D01": 6,
   "D02": 12,
   "D03": 7,
   "D04": 13,
-  "D05": 5,
+  "D05": 6,
   "D06": 6,
   "D07": 10,
-  "D08": 15,
-  "D09": 13,
+  "D08": 16,
+  "D09": 14,
   "D10": 8
  },
  "all_domains": 9,
@@ -27,6 +27,7 @@
   "CT": 1,
   "FL": 5,
   "GA": 1,
+  "ID": 1,
   "IL": 2,
   "MA": 1,
   "MI": 2,
@@ -35,7 +36,7 @@
   "NC": 1,
   "ND": 2,
   "NJ": 1,
-  "NY": 4,
+  "NY": 5,
   "OH": 2,
   "PA": 1,
   "TN": 1,
@@ -836,11 +837,35 @@
    "source": "s42.json"
   },
   {
-   "example": "A governor or a tribal government’s chief executive asks the President for a disaster declaration, within 30 days of the disaster under the law, and a declaration opens federal help to people and to governments.",
+   "example": "A governor or a tribe’s chief executive has 30 days under the law to ask the President to declare a disaster, which opens federal help to people and governments.",
    "domain": "D04",
    "states": [],
    "rule": "14.135",
    "source": "s89.json"
+  },
+  {
+   "example": "Public school systems spent $17,619 a pupil in fiscal 2024, and 88 cents of each dollar they took in came from state and local sources.",
+   "domain": "D09",
+   "states": [
+    "NY",
+    "ID"
+   ],
+   "rule": "14.136",
+   "source": "s90.json"
+  },
+  {
+   "example": "District judges hold office for life once the President appoints them and the Senate consents, and other judges choose bankruptcy and magistrate judges for terms of 14 years and eight years.",
+   "domain": "D05",
+   "states": [],
+   "rule": "14.137",
+   "source": "s91.json"
+  },
+  {
+   "example": "A federal agency has 20 working days under the law to answer a request for its records, and a requester it turns down can appeal, ask for mediation or sue.",
+   "domain": "D01",
+   "states": [],
+   "rule": "14.138",
+   "source": "s92.json"
   },
   {
    "example": "The first page of Public Law 119-12 gives its number, the Congress that passed it, where it starts in the Statutes at Large, the day it was approved and the bill it began as.",
@@ -848,6 +873,13 @@
    "states": [],
    "rule": "14.139",
    "source": "s93.json"
+  },
+  {
+   "example": "Federal law sets 16 budget and tax dates in 2027, and seven of them, the six tax dates and the start of the fiscal year, carry a consequence in law.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.140",
+   "source": "s94.json"
   }
  ]
 }

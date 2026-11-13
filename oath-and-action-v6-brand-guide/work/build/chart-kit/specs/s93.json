@@ -9,7 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: Public Law 119-12’s first page, as the Government Publishing Office prints it",
-  "title": "The first page of Public Law 119-12 gives its number, the Congress that passed it, where it starts in the Statutes at Large, the day it was approved and the bill it began as.",
+  "title": "Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as.",
   "measure_line": "The parts of the first page of Public Law 119-12, the TAKE IT DOWN Act, redrawn with the page’s own words",
   "notes": [
     "The drawing stops after section 1; section 2 begins lower on the same page.",
@@ -174,7 +174,8 @@
     "Layout checked against the page itself: govinfo PLAW-119publ12.pdf, page 1, fetched November 13, 2026 to the maker's scratch, rendered and read with pdftotext -layout.",
     "Row 11, the margin short title, added by the research lead (IM-4), sits above row 10 in the margin; the parts are numbered in the order they sit on the page (the sort puts 11 before 10), so the drawing and the list print 10 for row 11 and 11 for row 10, and the table's Number column maps them the same way.",
     "Source line: the sidecar's date_on_page variant (IM-3); grade line as ruling (c); the approval date prints only on the page drawing and its callout.",
-    "Data lead (20:59 UTC) accepted numbered markers with no leader lines, and the redraw in Inter with the drawing's own line breaks."
+    "Data lead (20:59 UTC) accepted numbered markers with no leader lines, and the redraw in Inter with the drawing's own line breaks.",
+    "Editor's words (21:03 UTC) applied: title and grade line; the alt prints a hyphen in 119-12."
   ],
   "source_line": "Source: Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page, United States, from govinfo, U.S. Government Publishing Office. Retrieved November 12, 2026."
 }

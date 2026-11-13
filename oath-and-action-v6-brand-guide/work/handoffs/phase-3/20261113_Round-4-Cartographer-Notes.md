@@ -44,6 +44,18 @@ Proposed, each tested in a scratch mirror of the kit (nothing in `work/build/` c
 
 **Placed at 21:01 UTC** (the tile LANDED at 20:57), from the draft below, unchanged. Drafted in scratch first: `scratch/draft/s12.json` changes `s12.json` in three places only: `"stage_min": 618` where `"stage": 1024` stood; the alt's desk clause reads "At a desk each square holds the state’s code over its figure, with an arrow beneath as long as the state’s shift ..." (was "holds an arrow as long as the state’s shift ..."), the scroll clause and every other word kept, since the frame still scrolls below a 618 px column; and one `notes_internal` line. `phone_note` stays: the kit does not print it, and its words still hold. Built against a copy of the engineer's mirror kit (20:57 UTC): PASS, 0 faults, sweep on; drawings at 1024, 723, 618, 618 (the 558 px column, framed) and 326 px; 13,206 bytes as the guide places it, about 13,956 with its frame, under 15,000 (ruling (d) gives 14,076 by the page measure). Looked at: 618 px on Newsprint (every tile holds its code, figure and arrow) and the 558 px column's frame (the hint above it; ME, NH and RI past the edge until the reader scrolls).
 
+**In the guide page** (a strict build of my own in a scratch mirror of the repository, 21:15 UTC, exit 0, 11,283,656 bytes; measured in Chromium at each window, both grounds, 0 page errors, `scratch/tools/guide_s12.cjs`):
+
+| Window | Drawing | Frame's box | Shows | Scrolls | Tab stop and hint |
+|---|---|---|---|---|---|
+| 1,440 | 723 | 722.67 | 723 | 0 | none |
+| 1,104 | 618 | 617.98 | 618 | 0 | none |
+| 1,103 | 618 | 617.25 | 617 | 1 | none (see below) |
+| 1,024 | 618 | 558 | 556 | **62** | yes, with 1 px edges |
+| 390 | 326 (phone) | 326 | 326 | 0 | none |
+
+DR-261 holds to the pixel: the stacked tile in the column from a 1,104 px window, a 618 px frame that scrolls 62 px at 1,024. **For the engineer, an observation, not a fault:** where the column falls less than 1 px short of 618 (1,103 px windows), the frame scrolls 1 px with no tab stop or hint, since `stage_stop` needs 1 px of overflow before it calls the frame scrolling. The pixel hidden is the last column's tile edge, inside the cell's 1 px spare; no code, figure or arrow is cut.
+
 ## Pixels changed, for board 3
 
 (Filled in as changes land.)

@@ -9,11 +9,11 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the U.S. Code and the Treasury’s rule, 26 CFR 1.6081-4, as in force on November 9, 2026",
-  "title": "Federal law sets 16 budget and tax dates in 2027, and seven of them, the six tax dates and the start of the fiscal year, carry a consequence in law.",
+  "title": "Of the 16 budget and tax dates federal law sets for 2027, seven carry a consequence in law, the six tax dates and the start of the fiscal year.",
   "measure_line": "Dates federal law sets in calendar 2027 for the budget process and for individual income tax, with what the law attaches to missing each one",
   "notes": [
     "The Budget Act’s timetable, 2 U.S.C. 631, attaches no consequence to its dates. A tax date on a weekend or a legal holiday moves to the next business day (26 U.S.C. 7503); none does in 2027.",
-    "The IRS may postpone tax dates for people affected by a federally declared disaster, a significant fire or a terrorist or military action, and, at a governor’s request, by a disaster the state declares (26 U.S.C. 7508A)."
+    "The IRS may postpone tax dates for people affected by a federally declared disaster, a significant fire or a terrorist or military action, and, at a governor’s written request, by a disaster the state declares (26 U.S.C. 7508A)."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -102,6 +102,7 @@
     "No date moves under 26 U.S.C. 7503 (moved_to_next_business_day false on every row; no 2027 tax date on a weekend, by script). Budget dates stand where they fall (May 15 a Saturday, February 15 Washington’s Birthday), as 2 U.S.C. 631 sets them.",
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S94.",
     "Note 2 as the data lead ruled under R-2 (21:09 UTC): 26 U.S.C. 7508A in force, with all four causes, after Public Laws 119-29 and 119-64; no 2027 date depends on it.",
-    "The year mark draws 224 px wide, the art box at a 256 px window, so it never scales and never overflows; its squares are 6 px."
+    "The year mark draws 224 px wide, the art box at a 256 px window, so it never scales and never overflows; its squares are 6 px.",
+    "Editor's words (21:17 UTC) applied: title and note 2 with \"written\", the law's word in subsection (c)."
   ]
 }

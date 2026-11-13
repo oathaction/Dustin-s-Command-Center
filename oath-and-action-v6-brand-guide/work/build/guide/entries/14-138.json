@@ -1,0 +1,39 @@
+{
+  "id": "14.138",
+  "title": "Use a step-by-step to show what a reader can do, in order.",
+  "rule": [
+    "Number each step a reader takes and set it in live text: the action in bold, what it takes, the time the law allows as the law’s limit and the section it rests on. Join the numbers with a line in the text’s ink, and set an optional step on an outlined number with words that say when it applies. Name who acts where it is not the reader, and say in a note where the steps stop applying, such as at a state line."
+  ],
+  "use_when": "The reader asks how to do something themselves and what they can do if the answer is no, such as how to ask a federal agency for its records.",
+  "use_instead": [
+    {
+      "when": "How long each step can take for one person, with its branches",
+      "rule": "14.112"
+    },
+    {
+      "when": "Steps across levels of government, with who acts at each",
+      "rule": "14.135"
+    },
+    {
+      "when": "One case’s place in its steps",
+      "rule": "14.88"
+    }
+  ],
+  "why": {
+    "text": [
+      "Numbers carry the order to every reader, by sight, in a screen reader’s list or in print, and the law’s limit beside each step tells a reader when they can press. Text keeps every step searchable and copyable."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S92",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.88",
+    "14.112",
+    "14.135"
+  ],
+  "builders": "Form step-by-step: node work/build/chart-kit/oa-chart.mjs build s92; encode key, path, step, what, who, limit and basis; labels.branches opens each optional step with its words, labels.you names the reader’s own who value, labels.limit_words prints each limit and labels.stop ends each line. The form writes HTML text, not a drawing (contract R4-3).",
+  "correct": null,
+  "failure": null
+}

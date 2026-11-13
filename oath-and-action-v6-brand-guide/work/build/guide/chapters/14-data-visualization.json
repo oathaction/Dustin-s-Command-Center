@@ -5742,6 +5742,121 @@
    }
   },
   {
+   "id": "14.136",
+   "title": "Use a by-the-numbers panel to answer a question with four to six facts, each naming its table.",
+   "rule": [
+    "Set each fact as one sentence in live text, its figure first and large with its unit held to it, and the table or file it comes from on a line of its own under it. Keep four to six facts, in the order a reader needs them, all in the text’s ink with no fill, bar or color by fact, since a set of facts sets no fact above the others. Round shares so they sum as printed, and put a qualification that touches a figure, such as one-time money inside a total, in a note. On a phone the facts run one a row."
+   ],
+   "why": {
+    "text": [
+     "Live text lets a reader search, copy and enlarge each fact, and the table under each figure lets a reader check it in one step. With no fact set above another, the panel reports the set as the record holds it."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form by-the-numbers: node work/build/chart-kit/oa-chart.mjs build s90; encode key, value and source; labels.facts gives each fact its rows, the row whose value prints large with its format, scale and the words around it, and the rest of its sentence. The form writes HTML text, not a drawing (contract R4-3).",
+   "related_rules": [
+    "14.85",
+    "14.86",
+    "14.134"
+   ],
+   "entry": true,
+   "use_when": "The reader asks a question that a handful of figures answer together, such as what public schools spend and where the money comes from.",
+   "use_instead": [
+    {
+     "when": "One figure answers the question",
+     "rule": "14.85"
+    },
+    {
+     "when": "A few indicators read against their own past or target",
+     "rule": "14.86"
+    },
+    {
+     "when": "The figures share one measure and a reader compares them",
+     "rule": "14.15"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s90",
+    "caption": "What do public schools spend, and where does the money come from?"
+   }
+  },
+  {
+   "id": "14.137",
+   "title": "Use comparison cards to set two or three options side by side on the same fields.",
+   "rule": [
+    "Give each option a card of one width and one height with a thin edge and no fill, its name first, then the same fields in the same order on every card, each a field’s name over its value in live text. Print a field the law leaves empty in the source’s own words, never as a dash, and put a qualification that touches one card’s value under that value. Keep the cards in the order the source gives them, with no color by option, and let them run one a row on a phone."
+   ],
+   "why": {
+    "text": [
+     "A card holds one option whole, so a reader learns each before comparing, and the same fields in the same places let the eye move across the cards to compare one field. The table gives the same rows field by field."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form comparison-cards: node work/build/chart-kit/oa-chart.mjs build s91; encode key and name; labels.fields gives each field’s column, its name, its format and any line under one card’s value. The form writes HTML text, not a drawing (contract R4-3).",
+   "related_rules": [
+    "14.101",
+    "14.127"
+   ],
+   "entry": true,
+   "use_when": "The reader weighs two or three options on the same handful of questions, such as how district, bankruptcy and magistrate judges are chosen and how long they serve.",
+   "use_instead": [
+    {
+     "when": "Four or more options against the same questions",
+     "rule": "14.101"
+    },
+    {
+     "when": "Many rows that each carry one value",
+     "rule": "14.133"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s91",
+    "caption": "How do the three kinds of federal trial judges differ: district, bankruptcy and magistrate judges?"
+   }
+  },
+  {
+   "id": "14.138",
+   "title": "Use a step-by-step to show what a reader can do, in order.",
+   "rule": [
+    "Number each step a reader takes and set it in live text: the action in bold, what it takes, the time the law allows as the law’s limit and the section it rests on. Join the numbers with a line in the text’s ink, and set an optional step on an outlined number with words that say when it applies. Name who acts where it is not the reader, and say in a note where the steps stop applying, such as at a state line."
+   ],
+   "why": {
+    "text": [
+     "Numbers carry the order to every reader, by sight, in a screen reader’s list or in print, and the law’s limit beside each step tells a reader when they can press. Text keeps every step searchable and copyable."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form step-by-step: node work/build/chart-kit/oa-chart.mjs build s92; encode key, path, step, what, who, limit and basis; labels.branches opens each optional step with its words, labels.you names the reader’s own who value, labels.limit_words prints each limit and labels.stop ends each line. The form writes HTML text, not a drawing (contract R4-3).",
+   "related_rules": [
+    "14.88",
+    "14.112",
+    "14.135"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how to do something themselves and what they can do if the answer is no, such as how to ask a federal agency for its records.",
+   "use_instead": [
+    {
+     "when": "How long each step can take for one person, with its branches",
+     "rule": "14.112"
+    },
+    {
+     "when": "Steps across levels of government, with who acts at each",
+     "rule": "14.135"
+    },
+    {
+     "when": "One case’s place in its steps",
+     "rule": "14.88"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s92",
+    "caption": "How do I ask a federal agency for its records, and what can I do if it says no?"
+   }
+  },
+  {
    "id": "14.139",
    "title": "Use an annotated illustration to show what each part of a document tells a reader.",
    "rule": [
@@ -5774,6 +5889,41 @@
    "correct": {
     "specimen": "s-14-s93",
     "caption": "What does the first page of a law tell a reader?"
+   }
+  },
+  {
+   "id": "14.140",
+   "title": "Use a calendar to show the dates that matter in a year and what each one carries.",
+   "rule": [
+    "Draw the year as twelve months in order, each date a square on its day, filled where the law attaches a consequence and open where it states none, with the squares of a busy day stacked. Under it, list every date in order in live text: the day and weekday, what falls due, who acts where the words do not say, and the kind of date in words beside its consequence. Say in a note which dates carry no stated consequence and what can move a date."
+   ],
+   "why": {
+    "text": [
+     "The year shows at a glance where the dates crowd, and the list gives each one exactly. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a penalty."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form calendar: node work/build/chart-kit/oa-chart.mjs build s94; encode date, event, who, consequence and weekday; labels.none gives the words a consequence opens with where the law states none, labels.tags the two kinds in words, labels.months the year’s month names and labels.key the line over the year. The list is HTML text and the year one drawing beside it (contract R4-3).",
+   "related_rules": [
+    "14.38",
+    "14.39"
+   ],
+   "entry": true,
+   "use_when": "The reader asks which dates in a year carry obligations and which of them carry a consequence, such as the federal budget and tax dates.",
+   "use_instead": [
+    {
+     "when": "Events across years, with what happened at each",
+     "rule": "14.38"
+    },
+    {
+     "when": "When the parts of one law take effect",
+     "rule": "14.39"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s94",
+    "caption": "Which dates does federal law set for the budget and for taxes in 2027?"
    }
   }
  ],
@@ -5821,10 +5971,6 @@
   "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ],
  "planned_rules": [
-  "14.136",
-  "14.137",
-  "14.138",
-  "14.140",
   "14.141"
  ]
 }

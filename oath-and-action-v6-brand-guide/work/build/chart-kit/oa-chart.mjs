@@ -380,7 +380,13 @@ export function kit_parts() {
   const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js') && !card_file(f)).sort();
   const core = ['metrics.js', 'kit.js', 'parts.js'].map(f => minify(fs.readFileSync(path.join(KIT, f), 'utf8'))).join('');
   return { core, geo: minify(fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')), forms: Object.fromEntries(forms.map(f => [f, minify(fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'))])),
-    css: fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.trim()).filter(Boolean).join('\n') };
+    css: min_css(fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8')) };
+}
+// the page's kit.css: comments out, then the white space round { } ; , > and after a colon (round 4 weight: 2,175 bytes less;
+// the browser's parse of the two gives the same 204 rules). Safe while no quoted string holds those characters, which the
+// self-test checks
+export function min_css(t) {
+  return t.replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.trim()).filter(Boolean).join('\n').replace(/\s*([{};,>])\s*/g, '$1').replace(/:\s+/g, ':').replace(/;}/g, '}');
 }
 export function kit_scripts() {
   const k = kit_parts();
@@ -1506,6 +1512,11 @@ async function self_test() {
       pass(d1.join() === '2026-11-12,2026-11-13' && d2.join() === '2026-10-30,2026-11-03' && d3 === null && own.file === 'own-file.csv' && frozen.geo === true && !!none.fault,
         'AX-S6: retrieval dates read from a source line; --data read first, work/build/data/ after'); }
   }
+  // round 4: the page's CSS minify is safe only while no quoted string in kit.css (outside comments) holds { } ; , > or ": "
+  const qs = (fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').match(/"[^"]*"|'[^']*'/g) || []).filter(q => /[{};,>]|: /.test(q));
+  const mc = min_css('.a > .b , .c { color: red ; }\n@media (x: y) { .d { e: f; } }') === '.a>.b,.c{color:red}@media (x:y){.d{e:f}}';
+  console.log(`${!qs.length && mc ? 'pass' : 'FAIL'} the page's kit.css minify keeps every rule (no quoted string it could change${qs.length ? ': ' + qs[0] : ''})`);
+  if (qs.length || !mc) bad++;
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);

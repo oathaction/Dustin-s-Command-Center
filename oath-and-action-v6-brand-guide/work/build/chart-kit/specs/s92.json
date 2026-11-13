@@ -9,10 +9,10 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Freedom of Information Act, 5 U.S.C. 552, as in force on November 12, 2026",
-  "title": "A federal agency has 20 working days under the law to answer a request for its records, and a requester it turns down can appeal, ask for mediation or sue.",
+  "title": "A federal agency has 20 working days under the law to answer a records request, and a requester it turns down can appeal, ask for mediation or sue.",
   "measure_line": "What a requester does to get records from a federal agency under 5 U.S.C. 552, in order, with the longest time the law allows at each step",
   "notes": [
-    "Federal agencies take weeks or months to answer requests for public records, as our systems atlas records in Issue I013.",
+    "Federal agencies take weeks or months to answer requests for public records, as our systems atlas records in Issue I013 “Public records arrive too late to be useful”.",
     "The steps cover federal agencies only; each state has its own public records law."
   ],
   "credit": "Chart: Oath & Action",
@@ -119,6 +119,7 @@
   "notes_internal": [
     "Infographics maker, round 4. Data plan row 124, rule 14.138. Domain D01 from the sidecar (V7 I013).",
     "Steps in the file's order; rows 4 and 7 are the optional steps (path branch), with an outlined disc and their words (ruling (b)). Who acts prints only where it is not the requester (rows 5 and 7).",
-    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S92."
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S92.",
+    "Editor's words (21:17 UTC) applied: title and note 1 with I013's own title."
   ]
 }

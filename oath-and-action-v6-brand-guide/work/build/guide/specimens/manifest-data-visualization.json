@@ -1181,6 +1181,30 @@
   "illustrative": false,
   "notes": "S89, process-explainer: the chart kit draws it from work/build/chart-kit/specs/s89.json (contract R1-C3)"
  },
+ "s-14-s90": {
+  "chapter": "14",
+  "rule": "14.136",
+  "width_px": null,
+  "alt": "Six facts on what public school systems took in and spent in fiscal 2024, each with the Census Bureau table it comes from.",
+  "illustrative": false,
+  "notes": "S90, by-the-numbers: the chart kit draws it from work/build/chart-kit/specs/s90.json (contract R1-C3)"
+ },
+ "s-14-s91": {
+  "chapter": "14",
+  "rule": "14.137",
+  "width_px": null,
+  "alt": "Three cards compare district, bankruptcy and magistrate judges on who appoints them, for how long, what they hear and how many seats there are.",
+  "illustrative": false,
+  "notes": "S91, comparison-cards: the chart kit draws it from work/build/chart-kit/specs/s91.json (contract R1-C3)"
+ },
+ "s-14-s92": {
+  "chapter": "14",
+  "rule": "14.138",
+  "width_px": null,
+  "alt": "Eight steps a requester takes to get records from a federal agency, two of them optional, each with the time the law allows.",
+  "illustrative": false,
+  "notes": "S92, step-by-step: the chart kit draws it from work/build/chart-kit/specs/s92.json (contract R1-C3)"
+ },
  "s-14-s93": {
   "chapter": "14",
   "rule": "14.139",
@@ -1188,5 +1212,13 @@
   "alt": "A drawing of the first page of Public Law 119-12 with its eleven parts numbered, from the running head and the law’s number at the top to the short title section and the two notes in its margin.",
   "illustrative": false,
   "notes": "S93, annotated-illustration: the chart kit draws it from work/build/chart-kit/specs/s93.json (contract R1-C3)"
+ },
+ "s-14-s94": {
+  "chapter": "14",
+  "rule": "14.140",
+  "width_px": null,
+  "alt": "The 16 budget and tax dates federal law sets in 2027, each marked by whether the law attaches a consequence to missing it.",
+  "illustrative": false,
+  "notes": "S94, calendar: the chart kit draws it from work/build/chart-kit/specs/s94.json (contract R1-C3)"
  }
 }

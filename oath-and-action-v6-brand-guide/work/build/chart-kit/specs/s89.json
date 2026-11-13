@@ -9,15 +9,15 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Stafford Act and FEMA’s rule, 44 CFR part 206, as in force on November 9, 2026",
-  "title": "A governor or a tribe’s chief executive has 30 days under the law to ask the President to declare a disaster, which opens federal help to people and governments.",
+  "title": "Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help.",
   "measure_line": "The steps from a disaster to federal help in 42 U.S.C. 5170 and 5191 and 44 CFR 206.33 to 206.40, 206.112 and 206.202, with who acts at each step and the longest time the law allows",
   "notes": [
     "A tribal government’s chief executive may ask the President directly. An emergency declaration brings narrower help than a major disaster declaration, and the President can answer an emergency request only with an emergency declaration or a denial.",
-    "Times are limits in law, not measured waits, and FEMA may extend several of them."
+    "FEMA may extend several of these limits."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A diagram of the steps from a disaster to federal help, read in order, with who acts at each step. Step 1, local governments and the state respond, and the governor puts the state’s emergency plan into effect. Step 2, the state and FEMA assess the damage together, with local officials. Step 3, the governor, or a tribal government’s chief executive, asks the President for a major disaster declaration within 30 days of the incident; for an emergency or the threat of one, the request is for an emergency declaration, within 5 days after the need becomes apparent and no later than 30 days. Step 4, FEMA reviews the request and recommends. Step 5, the President declares a major disaster or an emergency, or denies the request. Step 6, FEMA names the areas and the kinds of help. Then two steps side by side: the state asks for public assistance for each local government or other applicant within 30 days of the designation, and residents register for individual help within 60 days of the declaration.",
+  "alt": "A diagram of the steps from a disaster to federal help, read in order, with who acts at each step. Step 1, local governments and the state respond, and the governor puts the state’s emergency plan into effect. Step 2, the state and FEMA assess the damage together, with local officials. Step 3, the governor, or a tribal government’s chief executive, asks the President for a major disaster declaration within 30 days of the incident; for an emergency or the threat of one, the request is for an emergency declaration, within five days after the need becomes apparent and no later than 30 days. Step 4, FEMA reviews the request and recommends. Step 5, the President declares a major disaster or an emergency, or denies the request. Step 6, FEMA names the areas and the kinds of help. Then two steps side by side: the state asks for public assistance for each local government or other applicant within 30 days of the designation, and residents register for individual help within 60 days of the declaration.",
   "table": {
     "caption": "The steps from a disaster to federal help, in reading order",
     "columns": [
@@ -83,7 +83,7 @@
     ]
   },
   "chart_notes": [
-    "Each column is a level of government, or residents, named at its head, and each step’s box spans the levels that act at it. Numbered boxes edged in the text’s ink are the path from a request to the help a declaration names, in order: a denial ends it at step 5, and steps 7 and 8 follow where FEMA names that help for an area. The box with a gray edge is the request some cases make in place of step 3."
+    "Each column is a level of government, or residents, named at its head, and a step’s box spans the levels that act at it. Boxes edged in the text’s ink run in order from the disaster to the help a declaration names; the box with a gray edge is the emergency request some cases make in place of step 3. A denial at step 5 ends the path, and steps 7 and 8 follow only where FEMA names that help for an area."
   ],
   "phone": "differs",
   "phone_note": "Where the four columns cannot each hold 150 px, the steps run down one column, each naming who acts; the emergency request sits under step 3, set in from the line.",
@@ -192,7 +192,8 @@
     "Actors in words: no Civic Line drawing means a governor, a tribe, FEMA or the President, and CL-026 never stands for the President (round 4 call 7; Rule 10.6).",
     "Data lead rulings (a) to (c), 20:46 UTC: no named mark; main steps 1.5 px subject-ink edges and links, the branch in the context ink named \"Or, for an emergency\"; lanes named in words, gridline-ink rules; each limit printed as the law's limit; grade line as (c). Words still waiting on the editor's pass.",
     "Data lead MI-1 (20:59 UTC): the chart note no longer says every declaration takes every numbered step; a denial ends the path at step 5, and steps 7 and 8 follow where FEMA names that help.",
-    "Source line: the sidecar's in_force_in_grade variant (IM-1), since the grade line prints the in-force date once (call 1)."
+    "Source line: the sidecar's in_force_in_grade variant (IM-1), since the grade line prints the in-force date once (call 1).",
+    "Editor's words (first look, 21:03 UTC) applied: title, chart note, note 2 and the alt's \"five days\"."
   ],
   "source_line": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, United States. Retrieved November 12, 2026. Times are limits in law, not measured waits."
 }
