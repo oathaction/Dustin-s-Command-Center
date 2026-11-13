@@ -164,7 +164,7 @@ November 13, 2026, from 04:36 UTC (clock read from `date -u`). Brief: `work/hand
 
 ### Summary
 
-In progress. Order: items no ruling and no kit change touches first (ST-M4's list column and phone note, ST-S1, ST-S3, ST-S5, ST-S7, ST-S12, ST-S4's S82 and S84 notes, AX-S3, C-S5, C-S6, SK-S2, Q2's unequal places); then C-M1, C-S1 and C-S2 once the engineer's `map_labels` change lands (call 7); C-M2 with the engineer (call 6); ST-S9's sort once the engineer adds it. Waiting on Dustin, left as they are: the download words (call 3), the avoid sketch's colors (call 4), S16's range words (call 5).
+Done, 05:30 UTC. Every cartographer item in the ST, AX, CD and BC reports is in, under the data lead's rulings and the main session's calls: ST-M4, ST-S1, ST-S3, ST-S4, ST-S5, ST-S7, ST-S12; AX-S3; C-M1, C-M2, C-S1, C-S2, C-S3, C-S5, C-S6, SK-S2; BC-S1, BC-S3, BC-S4, BC-S5, BC-S6, BC-S10, BC-S11, BC-S12; Q2's unequal places; the editor's words for my fields. ST-S9 (C-S4, AX-S4) landed in the kit with no spec change. Waiting on Dustin, left as they are: the download words (call 3), the avoid sketch's colors (call 4), S16's range words (call 5). Open: C-E7 (S84's "No state law" needs the kit to typeset a pivot's cells), D-4 to D-6 for the data lead's sign-off. The nine specs I touched pass the kit with the sweep; S82 sits under call 10's 14,106 with its frame after dropping "Seats" at the main session's word.
 
 ### Items done, by code
 
@@ -232,7 +232,7 @@ In progress. Order: items no ruling and no kit change touches first (ST-M4's lis
 - **C-E7, AX-S3: typography in a pivot's text cells.** `K.table_html` and `lean_table` print a pivot's cells with `K.fmt` and no `K.typeset`, so S84's `typography.replace` ("..." to "No state law") never reaches its table; the read-back's `dv` already compares a text cell to its typeset value. Please typeset a pivot's text cells (format `text`) as an ungrouped table's text columns are; S84 needs no other change. Until it lands, S84's table prints "..." while note 4 says "No state law" (the editor and data lead know).
 
 **To the research lead**
-- **C-R2:** `clerk-house-results-2024-classes` gained two columns this pass, `close_seat` and `party` (sidecar columns in the CSV's order since about 05:00; your 125-table check passed after that). Please rerun the data check over my four derived files after my last derive run (05:10 or later), and add nothing to the ledger unless the new columns need it.
+- **C-R2:** `clerk-house-results-2024-classes` gained two columns this pass, `close_seat` and `party` (sidecar columns in the CSV's order since about 05:00; your 125-table check passed after that). Please rerun the data check over my four derived files (last written about 05:00; nothing changed since), and add nothing to the ledger unless the new columns need it.
 
 **To the editor**
 - Applied your "Words for the cartographer, review fix pass" in full, with one change: entry 14.124's why says "Rule 14.7’s failure case" for "failure plate", since the guide labels that plate "Failure case: do not publish" and "plate" is a builders' word. Also mine for you to read: S78's alt (ST-S5), S78's, S81's and S83's Puerto Rico sentences, S82's note 4 and `codes_note`, S83's note 1, S84's notes 3 and 4 and `dc_unplaced`, S80's new note and alt sentence, S12's alt, S82's ring key, entry 14.117's last sentence (the phone's tile grid).
@@ -241,4 +241,21 @@ In progress. Order: items no ruling and no kit change touches first (ST-M4's lis
 
 ### Tested, review fix pass
 
+- `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 s12 --widths 1440,390,296,256`, sweep on (05:09 to about 05:13 UTC): 8 PASS, S16 FAIL with three sweep faults on DC's label at 560 to 640 px (the forced leader found no clear place; the engineer's `build --all` saw the same). Fixed (the leader runs from the circle's edge, a code with no place on a forced leader takes the plain search, and a desk code with no clear place is named in the note); `build s16` again with the sweep: PASS, 0 faults. `build s78` again after the tile codes change: PASS, 0 faults. `build s79` again after cutting dead code: PASS, 0 faults. Nine check files read, one a spec.
+- `oa-chart.mjs check s82` with the sweep after dropping "Seats": PASS, 0 faults, 12,985 bytes as the guide places it, about 13,735 with its frame.
+- Weights from the kit's own line: S78 8,678; S79 3,554; S80 6,141; S81 12,833; S82 12,985 (after "Seats" left); S83 12,545; S84 10,803; S16 9,950; S12 13,153; each with the kit's 750-byte frame under 14,106.
+- Probes of the drawings by script (the kit's draw, no browser): S84's DC square and its name in all four panels at all 465 widths from 256 to 720 px; S78's codes at every width from 256 to 720 px (every state and DC coded from 328 px; the tiles carry none under 292 px, with the kit's note); S80's district numbers at 256, 296, 358, 390, 480, 558, 600, 656 and 720 px (all numbered); S82's codes notes at 480 to 720 px; S16's far labels and unlabeled codes at 326, 358, 390, 420, 479, 560 to 640 and 869 px.
+- Looked at by eye: S78 at 1440 px on Newsprint, at 390 px on Charcoal (the tile grid) and at 256 px on Charcoal in grayscale; S80 at 1440 px on Newsprint and at 256 px on Charcoal in color and in grayscale (the Detroit inset); S81 at 390 px on Charcoal (the hatched "No estimate"); S82 at 1440 px on Newsprint and at 390 px on Charcoal (band-ink ghosts, "Alaska at large"); S84 at 256 px on Charcoal (DC in each panel); S79 at 1440 px on Newsprint and in grayscale and at 390 px on Charcoal (frame, Kern County's leader); S16's northeast at 1440 px on Newsprint and its map at 390 px on Charcoal, beside board 1's 390 px capture; S12 at 1440 px (the 1024 px stage, every arrow drawn); sketch 14.124 on Newsprint, on Charcoal and on Charcoal in grayscale at twice size.
+- `cartographer_round3_derive.py` (last written about 05:00, after the sidecar's column order fix), `--check` 0 faults, `--figures` 0 faults; a mutation test of five new figure checks on scratch copies (S78's 11 states, S81's 549, S83's 2,426, S82's six members, S84's mark key): all five caught.
+- A words scan by script of S78 to S84, S16, S12, entries 14.115, 14.117, 14.119, 14.120 and 14.124 and the sketch: no em dash, no U+2011, no straight apostrophe or quotation mark in reader words.
+- `phase3_ch14_build.py`: 128 rules, 114 entries, 84 chart plates, 0 faults (05:16).
+- `guide_build.py --strict --out <scratch>/guide.html` (05:16): exit 0, 11,255,388 bytes; chapter 14's share per plate 11,776 for 13 to come.
+- Sketch 14.124: 3,796 bytes; the first `<desc>` holds `sketch_alt`'s first sentence (the chapter build checks it).
+
 ### Not tested, review fix pass
+
+- Forced colors, print, 200 percent text and screen readers beyond the kit's emulated checks; the new hatch, tile grid, inset and band ghosts in a contrast theme by eye.
+- The guide page itself by eye: my plates were looked at in the kit's pages only.
+- S12's sideways scroll and its tab stop in the guide (the engineer's stage code).
+- S84's "No state law" in its table, which waits on C-E7.
+- S83 by eye this pass (only its notes changed).

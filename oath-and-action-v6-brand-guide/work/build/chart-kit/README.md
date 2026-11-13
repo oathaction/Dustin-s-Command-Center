@@ -25,7 +25,8 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 
 | File | What it does |
 |---|---|
-| `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
+| `kit.js` | The renderer, the code that turns a spec and its rows into a drawing, reads a page's rows back and checks its layout. A page reaches it by one name, `OAChart`. It is all the guide's page carries of the kit's core |
+| `kit-build.js` | The builder's half (round 3 fix pass): the figure's words and table as HTML, atlas IDs in chips, `OAChart.render` for a plain page, and the copy of `words.json`. Node and a plain page load it after `kit.js`; the guide's page never carries it, since its figures are written at build |
 | `parts.js` | Drawing parts the forms share (since round 3 also nodes, links, trees and flows, and the map parts with `K.geo`): keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`); since round 2's fix pass, words set clear of a line (`clear_label`) and a listing's row names and values in one weight (`row_name`, `row_value`). Each part's call is in the comment above it |
 | `forms/*.js` | One file per chart form, 85 files (November 13, 2026, round 3). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
@@ -347,6 +348,7 @@ A page opened from disk can't read a file by itself, so paste the data file's te
 </style>
 <script src="metrics.js"></script>
 <script src="kit.js"></script>
+<script src="kit-build.js"></script>                      <!-- the figure, its table and OAChart.render -->
 <script src="parts.js"></script>
 <script src="geo.js"></script>                            <!-- only for the map forms -->
 <script src="forms/ranked-bar.js"></script>               <!-- the form your spec names; bubble-scatter.js also needs scatter-named.js first -->

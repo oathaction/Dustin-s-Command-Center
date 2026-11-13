@@ -198,55 +198,6 @@
       return o;
     });
   };
-  function in_range(v, rg) {
-    if (v === null || v === undefined || v === '') return false;
-    var num = function (x) { return typeof x === 'number' || (typeof x === 'string' && /^-?\d+(\.\d+)?$/.test(x)); };
-    var cmp = function (a, b) { return num(a) && num(b) ? Number(a) - Number(b) : String(a) < String(b) ? -1 : String(a) > String(b) ? 1 : 0; };
-    return !('from' in rg && cmp(v, rg.from) < 0) && !('to' in rg && cmp(v, rg.to) > 0);
-  }
-  K.select = function (spec, rows) {
-    var w = spec.where || {};
-    var out = rows.filter(function (r) {
-      for (var k in w) {
-        // where: {column: value or [values]} keeps those rows; {column: {not: value or [values]}} leaves them out;
-        // {column: {from: a, to: b}} keeps a to b, both ends kept, compared as numbers when both are, else as text (R-B3)
-        if (w[k] && typeof w[k] === 'object' && !Array.isArray(w[k]) && ('from' in w[k] || 'to' in w[k])) {
-          if (!in_range(r[k], w[k])) return false;
-          continue;
-        }
-        var neg = w[k] && typeof w[k] === 'object' && !Array.isArray(w[k]) && 'not' in w[k];
-        var want = neg ? [].concat(w[k].not) : Array.isArray(w[k]) ? w[k] : [w[k]];
-        if ((want.map(String).indexOf(String(r[k])) >= 0) === neg) return false;
-      }
-      return true;
-    });
-    var pv0 = spec.table && spec.table.pivot;
-    var after = function () {
-      if (!pv0) return out;
-      var rk = function (r) { return [].concat(pv0.row).map(function (k) { return String(r[k]); }).join('\u0001'); };
-      var keys = [], cols = [], at = {};
-      out.forEach(function (r) { var a = rk(r), b = String(r[pv0.column]); if (keys.indexOf(a) < 0) keys.push(a); if (cols.indexOf(b) < 0) cols.push(b); at[a + '\u0000' + b] = r; });
-      var res = [];
-      keys.forEach(function (a) { cols.forEach(function (b) { if (at[a + '\u0000' + b]) res.push(at[a + '\u0000' + b]); }); });
-      return res;
-    };
-    (spec.sort || []).slice().reverse().forEach(function (s) {
-      var dir = s.order === 'desc' ? -1 : 1;
-      // A12 (second pass): "values" gives an order of its own, [{"field": "reform_group", "values": ["G1", "G2"]}]; a value
-      // it does not list sorts after those it does, in the data's order
-      var order = Array.isArray(s.values) ? s.values.map(String) : null;
-      var rank = function (v) { var i = order.indexOf(String(v)); return i < 0 ? order.length : i; };
-      out = out.map(function (r, i) { return [r, i]; }).sort(function (a, b) {
-        var x = a[0][s.field], y = b[0][s.field];
-        if (order) return (rank(x) - rank(y)) * dir || a[1] - b[1];
-        if (x === y) return a[1] - b[1];
-        if (x === null) return 1;
-        if (y === null) return -1;
-        return (x < y ? -1 : 1) * dir;
-      }).map(function (p) { return p[0]; });
-    });
-    return after();
-  };
   K.time = function (v) {
     // a date, month or year as a number of years, so one axis serves all three
     if (isnum(v)) return v;

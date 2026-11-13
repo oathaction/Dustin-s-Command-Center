@@ -222,7 +222,7 @@ To others:
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:11 UTC. The container restarted at about 05:08 UTC; every file had been written and committed, and the checks below the restart were run again from the start. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:30 UTC. The container restarted at about 05:08 UTC; every file had been written and committed, and the checks below the restart were run again from the start. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
 
 ### Summary
 
@@ -241,6 +241,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **A-E8 LANDED (maker A):** a desk's phone part reads every row as `c.all_rows`; S69's part reads "20 standing committees" where it read "2". Told the main session.
 - **BC-S5:** the kit side is call 7's `map_labels`. S16 draws through `bubble-map.js`'s own search, not `map_labels`; its codes at board 1's places are the cartographer's `labels.offsets_phone` (board 1's 358 px drawing is kept only as a picture, `work/boards/phase-3/round-0/specimens/s16-newsprint-390.png`, and git keeps no copy of the 2017 geometry to redraw it).
 - **BC-S12** names no engineer item.
+- **Call 10, the kit part LANDED (05:24 UTC), at the main session's request:** the builder's half of `kit.js` (the figure's HTML, the table equivalent, chips, `K.render`, `K.select`, tokens from CSS and words.json's copy) moved whole into a new `kit-build.js` that the guide's page never carries. The part fell from 533,444 to 510,262 bytes, under the 512,498 it held when the pass began, and the share per plate rose from 11,777 to 13,595. Figures under "Weight".
 - **Found and fixed in passing (2):** carrying `typography` in the island showed that five plates (S39, S60, S63, S66, S71) had drawn their words on the guide's page without their curled quotes and replacements, since the island never carried the key; they now draw as in Node. The island carries `typography` only where it changes a word the drawing prints (read at the artboard and at 358 px), so S67, S68, S69, S70, S72 and S84 pay nothing for it.
 - **BC-S4 (kit side) LANDED:** a stroke role `band` (`.oac-s-band`, GrayText in forced colors), so S82's ghosts on Charcoal can take the band ink with no token change. Told the main session for the cartographer.
 - **C-M2's third route measured (for the data lead):** the stacked tile (code and figure on two lines, the arrow beneath) does not fit at 558 px. A tile there is 41 px; by the tile's own metrics (13 px lines at baselines 16 and 32, the arrow's 4.5 px half head under the figure, 6 px foot) the three need about 48 px, which a drawing gives from about 642 px. Not drawn; an estimate from the form's layout. The fixed 1024 px stage stands, as call 6 and the data lead's alignment (04:43) order it. S12's spec now carries `"stage": 1024` (the cartographer's).
@@ -265,6 +266,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 | BC-S15 | `snapTop` keeps the current rule whole | `work/build/guide/shell/guide-shell.js` |
 | A-E8 | `c.all_rows` for a desk's phone part | `kit.js` (`Ctx`, `K.draw`, `K.mount`) |
 | AX-S6, call 8 | README round 3 | `README.md` |
+| Call 10 | the builder's half moved off the page | `kit-build.js` (new), `kit.js` (`K._p`), `oa-chart.mjs` (`load_kit`, `kit_scripts_full`), `tools/kit_snapshot.mjs`, `README.md` |
 
 ### Routine calls, review fix pass
 
@@ -288,6 +290,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - D3-xxx | Where the side list's first line sits cut under its top and showing it whole would push the current rule under the foot, the cut line leaves the top instead | BC-S15 asks for the current rule whole; round 2's BC S17 asks for no line cut at the top; both hold
 - D3-xxx | A desk's phone part passes every row as `c.all_rows`, drawn rows unchanged | A-E8: a group's count must read the whole set while the part draws its first rows
 - D3-xxx | A kit self-test fixture that copied a derived sidecar becomes a plain table | Since `--data`, a derived sidecar's sources are found in `work/build/data/`, and the fixture's invented publisher names none of them
+- D3-xxx | The code the guide's page never runs (the figure's HTML, the table equivalent, chips, `K.render`, `K.select`, tokens from CSS, words.json's copy) lives in `kit-build.js`, loaded by Node and a plain page after `kit.js`, never by the page | Call 10 and the main session's request: the page carries only what draws, reads back or checks itself; moved whole, so every drawing and figure is equal (924 of 924)
 - D3-xxx | The README points a designer to Rule 13.1's Estimate for a model's figures and keeps a survey's published estimates a Finding | The data lead's ruling on AX-S6
 
 ### Contract changes, review fix pass
@@ -303,6 +306,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - `oa-chart.mjs build` and `check` take `--data DIR`.
 - `Ctx.all_rows` (`K.draw`'s `all_rows` option): every row where the kit draws only some.
 - `checks.js` exports `retrieved_dates(line)`.
+- **`kit-build.js`** holds `K.figure`, `K.lookup_html`, `K.table_html`, `K.table_rows`, `K.table_groups`, `K.group_cell`, `K.cell_text`, `K.lean_carry`, `K.chips`, `K.fill_words`, `K.lead`, `K.render`, `K.select`, `K.tokens_from_css` and `K.WORDS`. Load order in Node and on a plain page: `metrics.js`, `kit.js`, `kit-build.js`, `parts.js`, `geo.js`, the forms. A script that builds a figure in a browser loads `kit-build.js`; the guide's page does not. `kit.js` shares `esc`, `word`, `fixed`, `group`, `signed` and `PHONE_VIEW_PX` through `K._p`.
 
 ### Requests sent
 
@@ -343,28 +347,49 @@ No export lacks a column its words promise. Phase 5's package can ship these exp
 - **A-E8:** S69's phone part drawn from its first 20 rows prints "20 standing committees" with every row passed, "2" without.
 - **`build --all --no-png --no-sweep`** at 04:50 (84 of 84, 84 check files) and **`build --all --no-png` with the sweep** at 05:02 to 05:05 UTC: 84 PASS, 84 check files counted, 2 min 57 s; four AX-M2 warnings, all older specs whose words map some values by design (S18, S19, S32, S59).
 - **`build --all --no-png` with the sweep after the restart**, 05:11 to 05:15 UTC (clock read): 84 specs, 84 check files counted, 83 PASS, 4 min 4 s. **S16 fails three sweep lines** ("MD" and "DC" overlap, no clear place for DC, a circle half under "DC", at 20 to 38 widths between 560 and 640 px): the cartographer was changing S16 as the build ran (`forms/bubble-map.js` written 05:12:59, `specs/s16.json` 05:05:32, its new `lead`, `prefer` and `prefer_phone` keys for C-S2 and BC-S5). No part of my kit reaches `bubble-map.js`'s placement, and the snapshot above shows S16's drawings unchanged by my kit. The same four warnings as before.
+- **After the move to `kit-build.js`:** the kit's self-test, every planted fault caught (129 lines, none missed); the snapshot before and after, 924 of 924 equal; `build` with captures on twelve specs and then nine (S38's lookup among them), 0 faults; a plain page in Chromium; **`build --all --no-png` with the sweep, 05:25 to 05:29 UTC: 84 specs, 84 check files counted, 84 PASS** (S16 passes after the cartographer's rebuild), 3 min 58 s, the same four warnings; `guide_build.py --self-test` 32 of 32 scenarios, 328 of 328 expectations; `guide_charts.py --self-test` every planted fault caught; strict build 05:25, exit 0, no warning.
 - **`guide_build.py --self-test`** after the restart: 32 of 32 scenarios, 328 of 328 expectations. **`guide_charts.py --self-test`**: every planted fault caught. **`geo_build.py --check`**: current. **`phase3_ch14_build.py --check`**: 87 of 87 files current.
 - **Strict builds** to scratch: 04:59 (exit 0, no warning); 05:00 (exit 1, only S73's layout guard while maker B redrew it); 05:09 after the restart (exit 0, no warning), measured above.
 - **AX-S2:** `sketch_names` on the avoid sketch's file gives the second title its period and leaves the first, whose desc the caption holds, as it was.
 
-### Weight (call 10), strict build at 05:09 UTC (clock read)
+### Weight (call 10): what the pass added to the kit part, and the builder's half moved off the page
 
-`guide_build.py --strict --out .../round-3-fix/engineer/g3/guide.html`: exit 0, no warning; `phase3_ch14_build.py --check` 87 of 87 files current before it.
+**What the 20,946 bytes carried** (the main session's figure: the page's "chart kit" part from 512,498 to 533,444). Measured part by part as `kit_parts()` builds the part (each file minified by `tools/minify.mjs`, the style without its comments), between the kit as this pass started (`base/`, 04:35 UTC: 512,690 by this measure) and as it stood at 05:16 (533,540):
+
+| Part | At the start | Mid-pass | Growth | What it carries |
+|---|---|---|---|---|
+| Forms (85 files, the makers' and the cartographer's) | 369,588 | 386,045 | +16,457 | `choropleth.js` +4,153 (S78's phone tiles and labels), `bubble-map.js` +2,466 (S16's code places), `district-tile-map.js` +2,127 (S82's codes and ghosts), `district-map.js` +2,038 (S80's inset), `adjacency-matrix.js` +1,164, `hierarchy-tree.js` +1,076, `org-chart.js` +1,014, `who-decides.js` +817, `journey-map.js` +601, `locator-map.js` +444, seven more +554 |
+| `parts.js` (mine) | 45,613 | 47,736 | +2,123 | `map_labels`' widest interior point and `widest_spots` (call 7), `width_key`'s band (BC-S2), merged fills' `region`, the key's `fc` and `forced_edge` (AX-S1) |
+| `kit.js` (mine) | 73,925 | 75,475 | +1,550 | the stage and `K.draw_width` with its tab stop and name (call 6), `c.all_rows` (A-E8), `fc` classes (AX-S1), the name sort (ST-S9), `K.fill_words` (ST-M2), two words in `K.WORDS` |
+| `kit.css` (mine) | 16,462 | 17,182 | +720 | the stage frame, `region`, `muted`, `forced`, `.oac-s-band` |
+| `metrics.js` | 7,102 | 7,102 | 0 | |
+
+So the makers' forms carried 16,457 and my files 4,393.
+
+**Moved off the page (05:18 to 05:24 UTC).** The guide's page builds every figure, its words and its table at build time and then only draws, reads its rows back from the printed table and island, and checks its own layout. Everything else in `kit.js` ran only in Node or on a plain page opened from disk, so it moved whole, unchanged, into a new file, `work/build/chart-kit/kit-build.js`, that Node (`load_kit`), the snapshot tool and a plain page load after `kit.js`, and the page bundle (`kit_parts().core`, metrics, kit and parts) never carries:
+- the figure's HTML (`K.figure`, `K.lookup_html`); the table equivalent (`K.table_html`, `K.table_rows`, `K.table_groups`, `K.group_cell`, `K.cell_text`, `K.lean_carry`, the lean and grouped tables); atlas IDs in chips (`K.chips`, `K.fill_words`); `K.lead`;
+- the plain page's `K.render` and the rows it chooses (`K.select`; a page's island already holds its rows chosen and ordered);
+- `K.tokens_from_css` (Node reads tokens.css with it); words.json's copy (`K.WORDS`; the guide's page sets `OAChart.words` from words.json, and `word()` now reads the copy only where it is loaded).
+- What stays on the page: drawing (`K.draw`, the context, the forms and parts), the layout guard (it writes the warning count the page check reads), the knockouts, forced colors, the stage, the island's inflater and `K.rows_from_table` with `K.unformat` (read back), `K.typeset` (words in drawings), the lookup, the table frame and print slices. `kit.js` shares six helpers with the builder's half through `K._p`.
+- Proved: the kit's self-test (every planted fault caught); the snapshot, before and after the move, on the 84 specs frozen at 05:20, 924 of 924 drawings and figures equal; `build` with captures on S38 (the lookup), S37, S15, S41, S57, S69, S73, S81, S12, S01, S06 and S59 at 1440 and 390 px on both grounds, which runs the page bundle without `kit-build.js`: 0 faults (no page error, parity, rows read back, grouped rows counted); a plain page per the README with `kit-build.js` rendering S03 in Chromium, no page error.
+
+**Weight after the move, strict build at 05:25 UTC** (`.../g5/guide.html`, exit 0, no warning; `phase3_ch14_build.py --check` 87 of 87 current):
 
 | Measure | Bytes | Against |
 |---|---|---|
-| Page | 11,256,325 | 16 MB file limit |
+| Page | 11,231,743 | 16 MB file limit |
 | Projected page | 15,044,827 | 15.5 MB: 455,173 of room |
-| Chapter 14 with the kit | 2,248,373 | 2,803,941 stop |
-| Chapter 14 as built | 1,580,983 | |
-| Renderer, the "chart kit" part (without the geometry) | 534,273 | 512,348 at 02:41; grown to 97 forms, 578,741 |
+| Chapter 14 with the kit | 2,223,791 | 2,803,941 stop |
+| Chapter 14 as built | 1,580,412 | |
+| **Renderer, the "chart kit" part** | **510,262** | 512,498 at the pass's start; 533,444 mid-pass; grown to 97 forms, 554,635 |
 | Map geometry | 133,117 | 250,000: 116,883 of room |
 | Rules 14.1 to 14.14 with the opener | 175,678 | 212,288 |
 | Chapter 15 | 307,066 | 0.60 MB ceiling |
-| **Share per plate for the 13 still to come** | **11,697** | 14,089 at 02:41; 12,694 at 04:59 |
+| **Share per plate for the 13 still to come** | **13,595** | 11,777 by the main session's mid-pass build; 14,106 before the pass |
 
-- **Round 3's 20 plates on the page with their frames** (each `<figure class="plate">` whole, by script): S69 14,556; S82 14,466; S81 13,597; S73 13,500; S83 13,393; S67 13,225; S71 12,452; S74 11,813; S84 11,570; S70 10,975; S66 10,210; S68 9,902; S78 9,556; S75 7,936; S72 7,849; S77 7,787; S76 7,700; S80 6,940; S65 6,689; S79 4,376 (208,492 in all). **Two pass call 10's 14,106: S69 by 450 and S82 by 360** (maker A's and the cartographer's; S82's list is the data lead's D-3). None passes 15,000. The board 1 maps: S07 14,351, S12 14,028 (with its stage), S16 10,700.
-- **Why the share fell 2,392 bytes a plate since 02:41:** the renderer grew 21,925 bytes. Mine is 3,673 of it, minified (`kit.js` and `parts.js` 126,640 to 130,313: the widest-point search, the stage, the sort, the checks' hooks, the forced-colors classes) and about 600 of style; the forms grew 17,286 (369,588 to 386,874, the makers' fix pass), which also lifts the form average the projection counts for each form to come (the report's 4,447 for 87 registered forms). The chapter as built grew with the makers' and the cartographer's changes. My share of the 13 plates' loss is about 330 bytes each.
+- The share stays 511 bytes under 14,106 because the forms grew 16,457 bytes, and the projection counts that growth again in the average of each form still to come (4,437 for 87 registered forms); the chapter as built also grew with the plates' own fixes.
+- **Round 3's 20 plates on the page with their frames** (each `<figure class="plate">` whole, by script): S69 14,556; S82 13,915; S81 13,597; S73 13,500; S83 13,393; S67 13,136; S71 12,452; S74 11,813; S84 11,570; S70 10,946; S66 10,210; S68 9,878; S78 9,556; S72 7,961; S75 7,936; S77 7,787; S76 7,700; S80 6,940; S65 6,689; S79 4,376 (207,911 in all). **S69 passes call 10's 14,106 by 450** (maker A's); none passes 15,000. The board 1 maps: S07 14,351, S12 14,028 with its stage, S16 10,700.
+- At 05:09 (before the move) the part was 534,273 and the share 11,697; that build's figures are superseded by these.
 
 ### An accident, recorded
 
@@ -384,4 +409,4 @@ At about 04:55 UTC I ran `data_round0_build.py --help` to read its usage. The sc
 ### Files, review fix pass
 
 - Modified: `work/build/chart-kit/kit.js` (`first`, the name sort, `fc` classes, `K.fill_words`, the stage and `K.draw_width`, `c.all_rows`, the words), `parts.js` (`map_labels`' widest point and `widest_spots`, `width_key`'s band, merged fills' `region`, the key's `fc` and `forced_edge`), `checks.js` (empty column, words warning, retrieval dates, `--data`'s order, `retrieved_dates` exported), `oa-chart.mjs` (warnings, the page's empty column check, the stage in Node and the sweep, `--data`, the weight line, the national figure warning, `typography` and `stage` in the island, forced-only marks out of SVG exports, self-test cases), `kit.css` (the stage frame, `region`, `muted`, `forced`, `.oac-s-band`), `words.json` (`data_file`, `stage_scroll`), `README.md` (round 3); `work/build/scripts/phase-2/guide_build.py` (`sketch_names`' period); `work/build/scripts/phase-3/phase3_ch14_build.py` (`{data_file}`); `work/build/guide/shell/guide-shell.js` (`snapTop`); these notes.
-- Created: none in the repository. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/` (`base/` frozen kit and specs, snapshots, kit builds `k1` to `k3`, `all0`, `all1`, `fc`, `fc2`, `typo`, `stage`, `p03`; strict builds `g1` to `g3`; probe scripts).
+- Created: `work/build/chart-kit/kit-build.js` (the builder's half of the kit, call 10). Also modified: `work/build/chart-kit/tools/kit_snapshot.mjs` (loads `kit-build.js`); `work/build/scripts/phase-3/progress_round_1_build.py` and `progress_round_2_build.py` (`kit-build.js` in the kit's change signature; not rerun). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/` (`base/` frozen kit and specs, snapshots, kit builds `k1` to `k3`, `all0`, `all1`, `fc`, `fc2`, `typo`, `stage`, `p03`; strict builds `g1` to `g3`; probe scripts).

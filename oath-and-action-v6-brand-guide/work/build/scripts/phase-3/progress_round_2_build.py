@@ -200,7 +200,7 @@ def page_frame_sig(page):
 
 
 # ------------------------------------------------------------------------------------------------------- the kit
-KIT_SHARED = ['kit.js', 'parts.js', 'kit.css', 'metrics.js', 'geo.js', 'words.json', 'checks.js', 'oa-chart.mjs', 'tools/minify.mjs']
+KIT_SHARED = ['kit.js', 'kit-build.js', 'parts.js', 'kit.css', 'metrics.js', 'geo.js', 'words.json', 'checks.js', 'oa-chart.mjs', 'tools/minify.mjs']
 
 
 def kit_sig(sid, shared):
