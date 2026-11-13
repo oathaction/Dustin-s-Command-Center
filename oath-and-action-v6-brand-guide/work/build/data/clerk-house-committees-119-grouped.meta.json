@@ -1,0 +1,65 @@
+{
+ "file": "clerk-house-committees-119-grouped.csv",
+ "kind": "derived",
+ "publisher": "Office of the Clerk, U.S. House of Representatives",
+ "title_or_table": "House member and committee data (MemberData.xml), committees and subcommittees with party ratios",
+ "table_id": "MemberData.xml, 119th Congress, 2nd session",
+ "url": [
+  "https://clerk.house.gov/xml/lists/MemberData.xml"
+ ],
+ "observation_period": "119th Congress, as the file stands (November 3, 2026)",
+ "geography": "U.S. House of Representatives",
+ "universe_or_base": "Every committee and subcommittee the Clerk lists, with the seats each party holds as the file’s ratio gives them",
+ "unit": "committees; seats",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Clerk’s file published November 3, 2026",
+ "qualification": "Ratios are seats on each committee as the Clerk’s file gives them on its publish date; vacancies and new assignments change them. The file names majority and minority, not parties: the majority is Republican in the 119th Congress, as the file’s title information says.",
+ "columns": {
+  "committee_code": {
+   "type": "id",
+   "description": "Clerk’s committee code"
+  },
+  "committee": {
+   "type": "text",
+   "description": "committee name"
+  },
+  "committee_type": {
+   "type": "category",
+   "description": "standing, select, or other type as the file gives it"
+  },
+  "subcommittee_code": {
+   "type": "id",
+   "description": "subcommittee code; empty on the committee’s own row"
+  },
+  "subcommittee": {
+   "type": "text",
+   "description": "subcommittee name; empty on the committee’s own row"
+  },
+  "majority_seats": {
+   "type": "integer",
+   "description": "seats held by the majority party",
+   "unit": "seats"
+  },
+  "minority_seats": {
+   "type": "integer",
+   "description": "seats held by the minority party",
+   "unit": "seats"
+  },
+  "subcommittees": {
+   "type": "integer",
+   "description": "the committee’s count of subcommittees in this file, on each of its rows",
+   "unit": "subcommittees"
+  }
+ },
+ "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, committee and subcommittee list (MemberData.xml), 119th Congress, file of November 3, 2026. Retrieved November 12, 2026. Seat ratios as the file gives them that day.",
+ "ledger_row": "pending: the research lead’s data check (R2-2); every value copied from clerk-house-committees-119 (P7-204)",
+ "domain": "D04",
+ "states": [],
+ "notes": [
+  "Committees by type: {'standing': 20, 'select': 3, 'joint': 4}; subcommittees: 109."
+ ],
+ "derived_from": [
+  "clerk-house-committees-119.csv"
+ ],
+ "derivation": "Every row of clerk-house-committees-119 as stored, with one column added: subcommittees, the count of the rows that share the row’s committee_code and carry a subcommittee_code. Script: work/build/scripts/phase-3/maker_a_round3_derive.py."
+}

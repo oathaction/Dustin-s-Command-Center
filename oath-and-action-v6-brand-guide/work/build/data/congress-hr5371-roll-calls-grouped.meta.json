@@ -1,0 +1,79 @@
+{
+ "file": "congress-hr5371-roll-calls-grouped.csv",
+ "kind": "derived",
+ "publisher": "U.S. Senate and Clerk of the U.S. House of Representatives",
+ "title_or_table": "Roll call votes on H.R. 5371, Continuing Appropriations, Agriculture, Legislative Branch, Military Construction and Veterans Affairs, and Extensions Act, 2026 (Public Law 119-37)",
+ "table_id": "Senate vote 618, 119th Congress, 1st session; House roll call 285, 2025",
+ "url": [
+  "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00618.xml",
+  "https://clerk.house.gov/evs/2025/roll285.xml",
+  "https://api.congress.gov/v3/bill/119/hr/5371/actions?format=json&limit=250"
+ ],
+ "observation_period": "November 10, 2025 (Senate) and November 12, 2025 (House)",
+ "geography": "United States Congress, every member recorded",
+ "universe_or_base": "Every senator and representative recorded on each vote, with how each voted, as each chamber’s record lists them",
+ "unit": "one row per member per vote",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Vote records as posted by each chamber, read November 12, 2026",
+ "qualification": "The Senate voted on passage of the bill as amended; the House voted on agreeing to the Senate’s amendment, the vote that sent the bill to the President. Party and state as each record prints them; the Senate lists independents as I. Members not voting are rows with that vote.",
+ "columns": {
+  "chamber": {
+   "type": "category",
+   "description": "Senate or House"
+  },
+  "vote": {
+   "type": "text",
+   "description": "the vote, as each chamber numbers it"
+  },
+  "vote_date": {
+   "type": "date",
+   "description": "date of the vote"
+  },
+  "question": {
+   "type": "text",
+   "description": "the question, in the record’s words"
+  },
+  "result": {
+   "type": "text",
+   "description": "the result, in the record’s words"
+  },
+  "member_id": {
+   "type": "id",
+   "description": "Senate LIS member ID or House Bioguide ID"
+  },
+  "member": {
+   "type": "text",
+   "description": "member’s name as the record prints it"
+  },
+  "party": {
+   "type": "category",
+   "description": "party letter as the record prints it (R, D, I)"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "vote_cast": {
+   "type": "category",
+   "description": "Yea, Nay, Not Voting or Present, as recorded"
+  },
+  "chamber_party": {
+   "type": "category",
+   "description": "the chamber and the party letter as the record prints it, joined by a comma, the key the page’s table groups by"
+  }
+ },
+ "printed_source_line": "Source: U.S. Senate and Clerk of the U.S. House of Representatives, Senate roll call vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025, on H.R. 5371 (Public Law 119-37). Retrieved November 12, 2026. The Senate voted on passage as amended; the House on agreeing to the Senate’s amendment.",
+ "ledger_row": "pending: the research lead’s data check (R2-2); every value copied from congress-hr5371-roll-calls-by-member (P7-203)",
+ "domain": "D04",
+ "domain_note": "V7 files shutdown threats under Congress, agencies and public services (I054)",
+ "states": [],
+ "notes": [
+  "Senate question: \"On Passage of the Bill H.R. 5371\"; result: \"Bill Passed (60-40)\".",
+  "House question: \"On Motion to Concur in the Senate Amendment\"; result: \"Passed\".",
+  "Counts by chamber, party and vote, from these rows: House D Nay 207; House D Not Voting 1; House D Yea 6; House R Nay 2; House R Not Voting 1; House R Yea 216; Senate D Nay 38; Senate D Yea 7; Senate I Nay 1; Senate I Yea 1; Senate R Nay 1; Senate R Yea 52"
+ ],
+ "derived_from": [
+  "congress-hr5371-roll-calls-by-member.csv"
+ ],
+ "derivation": "Every row of congress-hr5371-roll-calls-by-member as stored, with one column added: chamber_party, the row’s chamber and party letter joined by a comma and a space. Script: work/build/scripts/phase-3/maker_a_round3_derive.py."
+}

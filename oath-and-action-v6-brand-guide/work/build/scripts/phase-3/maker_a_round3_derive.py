@@ -2,8 +2,12 @@
 
     python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py [--check] [--figures]
 
-Writes one derived table with its sidecar in work/build/data/:
+Writes three derived tables with their sidecars in work/build/data/:
 
+- clerk-house-committees-119-grouped (S69): the Clerk's file as stored, with each committee's count of subcommittees on
+  its rows, so the page's table prints one row a committee (D3-1097) and the CSV export keeps every subcommittee
+- congress-hr5371-roll-calls-grouped (S72): both roll calls as stored, with chamber_party, the chamber and party letter,
+  so the page's table prints one row a chamber and party (D3-1097) and the CSV export keeps every member
 - usgov-v7-route-grid: the atlas's eleven routes to change (v7-routes: name, who acts, instrument and the count of
   reform profiles that list each route), joined by route code to what the official texts require of each route
   (usgov-route-requirements: who decides, what it takes, how it can be undone, the texts and one address), with the
@@ -148,6 +152,48 @@ def grid():
     return rows
 
 
+# ---- grouped tables (D3-1097: a plate's table prints one row a group; the CSV export keeps every row) ---------------
+def copy_with(name, out, extra_cols, fill, side_over):
+    rows = read_csv(name)
+    m = meta(name)
+    for r in rows:
+        fill(r, rows)
+    cols = list(rows[0].keys())
+    side = dict(m)
+    side.update({'file': out + '.csv', 'kind': 'derived', 'derived_from': [name + '.csv']})
+    side['columns'] = dict(m['columns'])
+    side['columns'].update(extra_cols)
+    side.update(side_over)
+    for k in ('raw_files_sha256_prefix',):
+        side.pop(k, None)
+    side['ledger_row'] = 'pending: the research lead’s data check (R2-2); every value copied from ' + name + ' (' + m.get('ledger_row', '') + ')'
+    write(out, cols, rows, side)
+    return rows
+
+
+def committees():
+    def fill(r, rows):
+        r['subcommittees'] = str(sum(1 for x in rows if x['committee_code'] == r['committee_code'] and x['subcommittee_code']))
+    return copy_with('clerk-house-committees-119', 'clerk-house-committees-119-grouped',
+                     {'subcommittees': {'type': 'integer', 'description': 'the committee’s count of subcommittees in this file, on each of its rows', 'unit': 'subcommittees'}},
+                     fill, {'derivation': 'Every row of clerk-house-committees-119 as stored, with one column added: subcommittees, the count of the rows that share the row’s committee_code and carry a subcommittee_code. Script: work/build/scripts/phase-3/maker_a_round3_derive.py.'})
+
+
+PARTY = {'D': 'Democrats', 'R': 'Republicans', 'I': 'Independents'}
+
+
+def roll_calls():
+    def fill(r, rows):
+        r['chamber_party'] = r['chamber'] + ', ' + r['party']
+    line = ('Source: U.S. Senate and Clerk of the U.S. House of Representatives, Senate roll call vote 618 of November 10, 2025 '
+            'and House roll call 285 of November 12, 2025, on H.R. 5371 (Public Law 119-37). Retrieved November 12, 2026. The '
+            'Senate voted on passage as amended; the House on agreeing to the Senate’s amendment.')
+    return copy_with('congress-hr5371-roll-calls-by-member', 'congress-hr5371-roll-calls-grouped',
+                     {'chamber_party': {'type': 'category', 'description': 'the chamber and the party letter as the record prints it, joined by a comma, the key the page’s table groups by'}},
+                     fill, {'printed_source_line': line,
+                            'derivation': 'Every row of congress-hr5371-roll-calls-by-member as stored, with one column added: chamber_party, the row’s chamber and party letter joined by a comma and a space. Script: work/build/scripts/phase-3/maker_a_round3_derive.py.'})
+
+
 # ---- figure checks ---------------------------------------------------------------------------------------------------
 def spec(sid):
     with open(os.path.join(SPECS, sid + '.json'), encoding='utf-8') as fh:
@@ -248,6 +294,8 @@ def figures():
 
 if __name__ == '__main__':
     g = grid()
+    committees()
+    roll_calls()
     if FIGS:
         figures()
     else:

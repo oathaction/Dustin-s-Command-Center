@@ -1,0 +1,137 @@
+committee_code,committee,committee_type,subcommittee_code,subcommittee,majority_seats,minority_seats,subcommittees
+AG00,Committee on Agriculture,standing,,,29,25,6
+AG00,Committee on Agriculture,standing,AG03,Nutrition and Foreign Agriculture,11,8,6
+AG00,Committee on Agriculture,standing,AG14,"Conservation, Research, and Biotechnology",10,9,6
+AG00,Committee on Agriculture,standing,AG15,Forestry and Horticulture,7,6,6
+AG00,Committee on Agriculture,standing,AG16,"General Farm Commodities, Risk Management, and Credit",14,7,6
+AG00,Committee on Agriculture,standing,AG22,"Commodity Markets, Digital Assets, and Rural Development",12,11,6
+AG00,Committee on Agriculture,standing,AG29,"Livestock, Dairy, and Poultry",14,5,6
+AP00,Committee on Appropriations,standing,,,35,28,12
+AP00,Committee on Appropriations,standing,AP01,"Agriculture, Rural Development, Food and Drug Administration, and Related Agencies",9,6,12
+AP00,Committee on Appropriations,standing,AP02,Defense,10,7,12
+AP00,Committee on Appropriations,standing,AP04,"National Security, Department of State, and Related Programs",7,4,12
+AP00,Committee on Appropriations,standing,AP06,"Interior, Environment, and Related Agencies",7,4,12
+AP00,Committee on Appropriations,standing,AP07,"Labor, Health and Human Services, Education, and Related Agencies",10,7,12
+AP00,Committee on Appropriations,standing,AP10,Energy and Water Development and Related Agencies,9,6,12
+AP00,Committee on Appropriations,standing,AP15,Homeland Security,7,4,12
+AP00,Committee on Appropriations,standing,AP18,"Military Construction, Veterans Affairs, and Related Agencies",8,5,12
+AP00,Committee on Appropriations,standing,AP19,"Commerce, Justice, Science, and Related Agencies",8,5,12
+AP00,Committee on Appropriations,standing,AP20,"Transportation, Housing and Urban Development, and Related Agencies",9,6,12
+AP00,Committee on Appropriations,standing,AP23,Financial Services and General Government,8,5,12
+AP00,Committee on Appropriations,standing,AP24,Legislative Branch,5,3,12
+AS00,Committee on Armed Services,standing,,,30,27,7
+AS00,Committee on Armed Services,standing,AS02,Military Personnel,8,6,7
+AS00,Committee on Armed Services,standing,AS03,Readiness,10,9,7
+AS00,Committee on Armed Services,standing,AS25,Tactical Air and Land Forces,10,8,7
+AS00,Committee on Armed Services,standing,AS26,Intelligence and Special Operations,9,7,7
+AS00,Committee on Armed Services,standing,AS28,Seapower and Projection Forces,10,8,7
+AS00,Committee on Armed Services,standing,AS29,Strategic Forces,9,7,7
+AS00,Committee on Armed Services,standing,AS35,"Cyber, Information Technologies, and  Innovation",10,9,7
+BA00,Committee on Financial Services,standing,,,30,24,6
+BA00,Committee on Financial Services,standing,BA04,Housing and Insurance,10,9,6
+BA00,Committee on Financial Services,standing,BA09,Oversight and Investigations,7,5,6
+BA00,Committee on Financial Services,standing,BA10,"National Security, Illicit Finance, and  International Financial Institutions",10,8,6
+BA00,Committee on Financial Services,standing,BA16,Capital Markets,14,11,6
+BA00,Committee on Financial Services,standing,BA20,Financial Institutions,14,11,6
+BA00,Committee on Financial Services,standing,BA21,"Digital Assets, Financial Technology, and Artificial Intelligence",12,9,6
+BU00,Committee on the Budget,standing,,,21,16,0
+ED00,Committee on Education and Workforce,standing,,,21,16,4
+ED00,Committee on Education and Workforce,standing,ED02,"Health, Employment, Labor, and Pensions",11,9,4
+ED00,Committee on Education and Workforce,standing,ED10,Workforce Protections,6,4,4
+ED00,Committee on Education and Workforce,standing,ED13,Higher Education and Workforce Development,12,10,4
+ED00,Committee on Education and Workforce,standing,ED14,"Early Childhood, Elementary, and Secondary Education",9,7,4
+FA00,Committee on Foreign Affairs,standing,,,28,25,7
+FA00,Committee on Foreign Affairs,standing,FA05,East Asia and Pacific,8,6,7
+FA00,Committee on Foreign Affairs,standing,FA07,Western Hemisphere,8,6,7
+FA00,Committee on Foreign Affairs,standing,FA13,Middle East and North Africa,8,6,7
+FA00,Committee on Foreign Affairs,standing,FA14,Europe,7,6,7
+FA00,Committee on Foreign Affairs,standing,FA16,Africa,7,5,7
+FA00,Committee on Foreign Affairs,standing,FA17,Oversight and Intelligence,8,6,7
+FA00,Committee on Foreign Affairs,standing,FA19,South and Central Asia,8,6,7
+GO00,Committee on Oversight and Government Reform,standing,,,26,21,7
+GO00,Committee on Oversight and Government Reform,standing,GO05,"Economic Growth, Energy Policy, and Regulatory Affairs",6,4,7
+GO00,Committee on Oversight and Government Reform,standing,GO06,Military and Foreign Affairs,8,6,7
+GO00,Committee on Oversight and Government Reform,standing,GO12,"Cybersecurity, Information Technology, and Government Innovation",6,4,7
+GO00,Committee on Oversight and Government Reform,standing,GO16,Delivering on Government Efficiency,10,8,7
+GO00,Committee on Oversight and Government Reform,standing,GO24,Government Operations,6,4,7
+GO00,Committee on Oversight and Government Reform,standing,GO27,Health Care and Financial Services,6,4,7
+GO00,Committee on Oversight and Government Reform,standing,GO33,Federal Law Enforcement,7,5,7
+HA00,Committee on House Administration,standing,,,8,4,2
+HA00,Committee on House Administration,standing,HA08,Elections,4,2,2
+HA00,Committee on House Administration,standing,HA27,Modernization and Innovation,2,2,2
+HM00,Committee on Homeland Security,standing,,,18,15,6
+HM00,Committee on Homeland Security,standing,HM05,Counterterrorism and Intelligence,6,5,6
+HM00,Committee on Homeland Security,standing,HM07,Transportation and Maritime Security,4,3,6
+HM00,Committee on Homeland Security,standing,HM08,Cybersecurity and Infrastructure Protection,5,4,6
+HM00,Committee on Homeland Security,standing,HM09,"Oversight, Investigations, and Accountability",5,4,6
+HM00,Committee on Homeland Security,standing,HM11,Border Security and Enforcement,6,5,6
+HM00,Committee on Homeland Security,standing,HM12,Emergency Management and Technology,4,3,6
+IF00,Committee on Energy and Commerce,standing,,,30,24,6
+IF00,Committee on Energy and Commerce,standing,IF02,Oversight and Investigations,9,7,6
+IF00,Committee on Energy and Commerce,standing,IF03,Energy,17,13,6
+IF00,Committee on Energy and Commerce,standing,IF14,Health,17,13,6
+IF00,Committee on Energy and Commerce,standing,IF16,Communications and Technology,16,13,6
+IF00,Committee on Energy and Commerce,standing,IF17,"Commerce, Manufacturing, and Trade",13,10,6
+IF00,Committee on Energy and Commerce,standing,IF18,Environment,13,10,6
+II00,Committee on Natural Resources,standing,,,25,20,5
+II00,Committee on Natural Resources,standing,II06,Energy and Mineral Resources,14,12,5
+II00,Committee on Natural Resources,standing,II10,Federal Lands,9,7,5
+II00,Committee on Natural Resources,standing,II13,"Water, Wildlife and Fisheries",14,12,5
+II00,Committee on Natural Resources,standing,II15,Oversight and Investigations,5,4,5
+II00,Committee on Natural Resources,standing,II24,Indian and Insular Affairs,6,5,5
+JU00,Committee on the Judiciary,standing,,,25,19,6
+JU00,Committee on the Judiciary,standing,JU01,"Immigration Integrity, Security, and Enforcement",14,12,6
+JU00,Committee on the Judiciary,standing,JU03,"Courts, Intellectual Property, Artificial Intelligence, and the Internet",9,7,6
+JU00,Committee on the Judiciary,standing,JU05,"The Administrative State, Regulatory Reform, and Antitrust",8,6,6
+JU00,Committee on the Judiciary,standing,JU08,Crime and Federal Government Surveillance,7,5,6
+JU00,Committee on the Judiciary,standing,JU10,The Constitution and Limited Government,9,7,6
+JU00,Committee on the Judiciary,standing,JU13,Oversight,5,3,6
+PW00,Committee on Transportation and Infrastructure,standing,,,36,31,6
+PW00,Committee on Transportation and Infrastructure,standing,PW02,Water Resources and Environment,18,15,6
+PW00,Committee on Transportation and Infrastructure,standing,PW05,Aviation,21,18,6
+PW00,Committee on Transportation and Infrastructure,standing,PW07,Coast Guard and Maritime Transportation,7,6,6
+PW00,Committee on Transportation and Infrastructure,standing,PW12,Highways and Transit,28,25,6
+PW00,Committee on Transportation and Infrastructure,standing,PW13,"Economic Development, Public Buildings, and Emergency Management",8,7,6
+PW00,Committee on Transportation and Infrastructure,standing,PW14,"Railroads, Pipelines, and Hazardous Materials",17,14,6
+RU00,Committee on Rules,standing,,,9,4,2
+RU00,Committee on Rules,standing,RU02,Legislative and Budget Process,4,2,2
+RU00,Committee on Rules,standing,RU04,Rules and Organization of the House,4,2,2
+SM00,Committee on Small Business,standing,,,15,12,5
+SM00,Committee on Small Business,standing,SM21,"Rural Development, Energy, and Supply Chains",6,5,5
+SM00,Committee on Small Business,standing,SM22,"Innovation, Entrepreneurship, and Workforce Development",6,5,5
+SM00,Committee on Small Business,standing,SM23,Contracting and Infrastructure,6,5,5
+SM00,Committee on Small Business,standing,SM24,"Oversight, Investigations, and Regulations",6,5,5
+SM00,Committee on Small Business,standing,SM27,"Economic Growth, Tax, and Capital Access",5,5,5
+SO00,Committee on Ethics,standing,,,5,5,0
+SY00,"Committee on Science, Space, and Technology",standing,,,22,18,5
+SY00,"Committee on Science, Space, and Technology",standing,SY15,Research and Technology,7,5,5
+SY00,"Committee on Science, Space, and Technology",standing,SY16,Space and Aeronautics,7,5,5
+SY00,"Committee on Science, Space, and Technology",standing,SY18,Environment,5,3,5
+SY00,"Committee on Science, Space, and Technology",standing,SY20,Energy,8,6,5
+SY00,"Committee on Science, Space, and Technology",standing,SY21,Investigations and Oversight,5,3,5
+VR00,Committee on Veterans' Affairs,standing,,,14,11,5
+VR00,Committee on Veterans' Affairs,standing,VR03,Health,7,5,5
+VR00,Committee on Veterans' Affairs,standing,VR08,Oversight and Investigations,4,3,5
+VR00,Committee on Veterans' Affairs,standing,VR09,Disability Assistance and Memorial Affairs,5,4,5
+VR00,Committee on Veterans' Affairs,standing,VR10,Economic Opportunity,5,4,5
+VR00,Committee on Veterans' Affairs,standing,VR11,Technology Modernization,3,2,5
+WM00,Committee on Ways and Means,standing,,,26,19,6
+WM00,Committee on Ways and Means,standing,WM01,Social Security,8,5,6
+WM00,Committee on Ways and Means,standing,WM02,Health,11,8,6
+WM00,Committee on Ways and Means,standing,WM03,Work and Welfare,8,5,6
+WM00,Committee on Ways and Means,standing,WM04,Trade,12,9,6
+WM00,Committee on Ways and Means,standing,WM05,Tax,11,8,6
+WM00,Committee on Ways and Means,standing,WM06,Oversight,8,5,6
+IG00,Permanent Select Committee on Intelligence,select,,,15,12,6
+IG00,Permanent Select Committee on Intelligence,select,IG01,Central Intelligence Agency,6,4,6
+IG00,Permanent Select Committee on Intelligence,select,IG02,National Security Agency and Cyber,6,4,6
+IG00,Permanent Select Committee on Intelligence,select,IG04,Defense Intelligence and Overhead Architecture,6,4,6
+IG00,Permanent Select Committee on Intelligence,select,IG06,National Intelligence Enterprise,6,4,6
+IG00,Permanent Select Committee on Intelligence,select,IG09,Oversight and Investigations,1,1,6
+IG00,Permanent Select Committee on Intelligence,select,IG11,Open Source Intelligence,6,4,6
+QJ00,"Select Subcommittee to Investigate the Remaining Questions Surrounding January 6, 2021",select,,,5,3,0
+ZS00,Select Committee on the  Strategic Competition Between the United States and the Chinese Communist Party,select,,,13,11,0
+EC00,Joint Economic Committee,joint,,,0,0,0
+IT00,Joint Committee on Taxation,joint,,,0,0,0
+JL00,Joint Committee on the Library,joint,,,0,0,0
+JP00,Joint Committee on Printing,joint,,,6,4,0
