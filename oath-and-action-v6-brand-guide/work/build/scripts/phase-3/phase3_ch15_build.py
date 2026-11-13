@@ -103,8 +103,10 @@ for _k, _p in LOOP.items():
 
 
 def short(code):
-    """DR-185's label rule: the name the atlas gives the variable on its loops, where it holds one; else its title."""
-    return LOOP_NAME.get(code) or node(code)["title"]
+    """A variable's name on every plate and in every line of the chapter: its own title (nodes[].title), never the
+    chain label a loop's record gives it (DR-265, November 13, 2026). LOOP_NAME stays only for the check that no chain
+    label prints (check(), DR-265)."""
+    return node(code)["title"]
 
 
 # The data lead's RF-16 and RF-16a (BC S4, D3-893): the atlas names these four core variables two ways, a chain label inside

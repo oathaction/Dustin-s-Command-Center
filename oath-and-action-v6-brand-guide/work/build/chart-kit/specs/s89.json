@@ -1,0 +1,192 @@
+{
+  "kit": 1,
+  "id": "S89",
+  "form": "process-explainer",
+  "family": "infographics",
+  "tier": "core",
+  "dataset": "govinfo-disaster-declaration-steps",
+  "reader_question": "How does a disaster declaration bring federal help, and who asks for it at each step?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Stafford Act and FEMA’s regulation, 44 CFR part 206, as in force on November 9, 2026",
+  "title": "A governor or a tribal government’s chief executive asks the President for a disaster declaration, within 30 days of the disaster under the law, and a declaration opens federal help to people and to governments.",
+  "measure_line": "The steps from a disaster to federal help in 42 U.S.C. 5170 and 5191 and 44 CFR 206.33 to 206.40, 206.112 and 206.202, with who acts at each step and the longest time the law allows",
+  "notes": [
+    "A tribal government’s chief executive may ask the President directly. An emergency declaration brings narrower help than a major disaster declaration, and the President can answer an emergency request only with an emergency declaration or a denial.",
+    "Times are limits in law, not measured waits, and FEMA may extend several of them."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A diagram of the steps from a disaster to federal help, read in order, with who acts at each step. Step 1, local governments and the state respond, and the governor puts the state’s emergency plan into effect. Step 2, the state and FEMA assess the damage together, with local officials. Step 3, the governor, or a tribal government’s chief executive, asks the President for a major disaster declaration within 30 days of the incident; for an emergency or the threat of one, the request is for an emergency declaration, within 5 days after the need becomes apparent and no later than 30 days. Step 4, FEMA reviews the request and recommends. Step 5, the President declares a major disaster or an emergency, or denies the request. Step 6, FEMA names the areas and the kinds of help. Then two steps side by side: the state asks for public assistance for each local government or other applicant within 30 days of the designation, and residents register for individual help within 60 days of the declaration.",
+  "table": {
+    "caption": "The steps from a disaster to federal help, in reading order",
+    "columns": [
+      {
+        "field": "order",
+        "label": "Step",
+        "format": "text",
+        "words": {
+          "1": "1",
+          "2": "2",
+          "3": "3",
+          "4": "In place of 3",
+          "5": "4",
+          "6": "5",
+          "7": "6",
+          "9": "7",
+          "8": "8"
+        }
+      },
+      {
+        "field": "step",
+        "label": "What happens",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "who_acts",
+        "label": "Who acts",
+        "format": "text"
+      },
+      {
+        "field": "time_limit",
+        "label": "Time the law allows",
+        "format": "text",
+        "empty": "None set"
+      },
+      {
+        "field": "order",
+        "label": "Then",
+        "format": "text",
+        "words": {
+          "1": "Step 2",
+          "2": "Step 3, or the emergency request in its place",
+          "3": "Step 4",
+          "4": "Step 4",
+          "5": "Step 5",
+          "6": "Step 6 if the President declares; a denial ends the request",
+          "7": "Steps 7 and 8, side by side",
+          "9": "Last step drawn",
+          "8": "Last step drawn"
+        }
+      },
+      {
+        "field": "what_happens",
+        "label": "In more detail",
+        "format": "text"
+      },
+      {
+        "field": "legal_basis",
+        "label": "The law",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each column is a level of government, or residents, named at its head. Each step’s box spans the levels that act at it. Numbered boxes edged in the text’s ink are the steps every declaration takes, in order; the box with a gray edge is the request some cases make in its place."
+  ],
+  "phone": "differs",
+  "phone_note": "Where the four columns cannot each hold 150 px, the steps run down one column, each naming who acts; the emergency request sits under step 3, set in from the line.",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "sort": [
+    {
+      "field": "order",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "9",
+        "8"
+      ]
+    }
+  ],
+  "encode": {
+    "key": "order",
+    "path": "path",
+    "step": "step",
+    "level": "level",
+    "who": "who_acts",
+    "limit": "time_limit"
+  },
+  "labels": {
+    "main": "main",
+    "lanes": [
+      {
+        "levels": [
+          "local"
+        ],
+        "label": "Local governments",
+        "share": 0.8
+      },
+      {
+        "levels": [
+          "state",
+          "tribal"
+        ],
+        "label": "States and tribes",
+        "share": 1.15
+      },
+      {
+        "levels": [
+          "federal"
+        ],
+        "label": "Federal government",
+        "share": 1.15
+      },
+      {
+        "levels": [
+          "resident"
+        ],
+        "label": "Residents",
+        "share": 0.9
+      }
+    ],
+    "branches": {
+      "4": {
+        "at": 3,
+        "words": "In place of step 3, for an emergency"
+      }
+    },
+    "together": [
+      [
+        "9",
+        "8"
+      ]
+    ],
+    "named": []
+  },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true,
+    "replace": [
+      [
+        " U.S.C.",
+        " U.S.C."
+      ],
+      [
+        "U.S.C. ",
+        "U.S.C. "
+      ],
+      [
+        " CFR",
+        " CFR"
+      ],
+      [
+        "CFR ",
+        "CFR "
+      ]
+    ]
+  },
+  "notes_internal": [
+    "Infographics maker, round 4. Data plan row 121, rule 14.135. Domain D04 from the sidecar (data lead sign-off, point 4).",
+    "The eight main steps are the rows with path main, numbered 1 to 8 in reading order; row 4 is the emergency request, drawn in place of step 3. Rows 9 and 8 (public assistance, individual help) share one row after step 6, governments at the left, so the sort puts 9 before 8 and the numbers read left to right.",
+    "Actors in words: no Civic Line drawing means a governor, a tribe, FEMA or the President, and CL-026 never stands for the President (round 4 call 7; Rule 10.6).",
+    "DRAFT words, waiting on the data lead's rulings (a) to (c) and the editor's words pass."
+  ]
+}
