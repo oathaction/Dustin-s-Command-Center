@@ -5710,4 +5710,4 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 
 | # | Decision | Reason |
 |---|---|---|
-| D3-1477 | S73 draws every committee the FEC designates a joint fundraising committee that transferred to each nominee's campaign, three for Harris and four for Trump, each folded into one sender bar per nominee, receivers folded by kind, line 22 as the measure; the title compares reach only if it holds across all six; replaces my ST-S6 ruling | BC-M1 with D3-1330: the drawn contrast came from the rule that picked one committee each The data lead corrected its line in place; this replaces D3-1361's "three for each" |
+| D3-1477 | S73 draws every committee the FEC designates a joint fundraising committee that transferred to each nominee's campaign, three for Harris and four for Trump, each folded into one sender bar per nominee, receivers folded by kind, line 22 as the measure; the title compares reach only if it holds across all six; replaces my ST-S6 ruling | BC-M1 with D3-1330: the drawn contrast came from the rule that picked one committee each. The data lead corrected its line in place; this replaces D3-1361's "three for each" |
