@@ -77,6 +77,8 @@ Entries 14.135 to 14.141 are written; the chapter generator, run with `--rounds 
   4. *The year mark at the plate's width (DD-I18, S94).* `h.mark` draws at one fixed width, so S94's year is 224 px at every width. Either let a card form give `h.mark` two widths (the artboard's and 224 px) with the page showing the one its box holds, or a mark that scales with no words inside it (the month names then set as HTML beside it). I draw whichever lands.
   5. *Dates as rows (DD-I19, S94).* At a desk, `oac-h-dates` items as two columns, the date's `p.oac-h-name` in a left column about 180 px wide and the rest beside it, hairlines between items, one column on a phone (S60's grammar).
 
+- **IM-E8, the card’s grade line on the page (21:33 UTC).** S95 prints S19's grade line under "Finding" on both crops (the data lead's R4-4 condition, 21:32). `draw_spec()` in `oa-chart.mjs` carries `evidence_label`, `title` and `source_line` to the page for a `social-data-card`, but not `grade_line`, so the page and its PNGs draw no grade line and S95 fails parity at every crop. One word added to that list would carry it.
+
 ## Tested
 
 ## Not tested
