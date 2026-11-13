@@ -73,11 +73,8 @@ FC = "Failure case: do not publish. "
 # The rule list the main session fixed (R7). Rounds 1 and 2 build BUILT; the rest wait for their rounds.
 # ---------------------------------------------------------------------------------------------------------------
 BUILT = ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "15.8", "15.9", "15.10", "15.11", "15.12", "15.13",
-         "15.14", "15.15", "15.16", "15.17", "15.18"]
-PLANNED = {"15.19": "Let a reader step through a loop one connection at a time, with a still sequence.",
-           "15.20": "Let a reader choose a reform and see its targets, effects and assumptions.",
-           "15.21": "Give every control the model’s own steps, and no slider for a strength.",
-           "15.22": "Draw a route to change as its whole workflow, through to reversal.",
+         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21"]
+PLANNED = {"15.22": "Draw a route to change as its whole workflow, through to reversal.",
            "15.23": "Show which stages sit behind each of a tracker’s six steps.",
            "15.24": "Use the workflow for the reform’s route, with its official source and check date.",
            "15.25": "Reconcile every earlier atlas drawing to the model, and cite none as evidence."}
@@ -813,7 +810,8 @@ LAYOUT = (".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{
           f".wd .two{{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:{GAP_PR}px}}"
           ".wd .fx.g3>:nth-child(1){grid-column:1;grid-row:1}.wd .fx.g3>:nth-child(2){grid-column:2;grid-row:1/span 2}"
           ".wd .fx.g3>:nth-child(3){grid-column:1;grid-row:2}}}"
-          "@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}")
+          "@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr,.oa-stepper-controls,fieldset,.oa-choice-item,details)"
+          ":not(.dnp){max-width:calc(100cqi - 32px)}}")
 CSS.update({
     "sv": (".sv{display:block;overflow:visible}"
            ".sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}"
@@ -890,7 +888,7 @@ class Book:
     def __init__(self):
         self.files, self.manifest, self.examples = {}, {}, []
 
-    def add(self, sid, body, *, rule, alt, illustrative=False, readable=False, notes="", wide=False):
+    def add(self, sid, body, *, rule, alt, illustrative=False, readable=False, notes="", wide=False, interactive=False):
         """A plate at true size, never scaled (fix pass 2, D3-480). Every plate is a 328 px stage, the 296 px drawing with
         a 16 px gutter each side, whose frame is the query container oa-frame. A plate with words to set beside its
         drawing, or two or three drawings to set side by side, is wide: where its frame's content box holds 680 px, the
@@ -906,6 +904,8 @@ class Book:
             m["wide_px"] = WIDE
         if readable:
             m["readable"] = True
+        if interactive:               # round 4: a live plate, a group the shell names, never an image (AX section 1)
+            m["interactive"] = True
         self.manifest[sid] = m
 
     def log(self, where, example, domain, states=(), level="federal"):
@@ -3010,11 +3010,388 @@ def rule_15_18(book):
 # ===============================================================================================================
 # The chapter
 # ===============================================================================================================
+# ===============================================================================================================
+# Group 4. Interaction (round 4, November 13, 2026): Rules 15.19 to 15.21 under contracts R4-5 and R4-6, the data lead's
+# ruling (f) (15.19 steps Loop R1, 15.20 offers Reforms R-03 and R-04 on Loop R4a, 15.21 draws Connection L55), the
+# accessibility lead's "Interaction specification" and the component engineer's C-1 to C-3. 15.19 carries Rule 18.22's
+# markup and no script: chapter 18's code plate wires every [data-oa-stepper] on the page and writes data-oa-live and
+# data-oa-at on its root (C-1). 15.20's status line is the shell's (C-2), and the shell opens every closed details at
+# print (C-3). 15.21 holds no control at all. Every failure plate is a still picture.
+# ===============================================================================================================
+CODE = ROOT / "work/build/guide/code"
+BAND = "var(--oa-color-state-selected-band)"
+MUTED = "var(--oa-color-state-muted-text)"
+SHELL_CHOOSER_BYTES = 873     # the shell's status-line listener for 15.20 (C-2), counted toward R4-6's 75,000
+R4_6 = 75_000
+INTERACTION = ("15.19", "15.20", "15.21")
+
+
+def code_part(name, pattern):
+    """A piece of a chapter 18 code set, as its file writes it, whitespace closed up (C-1: 15.19 carries 18.22's markup)."""
+    src = (CODE / name).read_text()
+    m = re.search(pattern, src, re.S)
+    need(m is not None, f"{name} no longer holds {pattern[:40]!r}")
+    return re.sub(r"\s+", " ", m.group(0)).replace("> <", "><")
+
+
+def plural(t):
+    """Whether a title takes a plural verb: its head noun, the last word before a preposition, ends in a single s."""
+    head = re.split(r"\s(?:in|to|of|for|on|from|with|over|toward|across|without)\s", t)[0].split()[-1].lower()
+    return head.endswith("s") and not head.endswith("ss")
+
+
+def stepper_steps(lid):
+    """Each step of a loop as Rule 18.22's list holds it: the line (the variables' titles, the sign's verb, "can" for a
+    plausible step), then every fact the drawing shows for that step (the accessibility lead's section 2): the typed
+    connection and its name, what moves along it, its grade in Rule 13.3's word and its delay; the last step says the
+    loop is back where it began and names its kind. The hold is 250 ms a word of what the status line says, never under
+    6,000 ms (Rule 18.22, C-1)."""
+    lp = LOOP[lid]
+    codes = [c for c, _ in lp["chain"]]
+    n = len(codes)
+    out = []
+    for i, x in enumerate(lp["links"]):
+        l = link(x)
+        need((l["from"], l["to"]) == (codes[i], codes[(i + 1) % n]), f"Loop {lid}'s step {i + 1} changed")
+        a, b = short(codes[i]), short(codes[(i + 1) % n])
+        up = l["polarity"] == "+"
+        if l["evidence"] == "plausible":
+            verb = "can raise" if up else "can lower"
+        else:
+            verb = ("raise" if up else "lower") if plural(a) else ("raises" if up else "lowers")
+        line = f"{a} {verb} {lc(b)}" + (", where the loop began" if i == n - 1 else "") + "."
+        moves = f"{l['type']} moves along it, " if l["type"] in ("money", "information", "ownership") else ""
+        least = ", the least certain step in the loop" if l["evidence"] == least_certain(lp["links"]) and len(
+            {link(y)["evidence"] for y in lp["links"]}) > 1 else ""
+        more = (f'{chip("Connection", x)} “{e(l["name"])}”: {moves}the atlas grades it '
+                f'{GRADE[l["evidence"]][0].lower()}{least}, and its effect takes {DELAY[l["delay"]][1]}.')
+        if i == n - 1:
+            m_ = minus_count(lp["links"])
+            more += (f" The loop is back where it began, and with {words_n(m_)} minus sign{'' if m_ == 1 else 's'} on its "
+                     f"steps it is {'reinforcing' if m_ % 2 == 0 else 'balancing'}.")
+        said = f"Step {i + 1} of {n}: {line} {re.sub(r'<[^>]+>', '', more)}"
+        hold = max(6000, 250 * len(said.split()))
+        out.append((line, more, hold))
+    return out
+
+
+def rule_15_19(book):
+    """Rule 15.19: the loop stepper on Loop R1 (ruling (f)), built on Rule 18.22's component and code, never a second copy."""
+    lid = "R1"
+    lp = LOOP[lid]
+    codes = [c for c, _ in lp["chain"]]
+    need(codes == ["A1", "B1", "E1"] and lp["links"] == ["L01", "L02", "L03"] and lp["type"] == "R"
+         and lp["evidence"] == "plausible", "Loop R1 changed")
+    need([link(x)["evidence"] for x in lp["links"]] == ["well-supported", "plausible", "well-supported"]
+         and [link(x)["delay"] for x in lp["links"]] == ["S", "M", "L"], "Loop R1's grades or delays changed")
+    qual = lp["qualification"]
+    need(qual.startswith("The loop runs on issues where wealthy donors"), "Loop R1's qualification changed")
+    steps = stepper_steps(lid)
+    # C-1: the controls and the reason line as the code set writes them; the group names this loop
+    ctl = code_part("c-18-loop-stepper.html", r'<div\s+class="oa-stepper-controls".*?</button>\s*</div>')
+    ctl = ctl.replace('aria-label="Steps of the loop"', f'aria-label="Steps of Loop {lid}"')
+    why = code_part("c-18-loop-stepper.html", r'<p class="oa-stepper-why".*?</p>')
+    need('id="oa-stepper-why"' in why and ctl.count('aria-describedby="oa-stepper-why"') == 2,
+         "Rule 18.22's reason line and the two buttons that name it changed")
+    ready = (f"Ready. Start at {lc(short(codes[0]))}, and suppose it rises. Press Play, or Next step to follow one "
+             "connection at a time.")
+    body, h = three_loop(codes, lp["links"], weakest=1, inside=(lid, "reinforcing"), steps_g=True)
+    lis = "".join(f'<li class="oa-stepper-step" data-oa-hold="{hd}"><span class="oa-stepper-line">{e(ln)}</span> '
+                  f'<span class="oa-stepper-more">{mo}</span></li>' for ln, mo, hd in steps)
+    right = (f'<p class="oa-stepper-status" role="status" data-oa-ready="{e(ready)}">{e(ready)}</p>'
+             f'<ol class="oa-stepper-steps" role="list">{lis}</ol>{ctl}{why}'
+             f'<p class="nt">The atlas’s limit on the loop: “{e(qual)}”</p>'
+             + src("loop R1 and connections L01, L02 and L03"))
+    root = (f'<div class="oa-stepper lv" data-oa-stepper>'
+            + label_for(lp["links"], "the grade of the loop’s least certain step")
+            + beside(hed("Loop", lid, lp["title"]) + f'<div class="dw">{svg_wrap(body, h)}</div>', right) + "</div>")
+    book.add("s-15-19-correct", root, rule="15.19", wide=True, interactive=True,
+             alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, drawn as three pills with its steps numbered 1 to 3, "
+                  "beside the loop stepper of Rule 18.22: a status line, the three steps in order, and four buttons, Play, "
+                  "Reset the loop, Previous step and Next step. The current step lights in the drawing and in the list. "
+                  "With scripts off or in print, the list shows every step in order."),
+             notes="Rule 18.22's markup with no script of its own (C-1); its controls and reason line read from "
+                   "work/build/guide/code/c-18-loop-stepper.html; the drawing follows data-oa-at through the chapter's "
+                   "block; every word of the steps read from the atlas's loop and connection records.")
+    book.log("15.19 correct", "Loop R1, wealth and political influence", "D03")
+    # the failure: a still picture of a player that shows one step at a time and nothing else
+    fb, fh = three_loop(codes, lp["links"], numbered=False, only={1})
+    play = code_part("c-18-loop-stepper.html", r'<svg\s+class="oa-stepper-icon oa-stepper-icon--play".*?</svg>')
+    play = re.sub(r'\sclass="[^"]*"', ' class="pi"', play, count=1)
+    fail = (dnp() + hed("Loop", lid, lp["title"]) + fig(svg_wrap(fb, fh))
+            + f'<div class="pb"><span class="ib">{play}</span><p class="nt">Playing. A button with a play icon and no '
+              'word; no step list, no numbers and no Pause.</p></div>')
+    book.add("s-15-19-failure", fail, rule="15.19",
+             alt=(FC + "A picture of a player on Loop R1 that draws one step at a time: only the middle step shows, with no "
+                  "number, and the pills it does not join stand alone. Under it, a square button with a play icon and no "
+                  "word, and the word Playing. There is no step list, no Pause and no Reset."),
+             notes="Labeled failure, drawn as a still picture: no control, no script.")
+    n = len(steps)
+    return {
+        "id": "15.19",
+        "title": "Let a reader step through a loop one connection at a time, with a still sequence.",
+        "rule": [
+            "A loop read all at once asks a reader to hold every step in mind. Let the reader move through it instead: one "
+            "connection at a time, in the loop’s own order, with Play, Pause, Reset the loop, Previous step and Next step. "
+            "Use the loop stepper of Rule 18.22, its markup and its code, and set the drawing beside it so the current step "
+            "lights in both.",
+            "Each step’s words say everything the drawing shows for it: the two variables by their own titles, which way the "
+            "change runs, what moves along the connection, its grade and its delay. Number every step, and print the whole "
+            "sequence in order wherever nothing can move: on paper, with motion reduced and with scripts off.",
+        ],
+        "tokens": ["oa.color.state.selected.band", "oa.color.state.selected.bar", "oa.color.state.muted.text"],
+        "why": {"text": ["A drawing of a loop shows its shape, and a stepper shows its order. Read one connection at a time, "
+                         "the weakest step stands out where it falls, and the reader sees why the loop’s grade is the "
+                         "grade of that step (Rule 15.13). The still sequence keeps the same reading for a reader who "
+                         "cannot or will not run it."],
+                "basis": "Our systems atlas, Loop R1; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"},
+        "correct": {"specimen": "s-15-19-correct",
+                    "caption": f"Loop R1 from our systems atlas on the loop stepper of Rule 18.22, live: {words_n(n)} numbered "
+                               "steps, each with its connection, grade and delay. The current step lights in the drawing "
+                               "and in the list; on paper and with scripts off the list shows every step in order."},
+        "failure": {"specimen": "s-15-19-failure",
+                    "caption": "<strong>Fails Rule 15.19.</strong> The player shows one step at a time and nothing else: no "
+                               "numbers, no list and no way to pause, so on paper, with motion reduced or with scripts off "
+                               "a reader sees one connection of three."},
+        "specs": [
+            {"label": "Component", "value": "The loop stepper of Rule 18.22: its markup, its styles and its script, once on the page"},
+            {"label": "Current step", "value": "The selected band behind its line and its two pills, the list’s band and bar beside it, in ink, never in red",
+             "token": "oa.color.state.selected.band"},
+            {"label": "Steps ahead", "value": "Muted, each line keeping its grade’s pattern", "token": "oa.color.state.muted.text"},
+            {"label": "Step words", "value": "The variables’ titles and the sign’s verb, then the connection, what moves along it, its grade and its delay"},
+            {"label": "Still sequence", "value": "Every step numbered and in ink, buttons hidden, on paper, with motion reduced and with scripts off"},
+        ],
+        "related": ["13", "17", "18"],
+        "builders": ["Carry Rule 18.22’s markup and let chapter 18’s script run it; never copy the script. Light the drawing "
+                     "from the stepper’s <code>data-oa-at</code>, and number the steps with a CSS counter, never inside the "
+                     "line the status reads."],
+    }
+
+
+def chooser_targets(rids, lp):
+    """Each offered reform's targets, held to Loop R4a and to the atlas's two lists (ruling (f)): every target a variable or
+    connection of the loop, and the loop and the reform naming each other."""
+    codes = {c for c, _ in lp["chain"]} | set(lp["links"])
+    for rid in rids:
+        need(set(REFORM[rid]["targets"]) <= codes and rid in lp["reforms"] and lp["id"] in REFORM[rid]["loops"],
+             f"reform {rid} no longer acts wholly on Loop {lp['id']}, or the two lists disagree")
+    need(sorted(lp["reforms"]) == sorted(rids), f"Loop {lp['id']} lists other reforms: {lp['reforms']}")
+    owner = {}
+    for rid in rids:
+        for t_ in REFORM[rid]["targets"]:
+            owner.setdefault(t_, []).append(rid)
+    return {k: " ".join(v) for k, v in owner.items()}
+
+
+def chooser_css(rids):
+    """15.20's choice through CSS from the checked radio (the accessibility lead's section 3), so it works with scripts
+    off: the chosen reform's panel shows and its targets turn red; the first reform's are red in the markup."""
+    out = []
+    for rid in rids[1:]:
+        has = f'.p:has([value="{rid}"]:checked)'
+        out.append(f'{has} [data-oa-for]:not([data-oa-for~="{rid}"]) .hi,{has} [data-oa-for~="{rid}"] .lo{{display:none}}'
+                   f'{has} [data-oa-for]:not([data-oa-for~="{rid}"]) .lo,{has} [data-oa-for~="{rid}"] .hi{{display:inline}}'
+                   f'{has} [data-oa-for]:not([data-oa-for~="{rid}"]) .pl{{stroke:{INK};stroke-width:2px}}')
+    shows = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-panel]:not([data-oa-panel="{rid}"]){{display:none}}' for rid in rids)
+    prints = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-print="{rid}"]' + ("," if k < len(rids) - 1 else "")
+                     for k, rid in enumerate(rids))
+    return (f"@supports selector(:has(*)){{{''.join(out)}@media screen{{{shows}}}"
+            f"@media print{{{prints}{{display:block}}}}}}")
+
+
+def rule_15_20(book):
+    """Rule 15.20: the reform chooser on Loop R4a with Reforms R-03 and R-04, the only loop where every reform the atlas
+    places on it acts wholly on it and both its lists agree (ruling (f))."""
+    rids = ["R-03", "R-04"]
+    lp = LOOP["R4a"]
+    codes = [c for c, _ in lp["chain"]]
+    need(codes == ["C4", "C1", "D7"] and lp["links"] == ["L42", "L55", "L56"], "Loop R4a changed")
+    rs = [reform("R-03", ["L42", "C1", "D7"], ["R4a", "R10", "R12"], "rules", "documented", "plausible"),
+          reform("R-04", ["L42", "L56"], ["R4a"], "power to change the rules", "documented", "plausible")]
+    need([r_["effects"] for r_ in rs] == [{"DQ": "+L", "GE": "?", "EP": "0", "EQ": "+S"},
+                                         {"DQ": "+M", "GE": "0", "EP": "0", "EQ": "0"}], "the reforms' effects changed")
+    need(all(not x["checked"] for r_ in rs for x in r_["routes"]), "a route of R-03 or R-04 now carries a check date")
+    owner = chooser_targets(rids, lp)
+    check_ = code_part("c-18-choice.html", r'<svg\s+class="oa-choice-check".*?</svg>')
+    chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
+    items = "".join(
+        f'<label class="oa-choice-item"><input class="oa-choice-input" type="radio" name="s-15-20-reform" value="{rid}"'
+        f'{" checked" if k == 0 else ""}><span class="oa-choice-face">{check_}<span class="oa-choice-label">'
+        f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</span></span></label>' for k, rid in enumerate(rids))
+    group = (f'<fieldset class="oa-choice"><legend class="oa-choice-legend">Show one reform on Loop R4a</legend>'
+             f'<div class="oa-choice-row ch1">{items}</div></fieldset><p class="vh" role="status" data-oa-chooser-status></p>')
+    tg = set(rs[0]["targets"])
+    lit = {t_ for r_ in rs for t_ in r_["targets"] if t_ in LINK}
+    b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner)
+    drawn = set(codes) | set(lp["links"])
+    panels = []
+    for r_ in rs:
+        rid = r_["id"]
+        n_l = sum(1 for t_ in r_["targets"] if t_ in LINK)
+        n_v = len(r_["targets"]) - n_l
+        parts = [f"{words_n(n_l)} connection{'s' if n_l != 1 else ''}" if n_l else "",
+                 f"{words_n(n_v)} variable{'s' if n_v != 1 else ''}" if n_v else ""]
+        rem = r_["remedy_evidence"]
+        disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
+                f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">The atlas’s qualifications and '
+                f'assumptions for {chip("Reform", rid)}</span>{chev}</summary><div class="oa-disclosure-body">'
+                f'<p>Its confidence in the effects: “{e(r_["effects_confidence"])}”.</p>'
+                f'<p>The evidence for the remedy, {e(GRADE[rem["grade"]][0].lower())}: “{e(rem["text"])}”</p>'
+                f'<p>Its tradeoffs: “{e(r_["tradeoffs"])}”</p></div></details></div></div>')
+        panels.append(
+            f'<div class="pn" data-oa-panel="{rid}"><p class="nt" data-oa-say>{chip("Reform", rid)} acts where the marks '
+            f'turn red: on {" and ".join(p_ for p_ in parts if p_)}.</p>'
+            f'<p class="k">Its targets</p>{kw(target_items(r_, drawn))}<p class="k">Its band</p>{band_p(r_)}'
+            f'<p class="k">Effects by outcome family, as of {SNAP}</p>{effect_rows(r_)}'
+            f'<p class="k">Routes, with the date each was checked</p>{route_rows(r_)}{disc}</div>')
+    prints = "".join(f'<p class="nt pon" data-oa-print="{rid}">The drawing shows {chip("Reform", rid)} in red.</p>' for rid in rids)
+    left = hed("Loop", "R4a", lp["title"]) + f'<div class="dw">{svg_wrap(b, h)}</div>{prints}' + step_lines(lp["links"])
+    root = (f'<div class="lv" data-oa-chooser>{group}' + label_for(lp["links"], "the grade of the loop’s least certain step")
+            + beside(left, "".join(panels)) + src("reforms R-03 and R-04, their targets, effects, routes and evidence, and "
+                                                   "loop R4a with its connections") + "</div>")
+    book.add("s-15-20-correct", root, rule="15.20", wide=True, interactive=True,
+             alt=("A reform chooser on Loop R4a from our systems atlas: a group of two radio buttons, Reform R-03 and Reform "
+                  "R-04, with R-03 chosen; the loop drawn as three pills with the chosen reform’s targets in red; and the "
+                  "chosen reform’s panel with its targets, its band, its four effects one family to a row as of "
+                  f"{SNAP}, its routes, each not checked, and its qualifications and assumptions one step away in a "
+                  "disclosure."),
+             notes="Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; the choice shows through "
+                   "the chapter's block from the checked radio, scripts on or off; the status line is the shell's (C-2). "
+                   "Every value read from the atlas's reform and loop records.")
+    book.log("15.20 correct", "Reforms R-03 and R-04 on Loop R4a, district maps", "D02")
+    # the failure: both reforms lit at once, their effects added into one score, the qualifications gone
+    fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=set(owner))
+    boxes = "".join(f'<li><span class="xb" aria-hidden="true">{check_.replace("oa-choice-check", "ck")}</span>'
+                    f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</li>' for rid in rids)
+    fail = (dnp() + f'<ul class="kw xk">{boxes}</ul>' + hed("Loop", "R4a", lp["title"]) + fig(svg_wrap(fb, fh))
+            + '<p class="nt"><b>Combined effect on democracy: +L</b></p>')
+    book.add("s-15-20-failure", fail, rule="15.20",
+             alt=(FC + "A picture of a chooser with two boxes, Reform R-03 and Reform R-04, both checked, over Loop R4a "
+                  "with every target of both in red, so no mark says whose it is. Under it a line reads Combined effect "
+                  "on democracy: +L. No qualification or assumption appears."),
+             notes="Labeled failure, drawn as a still picture: no control. Its combined score is the fault and holds no "
+                   "atlas value: the atlas never adds reform effects.")
+    return {
+        "id": "15.20",
+        "title": "Let a reader choose a reform and see its targets, effects and assumptions.",
+        "rule": [
+            "Offer the reforms that act on one drawing as a named group of radio buttons (Rule 18.3), so a reader chooses "
+            "one at a time. The chosen reform’s exact targets turn red on the drawing (Rule 15.11), and its panel lists its "
+            "targets, its band, its four effects apart in the atlas’s codes with their date (Rule 15.16) and its routes, "
+            "each with its check date or “Not checked”.",
+            "Keep the atlas’s qualifications and assumptions one step away, in a disclosure under the panel (Rule 18.8), "
+            "and never light two reforms at once or add their effects. Offer only reforms whose every target sits on the "
+            "drawing, so nothing lights for a reform that does not act there.",
+        ],
+        "tokens": ["oa.color.data.emphasis.red"],
+        "why": {"text": ["A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One "
+                         "choice at a time keeps each reform’s red its own, and the effects stay four ordinal codes, never "
+                         "a score the atlas does not hold. The assumptions sit one step away, where a reader who asks finds "
+                         "them whole."],
+                "basis": "Our systems atlas, Reforms R-03 and R-04 on Loop R4a; the choice lessons of En-ROADS, as Rules 18.3 and 18.8 set them"},
+        "correct": {"specimen": "s-15-20-correct",
+                    "caption": "Reforms R-03 and R-04 on Loop R4a, live: choose one and its targets turn red, with its "
+                               "effects and routes beside the drawing and its qualifications one step away."},
+        "failure": {"specimen": "s-15-20-failure",
+                    "caption": "<strong>Fails Rule 15.20.</strong> Both reforms light at once, so no red says whose target it "
+                               "is, and a combined score adds effects our systems atlas never adds. The qualifications are gone."},
+        "specs": [
+            {"label": "Choice", "value": "A named group of radio buttons, two to five reforms, the first chosen on load (Rule 18.3)"},
+            {"label": "Targets", "value": "The chosen reform’s alone, in Rule 12.5’s red, with each named in a typed chip",
+             "token": "oa.color.data.emphasis.red"},
+            {"label": "Effects", "value": "Four rows, one outcome family each, in the atlas’s codes with their date; never added"},
+            {"label": "Assumptions", "value": "In a disclosure under the panel, closed on load, open on paper (Rule 18.8)"},
+            {"label": "Status line", "value": "One sentence on each change, hidden from sight, never on load"},
+        ],
+        "related": ["13", "18"],
+        "builders": ["Show the chosen panel and light its targets from the checked radio with CSS, so the choice works with "
+                     "scripts off; let the shell’s listener write the status line from the panel’s first line."],
+    }
+
+
+def rule_15_21(book):
+    """Rule 15.21: Connection L55 with what the model holds for it, against a still picture of a slider for a strength the
+    model does not hold (ruling (f)'s recommendation; R4-5: no control in either plate)."""
+    l = link("L55")
+    need((l["from"], l["to"], l["polarity"], l["evidence"], l["delay"], l["contested"]) == ("C1", "D7", "+", "plausible", "M", False),
+         "connection L55 changed")
+    num = [k for k, v in l.items() if isinstance(v, (int, float)) and not isinstance(v, bool)]
+    need(not num, f"connection L55 now holds a number: {num}")
+    q = l["qualification"]
+    need(q.endswith("relies on seats-votes analysis with no single estimate in this model."), "L55's qualification changed")
+    limits = V7["methods"]["limits"]
+    lq = "no whole loop has a measured strength."
+    need(lq in limits, "the atlas's limits no longer say no loop has a measured strength")
+    fb, fh, _ = card("C1", "D7", "L55")
+    ladder = lambda opts, on: ('<ol class="ld">' + "".join(
+        f'<li{" class=\"on\"" if o == on else ""}>{e(o)}</li>' for o in opts) + "</ol>")
+    grades = [GRADE[g][0] for g in ("documented", "well-supported", "plausible", "plausible_contested", "hypothesis")]
+    delays = [DELAY[k][1].capitalize() for k in ("S", "M", "L")]
+    words = (f'<p class="nt">{gl("L55")}</p><p class="k">Sign</p><p class="nt"><b>Plus, raises</b>: “{e(l["sign_meaning"])}”</p>'
+             f'<p class="k">Grade, on the atlas’s ladder</p>{ladder(grades, GRADE["plausible"][0])}'
+             f'<p class="k">Delay, in the atlas’s three classes</p>{ladder(delays, DELAY["M"][1].capitalize())}'
+             f'<p class="k">Strength</p><p class="nt">None in the model. The atlas’s record for the connection: “{e(q)}”</p>'
+             + src("connection L55 and the model’s limits"))
+    body = (label_for(["L55"], "the grade of the connection drawn")
+            + beside(fig(svg_wrap(fb, fh)), words))
+    book.add("s-15-21-correct", body, rule="15.21", readable=True, wide=True,
+             alt=(f"Connection L55 from our systems atlas, “{l['name']}”, drawn from {lc(short('C1'))} down to "
+                  f"{lc(short('D7'))}, dashed for plausible, with two delay ticks, a plus tag and the word raises. Beside it, "
+                  "what the model holds for it, each on the atlas’s own steps: its sign, plus, with the atlas’s sentence; its "
+                  "grade, plausible, marked on the ladder of five grades; its delay, 2 to 10 years, marked among three "
+                  f"classes; and its strength, none in the model, with the atlas’s words: {q}"),
+             notes="Every value read from the connection's record; the build stops if the record ever holds a number.")
+    book.log("15.21 correct", "Connection L55, safe seats and entrenched control", "D02")
+    # the failure: a still picture of a slider for a strength the atlas does not hold; its value is the picture's own
+    sl = ('<svg class="sv" viewBox="0 0 296 74" width="296" height="74" aria-hidden="true" focusable="false">'
+          '<text class="t" x="0" y="14">Strength of this connection</text>'
+          '<path class="ak-mark" d="M8 40H288" stroke-width="2"/><path class="ak-mark" d="M8 40H204" stroke-width="6"/>'
+          '<circle class="pl" cx="204" cy="40" r="10"/><text class="v" x="8" y="68">0</text>'
+          '<text class="v" x="288" y="68" text-anchor="end">100</text><text class="t" x="204" y="68" text-anchor="middle">70</text></svg>')
+    fail = (dnp() + fig(svg_wrap(fb, fh)) + f'<div class="dg">{sl}</div>'
+            + '<p class="nt">The value 70 is this picture’s own; the atlas holds no such figure.</p>')
+    book.add("s-15-21-failure", fail, rule="15.21",
+             alt=(FC + "Connection L55 drawn as on the correct plate, and under it a picture of a slider labeled Strength of "
+                  "this connection, running from 0 to 100, its handle set at 70. A note says the value 70 is the picture’s "
+                  "own and the atlas holds no such figure. It is a picture, not a control."),
+             notes="Labeled failure, drawn in SVG as a still picture: no input, no slider role, no Tab stop.")
+    return {
+        "id": "15.21",
+        "title": "Give every control the model’s own steps, and no slider for a strength.",
+        "rule": [
+            "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, "
+            "the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the "
+            "stepper, the radio group or the disclosure, never from a slider, a dial or a field for a number.",
+            f"Give no control for an amount, odds, a total or a strength. Our systems atlas measures no connection’s size and "
+            f"says “{lq[0].upper() + lq[1:]}” A slider set between 0 and 100 would hand a reader a figure no study supports.",
+        ],
+        "tokens": [TOKEN_LINE],
+        "why": {"text": ["A slider promises that any value along it means something and that moving it changes the outcome "
+                         "by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so "
+                         "the honest control has exactly those steps and no more."],
+                "basis": "Our systems atlas, Connection L55 and the model’s limits; Master Brief section 14’s lesson on precision"},
+        "correct": {"specimen": "s-15-21-correct",
+                    "caption": "Connection L55 with what our systems atlas holds for it, each on the model’s own steps: its "
+                               "sign, its grade on the ladder, its delay class, and no strength."},
+        "failure": {"specimen": "s-15-21-failure",
+                    "caption": "<strong>Fails Rule 15.21.</strong> A slider sets the connection’s strength at 70 of 100, a "
+                               "figure our systems atlas does not hold. The picture names the value as its own."},
+        "specs": [
+            {"label": "Steps a control may offer", "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"},
+            {"label": "Never", "value": "A slider, dial or number field for an amount, odds, a total or a strength"},
+            {"label": "A picture of a control", "value": "Drawn, not built, with its alt saying it is a picture"},
+        ],
+        "related": ["13", "18"],
+        "builders": ["Stop the build if a plate or a control prints a number the model’s record does not hold."],
+    }
+
+
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
              rule_15_7(book), rule_15_8(book), rule_15_9(book), rule_15_10(book), rule_15_11(book), rule_15_12(book),
-             rule_15_13(book), rule_15_14(book), rule_15_15(book), rule_15_16(book), rule_15_17(book), rule_15_18(book)]
+             rule_15_13(book), rule_15_14(book), rule_15_15(book), rule_15_16(book), rule_15_17(book), rule_15_18(book),
+             rule_15_19(book), rule_15_20(book), rule_15_21(book)]
     need([r["id"] for r in rules] == BUILT, "the chapter's rules differ from the round's list")
     need(not set(BUILT) & set(PLANNED), "a rule is both built and planned")
     data = {
@@ -3042,6 +3419,9 @@ def chapter(book):
             {"before_rule": "15.13", "number": 3, "title": "Worked examples from the atlas",
              "line": "Each example draws one mechanism from our systems atlas as the atlas records it, and shows what a reader "
                      "can take from it."},
+            {"before_rule": "15.19", "number": 4, "title": "Interaction",
+             "line": "A control lets a reader move through what the atlas holds, one step or one reform at a time, and "
+                     "offers nothing the atlas does not hold."},
         ],
         "rules": rules,
         "plate_css": plate_css(book.files),
@@ -3052,7 +3432,9 @@ def chapter(book):
             {"chapter": "12", "reason": "Rule 12.5, the red target where a reform acts, and Rule 12.8, the stacked layers."},
             {"chapter": "13", "reason": "The grade words, the line code, delay, typed chips and dates every drawing here keeps."},
             {"chapter": "14", "reason": "Charts, where widths and areas carry measured amounts."},
-            {"chapter": "18", "reason": "Rule 18.22, the loop stepper as a component, and Rule 18.24, the typed ID chip."},
+            {"chapter": "17", "reason": "Motion and states, where the stepper’s current step and reduced motion are set."},
+            {"chapter": "18", "reason": "Rules 18.3, 18.8 and 18.22, the choice, the disclosure and the loop stepper that "
+                                         "Rules 15.19 and 15.20 are built on, and Rule 18.24, the typed ID chip."},
         ],
         "sources": [
             (f"Source: {ATLAS}, the records each rule names (variables, connections, loops, the layers, the rejected "

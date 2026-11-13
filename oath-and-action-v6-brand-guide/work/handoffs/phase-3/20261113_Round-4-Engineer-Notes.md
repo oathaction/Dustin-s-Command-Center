@@ -10,7 +10,9 @@ Started 20:39 UTC (clock read).
 - **R4-3 (cards as HTML text) and R4-4 (the social card): SET (21:05), LANDED in the kit (21:15 UTC)**, with IM-E1 (`typography.hold`), IM-E2 (four additions) and IM-E3 (facts at 13.5rem) folded in. Tested end to end on scratch card and card forms in the mirror: Node checks, the browser checks with planted faults caught, PNGs at true pixels, parity. The kit's self-test passes with a new R4-3 case (eight planted faults caught). Makers build on it now.
 - **For the infographics maker, S95:** today's `social-data-card` draws its words at 13 to 28 px and the inner dot plot's 50 labelled rows, so on a crop it fails the 36 px floor and runs past the crop (tested). The kit gives `c.crop`, `c.inner(x, y, w, k, o)` and `c.card`; `dot-plot.js` labelling only the named rows on a card (`c.card.label === 'named'`) is a change to that form, its owner's or mine on the main session's word.
 - **R4-5:** the code sets, the shell and 15.20's script went to the component engineer at 20:58 (main session's split); I wrote none of those files. Mine: the guide check walking specimen key paths (the accessibility lead's request 2) and the build side. Under "Handed to the component engineer".
-- **Queue, in order:** land R4-3 and R4-4 in the kit; A4-E1 (a Civic Line drawing as a kit part); C4-E1; IM-E1; C4-E2 after the data lead's D4-1; the key path walk; the landing build's weight report.
+- **A4-E1 and the typed chip: LANDED (21:18 UTC).** `K.parts.icon(c, 'CL-050', x, y, 48)` and `K.parts.chip(c, x, y, 'Variable A2')`, under "Contracts", A4-E1. **For maker A:** the chip's `y` is its baseline, as `c.text`'s is; S85 passes the word's top (`tt.y`, and `tt.bottom + 6` when it wraps), so the chip sits high at a desk and over the word at 256 to 332 px. Passing the word's own baseline (and the next line's baseline when it wraps) clears its 8 faults. S85's icon renders from the sprite on both grounds, and its SVG export draws the drawing inline.
+- **IM-E4 (cards at 13rem) LANDED (21:18).** **Weight:** the kit part reached its 0.55 MB budget as the makers' forms landed; the page's kit.css is now minified (2,175 bytes less, the same 204 rules by the browser's parse) and the main session has the budget question (below, "Weight").
+- **Queue, in order:** the dot plot's card mode (IM-E5, ruled 21:17); C4-E1; C4-E2 (D4-1 ruled); the key path walk; each landing build's weight report.
 
 ## Summary
 
@@ -128,6 +130,20 @@ The component engineer writes the scripts, the code sets and the shell (above). 
 
 - **The guide check walks specimen key paths (the accessibility lead's request 2).** A manifest entry may set `"keys": "<id>"`; `guide_build.py` then marks the stage `data-oa-keys="<id>"`, and `guide_check.js`'s `keyPath` walks `work/build/guide/specimens/<id>.keys.json` (format oa-keys/1, the accessibility lead's paths) in that stage at 1440 and 390 px, as it walks a code set's, with `setup.reducedMotion` honored. The systems designer writes the keys files beside its specimens (`s-15-19-correct.keys.json`, `s-15-20-correct.keys.json`).
 - **Weight.** Each landing build reports chapter 15 and Rules 15.19 to 15.21 together against R4-6's 75,000 bytes, counting the component engineer's script and CSS bytes wherever they sit on the page, from its notes.
+
+## Weight
+
+Each strict build of the guide's own chapters to scratch (`guide_build.py --strict`), read from its report. The share per plate is chapter 14's, for the plates still to come.
+
+| Build (UTC) | Exit | Page | Chart kit part (0.55 MB budget) | Chapter 14 with the kit (stop 2,803,941) | Share per plate | Projection (15,500,000) | Chapter 15 (600,000) |
+|---|---|---|---|---|---|---|---|
+| 20:44, committed state | 0 | 11,236,260 | 512,961 | 2,228,308 | 13,235 for 13 | 15,044,827 | 307,066 (the notes' figure) |
+| 20:49, scratch mirror with the stacked tile | (mirror) | | 513,702 | 2,229,083 | 13,172 for 13 | | |
+| 21:19, R4-2 to R4-4 and A4-E1 landed, the makers' forms registered (97 of 97) | **1**: "chart kit weighs 0.55 MB, over its budget of 0.55 MB" | 11,358,287 | 550,217 | 2,339,184 | 17,323 for 7 | 15,050,450 | 312,594 |
+| 21:21, the page's kit.css minified | 0, 0 warnings | 11,405,561 | **549,966 (34 bytes under)** | 2,386,458 | 24,663 for 3 | 15,050,450 | 312,594 |
+
+- The share rises as plates land (fewer to come) and falls as the kit grows. From 21:19 the renderer is no longer projected: all 97 forms are registered, so `renderer_grown` equals the part itself.
+- **The kit part is the binding line now.** Round 4's six drawn forms add 29,870 bytes minified (process explainer 6,576, Euler 5,994, Venn 5,477, annotated illustration 4,347, proportional symbols 4,322, icon array 3,154); the four card forms ride nowhere (R4-3). My additions: `kit.js` about 1,400 (the cell, the stage floor, the crop, `c.inner`, the crop mount, the hold), `parts.js` about 520 (icon, chip), `kit.css` about 3,000 before the minify. The dot plot's card mode, C4-E1 and C4-E2 will add 2 to 3 KB, past the budget; the main session holds the call (21:22).
 
 ## Routine calls
 

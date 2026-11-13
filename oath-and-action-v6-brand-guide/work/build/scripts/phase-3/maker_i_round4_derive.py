@@ -112,6 +112,9 @@ def s91():
     sid, s = "S91", spec("S91")
     r = {x["order"]: x for x in rows("uscode-federal-trial-judges")}
     t = words(s)
+    check(sid, "345 bankruptcy seats against the table's 316", int(r["2"]["seats"]) == 345 and int(r["2"]["seats_in_statute_table"]) == 316)
+    has(sid, t, "Outside the territories", "the territorial judges' exception")
+    has(sid, t, "full-time magistrate judges for eight", "the full-time magistrate term")
     check(sid, "677 district seats = 673 in the statute + 4 territorial", int(r["1"]["seats"]) == 677 and int(r["1"]["seats_in_statute_table"]) + int(r["1"]["seats_in_territorial_courts"]) == 677)
     check(sid, "a card field prints the seats column", any(f["field"] == "seats" for f in s["labels"]["fields"]))
     has(sid, t, "four", "the territorial courts' seats")
@@ -177,8 +180,9 @@ def s94():
     both = sorted({x["date"] for x in rr if any(y["date"] == x["date"] and y["consequence"].startswith("None") for y in rr) and any(y["date"] == x["date"] and not y["consequence"].startswith("None") for y in rr)})
     check(sid, "April 15 and June 15 hold both kinds", both == ["2027-04-15", "2027-06-15"], f"{both}")
     check(sid, "six tax dates, and October 1 the seventh with a consequence", len(taxes) == 6 and all(not x["consequence"].startswith("None") for x in taxes) and [x["date"] for x in cons if x["track"] == "budget"] == ["2027-10-01"])
-    has(sid, t, "16 budget and tax dates", "the count of dates")
-    has(sid, t, "seven of them, the six tax dates", "the dates with a consequence")
+    has(sid, t, "16 deadlines on 13 days", "the count of deadlines and days")
+    has(sid, t, "a consequence to seven: the six tax deadlines", "the deadlines with a consequence")
+    check(sid, "the six tax deadlines fall on five days", len({x["date"] for x in taxes}) == 5)
     for n in re.findall(r"\b(\d+) (?:dates|events|days)\b", t):
         check(sid, f"a count the words print, {n}, is one the data gives", int(n) in (16, 13, 7, 9, 12), n)
 
