@@ -1274,7 +1274,7 @@
       // AX S1 (round 2 fix pass): a clean redraw clears the count a narrower or wider drawing left
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
       else fig.removeAttribute('data-oa-warnings');
-      if (spec.stage) stage_stop();
+      if (staged) stage_stop();
     }
     // C-M2: a staged drawing wider than its column takes a tab stop and a name, so a keyboard can scroll it (as the table's
     // frame does); it gives them up when it fits

@@ -622,6 +622,18 @@ function check_drawing(spec, d, tok, where) {
       break;
     }
   }
+  // D3-1546 (round 4): every shape and word a form draws while a cell is open (c.cell: a tile's code, figure and arrow) sits
+  // inside the cell with its spare on every side, a stroke by half its width; the stacked tile's arrows ran 3.5 px past
+  // their tiles at a 558 px drawing and no check saw it
+  const past = [];
+  for (const b of d.cells || []) {
+    const s = b.o.spare !== undefined ? b.o.spare : 1, key = b.o.key, x0 = b.x + s - 0.01, y0 = b.y + s - 0.01, x1 = b.x + b.w - s + 0.01, y1 = b.y + b.h - s + 0.01;
+    const out = q => { const p = (q.sw || 0) / 2; return Math.max(x0 - q.x + p, y0 - q.y + p, q.x + q.w + p - x1, q.y + q.h + p - y1); };
+    const over = (d.ink || []).filter(q => q.seq >= b.s0 && q.seq < b.s1).map(q => [q.kind, out(q)])
+      .concat(d.texts.filter(t => t.seq >= b.s0 && t.seq < b.s1).map(t => ['"' + t.words.slice(0, 20) + '"', out(t)])).filter(x => x[1] > 0);
+    if (over.length) past.push(`${key !== undefined ? key : 'a cell at ' + Math.round(b.x) + ',' + Math.round(b.y)}: ${over.map(x => x[0] + ' by ' + (Math.round(x[1] * 10) / 10) + ' px').join(', ')}`);
+  }
+  if (past.length) f.push(`chart: ${past.length} cell(s) hold a shape or word that runs past the cell's edge less its spare (${past.slice(0, 3).join('; ')}${past.length > 3 ? '; and more' : ''}); give the cell room or draw it another way where it has none (D3-1546)${at}`);
   // access S2 (round 1 fix pass): two dots a form draws for one row (a dumbbell's two years) sit apart by more than a dot's
   // radius wherever the values differ by a tenth or more of the larger, or the drawing shows no change where the data holds
   // one; a small change drawn as touching dots is the honest drawing of a small change
