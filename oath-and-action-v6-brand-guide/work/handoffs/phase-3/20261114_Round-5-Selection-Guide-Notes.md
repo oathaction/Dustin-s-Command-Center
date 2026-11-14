@@ -8,10 +8,14 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Selection guide m
 - 02:15 UTC: **first draft landed.** `work/build/scripts/phase-3/selection_guide_build.py` writes `work/build/guide/specimens/s-14-selection-guide.html` and `s-14-selection-guide.meta.json`; `phase3_ch14_build.py` places it with 0 faults; strict build exit 0; every link lands on the built page.
 - 02:22 UTC: **weight pass** (the main session's 02:22 relay): 233,812 bytes as placed in the first draft, 152,088 at 02:20, fragment now 134,700 bytes on disk before placing (below, "Weight"). Next: pixel proof of the half-pixel rounding, captures at 1440, 390 and 320 px on both grounds and in grayscale at twice size, fixes, the quick guide check.
 - 02:49 UTC: **second draft placed**, 148,758 bytes as placed. Fixed since 02:22: six tiles a row at 1440 px and three at 390 (was five and two); each link's name now "Ranked bar, Core" in Chromium (the shell's absolutely placed `.vh` comma made it "Ranked bar , Core"); every symbol carries the kit's class, so forced colors reach the copied shapes (they stayed Charcoal on a black ground before); three pictures that ran past their box (14.50, 14.77, 14.109) and the two tile maps' edges drawn inside it; question lines break a long word at 200 percent text. Next: captures again, the quick guide check, the summary.
+- 02:58 UTC: the container restarted; the quick guide check I had running stopped and is not counted. At 03:00 the files on disk matched the plan (`--check`), and a strict build to scratch placed the plate at 148,758 bytes; the quick guide check runs again on it.
 
 ## Summary
 
-To come.
+- **The plate.** "Choose a chart" opens chapter 14's body: the 16 family questions as the chapter prints them, and under each its forms in ruling (a)'s order (Core, Extended, Reference, Avoid, rule order inside each), all 127 once. Each form is one link to its entry, a tile of three things: a picture of the form at 88 by 56 px, its name and its tier, in live HTML text. A link reads "Ranked bar, Core"; an avoid form reads "Radar chart, Avoid" and its picture takes A-1's frame and one rule from top left to bottom right.
+- **The pictures.** 127 drawings plus the avoid mark and the country's four state groups, 133 symbols drawn once and placed by `<use>`. Every line is 2 px on whole pixels, in the kit's neutral inks and magnitude grays only: no red, no hue, no number or word. Map pictures draw the Census outlines with an invented shading.
+- **One system at every width.** One column of question blocks, tiles on one rem grid: six a row at 1440 px, five at 1024, three at 390, two at 320. Both grounds, grayscale and forced colors hold.
+- **Weight.** 233,812 bytes as placed in the first draft, 148,758 now, with no form, picture or word cut (table below).
 
 ## Weight
 
@@ -22,6 +26,8 @@ To come.
 | 02:20 | 140,371 | 152,088 | every path written short (absolute or relative, whichever is shorter; no leading zeros; spaces only where a number needs one); runs of same-size filled dots written as zero-length round-capped steps in the same ink role; no `viewBox` on a symbol that draws at its own size; no class on a tile's `li` |
 | 02:22 | 134,700 | 146,417 | path points rounded to the nearest half pixel |
 | 02:49 | 137,041 | 148,758 | the kit's class on every symbol (forced colors), the comma and the 200 percent fixes |
+
+Where the 148,758 bytes go (03:00 build, by script): the 133 symbols 83,553 (the map pictures and the four state groups 20,725 of it); the 127 tiles 56,694, or 446 bytes each, almost all of it markup the contracts set (the picture's `svg` with its `viewBox`, `aria-hidden` and `focusable`, the link's `href`, `data-tier`, `data-rule` and `data-oa-xref`, the item's `id` and `data-return-label`, and the build's 22-character id prefix on each id and `<use>`); the fragment's CSS 1,432; the frame, label, caption, question lines and skip links 7,079. What is left that a reader never sees is set by contract: dropping each picture's `viewBox` (about 2,500 bytes) or moving `stroke-width` from 133 symbols into CSS (about 2,300) would depart from the engineer's item 3, so I keep both and name them here.
 
 The pixel proof for the 02:20 step: the review sheet of all 127 pictures drawn at twice size on both grounds, before and after, differs in 293 of 10,091,840 pixels, 18 of them by more than 60 of 765 levels (antialiasing at a rounded point). For the half-pixel step: 80,783 pixels differ, all at antialiased edges, and the two sheets side by side at twice size show the same drawings (looked at whole and in three rows at full size).
 
