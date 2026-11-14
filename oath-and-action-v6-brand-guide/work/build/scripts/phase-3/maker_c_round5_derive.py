@@ -254,7 +254,7 @@ def figures(f):
         sid = r.get('spec_id')
         if sid and os.path.exists(os.path.join(SPECS, sid.lower() + '.json')):
             texts.append(json.dumps(read_json(os.path.join(SPECS, sid.lower() + '.json')), ensure_ascii=False))
-        for plate in (r.get('specimens') or []):
+        for plate in [x for x in (r.get('correct'), r.get('failure')) if x]:
             p = os.path.join(SPECIMENS, plate + '.html')
             if os.path.exists(p):
                 with open(p, encoding='utf-8') as fh:
@@ -273,15 +273,20 @@ def figures(f):
             for m in e1['past_margin']:
                 check(where, month_words(m) in t or (MONTHS[int(m[5:]) - 1] + ' ' + m[:4]) in t,
                       f'the drop past the margin in {month_words(m)} is not named')
-            # every "N months" count printed is one the data holds
-            for n_, what in re.findall(r'\b(seven|two|five|57|23|21)\b(?: of the \d+)? (months|drops|losses)', t):
-                pass
+            # every count of months or drops the words print is one the data holds
+            counts = {'seven': e1['n_losses'], 'two': len(e1['past_margin']), 'five': len(e1['losses_inside_margin'])}
+            for w_, n_ in counts.items():
+                check(where, n_ == {'seven': 7, 'two': 2, 'five': 5}[w_], f'the count "{w_}" no longer matches the data ({n_})')
+            check(where, f'{e1["n"]} months' in t, f'the window\'s {e1["n"]} months are not counted')
+            for m, v in zip(e1['past_margin'], e1['past_margin_values']):
+                check(where, f'\u2212{abs(int(v * 1000)):,}' in t or f'minus {abs(int(v * 1000)):,}' in t,
+                      f'the value of the {month_words(m)} drop, {v:+.0f} thousand, is not printed')
             check(where, '51,000' in t or '+51,000' in t, 'the latest average, 51,000, is not printed')
         if rid == '14.143':
             for k in ('B4', 'R10'):
                 check(where, e2['loops'][k]['title'] in t, f'Loop {k}\'s title is not printed')
                 for c, title in e2['loops'][k]['titles'].items():
-                    check(where, title.lower() in t.lower(), f'Variable {c}\'s title, "{title}", is not printed')
+                    check(where, title.replace("'", '\u2019').lower() in t.lower(), f'Variable {c}\'s title, "{title}", is not printed')
             check(where, 'October 15, 2026' in t, 'the snapshot date is not printed')
         if rid == '14.144':
             for rid_, r_ in e3['reforms'].items():

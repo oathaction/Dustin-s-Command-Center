@@ -3,7 +3,7 @@
  "title": "Step through two loops one connection at a time, from the variable they share.",
  "rule": [
   "When two loops from our systems atlas pass through one variable, step the reader through both on one loop stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, share Variable C3, risk of losing office. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step belongs to.",
-  "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Never number the two loops as one, and never say one outweighs the other: the atlas holds no measure of a loop’s strength (Rule 15.21)."
+  "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21)."
  ],
  "use_when": null,
  "use_instead": [],

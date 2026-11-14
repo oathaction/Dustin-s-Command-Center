@@ -144,7 +144,8 @@ COURT_STEPS = [
                              'send the case back to the trial court.',
      '28 U.S.C. 2106; Federal Rules of Appellate Procedure, Rules 40 and 41'),
     ('Supreme Court petition', 'The side that lost asks the Supreme Court to hear the case, within 90 days. The Court '
-                               'chooses: review is “not a matter of right, but of judicial discretion.”',
+                               'chooses: review is “not a matter of right, but of judicial discretion.” A denied '
+                               'petition ends the case here, and the ruling below stands.',
      'Rules of the Supreme Court, Rules 10, 13 and 16; 28 U.S.C. 1254 and 2101'),
     ('Supreme Court ruling', 'Briefs, argument and the Court’s decision, with the same powers as the court of appeals. A '
                              'tie vote leaves the ruling below in place.',
@@ -263,15 +264,15 @@ BALLOTS = [
          line='A random sample of the signatures showed fewer valid ones than the law requires.'),
 ]
 COURTS = [
-    dict(id='99014', noun='Case', kind='court', title='Wetland fill permit',
+    dict(id='99014', noun='Case', kind='court', title='Bakery name trademark',
          states=['done', 'done', 'done', 'now', 'notyet', 'notyet'],
          line='A panel of three judges heard argument on May 6 and has not ruled.'),
-    dict(id='99015', noun='Case', kind='court', title='Ferry route contract',
-         states=['done', 'done', 'done', 'done', 'done', 'skipped'], end='Review denied on January 11.',
-         line='The Supreme Court declined to hear the case, so the appeals court’s ruling stands.'),
+    dict(id='99015', noun='Case', kind='court', title='Ferry route contract', states=['done'] * 6,
+         end='Reversed and sent back by the Supreme Court on June 2.',
+         line='The Court sent the case back to the appeals court, which takes it up again.'),
     dict(id='99016', noun='Case', kind='court', title='Highway noise walls',
-         states=['done', 'stopped', 'notyet', 'notyet', 'notyet', 'notyet'], end='Settled on April 9.',
-         line='The two sides agreed to end the case and filed to dismiss it before trial.'),
+         states=['done', 'done', 'done', 'done', 'stopped', 'notyet'], end='Review denied by the Supreme Court on January 11.',
+         line='The Court declined to hear the case, so the appeals court’s ruling stands.'),
 ]
 
 PAGE_BILL = dict(id='H.99001', title='Public meeting notice', states=LIST_BILLS[0]['states'],
@@ -345,8 +346,11 @@ STATE_ICON = {'done': 'S-done', 'now': 'S-now', 'take': 'S-take-part', 'notyet':
               'stopped': 'S-stopped'}
 
 
-def mark_vars(ctx, surf):
-    """The colors a mark needs on one surface, read from the surface's tokens."""
+def mark_vars(ctx, surf, follow=False):
+    """The colors a mark needs on one surface, read from the surface's tokens. follow=True (round 5, chapter 11's own
+    pieces) takes the surface color from the stage's role, --oa-color-surface, like every other color here, so a piece
+    drawn for Newsprint keeps its numbers and ring fills on a Charcoal stage too; on a Newsprint stage the role is
+    Newsprint, so nothing on the page moves. Chapter 01's card (guide_editor_ch01.py) keeps the default."""
     on = {'n': 'onNewsprint', 'c': 'onCharcoal'}[surf]
     v = ctx.v
     for k in ('graphic.essential', 'graphic.subtle', 'text.primary', 'text.secondary', 'border.hairline', 'border.strong'):
@@ -354,7 +358,7 @@ def mark_vars(ctx, surf):
     # The stage carries the surface's class, which points the short role names at that surface's values (shell notes,
     # section 5), so a piece on Charcoal draws in Charcoal's tokens with the same declarations.
     return (f'--ink:{v("oa.color.graphic.essential")};--sub:{v("oa.color.graphic.subtle")};'
-            f'--bg:{v("oa.color.surface." + ("newsprint" if surf == "n" else "charcoal"))};'
+            f'--bg:{v("oa.color.surface" if follow and surf == "n" else "oa.color.surface." + ("newsprint" if surf == "n" else "charcoal"))};'
             f'--txt:{v("oa.color.text.primary")};--txt2:{v("oa.color.text.secondary")};'
             f'--hair:{v("oa.color.border.hairline")};--strong:{v("oa.color.border.strong")};'
             f'--red:{v("oa.color.palette.pillarRed")};--key:{v("oa.component.button.ask.keyline.onNewsprint")}')
@@ -516,7 +520,7 @@ def piece_css(ctx, surf, size, sizing='floor'):
     """Styles every tracker piece shares, for a surface ('n', 'c') and a width ('s' 360 px, 'l' 600 px)."""
     T = ctx.ty
     h3 = T('h3', 'ceil' if sizing == 'ceil' else 'floor')
-    return (f':scope{{{mark_vars(ctx, surf)}}}' + MARK_CSS +
+    return (f':scope{{{mark_vars(ctx, surf, follow=True)}}}' + MARK_CSS +
             f'.pc{{padding:20px 16px 24px;color:var(--txt)}}'
             + ('.pc{padding:24px 24px 28px}' if size == 'l' else '') +
             f':where(.pc p){{margin:0}}'
@@ -833,7 +837,7 @@ def s_11_1(ctx):
 
 def s_11_2(ctx):
     T = ctx.ty
-    css = (f':scope{{{mark_vars(ctx, "n")}}}' + MARK_CSS +
+    css = (f':scope{{{mark_vars(ctx, "n", follow=True)}}}' + MARK_CSS +
            f'.sk-l{{list-style:none;margin:0;padding:0;display:grid;gap:12px;'
            f'grid-template-columns:repeat(auto-fill,minmax(min(100%,13.5rem),1fr))}}'
            f'.sk-c{{border:1px solid var(--hair);padding:14px 14px 16px}}'
@@ -1094,7 +1098,7 @@ def s_11_6(ctx):
 
 def s_11_7(ctx):
     T = ctx.ty
-    css = (f':scope{{{mark_vars(ctx, "n")}}}' + MARK_CSS +
+    css = (f':scope{{{mark_vars(ctx, "n", follow=True)}}}' + MARK_CSS +
            f'.sz{{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}}'
            f'.sz li{{display:grid;grid-template-columns:minmax(0,12rem) minmax(0,1fr);gap:8px 24px;align-items:center;'
            f'padding:12px 0;border-bottom:1px solid var(--hair)}}'
@@ -1248,10 +1252,10 @@ def s_11_11(ctx):
            'tracker’s marks, and a key of the six steps, Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme '
            'Court petition and Supreme Court ruling, and of the marks. ' + alt_rows(COURTS, nm))
     spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, illustrative=True)
-    bad = dict(COURTS[1], states=['done'] * 6, end='Affirmed by the Supreme Court on January 11.',
+    bad = dict(COURTS[2], states=['done'] * 6, end='Affirmed by the Supreme Court on January 11.',
                line='The Supreme Court left the appeals court’s ruling in place.')
-    html2 = records_piece(ctx, 'Where the ferry route contract case stands', [bad], nm, ('done',), band=True)
-    alt2 = ('Failure case: do not publish. An Illustrative federal civil case, 99015, Ferry route contract, at 360 px, with '
+    html2 = records_piece(ctx, 'Where the highway noise walls case stands', [bad], nm, ('done',), band=True)
+    alt2 = ('Failure case: do not publish. An Illustrative federal civil case, 99016, Highway noise walls, at 360 px, with '
             'all six steps drawn as done, Supreme Court ruling among them. The words read “Affirmed by the Supreme Court '
             'on January 11. The Supreme Court left the appeals court’s ruling in place.” The Court denied review and never '
             'heard the case, and nothing on the card says so.')
@@ -1322,7 +1326,7 @@ def s_opener(ctx):
         lis.append(f'<li class="{seg}{cur}">{sample(s_, 26, num=i + 1)}<span class="t"><span class="n">{nm[i]}</span>'
                    f'<span class="s">{STATE_WORD[s_]}</span></span></li>')
     T = ctx.ty
-    css = (f':scope{{{mark_vars(ctx, "n")}}}' + MARK_CSS +
+    css = (f':scope{{{mark_vars(ctx, "n", follow=True)}}}' + MARK_CSS +
            '.op{container-type:inline-size;color:var(--txt)}:where(.op p){margin:0}'
            '.ot{list-style:none;margin:0;padding:0}'
            '.ot li{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:8px;'
@@ -1772,10 +1776,10 @@ def build(ctx):
                      'Until the state certifies the count, a measure at step 6 reads as counted, never as passed: “Step 6 '
                      'of 6: Vote. The count stays unofficial until the state certifies it.” Once it is certified, the '
                      'words say Passed or Failed, with the dates, and when a measure that passed takes effect. A measure '
-                     'the Legislature enacts ends at step 4 as law, “Enacted by the Legislature”, with steps 5 and 6 '
-                     'under slashes. A measure that stops ends its line on a square, with the reason and the date: Not '
-                     'certified by the attorney general, Did not qualify: too few valid signatures, Withdrawn by its '
-                     'proponents, or Removed from the ballot by a court.'],
+                     'that ends before step 6 ends its line on a square at the last step it reached, with the reason and '
+                     'the date: Not certified by the attorney general, Did not qualify: too few valid signatures, '
+                     'Withdrawn by its proponents, Removed from the ballot by a court, or Enacted by the Legislature, '
+                     'which makes it law with no vote of the people.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and a '
                              'measure becomes law only on the certified result. Words that wait for certification keep a '
@@ -1800,10 +1804,11 @@ def build(ctx):
                 {'label': 'Before the count is certified', 'value': '“Step 6 of 6: Vote.” with the date the state '
                                                                     'certifies; never Passed or Failed'},
                 {'label': 'The end, in words', 'value': 'Passed or Failed, with the date of the vote and the date it was '
-                                                        'certified, then when it takes effect; Enacted by the Legislature'},
-                {'label': 'Stopped', 'value': 'A square at the step: Not certified by the attorney general; Did not '
-                                              'qualify: too few valid signatures; Withdrawn by its proponents; Removed '
-                                              'from the ballot by a court'},
+                                                        'certified, then when it takes effect'},
+                {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Not '
+                                                          'certified by the attorney general; Did not qualify: too few '
+                                                          'valid signatures; Withdrawn by its proponents; Removed from the '
+                                                          'ballot by a court; Enacted by the Legislature, on step 4'},
                 {'label': 'Referred by the Legislature', 'value': 'Steps 1 to 3 under slashes, and step 4 “Referred by the '
                                                                   'Legislature” with its date'},
                 {'label': 'Marks and sizes', 'value': 'The bill tracker’s, from Rules 11.2 and 11.7'},
@@ -1820,24 +1825,26 @@ def build(ctx):
                      'Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme '
                      'Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker '
                      'uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals '
-                     'court ruling, Supreme Court petition and Supreme Court ruling. A step nobody took keeps its number '
-                     'under a slash, as when no side appeals in time or the Supreme Court declines to hear the case.',
+                     'court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no '
+                     'room for keeps its number under a slash, as when an appeal goes straight from a special panel of '
+                     'three district judges to the Supreme Court.',
                      'The words say how each court ruled, with the date, in the law’s own verbs: Affirmed, Reversed, '
                      'Vacated or Modified, joined to “and sent back” when a court returns the case to the court below. '
-                     'The marks never move backward; a case sent back says so in a sentence after the end words. When '
-                     'the Supreme Court denies a petition, step 6 keeps its slash and the words say “Review denied”: the '
-                     'ruling below stands. A case that ends early, settled or dismissed, ends its line on a square at the '
-                     'step where it stopped.'],
+                     'The marks never move backward; a case sent back says so in a sentence after the end words. A case '
+                     'that ends before step 6 ends its line on a square at the last step it reached: settled, dismissed, '
+                     'never appealed, or turned away by the Supreme Court. When the Court denies a petition, the square '
+                     'sits on step 5 and the words say “Review denied by the Supreme Court”, so the ruling below stands.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['In the Supreme Court’s own words, review is “not a matter of right, but of judicial '
                              'discretion”, so a denied petition says only that the Court chose not to hear the case. A '
                              'tracker that filled step 6 would tell a reader the Court had ruled on a case it never '
-                             'heard. Naming each court’s ruling as its own step keeps clear which court spoke last.'],
+                             'heard. Naming each court’s ruling as its own step, and the court in the end words, keeps '
+                             'clear which court spoke last.'],
                     'basis': '28 U.S.C. 1291, 2106 and 2107; Rules of the Supreme Court, Rules 10, 13 and 16'},
             'correct': {'specimen': 's-11-11-correct',
-                        'caption': 'Three cases at 360 px. One waits on the appeals court; the Supreme Court denied '
-                                   'review of one, so step 6 keeps its slash and the ruling below stands; and one settled '
-                                   'before trial.'},
+                        'caption': 'Three cases at 360 px. One waits on the appeals court; the Supreme Court reversed one '
+                                   'and sent it back, said in words while all six steps stay filled; and the Court denied '
+                                   'review of one, so its line ends on a square at step 5.'},
             'failure': {'specimen': 's-11-11-failure',
                         'caption': '<strong>Fails Rule 11.11.</strong> The Supreme Court denied review, and the tracker '
                                    'fills step 6 and prints “Affirmed”, so a reader takes a refusal to hear the case for a '
@@ -1845,14 +1852,16 @@ def build(ctx):
             'specs': [
                 {'label': 'Steps', 'value': '1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme '
                                             'Court petition, 6 Supreme Court ruling'},
-                {'label': 'Never appealed', 'value': 'Steps 3 to 6 under slashes once the time to appeal has passed: 30 '
-                                                     'days, or 60 when the United States is a party',
-                 'token': 'oa.component.mark.slash'},
-                {'label': 'Review denied', 'value': 'Step 6 under a slash, and “Review denied” with the date; the ruling '
-                                                    'below stands'},
                 {'label': 'Each ruling, in words', 'value': 'Affirmed; Reversed; Vacated; Modified; with “and sent back” '
-                                                            'where the court returns the case'},
-                {'label': 'Stopped', 'value': 'A square at the step: Settled; Dismissed; Appeal dismissed'},
+                                                            'where the court returns the case, and the court named'},
+                {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Settled; '
+                                                          'Dismissed; Appeal dismissed; Review denied by the Supreme Court, '
+                                                          'on step 5'},
+                {'label': 'Never appealed', 'value': 'A square on step 2 once the time to appeal has passed: 30 days, or '
+                                                     '60 when the United States is a party'},
+                {'label': 'Straight to the Supreme Court', 'value': 'Steps 3 and 4 under slashes, where the law sends an '
+                                                                    'appeal from three district judges straight there',
+                 'token': 'oa.component.mark.slash'},
                 {'label': 'Inside a step, in words', 'value': 'An order on an injunction and its appeal, under step 2; a '
                                                               'rehearing by the full appeals court, under step 4'},
                 {'label': 'Marks and sizes', 'value': 'The bill tracker’s, from Rules 11.2 and 11.7'},

@@ -5982,11 +5982,11 @@
    "title": "Mark the survey’s margin on a monthly chart, and name the changes that pass it.",
    "rule": [
     "A monthly count from a survey moves from one month to the next by chance as well as by change. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, level and source in a note (Rule 14.9). Name only the changes that pass it, each with its month and value in the subject ink (Rule 14.6), and keep the count of every change true beside them.",
-    "Draw every month in the window the question sets, with its reason (Rule 14.10), hatch the months still preliminary and dash the average where it includes one (Rule 14.11), and say in a note that the band covers one month’s change and not the average. The chart keeps its phone drawing, its table and its files from the kit (Rules 14.12 to 14.14)."
+    "Draw every month in the window the question sets, with its reason (Rule 14.10), hatch the months still preliminary and dash the average where it includes one (Rule 14.11), and say in a note that the band covers one month’s change only. The chart keeps its phone drawing, its table and its files from the kit (Rules 14.12 to 14.14)."
    ],
    "why": {
     "text": [
-     "Without the band, every dip below zero reads as jobs lost. With it, a reader sees that five of the seven drops sit inside what the survey can measure and two pass it, so the chart names those two and still counts all seven, as the record holds them."
+     "A survey of employers estimates each month’s change, and a small drop can be chance alone. The band shows a reader that five of the seven drops sit inside what the survey can measure and two pass it, so the chart names those two and still counts all seven, as the record holds them."
     ],
     "basis": "The Bureau of Labor Statistics’ Employment Situation technical note, October 2026 release; Rule 14.9"
    },
@@ -6031,7 +6031,7 @@
    ],
    "correct": {
     "specimen": "s-14-s96",
-    "caption": "S14’s monthly job change in full: all 57 months, the survey’s margin as a band, the two drops past it named, the preliminary months hatched, with its phone drawing and table."
+    "caption": "S14’s monthly job change in full: all 57 months, the survey’s margin as a band, the two drops past it named and the preliminary months hatched, with its phone drawing under it and its table."
    },
    "failure": {
     "specimen": "s-14-142-failure",
@@ -6043,7 +6043,7 @@
    "title": "Step through two loops one connection at a time, from the variable they share.",
    "rule": [
     "When two loops from our systems atlas pass through one variable, step the reader through both on one loop stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, share Variable C3, risk of losing office. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step belongs to.",
-    "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Never number the two loops as one, and never say one outweighs the other: the atlas holds no measure of a loop’s strength (Rule 15.21)."
+    "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21)."
    ],
    "why": {
     "text": [
@@ -6110,8 +6110,8 @@
    "id": "14.144",
    "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
    "rule": [
-    "Set the reforms that act on one loop side by side, one card each, in the order of their IDs, with the same rows in the same order: the targets on the loop, the targets elsewhere with their layer, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets turn red on the drawing (Rule 15.20), and keep every card in view, so the comparison never rests on memory.",
-    "Print each effect as the atlas stores it: the code, then any qualifier, the words after the code that say where or when the effect holds, such as “+L local” or “+M renter-owner”, then the code’s meaning. A zero says “no expected effect”. Add no total, count, average or rank, and give no code a fill, bar or shade, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
+    "Set the reforms whose records name one loop side by side, one card each, in the order of their IDs, with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets on the loop turn red (Rule 15.20), and keep every card in view, so the comparison never rests on memory. A reform can name a loop and target none of its steps, as Reform R-38 does with Loop R8: name each target outside the loop in words with its layer, and draw no path the atlas does not hold.",
+    "Print each effect as the atlas stores it: the code, then any qualifier, the words after the code that say where or when the effect holds, such as “+L local” or “+M renter-owner”, then the code’s meaning. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
    ],
    "why": {
     "text": [
@@ -6136,7 +6136,7 @@
     },
     {
      "label": "Targets",
-     "value": "The chosen reform’s on the drawing, in Rule 12.5’s red; the others in words with their layer",
+     "value": "The chosen reform’s on the loop, in Rule 12.5’s red; each one outside it in words, with its layer and, for a connection, its two ends",
      "token": "oa.color.data.emphasis.red"
     },
     {

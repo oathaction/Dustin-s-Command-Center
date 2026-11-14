@@ -76,9 +76,8 @@ FC = "Failure case: do not publish. "
 # The rule list the main session fixed (R7). Rounds 1 and 2 build BUILT; the rest wait for their rounds.
 # ---------------------------------------------------------------------------------------------------------------
 BUILT = ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "15.8", "15.9", "15.10", "15.11", "15.12", "15.13",
-         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21", "15.22"]
+         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21", "15.22", "15.24"]
 PLANNED = {"15.23": "Show which stages sit behind each of a tracker’s six steps.",
-           "15.24": "Use the workflow for the reform’s route, with its official source and check date.",
            "15.25": "Reconcile every earlier atlas drawing to the model, and cite none as evidence."}
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -3869,12 +3868,360 @@ def rule_15_22(book):
     }
 
 
+
+def wf_first(route, first, *phrases):
+    """A row of the workflow sources file by its first cell (a stage, a state, a city or a tracker step), held to the
+    phrases a line relies on and to a read date; rows read only as search snippets or not in detail never count."""
+    rows = [r for r in WF.get(route, []) if list(r.values())[0] == first]
+    need(rows, f"the workflow sources file has no {route} row {first!r}")
+    r = rows[-1]
+    said = " ".join(r.values()).replace("’", "'")
+    for ph in phrases:
+        need(ph.replace("’", "'") in said, f"{route} row {first!r} no longer says {ph!r}")
+    need(re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.get("Checked", "")), f"{route} row {first!r} carries no read date")
+    need("search only" not in r.get("Source", "").lower() and "not read closely" not in r.get("Source", ""),
+         f"{route} row {first!r}: its source was not read in full")
+    return r
+
+
+def dates_words(isos):
+    """Read dates in words, one year: "November 11, 12 and 14, 2026"."""
+    ds = sorted(set(isos))
+    need(len({d[:4] for d in ds}) == 1 and len({d[5:7] for d in ds}) == 1, "read dates span a month or a year")
+    days = [str(int(d[8:])) for d in ds]
+    mon = C13.MONTHS[int(ds[0][5:7]) - 1]
+    lst = days[0] if len(days) == 1 else ", ".join(days[:-1]) + " and " + days[-1]
+    return f"{mon} {lst}, {ds[0][:4]}"
+
+
+# Each route's stages in plain words, in order, from the research lead's "Facts for owners" (item 2) and the sources file,
+# and the official sources behind them, each held to the rows it names. A note adds what a reader of that route most needs.
+ROUTE_SET = {
+    "LOC": dict(
+        stages=["Home-rule power, within the state’s limits", "Introduced and sent to a committee", "Hearing",
+                "Two or three readings", "Council vote", "The mayor signs or vetoes", "Override by two-thirds",
+                "In force, or sent to a referendum"],
+        sources=[("Massachusetts Constitution, Amendment Article LXXXIX", [("Home rule: what a city may enact", "exercise any power or function"),
+                                                                        ("State limits on local power (preemption)", "regulate elections")]),
+                 ("the charters of Boston, Baltimore and Portland, Oregon", [("Boston, Northeast", "two thirds of all the city councillors"),
+                                                                            ("Baltimore, South", "read on three different days"),
+                                                                            ("Portland, Oregon, West", "The Mayor is not a member of Council")]),
+                 ("the Minneapolis City Council’s rules", [("Minneapolis, Midwest (council rules, not the charter)", "veto of the Mayor shall be overturned")])],
+        note=("Portland, Oregon’s charter gives its mayor no veto.", "Portland, Oregon, West", "no section read gives a veto")),
+    "SS": dict(
+        stages=["Introduced and sent to a committee", "Hearing and report", "Readings and a vote in each chamber",
+                "The governor’s days to act", "Veto, item veto and override", "A bill left at adjournment"],
+        sources=[("the constitutions of Massachusetts, Nebraska, Virginia and Arizona",
+                  [("Massachusetts, Northeast", "Two-thirds of each branch"), ("Nebraska, Midwest", "three-fifths of the members elected"),
+                   ("Virginia, South", "two-thirds vote"), ("Arizona, West", "two-thirds of the members elected"),
+                   ("Virginia", "referred to a committee of each house"), ("Arizona", "read by sections on three different days")]),
+                 ("the Massachusetts Joint Rules and the Rules of the Nebraska Legislature",
+                  [("Massachusetts", "shall hold a public hearing"), ("Nebraska", "General File, Select File and Final Reading")])],
+        note=("Nebraska’s Legislature has one chamber.", "Nebraska", "Nebraska Unicameral Legislature")),
+    "BI": dict(
+        stages=["Filed", "Title and summary", "Signatures", "The legislature votes first, in an indirect initiative",
+                "On the ballot", "Vote", "Certified, then in effect", "Amended or repealed later, as each state allows"],
+        sources=[("the constitutions of Massachusetts, Ohio and Michigan",
+                  [("4 Legislature (indirect initiative)", "within 40 session days"), ("6 Vote, certification and effect", "thirty days after the election"),
+                   ("After the vote", "may amend or repeal a law approved by the people")]),
+                 ("the California Secretary of State’s Statewide Initiative Guide",
+                  [("2 Title and summary", "circulating title and summary"), ("3 Signatures", "fails to qualify for the ballot"),
+                   ("5 On the ballot", "certificate of qualification")])],
+        note=None),
+    "FS": dict(
+        stages=["Introduced and sent to committee", "Passed by each chamber, by the usual rules, suspension, cloture or "
+                "reconciliation", "One text", "Presented to the President", "Signed, vetoed and overridden, or pocket vetoed",
+                "Public law", "Funded, put to work by rules, reviewed by Congress and the courts", "Ended by a sunset or a repeal"],
+        sources=[("the U.S. Constitution, Article I", [("Signature, veto and override", "two thirds of that House"),
+                                                       ("Appropriations", "Appropriations made by Law")]),
+                 ("House Rule XV and the House’s and Senate’s own pages", [("Introduction and committee", "sponsors a bill"),
+                                                                          ("House: suspension of the rules", "two-thirds"),
+                                                                          ("Ending Senate debate (cloture)", "60 of the 100-member Senate")]),
+                 ("2 U.S.C. 641 and 683, and 5 U.S.C. 553, 706 and 801", [("Senate: reconciliation", "20 hours"),
+                                                                          ("Funding: rescission proposals", "45-day period"),
+                                                                          ("Agency rulemaking", "not less than 30 days"),
+                                                                          ("Congressional review of a rule", "60 days after")])],
+        note=("Rule 15.22 draws all its stages, each with its source.", None, None)),
+    "FR": dict(
+        stages=["Each chamber sets its own rules", "The House adopts its rules each Congress, and the Senate’s carry over",
+                "A Senate rule changes by two-thirds, or by a precedent set by majority vote", "Nomination",
+                "Committee", "The Senate’s vote to advise and consent"],
+        sources=[("the U.S. Constitution, Article I, Section 5, and Article II, Section 2",
+                  [("Each chamber sets its rules", "Each House may determine the Rules of its Proceedings"), ("Nomination", "Advice and Consent")]),
+                 ("the Standing Rules of the Senate", [("Senate: rules carry over", "continue from one Congress to the next"),
+                                                      ("Senate: ending debate, and changing the rules", "two-thirds of the Senators present and voting"),
+                                                      ("Committee referral and the final question", "advise and consent")]),
+                 ("the Senate’s roll call votes of November 21, 2013 and April 6, 2017", [("Senate: a precedent set by majority vote", "November 21, 2013")]),
+                 ("House Resolution 5 of the 119th Congress", [("House: rules adopted each Congress", "215 - 209")])],
+        note=None),
+    "FA": dict(
+        stages=["Executive order, published in the Federal Register", "White House review of a draft rule",
+                "Proposed rule, comment and final rule", "Guidance, with no comment period", "Report to Congress, and disapproval",
+                "Court review", "Revoked by a later order"],
+        sources=[("Executive Order 12866 and 44 U.S.C. 1505", [("Review of a draft rule at the White House", "90 calendar days"),
+                                                               ("Publication", "Presidential proclamations and Executive orders")]),
+                 ("5 U.S.C. 551, 553, 706, 801 and 802", [("What counts as a rule", "agency statement"),
+                                                          ("Guidance with no comment period", "interpretative rules"),
+                                                          ("Congressional Review Act: disapproval", "joint resolution of disapproval"),
+                                                          ("Litigation", "hold unlawful and set aside")]),
+                 ("Executive Orders 13992 and 14148", [("Revocation by a later administration", "revoked 67 orders")])],
+        note=("What one order does, another can undo.", None, None)),
+    "ENF": dict(
+        stages=["Complaint", "Discovery, settlement or trial", "An agency’s own complaint", "Consent order or judgment, "
+                "open for public comment", "A court’s finding that a settlement serves the public interest", "Appeal"],
+        sources=[("15 U.S.C. 16 and 45, 16 CFR 2.34 and 29 U.S.C. 160", [("An agency's own complaint (FTC)", "reason to believe"),
+                                                                       ("Consent order (FTC)", "30 days"),
+                                                                       ("Consent judgment (Justice Department, antitrust)", "public interest"),
+                                                                       ("Time limit and court review (NLRB)", "six months")]),
+                 ("U.S. Courts, “Civil Cases” and “Appeals”", [("Complaint", "files a complaint"), ("Appeal", "entitled to appeal")]),
+                 ("the National Labor Relations Board, “Investigate Charges”", [("Labor charge, investigation and complaint (NLRB)", "Each charge is investigated")])],
+        note=None),
+    "CRT": dict(
+        stages=["District court", "Appeal from a final decision", "Decision, rehearing or remand", "Petition to the Supreme Court",
+                "The Court chooses whether to hear it", "A later ruling can replace earlier doctrine"],
+        sources=[("28 U.S.C. 1254, 1291, 2101 and 2106", [("Appeal from a final decision", "final decisions of the district courts"),
+                                                          ("Asking the Supreme Court", "ninety days"),
+                                                          ("4 Appeals court ruling", "affirm, modify, vacate, set aside or reverse")]),
+                 ("the Rules of the Supreme Court", [("5 Supreme Court petition", "not a matter of right")]),
+                 ("U.S. Courts, “Court Role and Structure” and “Appeals”", [("Trial court and courts of appeals", "13 appellate courts"),
+                                                                           ("Decision, en banc review or remand", "Most appeals are final")]),
+                 ("Loper Bright Enterprises v. Raimondo, 2024", [("Later doctrine replaces earlier doctrine", "Chevron is overruled")])],
+        note=None),
+    "AV": dict(
+        stages=["Proposed by two-thirds of both houses, or by a convention two-thirds of the states call",
+                "Ratified by three-fourths of the states, 38 of 50", "Certified by the Archivist"],
+        sources=[("the U.S. Constitution, Article V", [("Proposal by Congress or a convention", "two thirds of both Houses"),
+                                                       ("Ratification by the states", "three fourths")]),
+                 ("1 U.S.C. 106b and the National Archives", [("When it takes effect", "38 of 50 States"),
+                                                              ("Certification", "with his certificate")])],
+        note=None),
+    "IC": dict(
+        stages=["Enacted state by state", "In effect at its threshold", "Consent of Congress, where a court requires it",
+                "Withdrawal"],
+        sources=[("the U.S. Constitution, Article I, Section 10, and Virginia v. Tennessee, 1893",
+                  [("The consent rule", "without the Consent of Congress"), ("Which compacts need consent", "just supremacy of the United States")]),
+                 ("Washington’s and Minnesota’s statutes for the national popular vote compact",
+                  [("Enactment, state by state", "may become a member"), ("The threshold", "majority of the electoral votes"),
+                   ("Withdrawal", "may withdraw")])],
+        note=None),
+    "CIV": dict(
+        stages=["Organize, assemble and petition", "Fund a charity, which may not campaign", "Fund an advocacy group",
+                "Bargain as workers"],
+        sources=[("the U.S. Constitution, First Amendment", [("Organize and act", "peaceably to assemble")]),
+                 ("the Internal Revenue Service’s pages on 501(c)(3) and 501(c)(4) groups",
+                  [("Fund a charity", "may not attempt to influence legislation"), ("Fund an advocacy group", "primary activity")]),
+                 ("29 U.S.C. 157", [("Bargain as workers", "bargain collectively")])],
+        note=("No government stage decides this route; the law sets its limits.", "Organize and act", None)),
+}
+need(list(ROUTE_SET) == ROUTE_CODES, "the reference set leaves the atlas's order (ruling (e))")
+FEAS_ORDER = ["high", "medium", "low", "very low"]
+need(list(V7["routes"]["feasibility_scale"]) == FEAS_ORDER, "the atlas's feasibility scale changed")
+DEP_ORDER = ["authority", "funding", "enforcement", "capacity", "durability"]
+need(list(V7["routes"]["dependencies"]) == DEP_ORDER, "the atlas's five dependency questions changed")
+
+
+def quote_ids(text):
+    """The atlas's own words, quoted exactly, with each ID it names set as a typed chip outside the quotation marks and the
+    name the atlas gives it after the chip (Rule 13.9, round 1's SD-2): "Where D7: Entrenched control ... is high" prints
+    as "Where", Variable D7 "Entrenched control ...", "is high". Parentheses and commas that held the ID fall away."""
+    kinds = {**{k: "Variable" for k in NODE}, **{k: "Reform" for k in REFORM}}
+    parts, pos = [], 0
+    for m in re.finditer(r"\(?\b(D\d|[A-E]\d{1,2}|R-\d{2}): ", text):
+        code = m.group(1)
+        need(code in kinds, f"the atlas's text names {code}, which is no variable or reform")
+        rest = text[m.end():]
+        name = node(code)["title"] if code in NODE and rest.startswith(node(code)["title"]) else re.match(r"[^,;.()]+", rest).group(0)
+        parts.append(("q", text[pos:m.start()]))
+        parts.append(("c", f'{chip(kinds[code], code)} “{e(name.strip())}”'))
+        pos = m.end() + len(name)
+        if text[pos:pos + 1] == ")":
+            pos += 1
+    parts.append(("q", text[pos:]))
+    out = []
+    for k, s_ in parts:
+        if k == "c":
+            out.append(s_)
+            continue
+        s_ = re.sub(r"^[\s,;]+", "", s_).rstrip()
+        s_ = re.sub(r"\s*\($", "", s_)
+        if s_:
+            out.append(f"“{e(s_)}”")
+    return " ".join(out)
+
+
+def route_entries(code):
+    """Every reform route entry that names a route, in reform order, with its feasibility and its own check date."""
+    return [(rid, x) for rid, r in REFORM.items() for x in r["routes"] if x["route"] == code]
+
+
+def entry_date(x):
+    return f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked"
+
+
+def route_card(code):
+    """One route as a card of live text: the atlas's name, instrument and who acts, as of the snapshot; its stages and the
+    official sources behind them, with the date our research read them; what it depends on, in the atlas's words; and
+    how many reform entries name it, each listed in a disclosure with its own date or "Not checked" (Rule 13.10)."""
+    rt, d = ROUTE[code], ROUTE_SET[code]
+    rows, cites = [], []
+    for cite, keys in d["sources"]:
+        for first, ph in keys:
+            rows.append(wf_first(code, first, ph))
+        cites.append(cite)
+    srcs = "; ".join(cites)
+    note = ""
+    if d["note"]:
+        words, first, ph = d["note"]
+        if first:
+            wf_first(code, first, *((ph,) if ph else ()))
+        note = f'<p class="rn">{e(words)}</p>'
+    ents = route_entries(code)
+    n_d = sum(1 for _, x in ents if x["checked"])
+    stg = "".join(f"<li>{e(s)}</li>" for s in d["stages"])
+    lst = "".join(f'<li>{chip("Reform", rid)} {chip("Route", code)} <span class="et">“{e(REFORM[rid]["title"])}”</span>'
+                  f'<span class="ef2"><b>{e(x["feasibility"].capitalize())}</b> feasibility. {e(entry_date(x))}</span></li>'
+                  for rid, x in ents)
+    chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
+    disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
+            f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">What it depends on, and its '
+            f'{"entry" if len(ents) == 1 else (words_n(len(ents)) if len(ents) < 10 else str(len(ents))) + " entries"}</span>{chev}</summary>'
+            f'<div class="oa-disclosure-body"><p class="dep"><b>Depends on</b>, in the atlas’s words: {quote_ids(rt["depends"])}</p>'
+            f'<p class="k">{"Its entry" if len(ents) == 1 else "Its entries"}, as of {SNAP}</p><ul class="ent">{lst}</ul></div>'
+            f'</details></div></div>')
+    cnt = ("One reform entry names this route, and the atlas has not checked it." if len(ents) == 1 else
+           f"{len(ents)} reform entries name this route; the atlas checked {words_n(n_d)} of them, on {SNAP}." if n_d else
+           f"{len(ents)} reform entries name this route, and the atlas checked none of them.")
+    return (f'<li class="rc"><p class="hed">{chip("Route", code)}<span>“{e(rt["name"])}”</span></p>'
+            f'<p class="ri">{e(rt["instrument"])}.</p><p class="rw"><b>Who acts</b> {e(rt["who"])}</p>'
+            f'<p class="k">Its stages</p><ol class="sl">{stg}</ol>{note}'
+            f'<p class="rs2"><b>Official sources</b>, read {dates_words(r["Checked"] for r in rows)}: {e(srcs)}</p>'
+            f'<p class="rcn">{e(cnt)}</p>{disc}</li>'), len(ents), n_d
+
+
+CSS.update({
+    # Rule 15.24's reference set: one card a route, one column under 680 px and two from 680 px, rows that start level;
+    # a route's stages run as a line with an arrow between them, the arrow hidden from screen readers
+    "rset": (".rset{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0 24px}"
+             ".rc{padding:16px 0 18px;border-top:1px solid var(--oa-color-border-strong);font:var(--oa-type-body-small);min-width:0}"
+             ".rc>*+*{margin-top:4px}.rc>.k{margin-top:10px;margin-bottom:2px}.rc .hed{margin:0 0 2px}"
+             ".rc .ri{font-weight:var(--oa-font-weight-semibold)}.rc b{font-weight:var(--oa-font-weight-semibold)}"
+             ".rc .sl{list-style:none;margin:0;padding:0;display:inline}.rc .sl li{display:inline}"
+             ".rc .sl li+li::before{content:\" → \" / \"\";color:var(--oa-color-text-secondary)}"
+             f".rc :is(.rs2,.rcn){{{C13.CAP};color:var(--oa-color-text-secondary)}}.rc .rs2{{margin-top:8px}}"
+             ""
+             ".rc .oa-disclosure-set{margin-top:8px}.ent{list-style:none;margin:0;padding:0}"
+             ".ent li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ent li:first-child{border-top:0;padding-top:0}"
+             ".ent .et{display:block;margin-top:4px}.ent .ef2{display:block}.rc .dep{margin:0 0 14px}"
+             "@container oa-frame (min-width:680px){.wd .rset{grid-template-columns:repeat(2,minmax(0,1fr))}}"),
+    "scl": (".scl{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}"
+            "@container oa-frame (min-width:680px){.wd .scl{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}}"),
+    "one": (".one{border:2px solid var(--oa-color-border-strong);padding:14px 16px;margin:16px 0 8px;font:var(--oa-type-body-small)}"
+            ".one>*+*{margin-top:6px}.one b{font-weight:var(--oa-font-weight-semibold)}"),
+})
+
+
+def rule_15_24(book):
+    total = sum(len(r["routes"]) for r in REFORM.values())
+    dated = sum(1 for r in REFORM.values() for x in r["routes"] if x["checked"])
+    need((total, dated) == (126, 13), f"the atlas's route entries changed: {total}, {dated} dated")
+    per = {c: (len(route_entries(c)), sum(1 for _, x in route_entries(c) if x["checked"])) for c in ROUTE_CODES}
+    need(per == {"LOC": (15, 2), "SS": (29, 3), "BI": (11, 2), "FS": (38, 3), "FR": (6, 0), "FA": (7, 1), "ENF": (5, 2),
+                 "CRT": (7, 0), "AV": (3, 0), "IC": (1, 0), "CIV": (4, 0)}, f"the entries by route changed: {per}")
+    cards = [route_card(c) for c in ROUTE_CODES]
+    # one reform read through its route's workflow: R-28's federal route names reconciliation, Rule 15.22's step 5
+    r28 = REFORM["R-28"]
+    need([(x["route"], x["who"], x["feasibility"], x["checked"]) for x in r28["routes"]] == [("FS", "Reconciliation", "low", None)],
+         "Reform R-28's route changed")
+    rr = wf_first("FS", "Senate: reconciliation", "limited to not more than 20 hours")
+    one = (f'<div class="one"><p class="k">One reform’s route, read through its workflow</p>'
+           f'<p class="hed">{chip("Reform", "R-28")}<span>“{e(r28["title"])}”</span></p>'
+           f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Who acts, in its entry: “{e(r28["routes"][0]["who"])}”. '
+           f'<b>{e(r28["routes"][0]["feasibility"].capitalize())}</b> feasibility. Not checked.</p>'
+           f'<p>The entry names reconciliation, so the reform takes step 5 of Rule 15.22’s workflow: Senate debate held to '
+           f'20 hours and a simple majority, in place of cloture’s 60 votes. Source: 2 U.S.C. 641, read '
+           f'{C13.words_date(rr["Checked"])}.</p></div>')
+    scale = "".join(f"<li><b>{e(k.capitalize())}</b>: “{e(v)}”</li>" for k, v in V7["routes"]["feasibility_scale"].items())
+    deps = "".join(f"<li><b>{e(k.capitalize())}</b>: “{e(v)}”</li>" for k, v in V7["routes"]["dependencies"].items())
+    key = (f'<div class="scl"><div><p class="k">Feasibility, the atlas’s four words for 2026 to 2030</p><ul class="kw">{scale}</ul></div>'
+           f'<div><p class="k">What a route depends on, the atlas’s five questions</p><ul class="kw">{deps}</ul></div></div>')
+    head = (f'<p class="k">The atlas’s eleven routes to change, in its order, as of {SNAP}</p>'
+            f'<p class="rec">“{e(V7["routes"]["intro"].split(". ")[0])}.” Each card prints two dates: when our research read '
+            f'the route’s official sources, and, for each reform entry, the atlas’s own check date or “Not checked”.</p>')
+    body = (head + one + key + f'<ol class="rset">{"".join(c for c, _, _ in cards)}</ol>'
+            + f'<p class="src">Source: {e(ATLAS)}, the eleven routes, their instruments, who acts, what each depends on, the '
+              f'feasibility scale and every reform route entry, snapshot of {SNAP}, United States. Each route’s official '
+              f'sources as named on its card, with the dates our research read them. Of the atlas’s {total} route entries, '
+              f'{dated} carry a check date.</p>')
+    alt_cards = " ".join(f"Route {c}, {ROUTE[c]['name']}: {ROUTE[c]['instrument']}; {n} entries, {d_} checked." for c, (_, n, d_)
+                         in zip(ROUTE_CODES, cards))
+    book.add("s-15-24-correct", body, rule="15.24", readable=True, wide=True, interactive=True,
+             alt=(f"The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of {SNAP}. "
+                  f"First, one reform read through its workflow: Reform R-28, {r28['title']}, on Route FS by reconciliation, "
+                  "low feasibility, not checked, which takes step 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility "
+                  "words and five dependency questions. Each card gives the route’s name, instrument, who acts, its stages, "
+                  "its official sources with the date our research read them, what it depends on, and how many reform entries "
+                  "name it, listed in a disclosure with each one’s check date or not checked. " + alt_cards),
+             notes="Every atlas value read by script; each route's stages and sources held to rows of the workflow sources "
+                   "file; each entry's date from its own record.")
+    book.log("15.24 correct", "The atlas's eleven routes to change", "all")
+    fail = (dnp() + f'<p class="hed">{chip("Reform", "R-28")}<span>“{e(r28["title"])}”</span></p>'
+            f'<div class="one"><p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}</p>'
+            '<p>Its path: the House passes it, then 60 senators vote to end debate, then the Senate passes it and the President '
+            'signs it.</p><p><b>Low</b> feasibility.</p></div>')
+    book.add("s-15-24-failure", fail, rule="15.24",
+             alt=(FC + f"Reform R-28, {r28['title']}, on Route FS, Federal statute, drawn on the path that needs 60 senators "
+                  "to end debate, with low feasibility and no source and no date."),
+             notes="Labeled failure: the generic 60-vote path in place of the reconciliation the entry names, with no source "
+                   "and no check date.")
+    return {
+        "id": "15.24",
+        "title": "Use the workflow for the reform’s route, with its official source and check date.",
+        "rule": [
+            "Each of the atlas’s eleven routes to change runs through its own stages, set by its own law. When a page shows "
+            "how a reform could pass, draw the workflow of the route its entry names, read the entry’s own words for the "
+            "path, and cite the route’s official source with the date we read it. Print the entry’s feasibility in the "
+            "atlas’s word and its own check date, or “Not checked” where it has none (Rule 13.10).",
+            f"Keep the two dates apart. “Read” and its date say when our research read the law behind a route; “Checked” "
+            f"and its date say when the atlas checked one reform’s entry. Of the atlas’s {total} route entries, {dated} carry "
+            f"a check date, all {SNAP}.",
+        ],
+        "tokens": ["oa.type.bodySmall", "oa.type.caption"],
+        "why": {"text": ["The same route can run different ways: a tax bill passed by reconciliation needs a simple majority "
+                         "in the Senate, and most bills need 60 votes to end debate. A reader who weighs a reform’s chances "
+                         "needs its own path, the law that sets it and how recently anyone checked."],
+                "basis": "Our systems atlas’s routes and reform route entries; the official sources on each card, read "
+                         "November 11 to 14, 2026; Rules 13.10 and 15.22"},
+        "correct": {"specimen": "s-15-24-correct",
+                    "caption": "The atlas’s eleven routes as a reference set, each with its instrument, stages and official "
+                               "sources, and its reform entries with their own dates; Reform R-28 read through Rule 15.22’s "
+                               "reconciliation path."},
+        "failure": {"specimen": "s-15-24-failure",
+                    "caption": "<strong>Fails Rule 15.24.</strong> The card puts Reform R-28 on the 60-vote path, though its "
+                               "entry names reconciliation, which needs a simple majority, and it gives no source and no date "
+                               "for an entry the atlas never checked."},
+        "specs": [
+            {"label": "Order", "value": "The atlas’s: Local, State statute, State ballot, Federal statute, Chamber rule or "
+                                        "confirmation, Federal executive action, Enforcement and litigation, Court doctrine, "
+                                        "Article V, Interstate compact, Civil society"},
+            {"label": "Each route", "value": "Its chip and name, instrument and who acts, as of the snapshot; its stages; its "
+                                             "official sources, with the date we read them; what it depends on, in the atlas’s words"},
+            {"label": "Its entries", "value": "How many name it and how many carry a check date, then each one in a "
+                                              "disclosure with its feasibility and its date or “Not checked”"},
+            {"label": "Two dates", "value": "“Read” for our research; “Checked” or “Not checked” for an atlas entry"},
+            {"label": "Once for the set", "value": "The atlas’s four feasibility words and five dependency questions"},
+        ],
+        "related": ["11", "13", "18"],
+        "builders": ["Print each route’s entries from the reform records, each with its own <code>checked</code> date or “Not "
+                     "checked”, and stop the build if a route’s stages or sources lose the rows of the research file behind them."],
+    }
+
+
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
              rule_15_7(book), rule_15_8(book), rule_15_9(book), rule_15_10(book), rule_15_11(book), rule_15_12(book),
              rule_15_13(book), rule_15_14(book), rule_15_15(book), rule_15_16(book), rule_15_17(book), rule_15_18(book),
-             rule_15_19(book), rule_15_20(book), rule_15_21(book), rule_15_22(book)]
+             rule_15_19(book), rule_15_20(book), rule_15_21(book), rule_15_22(book), rule_15_24(book)]
     need([r["id"] for r in rules] == BUILT, "the chapter's rules differ from the round's list")
     need(not set(BUILT) & set(PLANNED), "a rule is both built and planned")
     data = {
@@ -4127,7 +4474,12 @@ def check(data, book):
             mm = re.search(r'<span class="chip">Route <span class="id">([A-Z]+)</span>', li)
             if not mm:
                 continue
-            rid = pm.group(1) if pm else reform_of.get(sid)
+            rc = re.search(r'<span class="chip">Reform <span class="id">(R-\d{2})</span>', li)
+            rid = pm.group(1) if pm else (rc.group(1) if rc else reform_of.get(sid))
+            if rid is None:      # round 5: a route named with no reform (Rule 15.24's cards) prints no atlas date
+                if re.search(r"\bChecked\b", li):
+                    fails.append(f"{sid}: route {mm.group(1)} prints a check date with no reform entry behind it")
+                continue
             entry = next(x for x in REFORM[rid]["routes"] if x["route"] == mm.group(1))
             want = f"Checked {C13.words_date(entry['checked'])}" if entry["checked"] else "Not checked"
             if want not in li or (not entry["checked"] and re.search(r"\bChecked\b", li)):

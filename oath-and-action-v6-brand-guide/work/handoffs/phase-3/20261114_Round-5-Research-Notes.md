@@ -4,13 +4,20 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Research lead (`o
 
 ## Status
 
+- 02:12 UTC. Items 1 to 3 written, with ED4-7 and the data check (items 4 and 5). Returning to the main session. Still open for later: the V7 check over chapter 15 once the systems designer's rules land; a recomputation for any file a maker derives.
+- 02:10 UTC. The trackers' records (R-3) added under item 1. Next: ED4-7, then the data check over makers' files.
+- 02:09 UTC. Item 3 written: `work/build/data/v7-reconciliation-rows.json` and its sidecar (57 rows: Phase 0's 45, row 42's two value conflicts, row 40 against today's model, 12 new rows), from a new generator; data check 126 tables, 0 faults. Next: the trackers' records (the data lead's R-3), ED4-7, then the data check over makers' files.
 - 01:59 UTC. Item 2 written: V7's route fields by script, each route's stages and read dates, and the five gaps the brief names closed from official sources (H.R. 7008 re-read through govinfo and senate.gov, so no Congress.gov key was needed). Starting item 3, the reconciliation rows.
 - 01:50 UTC. Item 1 written under "Facts for owners": the ballot measure and court case frames, six steps each, with end words and sources read today. Adding the same rows to the workflow sources file next, then item 2.
 - 01:41 UTC. Started. Read `CLAUDE.md`, the role file, the round 5 brief in full, the workflow sources file, round 4's research notes and the three reconciliation files. Working on item 1, the two new trackers' steps, first.
 
 ## Summary
 
-To come.
+- **Item 1, the trackers (for the tracker designer):** six steps each, with end words and the record that marks each step done. Ballot measure: Filed, Title and summary, Signatures, Legislature, On the ballot, Vote; a direct initiative slashes step 4, a legislative referral slashes steps 1 to 3. Court case: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition, Supreme Court ruling; end words from 28 U.S.C. 2106 and the Supreme Court's rules (2026 edition). All read today from official sources.
+- **Item 2, the 11 routes:** V7's fields per route by script (126 entries, 13 dated, counts equal to ruling (e)); each route's stages and read dates; the brief's five gaps closed (House Rule XV, H.R. 7008 re-read with no action after September 30, reconciliation's 20 hours and the Byrd rule, four states' committee and floor steps, four cities' charters or rules). No Congress.gov key was needed.
+- **Item 3, 15.25:** `work/build/data/v7-reconciliation-rows.json` with its sidecar, 57 rows, from a new generator; row 40 against today's model; rerun counts and date in the sidecar.
+- **ED4-7** applied; **data check** 126 tables, 0 faults; no maker derived a file.
+- **For the complex examples maker:** Loop R8 lists only R-30; R-06 and R-38 name R8 without R8 naming them (V7.1 item 29).
 
 ## Facts for owners
 
@@ -89,6 +96,32 @@ A federal civil case runs through three courts, and each court has a step where 
 
 **Currency.** The Supreme Court's rules changed on March 16, 2026; the workflow sources file cited the 2023 edition for Rule 10. By script, Rules 10, 11, 13, 16 and 44 to 46 read the same in both editions once the "fi" letters the 2023 file drops are set aside; the 2026 revisions touched Rules 14, 15, 24, 29 and 48 (the Court's own revisions file). Title 28 was read in govinfo's 2024 edition; the Law Revision Counsel's viewer returned 404 at every address tried today, so no section was compared with its current release (Not tested). The appellate rules' current file on uscourts.gov has no text layer a script can read; the December 1, 2024 edition was read instead, and its Rules 4, 40, 41 and 42 are quoted.
 
+#### The record that marks each step done (the data lead's R-3, under ruling (f))
+
+Written 02:10 UTC from the same sources, read today. Ruling (f): a step is done only on a dated official record from the body that takes it. Where the law names the record, its words are quoted; where I read no source for the record itself, the row says so.
+
+| Tracker, step | The record that marks it done | The source's words | Source |
+|---|---|---|---|
+| Ballot 1 Filed | The attorney general's receipt of the petition or request | Massachusetts: "shall be submitted to the attorney-general"; California: "Upon receipt of the fee and request" | XLVIII, II, 3 as replaced by LXXIV; California guide, Step Two |
+| Ballot 2 Title and summary | Massachusetts: the attorney general's certificate, then filing with the secretary; California: the official summary date | "if he shall certify ... it may then be filed with the secretary of the commonwealth"; "The date the copy is delivered or mailed to the proponent(s) is the 'official summary date.' (Elec. Code, §§ 336, 9004(b).)" | Same |
+| Ballot 3 Signatures | California: the Secretary of State's notice of eligibility, or the failure notice | "eligible for the ballot on the date the Secretary of State receives certificates from one or more of the county elections officials showing the petition has been signed by the requisite number of voters"; "The Secretary of State will generate a failure notice" | California guide, Chapters II and III (Elec. Code 9030(f), 9033(a)) |
+| Ballot 4 Legislature | The journal's recorded vote | Massachusetts: "a vote shall be taken by yeas and nays in both houses"; Michigan: "by a yea and nay vote upon separate roll calls"; Ohio (referral): "entered on the journals, with the yeas and nays, and shall be filed with the secretary of state" | LXXXI, 2; Michigan II, 9; Ohio XVI, 1 |
+| Ballot 5 On the ballot | California: the certificate of qualification | "will issue a certificate of qualification on the 131st day before the next statewide general election" | California guide, Chapter III (Elec. Code 9033(b)) |
+| Ballot 6 Vote | The certified result: California's certification by the Secretary of State; Michigan's official declaration of the vote. An unofficial count marks the step current, never done | "the fifth day after the Secretary of State certifies the election results"; "10 days after the date of the official declaration of the vote" | California guide, Chapter IV; Michigan II, 9. Massachusetts's and Ohio's certifying body was not read today |
+| Court 1 Filed | The district court's civil docket entry | "The clerk must enter each civil action in the docket"; "papers filed with the clerk" are entered "chronologically" | FRCP 3; FRCP 79(a) |
+| Court 2 Trial court ruling | The judgment entered on the civil docket, or the filed stipulation of dismissal | "judgment is entered ... when the judgment is entered in the civil docket under Rule 79(a)" (with the separate-document rule); "a stipulation of dismissal signed by all parties who have appeared" | FRCP 58(c); FRCP 41(a)(1)(A)(ii) |
+| Court 3 Appeal | The notice of appeal filed with the district clerk; the circuit clerk's docketing | "must be filed with the district clerk within 30 days after entry of the judgment or order appealed from"; "the circuit clerk must docket the appeal" | FRAP 4(a)(1)(A); FRAP 12(a) |
+| Court 4 Appeals court ruling | The judgment noted on the appeals court's docket; it takes effect with the mandate | "A judgment is entered when it is noted on the docket"; "The mandate is effective when issued" | FRAP 36(a); FRAP 41(c) |
+| Court 5 Supreme Court petition | The petition filed with the Clerk; then the Court's order granting or denying it | "timely when it is filed with the Clerk of this Court within 90 days after entry of the judgment"; "the Clerk will prepare, sign, and enter an order to that effect" | Supreme Court Rules 13.1, 16.2, 16.3 |
+| Court 6 Supreme Court ruling | The Court's judgment; a certified copy goes to the lower court | "the Clerk of this Court will send the clerk of the lower court a copy of the opinion or order of this Court and a certified copy of the judgment" | Supreme Court Rule 45.3; 28 U.S.C. 2106 for the verbs |
+
+**Each end's word as the source writes it:** ballot: "fails to qualify" and "withdraw" (California), "enact" (Massachusetts, Michigan), "passed by the general assembly" (Ohio), "approved by a majority" (California, Ohio, Michigan), "approval or rejection" (Ohio, Michigan), "it shall become law" (Massachusetts); court: "affirm, modify, vacate, set aside or reverse" and "remand the cause" (28 U.S.C. 2106), "grants" and "denies" a petition (Rule 16), "dismissal" (FRCP 41, FRAP 42, Rule 46), "settlement" (U.S. Courts, "Civil Cases"), "summary judgment" (FRCP 56), and "the decision of the lower Court stands" on a tie (U.S. Courts, "Supreme Court Procedures").
+
+#### Where a reader can take part (for the accessibility lead's specification)
+
+- **Ballot measure:** two steps the sources name for the public. Step 3, signing: in California, "Only persons who are registered, qualified voters at the time of signing are entitled to sign the petition. A person can only sign a petition that is being circulated in their county of registration" (Statewide Initiative Guide, Step Four); Massachusetts's petition is signed by "qualified voters". Step 6, voting, for the state's voters. Who may and by when are each state's, so a plate names the state and the deadline from its source.
+- **Court case:** no step the public takes in the sources read. A friend-of-the-court brief "may be filed only by an attorney admitted to practice before this Court" (Supreme Court Rule 37.1, 2026 edition), so the plate shows no take-part mark.
+
 ### 2. The 11 routes (for the systems designer, Rules 15.22 and 15.24)
 
 Written 01:59 UTC. Sources fetched today between 01:52 and 01:58 UTC, each in its own download folder under scratch (`dl/house/`, `dl/hr7008/`, `dl/budget/`, `dl/states/`, `dl/local/`, each with `fetch-log.tsv`), read by `python3 -I`. Every stage row with its full quote, source and date is in `work/research/20261111_Policy-Workflow-Sources.md`: the round 0 sections (FS, SS, BI, LOC, November 11), the round 1 sections (FA, FR, ENF, CRT, AV, IC, CIV, November 12), and two new sections from today, "Round 5: the ballot measure and court case trackers" and "Round 5: gaps closed for 15.22 and 15.24". Two dates, never one word (ruling (e)): "Source read" is the date in that file's Checked column; "Checked" or "Not checked" belongs to an atlas route entry (Rule 13.10).
@@ -156,18 +189,88 @@ FS: how often conference committees still meet. SS: a count of states by veto ty
 
 ### 3. The reconciliation rows (for the systems designer, Rule 15.25)
 
-To come.
+Written 02:09 UTC. **The data file:** `work/build/data/v7-reconciliation-rows.json` (57 rows) with its sidecar `work/build/data/v7-reconciliation-rows.meta.json`, written by `work/build/scripts/phase-3/research_reconciliation_rows.py` (a rerun with `--check` reads "unchanged"; the data check reads 126 tables, 0 faults). Kind `derived`, from Phase 0's table and data file, the November 13 rerun's data, the V7.1 list and the model. Every `model_value` is read from the model by the script (SHA-256 asserted, snapshot 2026-10-15), never copied from Phase 0's table; Phase 0's own V7 column is kept beside it as `phase0_v7_value` for the record.
+
+**Columns:** `row` (Phase 0's number, 1 to 45; 46 to 57 new), `print_order` (ruling (e)), `group`, `origin`, `phase0_type`, `pages`, `location`, `item`, `value_shown` (what an earlier page showed, never evidence), `phase0_v7_value`, `phase0_resolution`, `model_value`, `resolution_in_guide`, `guide_chapter`, `guide_rules`, `status`, `value_conflict` (true on row 42 only). Lists are joined with semicolons, as the data check asks.
+
+**Order, by ruling (e):** a value (row 42); a sign (19), a grade (40), a delay (10); identifiers (1 to 9); structure (22, 23, 27, 43, 44, 45); encoding (11 to 18, 20, 21, 24 to 26, 28); labels (29 to 39, 41); then rows 46 to 57 in chapter order. The script asserts Phase 0's type counts (ID 9, sign 1, grade 1, delay 1, label 12, structure 7, encoding 14) and its two value conflicts.
+
+**The counts and date for the plate** (sidecar `rerun`, read from `work/research/20261113_Atlas-Recheck-Full-Data.json`): all 2,644 of Phase 0's comparisons rerun on November 13, 2026 from Dustin's three uploads; 2,642 match and 2 conflict, both in row 42; 8 flags read in context and set aside; no result differs from Phase 0's; page side Concepts V2 2,445, Atlas Visual System 168, V5 Polished 31.
+
+**The two value conflicts (row 42), today's model:** "D03: 9 live reforms, 10 with the rejected R-35; D04: 13 live reforms, 14 with the rejected R-35. Reform R-35 "Rejected option: term limits for legislators" is rejected (True) and targets L18, L19". Concepts V2's Ledger showed 10 and 14. The guide prints no reform count by domain; where R-35 appears, Rule 10.6 keeps the word Rejected.
+
+**Row 40, Loop B4's weakest step, against today's model:** all three steps graded well-supported (L23, L24, L54). B4's `evidence_summary` ends: "For U.S. services the weakest is L54, since its main study covers Brazilian mayors." L54's `qualification`: "The main study (Ferraz and Finan 2011) found that Brazilian mayors who could run again misused less federal money than mayors facing term limits; U.S. service quality was not studied." Phase 0 wrote "V7 names no weakest step"; the model does name one, for U.S. services. Resolution in the guide, per ruling (e): "weakest" only in the atlas's own words, with all three steps well supported, at Rules 15.15 and 14.143.
+
+**Where each resolution applies** (my mapping, from the rule texts in `work/build/guide/chapters/*.json` read today; "not printed" means a search of `work/build/guide/` found no chapter or specimen showing the item): identifiers at 13.9 and 18.24 (with 10.8 for domains, 15.6 for loop chips); grade line code at 13.4 and 10.10; grade words at 13.3; delay ticks and effect pips at 13.5; sign at 15.3; types at 15.4; authority at 15.5 and 15.17; layers at 15.9; widths and sizes at 15.1; variable names, kinds and higher-value sentences at 15.2 (DR-265 and DR-267's one name); closure at 15.7; bands at 15.11; effects, costs, qualifiers, feasibility and route dates at 13.5, 13.10, 15.16, 15.20 and 15.24; R1's weakest step at 15.13 and 15.19. Not printed anywhere in the guide: rows 37 (the Circuit's return line), 38 (R-01's no-position sentence; no disclosure prints, DR-100), 43 (the Ledger's and Register's counting rules) and 44 (the issue count). The systems designer and the data lead confirm the mapping at sign-off; a rule that moves takes its new number in the script, and a rerun rewrites the file.
+
+**New rows 46 to 57** (what Phase 2 and Phase 3 drew from V7 where the model holds an ambiguity the guide resolves, each tied to its V7.1 item): 46 grade vocabulary across record types (items 1, 2; 13.3); 47 documented and well supported share one renderer line (item 24; 13.4's record square); 48 conceptual steps near the plausible dash (item 25; the hollow line, 13.4, 15.7, 15.18); 49 113 of 126 route entries undated (item 9; 13.10, 15.16, 15.24); 50 Variable D6 typed flow, described as a stock (item 8; 15.2 prints no kind for D6, DR-264); 51 Connection L23's name against its minus sign (item 28; the sign sentence at 15.3, 15.15, 14.143); 52 authority ending in an arrowhead in the renderer (item 26; the open diamond, 15.5, 10.10); 53 conceptual loops graded with no numbered steps (items 16, 17; 15.7, 15.18); 54 the loop and reform lists that disagree (item 29; open for 14.144, see Requests); 55 the measures pending in the snapshot (item 39, DR-269; "As of October 15, 2026" at 15.16 and 15.20); 56 `routes[].who` mixing actors, instruments and actions (round 4's proposal for board 3; 15.20, 15.24); 57 the Article V route's wording (item 41; 15.24). Rows 47, 48 and 52, and the dash patterns in rows 11 and 17, rest partly on V7's renderer, which is not in this container: their renderer facts are Phase 0's and the V7.1 list's readings, and the row says so.
 
 ### 4. ED4-7, S92's sidecar source line
 
-To come.
+Done 02:10 UTC. `work/build/data/govinfo-foia-request-steps.meta.json`'s `printed_source_line` now ends "Times are the law’s limits; state records laws differ.", in place of "Times are limits in law, not measured waits; state records laws differ.", as the round 4 editor asked (`work/handoffs/phase-3/20261113_Round-4-Editor-Notes.md`, ED4-7). Written by a scratch script, `scripts/r5_ed4_7.py`, which asserts the old ending, the writer's format (indent 1, UTF-8, final newline) before and after, every other key unchanged, and no em dash, U+2011 or straight apostrophe; a second run reads "unchanged". No repository script writes this sidecar (by search, only `maker_i_round4_derive.py` names it, and it reads rows), and S92's spec has no `source_line` key, so no spec follows. The kit builds S92 with the new line: "PASS S92 step-by-step: 8 rows, 0 drawings, 0 faults" (`--no-png`). The sidecar's `qualification` keeps "not measured waits"; the editor asked only for the printed line.
+
+### 5. The data check over files a maker derives this round
+
+02:11 UTC: **no file is derived this round so far.** `git status` shows two changes in `work/build/data/`, both mine (the reconciliation rows and ED4-7). The complex examples maker's `maker_c_round5_derive.py` says "Round 5 needs no derived table": example 1 draws S14's frozen file, examples 2 and 3 read the model. Its `--figures` run, read-only (`git status` the same before and after), prints the three examples' facts with no data fault; 12 of its 29 word checks fail on drafts not yet finished (titles, the snapshot date and three qualifiers not yet printed in Rules 14.143 and 14.144), which is the maker's words pass, not a data fault. The folder check, `data_round0_build.py --check`: 126 tables, 0 faults. If a maker later writes a file into `work/build/data/`, it needs a recomputation against its source and this check again.
 
 ## Routine calls
 
+- D3-xxx | The two trackers' frames are built from four states' laws (Massachusetts, California, Ohio, Michigan) and the federal civil rules, and printed as proposals for the editor and the data lead | States differ, and these four cover the direct initiative, the indirect initiative, a competing measure and the legislative referral from each state's own text
+- D3-xxx | The court case tracker is a federal civil case | Q5-4 names Title 28 and the Supreme Court's rules; criminal cases and state courts follow other rules, named as limits
+- D3-xxx | A second round of signatures shows as words under the ballot tracker's step 4, and a remand prints at the step that decided it with no backward marks | Rule 11.10 (old numbering) puts a wait inside the step it falls in, and ruling (f) says the line never runs backward
+- D3-xxx | H.R. 7008 re-read from govinfo's bill status file and senate.gov's vote list, with no Congress.gov key requested | Both are official copies of the same record and answered; DR-272 allows the key only when needed
+- D3-xxx | The Supreme Court's 2026 rules replace the 2023 edition as the cited source, after a script compared the rules used | The rules changed on March 16, 2026; the rules the trackers and CRT cite read the same
+- D3-xxx | Minneapolis is cited from its council's rules of order, labeled as rules and not the charter | The charter's text sits on municode, which refuses readers; the rules are on the city's own site and give the same override
+- D3-xxx | The reconciliation rows are a derived file `v7-reconciliation-rows.json` with a generator in `work/build/scripts/phase-3/research_reconciliation_rows.py` | The data check allows only v7-*.json as JSON; a generator lets a rule number change by rerun, as R5-1's generator trap asks
+- D3-xxx | Rows 46 to 57 come from the V7.1 list's items that a guide rule resolves in a drawing; items that only fix text the guide never prints stay off | Ruling (e)'s new rows are "what Phase 2 and Phase 3 drew from V7"; folding items 12, 15, 22 and 45 into Phase 0's rows 1 to 9, 44, 10 and 31 avoids two rows for one fix
+- D3-xxx | Row 54 is marked open for Rule 14.144 | Loop R8 lists only R-30; ruling (d) compares R-06, R-30 and R-38 on R8, so the plate needs words for the two the loop does not list back
+- D3-xxx | ED4-7 written by a scratch script, not a repository script | No repository script writes this sidecar; the script asserts every other key unchanged and a rerun writes nothing
+- D3-xxx | Four rows added to the research ledger's Part 7 (P7-227 to P7-230) | The reconciliation file, the bill re-read and the two tracker sources are what a plate reads; the full source list stays in the workflow sources file
+
 ## Requests
+
+### To the complex examples maker and the data lead (for Rule 14.144, ruling (d))
+
+- **Loop R8's reform list.** By script today: Loop R8's `reforms` lists R-30 only; Reforms R-06, R-30 and R-38 each name R8 in their own `loops`. So R-06 and R-38 sit on R8 by their own record and not by the loop's (V7.1 item 29; reconciliation row 54). A plate that says the three reforms "act on Loop R8" holds for their targets; a plate that cites the loop's list would show one. Suggested words, for the editor: the reforms' records name the loop, and the atlas's loop record lists R-30. The data lead rules whether the plate prints that.
+
+### To the systems designer (15.22, 15.24, 15.25)
+
+- **15.22's stages now all carry a read date**, the courts' page among them (read in full today); reconciliation (2 U.S.C. 641(e)(2), 644) and the House's suspension rule (Rule XV, clause 1) are sourced. H.R. 7008 passed the House under a special rule, not under suspension; if 15.22 uses S. 146 for the suspension path, its record is in the FS section (P7-034).
+- **15.25's mapping** of each row to its rules is mine, read from the chapter files today; please confirm at build, and send me any rule number that moves so I rerun the generator.
+- **15.24:** print "Source read" and "Checked" as ruling (e) sets; the `who` field for R-03's federal route and four others holds an action (reconciliation row 56).
+
+### To the main session
+
+- No Congress.gov key is needed this round (DR-272): govinfo's bill status file and senate.gov answered for H.R. 7008.
 
 ## Tested
 
+- Every source in items 1 and 2 fetched today (status 200), saved with SHA-256 in its own download folder's `fetch-log.tsv`, read as text by `python3 -I`; every quote copied from that text.
+- Supreme Court Rules 10, 11, 13, 16 and 44 to 46 compared by script between the 2023 and 2026 editions: the same once the "fi" letters are set aside.
+- H.R. 7008: the bill status XML parsed (28 actions, last September 30, 2026); the file's Last-Modified (October 1) and the folder's 648 files changed since November 10; the Senate's vote list (262 votes to November 12) searched for the bill; votes 253 and roll 280 read.
+- V7's route fields by `scripts/r5_route_fields.py`: model SHA-256 asserted, V7's route order asserted, 126 entries and 13 dates asserted, per-route counts equal ruling (e)'s.
+- The reconciliation generator: Phase 0's 45 rows parsed and its type counts asserted; the two value conflicts asserted against Phase 0's data file and the rerun's; row 42's model value recomputed (9 and 13 live, 10 and 14 with R-35); the rerun's totals asserted (2,644, 2,644, 2, 8); no em dash, U+2011 or disclosure text in either file; `--check` after writing reads "unchanged".
+- The data check, `data_round0_build.py --check`, after each write: 126 tables, 0 faults.
+- ED4-7: the script's assertions; S92 built by the kit, PASS, 0 faults (`--no-png`).
+- `maker_c_round5_derive.py --figures`, read-only, `git status` the same before and after.
+- The guide's rule texts read from `work/build/guide/chapters/*.json` for the mapping, and a search of `work/build/guide/` for the items marked "not printed".
+- No em dash in the notes, the sources file's new sections or the ledger rows (by search).
+
 ## Not tested
 
+- The V7 check over chapter 15 (`v7_check.py --page`): chapter 15's round 5 rules are being built; it needs a page built after the systems designer lands 15.22 to 15.25.
+- S92's page and PNG captures with the new line: built with `--no-png` while the load average was above 4, so the line was checked by the kit, not looked at.
+- Title 28 against the Law Revision Counsel's current release (its viewer returned 404 at every address tried); govinfo's 2024 edition was read.
+- The appellate rules' December 1, 2025 edition (its file has no text layer); the December 1, 2024 edition was read.
+- Any House resolution changing Rule XV after the Clerk's January 16, 2025 printing.
+- Whether Massachusetts's and Ohio's ballot results are certified by a named body, and when; Alaska's steps.
+- How the tracker designer and the systems designer print these facts; no plate was looked at.
+
 ## Claims I could not verify
+
+1. Alaska's initiative steps and its effective-date rule: ltgov.alaska.gov failed certificate verification through the proxy, and akleg.gov did not answer.
+2. Title 28's sections as of the Law Revision Counsel's release through Public Law 119-142: the viewer returned 404.
+3. Minneapolis's charter text on vetoes and readings (municode); the council's rules were read instead.
+4. Arizona's chamber rules on committees; the constitution's floor rules were read.
+5. The renderer facts in reconciliation rows 11, 17, 47, 48 and 52 (V7's renderer is not in this container); they are Phase 0's and the V7.1 list's readings.
+6. A count of states by veto type, and how often conference committees meet (NCSL refused on November 11; not retried).

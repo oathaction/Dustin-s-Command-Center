@@ -101,13 +101,21 @@ def chapter14_parts(page):
     end = page.find("</section>", i)
     sec = page[start:end]
     size = lambda x: len(x.encode())
-    rules, sketches = 0, []
+    rules, sketches, complex_ = 0, [], {}
+    # round 5 (R5-1): the extras (the selection guide, the palette specification) are weighed each on its own, never with
+    # the rule they follow, and Rules 14.142 to 14.144 (group 18) each whole with its plates
+    extras = {}
+    for m in EXTRA_START.finditer(sec):
+        extras[m.group(1)] = size(element_at(sec, m.start(), "figure"))
     for m in RULE_START.finditer(sec):
         n = m.group(m.lastindex)
         nx = NEXT_BLOCK.search(sec, m.end())
         blk = sec[m.start():nx.start() if nx else len(sec)]
+        inner = sum(size(element_at(blk, x.start(), "figure")) for x in EXTRA_START.finditer(blk))
         if int(n) <= 14:
-            rules += size(blk)
+            rules += size(blk) - inner
+        if int(n) in COMPLEX_RULES:
+            complex_["14." + n] = size(blk) - inner
         k = re.search(r'<figure class="plate plate--(avoid|sketch)\b', blk)
         if k:
             st = re.search(r'data-specimen="s-14-\d+-sketch"[^>]*>(.*?)</div></div><figcaption', blk, re.S)
@@ -118,7 +126,25 @@ def chapter14_parts(page):
     # ED-E13 (round 2): the rule plates' shared style, printed once at the chapter's head, counts with the rules it serves
     pc = re.search(r'<style data-plate-css>.*?</style>', sec, re.S)
     css = size(pc.group(0)) if pc else 0
-    return {"rules_1_to_14": rules, "opener": opener, "plate_css": css, "rules_and_opener": rules + opener + css, "allowance": RULES_ALLOWANCE, "sketch_entries": sketches}
+    return {"rules_1_to_14": rules, "opener": opener, "plate_css": css, "rules_and_opener": rules + opener + css, "allowance": RULES_ALLOWANCE,
+            "sketch_entries": sketches, "extras": extras, "complex_examples": complex_}
+
+
+EXTRA_START = re.compile(r'<figure class="plate plate--extra[^"]*" id="fig-(s-14-[\w-]+)"')
+COMPLEX_RULES = (142, 143, 144)
+EXTRAS_PLANNED = ("s-14-selection-guide", "s-14-palette-spec")
+COMPLEX_SPECS = ("s-14-s96", "s-14-s97", "s-14-s98")   # the complex examples' kit figures (R5-1): not among the 97 entry plates
+
+
+def element_at(text, start, tag):
+    """The element that opens at start, through its matching close tag (nested ones of the same name counted)."""
+    depth, i = 0, start
+    pat = re.compile(rf"<{tag}\b|</{tag}>")
+    for m in pat.finditer(text, start):
+        depth += 1 if m.group(0) != f"</{tag}>" else -1
+        if depth == 0:
+            return text[start:m.end()]
+    return text[start:]
 # Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends
 IN_PROGRESS = ("14", "15")
 ENTRY_PLATE = re.compile(r"^s-14-s\d+$")   # an entry's specimen (R1-C3); a chapter-wide rule's plates (s-14-1-line) count under NOT_PLATES
@@ -276,6 +302,11 @@ def gates(weights, charts, fonts_file_bytes, present, warn, note=None):
         if parts14["rules_and_opener"] > RULES_ALLOWANCE:
             note("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
                                "(0.20 MB and the 12,288 bytes call 4 moved to them), reported (DR-271)")
+        # round 5 (DR-271: each new plate's bytes are reported): the extras and the three complex examples, as placed
+        r5 = {**{k: v for k, v in (parts14.get("extras") or {}).items()}, **{f"Rule {k}": v for k, v in (parts14.get("complex_examples") or {}).items()}}
+        if r5:
+            rec["chapter_14_round_5"] = r5
+            note("chapter 14", "round 5's plates as placed, with their frames: " + "; ".join(f"{k} {v:,} bytes" for k, v in r5.items()))
     geo = weights["parts"].get("map geometry") or ((KIT_SIZES or {}).get("geo", 0) if kit else 0)
     if geo:
         rec["map_geometry"] = {"bytes": geo, "allowance": GEOMETRY_ALLOWANCE, "room": GEOMETRY_ALLOWANCE - geo}
@@ -303,6 +334,12 @@ def not_plates(parts14):
     out = {k: v for k, v in NOT_PLATES.items() if not k.startswith("reference sketches")}
     out[f"sketch entries whole ({to_come} to come at {SKETCH_CAP:,} bytes of sketch and {words:,.0f} of words and frame)"] = round(to_come * (SKETCH_CAP + words))
     out["rules 14.1 to 14.14 with the opener, unspent of their allowance (call 4)"] = max(0, RULES_ALLOWANCE - parts14["rules_and_opener"])
+    # round 5: each extra and each complex example, once placed, is weighed in the chapter; its part of the reserve goes
+    ex = parts14.get("extras") or {}
+    left = [x for x in EXTRAS_PLANNED if x not in ex]
+    out["selection guide and palette specification"] = round(NOT_PLATES["selection guide and palette specification"] * len(left) / len(EXTRAS_PLANNED))
+    cx = parts14.get("complex_examples") or {}
+    out["three complex examples"] = round(NOT_PLATES["three complex examples"] * (len(COMPLEX_RULES) - len(cx)) / len(COMPLEX_RULES))
     return out
 
 
@@ -318,7 +355,7 @@ def per_plate(ch14, kit, charts, sizes, parts14=None):
     forms_bytes = sum((sizes.get("forms") or {}).values())
     avg = forms_bytes / sizes["registered"]
     renderer = kit - sizes.get("geo", 0) + max(0, FORMS - sizes["registered"]) * avg
-    placed = sum(1 for cid, r in charts.items() if ENTRY_PLATE.match(cid)
+    placed = sum(1 for cid, r in charts.items() if ENTRY_PLATE.match(cid) and cid not in COMPLEX_SPECS
                  and (r.get("tier") or "core").split(",")[0] in ("core", "extended"))
     to_come = max(1, PLATES - placed)
     reserve = not_plates(parts14)
@@ -459,6 +496,19 @@ def self_test():
     m2 = chapter14_parts(pg.replace('<figure class="plate plate--opener"', css + '<figure class="plate plate--opener"', 1))
     ok = m2 is not None and m2["plate_css"] == len(css) and m2["rules_and_opener"] == m["rules_and_opener"] + len(css)
     print(f"{'pass' if ok else 'FAIL'} ED-E13: the chapter's shared plate style counts with rules 14.1 to 14.14 and the opener")
+    bad += not ok
+    # round 5 (R5-1): an extra after Rule 14.5 is weighed on its own and leaves the rules' measure; a group 18 rule is weighed
+    # whole; each placed extra and complex example takes its part out of the reserve
+    ext = '<figure class="plate plate--extra" id="fig-s-14-palette-spec" data-oa-contents><div><figure class="oac-fig">k</figure></div></figure>'
+    r5 = '<div class="rule" id="rule-14-5" data-rule="14.5"><p>Five</p></div>'
+    r142 = '<div class="rule" id="rule-14-142" data-rule="14.142"><p>Full</p></div>'
+    pg5 = pg.replace('<div class="rule" id="rule-14-24"', r5 + ext + r142 + '<div class="rule" id="rule-14-24"', 1)
+    m5 = chapter14_parts(pg5)
+    rest = not_plates(m5)
+    ok = (m5 is not None and m5["rules_1_to_14"] == m["rules_1_to_14"] + len(r5) and m5["extras"] == {"s-14-palette-spec": len(ext)}
+          and m5["complex_examples"] == {"14.142": len(r142)} and rest["selection guide and palette specification"] == 50_000
+          and rest["three complex examples"] == 60_000 and not_plates(m)["selection guide and palette specification"] == 100_000)
+    print(f"{'pass' if ok else 'FAIL'} round 5: an extra and a group 18 rule are weighed apart, and each takes its part out of the reserve")
     bad += not ok
     # R3-2: the map geometry is weighed apart, against its 250,000 bytes
     KIT_SIZES.clear(); KIT_SIZES.update({"geo": GEOMETRY_ALLOWANCE + 1, "registered": 1, "forms": {"a.js": 1}})

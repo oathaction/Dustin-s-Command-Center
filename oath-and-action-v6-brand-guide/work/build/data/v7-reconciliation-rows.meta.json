@@ -1,0 +1,123 @@
+{
+ "file": "v7-reconciliation-rows.json",
+ "kind": "derived",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
+ "title_or_table": "Reconciliation of earlier atlas drawings to the model: Phase 0’s 45 rows and the rows added in Phase 3",
+ "table_id": "Phase 0 reconciliation table rows 1 to 45; V7.1 issue list items; nodes, links, loops, reforms, routes, issues, claims, glossary and methods",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "Model snapshot of October 15, 2026; earlier pages as Phase 0 read them on October 20, 2026, rerun November 13, 2026",
+ "geography": "United States",
+ "universe_or_base": "Phase 0’s 45 rows of conflicts and ambiguities and 12 rows for what Phase 2 and Phase 3 drew from the model",
+ "unit": "rows; each model value is text read from the model",
+ "date_retrieved": "2026-11-14",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "qualification": "No earlier drawing is evidence for a model value: the value_shown column records what a page showed, and every model_value is read from the model. On November 13, 2026 all 2,644 of Phase 0’s comparisons were rerun from Dustin’s three uploads: 2,642 match and 2 conflict, both in row 42 (the Ledger’s reform counts for D03 and D04, which count the rejected R-35); Phase 0’s 45 rows are 9 identifier, 1 sign, 1 grade, 1 delay, 12 label, 7 structure and 14 encoding; 8 flags were read in context and set aside. Rows 11, 17, 47, 48 and 52 rest partly on V7’s renderer, which is not in this container; their renderer facts are Phase 0’s and the V7.1 list’s readings. Row 40’s model value differs from Phase 0’s note: the model’s evidence summary for Loop B4 names L54 the weakest step for U.S. services. Chapter and rule numbers are those of November 14, 2026; chapter 11’s numbers move under DR-274 and no row cites chapter 11.",
+ "columns": {
+  "row": {
+   "type": "integer",
+   "description": "Row ID: Phase 0’s number for rows 1 to 45; 46 on for rows added in round 5"
+  },
+  "print_order": {
+   "type": "integer",
+   "description": "The order the plate prints, by the data lead’s ruling (e)"
+  },
+  "group": {
+   "type": "category",
+   "description": "What a copied drawing could mislead a reader about: a value, a sign, a grade, a delay, identifiers, structure, encoding, labels, or drawn in Phase 2 and Phase 3"
+  },
+  "origin": {
+   "type": "text",
+   "description": "Where the row comes from: Phase 0’s table, or the V7.1 issue list item it ties to"
+  },
+  "phase0_type": {
+   "type": "category",
+   "description": "Phase 0’s type: ID, sign, grade, delay, label, structure or encoding; empty for new rows"
+  },
+  "pages": {
+   "type": "text",
+   "description": "The earlier pages that show the item: V5 Polished, the Atlas Visual System, Concepts V2; Atlas V7 for new rows"
+  },
+  "location": {
+   "type": "text",
+   "description": "Where on those pages, as Phase 0 wrote it; for new rows, the model fields"
+  },
+  "item": {
+   "type": "text",
+   "description": "The item, as Phase 0 named it; for new rows, the subject and the issue"
+  },
+  "value_shown": {
+   "type": "text",
+   "description": "What the earlier page shows, as Phase 0 recorded it; never evidence for a model value"
+  },
+  "phase0_v7_value": {
+   "type": "text",
+   "description": "The model value as Phase 0 wrote it on October 20, 2026, kept for the record"
+  },
+  "phase0_resolution": {
+   "type": "text",
+   "description": "Phase 0’s proposed resolution"
+  },
+  "model_value": {
+   "type": "text",
+   "description": "The model’s value read today by script from the snapshot of October 15, 2026; quotes keep the atlas’s straight apostrophes"
+  },
+  "resolution_in_guide": {
+   "type": "text",
+   "description": "The resolution as the guide applies it today"
+  },
+  "guide_chapter": {
+   "type": "text",
+   "description": "The chapter that applies it"
+  },
+  "guide_rules": {
+   "type": "text",
+   "description": "The rules that apply it, joined with semicolons; none where no rule needs to"
+  },
+  "status": {
+   "type": "category",
+   "description": "applied; not printed (no chapter or specimen in work/build/guide/ shows the item); open or due in round 5; or proposed for board 3"
+  },
+  "value_conflict": {
+   "type": "boolean",
+   "description": "True for row 42, which holds Phase 0’s two value conflicts, D03 and D04"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, compared with our three earlier atlas pages, 2,644 comparisons rerun November 13, 2026, United States. Snapshot of October 15, 2026.",
+ "ledger_row": "not needed: Atlas V7 and the studio’s own Phase 0 files, read by script",
+ "derived_from": [
+  "work/handoffs/phase-0/20261020_Atlas-Reconciliation-Table.md",
+  "work/handoffs/phase-0/20261020_Atlas-Reconciliation-Data.json",
+  "work/research/20261113_Atlas-Recheck-Full-Data.json",
+  "work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md",
+  "work/extract/atlas-v7-data.json"
+ ],
+ "derivation": "work/build/scripts/phase-3/research_reconciliation_rows.py: parses Phase 0’s 45 rows, asserts its type counts and its two value conflicts, reads each model value from the model (SHA-256 asserted), and maps each resolution to the rules that apply it, read from the chapter files on November 14, 2026",
+ "rerun": {
+  "date": "2026-11-13",
+  "comparisons": 2644,
+  "match": 2642,
+  "conflict": 2,
+  "flags_set_aside": 8,
+  "phase0_rows": 45,
+  "phase0_rows_by_type": {
+   "ID": 9,
+   "sign": 1,
+   "grade": 1,
+   "delay": 1,
+   "label": 12,
+   "structure": 7,
+   "encoding": 14
+  },
+  "page_side": {
+   "Concepts V2": 2445,
+   "V5 Polished": 31,
+   "Atlas Visual System": 168
+  },
+  "differs_from_phase0": 0,
+  "record": "work/research/20261113_Atlas-Recheck-Full-Table.md"
+ },
+ "domain": "all",
+ "domain_note": "The rows reach every part of the model",
+ "states": []
+}

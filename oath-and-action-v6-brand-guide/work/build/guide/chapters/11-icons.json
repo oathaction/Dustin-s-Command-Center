@@ -581,7 +581,7 @@
       "title": "Follow a ballot measure through six steps, and wait for the certified count.",
       "rule": [
         "A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s constitution by petition, and the voters decide it. These steps follow the constitutions of Massachusetts, California, Ohio and Michigan and California’s election office; each state sets its own deadlines and counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 under a slash.",
-        "Until the state certifies the count, a measure at step 6 reads as counted, never as passed: “Step 6 of 6: Vote. The count stays unofficial until the state certifies it.” Once it is certified, the words say Passed or Failed, with the dates, and when a measure that passed takes effect. A measure the Legislature enacts ends at step 4 as law, “Enacted by the Legislature”, with steps 5 and 6 under slashes. A measure that stops ends its line on a square, with the reason and the date: Not certified by the attorney general, Did not qualify: too few valid signatures, Withdrawn by its proponents, or Removed from the ballot by a court."
+        "Until the state certifies the count, a measure at step 6 reads as counted, never as passed: “Step 6 of 6: Vote. The count stays unofficial until the state certifies it.” Once it is certified, the words say Passed or Failed, with the dates, and when a measure that passed takes effect. A measure that ends before step 6 ends its line on a square at the last step it reached, with the reason and the date: Not certified by the attorney general, Did not qualify: too few valid signatures, Withdrawn by its proponents, Removed from the ballot by a court, or Enacted by the Legislature, which makes it law with no vote of the people."
       ],
       "tokens": [
         "oa.component.mark.slash"
@@ -616,11 +616,11 @@
         },
         {
           "label": "The end, in words",
-          "value": "Passed or Failed, with the date of the vote and the date it was certified, then when it takes effect; Enacted by the Legislature"
+          "value": "Passed or Failed, with the date of the vote and the date it was certified, then when it takes effect"
         },
         {
-          "label": "Stopped",
-          "value": "A square at the step: Not certified by the attorney general; Did not qualify: too few valid signatures; Withdrawn by its proponents; Removed from the ballot by a court"
+          "label": "Ended before step 6",
+          "value": "A square at the last step reached, with its words: Not certified by the attorney general; Did not qualify: too few valid signatures; Withdrawn by its proponents; Removed from the ballot by a court; Enacted by the Legislature, on step 4"
         },
         {
           "label": "Referred by the Legislature",
@@ -643,21 +643,21 @@
       "id": "11.11",
       "title": "Follow a court case through six steps, and never call a denied review a ruling.",
       "rule": [
-        "A court case here is a federal civil case: one side sues another under federal law, and the case can climb from the trial court through a court of appeals to the Supreme Court. These steps follow Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A step nobody took keeps its number under a slash, as when no side appeals in time or the Supreme Court declines to hear the case.",
-        "The words say how each court ruled, with the date, in the law’s own verbs: Affirmed, Reversed, Vacated or Modified, joined to “and sent back” when a court returns the case to the court below. The marks never move backward; a case sent back says so in a sentence after the end words. When the Supreme Court denies a petition, step 6 keeps its slash and the words say “Review denied”: the ruling below stands. A case that ends early, settled or dismissed, ends its line on a square at the step where it stopped."
+        "A court case here is a federal civil case: one side sues another under federal law, and the case can climb from the trial court through a court of appeals to the Supreme Court. These steps follow Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no room for keeps its number under a slash, as when an appeal goes straight from a special panel of three district judges to the Supreme Court.",
+        "The words say how each court ruled, with the date, in the law’s own verbs: Affirmed, Reversed, Vacated or Modified, joined to “and sent back” when a court returns the case to the court below. The marks never move backward; a case sent back says so in a sentence after the end words. A case that ends before step 6 ends its line on a square at the last step it reached: settled, dismissed, never appealed, or turned away by the Supreme Court. When the Court denies a petition, the square sits on step 5 and the words say “Review denied by the Supreme Court”, so the ruling below stands."
       ],
       "tokens": [
         "oa.component.mark.slash"
       ],
       "why": {
         "text": [
-          "In the Supreme Court’s own words, review is “not a matter of right, but of judicial discretion”, so a denied petition says only that the Court chose not to hear the case. A tracker that filled step 6 would tell a reader the Court had ruled on a case it never heard. Naming each court’s ruling as its own step keeps clear which court spoke last."
+          "In the Supreme Court’s own words, review is “not a matter of right, but of judicial discretion”, so a denied petition says only that the Court chose not to hear the case. A tracker that filled step 6 would tell a reader the Court had ruled on a case it never heard. Naming each court’s ruling as its own step, and the court in the end words, keeps clear which court spoke last."
         ],
         "basis": "28 U.S.C. 1291, 2106 and 2107; Rules of the Supreme Court, Rules 10, 13 and 16"
       },
       "correct": {
         "specimen": "s-11-11-correct",
-        "caption": "Three cases at 360 px. One waits on the appeals court; the Supreme Court denied review of one, so step 6 keeps its slash and the ruling below stands; and one settled before trial."
+        "caption": "Three cases at 360 px. One waits on the appeals court; the Supreme Court reversed one and sent it back, said in words while all six steps stay filled; and the Court denied review of one, so its line ends on a square at step 5."
       },
       "failure": {
         "specimen": "s-11-11-failure",
@@ -669,21 +669,21 @@
           "value": "1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme Court petition, 6 Supreme Court ruling"
         },
         {
-          "label": "Never appealed",
-          "value": "Steps 3 to 6 under slashes once the time to appeal has passed: 30 days, or 60 when the United States is a party",
-          "token": "oa.component.mark.slash"
-        },
-        {
-          "label": "Review denied",
-          "value": "Step 6 under a slash, and “Review denied” with the date; the ruling below stands"
-        },
-        {
           "label": "Each ruling, in words",
-          "value": "Affirmed; Reversed; Vacated; Modified; with “and sent back” where the court returns the case"
+          "value": "Affirmed; Reversed; Vacated; Modified; with “and sent back” where the court returns the case, and the court named"
         },
         {
-          "label": "Stopped",
-          "value": "A square at the step: Settled; Dismissed; Appeal dismissed"
+          "label": "Ended before step 6",
+          "value": "A square at the last step reached, with its words: Settled; Dismissed; Appeal dismissed; Review denied by the Supreme Court, on step 5"
+        },
+        {
+          "label": "Never appealed",
+          "value": "A square on step 2 once the time to appeal has passed: 30 days, or 60 when the United States is a party"
+        },
+        {
+          "label": "Straight to the Supreme Court",
+          "value": "Steps 3 and 4 under slashes, where the law sends an appeal from three district judges straight there",
+          "token": "oa.component.mark.slash"
         },
         {
           "label": "Inside a step, in words",

@@ -9,7 +9,7 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
- "title": "Payrolls lost jobs in seven months of 2025 and 2026.",
+ "title": "The economy lost jobs in seven months of 2025 and 2026.",
  "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, with the three-month average.",
  "notes": [
   "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month."
@@ -123,11 +123,12 @@
   ]
  },
  "show": [
-  "label",
+  "evidence",
   "title",
-  "measure_line",
+  "measure",
   "chart",
-  "notes"
+  "notes",
+  "source"
  ],
  "failure": {
   "rule": "14.142",

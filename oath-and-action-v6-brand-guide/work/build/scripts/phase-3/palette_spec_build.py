@@ -212,7 +212,7 @@ def row_symbol(p):
     rects = []
     for i in range(n):
         if p["id"] == "categorical" and i == 3:
-            rects.append(f'<rect class="ps-gr" x="{40 * i}" width="40" height="20"/><rect x="{40 * i}" width="40" height="20" fill="url(#ps-hatch)"/>')
+            rects.append(f'<rect class="oac-f-surface" x="{40 * i}" width="40" height="20"/><rect x="{40 * i}" width="40" height="20" fill="url(#ps-hatch)"/>')
         else:
             rects.append(f'<rect class="{role(p, i + 1)}" x="{40 * i}" width="40" height="20"/>')
     return f'<symbol id="ps-row-{p["id"]}" viewBox="0 0 {40 * n} 20">{"".join(rects)}</symbol>'
@@ -240,7 +240,7 @@ def ground_panel(p, g, m):
         if sim == "grayscale":
             under = ('<ol class="ps-ls" role="list">' + "".join(f'<li>{r["oklab_L"]:.3f}</li>' for r in rows) + "</ol>")
         proofs.append(f'<div class="ps-pr"><p class="ps-prk">{e(lab)}</p><div class="ps-prs">{strip(p, g, sim)}{under}</div></div>')
-    name = (f'{p["name"]} on {WORD[g]}: the {n} {word.lower()}s with their numbers in their label inks, then the same {word.lower()}s '
+    name = (f'{p["name"]} on {WORD[g]}: the {R0.nw(n)} {word.lower()}s with their numbers in their label inks, then the same {word.lower()}s '
             f'in gray, with each one’s lightness, and as readers with protanopia, deuteranopia and tritanopia see them.')
     return (f'<div class="ps-g oa-surface-{g}" role="img" aria-label="{e(name)}">'
             f'<p class="ps-gn">On {WORD[g]}</p><ol class="ps-sws" role="list">{"".join(sw)}</ol>{"".join(proofs)}</div>')
@@ -249,7 +249,7 @@ def ground_panel(p, g, m):
 def table(p, m):
     n = p["steps"]
     word = p["word"]
-    cap = f'{p["name"]}, {n} {word.lower()}s: {p["job"].split(".")[0].lower()}'
+    cap = f'{p["name"]}, {R0.nw(n)} {word.lower()}s: {p["job"].split(".")[0][0].lower() + p["job"].split(".")[0][1:]}'
     head = ('<thead><tr><th scope="col">' + e(word) + '</th><th scope="col">Token</th>'
             + "".join(f'<th scope="col">On {WORD[g]}</th>' for g in ("newsprint", "charcoal"))
             + '<th scope="col">On White paper</th></tr></thead>')
@@ -265,17 +265,15 @@ def table(p, m):
             r = m[g]["rows"][i]
             fr = contrast(r["fill_hex"], GROUND[g])
             lr = r["label_on_fill"]
-            lab_on = "on a halo of the ground" if cat4 else "on the step"
             carry = ""
             cells.append(
                 f'<td><span class="ps-v">{e(r["fill_hex"]).replace("#", "&#35;")}</span>'
-                f'<span class="ps-l">{ratio(fr)} against {WORD[g]}, {uses(fr, "fill")}</span>'
-                f'<span class="ps-l">Label {e(alias_name(label_path(p, k, g)) or "")} {lab_on}, {ratio(lr)}, {uses(lr, "label")}</span>'
+                f'<span class="ps-l">{ratio(fr)}, {uses(fr, "fill")}</span>'
+                f'<span class="ps-l">Label in {e(alias_name(label_path(p, k, g)) or "")}{" beside it" if cat4 else ""}, {ratio(lr)}, {uses(lr, "label")}</span>'
                 f'<span class="ps-l">Lightness {r["oklab_L"]:.3f}</span>{carry}</td>')
         rw = m["white"]["rows"][i]
         wr = contrast(rw["fill_hex"], GROUND["white"])
-        cells.append(f'<td><span class="ps-l">{ratio(wr)} against White, {uses(wr, "fill")}</span>'
-                     f'<span class="ps-l">The Newsprint value</span></td>')
+        cells.append(f'<td><span class="ps-l">{ratio(wr)}, {uses(wr, "fill")}</span></td>')
         body.append(f"<tr>{hdr}{''.join(cells)}</tr>")
     return (f'<div class="ps-tw"><table class="ps-t"><caption>{e(cap)}</caption>{head}<tbody>{"".join(body)}</tbody></table></div>')
 
@@ -334,8 +332,8 @@ def palette_block(p):
                  f'the hatch, in <code class="ps-tk">{dotted("oa.chart.color.categorical.labelBeside.group4")}</code>. Markers, in order: '
                  f'{", ".join(MARKER)}.</p>')
     carry = p["carry"].format(outline="oa.chart.color.sequential.outline") if p["carry"] else ""
-    tok = (f'<p class="ps-note">Tokens: <code class="ps-tk">{dotted(p["fill"].format(n=1))}</code> to {p["word"].lower()} {p["steps"]}, each with '
-           f'<code class="ps-tk">.<wbr>onNewsprint</code> and <code class="ps-tk">.<wbr>onCharcoal</code>; label inks '
+    tok = (f'<p class="ps-note">Tokens: <code class="ps-tk">{dotted(p["fill"].format(n=1))}</code> to {p["word"].lower()}{p["steps"]}, each with '
+           f'<code class="ps-tk">.<wbr>onNewsprint</code> and <code class="ps-tk">.<wbr>onCharcoal</code>, and White paper prints the Newsprint values; label inks '
            f'<code class="ps-tk">{dotted(p["label"].format(n=1))}</code> and on. In a form, name the role: '
            f'<code class="ps-tk">{p["code"]}-1</code> to <code class="ps-tk">{p["code"]}-{p["steps"]}</code>.'
            + (f" {e(carry)}" if carry else "") + "</p>")
@@ -357,7 +355,8 @@ def grade_line(key, w):
         need(tok == "solid" and arr is None, f"oa.chart.grade.{key}: the token is {tok!r}, the atlas build draws {tex}")
     marks, _, _ = BS.wire_marks([(1, 8), (119, 8)], key, None, None, w, lit=False)
     marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks).replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
-    marks = re.sub(r'\sstyle="[^"]*"', "", marks)
+    marks = re.sub(r'\sstyle="[^"]*"', "", marks).replace('class="ak-mark"', 'class="oac-s-subject"').replace('class="hd"', 'class="oac-f-subject"')
+    need("ak-" not in marks and 'class="hd' not in marks, f"oa.chart.grade.{key}: the atlas build drew a mark class the plate does not map")
     GRADE_SYM[f"{key}-{w}"] = f'<symbol id="ps-gl-{key}-{w}" viewBox="0 0 120 16">{marks}</symbol>'
     return (f'<svg class="ps-ln" viewBox="0 0 120 16" width="120" height="16" aria-hidden="true" focusable="false"><use href="#ps-gl-{key}-{w}"/></svg>')
 
@@ -453,10 +452,11 @@ STYLE = """
 .ps-sws { display: flex; flex-wrap: wrap; gap: var(--oa-space-100); margin: 0; padding: 0; list-style: none }
 .ps-sws li { display: flex; flex-direction: column; align-items: center; gap: var(--oa-space-050); font: var(--oa-type-caption) }
 .ps-mk { color: var(--oa-color-text-secondary) }
-.ps-pr { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--oa-space-200); align-items: start; margin-top: var(--oa-space-150) }
+.ps-pr { margin-top: var(--oa-space-200) }
+.ps-prk + .ps-prs { margin-top: var(--oa-space-050) }
 .ps-prk { font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
-.ps-strip { display: block; width: 100%; max-width: 15rem; height: 20px }
-.ps-ls { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); max-width: 15rem; margin: var(--oa-space-050) 0 0; padding: 0; list-style: none;
+.ps-strip { display: block; width: 100%; max-width: 22rem; height: 20px }
+.ps-ls { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); max-width: 22rem; margin: var(--oa-space-050) 0 0; padding: 0; list-style: none;
   font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary); text-align: center }
 .ps-ms { margin: var(--oa-space-300) 0 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-150) }
 .ps-mg { font: var(--oa-type-caption); max-width: 52em; text-wrap: pretty }
@@ -465,10 +465,7 @@ STYLE = """
 .ps-gls li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--oa-space-200); align-items: center; font: var(--oa-type-caption) }
 .ps-lns { display: grid; gap: var(--oa-space-050) }
 .ps-ln { display: block }
-.ps-defs path { fill: none }
-.ps-defs .ak-mark { stroke: var(--oa-color-graphic-essential) }
-.ps-defs .hd { fill: var(--oa-color-graphic-essential) }
-.ps-rs { display: inline-block; fill: var(--oa-color-graphic-essential); vertical-align: .08em; margin-right: 2px }
+.ps-rs { display: inline-block; fill: var(--oa-chart-color-subject); vertical-align: .08em; margin-right: 2px }
 .ps-gw b { font-weight: var(--oa-font-weight-bold) }
 /* under 40rem each table row stands as a block: the step, then each value under its column's word (6.6, as chapter 26's table) */
 @container (max-width: 39.99rem) {

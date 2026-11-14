@@ -174,8 +174,12 @@ THE = {"D5": "the quality of public services", "C3": "the risk of losing office"
 PLURAL = {"C1": True, "C5": True, "C2": False, "C3": False, "C4": False, "D5": False}
 
 
-def in_sentence(code, first=False):
-    t = THE.get(code) or lc(curl(short(code)))
+OBJECT = {"C5": "the number of incumbents defeated or pushed into retirement"}   # as B4's how_to_read says it
+
+
+def in_sentence(code, first=False, obj=False):
+    t = (OBJECT.get(code) if obj else None) or THE.get(code) or lc(curl(short(code)))
+    need(lc(curl(short(code))) in t.lower(), f"Variable {code}'s title is not whole in its sentence (DR-265)")
     return t[0].upper() + t[1:] if first else t
 
 
@@ -203,7 +207,7 @@ def walk_steps():
             verb = "can raise" if up else "can lower"
         else:
             verb = ("raise" if up else "lower") if PLURAL[a] else ("raises" if up else "lowers")
-        line = f"{in_sentence(a, True)} {verb} {in_sentence(b)}."
+        line = f"{in_sentence(a, True)} {verb} {in_sentence(b, obj=True)}."
         moves = f"{l['type']} moves along it, " if l["type"] in ("money", "information", "ownership") else ""
         least = (", the least certain step in the loop" if l["evidence"] == C15.least_certain(lp["links"])
                  and len({link(y)["evidence"] for y in lp["links"]}) > 1 else "")
@@ -234,19 +238,22 @@ def walk_steps():
     return out
 
 
-def drawing(lid, numbered=True, shared=frozenset({"C3"}), labels=None):
+def drawing(lid, numbered=True, shared=frozenset({"C3"}), labels=None, live=True):
     """One loop drawn by chapter 15's own function (three_loop for B4, four_loop for R10) with steps_g, each step's group
     renumbered to its place in the walk (data-s, 1 to 7) and each pill keyed by loop and variable (data-p). The step
     numbers drawn stay the atlas's, 1 to 3 and 1 to 4 (Rule 15.6)."""
     lp = LOOP[lid]
     codes = [c for c, _ in lp["chain"]]
     if len(codes) == 3:
-        body, h = C15.three_loop(codes, lp["links"], inside=(lid, KIND[lid]), shared=set(shared), steps_g=True,
+        body, h = C15.three_loop(codes, lp["links"], inside=(lid, KIND[lid]), shared=set(shared), steps_g=live,
                                  numbered=numbered, labels=labels)
     else:
-        body, h = C15.four_loop(codes, lp["links"], inside=(lid, KIND[lid]), shared=set(shared), steps_g=True,
+        body, h = C15.four_loop(codes, lp["links"], inside=(lid, KIND[lid]), shared=set(shared), steps_g=live,
                                 numbered=numbered, labels=labels)
     walk_no = {x: k for k, (l_, x) in enumerate(WALK, 1) if l_ == lid}
+    if not live:            # a still picture: no step or pill groups, no band
+        need("data-s=" not in body and 'class="bd"' not in body, f"Loop {lid}'s still drawing carries a stepper's groups")
+        return C15.svg_wrap(body, h), h
     n_s = len(re.findall(r'data-s="\d+"', body))
     n_p = len(re.findall(r'data-p="\d+"', body))
     need(n_s == len(lp["links"]) and n_p == len(codes), f"Loop {lid}'s drawing lost a step or pill group ({n_s}, {n_p})")
@@ -284,10 +291,16 @@ def walk_css(steps):
         out.append(",".join(f'{s_} [data-p="{p}"]' for p in sorted(lit)) + f"{{--f:{BAND}}}")
         if k:
             out.append(f'{s_} [data-s="{k}"] .bd{{display:inline}}{s_} [data-s="{k}"] text{{font-weight:var(--oa-font-weight-bold)}}')
-    out.append(".oa-stepper-step[data-oa-first]{counter-set:st 0}"
-               ".oa-stepper-step .lpn{display:block;margin-bottom:2px;font:var(--oa-type-label);"
-               "letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);"
-               "color:var(--oa-color-text-secondary)}")
+    # the still sequence as a hanging list: each number in its own column, the step's words beside it, and each loop's
+    # first step headed by its chip and its count of steps
+    out.append(".lv>.oa-stepper-status{margin-top:20px}.lv>.oa-stepper-why+.k{margin-top:20px}")
+    out.append(".oa-stepper-step{display:grid;grid-template-columns:1.6em minmax(0,1fr);align-items:start}"
+               ".oa-stepper-step::before{grid-column:1;grid-row:1/span 2;margin-right:0}"
+               ".oa-stepper-step>*{grid-column:2}"
+               ".oa-stepper-step[data-oa-first]{counter-set:st 0}"
+               ".oa-stepper-step[data-oa-first]::before{grid-row:2/span 2}"
+               ".oa-stepper-step .lpn{grid-row:1;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 6px;"
+               "font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}")
     return "".join(out)
 
 
@@ -304,8 +317,8 @@ def rule_14_143():
     need('id="oa-stepper-why"' in why and ctl.count('aria-describedby="oa-stepper-why"') == 2,
          "Rule 18.22's reason line and the two buttons that name it changed")
     s0, v0 = START["B4"]
-    ready = (f"Ready. Start in Loop B4 at {in_sentence(s0)}, and suppose it {v0}. Press Play, or Next step to follow one "
-             "connection at a time through both loops.")
+    ready = (f"Ready. Both loops pass through {in_sentence('C3')}. Start in Loop B4 at {in_sentence(s0)}, and suppose it "
+             f"{v0}. Press Play, or Next step to follow one connection at a time.")
     lis = []
     for st in steps:
         first = st["i"] == 1
@@ -316,8 +329,11 @@ def rule_14_143():
     cols = []
     for lid in ("B4", "R10"):
         lp = LOOP[lid]
-        cols.append(f'<div>{C15.hed("Loop", lid, curl(lp["title"]))}'
-                    f'{C15.label_for(lp["links"], "the grade of the loop’s least certain step")}'
+        grades = {link(x)["evidence"] for x in lp["links"]}
+        lab = (diagram_label(grades.pop(), f"{GRADE[link(lp['links'][0])['evidence']][1]}, the grade of all "
+                                           f"{words_n(len(lp['links']))} steps")
+               if len(grades) == 1 else C15.label_for(lp["links"], "the grade of the loop’s least certain step"))
+        cols.append(f'<div>{C15.hed("Loop", lid, curl(lp["title"]))}{lab}'
                     f'<div class="dw dg">{svgs[lid]}</div></div>')
     shared = (f'<p class="nt">{C15.vt("C3")} is the pill filled in ink in both drawings: both loops pass through it. '
               f'Each loop numbers its steps from the variable the atlas starts it at.</p>')
@@ -344,7 +360,7 @@ def rule_14_143():
     # the failure: the two loops read as one loop of seven steps, numbered 1 to 7, its minus signs counted together
     fcols = []
     for lid in ("B4", "R10"):
-        svg, _ = drawing(lid, numbered=True)
+        svg, _ = drawing(lid, numbered=True, live=False)
         offs = 0 if lid == "B4" else 3
         svg = re.sub(r'<tspan class="sn">(\d+)</tspan>', lambda m: f'<tspan class="sn">{int(m.group(1)) + offs}</tspan>', svg)
         cols_svg = re.sub(r'<text class="id"[^>]*>.*?</text>', "", svg, flags=re.S)
@@ -375,8 +391,8 @@ def rule_14_143():
             f"belongs to.",
             "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second "
             "loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion "
-            "reduced and with scripts off (Rule 15.19). Never number the two loops as one, and never say one outweighs the "
-            "other: the atlas holds no measure of a loop’s strength (Rule 15.21).",
+            "reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that "
+            "one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21).",
         ],
         "use_when": None,
         "use_instead": [],
@@ -473,7 +489,7 @@ def effect_cell(code):
     head = code.split(" ")[0]
     need(head in C13.EFFECT_WORDS, f"effect {code!r} has no code")
     return (f'<b class="cd">{e(code.replace("-", MINUS, 1) if code.startswith("-") else code)}</b>'
-            f' <span class="cw">{e(C13.EFFECT_WORDS[head])}</span>')
+            f',&#32;<span class="cw">{e(C13.EFFECT_WORDS[head])}</span>')
 
 
 def target_words(t):
@@ -483,24 +499,77 @@ def target_words(t):
     return f'{chip("Variable", t)} “{ce(node(t)["title"])}”'
 
 
+def reaches(start, goal):
+    """Whether any chain of the model's connections, at any length, runs from the variable start into one of goal."""
+    seen, todo = {start}, [start]
+    while todo:
+        x = todo.pop()
+        for l in LINK.values():
+            if l["from"] == x and l["to"] not in seen:
+                seen.add(l["to"])
+                todo.append(l["to"])
+    return bool(seen & set(goal))
+
+
+def counted(ts):
+    n_l = sum(1 for t in ts if t in LINK)
+    n_v = len(ts) - n_l
+    return " and ".join(p for p in (f"{words_n(n_l)} connection{'s' if n_l != 1 else ''}" if n_l else "",
+                                    f"{words_n(n_v)} variable{'s' if n_v != 1 else ''}" if n_v else "") if p)
+
+
+def layer_of(t):
+    return LINK[t]["layer"] if t in LINK else NODE[t]["layer"]
+
+
 def say_line(rid, on):
+    """The line the status line says (the data lead's A-2, item 3): the marks that turn red on the drawing, none included,
+    then the targets outside the loop with their layer. It never says a reform acts on the loop through anything."""
     r = REFORM[rid]
     mine = [t for t in r["targets"] if t in on]
     off = [t for t in r["targets"] if t not in on]
-    n_l = sum(1 for t in mine if t in LINK)
-    n_v = len(mine) - n_l
-    parts = [p for p in (f"{words_n(n_l)} connection{'s' if n_l != 1 else ''}" if n_l else "",
-                         f"{words_n(n_v)} variable{'s' if n_v != 1 else ''}" if n_v else "") if p]
-    o_l = sum(1 for t in off if t in LINK)
-    o_v = len(off) - o_l
-    oparts = [p for p in (f"{words_n(o_l)} connection{'s' if o_l != 1 else ''}" if o_l else "",
-                          f"{words_n(o_v)} variable{'s' if o_v != 1 else ''}" if o_v else "") if p]
+    lays = sorted({LAYER[layer_of(t)] for t in off})
     if mine:
-        s = f'{chip("Reform", rid)} acts where the marks turn red: on {" and ".join(parts)}.'
-        if off:
-            s += f' It also acts on {" and ".join(oparts)} outside this loop.'
-        return s
-    return f'{chip("Reform", rid)} acts outside this drawing, on {" and ".join(oparts)}, so no mark turns red.'
+        n_m = len(mine)
+        s = f'{chip("Reform", rid)}: {counted(mine)} turn{"s" if n_m == 1 else ""} red.'
+    else:
+        s = f'{chip("Reform", rid)}: no mark turns red.'
+    if off:
+        if mine:
+            s += (f' One {counted(off).split(" ", 1)[1]} it targets sits outside this loop, in {" and ".join(lays)}.'
+                  if len(off) == 1 else f' {counted(off).capitalize()} it targets sit outside this loop, in {" and ".join(lays)}.')
+        else:
+            s += f' Its {words_n(len(off))} targets sit outside this loop, in {" and ".join(lays)}.'
+    return s
+
+
+def off_words(rid, t, loop_vars):
+    """An off-loop target in words (A-2, item 2): its typed chip, the atlas's title, for a connection its grade and its two
+    ends, and its layer."""
+    if t in LINK:
+        l = link(t)
+        return (f'{chip("Connection", t)} \u201c{ce(l["name"])}\u201d, {GRADE[l["evidence"]][0].lower()}, from '
+                f'{chip("Variable", l["from"])} to {chip("Variable", l["to"])}, in {LAYER[l["layer"]]}')
+    return f'{chip("Variable", t)} \u201c{ce(node(t)["title"])}\u201d, in {LAYER[NODE[t]["layer"]]}'
+
+
+def off_note(rid, off, loop_vars):
+    """What the model holds about the off-loop targets and the loop (A-2, items 2 and 4), checked by search: a target
+    from which no chain of connections reaches the loop, and a connection that leaves the loop and runs outward."""
+    starts = []
+    for t in off:
+        if t in LINK:
+            if LINK[t]["from"] in loop_vars:
+                need(not reaches(LINK[t]["to"], loop_vars), f"{t} now leads back into the loop")
+                return (f'{chip("Connection", t)} leaves the loop at {chip("Variable", LINK[t]["from"])} and runs outward.')
+            starts += [LINK[t]["from"], LINK[t]["to"]]
+        else:
+            starts.append(t)
+    need(not any(reaches(x, loop_vars) for x in starts), f"a target of {rid} now reaches Loop R8")
+    one = len(off) == 1
+    tail = ("That target sits outside the loop, and the atlas draws no connection from it into the loop." if one else
+            "Neither target sits on the loop, and the atlas draws no connection from either into the loop.")
+    return f'Its record names {chip("Loop", "R8")} as a loop it acts on. {tail}'
 
 
 def chooser_css(rids):
@@ -532,8 +601,9 @@ CARD_CSS = (
     "text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 4px}"
     ".cd8 dd{margin:0;font:var(--oa-type-body-small)}.cd8 dd+dd{margin-top:4px}"
     ".cd8 .cd{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;white-space:nowrap}"
-    ".cd8 .oa-disclosure-set{margin-top:12px}"
-    ".rl8{list-style:none;margin:0;padding:0}.rl8 li+li{margin-top:6px}"
+    ".cd8 .oa-disclosure-set{margin-top:12px}.cd8 .on8{color:var(--oa-color-text-secondary)}"
+    ".rl8{list-style:none;margin:0;padding:0}.rl8 li+li{margin-top:8px}.rl8 .rn,.rl8 .rw{display:block}"
+    ".rl8 .rw{color:var(--oa-color-text-secondary)}"
     ".ky8{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;font:var(--oa-type-caption)}"
     ".ky8 b{font-variant-numeric:tabular-nums}.pon{display:none}"
     "@container oa-frame (min-width:680px){.cds{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;"
@@ -563,8 +633,12 @@ def rule_14_144():
     lists_ = (f'<p class="nt">Each of these reforms names {chip("Loop", "R8")} in its own record; the loop’s record lists '
               f'{chip("Reform", "R-30")} only. The drawing marks a reform’s targets that sit on the loop, and each card '
               'lists the others in words with their layer.</p>')
-    prints = "".join(f'<p class="nt pon" data-oa-print="{rid}">The drawing shows {chip("Reform", rid)} in red.</p>' for rid in RIDS)
-    left = (C15.hed("Loop", "R8", curl(lp["title"])) + C15.label_for(lp["links"], "the grade of both steps")
+    prints = "".join(f'<p class="nt pon" data-oa-print="{rid}">'
+                     + (f'The drawing shows {chip("Reform", rid)} in red.' if any(t in on for t in REFORM[rid]["targets"])
+                        else f'None of the targets of {chip("Reform", rid)} sits on the drawing, so nothing on it is red.')
+                     + '</p>' for rid in RIDS)
+    need({link(x)["evidence"] for x in lp["links"]} == {"well-supported"}, "Loop R8's grades changed")
+    left = (C15.hed("Loop", "R8", curl(lp["title"])) + diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both steps")
             + f'<div class="dw dg">{svg}</div>{prints}')
     right = C15.step_lines(lp["links"]) + lists_
     cards = []
@@ -576,14 +650,15 @@ def rule_14_144():
         offs = []
         for t in off:
             lay = (LINK[t]["layer"] if t in LINK else NODE[t]["layer"])
-            offs.append(f"<dd>{target_words(t)}, in {LAYER[lay]}</dd>")
+            offs.append(f"<dd>{off_words(rid, t, set(codes))}</dd>")
         effs = "".join(f'<dd><span class="fm">{e(C13.FAMILY[f])}</span>: {effect_cell(r["effects"][f])}</dd>'
                        for f in ("DQ", "GE", "EP", "EQ"))
         routes = []
         for x in r["routes"]:
             when = f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked"
-            routes.append(f'<li>{chip("Route", x["route"])} {e(C13.ROUTE_NAME[x["route"]])}, {ce(x["who"])}: '
-                          f'{e(x["feasibility"])} feasibility. {e(when)}.</li>')
+            routes.append(f'<li><span class="rn">{chip("Route", x["route"])} {e(C13.ROUTE_NAME[x["route"]])}</span>'
+                          f'<span class="rw">{ce(x["who"])}</span>'
+                          f'<span class="rw">{e(x["feasibility"].capitalize())} feasibility. {e(when)}.</span></li>')
         rem = r["remedy_evidence"]
         disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
                 f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">The atlas’s evidence and '
@@ -596,7 +671,8 @@ def rule_14_144():
             f'<dl>'
             f'<div><dt>Targets on Loop R8</dt>'
             + ("".join(f"<dd>{target_words(t)}</dd>" for t in mine) or "<dd>None</dd>") + "</div>"
-            f'<div><dt>Targets outside it</dt>' + ("".join(offs) or "<dd>None</dd>") + "</div>"
+            f'<div><dt>Targets outside this loop</dt>' + ("".join(offs) + (f'<dd class="on8">{off_note(rid, off, set(codes))}</dd>' if off else "")
+                                                       or "<dd>None</dd>") + "</div>"
             f'<div><dt>Band</dt><dd><b>{e(r["band"].capitalize())}</b></dd></div>'
             f'<div><dt>Effects by outcome family, as of {SNAP}</dt>{effs}</div>'
             f'<div><dt>Evidence</dt><dd>For the problem, {grade_word(r["problem_evidence"]["grade"], gloss=False)}</dd>'
@@ -660,15 +736,16 @@ def rule_14_144():
         "id": "14.144",
         "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
         "rule": [
-            "Set the reforms that act on one loop side by side, one card each, in the order of their IDs, with the same "
-            "rows in the same order: the targets on the loop, the targets elsewhere with their layer, the band, the four "
-            "effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a "
-            "time to see its targets turn red on the drawing (Rule 15.20), and keep every card in view, so the comparison "
-            "never rests on memory.",
+            "Set the reforms whose records name one loop side by side, one card each, in the order of their IDs, with the "
+            "same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one "
+            "outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see "
+            "its targets on the loop turn red (Rule 15.20), and keep every card in view, so the comparison never rests on "
+            "memory. A reform can name a loop and target none of its steps, as Reform R-38 does with Loop R8: name each "
+            "target outside the loop in words with its layer, and draw no path the atlas does not hold.",
             "Print each effect as the atlas stores it: the code, then any qualifier, the words after the code that say where "
             "or when the effect holds, such as “+L local” or “+M renter-owner”, then the code’s "
-            "meaning. A zero says “no expected effect”. Add no total, count, average or rank, and give no code a "
-            "fill, bar or shade, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each "
+            "meaning. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, "
+            "average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each "
             f"route’s check date or “Not checked”, with the model’s date, {SNAP}.",
         ],
         "use_when": None,
@@ -688,7 +765,7 @@ def rule_14_144():
                      "ranks the effects."),
         "specs": [
             {"label": "Choice", "value": "A named group of radio buttons, one per reform, the first chosen on load (Rule 18.3)"},
-            {"label": "Targets", "value": "The chosen reform’s on the drawing, in Rule 12.5’s red; the others in words with their layer",
+            {"label": "Targets", "value": "The chosen reform’s on the loop, in Rule 12.5’s red; each one outside it in words, with its layer and, for a connection, its two ends",
              "token": "oa.color.data.emphasis.red"},
             {"label": "Cards", "value": "One per reform, the same rows in the same order, all in view; the chosen one takes the selected bar",
              "token": "oa.color.state.selected.bar"},
@@ -757,8 +834,8 @@ def rule_14_142():
         "notes": [
             (f"The band runs from {MINUS}122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of "
              "error for one month’s change in its survey of employers. A column that ends inside the band is a change the "
-             "survey cannot tell apart from no change at that level."),
-            "The band applies to one month’s change. It does not apply to the three-month average.",
+             "survey cannot tell apart from no change at that level. The band covers one month’s change, so it says nothing "
+             "about the three-month average."),
             (f"Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. "
              f"Only the {mw(past[0])} ({k(pv[past[0]])}) and {mw(past[1])} ({k(pv[past[1]])}) drops pass the margin; the other "
              "five sit inside it."),
@@ -786,6 +863,7 @@ def rule_14_142():
             f"Latest: +29,000 jobs in {mw(lat['month'])}, preliminary; the three-month average stood at +51,000.",
         ],
         "phone": "same",
+        "phone_view": True,
         "artboard": "reading",
         "domain": s14["domain"],
         "states": [],
@@ -815,10 +893,10 @@ def rule_14_142():
     }
     # the failure: the same columns with no band, all seven drops labeled alike as job losses (ruling c), one fault
     losses = f1["losses"]
-    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal",)}
+    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view")}
     fspec.update({
         "id": "s-14-142-failure",
-        "title": "Payrolls lost jobs in seven months of 2025 and 2026.",
+        "title": "The economy lost jobs in seven months of 2025 and 2026.",
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
                          "with the three-month average."),
         "notes": [s14["notes"][2]],
@@ -827,7 +905,7 @@ def rule_14_142():
                 "job losses, and a title that counts seven months of lost jobs."),
         "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
         "annotations": [dict(s14["annotations"][1], text="Seven months of job losses")],
-        "show": ["label", "title", "measure_line", "chart", "notes"],
+        "show": ["evidence", "title", "measure", "chart", "notes", "source"],
         "failure": {"rule": "14.142", "caption_lead": "Fails Rule 14.142."},
         "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled "
                           "alike as losses, under a title that counts seven losses as findings; no red.",
@@ -847,15 +925,15 @@ def rule_14_142():
             "value in the subject ink (Rule 14.6), and keep the count of every change true beside them.",
             "Draw every month in the window the question sets, with its reason (Rule 14.10), hatch the months still "
             "preliminary and dash the average where it includes one (Rule 14.11), and say in a note that the band covers one "
-            "month’s change and not the average. The chart keeps its phone drawing, its table and its files from the "
+            "month’s change only. The chart keeps its phone drawing, its table and its files from the "
             "kit (Rules 14.12 to 14.14).",
         ],
         "use_when": None,
         "use_instead": [],
         "why": {"text": [
-            "Without the band, every dip below zero reads as jobs lost. With it, a reader sees that five of the seven drops "
-            "sit inside what the survey can measure and two pass it, so the chart names those two and still counts all "
-            "seven, as the record holds them."],
+            "A survey of employers estimates each month’s change, and a small drop can be chance alone. The band shows a "
+            "reader that five of the seven drops sit inside what the survey can measure and two pass it, so the chart names "
+            "those two and still counts all seven, as the record holds them."],
             "basis": "The Bureau of Labor Statistics’ Employment Situation technical note, October 2026 release; Rule 14.9"},
         "specimen": None,
         "tier": None,
@@ -875,7 +953,7 @@ def rule_14_142():
         ],
         "correct": {"specimen": "s-14-s96",
                     "caption": ("S14’s monthly job change in full: all 57 months, the survey’s margin as a band, the "
-                                "two drops past it named, the preliminary months hatched, with its phone drawing and table.")},
+                                "two drops past it named and the preliminary months hatched, with its phone drawing under it and its table.")},
         "failure": {"specimen": "s-14-142-failure",
                     "caption": ("<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the "
                                 "title counts seven losses as findings. Five of the seven sit inside the survey’s margin "

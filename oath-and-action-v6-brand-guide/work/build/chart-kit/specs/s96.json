@@ -12,8 +12,7 @@
  "title": "Payrolls shrank in seven of the 57 months charted, and only the October 2025 and February 2026 drops pass the survey’s margin of error.",
  "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average and the survey’s 90 percent margin of error for one month’s change, plus or minus 122,000 jobs.",
  "notes": [
-  "The band runs from −122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of error for one month’s change in its survey of employers. A column that ends inside the band is a change the survey cannot tell apart from no change at that level.",
-  "The band applies to one month’s change. It does not apply to the three-month average.",
+  "The band runs from −122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of error for one month’s change in its survey of employers. A column that ends inside the band is a change the survey cannot tell apart from no change at that level. The band covers one month’s change, so it says nothing about the three-month average.",
   "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. Only the October 2025 (−140,000) and February 2026 (−156,000) drops pass the margin; the other five sit inside it.",
   "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The band does not show how far a revision may move a month. The average is dashed where it includes a preliminary month.",
   "The three-month average for a month is the mean of that month’s change and the two before it, so the averages for January and February 2022 draw on November and December 2021, months the chart does not show.",
@@ -61,6 +60,7 @@
   "Latest: +29,000 jobs in September 2026, preliminary; the three-month average stood at +51,000."
  ],
  "phone": "same",
+ "phone_view": true,
  "artboard": "reading",
  "domain": "D07",
  "states": [],

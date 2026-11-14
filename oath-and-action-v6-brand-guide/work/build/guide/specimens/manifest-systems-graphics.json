@@ -499,5 +499,28 @@
   "alt": "Failure case: do not publish. Route FS drawn as six filled steps on one line, Introduced, Committee, House vote, Senate vote, Signed and Law, the last reading “The change is done.”, with no other path, no stop, no source and nothing after the signature.",
   "illustrative": false,
   "notes": "Labeled failure: the route ends at the signature, with no vetoes, money, rules, courts or repeal and no source."
+ },
+ "s-15-24-correct": {
+  "chapter": "15",
+  "rule": "15.24",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of October 15, 2026. First, one reform read through its workflow: Reform R-28, Taxing inherited gains and capital income, on Route FS by reconciliation, low feasibility, not checked, which takes step 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility words and five dependency questions. Each card gives the route’s name, instrument, who acts, its stages, its official sources with the date our research read them, what it depends on, and how many reform entries name it, listed in a disclosure with each one’s check date or not checked. Route LOC, Local: Ordinance, charter amendment or local practice; 15 entries, 2 checked. Route SS, State statute: A bill passed by the legislature and signed, or a rule issued by a state agency or utility commission under a statute; 29 entries, 3 checked. Route BI, State ballot: Citizen initiative, referendum or legislative referral; 11 entries, 2 checked. Route FS, Federal statute: Act of Congress, including appropriations and reconciliation; 38 entries, 3 checked. Route FR, Chamber rule or confirmation: House or Senate rule; Senate confirmation of nominees; 6 entries, 0 checked. Route FA, Federal executive action: Executive order, agency rule, guidance, staffing and budget execution; 7 entries, 1 checked. Route ENF, Enforcement and litigation: Cases and settlements under existing law; 5 entries, 2 checked. Route CRT, Court doctrine: Rulings that change what other routes may do; 7 entries, 0 checked. Route AV, Article V: Constitutional amendment; 3 entries, 0 checked. Route IC, Interstate compact: Matching statutes in several states that take effect at a threshold; 1 entries, 0 checked. Route CIV, Civil society: Organizing, philanthropy, newsrooms, unions, membership groups, private contracts; 4 entries, 0 checked.",
+  "illustrative": false,
+  "notes": "Every atlas value read by script; each route's stages and sources held to rows of the workflow sources file; each entry's date from its own record.",
+  "wide_px": 680,
+  "readable": true,
+  "interactive": true
+ },
+ "s-15-24-failure": {
+  "chapter": "15",
+  "rule": "15.24",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Reform R-28, Taxing inherited gains and capital income, on Route FS, Federal statute, drawn on the path that needs 60 senators to end debate, with low feasibility and no source and no date.",
+  "illustrative": false,
+  "notes": "Labeled failure: the generic 60-vote path in place of the reconciliation the entry names, with no source and no check date."
  }
 }
