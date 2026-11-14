@@ -1624,6 +1624,19 @@ async function self_test() {
     console.log(`${ok ? 'pass' : 'FAIL'} parity reads a drawing's own id prefix: s-14-142-failure's page and Node drawings compare equal${was_false ? ' (the old pattern failed them)' : ''}, and a rect 3 px wider on the page fails`);
     if (!ok) bad++;
   }
+  // round 5 (DD-E7, DD-E8): scale.ticks_min drops the ticks and gridlines under it and keeps the floor; scale.y_narrow sets the
+  // value scale only where the drawing is under 490 px
+  {
+    const base = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8')), cb = C.check_spec(K, base, {});
+    const draw = (sc, w) => { const sp = JSON.parse(JSON.stringify(base)); sp.scale = Object.assign({}, base.scale, sc); return K.draw(sp, cb.rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(cb) }); };
+    const neg = (d) => d.texts.filter((t) => /^\u2212\d/.test(t.words) && t.role === 'tick').length;
+    const plain = draw({ y: [-400, 850] }, 720), cut = draw({ y: [-400, 850], ticks_min: 0 }, 720);
+    const same_h = plain.height === cut.height;
+    const n400 = draw({ y: [-400, 850] }, 400), y400 = draw({ y: [-400, 850], y_narrow: [-200, 850] }, 400), y720 = draw({ y: [-400, 850], y_narrow: [-200, 850] }, 720);
+    const ok = neg(plain) > 0 && neg(cut) === 0 && same_h && n400.svg !== y400.svg && y720.svg === plain.svg;
+    console.log(`${ok ? 'pass' : 'FAIL'} scale.ticks_min drops the ticks under 0 (${neg(plain)} to ${neg(cut)}) and keeps the drawing's height; scale.y_narrow moves the 400 px drawing and leaves the 720 px one as it was`);
+    if (!ok) bad++;
+  }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);
