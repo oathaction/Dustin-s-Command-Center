@@ -3804,7 +3804,7 @@ def rule_15_22(book):
     body = (head + rec + lab + wf_html(groups) + key
             + src("route FS, its instrument and who acts; each stage’s source as named beside it, with the date we read it"))
     book.add("s-15-22-correct", body, rule="15.22", readable=True, wide=True,
-             alt=(f"Route FS, Federal statute, from our systems atlas as of {SNAP}: {fs['instrument']}, by the {fs['who']}. "
+             alt=(f"Route FS, Federal statute, from our systems atlas as of {SNAP}: {fs['instrument']}. Who acts: {fs['who']}. "
                   f"Drawn as a workflow of {len(stages)} numbered stages in four groups, In Congress, At the President, Once it "
                   "is law and Undoing it, each with its source and the date we read it. The stages every enacted bill passes "
                   "sit on a dark line in filled squares; the other paths and what follows the law are in a lighter ink with "

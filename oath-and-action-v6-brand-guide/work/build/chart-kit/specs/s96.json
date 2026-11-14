@@ -109,7 +109,7 @@
   "margin": {
    "value": 122,
    "label": "Margin of error",
-   "key": "The survey’s margin of error for one month’s change"
+   "key": "The survey’s margin of error for one month’s change"
   }
  },
  "annotations": [

@@ -338,7 +338,15 @@ def rule_14_143():
                                            f"{words_n(len(lp['links']))} steps")
                if len(grades) == 1 else C15.label_for(lp["links"], "the grade of the loop’s least certain step"))
         cols.append(f'<div>{C15.hed("Loop", lid, curl(lp["title"]))}{lab}'
-                    f'<div class="dw dg">{svgs[lid]}</div></div>')
+                    f'<div class="dw dg{" b4w" if lid == "B4" else ""}">{svgs[lid]}</div></div>')
+    # side by side, Loop B4's drawing drops so its filled pill for Variable C3 shares one line with Loop R10's (the design
+    # director's DD-C2): the two pills' centers read from the drawings themselves
+    def c3_mid(svg, key):
+        m = re.search(r'data-p="' + key + r'"[^>]*>\s*<rect class="pl[^"]*" x="[^"]+" y="([\d.]+)" width="[^"]+" height="([\d.]+)"', svg)
+        need(m is not None, f"no pill {key} in its drawing")
+        return float(m.group(1)) + float(m.group(2)) / 2
+    drop = round(c3_mid(svgs["R10"], "R10-C3") - c3_mid(svgs["B4"], "B4-C3"))
+    need(0 <= drop <= 160, f"Loop B4's drawing would drop {drop} px to meet Loop R10's pill")
     shared = (f'<p class="nt">{C15.vt("C3")} is the pill filled in ink in both drawings: both loops pass through it. '
               f'Each loop numbers its steps from where the atlas starts it.</p>')
     limits = (f'<p class="k">The atlas’s limits on the two loops</p>'
@@ -352,7 +360,7 @@ def rule_14_143():
             # order in the markup, never by CSS; the still list follows
             f'{ctl}{why}<ol class="oa-stepper-steps" role="list">{"".join(lis)}</ol>{limits}'
             + src("loops B4 and R10 and connections L23, L24, L54, L08, L25, L53 and L42") + "</div>")
-    css_live = walk_css(steps)
+    css_live = walk_css(steps) + f"@container oa-frame (min-width:680px){{.b4w{{padding-top:{drop}px}}}}"
     style = plate_style(root, swap={C15.stepper_css(3): css_live})
     alt = (f"Loop B4 from our systems atlas, “{b4['title']}”, beside Loop R10, “{r10['title']}”, each drawn "
            f"with its steps numbered from 1, and Variable C3, {lc(short('C3'))}, the pill filled in ink in both. Under them "
@@ -388,7 +396,7 @@ def rule_14_143():
     n = len(steps)
     entry = {
         "id": "14.143",
-        "title": "Step through two loops that share a variable, one connection at a time.",
+        "title": "Step through two loops that share a\u00a0variable, one connection at a time.",
         "rule": [
             f"When two loops from our systems atlas pass through one variable, step the reader through both on one loop "
             f"stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, "
@@ -910,7 +918,7 @@ def rule_14_142():
             # sweep found February 2026's no clear place at 327 to 339 px; phone_notes names both in one line (S30's way)
             "named": [{"x": m, "text": [mw(m), f"{k(pv[m])} jobs"], "phone": {"hide": True}} for m in past],
             "margin": {"value": int(f1["margin_thousands"]), "label": "Margin of error",
-                       "key": "The survey’s margin of error for one month’s change"},
+                       "key": "The survey’s margin of error for one month’s\u00a0change"},
         }),
         "annotations": [s14["annotations"][0]],
         "scale": s14["scale"],
@@ -943,7 +951,8 @@ def rule_14_142():
         "alt": ("The same columns with no band, the seven drops drawn alike in the strongest ink under a note that calls them seven months of "
                 "job losses, and a title that counts seven months of lost jobs."),
         "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
-        "annotations": [dict(s14["annotations"][1], text="Seven months of job losses")],
+        # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
+        "annotations": [],
         "show": ["evidence", "title", "measure", "chart", "notes", "source"],
         "failure": {"rule": "14.142", "caption_lead": "Fails Rule 14.142."},
         "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled "

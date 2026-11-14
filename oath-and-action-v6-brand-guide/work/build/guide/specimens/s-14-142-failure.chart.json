@@ -104,18 +104,7 @@
    }
   ]
  },
- "annotations": [
-  {
-   "at": {
-    "x": "2025-01"
-   },
-   "text": "Seven months of job losses",
-   "target": "low",
-   "place": "below",
-   "dx": -60,
-   "dy": 14
-  }
- ],
+ "annotations": [],
  "scale": {
   "y": [
    -200,
