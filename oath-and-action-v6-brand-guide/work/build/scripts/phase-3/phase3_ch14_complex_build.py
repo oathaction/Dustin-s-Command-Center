@@ -213,8 +213,11 @@ def walk_steps():
                  and len({link(y)["evidence"] for y in lp["links"]}) > 1 else "")
         more = (f'{chip("Connection", x)} “{ce(l["name"])}”: {moves}the atlas grades it '
                 f'{GRADE[l["evidence"]][0].lower()}{least}, and its effect takes {DELAY[l["delay"]][1]}.')
-        if x == "L54":
-            more += (" The atlas calls it the weakest step for U.S. services, since its main study covers Brazilian mayors.")
+        # the atlas's own claim of a weakest step, read from the loop's evidence summary (Loop B4: all three steps well
+        # supported, and L54 the weakest for U.S. services); none is printed where the model names none
+        wk = re.search(r"For U\.S\. services the weakest is (L\d+), (since [^.]+)\.", lp["evidence_summary"])
+        if wk and wk.group(1) == x:
+            more += f" The atlas names it the weakest step for U.S. services, \u201c{ce(wk.group(2))}\u201d."
         if i == 0 and lid == "R10":
             s_, v_ = START["R10"]
             more = (f"The walk moves to Loop R10. Start at {in_sentence(s_)}, and suppose they {v_}. " + more)
