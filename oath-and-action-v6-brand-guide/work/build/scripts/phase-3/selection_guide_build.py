@@ -59,6 +59,7 @@ M1, M2, M3, M4 = "oac-f-mag-1", "oac-f-mag-2", "oac-f-mag-3", "oac-f-mag-4"
 SS, SC, SL, SG, ST = "oac-s-subject", "oac-s-context", "oac-s-light-fill", "oac-s-gridline", "oac-s-track"
 INKS = {FS, FC, FL, FG, FT, M1, M2, M3, M4, SS, SC, SL, SG, ST}
 TIER_ORDER = ["Core", "Extended", "Reference", "Avoid"]
+SKIP_FIRST = "Skip to Rule 14.1"   # the accessibility lead's words, once the guide sat before the rule index (04:30 UTC)
 # What each tier means, once, at the guide's head (DD-G4); a key, so phrases (chapter 02's scope note). The editor's words,
 # from its words pass on the guide (03:25 UTC, SG-5); DR-240 sets what an avoid entry draws.
 TIER_KEY = [
@@ -1886,7 +1887,8 @@ def build():
             f'<a class="oa-link-skip sg-skip" href="{nxt}">Skip these {len(fs)} forms</a>'
             f'<ul class="sg-fs" role="list" aria-labelledby="s-14-sg-q-{n}">{"".join(items)}</ul></li>')
     key = "".join(f"<div><dt>{e(t)}</dt><dd>{e(w)}</dd></div>" for t, w in TIER_KEY)
-    body = (f'<div class="sg"><a class="oa-link-skip sg-skip" href="#group-14-1">Skip the chart guide</a>'
+    # the guide now opens the chapter before its rule index (DD-G5), so its first skip link says where it lands
+    body = (f'<div class="sg"><a class="oa-link-skip sg-skip" href="#group-14-1">{e(SKIP_FIRST)}</a>'
             f'<dl class="sg-key">{key}</dl><ol class="sg-qs" role="list">{"".join(qs)}</ol></div>')
     head = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14, the selection guide. Selection guide maker, "
             f"{WRITTEN}. Written by work/build/scripts/phase-3/selection_guide_build.py from the plan file; do not edit by "
@@ -1993,7 +1995,7 @@ def check(frag, by_group, printed):
         faults.append("an id repeats")
     # the skip links: one past the guide, one a question to the next question's line (AX 1.5)
     skips = re.findall(r'<a class="oa-link-skip sg-skip" href="#([^"]+)">([^<]+)</a>', frag)
-    if not skips or skips[0] != ("group-14-1", "Skip the chart guide"):
+    if not skips or skips[0] != ("group-14-1", SKIP_FIRST):
         faults.append("the guide's first stop is not its skip link")
     order = sorted(by_group)
     for i, n in enumerate(order):

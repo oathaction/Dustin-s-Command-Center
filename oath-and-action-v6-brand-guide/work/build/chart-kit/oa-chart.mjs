@@ -1628,7 +1628,7 @@ async function self_test() {
   // value scale only where the drawing is under 490 px
   {
     const base = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8')), cb = C.check_spec(K, base, {});
-    const draw = (sc, w) => { const sp = JSON.parse(JSON.stringify(base)); sp.scale = Object.assign({}, base.scale, sc); return K.draw(sp, cb.rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(cb) }); };
+    const draw = (sc, w) => { const sp = JSON.parse(JSON.stringify(base)); sp.scale = sc; return K.draw(sp, cb.rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(cb) }); };
     const neg = (d) => d.texts.filter((t) => /^\u2212\d/.test(t.words) && t.role === 'tick').length;
     const plain = draw({ y: [-400, 850] }, 720), cut = draw({ y: [-400, 850], ticks_min: 0 }, 720);
     const same_h = plain.height === cut.height;
@@ -1636,6 +1636,19 @@ async function self_test() {
     const ok = neg(plain) > 0 && neg(cut) === 0 && same_h && n400.svg !== y400.svg && y720.svg === plain.svg;
     console.log(`${ok ? 'pass' : 'FAIL'} scale.ticks_min drops the ticks under 0 (${neg(plain)} to ${neg(cut)}) and keeps the drawing's height; scale.y_narrow moves the 400 px drawing and leaves the 720 px one as it was`);
     if (!ok) bad++;
+  }
+  // round 5 (the data lead's batch 7 sign-off): S96's named words take their phone setting exactly where the figure shows its
+  // phone note, under 480 px, so every width meets one or the other
+  {
+    const s96 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8')), c96 = C.check_spec(K, s96, {});
+    const name = [].concat(s96.labels.named[0].text)[0], gaps = [];
+    for (let w = 470; w <= 500; w++) {
+      const d = K.draw(s96, c96.rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(c96) });
+      const words = d.texts.some((t) => t.words === name), note = w < K.PHONE_MAX && (s96.phone_notes || []).length > 0;
+      if (words === note) gaps.push(w);
+    }
+    console.log(`${gaps.length ? 'FAIL' : 'pass'} S96 shows its named words or its phone note, never both and never neither, at every width from 470 to 500 px${gaps.length ? ' (not at ' + gaps.join(', ') + ')' : ''}`);
+    if (gaps.length) bad++;
   }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
