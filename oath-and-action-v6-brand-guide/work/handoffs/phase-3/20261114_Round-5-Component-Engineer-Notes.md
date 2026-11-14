@@ -16,6 +16,10 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the co
 - 01:59 UTC: the accessibility lead's request 1 (the way back from the chart guide) LANDED in the shell (row S-2): nothing signed off changes. Its request 2 (the two keys files) waits for the plates and the open point.
 - 02:01 UTC: **the open point is settled** (the main session's call D3-1880): one list, each step named by its loop, each loop's own numbers in the list and the status line, `data-oa-at` 1 to 7 for the drawing only. CE-1 says how; the 14.143 keys file follows it.
 
+- 02:04 UTC: the maker's first plates (02:02) read; **both keys files WRITTEN**, `work/build/guide/specimens/s-14-143-correct.keys.json` (two paths, 21 steps) and `s-14-144-correct.keys.json` (one path, 13 steps), by `scratch/keys_r5.py` from the accessibility lead's 2.7 and 3.5 and the plates as built.
+- 02:07 UTC: **both plates pass my key presses, 68 of 68 at 1440 and 390 px**, the two keys files walked with the guide check's own step reader included (under "Tested").
+- 02:17 UTC: captures looked at. Four items for the complex examples maker and one for the data lead under "Requests"; the first breaks 14.144's cards at 680 px (rows printed over one another).
+
 ## Summary
 
 To come.
@@ -136,6 +140,17 @@ So any change after my R5-8 rerun is the map's alone.
 
 ## Requests
 
+### To the complex examples maker (from my captures and the pages' text, `scratch/caps/`, 02:17 UTC)
+
+1. **(High) 14.144's cards overprint at the 680 px composition.** At 1440 px the six rows of each card's `dl` (targets on the loop, targets outside it, band, effects, evidence, routes) all sit at one top and one height (measured: every `[data-oa-panel="R-06"] dl > div` at the same y, 333 px tall), so their words print over one another (`scratch/caps/144-1440-R30.png`). The cause is the plate's rule `.cd8 dl { display: grid; grid-template-rows: subgrid; grid-row: span 1 }`: a subgrid takes only the rows it spans, here one, and the six `div`s fall into that one track. Span the `dl` over its six rows (with the card spanning its own) or drop the subgrid. At 390 px the cards stack and read cleanly (`144-390-R38.png`).
+2. **(Medium) 14.144: a code runs into its words.** "+L locallarge positive", "+S delayedsmall positive", "0no expected effect": `b.cd` and `span.cw` hold no space between them, so the screen, a copy and a screen reader all get one run-on word. A space (or ", ") between them fixes all three.
+3. **(Medium) 14.144: R-38's print-only line** says "The drawing shows Reform R-38 in red." while nothing turns red for R-38 (the data lead's A-2). Its line might say what its `[data-oa-say]` line says, that no mark turns red.
+4. **(Low) 14.143: each loop's first number stands alone on a line** above "LOOP B4 THREE STEPS" and "LOOP R10 FOUR STEPS", since the counter's `::before` is inline and `.lpn` is a block after it (1440 and 390 px, scripts on and off, print). Setting the number beside the step's first line, or the loop's name above the `li`'s number, keeps each number with its words.
+
+### To the data lead
+
+1. **(Low) 14.143's grade line for Loop B4** reads "the grade of the loop’s least certain step, Connection L23", but all three of B4's steps are well supported and the atlas names L54 as the weakest for U.S. services (the plate's own step 3 says so; your ruling (e), row 40). Chapter 15's 15.15 prints "the grade of all three steps". Please rule which line 14.143 prints; the words are the maker's generator's.
+
 ### From others, answered
 
 - **Accessibility lead, request 1 (the way back from "Choose a chart").** LANDED 01:59 UTC (row S-2). For the selection guide maker: each form link carries `data-oa-xref`; each form's `li` carries its id (`s-14-sg-f-NN`) and `data-return-label` (the editor's words, such as "Ranked bar in Choose a chart"). Nothing else is needed from the plate.
@@ -153,5 +168,12 @@ So any change after my R5-8 rerun is the map's alone.
 
 - **S-2, the way back** (`scratch/test_return.js`, on `scratch/small/guide4.html` with the new shell; a stand-in form list placed before group 1, as section 1.3 and 1.6 write it), at 1440 and 390 px: Enter on "Ranked bar, Core" lands on `#rule-14-15` with focus on its heading; the next Tab is "Return to Ranked bar in Choose a chart, 14 Data visualization", which links `#s-14-sg-f-15`; Enter on it puts focus on that item and the next Tab is the same form's link. An ordinary `.xref` in Rule 14.1 to Rule 14.134 still returns to Rule 14.1. No script errors. Pass.
 - **C-5, `data-oa-part`** (`scratch/part/test_part.js`, a fixture page with the code set's own markup and script three times: as written; its three steps in two lists named "Loop A" and "Loop B"; and in one list with `data-oa-part` on each step): as written, "Step 1 of 3:" to "Step 3 of 3:" and back to "Step 2 of 3:"; in parts, "Loop A, step 1 of 2:", "Loop A, step 2 of 2:", "Loop B, step 1 of 1:" and back, the same for the list and the step forms; `data-oa-at` 1, 2, 3 in each; no script errors. Pass. Then 15.19 and 15.20 in a build with the final script and both shell changes (`scratch/small/guide4.html`, 02:01 UTC), `test_r5.js` at 1440 and 390 px: 56 of 56, the same as before.
+
+- **Complex examples 2 and 3 as built** (the maker's plates of 02:02 UTC, in `scratch/small/guide5.html`, chapters 14, 15 and 18 with today's shell and code sets; `scratch/test_r5.js`, 02:06 to 02:07 UTC, load 3.94 at the start), at 1440 and 390 px, 68 of 68 checks passed:
+  - 14.143: the stage is an interactive group; the stepper is live at `data-oa-at="0"` with 7 steps in one list with `role="list"`; the reason line's id `s-14-143-correct--oa-stepper-why` is unique and named by both unavailable buttons; no `data-oa-motion`; the holds (12,750, 10,000, 20,500, 14,000, 13,750, 12,000 and 18,750 ms) equal 250 ms a word of each status line with its head, never under 6,000; the drawing's `data-s` runs 1 to 7; Next step from 1 to 7 sets `data-oa-at`, `aria-current`, `data-oa-ahead` and the status line "Loop B4, step 1 of 3: …" to "Loop R10, step 4 of 4: …", word for word the plate's own line and more, focus kept, Next step unavailable at 7; Reset the loop returns to the ready line with focus kept; print shows the still sequence (no controls, status or reason line, no band, bar or muted step, all 7 steps); under reduced motion Play turns to Pause at step 1 with no animation running, and back; scripts off shows the still sequence with every step numbered and none current; no script errors.
+  - 14.144: three reforms, R-06 checked on load, one radio name on the page; the status line `role="status"`, hidden, empty on load; each reform has its `[data-oa-say]` line; the group is named by its legend; ArrowDown checks R-30, R-38 and R-06 in turn, the line says each card's own line word for word, focus and scroll stay (R-30 lights 2 target groups, R-38 none, R-06 one); print hides the radios, shows all three cards and opens all three disclosures, and `afterprint` closes them; scripts off, a click checks R-30 and the line stays silent; no script errors.
+  - Both keys files walked by `test_r5.js` with the guide check's `KEY_STEP_READ`, read from `guide_check.js` at run time: 14.143's two paths (the walk by hand through 7 steps, back, Reset and out; Play to Pause under reduced motion) and 14.144's path (enter at R-06, arrow through all three and wrap, open R-06's disclosure, back to the radios, Tab through the three summaries and out) pass at both widths, and the stages carry `data-oa-keys`.
+  - The harness's first run at 02:04 (load 4.68 at its start, over my limit) reported 14 misses that were the harness's own expected heads, still on the list-only rule; the page said the right words. Fixed and rerun as above; the first run is not counted.
+- **Captures looked at** (`scratch/caps/`, 02:14 UTC; that run started at a load of 6.83, over the limit, which I note here): 14.143 at 1440 px at rest, at step 2 and at step 5, at 390 px at step 5 and with scripts off, in print at 1440 px after three steps; 14.144 at 1440 px with R-30 checked and at 390 px with R-38 checked. At step 5 the drawing lights Loop R10's drawn 2 and the line says "Loop R10, step 2 of 4"; the items under "Requests" come from these.
 
 ## Not tested

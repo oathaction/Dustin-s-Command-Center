@@ -338,7 +338,8 @@ class Maps:
             self.groups[lerp_class(pattern(cx, cy, 0.3), US_GROUPS)].append(code)
 
     def symbols(self):
-        out = {g: f'<path d="{"".join(ring_path(self.us[c]) for c in codes)}"/>' for g, codes in self.groups.items()}
+        out = {g: f'<path d="{"".join(ring_path(self.us[c]) for c in codes)}" stroke-linejoin="round"/>'
+               for g, codes in self.groups.items()}
         out["s-14-sg-us"] = "".join(f'<use href="#{g}"/>' for g in US_GROUPS)
         return out
 
@@ -1764,7 +1765,8 @@ def build():
     maps = Maps()
     need(set(G) == {fm["num"] for v in by_group.values() for fm in v},
          f"pictures and forms differ: {sorted(set(G) ^ {fm['num'] for v in by_group.values() for fm in v})}")
-    syms = [symbol(f"s-14-sg-{n}", G[n](maps)) for n in sorted(G)]
+    syms = [symbol(k, v) for k, v in maps.symbols().items()]
+    syms += [symbol(f"s-14-sg-{n}", G[n](maps)) for n in sorted(G)]
     syms.append(symbol("s-14-sg-avoid", AVOID))
     defs = (f'<svg class="oac-svg sg-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>'
             + "".join(syms) + "</defs></svg>")
