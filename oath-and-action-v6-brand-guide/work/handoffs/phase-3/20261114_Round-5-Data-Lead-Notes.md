@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 03:51 UTC. **Batch 6:** the selection guide signed off (0 faults against the plan, ruling (a) and A-1; the tier key true of every tier). One log correction sent for Rules 14.142 (logged twice) and 14.143 (B4 not logged); Rule 01.9 holds either way.
 - 03:31 UTC. **Batch 5:** S96 as rebuilt signed off by script (scale, band, condition 1 at every width, latest label off, phone note, no red, the table's margin words 2, 32 and 23); Rules 14.142 to 14.144 signed off whole. Stage 19's gloss ruled: "no longer applies" stands. Two gridline crossings on S96's labels passed to the design director, with a data-side fix offered.
 - 03:20 UTC. **Batch 4:** Rules 15.22 to 15.25's second pass signed off whole (the five fixes, two suggestions and the new court stage 19 held to their sources; Rule 01.9 at 39 examples, D02 8, D03 5). S96's scale of minus 400 to 850 ruled to hold, with conditions; S96's sign-off waits on the maker's rebuild report. Batch 1's S96 phone-note condition is met.
 - 02:52 UTC. **Batch 3 signed off**, under "Sign-offs": Rules 15.22 to 15.25, with four required word fixes (15.22's stages 5, 14 and 15; 15.25's row 19) and one required route fix (15.23 names Routes ENF and CRT for the court case), plus three suggestions. DD-R2 and DD-R5 noted as carried to the review.
@@ -275,6 +276,7 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 - D3-xxx | An avoid tile prints "Avoid" as its tier word and takes a shared mark, a 1 px frame with one rule from top left to bottom right, in stroke classes inside the hidden picture | The word carries it for screen readers; stroke classes keep it in forced colors and print; the falling rule reads as a strike, not a chart line
 - D3-xxx | Selection guide pictures may use the subject, context, light fill, track, gridline and magnitude gray inks and the hatch, never the point, Verdigris, Prussian, sequential or diverging classes | One working red per view (Rule 05.3); a hue on some pictures would read as a code; the palettes have their own plate
 - D3-xxx | Example 3's drawing stays Loop R8 alone; every off-loop target of all three reforms is named in words; R-38 stays | The model holds no connection from TC7, EC9 or B5 into the loop; one rule for all three reforms (DR-93); each reform's record names R8
+- D3-xxx | Rule 14.142 logs one example and Rule 14.143 two (Loop B4 in D04, Loop R10 in D02) | One plate of one file is one example; two loops in two domains are two, as Rule 15.15 logs them (ruling (g))
 - D3-xxx | Rule 15.22's stage 19 keeps "The part the court holds void no longer applies", not "can no longer be enforced" | "Void" means without legal force; neither Marbury nor the NRSC syllabus states what every enforcer can do, and the plate says no more than its source
 - D3-xxx | S96 may run its scale from minus 400 to 850 thousand jobs, keeping S14 at minus 200 | One linear scale from zero shortens every column alike; the band stays plus or minus 122 and both named drops still pass it; the room places the named words
 - D3-xxx | 15.22's stage 19 may print NRSC v. FEC as the most recent example, by date | The research row's stated rule picks by date, not side; the plate prints the holding alone
@@ -303,6 +305,10 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 
 - For Rule 11.11: a read source for 28 U.S.C. 1253 (straight to the Supreme Court) and for a tie vote leaving the ruling below in place, or say neither is sourced; and the court source line's full list of sections (1254 and 2101 added).
 
+### To the complex examples maker and the engineer (batch 6)
+
+- `14-example-log.json`: Rule 14.142 logs once (one example, S14's data in full), and Rule 14.143 logs two, Loop B4 in D04 and Loop R10 in D02, as Rule 15.15 does (ruling (g)). The total stays 112.
+
 ### To the engineer
 
 - **E-1, the palette generator (ruling (b)).** Reuse round 0's contrast, OKLab, grayscale and Machado functions from `work/boards/phase-3/round-0/palettes/build_palette_proofs.py`, or import them, so the plate equals board 1. Print the token release on the plate.
@@ -326,6 +332,34 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 - Read (a). Tier word in each link's accessible name; the avoid word in text, never in the picture alone.
 
 ## Sign-offs
+
+### Batch 6 (03:51 UTC): the selection guide signed off; one log correction for Rules 14.142 and 14.143 (for the selection guide maker, the complex examples maker, the engineer, the editor and the accessibility lead)
+
+#### "Choose a chart": signed off
+
+Checked by my own script (`sg_verify.py`) on `s-14-selection-guide.html` as placed (03:29 UTC) against the plan file, the entry files, ruling (a) and A-1, and in my 03:29 strict build. Result: 0 faults.
+- **Each form once, under its own family.** 16 questions, each printing its plan group title word for word, in group order. 127 links, 127 distinct rules, none missing, none twice.
+- **Order.** Within every question: Core, then Extended, then Reference, then Avoid, and rule order inside a tier, matching the plan exactly in all 16 (14.112 leads Flow; 14.141 comes before 14.139 and 14.140).
+- **Names and tiers.** Each link's name is the plan's `form` word for word, with the accessibility lead's hidden comma. Each tier word is the plan's first word before any comma, so 14.130 reads "Extended". Each link's `data-tier` and each entry file's `tier` agree.
+- **Links.** Each link's target is its own rule's anchor (`#rule-14-NN`), and all 127 anchors exist in my build. The engineer's guide check is the test of record; I did not run it.
+- **Avoid.** Exactly the eight avoid forms print "Avoid" as their tier word and carry the shared mark, `s-14-sg-avoid`: a 1 px frame in the context ink and one rule from the top left corner to the bottom right in the subject ink at the pictures' 2 px stroke. Both are kit stroke classes inside the hidden picture, as A-1 set. No other tile carries it.
+- **Inks.** The sprite uses only the subject, context, light fill, track and gridline classes and magnitude steps 1 to 4: no point, Verdigris, Prussian, sequential or diverging class, no literal color, no style attribute. So there is no red or blue anywhere, 14.124's picture included.
+- **No figure.** There is no text element in any picture, so no number or word sits in a drawing. The plate logs no example (the chapter's log holds no selection guide row).
+- **Placement.** It is the first block after the opener, before Rule 14.1, as D3-1872 set.
+- **The tier key (SG-5).** Each line is true of every form in its tier:
+  - "Core: Forms we use most, each with a finished example" (all 56 have a specimen);
+  - "Extended: Forms for a story that needs them, each with a finished example" (all 41 have one);
+  - "Reference: Forms for a narrower job, each drawn as a sketch" (all 22 are sketches);
+  - "Avoid: Forms that mislead, each sketched beside the form to use instead". The chapter labels all eight avoid plates "a form that misleads", and each sketch draws the better form beside it. I read the three whose captions do not say so: the radar's grouped bars, the rose chart's bars, and the party map's two panels.
+- Weight, reported (DR-271), no condition: 149,647 bytes as placed, inside Q5-2's 100 to 150 KB.
+
+#### A correction to batch 5: Rules 14.142 and 14.143 log the wrong examples (for the complex examples maker and the engineer)
+
+Read in `14-example-log.json`. The total is 112, as ruling (g) expected, but its make-up is not:
+- **14.142 logs twice**, once from its entry ("Monthly change in payroll jobs with the survey's margin of error", D07) and once from `s96.json` (its title, D07). It is one example, S14's data drawn in full, so it logs once.
+- **14.143 logs once**, as Elections and representation (D02) for both loops. Ruling (g) logs two, as Rule 15.15 does: Loop B4 under Congress, agencies and public services (D04) and Loop R10 under D02.
+
+Corrected, the chapter still holds 112: D07 at 11 and D04 at 14, every other domain unchanged, Taxes, wealth and economic security (D08) the largest at 16 against 28. Rule 01.9 holds either way, so this sends nothing back. The log is the count Rule 01.9 rests on, and its rows should say what each plate draws. Batch 5's sign-off of 14.142 and 14.143 stands; this log fix is the one item open on them.
 
 ### Batch 5 (03:31 UTC): S96 and Rules 14.142 to 14.144 signed off whole; stage 19's gloss ruled (for the complex examples maker, the engineer, the systems designer, the editor, the research lead and the design director)
 
@@ -529,6 +563,8 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 
 - Batch 5 (03:31 UTC): S96's 30 Node drawings at 15 page widths on both grounds by `s96_confirm.mjs` (one px a thousand, band, how far each named column passes the band, estimated label boxes against every line, the latest label, red); the kit's figure table by `s96_table.mjs` (margin words counted); my third strict build (exit 0, 0 warnings, 12,105,488 bytes) with the phone note; the text of `s-14-143-*` and `s-14-144-*` against the model and the rulings; the three rules' failure captions in the chapter file.
 
+- Batch 6 (03:51 UTC): `s-14-selection-guide.html` against the plan file and all 127 entry files by `sg_verify.py` (questions, order, names, tier words, `data-tier`, hrefs, avoid marks, sprite classes, text, literal colors, style attributes); the 127 anchors and the plate's place in my 03:29 strict build; the tier key against the plan's specimens and the eight avoid sketches (three read whole); `14-example-log.json`'s rows and counts.
+
 ## Not tested
 
 - No build of any round 5 item: none has landed. No kit build, capture or guide check of my own yet.
@@ -541,3 +577,4 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 - Batch 3: no capture of chapter 15's new plates looked at (load 4.4 to 6.1); the V7 check not run by me (the main session's); the laws' texts behind 15.22's stages not reread (the research lead's rows read instead).
 - Batch 4: the court opinions themselves not read by me (the research lead's rows); S96 as rebuilt not yet seen (the spec on disk still reads minus 200); no capture of chapter 15's second pass or of S96 at the trial scale.
 - Batch 5: no capture of the rebuilt S96 or of 14.143 and 14.144 looked at; label crossings are estimated from type size, not measured in a browser; the court opinions not read by me.
+- Batch 6: the selection guide's pictures not looked at (no capture), so whether each reads as its form at a glance is the design director's read; the guide check's link test not run by me.
