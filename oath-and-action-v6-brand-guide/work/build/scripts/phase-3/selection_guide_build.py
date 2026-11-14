@@ -1781,7 +1781,7 @@ CSS = (
     # the root follows the reader's colors in forced colors and paints its own ground (AX 1.10)
     ".sg{position:relative;forced-color-adjust:auto;background:var(--oa-color-surface);color:var(--oa-color-text-primary)}"
     ".sg-qs,.sg-fs{list-style:none;margin:0;padding:0}"
-    ".sg-key{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));gap:var(--oa-space-100) var(--oa-space-300);"
+    ".sg-key{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,9rem),1fr));gap:var(--oa-space-100) var(--oa-space-300);"
     "margin:0 0 var(--oa-space-300);padding:0 0 var(--oa-space-300);border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);"
     "font:var(--oa-type-caption)}"
     ".sg-key dt{font-weight:var(--oa-font-weight-semibold)}.sg-key dd{margin:0;color:var(--oa-color-text-secondary)}"

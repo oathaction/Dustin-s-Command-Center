@@ -1,7 +1,7 @@
 """The complex examples maker, Phase 3 round 5: the figure checks for Rules 14.142 to 14.144, the three charts in full
 (contract R5-4; work/handoffs/phase-3/20261114_Phase-3-Round-5-Brief.md).
 
-    python3 -I work/build/scripts/phase-3/maker_c_round5_derive.py [--figures] [--json]
+    python3 -I work/build/scripts/phase-3/maker_c_round5_derive.py [--figures] [--drawings] [--json]
 
 Round 5 needs no derived table. Example 1 draws S14's frozen file, fred-payrolls-monthly-change, as it stands (D3-1873);
 examples 2 and 3 read the atlas model, work/extract/atlas-v7-data.json, snapshot of October 15, 2026.
@@ -18,7 +18,10 @@ facts() reads every figure the three examples print, by script, and stops on any
 
 --figures also checks every figure in the words of the three examples' files, once they exist, against facts(): the new
 kit spec (title, measure line, notes, chart notes, alt, labels, annotations) and the three entry files and their plates
-(every number and date the reader sees). Each check is named in the spec's notes_internal. --json prints facts().
+(every number and date the reader sees). --drawings measures S96 on the kit's own Node drawings (node, read-only):
+both named columns end at least 3 px past the band's lower edge at every whole width from 224 to 720 px on both grounds,
+and S96's scale and its note against S14's (the data lead's conditions). Each check is named in the spec's notes_internal.
+--json prints facts().
 Standard library only. Exits 1 on any failed check.
 """
 import csv
@@ -300,8 +303,72 @@ def figures(f):
                   'a word that totals effects appears without the rule against it')
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# --drawings: S96 on the kit's own Node drawings (the data lead's conditions on the -400 to 850 scale)
+# ---------------------------------------------------------------------------------------------------------------------
+MEASURE_JS = r"""
+const path = require('path'), fs = require('fs');
+const ROOT = process.argv[2], KIT = path.join(ROOT, 'work/build/chart-kit');
+for (const f of ['metrics.js', 'kit.js', 'kit-build.js', 'parts.js', 'geo.js']) require(path.join(KIT, f));
+for (const f of fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort()) require(path.join(KIT, 'forms', f));
+const K = globalThis.OAChart; K.words = JSON.parse(fs.readFileSync(path.join(KIT, 'words.json'), 'utf8'));
+const C = require(path.join(KIT, 'checks.js')); K.id_types = C.id_types();
+const CSS = fs.readFileSync(path.join(ROOT, 'work/build/tokens/tokens.css'), 'utf8');
+const TOK = { newsprint: K.tokens_from_css(CSS, 'newsprint'), charcoal: K.tokens_from_css(CSS, 'charcoal') }; K.default_tokens = TOK;
+const spec = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8'));
+const rows = C.check_spec(K, spec, { grounds: ['newsprint'] }).rows;
+const out = { n: 0, worst: null, missing: [] };
+for (const g of ['newsprint', 'charcoal']) for (let w = 224; w <= 720; w++) {
+  const d = K.draw(spec, rows, { width: w, ground: g, tokens: TOK[g] });
+  const edges = (d.ink || []).filter(m => m.band_edge).map(m => m.y);
+  if (edges.length !== 2) { out.missing.push(g + ' ' + w); continue; }
+  const lower = Math.max(...edges);
+  for (const b of d.marks.filter(m => m.kind === 'bar' && m.data && ['2025-10', '2026-02'].includes(String(m.data.key)))) {
+    out.n++;
+    const past = b.y + b.h - lower;
+    if (!out.worst || past < out.worst.px) out.worst = { px: past, w: w, g: g, key: String(b.data.key) };
+  }
+}
+console.log(JSON.stringify(out));
+"""
+
+
+def drawings():
+    """The data lead's two conditions on S96's -400 to 850 scale (Sign-offs, Batch 4): October 2025's column ends at least
+    3 px past the band at every width (both named columns measured, every whole width from 224 to 720 px, both grounds, on
+    the kit's own Node drawings); and S96's notes_internal says why its range differs from S14's, which stays at -200."""
+    import subprocess
+    import tempfile
+    s96 = read_json(os.path.join(SPECS, 's96.json'))
+    s14 = read_json(os.path.join(SPECS, 's14.json'))
+    check('S96', s14['scale']['y'][0] == -200, f'S14\'s scale floor moved: {s14["scale"]}')
+    check('S96', s96['scale']['y'] == [-400, s14['scale']['y'][1]], f'S96\'s scale is {s96["scale"]}')
+    check('S96', any('S14 keeps' in n and '-400' in n for n in s96.get('notes_internal', [])),
+          'S96\'s notes_internal does not say why its range differs from S14\'s')
+    with tempfile.NamedTemporaryFile('w', suffix='.cjs', delete=False) as fh:
+        fh.write(MEASURE_JS)
+        js = fh.name
+    try:
+        r = subprocess.run(['node', js, GUIDE], capture_output=True, text=True, timeout=600)
+    finally:
+        os.unlink(js)
+    if not check('S96', r.returncode == 0, f'the drawing measure did not run: {r.stderr.strip()[:200]}'):
+        return None
+    m = json.loads(r.stdout.strip().splitlines()[-1])
+    check('S96', not m['missing'], f'no two band edges at {m["missing"][:3]}')
+    check('S96', m['n'] == 2 * 2 * (720 - 224 + 1), f'measured {m["n"]} columns, short of every width')
+    check('S96', m['worst'] and m['worst']['px'] >= 3, f'a named column ends {m["worst"]} past the band, under 3 px')
+    return m
+
+
 def main():
     f = facts()
+    if '--drawings' in sys.argv:
+        m = drawings()
+        if m:
+            w = m['worst']
+            print(f'maker_c_round5_derive: S96 on its Node drawings: {m["n"]} named columns measured (224 to 720 px, both grounds); '
+                  f'the least past the band\'s lower edge {w["px"]:.2f} px ({w["key"]}, {w["w"]} px, {w["g"]})')
     if '--json' in sys.argv:
         print(json.dumps(f, indent=1, ensure_ascii=False))
     if '--figures' in sys.argv:

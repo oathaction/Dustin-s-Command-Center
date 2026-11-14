@@ -948,6 +948,12 @@ def rule_14_142():
             "and February 2026 (-156); September 2026 average 50.67 thousand, 51,000 to the thousand.",
             "Title: DR-239's two approved sentences joined, as the data lead's ruling (c) suggests; the editor may tune the words, "
             "the counts stay.",
+            "Scale: -400 to 850 thousand, where S14 runs -200 to 850. The floor drops so the two named labels stand as one stack "
+            "under the band, clear of its lower edge, at every width from 490 px (the design director's DD-E2; the engineer "
+            "measured -375 as the least that holds, and -400 keeps a round floor); the data lead's yes (its notes, Sign-offs, Batch 4). S14 keeps "
+            "-200. Check 14.142-b (maker_c_round5_derive.py --drawings): on the kit's own Node drawings at every whole width from "
+            "224 to 720 px on both grounds, October 2025's and February 2026's columns end at least 3 px past the band's lower "
+            "edge (the data lead's condition).",
             "Written by work/build/scripts/phase-3/phase3_ch14_complex_build.py; change a word there, never here.",
         ],
     }
