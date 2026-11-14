@@ -296,7 +296,8 @@ def walk_css(steps):
             out.append(f'{s_} [data-s="{k}"] .bd{{display:inline}}{s_} [data-s="{k}"] text{{font-weight:var(--oa-font-weight-bold)}}')
     # the still sequence as a hanging list: each number in its own column, the step's words beside it, and each loop's
     # first step headed by its chip and its count of steps
-    out.append(".lv>.oa-stepper-status{margin-top:20px}.lv>.oa-stepper-why+.k{margin-top:20px}")
+    out.append(".lv>.oa-stepper-status{margin-top:20px}.lv>.oa-stepper-why{margin-bottom:16px}"
+               ".lv>.oa-stepper-steps+.k{margin-top:20px}")
     out.append(".oa-stepper-step{display:grid;grid-template-columns:1.6em minmax(0,1fr);align-items:start}"
                ".oa-stepper-step::before{grid-column:1;grid-row:1/span 2;margin-right:0}"
                ".oa-stepper-step>*{grid-column:2}"
@@ -346,7 +347,10 @@ def rule_14_143():
     root = (f'<div class="oa-stepper lv" data-oa-stepper>'
             f'<div class="cfx pr">{"".join(cols)}</div>{shared}'
             f'<p class="oa-stepper-status" role="status" data-oa-ready="{e(ready)}">{e(ready)}</p>'
-            f'<ol class="oa-stepper-steps" role="list">{"".join(lis)}</ol>{ctl}{why}{limits}'
+            # the buttons sit right under the drawings and the status line, so a window shows the drawing that lights
+            # and the button that lights it together (the design director's DD-C1, the accessibility lead's 2.8): the
+            # order in the markup, never by CSS; the still list follows
+            f'{ctl}{why}<ol class="oa-stepper-steps" role="list">{"".join(lis)}</ol>{limits}'
             + src("loops B4 and R10 and connections L23, L24, L54, L08, L25, L53 and L42") + "</div>")
     css_live = walk_css(steps)
     style = plate_style(root, swap={C15.stepper_css(3): css_live})
@@ -1039,6 +1043,10 @@ def check(entries, files, specs):
     ok(t.count('data-oa-first') == 2 and 'role="list"' in t and 'role="status"' in t, "14.143: the list, the status line, the first steps")
     ok(re.search(r'data-oa-ready="([^"]+)"[^>]*>\1</p>', t) is not None, "14.143: the ready line differs from data-oa-ready")
     ok("data-oa-motion" not in t, "14.143: nothing moves, so no data-oa-motion")
+    order = [t.find(x) for x in ('class="cfx pr"', 'class="oa-stepper-status"', 'class="oa-stepper-controls"',
+                                 'class="oa-stepper-why"', 'class="oa-stepper-steps"', "The atlas’s limits on the two loops")]
+    ok(all(x >= 0 for x in order) and order == sorted(order),
+       "14.143: the reading order is drawings, status line, controls, reason line, list, limits (DD-C1, 2.8)")
     ok("data-red" not in t and "emphasis-red" not in t, "14.143: red on a loop drawing with no reform")
     ok(sorted(set(re.findall(r'data-s="(\d)"', t))) == [str(i) for i in range(1, 8)], "14.143: the drawing's step groups 1 to 7")
     ok(not re.search(r"Electoral pressure(?! leads to actual defeats)", reader_text(t)), "14.143: the chain label prints as a name (DR-265)")
