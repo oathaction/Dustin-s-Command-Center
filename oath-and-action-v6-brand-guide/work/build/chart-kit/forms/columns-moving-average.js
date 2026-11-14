@@ -12,6 +12,8 @@
  * labels.named_stack: true (DD-E2, opt-in): the named words stand as one stack left of the first named column, in the list's
  *   order, under the band's lower edge, each on a leader that runs level under the columns and turns up into its column's foot;
  *   where the stack does not fit, each takes its own place as above.
+ * scale.ticks_min (DD-E7, opt-in): no tick or gridline under this value, the scale's floor unchanged; scale.y_narrow (DD-E8,
+ *   opt-in): [lo, hi], the value scale where the drawing is a phone's or under 490 px, where the named words hide.
  * labels.margin: {value, label, key}, a band from minus to plus value (the y unit) across the plot, behind the columns, in
  *   magnitude step 1 with its 1 px context edges (K.parts.band); label set in the band below zero at the plot's left, key
  *   as its own key entry. */
@@ -46,7 +48,14 @@
       var vals = [];
       rows.forEach(function (r) { vals.push(r[ey]); if (ea && r[ea] !== null) vals.push(r[ea]); });
       var lo = Math.min(0, Math.min.apply(null, vals)), hi = Math.max(0, Math.max.apply(null, vals));
-      var vs = P.value_scale(c, lo, hi, c.phone ? 4 : 5), ticks = vs.ticks;
+      // round 5 (the design director's DD-E7 and DD-E8, opt-in): scale.y_narrow, the value scale where the drawing is a phone's
+      // or under 490 px (where the named words hide), and scale.ticks_min, no tick or gridline under that value (the scale's
+      // floor stays where it is)
+      var sc0 = c.spec.scale || {}, yn = sc0.y_narrow, vs;
+      if (yn && (c.phone || W < 490)) { var nst = K.nice(+yn[0], +yn[1], c.phone ? 4 : 5).step; vs = { lo: +yn[0], hi: +yn[1], ticks: K.ticks(+yn[0], +yn[1], 0, nst) }; }
+      else vs = P.value_scale(c, lo, hi, c.phone ? 4 : 5);
+      var ticks = vs.ticks;
+      if (sc0.ticks_min !== undefined && sc0.ticks_min !== null && isFinite(+sc0.ticks_min)) ticks = ticks.filter(function (tv) { return tv >= +sc0.ticks_min; });
       var gut = P.value_gutter(c, ticks, f.y_tick || 'signed');
       var top = y + 30, plotH = c.t(c.phone ? 'columns-phone-height' : 'columns-height'), bot = top + plotH;
       var ys = K.scale.linear([vs.lo, vs.hi], [bot, top]);
