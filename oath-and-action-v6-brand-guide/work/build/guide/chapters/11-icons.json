@@ -581,7 +581,7 @@
       "title": "Follow a ballot measure through six steps, and wait for the certified count.",
       "rule": [
         "A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s constitution by petition, and the voters decide it. These steps follow the constitutions of Massachusetts, California, Ohio and Michigan and California’s election office; each state sets its own deadlines and counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 under a slash.",
-        "Until the state certifies the count, a measure at step 6 stays current, and its words say so: “Step 6 of 6: Vote. The count is unofficial until the state certifies it, set for November 25.” Once the count is certified, the words say Approved by voters or Rejected by voters, with the date of the vote and the date it was certified, then when an approved measure takes effect. A measure that ends before step 6 ends its line on a square at the last step it reached, with its words and the date: Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to qualify, Removed from the ballot by a court, or Passed by the Legislature, after which the voters do not vote on it."
+        "Until the state certifies the count, a measure at step 6 stays current, and its words say so: “Step 6 of 6: Vote. The count is unofficial until the state certifies it, set for November 25.” Once the count is certified, the words say Approved by voters or Rejected by voters, with the date of the vote and the date it was certified, then when an approved measure takes effect. A measure that ends before step 6 ends its line on a square at the last step it reached, with its words and the date: Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date: “Passed by the Legislature on May 2.”"
       ],
       "tokens": [
         "oa.component.mark.slash"
@@ -620,7 +620,12 @@
         },
         {
           "label": "Ended before step 6",
-          "value": "A square at the last step reached, with its words: Not certified by the attorney general; Withdrawn by its sponsors; Too few valid signatures to qualify; Removed from the ballot by a court; Passed by the Legislature, on step 4"
+          "value": "A square at the last step reached, with its words: Not certified by the attorney general; Withdrawn by its sponsors; Too few valid signatures to qualify; Removed from the ballot by a court"
+        },
+        {
+          "label": "Passed by the Legislature",
+          "value": "Steps 5 and 6 under slashes, and “Passed by the Legislature on” with its date",
+          "token": "oa.component.mark.slash"
         },
         {
           "label": "Sent to the voters by the Legislature",
@@ -644,7 +649,7 @@
       "title": "Follow a court case through six steps, and end a denied petition at step 5.",
       "rule": [
         "A court case here is a federal civil case: one side, the plaintiff, sues another, the defendant, under federal law, and the case can climb from the trial court through a court of appeals to the Supreme Court. These steps follow Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no room for keeps its number under a slash, as when an appeal goes straight from a special panel of three district judges to the Supreme Court.",
-        "The words say how each court ruled, with the court and the date. A trial court’s judgment reads Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court decided on the record alone. A higher court’s reads Upheld, for the court’s “affirmed”; Reversed; Vacated, which cancels the ruling below; or Modified; joined to “and sent back” when the court returns the case. The marks never move backward, so a case sent back says so in a sentence after the end words. A case that ends before step 6 ends its line on a square at the last step it reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, Appeal withdrawn, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals court’s ruling standing."
+        "The words say how each court ruled, with the court and the date. A trial court’s judgment reads Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court decided on the record alone. A higher court’s ruling reads as the court enters it: Affirmed, which leaves the ruling below in place; Reversed; Vacated, which cancels the ruling below; or Modified; joined to “and sent back” when the court returns the case. The marks never move backward, so a case sent back says so in a sentence after the end words. A case that ends before step 6 ends its line on a square at the last step it reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, Appeal withdrawn, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals court’s ruling standing."
       ],
       "tokens": [
         "oa.component.mark.slash"
@@ -661,7 +666,7 @@
       },
       "failure": {
         "specimen": "s-11-11-failure",
-        "caption": "<strong>Fails Rule 11.11.</strong> The Supreme Court denied the petition, and the tracker fills step 6 and prints “Upheld”, so a reader takes a refusal to hear the case for a ruling on it."
+        "caption": "<strong>Fails Rule 11.11.</strong> The Supreme Court denied the petition, and the tracker fills step 6 and prints “Affirmed”, so a reader takes a refusal to hear the case for a ruling on it."
       },
       "specs": [
         {
@@ -674,7 +679,7 @@
         },
         {
           "label": "A higher court’s ruling",
-          "value": "Upheld; Reversed; Vacated; Modified; each with the court, as in “Upheld by the appeals court”, and “and sent back” where the court returns the case"
+          "value": "Affirmed; Reversed; Vacated; Modified; each with the court, as in “Affirmed by the appeals court”, and “and sent back” where the court returns the case"
         },
         {
           "label": "Ended before step 6",
@@ -686,7 +691,7 @@
         },
         {
           "label": "A tie in the Supreme Court",
-          "value": "Upheld by a tie vote, and “The lower court’s ruling stands.”"
+          "value": "Affirmed by a tie vote, and “The lower court’s ruling stands.”"
         },
         {
           "label": "Straight to the Supreme Court",

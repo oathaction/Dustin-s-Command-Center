@@ -144,7 +144,7 @@ COURT_STEPS = [
 ]
 # A higher court that affirms: the data lead's ED5-3 keeps the docket's own word, "Affirmed", explained once in Rule
 # 11.11's text, since "Upheld" can read as if a law struck down below had survived.
-UPHELD = 'Affirmed'
+AFFIRMED = 'Affirmed'
 ROUTE_NAMES = {'request': [n for n, _ in REQUEST_STEPS], 'rule': [n for n, _ in RULE_STEPS],
                'ballot': [s[0] for s in BALLOT_STEPS], 'court': [s[0] for s in COURT_STEPS]}
 STEP6_BOTH = ('The governor signs a state bill and the President signs a federal one. Either can veto it, and lawmakers '
@@ -1247,11 +1247,11 @@ def s_11_11(ctx):
            'tracker’s marks, and a key of the six steps, Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme '
            'Court petition and Supreme Court ruling, and of the marks. ' + alt_rows(COURTS, nm))
     spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, illustrative=True)
-    bad = dict(COURTS[2], states=['done'] * 6, end=f'{UPHELD} by the Supreme Court on January 11.',
+    bad = dict(COURTS[2], states=['done'] * 6, end=f'{AFFIRMED} by the Supreme Court on January 11.',
                line='The Supreme Court left the appeals court’s ruling in place.')
     html2 = records_piece(ctx, 'Where the highway noise walls case stands', [bad], nm, ('done',), band=True)
     alt2 = ('Failure case: do not publish. An Illustrative federal civil case, 99016, Highway noise walls, at 360 px, with '
-            f'all six steps drawn as done, Supreme Court ruling among them. The words read “{UPHELD} by the Supreme Court '
+            f'all six steps drawn as done, Supreme Court ruling among them. The words read “{AFFIRMED} by the Supreme Court '
             'on January 11. The Supreme Court left the appeals court’s ruling in place.” The Court denied the petition and '
             'never heard the case, and nothing on the card says so.')
     spec(ctx, 's-11-11-failure', html2, '11.11', alt2, width=360, illustrative=True)
@@ -1835,7 +1835,7 @@ def build(ctx):
                      'three district judges to the Supreme Court.',
                      'The words say how each court ruled, with the court and the date. A trial court’s judgment reads '
                      'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
-                     'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + UPHELD + ', '
+                     'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + AFFIRMED + ', '
                      'which leaves the ruling below in place; Reversed; Vacated, which cancels the ruling below; or '
                      'Modified; joined to “and sent back” when the court returns the case. The marks never move backward, '
                      'so a case sent back says so in a sentence '
@@ -1856,15 +1856,15 @@ def build(ctx):
                                    'one petition, so that line ends on a square at step 5.'},
             'failure': {'specimen': 's-11-11-failure',
                         'caption': '<strong>Fails Rule 11.11.</strong> The Supreme Court denied the petition, and the '
-                                   'tracker fills step 6 and prints “' + UPHELD + '”, so a reader takes a refusal to hear the '
+                                   'tracker fills step 6 and prints “' + AFFIRMED + '”, so a reader takes a refusal to hear the '
                                    'case for a ruling on it.'},
             'specs': [
                 {'label': 'Steps', 'value': '1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme '
                                             'Court petition, 6 Supreme Court ruling'},
                 {'label': 'A trial court’s ruling', 'value': 'Decided for the plaintiff; Decided for the defendant; with '
                                                             '“without a trial” where it applies'},
-                {'label': 'A higher court’s ruling', 'value': UPHELD + '; Reversed; Vacated; Modified; each with the '
-                                                              'court, as in “' + UPHELD + ' by the appeals court”, and '
+                {'label': 'A higher court’s ruling', 'value': AFFIRMED + '; Reversed; Vacated; Modified; each with the '
+                                                              'court, as in “' + AFFIRMED + ' by the appeals court”, and '
                                                               '“and sent back” where the court returns the case'},
                 {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Settled by '
                                                           'the parties; Withdrawn by the plaintiff; Dismissed by the court; '
@@ -1872,7 +1872,7 @@ def build(ctx):
                                                           'denied by the Supreme Court, on step 5'},
                 {'label': 'Never appealed', 'value': 'A square on step 2, with “No appeal was filed in the 30 days the law '
                                                      'allows.”, or 60 days where the United States is a party'},
-                {'label': 'A tie in the Supreme Court', 'value': UPHELD + ' by a tie vote, and “The lower court’s ruling '
+                {'label': 'A tie in the Supreme Court', 'value': AFFIRMED + ' by a tie vote, and “The lower court’s ruling '
                                                                  'stands.”'},
                 {'label': 'Straight to the Supreme Court', 'value': 'Steps 3 and 4 under slashes, where the law sends an '
                                                                     'appeal from three district judges straight there',
