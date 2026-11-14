@@ -3633,7 +3633,7 @@ class Stage:
 
     def say(self):
         """The stage in the plate's alt: its number, where it leaves the spine, its name and its words."""
-        parts = [f"Step {self.n}" + (f", {self.rel[0].lower() + self.rel[1:]}" if self.rel else "") + f": {self.name}."]
+        parts = [f"Stage {self.n}" + (f", {self.rel[0].lower() + self.rel[1:]}" if self.rel else "") + f": {self.name}."]
         parts += [x for x in (self.words, self.then, self.stop, self.back) if x]
         return " ".join(parts)
 

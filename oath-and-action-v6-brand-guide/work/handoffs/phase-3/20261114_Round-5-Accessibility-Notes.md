@@ -12,10 +12,17 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the UX
 
 - 02:46 to 02:54 UTC: **Rules 11.10 and 11.11 tested as built** (under "Tested"): met. One low item for the review, shared with 11.8 and 11.9 (under "Requests", engineer 4). The first browser run started at load 4.79, over the brief's 4, by my error; it finished cleanly, and the follow-up runs started at 3.58 and 4.12 (the second also my error, 26 seconds long). I rerun the first under 4 before the closing handback if the load allows.
 - 02:55 UTC: the component engineer reports 14.143 (02:45:17, DD-C1 landed) and 14.144 (02:44:47) passing its key presses, 68 of 68; I rebuild and test both next.
+- 02:58 UTC: the container restarted mid-run (my first walk of 14.143 and 14.144, started 02:57 at load 3.67, was killed and is not counted). Files and scratch survived.
+- 03:00 to 03:31 UTC: at the main session's word, on my strict build of 03:00, **tested as built:** Rules 11.10 and 11.11 again (this run started at load 1.50, so it is the counted run; the 02:46 run matched it on every figure), Rules 14.143 and 14.144 as final, and the palette specification read as text. Every browser run after the restart started under load 4. Results are under "Tested".
+  - **One Must for the complex examples maker:** at 200 percent text on the 680 px composition, Rule 14.144's three cards overlap and the third runs past the stage (1.4.4).
+  - **Three low items for the engineer:** the palette plate's nowrap values, its Charcoal proof grounds in print, and the image-stage descendants already sent at 02:55.
+  - Everything else met.
 
 ## Summary
 
-The interaction specification covers every round 5 item a reader operates or hears: the selection guide (a group of 16 question lists holding 127 links, each named by its form and tier with its picture hidden; one skip link past the guide and one per question to the next, so a keyboard reader leaves the guide in one press and reaches any question in at most 32; the shell's way back from an entry to the form the reader left), complex examples 2 and 3 on the stepper and the chooser (one stepper walking seven steps through Variable C3 with the words at the hand-off and the close; three reforms with a status line that counts the red marks, none included, and a comparison with no total), S96's table and reading order, the two trackers' state words and alt pattern as chapter 11's, the palette specification as live text with contrast in words, and S95's second crop by its size. Nothing is built yet, so nothing is tested.
+**As tested (03:31 UTC).** Rules 11.10 and 11.11 meet the specification: keyboard, names, text and marks, 200 percent text, print, forced colors and axe. Rule 14.143 meets it with DD-C1 in place: the buttons sit 148 px under the drawings at a desk, and the key paths walk clean at 1440, 1024, 390 and 320 px with and without reduced motion. Rule 14.144 meets it in every mode but one: at 200 percent text on the 680 px composition the three cards overlap, a 1.4.4 failure sent to the complex examples maker as a Must. The palette specification reads as live text: four tables with captions and headers, contrast in words, swatches hidden and kept in forced colors. Two low items go to the engineer. The selection guide waits for its maker.
+
+**The specification.** The interaction specification covers every round 5 item a reader operates or hears: the selection guide (a group of 16 question lists holding 127 links, each named by its form and tier with its picture hidden; one skip link past the guide and one per question to the next, so a keyboard reader leaves the guide in one press and reaches any question in at most 32; the shell's way back from an entry to the form the reader left), complex examples 2 and 3 on the stepper and the chooser (one stepper walking seven steps through Variable C3 with the words at the hand-off and the close; three reforms with a status line that counts the red marks, none included, and a comparison with no total), S96's table and reading order, the two trackers' state words and alt pattern as chapter 11's, the palette specification as live text with contrast in words, and S95's second crop by its size. Nothing is built yet, so nothing is tested.
 
 ## Interaction specification
 
@@ -362,6 +369,11 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 4. **(Low, for the review: every picture stage that holds HTML words.)** Chromium exposes the words inside a `role="img"` stage as its descendants: 106 nodes under Rule 11.10's tracker, 103 under 11.8's. A screen reader may say the alt and then the same words again. In `plate()`, wrapping the fragment of an image stage in an element with `aria-hidden="true"` keeps the alt the one thing heard. It changes no pixel, but it reaches every image stage, so measure its reach first (call 2). No screen reader runs here to show what is heard today.
 5. **(Low, outside round 5.)** At 320 px with text at 200 percent, the page scrolls sideways by 19 px because of two "Where to start" `span.step-to` links (right edges 324 and 330 px). The guide check's text-spacing test runs at 360 and 390 px, where it passes. This combination goes beyond 1.4.4 and 1.4.10, so the item is a note for whoever owns the start page.
 
+6. **The palette specification (low, 03:30 UTC).** Two items:
+   - Let each value break between the hex value and its ratio, and before the words after the ratio ("1.21 to 1" stays whole), in place of `.ps-v`'s `white-space: nowrap`, so the plate stays inside a 390 px screen with text at 200 percent.
+   - Give the proof blocks' grounds (`.ps-g`) the same `print-color-adjust: exact` the swatches have, so the Charcoal proof prints on Charcoal.
+   Whether every Charcoal stage in the guide should keep its ground in print is a question for the review.
+
 ### To the component engineer
 
 1. **The way back from the selection guide (the shell, low reach).** In `guide-shell.js`'s cross-reference click handler, accept `a[data-oa-xref]` beside `a.xref`, and add `[data-return-label][id]` to the elements it remembers as the place to return to (section 1.6). Measured in the V10 page: `data-return-label` sits only on "Where to start"'s route steps, which the handler already remembers, so nothing signed off changes.
@@ -378,6 +390,8 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 1. Sections 2, 3 and 4. Above all: the step words that name each loop and the hand-off (2.4); C3 marked as shared by shape and words (2.5); the plate CSS items in 2.6, since chapter 15's scoped CSS does not reach chapter 14; the status line for a reform with nothing on the loop (3.2); the comparison's table or cards with no total and no empty cell (3.3); print-only copies of the drawing per reform if you can (3.4); S96's table columns and date order (4.3).
 
 2. **DD-C1 (02:44 UTC), yes:** in 14.143's markup, move the status line, the controls group and the reason line to directly after the Variable C3 note, before the seven-step list; no CSS `order` or placement, and print, reduced motion and scripts off keep the still sequence (section 2.8).
+
+3. **Rule 14.144, Must (1.4.4), 03:31 UTC.** At 200 percent text on the 680 px composition (1440 px, and the 1024 px desk by the same layout), the three cards stay three columns of about 234 px, so words overlap the next card and R-38's card runs 13 px past the stage. Set the columns in em so larger text takes fewer, for example three columns only where each card holds about 14em (a container query in em on the cards' row) and one card a row below that, as the phone already does. DD-R1's shared rows need only one column count at a time. Capture: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/7633c399-b692-5041-be92-a87ecd098fbf/scratchpad/phase-3/round-5/accessibility/shots-complex/s-14-144-cards-1440-text200.png`. I retest once it lands.
 
 ### To the tracker designer
 
@@ -416,6 +430,46 @@ The skip links ("Skip the chart guide", "Skip these N forms"); the return label 
   - **axe-core 4.10.2** on each figure at 1440 px, WCAG 2.2 AA tags: 0 violations, 15 passes; color-contrast incomplete (axe cannot resolve text inside an image role), which the measure above covers.
   - **The tree:** Chromium exposes each tracker image's HTML words as descendants under it (106 nodes under 11.10's image, 62 under 11.11's failure), as it does under 11.8's (103) and the chapter 14 opener's. Whether a screen reader then says them after the alt is untested here (engineer 4).
   - **Met.**
+
+- **My strict build for the tests (03:00 UTC):** `guide_build.py --strict` of the working tree at HEAD a952b1a1 to scratch `b3/`, 12,096,754 bytes. It exited 1 on two warnings, both S96's ("no clear place for the words of 2026-02 at 656 px" and "at 558 px", the complex examples maker's chart), which touch none of the items below. The page was written and is what I tested. The build's rewrite of `plate-share.json`'s time was put back.
+- **Rules 11.10 and 11.11, counted run (03:00 to 03:08 UTC, load 1.50 at the start).** `tracker_test.js` on `b3/`, with the specimens of 02:48:45. Every figure equals the 02:46 run's but one: 11.10's correct alt changed with the tracker designer's edits and still equals its manifest alt word for word. With scripts off and with reduced motion (`static_modes.js`, 03:31) the four stages hold no script, animation or `data-oa-motion`, and read as with them. **Met.**
+- **Rule 14.143 as final (03:13 to 03:24 UTC, plate of 02:45:17, load 3.90 and 3.65 at the starts).** `complex_test.js` on `b3/`. **Met.**
+  - **Order (DD-C1):** the DOM and the page set the drawings, the C3 note, the status line, the controls, the reason line, the seven steps, then the source, in that order at 1440, 1024, 390 and 320 px. Play stands 148 px under the drawings at 1440 and 1024 px, 232 px at 390 and 274 px at 320 (about 1,180 px before).
+  - **Keyboard alone,** the component engineer's keys file walked by my own script from a stand-in before the stage:
+    - The hand path, 18 steps, at 1440, 1024, 390 and 320 px: every step passes. The status line runs "Loop B4, step 1 of 3:" to "Loop R10, step 4 of 4:", then "Loop R10, step 3 of 4:" after Previous step, then the ready line after Reset the loop. `data-oa-at` runs 0 to 7. Focus never moves. Each focused button shows the 2 px Verdigris ring at 2 px, below the masthead, not covered and inside the visible frame.
+    - The Play path under reduced motion (Play, Pause, Play) passes at every width.
+    - Tab stops from before the figure: Play, Reset the loop, Previous step, Next step (each 44 px tall), then the caption's link. At 320 px the frame's own stop comes first, with its inside ring.
+  - **Each step by Next step:** exactly one step carries `aria-current`; the steps ahead carry `data-oa-ahead`; one drawn group per step carries `data-s`. Each hold equals 250 ms a word of its status line, never under 6,000 ms (12,750, 10,750, 20,500, 14,000, 13,750, 12,000 and 19,500 ms). At the last step Next step is unavailable and the reason line reads "At the last step. Reset the loop to start again."
+  - **Scripts off:** the root takes no `data-oa-live`; the buttons, status line and reason line are hidden; all seven steps show, numbered, none current.
+  - **Print emulation at step 3:** the same still sequence, every step in ink.
+  - **Forced colors,** dark at 1440 px and light at 390 px: the live root takes `auto` with the system's Canvas (black or white), words at 21 to 1, button edges in the system's text color, and the drawing keeps `none` on its own Newsprint.
+  - **Text at 200 percent** at 1440, 390 and 320 px: nothing clipped, every control inside the visible frame.
+  - **axe-core 4.10.2 at 1440 px:** 0 violations, 19 passes.
+- **Rule 14.144 as final (same runs, plate of 02:44:47).**
+  - **Keyboard alone:** the keys path walks clean, 13 steps at 1440, 1024, 390 and 320 px. The radios wrap. The status lines read:
+    - "Reform R-30 turns one connection and one variable red. One connection it targets sits outside this loop, in the economy layer."
+    - "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer."
+    - "Reform R-06 turns one connection red. One variable it targets sits outside this loop, in the core layer."
+    - Focus stays on the radio, and the status line is empty on load.
+  - **Tab stops:** the radio group, then each card's disclosure summary (three, 60 to 81 px tall), then out. At 320 px the frame comes first. Every stop shows the 2 px ring, inside the frame, not covered.
+  - **Red marks after the 120 ms token:** R-06 lights the group it shares with R-30, Connection L39. R-30 lights L39 and its own, Variable A5. R-38 lights none, as its line says.
+  - **The comparison:** three cards (`li[data-oa-panel]`), each a `dl` with the same eleven terms in the same order, Targets on Loop R8 to Routes. No empty term or value; "None" where a reform has no target on the loop. No total, sum, average or rank in the words. Each effect keeps its code and qualifier whole with its words ("+L local, large positive"). Each route without a date reads "Not checked."
+  - **Scripts off:** the radios choose; the red follows from CSS; the status line stays silent.
+  - **Print emulation:** the radio group hidden, the three cards shown, the three disclosures opened by the shell and closed again after. The three print copies of the drawing show, one per reform (my section 3.4's better page).
+  - **Forced colors:** as 14.143's.
+  - **axe-core:** 0 violations, 22 passes.
+  - **Text at 200 percent:** at 390 and 320 px nothing is clipped. **At 1440 px it fails 1.4.4:** on the 680 px composition the three cards stay three columns of about 234 px, so words run into the next card ("Connection LE17" over "Shared-data pricing", the chips of R-30's and R-38's routes), and R-38's card runs 13 px past the stage's edge. Capture `shots-complex/s-14-144-cards-1440-text200.png`. The 1024 px desk sets the same 680 px composition and was not run at 200 percent. Request below.
+- **The palette specification read as text (03:24 to 03:30 UTC, specimen of 02:04:53).** `palette_test.js`, `palette_follow2.js`, `palette_follow3.js` and `static_modes.js` on `b3/`. **Met, with two low items.**
+  - **Placement:** after Rule 14.5. Its line in the local contents reads "The four data palettes, step by step".
+  - **The tree:** a group named "The four data palettes, step by step, specimen" and described by the alt; four tables, each with a caption and five column headers (Step or Group, Token, On Newsprint, On Charcoal, On White paper). Each row's header holds the step and its code with the swatch `aria-hidden`; each cell holds the value, its ratio in words ("1.21 to 1, not for marks alone", "9.42 to 1, marks", "13.28 to 1, text"), the label ink's ratio and the step's lightness. No empty cell. The proofs are images with names, and their results are lists in words (nearest neighbors in gray and under each simulation, with the bar). Prussian is one note in words, not a column.
+  - **Keyboard:** no Tab stop inside the stage at any width; the next stops are the caption's links.
+  - **Text:** 13 px or more. Every number on a swatch measures 4.61 to 1 or more against the swatch it sits on (the lowest, Newsprint on sequential step 3 on Charcoal, at 13 px). My first measure read 1.00 to 1 by setting a swatch's number against the cell's ground; the second, against the swatch's own rect, corrects it.
+  - **Reflow:** at 390 and 320 px the tables stack one row to a block, and Chromium keeps table, row, header and cell roles with each cell's label ("On Newsprint") read in it. No sideways scroll at 1440, 1024, 390 or 320 px.
+  - **Forced colors,** dark and light: swatches keep their colors (`forced-color-adjust: none`), and the words take the system's.
+  - **Scripts off and reduced motion:** no script, no animation, no change.
+  - **axe-core:** 0 violations, 19 passes.
+  - **Text at 200 percent, low:** at 390 px each value with its ratio is held on one line (`.ps-v`, `white-space: nowrap`), so the stage widens to 496 px and the frame scrolls (560 against 390 px, with its Tab stop once the shell re-measures). Nothing is lost, which 1.4.4 asks, but every line of the plate then needs a sideways scroll. At 1440 px it fits.
+  - **Print, low:** the swatches, strips and lines print (`print-color-adjust: exact`). The proof blocks' Newsprint and Charcoal grounds (`.ps-g`) compute `economy`, so under a browser's default print setting the Charcoal block's labels print in Newsprint ink on white paper. Read from computed styles in print emulation, not from a printed page. Every Charcoal stage in the guide prints the same way; nothing in the shell keeps a ground in print.
 
 ## Not tested
 
