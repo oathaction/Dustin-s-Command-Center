@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 04:19 UTC. **Batch 7:** S96 as now built confirmed on both scales (one scale from zero each, band at 122 thousand, condition 1 at 5.0 px or more, no gridline below zero, no line through a label, latest off, no red). Sent back for one gap: at containers 480 to 489 px neither the named words nor the phone note show.
 - 03:51 UTC. **Batch 6:** the selection guide signed off (0 faults against the plan, ruling (a) and A-1; the tier key true of every tier). One log correction sent for Rules 14.142 (logged twice) and 14.143 (B4 not logged); Rule 01.9 holds either way.
 - 03:31 UTC. **Batch 5:** S96 as rebuilt signed off by script (scale, band, condition 1 at every width, latest label off, phone note, no red, the table's margin words 2, 32 and 23); Rules 14.142 to 14.144 signed off whole. Stage 19's gloss ruled: "no longer applies" stands. Two gridline crossings on S96's labels passed to the design director, with a data-side fix offered.
 - 03:20 UTC. **Batch 4:** Rules 15.22 to 15.25's second pass signed off whole (the five fixes, two suggestions and the new court stage 19 held to their sources; Rule 01.9 at 39 examples, D02 8, D03 5). S96's scale of minus 400 to 850 ruled to hold, with conditions; S96's sign-off waits on the maker's rebuild report. Batch 1's S96 phone-note condition is met.
@@ -305,6 +306,10 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 
 - For Rule 11.11: a read source for 28 U.S.C. 1253 (straight to the Supreme Court) and for a tie vote leaving the ruling below in place, or say neither is sourced; and the court source line's full list of sections (1254 and 2101 added).
 
+### To the complex examples maker and the engineer (batch 7)
+
+- S96: close the 480 to 489 px gap, so the two named columns carry words, in the drawing or in the phone note under it, at every container width from 320 to 720 px (the form hides the words under 490 px; the kit shows the phone note at 479 px and under).
+
 ### To the complex examples maker and the engineer (batch 6)
 
 - `14-example-log.json`: Rule 14.142 logs once (one example, S14's data in full), and Rule 14.143 logs two, Loop B4 in D04 and Loop R10 in D02, as Rule 15.15 does (ruling (g)). The total stays 112.
@@ -332,6 +337,26 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 - Read (a). Tier word in each link's accessible name; the avoid word in text, never in the picture alone.
 
 ## Sign-offs
+
+### Batch 7 (04:19 UTC): S96 as now built: confirmed on both scales, with one gap to close (for the complex examples maker and the engineer)
+
+My scripts (`s96_confirm.mjs`, `s96_gap.mjs`, `s96_phone.mjs`) on the kit's Node drawings of `s96.json` as it now stands (`scale.y` minus 400 to 850, `ticks_min: 0`, `y_narrow` minus 200 to 850; the average's note at `dy` minus 88): 30 drawings at 15 page widths on both grounds, plus every 2 px of page width from 500 to 540. 0 faults.
+
+**Confirmed on both scales:**
+- *One scale from zero per drawing.* The wide scale, from a drawing width of 490 px: 0.2880 px a thousand. The narrow scale, under 490 px and on the phone: 0.3428 at the 488 px drawing and 0.2762 at the phone drawings. Each holds one linear scale from zero for every column, varying by 0.002 at most, which is rounding. A drawing that changes scale with its width under DR-64 still carries the same data and finding.
+- *The band.* Its half-height equals 122 thousand on each drawing's own scale (35.1, 41.8 and 33.7 px), with the zero line on top.
+- *Condition 1.* October 2025 ends 5.2 px past the band on the wide scale, 6.1 px at the 488 px drawing and 5.0 px on the phone drawings; February 2026 ends 9.8, 11.6 and 9.4 px past. Both pass 3 px everywhere.
+- *No tick or gridline below zero* at any width (`ticks_min`). The minus 250,000 gridline is gone, and with it the line through "−140,000 jobs".
+- *No line through a label's words:* 0 crossings by my estimate at every width. The in-plot "Three-month average" now sits clear of the plus 500,000 gridline. My script still flags the key's "Preliminary" label beside the average's key swatch at 528 to 576 px. Measured positions show no overlap (text starts at x 22, the swatch at x 338), so I take it for my estimate's error, as in batch 5.
+- *The latest label* is off the plot at every width, and *no red* appears anywhere.
+
+**One gap, sent back.** The form hides the named columns' words wherever the drawing is under 490 px (`W < 490`, `columns-moving-average.js`), but the kit shows the phone note only where the figure's container is 479 px or narrower (`kit.css`, `@container (max-width: 479px)`). In a container 480 to 489 px wide, the drawing shows the two columns in the strongest ink with no words naming them, in the drawing or under it. By script: no named words at drawing widths 480 to 488, words from 490. That container width occurs at page widths of about 512 to 521 px. Rule 14.6 gives a named mark its label at every width.
+
+The fix belongs to the engineer and the maker, either way:
+- the phone note shows wherever the words hide (under 490 px), after measuring the change's reach over every spec with phone notes (call 2, V25), as the kit CSS is shared;
+- or the form hides the words only under 480 px, if they find a clear place at 480 to 489 px on the narrow scale.
+
+When a script shows words or the note at every container width from 320 to 720 px, S96 is signed off. I need no other change.
 
 ### Batch 6 (03:51 UTC): the selection guide signed off; one log correction for Rules 14.142 and 14.143 (for the selection guide maker, the complex examples maker, the engineer, the editor and the accessibility lead)
 
@@ -565,6 +590,8 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 
 - Batch 6 (03:51 UTC): `s-14-selection-guide.html` against the plan file and all 127 entry files by `sg_verify.py` (questions, order, names, tier words, `data-tier`, hrefs, avoid marks, sprite classes, text, literal colors, style attributes); the 127 anchors and the plate's place in my 03:29 strict build; the tier key against the plan's specimens and the eight avoid sketches (three read whole); `14-example-log.json`'s rows and counts.
 
+- Batch 7 (04:19 UTC): S96's Node drawings as now built, at 15 page widths on both grounds and every 2 px from 500 to 540 (`s96_confirm.mjs`, `s96_gap.mjs`, `s96_phone.mjs`): scale per drawing, band, how far each named column passes it, ticks and gridlines below zero, estimated label crossings, the named words drawn as text, the latest label, red; the form's 490 px threshold and the kit's 479 px phone-note query read in their source.
+
 ## Not tested
 
 - No build of any round 5 item: none has landed. No kit build, capture or guide check of my own yet.
@@ -578,3 +605,4 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 - Batch 4: the court opinions themselves not read by me (the research lead's rows); S96 as rebuilt not yet seen (the spec on disk still reads minus 200); no capture of chapter 15's second pass or of S96 at the trial scale.
 - Batch 5: no capture of the rebuilt S96 or of 14.143 and 14.144 looked at; label crossings are estimated from type size, not measured in a browser; the court opinions not read by me.
 - Batch 6: the selection guide's pictures not looked at (no capture), so whether each reads as its form at a glance is the design director's read; the guide check's link test not run by me.
+- Batch 7: the 480 to 489 px gap is read from the source and the Node drawings, not seen in a browser at those container widths.
