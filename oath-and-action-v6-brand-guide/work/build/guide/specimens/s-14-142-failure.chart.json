@@ -17,7 +17,7 @@
  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "The same columns with no band, the seven drops drawn alike in the strongest ink under a note that calls them seven months of job losses, and a title that counts seven months of lost jobs.",
+ "alt": "The same columns with no band and the seven drops drawn alike in the strongest ink, under a title that counts seven months of lost jobs.",
  "table": {
   "caption": "The same 57 months, with the three-month average, as this failure case draws them",
   "columns": [

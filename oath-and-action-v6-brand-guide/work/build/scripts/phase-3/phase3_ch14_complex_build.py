@@ -948,8 +948,8 @@ def rule_14_142():
                          "with the three-month average."),
         "notes": [s14["notes"][2]],
         "chart_notes": [],
-        "alt": ("The same columns with no band, the seven drops drawn alike in the strongest ink under a note that calls them seven months of "
-                "job losses, and a title that counts seven months of lost jobs."),
+        "alt": ("The same columns with no band and the seven drops drawn alike in the strongest ink, under a title that "
+                "counts seven months of lost jobs."),
         "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
         "annotations": [],

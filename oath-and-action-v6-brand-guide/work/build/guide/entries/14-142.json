@@ -60,7 +60,7 @@
  "failure": {
   "specimen": "s-14-142-failure",
   "caption": "<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the title counts seven losses as findings. Five of the seven sit inside the survey’s margin of error.",
-  "alt": "Failure case: do not publish. The same columns with no band, the seven drops drawn alike in the strongest ink under a note that calls them seven months of job losses, and a title that counts seven months of lost jobs.",
+  "alt": "Failure case: do not publish. The same columns with no band and the seven drops drawn alike in the strongest ink, under a title that counts seven months of lost jobs.",
   "illustrative": false,
   "notes": "Labeled failure: a kit figure through s-14-142-failure.chart.json (C7), its title the fault.",
   "charts": [
