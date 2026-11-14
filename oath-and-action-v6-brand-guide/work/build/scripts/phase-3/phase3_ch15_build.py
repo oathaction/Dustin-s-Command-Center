@@ -4341,7 +4341,8 @@ def recon_words():
         19: ("Plus and minus signs taken off the map, with an arrowhead for raises and a bar for lowers.",
              f"Every connection but the {words_n(len(auth))} authority connections stores a sign: {sign['+']} plus and "
              f"{sign['-']} minus. Its glossary: “A positive sign does not mean a benefit.”",
-             "Every causal connection prints its sign and the word raises or lowers, beside the atlas’s sentence on what a plus means."),
+             "Every connection but an authority connection prints its sign and the word raises or lowers, beside the atlas’s "
+             "sentence on what a plus means."),
         40: (f"{chip('Connection', 'L54')} called “the weakest transfer to U.S. services”, as if its grade were lower.",
              f"All three steps of {lq('B4')} are well supported. Its summary names {chip('Connection', 'L54')} the weakest only "
              "“For U.S. services”, “since its main study covers Brazilian mayors.”",
