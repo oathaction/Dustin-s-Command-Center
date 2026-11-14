@@ -4296,6 +4296,16 @@ def recon_words():
     need([x[0] for x in m42] == ["D03", "D04"], "row 42's model value changed shape")
     m43 = re.findall(r"(D0\d): (\d+) connections touch its variables, (\d+) end at them", rq[43]["model_value"])
     need([x[0] for x in m43] == ["D02", "D01"], "row 43's model value changed shape")
+    # row 43: each domain's variables are those whose domain field names it ("D08/D09" names two); computed here and held
+    # to the research file's own model reading
+    dom_of = lambda n: [s_.strip() for s_ in (n.get("domain") or "").split("/") if s_.strip()]
+    dc = {}
+    for did in ("D02", "D01"):
+        vs = [k for k, n in NODE.items() if did in dom_of(n)]
+        dc[did] = (len(vs), sum(1 for l_ in lk if l_["from"] in vs or l_["to"] in vs),
+                   sum(1 for k in vs if len(dom_of(NODE[k])) > 1), sum(1 for l_ in lk if l_["to"] in vs))
+    need([(str(dc[d][1]), str(dc[d][3])) for d in ("D02", "D01")] == [(m[1], m[2]) for m in m43],
+         f"row 43's counts differ from the research file's: {dc}")
     m54 = re.match(r"(\d+) reform-to-loop pairs not listed back", rq[54]["model_value"])
     need(m54, "row 54's model value changed shape")
     need(LOOP["R8"].get("reforms") == ["R-30"], "Loop R8's reform list changed")
@@ -4386,8 +4396,10 @@ def recon_words():
              "cost, and four reforms show a possible economic cost with no gain.",
              "Each outcome family keeps its own row with its full code, so a possible cost prints beside a gain."),
         43: (f"Two counts for one domain: {chip('Domain', 'D02')} at 27 and 19 connections, {chip('Domain', 'D01')} at 13 and 9.",
-             f"Both hold: {m43[0][1]} connections touch the variables of {chip('Domain', 'D02')} and {m43[0][2]} end at them, "
-             f"and the same two counts for {chip('Domain', 'D01')} are {m43[1][1]} and {m43[1][2]}.",
+             f"Both hold, counting every variable whose domain field names the domain: {dc['D02'][1]} connections touch the "
+             f"{words_n(dc['D02'][0])} variables of {chip('Domain', 'D02')}, {words_n(dc['D02'][2])} of which also name another "
+             f"domain, and {dc['D02'][3]} end at them; the {words_n(dc['D01'][0])} variables of {chip('Domain', 'D01')} give "
+             f"{dc['D01'][1]} and {dc['D01'][2 + 1]}.",
              "No chapter prints these counts, and a count the guide prints says how it counts."),
         44: ("194 issues.",
              f"{len(iss)} issue records: {len(iss) - n_ret} active and {n_ret} retired.",
