@@ -79,6 +79,13 @@ Load `work/build/scripts/phase-3/phase3_ch15_build.py` with `importlib.util.spec
 ### To the design director
 1. One read of the eight plates at 1440, 390 and 320 px on both grounds. 15.22, 15.23 and 15.24 are long reference plates (at 1440: 2,968, 3,526 and 4,502 px tall; at 390: 4,924, 5,453 and 7,979); say where to compress.
 
+## Carried to the review
+
+The design director's DD-R2 and DD-R5 (`20261114_Round-5-Design-Director-Notes.md`), relayed by the main session for Rule 15.20 as well as 14.144. Read against 15.20 as built and signed off in round 4; neither is a defect, so 15.20 stays as signed off and both go to the review chat for one decision across both plates (R4-5's one copy):
+
+- **DD-R2, the chooser's options at one width.** 15.20 sets its options in a column at their own widths (`.ch1{flex-direction:column;align-items:flex-start}`), the layout round 4's accessibility lead and data lead signed off; each option is a full radio target and works at every width. Stretching them is a look, not a fault. If the review takes it, the change is one declaration in 15.20's `ch1` CSS and the same in 14.144's copy.
+- **DD-R5, a keyline inside the chosen pill's red ring.** The chosen variable's 3 px red outline is Rule 12.5's red target as chapters 12, 13 and 15 draw it (`.pl.rp`, also on 15.11 and 15.16), approved with chapter 12; in grayscale a target still reads by the red line's 6 px case, its 6 px tag and head on the connection, and the 3 px outline (round 2's grayscale read of 15.11). A keyline would change an approved mark across three chapters, which V25 asks to measure over every plate it touches and land opt-in; that belongs to the review, with Dustin's word if it moves Rule 12.5.
+
 ## Tested
 
 ## Not tested

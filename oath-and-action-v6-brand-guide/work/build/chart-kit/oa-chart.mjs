@@ -129,8 +129,10 @@ function extra_island(res) {
 // 294, 264, 243 and 224, its stage padded inside the plate (chapters 13 and 14)
 export const GUIDE_WIDTHS = [656, 558, 358, 326, 296, 256];
 export const PLATE_WIDTHS = [675, 639, 510, 474, 325, 294, 264, 243, 224];
+// round 5 (R5-1): a maker's spec placed at a rule's plate (S96 at Rule 14.142) sets "plate": "rule", so the kit draws it at
+// the rule plates' columns and sweeps it from 224 px, as the guide gives it
 export function guide_widths(spec) {
-  return /^s-1[34]-(?!s\d)/i.test(String(spec.id)) ? GUIDE_WIDTHS.concat(PLATE_WIDTHS) : GUIDE_WIDTHS;
+  return /^s-1[34]-(?!s\d)/i.test(String(spec.id)) || spec.plate === 'rule' ? GUIDE_WIDTHS.concat(PLATE_WIDTHS) : GUIDE_WIDTHS;
 }
 
 // AX S1 (round 2 fix pass, D3-904): the guide draws an entry's chart at any whole width from 256 px (a 320 px screen at
