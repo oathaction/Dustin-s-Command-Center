@@ -24,7 +24,8 @@ Writes:
 
 Every picture is a shape, never data (ruling a): no number, word, axis value, party mark or color scale; the shadings
 on the map pictures follow an invented pattern, so the plate states no figure. Each picture draws from one <symbol>
-by <use>, in one stroke weight (2 px; the avoid mark's frame is 1 px, as A-1 sets), in the kit's neutral inks only.
+by <use>, every line in one stroke weight (2 px; the avoid mark's frame is 1 px, as A-1 sets; a run of filled dots is
+written as round-capped steps of no length, which paint the same discs), in the kit's neutral inks only.
 The checks below stop the script on any fault before it writes.
 """
 import argparse
@@ -394,10 +395,6 @@ def pattern(x, y, k=0.0):
 def centroid(rings):
     pts = [p for r in rings for p in r]
     return sum(p[0] for p in pts) / len(pts), sum(p[1] for p in pts) / len(pts)
-
-
-def shaded(groups_by_class):
-    return "".join(P(cls, d) for cls, d in groups_by_class if d)
 
 
 US_GROUPS = ("s-14-sg-us-a", "s-14-sg-us-b", "s-14-sg-us-c", "s-14-sg-us-d")
@@ -2041,12 +2038,15 @@ def main():
             sys.exit(1)
         print(f"selection_guide_build --check: both files match the plan, {sum(len(v) for v in by_group.values())} forms.")
     else:
+        written = []
         for p, t in ((FRAG, frag), (META, meta)):
             if not p.exists() or p.read_text(encoding="utf-8") != t:
                 p.write_text(t, encoding="utf-8")
+                written.append(p.name)
         n_sym = len(re.findall(r"<symbol ", frag))
-        print(f"selection_guide_build: wrote {FRAG.relative_to(ROOT)} ({len(frag.encode()):,} bytes; {n_sym} symbols, "
-              f"{sum(len(v) for v in by_group.values())} forms under {len(by_group)} questions) and {META.name}")
+        print(f"selection_guide_build: {FRAG.relative_to(ROOT)} ({len(frag.encode()):,} bytes; {n_sym} symbols, "
+              f"{sum(len(v) for v in by_group.values())} forms under {len(by_group)} questions) and {META.name}; "
+              f"{'written: ' + ', '.join(written) if written else 'both unchanged'}")
     if a.page:
         n = check_page(a.page, by_group)
         print(f"selection_guide_build --page: {n} form links, each landing on its rule block; every skip link lands")

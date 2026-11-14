@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Design director (
 
 ## Status
 
+- 02:58 UTC. **Rules 15.22 to 15.25 read** from the same 02:46 build, with my own captures at twice size. **No Must.** Eight Shoulds to the systems designer (DD-S1 to DD-S8). 15.25 passes my read as built. Still to read: the selection guide and the palette specification, when their owners' "Status" says they have landed; then one read of the fixes.
 - 02:52 UTC. **Trackers read** (Rules 11.10 and 11.11, both step tables, group 2's head and Rule 11.12, beside Rules 11.8 and 11.9), from my strict build of 02:46 with my own captures at twice size. **They pass my read: no Must.** Three Shoulds to the tracker designer (DD-T1 to DD-T3) under "Requests to the tracker designer". Next: Rules 15.22 to 15.25, built per the main session.
 - 02:42 UTC. **First read of the complex examples written** (Rules 14.142 to 14.144, S96 included, from my strict build of 02:26). Requests to the complex examples maker: 3 Must (DD-E1, DD-C1, DD-R1) and 12 Should; two questions to the data lead, two small word items to the editor, one shared item to the systems designer. Next: the selection guide, the palette specification, the trackers and Rules 15.22 to 15.25 as each owner's "Status" says it has landed; then one read of the fixes.
 - 02:27 UTC. First captures of 14.143 and 14.144 read from my 02:04 build; the maker's files moved since (02:13 to 02:25), so I rebuilt strict at 02:26 and captured all three rules again. A full-page browser at twice size ran out of memory at 02:09 (other agents' browsers held about 7 GB), so I capture from a copy of my build that keeps chapter 14 whole and every other chapter's styles and scripts only.
@@ -54,6 +55,28 @@ What keeps the three from the bar is placement:
 
 Not raised: the 360 px cards scroll inside a 350 px frame at 390 px and a 288 px frame at 320 px, clipping their right edge. Rules 11.8 and 11.9 do the same, and the frame says so in words (chapter 11's true-size convention).
 
+## Requests to the systems designer
+
+**Rules 15.22 to 15.25, read at 02:57 UTC beside Rules 15.13 and 15.20.** All four sit in chapter 15's family: the 680 px composition, typed chips, the evidence chip with its gloss, label-style group heads, sources in the secondary ink, and failures as single 328 px cards. They hold on Charcoal and in grayscale. 15.22's spine reads clearly. Black filled squares on the subject line sit beside outlined squares set in on short arrows. The line turns to the context ink after step 13, and the return line runs 27 px left of the spine, so it never reads as a doubled rule. Each source is top-aligned with its stage. On a phone the sources drop under their stages, as they should. 15.25 is the calmest of the four: four counts in the indicator grammar of S60, then the four rows that matter most, grouped and ruled, and the rest behind one disclosure. **No Must.** The Shoulds below are about what a reader meets first and two marks that mean two things.
+
+**15.22**
+- **DD-S1, Should. The key before the stages, with its marks.** The key ("Filled squares on the dark line ...", "A small square ends a path ...", "The line on the left ...") sits under stage 19, about 3,000 px down the plate at a desk, so a reader meets 19 stages before learning what the squares mean. Move it under the grade line, before "In Congress". Draw each mark beside its words, as chapter 11's "What the marks mean" does: the filled square, the outlined square, the small stop square and the return line. Drop the full-width hairline between the key's two sentences, which reads as a section break.
+- **DD-S2, Should, words with the editor. One look, one meaning.** Outlined squares do two jobs. Set in on an arrow (3 to 5, 10 to 12), they are a path a bill takes instead. On the lighter line (14 to 19), they are what follows the law. The key gives both in one sentence. Give each look its own key entry.
+- **DD-S3, Should, words with the editor. Say where a path rejoins.** Branches 3, 4, 5, 10 and 11 leave the spine on an arrow and never come back. Only paths that stop are marked, with the small square. From the drawing alone, a reader cannot tell that a cloture vote or an override still leads on to the next stage. End each rejoining path with its return, in words ("then step 6", "then step 13") or as a short arrow back into the spine. Paths that stop keep their square.
+- **DD-S4, Should. Held phrases.** At 1440 px stage 3's source breaks "read November / 14, 2026" and stage 10 breaks "Two- / thirds". At 390 px stage 3's source breaks "clause / 1". Hold every "Month D, YYYY", "clause N" and "two-thirds" across the plate.
+
+**15.23**
+- **DD-S5, Should. No square bullets.** In the four blocks after Route FS, each stage carries a small outlined square. That is a smaller copy of the mark 15.22 uses for "a path a bill takes instead", and the Route FS block above it uses 15.22's numbered squares for their real meaning. The rows already separate the stages, so drop the bullets, or use a marker no plate uses as a mark.
+- **DD-S6, Should. Hold "Rule 11.1".** The failure's head breaks "Rule / 11.1" at 1440 px. Hold every "Rule N.N" in both plates.
+
+**15.24**
+- **DD-S7, Should. Open on the set.** The boxed example, Reform R-28 read through step 5, stands first: above the feasibility words, the five questions and the eleven cards. It sits in a 2 px border-strong frame (`.one`), the heaviest mark on the plate. Move it after the eleven cards, or straight after Route FS's card, which it reads, and frame it at 1 px. The plate then opens on the reference set it is, and the example reads as one use of it. The failure plates may keep the 2 px box, since there the box is the whole card.
+- **DD-S8, Should. Arrows that stay with their stage.** In the stage runs ("Filed → Title and summary → ..."), some lines end on an arrow and others start with one: Route LOC's second line starts "→ Introduced ...", while its first ends "... limits". Bind each arrow to the stage after it with a no-break space, so no line ends on an arrow.
+
+**15.25:** passes my read as built.
+
+DD-R2 and DD-R5 (Rule 15.20's chooser widths and the red pill's keyline): read, and carried to the review as the systems designer chose. 14.144 matches 15.20, so they stay one look.
+
 ## Requests to the data lead
 
 - **DD-E3.** May S96 drop its on-plot latest label, with the words kept in its chart note? Ruling (c) puts the latest average in a note. Yes or no.
@@ -77,6 +100,9 @@ Not raised: the 360 px cards scroll inside a 350 px frame at 390 px and a 288 px
 - D3-xxx | The red pill's missing keyline and the chooser's stepped widths go to both the maker and the systems designer as Shoulds | They are Rule 15.20's signed-off treatment; one component keeps one look (R4-5)
 - D3-xxx | Rule 14.143 at rest dims both drawings except the start pill and the two filled C3 pills, and I ask nothing of it | It is Rule 18.22's stepper behavior; the two black pills are then what a reader sees first, which is the lesson
 - D3-xxx | S96's tallest column rising past the top labeled gridline is not raised | The scale runs to 850,000 with ticks every 250,000, as S14 draws it
+- D3-xxx | The trackers and Rules 15.22 to 15.25 carry no Must | Each holds its family's grammar on both grounds and in grayscale; the Shoulds change what a reader meets first and remove marks with two meanings
+- D3-xxx | 15.24's boxed example moves after the set and drops to a 1 px frame (Should) | A reference set opens on the set; the 2 px frame is the plate's heaviest mark and is new in round 5
+- D3-xxx | Chapter 11's three step tables should share one grammar, the new tables' number over name (Should) | One chapter, one table form; the bill's table still wraps "Governor or President" under its number
 
 ## Tested
 
@@ -85,6 +111,7 @@ Not raised: the 360 px cards scroll inside a 350 px frame at 390 px and a 288 px
 - Looked at closely: S96 at 1440 px (Newsprint, Charcoal) with a zoom on both named labels; S96 at 390 px (Newsprint); the 14.142 failure at 1440 px; 14.143 at 1440 px at rest, at step 2 and at step 5 (Newsprint), at 390 px (Newsprint) and 320 px (Charcoal); its failure at 1440 px in both builds, zoomed; 14.144 at 1440 px (Newsprint) at rest, with R-30 (Newsprint, Charcoal, grayscale) and the drawing with R-06; 14.144 at 390 and 320 px (Newsprint); its failure at 1440 px (Newsprint) and 320 px (Charcoal).
 - Read the plates' markup and own CSS, as built and in the specimen files: 14.143's order of parts and its step CSS; 14.144's chooser class `.ch1` beside Rule 15.20's; the red target CSS; S96's spec (`scale`, `labels.named`, `labels.margin`) and its data file's extremes.
 - Trackers (02:46 to 02:51 UTC): strict build to scratch at 02:46 (12,090,700 bytes, exit 0; `plate-share.json` restored after it). My own captures at twice size on a copy that keeps chapter 11 whole and the other chapters' styles and scripts only. Started with the load under 4: Rules 11.8, 11.9, 11.10, 11.11 and 11.12's correct plates, both new failure plates, both new step tables and group 2's head, at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale; Rules 11.10 to 11.12's heads and bodies at 1440 px. Then the bill's step table (`s-11-steps`) at 1440 and 390 px. Looked at: all four trackers side by side at 1440 px (Newsprint); 11.10 on Charcoal and 11.11 in grayscale at 1440 px; both failures at 1440 px; the ballot table at 1440 px and both tables at 320 px; 11.10 and 11.11 at 320 px, with 11.8 at 320 px for the frame's clipping; group 2's head with Rule 11.12 at 1440 px and the head at 390 px; Rule 11.12's plate at 1440 px; the bill's table at 1440 px. Read Rule 11.10's markup and the tracker designer's notes.
+- Chapter 15 (02:52 to 02:57 UTC), from the 02:46 build, on a copy that keeps chapter 15 whole. Started with the load under 4: Rules 15.22 to 15.25's correct and failure plates, with 15.13 and 15.20 for comparison, at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale; groups 5 and 6's heads; the four rule heads and bodies at 1440 px; and 15.24 and 15.25 at 1440 px with every disclosure open. Looked at: 15.22 at 1440 px whole and in five bands, on Charcoal, and at 390 px; 15.23 at 1440 px whole and in grayscale; 15.24 at 1440 px whole; 15.25 at 1440 px; the four failures at 1440 px. Read the `.one` class in the generator and the plates that use it.
 - Two short probes at 1x (02:25 UTC, load 4.6 and 5.2, one page each) of the computed fill on 14.143's failure connectors.
 
 ## Not tested
@@ -96,3 +123,6 @@ Not raised: the 360 px cards scroll inside a 350 px frame at 390 px and a 288 px
 - The full page at twice size; my captures come from the trimmed copy described above.
 - The kit's own build and sweep of S96 (the maker's and the engineer's).
 - Group 18's head and line before Rule 14.142.
+- Trackers: 1024, 768 and 360 px; both failures at 320 px; the step tables on Charcoal at 1440 px (the 320 px captures only). Print and keyboard.
+- Chapter 15: 15.24's and 15.25's disclosures opened, captured but not read row by row; 15.23 and 15.24 at 390 and 320 px, captured but not looked at closely; 15.13 and 15.20 captured but not looked at, so the family comparison rests on my round 4 reading of chapter 15; the figures' facts and sources (the data lead's and the research lead's).
+- The selection guide and the palette specification: not yet read.

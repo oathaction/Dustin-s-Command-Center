@@ -1569,6 +1569,24 @@ async function self_test() {
     console.log(`${ok ? 'pass' : 'FAIL'} S96's band words clear every column (at 400 px set, at 210 px ${narrow.t ? 'set' : 'left out'}), and planted over the October 2025 column the guard fails them`);
     if (!ok) bad++;
   }
+  // round 5 (the design director's DD-E1, DD-E2): S96's named words in one stack under the band, clear of its edges; moved
+  // onto the band's lower edge, they fail, halo or not
+  {
+    const s96 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8')), c96 = C.check_spec(K, s96, {});
+    s96.labels = Object.assign({}, s96.labels, { named_stack: true }); s96.scale = { y: [-300, 850] };
+    const d = K.draw(s96, c96.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(c96) });
+    const name = [].concat((s96.labels.named[0] || {}).text || [])[0], t = d.texts.find((x) => x.words === name);
+    const edge = (d.ink || []).filter((b) => b.band_edge).sort((a, b) => b.y - a.y)[0];
+    const clean = !C.check_drawing(s96, d, TOK.newsprint, 'self-test').some((x) => /band's edge/.test(x));
+    let caught = false;
+    if (t && edge) {
+      const d2 = Object.assign({}, d, { texts: d.texts.map((x) => x === t ? Object.assign({}, x, { y: edge.y - x.h / 2, x: t.x }) : x) });
+      caught = C.check_drawing(s96, d2, TOK.newsprint, 'self-test').some((x) => /band's edge runs through/.test(x));
+    }
+    const ok = !!t && !!edge && clean && caught;
+    console.log(`${ok ? 'pass' : 'FAIL'} S96's named words stacked clear of the band's edges at 720 px, and moved onto the lower edge (halo and all) the guard fails them`);
+    if (!ok) bad++;
+  }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);
