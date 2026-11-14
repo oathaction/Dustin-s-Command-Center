@@ -6,6 +6,7 @@ The owners read the "Words for ..." sections directly. Each gives the words an o
 
 ## Status
 
+- 03:32 UTC. **Stage 19 restored** to "The part the court holds void no longer applies." on the data lead's ruling, and the 15.22 alt's stages now say "Stage", as the plate does. Two runs each, the second changing nothing; strict build passes. Still waiting: the selection guide's tier key and caption.
 - 03:30 UTC. **Chapter 14's intro rewritten** (task 2) in `phase3_ch14_rules_build.py`, naming the guide, the palette plate and the three charts in full; the opener's caption and Rule 14.1 now point to the guide. Two runs, the second changing nothing; the chapter file rebuilt, only those four fields changed; strict build passes. Still waiting: the selection guide's tier key and caption (its maker), stage 19 (the data lead).
 - 03:29 UTC. **Pass 2 on Rules 14.142 to 14.144 written in**: one word edit (14.144's print lines); Loop R10's first step kept for the stepper; two runs, the second writing nothing; figure checks 35 of 35; strict build passes. The selection guide's words still wait for its maker; stage 19 waits for the data lead.
 - 03:25 UTC. **Pass 2 drafts written, nothing applied**: "Words for the complex examples maker, pass 2" (two rows; a third, on the ink word, withdrawn after I read S53's reason) and the selection guide's tier key and caption (SG-5, DD-G4), both waiting for their makers to report. Stage 19's "can no longer be enforced" stays unless the data lead rules otherwise (main session, 03:23).
@@ -320,6 +321,17 @@ On the main session's word (03:18) that the systems designer's second pass had l
 
 **Checks.** Baseline run before my edits: no output changed. After the 23 edits, run twice: both exit 0, every check passing (the generator's phrase checks against the workflow sources file among them), and the second run changed nothing. Outputs changed: `15-systems-graphics.json`, `manifest-systems-graphics.json` and the four correct plates, words only. Strict build to scratch `guide-e5.html`: exit 0, 12,105,433 bytes. My copy of the generator before this pass is `phase3_ch15_build.before2.py` in my scratch folder.
 
+### Stage 19's stop line restored, and the alt's stage numbers, 03:32 UTC
+
+The data lead ruled (its "Sign-offs, Batch 5"): the research lead's wording stands, since "can no longer be enforced" claims something about every enforcer that neither Marbury nor the 2026 ruling states, and may read as removal from the U.S. Code. I accept it and restored it in `phase3_ch15_build.py`; my other stage 19 edits stay.
+
+| Where | Before | After | Why |
+|---|---|---|---|
+| 15.22, stage 19's stop line | The part the court holds void can no longer be enforced. | The part the court holds void no longer applies. | The data lead's ruling (Batch 5) |
+| 15.22, the plate's alt, each stage's opening (`Stage.say`) | Step 1: ... to Step 20: ... | Stage 1: ... to Stage 20: ... | Pass 2 renamed every stage on the plate but missed the alt, which a screen reader reads; found when I checked the restored line in the manifest |
+
+**Checks.** Baseline run before the restore: no output changed. After the restore, run twice: the second run changed nothing; the plate and the manifest each print "no longer applies" once. After the alt fix, run twice: the second run changed nothing, and the manifest holds no "Step N:" for a stage. Strict build to scratch `guide-e8.html`: exit 0, 12,105,885 bytes.
+
 ## Chapter 14's intro (draft, then applied)
 
 The intro now says "Fourteen rules come first", which stops being true when the selection guide opens the chapter, and says every entry has "a finished example that our chart kit draws", which was never true of the 30 reference and avoid sketches. The draft, for the first paragraph of `intro` in `phase3_ch14_rules_build.py`; the second paragraph stands:
@@ -359,7 +371,7 @@ On the main session's word that the three charts are final and the guide's place
 - D3-xxx | Rule 15.22 and its plate call each numbered stage a stage, never a step | Rule 15.23 teaches that a tracker's steps and a route's stages differ, and it prints the same numbers as "Stage N"
 - D3-xxx | Stage 19 cites its 2026 example as "the latest such ruling we found" | The research lead chose it by date from the opinion lists it read to November 9, 2026; the words claim no wider search
 - D3-xxx | Chapter 14's intro names the guide, the palette plate and the three charts in full, and the opener's caption and Rule 14.1 point to the guide | The old words said the rules come first and every form has a kit example, untrue once the guide leads and never true of the sketches
-- D3-xxx | Stage 19's stop line keeps "can no longer be enforced" until the data lead rules | The research lead warned against saying more than Marbury's "void"; the main session sent the point to the data lead, and the line stands meanwhile
+- D3-xxx | Stage 19's stop line reads "The part the court holds void no longer applies.", the research lead's words | The data lead's ruling (Batch 5): "can no longer be enforced" claims more than Marbury or the 2026 ruling states
 - D3-xxx | Rule 14.144's working title says "effect" where the brief says "measure" | In a civic guide a measure is also a bill or a ballot question, and the atlas calls each column an effect
 
 ## Requests

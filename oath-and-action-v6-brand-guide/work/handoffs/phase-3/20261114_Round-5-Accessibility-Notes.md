@@ -473,6 +473,9 @@ The skip links ("Skip the chart guide", "Skip these N forms"); the return label 
 
 ## Not tested
 
-- Nothing in round 5 is built yet, so no item has run in a browser.
+- The selection guide: its maker is still trimming it, so it has not run (the main session's order).
+- Rule 14.144 at 1024 px with text at 200 percent (the same 680 px composition as 1440 px, where it fails); 768 and 360 px for every item; Charcoal for 14.143 and 14.144 by the stage's theme (the design director read both grounds).
+- A printed page or PDF of the palette specification: print was read from computed styles in print emulation.
+- Rule 14.142 (S96): not asked in this pass, and its spec still carries two strict build warnings.
 - Any screen reader: none runs in this container. What a screen reader says for list names, skip links and status lines is what the markup exposes, not what a reader hears.
 - Safari and Firefox: no WebKit or Gecko run here, so `:has()` fallbacks, list roles after `list-style: none` and table semantics in a stacked table are unverified.
