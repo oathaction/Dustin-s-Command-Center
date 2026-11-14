@@ -4396,10 +4396,10 @@ def recon_words():
              "cost, and four reforms show a possible economic cost with no gain.",
              "Each outcome family keeps its own row with its full code, so a possible cost prints beside a gain."),
         43: (f"Two counts for one domain: {chip('Domain', 'D02')} at 27 and 19 connections, {chip('Domain', 'D01')} at 13 and 9.",
-             f"Both hold, counting every variable whose domain field names the domain: {dc['D02'][1]} connections touch the "
-             f"{words_n(dc['D02'][0])} variables of {chip('Domain', 'D02')}, {words_n(dc['D02'][2])} of which also name another "
-             f"domain, and {dc['D02'][3]} end at them; the {words_n(dc['D01'][0])} variables of {chip('Domain', 'D01')} give "
-             f"{dc['D01'][1]} and {dc['D01'][2 + 1]}.",
+             f"Both hold, counting every variable whose domain field names the domain. {chip('Domain', 'D02')} has "
+             f"{words_n(dc['D02'][0])} such variables, {words_n(dc['D02'][2])} of them shared with another domain: "
+             f"{dc['D02'][1]} connections touch them and {dc['D02'][3]} end at them. The {words_n(dc['D01'][0])} variables of "
+             f"{chip('Domain', 'D01')} give {dc['D01'][1]} and {dc['D01'][3]}.",
              "No chapter prints these counts, and a count the guide prints says how it counts."),
         44: ("194 issues.",
              f"{len(iss)} issue records: {len(iss) - n_ret} active and {n_ret} retired.",
