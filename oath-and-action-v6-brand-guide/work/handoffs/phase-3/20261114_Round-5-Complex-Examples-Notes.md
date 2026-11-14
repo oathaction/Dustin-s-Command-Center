@@ -103,6 +103,8 @@ Rewritten from the generator's run of 02:20 UTC, after the editor's words pass 1
 - **DD-R2** (the design director): the three choices in 14.144's chooser shrink to their labels, so their right edges step down; stretch them to one width. Rule 15.20's own chooser style, so both plates or neither (R4-5); the systems designer carried it to the review.
 - **DD-R5** (the design director): a chosen variable's 3 px red ring has no keyline and turns a lighter gray than an unchosen pill's ink in grayscale; give it the keyline the red connection has. Rule 15.20's drawing CSS too; carried to the review with DD-R2.
 
+- **S14 at Rule 14.29, read for DD-E7's crossing (04:06 UTC), unchanged as signed off.** Measured on the kit's Node drawings at every width from 224 to 720 px on both grounds: no gridline runs through any of S14's words. Its "Three-month average" note clears the plus 500,000 gridline by 6.96 px or more (its scale's minus 200 floor sets the gridlines about 85 px apart, where S96's set them 72); it has no gridline below zero. One near touch: the second line of its latest label, "in September 2026, preliminary", sits 2.6 px above the plus 750,000 gridline from 480 to 720 px, under the 4 px DD-E7 asks of S96, on the label's halo with no line through it. For the review, if the 4 px rule is to bind the signed-off drawings too.
+
 ## Requests
 
 ### To the systems designer (`phase3_ch15_build.py`)
@@ -125,6 +127,11 @@ Rewritten from the generator's run of 02:20 UTC, after the editor's words pass 1
    - Done on my side: the on-plot latest label is gone from S96 (the data lead's yes to DD-E3); the key holds "month’s change" together (DD-E5); the failure figure has no note on one column (DD-E6).
 6. **(03:22 UTC, low; a kit check, not a drawing.) `build` fails the failure figure on parity, falsely as far as I can tell.** `oa-chart.mjs build work/build/guide/specimens/s-14-142-failure.chart.json` reports "the page's drawing ... differs from the Node drawing the exports use" at 1440 and 390 px on both grounds, every run since 02:41. The same spec passes with any one of `failure`, `show` or `labels.named` taken out, and passes whole under the id `v-failure`, but fails under `s-14-142-failure`, `s-14-142-misread`, `x-142-failure` and `s-14-s142f`; so it reads like the parity check's id normalization (`oac-[a-z0-9-]*?-(\d+)-...`) meeting an id with digit groups, together with those keys. The guide's own build places the plate with no warning, and `check` passes. Scratch specs: `try/v_*.json`, `try/n_*.json` in my scratch folder.
 
+
+7. **(04:06 UTC, the design director's DD-E7 Must and DD-E8 Should, for S96; sent through the main session.)** Two opt-in keys, so no other spec moves; the names are yours:
+   - **DD-E7:** a key such as `scale.ticks_min: 0`: no tick or gridline below this value, the domain's floor kept. `value_scale` gives S96 ticks every 250 from its −400 floor, so the minus 250,000 gridline draws, and it runs through the box of "−140,000 jobs" (gap −1 px) at every width from 490 to 720 px, by my measure on the Node drawings. No column reaches it; the data lead offered to drop it.
+   - **DD-E8:** a key such as `scale.y_narrow: [-200, 850]`: the domain the form uses where it hides the named labels (`c.phone || W < 490`, the labels' own test), so the phone drawing returns to S14's floor where the stack is not drawn (about 65 px of empty plot today at 390 px). Condition 1 only gains: the same 18,000 jobs past the band over a shorter range.
+   - Done on my side: "Three-month average" raised between the plus 500,000 and plus 750,000 gridlines (`dy` −88 in place of S14's −50), its box at least 27.97 px clear of every gridline at every width; the figure checks now hold every word in the plot 4 px or more from every gridline and no gridline below zero, and fail today on the minus 250,000 line alone.
 
 ### To the editor (the words in the generator)
 
