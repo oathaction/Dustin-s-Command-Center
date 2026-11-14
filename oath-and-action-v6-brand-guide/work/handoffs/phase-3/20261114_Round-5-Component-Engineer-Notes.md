@@ -22,7 +22,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the co
 
 ## Summary
 
-To come.
+R5-8 is applied in every file I own and proven: chapter 18's generators were current on HEAD before the rerun, the 26 numbers mapped in one pass, a second run identical and every changed file equal to HEAD with the map applied. Complex examples 2 and 3 run on the components as built, never a second copy: 14.143 on Rule 18.22's stepper, its seven steps counted per loop by a new opt-in, `data-oa-part` (the main session's call D3-1880), so the line, the list and each drawing say one number; 14.144 on the shell's chooser line, three cards with their own say lines. Both keys files are written from the accessibility lead's paths and pass my key presses at 1440 and 390 px. Three opt-in changes landed in the shell and the stepper script, each measured to change nothing on today's page: the extras' lines in the local contents (the engineer), the way back from "Choose a chart" (the accessibility lead) and the per-loop count. Four items go to the complex examples maker, one high (14.144's cards overprint at 680 px). No tracker interaction has been asked for.
 
 ## Staleness of chapter 18's generators on HEAD (read before any rerun, D3-1704)
 
@@ -177,3 +177,10 @@ So any change after my R5-8 rerun is the map's alone.
 - **Captures looked at** (`scratch/caps/`, 02:14 UTC; that run started at a load of 6.83, over the limit, which I note here): 14.143 at 1440 px at rest, at step 2 and at step 5, at 390 px at step 5 and with scripts off, in print at 1440 px after three steps; 14.144 at 1440 px with R-30 checked and at 390 px with R-38 checked. At step 5 the drawing lights Loop R10's drawn 2 and the line says "Loop R10, step 2 of 4"; the items under "Requests" come from these.
 
 ## Not tested
+
+- **The quick guide check on a full build** (`guide_check.js --quick --no-captures`): to run when the load allows (under "Status" when it does). Its key path walk of the two new keys files has run only in my own harness, which uses the guide check's own step reader.
+- **Any screen reader.** None runs here, so how NVDA, JAWS, VoiceOver or TalkBack speak "Loop B4, step 1 of 3", the cards' lists or the way back is unheard.
+- **Safari and Firefox.** No WebKit or Gecko runs here; `Element.closest` and `:has()` are tested in Chromium only.
+- **A real print dialog.** Print was emulated (`emulateMedia` and the `beforeprint` and `afterprint` events); no paper or PDF was compared.
+- **Forced colors, 200 percent text and 320 px reflow on the two plates.** These are the maker's CSS and the accessibility lead's tests; I did not run them.
+- **The guide check's self-test.** The shell changed only by opt-in selectors; the brief's checks for me do not include it, and I did not run it.
