@@ -136,7 +136,7 @@ export const meta = {
       reason: 'One dark mode for every screen product, drawn on Charcoal in the style of the interactive version of our systems atlas, that follows the device and a reader\'s switch',
       record: 'DR-204', gate: 'Gate 2' },
     { version: '6.0.0-gate2.6', date: '2026-11-10', tokens: 'oa.color.state.error.mark', change: 'Description only: the token colors the 4 px bar',
-      reason: 'The error glyph takes the text\'s ink (Rule 11.15), so the token colors the bar alone', record: 'PP-M3', gate: 'Gate 2' },
+      reason: 'The error glyph takes the text\'s ink (Rule 11.17), so the token colors the bar alone', record: 'PP-M3', gate: 'Gate 2' },
   ],
   fluidRange: { minViewportPx: 390, maxViewportPx: 1440 },
   remBasePx: 16,
@@ -395,7 +395,7 @@ const color = {
         { newsprint: D('errorBand'), white: D('errorBand') },
         { newsprint: { textOnIt: ['{oa.color.text.primary.onNewsprint}', '{oa.color.text.secondary.onNewsprint}'] },
           white: { textOnIt: ['{oa.color.text.primary.onWhite}', '{oa.color.text.secondary.onWhite}'] } }),
-      // PP-M3 (round 3, November 10, 2026): Rule 11.15 draws the error glyph in the text's ink, so this token colors the
+      // PP-M3 (round 3, November 10, 2026): Rule 11.17 draws the error glyph in the text's ink, so this token colors the
       // 4 px bar alone. DR-218 (November 11, 2026) renames it for the bar; the old name stays as a deprecated alias.
       bar: ERROR_BAR,
       mark: deprecatedAlias(ERROR_BAR, 'oa.color.state.error.bar', '6.0.0-gate2.8', '6.1.0'),
@@ -596,7 +596,7 @@ const chartColor = {
   secondary: component('Ticks, notes, measure lines and source lines.', NC('{oa.color.text.secondary.onNewsprint}', '{oa.color.text.secondary.onCharcoal}')),
   baseline: component('The zero baseline and reference rules, 1.5 px.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}')),
   leader: component('Leaders from a note to its mark, 1 px.', NC('{oa.color.data.context.onNewsprint}', '{oa.color.data.context.onCharcoal}')),
-  point: component("The one point a title names, in working red at the third rank. Only when no error or ask holds the view\'s red. When an error or an ask holds the view\'s red, the point yields to the subject ink and keeps its label and its place (Rule 11.16).", NC('{oa.color.data.emphasisRed.onNewsprint}', '{oa.color.data.emphasisRed.onCharcoal}')),
+  point: component("The one point a title names, in working red at the third rank. Only when no error or ask holds the view\'s red. When an error or an ask holds the view\'s red, the point yields to the subject ink and keeps its label and its place (Rule 11.18).", NC('{oa.color.data.emphasisRed.onNewsprint}', '{oa.color.data.emphasisRed.onCharcoal}')),
   pointKeyline: component('The 1 px keyline around a red point on Newsprint, where Pillar Red measures 2.96 to 1.', { newsprint: '{oa.color.border.strong.onNewsprint}' }),
   party: {
     mark: component('Every mark that stands for a party\'s lead, vote or share: one neutral ink for every party, with the party named on the mark.', NC('{oa.color.data.emphasis.onNewsprint}', '{oa.color.data.emphasis.onCharcoal}'),

@@ -2313,7 +2313,7 @@ def rule_15_13(book):
             "loop as a whole takes that grade: the atlas grades Loop R1 plausible.",
             "Draw each step in its own line, mark the weakest in words, and give the diagram’s label the grade of the least "
             "certain step (Rule 13.1). The loop stepper of Rule 18.22 runs the same loop live, one connection at a time, in "
-            "Rule 11.14’s plate.",
+            "Rule 11.16’s plate.",
         ],
         "tokens": ["oa.chart.grade.plausible"],
         "why": {"text": ["A loop runs only when each of its steps runs, so its least certain step limits the whole. A reader who "
@@ -2329,7 +2329,7 @@ def rule_15_13(book):
             {"label": "Each step", "value": "Its own line, by its own grade (Rule 13.4)"},
             {"label": "Weakest step", "value": "“Weakest step” under its words, where the atlas’s evidence summary names it"},
             {"label": "The loop’s label", "value": "The least certain step’s grade (Rule 13.1)"},
-            {"label": "Live", "value": "The loop stepper of Rule 18.22 runs Loop R1 in Rule 11.14’s plate"},
+            {"label": "Live", "value": "The loop stepper of Rule 18.22 runs Loop R1 in Rule 11.16’s plate"},
         ],
         "related": ["11", "13", "18"],
         "builders": ["Take the weakest step from the loop’s evidence summary and the label from the least certain connection, "
@@ -3580,7 +3580,7 @@ def chapter(book):
         "extras": [],
         "related_chapters": [
             {"chapter": "10", "reason": "Rule 10.10, the atlas’s encoding glyphs and their measurements."},
-            {"chapter": "11", "reason": "Rule 11.14’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live."},
+            {"chapter": "11", "reason": "Rule 11.16’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live."},
             {"chapter": "12", "reason": "Rule 12.5, the red target where a reform acts, and Rule 12.8, the stacked layers."},
             {"chapter": "13", "reason": "The grade words, the line code, delay, typed chips and dates every drawing here keeps."},
             {"chapter": "14", "reason": "Charts, where widths and areas carry measured amounts."},

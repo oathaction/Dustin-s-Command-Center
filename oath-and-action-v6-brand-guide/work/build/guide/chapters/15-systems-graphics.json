@@ -680,7 +680,7 @@
    "title": "Let the least certain step set how far a reader trusts a loop.",
    "rule": [
     "Loop R1, “Wealth and political influence reinforce each other”, runs through three connections that carry money. Two are well supported. The middle one, connection L02, “Political spending can tilt policy toward donors”, is plausible, and our systems atlas names it the weakest step. The loop as a whole takes that grade: the atlas grades Loop R1 plausible.",
-    "Draw each step in its own line, mark the weakest in words, and give the diagram’s label the grade of the least certain step (Rule 13.1). The loop stepper of Rule 18.22 runs the same loop live, one connection at a time, in Rule 11.14’s plate."
+    "Draw each step in its own line, mark the weakest in words, and give the diagram’s label the grade of the least certain step (Rule 13.1). The loop stepper of Rule 18.22 runs the same loop live, one connection at a time, in Rule 11.16’s plate."
    ],
    "tokens": [
     "oa.chart.grade.plausible"
@@ -714,7 +714,7 @@
     },
     {
      "label": "Live",
-     "value": "The loop stepper of Rule 18.22 runs Loop R1 in Rule 11.14’s plate"
+     "value": "The loop stepper of Rule 18.22 runs Loop R1 in Rule 11.16’s plate"
     }
    ],
    "related": [
@@ -1155,7 +1155,7 @@
   },
   {
    "chapter": "11",
-   "reason": "Rule 11.14’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live."
+   "reason": "Rule 11.16’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live."
   },
   {
    "chapter": "12",

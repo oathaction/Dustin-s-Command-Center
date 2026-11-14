@@ -468,7 +468,7 @@
       },
       "correct": {
         "specimen": "s-05-6-correct",
-        "caption": "Six of the token set’s tints, each with its recipe, its one job and its measured ratio. The set holds three derived colors and 27 chart tints; chapter 26 lists every one."
+        "caption": "Six of the token set’s tints, each with its recipe, its one job and its measured ratio. The set holds three derived colors and 29 chart tints; chapter 26 lists every one."
       },
       "failure": {
         "specimen": "s-05-6-failure",
