@@ -4,7 +4,7 @@ Written November 14, 2026, after round 5 was built and signed off. A new session
 
 ## 1. Where things stand
 
-Phase 3 is the active phase. Round 5 is built, and every item is signed off by the data lead and read by the design director and the accessibility lead. Chapters 14 and 15 are complete. Tracker row `c06` is done; row `c07` (the review of rounds 4 and 5) is next. The guide preview, the chapters page, is version 11 with round 5: https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF, from `work/boards/phase-3/round-5/20261114_Guide-Preview-V11.html` (D3 entry at the close). Board 2 stays at https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2.
+Phase 3 is the active phase. Round 5 is built, and every item is signed off by the data lead and read by the design director and the accessibility lead. Chapters 14 and 15 are complete. Tracker row `c06` is done; row `c07` (the review of rounds 4 and 5) is next. The guide preview, the chapters page, is version 11 with round 5: https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF, from `work/boards/phase-3/round-5/20261114_Guide-Preview-V11.html` (version id 1794635471-26ed, D3-2120). Board 2 stays at https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2.
 
 **Dustin's answers this chat** (all "as recommended")
 - DR-272: the secure key form for api.congress.gov on this chat's environment when needed. It was not needed: the research lead read the official records without a key (D3-1881).
@@ -25,7 +25,7 @@ Phase 3 is the active phase. Round 5 is built, and every item is signed off by t
 - Design director: every item read twice at twice size; six Musts across the round, all closed; Shoulds closed or carried (below).
 - Accessibility lead: the trackers, 14.143, 14.144, the palette plate and the selection guide pass at 1440, 1024, 390 and 320 px by keyboard and the accessibility tree; axe 0 on what it ran.
 
-**The closing checks** (D3 entries at the close): strict build exit 0, 0 warnings, 12,107,102 bytes, 369 rules, 679 specimens; kit `build --all --no-png` 96 of 96 PASS; V7 check 0 failures (chapter 14 193 chips, chapter 15 526, kit 115 specs and the data folder); data check 126 tables, 0 faults; `phase3_ch14_build.py --check` 99 of 99 current; quick guide check with photographs: see the D3 entry at the close.
+**The closing checks** (D3-2118, D3-2119): strict build exit 0, 0 warnings, 12,107,102 bytes, 369 rules, 679 specimens; kit `build --all --no-png` 96 of 96 PASS; V7 check 0 failures (chapter 14 193 chips, chapter 15 526, kit 115 specs and the data folder); data check 126 tables, 0 faults; `phase3_ch14_build.py --check` 99 of 99 current; quick guide check with photographs PASS at 1440 and 390 px, 735 specimens, 3,748 same-page links, 152 key path walks and 834 steps, 0 failures; the selection guide and palette tests pass; a scan of the reader text finds no em dash, private path or key name.
 
 ## 2. Next, in order
 
