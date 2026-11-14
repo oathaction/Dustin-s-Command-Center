@@ -291,7 +291,7 @@ def svg(w, h, body, scale=1, cls='mk', extra=''):
 def badge(cx, cy, r=5.5, red=True):
     """The take-part mark: an 11 px red disc with a 1 px Charcoal keyline inside its edge (Rule 05.5), cut from the
     ring by 1.5 px of the surface. red=False draws the same disc in the surface ink: a failure plate, or the yielding
-    take-part mark of Rule 11.16, which keeps its shape and its words when an error holds the view's red."""
+    take-part mark of Rule 11.18, which keeps its shape and its words when an error holds the view's red."""
     tok = abs(r - 5.5) < 1e-9
     gap = f'<circle cx="{cx:g}" cy="{cy:g}" r="{r + 1.5:g}" class="fb{" tc" if tok else ""}"/>'
     if not red:
@@ -306,7 +306,7 @@ def node(cx, cy, d, st, num=None, fs=None, red=True, tag=True):
 
     The mark sits in a group tagged data-icon and data-icon-family="status" (D2-517), with a clear square of the circle's
     own size first, so the group's box is the circle's: guide check B-3 reads 24, 26, 28 or 30 px. The take-part disc
-    sits outside that box, after the group. red=False draws the disc in ink (Rule 11.16); tag=False leaves a fault's
+    sits outside that box, after the group. red=False draws the disc in ink (Rule 11.18); tag=False leaves a fault's
     drawing in a failure plate untagged."""
     R = d / 2
     fs = fs or (14 if d >= 28 else 13)
@@ -466,7 +466,7 @@ def piece_css(ctx, surf, size, sizing='floor'):
 
 def records_css(ctx):
     """What a records request or agency rule adds to a piece: the wait in words and the dated check under the warning
-    mark (Rule 11.10), drawn in the text's ink."""
+    mark (Rule 11.12), drawn in the text's ink."""
     T = ctx.ty
     return (f'.wt{{margin-top:6px;{T("bodySmall")};line-height:1.5;text-wrap:pretty}}'
             f'.wn{{display:flex;gap:8px;align-items:flex-start;margin-top:12px;'
@@ -1144,7 +1144,7 @@ def s_11_10(ctx):
     html = records_piece(ctx, 'Two records requests, one paused and one past the agency', items, nm, ('done', 'now', 'notyet'))
     alt = ('Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. '
            + alt_rows(items, nm))
-    spec(ctx, 's-11-10-correct', html, '11.10', alt, width=360, illustrative=True)
+    spec(ctx, 's-11-12-correct', html, '11.12', alt, width=360, illustrative=True)
     nm7 = nm[:3] + ['Fee estimate'] + nm[3:]
     bad = dict(WAIT_REQUEST, states=['done', 'done', 'done', 'now', 'notyet', 'notyet', 'notyet'],
                line='The agency sent a fee estimate on April 2.', wait=None, checked=None)
@@ -1156,7 +1156,7 @@ def s_11_10(ctx):
             'px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The '
             'words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven '
             'steps.')
-    spec(ctx, 's-11-10-failure', html2, '11.10', alt2, width=360, illustrative=True)
+    spec(ctx, 's-11-12-failure', html2, '11.12', alt2, width=360, illustrative=True)
 
 
 def s_opener(ctx):
@@ -1408,7 +1408,7 @@ def build(ctx):
                 {'label': 'On a card without this mark', 'value': 'The card may end on the red ask, as the pillar cards in '
                                                                   'chapter 01 do'},
                 {'label': 'Red jobs in a view', 'value': 'One: take part now. Every take-part mark and the ask button '
-                                                         'share it. An error in the same view takes the red first (Rule 11.16)'},
+                                                         'share it. An error in the same view takes the red first (Rule 11.18)'},
             ],
             'related': ['05', '18'],
             'builders': ['Mark the disc and the ask button with <code>data-red="working"</code> and '
@@ -1605,14 +1605,14 @@ def build(ctx):
                          'Number an invented rule from 99001 up, name no agency, and label it Illustrative.'],
         },
         {
-            'id': '11.10', 'title': 'Say a wait or a later step in words, and keep the count at six.',
+            'id': '11.12', 'title': 'Say a wait or a later step in words, and keep the count at six.',
             'rule': ['A wait inside a step, such as an agency’s question to the requester, a fee estimate or an '
                      'extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still '
                      'counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, '
                      'follows the end words as a sentence with its date.',
                      'A status taken from the agency’s own tracking service, or from the Federal Register for a rule, '
                      'needs no mark. A status we piece together ourselves, such as a wait we learn of from the '
-                     'agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.15 draws every '
+                     'agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.17 draws every '
                      'warning: “Warning: Checked April 20. The agency may have acted since.”'],
             'tokens': ['oa.color.state.warning.mark.onNewsprint'],
             'why': {'text': ['The law lets an agency stop its 20 working days while it waits on the requester, once for '
@@ -1620,12 +1620,12 @@ def build(ctx):
                              'circumstances, so each wait belongs inside the step it falls in. A count that changed from one request to the next would stop readers from comparing '
                              'them. The check date tells a reader how old the status is before they rely on it.'],
                     'basis': '5 U.S.C. 552(a)(6); design judgment'},
-            'correct': {'specimen': 's-11-10-correct',
+            'correct': {'specimen': 's-11-12-correct',
                         'caption': 'Two requests at 360 px. One waits on the requester at step 3, in words, with the date '
                                    'we last checked it beside the warning mark. The other was upheld on appeal and then '
                                    'taken to court, said in a sentence after its end words.'},
-            'failure': {'specimen': 's-11-10-failure',
-                        'caption': '<strong>Fails Rule 11.10.</strong> The fee estimate becomes a seventh step, so this '
+            'failure': {'specimen': 's-11-12-failure',
+                        'caption': '<strong>Fails Rule 11.12.</strong> The fee estimate becomes a seventh step, so this '
                                    'request reads “Step 4 of 7” while every other request counts to six.'},
             'specs': [
                 {'label': 'Waits, in words', 'value': '“Waiting on you”, a fee estimate or an extension, under the step '
@@ -1647,8 +1647,8 @@ def build(ctx):
     # ---------------- groups 3 and 4: utility icons and the three marks (apply_systems_ch11_ui.py)
     group_titles = [('Trackers', [(r['id'], r['title']) for r in rules[:7]]),
                     ('Records requests and agency rules', [(r['id'], r['title']) for r in rules[7:10]]),
-                    ('Utility icons', [('11.11', None), ('11.12', None), ('11.13', None), ('11.14', None)]),
-                    ('Error, success and warning', [('11.15', None), ('11.16', None)])]
+                    ('Utility icons', [('11.13', None), ('11.14', None), ('11.15', None), ('11.16', None)]),
+                    ('Error, success and warning', [('11.17', None), ('11.18', None)])]
     ui_rules, ui_extras, ui_groups = UI.build_ui(ctx, sys.modules[__name__], [])
     ui_titles = {r['id']: r['title'] for r in ui_rules}
     group_titles = [(g, [(i, t or ui_titles[i]) for i, t in ids]) for g, ids in group_titles]
@@ -1710,7 +1710,7 @@ def build(ctx):
             'Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law '
             'School, as in force on November 9, 2026; and FOIA.gov, “Frequently Asked Questions”, run by the Justice '
             'Department’s Office of Information Policy, no page date; both retrieved November 9, 2026. The steps, the '
-            '20 working days and the waits in them, behind Rules 11.8 and 11.10.',
+            '20 working days and the waits in them, behind Rules 11.8 and 11.12.',
             # BE-S1: the sections that hold the categories, and the report's own coverage; ED 4e's form for "retrieved"
             'Source: Office of Information Policy, U.S. Department of Justice, “Fiscal Year 2024 Annual Freedom of '
             'Information Act Report”, March 6, 2025, sections V.B.(1) and VI.B, fiscal year 2024, the Justice '

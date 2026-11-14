@@ -1,5 +1,5 @@
 """Chapter 11, round 2 (systems designer, November 10, 2026): the utility icons, the error, success and warning marks,
-and the five live specimens (D2-516), as rules 11.11 to 11.16. apply_systems_ch11.py calls build_ui() and owns the
+and the five live specimens (D2-516), as rules 11.13 to 11.18. apply_systems_ch11.py calls build_ui() and owns the
 chapter file; this module holds the words, the specimens and their scripts.
 
 Sources: the accessibility audit (20261109_Stage-B-Accessibility-Audit.md, sections 1 and 2), the utility finals and their
@@ -101,7 +101,7 @@ def script(js):
     return f'<script>(function(){{var S=document.currentScript.closest("[data-specimen]");if(!S)return;{js}}})();</script>'
 
 
-# ------------------------------------------------------------------------------------------------ 11.11 the reader
+# ------------------------------------------------------------------------------------------------ 11.13 the reader
 # CD-M1: a four-page report, each page with its own heading and real lines of text at the page's own type size, so no
 # page repeats another and none is a gray box. Illustrative, like the rest of the piece.
 REPORT = 'How a county pays for its roads'
@@ -157,7 +157,7 @@ def s_reader(ctx, m):
             f'<button type="button" class="b nx" data-act="next">Next page{u("arrow")}</button></div>'
             f'<p class="why" id="rd-why" data-out="why">This is the first page.</p>'
             f'<fieldset class="zm"><legend class="zl">Page size</legend><div class="zr">'
-            + ''.join(f'<label class="ri"><input type="radio" name="s-11-11-size" value="{z}"{" checked" if z == "fit" else ""}>'
+            + ''.join(f'<label class="ri"><input type="radio" name="s-11-13-size" value="{z}"{" checked" if z == "fit" else ""}>'
                       f'<span class="rf">{u("selected-check")}<span>{w}</span></span></label>'
                       for z, w in (('fit', 'Fit width'), ('full', 'Full size')))
             + '</div></fieldset>'
@@ -176,7 +176,7 @@ function draw(){O.textContent='Page '+n+' of '+N+': '+T[n-1][0];G.textContent=n;
 off(P,n===1);off(X,n===N);W.textContent=n===1?'This is the first page.':(n===N?'This is the last page.':'');}
 P.addEventListener('click',function(){if(n>1){n--;draw();}});
 X.addEventListener('click',function(){if(n<N){n++;draw();}});
-R.querySelectorAll('input[name="s-11-11-size"]').forEach(function(b){b.addEventListener('change',function(){
+R.querySelectorAll('input[name="s-11-13-size"]').forEach(function(b){b.addEventListener('change',function(){
 if(b.checked)V.setAttribute('data-zoom',b.value);});});
 draw();''') + '</div>')
     alt = (f'A live report reader at 360 px, Illustrative. Page 1 of the {m.C.num(n_pages)}-page report {REPORT} sits in '
@@ -187,7 +187,7 @@ draw();''') + '</div>')
            'size of the page; Fit width is checked, with the selected check before its word, the word in bold and a 2 px '
            'edge. The other pages are ' + ', '.join(f'“{t}”' for t, _ in REPORT_PAGES[1:-1])
            + f' and “{REPORT_PAGES[-1][0]}”.')
-    return m.spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, interactive=True, illustrative=True,
+    return m.spec(ctx, 's-11-13-correct', html, '11.13', alt, width=360, interactive=True, illustrative=True,
                   notes='Live (D2-516). Previous page keeps focus while unavailable, with aria-disabled and its reason '
                         'through aria-describedby (G-4); the page count and title are a polite status line (A-9, CA-S1); '
                         'the page itself is readable text (CD-M1); zoom stays words (DR-154); Fit width and Full size are '
@@ -218,7 +218,7 @@ def s_reader_fail(ctx, m):
            'icons and no words: a left arrow, “1 / 4”, a right arrow, an information mark and four corners. Each button '
            'is 32 px square. A pointer hovers over the information mark, and a dark box above it reads “About this '
            'report”, the only place the button’s name appears.')
-    return m.spec(ctx, 's-11-11-failure', html, '11.11', alt, width=360, illustrative=True,
+    return m.spec(ctx, 's-11-13-failure', html, '11.13', alt, width=360, illustrative=True,
                   notes='Picture of a fault: glyph-only buttons, 32 px targets, a name shown only on hover (SC 1.4.13, '
                         '2.5.3). The information mark is drawn here as the fault and is no icon of the set (DR-154).')
 
@@ -246,7 +246,7 @@ def s_icons(ctx, m):
                         'oa-sym-u-<name>-24px and -16px (DR-161 to DR-178).')
 
 
-# ------------------------------------------------------------------------------------------------ 11.12 the library and the phone menu
+# ------------------------------------------------------------------------------------------------ 11.14 the library and the phone menu
 LABELS = 'work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json'
 # Words for drawings that joined the set in use after the editor's table: CL-075 Housing (DR-207). The editor folds
 # them into the table at the next pass; chapter 10's build reads the same file.
@@ -361,13 +361,13 @@ run();''') + '</div>')
            f'reads “{n_atlas} of {n_all} symbols”, with the first three listed by ID and name and a line that says how many '
            f'more match: “The first three are listed here, and {n_atlas - 3} more match.” When nothing matches, the '
            f'status line reads “0 of {n_all} symbols. No symbol matches. Clear the search or the filters to see more.”')
-    return m.spec(ctx, 's-11-12-correct', html, '11.12', alt, width=360, interactive=True,
+    return m.spec(ctx, 's-11-14-correct', html, '11.14', alt, width=360, interactive=True,
                   notes='Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from '
                         'chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); '
                         'the count is a polite status line (A-9), and with no match it carries its advice (F-5, D2-1157); '
                         'Clear the search is the one glyph-only control (A-4). The field is type="search" and Escape '
                         'clears it (F-9); the search landmark stays out of the stage, which holds no landmark (AX-S8), and '
-                        'Rule 11.12’s builders line names it.')
+                        'Rule 11.14’s builders line names it.')
 
 
 def s_library_fail(ctx, m):
@@ -386,7 +386,7 @@ def s_library_fail(ctx, m):
            'carry chevrons turned left and right, and below them the row Sources for this page carries the same '
            'chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in '
            'another.')
-    return m.spec(ctx, 's-11-12-failure', html, '11.12', alt, width=360, illustrative=True,
+    return m.spec(ctx, 's-11-14-failure', html, '11.14', alt, width=360, illustrative=True,
                   notes='Picture of a fault: the chevron does two jobs in one view (D2-507).')
 
 
@@ -449,7 +449,7 @@ D.querySelectorAll('a[href]').forEach(function(a){a.addEventListener('click',fun
                         'behind it is inert while it is open.')
 
 
-# ------------------------------------------------------------------------------------------------ 11.13 another site
+# ------------------------------------------------------------------------------------------------ 11.15 another site
 SOURCES_LIVE = [
     ('Nebraska Legislature,', '“Lawmaking in Nebraska”', 'https://nebraskalegislature.gov/about/lawmaking.php'),
     ('FOIA.gov,', '“Frequently Asked Questions”', 'https://www.foia.gov/faq.html'),
@@ -477,7 +477,7 @@ def s_links(ctx, m):
            'at the Legal Information Institute. After each link’s last word sits the 16 px mark for another site, an '
            'arrow leaving a box, kept on the line with that word. Each link stands 44 px tall, and a screen reader hears '
            '“(another site)” at the end of its name.')
-    return m.spec(ctx, 's-11-13-correct', html, '11.13', alt, width=360, interactive=True,
+    return m.spec(ctx, 's-11-15-correct', html, '11.15', alt, width=360, interactive=True,
                   notes='Live links to the research lead’s sources (section 5 and 7), same tab (D2-513); the 16 px mark '
                         'is the first 16 px utility icon on a page (D2-577).')
 
@@ -495,12 +495,12 @@ def s_links_fail(ctx, m):
     alt = ('Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s '
            'rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its '
            'own under the words. A note says the link opens a new tab with nothing said about it.')
-    return m.spec(ctx, 's-11-13-failure', html, '11.13', alt, width=360, illustrative=True,
+    return m.spec(ctx, 's-11-15-failure', html, '11.15', alt, width=360, illustrative=True,
                   notes='Picture of a fault: a 24 px mark inside running text, broken from its word, and a new tab with no '
                         'warning (D2-513).')
 
 
-# ------------------------------------------------------------------------------------------------ 11.14 the loop stepper
+# ------------------------------------------------------------------------------------------------ 11.16 the loop stepper
 def plural(label):
     """Whether a variable's title takes a plural verb: its head noun, the last word before any preposition, ends in a
     single s (Policy advantages for wealthy and organized interests raise; Concentration of household wealth raises)."""
@@ -617,7 +617,7 @@ def s_stepper(ctx, m):
         alt += (f' Step {weak[0]}, the one our atlas grades plausible, reads “{steps[weak[0] - 1][0]}” and ends “{PLAUSIBLE}”')
     alt += (f' Play holds each step about a quarter second a word, from {min(x[2] for x in steps) / 1000:g} to '
             f'{max(x[2] for x in steps) / 1000:g} seconds here.')
-    return m.spec(ctx, 's-11-14-correct', html, '11.14', alt, width=360, interactive=True,
+    return m.spec(ctx, 's-11-16-correct', html, '11.16', alt, width=360, interactive=True,
                   notes=f'Live (D2-516). Steps from Atlas V7’s loop {LOOP_ID} (DR-195): chain labels, signs and each '
                         'connection’s plain sentence; a plausible step takes “can” and its grade (D2-969). Play holds a '
                         'step 250 ms a word, never under 6 seconds (D2-972), and starts only on a press (E-3); unavailable '
@@ -640,15 +640,15 @@ def s_stepper_fail(ctx, m):
     alt = (f'Failure case: do not publish. The same loop stepper for Loop {LOOP_ID}, “{title}”, at 360 px. Its '
            'Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes '
            'and back, in place of the Reset icon.')
-    return m.spec(ctx, 's-11-14-failure', html, '11.14', alt, width=360,
+    return m.spec(ctx, 's-11-16-failure', html, '11.16', alt, width=360,
                   notes='Picture of a fault: a topic drawing standing for an interface action (D2-515), from the sprite '
                         '(CL-024 is among the 41 that read at 24 px, one color, and takes the switch: its fit on 1x '
                         'screens, its master from 2x).')
 
 
-# ------------------------------------------------------------------------------------------------ 11.15 the three marks
+# ------------------------------------------------------------------------------------------------ 11.17 the three marks
 def marks_css(ctx):
-    """The error, success and warning messages (Rule 11.15), in role short names (F-1, D2-1159). On Charcoal the Error
+    """The error, success and warning messages (Rule 11.17), in role short names (F-1, D2-1159). On Charcoal the Error
     Band's short name is initial, so the message sits on the ground with its 4 px red bar at 4.49 to 1 (D2-1160)."""
     T, v = ctx.ty, ctx.v
     for k in ('error.band', 'error.text', 'error.bar', 'success.mark', 'success.text', 'warning.mark', 'warning.text'):
@@ -719,7 +719,7 @@ K.textContent='';K.appendChild(F.querySelector('template[data-tpl]').content.fir
            'code with five digits.” The error then holds the red, so Remind me turns Charcoal until the fields are right, '
            'and focus moves to the first wrong field. Sent right, the success mark and “You’re signed up. We’ll email you '
            'on March 1, two days before the hearing.” appear in a status line.')
-    return m.spec(ctx, 's-11-15-correct', html, '11.15', alt, width=360, interactive=True, illustrative=True,
+    return m.spec(ctx, 's-11-17-correct', html, '11.17', alt, width=360, interactive=True, illustrative=True,
                   notes='Live (D2-516). Fields carry aria-invalid="false" until a Send finds them wrong, then "true" '
                         'and aria-describedby to their message, and "false" again once fixed, as chapter 18’s form does, '
                         'so a browser’s own check of an email address says nothing while the reader types (SC 3.3.1, 3.3.3); '
@@ -742,7 +742,7 @@ def s_form_fail(ctx, m):
     alt = ('Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under '
            'it, red text reads “Invalid” beside a red cross, the Close icon. Nothing says “Error”, which rule the entry '
            'broke or how to fix it, and the red text measures 2.96 to 1 on Newsprint.')
-    return m.spec(ctx, 's-11-15-failure', html, '11.15', alt, width=360, illustrative=True, exempt=['contrast'],
+    return m.spec(ctx, 's-11-17-failure', html, '11.17', alt, width=360, illustrative=True, exempt=['contrast'],
                   notes='Labeled failure: red text at 2.96 to 1 on Newsprint on purpose, and the cross, which means Close, '
                         'standing for an error (D2-509).')
 
@@ -771,7 +771,7 @@ def s_marks(ctx, m):
                   notes='A readable list (D2-255). The error’s red is the bar; the mark draws in ink (see notes).')
 
 
-# ------------------------------------------------------------------------------------------------ 11.16 which red yields
+# ------------------------------------------------------------------------------------------------ 11.18 which red yields
 # D2-958 (BE-M2): H.99009 takes a neutral subject, and the figure draws a reform V7 does not flag, R-32 on Variable B2,
 # with the connection it targets, L26 (B2 to C3, well supported). Labels are the editor's table's (D2-751). The three
 # marks, their order and the yielding stay as built.
@@ -844,7 +844,7 @@ def s_yield(ctx, m):
            f'an email field holds an error: a red bar at its left and a message on the pale Error Band, “Error: '
            f'{EMAIL_ERR.replace(chr(160), " ")}” The error is the only red in the view, and the Remind me button is '
            f'Charcoal.')
-    return m.spec(ctx, 's-11-16-correct', html, '11.16', alt, width=360, illustrative=True,
+    return m.spec(ctx, 's-11-18-correct', html, '11.18', alt, width=360, illustrative=True,
                   notes='Rule 05.3’s order: an error first, then the step a reader can take, then where a reform acts. The '
                         'take-part disc and the marker yield to ink with their shapes and words (C-4). The marker follows '
                         'System 1’s target: the variable’s outline at 3 px. The bill is invented and labeled beside its '
@@ -860,13 +860,13 @@ def s_yield_fail(ctx, m):
            f'the take-part disc on step 2 and the Remind me button, the outline of {YIELD_PILLS[0]} where reform {rid} '
            'acts, and the error bar on the email field. The eye has three reds to choose from, and the error that blocks '
            'the reader looks no more urgent than the rest.')
-    return m.spec(ctx, 's-11-16-failure', html, '11.16', alt, width=360, illustrative=True, exempt=['red'],
+    return m.spec(ctx, 's-11-18-failure', html, '11.18', alt, width=360, illustrative=True, exempt=['red'],
                   notes='Labeled failure: three working-red jobs in one view on purpose (Rule 05.3).')
 
 
 # ------------------------------------------------------------------------------------------------ rules
 def build_ui(ctx, m, rule_titles):
-    """Specimens and rules 11.11 to 11.16, the groups they open, and their extras."""
+    """Specimens and rules 11.13 to 11.18, the groups they open, and their extras."""
     s_reader(ctx, m)
     s_reader_fail(ctx, m)
     s_icons(ctx, m)
@@ -895,7 +895,7 @@ def build_ui(ctx, m, rule_titles):
              'work/build/assets/utility/20261110_Utility-Icons-Manifest.json']
     rules = [
         {
-            'id': '11.11', 'title': 'Set each utility icon beside its word.',
+            'id': '11.13', 'title': 'Set each utility icon beside its word.',
             'rule': ['A utility icon names an action on a page, such as Close, Download or Filter. It sits beside its '
                      'word: 24 px wide beside the word of a button or link, and 16 px wide only inside a line of text or a '
                      'table heading, where it comes from its own 16 px drawing. Three icons sit beside other words that '
@@ -913,13 +913,13 @@ def build_ui(ctx, m, rule_titles):
                              'control’s name starts with the words a reader sees, which voice control needs. A name that '
                              'shows only on hover never reaches a phone, a keyboard or a magnified screen.'],
                     'basis': 'WCAG 2.2 SC 2.5.3 and 1.4.13'},
-            'correct': {'specimen': 's-11-11-correct',
+            'correct': {'specimen': 's-11-13-correct',
                         'caption': 'A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every '
                                    'control stands 44 px tall, Previous page says why it is unavailable on the first page, '
                                    'and the choice of the page’s size stays in words, with the check, bold words and 2 px '
                                    'edge of a checked choice (Rule 17.10).'},
-            'failure': {'specimen': 's-11-11-failure',
-                        'caption': '<strong>Fails Rule 11.11.</strong> The toolbar shows icons with no words, each 32 px '
+            'failure': {'specimen': 's-11-13-failure',
+                        'caption': '<strong>Fails Rule 11.13.</strong> The toolbar shows icons with no words, each 32 px '
                                    'square, and its information mark gives its name only in a box that appears on hover.'},
             'specs': [
                 {'label': 'Beside a control’s word', 'value': 'The 24 px drawing, 2 px line, 8 px from the word',
@@ -944,7 +944,7 @@ def build_ui(ctx, m, rule_titles):
                          '<code>aria-describedby</code> to words that say why.'],
         },
         {
-            'id': '11.12', 'title': 'Give each drawing one meaning.',
+            'id': '11.14', 'title': 'Give each drawing one meaning.',
             'rule': ['The arrow means Next. Mirrored, it means Previous, and turned up or down it shows the order a column '
                      'is sorted in. The chevron opens and closes a row: it points down while the row is closed and up '
                      'while it is open. The cross closes, and an error is a circle holding an exclamation mark. Copy’s two '
@@ -956,12 +956,12 @@ def build_ui(ctx, m, rule_titles):
                              'reader could not tell a row that opens from a page that turns, and a Copy icon that turned '
                              'into a check would look like a choice someone had made.'],
                     'basis': 'WCAG 2.2 SC 3.2.4; design judgment'},
-            'correct': {'specimen': 's-11-12-correct',
+            'correct': {'specimen': 's-11-14-correct',
                         'caption': 'The symbol library’s search and filter bar, live at 360 px. The funnel opens the '
                                    'filters, the chevron shows they are open, a check marks the filter that is on, and the '
                                    'cross clears the search.'},
-            'failure': {'specimen': 's-11-12-failure',
-                        'caption': '<strong>Fails Rule 11.12.</strong> The chevron turns the page in the toolbar and opens '
+            'failure': {'specimen': 's-11-14-failure',
+                        'caption': '<strong>Fails Rule 11.14.</strong> The chevron turns the page in the toolbar and opens '
                                    'the sources below it, so one drawing does two jobs in one view.'},
             'specs': [
                 {'label': 'Arrow', 'value': 'Next as drawn; Previous mirrored; the sort order in use turned up or down'},
@@ -990,7 +990,7 @@ def build_ui(ctx, m, rule_titles):
                          'Rule 18.15 is the search’s home, with every state and its code to copy.'],
         },
         {
-            'id': '11.13', 'title': 'Mark a link to another site, and open it in the same tab.',
+            'id': '11.15', 'title': 'Mark a link to another site, and open it in the same tab.',
             'rule': ['A link that leaves our site opens in the same tab. Its mark, an arrow leaving a box, follows the '
                      'link’s last word at 16 px and stays on the line with that word, and the words “(another site)” end '
                      'the link’s name for screen readers. A link that must open a new tab says so instead: “(opens in a '
@@ -1000,11 +1000,11 @@ def build_ui(ctx, m, rule_titles):
                              'unannounced takes away the Back button and can strand a screen reader or magnifier user on a '
                              'page they did not choose.'],
                     'basis': 'WCAG 2.2 SC 3.2.5; design judgment'},
-            'correct': {'specimen': 's-11-13-correct',
+            'correct': {'specimen': 's-11-15-correct',
                         'caption': 'Three sources, live at 360 px. Each link opens in the same tab, its mark follows its '
                                    'last word, and each stands 44 px tall in the list.'},
-            'failure': {'specimen': 's-11-13-failure',
-                        'caption': '<strong>Fails Rule 11.13.</strong> The link opens a new tab and says nothing about it, '
+            'failure': {'specimen': 's-11-15-failure',
+                        'caption': '<strong>Fails Rule 11.15.</strong> The link opens a new tab and says nothing about it, '
                                    'and its 24 px mark has broken from its word onto a line of its own.'},
             'specs': [
                 {'label': 'Mark', 'value': 'Another site, 16 px, after the last word, in a span that does not wrap',
@@ -1020,7 +1020,7 @@ def build_ui(ctx, m, rule_titles):
                          'site)”. Leave out <code>target="_blank"</code>.'],
         },
         {
-            'id': '11.14', 'title': 'Keep topic and atlas symbols out of buttons.',
+            'id': '11.16', 'title': 'Keep topic and atlas symbols out of buttons.',
             'rule': ['Draw each action on a page with its utility icon. A topic or atlas symbol names a subject, such as a '
                      'feedback loop, public records or a vote, and never stands for an action. Reset is the utility '
                      'icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its '
@@ -1029,13 +1029,13 @@ def build_ui(ctx, m, rule_titles):
                              'reader two meanings for one drawing. CL-024, Feedback loop, looks most like a refresh sign, '
                              'and a loop stepper is where a builder would reach for one.'],
                     'basis': 'Design judgment; Rule 10.1'},
-            'correct': {'specimen': 's-11-14-correct',
+            'correct': {'specimen': 's-11-16-correct',
                         'caption': f'A stepper for Loop {LOOP_ID} from our systems atlas, “{loop_title}”, live at 360 px. '
                                    'Play, Reset the '
                                    'loop, Previous step and Next step each carry a utility icon beside the word, and the '
                                    'unavailable ones say why. The line under the title gives the loop’s grade, and the least certain step says so in its words.'},
-            'failure': {'specimen': 's-11-14-failure',
-                        'caption': '<strong>Fails Rule 11.14.</strong> CL-024, the feedback loop drawing, stands in for '
+            'failure': {'specimen': 's-11-16-failure',
+                        'caption': '<strong>Fails Rule 11.16.</strong> CL-024, the feedback loop drawing, stands in for '
                                    'Reset. A reader learns it as a button here and meets it next as the subject of a story '
                                    'about feedback loops.'},
             'specs': [
@@ -1056,7 +1056,7 @@ def build_ui(ctx, m, rule_titles):
                          'leave chapter 10’s drawings to the subjects they name.'],
         },
         {
-            'id': '11.15', 'title': 'Give each error, success and warning its mark and its words.',
+            'id': '11.17', 'title': 'Give each error, success and warning its mark and its words.',
             'rule': ['An error, a success and a warning each take their mark before their words. The error mark is a '
                      'circle holding an exclamation mark, in the text’s ink, on the pale Error Band with a 4 px red bar, '
                      'and its words start “Error:” and say how to fix it. The success mark is a check leaving an open '
@@ -1072,12 +1072,12 @@ def build_ui(ctx, m, rule_titles):
                              f'under the 3 to 1 a mark needs; in ink it measures {ink_band} to 1, and the red bar carries '
                              f'the error’s claim on the view’s red. Verdigris measures {verd} to 1 on Newsprint.'],
                     'basis': 'WCAG 2.2 SC 1.4.1, 1.4.11, 3.3.1 and 4.1.3'},
-            'correct': {'specimen': 's-11-15-correct',
+            'correct': {'specimen': 's-11-17-correct',
                         'caption': 'A sign-up form, live at 360 px. Send it with a field wrong to see the error mark, its '
                                    'words and the red bar, and the red button step down to Charcoal; send it right to see '
                                    'the success mark.'},
-            'failure': {'specimen': 's-11-15-failure',
-                        'caption': '<strong>Fails Rule 11.15.</strong> The message is red text beside a cross, so it '
+            'failure': {'specimen': 's-11-17-failure',
+                        'caption': '<strong>Fails Rule 11.17.</strong> The message is red text beside a cross, so it '
                                    'leans on color alone, against WCAG 2.2 success criterion 1.4.1. The cross means Close, '
                                    'the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry.'},
             'specs': [
@@ -1107,7 +1107,7 @@ def build_ui(ctx, m, rule_titles):
                          'bar only.'],
         },
         {
-            'id': '11.16', 'title': 'Give an error the red when it meets the other red jobs.',
+            'id': '11.18', 'title': 'Give an error the red when it meets the other red jobs.',
             'rule': ['Rule 05.3 gives each view one working red, in this order: an error the reader must fix, then the '
                      'step a reader can take now, then the one point the headline names, which in a systems figure is '
                      'where a reform acts. So when the three meet in one view, the error keeps the red. The take-part '
@@ -1122,12 +1122,12 @@ def build_ui(ctx, m, rule_titles):
                              'more than a point we want to make. Each mark keeps its shape and its words when it yields, '
                              'so nothing it says is lost.'],
                     'basis': 'Rule 05.3; WCAG 2.2 SC 1.4.1'},
-            'correct': {'specimen': 's-11-16-correct',
+            'correct': {'specimen': 's-11-18-correct',
                         'caption': f'One view at 360 px. The email field’s error holds the red. The take-part disc on step '
                                    f'2 and the heavier outline where reform {YIELD_REFORM[0]}, {YIELD_REFORM[1]}, acts '
                                    f'stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed.'},
-            'failure': {'specimen': 's-11-16-failure',
-                        'caption': '<strong>Fails Rules 11.16 and 05.3.</strong> The error, the take-part mark and the '
+            'failure': {'specimen': 's-11-18-failure',
+                        'caption': '<strong>Fails Rules 11.18 and 05.3.</strong> The error, the take-part mark and the '
                                    'intervention marker all take red, so the error that blocks the reader looks no more '
                                    'urgent than the rest.'},
             'specs': [
@@ -1149,18 +1149,18 @@ def build_ui(ctx, m, rule_titles):
         },
     ]
     extras = [
-        {'after_rule': '11.11', 'specimen': 's-11-icons', 'label': 'The 18 utility icons',
+        {'after_rule': '11.13', 'specimen': 's-11-icons', 'label': 'The 18 utility icons',
          'caption': 'Every utility icon at its two sizes, with the word that goes beside it.'},
-        {'after_rule': '11.12', 'specimen': 's-11-menu', 'label': 'A phone menu, live at 360 px',
+        {'after_rule': '11.14', 'specimen': 's-11-menu', 'label': 'A phone menu, live at 360 px',
          'caption': 'Menu opens the chapter’s contents over the page and holds focus until Close or the Escape key shuts '
                     'it, and focus then returns to Menu. Each row’s chevron opens its list of rules.'},
-        {'after_rule': '11.15', 'specimen': 's-11-marks', 'label': 'The three marks in their messages',
+        {'after_rule': '11.17', 'specimen': 's-11-marks', 'label': 'The three marks in their messages',
          'caption': 'Error, success and warning at true size, each with its words.'},
     ]
     groups = [
-        {'before_rule': '11.11', 'number': 3, 'title': 'Utility icons',
+        {'before_rule': '11.13', 'number': 3, 'title': 'Utility icons',
          'line': 'A utility icon names an action on a page, such as Close, Download or Filter, beside the words that say it.'},
-        {'before_rule': '11.15', 'number': 4, 'title': 'Error, success and warning',
+        {'before_rule': '11.17', 'number': 4, 'title': 'Error, success and warning',
          'line': 'Three marks give a message its shape, and the words beside them say what happened and what to do.'},
     ]
     ctx.fig('focus ring on Newsprint', ring, 'oa.color.focus.ring.onNewsprint against oa.color.surface.newsprint')

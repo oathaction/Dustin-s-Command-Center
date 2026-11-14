@@ -99,7 +99,7 @@ def specimens(ctx, rows, v7, figs):
 
     def chain_svg(mode, W=552):
         """mode 'red': the reform's targets in Pillar Red at the selected weight, with the kit's Charcoal keyline on
-        Newsprint; 'ink': the same marks yielded to ink (Rule 11.16); 'problem': the failure, red on the problem."""
+        Newsprint; 'ink': the same marks yielded to ink (Rule 11.18); 'problem': the failure, red on the problem."""
         pw, cy = 150, 56
         xs = [2 + pw / 2, W - 2 - pw / 2]
         out, h = [], []
@@ -159,7 +159,7 @@ def specimens(ctx, rows, v7, figs):
          width=600, notes='Marks, pills, tags, verbs and widths from System 1 (DR-36): targets at the selected weight '
                           '(4 px wires, 3 px pills), the lit marks at the 6 px sizes, and atlas-kit.css\'s 1 px Charcoal '
                           'keyline on a red wire on Newsprint. Each variable prints its own title from the atlas (DR-265, DR-267). The second '
-                          'copy is Rule 11.16\'s yield.')
+                          'copy is Rule 11.18\'s yield.')
     fail_html = (f'{band}<div class="pad"><p class="sec">Where the problem is</p>{chain_svg("problem")}'
                  f'<p class="nt">Red marks the problem: primaries that settle the seat before November.</p></div>')
     spec('s-12-marker-failure', f'<style>{band_css}{css}</style>{fail_html}', '12.5',
@@ -318,7 +318,7 @@ def specimens(ctx, rows, v7, figs):
          f'Failure case: do not publish. The Illustrative atlas view header, with the locator’s current box, '
          f'{lab_parts["C"]}, filled Pillar Red.', width=360, illustrative=True, exempt=['red'],
          notes='Labeled failure: the locator spends the view\'s red on "you are here", which takes it from the reform '
-               'target, the error or the ask (Rule 05.3, Rule 11.16).')
+               'target, the error or the ask (Rule 05.3, Rule 11.18).')
 
     # ---------------------------------------------------------------- 12.8 the layer diagram (the one exploded view)
     layers = [(k_, v) for k_, v in v7['layers'].items()]
@@ -474,7 +474,7 @@ def chapter(ctx, figs, existing):
             'a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it '
             'acts where the marks turn red.',
             'The marker is the view’s one working red. When an error or a step the reader can take now shares the view, '
-            'the marker yields as Rule 11.16 sets out: its marks stay heavier, in ink, and the note still names the '
+            'the marker yields as Rule 11.18 sets out: its marks stay heavier, in ink, and the note still names the '
             'reform.'],
         'tokens': ['oa.color.data.emphasisRed.onNewsprint', 'oa.color.data.emphasis.onNewsprint',
                    'oa.color.graphic.essential.onNewsprint'],
@@ -497,7 +497,7 @@ def chapter(ctx, figs, existing):
             {'label': 'Edge on Newsprint', 'value': '1 px Charcoal on each side of a red connection, as a 6 px case under '
                                                     'the 4 px line', 'token': 'oa.color.graphic.essential.onNewsprint'},
             {'label': 'Note', 'value': '“Reform R-01, …, acts where the marks turn red.”'},
-            {'label': 'Yielded', 'value': 'The same weights in ink, with the note (Rule 11.16)'},
+            {'label': 'Yielded', 'value': 'The same weights in ink, with the note (Rule 11.18)'},
         ],
         'files': ['work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py',
                   'work/boards/phase-2/atlas-concepts/shared/atlas-kit.css'],

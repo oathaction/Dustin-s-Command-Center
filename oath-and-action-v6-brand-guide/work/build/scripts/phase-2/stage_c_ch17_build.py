@@ -530,7 +530,7 @@ def player(pid, *, kicker, title, drawing, below='', words, frames, timeline, mo
     """One motion player. static=True draws the same parts as a picture (no controls, no script, no data-oa-motion),
     with numbered badges for the anatomy plate of Rule 17.3, numbered top to bottom (CD-S1). sub is a line under the
     title, such as a loop's evidence grade. reset is the object Reset names, such as "the bill", so a screen reader
-    that lists the page's buttons hears "Reset the bill" and never a bare Reset (Rule 11.14, DT-S8)."""
+    that lists the page's buttons hears "Reset the bill" and never a bare Reset (Rule 11.16, DT-S8)."""
     wid = f'{pid}-why'
     play_icons = uicon('play') + uicon('pause').replace('<svg ', '<svg hidden ', 1)
 
@@ -1621,7 +1621,7 @@ def build_chapter():
             'A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or '
             'the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the '
             'whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it resets, '
-            'such as “Reset the bill” (Rule 11.14), takes either kind back to where it rests, and at rest it is '
+            'such as “Reset the bill” (Rule 11.16), takes either kind back to where it rests, and at rest it is '
             'unavailable and says why.',
             'Beside every player sits its still view: the first and last frames at true size, each with its time and the '
             'words for what it shows, then each step of the motion in order. A status line says the same words when the '
@@ -1804,7 +1804,7 @@ def build_chapter():
             'for S.99002.” <span class="illus">Illustrative</span>, and a still drawing of the lines the data will sit on, with no marks on them yet. The words '
             'sit in a status line, so a screen reader hears them once. Nothing moves while the region waits.',
             'The data replaces the drawing and the words together. When the data fails to arrive, the region shows the '
-            'error state with what failed and the fix (Rule 11.15).'],
+            'error state with what failed and the fix (Rule 11.17).'],
         'tokens': ['oa.color.state.loading.text.onNewsprint', 'oa.color.state.loading.mark.onNewsprint'],
         'why': {'text': [
             'A pulse repeats for as long as the wait lasts, which puts it under WCAG 2.2 success criterion 2.2.2 Pause, '
@@ -1826,7 +1826,7 @@ def build_chapter():
              'token': 'oa.color.state.loading.mark.onNewsprint'},
             {'label': 'On Charcoal', 'value': f'Dim Newsprint words and drawing, {F["load_c"]} to 1', 'token': 'oa.color.state.loading.mark.onCharcoal'},
             {'label': 'Motion', 'value': 'None, with or without reduced motion'},
-            {'label': 'When it fails', 'value': 'The error state, with what failed and the fix (Rule 11.15)'},
+            {'label': 'When it fails', 'value': 'The error state, with what failed and the fix (Rule 11.17)'},
         ],
         'related': ['11', '18'],
         'builders': [
@@ -2037,7 +2037,7 @@ def build_chapter():
             f'the count, so a screen reader hears them together: “0 of {N_LIB} symbols. No symbol matches. Clear the search or '
             'the filters to see more.”',
             'An empty region names no fault, since nothing failed. When the data fails to arrive, the region shows the '
-            'error state instead (Rule 11.15).'],
+            'error state instead (Rule 11.17).'],
         'tokens': ['oa.color.state.empty.text.onNewsprint', 'oa.color.state.empty.edge.onNewsprint'],
         'why': {'text': [
             'WCAG 2.2 success criterion 4.1.3 Status Messages asks that a result such as a count reach a screen reader '

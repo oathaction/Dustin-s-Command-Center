@@ -115,7 +115,7 @@ def phone(ctx, variant='plain'):
                   f'.ask.pri{{background:{ctx.v("oa.component.button.primary.fill.onNewsprint")};'
                   f'color:{ctx.v("oa.component.button.primary.label.onNewsprint")};'
                   f'border-color:{ctx.v("oa.component.button.primary.fill.onNewsprint")}}}')
-        # The error mark as Rule 11.15 builds it (D2-880, D2-959): chapter 11's U-error from the sprite, drawn in the
+        # The error mark as Rule 11.17 builds it (D2-880, D2-959): chapter 11's U-error from the sprite, drawn in the
         # message's ink (currentColor), with the working red held by the 4 px bar on the field and the message. Both
         # bars are borders, which forced colors keeps, never inset shadows, which it drops (D2-1158).
         glyph = ('<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" data-icon="U-error" '
@@ -489,7 +489,7 @@ def s_05_3(ctx):
              'dark ink. Below it the Sign up to speak button is Charcoal with a White label.', width=360,
              illustrative=True,
              notes='The error takes the working red (precedence 1), held by the 4 px bar; the mark is chapter 11\'s U-error '
-                   'in the text\'s ink, as Rule 11.15 is built (D2-959). The ask steps down to the primary button.')
+                   'in the text\'s ink, as Rule 11.17 is built (D2-959). The ask steps down to the primary button.')
 
 
 def s_05_ask(ctx):
@@ -1124,7 +1124,7 @@ def build(ctx):
                                'caption': 'When the reader’s entry has an error, the error takes the view’s red and the ask '
                                           'steps down to the Charcoal primary button until the reader fixes it. The red is the '
                                           '4 px bar beside the field and the message, and the error mark draws in the text’s '
-                                          f'ink (Rule 11.15). The message sits on the Error Band, where Charcoal text measures {eb_c} to 1.'},
+                                          f'ink (Rule 11.17). The message sits on the Error Band, where Charcoal text measures {eb_c} to 1.'},
                 'specs': [
                     {'label': 'Working red, first claim', 'value': 'An error the reader must fix, shown by the 4 px red bar beside it', 'token': 'oa.color.state.error.bar.onNewsprint'},
                     {'label': 'Working red, second claim', 'value': 'The step a reader can take now', 'token': 'oa.color.action.ask.fill.onNewsprint'},

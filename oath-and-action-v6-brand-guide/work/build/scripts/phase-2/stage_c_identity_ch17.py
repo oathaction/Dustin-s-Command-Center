@@ -374,7 +374,7 @@ def player(pid, *, title, kicker, grounds, words, frames, timeline, tracks, grou
     ctl = (f'<div class="oai-mv-cl" role="group" aria-label="{E(group)}">'
            f'<button type="button" class="oai-mv-b" data-oa-play="" data-oa-pause="">{icons}<span data-word="">Play</span></button>'
            f'<button type="button" class="oai-mv-b" data-oa-reset="" aria-disabled="true" aria-describedby="{wid}">'
-           f'{uicon("reset")}<span>Reset {E(obj)}</span></button></div>')     # Rule 11.14: Reset names its object (DT-S8)
+           f'{uicon("reset")}<span>Reset {E(obj)}</span></button></div>')     # Rule 11.16: Reset names its object (DT-S8)
     sl = '<label class="oai-mv-sl"><input type="checkbox" data-slow=""><span>Slow motion, one tenth speed</span></label>'
     whyp = f'<p class="oai-mv-why" id="{wid}" data-why="">{E(WHY["rest"])}</p>'
     out = f'<p class="oai-mv-out" role="status" data-out="">{E(words["rest"])}</p>'
