@@ -157,6 +157,15 @@
     return spec && spec.typography && text_col(rc) ? K.typeset(spec, t) : t;
   }
   K.cell_text = function (col, r, spec) {
+    // round 5 (the accessibility lead's 4.3, the complex examples maker's request 3): format "margin" prints where a value
+    // stands against a margin, in the column's own words ({below, above, within}): past it below, past it above, or inside
+    // it (a value equal to the margin is inside). The margin is the column's "margin", else the spec's labels.margin.value.
+    // The column is never read back: its field prints in its own column too
+    if (col.format === 'margin') {
+      var mv = Math.abs(col.margin !== undefined ? +col.margin : +((((spec || {}).labels || {}).margin || {}).value)), mx = r[col.field], mw = col.words || {};
+      if (mx === null || mx === undefined || mx === '' || !isFinite(+mx) || !isFinite(mv)) return col.empty || '';
+      return +mx > mv ? (mw.above || '') : +mx < -mv ? (mw.below || '') : (mw.within || '');
+    }
     if (spec && spec.typography && text_col(col)) return K.typeset(spec, K.cell_text(col, r));
     var v = r[col.field];
     // a column's "empty" word prints where a cell has no value, so a reader can tell none from missing (access S4)
@@ -346,7 +355,7 @@
     var t = K.table_rows(spec, rows), head = '', body = '';
     var num_col = function (col) { return /^(integer|number|percent|fraction-percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands|dollars|signed-dollars|billions|millions)/.test(String(col.format || '')); };
     var dv = function (raw, html, col) {
-      if (carried[col.field]) return '';
+      if (carried[col.field] || col.format === 'margin') return '';   // round 5: a margin column is never read back
       var back = K.unformat(visible_text(html), col);
       // a text cell set by the spec's typography reads back as the printed words, which draw the same (D3-519)
       var want = spec.typography && text_col(col) && raw !== null && raw !== undefined ? K.typeset(spec, raw) : raw;

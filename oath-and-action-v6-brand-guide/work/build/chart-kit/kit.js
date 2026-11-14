@@ -1173,7 +1173,8 @@
       var cols = tb.columns || [];
       Array.prototype.forEach.call(table.querySelectorAll('tbody tr'), function (tr) {
         var o = {}, cells = tr.children;
-        cols.forEach(function (col, i) { o[col.field] = cell_raw(cells[i], col); });
+        // round 5: a margin column (format "margin") prints words about a field another column prints; it is not read back
+        cols.forEach(function (col, i) { if (col.format !== 'margin') o[col.field] = cell_raw(cells[i], col); });
         out.push(o);
       });
     }
