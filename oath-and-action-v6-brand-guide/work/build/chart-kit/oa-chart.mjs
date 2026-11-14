@@ -1607,6 +1607,23 @@ async function self_test() {
     console.log(`${ok ? 'pass' : 'FAIL'} S96's named words stacked clear of the band's edges at 720 px, and moved onto the lower edge (halo and all) the guard fails them`);
     if (!ok) bad++;
   }
+  // round 5 (the complex examples maker's request 6): parity reads each drawing's own id prefix exactly, so a spec id with
+  // digit groups (s-14-142-failure) compares equal with the page's prefix, and a real difference still fails
+  {
+    const fp = path.join(ROOT, 'work/build/guide/specimens/s-14-142-failure.chart.json');
+    const sf = JSON.parse(fs.readFileSync(fp, 'utf8')), cf = C.check_spec(K, sf, {});
+    const node = K.draw(sf, cf.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(cf) }).svg;
+    const pid = `oac-${sf.id.toLowerCase()}-newsprint-720`;
+    const page = K.draw(sf, cf.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(cf), uid: pid }).svg;
+    const same = parity_norm(page, pid) === parity_norm(node, `oac-${sf.id.toLowerCase()}-720`);
+    const planted = page.replace(/(<rect\b[^>]*\bwidth=")([\d.]+)"/, (m, a, w) => a + (+w + 3) + '"');
+    const caught = planted !== page && parity_norm(planted, pid) !== parity_norm(node, `oac-${sf.id.toLowerCase()}-720`);
+    const old_norm = (x) => x.replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2');
+    const was_false = old_norm(page) !== old_norm(node);
+    const ok = same && caught;
+    console.log(`${ok ? 'pass' : 'FAIL'} parity reads a drawing's own id prefix: s-14-142-failure's page and Node drawings compare equal${was_false ? ' (the old pattern failed them)' : ''}, and a rect 3 px wider on the page fails`);
+    if (!ok) bad++;
+  }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);
