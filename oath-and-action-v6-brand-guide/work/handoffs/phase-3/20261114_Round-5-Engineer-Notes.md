@@ -101,6 +101,15 @@ For the selection guide maker. The data lead's ruling (a) sets the order within 
 
 ## Routine calls
 
+- D3-xxx | The palette plate runs round 0's own `measure_set` on today's tokens, imported read-only with its proposals cleared, and checks its own reading of every token against it | Ruling b asks for board 1's numbers; importing the function, not retyping it, keeps one method, and clearing the proposals makes the plate follow the token release
+- D3-xxx | The palette plate rounds every ratio down to two places | The accessibility lead's 6.2: no ratio rounds up across 3 or 4.5; ruling b's "no ratio is rounded up to pass" agrees, and a few print one hundredth under board 1's half-up figures (Requests, data lead)
+- D3-xxx | The palette plate's swatches use the kit's own classes inside each panel's surface class | The plate shows exactly what a chart paints; the classes' forced-colors rules are scoped to `.oac-svg`, which the swatches do not carry, so `forced-color-adjust: none` keeps their true colors
+- D3-xxx | The color-vision rows apply the Machado matrices as SVG filters in linear RGB over the same swatches | No simulated color is written as a value (the build's literal color check), and round 0's captures used the same filters, which work in linear RGB by default
+- D3-xxx | Prussian gets one line of words and no swatches | Ruling b: swatches on Prussian would read as approval; the four group inks measure 1.00 to 2.79 to 1 there
+- D3-xxx | S96's named words take the first clear place among the spec's, left, right and above, and stay out of the drawing where none is clear, with a build fault | A label forced into a crowded place overlaps or runs off the drawing; the fault tells the maker to hide it at that width and print it in the phone notes, as S14's in-plot note does
+- D3-xxx | S96's margin label is set in the label ink at 600 in the band below zero at the plot's left | The window's first months hold no loss there, so the words cross no column; the secondary ink would sit under 4.5 to 1 on the band's step
+- D3-xxx | S95's second crop is named by its own size line ("Drawn at 1080 by 1080 px"), and no crop on the page carries the card's title or alt as a description | The accessibility lead's request 1; the size line already prints those words, so no new string; the Node drawings and exports keep their title and desc
+- D3-xxx | The build weighs round 5's extras and group 18's rules apart and takes each one's part out of the reserve as it lands | DR-271 asks every new plate's bytes reported; counting the palette plate with Rules 14.1 to 14.14 overstated their measure by 68 KB
 - D3-xxx | Rules 14.142 to 14.144 sit in the plan's `chapter_rules` as rules with plates, with `"failure_required": false` | R5-4 makes each a rule with its lesson as its title and a failure plate only where the lesson has a common misreading; DR-240's two plates stay required for 14.1 to 14.14
 - D3-xxx | Complex example 1's correct plate is the kit's figure `s-14-s96`, its fragment written by the chapter generator from the plan's spec ID | R1-C3's one placement path: the share and tier gates key on `s-14-sNN`, and S14 keeps its own fragment at Rule 14.29
 - D3-xxx | S97 and S98 are reserved in the plan for a kit figure inside Rules 14.143 and 14.144's plates, checked and logged only once a file exists | R5-1 asks for the three rules' spec IDs; examples 2 and 3 run on live components and may hold no kit figure, and a reserved number never moves
@@ -119,6 +128,16 @@ For the selection guide maker. The data lead's ruling (a) sets the order within 
 - **Component engineer (shell, low):** `setRule` in `guide-shell.js` reads `.rule, .closer`; please read `[data-oa-contents]` too, so the local contents marks "Choose a chart" and the palette specification's line while a reader is in them. Until then each line is a plain link and the rule before it stays marked.
 
 ## Weight
+
+Each strict build of the guide to scratch (`guide_build.py --strict`), read from its report. Under DR-271 every figure is reported; only the page's 16,000,000 bytes stops a build. From 02:13 the build weighs round 5's extras and each group 18 rule apart (`guide_charts.py`: `chapter_14_round_5` in the report and a note in the log), takes each one's part out of the reserve once it is placed (50,000 an extra, 30,000 a complex example), keeps the extras out of the measure of Rules 14.1 to 14.14, and counts S96 to S98 apart from the 97 entry plates.
+
+| Build (UTC) | Exit | Page | Chapter 14 | Chapter 15 | Chapter 11 | Projection (15,500,000) | Round 5 plates as placed, with frames | Share per plate |
+|---|---|---|---|---|---|---|---|---|
+| 02:02, the palette plate's first draft, before the weights split | 0 | 11,661,072 | (in the page) | | | | the palette plate counted with Rules 14.1 to 14.14 (245,746 against 212,288) | 7,106 for 2 |
+| 02:13, the palette plate final, S96 landed, Rules 14.142 to 14.144 placed by their maker | **1**: S96's named words at 326 px (maker's spec, since set) | 11,857,793 | 1,909,685 (with the kit 2,605,138 against the 2,803,941 figure) | 479,818 | 499,958 | 15,116,778 | `s-14-palette-spec` 68,223; Rule 14.142 29,345; Rule 14.143 43,549; Rule 14.144 47,014 | **−2,332 for 2** (reported, DR-271) |
+
+- The chart kit part on the page: 562,336 bytes as the renderer, 3,183 more than round 4's close, almost all the S96 form keys (named columns' placement and the margin band).
+- The share per plate has run out: chapter 14 with the kit sits 198,803 bytes under its 2,803,941 figure, and the reserve still holds the selection guide's 50,000 and the sketches' words. A reported figure, never a stop (DR-271); the page and the projection hold.
 
 ## Tested
 

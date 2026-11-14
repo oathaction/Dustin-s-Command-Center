@@ -4,7 +4,12 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the tr
 
 ## Status
 
-02:12 UTC. **R5-8: done and proved (01:49).** Token source edit landed at **01:46 UTC** (three strings in `work/build/tokens/src/oa-tokens.src.mjs`, lines 139, 398 and 599); the engineer owns the rebuild. **Trackers: drafted and built, under the research lead's facts (01:50) and the data lead's ruling (f) (read 02:08); the editor's words pass and my captures are next.** Rules 11.10 (ballot measure) and 11.11 (court case) are in `11-icons.json` with their correct and failure plates and one step table each; group 2 now runs 11.8 to 11.12 under the editor's title and line. Strict build `guide2.html` (02:10): exit 1 on one warning that is chapter 14's (`s-14-s96`), none of chapter 11's; 367 rules; chapter 11 at 499,958 bytes. **For the systems designer (Rule 15.23):** the step names are final unless the editor changes them, and I will say so here; read them from `BALLOT_STEPS` and `COURT_STEPS` in `apply_systems_ch11.py` or from the two step tables, `s-11-ballot-steps` and `s-11-court-steps`.
+02:16 UTC. **For the systems designer: the trackers have landed (Rule 15.23 can start).** Rules 11.10 (ballot measure) and 11.11 (court case) are built in `11-icons.json`, with their correct and failure plates and one step table each. Their six steps, in order, as built under the research lead's facts and the data lead's ruling (f):
+- **11.10, a state ballot measure (citizen initiative):** 1 Filed, 2 Title and summary, 3 Signatures, 4 Legislature (a slash where the initiative is direct), 5 On the ballot, 6 Vote (current until the count is certified).
+- **11.11, a federal civil case:** 1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme Court petition (a denied petition ends here on a square), 6 Supreme Court ruling.
+Read them from `BALLOT_STEPS` and `COURT_STEPS` in `apply_systems_ch11.py` (each row: name, what happens, the law) or from the plates `s-11-ballot-steps` and `s-11-court-steps`. The names stand unless the editor's words pass changes them; I will say so on this line if it does.
+
+R5-8: done and proved (01:49). Token source edit landed at **01:46 UTC** (three strings in `work/build/tokens/src/oa-tokens.src.mjs`, lines 139, 398 and 599); the engineer owns the rebuild. Next: the editor's words pass on the two rules, my captures at five widths on both grounds (queued for load under 4), the data lead's sign-off. Strict build `guide2.html` (02:10): exit 1 on one warning that is chapter 14's (`s-14-s96`), none of chapter 11's; chapter 11 at 499,958 bytes.
 
 ## Summary
 
