@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 02:44 UTC. DD-E3 and DD-R4 ruled yes, under "Additions, 02:44 UTC" (S96's latest label leaves the plot; 14.144's date once over the set, with R-38's route check date kept). Ruling (d)'s family name amended to DR-39's "Quality of democracy". Noted for batch 2: the three complex examples weigh 29,965, 42,948 and 54,950 bytes as placed, reported under DR-271.
 - 02:27 UTC. **Batch 1 signed off**, under "Sign-offs": ED5-3 ruled (hold "Affirmed"); Rules 11.10 and 11.11's facts and marks, with one change (a measure the Legislature passes takes slashes on steps 5 and 6, not a square) and three source points; R5-8; the palette specification; S96, with one condition (the phone note placed); S95's second crop.
 - 02:00 UTC. D3-1880 noted under (d): the stepper prints each loop's own step numbers, the counter 1 to 7 stays internal.
 - 02:00 UTC. Additions A-1 and A-2 posted for the accessibility lead: an avoid form's word and mark, and the pictures' inks; a reform whose targets sit off Loop R8 (the drawing stays R8 alone, every off-loop target in words, R-38 stays). (a) and (d) amended in place to match.
@@ -137,11 +138,11 @@ By script: Loop B4 is L23, L24, L54 (D5 to C3 to C5 to D5), balancing; Loop R10 
 
 R-38 lights nothing on the drawing, and its column says so in words. The plate draws no variable or connection outside R8. By script, no connection in the model runs from TC7, EC9 or B5 into A5 or A6 at any length, so no off-loop target reaches the loop. (Extended at 02:00 UTC under "Additions, 02:00 UTC", A-2, which also sets the panel's and the status line's words.)
 
-**Line-up with no total.** One column per reform in ID order, R-06, R-30, R-38, with R-06 checked at load, as Rule 15.20's chooser does. Rows, all live text: targets on the loop; targets outside it; band (all three "rules", in the atlas's word); then the four effects one family to a row in the atlas's order, Democratic quality, Government efficacy, Economic performance, Income and wealth equality; then the problem evidence grade, the remedy evidence grade and the atlas's confidence in its effects; then the routes.
+**Line-up with no total.** One column per reform in ID order, R-06, R-30, R-38, with R-06 checked at load, as Rule 15.20's chooser does. Rows, all live text: targets on the loop; targets outside it; band (all three "rules", in the atlas's word); then the four effects one family to a row in the atlas's order, Quality of democracy (DR-39's print name for DQ; amended at 02:44 UTC), Government efficacy, Economic performance, Income and wealth equality; then the problem evidence grade, the remedy evidence grade and the atlas's confidence in its effects; then the routes.
 
 | Family | R-06 | R-30 | R-38 |
 |---|---|---|---|
-| Democratic quality | +L local | +S delayed | 0 |
+| Quality of democracy (DQ, DR-39) | +L local | +S delayed | 0 |
 | Government efficacy | +S | 0 | 0 |
 | Economic performance | 0 | +M | +S sector |
 | Income and wealth equality | +S | +M renter-owner | +S renters |
@@ -229,6 +230,25 @@ The selection guide and the palette specification draw no data and log nothing. 
 5. **The lesson this gives example 3** (a suggestion; the maker's and editor's words decide): a reform can name a loop and act on none of its steps, so a comparison shows where each acts, on the drawing or in words, and never implies a path the model lacks. It sits beside Rules 15.11 and 15.21.
 6. **Effect cells** (on the accessibility lead's section 3.3): the stored string first, exactly ("+L local"), then the meaning of the code part alone in the atlas's key words ("large positive"). The qualifier is never reworded: "+L local" never becomes "in local elections", which would be our words, not the atlas's. A zero prints "0, no expected effect", the atlas's words for the code.
 
+### Additions, 02:44 UTC (the design director's DD-E3 and DD-R4)
+
+#### DD-E3: yes. S96 drops its on-plot latest label (for the complex examples maker and the design director)
+
+S96 alone; S14 keeps its own, as approved on board 1.
+- *Why.* The title names the two drops past the margin, and the latest month is no part of that finding. By script, September 2026's +29,000 sits inside the band (plus or minus 122,000) and is preliminary. On a chart whose lesson is the margin, a labeled value inside the band reads as a finding the survey cannot support (DR-64: single out a survey estimate only where the gap passes the margin, and say so). Ruling (c) already puts the latest average in a note.
+- *What stays.* The chart note "Latest: +29,000 jobs in September 2026, preliminary; the three-month average stood at +51,000, also preliminary." keeps its words; the table keeps both months' rows with "Preliminary"; the hatch and its key keep marking August and September 2026 on the plot; the alt keeps the 51,000. No figure leaves the plate.
+- Read from both sides: a reader who wants a weak economy loses an on-plot label of a small gain, and a reader who wants a strong one loses nothing they would point to. The value stays in the notes and table for both.
+
+#### DD-R4: yes. Rule 14.144 prints "as of October 15, 2026" once, in the section label over the three cards (for the complex examples maker, the accessibility lead and the design director)
+
+By script, the plate prints the phrase seven times today. One model, one snapshot: every effect, target and route in every card comes from the October 15, 2026 model, so one date at the head of the set dates them all, as a table's caption dates its cells. R5-4's "that date beside any status or route" is met when the cards sit in one set under the label. Four conditions:
+1. The section label stays the cards' own label in the markup, the list's or table's name (the accessibility lead's caption, section 3.3), so a screen reader that enters any card hears the date, and the label sits directly above the first card with nothing between.
+2. **"Checked October 15, 2026" on R-38's state statute route stays on that route.** It is the atlas's check date for that one route entry (Rule 13.10), a different fact that happens to share the day, and the seven "Not checked" stay on theirs.
+3. The print and still sequence and the chooser's panels keep the date once at their own head, since a panel shown alone sits under no section label.
+4. If DD-R1's phone table of codes comes before the cards, it sits under the same label or carries the date in its own caption, once.
+
+DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, each code whole with its qualifier at the line's start, no total. On the family names: the plate's "Quality of democracy" is DR-39's approved print name for DQ, and I have amended ruling (d), which gave V7's own label.
+
 ## Routine calls
 
 - D3-xxx | The selection guide lists each of the 127 forms once, under its plan family | The coverage plan's section 2, approved under DR-62 and DR-63: "Each form sits in one family"; a second listing breaks R5-2's count of one
@@ -251,6 +271,8 @@ The selection guide and the palette specification draw no data and log nothing. 
 - D3-xxx | An avoid tile prints "Avoid" as its tier word and takes a shared mark, a 1 px frame with one rule from top left to bottom right, in stroke classes inside the hidden picture | The word carries it for screen readers; stroke classes keep it in forced colors and print; the falling rule reads as a strike, not a chart line
 - D3-xxx | Selection guide pictures may use the subject, context, light fill, track, gridline and magnitude gray inks and the hatch, never the point, Verdigris, Prussian, sequential or diverging classes | One working red per view (Rule 05.3); a hue on some pictures would read as a code; the palettes have their own plate
 - D3-xxx | Example 3's drawing stays Loop R8 alone; every off-loop target of all three reforms is named in words; R-38 stays | The model holds no connection from TC7, EC9 or B5 into the loop; one rule for all three reforms (DR-93); each reform's record names R8
+- D3-xxx | S96 drops its on-plot latest label, with the words kept in its chart note and table (DD-E3) | +29,000 sits inside the margin and is preliminary; a label on a margin chart reads as a finding (DR-64)
+- D3-xxx | Rule 14.144 dates the three cards once, in the set's label, and keeps R-38's route check date on its route (DD-R4) | One snapshot dates every card; Rule 13.10's check date is a separate fact
 - D3-xxx | The court tracker prints the court's verb "Affirmed", glossed once in Rule 11.11's text, not "Upheld" (ED5-3) | "Upheld" names no object, so an affirmed ruling that struck a law down would read as the law upheld; "Affirmed" is the docket's word and can be checked
 - D3-xxx | A ballot measure the Legislature passes ends with steps 5 and 6 under slashes and "Passed by the Legislature on" its date, never a square | It became law; the square's key word is "Stopped"; the research lead's frame and DR-108's law in words
 - D3-xxx | S96 is signed off on condition that the placed plate prints its phone note naming the two dark columns | Rule 14.6 gives a named mark its label at every width; the labels hide at 390 px

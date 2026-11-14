@@ -8,6 +8,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the UX
 - **01:56 UTC: "Interaction specification" WRITTEN** (sections 0 to 9 below) for the selection guide maker, the complex examples maker, the component engineer, the engineer, the tracker designer and the editor. It agrees with the engineer's R5-2 and the component engineer's CE-1 to CE-3 and adds to them where it says so. Requests by owner below; three go to owners' notes in one line to the main session.
 - Next: tests as each item lands, at 1440, 1024, 390 and 320 px, keyboard alone and the accessibility tree, load under 4 first.
 - 01:57 UTC: first handback to the main session, with the requests to relay (engineer 1 to 3, component engineer 1 and 2, data lead 1 and 2).
+- 02:44 UTC: the main session asks a ruling on the design director's DD-C1 (14.143's buttons under the drawings): **yes**, with the reading and Tab order in section 2.8, under "Routine calls", and one line each to the complex examples maker and the component engineer under "Requests". Read and taken in: D3-1880 (each loop's own numbers, "Loop B4, step 2 of 3", one list, `data-oa-at` 1 to 7, by the component engineer's opt-in `data-oa-part`, C-5) and the data lead's ED5-3 ("Affirmed" stays an end word for the court case tracker). Load 5.16 at 02:43, so tests wait for it to fall under 4: the trackers first, then 14.143 and 14.144 once the component engineer's key presses pass on the current plates.
 
 ## Summary
 
@@ -187,6 +188,10 @@ Round 4's section 2 (Rule 15.19) holds whole, with the component engineer's CE-1
 
 If the plate holds a link or a disclosure after the stepper (a qualification in a `details`, say), its stop comes before "outside"; write it into the path as built.
 
+**2.8 After D3-1880 and DD-C1 (02:44 UTC).** Two changes to sections 2.1 to 2.7. The plate of 02:20 already meets the count; the order waits on the complex examples maker:
+- **The count.** The status line says each loop's own count, "Loop B4, step 1 of 3:" to "Loop R10, step 4 of 4:", through the stepper script's opt-in `data-oa-part` (the component engineer's C-5). The list's numbers restart at Loop R10's first step, so the line, the list and each drawing say one number; `data-oa-at` still runs 0 to 7 for the drawing. Section 2.4's words then need not open with "In Loop B4,": the head names the loop. The key path's `status_has` checks these heads (the component engineer's keys file already does).
+- **The order (DD-C1, yes).** The DOM, the eye and a screen reader meet the plate in this order at every width: each loop's name and grade line with its drawing (`aria-hidden`), Loop B4's then Loop R10's; the note on Variable C3; the status line; the controls group (Play, Reset the loop, Previous step, Next step); the reason line straight after it (the unavailable buttons' description); the seven steps as the still list; the atlas's limits; the source. The move is in the markup, never by CSS `order`, grid placement or `position`, so reading order stays visual order (1.3.2). Tab order is unchanged: from before the stage, Play, Reset the loop, Previous step, Next step, then out of the plate, four stops, since the list, the limits and the source hold no control. At 320 px the frame's own stop comes first, as in 15.19. Focus stays on the button pressed. With the buttons under the drawings, the drawing that lights and the button that lights it share one window, and the status line above the buttons says each step, so the list need not be in view while a reader steps; the current step keeps `aria-current="step"` and its bar in the list. Print, reduced motion and scripts off keep section 2.6's still sequence: the buttons, status line and reason line hidden, the list whole and numbered.
+
 ### 3. Complex example 3, Rule 14.144: Reforms R-06, R-30 and R-38 on Rule 15.20's chooser
 
 Round 4's section 3 (Rule 15.20) holds whole, with CE-2. What changes for three reforms on one loop, compared:
@@ -337,6 +342,7 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 - D3-xxx | The selection guide's words and links follow the reader's colors under forced colors (`auto` with its own ground) | A set of 127 live links is controls, not a picture (round 4's rule for live plates)
 - D3-xxx | Complex example 2 is one stepper with one step list of seven steps across both loops | One source of state for one drawing; the script counts every step in its root (CE-1)
 - D3-xxx | Its buttons keep Rule 18.22's words, "Reset the loop" included | The script's reason line names that word
+- D3-xxx | DD-C1, yes: Rule 14.143's status line, controls and reason line move in the markup to directly under the two drawings and the Variable C3 note, before the seven-step list; reading order the drawings, the C3 note, the status line, the controls, the reason line, the list, the limits, the source; Tab order unchanged, Play, Reset the loop, Previous step, Next step, then out (section 2.8) | Today about 1,180 px separate the drawing that lights from the button that lights it, so no window holds both; the move keeps DOM order equal to visual order and adds no stop, and the status line says each step where the list is out of view
 - D3-xxx | The chooser's status line counts the marks that turn red on the drawing, none included, and the panel names targets outside the loop | Reform R-38's two targets sit off Loop R8's two steps in today's model; silence or an empty drawing would read as a fault
 - D3-xxx | Complex example 3's comparison is a table or three cards with no total, every effect cell its code, qualifier and words, no empty cell | Rule 15.21 and R5-4; a screen reader says "blank" for an empty cell
 - D3-xxx | The two trackers follow 11.8 and 11.9: a picture named by an alt that carries every word, in the same pattern | A reader meets six trackers in one group that read alike; a reading group for all six is a change for the review, not for two
@@ -355,6 +361,8 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 1. **The way back from the selection guide (the shell, low reach).** In `guide-shell.js`'s cross-reference click handler, accept `a[data-oa-xref]` beside `a.xref`, and add `[data-return-label][id]` to the elements it remembers as the place to return to (section 1.6). Measured in the V10 page: `data-return-label` sits only on "Where to start"'s route steps, which the handler already remembers, so nothing signed off changes.
 2. **Keys files:** sections 2.7 and 3.5, adjusted to ruling (d) and the plates as built.
 
+3. **DD-C1 (02:44 UTC):** once the complex examples maker moves 14.143's status line, controls and reason line above the step list, rerun the keys file's walk on the plate; the path itself should need no change, since the four buttons stay the plate's only stops and come first from before the stage (section 2.8).
+
 ### To the selection guide maker
 
 1. Section 1 whole: the markup in 1.2 and 1.3, the pictures in 1.4, the skip links in 1.5, the return labels in 1.6, and 1.7 to 1.12.
@@ -362,6 +370,8 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 ### To the complex examples maker
 
 1. Sections 2, 3 and 4. Above all: the step words that name each loop and the hand-off (2.4); C3 marked as shared by shape and words (2.5); the plate CSS items in 2.6, since chapter 15's scoped CSS does not reach chapter 14; the status line for a reform with nothing on the loop (3.2); the comparison's table or cards with no total and no empty cell (3.3); print-only copies of the drawing per reform if you can (3.4); S96's table columns and date order (4.3).
+
+2. **DD-C1 (02:44 UTC), yes:** in 14.143's markup, move the status line, the controls group and the reason line to directly after the Variable C3 note, before the seven-step list; no CSS `order` or placement, and print, reduced motion and scripts off keep the still sequence (section 2.8).
 
 ### To the tracker designer
 
