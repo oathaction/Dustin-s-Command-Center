@@ -17,10 +17,19 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the UX
   - **One Must for the complex examples maker:** at 200 percent text on the 680 px composition, Rule 14.144's three cards overlap and the third runs past the stage (1.4.4).
   - **Three low items for the engineer:** the palette plate's nowrap values, its Charcoal proof grounds in print, and the image-stage descendants already sent at 02:55.
   - Everything else met.
+- 04:03 to 04:19 UTC: at the main session's word, on a fresh strict build (04:03, exit 0, 0 warnings), **the selection guide tested against section 1, and Rule 14.144 retested at 200 percent text.** Every browser run started under load 4.
+  - The selection guide meets section 1. Two low items: where the skip link lands now that the guide sits before the rule index, and the masthead's offset at 1,024 px.
+  - Rule 14.144's fix holds: the cards go one a row as the text grows. One low note at 320 px.
 
 ## Summary
 
-**As tested (03:31 UTC).** Rules 11.10 and 11.11 meet the specification: keyboard, names, text and marks, 200 percent text, print, forced colors and axe. Rule 14.143 meets it with DD-C1 in place: the buttons sit 148 px under the drawings at a desk, and the key paths walk clean at 1440, 1024, 390 and 320 px with and without reduced motion. Rule 14.144 meets it in every mode but one: at 200 percent text on the 680 px composition the three cards overlap, a 1.4.4 failure sent to the complex examples maker as a Must. The palette specification reads as live text: four tables with captions and headers, contrast in words, swatches hidden and kept in forced colors. Two low items go to the engineer. The selection guide waits for its maker.
+**As tested (03:31 UTC).** Rules 11.10 and 11.11 meet the specification: keyboard, names, text and marks, 200 percent text, print, forced colors and axe. Rule 14.143 meets it with DD-C1 in place: the buttons sit 148 px under the drawings at a desk, and the key paths walk clean at 1440, 1024, 390 and 320 px with and without reduced motion. Rule 14.144 meets it in every mode but one: at 200 percent text on the 680 px composition the three cards overlap, a 1.4.4 failure sent to the complex examples maker as a Must. The palette specification reads as live text: four tables with captions and headers, contrast in words, swatches hidden and kept in forced colors. Two low items go to the engineer. **Selection guide (04:19 UTC):** meets section 1 at 1440, 1024, 390 and 320 px.
+- 144 Tab stops (one skip link past the guide, 16 per question, 127 forms), each with the 2 px ring and none hidden.
+- Links named "Ranked bar, Core" and "Radar chart, Avoid"; every picture hidden; 16 lists named by their questions.
+- Every skip link lands where it says, with scripts on and off. The way back from an entry returns to the form the reader left.
+- Reading order holds at every width and at 200 percent text. Forced colors give link colors with pictures intact. Print drops only the skip links. axe-core finds 0 violations.
+- Two low items: the skip link now passes the rule index too, since the guide moved before it; and a way back at 1,024 px lands 13 px under the masthead.
+- Rule 14.144's Must is fixed: one card a row at 200 percent text at 1440, 1024 and 390 px.
 
 **The specification.** The interaction specification covers every round 5 item a reader operates or hears: the selection guide (a group of 16 question lists holding 127 links, each named by its form and tier with its picture hidden; one skip link past the guide and one per question to the next, so a keyboard reader leaves the guide in one press and reaches any question in at most 32; the shell's way back from an entry to the form the reader left), complex examples 2 and 3 on the stepper and the chooser (one stepper walking seven steps through Variable C3 with the words at the hand-off and the close; three reforms with a status line that counts the red marks, none included, and a comparison with no total), S96's table and reading order, the two trackers' state words and alt pattern as chapter 11's, the palette specification as live text with contrast in words, and S95's second crop by its size. Nothing is built yet, so nothing is tested.
 
@@ -357,6 +366,7 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 - D3-xxx | Complex example 3's comparison is a table or three cards with no total, every effect cell its code, qualifier and words, no empty cell | Rule 15.21 and R5-4; a screen reader says "blank" for an empty cell
 - D3-xxx | The two trackers follow 11.8 and 11.9: a picture named by an alt that carries every word, in the same pattern | A reader meets six trackers in one group that read alike; a reading group for all six is a change for the review, not for two
 - D3-xxx | Contrast in the palette specification prints as "N to 1" with what it allows in words, rounded down | A color or a check mark alone fails 1.4.1; rounding up could cross a threshold
+- D3-xxx | The selection guide's "Skip the chart guide" should land right after the guide (the rule index's label) now that the guide sits before the rule index, or its words should name where it lands | A skip link that passes 161 more links than its words say surprises a keyboard reader; Shift+Tab is the only way back to the index
 
 ## Requests
 
@@ -381,9 +391,16 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 
 3. **DD-C1 (02:44 UTC):** once the complex examples maker moves 14.143's status line, controls and reason line above the step list, rerun the keys file's walk on the plate; the path itself should need no change, since the four buttons stay the plate's only stops and come first from before the stage (section 2.8).
 
+4. **The masthead's offset at 1,024 to 1,100 px (low, 04:19 UTC).** There the masthead measures 101 px while `--head-h` reads 4rem (64 px), so `main *`'s `scroll-margin-top` is 88 px and a target whose first line is its top lands 13 px under the masthead. Example: the selection guide's form item that the way back returns to. Rules' headings clear it because they sit lower in their blocks. Set `--head-h` to the masthead's height at those widths, measured as at 390 px, where it reads 3.5rem + 2rem against an 89 px masthead. Shell-wide, so measure its reach first (call 2).
+
 ### To the selection guide maker
 
 1. Section 1 whole: the markup in 1.2 and 1.3, the pictures in 1.4, the skip links in 1.5, the return labels in 1.6, and 1.7 to 1.12.
+
+2. **Where "Skip the chart guide" lands (low, 04:19 UTC).** The guide now sits before the rule index, so `#group-14-1` passes the rule index and the local contents as well, while the link's words name only the guide.
+   - Point the first skip link and the 16th question's skip link at the rule index's label (`data-visualization-index-t`), so each lands right after the guide.
+   - Or, if the studio wants the jump straight to the rules, let the words say so ("Skip to Rule 14.1").
+   My section 1.5 assumed the guide would sit in the chapter's body; whichever way you choose, I retest it.
 
 ### To the complex examples maker
 
@@ -392,6 +409,8 @@ At 1440, 1024, 390 and 320 px, on the light ground (the stage set to Charcoal wh
 2. **DD-C1 (02:44 UTC), yes:** in 14.143's markup, move the status line, the controls group and the reason line to directly after the Variable C3 note, before the seven-step list; no CSS `order` or placement, and print, reduced motion and scripts off keep the still sequence (section 2.8).
 
 3. **Rule 14.144, Must (1.4.4), 03:31 UTC.** At 200 percent text on the 680 px composition (1440 px, and the 1024 px desk by the same layout), the three cards stay three columns of about 234 px, so words overlap the next card and R-38's card runs 13 px past the stage. Set the columns in em so larger text takes fewer, for example three columns only where each card holds about 14em (a container query in em on the cards' row) and one card a row below that, as the phone already does. DD-R1's shared rows need only one column count at a time. Capture: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/7633c399-b692-5041-be92-a87ecd098fbf/scratchpad/phase-3/round-5/accessibility/shots-complex/s-14-144-cards-1440-text200.png`. I retest once it lands.
+
+4. **Rule 14.144 (low, 04:19 UTC).** At 320 px with text at 200 percent, "+M renter-owner" and the chips "Connection LE17" and "Connection LT12", each on one line, run up to 29 px past their card (inside the frame). Letting a code break before its qualifier would close it. 320 px at 200 percent goes beyond 1.4.4 and 1.4.10, so this is optional. **Item 3 is closed:** one card a row at 200 percent text at 1440, 1024 and 390 px.
 
 ### To the tracker designer
 
@@ -471,9 +490,33 @@ The skip links ("Skip the chart guide", "Skip these N forms"); the return label 
   - **Text at 200 percent, low:** at 390 px each value with its ratio is held on one line (`.ps-v`, `white-space: nowrap`), so the stage widens to 496 px and the frame scrolls (560 against 390 px, with its Tab stop once the shell re-measures). Nothing is lost, which 1.4.4 asks, but every line of the plate then needs a sideways scroll. At 1440 px it fits.
   - **Print, low:** the swatches, strips and lines print (`print-color-adjust: exact`). The proof blocks' Newsprint and Charcoal grounds (`.ps-g`) compute `economy`, so under a browser's default print setting the Charcoal block's labels print in Newsprint ink on white paper. Read from computed styles in print emulation, not from a printed page. Every Charcoal stage in the guide prints the same way; nothing in the shell keeps a ground in print.
 
+- **The selection guide, "Choose a chart" (04:05 to 04:19 UTC).** Specimen of 03:53:57 in my strict build of 04:03 (`guide_build.py --strict` to scratch `b4/`, exit 0, 0 warnings, 12,106,233 bytes, HEAD bae34442; `plate-share.json`'s time put back). `sg_test.js`, `sg_follow.js` and `sg_follow2.js` in my scratch, all started under load 4. **Met, with two low items.**
+  - **Static, by script against the plan:** 127 form links, each rule once, each under its own question; each link's text starts with the plan's form name and holds its tier word ("Extended" for Rule 14.130, as ruling (a) set it); `data-oa-xref` on every link; each form's `li` carries `s-14-sg-f-NN` and `data-return-label` ("Ranked bar in Choose a chart"); every `svg` is `aria-hidden` and `focusable="false"`; no heading, no `title`, no `aria-label` on a link; one `ol` of 16 questions, each with its question line, its skip link and a `ul` named by `aria-labelledby` its question line; the tier key is a `dl` of four terms; grid columns in rem (`minmax(min(100%, 9rem), 1fr)`); no `order` or `dense`; `forced-color-adjust: auto` on the root; print hides the skip links.
+  - **Placement:** the figure stands straight after the opener, before the rule index. The stage is a group named "Choose a chart, interactive specimen", described by the alt. The local contents line reads "Choose a chart".
+  - **Names, read from Chromium's own tree (CDP):** "Ranked bar, Core", "Column, Core", "Radar chart, Avoid", "Streamgraph, Avoid". The hidden comma makes the pause. All 127 form names are unique; the only repeated names are skip links with the same count ("Skip these 10 forms" twice), which their questions tell apart (2.4.4). 128 SVGs, none exposed.
+  - **Keyboard alone,** from a stand-in before the figure, at 1440, 1024, 390 and 320 px:
+    - 144 stops in DOM order: "Skip the chart guide", "Skip these 10 forms", "Ranked bar, Core" and on to the last form, then out to the rule index.
+    - Every stop has the 2 px Verdigris ring, is in view below the masthead, is not covered and sits inside the stage. Every skip link shows when focused (no clip). No form tile is under 44 by 44 px (smallest 120 by 114 px at 320 px).
+  - **Skip links:**
+    - "Skip the chart guide" lands on `#group-14-1` with focus there, and the next Tab is group 1's first link.
+    - The 16 question skip links, taken in turn with Tab and Enter, each land on the next question's line, which takes focus and reads its question ("Shift and swing: what moved, and which way?"). The 16th lands on `#group-14-1`.
+    - With scripts off, the same two kinds of skip land and the next Tab continues from them ("Skip these 10 forms" leads to "Skip these 4 forms").
+  - **The way back (component engineer's S-2)** at every width: Enter on "Ranked bar, Core" puts focus on Rule 14.15's heading; Tab reaches "Return to Ranked bar in Choose a chart, 14 Data visualization"; Enter puts focus on the form's item; the next Tab is "Ranked bar, Core" again. The same holds for Histogram and Social data card.
+    - **Low:** at 1024 and 1100 px the masthead measures 101 px while `--head-h` reads 4rem, so the returned item lands at 88 px, and its top 13 px and its link's top sit under the masthead. The link stays mostly in view, so 2.4.11 is met; 2.4.12 is not. Rules' headings land at 122 px and clear it. At 1440 (masthead 65 px) and 390 px the item lands clear.
+  - **Reading order:** each tile is right of or below the one before it, in every question at every width; questions run down one column. Tiles a row: 4 to 5 at 1440, 3 to 4 at 1024, 2 at 390 and 320 px, 1 at 1024, 390 and 320 px with text at 200 percent.
+  - **Text:** 14 px or more; the lowest is the tier key's words at 5.49 to 1. With text at 200 percent at 1440, 1024, 390 and 320 px nothing is clipped, tiles do not overlap, and none runs past the stage. At 320 px the frame then scrolls with its Tab stop (its sides grow with the text), and the page's 19 px sideways scroll is "Where to start"'s, as before.
+  - **Forced colors,** dark at 1440 and light at 390 px: the root takes the system's Canvas; names and tiers take the link color (yellow on black, dark blue on white), 19.56 and 13.99 to 1. The pictures draw in the system's colors, and the avoid mark keeps its cross (capture read).
+  - **Print emulation:** skip links hidden; all 127 links and 127 pictures shown; tiles keep whole; each question line stays with its tiles; no address added after a link.
+  - **Reduced motion:** no animation; transitions 0 s.
+  - **axe-core 4.10.2 at 1440 px:** 0 violations, 19 passes, none incomplete.
+  - **Low, where "Skip the chart guide" lands.** The guide now stands before the rule index (161 links) and the local contents, so `#group-14-1` passes all three while its words name only the guide. Section 1.5 set that target when the guide was planned for the chapter's body; the 16th question's skip link does the same. Request below.
+- **Rule 14.144 at 200 percent text, retested (04:15 UTC, plate of 03:50:02).** The complex examples maker's fix holds:
+  - At 1440, 1024 and 390 px the three cards stand one a row (632, 296 and 296 px wide), none past the stage, no word outside its card, no sideways page scroll. **The Must is closed.**
+  - **Low:** at 320 px with text at 200 percent, three typed chips ("Connection LE17", "Connection LT12") and the code "+M renter-owner", each held on one line, run 2 to 29 px past their 224 px card. They stay inside the frame, which scrolls. 320 px at 200 percent text goes beyond what 1.4.4 and 1.4.10 ask.
+
 ## Not tested
 
-- The selection guide: its maker is still trimming it, so it has not run (the main session's order).
+- The selection guide at 768 and 360 px; its hover state; any screen reader's reading of its list names.
 - Rule 14.144 at 1024 px with text at 200 percent (the same 680 px composition as 1440 px, where it fails); 768 and 360 px for every item; Charcoal for 14.143 and 14.144 by the stage's theme (the design director read both grounds).
 - A printed page or PDF of the palette specification: print was read from computed styles in print emulation.
 - Rule 14.142 (S96): not asked in this pass, and its spec still carries two strict build warnings.

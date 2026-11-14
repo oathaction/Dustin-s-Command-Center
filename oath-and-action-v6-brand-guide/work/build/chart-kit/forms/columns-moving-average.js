@@ -13,7 +13,7 @@
  *   order, under the band's lower edge, each on a leader that runs level under the columns and turns up into its column's foot;
  *   where the stack does not fit, each takes its own place as above.
  * scale.ticks_min (DD-E7, opt-in): no tick or gridline under this value, the scale's floor unchanged; scale.y_narrow (DD-E8,
- *   opt-in): [lo, hi], the value scale where the drawing is a phone's or under 490 px, where the named words hide.
+ *   opt-in): [lo, hi], the value scale where the drawing is a phone's (under 480 px), where the named words take their phone setting.
  * labels.margin: {value, label, key}, a band from minus to plus value (the y unit) across the plot, behind the columns, in
  *   magnitude step 1 with its 1 px context edges (K.parts.band); label set in the band below zero at the plot's left, key
  *   as its own key entry. */
@@ -49,10 +49,10 @@
       rows.forEach(function (r) { vals.push(r[ey]); if (ea && r[ea] !== null) vals.push(r[ea]); });
       var lo = Math.min(0, Math.min.apply(null, vals)), hi = Math.max(0, Math.max.apply(null, vals));
       // round 5 (the design director's DD-E7 and DD-E8, opt-in): scale.y_narrow, the value scale where the drawing is a phone's
-      // or under 490 px (where the named words hide), and scale.ticks_min, no tick or gridline under that value (the scale's
+      // (under 480 px, where the named words take their phone setting), and scale.ticks_min, no tick or gridline under that value (the scale's
       // floor stays where it is)
       var sc0 = c.spec.scale || {}, yn = sc0.y_narrow, vs;
-      if (yn && (c.phone || W < 490)) { var nst = K.nice(+yn[0], +yn[1], c.phone ? 4 : 5).step; vs = { lo: +yn[0], hi: +yn[1], ticks: K.ticks(+yn[0], +yn[1], 0, nst) }; }
+      if (yn && c.phone) { var nst = K.nice(+yn[0], +yn[1], c.phone ? 4 : 5).step; vs = { lo: +yn[0], hi: +yn[1], ticks: K.ticks(+yn[0], +yn[1], 0, nst) }; }
       else vs = P.value_scale(c, lo, hi, c.phone ? 4 : 5);
       var ticks = vs.ticks;
       if (sc0.ticks_min !== undefined && sc0.ticks_min !== null && isFinite(+sc0.ticks_min)) ticks = ticks.filter(function (tv) { return tv >= +sc0.ticks_min; });
@@ -141,7 +141,7 @@
       var stacked = named && c.labels.named_stack ? stack_named() : false;
       function stack_named() {
         var items = named.map(function (nm) {
-          var o = Object.assign({}, nm, (c.phone || W < 490) && nm.phone ? nm.phone : {}), i = rows.findIndex(function (r) { return String(r[ex]) === String(nm.x); });
+          var o = Object.assign({}, nm, c.phone && nm.phone ? nm.phone : {}), i = rows.findIndex(function (r) { return String(r[ex]) === String(nm.x); });
           return o.hide || !(nm.text || []).length || i < 0 ? null : { lines: [].concat(nm.text), i: i, v: rows[i][ey] };
         }).filter(Boolean);
         if (!items.length) return false;
@@ -173,7 +173,9 @@
       if (named && !stacked) named.forEach(function (nm) {
         var lines = [].concat(nm.text || []);
         if (!lines.length) return;
-        var narrow = c.phone || W < 490;
+        // the data lead's batch 7 sign-off: the named words take their phone setting exactly where the figure shows its phone
+        // notes (a drawing under 480 px, the kit's phone test), so at every width a reader meets the words or the note
+        var narrow = c.phone;
         var o = Object.assign({}, nm, narrow && nm.phone ? nm.phone : {});
         if (o.hide) return;
         var i = rows.findIndex(function (r) { return String(r[ex]) === String(nm.x); });
