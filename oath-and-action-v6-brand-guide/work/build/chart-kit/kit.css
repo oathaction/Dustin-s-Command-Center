@@ -63,6 +63,7 @@
 .oac-table .oac-num { text-align: right; font-variant-numeric: tabular-nums; }
 .oac-fig .oa-id { white-space: nowrap; }
 .oac-phone-notes { display: none; }
+.oac-phone-line { margin: 6px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); max-width: 38em; }
 @container (max-width: 479px) {
   .oac-phone-notes { display: block; }
   .oac-title { font-size: var(--oa-chart-type-title-phone-size); line-height: var(--oa-chart-type-title-phone-leading); }

@@ -3708,7 +3708,7 @@ def fs_stages():
         "clot": wf_row("FS", "Ending Senate debate (cloture)", "60 of the 100-member Senate"),
         "recon": wf_row("FS", "Senate: reconciliation", "limited to not more than 20 hours"),
         "byrd": wf_row("FS", "Senate: extraneous matter (the Byrd rule)", "does not produce a change in outlays or revenues",
-                       "deemed stricken from the bill"),
+                       "sustains a point of order", "deemed stricken from the bill"),
         "conf": wf_row("FS", "Reconciling differences", "conference committee", "returns to the House and Senate for final approval"),
         "pres": wf_row("FS", "Enrolling and presentment", "prints the revised bill in a process called enrolling",
                        "10 days to sign or veto"),
@@ -3718,8 +3718,10 @@ def fs_stages():
                        "unless the Congress by their Adjournment prevent its Return, in which Case it shall not be a Law"),
         "pl": wf_row("FS", "Public law number", "assign a Public Law Number", "Statutes at Large"),
         "appr": wf_row("FS", "Appropriations", "No Money shall be drawn from the Treasury, but in Consequence of Appropriations made by Law"),
-        "resc": wf_row("FS", "Funding: rescission proposals", "special message", "within the prescribed 45-day period"),
-        "rule": wf_row("FS", "Agency rulemaking", "General notice of proposed rule making", "not less than 30 days before its effective date"),
+        "resc": wf_row("FS", "Funding: rescission proposals", "special message", "made available for obligation",
+                       "within the prescribed 45-day period"),
+        "rule": wf_row("FS", "Agency rulemaking", "General notice of proposed rule making", "not less than 30 days before its effective date",
+                       "with exceptions"),
         "cra": wf_row("FS", "Congressional review of a rule", "60 days after"),
         "dis": wf_row("FA", "Congressional Review Act: disapproval", "joint resolution of disapproval",
                       "may not be reissued in substantially the same form"),
@@ -3742,8 +3744,9 @@ def fs_stages():
               [("U.S. Senate, “About Filibusters and Cloture”", r["clot"])], rel="In the Senate, for most bills",
               then="Short of 60, the debate goes on and the bill waits."),
         Stage(5, "br", "Reconciliation", "Debate is held to 20 hours, so no cloture vote is needed and a simple majority "
-              "passes it. A part that does not change spending or revenue is struck if a senator raises a point of order.",
-              [("2 U.S.C. 641 and 644", r["recon"])], rel="In the Senate, for a budget reconciliation bill"),
+              "passes it. A part that does not change spending or revenue is struck when a senator raises a point of order "
+              "and the chair agrees.",
+              [("2 U.S.C. 641", r["recon"]), ("2 U.S.C. 644", r["byrd"])], rel="In the Senate, for a budget reconciliation bill"),
         Stage(6, "st", "Passed by the second chamber", "A simple majority, by the same paths as step 2.", [(h, r["floor"])]),
         Stage(7, "st", "One text for both chambers", "A conference committee settles the differences, and both chambers "
               "approve the same text.", [(h, r["conf"])]),
@@ -3764,11 +3767,12 @@ def fs_stages():
     ]
     after = [
         Stage(14, "af", "Funded by appropriation", "Money leaves the Treasury only through an appropriation made by law. If "
-              "the President proposes to cancel some, the money must be released unless Congress passes a rescission bill "
-              "within 45 days.",
+              "the President proposes to cancel some, the money must be released for spending unless Congress passes a "
+              "rescission bill within the 45-day period the law sets.",
               [("U.S. Constitution, Article I, Section 9", r["appr"]), ("2 U.S.C. 683", r["resc"])]),
         Stage(15, "af", "Put to work by agency rules", "The agency publishes a proposed rule, takes comments and publishes "
-              "the final rule at least 30 days before it takes effect.", [("5 U.S.C. 553", r["rule"])]),
+              "the final rule at least 30 days before it takes effect, unless the law makes an exception.",
+              [("5 U.S.C. 553", r["rule"])]),
         Stage(16, "af", "Reported to Congress", "A major rule waits at least 60 days. A joint resolution of disapproval, "
               "passed and signed like a bill, ends it.", [("5 U.S.C. 801 and 802", r["cra"])],
               stop="The rule ends, and may not return in substantially the same form."),
@@ -4325,8 +4329,8 @@ def recon_words():
              f"take in {chip('Reform', 'R-35')} “{e(REFORM['R-35']['title'])}”, which the atlas marks rejected.",
              f"No chapter prints a count of reforms by domain, and {chip('Reform', 'R-35')} keeps the word Rejected wherever it appears."),
         19: ("Plus and minus signs taken off the map, with an arrowhead for raises and a bar for lowers.",
-             f"Every causal connection stores a sign, {sign['+']} plus and {sign['-']} minus; the {words_n(len(auth))} authority "
-             "connections store none. Its glossary: “A positive sign does not mean a benefit.”",
+             f"Every connection but the {words_n(len(auth))} authority connections stores a sign: {sign['+']} plus and "
+             f"{sign['-']} minus. Its glossary: “A positive sign does not mean a benefit.”",
              "Every causal connection prints its sign and the word raises or lowers, beside the atlas’s sentence on what a plus means."),
         40: (f"{chip('Connection', 'L54')} called “the weakest transfer to U.S. services”, as if its grade were lower.",
              f"All three steps of {lq('B4')} are well supported. Its summary names {chip('Connection', 'L54')} the weakest only "
@@ -4801,7 +4805,8 @@ def rule_15_23(book):
           bw("3 Signatures", "Signatures counted and checked", "fails to qualify for the ballot"),
           bw("4 Legislature (indirect initiative)", "In an indirect initiative, the Legislature’s vote, and a second round of "
              "signatures if it does not pass the measure", "within 40 session days"),
-          bw("4 Legislature (direct initiative)", "In a direct initiative, a hearing that cannot stop it", "cannot amend it"),
+          bw("4 Legislature (direct initiative)", "In a direct initiative, a hearing that cannot stop it, so step 4 keeps its "
+             "slash", "cannot amend it"),
           bw("4 Legislature (legislative referral)", "A referral, in which the Legislature sends a measure to the ballot",
              "three-fifths of the members elected"),
           bw("5 On the ballot", "Certified for the ballot", "certificate of qualification"),
@@ -4831,9 +4836,13 @@ def rule_15_23(book):
           cw("Later doctrine replaces earlier doctrine", "A later ruling that replaces earlier doctrine", "Chevron is overruled")]
     rows11 = [(1, s11[0], [cr[0][1]]), (2, s11[1], [cr[1][1], cr[2][1]]), (3, s11[2], [cr[3][1]]), (4, s11[3], [cr[4][1]]),
               (5, s11[4], [cr[5][1], cr[6][1]]), (6, s11[5], [cr[7][1]]), ("after", "After step 6", [cr[8][1]])]
-    b11 = xw_block(f'{chip("Route", "CRT")} beside the court case tracker of <a href="#rule-11-11">Rule 11.11</a>',
+    need(ROUTE["ENF"]["instrument"] == "Cases and settlements under existing law" and
+         ROUTE["CRT"]["instrument"] == "Rulings that change what other routes may do", "the atlas's ENF or CRT instrument changed")
+    b11 = xw_block(f'{chip("Route", "ENF")} and {chip("Route", "CRT")} beside the court case tracker of '
+                   f'<a href="#rule-11-11">Rule 11.11</a>',
                    "A federal civil case’s stages in Title 28, the courts’ rules and the Supreme Court’s rules, behind the "
-                   "tracker’s six steps", rows11,
+                   f"tracker’s six steps. The case itself runs on the enforcement route, “{e(lc(ROUTE['ENF']['instrument']))}”; "
+                   f"a ruling at step 4 or 6 that changes what other routes may do belongs to the court doctrine route.", rows11,
                    f"Stages from 28 U.S.C., the Federal Rules of Civil and Appellate Procedure and the Rules of the Supreme "
                    f"Court, read {dates_words(r_['Checked'] for r_, _ in cr)}.")
     folded = sum(1 for v in map1.values() if v == [1])
@@ -4851,15 +4860,16 @@ def rule_15_23(book):
                   "federal rule making: step 1 has no stage in the law, White House review sits behind steps 2 and 5, and "
                   "Congress’s disapproval and a court’s review come after step 6. The ballot measure of Rule 11.10 beside "
                   "Route BI: step 4 holds three kinds of legislative stage and step 5 a court challenge. The court case of "
-                  "Rule 11.11 beside Route CRT: step 2 holds an appeal of an injunction, step 5 a direct appeal, and a later "
-                  "ruling that replaces doctrine comes after step 6."),
+                  "Rule 11.11 beside Routes ENF and CRT, a case under existing law whose ruling can change doctrine: step 2 "
+                  "holds an appeal of an injunction, step 5 a direct appeal, and a later ruling that replaces doctrine comes "
+                  "after step 6."),
              notes="Step names read from chapter 11's file; stages from Rule 15.22's numbering, the research lead's data "
                    "files and the workflow sources file, each held by script.")
     for where, ex, dom in (("15.23 correct, Rule 11.1", "A federal bill's tracker beside Route FS", "D04"),
                            ("15.23 correct, Rule 11.8", "A records request beside the Freedom of Information Act", "D01"),
                            ("15.23 correct, Rule 11.9", "An agency rule beside federal rule making", "D04"),
                            ("15.23 correct, Rule 11.10", "A ballot measure beside Route BI", "D02"),
-                           ("15.23 correct, Rule 11.11", "A court case beside Route CRT", "D05")):
+                           ("15.23 correct, Rule 11.11", "A court case beside Routes ENF and CRT", "D05")):
         book.log(where, ex, dom)
     bad = [(i, s1[i - 1], fsk(i)) for i in range(1, 7)]
     fail = dnp() + xw_block(f'{chip("Route", "FS")} beside the bill tracker of Rule 11.1', "Each step beside the stage of the "

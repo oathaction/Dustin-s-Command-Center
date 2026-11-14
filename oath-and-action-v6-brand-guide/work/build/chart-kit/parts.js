@@ -326,7 +326,7 @@
     (c.bands = c.bands || []).push({ fill: o.pattern ? null : (o.fill || 'band'), pattern: o.pattern || null, edge: o.edge || null,
       edge_width: o.edge ? (o.edge_width || c.t('line-hairline')) : 0, line: o.line_width || c.t('line-context'), top: top, bottom: bottom, left: lx, right: rx,
       heights: pts.filter(ok).map(function (p) { return Math.abs(p.y1 - p.y0); }), runs: runs.length });
-    var R = K.round, edge = { stroke: o.edge, width: o.edge_width || c.t('line-hairline'), mark: false };
+    var R = K.round, edge = { stroke: o.edge, width: o.edge_width || c.t('line-hairline'), mark: false, band_edge: true };
     runs.forEach(function (rn) {
       var seg = pts.slice(rn[0], rn[1] + 1);
       if (seg.length === 1) { P.whisker(c, seg[0].y0, seg[0].y1, seg[0].x, { dir: 'v', stroke: o.edge || 'context', width: c.t('line-context') }); return; }

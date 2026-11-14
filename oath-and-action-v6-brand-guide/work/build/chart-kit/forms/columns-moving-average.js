@@ -9,6 +9,9 @@
  *   with its words (a first line in bold, the rest regular) on a leader, below a loss and above a gain unless place says
  *   otherwise; every other column takes the light fill (the context ink on Charcoal) and the average the context ink at
  *   the context weight, so the named columns alone carry the subject ink. text [] names a column with no words.
+ * labels.named_stack: true (DD-E2, opt-in): the named words stand as one stack left of the first named column, in the list's
+ *   order, under the band's lower edge, each on a leader that runs level under the columns and turns up into its column's foot;
+ *   where the stack does not fit, each takes its own place as above.
  * labels.margin: {value, label, key}, a band from minus to plus value (the y unit) across the plot, behind the columns, in
  *   magnitude step 1 with its 1 px context edges (K.parts.band); label set in the band below zero at the plot's left, key
  *   as its own key entry. */
@@ -19,7 +22,7 @@
     name: 'Columns With Moving Average',
     family: 'change-over-time',
     encode: { x: 'month', y: 'number', average: 'number?', status: 'category?' },
-    labels: ['key_columns', 'key_preliminary', 'key_average', 'latest', 'preliminary_value', 'named', 'margin'],
+    labels: ['key_columns', 'key_preliminary', 'key_average', 'latest', 'preliminary_value', 'named', 'named_stack', 'margin'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, rows = c.rows, ex = c.field('x'), ey = c.field('y'), ea = c.field('average', false), es = c.field('status', false);
@@ -123,7 +126,41 @@
       // the named columns' words: a first line in bold and the rest regular, on a leader. Each takes the first clear place of:
       // the spec's place (or below a loss, above a gain), then left, right, and above the plot's columns, clear of every
       // word drawn, of every other column and of the time axis; a spec may set place, dx, dy and a phone object
-      if (named) named.forEach(function (nm) {
+      // DD-E1 (round 5): no named words within 4 px of the band's edges
+      var edges = margin ? [ys(Math.abs(+margin.value)), ys(-Math.abs(+margin.value))] : [];
+      var on_edge = function (by, bh) { return edges.some(function (ey) { return ey > by - 4 && ey < by + bh + 4; }); };
+      var stacked = named && c.labels.named_stack ? stack_named() : false;
+      function stack_named() {
+        var items = named.map(function (nm) {
+          var o = Object.assign({}, nm, (c.phone || W < 490) && nm.phone ? nm.phone : {}), i = rows.findIndex(function (r) { return String(r[ex]) === String(nm.x); });
+          return o.hide || !(nm.text || []).length || i < 0 ? null : { lines: [].concat(nm.text), i: i, v: rows[i][ey] };
+        }).filter(Boolean);
+        if (!items.length) return false;
+        var size = c.size('label'), lh = 19, asc = size * 0.969, sgap = 8, lead = 8;
+        var first = Math.min.apply(null, items.map(function (it) { return it.i; }));
+        var w = Math.max.apply(null, items.map(function (it) { return Math.max.apply(null, it.lines.map(function (l, k) { return c.measure(l, 'label', k ? 400 : 700); })); }));
+        var right = xc(first) - bw / 2 - lead, top0 = Math.max.apply(null, edges.concat(items.map(function (it) { return Math.max(ys(0), ys(it.v)); }))) + 4;
+        var floor2 = ay - c.size('tick') - 2, y2 = top0, plan = [];
+        items.forEach(function (it) { var bh = (it.lines.length - 1) * lh + size; plan.push({ it: it, x: right - w, y: y2, h: bh, ly: y2 + asc * 0.62 }); y2 += bh + sgap; });
+        var cols = c.marks.filter(function (mk) { return mk.kind === 'bar' && mk.h > 0; });
+        var over = function (a, b) { return a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h; };
+        var bad = right - w < 0 || plan.some(function (pl) {
+          var box = { x: pl.x - 2, y: pl.y - 2, w: w + 4, h: pl.h + 4 }, cx = xc(pl.it.i), fy = ys(pl.it.v);
+          // the level run from the words to under the column, clear of every other column's foot and of every word
+          var run = { x: right + 2, y: pl.ly - 0.5, w: cx - right - 2, h: 1 };
+          return pl.y + pl.h > floor2 || on_edge(pl.y, pl.h) || c.texts.some(function (t) { return over(box, t) || over(run, t); }) ||
+            cols.some(function (mk) { return over(box, mk) || (String(mk.data.key) !== String(rows[pl.it.i][ex]) && over(run, mk)); }) || pl.ly < fy;
+        });
+        if (bad) return false;
+        plan.forEach(function (pl) {
+          pl.it.lines.forEach(function (l, k) { c.text(pl.x + w, pl.y + asc + k * lh, l, { role: 'label', weight: k ? 400 : 700, anchor: 'end', halo: true }); });
+          var cx = xc(pl.it.i), fy = ys(pl.it.v);
+          c.line(right + 2, pl.ly, cx, pl.ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+          if (pl.ly - fy > 1) c.line(cx, pl.ly, cx, fy, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        });
+        return true;
+      }
+      if (named && !stacked) named.forEach(function (nm) {
         var lines = [].concat(nm.text || []);
         if (!lines.length) return;
         var narrow = c.phone || W < 490;
@@ -137,7 +174,7 @@
         var bh = (lines.length - 1) * lh + size, floor = ay - c.size('tick') - 2;
         var cols = c.marks.filter(function (mk) { return mk.kind === 'bar' && String(mk.data.key) !== String(rows[i][ex]); });
         var hit = function (bx, by) {
-          if (bx < 0 || bx + w > W || by < 0 || by + bh > floor) return true;
+          if (bx < 0 || bx + w > W || by < 0 || by + bh > floor || on_edge(by, bh)) return true;
           var b = { x: bx - 2, y: by - 2, w: w + 4, h: bh + 4 };
           var over = function (t) { return b.x < t.x + t.w && t.x < b.x + b.w && b.y < t.y + t.h && t.y < b.y + b.h; };
           return c.texts.some(over) || cols.some(function (mk) { return mk.h > 0 && over(mk); }) ||

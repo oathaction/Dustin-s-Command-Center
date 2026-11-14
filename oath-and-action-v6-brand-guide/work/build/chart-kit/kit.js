@@ -339,7 +339,8 @@
     var g = geo || {}, M = this._m, poly = o && o._poly;
     var rec = { kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: poly,
       stroke: o && o.stroke, sw: o && o.stroke ? (+o.width || 1) : 0, a: g.a === undefined ? w * h : g.a, len: g.len === undefined ? 2 * (w + h) : g.len,
-      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash), strike: !!(o && o.strike), link: !!(o && o.link) };
+      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash), strike: !!(o && o.strike), link: !!(o && o.link),
+      band_edge: !!(o && o.band_edge) };
     if (M) K.map_ink(rec, M);
     this.ink.push(rec);
   };

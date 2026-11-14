@@ -565,6 +565,15 @@ function crossing_faults(d, at) {
       seen.add(k);
       f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} runs through "${String(t.words).slice(0, 30)}"${b.seq > t.seq ? ', drawn after the words' : ''}; draw the words after it with K.parts.clear_label, move them clear, or mark a stroke drawn through words on purpose strike: true (AX S2, BC S1)${at}`);
     }
+    // round 5 (the design director's DD-E1): a band's edge through words fails, halo or not, since the halo leaves the edge
+    // showing between and beside the letters
+    // (a stroke drawn after the words, or before words with no halo, fails above already)
+    for (const b of K.crossed_by(ink, t, b => b.band_edge && b.seq < t.seq && t.halo)) {
+      const k = 'e|' + t.words;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      f.push(`layout: a band's edge runs through "${String(t.words).slice(0, 30)}"; set the words clear of the edge with 4 px to spare, or on a knockout (K.parts.clear_label) (DD-E1)${at}`);
+    }
     // a dot or bar half under the word: its fill reaches into the band its letters stand in (from the cap height to the
     // baseline, line by line as one band) but does not hold the word's middle
     const sz = t.size || 15, ly0 = t.y + 0.14 * sz, ly1 = t.y + t.h - 0.14 * sz;

@@ -495,7 +495,11 @@
       if (crops) p.push('<div class="oac-post" data-role="post">' + (spec.card.post ? '<p class="oac-post-k">' + esc(word(opts, 'card_post')) + '</p><p class="oac-post-v">' + K.chips(spec.card.post, ids) + '</p>' : '') +
         (spec.alt ? '<p class="oac-post-k">' + esc(word(opts, 'card_alt')) + '</p><p class="oac-post-v">' + K.chips(spec.alt, ids) + '</p>' : '') + '</div>');
     }
-    if (has('chart') && spec.phone_notes && spec.phone_notes.length) p.push('<ul class="oac-notes oac-phone-notes" data-role="phone-notes">' + spec.phone_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');
+    // DD-E4 (round 5, opt-in): spec.phone_line sets the phone notes as plain lines in the key's type under the drawing, with no
+    // bullet and no rule
+    if (has('chart') && spec.phone_notes && spec.phone_notes.length) p.push(spec.phone_line
+      ? spec.phone_notes.map(function (n) { return '<p class="oac-phone-notes oac-phone-line" data-role="phone-notes">' + K.chips(n, ids) + '</p>'; }).join('')
+      : '<ul class="oac-notes oac-phone-notes" data-role="phone-notes">' + spec.phone_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');
     if (has('notes') && spec.notes && spec.notes.length) p.push('<ul class="oac-notes" data-role="notes">' + spec.notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');
     if (has('source')) {
       var src = String(spec.source_line || ''), lab = word(opts, 'source_label');
