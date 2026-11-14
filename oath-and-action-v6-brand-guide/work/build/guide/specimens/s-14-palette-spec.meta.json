@@ -1,0 +1,8 @@
+{
+ "alt": "The four data palettes, step by step, on Newsprint and Charcoal: each step’s token, value and contrast in a table, its swatch with its label ink, and proofs in gray and for three kinds of color blindness, then the grade line code.",
+ "readable": true,
+ "fit_switch": false,
+ "notes": "Written by palette_spec_build.py from tokens 6.0.0-gate3.3 (R5-3); round 0's measures on today's tokens",
+ "label": "The data palettes, specified",
+ "caption": "Each data palette Rule 14.5 names, step by step: its tokens, its values on Newsprint and Charcoal, each value’s contrast, and proofs in gray and for three kinds of color blindness. A script writes this plate from the token files."
+}
