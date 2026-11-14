@@ -2,7 +2,7 @@
  "id": "14.1",
  "title": "Start from the reader’s question, then choose the form.",
  "rule": [
-  "Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. Each group of this chapter opens with one of those questions, and each entry in the group says when its form fits the data at hand.",
+  "Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. The guide at the head of this chapter lists every form under one of those questions, and each entry says when its form fits the data at hand.",
   "When one figure answers the question, a sentence carries it (Rule 14.134). When a reader needs to look values up, a table does (Rule 14.133)."
  ],
  "use_when": null,
@@ -30,7 +30,7 @@
   },
   {
    "label": "Question to form",
-   "value": "The question that opens each group of this chapter, then the entry whose use names the data at hand"
+   "value": "The question in the guide at the head of this chapter, then the entry whose use names the data at hand"
   },
   {
    "label": "One figure",

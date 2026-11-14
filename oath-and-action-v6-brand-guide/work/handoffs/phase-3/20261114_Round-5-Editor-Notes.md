@@ -6,6 +6,7 @@ The owners read the "Words for ..." sections directly. Each gives the words an o
 
 ## Status
 
+- 03:30 UTC. **Chapter 14's intro rewritten** (task 2) in `phase3_ch14_rules_build.py`, naming the guide, the palette plate and the three charts in full; the opener's caption and Rule 14.1 now point to the guide. Two runs, the second changing nothing; the chapter file rebuilt, only those four fields changed; strict build passes. Still waiting: the selection guide's tier key and caption (its maker), stage 19 (the data lead).
 - 03:29 UTC. **Pass 2 on Rules 14.142 to 14.144 written in**: one word edit (14.144's print lines); Loop R10's first step kept for the stepper; two runs, the second writing nothing; figure checks 35 of 35; strict build passes. The selection guide's words still wait for its maker; stage 19 waits for the data lead.
 - 03:25 UTC. **Pass 2 drafts written, nothing applied**: "Words for the complex examples maker, pass 2" (two rows; a third, on the ink word, withdrawn after I read S53's reason) and the selection guide's tier key and caption (SG-5, DD-G4), both waiting for their makers to report. Stage 19's "can no longer be enforced" stays unless the data lead rules otherwise (main session, 03:23).
 - 03:22 UTC. **Chapter 15 words pass 2 written in** (D3-669, on the main session's 03:18 word): 23 word edits in `phase3_ch15_build.py`, stage numbers named "stage" throughout Rule 15.22 and stage 19 rewritten; two runs, the second changing nothing; strict build passes. ED5-4 and ED5-5 closed. Trackers final. Rules 14.142 to 14.144 wait for my pass 2.
@@ -319,13 +320,26 @@ On the main session's word (03:18) that the systems designer's second pass had l
 
 **Checks.** Baseline run before my edits: no output changed. After the 23 edits, run twice: both exit 0, every check passing (the generator's phrase checks against the workflow sources file among them), and the second run changed nothing. Outputs changed: `15-systems-graphics.json`, `manifest-systems-graphics.json` and the four correct plates, words only. Strict build to scratch `guide-e5.html`: exit 0, 12,105,433 bytes. My copy of the generator before this pass is `phase3_ch15_build.before2.py` in my scratch folder.
 
-## Chapter 14's intro (draft, applied once the items exist)
+## Chapter 14's intro (draft, then applied)
 
 The intro now says "Fourteen rules come first", which stops being true when the selection guide opens the chapter, and says every entry has "a finished example that our chart kit draws", which was never true of the 30 reference and avoid sketches. The draft, for the first paragraph of `intro` in `phase3_ch14_rules_build.py`; the second paragraph stands:
 
 > This chapter sets how Oath & Action shows numbers. It opens with a guide to choosing a chart, every form listed under the question it answers. Fourteen rules then hold for every chart, with the four data palettes set out step by step after the rule on color. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. A core or extended form shows a finished example that our chart kit draws from frozen data, with its table as live text, and a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms and rules together on one subject.
 
 Sentence lengths 8, 16, 21, 25, 35 and 18 words, on six different frames (W03, W13). In the same pass, once the guide's anchor is set: the opener's caption ("Each group of this chapter opens with the question a reader brings") becomes "Each family of forms opens with the question a reader brings, and its forms answer it.", since groups 1 and 18 open on none; and Rule 14.1's sentence "Each group of this chapter opens with one of those questions" and its "Question to form" spec point to the guide that opens the chapter.
+
+### Applied at 03:30 UTC
+
+On the main session's word that the three charts are final and the guide's place is settled (a front door before the rule index). Written in `phase3_ch14_rules_build.py`, my own generator; no figure that could still move (no bytes, no per-question counts; 127 forms and 14 rules are the plan's fixed numbers).
+
+| Where | Before | After | Why |
+|---|---|---|---|
+| `intro[0]` | This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example that our chart kit draws from frozen data, with its table as live text. | This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. A core or extended form shows a finished example that our chart kit draws from frozen data, with its table as live text, and a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms and rules together on one subject. | The intro now names all that the chapter holds: the guide, the palette plate and the three charts. "Fourteen rules come first" stopped being true when the guide moved ahead of them, and "a finished example that our chart kit draws" was never true of the 30 reference and avoid sketches. Six sentences on six frames, 8 to 37 words (W03, W13). `intro[1]` stands |
+| The opener's caption | Each group of this chapter opens with the question a reader brings, and its forms answer it. | The sixteen questions a reader brings, each with the family of forms that answers it. | Groups 1 and 18 open on no question, so the old caption is untrue now; the new one says what the figure shows |
+| Rule 14.1 `rule[0]`, last sentence | Each group of this chapter opens with one of those questions, and each entry in the group says when its form fits the data at hand. | The guide at the head of this chapter lists every form under one of those questions, and each entry says when its form fits the data at hand. | The same untruth, and the rule now points to the guide it serves |
+| Rule 14.1 spec "Question to form" | The question that opens each group of this chapter, then the entry whose use names the data at hand | The question in the guide at the head of this chapter, then the entry whose use names the data at hand | The same |
+
+**Checks.** My generator run twice: every check passes, and the second run changed no file (hashes of the 14 entries, `14-chapter.json` and my plates). `git diff` on my outputs: `14-001.json` and `14-chapter.json`, two lines each. Then `phase3_ch14_build.py` (default rounds 1 to 5) to carry the words into the chapter file: exit 0, 144 rules, 0 faults, one file written; a field-by-field diff of `14-data-visualization.json` against my copy from before shows the four fields above and nothing else; `--check` then reports 99 of 99 files current. Strict build to scratch `guide-e7.html`: exit 0, 12,105,881 bytes, each new sentence found once on the page.
 
 ## Routine calls
 
@@ -344,6 +358,7 @@ Sentence lengths 8, 16, 21, 25, 35 and 18 words, on six different frames (W03, W
 - D3-xxx | Rule 15.23 no longer says the hearing is where the public takes part, and Rule 15.22 cites Rule 11.3 for the stop square | Rule 11.1 says Congress's hearings hear invited witnesses; Rule 11.3 is the rule that ends a stopped bill on a square
 - D3-xxx | Rule 15.22 and its plate call each numbered stage a stage, never a step | Rule 15.23 teaches that a tracker's steps and a route's stages differ, and it prints the same numbers as "Stage N"
 - D3-xxx | Stage 19 cites its 2026 example as "the latest such ruling we found" | The research lead chose it by date from the opinion lists it read to November 9, 2026; the words claim no wider search
+- D3-xxx | Chapter 14's intro names the guide, the palette plate and the three charts in full, and the opener's caption and Rule 14.1 point to the guide | The old words said the rules come first and every form has a kit example, untrue once the guide leads and never true of the sketches
 - D3-xxx | Stage 19's stop line keeps "can no longer be enforced" until the data lead rules | The research lead warned against saying more than Marbury's "void"; the main session sent the point to the data lead, and the line stands meanwhile
 - D3-xxx | Rule 14.144's working title says "effect" where the brief says "measure" | In a civic guide a measure is also a bill or a ballot question, and the atlas calls each column an effect
 

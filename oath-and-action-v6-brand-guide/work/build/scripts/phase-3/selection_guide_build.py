@@ -59,13 +59,13 @@ M1, M2, M3, M4 = "oac-f-mag-1", "oac-f-mag-2", "oac-f-mag-3", "oac-f-mag-4"
 SS, SC, SL, SG, ST = "oac-s-subject", "oac-s-context", "oac-s-light-fill", "oac-s-gridline", "oac-s-track"
 INKS = {FS, FC, FL, FG, FT, M1, M2, M3, M4, SS, SC, SL, SG, ST}
 TIER_ORDER = ["Core", "Extended", "Reference", "Avoid"]
-# What each tier means, once, at the guide's head (DD-G4), in the words of the editor's caption in 14-chapter.json; a key,
-# so phrases (chapter 02's scope note). The editor's words pass decides them.
+# What each tier means, once, at the guide's head (DD-G4); a key, so phrases (chapter 02's scope note). The editor's words,
+# from its words pass on the guide (03:25 UTC, SG-5); DR-240 sets what an avoid entry draws.
 TIER_KEY = [
-    ("Core", "The forms we use most, each with a finished example"),
-    ("Extended", "For a story that needs one, with a finished example"),
-    ("Reference", "Drawn as a sketch, for a narrower job"),
-    ("Avoid", "A form that misleads; its entry shows the one to use in its place"),
+    ("Core", "Forms we use most, each with a finished example"),
+    ("Extended", "Forms for a story that needs them, each with a finished example"),
+    ("Reference", "Forms for a narrower job, each drawn as a sketch"),
+    ("Avoid", "Forms that mislead, each sketched beside the form to use instead"),
 ]
 
 

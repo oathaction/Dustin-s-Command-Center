@@ -538,14 +538,15 @@ def rule_14_1(B):
     return entry(
         "14.1", "Start from the reader’s question, then choose the form.",
         ["Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names "
-         "the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. Each "
-         "group of this chapter opens with one of those questions, and each entry in the group says when its form fits the data at hand.",
+         "the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. The "
+         "guide at the head of this chapter lists every form under one of those questions, and each entry says when its form fits the "
+         "data at hand.",
          "When one figure answers the question, a sentence carries it (Rule 14.134). When a reader needs to look values up, a table does "
          "(Rule 14.133)."],
         ["Each form answers one kind of question well. Bars sorted by size show which year was largest and hide the order of the years, so "
          "a reader who asked how something changed cannot see the change."],
         [("First step", "The reader’s question, in a reader’s words, written into the chart’s spec before any drawing"),
-         ("Question to form", "The question that opens each group of this chapter, then the entry whose use names the data at hand"),
+         ("Question to form", "The question in the guide at the head of this chapter, then the entry whose use names the data at hand"),
          ("One figure", "A sentence, Rule 14.134"), ("Values to look up", "A table, Rule 14.133")],
         ["14.29", "14.15", "14.133", "14.134"],
         "Write reader_question in the spec first, then pick the form from the group whose question matches; the kit draws it with "
@@ -1592,7 +1593,7 @@ def opener(B):
           alt="The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works "
               "in one look, each with a small drawing of its typical form and the family of forms that answers it.",
           notes="The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.")
-    return {"specimen": "s-14-opener", "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it.",
+    return {"specimen": "s-14-opener", "caption": "The sixteen questions a reader brings, each with the family of forms that answers it.",
             **{k: v for k, v in B.plates["s-14-opener"].items()}}
 
 
@@ -1646,9 +1647,12 @@ def chapter(B, sources):
         "instruction": "Start from the reader’s question to choose a chart, then title it with the evidence it shows.",
         "opener": opener(B),
         "intro": [
-            "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take "
-            "then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example "
-            "that our chart kit draws from frozen data, with its table as live text.",
+            "This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the "
+            "question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes "
+            "step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. "
+            "A core or extended form shows a finished example that our chart kit draws from frozen data, with its table as live text, and "
+            "a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms "
+            "and rules together on one subject.",
             "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those "
             "rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."],
         "basis": BASIS,
