@@ -1777,13 +1777,13 @@ CSS = (
     # the root follows the reader's colors in forced colors and paints its own ground (AX 1.10)
     ".sg{position:relative;forced-color-adjust:auto;background:var(--oa-color-surface);color:var(--oa-color-text-primary)}"
     ".sg-qs,.sg-fs{list-style:none;margin:0;padding:0}"
-    ".sg-q{position:relative;padding:var(--oa-space-300) 0 var(--oa-space-400)}"
+    ".sg-q{position:relative;padding:var(--oa-space-300) 0}"
     ".sg-q:first-child{padding-top:0}.sg-q:last-child{padding-bottom:0}"
     ".sg-q+.sg-q{border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}"
     ".sg-qt{margin:0 0 var(--oa-space-200);font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);"
     "text-wrap:balance;max-width:34em;break-after:avoid}"
     # tiles on one column grid in rem, so larger text takes fewer columns (AX 1.8)
-    ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,7rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
+    ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,6rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
     ".sg-fs>li{break-inside:avoid}"
     ".sg-fs a{display:flex;flex-direction:column;align-items:flex-start;gap:var(--oa-space-050);min-height:44px;"
     "color:inherit;text-decoration:none}"

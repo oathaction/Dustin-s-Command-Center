@@ -4,12 +4,14 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the tr
 
 ## Status
 
-02:16 UTC. **For the systems designer: the trackers have landed (Rule 15.23 can start).** Rules 11.10 (ballot measure) and 11.11 (court case) are built in `11-icons.json`, with their correct and failure plates and one step table each. Their six steps, in order, as built under the research lead's facts and the data lead's ruling (f):
+02:32 UTC. **Rules 11.10 and 11.11 are built with every word and fact landed so far, and ready for the data lead's batch 2.** Applied since 02:16: the editor's words (step words, end words, Rule 11.11's title, Rule 11.12 for all four trackers), the data lead's batch 1 (the Legislature's pass under slashes, "Affirmed" as ED5-3 holds), the research lead's three source points and source line. Strict build `guide5.html` (02:31): exit 0, 0 warnings, 369 rules, chapter 11 at 500,635 bytes. Captures of the six new plates at five widths on both grounds are running.
+
+**For the systems designer (Rule 15.23): the trackers have landed, and their step names are final** (the editor kept all twelve):
 - **11.10, a state ballot measure (citizen initiative):** 1 Filed, 2 Title and summary, 3 Signatures, 4 Legislature (a slash where the initiative is direct), 5 On the ballot, 6 Vote (current until the count is certified).
 - **11.11, a federal civil case:** 1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme Court petition (a denied petition ends here on a square), 6 Supreme Court ruling.
-Read them from `BALLOT_STEPS` and `COURT_STEPS` in `apply_systems_ch11.py` (each row: name, what happens, the law) or from the plates `s-11-ballot-steps` and `s-11-court-steps`. The names stand unless the editor's words pass changes them; I will say so on this line if it does.
+Read them from `BALLOT_STEPS` and `COURT_STEPS` in `apply_systems_ch11.py` (each row: name, the editor's words for what happens, the law) or from the plates `s-11-ballot-steps` and `s-11-court-steps`.
 
-R5-8: done and proved (01:49). Token source edit landed at **01:46 UTC** (three strings in `work/build/tokens/src/oa-tokens.src.mjs`, lines 139, 398 and 599); the engineer owns the rebuild. Next: the editor's words pass on the two rules, my captures at five widths on both grounds (queued for load under 4), the data lead's sign-off. Strict build `guide2.html` (02:10): exit 1 on one warning that is chapter 14's (`s-14-s96`), none of chapter 11's; chapter 11 at 499,958 bytes.
+R5-8: done and proved (01:49), signed off by the data lead (batch 1, 02:27). Token source edit landed at **01:46 UTC** (three strings in `work/build/tokens/src/oa-tokens.src.mjs`, lines 139, 398 and 599); the engineer owns the rebuild.
 
 ## Summary
 
@@ -126,6 +128,8 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 - D3-xxx | A higher court's ruling prints the docket's own verb, "Affirmed", explained once in Rule 11.11's text ("which leaves the ruling below in place"), with Reversed, Vacated and Modified | ED5-3 (data lead, batch 1): "Upheld" names no object and can read as a law upheld when a court affirmed its striking down; one constant, `AFFIRMED`, sets it
 - D3-xxx | The court source line lists every section the step table and Rule 11.12 cite (28 U.S.C. 1254, 1291, 1292, 1331, 2101, 2106, 2107) and U.S. Courts' "Supreme Court Procedures" for the tie vote; Executive Order 12866 takes its own source line behind Rule 11.12 | The data lead's source points 2 and 3; the research file's dates (November 14, 2026; the order November 12, 2026)
 
+- D3-xxx | The three source points settled by the research lead (02:30): the court source line as it suggested (1253, 2284 and Neil v. Biggers added); the "Straight to the Supreme Court" row and Rule 11.11's text say an injunction order of a three-judge district court; a tie prints "Affirmed by an equally divided Court, which is a tie vote" | The data lead's batch 1 points; 1253 reaches only that order, and the Court's own words for a tie are its disposition (ruling (f))
+
 ## Requests
 
 ### To the editor
@@ -137,7 +141,7 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 2. **Invented numbers (your item on DR-151's practice):** measures 99010, 99011 and 99013 and cases 99014 to 99016 continue chapter 11's records counter past 99009 and skip 99012 (H.R. 99012). Checked: a federal case number carries its year before a hyphen (the research file's own "No. 22-451" for Loper Bright), so a bare five-digit number is no docket number; no state is named, so no measure number can match a state's. Not checked: every state's measure numbering scheme.
 
 ### To the research lead
-1. The data lead's source point 1 (batch 1): Rule 11.11's spec row "Straight to the Supreme Court" rests on 28 U.S.C. 1253. Your facts name it but give no read date. If you read it today, send the line (section, edition, date) and I add it to the court source line; if not, I drop the row. Points 2 and 3 are applied: the tie vote now cites U.S. Courts' "Supreme Court Procedures" (your step 6 row), and the source line lists 1254, 1292 and 2101.
+1. Answered at 02:30 and applied at 02:30: your source line for Rule 11.11 word for word with its closing words; 28 U.S.C. 1253 and 2284 behind the "Straight to the Supreme Court" row, whose words now hold to an injunction order of a three-judge district court; the tie as "Affirmed by an equally divided Court, which is a tie vote", from Neil v. Biggers; the basis as you suggested. Nothing open.
 
 ### To the engineer
 1. R5-8: `guide_build.py` line 1669 (above). Also a heads-up: I edit three strings in `work/build/tokens/src/oa-tokens.src.mjs` for R5-8 (lines 139, 398 and 599) and rebuild `tokens.json` and the token table; nothing else in the token set moves.

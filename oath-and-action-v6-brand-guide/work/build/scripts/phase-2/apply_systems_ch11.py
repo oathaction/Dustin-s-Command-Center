@@ -1831,8 +1831,8 @@ def build(ctx):
                      'Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker '
                      'uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals '
                      'court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no '
-                     'room for keeps its number under a slash, as when an appeal goes straight from a special panel of '
-                     'three district judges to the Supreme Court.',
+                     'room for keeps its number under a slash, as when a district court of three judges grants or denies '
+                     'an injunction and the law sends the appeal straight to the Supreme Court.',
                      'The words say how each court ruled, with the court and the date. A trial court’s judgment reads '
                      'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
                      'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + AFFIRMED + ', '
@@ -1849,7 +1849,8 @@ def build(ctx):
                              'tracker that filled step 6 would tell a reader the Court had ruled on a case it never '
                              'heard. Naming each court’s ruling as its own step, and the court in the end words, keeps '
                              'clear which court spoke last.'],
-                    'basis': '28 U.S.C. 1291, 2106 and 2107; Rules of the Supreme Court, Rules 10, 13 and 16'},
+                    'basis': '28 U.S.C. 1253, 1291, 2101, 2106 and 2107; Rules of the Supreme Court, Rules 10, 13 and '
+                             '16; Neil v. Biggers (1972)'},
             'correct': {'specimen': 's-11-11-correct',
                         'caption': 'Three cases at 360 px. One waits on the appeals court; the Supreme Court reversed one '
                                    'and sent it back, said in words while all six steps stay filled; and the Court denied '
@@ -1872,10 +1873,11 @@ def build(ctx):
                                                           'denied by the Supreme Court, on step 5'},
                 {'label': 'Never appealed', 'value': 'A square on step 2, with “No appeal was filed in the 30 days the law '
                                                      'allows.”, or 60 days where the United States is a party'},
-                {'label': 'A tie in the Supreme Court', 'value': AFFIRMED + ' by a tie vote, and “The lower court’s ruling '
-                                                                 'stands.”'},
-                {'label': 'Straight to the Supreme Court', 'value': 'Steps 3 and 4 under slashes, where the law sends an '
-                                                                    'appeal from three district judges straight there',
+                {'label': 'A tie in the Supreme Court', 'value': AFFIRMED + ' by an equally divided Court, which is a tie '
+                                                                 'vote, and “The lower court’s ruling stands.”'},
+                {'label': 'Straight to the Supreme Court', 'value': 'Steps 3 and 4 under slashes, where a district court '
+                                                                    'of three judges grants or denies an injunction and the '
+                                                                    'law sends the appeal straight there',
                  'token': 'oa.component.mark.slash'},
                 {'label': 'Inside a step, in words', 'value': 'An order on an injunction and its appeal, under step 2; a '
                                                               'rehearing by the full appeals court, under step 4'},
@@ -2026,16 +2028,16 @@ def build(ctx):
             'November 14, 2026. We read these four states as examples of a citizen initiative, and each state sets its '
             'own steps, deadlines and signature counts. The steps of a ballot measure and how one can end, behind Rule '
             '11.10.',
-            # the data lead's source points 2 and 3 (batch 1, 02:27): every section the step table cites, the
-            # appeal of an injunction Rule 11.12 names, and the page that gives the tie vote; point 1 waits on the
-            # research lead
-            'Sources: 28 U.S.C. 1254, 1291, 1292, 1331, 2101, 2106 and 2107, via govinfo.gov, the 2024 edition of the '
-            'U.S. Code; the Federal Rules of Civil Procedure, as amended to December 1, 2025, and the Federal Rules of '
-            'Appellate Procedure, as amended to December 1, 2024, via uscourts.gov; the Rules of the Supreme Court of '
-            'the United States, adopted February 17, 2026, effective March 16, 2026, via supremecourt.gov; and U.S. '
-            'Courts, “Supreme Court Procedures”, no page date; all retrieved November 14, 2026. The steps of a federal '
-            'civil case, the time to appeal, the courts’ rulings and a tie in the Supreme Court, behind Rule 11.11, and '
-            'the appeal of an injunction, behind Rule 11.12.',
+            # the data lead's three source points (batch 1, 02:27), settled by the research lead (02:30, its line):
+            # 1253 and 2284 for the three-judge court, Neil v. Biggers for the tie, every section the step table cites
+            'Sources: 28 U.S.C. 1253, 1254, 1291, 1292, 1331, 2101, 2106, 2107 and 2284, via govinfo.gov, the 2024 '
+            'edition of the U.S. Code; the Federal Rules of Civil Procedure, as amended to December 1, 2025, and the '
+            'Federal Rules of Appellate Procedure, as amended to December 1, 2024, via uscourts.gov; the Rules of the '
+            'Supreme Court of the United States, adopted February 17, 2026, effective March 16, 2026, via '
+            'supremecourt.gov; and Neil v. Biggers, 409 U.S. 188 (1972), on a tie in the Supreme Court, via '
+            'govinfo.gov; all retrieved November 14, 2026. The steps of a federal civil case, the time to appeal, the '
+            'courts’ rulings and a tie in the Supreme Court, behind Rule 11.11, and the appeal of an injunction, behind '
+            'Rule 11.12.',
             # Rule 11.12's draft rule at the White House (the editor's words, D3-1879), from the workflow sources file
             'Source: Executive Order 12866 of September 30, 1993, section 6(b)(2), the National Archives’ copy, '
             'retrieved November 12, 2026; later orders amended parts of it, and we did not trace them. The review of a '
