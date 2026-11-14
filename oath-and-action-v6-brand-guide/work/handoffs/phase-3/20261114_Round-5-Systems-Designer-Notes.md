@@ -88,4 +88,22 @@ The design director's DD-R2 and DD-R5 (`20261114_Round-5-Design-Director-Notes.m
 
 ## Tested
 
+All in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/7633c399-b692-5041-be92-a87ecd098fbf/scratchpad/phase-3/round-5/systems-designer/`), on this container's Chromium (Playwright).
+
+- **Generator and its checks.** `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`: every check passes, rounds 1 to 4's and this round's. New this round: each of 15.22's 19 stages tied to a row of the workflow sources file by phrase and read date, and no stage without a source; a row read only in snippets or "not read closely" stops the build; the spine is exactly the stages every enacted bill passes (ruling (e)); 15.24's eleven routes in the atlas's order, the 126 entries (13 dated) and their per-route counts asserted, each route's stages and sources held to rows of the sources file; 15.23's step names read from `11-icons.json` (six per tracker), every Route FS stage mapped to a step or to "after step 6", the two data files' rows asserted; 15.25's 57 rows numbered 1 to 57, the first audit's type counts and its one value-conflict row asserted, ruling (e)'s group order asserted, the sidecar's counts asserted, every row with words, every model value computed from the model or (rows 42, 43, 54) read from the research file's own model reading and held by shape; no punctuation or possessive touching a chip (the check now also catches "’s"); every chip ID in the atlas (domains added); no studio word, em dash or listed filler; Rule 01.9 over 38 examples (D02 at 8).
+- **R5-8.** Three lines mapped by one function; the generator run twice with no change between runs (hashes); `git diff` on my files showed those six lines only.
+- **`four_loop(steps_g=True)`.** The chapter file, the manifest and all 43 plates hashed the same before and after the change; `steps_g=True` returns four `data-s` steps and four `data-p` pills (read by script).
+- **Second run.** Final state at 02:44: a second run of the generator changed no file of mine, and `git diff` on the generator, the chapter file, the manifest and every `s-15-*` plate is empty (the main session's snapshots hold the same bytes).
+- **Strict builds.** `g5.html` (02:41, final): exit 0, 0 warnings, 12,090,258 bytes, 369 rules, 679 specimens; chapter 15 at 556,568 bytes; projected 15,117,121. Earlier `g3.html` and `g4.html` exited 0 with 0 warnings; `g1.html` (02:02) exited 1 on chapter 14's `s-14-s96` only. Each build's rewrite of `plate-share.json` was put back.
+- **V7 check** (`v7_check.py --page g5.html`): PASS, 0 failures; chapter 15 at 525 chips (each of 15.24's 126 entries carries its reform and route chips, so the check reads every entry's date against the model).
+- **Same-page links.** Every `href="#…"` in chapter 15 of `g3.html` resolves (84 targets, 0 missing), the rules 15.25's rows link to among them.
+- **Captures, measured by script** (`cap.js`: type under 13 px, text outside its stage, SVG text overlapping, a frame that scrolls): the eight new plates at 1440, 1024, 768, 390 and 360 px on Newsprint and with the stage set to Charcoal, 80 captures from `g4.html` (02:33 to 02:37, load 4.07 at the start), 0 flagged; wide plates at 680 px at 1440, 1024 and 768, every stage 328 at 390 and 360. 15.24 and 15.25 with every disclosure open at 1440 and 390 px (`cap4open/`): 0 flagged.
+- **Read by eye:** 15.22 at 1440 and 390 on Newsprint and 1440 on Charcoal; 15.23 at 1440; 15.24 at 1440, closed and open; 15.25 at 1440, at 768 on Charcoal, and open at 1440.
+
 ## Not tested
+
+- The guide check (`guide_check.js`), quick or full, on these builds: not run, to keep the browser load down; the strict build and my link scan cover same-page links.
+- A 320 px window; print (the shell opens every disclosure at `beforeprint`, which Playwright's print emulation does not fire); forced colors (15.22's marks carry a forced-colors rule, unchecked); 200 percent text; a screen reader; Firefox and Safari (15.23's bullet uses `:has()`).
+- The data lead's sign-off, the editor's words pass and the accessibility lead's tests on Rules 15.22 to 15.25.
+- Grayscale and color-vision reads of 15.22's spine against its context ink.
+- 15.25's three row values taken from the research file's model reading (rows 42, 43, 54): held by shape, not recomputed.
