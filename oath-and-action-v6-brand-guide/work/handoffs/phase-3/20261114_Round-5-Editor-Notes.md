@@ -65,6 +65,73 @@ Written at 01:50 UTC. Group 2's title and line come first, since they need no st
 
 **A question for you, on Rule 11.12 (old 11.10).** Its title, "Say a wait or a later step in words, and keep the count at six.", reads as a rule for every tracker in group 2, and after DR-274 it follows the court case tracker. Its words are a records request's and an agency rule's ("every request still counts to six", "an agency’s question to the requester", "the Federal Register for a rule"). If a ballot measure's or a court case's waits follow it too (a stay, a signature count under review), its first sentence should give one example from each; if they do not, its title should name the processes it covers, such as "Say a request’s or a rule’s wait in words, and keep the count at six." Your call with the data lead's ruling (f); I write the words once you say which.
 
+### The trackers' step names and end words (02:16 UTC)
+
+From the research lead's "Facts for owners", item 1 (read at 02:13), and the data lead's ruling (f). The step names stay as the research lead proposed them: each is a plain name for what happens, as Rule 11.1's are. The end words change where the law's word would stop a newcomer, as Rule 11.1's failure plate teaches ("The steps take the clerk’s names"), and where one verb family already runs through group 2: Rule 11.8 ends a request "Withdrawn by the requester" and an appeal "Upheld" or "Reversed and sent back", so the new trackers say the same thing the same way. Each end prints with its date, as group 2's line says. The source column is the research lead's; I add no fact.
+
+**Rule 11.10, the ballot measure**
+
+| Step | Name | In words |
+|---|---|---|
+| 1 | Filed | The sponsors file the measure’s full text with the attorney general |
+| 2 | Title and summary | The attorney general clears the measure and writes the title and summary that petitions and ballots carry |
+| 3 | Signatures | The sponsors gather signatures, and election officials count and check them |
+| 4 | Legislature | The Legislature votes on the measure first, where the state’s initiative is indirect; under a slash where it goes straight to the ballot |
+| 5 | On the ballot | The state’s election officer certifies the measure for the ballot |
+| 6 | Vote | The voters decide, and the state certifies the result |
+
+| Where it ends | Draft words now (`11-icons.json`) | Words | Why |
+|---|---|---|---|
+| Step 2 | Not certified by the attorney general | Not certified by the attorney general | The law's verb, "if he shall certify", and plain enough; the rule's text gives the reason a measure fails it (proper form, an excluded subject, the same measure at either of the last two state elections) |
+| Steps 1 to 5 | Withdrawn by its proponents | Withdrawn by its sponsors | "Sponsors" is the everyday word for the people who file a measure; "proponents" is California's legal term, which the rule's text may give once. The same frame as "Withdrawn by the requester" |
+| Step 3 | Did not qualify: too few valid signatures | Too few valid signatures to qualify | One phrase with no colon; it keeps the law's verb, "fails to qualify" |
+| Step 4 | Enacted by the Legislature | Passed by the Legislature | Plain, and true in every state the research read (Ohio's own words are "passed by the general assembly"). The draft's "which makes it law with no vote of the people" goes further than the sources read: in Michigan and Ohio such a law is still "subject to referendum", and Massachusetts's path after enactment was not read. Say instead: "The voters do not vote on it." |
+| Step 4, a legislative referral (not an end) | Referred by the Legislature | Sent to the voters by the Legislature | Says what the Legislature did, in words a newcomer uses |
+| Step 5 | Removed from the ballot by a court | Removed from the ballot by a court | Stands |
+| Step 6, after certification | Passed; Failed | Approved by voters; Rejected by voters | The law's own verbs ("approved by a majority", "approval or rejection"), and they name who decided (W02), so a reader never mixes the voters' vote with "Passed by the Legislature" at step 4. Each with the date of the vote and the date it was certified, then when it takes effect: "Approved by voters on November 3, certified on November 25. Takes effect December 25." *Illustrative* |
+| Step 6, Massachusetts's 30 percent rule | (none) | Not approved by voters, then the sentence: "Most voters said yes, but Massachusetts also needs yes votes equal to 30 percent of all ballots cast." | "Rejected" would be untrue when most voters said yes; the sentence gives the rule from Amendment Article LXXXI |
+| Step 6, before certification (current, not an end) | Step 6 of 6: Vote. The count stays unofficial until the state certifies it. | Step 6 of 6: Vote. The count is unofficial until the state certifies it, set for November 25. *Illustrative* | Ruling (f): the step stays current until certification. The date tells a reader when to look again, and "set for" claims only the schedule |
+
+**Rule 11.11, the court case**
+
+| Step | Name | In words |
+|---|---|---|
+| 1 | Filed | One side sues the other in a federal district court, the trial court |
+| 2 | Trial court ruling | The trial court decides, with or without a trial, unless the case settles or is dismissed |
+| 3 | Appeal | The side that lost asks a court of appeals to review the ruling |
+| 4 | Appeals court ruling | Three judges of the court of appeals decide |
+| 5 | Supreme Court petition | The side that lost asks the Supreme Court to hear the case, and the Court agrees or declines |
+| 6 | Supreme Court ruling | The Supreme Court decides |
+
+| Where it ends | Draft words now | Words | Why |
+|---|---|---|---|
+| Step 2, a judgment | (a sentence in the rule) | Decided for the plaintiff; Decided for the defendant; with ", without a trial" where the court granted summary judgment | The rule's text defines the two words once (H02): the plaintiff is the side that sued, the defendant the side it sued. The judgment's own word for who won |
+| Step 2, by agreement | Settled | Settled by the parties | Names who acted (W02) |
+| Step 2, by the plaintiff | Dismissed | Withdrawn by the plaintiff | A voluntary dismissal (Rule 41(a)) is the plaintiff's act, in group 2's "Withdrawn by" frame |
+| Step 2, by the court | Dismissed | Dismissed by the court | Rule 41(b) and Rule 12(b)(6); the court acts, so it is named |
+| Steps 4 and 6 | Affirmed; Reversed; Vacated; Modified | Upheld; Reversed; Vacated; Modified; each followed by the court, as in "Upheld by the appeals court" | "Upheld" is the plain word for "affirmed", the one Rule 11.8 already prints for an appeal; "Reversed" and "Modified" are plain as they stand. "Vacated" has no plain word that 28 U.S.C. 2106 does not already use for something else ("set aside" is its own verb there), so it stays, and the rule's text glosses it once: "Vacated, which cancels the ruling below". **For the data lead:** ruling (f) says the court's own word; this keeps every verb but one as the court enters it and maps "affirmed" to "Upheld" one for one, which the rule's text says. If the ruling holds "Affirmed" on the face, it prints "Affirmed" and the gloss moves to the text |
+| Steps 4 and 6, a remand | and sent back | Reversed and sent back; Vacated and sent back; then the sentence "The trial court takes the case up again." | Rule 11.8's own phrase; the marks never move back (ruling (f)) |
+| Step 4 | Appeal dismissed | Appeal withdrawn, where the parties agree or the side that appealed asks (FRAP 42(b)); Appeal dismissed by the court, otherwise | The research lead's source for this end is Rule 42(b), a party's act, which "withdrawn" says |
+| Step 5 | Review denied by the Supreme Court | Petition denied by the Supreme Court, then the sentence "The appeals court’s ruling stands." | The docket's own word for the petition the step names, and plain. The rule's title then reads "...and never call a denied petition a ruling", or better, in the positive (W09): "Follow a court case through six steps, and end a denied petition at step 5." (14 words) |
+| Step 6, a tie | (none) | Upheld by a tie vote, then "The lower court’s ruling stands." | The Court's "affirmed by an equally divided Court", in plain words, with the U.S. Courts page's own sentence |
+| Steps 5 and 6, by agreement | (none) | Withdrawn by the parties | Supreme Court Rule 46.1's dismissal by agreement |
+| Step 2, never appealed | (a square on step 2) | Decided for the plaintiff on March 3, with the sentence "No appeal was filed in the 30 days the law allows." *Illustrative* | Says what ended the line, in words, as ruling (f) asks |
+
+### Rule 11.12's words for all four trackers (D3-1879)
+
+The main session's call on ED5-2: Rule 11.12 covers the ballot measure and court case trackers too. The title stands ("Say a wait or a later step in words, and keep the count at six."), since it already names no tracker. The rest, for `apply_systems_ch11.py`:
+
+| Field | Now | Words | Why |
+|---|---|---|---|
+| `rule[0]` | A wait inside a step, such as an agency’s question to the requester, a fee estimate or an extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date. | A wait inside a step shows as words under the step it falls in and never adds a mark, so every tracker in this group still counts to six. A records request may wait on the requester’s answer, a fee estimate or an extension of up to 10 working days, and a draft agency rule may wait up to 90 days for review at the White House. A ballot measure may need a second round of signatures after the Legislature declines to act, and a court case may pause while a court of appeals hears an appeal of an order on an injunction. Anything after the end words, such as a lawsuit over a request or a rule, a case sent back to the trial court, or a legislature’s repeal of a measure the voters approved, follows them as a sentence with its date. | Names all four kinds, each with a wait its own source names: 5 U.S.C. 552(a)(6) for requests (as now), Executive Order 12866, section 6(b)(2), for a draft rule ("within 90 calendar days after the date of submission"), the second round of signatures in Massachusetts and Ohio, and 28 U.S.C. 1292(a)(1) for an injunction's appeal. The research lead's file gives each. The last sentence keeps the old one's job for every kind; Massachusetts's "the general court may amend or repeal a law approved by the people" is the source for the repeal |
+| `rule[1]` | A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries a warning ... | A status taken from the deciding body’s own record needs no mark: an agency’s tracking service, the Federal Register for a rule, the state election office’s notice for a ballot measure, or the court’s docket for a case. A status we piece together ourselves, such as a wait we learn of from an agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.17 draws every warning: “Warning: Checked April 20. The agency may have acted since.” | Ruling (f)'s records, one per kind. The warning's example stays a request's, since the plates show requests |
+| `why.text[0]`, second sentence | A count that changed from one request to the next would stop readers from comparing them. | A count that changed from one item to the next would stop readers from comparing them. | The rule now covers four kinds of item |
+| Spec "Waits, in words" | “Waiting on you”, a fee estimate or an extension, under the step it falls in, with its date | “Waiting on you”, a fee estimate or an extension on a request; a second round of signatures on a ballot measure; an appeal of an injunction on a court case; each under the step it falls in, with its date | One example a kind; the rule has the rest |
+| Spec "After the agency" | Mediation or a lawsuit, in a sentence after the end words | Label: "After the end". Value: Mediation, a lawsuit, a case sent back or a repeal, in a sentence after the end words | The label named one kind of tracker |
+| `why.basis` | 5 U.S.C. 552(a)(6); design judgment | 5 U.S.C. 552(a)(6); Executive Order 12866; 28 U.S.C. 1292(a)(1); design judgment | The new examples' sources |
+
+"Declines to act" in `rule[0]` follows the sources' cases: Massachusetts asks for the second round when the General Court does not enact the measure, and Ohio when the General Assembly does not pass it, passes it amended or takes no action within four months.
+
 ## Words for the engineer
 
 The palette specification's words (R5-3, DR-234, DR-236), written at 01:50 UTC before the data lead's ruling (b), which sets the palettes, grounds and proofs; I change these only where the ruling makes them untrue. Facts by script: Rule 14.5 names "the four data palettes" (sequential Verdigris, diverging pair B, the four group inks with Stone hatched, the Stone magnitude steps); `tokens.json` holds each one `onNewsprint` and `onCharcoal`; chapter 05 already has an extra labeled "Every palette pair, measured" (after Rule 05.5), so this label must differ; Rule 05.7 prints the color-vision measure and chapter 05's sources cite the simulation model (Machado and others, 2009, severity 1.0); Rule 13.4 is "Draw a connection’s grade in the atlas’s line code."; Rule 26.7 is the token table.

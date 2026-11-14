@@ -71,6 +71,15 @@ Written from the generator's run of 02:05 UTC; the words may still change with t
 - D3-xxx | Rule 14.142's failure keeps the window and the preliminary marks and drops only the band, draws all seven drops alike in the subject ink, and names them with one shared note | Ruling (c): one fault per failure plate; seven labels would crowd the plot at 256 px
 - D3-xxx | A plate's style is its own (`<style>` in the fragment, scoped by the build), built from chapter 15's `CSS` entries the markup uses; chapter 15's `.fx` becomes `.cfx` | Chapter 14's block defines `.fx` (26 px tall) for its charts; chapter 15's block does not reach chapter 14 (the accessibility lead's 2.6)
 
+- D3-xxx | S96 shows its phone drawing under the desk drawing (`phone_view`) | A chart in full shows a desk reader what a phone reader sees; Gate 2's check names both
+- D3-xxx | S96 carries a reading guide naming the columns, the dark columns, the line, the band and the hatch | The accessibility lead's 4.1 reading order; a preliminary month is told by its hatch in words as well as by its fill
+- D3-xxx | Under 490 px February 2026's words sit 20 px to the left (`phone.dx`) | The kit's sweep found no clear place for them at 327 to 339 px; placement only
+- D3-xxx | S96's band notes join into one note: what the band is, what a column inside it means, and that it covers one month's change only | Six notes in place of seven, each on its own subject
+
+- D3-xxx | Rule 14.144's status lines read "Reform R-06 turns one connection red. One variable it targets sits outside this loop, in the core layer." and the like; R-38's "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer." | The data lead's A-2, item 3, with the count first and no punctuation touching a chip (BC S16)
+- D3-xxx | Each target outside Loop R8 prints its chip, its title, for a connection its grade and its two ends, and its layer, then one note of what the model holds: no chain of connections from it into the loop (R-06's B5, R-38's TC7 and LT12), or that LE17 leaves the loop at A5 and runs outward (R-30); the generator proves each by a search of every connection | A-2, items 2 and 4; a search keeps the words true if the model changes
+- D3-xxx | Rule 14.144's rule text says a reform can name a loop and target none of its steps, and draws no path the atlas does not hold | A-2, item 5's lesson, in the rule beside the editor's title
+
 ## Requests
 
 ### To the systems designer (`phase3_ch15_build.py`)

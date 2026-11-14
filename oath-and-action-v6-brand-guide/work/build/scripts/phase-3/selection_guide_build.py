@@ -537,8 +537,8 @@ def g32(m):  # Columns with a moving average: columns, and a line that smooths t
 @glyph(33)
 def g33(m):  # Sparkline: a word-sized line that sits in a sentence
     out = textlines(5, 18, [26]) + textlines(5, 38, [18])
-    s1 = [(35, 20), (40, 16), (45, 19), (50, 14), (55, 17), (60, 12), (65, 15), (70, 9)]
-    s2 = [(27, 36), (32, 40), (37, 37), (42, 41), (47, 38), (52, 42), (57, 39), (62, 44)]
+    s1 = [(35, 21), (41, 18), (47, 19), (53, 15), (59, 16), (65, 12), (70, 10)]
+    s2 = [(27, 35), (33, 37), (39, 36), (45, 40), (51, 39), (57, 42), (62, 43)]
     return (out + textlines(78, 18, [6]) + textlines(70, 38, [14]) + series(s1) + series(s2)
             + P(FS, dots([(70, 9), (62, 44)], 2.5)))
 
@@ -603,7 +603,7 @@ def g40(m):  # Indexed line: every line starts at 100 together, and moves from t
 
 @glyph(41)
 def g41(m):  # Bubble timeline: one circle a period, its area the count
-    cs = [(9, 3), (19, 5), (33, 8), (48, 5), (62, 10), (79, 5)]
+    cs = [(7, 3), (18, 5), (34, 8), (51, 5), (66, 8), (80, 4)]
     return P(SC, "M4 30H84") + P(FL, dots_r([(x, 30, r) for x, r in cs])) + P(SS, dots_r([(x, 30, r) for x, r in cs]))
 
 
@@ -883,9 +883,8 @@ AXES = P(SG, "M5 4V51") + BASE
 def g67(m):  # Scatter plot with named points: one dot an item on two scales, a few named
     pts = [(10, 44), (16, 40), (20, 43), (26, 36), (30, 38), (34, 31), (40, 34), (44, 28), (50, 30), (56, 24), (60, 27),
            (66, 20), (72, 22)]
-    named = [(22, 26), (78, 12)]
-    return (AXES + P(FC, dots(pts, 2.6)) + P(FS, dots(named, 3)) + P(SC, "M25 24L30 18M75 10L70 6")
-            + textlines(32, 16, [14]) + textlines(52, 4, [14]))
+    named = [(22, 24), (78, 12)]
+    return (AXES + P(FC, dots(pts, 2.6)) + P(FS, dots(named, 3)) + textlines(28, 24, [14]) + textlines(56, 12, [16]))
 
 
 @glyph(68)
@@ -1030,7 +1029,6 @@ def g79(m):  # Icon array with Civic Line icons: one figure a person, a share of
     k = 0
     for r in range(3):
         for c in range(10):
-            (on if k < 12 else off).__class__
             if k < 12:
                 on += person(5 + 8 * c, 8 + 15 * r)
             else:
@@ -1108,10 +1106,8 @@ def g87(m):  # Progress bar: the share done along a track, with the target marke
 @glyph(88)
 def g88(m):  # Step tracker: the six steps in order, those done filled, the rest open
     xs = [8, 22, 36, 50, 64, 78]
-    return (P(SS, "M8 24H50") + P(SC, "M50 24H78") + P(FS, dots([(x, 24) for x in xs[:3]], 4.5))
-            + P(SS, dots([(x, 24) for x in xs[3:]], 4)) + P(FS, dots([(50, 24)], 2))
-            + textlines(4, 38, [8]) + textlines(18, 38, [8]) + textlines(32, 38, [8]) + textlines(46, 38, [8])
-            + textlines(60, 38, [8]) + textlines(74, 38, [8]))
+    return (P(SS, "M8 24H36") + P(SC, "M36 24H46M54 24H60M68 24H74") + P(FS, dots([(x, 24) for x in xs[:3]], 4.5))
+            + P(SS, dots([(x, 24) for x in xs[3:]], 4)) + textlines(4, 40, [36]) + textlines(4, 45, [24]))
 
 
 def pill(x, y, w, h=10):
@@ -1191,15 +1187,17 @@ def g96(m):  # Process diagram: the steps as boxes, joined by arrows in order, w
 def g97(m):  # Decision tree: a question at the top, each answer branching to the next
     b = box(34, 4, 20, 10) + box(8, 24, 20, 10) + box(60, 24, 20, 10)
     leaves = rects([(4, 44, 12, 8), (20, 44, 12, 8), (64, 44, 12, 8)])
-    return (P(SS, "M44 15V19H18V23M44 19H70V23M18 35V39H10V43M18 39H26V43M70 35V43") + P(SS, b) + P(FS, leaves[:0])
+    return (P(SS, "M44 15V19H18V23M44 19H70V23M18 35V39H10V43M18 39H26V43M70 35V43") + P(SS, b)
             + P(FC, leaves) + textlines(39, 9, [10]) + textlines(13, 29, [10]) + textlines(65, 29, [10]))
 
 
 @glyph(98)
-def g98(m):  # Who-decides diagram: each level of government's bodies, and the line of who answers to whom
-    out = P(SS, box(30, 4, 28, 10)) + P(SC, "M44 15V20M14 20H74M14 20V24M44 20V24M74 20V24M44 35V40")
-    out += P(SS, box(4, 25, 20, 10) + box(34, 25, 20, 10) + box(64, 25, 20, 10)) + P(FS, rects([(30, 41, 28, 10)]))
-    return out + textlines(35, 9, [18]) + textlines(8, 30, [12]) + textlines(38, 30, [12]) + textlines(68, 30, [12])
+def g98(m):  # Who-decides diagram: the bodies at each level, those who make the rules above those who apply them
+    out = P(SG, "M4 29H84") + textlines(6, 5, [10]) + textlines(28, 5, [10]) + textlines(50, 5, [10]) + textlines(72, 5, [10])
+    out += P(SS, box(5, 11, 18, 12) + box(27, 11, 18, 12) + box(49, 11, 18, 12) + box(27, 37, 18, 12) + box(71, 37, 13, 12))
+    out += P(SC, "M9 24V43H22")
+    out += P(SS, line([(22, 43), (24.5, 40.5), (27, 43), (24.5, 45.5)], True))
+    return out + textlines(9, 17, [10]) + textlines(31, 17, [10]) + textlines(53, 17, [10]) + textlines(31, 43, [10])
 
 
 @glyph(99)
@@ -1348,17 +1346,17 @@ def g111(m):  # Alluvial: groups at each stage, bands showing who moved between 
 
 @glyph(112)
 def g112(m):  # Journey map: one person's path through a process, stage by stage
-    ys = [8, 22, 36, 50]
-    return (P(SC, "M10 12V46") + P(FS, dots([(10, 8)], 4)) + P(SS, dots([(10, y) for y in ys[1:]], 3.5))
-            + P(SG, box(20, 3, 64, 10) + box(20, 17, 64, 10) + box(20, 31, 64, 10) + box(20, 45, 64, 10)[:0])
-            + textlines(24, 8, [30]) + textlines(24, 22, [40]) + textlines(24, 36, [26]) + textlines(24, 50, [34]))
+    pts = [(10, 36), (30, 22), (50, 40), (70, 28)]
+    return (P(SG, "M20 4V52M40 4V52M60 4V52") + textlines(5, 7, [12]) + textlines(25, 7, [12]) + textlines(45, 7, [12])
+            + textlines(65, 7, [12]) + P(SC, line(pts + [(84, 18)]), ' stroke-linejoin="round"')
+            + P(FS, dots(pts, 3.5)) + P(FS, head(84, 18, 1, -0.7, 5, 3.5)) + textlines(5, 48, [10]) + textlines(45, 50, [12]))
 
 
 @glyph(113)
 def g113(m):  # Flow map: arrows on a map from one place to others, each as wide as its flow (a reference form)
     land = m.land(FG)
     o = (22, 30)
-    return (land + P(FS, flow(o[0], 29, 31, 74, 14, 20)[:0])
+    return (land
             + P(SS, "M22 30C40 12 58 10 72 16M22 30C44 34 60 38 74 40M22 30C26 40 30 46 36 48")
             + P(FS, head(74, 17, 1, 0.3, 5, 3.5) + head(76, 40.3, 1, 0.1, 5, 3.5) + head(37, 48.5, 1, 0.3, 5, 3.5) + dots([o], 3.5)))
 
@@ -1412,7 +1410,7 @@ def g117(m):  # Choropleth, sequential: each state shaded by its value, darker f
 
 @glyph(118)
 def g118(m):  # Locator map: where a place sits, picked out on the country
-    return m.land(FL) + m.state("CO", FS) + P(SS, dots([(32.5, 24.5)], 9))
+    return m.land(FL) + m.state("CO", FS) + P(SS, dots([(32.5, 24.5)], 7.5))
 
 
 def sub_map(path, code, box, classes, k, tol=0.4):
@@ -1429,7 +1427,12 @@ def sub_map(path, code, box, classes, k, tol=0.4):
 
 @glyph(119)
 def g119(m):  # District map: one state's districts, each drawn whole, one picked out
-    by, outline = sub_map(GEO_CD, "WI", (20, 4, 48, 48), [M2, FL, M3], 0.9)
+    feats = sub_features(GEO_CD, "WI")
+    t = fit_rings([r for g, rs in feats for r in rs], (22, 4, 44, 48))
+    by = {M3: "", FL: "", FS: ""}
+    for g, rs in sorted(feats):
+        by[FS if g == "5503" else M3 if g in ("5501", "5506", "5508") else FL] += ring_path([t(r) for r in rs], 0.4, 0.3)
+    outline = "".join(ring_path([t(r)], 0.4, 0.3) for g, rs in sorted(feats) for r in rs)
     return "".join(P(c, d) for c, d in by.items()) + P(ST, outline, ' stroke-linejoin="round"')
 
 
@@ -1503,20 +1506,24 @@ def g126(m):  # Ranked register: a numbered list in rank order, each row's figur
     out = table_rules([15, 27, 39, 51])
     for i, w in enumerate([38, 30, 24, 16]):
         y = 9 + 12 * i
-        out += P(FS if i == 0 else FC, rects([(4, y - 3, 5, 6)])) + textlines(14, y, [26 - 2 * i]) + textlines(14, y + 3.5, [14])[:0]
+        out += P(FS if i == 0 else FC, rects([(4, y - 3, 5, 6)])) + textlines(14, y, [26 - 2 * i])
         out += P(FS if i == 0 else FC, rects([(84 - w, y - 2, w, 4)]))
     return out
 
 
 @glyph(127)
-def g127(m):  # Comparison matrix: the options in rows, the measures in columns, each cell shaded with its word
-    shades = [[M3, M2, FS, M2], [M2, M4, M2, M3], [FS, M2, M3, M2]]
-    by = {M2: [], M3: [], M4: [], FS: []}
+def g127(m):  # Comparison matrix: the options in rows, the measures in columns, each cell's answer in words on its shade
+    shades = [[M2, FT, M2, FT], [FT, M2, FT, M2], [M2, FT, FT, M2]]
+    by = {M2: [], FT: []}
+    words = []
     for r in range(3):
         for c in range(4):
-            by[shades[r][c]].append((26 + 15 * c, 14 + 13 * r, 13, 11))
-    return ("".join(P(k, rects(v)) for k, v in by.items()) + textlines(28, 6, [10, 0], 0) + textlines(43, 6, [10])
-            + textlines(58, 6, [10]) + textlines(73, 6, [10]) + textlines(4, 19.5, [18, 14, 16], 13))
+            x, y = 24 + 15 * c, 12 + 14 * r
+            by[shades[r][c]].append((x, y, 14, 13))
+            words.append([(x + 3, y + 6.5), (x + 3 + (8 if (r + c) % 2 else 6), y + 6.5)])
+    return ("".join(P(k, rects(v)) for k, v in by.items()) + P(SS, lines(words))
+            + textlines(26, 6, [9]) + textlines(41, 6, [9]) + textlines(56, 6, [9]) + textlines(71, 6, [9])
+            + textlines(4, 18.5, [16, 12, 14], 14))
 
 
 @glyph(128)
@@ -1524,7 +1531,7 @@ def g128(m):  # Sparkline table: one row an item, a small line of its history be
     out = P(SS, "M4 8H84") + table_rules([20, 32, 44])
     for i in range(4):
         y = 14 + 12 * i
-        pts = [(40 + 4 * k, y + 3 - 5 * abs(math.sin(k * 0.9 + i)) - (k * 0.4 if i % 2 == 0 else -k * 0.2)) for k in range(8)]
+        pts = [(40 + 5 * k, y + 2 - 2.5 * math.sin(k * 0.8 + i * 1.3) - (0.6 * k if i % 2 == 0 else -0.3 * k)) for k in range(7)]
         out += textlines(4, y, [24 - 3 * i]) + series(pts) + textlines(76, y, [8])
     return out
 
@@ -1562,9 +1569,9 @@ def g132(m):  # Tracker list: each item in a row, with how far along its steps i
     out = table_rules([16, 30, 44])
     for i, k in enumerate([5, 2, 4]):
         y = 9 + 14 * i
-        out += textlines(4, y, [30 - 4 * i]) + textlines(4, y + 4, [18])[:0]
+        out += textlines(4, y, [30 - 4 * i])
         out += P(FS, dots([(46 + 7 * s, y) for s in range(k)], 2.5)) + P(SC, dots([(46 + 7 * s, y) for s in range(k, 6)], 2.2))
-    return out + P(SG, "")
+    return out
 
 
 @glyph(133)
@@ -1579,7 +1586,7 @@ def g133(m):  # Plain table: rows and columns of words and figures, nothing more
 
 @glyph(134)
 def g134(m):  # One sentence: the figure stated in words, where a chart would add nothing
-    return textlines(4, 17, [78, 0], 0) + P(SS, "M4 17H30") + textlines(4, 28, [70]) + textlines(4, 39, [52])
+    return (P(FS, rects([(4, 15, 22, 6)])) + P(SS, "M29 18H84") + P(SS, "M4 30H76") + P(SS, "M4 42H52"))
 
 
 # --- Infographics: how does it work, in one look? -------------------------------------------------------------------------
@@ -1589,7 +1596,6 @@ def g135(m):  # Process explainer: how a public process runs, step by step acros
     out = P(SG, "M4 19H84M4 37H84")
     out += P(SS, box(5, 5, 18, 10) + box(35, 23, 18, 10) + box(65, 41, 18, 10))
     out += P(SC, "M24 10H29V28H34M54 28H59V46H64")
-    out += P(FC, head(35, 28, 1, 0, 4, 3)[:0])
     return out + textlines(8, 10, [12]) + textlines(38, 28, [12]) + textlines(68, 46, [12])
 
 
@@ -1630,8 +1636,7 @@ def g140(m):  # Calendar: the days in a month grid, the dates that matter marked
     for k in range(35):
         x, y = 9 + 10 * (k % 7), 8 + 9 * (k // 7)
         (on if k in (9, 23) else off).append((x, y, 8, 7))
-    hollow = "M50 36h8v7h-8z"
-    return P(FG, rects([c for c in off if (c[0], c[1]) != (49, 35)])) + P(FS, rects(on)) + P(SS, "M50 27h6v5h-6z"[:0] + hollow)
+    return P(FG, rects([c for c in off if (c[0], c[1]) != (49, 35)])) + P(FS, rects(on)) + P(SS, "M50 36h8v7h-8z")
 
 
 @glyph(141)
@@ -1826,6 +1831,8 @@ def check(frag, by_group, printed):
             for c in cls.split():
                 if c not in INKS:
                     faults.append(f"a picture uses the class {c}, outside the neutral inks")
+        if 'd=""' in sym:
+            faults.append("a picture holds an empty path")
         if re.search(r"<text|<tspan|<title|<desc|<image|style=|fill=\"#|stroke=\"#|rgb\(|url\(", sym):
             faults.append("a picture holds words, an image, a style attribute, a literal color or a reference")
     for svg in re.findall(r"<svg\b[^>]*>", frag):

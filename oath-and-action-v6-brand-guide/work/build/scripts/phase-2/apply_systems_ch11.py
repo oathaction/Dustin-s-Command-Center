@@ -1263,24 +1263,25 @@ def s_11_11(ctx):
 
 
 def s_route_steps(ctx, sid, steps, what, alt_head):
-    """A readable table of a tracker's six steps: what happens at each and where the law sets it (R4-3: a reference set in
-    live text). Three columns from 40rem of plate width; below that, each step stacks its name, words and law."""
+    """A readable table of a tracker's six steps (R4-3: a reference set in live text): each step's number and name, then
+    what happens and, under it, the law that sets it. Two columns, as the bill's table after Rule 11.1 sets them; under
+    30rem of plate width the name takes a narrower column and its number sits above it."""
     T = ctx.ty
     hair = ctx.v('oa.color.border.hairline.onNewsprint')
-    rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n}</th><td>{m}</td><td class="lw">{law}</td></tr>'
-                   for i, (n, m, law) in enumerate(steps))
+    t2 = ctx.v('oa.color.text.secondary.onNewsprint')
+    rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n}</th><td><p class="wh">{m}</p>'
+                   f'<p class="lw">Law: {law}</p></td></tr>' for i, (n, m, law) in enumerate(steps))
     css = (f'table{{width:100%;border-collapse:collapse;{T("bodySmall")}}}'
            f'th,td{{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid {hair}}}'
-           f'thead th{{{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")};border-bottom:2px solid '
-           f'{ctx.v("oa.color.border.strong.onNewsprint")}}}'
-           f'tbody th{{{T("ui")};font-weight:700;width:11rem}}th .n{{display:inline-block;min-width:1.4em;{T("h4")};'
-           f'font-variant-numeric:tabular-nums}}td.lw{{width:14rem;{T("caption")};color:{ctx.v("oa.color.text.secondary.onNewsprint")}}}'
-           f'@container (max-width:40rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid {hair}}}'
-           f'th,td,td.lw{{display:block;width:auto;padding:0 0 6px;border:0}}th .n{{min-width:1.6em}}'
-           f'td.lw::before{{content:"Law: "}}}}'
+           f'td{{padding-right:0}}'
+           f'thead th{{{T("label")};color:{t2};border-bottom:2px solid {ctx.v("oa.color.border.strong.onNewsprint")}}}'
+           f'tbody th{{{T("ui")};font-weight:700;width:11rem;text-wrap:balance}}th .n{{display:inline-block;min-width:1.4em;'
+           f'{T("h4")};font-variant-numeric:tabular-nums}}'
+           f'.wh,.lw{{margin:0;text-wrap:pretty}}.lw{{margin-top:6px;{T("caption")};color:{t2}}}'
+           f'@container (max-width:30rem){{tbody th{{width:6.5rem;padding-right:12px}}th .n{{display:block}}}}'
            f'.wr{{container-type:inline-size}}')
-    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th><th scope="col">What happens'
-            f'</th><th scope="col">Where the law sets it</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th><th scope="col">What happens, '
+            f'and the law that sets it</th></tr></thead><tbody>{rows}</tbody></table></div>')
     alt = (alt_head + ' ' + ' '.join(f'{i + 1}, {n}: {m} Law: {law}.' for i, (n, m, law) in enumerate(steps)))
     return spec(ctx, sid, html, None, alt, readable=True,
                 notes=f'A readable table (D2-255, R4-3) of {what}, from the research lead’s round 5 facts.')

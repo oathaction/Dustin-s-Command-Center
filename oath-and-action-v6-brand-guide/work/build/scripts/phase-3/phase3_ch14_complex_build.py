@@ -826,6 +826,9 @@ def rule_14_142():
         "evidence_label": "Finding",
         "grade_line": s14["grade_line"],
         "title": title,
+        "reading_guide": ("Each column is one month’s change in jobs, and the two dark columns are the drops past the margin. "
+                          "The line is the three-month average. The shaded band is the survey’s margin of error for one "
+                          "month’s change. Hatched columns are preliminary."),
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
                          "the span both jobs charts share, with the three-month average and the survey’s 90 percent "
                          f"margin of error for one month’s change, {margin} jobs."),
@@ -868,7 +871,10 @@ def rule_14_142():
         "encode": s14["encode"],
         "formats": s14["formats"],
         "labels": dict(s14["labels"], **{
-            "named": [{"x": m, "text": [mw(m), f"{k(pv[m])} jobs"]} for m in past],
+            # under 490 px February 2026's words take 20 px to the left, where the sweep finds them a clear place at
+            # every width (327 to 339 px had none; placement only)
+            "named": [dict({"x": m, "text": [mw(m), f"{k(pv[m])} jobs"]}, **({"phone": {"dx": -20}} if m == "2026-02" else {}))
+                      for m in past],
             "margin": {"value": int(f1["margin_thousands"]), "label": "Margin of error",
                        "key": "The survey’s margin of error for one month’s change"},
         }),
@@ -891,7 +897,7 @@ def rule_14_142():
     }
     # the failure: the same columns with no band, all seven drops labeled alike as job losses (ruling c), one fault
     losses = f1["losses"]
-    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view")}
+    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide")}
     fspec.update({
         "id": "s-14-142-failure",
         "title": "The economy lost jobs in seven months of 2025 and 2026.",

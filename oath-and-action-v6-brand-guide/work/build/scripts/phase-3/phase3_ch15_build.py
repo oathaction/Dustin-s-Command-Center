@@ -76,9 +76,8 @@ FC = "Failure case: do not publish. "
 # The rule list the main session fixed (R7). Rounds 1 and 2 build BUILT; the rest wait for their rounds.
 # ---------------------------------------------------------------------------------------------------------------
 BUILT = ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "15.8", "15.9", "15.10", "15.11", "15.12", "15.13",
-         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21", "15.22", "15.24"]
-PLANNED = {"15.23": "Show which stages sit behind each of a tracker’s six steps.",
-           "15.25": "Reconcile every earlier atlas drawing to the model, and cite none as evidence."}
+         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21", "15.22", "15.24", "15.25"]
+PLANNED = {"15.23": "Show which stages sit behind each of a tracker’s six steps."}
 
 # ---------------------------------------------------------------------------------------------------------------
 # Atlas facts, read once and held to the model
@@ -4216,12 +4215,481 @@ def rule_15_24(book):
     }
 
 
+
+# ===============================================================================================================
+# Group 6. Earlier drawings (round 5, November 14, 2026): Rule 15.25 under contract R5-6 and the data lead's ruling (e).
+# The rows, their order, their groups and the rules where the guide applies each resolution are the research lead's
+# data file, work/build/data/v7-reconciliation-rows.json, read by script; the counts of the November 13 rerun are its
+# sidecar's. The words a reader sees are written here in the guide's voice, every atlas value in them read from the
+# model by script and every ID in a typed chip; a row's words name what an earlier page showed, never as evidence.
+# ===============================================================================================================
+RECON = json.loads((ROOT / "work/build/data/v7-reconciliation-rows.json").read_text())["rows"]
+RECON_META = json.loads((ROOT / "work/build/data/v7-reconciliation-rows.meta.json").read_text())
+PAGES = {"V5 Polished": "our brand guide’s fifth edition", "Atlas Visual System": "the atlas visual system",
+         "Concepts V2": "the atlas design concepts", "Atlas V7": "the atlas model, drawn for this edition"}
+GROUP_WORDS = {"A value": "A value", "A sign": "A sign", "A grade": "A grade", "A delay": "A delay",
+               "Identifiers": "Identifiers", "Structure": "Structure", "Encoding": "Encoding", "Labels": "Labels",
+               "Drawn in Phase 2 and Phase 3": "Drawn for this edition, where the model leaves a choice"}
+DOMAIN = {d["id"]: d for d in V7["domains"]}
+REGION = {r["id"]: r for r in V7["layers"]["core"]["regions"]}
+
+
+def dchip(did):
+    return f'{chip("Domain", did)} “{e(DOMAIN[did]["title"])}”'
+
+
+def vq(code):
+    """A variable's chip with its title, the model's own."""
+    return f'{chip("Variable", code)} “{e(node(code)["title"])}”'
+
+
+def lq(lid):
+    return f'{chip("Loop", lid)} “{e(LOOP[lid]["title"])}”'
+
+
+def cq(lid, grade=True):
+    return f'{chip("Connection", lid)}{" " + e(GRADE[link(lid)["evidence"]][0].lower()) if grade else ""}'
+
+
+def gloss_first(term):
+    return GLOSS[term].split(". ")[0]
+
+
+def n_by(field, values):
+    return Counter(x[field] for x in values)
+
+
+def recon_words():
+    """Each row's words: what the earlier page showed, what the model holds (read here, as of the snapshot), and what the
+    guide does. Keys are the research file's row numbers, 1 to 57."""
+    lk = list(LINK.values())
+    sign = n_by("polarity", lk)
+    types = n_by("type", lk)
+    grades = n_by("evidence", lk)
+    kinds = n_by("type", NODE.values())
+    layers = n_by("layer", NODE.values())
+    closure = n_by("closure", LOOP.values())
+    bands = n_by("band", REFORM.values())
+    deg = Counter()
+    for l_ in lk:
+        deg[l_["from"]] += 1
+        deg[l_["to"]] += 1
+    cross = [l_ for l_ in lk if NODE[l_["from"]]["layer"] != NODE[l_["to"]]["layer"]]
+    xg = n_by("evidence", cross)
+    auth = [k for k, l_ in LINK.items() if l_["type"] == "authority"]
+    own_ = [k for k, l_ in LINK.items() if l_["type"] == "ownership"]
+    bare = {"+L", "+M", "+S", "0", "-S", "-M", "-L", "?"}
+    effs = [v for r in REFORM.values() for v in r["effects"].values()]
+    n_q = sum(1 for v in effs if v not in bare)
+    iss = list(V7["issues"].values())
+    n_ret = sum(1 for x in iss if x.get("grade") == "retired")
+    ents = [x for r in REFORM.values() for x in r["routes"]]
+    n_dated = sum(1 for x in ents if x["checked"])
+    rq = {r["row"]: r for r in RECON}
+    mv42 = rq[42]["model_value"]
+    m42 = re.findall(r"(D0\d): (\d+) live reforms, (\d+) with the rejected R-35", mv42)
+    need([x[0] for x in m42] == ["D03", "D04"], "row 42's model value changed shape")
+    m43 = re.findall(r"(D0\d): (\d+) connections touch its variables, (\d+) end at them", rq[43]["model_value"])
+    need([x[0] for x in m43] == ["D02", "D01"], "row 43's model value changed shape")
+    m54 = re.match(r"(\d+) reform-to-loop pairs not listed back", rq[54]["model_value"])
+    need(m54, "row 54's model value changed shape")
+    need(LOOP["R8"].get("reforms") == ["R-30"], "Loop R8's reform list changed")
+    r8_named = [rid for rid, r in REFORM.items() if "R8" in r.get("loops", [])]
+    need(r8_named == ["R-06", "R-30", "R-38"], f"the reforms naming Loop R8 changed: {r8_named}")
+    need(types == {"causal": 80, "money": 17, "information": 9, "authority": 7, "ownership": 5}, "connection types changed")
+    need(LINK["L23"]["polarity"] == "-" and LINK["L23"]["name"] == "Poor service raises incumbents' risk of losing",
+         "Connection L23 changed")
+    b4 = LOOP["B4"]
+    need(b4["evidence_summary"].endswith("For U.S. services the weakest is L54, since its main study covers Brazilian mayors."),
+         "Loop B4's evidence summary changed")
+    need(all(link(x)["evidence"] == "well-supported" for x in b4["links"]), "Loop B4's grades changed")
+    meth = V7["methods"]["how_claims_are_assessed"]
+    need("it is drawn as a dotted line" in meth, "the methods no longer draw a hypothesis as a dotted line")
+    conv = V7["methods"]["model_conventions"]
+    need(GLOSS["Positive sign (+)"].endswith("A positive sign does not mean a benefit."), "the glossary's positive sign changed")
+    need("it is kept in the register and left off the map" in conv, "the model's conventions on associations changed")
+    r28 = REFORM["R-28"]["routes"][0]
+    r01 = REFORM["R-01"]["status"]
+    need("two measures on the November 3, 2026 ballot would change how primaries work" in r01["text"] and r01["checked"] == C13.SNAP_ISO,
+         "Reform R-01's status changed")
+    av = ROUTE["AV"]["who"]
+    who_n = len({x["who"] for x in ents})
+    reg_a = REGION["A"]["title"]
+    need([link(x)["from"] for x in ("L03", "L31", "L37")] == ["E1"] * 3 and
+         [node(link(x)["to"])["cluster"] for x in ("L03", "L31", "L37")] == ["A"] * 3, "the three return connections changed")
+    d6 = node("D6")
+    return {
+        42: ("Its Ledger counted the reforms that target " + dchip("D03") + " as 10 and " + dchip("D04") + " as 14.",
+             f"{m42[0][1]} live reforms target {chip('Domain', 'D03')} and {m42[1][1]} target {chip('Domain', 'D04')}; the "
+             f"counts of 10 and 14 take in {chip('Reform', 'R-35')}, which the atlas marks rejected.",
+             f"No chapter prints a count of reforms by domain, and {chip('Reform', 'R-35')} keeps the word Rejected wherever it appears."),
+        19: ("Plus and minus signs taken off the map, with an arrowhead for raises and a bar for lowers.",
+             f"Every causal connection stores a sign, {sign['+']} plus and {sign['-']} minus; the {len(auth)} authority "
+             "connections store none. Its glossary: “A positive sign does not mean a benefit.”",
+             "Every causal connection prints its sign and the word raises or lowers, beside the atlas’s sentence on what a plus means."),
+        40: (f"{chip('Connection', 'L54')} called “the weakest transfer to U.S. services”, as if its grade were lower.",
+             f"All three steps of {lq('B4')} are well supported. Its summary names {chip('Connection', 'L54')} the weakest only "
+             "“For U.S. services”, “since its main study covers Brazilian mayors.”",
+             "All three steps print as well supported, and the word weakest appears only in the atlas’s own words about U.S. services."),
+        10: ("A bare S, M or L beside a grade word, as in “S · well-supported”.",
+             f"The glossary: a delay is “{e(gloss_first('Delay'))}”, coded S, M or L, and the effect codes use the same "
+             "letters for size.",
+             "A delay draws as one to three ticks with its words in a key, and an effect prints its full code, so no bare letter stands alone."),
+        1: ("A placeholder connection ID, “L##”, in the grammar figure.",
+            f"No connection carries that ID; real ones do, such as {chip('Connection', 'L01')}, with a delay "
+            f"{DELAY[link('L01')['delay']][1]}.",
+            "Every specimen names a real connection in its typed chip."),
+        2: ("Standards numbered with an R and a digit, the form the atlas gives its loops, and a loop’s ID printed with no type word.",
+            f"{sum(1 for k in LOOP if k.startswith('R'))} loops carry R codes, from {chip('Loop', 'R1')} to {chip('Loop', 'R18')}.",
+            "The guide numbers its rules by chapter, as in Rule 13.9, and every atlas ID sits in a typed chip."),
+        3: (f"The ID of {chip('Loop', 'R1')} printed four times with no type word, on a page that also names {chip('Reform', 'R-01')}.",
+            f"{lq('R1')} and {chip('Reform', 'R-01')} “{e(REFORM['R-01']['title'])}” are separate records.",
+            f"{chip('Loop', 'R1')} and {chip('Reform', 'R-01')} always print with their type words."),
+        4: (f"A loop’s ID set in one row with the variables on its ring, so {chip('Variable', 'B4')} and {chip('Loop', 'B4')} read alike.",
+            f"{vq('B4')} and {lq('B4')} are separate records.",
+            "A loop takes its typed chip beside the drawing, apart from the variables on its ring."),
+        5: ("Variable IDs, loop IDs and domain codes in one table, with no type words.",
+            f"Four codes name both a variable and a loop, {chip('Variable', 'B2')} and {chip('Loop', 'B2')} through "
+            f"{chip('Variable', 'B5')} and {chip('Loop', 'B5')}; seven variables run from {chip('Variable', 'D1')} to "
+            f"{chip('Variable', 'D7')}, and ten domains from {chip('Domain', 'D01')} to {chip('Domain', 'D10')}.",
+            "Typed chips in every column: Variable, Loop and Domain."),
+        6: (f"{chip('Variable', 'B4')} and {chip('Loop', 'B4')}, and {chip('Variable', 'B5')} and {chip('Loop', 'B5')}, on one "
+            "sheet, told apart only by the name beside them.",
+            f"{vq('B5')} and {lq('B5')} are separate records, as are the two named B4.",
+            "Typed chips wherever both appear."),
+        7: ("A variable’s code and a domain’s code side by side, with no type words.",
+            f"{vq('D1')}; {dchip('D04')}.",
+            f"A domain prints with its type word, as {chip('Domain', 'D04')}, and a variable as {chip('Variable', 'D1')}."),
+        8: ("Loop IDs printed bare on pages that also show reform IDs.",
+            f"{chip('Loop', 'R4a')}, {chip('Loop', 'R8')} and {chip('Loop', 'R10')} are loops; the {len(REFORM)} reforms run "
+            f"from {chip('Reform', 'R-01')} to {chip('Reform', 'R-50')}.",
+            "Loop and Reform chips on every page that shows both."),
+        9: (f"{chip('Variable', 'B1')} and {chip('Loop', 'B1a')} on one page.",
+            f"{vq('B1')}; {lq('B1a')}.",
+            f"Both in typed chips, and {chip('Loop', 'B1a')} never shortened."),
+        22: ("Ownership drawn as a frame, with “no causal arrowhead or polarity”.",
+             f"The {len(own_)} ownership connections each carry a sign: "
+             + ", ".join(f"{chip('Connection', k)} {'plus' if LINK[k]['polarity'] == '+' else 'minus'}" for k in own_) + ".",
+             "Ownership draws as a signed connection with its type in words; a frame only groups a layout."),
+        23: ("Six conventions that mix direction, grade, authority, membership and association.",
+             "Every connection stores its type, its sign, its grade and its delay as four separate fields.",
+             "The grammar draws type, sign, grade and delay, each with a mark of its own."),
+        27: ("Strands drawn only for gains, with the costs left to the side text.",
+             f"{chip('Reform', 'R-07')} and {chip('Reform', 'R-12')} pair a gain in the quality of democracy with a possible "
+             "cost, and four reforms show a possible economic cost with no gain.",
+             "Each outcome family keeps its own row with its full code, so a possible cost prints beside a gain."),
+        43: (f"Two counts for one domain: 27 and 19 connections for {chip('Domain', 'D02')}, 13 and 9 for {chip('Domain', 'D01')}.",
+             f"Both hold: {m43[0][1]} connections touch the variables of {chip('Domain', 'D02')} and {m43[0][2]} end at them; "
+             f"for {chip('Domain', 'D01')}, {m43[1][1]} and {m43[1][2]}.",
+             "No chapter prints these counts, and a count the guide prints says how it counts."),
+        44: ("194 issues.",
+             f"{len(iss)} issue records: {len(iss) - n_ret} active and {n_ret} retired.",
+             "No chapter prints the issue count, and Retired stays a record’s status, apart from every grade."),
+        45: ("Variable cards with an ID and a title only.",
+             f"Each of the {len(NODE)} variables has a kind, {kinds['stock']} stocks, {kinds['flow']} flows, "
+             f"{kinds['auxiliary']} conditions and {kinds['driver']} outside drivers, and a sentence on what a higher value means.",
+             "A variable prints its kind in words and the atlas’s sentence on what a higher value means."),
+        11: ("Hypotheses in long dashes, and every other grade in words alone.",
+             "The methods: a hypothesis “is drawn as a dotted line”.",
+             "The atlas’s line code: solid for documented and well supported, dashes for plausible, dash and dot for "
+             "contested, dots for a hypothesis, each with its grade word."),
+        12: (f"{chip('Connection', 'T01')}, the step that closes {chip('Loop', 'R16')}, in dashes.",
+             f"{chip('Connection', 'T01')} is a hypothesis, “{e(link('T01')['name'])}”, and {chip('Loop', 'R16')} closes through it.",
+             "A hypothesized step draws in dots, with its grade word."),
+        13: (f"{chip('Connection', 'L02')} drawn solid, like {chip('Connection', 'L01')} and {chip('Connection', 'L03')}.",
+             f"{cq('L01')}; {cq('L02')}; {cq('L03')}.",
+             f"{chip('Connection', 'L02')} dashed, and named in words as the weakest step of {chip('Loop', 'R1')}."),
+        14: (f"{chip('Connection', 'LE26')} drawn solid.",
+             f"{chip('Connection', 'LE26')} is plausible: “{e(link('LE26')['name'])}”.",
+             "Every connection takes its own grade’s line."),
+        15: ("A dotted line with no direction for an association.",
+             "Its conventions: an association “is kept in the register and left off the map.”",
+             "No association line: dots mean a hypothesis only, and associations stay off the drawing."),
+        16: (f"The {len(cross)} connections that cross between layers drawn as dotted lines.",
+             f"{len(cross)} connections join two layers: {xg['documented']} documented, {xg['plausible']} plausible, "
+             f"{xg['well-supported']} well supported and {xg['plausible_contested']} contested; none is a hypothesis.",
+             "Layers framed and named, and every connection across them keeps its own grade’s line."),
+        17: ("A dash that means plausible on one set of pages and a hypothesis on the other two.",
+             "The methods draw a hypothesis as “a dotted line”, which leaves the dash to plausible, as the atlas’s drawings use it.",
+             "A dash means plausible, as the atlas draws it."),
+        18: ("“Strong evidence” first and darkest, ahead of “On the record”.",
+             f"The glossary lists the grades in one order: “{e(GLOSS['Confidence label'].split(': ')[1].split('.')[0])}”.",
+             "One table of display words in the atlas’s order, each with its gloss, drawn as line patterns and never as darkness."),
+        20: ("An open arrowhead and a verb on two sets of pages, an open diamond on the third.",
+             f"{words_n(len(auth)).capitalize()} authority connections, none signed and none in a loop.",
+             "Authority ends in an open diamond, prints decides, carries no sign and stays out of every loop."),
+        21: ("Money and information connections drawn as plain causal lines, with no type word.",
+             f"Connections by type: {types['causal']} causal, {types['money']} money, {types['information']} information, "
+             f"{types['authority']} authority and {types['ownership']} ownership.",
+             "The type prints in words, as in money, lowers, never as a pattern, a width or a color."),
+        24: ("Dots sized by a count of connections, with no size key.",
+             f"A variable has from {min(deg[n] for n in NODE)} to {max(deg[n] for n in NODE)} connections, and the model "
+             "stores no size for it.",
+             "One pill size and one line width; a size or a width measures only with a stated measure and a key."),
+        25: ("Verdigris for the economy layer on one page, for record status on another, and for trackers and a fourth series on others.",
+             f"Variables by layer: {layers['core']} core, {layers['economy']} economy and {layers['technology']} technology.",
+             "Layers coded by a frame and a name, never a color; chapters 05 and 14 set Verdigris’s jobs."),
+        26: ("Strands 1.3, 2.6 and 3.9 wide for small, moderate and large effects.",
+             "The effect codes are ordinal, and “codes for different families are never added together.”",
+             "An effect prints its code with one to three pips and its words, one row per family, never as a width."),
+        28: ("Two shades: dark for high or medium feasibility, light for low or very low.",
+             "Four feasibility words: " + ", ".join(FEAS_ORDER[:-1]) + " and " + FEAS_ORDER[-1] + ".",
+             "Each route prints its feasibility in one of the atlas’s four words."),
+        29: ("Effect codes as partial fills, with their qualifiers dropped.",
+             f"{n_q} of {len(effs)} effect values carry a qualifier or a range, such as {chip('Reform', 'R-12')}’s "
+             f"“{e(REFORM['R-12']['effects']['DQ'])}”.",
+             "An effect prints its full code, qualifier or range whole, beside its pips."),
+        30: ("The atlas’s field codes on two sets of pages, and five words of their own on the third.",
+             f"Connections carry five grades: {grades['documented']} documented, {grades['well-supported']} well supported, "
+             f"{grades['plausible']} plausible, {grades['plausible_contested']} contested and {grades['hypothesis']} hypothesis.",
+             "One display word per grade from one table, with Contested for both contested grades."),
+        31: ("About 45 short names written for the boards, such as “Wealth at the top”.",
+             f"Each variable has one title, such as {vq('A1')}, and each loop’s chain holds a second, shorter label.",
+             "One name per variable, its own title, in every drawing, loops included."),
+        32: (f"Two names for {chip('Variable', 'C2')}: “Primary decides the winner” and “Seats settled in the primary”.",
+             f"{vq('C2')}.", f"{chip('Variable', 'C2')} prints its own title everywhere."),
+        33: (f"{chip('Variable', 'D4')} as “Watchdogs and enforcement” and {chip('Variable', 'TC5')} as “Government digital teams”.",
+             f"{vq('D4')}; {vq('TC5')}.", "Both print their own titles, which name a capacity."),
+        34: (f"{chip('Variable', 'C5')} as “Incumbents defeated”.", f"{vq('C5')}.",
+             f"{chip('Variable', 'C5')} prints its own title, retirement included."),
+        35: (f"Short names for loops, such as “Hostile content” for {chip('Loop', 'R3')}.", f"{lq('R3')}.",
+             "A loop prints its own title beside its chip."),
+        36: ("“20 loops close fully”.",
+             f"{closure['closed: every step is a numbered connection']} loops close with every step numbered, "
+             f"{closure['closed with a hypothesized step']} close through a hypothesized step, and "
+             f"{closure['conceptual: no complete numbered chain']} are conceptual, with no complete numbered chain.",
+             "Closure prints in the atlas’s words beside each loop’s grade."),
+        37: ("Three connections said to carry policy “back into the economy”.",
+             f"{chip('Connection', 'L03')}, {chip('Connection', 'L31')} and {chip('Connection', 'L37')} run from "
+             f"{chip('Variable', 'E1')} to area A, “{e(reg_a)}”, inside the core layer; the economy layer is a separate part.",
+             "No chapter draws this; a drawing that does ends the three in area A, named by its title."),
+        38: ("One ballot measure named in the atlas’s sentence on its position.",
+             f"{chip('Reform', 'R-01')}’s summary names two measures, as of {SNAP}.",
+             "No plate quotes the sentence."),
+        39: ("“Numbers”, “Power over the rules” and “Goals and mindsets” on a depth gauge.",
+             f"Six bands, from parameter to goals, with {bands['rules']} reforms in the rules band.",
+             "A reform’s band prints in the atlas’s word with its definition."),
+        41: (f"“A federal tax-law route through reconciliation” for {chip('Reform', 'R-28')}, with no feasibility or date.",
+             f"{chip('Reform', 'R-28')} {chip('Route', 'FS')}: who acts, “{e(r28['who'])}”; {e(r28['feasibility'])} feasibility; "
+             "Not checked.",
+             "A route prints its code, name, who acts and feasibility, and “Not checked” where it has no date."),
+        46: ("One grade scale spelled three ways across four kinds of record.",
+             f"Connections: {grades['well-supported']} well-supported and {grades['plausible_contested']} plausible_contested; "
+             f"issues use well_supported; claims use contested.",
+             "One display word per grade from one table, read from the grade field."),
+        47: ("The atlas’s drawing tool draws documented and well supported in one solid line.",
+             f"{grades['documented']} connections are documented and {grades['well-supported']} well supported.",
+             "A documented connection’s grade word opens with the record square."),
+        48: ("The drawing tool dashes a conceptual loop’s steps close to the plausible dash.",
+             f"Three loops are conceptual: {chip('Loop', 'B2')}, {chip('Loop', 'B3')} and {chip('Loop', 'R9')}.",
+             "A conceptual step draws as a hollow line between thin pills."),
+        49: ("Most route entries carry no check date.",
+             f"{len(ents)} route entries: {n_dated} checked {SNAP}, {len(ents) - n_dated} with no date.",
+             "A route with no date prints “Not checked”, and no date comes from a reform’s status."),
+        50: (f"{chip('Variable', 'D6')} typed as a flow and described as a stock.",
+             f"{vq('D6')}: type “{e(d6['type'])}”; its description opens “{e(d6['kind_plain'].split('.')[0])}”.",
+             f"Chapter 15 prints no kind for {chip('Variable', 'D6')} until the atlas settles it."),
+        51: (f"{chip('Connection', 'L23')}’s name says poor service raises the risk of losing, while its sign is minus.",
+             f"{chip('Connection', 'L23')} “{e(link('L23')['name'])}”, minus; on its sign: “{e(link('L23')['sign_meaning'])}”",
+             "The connection prints the atlas’s sentence on its sign beside its name."),
+        52: ("The drawing tool ends an authority connection in an arrowhead.",
+             f"{words_n(len(auth)).capitalize()} authority connections, none signed.",
+             "Authority ends in the open diamond."),
+        53: ("Conceptual loops carry grades with no numbered steps behind them.",
+             f"{chip('Loop', 'B2')} is graded “{e(LOOP['B2']['evidence'])}” and {chip('Loop', 'R9')} “{e(LOOP['R9']['evidence'])}”, "
+             "each with no numbered chain.",
+             "Closure prints first and the grade second, with the words “no numbered chain”."),
+        54: ("A reform lists a loop that does not list it back.",
+             f"{m54.group(1)} such pairs; {chip('Loop', 'R8')} lists {chip('Reform', 'R-30')}, while {chip('Reform', 'R-06')} "
+             f"and {chip('Reform', 'R-38')} also name it.",
+             "Open until the atlas makes the two lists agree; a plate that draws such a pair says so in words."),
+        55: ("Statuses that name the November 3, 2026 ballot, which came after the snapshot.",
+             f"{chip('Reform', 'R-01')}’s status, checked {SNAP}: “{e(re.search(r'As of [^.]*November 3, 2026 ballot[^.]*[.]', r01['text']).group(0))}”",
+             f"Such a status prints under “As of {SNAP}” until each state certifies its result."),
+        56: ("A route entry’s who-acts words hold actors, instruments and actions alike.",
+             f"{len(ents)} route entries hold {who_n} different values, and some open with a verb.",
+             "The entry’s words print as stored, with no “Who acts” label; a fix is proposed to the atlas."),
+        57: ("The Article V route’s who-acts words read as if a convention could amend the Constitution alone.",
+             f"{chip('Route', 'AV')}, who acts: “{e(av)}”.",
+             "The route prints its stages from Article V beside the atlas’s words."),
+    }
+
+
+def rule_links(rules):
+    """The rules where the guide applies a row's resolution, from the research file, as same-page links. "15.1 to 15.5"
+    runs as one; a rule with no chapter in the build prints as words."""
+    if not rules or rules.strip() == "none":
+        return "Not printed"
+    out = []
+    for part in [p.strip() for p in rules.split(";")]:
+        m = re.fullmatch(r"(\d\d)\.(\d+) to (\d\d)\.(\d+)", part)
+        if m:
+            out.append(f'<a href="#rule-{m.group(1)}-{m.group(2)}">{m.group(1)}.{m.group(2)}</a> to '
+                       f'<a href="#rule-{m.group(3)}-{m.group(4)}">{m.group(3)}.{m.group(4)}</a>')
+            continue
+        need(re.fullmatch(r"\d\d\.\d+", part), f"a rule {part!r} in the reconciliation rows")
+        a, b = part.split(".")
+        out.append(f'<a href="#rule-{a}-{b}">{part}</a>')
+    return ("Rule " if len(out) == 1 and " to " not in out[0] else "Rules ") + (
+        out[0] if len(out) == 1 else ", ".join(out[:-1]) + " and " + out[-1])
+
+
+def recon_table(rows, words, caption):
+    body, grp = [], None
+    for r in rows:
+        if r["group"] != grp:
+            grp = r["group"]
+            body.append(f'<tr class="rg"><th colspan="4" scope="colgroup">{e(GROUP_WORDS[grp])}</th></tr>')
+        shown, model, res = words[r["row"]]
+        pages = " and ".join(PAGES[p.strip()] for p in r["pages"].split(";"))
+        lead = "From " if r["row"] >= 46 else "In "
+        body.append(f'<tr><th scope="row" class="rn">{r["row"]}</th>'
+                    f'<td data-k="The earlier page"><span class="pg">{e(lead + pages)}</span> {shown}</td>'
+                    f'<td data-k="The model, as of {SNAP}">{model}</td>'
+                    f'<td data-k="The guide">{res} <span class="wh">{rule_links(r["guide_rules"])}</span></td></tr>')
+    return (f'<table class="rtb"><caption>{e(caption)}</caption><thead><tr><th scope="col">Row</th>'
+            f'<th scope="col">The earlier page</th><th scope="col">The model, as of {SNAP}</th><th scope="col">The guide</th>'
+            f'</tr></thead><tbody>{"".join(body)}</tbody></table>')
+
+
+CSS.update({
+    # Rule 15.25's table: one row a block under 680 px, each cell led by its column's name; a table from 680 px
+    "rtb": (f".rtb{{border-collapse:collapse;width:100%;font:var(--oa-type-body-small)}}"
+            f".rtb caption{{{C13.CAP};color:var(--oa-color-text-secondary);text-align:left;margin:0 0 8px}}"
+            ".rtb thead{display:none}.rtb,.rtb tbody,.rtb tr,.rtb th,.rtb td{display:block}"
+            ".rtb tr{padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+            ".rtb tr.rg{padding:14px 0 4px;border-top:2px solid var(--oa-color-border-strong)}"
+            f".rtb .rg th{{{C13.LBL};color:var(--oa-color-text-secondary);text-align:left}}"
+            ".rtb .rn{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;text-align:left}"
+            ".rtb td+td{margin-top:6px}.rtb td::before{content:attr(data-k);display:block;"
+            f"{C13.LBL};color:var(--oa-color-text-secondary);margin-bottom:2px}}"
+            ".rtb .pg{font-weight:var(--oa-font-weight-semibold)}"
+            f".rtb .wh{{display:block;margin-top:4px;{C13.CAP};color:var(--oa-color-text-secondary)}}"
+            "@container oa-frame (min-width:680px){.wd .rtb{display:table}.wd .rtb thead{display:table-header-group}"
+            ".wd .rtb tbody{display:table-row-group}.wd .rtb tr{display:table-row}.wd .rtb :is(th,td){display:table-cell;"
+            "vertical-align:top;padding:10px 12px 10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+            f".wd .rtb thead th{{{C13.LBL};color:var(--oa-color-text-secondary);text-align:left;border-top:0;"
+            "border-bottom:2px solid var(--oa-color-border-strong)}.wd .rtb td::before{content:none}"
+            ".wd .rtb td+td{margin-top:0}.wd .rtb .rn{width:40px}.wd .rtb tr.rg th{padding-top:18px;border-top:2px solid "
+            "var(--oa-color-border-strong)}.wd .rtb td{width:31%}}"),
+    "cnt": (".cnt{list-style:none;margin:12px 0 16px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}"
+            ".cnt li{border-top:2px solid var(--oa-color-border-strong);padding-top:6px;font:var(--oa-type-body-small)}"
+            ".cnt b{display:block;font:var(--oa-font-weight-extrabold) var(--oa-type-h4-font-size)/1.1 var(--oa-font-family-display);"
+            "font-variant-numeric:tabular-nums}"
+            "@container oa-frame (min-width:680px){.wd .cnt{grid-template-columns:repeat(4,minmax(0,1fr))}}"),
+})
+
+
+def rule_15_25(book):
+    rows = sorted(RECON, key=lambda r: r["print_order"])
+    need([r["row"] for r in RECON if r["row"] <= 45] and sorted(r["row"] for r in RECON) == list(range(1, len(RECON) + 1)),
+         "the reconciliation rows are not numbered 1 to the end")
+    phase0 = [r for r in RECON if r["row"] <= 45]
+    added = [r for r in RECON if r["row"] > 45]
+    need(len(phase0) == 45, "the first audit's 45 rows changed")
+    types0 = Counter(r["phase0_type"] for r in phase0)
+    need(types0 == {"ID": 9, "sign": 1, "grade": 1, "delay": 1, "label": 12, "structure": 7, "encoding": 14},
+         f"the first audit's row types changed: {types0}")
+    need([r["row"] for r in RECON if r["value_conflict"]] == [42], "the value conflicts moved off row 42")
+    order = [r["group"] for r in rows]
+    need([g for i, g in enumerate(order) if i == 0 or order[i - 1] != g] == list(GROUP_WORDS), "the rows leave ruling (e)'s order")
+    ru = RECON_META.get("rerun") or {}
+    q = RECON_META["qualification"]
+    for ph in ("all 2,644 of Phase 0’s comparisons were rerun", "2,642 match and 2 conflict, both in row 42",
+               "8 flags were read in context and set aside", "On November 13, 2026"):
+        need(ph in q, f"the reconciliation sidecar no longer says {ph!r}")
+    words = recon_words()
+    need(set(words) == {r["row"] for r in RECON}, "a reconciliation row has no words")
+    head = (f'<p class="k">Earlier drawings of the atlas, reconciled to the model of {SNAP}</p>'
+            '<ul class="cnt">'
+            '<li><b>2,644</b> comparisons with the model, rerun November 13, 2026</li>'
+            '<li><b>2,642</b> match the model</li>'
+            '<li><b>2</b> conflict, both in row 42</li>'
+            f'<li><b>{len(RECON)}</b> rows: {len(phase0)} from our first audit, {len(added)} drawn for this edition</li></ul>'
+            '<p class="rec">Our first audit, on October 20, 2026, compared every ID and value on three earlier sets of pages, '
+            'our brand guide’s fifth edition, the atlas visual system and the atlas design concepts, with the model; the rerun '
+            'found the same results. Its 45 rows: 9 on identifiers, 1 on a sign, 1 on a grade, 1 on a delay, 12 on labels, '
+            '7 on structure and 14 on encoding. An earlier page’s value is what the page showed, and never evidence for the '
+            'model; every value in the model’s column is read from the model.</p>')
+    first = [r for r in rows if r["group"] in ("A value", "A sign", "A grade", "A delay")]
+    chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
+    disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
+            f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">All {len(RECON)} rows, in order</span>'
+            f'{chev}</summary><div class="oa-disclosure-body">'
+            + recon_table(rows, words, "Every row: what the earlier page showed, what the model holds, and where the guide "
+                                       "applies the answer")
+            + '</div></details></div></div>')
+    body = (head + recon_table(first, words, "The four rows on a value, a sign, a grade and a delay, which decide what a "
+                                             "reader believes the model says")
+            + disc + f'<p class="src">Source: {e(ATLAS)}, every record each row names, snapshot of {SNAP}, United States. The '
+                     'earlier pages as our first audit read them on October 20, 2026; all 2,644 comparisons rerun on November '
+                     '13, 2026.</p>')
+    book.add("s-15-25-correct", body, rule="15.25", readable=True, wide=True, interactive=True,
+             alt=(f"The reconciliation of earlier atlas drawings to the model of {SNAP}. Four counts: 2,644 comparisons with "
+                  "the model, rerun November 13, 2026; 2,642 match; 2 conflict, both in row 42; "
+                  f"{len(RECON)} rows, {len(phase0)} from our first audit and {len(added)} drawn for this edition. A table shows "
+                  "the four rows on a value, a sign, a grade and a delay, each with what the earlier page showed, what the "
+                  "model holds and what the guide does, with the rules where it does so. A disclosure holds all rows in order, "
+                  "grouped: a value, a sign, a grade, a delay, identifiers, structure, encoding, labels, and drawn for this "
+                  "edition."),
+             notes="Rows, order, groups and rules from the research lead's data file; every model value read here from the "
+                   "model; the counts from the file's sidecar.")
+    book.log("15.25 correct", "The whole model against three earlier sets of pages", "all")
+    fail = (dnp() + f'<div class="one"><p class="hed">{chip("Connection", "L02")}<span>“{e(link("L02")["name"])}”</span></p>'
+            '<p><b>Well supported</b>, drawn as a solid line.</p>'
+            '<p class="src">Source: our brand guide’s fifth edition, chapter 16, figure 2.</p></div>')
+    book.add("s-15-25-failure", fail, rule="15.25",
+             alt=(FC + f"Connection L02, {link('L02')['name']}, labeled well supported and drawn as a solid line, with the "
+                  "fifth edition of our brand guide given as the source."),
+             notes="Labeled failure: an earlier drawing cited as the evidence for a grade the model sets otherwise.")
+    return {
+        "id": "15.25",
+        "title": "Reconcile every earlier atlas drawing to the model, and cite none as evidence.",
+        "rule": [
+            "Before a drawing of the atlas is reused, compare each ID, sign, grade, delay, name and count it shows with the "
+            "model, and record each difference in one table: what the earlier page showed, what the model holds, read from "
+            "the model, and what the guide does about it, with the rules where it does so. Order the rows by what a copy "
+            "could mislead a reader about, a value first, then a sign, a grade and a delay, then identifiers, structure, "
+            "encoding and labels.",
+            "Cite the model for every value, never an earlier drawing, even one that matches it. Our first audit compared "
+            "2,644 values on three earlier sets of pages; on November 13, 2026 all 2,644 were rerun, and 2 still differ "
+            "from the model, both in one row.",
+        ],
+        "tokens": ["oa.type.bodySmall", "oa.type.caption"],
+        "why": {"text": ["An earlier drawing can be right on the day it was made and wrong after the model changes, and a copy "
+                         "carries its errors with it. Our fifth edition drew the weakest step of a loop as solid as its "
+                         "strongest. Reading every value from the model keeps one source for the facts, and the table shows "
+                         "a reader where each earlier choice went."],
+                "basis": "Our first audit of October 20, 2026, its rerun of November 13, 2026, and our systems atlas’s model; "
+                         "Rules 13.9 and 13.10"},
+        "correct": {"specimen": "s-15-25-correct",
+                    "caption": f"The reconciliation table: the rerun’s counts, the four rows on a value, a sign, a grade and a "
+                               f"delay, and all {len(RECON)} rows in a disclosure, each with the model’s value as of {SNAP}."},
+        "failure": {"specimen": "s-15-25-failure",
+                    "caption": "<strong>Fails Rule 15.25.</strong> The card takes Connection L02’s grade from our fifth "
+                               "edition, which drew it solid. The model grades it plausible, and the model is the source."},
+        "specs": [
+            {"label": "Columns", "value": "The row’s number, what the earlier page showed, what the model holds, and what "
+                                          "the guide does, with its rules"},
+            {"label": "Order", "value": "A value, a sign, a grade, a delay, identifiers, structure, encoding, labels, then "
+                                        "what this edition drew"},
+            {"label": "Numbers", "value": "Our first audit’s row numbers kept, so each row traces to its record"},
+            {"label": "On the plate", "value": "The counts, the rerun’s date and the four rows on values; every row in a "
+                                               "disclosure"},
+            {"label": "Never", "value": "An earlier drawing as the source of a model value"},
+        ],
+        "related": ["13", "18"],
+        "builders": ["Read each row’s model value from the model at build time, never from the earlier page or from a "
+                     "copy of the table, and stop the build if a row’s value no longer matches the model."],
+    }
+
+
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
              rule_15_7(book), rule_15_8(book), rule_15_9(book), rule_15_10(book), rule_15_11(book), rule_15_12(book),
              rule_15_13(book), rule_15_14(book), rule_15_15(book), rule_15_16(book), rule_15_17(book), rule_15_18(book),
-             rule_15_19(book), rule_15_20(book), rule_15_21(book), rule_15_22(book), rule_15_24(book)]
+             rule_15_19(book), rule_15_20(book), rule_15_21(book), rule_15_22(book), rule_15_24(book), rule_15_25(book)]
     need([r["id"] for r in rules] == BUILT, "the chapter's rules differ from the round's list")
     need(not set(BUILT) & set(PLANNED), "a rule is both built and planned")
     data = {
@@ -4254,7 +4722,10 @@ def chapter(book):
                      "offers nothing the atlas does not hold."},
             {"before_rule": "15.22", "number": 5, "title": "Routes to change as workflows",
              "line": "A route to change runs through stages, forks and ends to the act that can undo it, and each stage "
-                     "carries the law that sets it and the date we checked it."},
+                     "carries the law that sets it and the date we read it."},
+            {"before_rule": "15.25", "number": 6, "title": "Earlier drawings",
+             "line": "Every earlier drawing of the atlas is checked against the model, and the model is the only source "
+                     "for its values."},
         ],
         "rules": rules,
         "plate_css": plate_css(book.files),
@@ -4441,7 +4912,7 @@ def check(data, book):
                     fails.append(f"{k}: Variable {c} printed as its chain label {lab!r}, where DR-265 prints its title "
                                  f"{node(c)['title']!r}: …{flat[max(0, m.start() - 40): m.end() + 30]}…")
     kinds = {"Variable": NODE, "Connection": LINK, "Loop": LOOP, "Reform": REFORM,
-             "Route": {r["code"] for r in V7["routes"]["items"]}}
+             "Route": {r["code"] for r in V7["routes"]["items"]}, "Domain": {d_["id"] for d_ in V7["domains"]}}
     for sid, frag in book.files.items():
         for kind, rid in re.findall(r'<span class="chip">([A-Za-z ]+) <span class="id">([^<]+)</span>', frag):
             if rid not in kinds.get(kind, {}):

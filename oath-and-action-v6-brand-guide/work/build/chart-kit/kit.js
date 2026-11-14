@@ -816,8 +816,8 @@
         .replace(/\u0003(\d+)\u0003/g, function (_, n) { return knock_on[n] || ''; });
     });
     var guard = K.guard(c, width, h);
-    var title = spec.title ? '<title>' + esc(spec.title) + '</title>' : '';   // a table-mode island leaves both out; the figure names the drawing
-    var desc = spec.alt ? '<desc>' + esc(spec.alt) + '</desc>' : '';
+    var title = spec.title && !opts.bare ? '<title>' + esc(spec.title) + '</title>' : '';   // a table-mode island leaves both out; the figure names the drawing
+    var desc = spec.alt && !opts.bare ? '<desc>' + esc(spec.alt) + '</desc>' : '';   // opts.bare (round 5): a card's crop on the page carries neither
     var fc = forced_patterns(c);
     var defs = c._defs.length || fc.defs ? '<defs>' + c._defs.join('') + fc.defs + '</defs>' : '';
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg' + (fc.defs ? ' oac-u-' + c.uid : '') + '" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
@@ -1272,10 +1272,15 @@
     var ground = opts.ground || (fig.closest && fig.closest('.oa-surface-charcoal') ? 'charcoal' : 'newsprint');
     // R4-4 (round 4): a card draws each crop once at its true size; the page's CSS shows it at the column's width
     if (spec.card && spec.card.crops) {
-      spec.card.crops.forEach(function (cr) {
-        var a = fig.querySelector('[data-oa-crop="' + cr[0] + 'x' + cr[1] + '"]'), lid = fig.id && (fig.ownerDocument || root.document).getElementById(fig.id + '-alt') ? fig.id + '-alt' : null;
+      spec.card.crops.forEach(function (cr, ci) {
+        var doc = fig.ownerDocument || root.document;
+        var a = fig.querySelector('[data-oa-crop="' + cr[0] + 'x' + cr[1] + '"]'), lid = fig.id && doc.getElementById(fig.id + '-alt') ? fig.id + '-alt' : null;
         if (!a || a.querySelector('svg.oac-svg')) return;
-        var r = K.draw(spec, rows, { width: cr[0], crop: cr, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-c' + cr[1] + '-' + cr[0], label_id: lid });
+        // the accessibility lead's request 1 (round 5, carried): the first crop is named by the alt, every later crop by its
+        // size line alone, and no crop carries the card's title or alt as a description, so the alt is heard once here
+        var sid = fig.id ? fig.id + '-crop-' + cr[0] + 'x' + cr[1] : null;
+        if (ci > 0 && sid && doc.getElementById(sid)) lid = sid;
+        var r = K.draw(spec, rows, { width: cr[0], crop: cr, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-c' + cr[1] + '-' + cr[0], label_id: lid, bare: true });
         a.insertAdjacentHTML('beforeend', r.svg);
         if (lid) (fig.ownerDocument || root.document).getElementById(lid).hidden = true;
         if (r.guard.length || r.warnings.length) fig.setAttribute('data-oa-warnings', String(r.guard.length + r.warnings.length));

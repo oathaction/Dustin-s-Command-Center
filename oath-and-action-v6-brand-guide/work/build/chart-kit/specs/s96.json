@@ -10,6 +10,7 @@
  "evidence_label": "Finding",
  "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
  "title": "Payrolls shrank in seven of the 57 months charted, and only the October 2025 and February 2026 drops pass the survey’s margin of error.",
+ "reading_guide": "Each column is one month’s change in jobs, and the two dark columns are the drops past the margin. The line is the three-month average. The shaded band is the survey’s margin of error for one month’s change. Hatched columns are preliminary.",
  "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average and the survey’s 90 percent margin of error for one month’s change, plus or minus 122,000 jobs.",
  "notes": [
   "The band runs from −122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of error for one month’s change in its survey of employers. A column that ends inside the band is a change the survey cannot tell apart from no change at that level. The band covers one month’s change, so it says nothing about the three-month average.",
@@ -97,7 +98,10 @@
     "text": [
      "February 2026",
      "−156,000 jobs"
-    ]
+    ],
+    "phone": {
+     "dx": -20
+    }
    }
   ],
   "margin": {

@@ -1,0 +1,12 @@
+{
+ "chapter": "14",
+ "rule": null,
+ "width_px": null,
+ "alt": "Every one of the 127 forms in this chapter, under the 16 reader questions that open its groups, each named with its tier and linked to its entry, beside a small drawing of the form.",
+ "illustrative": false,
+ "interactive": true,
+ "fit_switch": false,
+ "label": "Choose a chart",
+ "caption": "Every form in this chapter sits under the question it answers, and each name leads to its entry. Core forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid misleads, so its entry shows the form to use in its place.",
+ "notes": "Chapter 14's selection guide (R5-2, DR-273): the plan's 127 forms under the 16 family questions, Core, Extended, Reference, then Avoid within each, every picture drawn from one symbol set; written by selection_guide_build.py."
+}

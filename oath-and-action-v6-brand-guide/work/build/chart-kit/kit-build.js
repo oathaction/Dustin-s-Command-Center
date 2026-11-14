@@ -465,7 +465,8 @@
       var crops = spec.card && spec.card.crops && !opts.svg ? spec.card.crops : null;
       if (crops) p.push(illus + crops.map(function (cr) {
         return '<div class="oac-art oac-crop" data-oa-art data-oa-crop="' + (+cr[0]) + 'x' + (+cr[1]) + '"></div>' +
-          '<p class="oac-crop-k">' + esc(word(opts, 'card_size').replace('{w}', String(+cr[0])).replace('{h}', String(+cr[1]))) + '</p>';
+          // the accessibility lead's request 1 (round 5): the size line carries an id, so a second crop is named by it alone
+          '<p class="oac-crop-k" id="' + esc(id) + '-crop-' + (+cr[0]) + 'x' + (+cr[1]) + '">' + esc(word(opts, 'card_size').replace('{w}', String(+cr[0])).replace('{h}', String(+cr[1]))) + '</p>';
       }).join(''));
       else p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
       // D3-487 (BC S3, ED-E10): a form that changes on a phone also shows its phone drawing to a reader at a desk, drawn
