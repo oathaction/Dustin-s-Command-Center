@@ -3742,7 +3742,7 @@ def fs_stages():
               [("U.S. Senate, “About Filibusters and Cloture”", r["clot"])], rel="In the Senate, for most bills",
               then="Short of 60, the debate goes on and the bill waits."),
         Stage(5, "br", "Reconciliation", "Debate is held to 20 hours, so no cloture vote is needed and a simple majority "
-              "passes it. A part that does not change spending or revenue is struck.",
+              "passes it. A part that does not change spending or revenue is struck if a senator raises a point of order.",
               [("2 U.S.C. 641 and 644", r["recon"])], rel="In the Senate, for a budget reconciliation bill"),
         Stage(6, "st", "Passed by the second chamber", "A simple majority, by the same paths as step 2.", [(h, r["floor"])]),
         Stage(7, "st", "One text for both chambers", "A conference committee settles the differences, and both chambers "
@@ -3764,7 +3764,8 @@ def fs_stages():
     ]
     after = [
         Stage(14, "af", "Funded by appropriation", "Money leaves the Treasury only through an appropriation made by law. If "
-              "the President proposes to cancel some, it is spent unless Congress passes a rescission bill within 45 days.",
+              "the President proposes to cancel some, the money must be released unless Congress passes a rescission bill "
+              "within 45 days.",
               [("U.S. Constitution, Article I, Section 9", r["appr"]), ("2 U.S.C. 683", r["resc"])]),
         Stage(15, "af", "Put to work by agency rules", "The agency publishes a proposed rule, takes comments and publishes "
               "the final rule at least 30 days before it takes effect.", [("5 U.S.C. 553", r["rule"])]),
@@ -3831,7 +3832,7 @@ def rule_15_22(book):
             "Number every stage in reading order. Set the stages every case passes through on one dark line in filled "
             "squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words "
             "where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends "
-            "a bill that stops (Rule 11.1), and print beside each stage the law or rule that sets it, with the date we read it.",
+            "a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
             "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings "
             "the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one "
             "aside, and a sunset date or a later act can end the law. A repeal is a new act, so its line runs back to step 1.",
@@ -3918,7 +3919,7 @@ ROUTE_SET = {
                   [("Massachusetts", "shall hold a public hearing"), ("Nebraska", "General File, Select File and Final Reading")])],
         note=("Nebraska’s Legislature has one chamber.", "Nebraska", "Nebraska Unicameral Legislature")),
     "BI": dict(
-        stages=["Filed", "Title and summary", "Signatures", "The legislature votes first, in an indirect initiative",
+        stages=["Filed", "Title and summary", "Signatures", "The Legislature votes first, in an indirect initiative",
                 "On the ballot", "Vote", "Certified, then in effect", "Amended or repealed later, as each state allows"],
         sources=[("the constitutions of Massachusetts, Ohio and Michigan",
                   [("4 Legislature (indirect initiative)", "within 40 session days"), ("6 Vote, certification and effect", "thirty days after the election"),
@@ -4144,12 +4145,12 @@ def rule_15_24(book):
     key = (f'<div class="scl"><div><p class="k">Feasibility, the atlas’s four words for 2026 to 2030</p><ul class="kw">{scale}</ul></div>'
            f'<div><p class="k">What a route depends on, the atlas’s five questions</p><ul class="kw">{deps}</ul></div></div>')
     head = (f'<p class="k">The atlas’s eleven routes to change, in its order, as of {SNAP}</p>'
-            f'<p class="rec">“{e(V7["routes"]["intro"].split(". ")[0])}.” Each card prints two dates: when our research read '
+            f'<p class="rec">“{e(V7["routes"]["intro"].split(". ")[0])}.” Each card prints two dates: when we read '
             f'the route’s official sources, and, for each reform entry, the atlas’s own check date or “Not checked”.</p>')
     body = (head + one + key + f'<ol class="rset">{"".join(c for c, _, _ in cards)}</ol>'
             + f'<p class="src">Source: {e(ATLAS)}, the eleven routes, their instruments, who acts, what each depends on, the '
               f'feasibility scale and every reform route entry, snapshot of {SNAP}, United States. Each route’s official '
-              f'sources as named on its card, with the dates our research read them. Of the atlas’s {total} route entries, '
+              f'sources as named on its card, with the dates we read them. Of the atlas’s {total} route entries, '
               f'{dated} carry a check date.</p>')
     alt_cards = " ".join(f"Route {c}, {ROUTE[c]['name']}: {ROUTE[c]['instrument']}; {n} entries, {d_} checked." for c, (_, n, d_)
                          in zip(ROUTE_CODES, cards))
@@ -4174,13 +4175,13 @@ def rule_15_24(book):
                    "and no check date.")
     return {
         "id": "15.24",
-        "title": "Use the workflow for the reform’s route, with its official source and check date.",
+        "title": "Draw the route a reform’s entry names, with the law’s source and the entry’s date.",
         "rule": [
             "Each of the atlas’s eleven routes to change runs through its own stages, set by its own law. When a page shows "
             "how a reform could pass, draw the workflow of the route its entry names, read the entry’s own words for the "
             "path, and cite the route’s official source with the date we read it. Print the entry’s feasibility in the "
             "atlas’s word and its own check date, or “Not checked” where it has none (Rule 13.10).",
-            f"Keep the two dates apart. “Read” and its date say when our research read the law behind a route; “Checked” "
+            f"Keep the two dates apart. “Read” and its date say when we read the law behind a route; “Checked” "
             f"and its date say when the atlas checked one reform’s entry. Of the atlas’s {total} route entries, {dated} carry "
             f"a check date, all {SNAP}.",
         ],
@@ -4609,11 +4610,11 @@ def rule_15_25(book):
             '<li><b>2,642</b> match the model</li>'
             '<li><b>2</b> conflict, both in row 42</li>'
             f'<li><b>{len(RECON)}</b> rows: {len(phase0)} from our first audit, {len(added)} drawn for this edition</li></ul>'
-            '<p class="rec">Our first audit, on October 20, 2026, compared every ID and value on three earlier sets of pages, '
-            'our brand guide’s fifth edition, the atlas visual system and the atlas design concepts, with the model; the rerun '
-            'found the same results. Its 45 rows: 9 on identifiers, 1 on a sign, 1 on a grade, 1 on a delay, 12 on labels, '
-            '7 on structure and 14 on encoding. An earlier page’s value is what the page showed, and never evidence for the '
-            'model; every value in the model’s column is read from the model.</p>')
+            '<p class="rec">Our first audit, on October 20, 2026, compared every ID and value on three earlier sets of pages '
+            'with the model: our brand guide’s fifth edition, and two design studies for the atlas, the atlas visual system '
+            'and the atlas design concepts. The rerun found the same results. Its 45 rows hold nine on identifiers, one on a '
+            'sign, one on a grade, one on a delay, 12 on labels, seven on structure and 14 on encoding. An earlier page’s '
+            'value is what the page showed, and we read every value in the model’s column from the model.</p>')
     first = [r for r in rows if r["group"] in ("A value", "A sign", "A grade", "A delay")]
     chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
     disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
@@ -4647,16 +4648,16 @@ def rule_15_25(book):
              notes="Labeled failure: an earlier drawing cited as the evidence for a grade the model sets otherwise.")
     return {
         "id": "15.25",
-        "title": "Reconcile every earlier atlas drawing to the model, and cite none as evidence.",
+        "title": "Reconcile every earlier drawing of the atlas with the model, and cite none as evidence.",
         "rule": [
-            "Before a drawing of the atlas is reused, compare each ID, sign, grade, delay, name and count it shows with the "
+            "Before you reuse a drawing of the atlas, compare each ID, sign, grade, delay, name and count it shows with the "
             "model, and record each difference in one table: what the earlier page showed, what the model holds, read from "
             "the model, and what the guide does about it, with the rules where it does so. Order the rows by what a copy "
             "could mislead a reader about, a value first, then a sign, a grade and a delay, then identifiers, structure, "
             "encoding and labels.",
-            "Cite the model for every value, never an earlier drawing, even one that matches it. Our first audit compared "
-            "2,644 values on three earlier sets of pages; on November 13, 2026 all 2,644 were rerun, and 2 still differ "
-            "from the model, both in one row.",
+            "Cite the model for every value, even where an earlier drawing matches it. Our first audit, on October 20, 2026, "
+            "compared 2,644 values on three earlier sets of pages with the model. On November 13, 2026, we reran all "
+            "2,644, and two still differ from the model, both in one row.",
         ],
         "tokens": ["oa.type.bodySmall", "oa.type.caption"],
         "why": {"text": ["An earlier drawing can be right on the day it was made and wrong after the model changes, and a copy "
@@ -4759,13 +4760,13 @@ def rule_15_23(book):
          "the records request's steps in the data file changed")
     need("20 working days" in fo["5"]["time_limit"] and "90 days" in fo["6"]["time_limit"], "the request's time limits changed")
     fw = lambda k, extra="": (None, "st", fo[k]["step"] + extra)
-    rows8 = [("before", "Before step 1", [fw("1")]),
+    rows8 = [("before", "Before step 1", [fw("1", ": check whether the agency already posts the records")]),
              (1, s8[0], [fw("2"), fw("3"), fw("4", ", where the requester shows a need")]),
-             (2, s8[1], [fw("5", ": its 20 working days start")]),
+             (2, s8[1], [fw("5", ", within 20 working days that start here")]),
              (3, s8[2], [fw("5", ", inside the same 20 working days")]),
              (4, s8[3], [fw("5", ", inside the same 20 working days")]),
              (5, s8[4], [fw("5", " within 20 working days, or 10 more in unusual circumstances")]),
-             (6, s8[5], [fw("6", ", within at least 90 days")]),
+             (6, s8[5], [fw("6", ", with at least 90 days to do so")]),
              ("after", "After step 6", [fw("7"), fw("8")])]
     b8 = xw_block(f'The Freedom of Information Act beside the records request tracker of <a href="#rule-11-8">Rule 11.8</a>',
                   "A federal request’s steps in the law, behind the tracker’s six steps",
@@ -4798,10 +4799,10 @@ def rule_15_23(book):
     bi = [bw("1 Filed", "The full text filed with the attorney general or the secretary of state", "attorney-general"),
           bw("2 Title and summary", "The attorney general’s title and summary, before anyone signs", "circulating title and summary"),
           bw("3 Signatures", "Signatures counted and checked", "fails to qualify for the ballot"),
-          bw("4 Legislature (indirect initiative)", "In an indirect initiative, the legislature’s vote, and a second round of "
+          bw("4 Legislature (indirect initiative)", "In an indirect initiative, the Legislature’s vote, and a second round of "
              "signatures if it does not pass the measure", "within 40 session days"),
           bw("4 Legislature (direct initiative)", "In a direct initiative, a hearing that cannot stop it", "cannot amend it"),
-          bw("4 Legislature (legislative referral)", "A referral, in which the legislature sends a measure to the ballot",
+          bw("4 Legislature (legislative referral)", "A referral, in which the Legislature sends a measure to the ballot",
              "three-fifths of the members elected"),
           bw("5 On the ballot", "Certified for the ballot", "certificate of qualification"),
           bw("5 Court challenge", "A court challenge before the vote, where a state allows one", "exclusive, original jurisdiction"),
@@ -4876,9 +4877,10 @@ def rule_15_23(book):
             "A tracker gives a reader six steps to follow, and the law behind it sets its own stages. Print the stages behind "
             "each step beside it, from the route’s workflow and its sources, and name the stages that come before step 1 or "
             "after step 6, where the tracker stops following.",
-            f"The two never line up by number. The bill tracker of Rule 11.1 sets {words_n(folded)} steps, {', '.join(s1[:2])} "
-            f"and {s1[2]}, inside the first stage of Route FS, since the hearing is where the public takes part, and its "
-            f"last step holds six stages, from presentment to the public law. After step 6, {words_n(len(after1))} stages "
+            f"Steps and stages do not line up by number. The bill tracker of Rule 11.1 spends {words_n(folded)} steps, "
+            f"{', '.join(s1[:2])} and {s1[2]}, inside the first stage of Route FS, because a hearing, where a committee "
+            f"takes testimony, keeps a step of its own. Its last step holds six stages, from presentment, when "
+            f"Congress sends the bill to the President, to the public law. After step 6, {words_n(len(after1))} stages "
             "go on, and the trackers of Rules 11.9 and 11.11 follow some of them.",
         ],
         "tokens": ["oa.type.bodySmall", "oa.type.caption"],
@@ -4896,7 +4898,7 @@ def rule_15_23(book):
                                "chamber’s vote."},
         "specs": [
             {"label": "Rows", "value": "One a step, numbered as the tracker numbers it, its stages beside it"},
-            {"label": "Before and after", "value": "Rows for the stages before step 1 and after step 6, named, not hidden"},
+            {"label": "Before and after", "value": "Rows for the stages before step 1 and after step 6, each named"},
             {"label": "Stages", "value": "Route FS’s with Rule 15.22’s numbers and squares; the others by name, from "
                                          "their sources"},
             {"label": "Sources", "value": "Under each block, with the date we read them"},
@@ -4950,7 +4952,8 @@ def chapter(book):
             "where they started.",
             "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and "
             "combine those marks and how to place a reform on them, then work through mechanisms from the atlas as it "
-            "records them.",
+            "records them. The last two groups draw the routes a reform can travel, stage by stage, and check every "
+            "earlier drawing of the atlas against the model.",
         ],
         "groups": [
             {"before_rule": "15.1", "number": 1, "title": "Reading a systems drawing",

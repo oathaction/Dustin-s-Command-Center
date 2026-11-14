@@ -10,7 +10,7 @@
  },
  "intro": [
   "A systems graphic draws a mechanism: what moves what, which way, and how sure our systems atlas, Who Do They Answer To?, is of each step. It uses the atlas’s own parts. Variables are the quantities or conditions that can rise or fall, connections are the arrows between them, and loops are chains of connections that come back to where they started.",
-  "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and combine those marks and how to place a reform on them, then work through mechanisms from the atlas as it records them."
+  "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and combine those marks and how to place a reform on them, then work through mechanisms from the atlas as it records them. The last two groups draw the routes a reform can travel, stage by stage, and check every earlier drawing of the atlas against the model."
  ],
  "groups": [
   {
@@ -1161,7 +1161,7 @@
    "id": "15.22",
    "title": "Draw a route to change as its whole workflow, through to reversal.",
    "rule": [
-    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order. Set the stages every case passes through on one dark line in filled squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.1), and print beside each stage the law or rule that sets it, with the date we read it.",
+    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order. Set the stages every case passes through on one dark line in filled squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
     "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one aside, and a sunset date or a later act can end the law. A repeal is a new act, so its line runs back to step 1."
    ],
    "tokens": [
@@ -1226,7 +1226,7 @@
    "title": "Show which stages sit behind each of a tracker’s six steps.",
    "rule": [
     "A tracker gives a reader six steps to follow, and the law behind it sets its own stages. Print the stages behind each step beside it, from the route’s workflow and its sources, and name the stages that come before step 1 or after step 6, where the tracker stops following.",
-    "The two never line up by number. The bill tracker of Rule 11.1 sets three steps, Filed, Hearing and Committee vote, inside the first stage of Route FS, since the hearing is where the public takes part, and its last step holds six stages, from presentment to the public law. After step 6, six stages go on, and the trackers of Rules 11.9 and 11.11 follow some of them."
+    "Steps and stages do not line up by number. The bill tracker of Rule 11.1 spends three steps, Filed, Hearing and Committee vote, inside the first stage of Route FS, because a hearing, where a committee takes testimony, keeps a step of its own. Its last step holds six stages, from presentment, when Congress sends the bill to the President, to the public law. After step 6, six stages go on, and the trackers of Rules 11.9 and 11.11 follow some of them."
    ],
    "tokens": [
     "oa.type.bodySmall",
@@ -1253,7 +1253,7 @@
     },
     {
      "label": "Before and after",
-     "value": "Rows for the stages before step 1 and after step 6, named, not hidden"
+     "value": "Rows for the stages before step 1 and after step 6, each named"
     },
     {
      "label": "Stages",
@@ -1274,10 +1274,10 @@
   },
   {
    "id": "15.24",
-   "title": "Use the workflow for the reform’s route, with its official source and check date.",
+   "title": "Draw the route a reform’s entry names, with the law’s source and the entry’s date.",
    "rule": [
     "Each of the atlas’s eleven routes to change runs through its own stages, set by its own law. When a page shows how a reform could pass, draw the workflow of the route its entry names, read the entry’s own words for the path, and cite the route’s official source with the date we read it. Print the entry’s feasibility in the atlas’s word and its own check date, or “Not checked” where it has none (Rule 13.10).",
-    "Keep the two dates apart. “Read” and its date say when our research read the law behind a route; “Checked” and its date say when the atlas checked one reform’s entry. Of the atlas’s 126 route entries, 13 carry a check date, all October 15, 2026."
+    "Keep the two dates apart. “Read” and its date say when we read the law behind a route; “Checked” and its date say when the atlas checked one reform’s entry. Of the atlas’s 126 route entries, 13 carry a check date, all October 15, 2026."
    ],
    "tokens": [
     "oa.type.bodySmall",
@@ -1330,10 +1330,10 @@
   },
   {
    "id": "15.25",
-   "title": "Reconcile every earlier atlas drawing to the model, and cite none as evidence.",
+   "title": "Reconcile every earlier drawing of the atlas with the model, and cite none as evidence.",
    "rule": [
-    "Before a drawing of the atlas is reused, compare each ID, sign, grade, delay, name and count it shows with the model, and record each difference in one table: what the earlier page showed, what the model holds, read from the model, and what the guide does about it, with the rules where it does so. Order the rows by what a copy could mislead a reader about, a value first, then a sign, a grade and a delay, then identifiers, structure, encoding and labels.",
-    "Cite the model for every value, never an earlier drawing, even one that matches it. Our first audit compared 2,644 values on three earlier sets of pages; on November 13, 2026 all 2,644 were rerun, and 2 still differ from the model, both in one row."
+    "Before you reuse a drawing of the atlas, compare each ID, sign, grade, delay, name and count it shows with the model, and record each difference in one table: what the earlier page showed, what the model holds, read from the model, and what the guide does about it, with the rules where it does so. Order the rows by what a copy could mislead a reader about, a value first, then a sign, a grade and a delay, then identifiers, structure, encoding and labels.",
+    "Cite the model for every value, even where an earlier drawing matches it. Our first audit, on October 20, 2026, compared 2,644 values on three earlier sets of pages with the model. On November 13, 2026, we reran all 2,644, and two still differ from the model, both in one row."
    ],
    "tokens": [
     "oa.type.bodySmall",
