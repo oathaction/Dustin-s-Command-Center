@@ -1161,8 +1161,8 @@
    "id": "15.22",
    "title": "Draw a route to change as its whole workflow, through to reversal.",
    "rule": [
-    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order. Set the stages every case passes through on one dark line in filled squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
-    "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back to step 1."
+    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order. Set the stages every change on the route passes through on one dark line in filled squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
+    "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back to stage 1."
    ],
    "tokens": [
     "oa.chart.color.subject.onNewsprint",
@@ -1178,7 +1178,7 @@
    },
    "correct": {
     "specimen": "s-15-22-correct",
-    "caption": "Route FS, the federal statute, in 20 stages from introduction to repeal, each with the source we read and its date, and the line that takes a repeal back to step 1."
+    "caption": "Route FS, the federal statute, in 20 stages from introduction to repeal, each with the source we read and its date, and the line that takes a repeal back to stage 1."
    },
    "failure": {
     "specimen": "s-15-22-failure",
@@ -1187,12 +1187,12 @@
    "specs": [
     {
      "label": "The spine",
-     "value": "The stages every case passes, numbered in reading order, filled squares on a line in Charcoal at the subject weight",
+     "value": "The stages every change on the route passes, numbered in reading order, filled squares on a line in Charcoal at the subject weight",
      "token": "oa.chart.line.subject"
     },
     {
      "label": "Other paths",
-     "value": "Outlined squares in the context ink, set in, each saying in words where it leaves the spine",
+     "value": "Outlined squares in the context ink, set to one side, each saying in words where it leaves the spine",
      "token": "oa.chart.color.context.onNewsprint"
     },
     {
@@ -1205,7 +1205,7 @@
     },
     {
      "label": "Return",
-     "value": "A context line back to step 1 for an act that undoes the law"
+     "value": "A context line back to stage 1 for an act that undoes the law"
     },
     {
      "label": "Sources",

@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 03:20 UTC. **Batch 4:** Rules 15.22 to 15.25's second pass signed off whole (the five fixes, two suggestions and the new court stage 19 held to their sources; Rule 01.9 at 39 examples, D02 8, D03 5). S96's scale of minus 400 to 850 ruled to hold, with conditions; S96's sign-off waits on the maker's rebuild report. Batch 1's S96 phone-note condition is met.
 - 02:52 UTC. **Batch 3 signed off**, under "Sign-offs": Rules 15.22 to 15.25, with four required word fixes (15.22's stages 5, 14 and 15; 15.25's row 19) and one required route fix (15.23 names Routes ENF and CRT for the court case), plus three suggestions. DD-R2 and DD-R5 noted as carried to the review.
 - 02:47 UTC. **Batch 2 signed off:** Rules 11.10 and 11.11 as finished (words, end words, Rule 11.12, group 2, my 11.10 change, "Affirmed" glossed, the three source points, both failure plates, the step tables), with one optional word suggestion for the editor. Rules 11.10 and 11.11 are signed off whole.
 - 02:44 UTC. DD-E3 and DD-R4 ruled yes, under "Additions, 02:44 UTC" (S96's latest label leaves the plot; 14.144's date once over the set, with R-38's route check date kept). Ruling (d)'s family name amended to DR-39's "Quality of democracy". Noted for batch 2: the three complex examples weigh 29,965, 42,948 and 54,950 bytes as placed, reported under DR-271.
@@ -273,6 +274,8 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 - D3-xxx | An avoid tile prints "Avoid" as its tier word and takes a shared mark, a 1 px frame with one rule from top left to bottom right, in stroke classes inside the hidden picture | The word carries it for screen readers; stroke classes keep it in forced colors and print; the falling rule reads as a strike, not a chart line
 - D3-xxx | Selection guide pictures may use the subject, context, light fill, track, gridline and magnitude gray inks and the hatch, never the point, Verdigris, Prussian, sequential or diverging classes | One working red per view (Rule 05.3); a hue on some pictures would read as a code; the palettes have their own plate
 - D3-xxx | Example 3's drawing stays Loop R8 alone; every off-loop target of all three reforms is named in words; R-38 stays | The model holds no connection from TC7, EC9 or B5 into the loop; one rule for all three reforms (DR-93); each reform's record names R8
+- D3-xxx | S96 may run its scale from minus 400 to 850 thousand jobs, keeping S14 at minus 200 | One linear scale from zero shortens every column alike; the band stays plus or minus 122 and both named drops still pass it; the room places the named words
+- D3-xxx | 15.22's stage 19 may print NRSC v. FEC as the most recent example, by date | The research row's stated rule picks by date, not side; the plate prints the holding alone
 - D3-xxx | 15.23 maps the court case tracker to Routes ENF and CRT, not CRT alone | V7 defines ENF as cases and settlements under existing law and CRT as rulings that change what other routes may do; the tracker ends in settlement or a ruling
 - D3-xxx | 15.25's row 19 counts the 111 signed connections as every connection but the seven authority ones | Row 21 and Rule 15.4 call only 80 of them causal; one plate cannot use the word two ways
 - D3-xxx | S96 drops its on-plot latest label, with the words kept in its chart note and table (DD-E3) | +29,000 sits inside the margin and is preliminary; a label on a margin chart reads as a finding (DR-64)
@@ -321,6 +324,49 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 - Read (a). Tier word in each link's accessible name; the avoid word in text, never in the picture alone.
 
 ## Sign-offs
+
+### Batch 4 (03:20 UTC): Rules 15.22 to 15.25's second pass signed off; S96's scale ruled (for the systems designer, the complex examples maker, the engineer and the main session)
+
+#### Rules 15.22 to 15.25, second pass: signed off whole
+
+Each fix read in the plates (`s-15-22-*` to `s-15-25-*`) and held against the research lead's rows in `work/research/20261111_Policy-Workflow-Sources.md`:
+1. **Stage 5.** "struck when a senator raises a point of order and the chair agrees", citing 2 U.S.C. 641 and 644. This matches the Byrd rule row: "when the Chair sustains a point of order, the provision shall be deemed stricken".
+2. **Stage 14.** "must be released for spending unless Congress passes a rescission bill within the 45-day period the law sets". This matches 2 U.S.C. 683's "shall be made available for obligation unless, within the prescribed 45-day period, the Congress has completed action on a rescission bill".
+3. **Stage 15.** "unless the law makes an exception" matches the 553 row's "with exceptions".
+4. **Row 19.** "Every connection but the seven authority connections stores a sign: 70 plus and 41 minus". My own count agrees: 118 connections, 7 authority with no sign, 111 signed, 70 plus and 41 minus. Row 21's 80 causal now sits beside it without conflict.
+5. **15.23's court case.** It now runs beside Route ENF and Route CRT. The words quote ENF's instrument as the model stores it, and say CRT's "changes what other routes may do", which is the model's instrument for CRT in the guide's own words. The alt and the log follow; the domain stays D05.
+- **Suggestions taken.** The direct initiative's hearing now ends "so step 4 keeps its slash". Row 43 now says how it counts. My own script agrees: nine variables whose domain field names D02, three of them shared with another domain (D6, D7 and X2), give 27 and 19; D01's three give 13 and 9.
+- **New stage 19, "Struck down by a court."**
+  - *Marbury.* The quotation "a law repugnant to the constitution is void" is in the research row, from 5 U.S. 137, 177 to 180, on govinfo.
+  - *The example.* The research row quotes the syllabus, "Held: FECA's political-party coordinated-expenditure limits violate the First Amendment", for NRSC v. FEC, No. 24-621, decided June 30, 2026, 609 U.S. 908, preliminary print, on supremecourt.gov. The plate's sentence says no more than that holding, and names the statute, 52 U.S.C. 30116(d), as the row does.
+  - *The selection rule, read from both sides.* The research row states the rule: the most recent decision, by date, whose judgment held a provision of an Act of Congress unconstitutional, from the Court's opinion lists for October Terms 2024 to 2026 (read to November 9, 2026). It names the one before, Trump v. Slaughter (June 29, 2026). The rule picks by date, not by subject or side, and the plate prints the holding with no word of praise or blame. A reader who favors party spending limits and one who opposes them meet the same record. The case's full name, with its party committee, sits only in the source line, as the official title.
+  - *Its place.* It sits between the sunset and repeal, so repeal stays last, with its line back to step 1. "The part the court holds void no longer applies" claims nothing about the Code's text.
+  - *A suggestion, not a condition.* "The most recent example, by date" could name what it is the most recent of ("the most recent decision to hold part of an Act of Congress unconstitutional"), since the rule lives in the research row and not on the page.
+- **Rule 01.9 holds with the new D03 entry.** `phase3_ch15_build.py --check-only`: 39 examples. By domain: D01 5, D02 8, D03 5, D04 5, D05 4, D06 3, D08 3, D09 1, D10 3, and 2 atlas-wide. D02 is the largest at 8, under one in four (9.75). A real case on a plate is a dated record, logged as ruling (e) asks.
+- The main session's V7 check passes: 0 failures over 526 chips. I did not run it.
+
+#### S96's scale, minus 400 to 850 thousand jobs: holds under ruling (c) and DR-64, with conditions (for the engineer and the complex examples maker)
+
+Measured on the kit's own Node drawings with the scale set to minus 400 in memory (`s96_scale.mjs`, `s96_ticks.mjs` in my scratch `scripts/`; the spec on disk still reads minus 200):
+- **No distortion.** One linear scale from zero for every column: 0.2879 px a thousand at 1440 px, 0.2321 at the 358 px phone drawing, the same for both named columns. Every column, gain or loss, shortens by the same factor (about 16 percent at the desk against minus 200), so the change stresses neither the drops nor the gains. Read from both sides, it gives neither reader a steeper picture.
+- **The zero line** stays on top of the band, at 0.
+- **The margin band reads as before.** It keeps magnitude step 1 with context edges, and its half-height equals 122 thousand on the scale at each width (35.1 px and 28.3 px). The two named drops still end past its edge, by 5.2 and 9.8 px at 1440 and by 4.2 and 7.9 px at 358. The other five drops still end inside.
+- **The axis prints its range.** At 1440 the ticks are minus 250,000, 0, plus 250,000, plus 500,000 and plus 750,000; at 390, 0 and plus 500,000. An empty stretch below the drops, with a tick and gridline, claims no figure.
+- At minus 200 the engineer's form now finds no clear place for February's words at five guide widths (5 faults in my run). At minus 400 it finds them all (0 faults). The wider range answers a placement need, which notes_internal should say.
+
+Conditions:
+1. October 2025's column ends at least 3 px past the band's edge at every width the plate draws. It is 4.2 px at the 358 px drawing; where a narrower stage scales the drawing below that, the phone note names both months.
+2. notes_internal records why S96's range differs from S14's (minus 200 to 850, approved on board 1, which stays as it is): room for the named columns' words below the band. No reader note or title speaks of the scale.
+3. When the maker reports the rebuild, I confirm by script on the rebuilt drawing, then sign S96 off:
+   - one px per thousand for every column, and the band at plus and minus 122;
+   - condition 1 at every width;
+   - no line through a label (DD-E1), and the latest label off the plot (DD-E3);
+   - the phone note present;
+   - no red.
+
+The phone note condition from batch 1 is met. My 02:46 build prints "The two columns in the strongest ink: October 2025, −140,000 jobs, and February 2026, −156,000 jobs." S96 draws from its spec at each build, so the placed fragment is the kit's placeholder.
+
+The engineer's edge guard is opt-in, so S59's signed-off "4.1" stays unchanged and goes to board 3's list. Noted; it moves no signed-off drawing (call 2, V25).
 
 ### Batch 3 (02:52 UTC): Rules 15.22 to 15.25: signed off, with four word fixes, one route fix and three suggestions (for the systems designer, the research lead and the main session)
 
@@ -438,6 +484,8 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 
 - Batch 3 (02:52 UTC): the eight `s-15-22-*` to `s-15-25-*` fragments read by script (`frag_text.py`) and by hand; 15.24's 126 entries matched to the model one for one; 15.25's model values recounted from `atlas-v7-data.json` (signs, types, layers, grades, closures, bands, effect qualifiers, who-acts values, domain counts, issues, variable kinds); the research file's row order; `phase3_ch15_build.py --check-only` (25 rules, 51 plates, 38 examples by domain); the 15.23 logging lines in the generator; group 5 and 6 lines and the four failure captions in the chapter file.
 
+- Batch 4 (03:20 UTC): the second pass's fixes in the eight `s-15-22-*` to `s-15-25-*` fragments, each held against its research row; the research rows for Marbury and NRSC v. FEC; my own recounts of row 19 and row 43; `phase3_ch15_build.py --check-only` (39 examples by domain); S96 at a trial scale of minus 400 in the kit's Node drawing at 1440 and 390 px (px a thousand, band edges, how far each named column passes the band, tick labels, faults at minus 200 and minus 400); S96's phone note in my 02:46 build.
+
 ## Not tested
 
 - No build of any round 5 item: none has landed. No kit build, capture or guide check of my own yet.
@@ -448,3 +496,4 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 - Batch 1: no capture of my own (load 3.9 to 4.6). Not looked at: the trackers at any width, the palette plate below its first block, on Charcoal or at 390 px, S96 at 296 and 256 px. Not repeated: the tracker designer's whole-output map proofs, the engineer's 1,236-drawing S95 measure. S96's phone note is in the spec and not yet in the placed plate or my build.
 - Batch 2: the trackers at widths other than 390 px and in grayscale, and both failure plates, not looked at (the tracker designer reports 90 captures read, 0 flagged); the laws' texts not reread by me (the research lead's reading).
 - Batch 3: no capture of chapter 15's new plates looked at (load 4.4 to 6.1); the V7 check not run by me (the main session's); the laws' texts behind 15.22's stages not reread (the research lead's rows read instead).
+- Batch 4: the court opinions themselves not read by me (the research lead's rows); S96 as rebuilt not yet seen (the spec on disk still reads minus 200); no capture of chapter 15's second pass or of S96 at the trial scale.

@@ -51,6 +51,16 @@
      "preliminary": "Preliminary",
      "final": "Final"
     }
+   },
+   {
+    "field": "change_thousands",
+    "label": "Against the 90 percent margin, plus or minus 122,000",
+    "format": "margin",
+    "words": {
+     "below": "Drop past the margin",
+     "above": "Gain past the margin",
+     "within": "Within the margin"
+    }
    }
   ]
  },
@@ -62,6 +72,8 @@
  ],
  "phone": "same",
  "phone_view": true,
+ "phone_line": true,
+ "plate": "rule",
  "phone_notes": [
   "The two columns in the strongest ink: October 2025, −140,000 jobs, and February 2026, −156,000 jobs."
  ],
@@ -106,6 +118,7 @@
     }
    }
   ],
+  "named_stack": true,
   "margin": {
    "value": 122,
    "label": "Margin of error",
@@ -128,7 +141,7 @@
  ],
  "scale": {
   "y": [
-   -200,
+   -400,
    850
   ]
  },

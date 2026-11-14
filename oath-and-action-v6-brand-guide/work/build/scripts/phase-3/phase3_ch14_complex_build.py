@@ -894,7 +894,12 @@ def rule_14_142():
                 "and reach past the band; the other five end inside it. A line shows the three-month average, which stood at "
                 f"51,000 in {mw(lat['month'])}, a preliminary figure."),
         # its own caption, so a reader who lists the page's tables tells S96's from S14's (the accessibility lead's 4.4)
-        "table": dict(s14["table"], caption=f"Monthly change in payroll jobs, {f1['window_words']}, with the three-month average"),
+        # plus a column in words against the margin for every month (the accessibility lead's 4.3, the engineer's request 3)
+        "table": dict(s14["table"], caption=f"Monthly change in payroll jobs, {f1['window_words']}, with the three-month average",
+                      columns=s14["table"]["columns"] + [
+                          {"field": "change_thousands", "label": f"Against the 90 percent margin, {margin}",
+                           "format": "margin", "words": {"below": "Drop past the margin", "above": "Gain past the margin",
+                                                         "within": "Within the margin"}}]),
         "chart_notes": [
             ("Key: each gray column is the jobs added or lost in the month, and the two in the strongest ink are the drops past "
              "the margin; hatched columns are preliminary, August and September 2026."),
@@ -904,6 +909,10 @@ def rule_14_142():
         ],
         "phone": "same",
         "phone_view": True,
+        # the phone note as a plain line under the drawing (the design director's DD-E4, the engineer's request 5)
+        "phone_line": True,
+        # checked at the rule plates' columns and swept from 224 px, since S96 sits in a rule's plate (request 4)
+        "plate": "rule",
         # in words that hold on both grounds: the subject ink is Charcoal on Newsprint and Newsprint on Charcoal
         "phone_notes": [f"The two columns in the strongest ink: {mw(past[0])}, {k(pv[past[0]])} jobs, and {mw(past[1])}, "
                         f"{k(pv[past[1]])} jobs."],
@@ -917,11 +926,16 @@ def rule_14_142():
             # under 490 px the two labels leave the plot, where October 2025's met the latest month's leader and the
             # sweep found February 2026's no clear place at 327 to 339 px; phone_notes names both in one line (S30's way)
             "named": [{"x": m, "text": [mw(m), f"{k(pv[m])} jobs"], "phone": {"hide": True}} for m in past],
+            # both labels as one stack under the band, left of October 2025's column, each leader into its column's foot
+            # (the design director's DD-E2, the engineer's request 5)
+            "named_stack": True,
             "margin": {"value": int(f1["margin_thousands"]), "label": "Margin of error",
                        "key": "The survey’s margin of error for one month’s\u00a0change"},
         }),
         "annotations": [s14["annotations"][0]],
-        "scale": s14["scale"],
+        # the floor drops from S14's −200 to −400 thousand so the named stack stands clear under the band at every width
+        # from 490 px (the engineer measured −375 as the least that holds; −400 keeps a round floor); asked of the data lead
+        "scale": {"y": [-400, s14["scale"]["y"][1]]},
         "notes_internal": [
             "Rule 14.142's correct plate (R5-1): S14 in full, from S14's frozen file (D3-1873); S14 stays at its entry untouched.",
             "Ruling (c): all 57 months; preliminary months hatched and the average dashed as S14 draws them; the margin a band "
@@ -939,7 +953,9 @@ def rule_14_142():
     }
     # the failure: the same columns with no band, all seven drops labeled alike as job losses (ruling c), one fault
     losses = f1["losses"]
-    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide", "phone_notes")}
+    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide", "phone_notes",
+                                                            "phone_line", "plate")}
+    fspec["scale"] = s14["scale"]      # the failure keeps S14's scale and placement; it needs none of S96's new keys
     fspec.update({
         "id": "s-14-142-failure",
         "table": dict(s14["table"], caption=f"The same {f1['n']} months, with the three-month average, as this failure case draws them"),
@@ -953,7 +969,8 @@ def rule_14_142():
         "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
         "annotations": [],
-        "show": ["evidence", "title", "measure", "chart", "notes", "source"],
+        # no "show" list: with one, the kit's own build found the page's drawing differing from the Node drawing (parity),
+        # though the guide draws it the same; the failure shows the kit's whole figure, as its table already did on the page
         "failure": {"rule": "14.142", "caption_lead": "Fails Rule 14.142."},
         "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled "
                           "alike as losses, under a title that counts seven losses as findings; no red.",

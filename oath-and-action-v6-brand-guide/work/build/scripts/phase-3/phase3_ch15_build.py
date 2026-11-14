@@ -3769,17 +3769,17 @@ def fs_stages():
               [(h, r["floor"])]),
         Stage(3, "br", "Suspension of the rules", "Forty minutes of debate, and two-thirds of the members voting, on a Monday, "
               "Tuesday or Wednesday.", [("House Rule XV, clause 1", r["susp"])],
-              rel="In the House, in place of the usual floor rules", then="Then step 6, or step 7 if the House votes second."),
+              rel="In the House, in place of the usual floor rules", then="Then stage 6, or stage 7 if the House votes second."),
         Stage(4, "br", "Cloture", "Three-fifths of the Senate, 60 of 100, vote to end debate before the vote on the bill. "
               "Short of 60, the debate goes on and the bill waits.",
               [("U.S. Senate, “About Filibusters and Cloture”", r["clot"])], rel="In the Senate, for most bills",
-              then="With 60, on to the Senate’s vote, step 2 or step 6."),
+              then="With 60, on to the Senate’s vote, stage 2 or stage 6."),
         Stage(5, "br", "Reconciliation", "Debate is held to 20 hours, so no cloture vote is needed and a simple majority "
               "passes it. A part that does not change spending or revenue is struck when a senator raises a point of order "
               "and the chair agrees.",
               [("2 U.S.C. 641", r["recon"]), ("2 U.S.C. 644", r["byrd"])], rel="In the Senate, for a budget reconciliation bill",
-              then="Then step 6, or step 7 if the Senate votes second."),
-        Stage(6, "st", "Passed by the second chamber", "A simple majority, by the same paths as step 2.", [(h, r["floor"])]),
+              then="Then stage 6, or stage 7 if the Senate votes second."),
+        Stage(6, "st", "Passed by the second chamber", "A simple majority, by the same paths as stage 2.", [(h, r["floor"])]),
         Stage(7, "st", "One text for both chambers", "A conference committee settles the differences, and both chambers "
               "approve the same text.", [(h, r["conf"])]),
     ]
@@ -3789,9 +3789,9 @@ def fs_stages():
         Stage(9, "st", "Signed", "The President signs it, and it becomes law.", [(c7, r["veto"])]),
         Stage(10, "br", "Veto and override", "The President returns it with objections. Two-thirds of each chamber can still "
               "make it law.", [(c7, r["veto"])], rel="If the President vetoes it",
-              stop="Short of two-thirds in either chamber, the bill dies.", then="With two-thirds in each, then step 13."),
+              stop="Short of two-thirds in either chamber, the bill dies.", then="With two-thirds in each, then stage 13."),
         Stage(11, "br", "Law without a signature", "Ten days pass, Sundays excepted, while Congress sits, and it becomes "
-              "law.", [(c7, r["pock"])], rel="If the President neither signs nor vetoes it", then="Then step 13."),
+              "law.", [(c7, r["pock"])], rel="If the President neither signs nor vetoes it", then="Then stage 13."),
         Stage(12, "br", "Pocket veto", "Congress adjourns within those 10 days, and the unsigned bill does not become law.",
               [(c7, r["pock"])], rel="If Congress adjourns first", stop="The bill dies."),
         Stage(13, "end", "Public law", "The Office of the Federal Register gives it a number and prints it in the Statutes "
@@ -3816,14 +3816,15 @@ def fs_stages():
     undo = [
         Stage(18, "af", "Ended by a sunset", "A date in the law’s own text ends a part of it, unless a later act moves the "
               "date.", [("Public Law 115-97, section 11022", r["rep"])], stop="That part ends on its date."),
-        Stage(19, "af", "Struck down by a court", "A court can hold a law, or a part of it, against the Constitution: “a law "
-              "repugnant to the constitution is void”. The most recent example, by date: on June 30, 2026, the Supreme Court "
-              "held that the party coordinated-expenditure limits in 52 U.S.C. 30116(d) violate the First Amendment.",
+        Stage(19, "af", "Struck down by a court", "A court can rule that a law, or a part of it, violates the Constitution. In "
+              "the Supreme Court’s words of 1803, “a law repugnant to the constitution is void”. The latest such ruling we "
+              "found came on June 30, 2026, when the Supreme Court held that the limits on what a political party may spend "
+              "in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment.",
               [("Marbury v. Madison, 5 U.S. 137 (1803)", r["void"]),
                ("National Republican Senatorial Committee v. Federal Election Commission, No. 24-621", r["nrsc"])],
-              stop="The part the court holds void no longer applies."),
+              stop="The part the court holds void can no longer be enforced."),
         Stage(20, "af", "Repealed or changed", "Congress passes a later act that repeals or rewrites it.",
-              [("Public Law 119-21, section 70104", r["rep"])], back="A repeal is a new act: back to step 1."),
+              [("Public Law 119-21, section 70104", r["rep"])], back="A repeal is a new act: back to stage 1."),
     ]
     return [("In Congress", congress), ("At the President", president), ("Once it is law", after),
             ("Undoing it", undo)], fs, r
@@ -3841,10 +3842,10 @@ def rule_15_22(book):
     lab = diagram_label("documented", "on the public record: the law or rule behind each stage, with the date we read it")
     # DD-S1, DD-S2: the key before the stages, each mark drawn beside its words, one look to one meaning
     marks = [("km-st", "A stage every enacted bill passes, in order, on the dark line"),
-             ("km-br", "A path a bill can take instead, set in on a short arrow, saying where it leaves and where it goes next"),
+             ("km-br", "A path a bill can take instead, set to one side on a short arrow, saying where it leaves and where it goes next"),
              ("km-af", "What can follow the law, on the lighter line"),
              ("km-sq", "A path that stops there"),
-             ("km-bk", "The line on the left: a repeal is a new act, so it runs back to step 1")]
+             ("km-bk", "The line on the left: a repeal is a new act, so it runs back to stage 1")]
     key = ('<p class="k">What the marks mean</p><ul class="wk">'
            + "".join(f'<li><span class="km {c}" aria-hidden="true"></span><span>{e(w)}</span></li>' for c, w in marks)
            + "</ul>")
@@ -3855,7 +3856,7 @@ def rule_15_22(book):
                   f"Drawn as a workflow of {len(stages)} numbered stages in four groups, In Congress, At the President, Once it "
                   "is law and Undoing it, each with its source and the date we read it. The stages every enacted bill passes "
                   "sit on a dark line in filled squares; the other paths and what follows the law are in a lighter ink with "
-                  "outlined squares. " + " ".join(s.say() for s in stages) + " A line runs from the last stage back to step 1."),
+                  "outlined squares. " + " ".join(s.say() for s in stages) + " A line runs from the last stage back to stage 1."),
              notes="Each stage's words rest on a row of the workflow sources file, held by phrase and read date; the route's "
                    "record from the atlas.")
     book.log("15.22 correct", "Route FS, a federal statute's workflow", "D04")
@@ -3879,14 +3880,14 @@ def rule_15_22(book):
         "title": "Draw a route to change as its whole workflow, through to reversal.",
         "rule": [
             "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. "
-            "Number every stage in reading order. Set the stages every case passes through on one dark line in filled "
+            "Number every stage in reading order. Set the stages every change on the route passes through on one dark line in filled "
             "squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words "
             "where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends "
             "a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
             "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings "
             "the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one "
             "aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back "
-            "to step 1.",
+            "to stage 1.",
         ],
         "tokens": ["oa.chart.color.subject.onNewsprint", "oa.chart.color.context.onNewsprint", "oa.chart.line.subject",
                    "oa.chart.line.context"],
@@ -3898,19 +3899,19 @@ def rule_15_22(book):
                          "for Route FS"},
         "correct": {"specimen": "s-15-22-correct",
                     "caption": f"Route FS, the federal statute, in {len(stages)} stages from introduction to repeal, each with "
-                               "the source we read and its date, and the line that takes a repeal back to step 1."},
+                               "the source we read and its date, and the line that takes a repeal back to stage 1."},
         "failure": {"specimen": "s-15-22-failure",
                     "caption": "<strong>Fails Rule 15.22.</strong> The line stops at the signature and calls the change done. "
                                "It leaves out the veto, the money, the rules, the courts and repeal, and no stage names its "
                                "source."},
         "specs": [
-            {"label": "The spine", "value": "The stages every case passes, numbered in reading order, filled squares on a "
+            {"label": "The spine", "value": "The stages every change on the route passes, numbered in reading order, filled squares on a "
                                             "line in Charcoal at the subject weight", "token": "oa.chart.line.subject"},
-            {"label": "Other paths", "value": "Outlined squares in the context ink, set in, each saying in words where it "
+            {"label": "Other paths", "value": "Outlined squares in the context ink, set to one side, each saying in words where it "
                                               "leaves the spine", "token": "oa.chart.color.context.onNewsprint"},
             {"label": "After the law", "value": "Funding, rules, review and the courts on a context line, then what undoes it"},
             {"label": "Ends", "value": "A small square and words where a path stops"},
-            {"label": "Return", "value": "A context line back to step 1 for an act that undoes the law"},
+            {"label": "Return", "value": "A context line back to stage 1 for an act that undoes the law"},
             {"label": "Sources", "value": "The law or rule behind each stage, with the date we read it, beside the stage"},
         ],
         "related": ["11", "13", "14"],
@@ -4189,7 +4190,7 @@ def rule_15_24(book):
            f'<p class="hed">{chip("Reform", "R-28")}<span>“{e(r28["title"])}”</span></p>'
            f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Its entry’s own words: “{e(r28["routes"][0]["who"])}”. '
            f'<b>{e(r28["routes"][0]["feasibility"].capitalize())}</b> feasibility. Not checked.</p>'
-           f'<p>The entry names reconciliation, so the reform takes step 5 of Rule 15.22’s workflow: Senate debate held to '
+           f'<p>The entry names reconciliation, so the reform takes stage 5 of Rule 15.22’s workflow: Senate debate held to '
            f'20 hours and a simple majority, in place of cloture’s 60 votes. Source: 2 U.S.C. 641, read '
            f'{C13.words_date(rr["Checked"])}.</p></div>')
     scale = "".join(f"<li><b>{e(k.capitalize())}</b>: “{e(v)}”</li>" for k, v in V7["routes"]["feasibility_scale"].items())
@@ -4209,9 +4210,9 @@ def rule_15_24(book):
     book.add("s-15-24-correct", body, rule="15.24", readable=True, wide=True, interactive=True,
              alt=(f"The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of {SNAP}. "
                   f"First, one reform read through its workflow: Reform R-28, {r28['title']}, on Route FS by reconciliation, "
-                  "its entry’s words “Reconciliation”, low feasibility, not checked, which takes step 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility "
+                  "its entry’s words “Reconciliation”, low feasibility, not checked, which takes stage 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility "
                   "words and five dependency questions. Each card gives the route’s name, instrument, who acts, its stages, "
-                  "its official sources with the date our research read them, what it depends on, and how many reform entries "
+                  "its official sources with the date we read them, what it depends on, and how many reform entries "
                   "name it, listed in a disclosure with each one’s check date or not checked. " + alt_cards),
              notes="Every atlas value read by script; each route's stages and sources held to rows of the workflow sources "
                    "file; each entry's date from its own record.")
@@ -4445,7 +4446,7 @@ def recon_words():
              "cost, and four reforms show a possible economic cost with no gain.",
              "Each outcome family keeps its own row with its full code, so a possible cost prints beside a gain."),
         43: (f"Two counts for one domain: {chip('Domain', 'D02')} at 27 and 19 connections, {chip('Domain', 'D01')} at 13 and 9.",
-             f"Both hold, counting every variable whose domain field names the domain. {chip('Domain', 'D02')} has "
+             f"Both hold, counting every variable the atlas files under the domain. {chip('Domain', 'D02')} has "
              f"{words_n(dc['D02'][0])} such variables, {words_n(dc['D02'][2])} of them shared with another domain: "
              f"{dc['D02'][1]} connections touch them and {dc['D02'][3]} end at them. The {words_n(dc['D01'][0])} variables of "
              f"{chip('Domain', 'D01')} give {dc['D01'][1]} and {dc['D01'][3]}.",
@@ -4902,7 +4903,7 @@ def rule_15_23(book):
     b11 = xw_block(f'{chip("Route", "ENF")} and {chip("Route", "CRT")} beside the court case tracker of '
                    f'<a href="#rule-11-11">Rule 11.11</a>',
                    "A federal civil case’s stages in Title 28, the courts’ rules and the Supreme Court’s rules, behind the "
-                   f"tracker’s six steps. The case itself runs on the enforcement route, “{e(lc(ROUTE['ENF']['instrument']))}”; "
+                   f"tracker’s six steps. The case itself runs on the enforcement and litigation route, “{e(lc(ROUTE['ENF']['instrument']))}”; "
                    f"a ruling at step 4 or 6 that changes what other routes may do belongs to the court doctrine route.", rows11,
                    f"Stages from 28 U.S.C., the Federal Rules of Civil and Appellate Procedure and the Rules of the Supreme "
                    f"Court, read {dates_words(r_['Checked'] for r_, _ in cr)}.")
