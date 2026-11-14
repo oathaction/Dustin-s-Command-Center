@@ -1,0 +1,137 @@
+{
+ "kit": 1,
+ "id": "s-14-142-failure",
+ "form": "columns-moving-average",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "fred-payrolls-monthly-change",
+ "reader_question": "Which monthly drops in payroll jobs were larger than the survey’s margin of error?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
+ "title": "Payrolls lost jobs in seven months of 2025 and 2026.",
+ "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, with the three-month average.",
+ "notes": [
+  "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month."
+ ],
+ "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "The same columns with no band, the seven drops drawn dark alike under a note that calls them seven months of job losses, and a title that counts seven months of lost jobs.",
+ "table": {
+  "caption": "Monthly change in payroll jobs and its three-month average",
+  "columns": [
+   {
+    "field": "month",
+    "label": "Month",
+    "format": "month",
+    "row_header": true
+   },
+   {
+    "field": "change_thousands",
+    "label": "Change in jobs",
+    "format": "signed-thousands"
+   },
+   {
+    "field": "avg3_thousands",
+    "label": "Three-month average",
+    "format": "signed-thousands:0"
+   },
+   {
+    "field": "status",
+    "label": "Status",
+    "format": "text",
+    "words": {
+     "preliminary": "Preliminary",
+     "final": "Final"
+    }
+   }
+  ]
+ },
+ "chart_notes": [],
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "x": "month",
+  "y": "change_thousands",
+  "average": "avg3_thousands",
+  "status": "status"
+ },
+ "formats": {
+  "x": "month",
+  "y": "signed-thousands",
+  "y_tick": "signed-thousands"
+ },
+ "labels": {
+  "key_columns": "Jobs added or lost in the month",
+  "key_preliminary": "Preliminary: August and September 2026",
+  "preliminary_value": "preliminary",
+  "latest": [
+   "{y} jobs",
+   "in {x}, preliminary"
+  ],
+  "key_average": "Three-month average",
+  "named": [
+   {
+    "x": "2025-01",
+    "text": []
+   },
+   {
+    "x": "2025-06",
+    "text": []
+   },
+   {
+    "x": "2025-08",
+    "text": []
+   },
+   {
+    "x": "2025-10",
+    "text": []
+   },
+   {
+    "x": "2025-12",
+    "text": []
+   },
+   {
+    "x": "2026-02",
+    "text": []
+   },
+   {
+    "x": "2026-07",
+    "text": []
+   }
+  ]
+ },
+ "annotations": [
+  {
+   "at": {
+    "x": "2025-01"
+   },
+   "text": "Seven months of job losses",
+   "target": "low",
+   "place": "below",
+   "dx": -60,
+   "dy": 14
+  }
+ ],
+ "scale": {
+  "y": [
+   -200,
+   850
+  ]
+ },
+ "show": [
+  "label",
+  "title",
+  "measure_line",
+  "chart",
+  "notes"
+ ],
+ "failure": {
+  "rule": "14.142",
+  "caption_lead": "Fails Rule 14.142."
+ },
+ "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled alike as losses, under a title that counts seven losses as findings; no red."
+}

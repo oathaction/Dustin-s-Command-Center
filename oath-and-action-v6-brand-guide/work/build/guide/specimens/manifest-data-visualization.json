@@ -1228,5 +1228,76 @@
   "alt": "Dots for the 50 states’ imprisonment rates at the end of 2023, highest at the left, beside a dashed line for all states together at 318 per 100,000. Mississippi held the most, 652 per 100,000 residents, and Massachusetts the fewest, 96.",
   "illustrative": false,
   "notes": "S95, social-data-card: the chart kit draws it from work/build/chart-kit/specs/s95.json (contract R1-C3)"
+ },
+ "s-14-s96": {
+  "chapter": "14",
+  "rule": "14.142",
+  "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026 over a shaded band from minus to plus 122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all in 2025 and 2026. Two are dark and labeled, October 2025 at minus 140,000 and February 2026 at minus 156,000, and reach past the band; the other five end inside it. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
+  "illustrative": false,
+  "notes": "S96, columns-moving-average: the chart kit draws it from work/build/chart-kit/specs/s96.json (contract R1-C3)"
+ },
+ "s-14-142-failure": {
+  "chapter": "14",
+  "rule": "14.142",
+  "alt": "Failure case: do not publish. The same columns with no band, the seven drops drawn dark alike under a note that calls them seven months of job losses, and a title that counts seven months of lost jobs.",
+  "illustrative": false,
+  "notes": "Labeled failure: a kit figure through s-14-142-failure.chart.json (C7), its title the fault."
+ },
+ "s-14-143-correct": {
+  "chapter": "14",
+  "rule": "14.143",
+  "alt": "Loop B4 from our systems atlas, “Electoral consequences can improve public performance”, beside Loop R10, “Safe seats shift accountability to small primary electorates”, each drawn with its steps numbered from 1, and Variable C3, risk of losing office, the pill filled in ink in both. Under them the loop stepper of Rule 18.22: a status line, the seven steps in order, Loop B4’s three then Loop R10’s four, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in its drawing and in the list. With scripts off or in print, the list shows every step in order.",
+  "width_px": 328,
+  "illustrative": false,
+  "notes": "Rule 18.22's markup with no script of its own (CE-1); loops drawn by phase3_ch15_build.py's three_loop and four_loop, imported read-only; every word of the steps read from the atlas's loop and connection records.",
+  "fit_switch": false,
+  "interactive": true,
+  "wide_px": 680,
+  "frame_container": true,
+  "keys": true
+ },
+ "s-14-143-failure": {
+  "chapter": "14",
+  "rule": "14.143",
+  "alt": "Failure case: do not publish. The two loops drawn side by side with their steps numbered 1 to 7 as one sequence and no loop names inside them, under a label that calls them one loop of seven steps, three minus signs, balancing. A list of the seven steps follows with no word of which loop each belongs to.",
+  "width_px": 328,
+  "illustrative": false,
+  "notes": "Labeled failure, a still picture: the two loops read as one, its kind taken from the minus signs of both.",
+  "fit_switch": false,
+  "wide_px": 680,
+  "frame_container": true
+ },
+ "s-14-144-correct": {
+  "chapter": "14",
+  "rule": "14.144",
+  "alt": "A reform chooser on Loop R8 from our systems atlas: a group of three radio buttons, Reform R-06, Reform R-30 and Reform R-38, with R-06 chosen; the loop drawn as two pills with the chosen reform’s targets on it in red; and three cards side by side, one per reform, each with its targets on the loop and outside it, its band, its four effects one family to a row as of October 15, 2026 with each code and qualifier whole, its evidence grades and its routes, and its evidence and tradeoffs one step away in a disclosure. No row adds the effects.",
+  "width_px": 328,
+  "illustrative": false,
+  "notes": "Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; the choice shows through the plate's own CSS from the checked radio, scripts on or off; the status line is the shell's (C-2, CE-2). Every value read from the atlas's reform and loop records.",
+  "fit_switch": false,
+  "interactive": true,
+  "wide_px": 680,
+  "frame_container": true,
+  "keys": true
+ },
+ "s-14-144-failure": {
+  "chapter": "14",
+  "rule": "14.144",
+  "alt": "Failure case: do not publish. A table of the three reforms’ four effects with a total row at the foot: Reform R-06 plus 5, Reform R-30 plus 5 and Reform R-38 plus 2, under a question asking which reform does the most, and a line saying each code was scored as 1, 2 or 3 points.",
+  "width_px": 328,
+  "illustrative": false,
+  "notes": "Labeled failure, a still picture: its totals are the fault and hold no atlas value; the atlas never adds effects across families.",
+  "fit_switch": false,
+  "wide_px": 680,
+  "frame_container": true
+ },
+ "s-14-palette-spec": {
+  "chapter": "14",
+  "rule": "14.5",
+  "alt": "The four data palettes, step by step, on Newsprint and Charcoal: each step’s token, value and contrast in a table, its swatch with its label ink, and proofs in gray and for three kinds of color blindness, then the grade line code.",
+  "illustrative": false,
+  "notes": "Written by palette_spec_build.py from tokens 6.0.0-gate3.3 (R5-3); round 0's measures on today's tokens",
+  "fit_switch": false,
+  "readable": true
  }
 }

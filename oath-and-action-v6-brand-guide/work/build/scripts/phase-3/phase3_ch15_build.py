@@ -3544,29 +3544,36 @@ CSS.update({
 # Group 5. Routes to change as workflows (round 5, November 14, 2026): Rules 15.22 to 15.24 under contract R5-5, the data
 # lead's ruling (e) and the research lead's "Facts for owners" (work/handoffs/phase-3/20261114_Round-5-Research-Notes.md),
 # whose rows live in the workflow sources file. Every stage a plate prints names the row of that file it rests on, and the
-# build stops if the row is gone, if its words no longer hold the phrase the stage relies on, or if its check date is not
-# a date. A workflow is a stage list in live HTML text (R4-3), its marks drawn by the chapter's block: the path every law
-# takes in filled squares, the paths it can take instead in outlined squares, a square where a path stops, and a line
-# back to step 1 for the act that undoes it.
+# build stops if the row is gone, if its words no longer hold the phrase the stage relies on, or if its read date is not a
+# date. A workflow is a stage list in live HTML text (R4-3), its marks drawn by the chapter's block as Rule 14.6 sets a
+# process: the spine, the stages every enacted bill passes, in Charcoal at the subject weight with filled squares; the
+# paths that leave it, and what follows the law, in the context ink with outlined squares; a small square where a path
+# stops (DR-108); and a line back to step 1 for the act that undoes the law. Two dates never share one word (ruling (e)):
+# "read" for the date our research read a source, "Checked" or "Not checked" for an atlas route entry (Rule 13.10).
 # ===============================================================================================================
 WF_SRC = ROOT / "work/research/20261111_Policy-Workflow-Sources.md"
 ROUTE_CODES = [r["code"] for r in V7["routes"]["items"]]
 need(ROUTE_CODES == ["LOC", "SS", "BI", "FS", "FR", "FA", "ENF", "CRT", "AV", "IC", "CIV"], "the atlas's eleven routes changed")
+ROUTE = {r["code"]: r for r in V7["routes"]["items"]}
+SUBJ = "var(--oa-chart-color-subject)"
+CTX = "var(--oa-chart-color-context)"
 
 
 def wf_tables():
-    """The workflow sources file's tables, by route: every table row under a heading that names a route code, as a dict
-    of its header's cells. The file is the research lead's (round 0, round 1 and round 5 sections)."""
+    """The workflow sources file's tables, by route: every table row under a heading that opens with a route code (round
+    0's "## FS. Federal statute", round 5's "### FS: the House ..."), as a dict of its header's cells. The file is the
+    research lead's."""
     out, route, head = {}, None, None
+    pat = re.compile(r"#{2,4}\s+(" + "|".join(ROUTE_CODES) + r")\b[.:]?\s")
     for line in WF_SRC.read_text().splitlines():
-        m = re.match(r"#{2,4}\s+(?:[^.]*?\b)?(" + "|".join(ROUTE_CODES) + r")\.\s", line)
         if line.startswith("#"):
-            route = m.group(1) if m else None
+            m = pat.match(line)
+            route, head = (m.group(1) if m else None), None
+            continue
+        if not line.startswith("|"):
             head = None
             continue
-        if not line.startswith("|") or route is None:
-            if not line.startswith("|"):
-                head = None
+        if route is None:
             continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
         if head is None:
@@ -3582,195 +3589,239 @@ WF = wf_tables()
 
 
 def wf_row(route, stage, *phrases):
-    """One stage's row in the workflow sources file, held to the phrases a plate's words rely on and to a check date."""
+    """One stage's row in the workflow sources file, held to the phrases a plate's words rely on and to a read date."""
     rows = [r for r in WF.get(route, []) if r.get("Stage") == stage]
     need(len(rows) >= 1, f"the workflow sources file has no {route} stage {stage!r}")
     r = rows[-1]
     said = " ".join(r.values()).replace("’", "'")
     for ph in phrases:
         need(ph.replace("’", "'") in said, f"{route} stage {stage!r} no longer says {ph!r}")
-    need(re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.get("Checked", "")), f"{route} stage {stage!r} carries no check date")
+    need(re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.get("Checked", "")), f"{route} stage {stage!r} carries no read date")
+    need("not read closely" not in r.get("Source", "") and "search only" not in r.get("Source", "").lower(),
+         f"{route} stage {stage!r}: its source was not read in full, so it prints no read date (ruling (e))")
     return r
 
 
 class Stage:
-    """A stage of a workflow: its number in reading order, whether every case passes through it (main) or it is a path
-    taken instead or after (branch), the words, the rows of the sources file it rests on and the short citation each
-    prints, and how a path ends there (stop words after a square, or a step it joins)."""
+    """A stage of a workflow. kind: "st" a spine stage (filled square, the subject line), "end" the spine's last stage,
+    "br" a path that leaves the spine (set in, outlined, in the context ink), "af" a stage after the spine on the context
+    line. cites pairs a short citation with its row of the sources file; rel says in words where a path leaves the
+    spine; stop ends a path on a small square; then says where a path goes next; back sends it to step 1."""
 
-    def __init__(self, n, name, words, cites, branch=False, rel=None, stop=None, then=None, back=None):
-        self.n, self.name, self.words, self.cites = n, name, words, cites
-        self.branch, self.rel, self.stop, self.then, self.back = branch, rel, stop, then, back
-        need(not branch or rel, f"stage {n}: a branch says in words where it leaves the path")
+    def __init__(self, n, kind, name, words, cites, rel=None, stop=None, then=None, back=None):
+        need(kind in ("st", "end", "br", "af"), f"stage {n}: kind {kind!r}")
+        need(kind != "br" or rel, f"stage {n}: a path that leaves the spine says in words where it leaves")
+        self.n, self.kind, self.name, self.words, self.cites = n, kind, name, words, cites
+        self.rel, self.stop, self.then, self.back = rel, stop, then, back
 
     def html(self, sources=True):
-        cls = "st br" if self.branch else "st"
         rows = [f'<p class="rel">{e(self.rel)}</p>'] if self.rel else []
         rows.append(f'<p class="sn">{e(self.name)}</p>')
-        rows.append(f'<p class="sy">{self.words}</p>')
+        if self.words:
+            rows.append(f'<p class="sy">{e(self.words)}</p>')
+        if self.then:
+            rows.append(f'<p class="sy">{e(self.then)}</p>')
         if self.stop:
             rows.append(f'<p class="sq"><span class="sqm" aria-hidden="true"></span>{e(self.stop)}</p>')
         if self.back:
-            rows.append(f'<p class="sq">{e(self.back)}</p>')
-        if sources and self.cites:
-            cs = "; ".join(f"{c}, checked {C13.words_date(r['Checked'] if isinstance(r, dict) else r)}" for c, r in self.cites)
-            rows.append(f'<p class="sc">{cs}</p>')
-        return (f'<li class="{cls}"><span class="n">{self.n}</span><div class="sx">{"".join(rows)}</div></li>')
+            rows.append(f'<p class="sq bq">{e(self.back)}</p>')
+        if sources:
+            if self.cites:
+                cs = "; ".join(f"{e(c)}, read {C13.words_date(r['Checked'])}" for c, r in self.cites)
+                rows.append(f'<p class="sc">Source: {cs}</p>')
+            else:
+                rows.append('<p class="sc">Source not yet read</p>')
+        return f'<li class="{self.kind}"><span class="n">{self.n}</span><div class="sx">{"".join(rows)}</div></li>'
+
+    def say(self):
+        """The stage in the plate's alt: its number, where it leaves the spine, its name and its words."""
+        parts = [f"Step {self.n}" + (f", {self.rel[0].lower() + self.rel[1:]}" if self.rel else "") + f": {self.name}."]
+        parts += [x for x in (self.words, self.then, self.stop, self.back) if x]
+        return " ".join(parts)
 
 
 def wf_html(groups, sources=True, back=True):
-    """A workflow: the first group's head above the list, then one list whose later groups open with a head row. The
-    line on the left closes the loop from the last stage back to step 1 when back is True."""
+    """A workflow: the first group's head above the list, then one list whose later groups open with a head row that
+    carries the line through. With back, the line closes from the last stage to step 1."""
     out = [f'<p class="k wfh">{e(groups[0][0])}</p>']
     items = []
     for i, (head, stages) in enumerate(groups):
         if i:
-            items.append(f'<li class="gh"><p class="k">{e(head)}</p></li>')
+            af = " af" if stages and stages[0].kind == "af" else ""
+            items.append(f'<li class="gh{af}"><p class="k">{e(head)}</p></li>')
         items += [s.html(sources) for s in stages]
     out.append(f'<div class="wf{" bk" if back else ""}"><ol>{"".join(items)}</ol></div>')
     return "".join(out)
 
 
 CSS.update({
-    # a workflow (Rule 15.22): a 22 px numbered square on a 2 px line, filled for the path every law takes and outlined
-    # for a path taken instead, its words in a column beside it; a branch steps in 32 px with a short line from the path;
-    # a path that stops ends on a 10 px square; with .bk, a line runs from the last stage down, left, up and back into
-    # step 1, the act that undoes a law starting the route again. At 680 px each stage's source moves to its own column
+    # a workflow (Rule 15.22, ruling (e) and Rule 14.6): a 22 px numbered square on its line, the line at x 11. The spine
+    # (.st, .end and the .br and .gh rows it passes) is Charcoal at the subject weight with filled squares; a path that
+    # leaves it (.br) steps in 32 px with a short context line, an arrowhead and an outlined square; what follows the law
+    # (.af) runs on a context line with outlined squares; a path that stops ends on a 10 px square; with .bk a context line
+    # runs from the last stage down, left, up and into step 1. At 680 px each stage's source moves to a column of its own
     "wf": (".wfh{margin:20px 0 26px}.wf{position:relative;padding-left:18px;margin:0 0 30px}"
-           f".wf.bk::before{{content:\"\";position:absolute;left:0;top:-18px;bottom:-18px;width:29px;border:2px solid {INK};"
-           "border-right:0;border-radius:8px 0 0 8px}"
+           f".wf.bk::before{{content:\"\";position:absolute;left:0;top:-18px;bottom:-18px;width:29px;"
+           f"border:var(--oa-chart-line-context) solid {CTX};border-right:0;border-radius:8px 0 0 8px}}"
            ".wf ol{list-style:none;margin:0;padding:0}"
            ".wf li{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:12px;padding:0 0 18px}"
-           f".wf li::before{{content:\"\";position:absolute;left:10px;top:0;bottom:0;border-left:2px solid {INK}}}"
-           ".wf li:last-child{padding-bottom:0}.wf.bk li:last-child::before{bottom:-18px}.wf:not(.bk) li:last-child::before{bottom:auto;height:11px}"
-           ".wf.bk li:first-child::before{top:-18px}"
-           f".wf.bk li:first-child::after{{content:\"\";position:absolute;left:6px;top:-9px;width:10px;height:8px;background:{INK};"
+           f".wf li::before{{content:\"\";position:absolute;left:9.5px;top:0;bottom:0;border-left:var(--oa-chart-line-subject) solid {SUBJ}}}"
+           f".wf li.af::before{{left:10px;border-left:var(--oa-chart-line-context) solid {CTX}}}"
+           ".wf .end::before{bottom:auto;height:11px}"
+           f".wf .end::after{{content:\"\";position:absolute;left:10px;top:11px;bottom:0;border-left:var(--oa-chart-line-context) solid {CTX}}}"
+           ".wf li:last-child{padding-bottom:0}.wf.bk li:last-child::before{bottom:-18px}"
+           ".wf:not(.bk) li:last-child::before{bottom:auto;height:11px}.wf.bk li:first-child::before{top:-18px}"
+           f".wf.bk li:first-child::after{{content:\"\";position:absolute;left:6px;top:-10px;width:10px;height:8px;background:{CTX};"
            "clip-path:polygon(0 0,100% 0,50% 100%)}"
-           f".wf .n{{position:relative;z-index:1;display:grid;place-items:center;width:22px;height:22px;background:{INK};"
+           f".wf .n{{position:relative;z-index:1;display:grid;place-items:center;width:22px;height:22px;background:{SUBJ};"
            "color:var(--oa-color-surface);font:var(--oa-type-data-label);font-weight:var(--oa-font-weight-bold)}"
+           f".wf :is(.br,.af) .n{{background:var(--oa-color-surface);color:var(--oa-color-text-primary);"
+           f"border:var(--oa-chart-line-context) solid {CTX}}}"
            ".wf .br{padding-left:32px}"
-           f".wf .br .n{{background:var(--oa-color-surface);color:var(--oa-color-text-primary);border:2px solid {INK}}}"
-           f".wf .br::after{{content:\"\";position:absolute;left:12px;top:10px;width:14px;border-top:2px solid {INK}}}"
-           f".wf .br .sx::before{{content:\"\";position:absolute;left:24px;top:6px;width:8px;height:10px;background:{INK};"
+           f".wf .br::after{{content:\"\";position:absolute;left:12px;top:10px;width:14px;border-top:var(--oa-chart-line-context) solid {CTX}}}"
+           f".wf .br .sx::before{{content:\"\";position:absolute;left:24px;top:6px;width:8px;height:10px;background:{CTX};"
            "clip-path:polygon(0 0,100% 50%,0 100%)}"
            ".wf .gh{display:block;padding:6px 0 22px 34px}.wf .gh .k{margin:0}"
            ".wf .sx{min-width:0;font:var(--oa-type-body-small)}.wf .sx>*+*{margin-top:2px}"
            ".wf .rel{color:var(--oa-color-text-secondary)}.wf .sn{font-weight:var(--oa-font-weight-semibold)}"
-           ".wf .sq{display:flex;gap:8px;align-items:baseline}"
-           f".wf .sqm{{flex:none;width:10px;height:10px;background:{INK};transform:translateY(1px)}}"
+           ".wf .sq{display:flex;gap:8px;align-items:baseline}.wf .bq{font-weight:var(--oa-font-weight-semibold)}"
+           f".wf .sqm{{flex:none;width:10px;height:10px;background:var(--oa-color-graphic-essential);transform:translateY(1px)}}"
            f".wf .sc{{{C13.CAP};color:var(--oa-color-text-secondary);margin-top:6px}}"
            "@container oa-frame (min-width:680px){.wd .wf li{grid-template-columns:22px minmax(0,1fr) 196px;column-gap:16px}"
            ".wd .wf .sx{display:contents}.wd .wf .sx>*{grid-column:2;margin:0}.wd .wf .sx>*+*{margin-top:2px}"
-           ".wd .wf .sx>.sc{grid-column:3;grid-row:1/span 6;margin:0;align-self:start}"
-           ".wd .wf .br .sx::before{left:24px}}"),
-    "rec": f".rec{{{C13.CAP};color:var(--oa-color-text-secondary);margin:4px 0 0;max-width:40em}}",
+           ".wd .wf .sx>.sc{grid-column:3;grid-row:1/span 6;margin:0;align-self:start}}"
+           # forced colors: the squares and lines keep their shape in the reader's text color
+           "@media (forced-colors:active){.wf .n,.wf .sqm,.wf.bk li:first-child::after,.wf .br .sx::before{forced-color-adjust:none;"
+           "background:CanvasText;color:Canvas}.wf :is(.br,.af) .n{background:Canvas;color:CanvasText;border-color:CanvasText}}"),
+    "rec": f".rec{{{C13.CAP};color:var(--oa-color-text-secondary);margin:4px 0 12px;max-width:40em}}",
 })
 
 
 def fs_stages():
-    """Route FS, the federal statute, stage by stage: the path every law takes, the paths it can take instead, the vetoes
-    and the override, the money, the rules that put it to work, the courts and the act that undoes it."""
-    h = "U.S. House of Representatives, “The Legislative Process”"
-    con = "U.S. Constitution, Article I, Section 7"
-    r_intro = wf_row("FS", "Introduction and committee", "sponsors a bill", "assigned to a committee")
-    r_floor = wf_row("FS", "Floor vote in each chamber", "218 of 435", "51 of 100")
-    r_clot = wf_row("FS", "Ending Senate debate (cloture)", "60 of the 100-member Senate")
-    r_conf = wf_row("FS", "Reconciling differences", "conference committee", "returns to the House and Senate for final approval")
-    r_pres = wf_row("FS", "Enrolling and presentment", "10 days to sign or veto")
-    r_veto = wf_row("FS", "Signature, veto and override", "return it, with his Objections", "two thirds of that House")
-    r_pock = wf_row("FS", "Law without signature, and the pocket veto", "the Same shall be a Law",
-                    "unless the Congress by their Adjournment prevent its Return, in which Case it shall not be a Law")
-    r_pl = wf_row("FS", "Public law number", "assign a Public Law Number")
-    r_appr = wf_row("FS", "Appropriations", "No Money shall be drawn from the Treasury, but in Consequence of Appropriations made by Law")
-    r_rule = wf_row("FS", "Agency rulemaking", "General notice of proposed rule making", "not less than 30 days before its effective date")
-    r_cra = wf_row("FS", "Congressional review of a rule", "60 days after")
-    r_dis = wf_row("FA", "Congressional Review Act: disapproval", "joint resolution of disapproval",
-                   "may not be reissued in substantially the same form")
-    r_crt = wf_row("FA", "Litigation", "hold unlawful and set aside agency action", "arbitrary, capricious")
-    r_rep = wf_row("FS", "Repeal or sunset", "A sunset sits in the law's own text", "struck the end date", "115-97", "119-21")
-    fs = next(x for x in V7["routes"]["items"] if x["code"] == "FS")
-    rec = "a simple majority for budget reconciliation, which can carry taxes and spending and excludes most rule changes"
-    need(rec in fs["depends"], "the atlas's record for Route FS no longer names budget reconciliation")
+    """Route FS, the federal statute, in the data lead's order (ruling (e)): the spine, the stages every enacted bill
+    passes; the paths that leave it, in the order a bill meets them; what follows the law; and last, what undoes it."""
+    h = "U.S. House, “The Legislative Process”"
+    c7 = "U.S. Constitution, Article I, Section 7"
+    r = {
+        "intro": wf_row("FS", "Introduction and committee", "sponsors a bill", "assigned to a committee"),
+        "floor": wf_row("FS", "Floor vote in each chamber", "218 of 435", "51 of 100"),
+        "susp": wf_row("FS", "House: suspension of the rules", "two-thirds of the Members voting", "debatable for 40 minutes",
+                       "Mondays, Tuesdays, and Wednesdays"),
+        "clot": wf_row("FS", "Ending Senate debate (cloture)", "60 of the 100-member Senate"),
+        "recon": wf_row("FS", "Senate: reconciliation", "limited to not more than 20 hours"),
+        "byrd": wf_row("FS", "Senate: extraneous matter (the Byrd rule)", "does not produce a change in outlays or revenues",
+                       "deemed stricken from the bill"),
+        "conf": wf_row("FS", "Reconciling differences", "conference committee", "returns to the House and Senate for final approval"),
+        "pres": wf_row("FS", "Enrolling and presentment", "prints the revised bill in a process called enrolling",
+                       "10 days to sign or veto"),
+        "veto": wf_row("FS", "Signature, veto and override", "If he approve he shall sign it", "return it, with his Objections",
+                       "two thirds of that House"),
+        "pock": wf_row("FS", "Law without signature, and the pocket veto", "the Same shall be a Law",
+                       "unless the Congress by their Adjournment prevent its Return, in which Case it shall not be a Law"),
+        "pl": wf_row("FS", "Public law number", "assign a Public Law Number", "Statutes at Large"),
+        "appr": wf_row("FS", "Appropriations", "No Money shall be drawn from the Treasury, but in Consequence of Appropriations made by Law"),
+        "resc": wf_row("FS", "Funding: rescission proposals", "special message", "within the prescribed 45-day period"),
+        "rule": wf_row("FS", "Agency rulemaking", "General notice of proposed rule making", "not less than 30 days before its effective date"),
+        "cra": wf_row("FS", "Congressional review of a rule", "60 days after"),
+        "dis": wf_row("FA", "Congressional Review Act: disapproval", "joint resolution of disapproval",
+                      "may not be reissued in substantially the same form"),
+        "crt": wf_row("FS", "Litigation: the courts", "94 district or trial courts", "13 appellate courts"),
+        "apa": wf_row("FA", "Litigation", "hold unlawful and set aside agency action", "arbitrary, capricious"),
+        "rep": wf_row("FS", "Repeal or sunset", "A sunset sits in the law's own text", "struck the end date"),
+    }
+    fs = ROUTE["FS"]
+    need("a simple majority for budget reconciliation" in fs["depends"] and "reconciliation" in fs["instrument"],
+         "the atlas's record for Route FS no longer names budget reconciliation")
     congress = [
-        Stage(1, "Introduced and sent to committee", "A member sponsors the bill in the House or the Senate, and it goes "
-              "to a committee for study.", [(h, r_intro)]),
-        Stage(2, "Passed by the first chamber", "A simple majority: 218 of 435 in the House, or 51 of 100 in the Senate.",
-              [(h, r_floor)]),
-        Stage(3, "Senate debate closed", "Most bills need cloture first: three-fifths of the Senate, 60 of 100, vote to "
-              "end debate.", [("U.S. Senate, “About Filibusters and Cloture”", r_clot)]),
-        Stage(4, "Budget reconciliation", "A simple majority passes a reconciliation bill, which can carry taxes and "
-              "spending and leaves out most rule changes.", [], branch=True, rel="In place of step 3", then=5,
-              back="Then step 5."),
-        Stage(5, "Passed by the second chamber", "A simple majority, after step 3 in the Senate.", [(h, r_floor)]),
-        Stage(6, "One text for both chambers", "A conference committee of House and Senate members works out the "
-              "differences, and the bill returns to both chambers for final approval.", [(h, r_conf)]),
+        Stage(1, "st", "Introduced and sent to committee", "A member sponsors the bill in the House or the Senate, and a "
+              "committee studies it.", [(h, r["intro"])]),
+        Stage(2, "st", "Passed by the first chamber", "A simple majority: 218 of 435 in the House, or 51 of 100 in the Senate.",
+              [(h, r["floor"])]),
+        Stage(3, "br", "Suspension of the rules", "Forty minutes of debate, and two-thirds of the members voting, on a Monday, "
+              "Tuesday or Wednesday.", [("House Rule XV, clause 1", r["susp"])],
+              rel="In the House, in place of the usual floor rules"),
+        Stage(4, "br", "Cloture", "Three-fifths of the Senate, 60 of 100, vote to end debate before the vote on the bill.",
+              [("U.S. Senate, “About Filibusters and Cloture”", r["clot"])], rel="In the Senate, for most bills",
+              then="Short of 60, the debate goes on and the bill waits."),
+        Stage(5, "br", "Reconciliation", "Debate is held to 20 hours, so no cloture vote is needed and a simple majority "
+              "passes it. A part that does not change spending or revenue is struck.",
+              [("2 U.S.C. 641 and 644", r["recon"])], rel="In the Senate, for a budget reconciliation bill"),
+        Stage(6, "st", "Passed by the second chamber", "A simple majority, by the same paths as step 2.", [(h, r["floor"])]),
+        Stage(7, "st", "One text for both chambers", "A conference committee settles the differences, and both chambers "
+              "approve the same text.", [(h, r["conf"])]),
     ]
     president = [
-        Stage(7, "Presented to the President", "The enrolled bill goes to the President, who has 10 days, Sundays "
-              "excepted, to sign or veto it.", [(h, r_pres)]),
-        Stage(8, "Veto, and a vote to override", "The President returns it to Congress with objections. A two-thirds "
-              "vote in each chamber makes it law, at step 10.", [(con, r_veto)], branch=True,
-              rel="If the President vetoes it", stop="Short of two-thirds in either chamber, the bill dies."),
-        Stage(9, "Pocket veto", "Congress adjourns before the 10 days end, and the unsigned bill does not become law.",
-              [(con, r_pock)], branch=True, rel="If Congress adjourns first", stop="The bill dies."),
-        Stage(10, "Law", "Signed, or left unsigned for 10 days while Congress sits. The Office of the Federal Register "
-              "gives it a public law number.", [(con, r_pock), ("National Archives, “Public Laws”", r_pl)]),
+        Stage(8, "st", "Enrolled and presented", "The final text is printed and sent to the President, who has 10 days, "
+              "Sundays excepted, to act.", [(h, r["pres"])]),
+        Stage(9, "st", "Signed", "The President signs it, and it becomes law.", [(c7, r["veto"])]),
+        Stage(10, "br", "Veto and override", "The President returns it with objections. Two-thirds of each chamber can still "
+              "make it law.", [(c7, r["veto"])], rel="If the President vetoes it",
+              stop="Short of two-thirds in either chamber, the bill dies."),
+        Stage(11, "br", "Law without a signature", "Ten days pass, Sundays excepted, while Congress sits, and it becomes "
+              "law.", [(c7, r["pock"])], rel="If the President neither signs nor vetoes it"),
+        Stage(12, "br", "Pocket veto", "Congress adjourns within those 10 days, and the unsigned bill does not become law.",
+              [(c7, r["pock"])], rel="If Congress adjourns first", stop="The bill dies."),
+        Stage(13, "end", "Public law", "The Office of the Federal Register gives it a number and prints it in the Statutes "
+              "at Large.", [("National Archives, “Public Laws”", r["pl"])]),
     ]
     after = [
-        Stage(11, "Funded", "No money leaves the Treasury without an appropriation made by law, so the money comes in a "
-              "spending act, which takes steps 1 to 10 of its own.", [("U.S. Constitution, Article I, Section 9", r_appr)]),
-        Stage(12, "Put to work by agency rules", "The agency publishes a proposed rule, takes comments and publishes the "
-              "final rule at least 30 days before it takes effect, the steps Rule 11.9 tracks.",
-              [("5 U.S.C. 553", r_rule)]),
-        Stage(13, "Review by Congress", "The agency reports each rule to Congress, and a major rule waits at least 60 "
-              "days. A joint resolution of disapproval, passed and signed as at steps 2 to 10, ends it.",
-              [("5 U.S.C. 801", r_cra), ("5 U.S.C. 802", r_dis)], branch=True, rel="Before a rule takes effect",
-              stop="The rule ends, and the agency may not issue it again in substantially the same form."),
-        Stage(14, "Review by a court", "A person harmed can sue, and a court can hold an agency’s rule unlawful and set it "
-              "aside, as arbitrary, capricious or against the law, among other grounds.",
-              [("5 U.S.C. 706", r_crt)], branch=True, rel="Once a case is brought",
+        Stage(14, "af", "Funded by appropriation", "Money leaves the Treasury only through an appropriation made by law. If "
+              "the President proposes to cancel some, it is spent unless Congress passes a rescission bill within 45 days.",
+              [("U.S. Constitution, Article I, Section 9", r["appr"]), ("2 U.S.C. 683", r["resc"])]),
+        Stage(15, "af", "Put to work by agency rules", "The agency publishes a proposed rule, takes comments and publishes "
+              "the final rule at least 30 days before it takes effect.", [("5 U.S.C. 553", r["rule"])]),
+        Stage(16, "af", "Reported to Congress", "A major rule waits at least 60 days. A joint resolution of disapproval, "
+              "passed and signed like a bill, ends it.", [("5 U.S.C. 801 and 802", r["cra"])],
+              stop="The rule ends, and may not return in substantially the same form."),
+        Stage(17, "af", "Taken to court", "A person harmed can sue in a district court and appeal. A court can hold an "
+              "agency’s rule unlawful and set it aside.",
+              [("U.S. Courts, “Court Role and Structure”", r["crt"]), ("5 U.S.C. 706", r["apa"])],
               stop="The rule, or the part the court names, is set aside."),
-        Stage(15, "Repealed, changed or ended by its sunset", "A later act can repeal or change the law, and a sunset date "
-              "in its own text ends a part of it on that date. Public Law 119-21 struck the end date Public Law 115-97 set "
-              "for the child tax credit’s rules.", [("Public Laws 115-97 and 119-21, govinfo.gov", r_rep)],
-              back="A repeal, or a new end date, is a new act: back to step 1."),
     ]
-    return [("In Congress", congress), ("At the President", president), ("Once it is law", after)], fs
+    undo = [
+        Stage(18, "af", "Ended by a sunset", "A date in the law’s own text ends a part of it, unless a later act moves the "
+              "date.", [("Public Law 115-97, section 11022", r["rep"])], stop="That part ends on its date."),
+        Stage(19, "af", "Repealed or changed", "Congress passes a later act that repeals or rewrites it.",
+              [("Public Law 119-21, section 70104", r["rep"])], back="A repeal is a new act: back to step 1."),
+    ]
+    return [("In Congress", congress), ("At the President", president), ("Once it is law", after),
+            ("Undoing it", undo)], fs, r
 
 
 def rule_15_22(book):
-    groups, fs = fs_stages()
+    groups, fs, rows = fs_stages()
     stages = [s for _, g in groups for s in g]
     need([s.n for s in stages] == list(range(1, len(stages) + 1)), "Route FS's stages are not numbered in reading order")
+    spine = [s.n for s in stages if s.kind in ("st", "end")]
+    need(spine == [1, 2, 6, 7, 8, 9, 13], f"the spine is not the stages every enacted bill passes (ruling (e)): {spine}")
+    need(all(s.cites for s in stages), "a stage of Route FS prints no source")
     head = hed("Route", "FS", fs["name"])
-    rec = (f'<p class="rec">Our systems atlas, snapshot of {SNAP}: {e(fs["instrument"][0].lower() + fs["instrument"][1:])}, '
-           f'by the {e(lc(fs["who"]))}.</p>')
-    lab = diagram_label("documented", "on the public record: the law or rule behind each stage, with the date it was checked")
-    key = kw(["<b>Filled square</b>: a stage every law passes through. <b>Outlined square</b>: a path a bill can take "
-              "instead, or a step that can undo the law, with words that say where it leaves the path.",
-              "<b>A small square</b> ends a path that stops there. <b>The line on the left</b> takes a repeal, or a new end "
-              "date, back to step 1, since each is a new act."])
+    rec = (f'<p class="rec">Our systems atlas, as of {SNAP}: {e(fs["instrument"])}. Who acts: {e(fs["who"])}.</p>')
+    lab = diagram_label("documented", "on the public record: the law or rule behind each stage, with the date we read it")
+    key = kw(["<b>Filled squares</b> on the dark line: the stages every enacted bill passes, in order. <b>Outlined "
+              "squares</b> in the lighter ink: a path a bill can take instead, said in words where it leaves the line, and "
+              "what follows the law.",
+              "<b>A small square</b> ends a path that stops there. <b>The line on the left</b> takes a repeal back to step 1, "
+              "since a repeal is a new act."])
     body = (head + rec + lab + wf_html(groups) + key
-            + src("route FS, its instrument, who acts and what it depends on; each stage’s source as named beside it"))
-    alt_st = " ".join(f"Step {s.n}{', a branch, ' + s.rel.lower() if s.branch else ''}: {s.name}. "
-                      + re.sub(r"<[^>]+>", "", s.words) + (f" {s.stop}" if s.stop else "") + (f" {s.back}" if s.back else "")
-                      for s in stages)
+            + src("route FS, its instrument and who acts; each stage’s source as named beside it, with the date we read it"))
     book.add("s-15-22-correct", body, rule="15.22", readable=True, wide=True,
-             alt=(f"Route FS, Federal statute, from our systems atlas, drawn as a workflow of {len(stages)} numbered stages in "
-                  f"three groups, In Congress, At the President and Once it is law, each with its source and the date it was "
-                  f"checked. {alt_st} A line runs from the last stage back to step 1."),
-             notes="Each stage's words rest on a row of the workflow sources file, held by phrase and check date; the "
-                   "route's record from the atlas.")
-    book.log("15.22 correct", "Route FS, the federal statute", "all")
-    short_st = [s for s in stages if not s.branch][:8]
-    fail_groups = [("How a bill becomes a law", [Stage(i, n, w, []) for i, (n, w) in enumerate([
+             alt=(f"Route FS, Federal statute, from our systems atlas as of {SNAP}: {fs['instrument']}, by the {fs['who']}. "
+                  f"Drawn as a workflow of {len(stages)} numbered stages in four groups, In Congress, At the President, Once it "
+                  "is law and Undoing it, each with its source and the date we read it. The stages every enacted bill passes "
+                  "sit on a dark line in filled squares; the other paths and what follows the law are in a lighter ink with "
+                  "outlined squares. " + " ".join(s.say() for s in stages) + " A line runs from the last stage back to step 1."),
+             notes="Each stage's words rest on a row of the workflow sources file, held by phrase and read date; the route's "
+                   "record from the atlas.")
+    book.log("15.22 correct", "Route FS, a federal statute's workflow", "D04")
+    fail_groups = [("How a bill becomes a law", [Stage(i, "st" if i < 6 else "end", n, w, []) for i, (n, w) in enumerate([
         ("Introduced", "A member files the bill."), ("Committee", "A committee studies it."),
         ("House vote", "The House passes it."), ("Senate vote", "The Senate passes it."),
         ("Signed", "The President signs it."), ("Law", "The change is done.")], 1)])]
     fail = dnp() + head + wf_html(fail_groups, sources=False, back=False)
     book.add("s-15-22-failure", fail, rule="15.22",
-             alt=(FC + "Route FS drawn as six filled steps in a line, Introduced, Committee, House vote, Senate vote, Signed "
-                  "and Law, the last reading “The change is done.”, with no branch, no stop, no source and nothing after "
+             alt=(FC + "Route FS drawn as six filled steps on one line, Introduced, Committee, House vote, Senate vote, Signed "
+                  "and Law, the last reading “The change is done.”, with no other path, no stop, no source and nothing after "
                   "the signature."),
              notes="Labeled failure: the route ends at the signature, with no vetoes, money, rules, courts or repeal and no "
                    "source.")
@@ -3778,41 +3829,43 @@ def rule_15_22(book):
         "id": "15.22",
         "title": "Draw a route to change as its whole workflow, through to reversal.",
         "rule": [
-            "Draw a route to change as the whole path a change takes, from its first stage to the stage that can undo it. "
-            "Number every stage in reading order. Set the stages every case passes through in filled squares on one line, "
-            "and the paths a case can take instead in outlined squares beside it, each saying in words where it leaves "
-            "the line. End a path that stops on a small square, as a bill tracker ends a bill that stops (Rule 11.1), and "
-            "print beside each stage the law or rule that sets it, with the date we checked it.",
-            "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature: a spending act "
-            "brings the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can "
-            "set one aside, and a later act or a sunset date can end the law. A repeal is a new act, so the line runs back "
-            "to step 1.",
+            "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. "
+            "Number every stage in reading order. Set the stages every case passes through on one dark line in filled "
+            "squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words "
+            "where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends "
+            "a bill that stops (Rule 11.1), and print beside each stage the law or rule that sets it, with the date we read it.",
+            "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings "
+            "the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one "
+            "aside, and a sunset date or a later act can end the law. A repeal is a new act, so its line runs back to step 1.",
         ],
-        "tokens": [TOKEN_LINE, "oa.type.bodySmall", "oa.type.caption"],
+        "tokens": ["oa.chart.color.subject.onNewsprint", "oa.chart.color.context.onNewsprint", "oa.chart.line.subject",
+                   "oa.chart.line.context"],
         "why": {"text": ["A drawing that ends at the signature tells a reader the change is done. Whether a law works, and "
                          "whether it lasts, is settled after it: by the money, the rules, the courts and the next Congress. "
                          "A reader who sees every stage, and the law behind it, knows where to watch and when to take part."],
-                "basis": "The U.S. Constitution, Articles I and II; 5 U.S.C. 553, 706, 801 and 802; the House’s and Senate’s "
-                         "own pages on the legislative process; our systems atlas’s record for Route FS"},
+                "basis": "The U.S. Constitution, Article I; House Rule XV; 2 U.S.C. 641, 644 and 683; 5 U.S.C. 553, 706, 801 "
+                         "and 802; the House’s, Senate’s, courts’ and Federal Register’s own pages; our systems atlas’s record "
+                         "for Route FS"},
         "correct": {"specimen": "s-15-22-correct",
                     "caption": f"Route FS, the federal statute, in {len(stages)} stages from introduction to repeal, each with "
-                               "its source and the date it was checked, and the line that takes a repeal back to step 1."},
+                               "the source we read and its date, and the line that takes a repeal back to step 1."},
         "failure": {"specimen": "s-15-22-failure",
                     "caption": "<strong>Fails Rule 15.22.</strong> The line stops at the signature and calls the change done. "
                                "It leaves out the veto, the money, the rules, the courts and repeal, and no stage names its "
                                "source."},
         "specs": [
-            {"label": "Stages", "value": "Numbered in reading order; filled squares on one line for the stages every case "
-                                         "passes through"},
-            {"label": "Other paths", "value": "Outlined squares, set in, each saying in words where it leaves the line"},
+            {"label": "The spine", "value": "The stages every case passes, numbered in reading order, filled squares on a "
+                                            "line in Charcoal at the subject weight", "token": "oa.chart.line.subject"},
+            {"label": "Other paths", "value": "Outlined squares in the context ink, set in, each saying in words where it "
+                                              "leaves the spine", "token": "oa.chart.color.context.onNewsprint"},
+            {"label": "After the law", "value": "Funding, rules, review and the courts on a context line, then what undoes it"},
             {"label": "Ends", "value": "A small square and words where a path stops"},
-            {"label": "Return", "value": "A line back to step 1 for an act that undoes the law"},
-            {"label": "Sources", "value": "The law or rule behind each stage, with the date we checked it, beside the stage"},
-            {"label": "Form", "value": "The process diagram of Rule 14.96, with the stages as live text"},
+            {"label": "Return", "value": "A context line back to step 1 for an act that undoes the law"},
+            {"label": "Sources", "value": "The law or rule behind each stage, with the date we read it, beside the stage"},
         ],
         "related": ["11", "13", "14"],
         "builders": ["Hold each stage as one row with its number, its kind, its words, its source and the date the source "
-                     "was checked, and draw the marks from the row, so a stage never prints without its source."],
+                     "was read, and draw the marks from the row, so a stage never prints without its source."],
     }
 
 

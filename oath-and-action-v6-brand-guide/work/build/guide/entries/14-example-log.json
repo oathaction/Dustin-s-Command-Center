@@ -8,17 +8,17 @@
   4,
   5
  ],
- "examples": 108,
+ "examples": 112,
  "by_domain": {
   "D01": 6,
-  "D02": 12,
+  "D02": 13,
   "D03": 7,
   "D04": 13,
   "D05": 7,
   "D06": 6,
-  "D07": 10,
+  "D07": 12,
   "D08": 16,
-  "D09": 14,
+  "D09": 15,
   "D10": 8
  },
  "all_domains": 9,
@@ -891,6 +891,40 @@
    ],
    "rule": "14.141",
    "source": "s95.json"
+  },
+  {
+   "example": "Monthly change in payroll jobs with the survey’s margin of error",
+   "domain": "D07",
+   "states": [],
+   "level": "federal",
+   "where": "14.142",
+   "rule": "14.142",
+   "source": "14-142.json"
+  },
+  {
+   "example": "Payrolls shrank in seven of the 57 months charted, and only the October 2025 and February 2026 drops pass the survey’s margin of error.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.142",
+   "source": "s96.json"
+  },
+  {
+   "example": "Loops B4 and R10 through the risk of losing office",
+   "domain": "D02",
+   "states": [],
+   "level": "federal",
+   "where": "14.143",
+   "rule": "14.143",
+   "source": "14-143.json"
+  },
+  {
+   "example": "Reforms R-06, R-30 and R-38 on Loop R8, housing",
+   "domain": "D09",
+   "states": [],
+   "level": "federal",
+   "where": "14.144",
+   "rule": "14.144",
+   "source": "14-144.json"
   }
  ]
 }

@@ -183,37 +183,47 @@ def measures(p):
 
 
 # ------------------------------------------------------------------------------------------------ the plate
-def swatch(path, label_path=None, numeral=None, hatch=False, halo=False):
-    """One swatch, drawn as an SVG rectangle so it prints, in its token through var(); its numeral in its label ink."""
-    fill = f"var({css(path)})"
-    body = f'<rect width="40" height="28" style="fill:{fill}"/>'
-    if hatch:
-        body = (f'<rect width="40" height="28" style="fill:var(--ps-ground)"/>'
-                f'<rect width="40" height="28" style="fill:url(#ps-hatch-{path.rsplit(".", 1)[1]})"/>')
-    if numeral is not None and label_path:
-        if halo:
-            body += (f'<rect x="12" y="6" width="16" height="16" style="fill:var(--ps-ground)"/>'
-                     f'<text x="20" y="19" text-anchor="middle" style="fill:var({css(label_path)})">{numeral}</text>')
-        else:
-            body += f'<text x="20" y="19" text-anchor="middle" style="fill:var({css(label_path)})">{numeral}</text>'
+def role(p, k, label=False):
+    """The kit's own class for a step (kit.css, contract C4): the plate paints each swatch as a chart does, and the class reads
+    the short token name that the surface class around it points to Newsprint's or Charcoal's value."""
+    if label:
+        return "oac-f-beside-cat-4" if (p["id"] == "categorical" and k == 4) else f"oac-f-on-{p['code']}-{k}"
+    return f"oac-f-{p['code']}-{k}"
+
+
+def swatch(p, k, numeral=False):
+    """One swatch as an SVG rectangle, so it prints, with a 1 px edge over it; its number in its label ink. Stone's group
+    draws its hatch on the ground, its number on a halo of the ground, as a chart sets a label beside the hatch."""
+    cat4 = p["id"] == "categorical" and k == 4
+    body = ('<rect class="ps-gr" width="40" height="28"/><rect width="40" height="28" fill="url(#ps-hatch)"/>' if cat4
+            else f'<rect class="{role(p, k)}" width="40" height="28"/>')
+    if numeral:
+        if cat4:
+            body += '<rect class="ps-gr" x="12" y="6" width="16" height="16"/>'
+        body += f'<text x="20" y="19" text-anchor="middle" class="{role(p, k, True)}">{k}</text>'
     return (f'<svg class="ps-sw" viewBox="0 0 40 28" width="40" height="28" aria-hidden="true" focusable="false">'
-            f'<rect class="ps-edge" x=".5" y=".5" width="39" height="27"/>{body}</svg>')
+            f'{body}<rect class="ps-edge" x=".5" y=".5" width="39" height="27"/></svg>')
+
+
+def row_symbol(p):
+    """A palette's steps in one row, drawn once as a symbol; each proof uses it on its own ground (the classes inside a symbol
+    paint with the ground of the panel the <use> sits in, tested in Chromium for R5-2)."""
+    n = p["steps"]
+    rects = []
+    for i in range(n):
+        if p["id"] == "categorical" and i == 3:
+            rects.append(f'<rect class="ps-gr" x="{40 * i}" width="40" height="20"/><rect x="{40 * i}" width="40" height="20" fill="url(#ps-hatch)"/>')
+        else:
+            rects.append(f'<rect class="{role(p, i + 1)}" x="{40 * i}" width="40" height="20"/>')
+    return f'<symbol id="ps-row-{p["id"]}" viewBox="0 0 {40 * n} 20">{"".join(rects)}</symbol>'
 
 
 def strip(p, g, sim=None):
     """A palette's swatches in one row on its ground, as drawn or through one proof's filter."""
-    n = p["steps"]
-    w = 40 * n
-    flt = "" if sim is None else (' style="filter:grayscale(1)"' if sim == "grayscale" else f' style="filter:url(#ps-{sim})"')
-    rects = []
-    for i in range(n):
-        path = fill_path(p, i + 1, g)
-        if p["id"] == "categorical" and i == 3:
-            rects.append(f'<rect x="{40 * i}" width="40" height="20" style="fill:url(#ps-hatch-{SURF[g]})"/>')
-        else:
-            rects.append(f'<rect x="{40 * i}" width="40" height="20" style="fill:var({css(path)})"/>')
+    w = 40 * p["steps"]
+    flt = "" if sim is None else (' style="filter:grayscale(1)"' if sim == "grayscale" else f' filter="url(#ps-{sim})"')
     return (f'<svg class="ps-strip" viewBox="0 0 {w} 20" width="{w}" height="20" preserveAspectRatio="none" aria-hidden="true" '
-            f'focusable="false"><g{flt}>{"".join(rects)}</g></svg>')
+            f'focusable="false"><use href="#ps-row-{p["id"]}"{flt}/></svg>')
 
 
 def ground_panel(p, g, m):
@@ -222,9 +232,7 @@ def ground_panel(p, g, m):
     rows = m[g]["rows"]
     sw = []
     for i in range(n):
-        path = fill_path(p, i + 1, g)
-        cat4 = p["id"] == "categorical" and i == 3
-        sw.append(f'<li>{swatch(path, label_path(p, i + 1, g), i + 1, hatch=cat4, halo=cat4)}'
+        sw.append(f'<li>{swatch(p, i + 1, numeral=True)}'
                   + (f'<span class="ps-mk">{e(MARKER[i])}</span>' if p["id"] == "categorical" else "") + "</li>")
     proofs = []
     for sim, lab, _ in SIM:
@@ -250,7 +258,7 @@ def table(p, m):
         k = i + 1
         base = p["fill"].format(n=k)
         cat4 = p["id"] == "categorical" and i == 3
-        hdr = (f'<th scope="row">{swatch(fill_path(p, k, "newsprint"), hatch=cat4)}<span class="ps-st">{e(word)} {k}</span>'
+        hdr = (f'<th scope="row">{swatch(p, k)}<span class="ps-st">{e(word)} {k}</span>'
                f'<span class="ps-cd">{p["code"]}-{k}</span>' + ('<span class="ps-hn">Stone, hatched</span>' if cat4 else "") + "</th>")
         cells = [f'<td><code class="ps-tk">{dotted(base)}</code></td>']
         for g in ("newsprint", "charcoal"):
@@ -350,7 +358,11 @@ def grade_line(key, w):
     marks, _, _ = BS.wire_marks([(1, 8), (119, 8)], key, None, None, w, lit=False)
     marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks).replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
     marks = re.sub(r'\sstyle="[^"]*"', "", marks)
-    return (f'<svg class="ps-ln" viewBox="0 0 120 16" width="120" height="16" aria-hidden="true" focusable="false">{marks}</svg>')
+    GRADE_SYM[f"{key}-{w}"] = f'<symbol id="ps-gl-{key}-{w}" viewBox="0 0 120 16">{marks}</symbol>'
+    return (f'<svg class="ps-ln" viewBox="0 0 120 16" width="120" height="16" aria-hidden="true" focusable="false"><use href="#ps-gl-{key}-{w}"/></svg>')
+
+
+GRADE_SYM = {}
 
 
 def grade_block():
@@ -396,15 +408,18 @@ def filters():
         out.append(f'<filter id="ps-{sim}" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="{vals}"/></filter>')
     pitch = node("oa.chart.hatch.pitch")["$value"]["value"]
     weight = node("oa.chart.hatch.weight")["$value"]["value"]
-    for g in ("newsprint", "charcoal"):
-        out.append(f'<pattern id="ps-hatch-{SURF[g]}" width="{pitch:g}" height="{pitch:g}" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
-                   f'<rect width="{pitch:g}" height="{pitch:g}" style="fill:var({css("oa.color.palette." + g)})"/>'
-                   f'<line x1="0" y1="0" x2="0" y2="{pitch:g}" stroke-width="{weight:g}" style="stroke:var({css(fill_path(PALS[2], 4, g))})"/></pattern>')
+    # Stone's hatch, the kit's own (kit.js Ctx.pattern): lines in group 4's ink, the same Stone on both grounds, over the ground
+    need(hex_of("oa.chart.color.categorical.fill.group4.onNewsprint") == hex_of("oa.chart.color.categorical.fill.group4.onCharcoal"),
+         "group 4's ink differs by ground; the one hatch pattern needs a pattern for each ground")
+    out.append(f'<pattern id="ps-hatch" width="{pitch:g}" height="{pitch:g}" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'
+               f'<line x1="0" y1="0" x2="0" y2="{pitch:g}" class="oac-s-cat-4" stroke-width="{weight:g}"/></pattern>')
+    out += [row_symbol(p) for p in PALS]
+    out += [GRADE_SYM[k] for k in GRADE_SYM]
     return f'<svg class="ps-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>{"".join(out)}</defs></svg>'
 
 
 STYLE = """
-.ps { font: var(--oa-type-body-small); color: var(--oa-color-text-primary); container-type: inline-size; --ps-ground: var(--oa-color-surface) }
+.ps { font: var(--oa-type-body-small); color: var(--oa-color-text-primary); container-type: inline-size }
 .ps p { margin: 0 }
 .ps-defs { position: absolute; width: 0; height: 0; overflow: hidden }
 .ps-rel { font: var(--oa-type-caption); color: var(--oa-color-text-secondary); margin: 0 0 var(--oa-space-300) }
@@ -429,9 +444,10 @@ STYLE = """
 .ps-sw, .ps-strip, .ps-ln, .ps-rs { forced-color-adjust: none; print-color-adjust: exact; -webkit-print-color-adjust: exact }
 .ps-sw text { font-family: var(--oa-font-family-reading); font-size: var(--oa-chart-type-tick); font-weight: var(--oa-font-weight-semibold); font-variant-numeric: tabular-nums }
 .ps-edge { fill: none; stroke: var(--oa-color-border-strong); stroke-width: 1px }
+.ps-gr { fill: var(--oa-color-surface) }
 .ps-gs { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-300); margin-top: var(--oa-space-300) }
 @container (min-width: 40rem) { .ps-gs { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
-.ps-g { padding: var(--oa-space-300); background: var(--oa-color-surface); color: var(--oa-color-text-primary); --ps-ground: var(--oa-color-surface);
+.ps-g { padding: var(--oa-space-300); background: var(--oa-color-surface); color: var(--oa-color-text-primary);
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong) }
 .ps-gn { font: var(--oa-type-caption); font-weight: var(--oa-font-weight-bold); margin-bottom: var(--oa-space-200) }
 .ps-sws { display: flex; flex-wrap: wrap; gap: var(--oa-space-100); margin: 0; padding: 0; list-style: none }
@@ -449,9 +465,9 @@ STYLE = """
 .ps-gls li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--oa-space-200); align-items: center; font: var(--oa-type-caption) }
 .ps-lns { display: grid; gap: var(--oa-space-050) }
 .ps-ln { display: block }
-.ps-ln path { fill: none }
-.ps-ln .ak-mark { stroke: var(--oa-color-graphic-essential) }
-.ps-ln .hd { fill: var(--oa-color-graphic-essential) }
+.ps-defs path { fill: none }
+.ps-defs .ak-mark { stroke: var(--oa-color-graphic-essential) }
+.ps-defs .hd { fill: var(--oa-color-graphic-essential) }
 .ps-rs { display: inline-block; fill: var(--oa-color-graphic-essential); vertical-align: .08em; margin-right: 2px }
 .ps-gw b { font-weight: var(--oa-font-weight-bold) }
 /* under 40rem each table row stands as a block: the step, then each value under its column's word (6.6, as chapter 26's table) */
@@ -478,8 +494,9 @@ def build():
               "green-sensing cones) and tritanopia (no blue-sensing cones) by Machado, Oliveira and Fernandes (2009) at full strength, "
               "which models full color blindness only; a color distance is the OKLab distance between two colors.")
     body = (f'<div class="ps"><p class="ps-rel">Tokens {e(RELEASE)}. Every value, ratio and lightness below is read from the token files by script.</p>'
-            f'{filters()}{"".join(palette_block(p) for p in PALS)}{grade_block()}{prussian_line()}'
+            f'{{DEFS}}{"".join(palette_block(p) for p in PALS)}{grade_block()}{prussian_line()}'
             f'<p class="ps-note">{e(method)}</p></div>')
+    body = body.replace("{DEFS}", filters(), 1)
     frag = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14 (R5-3). Written by work/build/scripts/phase-3/palette_spec_build.py "
             f"from tokens {RELEASE}; never edit by hand. -->\n<style>{re.sub(r'[ ]*\\n[ ]*', ' ', STYLE.strip())}</style>\n{body}\n")
     meta = {"alt": ("The four data palettes, step by step, on Newsprint and Charcoal: each step’s token, value and contrast in a table, "

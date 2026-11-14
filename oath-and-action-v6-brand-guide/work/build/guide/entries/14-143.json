@@ -1,0 +1,93 @@
+{
+ "id": "14.143",
+ "title": "Step through two loops one connection at a time, from the variable they share.",
+ "rule": [
+  "When two loops from our systems atlas pass through one variable, step the reader through both on one loop stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, share Variable C3, risk of losing office. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step belongs to.",
+  "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Never number the two loops as one, and never say one outweighs the other: the atlas holds no measure of a loop’s strength (Rule 15.21)."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "A variable two loops share is where one loop can weaken the other. As primaries decide more seats in Loop R10, the risk of losing office falls, and in Loop B4 that same risk is what turns poor service into defeats. Stepping through both loops one connection at a time lets a reader see that one variable work in each, and keeping each loop’s own numbers and kind keeps two loops from reading as one."
+  ],
+  "basis": "Our systems atlas, Loops B4 and R10; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.color.state.selected.band",
+  "oa.color.state.selected.bar",
+  "oa.color.state.muted.text",
+  "oa.color.graphic.essential.onNewsprint"
+ ],
+ "related": [
+  "15.6",
+  "15.15",
+  "15.19",
+  "15.21",
+  "18.22"
+ ],
+ "builders": "Carry Rule 18.22’s markup and let chapter 18’s script run it; never copy the script. Name each step’s loop with <code>data-oa-part</code>, light each drawing from the stepper’s <code>data-oa-at</code>, and start the list’s counter again at each loop’s first step, so the number said, the number listed and the number drawn agree.",
+ "specs": [
+  {
+   "label": "Component",
+   "value": "The loop stepper of Rule 18.22: one status line, one list and one set of buttons for both loops"
+  },
+  {
+   "label": "Order",
+   "value": "Loop B4’s three steps, then Loop R10’s four, each in the atlas’s order"
+  },
+  {
+   "label": "Shared variable",
+   "value": "Its own title in both drawings and every step, its pill filled in ink (Rule 15.15)",
+   "token": "oa.color.graphic.essential.onNewsprint"
+  },
+  {
+   "label": "Current step",
+   "value": "The selected band behind its line and its two pills, in ink, never in red",
+   "token": "oa.color.state.selected.band"
+  },
+  {
+   "label": "Status line",
+   "value": "The loop and its own count, as “Loop R10, step 2 of 4”, then the step’s words"
+  },
+  {
+   "label": "Still sequence",
+   "value": "Every step numbered and in ink, buttons hidden, on paper, with motion reduced and with scripts off"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-143-correct",
+  "caption": "Loops B4 and R10 on the loop stepper of Rule 18.22, live: seven steps, Loop B4’s three and then Loop R10’s four, each with its connection, grade and delay. The risk of losing office is filled in ink in both drawings, and the status line names each step’s loop.",
+  "alt": "Loop B4 from our systems atlas, “Electoral consequences can improve public performance”, beside Loop R10, “Safe seats shift accountability to small primary electorates”, each drawn with its steps numbered from 1, and Variable C3, risk of losing office, the pill filled in ink in both. Under them the loop stepper of Rule 18.22: a status line, the seven steps in order, Loop B4’s three then Loop R10’s four, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in its drawing and in the list. With scripts off or in print, the list shows every step in order.",
+  "illustrative": false,
+  "width_px": 328,
+  "wide_px": 680,
+  "frame_container": true,
+  "fit_switch": false,
+  "notes": "Rule 18.22's markup with no script of its own (CE-1); loops drawn by phase3_ch15_build.py's three_loop and four_loop, imported read-only; every word of the steps read from the atlas's loop and connection records.",
+  "interactive": true,
+  "keys": true
+ },
+ "failure": {
+  "specimen": "s-14-143-failure",
+  "caption": "<strong>Fails Rule 14.143.</strong> The walk numbers the two loops 1 to 7 as one loop and counts their three minus signs together to call it balancing. The atlas holds two loops, Loop B4 balancing and Loop R10 reinforcing, which share one variable.",
+  "alt": "Failure case: do not publish. The two loops drawn side by side with their steps numbered 1 to 7 as one sequence and no loop names inside them, under a label that calls them one loop of seven steps, three minus signs, balancing. A list of the seven steps follows with no word of which loop each belongs to.",
+  "illustrative": false,
+  "width_px": 328,
+  "wide_px": 680,
+  "frame_container": true,
+  "fit_switch": false,
+  "notes": "Labeled failure, a still picture: the two loops read as one, its kind taken from the minus signs of both."
+ },
+ "examples": [
+  {
+   "example": "Loops B4 and R10 through the risk of losing office",
+   "domain": "D02",
+   "states": [],
+   "level": "federal",
+   "where": "14.143"
+  }
+ ]
+}

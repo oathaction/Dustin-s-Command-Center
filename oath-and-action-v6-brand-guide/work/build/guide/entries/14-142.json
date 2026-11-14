@@ -1,0 +1,79 @@
+{
+ "id": "14.142",
+ "title": "Mark the survey’s margin on a monthly chart, and name the changes that pass it.",
+ "rule": [
+  "A monthly count from a survey moves from one month to the next by chance as well as by change. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, level and source in a note (Rule 14.9). Name only the changes that pass it, each with its month and value in the subject ink (Rule 14.6), and keep the count of every change true beside them.",
+  "Draw every month in the window the question sets, with its reason (Rule 14.10), hatch the months still preliminary and dash the average where it includes one (Rule 14.11), and say in a note that the band covers one month’s change and not the average. The chart keeps its phone drawing, its table and its files from the kit (Rules 14.12 to 14.14)."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Without the band, every dip below zero reads as jobs lost. With it, a reader sees that five of the seven drops sit inside what the survey can measure and two pass it, so the chart names those two and still counts all seven, as the record holds them."
+  ],
+  "basis": "The Bureau of Labor Statistics’ Employment Situation technical note, October 2026 release; Rule 14.9"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.subject",
+  "oa.chart.color.magnitude.fill.step1.onNewsprint"
+ ],
+ "related": [
+  "14.6",
+  "14.9",
+  "14.10",
+  "14.11",
+  "14.12",
+  "14.13",
+  "14.14"
+ ],
+ "builders": "Draw the band with the kit’s band part from the margin the sidecar’s source line names, name the months with <code>labels.named</code>, and let the kit export the SVG, PNG and CSV, checked row for row against the data file.",
+ "specs": [
+  {
+   "label": "Window",
+   "value": "Every month, January 2022 to September 2026, with the reason in a note"
+  },
+  {
+   "label": "Margin",
+   "value": "A band from −122,000 to +122,000 behind the columns, with its edges, in the key and named on the drawing",
+   "token": "oa.chart.color.magnitude.fill.step1.onNewsprint"
+  },
+  {
+   "label": "Named drops",
+   "value": "The two past the margin, in the subject ink, each with its month and value",
+   "token": "oa.chart.color.subject"
+  },
+  {
+   "label": "Preliminary",
+   "value": "Hatched columns, the average dashed where it includes one"
+  },
+  {
+   "label": "Files",
+   "value": "The kit’s SVG, PNG and CSV, the CSV row for row with the data file"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-s96",
+  "caption": "S14’s monthly job change in full: all 57 months, the survey’s margin as a band, the two drops past it named, the preliminary months hatched, with its phone drawing and table."
+ },
+ "failure": {
+  "specimen": "s-14-142-failure",
+  "caption": "<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the title counts seven losses as findings. Five of the seven sit inside the survey’s margin of error.",
+  "alt": "Failure case: do not publish. The same columns with no band, the seven drops drawn dark alike under a note that calls them seven months of job losses, and a title that counts seven months of lost jobs.",
+  "illustrative": false,
+  "notes": "Labeled failure: a kit figure through s-14-142-failure.chart.json (C7), its title the fault.",
+  "charts": [
+   "s-14-142-failure"
+  ]
+ },
+ "examples": [
+  {
+   "example": "Monthly change in payroll jobs with the survey’s margin of error",
+   "domain": "D07",
+   "states": [],
+   "level": "federal",
+   "where": "14.142"
+  }
+ ]
+}

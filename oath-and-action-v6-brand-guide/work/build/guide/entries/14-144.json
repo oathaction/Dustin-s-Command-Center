@@ -1,0 +1,93 @@
+{
+ "id": "14.144",
+ "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
+ "rule": [
+  "Set the reforms that act on one loop side by side, one card each, in the order of their IDs, with the same rows in the same order: the targets on the loop, the targets elsewhere with their layer, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets turn red on the drawing (Rule 15.20), and keep every card in view, so the comparison never rests on memory.",
+  "Print each effect as the atlas stores it: the code, then any qualifier, the words after the code that say where or when the effect holds, such as “+L local” or “+M renter-owner”, then the code’s meaning. A zero says “no expected effect”. Add no total, count, average or rank, and give no code a fill, bar or shade, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "The four outcome families use different units, and a reform can help one while costing another. A total turns a local, delayed or sector-only effect into points that count as if they held everywhere, and two reforms with different effects can tie. Cards with the same rows let a reader compare each family in turn, in the atlas’s own words."
+  ],
+  "basis": "Our systems atlas, Reforms R-06, R-30 and R-38, Loop R8 and its note on effect codes"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.color.data.emphasis.red",
+  "oa.color.state.selected.bar"
+ ],
+ "related": [
+  "13.10",
+  "15.11",
+  "15.16",
+  "15.20",
+  "15.21",
+  "18.3",
+  "18.8"
+ ],
+ "builders": "Read every row from the reforms’ own records, show the chosen reform’s targets from the checked radio with CSS so the choice works with scripts off, and stop the build if any line adds, counts or ranks the effects.",
+ "specs": [
+  {
+   "label": "Choice",
+   "value": "A named group of radio buttons, one per reform, the first chosen on load (Rule 18.3)"
+  },
+  {
+   "label": "Targets",
+   "value": "The chosen reform’s on the drawing, in Rule 12.5’s red; the others in words with their layer",
+   "token": "oa.color.data.emphasis.red"
+  },
+  {
+   "label": "Cards",
+   "value": "One per reform, the same rows in the same order, all in view; the chosen one takes the selected bar",
+   "token": "oa.color.state.selected.bar"
+  },
+  {
+   "label": "Effects",
+   "value": "The atlas’s code and qualifier whole, then its words; zero in words; never added"
+  },
+  {
+   "label": "Routes",
+   "value": "Name, who acts, feasibility, and the check date or “Not checked”"
+  },
+  {
+   "label": "Never",
+   "value": "A total, a count of plus codes, a rank, or a fill, bar or shade by code"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-144-correct",
+  "caption": "Reforms R-06, R-30 and R-38 on Loop R8, live: choose one and its targets on the loop turn red, while the three cards stay side by side with every effect, qualifier, grade and route the atlas holds, and no total.",
+  "alt": "A reform chooser on Loop R8 from our systems atlas: a group of three radio buttons, Reform R-06, Reform R-30 and Reform R-38, with R-06 chosen; the loop drawn as two pills with the chosen reform’s targets on it in red; and three cards side by side, one per reform, each with its targets on the loop and outside it, its band, its four effects one family to a row as of October 15, 2026 with each code and qualifier whole, its evidence grades and its routes, and its evidence and tradeoffs one step away in a disclosure. No row adds the effects.",
+  "illustrative": false,
+  "width_px": 328,
+  "wide_px": 680,
+  "frame_container": true,
+  "fit_switch": false,
+  "notes": "Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; the choice shows through the plate's own CSS from the checked radio, scripts on or off; the status line is the shell's (C-2, CE-2). Every value read from the atlas's reform and loop records.",
+  "interactive": true,
+  "keys": true
+ },
+ "failure": {
+  "specimen": "s-14-144-failure",
+  "caption": "<strong>Fails Rule 14.144.</strong> A total row scores each code as points and adds the four families, so a local or sector-only effect counts as if it held everywhere and two different reforms tie. The atlas never adds effects across families.",
+  "alt": "Failure case: do not publish. A table of the three reforms’ four effects with a total row at the foot: Reform R-06 plus 5, Reform R-30 plus 5 and Reform R-38 plus 2, under a question asking which reform does the most, and a line saying each code was scored as 1, 2 or 3 points.",
+  "illustrative": false,
+  "width_px": 328,
+  "wide_px": 680,
+  "frame_container": true,
+  "fit_switch": false,
+  "notes": "Labeled failure, a still picture: its totals are the fault and hold no atlas value; the atlas never adds effects across families."
+ },
+ "examples": [
+  {
+   "example": "Reforms R-06, R-30 and R-38 on Loop R8, housing",
+   "domain": "D09",
+   "states": [],
+   "level": "federal",
+   "where": "14.144"
+  }
+ ]
+}

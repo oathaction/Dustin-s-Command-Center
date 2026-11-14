@@ -1,0 +1,136 @@
+{
+ "kit": 1,
+ "id": "S96",
+ "form": "columns-moving-average",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "fred-payrolls-monthly-change",
+ "reader_question": "Which monthly drops in payroll jobs were larger than the survey’s margin of error?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
+ "title": "Payrolls shrank in seven of the 57 months charted, and only the October 2025 and February 2026 drops pass the survey’s margin of error.",
+ "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average and the survey’s 90 percent margin of error for one month’s change, plus or minus 122,000 jobs.",
+ "notes": [
+  "The band runs from −122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of error for one month’s change in its survey of employers. A column that ends inside the band is a change the survey cannot tell apart from no change at that level.",
+  "The band applies to one month’s change. It does not apply to the three-month average.",
+  "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. Only the October 2025 (−140,000) and February 2026 (−156,000) drops pass the margin; the other five sit inside it.",
+  "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The band does not show how far a revision may move a month. The average is dashed where it includes a preliminary month.",
+  "The three-month average for a month is the mean of that month’s change and the two before it, so the averages for January and February 2022 draw on November and December 2021, months the chart does not show.",
+  "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next.",
+  "Both jobs charts run from January 2022 to September 2026, so they hold three full years before the January 2025 inauguration and every month since."
+ ],
+ "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026 over a shaded band from minus to plus 122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all in 2025 and 2026. Two are dark and labeled, October 2025 at minus 140,000 and February 2026 at minus 156,000, and reach past the band; the other five end inside it. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
+ "table": {
+  "caption": "Monthly change in payroll jobs and its three-month average",
+  "columns": [
+   {
+    "field": "month",
+    "label": "Month",
+    "format": "month",
+    "row_header": true
+   },
+   {
+    "field": "change_thousands",
+    "label": "Change in jobs",
+    "format": "signed-thousands"
+   },
+   {
+    "field": "avg3_thousands",
+    "label": "Three-month average",
+    "format": "signed-thousands:0"
+   },
+   {
+    "field": "status",
+    "label": "Status",
+    "format": "text",
+    "words": {
+     "preliminary": "Preliminary",
+     "final": "Final"
+    }
+   }
+  ]
+ },
+ "chart_notes": [
+  "Key: each light column is the jobs added or lost in the month, and the two dark columns are the drops past the margin; hatched columns are preliminary, August and September 2026.",
+  "The band: the survey’s margin of error for one month’s change, plus or minus 122,000 jobs.",
+  "Three-month average: the line, dashed where it includes a preliminary month.",
+  "Latest: +29,000 jobs in September 2026, preliminary; the three-month average stood at +51,000."
+ ],
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "x": "month",
+  "y": "change_thousands",
+  "average": "avg3_thousands",
+  "status": "status"
+ },
+ "formats": {
+  "x": "month",
+  "y": "signed-thousands",
+  "y_tick": "signed-thousands"
+ },
+ "labels": {
+  "key_columns": "Jobs added or lost in the month",
+  "key_preliminary": "Preliminary: August and September 2026",
+  "preliminary_value": "preliminary",
+  "latest": [
+   "{y} jobs",
+   "in {x}, preliminary"
+  ],
+  "key_average": "Three-month average",
+  "named": [
+   {
+    "x": "2025-10",
+    "text": [
+     "October 2025",
+     "−140,000 jobs"
+    ]
+   },
+   {
+    "x": "2026-02",
+    "text": [
+     "February 2026",
+     "−156,000 jobs"
+    ]
+   }
+  ],
+  "margin": {
+   "value": 122,
+   "label": "Margin of error",
+   "key": "The survey’s margin of error for one month’s change"
+  }
+ },
+ "annotations": [
+  {
+   "at": {
+    "x": "2023-06"
+   },
+   "text": "Three-month average",
+   "target": "average",
+   "place": "above",
+   "dy": -50,
+   "phone": {
+    "hide": true
+   }
+  }
+ ],
+ "scale": {
+  "y": [
+   -200,
+   850
+  ]
+ },
+ "notes_internal": [
+  "Rule 14.142's correct plate (R5-1): S14 in full, from S14's frozen file (D3-1873); S14 stays at its entry untouched.",
+  "Ruling (c): all 57 months; preliminary months hatched and the average dashed as S14 draws them; the margin a band from -122 to +122 thousand behind the columns in Stone magnitude step 1 with context edges (the engineer's band part); the two drops past it named in Charcoal at the subject weight (labels.named), never red; every other column the light fill; the average in the context ink at the context weight. The form's keys for this are the engineer's (R5-1, 'The kit for complex example 1').",
+  "Check 14.142-a (maker_c_round5_derive.py): 57 months, January 2022 to September 2026; preliminary August and September 2026; seven losses; margin 122 thousand from the sidecar's with_margin line; past it October 2025 (-140) and February 2026 (-156); September 2026 average 50.67 thousand, 51,000 to the thousand.",
+  "Title: DR-239's two approved sentences joined, as the data lead's ruling (c) suggests; the editor may tune the words, the counts stay.",
+  "Written by work/build/scripts/phase-3/phase3_ch14_complex_build.py; change a word there, never here."
+ ]
+}
