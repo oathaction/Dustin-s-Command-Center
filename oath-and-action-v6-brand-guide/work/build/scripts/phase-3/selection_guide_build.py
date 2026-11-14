@@ -805,7 +805,7 @@ def g49(m):  # Unit chart or waffle: one square a unit, a share of them filled
 
 @glyph(50)
 def g50(m):  # Stacked column: each column split into its parts
-    cols = [(18, 8, 6), (22, 10, 8), (16, 12, 10), (26, 10, 8), (24, 14, 6), (30, 12, 6)]
+    cols = [(14, 8, 6), (18, 9, 7), (12, 10, 8), (20, 9, 6), (18, 11, 6), (24, 10, 6)]
     a, b, c = [], [], []
     for i, (h1, h2, h3) in enumerate(cols):
         x = 9 + 13 * i
@@ -1112,9 +1112,9 @@ def g76(m):  # Scenario directions: each scenario's direction on each outcome, a
 def g77(m):  # Fan chart: the line so far, then bands that widen into the future
     past = [(5, 40), (14, 36), (23, 38), (32, 31), (41, 33), (48, 28)]
     xs = frange(48, 84, 4)
-    c = lambda x: 28 - 0.25 * (x - 48)
-    w1 = lambda x: 0.32 * (x - 48)
-    w2 = lambda x: 0.6 * (x - 48)
+    c = lambda x: 28 - 0.2 * (x - 48)
+    w1 = lambda x: 0.25 * (x - 48)
+    w2 = lambda x: 0.45 * (x - 48)
     return (P(FG, band([(x, c(x) - w2(x)) for x in xs], [(x, c(x) + w2(x)) for x in xs]))
             + P(FL, band([(x, c(x) - w1(x)) for x in xs], [(x, c(x) + w1(x)) for x in xs])) + BASE
             + series(past) + P(SS, line([(x, c(x)) for x in xs]), ' stroke-dasharray="3 3"'))
@@ -1424,7 +1424,7 @@ def g108(m):  # Multi-network: the same people joined by more than one kind of l
 
 @glyph(109)
 def g109(m):  # Symmetrical links: links that run both ways, each as wide as what the pair shares
-    A, B, C, D = (12, 29), (44, 7), (44, 51), (76, 29)
+    A, B, C, D = (12, 29), (44, 9), (44, 49), (76, 29)
 
     def wide(p, q, w):
         dx, dy = q[0] - p[0], q[1] - p[1]

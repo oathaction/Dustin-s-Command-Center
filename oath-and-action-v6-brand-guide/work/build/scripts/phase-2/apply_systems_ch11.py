@@ -117,8 +117,8 @@ BALLOT_STEPS = [
      'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014'),
     ('Signatures', 'The sponsors gather signatures, and election officials count and check them.',
      'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031'),
-    ('Legislature', 'The Legislature votes on the measure first, where the state’s initiative is indirect; under a slash '
-                    'where it goes straight to the ballot.',
+    ('Legislature', 'The Legislature votes on the measure first, where the state’s initiative is indirect. A measure '
+                    'that goes straight to the ballot keeps this step under a slash.',
      'Massachusetts, Amendment Article LXXXI, Section 2; Ohio Constitution, Article II, Section 1b; Michigan '
      'Constitution, Article II, Section 9'),
     ('On the ballot', 'The state’s election officer certifies the measure for the ballot.',
@@ -246,16 +246,17 @@ WAIT_REQUEST = dict(id='99007', noun='Request', kind='request', title='Weather s
 BALLOTS = [
     dict(id='99010', noun='Measure', kind='ballot', title='State park entry fees',
          states=['done', 'done', 'done', 'skipped', 'done', 'now'],
-         line='Step 4 never happened: a direct initiative goes to the ballot with no vote in the Legislature. The polls '
-              'closed on November 3. The count is unofficial until the state certifies it, set for November 25.'),
+         line='The polls closed on November 3, and the count is unofficial until the state certifies it, which it has set '
+              'for November 25. Step 4 never happened: a direct initiative goes to the ballot with no vote in the '
+              'Legislature.'),
     dict(id='99011', noun='Measure', kind='ballot', title='Library district funding', states=['done'] * 6,
          end='Approved by voters on November 3, certified on November 24.',
-         line='The Legislature did not pass it by May 5, so a second round of signatures sent it to the voters. It takes '
-              'effect December 3.'),
+         line='It takes effect December 3. The Legislature did not pass it by May 5, so a second round of signatures sent '
+              'it to the voters.'),
     dict(id='99013', noun='Measure', kind='ballot', title='Lake shoreline setbacks',
          states=['done', 'done', 'stopped', 'notyet', 'notyet', 'notyet'],
          end='Too few valid signatures to qualify.',
-         line='On July 14, a random sample of the signatures showed fewer valid ones than the law requires.'),
+         line='On July 14, a random sample of the signatures projected fewer valid ones than the law requires.'),
 ]
 COURTS = [
     dict(id='99014', noun='Case', kind='court', title='Bakery name trademark',
@@ -1773,13 +1774,15 @@ def build(ctx):
             'id': '11.10', 'title': 'Follow a ballot measure through six steps, and wait for the certified count.',
             'rule': ['A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s '
                      'constitution by petition, and the voters decide it. These steps follow the constitutions of '
-                     'Massachusetts, California, Ohio and Michigan and California’s election office; each state sets its '
-                     'own deadlines and counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, '
+                     'Massachusetts, California, Ohio and Michigan, with California’s election office, and each state sets '
+                     'its own deadlines and signature counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, '
                      'Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the '
                      'Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 '
-                     'under a slash.',
+                     'under a slash. The same steps carry a measure the Legislature sends to the voters itself, which has '
+                     'no petition, so steps 1 to 3 keep their slashes.',
                      'Until the state certifies the count, a measure at step 6 stays current, and its words say so: '
-                     '“Step 6 of 6: Vote. The count is unofficial until the state certifies it, set for November 25.” Once '
+                     '“Step 6 of 6: Vote. The count is unofficial until the state certifies it, which it has set for '
+                     'November 25.” Once '
                      'the count is certified, the words say Approved by voters or Rejected by voters, with the date of the '
                      'vote and the date it was certified, then when an approved measure takes effect. A measure that ends '
                      'before step 6 ends its line on a square at the last step it reached, with its words and the date: '
@@ -1787,8 +1790,8 @@ def build(ctx):
                      'qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 '
                      'under slashes, and its words give the date: “Passed by the Legislature on May 2.”'],
             'tokens': ['oa.component.mark.slash'],
-            'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and a '
-                             'measure becomes law only on the certified result. Words that wait for certification keep a '
+            'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and only '
+                             'the certified result decides a measure. Words that wait for certification keep a '
                              'reader from treating a lead as law. The slash on step 4 keeps every measure counting to six '
                              'and still says that no legislature voted on a direct initiative.'],
                     'basis': 'Massachusetts Constitution, Amendment Articles XLVIII and LXXXI; California Constitution, '
@@ -1850,7 +1853,7 @@ def build(ctx):
                      'so a case sent back says so in a sentence '
                      'after the end words. A case that ends before step 6 ends its line on a square at the last step it '
                      'reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, '
-                     'Appeal withdrawn, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '
+                     'Appeal withdrawn, Appeal dismissed by the court, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '
                      'appeals court’s ruling standing.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['In the Supreme Court’s own words, review is “not a matter of right, but of judicial '

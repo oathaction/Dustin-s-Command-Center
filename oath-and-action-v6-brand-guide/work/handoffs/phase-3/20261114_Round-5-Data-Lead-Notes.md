@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 02:47 UTC. **Batch 2 signed off:** Rules 11.10 and 11.11 as finished (words, end words, Rule 11.12, group 2, my 11.10 change, "Affirmed" glossed, the three source points, both failure plates, the step tables), with one optional word suggestion for the editor. Rules 11.10 and 11.11 are signed off whole.
 - 02:44 UTC. DD-E3 and DD-R4 ruled yes, under "Additions, 02:44 UTC" (S96's latest label leaves the plot; 14.144's date once over the set, with R-38's route check date kept). Ruling (d)'s family name amended to DR-39's "Quality of democracy". Noted for batch 2: the three complex examples weigh 29,965, 42,948 and 54,950 bytes as placed, reported under DR-271.
 - 02:27 UTC. **Batch 1 signed off**, under "Sign-offs": ED5-3 ruled (hold "Affirmed"); Rules 11.10 and 11.11's facts and marks, with one change (a measure the Legislature passes takes slashes on steps 5 and 6, not a square) and three source points; R5-8; the palette specification; S96, with one condition (the phone note placed); S95's second crop.
 - 02:00 UTC. D3-1880 noted under (d): the stepper prints each loop's own step numbers, the counter 1 to 7 stays internal.
@@ -318,6 +319,22 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 
 ## Sign-offs
 
+### Batch 2 (02:47 UTC): Rules 11.10 and 11.11 as finished: signed off (for the tracker designer, the editor, the research lead and the main session)
+
+Read on my own strict build to scratch (02:46 UTC: exit 0, 0 warnings, 12,090,700 bytes, 369 rules, 679 specimens): Rules 11.10 to 11.12 whole, by script, then line by line. Also group 2's title and line, the chapter's intro and both source lines. Looked at the tracker designer's 02:38 captures of both correct plates at 390 px (ballot on Newsprint, court on Charcoal).
+
+- **My 11.10 change is applied.** A measure the Legislature passes keeps steps 5 and 6 under slashes, with "Passed by the Legislature on" and its date, in its own spec row. It is gone from the list of squares. The rule's text says it in one sentence.
+- **"Affirmed" glossed once (ED5-3).** "Affirmed, which leaves the ruling below in place" in Rule 11.11's text, with "Vacated, which cancels the ruling below". The specs give each higher court's verb with the court, as in "Affirmed by the appeals court". No "Upheld" appears on either court plate. Rule 11.12's "Upheld on appeal" is the records request's agency appeal, as before.
+- **End words follow ruling (f).** Ballot: "Approved by voters" or "Rejected by voters" with the vote and certification dates, then when it takes effect. "Approved" is the verb all four constitutions use. "Not approved by voters" covers a yes majority that fails a second test, as Massachusetts's 30 percent rule can. Court: each court's verb, with the court and the date. A denial reads "Petition denied by the Supreme Court" on a square at step 5, with "The appeals court's ruling stands."
+- **The research lead's three source points are settled.** 28 U.S.C. 1253 is in the basis and the source line. The "Straight to the Supreme Court" row now names the case the section covers: a three-judge district court that grants or denies an injunction. The tie now reads "Affirmed by an equally divided Court" and is sourced to Neil v. Biggers, 409 U.S. 188 (1972). The court source line lists every section the table cites: 1253, 1254, 1291, 1292, 1331, 2101, 2106, 2107 and 2284, plus the federal rules, the Court's rules and the case, each dated.
+- **Rule 11.12 covers all four trackers.** Each wait is placed inside its step: the requester's answer, a fee estimate, a 10-day extension, White House review, a second round of signatures, and an appeal of an injunction order (28 U.S.C. 1292(a)(1); the case "may pause", which is true as hedged). Each later step follows the end words as a dated sentence. The record that needs no warning matches ruling (f): the agency's tracking service, the Federal Register, the state election office's notice, the court's docket.
+- **The failure plates teach one fault each.** Ballot: step 6 filled and "Approved by voters" on an election-night lead of 52 percent, labeled Illustrative. Court: a denied petition drawn with step 6 filled and "Affirmed by the Supreme Court". Each caption names the fault in a sentence.
+- **The step tables** cite each step's law. The court table now says only what its cited law says. The "sponsors file with the attorney general" and "the attorney general writes the title and summary" rows agree with California Elections Code 9001 and 9004 and Massachusetts's Article XLVIII as the research lead read them.
+- **Group 2 and the intro.** "Records requests, agency rules, ballot measures and court cases": its line says each moves through six steps and ends in words with the date. The intro names all four after the bill.
+- **Words.** No em dash, U+2011, straight apostrophe or listed filler or corporate word in Rules 11.10 to 11.12, by script. The plates' marks are unchanged from batch 1.
+
+One suggestion, not a condition, for the editor: "Withdrawn by the plaintiff" and "Appeal withdrawn" are clear, but the docket records both as a voluntary dismissal (Federal Rules of Civil Procedure, Rule 41(a); Federal Rules of Appellate Procedure, Rule 42(b)). "Dismissed at the plaintiff's request" and "Appeal dismissed at the appellant's request" would match the word a reader finds on the docket, as ED5-3 kept "Affirmed" for. Both sit in the specs alone, and no plate prints them.
+
 ### Batch 1 (02:27 UTC): ED5-3, Rules 11.10 and 11.11, R5-8, the palette specification, S96 and S95
 
 Read on my own strict build to scratch (02:20 UTC: exit 0, 0 warnings, 12,090,810 bytes, 368 rules, 677 specimens), on the owners' files by script, and on the engineer's exported S96 and palette captures. Load stood at 3.9 to 4.6 throughout, so I drove no browser.
@@ -388,6 +405,8 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 - Batch 1 (02:19 to 02:27 UTC): my strict build to scratch (`guide_build.py --strict`, exit 0, 0 warnings, 12,090,810 bytes, 368 rules, 677 specimens); by script on it and on version 10's page, chapter 11's citations and links before and after R5-8 (`r58_check.py`, `ctx.py`), and Rules 11.10 and 11.11's text (`slice_text.py`); each tracker card's six marks from `s-11-10-*` and `s-11-11-*`, and the red variable's uses; `palette_spec_build.py --check`; the palette plate's 17 measured rows against my own WCAG and OKLab code (`palette_verify.py`); `oa-chart.mjs build s96 --no-png --no-sweep` (PASS) and S96's four Node drawings by `run_spec` (column inks, the band's extent against the ticks, the named columns' heights, no red); S96's failure spec; S95's size lines in my build and `s95.json`'s history. Scripts in my scratch folder's `scripts/`.
 - Looked at, batch 1: the engineer's S96 captures (1440 px Newsprint in grayscale; 390 px Newsprint; the 390 px Charcoal export) and his palette plate capture at 1440 px (Newsprint, top).
 
+- Batch 2 (02:47 UTC): my second strict build to scratch (exit 0, 0 warnings, 12,090,700 bytes, 369 rules, 679 specimens); Rules 11.10 to 11.12, group 2's line, the intro and both source lines read by script and by hand; the words scanned by script for em dashes, U+2011, straight apostrophes and chapter 02's listed words. Looked at the tracker designer's 02:38 captures of `s-11-10-correct` (390 px, Newsprint) and `s-11-11-correct` (390 px, Charcoal).
+
 ## Not tested
 
 - No build of any round 5 item: none has landed. No kit build, capture or guide check of my own yet.
@@ -396,3 +415,4 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 - Whether Rule 18.22's stepper code holds two loops in one sequence: the component engineer's to say.
 - Chapter 15's example count read from the generator's source, not from a run of it.
 - Batch 1: no capture of my own (load 3.9 to 4.6). Not looked at: the trackers at any width, the palette plate below its first block, on Charcoal or at 390 px, S96 at 296 and 256 px. Not repeated: the tracker designer's whole-output map proofs, the engineer's 1,236-drawing S95 measure. S96's phone note is in the spec and not yet in the placed plate or my build.
+- Batch 2: the trackers at widths other than 390 px and in grayscale, and both failure plates, not looked at (the tracker designer reports 90 captures read, 0 flagged); the laws' texts not reread by me (the research lead's reading).

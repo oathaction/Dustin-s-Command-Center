@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Design director (
 
 ## Status
 
+- 02:47 UTC. Reading the trackers next, at the main session's word (02:52 relay): Rules 11.10 and 11.11 with their plates and step tables, group 2's line and Rule 11.12, beside Rules 11.8 and 11.9. Strict build of 02:46 (12,090,700 bytes, exit 0); captures waiting for the load to fall under 4.
 - 02:42 UTC. **First read of the complex examples written** (Rules 14.142 to 14.144, S96 included, from my strict build of 02:26). Requests to the complex examples maker: 3 Must (DD-E1, DD-C1, DD-R1) and 12 Should; two questions to the data lead, two small word items to the editor, one shared item to the systems designer. Next: the selection guide, the palette specification, the trackers and Rules 15.22 to 15.25 as each owner's "Status" says it has landed; then one read of the fixes.
 - 02:27 UTC. First captures of 14.143 and 14.144 read from my 02:04 build; the maker's files moved since (02:13 to 02:25), so I rebuilt strict at 02:26 and captured all three rules again. A full-page browser at twice size ran out of memory at 02:09 (other agents' browsers held about 7 GB), so I capture from a copy of my build that keeps chapter 14 whole and every other chapter's styles and scripts only.
 - 02:04 UTC. Started. Read `CLAUDE.md`, my role file, the round 5 brief, my round 4 notes, the data lead's rulings with A-1 and A-2, and the creative director's front door items. Strict guide built to my scratch (11,780,771 bytes).
