@@ -7,6 +7,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Selection guide m
 - 01:41 UTC: started. Read the brief, DR-273, the creative director's three watch items, chapter 14's groups and opener, the plan's 127 form rows; a strict build to scratch; every entry's first plate captured at 1440 px and the 30 sketches on one sheet, to study the forms.
 - 02:15 UTC: **first draft landed.** `work/build/scripts/phase-3/selection_guide_build.py` writes `work/build/guide/specimens/s-14-selection-guide.html` and `s-14-selection-guide.meta.json`; `phase3_ch14_build.py` places it with 0 faults; strict build exit 0; every link lands on the built page.
 - 02:22 UTC: **weight pass** (the main session's 02:22 relay): 233,812 bytes as placed in the first draft, 152,088 at 02:20, fragment now 134,700 bytes on disk before placing (below, "Weight"). Next: pixel proof of the half-pixel rounding, captures at 1440, 390 and 320 px on both grounds and in grayscale at twice size, fixes, the quick guide check.
+- 02:49 UTC: **second draft placed**, 148,758 bytes as placed. Fixed since 02:22: six tiles a row at 1440 px and three at 390 (was five and two); each link's name now "Ranked bar, Core" in Chromium (the shell's absolutely placed `.vh` comma made it "Ranked bar , Core"); every symbol carries the kit's class, so forced colors reach the copied shapes (they stayed Charcoal on a black ground before); three pictures that ran past their box (14.50, 14.77, 14.109) and the two tile maps' edges drawn inside it; question lines break a long word at 200 percent text. Next: captures again, the quick guide check, the summary.
 
 ## Summary
 
@@ -19,9 +20,10 @@ To come.
 | 02:15, first draft | 222,843 | 233,812 (the engineer's measure) | every map picture carried its own country outline; two-decimal coordinates |
 | 02:20 | 163,670 | 175,387 | the states drawn once, as four group symbols every map picture `<use>`s with its ink (land, shading, outlines, the four small maps) |
 | 02:20 | 140,371 | 152,088 | every path written short (absolute or relative, whichever is shorter; no leading zeros; spaces only where a number needs one); runs of same-size filled dots written as zero-length round-capped steps in the same ink role; no `viewBox` on a symbol that draws at its own size; no class on a tile's `li` |
-| 02:22 | 134,700 | to measure | path points rounded to the nearest half pixel |
+| 02:22 | 134,700 | 146,417 | path points rounded to the nearest half pixel |
+| 02:49 | 137,041 | 148,758 | the kit's class on every symbol (forced colors), the comma and the 200 percent fixes |
 
-The pixel proof for the 02:20 step: the review sheet of all 128 pictures drawn at twice size on both grounds, before and after, differs in 293 of 10,091,840 pixels, 18 of them by more than 60 of 765 levels (antialiasing at a rounded point).
+The pixel proof for the 02:20 step: the review sheet of all 127 pictures drawn at twice size on both grounds, before and after, differs in 293 of 10,091,840 pixels, 18 of them by more than 60 of 765 levels (antialiasing at a rounded point). For the half-pixel step: 80,783 pixels differ, all at antialiased edges, and the two sheets side by side at twice size show the same drawings (looked at whole and in three rows at full size).
 
 ## Routine calls
 
@@ -34,6 +36,10 @@ The pixel proof for the 02:20 step: the review sheet of all 128 pictures drawn a
 - D3-xxx | 14.119 draws Wisconsin's districts and 14.120 Iowa's counties, each from the Census files the map entries use | One state reads as districts or counties at 88 px; the whole country's 435 districts or 3,143 counties do not
 - D3-xxx | 14.124 takes the tile map's shape in the subject ink alone, filled against outlined tiles, under the avoid mark | Ruling (a): "the tile map's shape in the guide's one ink"; fill against outline shows two flat groups with no color
 - D3-xxx | Runs of same-size filled dots are written as zero-length round-capped steps in the matching stroke class | The same disc in about a tenth of the bytes; forced colors map the stroke class as they map the fill class
+- D3-xxx | Path points sit on the nearest half pixel | At true size and at twice size a half pixel is the finest step a screen shows; it saved 5,671 bytes and moved no drawing a reader can see
+- D3-xxx | The comma between name and tier is an inline span clipped out of sight (`clip-path: inset(50%)`) inside the name, in place of the shell's `.vh` | Chromium computes "Ranked bar , Core" from an absolutely placed span between two blocks, and "Ranked bar, Core" from this one (tested on six markups)
+- D3-xxx | Every symbol carries the kit's class `oac-svg` | A `<use>` copy sits in its own tree, where kit.css's `.oac-svg <shape>` rules (forced colors, the non-scaling line) found no ancestor; with the class on the symbol, the copy's own root carries it (tested in forced colors, dark and light; normal rendering moved only where shapes had run past their box)
+- D3-xxx | Questions' lines may break a word too long for the line (`overflow-wrap: break-word`) | At 200 percent text on a 320 px screen "Relationships:" is wider than the stage; it changes nothing at normal sizes
 
 ## Requests
 
