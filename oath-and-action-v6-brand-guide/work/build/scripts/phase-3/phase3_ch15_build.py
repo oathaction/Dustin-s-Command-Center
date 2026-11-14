@@ -3645,6 +3645,7 @@ def hold(s):
     s = re.sub(r"\b(January|February|March|April|May|June|July|August|September|October|November|December) (\d{1,2}), (\d{4})\b",
                "\\1&#160;\\2,&#160;\\3", s)
     s = re.sub(r"\b(clause|Rules?|section|Section|Article) (\d[\w.()]*|[IVXL]+\b)", "\\1&#160;\\2", s)
+    s = re.sub(r"\b(U\.S\.C\.|CFR) (\d)", "\\1&#160;\\2", s)
     return re.sub(r"\b((?:[Tt]wo|[Tt]hree)-(?:thirds|fifths|fourths))\b", '<span class="nw2">\\1</span>', s)
 
 
