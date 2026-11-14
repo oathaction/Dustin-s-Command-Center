@@ -1,0 +1,225 @@
+{
+ "format": "oa-keys/1",
+ "set": "s-14-143-correct",
+ "rule": "14.143",
+ "component": "Loop stepper walking two loops through a shared variable",
+ "about": "Written by the component engineer from the accessibility lead's key path (its round 5 notes, section 2.7) and the plate as built: 7 steps, counted within Loop B4 and Loop R10.",
+ "paths": [
+  {
+   "name": "Step through both loops by hand; the line names each step and loop, the drawing follows, focus stays",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-play"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-reset",
+     "states": [
+      {
+       "el": ".oa-stepper-reset",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-prev",
+     "states": [
+      {
+       "el": ".oa-stepper-prev",
+       "attr": "aria-disabled",
+       "is": "true"
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-next"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "states": [
+      {
+       "el": ".oa-stepper-step:nth-child(1)",
+       "attr": "aria-current",
+       "is": "step"
+      },
+      {
+       "el": "[data-oa-stepper]",
+       "attr": "data-oa-at",
+       "is": "1"
+      }
+     ],
+     "status_has": "Loop B4, step 1 of 3:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "status_has": "Loop B4, step 2 of 3:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "status_has": "Loop B4, step 3 of 3:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "states": [
+      {
+       "el": "[data-oa-stepper]",
+       "attr": "data-oa-at",
+       "is": "4"
+      }
+     ],
+     "status_has": "Loop R10, step 1 of 4:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "status_has": "Loop R10, step 2 of 4:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "status_has": "Loop R10, step 3 of 4:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-next",
+     "states": [
+      {
+       "el": ".oa-stepper-next",
+       "attr": "aria-disabled",
+       "is": "true"
+      },
+      {
+       "el": "[data-oa-stepper]",
+       "attr": "data-oa-at",
+       "is": "7"
+      }
+     ],
+     "status_has": "Loop R10, step 4 of 4:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-stepper-prev",
+     "states": [
+      {
+       "el": ".oa-stepper-prev",
+       "attr": "aria-disabled",
+       "is": null
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-prev",
+     "states": [
+      {
+       "el": ".oa-stepper-next",
+       "attr": "aria-disabled",
+       "is": null
+      },
+      {
+       "el": "[data-oa-stepper]",
+       "attr": "data-oa-at",
+       "is": "6"
+      }
+     ],
+     "status_has": "Loop R10, step 3 of 4:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-stepper-reset"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-reset",
+     "states": [
+      {
+       "el": ".oa-stepper-reset",
+       "attr": "aria-disabled",
+       "is": "true"
+      },
+      {
+       "el": "[data-oa-stepper]",
+       "attr": "data-oa-at",
+       "is": "0"
+      }
+     ],
+     "status_has": "Ready.",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-prev"
+    },
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-next"
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  },
+  {
+   "name": "Play becomes Pause and back, with focus on it, under reduced motion too",
+   "setup": {
+    "reducedMotion": true
+   },
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-stepper-play",
+     "states": [
+      {
+       "el": ".oa-stepper-word",
+       "text": "Play"
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-play",
+     "states": [
+      {
+       "el": ".oa-stepper-word",
+       "text": "Pause"
+      },
+      {
+       "el": "[data-oa-stepper]",
+       "attr": "data-oa-at",
+       "is": "1"
+      }
+     ],
+     "status_has": "Loop B4, step 1 of 3:",
+     "status_el": ".oa-stepper-status"
+    },
+    {
+     "key": "Enter",
+     "focus": ".oa-stepper-play",
+     "states": [
+      {
+       "el": ".oa-stepper-word",
+       "text": "Play"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

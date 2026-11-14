@@ -1,0 +1,143 @@
+{
+ "format": "oa-keys/1",
+ "set": "s-14-144-correct",
+ "rule": "14.144",
+ "component": "Reform chooser with three reforms on one loop",
+ "about": "Written by the component engineer from the accessibility lead's key path (its round 5 notes, section 3.5) and the plate as built: 3 reforms, R-06, R-30, R-38, the first checked; panels all in view, side by side; then each stop after the radios in page order, and out.",
+ "paths": [
+  {
+   "name": "Enter at the checked reform; the arrow keys choose all three and wrap; the panel and the line follow; focus stays",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-choice-input[value=\"R-06\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-06\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-06\"]",
+       "visible": true
+      }
+     ]
+    },
+    {
+     "key": "ArrowDown",
+     "focus": ".oa-choice-input[value=\"R-30\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-30\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-30\"]",
+       "visible": true
+      }
+     ],
+     "status_has": "Reform R-30"
+    },
+    {
+     "key": "ArrowDown",
+     "focus": ".oa-choice-input[value=\"R-38\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-38\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-38\"]",
+       "visible": true
+      }
+     ],
+     "status_has": "Reform R-38"
+    },
+    {
+     "key": "ArrowDown",
+     "focus": ".oa-choice-input[value=\"R-06\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-06\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-06\"]",
+       "visible": true
+      }
+     ],
+     "status_has": "Reform R-06"
+    },
+    {
+     "key": "ArrowUp",
+     "focus": ".oa-choice-input[value=\"R-38\"]",
+     "status_has": "Reform R-38"
+    },
+    {
+     "key": "Tab",
+     "focus": "[data-oa-panel=\"R-06\"] summary",
+     "states": [
+      {
+       "el": "[data-oa-panel=\"R-06\"] details",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": "[data-oa-panel=\"R-06\"] summary",
+     "states": [
+      {
+       "el": "[data-oa-panel=\"R-06\"] details",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-choice-input[value=\"R-38\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-38\"]",
+       "prop": "checked",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "ArrowUp",
+     "focus": ".oa-choice-input[value=\"R-30\"]",
+     "states": [
+      {
+       "el": "[data-oa-panel=\"R-06\"] details",
+       "prop": "open",
+       "is": true
+      }
+     ],
+     "status_has": "Reform R-30"
+    },
+    {
+     "key": "Tab",
+     "focus": "[data-oa-panel=\"R-06\"] summary"
+    },
+    {
+     "key": "Tab",
+     "focus": "[data-oa-panel=\"R-30\"] summary"
+    },
+    {
+     "key": "Tab",
+     "focus": "[data-oa-panel=\"R-38\"] summary"
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}
