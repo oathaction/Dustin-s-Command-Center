@@ -111,6 +111,14 @@
    850
   ]
  },
+ "show": [
+  "evidence",
+  "title",
+  "measure",
+  "chart",
+  "notes",
+  "source"
+ ],
  "failure": {
   "rule": "14.142",
   "caption_lead": "Fails Rule 14.142."

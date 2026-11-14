@@ -969,8 +969,7 @@ def rule_14_142():
         "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
         "annotations": [],
-        # no "show" list: with one, the kit's own build found the page's drawing differing from the Node drawing (parity),
-        # though the guide draws it the same; the failure shows the kit's whole figure, as its table already did on the page
+        "show": ["evidence", "title", "measure", "chart", "notes", "source"],
         "failure": {"rule": "14.142", "caption_lead": "Fails Rule 14.142."},
         "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled "
                           "alike as losses, under a title that counts seven losses as findings; no red.",
