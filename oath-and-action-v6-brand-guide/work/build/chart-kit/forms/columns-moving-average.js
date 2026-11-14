@@ -136,10 +136,11 @@
           return o.hide || !(nm.text || []).length || i < 0 ? null : { lines: [].concat(nm.text), i: i, v: rows[i][ey] };
         }).filter(Boolean);
         if (!items.length) return false;
-        var size = c.size('label'), lh = 19, asc = size * 0.969, sgap = 8, lead = 8;
+        var size = c.size('label'), lh = 19, asc = size * 0.969, sgap = 6, lead = 8;
         var first = Math.min.apply(null, items.map(function (it) { return it.i; }));
         var w = Math.max.apply(null, items.map(function (it) { return Math.max.apply(null, it.lines.map(function (l, k) { return c.measure(l, 'label', k ? 400 : 700); })); }));
-        var right = xc(first) - bw / 2 - lead, top0 = Math.max.apply(null, edges.concat(items.map(function (it) { return Math.max(ys(0), ys(it.v)); }))) + 4;
+        // the stack's top: 4 px under the band's lower edge, or under the zero line with no band
+        var right = xc(first) - bw / 2 - lead, top0 = (edges.length ? Math.max.apply(null, edges) : ys(0)) + 4;
         var floor2 = ay - c.size('tick') - 2, y2 = top0, plan = [];
         items.forEach(function (it) { var bh = (it.lines.length - 1) * lh + size; plan.push({ it: it, x: right - w, y: y2, h: bh, ly: y2 + asc * 0.62 }); y2 += bh + sgap; });
         var cols = c.marks.filter(function (mk) { return mk.kind === 'bar' && mk.h > 0; });
@@ -153,7 +154,7 @@
         });
         if (bad) return false;
         plan.forEach(function (pl) {
-          pl.it.lines.forEach(function (l, k) { c.text(pl.x + w, pl.y + asc + k * lh, l, { role: 'label', weight: k ? 400 : 700, anchor: 'end', halo: true }); });
+          pl.it.lines.forEach(function (l, k) { c.text(pl.x + w, pl.y + asc + k * lh, l, { role: 'label', weight: k ? 400 : 700, anchor: 'end', halo: true, clear_edges: true }); });
           var cx = xc(pl.it.i), fy = ys(pl.it.v);
           c.line(right + 2, pl.ly, cx, pl.ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
           if (pl.ly - fy > 1) c.line(cx, pl.ly, cx, fy, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
@@ -205,7 +206,7 @@
         // no clear place: the words stay out of the drawing and the build says so; a spec hides them at this width (phone:
         // {hide: true}) and prints them in phone_notes, as S14's in-plot note does
         if (!pick) { c.warn('no clear place for the words of ' + nm.x + ' at ' + W + ' px; hide them here (phone: {hide: true}) and print them in phone_notes'); return; }
-        var boxes = lines.map(function (l, k) { return c.text(pick[0] + w / 2, pick[1] + asc + k * lh, l, { role: 'label', weight: k ? 400 : 700, anchor: 'middle', halo: true }); });
+        var boxes = lines.map(function (l, k) { return c.text(pick[0] + w / 2, pick[1] + asc + k * lh, l, { role: 'label', weight: k ? 400 : 700, anchor: 'middle', halo: true, clear_edges: true }); });
         var L = lead(pick[0], pick[1], pick[2], pick[3]);
         if (Math.abs(L.x1 - L.x2) + Math.abs(L.y1 - L.y2) > 4) c.line(L.x1, L.y1, L.x2, L.y2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
       });

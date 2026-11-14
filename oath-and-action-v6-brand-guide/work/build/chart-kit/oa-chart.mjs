@@ -1573,7 +1573,7 @@ async function self_test() {
   // onto the band's lower edge, they fail, halo or not
   {
     const s96 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8')), c96 = C.check_spec(K, s96, {});
-    s96.labels = Object.assign({}, s96.labels, { named_stack: true }); s96.scale = { y: [-300, 850] };
+    s96.labels = Object.assign({}, s96.labels, { named_stack: true }); s96.scale = { y: [-400, 850] };
     const d = K.draw(s96, c96.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(c96) });
     const name = [].concat((s96.labels.named[0] || {}).text || [])[0], t = d.texts.find((x) => x.words === name);
     const edge = (d.ink || []).filter((b) => b.band_edge).sort((a, b) => b.y - a.y)[0];
@@ -1583,7 +1583,9 @@ async function self_test() {
       const d2 = Object.assign({}, d, { texts: d.texts.map((x) => x === t ? Object.assign({}, x, { y: edge.y - x.h / 2, x: t.x }) : x) });
       caught = C.check_drawing(s96, d2, TOK.newsprint, 'self-test').some((x) => /band's edge runs through/.test(x));
     }
-    const ok = !!t && !!edge && clean && caught;
+    const feb = d.texts.find((x) => x.words === [].concat((s96.labels.named[1] || {}).text || [])[0]);
+    const stacked = !!t && !!feb && Math.abs((t.x + t.w) - (feb.x + feb.w)) < 0.5 && feb.y > t.y;
+    const ok = !!t && !!edge && clean && caught && stacked;
     console.log(`${ok ? 'pass' : 'FAIL'} S96's named words stacked clear of the band's edges at 720 px, and moved onto the lower edge (halo and all) the guard fails them`);
     if (!ok) bad++;
   }

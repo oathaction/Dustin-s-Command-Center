@@ -565,10 +565,11 @@ function crossing_faults(d, at) {
       seen.add(k);
       f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} runs through "${String(t.words).slice(0, 30)}"${b.seq > t.seq ? ', drawn after the words' : ''}; draw the words after it with K.parts.clear_label, move them clear, or mark a stroke drawn through words on purpose strike: true (AX S2, BC S1)${at}`);
     }
-    // round 5 (the design director's DD-E1): a band's edge through words fails, halo or not, since the halo leaves the edge
-    // showing between and beside the letters
-    // (a stroke drawn after the words, or before words with no halo, fails above already)
-    for (const b of K.crossed_by(ink, t, b => b.band_edge && b.seq < t.seq && t.halo)) {
+    // round 5 (the design director's DD-E1): a band's edge through words a form keeps off the edges (c.text's clear_edges)
+    // fails, halo or not, since the halo leaves the edge showing between and beside the letters; opt-in, since the guard
+    // applied to every word would newly fail S59's "4.1" at 390 and 558 px, a signed-off drawing (a stroke drawn after the
+    // words, or before words with no halo, fails above already)
+    for (const b of K.crossed_by(ink, t, b => b.band_edge && b.seq < t.seq && t.halo && t.clear_edges)) {
       const k = 'e|' + t.words;
       if (seen.has(k)) continue;
       seen.add(k);

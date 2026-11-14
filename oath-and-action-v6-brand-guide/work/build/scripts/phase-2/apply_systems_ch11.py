@@ -704,9 +704,12 @@ def s_steps(ctx):
            f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}'
            f'thead th{{{T("label")};color:{ctx.v("oa.color.text.secondary.onNewsprint")};border-bottom:2px solid '
            f'{ctx.v("oa.color.border.strong.onNewsprint")}}}'
-           f'tbody th{{{T("ui")};width:13rem}}th .n{{display:inline-block;min-width:1.4em;{T("h4")};'
+           f'tbody th{{{T("ui")};width:10rem;text-wrap:balance}}th .n{{display:block;{T("h4")};'
            f'font-variant-numeric:tabular-nums}}td{{max-width:34rem}}'
-           f'@container (max-width:30rem){{tbody th{{width:6.5rem;padding-right:12px}}th .n{{display:block}}}}.wr{{container-type:inline-size}}')
+           # DD-T1 (design director, round 5): one step-table grammar in chapter 11, as s_route_steps() sets it
+           f'@container (max-width:30rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid '
+           f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}tbody th,td{{display:block;width:auto;padding:0;border:0}}'
+           f'tbody th{{padding-bottom:4px}}th .n{{display:inline-block;min-width:1.4em}}}}.wr{{container-type:inline-size}}')
     html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th>'
             f'<th scope="col">What happens</th></tr></thead><tbody>{rows}</tbody></table></div>')
     alt = ('The six steps, with what happens at each. ' + ' '.join(
@@ -1835,7 +1838,7 @@ def build(ctx):
                          'from 99001 up, name no state, and label it Illustrative.'],
         },
         {
-            'id': '11.11', 'title': 'Follow a court case through six steps, and end a denied petition at step 5.',
+            'id': '11.11', 'title': f'Follow a court case through six steps, and end a{C.NBSP}denied{C.NBSP}petition at step 5.',
             'rule': ['A court case here is a federal civil case: one side, the plaintiff, sues another, the defendant, '
                      'under federal law, and the case can climb from the trial court through a court of appeals to the '
                      'Supreme Court. These steps follow '

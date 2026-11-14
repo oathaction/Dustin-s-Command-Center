@@ -4,7 +4,11 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the tr
 
 ## Status
 
-02:45 UTC. **Done, and ready for the data lead's batch 2 and the design director's read.** Rules 11.10 and 11.11 are built with every word and fact landed: the editor's words (02:16), the data lead's batch 1 (02:27: the Legislature's pass under slashes, ED5-3's "Affirmed"), the research lead's three source points and source line (02:30). After the captures, three small fixes: the court plate's key lists only the marks it uses; the step tables take the stage's role inks (their law lines vanished on Charcoal) and set each number over its name; "52 percent" holds together. Final strict build `guide8.html` (02:41): exit 0, 0 warnings, 369 rules, chapter 11 at 500,217 bytes. Final captures: 60 plus 30 at five widths on both grounds, 0 flagged, each read by eye. Open: the data lead's batch 2 words, the design director's read; I apply either on request.
+03:10 UTC. **The design director's three Shoulds are done (DD-T1 to DD-T3), on the file as the editor's trackers pass left it (02:49).** DD-T1: the bill's step table after Rule 11.1 (`s-11-steps`) now sets each number over its name in a 10rem column and stacks under 30rem, as the two new tables do; it is an approved plate, listed for board 3 below. DD-T2: met by the editor's 02:49 words, which already put 99010's count first ("The polls closed on November 3, and the count is unofficial ..."); no change from me. DD-T3: Rule 11.11's title holds "a denied petition" with no-break spaces, as 14.143's title holds "a variable". Two runs, the second changing nothing; only `11-icons.json` (the title), `s-11-menu.html` (the same title in the phone menu, two no-break spaces) and `s-11-steps.html` moved. Strict build `guide9.html` (03:01): exit 1 on two warnings, both chapter 14's `s-14-s96`, none of chapter 11's; 369 rules; chapter 11 at 500,801 bytes. `s-11-steps` captured at five widths on both grounds (03:08, load 3.92 to 6.32), 10, 0 flagged, read at 1440 and 360 on Newsprint.
+
+**For the accessibility lead:** no tracker's markup changed. Two things you may test: `s-11-steps` now hides its column heads under 30rem of plate width (`thead{display:none}`), as the two new step tables already do, so at a phone's width the table has no column heads in the accessibility tree and each row reads as its step heading then its words; and Rule 11.11's title now carries two no-break spaces, so its text is the same and only its line breaks change.
+
+**Board 3, changed approved drawings:** `s-11-steps` (Rule 11.1's extra, "The six steps"), layout only: number over name, a 10rem first column, stacked rows under 30rem. Its words, inks and markup are as approved.
 
 **For the systems designer (Rule 15.23): the trackers have landed, and their step names are final** (the editor kept all twelve):
 - **11.10, a state ballot measure (citizen initiative):** 1 Filed, 2 Title and summary, 3 Signatures, 4 Legislature (a slash where the initiative is direct), 5 On the ballot, 6 Vote (current until the count is certified).
@@ -134,6 +138,10 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 - D3-xxx | The two step tables take the stage's role inks and set each step's number over its name, stacking number and name over the words under 30rem | On Charcoal the law lines in Newsprint's secondary ink nearly vanished; a long name wrapped under its number at 1440 px; the narrow columns squeezed the words at 360 px
 - D3-xxx | "52 percent" holds together on the ballot failure plate | A figure stays with its unit at a line end, as `nb()` keeps "px" with its number
 
+- D3-xxx | The bill's step table (`s-11-steps`) takes the new tables' grammar: number over name, a 10rem first column, stacked under 30rem; its words, inks and markup stay | DD-T1: one step-table grammar in chapter 11; "Governor or President" no longer wraps back under its 6; only this plate moved (hashes)
+- D3-xxx | Rule 11.11's title holds "a denied petition" with no-break spaces | DD-T3: the article no longer ends a line at 1440 px; 14.143's title holds "a variable" the same way
+- D3-xxx | DD-T2 needs no change from me | The editor's 02:49 words already set 99010's count before the slash's reason
+
 ## Requests
 
 ### To the editor
@@ -179,6 +187,7 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 
 ## Not tested
 
+- Rule 11.11's title at 1440 px after DD-T3: built and checked in the text (two no-break spaces), not captured, since the load stood at 6.32 after the last capture.
 - A screen reader; forced colors; 200 percent text; Safari and Firefox.
 - The guide check (`guide_check.js`), quick or full: not run, to keep the browser load down; the strict build's cross-reference check proves every same-page link ("Rule 11.x" and `#rule-11-x`).
 - The chapter 11 plates I did not change, on Charcoal: on a Charcoal stage they now keep their numbers (the surface change), but only the six new plates were captured on Charcoal.
@@ -188,7 +197,7 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 ## Files
 
 Modified (none created outside these generators' outputs):
-- `work/build/scripts/phase-2/apply_systems_ch11.py`: R5-8; Rules 11.10 and 11.11, their four plates and two step tables; group 2, the intro and Rule 11.12's words; three source lines (the ballot measure, the court case, Executive Order 12866); the opt-in surface color. Its outputs: `work/build/guide/chapters/11-icons.json`, `work/build/guide/specimens/s-11-*.html` (new: `s-11-10-correct`, `s-11-10-failure`, `s-11-11-correct`, `s-11-11-failure`, `s-11-ballot-steps`, `s-11-court-steps`; renamed by R5-8: old `s-11-10-*` to `s-11-16-*` now `s-11-12-*` to `s-11-18-*`; 26 others rewritten for the surface color, no pixel moved on Newsprint), the `s-11-*` entries of `work/build/guide/specimens/manifest-systems.json`.
+- `work/build/scripts/phase-2/apply_systems_ch11.py`: R5-8; Rules 11.10 and 11.11, their four plates and two step tables; group 2, the intro and Rule 11.12's words; three source lines (the ballot measure, the court case, Executive Order 12866); the opt-in surface color. Its outputs: `work/build/guide/chapters/11-icons.json`, `work/build/guide/specimens/s-11-*.html` (new: `s-11-10-correct`, `s-11-10-failure`, `s-11-11-correct`, `s-11-11-failure`, `s-11-ballot-steps`, `s-11-court-steps`; renamed by R5-8: old `s-11-10-*` to `s-11-16-*` now `s-11-12-*` to `s-11-18-*`; 26 others rewritten for the surface color, no pixel moved on Newsprint); `s-11-steps` re-laid for DD-T1 (an approved plate, listed for board 3), the `s-11-*` entries of `work/build/guide/specimens/manifest-systems.json`.
 - `work/build/scripts/phase-2/apply_systems_ch11_ui.py`: R5-8 only (41 numbers, 26 IDs).
 - R5-8 string edits only: `work/build/scripts/phase-2/stage_a_systems_ch05.py` (with `work/build/guide/chapters/05-color.json`, the `s-05-3-corrective` manifest entry, and `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json`'s token set line, render date and tint count); `stage_b_ch12_systems_build.py` (with `12-graphic-devices.json` and the `s-12-*` manifest entries); `stage_c_ch17_build.py` (with `17-motion-and-states.json`); `stage_c_identity_ch17.py` (a code comment); `stage_c_ch19_build.py` (with `s-19-criteria.html`); `work/build/tokens/src/oa-tokens.src.mjs` (three strings; the rebuild is the engineer's).
 - `work/handoffs/phase-3/20261114_Round-5-Tracker-Designer-Notes.md` (this file).
