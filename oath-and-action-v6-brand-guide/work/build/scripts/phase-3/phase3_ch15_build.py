@@ -696,12 +696,14 @@ TAG_HALF = 8              # half a sign tag's height at 2 px (16 px tall; a red 
 ID_UP, ID_DOWN = 17, 16   # a two-row loop ID's ink above and below its middle: 15 px type, rows 18 px apart at -6 and +12
 
 
-def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets=(), shared=(), labels=None):
+def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets=(), shared=(), labels=None, steps_g=False):
     """A loop of four variables on a square, clockwise from the top left: step 1 arches over the top and step 3 under
     the bottom, as two_loop draws a two-variable loop; steps 2 and 4 run straight down the right and up the left, each on
     its pills' flat edges near their inner ends, with its words outside the loop, so the loop's ID sits clear between
     them. inside is (loop ID, kind); inside_rows sets words of a failure plate's own on two rows; targets and shared as
-    two_loop takes them; labels overrides the titles (a failure plate's own words). Returns (body, h)."""
+    two_loop takes them; labels overrides the titles (a failure plate's own words). Round 5: steps_g wraps each step (its
+    band, marks and words) in data-s and each pill in data-p, as three_loop does, for a stepper's drawing (Rule 14.143
+    imports it read-only); False, the default, draws every chapter 15 plate as before. Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
     (w0, w1, _), (w3, w2, _) = pair_w(labels[0], labels[1]), pair_w(labels[3], labels[2])
     pw = [w0, w1, w2, w3]
@@ -730,16 +732,17 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
         l = link(lid)
         tg = lid in targets
         m, _ = conn(pts, l["evidence"], l["polarity"], l["delay"], target=tg)
-        out.append(wr(m, tg))
         words = step_words(i + 1 if numbered else 0, lid)
-        out.append(verb_at(pts, l["polarity"], words, side, big=tg))
+        part = wr(m, tg) + verb_at(pts, l["polarity"], words, side, big=tg)
+        out.append(f'<g data-s="{i + 1}"><path class="bd" d="{BS.rounded_d(pts, BEND)}"/>{part}</g>' if steps_g else part)
         if side in ("left", "right"):
             x, ty, _, _ = anchor_at(pts, l["polarity"])
             tag_tops.append(ty - (TAG_HALF + 3 if tg else TAG_HALF))
             span = max(tw(w_, 600 if re.match(r"\d+ ", w_) else 400) for w_ in words) + (3 if tg else 0)
             need((x - 15 - span >= 2) if side == "left" else (x + 15 + span <= W - 2),
                  f"step {i + 1}'s words of a four-variable loop leave the {W} px artboard")
-    out.append(a.svg() + b.svg() + c.svg() + d.svg())
+    out.append("".join(f'<g data-p="{j}">{p_.svg()}</g>' for j, p_ in enumerate((a, b, c, d))) if steps_g
+               else a.svg() + b.svg() + c.svg() + d.svg())
     mid_x = (xl + xr) / 2
     room = xr - xl - 2 * 12
     # BC S16: the loop's two rows sit above the side steps' tags, centered in the room between the top row's pills and

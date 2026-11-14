@@ -6005,5 +6005,9 @@
   "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
   "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ],
- "planned_rules": []
+ "planned_rules": [
+  "14.142",
+  "14.143",
+  "14.144"
+ ]
 }

@@ -104,6 +104,13 @@
    "family_section": "3.16",
    "title": "Infographics: how does it work, in one look?",
    "rules": "14.135 to 14.141"
+  },
+  {
+   "group": 18,
+   "title": "Three charts in full",
+   "rules": "14.142 to 14.144",
+   "round": 5,
+   "note": "A working name; the printed title and line are the editor's, in 14-chapter.json's groups (before_rule 14.142)."
   }
  ],
  "chapter_rules": [
@@ -204,6 +211,53 @@
    "owner": "editor",
    "round": 1,
    "entry_file": "work/build/guide/entries/14-014.json"
+  },
+  {
+   "rule": "14.142",
+   "subject": "S14's monthly job change drawn in full, with its three-month average, its preliminary months and the survey's margin of error",
+   "owner": "complex examples maker",
+   "round": 5,
+   "group": 18,
+   "failure_required": false,
+   "spec_id": "S96",
+   "form_id": "columns-moving-average",
+   "dataset": "fred-payrolls-monthly-change",
+   "correct": "s-14-s96",
+   "failure": "s-14-142-failure",
+   "entry_file": "work/build/guide/entries/14-142.json",
+   "plates_note": "The correct plate is the kit's drawing of specs/s96.json, placed once; the generator writes its fragment s-14-s96.html (R1-C3). A failure plate, where drawn, is s-14-142-failure (a kit figure through s-14-142-failure.chart.json, C7, or static). S14 stays at Rule 14.29, untouched."
+  },
+  {
+   "rule": "14.143",
+   "subject": "Loops B4 and R10 stepped one connection at a time through the variable they share",
+   "owner": "complex examples maker",
+   "round": 5,
+   "group": 18,
+   "failure_required": false,
+   "spec_id": "S97",
+   "spec_use": "reserved",
+   "correct": "s-14-143-correct",
+   "failure": "s-14-143-failure",
+   "keys": "s-14-143-correct",
+   "live": "Rule 18.22's loop stepper, one copy (R4-5)",
+   "entry_file": "work/build/guide/entries/14-143.json",
+   "plates_note": "The fragment and its drawings are the complex examples maker's; the live part's markup follows the component engineer's contract and its keys file is the component engineer's. S97 is reserved for a kit figure inside the plate (data-oa-chart s-14-s97) and is unused unless the maker draws one."
+  },
+  {
+   "rule": "14.144",
+   "subject": "The three reforms that act on Loop R8 (R-06, R-30, R-38) compared by target, band, ordinal effects, grades and routes, with no summed score",
+   "owner": "complex examples maker",
+   "round": 5,
+   "group": 18,
+   "failure_required": false,
+   "spec_id": "S98",
+   "spec_use": "reserved",
+   "correct": "s-14-144-correct",
+   "failure": "s-14-144-failure",
+   "keys": "s-14-144-correct",
+   "live": "Rule 15.20's reform chooser, one copy (R4-5)",
+   "entry_file": "work/build/guide/entries/14-144.json",
+   "plates_note": "As Rule 14.143: the fragment is the complex examples maker's, the live part's markup contract and keys file the component engineer's; S98 is reserved as S97 is."
   }
  ],
  "forms": [
@@ -2309,5 +2363,29 @@
    "entry_file": "work/build/guide/entries/14-141.json"
   }
  ],
- "entries_note": "Each round 1 form has an entry file owned by its maker; chapter-wide rules have entry files 14-001 to 14-014 owned by the editor."
+ "entries_note": "Each round 1 form has an entry file owned by its maker; chapter-wide rules have entry files 14-001 to 14-014 owned by the editor.",
+ "extras": [
+  {
+   "specimen": "s-14-selection-guide",
+   "label": "Choose a chart",
+   "contents": true,
+   "round": 5,
+   "owner": "selection guide maker",
+   "generator": "work/build/scripts/phase-3/selection_guide_build.py",
+   "meta": "work/build/guide/specimens/s-14-selection-guide.meta.json",
+   "note": "No after_rule: it sits between the opener and group 1 (R5-2). Its symbols are s-14-sg-NN, NN the rule's number after the point."
+  },
+  {
+   "specimen": "s-14-palette-spec",
+   "after_rule": "14.5",
+   "label": "The data palettes, specified",
+   "contents": true,
+   "round": 5,
+   "owner": "engineer",
+   "generator": "work/build/scripts/phase-3/palette_spec_build.py",
+   "meta": "work/build/guide/specimens/s-14-palette-spec.meta.json",
+   "note": "Written from tokens.json by script, so a token release rewrites it (R5-3). The label is a working name; the editor's word in 14-chapter.json decides."
+  }
+ ],
+ "extras_note": "Round 5 (R5-1, R5-2, R5-3): reference plates placed as the chapter's extras, each with a line in its local contents. phase3_ch14_build.py reads these rows."
 }

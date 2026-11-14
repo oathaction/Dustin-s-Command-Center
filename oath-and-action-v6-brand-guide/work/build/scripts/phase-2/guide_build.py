@@ -822,7 +822,7 @@ def first_words(text, n=8):
     return " ".join(w[:n]).rstrip(",.;:") + ("…" if len(w) > n else "")
 
 
-def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, frame_ctx=None):
+def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, frame_ctx=None, contents=False):
     """One specimen in its frame. The frame, its label, size line and caption belong to the shell; the fragment is the
     maker's. Specimens do not count toward the page's red (D2-102), so the stage carries data-red="specimen".
 
@@ -1003,7 +1003,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     elif kind in ("correct", "failure", "corrective", "avoid", "sketch"):
         R.warn(where, f"{spec_id}: the {kind} specimen has no caption")
     fid = f' id="fig-{e(spec_id)}"' if spec_id else ""
-    return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}>'
+    # R5-2a (Phase 3 round 5): an extra with a line in the chapter's local contents carries data-oa-contents, so the shell
+    # can mark its line while a reader is in it
+    return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}{" data-oa-contents" if contents and spec_id else ""}>'
             + f'<div class="plate-head">{"".join(head)}</div>'
             + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}"'
             + (f' data-width="{width:g}" style="--w:{width:g}px' + (f';--w2:{wide:g}px" data-wide="{wide:g}"' if wide else '"') if isinstance(width, (int, float)) else "")
@@ -1902,9 +1904,19 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         if k and k not in known_rules:
             R.warn(where, f"an extra sits after rule {k}, which this chapter does not have")
     body = []
-    for x in extras_by.get("", []):
-        body.append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label")))
     toc = []
+
+    def extra_plate(x, rid=None):
+        """An extra in its frame; one with "contents": true (R5-2a, opt-in: 35 labeled extras in chapters 01 to 17 keep no line)
+        also takes a line in the local contents, its label linked to its figure, inside its rule's group where it has one."""
+        body.append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label"), contents=bool(x.get("contents"))))
+        if x.get("contents"):
+            if not x.get("specimen") or not str(x.get("label") or "").strip():
+                R.warn(where, f"an extra with a contents line needs a specimen and a label: {str(x)[:80]!r}")
+            else:
+                toc.append((f"fig-{x['specimen']}", f"Extra {rid}" if rid else "Extra", html.unescape(str(x["label"]))))
+    for x in extras_by.get("", []):
+        extra_plate(x)
     all_tokens, all_files, rule_related = [], [], []
     starts = {str(g["before_rule"]): g for g in groups}
     for r in rules:
@@ -1925,7 +1937,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         body.append(h)
         toc.append((anchor, f"Rule {rid}", title))
         for x in extras_by.get(rid, []):
-            body.append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label")))
+            extra_plate(x, rid)
         for t in r.get("tokens") or []:
             all_tokens.append((t, rid))
         for sp in r.get("specs") or []:
@@ -2058,8 +2070,12 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         # scripts off every group stays open.
         open_group = None
         for a, lbl, t in toc:
-            item = f'<li><a href="#{a}">' + (f'<span class="toc-rid">{e(lbl)}</span> ' if lbl else "") + f"{inline(t)}</a></li>"
-            if lbl == "group":
+            extra = bool(lbl) and (lbl == "Extra" or lbl.startswith("Extra "))
+            item = (f'<li class="toc-extra"><a href="#{a}">{e(t)}</a></li>' if extra else
+                    f'<li><a href="#{a}">' + (f'<span class="toc-rid">{e(lbl)}</span> ' if lbl else "") + f"{inline(t)}</a></li>")
+            if extra and open_group is not None and member.get(lbl[6:]) is not None:
+                items.append(item)
+            elif lbl == "group":
                 if open_group is not None:
                     items.append("</ul></li>")
                 items.append(f'<li class="toc-group"><a href="#{a}">{inline(t)}</a><ul class="toc-rules">')
@@ -4164,6 +4180,28 @@ def self_test():
           "html": ['<div class="sk-pair"><div class="sk-half sk-avoid"><p class="plate-dnp">'],
           "tests": [("the exempt half still draws its red, under the do-not-publish bar", lambda pg: re.search(
               r'data-specimen="s-14-124-sketch".*?<div class="sk-half sk-avoid"><p class="plate-dnp">.*?fill="#CC0000"', pg, re.S) is not None)]}),
+    ]
+    # R5-2a (Phase 3 round 5): an extra with "contents": true takes a line in the local contents, at the head of the list when
+    # it sits before the rules, inside its rule's group when it sits after one; an extra without it keeps no line, as today
+    ct_specs = {f"s-26-{k}.html": f"<p>A {k} plate, a fixture.</p>" for k in ("front", "mid", "plain")}
+    ct_man = {f"s-26-{k}": {"chapter": "26", "rule": None, "alt": f"A {k} plate that names what it shows, a fixture.", "notes": "fixture"} for k in ("front", "mid", "plain")}
+    ct = chapter("26", "tokens", "Tokens and how to choose them", [rule(f"26.{k}") for k in range(1, 5)],
+                 groups=[{"number": 1, "before_rule": "26.1", "title": "First", "line": "A fixture group."},
+                         {"number": 2, "before_rule": "26.3", "title": "Second", "line": "A fixture group."}],
+                 extras=[{"specimen": "s-26-front", "label": "Choose one", "caption": "A fixture.", "contents": True},
+                         {"specimen": "s-26-mid", "after_rule": "26.2", "label": "A reference plate", "caption": "A fixture.", "contents": True},
+                         {"specimen": "s-26-plain", "after_rule": "26.3", "label": "No line", "caption": "A fixture."}])
+    scenarios += [
+        ("round 5: a contents extra takes a line in the local contents, before the groups or inside its rule's group (R5-2a)",
+         {"26-tokens.json": ct}, {"specimens": ct_specs, "manifest": ct_man},
+         {"absent": ["an extra", "contents line"],
+          "html": ['<figure class="plate plate--extra" id="fig-s-26-front" data-oa-contents>', '<figure class="plate plate--extra" id="fig-s-26-plain">'],
+          "tests": [("the front extra's line opens the list, before group 1", lambda pg: re.search(
+                        r'<p class="local-toc-title" id="tokens-toc-t">In this chapter</p><ul aria-labelledby="tokens-toc-t"><li class="toc-extra"><a href="#fig-s-26-front">Choose one</a></li><li class="toc-group">', pg) is not None),
+                    ("the mid extra's line sits in group 1's list, after Rule 26.2", lambda pg: re.search(
+                        r'<span class="toc-rid">Rule 26\.2</span>[^<]*</a></li><li class="toc-extra"><a href="#fig-s-26-mid">A reference plate</a></li></ul></li><li class="toc-group">', pg) is not None),
+                    ("an extra without contents takes no line", lambda pg: 'href="#fig-s-26-plain"' not in pg),
+                    ("the plate sits where it did: the front extra before group 1's head", lambda pg: 0 <= pg.find('id="fig-s-26-front"') < pg.find('id="tokens-g-1"') if 'id="tokens-g-1"' in pg else 0 <= pg.find('id="fig-s-26-front"') < pg.find('data-group="1"'))]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

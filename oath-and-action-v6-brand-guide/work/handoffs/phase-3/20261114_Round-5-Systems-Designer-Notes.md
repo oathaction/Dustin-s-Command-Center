@@ -13,10 +13,19 @@ To come.
 
 ## Contracts
 
-To come: which drawing functions in `phase3_ch15_build.py` the complex examples maker may import read-only.
+### C-SD1. Drawing functions the complex examples maker may import, read-only (01:50 UTC)
+
+Load `work/build/scripts/phase-3/phase3_ch15_build.py` with `importlib.util.spec_from_file_location` and call these; never write its outputs, never call `main()`, `write()` or `chapter()`, and set `sys.dont_write_bytecode = True` before the load. Importing it runs only its `need()` checks on the model; it writes nothing.
+
+- **Loops:** `two_loop(codes, lids, ...)` (with `stacked_loop` behind it), `three_loop(codes, lids, ..., steps_g=False, lit=(), for_=None, only=None)`, `four_loop(codes, lids, ..., steps_g=False)`. Each returns the SVG body and its height (two_loop also the pills); wrap it with `svg_wrap(body, h)` for the 296 px artboard. Every title is the variable's own (DR-265).
+- **Parts:** `Pill`, `conn`, `step_words`, `verb_at`, `loop_id`, `read_aloud`, `short`, `gl` (a connection's chip with its grade word), `step_lines`, `label_for`, `ticks_line`, `stepper_steps(lid)` (Rule 18.22's step list for a loop).
+- **Styles:** the `CSS` dict's entries `sv`, `id`, `sn`, `rt`, `rp`, `sh` draw what these functions mark up; `dw` and `stepper_css(n)` draw a stepper's band (`.bd`) and its current step. Copy what you need into your own plate CSS; chapter 15's `plate_css` is scoped to chapter 15.
+- **`four_loop(..., steps_g=True)`** (added 01:50 UTC at the maker's request, its notes' Requests item 1): wraps each step (a `.bd` band path, its marks and its words) in `<g data-s="1">` to `"4"` and each pill in `<g data-p="0">` to `"3"`, as `three_loop` does for Rule 15.19, so Rule 14.143 can light Loop R10's current step. The default, `False`, draws every chapter 15 plate as before: after the change the generator ran clean, and the chapter file, the manifest and all 43 `s-15-*` plates hash the same as before it (checked with `sha1sum`), so `git diff` on my outputs shows nothing from it.
+- Signatures may grow keyword arguments with defaults that keep today's drawing; I will say so here first if one ever has to change.
 
 ## Routine calls
 
+- D3-xxx | `four_loop` takes `steps_g` as `three_loop` does, default False | The complex examples maker's request for Rule 14.143's stepper drawing of Loop R10 (one drawing function, R4-5); no chapter 15 plate changes, proved by hashes
 - D3-xxx | R5-8's map is applied in `phase3_ch15_build.py` by one regular-expression function over the source, never a chain of replaces | The tracker designer's contract; a chain would carry 11.14 on to 11.16 and then 11.18
 
 ## Requests

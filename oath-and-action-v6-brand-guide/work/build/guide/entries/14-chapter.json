@@ -136,6 +136,25 @@
    "title": "Infographics: how does it work, in one look?",
    "rules": "14.135 to 14.141",
    "line": "Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s finding into a feed."
+  },
+  {
+   "number": 18,
+   "before_rule": "14.142",
+   "title": "Three charts in full",
+   "rules": "14.142 to 14.144",
+   "line": "Each chart here puts several of the chapter’s forms and rules together on one subject, with its table and its files. They show the monthly change in payroll jobs with the survey’s margin of error, two loops from our systems atlas that share a variable, and three reforms that act on one housing loop."
+  }
+ ],
+ "extras": [
+  {
+   "specimen": "s-14-selection-guide",
+   "label": "Choose a chart",
+   "caption": "Every form in this chapter sits under the question it answers, and each name leads to its entry. Core forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid misleads, so its entry shows the form to use in its place."
+  },
+  {
+   "specimen": "s-14-palette-spec",
+   "label": "The four data palettes, step by step",
+   "caption": "Each of the four palettes appears with its job and its steps, and each step with its token name, its value and its contrast on every ground we approve it for. Gray and three color-blind simulations follow each palette, then the line code for evidence grades from Rule 13.4. The table in Rule 26.7 lists every token."
   }
  ],
  "related_chapters": [

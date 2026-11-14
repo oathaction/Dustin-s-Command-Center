@@ -1653,6 +1653,19 @@ def chapter(B, sources):
             "rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."],
         "basis": BASIS,
         "groups": groups,
+        # round 5 (R5-2a): the printed label and caption of each extra the plan places; phase3_ch14_build.py takes these
+        # over its generator's draft. Working words until the data lead's rulings (a) and (b) and the drafts land.
+        "extras": [
+            {"specimen": "s-14-selection-guide", "label": "Choose a chart",
+             "caption": ("Every form in this chapter sits under the question it answers, and each name leads to its entry. Core "
+                         "forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds "
+                         "show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid "
+                         "misleads, so its entry shows the form to use in its place.")},
+            {"specimen": "s-14-palette-spec", "label": "The four data palettes, step by step",
+             "caption": ("Each of the four palettes appears with its job and its steps, and each step with its token name, its "
+                         "value and its contrast on every ground we approve it for. Gray and three color-blind simulations follow "
+                         "each palette, then the line code for evidence grades from Rule 13.4. The table in Rule 26.7 lists every "
+                         "token.")}],
         "related_chapters": [
             {"chapter": "01", "reason": "Rules 01.1 to 01.3 on parties and two-way scales, and Rule 01.9’s limits on examples."},
             {"chapter": "05", "reason": "Rules 05.3, 05.5 and 05.7: the one working red, marks at 3 to 1 and the chart palette."},

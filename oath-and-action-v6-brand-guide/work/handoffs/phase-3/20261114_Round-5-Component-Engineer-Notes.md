@@ -9,6 +9,8 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the co
 - 01:45 UTC: my own R5-8 list by script: 26 matches of 11.10 to 11.16 in the files I own, every one a rule citation (below). I apply the map when the tracker designer posts it.
 - 01:47 UTC: **contracts CE-1 to CE-4 for complex examples 2 and 3 written as a DRAFT** for the complex examples maker. They hold for any order, IDs and words; the parts marked "(ruling d)" or "(R5-1)" fill in when the data lead's ruling (d), the engineer's plan rows and the accessibility lead's round 5 specification land.
 - 01:47 UTC: **R5-8 APPLIED in my files.** The tracker designer's list for me (16 lines in `stage_c_ch18_build.py`, 10 in the code sets and the shell) equals mine line for line. One function over the nine files, both generators rerun to write, a second run identical (77 files by MD5), `--check` "current". Each of my ten changed files equals its HEAD version with the map applied, byte for byte, so nothing else crossed. See "R5-8, applied" below.
+- 01:49 UTC: my key-pressing harness (`scratch/test_r5.js`) proven on 15.19 and 15.20 as built: 56 of 56 at 1440 and 390 px (under "Tested"). It walks each keys file with the guide check's own step reader.
+- 01:51 UTC: the engineer's R5-1 names the plates; contracts CE-1 to CE-4 SET for markup, hooks and keys, and the complex examples maker builds to them. Waiting on ruling (d), the accessibility lead's specification and the maker's first build.
 
 ## Summary
 
@@ -56,7 +58,7 @@ So any change after my R5-8 rerun is the map's alone.
 
 ## Contracts
 
-**Status: DRAFT (01:47 UTC).** For the complex examples maker, who builds the plates for Rules 14.143 and 14.144, and for the accessibility lead, whose round 5 specification governs where it adds to this. Round 4's C-1 (15.19 on Rule 18.22's code) and C-2 (15.20's status line in the shell) hold whole; this section says how they apply in chapter 14. Nothing here asks for a change to Rule 18.22's code, Rule 18.3's code or the shell.
+**Status: SET (01:51 UTC) for the markup, hooks and keys; the order of the walk, the reforms' order and the words wait on the data lead's ruling (d) and the accessibility lead's round 5 specification.** The complex examples maker builds to CE-1 and CE-2 (its notes, "Contracts", 01:50 UTC). The engineer's R5-1 (SET 01:58 by its notes) names the plates: `s-14-143-correct` and `s-14-143-failure` (Rule 14.143), `s-14-144-correct` and `s-14-144-failure` (Rule 14.144), with my keys files `s-14-143-correct.keys.json` and `s-14-144-correct.keys.json`; the entry's `correct` block sets `"interactive": true` and `"keys": true`. Written for the complex examples maker, who builds the plates for Rules 14.143 and 14.144, and for the accessibility lead, whose round 5 specification governs where it adds to this. Round 4's C-1 (15.19 on Rule 18.22's code) and C-2 (15.20's status line in the shell) hold whole; this section says how they apply in chapter 14. Nothing here asks for a change to Rule 18.22's code, Rule 18.3's code or the shell.
 
 ### CE-1. Complex example 2 (Rule 14.143) on Rule 18.22's stepper
 
@@ -66,7 +68,7 @@ So any change after my R5-8 rerun is the map's alone.
 - **Holds.** `data-oa-hold` = 250 ms a word of what the status line says for that step, "Step k of N:" included, never under 6,000 ms: `max(6000, 250 * len(f"Step {k} of {n}: {line} {more}".split()))`, whitespace collapsed and tags dropped. Checked against 15.19 as built (39, 51 and 61 words give 9,750, 12,750 and 15,250 ms). Re-time from the final words.
 - **Ready line.** `data-oa-ready` and the paragraph's text are the same words: "Ready. Start at the risk of losing office, and suppose it rises. Press Play, or Next step to follow one connection at a time." or the editor's version (ruling d names where the walk starts).
 - **What the script writes, which the plate's CSS may read** (C-1, unchanged): `data-oa-live` on the root once it runs; `data-oa-at` on the root, `"0"` at the ready line to `"N"` at the last step, on every change; `aria-current="step"` on the current step and `data-oa-ahead` on every step after it; `data-oa-playing` on Play while it plays; `aria-disabled="true"` with `aria-describedby` on a button that cannot act.
-- **The drawing follows `data-oa-at`.** Each connection's group in the SVG carries `data-s="k"` with k its place in the walk (1 to N), and each variable's pill `data-p` with a key the plate's CSS names; C3's pill is drawn once and lit by both loops' steps. The plate's CSS lights from `[data-oa-stepper][data-oa-at="k"]` (steps before k in ink, step k heavier on the selected band with its words bold, steps ahead muted at 3 to 1 or more, each line keeping its grade's dash), as `phase3_ch15_build.py`'s `stepper_css` does for one loop. No red.
+- **The drawing follows `data-oa-at`.** Each connection's group in the SVG carries `data-s="k"` with k its place in the walk (1 to N), and each variable's pill `data-p` with a key the plate's CSS names (the maker's: `B4-C3`, `R10-C3` and so on); Variable C3, drawn once or once in each loop, lights with every step that reaches it or leaves it. The plate's CSS lights from `[data-oa-stepper][data-oa-at="k"]` (steps before k in ink, step k heavier on the selected band with its words bold, steps ahead muted at 3 to 1 or more, each line keeping its grade's dash), as `phase3_ch15_build.py`'s `stepper_css` does for one loop. No red.
 - **Scripts off, print and reduced motion: the still sequence.** In the plate's CSS:
   - `[data-oa-stepper]:not([data-oa-live]) :is(.oa-stepper-controls,.oa-stepper-status,.oa-stepper-why){display:none}`;
   - every step numbered by a counter in `.oa-stepper-step::before`, never inside `.oa-stepper-line` (the script reads that line aloud); the numbers match the drawing's;
@@ -91,7 +93,7 @@ So any change after my R5-8 rerun is the map's alone.
 
 ### CE-4. What I need from the maker
 
-1. The specimen IDs and file paths when R5-1 names them, and a first build of each plate in the working tree or in scratch.
+1. A first build of `s-14-143-correct` and `s-14-144-correct` in the working tree or in scratch (the IDs are R5-1's).
 2. The words of every step, the ready line and each `[data-oa-say]` line as final, so the holds and keys match.
 3. A note in your "Contracts" that you build to CE-1 and CE-2, or the change you need. If the walk or the comparison needs something Rule 18.22's or 15.20's code cannot do as built, tell me first: I measure its reach over 18.22's stages, 15.19 and 15.20 (V25) and land it opt-in.
 
