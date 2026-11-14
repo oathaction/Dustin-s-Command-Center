@@ -522,5 +522,28 @@
   "alt": "Failure case: do not publish. Reform R-28, Taxing inherited gains and capital income, on Route FS, Federal statute, drawn on the path that needs 60 senators to end debate, with low feasibility and no source and no date.",
   "illustrative": false,
   "notes": "Labeled failure: the generic 60-vote path in place of the reconciliation the entry names, with no source and no check date."
+ },
+ "s-15-25-correct": {
+  "chapter": "15",
+  "rule": "15.25",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "The reconciliation of earlier atlas drawings to the model of October 15, 2026. Four counts: 2,644 comparisons with the model, rerun November 13, 2026; 2,642 match; 2 conflict, both in row 42; 57 rows, 45 from our first audit and 12 drawn for this edition. A table shows the four rows on a value, a sign, a grade and a delay, each with what the earlier page showed, what the model holds and what the guide does, with the rules where it does so. A disclosure holds all rows in order, grouped: a value, a sign, a grade, a delay, identifiers, structure, encoding, labels, and drawn for this edition.",
+  "illustrative": false,
+  "notes": "Rows, order, groups and rules from the research lead's data file; every model value read here from the model; the counts from the file's sidecar.",
+  "wide_px": 680,
+  "readable": true,
+  "interactive": true
+ },
+ "s-15-25-failure": {
+  "chapter": "15",
+  "rule": "15.25",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Connection L02, Political spending can tilt policy toward donors, labeled well supported and drawn as a solid line, with the fifth edition of our brand guide given as the source.",
+  "illustrative": false,
+  "notes": "Labeled failure: an earlier drawing cited as the evidence for a grade the model sets otherwise."
  }
 }

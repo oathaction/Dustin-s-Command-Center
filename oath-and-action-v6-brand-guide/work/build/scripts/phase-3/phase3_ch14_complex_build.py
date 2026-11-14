@@ -1013,6 +1013,13 @@ def check(entries, files, specs):
     ok("data-red" not in t and "emphasis-red" not in t, "14.143: red on a loop drawing with no reform")
     ok(sorted(set(re.findall(r'data-s="(\d)"', t))) == [str(i) for i in range(1, 8)], "14.143: the drawing's step groups 1 to 7")
     ok(not re.search(r"Electoral pressure(?! leads to actual defeats)", reader_text(t)), "14.143: the chain label prints as a name (DR-265)")
+    # the component engineer's 02:17 findings, held: B4's label claims no least certain step where all three are well
+    # supported; the list's number sits beside its loop label; the atlas's weakest-step claim is quoted where it holds
+    lab_b4 = reader_text(re.search(r'<div class="evr">.*?</div>', t).group(0))
+    ok("the grade of all three steps" in lab_b4 and "Connection" not in lab_b4, f"14.143: Loop B4's label: {lab_b4}")
+    ok(".oa-stepper-step .lpn{grid-row:1" in files["s-14-143-correct"], "14.143: the first step's label sits in its own row")
+    ok("weakest step for U.S. services, \u201csince its main study covers Brazilian mayors\u201d" in reader_text(t),
+       "14.143: the atlas's weakest-step claim for Loop B4")
     # 14.144: the chooser's markup as CE-2 lists it, and no total
     t = files["s-14-144-correct"].split("</style>", 1)[1]
     rt = reader_text(t)
@@ -1025,6 +1032,11 @@ def check(entries, files, specs):
     ok(rt.count("Not checked") == 8 and rt.count(f"Checked {SNAP}") == 1, "14.144: eight routes not checked, one dated")
     ok(len(re.findall(r'data-red="working"', t)) == 2, "14.144: two marks under data-red (L39 and A5)")
     ok("no expected effect" in rt, "14.144: a zero says what it means")
+    ok(re.search(r"<b class=\"cd\">[^<]+</b>,&#32;<span class=\"cw\">", t) is not None and "</b><span class=\"cw\">" not in t,
+       "14.144: a code runs into its words")
+    ok("grid-row:span 6;grid-template-rows:subgrid" in files["s-14-144-correct"], "14.144: the cards' rows would stack")
+    pr38 = reader_text(re.search(r'data-oa-print="R-38">.*?</p>', t).group(0))
+    ok("in red" not in pr38, f"14.144: R-38's print line says red: {pr38}")
     ft = reader_text(files["s-14-144-failure"])
     ok("Total score" in ft, "14.144's failure carries its fault")
     # 14.142: the spec's words against the data

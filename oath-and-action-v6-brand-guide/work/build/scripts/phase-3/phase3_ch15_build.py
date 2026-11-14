@@ -4320,8 +4320,8 @@ def recon_words():
     d6 = node("D6")
     return {
         42: ("Its Ledger counted the reforms that target " + dchip("D03") + " as 10 and " + dchip("D04") + " as 14.",
-             f"{m42[0][1]} live reforms target {chip('Domain', 'D03')} and {m42[1][1]} target {chip('Domain', 'D04')}; the "
-             f"counts of 10 and 14 take in {chip('Reform', 'R-35')}, which the atlas marks rejected.",
+             f"{m42[0][1]} live reforms target {dchip('D03')} and {m42[1][1]} target {dchip('D04')}; the counts of 10 and 14 "
+             f"take in {chip('Reform', 'R-35')} “{e(REFORM['R-35']['title'])}”, which the atlas marks rejected.",
              f"No chapter prints a count of reforms by domain, and {chip('Reform', 'R-35')} keeps the word Rejected wherever it appears."),
         19: ("Plus and minus signs taken off the map, with an arrowhead for raises and a bar for lowers.",
              f"Every causal connection stores a sign, {sign['+']} plus and {sign['-']} minus; the {len(auth)} authority "
@@ -4336,33 +4336,35 @@ def recon_words():
              "letters for size.",
              "A delay draws as one to three ticks with its words in a key, and an effect prints its full code, so no bare letter stands alone."),
         1: ("A placeholder connection ID, “L##”, in the grammar figure.",
-            f"No connection carries that ID; real ones do, such as {chip('Connection', 'L01')}, with a delay "
-            f"{DELAY[link('L01')['delay']][1]}.",
+            f"No connection carries that ID; real ones do, such as {chip('Connection', 'L01')} “{e(link('L01')['name'])}”, "
+            f"with a delay {DELAY[link('L01')['delay']][1]}.",
             "Every specimen names a real connection in its typed chip."),
         2: ("Standards numbered with an R and a digit, the form the atlas gives its loops, and a loop’s ID printed with no type word.",
-            f"{sum(1 for k in LOOP if k.startswith('R'))} loops carry R codes, from {chip('Loop', 'R1')} to {chip('Loop', 'R18')}.",
+            f"{sum(1 for k in LOOP if k.startswith('R'))} loops carry R codes, from {lq('R1')} to {lq('R18')}.",
             "The guide numbers its rules by chapter, as in Rule 13.9, and every atlas ID sits in a typed chip."),
-        3: (f"The ID of {chip('Loop', 'R1')} printed four times with no type word, on a page that also names {chip('Reform', 'R-01')}.",
+        3: (f"The ID of {chip('Loop', 'R1')} printed four times with no type word, on a page that also names "
+            f"{chip('Reform', 'R-01')} “{e(REFORM['R-01']['title'])}”.",
             f"{lq('R1')} and {chip('Reform', 'R-01')} “{e(REFORM['R-01']['title'])}” are separate records.",
             f"{chip('Loop', 'R1')} and {chip('Reform', 'R-01')} always print with their type words."),
         4: (f"A loop’s ID set in one row with the variables on its ring, so {chip('Variable', 'B4')} and {chip('Loop', 'B4')} read alike.",
             f"{vq('B4')} and {lq('B4')} are separate records.",
             "A loop takes its typed chip beside the drawing, apart from the variables on its ring."),
         5: ("Variable IDs, loop IDs and domain codes in one table, with no type words.",
-            f"Four codes name both a variable and a loop, {chip('Variable', 'B2')} and {chip('Loop', 'B2')} through "
-            f"{chip('Variable', 'B5')} and {chip('Loop', 'B5')}; seven variables run from {chip('Variable', 'D1')} to "
-            f"{chip('Variable', 'D7')}, and ten domains from {chip('Domain', 'D01')} to {chip('Domain', 'D10')}.",
+            f"Four codes each name both a variable and a loop, as {chip('Variable', 'B2')} and {chip('Loop', 'B2')} do. "
+            f"{words_n(sum(1 for k in NODE if re.fullmatch(r'D[0-9]', k))).capitalize()} variables carry a D and one digit, and "
+            f"{words_n(len(DOMAIN))} domains a D and two digits, from {chip('Domain', 'D01')} to {chip('Domain', 'D10')} in the "
+            "atlas’s list.",
             "Typed chips in every column: Variable, Loop and Domain."),
-        6: (f"{chip('Variable', 'B4')} and {chip('Loop', 'B4')}, and {chip('Variable', 'B5')} and {chip('Loop', 'B5')}, on one "
-            "sheet, told apart only by the name beside them.",
-            f"{vq('B5')} and {lq('B5')} are separate records, as are the two named B4.",
+        6: (f"A variable and a loop that share a code on one sheet, told apart only by the name beside them, as "
+            f"{chip('Variable', 'B4')} and {chip('Loop', 'B4')} were.",
+            f"{vq('B4')} and {lq('B4')} are separate records; so are {vq('B5')} and {lq('B5')}.",
             "Typed chips wherever both appear."),
         7: ("A variable’s code and a domain’s code side by side, with no type words.",
             f"{vq('D1')}; {dchip('D04')}.",
-            f"A domain prints with its type word, as {chip('Domain', 'D04')}, and a variable as {chip('Variable', 'D1')}."),
+            f"A domain prints with its type word, as {dchip('D04')} does, and a variable with its own, as {vq('D1')}."),
         8: ("Loop IDs printed bare on pages that also show reform IDs.",
-            f"{chip('Loop', 'R4a')}, {chip('Loop', 'R8')} and {chip('Loop', 'R10')} are loops; the {len(REFORM)} reforms run "
-            f"from {chip('Reform', 'R-01')} to {chip('Reform', 'R-50')}.",
+            f"{chip('Loop', 'R4a')} and {chip('Loop', 'R8')} are loops and {chip('Reform', 'R-01')} is a reform, each its own "
+            f"record; the atlas holds {len(REFORM)} reforms in all.",
             "Loop and Reform chips on every page that shows both."),
         9: (f"{chip('Variable', 'B1')} and {chip('Loop', 'B1a')} on one page.",
             f"{vq('B1')}; {lq('B1a')}.",
@@ -4378,9 +4380,9 @@ def recon_words():
              f"{chip('Reform', 'R-07')} and {chip('Reform', 'R-12')} pair a gain in the quality of democracy with a possible "
              "cost, and four reforms show a possible economic cost with no gain.",
              "Each outcome family keeps its own row with its full code, so a possible cost prints beside a gain."),
-        43: (f"Two counts for one domain: 27 and 19 connections for {chip('Domain', 'D02')}, 13 and 9 for {chip('Domain', 'D01')}.",
-             f"Both hold: {m43[0][1]} connections touch the variables of {chip('Domain', 'D02')} and {m43[0][2]} end at them; "
-             f"for {chip('Domain', 'D01')}, {m43[1][1]} and {m43[1][2]}.",
+        43: (f"Two counts for one domain: {chip('Domain', 'D02')} at 27 and 19 connections, {chip('Domain', 'D01')} at 13 and 9.",
+             f"Both hold: {m43[0][1]} connections touch the variables of {chip('Domain', 'D02')} and {m43[0][2]} end at them, "
+             f"and the same two counts for {chip('Domain', 'D01')} are {m43[1][1]} and {m43[1][2]}.",
              "No chapter prints these counts, and a count the guide prints says how it counts."),
         44: ("194 issues.",
              f"{len(iss)} issue records: {len(iss) - n_ret} active and {n_ret} retired.",
@@ -4393,12 +4395,12 @@ def recon_words():
              "The methods: a hypothesis “is drawn as a dotted line”.",
              "The atlas’s line code: solid for documented and well supported, dashes for plausible, dash and dot for "
              "contested, dots for a hypothesis, each with its grade word."),
-        12: (f"{chip('Connection', 'T01')}, the step that closes {chip('Loop', 'R16')}, in dashes.",
-             f"{chip('Connection', 'T01')} is a hypothesis, “{e(link('T01')['name'])}”, and {chip('Loop', 'R16')} closes through it.",
+        12: (f"{chip('Connection', 'T01')} drawn in long dashes as the step that closes {lq('R16')}.",
+             f"{chip('Connection', 'T01')} “{e(link('T01')['name'])}” is a hypothesis, and {chip('Loop', 'R16')} closes through it.",
              "A hypothesized step draws in dots, with its grade word."),
-        13: (f"{chip('Connection', 'L02')} drawn solid, like {chip('Connection', 'L01')} and {chip('Connection', 'L03')}.",
+        13: (f"{chip('Connection', 'L02')} drawn solid, as {chip('Connection', 'L01')} and {chip('Connection', 'L03')} are drawn.",
              f"{cq('L01')}; {cq('L02')}; {cq('L03')}.",
-             f"{chip('Connection', 'L02')} dashed, and named in words as the weakest step of {chip('Loop', 'R1')}."),
+             f"{chip('Connection', 'L02')} dashed, and named in words as the weakest step in {lq('R1')}."),
         14: (f"{chip('Connection', 'LE26')} drawn solid.",
              f"{chip('Connection', 'LE26')} is plausible: “{e(link('LE26')['name'])}”.",
              "Every connection takes its own grade’s line."),
@@ -4446,13 +4448,13 @@ def recon_words():
         31: ("About 45 short names written for the boards, such as “Wealth at the top”.",
              f"Each variable has one title, such as {vq('A1')}, and each loop’s chain holds a second, shorter label.",
              "One name per variable, its own title, in every drawing, loops included."),
-        32: (f"Two names for {chip('Variable', 'C2')}: “Primary decides the winner” and “Seats settled in the primary”.",
+        32: (f"{chip('Variable', 'C2')} under two names, “Primary decides the winner” and “Seats settled in the primary”.",
              f"{vq('C2')}.", f"{chip('Variable', 'C2')} prints its own title everywhere."),
         33: (f"{chip('Variable', 'D4')} as “Watchdogs and enforcement” and {chip('Variable', 'TC5')} as “Government digital teams”.",
              f"{vq('D4')}; {vq('TC5')}.", "Both print their own titles, which name a capacity."),
         34: (f"{chip('Variable', 'C5')} as “Incumbents defeated”.", f"{vq('C5')}.",
              f"{chip('Variable', 'C5')} prints its own title, retirement included."),
-        35: (f"Short names for loops, such as “Hostile content” for {chip('Loop', 'R3')}.", f"{lq('R3')}.",
+        35: (f"Short names for loops, such as {chip('Loop', 'R3')} as “Hostile content”.", f"{lq('R3')}.",
              "A loop prints its own title beside its chip."),
         36: ("“20 loops close fully”.",
              f"{closure['closed: every step is a numbered connection']} loops close with every step numbered, "
@@ -4460,8 +4462,8 @@ def recon_words():
              f"{closure['conceptual: no complete numbered chain']} are conceptual, with no complete numbered chain.",
              "Closure prints in the atlas’s words beside each loop’s grade."),
         37: ("Three connections said to carry policy “back into the economy”.",
-             f"{chip('Connection', 'L03')}, {chip('Connection', 'L31')} and {chip('Connection', 'L37')} run from "
-             f"{chip('Variable', 'E1')} to area A, “{e(reg_a)}”, inside the core layer; the economy layer is a separate part.",
+             f"{chip('Connection', 'L03')} and {chip('Connection', 'L31')} and {chip('Connection', 'L37')} run from "
+             f"{vq('E1')} into area A, “{e(reg_a)}”, inside the core layer; the economy layer is a separate part of the model.",
              "No chapter draws this; a drawing that does ends the three in area A, named by its title."),
         38: ("One ballot measure named in the atlas’s sentence on its position.",
              f"{chip('Reform', 'R-01')}’s summary names two measures, as of {SNAP}.",
@@ -4469,9 +4471,10 @@ def recon_words():
         39: ("“Numbers”, “Power over the rules” and “Goals and mindsets” on a depth gauge.",
              f"Six bands, from parameter to goals, with {bands['rules']} reforms in the rules band.",
              "A reform’s band prints in the atlas’s word with its definition."),
-        41: (f"“A federal tax-law route through reconciliation” for {chip('Reform', 'R-28')}, with no feasibility or date.",
-             f"{chip('Reform', 'R-28')} {chip('Route', 'FS')}: who acts, “{e(r28['who'])}”; {e(r28['feasibility'])} feasibility; "
-             "Not checked.",
+        41: (f"“A federal tax-law route through reconciliation”, with no feasibility or date, for {chip('Reform', 'R-28')} "
+             f"“{e(REFORM['R-28']['title'])}”.",
+             f"{chip('Reform', 'R-28')} on {chip('Route', 'FS')} names who acts as “{e(r28['who'])}”, with {e(r28['feasibility'])} "
+             "feasibility. Not checked.",
              "A route prints its code, name, who acts and feasibility, and “Not checked” where it has no date."),
         46: ("One grade scale spelled three ways across four kinds of record.",
              f"Connections: {grades['well-supported']} well-supported and {grades['plausible_contested']} plausible_contested; "
@@ -4481,7 +4484,7 @@ def recon_words():
              f"{grades['documented']} connections are documented and {grades['well-supported']} well supported.",
              "A documented connection’s grade word opens with the record square."),
         48: ("The drawing tool dashes a conceptual loop’s steps close to the plausible dash.",
-             f"Three loops are conceptual: {chip('Loop', 'B2')}, {chip('Loop', 'B3')} and {chip('Loop', 'R9')}.",
+             f"{chip('Loop', 'B2')} and {chip('Loop', 'B3')} and {chip('Loop', 'R9')} are the three conceptual loops.",
              "A conceptual step draws as a hollow line between thin pills."),
         49: ("Most route entries carry no check date.",
              f"{len(ents)} route entries: {n_dated} checked {SNAP}, {len(ents) - n_dated} with no date.",
@@ -4500,7 +4503,7 @@ def recon_words():
              "each with no numbered chain.",
              "Closure prints first and the grade second, with the words “no numbered chain”."),
         54: ("A reform lists a loop that does not list it back.",
-             f"{m54.group(1)} such pairs; {chip('Loop', 'R8')} lists {chip('Reform', 'R-30')}, while {chip('Reform', 'R-06')} "
+             f"{m54.group(1)} such pairs; {chip('Loop', 'R8')} lists {chip('Reform', 'R-30')} alone, while {chip('Reform', 'R-06')} "
              f"and {chip('Reform', 'R-38')} also name it.",
              "Open until the atlas makes the two lists agree; a plate that draws such a pair says so in words."),
         55: ("Statuses that name the November 3, 2026 ballot, which came after the snapshot.",
@@ -4510,7 +4513,7 @@ def recon_words():
              f"{len(ents)} route entries hold {who_n} different values, and some open with a verb.",
              "The entry’s words print as stored, with no “Who acts” label; a fix is proposed to the atlas."),
         57: ("The Article V route’s who-acts words read as if a convention could amend the Constitution alone.",
-             f"{chip('Route', 'AV')}, who acts: “{e(av)}”.",
+             f"{chip('Route', 'AV')} names who acts as “{e(av)}”.",
              "The route prints its stages from Article V beside the atlas’s words."),
     }
 
