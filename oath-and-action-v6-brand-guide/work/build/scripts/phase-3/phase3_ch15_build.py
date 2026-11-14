@@ -812,7 +812,7 @@ LAYOUT = (".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{
           ".wd .tri>.vc{margin:0;padding:0;border:0}"
           f".wd .two{{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:{GAP_PR}px}}"
           ".wd .fx.g3>:nth-child(1){grid-column:1;grid-row:1}.wd .fx.g3>:nth-child(2){grid-column:2;grid-row:1/span 2}"
-          ".wd .fx.g3>:nth-child(3){grid-column:1;grid-row:2}}}"
+          ".wd .fx.g3>:nth-child(3){grid-column:1;grid-row:2}}"      # closes the rule, then the container (round 5 fix)
           "@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr,.oa-stepper-controls,fieldset,.oa-choice-item,details)"
           ":not(.dnp){max-width:calc(100cqi - 32px)}}")
 CSS.update({
@@ -5200,6 +5200,34 @@ def check(data, book):
             fails.append(f"plate_css: a container query on {m.group(1)}, where the shell's container is oa-frame")
     if "—" in css or "‑" in css:
         fails.append("plate_css: an em dash or U+2011")
+    # round 5: the shell wraps this block in @scope (#systems-graphics [data-specimen]) { ... }, so a stray closing brace
+    # ends the scope early and every rule after it reaches every plate on the page. The braces must balance, and the depth
+    # never fall below zero, outside quoted strings; the same holds for any style a plate or key carries
+    def brace_fault(s_):
+        depth, q = 0, None
+        for i_, ch in enumerate(s_):
+            if q:
+                if ch == q and s_[i_ - 1] != "\\":
+                    q = None
+                continue
+            if ch in "\"'":
+                q = ch
+            elif ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth < 0:
+                    return f"a closing brace with no opening one at offset {i_}: …{s_[max(0, i_ - 60): i_ + 1]}"
+        return f"{depth} unclosed brace(s)" if depth else None
+    if brace_fault(css):
+        fails.append(f"plate_css: {brace_fault(css)}")
+    for k_, css_k in CSS.items():
+        if brace_fault(css_k):
+            fails.append(f"CSS[{k_!r}]: {brace_fault(css_k)}")
+    for sid, frag in book.files.items():
+        for st_ in re.findall(r"<style[^>]*>(.*?)</style>", frag, re.S):
+            if brace_fault(st_):
+                fails.append(f"{sid}: its style {brace_fault(st_)}")
     bare_css = re.sub(r"var\((?:[^()]|\([^()]*\))*\)", "", css)
     if re.search(r"(?<![\w&])#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(|\bhsla?\(", bare_css):
         fails.append("plate_css: a literal color")
