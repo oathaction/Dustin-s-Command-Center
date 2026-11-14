@@ -11,6 +11,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the co
 - 01:47 UTC: **R5-8 APPLIED in my files.** The tracker designer's list for me (16 lines in `stage_c_ch18_build.py`, 10 in the code sets and the shell) equals mine line for line. One function over the nine files, both generators rerun to write, a second run identical (77 files by MD5), `--check` "current". Each of my ten changed files equals its HEAD version with the map applied, byte for byte, so nothing else crossed. See "R5-8, applied" below.
 - 01:49 UTC: my key-pressing harness (`scratch/test_r5.js`) proven on 15.19 and 15.20 as built: 56 of 56 at 1440 and 390 px (under "Tested"). It walks each keys file with the guide check's own step reader.
 - 01:51 UTC: the engineer's R5-1 names the plates; contracts CE-1 to CE-4 SET for markup, hooks and keys, and the complex examples maker builds to them. Waiting on ruling (d), the accessibility lead's specification and the maker's first build.
+- 01:54 UTC: the engineer's request (R5-2a, low) LANDED in the shell: the local contents marks a labeled extra's line while a reader is in it (row S-1 under "Changed in the shell").
 
 ## Summary
 
@@ -97,17 +98,31 @@ So any change after my R5-8 rerun is the map's alone.
 2. The words of every step, the ready line and each `[data-oa-say]` line as final, so the holds and keys match.
 3. A note in your "Contracts" that you build to CE-1 and CE-2, or the change you need. If the walk or the comparison needs something Rule 18.22's or 15.20's code cannot do as built, tell me first: I measure its reach over 18.22's stages, 15.19 and 15.20 (V25) and land it opt-in.
 
+## Changed in the shell
+
+| # | Where | Before | After | Why | Reach (V25) |
+|---|---|---|---|---|---|
+| S-1 | `work/build/guide/shell/guide-shell.js`, `setRule` (and the file's header line) | The local contents marked the current `.rule` or `.closer` only | It reads `.rule, .closer, [data-oa-contents][id]`, so a labeled extra's figure (`id="fig-…"`, `data-oa-contents`, written by `guide_build.py` under R5-2a) takes the mark on its own line, `aria-current="true"`, while it is the last of them above the reading line | The engineer's request (R5-2a): "Choose a chart" and the palette specification's lines are marked while a reader is in them | No element on today's page carries `data-oa-contents` (0 on HEAD's strict build), so the list `setRule` reads is the same as before on every page until chapter 14's two extras land; nothing drawn changes. +261 bytes in the shell, comments included |
+
 ## Routine calls
 
 - D3-xxx | Chapter 18's generators are read for staleness on HEAD in a scratch copy before my first rerun, and found current | D3-1704; a stale generator could revert approved words
 - D3-xxx | Complex examples 2 and 3 reuse Rule 18.22's markup, script and CSS and the shell's chooser line as built, with no change to either; a two-loop walk is one stepper whose step list holds both loops' connections | The script counts every step inside its root, so a walk of any length and one or two lists needs no new code (R4-5, R5-4)
 
+- D3-xxx | The shell's current-rule marker reads `[data-oa-contents][id]` beside `.rule` and `.closer` | The engineer's R5-2a request; the selector needs the figure's id, since the line links to it, and touches no element on today's page
+
 ## Requests
+
+### From others, answered
+
+- **Engineer (R5-2a, low): mark the extras' lines in the local contents.** LANDED 01:54 UTC (row S-1).
 
 ## Tested
 
 - **Staleness on HEAD** (01:44 UTC): both chapter 18 generators current, as above.
 - **Strict build of HEAD to scratch** (`scratch/b0/`, 01:44 UTC): exit 0, 0 warnings, 11,501,823 bytes. The build rewrote `work/build/chart-kit/plate-share.json`'s `built` time only; I put back the copy I took just before.
 - **The hold formula** against 15.19 as built: three of three holds reproduced.
+
+- **S-1, the local contents mark** (`scratch/test_contents.js`, on `scratch/small/guide2.html`, chapters 14, 15 and 18 built with the new shell): with `data-oa-contents` set on a figure inside Rule 14.5's block and a line for it placed after 14.5's in the list, at 1440 and 390 px: the list marks `#rule-14-5` at that rule, the figure's own line at the figure, `#rule-14-6` at the next rule, one mark each time. Pass.
 
 ## Not tested

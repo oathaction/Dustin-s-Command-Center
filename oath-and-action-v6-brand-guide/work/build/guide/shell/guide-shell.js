@@ -12,7 +12,7 @@
 // Gate 2, November 11, 2026: a step of the "Where to start" page offers the way back to itself (D2-1698); the fix pass
 // snaps openers, the pillar row's icons and the colophon's lockmark onto whole device pixels.
 // Phase 3 round 4, November 13, 2026: print opens every closed disclosure (Rule 18.8); a reform chooser's status line
-// (Rule 15.20).
+// (Rule 15.20). Round 5, November 14, 2026: the local contents marks a labeled extra it lists (R5-2a).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -57,9 +57,10 @@
     railMore();
   }
 
-  // The current rule inside a chapter is marked in that chapter's "In this chapter" list.
+  // The current rule inside a chapter is marked in that chapter's "In this chapter" list. Phase 3 round 5 (R5-2a): so is a
+  // labeled extra the list names, a figure with data-oa-contents and its id, such as chapter 14's "Choose a chart".
   function setRule(chapter, line) {
-    var rules = chapter ? $$('.rule, .closer', chapter) : [];
+    var rules = chapter ? $$('.rule, .closer, [data-oa-contents][id]', chapter) : [];
     var cur = null;
     for (var i = 0; i < rules.length; i++) { if (rules[i].getBoundingClientRect().top <= line) cur = rules[i]; else break; }
     if (cur === currentRule) return;
