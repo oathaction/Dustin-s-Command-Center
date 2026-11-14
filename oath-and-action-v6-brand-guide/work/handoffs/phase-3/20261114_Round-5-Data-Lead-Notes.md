@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 04:32 UTC. **Batch 8: S96 signed off.** The 480 to 489 px gap is closed; acceptance over 1,002 drawings at every width from 288 to 720 px on both grounds, 0 problems. Open on Rules 14.142 and 14.143: batch 6's log correction only.
 - 04:19 UTC. **Batch 7:** S96 as now built confirmed on both scales (one scale from zero each, band at 122 thousand, condition 1 at 5.0 px or more, no gridline below zero, no line through a label, latest off, no red). Sent back for one gap: at containers 480 to 489 px neither the named words nor the phone note show.
 - 03:51 UTC. **Batch 6:** the selection guide signed off (0 faults against the plan, ruling (a) and A-1; the tier key true of every tier). One log correction sent for Rules 14.142 (logged twice) and 14.143 (B4 not logged); Rule 01.9 holds either way.
 - 03:31 UTC. **Batch 5:** S96 as rebuilt signed off by script (scale, band, condition 1 at every width, latest label off, phone note, no red, the table's margin words 2, 32 and 23); Rules 14.142 to 14.144 signed off whole. Stage 19's gloss ruled: "no longer applies" stands. Two gridline crossings on S96's labels passed to the design director, with a data-side fix offered.
@@ -308,7 +309,7 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 
 ### To the complex examples maker and the engineer (batch 7)
 
-- S96: close the 480 to 489 px gap, so the two named columns carry words, in the drawing or in the phone note under it, at every container width from 320 to 720 px (the form hides the words under 490 px; the kit shows the phone note at 479 px and under).
+- Closed at 04:32 UTC (batch 8). S96: close the 480 to 489 px gap, so the two named columns carry words, in the drawing or in the phone note under it, at every container width from 320 to 720 px (the form hides the words under 490 px; the kit shows the phone note at 479 px and under).
 
 ### To the complex examples maker and the engineer (batch 6)
 
@@ -337,6 +338,21 @@ DD-R1's desk rows and phone table match ruling (d)'s line-up: one family a row, 
 - Read (a). Tier word in each link's accessible name; the avoid word in text, never in the picture alone.
 
 ## Sign-offs
+
+### Batch 8 (04:32 UTC): S96 signed off (for the complex examples maker, the engineer and the main session)
+
+The engineer's fix closes batch 7's gap: the form now hides the named words and switches to the narrow scale under 480 px, exactly where the kit shows the phone note.
+
+My acceptance script (`s96_accept.mjs`, with `s96_accept_hi.mjs` for the widest drawings) ran the kit's Node drawings of `s96.json` as it now stands at every page width from 320 to 820 px on both grounds: 1,002 drawings at every whole drawing width from 288 to 720 px (433 distinct widths), 0 faults, 0 problems:
+- **Words or note at every width.** Both named columns' words are drawn on every drawing 480 px or wider (618) and on none narrower (384), where the kit's phone note names both. `s96_gap.mjs` places the switch between the 478 and 480 px drawings. The engineer saw it fall at exactly 480 px in Chromium; I did not run a browser.
+- **One scale from zero** in every drawing, with no column off it by more than rounding.
+- **The band** equals plus or minus 122 thousand on each drawing's own scale.
+- **Condition 1.** Both named columns end at least 5.00 px past the band at every width; 3 px was the bar.
+- **No tick or gridline below zero.**
+- **No red**, and **no latest label**.
+- **No line through a label's words.** By my estimate from type size, no gridline, leader, band edge or zero line crosses the named words, the margin's label or the average's note at any width.
+
+Batch 5's checks of the table's margin words (2, 32 and 23) and the phone note still hold, since neither changed. S96 and Rules 14.142 to 14.144 are signed off whole. The one item open on them is batch 6's log correction: Rule 14.142 logged once, Rule 14.143 logged twice.
 
 ### Batch 7 (04:19 UTC): S96 as now built: confirmed on both scales, with one gap to close (for the complex examples maker and the engineer)
 
@@ -592,6 +608,8 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 
 - Batch 7 (04:19 UTC): S96's Node drawings as now built, at 15 page widths on both grounds and every 2 px from 500 to 540 (`s96_confirm.mjs`, `s96_gap.mjs`, `s96_phone.mjs`): scale per drawing, band, how far each named column passes it, ticks and gridlines below zero, estimated label crossings, the named words drawn as text, the latest label, red; the form's 490 px threshold and the kit's 479 px phone-note query read in their source.
 
+- Batch 8 (04:32 UTC): S96's acceptance over 1,002 Node drawings, every drawing width from 288 to 720 px on both grounds (`s96_accept.mjs`, `s96_accept_hi.mjs`), and the 478 to 480 px switch (`s96_gap.mjs`).
+
 ## Not tested
 
 - No build of any round 5 item: none has landed. No kit build, capture or guide check of my own yet.
@@ -606,3 +624,4 @@ My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-
 - Batch 5: no capture of the rebuilt S96 or of 14.143 and 14.144 looked at; label crossings are estimated from type size, not measured in a browser; the court opinions not read by me.
 - Batch 6: the selection guide's pictures not looked at (no capture), so whether each reads as its form at a glance is the design director's read; the guide check's link test not run by me.
 - Batch 7: the 480 to 489 px gap is read from the source and the Node drawings, not seen in a browser at those container widths.
+- Batch 8: no browser run of S96 (the 480 px switch in Chromium is the engineer's test); label crossings estimated from type size.
