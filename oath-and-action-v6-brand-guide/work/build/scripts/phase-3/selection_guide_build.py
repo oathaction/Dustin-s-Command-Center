@@ -59,6 +59,14 @@ M1, M2, M3, M4 = "oac-f-mag-1", "oac-f-mag-2", "oac-f-mag-3", "oac-f-mag-4"
 SS, SC, SL, SG, ST = "oac-s-subject", "oac-s-context", "oac-s-light-fill", "oac-s-gridline", "oac-s-track"
 INKS = {FS, FC, FL, FG, FT, M1, M2, M3, M4, SS, SC, SL, SG, ST}
 TIER_ORDER = ["Core", "Extended", "Reference", "Avoid"]
+# What each tier means, once, at the guide's head (DD-G4), in the words of the editor's caption in 14-chapter.json; a key,
+# so phrases (chapter 02's scope note). The editor's words pass decides them.
+TIER_KEY = [
+    ("Core", "The forms we use most, each with a finished example"),
+    ("Extended", "For a story that needs one, with a finished example"),
+    ("Reference", "Drawn as a sketch, for a narrower job"),
+    ("Avoid", "A form that misleads; its entry shows the one to use in its place"),
+]
 
 
 def need(cond, msg):
@@ -534,7 +542,7 @@ def g21(m):  # Lollipop: a ranked list of thin stems with a dot at the value
 def g22(m):  # Grouped bar: two series side by side in each group
     a, b = [62, 76, 40], [48, 69, 55]
     ys = [5, 21, 37]
-    return (P(FS, rects([(6, y, w, 6) for y, w in zip(ys, a)])) + P(FC, rects([(6, y + 7, w, 6) for y, w in zip(ys, b)]))
+    return (P(FC, rects([(6, y, w, 6) for y, w in zip(ys, a)])) + P(FL, rects([(6, y + 7, w, 6) for y, w in zip(ys, b)]))
             + P(SS, "M5 3V53"))
 
 
@@ -587,7 +595,7 @@ def g27(m):  # Diverging bar: gains to one side of a center line, losses to the 
     vals = [34, 24, 13, -8, -19, -31]
     right = [(45, 6 + 8 * i, v, 6) for i, v in enumerate(vals) if v > 0]
     left = [(43 + v, 6 + 8 * i, -v, 6) for i, v in enumerate(vals) if v < 0]
-    return P(FS, rects(right)) + P(FC, rects(left)) + P(SS, "M44 3V53")
+    return P(FC, rects(right)) + P(FL, rects(left)) + P(SS, "M44 3V53")
 
 
 @glyph(28)
@@ -752,7 +760,7 @@ def g45(m):  # Streamgraph: layers stacked around a moving center (to avoid)
     mid1 = [(x, c(x) - t2(x) / 2) for x in xs]
     mid2 = [(x, c(x) + t2(x) / 2) for x in xs]
     bot = [(x, c(x) + t2(x) / 2 + t3(x)) for x in xs]
-    return P(FS, band(top, mid1)) + P(FL, band(mid1, mid2)) + P(FC, band(mid2, bot))
+    return P(FC, band(top, mid1)) + P(FG, band(mid1, mid2)) + P(FL, band(mid2, bot))
 
 
 # --- Composition: what is it made of? -----------------------------------------------------------------------------------
@@ -766,7 +774,7 @@ def g46(m):  # 100 percent bar: each bar the whole, split into its parts
         out_s.append((5, y, a, 8))
         out_c.append((5 + a + 2, y, b, 8))
         out_l.append((5 + a + b + 4, y, 79 - a - b - 4, 8))
-    return P(FS, rects(out_s)) + P(FC, rects(out_c)) + P(FL, rects(out_l))
+    return P(FC, rects(out_s)) + P(FL, rects(out_c)) + P(FG, rects(out_l))
 
 
 @glyph(47)
@@ -782,10 +790,9 @@ def g47(m):  # Stacked share bar with a midline: two shares a bar, and the line 
 
 @glyph(48)
 def g48(m):  # Waterfall: a start, the steps up and down, and the total
-    out = P(FS, rects([(6, 22, 9, 28), (73, 14, 9, 36)]))
-    out += P(FC, rects([(17, 14, 9, 8), (28, 10, 9, 4)]))
-    out += P(FL, rects([(39, 10, 9, 10), (50, 20, 9, 6)]))
-    out += P(FC, rects([(61, 14, 9, 12)]))
+    out = P(FC, rects([(6, 22, 9, 28), (73, 14, 9, 36)]))
+    out += P(FL, rects([(17, 14, 9, 8), (28, 10, 9, 4), (61, 14, 9, 12)]))
+    out += P(FG, rects([(39, 10, 9, 10), (50, 20, 9, 6)]))
     return out + BASE
 
 
@@ -797,7 +804,7 @@ def g49(m):  # Unit chart or waffle: one square a unit, a share of them filled
         for r in range(5):
             (on if k < 23 else off).append((5 + 8 * c, 8 + 8 * (4 - r), 6, 6))
             k += 1
-    return P(FS, rects(on)) + P(FL, rects(off))
+    return P(FC, rects(on)) + P(FG, rects(off))
 
 
 @glyph(50)
@@ -809,7 +816,7 @@ def g50(m):  # Stacked column: each column split into its parts
         a.append((x, 50 - h1, 8, h1))
         b.append((x, 50 - h1 - 2 - h2, 8, h2))
         c.append((x, 50 - h1 - h2 - 4 - h3, 8, h3))
-    return P(FS, rects(a)) + P(FC, rects(b)) + P(FL, rects(c)) + BASE
+    return P(FC, rects(a)) + P(FL, rects(b)) + P(FG, rects(c)) + BASE
 
 
 @glyph(51)
@@ -818,13 +825,13 @@ def g51(m):  # Stacked area: the parts' areas stacked up to the whole
     l1 = [(x, 50 - (10 + 6 * (x - 5) / 79 + 2 * math.sin(x / 9))) for x in xs]
     l2 = [(x, y - (8 + 5 * (x - 5) / 79 + 2 * math.cos(x / 11))) for x, y in l1]
     l3 = [(x, y - (6 + 8 * (x - 5) / 79)) for x, y in l2]
-    return (P(FS, area(l1, 50)) + P(FC, band(l2, l1)) + P(FL, band(l3, l2)) + BASE)
+    return (P(FC, area(l1, 50)) + P(FL, band(l2, l1)) + P(FG, band(l3, l2)) + BASE)
 
 
 @glyph(52)
 def g52(m):  # Treemap: one box a part, its area the amount
-    return (P(FS, rects([(5, 5, 40, 46)])) + P(FC, rects([(47, 5, 36, 20), (47, 27, 18, 24)]))
-            + P(FL, rects([(67, 27, 16, 11), (67, 40, 16, 11)])))
+    return (P(FC, rects([(5, 5, 40, 46)])) + P(FL, rects([(47, 5, 36, 20), (47, 27, 18, 24)]))
+            + P(FG, rects([(67, 27, 16, 11), (67, 40, 16, 11)])))
 
 
 @glyph(53)
@@ -838,7 +845,7 @@ def g53(m):  # Parliament chart: one dot a seat, in rows of a half circle
             seats.append((a, cx + r * math.cos(a), cy + r * math.sin(a)))
     seats.sort()
     cut = int(len(seats) * 0.54)
-    return P(FS, dots([(x, y) for a, x, y in seats[:cut]], 2.6)) + P(FC, dots([(x, y) for a, x, y in seats[cut:]], 2.6))
+    return P(FC, dots([(x, y) for a, x, y in seats[:cut]], 2.6)) + P(FL, dots([(x, y) for a, x, y in seats[cut:]], 2.6))
 
 
 @glyph(54)
@@ -847,8 +854,8 @@ def g54(m):  # Pie: a circle cut into a few parts of a whole
     a0 = -math.pi / 2
     s = [0.55, 0.30, 0.15]
     cuts = [a0, a0 + 2 * math.pi * s[0], a0 + 2 * math.pi * (s[0] + s[1]), a0 + 2 * math.pi]
-    return (P(FS, wedge(cx, cy, 0, r, cuts[0], cuts[1])) + P(FC, wedge(cx, cy, 0, r, cuts[1], cuts[2]))
-            + P(FL, wedge(cx, cy, 0, r, cuts[2], cuts[3])))
+    return (P(FC, wedge(cx, cy, 0, r, cuts[0], cuts[1])) + P(FL, wedge(cx, cy, 0, r, cuts[1], cuts[2]))
+            + P(FG, wedge(cx, cy, 0, r, cuts[2], cuts[3])))
 
 
 @glyph(55)
@@ -868,7 +875,7 @@ def g56(m):  # Marimekko: columns as wide as their group, each split into its pa
         h = 46 * s
         a.append((x, 51 - h, w, h))
         b.append((x, 5, w, 46 - h - 2))
-    return P(FS, rects(a)) + P(FL, rects(b))
+    return P(FC, rects(a)) + P(FG, rects(b))
 
 
 @glyph(57)
@@ -879,7 +886,7 @@ def g57(m):  # 3D pie or bar: a pie tilted, with a side (to avoid)
     side_d = line(side + [(x, y + dep) for x, y in reversed(side)], True)
     top_l = line([(cx, cy)] + [ell(math.pi / 2 + math.pi * i / 24) for i in range(25)] + [(cx, cy)], True)
     top_r = line([(cx, cy)] + [ell(-math.pi / 2 + math.pi * i / 24) for i in range(25)], True)
-    return P(FC, side_d) + P(FS, top_l) + P(FL, top_r)
+    return P(FL, side_d) + P(FC, top_l) + P(FG, top_r)
 
 
 # --- Distribution and density: how are the values spread? ---------------------------------------------------------------
@@ -928,8 +935,8 @@ def g61(m):  # Line histogram: the bins' tops drawn as one stepped line, two gro
 def g62(m):  # Population pyramid: two groups' bars back to back, youngest at the bottom
     left = [34, 32, 29, 26, 21, 15, 8]
     right = [33, 31, 29, 27, 23, 18, 11]
-    return (P(FS, rects([(43 - w, 45 - 6 * i, w, 5) for i, w in enumerate(left)]))
-            + P(FC, rects([(45, 45 - 6 * i, w, 5) for i, w in enumerate(right)])))
+    return (P(FC, rects([(43 - w, 45 - 6 * i, w, 5) for i, w in enumerate(left)]))
+            + P(FL, rects([(45, 45 - 6 * i, w, 5) for i, w in enumerate(right)])))
 
 
 @glyph(63)
@@ -1198,7 +1205,7 @@ def g84(m):  # Rose chart: wedges of equal angle whose lengths show the values (
 
 @glyph(85)
 def g85(m):  # Big number in context: one figure set large, its words, and a small comparison beside it
-    return (P(FS, rects([(5, 8, 34, 18)])) + textlines(5, 34, [32, 24, 28])
+    return (P(FS, rects([(5, 10, 28, 14)])) + textlines(5, 34, [32, 24, 28])
             + P(FT, rects([(48, 12, 36, 6), (48, 28, 36, 6)])) + P(FS, rects([(48, 12, 30, 6)])) + P(FC, rects([(48, 28, 21, 6)]))
             + textlines(48, 7, [12]) + textlines(48, 23, [12]))
 
@@ -1352,7 +1359,7 @@ def g102(m):  # Roll-call grid: one row a member, one square a vote, filled for 
     for r in range(6):
         for c in range(8):
             (yes if (pat[r] >> (7 - c)) & 1 else no).append((30 + 7 * c, 9 + 7 * r, 5, 5))
-    return P(FS, rects(yes)) + P(FL, rects(no)) + textlines(5, 11.5, [18, 14, 20, 16, 18, 12], 7)
+    return P(FC, rects(yes)) + P(FG, rects(no)) + textlines(5, 11.5, [18, 14, 20, 16, 18, 12], 7)
 
 
 @glyph(103)
@@ -1384,7 +1391,7 @@ def g105(m):  # Adjacency matrix: everyone in rows and in columns, a filled cell
             if r == c:
                 continue
             ((on) if (min(r, c), max(r, c)) in links else off).append(cell)
-    return P(FS, rects(on)) + P(FG, rects(off)) + textlines(8, 8.5, [20, 16, 22, 18, 14, 20], 8)
+    return P(FC, rects(on)) + P(FG, rects(off)) + textlines(8, 8.5, [20, 16, 22, 18, 14, 20], 8)
 
 
 @glyph(106)
@@ -1444,8 +1451,8 @@ def flow(x0, a0, a1, x1, b0, b1):
 @glyph(110)
 def g110(m):  # Sankey: amounts flowing from sources to uses, each band as wide as its amount
     out = P(FS, rects([(4, 6, 5, 24), (4, 34, 5, 16), (79, 4, 5, 14), (79, 22, 5, 16), (79, 42, 5, 10)]))
-    bands = flow(9, 6, 18, 79, 4, 16) + flow(9, 18, 30, 79, 22, 34) + flow(9, 34, 40, 79, 34, 38) + flow(9, 40, 50, 79, 42, 52)
-    return P(FL, bands) + out
+    bands = flow(9, 6, 18, 79, 4, 16) + flow(9, 34, 40, 79, 34, 38) + flow(9, 40, 50, 79, 42, 52)
+    return P(FG, bands) + P(FL, flow(9, 18, 30, 79, 22, 34)) + out
 
 
 @glyph(111)
@@ -1454,7 +1461,7 @@ def g111(m):  # Alluvial: groups at each stage, bands showing who moved between 
                        (80, 4, 4, 14), (80, 20, 4, 12), (80, 34, 4, 18)]))
     bands = (flow(8, 4, 16, 42, 4, 16) + flow(8, 16, 20, 42, 18, 22) + flow(8, 22, 36, 42, 22, 36) + flow(8, 38, 52, 42, 38, 52)
              + flow(46, 4, 16, 80, 4, 16) + flow(46, 18, 32, 80, 34, 48) + flow(46, 32, 36, 80, 20, 24) + flow(46, 38, 52, 80, 24, 32))
-    return P(FL, bands) + P(FC, flow(46, 18, 32, 80, 34, 48)) + out
+    return P(FG, bands) + P(FL, flow(46, 18, 32, 80, 34, 48)) + out
 
 
 @glyph(112)
@@ -1518,7 +1525,7 @@ def g116(m):  # Bubble map: a circle at each place, its area the count
 
 @glyph(117)
 def g117(m):  # Choropleth, sequential: each state shaded by its value, darker for more
-    return m.choropleth([M2, M3, M4, FS]) + m.land(ST)
+    return m.choropleth([FG, M2, M3, M4]) + m.land(ST)
 
 
 @glyph(118)
@@ -1551,7 +1558,7 @@ def g119(m):  # District map: one state's districts, each drawn whole, one picke
 
 @glyph(120)
 def g120(m):  # County choropleth: one state's counties, each shaded by its value
-    by, outline = sub_map(GEO_COUNTIES, "IA", (6, 6, 76, 44), [M2, M3, M4, FS], 0.4)
+    by, outline = sub_map(GEO_COUNTIES, "IA", (6, 6, 76, 44), [FG, M2, M3, M4], 0.4)
     return "".join(P(c, d) for c, d in by.items()) + P(ST, outline, ' stroke-linejoin="round"')
 
 
@@ -1651,11 +1658,11 @@ def g128(m):  # Sparkline table: one row an item, a small line of its history be
 
 @glyph(129)
 def g129(m):  # Heat table: a table whose cells are shaded by their values
-    by = {M2: [], M3: [], M4: [], FS: []}
+    by = {M1: [], M2: [], M3: [], M4: []}
     for r in range(5):
         for c in range(6):
             v = pattern(c * 13.0, r * 9.0, 1.1)
-            by[lerp_class(v, [M2, M3, M4, FS])].append((30 + 9 * c, 5 + 9.4 * r, 8, 8))
+            by[lerp_class(v, [M1, M2, M3, M4])].append((30 + 9 * c, 5 + 9.4 * r, 8, 8))
     return "".join(P(k, rects(v)) for k, v in by.items()) + textlines(4, 9, [20, 16, 22, 14, 18], 9.4)
 
 
@@ -1716,7 +1723,7 @@ def g135(m):  # Process explainer: how a public process runs, step by step acros
 def g136(m):  # By-the-numbers panel: a few figures set large, side by side, each with its words
     out = P(SG, "M30 4V52M58 4V52")
     for i, x in enumerate((4, 33, 61)):
-        out += P(FS, rects([(x, 8, 20 - 2 * (i % 2), 12)])) + textlines(x, 28, [22, 18, 20])
+        out += P(FS, rects([(x, 10, 16 - 2 * (i % 2), 9)])) + textlines(x, 28, [22, 18, 20])
     return out
 
 
@@ -1774,17 +1781,23 @@ CSS = (
     # the root follows the reader's colors in forced colors and paints its own ground (AX 1.10)
     ".sg{position:relative;forced-color-adjust:auto;background:var(--oa-color-surface);color:var(--oa-color-text-primary)}"
     ".sg-qs,.sg-fs{list-style:none;margin:0;padding:0}"
+    ".sg-key{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,13rem),1fr));gap:var(--oa-space-100) var(--oa-space-300);"
+    "margin:0 0 var(--oa-space-300);padding:0 0 var(--oa-space-300);border-bottom:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);"
+    "font:var(--oa-type-caption)}"
+    ".sg-key dt{font-weight:var(--oa-font-weight-semibold)}.sg-key dd{margin:0;color:var(--oa-color-text-secondary)}"
     ".sg-q{position:relative;padding:var(--oa-space-300) 0}"
-    ".sg-q:first-child{padding-top:0}.sg-q:last-child{padding-bottom:0}"
+    ".sg-q:last-child{padding-bottom:0}"
     ".sg-q+.sg-q{border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}"
     ".sg-qt{margin:0 0 var(--oa-space-200);font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);"
     "text-wrap:balance;max-width:34em;overflow-wrap:break-word;break-after:avoid}"
-    # tiles on one column grid in rem, so larger text takes fewer columns (AX 1.8)
-    ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,6rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
-    ".sg-fs>li{break-inside:avoid}"
-    ".sg-fs a{display:flex;flex-direction:column;align-items:flex-start;gap:var(--oa-space-050);min-height:44px;"
-    "color:inherit;text-decoration:none}"
-    ".sg-pic{display:block;flex:none;margin-bottom:var(--oa-space-100)}"
+    # tiles on one column grid in rem, so larger text takes fewer columns (AX 1.8); 7.25rem holds the widest unbroken
+    # word in any name ("Implementation", 113 px at the name's type), so no name breaks inside a word (DD-G1). Each tile
+    # takes three rows of its list's grid (picture, name, tier) by subgrid, so a row's tier words share one line (DD-G2)
+    ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,7.25rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
+    ".sg-fs>li{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;break-inside:avoid}"
+    ".sg-fs a{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:var(--oa-space-050);align-items:start;"
+    "justify-items:start;min-height:44px;color:inherit;text-decoration:none}"
+    ".sg-pic{display:block;margin-bottom:var(--oa-space-100)}"
     ".sg-n{font:var(--oa-type-ui);overflow-wrap:break-word;max-width:100%}"
     ".sg-t{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}"
     # the comma a screen reader pauses on between name and tier, out of sight in the line it ends; an absolutely placed
@@ -1872,8 +1885,9 @@ def build():
             f'<li class="sg-q" data-group="{n}"><p class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</p>'
             f'<a class="oa-link-skip sg-skip" href="{nxt}">Skip these {len(fs)} forms</a>'
             f'<ul class="sg-fs" role="list" aria-labelledby="s-14-sg-q-{n}">{"".join(items)}</ul></li>')
+    key = "".join(f"<div><dt>{e(t)}</dt><dd>{e(w)}</dd></div>" for t, w in TIER_KEY)
     body = (f'<div class="sg"><a class="oa-link-skip sg-skip" href="#group-14-1">Skip the chart guide</a>'
-            f'<ol class="sg-qs" role="list">{"".join(qs)}</ol></div>')
+            f'<dl class="sg-key">{key}</dl><ol class="sg-qs" role="list">{"".join(qs)}</ol></div>')
     head = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14, the selection guide. Selection guide maker, "
             f"{WRITTEN}. Written by work/build/scripts/phase-3/selection_guide_build.py from the plan file; do not edit by "
             f"hand: run the script, whose --check fails when this file and the plan disagree. -->\n")
@@ -1962,6 +1976,9 @@ def check(frag, by_group, printed):
     for svg in re.findall(r"<svg\b[^>]*>", frag):
         if 'aria-hidden="true"' not in svg or 'focusable="false"' not in svg:
             faults.append("an <svg> is not hidden from the accessibility tree")
+    for t, w in TIER_KEY:
+        if t not in TIER_ORDER or re.search(r"\u2014|\u2011|'", w):
+            faults.append(f"the tier key's line for {t} needs a look")
     for bad, why in ((r"<h[1-6]\b", "a heading"), (r"\sstyle=", "a style attribute"), (r"#[0-9a-fA-F]{3,6}\b(?![\w-])", "a literal color"),
                      ("—", "an em dash"), ("‑", "U+2011"), (r"<title\b", "a title"), (r"\stitle=", "a title attribute")):
         body = frag.split("</style>", 1)[1]

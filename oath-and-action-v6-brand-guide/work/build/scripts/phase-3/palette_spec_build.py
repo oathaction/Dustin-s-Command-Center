@@ -337,9 +337,11 @@ def palette_block(p):
            f'<code class="ps-tk">{dotted(p["label"].format(n=1))}</code> and on. In a form, name the role: '
            f'<code class="ps-tk">{p["code"]}-1</code> to <code class="ps-tk">{p["code"]}-{p["steps"]}</code>.'
            + (f" {e(carry)}" if carry else "") + "</p>")
+    # DD-P2 (the design director): the palette as a reader sees it on each ground first, its proofs' results, then the table and
+    # the token lines as the reference they are
     return (f'<div class="ps-pal" id="ps-{p["id"]}"><p class="ps-name">{e(p["name"])}</p><p class="ps-job">{e(p["job"])}</p>'
-            f'{table(p, m)}{tok}{extra}<div class="ps-gs">{ground_panel(p, "newsprint", m)}{ground_panel(p, "charcoal", m)}</div>'
-            f'{measures_words(p, m)}</div>')
+            f'<div class="ps-gs">{ground_panel(p, "newsprint", m)}{ground_panel(p, "charcoal", m)}</div>'
+            f'{measures_words(p, m)}{table(p, m)}{tok}{extra}</div>')
 
 
 def grade_line(key, w):
@@ -385,8 +387,9 @@ def grade_block():
     tokens = ", ".join(f'<code class="ps-tk">{dotted("oa.chart.grade." + k)}</code>' for k in GRADE_WORDS)
     return (f'<div class="ps-pal" id="ps-grade"><p class="ps-name">The grade line code</p><p class="ps-job">{e(GRADE_JOB)}</p>'
             f'<div class="ps-gs">{"".join(rows)}</div>'
-            f'<p class="ps-note">Tokens: {tokens}. Patterns: {e("; ".join(pats))}; each pattern stretches so the line starts and ends '
-            f'on ink. The record square before Documented is {sq:g} px, <code class="ps-tk">{dotted("oa.chart.grade.recordSquare")}</code>.</p></div>')
+            f'<ul class="ps-lines" role="list"><li><span class="ps-lk">Tokens</span> {tokens}</li>'
+            f'<li><span class="ps-lk">Patterns</span> {e("; ".join(pats))}; each pattern stretches so the line starts and ends on ink</li>'
+            f'<li><span class="ps-lk">Record square</span> {sq:g} px, before Documented, <code class="ps-tk">{dotted("oa.chart.grade.recordSquare")}</code></li></ul></div>')
 
 
 def prussian_line():
@@ -394,9 +397,9 @@ def prussian_line():
     rs = [contrast(hex_of(f"oa.color.palette.{k}"), GROUND["prussian"]) for _, k in inks]
     need(max(rs) < 3, "a group ink reaches 3 to 1 on Prussian; reread ruling b's Prussian line")
     lo, hi = min(rs), max(rs)
-    return (f'<p class="ps-note ps-pru">On Prussian: no chart draws on it. A chart in a Prussian panel sits on its own Newsprint '
+    return (f'<li><span class="ps-lk">On Prussian</span> No chart draws on it. A chart in a Prussian panel sits on its own Newsprint '
             f'or Charcoal plate, since the four group inks measure {ratio(lo).replace(" to 1", "")} to {ratio(hi)} on Prussian, under the 3 to 1 a mark '
-            f'needs, and red never sits on Prussian (Rule 05.3).</p>')
+            f'needs, and red never sits on Prussian (Rule 05.3).</li>')
 
 
 def filters():
@@ -419,17 +422,19 @@ def filters():
 
 STYLE = """
 .ps { font: var(--oa-type-body-small); color: var(--oa-color-text-primary); container-type: inline-size }
-.ps p { margin: 0 }
+:where(.ps) :where(p) { margin: 0 }
 .ps-defs { position: absolute; width: 0; height: 0; overflow: hidden }
-.ps-rel { font: var(--oa-type-caption); color: var(--oa-color-text-secondary); margin: 0 0 var(--oa-space-300) }
+.ps-rel { font: var(--oa-type-caption); color: var(--oa-color-text-secondary); margin: 0 0 var(--oa-space-400) }
 .ps-pal + .ps-pal { margin-top: var(--oa-space-600); padding-top: var(--oa-space-400); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
-.ps-name { font: var(--oa-type-ui); font-weight: var(--oa-font-weight-bold) }
+.ps-name { font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+.ps-pal + .ps-pal .ps-name { margin-top: var(--oa-space-300) }
 .ps-job { margin-top: var(--oa-space-100); max-width: 42em; text-wrap: pretty }
 .ps-note { margin-top: var(--oa-space-200); font: var(--oa-type-caption); color: var(--oa-color-text-secondary); max-width: 52em; text-wrap: pretty }
 .ps-tk { overflow-wrap: normal; word-break: normal; hyphens: manual }
 .ps-tw { margin-top: var(--oa-space-300) }
 .ps-t { border-collapse: collapse; width: 100%; table-layout: fixed }
-.ps-t caption { text-align: left; font: var(--oa-type-caption); color: var(--oa-color-text-secondary); padding-bottom: var(--oa-space-100) }
+/* DD-P1, DD-P3: the caption names the table for a screen reader; the name and job above say it to the eye */
+.ps-t caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 .ps-t thead th { font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; text-align: left;
   padding: var(--oa-space-100) var(--oa-space-200) var(--oa-space-100) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
 .ps-t tbody th, .ps-t td { text-align: left; vertical-align: top; padding: var(--oa-space-150) var(--oa-space-200) var(--oa-space-150) 0;
@@ -460,6 +465,9 @@ STYLE = """
   font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary); text-align: center }
 .ps-ms { margin: var(--oa-space-300) 0 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-150) }
 .ps-mg { font: var(--oa-type-caption); max-width: 52em; text-wrap: pretty }
+.ps-lines { margin: var(--oa-space-300) 0 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-100); font: var(--oa-type-caption); color: var(--oa-color-text-secondary); max-width: 52em }
+.ps-method { margin-top: var(--oa-space-600); padding-top: var(--oa-space-300); border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
+.ps-lk { font-weight: var(--oa-font-weight-bold); color: var(--oa-color-text-primary); margin-right: .4em }
 .ps-mg + .ps-mg { margin-top: var(--oa-space-050) }
 .ps-gls { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-150) }
 .ps-gls li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--oa-space-200); align-items: center; font: var(--oa-type-caption) }
@@ -485,14 +493,16 @@ STYLE = """
 
 
 def build():
-    method = ("Contrast is WCAG 2.2’s ratio, rounded down to two places, so no value rounds up across a bar: 4.5 to 1 for text and "
-              "3 to 1 for a mark. Lightness is OKLab’s, from 0 for black to 1 for white. The gray row runs each swatch through the "
-              "browser’s grayscale filter. The color-vision rows simulate protanopia (no red-sensing cones), deuteranopia (no "
-              "green-sensing cones) and tritanopia (no blue-sensing cones) by Machado, Oliveira and Fernandes (2009) at full strength, "
-              "which models full color blindness only; a color distance is the OKLab distance between two colors.")
+    method = [("Contrast", "WCAG 2.2’s ratio, rounded down to two places, so no value rounds up across a bar: 4.5 to 1 for text and 3 to 1 for a mark."),
+              ("Lightness", "OKLab’s, from 0 for black to 1 for white."),
+              ("Gray", "Each swatch through the browser’s grayscale filter."),
+              ("Color vision", "Protanopia (no red-sensing cones), deuteranopia (no green-sensing cones) and tritanopia (no blue-sensing cones), "
+               "simulated by Machado, Oliveira and Fernandes (2009) at full strength, which models full color blindness only; a color "
+               "distance is the OKLab distance between two colors.")]
     body = (f'<div class="ps"><p class="ps-rel">Tokens {e(RELEASE)}. Every value, ratio and lightness below is read from the token files by script.</p>'
-            f'{{DEFS}}{"".join(palette_block(p) for p in PALS)}{grade_block()}{prussian_line()}'
-            f'<p class="ps-note">{e(method)}</p></div>')
+            f'{{DEFS}}{"".join(palette_block(p) for p in PALS)}{grade_block()}'
+            f'<ul class="ps-lines ps-method" role="list">{prussian_line()}'
+            + "".join(f'<li><span class="ps-lk">{e(k)}</span> {e(v)}</li>' for k, v in method) + '</ul></div>')
     body = body.replace("{DEFS}", filters(), 1)
     frag = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14 (R5-3). Written by work/build/scripts/phase-3/palette_spec_build.py "
             f"from tokens {RELEASE}; never edit by hand. -->\n<style>{re.sub(r'[ ]*\\n[ ]*', ' ', STYLE.strip())}</style>\n{body}\n")

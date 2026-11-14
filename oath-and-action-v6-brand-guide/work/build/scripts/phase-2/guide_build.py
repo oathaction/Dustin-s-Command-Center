@@ -1906,10 +1906,17 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     body = []
     toc = []
 
+    head_extras = []
+
     def extra_plate(x, rid=None):
         """An extra in its frame; one with "contents": true (R5-2a, opt-in: 35 labeled extras in chapters 01 to 17 keep no line)
-        also takes a line in the local contents, its label linked to its figure, inside its rule's group where it has one."""
-        body.append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label"), contents=bool(x.get("contents"))))
+        also takes a line in the local contents, its label linked to its figure, inside its rule's group where it has one.
+        D3-1888 (the design director's DD-G5, opt-in): an extra with no after_rule and "placement": "head" stands in the chapter's
+        head, after the introduction and the opener and before the rule index, so a chapter's front door comes first."""
+        to_head = not rid and x.get("placement") == "head"
+        if x.get("placement") not in (None, "head") or (x.get("placement") == "head" and rid):
+            R.warn(where, f"an extra's placement is {x.get('placement')!r}; only \"head\" is known, for an extra with no after_rule")
+        (head_extras if to_head else body).append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label"), contents=bool(x.get("contents"))))
         if x.get("contents"):
             if not x.get("specimen") or not str(x.get("label") or "").strip():
                 R.warn(where, f"an extra with a contents line needs a specimen and a label: {str(x)[:80]!r}")
@@ -2062,7 +2069,7 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         index_html = (f'<div class="rule-index"><p class="label" id="{cid}-index-t">Rules in this chapter, by group</p>'
                       f'<ol class="ri-groups" aria-labelledby="{cid}-index-t">{"".join(lis)}</ol>{tail}</div>')
     if not placeholder:
-        out.append(head + intro_html + opener_html + index_html + "</div>")
+        out.append(head + intro_html + opener_html + "".join(head_extras) + index_html + "</div>")
     if toc:
         items = []
         # CD ST-S1, BC S19 (Phase 3 round 1 fix pass): in a chapter with groups, each group holds its own rules in a list
@@ -4188,7 +4195,7 @@ def self_test():
     ct = chapter("26", "tokens", "Tokens and how to choose them", [rule(f"26.{k}") for k in range(1, 5)],
                  groups=[{"number": 1, "before_rule": "26.1", "title": "First", "line": "A fixture group."},
                          {"number": 2, "before_rule": "26.3", "title": "Second", "line": "A fixture group."}],
-                 extras=[{"specimen": "s-26-front", "label": "Choose one", "caption": "A fixture.", "contents": True},
+                 extras=[{"specimen": "s-26-front", "label": "Choose one", "caption": "A fixture.", "contents": True, "placement": "head"},
                          {"specimen": "s-26-mid", "after_rule": "26.2", "label": "A reference plate", "caption": "A fixture.", "contents": True},
                          {"specimen": "s-26-plain", "after_rule": "26.3", "label": "No line", "caption": "A fixture."}])
     scenarios += [
@@ -4201,7 +4208,9 @@ def self_test():
                     ("the mid extra's line sits in group 1's list, after Rule 26.2", lambda pg: re.search(
                         r'<span class="toc-rid">Rule 26\.2</span>[^<]*</a></li><li class="toc-extra"><a href="#fig-s-26-mid">A reference plate</a></li></ul></li><li class="toc-group">', pg) is not None),
                     ("an extra without contents takes no line", lambda pg: 'href="#fig-s-26-plain"' not in pg),
-                    ("the plate sits where it did: the front extra before group 1's head", lambda pg: 0 <= pg.find('id="fig-s-26-front"') < pg.find('id="tokens-g-1"') if 'id="tokens-g-1"' in pg else 0 <= pg.find('id="fig-s-26-front"') < pg.find('data-group="1"'))]}),
+                    ("the plate sits where it did: the front extra before group 1's head", lambda pg: 0 <= pg.find('id="fig-s-26-front"') < pg.find('id="tokens-g-1"') if 'id="tokens-g-1"' in pg else 0 <= pg.find('id="fig-s-26-front"') < pg.find('data-group="1"')),
+                    ("D3-1888: a head extra stands in the chapter's head, after the introduction and before the rule index", lambda pg: 0 <= pg.find('<p class="intro') < pg.find('id="fig-s-26-front"') < pg.find('<div class="rule-index"') if '<p class="intro' in pg else 0 <= pg.find('id="fig-s-26-front"') < pg.find('<div class="rule-index"')),
+                    ("an extra after a rule stays in the chapter's body", lambda pg: pg.find('<div class="ch-body">') < pg.find('id="fig-s-26-mid"'))]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

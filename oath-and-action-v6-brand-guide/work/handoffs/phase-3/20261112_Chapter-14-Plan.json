@@ -2373,7 +2373,8 @@
    "owner": "selection guide maker",
    "generator": "work/build/scripts/phase-3/selection_guide_build.py",
    "meta": "work/build/guide/specimens/s-14-selection-guide.meta.json",
-   "note": "No after_rule: it sits between the opener and group 1 (R5-2). Its symbols are s-14-sg-NN, NN the rule's number after the point."
+   "note": "No after_rule: it sits between the opener and group 1 (R5-2). Its symbols are s-14-sg-NN, NN the rule's number after the point. D3-1888: it stands in the chapter's head, after the introduction and the opener, before the rule index (placement head).",
+   "placement": "head"
   },
   {
    "specimen": "s-14-palette-spec",

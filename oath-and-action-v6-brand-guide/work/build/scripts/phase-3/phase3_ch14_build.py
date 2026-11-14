@@ -150,6 +150,8 @@ def extras_out(plan, chap, rounds, ids, manifest, faults):
             item["after_rule"] = ar
         if x.get("contents"):
             item["contents"] = True
+        if x.get("placement"):
+            item["placement"] = x["placement"]   # D3-1888: "head" sets the front door before the rule index
         out.append(item)
         manifest[sid] = {"chapter": "14", "rule": ar or None, "alt": alt, "illustrative": bool(meta.get("illustrative")),
                          **{k: meta[k] for k in PLATE_META if k in meta and k != "illustrative"}}
