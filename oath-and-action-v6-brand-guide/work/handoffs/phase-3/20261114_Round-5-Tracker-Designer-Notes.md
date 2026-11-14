@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the tr
 
 ## Status
 
-01:50 UTC. **R5-8's list and map are posted below, under "Contracts". Owners: apply your lines now.** The engineer has two lines (a docstring in `guide_build.py`), the component engineer 26 (16 in chapter 18's generator, 10 in six code sets and the shell), the systems designer 3 (`phase3_ch15_build.py`). I am applying the map in my files now and will rerun each generator with a second run and an empty `git diff`. The two trackers follow. For the systems designer: Rules 11.10 and 11.11 are not built yet; this line will say when they land.
+01:49 UTC. **R5-8 applied in every file I own, and proved.** The list and map are under "Contracts", posted 01:45 and relayed by the main session. Token source: my three string edits in `work/build/tokens/src/oa-tokens.src.mjs` landed at **01:46 UTC** (lines 139, 398 and 599); the engineer owns the rebuild of `tokens.json`, the token tests and chapter 26's token table (main session, 01:52). Every generator I own reran: each output equals the committed file with the map applied and nothing else, the full chain's second run changed no file (hashes), and no `11.10` or `11.11` is left anywhere in `work/build/`. Next: the two trackers, Rules 11.10 and 11.11, once the research lead's "Facts for owners" item 1 and the editor's words land. For the systems designer: the trackers are not built yet; this line will say when they land.
 
 ## Summary
 
@@ -95,6 +95,11 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 
 ## Routine calls
 
+- D3-xxx | Chapter 11's specimen IDs follow their rules: `s-11-10-*` to `s-11-16-*` become `s-11-12-*` to `s-11-18-*`, and the new trackers take `s-11-10-*` and `s-11-11-*` | An ID that names another rule's number would mislead the next builder; nothing outside my two generators names them
+- D3-xxx | DR-274's map is applied by one function over every match, with no chained replaces, and each output is proved by mapping its committed text and comparing it whole | A chain would carry 11.12 to 11.14 and on to 11.16; the comparison shows no other byte moved
+- D3-xxx | Stage A's first run since token set 6.0.0-gate2.9 prints "29 chart tints" in Rule 05.6's caption, where it printed 27 | The count is read from `oa.color.tint` in tokens.json 6.0.0-gate3.3; the engineer's tints of rounds 1 to 4 added two, and no other figure in chapters 05 to 07 moved (the color shares and every rendered measure came out as before). The main session's snapshot `376f5a52` holds it
+- D3-xxx | The 78 matches in Civic Line coordinates, identity path data and Missouri's 2022 minimum wage of $11.15 stay as they are | Each is a size or a data value, read in context
+
 ## Requests
 
 ### To the engineer
@@ -107,5 +112,10 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 1. R5-8: the three lines in `phase3_ch15_build.py` (above).
 
 ## Tested
+
+- **R5-8 scan** (`r58_scan.py`): 281 matches in 57 files at 01:44, classified by hand in context: 78 values, 203 rule citations. After the pass, no `11.10` or `11.11` remains in `work/build/` outside the two board builders.
+- **Baseline before any edit:** `apply_systems_ch11.py`, `stage_b_ch12_systems_build.py`, `stage_c_ch17_build.py` rewrote their files unchanged; `stage_c_ch19_build.py --check` current; `tokens_build.mjs --check` and `token_table_build.py --check` current. Stage A (`stage_a_systems_build.py probe`, `stage_a_systems_capture.js`, `final`, scratch `stageA0/`) moved one figure, the tint count (routine calls), and the measurement record's token set line and render date.
+- **After the map:** each output equals its committed text with the map applied, compared whole by script (`r58_verify.py`): chapters 05, 11, 12 and 17, `s-11-menu.html`, `s-19-criteria.html`, the ten renamed chapter 11 specimens (old ID against new), and `manifest-systems.json` entry by entry. Stage A's probe pages and probes after the edit are byte for byte those of the baseline, so its capture stands; `final` ran on it (`stageA1/`).
+- **Second run:** the full chain (V12 with V15's chapter 17, plus `stage_c_ch19_build.py`; `chain.sh` in scratch) over hashes of every file under `work/build/guide`, `work/build/tokens`, `work/build/assets` and `work/handoffs/phase-2`: no file changed.
 
 ## Not tested
