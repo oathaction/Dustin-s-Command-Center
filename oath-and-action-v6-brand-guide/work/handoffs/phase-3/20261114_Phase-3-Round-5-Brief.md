@@ -2,7 +2,7 @@
 
 Oath & Action Edition 06, Phase 3, November 14, 2026. Written by the main session for round 5's owners, on round 4's model (`work/handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md`). Gate 2 approved the Phase 3 proposal (G2-01), whose section 9 sets this round. Dustin's answers through DR-271 hold. The studio's calls continue from D3-1868. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-**Status: draft, waiting on Dustin's go.** Four questions are open (Q5-1 to Q5-4 below), each with the studio's recommendation. Nothing in this brief is built before his reply.
+**Status: approved.** Dustin replied "GO AS RECOMMENDED" on November 14, 2026: the plan (DR-276) and the four questions as recommended (DR-272 to DR-275). The systems designer's work splits in two by file (D3-1877), so round 5 has eleven owners.
 
 ## The goal
 
@@ -12,11 +12,17 @@ Round 5 finishes chapters 14 and 15 and adds chapter 11's last two trackers. The
 2. **The palette specification sits after Rule 14.5**, which it serves, as a labeled reference plate: every data palette by job (sequential, diverging pair B, the four-ink groups with Stone hatched, magnitude), its tokens and values on each approved ground, contrast, grayscale and three color-vision proofs, written by script from the tokens so it cannot drift from them (DR-234, DR-236).
 3. **Three charts in full** close chapter 14 as a new group 18, Rules 14.142 to 14.144, the three complex examples Gate 2 approved: S14's monthly job change with its three-month average; Loops B4 and R10 stepped one connection at a time through the variable they share; and the three reforms that act on Loop R8 (R-06, R-30, R-38) compared by target, band, ordinal effects, grades and routes, with no summed score.
 4. **Rules 15.22 to 15.25 exist with their plates**: the federal statute drawn as its whole workflow through reversal (15.22); which stages sit behind each tracker's six steps (15.23); the 11 routes to change as a reference set, each with its official source and the date it was checked, an undated route printed as not checked (15.24); and the reconciliation table, all 2,644 comparisons rerun (DR-258), each conflict's model value, its resolution and where the guide applies it (15.25).
-5. **The ballot measure and court case trackers (DR-231)** join chapter 11 as six-step trackers under DR-108 and DR-150, placed as Q5-3 settles, with examples as Q5-4 settles.
+5. **The ballot measure and court case trackers (DR-231)** join chapter 11's group 2 as Rules 11.10 and 11.11 (DR-274), six-step trackers under DR-108 and DR-150 with invented items labeled Illustrative (DR-275). Today's Rules 11.10 to 11.16 become 11.12 to 11.18, every link fixed in one pass.
 6. **Carried items closed:** S95's second crop named by its size (the accessibility lead's low item); ED4-7, S92's sidecar source line.
 7. **Weight is reported, never a stop (DR-271).** The page stays one file under 16 MB, with the 15.5 MB projection as its early warning; every plate's bytes are reported; no form, word or picture is cut to meet a figure.
 
-## Questions for Dustin
+## Read first, every agent
+
+`CLAUDE.md`; your role file in `.claude/agents/` where you have one (the makers, the tracker designer and the systems designer read the role description in this brief); `work/ledger/20261111_Gate-2-Report.md` section 9; this brief, all of it; round 4's brief, `work/handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md`, whose calls and contracts R4-1 to R4-7 still hold where this brief does not replace them; the decision log from D3-1675 to the end, with DR-44 to DR-72, DR-93, DR-108, DR-124, DR-144, DR-150, DR-151, DR-195, DR-204 and DR-223 to DR-276 by search; chapter 02's writing rules, `work/handoffs/phase-2/20261106_Voice-Writing-Rules.md`, which bind every word; the engineer's contracts (the round 0 to round 4 engineer notes, "Contracts" and their fix pass sections) and the component engineer's round 4 notes; the data lead's round 4 notes, "Rulings" and every "Sign-off" section; the accessibility lead's round 4 "Interaction specification"; the plan file, `work/handoffs/phase-3/20261112_Chapter-14-Plan.json`; the coverage plan, `work/handoffs/phase-2/20261106_Data-Viz-Coverage-Plan.md`; for chapter 15 and the trackers, `work/research/20261111_Policy-Workflow-Sources.md`, `work/handoffs/phase-3/20261112_Round-1-Systems-Designer-Notes.md` (chapter 15's rule plan), `work/handoffs/phase-0/20261020_Atlas-Reconciliation-Table.md` and `work/research/20261113_Atlas-Recheck-Full-Table.md`. Then the files your task names. The container is set up: the atlas model is at `work/extract/atlas-v7-data.json`, and `npm` and `pip` packages are installed.
+
+## Dustin's answers to the four questions (DR-272 to DR-275)
+
+All four as recommended. The table keeps the questions as asked.
 
 | # | Question | Recommendation |
 |---|---|---|
@@ -27,6 +33,7 @@ Round 5 finishes chapters 14 and 15 and adds chapter 11's last two trackers. The
 
 ## Dustin's answers that shape this round
 
+- **DR-272 to DR-276.** The four answers above and the plan as posted.
 - **DR-271.** Allocations move as content needs; only the page's 16 MB is fixed, with the 15.5 MB projection as its early warning. Report each plate's bytes; never cut a form, word or picture to meet a figure.
 - **DR-231.** Ballot measure and court case trackers join chapter 11 as six-step trackers under DR-108 and DR-150, drawn by the systems designer and shown on board 3.
 - **DR-254.** The guide page offers no per-chart download; each chart's full data is one CSV in Phase 5's asset package, named through `{data_file}`. A complex example's exports are the kit's, checked row for row by the engineer, never a page button.
@@ -57,7 +64,8 @@ Round 4's brief's eight calls hold, with call 3 replaced by DR-271. Round 4 adde
 | Component engineer (`oa-engineer`, second instance) | The live parts of complex examples 2 and 3 on Rule 18.22's stepper and Rule 15.20's chooser, with their keys files; the shell; any tracker interaction | `work/build/guide/code/`, the shell, the keys files it writes | `work/handoffs/phase-3/20261114_Round-5-Component-Engineer-Notes.md` |
 | Selection guide maker, a general-purpose agent briefed as a senior information designer who draws reference systems | The selection guide: 127 small drawings of the forms in one style, the "Choose a chart" plate at every width, its words with the editor | `work/build/scripts/phase-3/selection_guide_build.py`, its specimen and symbol files | `work/handoffs/phase-3/20261114_Round-5-Selection-Guide-Notes.md` |
 | Complex examples maker, a general-purpose agent briefed as a senior graphics editor (as round 4's makers) | Rules 14.142 to 14.144 with their plates: S14 in full (a new kit spec from S14's frozen data); the drawings of Loops B4 and R10 for the stepper; the R8 reform comparison; the entries' words with the editor | Specs and entry files the plan file names for rules 14.142 to 14.144; `work/build/scripts/phase-3/maker_c_round5_derive.py` | `work/handoffs/phase-3/20261114_Round-5-Complex-Examples-Notes.md` |
-| Systems designer, a general-purpose agent briefed as the designer who drew chapters 11, 12 and 15's systems plates | The two new trackers in chapter 11 first (Q5-3, Q5-4), then Rules 15.22 to 15.25 with their plates | `work/build/guide/chapters/15-systems-graphics.json`; `phase3_ch15_build.py`; specimens `s-15-*`; `manifest-systems-graphics.json`; chapter 11's generators `apply_systems_ch11.py` and `apply_systems_ch11_ui.py` with their outputs; for Q5-3 (A), the renumbering pass across the generators that cite Rules 11.10 to 11.16 | `work/handoffs/phase-3/20261114_Round-5-Systems-Designer-Notes.md` |
+| Tracker designer, a general-purpose agent briefed as the designer who drew chapter 11's trackers and chapters 11, 12 and 15's systems plates | DR-274's renumbering pass first (R5-8), then the two new trackers, Rules 11.10 and 11.11, with their plates and group 2's line with the editor | Chapter 11's generators `apply_systems_ch11.py` and `apply_systems_ch11_ui.py` with their outputs (`11-icons.json`, `s-11-*`, `manifest-systems.json`); for R5-8 only, string edits in `stage_a_systems_ch05.py`, `stage_b_ch12_systems_build.py`, `stage_c_ch17_build.py`, `stage_c_identity_ch17.py`, `stage_c_ch19_build.py`, `civic_line_stage_b_drawings.py`, `token_table_build.py`'s inputs if they cite chapter 11, and the outputs those generators write | `work/handoffs/phase-3/20261114_Round-5-Tracker-Designer-Notes.md` |
+| Systems designer, a general-purpose agent briefed as the designer who drew chapter 15 | Rules 15.22 to 15.25 with their plates; R5-8's map in its own generator | `work/build/guide/chapters/15-systems-graphics.json`; `phase3_ch15_build.py`; specimens `s-15-*`; `manifest-systems-graphics.json` | `work/handoffs/phase-3/20261114_Round-5-Systems-Designer-Notes.md` |
 | Design director (`oa-design-director`) | One read of the selection guide's first drawings, the palette specification, the three complex examples and the trackers at 1440, 390 and 320 px on both grounds and in grayscale, at twice size; then one read of the fixes | Its notes file only | `work/handoffs/phase-3/20261114_Round-5-Design-Director-Notes.md` |
 | Accessibility lead (`oa-ux-accessibility-lead`) | The interaction specification first: the selection guide's 127 links and their skip path, complex examples 2 and 3 on the existing components, the trackers' words; then tests as built | Its notes file only | `work/handoffs/phase-3/20261114_Round-5-Accessibility-Notes.md` |
 | Editor (`oa-editor`) | The words pass on every round 5 item; group 18's line; chapter 14's and 15's intros where they name what the chapter holds; the trackers' step names and end words with the research lead | Entry files `14-001.json` to `14-014.json`, `14-chapter.json`, `phase3_ch14_rules_build.py`, the words it is handed by owners who have finished (D3-669) | `work/handoffs/phase-3/20261114_Round-5-Editor-Notes.md` |
@@ -81,6 +89,8 @@ If you need a change in a file another agent owns, write it under "Requests" in 
 
 **R5-6. The reconciliation table (15.25).** Phase 0's 45 rows of conflicts and ambiguities and the two value conflicts, each with the model's value, the resolution and the chapter and rule where the guide applies it, and new rows for what Phase 2 drew from V7; the 2,644 rerun stated with its date. No earlier drawing is cited as evidence for a V7 value. The full table may live behind a disclosure, with its counts on the plate.
 
+**R5-8. The chapter 11 number map (DR-274).** Old 11.10 becomes 11.12, 11.11 becomes 11.13, and so on to 11.16, which becomes 11.18; the new trackers take 11.10 (ballot measure) and 11.11 (court case). The tracker designer lists every match by script first (`11.10` to `11.16` followed by a non-digit), reads each in context so a size or a data value is never taken for a rule, writes the list under "Contracts" in its notes, then applies the map in the files it owns and sends each other owner its lines: the engineer (`guide_build.py`), the component engineer (`stage_c_ch18_build.py`, `stage_c_ch18_anatomy_build.py`, `work/build/guide/code/`), the systems designer (`phase3_ch15_build.py`). Every generator then reruns; a second run gives an empty `git diff`, a rescan finds no old number left in reader text, and the guide check proves every same-page link. The two board builders keep their numbers (D3-1878).
+
 **R5-7. The trackers.** Six steps each, under DR-108's marks and DR-150's slash; step names and end words from the law (ballot measures: the state's constitution and election office; court cases: Title 28 and the Supreme Court's rules), shown on board 3 for Dustin's approval as DR-108's were. A stopped item ends its line on a square; a decided or certified one says so in words.
 
 ## Each task in more detail
@@ -102,7 +112,9 @@ If you need a change in a file another agent owns, write it under "Requests" in 
 
 **Complex examples maker.** Build each example under R5-4 and the rulings, check every figure by script against its data, and look at every capture at 1440, 390, 296 and 256 px on both grounds and in grayscale.
 
-**Systems designer.** The trackers first, since 15.23 maps them: their plates, step names and end words from the research lead's sources, on chapter 11's marks. Then 15.22 to 15.25 on chapter 15's stage (true 296 px drawings, the 680 px composition and the 328 px column). For Q5-3 (A), list every file that cites Rules 11.10 to 11.16 by script first, then renumber in one pass and prove it with the guide check's same-page links.
+**Tracker designer.** R5-8 first, within your first hour, so the other owners apply the map before they rerun their generators. Then the two trackers, Rules 11.10 and 11.11, each with a correct and a failure plate and the extras chapter 11's trackers carry where they need them: three invented items labeled Illustrative per plate in different states, step names and end words from the research lead's sources, on chapter 11's marks. Group 2's title and line take in the new trackers with the editor's words. Report to the systems designer when the trackers land, since 15.23 maps them.
+
+**Systems designer.** Start with 15.22, 15.24 and 15.25, which need no tracker; 15.23 after the tracker designer reports. Rules 15.22 to 15.25 on chapter 15's stage (true 296 px drawings, the 680 px composition and the 328 px column). Apply R5-8's map in `phase3_ch15_build.py` when the tracker designer posts it.
 
 **Design director.** One read as drafts land, one read of the fixes. Hierarchy, rhythm, type on the scale, alignment, white space and what a reader sees first, on both grounds and in grayscale. The selection guide is the chapter's front door: it should read as one calm system at a glance.
 
@@ -110,21 +122,22 @@ If you need a change in a file another agent owns, write it under "Requests" in 
 
 **Editor.** The words pass as items land; group 18's line and title; the selection guide's and palette specification's labels and captions; the trackers' words with the research lead. Word passes never touch mark or ink keys.
 
-**Research lead.** "Facts for owners" first: for each of the 11 routes, its stages with sources and dates, and the gaps closed or named; the ballot measure and court case steps' sources; the reconciliation rows with their model values. Then ED4-7, the data check, and any V7.1 item as a proposed row for board 3. Keys: Congress.gov only, once Q5-1 allows it; never print or store a key.
+**Research lead.** "Facts for owners" first: for each of the 11 routes, its stages with sources and dates, and the gaps closed or named; the ballot measure and court case steps' sources; the reconciliation rows with their model values. Then ED4-7, the data check, and any V7.1 item as a proposed row for board 3. Keys: Congress.gov only (DR-272). When you first need it, tell the main session; it opens the secure form on this environment, and once the key is saved the proxy sends it for you (set any key variable to `proxy-injected`). Never print or store a key.
 
 ## Who works when
 
 1. On Dustin's go: the data lead (rulings first), the engineer (contracts first), the accessibility lead (its specification first), the research lead (facts first), the editor (group 18's line, then words as items land).
-2. When the contracts and rulings land: the selection guide maker, the complex examples maker, the component engineer and the systems designer (trackers first).
-3. When the trackers land: the systems designer builds 15.23, then 15.22, 15.24 and 15.25.
-4. When the first drafts land: the design director reads them.
-5. When each owner finishes: it rebuilds what it owns, runs its checks and reports.
-6. When all report: the main session runs the strict build, the kit's `build --all`, the V7 check, the data check and the quick guide check with photographs; commits; republishes the chapters page privately as version 11; writes handoff V26 for the review chat.
+2. At once, beside them: the tracker designer (R5-8's list and map first), the systems designer (15.22, 15.24 and 15.25 first).
+3. When the contracts and rulings land: the selection guide maker, the complex examples maker and the component engineer draw.
+4. When the trackers land: the systems designer builds 15.23.
+5. When the first drafts land: the design director reads them.
+6. When each owner finishes: it rebuilds what it owns, runs its checks and reports.
+7. When all report: the main session runs the strict build, the kit's `build --all`, the V7 check, the data check and the quick guide check with photographs; commits; republishes the chapters page privately as version 11; writes handoff V26 for the review chat.
 
 ## Checks every owner runs before reporting
 
 - Makers: `node work/build/chart-kit/oa-chart.mjs build sNN --out <scratch>/kit-out` for every spec touched, sweep on; captures at 1440, 390, 296 and 256 px looked at; `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`; a strict build of your own to scratch.
-- Systems designer: the chapter 15 and chapter 11 generators with their checks, a second run with a clean `git diff`, a strict build, captures at 1440, 1024, 768, 390 and 360 px on both grounds.
+- Tracker designer and systems designer: the generators you own with their checks, a second run with a clean `git diff`, a strict build, captures at 1440, 1024, 768, 390 and 360 px on both grounds.
 - Engineer: the kit's self-test and `build --all --no-png`, `guide_build.py --self-test`, the guide check's self-test where it changes, a strict build.
 - Research lead: the data check over the folder; the V7 check over chapter 15.
 - Accessibility lead, design director and data lead: each names what it looked at, at which widths.

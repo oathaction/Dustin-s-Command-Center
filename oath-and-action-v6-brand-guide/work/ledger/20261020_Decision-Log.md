@@ -6364,3 +6364,22 @@ Dustin, during round 4's build, after the main session raised the chart kit's pa
 | D3-1874 | The tracker plates follow chapter 11's other trackers until Dustin answers Q5-4: invented items labeled Illustrative, with step names and end words from the law and its source | DR-151 and Rules 11.8 and 11.9 set the pattern; a real example needs his word |
 | D3-1875 | Carried into round 5: S95's second crop named by its size (accessibility lead, low) and ED4-7 (S92's sidecar source line); carried to the review chat: DD-I18 (S94's year mark), the optional S16 chart note, and what round 4 could not test (screen readers, Safari, Firefox, 768 and 360 px for the cards) | V25 section 2B; the two small fixes belong with the owners who build this round |
 | D3-1876 | The quick guide check with photographs passed on a copy of the strict build at 1440 and 390 px (00:51 to 01:19 UTC): 360 rules, 713 specimens, 3,399 same-page links, 0 failures, exit 0; 146 key path walks and 766 steps; token table 545 rows at 6.0.0-gate3.3; load under 1.3 throughout | The second half of Dustin's ask; it matches D3-1865's figures |
+
+## Answers on the round 5 plan, November 14, 2026
+
+The main session posted the round 5 plan with four questions (Q5-1 to Q5-4). Dustin: "GO AS RECOMMENDED."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-272 | The studio opens the secure key form for api.congress.gov on this chat's environment, "Oath & Action", when the research lead first needs a bill's record; round 5 uses no FEC or Census data; later chats start on the environment that holds all three keys, or Dustin adds them to this one in its settings | Dustin, November 14, as recommended (Q5-1, D3-1869) |
+| DR-273 | Chapter 14's selection guide draws every one of the 127 forms as a small picture under its reader question, each a link to its entry with its tier, from one shared set of symbols | Dustin, November 14, as recommended (Q5-2) |
+| DR-274 | The ballot measure and court case trackers join chapter 11's group 2 as Rules 11.10 and 11.11, beside records requests and agency rules; today's Rules 11.10 to 11.16 become 11.12 to 11.18, with every link and citation fixed in one pass (D2-325's precedent) and a map of old to new numbers in the change ledger; past boards and the decision log keep the numbers they printed | Dustin, November 14, as recommended (Q5-3, option A) |
+| DR-275 | The two new trackers' plates use invented items labeled Illustrative, as Rules 11.8 and 11.9 do, with each step's name and end words taken from the law and its source cited | Dustin, November 14, as recommended (Q5-4) |
+| DR-276 | The round 5 plan is approved as posted (`work/handoffs/phase-3/20261114_Phase-3-Round-5-Brief.md`): the selection guide, the palette specification and three charts in full in chapter 14; Rules 15.22 to 15.25; the two trackers; the carried items; weight reported; the closing checks, the chapters page as version 11 and handoff V26 | Dustin, November 14: "GO AS RECOMMENDED" |
+
+### Main session, round 5 build
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1877 | The systems designer's work splits in two by file: a tracker designer owns chapter 11's generators, the two new trackers and DR-274's renumbering pass in the phase 2 generators no other owner holds this round; the systems designer owns chapter 15 and applies the number map in `phase3_ch15_build.py`; the engineer applies it in `guide_build.py` and the component engineer in chapter 18's generators and code sets. Eleven owners in all | DR-274's pass reaches about 22 files; one owner carrying it beside six new rules would hold up 15.23, which needs the trackers first; ownership by file kept round 4 free of collisions |
+| D3-1878 | The two board builders that print old chapter 11 numbers (`stage_b_board_b_build.py`, `stage_c_board_c_build.py`) are left as they are | They rebuild past boards, which keep the numbers they showed (DR-274) |
