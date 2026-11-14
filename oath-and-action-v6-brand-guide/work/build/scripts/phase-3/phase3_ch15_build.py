@@ -3822,7 +3822,7 @@ def fs_stages():
               "in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment.",
               [("Marbury v. Madison, 5 U.S. 137 (1803)", r["void"]),
                ("National Republican Senatorial Committee v. Federal Election Commission, No. 24-621", r["nrsc"])],
-              stop="The part the court holds void can no longer be enforced."),
+              stop="The part the court holds void no longer applies."),
         Stage(20, "af", "Repealed or changed", "Congress passes a later act that repeals or rewrites it.",
               [("Public Law 119-21, section 70104", r["rep"])], back="A repeal is a new act: back to stage 1."),
     ]
