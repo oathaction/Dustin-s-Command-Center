@@ -88,7 +88,12 @@ Rewritten from the generator's run of 02:20 UTC, after the editor's words pass 1
 - D3-xxx | S96 names its two drops past the margin "the two in the strongest ink", and the other columns "gray", in the reading guide, key note, phone note and alts | On Charcoal the subject ink is Newsprint, so "dark" would be untrue on one of the two grounds
 - D3-xxx | The design director's first read (02:42 UTC) applied: DD-C1 (14.143's status line, buttons and reason line under the drawings, in the markup, with the accessibility lead's yes), DD-R1 (14.144's eleven list rows, a family a row, each code whole at its line's start, aligned across the cards), DD-R3 (the key and the atlas's note above the cards), DD-R4 (the date once over the cards, the data lead's yes), DD-R6 (the failure table fits the 320 px frame), DD-C2 (Loop B4's drawing drops 96 px at 680 px so both filled C3 pills share a line, the offset read from the drawings), DD-C3 and DD-E5 (no-break holds), DD-E3 (S96's on-plot latest label dropped, the data lead's yes), DD-E6 (the failure's one-column note dropped) | The design director's Musts and Shoulds, each owner's yes where it named one
 - D3-xxx | 14.144 sets no separate phone table of codes before the cards (DD-R1's Should) | In the 296 px column a code cell is under 100 px, too narrow to hold "+M renter-owner" whole, and a table at desk widths would repeat every code the cards already align; the cards stack in the same row order, each family's code at the start of its own row
-- D3-xxx | DD-R2 (one width for the three choices) and DD-R5 (a keyline inside a chosen pill's red ring) wait for the systems designer, since they change Rule 15.20's own chooser and drawing CSS too | R4-5: one copy of each live component; both plates change or neither
+- D3-xxx | DD-R2 (one width for the three choices) and DD-R5 (a keyline inside a chosen pill's red ring) stay as Rule 15.20 draws them | The systems designer weighed both as preferences on Rule 15.20 and carried them to the review (main session, 02:47 UTC); R4-5's one copy means both plates change or neither
+
+## Carried to the review
+
+- **DD-R2** (the design director): the three choices in 14.144's chooser shrink to their labels, so their right edges step down; stretch them to one width. Rule 15.20's own chooser style, so both plates or neither (R4-5); the systems designer carried it to the review.
+- **DD-R5** (the design director): a chosen variable's 3 px red ring has no keyline and turns a lighter gray than an unchosen pill's ink in grayscale; give it the keyline the red connection has. Rule 15.20's drawing CSS too; carried to the review with DD-R2.
 
 ## Requests
 
