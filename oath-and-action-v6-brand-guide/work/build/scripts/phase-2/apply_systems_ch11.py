@@ -2026,12 +2026,20 @@ def build(ctx):
             'November 14, 2026. We read these four states as examples of a citizen initiative, and each state sets its '
             'own steps, deadlines and signature counts. The steps of a ballot measure and how one can end, behind Rule '
             '11.10.',
-            'Sources: 28 U.S.C. 1291, 1331, 2106 and 2107, via govinfo.gov, the 2024 edition of the U.S. Code; the '
-            'Federal Rules of Civil Procedure, as amended to December 1, 2025, and the Federal Rules of Appellate '
-            'Procedure, as amended to December 1, 2024, via uscourts.gov; and the Rules of the Supreme Court of the '
-            'United States, adopted February 17, 2026, effective March 16, 2026, via supremecourt.gov; all retrieved '
-            'November 14, 2026. The steps of a federal civil case, the time to appeal and the courts’ rulings, behind '
-            'Rule 11.11.',
+            # the data lead's source points 2 and 3 (batch 1, 02:27): every section the step table cites, the
+            # appeal of an injunction Rule 11.12 names, and the page that gives the tie vote; point 1 waits on the
+            # research lead
+            'Sources: 28 U.S.C. 1254, 1291, 1292, 1331, 2101, 2106 and 2107, via govinfo.gov, the 2024 edition of the '
+            'U.S. Code; the Federal Rules of Civil Procedure, as amended to December 1, 2025, and the Federal Rules of '
+            'Appellate Procedure, as amended to December 1, 2024, via uscourts.gov; the Rules of the Supreme Court of '
+            'the United States, adopted February 17, 2026, effective March 16, 2026, via supremecourt.gov; and U.S. '
+            'Courts, “Supreme Court Procedures”, no page date; all retrieved November 14, 2026. The steps of a federal '
+            'civil case, the time to appeal, the courts’ rulings and a tie in the Supreme Court, behind Rule 11.11, and '
+            'the appeal of an injunction, behind Rule 11.12.',
+            # Rule 11.12's draft rule at the White House (the editor's words, D3-1879), from the workflow sources file
+            'Source: Executive Order 12866 of September 30, 1993, section 6(b)(2), the National Archives’ copy, '
+            'retrieved November 12, 2026; later orders amended parts of it, and we did not trace them. The review of a '
+            'draft rule at the White House, behind Rule 11.12.',
         ],
     }
     return ch

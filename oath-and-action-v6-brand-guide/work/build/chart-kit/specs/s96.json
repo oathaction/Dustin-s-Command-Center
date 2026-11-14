@@ -25,7 +25,7 @@
  "illustrative": false,
  "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026 over a shaded band from minus to plus 122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all in 2025 and 2026. Two are dark and labeled, October 2025 at minus 140,000 and February 2026 at minus 156,000, and reach past the band; the other five end inside it. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
  "table": {
-  "caption": "Monthly change in payroll jobs and its three-month average",
+  "caption": "Monthly change in payroll jobs, January 2022 to September 2026, with the three-month average",
   "columns": [
    {
     "field": "month",

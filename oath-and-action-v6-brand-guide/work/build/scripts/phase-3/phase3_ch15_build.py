@@ -4134,7 +4134,7 @@ def rule_15_24(book):
     rr = wf_first("FS", "Senate: reconciliation", "limited to not more than 20 hours")
     one = (f'<div class="one"><p class="k">One reform’s route, read through its workflow</p>'
            f'<p class="hed">{chip("Reform", "R-28")}<span>“{e(r28["title"])}”</span></p>'
-           f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Who acts, in its entry: “{e(r28["routes"][0]["who"])}”. '
+           f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Its entry’s own words: “{e(r28["routes"][0]["who"])}”. '
            f'<b>{e(r28["routes"][0]["feasibility"].capitalize())}</b> feasibility. Not checked.</p>'
            f'<p>The entry names reconciliation, so the reform takes step 5 of Rule 15.22’s workflow: Senate debate held to '
            f'20 hours and a simple majority, in place of cloture’s 60 votes. Source: 2 U.S.C. 641, read '
@@ -4156,7 +4156,7 @@ def rule_15_24(book):
     book.add("s-15-24-correct", body, rule="15.24", readable=True, wide=True, interactive=True,
              alt=(f"The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of {SNAP}. "
                   f"First, one reform read through its workflow: Reform R-28, {r28['title']}, on Route FS by reconciliation, "
-                  "low feasibility, not checked, which takes step 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility "
+                  "its entry’s words “Reconciliation”, low feasibility, not checked, which takes step 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility "
                   "words and five dependency questions. Each card gives the route’s name, instrument, who acts, its stages, "
                   "its official sources with the date our research read them, what it depends on, and how many reform entries "
                   "name it, listed in a disclosure with each one’s check date or not checked. " + alt_cards),
@@ -4324,7 +4324,7 @@ def recon_words():
              f"take in {chip('Reform', 'R-35')} “{e(REFORM['R-35']['title'])}”, which the atlas marks rejected.",
              f"No chapter prints a count of reforms by domain, and {chip('Reform', 'R-35')} keeps the word Rejected wherever it appears."),
         19: ("Plus and minus signs taken off the map, with an arrowhead for raises and a bar for lowers.",
-             f"Every causal connection stores a sign, {sign['+']} plus and {sign['-']} minus; the {len(auth)} authority "
+             f"Every causal connection stores a sign, {sign['+']} plus and {sign['-']} minus; the {words_n(len(auth))} authority "
              "connections store none. Its glossary: “A positive sign does not mean a benefit.”",
              "Every causal connection prints its sign and the word raises or lowers, beside the atlas’s sentence on what a plus means."),
         40: (f"{chip('Connection', 'L54')} called “the weakest transfer to U.S. services”, as if its grade were lower.",
@@ -4473,8 +4473,8 @@ def recon_words():
              "A reform’s band prints in the atlas’s word with its definition."),
         41: (f"“A federal tax-law route through reconciliation”, with no feasibility or date, for {chip('Reform', 'R-28')} "
              f"“{e(REFORM['R-28']['title'])}”.",
-             f"{chip('Reform', 'R-28')} on {chip('Route', 'FS')} names who acts as “{e(r28['who'])}”, with {e(r28['feasibility'])} "
-             "feasibility. Not checked.",
+             f"{chip('Reform', 'R-28')} on {chip('Route', 'FS')} “{e(ROUTE['FS']['name'])}”, its entry’s words “{e(r28['who'])}”, "
+             f"with {e(r28['feasibility'])} feasibility. Not checked.",
              "A route prints its code, name, who acts and feasibility, and “Not checked” where it has no date."),
         46: ("One grade scale spelled three ways across four kinds of record.",
              f"Connections: {grades['well-supported']} well-supported and {grades['plausible_contested']} plausible_contested; "
@@ -4916,13 +4916,13 @@ CSS.update({
            ".xr .xt{font-weight:var(--oa-font-weight-semibold)}.xn{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
            ".xo{color:var(--oa-color-text-secondary);font-weight:var(--oa-font-weight-regular)}"
            ".xg{list-style:none;margin:4px 0 0;padding:0 0 0 20px}.xg li+li{margin-top:4px}"
-           ".xg li{position:relative}.xr:not(.xe) .xg li:not(:has(.wq))::before{content:\"\";position:absolute;left:-14px;top:.62em;"
+           ".xg li{position:relative}.xg li:not(:has(.wq))::before{content:\"\";position:absolute;left:-14px;top:.62em;"
            "width:6px;height:6px;border:1.5px solid var(--oa-color-graphic-essential)}"
            f".wq{{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 3px;margin-right:6px;background:{SUBJ};"
            "color:var(--oa-color-surface);font:var(--oa-type-data-label);font-weight:var(--oa-font-weight-bold);vertical-align:1px}"
            f".wq.wo{{background:var(--oa-color-surface);color:var(--oa-color-text-primary);border:var(--oa-chart-line-context) solid {CTX}}}"
            ".xg li:has(.wq){padding-left:0;margin-left:-20px}"
-           ".xw .sc{margin-top:8px}"
+           f".xw .sc{{{C13.CAP};color:var(--oa-color-text-secondary);margin-top:8px}}"
            "@container oa-frame (min-width:680px){.wd .xr{display:grid;grid-template-columns:184px minmax(0,1fr);column-gap:20px}"
            ".wd .xg{margin:0}}"),
 })
@@ -4964,19 +4964,24 @@ def chapter(book):
             {"before_rule": "15.19", "number": 4, "title": "Interaction",
              "line": "A control lets a reader move through what the atlas holds, one step or one reform at a time, and "
                      "offers nothing the atlas does not hold."},
-            {"before_rule": "15.22", "number": 5, "title": "Routes to change as workflows",
-             "line": "A route to change runs through stages, forks and ends to the act that can undo it, and each stage "
-                     "carries the law that sets it and the date we read it."},
-            {"before_rule": "15.25", "number": 6, "title": "Earlier drawings",
-             "line": "Every earlier drawing of the atlas is checked against the model, and the model is the only source "
-                     "for its values."},
+            {"before_rule": "15.22", "number": 5, "title": "Routes to change, stage by stage",
+             "line": "A reform can travel through eleven routes, from a city council to a constitutional amendment, and each "
+                     "route here carries its official source and the date we read it. The federal statute’s route is drawn "
+                     "whole, from a bill’s introduction to its repeal or expiry, and each tracker’s six steps are matched to "
+                     "the stages they fold together."},
+            {"before_rule": "15.25", "number": 6, "title": "Earlier drawings of the atlas",
+             "line": "Earlier drawings of the atlas record what we once showed, and the model holds the values. The table "
+                     "lists each place a drawing disagrees with the model or could be misread, with the model’s value, how we "
+                     "settled it and the rule where this guide applies the answer."},
         ],
         "rules": rules,
         "plate_css": plate_css(book.files),
         "extras": [],
         "related_chapters": [
             {"chapter": "10", "reason": "Rule 10.10, the atlas’s encoding glyphs and their measurements."},
-            {"chapter": "11", "reason": "Rule 11.16’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live."},
+            {"chapter": "11", "reason": "Rule 11.16’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live, and the "
+                                         "trackers of Rules 11.1 and 11.8 to 11.11, whose steps Rule 15.23 sets beside their "
+                                         "workflows."},
             {"chapter": "12", "reason": "Rule 12.5, the red target where a reform acts, and Rule 12.8, the stacked layers."},
             {"chapter": "13", "reason": "The grade words, the line code, delay, typed chips and dates every drawing here keeps."},
             {"chapter": "14", "reason": "Charts, where widths and areas carry measured amounts."},
@@ -4989,6 +4994,9 @@ def chapter(book):
              f"connections, the model’s conventions, boundary and limits, and the glossary), snapshot of {SNAP}, United States. "
              "Retrieved November 12, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot "
              "alone does not mean a fact was rechecked on that date."),
+            ("Sources for the routes to change: the constitutions, statutes, court rules and chamber rules each plate of "
+             "Rules 15.22 to 15.24 names, with the date we read each, November 11 to 14, 2026. The reconciliation of Rule 15.25: "
+             "our first audit of three earlier sets of pages, October 20, 2026, rerun November 13, 2026."),
         ],
     }
     return data

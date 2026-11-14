@@ -702,7 +702,7 @@ def rule_14_144():
     need(list(C13.EFFECT_WORDS) == order, "the atlas's effect codes changed")
     key = ('<ul class="ky8">' + "".join(f'<li><b>{e(c.replace("-", MINUS))}</b> {e(C13.EFFECT_WORDS[c])}</li>' for c in order)
            + "</ul>")
-    note = V7_NOTE = FACTS_NOTE()
+    note = FACTS_NOTE()
     body = (f'<div class="lv" data-oa-chooser>{group}' + C15.beside(left, right)
             + f'<p class="k kb">The three reforms side by side, as of {SNAP}</p>'
             + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>{key}'
@@ -878,7 +878,8 @@ def rule_14_142():
                 f"in 2025 and 2026. Two are dark and labeled, {mw(past[0])} at minus 140,000 and {mw(past[1])} at minus 156,000, "
                 "and reach past the band; the other five end inside it. A line shows the three-month average, which stood at "
                 f"51,000 in {mw(lat['month'])}, a preliminary figure."),
-        "table": s14["table"],
+        # its own caption, so a reader who lists the page's tables tells S96's from S14's (the accessibility lead's 4.4)
+        "table": dict(s14["table"], caption=f"Monthly change in payroll jobs, {f1['window_words']}, with the three-month average"),
         "chart_notes": [
             ("Key: each light column is the jobs added or lost in the month, and the two dark columns are the drops past the "
              "margin; hatched columns are preliminary, August and September 2026."),
@@ -923,6 +924,7 @@ def rule_14_142():
     fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide", "phone_notes")}
     fspec.update({
         "id": "s-14-142-failure",
+        "table": dict(s14["table"], caption=f"The same {f1['n']} months, with the three-month average, as this failure case draws them"),
         "title": "The economy lost jobs in seven months of 2025 and 2026.",
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
                          "with the three-month average."),
