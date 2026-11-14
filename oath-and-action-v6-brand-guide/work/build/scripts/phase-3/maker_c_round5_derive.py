@@ -317,7 +317,7 @@ const CSS = fs.readFileSync(path.join(ROOT, 'work/build/tokens/tokens.css'), 'ut
 const TOK = { newsprint: K.tokens_from_css(CSS, 'newsprint'), charcoal: K.tokens_from_css(CSS, 'charcoal') }; K.default_tokens = TOK;
 const spec = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8'));
 const rows = C.check_spec(K, spec, { grounds: ['newsprint'] }).rows;
-const out = { n: 0, worst: null, missing: [] };
+const out = { n: 0, worst: null, missing: [], grid: null, words: 0, below_zero: [] };
 for (const g of ['newsprint', 'charcoal']) for (let w = 224; w <= 720; w++) {
   const d = K.draw(spec, rows, { width: w, ground: g, tokens: TOK[g] });
   const edges = (d.ink || []).filter(m => m.band_edge).map(m => m.y);
@@ -327,6 +327,21 @@ for (const g of ['newsprint', 'charcoal']) for (let w = 224; w <= 720; w++) {
     out.n++;
     const past = b.y + b.h - lower;
     if (!out.worst || past < out.worst.px) out.worst = { px: past, w: w, g: g, key: String(b.data.key) };
+  }
+  // DD-E7: every word inside the plot (a named label, the average note, the band's words) 4 px or more from every
+  // gridline it shares columns with, haloed or not; and no gridline below zero
+  const grids = (d.ink || []).filter(m => m.kind === 'line' && m.stroke === 'gridline');
+  const ticks = (d.texts || []).filter(t => t.role === 'tick');
+  if (ticks.some(t => /^\u2212[\d,]+$/.test(t.words)) && out.below_zero.length < 3) out.below_zero.push(g + ' ' + w);
+  const axis = Math.max(...ticks.filter(t => /^\d{4}$/.test(t.words)).map(t => t.y));
+  const top = Math.min(...grids.map(m => m.y)) - 40;
+  for (const t of (d.texts || []).filter(t => t.role !== 'tick' && t.y > top && t.y < axis - 5)) {
+    out.words++;
+    for (const m of grids) {
+      if (m.x > t.x + t.w || m.x + m.w < t.x) continue;
+      const gap = m.y < t.y ? t.y - m.y : m.y > t.y + t.h ? m.y - (t.y + t.h) : -1;
+      if (!out.grid || gap < out.grid.px) out.grid = { px: +gap.toFixed(2), w: w, g: g, words: t.words };
+    }
   }
 }
 console.log(JSON.stringify(out));
@@ -358,6 +373,9 @@ def drawings():
     check('S96', not m['missing'], f'no two band edges at {m["missing"][:3]}')
     check('S96', m['n'] == 2 * 2 * (720 - 224 + 1), f'measured {m["n"]} columns, short of every width')
     check('S96', m['worst'] and m['worst']['px'] >= 3, f'a named column ends {m["worst"]} past the band, under 3 px')
+    # the design director's DD-E7: no gridline within 4 px of any word in the plot, and none below zero
+    check('S96', m['words'] > 0 and m['grid'] and m['grid']['px'] >= 4, f'a gridline within 4 px of words in the plot: {m["grid"]}')
+    check('S96', not m['below_zero'], f'a gridline below zero at {m["below_zero"]}')
     return m
 
 
@@ -368,7 +386,10 @@ def main():
         if m:
             w = m['worst']
             print(f'maker_c_round5_derive: S96 on its Node drawings: {m["n"]} named columns measured (224 to 720 px, both grounds); '
-                  f'the least past the band\'s lower edge {w["px"]:.2f} px ({w["key"]}, {w["w"]} px, {w["g"]})')
+                  f'the least past the band\'s lower edge {w["px"]:.2f} px ({w["key"]}, {w["w"]} px, {w["g"]}); '
+                  f'{m["words"]} word boxes in the plot, the least clear of a gridline {m["grid"]["px"]:.2f} px '
+                  f'("{m["grid"]["words"]}", {m["grid"]["w"]} px, {m["grid"]["g"]}); gridlines below zero at '
+                  f'{len(m["below_zero"]) and m["below_zero"] or "no width"}')
     if '--json' in sys.argv:
         print(json.dumps(f, indent=1, ensure_ascii=False))
     if '--figures' in sys.argv:
