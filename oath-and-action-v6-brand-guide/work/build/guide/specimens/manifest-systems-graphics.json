@@ -500,6 +500,28 @@
   "illustrative": false,
   "notes": "Labeled failure: the route ends at the signature, with no vetoes, money, rules, courts or repeal and no source."
  },
+ "s-15-23-correct": {
+  "chapter": "15",
+  "rule": "15.23",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Five of chapter 11’s trackers, each with its six steps beside the stages of its workflow. The bill tracker of Rule 11.1 beside Route FS: steps 1 to 3, Filed, Hearing, Committee vote, sit inside stage 1; step 4 holds stages 2 to 5; step 5 holds stages 6 and 7; step 6 holds stages 8 to 13; stages 14 to 19 come after step 6. The records request of Rule 11.8 beside the Freedom of Information Act: steps 2 to 5 share the agency’s 20 working days to decide, and mediation and a lawsuit come after step 6. The agency rule of Rule 11.9 beside federal rule making: step 1 has no stage in the law, White House review sits behind steps 2 and 5, and Congress’s disapproval and a court’s review come after step 6. The ballot measure of Rule 11.10 beside Route BI: step 4 holds three kinds of legislative stage and step 5 a court challenge. The court case of Rule 11.11 beside Route CRT: step 2 holds an appeal of an injunction, step 5 a direct appeal, and a later ruling that replaces doctrine comes after step 6.",
+  "illustrative": false,
+  "notes": "Step names read from chapter 11's file; stages from Rule 15.22's numbering, the research lead's data files and the workflow sources file, each held by script.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-23-failure": {
+  "chapter": "15",
+  "rule": "15.23",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. The bill tracker’s six steps paired one to one with the first six stages of Route FS: Filed with introduced, Hearing with passed by the first chamber, Committee vote with suspension of the rules, First chamber with cloture, Second chamber with reconciliation, and President with passed by the second chamber.",
+  "illustrative": false,
+  "notes": "Labeled failure: steps and stages paired by number."
+ },
  "s-15-24-correct": {
   "chapter": "15",
   "rule": "15.24",

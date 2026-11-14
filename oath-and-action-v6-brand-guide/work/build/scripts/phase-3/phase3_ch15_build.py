@@ -4702,7 +4702,7 @@ def tracker_steps(rid):
     """A chapter 11 tracker's six step names, from its "Steps" spec ("1 Filed, 2 Hearing, ..."), in order."""
     r = next((x for x in CH11["rules"] if x["id"] == rid), None)
     need(r is not None, f"chapter 11 has no Rule {rid}")
-    spec = next(s["value"] for s in r["specs"] if s["label"] == "Steps")
+    spec = next(s["value"] for s in r["specs"] if s["label"].replace("\xa0", " ") == "Steps").replace("\xa0", " ")
     steps = re.findall(r"(\d) ([^,]+)", spec)
     need([int(n) for n, _ in steps] == list(range(1, 7)), f"Rule {rid}'s steps are not six: {spec!r}")
     return r, [s.strip() for _, s in steps]
@@ -4738,7 +4738,7 @@ def rule_15_23(book):
     fsk = lambda *ns: [(n, "st" if st[n].kind in ("st", "end") else "br", st[n].name) for n in ns]
     # Rule 11.1, a federal bill, against Route FS
     r1, s1 = tracker_steps("11.1")
-    need("President on a federal bill" in next(s["value"] for s in r1["specs"] if s["label"] == "Step 6"),
+    need("President on a federal bill" in next(s["value"] for s in r1["specs"] if s["label"].replace("\xa0", " ") == "Step 6"),
          "Rule 11.1 no longer names the President at step 6 of a federal bill")
     s1 = s1[:5] + ["President"]
     map1 = {1: [1], 2: [1], 3: [1], 4: [2, 3, 4, 5], 5: [6, 7], 6: [8, 9, 10, 11, 12, 13]}
