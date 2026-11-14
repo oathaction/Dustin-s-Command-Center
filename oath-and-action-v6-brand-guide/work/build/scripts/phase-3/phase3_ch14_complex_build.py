@@ -600,18 +600,18 @@ CARD_CSS = (
     ".cd8 dt{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);"
     "text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 4px}"
     ".cd8 dd{margin:0;font:var(--oa-type-body-small)}.cd8 dd+dd{margin-top:4px}"
-    ".cd8 .cd{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;white-space:nowrap}"
+    ".cd8 .cd{font-weight:var(--oa-font-weight-semibold);font-variant-numeric:tabular-nums;white-space:nowrap}"
     ".cd8 .oa-disclosure-set{margin-top:12px}.cd8 .on8{color:var(--oa-color-text-secondary)}"
     ".rl8{list-style:none;margin:0;padding:0}.rl8 li+li{margin-top:8px}.rl8 .rn,.rl8 .rw{display:block}"
     ".rl8 .rw{color:var(--oa-color-text-secondary)}"
-    ".ky8{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;font:var(--oa-type-caption)}"
+    ".ky8{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;font:var(--oa-type-caption)}"
     ".ky8 b{font-variant-numeric:tabular-nums}.pon{display:none}"
     # from 680 px the three cards stand side by side, and each row of one card lines up with the same row of the others:
-    # a card spans eight rows of the list's grid (its head, the six rows of its list, its disclosure), its list six
+    # a card spans thirteen rows of the list's grid (its head, the eleven rows of its list, its disclosure), its list eleven
     "@container oa-frame (min-width:680px){.cds{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;"
-    "grid-template-rows:repeat(8,auto);row-gap:0}"
-    "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}"
-    ".cd8 dl{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0}}}"
+    "grid-template-rows:repeat(13,auto);row-gap:0}"
+    "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 13;grid-template-rows:subgrid;row-gap:0}"
+    ".cd8 dl{display:grid;grid-row:span 11;grid-template-rows:subgrid;row-gap:0}}}"
     ".pcs8{display:none}"
     "@media print{.lv>.oa-choice{display:none}.pcs8{display:grid;grid-template-columns:repeat(auto-fill,296px);gap:16px 24px;"
     "margin-top:16px}.pcs8 .pc8{break-inside:avoid}.mn8,.lv [data-oa-print]{display:none!important}}"
@@ -669,7 +669,9 @@ def rule_14_144():
         for t in off:
             lay = (LINK[t]["layer"] if t in LINK else NODE[t]["layer"])
             offs.append(f"<dd>{off_words(rid, t, set(codes))}</dd>")
-        effs = "".join(f'<dd><span class="fm">{e(C13.FAMILY[f])}</span>: {effect_cell(r["effects"][f])}</dd>'
+        # one row a family, its code and qualifier whole at the start of the line, so each family's code sits on one line
+        # across the three cards (the design director's DD-R1)
+        effs = "".join(f'<div><dt>Effect on {e(lc(C13.FAMILY[f]))}</dt><dd>{effect_cell(r["effects"][f])}</dd></div>'
                        for f in ("DQ", "GE", "EP", "EQ"))
         routes = []
         for x in r["routes"]:
@@ -692,11 +694,11 @@ def rule_14_144():
             f'<div><dt>Targets outside this loop</dt>' + ("".join(offs) + (f'<dd class="on8">{off_note(rid, off, set(codes))}</dd>' if off else "")
                                                        or "<dd>None</dd>") + "</div>"
             f'<div><dt>Band, the kind of change</dt><dd><b>{e(r["band"].capitalize())}</b></dd></div>'
-            f'<div><dt>Effects by outcome family, as of {SNAP}</dt>{effs}</div>'
-            f'<div><dt>Evidence</dt><dd>For the problem, {grade_word(r["problem_evidence"]["grade"], gloss=False)}</dd>'
-            f'<dd>For the remedy, {grade_word(rem["grade"], gloss=False)}</dd>'
-            f'<dd>The atlas’s confidence in the effects: “{ce(r["effects_confidence"])}”</dd></div>'
-            f'<div><dt>Routes, as of {SNAP}</dt><dd><ul class="rl8">{"".join(routes)}</ul></dd></div>'
+            + effs +
+            f'<div><dt>Evidence for the problem</dt><dd>{grade_word(r["problem_evidence"]["grade"], gloss=False)}</dd></div>'
+            f'<div><dt>Evidence for the remedy</dt><dd>{grade_word(rem["grade"], gloss=False)}</dd></div>'
+            f'<div><dt>The atlas’s confidence in the effects</dt><dd>“{ce(r["effects_confidence"])}”</dd></div>'
+            f'<div><dt>Routes</dt><dd><ul class="rl8">{"".join(routes)}</ul></dd></div>'
             f'</dl>{disc}</li>')
     order = ["+L", "+M", "+S", "0", "-S", "-M", "?"]
     need(list(C13.EFFECT_WORDS) == order, "the atlas's effect codes changed")
@@ -705,8 +707,8 @@ def rule_14_144():
     note = FACTS_NOTE()
     body = (f'<div class="lv" data-oa-chooser>{group}' + C15.beside(left, right)
             + f'<p class="k kb">The three reforms side by side, as of {SNAP}</p>'
-            + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>{key}'
-            + f'<p class="nt">The atlas’s note on the codes: “{e(note)}”</p>'
+            + key + f'<p class="nt">The atlas’s note on the codes: “{e(note)}”</p>'
+            + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>'
             + src("reforms R-06, R-30 and R-38, their targets, effects, evidence and routes, and loop R8 with its "
                   "connections") + "</div>")
     style = plate_style(body, swap={C15.chooser_css(["R-03", "R-04"]): ""}, extra=chooser_css(RIDS) + CARD_CSS)
@@ -745,7 +747,8 @@ def rule_14_144():
                                       "letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);"
                                       "color:var(--oa-color-text-secondary)}"
                                       ".ft8 .tt{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;"
-                                      "text-align:right;white-space:nowrap}.ft8 thead th:last-child{text-align:right}.ft8 .cn8{white-space:nowrap}"))
+                                      "text-align:right;white-space:nowrap}.ft8 thead th:last-child{text-align:right}.ft8 .cn8{white-space:nowrap}"
+                                      "@container oa-frame (max-width:327.98px){.p .ft8{max-width:calc(100cqi - 32px)}}"))
     files["s-14-144-failure"] = fragment("s-14-144-failure", fail, fstyle)
     meta["s-14-144-failure"] = plate_meta(
         FC + "A table of the three reforms, each with its four effects in a row and a total score at the end: Reform R-06 "
@@ -897,7 +900,8 @@ def rule_14_142():
         "states": [],
         "encode": s14["encode"],
         "formats": s14["formats"],
-        "labels": dict(s14["labels"], **{
+        # the data lead's yes to DD-E3 (02:44): S96 alone drops the on-plot latest label; its chart note keeps the words
+        "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ != "latest"}, **{
             # under 490 px the two labels leave the plot, where October 2025's met the latest month's leader and the
             # sweep found February 2026's no clear place at 327 to 339 px; phone_notes names both in one line (S30's way)
             "named": [{"x": m, "text": [mw(m), f"{k(pv[m])} jobs"], "phone": {"hide": True}} for m in past],
@@ -1061,7 +1065,8 @@ def check(entries, files, specs):
     ok("no expected effect" in rt, "14.144: a zero says what it means")
     ok(re.search(r"<b class=\"cd\">[^<]+</b>,&#32;<span class=\"cw\">", t) is not None and "</b><span class=\"cw\">" not in t,
        "14.144: a code runs into its words")
-    ok("grid-row:span 6;grid-template-rows:subgrid" in files["s-14-144-correct"], "14.144: the cards' rows would stack")
+    ok("grid-row:span 11;grid-template-rows:subgrid" in files["s-14-144-correct"], "14.144: the cards' rows would stack")
+    ok(t.count("<dt>") == 33 and t.count("<dl>") == 3, "14.144: eleven rows in each card's list, so the subgrid spans hold")
     pr38 = reader_text(re.search(r'data-oa-print="R-38">.*?</p>', t).group(0))
     ok("in red" not in pr38, f"14.144: R-38's print line says red: {pr38}")
     ft = reader_text(files["s-14-144-failure"])

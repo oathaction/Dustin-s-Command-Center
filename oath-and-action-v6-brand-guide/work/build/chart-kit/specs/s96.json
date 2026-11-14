@@ -83,10 +83,6 @@
   "key_columns": "Jobs added or lost in the month",
   "key_preliminary": "Preliminary: August and September 2026",
   "preliminary_value": "preliminary",
-  "latest": [
-   "{y} jobs",
-   "in {x}, preliminary"
-  ],
   "key_average": "Three-month average",
   "named": [
    {

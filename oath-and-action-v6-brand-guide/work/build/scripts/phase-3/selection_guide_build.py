@@ -1781,7 +1781,7 @@ CSS = (
     ".sg-q:first-child{padding-top:0}.sg-q:last-child{padding-bottom:0}"
     ".sg-q+.sg-q{border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}"
     ".sg-qt{margin:0 0 var(--oa-space-200);font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);"
-    "text-wrap:balance;max-width:34em;break-after:avoid}"
+    "text-wrap:balance;max-width:34em;overflow-wrap:break-word;break-after:avoid}"
     # tiles on one column grid in rem, so larger text takes fewer columns (AX 1.8)
     ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,6rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
     ".sg-fs>li{break-inside:avoid}"
