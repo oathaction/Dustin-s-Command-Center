@@ -76,8 +76,8 @@ FC = "Failure case: do not publish. "
 # The rule list the main session fixed (R7). Rounds 1 and 2 build BUILT; the rest wait for their rounds.
 # ---------------------------------------------------------------------------------------------------------------
 BUILT = ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "15.8", "15.9", "15.10", "15.11", "15.12", "15.13",
-         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21", "15.22", "15.24", "15.25"]
-PLANNED = {"15.23": "Show which stages sit behind each of a tracker’s six steps."}
+         "15.14", "15.15", "15.16", "15.17", "15.18", "15.19", "15.20", "15.21", "15.22", "15.23", "15.24", "15.25"]
+PLANNED = {}
 
 # ---------------------------------------------------------------------------------------------------------------
 # Atlas facts, read once and held to the model
@@ -4687,12 +4687,253 @@ def rule_15_25(book):
     }
 
 
+
+# ---------------------------------------------------------------------------------------------------------------
+# Rule 15.23: which stages sit behind each of a tracker's six steps. The steps are read from chapter 11's file by script
+# (the tracker designer's and the editor's words, so a rename there reaches this plate on a rerun); the stages are Route
+# FS's as Rule 15.22 numbers them, the research lead's data files for a records request and an agency rule (the ones
+# chapter 14's process plates draw), and the workflow sources file's ballot measure and court case rows.
+# ---------------------------------------------------------------------------------------------------------------
+CH11 = json.loads((CHAPTERS / "11-icons.json").read_text())
+DATA = ROOT / "work/build/data"
+
+
+def tracker_steps(rid):
+    """A chapter 11 tracker's six step names, from its "Steps" spec ("1 Filed, 2 Hearing, ..."), in order."""
+    r = next((x for x in CH11["rules"] if x["id"] == rid), None)
+    need(r is not None, f"chapter 11 has no Rule {rid}")
+    spec = next(s["value"] for s in r["specs"] if s["label"] == "Steps")
+    steps = re.findall(r"(\d) ([^,]+)", spec)
+    need([int(n) for n, _ in steps] == list(range(1, 7)), f"Rule {rid}'s steps are not six: {spec!r}")
+    return r, [s.strip() for _, s in steps]
+
+
+def csv_rows(name):
+    import csv
+    with (DATA / name).open(newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def data_meta(name):
+    return json.loads((DATA / name.replace(".csv", ".meta.json")).read_text())
+
+
+def xw_block(head, sub, rows, src_line):
+    """One tracker set beside its workflow: a row a step, its stages beside it; rows before step 1 and after step 6
+    hold the stages the tracker leaves out. A stage is (number or None, kind, words)."""
+    out = []
+    for key, name, stages in rows:
+        lab = (f'<span class="xn">{key}</span> {e(name)}' if isinstance(key, int) else f'<span class="xo">{e(name)}</span>')
+        items = "".join((f'<li><span class="wq{" wo" if k != "st" else ""}" aria-hidden="true">{n}</span>'
+                         f'<span class="vh">Stage {n}: </span>{e(w)}</li>') if n else f"<li>{e(w)}</li>"
+                        for n, k, w in stages)
+        out.append(f'<li class="xr{" xe" if not isinstance(key, int) else ""}"><p class="xt">{lab}</p><ul class="xg">{items}</ul></li>')
+    return (f'<div class="xw"><p class="xhd">{head}</p><p class="xs">{sub}</p><ol class="xl">{"".join(out)}</ol>'
+            f'<p class="sc">{src_line}</p></div>')
+
+
+def rule_15_23(book):
+    groups, fs, frows = fs_stages()
+    st = {s.n: s for _, g in groups for s in g}
+    fsk = lambda *ns: [(n, "st" if st[n].kind in ("st", "end") else "br", st[n].name) for n in ns]
+    # Rule 11.1, a federal bill, against Route FS
+    r1, s1 = tracker_steps("11.1")
+    need("President on a federal bill" in next(s["value"] for s in r1["specs"] if s["label"] == "Step 6"),
+         "Rule 11.1 no longer names the President at step 6 of a federal bill")
+    s1 = s1[:5] + ["President"]
+    map1 = {1: [1], 2: [1], 3: [1], 4: [2, 3, 4, 5], 5: [6, 7], 6: [8, 9, 10, 11, 12, 13]}
+    after1 = [n for n in st if n > 13]
+    need({n for v in map1.values() for n in v} | set(after1) == set(st) and after1 == list(range(14, len(st) + 1)),
+         "Rule 15.23's bill map leaves a stage of Route FS out")
+    rows1 = [(i, s1[i - 1], fsk(*map1[i])) for i in range(1, 7)] + [("after", "After step 6", fsk(*after1))]
+    b1 = xw_block(f'{chip("Route", "FS")} beside the bill tracker of <a href="#rule-11-1">Rule 11.1</a>, a federal bill',
+                  f"Route FS’s {len(st)} stages, numbered as Rule 15.22 draws them, behind the tracker’s six steps",
+                  rows1, f"Stages from Rule 15.22, each with its own source there. A state bill follows Route SS the "
+                            f"same way, with the governor at step 6.")
+    # Rule 11.8, a records request, against the Freedom of Information Act's steps
+    r8, s8 = tracker_steps("11.8")
+    fo = {r["order"]: r for r in csv_rows("govinfo-foia-request-steps.csv")}
+    fm = data_meta("govinfo-foia-request-steps.csv")
+    need([fo[k]["step"] for k in sorted(fo, key=int)] == ["Look first", "Write the request", "Say what fees you will pay",
+         "Ask for faster handling", "The agency decides", "Appeal a denial", "Ask for mediation", "Go to court"],
+         "the records request's steps in the data file changed")
+    need("20 working days" in fo["5"]["time_limit"] and "90 days" in fo["6"]["time_limit"], "the request's time limits changed")
+    fw = lambda k, extra="": (None, "st", fo[k]["step"] + extra)
+    rows8 = [("before", "Before step 1", [fw("1")]),
+             (1, s8[0], [fw("2"), fw("3"), fw("4", ", if the requester asks")]),
+             (2, s8[1], [fw("5", ": its 20 working days begin")]),
+             (3, s8[2], [fw("5", ": the same 20 working days")]),
+             (4, s8[3], [fw("5", ": the same 20 working days")]),
+             (5, s8[4], [fw("5", ", up to 10 working days late in unusual circumstances")]),
+             (6, s8[5], [fw("6", ", within at least 90 days")]),
+             ("after", "After step 6", [fw("7"), fw("8")])]
+    b8 = xw_block(f'The Freedom of Information Act beside the records request tracker of <a href="#rule-11-8">Rule 11.8</a>',
+                  "A federal request’s steps in the law, behind the tracker’s six steps",
+                  rows8, f"Stages from 5 U.S.C. 552 and FOIA.gov, read {C13.words_date(fm['date_retrieved'])}.")
+    # Rule 11.9, an agency rule, against the federal rule-making steps
+    r9, s9 = tracker_steps("11.9")
+    ru = {r["order"]: r for r in csv_rows("govinfo-federal-rulemaking-steps.csv")}
+    rm = data_meta("govinfo-federal-rulemaking-steps.csv")
+    need([ru[k]["step"] for k in sorted(ru, key=int)] == ["Agency drafts a rule", "White House review of a significant draft",
+         "Proposed rule published", "Public comment", "Final rule published", "Report to Congress", "Congress disapproves",
+         "A court reviews the rule", "Guidance without comment", "Anyone petitions for a change"],
+         "the agency rule's steps in the data file changed")
+    rw = lambda k, extra="": (None, "st", ru[k]["step"] + extra)
+    rows9 = [("before", "Before step 1", [rw("10")]),
+             (1, s9[0], [rw("1", "; the law we read sets no early notice, which an agency may give while it drafts")]),
+             (2, s9[1], [rw("2", ", for a significant rule"), rw("3")]),
+             (3, s9[2], [rw("4", ": it opens")]),
+             (4, s9[3], [rw("4", ": it closes")]),
+             (5, s9[4], [rw("2", ", again"), rw("5")]),
+             (6, s9[5], [rw("6", ", which a major rule waits at least 60 days after")]),
+             ("after", "After step 6", [rw("7"), rw("8")]),
+             ("instead", "In place of steps 2 to 4", [rw("9")])]
+    b9 = xw_block(f'Federal rule making beside the agency rule tracker of <a href="#rule-11-9">Rule 11.9</a>',
+                  "The law’s steps for a federal rule, behind the tracker’s six steps",
+                  rows9, f"Stages from 5 U.S.C. 551, 553, 701 to 706, 801 and 802 and Executive Order 12866, read "
+                         f"{C13.words_date(rm['date_retrieved'])}.")
+    # Rule 11.10, a ballot measure, against Route BI's rows
+    r10, s10 = tracker_steps("11.10")
+    bw = lambda first, words, *ph: (wf_first("BI", first, *ph), (None, "st", words))
+    bi = [bw("1 Filed", "The full text filed with the attorney general or the secretary of state", "attorney-general"),
+          bw("2 Title and summary", "The attorney general’s title and summary, before anyone signs", "circulating title and summary"),
+          bw("3 Signatures", "Signatures counted and checked", "fails to qualify for the ballot"),
+          bw("4 Legislature (indirect initiative)", "In an indirect initiative, the legislature’s vote, and a second round of "
+             "signatures if it does not pass the measure", "within 40 session days"),
+          bw("4 Legislature (direct initiative)", "In a direct initiative, a hearing that cannot stop it", "cannot amend it"),
+          bw("4 Legislature (legislative referral)", "A referral, in which the legislature sends a measure to the ballot",
+             "three-fifths of the members elected"),
+          bw("5 On the ballot", "Certified for the ballot", "certificate of qualification"),
+          bw("5 Court challenge", "A court challenge before the vote, where a state allows one", "exclusive, original jurisdiction"),
+          bw("6 Vote, certification and effect", "The vote, the certified result, and the day it takes effect", "takes effect"),
+          bw("After the vote", "Amended or repealed later, as each state allows", "amend or repeal")]
+    rows10 = [(1, s10[0], [bi[0][1]]), (2, s10[1], [bi[1][1]]), (3, s10[2], [bi[2][1]]),
+              (4, s10[3], [bi[3][1], bi[4][1], bi[5][1]]), (5, s10[4], [bi[6][1], bi[7][1]]), (6, s10[5], [bi[8][1]]),
+              ("after", "After step 6", [bi[9][1]])]
+    b10 = xw_block(f'{chip("Route", "BI")} beside the ballot measure tracker of <a href="#rule-11-10">Rule 11.10</a>',
+                   "A citizen initiative’s stages in four states’ constitutions and California’s guide, behind the tracker’s "
+                   "six steps", rows10,
+                   f"Stages from the constitutions of Massachusetts, Ohio and Michigan and the California Secretary of "
+                   f"State’s guide, read {dates_words(r_['Checked'] for r_, _ in bi)}.")
+    # Rule 11.11, a court case, against Route CRT's rows
+    r11, s11 = tracker_steps("11.11")
+    cw = lambda first, words, *ph: (wf_first("CRT", first, *ph), (None, "st", words))
+    cr = [cw("1 Filed", "A complaint filed in a district court", "commenced by filing a complaint"),
+          cw("2 Trial court ruling", "Motions, discovery, a settlement or a trial, and the judgment", "summary judgment"),
+          cw("2 An injunction before judgment", "An order on an injunction, which can be appealed at once", "Interlocutory orders"),
+          cw("3 Appeal", "A notice of appeal, within 30 days, or 60 where the United States is a party", "within thirty days"),
+          cw("4 Appeals court ruling", "A panel of three judges decides, and the full court may rehear it", "panels of three judges"),
+          cw("5 Supreme Court petition", "A petition within 90 days, which the Court grants or denies", "within 90 days"),
+          cw("5 Skipping the appeals court", "An appeal straight from three district judges, in the cases the law names",
+             "district court of three judges"),
+          cw("6 Supreme Court ruling", "Briefs, argument and the Court’s decision", "tie vote"),
+          cw("Later doctrine replaces earlier doctrine", "A later ruling that replaces earlier doctrine", "Chevron is overruled")]
+    rows11 = [(1, s11[0], [cr[0][1]]), (2, s11[1], [cr[1][1], cr[2][1]]), (3, s11[2], [cr[3][1]]), (4, s11[3], [cr[4][1]]),
+              (5, s11[4], [cr[5][1], cr[6][1]]), (6, s11[5], [cr[7][1]]), ("after", "After step 6", [cr[8][1]])]
+    b11 = xw_block(f'{chip("Route", "CRT")} beside the court case tracker of <a href="#rule-11-11">Rule 11.11</a>',
+                   "A federal civil case’s stages in Title 28, the courts’ rules and the Supreme Court’s rules, behind the "
+                   "tracker’s six steps", rows11,
+                   f"Stages from 28 U.S.C., the Federal Rules of Civil and Appellate Procedure and the Rules of the Supreme "
+                   f"Court, read {dates_words(r_['Checked'] for r_, _ in cr)}.")
+    folded = sum(1 for v in map1.values() if v == [1])
+    head = (f'<p class="k">Five trackers, each beside its workflow</p>'
+            f'<p class="rec">Each row puts a tracker’s step beside the stages of the law behind it. A step can hold several '
+            f'stages, several steps can share one, and some stages sit before step 1 or after step 6, where the tracker '
+            f'does not follow them.</p>')
+    body = head + b1 + b8 + b9 + b10 + b11
+    book.add("s-15-23-correct", body, rule="15.23", readable=True, wide=True,
+             alt=("Five of chapter 11’s trackers, each with its six steps beside the stages of its workflow. The bill tracker "
+                  f"of Rule 11.1 beside Route FS: steps 1 to 3, {', '.join(s1[:3])}, sit inside stage 1; step 4 holds stages 2 "
+                  "to 5; step 5 holds stages 6 and 7; step 6 holds stages 8 to 13; stages 14 to 19 come after step 6. The "
+                  "records request of Rule 11.8 beside the Freedom of Information Act: steps 2 to 5 share the agency’s 20 "
+                  "working days to decide, and mediation and a lawsuit come after step 6. The agency rule of Rule 11.9 beside "
+                  "federal rule making: step 1 has no stage in the law, White House review sits behind steps 2 and 5, and "
+                  "Congress’s disapproval and a court’s review come after step 6. The ballot measure of Rule 11.10 beside "
+                  "Route BI: step 4 holds three kinds of legislative stage and step 5 a court challenge. The court case of "
+                  "Rule 11.11 beside Route CRT: step 2 holds an appeal of an injunction, step 5 a direct appeal, and a later "
+                  "ruling that replaces doctrine comes after step 6."),
+             notes="Step names read from chapter 11's file; stages from Rule 15.22's numbering, the research lead's data "
+                   "files and the workflow sources file, each held by script.")
+    for where, ex, dom in (("15.23 correct, Rule 11.1", "A federal bill's tracker beside Route FS", "D04"),
+                           ("15.23 correct, Rule 11.8", "A records request beside the Freedom of Information Act", "D01"),
+                           ("15.23 correct, Rule 11.9", "An agency rule beside federal rule making", "D04"),
+                           ("15.23 correct, Rule 11.10", "A ballot measure beside Route BI", "D02"),
+                           ("15.23 correct, Rule 11.11", "A court case beside Route CRT", "D05")):
+        book.log(where, ex, dom)
+    bad = [(i, s1[i - 1], fsk(i)) for i in range(1, 7)]
+    fail = dnp() + xw_block(f'{chip("Route", "FS")} beside the bill tracker of Rule 11.1', "Each step beside the stage of the "
+                            "same number", bad, "")
+    fail = fail.replace('<p class="sc"></p>', "")
+    book.add("s-15-23-failure", fail, rule="15.23",
+             alt=(FC + "The bill tracker’s six steps paired one to one with the first six stages of Route FS: Filed with "
+                  "introduced, Hearing with passed by the first chamber, Committee vote with suspension of the rules, First "
+                  "chamber with cloture, Second chamber with reconciliation, and President with passed by the second chamber."),
+             notes="Labeled failure: steps and stages paired by number.")
+    return {
+        "id": "15.23",
+        "title": "Show which stages sit behind each of a tracker’s six steps.",
+        "rule": [
+            "A tracker gives a reader six steps to follow, and the law behind it sets its own stages. Print the stages behind "
+            "each step beside it, from the route’s workflow and its sources, and name the stages that come before step 1 or "
+            "after step 6, where the tracker stops following.",
+            f"The two never line up by number. The bill tracker of Rule 11.1 sets {words_n(folded)} steps, {', '.join(s1[:2])} "
+            f"and {s1[2]}, inside the first stage of Route FS, since the hearing is where the public takes part, and its "
+            f"last step holds six stages, from presentment to the public law. After step 6, {words_n(len(after1))} stages "
+            "go on, and the trackers of Rules 11.9 and 11.11 follow some of them.",
+        ],
+        "tokens": ["oa.type.bodySmall", "oa.type.caption"],
+        "why": {"text": ["A step at the end of a tracker can read as the end of the route. A reader who sees the stages "
+                         "behind it knows that a bill waiting at step 6 can still be vetoed, and that a law can still be "
+                         "funded, delayed or struck after its tracker stops."],
+                "basis": "Chapter 11’s trackers; Rule 15.22’s workflow; 5 U.S.C. 552, 553 and 801; the constitutions and "
+                         "court rules each block names"},
+        "correct": {"specimen": "s-15-23-correct",
+                    "caption": "Five trackers, each step beside the stages of the law behind it, with the stages that come "
+                               "before step 1 and after step 6."},
+        "failure": {"specimen": "s-15-23-failure",
+                    "caption": "<strong>Fails Rule 15.23.</strong> The table pairs each step with the stage of the same "
+                               "number, so the hearing lands on the House floor and the President’s step on the second "
+                               "chamber’s vote."},
+        "specs": [
+            {"label": "Rows", "value": "One a step, numbered as the tracker numbers it, its stages beside it"},
+            {"label": "Before and after", "value": "Rows for the stages before step 1 and after step 6, named, not hidden"},
+            {"label": "Stages", "value": "Route FS’s with Rule 15.22’s numbers and squares; the others by name, from "
+                                         "their sources"},
+            {"label": "Sources", "value": "Under each block, with the date we read them"},
+        ],
+        "related": ["11", "14"],
+        "builders": ["Read each tracker’s steps from chapter 11’s file and each stage from its workflow’s rows, so a "
+                     "renamed step or stage reaches this table on the next build."],
+    }
+
+
+CSS.update({
+    # Rule 15.23's crosswalk: a block a tracker, a row a step; from 680 px the step sits in a column beside its stages
+    "xw": (".xw{margin-top:22px;padding-top:14px;border-top:2px solid var(--oa-color-border-strong);font:var(--oa-type-body-small)}"
+           ".xw .xhd{font-weight:var(--oa-font-weight-semibold)}"
+           f".xw .xs{{{C13.CAP};color:var(--oa-color-text-secondary);margin-top:2px}}"
+           ".xl{list-style:none;margin:10px 0 0;padding:0}.xr{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+           ".xr .xt{font-weight:var(--oa-font-weight-semibold)}.xn{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
+           ".xo{color:var(--oa-color-text-secondary);font-weight:var(--oa-font-weight-regular)}"
+           ".xg{list-style:none;margin:4px 0 0;padding:0 0 0 20px}.xg li+li{margin-top:4px}"
+           ".xg li{position:relative}.xr:not(.xe) .xg li:not(:has(.wq))::before{content:\"\";position:absolute;left:-14px;top:.62em;"
+           "width:6px;height:6px;border:1.5px solid var(--oa-color-graphic-essential)}"
+           f".wq{{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 3px;margin-right:6px;background:{SUBJ};"
+           "color:var(--oa-color-surface);font:var(--oa-type-data-label);font-weight:var(--oa-font-weight-bold);vertical-align:1px}"
+           f".wq.wo{{background:var(--oa-color-surface);color:var(--oa-color-text-primary);border:var(--oa-chart-line-context) solid {CTX}}}"
+           ".xg li:has(.wq){padding-left:0;margin-left:-20px}"
+           ".xw .sc{margin-top:8px}"
+           "@container oa-frame (min-width:680px){.wd .xr{display:grid;grid-template-columns:184px minmax(0,1fr);column-gap:20px}"
+           ".wd .xg{margin:0}}"),
+})
+
+
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
              rule_15_7(book), rule_15_8(book), rule_15_9(book), rule_15_10(book), rule_15_11(book), rule_15_12(book),
              rule_15_13(book), rule_15_14(book), rule_15_15(book), rule_15_16(book), rule_15_17(book), rule_15_18(book),
-             rule_15_19(book), rule_15_20(book), rule_15_21(book), rule_15_22(book), rule_15_24(book), rule_15_25(book)]
+             rule_15_19(book), rule_15_20(book), rule_15_21(book), rule_15_22(book), rule_15_23(book), rule_15_24(book), rule_15_25(book)]
     need([r["id"] for r in rules] == BUILT, "the chapter's rules differ from the round's list")
     need(not set(BUILT) & set(PLANNED), "a rule is both built and planned")
     data = {
