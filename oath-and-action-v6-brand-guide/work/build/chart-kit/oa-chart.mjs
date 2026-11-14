@@ -390,6 +390,18 @@ export function kit_parts() {
 }
 // the page's kit.css: comments out, then the white space round { } ; , > and after a colon (round 4 weight: 2,175 bytes less;
 // the browser's parse of the two gives the same 204 rules). Safe while no quoted string holds those characters, which the
+// Page-to-Node parity (round 5, the complex examples maker's request 6): a drawing's string with what may differ between the
+// page and Node taken out: its names and descriptions, its forced-colors style and patterns, and its own id prefix, given
+// exactly. The earlier form read the prefix by a pattern (oac-...-digits-word), which took a spec id's own digit groups
+// ("s-14-142-failure") for the width and failed a correct drawing; the pattern stays only for prefixes this one is not given.
+export function parity_norm(x, uid) {
+  if (!x) return x;
+  let y = uid ? x.split(uid).join('UID') : x;
+  return y.replace(/ aria-labelledby="[^"]*"/g, '').replace(/<title>.*?<\/title>|<desc>.*?<\/desc>/gs, '').replace(/<style>.*?<\/style>/gs, '')
+    .replace(/ oac-u-[a-z0-9-]+/g, '').replace(/<pattern id="[^"]*-fc-[^"]*".*?<\/pattern>/gs, '').replace(/<defs><\/defs>/g, '')
+    .replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2');
+}
+
 // self-test checks
 export function min_css(t) {
   return t.replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.trim()).filter(Boolean).join('\n').replace(/\s*([{};,>])\s*/g, '$1').replace(/:\s+/g, ':').replace(/;}/g, '}');
@@ -492,8 +504,9 @@ async function captures(items, o) {
               const ser = new XMLSerializer();
               const a = ser.serializeToString(clone);
               const b = node_svg ? ser.serializeToString(new DOMParser().parseFromString(node_svg, 'image/svg+xml').documentElement) : null;
-              const norm = x => x ? x.replace(/ aria-labelledby="[^"]*"/g, '').replace(/<title>.*?<\/title>|<desc>.*?<\/desc>/gs, '').replace(/<style>.*?<\/style>/gs, '').replace(/ oac-u-[a-z0-9-]+/g, '').replace(/<pattern id="[^"]*-fc-[^"]*".*?<\/pattern>/gs, '').replace(/<defs><\/defs>/g, '').replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2') : x;
-              out.parity = norm(a) === norm(b);
+              // round 5 (the complex examples maker's request 6): the two strings go back to Node, which compares them with each
+              // drawing's own id prefix taken out exactly (parity_norm)
+              out.page_svg = a; out.node_svg = b;
               out.width = svg.getAttribute('width');
               // the standalone export: computed colors and type written on each element, no classes, title and desc kept
               const ex = svg.cloneNode(true);
@@ -550,6 +563,11 @@ async function captures(items, o) {
             }, { fid, sel, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt, fonts_note: K.words.export_fonts });
             if (info.err) { res.faults.push(`page: ${g} ${w}: ${info.err}`); continue; }
             if (dpr === 1) {
+              // the page names its drawing's ids from the figure's id and the width it drew at (K.mount); Node from the spec's id
+              // and the width (K.draw's default): each is taken out whole, whatever digits the spec's id holds
+              const dw = (crop || '').split('x')[0] || info.width;
+              const page_uid = crop ? `oac-${spec.id.toLowerCase()}-${g}-c${crop.split('x')[1]}-${crop.split('x')[0]}` : `oac-${spec.id.toLowerCase()}-${g}-${dw}`;
+              info.parity = parity_norm(info.page_svg, page_uid) === parity_norm(info.node_svg, `oac-${spec.id.toLowerCase()}-${dw}`);
               if (!info.parity) res.faults.push(`parity: the page's drawing at ${w} on ${g} differs from the Node drawing the exports use`);
               const t = K.table_rows(spec, res.rows);
               const want = t.pivot ? Object.keys(t.cell).length : t.rows.length;

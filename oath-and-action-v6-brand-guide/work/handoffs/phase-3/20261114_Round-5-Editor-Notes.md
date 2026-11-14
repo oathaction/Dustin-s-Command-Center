@@ -6,6 +6,7 @@ The owners read the "Words for ..." sections directly. Each gives the words an o
 
 ## Status
 
+- 03:29 UTC. **Pass 2 on Rules 14.142 to 14.144 written in**: one word edit (14.144's print lines); Loop R10's first step kept for the stepper; two runs, the second writing nothing; figure checks 35 of 35; strict build passes. The selection guide's words still wait for its maker; stage 19 waits for the data lead.
 - 03:25 UTC. **Pass 2 drafts written, nothing applied**: "Words for the complex examples maker, pass 2" (two rows; a third, on the ink word, withdrawn after I read S53's reason) and the selection guide's tier key and caption (SG-5, DD-G4), both waiting for their makers to report. Stage 19's "can no longer be enforced" stays unless the data lead rules otherwise (main session, 03:23).
 - 03:22 UTC. **Chapter 15 words pass 2 written in** (D3-669, on the main session's 03:18 word): 23 word edits in `phase3_ch15_build.py`, stage numbers named "stage" throughout Rule 15.22 and stage 19 rewritten; two runs, the second changing nothing; strict build passes. ED5-4 and ED5-5 closed. Trackers final. Rules 14.142 to 14.144 wait for my pass 2.
 - 02:53 UTC. **Alert: my chapter 15 words pass is already in `phase3_ch15_build.py`** (20 word edits written 02:50 to 02:52 UTC, two runs, the second changing nothing, strict build passing), before the main session's hold reached me at 02:53; the 02:53 snapshot carries them. I write nothing more there until told. The systems designer builds its five fixes on the file as it stands; the rows and a patch are under "Words for the systems designer". The trackers pass is finished.
@@ -135,6 +136,18 @@ Written at 03:25 UTC, draft only: the maker is rebuilding S96 through `phase3_ch
 | 14.144 plate, the three print lines | Reform R-06 on Loop R8: its target on the loop, Connection L39, drawn heavy. (and R-30) | ...Connection L39, drawn with a heavy line. | "Drawn heavy" leaves out what is heavy |
 
 **Read and left as they stand:** the three titles, rules, whys, specs, builders and captions after pass 1; S96's title (DR-239's two sentences), notes, measure line and source line; both loops' step words but the row above, the limits quoted from the atlas, and "the walk weighs neither against the other"; 14.144's cards, the code key with its true minus signs, the atlas's note on codes, "Band, the kind of change", "Effect on ..." and the routes; both failure plates and their alts but the ink row above.
+
+### Pass 2 written in (D3-669), 03:29 UTC
+
+The maker reported finished (main session, 03:40 by its clock). One edit in `work/build/scripts/phase-3/phase3_ch14_complex_build.py`, words only:
+
+| Where | Before | After | Why |
+|---|---|---|---|
+| 14.144 plate, the three print lines (line 666) | ...its target on the loop, Connection L39, drawn heavy. | ...its target on the loop, Connection L39, drawn heavier than the rest of the loop. | "Drawn heavy" left out what is heavy. "Heavier than the rest of the loop" holds for a connection and a variable alike, since Reform R-30's targets are one of each |
+
+**Kept as built: Loop R10's first step.** The step's first sentence is its `oa-stepper-line`, which the stepper reads into the status line, and "The walk moves to Loop R10." sits in its `oa-stepper-more`, from which CE-1's holds and the component engineer's keys files are worked out. Moving it would change the status line and the holds, so the order stands, as pass 1 allowed.
+
+**Checks.** Baseline run before the edit: 10 files, 0 written, 0 faults, no output changed. After it, run twice: the first wrote one file (`s-14-144-correct.html`), the second wrote none, and the hashes of S96's spec, both failure files, every 14.143 and 14.144 plate and the three entries match. `maker_c_round5_derive.py --figures`: 35 word checks, 0 faults. Strict build to scratch `guide-e6.html`: exit 0, 12,105,488 bytes. My copy of the generator before the edit is `phase3_ch14_complex_build.before.py` in my scratch folder.
 
 ## Words for the tracker designer
 
