@@ -1574,7 +1574,9 @@ def printed_groups():
 def opener(B):
     lis = []
     printed = printed_groups()
-    for gp in PLAN["groups"][1:]:
+    # round 5: the opener lists the 16 family questions only; group 1 (every chart) and group 18 (three charts in full)
+    # open on no reader question and carry no family section
+    for gp in [g for g in PLAN["groups"] if g.get("family_section")]:
         fam, q = gp["title"].split(": ", 1)
         q = e(q[0].upper() + q[1:])
         # a group whose first entry is written and whose heading the chapter prints links to it; a later round's group
@@ -1626,6 +1628,11 @@ GROUP_LINES = {
     17: ("Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number "
          "panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s "
          "finding into a feed."),
+    # round 5: group 18, the three charts in full (Rules 14.142 to 14.144); a working line, read again against the
+    # entries as they land
+    18: ("Each chart here puts several of the chapter’s forms and rules together on one subject, with its table and its "
+         "files. They show the monthly change in payroll jobs with the survey’s margin of error, two loops from our systems "
+         "atlas that share a variable, and three reforms that act on one housing loop."),
 }
 
 
