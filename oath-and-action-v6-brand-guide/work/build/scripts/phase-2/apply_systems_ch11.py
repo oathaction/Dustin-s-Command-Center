@@ -1233,7 +1233,7 @@ def s_11_10(ctx):
            'and Vote, and of the marks. ' + alt_rows(BALLOTS, nm))
     spec(ctx, 's-11-10-correct', html, '11.10', alt, width=360, illustrative=True)
     bad = dict(BALLOTS[0], states=['done', 'done', 'done', 'skipped', 'done', 'done'], end='Approved by voters.',
-               line='Yes leads with 52 percent of the votes counted on election night, November 3.')
+               line=f'Yes leads with 52{C.NBSP}percent of the votes counted on election night, November 3.')
     html2 = records_piece(ctx, 'Where the park entry fee measure stands', [bad], nm, ('done', 'skipped'), band=True)
     alt2 = ('Failure case: do not publish. An Illustrative ballot measure, 99010, State park entry fees, at 360 px: steps '
             '1 to 3 done, step 4 never happened, and steps 5 and 6 drawn as done, so the vote reads as finished. The words '
@@ -1264,22 +1264,25 @@ def s_11_11(ctx):
 
 def s_route_steps(ctx, sid, steps, what, alt_head):
     """A readable table of a tracker's six steps (R4-3: a reference set in live text): each step's number and name, then
-    what happens and, under it, the law that sets it. Two columns, as the bill's table after Rule 11.1 sets them; under
-    30rem of plate width each step stacks, its number and name over its words, so the words keep the column's width."""
+    what happens and, under it, the law that sets it. Two columns, as the bill's table after Rule 11.1 sets them, the number
+    over the name; under 30rem of plate width each step stacks, number and name on one line over its words, so the words
+    keep the column's width. Its inks are the stage's roles, so it reads on Newsprint and on Charcoal."""
     T = ctx.ty
-    hair = ctx.v('oa.color.border.hairline.onNewsprint')
-    t2 = ctx.v('oa.color.text.secondary.onNewsprint')
+    # role inks, which follow the stage: the table reads on Newsprint and on Charcoal alike
+    hair = ctx.v('oa.color.border.hairline')
+    t2 = ctx.v('oa.color.text.secondary')
     rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n}</th><td><p class="wh">{m}</p>'
                    f'<p class="lw">Law: {law}</p></td></tr>' for i, (n, m, law) in enumerate(steps))
     css = (f'table{{width:100%;border-collapse:collapse;{T("bodySmall")}}}'
            f'th,td{{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid {hair}}}'
            f'td{{padding-right:0}}'
-           f'thead th{{{T("label")};color:{t2};border-bottom:2px solid {ctx.v("oa.color.border.strong.onNewsprint")}}}'
-           f'tbody th{{{T("ui")};font-weight:700;width:11rem;text-wrap:balance}}th .n{{display:inline-block;min-width:1.4em;'
+           f'thead th{{{T("label")};color:{t2};border-bottom:2px solid {ctx.v("oa.color.border.strong")}}}'
+           f'tbody th{{{T("ui")};font-weight:700;width:10rem;text-wrap:balance}}th .n{{display:block;'
            f'{T("h4")};font-variant-numeric:tabular-nums}}'
            f'.wh,.lw{{margin:0;text-wrap:pretty}}.lw{{margin-top:6px;{T("caption")};color:{t2}}}'
            f'@container (max-width:30rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid '
-           f'{hair}}}tbody th,td{{display:block;width:auto;padding:0;border:0}}tbody th{{padding-bottom:4px}}}}'
+           f'{hair}}}tbody th,td{{display:block;width:auto;padding:0;border:0}}tbody th{{padding-bottom:4px}}'
+           f'th .n{{display:inline-block;min-width:1.4em}}}}'
            f'.wr{{container-type:inline-size}}')
     html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th><th scope="col">What happens, '
             f'and the law that sets it</th></tr></thead><tbody>{rows}</tbody></table></div>')

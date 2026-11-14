@@ -4077,9 +4077,9 @@ def route_card(code):
     ents = route_entries(code)
     n_d = sum(1 for _, x in ents if x["checked"])
     stg = "".join(f"<li>{e(s)}</li>" for s in d["stages"])
-    lst = "".join(f'<li>{chip("Reform", rid)} {chip("Route", code)} <span class="et">“{e(REFORM[rid]["title"])}”</span>'
-                  f'<span class="ef2"><b>{e(x["feasibility"].capitalize())}</b> feasibility. {e(entry_date(x))}</span></li>'
-                  for rid, x in ents)
+    lst = "".join(f'<li>{chip("Reform", rid)} <span class="et">“{e(REFORM[rid]["title"])}”</span>'
+                  f'<span class="ef2">{chip("Route", code)} <b>{e(x["feasibility"].capitalize())}</b> feasibility. '
+                  f'{e(entry_date(x))}</span></li>' for rid, x in ents)
     chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
     disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
             f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">What it depends on, and its '
@@ -4110,7 +4110,7 @@ CSS.update({
              ""
              ".rc .oa-disclosure-set{margin-top:8px}.ent{list-style:none;margin:0;padding:0}"
              ".ent li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ent li:first-child{border-top:0;padding-top:0}"
-             ".ent .et{display:block;margin-top:4px}.ent .ef2{display:block}.rc .dep{margin:0 0 14px}"
+             ".ent{font:var(--oa-type-body-small)}.ent .ef2{display:block;margin-top:2px}.rc .dep{margin:0 0 14px}"
              "@container oa-frame (min-width:680px){.wd .rset{grid-template-columns:repeat(2,minmax(0,1fr))}}"),
     "scl": (".scl{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}"
             "@container oa-frame (min-width:680px){.wd .scl{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}}"),
@@ -4826,7 +4826,7 @@ def rule_15_23(book):
           cw("5 Supreme Court petition", "A petition within 90 days, which the Court grants or denies", "within 90 days"),
           cw("5 Skipping the appeals court", "An appeal straight from three district judges, in the cases the law names",
              "district court of three judges"),
-          cw("6 Supreme Court ruling", "Briefs, argument and the Court’s decision", "tie vote"),
+          cw("6 Supreme Court ruling", "Briefs, argument and the Court’s decision", "32 days after entry of the judgment"),
           cw("Later doctrine replaces earlier doctrine", "A later ruling that replaces earlier doctrine", "Chevron is overruled")]
     rows11 = [(1, s11[0], [cr[0][1]]), (2, s11[1], [cr[1][1], cr[2][1]]), (3, s11[2], [cr[3][1]]), (4, s11[3], [cr[4][1]]),
               (5, s11[4], [cr[5][1], cr[6][1]]), (6, s11[5], [cr[7][1]]), ("after", "After step 6", [cr[8][1]])]

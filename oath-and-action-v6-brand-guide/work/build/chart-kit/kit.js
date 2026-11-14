@@ -652,7 +652,7 @@
     var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
       overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill,
       on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++, hm: hm,
-      margin_of: o.margin_of === undefined || o.margin_of === null ? undefined : String(o.margin_of), margin_note: !!o.margin_note };
+      margin_of: o.margin_of === undefined || o.margin_of === null ? undefined : String(o.margin_of), margin_note: !!o.margin_note, alone: !!o.alone };
     // R3-2: words inside a moved or scaled group are read where they print, at the size they print (a knockout would sit in
     // the group's own units, so the kit clears them with the halo instead)
     if (M) {

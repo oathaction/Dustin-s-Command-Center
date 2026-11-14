@@ -651,7 +651,7 @@ def rule_14_144():
         tg = {t for t in REFORM[rid]["targets"] if t in on}
         cb, ch_, _ = C15.two_loop(codes, lp["links"], inside=("R8", "reinforcing"), targets=tg)
         named = " and ".join(f'{chip("Connection" if t in LINK else "Variable", t)}' for t in REFORM[rid]["targets"] if t in on)
-        line = (f'{chip("Reform", rid)} on Loop R8: its targets on the loop, {named}, drawn heavy.' if tg else
+        line = (f'{chip("Reform", rid)} on Loop R8: its target{"s" if len(tg) > 1 else ""} on the loop, {named}, drawn heavy.' if tg else
                 f'{chip("Reform", rid)} on Loop R8: neither of its targets sits on the loop.')
         copies.append(f'<div class="pc8"><p class="nt">{line}</p><div class="dg">{C15.svg_wrap(cb, ch_)}</div></div>')
     pcopies = '<div class="pcs8">' + "".join(copies) + "</div>"

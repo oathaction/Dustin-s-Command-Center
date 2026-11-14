@@ -106,9 +106,19 @@
         c.line(lx, hi_y + (lines.length - 1) * 19 + 6, lx, ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
       }
       // the margin's words, in the band below zero at the plot's left, where no column of the window reaches
+      // (round 5, the maker's request 4): at the plot's left where clear, else the first place along the band clear of every
+      // column and word; where none is clear (a narrow drawing), the words stay out and the key names the band
       if (margin && margin.label) {
-        var mm = Math.abs(+margin.value), my = (ys(0) + ys(-mm)) / 2 + c.size('tick') * 0.35;
-        c.text(x0 + 6, my, margin.label, { role: 'tick', weight: 600, fill: 'label' });
+        var mm = Math.abs(+margin.value), my = (ys(0) + ys(-mm)) / 2 + c.size('tick') * 0.35, mo = { role: 'tick', weight: 600, fill: 'label', alone: true };
+        var bars = c.marks.filter(function (mk) { return mk.kind === 'bar' && mk.w > 0 && mk.h > 0; });
+        var meets = function (b, t) { return t.x < b.x + b.w + 1 && b.x < t.x + t.w + 1 && t.y < b.y + b.h + 1 && b.y < t.y + t.h + 1; };
+        for (var mx = x0 + 6; mx <= x1; mx += Math.max(1, step)) {
+          var mb = c.text_box(mx, my, margin.label, mo);
+          if (mb.x + mb.w > x1) break;
+          if (bars.some(function (b) { return meets(b, mb); }) || c.texts.some(function (t) { return meets(t, mb); })) continue;
+          c.text(mx, my, margin.label, mo);
+          break;
+        }
       }
       // the named columns' words: a first line in bold and the rest regular, on a leader. Each takes the first clear place of:
       // the spec's place (or below a loss, above a gain), then left, right, and above the plot's columns, clear of every

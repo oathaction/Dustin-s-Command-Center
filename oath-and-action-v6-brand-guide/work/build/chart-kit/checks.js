@@ -548,6 +548,7 @@ function interval_faults(spec, d, def, at) {
 // shape drawn after a line that covers the word (a dot over its connector, a knockout) hides the line there.
 const CROSS_SKIP = ['surface', 'none', 'leader'];
 const FILL_SKIP = ['surface', 'none', 'band', 'track', 'land', 'mag-1', 'mag-2', 'light-fill', 'seq-1', 'div-3'];
+const ALONE_SKIP = ['surface', 'none', 'band', 'track', 'land', 'mag-1'];
 function crossing_faults(d, at) {
   const K = globalThis.OAChart, f = [], seen = new Set();
   if (!K || !K.stroke_crosses) return f;
@@ -582,6 +583,19 @@ function crossing_faults(d, at) {
       if (seen.has(k)) continue;
       seen.add(k);
       f.push(`layout: a ${b.kind} in ${b.fill} sits half under "${String(t.words).slice(0, 30)}"; set the words clear of the mark, wholly on it, or on a knockout (K.parts.clear_label) (AX S2)${at}`);
+    }
+    // round 5 (the complex examples maker's request 4): words a form sets to stand clear of every mark (c.text's alone, such
+    // as S96's band words) fail where any filled shape but a band, track, land or the ground meets their box, drawn before
+    // or after them, by more than half a pixel
+    if (t.alone) {
+      for (const b of ink) {
+        if (!b.fill || ALONE_SKIP.indexOf(b.fill) >= 0 || !(b.a > 0) || b.plate) continue;
+        if (!(b.x < t.x + t.w - 0.5 && b.x + b.w > t.x + 0.5 && b.y < t.y + t.h - 0.5 && b.y + b.h > t.y + 0.5)) continue;
+        const k = 'a|' + t.words;
+        if (seen.has(k)) continue;
+        seen.add(k);
+        f.push(`layout: a ${b.kind} in ${b.fill} meets "${String(t.words).slice(0, 30)}", which its form keeps clear of every mark; move the words or leave them out at this width${at}`);
+      }
     }
   }
   return f;

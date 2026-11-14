@@ -1550,6 +1550,23 @@ async function self_test() {
     console.log(`${ok ? 'pass' : 'FAIL'} a margin column: past it below, inside it (its edge included), past it above, an empty value empty; a column's own margin first`);
     if (!ok) bad++;
   }
+  // round 5 (the complex examples maker's request 4): S96's band words stand clear of every column, or stay out where the
+  // drawing has no clear place (210 px, a 256 px window); planted over the October 2025 column, the guard fails them
+  {
+    const s96 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8')), c96 = C.check_spec(K, s96, {});
+    const lab = s96.labels && s96.labels.margin && s96.labels.margin.label;
+    const at = (w) => { const d = K.draw(s96, c96.rows, { width: w, ground: 'charcoal', tokens: TOK.charcoal, extra: extra_rows(c96) }); return { d, t: d.texts.find((x) => x.words === lab), f: C.check_drawing(s96, d, TOK.charcoal, 'self-test').filter((x) => /keeps clear of every mark/.test(x)) }; };
+    const narrow = at(210), wide = at(400);
+    const col = (wide.d.ink || []).find((b) => b.fill === 'subject' && b.kind === 'rect');
+    let caught = false;
+    if (wide.t && col) {
+      const d2 = Object.assign({}, wide.d, { texts: wide.d.texts.map((x) => x === wide.t ? Object.assign({}, x, { x: col.x - x.w / 2, y: col.y + 2 }) : x) });
+      caught = C.check_drawing(s96, d2, TOK.charcoal, 'self-test').some((x) => /keeps clear of every mark/.test(x));
+    }
+    const ok = !!lab && !narrow.f.length && !wide.f.length && !!wide.t && caught;
+    console.log(`${ok ? 'pass' : 'FAIL'} S96's band words clear every column (at 400 px set, at 210 px ${narrow.t ? 'set' : 'left out'}), and planted over the October 2025 column the guard fails them`);
+    if (!ok) bad++;
+  }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);

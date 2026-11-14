@@ -1790,6 +1790,9 @@ CSS = (
     ".sg-pic{display:block;flex:none;margin-bottom:var(--oa-space-100)}"
     ".sg-n{font:var(--oa-type-ui);overflow-wrap:break-word;max-width:100%}"
     ".sg-t{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}"
+    # the comma a screen reader pauses on between name and tier, out of sight in the line it ends; an absolutely placed
+    # hidden span (the shell's .vh) makes Chromium name the link "Ranked bar , Core", with a space before the comma
+    ".sg-c{clip-path:inset(50%)}"
     ".sg-fs a:hover .sg-n{text-decoration:underline;text-decoration-thickness:var(--oa-border-width-underline-hover);"
     "text-underline-offset:.2em}"
     # the skip links: Rule 18's skip link, shown 4 px inside the block it skips (AX 1.5)
@@ -1864,8 +1867,8 @@ def build():
             items.append(
                 f'<li id="s-14-sg-f-{fm["num"]}" data-return-label="{e(name + " in " + label)}">'
                 f'<a href="#rule-14-{fm["num"]}" data-tier="{fm["tier_word"].lower()}" data-rule="{fm["rule"]}" data-oa-xref>'
-                f'{picture(fm["num"], fm["tier_word"] == "Avoid")}<span class="sg-n">{e(name)}</span>'
-                f'<span class="vh">, </span><span class="sg-t">{e(fm["tier_word"])}</span></a></li>')
+                f'{picture(fm["num"], fm["tier_word"] == "Avoid")}<span class="sg-n">{e(name)}<span class="sg-c">,</span></span>'
+                f'<span class="sg-t">{e(fm["tier_word"])}</span></a></li>')
         qs.append(
             f'<li class="sg-q" data-group="{n}"><p class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</p>'
             f'<a class="oa-link-skip sg-skip" href="{nxt}">Skip these {len(fs)} forms</a>'
@@ -1931,7 +1934,7 @@ def check(frag, by_group, printed):
                 faults.append(f"Rule {fm['rule']} is not under group {n}")
                 continue
             text = html.unescape(re.sub(r"<[^>]+>", "", m.group(1)))
-            if text != f"{fm['form']}, {fm['tier_word']}":
+            if text != f"{fm['form']},{fm['tier_word']}":
                 faults.append(f"Rule {fm['rule']}: the link reads {text!r}")
         got = [int(x) for x in re.findall(r'<a href="#rule-14-(\d+)"', block.group(1))]
         if got != [fm["num"] for fm in fs]:
