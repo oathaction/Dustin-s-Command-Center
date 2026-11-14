@@ -1,10 +1,10 @@
 # Handoff for the next session: Oath & Action Edition 06 (twenty-fifth handoff, November 13)
 
-Written November 13, 2026, after round 4 was built and signed off. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261113_Next-Session-Handoff_V24.md`. V5's sections 3 to 5, section 3 of V8 to V24, and section 3 below hold together. Decision log entries for this chat run from D3-1675 to D3-1862, with Dustin's answers DR-266 to DR-271. The change ledger runs to C-114.
+Written November 13, 2026, after round 4 was built and signed off. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261113_Next-Session-Handoff_V24.md`. V5's sections 3 to 5, section 3 of V8 to V24, and section 3 below hold together. Decision log entries for this chat run from D3-1675 to D3-1867, with Dustin's answers DR-266 to DR-271. The change ledger runs to C-115.
 
 ## 1. Where things stand
 
-Phase 3 is the active phase. Round 4 is built and signed off by the data lead. Tracker row `c05` is done; row `c06` (round 5's build) is next. Board 2 stays at https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2; the guide preview is the chapters page, see section 2A for its version.
+Phase 3 is the active phase. Round 4 is built and signed off by the data lead. Tracker row `c05` is done; row `c06` (round 5's build) is next. Board 2 stays at https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2. The guide preview, the chapters page, is version 10 with round 4 (D3-1866): https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF, from `work/boards/phase-3/round-4/20261113_Guide-Preview-V10.html`.
 
 **Dustin's answers this chat**
 - DR-261 to DR-265, board 2's five replies, applied: S12's stacked tile; board 1 changes and changed forms approved (ledger only); V7.1 rows 38 to 45; each variable's own title in loop drawings, CL-026 keeping its name.
@@ -33,7 +33,7 @@ Phase 3 is the active phase. Round 4 is built and signed off by the data lead. T
 ## 2. Next, in order
 
 ### A. Confirm the committed state
-Set row `c06` active. V11's three setup steps, the three key tests, a strict build and the quick guide check. This chat's closing figures, to match: CLOSING_FIGURES.
+Set row `c06` active. V11's three setup steps, the three key tests, a strict build and the quick guide check. This chat's closing figures, to match: strict build exit 0, 0 warnings, 11,501,823 bytes, 360 rules, 657 specimens; projection 15,051,540; quick guide check PASS at 1440 and 390 px, 713 specimens, 3,399 same-page links, 146 key path walks, 0 failures; kit `build --all --no-png` 95 of 95; data check 125 tables; V7 check 0 failures (D3-1863 to D3-1865).
 
 ### B. Carried into round 5 or the review chat (c07)
 - Not tested this round: the cards on a phone and on Charcoal by the design director (read from exports under load); 768 and 360 px; any screen reader, Safari or Firefox (none in this container).
@@ -65,7 +65,7 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 Round 4 is built and signed off (DR-266 to DR-271). Plan round 5 (the selection guide, the palette specification, three complex examples; chapter 15's workflows and reconciliation table, rules 15.22 to 15.25; the ballot measure and court case trackers), as the Gate 2 report's section 9 sets it. Confirm the committed state with a strict build and the quick guide check first.
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-1675 to the end, with DR-266 to DR-271), the change ledger (to C-114), the open questions (Q-18), and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-1675 to the end, with DR-266 to DR-271), the change ledger (to C-115), the open questions (Q-18), and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-3/20261113_Next-Session-Handoff_V25.md, then section 3 of V5 to V24's handoffs as V25 lists them, the round 4 brief (work/handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md) as the model for round 5's, the round 4 owners' notes (work/handoffs/phase-3/20261113_Round-4-*-Notes.md), and the policy workflow sources (work/research/20261111_Policy-Workflow-Sources.md).
 
 Data keys are already saved in this environment: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
@@ -92,6 +92,7 @@ How to work with me:
 
 Created, all under `work/` unless named:
 - **Brief and handoff:** `handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md`, this handoff.
+- **Guide preview:** `boards/phase-3/round-4/20261113_Guide-Preview-V10.html`.
 - **Owners' notes:** `handoffs/phase-3/20261113_Board-2-Apply-Research-Notes.md`; `20261113_Round-4-Data-Lead-Notes.md`, `-Engineer-Notes.md`, `-Component-Engineer-Notes.md`, `-Maker-A-Notes.md`, `-Infographics-Maker-Notes.md`, `-Design-Director-Notes.md`, `-Cartographer-Notes.md`, `-Systems-Designer-Notes.md`, `-Accessibility-Notes.md`, `-Editor-Notes.md`, `-Research-Notes.md`.
 - **Kit and guide:** ten form modules in `build/chart-kit/forms/` (`icon-array`, `proportional-symbols`, `venn-diagram`, `euler-diagram`, `process-explainer`, `by-the-numbers`, `comparison-cards`, `step-by-step`, `annotated-illustration`, `calendar`); specs `s85.json` to `s95.json`; entries `14-079.json` to `14-084.json` and `14-135.json` to `14-141.json`; sketches `s-14-83-sketch.html`, `s-14-84-sketch.html`; chapter 15's 15.19 to 15.21 plates and `s-15-19-correct.keys.json`, `s-15-20-correct.keys.json`; `build/scripts/phase-3/maker_a_round4_derive.py`, `maker_i_round4_derive.py`, `cartographer_round4_derive.py`.
 
@@ -99,4 +100,4 @@ Modified:
 - `ledger/20261020_Decision-Log.md` (D3-1675 to D3-1862, DR-266 to DR-271); `ledger/20261020_Change-Ledger.md` (C-106 to C-114); `handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (rows 38 to 45); `handoffs/phase-3/20261112_Chapter-14-Plan.json` (round 4's rows); `handoffs/phase-3/20261112_Round-4-Data-Plan.md` (status line).
 - The kit's shared files, `social-data-card.js`, `dot-plot.js`, `bubble-map.js`, `tile-map-shift-arrows.js`; specs S12, S16, S37, S78; entries 14-115 to 14-117; chapters 11, 12, 14, 15, 17, 18 and 26's generators and their outputs; `work/build/guide/code/` (18.22 and 18.23's code sets); the shell; tokens 6.0.0-gate3.3; `guide_build.py`, `guide_check.js`, `phase3_ch14_build.py`, `phase3_ch14_rules_build.py`; sidecars in `build/data/`; `research_round3_requests.py`.
 
-Not touched: `source/`, `deliverables/`, Atlas V7.
+Published: the chapters page, version 10 (private). Not touched: `source/`, `deliverables/`, Atlas V7. A stray 289-byte test script, `/mtest.mjs`, sits at the container's root, outside the repository: maker A wrote it by mistake and the sandbox refused its removal; it lists the kit's form files and holds nothing private.
