@@ -1836,7 +1836,9 @@ def symbol(sid, inner, box=False):
     """A picture's symbol. It draws at the picture's own size, so it needs no viewBox; the country's groups take one, since
     the small-multiple maps draw them smaller (14.123)."""
     vb = f' viewBox="0 0 {W} {H}"' if box else ""
-    return f'<symbol id="{sid}"{vb} stroke-width="{SW}">{inner}</symbol>'
+    # the kit's class on the symbol: a <use> copies the symbol as an <svg> carrying its class, so kit.css's rules that
+    # read ".oac-svg <shape>" (forced colors above all) reach the copied shapes, which no ancestor outside the copy can
+    return f'<symbol class="oac-svg" id="{sid}"{vb} stroke-width="{SW}">{inner}</symbol>'
 
 
 def picture(n, avoid):
@@ -1940,7 +1942,7 @@ def check(frag, by_group, printed):
         if got != [fm["num"] for fm in fs]:
             faults.append(f"group {n}: forms out of ruling (a)'s order")
     # symbols: each defined once and used, every <use> resolving, inside the box, in the neutral inks, no words
-    defs = re.findall(r'<symbol id="([^"]+)"', frag)
+    defs = re.findall(r'<symbol class="oac-svg" id="([^"]+)"', frag)
     uses = re.findall(r'<use href="#([^"]+)"', frag)
     for d in set(defs):
         if defs.count(d) != 1:
@@ -1949,6 +1951,8 @@ def check(frag, by_group, printed):
             faults.append(f"symbol {d} never used")
     for u in set(uses) - set(defs):
         faults.append(f"<use> names {u}, which no symbol defines")
+    if len(defs) != frag.count("<symbol "):
+        faults.append("a symbol does not carry the kit's class")
     for sym in re.findall(r"<symbol[^>]*>(.*?)</symbol>", frag, re.S):
         for cls in re.findall(r'class="([^"]+)"', sym):
             for c in cls.split():
@@ -2010,7 +2014,7 @@ def sheet(frag, out):
     toks = (ROOT / "work/build/tokens/tokens.css").read_text()
     kit = (ROOT / "work/build/chart-kit/kit.css").read_text()
     defs = re.search(r'<svg class="oac-svg sg-defs".*?</svg>', frag, re.S).group(0)
-    nums = sorted(int(x) for x in re.findall(r'<symbol id="s-14-sg-(\d+)"', frag))
+    nums = sorted(int(x) for x in re.findall(r'<symbol class="oac-svg" id="s-14-sg-(\d+)"', frag))
     avoid = set(int(x) for x in re.findall(r'<a href="#rule-14-(\d+)" data-tier="avoid"', frag))
     cells = "".join(f'<div class="c"><span>14.{n}</span>{picture(n, n in avoid)}</div>' for n in nums)
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{toks}{kit}'
