@@ -720,7 +720,7 @@ def rule_14_144():
            + "</ul>")
     note = FACTS_NOTE()
     body = (f'<div class="lv" data-oa-chooser>{group}' + C15.beside(left, right)
-            + f'<p class="k kb">The three reforms side by side, as of {SNAP}</p>'
+            + f'<p class="k kb">The three reforms compared, as of {SNAP}</p>'
             + key + f'<p class="nt">The atlas’s note on the codes: “{e(note)}”</p>'
             + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>'
             + src("reforms R-06, R-30 and R-38, their targets, effects, evidence and routes, and loop R8 with its "
@@ -729,7 +729,7 @@ def rule_14_144():
     files = {"s-14-144-correct": fragment("s-14-144-correct", body, style)}
     alt = ("A reform chooser on Loop R8 from our systems atlas: a group of three radio buttons, Reform R-06, Reform R-30 "
            "and Reform R-38, with R-06 chosen; the loop drawn as two pills with the chosen reform’s targets on it in "
-           f"red; and three cards side by side, one per reform, each with its targets on the loop and outside it, its band, "
+           f"red; and three cards, one per reform, each with its targets on the loop and outside it, its band, "
            f"its four effects one family to a row as of {SNAP} with each code and qualifier whole, its evidence grades and "
            "its routes, and its evidence and tradeoffs one step away in a disclosure. No row adds the effects.")
     meta = {"s-14-144-correct": plate_meta(alt, interactive=True, keys=True,
@@ -774,10 +774,10 @@ def rule_14_144():
         "id": "14.144",
         "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
         "rule": [
-            "Set the reforms whose records name one loop side by side, one card each, in the order of their IDs, with the "
-            "same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one "
+            "Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page "
+            "is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one "
             "outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see "
-            "its targets on the loop turn red (Rule 15.20), and keep every card in view, so the comparison never rests on "
+            "its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on "
             "memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target "
             "outside the loop in words, with its layer, and draw no path the atlas does not hold.",
             "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A "
@@ -805,7 +805,7 @@ def rule_14_144():
             {"label": "Choice", "value": "A named group of radio buttons, one per reform, the first chosen on load (Rule 18.3)"},
             {"label": "Targets", "value": "The chosen reform’s on the loop, in Rule 12.5’s red; each one outside it in words, with its layer and, for a connection, its two ends",
              "token": "oa.color.data.emphasis.red"},
-            {"label": "Cards", "value": "One per reform, the same rows in the same order, all in view; the chosen one takes the selected bar",
+            {"label": "Cards", "value": "One per reform, the same rows in the same order, all on the page whichever is chosen; the chosen one takes the selected bar",
              "token": "oa.color.state.selected.bar"},
             {"label": "Effects", "value": "The atlas’s code and qualifier whole, then its words; zero in words; never added"},
             {"label": "Routes", "value": "Name, who acts, feasibility, and the check date or “Not checked”"},
@@ -813,8 +813,9 @@ def rule_14_144():
         ],
         "correct": dict({"specimen": "s-14-144-correct",
                          "caption": ("Reforms R-06, R-30 and R-38 on Loop R8, live. Choose one and its targets on the loop "
-                                     "turn red; Reform R-38 has none there and says so in words. The three cards stay side by "
-                                     "side with every effect, qualifier, grade and route the atlas holds, and no total.")},
+                                     "turn red; Reform R-38 has none there and says so in words. All three cards stay on the "
+                                     "page whichever is chosen, with every effect, qualifier, grade and route the atlas holds, and "
+                                     "no total.")},
                         **meta["s-14-144-correct"]),
         "failure": dict({"specimen": "s-14-144-failure",
                          "caption": ("<strong>Fails Rule 14.144.</strong> A total score adds each reform’s four codes as points, so a "

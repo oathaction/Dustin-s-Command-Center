@@ -6,6 +6,7 @@ The owners read the "Words for ..." sections directly. Each gives the words an o
 
 ## Status
 
+- 03:50 UTC. **Last two word items written in**: the selection guide's caption shrunk to one line beside its new tier key, and Rule 14.144 says "compared" and "on the page whichever is chosen" in place of "side by side" (the cards stack on phones). Each generator run twice, the second changing nothing; the chapter build and a strict build pass.
 - 03:32 UTC. **Stage 19 restored** to "The part the court holds void no longer applies." on the data lead's ruling, and the 15.22 alt's stages now say "Stage", as the plate does. Two runs each, the second changing nothing; strict build passes. Still waiting: the selection guide's tier key and caption.
 - 03:30 UTC. **Chapter 14's intro rewritten** (task 2) in `phase3_ch14_rules_build.py`, naming the guide, the palette plate and the three charts in full; the opener's caption and Rule 14.1 now point to the guide. Two runs, the second changing nothing; the chapter file rebuilt, only those four fields changed; strict build passes. Still waiting: the selection guide's tier key and caption (its maker), stage 19 (the data lead).
 - 03:29 UTC. **Pass 2 on Rules 14.142 to 14.144 written in**: one word edit (14.144's print lines); Loop R10's first step kept for the stepper; two runs, the second writing nothing; figure checks 35 of 35; strict build passes. The selection guide's words still wait for its maker; stage 19 waits for the data lead.
@@ -51,6 +52,14 @@ Read: the placed fragment `s-14-selection-guide.html` (third draft, 03:22), its 
 | `TIER_KEY`, Reference | Drawn as a sketch, for a narrower job | Forms for a narrower job, each drawn as a sketch | The job first, as in the two lines above |
 | `TIER_KEY`, Avoid | A form that misleads; its entry shows the one to use in its place | Forms that mislead, each sketched beside the form to use instead | DR-240: an avoid entry draws the misleading form as a small sketch beside the better choice; no semicolon |
 | The extra's caption (`14-chapter.json` `extras`, my generator) | Every form in this chapter sits under the question it answers, and each name leads to its entry. Core forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid misleads, so its entry shows the form to use in its place. | Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry. | DD-G4: once the key prints what each tier means, the caption keeps only what it adds, the order and the links (W07). I change it in `phase3_ch14_rules_build.py` when the key lands |
+
+### The guide's caption applied, 03:50 UTC
+
+The maker applied my four tier-key lines at 03:30 (SG-5); the placed fragment opens "Core / Forms we use most, each with a finished example", and so on to "Avoid / Forms that mislead, each sketched beside the form to use instead". With the key in place, the caption in my generator (`14-chapter.json` `extras`, R5-2a) shrinks as drafted:
+
+| Before | After | Why |
+|---|---|---|
+| Every form in this chapter sits under the question it answers, and each name leads to its entry. Core forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid misleads, so its entry shows the form to use in its place. | Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry. | DD-G4: the key at the guide's head now says what each tier means, so the caption keeps what the key does not, the order and the links (W07). Read with the key: it names the first and last tiers in the key's own words and repeats no definition |
 
 ## Words for the complex examples maker
 
@@ -150,6 +159,21 @@ The maker reported finished (main session, 03:40 by its clock). One edit in `wor
 **Kept as built: Loop R10's first step.** The step's first sentence is its `oa-stepper-line`, which the stepper reads into the status line, and "The walk moves to Loop R10." sits in its `oa-stepper-more`, from which CE-1's holds and the component engineer's keys files are worked out. Moving it would change the status line and the holds, so the order stands, as pass 1 allowed.
 
 **Checks.** Baseline run before the edit: 10 files, 0 written, 0 faults, no output changed. After it, run twice: the first wrote one file (`s-14-144-correct.html`), the second wrote none, and the hashes of S96's spec, both failure files, every 14.143 and 14.144 plate and the three entries match. `maker_c_round5_derive.py --figures`: 35 word checks, 0 faults. Strict build to scratch `guide-e6.html`: exit 0, 12,105,488 bytes. My copy of the generator before the edit is `phase3_ch14_complex_build.before.py` in my scratch folder.
+
+### "Side by side" on Rule 14.144, written in (D3-669), 03:50 UTC
+
+The maker (finished) asked: the plate's head and caption call the three cards "side by side", but they stack on phones and at larger text, and its check holds them to one card a row there (WCAG 1.4.4). I took its point and went one step further than "stay in view": stacked cards are not all in view at once on a phone, so the words now say what holds at every width, that choosing a reform hides no card.
+
+| Where | Before | After |
+|---|---|---|
+| The plate's head over the cards | The three reforms side by side, as of October 15, 2026 | The three reforms compared, as of October 15, 2026 |
+| The correct caption, last sentence | The three cards stay side by side with every effect, qualifier, grade and route the atlas holds, and no total. | All three cards stay on the page whichever is chosen, with every effect, qualifier, grade and route the atlas holds, and no total. |
+| The plate's alt | ...and three cards side by side, one per reform, ... | ...and three cards, one per reform, ... |
+| `rule[0]`, first sentence | Set the reforms whose records name one loop side by side, one card each, in the order of their IDs, with the same rows in the same order: ... | Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page is wide enough, each with the same rows in the same order: ... |
+| `rule[0]`, second sentence | ...and keep every card in view, so the comparison never rests on memory. | ...and keep every card on the page as the choice changes, so the comparison never rests on memory. |
+| Spec "Cards" | One per reform, the same rows in the same order, all in view; the chosen one takes the selected bar | One per reform, the same rows in the same order, all on the page whichever is chosen; the chosen one takes the selected bar |
+
+**Checks for both changes.** `phase3_ch14_complex_build.py`: baseline run, 0 written; after the six edits, run twice, the first writing 2 files and the second none, the hashes of every file it writes matching; `maker_c_round5_derive.py --figures` 35 word checks, 0 faults. `phase3_ch14_rules_build.py` run twice, the second changing nothing. `phase3_ch14_build.py`: exit 0, 144 rules, 0 faults, 2 files written (the chapter file and the manifest, for the alt); a field-by-field diff of the chapter file shows the guide's caption and 14.144's caption, `rule[0]` and "Cards" spec, nothing else; `--check` 99 of 99 current. Strict build to scratch `guide-e9.html`: exit 0, 12,106,209 bytes, each new phrase found once on the page.
 
 ## Words for the tracker designer
 
@@ -372,6 +396,8 @@ On the main session's word that the three charts are final and the guide's place
 - D3-xxx | Stage 19 cites its 2026 example as "the latest such ruling we found" | The research lead chose it by date from the opinion lists it read to November 9, 2026; the words claim no wider search
 - D3-xxx | Chapter 14's intro names the guide, the palette plate and the three charts in full, and the opener's caption and Rule 14.1 point to the guide | The old words said the rules come first and every form has a kit example, untrue once the guide leads and never true of the sketches
 - D3-xxx | Stage 19's stop line reads "The part the court holds void no longer applies.", the research lead's words | The data lead's ruling (Batch 5): "can no longer be enforced" claims more than Marbury or the 2026 ruling states
+- D3-xxx | The selection guide's caption keeps only the order and the links | Its key now says what each tier means (DD-G4, SG-5)
+- D3-xxx | Rule 14.144 and its plate drop "side by side" for "compared" and "on the page whichever is chosen" | The cards stack on phones and at larger text, so "side by side" and "in view" were untrue there; choosing a reform hides no card at any width
 - D3-xxx | Rule 14.144's working title says "effect" where the brief says "measure" | In a civic guide a measure is also a bill or a ballot question, and the atlas calls each column an effect
 
 ## Requests

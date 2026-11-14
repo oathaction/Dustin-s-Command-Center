@@ -14,7 +14,7 @@
   {
    "specimen": "s-14-selection-guide",
    "label": "Choose a chart",
-   "caption": "Every form in this chapter sits under the question it answers, and each name leads to its entry. Core forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid misleads, so its entry shows the form to use in its place.",
+   "caption": "Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry.",
    "contents": true,
    "placement": "head"
   },
@@ -6117,7 +6117,7 @@
    "id": "14.144",
    "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
    "rule": [
-    "Set the reforms whose records name one loop side by side, one card each, in the order of their IDs, with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets on the loop turn red (Rule 15.20), and keep every card in view, so the comparison never rests on memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target outside the loop in words, with its layer, and draw no path the atlas does not hold.",
+    "Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target outside the loop in words, with its layer, and draw no path the atlas does not hold.",
     "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or “+M renter-owner”. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
    ],
    "why": {
@@ -6148,7 +6148,7 @@
     },
     {
      "label": "Cards",
-     "value": "One per reform, the same rows in the same order, all in view; the chosen one takes the selected bar",
+     "value": "One per reform, the same rows in the same order, all on the page whichever is chosen; the chosen one takes the selected bar",
      "token": "oa.color.state.selected.bar"
     },
     {
@@ -6175,7 +6175,7 @@
    ],
    "correct": {
     "specimen": "s-14-144-correct",
-    "caption": "Reforms R-06, R-30 and R-38 on Loop R8, live. Choose one and its targets on the loop turn red; Reform R-38 has none there and says so in words. The three cards stay side by side with every effect, qualifier, grade and route the atlas holds, and no total."
+    "caption": "Reforms R-06, R-30 and R-38 on Loop R8, live. Choose one and its targets on the loop turn red; Reform R-38 has none there and says so in words. All three cards stay on the page whichever is chosen, with every effect, qualifier, grade and route the atlas holds, and no total."
    },
    "failure": {
     "specimen": "s-14-144-failure",

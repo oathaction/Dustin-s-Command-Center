@@ -1661,10 +1661,9 @@ def chapter(B, sources):
         # over its generator's draft. Working words until the data lead's rulings (a) and (b) and the drafts land.
         "extras": [
             {"specimen": "s-14-selection-guide", "label": "Choose a chart",
-             "caption": ("Every form in this chapter sits under the question it answers, and each name leads to its entry. Core "
-                         "forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds "
-                         "show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid "
-                         "misleads, so its entry shows the form to use in its place.")},
+             # DD-G4, SG-5: the guide's own key now says what each tier means, so the caption keeps the order and the links
+             "caption": ("Every form in this chapter sits under the question it answers, core forms first and forms to avoid "
+                         "last, and each name leads to its entry.")},
             {"specimen": "s-14-palette-spec", "label": "The four data palettes, step by step",
              "caption": ("Each of the four palettes appears with its job and its steps, and each step with its token name, its "
                          "value and its contrast on every ground we approve it for. Gray and three color-blind simulations follow "

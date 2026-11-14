@@ -1270,7 +1270,7 @@
  "s-14-144-correct": {
   "chapter": "14",
   "rule": "14.144",
-  "alt": "A reform chooser on Loop R8 from our systems atlas: a group of three radio buttons, Reform R-06, Reform R-30 and Reform R-38, with R-06 chosen; the loop drawn as two pills with the chosen reform’s targets on it in red; and three cards side by side, one per reform, each with its targets on the loop and outside it, its band, its four effects one family to a row as of October 15, 2026 with each code and qualifier whole, its evidence grades and its routes, and its evidence and tradeoffs one step away in a disclosure. No row adds the effects.",
+  "alt": "A reform chooser on Loop R8 from our systems atlas: a group of three radio buttons, Reform R-06, Reform R-30 and Reform R-38, with R-06 chosen; the loop drawn as two pills with the chosen reform’s targets on it in red; and three cards, one per reform, each with its targets on the loop and outside it, its band, its four effects one family to a row as of October 15, 2026 with each code and qualifier whole, its evidence grades and its routes, and its evidence and tradeoffs one step away in a disclosure. No row adds the effects.",
   "width_px": 328,
   "illustrative": false,
   "notes": "Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; the choice shows through the plate's own CSS from the checked radio, scripts on or off; the status line is the shell's (C-2, CE-2). Every value read from the atlas's reform and loop records.",
