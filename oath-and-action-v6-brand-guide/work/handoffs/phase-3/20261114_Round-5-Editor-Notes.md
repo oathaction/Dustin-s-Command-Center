@@ -330,6 +330,9 @@ Sentence lengths 8, 16, 21, 25, 35 and 18 words, on six different frames (W03, W
 
 ## Not tested
 
+- The V7 check over my scratch build after chapter 15's words pass 2: started at 03:20 UTC and stopped by me at 03:23 before it finished, to keep the load down while others drive browsers. Not run to the end; my edits change no chip or atlas value, and the systems designer's 03:07 run passed.
+- Captures of chapter 11's and chapter 15's plates after my word edits; the plates are live text and wrap, but I looked at none.
+
 - The engineer's chapter build with group 18 in the plan, which waits for the row.
 - Any word here against a capture: I read the plates as HTML text, not as rendered pages.
 - The trackers' plates: words pass on Rules 11.10 and 11.11 as drafted waits for the next pass; this pass sets their step names, end words and Rule 11.12 only.
