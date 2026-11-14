@@ -6,6 +6,7 @@ The owners read the "Words for ..." sections directly. Each gives the words an o
 
 ## Status
 
+- 03:25 UTC. **Pass 2 drafts written, nothing applied**: "Words for the complex examples maker, pass 2" (two rows; a third, on the ink word, withdrawn after I read S53's reason) and the selection guide's tier key and caption (SG-5, DD-G4), both waiting for their makers to report. Stage 19's "can no longer be enforced" stays unless the data lead rules otherwise (main session, 03:23).
 - 03:22 UTC. **Chapter 15 words pass 2 written in** (D3-669, on the main session's 03:18 word): 23 word edits in `phase3_ch15_build.py`, stage numbers named "stage" throughout Rule 15.22 and stage 19 rewritten; two runs, the second changing nothing; strict build passes. ED5-4 and ED5-5 closed. Trackers final. Rules 14.142 to 14.144 wait for my pass 2.
 - 02:53 UTC. **Alert: my chapter 15 words pass is already in `phase3_ch15_build.py`** (20 word edits written 02:50 to 02:52 UTC, two runs, the second changing nothing, strict build passing), before the main session's hold reached me at 02:53; the 02:53 snapshot carries them. I write nothing more there until told. The systems designer builds its five fixes on the file as it stands; the rows and a patch are under "Words for the systems designer". The trackers pass is finished.
 - 02:49 UTC. **Trackers' words pass written in** (D3-669): nine word edits in `apply_systems_ch11.py`, plus the data lead's two optional end words, which I took; two runs each, the second changing nothing; strict builds pass. Logged under "Words for the tracker designer". Next: the words pass on Rules 15.22 to 15.25.
@@ -35,6 +36,18 @@ Written at 01:50 UTC, before the data lead's ruling (a) and the engineer's R5-2 
 | The plate's alt, if the manifest needs one | Every one of the 127 forms in this chapter, under the 16 reader questions that open its groups, each named with its tier and linked to its entry, beside a small drawing of the form. | The plate is live text, so its alt only says what the drawing set is; the names themselves are read from the links |
 
 Two words to keep out of the plate: "tier" (a studio word; the caption never needs it) and "avoid form" (say "form to avoid", as the avoid plates do).
+
+### Words pass on the guide as placed, 03:25 UTC, draft only (SG-5, DD-G4)
+
+Read: the placed fragment `s-14-selection-guide.html` (third draft, 03:22), its meta file and the selection guide maker's SG-5. The maker is still trimming and fixing DD-G1, so these are drafts; I write nothing into `selection_guide_build.py` or my own generator until the main session says the maker has reported. The question lines, the 127 names, the accessible names ("Ranked bar, Core", ruling A-1) and the skip links ("Skip the chart guide", "Skip these 10 forms") read well and stand.
+
+| Where | Now | Draft | Why |
+|---|---|---|---|
+| `TIER_KEY`, Core | The forms we use most, each with a finished example | Forms we use most, each with a finished example | The four lines then open alike, so a reader scans down the words that differ; a key is a list, where one frame helps |
+| `TIER_KEY`, Extended | For a story that needs one, with a finished example | Forms for a story that needs them, each with a finished example | "Needs one" leaves a reader asking one what |
+| `TIER_KEY`, Reference | Drawn as a sketch, for a narrower job | Forms for a narrower job, each drawn as a sketch | The job first, as in the two lines above |
+| `TIER_KEY`, Avoid | A form that misleads; its entry shows the one to use in its place | Forms that mislead, each sketched beside the form to use instead | DR-240: an avoid entry draws the misleading form as a small sketch beside the better choice; no semicolon |
+| The extra's caption (`14-chapter.json` `extras`, my generator) | Every form in this chapter sits under the question it answers, and each name leads to its entry. Core forms, the ones we use most, come first, then extended forms for a story that needs them, and both kinds show a finished example. A reference form, drawn as a sketch, suits a narrower job, and a form to avoid misleads, so its entry shows the form to use in its place. | Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry. | DD-G4: once the key prints what each tier means, the caption keeps only what it adds, the order and the links (W07). I change it in `phase3_ch14_rules_build.py` when the key lands |
 
 ## Words for the complex examples maker
 
@@ -110,6 +123,18 @@ Read: the three entry files, `s96.json`, `s-14-142-failure.chart.json` and the f
 | 14-144.json failure caption and alt; the failure plate | (as drafted) | Stand | One fault, and the plate scores the codes only to show the fault, with the scoring in words |
 
 **Read and left as drafted:** every rule's `specs` and `builders`; 14.143's step words but the two rows above (each names its connection and the atlas's grade and delay, and B4's third step quotes the atlas's limit on L54); both failure plates of 14.143 and 14.144; the cards' evidence and tradeoffs, quoted from the atlas; the code key and the atlas's note on codes. The plates' typed chips ("Loop B4", "Connection L23") are chips under Rule 13.9, not bare codes.
+
+## Words for the complex examples maker, pass 2
+
+Written at 03:25 UTC, draft only: the maker is rebuilding S96 through `phase3_ch14_complex_build.py`, and I write nothing into it until the main session says the maker has reported. Read: the three entry files, `s96.json`, `s-14-142-failure.chart.json` and the plates `s-14-143-correct` and `s-14-144-correct` as they stood at 03:23, and the design director's two items for me. Every row of pass 1 is applied but one (below). The design director's two items: 14.144's failure caption now says "A total score adds each reform’s four codes as points", which matches the total column the plate draws, so nothing is left; DD-C3 asks for a hold on "a variable" in 14.143's title, which changes no word.
+
+| Where (generator line) | Now | Draft | Why |
+|---|---|---|---|
+| S96 `chart_notes[0]`, `reading_guide`, `phone_notes[0]` and `alt`; the failure spec's `alt` | the two in the strongest ink (and the same in four other places) | **Stands; I withdrew my draft.** | I first drafted "in the text’s ink", the phrase 23 specs use. Then S53's notes showed why S53 and S96 say "strongest ink": the accessibility review (AX S4) found a named mark is dark on Newsprint, light on Charcoal and the system highlight in forced colors, so only "the strongest ink" is true on every ground. The maker followed that precedent, and it holds |
+| 14.143 plate, Loop R10's step 1 (carried from pass 1) | Seats with little electoral competition raise how often the primary decides the winner. The walk moves to Loop R10. Start at seats with little electoral competition, and suppose they rise. Connection L08 ... | The walk moves to Loop R10. Start at seats with little electoral competition, and suppose they rise. They raise how often the primary decides the winner. Connection L08 ... | The change of loop comes before the claim it frames. If the stepper's holds need the step's first sentence to stay the connection's line (CE-1), keep the order and leave this row; it is a Should |
+| 14.144 plate, the three print lines | Reform R-06 on Loop R8: its target on the loop, Connection L39, drawn heavy. (and R-30) | ...Connection L39, drawn with a heavy line. | "Drawn heavy" leaves out what is heavy |
+
+**Read and left as they stand:** the three titles, rules, whys, specs, builders and captions after pass 1; S96's title (DR-239's two sentences), notes, measure line and source line; both loops' step words but the row above, the limits quoted from the atlas, and "the walk weighs neither against the other"; 14.144's cards, the code key with its true minus signs, the atlas's note on codes, "Band, the kind of change", "Effect on ..." and the routes; both failure plates and their alts but the ink row above.
 
 ## Words for the tracker designer
 
@@ -306,6 +331,7 @@ Sentence lengths 8, 16, 21, 25, 35 and 18 words, on six different frames (W03, W
 - D3-xxx | Rule 15.23 no longer says the hearing is where the public takes part, and Rule 15.22 cites Rule 11.3 for the stop square | Rule 11.1 says Congress's hearings hear invited witnesses; Rule 11.3 is the rule that ends a stopped bill on a square
 - D3-xxx | Rule 15.22 and its plate call each numbered stage a stage, never a step | Rule 15.23 teaches that a tracker's steps and a route's stages differ, and it prints the same numbers as "Stage N"
 - D3-xxx | Stage 19 cites its 2026 example as "the latest such ruling we found" | The research lead chose it by date from the opinion lists it read to November 9, 2026; the words claim no wider search
+- D3-xxx | Stage 19's stop line keeps "can no longer be enforced" until the data lead rules | The research lead warned against saying more than Marbury's "void"; the main session sent the point to the data lead, and the line stands meanwhile
 - D3-xxx | Rule 14.144's working title says "effect" where the brief says "measure" | In a civic guide a measure is also a bill or a ballot question, and the atlas calls each column an effect
 
 ## Requests
