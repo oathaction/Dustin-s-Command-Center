@@ -757,7 +757,7 @@ def rule_14_144():
     # families' order, then the total the fault adds
     rows = "".join(f'<tr><th scope="row">{chip("Reform", rid)}</th><td>'
                    + ", ".join(f'<span class="cn8">{e(REFORM[rid]["effects"][f])}</span>' for f in ("DQ", "GE", "EP", "EQ"))
-                   + f'</td><td class="tt">+{tot[rid]}</td></tr>' for rid in RIDS)
+                   + f'</td><td class="f144-tt">+{tot[rid]}</td></tr>' for rid in RIDS)
     fam = ", ".join(lc(C13.FAMILY[f]) for f in ("DQ", "GE", "EP", "EQ"))
     fail = (dnp() + '<p class="hed"><span>\u201cWhich reform does the most for Loop R8?\u201d</span></p>'
             '<table class="ft8"><thead><tr><th scope="col">Reform</th><th scope="col">Effects</th>'
@@ -768,7 +768,7 @@ def rule_14_144():
                                       "text-align:left;vertical-align:top}.ft8 thead th{border-top:0;font:var(--oa-type-label);"
                                       "letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);"
                                       "color:var(--oa-color-text-secondary)}"
-                                      ".ft8 .tt{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;"
+                                      ".ft8 .f144-tt{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;"
                                       "text-align:right;white-space:nowrap}.ft8 thead th:last-child{text-align:right}.ft8 .cn8{white-space:nowrap}"
                                       "@container oa-frame (max-width:327.98px){.p .ft8{max-width:calc(100cqi - 32px)}}"))
     files["s-14-144-failure"] = fragment("s-14-144-failure", fail, fstyle)
