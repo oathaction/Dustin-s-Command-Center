@@ -100,7 +100,9 @@ def dotted(path):
 
 def ratio(x):
     """A contrast ratio rounded down to two places, so it never rounds up across a bar (6.2)."""
-    return f"{math.floor(x * 100 + 1e-9) / 100:.2f} to 1"
+    # the accessibility lead's item 6: a ratio holds together ("1.21 to 1" never breaks), and a line may break before the words
+    # after it
+    return f"{math.floor(x * 100 + 1e-9) / 100:.2f}\u00a0to\u00a01"
 
 
 def contrast(a, b):
@@ -331,12 +333,14 @@ def palette_block(p):
                  f'<code class="ps-tk">{dotted("oa.chart.hatch.weight")}</code>, {weight:g} px lines in Stone. Group 4’s label sits beside '
                  f'the hatch, in <code class="ps-tk">{dotted("oa.chart.color.categorical.labelBeside.group4")}</code>. Markers, in order: '
                  f'{", ".join(MARKER)}.</p>')
-    carry = p["carry"].format(outline="oa.chart.color.sequential.outline") if p["carry"] else ""
+    # a token name in running words breaks only at its dots, as every other on the plate (item 6: at 200 percent text the whole
+    # name ran past the plate)
+    carry = e(p["carry"]).replace("{outline}", f'<code class="ps-tk">{dotted("oa.chart.color.sequential.outline")}</code>') if p["carry"] else ""
     tok = (f'<p class="ps-note">Tokens: <code class="ps-tk">{dotted(p["fill"].format(n=1))}</code> to {p["word"].lower()}{p["steps"]}, each with '
            f'<code class="ps-tk">.<wbr>onNewsprint</code> and <code class="ps-tk">.<wbr>onCharcoal</code>, and White paper prints the Newsprint values; label inks '
            f'<code class="ps-tk">{dotted(p["label"].format(n=1))}</code> and on. In a form, name the role: '
            f'<code class="ps-tk">{p["code"]}-1</code> to <code class="ps-tk">{p["code"]}-{p["steps"]}</code>.'
-           + (f" {e(carry)}" if carry else "") + "</p>")
+           + (f" {carry}" if carry else "") + "</p>")
     # DD-P2 (the design director): the palette as a reader sees it on each ground first, its proofs' results, then the table and
     # the token lines as the reference they are
     return (f'<div class="ps-pal" id="ps-{p["id"]}"><p class="ps-name">{e(p["name"])}</p><p class="ps-job">{e(p["job"])}</p>'
@@ -398,7 +402,7 @@ def prussian_line():
     need(max(rs) < 3, "a group ink reaches 3 to 1 on Prussian; reread ruling b's Prussian line")
     lo, hi = min(rs), max(rs)
     return (f'<li><span class="ps-lk">On Prussian</span> No chart draws on it. A chart in a Prussian panel sits on its own Newsprint '
-            f'or Charcoal plate, since the four group inks measure {ratio(lo).replace(" to 1", "")} to {ratio(hi)} on Prussian, under the 3 to 1 a mark '
+            f'or Charcoal plate, since the four group inks measure {ratio(lo).replace("\u00a0to\u00a01", "")} to {ratio(hi)} on Prussian, under the 3 to 1 a mark '
             f'needs, and red never sits on Prussian (Rule 05.3).</li>')
 
 
@@ -443,7 +447,7 @@ STYLE = """
 .ps-t th[scope="row"] .ps-sw { display: block; margin-bottom: var(--oa-space-100) }
 .ps-st { display: block; font: var(--oa-type-caption); font-weight: var(--oa-font-weight-bold) }
 .ps-cd, .ps-hn { display: block }
-.ps-v { display: block; font-variant-numeric: tabular-nums; font-weight: var(--oa-font-weight-semibold); white-space: nowrap }
+.ps-v { display: block; font-variant-numeric: tabular-nums; font-weight: var(--oa-font-weight-semibold) }
 .ps-l { display: block; font-variant-numeric: tabular-nums }
 .ps-sw, .ps-strip, .ps-ln, .ps-rs { forced-color-adjust: none; print-color-adjust: exact; -webkit-print-color-adjust: exact }
 .ps-sw text { font-family: var(--oa-font-family-reading); font-size: var(--oa-chart-type-tick); font-weight: var(--oa-font-weight-semibold); font-variant-numeric: tabular-nums }
@@ -451,7 +455,7 @@ STYLE = """
 .ps-gr { fill: var(--oa-color-surface) }
 .ps-gs { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-300); margin-top: var(--oa-space-300) }
 @container (min-width: 40rem) { .ps-gs { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
-.ps-g { padding: var(--oa-space-300); background: var(--oa-color-surface); color: var(--oa-color-text-primary);
+.ps-g { padding: var(--oa-space-300); background: var(--oa-color-surface); color: var(--oa-color-text-primary); print-color-adjust: exact; -webkit-print-color-adjust: exact;
   box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--oa-color-border-strong) }
 .ps-gn { font: var(--oa-type-caption); font-weight: var(--oa-font-weight-bold); margin-bottom: var(--oa-space-200) }
 .ps-sws { display: flex; flex-wrap: wrap; gap: var(--oa-space-100); margin: 0; padding: 0; list-style: none }
@@ -460,9 +464,13 @@ STYLE = """
 .ps-pr { margin-top: var(--oa-space-200) }
 .ps-prk + .ps-prs { margin-top: var(--oa-space-050) }
 .ps-prk { font: var(--oa-type-caption); color: var(--oa-color-text-secondary) }
+/* with large text in a narrow column, a long name or proof word breaks by the language's hyphens rather than run past its box */
+.ps-name, .ps-prk, .ps-gn { overflow-wrap: break-word; hyphens: auto }
 .ps-strip { display: block; width: 100%; max-width: 22rem; height: 20px }
-.ps-ls { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); max-width: 22rem; margin: var(--oa-space-050) 0 0; padding: 0; list-style: none;
+/* each lightness under its step where the row holds them; with large text they wrap, never past the panel (item 6) */
+.ps-ls { display: flex; flex-wrap: wrap; max-width: 22rem; margin: var(--oa-space-050) 0 0; padding: 0; list-style: none;
   font: var(--oa-type-caption); font-variant-numeric: tabular-nums; color: var(--oa-color-text-secondary); text-align: center }
+.ps-ls li { flex: 1 0 0; min-width: max-content }
 .ps-ms { margin: var(--oa-space-300) 0 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-150) }
 .ps-mg { font: var(--oa-type-caption); max-width: 52em; text-wrap: pretty }
 .ps-lines { margin: var(--oa-space-300) 0 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-100); font: var(--oa-type-caption); color: var(--oa-color-text-secondary); max-width: 52em }
@@ -472,12 +480,14 @@ STYLE = """
 .ps-gls { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--oa-space-150) }
 .ps-gls li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--oa-space-200); align-items: center; font: var(--oa-type-caption) }
 .ps-lns { display: grid; gap: var(--oa-space-050) }
+/* a narrow panel, or large text, sets each grade's words under its two lines */
+@container (max-width: 30rem) { .ps-gls li { grid-template-columns: minmax(0, 1fr); gap: var(--oa-space-050) } }
 .ps-ln { display: block }
 .ps-rs { display: inline-block; fill: var(--oa-chart-color-subject); vertical-align: .08em; margin-right: 2px }
 .ps-gw b { font-weight: var(--oa-font-weight-bold) }
 /* under 40rem each table row stands as a block: the step, then each value under its column's word (6.6, as chapter 26's table) */
 @container (max-width: 39.99rem) {
-  .ps-t thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
+  .ps-t thead { display: block; position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
   .ps-t, .ps-t tbody { display: block }
   .ps-t tr { display: block; padding: var(--oa-space-150) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
   .ps-t tbody tr:last-child { border-bottom: 0 }

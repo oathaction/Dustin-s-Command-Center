@@ -618,9 +618,11 @@ CARD_CSS = (
     ".rl8 .rw{color:var(--oa-color-text-secondary)}"
     ".ky8{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;font:var(--oa-type-caption)}"
     ".ky8 b{font-variant-numeric:tabular-nums}.pon{display:none}"
-    # from 680 px the three cards stand side by side, and each row of one card lines up with the same row of the others:
-    # a card spans thirteen rows of the list's grid (its head, the eleven rows of its list, its disclosure), its list eleven
-    "@container oa-frame (min-width:680px){.cds{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;"
+    # on the 680 px stage the three cards stand side by side, and each row of one card lines up with the same row of the
+    # others: a card spans thirteen rows of the list's grid (its head, the eleven rows of its list, its disclosure), its
+    # list eleven. Three columns only while the frame holds 40em of the plate's own text as well (680 px at the guide's
+    # 17 px), so text set larger (1.4.4: 200 percent, or a larger default) takes one card a row, as a phone does
+    "@container oa-frame (min-width:680px) and (min-width:40em){.cds{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;"
     "grid-template-rows:repeat(13,auto);row-gap:0}"
     "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 13;grid-template-rows:subgrid;row-gap:0}"
     ".cd8 dl{display:grid;grid-row:span 11;grid-template-rows:subgrid;row-gap:0}}}"
@@ -1105,6 +1107,9 @@ def check(entries, files, specs):
     ok(re.search(r"<b class=\"cd\">[^<]+</b>,&#32;<span class=\"cw\">", t) is not None and "</b><span class=\"cw\">" not in t,
        "14.144: a code runs into its words")
     ok("grid-row:span 11;grid-template-rows:subgrid" in files["s-14-144-correct"], "14.144: the cards' rows would stack")
+    ok("@container oa-frame (min-width:680px) and (min-width:40em){.cds{grid-template-columns:repeat(3," in files["s-14-144-correct"]
+       and files["s-14-144-correct"].count(".cds{grid-template-columns:repeat(3,") == 1,
+       "14.144: the three cards side by side must hang on the frame's width in em, so larger text takes one card a row (1.4.4)")
     ok(t.count("<dt>") == 33 and t.count("<dl>") == 3, "14.144: eleven rows in each card's list, so the subgrid spans hold")
     pr38 = reader_text(re.search(r'data-oa-print="R-38">.*?</p>', t).group(0))
     ok("in red" not in pr38, f"14.144: R-38's print line says red: {pr38}")
