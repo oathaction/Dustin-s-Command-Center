@@ -741,6 +741,42 @@
   "notes": "",
   "fit_switch": false
  },
+ "s-11-10-correct": {
+  "chapter": "11",
+  "rule": "11.10",
+  "width_px": 360,
+  "alt": "Three Illustrative state ballot measures at 360 px on Newsprint, each drawn as six numbered steps with the bill tracker’s marks, and a key of the six steps, Filed, Title and summary, Signatures, Legislature, On the ballot and Vote, and of the marks. Measure 99010, State park entry fees: Step 6 of 6: Vote. Step 4 never happened: a direct initiative goes to the ballot with no vote in the Legislature. The polls closed on November 3, and the count stays unofficial until the state certifies it by November 25. Steps: 1 Filed done; 2 Title and summary done; 3 Signatures done; 4 Legislature never happened; 5 On the ballot done; 6 Vote now. Measure 99011, Library district funding: Passed on November 3. Certified on November 24. The Legislature did not pass it by May 5, so a second round of signatures sent it to the voters. It takes effect December 3. Steps: 1 Filed done; 2 Title and summary done; 3 Signatures done; 4 Legislature done; 5 On the ballot done; 6 Vote done. Measure 99013, Lake shoreline setbacks: Did not qualify on July 14: too few valid signatures. A random sample of the signatures showed fewer valid ones than the law requires. Steps: 1 Filed done; 2 Title and summary done; 3 Signatures stopped; 4 Legislature not yet; 5 On the ballot not yet; 6 Vote not yet.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-10-failure": {
+  "chapter": "11",
+  "rule": "11.10",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative ballot measure, 99010, State park entry fees, at 360 px: steps 1 to 3 done, step 4 never happened, and steps 5 and 6 drawn as done, so the vote reads as finished. The words read “Passed. Yes leads with 52 percent of the votes counted on election night, November 3.” The count is unofficial, the state has not certified it, and nothing on the card says so.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-11-correct": {
+  "chapter": "11",
+  "rule": "11.11",
+  "width_px": 360,
+  "alt": "Three Illustrative federal civil cases at 360 px on Newsprint, each drawn as six numbered steps with the bill tracker’s marks, and a key of the six steps, Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling, and of the marks. Case 99014, Wetland fill permit: Step 4 of 6: Appeals court ruling. A panel of three judges heard argument on May 6 and has not ruled. Steps: 1 Filed done; 2 Trial court ruling done; 3 Appeal done; 4 Appeals court ruling now; 5 Supreme Court petition not yet; 6 Supreme Court ruling not yet. Case 99015, Ferry route contract: Review denied on January 11. The Supreme Court declined to hear the case, so the appeals court’s ruling stands. Steps: 1 Filed done; 2 Trial court ruling done; 3 Appeal done; 4 Appeals court ruling done; 5 Supreme Court petition done; 6 Supreme Court ruling never happened. Case 99016, Highway noise walls: Settled on April 9. The two sides agreed to end the case and filed to dismiss it before trial. Steps: 1 Filed done; 2 Trial court ruling stopped; 3 Appeal not yet; 4 Appeals court ruling not yet; 5 Supreme Court petition not yet; 6 Supreme Court ruling not yet.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
+ "s-11-11-failure": {
+  "chapter": "11",
+  "rule": "11.11",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative federal civil case, 99015, Ferry route contract, at 360 px, with all six steps drawn as done, Supreme Court ruling among them. The words read “Affirmed by the Supreme Court on January 11. The Supreme Court left the appeals court’s ruling in place.” The Court denied review and never heard the case, and nothing on the card says so.",
+  "illustrative": true,
+  "notes": "",
+  "fit_switch": false
+ },
  "s-11-12-correct": {
   "chapter": "11",
   "rule": "11.12",
@@ -1031,6 +1067,24 @@
   "illustrative": true,
   "notes": "",
   "fit_switch": false
+ },
+ "s-11-ballot-steps": {
+  "chapter": "11",
+  "rule": null,
+  "width_px": null,
+  "alt": "The six steps of a state ballot measure, a citizen initiative, with what happens at each and where the law sets it in the four states we read. 1, Filed: The people behind the measure file its full text with the official the state’s law names, in some states with the first signatures. Law: Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9001. 2, Title and summary: The attorney general checks the measure’s form and subject and writes the title and summary that petitions and ballots carry. No petition goes out before then. Law: Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014. 3, Signatures: The measure’s backers gather signatures and file them by the deadline, and election officials count and check them. With too few valid signatures, the measure does not qualify. Law: Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031. 4, Legislature: Where the initiative is indirect, the Legislature votes on the measure as filed, and if it does not pass it, a second round of signatures sends it on. A direct initiative goes to the ballot with no vote here, so it keeps this step under a slash. Law: Massachusetts, Amendment Article LXXXI, Section 2; Ohio Constitution, Article II, Section 1b; Michigan Constitution, Article II, Section 9. 5, On the ballot: The state’s election officer certifies that the measure will appear on the ballot. Law: California Elections Code 9033; Massachusetts, Amendment Article LXXXI, Section 2. 6, Vote: The voters decide. The count stays unofficial until the state certifies it, and a measure that passed takes effect on the date its state’s law sets, such as 30 days after the election. Law: California Constitution, Article II, Section 10(a); Massachusetts, Amendment Article LXXXI, Section 2; Ohio, Article II, Section 1b; Michigan, Article II, Section 9.",
+  "illustrative": false,
+  "notes": "A readable table (D2-255, R4-3) of a ballot measure’s six steps, from the research lead’s round 5 facts.",
+  "readable": true
+ },
+ "s-11-court-steps": {
+  "chapter": "11",
+  "rule": null,
+  "width_px": null,
+  "alt": "The six steps of a federal civil case, with what happens at each and where the law sets it. 1, Filed: One side files a complaint in a federal district court, the trial court for a case under federal law. Law: Federal Rules of Civil Procedure, Rule 3; 28 U.S.C. 1331. 2, Trial court ruling: Motions, the exchange of evidence and, unless the two sides settle, a trial. The court enters its judgment, with or without a trial. Law: Federal Rules of Civil Procedure, Rules 41, 56 and 58. 3, Appeal: The side that lost files a notice of appeal within 30 days of the judgment, or 60 days when the United States, a federal agency or a federal officer is a party. Law: 28 U.S.C. 1291 and 2107; Federal Rules of Appellate Procedure, Rule 4. 4, Appeals court ruling: A panel of three judges decides. It can affirm, reverse, vacate or modify the judgment, and send the case back to the trial court. Law: 28 U.S.C. 2106; Federal Rules of Appellate Procedure, Rules 40 and 41. 5, Supreme Court petition: The side that lost asks the Supreme Court to hear the case, within 90 days. The Court chooses: review is “not a matter of right, but of judicial discretion.” Law: Rules of the Supreme Court, Rules 10, 13 and 16; 28 U.S.C. 1254 and 2101. 6, Supreme Court ruling: Briefs, argument and the Court’s decision, with the same powers as the court of appeals. A tie vote leaves the ruling below in place. Law: 28 U.S.C. 2106; Rules of the Supreme Court, Rule 16.",
+  "illustrative": false,
+  "notes": "A readable table (D2-255, R4-3) of a federal civil case’s six steps, from the research lead’s round 5 facts.",
+  "readable": true
  },
  "s-11-icons": {
   "chapter": "11",

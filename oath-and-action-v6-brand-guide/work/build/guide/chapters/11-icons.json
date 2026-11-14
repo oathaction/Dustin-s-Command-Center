@@ -7,7 +7,7 @@
   "opener": "s-11-opener",
   "intro": [
     "A glyph here is a small drawn mark, and each one carries its meaning twice, in its shape and in the word beside it. A reader who sees no color, or prints the page in gray, gets the same meaning as everyone else.",
-    "Trackers come first: they show how far a bill has come in six numbered steps, and the same marks then follow a records request or an agency rule. After them come the utility icons, which sit beside the word for an action on a page, and the three marks that give an error, a success or a warning its shape."
+    "Trackers come first: they show how far a bill has come in six numbered steps, and the same marks then follow a records request, an agency rule, a ballot measure and a court case. After them come the utility icons, which sit beside the word for an action on a page, and the three marks that give an error, a success or a warning its shape."
   ],
   "groups": [
     {
@@ -19,8 +19,8 @@
     {
       "before_rule": "11.8",
       "number": 2,
-      "title": "Records requests and agency rules",
-      "line": "A request for public records and a federal agency’s rule each move through six steps of their own, drawn with the tracker’s marks."
+      "title": "Records requests, agency rules, ballot measures and court cases",
+      "line": "A records request, a federal agency’s rule, a state ballot measure and a federal court case each move through six steps of their own, drawn with the bill tracker’s marks. Each ends in words that say how it came out, with the date."
     },
     {
       "before_rule": "11.13",
@@ -577,6 +577,132 @@
       ]
     },
     {
+      "id": "11.10",
+      "title": "Follow a ballot measure through six steps, and wait for the certified count.",
+      "rule": [
+        "A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s constitution by petition, and the voters decide it. These steps follow the constitutions of Massachusetts, California, Ohio and Michigan and California’s election office; each state sets its own deadlines and counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 under a slash.",
+        "Until the state certifies the count, a measure at step 6 reads as counted, never as passed: “Step 6 of 6: Vote. The count stays unofficial until the state certifies it.” Once it is certified, the words say Passed or Failed, with the dates, and when a measure that passed takes effect. A measure the Legislature enacts ends at step 4 as law, “Enacted by the Legislature”, with steps 5 and 6 under slashes. A measure that stops ends its line on a square, with the reason and the date: Not certified by the attorney general, Did not qualify: too few valid signatures, Withdrawn by its proponents, or Removed from the ballot by a court."
+      ],
+      "tokens": [
+        "oa.component.mark.slash"
+      ],
+      "why": {
+        "text": [
+          "A count on election night is unofficial and keeps moving as ballots are counted, and a measure becomes law only on the certified result. Words that wait for certification keep a reader from treating a lead as law. The slash on step 4 keeps every measure counting to six and still says that no legislature voted on a direct initiative."
+        ],
+        "basis": "Massachusetts Constitution, Amendment Articles XLVIII and LXXXI; California Constitution, Article II, and Elections Code; Ohio and Michigan Constitutions, Article II"
+      },
+      "correct": {
+        "specimen": "s-11-10-correct",
+        "caption": "Three measures at 360 px. One went straight to the ballot, so step 4 keeps its slash, and its count is not yet certified; one passed and was certified; and one stopped at step 3 with too few valid signatures."
+      },
+      "failure": {
+        "specimen": "s-11-10-failure",
+        "caption": "<strong>Fails Rule 11.10.</strong> The tracker fills step 6 and prints “Passed” on election night, while the count is unofficial, so a reader takes the measure for law before the state certifies the result."
+      },
+      "specs": [
+        {
+          "label": "Steps",
+          "value": "1 Filed, 2 Title and summary, 3 Signatures, 4 Legislature, 5 On the ballot, 6 Vote"
+        },
+        {
+          "label": "Step 4",
+          "value": "The Legislature’s vote where the initiative is indirect, with a second round of signatures in words under it; under a slash where it is direct",
+          "token": "oa.component.mark.slash"
+        },
+        {
+          "label": "Before the count is certified",
+          "value": "“Step 6 of 6: Vote.” with the date the state certifies; never Passed or Failed"
+        },
+        {
+          "label": "The end, in words",
+          "value": "Passed or Failed, with the date of the vote and the date it was certified, then when it takes effect; Enacted by the Legislature"
+        },
+        {
+          "label": "Stopped",
+          "value": "A square at the step: Not certified by the attorney general; Did not qualify: too few valid signatures; Withdrawn by its proponents; Removed from the ballot by a court"
+        },
+        {
+          "label": "Referred by the Legislature",
+          "value": "Steps 1 to 3 under slashes, and step 4 “Referred by the Legislature” with its date"
+        },
+        {
+          "label": "Marks and sizes",
+          "value": "The bill tracker’s, from Rules 11.2 and 11.7"
+        }
+      ],
+      "related": [
+        "13",
+        "15"
+      ],
+      "builders": [
+        "Store each measure’s steps, whether its initiative is direct or indirect, and the dates its state publishes, and print Passed or Failed only from the certified result. Number an invented measure from 99001 up, name no state, and label it Illustrative."
+      ]
+    },
+    {
+      "id": "11.11",
+      "title": "Follow a court case through six steps, and never call a denied review a ruling.",
+      "rule": [
+        "A court case here is a federal civil case: one side sues another under federal law, and the case can climb from the trial court through a court of appeals to the Supreme Court. These steps follow Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A step nobody took keeps its number under a slash, as when no side appeals in time or the Supreme Court declines to hear the case.",
+        "The words say how each court ruled, with the date, in the law’s own verbs: Affirmed, Reversed, Vacated or Modified, joined to “and sent back” when a court returns the case to the court below. The marks never move backward; a case sent back says so in a sentence after the end words. When the Supreme Court denies a petition, step 6 keeps its slash and the words say “Review denied”: the ruling below stands. A case that ends early, settled or dismissed, ends its line on a square at the step where it stopped."
+      ],
+      "tokens": [
+        "oa.component.mark.slash"
+      ],
+      "why": {
+        "text": [
+          "In the Supreme Court’s own words, review is “not a matter of right, but of judicial discretion”, so a denied petition says only that the Court chose not to hear the case. A tracker that filled step 6 would tell a reader the Court had ruled on a case it never heard. Naming each court’s ruling as its own step keeps clear which court spoke last."
+        ],
+        "basis": "28 U.S.C. 1291, 2106 and 2107; Rules of the Supreme Court, Rules 10, 13 and 16"
+      },
+      "correct": {
+        "specimen": "s-11-11-correct",
+        "caption": "Three cases at 360 px. One waits on the appeals court; the Supreme Court denied review of one, so step 6 keeps its slash and the ruling below stands; and one settled before trial."
+      },
+      "failure": {
+        "specimen": "s-11-11-failure",
+        "caption": "<strong>Fails Rule 11.11.</strong> The Supreme Court denied review, and the tracker fills step 6 and prints “Affirmed”, so a reader takes a refusal to hear the case for a ruling on it."
+      },
+      "specs": [
+        {
+          "label": "Steps",
+          "value": "1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme Court petition, 6 Supreme Court ruling"
+        },
+        {
+          "label": "Never appealed",
+          "value": "Steps 3 to 6 under slashes once the time to appeal has passed: 30 days, or 60 when the United States is a party",
+          "token": "oa.component.mark.slash"
+        },
+        {
+          "label": "Review denied",
+          "value": "Step 6 under a slash, and “Review denied” with the date; the ruling below stands"
+        },
+        {
+          "label": "Each ruling, in words",
+          "value": "Affirmed; Reversed; Vacated; Modified; with “and sent back” where the court returns the case"
+        },
+        {
+          "label": "Stopped",
+          "value": "A square at the step: Settled; Dismissed; Appeal dismissed"
+        },
+        {
+          "label": "Inside a step, in words",
+          "value": "An order on an injunction and its appeal, under step 2; a rehearing by the full appeals court, under step 4"
+        },
+        {
+          "label": "Marks and sizes",
+          "value": "The bill tracker’s, from Rules 11.2 and 11.7"
+        }
+      ],
+      "related": [
+        "13",
+        "15"
+      ],
+      "builders": [
+        "Store each court’s ruling as data, with its date and the verb the court used, and print that verb. Number an invented case from 99001 up, name no party or court, and label it Illustrative."
+      ]
+    },
+    {
       "id": "11.12",
       "title": "Say a wait or a later step in words, and keep the count at six.",
       "rule": [
@@ -1027,6 +1153,18 @@
       "caption": "The wide form, as on a tablet or in a desktop article column, on Charcoal, with two of the bills. Each step’s name sits under its circle, the current step’s name is bold, and the marks turn to Newsprint and Dim Newsprint while the take-part disc keeps its red."
     },
     {
+      "after_rule": "11.10",
+      "specimen": "s-11-ballot-steps",
+      "label": "The six steps of a ballot measure",
+      "caption": "What happens at each step of a citizen initiative, and where the law sets it in the four states we read. Each state sets its own deadlines and signature counts."
+    },
+    {
+      "after_rule": "11.11",
+      "specimen": "s-11-court-steps",
+      "label": "The six steps of a court case",
+      "caption": "What happens at each step of a federal civil case, and where the law sets it."
+    },
+    {
       "after_rule": "11.13",
       "specimen": "s-11-icons",
       "label": "The 18 utility icons",
@@ -1080,6 +1218,8 @@
     "Sources: Nebraska Legislature, “Tips on Testifying at a Committee Hearing”, no page date; Washington State Legislature, “How to Testify in Committee”, 2023; Minnesota Legislature, “May I testify at a committee hearing?”, reviewed February 20, 2026; Utah Legislature, “How to Testify In A Committee”, no page date; Texas Legislature Online, FAQ 27, no page date; five states, all retrieved November 9, 2026. Each legislature sets its own rules on sign-up, time limits and which bills get a hearing, and we read these five as examples and made no national count. Testimony from the public at a state committee hearing, behind Rule 11.1.",
     "Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy, no page date; both retrieved November 9, 2026. The steps, the 20 working days and the waits in them, behind Rules 11.8 and 11.12.",
     "Source: Office of Information Policy, U.S. Department of Justice, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, sections V.B.(1) and VI.B, fiscal year 2024, the Justice Department and its components, retrieved November 9, 2026. The categories behind the end words in Rule 11.8.",
-    "Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs, no page date; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can end, behind Rule 11.9."
+    "Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs, no page date; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can end, behind Rule 11.9.",
+    "Sources: the Massachusetts Constitution, Amendment Articles XLVIII and LXXXI, via malegislature.gov; the Ohio Constitution, Article II, Section 1b, and Article XVI, Section 1, via codes.ohio.gov; the Michigan Constitution of 1963, Article II, Section 9, via legislature.mi.gov; each as in force on November 14, 2026; and California Secretary of State, “Statewide Initiative Guide”, revised January 2026; all retrieved November 14, 2026. We read these four states as examples of a citizen initiative, and each state sets its own steps, deadlines and signature counts. The steps of a ballot measure and how one can end, behind Rule 11.10.",
+    "Sources: 28 U.S.C. 1291, 1331, 2106 and 2107, via govinfo.gov, the 2024 edition of the U.S. Code; the Federal Rules of Civil Procedure, as amended to December 1, 2025, and the Federal Rules of Appellate Procedure, as amended to December 1, 2024, via uscourts.gov; and the Rules of the Supreme Court of the United States, adopted February 17, 2026, effective March 16, 2026, via supremecourt.gov; all retrieved November 14, 2026. The steps of a federal civil case, the time to appeal and the courts’ rulings, behind Rule 11.11."
   ]
 }
