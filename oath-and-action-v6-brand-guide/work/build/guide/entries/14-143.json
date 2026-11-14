@@ -1,15 +1,15 @@
 {
  "id": "14.143",
- "title": "Step through two loops one connection at a time, from the variable they share.",
+ "title": "Step through two loops that share a variable, one connection at a time.",
  "rule": [
   "When two loops from our systems atlas pass through one variable, step the reader through both on one loop stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, share Variable C3, risk of losing office. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step belongs to.",
-  "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21)."
+  "At each loop’s last step, say that the loop is back where it began and name its kind. Say too where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21)."
  ],
  "use_when": null,
  "use_instead": [],
  "why": {
   "text": [
-   "A variable two loops share is where one loop can weaken the other. As primaries decide more seats in Loop R10, the risk of losing office falls, and in Loop B4 that same risk is what turns poor service into defeats. Stepping through both loops one connection at a time lets a reader see that one variable work in each, and keeping each loop’s own numbers and kind keeps two loops from reading as one."
+   "A variable two loops share is where one loop can weaken the other. As primaries decide more seats in Loop R10, the risk of losing office falls, and in Loop B4 that same risk is what turns poor service into defeats. Stepping through both loops one connection at a time lets a reader watch the one variable at work in each, and each loop’s own numbers and kind stop the two from reading as one."
   ],
   "basis": "Our systems atlas, Loops B4 and R10; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"
  },
@@ -59,7 +59,7 @@
  ],
  "correct": {
   "specimen": "s-14-143-correct",
-  "caption": "Loops B4 and R10 on the loop stepper of Rule 18.22, live: seven steps, Loop B4’s three and then Loop R10’s four, each with its connection, grade and delay. The risk of losing office is filled in ink in both drawings, and the status line names each step’s loop.",
+  "caption": "Loops B4 and R10 on the loop stepper of Rule 18.22, live: seven steps, Loop B4’s three and then Loop R10’s four, each with its connection, grade and delay. Both drawings fill the pill of Variable C3, risk of losing office, in ink, and the status line names each step’s loop.",
   "alt": "Loop B4 from our systems atlas, “Electoral consequences can improve public performance”, beside Loop R10, “Safe seats shift accountability to small primary electorates”, each drawn with its steps numbered from 1, and Variable C3, risk of losing office, the pill filled in ink in both. Under them the loop stepper of Rule 18.22: a status line, the seven steps in order, Loop B4’s three then Loop R10’s four, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in its drawing and in the list. With scripts off or in print, the list shows every step in order.",
   "illustrative": false,
   "width_px": 328,

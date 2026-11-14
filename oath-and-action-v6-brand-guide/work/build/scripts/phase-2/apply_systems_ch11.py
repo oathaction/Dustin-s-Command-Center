@@ -110,47 +110,41 @@ RULE_STEPS = [
 # "Facts for owners", item 1 (20261114_Round-5-Research-Notes.md, every source read November 14, 2026); each row is
 # (name, what happens, where the law sets it). The extras after Rules 11.10 and 11.11 print these rows as tables.
 BALLOT_STEPS = [
-    ('Filed', 'The people behind the measure file its full text with the official the state’s law names, in some states '
-              'with the first signatures.',
+    ('Filed', 'The sponsors file the measure’s full text with the attorney general.',
      'Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9001'),
-    ('Title and summary', 'The attorney general checks the measure’s form and subject and writes the title and summary '
-                          'that petitions and ballots carry. No petition goes out before then.',
+    ('Title and summary', 'The attorney general clears the measure and writes the title and summary that petitions and '
+                          'ballots carry.',
      'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014'),
-    ('Signatures', 'The measure’s backers gather signatures and file them by the deadline, and election officials count '
-                   'and check them. With too few valid signatures, the measure does not qualify.',
+    ('Signatures', 'The sponsors gather signatures, and election officials count and check them.',
      'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031'),
-    ('Legislature', 'Where the initiative is indirect, the Legislature votes on the measure as filed, and if it does not '
-                    'pass it, a second round of signatures sends it on. A direct initiative goes to the ballot with no '
-                    'vote here, so it keeps this step under a slash.',
+    ('Legislature', 'The Legislature votes on the measure first, where the state’s initiative is indirect; under a slash '
+                    'where it goes straight to the ballot.',
      'Massachusetts, Amendment Article LXXXI, Section 2; Ohio Constitution, Article II, Section 1b; Michigan '
      'Constitution, Article II, Section 9'),
-    ('On the ballot', 'The state’s election officer certifies that the measure will appear on the ballot.',
+    ('On the ballot', 'The state’s election officer certifies the measure for the ballot.',
      'California Elections Code 9033; Massachusetts, Amendment Article LXXXI, Section 2'),
-    ('Vote', 'The voters decide. The count stays unofficial until the state certifies it, and a measure that passed takes '
-             'effect on the date its state’s law sets, such as 30 days after the election.',
+    ('Vote', 'The voters decide, and the state certifies the result.',
      'California Constitution, Article II, Section 10(a); Massachusetts, Amendment Article LXXXI, Section 2; Ohio, '
      'Article II, Section 1b; Michigan, Article II, Section 9'),
 ]
 COURT_STEPS = [
-    ('Filed', 'One side files a complaint in a federal district court, the trial court for a case under federal law.',
+    ('Filed', 'One side sues the other in a federal district court, the trial court.',
      'Federal Rules of Civil Procedure, Rule 3; 28 U.S.C. 1331'),
-    ('Trial court ruling', 'Motions, the exchange of evidence and, unless the two sides settle, a trial. The court enters '
-                           'its judgment, with or without a trial.',
+    ('Trial court ruling', 'The trial court decides, with or without a trial, unless the case settles or is dismissed.',
      'Federal Rules of Civil Procedure, Rules 41, 56 and 58'),
-    ('Appeal', 'The side that lost files a notice of appeal within 30 days of the judgment, or 60 days when the United '
-               'States, a federal agency or a federal officer is a party.',
+    ('Appeal', 'The side that lost asks a court of appeals to review the ruling.',
      '28 U.S.C. 1291 and 2107; Federal Rules of Appellate Procedure, Rule 4'),
-    ('Appeals court ruling', 'A panel of three judges decides. It can affirm, reverse, vacate or modify the judgment, and '
-                             'send the case back to the trial court.',
+    ('Appeals court ruling', 'Three judges of the court of appeals decide.',
      '28 U.S.C. 2106; Federal Rules of Appellate Procedure, Rules 40 and 41'),
-    ('Supreme Court petition', 'The side that lost asks the Supreme Court to hear the case, within 90 days. The Court '
-                               'chooses: review is “not a matter of right, but of judicial discretion.” A denied '
-                               'petition ends the case here, and the ruling below stands.',
+    ('Supreme Court petition', 'The side that lost asks the Supreme Court to hear the case, and the Court agrees or '
+                               'declines.',
      'Rules of the Supreme Court, Rules 10, 13 and 16; 28 U.S.C. 1254 and 2101'),
-    ('Supreme Court ruling', 'Briefs, argument and the Court’s decision, with the same powers as the court of appeals. A '
-                             'tie vote leaves the ruling below in place.',
+    ('Supreme Court ruling', 'The Supreme Court decides.',
      '28 U.S.C. 2106; Rules of the Supreme Court, Rule 16'),
 ]
+# The editor's word for a higher court that affirms (02:16, "Upheld", as Rule 11.8's appeal says it), held for the data
+# lead's ED5-3: if the ruling keeps the court's own "Affirmed" on the face, change it here alone.
+UPHELD = 'Upheld'
 ROUTE_NAMES = {'request': [n for n, _ in REQUEST_STEPS], 'rule': [n for n, _ in RULE_STEPS],
                'ballot': [s[0] for s in BALLOT_STEPS], 'court': [s[0] for s in COURT_STEPS]}
 STEP6_BOTH = ('The governor signs a state bill and the President signs a federal one. Either can veto it, and lawmakers '
@@ -253,15 +247,15 @@ BALLOTS = [
     dict(id='99010', noun='Measure', kind='ballot', title='State park entry fees',
          states=['done', 'done', 'done', 'skipped', 'done', 'now'],
          line='Step 4 never happened: a direct initiative goes to the ballot with no vote in the Legislature. The polls '
-              'closed on November 3, and the count stays unofficial until the state certifies it by November 25.'),
+              'closed on November 3. The count is unofficial until the state certifies it, set for November 25.'),
     dict(id='99011', noun='Measure', kind='ballot', title='Library district funding', states=['done'] * 6,
-         end='Passed on November 3. Certified on November 24.',
+         end='Approved by voters on November 3, certified on November 24.',
          line='The Legislature did not pass it by May 5, so a second round of signatures sent it to the voters. It takes '
               'effect December 3.'),
     dict(id='99013', noun='Measure', kind='ballot', title='Lake shoreline setbacks',
          states=['done', 'done', 'stopped', 'notyet', 'notyet', 'notyet'],
-         end='Did not qualify on July 14: too few valid signatures.',
-         line='A random sample of the signatures showed fewer valid ones than the law requires.'),
+         end='Too few valid signatures to qualify.',
+         line='On July 14, a random sample of the signatures showed fewer valid ones than the law requires.'),
 ]
 COURTS = [
     dict(id='99014', noun='Case', kind='court', title='Bakery name trademark',
@@ -269,10 +263,10 @@ COURTS = [
          line='A panel of three judges heard argument on May 6 and has not ruled.'),
     dict(id='99015', noun='Case', kind='court', title='Ferry route contract', states=['done'] * 6,
          end='Reversed and sent back by the Supreme Court on June 2.',
-         line='The Court sent the case back to the appeals court, which takes it up again.'),
+         line='The appeals court takes the case up again.'),
     dict(id='99016', noun='Case', kind='court', title='Highway noise walls',
-         states=['done', 'done', 'done', 'done', 'stopped', 'notyet'], end='Review denied by the Supreme Court on January 11.',
-         line='The Court declined to hear the case, so the appeals court’s ruling stands.'),
+         states=['done', 'done', 'done', 'done', 'stopped', 'notyet'], end='Petition denied by the Supreme Court on January 11.',
+         line='The appeals court’s ruling stands.'),
 ]
 
 PAGE_BILL = dict(id='H.99001', title='Public meeting notice', states=LIST_BILLS[0]['states'],
@@ -1233,12 +1227,13 @@ def s_11_10(ctx):
            'tracker’s marks, and a key of the six steps, Filed, Title and summary, Signatures, Legislature, On the ballot '
            'and Vote, and of the marks. ' + alt_rows(BALLOTS, nm))
     spec(ctx, 's-11-10-correct', html, '11.10', alt, width=360, illustrative=True)
-    bad = dict(BALLOTS[0], states=['done', 'done', 'done', 'skipped', 'done', 'done'], end='Passed.',
+    bad = dict(BALLOTS[0], states=['done', 'done', 'done', 'skipped', 'done', 'done'], end='Approved by voters.',
                line='Yes leads with 52 percent of the votes counted on election night, November 3.')
     html2 = records_piece(ctx, 'Where the park entry fee measure stands', [bad], nm, ('done', 'skipped'), band=True)
     alt2 = ('Failure case: do not publish. An Illustrative ballot measure, 99010, State park entry fees, at 360 px: steps '
             '1 to 3 done, step 4 never happened, and steps 5 and 6 drawn as done, so the vote reads as finished. The words '
-            'read “Passed. Yes leads with 52 percent of the votes counted on election night, November 3.” The count is '
+            'read “Approved by voters. Yes leads with 52 percent of the votes counted on election night, November 3.” '
+            'The count is '
             'unofficial, the state has not certified it, and nothing on the card says so.')
     spec(ctx, 's-11-10-failure', html2, '11.10', alt2, width=360, illustrative=True)
 
@@ -1252,13 +1247,13 @@ def s_11_11(ctx):
            'tracker’s marks, and a key of the six steps, Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme '
            'Court petition and Supreme Court ruling, and of the marks. ' + alt_rows(COURTS, nm))
     spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, illustrative=True)
-    bad = dict(COURTS[2], states=['done'] * 6, end='Affirmed by the Supreme Court on January 11.',
+    bad = dict(COURTS[2], states=['done'] * 6, end=f'{UPHELD} by the Supreme Court on January 11.',
                line='The Supreme Court left the appeals court’s ruling in place.')
     html2 = records_piece(ctx, 'Where the highway noise walls case stands', [bad], nm, ('done',), band=True)
     alt2 = ('Failure case: do not publish. An Illustrative federal civil case, 99016, Highway noise walls, at 360 px, with '
-            'all six steps drawn as done, Supreme Court ruling among them. The words read “Affirmed by the Supreme Court '
-            'on January 11. The Supreme Court left the appeals court’s ruling in place.” The Court denied review and never '
-            'heard the case, and nothing on the card says so.')
+            f'all six steps drawn as done, Supreme Court ruling among them. The words read “{UPHELD} by the Supreme Court '
+            'on January 11. The Supreme Court left the appeals court’s ruling in place.” The Court denied the petition and '
+            'never heard the case, and nothing on the card says so.')
     spec(ctx, 's-11-11-failure', html2, '11.11', alt2, width=360, illustrative=True)
 
 
@@ -1774,13 +1769,14 @@ def build(ctx):
                      'Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the '
                      'Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 '
                      'under a slash.',
-                     'Until the state certifies the count, a measure at step 6 reads as counted, never as passed: “Step 6 '
-                     'of 6: Vote. The count stays unofficial until the state certifies it.” Once it is certified, the '
-                     'words say Passed or Failed, with the dates, and when a measure that passed takes effect. A measure '
-                     'that ends before step 6 ends its line on a square at the last step it reached, with the reason and '
-                     'the date: Not certified by the attorney general, Did not qualify: too few valid signatures, '
-                     'Withdrawn by its proponents, Removed from the ballot by a court, or Enacted by the Legislature, '
-                     'which makes it law with no vote of the people.'],
+                     'Until the state certifies the count, a measure at step 6 stays current, and its words say so: '
+                     '“Step 6 of 6: Vote. The count is unofficial until the state certifies it, set for November 25.” Once '
+                     'the count is certified, the words say Approved by voters or Rejected by voters, with the date of the '
+                     'vote and the date it was certified, then when an approved measure takes effect. A measure that ends '
+                     'before step 6 ends its line on a square at the last step it reached, with its words and the date: '
+                     'Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to '
+                     'qualify, Removed from the ballot by a court, or Passed by the Legislature, after which the voters do '
+                     'not vote on it.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and a '
                              'measure becomes law only on the certified result. Words that wait for certification keep a '
@@ -1790,10 +1786,11 @@ def build(ctx):
                              'Article II, and Elections Code; Ohio and Michigan Constitutions, Article II'},
             'correct': {'specimen': 's-11-10-correct',
                         'caption': 'Three measures at 360 px. One went straight to the ballot, so step 4 keeps its slash, '
-                                   'and its count is not yet certified; one passed and was certified; and one stopped at '
-                                   'step 3 with too few valid signatures.'},
+                                   'and its count is not yet certified; voters approved one, and the state certified it; '
+                                   'and one stopped at step 3 with too few valid signatures.'},
             'failure': {'specimen': 's-11-10-failure',
-                        'caption': '<strong>Fails Rule 11.10.</strong> The tracker fills step 6 and prints “Passed” on '
+                        'caption': '<strong>Fails Rule 11.10.</strong> The tracker fills step 6 and prints “Approved by '
+                                   'voters” on '
                                    'election night, while the count is unofficial, so a reader takes the measure for law '
                                    'before the state certifies the result.'},
             'specs': [
@@ -1802,39 +1799,46 @@ def build(ctx):
                 {'label': 'Step 4', 'value': 'The Legislature’s vote where the initiative is indirect, with a second round '
                                              'of signatures in words under it; under a slash where it is direct',
                  'token': 'oa.component.mark.slash'},
-                {'label': 'Before the count is certified', 'value': '“Step 6 of 6: Vote.” with the date the state '
-                                                                    'certifies; never Passed or Failed'},
-                {'label': 'The end, in words', 'value': 'Passed or Failed, with the date of the vote and the date it was '
-                                                        'certified, then when it takes effect'},
+                {'label': 'Before the count is certified', 'value': '“Step 6 of 6: Vote.” with the date the state has '
+                                                                    'set to certify; never Approved or Rejected'},
+                {'label': 'The end, in words', 'value': 'Approved by voters or Rejected by voters, with the date of the '
+                                                        'vote and the date it was certified, then when it takes effect; '
+                                                        'Not approved by voters where most said yes but a second test '
+                                                        'failed, with a sentence that names it'},
                 {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Not '
-                                                          'certified by the attorney general; Did not qualify: too few '
-                                                          'valid signatures; Withdrawn by its proponents; Removed from the '
-                                                          'ballot by a court; Enacted by the Legislature, on step 4'},
-                {'label': 'Referred by the Legislature', 'value': 'Steps 1 to 3 under slashes, and step 4 “Referred by the '
-                                                                  'Legislature” with its date'},
+                                                          'certified by the attorney general; Withdrawn by its sponsors; '
+                                                          'Too few valid signatures to qualify; Removed from the ballot by '
+                                                          'a court; Passed by the Legislature, on step 4'},
+                {'label': 'Sent to the voters by the Legislature', 'value': 'Steps 1 to 3 under slashes, and step 4 done, '
+                                                                            'with those words and the date'},
                 {'label': 'Marks and sizes', 'value': 'The bill tracker’s, from Rules 11.2 and 11.7'},
             ],
             'related': ['13', '15'],
             'builders': ['Store each measure’s steps, whether its initiative is direct or indirect, and the dates its state '
-                         'publishes, and print Passed or Failed only from the certified result. Number an invented measure '
+                         'publishes, and print Approved or Rejected only from the certified result. Number an invented '
+                         'measure '
                          'from 99001 up, name no state, and label it Illustrative.'],
         },
         {
-            'id': '11.11', 'title': 'Follow a court case through six steps, and never call a denied review a ruling.',
-            'rule': ['A court case here is a federal civil case: one side sues another under federal law, and the case '
-                     'can climb from the trial court through a court of appeals to the Supreme Court. These steps follow '
+            'id': '11.11', 'title': 'Follow a court case through six steps, and end a denied petition at step 5.',
+            'rule': ['A court case here is a federal civil case: one side, the plaintiff, sues another, the defendant, '
+                     'under federal law, and the case can climb from the trial court through a court of appeals to the '
+                     'Supreme Court. These steps follow '
                      'Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme '
                      'Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker '
                      'uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals '
                      'court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no '
                      'room for keeps its number under a slash, as when an appeal goes straight from a special panel of '
                      'three district judges to the Supreme Court.',
-                     'The words say how each court ruled, with the date, in the law’s own verbs: Affirmed, Reversed, '
-                     'Vacated or Modified, joined to “and sent back” when a court returns the case to the court below. '
-                     'The marks never move backward; a case sent back says so in a sentence after the end words. A case '
-                     'that ends before step 6 ends its line on a square at the last step it reached: settled, dismissed, '
-                     'never appealed, or turned away by the Supreme Court. When the Court denies a petition, the square '
-                     'sits on step 5 and the words say “Review denied by the Supreme Court”, so the ruling below stands.'],
+                     'The words say how each court ruled, with the court and the date. A trial court’s judgment reads '
+                     'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
+                     'decided on the record alone. A higher court’s reads ' + UPHELD + ', for the court’s “affirmed”; '
+                     'Reversed; Vacated, which cancels the ruling below; or Modified; joined to “and sent back” when the '
+                     'court returns the case. The marks never move backward, so a case sent back says so in a sentence '
+                     'after the end words. A case that ends before step 6 ends its line on a square at the last step it '
+                     'reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, '
+                     'Appeal withdrawn, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '
+                     'appeals court’s ruling standing.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['In the Supreme Court’s own words, review is “not a matter of right, but of judicial '
                              'discretion”, so a denied petition says only that the Court chose not to hear the case. A '
@@ -1845,21 +1849,27 @@ def build(ctx):
             'correct': {'specimen': 's-11-11-correct',
                         'caption': 'Three cases at 360 px. One waits on the appeals court; the Supreme Court reversed one '
                                    'and sent it back, said in words while all six steps stay filled; and the Court denied '
-                                   'review of one, so its line ends on a square at step 5.'},
+                                   'one petition, so that line ends on a square at step 5.'},
             'failure': {'specimen': 's-11-11-failure',
-                        'caption': '<strong>Fails Rule 11.11.</strong> The Supreme Court denied review, and the tracker '
-                                   'fills step 6 and prints “Affirmed”, so a reader takes a refusal to hear the case for a '
-                                   'ruling on it.'},
+                        'caption': '<strong>Fails Rule 11.11.</strong> The Supreme Court denied the petition, and the '
+                                   'tracker fills step 6 and prints “' + UPHELD + '”, so a reader takes a refusal to hear the '
+                                   'case for a ruling on it.'},
             'specs': [
                 {'label': 'Steps', 'value': '1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme '
                                             'Court petition, 6 Supreme Court ruling'},
-                {'label': 'Each ruling, in words', 'value': 'Affirmed; Reversed; Vacated; Modified; with “and sent back” '
-                                                            'where the court returns the case, and the court named'},
-                {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Settled; '
-                                                          'Dismissed; Appeal dismissed; Review denied by the Supreme Court, '
-                                                          'on step 5'},
-                {'label': 'Never appealed', 'value': 'A square on step 2 once the time to appeal has passed: 30 days, or '
-                                                     '60 when the United States is a party'},
+                {'label': 'A trial court’s ruling', 'value': 'Decided for the plaintiff; Decided for the defendant; with '
+                                                            '“without a trial” where it applies'},
+                {'label': 'A higher court’s ruling', 'value': UPHELD + '; Reversed; Vacated; Modified; each with the '
+                                                              'court, as in “' + UPHELD + ' by the appeals court”, and '
+                                                              '“and sent back” where the court returns the case'},
+                {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Settled by '
+                                                          'the parties; Withdrawn by the plaintiff; Dismissed by the court; '
+                                                          'Appeal withdrawn; Appeal dismissed by the court; Petition '
+                                                          'denied by the Supreme Court, on step 5'},
+                {'label': 'Never appealed', 'value': 'A square on step 2, with “No appeal was filed in the 30 days the law '
+                                                     'allows.”, or 60 days where the United States is a party'},
+                {'label': 'A tie in the Supreme Court', 'value': UPHELD + ' by a tie vote, and “The lower court’s ruling '
+                                                                 'stands.”'},
                 {'label': 'Straight to the Supreme Court', 'value': 'Steps 3 and 4 under slashes, where the law sends an '
                                                                     'appeal from three district judges straight there',
                  'token': 'oa.component.mark.slash'},
@@ -1874,20 +1884,26 @@ def build(ctx):
         },
         {
             'id': '11.12', 'title': 'Say a wait or a later step in words, and keep the count at six.',
-            'rule': ['A wait inside a step, such as an agency’s question to the requester, a fee estimate or an '
-                     'extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still '
-                     'counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, '
-                     'follows the end words as a sentence with its date.',
-                     'A status taken from the agency’s own tracking service, or from the Federal Register for a rule, '
-                     'needs no mark. A status we piece together ourselves, such as a wait we learn of from the '
+            'rule': ['A wait inside a step shows as words under the step it falls in and never adds a mark, so every '
+                     'tracker in this group still counts to six. A records request may wait on the requester’s answer, a '
+                     'fee estimate or an extension of up to 10 working days, and a draft agency rule may wait on review '
+                     'at the White House. A ballot measure may need a second round of signatures after the Legislature '
+                     'declines to act, and a court case may pause while a court of appeals hears an appeal of an order '
+                     'on an injunction. Anything after the end words, such as a lawsuit over a request or a rule, a case '
+                     'sent back to the trial court, or a legislature’s repeal of a measure the voters approved, follows '
+                     'them as a sentence with its date.',
+                     'A status taken from the deciding body’s own record needs no mark: an agency’s tracking service, the '
+                     'Federal Register for a rule, the state election office’s notice for a ballot measure, or the '
+                     'court’s docket for a case. A status we piece together ourselves, such as a wait we learn of from an '
                      'agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.17 draws every '
                      'warning: “Warning: Checked April 20. The agency may have acted since.”'],
             'tokens': ['oa.color.state.warning.mark.onNewsprint'],
             'why': {'text': ['The law lets an agency stop its 20 working days while it waits on the requester, once for '
                              'more information and again to settle fees, and add up to 10 working days in unusual '
-                             'circumstances, so each wait belongs inside the step it falls in. A count that changed from one request to the next would stop readers from comparing '
-                             'them. The check date tells a reader how old the status is before they rely on it.'],
-                    'basis': '5 U.S.C. 552(a)(6); design judgment'},
+                             'circumstances, so each wait belongs inside the step it falls in. A count that changed from '
+                             'one item to the next would stop readers from comparing them. The check date tells a reader '
+                             'how old the status is before they rely on it.'],
+                    'basis': '5 U.S.C. 552(a)(6); Executive Order 12866; 28 U.S.C. 1292(a)(1); design judgment'},
             'correct': {'specimen': 's-11-12-correct',
                         'caption': 'Two requests at 360 px. One waits on the requester at step 3, in words, with the date '
                                    'we last checked it beside the warning mark. The other was upheld on appeal and then '
@@ -1896,10 +1912,13 @@ def build(ctx):
                         'caption': '<strong>Fails Rule 11.12.</strong> The fee estimate becomes a seventh step, so this '
                                    'request reads “Step 4 of 7” while every other request counts to six.'},
             'specs': [
-                {'label': 'Waits, in words', 'value': '“Waiting on you”, a fee estimate or an extension, under the step '
-                                                      'it falls in, with its date'},
+                {'label': 'Waits, in words', 'value': '“Waiting on you”, a fee estimate or an extension on a request; a '
+                                                      'second round of signatures on a ballot measure; an appeal of an '
+                                                      'injunction on a court case; each under the step it falls in, with '
+                                                      'its date'},
                 {'label': 'A proposed rule that sits', 'value': '“No action since” and the date, under its step'},
-                {'label': 'After the agency', 'value': 'Mediation or a lawsuit, in a sentence after the end words'},
+                {'label': 'After the end', 'value': 'Mediation, a lawsuit, a case sent back or a repeal, in a sentence '
+                                                    'after the end words'},
                 {'label': 'Check date', 'value': 'For a status we piece together ourselves: the warning mark at 24 px, in '
                                                  'ink, then “Warning: Checked” and the date, beside a 4 px bar in ink',
                  'token': 'oa.color.state.warning.mark.onNewsprint'},

@@ -2,14 +2,14 @@
  "id": "14.142",
  "title": "Mark the survey’s margin on a monthly chart, and name the changes that pass it.",
  "rule": [
-  "A monthly count from a survey moves from one month to the next by chance as well as by change. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, level and source in a note (Rule 14.9). Name only the changes that pass it, each with its month and value in the subject ink (Rule 14.6), and keep the count of every change true beside them.",
-  "Draw every month in the window the question sets, with its reason (Rule 14.10), hatch the months still preliminary and dash the average where it includes one (Rule 14.11), and say in a note that the band covers one month’s change only. The chart keeps its phone drawing, its table and its files from the kit (Rules 14.12 to 14.14)."
+  "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, its confidence, such as the Bureau’s 90 percent, and its source in a note (Rule 14.9). Name only the changes that pass it, each with its month and value in the subject ink (Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
+  "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band measures one month’s change alone. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14)."
  ],
  "use_when": null,
  "use_instead": [],
  "why": {
   "text": [
-   "A survey of employers estimates each month’s change, and a small drop can be chance alone. The band shows a reader that five of the seven drops sit inside what the survey can measure and two pass it, so the chart names those two and still counts all seven, as the record holds them."
+   "A survey of employers estimates each month’s change, and a small drop can come from the sample alone. The band shows a reader that five of the seven drops sit inside the survey’s margin, where the survey cannot tell them apart from no change, and that two pass it, so the chart names those two and still counts all seven."
   ],
   "basis": "The Bureau of Labor Statistics’ Employment Situation technical note, October 2026 release; Rule 14.9"
  },
@@ -55,7 +55,7 @@
  ],
  "correct": {
   "specimen": "s-14-s96",
-  "caption": "S14’s monthly job change in full: all 57 months, the survey’s margin as a band, the two drops past it named and the preliminary months hatched, with its phone drawing under it and its table."
+  "caption": "The monthly change in payroll jobs, all 57 months, with the survey’s margin as a band, the two drops past it named and the preliminary months hatched. Its phone drawing sits under it, then its table."
  },
  "failure": {
   "specimen": "s-14-142-failure",

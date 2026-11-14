@@ -232,7 +232,7 @@ def walk_steps():
             more += (f" Loop {lid} is back where it began, at {in_sentence(codes[0])}, and with {signs} it is "
                      f"{KIND[lid]}.")
             if lid == "R10":
-                more += " The atlas holds no measure of either loop’s strength, so neither outweighs the other."
+                more += " The atlas holds no measure of either loop’s strength, so the walk weighs neither against the other."
         need(KIND[lid] == ("reinforcing" if C15.minus_count(lp["links"]) % 2 == 0 else "balancing"), f"Loop {lid}'s kind changed")
         said = f"Loop {lid}, step {i + 1} of {n}: {line} {re.sub(r'<[^>]+>', '', html.unescape(more))}"
         hold = max(6000, 250 * len(said.split()))
@@ -339,7 +339,7 @@ def rule_14_143():
         cols.append(f'<div>{C15.hed("Loop", lid, curl(lp["title"]))}{lab}'
                     f'<div class="dw dg">{svgs[lid]}</div></div>')
     shared = (f'<p class="nt">{C15.vt("C3")} is the pill filled in ink in both drawings: both loops pass through it. '
-              f'Each loop numbers its steps from the variable the atlas starts it at.</p>')
+              f'Each loop numbers its steps from where the atlas starts it.</p>')
     limits = (f'<p class="k">The atlas’s limits on the two loops</p>'
               f'<p class="nt">{chip("Loop", "B4")} “{ce(b4["qualification"])}”</p>'
               f'<p class="nt">{chip("Loop", "R10")} “{ce(r10["qualification"])}”</p>')
@@ -384,7 +384,7 @@ def rule_14_143():
     n = len(steps)
     entry = {
         "id": "14.143",
-        "title": "Step through two loops one connection at a time, from the variable they share.",
+        "title": "Step through two loops that share a variable, one connection at a time.",
         "rule": [
             f"When two loops from our systems atlas pass through one variable, step the reader through both on one loop "
             f"stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, "
@@ -392,7 +392,7 @@ def rule_14_143():
             f"{lc(short('C3'))}. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each "
             f"loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step "
             f"belongs to.",
-            "Say in the step that closes each loop that it is back where it began and name its kind, and say where the second "
+            "At each loop’s last step, say that the loop is back where it began and name its kind. Say too where the second "
             "loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion "
             "reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that "
             "one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21).",
@@ -402,8 +402,8 @@ def rule_14_143():
         "why": {"text": [
             "A variable two loops share is where one loop can weaken the other. As primaries decide more seats in Loop R10, "
             "the risk of losing office falls, and in Loop B4 that same risk is what turns poor service into defeats. Stepping "
-            "through both loops one connection at a time lets a reader see that one variable work in each, and keeping each "
-            "loop’s own numbers and kind keeps two loops from reading as one."],
+            "through both loops one connection at a time lets a reader watch the one variable at work in each, and each "
+            "loop’s own numbers and kind stop the two from reading as one."],
             "basis": "Our systems atlas, Loops B4 and R10; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"},
         "specimen": None,
         "tier": None,
@@ -427,8 +427,8 @@ def rule_14_143():
         "correct": dict({"specimen": "s-14-143-correct",
                          "caption": (f"Loops B4 and R10 on the loop stepper of Rule 18.22, live: {words_n(n)} steps, Loop "
                                      "B4’s three and then Loop R10’s four, each with its connection, grade and "
-                                     "delay. The risk of losing office is filled in ink in both drawings, and the status line "
-                                     "names each step’s loop.")},
+                                     "delay. Both drawings fill the pill of Variable C3, risk of losing office, in ink, and the "
+                                     "status line names each step’s loop.")},
                         **meta["s-14-143-correct"]),
         "failure": dict({"specimen": "s-14-143-failure",
                          "caption": ("<strong>Fails Rule 14.143.</strong> The walk numbers the two loops 1 to 7 as one loop "
@@ -548,7 +548,8 @@ def off_words(rid, t, loop_vars):
     if t in LINK:
         l = link(t)
         return (f'{chip("Connection", t)} \u201c{ce(l["name"])}\u201d, {GRADE[l["evidence"]][0].lower()}, from '
-                f'{chip("Variable", l["from"])} to {chip("Variable", l["to"])}, in {LAYER[l["layer"]]}')
+                f'{chip("Variable", l["from"])} to {chip("Variable", l["to"])} \u201c{ce(node(l["to"])["title"])}\u201d, '
+                f'in {LAYER[l["layer"]]}')
     return f'{chip("Variable", t)} \u201c{ce(node(t)["title"])}\u201d, in {LAYER[NODE[t]["layer"]]}'
 
 
@@ -566,8 +567,8 @@ def off_note(rid, off, loop_vars):
             starts.append(t)
     need(not any(reaches(x, loop_vars) for x in starts), f"a target of {rid} now reaches Loop R8")
     one = len(off) == 1
-    tail = ("That target sits outside the loop, and the atlas draws no connection from it into the loop." if one else
-            "Neither target sits on the loop, and the atlas draws no connection from either into the loop.")
+    tail = ("That target sits outside the loop, and the atlas holds no connection from it into the loop." if one else
+            "Neither target sits on the loop, and the atlas holds no connection from either into the loop.")
     return f'Its record names {chip("Loop", "R8")} as a loop it acts on. {tail}'
 
 
@@ -635,13 +636,16 @@ def rule_14_144():
               f'{chip("Reform", "R-30")} only. The drawing marks a reform’s targets that sit on the loop, and each card '
               'lists the others in words with their layer.</p>')
     prints = "".join(f'<p class="nt pon" data-oa-print="{rid}">'
-                     + (f'The drawing shows {chip("Reform", rid)} in red.' if any(t in on for t in REFORM[rid]["targets"])
-                        else f'None of the targets of {chip("Reform", rid)} sits on the drawing, so nothing on it is red.')
+                     + (f'The drawing shows the targets of {chip("Reform", rid)} in red.' if any(t in on for t in REFORM[rid]["targets"])
+                        else f'Neither target of {chip("Reform", rid)} sits on the drawing, so nothing on it turns red.')
                      + '</p>' for rid in RIDS)
     need({link(x)["evidence"] for x in lp["links"]} == {"well-supported"}, "Loop R8's grades changed")
     left = (C15.hed("Loop", "R8", curl(lp["title"])) + diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both steps")
             + f'<div class="dw dg">{svg}</div>{prints}')
-    right = C15.step_lines(lp["links"]) + lists_
+    # each step of the loop with its connection's chip, its name and its grade word (H11: an ID says what it refers to)
+    right = ('<p class="k">Each step</p>' + "".join(
+        f'<p class="nt"><b>{i}</b>&#160;{chip("Connection", x)} \u201c{ce(link(x)["name"])}\u201d, '
+        f'{GRADE[link(x)["evidence"]][0].lower()}</p>' for i, x in enumerate(lp["links"], 1)) + lists_)
     cards = []
     for rid in RIDS:
         r = REFORM[rid]
@@ -674,7 +678,7 @@ def rule_14_144():
             + ("".join(f"<dd>{target_words(t)}</dd>" for t in mine) or "<dd>None</dd>") + "</div>"
             f'<div><dt>Targets outside this loop</dt>' + ("".join(offs) + (f'<dd class="on8">{off_note(rid, off, set(codes))}</dd>' if off else "")
                                                        or "<dd>None</dd>") + "</div>"
-            f'<div><dt>Band</dt><dd><b>{e(r["band"].capitalize())}</b></dd></div>'
+            f'<div><dt>Band, the kind of change</dt><dd><b>{e(r["band"].capitalize())}</b></dd></div>'
             f'<div><dt>Effects by outcome family, as of {SNAP}</dt>{effs}</div>'
             f'<div><dt>Evidence</dt><dd>For the problem, {grade_word(r["problem_evidence"]["grade"], gloss=False)}</dd>'
             f'<dd>For the remedy, {grade_word(rem["grade"], gloss=False)}</dd>'
@@ -741,18 +745,18 @@ def rule_14_144():
             "same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one "
             "outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see "
             "its targets on the loop turn red (Rule 15.20), and keep every card in view, so the comparison never rests on "
-            "memory. A reform can name a loop and target none of its steps, as Reform R-38 does with Loop R8: name each "
-            "target outside the loop in words with its layer, and draw no path the atlas does not hold.",
-            "Print each effect as the atlas stores it: the code, then any qualifier, the words after the code that say where "
-            "or when the effect holds, such as “+L local” or “+M renter-owner”, then the code’s "
-            "meaning. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, "
+            "memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target "
+            "outside the loop in words, with its layer, and draw no path the atlas does not hold.",
+            "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A "
+            "qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or "
+            "“+M renter-owner”. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, "
             "average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each "
             f"route’s check date or “Not checked”, with the model’s date, {SNAP}.",
         ],
         "use_when": None,
         "use_instead": [],
         "why": {"text": [
-            "The four outcome families use different units, and a reform can help one while costing another. A total turns "
+            "The four outcome families measure different things, and a reform can help one while costing another. A total turns "
             "a local, delayed or sector-only effect into points that count as if they held everywhere, and two reforms with "
             "different effects can tie. Cards with the same rows let a reader compare each family in turn, in the atlas’s "
             "own words."],
@@ -775,9 +779,9 @@ def rule_14_144():
             {"label": "Never", "value": "A total, a count of plus codes, a rank, or a fill, bar or shade by code"},
         ],
         "correct": dict({"specimen": "s-14-144-correct",
-                         "caption": ("Reforms R-06, R-30 and R-38 on Loop R8, live: choose one and its targets on the loop "
-                                     "turn red, while the three cards stay side by side with every effect, qualifier, grade "
-                                     "and route the atlas holds, and no total.")},
+                         "caption": ("Reforms R-06, R-30 and R-38 on Loop R8, live. Choose one and its targets on the loop "
+                                     "turn red; Reform R-38 has none there and says so in words. The three cards stay side by "
+                                     "side with every effect, qualifier, grade and route the atlas holds, and no total.")},
                         **meta["s-14-144-correct"]),
         "failure": dict({"specimen": "s-14-144-failure",
                          "caption": ("<strong>Fails Rule 14.144.</strong> A total row scores each code as points and adds the "
@@ -864,7 +868,7 @@ def rule_14_142():
              "margin; hatched columns are preliminary, August and September 2026."),
             "The band: the survey’s margin of error for one month’s change, plus or minus 122,000 jobs.",
             "Three-month average: the line, dashed where it includes a preliminary month.",
-            f"Latest: +29,000 jobs in {mw(lat['month'])}, preliminary; the three-month average stood at +51,000.",
+            f"Latest: +29,000 jobs in {mw(lat['month'])}, preliminary; the three-month average stood at +51,000, also preliminary.",
         ],
         "phone": "same",
         "phone_view": True,
@@ -926,21 +930,21 @@ def rule_14_142():
         "id": "14.142",
         "title": "Mark the survey’s margin on a monthly chart, and name the changes that pass it.",
         "rule": [
-            "A monthly count from a survey moves from one month to the next by chance as well as by change. Draw the "
-            "survey’s margin of error for one month’s change as a band around zero, behind the columns, and give "
-            "its size, level and source in a note (Rule 14.9). Name only the changes that pass it, each with its month and "
-            "value in the subject ink (Rule 14.6), and keep the count of every change true beside them.",
-            "Draw every month in the window the question sets, with its reason (Rule 14.10), hatch the months still "
-            "preliminary and dash the average where it includes one (Rule 14.11), and say in a note that the band covers one "
-            "month’s change only. The chart keeps its phone drawing, its table and its files from the "
-            "kit (Rules 14.12 to 14.14).",
+            "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw "
+            "the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its "
+            "size, its confidence, such as the Bureau’s 90 percent, and its source in a note (Rule 14.9). Name only the "
+            "changes that pass it, each with its month and value in the subject ink (Rule 14.6), and print the full count "
+            "beside them, so a reader still learns how many months fell.",
+            "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months "
+            "still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band measures "
+            "one month’s change alone. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14).",
         ],
         "use_when": None,
         "use_instead": [],
         "why": {"text": [
-            "A survey of employers estimates each month’s change, and a small drop can be chance alone. The band shows a "
-            "reader that five of the seven drops sit inside what the survey can measure and two pass it, so the chart names "
-            "those two and still counts all seven, as the record holds them."],
+            "A survey of employers estimates each month’s change, and a small drop can come from the sample alone. The band "
+            "shows a reader that five of the seven drops sit inside the survey’s margin, where the survey cannot tell them "
+            "apart from no change, and that two pass it, so the chart names those two and still counts all seven."],
             "basis": "The Bureau of Labor Statistics’ Employment Situation technical note, October 2026 release; Rule 14.9"},
         "specimen": None,
         "tier": None,
@@ -959,8 +963,9 @@ def rule_14_142():
             {"label": "Files", "value": "The kit’s SVG, PNG and CSV, the CSV row for row with the data file"},
         ],
         "correct": {"specimen": "s-14-s96",
-                    "caption": ("S14’s monthly job change in full: all 57 months, the survey’s margin as a band, the "
-                                "two drops past it named and the preliminary months hatched, with its phone drawing under it and its table.")},
+                    "caption": ("The monthly change in payroll jobs, all 57 months, with the survey’s margin as a band, the "
+                                "two drops past it named and the preliminary months hatched. Its phone drawing sits under it, "
+                                "then its table.")},
         "failure": {"specimen": "s-14-142-failure",
                     "caption": ("<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the "
                                 "title counts seven losses as findings. Five of the seven sit inside the survey’s margin "

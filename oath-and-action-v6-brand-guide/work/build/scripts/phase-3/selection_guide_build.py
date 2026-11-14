@@ -108,8 +108,81 @@ def ring_d(pts):
     return head_ + "l" + joinnums(steps) + "z"
 
 
+NUM = re.compile(r"[MmLlHhVvCcSsQqTtAaZz]|-?(?:\d+\.?\d*|\.\d+)")
+ARITY = {"M": 2, "L": 2, "H": 1, "V": 1, "C": 6, "S": 4, "Q": 4, "T": 2, "A": 7, "Z": 0}
+
+
+def mini(d):
+    """Path data written short, drawing the same shape: every point rounded to a tenth of a pixel, each step written
+    absolute or relative, whichever is shorter, numbers without a leading zero and spaces only where a number needs one."""
+    toks = NUM.findall(d)
+    out, prev = [], None
+    cx = cy = sx = sy = 0  # the current point and the subpath's start, in tenths
+    i = 0
+    while i < len(toks):
+        cmd = toks[i]
+        i += 1
+        C, rel = cmd.upper(), cmd.islower()
+        if C == "Z":
+            out.append("z")
+            prev = "z"
+            cx, cy = sx, sy
+            continue
+        first = True
+        while i < len(toks) and not toks[i].isalpha():
+            a = [float(t) for t in toks[i:i + ARITY[C]]]
+            i += ARITY[C]
+            c = "L" if (C == "M" and not first) else C
+            first = False
+            ax, ay = (cx / 10, cy / 10) if rel else (0, 0)
+            if c == "A":
+                rx, ry, rot, fa, fs, x, y = a
+                ex, ey = round((x + ax) * 10), round((y + ay) * 10)
+                fixed = [tenths(round(rx * 10)), tenths(round(ry * 10)), tenths(round(rot * 10)), str(int(fa)), str(int(fs))]
+                cand = [("A", fixed + [tenths(ex), tenths(ey)]), ("a", fixed + [tenths(ex - cx), tenths(ey - cy)])]
+            elif c == "H":
+                ex, ey = round((a[0] + ax) * 10), cy
+                cand = [("H", [tenths(ex)]), ("h", [tenths(ex - cx)])]
+            elif c == "V":
+                ex, ey = cx, round((a[0] + (cy / 10 if rel else 0)) * 10)
+                cand = [("V", [tenths(ey)]), ("v", [tenths(ey - cy)])]
+            else:
+                pts = [(round((a[k] + ax) * 10), round((a[k + 1] + ay) * 10)) for k in range(0, len(a), 2)]
+                ex, ey = pts[-1]
+                cand = [(c, [tenths(v) for p_ in pts for v in p_]), (c.lower(), [tenths(v) for p_ in pts for v in (p_[0] - cx, p_[1] - cy)])]
+            if c == "M":
+                cand = [("M", cand[0][1]), ("m", cand[1][1])] if prev not in (None,) else [("M", cand[0][1])]
+            letter, nums = min(cand, key=lambda t: len(joinnums(t[1])))
+            if c in ("L",) and letter == "l" and ex == cx and ey != cy:
+                letter, nums = "v", [tenths(ey - cy)]
+            elif c in ("L",) and letter == "l" and ey == cy and ex != cx:
+                letter, nums = "h", [tenths(ex - cx)]
+            body = joinnums(nums)
+            if letter == prev and letter.upper() not in ("M",):
+                out.append(("" if body.startswith("-") else " ") + body)
+            else:
+                out.append(letter + body)
+            prev = letter
+            cx, cy = ex, ey
+            if c == "M":
+                sx, sy = ex, ey
+    return "".join(out)
+
+
+DOT1 = re.compile(r"M(-?[\d.]+) (-?[\d.]+)a([\d.]+) \3 0 1 0 [\d.]+ 0a\3 \3 0 1 0 -[\d.]+ 0")
+
+
 def P(cls, d, extra=""):
-    return f'<path class="{cls}" d="{d}"{extra}/>'
+    if cls.startswith("oac-f-") and not extra:
+        found = DOT1.findall(d)
+        if found and "".join(DOT1.findall(d) and [m.group(0) for m in DOT1.finditer(d)]) == d and len({r for x, y, r in found}) == 1:
+            # a run of filled dots of one size, each written as a zero-length step with a round end: the same disc in
+            # a tenth of the bytes, in the same ink role (its stroke class), so forced colors and print treat it alike
+            r = float(found[0][2])
+            dd = mini("".join(f"M{f(float(x) + r)} {y}h0" for x, y, rr in found))
+            return (f'<path class="{cls.replace("oac-f-", "oac-s-")}" d="{dd}" stroke-width="{f(2 * r)}" '
+                    f'stroke-linecap="round"/>')
+    return f'<path class="{cls}" d="{mini(d)}"{extra}/>'
 
 
 def rects(rs):
@@ -1705,13 +1778,13 @@ CSS = (
     "text-wrap:balance;max-width:34em;break-after:avoid}"
     # tiles on one column grid in rem, so larger text takes fewer columns (AX 1.8)
     ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,7rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
-    ".sg-f{break-inside:avoid}"
-    ".sg-f>a{display:flex;flex-direction:column;align-items:flex-start;gap:var(--oa-space-050);min-height:44px;"
+    ".sg-fs>li{break-inside:avoid}"
+    ".sg-fs a{display:flex;flex-direction:column;align-items:flex-start;gap:var(--oa-space-050);min-height:44px;"
     "color:inherit;text-decoration:none}"
     ".sg-pic{display:block;flex:none;margin-bottom:var(--oa-space-100)}"
     ".sg-n{font:var(--oa-type-ui);overflow-wrap:break-word;max-width:100%}"
     ".sg-t{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}"
-    ".sg-f>a:hover .sg-n{text-decoration:underline;text-decoration-thickness:var(--oa-border-width-underline-hover);"
+    ".sg-fs a:hover .sg-n{text-decoration:underline;text-decoration-thickness:var(--oa-border-width-underline-hover);"
     "text-underline-offset:.2em}"
     # the skip links: Rule 18's skip link, shown 4 px inside the block it skips (AX 1.5)
     ".sg .sg-skip{top:4px;left:4px}"
@@ -1750,8 +1823,11 @@ def load():
     return plan, chapter, extra, by_group, printed
 
 
-def symbol(sid, inner):
-    return f'<symbol id="{sid}" viewBox="0 0 {W} {H}" stroke-width="{SW}">{inner}</symbol>'
+def symbol(sid, inner, box=False):
+    """A picture's symbol. It draws at the picture's own size, so it needs no viewBox; the country's groups take one, since
+    the small-multiple maps draw them smaller (14.123)."""
+    vb = f' viewBox="0 0 {W} {H}"' if box else ""
+    return f'<symbol id="{sid}"{vb} stroke-width="{SW}">{inner}</symbol>'
 
 
 def picture(n, avoid):
@@ -1765,7 +1841,7 @@ def build():
     maps = Maps()
     need(set(G) == {fm["num"] for v in by_group.values() for fm in v},
          f"pictures and forms differ: {sorted(set(G) ^ {fm['num'] for v in by_group.values() for fm in v})}")
-    syms = [symbol(k, v) for k, v in maps.symbols().items()]
+    syms = [symbol(k, v, box=True) for k, v in maps.symbols().items()]
     syms += [symbol(f"s-14-sg-{n}", G[n](maps)) for n in sorted(G)]
     syms.append(symbol("s-14-sg-avoid", AVOID))
     defs = (f'<svg class="oac-svg sg-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>'
@@ -1780,7 +1856,7 @@ def build():
         for fm in fs:
             name = fm["form"]
             items.append(
-                f'<li class="sg-f" id="s-14-sg-f-{fm["num"]}" data-return-label="{e(name + " in " + label)}">'
+                f'<li id="s-14-sg-f-{fm["num"]}" data-return-label="{e(name + " in " + label)}">'
                 f'<a href="#rule-14-{fm["num"]}" data-tier="{fm["tier_word"].lower()}" data-rule="{fm["rule"]}" data-oa-xref>'
                 f'{picture(fm["num"], fm["tier_word"] == "Avoid")}<span class="sg-n">{e(name)}</span>'
                 f'<span class="vh">, </span><span class="sg-t">{e(fm["tier_word"])}</span></a></li>')

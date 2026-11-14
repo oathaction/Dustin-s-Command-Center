@@ -581,7 +581,7 @@
       "title": "Follow a ballot measure through six steps, and wait for the certified count.",
       "rule": [
         "A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s constitution by petition, and the voters decide it. These steps follow the constitutions of Massachusetts, California, Ohio and Michigan and California’s election office; each state sets its own deadlines and counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 under a slash.",
-        "Until the state certifies the count, a measure at step 6 reads as counted, never as passed: “Step 6 of 6: Vote. The count stays unofficial until the state certifies it.” Once it is certified, the words say Passed or Failed, with the dates, and when a measure that passed takes effect. A measure that ends before step 6 ends its line on a square at the last step it reached, with the reason and the date: Not certified by the attorney general, Did not qualify: too few valid signatures, Withdrawn by its proponents, Removed from the ballot by a court, or Enacted by the Legislature, which makes it law with no vote of the people."
+        "Until the state certifies the count, a measure at step 6 stays current, and its words say so: “Step 6 of 6: Vote. The count is unofficial until the state certifies it, set for November 25.” Once the count is certified, the words say Approved by voters or Rejected by voters, with the date of the vote and the date it was certified, then when an approved measure takes effect. A measure that ends before step 6 ends its line on a square at the last step it reached, with its words and the date: Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to qualify, Removed from the ballot by a court, or Passed by the Legislature, after which the voters do not vote on it."
       ],
       "tokens": [
         "oa.component.mark.slash"
@@ -594,11 +594,11 @@
       },
       "correct": {
         "specimen": "s-11-10-correct",
-        "caption": "Three measures at 360 px. One went straight to the ballot, so step 4 keeps its slash, and its count is not yet certified; one passed and was certified; and one stopped at step 3 with too few valid signatures."
+        "caption": "Three measures at 360 px. One went straight to the ballot, so step 4 keeps its slash, and its count is not yet certified; voters approved one, and the state certified it; and one stopped at step 3 with too few valid signatures."
       },
       "failure": {
         "specimen": "s-11-10-failure",
-        "caption": "<strong>Fails Rule 11.10.</strong> The tracker fills step 6 and prints “Passed” on election night, while the count is unofficial, so a reader takes the measure for law before the state certifies the result."
+        "caption": "<strong>Fails Rule 11.10.</strong> The tracker fills step 6 and prints “Approved by voters” on election night, while the count is unofficial, so a reader takes the measure for law before the state certifies the result."
       },
       "specs": [
         {
@@ -612,19 +612,19 @@
         },
         {
           "label": "Before the count is certified",
-          "value": "“Step 6 of 6: Vote.” with the date the state certifies; never Passed or Failed"
+          "value": "“Step 6 of 6: Vote.” with the date the state has set to certify; never Approved or Rejected"
         },
         {
           "label": "The end, in words",
-          "value": "Passed or Failed, with the date of the vote and the date it was certified, then when it takes effect"
+          "value": "Approved by voters or Rejected by voters, with the date of the vote and the date it was certified, then when it takes effect; Not approved by voters where most said yes but a second test failed, with a sentence that names it"
         },
         {
           "label": "Ended before step 6",
-          "value": "A square at the last step reached, with its words: Not certified by the attorney general; Did not qualify: too few valid signatures; Withdrawn by its proponents; Removed from the ballot by a court; Enacted by the Legislature, on step 4"
+          "value": "A square at the last step reached, with its words: Not certified by the attorney general; Withdrawn by its sponsors; Too few valid signatures to qualify; Removed from the ballot by a court; Passed by the Legislature, on step 4"
         },
         {
-          "label": "Referred by the Legislature",
-          "value": "Steps 1 to 3 under slashes, and step 4 “Referred by the Legislature” with its date"
+          "label": "Sent to the voters by the Legislature",
+          "value": "Steps 1 to 3 under slashes, and step 4 done, with those words and the date"
         },
         {
           "label": "Marks and sizes",
@@ -636,15 +636,15 @@
         "15"
       ],
       "builders": [
-        "Store each measure’s steps, whether its initiative is direct or indirect, and the dates its state publishes, and print Passed or Failed only from the certified result. Number an invented measure from 99001 up, name no state, and label it Illustrative."
+        "Store each measure’s steps, whether its initiative is direct or indirect, and the dates its state publishes, and print Approved or Rejected only from the certified result. Number an invented measure from 99001 up, name no state, and label it Illustrative."
       ]
     },
     {
       "id": "11.11",
-      "title": "Follow a court case through six steps, and never call a denied review a ruling.",
+      "title": "Follow a court case through six steps, and end a denied petition at step 5.",
       "rule": [
-        "A court case here is a federal civil case: one side sues another under federal law, and the case can climb from the trial court through a court of appeals to the Supreme Court. These steps follow Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no room for keeps its number under a slash, as when an appeal goes straight from a special panel of three district judges to the Supreme Court.",
-        "The words say how each court ruled, with the date, in the law’s own verbs: Affirmed, Reversed, Vacated or Modified, joined to “and sent back” when a court returns the case to the court below. The marks never move backward; a case sent back says so in a sentence after the end words. A case that ends before step 6 ends its line on a square at the last step it reached: settled, dismissed, never appealed, or turned away by the Supreme Court. When the Court denies a petition, the square sits on step 5 and the words say “Review denied by the Supreme Court”, so the ruling below stands."
+        "A court case here is a federal civil case: one side, the plaintiff, sues another, the defendant, under federal law, and the case can climb from the trial court through a court of appeals to the Supreme Court. These steps follow Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no room for keeps its number under a slash, as when an appeal goes straight from a special panel of three district judges to the Supreme Court.",
+        "The words say how each court ruled, with the court and the date. A trial court’s judgment reads Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court decided on the record alone. A higher court’s reads Upheld, for the court’s “affirmed”; Reversed; Vacated, which cancels the ruling below; or Modified; joined to “and sent back” when the court returns the case. The marks never move backward, so a case sent back says so in a sentence after the end words. A case that ends before step 6 ends its line on a square at the last step it reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, Appeal withdrawn, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals court’s ruling standing."
       ],
       "tokens": [
         "oa.component.mark.slash"
@@ -657,11 +657,11 @@
       },
       "correct": {
         "specimen": "s-11-11-correct",
-        "caption": "Three cases at 360 px. One waits on the appeals court; the Supreme Court reversed one and sent it back, said in words while all six steps stay filled; and the Court denied review of one, so its line ends on a square at step 5."
+        "caption": "Three cases at 360 px. One waits on the appeals court; the Supreme Court reversed one and sent it back, said in words while all six steps stay filled; and the Court denied one petition, so that line ends on a square at step 5."
       },
       "failure": {
         "specimen": "s-11-11-failure",
-        "caption": "<strong>Fails Rule 11.11.</strong> The Supreme Court denied review, and the tracker fills step 6 and prints “Affirmed”, so a reader takes a refusal to hear the case for a ruling on it."
+        "caption": "<strong>Fails Rule 11.11.</strong> The Supreme Court denied the petition, and the tracker fills step 6 and prints “Upheld”, so a reader takes a refusal to hear the case for a ruling on it."
       },
       "specs": [
         {
@@ -669,16 +669,24 @@
           "value": "1 Filed, 2 Trial court ruling, 3 Appeal, 4 Appeals court ruling, 5 Supreme Court petition, 6 Supreme Court ruling"
         },
         {
-          "label": "Each ruling, in words",
-          "value": "Affirmed; Reversed; Vacated; Modified; with “and sent back” where the court returns the case, and the court named"
+          "label": "A trial court’s ruling",
+          "value": "Decided for the plaintiff; Decided for the defendant; with “without a trial” where it applies"
+        },
+        {
+          "label": "A higher court’s ruling",
+          "value": "Upheld; Reversed; Vacated; Modified; each with the court, as in “Upheld by the appeals court”, and “and sent back” where the court returns the case"
         },
         {
           "label": "Ended before step 6",
-          "value": "A square at the last step reached, with its words: Settled; Dismissed; Appeal dismissed; Review denied by the Supreme Court, on step 5"
+          "value": "A square at the last step reached, with its words: Settled by the parties; Withdrawn by the plaintiff; Dismissed by the court; Appeal withdrawn; Appeal dismissed by the court; Petition denied by the Supreme Court, on step 5"
         },
         {
           "label": "Never appealed",
-          "value": "A square on step 2 once the time to appeal has passed: 30 days, or 60 when the United States is a party"
+          "value": "A square on step 2, with “No appeal was filed in the 30 days the law allows.”, or 60 days where the United States is a party"
+        },
+        {
+          "label": "A tie in the Supreme Court",
+          "value": "Upheld by a tie vote, and “The lower court’s ruling stands.”"
         },
         {
           "label": "Straight to the Supreme Court",
@@ -706,17 +714,17 @@
       "id": "11.12",
       "title": "Say a wait or a later step in words, and keep the count at six.",
       "rule": [
-        "A wait inside a step, such as an agency’s question to the requester, a fee estimate or an extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
-        "A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.17 draws every warning: “Warning: Checked April 20. The agency may have acted since.”"
+        "A wait inside a step shows as words under the step it falls in and never adds a mark, so every tracker in this group still counts to six. A records request may wait on the requester’s answer, a fee estimate or an extension of up to 10 working days, and a draft agency rule may wait on review at the White House. A ballot measure may need a second round of signatures after the Legislature declines to act, and a court case may pause while a court of appeals hears an appeal of an order on an injunction. Anything after the end words, such as a lawsuit over a request or a rule, a case sent back to the trial court, or a legislature’s repeal of a measure the voters approved, follows them as a sentence with its date.",
+        "A status taken from the deciding body’s own record needs no mark: an agency’s tracking service, the Federal Register for a rule, the state election office’s notice for a ballot measure, or the court’s docket for a case. A status we piece together ourselves, such as a wait we learn of from an agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.17 draws every warning: “Warning: Checked April 20. The agency may have acted since.”"
       ],
       "tokens": [
         "oa.color.state.warning.mark.onNewsprint"
       ],
       "why": {
         "text": [
-          "The law lets an agency stop its 20 working days while it waits on the requester, once for more information and again to settle fees, and add up to 10 working days in unusual circumstances, so each wait belongs inside the step it falls in. A count that changed from one request to the next would stop readers from comparing them. The check date tells a reader how old the status is before they rely on it."
+          "The law lets an agency stop its 20 working days while it waits on the requester, once for more information and again to settle fees, and add up to 10 working days in unusual circumstances, so each wait belongs inside the step it falls in. A count that changed from one item to the next would stop readers from comparing them. The check date tells a reader how old the status is before they rely on it."
         ],
-        "basis": "5 U.S.C. 552(a)(6); design judgment"
+        "basis": "5 U.S.C. 552(a)(6); Executive Order 12866; 28 U.S.C. 1292(a)(1); design judgment"
       },
       "correct": {
         "specimen": "s-11-12-correct",
@@ -729,15 +737,15 @@
       "specs": [
         {
           "label": "Waits, in words",
-          "value": "“Waiting on you”, a fee estimate or an extension, under the step it falls in, with its date"
+          "value": "“Waiting on you”, a fee estimate or an extension on a request; a second round of signatures on a ballot measure; an appeal of an injunction on a court case; each under the step it falls in, with its date"
         },
         {
           "label": "A proposed rule that sits",
           "value": "“No action since” and the date, under its step"
         },
         {
-          "label": "After the agency",
-          "value": "Mediation or a lawsuit, in a sentence after the end words"
+          "label": "After the end",
+          "value": "Mediation, a lawsuit, a case sent back or a repeal, in a sentence after the end words"
         },
         {
           "label": "Check date",

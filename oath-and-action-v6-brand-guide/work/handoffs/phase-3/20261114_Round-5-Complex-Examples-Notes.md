@@ -33,10 +33,10 @@ Group 18's three charts in full are drafted to the data lead's rulings (c) and (
 
 ## Handover to the component engineer (CE-4)
 
-Written from the generator's run of 02:05 UTC; the words may still change with the editor's pass, and the holds follow CE-1's formula from them. The generator prints the walk with its holds on every run.
+Rewritten from the generator's run of 02:20 UTC, after the editor's words pass 1; the holds follow CE-1's formula from the final words, and the generator prints the walk with its holds on every run.
 
 - **Specimens:** `s-14-143-correct` and `s-14-144-correct` (live, manifest `interactive` and `keys` true), `s-14-143-failure` and `s-14-144-failure` (still pictures); all four in `work/build/guide/specimens/`. Rule 14.142's are `s-14-s96` (the kit's) and `s-14-142-failure` (a kit figure, no keys).
-- **14.143, D3-1880's one list:** seven `li.oa-stepper-step`, each with `data-oa-part` ("Loop B4" or "Loop R10"), so the status line says "Loop B4, step 1 of 3:" to "Loop R10, step 4 of 4:"; each loop's first step carries `data-oa-first`, where the plate's counter starts again (`counter-set: st 0`), so the list's numbers are the drawn ones. `data-oa-at` runs 0 to 7. Each first step also holds a small visible label (`span.lpn`, the loop's chip and "three steps" or "four steps") before its line; the script reads only the line and the more.
+- **14.143, D3-1880's one list:** seven `li.oa-stepper-step`, each with `data-oa-part` ("Loop B4" or "Loop R10"), so the status line says "Loop B4, step 1 of 3:" to "Loop R10, step 4 of 4:"; each loop's first step carries `data-oa-first`, where the plate's counter starts again (`counter-set: st 0`), so the list's numbers are the drawn ones. `data-oa-at` runs 0 to 7. Each first step also holds a small visible label (`span.lpn`, the loop's chip and "three steps" or "four steps") in its own row above its line; the script reads only the line and the more.
 - **Ready line:** "Ready. Both loops pass through the risk of losing office. Start in Loop B4 at the quality of public services, and suppose it falls. Press Play, or Next step to follow one connection at a time."
 - **Steps (line, hold):**
   - Loop B4: "The quality of public services lowers the risk of losing office." (12,750 ms)
@@ -45,13 +45,12 @@ Written from the generator's run of 02:05 UTC; the words may still change with t
   - Loop R10: "Seats with little electoral competition raise how often the primary decides the winner." (14,000 ms)
   - Loop R10: "How often the primary decides the winner lowers the risk of losing office." (13,750 ms)
   - Loop R10: "The risk of losing office can lower officeholders’ control over election rules." (12,000 ms)
-  - Loop R10: "Officeholders’ control over election rules raises seats with little electoral competition." (18,750 ms)
-- **14.144's `[data-oa-say]` lines** (each card is its reform's `[data-oa-panel]`; all three cards stay in view, so a panel is never hidden: your keys path's `visible: false` states for the other panels do not hold here; the chosen card takes the selected bar instead):
-  - R-06: "Reform R-06 acts where the marks turn red: on one connection. It also acts on one variable outside this loop."
-  - R-30: "Reform R-30 acts where the marks turn red: on one connection and one variable. It also acts on one connection outside this loop."
-  - R-38: "Reform R-38 acts outside this drawing, on one connection and one variable, so no mark turns red."
+  - Loop R10: "Officeholders’ control over election rules raises seats with little electoral competition." (19,500 ms)
+- **14.144's `[data-oa-say]` lines** (each card is its reform's `[data-oa-panel]`; all three cards stay in view, so no panel is ever hidden and a `visible: false` state for the other panels does not hold; the chosen card takes the selected bar):
+  - R-06: "Reform R-06 turns one connection red. One variable it targets sits outside this loop, in the core layer."
+  - R-30: "Reform R-30 turns one connection and one variable red. One connection it targets sits outside this loop, in the economy layer."
+  - R-38: "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer."
 - **Stops after the radios in 14.144:** one `summary` per card, in card order (R-06, R-30, R-38), then out of the plate. No scroll frame: the cards stack one under another below 680 px.
-
 
 ## Routine calls
 
@@ -79,6 +78,9 @@ Written from the generator's run of 02:05 UTC; the words may still change with t
 - D3-xxx | Rule 14.144's status lines read "Reform R-06 turns one connection red. One variable it targets sits outside this loop, in the core layer." and the like; R-38's "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer." | The data lead's A-2, item 3, with the count first and no punctuation touching a chip (BC S16)
 - D3-xxx | Each target outside Loop R8 prints its chip, its title, for a connection its grade and its two ends, and its layer, then one note of what the model holds: no chain of connections from it into the loop (R-06's B5, R-38's TC7 and LT12), or that LE17 leaves the loop at A5 and runs outward (R-30); the generator proves each by a search of every connection | A-2, items 2 and 4; a search keeps the words true if the model changes
 - D3-xxx | Rule 14.144's rule text says a reform can name a loop and target none of its steps, and draws no path the atlas does not hold | A-2, item 5's lesson, in the rule beside the editor's title
+- D3-xxx | The editor's words pass 1 (02:18 UTC) is applied in the generator, every row but one: 14.143's title "Step through two loops that share a variable, one connection at a time."; 14.142's rule, why and caption with no bare "S14"; S96's latest average "also preliminary"; "the walk weighs neither against the other"; "the targets of Reform R-06 in red"; L38, L39 and EC9 named; "the atlas holds no connection"; "Band, the kind of change" | D3-669: the words are the editor's, the file the maker's
+- D3-xxx | Loop R10's first step keeps its claim first and its start after it ("The walk moves to Loop R10. Start at ..."), the editor's fallback | The status line already opens "Loop R10, step 1 of 4:", so the change of loop is said before the claim, and a step's line stays the connection's claim in every step of the list
+- D3-xxx | The outcome families keep chapters 13 and 15's names, "Quality of democracy" first, read from chapter 13's table | DR-39 sets DQ's printed name; the atlas's own label is "Democratic quality", so the plate follows Dustin's decision over the model's word
 
 ## Requests
 

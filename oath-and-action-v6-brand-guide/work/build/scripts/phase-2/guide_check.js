@@ -95,6 +95,14 @@
 //   motionPlay         every moving specimen: still on load, Play, Pause and Reset, comes to rest, and under reduced motion
 //                      the final frame at once
 //   tokenTable         chapter 26's token table against tokens.json
+// Added in Phase 3, round 5 (November 14, 2026), each once, at the first width:
+//   selectionGuide     chapter 14's "Choose a chart" (s-14-selection-guide) against the plan file: every one of the plan's
+//                      forms linked once, each link landing on its own rule's block, named by the form's name and its
+//                      tier; every <use> on a symbol the page holds; every picture hidden; each question's list named by
+//                      its question line, which is no link; every skip link landing on the next question's line or on
+//                      group 1, the first of them the guide's first stop (R5-2, the accessibility lead's 1.5 and 1.13)
+//   paletteSpec        chapter 14's palette specification (s-14-palette-spec): each swatch drawn in the value its table
+//                      prints for that ground, and the release it names equal to tokens.json's (R5-3)
 // Added in stage C, round 2 (November 11, 2026):
 //   redTouchesPrussian no Pillar Red pixel within 2 px of a Prussian one in any stage at 1440 px, the live code stages in
 //                      both themes included, as drawn and again after Send is pressed in every form (D2-1544)
@@ -1997,6 +2005,106 @@ async function tokenTable(page) {
   return r;
 }
 
+// R5-2 (round 5): the plan's forms, read once; the guide check needs only each form's rule, name, tier and question
+const PLAN_JSON = path.join(ROOT, 'work/handoffs/phase-3/20261112_Chapter-14-Plan.json');
+function planFacts() {
+  try {
+    const plan = JSON.parse(fs.readFileSync(PLAN_JSON, 'utf8'));
+    const group = {}; plan.groups.forEach((g) => { if (g.family_section) group[g.family_section] = g.group; });
+    return plan.forms.map((f) => ({ rule: f.rule, form: f.form, tier: String(f.tier).toLowerCase().split(',')[0].trim(), group: group[f.family_section] }));
+  } catch (e) { return null; }
+}
+
+async function selectionGuide(page, forms) {
+  const r = await page.evaluate((forms) => {
+    const st = document.querySelector('[data-specimen="s-14-selection-guide"]');
+    if (!st) return null;
+    const norm = (t) => String(t || '').replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, ' ').trim().toLowerCase();
+    const byId = (h) => (h && h.startsWith('#') ? document.getElementById(decodeURIComponent(h.slice(1))) : null);
+    const problems = [];
+    const links = [...st.querySelectorAll('a[href]')];
+    const formLinks = links.filter((a) => /^#rule-14-\d+$/.test(a.getAttribute('href')));
+    // every plan form once, on its own rule, named by its words (the link's text: no aria-label, 2.5.3)
+    for (const f of forms) {
+      const href = '#rule-14-' + f.rule.split('.')[1];
+      const got = formLinks.filter((a) => a.getAttribute('href') === href);
+      if (got.length !== 1) { problems.push(`Rule ${f.rule} (${f.form}) is linked ${got.length} times; each form once`); continue; }
+      const a = got[0], name = norm(a.getAttribute('aria-label') || a.textContent);
+      if (!name.includes(norm(f.form))) problems.push(`Rule ${f.rule}'s link is named "${name.slice(0, 50)}", without the form's name`);
+      if (!name.includes(f.tier)) problems.push(`Rule ${f.rule}'s link names no tier; it is ${f.tier}`);
+      const tg = byId(href);
+      if (!tg) problems.push(`Rule ${f.rule}'s link goes to ${href}, which the page does not hold`);
+      else if (!tg.matches('.rule')) problems.push(`Rule ${f.rule}'s link lands on a ${tg.tagName.toLowerCase()}, not on the rule's block`);
+    }
+    const planned = new Set(forms.map((f) => '#rule-14-' + f.rule.split('.')[1]));
+    formLinks.filter((a) => !planned.has(a.getAttribute('href'))).forEach((a) => problems.push(`a link to ${a.getAttribute('href')}, which is none of the plan's forms`));
+    // the symbol set and the pictures
+    st.querySelectorAll('use').forEach((u) => {
+      const h = u.getAttribute('href') || u.getAttribute('xlink:href'), t = byId(h);
+      if (!t || t.tagName.toLowerCase() !== 'symbol') problems.push(`a picture's <use> names ${h}, which is no symbol on the page`);
+    });
+    st.querySelectorAll('svg').forEach((g) => { if (!g.closest('[aria-hidden="true"]')) problems.push('a picture is not hidden from assistive technology; its link\'s words name it'); });
+    // the questions: each list of forms named by its question line, which is no link; each skip link to the next question
+    const groups = [...st.querySelectorAll('[data-group]')];
+    const lines = groups.map((g) => {
+      const list = [...g.querySelectorAll('ul, ol')].find((l) => l.querySelector('a[href^="#rule-14-"]'));
+      const id = list && list.getAttribute('aria-labelledby'), q = id ? document.getElementById(id) : null;
+      if (!q) problems.push(`question ${g.getAttribute('data-group')}'s list of forms is not named by its question line`);
+      else if (q.querySelector('a') || q.closest('a')) problems.push(`question ${g.getAttribute('data-group')}'s line is a link`);
+      return q;
+    });
+    const skips = links.filter((a) => !/^#rule-14-\d+$/.test(a.getAttribute('href')));
+    const g1 = document.getElementById('group-14-1');
+    for (const a of skips) {
+      const t = byId(a.getAttribute('href')), gi = groups.findIndex((g) => g.contains(a));
+      const want = gi < 0 ? [g1] : [gi + 1 < lines.length ? lines[gi + 1] : g1];
+      if (!t) problems.push(`the skip link "${norm(a.textContent).slice(0, 30)}" goes to ${a.getAttribute('href')}, which the page does not hold`);
+      else if (!want.includes(t)) problems.push(`the skip link "${norm(a.textContent).slice(0, 30)}" lands on ${a.getAttribute('href')}, not on ${gi < 0 ? 'group 1' : 'the next question\'s line'}`);
+    }
+    const focusable = [...st.querySelectorAll('a[href], button, input, select, textarea, [tabindex]')].filter((x) => x.getAttribute('tabindex') !== '-1');
+    if (!focusable.length || !skips.includes(focusable[0]) || byId(focusable[0].getAttribute('href')) !== g1) problems.push('the guide\'s first stop is not its skip link to group 1');
+    return { links: formLinks.length, skips: skips.length, questions: groups.length, symbols: st.querySelectorAll('symbol').length, pictures: st.querySelectorAll('use').length, problems };
+  }, forms);
+  return r;
+}
+
+async function paletteSpec(page, version) {
+  const r = await page.evaluate(() => {
+    const st = document.querySelector('[data-specimen="s-14-palette-spec"]');
+    if (!st) return null;
+    const probe = document.createElement('span'); document.body.append(probe);
+    const want = (hex) => { probe.style.color = hex; return getComputedStyle(probe).color; };
+    const off = []; let swatches = 0;
+    const fillOf = (svg) => { const r = svg && [...svg.querySelectorAll('rect')].find((x) => /\boac-f-(seq|div|cat|mag)-\d\b/.test(x.getAttribute('class') || '')); return r ? getComputedStyle(r).fill : null; };
+    st.querySelectorAll('.ps-pal').forEach((pal) => {
+      const rows = [...pal.querySelectorAll('table.ps-t tbody tr')];
+      const printed = rows.map((tr) => [3, 4].map((n) => ((tr.querySelector(`td:nth-child(${n}) .ps-v`) || {}).textContent || '').match(/#[0-9A-Fa-f]{6}/)));
+      rows.forEach((tr, i) => {   // the Step cell's swatch sits on the plate's ground, Newsprint
+        const got = fillOf(tr.querySelector('th .ps-sw')); if (!got) return;
+        swatches++; const h = printed[i][0] && printed[i][0][0];
+        if (!h || want(h) !== got) off.push({ where: (tr.querySelector('th') || {}).textContent.trim().slice(0, 20), ground: 'Newsprint', printed: h, drawn: got });
+      });
+      pal.querySelectorAll('.ps-g').forEach((g) => {   // each panel's numbered swatches on its own ground
+        const k = g.classList.contains('oa-surface-charcoal') ? 1 : 0;
+        [...g.querySelectorAll('.ps-sws > li')].forEach((li, i) => {
+          const got = fillOf(li.querySelector('svg')); if (!got || !printed[i]) return;
+          swatches++; const h = printed[i][k] && printed[i][k][0];
+          if (!h || want(h) !== got) off.push({ where: `step ${i + 1}`, ground: k ? 'Charcoal' : 'Newsprint', printed: h, drawn: got });
+        });
+      });
+    });
+    probe.remove();
+    const rel = ((st.querySelector('.ps-rel') || {}).textContent || '').match(/Tokens (\S+?)\./);
+    return { swatches, off: off.slice(0, 5), offCount: off.length, version: rel ? rel[1] : null };
+  });
+  if (!r) return null;
+  r.problems = [];
+  if (!r.swatches) r.problems.push('no swatch read');
+  if (r.offCount) r.problems.push(`${r.offCount} swatch(es) drawn in another color than the value printed for their ground, first: ${JSON.stringify(r.off[0])}`);
+  if (version && r.version !== version) r.problems.push(`the plate names tokens ${r.version}, tokens.json ${version}`);
+  return r;
+}
+
 async function checkPage(browser, file, widths, opts = {}) {
   const report = { file: path.relative(ROOT, file), checked: new Date().toISOString(), axe: AXE ? path.relative(ROOT, AXE) : null, runs: [], failures: [] };
   // Gate 2 (D2-1697): a page that carries its fonts may ask no outside host for anything
@@ -2097,6 +2205,16 @@ async function checkPage(browser, file, widths, opts = {}) {
     if (width === widths[0]) {
       a.tokenTable = await tokenTable(page);
       if (a.tokenTable) for (const pr of a.tokenTable.problems) failsSwitch.push({ key: 'tokenTable', msg: `${width}: the token table: ${pr}` });
+      // round 5 (R5-2, R5-3): chapter 14's selection guide against the plan, and the palette plate against its own values
+      const forms = planFacts();
+      a.selectionGuide = await selectionGuide(page, forms || []);
+      if (a.selectionGuide) {
+        if (!forms) failsSwitch.push({ key: 'selectionGuide', msg: `${width}: the plan file could not be read` });
+        for (const pr of a.selectionGuide.problems) failsSwitch.push({ key: 'selectionGuide', msg: `${width}: Choose a chart: ${pr}` });
+      }
+      const tf = tokenFacts();
+      a.paletteSpec = await paletteSpec(page, tf && tf.version);
+      if (a.paletteSpec) for (const pr of a.paletteSpec.problems) failsSwitch.push({ key: 'paletteSpec', msg: `${width}: the palette specification: ${pr}` });
     }
     a.frames = await frameAudit(page);
     a.fit = await fitAudit(page);
@@ -2736,7 +2854,72 @@ const PLANTS = [
     const c = document.querySelector('figure.plate--failure > .plate-cap'); c.innerHTML = 'The same notice with its words in Stone. ' + c.textContent; } },
   { key: 'filesShip', fault: 'a Files list that names a studio handoff (DT-M1)', js: () => {
     document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p class="label">Files</p><ul class="file-list"><li><code>work/handoffs/phase-2/20261106_Voice-Writing-Rules.md</code></li></ul>'); } },
+  // Phase 3, round 5 (R5-2): chapter 14's selection guide, built here from the plan file as the accessibility lead's 1.2 sets
+  // its markup, with a rule block for each form and group 1 to land on
+  { key: 'selectionGuide', fault: 'the whole guide, every plan form once with its skip links (allowed: must not be flagged)', expect: false, js: sgPlant('clean'),
+    verify: (r) => r.runs[0].selectionGuide && r.runs[0].selectionGuide.links === 127 && r.runs[0].selectionGuide.questions === 16 },
+  { key: 'selectionGuide', fault: 'a form missing from the guide (Rule 14.15)', js: sgPlant('missing') },
+  { key: 'selectionGuide', fault: 'a form listed twice (Rule 14.30)', js: sgPlant('twice') },
+  { key: 'selectionGuide', fault: 'a form link to an anchor the page does not hold', js: sgPlant('badTarget') },
+  { key: 'selectionGuide', fault: 'a picture whose <use> names a symbol the page does not hold', js: sgPlant('badUse') },
+  { key: 'selectionGuide', fault: 'a picture left in the accessibility tree', js: sgPlant('unhidden') },
+  { key: 'selectionGuide', fault: 'a form link named without its tier', js: sgPlant('noTier') },
+  { key: 'selectionGuide', fault: 'a question\'s list of forms not named by its question line', js: sgPlant('listUnnamed') },
+  { key: 'selectionGuide', fault: 'a skip link that lands two questions on', js: sgPlant('skipWrong') },
+  { key: 'selectionGuide', fault: 'a guide whose first stop is not its skip link to group 1', js: sgPlant('firstStop') },
+  { key: 'selectionGuide', fault: 'a question line that is a link', js: sgPlant('lineLink'),
+    verify: (r) => r.runs[0].selectionGuide && r.runs[0].selectionGuide.problems.some((x) => /line is a link/.test(x)) },
+  // R5-3: the palette plate, a small one built here from tokens.json
+  { key: 'paletteSpec', fault: 'a palette plate whose swatches draw the values it prints (allowed: must not be flagged)', expect: false, js: psPlant('clean'),
+    verify: (r) => r.runs[0].paletteSpec && r.runs[0].paletteSpec.swatches === 3 },
+  { key: 'paletteSpec', fault: 'a palette plate that prints another value than its Charcoal swatch draws', js: psPlant('off') },
+  { key: 'paletteSpec', fault: 'a palette plate that names another token release than tokens.json', js: psPlant('version') },
 ];
+
+// the selection guide's plants: the markup the accessibility lead's 1.2 and 1.5 set, from the plan file, with one fault each
+function sgPlant(variant) {
+  const forms = planFacts() || [];
+  const groups = [...new Set(forms.map((f) => f.group))].sort((a, b) => a - b);
+  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const n = (f) => f.rule.split('.')[1];
+  let syms = '', body = '';
+  groups.forEach((g, i) => {
+    const fs_ = forms.filter((f) => f.group === g);
+    const next = i + 1 < groups.length ? `#sgq-${groups[i + 1]}` : '#group-14-1';
+    const skipTo = variant === 'skipWrong' && i === 0 ? `#sgq-${groups[2]}` : next;
+    const line = variant === 'lineLink' && i === 3 ? `<a href="#group-14-1">Question ${g}</a>` : `Question ${g}`;
+    const items = fs_.filter((f) => !(variant === 'missing' && f.rule === '14.15')).map((f) => {
+      syms += `<symbol id="sgs-${n(f)}" viewBox="0 0 24 16"><rect width="24" height="16"/></symbol>`;
+      const use = variant === 'badUse' && f.rule === '14.17' ? '#sgs-999' : `#sgs-${n(f)}`;
+      const hid = variant === 'unhidden' && f.rule === '14.18' ? '' : ' aria-hidden="true"';
+      const href = variant === 'badTarget' && f.rule === '14.16' ? '#rule-14-160' : `#rule-14-${n(f)}`;
+      const tier = variant === 'noTier' && f.rule === '14.19' ? '' : `<span>, </span><span>${f.tier[0].toUpperCase() + f.tier.slice(1)}</span>`;
+      const li = `<li id="sgf-${n(f)}"><a href="${href}" data-oa-xref><svg width="24" height="16"${hid} focusable="false"><use href="${use}"/></svg><span>${esc(f.form)}</span>${tier}</a></li>`;
+      return variant === 'twice' && f.rule === '14.30' ? li + li.replace('id="sgf-', 'id="sgg-') : li;
+    }).join('');
+    const named = variant === 'listUnnamed' && i === 1 ? '' : ` aria-labelledby="sgq-${g}"`;
+    body += `<li data-group="${g}"><p id="sgq-${g}">${line}</p><a href="${skipTo}">Skip these ${fs_.length} forms</a><ul role="list"${named}>${items}</ul></li>`;
+  });
+  const first = variant === 'firstStop' ? '' : '<a href="#group-14-1">Skip the chart guide</a>';
+  const html = `<div data-specimen="s-14-selection-guide"><svg width="0" height="0" aria-hidden="true" focusable="false"><defs>${syms}</defs></svg>`
+    + `<div class="sg">${first}<ol role="list">${body}</ol></div></div><div id="group-14-1"></div>`
+    + forms.map((f) => `<div class="rule" id="rule-14-${n(f)}"></div>`).join('');
+  return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
+}
+
+// the palette plate's plants: one step of sequential Verdigris in its table and on each ground, from tokens.json
+function psPlant(variant) {
+  const t = JSON.parse(fs.readFileSync(TOKENS_JSON, 'utf8'));
+  const hex = (p) => { let n = t; for (const k of p.split('.')) n = n[k]; const v = n.$value; return typeof v === 'string' && v.startsWith('{') ? hex(v.slice(1, -1)) : v.hex.toUpperCase(); };
+  const ver = variant === 'version' ? '0.0.0' : t.$extensions['org.oathandaction'].version;
+  const nw = hex('oa.chart.color.sequential.fill.step1.onNewsprint'), ch = hex('oa.chart.color.sequential.fill.step1.onCharcoal');
+  const printedCh = variant === 'off' ? nw : ch;
+  const sw = (g) => `<svg class="ps-sw" width="40" height="28" aria-hidden="true"><rect class="oac-f-seq-1" width="40" height="28" style="fill:var(--oa-chart-color-sequential-fill-step1-on-${g})"/></svg>`;
+  const html = `<div data-specimen="s-14-palette-spec"><p class="ps-rel">Tokens ${ver}. A plant.</p><div class="ps-pal"><table class="ps-t"><tbody><tr>`
+    + `<th scope="row">${sw('newsprint')}Step 1</th><td>a token</td><td><span class="ps-v">&#35;${nw.slice(1)}</span></td><td><span class="ps-v">&#35;${printedCh.slice(1)}</span></td><td>paper</td></tr></tbody></table>`
+    + `<div class="ps-g oa-surface-newsprint"><ol class="ps-sws"><li>${sw('newsprint')}</li></ol></div><div class="ps-g oa-surface-charcoal"><ol class="ps-sws"><li>${sw('charcoal')}</li></ol></div></div></div>`;
+  return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
+}
 
 async function selfTest() {
   const outDir = fs.mkdtempSync(path.join(process.env.TMPDIR || os.tmpdir(), 'oa-guide-check-'));
@@ -2803,6 +2986,9 @@ async function selfTest() {
   if (report.start && report.start.length) console.log(`  start: ${report.start.map((x) => `${x.width} px ${x.links} links, ${x.focusStops} of ${x.controls} stops in order, ${x.opened} of ${x.steps} steps opened and ${x.returned} returned`).join('; ')}`);
   const tt = report.runs[0].tokenTable;
   if (tt) console.log(`  tokenTable: ${tt.rows} rows, ${tt.swatches} swatches, version ${tt.version}; tokens.json ${tt.file ? tt.file.count + ', ' + tt.file.version : 'unread'}`);
+  const sg = report.runs[0].selectionGuide, ps = report.runs[0].paletteSpec;
+  if (sg) console.log(`  selectionGuide: ${sg.links} form links, ${sg.skips} skip links, ${sg.questions} questions, ${sg.symbols} symbols for ${sg.pictures} pictures`);
+  if (ps) console.log(`  paletteSpec: ${ps.swatches} swatches read against their printed values, tokens ${ps.version}`);
   for (const f of report.failures) console.log('  - ' + f.msg);
   console.log('  results: ' + path.relative(ROOT, outPath));
   process.exit(report.pass ? 0 : 1);
