@@ -142,9 +142,9 @@ COURT_STEPS = [
     ('Supreme Court ruling', 'The Supreme Court decides.',
      '28 U.S.C. 2106; Rules of the Supreme Court, Rule 16'),
 ]
-# The editor's word for a higher court that affirms (02:16, "Upheld", as Rule 11.8's appeal says it), held for the data
-# lead's ED5-3: if the ruling keeps the court's own "Affirmed" on the face, change it here alone.
-UPHELD = 'Upheld'
+# A higher court that affirms: the data lead's ED5-3 keeps the docket's own word, "Affirmed", explained once in Rule
+# 11.11's text, since "Upheld" can read as if a law struck down below had survived.
+UPHELD = 'Affirmed'
 ROUTE_NAMES = {'request': [n for n, _ in REQUEST_STEPS], 'rule': [n for n, _ in RULE_STEPS],
                'ballot': [s[0] for s in BALLOT_STEPS], 'court': [s[0] for s in COURT_STEPS]}
 STEP6_BOTH = ('The governor signs a state bill and the President signs a federal one. Either can veto it, and lawmakers '
@@ -1775,8 +1775,8 @@ def build(ctx):
                      'vote and the date it was certified, then when an approved measure takes effect. A measure that ends '
                      'before step 6 ends its line on a square at the last step it reached, with its words and the date: '
                      'Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to '
-                     'qualify, Removed from the ballot by a court, or Passed by the Legislature, after which the voters do '
-                     'not vote on it.'],
+                     'qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 '
+                     'under slashes, and its words give the date: “Passed by the Legislature on May 2.”'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and a '
                              'measure becomes law only on the certified result. Words that wait for certification keep a '
@@ -1808,7 +1808,10 @@ def build(ctx):
                 {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Not '
                                                           'certified by the attorney general; Withdrawn by its sponsors; '
                                                           'Too few valid signatures to qualify; Removed from the ballot by '
-                                                          'a court; Passed by the Legislature, on step 4'},
+                                                          'a court'},
+                {'label': 'Passed by the Legislature', 'value': 'Steps 5 and 6 under slashes, and “Passed by the '
+                                                                'Legislature on” with its date',
+                 'token': 'oa.component.mark.slash'},
                 {'label': 'Sent to the voters by the Legislature', 'value': 'Steps 1 to 3 under slashes, and step 4 done, '
                                                                             'with those words and the date'},
                 {'label': 'Marks and sizes', 'value': 'The bill tracker’s, from Rules 11.2 and 11.7'},
@@ -1832,9 +1835,10 @@ def build(ctx):
                      'three district judges to the Supreme Court.',
                      'The words say how each court ruled, with the court and the date. A trial court’s judgment reads '
                      'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
-                     'decided on the record alone. A higher court’s reads ' + UPHELD + ', for the court’s “affirmed”; '
-                     'Reversed; Vacated, which cancels the ruling below; or Modified; joined to “and sent back” when the '
-                     'court returns the case. The marks never move backward, so a case sent back says so in a sentence '
+                     'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + UPHELD + ', '
+                     'which leaves the ruling below in place; Reversed; Vacated, which cancels the ruling below; or '
+                     'Modified; joined to “and sent back” when the court returns the case. The marks never move backward, '
+                     'so a case sent back says so in a sentence '
                      'after the end words. A case that ends before step 6 ends its line on a square at the last step it '
                      'reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, '
                      'Appeal withdrawn, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '

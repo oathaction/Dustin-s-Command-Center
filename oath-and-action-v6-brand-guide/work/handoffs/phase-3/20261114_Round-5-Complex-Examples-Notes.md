@@ -116,6 +116,8 @@ Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/7633c399-b692-5041-be
 
 - **Strict build of the whole guide to scratch** (`guide3.html`, 02:25 UTC, after the editor's pass, the print copies and the phone note): **exit 0, 0 warnings**, 12,091,608 bytes, the projection 15,116,414 of 15,500,000. **Weight, reported (DR-271):** the build report's `complex_examples` gives each rule with its plates as placed: 14.142 29,965 bytes, 14.143 42,948, 14.144 54,950, together 127,863 against Gate 2's estimate of 30 KB each; the figures as placed: `s-14-s96` 12,903 (kit), `s-14-142-failure` 10,013 (kit), and the frames of `s-14-143-correct` 25,314, `s-14-143-failure` 10,499, `s-14-144-correct` 40,368, `s-14-144-failure` 5,061. Chapter 14 with the kit stands at 2,759,790 in the projection's count. `plate-share.json` was put back after the build, as every build here.
 
+- **The data lead's condition on S96 (02:27):** `phase3_ch14_build.py` rerun, `--check` 99 of 99 current. The placed fragment `s-14-s96.html` is the kit's placeholder (`<div data-oa-chart="s-14-s96"></div>`), so the guide build draws S96 from `s96.json` each time: the phone note ("The two dark columns: October 2025, −140,000 jobs, and February 2026, −156,000 jobs.") is in my 02:25 strict build (`guide3.html`) and in the slim page, once each, by search.
+
 ## Not tested
 
 - The keys files and their walk: they are the component engineer's (CE-3), not written when this was.
