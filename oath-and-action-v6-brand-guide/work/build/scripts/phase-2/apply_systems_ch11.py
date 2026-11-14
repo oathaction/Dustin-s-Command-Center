@@ -1852,8 +1852,9 @@ def build(ctx):
                      'Modified; joined to “and sent back” when the court returns the case. The marks never move backward, '
                      'so a case sent back says so in a sentence '
                      'after the end words. A case that ends before step 6 ends its line on a square at the last step it '
-                     'reached, with its words: Settled by the parties, Withdrawn by the plaintiff, Dismissed by the court, '
-                     'Appeal withdrawn, Appeal dismissed by the court, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '
+                     'reached, with its words: Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the '
+                     'court, Appeal dismissed at the appellant’s request (the appellant is the side that appealed), Appeal '
+                     'dismissed by the court, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '
                      'appeals court’s ruling standing.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['In the Supreme Court’s own words, review is “not a matter of right, but of judicial '
@@ -1880,8 +1881,9 @@ def build(ctx):
                                                               'court, as in “' + AFFIRMED + ' by the appeals court”, and '
                                                               '“and sent back” where the court returns the case'},
                 {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Settled by '
-                                                          'the parties; Withdrawn by the plaintiff; Dismissed by the court; '
-                                                          'Appeal withdrawn; Appeal dismissed by the court; Petition '
+                                                          'the parties; Dismissed at the plaintiff’s request; Dismissed by '
+                                                          'the court; Appeal dismissed at the appellant’s request; Appeal '
+                                                          'dismissed by the court; Petition '
                                                           'denied by the Supreme Court, on step 5'},
                 {'label': 'Never appealed', 'value': 'A square on step 2, with “No appeal was filed in the 30 days the law '
                                                      'allows.”, or 60 days where the United States is a party'},

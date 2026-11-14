@@ -1494,22 +1494,22 @@ def g114(m):  # Tile-grid map, categorical: one square a state, in its group's i
     for code, (c, r) in sorted(tile_cells().items()):
         x, y = tile_xy(c, r)
         v = pattern(x * 1.3, y * 1.1, 0.7)
-        by[FS if v > 0.62 else FC if v > 0.38 else FL].append((x, y, 6, 6))
+        by[FS if v > 0.62 else FC if v > 0.38 else FL].append((x, y, 5, 5))
     return "".join(P(k, rects(v)) for k, v in by.items())
 
 
 @glyph(115)
 def g115(m):  # Tile-grid map with shift arrows: one square a state, an arrow in each for the shift
     cells = sorted(tile_cells().items())
-    out = P(FG, rects([(*tile_xy(c, r), 6, 6) for code, (c, r) in cells]))
+    out = P(FG, rects([(*tile_xy(c, r), 5, 5) for code, (c, r) in cells]))
     segs, heads = [], ""
     for code, (c, r) in cells:
         x, y = tile_xy(c, r)
         v = pattern(x, y, 1.9)
         if v < 0.3 or v > 0.75:
             continue
-        segs.append([(x + 1, y + 3), (x + 4, y + 3)])
-        heads += head(x + 7, y + 3, 1, 0, 3, 2.5)
+        segs.append([(x, y + 2), (x + 4, y + 2)])
+        heads += head(x + 7, y + 2, 1, 0, 3.5, 2.5)
     return out + P(SS, lines(segs)) + P(FS, heads)
 
 
