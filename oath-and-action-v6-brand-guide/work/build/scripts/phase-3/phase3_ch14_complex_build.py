@@ -949,7 +949,9 @@ def rule_14_142():
         "annotations": [dict(s14["annotations"][0], dy=-88)],
         # the floor drops from S14's −200 to −400 thousand so the named stack stands clear under the band at every width
         # from 490 px (the engineer measured −375 as the least that holds; −400 keeps a round floor); asked of the data lead
-        "scale": {"y": [-400, s14["scale"]["y"][1]]},
+        # DD-E7: no tick or gridline under zero (ticks_min), the floor kept; DD-E8: under 490 px, where the named words hide,
+        # the scale returns to S14's (y_narrow). Both the engineer's keys (its request 7, landed 04:10 UTC)
+        "scale": {"y": [-400, s14["scale"]["y"][1]], "ticks_min": 0, "y_narrow": list(s14["scale"]["y"])},
         "notes_internal": [
             "Rule 14.142's correct plate (R5-1): S14 in full, from S14's frozen file (D3-1873); S14 stays at its entry untouched.",
             "Ruling (c): all 57 months; preliminary months hatched and the average dashed as S14 draws them; the margin a band "
@@ -965,9 +967,12 @@ def rule_14_142():
             "Scale: -400 to 850 thousand, where S14 runs -200 to 850. The floor drops so the two named labels stand as one stack "
             "under the band, clear of its lower edge, at every width from 490 px (the design director's DD-E2; the engineer "
             "measured -375 as the least that holds, and -400 keeps a round floor); the data lead's yes (its notes, Sign-offs, Batch 4). S14 keeps "
-            "-200. Check 14.142-b (maker_c_round5_derive.py --drawings): on the kit's own Node drawings at every whole width from "
-            "224 to 720 px on both grounds, October 2025's and February 2026's columns end at least 3 px past the band's lower "
-            "edge (the data lead's condition).",
+            "-200. Under 490 px, where the named labels hide, S96 takes S14's -200 to 850 (scale.y_narrow, the design director's "
+            "DD-E8); no tick or gridline sits under zero at any width (scale.ticks_min 0, DD-E7), so no gridline runs under the "
+            "stack's words. Check 14.142-b (maker_c_round5_derive.py --drawings): on the kit's own Node drawings at every whole "
+            "width from 224 to 720 px on both grounds, at both scales, October 2025's and February 2026's columns end at least "
+            "3 px past the band's lower edge (the data lead's condition), every word in the plot stands 4 px or more from every "
+            "gridline, and no gridline sits under zero.",
             "Written by work/build/scripts/phase-3/phase3_ch14_complex_build.py; change a word there, never here.",
         ],
     }

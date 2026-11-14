@@ -325,8 +325,9 @@ for (const g of ['newsprint', 'charcoal']) for (let w = 224; w <= 720; w++) {
   const lower = Math.max(...edges);
   for (const b of d.marks.filter(m => m.kind === 'bar' && m.data && ['2025-10', '2026-02'].includes(String(m.data.key)))) {
     out.n++;
-    const past = b.y + b.h - lower;
+    const past = b.y + b.h - lower, k = w < 490 ? 'narrow' : 'wide';
     if (!out.worst || past < out.worst.px) out.worst = { px: past, w: w, g: g, key: String(b.data.key) };
+    if (!out[k] || past < out[k].px) out[k] = { px: +past.toFixed(2), w: w, g: g, key: String(b.data.key) };
   }
   // DD-E7: every word inside the plot (a named label, the average note, the band's words) 4 px or more from every
   // gridline it shares columns with, haloed or not; and no gridline below zero
@@ -357,7 +358,8 @@ def drawings():
     s96 = read_json(os.path.join(SPECS, 's96.json'))
     s14 = read_json(os.path.join(SPECS, 's14.json'))
     check('S96', s14['scale']['y'][0] == -200, f'S14\'s scale floor moved: {s14["scale"]}')
-    check('S96', s96['scale']['y'] == [-400, s14['scale']['y'][1]], f'S96\'s scale is {s96["scale"]}')
+    check('S96', s96['scale']['y'] == [-400, s14['scale']['y'][1]] and s96['scale'].get('ticks_min') == 0
+          and s96['scale'].get('y_narrow') == s14['scale']['y'], f'S96\'s scale is {s96["scale"]}')
     check('S96', any('S14 keeps' in n and '-400' in n for n in s96.get('notes_internal', [])),
           'S96\'s notes_internal does not say why its range differs from S14\'s')
     with tempfile.NamedTemporaryFile('w', suffix='.cjs', delete=False) as fh:
@@ -386,7 +388,9 @@ def main():
         if m:
             w = m['worst']
             print(f'maker_c_round5_derive: S96 on its Node drawings: {m["n"]} named columns measured (224 to 720 px, both grounds); '
-                  f'the least past the band\'s lower edge {w["px"]:.2f} px ({w["key"]}, {w["w"]} px, {w["g"]}); '
+                  f'the least past the band\'s lower edge {w["px"]:.2f} px ({w["key"]}, {w["w"]} px, {w["g"]}; under 490 px on '
+                  f'the -200 scale {m["narrow"]["px"]:.2f} px at {m["narrow"]["w"]} px, from 490 px on the -400 scale '
+                  f'{m["wide"]["px"]:.2f} px at {m["wide"]["w"]} px); '
                   f'{m["words"]} word boxes in the plot, the least clear of a gridline {m["grid"]["px"]:.2f} px '
                   f'("{m["grid"]["words"]}", {m["grid"]["w"]} px, {m["grid"]["g"]}); gridlines below zero at '
                   f'{len(m["below_zero"]) and m["below_zero"] or "no width"}')
