@@ -68,7 +68,10 @@ BOARD_1_APPROVED = {"s-14-s05": 31_961, "s-14-s13": 47_212}
 # extended forms, section 3), and its renderer grows to one module per form at today's average. The parts of the chapter
 # that are not plates keep the proposal's allocation, as the pilot projects them (chart_pilot.py), until a round builds and
 # measures one: then that round sets its entry here to 0, since its bytes now sit in chapter 14's measured section.
-PLATES = 97
+# Round 5 (the main session, 05:16): the 97 core and extended forms are served by 95 specimens, since S06 and S13 each serve two
+# forms (14.76 and 14.127, 14.34 and 14.128), so 95 plates finish the chapter; counted as 97, the share showed two plates
+# "still to come" that never would be. (Reserved S97 and S98 are no entry plates and were never counted.)
+PLATES = 95
 FORMS = 97
 NOT_PLATES = {"reference sketches (22 at 4 KB) and avoid entries (8 at 2 KB)": 22 * 4096 + 8 * 2048,
               # round 1 built rules 14.1 to 14.14 with their plates and the opener, now measured in chapter 14's section;
@@ -357,16 +360,21 @@ def per_plate(ch14, kit, charts, sizes, parts14=None):
     renderer = kit - sizes.get("geo", 0) + max(0, FORMS - sizes["registered"]) * avg
     placed = sum(1 for cid, r in charts.items() if ENTRY_PLATE.match(cid) and cid not in COMPLEX_SPECS
                  and (r.get("tier") or "core").split(",")[0] in ("core", "extended"))
-    to_come = max(1, PLATES - placed)
+    to_come = max(0, PLATES - placed)
     reserve = not_plates(parts14)
     reserved = sum(reserve.values())
     room = CEILING[HARD_STOP] - renderer - reserved - ch14
-    share = room / to_come
-    line = (f"chapter 14's share per plate: {share:,.0f} bytes for each of the {to_come} finished specimens still to come "
-            f"({room:,.0f} bytes of room under its {CEILING[HARD_STOP]:,.0f} byte stop, after the renderer grown to {FORMS} forms, "
-            f"{renderer:,.0f}, the parts that are not plates, {reserved:,}, and the chapter as built, {ch14:,}); a plate's share covers "
-            "its figure, words, table, compressed data and plate frame")
-    return {"per_plate": round(share), "plates_to_come": to_come, "plates_placed": placed, "room": round(room),
+    after = (f"{room:,.0f} bytes of room under its {CEILING[HARD_STOP]:,.0f} byte stop, after the renderer grown to {FORMS} forms, "
+             f"{renderer:,.0f}, the parts that are not plates, {reserved:,}, and the chapter as built, {ch14:,}")
+    if to_come:
+        share = room / to_come
+        line = (f"chapter 14's share per plate: {share:,.0f} bytes for each of the {to_come} finished specimens still to come "
+                f"({after}); a plate's share covers its figure, words, table, compressed data and plate frame")
+    else:
+        # every plate placed: no share to give, the room is reported as it stands (DR-271)
+        share = None
+        line = f"chapter 14's plates: all {PLATES} finished specimens are placed, none still to come; {after}"
+    return {"per_plate": round(share) if share is not None else None, "plates_to_come": to_come, "plates_placed": placed, "room": round(room),
             "stop": CEILING[HARD_STOP], "renderer_grown": round(renderer), "renderer_now": kit - sizes.get("geo", 0),
             "forms_registered": sizes["registered"], "form_average": round(avg), "not_plates": reserve,
             "chapter_14_now": ch14, "line": line}
@@ -463,12 +471,20 @@ def self_test():
     sz = {"registered": 10, "geo": 5_000, "forms": {"a.js": 30_000, "b.js": 10_000}}
     sh = per_plate(0, 105_000, {"s-14-s01": {"tier": "core"}, "s-14-s02": {"tier": "reference"}, "s-13-1-correct": {"tier": "core"},
                                 "s-14-3-correct": {"tier": "core"}, "s-14-1-line": {"tier": "core"}}, sz)
-    want = (2_803_941 - (100_000 + 87 * 4_000) - sum(NOT_PLATES.values())) / 96
-    ok = sh is not None and sh["plates_to_come"] == 96 and sh["renderer_grown"] == 448_000 and abs(sh["per_plate"] - want) < 1
+    want = (2_803_941 - (100_000 + 87 * 4_000) - sum(NOT_PLATES.values())) / (PLATES - 1)
+    ok = sh is not None and sh["plates_to_come"] == PLATES - 1 and sh["renderer_grown"] == 448_000 and abs(sh["per_plate"] - want) < 1
     print(f"{'pass' if ok else 'FAIL'} the per-plate share: the stop less the grown renderer and the parts that are not plates, over the core and extended plates to come")
     bad += not ok
     ok = per_plate(0, 0, {}, {}) is None
     print(f"{'pass' if ok else 'FAIL'} no per-plate share on a page with no chart kit")
+    bad += not ok
+    # round 5: with every plate placed (95 specimens for the 97 core and extended forms) the note says none is to come and
+    # gives the room, and a complex example's kit figure (S96) is not counted as an entry plate
+    full = {f"s-14-s{k:02d}": {"tier": "core"} for k in range(1, PLATES + 1)}
+    full["s-14-s96"] = {"tier": "core"}
+    sh = per_plate(0, 105_000, full, sz)
+    ok = sh is not None and sh["plates_to_come"] == 0 and sh["per_plate"] is None and "none still to come" in sh["line"] and sh["plates_placed"] == PLATES
+    print(f"{'pass' if ok else 'FAIL'} every plate placed: no share and none to come, the room reported; S96 counts as no entry plate")
     bad += not ok
     # call 4 (round 1 fix pass): the rules' allowance and the sketch entries counted whole, from the page's measure
     p14 = {"rules_1_to_14": 190_000, "opener": 4_000, "rules_and_opener": 194_000, "allowance": RULES_ALLOWANCE,

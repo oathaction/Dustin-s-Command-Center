@@ -771,6 +771,8 @@ export function plate_share() {
   try {
     const j = JSON.parse(fs.readFileSync(path.join(KIT, 'plate-share.json'), 'utf8'));
     if (j && j.per_plate > 0) return { bytes: j.per_plate, from: `the guide build of ${String(j.built || '').replace('T', ' ')}`, plates: j.plates_to_come };
+    // round 5: with every chapter 14 plate placed the build gives no share; the plate ceiling is the figure a plate is read against
+    if (j && j.plates_to_come === 0) return { bytes: PLATE_CEILING, from: `every chapter 14 plate placed (the guide build of ${String(j.built || '').replace('T', ' ')}), the ceiling`, plates: 0 };
   } catch (e) { /* no build has written it */ }
   return { bytes: 14106, from: 'D3-1328, no guide build recorded', plates: null };
 }
