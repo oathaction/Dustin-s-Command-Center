@@ -108,10 +108,20 @@ need(ROWS["14.142"]["spec_id"] == "S96" and ROWS["14.142"]["correct"] == "s-14-s
 
 # ---------------------------------------------------------------------------------------------------------------------
 # A plate's own style. Chapter 14's shared block already defines .fx for its charts' axis row (grid-column 2, 26 px
-# tall), so chapter 15's two-column .fx takes the name .cfx here, in the markup and in the rules the plate carries; every
-# other class keeps chapter 15's name and look. The style sits in the fragment, which the build scopes to the specimen.
+# tall), so chapter 15's two-column .fx takes the name .cfx here, in the markup and in the rules the plate carries. Two
+# more names meet rules from outside the plate on this page (main session, 04:40 UTC, from SG-7): the shell's .rt (a
+# grid column) would select chapter 15's .rt group, and chapter 14's block's .tk (a tick label, absolutely placed) would
+# select chapter 15's .tk tick path, so they take .crt and .ctk. Every other class keeps chapter 15's name and look. The
+# style sits in the fragment, which the build scopes to the specimen.
 # ---------------------------------------------------------------------------------------------------------------------
-RENAME = {"fx": "cfx"}
+RENAME = {"fx": "cfx", "rt": "crt", "tk": "ctk"}
+# chapter 15's LAYOUT closes one brace more than it opens ("grid-row:2}}}" ends its wide @container rule and then the
+# build's @scope), so its narrow-frame rule fell outside the plate's scope and applied to every .p on the page. This
+# plate carries a balanced copy (C-SD1: copy what you need); the systems designer has the same fix for its own block
+_LAYOUT = C15.LAYOUT
+if _LAYOUT.count("}") == _LAYOUT.count("{") + 1 and "grid-row:2}}}@container" in _LAYOUT:
+    _LAYOUT = _LAYOUT.replace("grid-row:2}}}@container", "grid-row:2}}@container", 1)
+need(_LAYOUT.count("{") == _LAYOUT.count("}"), "chapter 15's LAYOUT braces changed; reread it before copying")
 
 
 def rename_classes(s):
@@ -140,7 +150,7 @@ def plate_style(body, swap=None, extra=""):
                     css = css.replace(old, new)
             parts.append(css)
     parts.append(extra)
-    parts.append(C15.LAYOUT)
+    parts.append(_LAYOUT)
     return "<style>" + rename_css("".join(parts)) + "</style>"
 
 
@@ -1073,6 +1083,19 @@ def check(entries, files, specs):
     for sid, t in files.items():
         txt = reader_text(t)
         ok("—" not in t and "‑" not in t, f"{sid}: an em dash or U+2011")
+        # every brace the plate's style opens it closes, never ahead, so the build's @scope holds the whole style
+        css = "".join(re.findall(r"<style>(.*?)</style>", t, re.S))
+        depth = [0]
+        for ch in css:
+            depth[0] += (ch == "{") - (ch == "}")
+            if depth[0] < 0:
+                break
+        ok(depth[0] == 0, f"{sid}: its style's braces do not balance, so rules would leave the plate's scope")
+        # names other parts of the page select (main session, 04:40 UTC): chapter 26's token table script takes .tt, the
+        # shell's CSS .rt, chapter 14's block .fx and .tk; the guide check found .tt here (SG-7)
+        outside = {"tt", "rt", "tk", "fx"} & {c for cl in re.findall(r'class="([^"]*)"', t) for c in cl.split()}
+        ok(not outside and not re.search(r"\.(?:tt|rt|tk|fx)(?![\w-])", "".join(re.findall(r"<style>(.*?)</style>", t, re.S))),
+           f"{sid}: a class another part of the page selects: {sorted(outside)}")
         ok(not re.search(r"<h[1-6]\b", t), f"{sid}: a heading inside the plate")
         bare = re.sub(r"var\((?:[^()]|\([^()]*\))*\)", "", t)
         ok(not re.search(r"(?<![\w&])#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(", bare), f"{sid}: a literal color")
