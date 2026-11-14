@@ -4438,8 +4438,8 @@ def recon_words():
              "Four feasibility words: " + ", ".join(FEAS_ORDER[:-1]) + " and " + FEAS_ORDER[-1] + ".",
              "Each route prints its feasibility in one of the atlas’s four words."),
         29: ("Effect codes as partial fills, with their qualifiers dropped.",
-             f"{n_q} of {len(effs)} effect values carry a qualifier or a range, such as {chip('Reform', 'R-12')}’s "
-             f"“{e(REFORM['R-12']['effects']['DQ'])}”.",
+             f"{n_q} of {len(effs)} effect values carry a qualifier or a range, such as the code "
+             f"“{e(REFORM['R-12']['effects']['DQ'])}” that {chip('Reform', 'R-12')} carries for the quality of democracy.",
              "An effect prints its full code, qualifier or range whole, beside its pips."),
         30: ("The atlas’s field codes on two sets of pages, and five words of their own on the third.",
              f"Connections carry five grades: {grades['documented']} documented, {grades['well-supported']} well supported, "
@@ -4466,7 +4466,7 @@ def recon_words():
              f"{vq('E1')} into area A, “{e(reg_a)}”, inside the core layer; the economy layer is a separate part of the model.",
              "No chapter draws this; a drawing that does ends the three in area A, named by its title."),
         38: ("One ballot measure named in the atlas’s sentence on its position.",
-             f"{chip('Reform', 'R-01')}’s summary names two measures, as of {SNAP}.",
+             f"The summary of {chip('Reform', 'R-01')} names two measures, as of {SNAP}.",
              "No plate quotes the sentence."),
         39: ("“Numbers”, “Power over the rules” and “Goals and mindsets” on a depth gauge.",
              f"Six bands, from parameter to goals, with {bands['rules']} reforms in the rules band.",
@@ -4492,7 +4492,7 @@ def recon_words():
         50: (f"{chip('Variable', 'D6')} typed as a flow and described as a stock.",
              f"{vq('D6')}: type “{e(d6['type'])}”; its description opens “{e(d6['kind_plain'].split('.')[0])}”.",
              f"Chapter 15 prints no kind for {chip('Variable', 'D6')} until the atlas settles it."),
-        51: (f"{chip('Connection', 'L23')}’s name says poor service raises the risk of losing, while its sign is minus.",
+        51: (f"The name of {chip('Connection', 'L23')} says poor service raises the risk of losing, while its sign is minus.",
              f"{chip('Connection', 'L23')} “{e(link('L23')['name'])}”, minus; on its sign: “{e(link('L23')['sign_meaning'])}”",
              "The connection prints the atlas’s sentence on its sign beside its name."),
         52: ("The drawing tool ends an authority connection in an arrowhead.",
@@ -4507,7 +4507,7 @@ def recon_words():
              f"and {chip('Reform', 'R-38')} also name it.",
              "Open until the atlas makes the two lists agree; a plate that draws such a pair says so in words."),
         55: ("Statuses that name the November 3, 2026 ballot, which came after the snapshot.",
-             f"{chip('Reform', 'R-01')}’s status, checked {SNAP}: “{e(re.search(r'As of [^.]*November 3, 2026 ballot[^.]*[.]', r01['text']).group(0))}”",
+             f"{chip('Reform', 'R-01')} carries a status checked {SNAP}: “{e(re.search(r'As of [^.]*November 3, 2026 ballot[^.]*[.]', r01['text']).group(0))}”",
              f"Such a status prints under “As of {SNAP}” until each state certifies its result."),
         56: ("A route entry’s who-acts words hold actors, instruments and actions alike.",
              f"{len(ents)} route entries hold {who_n} different values, and some open with a verb.",
@@ -5136,7 +5136,7 @@ def check(data, book):
         fails.append(f"the opener's fragment weighs {len(op.encode()):,} bytes; it must stay well under 16 KB as placed")
     # BC S16: punctuation never touches a typed chip, whose padding and edge would set it apart ("Variable C1 , seats")
     for sid, frag in book.files.items():
-        for m in re.finditer(r'<span class="chip">([^<]*)<span class="id">([^<]*)</span></span>([,.;:!?)])', frag):
+        for m in re.finditer(r'<span class="chip">([^<]*)<span class="id">([^<]*)</span></span>([,.;:!?)’])', frag):
             fails.append(f"{sid}: {m.group(1)}{m.group(2)} is followed by {m.group(3)!r}; let words follow a chip")
     # CD CH15-S1: a grade word that words follow ends with a period ("Well supported. The atlas calls it")
     for sid, frag in book.files.items():

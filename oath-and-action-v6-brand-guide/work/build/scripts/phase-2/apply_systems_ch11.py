@@ -1210,6 +1210,11 @@ def s_11_9(ctx):
 
 
 TRACK_KEY = ('done', 'now', 'notyet', 'skipped', 'stopped')
+
+
+def used_marks(items):
+    """The key holds every mark the list uses and no other (Rule 11.5's spec), in the key's own order."""
+    return tuple(s for s in TRACK_KEY if any(s in b['states'] for b in items))
 # Group 2's title and line: the editor's words (20261114_Round-5-Editor-Notes.md, "Words for the tracker designer")
 GROUP2_TITLE = 'Records requests, agency rules, ballot measures and court cases'
 GROUP2_LINE = ('A records request, a federal agency’s rule, a state ballot measure and a federal court case each move through '
@@ -1222,7 +1227,7 @@ def s_11_10(ctx):
     """Rule 11.10, the ballot measure (DR-231, R5-7): three measures in three states, and the fault a tracker most often
     makes on election night, a count read as a result."""
     nm = names('ballot')
-    html = records_piece(ctx, 'Where three ballot measures stand', BALLOTS, nm, TRACK_KEY)
+    html = records_piece(ctx, 'Where three ballot measures stand', BALLOTS, nm, used_marks(BALLOTS))
     alt = ('Three Illustrative state ballot measures at 360 px on Newsprint, each drawn as six numbered steps with the bill '
            'tracker’s marks, and a key of the six steps, Filed, Title and summary, Signatures, Legislature, On the ballot '
            'and Vote, and of the marks. ' + alt_rows(BALLOTS, nm))
@@ -1242,7 +1247,7 @@ def s_11_11(ctx):
     """Rule 11.11, the court case (DR-231, R5-7): three federal civil cases in three states, and the fault of reading a
     denied petition as a Supreme Court ruling."""
     nm = names('court')
-    html = records_piece(ctx, 'Where three court cases stand', COURTS, nm, TRACK_KEY)
+    html = records_piece(ctx, 'Where three court cases stand', COURTS, nm, used_marks(COURTS))
     alt = ('Three Illustrative federal civil cases at 360 px on Newsprint, each drawn as six numbered steps with the bill '
            'tracker’s marks, and a key of the six steps, Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme '
            'Court petition and Supreme Court ruling, and of the marks. ' + alt_rows(COURTS, nm))
@@ -1260,7 +1265,7 @@ def s_11_11(ctx):
 def s_route_steps(ctx, sid, steps, what, alt_head):
     """A readable table of a tracker's six steps (R4-3: a reference set in live text): each step's number and name, then
     what happens and, under it, the law that sets it. Two columns, as the bill's table after Rule 11.1 sets them; under
-    30rem of plate width the name takes a narrower column and its number sits above it."""
+    30rem of plate width each step stacks, its number and name over its words, so the words keep the column's width."""
     T = ctx.ty
     hair = ctx.v('oa.color.border.hairline.onNewsprint')
     t2 = ctx.v('oa.color.text.secondary.onNewsprint')
@@ -1273,7 +1278,8 @@ def s_route_steps(ctx, sid, steps, what, alt_head):
            f'tbody th{{{T("ui")};font-weight:700;width:11rem;text-wrap:balance}}th .n{{display:inline-block;min-width:1.4em;'
            f'{T("h4")};font-variant-numeric:tabular-nums}}'
            f'.wh,.lw{{margin:0;text-wrap:pretty}}.lw{{margin-top:6px;{T("caption")};color:{t2}}}'
-           f'@container (max-width:30rem){{tbody th{{width:6.5rem;padding-right:12px}}th .n{{display:block}}}}'
+           f'@container (max-width:30rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid '
+           f'{hair}}}tbody th,td{{display:block;width:auto;padding:0;border:0}}tbody th{{padding-bottom:4px}}}}'
            f'.wr{{container-type:inline-size}}')
     html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th><th scope="col">What happens, '
             f'and the law that sets it</th></tr></thead><tbody>{rows}</tbody></table></div>')

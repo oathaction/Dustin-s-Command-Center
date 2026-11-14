@@ -732,7 +732,7 @@ def rule_14_144():
     # one row a reform, so the picture holds whole in the 296 px column as well as at 680 px: its four codes in the
     # families' order, then the total the fault adds
     rows = "".join(f'<tr><th scope="row">{chip("Reform", rid)}</th><td>'
-                   + ", ".join(e(REFORM[rid]["effects"][f]) for f in ("DQ", "GE", "EP", "EQ"))
+                   + ", ".join(f'<span class="cn8">{e(REFORM[rid]["effects"][f])}</span>' for f in ("DQ", "GE", "EP", "EQ"))
                    + f'</td><td class="tt">+{tot[rid]}</td></tr>' for rid in RIDS)
     fam = ", ".join(lc(C13.FAMILY[f]) for f in ("DQ", "GE", "EP", "EQ"))
     fail = (dnp() + '<p class="hed"><span>\u201cWhich reform does the most for Loop R8?\u201d</span></p>'
@@ -745,7 +745,7 @@ def rule_14_144():
                                       "letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);"
                                       "color:var(--oa-color-text-secondary)}"
                                       ".ft8 .tt{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;"
-                                      "text-align:right;white-space:nowrap}.ft8 thead th:last-child{text-align:right}"))
+                                      "text-align:right;white-space:nowrap}.ft8 thead th:last-child{text-align:right}.ft8 .cn8{white-space:nowrap}"))
     files["s-14-144-failure"] = fragment("s-14-144-failure", fail, fstyle)
     meta["s-14-144-failure"] = plate_meta(
         FC + "A table of the three reforms, each with its four effects in a row and a total score at the end: Reform R-06 "
@@ -849,7 +849,7 @@ def rule_14_142():
         "evidence_label": "Finding",
         "grade_line": s14["grade_line"],
         "title": title,
-        "reading_guide": ("Each column is one month’s change in jobs, and the two dark columns are the drops past the margin. "
+        "reading_guide": ("Each column is one month’s change in jobs, and the two in the strongest ink are the drops past the margin. "
                           "The line is the three-month average. The shaded band is the survey’s margin of error for one "
                           "month’s change. Hatched columns are preliminary."),
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
@@ -875,21 +875,23 @@ def rule_14_142():
         "illustrative": False,
         "alt": (f"Columns show the monthly change in payroll jobs from {f1['window_words']} over a shaded band from minus to plus "
                 "122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all "
-                f"in 2025 and 2026. Two are dark and labeled, {mw(past[0])} at minus 140,000 and {mw(past[1])} at minus 156,000, "
+                f"in 2025 and 2026. Two are drawn in the strongest ink and labeled, {mw(past[0])} at minus 140,000 and {mw(past[1])} at minus 156,000, "
                 "and reach past the band; the other five end inside it. A line shows the three-month average, which stood at "
                 f"51,000 in {mw(lat['month'])}, a preliminary figure."),
         # its own caption, so a reader who lists the page's tables tells S96's from S14's (the accessibility lead's 4.4)
         "table": dict(s14["table"], caption=f"Monthly change in payroll jobs, {f1['window_words']}, with the three-month average"),
         "chart_notes": [
-            ("Key: each light column is the jobs added or lost in the month, and the two dark columns are the drops past the "
-             "margin; hatched columns are preliminary, August and September 2026."),
+            ("Key: each gray column is the jobs added or lost in the month, and the two in the strongest ink are the drops past "
+             "the margin; hatched columns are preliminary, August and September 2026."),
             "The band: the survey’s margin of error for one month’s change, plus or minus 122,000 jobs.",
             "Three-month average: the line, dashed where it includes a preliminary month.",
             f"Latest: +29,000 jobs in {mw(lat['month'])}, preliminary; the three-month average stood at +51,000, also preliminary.",
         ],
         "phone": "same",
         "phone_view": True,
-        "phone_notes": [f"The two dark columns: {mw(past[0])}, {k(pv[past[0]])} jobs, and {mw(past[1])}, {k(pv[past[1]])} jobs."],
+        # in words that hold on both grounds: the subject ink is Charcoal on Newsprint and Newsprint on Charcoal
+        "phone_notes": [f"The two columns in the strongest ink: {mw(past[0])}, {k(pv[past[0]])} jobs, and {mw(past[1])}, "
+                        f"{k(pv[past[1]])} jobs."],
         "artboard": "reading",
         "domain": s14["domain"],
         "states": [],
@@ -930,7 +932,7 @@ def rule_14_142():
                          "with the three-month average."),
         "notes": [s14["notes"][2]],
         "chart_notes": [],
-        "alt": ("The same columns with no band, the seven drops drawn dark alike under a note that calls them seven months of "
+        "alt": ("The same columns with no band, the seven drops drawn alike in the strongest ink under a note that calls them seven months of "
                 "job losses, and a title that counts seven months of lost jobs."),
         "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
         "annotations": [dict(s14["annotations"][1], text="Seven months of job losses")],

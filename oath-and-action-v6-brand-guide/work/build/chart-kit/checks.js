@@ -393,6 +393,12 @@ function check_spec(K, spec, opts) {
     const tb = spec.table;
     const unmapped = (col, vals) => {
       if (!col.words || col.words_pass) return;
+      // round 5: a margin column's words name where each value stands against the margin, never a stored value
+      if (col.format === 'margin') {
+        ['below', 'above', 'within'].filter((k) => !col.words[k]).forEach((k) => warnings.push(`table: the margin column "${col.label}" gives no words for "${k}"`));
+        if (!(col.margin !== undefined ? isFinite(+col.margin) : isFinite(+(((spec.labels || {}).margin) || {}).value))) warnings.push(`table: the margin column "${col.label}" has no margin: set the column's "margin" or labels.margin.value`);
+        return;
+      }
       const out = [...new Set(vals.filter(v => v !== null && v !== undefined && v !== '' && col.words[String(v)] === undefined).map(String))];
       if (out.length) warnings.push(`table: the column "${col.label}" has words and prints ${out.length} stored value${out.length > 1 ? 's' : ''} they do not map (${out.slice(0, 6).map(v => `"${v}"`).join(', ')}${out.length > 6 ? ', ...' : ''}); give each its words, or set "words_pass": true on the column where the stored value is meant to print (AX-M2)`);
     };

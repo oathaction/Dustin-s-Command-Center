@@ -10,7 +10,7 @@
  "evidence_label": "Finding",
  "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
  "title": "Payrolls shrank in seven of the 57 months charted, and only the October 2025 and February 2026 drops pass the survey’s margin of error.",
- "reading_guide": "Each column is one month’s change in jobs, and the two dark columns are the drops past the margin. The line is the three-month average. The shaded band is the survey’s margin of error for one month’s change. Hatched columns are preliminary.",
+ "reading_guide": "Each column is one month’s change in jobs, and the two in the strongest ink are the drops past the margin. The line is the three-month average. The shaded band is the survey’s margin of error for one month’s change. Hatched columns are preliminary.",
  "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average and the survey’s 90 percent margin of error for one month’s change, plus or minus 122,000 jobs.",
  "notes": [
   "The band runs from −122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of error for one month’s change in its survey of employers. A column that ends inside the band is a change the survey cannot tell apart from no change at that level. The band covers one month’s change, so it says nothing about the three-month average.",
@@ -23,7 +23,7 @@
  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026 over a shaded band from minus to plus 122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all in 2025 and 2026. Two are dark and labeled, October 2025 at minus 140,000 and February 2026 at minus 156,000, and reach past the band; the other five end inside it. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
+ "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026 over a shaded band from minus to plus 122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all in 2025 and 2026. Two are drawn in the strongest ink and labeled, October 2025 at minus 140,000 and February 2026 at minus 156,000, and reach past the band; the other five end inside it. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
  "table": {
   "caption": "Monthly change in payroll jobs, January 2022 to September 2026, with the three-month average",
   "columns": [
@@ -55,7 +55,7 @@
   ]
  },
  "chart_notes": [
-  "Key: each light column is the jobs added or lost in the month, and the two dark columns are the drops past the margin; hatched columns are preliminary, August and September 2026.",
+  "Key: each gray column is the jobs added or lost in the month, and the two in the strongest ink are the drops past the margin; hatched columns are preliminary, August and September 2026.",
   "The band: the survey’s margin of error for one month’s change, plus or minus 122,000 jobs.",
   "Three-month average: the line, dashed where it includes a preliminary month.",
   "Latest: +29,000 jobs in September 2026, preliminary; the three-month average stood at +51,000, also preliminary."
@@ -63,7 +63,7 @@
  "phone": "same",
  "phone_view": true,
  "phone_notes": [
-  "The two dark columns: October 2025, −140,000 jobs, and February 2026, −156,000 jobs."
+  "The two columns in the strongest ink: October 2025, −140,000 jobs, and February 2026, −156,000 jobs."
  ],
  "artboard": "reading",
  "domain": "D07",

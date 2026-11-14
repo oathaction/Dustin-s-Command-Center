@@ -1540,6 +1540,16 @@ async function self_test() {
   const mc = min_css('.a > .b , .c { color: red ; }\n@media (x: y) { .d { e: f; } }') === '.a>.b,.c{color:red}@media (x:y){.d{e:f}}';
   console.log(`${!qs.length && mc ? 'pass' : 'FAIL'} the page's kit.css minify keeps every rule (no quoted string it could change${qs.length ? ': ' + qs[0] : ''})`);
   if (qs.length || !mc) bad++;
+  // round 5 (the complex examples maker's request 3): a margin column prints where each value stands against the margin, a
+  // value equal to it inside, and is never read back
+  {
+    const mcol = { field: 'v', format: 'margin', words: { below: 'Drop past', above: 'Gain past', within: 'Within' } };
+    const got = [-140, -122, 0, 122, 133, null].map((v) => K.cell_text(mcol, { v }, { labels: { margin: { value: 122 } } }));
+    const own = K.cell_text(Object.assign({ margin: 50 }, mcol), { v: 60 }, {});
+    const ok = JSON.stringify(got) === JSON.stringify(['Drop past', 'Within', 'Within', 'Within', 'Gain past', '']) && own === 'Gain past';
+    console.log(`${ok ? 'pass' : 'FAIL'} a margin column: past it below, inside it (its edge included), past it above, an empty value empty; a column's own margin first`);
+    if (!ok) bad++;
+  }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);

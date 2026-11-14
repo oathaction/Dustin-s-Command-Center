@@ -2094,7 +2094,7 @@ async function paletteSpec(page, version) {
       });
     });
     probe.remove();
-    const rel = ((st.querySelector('.ps-rel') || {}).textContent || '').match(/Tokens (\S+?)\./);
+    const rel = ((st.querySelector('.ps-rel') || {}).textContent || '').match(/Tokens (\S+?)\.(?:\s|$)/);
     return { swatches, off: off.slice(0, 5), offCount: off.length, version: rel ? rel[1] : null };
   });
   if (!r) return null;
@@ -2872,8 +2872,10 @@ const PLANTS = [
   // R5-3: the palette plate, a small one built here from tokens.json
   { key: 'paletteSpec', fault: 'a palette plate whose swatches draw the values it prints (allowed: must not be flagged)', expect: false, js: psPlant('clean'),
     verify: (r) => r.runs[0].paletteSpec && r.runs[0].paletteSpec.swatches === 3 },
-  { key: 'paletteSpec', fault: 'a palette plate that prints another value than its Charcoal swatch draws', js: psPlant('off') },
-  { key: 'paletteSpec', fault: 'a palette plate that names another token release than tokens.json', js: psPlant('version') },
+  { key: 'paletteSpec', fault: 'a palette plate that prints another value than its Charcoal swatch draws', js: psPlant('off'),
+    verify: (r) => r.runs[0].paletteSpec && r.runs[0].paletteSpec.offCount === 1 && r.runs[0].paletteSpec.problems.length === 1 },
+  { key: 'paletteSpec', fault: 'a palette plate that names another token release than tokens.json', js: psPlant('version'),
+    verify: (r) => r.runs[0].paletteSpec && r.runs[0].paletteSpec.offCount === 0 && r.runs[0].paletteSpec.version === '0.0.0' },
 ];
 
 // the selection guide's plants: the markup the accessibility lead's 1.2 and 1.5 set, from the plan file, with one fault each

@@ -36,10 +36,48 @@ Load `work/build/scripts/phase-3/phase3_ch15_build.py` with `importlib.util.spec
 
 ## Routine calls
 
+- D3-xxx | A workflow is a stage list in live HTML text, its marks (squares, lines, arrowheads, the stop square, the line back to step 1) drawn by the chapter's block | R4-3: a stage list is text a reader can search and copy; the marks carry only the path's shape
+- D3-xxx | 15.22's spine and its paths follow Rule 14.6: the spine in Charcoal at the subject weight (3 px) with filled squares, the paths that leave it and what follows the law in the context ink (2 px) with outlined squares | Ruling (e); Rule 14.6's spec for a diagram's path; one look for a process across chapters 14 and 15
+- D3-xxx | Chapter 15's one-weight rule (Rule 15.1) governs its causal drawings, and a workflow takes Rule 14.6's two weights | A stage is no variable and a path no connection; the weight marks the path every bill shares
+- D3-xxx | Cloture, suspension and reconciliation are paths that leave the spine, each saying where it applies; the spine's floor stages are the simple-majority votes | Ruling (e)'s order; a bill passed by unanimous consent or under suspension meets no cloture
+- D3-xxx | Within reversal, the sunset prints before repeal, so repeal is the last stage and its line returns to step 1 | Ruling (e) lists repeal, sunset, court; a repeal is the new act that restarts the route, and a court's set-aside already prints at stage 17 with the rule it strikes
+- D3-xxx | 15.22 prints "read" and a date beside each stage's source, and the atlas's own date only in the head ("as of October 15, 2026") | Ruling (e): two dates never share one word
+- D3-xxx | No real bill sits on 15.22; Public Laws 115-97 and 119-21 print only as the sources of the sunset and repeal stages | Ruling (e)
+- D3-xxx | 15.22 has no source-less stage: the generator stops on one, and on a row the research file marks as read only in snippets or "not read closely" | Ruling (e): a stage whose source was not read prints no read date; here every stage's was read
+- D3-xxx | 15.23 maps five trackers, Rules 11.1, 11.8, 11.9, 11.10 and 11.11, reading their step names from `11-icons.json` | Round 1's plan and ruling (g); the editor's words on the steps reach the plate on a rerun
+- D3-xxx | 15.23's records request and agency rule blocks read the research lead's data files `govinfo-foia-request-steps.csv` and `govinfo-federal-rulemaking-steps.csv` | The same official rows chapter 14's process plates draw; no second copy of the facts
+- D3-xxx | 15.23 says an agency rule's early notice has no stage in the law we read | The rule-making data file holds none; nothing is inferred
+- D3-xxx | 15.23 logs one example per tracker: Rule 11.1 and Rule 11.9 in D04, Rule 11.8 in D01, Rule 11.10 in D02 and Rule 11.11 in D05 | Ruling (g); chapter 15 holds 38 examples, D02 at 8 of the 9 Rule 01.9 allows
+- D3-xxx | 15.24's cards keep the atlas's order and set two to a row from 680 px | Ruling (e); two 304 px columns hold a card's text at the width of the phone column
+- D3-xxx | 15.24 prints each route's "depends" text and its entries in a disclosure under the visible card, and the entry counts on the card | The card stays a calm overview; the ruling's counts stay visible; Rule 18.8's disclosure opens at print
+- D3-xxx | An atlas sentence that names an ID prints as exact quoted fragments with the ID in its typed chip outside the quotation marks (`quote_ids`) | Round 1's SD-2 and the V7 check's bare-ID test; the atlas's words stay as stored
+- D3-xxx | 15.24's example and 15.25's row 41 print Reform R-28's entry as "its entry's own words, “Reconciliation”", never "Who acts" | The `who` field holds actors, instruments and actions (the research lead's row 56, D3-1825)
+- D3-xxx | 15.24 and 15.25's correct plates are marked interactive in the manifest | Each holds Rule 18.8 disclosures, a reader's control
+- D3-xxx | 15.25 writes every row's words here from the research lead's data file, reading its rows, order, groups and rules by script and each model value from the model | The data file's text holds studio words and bare IDs; the reader's words must not, and the values stay the model's
+- D3-xxx | 15.25 names the earlier pages "our brand guide’s fifth edition" (as chapters 01 to 03 do), "the atlas visual system" and "the atlas design concepts", and Phase 0 "our first audit" | No studio word in reader text; one name each
+- D3-xxx | 15.25 prints the four value, sign, grade and delay rows on the plate and the other 53 in one disclosure | R5-6 allows the full table behind a disclosure with its counts on the plate; ruling (e) puts those four first
+- D3-xxx | 15.25's "where" column links each rule to its anchor, and the generator stops on a rule number it cannot read | A reference table a reader follows; every same-page link resolves in the strict build
+- D3-xxx | Groups 5 and 6 take the editor's titles and lines, with "the date we read it" where the line said "checked" | Ruling (e): "Checked" belongs to an atlas entry
 - D3-xxx | `four_loop` takes `steps_g` as `three_loop` does, default False | The complex examples maker's request for Rule 14.143's stepper drawing of Loop R10 (one drawing function, R4-5); no chapter 15 plate changes, proved by hashes
 - D3-xxx | R5-8's map is applied in `phase3_ch15_build.py` by one regular-expression function over the source, never a chain of replaces | The tracker designer's contract; a chain would carry 11.14 on to 11.16 and then 11.18
 
 ## Requests
+
+### To the editor
+1. **Words pass on Rules 15.22 to 15.25** (the generator's data; I own the file and will apply your lines, D3-669): each rule's rule, why, basis, captions, specs and builders; the plates' words: 15.22's stage names, words, "rel" lines and stop lines (`fs_stages()`), its key and head; 15.23's head, block heads and stage words (`rule_15_23()`); 15.24's head, the R-28 example, card labels and each route's stage run and note (`ROUTE_SET`); 15.25's head, counts and the 57 rows' three cells (`recon_words()`), group heads (`GROUP_WORDS`) and page names (`PAGES`); and the eight alts. Your group titles and lines are applied, with one change: group 5's line says "the date we read it", since ruling (e) keeps "checked" for an atlas entry's date.
+2. Chapter 15's intro, where it names what the chapter holds, if you want it to name the routes and the reconciliation (your row in the brief).
+
+### To the data visualization lead
+1. **Sign-off of Rules 15.22 to 15.25** under rulings (e) and (g). Points to rule on: (a) 15.22's sunset before repeal (routine calls); (b) 15.22's court stage sets aside a rule, and no stage says a court strikes the statute itself, since no source we hold says so (the research lead could read one; I would add it as a path of stage 17); (c) 15.23's early notice with no stage in the law; (d) 15.25's model values for rows 42, 43 and 54, taken from the research lead's file, which its script read from the model, where the others are computed in my generator; (e) the mapping of each row to its rules, which is the research lead's and which I print as given.
+
+### To the research lead
+1. Optional, for 15.22's reversal: a primary source, read in full, that a federal court can hold an act of Congress void (ruling (e) lists "a court striking it down"); 15.22 draws a court setting aside a rule (5 U.S.C. 706) today.
+
+### To the accessibility lead
+1. 15.24 and 15.25's correct plates hold Rule 18.8 disclosures (11 and 1), marked interactive; their key path (Tab to each summary, Enter opens) is not written as a keys file. Say if you want one. 15.22's workflow is an ordered list whose marks are CSS (hidden from the tree); each stage's number is text. 15.23's FS squares are `aria-hidden` with "Stage n:" in visually hidden text.
+
+### To the design director
+1. One read of the eight plates at 1440, 390 and 320 px on both grounds. 15.22, 15.23 and 15.24 are long reference plates (at 1440: 2,968, 3,526 and 4,502 px tall; at 390: 4,924, 5,453 and 7,979); say where to compress.
 
 ## Tested
 

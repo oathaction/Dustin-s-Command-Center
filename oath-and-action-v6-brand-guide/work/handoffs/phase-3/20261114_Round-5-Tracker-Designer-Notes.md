@@ -171,3 +171,13 @@ Script: `r58_scan.py` in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-C
 - The chapter 11 plates I did not change, on Charcoal: on a Charcoal stage they now keep their numbers (the surface change), but only the six new plates were captured on Charcoal.
 - Every state's ballot measure numbering, and every federal court's docket form beyond the year-hyphen form the research file shows (No. 22-451), for the invented numbers.
 - The stage A capture after the R5-8 edit: its probe pages and probes were byte for byte the baseline's, so the baseline capture (01:46) was reused for `final`; the capture itself ran once.
+
+## Files
+
+Modified (none created outside these generators' outputs):
+- `work/build/scripts/phase-2/apply_systems_ch11.py`: R5-8; Rules 11.10 and 11.11, their four plates and two step tables; group 2, the intro and Rule 11.12's words; two source lines; the opt-in surface color. Its outputs: `work/build/guide/chapters/11-icons.json`, `work/build/guide/specimens/s-11-*.html` (new: `s-11-10-correct`, `s-11-10-failure`, `s-11-11-correct`, `s-11-11-failure`, `s-11-ballot-steps`, `s-11-court-steps`; renamed by R5-8: old `s-11-10-*` to `s-11-16-*` now `s-11-12-*` to `s-11-18-*`; 26 others rewritten for the surface color, no pixel moved on Newsprint), the `s-11-*` entries of `work/build/guide/specimens/manifest-systems.json`.
+- `work/build/scripts/phase-2/apply_systems_ch11_ui.py`: R5-8 only (41 numbers, 26 IDs).
+- R5-8 string edits only: `work/build/scripts/phase-2/stage_a_systems_ch05.py` (with `work/build/guide/chapters/05-color.json`, the `s-05-3-corrective` manifest entry, and `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json`'s token set line, render date and tint count); `stage_b_ch12_systems_build.py` (with `12-graphic-devices.json` and the `s-12-*` manifest entries); `stage_c_ch17_build.py` (with `17-motion-and-states.json`); `stage_c_identity_ch17.py` (a code comment); `stage_c_ch19_build.py` (with `s-19-criteria.html`); `work/build/tokens/src/oa-tokens.src.mjs` (three strings; the rebuild is the engineer's).
+- `work/handoffs/phase-3/20261114_Round-5-Tracker-Designer-Notes.md` (this file).
+
+Scratch (not delivered): `/tmp/claude-0/-home-user-Dustin-s-Command-Center/7633c399-b692-5041-be92-a87ecd098fbf/scratchpad/phase-3/round-5/tracker-designer/`: the scan, map and proof scripts (`r58_*.py`, `bgproof.js`, `cap.js`, `chain.sh`, `hashes.sh`, `build.sh`), strict builds `guide0.html` to `guide6.html` with their reports, captures `capA/` to `capD/`.
