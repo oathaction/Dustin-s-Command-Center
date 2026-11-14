@@ -73,8 +73,39 @@ def e(s):
 # Drawing helpers. Coordinates are px in the 88 by 56 box; a 2 px line centered on a whole number sits on whole pixels.
 
 def f(v):
-    v = round(float(v), 2)
-    return str(int(v)) if v == int(v) else (f"{v:.2f}".rstrip("0").rstrip("."))
+    v = round(float(v), 1)
+    return str(int(v)) if v == int(v) else f"{v:.1f}"
+
+
+def tenths(v):
+    """A number of tenths written short: 125 -> '12.5', -5 -> '-.5', 120 -> '12'."""
+    t = f"{v / 10:.1f}".rstrip("0").rstrip(".")
+    return re.sub(r"^(-?)0\.", r"\1.", t) if t not in ("0", "-0") else "0"
+
+
+def joinnums(vals):
+    out = ""
+    for v in vals:
+        if out and not v.startswith("-") and not (v.startswith(".") and "." in re.split(r"[ \-]", out)[-1]):
+            out += " "
+        out += v
+    return out
+
+
+def ring_d(pts):
+    """A closed ring as one short path: its first point, then each step relative, in tenths of a pixel."""
+    t = []
+    for x, y in pts:
+        q = (round(x * 10), round(y * 10))
+        if not t or q != t[-1]:
+            t.append(q)
+    if len(t) > 1 and t[-1] == t[0]:
+        t.pop()
+    if len(t) < 3:
+        return ""
+    head_ = "M" + joinnums([tenths(t[0][0]), tenths(t[0][1])])
+    steps = [tenths(v) for (a, b), (c, d) in zip(t, t[1:]) for v in (c - a, d - b)]
+    return head_ + "l" + joinnums(steps) + "z"
 
 
 def P(cls, d, extra=""):
@@ -250,14 +281,14 @@ class Geo:
         return out
 
 
-def ring_path(rings, tol=0.45, min_area=0.6):
+def ring_path(rings, tol=0.6, min_area=0.8):
     out = []
     for r in rings:
         if ring_area(r) < min_area:
             continue
         q = dp(r, tol)
         if len(q) >= 3:
-            out.append(line(q, close=True))
+            out.append(ring_d(q))
     return "".join(out)
 
 
@@ -290,39 +321,44 @@ def shaded(groups_by_class):
     return "".join(P(cls, d) for cls, d in groups_by_class if d)
 
 
+US_GROUPS = ("s-14-sg-us-a", "s-14-sg-us-b", "s-14-sg-us-c", "s-14-sg-us-d")
+
+
 class Maps:
+    """The states, projected once into the picture's box (x 4 to 84, y 4 to 52) and split into four groups by the
+    invented pattern. Each group is a symbol with no ink of its own; a picture <use>s it with an ink class, which the
+    shapes inherit, so the country's outline is carried once for every map picture (land, shading, outlines)."""
+
     def __init__(self):
         self.geo = Geo()
         self.us = self.geo.fit((4, 4, 80, 48))
-
-    def land(self, cls, box=None, tol=0.45):
-        us = self.geo.fit(box) if box else self.us
-        return P(cls, "".join(ring_path(rs, tol) for rs in us.values()))
-
-    def choropleth(self, classes, box=None, k=0.0, tol=0.45):
-        us = self.geo.fit(box) if box else self.us
-        by = {c: [] for c in classes}
-        for code, rs in sorted(us.items()):
+        self.groups = {g: [] for g in US_GROUPS}
+        for code, rs in sorted(self.us.items()):
             cx, cy = centroid(rs)
-            by[lerp_class(pattern(cx, cy, k), classes)].append(ring_path(rs, tol))
-        return [(c, "".join(v)) for c, v in by.items()]
+            self.groups[lerp_class(pattern(cx, cy, 0.3), US_GROUPS)].append(code)
 
-    def borders(self, cls, box=None, tol=0.45):
-        """State outlines as strokes."""
-        us = self.geo.fit(box) if box else self.us
-        return P(cls, "".join(ring_path(rs, tol) for c, rs in sorted(us.items())), ' stroke-linejoin="round"')
+    def symbols(self):
+        out = {g: f'<path d="{"".join(ring_path(self.us[c]) for c in codes)}"/>' for g, codes in self.groups.items()}
+        out["s-14-sg-us"] = "".join(f'<use href="#{g}"/>' for g in US_GROUPS)
+        return out
 
-    def state(self, code, cls, box=None, tol=0.45):
-        us = self.geo.fit(box) if box else self.us
-        return P(cls, ring_path(us[code], tol))
+    @staticmethod
+    def use(sym, cls, box=None):
+        at = f' x="{f(box[0])}" y="{f(box[1])}" width="{f(box[2])}" height="{f(box[3])}"' if box else ""
+        return f'<use href="#{sym}" class="{cls}"{at}/>'
 
-    def inside(self, x, y, box=None):
-        us = self.geo.fit(box) if box else self.us
-        for rs in us.values():
-            for r in rs:
-                if point_in(x, y, r):
-                    return True
-        return False
+    def land(self, cls):
+        return self.use("s-14-sg-us", cls)
+
+    def choropleth(self, classes, box=None):
+        """The four groups, each in one of the classes, in order; a box draws the map smaller at (x, y, w, h)."""
+        return "".join(self.use(g, c, box) for g, c in zip(US_GROUPS, classes))
+
+    def state(self, code, cls):
+        return P(cls, ring_path(self.us[code]))
+
+    def inside(self, x, y):
+        return any(point_in(x, y, r) for rs in self.us.values() for r in rs)
 
 
 def point_in(x, y, ring):
@@ -1405,7 +1441,7 @@ def g116(m):  # Bubble map: a circle at each place, its area the count
 
 @glyph(117)
 def g117(m):  # Choropleth, sequential: each state shaded by its value, darker for more
-    return shaded(m.choropleth([M2, M3, M4, FS], k=0.3)) + m.borders(ST)
+    return m.choropleth([M2, M3, M4, FS]) + m.land(ST)
 
 
 @glyph(118)
@@ -1413,7 +1449,7 @@ def g118(m):  # Locator map: where a place sits, picked out on the country
     return m.land(FL) + m.state("CO", FS) + P(SS, dots([(32.5, 24.5)], 7.5))
 
 
-def sub_map(path, code, box, classes, k, tol=0.4):
+def sub_map(path, code, box, classes, k, tol=0.5):
     feats = sub_features(path, code)
     t = fit_rings([r for g, rs in feats for r in rs], box)
     by = {c: "" for c in classes}
@@ -1473,7 +1509,7 @@ def g123(m):  # Small-multiple maps: the same map for each year, side by side
     out = ""
     for k in range(4):
         box = (4 + 41 * (k % 2), 3 + 26 * (k // 2), 39, 24)
-        out += shaded(m.choropleth([M2, M3, M4], box=box, k=0.3 + 0.7 * k, tol=0.6))
+        out += m.choropleth([[M2, M3, M4, M3], [M3, M4, M2, M4], [M2, M4, M3, M4], [M4, M3, M4, M2]][k], box=box)
     return out
 
 
