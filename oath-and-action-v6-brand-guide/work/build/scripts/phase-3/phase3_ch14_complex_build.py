@@ -524,22 +524,18 @@ def layer_of(t):
 
 def say_line(rid, on):
     """The line the status line says (the data lead's A-2, item 3): the marks that turn red on the drawing, none included,
-    then the targets outside the loop with their layer. It never says a reform acts on the loop through anything."""
+    then the targets outside the loop with their layer. It never says a reform acts on the loop through anything, and no
+    punctuation touches a chip (BC S16)."""
     r = REFORM[rid]
     mine = [t for t in r["targets"] if t in on]
     off = [t for t in r["targets"] if t not in on]
     lays = sorted({LAYER[layer_of(t)] for t in off})
-    if mine:
-        n_m = len(mine)
-        s = f'{chip("Reform", rid)}: {counted(mine)} turn{"s" if n_m == 1 else ""} red.'
-    else:
-        s = f'{chip("Reform", rid)}: no mark turns red.'
-    if off:
-        if mine:
-            s += (f' One {counted(off).split(" ", 1)[1]} it targets sits outside this loop, in {" and ".join(lays)}.'
-                  if len(off) == 1 else f' {counted(off).capitalize()} it targets sit outside this loop, in {" and ".join(lays)}.')
-        else:
-            s += f' Its {words_n(len(off))} targets sit outside this loop, in {" and ".join(lays)}.'
+    s = f'{chip("Reform", rid)} turns {counted(mine) if mine else "no mark"} red.'
+    if off and mine:
+        s += (f' One {counted(off).split(" ", 1)[1]} it targets sits outside this loop, in {" and ".join(lays)}.'
+              if len(off) == 1 else f' {counted(off).capitalize()} it targets sit outside this loop, in {" and ".join(lays)}.')
+    elif off:
+        s += f' Its {words_n(len(off))} targets sit outside this loop, in {" and ".join(lays)}.'
     return s
 
 
@@ -606,10 +602,12 @@ CARD_CSS = (
     ".rl8 .rw{color:var(--oa-color-text-secondary)}"
     ".ky8{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;font:var(--oa-type-caption)}"
     ".ky8 b{font-variant-numeric:tabular-nums}.pon{display:none}"
+    # from 680 px the three cards stand side by side, and each row of one card lines up with the same row of the others:
+    # a card spans eight rows of the list's grid (its head, the six rows of its list, its disclosure), its list six
     "@container oa-frame (min-width:680px){.cds{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;"
-    "grid-template-rows:repeat(3,auto)}"
-    "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0}"
-    ".cd8 dl{display:grid;grid-template-rows:subgrid;grid-row:span 1}}}"
+    "grid-template-rows:repeat(8,auto);row-gap:0}"
+    "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}"
+    ".cd8 dl{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0}}}"
     "@media print{.lv>.oa-choice{display:none}}"
 )
 
