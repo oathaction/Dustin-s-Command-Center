@@ -13,10 +13,10 @@
   "D01": 6,
   "D02": 13,
   "D03": 7,
-  "D04": 13,
+  "D04": 14,
   "D05": 7,
   "D06": 6,
-  "D07": 12,
+  "D07": 11,
   "D08": 16,
   "D09": 15,
   "D10": 8
@@ -893,15 +893,6 @@
    "source": "s95.json"
   },
   {
-   "example": "Monthly change in payroll jobs with the survey’s margin of error",
-   "domain": "D07",
-   "states": [],
-   "level": "federal",
-   "where": "14.142",
-   "rule": "14.142",
-   "source": "14-142.json"
-  },
-  {
    "example": "Payrolls shrank in seven of the 57 months charted, and only the October 2025 and February 2026 drops pass the survey’s margin of error.",
    "domain": "D07",
    "states": [],
@@ -909,7 +900,16 @@
    "source": "s96.json"
   },
   {
-   "example": "Loops B4 and R10 through the risk of losing office",
+   "example": "Loop B4, public services, stepped through the risk of losing office",
+   "domain": "D04",
+   "states": [],
+   "level": "federal",
+   "where": "14.143",
+   "rule": "14.143",
+   "source": "14-143.json"
+  },
+  {
+   "example": "Loop R10, safe seats, stepped through the risk of losing office",
    "domain": "D02",
    "states": [],
    "level": "federal",

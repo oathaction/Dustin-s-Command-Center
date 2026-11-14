@@ -66,14 +66,5 @@
   "charts": [
    "s-14-142-failure"
   ]
- },
- "examples": [
-  {
-   "example": "Monthly change in payroll jobs with the survey’s margin of error",
-   "domain": "D07",
-   "states": [],
-   "level": "federal",
-   "where": "14.142"
-  }
- ]
+ }
 }

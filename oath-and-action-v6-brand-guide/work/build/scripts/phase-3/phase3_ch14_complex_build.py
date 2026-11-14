@@ -69,6 +69,12 @@ short, lc, words_n, link, node = C15.short, C15.lc, C15.words_n, C15.link, C15.n
 FACTS = DV.facts()
 need(SNAP == "October 15, 2026" and FACTS["snapshot"] == "2026-10-15", "the atlas snapshot moved; reread every value")
 FC = "Failure case: do not publish. "
+# Rule 01.12's log for Rule 14.143 (ruling (g)): Loop B4 and Loop R10 as Rule 15.15 logs them, read from chapter 15's source
+_C15_SRC = (ROOT / "work/build/scripts/phase-3/phase3_ch15_build.py").read_text(encoding="utf-8")
+LOG_143 = [(m.group(1), m.group(2), m.group(3)) for m in
+           re.finditer(r'book\.log\("15\.15 correct", "Loop (B4|R10), ([^"]+)", "(D\d\d)"\)', _C15_SRC)]
+need([x[0] for x in LOG_143] == ["B4", "R10"] and dict((x[0], x[2]) for x in LOG_143) == {"B4": "D04", "R10": "D02"},
+     f"Rule 15.15's log of Loops B4 and R10 changed ({LOG_143}); ruling (g) logs B4 under D04 and R10 under D02")
 RSQ = C13.rsq()
 
 
@@ -447,9 +453,11 @@ def rule_14_143():
                                      "and counts their three minus signs together to call it balancing. The atlas holds two "
                                      "loops, Loop B4 balancing and Loop R10 reinforcing, which share one variable.")},
                         **meta["s-14-143-failure"]),
+        # ruling (g): two examples, one a loop, in the domains Rule 15.15 logs them under (read from chapter 15's own log
+        # calls, so the two chapters cannot part)
         "examples": [
-            {"example": "Loops B4 and R10 through the risk of losing office", "domain": "D02", "states": [], "level": "federal",
-             "where": "14.143"}],
+            {"example": f"Loop {lid}, {what}, stepped through the risk of losing office", "domain": dom, "states": [],
+             "level": "federal", "where": "14.143"} for lid, what, dom in LOG_143],
     }
     return entry, files, steps
 
@@ -1034,9 +1042,8 @@ def rule_14_142():
                                 "of error."),
                     "alt": FC + fspec["alt"], "illustrative": False, "notes": "Labeled failure: a kit figure through "
                     "s-14-142-failure.chart.json (C7), its title the fault.", "charts": ["s-14-142-failure"]},
-        "examples": [
-            {"example": "Monthly change in payroll jobs with the survey’s margin of error", "domain": "D07", "states": [],
-             "level": "federal", "where": "14.142"}],
+        # no "examples" here: the chapter's build logs S96 from its spec as it places the plate (ruling (g): one example,
+        # S14's data drawn in full, Work, pay and bargaining power), and a row here would count it twice
     }
     return entry, spec, fspec, files
 
@@ -1123,6 +1130,13 @@ def check(entries, files, specs):
     for want in ("January 2022 to September 2026", "122,000", "October 2025", "February 2026", "51,000", "preliminary", "seven"):
         ok(want in allw, f"S96: {want!r} does not print")
     ok("—" not in json.dumps(specs, ensure_ascii=False), "S96: an em dash")
+    # Rule 01.12's log (ruling (g)): 14.142 once, from S96 as the chapter's build places it; 14.143 twice, a loop each;
+    # 14.144 once, Loop R8 under Housing, health care and getting ahead
+    ok(not entries["14.142"].get("examples") and s96.get("domain") == "D07",
+       "Log: Rule 14.142 logs once, from S96 under D07, and its entry carries no row of its own")
+    ok([(x["example"].split(",")[0], x["domain"]) for x in entries["14.143"].get("examples") or []]
+       == [("Loop B4", "D04"), ("Loop R10", "D02")], "Log: Rule 14.143 logs Loop B4 under D04 and Loop R10 under D02")
+    ok([x["domain"] for x in entries["14.144"].get("examples") or []] == ["D09"], "Log: Rule 14.144 logs Loop R8 once, under D09")
     return fails
 
 

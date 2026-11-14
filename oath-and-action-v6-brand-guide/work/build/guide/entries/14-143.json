@@ -83,7 +83,14 @@
  },
  "examples": [
   {
-   "example": "Loops B4 and R10 through the risk of losing office",
+   "example": "Loop B4, public services, stepped through the risk of losing office",
+   "domain": "D04",
+   "states": [],
+   "level": "federal",
+   "where": "14.143"
+  },
+  {
+   "example": "Loop R10, safe seats, stepped through the risk of losing office",
    "domain": "D02",
    "states": [],
    "level": "federal",
