@@ -12,7 +12,8 @@
 // Gate 2, November 11, 2026: a step of the "Where to start" page offers the way back to itself (D2-1698); the fix pass
 // snaps openers, the pillar row's icons and the colophon's lockmark onto whole device pixels.
 // Phase 3 round 4, November 13, 2026: print opens every closed disclosure (Rule 18.8); a reform chooser's status line
-// (Rule 15.20). Round 5, November 14, 2026: the local contents marks a labeled extra it lists (R5-2a).
+// (Rule 15.20). Round 5, November 14, 2026: the local contents marks a labeled extra it lists (R5-2a); a link in the
+// chart guide offers the way back to the form it left.
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -147,12 +148,14 @@
     });
   }, { passive: true });
 
-  // Cross-references remember where the reader came from.
+  // Cross-references remember where the reader came from. Phase 3 round 5 (the accessibility lead's 1.6): so does a link
+  // marked data-oa-xref, which keeps its own look, and any block with an id and data-return-label is a place to return
+  // to, such as a form's item in chapter 14's "Choose a chart".
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a.xref');
+    var a = e.target.closest && e.target.closest('a.xref, a[data-oa-xref]');
     if (!a) return;
     // Gate 2 (D2-1698): a step of "Where to start" is its own origin, so the way back lands on that step
-    var origin = a.closest('.route-step[id], .rule[id], .closer[id], .rule-group[id], [data-track]');
+    var origin = a.closest('.route-step[id], .rule[id], .closer[id], .rule-group[id], [data-return-label][id], [data-track]');
     var sec = sectionFor(a);
     if (!origin || !sec) return;
     var what = '';

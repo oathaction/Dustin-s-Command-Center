@@ -4,8 +4,9 @@
 // aria-current="step". A button that cannot act keeps focus, takes aria-disabled and points to the line that says why.
 // The root takes data-oa-live once the script runs, so a page can hide the buttons until they work, and data-oa-at,
 // the current step's number (0 at the start), so a drawing beside the list can follow it.
-// A walk through two loops may hold one list a loop, each named by data-oa-part ("Loop R10"): the status line then
-// counts within that list, "Loop R10, step 2 of 4:", so the number said is the number drawn; data-oa-at counts on.
+// A walk through two loops names each step's loop with data-oa-part ("Loop R10"), on the step or on a list around it:
+// the status line then counts within that loop, "Loop R10, step 2 of 4:", so the number said is the number drawn;
+// data-oa-at counts on through the whole walk.
 (function () {
   document.querySelectorAll('[data-oa-stepper]').forEach(function (box) {
     box.setAttribute('data-oa-live', '');
@@ -20,11 +21,12 @@
     var i = 0, timer = null;
     // the words as a reader hears them, whatever line breaks the markup holds
     function words(el) { return el.textContent.replace(/\s+/g, ' ').trim(); }
+    function part(s) { var p = s.closest('[data-oa-part]'); return p && box.contains(p) ? p.getAttribute('data-oa-part') : null; }
     function count(step) {
-      var part = step.closest('[data-oa-part]');
-      if (!part || !box.contains(part)) return 'Step ' + i + ' of ' + steps.length + ': ';
-      var own = steps.filter(function (s) { return part.contains(s); });
-      return part.getAttribute('data-oa-part') + ', step ' + (own.indexOf(step) + 1) + ' of ' + own.length + ': ';
+      var name = part(step);
+      if (!name) return 'Step ' + i + ' of ' + steps.length + ': ';
+      var own = steps.filter(function (s) { return part(s) === name; });
+      return name + ', step ' + (own.indexOf(step) + 1) + ' of ' + own.length + ': ';
     }
     function off(button, unavailable) {
       if (unavailable) {

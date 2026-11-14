@@ -196,7 +196,8 @@ def selection_guide_faults(plan, chap):
                 self.svgs.append(a)
             if tag == "a":
                 grp = next((x[1].get("data-group") for x in reversed(self.stack) if x[1].get("data-group")), None)
-                self.cur = {"href": a.get("href"), "tier": a.get("data-tier"), "rule": a.get("data-rule"), "group": grp, "text": ""}
+                self.cur = {"href": a.get("href"), "tier": a.get("data-tier"), "rule": a.get("data-rule"), "group": grp, "text": "",
+                            "xref": "data-oa-xref" in a}
                 self.links.append(self.cur)
             g = a.get("data-group")
             if g:
@@ -247,9 +248,19 @@ def selection_guide_faults(plan, chap):
         g = str(group_of.get(f["family_section"]))
         if l["group"] != g:
             faults.append(f"Selection guide: Rule {rid} sits under group {l['group']!r}; its family's question is group {g}")
+    # the accessibility lead's skip links (section 1.5): to the next question's line, s-14-sg-q-N, or past the guide to group 1
+    qs = sorted(int(g) for g in ps.groups if str(g).isdigit())
+    skips = {f"#s-14-sg-q-{n}" for n in qs} | {"#group-14-1"}
     for href in by_href:
-        if href not in want:
-            faults.append(f"Selection guide: a link to {href!r}, which is none of the plan's forms")
+        if href not in want and href not in skips:
+            faults.append(f"Selection guide: a link to {href!r}, which is none of the plan's forms and no skip link's target")
+    for l in ps.links:
+        if l["href"] in want and not l.get("xref"):
+            faults.append(f"Selection guide: the link to {l['href']} carries no data-oa-xref, so the way back cannot find it")
+            break
+    for q in qs:
+        if f"s-14-sg-q-{q}" not in ps.ids:
+            faults.append(f"Selection guide: group {q}'s question line has no id s-14-sg-q-{q}, the skip links' target")
     for g, title in printed.items():
         if g in [str(x) for x in group_of.values()] and norm(title) not in norm(ps.groups.get(g, "")):
             faults.append(f"Selection guide: group {g}'s question is not printed as the chapter prints it, {title!r}")

@@ -3605,9 +3605,9 @@ class Stage:
 
     def html(self, sources=True):
         cls = "st br" if self.branch else "st"
-        rows = [f'<p class="rl">{e(self.rel)}</p>'] if self.rel else []
+        rows = [f'<p class="rel">{e(self.rel)}</p>'] if self.rel else []
         rows.append(f'<p class="sn">{e(self.name)}</p>')
-        rows.append(f'<p class="sw">{self.words}</p>')
+        rows.append(f'<p class="sy">{self.words}</p>')
         if self.stop:
             rows.append(f'<p class="sq"><span class="sqm" aria-hidden="true"></span>{e(self.stop)}</p>')
         if self.back:
@@ -3655,7 +3655,7 @@ CSS.update({
            "clip-path:polygon(0 0,100% 50%,0 100%)}"
            ".wf .gh{display:block;padding:6px 0 22px 34px}.wf .gh .k{margin:0}"
            ".wf .sx{min-width:0;font:var(--oa-type-body-small)}.wf .sx>*+*{margin-top:2px}"
-           ".wf .rl{color:var(--oa-color-text-secondary)}.wf .sn{font-weight:var(--oa-font-weight-semibold)}"
+           ".wf .rel{color:var(--oa-color-text-secondary)}.wf .sn{font-weight:var(--oa-font-weight-semibold)}"
            ".wf .sq{display:flex;gap:8px;align-items:baseline}"
            f".wf .sqm{{flex:none;width:10px;height:10px;background:{INK};transform:translateY(1px)}}"
            f".wf .sc{{{C13.CAP};color:var(--oa-color-text-secondary);margin-top:6px}}"
