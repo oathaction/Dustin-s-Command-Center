@@ -1794,8 +1794,8 @@ CSS = (
     # word in any name ("Implementation", 113 px at the name's type), so no name breaks inside a word (DD-G1). Each tile
     # takes three rows of its list's grid (picture, name, tier) by subgrid, so a row's tier words share one line (DD-G2)
     ".sg-fs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,7.25rem),1fr));gap:var(--oa-space-300) var(--oa-space-200)}"
-    ".sg-fs>li{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;break-inside:avoid}"
-    ".sg-fs a{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:var(--oa-space-050);align-items:start;"
+    ".sg-fs>li{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;min-width:0;break-inside:avoid}"
+    ".sg-fs a{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:var(--oa-space-050);min-width:0;align-items:start;"
     "justify-items:start;min-height:44px;color:inherit;text-decoration:none}"
     ".sg-pic{display:block;margin-bottom:var(--oa-space-100)}"
     ".sg-n{font:var(--oa-type-ui);overflow-wrap:break-word;max-width:100%}"
