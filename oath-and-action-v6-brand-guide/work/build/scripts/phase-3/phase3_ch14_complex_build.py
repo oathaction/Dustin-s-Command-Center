@@ -943,7 +943,10 @@ def rule_14_142():
             "margin": {"value": int(f1["margin_thousands"]), "label": "Margin of error",
                        "key": "The survey’s margin of error for one month’s\u00a0change"},
         }),
-        "annotations": [s14["annotations"][0]],
+        # S14's note, raised into the space between the plus 500,000 and plus 750,000 gridlines, its leader down to the
+        # line: on S96's taller scale S14's offset set it on the plus 500,000 gridline (the design director's DD-E7).
+        # The figure checks hold it 4 px or more clear of every gridline at every width
+        "annotations": [dict(s14["annotations"][0], dy=-88)],
         # the floor drops from S14's −200 to −400 thousand so the named stack stands clear under the band at every width
         # from 490 px (the engineer measured −375 as the least that holds; −400 keeps a round floor); asked of the data lead
         "scale": {"y": [-400, s14["scale"]["y"][1]]},

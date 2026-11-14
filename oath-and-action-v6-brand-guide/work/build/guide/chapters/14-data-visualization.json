@@ -16,7 +16,8 @@
    "label": "Choose a chart",
    "caption": "Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry.",
    "contents": true,
-   "placement": "head"
+   "placement": "head",
+   "frame": "none"
   },
   {
    "specimen": "s-14-palette-spec",

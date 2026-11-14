@@ -822,7 +822,7 @@ def first_words(text, n=8):
     return " ".join(w[:n]).rstrip(",.;:") + ("…" if len(w) > n else "")
 
 
-def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, frame_ctx=None, contents=False):
+def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, frame_ctx=None, contents=False, bare=False):
     """One specimen in its frame. The frame, its label, size line and caption belong to the shell; the fragment is the
     maker's. Specimens do not count toward the page's red (D2-102), so the stage carries data-red="specimen".
 
@@ -913,7 +913,8 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     if surf not in ("newsprint", "white", "charcoal", "prussian"):
         R.warn(where, f"{spec_id}: surface {surface!r} is not newsprint, white, charcoal or prussian")
         surf = "newsprint"
-    stage_attrs = [f'class="plate-stage oa-surface-{surf}"', f'data-specimen="{e(spec_id or "pending")}"', 'data-red="specimen"']
+    # DD-G6 (round 5, opt-in): a bare plate sits on the page's own ground, so its stage takes no surface class and follows the theme
+    stage_attrs = [f'class="plate-stage{"" if bare else " oa-surface-" + surf}"', f'data-specimen="{e(spec_id or "pending")}"', 'data-red="specimen"']
     if isinstance(width, (int, float)):
         stage_attrs.append(f'style="--w:{width:g}px' + (f';--w2:{wide:g}px' if wide else '') + '"')
         stage_attrs.append(f'data-width="{width:g}"')
@@ -923,7 +924,8 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         stage_attrs.append(f'data-scale="{sc:g}"')
     if exempt:
         stage_attrs.append(f'data-check-exempt="{" ".join(exempt)}"')
-    stage_attrs.append(f'data-surface="{surf}"')
+    if not bare:
+        stage_attrs.append(f'data-surface="{surf}"')
     # R4-5 (round 4, the accessibility lead's request 2): a manifest entry's "keys" names a keyboard path file,
     # work/build/guide/specimens/<keys>.keys.json (oa-keys/1), that guide_check.js walks in this stage
     if meta.get("keys"):
@@ -1005,7 +1007,19 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     fid = f' id="fig-{e(spec_id)}"' if spec_id else ""
     # R5-2a (Phase 3 round 5): an extra with a line in the chapter's local contents carries data-oa-contents, so the shell
     # can mark its line while a reader is in it
-    return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}{" data-oa-contents" if contents and spec_id else ""}>'
+    # DD-G6 (the design director, round 5, opt-in by an extra's "frame": "none"): a plate that is the chapter's own navigation,
+    # not an exhibit, prints with no gray field, no keyline and no small-caps label: its label in the group heads' style and
+    # its piece on the page's ground. The rules are scoped to this figure's id, so no other plate moves.
+    bare_css = ""
+    if bare and spec_id:
+        f_ = f"#fig-{spec_id}.plate--bare"
+        bare_css = ("<style data-oa-bare>"
+                    f"{f_}>.plate-head{{border-top:0;padding:0;margin-bottom:var(--oa-space-300)}}"
+                    f"{f_} .plate-label{{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);text-transform:none}}"
+                    f"{f_}>.plate-scroll{{background:none;padding:0;margin-inline:0;overflow:visible}}"
+                    f"{f_} .plate-stage{{box-shadow:none;padding:0;background:none;forced-color-adjust:auto}}"
+                    "</style>")
+    return (bare_css + f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}{" plate--bare" if bare else ""}"{fid}{" data-oa-contents" if contents and spec_id else ""}>'
             + f'<div class="plate-head">{"".join(head)}</div>'
             + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}"'
             + (f' data-width="{width:g}" style="--w:{width:g}px' + (f';--w2:{wide:g}px" data-wide="{wide:g}"' if wide else '"') if isinstance(width, (int, float)) else "")
@@ -1916,7 +1930,10 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         to_head = not rid and x.get("placement") == "head"
         if x.get("placement") not in (None, "head") or (x.get("placement") == "head" and rid):
             R.warn(where, f"an extra's placement is {x.get('placement')!r}; only \"head\" is known, for an extra with no after_rule")
-        (head_extras if to_head else body).append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label"), contents=bool(x.get("contents"))))
+        if x.get("frame") not in (None, "none"):
+            R.warn(where, f"an extra's frame is {x.get('frame')!r}; only \"none\" is known")
+        (head_extras if to_head else body).append(plate("extra", x.get("specimen"), x.get("caption"), specs, cctx, where, label=x.get("label"),
+                                                        contents=bool(x.get("contents")), bare=x.get("frame") == "none"))
         if x.get("contents"):
             if not x.get("specimen") or not str(x.get("label") or "").strip():
                 R.warn(where, f"an extra with a contents line needs a specimen and a label: {str(x)[:80]!r}")
@@ -4195,14 +4212,14 @@ def self_test():
     ct = chapter("26", "tokens", "Tokens and how to choose them", [rule(f"26.{k}") for k in range(1, 5)],
                  groups=[{"number": 1, "before_rule": "26.1", "title": "First", "line": "A fixture group."},
                          {"number": 2, "before_rule": "26.3", "title": "Second", "line": "A fixture group."}],
-                 extras=[{"specimen": "s-26-front", "label": "Choose one", "caption": "A fixture.", "contents": True, "placement": "head"},
+                 extras=[{"specimen": "s-26-front", "label": "Choose one", "caption": "A fixture.", "contents": True, "placement": "head", "frame": "none"},
                          {"specimen": "s-26-mid", "after_rule": "26.2", "label": "A reference plate", "caption": "A fixture.", "contents": True},
                          {"specimen": "s-26-plain", "after_rule": "26.3", "label": "No line", "caption": "A fixture."}])
     scenarios += [
         ("round 5: a contents extra takes a line in the local contents, before the groups or inside its rule's group (R5-2a)",
          {"26-tokens.json": ct}, {"specimens": ct_specs, "manifest": ct_man},
          {"absent": ["an extra", "contents line"],
-          "html": ['<figure class="plate plate--extra" id="fig-s-26-front" data-oa-contents>', '<figure class="plate plate--extra" id="fig-s-26-plain">'],
+          "html": ['<figure class="plate plate--extra plate--bare" id="fig-s-26-front" data-oa-contents>', '<figure class="plate plate--extra" id="fig-s-26-plain">'],
           "tests": [("the front extra's line opens the list, before group 1", lambda pg: re.search(
                         r'<p class="local-toc-title" id="tokens-toc-t">In this chapter</p><ul aria-labelledby="tokens-toc-t"><li class="toc-extra"><a href="#fig-s-26-front">Choose one</a></li><li class="toc-group">', pg) is not None),
                     ("the mid extra's line sits in group 1's list, after Rule 26.2", lambda pg: re.search(
@@ -4210,7 +4227,11 @@ def self_test():
                     ("an extra without contents takes no line", lambda pg: 'href="#fig-s-26-plain"' not in pg),
                     ("the plate sits where it did: the front extra before group 1's head", lambda pg: 0 <= pg.find('id="fig-s-26-front"') < pg.find('id="tokens-g-1"') if 'id="tokens-g-1"' in pg else 0 <= pg.find('id="fig-s-26-front"') < pg.find('data-group="1"')),
                     ("D3-1888: a head extra stands in the chapter's head, after the introduction and before the rule index", lambda pg: 0 <= pg.find('<p class="intro') < pg.find('id="fig-s-26-front"') < pg.find('<div class="rule-index"') if '<p class="intro' in pg else 0 <= pg.find('id="fig-s-26-front"') < pg.find('<div class="rule-index"')),
-                    ("an extra after a rule stays in the chapter's body", lambda pg: pg.find('<div class="ch-body">') < pg.find('id="fig-s-26-mid"'))]}),
+                    ("an extra after a rule stays in the chapter's body", lambda pg: pg.find('<div class="ch-body">') < pg.find('id="fig-s-26-mid"')),
+                    ("DD-G6: a bare extra prints with its own scoped rules, its stage on the page's ground; a framed one keeps its surface", lambda pg:
+                        '<style data-oa-bare>#fig-s-26-front.plate--bare>.plate-head{' in pg and 'class="plate plate--extra plate--bare" id="fig-s-26-front"' in pg
+                        and re.search(r'class="plate-stage" data-specimen="s-26-front"', pg) is not None
+                        and re.search(r'class="plate-stage oa-surface-newsprint" data-specimen="s-26-mid"', pg) is not None and pg.count('data-oa-bare') == 1)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

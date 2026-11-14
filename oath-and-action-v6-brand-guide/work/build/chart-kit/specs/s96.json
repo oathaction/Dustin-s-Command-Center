@@ -133,7 +133,7 @@
    "text": "Three-month average",
    "target": "average",
    "place": "above",
-   "dy": -50,
+   "dy": -88,
    "phone": {
     "hide": true
    }
