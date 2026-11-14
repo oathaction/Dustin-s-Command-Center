@@ -23,13 +23,13 @@
       "line": "A request for public records and a federal agency’s rule each move through six steps of their own, drawn with the tracker’s marks."
     },
     {
-      "before_rule": "11.11",
+      "before_rule": "11.13",
       "number": 3,
       "title": "Utility icons",
       "line": "A utility icon names an action on a page, such as Close, Download or Filter, beside the words that say it."
     },
     {
-      "before_rule": "11.15",
+      "before_rule": "11.17",
       "number": 4,
       "title": "Error, success and warning",
       "line": "Three marks give a message its shape, and the words beside them say what happened and what to do."
@@ -284,7 +284,7 @@
         },
         {
           "label": "Red jobs in a view",
-          "value": "One: take part now. Every take-part mark and the ask button share it. An error in the same view takes the red first (Rule 11.16)"
+          "value": "One: take part now. Every take-part mark and the ask button share it. An error in the same view takes the red first (Rule 11.18)"
         }
       ],
       "related": [
@@ -577,11 +577,11 @@
       ]
     },
     {
-      "id": "11.10",
+      "id": "11.12",
       "title": "Say a wait or a later step in words, and keep the count at six.",
       "rule": [
         "A wait inside a step, such as an agency’s question to the requester, a fee estimate or an extension of up to 10 working days, shows as words under the step it falls in. It never adds a mark, so every request still counts to six. A step outside the agency, such as mediation by the National Archives or a lawsuit, follows the end words as a sentence with its date.",
-        "A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.15 draws every warning: “Warning: Checked April 20. The agency may have acted since.”"
+        "A status taken from the agency’s own tracking service, or from the Federal Register for a rule, needs no mark. A status we piece together ourselves, such as a wait we learn of from the agency’s letter, carries a warning with the date we checked it, drawn as Rule 11.17 draws every warning: “Warning: Checked April 20. The agency may have acted since.”"
       ],
       "tokens": [
         "oa.color.state.warning.mark.onNewsprint"
@@ -593,12 +593,12 @@
         "basis": "5 U.S.C. 552(a)(6); design judgment"
       },
       "correct": {
-        "specimen": "s-11-10-correct",
+        "specimen": "s-11-12-correct",
         "caption": "Two requests at 360 px. One waits on the requester at step 3, in words, with the date we last checked it beside the warning mark. The other was upheld on appeal and then taken to court, said in a sentence after its end words."
       },
       "failure": {
-        "specimen": "s-11-10-failure",
-        "caption": "<strong>Fails Rule 11.10.</strong> The fee estimate becomes a seventh step, so this request reads “Step 4 of 7” while every other request counts to six."
+        "specimen": "s-11-12-failure",
+        "caption": "<strong>Fails Rule 11.12.</strong> The fee estimate becomes a seventh step, so this request reads “Step 4 of 7” while every other request counts to six."
       },
       "specs": [
         {
@@ -632,7 +632,7 @@
       ]
     },
     {
-      "id": "11.11",
+      "id": "11.13",
       "title": "Set each utility icon beside its word.",
       "rule": [
         "A utility icon names an action on a page, such as Close, Download or Filter. It sits beside its word: 24 px wide beside the word of a button or link, and 16 px wide only inside a line of text or a table heading, where it comes from its own 16 px drawing. Three icons sit beside other words that carry their meaning: the sort mark beside a column’s heading, the mark after a link to another site and the chevron beside a row’s words. The clear control inside a search field is the one icon with no word; its field’s label gives the context, and its name is “Clear the search”.",
@@ -651,12 +651,12 @@
         "basis": "WCAG 2.2 SC 2.5.3 and 1.4.13"
       },
       "correct": {
-        "specimen": "s-11-11-correct",
+        "specimen": "s-11-13-correct",
         "caption": "A report reader’s toolbar, live at 360 px. Each icon sits beside its word, every control stands 44 px tall, Previous page says why it is unavailable on the first page, and the choice of the page’s size stays in words, with the check, bold words and 2 px edge of a checked choice (Rule 17.10)."
       },
       "failure": {
-        "specimen": "s-11-11-failure",
-        "caption": "<strong>Fails Rule 11.11.</strong> The toolbar shows icons with no words, each 32 px square, and its information mark gives its name only in a box that appears on hover."
+        "specimen": "s-11-13-failure",
+        "caption": "<strong>Fails Rule 11.13.</strong> The toolbar shows icons with no words, each 32 px square, and its information mark gives its name only in a box that appears on hover."
       },
       "specs": [
         {
@@ -702,7 +702,7 @@
       ]
     },
     {
-      "id": "11.12",
+      "id": "11.14",
       "title": "Give each drawing one meaning.",
       "rule": [
         "The arrow means Next. Mirrored, it means Previous, and turned up or down it shows the order a column is sorted in. The chevron opens and closes a row: it points down while the row is closed and up while it is open. The cross closes, and an error is a circle holding an exclamation mark. Copy’s two sheets never turn into a check; the result goes to a status line in words, with the success or the error mark.",
@@ -718,12 +718,12 @@
         "basis": "WCAG 2.2 SC 3.2.4; design judgment"
       },
       "correct": {
-        "specimen": "s-11-12-correct",
+        "specimen": "s-11-14-correct",
         "caption": "The symbol library’s search and filter bar, live at 360 px. The funnel opens the filters, the chevron shows they are open, a check marks the filter that is on, and the cross clears the search."
       },
       "failure": {
-        "specimen": "s-11-12-failure",
-        "caption": "<strong>Fails Rule 11.12.</strong> The chevron turns the page in the toolbar and opens the sources below it, so one drawing does two jobs in one view."
+        "specimen": "s-11-14-failure",
+        "caption": "<strong>Fails Rule 11.14.</strong> The chevron turns the page in the toolbar and opens the sources below it, so one drawing does two jobs in one view."
       },
       "specs": [
         {
@@ -765,7 +765,7 @@
       ]
     },
     {
-      "id": "11.13",
+      "id": "11.15",
       "title": "Mark a link to another site, and open it in the same tab.",
       "rule": [
         "A link that leaves our site opens in the same tab. Its mark, an arrow leaving a box, follows the link’s last word at 16 px and stays on the line with that word, and the words “(another site)” end the link’s name for screen readers. A link that must open a new tab says so instead: “(opens in a new tab)”."
@@ -781,12 +781,12 @@
         "basis": "WCAG 2.2 SC 3.2.5; design judgment"
       },
       "correct": {
-        "specimen": "s-11-13-correct",
+        "specimen": "s-11-15-correct",
         "caption": "Three sources, live at 360 px. Each link opens in the same tab, its mark follows its last word, and each stands 44 px tall in the list."
       },
       "failure": {
-        "specimen": "s-11-13-failure",
-        "caption": "<strong>Fails Rule 11.13.</strong> The link opens a new tab and says nothing about it, and its 24 px mark has broken from its word onto a line of its own."
+        "specimen": "s-11-15-failure",
+        "caption": "<strong>Fails Rule 11.15.</strong> The link opens a new tab and says nothing about it, and its 24 px mark has broken from its word onto a line of its own."
       },
       "specs": [
         {
@@ -816,7 +816,7 @@
       ]
     },
     {
-      "id": "11.14",
+      "id": "11.16",
       "title": "Keep topic and atlas symbols out of buttons.",
       "rule": [
         "Draw each action on a page with its utility icon. A topic or atlas symbol names a subject, such as a feedback loop, public records or a vote, and never stands for an action. Reset is the utility icon’s open circle with one arrowhead, Download is the arrow into a tray, and each sits beside its word."
@@ -828,12 +828,12 @@
         "basis": "Design judgment; Rule 10.1"
       },
       "correct": {
-        "specimen": "s-11-14-correct",
+        "specimen": "s-11-16-correct",
         "caption": "A stepper for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, live at 360 px. Play, Reset the loop, Previous step and Next step each carry a utility icon beside the word, and the unavailable ones say why. The line under the title gives the loop’s grade, and the least certain step says so in its words."
       },
       "failure": {
-        "specimen": "s-11-14-failure",
-        "caption": "<strong>Fails Rule 11.14.</strong> CL-024, the feedback loop drawing, stands in for Reset. A reader learns it as a button here and meets it next as the subject of a story about feedback loops."
+        "specimen": "s-11-16-failure",
+        "caption": "<strong>Fails Rule 11.16.</strong> CL-024, the feedback loop drawing, stands in for Reset. A reader learns it as a button here and meets it next as the subject of a story about feedback loops."
       },
       "specs": [
         {
@@ -866,7 +866,7 @@
       ]
     },
     {
-      "id": "11.15",
+      "id": "11.17",
       "title": "Give each error, success and warning its mark and its words.",
       "rule": [
         "An error, a success and a warning each take their mark before their words. The error mark is a circle holding an exclamation mark, in the text’s ink, on the pale Error Band with a 4 px red bar, and its words start “Error:” and say how to fix it. The success mark is a check leaving an open circle, in Verdigris, beside what happened. The warning mark is a triangle holding an exclamation mark, in ink, beside the notice, such as the date a record was last checked.",
@@ -885,12 +885,12 @@
         "basis": "WCAG 2.2 SC 1.4.1, 1.4.11, 3.3.1 and 4.1.3"
       },
       "correct": {
-        "specimen": "s-11-15-correct",
+        "specimen": "s-11-17-correct",
         "caption": "A sign-up form, live at 360 px. Send it with a field wrong to see the error mark, its words and the red bar, and the red button step down to Charcoal; send it right to see the success mark."
       },
       "failure": {
-        "specimen": "s-11-15-failure",
-        "caption": "<strong>Fails Rule 11.15.</strong> The message is red text beside a cross, so it leans on color alone, against WCAG 2.2 success criterion 1.4.1. The cross means Close, the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry."
+        "specimen": "s-11-17-failure",
+        "caption": "<strong>Fails Rule 11.17.</strong> The message is red text beside a cross, so it leans on color alone, against WCAG 2.2 success criterion 1.4.1. The cross means Close, the red text measures 2.96 to 1, and nothing says “Error” or how to fix the entry."
       },
       "specs": [
         {
@@ -942,7 +942,7 @@
       ]
     },
     {
-      "id": "11.16",
+      "id": "11.18",
       "title": "Give an error the red when it meets the other red jobs.",
       "rule": [
         "Rule 05.3 gives each view one working red, in this order: an error the reader must fix, then the step a reader can take now, then the one point the headline names, which in a systems figure is where a reform acts. So when the three meet in one view, the error keeps the red. The take-part mark yields: its disc draws in the surface’s ink, keeps its place on the ring, and “You can take part now” stays beside it, while the ask button steps down to Charcoal. The intervention marker yields too: its outline stays heavier, in ink, with its words.",
@@ -960,12 +960,12 @@
         "basis": "Rule 05.3; WCAG 2.2 SC 1.4.1"
       },
       "correct": {
-        "specimen": "s-11-16-correct",
+        "specimen": "s-11-18-correct",
         "caption": "One view at 360 px. The email field’s error holds the red. The take-part disc on step 2 and the heavier outline where reform R-32, public and philanthropic funding for local news, acts stay in Charcoal with their words, and Remind me is Charcoal until the error is fixed."
       },
       "failure": {
-        "specimen": "s-11-16-failure",
-        "caption": "<strong>Fails Rules 11.16 and 05.3.</strong> The error, the take-part mark and the intervention marker all take red, so the error that blocks the reader looks no more urgent than the rest."
+        "specimen": "s-11-18-failure",
+        "caption": "<strong>Fails Rules 11.18 and 05.3.</strong> The error, the take-part mark and the intervention marker all take red, so the error that blocks the reader looks no more urgent than the rest."
       },
       "specs": [
         {
@@ -1027,19 +1027,19 @@
       "caption": "The wide form, as on a tablet or in a desktop article column, on Charcoal, with two of the bills. Each step’s name sits under its circle, the current step’s name is bold, and the marks turn to Newsprint and Dim Newsprint while the take-part disc keeps its red."
     },
     {
-      "after_rule": "11.11",
+      "after_rule": "11.13",
       "specimen": "s-11-icons",
       "label": "The 18 utility icons",
       "caption": "Every utility icon at its two sizes, with the word that goes beside it."
     },
     {
-      "after_rule": "11.12",
+      "after_rule": "11.14",
       "specimen": "s-11-menu",
       "label": "A phone menu, live at 360 px",
       "caption": "Menu opens the chapter’s contents over the page and holds focus until Close or the Escape key shuts it, and focus then returns to Menu. Each row’s chevron opens its list of rules."
     },
     {
-      "after_rule": "11.15",
+      "after_rule": "11.17",
       "specimen": "s-11-marks",
       "label": "The three marks in their messages",
       "caption": "Error, success and warning at true size, each with its words."
@@ -1078,7 +1078,7 @@
   "sources": [
     "Source: Nebraska Legislature, “Lawmaking in Nebraska”, via nebraskalegislature.gov, no page date, retrieved November 9, 2026. Nebraska’s one-chamber route and its steps, behind Rule 11.1.",
     "Sources: Nebraska Legislature, “Tips on Testifying at a Committee Hearing”, no page date; Washington State Legislature, “How to Testify in Committee”, 2023; Minnesota Legislature, “May I testify at a committee hearing?”, reviewed February 20, 2026; Utah Legislature, “How to Testify In A Committee”, no page date; Texas Legislature Online, FAQ 27, no page date; five states, all retrieved November 9, 2026. Each legislature sets its own rules on sign-up, time limits and which bills get a hearing, and we read these five as examples and made no national count. Testimony from the public at a state committee hearing, behind Rule 11.1.",
-    "Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy, no page date; both retrieved November 9, 2026. The steps, the 20 working days and the waits in them, behind Rules 11.8 and 11.10.",
+    "Sources: the Freedom of Information Act, 5 U.S.C. 552, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and FOIA.gov, “Frequently Asked Questions”, run by the Justice Department’s Office of Information Policy, no page date; both retrieved November 9, 2026. The steps, the 20 working days and the waits in them, behind Rules 11.8 and 11.12.",
     "Source: Office of Information Policy, U.S. Department of Justice, “Fiscal Year 2024 Annual Freedom of Information Act Report”, March 6, 2025, sections V.B.(1) and VI.B, fiscal year 2024, the Justice Department and its components, retrieved November 9, 2026. The categories behind the end words in Rule 11.8.",
     "Sources: rulemaking, 5 U.S.C. 553, Congressional review, 5 U.S.C. 801, and judicial review, 5 U.S.C. 706, via the Legal Information Institute, Cornell Law School, as in force on November 9, 2026; and RegInfo.gov, “Frequently Asked Questions”, the Office of Information and Regulatory Affairs, no page date; all retrieved November 9, 2026. The steps of a federal rule, its comment period, when it takes effect and how it can end, behind Rule 11.9."
   ]

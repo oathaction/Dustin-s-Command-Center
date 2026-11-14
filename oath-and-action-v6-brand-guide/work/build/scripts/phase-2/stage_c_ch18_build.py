@@ -273,7 +273,7 @@ rule(n=1, set='c-18-button', name='Buttons',
            '05.3 gives the view its working red, the one job red does in a view, which goes to an error when there is one '
            'and otherwise to the step a reader can take now. The ask stands on a row of its own, apart from any primary '
            'button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3). Every other '
-           'button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).',
+           'button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.13).',
            'Every component in this chapter hands a screen reader three things: its accessible name, the words a screen '
            'reader says for it; its role, such as button; and its state, such as pressed. When something changes, the code '
            'writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each '
@@ -283,7 +283,7 @@ rule(n=1, set='c-18-button', name='Buttons',
            'When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws '
            'a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email '
            'to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the '
-           'page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such '
+           'page holds the red, the ask steps down to the primary look (Rule 11.18). When an action can no longer run, such '
            'as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can '
            'take instead, such as another date. The form then leaves out the fields a reader could no longer send.'],
      tokens=['--oa-component-button-primary-fill', '--oa-component-button-primary-fill-hover',
@@ -502,7 +502,7 @@ rule(n=5, set='c-18-link', name='Links',
      rule=['A link takes the reader to another page or place, and its words name the place, such as “the committee’s '
            'hearing schedule”. A link in running text keeps a 1 px underline that thickens to 2 px on hover, so its color '
            'is never the only sign. A link to another site opens in the same tab; its 16 px mark follows its last word, '
-           'and the words “(another site)” end its name for screen readers (Rule 11.13).',
+           'and the words “(another site)” end its name for screen readers (Rule 11.15).',
            'A skip link is the first stop on every page and shows when it takes focus. A link to the page or place the '
            'reader is on carries aria-current and the current look of Rule 18.7. A link to something not built yet stays '
            'plain text in the secondary color, with the words “Coming later.”'],
@@ -527,7 +527,7 @@ rule(n=5, set='c-18-link', name='Links',
          (L_HEAR, 'Its words and its role, link, with “visited” once followed and “current page” where aria-current says '
                   'so.'),
          (L_TGT, 'In running text, the line itself, which WCAG 2.2 SC 2.5.8 exempts; in a list, 44 px tall (Rule '
-                 '11.13).', 'oa.size.target.minimum'),
+                 '11.15).', 'oa.size.target.minimum'),
          (L_FC, 'Links take LinkText and keep their underline; the mark draws in currentColor.'),
          (L_TH, 'A link takes the text’s ink, Charcoal on Newsprint and Newsprint on Charcoal.'),
          (L_BR, bs('underline-offset', 'deco-thickness') + ' An older browser draws its own underline, which still marks '
@@ -889,14 +889,14 @@ rule(n=12, set='c-18-code-block', name='Code block',
          alt='Failure case: do not publish. An Illustrative code panel at 360 px holding four lines of CSS, with a lone '
              'icon in its corner that has turned from two sheets into a check after a press. No label names the panel, '
              'and no line says what happened.',
-         notes='Picture of a fault: a Copy icon that changes meaning, with no status line (Rule 11.12).'))
+         notes='Picture of a fault: a Copy icon that changes meaning, with no status line (Rule 11.14).'))
 
 # ---- 18.13 Copy a value -----------------------------------------------------------------------------------------
 rule(n=13, set='c-18-copy', name='Copy control',
      title='Copy one value with a button that names it.',
      rule=['A value a builder needs, such as a token’s name or a hex color, sits beside a Copy button. Its visible word is '
            '“Copy”, and its name goes on with the value from hidden words, “Copy --oa-color-surface-charcoal”, so every '
-           'Copy in a table names its own value. The icon’s two sheets stay as drawn after a press (Rule 11.12), and the '
+           'Copy in a table names its own value. The icon’s two sheets stay as drawn after a press (Rule 11.14), and the '
            'status line says what happened with the success mark: “Copied --oa-color-surface-charcoal.”',
            'When the browser refuses, the line gives the error with its mark and “Error:”, selects the value in a field '
            'and moves focus there, so the reader can copy it by hand with Control and C, or Command and C.'],
@@ -905,7 +905,7 @@ rule(n=13, set='c-18-copy', name='Copy control',
      why=['A reader who hears “Copy” ten times down a table cannot tell the buttons apart, so each name carries its value. '
           'Words in a status line reach a screen reader, where a check that replaces the icon says nothing and looks like '
           'a choice someone made.'],
-     basis='WCAG 2.2 SC 2.4.6, 2.5.3 and 4.1.3; Rule 11.12',
+     basis='WCAG 2.2 SC 2.4.6, 2.5.3 and 4.1.3; Rule 11.14',
      anatomy='The parts of a copy control: the value, the Copy button with its two-sheet icon and word, the hidden words '
              'that finish its name, and the status line with the success mark.',
      code_caption='Two values with their Copy buttons, live. Press one and read the line under them.',
@@ -938,7 +938,7 @@ rule(n=14, set='c-18-download', name='Download',
      rule=['A download is a link with the download attribute when it fetches a file, and a button when a script builds '
            f'the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 '
            f'bytes: “Download tokens.css, CSS, {TOKENS_KB}”. The download icon, an arrow into a tray, sits before the '
-           'word (Rule 11.11).',
+           'word (Rule 11.13).',
            'A file that is not ready keeps its control in place and in the Tab order, with aria-disabled, a dashed edge and '
            'a line that says why and when it will be ready. A press does nothing, and focus stays.'],
      tokens=['--oa-color-state-disabled-text', '--oa-color-state-disabled-edge', 'oa.size.icon.medium',
@@ -985,7 +985,7 @@ rule(n=15, set='c-18-search', name='Search',
            'stands in for the label. Results update as the reader types, and focus stays in the field. The status line '
            'under it gives the count and, when nothing matches, the advice in the same line: '
            f'“0 of {CL_COUNT} symbols. No symbol matches. Clear the search or the filters to see more.”',
-           'Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.11), '
+           'Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.13), '
            'which empties the field and returns focus to it. Escape does the same. Where results come from a server, the '
            'line says “Searching” while they load.'],
      tokens=['--oa-color-field-ground', '--oa-color-border-strong', 'oa.size.icon.medium', 'oa.size.target.touch'],
@@ -1081,7 +1081,7 @@ rule(n=17, set='c-18-form', name='Form',
            'On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a '
            'message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error '
            'Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down '
-           'to the primary look while the error holds the red (Rule 11.16). A send that works writes its result to a '
+           'to the primary look while the error holds the red (Rule 11.18). A send that works writes its result to a '
            'status line with the success mark.'],
      tokens=['--oa-color-field-ground', '--oa-color-border-strong', '--oa-color-state-error-bar',
              '--oa-color-state-error-band', '--oa-color-state-error-text', '--oa-color-state-success-mark',
@@ -1089,7 +1089,7 @@ rule(n=17, set='c-18-form', name='Form',
      why=['A label that stays in view helps a reader check what they typed, and autocomplete saves typing for a reader '
           'with limited movement. Moving focus to the first field to fix puts the reader where the work is, and the '
           'field’s description reads the message there, so nothing needs an alert that interrupts.'],
-     basis='WCAG 2.2 SC 1.3.5, 3.3.1, 3.3.2, 3.3.3 and 4.1.3; Rule 11.15',
+     basis='WCAG 2.2 SC 1.3.5, 3.3.1, 3.3.2, 3.3.3 and 4.1.3; Rule 11.17',
      anatomy='The parts of a form field: the label, the hint, the field and its edge on the field ground, and in error, '
              'the 4 px red bar, the mark, “Error:” and the fix on the band; then the send button and the success line.',
      code_caption='A two-field sign-up form, live. Send it with a field wrong to see focus move to it, then send it right.',
@@ -1129,7 +1129,7 @@ rule(n=17, set='c-18-form', name='Form',
 # ---- 18.18 Messages ---------------------------------------------------------------------------------------------
 rule(n=18, set='c-18-messages', name='Messages',
      title='Give every message its mark and its first word.',
-     rule=['An error, a warning and a success each start with their mark and their words (Rule 11.15). An error starts '
+     rule=['An error, a warning and a success each start with their mark and their words (Rule 11.17). An error starts '
            '“Error:” and says how to fix it, beside a 4 px Pillar Red bar. A warning starts “Warning:” beside a 4 px bar in '
            'ink, and a success says what happened beside the Verdigris mark. Each bar is a left border.',
            'A message that a script writes into the page goes into a status line, which a screen reader reads at its next '
@@ -1220,7 +1220,7 @@ rule(n=20, set='c-18-tracker', name='Tracker',
            'follows more than one.',
            'The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in '
            'words (Rule 18.19), and when nothing matches it says what to do. When the data fails it gives the error with '
-           'its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.10.'],
+           'its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.12.'],
      tokens=['oa.component.mark.ring.now', 'oa.component.mark.ring.ahead', 'oa.size.target.touch'],
      why=['One polite sentence for each change lets a screen reader user hear what moved without losing their place, and '
           'redrawing only the changed steps keeps a sighted reader from losing theirs. The states stay in words, so an '
@@ -1232,7 +1232,7 @@ rule(n=20, set='c-18-tracker', name='Tracker',
      specs=specs(
          (L_PAT, 'None fits; list markup for the steps and the status role for an update.'),
          (L_ST, 'Done, Now, You can take part now, Not yet, Never happened and Stopped (Rules 11.2 and 11.4); loading; empty; '
-                'error; the warning on a record unchecked too long (Rule 11.10).'),
+                'error; the warning on a record unchecked too long (Rule 11.12).'),
          (L_KEY, 'None of its own; a link inside, such as a bill’s page, takes Tab.'),
          (L_NAME, 'The list’s label names the bill; each step its name and state word.'),
          (L_HEAR, 'The steps read in order; on an update, one sentence from the status line, once.'),
@@ -1306,13 +1306,13 @@ rule(n=22, set='c-18-loop-stepper', name='Loop stepper',
      title='Step through a loop one step at a time.',
      rule=['A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order '
            'in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its '
-           'word (Rule 11.14). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line '
+           'word (Rule 11.16). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line '
            'under it that gives its evidence grade, so the heading claims no more than the evidence holds (chapter 02’s '
            'house rule H08). The status line says each step as it arrives, “Step 2 of 3:” and the step’s '
            'sentence, and the step list marks the current step with <code>aria-current="step"</code> and a 4 px bar.',
            'Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its '
            'icon and its word changing together (Rule 17.3), and it holds each step about 250 ms a word and never under six '
-           'seconds, with reduced motion too (Rule 11.14). Next step, Previous step and Reset the loop stop the playback, and no '
+           'seconds, with reduced motion too (Rule 11.16). Next step, Previous step and Reset the loop stop the playback, and no '
            'button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their '
            'reason; at the end, Next step does.'],
      tokens=['--oa-color-state-selected-bar', 'oa.border.width.bar', 'oa.size.icon.medium', 'oa.size.target.touch'],

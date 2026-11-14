@@ -221,7 +221,7 @@
       },
       "corrective": {
         "specimen": "s-05-3-corrective",
-        "caption": "When the reader’s entry has an error, the error takes the view’s red and the ask steps down to the Charcoal primary button until the reader fixes it. The red is the 4 px bar beside the field and the message, and the error mark draws in the text’s ink (Rule 11.15). The message sits on the Error Band, where Charcoal text measures 11.89 to 1."
+        "caption": "When the reader’s entry has an error, the error takes the view’s red and the ask steps down to the Charcoal primary button until the reader fixes it. The red is the 4 px bar beside the field and the message, and the error mark draws in the text’s ink (Rule 11.17). The message sits on the Error Band, where Charcoal text measures 11.89 to 1."
       },
       "specs": [
         {

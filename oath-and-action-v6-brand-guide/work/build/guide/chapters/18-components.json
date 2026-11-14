@@ -58,9 +58,9 @@
       "id": "18.1",
       "title": "Use a button to act on the page.",
       "rule": [
-        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, the one job red does in a view, which goes to an error when there is one and otherwise to the step a reader can take now. The ask stands on a row of its own, apart from any primary button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3). Every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.11).",
+        "A button acts on the page: it sends a form, copies a value or starts a loop. A control that takes the reader to another page or place is a link (Rule 18.5). A view has one primary button at most, Charcoal on Newsprint and Newsprint on Charcoal. The ask, the Pillar Red button for the one way to take part, appears only where Rule 05.3 gives the view its working red, the one job red does in a view, which goes to an error when there is one and otherwise to the step a reader can take now. The ask stands on a row of its own, apart from any primary button, whose hover turns Prussian on Newsprint, so the ask’s red never meets Prussian (Rule 05.3). Every other button is quiet: its word in ink inside a 1 px edge. A utility icon sits beside the word (Rule 11.13).",
         "Every component in this chapter hands a screen reader three things: its accessible name, the words a screen reader says for it; its role, such as button; and its state, such as pressed. When something changes, the code writes a sentence into a status line, a line on the page that a screen reader reads at its next pause. Each screen reader words all of this its own way. ARIA, short for Accessible Rich Internet Applications, is W3C’s set of attributes that gives a role or a state where HTML has none, and each rule names the pattern it follows in the ARIA Authoring Practices Guide (APG), W3C’s worked examples of each control.",
-        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.16). When an action can no longer run, such as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can take instead, such as another date. The form then leaves out the fields a reader could no longer send."
+        "When an action cannot run yet, its button stays in place and keeps its focus. It carries aria-disabled, draws a dashed edge and points to a line under it that says why and what makes it work, such as “Fill in your email to send.” While a send runs, its word reads “Sending” and a second press does nothing. While an error on the page holds the red, the ask steps down to the primary look (Rule 11.18). When an action can no longer run, such as a sign-up for an event that is full, its button stays in place with its reason and the step the reader can take instead, such as another date. The form then leaves out the fields a reader could no longer send."
       ],
       "tokens": [
         "--oa-component-button-primary-fill",
@@ -388,7 +388,7 @@
       "id": "18.5",
       "title": "Underline every link in text.",
       "rule": [
-        "A link takes the reader to another page or place, and its words name the place, such as “the committee’s hearing schedule”. A link in running text keeps a 1 px underline that thickens to 2 px on hover, so its color is never the only sign. A link to another site opens in the same tab; its 16 px mark follows its last word, and the words “(another site)” end its name for screen readers (Rule 11.13).",
+        "A link takes the reader to another page or place, and its words name the place, such as “the committee’s hearing schedule”. A link in running text keeps a 1 px underline that thickens to 2 px on hover, so its color is never the only sign. A link to another site opens in the same tab; its 16 px mark follows its last word, and the words “(another site)” end its name for screen readers (Rule 11.15).",
         "A skip link is the first stop on every page and shows when it takes focus. A link to the page or place the reader is on carries aria-current and the current look of Rule 18.7. A link to something not built yet stays plain text in the secondary color, with the words “Coming later.”"
       ],
       "tokens": [
@@ -440,7 +440,7 @@
         },
         {
           "label": "Target",
-          "value": "In running text, the line itself, which WCAG 2.2 SC 2.5.8 exempts; in a list, 44 px tall (Rule 11.13).",
+          "value": "In running text, the line itself, which WCAG 2.2 SC 2.5.8 exempts; in a list, 44 px tall (Rule 11.15).",
           "token": "oa.size.target.minimum"
         },
         {
@@ -1030,7 +1030,7 @@
       "id": "18.13",
       "title": "Copy one value with a button that names it.",
       "rule": [
-        "A value a builder needs, such as a token’s name or a hex color, sits beside a Copy button. Its visible word is “Copy”, and its name goes on with the value from hidden words, “Copy --oa-color-surface-charcoal”, so every Copy in a table names its own value. The icon’s two sheets stay as drawn after a press (Rule 11.12), and the status line says what happened with the success mark: “Copied --oa-color-surface-charcoal.”",
+        "A value a builder needs, such as a token’s name or a hex color, sits beside a Copy button. Its visible word is “Copy”, and its name goes on with the value from hidden words, “Copy --oa-color-surface-charcoal”, so every Copy in a table names its own value. The icon’s two sheets stay as drawn after a press (Rule 11.14), and the status line says what happened with the success mark: “Copied --oa-color-surface-charcoal.”",
         "When the browser refuses, the line gives the error with its mark and “Error:”, selects the value in a field and moves focus there, so the reader can copy it by hand with Control and C, or Command and C."
       ],
       "tokens": [
@@ -1043,7 +1043,7 @@
         "text": [
           "A reader who hears “Copy” ten times down a table cannot tell the buttons apart, so each name carries its value. Words in a status line reach a screen reader, where a check that replaces the icon says nothing and looks like a choice someone made."
         ],
-        "basis": "WCAG 2.2 SC 2.4.6, 2.5.3 and 4.1.3; Rule 11.12"
+        "basis": "WCAG 2.2 SC 2.4.6, 2.5.3 and 4.1.3; Rule 11.14"
       },
       "correct": {
         "specimen": "s-18-13-anatomy",
@@ -1110,7 +1110,7 @@
       "id": "18.14",
       "title": "Name each download for its file, type and size.",
       "rule": [
-        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 105 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.11).",
+        "A download is a link with the download attribute when it fetches a file, and a button when a script builds the file. Its words start with “Download” and name the file, its type and its size, in kilobytes of 1,000 bytes: “Download tokens.css, CSS, 105 KB”. The download icon, an arrow into a tray, sits before the word (Rule 11.13).",
         "A file that is not ready keeps its control in place and in the Tab order, with aria-disabled, a dashed edge and a line that says why and when it will be ready. A press does nothing, and focus stays."
       ],
       "tokens": [
@@ -1191,7 +1191,7 @@
       "title": "Search with a labeled field and one status line.",
       "rule": [
         "On a product page a search sits in a search landmark, the search element, so a screen reader can jump straight to it. It has a visible label above its field and a field of type search; a placeholder never stands in for the label. Results update as the reader types, and focus stays in the field. The status line under it gives the count and, when nothing matches, the advice in the same line: “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
-        "Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.11), which empties the field and returns focus to it. Escape does the same. Where results come from a server, the line says “Searching” while they load."
+        "Once the field holds text, a Clear the search control appears at its end, a 44 by 44 px cross (Rule 11.13), which empties the field and returns focus to it. Escape does the same. Where results come from a server, the line says “Searching” while they load."
       ],
       "tokens": [
         "--oa-color-field-ground",
@@ -1349,7 +1349,7 @@
       "title": "Give every field a visible label and its own error message.",
       "rule": [
         "Each field has a visible label above it and, where it helps, a hint under the label joined by aria-describedby, such as “Five digits”. A placeholder never stands in for either. Personal fields carry autocomplete, such as email and postal-code, so the browser can fill them. A field stays open to typing while its form can still send; a Send button that cannot run yet keeps focus and says why, as Rule 18.1 sets.",
-        "On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down to the primary look while the error holds the red (Rule 11.16). A send that works writes its result to a status line with the success mark."
+        "On a send with mistakes, each wrong field takes aria-invalid, the 4 px Pillar Red bar at its left edge and a message under it joined by aria-describedby: the error mark in ink, “Error:” and how to fix it, on the Error Band on Newsprint and on the ground on Charcoal. Focus moves to the first field to fix, and the ask steps down to the primary look while the error holds the red (Rule 11.18). A send that works writes its result to a status line with the success mark."
       ],
       "tokens": [
         "--oa-color-field-ground",
@@ -1366,7 +1366,7 @@
         "text": [
           "A label that stays in view helps a reader check what they typed, and autocomplete saves typing for a reader with limited movement. Moving focus to the first field to fix puts the reader where the work is, and the field’s description reads the message there, so nothing needs an alert that interrupts."
         ],
-        "basis": "WCAG 2.2 SC 1.3.5, 3.3.1, 3.3.2, 3.3.3 and 4.1.3; Rule 11.15"
+        "basis": "WCAG 2.2 SC 1.3.5, 3.3.1, 3.3.2, 3.3.3 and 4.1.3; Rule 11.17"
       },
       "correct": {
         "specimen": "s-18-17-anatomy",
@@ -1434,7 +1434,7 @@
       "id": "18.18",
       "title": "Give every message its mark and its first word.",
       "rule": [
-        "An error, a warning and a success each start with their mark and their words (Rule 11.15). An error starts “Error:” and says how to fix it, beside a 4 px Pillar Red bar. A warning starts “Warning:” beside a 4 px bar in ink, and a success says what happened beside the Verdigris mark. Each bar is a left border.",
+        "An error, a warning and a success each start with their mark and their words (Rule 11.17). An error starts “Error:” and says how to fix it, beside a 4 px Pillar Red bar. A warning starts “Warning:” beside a 4 px bar in ink, and a success says what happened beside the Verdigris mark. Each bar is a left border.",
         "A message that a script writes into the page goes into a status line, which a screen reader reads at its next pause. Only an error that appears with no field to move focus to uses <code>role=\"alert\"</code>, which interrupts. A message already in the page when it loads is plain text, since neither role announces it then."
       ],
       "tokens": [
@@ -1599,7 +1599,7 @@
       "title": "Update a live tracker in place.",
       "rule": [
         "A tracker built from chapter 11’s marks is a list of steps, each with its name and one state word: Done, Now, You can take part now, Not yet, Never happened or Stopped (Rules 11.2 and 11.4). When a bill moves, the tracker redraws only the steps that changed and writes one sentence to its status line that names the new step, and the bill too where the page follows more than one.",
-        "The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in words (Rule 18.19), and when nothing matches it says what to do. When the data fails it gives the error with its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.10."
+        "The tracker takes no focus and moves nothing on the page when it updates. While its data loads it says so in words (Rule 18.19), and when nothing matches it says what to do. When the data fails it gives the error with its mark and how to try again, and a record that has gone unchecked carries the warning of Rule 11.12."
       ],
       "tokens": [
         "oa.component.mark.ring.now",
@@ -1632,7 +1632,7 @@
         },
         {
           "label": "States",
-          "value": "Done, Now, You can take part now, Not yet, Never happened and Stopped (Rules 11.2 and 11.4); loading; empty; error; the warning on a record unchecked too long (Rule 11.10)."
+          "value": "Done, Now, You can take part now, Not yet, Never happened and Stopped (Rules 11.2 and 11.4); loading; empty; error; the warning on a record unchecked too long (Rule 11.12)."
         },
         {
           "label": "Keyboard",
@@ -1756,8 +1756,8 @@
       "id": "18.22",
       "title": "Step through a loop one step at a time.",
       "rule": [
-        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.14). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line under it that gives its evidence grade, so the heading claims no more than the evidence holds (chapter 02’s house rule H08). The status line says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
-        "Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its icon and its word changing together (Rule 17.3), and it holds each step about 250 ms a word and never under six seconds, with reduced motion too (Rule 11.14). Next step, Previous step and Reset the loop stop the playback, and no button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their reason; at the end, Next step does."
+        "A loop stepper walks a reader through a loop of connections one step at a time. Its buttons run in one order in every product, Play, Reset the loop, Previous step and Next step, each with its utility icon beside its word (Rule 11.16). A loop from our atlas takes its atlas title as its name, in quotation marks, with a line under it that gives its evidence grade, so the heading claims no more than the evidence holds (chapter 02’s house rule H08). The status line says each step as it arrives, “Step 2 of 3:” and the step’s sentence, and the step list marks the current step with <code>aria-current=\"step\"</code> and a 4 px bar.",
+        "Nothing plays until the reader presses Play. Play becomes Pause while it plays and Play again at the end, its icon and its word changing together (Rule 17.3), and it holds each step about 250 ms a word and never under six seconds, with reduced motion too (Rule 11.16). Next step, Previous step and Reset the loop stop the playback, and no button moves focus. At the start, Previous step and Reset the loop stay in place with aria-disabled and their reason; at the end, Next step does."
       ],
       "tokens": [
         "--oa-color-state-selected-bar",

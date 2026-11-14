@@ -236,7 +236,7 @@
       "title": "Mark where a reform acts with the atlas’s red target.",
       "rule": [
         "Where a figure shows a reform at work, only the marks it acts on turn Pillar Red, at a heavier weight: each connection it changes, with its arrowhead, and the outline of each variable it targets. A connection is the atlas’s arrow from one variable to another (Rule 10.10). On Newsprint a red connection carries a 1 px Charcoal edge. A note beside the figure names the reform and says that it acts where the marks turn red.",
-        "The marker is the view’s one working red. When an error or a step the reader can take now shares the view, the marker yields as Rule 11.16 sets out: its marks stay heavier, in ink, and the note still names the reform."
+        "The marker is the view’s one working red. When an error or a step the reader can take now shares the view, the marker yields as Rule 11.18 sets out: its marks stay heavier, in ink, and the note still names the reform."
       ],
       "tokens": [
         "oa.color.data.emphasisRed.onNewsprint",
@@ -274,7 +274,7 @@
         },
         {
           "label": "Yielded",
-          "value": "The same weights in ink, with the note (Rule 11.16)"
+          "value": "The same weights in ink, with the note (Rule 11.18)"
         }
       ],
       "files": [

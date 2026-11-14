@@ -1,4 +1,4 @@
-/* Messages (Rule 11.15): error, warning and success, each with its mark and first words; the error
+/* Messages (Rule 11.17): error, warning and success, each with its mark and first words; the error
    on the Error Band where the surface has one, with the 4 px red bar. A status line is a polite
    live region a script writes. */
 .oa-msg-set {

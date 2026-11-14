@@ -176,7 +176,7 @@
       "title": "Play a motion only when a reader asks.",
       "rule": [
         "Every player has Play, Pause, Reset and a still view, and a motion starts only when a reader presses Play, never as the page opens, as it scrolls into view or on a timer. It runs once and stops on its last frame. One button carries Play and Pause and changes its icon and its word together, then reads Play again at the end.",
-        "A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it resets, such as “Reset the bill” (Rule 11.14), takes either kind back to where it rests, and at rest it is unavailable and says why.",
+        "A player of a state or a mechanism rests on its first frame, where the change starts. For the wordmark or the lockmark, the player rests on the master itself, so a reader who never presses Play still sees the whole mark; Play then steps to the first frame and runs to the master. Reset, named for what it resets, such as “Reset the bill” (Rule 11.16), takes either kind back to where it rests, and at rest it is unavailable and says why.",
         "Beside every player sits its still view: the first and last frames at true size, each with its time and the words for what it shows, then each step of the motion in order. A status line says the same words when the frame changes, so every fact the motion shows reaches a reader who prints the page or listens with a screen reader, and one who never presses Play."
       ],
       "tokens": [
@@ -434,7 +434,7 @@
       "title": "Show loading with words and a still drawing, never a pulse.",
       "rule": [
         "While a region waits for its data, it shows words that name what is loading, such as “Loading the tracker for S.99002.” <span class=\"illus\">Illustrative</span>, and a still drawing of the lines the data will sit on, with no marks on them yet. The words sit in a status line, so a screen reader hears them once. Nothing moves while the region waits.",
-        "The data replaces the drawing and the words together. When the data fails to arrive, the region shows the error state with what failed and the fix (Rule 11.15)."
+        "The data replaces the drawing and the words together. When the data fails to arrive, the region shows the error state with what failed and the fix (Rule 11.17)."
       ],
       "tokens": [
         "oa.color.state.loading.text.onNewsprint",
@@ -476,7 +476,7 @@
         },
         {
           "label": "When it fails",
-          "value": "The error state, with what failed and the fix (Rule 11.15)"
+          "value": "The error state, with what failed and the fix (Rule 11.17)"
         }
       ],
       "related": [
@@ -790,7 +790,7 @@
       "title": "Say what is missing and what to do next when a region is empty.",
       "rule": [
         "A list, table, search or tracker with nothing to show draws a dashed region in place of its rows, and its words say what is missing and the step that would fill it. A search writes both into its status line with the count, so a screen reader hears them together: “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
-        "An empty region names no fault, since nothing failed. When the data fails to arrive, the region shows the error state instead (Rule 11.15)."
+        "An empty region names no fault, since nothing failed. When the data fails to arrive, the region shows the error state instead (Rule 11.17)."
       ],
       "tokens": [
         "oa.color.state.empty.text.onNewsprint",

@@ -107,7 +107,7 @@
   "width_px": 360,
   "alt": "Failure case: do not publish. An Illustrative code panel at 360 px holding four lines of CSS, with a lone icon in its corner that has turned from two sheets into a check after a press. No label names the panel, and no line says what happened.",
   "illustrative": true,
-  "notes": "Picture of a fault: a Copy icon that changes meaning, with no status line (Rule 11.12).",
+  "notes": "Picture of a fault: a Copy icon that changes meaning, with no status line (Rule 11.14).",
   "fit_switch": false
  },
  "s-18-13-failure": {

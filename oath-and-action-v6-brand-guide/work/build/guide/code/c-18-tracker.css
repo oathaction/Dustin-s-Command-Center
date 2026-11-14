@@ -225,7 +225,7 @@
 .oa-tracker-link:hover {
   text-decoration-thickness: var(--oa-border-width-underline-hover);
 }
-/* The check date is a warning (Rule 11.10), drawn as Rule 18.18 draws every warning: the mark,
+/* The check date is a warning (Rule 11.12), drawn as Rule 18.18 draws every warning: the mark,
    "Warning:" and a 4 px bar in the text's ink, as a left border so it holds in forced colors */
 .oa-tracker-check {
   display: flex;

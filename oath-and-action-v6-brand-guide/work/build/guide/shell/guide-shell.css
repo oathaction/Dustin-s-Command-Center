@@ -611,7 +611,7 @@ a.toc-part-k:hover { text-decoration: underline }
 .btn--quiet { background: transparent; color: var(--ink); border: var(--oa-border-width-hairline) solid var(--rule-strong); padding: 0 calc(var(--oa-space-300) - 1px) }
 .btn--quiet:hover { background: transparent; border-width: var(--oa-border-width-rule); padding: 0 calc(var(--oa-space-300) - 2px) }
 .status { margin: 0; font: var(--oa-type-caption); color: var(--ink-2) }
-/* F-7 (stage C): a result takes its mark before its words (Rules 11.12 and 11.15): the success mark in Verdigris, the
+/* F-7 (stage C): a result takes its mark before its words (Rules 11.14 and 11.17): the success mark in Verdigris, the
    error mark in the text's ink on the Error Band with a 4 px red bar drawn as a border, and "Error:" first */
 .status .st-mark { width: var(--oa-size-icon-small); height: var(--oa-size-icon-small); margin-right: .4em; vertical-align: -.2em }
 .status .st-ok { color: var(--oa-color-state-success-mark) }

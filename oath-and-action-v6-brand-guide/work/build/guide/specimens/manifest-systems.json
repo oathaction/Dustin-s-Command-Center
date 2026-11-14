@@ -48,7 +48,7 @@
   "width_px": 360,
   "alt": "The same Illustrative phone page with an email field in its error state: a red bar on the field, and a message on a pale red band with a red bar at its left that reads Error: Enter an email address so the clerk can confirm your time to speak, beside the error mark, a circle holding an exclamation mark in the message’s dark ink. Below it the Sign up to speak button is Charcoal with a White label.",
   "illustrative": true,
-  "notes": "The error takes the working red (precedence 1), held by the 4 px bar; the mark is chapter 11's U-error in the text's ink, as Rule 11.15 is built (D2-959). The ask steps down to the primary button."
+  "notes": "The error takes the working red (precedence 1), held by the 4 px bar; the mark is chapter 11's U-error in the text's ink, as Rule 11.17 is built (D2-959). The ask steps down to the primary button."
  },
  "s-05-3-failure": {
   "chapter": "05",
@@ -741,27 +741,27 @@
   "notes": "",
   "fit_switch": false
  },
- "s-11-10-correct": {
+ "s-11-12-correct": {
   "chapter": "11",
-  "rule": "11.10",
+  "rule": "11.12",
   "width_px": 360,
   "alt": "Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. Request 99007, Weather station repair records: Step 3 of 6: Searching. The agency is looking for the records. Waiting on you: on April 2 the agency asked which years you need. Its 20 working days stop until you answer. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching now; 4 Reviewing not yet; 5 Answered not yet; 6 Appeal not yet. Beside the warning mark and a 4 px bar in ink: Warning: Checked April 20. The agency may have acted since. Request 99009, Prison inspection reports: Upheld on appeal on July 8. The appeal office kept the agency’s answer. The requester took the request to federal court on August 3. Steps: 1 Requested done; 2 Acknowledged done; 3 Searching done; 4 Reviewing done; 5 Answered done; 6 Appeal done.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
  },
- "s-11-10-failure": {
+ "s-11-12-failure": {
   "chapter": "11",
-  "rule": "11.10",
+  "rule": "11.12",
   "width_px": 360,
   "alt": "Failure case: do not publish. An Illustrative records request, 99007, Weather station repair records, at 360 px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven steps.",
   "illustrative": true,
   "notes": "",
   "fit_switch": false
  },
- "s-11-11-correct": {
+ "s-11-13-correct": {
   "chapter": "11",
-  "rule": "11.11",
+  "rule": "11.13",
   "width_px": 360,
   "alt": "A live report reader at 360 px, Illustrative. Page 1 of the four-page report How a county pays for its roads sits in a frame: its heading, “Where the money comes from”, and its text, “The county pays for its roads from its share of the state’s fuel tax, from property taxes and from a yearly vehicle fee.” Under it, a status line reads “Page 1 of 4: Where the money comes from”. Two buttons follow, Previous page with the arrow mirrored before its word and Next page with the arrow after it, each 44 px tall. On the first page, Previous page is unavailable: its outline is dashed, and the line under it says “This is the first page.” A choice of two, Fit width and Full size, under the words Page size, sets the size of the page; Fit width is checked, with the selected check before its word, the word in bold and a 2 px edge. The other pages are “What a mile of road costs”, “Repairs that wait” and “Who decides the list”.",
   "illustrative": true,
@@ -769,60 +769,22 @@
   "interactive": true,
   "fit_switch": false
  },
- "s-11-11-failure": {
+ "s-11-13-failure": {
   "chapter": "11",
-  "rule": "11.11",
+  "rule": "11.13",
   "width_px": 360,
   "alt": "Failure case: do not publish. An Illustrative report toolbar at 360 px with four buttons that show icons and no words: a left arrow, “1 / 4”, a right arrow, an information mark and four corners. Each button is 32 px square. A pointer hovers over the information mark, and a dark box above it reads “About this report”, the only place the button’s name appears.",
   "illustrative": true,
   "notes": "Picture of a fault: glyph-only buttons, 32 px targets, a name shown only on hover (SC 1.4.13, 2.5.3). The information mark is drawn here as the fault and is no icon of the set (DR-154).",
   "fit_switch": false
  },
- "s-11-12-correct": {
-  "chapter": "11",
-  "rule": "11.12",
-  "width_px": 360,
-  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”, and the Escape key clears it too. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check, bold words and a 2 px edge, and the status line reads “101 of 125 symbols”, with the first three listed by ID and name and a line that says how many more match: “The first three are listed here, and 98 more match.” When nothing matches, the status line reads “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
-  "illustrative": false,
-  "notes": "Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); the count is a polite status line (A-9), and with no match it carries its advice (F-5, D2-1157); Clear the search is the one glyph-only control (A-4). The field is type=\"search\" and Escape clears it (F-9); the search landmark stays out of the stage, which holds no landmark (AX-S8), and Rule 11.12’s builders line names it.",
-  "interactive": true,
-  "fit_switch": false
- },
- "s-11-12-failure": {
-  "chapter": "11",
-  "rule": "11.12",
-  "width_px": 360,
-  "alt": "Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons carry chevrons turned left and right, and below them the row Sources for this page carries the same chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in another.",
-  "illustrative": true,
-  "notes": "Picture of a fault: the chevron does two jobs in one view (D2-507).",
-  "fit_switch": false
- },
- "s-11-13-correct": {
-  "chapter": "11",
-  "rule": "11.13",
-  "width_px": 360,
-  "alt": "A live list of three sources at 360 px, each a link to another site that opens in the same tab: Nebraska Legislature, “Lawmaking in Nebraska”; FOIA.gov, “Frequently Asked Questions”; and 5 U.S.C. 553, rulemaking, at the Legal Information Institute. After each link’s last word sits the 16 px mark for another site, an arrow leaving a box, kept on the line with that word. Each link stands 44 px tall, and a screen reader hears “(another site)” at the end of its name.",
-  "illustrative": false,
-  "notes": "Live links to the research lead’s sources (section 5 and 7), same tab (D2-513); the 16 px mark is the first 16 px utility icon on a page (D2-577).",
-  "interactive": true,
-  "fit_switch": false
- },
- "s-11-13-failure": {
-  "chapter": "11",
-  "rule": "11.13",
-  "width_px": 360,
-  "alt": "Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its own under the words. A note says the link opens a new tab with nothing said about it.",
-  "illustrative": true,
-  "notes": "Picture of a fault: a 24 px mark inside running text, broken from its word, and a new tab with no warning (D2-513).",
-  "fit_switch": false
- },
  "s-11-14-correct": {
   "chapter": "11",
   "rule": "11.14",
   "width_px": 360,
-  "alt": "A live loop stepper at 360 px for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, with the line “Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things.” A box shows the step and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. At the start, Previous step and Reset are unavailable, and a line says why. Each step names the connection and gives the atlas’s sentence for it, starting with “Concentration of household wealth raises money spent to influence politics.” Step 2, the one our atlas grades plausible, reads “Money spent to influence politics can raise policy advantages for wealthy and organized interests.” and ends “Our atlas grades this step plausible, the least certain in the loop.” Play holds each step about a quarter second a word, from 10 to 14 seconds here.",
+  "alt": "The symbol library’s search and filter bar, live at 360 px. A field labeled Search the symbols holds the magnifier before the text; once you type, a cross at its end clears the search, named “Clear the search”, and the Escape key clears it too. Under it, the Filters button carries the funnel, the words “Filters, 1 on” and a chevron pointing up, since the filters are open, and a word button, Clear filters. The open filters show Kind: Topic, Atlas and Pillar, and Size: Reads at 24 px. Atlas is on, so it carries a check, bold words and a 2 px edge, and the status line reads “101 of 125 symbols”, with the first three listed by ID and name and a line that says how many more match: “The first three are listed here, and 98 more match.” When nothing matches, the status line reads “0 of 125 symbols. No symbol matches. Clear the search or the filters to see more.”",
   "illustrative": false,
-  "notes": "Live (D2-516). Steps from Atlas V7’s loop R1 (DR-195): chain labels, signs and each connection’s plain sentence; a plausible step takes “can” and its grade (D2-969). Play holds a step 250 ms a word, never under 6 seconds (D2-972), and starts only on a press (E-3); unavailable controls keep focus with their reason (G-4); the step box is a polite live region (A-9).",
+  "notes": "Live (D2-516). Labels and kinds read from the editor’s label table for chapter 10; the 41 from chapter 10’s construction text, section 10. Chips carry aria-pressed and the Selected check (C-5); the count is a polite status line (A-9), and with no match it carries its advice (F-5, D2-1157); Clear the search is the one glyph-only control (A-4). The field is type=\"search\" and Escape clears it (F-9); the search landmark stays out of the stage, which holds no landmark (AX-S8), and Rule 11.14’s builders line names it.",
   "interactive": true,
   "fit_switch": false
  },
@@ -830,14 +792,52 @@
   "chapter": "11",
   "rule": "11.14",
   "width_px": 360,
-  "alt": "Failure case: do not publish. The same loop stepper for Loop R1, “Wealth and political influence reinforce each other”, at 360 px. Its Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes and back, in place of the Reset icon.",
-  "illustrative": false,
-  "notes": "Picture of a fault: a topic drawing standing for an interface action (D2-515), from the sprite (CL-024 is among the 41 that read at 24 px, one color, and takes the switch: its fit on 1x screens, its master from 2x).",
+  "alt": "Failure case: do not publish. An Illustrative report reader at 360 px. Its Previous and Next buttons carry chevrons turned left and right, and below them the row Sources for this page carries the same chevron pointing down, where it opens the row. One drawing turns the page in one place and opens a row in another.",
+  "illustrative": true,
+  "notes": "Picture of a fault: the chevron does two jobs in one view (D2-507).",
   "fit_switch": false
  },
  "s-11-15-correct": {
   "chapter": "11",
   "rule": "11.15",
+  "width_px": 360,
+  "alt": "A live list of three sources at 360 px, each a link to another site that opens in the same tab: Nebraska Legislature, “Lawmaking in Nebraska”; FOIA.gov, “Frequently Asked Questions”; and 5 U.S.C. 553, rulemaking, at the Legal Information Institute. After each link’s last word sits the 16 px mark for another site, an arrow leaving a box, kept on the line with that word. Each link stands 44 px tall, and a screen reader hears “(another site)” at the end of its name.",
+  "illustrative": false,
+  "notes": "Live links to the research lead’s sources (section 5 and 7), same tab (D2-513); the 16 px mark is the first 16 px utility icon on a page (D2-577).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-15-failure": {
+  "chapter": "11",
+  "rule": "11.15",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. An Illustrative sentence at 360 px ends with the link “the agency’s rulemaking page”. Its mark for another site, drawn at 24 px inside the sentence, has wrapped onto a line of its own under the words. A note says the link opens a new tab with nothing said about it.",
+  "illustrative": true,
+  "notes": "Picture of a fault: a 24 px mark inside running text, broken from its word, and a new tab with no warning (D2-513).",
+  "fit_switch": false
+ },
+ "s-11-16-correct": {
+  "chapter": "11",
+  "rule": "11.16",
+  "width_px": 360,
+  "alt": "A live loop stepper at 360 px for Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, with the line “Our atlas grades this loop plausible: its middle step is the least certain, and it runs only on issues where large donors and middle-income voters want different things.” A box shows the step and its sentence, and starts at “Ready”. Four buttons sit under it, each 44 px tall with its icon beside its word: Play, which turns to Pause while the steps run and to Play again at the end; Reset the loop, with an open circle and one arrowhead; Previous step, with the arrow mirrored; and Next step, with the arrow after its word. At the start, Previous step and Reset are unavailable, and a line says why. Each step names the connection and gives the atlas’s sentence for it, starting with “Concentration of household wealth raises money spent to influence politics.” Step 2, the one our atlas grades plausible, reads “Money spent to influence politics can raise policy advantages for wealthy and organized interests.” and ends “Our atlas grades this step plausible, the least certain in the loop.” Play holds each step about a quarter second a word, from 10 to 14 seconds here.",
+  "illustrative": false,
+  "notes": "Live (D2-516). Steps from Atlas V7’s loop R1 (DR-195): chain labels, signs and each connection’s plain sentence; a plausible step takes “can” and its grade (D2-969). Play holds a step 250 ms a word, never under 6 seconds (D2-972), and starts only on a press (E-3); unavailable controls keep focus with their reason (G-4); the step box is a polite live region (A-9).",
+  "interactive": true,
+  "fit_switch": false
+ },
+ "s-11-16-failure": {
+  "chapter": "11",
+  "rule": "11.16",
+  "width_px": 360,
+  "alt": "Failure case: do not publish. The same loop stepper for Loop R1, “Wealth and political influence reinforce each other”, at 360 px. Its Start over button carries CL-024, the feedback loop drawing, two arrows that carry a change between two boxes and back, in place of the Reset icon.",
+  "illustrative": false,
+  "notes": "Picture of a fault: a topic drawing standing for an interface action (D2-515), from the sprite (CL-024 is among the 41 that read at 24 px, one color, and takes the switch: its fit on 1x screens, its master from 2x).",
+  "fit_switch": false
+ },
+ "s-11-17-correct": {
+  "chapter": "11",
+  "rule": "11.17",
   "width_px": 360,
   "alt": "A live sign-up form at 360 px, Illustrative: “Get a reminder before the March 3 hearing”, with an Email field, a ZIP code field with the hint “Five digits” and the red button Remind me, the view’s one working red. Sent with a field wrong, each wrong field takes a red bar at its left edge and a message under it on the pale Error Band, with a red bar, the error mark in ink and the words “Error:” and the fix, such as “Enter a ZIP code with five digits.” The error then holds the red, so Remind me turns Charcoal until the fields are right, and focus moves to the first wrong field. Sent right, the success mark and “You’re signed up. We’ll email you on March 1, two days before the hearing.” appear in a status line.",
   "illustrative": true,
@@ -845,9 +845,9 @@
   "interactive": true,
   "fit_switch": false
  },
- "s-11-15-failure": {
+ "s-11-17-failure": {
   "chapter": "11",
-  "rule": "11.15",
+  "rule": "11.17",
   "width_px": 360,
   "alt": "Failure case: do not publish. An Illustrative ZIP code field at 360 px holding four digits, 0217. Under it, red text reads “Invalid” beside a red cross, the Close icon. Nothing says “Error”, which rule the entry broke or how to fix it, and the red text measures 2.96 to 1 on Newsprint.",
   "illustrative": true,
@@ -857,18 +857,18 @@
   ],
   "fit_switch": false
  },
- "s-11-16-correct": {
+ "s-11-18-correct": {
   "chapter": "11",
-  "rule": "11.16",
+  "rule": "11.18",
   "width_px": 360,
   "alt": "One view at 360 px on Newsprint where three marks could claim red. An Illustrative story card for bill H.99009, Local news grants, headed “The House hears the local news grants bill on March 3”, shows six numbered steps: step 1 done, step 2 where you can take part now, its small disc drawn in Charcoal, and steps 3 to 6 not yet, with the words “You can take part now. Send written testimony by March 3.” Under it, a small figure from our systems atlas draws two linked ovals, Availability of local reporting and Risk of losing office, with Availability of local reporting outlined heavier in Charcoal and the words “Reform R-32, public and philanthropic funding for local news, acts here. In our atlas, more local reporting raises officials’ risk of losing office. It grades the reform’s own effect a hypothesis, since no evaluation has yet shown that such funds improve coverage.” Last, an email field holds an error: a red bar at its left and a message on the pale Error Band, “Error: Enter an email address with an @, such as name@example.com.” The error is the only red in the view, and the Remind me button is Charcoal.",
   "illustrative": true,
   "notes": "Rule 05.3’s order: an error first, then the step a reader can take, then where a reform acts. The take-part disc and the marker yield to ink with their shapes and words (C-4). The marker follows System 1’s target: the variable’s outline at 3 px. The bill is invented and labeled beside its card; the figure is Atlas V7’s reform R-32 on Variable B2 and connection L26 (D2-958).",
   "fit_switch": false
  },
- "s-11-16-failure": {
+ "s-11-18-failure": {
   "chapter": "11",
-  "rule": "11.16",
+  "rule": "11.18",
   "width_px": 360,
   "alt": "Failure case: do not publish. The same view, with its Illustrative bill card, and with red in three jobs: the take-part disc on step 2 and the Remind me button, the outline of Availability of local reporting where reform R-32 acts, and the error bar on the email field. The eye has three reds to choose from, and the error that blocks the reader looks no more urgent than the rest.",
   "illustrative": true,
@@ -1146,7 +1146,7 @@
   "width_px": 360,
   "alt": "Failure case: do not publish. The Illustrative atlas view header, with the locator’s current box, Elections, filled Pillar Red.",
   "illustrative": true,
-  "notes": "Labeled failure: the locator spends the view's red on \"you are here\", which takes it from the reform target, the error or the ask (Rule 05.3, Rule 11.16).",
+  "notes": "Labeled failure: the locator spends the view's red on \"you are here\", which takes it from the reform target, the error or the ask (Rule 05.3, Rule 11.18).",
   "check_exempt": [
    "red"
   ]
@@ -1157,7 +1157,7 @@
   "width_px": 600,
   "alt": "Two copies of one step from the atlas’s safe-seat loop, on Newsprint at 600 px: the connection from Seats with little electoral competition to how often the primary decides the winner, drawn with its sign tag, the word raises, its evidence line and its delay tick. In the first copy, reform R-01’s marks are Pillar Red at a heavier weight: the connection, with a thin Charcoal edge, and the outline of how often the primary decides the winner. A note under it reads: Reform R-01, all-party primaries with ranked general elections, acts where the marks turn red: here, on the connection and on how often the primary decides the winner. In the second copy the same marks are heavier but drawn in Charcoal, and the note says an error holds this view’s red.",
   "illustrative": false,
-  "notes": "Marks, pills, tags, verbs and widths from System 1 (DR-36): targets at the selected weight (4 px wires, 3 px pills), the lit marks at the 6 px sizes, and atlas-kit.css's 1 px Charcoal keyline on a red wire on Newsprint. Each variable prints its own title from the atlas (DR-265, DR-267). The second copy is Rule 11.16's yield."
+  "notes": "Marks, pills, tags, verbs and widths from System 1 (DR-36): targets at the selected weight (4 px wires, 3 px pills), the lit marks at the 6 px sizes, and atlas-kit.css's 1 px Charcoal keyline on a red wire on Newsprint. Each variable prints its own title from the atlas (DR-265, DR-267). The second copy is Rule 11.18's yield."
  },
  "s-12-marker-failure": {
   "chapter": "12",

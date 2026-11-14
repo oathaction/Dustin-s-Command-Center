@@ -1666,7 +1666,7 @@ def downloads_block(items, tokens, ctx, where):
 
 
 def status_line(sid, initial="", cls="status"):
-    """A status line for Copy and its kin (F-7, Rules 11.12 and 11.15): the words, after the success mark or the error
+    """A status line for Copy and its kin (F-7, Rules 11.14 and 11.17): the words, after the success mark or the error
     mark, which the shell's script shows with its result. Both marks are 16 px utility drawings, hidden until used."""
     mark = lambda k, name: (f'<svg class="st-mark st-{k}" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" '
                             f'data-icon="U-{name}" data-icon-family="utility" hidden><use href="#oa-sym-u-{name}-16px"/></svg>')

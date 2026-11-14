@@ -1,6 +1,6 @@
-// A form with the error pattern (Rule 11.15). On send, each field is checked; a field that fails takes aria-invalid,
+// A form with the error pattern (Rule 11.17). On send, each field is checked; a field that fails takes aria-invalid,
 // points to its message and draws the red bar, focus moves to the first field to fix, and the ask yields its red
-// (Rule 11.16). A field in error is checked again as the reader types, so the red returns to the ask once all are
+// (Rule 11.18). A field in error is checked again as the reader types, so the red returns to the ask once all are
 // fixed. A good send turns the ask's word to "Sending" (its data-oa-sending) and says so in the status line, keeps the
 // ask unavailable while it runs, then gives the ask its word back and says what happened.
 // Each field holds aria-invalid="false" until a send finds it wrong, and goes back to "false" once fixed. A browser

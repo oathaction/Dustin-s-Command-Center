@@ -8,6 +8,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the co
 - 01:44 UTC: **staleness on HEAD `a813cf38` read before any rerun** (D3-1704): both chapter 18 generators are current (see "Staleness" below). A strict build of HEAD to scratch: exit 0, 0 warnings, 11,501,823 bytes.
 - 01:45 UTC: my own R5-8 list by script: 26 matches of 11.10 to 11.16 in the files I own, every one a rule citation (below). I apply the map when the tracker designer posts it.
 - 01:47 UTC: **contracts CE-1 to CE-4 for complex examples 2 and 3 written as a DRAFT** for the complex examples maker. They hold for any order, IDs and words; the parts marked "(ruling d)" or "(R5-1)" fill in when the data lead's ruling (d), the engineer's plan rows and the accessibility lead's round 5 specification land.
+- 01:47 UTC: **R5-8 APPLIED in my files.** The tracker designer's list for me (16 lines in `stage_c_ch18_build.py`, 10 in the code sets and the shell) equals mine line for line. One function over the nine files, both generators rerun to write, a second run identical (77 files by MD5), `--check` "current". Each of my ten changed files equals its HEAD version with the map applied, byte for byte, so nothing else crossed. See "R5-8, applied" below.
 
 ## Summary
 
@@ -44,6 +45,14 @@ So any change after my R5-8 rerun is the map's alone.
 | `work/build/guide/shell/guide-shell.css` | 614 | 11.12, 11.15 | 11.14, 11.17 | shell comment |
 
 `stage_c_ch18_anatomy_build.py`, the other code sets, their keys files and `guide-shell.js` hold none. The outputs `18-components.json` (lines 61 to 1760) and `manifest-components.json` (line 110) take the new numbers from the rerun.
+
+### R5-8, applied (01:47 UTC)
+
+- **The map** (the tracker designer's "Contracts"): old 11.10 to 11.16 become 11.12 to 11.18. Applied by `scratch/r58/apply.py`: one `re.sub` with the pattern `(?<![\d.])11\.1[0-6](?!\d)` and a function over the map, and the same for `#rule-11-1x` anchors (none in my files), over `stage_c_ch18_build.py`, `stage_c_ch18_anatomy_build.py` (0 matches), `c-18-button.css`, `c-18-form.css`, `c-18-form.js`, `c-18-link.css`, `c-18-messages.css`, `c-18-tracker.css` and `guide-shell.css`. 26 changes, the lines in the table above.
+- **Reruns.** Before: `stage_c_ch18_build.py --check` reported "stale" for `18-components.json` and `manifest-components.json`, as expected. Both generators rerun to write (`stage_c_ch18_build.py`, then `stage_c_ch18_anatomy_build.py`). `18-components.json` changes on 15 lines and `manifest-components.json` on one; the 24 failure plates, the 25 anatomy plates, `manifest-anatomy.json` and the 24 keys files do not change against HEAD.
+- **Second run.** Both generators run again: the 77 outputs keep the same MD5 (`scratch/r58/md5-run1.txt` against `md5-run2.txt`), and `--check` reports "chapter 18: current", exit 0.
+- **Nothing else crossed.** For each of the ten files I changed or rewrote, HEAD's text with the map applied equals the file now, byte for byte (15, 1, 16, 1, 2, 2, 1, 1, 1 and 2 numbers).
+- The same-page links ("Rule 11.13" and the rest print as links to chapter 11) resolve once the tracker designer's chapter 11 lands; the guide check proves them in the main session's closing run.
 
 ## Contracts
 

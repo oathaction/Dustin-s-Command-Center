@@ -101,7 +101,7 @@
   text-underline-offset: .2em;
 }
 
-/* While an error in the same view holds the red, the ask yields to the primary fill (Rule 11.16).
+/* While an error in the same view holds the red, the ask yields to the primary fill (Rule 11.18).
    Its hover keeps that fill and underlines the word, as the form's does, so no Prussian hover sits
    in a view whose error is red. */
 .oa-button--ask[data-oa-yield] {
