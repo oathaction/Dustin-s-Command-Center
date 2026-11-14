@@ -1291,6 +1291,16 @@
   "wide_px": 680,
   "frame_container": true
  },
+ "s-14-selection-guide": {
+  "chapter": "14",
+  "rule": null,
+  "alt": "Every one of the 127 forms in this chapter, under the 16 reader questions that open its groups, each named with its tier and linked to its entry, beside a small drawing of the form.",
+  "illustrative": false,
+  "width_px": null,
+  "notes": "Chapter 14's selection guide (R5-2, DR-273): the plan's 127 forms under the 16 family questions, Core, Extended, Reference, then Avoid within each, every picture drawn from one symbol set; written by selection_guide_build.py.",
+  "fit_switch": false,
+  "interactive": true
+ },
  "s-14-palette-spec": {
   "chapter": "14",
   "rule": "14.5",
