@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5, November 14, 2026. Written by the co
 
 ## Status
 
+- 02:27 UTC: **Built, checked and in the strict build.** The editor's words pass 1 and the component engineer's five findings are applied; the print copies of 14.144 added (the accessibility lead's 3.4); S96's named labels leave the plot on phones for a phone note; 14.144's failure set one row a reform so it holds at 296 px. Strict build to scratch exit 0, 0 warnings; behavior 23 of 23 at 1440 and 390 px; figure checks 35 of 35; captures at 1440, 390 and 296 px read, 256 px running. **Open:** the engineer's request 3 (S96's table column against the margin); the data lead's sign-off; the design director's read; the component engineer's rerun of its key presses on today's words.
 - 02:11 UTC: **First drafts of Rules 14.142 to 14.144 are written and build.** `phase3_ch14_complex_build.py` writes the three entry files, S96's spec, the failure figure's spec and the four plates of 14.143 and 14.144; `phase3_ch14_build.py` takes them in (its one fault is the selection guide's plate, not yet written); a strict build to scratch at 02:04 failed only on S96's two new label keys, which the engineer's form change (request 2) answers. Captures at 1440 and 390 px running on a slim page of chapters 14 and 18. **Waiting on:** the engineer's form change for S96 (`labels.named`, `labels.margin`, and request 3's table column); the component engineer's keys files; the editor's words pass; the data lead's sign-off.
 - 01:50 UTC: the figure checks run (`maker_c_round5_derive.py`, facts only). CE-1 to CE-4 read; I build to CE-1 and CE-2.
 - 01:42 UTC: started (clock read 01:40:51).
@@ -66,13 +67,13 @@ Rewritten from the generator's run of 02:20 UTC, after the editor's words pass 1
 - D3-xxx | The outcome families print as chapter 13 and 15 print them, "Quality of democracy" first | DR-39 names DQ that way; the data lead's list used the atlas's own family name
 - D3-xxx | Rule 14.144's evidence row prints Rule 13.3's grade words (R-38's problem evidence "Contested") | One grade word for one grade across the guide
 - D3-xxx | Rule 14.144's print line for R-38 says none of its targets sits on the drawing | "The drawing shows Reform R-38 in red" would be untrue
-- D3-xxx | Rule 14.144's failure is a still table of the effects with a total row, scoring +S, +M and +L as 1, 2 and 3, and a line saying so | The common misreading; the scoring line keeps the picture from passing a number as the atlas's (Rule 15.21's failure does the same)
+- D3-xxx | Rule 14.144's failure is a still table, one row a reform, its four codes in the families' order and a total score at the end, scoring +S, +M and +L as 1, 2 and 3, with a line saying so | The common misreading; the scoring line keeps the picture from passing a number as the atlas's (Rule 15.21's failure does the same); a row a reform holds whole in the 296 px column, where a column a reform ran off the stage at 390 px
 - D3-xxx | Rule 14.142's failure keeps the window and the preliminary marks and drops only the band, draws all seven drops alike in the subject ink, and names them with one shared note | Ruling (c): one fault per failure plate; seven labels would crowd the plot at 256 px
 - D3-xxx | A plate's style is its own (`<style>` in the fragment, scoped by the build), built from chapter 15's `CSS` entries the markup uses; chapter 15's `.fx` becomes `.cfx` | Chapter 14's block defines `.fx` (26 px tall) for its charts; chapter 15's block does not reach chapter 14 (the accessibility lead's 2.6)
 
 - D3-xxx | S96 shows its phone drawing under the desk drawing (`phone_view`) | A chart in full shows a desk reader what a phone reader sees; Gate 2's check names both
 - D3-xxx | S96 carries a reading guide naming the columns, the dark columns, the line, the band and the hatch | The accessibility lead's 4.1 reading order; a preliminary month is told by its hatch in words as well as by its fill
-- D3-xxx | Under 490 px February 2026's words sit 20 px to the left (`phone.dx`) | The kit's sweep found no clear place for them at 327 to 339 px; placement only
+- D3-xxx | Under 490 px the two named columns' words leave the plot (`phone.hide`) and a phone note names both with their values | At 390 px October 2025's words met the latest month's leader, and the sweep found February 2026's no clear place at 327 to 339 px; the engineer's suggestion and S30's way; the desk drawing keeps both labels
 - D3-xxx | S96's band notes join into one note: what the band is, what a column inside it means, and that it covers one month's change only | Six notes in place of seven, each on its own subject
 
 - D3-xxx | Rule 14.144's status lines read "Reform R-06 turns one connection red. One variable it targets sits outside this loop, in the core layer." and the like; R-38's "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer." | The data lead's A-2, item 3, with the count first and no punctuation touching a chip (BC S16)
@@ -81,6 +82,7 @@ Rewritten from the generator's run of 02:20 UTC, after the editor's words pass 1
 - D3-xxx | The editor's words pass 1 (02:18 UTC) is applied in the generator, every row but one: 14.143's title "Step through two loops that share a variable, one connection at a time."; 14.142's rule, why and caption with no bare "S14"; S96's latest average "also preliminary"; "the walk weighs neither against the other"; "the targets of Reform R-06 in red"; L38, L39 and EC9 named; "the atlas holds no connection"; "Band, the kind of change" | D3-669: the words are the editor's, the file the maker's
 - D3-xxx | Loop R10's first step keeps its claim first and its start after it ("The walk moves to Loop R10. Start at ..."), the editor's fallback | The status line already opens "Loop R10, step 1 of 4:", so the change of loop is said before the claim, and a step's line stays the connection's claim in every step of the list
 - D3-xxx | The outcome families keep chapters 13 and 15's names, "Quality of democracy" first, read from chapter 13's table | DR-39 sets DQ's printed name; the atlas's own label is "Democratic quality", so the plate follows Dustin's decision over the model's word
+- D3-xxx | On paper Rule 14.144 prints three copies of Loop R8, one per reform, each with its targets on the loop drawn heavy and a line naming them (R-38's says neither target sits on the loop), in place of the one live drawing and its print line | The accessibility lead's 3.4 calls this the better page; red prints as gray, so the 4 px weight carries the target; DR-271 allows the bytes (the plate weighs 37,858 bytes with them, 7,428 bytes of it the three copies, measured)
 
 ## Requests
 
@@ -112,9 +114,25 @@ Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/7633c399-b692-5041-be
 - **Behavior in Chromium** (`live.js` on a slim page of chapters 14 and 18 built at 02:19, so chapter 18's one stepper script runs after the plates), at 1440 and 390 px: 23 of 23 pass at each width. 14.143: live on load at `data-oa-at` 0; Next step by keyboard moves `data-oa-at` 1 to 7 with the band on that step's group alone, focus kept on Next step at every step, the status line saying "Loop B4, step 1 of 3:" to "Loop R10, step 4 of 4:", the steps ahead muted, Next step unavailable at the last. 14.144: status silent on load; ArrowDown checks R-30 (L39 and A5's outline red, its card's bar), R-38 (nothing red, its card's bar), then wraps to R-06, focus on the radio, each status line its card's `data-oa-say` words. Print emulation: the stepper's buttons, status and band hidden, the radios hidden, the print line naming the chosen reform shown. Scripts off: the stepper's buttons and status hidden with the still sequence shown, and the radios still choosing (R-30 checked turns A5's outline red through CSS alone). No script errors. The words pass of 02:20 changed words only, not the hooks this test reads.
 - **The component engineer's five findings of 02:17** are each held by a new check in the generator (the cards' six rows, the space after each code, R-38's print line, the first step's label row, Loop B4's grade line and its weakest-step quote).
 
+- **Strict build of the whole guide to scratch** (`guide3.html`, 02:25 UTC, after the editor's pass, the print copies and the phone note): **exit 0, 0 warnings**, 12,091,608 bytes, the projection 15,116,414 of 15,500,000. **Weight, reported (DR-271):** the build report's `complex_examples` gives each rule with its plates as placed: 14.142 29,965 bytes, 14.143 42,948, 14.144 54,950, together 127,863 against Gate 2's estimate of 30 KB each; the figures as placed: `s-14-s96` 12,903 (kit), `s-14-142-failure` 10,013 (kit), and the frames of `s-14-143-correct` 25,314, `s-14-143-failure` 10,499, `s-14-144-correct` 40,368, `s-14-144-failure` 5,061. Chapter 14 with the kit stands at 2,759,790 in the projection's count. `plate-share.json` was put back after the build, as every build here.
+
 ## Not tested
 
 - The keys files and their walk: they are the component engineer's (CE-3), not written when this was.
 - The guide check (`guide_check.js`), quick or full, on any page with these plates: left to the main session's closing run, under the brief's load limit.
 - Any screen reader, Safari or Firefox: none runs here, so what a screen reader says for `data-oa-part`, the cards' `dl` rows or the chooser's line is unheard, and the cards' `subgrid` rows are unverified outside Chromium.
 - A real print dialog: print was tried only by Playwright's print emulation, which fires no `beforeprint`.
+
+## Files
+
+Created (all mine; nothing else written):
+- `work/build/scripts/phase-3/phase3_ch14_complex_build.py`: the generator of everything below
+- `work/build/scripts/phase-3/maker_c_round5_derive.py`: the figure checks (facts from the data file and the model; `--figures` checks the words)
+- `work/build/chart-kit/specs/s96.json`: Rule 14.142's correct plate, S14 in full (written by the generator)
+- `work/build/guide/specimens/s-14-142-failure.chart.json` and `s-14-142-failure.html`: Rule 14.142's failure plate
+- `work/build/guide/specimens/s-14-143-correct.html`, `s-14-143-failure.html`: Rule 14.143's plates
+- `work/build/guide/specimens/s-14-144-correct.html`, `s-14-144-failure.html`: Rule 14.144's plates
+- `work/build/guide/entries/14-142.json`, `14-143.json`, `14-144.json`: the three rules
+- `work/handoffs/phase-3/20261114_Round-5-Complex-Examples-Notes.md`: this file
+
+Written by others' generators when I ran them as the brief asks: `phase3_ch14_build.py` rewrote `work/build/guide/chapters/14-data-visualization.json`, `manifest-data-visualization.json`, `14-example-log.json` and wrote `s-14-s96.html` (the engineer's files). The keys files `s-14-143-correct.keys.json` and `s-14-144-correct.keys.json` are the component engineer's.

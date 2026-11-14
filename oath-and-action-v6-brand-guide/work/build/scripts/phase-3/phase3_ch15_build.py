@@ -4226,7 +4226,7 @@ def rule_15_24(book):
 RECON = json.loads((ROOT / "work/build/data/v7-reconciliation-rows.json").read_text())["rows"]
 RECON_META = json.loads((ROOT / "work/build/data/v7-reconciliation-rows.meta.json").read_text())
 PAGES = {"V5 Polished": "our brand guide’s fifth edition", "Atlas Visual System": "the atlas visual system",
-         "Concepts V2": "the atlas design concepts", "Atlas V7": "the atlas model, drawn for this edition"}
+         "Concepts V2": "the atlas design concepts", "Atlas V7": "the atlas model, as this edition draws it"}
 GROUP_WORDS = {"A value": "A value", "A sign": "A sign", "A grade": "A grade", "A delay": "A delay",
                "Identifiers": "Identifiers", "Structure": "Structure", "Encoding": "Encoding", "Labels": "Labels",
                "Drawn in Phase 2 and Phase 3": "Drawn for this edition, where the model leaves a choice"}
@@ -4352,7 +4352,7 @@ def recon_words():
         5: ("Variable IDs, loop IDs and domain codes in one table, with no type words.",
             f"Four codes each name both a variable and a loop, as {chip('Variable', 'B2')} and {chip('Loop', 'B2')} do. "
             f"{words_n(sum(1 for k in NODE if re.fullmatch(r'D[0-9]', k))).capitalize()} variables carry a D and one digit, and "
-            f"{words_n(len(DOMAIN))} domains a D and two digits, from {chip('Domain', 'D01')} to {chip('Domain', 'D10')} in the "
+            f"{'ten' if len(DOMAIN) == 10 else len(DOMAIN)} domains a D and two digits, from {chip('Domain', 'D01')} to {chip('Domain', 'D10')} in the "
             "atlas’s list.",
             "Typed chips in every column: Variable, Loop and Domain."),
         6: (f"A variable and a loop that share a code on one sheet, told apart only by the name beside them, as "
@@ -4370,7 +4370,7 @@ def recon_words():
             f"{vq('B1')}; {lq('B1a')}.",
             f"Both in typed chips, and {chip('Loop', 'B1a')} never shortened."),
         22: ("Ownership drawn as a frame, with “no causal arrowhead or polarity”.",
-             f"The {len(own_)} ownership connections each carry a sign: "
+             f"The {words_n(len(own_))} ownership connections each carry a sign: "
              + ", ".join(f"{chip('Connection', k)} {'plus' if LINK[k]['polarity'] == '+' else 'minus'}" for k in own_) + ".",
              "Ownership draws as a signed connection with its type in words; a frame only groups a layout."),
         23: ("Six conventions that mix direction, grade, authority, membership and association.",
@@ -4544,10 +4544,10 @@ def recon_table(rows, words, caption):
             grp = r["group"]
             body.append(f'<tr class="rg"><th colspan="4" scope="colgroup">{e(GROUP_WORDS[grp])}</th></tr>')
         shown, model, res = words[r["row"]]
-        pages = " and ".join(PAGES[p.strip()] for p in r["pages"].split(";"))
-        lead = "From " if r["row"] >= 46 else "In "
+        pg = [PAGES[p.strip()] for p in r["pages"].split(";")]
+        pages = pg[0] if len(pg) == 1 else ", ".join(pg[:-1]) + " and " + pg[-1]
         body.append(f'<tr><th scope="row" class="rn">{r["row"]}</th>'
-                    f'<td data-k="The earlier page"><span class="pg">{e(lead + pages)}</span> {shown}</td>'
+                    f'<td data-k="The earlier page"><span class="pg">{e(pages[0].upper() + pages[1:])}</span> {shown}</td>'
                     f'<td data-k="The model, as of {SNAP}">{model}</td>'
                     f'<td data-k="The guide">{res} <span class="wh">{rule_links(r["guide_rules"])}</span></td></tr>')
     return (f'<table class="rtb"><caption>{e(caption)}</caption><thead><tr><th scope="col">Row</th>'
@@ -4566,7 +4566,7 @@ CSS.update({
             ".rtb .rn{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;text-align:left}"
             ".rtb td+td{margin-top:6px}.rtb td::before{content:attr(data-k);display:block;"
             f"{C13.LBL};color:var(--oa-color-text-secondary);margin-bottom:2px}}"
-            ".rtb .pg{font-weight:var(--oa-font-weight-semibold)}"
+            ".rtb .pg{display:block;font-weight:var(--oa-font-weight-semibold)}"
             f".rtb .wh{{display:block;margin-top:4px;{C13.CAP};color:var(--oa-color-text-secondary)}}"
             "@container oa-frame (min-width:680px){.wd .rtb{display:table}.wd .rtb thead{display:table-header-group}"
             ".wd .rtb tbody{display:table-row-group}.wd .rtb tr{display:table-row}.wd .rtb :is(th,td){display:table-cell;"
@@ -4617,10 +4617,10 @@ def rule_15_25(book):
     first = [r for r in rows if r["group"] in ("A value", "A sign", "A grade", "A delay")]
     chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
     disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
-            f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">All {len(RECON)} rows, in order</span>'
-            f'{chev}</summary><div class="oa-disclosure-body">'
-            + recon_table(rows, words, "Every row: what the earlier page showed, what the model holds, and where the guide "
-                                       "applies the answer")
+            f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">The other {len(RECON) - len(first)} rows, '
+            f'in order</span>{chev}</summary><div class="oa-disclosure-body">'
+            + recon_table([r for r in rows if r not in first], words, "Every other row: what the earlier page showed, what "
+                                                                      "the model holds, and where the guide applies the answer")
             + '</div></details></div></div>')
     body = (head + recon_table(first, words, "The four rows on a value, a sign, a grade and a delay, which decide what a "
                                              "reader believes the model says")
@@ -4632,7 +4632,7 @@ def rule_15_25(book):
                   "the model, rerun November 13, 2026; 2,642 match; 2 conflict, both in row 42; "
                   f"{len(RECON)} rows, {len(phase0)} from our first audit and {len(added)} drawn for this edition. A table shows "
                   "the four rows on a value, a sign, a grade and a delay, each with what the earlier page showed, what the "
-                  "model holds and what the guide does, with the rules where it does so. A disclosure holds all rows in order, "
+                  "model holds and what the guide does, with the rules where it does so. A disclosure holds the other rows in order, "
                   "grouped: a value, a sign, a grade, a delay, identifiers, structure, encoding, labels, and drawn for this "
                   "edition."),
              notes="Rows, order, groups and rules from the research lead's data file; every model value read here from the "
@@ -4667,7 +4667,7 @@ def rule_15_25(book):
                          "Rules 13.9 and 13.10"},
         "correct": {"specimen": "s-15-25-correct",
                     "caption": f"The reconciliation table: the rerun’s counts, the four rows on a value, a sign, a grade and a "
-                               f"delay, and all {len(RECON)} rows in a disclosure, each with the model’s value as of {SNAP}."},
+                               f"delay, and the other rows in a disclosure, each with the model’s value as of {SNAP}."},
         "failure": {"specimen": "s-15-25-failure",
                     "caption": "<strong>Fails Rule 15.25.</strong> The card takes Connection L02’s grade from our fifth "
                                "edition, which drew it solid. The model grades it plausible, and the model is the source."},
@@ -4760,11 +4760,11 @@ def rule_15_23(book):
     need("20 working days" in fo["5"]["time_limit"] and "90 days" in fo["6"]["time_limit"], "the request's time limits changed")
     fw = lambda k, extra="": (None, "st", fo[k]["step"] + extra)
     rows8 = [("before", "Before step 1", [fw("1")]),
-             (1, s8[0], [fw("2"), fw("3"), fw("4", ", if the requester asks")]),
-             (2, s8[1], [fw("5", ": its 20 working days begin")]),
-             (3, s8[2], [fw("5", ": the same 20 working days")]),
-             (4, s8[3], [fw("5", ": the same 20 working days")]),
-             (5, s8[4], [fw("5", ", up to 10 working days late in unusual circumstances")]),
+             (1, s8[0], [fw("2"), fw("3"), fw("4", ", where the requester shows a need")]),
+             (2, s8[1], [fw("5", ": its 20 working days start")]),
+             (3, s8[2], [fw("5", ", inside the same 20 working days")]),
+             (4, s8[3], [fw("5", ", inside the same 20 working days")]),
+             (5, s8[4], [fw("5", " within 20 working days, or 10 more in unusual circumstances")]),
              (6, s8[5], [fw("6", ", within at least 90 days")]),
              ("after", "After step 6", [fw("7"), fw("8")])]
     b8 = xw_block(f'The Freedom of Information Act beside the records request tracker of <a href="#rule-11-8">Rule 11.8</a>',
@@ -4780,14 +4780,14 @@ def rule_15_23(book):
          "the agency rule's steps in the data file changed")
     rw = lambda k, extra="": (None, "st", ru[k]["step"] + extra)
     rows9 = [("before", "Before step 1", [rw("10")]),
-             (1, s9[0], [rw("1", "; the law we read sets no early notice, which an agency may give while it drafts")]),
-             (2, s9[1], [rw("2", ", for a significant rule"), rw("3")]),
-             (3, s9[2], [rw("4", ": it opens")]),
-             (4, s9[3], [rw("4", ": it closes")]),
+             (1, s9[0], [rw("1", ". The law we read sets no early notice; an agency may give one while it drafts")]),
+             (2, s9[1], [rw("2"), rw("3")]),
+             (3, s9[2], [(None, "st", ru["4"]["step"] + " opens")]),
+             (4, s9[3], [(None, "st", ru["4"]["step"] + " closes")]),
+             ("instead", "In place of steps 2 to 4", [rw("9")]),
              (5, s9[4], [rw("2", ", again"), rw("5")]),
-             (6, s9[5], [rw("6", ", which a major rule waits at least 60 days after")]),
-             ("after", "After step 6", [rw("7"), rw("8")]),
-             ("instead", "In place of steps 2 to 4", [rw("9")])]
+             (6, s9[5], [rw("6", "; a major rule takes effect at least 60 days later")]),
+             ("after", "After step 6", [rw("7"), rw("8")])]
     b9 = xw_block(f'Federal rule making beside the agency rule tracker of <a href="#rule-11-9">Rule 11.9</a>',
                   "The law’s steps for a federal rule, behind the tracker’s six steps",
                   rows9, f"Stages from 5 U.S.C. 551, 553, 701 to 706, 801 and 802 and Executive Order 12866, read "

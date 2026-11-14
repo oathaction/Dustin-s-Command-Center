@@ -551,7 +551,7 @@
   "width_px": 328,
   "fit_switch": false,
   "frame_container": true,
-  "alt": "The reconciliation of earlier atlas drawings to the model of October 15, 2026. Four counts: 2,644 comparisons with the model, rerun November 13, 2026; 2,642 match; 2 conflict, both in row 42; 57 rows, 45 from our first audit and 12 drawn for this edition. A table shows the four rows on a value, a sign, a grade and a delay, each with what the earlier page showed, what the model holds and what the guide does, with the rules where it does so. A disclosure holds all rows in order, grouped: a value, a sign, a grade, a delay, identifiers, structure, encoding, labels, and drawn for this edition.",
+  "alt": "The reconciliation of earlier atlas drawings to the model of October 15, 2026. Four counts: 2,644 comparisons with the model, rerun November 13, 2026; 2,642 match; 2 conflict, both in row 42; 57 rows, 45 from our first audit and 12 drawn for this edition. A table shows the four rows on a value, a sign, a grade and a delay, each with what the earlier page showed, what the model holds and what the guide does, with the rules where it does so. A disclosure holds the other rows in order, grouped: a value, a sign, a grade, a delay, identifiers, structure, encoding, labels, and drawn for this edition.",
   "illustrative": false,
   "notes": "Rows, order, groups and rules from the research lead's data file; every model value read here from the model; the counts from the file's sidecar.",
   "wide_px": 680,

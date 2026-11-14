@@ -92,11 +92,17 @@ def joinnums(vals):
     return out
 
 
+def q5(v):
+    """A coordinate in tenths of a pixel, rounded to the nearest half pixel: at the drawn size and at twice it, a half
+    pixel is the finest step a screen shows, and the shorter numbers carry no other change."""
+    return int(round(v * 2)) * 5
+
+
 def ring_d(pts):
     """A closed ring as one short path: its first point, then each step relative, in tenths of a pixel."""
     t = []
     for x, y in pts:
-        q = (round(x * 10), round(y * 10))
+        q = (q5(x), q5(y))
         if not t or q != t[-1]:
             t.append(q)
     if len(t) > 1 and t[-1] == t[0]:
@@ -137,17 +143,17 @@ def mini(d):
             ax, ay = (cx / 10, cy / 10) if rel else (0, 0)
             if c == "A":
                 rx, ry, rot, fa, fs, x, y = a
-                ex, ey = round((x + ax) * 10), round((y + ay) * 10)
+                ex, ey = q5(x + ax), q5(y + ay)
                 fixed = [tenths(round(rx * 10)), tenths(round(ry * 10)), tenths(round(rot * 10)), str(int(fa)), str(int(fs))]
                 cand = [("A", fixed + [tenths(ex), tenths(ey)]), ("a", fixed + [tenths(ex - cx), tenths(ey - cy)])]
             elif c == "H":
-                ex, ey = round((a[0] + ax) * 10), cy
+                ex, ey = q5(a[0] + ax), cy
                 cand = [("H", [tenths(ex)]), ("h", [tenths(ex - cx)])]
             elif c == "V":
-                ex, ey = cx, round((a[0] + (cy / 10 if rel else 0)) * 10)
+                ex, ey = cx, q5(a[0] + (cy / 10 if rel else 0))
                 cand = [("V", [tenths(ey)]), ("v", [tenths(ey - cy)])]
             else:
-                pts = [(round((a[k] + ax) * 10), round((a[k + 1] + ay) * 10)) for k in range(0, len(a), 2)]
+                pts = [(q5(a[k] + ax), q5(a[k + 1] + ay)) for k in range(0, len(a), 2)]
                 ex, ey = pts[-1]
                 cand = [(c, [tenths(v) for p_ in pts for v in p_]), (c.lower(), [tenths(v) for p_ in pts for v in (p_[0] - cx, p_[1] - cy)])]
             if c == "M":

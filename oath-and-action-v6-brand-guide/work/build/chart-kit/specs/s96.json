@@ -62,6 +62,9 @@
  ],
  "phone": "same",
  "phone_view": true,
+ "phone_notes": [
+  "The two dark columns: October 2025, −140,000 jobs, and February 2026, −156,000 jobs."
+ ],
  "artboard": "reading",
  "domain": "D07",
  "states": [],
@@ -91,7 +94,10 @@
     "text": [
      "October 2025",
      "−140,000 jobs"
-    ]
+    ],
+    "phone": {
+     "hide": true
+    }
    },
    {
     "x": "2026-02",
@@ -100,7 +106,7 @@
      "−156,000 jobs"
     ],
     "phone": {
-     "dx": -20
+     "hide": true
     }
    }
   ],

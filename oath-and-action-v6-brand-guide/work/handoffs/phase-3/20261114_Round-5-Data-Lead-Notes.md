@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 5. Written by the data visualization an
 
 ## Status
 
+- 02:27 UTC. **Batch 1 signed off**, under "Sign-offs": ED5-3 ruled (hold "Affirmed"); Rules 11.10 and 11.11's facts and marks, with one change (a measure the Legislature passes takes slashes on steps 5 and 6, not a square) and three source points; R5-8; the palette specification; S96, with one condition (the phone note placed); S95's second crop.
 - 02:00 UTC. D3-1880 noted under (d): the stepper prints each loop's own step numbers, the counter 1 to 7 stays internal.
 - 02:00 UTC. Additions A-1 and A-2 posted for the accessibility lead: an avoid form's word and mark, and the pictures' inks; a reform whose targets sit off Loop R8 (the drawing stays R8 alone, every off-loop target in words, R-38 stays). (a) and (d) amended in place to match.
 - 01:54 UTC. **All seven rulings, (a) to (g), are posted.** Owners may draw. Sign-offs follow as items land. Requests R-1 to R-3 to the research lead and E-1 to E-3 to the engineer.
@@ -250,6 +251,9 @@ The selection guide and the palette specification draw no data and log nothing. 
 - D3-xxx | An avoid tile prints "Avoid" as its tier word and takes a shared mark, a 1 px frame with one rule from top left to bottom right, in stroke classes inside the hidden picture | The word carries it for screen readers; stroke classes keep it in forced colors and print; the falling rule reads as a strike, not a chart line
 - D3-xxx | Selection guide pictures may use the subject, context, light fill, track, gridline and magnitude gray inks and the hatch, never the point, Verdigris, Prussian, sequential or diverging classes | One working red per view (Rule 05.3); a hue on some pictures would read as a code; the palettes have their own plate
 - D3-xxx | Example 3's drawing stays Loop R8 alone; every off-loop target of all three reforms is named in words; R-38 stays | The model holds no connection from TC7, EC9 or B5 into the loop; one rule for all three reforms (DR-93); each reform's record names R8
+- D3-xxx | The court tracker prints the court's verb "Affirmed", glossed once in Rule 11.11's text, not "Upheld" (ED5-3) | "Upheld" names no object, so an affirmed ruling that struck a law down would read as the law upheld; "Affirmed" is the docket's word and can be checked
+- D3-xxx | A ballot measure the Legislature passes ends with steps 5 and 6 under slashes and "Passed by the Legislature on" its date, never a square | It became law; the square's key word is "Stopped"; the research lead's frame and DR-108's law in words
+- D3-xxx | S96 is signed off on condition that the placed plate prints its phone note naming the two dark columns | Rule 14.6 gives a named mark its label at every width; the labels hide at 390 px
 - D3-xxx | 15.22, 15.24 and 15.25 each log one example (D04, atlas-wide, atlas-wide) before 15.23's trackers log theirs | Chapter 15 reaches 33 before any D02 example is added, as round 4's limit set
 
 ## Requests
@@ -259,6 +263,14 @@ The selection guide and the palette specification draw no data and log nothing. 
 - **R-1, 15.22's stages (ruling (e)).** Read in full, with the date: the courts' structure page (marked "not read closely"); the House rule for suspension of the rules and its two-thirds vote; and the law that sets budget reconciliation's limit on Senate debate, since V7's instrument for the federal statute route names reconciliation. Name any you cannot read.
 - **R-2, 15.25's model values (ruling (e)).** Each of the 45 rows' model value read by script from today's model into your notes for the systems designer, row 40 with B4's `evidence_summary` sentence; and the new rows for what Phase 2 and Phase 3 drew from V7, each with its chapter and rule.
 - **R-3, the trackers (ruling (f)).** For each step of both trackers, the official record that marks it done, from the state constitutions and election offices you hold and from Title 28 and the Supreme Court's rules (the rules on a petition's time and on its disposition), with each end's word as the source writes it.
+
+### To the tracker designer (batch 1)
+
+- Rule 11.10: a measure the Legislature passes ends with steps 1 to 4 done and steps 5 and 6 under slashes, "Passed by the Legislature on" its date, in its own spec row, never a square. Apply the research lead's answers to the three source points under "Sign-offs", batch 1.
+
+### To the research lead (batch 1)
+
+- For Rule 11.11: a read source for 28 U.S.C. 1253 (straight to the Supreme Court) and for a tie vote leaving the ruling below in place, or say neither is sourced; and the court source line's full list of sections (1254 and 2101 added).
 
 ### To the engineer
 
@@ -284,12 +296,75 @@ The selection guide and the palette specification draw no data and log nothing. 
 
 ## Sign-offs
 
-None yet. Items are signed off here as owners land them.
+### Batch 1 (02:27 UTC): ED5-3, Rules 11.10 and 11.11, R5-8, the palette specification, S96 and S95
+
+Read on my own strict build to scratch (02:20 UTC: exit 0, 0 warnings, 12,090,810 bytes, 368 rules, 677 specimens), on the owners' files by script, and on the engineer's exported S96 and palette captures. Load stood at 3.9 to 4.6 throughout, so I drove no browser.
+
+#### ED5-3, the court's word: hold "Affirmed" (for the editor and the tracker designer)
+
+The tracker prints the court's own verb, "Affirmed", as built, with "Reversed", "Vacated" and "Modified". Rule 11.11's text explains each once in plain words ("Affirmed: the higher court left the lower court's judgment in place"; the editor sets the words).
+
+Why not "Upheld": the word names no object. Many federal cases challenge a law, and when a trial court strikes the law down and the appeals court affirms, a reader who sees "Upheld" takes the law as upheld, the reverse of what happened. A reader who backs the law and one who opposes it would each read "Upheld" their own way, which fails DR-124's test. "Affirmed" names the court's act on the judgment below, and it is the word the docket and the opinion print (28 U.S.C. 2106), so a reader can check it. Rule 11.8's "Upheld" stays where it is: there an agency's own decision is upheld on appeal, and the object is plain. The court tracker's failure plate then prints "Affirmed by the Supreme Court" as the misreading of a denial, as first built.
+
+#### Rules 11.10 and 11.11, the two trackers: facts and marks signed off, with one change and three source points (for the tracker designer and the research lead)
+
+Read by script from `s-11-10-*` and `s-11-11-*` (each card's six marks) and in my build's text.
+
+**Signed off as built:**
+- *Marks, card by card.* Ballot: 99010 done, done, done, slash, done, current (direct initiative, count not certified); 99011 all six done (indirect, approved and certified, takes effect in words); 99013 done, done, square, then three not yet (too few valid signatures). Court: 99014 three done, current at step 4 (argued, no ruling); 99015 all six done, "Reversed and sent back" in words, line never running backward; 99016 four done, square at step 5 (review denied), step 6 not yet. The marks after a square match Rules 11.8 and 11.9. Each plate holds one current, one decided or certified and one stopped item (ruling (f)).
+- *Evidence.* A step is done only on the record the step tables name (the filing, the attorney general's title, the signature check, the Legislature's vote, the election officer's certification, the certified count; the complaint, the entered judgment, the notice of appeal, the appeals court's judgment, the petition, the Court's decision). The vote stays current until certification, and the failure plate draws exactly that misreading. An argued case stays current.
+- *Slashes and squares.* A slash only where the law gives the item no room (a direct initiative's step 4; steps 3 and 4 when an appeal runs straight from three district judges to the Court; steps 1 to 3 for a legislative referral). A square at the last step reached for not certified, withdrawn, too few signatures, removed by a court, settled, dismissed, never appealed and review denied.
+- *DR-108, DR-150, DR-275.* The bill tracker's marks and sizes; six steps each; invented items numbered past 99009 with 99012 skipped, labeled Illustrative, naming no state, party, court or person. Read from both sides: the six subjects (park fees, library funding, shoreline setbacks, a bakery's trademark, a ferry contract, highway noise walls) tie to no party, and the outcomes line up for no side.
+- *No red.* `--red` is declared in the shared style block and used by no mark on either plate (0 uses by script); neither plate takes a take-part mark.
+
+**One change, sent back:**
+- **A measure the Legislature passes is law, so it takes no stop square.** Today Rule 11.10's text and specs end it "on a square at the last step it reached" with "Passed by the Legislature, on step 4". The square's key word is "Stopped", which tells a reader the measure failed when it became law. The research lead's own frame says it right: steps 1 to 4 done, **steps 5 and 6 under slashes**, since the law gives a passed measure no ballot and no vote, and the words "Passed by the Legislature on" with the date, as DR-108 has a signed bill read as law in words. Michigan's and Ohio's "subject to referendum" may follow as a sentence. Move it out of the "Ended before step 6" row into its own spec row, and out of the rule's list of squares. Plates are unaffected (no card uses it).
+
+**Three source points (the research lead's to settle, the tracker designer's to apply):**
+1. The spec row "Straight to the Supreme Court" rests on 28 U.S.C. 1253, which neither the step table, the basis nor the source line cites. Cite it with its read date, or drop the row.
+2. Step 6's "A tie vote leaves the ruling below in place" is true in practice, but neither 28 U.S.C. 2106 nor the Court's Rule 16, the law that row cites, says it. Name a source that does, or drop the sentence.
+3. The court source line lists 28 U.S.C. 1291, 1331, 2106 and 2107; the step table also cites 1254 and 2101. The source line should list every section the table cites.
+
+The words come in batch 2.
+
+#### R5-8, the renumbering: signed off (for the tracker designer and the main session)
+
+Compared by script: my build against version 10's page (`20261113_Guide-Preview-V10.html`), over visible text and links.
+- Every same-page link moved with its rule: `#rule-11-10` to `-16` had 5, 15, 6, 7, 7, 17 and 10 links; `#rule-11-12` to `-18` now have exactly those counts. `#rule-11-10` and `-11` now hold 5 links each, all to the new trackers. No link's words name a chapter 11 number other than its target (0 of every link checked).
+- Text citations moved one for one, with two differences, each read in context and correct: one "+11.10" was a data value in a table of percentages, never a rule, and stays; and chapter 11's "Related chapters" list now gives Rule 11.10 as the first rule citing chapter 15, where it gave old 11.14, because the new tracker cites chapter 15 first.
+- Every new "11.10" and "11.11" in reader text names the ballot measure or the court case tracker, read in context. Rules 11.10 to 11.18 each appear once as an anchor.
+- The tracker designer's own proofs, which I read and did not repeat: each output equals its committed text with the map applied, compared whole; a second run of the full chain changed no file.
+
+#### The palette specification: signed off (for the engineer, the design director and the editor)
+
+Against ruling (b), on `s-14-palette-spec.html` (`palette_spec_build.py --check`: 2 of 2 files current, tokens 6.0.0-gate3.3):
+- **Content.** Rule 14.5's four palettes in its order, each step with its token, its value on Newsprint and Charcoal, the Newsprint value on White paper, its label ink, gray and three color-vision rows; then the grade line code at 2 and 3 px on both grounds with the record square; one line on Prussian with no swatch; the token release printed at the top; no red and no em dash in the plate.
+- **Numbers, checked by my own script** (WCAG 2.2 and OKLab written apart from round 0's module, `palette_verify.py`): all 17 steps of sequential, diverging and magnitude, and groups 1 to 3, match the plate exactly in hex, contrast on each ground, lightness and contrast on White. Group 4, Stone hatched, checked by eye against the same numbers. Every label ink reads at 4.5 to 1 or more on its step. The plate rounds every ratio down. Steps under 3 to 1 say "not for marks alone", and the plate names what carries them. The group block names Verdigris and Stone's 0.050 gap and the hatch that carries it, as board 1 approved.
+- **Words.** The four jobs are ruling (b)'s drafts. The label ("The data palettes, specified" in the meta file, "The four data palettes, step by step" on the page) is the editor's; I read the words again in batch 2.
+- Looked at: the engineer's capture of the plate's top at 1440 px on Newsprint, which places the plate after Rule 14.5 with the table and both proof panels as ruled.
+
+#### S96, example 1: named columns and margin band signed off, with one condition (for the complex examples maker and the engineer)
+
+By script on the kit's own Node drawings of `s96.json` at 1440 and 390 px on both grounds (the drawings the exports use; `run_spec`, 0 faults), and on the kit build (`build s96 --no-png --no-sweep`: PASS, 0 faults):
+- 57 columns: 53 in the light fill (the context ink on Charcoal), 2 hatched preliminary, and the two named, **October 2025 and February 2026 alone in the subject ink**; no red anywhere; the average in the context ink.
+- The band runs from plus 121.9 to minus 122.2 thousand jobs at 1440 px (0.343 px a thousand from the ticks), in magnitude step 1, behind the columns, with the zero line over it. The named columns measure 140.0 and 156.0 thousand and end past it. The key names the band in words.
+- Title, grade line, notes and source line as ruled; the failure spec draws no band and the seven drops alike, with no red.
+- Looked at: the engineer's captures at 1440 px on Newsprint in grayscale and 390 px on Charcoal and Newsprint (02:10 UTC). The two named columns read darkest in gray, each with its label and leader at 1440 px.
+
+**Condition: the phone shows the two names.** At 390 px the labels hide (`phone: {hide: true}`), and the 02:10 capture shows two dark columns no words name until note 2. The spec now holds `phone_notes` ("The two dark columns: October 2025, −140,000 jobs, and February 2026, −156,000 jobs.", spec saved 02:23), which the kit prints under the drawing below 480 px. The placed plate and my 02:20 build predate it: `s-14-s96.html` and the page hold no such line yet. Rerun `phase3_ch14_build.py` so the placed S96 carries it; I confirm it in batch 2. Rule 14.6 gives a named mark its own label at every width.
+
+#### S95's second crop: signed off (for the engineer and the accessibility lead)
+
+My build prints "Drawn at 1080 by 1080 px" once, with its own id (`oac-s-14-s95-crop-1080x1080`), and "Drawn at 1080 by 1350 px" once. `s95.json` is unchanged since round 4 (git), so no figure, mark or finding moved. The engineer's measure (1,236 drawings and figures, only S95's figure differing, by its size lines' ids) is his; I read it and did not repeat it.
+
 
 ## Tested
 
 - Read: CLAUDE.md; my role file; the round 5 brief, all of it; Gate 2's section 9; my round 4 notes, rulings and sign-offs; DR-64, DR-93, DR-108, DR-124, DR-150, DR-151, DR-223, DR-229, DR-234, DR-236, DR-239, DR-255, DR-258 and DR-271 to DR-276; D3-689, D3-1566 and D3-1850 to D3-1878; Rules 14.5, 14.6 and 14.7 from their entry files; the coverage plan's section 2; round 0's palette notes (summary, calls, tested); the policy workflow sources (FS, SS, BI, LOC); round 1's chapter 15 rule plan for 15.22 to 15.25; Phase 0's reconciliation table and the November 13 rerun table; Rule 15.15's generator code.
 - By script (`python3 -I`): the plan file's 127 forms by family and tier, duplicates, shared specimens and reorders under tier order, and every tier against its entry file; the chart tokens and their values in `tokens.json` 6.0.0-gate3.3; which specs use the magnitude, sequential, diverging and group roles; S14's data file (57 months, the seven drops, the two past 122,000, the preliminary months, the latest average); Loops B4, R10 and R8, their connections' ends, signs, grades and delays, and their variables' titles; Reforms R-06, R-30 and R-38, their targets with layer and loop, bands, effects, grades, confidence, routes and check dates; EC9's connections; the effect codes, families and their note; the 126 route entries by code with check dates; the 45 reconciliation rows by type; B4's `evidence_summary` against Phase 0's row 40; chapter 14's example log by domain and state; chapter 15's 30 log calls by domain.
+
+- Batch 1 (02:19 to 02:27 UTC): my strict build to scratch (`guide_build.py --strict`, exit 0, 0 warnings, 12,090,810 bytes, 368 rules, 677 specimens); by script on it and on version 10's page, chapter 11's citations and links before and after R5-8 (`r58_check.py`, `ctx.py`), and Rules 11.10 and 11.11's text (`slice_text.py`); each tracker card's six marks from `s-11-10-*` and `s-11-11-*`, and the red variable's uses; `palette_spec_build.py --check`; the palette plate's 17 measured rows against my own WCAG and OKLab code (`palette_verify.py`); `oa-chart.mjs build s96 --no-png --no-sweep` (PASS) and S96's four Node drawings by `run_spec` (column inks, the band's extent against the ticks, the named columns' heights, no red); S96's failure spec; S95's size lines in my build and `s95.json`'s history. Scripts in my scratch folder's `scripts/`.
+- Looked at, batch 1: the engineer's S96 captures (1440 px Newsprint in grayscale; 390 px Newsprint; the 390 px Charcoal export) and his palette plate capture at 1440 px (Newsprint, top).
 
 ## Not tested
 
@@ -298,3 +373,4 @@ None yet. Items are signed off here as owners land them.
 - The selection guide's pictures, the trackers' step names and the workflow stages' sources: they are not written yet.
 - Whether Rule 18.22's stepper code holds two loops in one sequence: the component engineer's to say.
 - Chapter 15's example count read from the generator's source, not from a run of it.
+- Batch 1: no capture of my own (load 3.9 to 4.6). Not looked at: the trackers at any width, the palette plate below its first block, on Charcoal or at 390 px, S96 at 296 and 256 px. Not repeated: the tracker designer's whole-output map proofs, the engineer's 1,236-drawing S95 measure. S96's phone note is in the spec and not yet in the placed plate or my build.

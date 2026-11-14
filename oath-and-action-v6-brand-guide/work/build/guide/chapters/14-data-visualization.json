@@ -6178,7 +6178,7 @@
    },
    "failure": {
     "specimen": "s-14-144-failure",
-    "caption": "<strong>Fails Rule 14.144.</strong> A total row scores each code as points and adds the four families, so a local or sector-only effect counts as if it held everywhere and two different reforms tie. The atlas never adds effects across families."
+    "caption": "<strong>Fails Rule 14.144.</strong> A total score adds each reform’s four codes as points, so a local or sector-only effect counts as if it held everywhere and two different reforms tie. The atlas never adds effects across families."
    }
   }
  ],

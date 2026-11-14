@@ -612,7 +612,9 @@ CARD_CSS = (
     "grid-template-rows:repeat(8,auto);row-gap:0}"
     "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 8;grid-template-rows:subgrid;row-gap:0}"
     ".cd8 dl{display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0}}}"
-    "@media print{.lv>.oa-choice{display:none}}"
+    ".pcs8{display:none}"
+    "@media print{.lv>.oa-choice{display:none}.pcs8{display:grid;grid-template-columns:repeat(auto-fill,296px);gap:16px 24px;"
+    "margin-top:16px}.pcs8 .pc8{break-inside:avoid}.mn8,.lv [data-oa-print]{display:none!important}}"
 )
 
 
@@ -641,7 +643,18 @@ def rule_14_144():
                      + '</p>' for rid in RIDS)
     need({link(x)["evidence"] for x in lp["links"]} == {"well-supported"}, "Loop R8's grades changed")
     left = (C15.hed("Loop", "R8", curl(lp["title"])) + diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both steps")
-            + f'<div class="dw dg">{svg}</div>{prints}')
+            + f'<div class="dw dg mn8">{svg}</div>{prints}')
+    # on paper, one copy of the drawing for each reform, its targets on the loop drawn heavy (red prints as gray, so the
+    # weight carries it), under a line that names them (the accessibility lead's 3.4); hidden on screen
+    copies = []
+    for rid in RIDS:
+        tg = {t for t in REFORM[rid]["targets"] if t in on}
+        cb, ch_, _ = C15.two_loop(codes, lp["links"], inside=("R8", "reinforcing"), targets=tg)
+        named = " and ".join(f'{chip("Connection" if t in LINK else "Variable", t)}' for t in REFORM[rid]["targets"] if t in on)
+        line = (f'{chip("Reform", rid)} on Loop R8: its targets on the loop, {named}, drawn heavy.' if tg else
+                f'{chip("Reform", rid)} on Loop R8: neither of its targets sits on the loop.')
+        copies.append(f'<div class="pc8"><p class="nt">{line}</p><div class="dg">{C15.svg_wrap(cb, ch_)}</div></div>')
+    pcopies = '<div class="pcs8">' + "".join(copies) + "</div>"
     # each step of the loop with its connection's chip, its name and its grade word (H11: an ID says what it refers to)
     right = ('<p class="k">Each step</p>' + "".join(
         f'<p class="nt"><b>{i}</b>&#160;{chip("Connection", x)} \u201c{ce(link(x)["name"])}\u201d, '
@@ -692,7 +705,7 @@ def rule_14_144():
     note = V7_NOTE = FACTS_NOTE()
     body = (f'<div class="lv" data-oa-chooser>{group}' + C15.beside(left, right)
             + f'<p class="k kb">The three reforms side by side, as of {SNAP}</p>'
-            + f'<ul class="cds" role="list">{"".join(cards)}</ul>{key}'
+            + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>{key}'
             + f'<p class="nt">The atlas’s note on the codes: “{e(note)}”</p>'
             + src("reforms R-06, R-30 and R-38, their targets, effects, evidence and routes, and loop R8 with its "
                   "connections") + "</div>")
@@ -716,25 +729,28 @@ def rule_14_144():
         return 0 if not m else (pts[m.group(2)] if m.group(1) == "+" else -pts[m.group(2)])
     tot = {rid: sum(points(REFORM[rid]["effects"][f]) for f in ("DQ", "GE", "EP", "EQ")) for rid in RIDS}
     need(tot == {"R-06": 5, "R-30": 5, "R-38": 2}, f"the failure's invented totals moved: {tot}")
-    head = "".join(f'<th scope="col">{chip("Reform", rid)}</th>' for rid in RIDS)
-    rows = "".join(f'<tr><th scope="row">{e(C13.FAMILY[f])}</th>'
-                   + "".join(f'<td>{e(REFORM[rid]["effects"][f])}</td>' for rid in RIDS) + "</tr>"
-                   for f in ("DQ", "GE", "EP", "EQ"))
-    trow = ('<tr class="tt"><th scope="row">Total score</th>'
-            + "".join(f"<td>+{tot[rid]}</td>" for rid in RIDS) + "</tr>")
-    fail = (dnp() + '<p class="hed"><span>“Which reform does the most for Loop R8?”</span></p>'
-            f'<table class="ft8"><thead><tr><td></td>{head}</tr></thead><tbody>{rows}{trow}</tbody></table>'
-            '<p class="nt">Scored +S as 1, +M as 2 and +L as 3.</p>')
+    # one row a reform, so the picture holds whole in the 296 px column as well as at 680 px: its four codes in the
+    # families' order, then the total the fault adds
+    rows = "".join(f'<tr><th scope="row">{chip("Reform", rid)}</th><td>'
+                   + ", ".join(e(REFORM[rid]["effects"][f]) for f in ("DQ", "GE", "EP", "EQ"))
+                   + f'</td><td class="tt">+{tot[rid]}</td></tr>' for rid in RIDS)
+    fam = ", ".join(lc(C13.FAMILY[f]) for f in ("DQ", "GE", "EP", "EQ"))
+    fail = (dnp() + '<p class="hed"><span>\u201cWhich reform does the most for Loop R8?\u201d</span></p>'
+            '<table class="ft8"><thead><tr><th scope="col">Reform</th><th scope="col">Effects</th>'
+            f'<th scope="col">Total score</th></tr></thead><tbody>{rows}</tbody></table>'
+            f'<p class="nt">Effects in the order {e(fam)}. Scored +S as 1, +M as 2 and +L as 3.</p>')
     fstyle = plate_style(fail, extra=(".ft8{border-collapse:collapse;margin-top:12px;font:var(--oa-type-body-small);width:100%}"
-                                      ".ft8 th,.ft8 td{padding:6px 8px;border-top:1px solid var(--oa-color-border-hairline);"
-                                      "text-align:left;vertical-align:top}.ft8 thead td,.ft8 thead th{border-top:0}"
-                                      ".ft8 .tt th,.ft8 .tt td{border-top:2px solid var(--oa-color-border-strong);"
-                                      "font-weight:var(--oa-font-weight-bold)}"))
+                                      ".ft8 th,.ft8 td{padding:6px 8px 6px 0;border-top:1px solid var(--oa-color-border-hairline);"
+                                      "text-align:left;vertical-align:top}.ft8 thead th{border-top:0;font:var(--oa-type-label);"
+                                      "letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);"
+                                      "color:var(--oa-color-text-secondary)}"
+                                      ".ft8 .tt{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums;"
+                                      "text-align:right;white-space:nowrap}.ft8 thead th:last-child{text-align:right}"))
     files["s-14-144-failure"] = fragment("s-14-144-failure", fail, fstyle)
     meta["s-14-144-failure"] = plate_meta(
-        FC + "A table of the three reforms’ four effects with a total row at the foot: Reform R-06 plus 5, Reform R-30 plus "
-        "5 and Reform R-38 plus 2, under a question asking which reform does the most, and a line saying each code was "
-        "scored as 1, 2 or 3 points.",
+        FC + "A table of the three reforms, each with its four effects in a row and a total score at the end: Reform R-06 "
+        "plus 5, Reform R-30 plus 5 and Reform R-38 plus 2, under a question asking which reform does the most, and a line "
+        "saying each code was scored as 1, 2 or 3 points.",
         notes="Labeled failure, a still picture: its totals are the fault and hold no atlas value; the atlas never adds "
               "effects across families.")
     entry = {
@@ -784,9 +800,9 @@ def rule_14_144():
                                      "side with every effect, qualifier, grade and route the atlas holds, and no total.")},
                         **meta["s-14-144-correct"]),
         "failure": dict({"specimen": "s-14-144-failure",
-                         "caption": ("<strong>Fails Rule 14.144.</strong> A total row scores each code as points and adds the "
-                                     "four families, so a local or sector-only effect counts as if it held everywhere and two "
-                                     "different reforms tie. The atlas never adds effects across families.")},
+                         "caption": ("<strong>Fails Rule 14.144.</strong> A total score adds each reform’s four codes as points, so a "
+                                     "local or sector-only effect counts as if it held everywhere and two different "
+                                     "reforms tie. The atlas never adds effects across families.")},
                         **meta["s-14-144-failure"]),
         "examples": [
             {"example": "Reforms R-06, R-30 and R-38 on Loop R8, housing", "domain": "D09", "states": [], "level": "federal",
@@ -872,16 +888,16 @@ def rule_14_142():
         ],
         "phone": "same",
         "phone_view": True,
+        "phone_notes": [f"The two dark columns: {mw(past[0])}, {k(pv[past[0]])} jobs, and {mw(past[1])}, {k(pv[past[1]])} jobs."],
         "artboard": "reading",
         "domain": s14["domain"],
         "states": [],
         "encode": s14["encode"],
         "formats": s14["formats"],
         "labels": dict(s14["labels"], **{
-            # under 490 px February 2026's words take 20 px to the left, where the sweep finds them a clear place at
-            # every width (327 to 339 px had none; placement only)
-            "named": [dict({"x": m, "text": [mw(m), f"{k(pv[m])} jobs"]}, **({"phone": {"dx": -20}} if m == "2026-02" else {}))
-                      for m in past],
+            # under 490 px the two labels leave the plot, where October 2025's met the latest month's leader and the
+            # sweep found February 2026's no clear place at 327 to 339 px; phone_notes names both in one line (S30's way)
+            "named": [{"x": m, "text": [mw(m), f"{k(pv[m])} jobs"], "phone": {"hide": True}} for m in past],
             "margin": {"value": int(f1["margin_thousands"]), "label": "Margin of error",
                        "key": "The survey’s margin of error for one month’s change"},
         }),
@@ -904,7 +920,7 @@ def rule_14_142():
     }
     # the failure: the same columns with no band, all seven drops labeled alike as job losses (ruling c), one fault
     losses = f1["losses"]
-    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide")}
+    fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide", "phone_notes")}
     fspec.update({
         "id": "s-14-142-failure",
         "title": "The economy lost jobs in seven months of 2025 and 2026.",
@@ -1035,7 +1051,9 @@ def check(entries, files, specs):
     for q in FACTS["example_3"]["qualifiers"]:
         ok(f'<b class="cd">{e(q)}</b>' in t, f"14.144: the qualifier {q!r} is not whole in its cell")
     ok(rt.count("Not checked") == 8 and rt.count(f"Checked {SNAP}") == 1, "14.144: eight routes not checked, one dated")
-    ok(len(re.findall(r'data-red="working"', t)) == 2, "14.144: two marks under data-red (L39 and A5)")
+    live_t = t.split('<div class="pcs8">')[0]
+    ok(len(re.findall(r'data-red="working"', live_t)) == 2, "14.144: two marks under data-red on the live drawing (L39 and A5)")
+    ok(len(re.findall(r'data-red="working"', t)) == 5, "14.144: the print copies mark L39 for R-06, L39 and A5 for R-30, none for R-38")
     ok("no expected effect" in rt, "14.144: a zero says what it means")
     ok(re.search(r"<b class=\"cd\">[^<]+</b>,&#32;<span class=\"cw\">", t) is not None and "</b><span class=\"cw\">" not in t,
        "14.144: a code runs into its words")

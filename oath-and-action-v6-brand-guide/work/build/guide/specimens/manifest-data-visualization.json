@@ -1283,7 +1283,7 @@
  "s-14-144-failure": {
   "chapter": "14",
   "rule": "14.144",
-  "alt": "Failure case: do not publish. A table of the three reforms’ four effects with a total row at the foot: Reform R-06 plus 5, Reform R-30 plus 5 and Reform R-38 plus 2, under a question asking which reform does the most, and a line saying each code was scored as 1, 2 or 3 points.",
+  "alt": "Failure case: do not publish. A table of the three reforms, each with its four effects in a row and a total score at the end: Reform R-06 plus 5, Reform R-30 plus 5 and Reform R-38 plus 2, under a question asking which reform does the most, and a line saying each code was scored as 1, 2 or 3 points.",
   "width_px": 328,
   "illustrative": false,
   "notes": "Labeled failure, a still picture: its totals are the fault and hold no atlas value; the atlas never adds effects across families.",
