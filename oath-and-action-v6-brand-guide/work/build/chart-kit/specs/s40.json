@@ -61,7 +61,7 @@
       {
         "field": "committee_vote",
         "label": "Committee vote",
-        "format": "text",
+        "format": "date-lead",
         "empty": "None recorded"
       },
       {

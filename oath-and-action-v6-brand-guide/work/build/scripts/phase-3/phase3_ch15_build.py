@@ -807,6 +807,12 @@ def read_aloud(codes, lids, closes=True):
 # under 328 px the prose follows the frame's visible width, so only the 296 px drawing reaches past it (AX S5).
 # ---------------------------------------------------------------------------------------------------------------
 CSS = {k: C13.CSS[k] for k in ("dnp", "evr", "ev", "gr", "chip", "k", "rs", "gw", "nw2", "src", "nt", "hed", "sub", "mk")}
+# CR-S17 (the component engineer's request 3): tabular figures widen a chip ID's hyphen ("R - 06"; 6.06 to 8.42 px at the
+# data label size), and a chip's ID never lines up in a column (C-S4), so chapter 15's copy of chapter 13's chip drops them.
+# Chapter 13's own chip and Rule 18.24's code chip are approved work and wait for board 3
+_TAB_ID = ".chip .id{font-variant-numeric:tabular-nums}"
+need(_TAB_ID in CSS["chip"], "chapter 13's chip style changed; reread CR-S17's line")
+CSS["chip"] = CSS["chip"].replace(_TAB_ID, "")
 STAGE = W + 2 * 16          # 328 px: the opener's limit on a 360 px screen, and every plate's narrow true width
 WIDE = 680                  # the wide true width, where the frame's content box holds it (D3-480; the shell's switch)
 GAP_A, GAP_PR, GAP_TRI = 32, 40, 16       # the column gaps of the wide compositions, inside 24 px gutters

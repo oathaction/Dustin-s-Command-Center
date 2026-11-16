@@ -373,14 +373,14 @@ def palette_block(p):
 # its value on both grounds and the word the rules use, then the one red with its keyline, its job and its never list.
 # The words are the engineer's drafts for the editor, from Rules 14.5 to 14.7 as the editor wrote them in this pass and the
 # tokens' own descriptions; every value and ratio is read from tokens.json.
-ROLE_JOB = ("Inside every palette, each mark takes one of a few roles, in the same inks on every chart (Rules 05.7 and 14.5). "
-            "The subject is the series the title names, the context is every other series, and the one red goes to the point "
-            "the title names (below). A form names the role and never a color.")
+ROLE_JOB = ("Rule 05.7 gives every mark in a chart a role, and each role keeps its ink in every palette (Rule 14.5). The subject "
+            "is the series the title names, and the context is every other series. The one red, for the point the title names, "
+            "comes after these.")
 ROLES = [
     {"id": "subject", "word": "Subject ink", "token": "oa.chart.color.subject", "cls": "oac-f-subject", "kind": "label",
      "job": "The series the title names and its labels, in the text’s ink: 3 px lines and 6.5 px dots."},
     {"id": "context", "word": "Context ink", "token": "oa.chart.color.context", "cls": "oac-f-context", "kind": "fill",
-     "job": "Every other series, in gray at 2 px, so the subject reads first, and the 1 px leaders from a note to its mark."},
+     "job": "Every other series, in gray at 2 px, so the subject reads first. A leader from a note to its mark takes it at 1 px."},
     {"id": "light-fill", "word": "Light fill", "token": "oa.chart.color.lightFill", "cls": "oac-f-light-fill", "kind": "fill",
      "job": ("A paler gray for a category under the subject, with its value printed. On Newsprint it also fills every other bar "
              "where the title names one bar; on Charcoal those bars keep the context ink (Rule 14.6).")},
@@ -391,7 +391,7 @@ ROLES = [
 ]
 RED_JOB = ("Rule 05.3 gives each view one working red. In a chart it goes to the point, bar or line the title names, with its own "
            "label beside it (Rule 14.6). On Newsprint the red measures {np}, under the 3 to 1 a mark needs, so it takes a 1 px "
-           "keyline in the text’s ink, drawn inside the mark (Rule 05.5). On Charcoal it measures {ch} and takes none.")
+           "Charcoal keyline, drawn inside the mark (Rule 05.5). On Charcoal it measures {ch} and takes none.")
 RED_LINES = [("Never", "A series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss (Rule 14.6)."),
              ("Gives way", "The named mark takes the subject ink at the subject weight, and keeps its label and its place, when an "
                            "error or a step the reader can take holds the view’s red, or when a reader would tie the mark to a party "
