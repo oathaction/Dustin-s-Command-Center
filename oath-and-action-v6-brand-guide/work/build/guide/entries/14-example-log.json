@@ -547,14 +547,14 @@
    "source": "s86.json"
   },
   {
-   "example": "In 2025, 189.4 million people had private health coverage alone, 95.4 million had public coverage alone, 23.8 million had both and 28.3 million had neither.",
+   "example": "In 2025, 23.8 million people had both private and public health coverage.",
    "domain": "D09",
    "states": [],
    "rule": "14.81",
    "source": "s87.json"
   },
   {
-   "example": "In 2025, 213.2 million people had private health coverage and 119.1 million had public coverage, and 23.8 million had both.",
+   "example": "In 2025, 213.2 million people had private health coverage, about 1.8 times the 119.1 million who had public coverage.",
    "domain": "D09",
    "states": [],
    "rule": "14.82",
@@ -855,7 +855,7 @@
    "source": "s90.json"
   },
   {
-   "example": "District judges serve for life except in Guam, the Northern Mariana Islands and the Virgin Islands; courts pick bankruptcy judges for 14 years and full-time magistrate judges for eight.",
+   "example": "Of the three kinds of judge who hear cases at trial in the federal district courts, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.",
    "domain": "D05",
    "states": [],
    "rule": "14.137",
@@ -876,7 +876,7 @@
    "source": "s93.json"
   },
   {
-   "example": "Of 16 budget and tax deadlines federal law sets on 13 days of 2027, seven carry a consequence, the six tax deadlines and the start of the fiscal year.",
+   "example": "Seven of the 16 budget and individual income tax deadlines federal law sets for 2027 carry a consequence in law.",
    "domain": "D08",
    "states": [],
    "rule": "14.140",

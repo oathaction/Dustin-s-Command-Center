@@ -14,7 +14,7 @@
   {
    "specimen": "s-14-selection-guide",
    "label": "Choose a chart",
-   "caption": "Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry.",
+   "caption": "Every form in this chapter sits under the question it answers, core forms first and forms to avoid last, and each name leads to its entry. The guide ends with links to the chapter’s three charts in full.",
    "contents": true,
    "placement": "head",
    "frame": "none"
@@ -28,7 +28,7 @@
   }
  ],
  "intro": [
-  "This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. A core or extended form shows a finished example that our chart kit draws from frozen data, with its table as live text, and a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms and rules together on one subject.",
+  "This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. A core or extended form shows a finished example that our chart kit draws from a fixed copy of its source’s data, with its table as live text, and a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms and rules together on one subject.",
   "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."
  ],
  "groups": [
@@ -149,14 +149,14 @@
    "before_rule": "14.135",
    "title": "Infographics: how does it work, in one look?",
    "rules": "14.135 to 14.141",
-   "line": "Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s finding into a feed."
+   "line": "Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A by-the-numbers panel or a set of comparison cards puts facts or options side by side. An annotated illustration says what each part of a document tells a reader, and a calendar marks the dates that matter in a year. A social card carries one chart’s finding into a feed."
   },
   {
    "number": 18,
    "before_rule": "14.142",
    "title": "Three charts in full",
    "rules": "14.142 to 14.144",
-   "line": "Each chart here puts several of the chapter’s forms and rules together on one subject, with its table and its files. They show the monthly change in payroll jobs with the survey’s margin of error, two loops from our systems atlas that share a variable, and three reforms that act on one housing loop."
+   "line": "Each chart here puts several of the chapter’s forms and rules together on one subject, with its table and its files. They show the monthly change in payroll jobs with the survey’s margin of error, two loops from our systems atlas that share a variable, and three reforms whose records name one housing loop."
   }
  ],
  "rules": [
@@ -164,13 +164,14 @@
    "id": "14.1",
    "title": "Start from the reader’s question, then choose the form.",
    "rule": [
-    "Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. The guide at the head of this chapter lists every form under one of those questions, and each entry says when its form fits the data at hand.",
+    "Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. The guide at the head of this chapter, <a href=\"#fig-s-14-selection-guide\">Choose a chart</a>, lists every form under one of those questions, and each entry says when its form fits the data at hand.",
     "When one figure answers the question, a sentence carries it (Rule 14.134). When a reader needs to look values up, a table does (Rule 14.133)."
    ],
    "why": {
     "text": [
      "Each form answers one kind of question well. Bars sorted by size show which year was largest and hide the order of the years, so a reader who asked how something changed cannot see the change."
-    ]
+    ],
+    "basis": "Design judgment, from the coverage plan our founder and editor approved in November 2026"
    },
    "tokens": [],
    "related": [],
@@ -182,7 +183,7 @@
     },
     {
      "label": "Question to form",
-     "value": "The question in the guide at the head of this chapter, then the entry whose use names the data at hand"
+     "value": "The question in Choose a chart, the guide at the head of this chapter, then the entry whose use names the data at hand"
     },
     {
      "label": "One figure",
@@ -218,7 +219,8 @@
    "why": {
     "text": [
      "Readers learn where things are after a few charts. When every chart puts its source in the same place, a reader can check any figure in seconds, and a chart that lacks a part shows the gap."
-    ]
+    ],
+    "basis": "Rules 13.1, 13.2, 13.6 and 13.7, and chapter 02, house rule H08; the order of the parts is design judgment"
    },
    "tokens": [
     "oa.chart.color.chip.fill.onNewsprint"
@@ -268,7 +270,8 @@
    "why": {
     "text": [
      "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name beside each line is read in place."
-    ]
+    ],
+    "basis": "Rule 12.6, and WCAG 2.2, success criterion 1.4.1, Use of Color"
    },
    "tokens": [
     "oa.chart.color.label.onNewsprint"
@@ -281,7 +284,7 @@
    "specs": [
     {
      "label": "A line",
-     "value": "Its name beside it, toward its last point, in the label ink",
+     "value": "Its name beside it, toward its last point, in the text’s ink",
      "token": "oa.chart.color.label.onNewsprint"
     },
     {
@@ -324,7 +327,8 @@
    "why": {
     "text": [
      "Readers judge a bar by its length before they read its number. Cut the axis at 55 percent and 1992’s 67.7 percent stands 3.7 times as tall as 1996’s 58.4, for a gap of 9.3 points."
-    ]
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026, whose bars always start at zero"
    },
    "tokens": [
     "oa.chart.line.baseline"
@@ -373,12 +377,13 @@
    "title": "Give each color in a chart one job from the four data palettes.",
    "rule": [
     "Each palette does one job, and a chart uses one palette for each thing its colors encode. Sequential Verdigris runs one measure from low to high. Diverging pair B runs above and below a midpoint, as Rule 01.3 sets. The four group inks name up to four groups, always in the order Charcoal, Verdigris, Prussian, then Stone, which carries its hatch. The Stone magnitude steps show size with no direction.",
-    "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Rule 05.7 sets the subject, the context and the one red point inside any of them."
+    "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Inside any of them, Rule 05.7 sets three roles: the subject, the series the title names, in the text’s ink; the context, every other series, in gray; and the one red point."
    ],
    "why": {
     "text": [
      "A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our work, a reader who has learned that a stronger green means more can trust it on every page."
-    ]
+    ],
+    "basis": "Design judgment, with the data palettes and the group order our founder and editor approved in November 2026"
    },
    "tokens": [
     "oa.chart.color.sequential.fill.step1.onNewsprint",
@@ -431,16 +436,17 @@
    "id": "14.6",
    "title": "Spend the view’s one red on the point the title names.",
    "rule": [
-    "Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule 05.5’s keyline and with its own label, and every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
+    "Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule 05.5’s keyline, a 1 px edge around the red, and with its own label. Every other series takes the context ink, the gray Rule 05.7 gives each series the title does not name. Where the title names one bar, every other bar takes the light fill on Newsprint, a paler gray, so the named bar still stands apart in gray print, and keeps the context ink on Charcoal.",
     "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s plate, keeps the light fill with its label.",
-    "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the reader’s question follows takes Charcoal at the subject weight, as on Rule 14.96’s diagram. A map gives the red only to a place its title names as a point, such as the town on Rule 14.118’s locator.",
+    "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the reader’s question follows takes Charcoal at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s diagram. A map gives the red only to a place its title names as a point, such as the town on Rule 14.118’s locator.",
     "The named mark gives up the red and takes Charcoal at the subject weight when an error or a step the reader can take holds the red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
     "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, whose size follows its data, takes Charcoal at any size, and so does a named mark that would pass that share, such as a tall column in a short run."
    ],
    "why": {
     "text": [
      "One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red that codes a group reads as a warning about that group."
-    ]
+    ],
+    "basis": "Rules 05.1, 05.3, 05.5 and 05.7; the mark the title names is design judgment"
    },
    "tokens": [
     "oa.chart.color.point.onNewsprint",
@@ -459,7 +465,7 @@
     },
     {
      "label": "Its label",
-     "value": "Beside the mark, in the text ink"
+     "value": "Beside the mark, in the text’s ink"
     },
     {
      "label": "Marks named together",
@@ -542,7 +548,8 @@
    "why": {
     "text": [
      "Red and blue turn a chart of results into team colors, and a reader decides which side the chart is on before reading a number. A name on each mark gives readers on both sides the same facts, in color or in grayscale."
-    ]
+    ],
+    "basis": "Rules 01.1 and 01.2, and chapter 02, house rule H10"
    },
    "tokens": [
     "oa.chart.color.party.mark.onNewsprint"
@@ -599,7 +606,8 @@
    "why": {
     "text": [
      "Past four, the inks start to look alike and the key grows longer than a reader will hold. Small panels on one scale let a reader take each group’s shape and level one at a time, and still compare them."
-    ]
+    ],
+    "basis": "Design judgment, approved by our founder and editor in November 2026"
    },
    "tokens": [
     "oa.chart.color.context.onNewsprint"
@@ -647,7 +655,8 @@
    "why": {
     "text": [
      "A survey measures a sample, so each figure could sit anywhere in its interval. Two states three points apart, each with a margin near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader something the survey cannot know."
-    ]
+    ],
+    "basis": "Rule 13.5, and design judgment, approved by our founder and editor in November 2026"
    },
    "tokens": [
     "oa.chart.color.context.onNewsprint"
@@ -712,7 +721,8 @@
    "why": {
     "text": [
      "A window that starts where a line looks best can make a long fall look like a rise, and a reader cannot see what was left out. Bands at each inauguration ask the reader to credit or blame each officeholder for whatever the line does inside them, which the chart cannot show."
-    ]
+    ],
+    "basis": "Chapter 02, house rule H09, and Rule 13.7"
    },
    "tokens": [
     "oa.chart.color.leader.onNewsprint"
@@ -762,7 +772,8 @@
    "why": {
     "text": [
      "A line drawn through a missing month invents a value, and a line run across a change of method shows the change as a jump in what was measured. Marking each one where it falls lets a reader see what the data can and cannot say."
-    ]
+    ],
+    "basis": "Rule 13.7, and design judgment"
    },
    "tokens": [
     "oa.chart.color.leader.onNewsprint"
@@ -810,7 +821,8 @@
    "why": {
     "text": [
      "Many readers meet our charts on a phone first. A drawing redrawn for no reason gives them a second picture to learn, and one that drops rows or changes its title gives phone readers a different finding from everyone else."
-    ]
+    ],
+    "basis": "Rule 06.3, and design judgment, approved by our founder and editor in November 2026"
    },
    "tokens": [
     "oa.chart.artboard.phone"
@@ -912,7 +924,8 @@
    "why": {
     "text": [
      "A file made by hand drifts from the page the first time someone fixes one and forgets the other. One command from one spec keeps the drawing, the still image and the numbers in step, and the kit checks the CSV against the table each time it runs."
-    ]
+    ],
+    "basis": "Design judgment, with the chart kit our founder and editor approved in November 2026; Rule 18.14"
    },
    "tokens": [],
    "related": [
@@ -5954,7 +5967,7 @@
    "id": "14.141",
    "title": "Use a social data card to carry one chart’s finding into a feed in two crops.",
    "rule": [
-    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart."
+    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, a short source line that says where every value is, and the lockmark’s sign-off at 96 px at the bottom right, inside the margin (Rule 08.2). Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart."
    ],
    "why": {
     "text": [
@@ -5963,7 +5976,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form social-data-card around the form encode.of names: node work/build/chart-kit/oa-chart.mjs build s95; card.crops sets the crops, card.post the words to post, labels.card_source the card’s source line and labels.card_inner what the inner form reads (dot-plot: label named, ranks across).",
+   "builders": "Form social-data-card around the form encode.of names: node work/build/chart-kit/oa-chart.mjs build s95; card.crops sets the crops, card.post the words to post, labels.card_source the card’s source line and labels.card_inner what the inner form reads (dot-plot: label named, ranks across); the form signs off each crop with the 48 px lockmark master drawn at 96 px.",
    "related_rules": [
     "14.18",
     "14.85"
@@ -5989,8 +6002,8 @@
    "id": "14.142",
    "title": "Mark the survey’s margin on a monthly chart, and name the changes that pass it.",
    "rule": [
-    "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, its confidence, such as the Bureau’s 90 percent, and its source in a note (Rule 14.9). Name only the changes that pass it, each with its month and value in the subject ink (Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
-    "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band measures one month’s change alone. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14)."
+    "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, its confidence and its source in a note (Rule 14.9). The Bureau of Labor Statistics gives a 90 percent margin, so a month with no real change lands inside the band nine times in ten. The band holds for each month alone, and over many months a few can pass it by chance, so the note says that too. Name only the changes past it that the reader’s question asks about, here the drops, each with its month and value in the text’s ink (Rule 14.6), and print the full count beside them, so a reader still learns how many months fell. Where each period carries a margin of its own, draw each one’s interval on its own mark instead (Rules 14.74 and 14.75).",
+    "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band does not cover the three-month average. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14)."
    ],
    "why": {
     "text": [
@@ -6016,7 +6029,7 @@
     },
     {
      "label": "Named drops",
-     "value": "The two past the margin, in the subject ink, each with its month and value",
+     "value": "The two past the margin, in the text’s ink, each with its month and value",
      "token": "oa.chart.color.subject"
     },
     {
@@ -6043,7 +6056,7 @@
    },
    "failure": {
     "specimen": "s-14-142-failure",
-    "caption": "<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the title counts seven losses as findings. Five of the seven sit inside the survey’s margin of error."
+    "caption": "<strong>Fails Rule 14.142.</strong> The chart leaves out the survey’s margin of error, so all seven drops look alike, and the title states seven months of lost jobs with no word on the margin. Five of the seven sit inside the margin, where the survey cannot tell them from no change."
    }
   },
   {
@@ -6051,7 +6064,7 @@
    "title": "Step through two loops that share a variable, one connection at a time.",
    "rule": [
     "When two loops from our systems atlas pass through one variable, step the reader through both on one loop stepper (Rule 18.22), one loop after the other, each in the atlas’s own order. Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, share Variable C3, risk of losing office. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step belongs to.",
-    "At each loop’s last step, say that the loop is back where it began and name its kind. Say too where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21)."
+    "Start each loop from a rise or a fall, and say each step in the direction the walk runs, cause first, as in “The quality of public services falls, so the risk of losing office rises.” After a step the atlas grades plausible, say “can” to the end of the loop. At the last step, say that the loop is back where it began, whether it pushes back or feeds itself, and name its kind. Say too where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21)."
    ],
    "why": {
     "text": [
@@ -6118,8 +6131,8 @@
    "id": "14.144",
    "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
    "rule": [
-    "Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target outside the loop in words, with its layer, and draw no path the atlas does not hold.",
-    "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or “+M renter-owner”. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
+    "Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the kind of change it makes, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on memory. Where the cards stack one under another, set each family’s effects for all the reforms together before them. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target outside the loop in words, with its layer, and draw no path the atlas does not hold.",
+    "Draw each effect with Rule 13.5’s pips in the text’s ink, then print it as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or “+M renter-owner”. A zero says “no expected effect”. Give no total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
    ],
    "why": {
     "text": [
@@ -6154,18 +6167,20 @@
     },
     {
      "label": "Effects",
-     "value": "The atlas’s code and qualifier whole, then its words; zero in words; never added"
+     "value": "Rule 13.5’s pips, then the atlas’s code and qualifier whole and its words; zero in words; never added"
     },
     {
      "label": "Routes",
-     "value": "Name, who acts, feasibility, and the check date or “Not checked”"
+     "value": "Under “Routes, with the date each was checked”: the route, who acts, its feasibility in bold, and the check date or “Not checked”, as Rule 15.20 prints them"
     },
     {
      "label": "Never",
-     "value": "A total, a count of plus codes, a rank, or a fill, bar or shade by code"
+     "value": "A total, a count of codes or pips, a rank, or a fill, shade, length or color by code"
     }
    ],
    "related_rules": [
+    "13.3",
+    "13.5",
     "13.10",
     "15.11",
     "15.16",
