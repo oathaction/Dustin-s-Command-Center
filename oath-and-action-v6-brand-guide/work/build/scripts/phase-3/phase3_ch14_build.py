@@ -201,7 +201,7 @@ def selection_guide_faults(plan, chap):
             if tag == "a":
                 grp = next((x[1].get("data-group") for x in reversed(self.stack) if x[1].get("data-group")), None)
                 self.cur = {"href": a.get("href"), "tier": a.get("data-tier"), "rule": a.get("data-rule"), "group": grp, "text": "",
-                            "xref": "data-oa-xref" in a}
+                            "xref": "data-oa-xref" in a, "road": "sg-go" in (a.get("class") or "").split()}
                 self.links.append(self.cur)
             g = a.get("data-group")
             if g:
@@ -252,12 +252,24 @@ def selection_guide_faults(plan, chap):
         g = str(group_of.get(f["family_section"]))
         if l["group"] != g:
             faults.append(f"Selection guide: Rule {rid} sits under group {l['group']!r}; its family's question is group {g}")
-    # the accessibility lead's skip links (section 1.5): to the next question's line, s-14-sg-q-N, or past the guide to group 1
+    # the accessibility lead's skip links (section 1.5): to the next question's line, s-14-sg-q-N, or past the guide to group 1,
+    # and the last question's to the closing block's line, s-14-sg-full-t, where its forms end (AX-S4, D3-2086)
     qs = sorted(int(g) for g in ps.groups if str(g).isdigit())
-    skips = {f"#s-14-sg-q-{n}" for n in qs} | {"#group-14-1"}
+    skips = {f"#s-14-sg-q-{n}" for n in qs} | {"#group-14-1", "#s-14-sg-full-t"}
+    # the road to the three charts in full and to chapter 15's routes (call 17): links marked sg-go, to these rules only
+    road = {"#rule-14-142", "#rule-14-143", "#rule-14-144", "#rule-15-22"}
+    for l in ps.links:
+        if l["road"] and l["href"] not in road:
+            faults.append(f"Selection guide: a road link to {l['href']!r}, which is none of Rules 14.142 to 14.144 or 15.22")
+        if l["road"] and not l["xref"]:
+            faults.append(f"Selection guide: the road link to {l['href']} carries no data-oa-xref, so the way back cannot find it")
     for href in by_href:
+        if href in road and all(l["road"] for l in by_href[href]):
+            continue
         if href not in want and href not in skips:
             faults.append(f"Selection guide: a link to {href!r}, which is none of the plan's forms and no skip link's target")
+    if "#s-14-sg-full-t" in by_href and "s-14-sg-full-t" not in ps.ids:
+        faults.append("Selection guide: the last question's skip link names s-14-sg-full-t, which the guide does not hold")
     for l in ps.links:
         if l["href"] in want and not l.get("xref"):
             faults.append(f"Selection guide: the link to {l['href']} carries no data-oa-xref, so the way back cannot find it")

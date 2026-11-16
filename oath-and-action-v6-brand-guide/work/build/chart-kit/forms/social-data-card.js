@@ -63,8 +63,11 @@
       c.text(pad, fy + 24 + min * 0.93, src, { role: 'tick', size: min, fill: 'secondary', max: sw, leading: lh });
       // the sign-off (DR-211): the 48 px master at exactly 96 px, its box on whole pixels, bottom right inside the margin
       var sx = Math.round(W - pad - SIGN), sy = Math.round(H - pad - SIGN);
-      c._push('<g class="oac-sign-off" data-red="signature" data-oa-sign-off="lockmark-48-at-96" aria-hidden="true" transform="translate(' + sx + ',' + sy + ') scale(' + SIGN / 48 + ')"' +
-        ' style="color:var(--oa-color-text-primary);--lever:var(--oa-color-identity-signature);--link:light-dark(var(--oa-color-palette-stone),var(--oa-color-palette-newsprint))">' + LOCK48 + '</g>');
+      // the master's three paints, its letters' ink (currentColor), lever and links, set straight on its shapes as tokens, so the
+      // standalone export resolves each to its color and carries no var() (no style attribute)
+      var paint = LOCK48.split('var(--link,#5D636D)').join('light-dark(var(--oa-color-palette-stone), var(--oa-color-palette-newsprint))')
+        .split('currentColor').join('var(--oa-color-text-primary)').split('var(--lever,#E63946)').join('var(--oa-color-identity-signature)');
+      c._push('<g class="oac-sign-off" data-red="signature" data-oa-sign-off="lockmark-48-at-96" aria-hidden="true" transform="translate(' + sx + ',' + sy + ') scale(' + SIGN / 48 + ')">' + paint + '</g>');
       c._ink('icon', sx, sy, SIGN, SIGN, { fill: 'label' }, { a: SIGN * SIGN });
       c.height(H);
     }

@@ -2043,7 +2043,15 @@ async function selectionGuide(page, forms) {
     const byId = (h) => (h && h.startsWith('#') ? document.getElementById(decodeURIComponent(h.slice(1))) : null);
     const problems = [];
     const links = [...st.querySelectorAll('a[href]')];
-    const formLinks = links.filter((a) => /^#rule-14-\d+$/.test(a.getAttribute('href')));
+    // call 17: the road to the three charts in full and to chapter 15's routes, links marked sg-go, each on its rule's block
+    const road = links.filter((a) => a.classList.contains('sg-go'));
+    const roadTo = ['#rule-14-142', '#rule-14-143', '#rule-14-144', '#rule-15-22'];
+    road.forEach((a) => {
+      const h = a.getAttribute('href'), t = byId(h);
+      if (!roadTo.includes(h)) problems.push(`a road link to ${h}, which is none of Rules 14.142 to 14.144 or 15.22`);
+      else if (!t || !t.matches('.rule')) problems.push(`the road link to ${h} lands on no rule block`);
+    });
+    const formLinks = links.filter((a) => !road.includes(a) && /^#rule-14-\d+$/.test(a.getAttribute('href')));
     // every plan form once, on its own rule, named by its words (the link's text: no aria-label, 2.5.3)
     for (const f of forms) {
       const href = '#rule-14-' + f.rule.split('.')[1];
@@ -2073,17 +2081,20 @@ async function selectionGuide(page, forms) {
       else if (q.querySelector('a') || q.closest('a')) problems.push(`question ${g.getAttribute('data-group')}'s line is a link`);
       return q;
     });
-    const skips = links.filter((a) => !/^#rule-14-\d+$/.test(a.getAttribute('href')));
+    const skips = links.filter((a) => !road.includes(a) && !/^#rule-14-\d+$/.test(a.getAttribute('href')));
     const g1 = document.getElementById('group-14-1');
+    // AX-S4: the last question's skip link lands on the closing block's line, where its forms end
+    const end = st.querySelector('.sg-full > [id]');
     for (const a of skips) {
       const t = byId(a.getAttribute('href')), gi = groups.findIndex((g) => g.contains(a));
-      const want = gi < 0 ? [g1] : [gi + 1 < lines.length ? lines[gi + 1] : g1];
+      const last = gi === lines.length - 1;
+      const want = gi < 0 ? [g1] : [last ? end : lines[gi + 1]];
       if (!t) problems.push(`the skip link "${norm(a.textContent).slice(0, 30)}" goes to ${a.getAttribute('href')}, which the page does not hold`);
-      else if (!want.includes(t)) problems.push(`the skip link "${norm(a.textContent).slice(0, 30)}" lands on ${a.getAttribute('href')}, not on ${gi < 0 ? 'group 1' : 'the next question\'s line'}`);
+      else if (!want.includes(t)) problems.push(`the skip link "${norm(a.textContent).slice(0, 30)}" lands on ${a.getAttribute('href')}, not on ${gi < 0 ? 'group 1' : last ? 'the closing block\'s line' : 'the next question\'s line'}`);
     }
     const focusable = [...st.querySelectorAll('a[href], button, input, select, textarea, [tabindex]')].filter((x) => x.getAttribute('tabindex') !== '-1');
     if (!focusable.length || !skips.includes(focusable[0]) || byId(focusable[0].getAttribute('href')) !== g1) problems.push('the guide\'s first stop is not its skip link to group 1');
-    return { links: formLinks.length, skips: skips.length, questions: groups.length, symbols: st.querySelectorAll('symbol').length, pictures: st.querySelectorAll('use').length, problems };
+    return { links: formLinks.length, road: road.length, skips: skips.length, questions: groups.length, symbols: st.querySelectorAll('symbol').length, pictures: st.querySelectorAll('use').length, problems };
   }, forms);
   return r;
 }
@@ -2894,6 +2905,8 @@ const PLANTS = [
   { key: 'selectionGuide', fault: 'a question\'s list of forms not named by its question line', js: sgPlant('listUnnamed') },
   { key: 'selectionGuide', fault: 'a skip link that lands two questions on', js: sgPlant('skipWrong') },
   { key: 'selectionGuide', fault: 'a guide whose first stop is not its skip link to group 1', js: sgPlant('firstStop') },
+  { key: 'selectionGuide', fault: 'the last question\'s skip link past the closing block, to group 1 (AX-S4)', js: sgPlant('lastSkip') },
+  { key: 'selectionGuide', fault: 'a road link to a rule that is none of 14.142 to 14.144 or 15.22 (call 17)', js: sgPlant('roadElsewhere') },
   { key: 'selectionGuide', fault: 'a question line that is a link', js: sgPlant('lineLink'),
     verify: (r) => r.runs[0].selectionGuide && r.runs[0].selectionGuide.problems.some((x) => /line is a link/.test(x)) },
   // R5-3: the palette plate, a small one built here from tokens.json
@@ -2914,7 +2927,7 @@ function sgPlant(variant) {
   let syms = '', body = '';
   groups.forEach((g, i) => {
     const fs_ = forms.filter((f) => f.group === g);
-    const next = i + 1 < groups.length ? `#sgq-${groups[i + 1]}` : '#group-14-1';
+    const next = i + 1 < groups.length ? `#sgq-${groups[i + 1]}` : variant === 'lastSkip' ? '#group-14-1' : '#sgfull';
     const skipTo = variant === 'skipWrong' && i === 0 ? `#sgq-${groups[2]}` : next;
     const line = variant === 'lineLink' && i === 3 ? `<a href="#group-14-1">Question ${g}</a>` : `Question ${g}`;
     const items = fs_.filter((f) => !(variant === 'missing' && f.rule === '14.15')).map((f) => {
@@ -2930,9 +2943,13 @@ function sgPlant(variant) {
     body += `<li data-group="${g}"><p id="sgq-${g}">${line}</p><a href="${skipTo}">Skip these ${fs_.length} forms</a><ul role="list"${named}>${items}</ul></li>`;
   });
   const first = variant === 'firstStop' ? '' : '<a href="#group-14-1">Skip the chart guide</a>';
+  const roadTo = ['14.142', '14.143', variant === 'roadElsewhere' ? '14.90' : '14.144', '15.22'];
+  const full = `<div class="sg-full"><p id="sgfull">Three charts in full</p><ul role="list" aria-labelledby="sgfull">`
+    + roadTo.map((r) => `<li><a class="sg-go" href="#rule-${r.replace('.', '-')}" data-oa-xref>Rule ${r}</a></li>`).join('') + '</ul></div>';
   const html = `<div data-specimen="s-14-selection-guide"><svg width="0" height="0" aria-hidden="true" focusable="false"><defs>${syms}</defs></svg>`
-    + `<div class="sg">${first}<ol role="list">${body}</ol></div></div><div id="group-14-1"></div>`
-    + forms.map((f) => `<div class="rule" id="rule-14-${n(f)}"></div>`).join('');
+    + `<div class="sg">${first}<ol role="list">${body}</ol>${full}</div></div><div id="group-14-1"></div>`
+    + forms.map((f) => `<div class="rule" id="rule-14-${n(f)}"></div>`).join('')
+    + ['14.142', '14.143', '14.144', '15.22'].map((r) => `<div class="rule" id="rule-${r.replace('.', '-')}"></div>`).join('');
   return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
 }
 
@@ -3016,7 +3033,7 @@ async function selfTest() {
   const tt = report.runs[0].tokenTable;
   if (tt) console.log(`  tokenTable: ${tt.rows} rows, ${tt.swatches} swatches, version ${tt.version}; tokens.json ${tt.file ? tt.file.count + ', ' + tt.file.version : 'unread'}`);
   const sg = report.runs[0].selectionGuide, ps = report.runs[0].paletteSpec;
-  if (sg) console.log(`  selectionGuide: ${sg.links} form links, ${sg.skips} skip links, ${sg.questions} questions, ${sg.symbols} symbols for ${sg.pictures} pictures`);
+  if (sg) console.log(`  selectionGuide: ${sg.links} form links, ${sg.road || 0} road links, ${sg.skips} skip links, ${sg.questions} questions, ${sg.symbols} symbols for ${sg.pictures} pictures`);
   if (ps) console.log(`  paletteSpec: ${ps.swatches} swatches read against their printed values, tokens ${ps.version}`);
   for (const f of report.failures) console.log('  - ' + f.msg);
   console.log('  results: ' + path.relative(ROOT, outPath));

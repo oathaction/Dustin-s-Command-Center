@@ -441,8 +441,20 @@ def derive_fred():
         printed_source_line=FRED_LINE.format(what='all employees by industry'), specimens=['S13'],
         derivation='Rows from January 2022 on; pct_change_since_2022_01 and change_since_2022_01_thousands compare each month with the same series in January 2022 (D2-126: both jobs charts draw January 2022 to September 2026, one window).',
     ))
+    # The fix pass after rounds 4 and 5 (the research lead's request, ST-S8, ruling R4b): the sidecar names the release it
+    # holds, checked against ALFRED, and carries three source lines that name it for S96; printed_source_line and
+    # with_margin stay as S14 and chapter 13 print them. The research lead's words, carried here so a rerun keeps them
+    pay_rel = 'from the Employment Situation for September 2026, released October 2, 2026, '
+    pay_end = ('Retrieved November 6, 2026. August and September 2026 are preliminary, and later releases revise them.')
+    pay_moe = (' The margin of error{who} is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus '
+               '122,000, from its Employment Situation technical note, October 2026 release.')
+    pay_line = lambda what: (f'Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, {what}, seasonally adjusted, {pay_rel}'
+                             f'January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. {pay_end}')
     write_meta('fred-payrolls-monthly-change', dict(
-        file='fred-payrolls-monthly-change.csv', kind='derived', ledger_row=LEDGER['fred-payrolls-monthly-change'], **common,
+        file='fred-payrolls-monthly-change.csv', kind='derived', ledger_row=LEDGER['fred-payrolls-monthly-change'],
+        **dict(common, vintage=('the Bureau of Labor Statistics’ Employment Situation for September 2026, released October 2, 2026, as FRED '
+                                'posted it on November 6, 2026 before that day’s October release; the latest two months are preliminary and '
+                                'BLS revises them')),
         observation_period='Monthly, January 2022 to September 2026', unit='Thousands of jobs',
         columns={'month': col('month', 'month of the change'),
                  'change_thousands': col('number', 'total nonfarm payrolls minus the month before', 'thousands of jobs'),
@@ -453,8 +465,18 @@ def derive_fred():
         # apply"); the figure is the research ledger's P7-042, the Bureau's Employment Situation technical note
         source_line_variants={'with_margin': FRED_LINE.format(what='all nonfarm employees, monthly change') + (
             ' The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus '
-            '122,000, from its Employment Situation technical note, October 2026 release.')},
+            '122,000, from its Employment Situation technical note, October 2026 release.'),
+            'september_release': pay_line('all nonfarm employees, monthly change'),
+            'september_release_margin': pay_line('all nonfarm employees, monthly change') + pay_moe.format(who=''),
+            'september_release_sectors_margin': pay_line('all nonfarm, private and government employees, monthly change')
+            + pay_moe.format(who=' for all nonfarm employees')},
         derivation='From series PAYEMS: each month’s level minus the month before; avg3_thousands is the three-month moving average ending in that month, computed from December 2021 on so January 2022 has one. Rows from January 2022 on.',
+        notes=['Vintage, checked November 16, 2026: all 69 months of PAYEMS in fred-payrolls-by-sector.csv (January 2021 to September '
+               '2026), and of USPRIV, USGOVT and CES9091000001, equal ALFRED’s vintage of October 2, 2026 '
+               '(https://alfred.stlouisfed.org/graph/alfredgraph.csv?id=PAYEMS&vintage_date=2026-10-02); the vintage of November 6, '
+               '2026 differs in August 2026 (159,068 against 159,015) and September 2026 (159,128 against 159,044) and adds October '
+               '2026. ALFRED’s release dates for the Employment Situation list October 2 and November 6, 2026. The september_release '
+               'variants name that release for S96 (ST-S8); printed_source_line and with_margin stay as S14 and chapter 13 print them.'],
     ))
 
 
