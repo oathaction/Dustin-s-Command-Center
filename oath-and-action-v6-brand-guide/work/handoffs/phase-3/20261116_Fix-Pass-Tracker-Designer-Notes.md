@@ -12,6 +12,8 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 17:18 UTC. **CE-S17 applied, in the editor's final words** (on the research lead's F9: Ohio and Massachusetts send a measure the Legislature passes to the governor; Michigan makes it law with no governor). The research lead's F2 and F8 confirm ST-S3's figure and NB-S7's reason, and the editor marked both final, so no string changed for them. Every "New" string in the editor's section prints whole in my outputs (script `check_words.py`; "step 6" holds a no-break space by `nb()`, as every step number does). Rerun exit 0, second run changed no file, strict build `guide3.html` exit 0, 0 warnings, 369 rules. `git diff --stat` on my paths: `11-icons.json` and `apply_systems_ch11.py` only (the main session's snapshots took my earlier moves). Every code routed to me in the brief's table is now applied; my files wait for the editor's second read.
 
+17:23 UTC. **Done (D3-669): the editor may now write into `apply_systems_ch11.py` for its second read.** The editor's rows marked final at 17:17 (CE-S17, NB-S7, ST-S3) are the strings I applied at 17:11 and 17:18; a recheck at 17:23 (`check_words.py`) finds every one whole in my outputs, so nothing changed after 17:18. Captures not taken: `browsers.sh` said WAIT at 17:19 and 17:23 (2 browsers, load 4.2). The capture script for the two plates whose words grew is ready in scratch (`cap2.cjs`: `s-11-10-correct` and `s-11-ballot-steps` at 1440 and 360 px on both grounds, measuring type under 13 px, text outside the stage and sideways scroll) for whoever runs once the load allows.
+
 ## Fixed
 
 | Code | What changed | File | Proof |
@@ -62,7 +64,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Not tested
 
-- No browser opened: `browsers.sh` printed WAIT (2 browsers, load 4.46) when I asked at 17:19. The two plates whose words grew, `s-11-10-correct` (one card line) and `s-11-ballot-steps` (step 2's words), wrap in flowing HTML and add no unbroken run, but I did not capture them at any width or on either ground.
+- No browser opened: `browsers.sh` printed WAIT at 17:19 (2 browsers, load 4.46) and at 17:23 (2, 4.20). The two plates whose words grew, `s-11-10-correct` (one card line) and `s-11-ballot-steps` (step 2's words), wrap in flowing HTML and add no unbroken run, but I did not capture them at any width or on either ground.
 - The guide check, by the brief's rule.
 - The law: I took every fact from the research lead's F2, F8 and F9 and the sources file, and read no statute myself.
 - A screen reader, forced colors, 200 percent text.
