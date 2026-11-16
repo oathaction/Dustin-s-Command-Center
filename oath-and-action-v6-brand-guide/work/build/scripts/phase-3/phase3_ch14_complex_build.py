@@ -540,6 +540,17 @@ RIDS = ["R-06", "R-30", "R-38"]
 LAYER = {"core": "the core layer", "economy": "the economy layer", "technology": "the technology layer"}
 
 
+def keyline(rect):
+    """Call 15 (DD-R5, AX-S5; the component engineer's request 1, item 2): the 1 px ink keyline 2 px inside a pill that is
+    red or can turn red, as chapter 15's Pill.svg draws it for Rule 15.20's three_loop. Loop R8 is drawn by two_loop, which
+    takes no keyline, so the plate adds the same rect from the pill's own box (C-SD1: copy what you need)."""
+    g = {k: float(v) for k, v in re.findall(r'\b(x|y|width|height)="([\d.]+)"', rect)}
+    need(set(g) == {"x", "y", "width", "height"}, f"a pill's box is not where the keyline reads it: {rect[:80]}")
+    F = C15.F
+    return (f'<rect class="pk" x="{F(g["x"] + 2)}" y="{F(g["y"] + 2)}" width="{F(g["width"] - 4)}" '
+            f'height="{F(g["height"] - 4)}" rx="{F(g["height"] / 2 - 2)}"/>')
+
+
 def r8_drawing(rids, chosen_first=True, failure=False):
     """Loop R8 alone (ruling d), drawn by chapter 15's two_loop with every on-loop target of the offered reforms marked
     ready under data-red; the first reform's targets red in the markup, each target's group naming the reforms it
@@ -569,7 +580,7 @@ def r8_drawing(rids, chosen_first=True, failure=False):
         if c in owner:
             red = c in first
             rect = re.sub(r'class="pl([^"]*)"', lambda q: 'class="pl' + (" rp" if red else "") + q.group(1).replace(" rp", "") + '"', rect)
-            seg = f'<g data-oa-for="{" ".join(owner[c])}">{rect}{txt}</g>'
+            seg = f'<g data-oa-for="{" ".join(owner[c])}">{rect}{keyline(rect)}{txt}</g>'
         else:
             seg = rect + txt
         out.append(body[last:pm.start()] + seg)
@@ -709,15 +720,20 @@ def chooser_css(rids):
         has = f'.p:has([value="{rid}"]:checked)'
         no, yes = f'{has} [data-oa-for]:not([data-oa-for~="{rid}"])', f'{has} [data-oa-for~="{rid}"]'
         out.append(f'{no} .hi,{yes} .lo{{display:none}}{no} .lo,{yes} .hi{{display:inline}}'
-                   f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}{no} .hd{{fill:{INK}}}'
+                   f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}'
+                   f'{no} .hd{{fill:{INK};stroke:none}}{no} .pk{{display:none}}'
                    f'{no} .ak-case{{stroke:none}}'
                    f'{yes} .ak-mark{{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}}'
-                   f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}{yes} .hd{{fill:var(--oa-color-data-emphasis-red)}}'
-                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}'
+                   f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}'
+                   f'{yes} .hd{{fill:var(--oa-color-data-emphasis-red);stroke:{INK};stroke-width:2px;paint-order:stroke}}'
+                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}{yes} .pk{{display:inline}}'
                    f'{has} [data-oa-panel="{rid}"]{{border-top-color:var(--oa-color-state-selected-bar)}}'
                    f'{has} [data-oa-panel="{rid}"] .ch{{font-weight:var(--oa-font-weight-bold)}}')
+    # call 15 (CR-S1): a red head in the markup (the first reform's on the live drawing, every one in the print copies)
+    # takes the same 1 px ink edge: the fill covers the inner half of a 2 px stroke painted under it
+    edge = f".sv .rt .hd{{stroke:{INK};stroke-width:2px;paint-order:stroke}}"
     prints = ",".join(f'.p:has([value="{rid}"]:checked) [data-oa-print="{rid}"]' for rid in rids)
-    return f"@supports selector(:has(*)){{{''.join(out)}@media print{{{prints}{{display:block}}}}}}"
+    return edge + f"@supports selector(:has(*)){{{''.join(out)}@media print{{{prints}{{display:block}}}}}}"
 
 
 CARD_CSS = (
@@ -779,7 +795,8 @@ def rule_14_144():
         f'{" checked" if k == 0 else ""}><span class="oa-choice-face">{check_}<span class="oa-choice-label">'
         f'{chip("Reform", rid)} “{ce(REFORM[rid]["title"])}”</span></span></label>' for k, rid in enumerate(RIDS))
     group = (f'<fieldset class="oa-choice"><legend class="oa-choice-legend">Show one reform on Loop R8</legend>'
-             f'<div class="oa-choice-row ch1">{items}</div></fieldset><p class="vh" role="status" data-oa-chooser-status></p>')
+             # call 15 (DD-R2, CD-S5): the shared list form of Rule 18.3's choice, every choice the group's width
+             f'<div class="oa-choice-row oa-choice-row--list">{items}</div></fieldset><p class="vh" role="status" data-oa-chooser-status></p>')
     lists_ = (f'<p class="nt">Each of these reforms names {chip("Loop", "R8")} in its own record; the loop’s record lists '
               f'{chip("Reform", "R-30")} only. The drawing marks a reform’s targets that sit on the loop, and each card '
               'lists the others in words with their layer.</p>')
@@ -800,6 +817,7 @@ def rule_14_144():
         named = " and ".join(f'{chip("Connection" if t in LINK else "Variable", t)}' for t in REFORM[rid]["targets"] if t in on)
         line = (f'{chip("Reform", rid)} on Loop R8: its target{"s" if len(tg) > 1 else ""} on the loop, {named}, drawn heavier than the rest of the loop.' if tg else
                 f'{chip("Reform", rid)} on Loop R8: neither of its targets sits on the loop.')
+        cb = re.sub(r'<rect class="pl rp"[^>]*/>', lambda q: q.group(0) + keyline(q.group(0)), cb)
         copies.append(f'<div class="pc8"><p class="nt">{line}</p><div class="dg">{C15.svg_wrap(cb, ch_)}</div></div>')
     pcopies = '<div class="pcs8">' + "".join(copies) + "</div>"
     # each step of the loop with its connection's chip, its name and its grade word (H11: an ID says what it refers to)
@@ -1414,6 +1432,20 @@ def check(entries, files, specs, steps):
                                               for f, rid in want), "14.144: the phone line-up's twelve rows (CR-S3)")
     ok("@container oa-frame (min-width:680px) and (min-width:40em){.ph8{display:none}}" in files["s-14-144-correct"],
        "14.144: the phone line-up shows where the cards stand side by side")
+    # call 15: the shared list row, a keyline after every pill that is red or can turn red (A5 live; R-30's print copy),
+    # shown and hidden with the choice, and the red head's ink edge in the markup and in each chosen state
+    ok('<div class="oa-choice-row oa-choice-row--list">' in t and 'class="oa-choice-row ch1"' not in t and ".ch1{" not in files["s-14-144-correct"],
+       "14.144: the choices do not take the shared list form (call 15)")
+    ok(len(re.findall(r'<rect class="pl[^"]*"[^>]*/><rect class="pk" ', t)) == 2
+       and len(re.findall(r'<rect class="pk" ', t)) == 2, "14.144: a pill that turns red lacks its keyline, or a keyline stands alone (call 15)")
+    for rid in RIDS:
+        no = f'.p:has([value="{rid}"]:checked) [data-oa-for]:not([data-oa-for~="{rid}"])'
+        yes = f'.p:has([value="{rid}"]:checked) [data-oa-for~="{rid}"]'
+        ok(no + " .pk{display:none}" in files["s-14-144-correct"] and yes + " .pk{display:inline}" in files["s-14-144-correct"]
+           and yes + " .hd{fill:var(--oa-color-data-emphasis-red);stroke:" in files["s-14-144-correct"]
+           and no + " .hd{fill:" in files["s-14-144-correct"], f"14.144: the keyline or the head's edge does not follow {rid} (call 15)")
+    ok(".sv .crt .hd{stroke:var(--oa-color-graphic-essential);stroke-width:2px;paint-order:stroke}" in files["s-14-144-correct"],
+       "14.144: the first reform's red head in the markup has no ink edge (call 15)")
     # CD-S10: no card's first line starts on a chip on screen; each still says its reform's name to the status line
     for rid in RIDS:
         ok(re.search(r'data-oa-say><span class="vh">Reform ' + rid + r': </span>It turns ', t) is not None,

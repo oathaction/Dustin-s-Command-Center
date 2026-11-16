@@ -507,7 +507,7 @@ class Pill:
         # only while its red ring shows, so the ring holds an ink edge in one ink and on Newsprint (the component
         # engineer's request 1, item 2). Opt-in: no other plate's red pill takes it (Rule 12.5 as approved)
         pk = (f'<rect class="pk" x="{F(self.left + 2)}" y="{F(self.top + 2)}" width="{F(self.pw - 4)}" '
-              f'height="{F(self.h - 4)}" rx="{F(self.h / 2 - 2)}"/>') if self.keyline else ""
+              f'height="{F(self.h - 4)}" rx="{F(self.h / 2 - 2)}" fill="none" display="none"/>') if self.keyline else ""
         return (f'<rect class="{c}" x="{F(self.left)}" y="{F(self.top)}" width="{F(self.pw)}" height="{F(self.h)}" '
                 f'rx="{F(self.h / 2)}"{RED if self.red else ""}/>' + pk + lines(self.cx, ty, self.rows, "t ts" if self.shared else "t"))
 
@@ -641,8 +641,9 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     y1 = top + 4 + hs[0] / 2
     gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
-    # call 15: a chooser's target pills carry the keyline (for_), and keys gives it to a still picture of one (its failure)
-    kw_ = [dict(red=c in targets, shared=c in shared, keyline=(bool(for_) and c in for_) or (keys and c in targets))
+    # call 15: keys draws the keyline in a chooser's target pills (for_), or in a still picture's red pills (its failure);
+    # off by default, so a plate that imports this function (C-SD1) changes nothing until it asks
+    kw_ = [dict(red=c in targets, shared=c in shared, keyline=keys and (c in for_ if for_ else c in targets))
            for c in codes]
     p1 = Pill(labels[0], W / 2, y1, pw[0], thin, **kw_[0])
     p2 = Pill(labels[1], W - 2 - pw[1] / 2, y2, pw[1], thin, **kw_[1])
@@ -3340,7 +3341,7 @@ def rule_15_20(book):
              f'data-oa-chooser-status></p>')       # call 15: the shared list form, one width for every choice
     tg = set(rs[0]["targets"])
     lit = {t_ for r_ in rs for t_ in r_["targets"] if t_ in LINK}
-    b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner)
+    b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner, keys=True)
     drawn = set(codes) | set(lp["links"])
     panels = []
     for r_ in rs:

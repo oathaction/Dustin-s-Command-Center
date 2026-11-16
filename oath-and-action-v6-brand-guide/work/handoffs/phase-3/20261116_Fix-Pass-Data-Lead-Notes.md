@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 18:10 UTC. **Batch 9:** round 4's forms signed off but CD-S4's two titles (S91, S94), which claim a wider set than their data; S16 note's decline accepted; a data yes for S90's row 5 note.
 - 18:08 UTC. **Batch 8:** chapter 15's wave 2 and the selection guide's wave 2 signed off; R1 holds; nothing sent back; SG-9 (the engineer's checks) and call 15 still to come.
 - 17:55 UTC. **Batch 7:** chapter 11's wave 2 (CD-S11, PR-S10, RP-15, RP-16) signed off; no mark moved; nothing sent back. "Not fixed" started for the deferred fixes register (DR-282).
 - 17:43 UTC. **Batch 6:** Rules 14.142 to 14.144 signed off, the failure plate's empty room under zero included; nothing sent back; two suggestions.
@@ -333,6 +334,32 @@ Read from the systems designer's notes (wave 2, to 18:04) and the selection guid
 
 **Accepted as declined here** (written into "Not fixed"): the map row's three symbols redrawn in outline (the creative director's craft note, not a code).
 
+### Batch 9 (18:10 UTC): round 4's forms signed off but two titles sent back (CD-S4: S91 and S94) (for the round 4 maker, the editor, the research lead, the engineer and the main session)
+
+Read from the round 4 maker's notes (to 18:07), the specs, forms and sidecars by script, and the atlas. Marks, data and facts first; the editor reads the words next.
+
+**Sent back, by code (CD-S4): two titles claim a wider set than their data holds (house rule H08).**
+1. *S91.* "Of the three kinds of federal trial judge, only district judges serve for life, ..." The data's own universe (`uscode-federal-trial-judges.meta.json`) is "The three kinds of judges who hear cases at trial in the federal district courts". Other federal trial courts exist: the Court of International Trade's judges also serve for life, and the Court of Federal Claims' for 15 years. So "only district judges serve for life" is false of federal trial judges in general. Fix: scope the title to the sidecar's universe, for example "Of the three kinds of judge who hear cases at trial in the federal district courts, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands." The derive script's title check should hold the scope words too. The measure line's "each kind of federal trial judge" takes the same scope (suggested).
+2. *S94.* "Seven of the 16 budget and tax deadlines federal law sets for 2027 ..." With "the 16", the title reads as every budget and tax deadline in federal law. The sidecar's universe is "Dates the federal budget process and individual income tax law set"; business, payroll and excise deadlines are not in it. Fix: "Seven of the 16 budget and individual income tax deadlines federal law sets for 2027 carry a consequence in law", or the editor's equal that names the scope. The seven and the 16 hold (the derive check against the consequence column).
+
+**Signed off.**
+- *RP-2 (S92, a Must).* The third column reads each step's own condition: rows 1 to 3 and 5 "Every request", 4 and 7 "Optional", 6 "Only if the agency says no", 8 "Only if the agency says no or misses its time limits", which 5 U.S.C. 552(a)(6)(C)(i), cited by row 8, supports. The drawing's eyebrows on steps 6 and 8 say the same. The data file is untouched.
+- *Call 18 (S95).* The form holds the 48 px master's drawing: all nine of the master file's shapes appear in it unchanged (script). It is drawn at `scale(2)` from a rounded origin 64 px in from the bottom right, so each master pixel is a 2 by 2 block, `aria-hidden`, `data-red="signature"`, and read as a shape by the kit's checks so no word sits on it. The maker's pixel check is theirs. The size line (AX-S2) and the feed test wait on the engineer.
+- *DF-15.* S85's and S93's source lines equal the sidecars' `via_atlas` and `publisher_first` variants character for character (script). S85's grade line drops the snapshot date, which now prints once, after "via" the atlas (Rule 13.6).
+- *RP-17 (S85).* The new note's claim matches Variable A2's own record: the atlas tracks it "in part" by union membership, which "counts members" and measures "something narrower than bargaining power" (`nodes.A2.description` and `indicator_note`).
+- *RP-12 (S90).* Whole numbers: 45, 43 and 12 percent from 45.23, 43.20 and 11.57, which add to 100, as the cards print them; the CSV keeps every digit.
+- *RP-18, CR-S13, CR-S14.* FEMA spelled out at first use. S93's callouts and S94's key change place, not data.
+- *CR-S20 (S12 on a phone).* The tile edge takes the context ink, as the palette plate sets a magnitude step's edge, and the key ends "United States 5.9", the national figure the note already states. It goes on board 3's list of changed approved drawings.
+- *CD-S2 (S86).* The key's rings use the circles' own area scale (radius as the square root of count over the largest, times the same R in the form), and the 40,000 ring reaches past the largest count, 39,555, as entry 14.80 asks. No figure moved.
+- *CD-S3 (S87, S88).* S87's 23.8 million is the "both" region (23,775,140). S88's 213.2 million (private only plus both) and 119.1 million (public only plus both) come from the same four regions. Their ratio, 1.79, prints as "about 1.8 times", and a gap that size passes the regions' margins (348,182 and 587,600) many times over.
+- *Entry 14.141.* The lockmark sign-off in the rule's list and the builders line.
+
+**Accepted as declined.** The optional S16 note: its approved words are true, and no reader asked (written into "Not fixed").
+
+**A yes on the data side, for the editor.** S90's table note "Includes COVID-19 relief funds (row 5)" points to a row the spec leaves out. Row 5 holds 39,177,454 thousand dollars, which is $39.2 billion, so the maker's fix ("Includes COVID-19 relief funds, $39.2 billion, as note 2 says") is right on the figure. It is not routed in this pass (written into "Not fixed").
+
+**Waiting on the engineer** (not mine): S94's year at the column's width (CD-S1), S95's size line (AX-S2), the feed test on S95's PNGs (NB-M2).
+
 ## Not fixed
 
 For the deferred fixes register (DR-282): every Should I accepted as declined, every item I sent back that was not then fixed, and, after them, the suggestions I made that no owner has taken. Each with code, file, what is wrong, the fix and why not. At 17:55 UTC every item I sent back has been fixed (batch 1's CE-S20, batch 4's two DF-10 items).
@@ -343,6 +370,9 @@ For the deferred fixes register (DR-282): every Should I accepted as declined, e
 | PR-S10, a court's removal of a measure (declined by the tracker designer; accepted) | Same file, Rule 11.10 spec "Ended before step 6" | "Removed from the ballot by a court" names no step, so a builder judges where its square sits | Name the step for each state once the research lead says when its courts act (Ohio's Supreme Court before the vote; California's pre-election challenges can come earlier) | The step depends on when the court acts, which the facts do not fix; "the step under way when it ended" is true in every case |
 | New endings drawn on a plate (set aside by the tracker designer; accepted) | Same file, `BALLOTS`, `COURTS`, `s_11_10()`, `s_11_11()` | No card draws an unappealed case, an unpetitioned ruling, a rejected measure, a measure the Legislature passed or a case dismissed before a ruling; the rule's and specs' words alone carry them | A fourth card, or a second correct plate, for these endings | DR-275 sets one current, one decided and one stopped item a plate; board 3 can ask for one |
 | Map symbols on the selection guide (the creative director's craft note under R5-G, not a code; set aside by the selection guide maker; accepted) | `work/build/scripts/phase-3/selection_guide_build.py`, symbols `g119`, `g120`, `g123` | At 1x on a 390 px phone the district map, county choropleth and small-multiple map symbols read as gray texture where every other family draws in lines | Redraw the three in outline: fewer, larger districts and counties in 2 px lines, the small multiples as three outlines with one shaded group each, in the neutral inks of ruling (a) | The craft score stands at 4 and no code routes it; a redraw changes symbols signed off in round 5 (batch 6), so it waits for the design director or board 3 |
+| S16 note (carried, optional; declined by the round 4 maker; accepted) | `work/build/chart-kit/specs/s16.json`, `chart_notes[1]` | Under 358 px eleven eastern state codes stand in a column at the right on leaders, which the note does not mention | "...where there is room, and on a phone the codes of 11 small eastern states stand in a column at the right, each joined to its circle by a line." | S16's words are approved (DR-262), the note stays true, and no reader asked; board 3 can offer it |
+| S90's "row 5" note (found by the round 4 maker, not routed) | `work/build/chart-kit/specs/s90.json` table "Note" column, from the data file's `note` | "Includes COVID-19 relief funds (row 5)" names a row the table leaves out | "Includes COVID-19 relief funds, $39.2 billion, as note 2 says" (39,177,454 thousand dollars, checked by script; data lead's yes) | Not routed in this pass; needs the editor's words |
+| CD-S4, S91's and S94's titles (sent back in batch 9; open until fixed) | `work/build/chart-kit/specs/s91.json`, `s94.json`, and the derive scripts' title checks | Each title names a wider set than its data's universe: all federal trial judges for S91, all budget and tax deadlines for S94 | Scope each title to its sidecar's universe (batch 9 gives drafts) | Open at 18:10; this row goes when the fix lands |
 
 **Suggestions not taken, open at the time written (not conditions):**
 
