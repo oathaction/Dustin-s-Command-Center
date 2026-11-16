@@ -1668,6 +1668,36 @@ async function self_test() {
   const cf = C.check_csv(K, csv, r.rows, r.datasets[0].meta);
   console.log(`${cf.length ? 'caught' : 'MISSED'} a CSV export short of a row`);
   if (!cf.length) bad++;
+  // PR-S7 (the fix pass after rounds 4 and 5): no spec sets apart a mark its margin cannot tell. A range bar whose status
+  // column names its open rows says which test they mean and agrees with it; a named column of S96's form stands past the
+  // margin it draws. Each planted case must be caught, and each right one left alone
+  {
+    const rb = (rows, labels) => ({ id: 'S998', form: 'range-bar', illustrative: 'Illustrative data', title: 'A fixture of three changes',
+      measure_line: 'Each line is the 90 percent margin of error.', source_line: 'Source: a fixture.', alt: 'A fixture of three changes with their margins.',
+      data: { columns: { name: { type: 'text', description: 'a group' }, change: { type: 'number', description: 'its change', unit: 'percentage points' },
+        moe: { type: 'number', description: 'its margin', unit: 'percentage points' }, status: { type: 'category', description: 'past or within the margin' } }, rows },
+      encode: { category: 'name', value: 'change', margin: 'moe', status: 'status' }, labels,
+      table: { caption: 'A fixture.', columns: [{ field: 'name', label: 'Group' }, { field: 'change', label: 'Change' }, { field: 'moe', label: 'Margin' }] } });
+    const right = [{ name: 'A', change: 2.0, moe: 1.0, status: 'past' }, { name: 'B', change: 0.5, moe: 1.0, status: 'within' }, { name: 'C', change: -1.5, moe: 1.0, status: 'past' }];
+    const wrong = right.map(r => Object.assign({}, r, { status: r.name === 'C' ? 'past' : r.status === 'past' ? 'within' : 'past' }));
+    const s96 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s96.json'), 'utf8'));
+    const inside = JSON.parse(JSON.stringify(s96)); inside.labels.named = [{ x: '2025-01', text: ['January 2025', '−48,000 jobs'] }].concat(inside.labels.named);
+    const pr = [
+      ['a range bar whose open dots are the wrong way round against zero', rb(wrong, { open: 'within', test: 'zero' }), 'PR-S7', true],
+      ['a range bar whose status names open rows with no test', rb(right, { open: 'within' }), 'labels.test says which test', true],
+      ['S96 naming January 2025, inside its margin', inside, 'inside the margin', true],
+      ['a range bar whose open dots agree with its zero test (allowed)', rb(right, { open: 'within', test: 'zero' }), 'PR-S7', false],
+      ['S96 as it stands, naming two drops past its margin (allowed)', s96, 'PR-S7', false],
+    ];
+    for (const [name, spec, want, expect] of pr) {
+      let r2;
+      try { r2 = C.check_spec(K, spec, {}); } catch (e) { r2 = { faults: ['threw: ' + e.message] }; }
+      const hit = r2.faults.some(f => f.indexOf(want) >= 0);
+      const ok = hit === expect;
+      console.log(`${ok ? (expect ? 'caught' : 'quiet ') : (expect ? 'MISSED' : 'FLAGGED')} ${name}${ok ? '' : ': ' + JSON.stringify(r2.faults.slice(0, 3))}`);
+      if (!ok) bad++;
+    }
+  }
   console.log(bad ? `self-test: ${bad} missed` : 'self-test: every planted fault caught');
   return bad ? 1 : 0;
 }
