@@ -3756,6 +3756,14 @@ def fs_stages():
     r = {
         "intro": wf_row("FS", "Introduction and committee", "sponsors a bill", "assigned to a committee"),
         "floor": wf_row("FS", "Floor vote in each chamber", "218 of 435", "51 of 100"),
+        # CE-S1, ST-S6 (F3): a majority of those voting; a tie fails, and the Vice President may break a Senate tie
+        "pass": wf_row("FS", "Passage: a majority of those voting", "decided by a majority vote",
+                       "In case of a tie vote, a question shall be lost", "the vice president may cast the tie-breaking vote",
+                       "A tie vote on a question defeats it", "holds when all 435 seats are filled and every member votes"),
+        # CE-S2 (F4): one text by passing the other's bill unamended, by concurring in its amendments, or by a conference
+        "one": wf_row("FS", "One text: three ways to agree", "agreed to in identical form by both bodies",
+                      "concurrence in the second House's amendments", "agreement in both bodies to the conference report",
+                      "may further amend"),
         "susp": wf_row("FS", "House: suspension of the rules", "two-thirds of the Members voting", "debatable for 40 minutes",
                        "Mondays, Tuesdays, and Wednesdays"),
         "clot": wf_row("FS", "Ending Senate debate (cloture)", "60 of the 100-member Senate"),
@@ -3783,6 +3791,7 @@ def fs_stages():
         "rep": wf_row("FS", "Repeal or sunset", "A sunset sits in the law's own text", "struck the end date"),
         "void": wf_row("FS", "A court holds the law unconstitutional", "a law repugnant to the constitution is void"),
         "nrsc": wf_row("FS", "The most recent example, by date", "coordinated-expenditure limits violate the First Amendment",
+                       "held a provision of an Act of Congress unconstitutional", "read to November 9, 2026",
                        "decided June 30, 2026", "52 U.S.C. 30116(d)"),
     }
     fs = ROUTE["FS"]
@@ -3794,8 +3803,11 @@ def fs_stages():
     congress = [
         Stage(1, "st", "Introduced and sent to committee", "A member sponsors the bill in the House or the Senate, and a "
               "committee studies it.", [(h, r["intro"])]),
-        Stage(2, "st", "Passed by the first chamber", "A simple majority: 218 of 435 in the House, or 51 of 100 in the Senate.",
-              [(h, r["floor"])]),
+        Stage(2, "st", "Passed by the first chamber", "The first chamber passes it by a majority of the members who vote, 218 "
+              "when all 435 House members vote or 51 when all 100 senators do. A tie fails, and in the Senate the Vice "
+              "President may break it.",
+              [(h, r["floor"]), ("U.S. Constitution, Article I, Sections 3 and 5; House Rule XX, clause 1; U.S. Senate, "
+                                 "“About Voting”", r["pass"])]),
         Stage(3, "br", "Suspension of the rules", "The House takes the bill up on a Monday, Tuesday or Wednesday, debates it "
               "for no more than 40 minutes and passes it with two-thirds of the members voting.",
               [("House Rule XV, clause 1", r["susp"])],
@@ -3812,8 +3824,9 @@ def fs_stages():
               then="Then stage 6, or stage 7 if the Senate votes second."),
         Stage(6, "st", "Passed by the second chamber", "The second chamber passes it by the same count as stage 2, or by one "
               "of the paths at stages 3 to 5.", [(h, r["floor"])]),
-        Stage(7, "st", "One text for both chambers", "A conference committee settles the differences, and both chambers "
-              "approve the same text.", [(h, r["conf"])]),
+        Stage(7, "st", "One text for both chambers", "The two chambers pass the same text. Where their versions differ, they "
+              "settle the differences by amending each other’s text or in a conference committee.",
+              [(h, r["conf"]), ("U.S. House, “How Our Laws Are Made”, House Document 110-49", r["one"])]),
     ]
     president = [
         Stage(8, "st", "Sent to the President", "The Government Publishing Office prints the final text, a step called "
@@ -3853,10 +3866,11 @@ def fs_stages():
     undo = [
         Stage(18, "af", "Ended by a sunset", "A date in the law’s own text ends a part of it, unless a later act moves the "
               "date.", [("Public Law 115-97, section 11022", r["rep"])], stop="That part ends on its date."),
-        Stage(19, "af", "Struck down by a court", "A court can rule that a law, or a part of it, violates the Constitution. In "
-              "the Supreme Court’s words of 1803, “a law repugnant to the constitution is void”. The latest such ruling we "
-              "found came on June 30, 2026, when the Supreme Court held that the limits on what a political party may spend "
-              "in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment.",
+        Stage(19, "af", "Struck down by a court", "A court can rule that a law, or a part of it, violates the Constitution, a "
+              "power the Supreme Court set out in Marbury v. Madison in 1803. The Supreme Court’s most recent decision to hold "
+              "part of an Act of Congress unconstitutional, in its opinions through November 9, 2026, came on June 30, 2026, "
+              "when it held that the limits on what a political party may spend in coordination with its candidates, in 52 "
+              "U.S.C. 30116(d), violate the First Amendment.",
               [("Marbury v. Madison, 5 U.S. 137 (1803)", r["void"]),
                ("National Republican Senatorial Committee v. Federal Election Commission, No. 24-621", r["nrsc"])],
               stop="The part the court holds void no longer applies."),
@@ -3939,9 +3953,9 @@ def rule_15_22(book):
         "why": {"text": ["A drawing that ends at the signature tells a reader the change is done. Whether a law works, and "
                          "whether it lasts, is settled after it: by the money, the rules, the courts and the next Congress. "
                          "A reader who sees every stage, and the law behind it, knows where to watch and when to take part."],
-                "basis": "The U.S. Constitution, Article I; House Rule XV; 2 U.S.C. 641, 644 and 683; 5 U.S.C. 553, 706, 801 "
-                         "and 802; the House’s, Senate’s, courts’ and Federal Register’s own pages; our systems atlas’s record "
-                         "for Route FS"},
+                "basis": "The U.S. Constitution, Article I; House Rules XV and XX; 2 U.S.C. 641, 644 and 683; 5 U.S.C. 553, "
+                         "706 and 801; the House’s, Senate’s, courts’ and Federal Register’s own pages and the House’s “How "
+                         "Our Laws Are Made”; our systems atlas’s record for Route FS"},
         "correct": {"specimen": "s-15-22-correct",
                     "caption": f"Route FS, the federal statute, in {len(stages)} stages from introduction to repeal, each with "
                                "the source we read and its date, and the line that takes a repeal back to stage 1."},
@@ -3964,6 +3978,31 @@ def rule_15_22(book):
                      "was read, and draw the marks from the row, so a stage never prints without its source."],
     }
 
+
+
+def wf_note_row(heading, first, *phrases):
+    """A row of the workflow sources file under a heading that names no route ("### Records request: when the 20 working
+    days start ..."), by its heading's opening words and its first cell, held to the phrases a line relies on and to a
+    read date."""
+    rows, on, head = [], False, None
+    for line in WF_SRC.read_text().splitlines():
+        if line.startswith("#"):
+            on, head = line.lstrip("#").strip().startswith(heading), None
+            continue
+        if not on or not line.startswith("|"):
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if head is None:
+            head = cells
+        elif not set("".join(cells)) <= set("-: ") and cells[0] == first:
+            rows.append(dict(zip(head, cells)))
+    need(rows, f"the workflow sources file has no row {first!r} under {heading!r}")
+    r = rows[-1]
+    said = " ".join(r.values()).replace("’", "'")
+    for ph in phrases:
+        need(ph.replace("’", "'") in said, f"row {first!r} no longer says {ph!r}")
+    need(re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.get("Checked", "")), f"row {first!r} carries no read date")
+    return r
 
 
 def wf_first(route, first, *phrases):
@@ -4908,19 +4947,29 @@ def rule_15_23(book):
     need([fo[k]["step"] for k in sorted(fo, key=int)] == ["Look first", "Write the request", "Say what fees you will pay",
          "Ask for faster handling", "The agency decides", "Appeal a denial", "Ask for mediation", "Go to court"],
          "the records request's steps in the data file changed")
-    need("20 working days" in fo["5"]["time_limit"] and "90 days" in fo["6"]["time_limit"], "the request's time limits changed")
+    need("20 working days" in fo["5"]["time_limit"] and "up to 10 more in unusual circumstances" in fo["5"]["time_limit"]
+         and "90 days" in fo["6"]["time_limit"], "the request's time limits changed")
     fw = lambda k, extra="": (None, "st", fo[k]["step"] + extra)
+    # ST-M2, CE-S8: the clock starts when the right office receives the request (5 U.S.C. 552(a)(6)(A), the paragraph
+    # after clause (ii), the research lead's row of November 16, 2026), never at an acknowledgment
+    clock = wf_note_row("Records request: when the 20 working days start", "The agency decides: when the clock starts",
+                        "shall commence on the date on which the request is first received by the appropriate component",
+                        "not later than ten days after the request is first received by any component",
+                        "designated in the agency's regulations")
+    fs8 = lambda words: (None, "st", words)
     rows8 = [("before", "Before step 1", [fw("1", ": check whether the agency already posts the records")]),
-             (1, s8[0], [fw("2"), fw("3"), fw("4", ", where the requester shows a need")]),
-             (2, s8[1], [fw("5", ", within 20 working days that start here")]),
-             (3, s8[2], [fw("5", ", inside the same 20 working days")]),
-             (4, s8[3], [fw("5", ", inside the same 20 working days")]),
-             (5, s8[4], [fw("5", " within 20 working days, or 10 more in unusual circumstances")]),
+             (1, s8[0], [fw("2"), fw("3"), fw("4", ", where the requester shows a need"),
+                         fs8("The agency’s 20 working days to decide start when the right office receives the request, and no "
+                             "later than 10 days after any office the agency names for requests receives it")]),
+             (2, s8[1], [fs8("The agency’s 20 working days to decide, already running")]),
+             (3, s8[2], [fs8("The agency searches for the records, inside the same 20 working days")]),
+             (4, s8[3], [fs8("The agency reviews what it found, before the 20 working days run out")]),
+             (5, s8[4], [fs8("The agency answers within the 20 working days, or 10 more in unusual circumstances")]),
              (6, s8[5], [fw("6", ", with at least 90 days to do so")]),
              ("after", "After step 6", [fw("7"), fw("8")])]
     b8 = xw_block(f'The Freedom of Information Act beside the records request tracker of <a href="#rule-11-8">Rule 11.8</a>',
                   "A federal request’s stages in the law, behind the tracker’s six steps",      # CE-M3, DF-1
-                  rows8, f"Stages from 5 U.S.C. 552 and FOIA.gov, read {C13.words_date(fm['date_retrieved'])}.")
+                  rows8, f"Stages from 5 U.S.C. 552 and FOIA.gov, read {dates_words([fm['date_retrieved'], clock['Checked']])}.")
     # Rule 11.9, an agency rule, against the federal rule-making steps
     r9, s9 = tracker_steps("11.9")
     ru = {r["order"]: r for r in csv_rows("govinfo-federal-rulemaking-steps.csv")}
@@ -5014,8 +5063,9 @@ def rule_15_23(book):
                   f"of Rule 11.1 beside Route FS: steps 1 to 3, {', '.join(s1[:3])}, sit inside stage 1; step 4 holds stages 2 "
                   f"to 5; step 5 holds stages 3 to 7, since suspension, cloture and reconciliation serve either chamber; step "
                   f"6 holds stages 8 to 13; stages 14 to {len(st)} come after step 6. The "
-                  "records request of Rule 11.8 beside the Freedom of Information Act: steps 2 to 5 share the agency’s 20 "
-                  "working days to decide, and mediation and a lawsuit come after step 6. The agency rule of Rule 11.9 beside "
+                  "records request of Rule 11.8 beside the Freedom of Information Act: the agency’s 20 working days to decide "
+                  "start when the right office receives the request, and steps 2 to 5 share them, and mediation and a lawsuit "
+                  "come after step 6. The agency rule of Rule 11.9 beside "
                   "federal rule making: step 1 has no stage in the law, White House review sits behind steps 2 and 5, and "
                   "Congress’s disapproval and a court’s review come after step 6. The ballot measure of Rule 11.10 beside "
                   "Route BI: step 4 holds three kinds of legislative stage and step 5 a court challenge. The court case of "

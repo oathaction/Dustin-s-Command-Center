@@ -8,7 +8,7 @@ examples 2 and 3 read the atlas model, work/extract/atlas-v7-data.json, snapshot
 
 facts() reads every figure the three examples print, by script, and stops on any value that has moved since the plan:
   example 1  the 57 months, the two preliminary months, each three-month average recomputed from the changes, the seven
-             losses, the survey's margin (plus or minus 122,000, from the sidecar's with_margin source line) and the two
+             losses, the survey's margin (plus or minus 122,000, from the sidecar's september_release_margin line) and the two
              drops past it (DR-239), the latest month and its average;
   example 2  Loops B4 and R10, the one variable they share (Variable C3), each step's sign, grade, delay and type, and
              the order the stepper takes through Variable C3;
@@ -92,14 +92,22 @@ def example_1():
         need(abs((ch[i] + ch[i - 1] + ch[i - 2]) / 3 - av[i]) < 1e-4, f'the average for {months[i]} is not its three months\' mean')
     losses = [m for m, v in zip(months, ch) if v < 0]
     need(losses == ['2025-01', '2025-06', '2025-08', '2025-10', '2025-12', '2026-02', '2026-07'], f'the losses moved: {losses}')
-    # the margin: the Bureau's 90 percent interval for one month's change, as the sidecar's with_margin line prints it
-    wm = side['source_line_variants']['with_margin']
+    # the margin: the Bureau's 90 percent interval for one month's change, as the sidecar's release-named margin line prints
+    # it (the research lead's F6 for ST-S8: the file holds the September 2026 Employment Situation, released October 2,
+    # 2026). S14 prints that line; S96 prints the same with the private and government series its second note cites
+    # (R4b); the failure prints the release-named line with no margin sentence (R3)
+    slv = side['source_line_variants']
+    wm = slv['september_release_margin']
+    plain, s96_line = slv['september_release'], slv['september_release_sectors_margin']
     m_ = re.search(r'plus or minus ([\d,]+), from its Employment Situation technical note, October 2026 release', wm)
-    need(m_ is not None, 'the sidecar\'s with_margin line no longer names the margin')
+    need(m_ is not None, 'the sidecar\'s september_release_margin line no longer names the margin')
     margin = int(m_.group(1).replace(',', '')) / 1000
     need(margin == 122, f'the margin moved: {margin}')
-    need(wm.startswith(side['printed_source_line'].rstrip('.')) and 'margin' not in side['printed_source_line'],
-         'the sidecar\'s plain source line is no longer the with_margin line less its margin sentence')
+    need(wm.startswith(plain.rstrip('.')) and 'margin' not in plain and 'released October 2, 2026' in plain,
+         'the sidecar\'s september_release line is no longer its september_release_margin line less the margin sentence')
+    need('private and government employees' in s96_line and 'released October 2, 2026' in s96_line
+         and f'plus or minus {m_.group(1)}, from its Employment Situation technical note, October 2026 release' in s96_line,
+         'the sidecar\'s september_release_sectors_margin line no longer names the two series, the release and the margin')
     past = [m for m, v in zip(months, ch) if v < 0 and abs(v) > margin]
     need(past == ['2025-10', '2026-02'], f'DR-239\'s two drops past the margin moved: {past}')
     inside = [m for m, v in zip(months, ch) if v < 0 and abs(v) <= margin]
@@ -143,9 +151,10 @@ def example_1():
         'largest': {'month': months[ch.index(max(ch))], 'change': max(ch)},
         'largest_loss': {'month': months[ch.index(min(ch))], 'change': min(ch)},
         'avg3_low': {'month': months[av.index(min(av))], 'avg3': min(av)},
-        'source_line': wm,
+        'source_line': s96_line,
+        'source_line_s14': wm,
         # the sidecar's plain line, with no margin sentence: the failure plate's, whose drawing leaves the margin out (ST-M1)
-        'source_line_plain': side['printed_source_line'],
+        'source_line_plain': plain,
         'retrieved': side['date_retrieved'],
     }
 

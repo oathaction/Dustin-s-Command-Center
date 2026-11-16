@@ -1074,7 +1074,7 @@ def rule_14_142():
             "fill; the average in the context ink at the context weight. The form's keys for this are the engineer's (R5-1, 'The "
             "kit for complex example 1').",
             "Check 14.142-a (maker_c_round5_derive.py): 57 months, January 2022 to September 2026; preliminary August and "
-            "September 2026; seven losses; margin 122 thousand from the sidecar's with_margin line; past it October 2025 (-140) "
+            "September 2026; seven losses; margin 122 thousand from the sidecar's september_release_margin line; past it October 2025 (-140) "
             "and February 2026 (-156); September 2026 average 50.67 thousand, 51,000 to the thousand.",
             "Title: DR-239's two approved sentences joined, as the data lead's ruling (c) suggests; the editor may tune the words, "
             "the counts stay.",
@@ -1326,7 +1326,12 @@ def check(entries, files, specs, steps):
     ok("Total score" in ft, "14.144's failure carries its fault")
     # 14.142: the spec's words against the data
     s96 = specs["s96"]
-    ok(s96["source_line"] == FACTS["example_1"]["source_line"], "S96: the source line is not the sidecar's with_margin line")
+    # ST-S8 (the research lead's F6) and R4b: S96 prints the sidecar's release-named line with the two sector series and the
+    # margin, S14 the release-named margin line (the main session's call), the failure the release-named plain line
+    ok(s96["source_line"] == FACTS["example_1"]["source_line"],
+       "S96: the source line is not the sidecar's september_release_sectors_margin line")
+    ok(json.loads((SPECS / "s14.json").read_text())["source_line"] == FACTS["example_1"]["source_line_s14"],
+       "S14: the source line is not the sidecar's september_release_margin line")
     allw = " ".join([s96["title"], s96["measure_line"], s96["alt"]] + s96["notes"] + s96["chart_notes"])
     for want in ("January 2022 to September 2026", "122,000", "October 2025", "February 2026", "51,000", "preliminary", "seven"):
         ok(want in allw, f"S96: {want!r} does not print")

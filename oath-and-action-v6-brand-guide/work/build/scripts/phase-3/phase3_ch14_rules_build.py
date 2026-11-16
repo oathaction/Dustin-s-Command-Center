@@ -724,7 +724,7 @@ def rule_14_3(B):
          "run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."],
         ["A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at "
          "all in grayscale or with a color vision deficiency. A name beside each line is read in place."],
-        [("A line", "Its name beside it, toward its last point, in the label ink", "oa.chart.color.label.onNewsprint"),
+        [("A line", "Its name beside it, toward its last point, in the text’s ink", "oa.chart.color.label.onNewsprint"),
          ("A bar", "Its value at its end, its name beside it"),
          ("Units", "Once, in the measure line"),
          # round 3, the data lead's ruling (b) for maps
@@ -847,8 +847,9 @@ def rule_14_5(B):
          "from low to high. Diverging pair B runs above and below a midpoint, as Rule 01.3 sets. The four group inks name up to four groups, "
          "always in the order Charcoal, Verdigris, Prussian, then Stone, which carries its hatch. The Stone magnitude steps show size with "
          "no direction.",
-         "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Rule 05.7 sets the subject, the "
-         "context and the one red point inside any of them."],
+         "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Inside any of them, Rule 05.7 "
+         "sets three roles: the subject, the series the title names, in the text’s ink; the context, every other series, in gray; and the "
+         "one red point."],
         ["A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our "
          "work, a reader who has learned that a stronger green means more can trust it on every page."],
         [("Sequential", "Five steps of Verdigris, light to dark for low to high", "oa.chart.color.sequential.fill.step1.onNewsprint"),
@@ -905,16 +906,20 @@ def rule_14_6(B):
         "14.6", "Spend the view’s one red on the point the title names.",
         # round 3's review fix pass (CD R-S1): each paragraph keeps its principle in two or three sentences, and the specification
         # rows carry the lists (the party tie, the named areas, the decision tree's branches, marks named together)
-        ["Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule "
-         "05.5’s keyline and with its own label, and every other mark takes the light fill on Newsprint and the context ink on Charcoal "
-         "(Rule 05.7).",
+        # DF-13 (the fix pass after the review of rounds 4 and 5): the ink words a reader meets here, each defined once, and
+         # "every other bar", so the light fill narrows Rule 05.7's "every other series takes Stone" without restating it
+         ["Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule "
+         "05.5’s keyline, a 1 px edge around the red, and with its own label. Every other series takes the context ink, the gray Rule 05.7 "
+         "gives each series the title does not name. Where the title names one bar, every other bar takes the light fill on Newsprint, a "
+         "paler gray, so the named bar still stands apart in gray print, and keeps the context ink on Charcoal.",
          # RF-17 (BC S5, CD R-S1): what counts as one mark, and the comparison case
          "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on "
          "Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s "
          "plate, keeps the light fill with its label.",
          # round 3, the data lead's principles 1 and 2 (diagrams answer with their path, maps with their pattern)
          "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the "
-         "reader’s question follows takes Charcoal at the subject weight, as on Rule 14.96’s diagram. A map gives the red only to a place "
+         "reader’s question follows takes Charcoal at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s "
+         "diagram. A map gives the red only to a place "
          "its title names as a point, such as the town on Rule 14.118’s locator.",
          "The named mark gives up the red and takes Charcoal at the subject weight when an error or a step the reader can take holds the "
          "red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, "
@@ -926,7 +931,7 @@ def rule_14_6(B):
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
         [("The point", "Pillar Red with a 1 px Charcoal keyline (Rule 05.5)", "oa.chart.color.point.onNewsprint"),
-         ("Its label", "Beside the mark, in the text ink"),
+         ("Its label", "Beside the mark, in the text’s ink"),
          ("Marks named together", "Share the red, as the bars of one age band do"),
          ("A chart of one mark", "One line, bar or path, with no other mark to set it apart from, in Charcoal at the subject weight, the "
                                  "title’s value labeled", "oa.chart.color.subject.onNewsprint"),

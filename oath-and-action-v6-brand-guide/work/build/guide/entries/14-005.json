@@ -3,7 +3,7 @@
  "title": "Give each color in a chart one job from the four data palettes.",
  "rule": [
   "Each palette does one job, and a chart uses one palette for each thing its colors encode. Sequential Verdigris runs one measure from low to high. Diverging pair B runs above and below a midpoint, as Rule 01.3 sets. The four group inks name up to four groups, always in the order Charcoal, Verdigris, Prussian, then Stone, which carries its hatch. The Stone magnitude steps show size with no direction.",
-  "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Rule 05.7 sets the subject, the context and the one red point inside any of them."
+  "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Inside any of them, Rule 05.7 sets three roles: the subject, the series the title names, in the text’s ink; the context, every other series, in gray; and the one red point."
  ],
  "use_when": null,
  "use_instead": [],

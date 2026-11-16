@@ -26,7 +26,7 @@
  "specs": [
   {
    "label": "A line",
-   "value": "Its name beside it, toward its last point, in the label ink",
+   "value": "Its name beside it, toward its last point, in the text’s ink",
    "token": "oa.chart.color.label.onNewsprint"
   },
   {

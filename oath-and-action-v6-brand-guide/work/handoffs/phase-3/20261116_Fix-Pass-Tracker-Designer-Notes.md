@@ -31,6 +31,8 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 | Code | Reason |
 |---|---|
+| RP-15, RP-16, AX-S3 (the three step tables' alts) | Their reports name me as owner, but the brief's table does not route them yet; they wait for the brief's addendum. RP-16 is half met already: CE-S21's spec row and the editor's sentence for a card name the test ("yes votes equal to 30 percent of all ballots cast"), though no rule text says it |
+| A plate that draws the new endings | No correct plate draws an unappealed case, an unpetitioned appeals ruling or a measure the Legislature passed: each plate keeps one current, one decided and one stopped item (DR-275), and the rule and spec words carry the rest, as they carried the Legislature's slashes in round 5. Board 3 can ask for one |
 
 ## Calls
 
@@ -41,9 +43,30 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Requests
 
+### To the data lead
+1. **Sign-off, batch for chapter 11:** Rule 11.11's marks under call 4 (slashes for an unappealed ruling at either court, the square kept for settlement, dismissal and a denied petition), and the "No petition" row's choice to name no day count (Calls). No plate's marks moved.
+
 ### To the editor
 1. **Your second read of my words for calls 4 and 5** (Rule 11.11's new third paragraph, the "Never appealed" and "No petition" specs, and the label "Settled, dismissed or denied"), and of the visible caption under the ballot table (NB-S7 row above), which I set in your clause because your row named the alt head. Write corrections as rows here or in your notes; I am not done with the file while CE-S17 waits.
 
 ## Tested
 
+- **Baseline (17:00):** `apply_systems_ch11.py` on the committed tree rewrote every file unchanged (hashes of every file under `work/build/guide`, `work/build/tokens`, `work/build/assets` and `work/handoffs/phase-2`, `hashes.sh`).
+- **Every change, rerun and run again:** after calls 4 and 5 (17:02), after the editor's words (17:11) and after CE-S17 (17:18), the generator exited 0 ("18 rules, 45 specimens, 19 figures", its own copy and specimen checks passing), and a second run changed no file (hashes).
+- **Strict builds** (`python3 -I work/build/scripts/phase-2/guide_build.py --strict`, to scratch): `guide1.html` (17:02), `guide2.html` (17:12), `guide3.html` (17:18): each exit 0, 0 warnings, 369 rules, 679 specimens; the cross-reference check in each proves every same-page link to a chapter 11 rule. Each build's rewrite of `plate-share.json` was its timestamp alone and was put back (`build.sh`).
+- **What moved, by `git diff`:** my outputs only: `11-icons.json` (Rules 11.10 and 11.11 and the ballot table's caption), `s-11-10-correct.html` (Measure 99013's line), `s-11-ballot-steps.html` (step 2's words), and the alts of those two plates in `manifest-systems.json`. No mark, ink, size or plate layout moved. DR-274's numbers: no rule number, anchor or specimen ID changed (11.10 to 11.18 as mapped).
+- **The editor's strings:** every "New" string in "Words for the tracker designer" found whole in my outputs by script (`check_words.py`), and CE-S19's added sentence by search.
+- **Old strings gone:** "Not approved by voters", "projected fewer valid ones", "clears the measure", "four states we read" and "A square on step 2" appear nowhere under `work/build` (search, 17:19).
+- **Reach outside chapter 11:** `guide_editor_ch01.py` imports my module for chapter 01's card and reads only `MARK_CSS`, `STATE_ORDER`, `key`, `mark_vars`, `names`, `piece_css`, `status_words` and `steps_svg`, none of which changed; no other generator reads `BALLOT_STEPS` or `COURT_STEPS`.
+- **Words, by script** (`words.py`): no em dash, en dash, straight apostrophe, listed filler, corporate verb or hedge in chapter 11's rule text, specs, captions, alts or plate text; the four U+2011 hits are older plates' no-break hyphens, none in Rules 11.10 or 11.11.
+
 ## Not tested
+
+- No browser opened: `browsers.sh` printed WAIT (2 browsers, load 4.46) when I asked at 17:19. The two plates whose words grew, `s-11-10-correct` (one card line) and `s-11-ballot-steps` (step 2's words), wrap in flowing HTML and add no unbroken run, but I did not capture them at any width or on either ground.
+- The guide check, by the brief's rule.
+- The law: I took every fact from the research lead's F2, F8 and F9 and the sources file, and read no statute myself.
+- A screen reader, forced colors, 200 percent text.
+
+## Files
+
+Modified: `work/build/scripts/phase-2/apply_systems_ch11.py` (Rules 11.10 and 11.11, `BALLOT_STEPS` step 2, Measure 99013's line, the ballot table's alt head and caption) and its outputs `work/build/guide/chapters/11-icons.json`, `work/build/guide/specimens/s-11-10-correct.html`, `work/build/guide/specimens/s-11-ballot-steps.html` and the `s-11-10-correct` and `s-11-ballot-steps` entries of `work/build/guide/specimens/manifest-systems.json`; this file (created). `apply_systems_ch11_ui.py` needed no change. Scratch (not delivered): `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f55a08bf-cdcf-539d-a683-426e26f4f342/scratchpad/c07/fix/tracker-designer/` (`hashes.sh`, `build.sh`, `words.py`, `check_words.py`, run logs, `guide1.html` to `guide3.html` with their reports).
