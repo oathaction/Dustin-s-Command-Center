@@ -6686,3 +6686,23 @@ The main session posted the round 5 plan with four questions (Q5-1 to Q5-4). Dus
 | D3-2119 | The quick guide check with photographs passes on the closing build (05:14 to 05:49 UTC, load under 3.4): 1440 and 390 px, 369 rules, 735 specimens, 3,748 same-page links, 0 failures; 152 key path walks and 834 steps, 14.143 and 14.144's stages among them; the selection guide's 127 links, 17 skip links, 16 questions and 133 symbols for 164 pictures; the palette plate's 51 swatches read against their printed values; a script scan of the reader text finds no em dash, U+2011, private path, key name, studio code or email address but the placeholder name@example.com that version 10 carried | The closing check Dustin asked for, run to the end, with nothing counted that did not finish |
 | D3-2120 | The chapters page is republished privately as version 11 (version id 1794635471-26ed) at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF from `work/boards/phase-3/round-5/20261114_Guide-Preview-V11.html` (the checked build, 12,107,102 bytes, SHA-256 `fb67c065…`), keeping contract 0.2.96 and `downloads`; before it, the live version 10 was found equal to the committed version 10 but for the host's 364-byte wrapper | The plan's progress view (DR-276): round 5 seen live before the review and board 3 |
 | D3-2121 | This chat hands off before the review with handoff V26; work tracker row `c06` set done | V26 section 3: hand off before the review |
+
+### Main session, chat 7 start: the committed state and the review plan
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2122 | The new chat's local `claude/friendly-brahmagupta-tonmfa` held a stale commit (`3d0069bc`, handoff V16) that is not an ancestor of the remote tip `9a6e1182`; the local branch is reset to the remote tip, which holds every commit since. The fresh container took V11's three setup steps | V19: fetch, compare the local tip with the remote's, then work from the remote |
+| D3-2123 | The three key tests pass on this chat's environment: api.open.fec.gov 200, api.congress.gov 200, the Census API 200 with `CENSUS_API_KEY`; no key value was printed or written | V26 2A; Dustin's "test each with one request before use" |
+| D3-2124 | The strict build passes as committed (16:20 UTC): exit 0, 0 warnings, 12,107,102 bytes, 369 rules, 679 specimens, chapter 14 at 2,072,555 bytes; it differs from the V11 preview in 7 bytes, every one the build's date and time; the build's rewrite of `plate-share.json`'s timestamp was restored. Work tracker row `c07` set active | Dustin asked for the committed state confirmed first; the figures equal D3-2118's |
+
+## Answers on the review plan, November 16, 2026
+
+The main session posted the plan for the review of rounds 4 and 5 with five questions (Q7-1 to Q7-5). Dustin: "Please proceed as recommended."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-277 | The review runs nine separate readers: statistics, civic education, accessibility, nonpartisanship and brand, craft at twice size, production, a simulated reader panel (DR-202), a drift read of chapters 13 to 15, and the creative director's scores; reviewers read one shared capture set, and only the accessibility and production readers drive live browsers | Dustin, November 16, as recommended (Q7-1) |
+| DR-278 | The four carried items that reach approved work (the masthead over a returned focus at 1024 to 1100 px, the words inside every image stage heard twice, the "Where to start" links at 320 px with 200 percent text, chapter 26's page-wide token table selector) are measured for reach in the review, fixed in this fix pass, and each shown on board 3 as a change to approved work | Dustin, November 16, as recommended (Q7-2) |
+| DR-279 | Safari, Firefox and real screen readers stay "Not tested" at Gate 3 and are tested in Phase 5's release checks | Dustin, November 16, as recommended (Q7-3) |
+| DR-280 | The chapters page is republished privately as version 12 after the fix pass, so board 3 opens on the fixed page | Dustin, November 16, as recommended (Q7-4) |
+| DR-281 | This chat commits and pushes to `claude/friendly-brahmagupta-tonmfa`, as the starting prompt says; the session's own branch `claude/happy-hawking-7xi0li` is left as opened | Dustin, November 16, as recommended (Q7-5) |
