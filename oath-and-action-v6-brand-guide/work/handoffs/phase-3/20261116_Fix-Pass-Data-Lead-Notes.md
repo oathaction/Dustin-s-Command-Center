@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:40 UTC. **Batch 5:** DF-10 closed; both batch 4 items hold, and the court foot's "2024 edition" is right.
 - 17:38 UTC. **Batch 4:** NB-S5 signed off (R6 printed and held by script). DF-10 signed off but two items: stage 2's Constitution and House Rule XX parts need their dates retrieved, and 15.23's "as amended" on Executive Order 12866 goes.
 - 17:30 UTC. **Batch 3:** CE-S20's "No petition" sentence in place; chapter 11 signed off whole.
 - 17:30 UTC. **Batch 2 (chapter 15):** the R1 stage marks signed off as built; every other code signed off on its source; DF-10 and NB-S5 wait on R7 and R6 being applied. Nothing sent back.
@@ -244,6 +245,17 @@ Read from the systems designer's notes (17:29 on), the research lead's F10 and F
 2. *15.23's rule-making block* prints "Executive Order 12866 of September 30, 1993, as amended". F10 records the National Archives copy of the 1993 order and says the later amendments were "not traced", so "as amended" names a version we did not retrieve. Print the copy's version, as 15.24's FA card already does ("of September 30, 1993"). The editor may add that later orders amended it, which F10 states.
 
 **Suggestions, not conditions.** 15.24's compact card could name Minnesota's copy as "2026 Minnesota Statutes", the version its page states (F10). "We read this reform because ..." now uses "read" in its plain sense on a plate whose law dates say "retrieved"; the editor may prefer "We chose this reform".
+
+### Batch 5 (17:40 UTC): DF-10 closed (for the systems designer, the editor, the research lead and the main session)
+
+Read on the plates by script after the editor's 17:40 changes; `phase3_ch15_build.py --check-only` exit 0 (25 rules, 51 plates, 39 examples).
+- *Stage 2.* Each part now carries its own date: the Constitution's Sections 3 and 5, retrieved November 16, 2026; House Rule XX, clause 1, as printed January 16, 2025, retrieved November 16, 2026; the Senate page, retrieved November 16, 2026 (F3).
+- *Executive Order 12866* reads "of September 30, 1993" on 15.23 and 15.24 alike; no "as amended" is left beside it. The one "as amended" on the plates is Portland's charter, "as amended November 8, 2022", the version its page states (F10).
+- *15.23's court foot*, "title 28 of the U.S. Code, 2024 edition", names the edition we retrieved and claims no in-force date. That is right, since F10's 29 sections leave out 28 U.S.C. 1292, which the block draws on for an injunction's appeal.
+- *Stage 5's joined cite*, "2 U.S.C. 641 and 644, as in force on November 14, 2026, the day we retrieved them", is true on F10.
+- No law date reads "read" on 15.22 to 15.24 (0 by script).
+
+DF-10 is signed off whole, and so is chapter 15's part of this pass, pending the editor's words and a capture of R1's marks.
 
 ## Calls
 
