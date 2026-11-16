@@ -3646,7 +3646,7 @@ class Stage:
             rows.append(f'<p class="bq">{hold(e(self.back))}</p>')
         if sources:
             if self.cites:
-                cs = "; ".join(f"{e(c)}, read {C13.words_date(r['Checked'])}" for c, r in self.cites)
+                cs = "; ".join(cite_dated(c, r) for c, r in self.cites)
                 rows.append(f'<p class="sc">Source: {hold(cs)}</p>')
             else:
                 rows.append('<p class="sc">Source not yet read</p>')
@@ -3657,6 +3657,38 @@ class Stage:
         parts = [f"Stage {self.n}" + (f", {self.rel[0].lower() + self.rel[1:]}" if self.rel else "") + f": {self.name}."]
         parts += [x for x in (self.words, self.then, self.stop, self.back) if x]
         return " ".join(parts)
+
+
+# DF-10, the data lead's R7 and the research lead's F10 (November 16, 2026): the 29 sections of the U.S. Code that Rules
+# 15.22 to 15.24 cite or draw on read the same, word for word, in govinfo's 2024 edition (laws in effect as of January 6,
+# 2025) and in the Law Revision Counsel's release current through Public Law 119-142 of November 10, 2026, so each prints
+# "as in force on" the day we retrieved it. A section not on this list stops the build until the research lead checks it.
+USC_SAME = {("1", "106b"), ("2", "641"), ("2", "644"), ("2", "683"), ("2", "684"), ("5", "551"), ("5", "552"), ("5", "553"),
+            *(("5", str(n)) for n in range(701, 707)), ("5", "801"), ("5", "802"), ("15", "16"), ("15", "45"),
+            ("28", "1253"), ("28", "1254"), ("28", "1291"), ("28", "1331"), ("28", "2101"), ("28", "2106"), ("28", "2107"),
+            ("29", "157"), ("29", "160"), ("44", "1505"), ("52", "30116")}
+need(len(USC_SAME) == 29, "F10's list of 29 sections changed")
+
+
+def usc_checked(text):
+    """Every "T U.S.C. S" a line cites is one of F10's 29 sections; 52 U.S.C. 30116 never takes "in force" (F10: the
+    Court's holding of June 30, 2026 leaves its text printed but struck)."""
+    for t, secs in re.findall(r"\b(\d{1,2}) U\.S\.C\.((?:,? (?:and )?\d+[a-z]?(?![\d.]| U\.S\.C\.)(?:\([\w]+\))*"
+                              r"(?: to \d+)?)+)", text):
+        for sec in re.findall(r"\d+[a-z]?", secs):
+            need((t, sec) in USC_SAME or (t == "5" and sec.isdigit() and 701 <= int(sec) <= 706),
+                 f"{t} U.S.C. {sec} is not among the sections F10 checked; ask the research lead before it prints")
+    need("30116" not in text or "in force" not in text, "52 U.S.C. 30116(d) never prints as in force (F10)")
+    return text
+
+
+def cite_dated(c, r):
+    """One source beside a stage: a U.S. Code section "as in force on" the day we retrieved it (R7, F10); any other
+    source with the date we retrieved it (Rule 13.6's date retrieved, R7 item 1)."""
+    d = C13.words_date(r["Checked"])
+    if re.search(r"\bU\.S\.C\. \d", c):
+        return f"{e(usc_checked(c))}, as in force on {d}, the day we retrieved it"
+    return f"{e(c)}, retrieved {d}"
 
 
 def hold(s):
@@ -3806,11 +3838,11 @@ def fs_stages():
         Stage(2, "st", "Passed by the first chamber", "The first chamber passes it by a majority of the members who vote, 218 "
               "when all 435 House members vote or 51 when all 100 senators do. A tie fails, and in the Senate the Vice "
               "President may break it.",
-              [(h, r["floor"]), ("U.S. Constitution, Article I, Sections 3 and 5; House Rule XX, clause 1; U.S. Senate, "
-                                 "“About Voting”", r["pass"])]),
+              [(h, r["floor"]), ("U.S. Constitution, Article I, Sections 3 and 5; House Rule XX, clause 1, as printed "
+                                 "January 16, 2025; U.S. Senate, “About Voting”", r["pass"])]),
         Stage(3, "br", "Suspension of the rules", "The House takes the bill up on a Monday, Tuesday or Wednesday, debates it "
               "for no more than 40 minutes and passes it with two-thirds of the members voting.",
-              [("House Rule XV, clause 1", r["susp"])],
+              [("House Rule XV, clause 1, as printed January 16, 2025", r["susp"])],
               rel="In the House, in place of the usual floor rules", then="Then stage 6, or stage 7 if the House votes second."),
         Stage(4, "br", "Cloture", "Three-fifths of the Senate, 60 of 100, vote to end debate before the vote on the bill. "
               "Short of 60, the debate goes on and the bill waits.",
@@ -3831,7 +3863,7 @@ def fs_stages():
     president = [
         Stage(8, "st", "Sent to the President", "The Government Publishing Office prints the final text, a step called "
               "enrolling, and Congress presents it to the President, who has 10 days, Sundays excepted, to act.",
-              [(h, r["pres"])]),
+              [(h, r["pres"]), (c7 + ", clause 2", r["pock"])]),   # F11: the ten days, Sundays excepted
         Stage(9, "br", "Signed", "The President signs it, and it becomes law.", [(c7, r["veto"])],
               rel="If the President signs it", then="Then stage 13."),   # CE-M4: a law passed over a veto, or with no
         #                                                                  signature, never passes stage 9
@@ -3865,7 +3897,7 @@ def fs_stages():
     ]
     undo = [
         Stage(18, "af", "Ended by a sunset", "A date in the law’s own text ends a part of it, unless a later act moves the "
-              "date.", [("Public Law 115-97, section 11022", r["rep"])], stop="That part ends on its date."),
+              "date.", [("Public Law 115-97, section 11022, approved December 22, 2017", r["rep"])], stop="That part ends on its date."),
         Stage(19, "af", "Struck down by a court", "A court can rule that a law, or a part of it, violates the Constitution, a "
               "power the Supreme Court set out in Marbury v. Madison in 1803. The Supreme Court’s most recent decision to hold "
               "part of an Act of Congress unconstitutional, in its opinions through November 9, 2026, came on June 30, 2026, "
@@ -3875,7 +3907,7 @@ def fs_stages():
                ("National Republican Senatorial Committee v. Federal Election Commission, No. 24-621", r["nrsc"])],
               stop="The part the court holds void no longer applies."),
         Stage(20, "af", "Repealed or changed", "Congress passes a later act that repeals or rewrites it.",
-              [("Public Law 119-21, section 70104", r["rep"])], back="A repeal is a new act: back to stage 1."),
+              [("Public Law 119-21, section 70104, approved July 4, 2025", r["rep"])], back="A repeal is a new act: back to stage 1."),
     ]
     return [("In Congress", congress), ("At the President", president), ("Once it is law", after),
             ("Undoing it", undo)], fs, r
@@ -3890,7 +3922,7 @@ def rule_15_22(book):
     need(all(s.cites for s in stages), "a stage of Route FS prints no source")
     head = hed("Route", "FS", fs["name"])
     rec = (f'<p class="rec">Our systems atlas, as of {SNAP}: {e(fs["instrument"])}. Who acts: {e(fs["who"])}.</p>')
-    lab = diagram_label("documented", "on the public record: the law or rule behind each stage, with the date we read it")
+    lab = diagram_label("documented", "on the public record: the law or rule behind each stage, with the date we retrieved it")
     # DD-S1, DD-S2: the key before the stages, each mark drawn beside its words, one look to one meaning
     # R1, item 4: each key entry draws as the plate draws it, with the number of the first stage of its kind on the plate
     first = lambda *kinds: str(next(s.n for s in stages if s.kind in kinds))
@@ -3907,11 +3939,11 @@ def rule_15_22(book):
     # DF-10: the atlas's snapshot date closes the atlas's part, and the stages' sources follow it, as Rule 15.24 orders them
     body = (head + rec + lab + key + wf_html(groups)
             + src("route FS, its instrument and who acts").replace("United States.</p>", "United States. Each stage’s "
-                                                                    "source as named beside it, with the date we read it.</p>"))
+                                                                    "source as named beside it, with the date we retrieved it.</p>"))
     book.add("s-15-22-correct", body, rule="15.22", readable=True, wide=True,
              alt=(f"Route FS, Federal statute, from our systems atlas as of {SNAP}: {fs['instrument']}. Who acts: {fs['who']}. "
                   f"Drawn as a workflow of {len(stages)} numbered stages in four groups, In Congress, At the President, Once it "
-                  "is law and Undoing it, each with its source and the date we read it. Each stage is a bold number set on "
+                  "is law and Undoing it, each with its source and the date we retrieved it. Each stage is a bold number set on "
                   "its line. The stages every enacted bill passes sit on a line in the text’s ink; the other paths and what "
                   "follows the law sit on gray lines, and a small square ends a path that stops. "
                   + " ".join(s.say() for s in stages) + " A line runs from the last stage back to stage 1."),
@@ -3942,7 +3974,7 @@ def rule_15_22(book):
             "a ring or a square on a tracker marks a state (Rule 11.2). Set the stages every change on the route passes "
             "through on one line in the text’s ink, and the paths that leave it on gray lines, each saying in words where it "
             "leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill "
-            "that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
+            "that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we retrieved it.",
             "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings "
             "the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one "
             "aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back "
@@ -3971,7 +4003,8 @@ def rule_15_22(book):
             {"label": "After the law", "value": "Funding, rules, review and the courts on a gray line, then what undoes it"},   # the editor's second read: the key's and the rule's word (DF-5)
             {"label": "Ends", "value": "A small square and words where a path stops, the plate’s only square"},
             {"label": "Return", "value": "A gray line back to stage 1 for an act that undoes the law"},
-            {"label": "Sources", "value": "The law or rule behind each stage, with the date we read it, beside the stage"},
+            {"label": "Sources", "value": "The law or rule behind each stage, with the date we retrieved it, and a section of the "
+                                          "U.S. Code as in force on that day, beside the stage"},
         ],
         "related": ["11", "13", "14"],
         "builders": ["Hold each stage as one row with its number, its kind, its words, its source and the date the source "
@@ -4039,10 +4072,11 @@ ROUTE_SET = {
                 "In force, or sent to a referendum"],
         sources=[("Massachusetts Constitution, Amendment Article LXXXIX", [("Home rule: what a city may enact", "exercise any power or function"),
                                                                         ("State limits on local power (preemption)", "regulate elections")]),
-                 ("the charters of Boston, Baltimore and Portland, Oregon", [("Boston, Northeast", "two thirds of all the city councillors"),
+                 ("the charters of Boston, updated as of January 2025, Baltimore, and Portland, Oregon, as amended "
+                  "November 8, 2022", [("Boston, Northeast", "two thirds of all the city councillors"),
                                                                             ("Baltimore, South", "read on three different days"),
                                                                             ("Portland, Oregon, West", "The Mayor is not a member of Council")]),
-                 ("the Minneapolis City Council’s rules", [("Minneapolis, Midwest (council rules, not the charter)", "veto of the Mayor shall be overturned")])],
+                 ("the Minneapolis City Council’s rules, as revised in 2026", [("Minneapolis, Midwest (council rules, not the charter)", "veto of the Mayor shall be overturned")])],
         note=("Portland, Oregon’s charter gives its mayor no veto.", "Portland, Oregon, West", "no section read gives a veto")),
     "SS": dict(
         stages=["Introduced and sent to a committee", "Hearing and report", "Readings and a vote in each chamber",
@@ -4051,7 +4085,8 @@ ROUTE_SET = {
                   [("Massachusetts, Northeast", "Two-thirds of each branch"), ("Nebraska, Midwest", "three-fifths of the members elected"),
                    ("Virginia, South", "two-thirds vote"), ("Arizona, West", "two-thirds of the members elected"),
                    ("Virginia", "referred to a committee of each house"), ("Arizona", "read by sections on three different days")]),
-                 ("the Massachusetts Joint Rules and the Rules of the Nebraska Legislature",
+                 ("the Joint Rules of the Massachusetts General Court, adopted June 26, 2025, and the Rules of the Nebraska "
+                  "Legislature for 2025 to 2026",
                   [("Massachusetts", "shall hold a public hearing"), ("Nebraska", "General File, Select File and Final Reading")])],
         note=("Nebraska’s Legislature has one chamber.", "Nebraska", "Nebraska Unicameral Legislature")),
     "BI": dict(
@@ -4060,7 +4095,7 @@ ROUTE_SET = {
         sources=[("the constitutions of Massachusetts, Ohio and Michigan",
                   [("4 Legislature (indirect initiative)", "within 40 session days"), ("6 Vote, certification and effect", "thirty days after the election"),
                    ("After the vote", "may amend or repeal a law approved by the people")]),
-                 ("the California Secretary of State’s Statewide Initiative Guide",
+                 ("the California Secretary of State’s Statewide Initiative Guide, revised January 2026",
                   [("2 Title and summary", "circulating title and summary"), ("3 Signatures", "fails to qualify for the ballot"),
                    ("5 On the ballot", "certificate of qualification")])],
         note=None),
@@ -4068,10 +4103,10 @@ ROUTE_SET = {
         stages=None,           # DF-9: Rule 15.22's stage names, read from fs_stages() by fs_card_stages()
         sources=[("the U.S. Constitution, Article I", [("Signature, veto and override", "two thirds of that House"),
                                                        ("Appropriations", "Appropriations made by Law")]),
-                 ("House Rule XV and the House’s and Senate’s own pages", [("Introduction and committee", "sponsors a bill"),
+                 ("House Rule XV, as printed January 16, 2025, and the House’s and Senate’s own pages", [("Introduction and committee", "sponsors a bill"),
                                                                           ("House: suspension of the rules", "two-thirds"),
                                                                           ("Ending Senate debate (cloture)", "60 of the 100-member Senate")]),
-                 ("2 U.S.C. 641 and 683, and 5 U.S.C. 553, 706 and 801", [("Senate: reconciliation", "20 hours"),
+                 ("2 U.S.C. 641 and 683, and 5 U.S.C. 553, 706 and 801, each as in force on the day we retrieved it", [("Senate: reconciliation", "20 hours"),
                                                                           ("Funding: rescission proposals", "45-day period"),
                                                                           ("Agency rulemaking", "not less than 30 days"),
                                                                           ("FA", "Litigation", "hold unlawful and set aside"),
@@ -4083,7 +4118,7 @@ ROUTE_SET = {
                 "Committee", "The Senate’s vote to advise and consent"],
         sources=[("the U.S. Constitution, Article I, Section 5, and Article II, Section 2",
                   [("Each chamber sets its rules", "Each House may determine the Rules of its Proceedings"), ("Nomination", "Advice and Consent")]),
-                 ("the Standing Rules of the Senate", [("Senate: rules carry over", "continue from one Congress to the next"),
+                 ("the Standing Rules of the Senate, revised to January 24, 2013", [("Senate: rules carry over", "continue from one Congress to the next"),
                                                       ("Senate: ending debate, and changing the rules", "two-thirds of the Senators present and voting"),
                                                       ("Committee referral and the final question", "advise and consent")]),
                  ("the Senate’s roll call votes of November 21, 2013 and April 6, 2017", [("Senate: a precedent set by majority vote", "November 21, 2013")]),
@@ -4093,9 +4128,9 @@ ROUTE_SET = {
         stages=["Executive order, published in the Federal Register", "White House review of a draft rule",
                 "Proposed rule, comment and final rule", "Guidance, with no comment period", "Report to Congress, and disapproval",
                 "Court review", "Revoked by a later order"],
-        sources=[("Executive Order 12866 and 44 U.S.C. 1505", [("Review of a draft rule at the White House", "90 calendar days"),
+        sources=[("Executive Order 12866 of September 30, 1993, and 44 U.S.C. 1505, as in force on the day we retrieved it", [("Review of a draft rule at the White House", "90 calendar days"),
                                                                ("Publication", "Presidential proclamations and Executive orders")]),
-                 ("5 U.S.C. 551, 553, 706, 801 and 802", [("What counts as a rule", "agency statement"),
+                 ("5 U.S.C. 551, 553, 706, 801 and 802, each as in force on the day we retrieved it", [("What counts as a rule", "agency statement"),
                                                           ("Proposed rule, comment and final rule", "not less than 30 days"),
                                                           ("Guidance with no comment period", "interpretative rules"),
                                                           ("Congressional Review Act: report and waiting period", "60 days"),
@@ -4107,7 +4142,7 @@ ROUTE_SET = {
     "ENF": dict(
         stages=["Complaint", "Discovery, settlement or trial", "An agency’s own complaint", "Consent order or judgment, "
                 "open for public comment", "A court’s finding that a settlement serves the public interest", "Appeal"],
-        sources=[("15 U.S.C. 16 and 45, 16 CFR 2.34 and 29 U.S.C. 160", [("An agency's own complaint (FTC)", "reason to believe"),
+        sources=[("15 U.S.C. 16 and 45 and 29 U.S.C. 160, each as in force on the day we retrieved it, and 16 CFR 2.34, 2025 edition", [("An agency's own complaint (FTC)", "reason to believe"),
                                                                        ("Consent order (FTC)", "30 days"),
                                                                        ("Consent judgment (Justice Department, antitrust)", "public interest"),
                                                                        ("Time limit and court review (NLRB)", "six months")]),
@@ -4118,10 +4153,10 @@ ROUTE_SET = {
         stages=["District court", "Appeal from a final decision", "Decision, rehearing or a remand, which sends the case back",
                 "Petition to the Supreme Court",
                 "The Court chooses whether to hear it", "A later ruling can replace earlier doctrine"],
-        sources=[("28 U.S.C. 1254, 1291, 2101 and 2106", [("Appeal from a final decision", "final decisions of the district courts"),
+        sources=[("28 U.S.C. 1254, 1291, 2101 and 2106, each as in force on the day we retrieved it", [("Appeal from a final decision", "final decisions of the district courts"),
                                                           ("Asking the Supreme Court", "ninety days"),
                                                           ("4 Appeals court ruling", "affirm, modify, vacate, set aside or reverse")]),
-                 ("the Rules of the Supreme Court", [("5 Supreme Court petition", "not a matter of right")]),
+                 ("the Rules of the Supreme Court, effective March 16, 2026", [("5 Supreme Court petition", "not a matter of right")]),
                  ("U.S. Courts, “Court Role and Structure” and “Appeals”", [("Trial court and courts of appeals", "13 appellate courts"),
                                                                            ("Decision, en banc review or remand", "Most appeals are final")]),
                  ("Loper Bright Enterprises v. Raimondo, 2024", [("Later doctrine replaces earlier doctrine", "Chevron is overruled")])],
@@ -4131,7 +4166,7 @@ ROUTE_SET = {
                 "Ratified by three-fourths of the states, 38 of 50", "Certified by the Archivist"],
         sources=[("the U.S. Constitution, Article V", [("Proposal by Congress or a convention", "two thirds of both Houses"),
                                                        ("Ratification by the states", "three fourths")]),
-                 ("1 U.S.C. 106b and the National Archives", [("When it takes effect", "38 of 50 States"),
+                 ("1 U.S.C. 106b, as in force on the day we retrieved it, and the National Archives", [("When it takes effect", "38 of 50 States"),
                                                               ("Certification", "with his certificate")])],
         note=None),
     "IC": dict(
@@ -4149,7 +4184,7 @@ ROUTE_SET = {
         sources=[("the U.S. Constitution, First Amendment", [("Organize and act", "peaceably to assemble")]),
                  ("the Internal Revenue Service’s pages on 501(c)(3) and 501(c)(4) groups",
                   [("Fund a charity", "may not attempt to influence legislation"), ("Fund an advocacy group", "primary activity")]),
-                 ("29 U.S.C. 157", [("Bargain as workers", "bargain collectively")])],
+                 ("29 U.S.C. 157, as in force on the day we retrieved it", [("Bargain as workers", "bargain collectively")])],
         note=("No government stage decides this route; the law sets its limits.", "Organize and act", None)),
 }
 need(list(ROUTE_SET) == ROUTE_CODES, "the reference set leaves the atlas's order (ruling (e))")
@@ -4254,7 +4289,8 @@ def route_card(code):
     return (f'<li class="rc"><p class="hed">{chip("Route", code)}<span>“{e(rt["name"])}”</span></p>'
             f'<p class="ri">{e(rt["instrument"])}.</p><p class="rw"><b>Who acts</b> {e(rt["who"])}</p>'
             f'<p class="k">Its stages</p><ol class="sl">{stg}</ol>{note}'
-            f'<p class="rs2"><b>Official sources</b>, read {hold(dates_words(r["Checked"] for r in rows))}: {hold(e(srcs))}</p>'
+            f'<p class="rs2"><b>Official sources</b>, retrieved {hold(dates_words(r["Checked"] for r in rows))}: '
+            f'{hold(e(usc_checked(srcs)))}</p>'
             f'<p class="rcn">{e(cnt)}</p>{disc}</li>'), len(ents), n_d
 
 
@@ -4307,8 +4343,8 @@ def rule_15_24(book):
            f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Its entry’s own words: “{e(r28["routes"][0]["who"])}”. '
            f'<b>{e(r28["routes"][0]["feasibility"].capitalize())}</b> feasibility. Not checked.</p>'
            f'<p>The entry names reconciliation, so the reform takes stage 5 of Rule 15.22’s workflow: Senate debate held to '
-           f'20 hours and a simple majority, in place of cloture’s 60 votes. Source: 2 U.S.C. 641, read '
-           f'{C13.words_date(rr["Checked"])}.</p></div>')
+           f'20 hours and a simple majority, in place of cloture’s 60 votes. Source: '
+           f'{hold(cite_dated("2 U.S.C. 641", rr))}.</p></div>')
     scale = "".join(f"<li><b>{e(k.capitalize())}</b>: “{e(v)}”</li>" for k, v in V7["routes"]["feasibility_scale"].items())
     deps = "".join(f"<li><b>{e(k.capitalize())}</b>: “{e(v)}”</li>" for k, v in V7["routes"]["dependencies"].items())
     key = (f'<div class="scl"><div><p class="k">Feasibility, the atlas’s four words for 2026 to 2030</p><ul class="kw">{scale}</ul></div>'
@@ -4319,7 +4355,7 @@ def rule_15_24(book):
     body = (head + key + f'<ol class="rset">{"".join(c for c, _, _ in cards)}</ol>' + one
             + f'<p class="src">Source: {e(ATLAS)}, the eleven routes, their instruments, who acts, what each depends on, the '
               f'feasibility scale and every reform route entry, snapshot of {SNAP}, United States. Each route’s official '
-              f'sources as named on its card, with the dates we read them. Of the atlas’s {total} route entries, '
+              f'sources as named on its card, with the dates we retrieved them. Of the atlas’s {total} route entries, '
               f'{dated} carry a check date.</p>')
     alt_cards = " ".join(f"Route {c}, {ROUTE[c]['name']}: {ROUTE[c]['instrument']}; {words_n(n)} "
                          f"{'entry' if n == 1 else 'entries'}, {words_n(d_) if d_ else 'none'} checked."   # DF-8
@@ -4327,7 +4363,7 @@ def rule_15_24(book):
     book.add("s-15-24-correct", body, rule="15.24", readable=True, wide=True, interactive=True,
              alt=(f"The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of {SNAP}. "
                   "First the atlas’s four feasibility words and five dependency questions. Each card gives the route’s name, "
-                  "instrument, who acts, its stages, its official sources with the date we read them, what it depends on, "
+                  "instrument, who acts, its stages, its official sources with the date we retrieved them, what it depends on, "
                   "and how many reform entries name it, listed in a disclosure with each one’s check date or not checked. "
                   + alt_cards + f" After the cards, one reform read through its workflow: Reform R-28, {r28['title']}, the "
                   "one reform an earlier drawing put on a route, as row 41 of Rule 15.25 records, on Route FS by "
@@ -4351,9 +4387,9 @@ def rule_15_24(book):
         "rule": [
             "Each of the atlas’s eleven routes to change runs through its own stages, set by its own law. When a page shows "
             "how a reform could pass, draw the workflow of the route its entry names, read the entry’s own words for the "
-            "path, and cite the route’s official source with the date we read it. Print the entry’s feasibility in the "
+            "path, and cite the route’s official source with the date we retrieved it. Print the entry’s feasibility in the "
             "atlas’s word and its own check date, or “Not checked” where it has none (Rule 13.10).",
-            f"Keep the two dates apart. “Read” and its date say when we read the law behind a route; “Checked” "
+            f"Keep the two dates apart. “Retrieved” and its date say when we read the law behind a route; “Checked” "
             f"and its date say when the atlas checked one reform’s entry. Of the atlas’s {total} route entries, {dated} carry "
             f"a check date, all {SNAP}.",
         ],
@@ -4361,7 +4397,7 @@ def rule_15_24(book):
         "why": {"text": ["The same route can run different ways: a tax bill passed by reconciliation needs a simple majority "
                          "in the Senate, and most bills need 60 votes to end debate. A reader who weighs a reform’s chances "
                          "needs its own path, the law that sets it and how recently anyone checked."],
-                "basis": "Our systems atlas’s routes and reform route entries; the official sources on each card, read "
+                "basis": "Our systems atlas’s routes and reform route entries; the official sources on each card, retrieved "
                          "November 11 to 14, 2026; Rules 13.10 and 15.22"},
         "correct": {"specimen": "s-15-24-correct",
                     "caption": "The atlas’s eleven routes as a reference set, each with its instrument, stages and official "
@@ -4376,10 +4412,10 @@ def rule_15_24(book):
                                         "confirmation, Federal executive action, Enforcement and litigation, Court doctrine, "
                                         "Article V, Interstate compact, Civil society"},
             {"label": "Each route", "value": "Its chip and name, instrument and who acts, as of the snapshot; its stages; its "
-                                             "official sources, with the date we read them; what it depends on, in the atlas’s words"},
+                                             "official sources, with the date we retrieved them; what it depends on, in the atlas’s words"},
             {"label": "Its entries", "value": "How many name it and how many carry a check date, then each one in a "
                                               "disclosure with its feasibility and its date or “Not checked”"},
-            {"label": "Two dates", "value": "“Read” for our research; “Checked” or “Not checked” for an atlas entry"},
+            {"label": "Two dates", "value": "“Retrieved” for our research; “Checked” or “Not checked” for an atlas entry"},
             {"label": "Once for the set", "value": "The atlas’s four feasibility words and five dependency questions"},
         ],
         "related": ["11", "13", "18"],
@@ -4979,7 +5015,8 @@ def rule_15_23(book):
              ("after", "After step 6", [fw("7"), fw("8")])]
     b8 = xw_block(f'The Freedom of Information Act beside the records request tracker of <a href="#rule-11-8">Rule 11.8</a>',
                   "A federal request’s stages in the law, behind the tracker’s six steps",      # CE-M3, DF-1
-                  rows8, f"Stages from 5 U.S.C. 552 and FOIA.gov, read {dates_words([fm['date_retrieved'], clock['Checked']])}.")
+                  rows8, usc_checked(f"Stages from 5 U.S.C. 552, as in force on the day we retrieved it, and FOIA.gov, retrieved "
+                                     f"{dates_words([fm['date_retrieved'], clock['Checked']])}."))
     # Rule 11.9, an agency rule, against the federal rule-making steps
     r9, s9 = tracker_steps("11.9")
     ru = {r["order"]: r for r in csv_rows("govinfo-federal-rulemaking-steps.csv")}
@@ -5004,7 +5041,8 @@ def rule_15_23(book):
              ("after", "After step 6", [rw("7"), rw("8")])]
     b9 = xw_block(f'Federal rule making beside the agency rule tracker of <a href="#rule-11-9">Rule 11.9</a>',
                   "The law’s stages for a federal rule, behind the tracker’s six steps",        # CE-M3, DF-1
-                  rows9, f"Stages from 5 U.S.C. 551, 553, 701 to 706, 801 and 802 and Executive Order 12866, read "
+                  rows9, f"Stages from 5 U.S.C. 551, 553, 701 to 706, 801 and 802, each as in force on the day we retrieved "
+                         f"it, and Executive Order 12866 of September 30, 1993, as amended, retrieved "
                          f"{C13.words_date(rm['date_retrieved'])}.")
     # Rule 11.10, a ballot measure, against Route BI's rows
     r10, s10 = tracker_steps("11.10")
@@ -5030,7 +5068,7 @@ def rule_15_23(book):
                    "A citizen initiative’s stages in four states’ constitutions and California’s guide, behind the tracker’s "
                    "six steps", rows10,
                    f"Stages from the constitutions of Massachusetts, Ohio and Michigan and the California Secretary of "
-                   f"State’s guide, read {dates_words(r_['Checked'] for r_, _ in bi)}.")
+                   f"State’s guide, revised January 2026, retrieved {dates_words(r_['Checked'] for r_, _ in bi)}.")
     # Rule 11.11, a court case, against Route CRT's rows
     r11, s11 = tracker_steps("11.11")
     cw = lambda first, words, *ph: (wf_first("CRT", first, *ph), (None, "st", words))
@@ -5055,8 +5093,9 @@ def rule_15_23(book):
                    "A federal civil case’s stages in Title 28, the courts’ rules and the Supreme Court’s rules, behind the "
                    f"tracker’s six steps. The case itself runs on the enforcement and litigation route, “{e(lc(ROUTE['ENF']['instrument']))}”; "
                    f"a ruling at step 4 or 6 that changes what other routes may do belongs to the court doctrine route.", rows11,
-                   f"Stages from 28 U.S.C., the Federal Rules of Civil and Appellate Procedure and the Rules of the Supreme "
-                   f"Court, read {dates_words(r_['Checked'] for r_, _ in cr)}.")
+                   f"Stages from 28 U.S.C., as in force on the day we retrieved it, the Federal Rules of Civil Procedure of "
+                   f"December 1, 2025, the Federal Rules of Appellate Procedure of December 1, 2024, and the Rules of the "
+                   f"Supreme Court effective March 16, 2026, retrieved {dates_words(r_['Checked'] for r_, _ in cr)}.")
     for blk in (b1, b8, b9, b10, b11):     # CE-M3, DF-1: a block's subhead calls the law's parts stages, the tracker's steps
         sub = re.search(r'<p class="xs">(.*?)</p>', blk).group(1)
         need(re.search(r"\bstages\b.*behind the tracker", sub) and not re.search(r"\bsteps\b.*behind the tracker", sub),
@@ -5130,7 +5169,7 @@ def rule_15_23(book):
             {"label": "Before and after", "value": "Rows for the stages before step 1 and after step 6, each named"},
             {"label": "Stages", "value": "Route FS’s in words, “Stage” and Rule 15.22’s number, with no mark; the others by name, from "
                                          "their sources"},
-            {"label": "Sources", "value": "Under each block, with the date we read them"},
+            {"label": "Sources", "value": "Under each block, with the date we retrieved them"},
         ],
         "related": ["11", "14"],
         "builders": ["Read each tracker’s steps from chapter 11’s file and each stage from its workflow’s rows, so a "
@@ -5161,7 +5200,7 @@ def route_read_span(book):
     days = set()
     for sid in ("s-15-22-correct", "s-15-23-correct", "s-15-24-correct"):
         t = html.unescape(book.files[sid]).replace("\xa0", " ")
-        for m in re.finditer(r"\b(?:read|retrieved) (November) ((?:\d{1,2}, )*\d{1,2}(?:,? and \d{1,2})?), (2026)", t):
+        for m in re.finditer(r"\b(?:read|retrieved|in force on) (November) ((?:\d{1,2}, )*\d{1,2}(?:,? and \d{1,2})?), (2026)", t):
             days |= {int(d) for d in re.findall(r"\d{1,2}", m.group(2))}
     need(days, "no read date found on Rules 15.22 to 15.24")
     lo, hi = min(days), max(days)
@@ -5207,7 +5246,7 @@ def chapter(book):
                      "offers nothing the atlas does not hold."},
             {"before_rule": "15.22", "number": 5, "title": "Routes to change, stage by stage",
              "line": "A reform can travel through eleven routes, from a city council to a constitutional amendment, and each "
-                     "route here carries its official source and the date we read it. The federal statute’s route is drawn "
+                     "route here carries its official source and the date we retrieved it. The federal statute’s route is drawn "
                      "whole, from a bill’s introduction to its repeal or expiry, and each tracker’s six steps are matched to "
                      "the stages they fold together."},
             {"before_rule": "15.25", "number": 6, "title": "Earlier drawings of the atlas",
@@ -5236,7 +5275,7 @@ def chapter(book):
              "Retrieved November 12, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot "
              "alone does not mean a fact was rechecked on that date."),
             ("Sources for the routes to change: the constitutions, statutes, court rules and chamber rules each plate of "
-             f"Rules 15.22 to 15.24 names, with the date we read each, {route_read_span(book)}. The reconciliation of Rule 15.25: "
+             f"Rules 15.22 to 15.24 names, with the date we retrieved each, {route_read_span(book)}. The reconciliation of Rule 15.25: "
              "our first audit of three earlier sets of pages, October 20, 2026, rerun November 13, 2026."),
         ],
     }

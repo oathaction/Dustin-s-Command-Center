@@ -14,12 +14,13 @@ Pending.
 
 ## 3. Should fix
 
-Draft findings from the markup, 16:49 UTC; each is confirmed or dropped in the browser before the report closes.
-
-- **AX-S1 (draft). Rule 14.5's palette plate prints 16 of its 36 label ratios one hundredth high** (`s-14-palette-spec`, `palette_spec_build.py` line 274). D3-1929 says the plate rounds every ratio down. The ground ratios do (54 of 54 match the WCAG formula rounded down), but each "Label in ..." ratio is round 0's figure, already rounded half up, which `ratio()` then floors to no effect: "Label in Newsprint, 10.47 to 1" measures 10.468, "Label in Charcoal, 7.81 to 1" measures 7.808, "Label in Newsprint, 4.61 to 1" measures 4.606. None crosses 3 or 4.5, so no claim is false today, but the next token release could round a 4.496 up to "4.50 to 1, text". Fix: measure `contrast(r["label_hex"], r["fill_hex"])` in the generator, as the ground ratios are. Owner: engineer.
-- **AX-S2 (draft). S95's second crop loses its size line on the page** (`kit.js` near line 1287, rule 14.141). Round 5's fix names the second crop by its size line ("Drawn at 1080 by 1080 px") and then sets that line `hidden`, the step meant for the alt paragraph. The first crop keeps "Drawn at 1080 by 1350 px" under it; the second shows none (capture `newsprint-1x/1440/s-14-s95.png`). The name still computes, since `aria-labelledby` reads hidden text. Fix: hide the label only when it is the alt paragraph. Owner: engineer.
-- **AX-S3 (draft). The step tables and 15.22 describe their own words a second time.** A readable plate is a group described by its alt (AX-S2 of Gate 2), and four in this review's scope carry an alt that repeats the live words they describe: `s-15-22-correct` (4,276 characters, 56 percent of its five-word runs repeated from the plate's words), `s-11-ballot-steps` (1,509 against a 1,373-character table), `s-11-court-steps` (1,016 against 931), `s-11-steps` (932 against 883). Chromium hangs the whole description on the group, so a reader can hear every step with its law twice. Fix: an alt for a readable plate says what the plate is in one or two sentences ("A table of the six steps of a citizen initiative, with what happens at each and the law that sets it in the four states we read"). Owners: systems designer (15.22), tracker designer (the three step tables). Guide-wide the same pattern sits on 12 more readable plates outside this review (listed under Measured reach), which can wait for the pass that touches them.
-- **AX-S4 (draft). The last question's skip link passes the rule index without saying so** (`s-14-selection-guide`, the 16th question). "Skip these 7 forms" lands on `#group-14-1`, past the rule index and local contents, 333 links in all, while the other 15 "Skip these N forms" land on the next question. The first skip link now says "Skip to Rule 14.1" and lands there, so D3-2086 is met for it. Fix: point the 16th at the rule index's label (`#data-visualization-index-t`), or word it "Skip these 7 forms and the rule index". Owner: selection guide maker.
+- **AX-S1. Rule 14.5's palette plate prints 16 of its 36 label ratios one hundredth high** (`s-14-palette-spec`, `palette_spec_build.py` line 274). D3-1929 says the plate rounds every ratio down. The 54 ground ratios do: each matches the WCAG formula on its printed value, rounded down. Each "Label in ..." ratio is round 0's figure, already rounded half up, which `ratio()` then floors to no effect: "Label in Newsprint, 10.47 to 1" on #202A28 measures 10.468; "Label in Charcoal, 7.81 to 1" on #97ACA4 measures 7.808; "Label in Newsprint, 4.61 to 1" on #3F655E measures 4.606. None crosses 3 or 4.5, so no claim is false today, but a later token release could print a 4.496 as "4.50 to 1, text". Fix: measure `contrast(r["label_hex"], r["fill_hex"])` in the generator, as it does for the grounds. Owner: engineer.
+- **AX-S2. S95's second crop loses its size line** (Rule 14.141, `kit.js` near line 1287). Round 5's fix names the second crop by its size line, "Drawn at 1080 by 1080 px", and then sets that line `hidden`, a step meant only for the alt paragraph. The first crop keeps "Drawn at 1080 by 1350 px" under it; the second shows none (capture `newsprint-1x/1440/s-14-s95.png`). The name still reaches a screen reader, since `aria-labelledby` reads hidden text, but a sighted reader loses the label. Fix: hide the label only when it is the alt paragraph (`lid === fig.id + '-alt'`). Owner: engineer.
+- **AX-S3. Rule 15.22 and the three step tables describe their own words a second time.** A readable plate is a group described by its alt (AX-S2 of Gate 2). Four in this review carry an alt that repeats the live words beside it: `s-15-22-correct` (a 4,276-character description, 56 percent of its five-word runs found again in the plate's 5,860 characters of words), `s-11-ballot-steps` (1,509 characters against a 1,373-character table), `s-11-court-steps` (1,016 against 931) and `s-11-steps` (932 against 883). Chromium hangs the whole description on the group, so a reader who hears descriptions meets every stage or step, with its law or source, twice. The three step tables also have no `<caption>`, so a screen reader's list of tables names them only "table". Fix: for a readable plate, an alt of one or two sentences that says what the plate is ("A table of the six steps of a citizen initiative, with what happens at each and the law that sets it in the four states we read"), and that sentence as the table's caption. Owners: systems designer (15.22), tracker designer (the three tables). The same pattern sits on 12 readable plates outside this review (`s-19-results`, `s-19-devices`, `s-10-9-correct`, `s-01-uneven`, `s-01-words`, `s-11-marks-drawn`, `s-19-matrix`, `s-12-owner-correct`, `s-02-25-correct`, `s-02-checklist`, `s-02-about`, `s-13-12-correct`), which can wait for the pass that next touches them.
+- **AX-S4. The last question's skip link passes the rule index without saying so** (`s-14-selection-guide`, question 16). "Skip these 7 forms" lands on `#group-14-1`, past the rule index and the local contents, 333 links in all, while the other 15 "Skip these N forms" each land on the next question. The first skip link now reads "Skip to Rule 14.1" and lands there, so D3-2086 is met for it. Fix: point the 16th at the rule index's label (`#data-visualization-index-t`), where the guide ends. Owner: selection guide maker.
+- **AX-S5. A chosen target pill's red ring stands at 2.95 to 1 on Newsprint** (Rules 14.144 and 15.20, the loop drawing). With R-30 chosen, the pill "Housing scarcity" takes a 3 px Pillar Red ring with no keyline (capture `newsprint-1x/1440/states/s-14-144-correct--R-30.png`); #E63946 on #DCD9D2 measures 2.95 to 1, under the 3 to 1 that 1.4.11 asks of a graphic's boundary. The words say which marks turn red, so no fact is lost (1.4.1 holds), and the ring is thicker than an unchosen pill's. DD-R5's keyline inside the ring, Charcoal on Newsprint and Newsprint on Charcoal, brings the boundary to 13.29 to 1. Fix: land DD-R5 on both plates (R4-5). Owners: systems designer (15.20), complex examples maker (14.144).
+- **AX-S6. DR-278 (b)'s fix must change the guide check in the same commit.** Wrapping each image stage's fragment in `aria-hidden="true"` takes 4,481 texts in 352 stages out of `guide_check.js`'s 13 px floor and contrast scan (line 487), measured with the check's own filter. Fix: mark the wrapper (`data-oa-picture`) and skip `[aria-hidden="true"]` there only where it is not that wrapper; the scan should count 5,331 texts in 415 stages before and after. Owner: engineer.
+- **AX-S7. Chapter 26's code sets push the page sideways at 320 px with 200 percent text** (`c-26-download`, `c-26-warning`, `c-26-caption`, `c-26-chart`, light and dark). After DR-278 (c)'s fix the page still scrolls 33 px there. WCAG does not ask for 320 px and 200 percent together, so this is low; the start page's own two lines go with DR-278 (c). Owners: component engineer (the code stage CSS), engineer (chapter 26's code sets).
 
 ## 4. The named places in this lens
 
@@ -40,6 +41,46 @@ Draft, 16:57 UTC; lines firm up as the browser runs land.
    - **Scripts off (390 px):** 14.143 shows its 7 steps and both drawings with no button; 15.19 its 3 steps; 14.144's three radios still choose; S96, S85, S91 and S94 print "This chart needs JavaScript" with their tables; the selection guide's 127 links and pictures stand.
    - **Forced colors (emulated, 1440 and 390 px):** captures of 14.143, 14.144, S96, 11.10, 11.11, S85, S87, S89, S91, S94, the palette plate, 15.22 and 15.23 read. Every live word takes the system's colors; each drawing keeps its own ground. On S96 the columns turn to outlines while the two named drops stay filled, so the plate's point survives. On the selection guide at 320 px the names and tiers take the link color and the symbols keep their shapes.
    - The three phrases past their card at 320 px with 200 percent text (D3-1890): pending the keyboard run.
+8. **Contrast by the WCAG formula, 34 pairs from the new work** (token values read from `tokens.css`, ratios rounded down; the palette plate's 88 printed ratios are under named place 5). Text needs 4.5 to 1, large text and marks 3 to 1.
+
+   | Pair, where it appears | Ratio | Verdict |
+   |---|---|---|
+   | Charcoal words on Newsprint: every new plate's body, S96's named drops, the trackers' status lines | 13.29 | met |
+   | Deep Stone secondary words on Newsprint: the selection guide's tier words, S96's measure and source lines, the trackers' key | 5.49 | met |
+   | Deep Stone on the plate mat (#CECDC7), the size lines beside frames | 4.85 | met |
+   | Deep Stone on White, the trackers' words where a step's band is selected | 7.74 | met |
+   | Newsprint words on Charcoal: round 4's cards and chips on Charcoal | 13.29 | met |
+   | Dim Newsprint secondary words on Charcoal | 7.26 | met |
+   | Muted step words on Newsprint, 14.143's steps ahead | 5.49 | met |
+   | Muted step words on Charcoal | 7.26 | met |
+   | Charcoal on 14.143's selected band (White) | 18.73 | met |
+   | Newsprint on the selected band on Charcoal (Prussian) | 9.42 | met |
+   | Tracker marks Done, Now, Stopped and the done line (Charcoal) on Newsprint | 13.29 | met |
+   | Tracker Not yet ring and line (Stone) on Newsprint | 4.29 | met |
+   | Tracker marks on Charcoal (Newsprint) | 13.29 | met |
+   | Tracker Not yet ring on Charcoal (Dim Newsprint) | 7.26 | met |
+   | A step number knocked out of a filled mark (Newsprint on Charcoal) | 13.29 | met |
+   | Pillar Red ring of a chosen target pill on Newsprint (14.144, 15.20) | 2.95 | **under 3 (AX-S5)** |
+   | Pillar Red on the plate mat | 2.61 | under 3, only where a red mark meets the mat |
+   | Pillar Red on Charcoal | 4.49 | met |
+   | Verdigris focus ring on Newsprint | 3.36 | met |
+   | Verdigris focus ring on the plate mat | 2.97 | not used: a frame's own ring is Charcoal (11.75) |
+   | Newsprint focus ring on Charcoal | 13.29 | met |
+   | S96's columns (context, Stone) on Newsprint | 4.29 | met |
+   | S96's two named drops (Charcoal) against the Stone columns beside them | 3.09 | met |
+   | Context ink on Charcoal (#878A8F) | 5.41 | met |
+   | Light fill (#A1A2A3) on Newsprint: the selection guide's lighter marks, such as Grouped bar's second series | 1.81 | the symbols are hidden pictures and each form is named in words |
+   | Light fill on Charcoal (Stone) | 3.10 | met |
+   | Gridline on Newsprint (#B4B4B3) | 1.47 | gridlines are guides, not data |
+   | Gridline on Charcoal (#393C41) | 1.69 | as above |
+   | S12's phone tiles: Charcoal codes on magnitude step 1 (#CCCAC5) | 11.43 | met |
+   | Charcoal codes on step 2 (#A1A2A3) | 7.32 | met |
+   | Newsprint codes on step 3 (#555A63) | 4.91 | met |
+   | Newsprint codes on step 4 (#2E3034) | 9.37 | met |
+   | S12's step 1 tile against Newsprint | 1.13 | each tile carries its code, so position holds |
+   | Newsprint on Charcoal pills, 14.143's Variable C3 | 13.29 | met |
+
+   Measured on the rendered plates (each word's computed ink against the pixels under it with the words hidden): pending the contrast run.
 9. **The trackers' law, as heard:** every step state in 11.10's and 11.11's alts uses the key's word ("done", "now", "not yet", "never happened", "stopped"); the denied petition is "5 Supreme Court petition stopped; 6 Supreme Court ruling not yet"; "Illustrative" is in each alt.
 
 ## 5. Measured reach
@@ -75,7 +116,7 @@ In Chromium (16:58 UTC, root text at 200 percent as the guide check sets it): at
 
 ## 6. Questions for Dustin
 
-Pending.
+1. **The masthead at 360 to 372 px.** There the 24 px wordmark returns (Rule 03.6 sets the 16 px master only under 22.5em, 360 px) and the menu button no longer fits beside it, so the masthead takes two bar lines, 133 px, a fifth of a 640 px phone screen. AX-M1's fix stops it covering focus, but the bar stays tall. Moving the 16 px master's switch to 23.5em (376 px) keeps one line at every phone width; since it changes where Rule 03.6's two masters meet, it needs your call. **Recommendation: yes**, with the design director's eye on the 16 px wordmark at 360 to 375 px first.
 
 ## 7. Tested
 
@@ -84,8 +125,14 @@ All on my copy of the strict build of `9a6e1182` (`c07/review/accessibility/guid
 - **By script on the markup (Python, lxml), 16:35 to 16:50 UTC:** DR-278's four reaches (`reach.py`); every in-scope plate's role, name, description, tables, controls and live regions (`plates.py`, `skel.py`); the selection guide's 144 links, 17 skip links and their targets, 16 named lists, 127 hidden pictures and tier words; the 132 group plates whose description might repeat their words; 88 of the palette plate's printed ratios against the WCAG formula from its printed values (`wcag.py`).
 - **Chromium, DR-278 (a), 16:50 to 16:55 and 17:03 to 17:08 UTC** (`dr278.cjs`, `dr278c.cjs`): the masthead against `--head-h` every 2 to 4 px from 300 to 1440 px; 581 landings (369 rules, 65 groups, 147 return places) at 360, 1024, 1100, 1280 and 1440 px; the 34 rail links focused bottom up at 1024, 1200 and 1440 px; the `ResizeObserver` fix with the full height and with `clientHeight`; the root at 200 percent and the browser's text size at 32 px.
 - **Chromium, DR-278 (b) to (d), 16:55 to 16:58 UTC** (`dr278b.cjs`): Chromium's tree under eight image stages before and after an `aria-hidden` wrapper; the guide check's own text filter over all 416 image stages before and after, at 1440 and 390 px; axe-core's contrast rule on three stages before and after; the step lines at 320, 360 and 390 px with the root at 200 percent, before and after `overflow-wrap: anywhere`, and at the default size at five widths; the token table's selector page-wide and scoped.
+- **Chromium, DR-278 (b) and (c) follow-ups, 17:10 to 17:12 UTC** (`geo.cjs`, `wide.cjs`): every box inside all 416 image stages, and the page's height, before and after the wrapper, as a block and as `display: contents`, at 1440, 390 and 320 px; Chromium's text nodes under three stages with each wrapper; the outermost elements past the window at 320 px with the root at 200 percent, before and after the step line fix, and at 360 px and at the default size.
+- **Chromium, interaction and modes, 17:12 to 17:29 UTC** (`modes.cjs`, reduced motion on): 14.143 and 15.19 by Enter on Next step nine times, then Previous step, Reset the loop, Play and Pause; 14.144 and 15.20 by arrow keys four times; forced colors (emulated) captures of 13 plates at 1440 and 390 px and of the selection guide's first questions at 320 px; print emulation at 794 px read from computed styles; scripts off at 390 px on nine plates.
 - **The shared captures read:** `newsprint-1x/1440` (S91, S94, S95, S96, 11.10, 14.144 with R-06 and R-30, 14.143 at step 5, the selection guide's top) and `newsprint-1x/390` (the selection guide, 14.143, S96, the palette plate).
 
 ## 8. Not tested
 
-- Real screen readers (NVDA, JAWS, VoiceOver, TalkBack), Safari and Firefox: Not tested, by DR-279. Where this report says what a reader would hear, it reads Chromium's accessibility tree, labeled as such.
+- Real screen readers (NVDA, JAWS, VoiceOver, TalkBack), Safari and Firefox: Not tested, by DR-279. Where this report says what a reader would hear, it reads Chromium's accessibility tree, labeled as such; whether a screen reader reads a group's description, or the words under an image, aloud is not known from the tree.
+- A real print dialog and printed paper. Print is read from computed styles under print emulation; my four print captures timed out and are not counted.
+- Voice control (Dragon, Voice Control) for SG-6's names; touch on a real phone; a reader's own text-size setting beyond Chromium's `Page.setFontSizes`.
+- Windows High Contrast on a real system; forced colors here are Chromium's emulation only.
+- Real 2x and 3x screens; my own captures are at 1x except where the shared set gives 2x.

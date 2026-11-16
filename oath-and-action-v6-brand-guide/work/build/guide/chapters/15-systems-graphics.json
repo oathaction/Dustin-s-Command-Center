@@ -41,7 +41,7 @@
    "before_rule": "15.22",
    "number": 5,
    "title": "Routes to change, stage by stage",
-   "line": "A reform can travel through eleven routes, from a city council to a constitutional amendment, and each route here carries its official source and the date we read it. The federal statute’s route is drawn whole, from a bill’s introduction to its repeal or expiry, and each tracker’s six steps are matched to the stages they fold together."
+   "line": "A reform can travel through eleven routes, from a city council to a constitutional amendment, and each route here carries its official source and the date we retrieved it. The federal statute’s route is drawn whole, from a bill’s introduction to its repeal or expiry, and each tracker’s six steps are matched to the stages they fold together."
   },
   {
    "before_rule": "15.25",
@@ -1161,7 +1161,7 @@
    "id": "15.22",
    "title": "Draw a route to change as its whole workflow, through to reversal.",
    "rule": [
-    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order, and set each number on its line with no shape around it, since a circle, a ring or a square on a tracker marks a state (Rule 11.2). Set the stages every change on the route passes through on one line in the text’s ink, and the paths that leave it on gray lines, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
+    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order, and set each number on its line with no shape around it, since a circle, a ring or a square on a tracker marks a state (Rule 11.2). Set the stages every change on the route passes through on one line in the text’s ink, and the paths that leave it on gray lines, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we retrieved it.",
     "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back to stage 1."
    ],
    "tokens": [
@@ -1209,7 +1209,7 @@
     },
     {
      "label": "Sources",
-     "value": "The law or rule behind each stage, with the date we read it, beside the stage"
+     "value": "The law or rule behind each stage, with the date we retrieved it, and a section of the U.S. Code as in force on that day, beside the stage"
     }
    ],
    "related": [
@@ -1261,7 +1261,7 @@
     },
     {
      "label": "Sources",
-     "value": "Under each block, with the date we read them"
+     "value": "Under each block, with the date we retrieved them"
     }
    ],
    "related": [
@@ -1276,8 +1276,8 @@
    "id": "15.24",
    "title": "Draw the route a reform’s entry names, with the law’s source and the entry’s date.",
    "rule": [
-    "Each of the atlas’s eleven routes to change runs through its own stages, set by its own law. When a page shows how a reform could pass, draw the workflow of the route its entry names, read the entry’s own words for the path, and cite the route’s official source with the date we read it. Print the entry’s feasibility in the atlas’s word and its own check date, or “Not checked” where it has none (Rule 13.10).",
-    "Keep the two dates apart. “Read” and its date say when we read the law behind a route; “Checked” and its date say when the atlas checked one reform’s entry. Of the atlas’s 126 route entries, 13 carry a check date, all October 15, 2026."
+    "Each of the atlas’s eleven routes to change runs through its own stages, set by its own law. When a page shows how a reform could pass, draw the workflow of the route its entry names, read the entry’s own words for the path, and cite the route’s official source with the date we retrieved it. Print the entry’s feasibility in the atlas’s word and its own check date, or “Not checked” where it has none (Rule 13.10).",
+    "Keep the two dates apart. “Retrieved” and its date say when we read the law behind a route; “Checked” and its date say when the atlas checked one reform’s entry. Of the atlas’s 126 route entries, 13 carry a check date, all October 15, 2026."
    ],
    "tokens": [
     "oa.type.bodySmall",
@@ -1287,7 +1287,7 @@
     "text": [
      "The same route can run different ways: a tax bill passed by reconciliation needs a simple majority in the Senate, and most bills need 60 votes to end debate. A reader who weighs a reform’s chances needs its own path, the law that sets it and how recently anyone checked."
     ],
-    "basis": "Our systems atlas’s routes and reform route entries; the official sources on each card, read November 11 to 14, 2026; Rules 13.10 and 15.22"
+    "basis": "Our systems atlas’s routes and reform route entries; the official sources on each card, retrieved November 11 to 14, 2026; Rules 13.10 and 15.22"
    },
    "correct": {
     "specimen": "s-15-24-correct",
@@ -1304,7 +1304,7 @@
     },
     {
      "label": "Each route",
-     "value": "Its chip and name, instrument and who acts, as of the snapshot; its stages; its official sources, with the date we read them; what it depends on, in the atlas’s words"
+     "value": "Its chip and name, instrument and who acts, as of the snapshot; its stages; its official sources, with the date we retrieved them; what it depends on, in the atlas’s words"
     },
     {
      "label": "Its entries",
@@ -1312,7 +1312,7 @@
     },
     {
      "label": "Two dates",
-     "value": "“Read” for our research; “Checked” or “Not checked” for an atlas entry"
+     "value": "“Retrieved” for our research; “Checked” or “Not checked” for an atlas entry"
     },
     {
      "label": "Once for the set",
@@ -1418,6 +1418,6 @@
  ],
  "sources": [
   "Source: Oath & Action’s systems atlas, Who Do They Answer To?, the records each rule names (variables, connections, loops, the layers, the rejected connections, the model’s conventions, boundary and limits, and the glossary), snapshot of October 15, 2026, United States. Retrieved November 12, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot alone does not mean a fact was rechecked on that date.",
-  "Sources for the routes to change: the constitutions, statutes, court rules and chamber rules each plate of Rules 15.22 to 15.24 names, with the date we read each, November 11 to 16, 2026. The reconciliation of Rule 15.25: our first audit of three earlier sets of pages, October 20, 2026, rerun November 13, 2026."
+  "Sources for the routes to change: the constitutions, statutes, court rules and chamber rules each plate of Rules 15.22 to 15.24 names, with the date we retrieved each, November 11 to 16, 2026. The reconciliation of Rule 15.25: our first audit of three earlier sets of pages, October 20, 2026, rerun November 13, 2026."
  ]
 }
