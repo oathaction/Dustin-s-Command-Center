@@ -73,4 +73,11 @@ Waiting, as of the time in Status:
 
 ## Tested
 
+All in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/f55a08bf-cdcf-539d-a683-426e26f4f342/scratchpad/c07/fix/systems-designer/`).
+
+- **Generator.** `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py` after every change (`run0.log` to the latest): every check passes, the brace check among them. New checks this pass: the spine is 1, 2, 6, 7, 8 and 13 (CE-M4); stages 3 to 5 each still send the bill to stage 6 (CE-M2); no 15.23 subhead calls the law's parts steps (CE-M3, DF-1); the seven effect codes equal the glossary's list (CE-S12); the five drawing-tool rows match the sidecar and each says whose reading it is (ST-S9); stage 5's gloss is held to the glossary's reconciliation entry and stage 8's "Government Publishing Office" to its row (DF-14); CE-S9's interim final rule to Rule 11.9's words; 15.20's reforms equal those whose records name Loop R4a (NB-M1); `effect_rows` stops on a range or a second code (R5 note).
+- **Word diffs** of every changed plate against `8ace3dc6`, by `tdiff.py` (the plate's text, one line a block), read line by line: 15.1, 15.6, 15.15, 15.21's failure, 15.22 and its failure, 15.23 and its failure, 15.24, 15.25.
+- **`effect_rows` unchanged on the page:** the chapter file, manifest and 51 plates hash the same before and after (`sha1sum -c h_before.txt`); in memory, Reforms R-06, R-30 and R-38 print "+L local, large positive", "+S delayed, small positive", "+S sector, small positive".
+- **Strict builds:** `g1.html` (17:08, before R1), `g2.html` (17:11, after R1) and `g3.html` (17:15, after the editor's words): each exit 0 with 0 warnings; chapter 15 at 562,922 bytes in `g3.html` (562,202 in the review build); page 12,118,300. Each build's rewrite of `work/build/chart-kit/plate-share.json` (its timestamp only, checked by diff) was put back with `git checkout --` on that one file.
+
 ## Not tested

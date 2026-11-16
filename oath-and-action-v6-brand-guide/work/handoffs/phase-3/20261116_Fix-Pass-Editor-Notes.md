@@ -6,11 +6,15 @@ The owners read the "Words for ..." sections directly. Each row gives the file, 
 
 ## Status
 
+- 17:18 UTC. **All three "Words for ..." sections are final**, the fact rows made final on the research lead's F1 to F9 (posted by 17:16). **DF-12 and group 18's line are in my own generator** (`phase3_ch14_rules_build.py`): run twice, the second changing nothing; strict build from a scratch chapters folder exit 0, 0 warnings, every one of Rules 14.1 to 14.14 printing its Basis line. Waiting on: each owner's "done" for my second read (D3-669), and whoever next runs `phase3_ch14_build.py` to carry my two changes into the chapter file (Requests).
+- 17:13 UTC. "Words for the systems designer" posted (main session told).
+- 17:11 UTC. "Words for the tracker designer" posted (main session told).
+- 17:10 UTC. "Words for the complex examples maker" posted, CE-M1 first, on the data lead's rulings R2 to R5 (main session told).
 - 17:00 UTC. Started. Read `CLAUDE.md`, my role file, chapter 02's writing rules, the fix brief, the CE, ST, DF and NB reports, and my round 5 notes. Working tree clean at `8ace3dc6`. The data lead's and research lead's fix pass notes are not posted yet. Next: the current words behind each code, then the "Words for ..." sections, hardest first.
 
 ## Words for the complex examples maker
 
-Written 17:10 to 17:20 UTC, after the data lead's rulings R2 to R5 (posted 17:08). "Old" strings are the printed words as `phase3_ch14_complex_build.py` held them at `8ace3dc6`, or the code line where the words are built; match them against your working copy. Every figure and atlas value is the data lead's or the research lead's; I add none. Where a row says "computed", the words come from the generator, never typed, so the build can hold them (R2, item 1).
+Written at 17:10 UTC, after the data lead's rulings R2 to R5 (posted 17:08); ST-S8's row added at 17:17 on the research lead's F6. "Old" strings are the printed words as `phase3_ch14_complex_build.py` held them at `8ace3dc6`, or the code line where the words are built; match them against your working copy. Every figure and atlas value is the data lead's or the research lead's; I add none. Where a row says "computed", the words come from the generator, never typed, so the build can hold them (R2, item 1).
 
 ### CE-M1, Rule 14.143's walk (ruling R2)
 
@@ -108,6 +112,13 @@ Also in Rule 14.142: spec "Named drops", old "The two past the margin, in the su
 - The band row (CE-S14): "Band, the kind of change" with the word in bold and the atlas's definition quoted, as your working copy now prints it, stands.
 - The failure caption stands if the failure plate keeps codes as text. If it draws the pips (R5, item 7), old: "A total score adds each reform’s four codes as points, so a local or sector-only effect counts as if it held everywhere and two different reforms tie." New: "A total score counts each pip as a point and adds each reform’s four effects, so a local or sector-only effect counts as if it held everywhere and two different reforms tie."
 
+### ST-S8, S96's source line names the release (the research lead's F6)
+
+- S96's `source_line` (from the sidecar through `f1["source_line"]`), old: "...via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is ..."
+- New: "...via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. The figures are those the Bureau released on October 2, 2026, in the Employment Situation for September 2026. August and September 2026 are preliminary and will be revised. The margin of error is ..."
+
+The release goes into the qualification, so the line keeps H04's order (publisher, title, period, geography, date retrieved, qualification) and S14's approved words before it. S14's own line stays as approved; this is S96's. Fact: F6 (all 69 months match ALFRED's vintage of October 2, 2026). The words for R4b's two sector series are the research lead's.
+
 ### NB-S1, Rule 14.142's promise
 
 Carried in the `rule[0]` row above: "Name only the changes past it that the reader’s question asks about, here the drops". The title stands ("Mark the survey’s margin on a monthly chart, and name the changes that pass it."), since the rule now says which changes.
@@ -118,7 +129,7 @@ Group 18's line sits in my own generator (`GROUP_LINES[18]` in `phase3_ch14_rule
 
 ## Words for the systems designer
 
-Written 17:12 to 17:22 UTC, after the data lead's R1 and against your "Fixed" list as it stood at 17:11. "Old" strings are the printed words in `phase3_ch15_build.py` as your working copy held them at 17:11; match the joined words. Four rows wait on the research lead's "Facts" (stage 2's majority, stage 7's conference, stage 19's scope, ST-M2's statute row); each says so, and I confirm or change it here when the facts land.
+Written at 17:13 UTC, after the data lead's R1 and against your "Fixed" list as it stood at 17:11. "Old" strings are the printed words in `phase3_ch15_build.py` as your working copy held them at 17:11; match the joined words. Four rows waited on the research lead's "Facts" (stage 2's majority, stage 7's conference, stage 19's scope, ST-M2's statute row); all four were made final at 17:17 on F1, F3, F4 and F7, and each says so.
 
 **Read and kept as you applied them:** CE-M3 and DF-1 (the two subheads say "stages"), CE-S7 (each chip with the atlas's name), DF-8 (one to nine in words), DF-9 (the card reads Rule 15.22's names, so CE-S3's new name reaches it), ST-S9's attributions, ST-S7's dates, DF-10's reordered source line, CE-S12 ("the seven effect codes, ranks of direction and rough size with no measured amount", computed) and 15.20's why ("the atlas’s own codes, one to each outcome family").
 
@@ -149,11 +160,11 @@ The key, one row a mark, as R1 item 4 draws them:
 
 | Stage | Old | New |
 |---|---|---|
-| 2 | A simple majority: 218 of 435 in the House, or 51 of 100 in the Senate. | The first chamber passes it by a majority of the members who vote, 218 when all 435 House members vote or 51 when all 100 senators do. In the Senate the Vice President can break a tie. **Waiting on** the research lead's ST-S6 and CE-S1 fact; the tie needs a source beside the stage (the Constitution, Article I, Section 3), which I ask of the research lead below. |
+| 2 | A simple majority: 218 of 435 in the House, or 51 of 100 in the Senate. | The first chamber passes it by a majority of the members who vote, 218 when all 435 House members vote or 51 when all 100 senators do. A tie fails, and in the Senate the Vice President may break it. (Final at 17:17, on F3; cite beside the stage the research lead's new rows for Article I, Section 3 and the Senate's "About Voting".) |
 | 3 | Forty minutes of debate, and two-thirds of the members voting, on a Monday, Tuesday or Wednesday. | The House takes the bill up on a Monday, Tuesday or Wednesday, debates it for no more than 40 minutes and passes it with two-thirds of the members voting. |
 | 5 | Debate is held to 20 hours, so no cloture vote is needed and a simple majority passes it. A part that does not change spending or revenue is struck when a senator raises a point of order and the chair agrees. | Reconciliation is a budget procedure that lets qualifying tax and spending bills pass the Senate by a simple majority. The law holds debate to 20 hours, so the Senate needs no cloture vote. A senator can object to a part that does not change spending or revenue, and if the presiding officer agrees, that part comes out of the bill. |
 | 6 | A simple majority, by the same paths as stage 2. | The second chamber passes it by the same count as stage 2, or by one of the paths at stages 3 to 5. |
-| 7 | A conference committee settles the differences, and both chambers approve the same text. | The two chambers pass the same text. Where their versions differ, they settle the differences by amending each other’s text or in a conference committee. **Waiting on** the research lead's CE-S2 fact; if it does not support the amendments path, the second sentence reads "Where their versions differ, a conference committee can settle the differences." |
+| 7 | A conference committee settles the differences, and both chambers approve the same text. | The two chambers pass the same text. Where their versions differ, they settle the differences by amending each other’s text or in a conference committee. (Final at 17:17, on F4, "How Our Laws Are Made", House Document 110-49, parts XV to XVII; cite it beside the stage with the House page.) |
 | 8, name | Enrolled and presented | Sent to the President |
 | 8, words | The final text is printed and sent to the President, who has 10 days, Sundays excepted, to act. | The Government Publishing Office prints the final text, a step called enrolling, and Congress presents it to the President, who has 10 days, Sundays excepted, to act. |
 | 11 | Ten days pass, Sundays excepted, while Congress sits, and it becomes law. | The President lets 10 days pass, Sundays excepted, while Congress is in session, and the bill becomes law. |
@@ -168,14 +179,14 @@ The rows under Rule 11.8's steps (your `rows8`). The rows say what each step hol
 
 | Row | Old | New |
 |---|---|---|
-| Step 1, Requested, a new last row | (none) | The agency’s 20 working days to decide start when the right office receives the request, and no later than 10 days after any of its offices does |
+| Step 1, Requested, a new last row | (none) | The agency’s 20 working days to decide start when the right office receives the request, and no later than 10 days after any office the agency names for requests receives it |
 | Step 2, Acknowledged | The agency decides, within 20 working days that start here | The agency’s 20 working days to decide, already running |
 | Step 3, Searching | The agency decides, inside the same 20 working days | The agency searches for the records, inside the same 20 working days |
 | Step 4, Reviewing | The agency decides, inside the same 20 working days | The agency reviews what it found, before the 20 working days run out |
 | Step 5, Answered | The agency decides within 20 working days, or 10 more in unusual circumstances | The agency answers within the 20 working days, or 10 more in unusual circumstances |
 
 - The alt, old: "...steps 2 to 5 share the agency’s 20 working days to decide, ..." New: "...the agency’s 20 working days to decide start when the right office receives the request, and steps 2 to 5 share them, ..."
-- Fact: 5 U.S.C. 552(a)(6)(A)(ii), as the statistics reader quotes it ("shall commence on the date on which the request is first received by the appropriate component of the agency, but in any event not later than ten days after the request is first received by any component"). **Waiting on** the research lead's row for it in the sources file (ST-M2); the words follow the quote and change only if the row reads otherwise.
+- Fact: the research lead's F1, 5 U.S.C. 552(a)(6)(A), the paragraph after clause (ii) ("shall commence on the date on which the request is first received by the appropriate component of the agency, but in any event not later than ten days after the request is first received by any component of the agency that is designated in the agency's regulations ... to receive requests"). Final at 17:17, with one change F1 asks for: the step 1 row reads "The agency’s 20 working days to decide start when the right office receives the request, and no later than 10 days after any office the agency names for requests receives it"; the alt's clause stays as above. The law says "ten days" there, not working days, so the row says "10 days".
 
 ### CE-S9, the rule issued without comment
 
@@ -201,7 +212,7 @@ I ask the research lead below to check the three glosses against the federal cou
 - Old: "A court can rule that a law, or a part of it, violates the Constitution. In the Supreme Court’s words of 1803, “a law repugnant to the constitution is void”. The latest such ruling we found came on June 30, 2026, when the Supreme Court held that the limits on what a political party may spend in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment."
 - New: "A court can rule that a law, or a part of it, violates the Constitution, a power the Supreme Court set out in Marbury v. Madison in 1803. The Supreme Court’s most recent decision to hold part of an Act of Congress unconstitutional, in its opinions through November 9, 2026, came on June 30, 2026, when it held that the limits on what a political party may spend in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment."
 - The stop line, "The part the court holds void no longer applies.", stands (the data lead's round 5 ruling). The Marbury citation stays in the source column.
-- **Waiting on** the research lead's fact for the rule's scope and date (call 8). The words claim what the research lead's round 5 rule holds as the statistics and nonpartisan readers quote it: the Court's opinions, the most recent by date, a provision of an Act of Congress, read to November 9, 2026. NB-S6's point on "repugnant" is met by letting Marbury name the power and the 2026 holding keep its own words.
+- Final at 17:17, on F7: the Supreme Court only, an Act of Congress only, a holding in the judgment, by date, from the Court's opinion lists read to November 9, 2026; the recheck of November 16 picks the same case, so "through November 9, 2026" stays with the read date the sources file records. NB-S6's point on "repugnant" is met by letting Marbury name the power and the 2026 holding keep its own words.
 
 ### NB-M1, Rule 15.20's selection rule (call 3)
 
@@ -224,7 +235,7 @@ For a statute or a rule cited beside a stage or on a card, print the version wit
 
 ## Words for the tracker designer
 
-Written 17:11 to 17:16 UTC. "Old" strings are the printed words in `apply_systems_ch11.py` (the generator splits them across lines; match the joined words) as your working copy held them at 17:10. Three rows wait on the research lead's "Facts" (CE-S17, NB-S7's reason, ST-S3's figure); each says so, and I confirm or change it here when the facts land. Your CE-S20 and CE-S18 text gets my second read once you report done.
+Written at 17:11 UTC. "Old" strings are the printed words in `apply_systems_ch11.py` (the generator splits them across lines; match the joined words) as your working copy held them at 17:10. Three rows waited on the research lead's "Facts" (CE-S17, NB-S7's reason, ST-S3's figure); all three were made final at 17:17 on F9, F8 and F2, and each says so. Your CE-S20 and CE-S18 text gets my second read once you report done.
 
 ### CE-S11, "injunction" glossed where chapter 11 first uses it
 
@@ -249,15 +260,16 @@ Facts: the workflow sources file, row "2 Title and summary" (Massachusetts's att
 - The ballot step table's caption (`s_route_steps`, line 1385), old: "The six steps of a state ballot measure, a citizen initiative, with what happens at each and where the law sets it in the four states we read."
 - New: "The six steps of a state ballot measure, with what happens at each and where the law sets it in four states: Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and California, where an initiative goes straight to the ballot."
 
-Facts: the sources file's BI rows 4 (indirect: Massachusetts, Ohio, Michigan; direct: California, Elections Code 9007) and the four states' frame the nonpartisan reader quotes from the round 5 research notes. **Waiting on** the research lead's NB-S7 fact to confirm that this is the reason the four were chosen; if its reason differs, I change the clause. "On a proposed law" keeps the clause true where a state's constitutional amendments go straight to the ballot.
+Facts: the sources file's BI rows 4 (indirect: Massachusetts, Ohio, Michigan; direct: California, Elections Code 9007) and the four states' frame the nonpartisan reader quotes from the round 5 research notes. Confirmed at 17:17 by the research lead's F8, which also asks the clause to keep "for a law": "on a proposed law" does, since Ohio and Michigan put constitutional amendments straight on the ballot too.
 
-### CE-S17, a measure the Legislature passes (waiting on the research lead)
+### CE-S17, a measure the Legislature passes (final at 17:17, on the research lead's F9)
 
-- Measure end words and Rule 11.10 `rule[1]`'s last sentence, old: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date: “Passed by the Legislature on May 2.”"
-- If the facts say the governor then acts in every one of the four states, new: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date and what comes next: “Passed by the Legislature on May 2. It goes to the governor.”"
-- If the facts say it differs by state, new: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date and what comes next, as the state’s law sets it: “Passed by the Legislature on May 2. It goes to the governor.” where the governor then signs or vetoes it, and “Passed by the Legislature on May 2. It becomes law with no signature.” where the governor takes no part." Then the spec "Passed by the Legislature" takes the same two endings.
+- Rule 11.10 `rule[1]`, last sentence, old: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date: “Passed by the Legislature on May 2.”"
+- New: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date and what comes next. In Massachusetts and Ohio it goes to the governor, as a bill does, and in Michigan it becomes law without one: “Passed by the Legislature on May 2. It goes to the governor.”"
+- Spec "Passed by the Legislature", old: "Steps 5 and 6 under slashes, and “Passed by the Legislature on” with its date"
+- New: "Steps 5 and 6 under slashes, then “Passed by the Legislature on” with its date and what comes next: “It goes to the governor.”, or “It becomes law without the governor.” where the governor takes no part, as in Michigan"
 
-I write the final row here when the research lead's CE-S17 fact lands.
+Facts: F9 (Ohio, Article II, Sections 1b and 16; Michigan, Article II, Section 9, and the House Fiscal Agency's analysis; Massachusetts by the research lead's reading of Part the Second, Chapter I, Section I, Article II). The cards name no state, so a card that ends this way takes one of the two endings and never a state's name. California is left out of the sentence because its initiatives never go to the Legislature (the step table's direct initiative).
 
 ### CE-S19, every "Affirmed" says what stands
 
@@ -279,19 +291,58 @@ No plate prints it today. The sentence after it, where a card needs one, follows
 - `BALLOTS`, Measure 99013's `line` (line 259), old: "On July 14, a random sample of the signatures projected fewer valid ones than the law requires."
 - New: "On July 14, a random sample of the signatures projected fewer than 95 percent of the valid signatures the law requires, so election officials did not go on to check every signature."
 
-Facts: the sources file's row "3 Signatures" (California Elections Code 9030 and 9031: projected under 95 percent, the measure "fails to qualify for the ballot"; 95 to 110 percent, a "full check"). "Election officials" is the step table's own actor for step 3. If the research lead's ST-S3 fact reads the rule differently, I change this row.
+Facts: the research lead's F2 (California's guide, Elections Code 9030(f) and 9031(a): projected under 95 percent, the measure "fails to qualify for the ballot"; 95 to 110 percent, county officials "verify every signature"). "Election officials" is the step table's own actor for step 3. Confirmed at 17:17.
 
 ## Fixed
 
+| Code | What changed | File | Proof |
+|---|---|---|---|
+| DF-12 | Each of Rules 14.1 to 14.12 and 14.14 now carries its own Basis line naming its standard or approval, as every rule in chapters 01 onward prints one; Rule 14.13 keeps its own. The chapter's basis still prints once after the intro for the 127 form entries (D3-556). A new check stops the build if a rule's basis repeats the chapter's, since `phase3_ch14_build.py` would drop it and the rule would print none. The lines: 14.1 "Design judgment, from the coverage plan our founder and editor approved in November 2026" (DR-62); 14.2 "Rules 13.1, 13.2, 13.6 and 13.7, and chapter 02, house rule H08; the order of the parts is design judgment"; 14.3 "Rule 12.6, and WCAG 2.2, success criterion 1.4.1, Use of Color"; 14.4 "Design judgment, from the chart system our founder and editor approved in November 2026, whose bars always start at zero" (DR-52; the Explainer board's "Bars always start here"); 14.5 "Design judgment, with the data palettes and the group order our founder and editor approved in November 2026" (DR-54, DR-234, DR-236); 14.6 "Rules 05.1, 05.3, 05.5 and 05.7; the mark the title names is design judgment"; 14.7 "Rules 01.1 and 01.2, and chapter 02, house rule H10"; 14.8 "Design judgment, approved by our founder and editor in November 2026" (DR-234, in D2-412's form); 14.9 "Rule 13.5, and design judgment, approved by our founder and editor in November 2026" (DR-64); 14.10 "Chapter 02, house rule H09, and Rule 13.7"; 14.11 "Rule 13.7, and design judgment"; 14.12 "Rule 06.3, and design judgment, approved by our founder and editor in November 2026" (DR-64); 14.14 "Design judgment, with the chart kit our founder and editor approved in November 2026; Rule 18.14" (DR-235) | `phase3_ch14_rules_build.py` (`RULE_BASIS`, `entry`); outputs `14-001.json` to `14-012.json` and `14-014.json` | Baseline run first: no output changed. After the edit, run twice: the second run changed nothing (hashes). Scratch proof: the bases carried into a copy of the chapter file by `carry_basis.py` exactly as `phase3_ch14_build.py` carries them (a basis that repeats the chapter's is dropped), strict build `guide.html` exit 0, 0 warnings, and a script reads one Basis line under each of Rules 14.1 to 14.14 and one chapter box |
+| NB-M1, group 18's line (call 3) | "...and three reforms that act on one housing loop." becomes "...and three reforms whose records name one housing loop." | `phase3_ch14_rules_build.py` (`GROUP_LINES[18]`); output `14-chapter.json` | The same two runs; the scratch build prints the new line once and the old words nowhere |
+| CE-M1, ST-M1, ST-S1, CE-S13, ST-S2, ST-S8, DF-3, DF-4, DF-7, CE-S14, NB-S1 | Words, for the complex examples maker to apply | My notes, "Words for the complex examples maker" | The maker reported them applied at 17:14 (its notes); my second read waits for its "done" |
+| CE-M4, DF-1, DF-2, DF-5, DF-10, DF-14, CE-M3, CE-S1 to CE-S5, CE-S8 to CE-S11, CE-S23, ST-M2, ST-S5, ST-S6, NB-M1, NB-S6 | Words, for the systems designer to apply | My notes, "Words for the systems designer" | Second read waits for its "done" |
+| CE-S11, CE-S15 to CE-S17, CE-S19, CE-S21, ST-S3, NB-S7 | Words, for the tracker designer to apply | My notes, "Words for the tracker designer" | Second read waits for its "done"; CE-S18 and CE-S20 are its own words, which I read then too |
+
 ## Not fixed
+
+| Code | Reason |
+|---|---|
+| DF-13, Rule 14.6's part | The drift reader names the editor for Rule 14.6's gloss of "subject ink" and "every other bar", and 14.6's entry is mine, but the brief routes DF-13 to the engineer and keeps every other change inside rounds 4 and 5. Rule 14.6's text does not use the words "subject ink"; it says "the light fill" and "the context ink". I write the 14.6 words if the main session routes them to me, once the engineer's palette plate lands, so the gloss matches the plate's names |
+| NB-M2, entry 14.141 | Not in my routed codes and not my file. The words, if its owner wants them: add "and the lockmark’s sign-off at 96 px (Rule 08.2)" to the list of what a card holds, as NB-M2 drafts it |
 
 ## Calls
 
 | call | reason |
 |---|---|
+| Rules 14.1 to 14.12 and 14.14 each print a Basis line that names the rule's own standard or approval, and the chapter's basis keeps printing once for the form entries | DF-12: every rule in chapters 01 onward prints one, and a rule's own line tells a reader what it rests on; D3-556's one box still serves the 127 entries |
+| Group 18's line says the three reforms' records name the housing loop | Call 3 and NB-M1: Reform R-38 has no target on Loop R8, so "act on" said more than the plate shows; Rule 14.144's own text already says "whose record names one loop" |
+| The chart notes on S96 say "the text’s ink", and I withdraw my round 5 reason for "the strongest ink" | D3-914 and DR-262 set one ink word, and S53, which I cited in round 5, had moved to "the text’s ink" by D3-1043 |
+| Rule 14.143's lines say each change in the walk's direction, cause first, with "goes up" and "goes down" after the title that asks how often | Ruling R2; "how often the primary decides the winner rises" stops the ear |
+| Rule 15.22's stage 8 is named "Sent to the President", with "enrolling" kept inside its sentence | CE-S3: Rule 11.1's failure caption rules out "Enrolled" as a clerk's word |
+| Stage 19 lets Marbury name the power, and the 2026 holding keeps its own words, with the selection rule stated | NB-S6 and ST-S5, on the research lead's F7 |
+| A ballot measure the Legislature passes says what comes next, by state, in Rule 11.10's text, and a card takes one of two endings without naming a state | CE-S17 on F9: Massachusetts and Ohio send it to the governor, Michigan does not; the cards name no state (DR-275) |
 
 ## Requests
 
+- **To the main session.** My two changes (DF-12 and group 18's line) are in the entries and `14-chapter.json` but not yet in `work/build/guide/chapters/14-data-visualization.json`, which `phase3_ch14_build.py` writes. I have not run it, so I write no file outside my row while other owners' chapter 14 work is in flight. Whoever runs it next carries both; `phase3_ch14_build.py --check` now reports the chapter file and its manifest as not what it writes, which is expected. Tell me if you would rather I run it.
+- **To the main session, DF-10's one word.** The drift reader asks for one of "read" and "retrieved" across chapters 11, 14 and 15. Chapter 02's H04 says "the date retrieved", and chapters 11 and 14 use "retrieved"; chapter 15's route pages use "read", with S71 on board 2 as precedent. Changing either reaches approved work, so I suggest board 3 shows it. Inside this pass my words for the systems designer add "as in force on" to each law on Rules 15.22 to 15.24 and keep chapter 15's "read".
+- **To the research lead.** Please check three glosses I wrote for the systems designer against the federal courts' own glossary (uscourts.gov): "motions, which ask the judge to rule on a point", "discovery, when each side gathers evidence from the other" and "doctrine, the rules courts build from their rulings"; and "an injunction, a court order to do or to stop doing something" for the tracker designer. If any reads otherwise, I change it.
+- **To the systems designer.** Stages 2 and 7 now rest on new sources (F3's Article I, Section 3 and the Senate's "About Voting"; F4's "How Our Laws Are Made"); please cite them beside the stages, from the research lead's new rows.
+
 ## Tested
 
+- Read whole: `CLAUDE.md`, my role file, chapter 02's writing rules, the fix brief, the CE, ST, DF and NB reports, my round 5 notes, the data lead's rulings R1 to R5 and the research lead's facts F1 to F9.
+- Every "old" string in my three sections read from the owner's generator or its output at the time named in each section's head (by `grep` and `sed` on the files, and by dumping the plates' words with a script for Rule 14.143's seven steps).
+- Atlas values by script on `work/extract/atlas-v7-data.json`: the glossary's "Reconciliation", "Effect code", "Outcome family", "Cloture" and others; the loops each reform's record names (R-03: R4a, R10, R12; R-04: R4a; R-06, R-30, R-38: R8) and Loop R8's own list (R-30).
+- The decision log by search: D2-412, D3-556, D3-914, D3-994, D3-1043, D3-1992, DR-52, DR-54, DR-62, DR-64, DR-234 to DR-240, DR-262; the approved Explainer board's words on bars and keys, by search.
+- `phase3_ch14_rules_build.py`: baseline run (no output changed); after the edits, two runs, the second changing nothing (`md5sum` of `14-001.json` to `14-019.json` and `14-chapter.json` before and after).
+- Strict build of the committed chapter files to scratch (`guide-base.html`): exit 0, 12,118,300 bytes. Strict build with my two changes carried into a scratch copy of the chapter file (`--chapters`, `guide.html`): exit 0, 0 warnings; one Basis line under each of Rules 14.1 to 14.14, one chapter box, group 18's new line once and its old words nowhere (script).
+- `phase3_ch14_build.py --check`, read only: 97 of 99 files current, the two not current being the chapter file and its manifest.
+- `git status` after my builds: only my entries and `14-chapter.json` changed, and `plate-share.json`'s timestamp, which I restored by the one allowed checkout (its diff was the timestamp alone).
+
 ## Not tested
+
+- A full build with my changes in the real chapter file: `phase3_ch14_build.py` was not run by me (Requests). The scratch build used `--chapters`, which turns off the embedded fonts and the "Where to start" page, so its bytes (11,749,628) are not the page's; the content of chapter 14 is what the real build will carry.
+- No browser opened, no capture looked at. Every word above was read as source text, not as a rendered page.
+- My second read of each owner's applied words: waits for each owner's "done".
+- The pattern script over my three sections and over the owners' applied words: to run in the second read, on the words as applied.

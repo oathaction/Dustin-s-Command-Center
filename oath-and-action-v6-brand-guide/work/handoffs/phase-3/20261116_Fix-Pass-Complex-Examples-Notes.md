@@ -30,11 +30,29 @@ Codes routed to me: CE-M1, CE-S13, CE-S14; ST-M1, ST-S1, ST-S2, ST-S8; DF-3, DF-
 
 | call | reason |
 |---|---|
+| The unchosen-reform rule resets the ink case (`stroke:none`) beside the mark, pill and head, rather than scoping chapter 15's case rule to the print copies | The case rule is chapter 15's, shared with the print copies through `plate_style`; resetting it where a reform is not chosen is the plate's own rule, as the mark's reset already is, and leaves chapter 15's CSS whole (CD-M1 offered either) |
+| The failure figure keeps the first sentence of S96's second note ("Payrolls shrank in seven months: ...") and drops the rest | R3: S96's notes less every word of the margin; that sentence counts the drops with no margin word, and its second and third sentences (the margin and the split of the two named months) point at what the failure leaves out |
+| The failure figure keeps S14's preliminary note, not S96's | S96's adds "The band does not show how far a revision may move a month.", a word of the margin the failure leaves out |
+| The private and government split is computed in `maker_c_round5_derive.py` from the sector file and fitted to the editor's sentence only for the directions it holds | R4b's figures stay the data's; a later file whose signs differ stops the build instead of printing a wrong verb |
+| The walk's directions and "can" are computed (`directions`, `says`) and the check recomputes them separately from the figure facts | R2, item 1: the build stops if a printed direction differs from the computed one; two code paths read the signs, so one slip cannot pass both |
+| Rule 14.144's effect heading and its four family rows take five rows of the cards' subgrid (nested subgrids on the group, its `dd` and its list) | DD-R1's aligned rows across the three cards hold with 15.20's one-heading form; one card a row below 680 px or 40em, as before |
+| Rule 14.144's two grades sit in one list row, "Its two grades, apart", each a `grade_block` | Rule 15.16's heading and form for the same two grades (R5, DF-7); one row keeps the subgrid's count at eleven |
+| The failure plate of Rule 14.144 keeps its codes as text | R5, item 7: four 88 px marks a row do not fit the 328 px stage; its fault is the total alone, so its caption stands |
+| Rule 14.144's related rules add 13.3 and 13.5 | Its cards now draw Rule 13.5's mark and Rule 13.3's grade glosses |
 
 ## Requests
 
 1. **To the research lead (17:14 UTC; ST-S8 with F6, and the data lead's R4b request 1).** S96's source line is your sidecar's `source_line_variants.with_margin` line, printed as it stands (the generator checks S96 against it), and the failure prints the sidecar's `printed_source_line` (the same less its margin sentence). Please set both lines in `work/build/data/fred-payrolls-monthly-change.meta.json` to name the release, from your F6 ("as published in the Bureau of Labor Statistics' Employment Situation for September 2026, released October 2, 2026, via FRED and ALFRED ..."), and give S96's line the two sector series note 2 now cites (private, USPRIV, and government, USGOVT, from `fred-payrolls-by-sector.csv`), in Rule 13.6's order. If the sector series belong in S96's line only, add a third variant (for example `with_margin_and_sectors`) and tell me its key; I print it and the failure keeps the plain line. The generator stops if `printed_source_line` stops being `with_margin` less its margin sentence, so please keep that shape or tell me. Nothing is typed in my generator.
 
 ## Tested
+
+Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f55a08bf-cdcf-539d-a683-426e26f4f342/scratchpad/c07/fix/complex-examples/`. The engineer's chapter build and every guide build ran in `mirror/`, a copy of the project made by `scripts/mirror.sh` (read-only folders hard-linked), so no other owner's output was written in the real tree; the generator and the figure checks ran in the real tree.
+
+- **The generator** (`python3 -I work/build/scripts/phase-3/phase3_ch14_complex_build.py`): every check passes, the new ones included (NB-M3's resets in every chooser state, DF-6's order, DF-4's ink word, NB-S2 and R3's failure, R4's band words, R4b's split, R2's directions, R5's pips, grades and routes, CE-S14's band); `--check` 10 of 10 current after the last write (17:14 UTC). The R2 check was proved by mutating two lines in memory; each was caught.
+- **The figure checks** (`maker_c_round5_derive.py --figures --drawings`): 44 of 44; on the kit's Node drawings, 1,988 named columns at every whole width from 224 to 720 px on both grounds end at least 4.93 px past the band's lower edge, no word in the plot within 27.97 px of a gridline, no gridline under zero. The new facts: the sector file's total equals S14's file in October 2025 and February 2026, and private plus government equals the total.
+- **The kit's check** (`oa-chart.mjs check s96` and the failure's chart file, 17:17 UTC): both PASS, 0 faults; S96's weight warning (about 16,547 bytes with its frame, past 15,000) reported under DR-271.
+- **The chapter build** (`phase3_ch14_build.py`, in the mirror): 144 rules, 112 examples logged, 0 faults.
+- **Strict builds** (`guide_build.py --strict`, in the mirror): `b1/guide.html` (17:05 UTC, after NB-M3, NB-S2, DF-6, DF-4) and `b2/guide.html` (17:15 UTC, after R2 to R5 and the editor's words), each exit 0, 0 warnings; `b2` is 12,121,057 bytes; the rules with their plates as placed: 14.142 33,699 bytes, 14.143 44,171, 14.144 62,533 (6,626 more than before the fix pass, mostly the 19 pip marks and the grade blocks; reported, DR-271).
+- **The failure figure as built** (read from `b2/guide.html`): title, measure line, the five notes and a source line with no word of the margin; no latest label; the caption in the editor's words.
 
 ## Not tested

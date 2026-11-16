@@ -1802,7 +1802,11 @@ def build(ctx):
                      'before step 6 ends its line on a square at the last step it reached, with its words and the date: '
                      'Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to '
                      'qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 '
-                     'under slashes, and its words give the date: “Passed by the Legislature on May 2.”'],
+                     # CE-S17 (the editor's words, final on the research lead's F9): Ohio and Massachusetts send it to the
+                     # governor, Michigan makes it law with no governor (Article II, Section 9)
+                     'under slashes, and its words give the date and what comes next. In Massachusetts and Ohio it goes to '
+                     'the governor, as a bill does, and in Michigan it becomes law without one: “Passed by the Legislature '
+                     'on May 2. It goes to the governor.”'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and only '
                              'the certified result decides a measure. Words that wait for certification keep a '
@@ -1835,8 +1839,11 @@ def build(ctx):
                                                           'certified by the attorney general; Withdrawn by its sponsors; '
                                                           'Too few valid signatures to qualify; Removed from the ballot by '
                                                           'a court'},
-                {'label': 'Passed by the Legislature', 'value': 'Steps 5 and 6 under slashes, and “Passed by the '
-                                                                'Legislature on” with its date',
+                {'label': 'Passed by the Legislature', 'value': 'Steps 5 and 6 under slashes, then “Passed by the '
+                                                                'Legislature on” with its date and what comes next: “It '
+                                                                'goes to the governor.”, or “It becomes law without the '
+                                                                'governor.” where the governor takes no part, as in '
+                                                                'Michigan',
                  'token': 'oa.component.mark.slash'},
                 {'label': 'Sent to the voters by the Legislature', 'value': 'Steps 1 to 3 under slashes, and step 4 done, '
                                                                             'with those words and the date'},

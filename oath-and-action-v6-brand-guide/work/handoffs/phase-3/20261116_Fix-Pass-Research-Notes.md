@@ -4,6 +4,8 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:18 UTC. The complex examples maker's request 1 done: three new source line variants in the payroll sidecar name the September 2026 release, one with the private and government series for S96; the two existing lines stay as S14 and chapter 13 print them. Data check 126 tables, 0 faults; S14 and S96 build with 0 faults. Returning to the main session; resume me for further requests and the source line check.
+- 17:15 UTC. Facts F1 to F9 written below. New rows for them added to the workflow sources file, section "Fix pass: sources for the review of rounds 4 and 5".
 - 17:02 UTC. Started at 16:59 UTC. Read `CLAUDE.md`, the role file, the fix brief whole, the codes call 8 names in the statistics, civic education and nonpartisan brand reports, round 5's research notes and the workflow sources file. Fetching the official sources for the nine facts now.
 
 ## Facts
@@ -44,7 +46,7 @@ From `work/research/20261111_Policy-Workflow-Sources.md`, by script today:
 
 - **The file holds the September 2026 Employment Situation, released October 2, 2026.** By script (`scripts/compare_vintage.py`), every one of the 69 PAYEMS months in `work/build/data/fred-payrolls-by-sector.csv` (January 2021 to September 2026) equals ALFRED's vintage of October 2, 2026, with no mismatch; so do USPRIV, USGOVT and CES9091000001 (69 months each, 0 mismatches). ALFRED's vintage of November 6, 2026 differs in two months: August 2026 159,068 against the file's 159,015, and September 2026 159,128 against 159,044, and it adds October 2026 at 159,293. The October 2 vintage stayed on FRED until November 6. ALFRED's release dates for the Employment Situation list 2026-10-02 and then 2026-11-06.
 - **Sources:** ALFRED, Federal Reserve Bank of St. Louis, All Employees, Total Nonfarm (PAYEMS), vintages by `https://alfred.stlouisfed.org/graph/alfredgraph.csv?id=PAYEMS&vintage_date=<date>`; release dates, `https://alfred.stlouisfed.org/release/downloaddates?rid=50&ff=txt`; FRED's current series, `https://fred.stlouisfed.org/graph/fredgraph.csv?id=PAYEMS`. Read November 16, 2026. FRED and ALFRED refuse a custom user agent here; curl's default answered.
-- **So:** the file was read on November 6 before FRED posted the October release. What it reprints today: by the November 6 vintage, September 2026's change is +60,000 (the file's +29,000) and August's +186,000 (the file's +133,000). A source line can say: "as published in the Bureau of Labor Statistics' Employment Situation for September 2026, released October 2, 2026, via FRED and ALFRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary; later releases revise them." I will set the sidecar's `vintage` to say so when the complex examples maker asks (see "Requests"); the printed line is the maker's and the editor's.
+- **So:** the file was read on November 6 before FRED posted the October release. What it reprints today: by the November 6 vintage, September 2026's change is +60,000 (the file's +29,000) and August's +186,000 (the file's +133,000). Done by 17:17 UTC at the complex examples maker's request: the sidecar names the release in three new variants (see "Fixed"). The printed words say "from the Employment Situation for September 2026, released October 2, 2026"; they leave ALFRED out, since the file was read from FRED on November 6 and the release name is enough to find the vintage. ALFRED is named in the sidecar's note.
 
 ### F7. Stage 19's selection rule, its scope and date (ST-S5, NB-S6, CE-S5; for the systems designer and the editor)
 
@@ -67,17 +69,59 @@ From `work/research/20261111_Policy-Workflow-Sources.md`, by script today:
 
 ## Fixed
 
+- **Call 8, the facts** (ST-M2, ST-S3, ST-S5, ST-S6, ST-S7, ST-S8, NB-S6, NB-S7, CE-S1, CE-S2, CE-S5, CE-S17): F1 to F9 above, each with its official source, section and read date.
+- **The workflow sources file,** `work/research/20261111_Policy-Workflow-Sources.md`: a new section at its end, "Fix pass: sources for the review of rounds 4 and 5", with four tables. "FS: passage and one text for both chambers": rows "Passage: a majority of those voting" (holds "a majority of those voting" in the sense of "two-thirds of those voting, a quorum being present"; phrases a generator can hold: "Most business that comes before the House is decided by a majority vote", "In case of a tie vote, a question shall be lost", "In most cases a simple majority is required for a measure to pass"), "The Vice President's vote" ("unless they be equally divided") and "One text: three ways to agree" ("by the first House's concurrence in the second House's amendments", "agreement in both bodies to the conference report"), each read 2026-11-16. "Records request: when the 20 working days start" (5 U.S.C. 552(a)(6)(A); its heading names no route, so chapter 15's generator does not read it). "BI: who acts after the Legislature passes an initiative" (rows "Ohio: the governor acts", "Michigan: no governor", "Massachusetts: the governor acts, by the constitution's text"). "BI: the California sample, re-read" (row "California: the random sample"). Proof: a scratch script that parses the file as `phase3_ch15_build.py`'s `wf_tables` does (`scripts/check_wf_rows.py`) finds all 22 of the generator's `wf_row` and `wf_first` lookups resolved, and none resolved to a new row (0 faults), so no plate changes until an owner cites a new row by its name.
+- **ST-S8 and ruling R4b, the payroll sidecar** `work/build/data/fred-payrolls-monthly-change.meta.json` (the complex examples maker's request 1): `vintage` now names the release ("the Bureau of Labor Statistics' Employment Situation for September 2026, released October 2, 2026, as FRED posted it on November 6, 2026 before that day's October release; ..."); a new `notes` entry records the ALFRED check; and `source_line_variants` gains three keys:
+  - `september_release`: the plain line, release named, for the failure plate.
+  - `september_release_margin`: the same plus the approved margin sentence, word for word; it equals `september_release` plus that sentence, the shape the maker's generator checks.
+  - `september_release_sectors_margin`: S96's line, "all nonfarm, private and government employees, monthly change", release named, and the margin sentence with "for all nonfarm employees" added, since the Bureau's plus or minus 122,000 is for the total and it publishes no sampling error for government sectors (the sector sidecar's note).
+  - `printed_source_line` and `with_margin` are unchanged: S14's spec and fixture and chapter 13's generator print them, and the kit checks S14's spec against them, so changing them would move approved plates outside this pass (see "Calls").
+  - Proof: a scratch script (`scripts/fx_payroll_sidecar.py`) asserts the two old lines, every other key unchanged, the writer's format (indent 1, UTF-8, final newline), no em dash, U+2011 or straight apostrophe in a new line; a second run reads "unchanged". The data check, `python3 -I work/build/scripts/phase-3/data_round0_build.py --check`: 126 tables, 0 faults. The kit builds S14 and S96 from their specs as they stand, `--no-png`: PASS, 0 faults each. Note 2's figures recomputed from `fred-payrolls-by-sector.csv`: October 2025 total −140, private +13, government −153 (federal −166); February 2026 total −156, private −148, government −8 (federal +4), thousands; private plus government equals the total in both months; all four series equal ALFRED's October 2 vintage.
+
 ## Not fixed
+
+- None of mine. The printed words for every fact belong to the owners and the editor.
 
 ## Calls
 
 | call | reason |
 |---|---|
+| S96's release-named lines go in as new variants of the payroll sidecar, and `printed_source_line` and `with_margin` stay as they are | S14, its fixture and chapter 13 print the two old lines and are approved work; the kit checks S14's spec against them; ST-S8 names S14 too, so whether S14 and chapter 13 take the release words is a question for the main session |
+| S96's sector line adds "for all nonfarm employees" to the approved margin sentence | The plus or minus 122,000 is the total's; with private and government named on the same line, a reader could apply it to them |
+| The printed release words leave ALFRED out and the sidecar's note names it | The file was read from FRED on November 6; ALFRED was read today to prove the vintage |
+| New rows in the workflow sources file take stage names no generator uses yet | Chapter 15's generator takes the last row of a stage name; a new row under an old name would change a plate's date or break a held phrase without its owner's change |
+| The Massachusetts governor row is recorded as my reading of the constitution's text, labeled as such in the row | No official page read today says it in words |
+| Stage 19's as-of date stays November 9, 2026 in the sources file | That is the date the rule was applied; today's recheck is in F7 and goes into the row only if the editor asks |
 
 ## Requests
 
+- **To the complex examples maker (17:18 UTC):** the keys are `september_release` (failure plate), `september_release_margin` (the release-named line with the approved margin sentence) and `september_release_sectors_margin` (S96, with note 2's private and government series). Please point S96's spec and the failure plate's spec at them; the kit accepts any variant of the sidecar.
+- **To the engineer (17:18 UTC):** `data_round0_build.py` writes the payroll sidecar (`write_meta('fred-payrolls-monthly-change', ...)`, around line 448). A rerun would drop today's `vintage`, the three `september_release*` variants and the new `notes` entry. Please carry them into the script, as R-B2-1 did on board 2; the exact values are in the sidecar now, and `scripts/fx_payroll_sidecar.py` in my scratch holds them as strings.
+- **To the main session:** S14 and chapter 13's plates that print the payroll line say "Retrieved November 6, 2026" with no release, the same fault ST-S8 names. They are approved work; I left them. If you want them changed, the change is one key in the sidecar plus S14's spec and fixture.
+
 ## Tested
+
+- Every source in F1 to F9 fetched today, status and SHA-256 in each download folder's `fetch-log.tsv`, read as text; quotes copied from that text.
+- PAYEMS, USPRIV, USGOVT and CES9091000001 in `fred-payrolls-by-sector.csv` compared month by month with ALFRED's vintages of October 2 and November 6, 2026 (`scripts/compare_vintage.py`): 69 months each, 0 mismatches against October 2; 2 against November 6 (PAYEMS).
+- ALFRED's vintages at nine dates from September 3 to November 7, 2026, to place each release.
+- The Supreme Court's October Term 2026 slip opinion and orders lists, and the two November 16 writings' first pages.
+- The House roll call 145 of 2025 parsed for its totals.
+- The workflow sources file parsed as chapter 15's generator parses it (`scripts/check_wf_rows.py`): 22 lookups, 0 faults.
+- The payroll sidecar script's assertions; a second run "unchanged"; the data check, 126 tables, 0 faults; S14 and S96 built by the kit with `--no-png`, 0 faults each.
+- No em dash in the notes, the sources file's new section or the sidecar (by search).
 
 ## Not tested
 
+- How often each of the three ways to one text is used in a Congress.
+- Any House resolution changing Rule XX after the Clerk's January 16, 2025 printing.
+- California's Elections Code itself (leginfo refused, 403); the Secretary of State's guide was read.
+- The Supreme Court's October Term 2024 and 2025 lists after November 14; only the October Term 2026 lists were reread today.
+- S96 and the failure plate with the new lines: they still print the old line until the maker points their specs at the new keys.
+- Chapter 15's generator was not run (it is the systems designer's); the check of its lookups was by a parse of the file.
+- S14 and S96 page captures: built with `--no-png`.
+
 ## Claims I could not verify
+
+1. Massachusetts: that a law the General Court enacts on an initiative petition goes to the governor in practice. The constitution's text supports it (F9); the Elections Division's May 2025 guide and the Supreme Judicial Court's opinion of April 27, 2026 (Senate No. 3066) do not address it, and socialaw.com refused (403).
+2. California Elections Code 9030 and 9031 in their own text (leginfo refused); cited as the Secretary of State's guide gives them.
+3. Each state's rule for when a law its Legislature passes on an initiative takes effect.
