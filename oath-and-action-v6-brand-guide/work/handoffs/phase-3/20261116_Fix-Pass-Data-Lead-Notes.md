@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
-- 17:31 UTC. **Batch 3:** CE-S20's "No petition" sentence in place; chapter 11 signed off whole.
+- 17:30 UTC. **Batch 3:** CE-S20's "No petition" sentence in place; chapter 11 signed off whole.
 - 17:30 UTC. **Batch 2 (chapter 15):** the R1 stage marks signed off as built; every other code signed off on its source; DF-10 and NB-S5 wait on R7 and R6 being applied. Nothing sent back.
 - 17:27 UTC. **Batch 1 (chapter 11):** marks unchanged; call 4's extension yes (steps 5 and 6 under slashes with no petition); facts signed off; one item sent back, CE-S20's "No petition" row needs a sentence. **Rulings R6 (NB-S5: keep R-28 with its rule printed) and R7 (DF-10: "Retrieved", and the version the copy states) written.** Batch 2, chapter 15, next.
 - 17:08 UTC. **Rulings R1 to R5 written** (call 7), with R4b for ST-S2. Owners read them under "Rulings". Sign-off batches follow as owners report fixes.
@@ -219,7 +219,7 @@ Read from the systems designer's notes (17:24), the generator's CSS for the mark
 
 **Words, last.** No em dash, en dash, straight apostrophe or listed word in the chapter file or any `s-15-*` plate (my scan, styles excluded). The words are the editor's second read.
 
-### Batch 3 (17:31 UTC): CE-S20 closed; chapter 11 signed off whole (for the tracker designer, the editor and the main session)
+### Batch 3 (17:30 UTC): CE-S20 closed; chapter 11 signed off whole (for the tracker designer, the editor and the main session)
 
 The editor's sentence (17:29) prints in `11-icons.json`, from `apply_systems_ch11.py` (lines 1889 and 1934): Rule 11.11's third paragraph says a sentence after the end words gives the reason, "No one asked the Supreme Court to review the case in the time the law allows.", and the "No petition" row now carries the appeals court's ruling, "The lower court's ruling stands." where one stands, and that sentence, with no day count. The slashes and their words now say the same thing (Rule 11.2). By script, the court plates' marks still equal the review commit's. Batch 1's one item is closed, and Rules 11.10 and 11.11 are signed off whole. Batch 1's two suggestions (28 U.S.C. 2107(c) beside "the 30 days the law allows", and a fine ring while the time runs) stay suggestions.
 
@@ -247,6 +247,7 @@ Next: R6 and R7 as the systems designer applies them, with the research lead's F
 ## Tested
 
 - Rulings (17:00 to 17:08 UTC), by script with `python3 -I`: Loops B4 and R10's connections, ends, signs, grades and delays, and each step's direction under the walk's start supposition; Reforms R-03, R-04, R-06, R-30 and R-38's effects, grades, routes and check dates; the count of qualified effect values in the model (38); October 2025's and February 2026's changes by sector from `fred-payrolls-by-sector.csv`; S96's spec (title, notes, source line, alt) and the guide's failure spec; the review build's placed failure figure for its source line; chapter 11's Rules 11.2 and 11.3 and Rule 11.10's step spec; Rule 13.5's and 13.3's specs; Rule 14.96's entry; `pips_svg`, `effect_rows`, `route_rows` and `grade_block` in the generators; the marks and key CSS of 15.22 and 15.23 in `phase3_ch15_build.py`; the text of `s-15-16-correct`, `s-15-20-correct`, `s-15-23-correct`, `s-14-144-correct` and `s-14-144-failure`.
+- Batches 1 to 3 (17:23 to 17:30 UTC), by script: Rules 11.8, 11.10 and 11.11 whole from `11-icons.json`; the `data-icon` marks and drawings of `s-11-10-*`, `s-11-11-*` and `s-11-ballot-steps` against `8ace3dc6`; the sources file's court rows (steps 3, 5, 6) and California's sampling row; chapter 11's rule words for dashes and listed words. For chapter 15: the marks CSS and key CSS in `phase3_ch15_build.py`; mark counts on `s-15-22-*` and `s-15-23-*` (`.n`, `.sqm`, `.wq`, `.kn`, `st`, `br`, `af`); every stage's words and sources on 15.22; the text of 15.23, 15.24's card lines and 15.25's attributed rows; Rules 15.20 to 15.23 in the chapter file; "ordinal", dashes and listed words over the chapter file and every `s-15-*` plate; `phase3_ch15_build.py --check-only` (exit 0, 39 examples, D02 8); `v7-reconciliation-rows.json` for rows naming one reform's route (row 41 alone); "retrieved" and "read" counted in chapters 11, 13, 14 and 15.
 
 ## Not tested
 
