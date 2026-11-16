@@ -2110,8 +2110,17 @@ def check_page(page, by_group):
     for t in set(re.findall(r'href="#([^"]+)"', plate)):
         if not re.search(rf'\sid="{re.escape(t)}"', s):
             faults.append(f"#{t} lands on nothing")
+    # the road (call 17): each link lands on its rule's block
+    for ch, num in re.findall(r'<a class="oa-link sg-go" href="#rule-(\d+)-(\d+)"', plate):
+        if not re.search(rf'<div class="rule[^"]*" id="rule-{ch}-{num}" data-rule="{ch}\.{num}"', s):
+            faults.append(f"the road's link to #rule-{ch}-{num} lands on no rule block")
+    # the last question's skip link lands on the closing block's line, and the rule index follows the guide (AX-S4)
+    if not re.search(r'id="[^"]*s-14-sg-full-t"', plate):
+        faults.append("the closing block's line, the last skip link's target, is not in the placed guide")
+    if not re.match(r'</figure><div class="rule-index"><p class="label" id="data-visualization-index-t"', s[j:j + 120]):
+        faults.append("the rule index no longer follows the guide; the skip links' words need a look")
     need(not faults, "page faults:\n  " + "\n  ".join(faults))
-    return len(re.findall(r'href="#rule-14-\d+"', plate))
+    return len(re.findall(r'href="#rule-14-\d+" data-tier=', plate)), len(re.findall(r'class="oa-link sg-go"', plate))
 
 
 def sheet(frag, out):
@@ -2156,8 +2165,9 @@ def main():
               f"{sum(len(v) for v in by_group.values())} forms under {len(by_group)} questions) and {META.name}; "
               f"{'written: ' + ', '.join(written) if written else 'both unchanged'}")
     if a.page:
-        n = check_page(a.page, by_group)
-        print(f"selection_guide_build --page: {n} form links, each landing on its rule block; every skip link lands")
+        n, road = check_page(a.page, by_group)
+        print(f"selection_guide_build --page: {n} form links and {road} road links, each landing on its rule block; "
+              f"every skip link lands")
 
 
 if __name__ == "__main__":

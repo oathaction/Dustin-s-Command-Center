@@ -20,10 +20,11 @@
   "measure_line": "Union members as a share of employed wage and salary workers, 2025 annual average, drawn as people out of 100, United States",
   "notes": [
     "The share stood at 20.1 percent in 1983. In 2025 it was 5.9 percent in the private sector and 32.9 percent in the public sector, with 14.7 million members in all.",
-    "The Bureau says the 2025 average, which leaves out October, is not strictly comparable with other years’ averages."
+    "The Bureau says the 2025 average, which leaves out October, is not strictly comparable with other years’ averages.",
+    "The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2. The atlas tracks that variable in part by union membership, which counts members and so measures something narrower than bargaining power."
   ],
   "chart_notes": [
-    "Each square stands for one worker in 100. The 10 squares filled in the text’s ink are union members, and the 90 open squares are the rest. The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2."
+    "Each square stands for one worker in 100. The 10 squares filled in the text’s ink are union members, and the 90 open squares are the rest."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -79,13 +80,16 @@
   "notes_internal": [
     "Maker A, round 4. Data plan row 115, rule 14.79. Domain D07 (V7 I101). Source line: the sidecar's snapshot_in_grade variant (data lead R-1), the atlas's date printed once, in the grade line.",
     "Data lead rulings (a) subject ink on the 10 members, no red (an area form, RF-1); (b) one 10 by 10 grid of plain unit marks at every width, the 90 others open with a 1 px context-ink edge and no fill (RF-2), the key in the file's words, CL-050 once at 48 px in the icon ink, outside the grid; (c) the grade line. Q-A1: CL-050 prints 'Worker bargaining power' with the chip 'Variable A2' (Rule 10.6, an atlas symbol).",
-    "Checks by script (maker_a_round4_derive.py --figures, check S85): 10.0 percent rounds to 10 of 100; 1983 20.1, private 5.9, public 32.9 and 14.7 million as in note 1; CL-050's label and chip equal the editor's label table (work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json) and chapter 10's list of 41."
+    "Checks by script (maker_a_round4_derive.py --figures, check S85): 10.0 percent rounds to 10 of 100; 1983 20.1, private 5.9, public 32.9 and 14.7 million as in note 1; CL-050's label and chip equal the editor's label table (work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json) and chapter 10's list of 41.",
+    "Fix pass after rounds 4 and 5 (DF-15, November 16, 2026): source_line is the sidecar's variant \"via_atlas\" (v7-union-membership.meta.json, the research lead's F13), copied by script, in Rule 13.6's form: the atlas named with \"via\" and its snapshot date.",
+    "Fix pass after rounds 4 and 5 (RP-17, November 16, 2026): the sentence that names the drawing beside “Worker bargaining power” moves from the chart note (inside the closed table and notes) to a third visible note, with what ties the measure to the variable, in the atlas's own words for Variable A2 (atlas-v7-data.json, nodes.A2.description: “Union membership and the share of business income paid to workers help track it”; indicator_note: “union density counts members” and “Each measures something narrower than bargaining power”). DR-266's drawing stays."
   ],
-  "source_line": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To? The 2025 average covers 11 months, since the October 2025 survey was not collected.",
+  "source_line": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, via Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The 2025 average covers 11 months, since the October 2025 survey was not collected.",
   "typography": {
     "nbsp": true,
     "hold": [
-      "October 15, 2026"
+      "October 15, 2026",
+      "Variable A2"
     ]
   }
 }

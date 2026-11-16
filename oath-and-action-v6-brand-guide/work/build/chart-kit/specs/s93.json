@@ -185,7 +185,8 @@
     "Data lead (20:59 UTC) accepted numbered markers with no leader lines, and the redraw in Inter with the drawing's own line breaks.",
     "Editor's words (21:03 UTC) applied: title and grade line; the alt prints a hyphen in 119-12.",
     "Design director DD-I6 to DD-I9 (21:22 UTC) and the data lead's yes to DD-I7 (21:25): the crop drawn as a dashed rule across the sheet's foot, with \"The page continues with section 2.\" under it, in place of the old note; parts numbered in the page's reading order through the sort (1 running head, 2 the Statutes at Large citation beside it, 3 Public Law number, 4 Congress, 5 long title, 6 date approved, 7 bill number, 8 enacting clause, 9 short title section, 10 margin short title, 11 margin note), the table's Number column mapped the same way and the file as stored; a running head that wraps sets its citation on a line of its own; the page's doubled single quotation marks set as double quotation marks in the drawing (typography.replace, printed words only), with the note saying so.",
-    "Editor's words (21:24 UTC) applied: the note on the redraw's two typesetting choices; the crop's words in the label style."
+    "Editor's words (21:24 UTC) applied: the note on the redraw's two typesetting choices; the crop's words in the label style.",
+    "Fix pass after rounds 4 and 5 (DF-15, November 16, 2026): source_line is the sidecar's variant \"publisher_first\" (govinfo-pl-119-12-first-page.meta.json, the research lead's F13), copied by script, in Rule 13.6's form: the publisher first, the copy named with \"via\"."
   ],
-  "source_line": "Source: Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page, United States, from govinfo, U.S. Government Publishing Office. Retrieved November 12, 2026."
+  "source_line": "Source: U.S. Government Publishing Office, Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page, United States, via govinfo. Retrieved November 12, 2026."
 }
