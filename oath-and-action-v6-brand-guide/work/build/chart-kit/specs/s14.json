@@ -81,7 +81,8 @@
       "in {x}, preliminary"
     ],
     "key_average": "Three-month average",
-    "latest_clear": 4
+    "latest_clear": 4,
+    "average_dash": "fit"
   },
   "annotations": [
     {

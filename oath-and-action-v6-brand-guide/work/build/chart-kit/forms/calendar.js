@@ -7,7 +7,10 @@
  * encode: date (date), event (text), who (text, optional), consequence (text), weekday (text, optional).
  * labels: key (the line over the year mark that says what its squares mean), none (words a consequence opens with when the law states none, such as "None"), tags ({strong, plain}: the
  * kinds in words), months (twelve month names for the mark), consequence_words (the words a consequence prints in,
- * {consequence} for the column's words), who_words (default "for {who}"), mark_width (px, default 256). */
+ * {consequence} for the column's words), who_words (default "for {who}"), mark_width (px, default 256).
+ * CD-S1 (fix pass after rounds 4 and 5): the year is drawn twice at fixed sizes, words and all: at mark_width with 26 px
+ * months for a phone (.oac-h-phone), and at 600 px with 30 px months, so 8 px squares and a three-event day fit, for a
+ * column of 600 px or more (.oac-h-desk, kit.css's container query). The phone mark draws first and keeps its bytes. */
 (function (K) {
   'use strict';
   var DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -24,39 +27,45 @@
       var ymd = function (r) { var m = String(r[ed]).match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? [+m[1], +m[2], +m[3]] : null; };
       var year = (ymd(h.rows[0]) || [2000])[0], leap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
       var byday = {}; h.rows.forEach(function (r, i) { var e = ymd(r); if (e) (byday[e[1] + '-' + e[2]] = byday[e[1] + '-' + e[2]] || []).push(i); });
-      var W = L.mark_width || 256, rowh = 26, lab = 34, pitch = (W - lab - 4) / 31, sq = Math.min(8, Math.floor(pitch)), top = 20;
       // the year mark: a month a row, a hairline for its days, each event a square on its day, stacked where a day holds several;
       // CD-S1 (fix pass after rounds 4 and 5): the days on a 1 to 31 scale, labeled once at the top at days 1, 15 and 31,
       // and each month's hairline ticked at its 1st, its 15th and its last day
-      var mark = h.mark(W, top + 12 * rowh, function (c) {
-        var dx = function (day) { return lab + (day - 1) * pitch + sq / 2; };
-        c.text(dx(1), 13, '1', { role: 'tick', fill: 'secondary', anchor: 'middle' });
-        c.text(dx(15), 13, '15', { role: 'tick', fill: 'secondary', anchor: 'middle' });
-        c.text(lab + 30 * pitch + sq, 13, '31', { role: 'tick', fill: 'secondary', anchor: 'end' });
-        // the twelve names in one text, a line each, and every month's hairline and ticks in one path
-        c.text(0, top + rowh / 2 + 4.5, months.join(' '), { role: 'tick', fill: 'secondary', max: 1, leading: rowh });
-        var d = '', tk = '';
-        for (var m = 0; m < 12; m++) {
-          var md = DAYS[m] + (m === 1 && leap ? 1 : 0), yl = top + m * rowh + rowh / 2;
-          d += 'M' + lab + ',' + (yl + 0.5) + 'h' + K.round((md - 1) * pitch + sq);
-          [1, 15, md].forEach(function (day) { tk += 'M' + (Math.round(dx(day) - 0.5) + 0.5) + ',' + (yl - 3) + 'v7'; });
-        }
-        c.path(d, { fill: 'none', stroke: 'gridline', width: 1, mark: false });
-        c.path(tk, { fill: 'none', stroke: 'gridline', width: 1, mark: false });
-        // the squares, filled ones in one path and open ones in another, each square a closed run of four sides
-        var stack = {}, sq_f = [], sq_o = [], R = K.round;
-        h.rows.forEach(function (r) {
-          var e = ymd(r); if (!e || e[0] !== year) return;
-          var key = e[1] + '-' + e[2], k = stack[key] = (stack[key] || 0) + 1, n = (byday[key] || []).length;
-          var x = lab + (e[2] - 1) * pitch, y0 = top + (e[1] - 1) * rowh + rowh / 2 - (n * sq + (n - 1) * 2) / 2 + (k - 1) * (sq + 2);
-          if (strong(r)) sq_f.push([x, y0, sq]); else sq_o.push([x + 0.75, y0 + 0.75, sq - 1.5]);
+      // snap: each day's left edge on a whole pixel, so the desk's 8 px squares print crisp at 1x
+      var draw_year = function (W, rowh, snap) {
+        var lab = 34, pitch = (W - lab - 4) / 31, sq = Math.min(8, Math.floor(pitch)), top = 20;
+        var left = function (day) { var x = lab + (day - 1) * pitch; return snap ? Math.round(x) : x; };
+        return h.mark(W, top + 12 * rowh, function (c) {
+          var dx = function (day) { return left(day) + sq / 2; };
+          c.text(dx(1), 13, '1', { role: 'tick', fill: 'secondary', anchor: 'middle' });
+          c.text(dx(15), 13, '15', { role: 'tick', fill: 'secondary', anchor: 'middle' });
+          c.text(left(31) + sq, 13, '31', { role: 'tick', fill: 'secondary', anchor: 'end' });
+          // the twelve names in one text, a line each, and every month's hairline and ticks in one path
+          c.text(0, top + rowh / 2 + 4.5, months.join(' '), { role: 'tick', fill: 'secondary', max: 1, leading: rowh });
+          var d = '', tk = '';
+          for (var m = 0; m < 12; m++) {
+            var md = DAYS[m] + (m === 1 && leap ? 1 : 0), yl = top + m * rowh + rowh / 2;
+            d += 'M' + lab + ',' + (yl + 0.5) + 'h' + K.round(snap ? left(md) - lab + sq : (md - 1) * pitch + sq);
+            [1, 15, md].forEach(function (day) { tk += 'M' + (Math.round(dx(day) - 0.5) + 0.5) + ',' + (yl - 3) + 'v7'; });
+          }
+          c.path(d, { fill: 'none', stroke: 'gridline', width: 1, mark: false });
+          c.path(tk, { fill: 'none', stroke: 'gridline', width: 1, mark: false });
+          // the squares, filled ones in one path and open ones in another, each square a closed run of four sides
+          var stack = {}, sq_f = [], sq_o = [], R = K.round;
+          h.rows.forEach(function (r) {
+            var e = ymd(r); if (!e || e[0] !== year) return;
+            var key = e[1] + '-' + e[2], k = stack[key] = (stack[key] || 0) + 1, n = (byday[key] || []).length;
+            var x = left(e[2]), y0 = top + (e[1] - 1) * rowh + rowh / 2 - (n * sq + (n - 1) * 2) / 2 + (k - 1) * (sq + 2);
+            if (strong(r)) sq_f.push([x, y0, sq]); else sq_o.push([x + 0.75, y0 + 0.75, sq - 1.5]);
+          });
+          var run = function (q) { return q.map(function (b) { return 'M' + R(b[0]) + ',' + R(b[1]) + 'h' + b[2] + 'v' + b[2] + 'h-' + b[2] + 'z'; }).join(''); };
+          var pts = function (q) { return q.map(function (b) { return [[b[0], b[1]], [b[0] + b[2], b[1]], [b[0] + b[2], b[1] + b[2]], [b[0], b[1] + b[2]]]; }); };
+          var box = function (q) { var x0 = Math.min.apply(null, q.map(function (b) { return b[0]; })), y0 = Math.min.apply(null, q.map(function (b) { return b[1]; })); return [x0, y0, Math.max.apply(null, q.map(function (b) { return b[0] + b[2]; })) - x0, Math.max.apply(null, q.map(function (b) { return b[1] + b[2]; })) - y0]; };
+          if (sq_f.length) c.path(run(sq_f), { fill: 'subject', pts: pts(sq_f), closed: true }, box(sq_f));
+          if (sq_o.length) c.path(run(sq_o), { fill: 'surface', stroke: 'subject', width: 1.5, pts: pts(sq_o), closed: true }, box(sq_o));
         });
-        var run = function (q) { return q.map(function (b) { return 'M' + R(b[0]) + ',' + R(b[1]) + 'h' + b[2] + 'v' + b[2] + 'h-' + b[2] + 'z'; }).join(''); };
-        var pts = function (q) { return q.map(function (b) { return [[b[0], b[1]], [b[0] + b[2], b[1]], [b[0] + b[2], b[1] + b[2]], [b[0], b[1] + b[2]]]; }); };
-        var box = function (q) { var x0 = Math.min.apply(null, q.map(function (b) { return b[0]; })), y0 = Math.min.apply(null, q.map(function (b) { return b[1]; })); return [x0, y0, Math.max.apply(null, q.map(function (b) { return b[0] + b[2]; })) - x0, Math.max.apply(null, q.map(function (b) { return b[1] + b[2]; })) - y0]; };
-        if (sq_f.length) c.path(run(sq_f), { fill: 'subject', pts: pts(sq_f), closed: true }, box(sq_f));
-        if (sq_o.length) c.path(run(sq_o), { fill: 'surface', stroke: 'subject', width: 1.5, pts: pts(sq_o), closed: true }, box(sq_o));
-      });
+      };
+      // CD-S1: the phone's year first (its bytes as before), then the desk's, which kit.css shows from a 600 px column
+      var mark = '<span class="oac-h-phone">' + draw_year(L.mark_width || 256, 26, false) + '</span><span class="oac-h-desk">' + draw_year(600, 30, true) + '</span>';
       // the list: one item a day, each event on it with its kind in words; who acts where the event's words do not name it
       var days = [];
       h.rows.forEach(function (r, i) { var e = ymd(r), key = e ? e[1] + '-' + e[2] : String(i); if (!byday[key + '#']) { byday[key + '#'] = true; days.push(key); } });
