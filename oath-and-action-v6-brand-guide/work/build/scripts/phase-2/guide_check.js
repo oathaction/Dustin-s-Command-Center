@@ -127,6 +127,12 @@
 //   chartEdges         every chart kit drawing (figure.oac-fig svg.oac-svg, every one drawn first) and every chapter 14
 //                      sketch (svg.oac-sketch) holds each shape it paints inside its own box, within 1.5 px: a drawing's
 //                      overflow is visible, so a shape outside it paints over the figure's words (CD RM1, K-S2)
+// Added in the fix pass after rounds 4 and 5 (November 16, 2026, call 11, DR-278 (b)):
+//   specimenPicture    every image stage (role="img") holds its picture in one wrapper, [data-oa-picture] with
+//                      aria-hidden="true", and nothing beside it, so a screen reader hears the stage once, by its alt;
+//                      the wrapper holds no link, button, field or other tab stop. The text check (under13, contrast)
+//                      still reads every word inside the wrapper: it skips aria-hidden text only where it is not a
+//                      stage's own picture
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -267,13 +273,23 @@ function audit(page) {
     out.anchors = an;
 
     // ---------------- specimens and alt text
-    const sp = { stages: 0, pending: [], noAlt: [], imgNoAlt: [], svgUnnamed: [], exemptions: [] };
+    const sp = { stages: 0, pending: [], noAlt: [], imgNoAlt: [], svgUnnamed: [], exemptions: [], pictures: 0, pictureOpen: [], pictureControl: [] };
+    // call 11 (DR-278 (b)): what a hidden picture may not hold, since a keyboard would still reach it
+    const PIC_CONTROL = 'a[href], button, input:not([type="hidden"]), select, textarea, summary, iframe, audio[controls], video[controls], [tabindex]:not([tabindex^="-"]), [contenteditable]:not([contenteditable="false"])';
     document.querySelectorAll('[data-specimen]').forEach((s) => {
       const id = s.getAttribute('data-specimen'); sp.stages++;
       if (s.hasAttribute('data-pending')) { sp.pending.push(id); return; }
       const ex = s.getAttribute('data-check-exempt'); if (ex) sp.exemptions.push({ specimen: id, skips: ex });
       const role = s.getAttribute('role');
-      if (role === 'img') { const l = norm(s.getAttribute('aria-label')); if (l.length < 15) sp.noAlt.push({ specimen: id, label: l }); }
+      if (role === 'img') {
+        const l = norm(s.getAttribute('aria-label')); if (l.length < 15) sp.noAlt.push({ specimen: id, label: l });
+        // call 11 (DR-278 (b)): the stage's whole content is one hidden picture, so its words are heard once, as its alt
+        sp.pictures++;
+        const kids = [...s.childNodes].filter((n) => n.nodeType === 1 || (n.nodeType === 3 && n.textContent.trim()));
+        const pic = kids.length === 1 && kids[0].nodeType === 1 && kids[0].hasAttribute('data-oa-picture') && kids[0].getAttribute('aria-hidden') === 'true' ? kids[0] : null;
+        if (!pic) sp.pictureOpen.push({ specimen: id, children: kids.length, first: kids[0] ? (kids[0].nodeType === 3 ? '#text' : kids[0].tagName.toLowerCase() + (kids[0].hasAttribute('data-oa-picture') ? '[data-oa-picture]' : '')) : null });
+        else { const c = pic.querySelector(PIC_CONTROL); if (c) sp.pictureControl.push({ specimen: id, tag: c.tagName.toLowerCase(), text: (c.textContent || '').trim().slice(0, 40) }); }
+      }
       else {
         // access S3 (Phase 3 round 1 fix pass): a stage that holds a kit figure is described by the figure's own alt, which
         // names its drawing, so the stage carries no description of its own
@@ -481,15 +497,17 @@ function audit(page) {
     };
     const bgOf = (el) => { const u = svgUnder(el); if (u) return u; for (let e = el; e && e.nodeType === 1; e = e.parentElement) { if (!(e instanceof SVGElement)) { const c = parse(getComputedStyle(e).backgroundColor); if (c && c.a > 0.5) return c; } } return parse(getComputedStyle(document.body).backgroundColor) || { r: 255, g: 255, b: 255, a: 1 }; };
     const all = [...document.querySelectorAll('body *')].filter((el) => !['SCRIPT', 'STYLE', 'TITLE', 'DESC', 'DEFS', 'NOSCRIPT'].includes(el.tagName.toUpperCase()) && !el.closest('title,desc,defs'));
-    const tx = { texts: 0, minSize: 99, under13: [], lowContrast: [], skipped: 0 };
+    const tx = { texts: 0, inPictures: 0, minSize: 99, under13: [], lowContrast: [], skipped: 0 };
     for (const el of all) {
       const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join(' ');
-      if (!own || !visible(el) || (el.closest('[aria-hidden="true"]') && !(el instanceof SVGElement))) continue;
+      // call 11 (AX-S6): an image stage's own hidden picture is still read here, so its words keep the 13 px floor and the
+      // contrast bar; any other aria-hidden text is skipped, as before
+      if (!own || !visible(el) || (el.closest('[aria-hidden="true"]:not([data-oa-picture])') && !(el instanceof SVGElement))) continue;
       const cs = getComputedStyle(el); let size = parseFloat(cs.fontSize);
       const isSvg = el instanceof SVGElement;
       if (isSvg) { const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; if (vb && vb.width) size = +(size * s.getBoundingClientRect().width / vb.width).toFixed(2); }
       const fg = parse(isSvg ? cs.fill : cs.color); if (!fg) continue;
-      tx.texts++;
+      tx.texts++; if (el.closest('[data-oa-picture]')) tx.inPictures++;
       if (!exempt(el, 'size')) { tx.minSize = Math.min(tx.minSize, size); if (size < 12.95) tx.under13.push({ text: own.slice(0, 40), size, where: where(el) }); } else tx.skipped++;
       if (!exempt(el, 'contrast')) {
         const cr = ratio(fg, bgOf(el)); const large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight, 10) >= 700);
@@ -607,6 +625,8 @@ function failuresFrom(a, width) {
   if (sp.pending.length) add('pendingSpecimens', `${sp.pending.length} specimen file(s) missing: ${sp.pending.slice(0, 6).join(', ')}`);
   if (sp.noAlt.length) add('specimenAlt', `${sp.noAlt.length} specimen(s) without alt text, first: ${JSON.stringify(sp.noAlt[0])}`);
   if (sp.imgNoAlt.length) add('imgAlt', `${sp.imgNoAlt.length} <img> without alt, first: ${JSON.stringify(sp.imgNoAlt[0])}`);
+  if (sp.pictureOpen.length) add('specimenPicture', `${sp.pictureOpen.length} of ${sp.pictures} image stage(s) whose words a screen reader hears beside the alt, with no single hidden picture holding them (DR-278 (b)): ${sp.pictureOpen.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureOpen[0])}`);
+  if (sp.pictureControl.length) add('specimenPicture', `${sp.pictureControl.length} image stage(s) whose hidden picture holds a control a keyboard still reaches: ${sp.pictureControl.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureControl[0])}`);
   if (sp.svgUnnamed.length) add('svgNames', `${sp.svgUnnamed.length} inline SVG(s) neither named nor hidden, first: ${JSON.stringify(sp.svgUnnamed[0])}`);
   if (sp.landmarks.length) add('specimenLandmarks', `${sp.landmarks.length} landmark or article element(s) inside stages, in ${[...new Set(sp.landmarks.map((x) => x.specimen))].join(', ')}; first: ${JSON.stringify(sp.landmarks[0])}`);
   if (a.names.count) add('nameEntities', `${a.names.count} accessible name(s) or text(s) holding an entity, first: ${JSON.stringify(a.names.entities[0])}`);
@@ -2530,6 +2550,13 @@ const PLANTS = [
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
   { key: 'aliases', fault: 'the #grid alias removed from 08 The lockmark', js: () => { document.getElementById('grid').remove(); } },
   { key: 'specimenAlt', fault: 'a specimen stage with no alt', js: () => { document.querySelector('[data-specimen][role="img"]').removeAttribute('aria-label'); } },
+  // call 11 (DR-278 (b), AX-S6, the fix pass after rounds 4 and 5): an image stage is heard once, by its alt, and the text
+  // check still reads its hidden picture
+  { key: 'specimenPicture', fault: 'an image stage with words beside its hidden picture, heard again after its alt', js: () => { document.querySelector('[data-specimen][role="img"]').insertAdjacentHTML('beforeend', '<p>Heard a second time.</p>'); } },
+  { key: 'specimenPicture', fault: 'an image stage whose picture is not hidden from the accessibility tree', js: () => { document.querySelector('[data-specimen][role="img"] > [data-oa-picture]').removeAttribute('aria-hidden'); } },
+  { key: 'specimenPicture', fault: 'an image stage whose hidden picture holds a link a keyboard still reaches', js: () => { document.querySelector('[data-specimen][role="img"] > [data-oa-picture]').insertAdjacentHTML('beforeend', '<a href="#main">A link</a>'); } },
+  { key: 'under13', fault: 'a 12 px text inside an image stage\'s hidden picture (the text check reads the picture)', js: () => { document.querySelector('[data-specimen][role="img"]:not([data-check-exempt~="size"]) > [data-oa-picture]').insertAdjacentHTML('beforeend', '<p style="font-size:12px;margin:0">Small words in the picture</p>'); } },
+  { key: 'under13', expect: false, fault: 'a 12 px text under its own aria-hidden inside a hidden picture, skipped as any other hidden text (allowed: must not be flagged)', js: () => { document.querySelector('[data-specimen][role="img"]:not([data-check-exempt~="size"]) > [data-oa-picture]').insertAdjacentHTML('beforeend', '<p aria-hidden="true" style="font-size:12px;margin:0">Small hidden words</p>'); } },
   { key: 'specimenAlt', fault: 'a card figure (R4-3) whose group label is too short to name it', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="plate-stage" data-specimen="s-14-t-card" role="group" aria-label="Cards, specimen"><figure class="oac-fig" data-oa-html><div class="oac-art oac-html" role="group" aria-label="Six facts"><ul class="oac-h-facts" role="list"><li class="oac-h-item">A fact</li></ul></div></figure></div>'); } },
   { key: 'specimenAlt', expect: false, fault: 'a card figure (R4-3) named by its group label of 15 characters or more (allowed: must not be flagged)', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="plate-stage" data-specimen="s-14-t-card" role="group" aria-label="Cards, specimen"><figure class="oac-fig" data-oa-html><div class="oac-art oac-html" role="group" aria-label="Six facts on what public school systems spend"><ul class="oac-h-facts" role="list"><li class="oac-h-item">A fact</li></ul></div></figure></div>'); } },
   { key: 'imgAlt', fault: 'an <img> with no alt', js: () => { const i = document.createElement('img'); i.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACw='; i.width = 20; i.height = 20; document.querySelector('.rule .why').append(i); } },

@@ -1802,15 +1802,17 @@ def build(ctx):
                      'current, and its words say so: '
                      '“Step 6 of 6: Vote. The count is unofficial until the state certifies it, which it has set for '
                      'November 25.” Once '
-                     'the count is certified, the words give the result with the date of the vote and the date it was '
-                     # PR-S10 (wave 2, draft for the editor): Approved fills six steps; Rejected ends on a square at step
-                     # 6, as a veto that stands stops a bill (Rule 11.3); RP-16: the second test named, from
-                     # Massachusetts's Amendment Article LXXXI, Section 2
-                     'certified. Approved by voters fills all six steps and says when the measure takes effect. Rejected by '
-                     'voters ends the line on a square at step 6, as a veto that stands stops a bill at step 6 (Rule '
-                     '11.3). So does Fell short of the vote the law requires, for a measure most voters approved that '
-                     'failed a second test the state sets: in Massachusetts a law proposed by initiative also needs yes '
-                     'votes equal to at least 30 percent of all the ballots cast in the election. A measure that ends '
+                     'the count is certified, the words give the result, Approved by voters or Rejected by voters, with '
+                     # PR-S10 (wave 2): Approved fills six steps; Rejected ends on a square at step 6, as a veto that
+                     # stands stops a bill (Rule 11.3); RP-16: the second test named, from Massachusetts's Amendment
+                     # Article LXXXI, Section 2. The editor's second read: the end words named before the marks they
+                     # take, a measure (not its words) as what fills or ends, and the test in a sentence of its own
+                     'the date of the vote and the date it was certified. An approved measure fills all six steps, and its '
+                     'words say when it takes effect. A rejected one ends its line on a square at step 6, as a bill does '
+                     'when a veto stands (Rule 11.3). So does a measure most voters approved that failed a second test '
+                     'the state sets, whose words read Fell short of the vote the law requires. In Massachusetts, a law '
+                     'proposed by initiative also needs yes votes equal to at least 30 percent of all the ballots cast in '
+                     'the election. A measure that ends '
                      'before step 6 ends its line on a square at the step under way when it ended, with its words and the '
                      'date: Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to '
                      'qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 '
@@ -1885,8 +1887,8 @@ def build(ctx):
                      # RP-15 (wave 2, draft for the editor): 28 U.S.C. 1254(1), "By writ of certiorari granted upon the
                      # petition of any party", and the Court's Rule 10; the step name stays
                      'At step 5 the side that lost petitions for a writ of certiorari, the order that brings a case up for '
-                     'the Supreme Court’s review, which news reports shorten to cert, so “cert denied” is a denied '
-                     'petition. A step the law gives this case no '
+                     'the Supreme Court’s review. News reports shorten the word to cert, so “cert denied” means the Court '
+                     'denied that petition. A step the law gives this case no '
                      'room for keeps its number under a slash, as when a district court of three judges grants or denies '
                      'an injunction, a court order to do or to stop doing something, and the law sends the appeal straight '
                      'to the Supreme Court.',
@@ -1911,12 +1913,12 @@ def build(ctx):
                      'the Supreme Court to review the case in the time the law allows.” A case that ends by settlement, '
                      # PR-S10 (wave 2, draft for the editor): the square sits on the step under way, so a case settled
                      # or dismissed before the trial court rules ends on step 2, as Rule 11.8's request does
-                     'dismissal or a denied petition ends its line on a square at the step under way when it ended, so a '
-                     'case settled or dismissed before the trial court rules ends on step 2, with its words: '
-                     'Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the court, Appeal dismissed '
-                     'at the appellant’s request (the appellant is the side that appealed), Appeal dismissed by the court, '
-                     'or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals court’s ruling '
-                     'standing.'],
+                     'dismissal or a denied petition ends its line on a square at the step under way when it ended, with '
+                     'its words: Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the court, Appeal '
+                     'dismissed at the appellant’s request (the appellant is the side that appealed), Appeal dismissed by '
+                     'the court, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals '
+                     # the editor's second read: the step 2 case in its own sentence, since the list holds ends on steps 4 and 5
+                     'court’s ruling standing. A case settled or dismissed before the trial court rules ends on step 2.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['In the Supreme Court’s own words, review is “not a matter of right, but of judicial '
                              'discretion”, so a denied petition says only that the Court chose not to hear the case. A '

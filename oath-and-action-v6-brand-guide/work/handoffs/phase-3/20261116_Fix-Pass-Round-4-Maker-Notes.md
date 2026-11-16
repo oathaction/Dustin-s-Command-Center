@@ -12,6 +12,8 @@ My codes: call 18 (S95, NB-M2) with AX-S2; RP-2 (S92's table, a Must); CD-S1 wit
 
 ## Fixed
 
+- **RP-2, Must (Rule 14.138, S92's table and steps 6 and 8).** The table's third column no longer maps the data's `path` (main, branch), which printed "Every request" beside the appeal and the lawsuit. It now reads each step's own condition by its order: rows 1 to 3 and 5 "Every request", rows 4 and 7 "Optional", row 6 "Only if the agency says no", row 8 "Only if the agency says no or misses its time limits" (row 8's own words in the data file and 5 U.S.C. 552(a)(6)(C)(i), which the row cites). The column is now "When it happens", since row 5 is the agency's step. The same words open steps 6 and 8 in the drawing as eyebrows, on their solid discs (a new `labels.conditions` in `step-by-step.js`, printed as `oac-h-k` like an optional step's opening words), so the list and the table say the same thing. No mark, ink, figure or data value changed; the data file is untouched. Files: `work/build/chart-kit/specs/s92.json`, `work/build/chart-kit/forms/step-by-step.js`. Proof: `oa-chart.mjs build s92 --no-png` PASS, 0 faults, 0 warnings, 8,799 bytes as the guide places it; the figure's HTML rendered in Node shows both eyebrows and the column's eight values (scratch `s92-peek.html`). The browser half of the card checks waits for the load rule (Not tested). Draft words for the editor below.
+
 ## Not fixed
 
 ## Calls
@@ -22,6 +24,8 @@ My codes: call 18 (S95, NB-M2) with AX-S2; RP-2 (S92's table, a Must); CD-S1 wit
 ## Requests
 
 ## Words for the editor (drafts I applied)
+
+- **S92 (RP-2).** Table column label "When it happens" (was "Every request or optional"); values "Every request", "Optional", "Only if the agency says no" (row 6, the appeal), "Only if the agency says no or misses its time limits" (row 8, the lawsuit). The same two phrases as eyebrows over steps 6 and 8.
 
 ## Tested
 

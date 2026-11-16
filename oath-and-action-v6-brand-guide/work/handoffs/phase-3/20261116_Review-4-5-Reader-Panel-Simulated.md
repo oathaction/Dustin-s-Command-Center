@@ -4,13 +4,13 @@ Oath & Action Edition 06, Phase 3, chat 7, November 16, 2026. Written by the rea
 
 **Every reader on this page is simulated.** Dustin struck real reader tests before launch (DR-202). No real person read this work. Each reader below is a profile written by one agent, and each reader's words are that agent's prediction of how such a person would read. Treat them as hypotheses to check with real readers in a later phase, never as findings from people.
 
-Status: in progress. Started 16:35 UTC (read by `date -u`).
+Status: complete. Started 16:35 UTC and finished 17:51 UTC (both read by `date -u`).
 
 **Score: 3 of 5.** The simulated readers took the main lesson from all but one of the seventy readings (R1 gave up on 15.24 after two cards), but two plates teach a reader something false (RP-1, RP-2), and the front door never leads a reader to round 5's three full charts or chapter 15's workflows (RP-3).
 
 **Counts:** 2 Must fix, 18 Should fix.
 
-**What readers stumbled on most:** words the plates use without a gloss ("band" in two senses, "90 percent", "slash", "Illustrative", the delay ticks); the way from "Choose a chart" to the work they needed; and chapter 15's longest plates, which lost the phone reader and, by ear, repeat themselves.
+**What readers stumbled on most:** words and marks the plates use without a gloss ("band" in two senses, "90 percent", "slash", "Illustrative", the delay ticks); the way from "Choose a chart" to the work they needed; and chapter 15's longest plates, which lost the phone reader and, by ear, repeat themselves.
 
 ## How the panel ran
 
@@ -58,7 +58,7 @@ Summary in the reader's words (simulated): "The trackers and the records steps I
 
 ### R2, high school civics teacher (simulated)
 
-Read at 1440 px from the Newsprint 1x captures and the page text, as if projecting it, with the grayscale captures for a printed handout where they had landed.
+Read at 1440 px from the Newsprint 1x captures and the page text, as if projecting it. The grayscale captures had not landed, so the printed handout was not read.
 
 | Plate | What it taught (simulated) | What confused (simulated) | The word that stopped them |
 |---|---|---|---|
@@ -235,6 +235,17 @@ This section is the panel agent's own reading of what the simulated readers met,
 11. **Weight.** Outside the panel's lens.
 12. **Loop titles and DR-274's numbers.** Each variable's own title prints in every loop the readers read (14.143, 14.144). No stale "Rule 11.1N" citation appeared in the text the panel extracted from its nine rules and seven forms; the panel did not scan the rest of the guide.
 
+## Captures read
+
+- Newsprint 1x, 1440 px: every plate in the panel's reading; the state captures of 14.143 after five presses and of 14.144 with R-30 and with R-38 chosen.
+- Newsprint 1x, 390 px: the selection guide, S96, S92, S95, 14.143, 14.144 with R-06 and with R-38 chosen, 15.22, 15.24 and 11.11.
+- Charcoal 1x, 1440 px: S96, S95 and 11.10. On Charcoal S96's band fill sits close to the ground (sampled at about 1.2 to 1, as on Newsprint) and reads by its edge lines; the panel leaves that to the craft and accessibility readers.
+- Not read, because they had not landed: 320, 360, 768 and 1024 px; Charcoal at 390 and 320; grayscale; 2x; the Charcoal state captures. R1 therefore read at 390 on Newsprint only, R3 at 1440 only, R4 at 1440 and 390 only, and R2's printed handout was not read.
+
+## For the main session: the Charcoal capture run stopped
+
+`captures/index.json` (written 17:42:41 UTC) records the Charcoal pass, started 17:30:26 UTC by `cap-charcoal.cjs`, ending with "Target page, context or browser has been closed" at `s-15-20-failure`, after its last file at 17:42:28. The panel's one extra browser (see R6) ran from about 17:41:24 to 17:41:44, and another headless Chromium started at about 17:42:14. The panel cannot tell whether either contributed. Charcoal at 1440 holds 72 files and stops at `s-15-20-correct`; Charcoal at 390 and every later pass have no files. RP-1's fix needs the Charcoal state of 14.144 recaptured in any case.
+
 ## Questions for Dustin
 
 None. Every fix above sits inside an owner's approved work. The two that touch what board 3 shows him, RP-15 (a gloss for certiorari beside the court case tracker's step 5) and RP-16 (the ballot tracker's "second test"), change no step name or end word; board 3 still shows those for his approval.
@@ -250,6 +261,7 @@ None. Every fix above sits inside an owner's approved work. The two that touch w
 ## Not tested
 
 - No real reader. Every reader is simulated (DR-202).
+- RP-1 on Charcoal: the Charcoal state captures never landed, so the heavy line is seen on Newsprint at 1440 and 390 only; the cause in the plate's styles does not depend on the ground.
 - No screen reader, Safari or Firefox (DR-279). R6 is a model built from markup, and CSS hiding was not seen.
 - No browser pass beyond the one at 17:41 UTC. Keyboard order, focus, forced colors, reduced motion, print and scripts off were not checked by the panel; they are the accessibility reader's.
 - The panel ran no guide check, no kit build and no contrast measure.

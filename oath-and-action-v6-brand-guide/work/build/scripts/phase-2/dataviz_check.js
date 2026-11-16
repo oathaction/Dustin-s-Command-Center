@@ -85,7 +85,9 @@ async function audit(page, view) {
     const all = [...document.querySelectorAll('body *')].filter(el => !['SCRIPT', 'STYLE', 'TITLE', 'DESC', 'DEFS'].includes(el.tagName.toUpperCase()) && !el.closest('title,desc,defs'));
     for (const el of all) {
       const own = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim()).map(n => n.textContent.trim()).join(' ');
-      if (!own || !visible(el) || el.closest('[aria-hidden="true"]') && !(el instanceof SVGElement)) continue;
+      // the fix pass after rounds 4 and 5 (call 11): a guide image stage's hidden picture ([data-oa-picture]) is still read,
+      // as guide_check.js reads it; any other aria-hidden text is skipped, as before
+      if (!own || !visible(el) || el.closest('[aria-hidden="true"]:not([data-oa-picture])') && !(el instanceof SVGElement)) continue;
       const cs = getComputedStyle(el); let size = parseFloat(cs.fontSize);
       const isSvg = el instanceof SVGElement;
       if (isSvg) { const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; if (vb && vb.width) size = +(size * s.getBoundingClientRect().width / vb.width).toFixed(2); }
