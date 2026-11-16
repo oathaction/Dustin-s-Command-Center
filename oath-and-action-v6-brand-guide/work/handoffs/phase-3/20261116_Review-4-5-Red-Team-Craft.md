@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, chat 7, November 16
 
 ## Status
 
+- 19:57 UTC. Verification of the fix pass written at the end of the report: 15 of 18 codes held, 3 held in part or within the work under review, none failed; one new Should (CR-S23).
 - 17:48 UTC. My own captures taken and read (32 pictures, one browser, closed): Newsprint and Charcoal at 2x and 1440 px, grayscale at 1440 px, Newsprint at 320 px. They confirm CR-M1, CR-M2 (on both grounds), CR-S1 (in grayscale), CR-S5 and CR-S9. Named places 1 and 4 updated. Report complete; later additions, if any, go under this line.
 - 17:26 UTC. Added CR-M2 (14.144 with R-38 chosen). The main session says the shared run stops after Charcoal 1x; my own 2x, grayscale and 320 px captures of the plates my lens needs are queued behind the browser gate (`bin/mycap.cjs` in my scratch, one browser).
 - 17:09 UTC. First full draft written from the shared captures at Newsprint 1x, 1440 and 390 px, with pixel zooms of the 1440 px captures, the built page's markup and plate CSS, and Node-only kit drawings of S14 and S59. Charcoal, grayscale and the 2x captures had not landed; I add a pass on them below as they land.
@@ -111,4 +112,31 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, chat 7, November 16
 
 ## Verification of the fix pass
 
-Started 19:06 UTC on the joined page (`c07/join/guide.html`, 12,174,060 bytes, copied to `verify/guide.html` in my scratch; commit `b86226e8`). Static checks on its markup and CSS are in; the browser batch (`bin/verify.cjs`, measures and captures at 1x and 2x, 1440, 390 and 320 px, both grounds) waits on the load rule. Verdicts follow when it lands.
+Written 19:57 UTC. Read on the joined page (`c07/join/guide.html`, 12,174,060 bytes, commit `b86226e8`), copied to `verify/guide.html` in my scratch. One browser (`bin/verify.cjs`), opened at 19:49 UTC after `browsers.sh` printed "OK to open one" and closed at 19:52: 57 pictures in `verify/out/` (Newsprint 1x at 1440, 390 and 320 px; Charcoal 1x at 1440, 390 and 320 px; grayscale 1x at 1440 px; Newsprint 2x at 1440 and 390 px; Charcoal 2x at 1440 px), with 14.144 shot again with R-38 chosen at each, and measures taken in the page at 1440, 390 and 320 px. S14 and S96 were also drawn in Node at nine widths. **Of the 18 codes named, 15 held, 3 held in part or within the work under review (CR-S8, CR-S17, CR-S21), and none failed. One new Should (CR-S23) and one leftover from the CR-M1 check.**
+
+| Code | Verdict | What I saw |
+|---|---|---|
+| CR-M1 | Held | Stage 10 reads as two whole lines at 1440 and 390 px, 1x and 2x, on both grounds: "■ Short of two-thirds in either chamber, the bill dies." and "With two-thirds in each, then stage 13." The split-line measure over all 51 chapter 15 plates, at 1440, 390 and 320 px: no flex or grid row with a wrapped text run beside another item, except the residual below. |
+| CR-M2 | Held | With R-38 chosen, Connection L39 draws at the loop's 2 px weight on Newsprint and Charcoal, at 1x (1440, 390, 320 px) and 2x (1440, 390 px). Each reform's CSS now clears the case (`:not([data-oa-for~="R-38"]) .ak-case{stroke:none}`). |
+| CR-S1 | Held | Measured at 1440, 390 and 320 px: the options on 15.20 and 14.144 share one width (632, 296 and 256 px) and every chip starts at one x (450, 93 and 78 px). The chosen pill carries an inner keyline. In grayscale it reads as a double ring, stronger than the unchosen pill. The red arrowhead carries a 1 px ink edge (8x zoom). Same on Charcoal. |
+| CR-S3 | Held | "Each family's effects, the three reforms together" stands before the cards on a phone: a family a block, its three reforms one a row, with chip, pips and the whole code. See the new Should below. |
+| CR-S5 | Held | The black spine starts at stage 1, and the gray return comes down into stage 1's top in its own ink (2x). |
+| CR-S6 | Held | The key's path mark is a short gray arrow with its head, then the number, as the stages draw it. Call 1's new stage mark (the number on the line) is drawn in the key. |
+| CR-S7 | Held | All five blocks on 15.23 start their stage column at one x. Route FS's "Stage N:" labels sit in one slot, so every name starts at one x, 10 to 20 included. |
+| CR-S8 | Held in part | The grade ladder and the delay classes are vertical lists, each read as one ordered scale with its own step in bold and underlined. The drawing's column still stands empty for about 400 px below the pills at a desk; the designer left it, and it does not block. |
+| CR-S9 | Held | S96's preliminary average starts and ends on ink (Node: dash 3.92 on 2.94 fitted to the run; 2x picture: four dashes, no specks). S14 takes the same fit by the data lead's yes. |
+| CR-S11 | Held | The palette plate's 3 px grade lines land on three whole pixel rows (18, 18, 18 on Newsprint; 217, 217, 217 on the Charcoal panel), crisp beside the 2 px lines. |
+| CR-S12 | Held | At a desk each step's token sits whole on one line under "Token", and each ground's facts sit one a line. |
+| CR-S13 | Held | S93's list starts past a hairline with a clear gutter, so the page's discs and the list's discs read as two sets. Parts 6 and 7 stand apart. |
+| CR-S14 | Held | S94's key sets its two entries on lines of their own at every width. The year mark (DD-I18) now runs the column's width with a 1, 15, 31 day scale, and April's three marks stand apart. |
+| CR-S15 | Held | S14's latest label clears the +750,000 gridline by 4 px at 1440 px (measured in the page) and at every drawing width from 488 to 720 px (Node). Its descenders stand clear at 2x. |
+| CR-S17 | Held in rounds 4 and 5 and chapter 15 | The chip IDs set tight ("R-06" at 2x; no tabular figures in 14.143, 14.144, 15.20 or 15.25). Chapter 13's chips and Rule 18.24's code chip keep the tabular hyphen. That is approved work, listed by the component engineer and left for board 3. |
+| CR-S18 | Held | "2 conflicts, both in row 42". |
+| CR-S20 | Held | S12's phone tiles take a 1 px edge in the context ink (rgb 93, 99, 109, measured, no Verdigris), and the phone key ends "United States 5.9". |
+| CR-S21 | Held on 15.24; the rest is in the register | 15.24's joins are a drawn arrow (a 12 by 10 px mask in the secondary ink), set at x-height and bound to the stage after it. Chapters 01, 02 and 11's text arrows and the 348 check marks still fall outside the font subset (the page's unicode ranges are unchanged). They are entered in the deferred fixes register for the engineer. |
+
+**New Should, CR-S23. 14.144's phone line-up sets each reform on two or three lines.** In the new block, each reform's pips sit on a line of their own above its code. At 320 px the meaning then wraps ("0, no / expected effect"), so each family's three reforms take six to nine lines. Set the pips on the code's own line, before the code, as the key above the block does ("│●● +M moderate positive"). Each reform then reads on one line, and the three codes read down one edge. Owner: complex examples maker.
+
+**Residual, Should (the CR-M1 check found it).** On 15.20's failure plate, each option is a flex row holding a check box, a chip and the bare quoted name. The quote stands as a third column, 113 to 156 px wide, about three lines deep at every width ("Proportional / elections in multi- / seat House districts"), while the correct plate runs the quote inline after its chip. It reads as a hanging column, not as broken words, and it predates round 5's fixes. Wrap the quote in one span after the chip, or let the row wrap, so the failure plate's options match the correct plate's. Owner: systems designer.
+
+**Not verified here:** CR-S2 (named again as call 2; seen holding on the 390 px cards), CR-S4, CR-S10, CR-S16, CR-S19 and CR-S22, which the main session did not name; print, reduced motion, forced colors and 200 percent text; 768, 1024 and 360 px; 2x on Charcoal at 390 px.

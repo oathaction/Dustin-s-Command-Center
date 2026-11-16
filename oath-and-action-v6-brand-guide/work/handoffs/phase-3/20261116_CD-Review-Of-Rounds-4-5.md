@@ -232,9 +232,9 @@ No score moves. What the pictures add:
 
 ### Basis
 
-The joined build of the fix pass, strict build of commit `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings) and its `guide-Build-Report.json`, read in place. The fix brief (calls 1 to 18) and every owner's "Fixed" and "Not fixed" in `20261116_Fix-Pass-*-Notes.md`. My own captures of the joined build (`scratchpad/c07/review/creative-director/rescore/`), taken in one browser from 19:06 UTC under the load rule: 32 plates at Newsprint 1x at 1440 and 390 px and Charcoal 1x at 1440 px, 13 at Newsprint and Charcoal 2x at 1440 px, three under the page's grayscale filter at 2x, with 14.143 after one and five presses, 14.144 with R-30 and R-38 chosen, and 15.20 with R-04. Words and markup read from the page by script.
+The joined build of the fix pass, strict build of commit `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings) and its `guide-Build-Report.json`, read in place. The fix brief (calls 1 to 18) and every owner's "Fixed" and "Not fixed" in `20261116_Fix-Pass-*-Notes.md`. My own captures of the joined build (`scratchpad/c07/review/creative-director/rescore/`), taken under the load rule, one browser at a time: from 19:06 UTC, 32 plates at Newsprint 1x at 1440 and 390 px with 14.143 after one and five presses, 14.144 with R-30 and R-38 chosen and 15.20 with R-04, then six plates at Charcoal 1x at 1440 px before I stopped that slow run at 19:54 UTC; from 19:55 UTC, a second run of six plates at Newsprint 2x at 1440 px with 14.144's R-30 and R-38 states, two under the page's grayscale filter and three at Charcoal 2x (`rescore2x/`). Words and markup read from the page by script.
 
-Status: scores written 19:24 UTC from the joined build at Newsprint 1x at 1440 px and the four states; the 390 px, Charcoal, 2x and grayscale reads follow under "Second look, rescore" and moved nothing unless that section says so.
+Status: scores written 19:24 UTC from the joined build at Newsprint 1x at 1440 px and the states; the 390 px, Charcoal and 2x reads under "Second look, rescore" moved no score.
 
 ### Verdict
 
@@ -310,6 +310,8 @@ An asterisk marks a score under 4. Specimens under the bar: s-11-10-correct, s-1
 ### Second look, rescore
 
 - **390 px, Newsprint 1x (19:24 to 19:33 UTC).** 15.22's stage 10 reads as two sentences on a phone, with the square, and the bare stage numbers hold their line. S12's phone tiles take the gray edge and end the key with "United States 5.9". 14.144 now adds "Each family's effects, the three reforms together" on a phone, one row per reform under each family (CR-S3), so a phone reader can compare without scrolling between cards; the plate is 7,553 px tall at 390 px, and the pips sit 40 px right of their codes' left edge, a looseness the craft reader may want squared. 15.20's two choices share one width and the chosen pills carry their keyline. No score moves.
+- **Charcoal 1x at 1440 px (19:33 to 19:54 UTC).** 14.144, 14.143, 15.20, 15.22, 15.23 and S95 hold on Charcoal: the red target keeps its keyline, the bare stage numbers read in the Newsprint ink, and S95's lockmark sign-off keeps its red square against the dark card. My full Charcoal pass ran slowly, so I stopped it at 19:54 UTC after six plates and closed its browser; the other Charcoal plates I read only in the first pass, on the committed state.
+- **2x, Newsprint (19:55 to 19:58 UTC).** With R-30 chosen, the chosen pill's red ring carries a dark keyline inside it and the red arrowhead a thin dark edge, as CR-S1 and DD-R5 asked; the chips print "R-06", "R-30" and "R-38" with the hyphen at its own width; the three choices share one width with the check in a fixed slot. No score moves.
 
 ### To ready
 
@@ -367,7 +369,8 @@ None that block. Board 3 already carries the trackers' step names and end words,
 ### Tested, rescore
 
 - Read the fix brief's calls 1 to 18 and every owner's "Fixed" and "Not fixed" for my codes (19:06 to 19:10 UTC).
-- Took my own captures of the joined build with `scratchpad/c07/review/creative-director/cdre.cjs` (Playwright Chromium, masthead hidden, grounds set as `cap.cjs` sets them), one browser opened at 19:06 UTC after `browsers.sh` printed "OK to open one"; these pictures are mine.
+- Took my own captures of the joined build with `scratchpad/c07/review/creative-director/cdre.cjs` and `cdre2.cjs` (Playwright Chromium, masthead hidden, grounds set as `cap.cjs` sets them), one browser at a time after `browsers.sh` printed "OK to open one" (19:06 UTC and 19:55 UTC); I stopped the first run at 19:54 UTC and confirmed its browser closed (`browsers=0`). These pictures are mine, in `rescore/` and `rescore2x/`.
+- Read at 390 px: 15.22's stages 6 to 15, S12, 14.144 and 15.20; at Charcoal 1x: 14.144, 15.22 and S95; at Newsprint 2x: 14.144's chooser and its R-30 drawing.
 - Read at Newsprint 1x at 1440 px: 14.144 whole and with R-30 and R-38 chosen, 15.20 with R-03 and R-04, 14.143, 15.19, 15.22, 15.23, 15.24, 15.25, S86, S87, S88, S91, S93, S94, S95, S96, 14.142's failure, 11.10, 11.11, the ballot step table, the palette plate's sequential and diverging tables, and the selection guide's last screen.
 - By script on the joined page: the palette plate's printed ratios (no 10.47, 7.81, 4.61 or 4.92 left); 15.25's "2 conflicts"; the guide's 19 links to Rules 14.142 to 14.144 and its "Three charts in full"; 15.22's stage 19 and law names; 15.24's stated rule for R-28; Rules 11.10 and 11.11's new words; the six tracker plates' alts against their words (missing only titles and the key heading); the build report's open picture stages and weights.
 - Read S92's and S87, S88, S91, S94's titles and table words from the specs, and 14.142's failure caption from its entry.
@@ -383,6 +386,6 @@ None that block. Board 3 already carries the trackers' step names and end words,
 ### Not tested, rescore
 
 - Keyboard, accessibility tree, axe, forced colors, reduced motion, print, scripts off and 200 percent text on the joined build; the masthead focus fix (call 10) and DR-278 (c) and (d).
-- 320, 360, 768 and 1024 px; Charcoal at 390 px.
+- 320, 360, 768 and 1024 px; Charcoal at 390 px; Charcoal 1x for all but six rescored plates.
 - S95's exported PNGs (the round 4 maker ran the feed test, not I); the kit's CSV exports.
 - Screen readers, Safari and Firefox (DR-279).

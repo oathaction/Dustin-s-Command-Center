@@ -576,6 +576,16 @@ Safari, Firefox and real screen readers stay untested until Phase 5's release ch
 | The kit README's new sections | `work/handoffs/phase-3/20261116_Fix-Pass-Editor-Notes.md`, Not tested | `work/build/chart-kit/README.md` (the engineer's PR-S8 sections for partners) | The editor did not read the README's new sections line by line, so the engineer's draft words for partners stand unread by the editor | The editor reads them under chapter 02's rules | Past the editor's time in the pass | Not tested (open read) |
 | Real readers | `work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md`, Not tested; `work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md`, Not tested | The whole guide | Every reader on the panel is simulated (DR-202), and no read aloud to a listener ran | None in this phase | DR-202 sets a simulated panel | Not tested (by DR-202) |
 
+### Found in the verification of the fix pass (chat 7 close, 19:45 UTC)
+
+The design director's and the accessibility lead's checks on the joined build (`work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md` and `20261116_Review-4-5-Red-Team-Accessibility.md`, "Verification of the fix pass"). Candidates for DR-191's second pass in chat 8 (D3-2265).
+
+| Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
+|---|---|---|---|---|---|---|
+| CR-S23 | Craft report, verification | Rule 14.144's cards on a phone; `phase3_ch14_complex_build.py` (the cards' phone line-up CSS) | At phone widths the line-up puts each effect's pips on a line of their own, apart from the code they draw | Keep the pips on the code's line at every width, wrapping the words after them | Found after the fix pass closed | Open (chat 8 second pass) |
+| CR-S1 remainder | Craft report, verification | Rule 15.20's failure plate; `phase3_ch15_build.py` (the failure plate's chooser markup or CSS) | The failure plate's options still split into columns, though the correct plates now take one width | Give the failure plate the shared chooser's list form, as Rule 15.20's correct plate has it | Found after the fix pass closed | Open (chat 8 second pass) |
+| AX-S3 | Accessibility report, verification | Rule 15.22 (its description grew to 5,137 characters) and chapter 11's three step tables | A screen reader still hears the plate's own words a second time | As the two AX-S3 rows above say | Open since the fix pass; confirmed on the joined build | Open |
+
 ### Codes with no recorded outcome
 
 Checked at the close of the fix pass on November 16, 2026 (19:18 UTC) by the studio clerk: all 143 codes in the nine reports (CE 27, ST 12, DF 16, NB 10, AX 8, PR 11, RP 20, CR 24, CD 15) against the eleven owners' "Fixed" and "Not fixed" sections and the fix brief's calls 1 to 18. Every code is placed as fixed, as a row above, or as withdrawn (CD-S9, by the creative director), except five, for the main session:
