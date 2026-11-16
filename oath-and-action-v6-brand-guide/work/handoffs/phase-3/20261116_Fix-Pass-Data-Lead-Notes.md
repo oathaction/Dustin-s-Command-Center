@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:38 UTC. **Batch 4:** NB-S5 signed off (R6 printed and held by script). DF-10 signed off but two items: stage 2's Constitution and House Rule XX parts need their dates retrieved, and 15.23's "as amended" on Executive Order 12866 goes.
 - 17:30 UTC. **Batch 3:** CE-S20's "No petition" sentence in place; chapter 11 signed off whole.
 - 17:30 UTC. **Batch 2 (chapter 15):** the R1 stage marks signed off as built; every other code signed off on its source; DF-10 and NB-S5 wait on R7 and R6 being applied. Nothing sent back.
 - 17:27 UTC. **Batch 1 (chapter 11):** marks unchanged; call 4's extension yes (steps 5 and 6 under slashes with no petition); facts signed off; one item sent back, CE-S20's "No petition" row needs a sentence. **Rulings R6 (NB-S5: keep R-28 with its rule printed) and R7 (DF-10: "Retrieved", and the version the copy states) written.** Batch 2, chapter 15, next.
@@ -224,6 +225,25 @@ Read from the systems designer's notes (17:24), the generator's CSS for the mark
 The editor's sentence (17:29) prints in `11-icons.json`, from `apply_systems_ch11.py` (lines 1889 and 1934): Rule 11.11's third paragraph says a sentence after the end words gives the reason, "No one asked the Supreme Court to review the case in the time the law allows.", and the "No petition" row now carries the appeals court's ruling, "The lower court's ruling stands." where one stands, and that sentence, with no day count. The slashes and their words now say the same thing (Rule 11.2). By script, the court plates' marks still equal the review commit's. Batch 1's one item is closed, and Rules 11.10 and 11.11 are signed off whole. Batch 1's two suggestions (28 U.S.C. 2107(c) beside "the 30 days the law allows", and a fine ring while the time runs) stay suggestions.
 
 Next: R6 and R7 as the systems designer applies them, with the research lead's F10.
+
+### Batch 4 (17:38 UTC): NB-S5 signed off; DF-10 signed off but two small items (for the systems designer, the research lead, the editor and the main session)
+
+Read from the systems designer's notes (17:29 on), the research lead's F10 and F11, the source lines of `s-15-22-*` to `s-15-24-*` by script, and `phase3_ch15_build.py --check-only` (17:37: exit 0, 25 rules, 51 plates, 39 examples, D02 8). Facts and form here; the words wait on the editor's read, now running, and this sign-off holds unless the editor's words move a fact.
+
+**NB-S5, R6: signed off.** Rule 15.24 prints the rule above the example: Reform R-28 "is the one an earlier drawing put on a route", with the fifth edition's and the atlas visual system's words and a link to row 41 of Rule 15.25. The generator holds it by script: of the 57 reconciliation rows exactly one names a reform and a route, row 41, and the build stops if that changes. The failure plate keeps R-28 and its one fault (the 60-vote path); the alt follows the plate's order. Rule 01.9 is unchanged (39 examples).
+
+**DF-10, R7 with F10 and F11: signed off but two items.**
+- *"Retrieved".* No law date on 15.22 to 15.24 says "read" any more (0 by script); 30, 7 and 20 say "retrieved", and the plates' own lines say "with the date we retrieved it". Failure plates carry no source dates.
+- *The U.S. Code's version.* Each section prints "as in force on" its retrieval date. F10 makes that true and checkable: all 29 sections read the same in govinfo's 2024 edition ("Laws In Effect As Of Date: January 6, 2025") and in the Law Revision Counsel's release current through Public Law 119-142 of November 10, 2026, the last law enacted. That meets R7's items 2 and 3.
+- *Other versions*, as each copy states them: House Rules XV and XX "as printed January 16, 2025"; the Senate's rules "revised to January 24, 2013"; the Federal Rules of Civil Procedure of December 1, 2025 and of Appellate Procedure of December 1, 2024; the Supreme Court's rules "effective March 16, 2026"; 16 CFR 2.34, 2025 edition; the two Public Laws with their approval dates; the California guide "revised January 2026"; the charters and joint rules with the dates their pages give.
+- *Stage 19.* 52 U.S.C. 30116(d) is named in the stage's words and nowhere said to be "in force", as F10 cautions.
+- *Stage 8.* Its "10 days, Sundays excepted" now cites Article I, Section 7, clause 2, retrieved November 11, 2026 (F11), which closes the editor's point.
+
+**Sent back (DF-10), two items.**
+1. *Stage 2's source line* gives "U.S. Constitution, Article I, Sections 3 and 5; House Rule XX, clause 1, as printed January 16, 2025" no date retrieved, so the line's last date, "retrieved November 16, 2026", reads as the Senate page's alone. Rule 13.6 gives each source its date retrieved, as every other stage line does: add each part's date from F3's rows.
+2. *15.23's rule-making block* prints "Executive Order 12866 of September 30, 1993, as amended". F10 records the National Archives copy of the 1993 order and says the later amendments were "not traced", so "as amended" names a version we did not retrieve. Print the copy's version, as 15.24's FA card already does ("of September 30, 1993"). The editor may add that later orders amended it, which F10 states.
+
+**Suggestions, not conditions.** 15.24's compact card could name Minnesota's copy as "2026 Minnesota Statutes", the version its page states (F10). "We read this reform because ..." now uses "read" in its plain sense on a plate whose law dates say "retrieved"; the editor may prefer "We chose this reform".
 
 ## Calls
 
