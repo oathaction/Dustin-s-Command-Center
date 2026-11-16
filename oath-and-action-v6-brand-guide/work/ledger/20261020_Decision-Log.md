@@ -6913,3 +6913,10 @@ The main session posted the plan for the review of rounds 4 and 5 with five ques
 | D3-2262 | CE-S22's examples are not added | Call 6's condition: the craft reader does not speak to them |
 | D3-2263 | The component engineer's 18:11 batch opened a browser while the limit was reached: a load rule slip with no effect on any result, recorded in its notes | The load rule protects other owners' checks; every slip is logged |
 | D3-2264 | Q-18 moves from Open to Answered in the open questions file: Dustin answered it at board 2 under DR-264 (V7.1 prints KFF's period beside the 25 million; the guide keeps CMS's figures on S65); it had stayed under Open by mistake (found by the Phases 0 and 1 backfill) | The open questions file must match the decisions |
+
+## Dustin's answer, November 16, 2026, 19:40 UTC
+
+| # | Decision | Source |
+|---|---|---|
+| DR-284 | The full four-width guide check (1440, 1024, 390 and 360 px) on the fixed page moves to the first step of chat 8, before board 3 is built; this chat closes after the quick check, the rescore, the chapters page as version 12 and handoff V27. Any DR-191 second pass the rescore asks for joins that first step, to save running new agents here | Dustin, November 16: "move the four-width check to the first step of the next chat before board 3 is built"; the second pass joins it as the main session's call (D3-2265) |
+| D3-2265 | Items the creative director's rescore leaves under 4 get DR-191's second pass in chat 8 with the four-width check, not in this chat | Dustin asked to wrap up this chat to save credits; a second pass needs new owner runs, which chat 8 makes anyway |
