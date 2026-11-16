@@ -130,10 +130,11 @@
     "CD-S1",
     "CD-S4",
     "RP-18",
-    "RP-12"
+    "RP-12",
+    "CR-S13"
    ],
    "must_fix_count": 2,
-   "should_fix_count": 4,
+   "should_fix_count": 5,
    "ready": false,
    "to_ready": "Land NB-M2 (S95's sign-off), RP-2 (S92's table words) and CD-S1 (S94's calendar at the column's width); brand fidelity, evidence honesty and craft then reach 4.",
    "owner_of_lift": "Infographics maker; engineer for the sign-off and the legend gap; editor"
@@ -170,9 +171,11 @@
    "changed_after_other_reports": {},
    "specimens_under_the_bar": [],
    "must_fix": [],
-   "should_fix": [],
+   "should_fix": [
+    "CR-S20"
+   ],
    "must_fix_count": 0,
-   "should_fix_count": 0,
+   "should_fix_count": 1,
    "ready": true
   },
   {
@@ -273,10 +276,11 @@
    "must_fix": [],
    "should_fix": [
     "CD-S12",
-    "ST-S4"
+    "ST-S4",
+    "CR-S11"
    ],
    "must_fix_count": 0,
-   "should_fix_count": 2,
+   "should_fix_count": 3,
    "ready": true
   },
   {
@@ -421,10 +425,11 @@
     "CD-S10",
     "RP-7",
     "RP-8",
-    "RP-9"
+    "RP-9",
+    "CR-S17"
    ],
    "must_fix_count": 1,
-   "should_fix_count": 5,
+   "should_fix_count": 6,
    "ready": false,
    "to_ready": "Land CD-M1 (reset the 6 px case stroke for an unchosen reform) and recapture the three states; craft and evidence honesty then reach 4.",
    "owner_of_lift": "Complex examples maker; component engineer; data lead sign-off"
@@ -512,10 +517,12 @@
     "NB-M1"
    ],
    "should_fix": [
-    "CD-S5"
+    "CD-S5",
+    "CR-S17",
+    "CR-S4"
    ],
    "must_fix_count": 1,
-   "should_fix_count": 1,
+   "should_fix_count": 3,
    "ready": false,
    "to_ready": "Land NB-M1 (Rule 15.20's last sentence agrees with Rule 14.144); usefulness then reaches 4.",
    "owner_of_lift": "Systems designer, editor, data lead"
@@ -750,7 +757,7 @@
  ],
  "totals": {
   "must_fix": 12,
-  "should_fix": 34,
+  "should_fix": 39,
   "under_4": [
    "R4-I.craft",
    "R4-I.brand_fidelity",
@@ -957,7 +964,7 @@
   },
   "CD-S5": {
    "title": "DD-R2 with DD-R5, both plates (15.20 and 14.144).",
-   "what_and_fix": "Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5 yes as well: in my own luma conversion of the 15.20 and 14.144 captures, the chosen pill's 3 px Pillar Red ring turns a lighter gray than an unchosen pill's ink, so the target reads weaker than its neighbors in print and one-ink copies, while the red connection holds by its keyline case; give the pill the same keyline inside its ring (Charcoal on Newsprint, Newsprint on Charcoal), on both plates. Owner: component engineer (chooser part), systems designer and complex examples maker.",
+   "what_and_fix": "Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5 yes as well: in my own luma conversion of the 15.20 and 14.144 captures, the chosen pill's 3 px Pillar Red ring turns a lighter gray than an unchosen pill's ink, so the target reads weaker than its neighbors in print and one-ink copies, while the red connection holds by its keyline case; give the pill the same keyline inside its ring (Charcoal on Newsprint, Newsprint on Charcoal), on both plates. The craft report's CR-S1 adds two parts I agree with: a fixed 24 px slot for the check so every chip starts at one x, and a keyline on the red arrowhead as on its shaft; Rule 15.16's approved plate draws the pill and arrowhead the same way, so board 3 shows it beside them. Owner: component engineer (chooser part), systems designer and complex examples maker.",
    "owner": "component engineer (chooser part), systems designer and complex examples maker",
    "items": [
     "R5-3",
@@ -1184,6 +1191,52 @@
    ],
    "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
   },
+  "CR-S13": {
+   "title": "S93's callouts parted from the parts list's discs",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Infographics maker",
+   "items": [
+    "R4-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+  },
+  "CR-S20": {
+   "title": "S12's phone tiles edged in the context ink, United States 5.9 in the phone key",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Cartographer, engineer",
+   "items": [
+    "R4-S"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+  },
+  "CR-S11": {
+   "title": "The palette plate's 3 px grade lines centered on the half pixel",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Engineer",
+   "items": [
+    "R5-P"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+  },
+  "CR-S17": {
+   "title": "ID chips print R - 06",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Component engineer, engineer",
+   "items": [
+    "R5-3",
+    "C15-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+  },
+  "CR-S4": {
+   "title": "One order for the stepper in chapters 14 and 15",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, component engineer, accessibility lead",
+   "items": [
+    "C15-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+  },
   "PR-S10": {
    "title": "Marks for a rejected measure and a case dismissed before a ruling",
    "what_and_fix": "Adopted as its report writes it; see the report.",
@@ -1261,10 +1314,8 @@
  "withdrawn": {
   "CD-S9": "I first wrote that 14.143's still list does not mark the current step. The step-five capture shows it does: Loop R10's step 2 takes Rule 18.22's 4 px bar and surface fill, and the steps ahead are muted. Withdrawn at 17:13 UTC."
  },
- "questions_for_dustin": [
-  "**Effect pips on Rule 14.144's cards (DF-3).** Rule 13.5, which you approved (DR-237), draws each effect code with one to three pips, and Rule 15.20's chooser draws them; 14.144 forbids them so no reader adds pips across three cards. I recommend the pips, as DF-3 does: each card already prints the atlas's sentence that codes are never added, the failure plate shows the total to avoid, and one mark for one property across chapters 13, 14 and 15 is the stronger system.",
-  "**S95's sign-off (NB-M2).** DR-211 sets the lockmark at 96 px on social cards; the studio read DR-268 as leaving the card's marks to chapter 23. I recommend the sign-off now, on both crops, since the plate exports a PNG and words to post; the alternative is a caption saying the card is not for posting until chapter 23."
- ],
+ "questions_for_dustin": [],
+ "questions_note": "None new. The two I would have asked are settled inside the fix pass as I recommend: the effect pips on 14.144's cards (DF-3) by the main session's call 2, which board 3 shows; and Rule 15.20's sentence (NB-M1) by call 3. S95's sign-off (NB-M2) is routed to the engineer under DR-211; if the studio wants to hold it for chapter 23 instead, that becomes Dustin's call, and I recommend the sign-off now, since the plate exports a PNG and words to post.",
  "weight": {
   "page_bytes": 12107102,
   "page_projection": 15117621,

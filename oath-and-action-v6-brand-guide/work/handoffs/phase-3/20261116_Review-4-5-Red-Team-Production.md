@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, chat 7, November 16, 2026. Reader: production
 
 Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f55a08bf-cdcf-539d-a683-426e26f4f342/scratchpad/c07/review/production/` (scripts `scan_css.py`, `scan_js.py`, `scan_inward.py`, `scan_sources.py`; results `css_scan.json`, `js_scan.json`, `inward.json`; the generator log `gen-reruns.log`; the kit log `kit-all.log`; a scratch copy of the project folder under `repo/`). The production test's files: `work/handoffs/phase-3/review-4-5-production-test/`.
 
-Started 16:34 UTC. Status: in progress (16:53 UTC). Sections fill as checks finish.
+Started 16:34 UTC. Status: in progress (17:13 UTC): every check that needs no browser is done; the browser part of the production test waits on the load rule.
 
 ## 1. Score
 
@@ -16,7 +16,7 @@ Pending.
 
 ## 3. Should fix
 
-Drafted so far; the production test adds to it.
+Eleven, none blocking. In order of weight for a partner: PR-S7, PR-S5, PR-S8, PR-S10, PR-S1, PR-S2, PR-S9, PR-S6, PR-S3, PR-S11, PR-S4.
 
 **PR-S1. Chapter 26's token table script still selects `.tt` across the whole page** (named place 2(d), D3-1892, DR-278).
 - Where: `work/build/scripts/phase-2/token_table_build.py` line 265 (its `SCRIPT`), written into `work/build/guide/specimens/s-26-token-table.html` line 71.

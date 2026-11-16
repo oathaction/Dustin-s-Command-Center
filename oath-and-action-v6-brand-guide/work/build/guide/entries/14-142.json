@@ -2,7 +2,7 @@
  "id": "14.142",
  "title": "Mark the survey’s margin on a monthly chart, and name the changes that pass it.",
  "rule": [
-  "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, its confidence, such as the Bureau’s 90 percent, and its source in a note (Rule 14.9). Name only the changes that pass it, each with its month and value in the subject ink (Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
+  "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its size, its confidence and its source in a note (Rule 14.9). The Bureau of Labor Statistics gives a 90 percent margin, so a month with no real change lands inside the band nine times in ten. The band holds for each month alone, and over many months a few can pass it by chance, so the note says that too. Name only the changes past it that the reader’s question asks about, here the drops, each with its month and value in the text’s ink (Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
   "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band measures one month’s change alone. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14)."
  ],
  "use_when": null,
@@ -41,7 +41,7 @@
   },
   {
    "label": "Named drops",
-   "value": "The two past the margin, in the subject ink, each with its month and value",
+   "value": "The two past the margin, in the text’s ink, each with its month and value",
    "token": "oa.chart.color.subject"
   },
   {
@@ -59,8 +59,8 @@
  },
  "failure": {
   "specimen": "s-14-142-failure",
-  "caption": "<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the title counts seven losses as findings. Five of the seven sit inside the survey’s margin of error.",
-  "alt": "Failure case: do not publish. The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that counts seven months of lost jobs.",
+  "caption": "<strong>Fails Rule 14.142.</strong> The chart leaves out the survey’s margin of error, so all seven drops look alike, and the title states seven months of lost jobs with no word on the margin. Five of the seven sit inside the margin, where the survey cannot tell them from no change.",
+  "alt": "Failure case: do not publish. The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that states seven months of lost jobs with no word on the margin.",
   "illustrative": false,
   "notes": "Labeled failure: a kit figure through s-14-142-failure.chart.json (C7), its title the fault.",
   "charts": [

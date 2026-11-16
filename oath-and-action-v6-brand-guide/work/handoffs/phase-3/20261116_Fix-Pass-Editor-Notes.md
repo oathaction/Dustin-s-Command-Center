@@ -118,7 +118,109 @@ Group 18's line sits in my own generator (`GROUP_LINES[18]` in `phase3_ch14_rule
 
 ## Words for the systems designer
 
-(Being written.)
+Written 17:12 to 17:22 UTC, after the data lead's R1 and against your "Fixed" list as it stood at 17:11. "Old" strings are the printed words in `phase3_ch15_build.py` as your working copy held them at 17:11; match the joined words. Four rows wait on the research lead's "Facts" (stage 2's majority, stage 7's conference, stage 19's scope, ST-M2's statute row); each says so, and I confirm or change it here when the facts land.
+
+**Read and kept as you applied them:** CE-M3 and DF-1 (the two subheads say "stages"), CE-S7 (each chip with the atlas's name), DF-8 (one to nine in words), DF-9 (the card reads Rule 15.22's names, so CE-S3's new name reaches it), ST-S9's attributions, ST-S7's dates, DF-10's reordered source line, CE-S12 ("the seven effect codes, ranks of direction and rough size with no measured amount", computed) and 15.20's why ("the atlas’s own codes, one to each outcome family").
+
+### CE-M4, DF-2 and DF-5, Rule 15.22's marks in words (ruling R1)
+
+The key, one row a mark, as R1 item 4 draws them:
+
+| Key row | Old | New |
+|---|---|---|
+| `km-st` | A stage every enacted bill passes, in order, on the dark line | A stage every enacted bill passes, in order, numbered on the line in the text’s ink |
+| `km-br` | A path a bill can take instead, set to one side on a short arrow, saying where it leaves and where it goes next | A stage only some bills pass, set to one side on a short gray arrow, saying where it leaves the line and where it goes next |
+| `km-af` | What can follow the law, on the lighter line | What can follow the law, numbered on the gray line |
+| `km-sq` | A path that stops there | Stands; it is now the plate's one square |
+| `km-bk` | The line on the left: a repeal is a new act, so it runs back to stage 1 | Stands |
+
+`km-br` drops "instead" because stage 9 now sits there too, and signing is one of the President's outcomes, not a detour.
+
+- The alt, old: "The stages every enacted bill passes sit on a dark line in filled squares; the other paths and what follows the law are in a lighter ink with outlined squares."
+- New: "Each stage is a bold number set on its line. The stages every enacted bill passes sit on a line in the text’s ink; the other paths and what follows the law sit on gray lines, and a small square ends a path that stops."
+- `rule[0]`, old: "Number every stage in reading order. Set the stages every change on the route passes through on one dark line in filled squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path."
+- New: "Number every stage in reading order, and set each number on its line with no shape around it, since a circle, a ring or a square on a tracker marks a state (Rule 11.2). Set the stages every change on the route passes through on one line in the text’s ink, and the paths that leave it on gray lines, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path."
+- The rest of `rule[0]` ("End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage ...") stands.
+- Spec "The spine", old: "The stages every change on the route passes, numbered in reading order, filled squares on a line in Charcoal at the subject weight". New: "The stages every change on the route passes, each a bold number in reading order on a line in the text’s ink at the subject weight". "Charcoal" goes because the line is light on a Charcoal ground.
+- Spec "Other paths", old: "Outlined squares in the context ink, set to one side, each saying in words where it leaves the spine". New: "Bold numbers on gray lines at the context weight, set to one side, each saying in words where it leaves the spine".
+- The failure plate's alt, old: "Route FS drawn as six filled steps on one line, ..." New: "Route FS drawn as six numbered stages on one line, ..." (R1 item 7; the rest of the alt stands).
+
+### DF-14 with CE-S1 to CE-S4, the stage sentences, actor first
+
+| Stage | Old | New |
+|---|---|---|
+| 2 | A simple majority: 218 of 435 in the House, or 51 of 100 in the Senate. | The first chamber passes it by a majority of the members who vote, 218 when all 435 House members vote or 51 when all 100 senators do. In the Senate the Vice President can break a tie. **Waiting on** the research lead's ST-S6 and CE-S1 fact; the tie needs a source beside the stage (the Constitution, Article I, Section 3), which I ask of the research lead below. |
+| 3 | Forty minutes of debate, and two-thirds of the members voting, on a Monday, Tuesday or Wednesday. | The House takes the bill up on a Monday, Tuesday or Wednesday, debates it for no more than 40 minutes and passes it with two-thirds of the members voting. |
+| 5 | Debate is held to 20 hours, so no cloture vote is needed and a simple majority passes it. A part that does not change spending or revenue is struck when a senator raises a point of order and the chair agrees. | Reconciliation is a budget procedure that lets qualifying tax and spending bills pass the Senate by a simple majority. The law holds debate to 20 hours, so the Senate needs no cloture vote. A senator can object to a part that does not change spending or revenue, and if the presiding officer agrees, that part comes out of the bill. |
+| 6 | A simple majority, by the same paths as stage 2. | The second chamber passes it by the same count as stage 2, or by one of the paths at stages 3 to 5. |
+| 7 | A conference committee settles the differences, and both chambers approve the same text. | The two chambers pass the same text. Where their versions differ, they settle the differences by amending each other’s text or in a conference committee. **Waiting on** the research lead's CE-S2 fact; if it does not support the amendments path, the second sentence reads "Where their versions differ, a conference committee can settle the differences." |
+| 8, name | Enrolled and presented | Sent to the President |
+| 8, words | The final text is printed and sent to the President, who has 10 days, Sundays excepted, to act. | The Government Publishing Office prints the final text, a step called enrolling, and Congress presents it to the President, who has 10 days, Sundays excepted, to act. |
+| 11 | Ten days pass, Sundays excepted, while Congress sits, and it becomes law. | The President lets 10 days pass, Sundays excepted, while Congress is in session, and the bill becomes law. |
+| 14 | Money leaves the Treasury only through an appropriation made by law. If the President proposes to cancel some, the money must be released for spending unless Congress passes a rescission bill within the 45-day period the law sets. | Congress funds the law in an appropriation, since money leaves the Treasury only through one made by law. If the President proposes to cancel some of that money, the President must still release it for spending unless Congress passes a rescission bill, which cancels it, within the 45-day period the law sets. |
+| 16 | A major rule waits at least 60 days. A joint resolution of disapproval, passed and signed like a bill, ends it. | The agency reports each rule to Congress, and a major rule waits at least 60 days to take effect. Congress can end a rule with a joint resolution of disapproval, passed and signed like a bill. |
+
+Facts behind the rows, all in the workflow sources file as your generator already holds them: stage 3, House Rule XV ("debatable for 40 minutes", "two-thirds of the Members voting", "Mondays, Tuesdays, and Wednesdays"); stage 5, the atlas glossary's "Reconciliation" ("lets qualifying tax and spending legislation pass the Senate by simple majority", chapter 02's H02 asks for the glossary's words where they fit), 2 U.S.C. 641(e)(2) and 644 ("when the Chair sustains a point of order", "deemed stricken"); stage 8, the House page ("prints the revised bill in a process called enrolling") and Article I, Section 7 ("presented to the President", ten days "Sundays excepted"); stage 14, Article I, Section 9 and 2 U.S.C. 683 ("shall be made available for obligation unless, within the prescribed 45-day period"); stage 16, 5 U.S.C. 801(a) ("submit to each House of the Congress", "60 days after") and 802. Stage 8's new name reaches Rule 15.23 ("Stage 8: Sent to the President") and the Route FS card through your readers of the stage row. Stages 1, 4, 9, 10, 12, 13, 15, 17, 18 and 20 already open with their actor or need no change.
+
+### ST-M2 and CE-S8, the records request's 20 working days
+
+The rows under Rule 11.8's steps (your `rows8`). The rows say what each step holds in the law; the generator's `fw("5", ...)` gives way to words per row.
+
+| Row | Old | New |
+|---|---|---|
+| Step 1, Requested, a new last row | (none) | The agency’s 20 working days to decide start when the right office receives the request, and no later than 10 days after any of its offices does |
+| Step 2, Acknowledged | The agency decides, within 20 working days that start here | The agency’s 20 working days to decide, already running |
+| Step 3, Searching | The agency decides, inside the same 20 working days | The agency searches for the records, inside the same 20 working days |
+| Step 4, Reviewing | The agency decides, inside the same 20 working days | The agency reviews what it found, before the 20 working days run out |
+| Step 5, Answered | The agency decides within 20 working days, or 10 more in unusual circumstances | The agency answers within the 20 working days, or 10 more in unusual circumstances |
+
+- The alt, old: "...steps 2 to 5 share the agency’s 20 working days to decide, ..." New: "...the agency’s 20 working days to decide start when the right office receives the request, and steps 2 to 5 share them, ..."
+- Fact: 5 U.S.C. 552(a)(6)(A)(ii), as the statistics reader quotes it ("shall commence on the date on which the request is first received by the appropriate component of the agency, but in any event not later than ten days after the request is first received by any component"). **Waiting on** the research lead's row for it in the sources file (ST-M2); the words follow the quote and change only if the row reads otherwise.
+
+### CE-S9, the rule issued without comment
+
+- The row under "In place of steps 2 to 4", old: "Guidance without comment". New: "A rule issued without advance comment, such as an interim final rule, or guidance, which states how the agency reads the law and takes no comment".
+- Facts: Rule 11.9 ("An interim final rule is one such rule"); the FA row "Guidance with no comment period" (5 U.S.C. 553's "interpretative rules"). The data file's step name stays for its check; only the printed words change.
+
+### CE-S10, Rule 15.23's lead line (R1 item 5)
+
+- The paragraph under "Five trackers, each beside its workflow" ends, old: "...and some stages sit before step 1 or after step 6, where the tracker does not follow them."
+- Add after it: "Steps keep their trackers’ numbers, and Route FS’s stages keep the word “Stage” and Rule 15.22’s numbers."
+
+### CE-S11, court terms on Rules 15.23 and 15.24
+
+- 15.23, the step 2 row of the court case (`cr[1]`), old: "Motions, discovery, a settlement or a trial, and the judgment". New: "Motions, which ask the judge to rule on a point, and discovery, when each side gathers evidence from the other; then a settlement or a trial, and the judgment".
+- 15.23, the row after step 6 (`cr[8]`), old: "A later ruling that replaces earlier doctrine". New: "A later ruling that replaces earlier doctrine, the rules courts build from their rulings".
+- "Injunction" stays bare here: Rule 11.11 glosses it at its first use in the guide (the tracker designer's row above).
+- 15.24, the court doctrine card's stage (CE-S18), old: "Decision, rehearing or remand". New: "Decision, rehearing or a remand, which sends the case back".
+
+I ask the research lead below to check the three glosses against the federal courts' own glossary.
+
+### ST-S5, NB-S6 and CE-S5, stage 19's example and its rule
+
+- Old: "A court can rule that a law, or a part of it, violates the Constitution. In the Supreme Court’s words of 1803, “a law repugnant to the constitution is void”. The latest such ruling we found came on June 30, 2026, when the Supreme Court held that the limits on what a political party may spend in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment."
+- New: "A court can rule that a law, or a part of it, violates the Constitution, a power the Supreme Court set out in Marbury v. Madison in 1803. The Supreme Court’s most recent decision to hold part of an Act of Congress unconstitutional, in its opinions through November 9, 2026, came on June 30, 2026, when it held that the limits on what a political party may spend in coordination with its candidates, in 52 U.S.C. 30116(d), violate the First Amendment."
+- The stop line, "The part the court holds void no longer applies.", stands (the data lead's round 5 ruling). The Marbury citation stays in the source column.
+- **Waiting on** the research lead's fact for the rule's scope and date (call 8). The words claim what the research lead's round 5 rule holds as the statistics and nonpartisan readers quote it: the Court's opinions, the most recent by date, a provision of an Act of Congress, read to November 9, 2026. NB-S6's point on "repugnant" is met by letting Marbury name the power and the 2026 holding keep its own words.
+
+### NB-M1, Rule 15.20's selection rule (call 3)
+
+- `rule[0]`, first sentence, old: "Offer the reforms that act on one drawing as a named group of radio buttons (Rule 18.3), so a reader chooses one at a time."
+- New: "Offer the reforms whose own records name the loop on the drawing as a named group of radio buttons (Rule 18.3), so a reader chooses one at a time."
+- `rule[1]`, last sentence, old: "Offer only reforms whose every target sits on the drawing, so nothing lights for a reform that does not act there."
+- New: "Where a reform has a target off the drawing, name it in words with its layer, as Rule 14.144 does, and say so when nothing on the drawing turns red."
+- Checked by script on the model: Reforms R-03 and R-04 each name Loop R4a in their own records (R-03: R4a, R10, R12; R-04: R4a), so 15.20's own plate keeps its rule; R-06, R-30 and R-38 each name Loop R8 (Loop R8's record lists R-30 alone, which is why the rule says "their own records"). The failure plate and its spec keep their faults, as NB-M1 says.
+
+### CE-S23, three small words
+
+- 15.16, your draft gloss, old: "...then print its effects one outcome family to a row, an outcome family being one of the four groups of results the atlas judges reforms by. Give each row ..."
+- New: "...then print its effects one outcome family to a row. An outcome family is one of the four groups of results the atlas judges reforms by. Give each row ..."
+- 15.21's failure alt, last sentence, old: "It is a picture, not a control." New: "It is a still picture, with nothing to move." (W09, the same turn the spec lost.)
+- 15.21's spec ("A drawing of the control, with its alt saying it is a picture") and the read-aloud "fewer" stand as you applied them.
+
+### DF-10, the version date on a law (words; the choice of one word across chapters is a request below)
+
+For a statute or a rule cited beside a stage or on a card, print the version with the date read, in chapter 11's form: "Source: 2 U.S.C. 641, as in force on November 14, 2026, read November 14, 2026" is long twenty times over, so where the two dates are one day, print "Source: 2 U.S.C. 641, as in force on November 14, 2026, the day we read it". A page that is not a law keeps "read" and its date: "Source: U.S. House, “The Legislative Process”, read November 11, 2026".
 
 ## Words for the tracker designer
 

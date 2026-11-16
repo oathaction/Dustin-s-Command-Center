@@ -56,6 +56,8 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, chat 7, November 16
 
 **CR-S19. Two header layouts for the evidence chip.** S89, S91 and S94 set the "FINDING" chip alone with the grade line on the next line; S85 to S88, S90, S92, S93, S95 and S96 set them on one line. Where the grade line will not fit beside the chip, wrap it beside the chip with a hanging indent, so every plate's head keeps one layout. Owner: engineer.
 
+**CR-S20. S12 on a phone: a Verdigris edge on a Stone map, and no national figure.** The phone tiles fill in the magnitude steps (Stone) but each takes a 1 px edge in `sequential-outline`, #36544F, Verdigris's darkest step (sampled at 390 px; `forms/tile-map-shift-arrows.js` line 70). The palette plate says a magnitude step under 3 to 1 takes "a 1 px edge in the context ink", so the map breaks the plate printed beside it. The phone key also drops "United States 5.9", while the note under it still says "The United States, beside the key, moved 5.9 points". Draw the edge in the context ink, and set "United States 5.9" as the phone key's last line. Owner: cartographer, with the engineer; if the edge predates round 4, show it on board 3.
+
 ## 4. The named places in my lens
 
 1. **Carried items, my call on each.**

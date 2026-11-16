@@ -112,8 +112,10 @@ RULE_STEPS = [
 BALLOT_STEPS = [
     ('Filed', 'The sponsors file the measure’s full text with the attorney general.',
      'Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9001'),
-    ('Title and summary', 'The attorney general clears the measure and writes the title and summary that petitions and '
-                          'ballots carry.',
+    # CE-S15 (the editor's words, 17:11): "certifies" names one act, by the office named each time
+    ('Title and summary', 'The attorney general writes the title and summary that petitions and ballots carry, and where '
+                          'the law asks, first certifies that the measure is in proper form and on a subject the '
+                          'initiative may cover.',
      'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014'),
     ('Signatures', 'The sponsors gather signatures, and election officials count and check them.',
      'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031'),
@@ -256,7 +258,10 @@ BALLOTS = [
     dict(id='99013', noun='Measure', kind='ballot', title='Lake shoreline setbacks',
          states=['done', 'done', 'stopped', 'notyet', 'notyet', 'notyet'],
          end='Too few valid signatures to qualify.',
-         line='On July 14, a random sample of the signatures projected fewer valid ones than the law requires.'),
+         # ST-S3 (the editor's words, 17:11): California Elections Code 9030 and 9031, a measure fails on the sample only
+         # when the projection falls under 95 percent; from 95 to 110 percent every signature is checked
+         line='On July 14, a random sample of the signatures projected fewer than 95 percent of the valid signatures the '
+              'law requires, so election officials did not go on to check every signature.'),
 ]
 COURTS = [
     dict(id='99014', noun='Case', kind='court', title='Bakery name trademark',
@@ -1382,8 +1387,10 @@ def build(ctx):
     s_11_10(ctx)
     s_11_11(ctx)
     s_route_steps(ctx, 's-11-ballot-steps', BALLOT_STEPS, 'a ballot measure’s six steps',
-                  'The six steps of a state ballot measure, a citizen initiative, with what happens at each and where the '
-                  'law sets it in the four states we read.')
+                  # NB-S7 (the editor's words, 17:11): the four states and why
+                  'The six steps of a state ballot measure, with what happens at each and where the law sets it in four '
+                  'states: Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and '
+                  'California, where an initiative goes straight to the ballot.')
     s_route_steps(ctx, 's-11-court-steps', COURT_STEPS, 'a federal civil case’s six steps',
                   'The six steps of a federal civil case, with what happens at each and where the law sets it.')
     s_11_12(ctx)
@@ -1775,15 +1782,19 @@ def build(ctx):
         # Round 5 (DR-231, DR-274, DR-275, R5-7): the research lead's facts, item 1; the editor's words pass follows
         {
             'id': '11.10', 'title': 'Follow a ballot measure through six steps, and wait for the certified count.',
-            'rule': ['A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s '
-                     'constitution by petition, and the voters decide it. These steps follow the constitutions of '
-                     'Massachusetts, California, Ohio and Michigan, with California’s election office, and each state sets '
-                     'its own deadlines and signature counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, '
-                     'Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the '
-                     'Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 '
-                     'under a slash. The same steps carry a measure the Legislature sends to the voters itself, which has '
-                     'no petition, so steps 1 to 3 keep their slashes.',
-                     'Until the state certifies the count, a measure at step 6 stays current, and its words say so: '
+            # CE-S16 and NB-S7 (the editor's words, 17:11): the kinds of measure named, and why these four states
+            'rule': ['A ballot measure here is a law or an amendment to a state’s constitution that the voters decide. It '
+                     'starts as a citizen initiative, which voters propose by petition, or as a legislative referral, '
+                     'which the Legislature sends to the voters itself. An initiative is indirect where the Legislature '
+                     'votes on it first and direct where it goes straight to the ballot. These steps follow the '
+                     'constitutions of Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed '
+                     'law, and California’s constitution and election office, where an initiative goes straight to the '
+                     'ballot; each state sets its own deadlines and signature counts. The tracker uses the bill tracker’s '
+                     'marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and '
+                     'Vote. Step 4 counts only for an indirect initiative, so a direct one keeps step 4 under a slash, and '
+                     'a referral, which has no petition, keeps steps 1 to 3 under slashes.',
+                     'Until the state certifies the count, which makes the result official, a measure at step 6 stays '
+                     'current, and its words say so: '
                      '“Step 6 of 6: Vote. The count is unofficial until the state certifies it, which it has set for '
                      'November 25.” Once '
                      'the count is certified, the words say Approved by voters or Rejected by voters, with the date of the '
@@ -1818,8 +1829,8 @@ def build(ctx):
                                                                     'set to certify; never Approved or Rejected'},
                 {'label': 'The end, in words', 'value': 'Approved by voters or Rejected by voters, with the date of the '
                                                         'vote and the date it was certified, then when it takes effect; '
-                                                        'Not approved by voters where most said yes but a second test '
-                                                        'failed, with a sentence that names it'},
+                                                        'Fell short of the vote the law requires, where most said yes '
+                                                        'but a second test failed, with a sentence that names the test'},
                 {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Not '
                                                           'certified by the attorney general; Withdrawn by its sponsors; '
                                                           'Too few valid signatures to qualify; Removed from the ballot by '
@@ -1847,13 +1858,18 @@ def build(ctx):
                      'uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals '
                      'court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no '
                      'room for keeps its number under a slash, as when a district court of three judges grants or denies '
-                     'an injunction and the law sends the appeal straight to the Supreme Court.',
+                     'an injunction, a court order to do or to stop doing something, and the law sends the appeal straight '
+                     'to the Supreme Court.',
                      'The words say how each court ruled, with the court and the date. A trial court’s judgment reads '
                      'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
                      'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + AFFIRMED + ', '
                      'which leaves the ruling below in place; Reversed; Vacated, which cancels the ruling below; or '
                      'Modified; joined to “and sent back”, which the court enters as remanded, when it returns the case. '
-                     'The marks never move backward, so a case sent back says so in a sentence after the end words.',
+                     # CE-S19 (the editor's words, 17:11)
+                     'Every ending that leaves a ruling in place says so in one sentence: “The lower court’s ruling '
+                     'stands.” after ' + AFFIRMED + ' or a tie, and “The appeals court’s ruling stands.” after a denied '
+                     'petition. The marks never move backward, so a case sent back says so in a sentence after the end '
+                     'words.',
                      # Call 4 (CE-S20): an unappealed ruling follows Rule 11.8's slash; the square stays for a case that
                      # ends by settlement, dismissal or a denied petition
                      'A ruling no one appeals keeps the steps after it under slashes once the time to appeal has passed, '
@@ -1886,7 +1902,8 @@ def build(ctx):
                                             'Court petition, 6 Supreme Court ruling'},
                 {'label': 'A trial court’s ruling', 'value': 'Decided for the plaintiff; Decided for the defendant; with '
                                                             '“without a trial” where it applies'},
-                {'label': 'A higher court’s ruling', 'value': AFFIRMED + '; Reversed; Vacated; Modified; each with the '
+                {'label': 'A higher court’s ruling', 'value': AFFIRMED + ', then “The lower court’s ruling stands.”; '
+                                                              'Reversed; Vacated; Modified; each with the '
                                                               'court, as in “' + AFFIRMED + ' by the appeals court”, and '
                                                               '“and sent back” where the court returns the case'},
                 {'label': 'Settled, dismissed or denied', 'value': 'A square at the last step reached, with its words: '
@@ -2006,8 +2023,10 @@ def build(ctx):
                         'Newsprint and Dim Newsprint while the take-part disc keeps its red.'},
             # Round 5: each new tracker's six steps as a reference set in live text (R4-3), after its rule
             {'after_rule': '11.10', 'specimen': 's-11-ballot-steps', 'label': 'The six steps of a ballot measure',
-             'caption': 'What happens at each step of a citizen initiative, and where the law sets it in the four states '
-                        'we read. Each state sets its own deadlines and signature counts.'},
+             'caption': 'What happens at each step of a ballot measure, and where the law sets it in four states: '
+                        'Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and '
+                        'California, where an initiative goes straight to the ballot. Each state sets its own deadlines '
+                        'and signature counts.'},
             {'after_rule': '11.11', 'specimen': 's-11-court-steps', 'label': 'The six steps of a court case',
              'caption': 'What happens at each step of a federal civil case, and where the law sets it.'},
         ] + ui_extras,

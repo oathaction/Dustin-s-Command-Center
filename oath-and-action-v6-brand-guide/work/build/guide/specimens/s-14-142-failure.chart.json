@@ -12,6 +12,7 @@
  "title": "The economy lost jobs in seven months of 2025 and 2026.",
  "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average.",
  "notes": [
+  "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026.",
   "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month.",
   "The three-month average for a month is the mean of that month’s change and the two before it, so the averages for January and February 2022 draw on November and December 2021, months the chart does not show.",
   "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next.",
@@ -20,7 +21,7 @@
  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that counts seven months of lost jobs.",
+ "alt": "The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that states seven months of lost jobs with no word on the margin.",
  "table": {
   "caption": "The same 57 months, with the three-month average, as this failure case draws them",
   "columns": [
@@ -106,6 +107,11 @@
  "annotations": [],
  "scale": {
   "y": [
+   -400,
+   850
+  ],
+  "ticks_min": 0,
+  "y_narrow": [
    -200,
    850
   ]
@@ -122,5 +128,5 @@
   "rule": "14.142",
   "caption_lead": "Fails Rule 14.142."
  },
- "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled alike as losses, under a title that counts seven losses as findings; no red."
+ "notes_internal": "Rule 14.142's failure plate (ruling c; the data lead's R3 of the fix pass): S96 with the margin left out of the drawing and the words, and nothing else changed: no band, all seven drops drawn alike, a title with no word on the margin, S96's scale and notes less the margin's words, no latest label, the sidecar's plain source line; no red."
 }

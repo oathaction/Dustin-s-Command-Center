@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, November 16, 2026 (
 
 What I looked at: the shared capture set (DR-277) made from the strict build of `9a6e1182` (`scratchpad/c07/main/guide.html`, 12,107,102 bytes, 0 warnings, 369 rules, 679 specimens) and its `guide-Build-Report.json`. I read all 98 plates and whole rules at Newsprint 1x at 1440 px, the four chooser and stepper states, and the round 4 and 5 plates at Newsprint 1x at 390 px, tiling the tall ones in my scratch folder so each was read at true size. I read the words from the chapter files, entries, specs and specimen files, and found the cause of two faults in the plates' own CSS. Charcoal, grayscale and 2x captures were still landing when I wrote these first scores (section "Second look" adds them).
 
-Status: first scores written 17:05 UTC, before reading any other reader's report.
+Status: first scores written 17:04 UTC, before reading any other reader's report; other reports read from 17:05 UTC. The fix pass began while I wrote (snapshot commits from 17:00 UTC, and `20261116_Rounds-4-5-Fix-Brief.md`); every finding here is against `9a6e1182` and its captures, and I did not read the fix pass's changes.
 
 ## Decision or verdict
 
@@ -27,15 +27,15 @@ Final first-pass scores, after reading the other eight reports (17:15 UTC). My o
 | Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
 |---|---|---|---|---|---|---|---|---|---|
 | R4-A. Maker A: S85 to S88, entries 14.79 to 14.82, sketches 14.83 and 14.84 | 4 | 4 | 4 | 4 | 5 | 4 | 0 | 3 | yes |
-| R4-I. Infographics maker: S89 to S95, entries 14.135 to 14.141 | 3* | 4 | 3* | 4 | 3* | 4 | 2 | 4 | no |
-| R4-S. S12's stacked tile; phone codes on S12, S16, S78 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 0 | yes |
+| R4-I. Infographics maker: S89 to S95, entries 14.135 to 14.141 | 3* | 4 | 3* | 4 | 3* | 4 | 2 | 5 | no |
+| R4-S. S12's stacked tile; phone codes on S12, S16, S78 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 1 | yes |
 | R5-G. "Choose a chart", the selection guide | 4 | 5 | 5 | 4 | 4 | 3* | 0 | 2 | no |
-| R5-P. The palette specification | 4 | 4 | 5 | 5 | 4 | 4 | 0 | 2 | yes |
+| R5-P. The palette specification | 4 | 4 | 5 | 5 | 4 | 4 | 0 | 3 | yes |
 | R5-1. Rule 14.142, S96 and its failure | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 4 | yes |
 | R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 3* | 5 | 4 | 5 | 4 | 1 | 1 | no |
-| R5-3. Rule 14.144, three reforms on Loop R8 | 3* | 4 | 4 | 4 | 3* | 4 | 1 | 5 | no |
+| R5-3. Rule 14.144, three reforms on Loop R8 | 3* | 4 | 4 | 4 | 3* | 4 | 1 | 6 | no |
 | R5-W. Chapter 14's intro, opener caption, Rule 14.1, group lines 17 and 18 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 1 | yes |
-| C15-I. Rules 15.19 to 15.21 | 4 | 4 | 4 | 3* | 5 | 4 | 1 | 1 | no |
+| C15-I. Rules 15.19 to 15.21 | 4 | 4 | 4 | 3* | 5 | 4 | 1 | 3 | no |
 | C15-W. Rules 15.22 to 15.25 | 3* | 3* | 3* | 5 | 3* | 4 | 6 | 8 | no |
 | C15. Chapter 15 whole | 4 | 4 | 4 | 5 | 4 | 4 | 0 | 0 | yes |
 | C11-T. Rules 11.10 and 11.11 with step tables, Rule 11.12, the bill's step table | 4 | 4 | 5 | 3* | 4 | 3* | 1 | 5 | no |
@@ -115,7 +115,7 @@ I read the eight reports from 17:05 UTC, after my first scores were written; the
 - **C11-T usefulness, 4 to 3.** A rejected measure has end words but no stated mark, and a case dismissed before any ruling has no stated step, so two partners will draw them two ways. Found by PR-S10.
 - **C11-T evidence honesty, 5 to 4.** Measure 99013's stop line says a sample "projected fewer valid ones than the law requires", where California fails a measure on the sample only under 95 percent. Found by ST-S3.
 
-No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 found CD-M1 on their own, and RP-6 found CD-M2.
+No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 found CD-M1 on their own, and RP-6 and the craft report's CR-M1 found CD-M2. The craft report (read at 17:13 UTC, scored 3.5) confirms my craft scores: its Shoulds on the chooser, the two stepper orders, the palette plate's tables and blurred 3 px lines, S93's callouts, the "R - 06" chips and S12's phone edge add to my Shoulds without moving a score. The accessibility report was not yet scored when I wrote this.
 
 ## Required changes
 
@@ -137,7 +137,7 @@ No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 fo
 
 **CD-S4. S91 and S94 titles.** One finding each; for S94, for example: "Seven of the 16 budget and tax deadlines federal law sets for 2027 carry a consequence in law: the six tax deadlines and the start of the fiscal year." Owner: editor, with the infographics maker.
 
-**CD-S5. DD-R2 with DD-R5, both plates (15.20 and 14.144).** Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5 yes as well: in my own luma conversion of the 15.20 and 14.144 captures, the chosen pill's 3 px Pillar Red ring turns a lighter gray than an unchosen pill's ink, so the target reads weaker than its neighbors in print and one-ink copies, while the red connection holds by its keyline case; give the pill the same keyline inside its ring (Charcoal on Newsprint, Newsprint on Charcoal), on both plates. Owner: component engineer (chooser part), systems designer and complex examples maker.
+**CD-S5. DD-R2 with DD-R5, both plates (15.20 and 14.144).** Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5 yes as well: in my own luma conversion of the 15.20 and 14.144 captures, the chosen pill's 3 px Pillar Red ring turns a lighter gray than an unchosen pill's ink, so the target reads weaker than its neighbors in print and one-ink copies, while the red connection holds by its keyline case; give the pill the same keyline inside its ring (Charcoal on Newsprint, Newsprint on Charcoal), on both plates. The craft report's CR-S1 adds two parts I agree with: a fixed 24 px slot for the check so every chip starts at one x, and a keyline on the red arrowhead as on its shaft; Rule 15.16's approved plate draws the pill and arrowhead the same way, so board 3 shows it beside them. Owner: component engineer (chooser part), systems designer and complex examples maker.
 
 **CD-S6. Rule 15.23's column.** Start the stage column at one offset in all five tables. Owner: systems designer.
 
@@ -166,9 +166,9 @@ I agree with each fix below as its report writes it, with its owner there; I lis
 - **CE-M2** (C15-W, clarity). Stages 3 to 5 behind step 5 as well as step 4 on 15.23. Owner: systems designer.
 - **CE-M3 and DF-1** (C15-W, clarity). "stages" in both subheads on 15.23. Owner: systems designer, editor.
 - **ST-M2** (C15-W, evidence honesty). The 20 working days counted from receipt, with 552(a)(6)(A)(ii) in the sources file. Owners: systems designer, research lead.
-- **DF-2** (C15-W, brand fidelity). The route's stages take a mark of their own that chapter 11 does not use for "stopped": I recommend the numbered square outlined in the text's ink for a stage on the main line, and a smaller filled square kept only for "a path that stops there", so the stop square means one thing across chapters 11 and 15. Owner: systems designer, with the data lead's ruling; board 3 shows it beside chapter 11's square.
+- **DF-2** (C15-W, brand fidelity). The route's stages take a mark of their own that chapter 11 does not use, as the main session's call 1 sets, and the small filled square stays only for "a path that stops there", so the stop square means one thing across chapters 11 and 15. The data lead's ruling picks the mark; I will read it at the rescore. Owner: systems designer; board 3 shows it beside chapter 11's square.
 
-**Should, adopted:** RP-17 (R4-A, S85's Civic Line line explained in the visible notes); RP-18 and RP-12 (R4-I, FEMA spelled out; S90's counts without a decimal); RP-3 with PR-S9 and RP-14 (R5-G, a line to group 18 and chapter 15 under the questions; the questions as headings); ST-S4 with PR-S6 (R5-P, label ratios computed and floored); ST-M1, held as Should, with RP-10, RP-20 and DF-4 (R5-1, the failure caption, "both jobs charts" named, "90 percent" glossed, "the text's ink"); RP-9 (R5-2 and R5-3, a key for delay ticks and grade lines); RP-7 and RP-8 (R5-3, one layer for EC9, "Kind of change" for "Band"); RP-4, RP-5, RP-11, RP-13, RP-19 and DF-5 (C15-W, a simple majority of those voting, how chambers agree, the rule for R-28 and the laws named in words, short group descriptions on live-text plates for the accessibility lead to confirm, a date in place of "we found", "the text's ink" in 15.22's key); PR-S10, ST-S3, RP-15 and RP-16 (C11-T, a rejected measure's square at step 6 and a dismissed case's step, California's 95 percent, certiorari glossed, the second test named or dropped).
+**Should, adopted:** RP-17 (R4-A, S85's Civic Line line explained in the visible notes); RP-18, RP-12 and CR-S13 (R4-I, FEMA spelled out; S90's counts without a decimal; S93's callouts parted from the list's discs); CR-S20 (R4-S, S12's phone tiles edged in the context ink, and "United States 5.9" in the phone key); CR-S11 (R5-P, 3 px grade lines on the half pixel); CR-S17 (R5-3 and C15-I, ID chips that print "R - 06"); CR-S4 (C15-I, one order for the stepper in both chapters); RP-3 with PR-S9 and RP-14 (R5-G, a line to group 18 and chapter 15 under the questions; the questions as headings); ST-S4 with PR-S6 (R5-P, label ratios computed and floored); ST-M1, held as Should, with RP-10, RP-20 and DF-4 (R5-1, the failure caption, "both jobs charts" named, "90 percent" glossed, "the text's ink"); RP-9 (R5-2 and R5-3, a key for delay ticks and grade lines); RP-7 and RP-8 (R5-3, one layer for EC9, "Kind of change" for "Band"); RP-4, RP-5, RP-11, RP-13, RP-19 and DF-5 (C15-W, a simple majority of those voting, how chambers agree, the rule for R-28 and the laws named in words, short group descriptions on live-text plates for the accessibility lead to confirm, a date in place of "we found", "the text's ink" in 15.22's key); PR-S10, ST-S3, RP-15 and RP-16 (C11-T, a rejected measure's square at step 6 and a dismissed case's step, California's 95 percent, certiorari glossed, the second test named or dropped).
 
 ## The named places in my lens
 
@@ -211,8 +211,7 @@ Not yet, and both are close. Chapter 15 reads as a chapter a design firm would s
 
 ## Questions for Dustin
 
-1. **Effect pips on Rule 14.144's cards (DF-3).** Rule 13.5, which you approved (DR-237), draws each effect code with one to three pips, and Rule 15.20's chooser draws them; 14.144 forbids them so no reader adds pips across three cards. I recommend the pips, as DF-3 does: each card already prints the atlas's sentence that codes are never added, the failure plate shows the total to avoid, and one mark for one property across chapters 13, 14 and 15 is the stronger system.
-2. **S95's sign-off (NB-M2).** DR-211 sets the lockmark at 96 px on social cards; the studio read DR-268 as leaving the card's marks to chapter 23. I recommend the sign-off now, on both crops, since the plate exports a PNG and words to post; the alternative is a caption saying the card is not for posting until chapter 23.
+None new. The two I would have asked are settled inside the fix pass as I recommend: the effect pips on 14.144's cards (DF-3) by the main session's call 2, which board 3 shows; and Rule 15.20's sentence (NB-M1) by call 3. S95's sign-off (NB-M2) is routed to the engineer under DR-211; if the studio wants to hold it for chapter 23 instead, that becomes Dustin's call, and I recommend the sign-off now, since the plate exports a PNG and words to post.
 
 ## Risks for Dustin to weigh
 

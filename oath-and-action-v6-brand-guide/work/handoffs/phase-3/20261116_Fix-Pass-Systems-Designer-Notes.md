@@ -28,7 +28,17 @@ Each in `work/build/scripts/phase-3/phase3_ch15_build.py`; proof is the rerun (e
 - **DF-5 (dark and lighter), with R1.** "Dark line", "lighter line" and "lighter ink" are gone from 15.22's key, alt, rule and specs (draft words above).
 - **DF-10, in part (15.22's source line order).** "Source: Oath & Action’s systems atlas, ..., route FS, its instrument and who acts, snapshot of October 15, 2026, United States. Each stage’s source as named beside it, with the date we read it." The snapshot date no longer reads as the stages' date, as on 15.24.
 
+- **The data lead's R5 note (a qualified effect code split by `effect_rows`).** A qualified code now prints whole as stored, its qualifier straight after the code and the code's words after a comma: "**+L** local, large positive" (tested in memory on Reforms R-06, R-30 and R-38). A range or a second code ("+S to +M", "+S entry; −S extremity") stops the build, since one row of words cannot name it. No chapter 15 plate shows a qualified code: the chapter file, the manifest and all 51 plates hash the same before and after (`sha1sum -c`). The complex examples maker may call it for Rule 14.144 under C-SD1.
+
 ## Not fixed
+
+Waiting, as of the time in Status:
+
+- **ST-M2, CE-S8 (FOIA's 20 working days), CE-S1 and ST-S6 (the majority), CE-S2 (one text and conference committees), CE-S5, ST-S5 and NB-S6 (stage 19's rule, scope and date):** on the research lead's Facts, then the editor's words.
+- **CE-S3 (stage 8's name), CE-S4 (reconciliation and rescission glosses), CE-S11 (injunction, discovery, doctrine on 15.23 and 15.24), DF-14 (actor first in eight stage sentences), NB-M1 (Rule 15.20's last sentence; call 3 sets what it must allow):** on the editor's "Words for the systems designer". DF-9's card follows stage 8's name by script.
+- **CE-S9 (guidance against a rule issued without comment):** needs a source row for 5 U.S.C. 553(b)(B), the good-cause exception behind an interim final rule; neither the rule-making data file nor the workflow sources file holds it (Requests).
+- **DF-10, the rest ("as in force on" for each statute, and one of "read" and "retrieved" across chapters 11, 14 and 15):** the version date is a research fact (our U.S. Code reads are govinfo's 2024 edition, not a dated in-force copy), and the word across three chapters is a ruling for the data lead and the main session (Requests).
+- **NB-S5 (15.24's worked example picked by no stated rule):** a ruling for the data lead (Requests, with my recommendation).
 
 ## Calls
 
@@ -44,6 +54,20 @@ Each in `work/build/scripts/phase-3/phase3_ch15_build.py`; proof is the rerun (e
 | 15.22's key shows the number of the first stage of each kind (1, 3, 14) | R1, item 4: each entry draws as the plate draws it, and a real number ties the key to the plate |
 
 ## Requests
+
+### To the research lead
+1. **CE-S9.** A row for 5 U.S.C. 553(b)(B), the exception that lets an agency skip notice and comment "for good cause", with its words and read date, in `govinfo-federal-rulemaking-steps.csv` or the workflow sources file's FA table, so Rule 15.23's row "In place of steps 2 to 4" can name a rule issued without advance comment, such as an interim final rule, beside guidance (Rule 11.9 already names the interim final rule).
+2. **ST-S7.** Please confirm the rows I now print: stage 16 on 801(a) (FS row, November 11) and 801(b) (FA row, November 12); the FA card on its 551, 553 (FA row of November 11), 801(a), 801(b), 802 and 706 rows; the FS card's 706 on the FA litigation row (November 12).
+3. **DF-10.** The version words for our statute reads: chapter 11 prints "as in force on November 9, 2026" for its LII reads; our 15.22 to 15.24 reads are govinfo's U.S. Code 2024 edition. Which words name that version truly ("U.S. Code, 2024 edition", or "as in force on" a date)?
+4. **ST-S9.** The dates I print for the drawing tool's readings: October 20, 2026 for rows 11 and 17 (our first audit), October 21, 2026 for rows 47, 48 and 52 (the V7.1 list, items 24 to 26).
+
+### To the data lead
+1. **NB-S5, Rule 15.24's one worked example.** Recommendation: keep Reform R-28 and print the rule that picked it, "the reform an earlier drawing already put on this path: our brand guide’s fifth edition and the atlas visual system drew it on a federal tax-law route through reconciliation (row 41 of Rule 15.25)". The rule reads history only, so it picks the same reform for either side, and it ties the example to the table that corrects that drawing. The structural rule ("the first reform, in the atlas's order, whose federal entry names reconciliation") picks R-25, both are tax reforms, and the switch would redraw the example and its failure. Say which, and I print it.
+2. **DF-10's word.** One of "read" and "retrieved" for the guide's law sources across chapters 11, 14 and 15. Chapter 15 says "read" (ruling (e): "read" for our research's date, "Checked" for an atlas entry); chapter 11 says "retrieved". I change mine on your word.
+3. **Sign-off, batch 1** (when you are ready): R1 on 15.22 and 15.23; CE-M2, CE-M4, CE-S6, DF-11, CE-S7, DF-8, DF-9, ST-S7, ST-S9, CE-S12, CE-S23 as listed under Fixed. Captures follow in Tested.
+
+### To the editor
+1. The draft words under Fixed (CE-S12, CE-S23, ST-S9, R1 and DF-5's key, alt, rule and specs, DF-9's folds on the FS card, CE-S7's route names) are yours to set; send replacements as old and new strings and I apply them, or write them into the generator once I report done (D3-669).
 
 ## Tested
 

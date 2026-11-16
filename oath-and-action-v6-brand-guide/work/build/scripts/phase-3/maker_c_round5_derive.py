@@ -106,6 +106,22 @@ def example_1():
     gains_past = [m for m, v in zip(months, ch) if v > margin]
     in_band = [m for m, v in zip(months, ch) if abs(v) <= margin]
     since = [i for i, m in enumerate(months) if m >= '2025-01']
+    # where each drop past the margin fell (the data lead's R4b, ST-S2): private (USPRIV) and government (USGOVT) payrolls,
+    # each month's level minus the month before, from the same FRED copy; the two add to the month's total (PAYEMS), which
+    # must equal S14's file
+    lev = {}
+    for r in read_csv('fred-payrolls-by-sector'):
+        lev[(r['series_id'], r['date'][:7])] = float(r['employees_thousands'])
+    split = {}
+    for m in past:
+        y, mo = int(m[:4]), int(m[5:])
+        prev = f'{y - (mo == 1)}-{(mo - 2) % 12 + 1:02d}'
+        d = {k: round(lev[(k, m)] - lev[(k, prev)], 3) for k in ('PAYEMS', 'USPRIV', 'USGOVT')}
+        need(abs(d['PAYEMS'] - ch[months.index(m)]) < 1e-6, f'{m}: the sector file\'s total differs from S14\'s file')
+        need(abs(d['USPRIV'] + d['USGOVT'] - d['PAYEMS']) < 1e-6, f'{m}: private and government do not add to the total')
+        split[m] = {'private': d['USPRIV'], 'government': d['USGOVT']}
+    need(split == {'2025-10': {'private': 13.0, 'government': -153.0}, '2026-02': {'private': -148.0, 'government': -8.0}},
+         f'the split of the two drops past the margin moved: {split}')
     return {
         'dataset': DATASET,
         'first': months[0], 'last': months[-1], 'n': len(rows),
@@ -116,6 +132,7 @@ def example_1():
         'margin_level': '90 percent',
         'past_margin': past, 'past_margin_values': [ch[months.index(m)] for m in past],
         'losses_inside_margin': inside,
+        'past_margin_split': split,
         'gains_past_margin': len(gains_past),
         'months_inside_margin': len(in_band),
         'since_2025': {'n': len(since), 'inside_margin': sum(1 for i in since if abs(ch[i]) <= margin),

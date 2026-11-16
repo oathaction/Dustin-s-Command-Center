@@ -199,15 +199,48 @@ def in_sentence(code, first=False, obj=False):
     return t[0].upper() + t[1:] if first else t
 
 
+# how each variable's change is said (the editor's words for CE-M1): "rises" and "falls" for a singular title, "rise" and
+# "fall" for a plural one, "goes up" and "goes down" after the title that asks how often; "can" before the base form
+VERB = {"C2": ("goes up", "goes down", "go up", "go down")}
+
+
+def says(code, up, can, subject=True):
+    """A variable and its change in the walk's direction: its title whole (DR-265), then its verb."""
+    t = in_sentence(code, first=subject, obj=True)
+    plural = PLURAL[code] and code not in OBJECT          # "the number of ..." is singular
+    if code in VERB:
+        v3u, v3d, bu, bd = VERB[code]
+    else:
+        v3u, v3d, bu, bd = ("rise", "fall", "rise", "fall") if plural else ("rises", "falls", "rise", "fall")
+    return f"{t} {('can ' + (bu if up else bd)) if can else (v3u if up else v3d)}"
+
+
+def directions(lid):
+    """The walk's direction at each variable of a loop, from its start supposition through each connection's sign (the data
+    lead's R2, item 1), and where "can" starts: after the first plausible step, to the end of the loop (item 2)."""
+    lp = LOOP[lid]
+    up = START[lid][1] in ("rise", "rises")
+    out, can = [], False
+    for x in lp["links"]:
+        l = link(x)
+        nxt = up if l["polarity"] == "+" else not up
+        can_after = can or l["evidence"] == "plausible"
+        out.append({"link": x, "cause_up": up, "effect_up": nxt, "cause_can": can, "effect_can": can_after})
+        up, can = nxt, can_after
+    return out
+
+
 def walk_steps():
-    """Each step's words as Rule 18.22's list holds them (CE-1, the accessibility lead's 2.4): the line names the two
-    variables by their atlas titles with the sign's verb ("can" for a plausible step); the more words give the typed
-    connection and its name, what moves along it, its grade and its delay; the step that closes a loop says it is back
-    where it began and names its kind; the walk names Variable C3 as the variable both loops pass through where it meets
-    it first and where Loop R10 meets it. Each hold is CE-1's formula from what the status line says."""
+    """Each step's words as Rule 18.22's list holds them (CE-1, the accessibility lead's 2.4; the data lead's R2 and the
+    editor's words for CE-M1): the line says the walk's direction at both ends, cause first, computed from the start
+    supposition and the signs ("can" from the plausible step on); the more words give the typed connection, its name, its
+    sign in words that hold either way, what moves along it, its grade and its delay; the step that closes a loop says
+    where the change ends up and names its kind; the walk names Variable C3 as the variable both loops pass through where
+    it meets it first and where Loop R10 meets it. Each hold is CE-1's formula from what the status line says."""
     f2 = FACTS["example_2"]
     out = []
     count = {lid: 0 for lid in KIND}
+    dirs = {lid: directions(lid) for lid in KIND}
     for k, (lid, x) in enumerate(WALK, 1):
         lp = LOOP[lid]
         codes = [c for c, _ in lp["chain"]]
@@ -218,16 +251,16 @@ def walk_steps():
         l = link(x)
         a, b = codes[i], codes[(i + 1) % n]
         need((l["from"], l["to"]) == (a, b), f"Connection {x} changed")
-        up = l["polarity"] == "+"
-        if l["evidence"] == "plausible":
-            verb = "can raise" if up else "can lower"
-        else:
-            verb = ("raise" if up else "lower") if PLURAL[a] else ("raises" if up else "lowers")
-        line = f"{in_sentence(a, True)} {verb} {in_sentence(b, obj=True)}."
-        moves = f"{l['type']} moves along it, " if l["type"] in ("money", "information", "ownership") else ""
+        d = dirs[lid][i]
+        closes = i == n - 1
+        again = " again" if closes and KIND[lid] == "reinforcing" else ""
+        line = f"{says(a, d['cause_up'], d['cause_can'])}, so {says(b, d['effect_up'], d['effect_can'], subject=False)}{again}."
+        moves = f", and {l['type']} moves along it" if l["type"] in ("money", "information", "ownership") else ""
+        sign = ("a minus sign, which means that when one rises, the other falls" if l["polarity"] == "-"
+                else "a plus sign, which means that the two rise and fall together")
         least = (", the least certain step in the loop" if l["evidence"] == C15.least_certain(lp["links"])
                  and len({link(y)["evidence"] for y in lp["links"]}) > 1 else "")
-        more = (f'{chip("Connection", x)} “{ce(l["name"])}”: {moves}the atlas grades it '
+        more = (f'{chip("Connection", x)} “{ce(l["name"])}” carries {sign}{moves}. The atlas grades it '
                 f'{GRADE[l["evidence"]][0].lower()}{least}, and its effect takes {DELAY[l["delay"]][1]}.')
         # the atlas's own claim of a weakest step, read from the loop's evidence summary (Loop B4: all three steps well
         # supported, and L54 the weakest for U.S. services); none is printed where the model names none
@@ -236,23 +269,36 @@ def walk_steps():
             more += f" The atlas names it the weakest step for U.S. services, \u201c{ce(wk.group(2))}\u201d."
         if i == 0 and lid == "R10":
             s_, v_ = START["R10"]
-            more = (f"The walk moves to Loop R10. Start at {in_sentence(s_)}, and suppose they {v_}. " + more)
+            more = (f"The walk moves to Loop R10, starting at {in_sentence(s_)} and supposing they {v_}. " + more)
         if b == "C3" or a == "C3":
             if lid == "B4" and b == "C3":
                 more += f" {in_sentence('C3', True)} is the variable both loops pass through."
             if lid == "R10" and b == "C3":
                 more += f" Here Loop R10 reaches {in_sentence('C3')}, the variable Loop B4 also passes through."
-        if i == n - 1:
+        if closes:
+            # where the change ends up (R2, item 4), in Rule 15.6's words for the kind: a balancing loop pushes back
+            # against the first change, a reinforcing one feeds itself on top of it
             m_ = C15.minus_count(lp["links"])
-            signs = f"{words_n(m_)} minus sign{'' if m_ == 1 else 's'} on its steps"
-            more += (f" Loop {lid} is back where it began, at {in_sentence(codes[0])}, and with {signs} it is "
-                     f"{KIND[lid]}.")
+            first = "fall" if dirs[lid][0]["cause_up"] is False else "rise"
+            back = d["effect_up"] == dirs[lid][0]["cause_up"]
+            need(back == (KIND[lid] == "reinforcing"), f"Loop {lid} ends against its kind")
+            end = says(codes[0], d["effect_up"], d["effect_can"], subject=False)
+            if KIND[lid] == "balancing":
+                t_, v_ = end.rsplit(" ", 1) if not d["effect_can"] else (end, "")
+                where = f"{t_} now {v_}".strip() + f", against the first {first}"
+                acts = "can push back" if d["effect_can"] else "pushes back"
+            else:
+                where = f"{end} again, on top of the first {first}"
+                acts = "can feed itself" if d["effect_can"] else "feeds itself"
+            signs = f"its {words_n(m_)} minus sign{'' if m_ == 1 else 's'} show{'s' if m_ == 1 else ''}"
+            more += (f" Loop {lid} is back where it began, and {where}. The loop {acts}, so it is {KIND[lid]}, as {signs}.")
             if lid == "R10":
                 more += " The atlas holds no measure of either loop’s strength, so the walk weighs neither against the other."
         need(KIND[lid] == ("reinforcing" if C15.minus_count(lp["links"]) % 2 == 0 else "balancing"), f"Loop {lid}'s kind changed")
         said = f"Loop {lid}, step {i + 1} of {n}: {line} {re.sub(r'<[^>]+>', '', html.unescape(more))}"
         hold = max(6000, 250 * len(said.split()))
-        out.append({"k": k, "loop": lid, "i": i + 1, "n": n, "link": x, "line": line, "more": more, "hold": hold, "said": said})
+        out.append({"k": k, "loop": lid, "i": i + 1, "n": n, "link": x, "line": line, "more": more, "hold": hold, "said": said,
+                    "dir": d})
     need(f2["loops"]["B4"]["into_C3"] == "L23" and f2["loops"]["R10"]["into_C3"] == "L25", "Variable C3's steps changed")
     return out
 
@@ -422,8 +468,10 @@ def rule_14_143():
             f"{lc(short('C3'))}. Draw them side by side with that variable filled in ink in both (Rule 15.15), number each "
             f"loop’s steps from 1 as the atlas starts it (Rule 15.6), and let the status line say which loop each step "
             f"belongs to.",
-            "At each loop’s last step, say that the loop is back where it began and name its kind. Say too where the second "
-            "loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion "
+            "Start each loop from a rise or a fall, and say each step in the direction the walk runs, cause first, as in "
+            f"“{steps[0]['line']}” After a step the atlas grades plausible, say “can” to the end of the loop. At the last "
+            "step, say that the loop is back where it began, whether it pushes back or feeds itself, and name its kind. Say "
+            "too where the second loop reaches the shared variable. Print every step in order wherever nothing can move: on paper, with motion "
             "reduced and with scripts off (Rule 15.19). Keep each loop’s own numbers and kind, and leave out any word that "
             "one loop outweighs the other, since the atlas holds no measure of a loop’s strength (Rule 15.21).",
         ],
@@ -825,11 +873,11 @@ def rule_14_144():
             "its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on "
             "memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target "
             "outside the loop in words, with its layer, and draw no path the atlas does not hold.",
-            "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A "
-            "qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or "
-            "“+M renter-owner”. A zero says “no expected effect”. Draw each code whole beside the pips of Rule 13.5, in the "
-            "text’s ink, with no total, count, average or rank, since the atlas never adds effects across families (Rules "
-            "15.16 and 15.21). Print each "
+            "Draw each effect with Rule 13.5’s pips in the text’s ink, then print it as the atlas stores it, the code and "
+            "then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when "
+            "or for whom the effect holds, as in “+L local” or “+M renter-owner”. A zero says “no expected effect”. Give no "
+            "total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). "
+            "Print each "
             f"route’s check date or “Not checked”, with the model’s date, {SNAP}.",
         ],
         "use_when": None,
@@ -854,8 +902,7 @@ def rule_14_144():
             {"label": "Cards", "value": "One per reform, the same rows in the same order, all on the page whichever is chosen; the chosen one takes the selected bar",
              "token": "oa.color.state.selected.bar"},
             {"label": "Effects", "value": "Rule 13.5’s pips, then the atlas’s code and qualifier whole and its words; zero in words; never added"},
-            {"label": "Grades", "value": "Each of the two apart, its grade word and Rule 13.3’s gloss, as Rule 15.16 prints them"},
-            {"label": "Routes", "value": "Name, who acts, feasibility, and the check date or “Not checked”"},
+            {"label": "Routes", "value": "Under “Routes, with the date each was checked”: the route, who acts, its feasibility in bold, and the check date or “Not checked”, as Rule 15.20 prints them"},
             {"label": "Never", "value": "A total, a count of codes or pips, a rank, or a fill, shade, length or color by code"},
         ],
         "correct": dict({"specimen": "s-14-144-correct",
@@ -887,6 +934,30 @@ def FACTS_NOTE():
 # =====================================================================================================================
 # Rule 14.142: S14 in full, S96 (ruling c)
 # =====================================================================================================================
+# S96's second note opens on the count of drops, which the failure keeps (R3): read from the data, checked against it
+SEVEN = "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026."
+need(FACTS["example_1"]["losses"] == ["2025-01", "2025-06", "2025-08", "2025-10", "2025-12", "2026-02", "2026-07"],
+     "the seven drops moved; reword S96's second note")
+
+
+def split_words(past, split):
+    """Where each drop past the margin fell (the data lead's R4b, ST-S2), in the editor's words, every figure computed from
+    the sector file by maker_c_round5_derive.py: private and government payrolls, which add to the month's total. No cause."""
+    mw = DV.month_words
+
+    def th(v):
+        return f"{abs(int(round(v * 1000))):,}"
+
+    def moved(v):
+        return "rose" if v > 0 else "fell"
+    a, b = (split[m] for m in past)
+    need(a["government"] < 0 < a["private"] and a["government"] < 0 and b["private"] < 0 and b["government"] < 0,
+         "the directions of the split moved; the editor's sentence fits only these")
+    return (f"In {mw(past[0])}, government payrolls {moved(a['government'])} {th(a['government'])} and private payrolls "
+            f"{moved(a['private'])} {th(a['private'])}. In {mw(past[1])}, private payrolls {moved(b['private'])} "
+            f"{th(b['private'])}, and government payrolls {moved(b['government'])} {th(b['government'])}.")
+
+
 def rule_14_142():
     f1 = FACTS["example_1"]
     s14 = json.loads((SPECS / "s14.json").read_text())
@@ -921,13 +992,15 @@ def rule_14_142():
                          "the span both jobs charts share, with the three-month average and the survey’s 90 percent "
                          f"margin of error for one month’s change, {margin} jobs."),
         "notes": [
+            # what the band means (the data lead's R4; the editor's words for ST-S1 and CE-S13): its size and source, the
+            # zero-centered reading, then the caution that it holds for each month alone
             (f"The band runs from {MINUS}122,000 to +122,000 jobs, the Bureau of Labor Statistics’ 90 percent margin of "
-             "error for one month’s change in its survey of employers. A column that ends inside the band is a change the "
-             "survey cannot tell apart from no change at that level. The band covers one month’s change, so it says nothing "
-             "about the three-month average."),
-            (f"Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. "
-             f"Only the {mw(past[0])} ({k(pv[past[0]])}) and {mw(past[1])} ({k(pv[past[1]])}) drops pass the margin; the other "
-             "five sit inside it."),
+             "error for one month’s change in its survey of employers. If a month’s true change were zero, the survey’s "
+             "estimate would land inside the band nine times in ten. A column that ends inside the band is a change the "
+             "survey cannot tell apart from no change at that level. The band holds for each month alone, so across "
+             f"{f1['n']} months a few columns could pass it by chance, and it says nothing about the three-month average."),
+            (SEVEN + f" Only the {mw(past[0])} ({k(pv[past[0]])}) and {mw(past[1])} ({k(pv[past[1]])}) drops pass the margin; the other "
+             "five sit inside it. " + split_words(past, f1["past_margin_split"])),
             ("August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate "
              "in the next two monthly reports, and a yearly benchmark revision can move earlier months. The band does not show "
              "how far a revision may move a month. The average is dashed where it includes a preliminary month."),
@@ -939,7 +1012,8 @@ def rule_14_142():
         "credit": "Chart: Oath & Action",
         "illustrative": False,
         "alt": (f"Columns show the monthly change in payroll jobs from {f1['window_words']} over a shaded band from minus to plus "
-                "122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all "
+                "122,000 jobs, the survey’s margin of error for one month’s change, inside which a month with no real change "
+                "would land nine times in ten. Seven columns fall below zero, all "
                 f"in 2025 and 2026. Two are drawn in the text’s ink and labeled, {mw(past[0])} at minus 140,000 and {mw(past[1])} at minus 156,000, "
                 "and reach past the band; the other five end inside it. A line shows the three-month average, which stood at "
                 f"51,000 in {mw(lat['month'])}, a preliminary figure."),
@@ -1023,11 +1097,14 @@ def rule_14_142():
     losses = f1["losses"]
     fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide", "phone_notes",
                                                             "phone_line", "plate")}
-    fspec["scale"] = s14["scale"]      # the failure keeps S14's scale and placement; it needs none of S96's new keys
-    # S14's own preliminary note (S96's adds a sentence about the band, which the failure does not draw), then the notes
-    # S96 takes from S14 whole, in S96's order
-    keep = [s14["notes"][2]] + [n for n in spec["notes"] if n in s14["notes"]]
-    need(keep == [s14["notes"][i] for i in (2, 0, 1, 4)], "S96's notes from S14 changed; the failure keeps the same ones")
+    # S96's scale with its narrow scale and no gridline under zero (the data lead's R3: S96 with the margin taken out and
+    # nothing else changed)
+    fspec["scale"] = dict(spec["scale"])
+    # S96's notes less every word of the margin (R3): the first sentence of its second note, which counts the seven drops,
+    # S14's own preliminary note (S96's adds a sentence about the band), then the notes S96 takes from S14 whole, in its order
+    keep = [SEVEN, s14["notes"][2]] + [n for n in spec["notes"] if n in s14["notes"]]
+    need(keep[2:] == [s14["notes"][i] for i in (0, 1, 4)] and spec["notes"][1].startswith(SEVEN + " "),
+         "S96's notes from S14 changed; the failure keeps the same ones")
     fspec.update({
         "id": "s-14-142-failure",
         "table": dict(s14["table"], caption=f"The same {f1['n']} months, with the three-month average, as this failure case draws them"),
@@ -1038,15 +1115,17 @@ def rule_14_142():
         "source_line": f1["source_line_plain"],
         "chart_notes": [],
         "alt": ("The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that "
-                "counts seven months of lost jobs."),
+                "states seven months of lost jobs with no word on the margin."),
         "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ != "latest"},
                        **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
         "annotations": [],
         "show": ["evidence", "title", "measure", "chart", "notes", "source"],
         "failure": {"rule": "14.142", "caption_lead": "Fails Rule 14.142."},
-        "notes_internal": "Rule 14.142's failure plate (ruling c): the same 57 columns with no band, all seven drops labeled "
-                          "alike as losses, under a title that counts seven losses as findings; no red.",
+        "notes_internal": "Rule 14.142's failure plate (ruling c; the data lead's R3 of the fix pass): S96 with the margin "
+                          "left out of the drawing and the words, and nothing else changed: no band, all seven drops drawn "
+                          "alike, a title with no word on the margin, S96's scale and notes less the margin's words, no latest "
+                          "label, the sidecar's plain source line; no red.",
     })
     fhtml = (f"<!-- s-14-142-failure: Oath & Action guide, Edition 06, chapter 14. Complex examples maker, {WRITTEN}. "
              f"Written by {ME}. -->\n"
@@ -1059,9 +1138,11 @@ def rule_14_142():
         "rule": [
             "A survey estimates each month’s change from a sample, so a small change can come from the sample alone. Draw "
             "the survey’s margin of error for one month’s change as a band around zero, behind the columns, and give its "
-            "size, its confidence, such as the Bureau’s 90 percent, and its source in a note (Rule 14.9). Name only the "
-            "changes that pass it, each with its month and value in the subject ink (Rule 14.6), and print the full count "
-            "beside them, so a reader still learns how many months fell.",
+            "size, its confidence and its source in a note (Rule 14.9). The Bureau of Labor Statistics gives a 90 percent "
+            "margin, so a month with no real change lands inside the band nine times in ten. The band holds for each month "
+            "alone, and over many months a few can pass it by chance, so the note says that too. Name only the changes past "
+            "it that the reader’s question asks about, here the drops, each with its month and value in the text’s ink "
+            "(Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
             "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months "
             "still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band measures "
             "one month’s change alone. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14).",
@@ -1084,7 +1165,7 @@ def rule_14_142():
             {"label": "Window", "value": f"Every month, {f1['window_words']}, with the reason in a note"},
             {"label": "Margin", "value": f"A band from {MINUS}122,000 to +122,000 behind the columns, with its edges, in the key and named on the drawing",
              "token": "oa.chart.color.magnitude.fill.step1.onNewsprint"},
-            {"label": "Named drops", "value": "The two past the margin, in the subject ink, each with its month and value",
+            {"label": "Named drops", "value": "The two past the margin, in the text’s ink, each with its month and value",
              "token": "oa.chart.color.subject"},
             {"label": "Preliminary", "value": "Hatched columns, the average dashed where it includes one"},
             {"label": "Files", "value": "The kit’s SVG, PNG and CSV, the CSV row for row with the data file"},
@@ -1094,9 +1175,10 @@ def rule_14_142():
                                 "two drops past it named and the preliminary months hatched. Its phone drawing sits under it, "
                                 "then its table.")},
         "failure": {"specimen": "s-14-142-failure",
-                    "caption": ("<strong>Fails Rule 14.142.</strong> With no band, all seven drops read as jobs lost, and the "
-                                "title counts seven losses as findings. Five of the seven sit inside the survey’s margin "
-                                "of error."),
+                    "caption": ("<strong>Fails Rule 14.142.</strong> The chart leaves out the survey’s margin of error, so all "
+                                "seven drops look alike, and the title states seven months of lost jobs with no word on the "
+                                "margin. Five of the seven sit inside the margin, where the survey cannot tell them from no "
+                                "change."),
                     "alt": FC + fspec["alt"], "illustrative": False, "notes": "Labeled failure: a kit figure through "
                     "s-14-142-failure.chart.json (C7), its title the fault.", "charts": ["s-14-142-failure"]},
         # no "examples" here: the chapter's build logs S96 from its spec as it places the plate (ruling (g): one example,
@@ -1116,7 +1198,7 @@ def reader_text(s):
     return html.unescape(re.sub(r"<[^>]+>", " ", s))
 
 
-def check(entries, files, specs):
+def check(entries, files, specs, steps):
     fails = []
     ok = lambda c, m: c or fails.append(m)
     for sid, t in files.items():
@@ -1153,6 +1235,7 @@ def check(entries, files, specs):
         ok(seen == want, f"{sid}: the grade label and the loop's title stand in the order {seen}, not label first (DF-6)")
     # 14.143: the stepper's markup as CE-1 lists it
     t = files["s-14-143-correct"].split("</style>", 1)[1]
+    rt_143 = reader_text(t)
     ok(t.count("data-oa-stepper") == 1 and t.count('class="oa-stepper-step"') == 7 and t.count("data-oa-part=") == 7,
        "14.143: one stepper root with seven steps, each naming its loop")
     ok(t.count('data-oa-first') == 2 and 'role="list"' in t and 'role="status"' in t, "14.143: the list, the status line, the first steps")
@@ -1165,6 +1248,27 @@ def check(entries, files, specs):
     ok("data-red" not in t and "emphasis-red" not in t, "14.143: red on a loop drawing with no reform")
     ok(sorted(set(re.findall(r'data-s="(\d)"', t))) == [str(i) for i in range(1, 8)], "14.143: the drawing's step groups 1 to 7")
     ok(not re.search(r"Electoral pressure(?! leads to actual defeats)", reader_text(t)), "14.143: the chain label prints as a name (DR-265)")
+    # CE-M1 (the data lead's R2, item 1): every printed direction against one recomputed here from the figure facts' signs
+    # and grades (maker_c_round5_derive.py) and the start supposition; "can" from the plausible step to the loop's end
+    ups, downs = ("rises", "rise", "goes up", "go up"), ("falls", "fall", "goes down", "go down")
+    for lid in ("B4", "R10"):
+        up, can = START[lid][1] in ("rise", "rises"), False
+        for st_, sf in zip([x for x in steps if x["loop"] == lid], FACTS["example_2"]["loops"][lid]["steps"]):
+            cause, effect = st_["line"].rstrip(".").split(", so ", 1)
+            nxt = up if sf["sign"] == "+" else not up
+            can_e = can or sf["grade"] == "plausible"
+            for words, want_up, want_can in ((cause, up, can), (effect.removesuffix(" again"), nxt, can_e)):
+                said_up = any(words.endswith(" " + v) for v in ups)
+                said_dn = any(words.endswith(" " + v) for v in downs)
+                ok(said_up != said_dn and said_up == want_up and ((" can " in words) == want_can),
+                   f"14.143: {st_['link']} says “{words}”, not the walk's direction (up {want_up}, can {want_can}) (R2)")
+            up, can = nxt, can_e
+        ok((up == (START[lid][1] in ("rise", "rises"))) == (KIND[lid] == "reinforcing"), f"14.143: Loop {lid} closes against its kind")
+    ok(rt_143.count("is back where it began, and") == 2 and "now rises, against the first fall. The loop pushes back, so it is balancing"
+       in rt_143 and "can rise again, on top of the first rise. The loop can feed itself, so it is reinforcing" in rt_143,
+       "14.143: a loop does not close on its result (R2, item 4)")
+    ok(not re.search(r"\b(?:lowers|raises|can lower|can raise)\b", " ".join(x["line"] for x in steps)),
+       "14.143: a line states the connection's general claim, not the walk's direction (R2, item 3)")
     # the component engineer's 02:17 findings, held: B4's label claims no least certain step where all three are well
     # supported; the list's number sits beside its loop label; the atlas's weakest-step claim is quoted where it holds
     lab_b4 = reader_text(re.search(r'<div class="evr">.*?</div>', t).group(0))
@@ -1237,8 +1341,18 @@ def check(entries, files, specs):
     # NB-S2: the failure differs from S96 by the band alone: S96's notes from S14 in S96's order, its measure line less the
     # margin, no on-plot latest label, and a source line with no margin sentence (ST-M1)
     s14n = json.loads((SPECS / "s14.json").read_text())["notes"]
-    ok(fs["notes"] == [s14n[2]] + [n for n in s96["notes"] if n in s14n],
-       "S96's failure: its notes are not S96's preliminary, average, seasonal adjustment and window notes (NB-S2)")
+    ok(fs["notes"] == [SEVEN, s14n[2]] + [n for n in s96["notes"] if n in s14n],
+       "S96's failure: its notes are not S96's count of drops, preliminary, average, seasonal adjustment and window notes (NB-S2, R3)")
+    ok(not re.search(r"(?i)margin|band|nine times", " ".join(fs["notes"] + [fs["title"], fs["measure_line"], fs["source_line"]])),
+       "S96's failure: a word of the margin in its notes, title, measure line or source line (R3)")
+    ok(fs["scale"] == s96["scale"], "S96's failure: its scale is not S96's (R3)")
+    # R4 and R4b, the editor's words: the band's meaning and its caution in note 1, and the split of the two drops in note 2
+    ok("nine times in ten" in s96["notes"][0] and f"across {FACTS['example_1']['n']} months a few columns could pass it by chance"
+       in s96["notes"][0] and "nine times in ten" in s96["alt"], "S96: the band's meaning or its caution is missing (R4)")
+    ok(not re.search(r"nine samples out of ten|90 percent (?:accurate|sure)|\b5\.7\b|\b1\.05\b", json.dumps(s96, ensure_ascii=False)),
+       "S96: words R4 rules out")
+    ok("government payrolls fell 153,000 and private payrolls rose 13,000" in s96["notes"][1]
+       and "private payrolls fell 148,000, and government payrolls fell 8,000" in s96["notes"][1], "S96: note 2's split (R4b)")
     ok(s96["measure_line"].startswith(fs["measure_line"].rsplit(", with", 1)[0]) and fs["measure_line"].endswith(", with the three-month average."),
        "S96's failure: its measure line is not S96's less the margin (NB-S2)")
     ok("latest" not in fs["labels"] and "latest" not in s96["labels"], "S96's failure: an on-plot latest label S96 does not carry")
@@ -1268,7 +1382,7 @@ def outputs():
         out[SPECIMENS / f"{sid}.html"] = t
     out[SPECS / "s96.json"] = json.dumps(s96, indent=1, ensure_ascii=False) + "\n"
     out[SPECIMENS / "s-14-142-failure.chart.json"] = json.dumps(fspec, indent=1, ensure_ascii=False) + "\n"
-    return out, check(entries, files, specs), steps, files
+    return out, check(entries, files, specs, steps), steps, files
 
 
 def main():

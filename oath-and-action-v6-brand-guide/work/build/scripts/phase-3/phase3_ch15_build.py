@@ -2559,9 +2559,14 @@ def effect_rows(r):
         code = v.split(" ")[0]
         need(code in EFFECT_WORDS, f"reform {r['id']}'s effect {v!r} has no code")
         qual = v[len(code):].strip()
-        words = EFFECT_WORDS[code] + (f", {qual}" if qual else "")
+        # the data lead's R5 note: a qualified code prints whole as the atlas stores it, its qualifier straight after the
+        # code and the code's words after a comma ("+L local, large positive"), as Rule 15.16's spec says. A range or a
+        # second code ("+S to +M", "+S entry; -S extremity") has no one set of words, so the build stops on one
+        need(not re.search(r"[;/]|\bto\b|[+-][LMS]\b|(?<!\w)0(?!\w)|\?", qual),
+             f"reform {r['id']}'s effect {v!r} holds a range or a second code; draw it before printing it")
+        text_ = (f"{e(qual)}, " if qual else "") + e(EFFECT_WORDS[code])
         out.append(f'<li><span>{e(FAMILY[fam])}</span><span class="fv">{C13.pips_svg(code)}'
-                   f'<span><b>{e(code.replace("-", MINUS))}</b> {e(words)}</span></span></li>')
+                   f'<span><b>{e(code.replace("-", MINUS))}</b> {text_}</span></span></li>')
     return '<ul class="ef">' + "".join(out) + "</ul>"
 
 

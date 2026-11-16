@@ -3,7 +3,7 @@
  "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
  "rule": [
   "Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target outside the loop in words, with its layer, and draw no path the atlas does not hold.",
-  "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or “+M renter-owner”. A zero says “no expected effect”. Draw each code whole beside the pips of Rule 13.5, in the text’s ink, with no total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
+  "Draw each effect with Rule 13.5’s pips in the text’s ink, then print it as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or “+M renter-owner”. A zero says “no expected effect”. Give no total, count, average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each route’s check date or “Not checked”, with the model’s date, October 15, 2026."
  ],
  "use_when": null,
  "use_instead": [],
@@ -51,12 +51,8 @@
    "value": "Rule 13.5’s pips, then the atlas’s code and qualifier whole and its words; zero in words; never added"
   },
   {
-   "label": "Grades",
-   "value": "Each of the two apart, its grade word and Rule 13.3’s gloss, as Rule 15.16 prints them"
-  },
-  {
    "label": "Routes",
-   "value": "Name, who acts, feasibility, and the check date or “Not checked”"
+   "value": "Under “Routes, with the date each was checked”: the route, who acts, its feasibility in bold, and the check date or “Not checked”, as Rule 15.20 prints them"
   },
   {
    "label": "Never",
