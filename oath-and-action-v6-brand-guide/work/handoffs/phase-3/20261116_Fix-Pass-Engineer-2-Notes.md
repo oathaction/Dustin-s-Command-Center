@@ -6,6 +6,7 @@ My codes: the palette plate's CD-S12, CR-S11, CR-S12, DF-13 and NB-S3; the round
 
 ## Status
 
+- 18:30 UTC (clock read): **the palette plate's five codes are in the generator** (CR-S11, CR-S12 with CD-S12, DF-13, NB-S3), run twice (the second wrote nothing), `--check` 2 of 2 current, 0 faults; a strict build in my scratch exits 0 with 0 warnings. Browser read of the new table waits for the load rule. **The main session's word (about 18:24): the first engineer is done with `kit.js`, and I am its one writer now for AX-S2.** The one line is in; the whole kit built in Node before and after it (`build --all --no-png`), compared byte for byte (below). Next: S95's feed test, then S94.
 - 18:09 UTC (clock read): started. Read `CLAUDE.md`, my role file, the fix brief with Addendum 1, the first engineer's notes, the round 4 maker's notes and requests, and my codes in the creative director's, craft, drift and nonpartisan brand reports and the editor's notes (Rule 14.5 and 14.6's ink words). Both forms have one user each (S94 and S95, by a search of every spec). Order: the palette plate, then S95, then S94.
 
 ## Fixed
