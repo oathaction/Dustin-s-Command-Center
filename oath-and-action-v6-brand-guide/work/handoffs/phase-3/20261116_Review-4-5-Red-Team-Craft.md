@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, chat 7, November 16
 
 ## Status
 
-- 17:27 UTC. Added CR-M2 (14.144 with R-38 chosen). The main session says the shared run stops after Charcoal 1x; my own 2x, grayscale and 320 px captures of the plates my lens needs are queued behind the browser gate (`bin/mycap.cjs` in my scratch, one browser).
+- 17:26 UTC. Added CR-M2 (14.144 with R-38 chosen). The main session says the shared run stops after Charcoal 1x; my own 2x, grayscale and 320 px captures of the plates my lens needs are queued behind the browser gate (`bin/mycap.cjs` in my scratch, one browser).
 - 17:09 UTC. First full draft written from the shared captures at Newsprint 1x, 1440 and 390 px, with pixel zooms of the 1440 px captures, the built page's markup and plate CSS, and Node-only kit drawings of S14 and S59. Charcoal, grayscale and the 2x captures had not landed; I add a pass on them below as they land.
 - 17:01 UTC. Newsprint 1x at 1440 px read for the selection guide, the palette plate, S96 and its failure, 14.143, 14.144 and 15.19 to 15.25.
 - 16:51 UTC. Started. Read the brief whole, my role file, and the round 4 and round 5 design director notes.
