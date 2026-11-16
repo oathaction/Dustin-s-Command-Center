@@ -111,7 +111,9 @@ RULE_STEPS = [
 # (name, what happens, where the law sets it). The extras after Rules 11.10 and 11.11 print these rows as tables.
 # CD-S11 (wave 2): each state's document is named in full at its first row and in one short form after it: "Massachusetts
 # Constitution, Amendment Article XLVIII, The Initiative, II, Section 3, as replaced by Amendment Article LXXIV, Section 1",
-# then "Massachusetts, Amendment Article ..." (the sources file's rows 1 to 6, read November 14, 2026)
+# then "Massachusetts, Amendment Article ..." (the sources file's rows 1 to 6, read November 14, 2026). Steps 2 and 3 cite
+# the replacement text itself, Amendment Article LXXIV, Sections 1 and 4, since XLVIII's Section 3 is struck out (the
+# research lead's F12, read November 16, 2026)
 BALLOT_STEPS = [
     ('Filed', 'The sponsors file the measure’s full text with the attorney general.',
      'Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3, as replaced by Amendment '
@@ -120,9 +122,9 @@ BALLOT_STEPS = [
     ('Title and summary', 'The attorney general writes the title and summary that petitions and ballots carry, and where '
                           'the law asks, first certifies that the measure is in proper form and on a subject the '
                           'initiative may cover.',
-     'Massachusetts, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014'),
+     'Massachusetts, Amendment Article LXXIV, Sections 1 and 4; California Elections Code 9004 and 9014'),
     ('Signatures', 'The sponsors gather signatures, and election officials count and check them.',
-     'Massachusetts, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031'),
+     'Massachusetts, Amendment Article LXXIV, Section 1; California Elections Code 9030 and 9031'),
     ('Legislature', 'The Legislature votes on the measure first, where the state’s initiative is indirect. A measure '
                     'that goes straight to the ballot keeps this step under a slash.',
      'Massachusetts, Amendment Article LXXXI, Section 2; Ohio Constitution, Article II, Section 1b; Michigan '
