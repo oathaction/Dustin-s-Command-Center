@@ -1,6 +1,6 @@
 {
  "per_plate": null,
  "plates_to_come": 0,
- "built": "2026-11-14T05:15:40",
+ "built": "2026-11-16T17:08:34",
  "about": "Written by guide_build.py from its weight report; oa-chart.mjs build prints per_plate on each spec's weight line. Never edit by hand."
 }

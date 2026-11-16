@@ -353,7 +353,9 @@ def rule_14_143():
         lab = (diagram_label(grades.pop(), f"{GRADE[link(lp['links'][0])['evidence']][1]}, the grade of all "
                                            f"{words_n(len(lp['links']))} steps")
                if len(grades) == 1 else C15.label_for(lp["links"], "the grade of the loop’s least certain step"))
-        cols.append(f'<div>{C15.hed("Loop", lid, curl(lp["title"]))}{lab}'
+        # the grade label and its gloss above the loop's chip and title, as Rule 13.1 sets and chapter 15's plates print
+        # them, Rule 15.15's two loops included (DF-6)
+        cols.append(f'<div>{lab}{C15.hed("Loop", lid, curl(lp["title"]))}'
                     f'<div class="dw dg{" b4w" if lid == "B4" else ""}">{svgs[lid]}</div></div>')
     # side by side, Loop B4's drawing drops so its filled pill for Variable C3 shares one line with Loop R10's (the design
     # director's DD-C2): the two pills' centers read from the drawings themselves
@@ -605,7 +607,9 @@ def off_note(rid, off, loop_vars):
 def chooser_css(rids):
     """The choice through CSS from the checked radio (the accessibility lead's 3.3, CE-2), so it works with scripts off:
     the chosen reform's targets on the drawing turn red, as Rule 15.20's plate draws them, and its card takes the selected
-    bar. Every card stays in view: this plate compares all three."""
+    bar. Every card stays in view: this plate compares all three. A target of a reform not chosen goes back to the loop's
+    own weight, its 6 px ink case included: chapter 15's red-target rule (.crt .ak-case), which the first reform's targets
+    carry in the markup, would otherwise keep Connection L39 drawn heavy with Reform R-38 chosen (NB-M3)."""
     INK = C15.INK
     out = []
     for rid in rids:
@@ -613,6 +617,7 @@ def chooser_css(rids):
         no, yes = f'{has} [data-oa-for]:not([data-oa-for~="{rid}"])', f'{has} [data-oa-for~="{rid}"]'
         out.append(f'{no} .hi,{yes} .lo{{display:none}}{no} .lo,{yes} .hi{{display:inline}}'
                    f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}{no} .hd{{fill:{INK}}}'
+                   f'{no} .ak-case{{stroke:none}}'
                    f'{yes} .ak-mark{{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}}'
                    f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}{yes} .hd{{fill:var(--oa-color-data-emphasis-red)}}'
                    f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}'
@@ -674,7 +679,8 @@ def rule_14_144():
                         else f'Neither target of {chip("Reform", rid)} sits on the drawing, so nothing on it turns red.')
                      + '</p>' for rid in RIDS)
     need({link(x)["evidence"] for x in lp["links"]} == {"well-supported"}, "Loop R8's grades changed")
-    left = (C15.hed("Loop", "R8", curl(lp["title"])) + diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both steps")
+    # the grade label above the loop's chip and title (Rule 13.1, DF-6)
+    left = (diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both steps") + C15.hed("Loop", "R8", curl(lp["title"]))
             + f'<div class="dw dg mn8">{svg}</div>{prints}')
     # on paper, one copy of the drawing for each reform, its targets on the loop drawn heavy (red prints as gray, so the
     # weight carries it), under a line that names them (the accessibility lead's 3.4); hidden on screen
@@ -725,7 +731,8 @@ def rule_14_144():
             + ("".join(f"<dd>{target_words(t)}</dd>" for t in mine) or "<dd>None</dd>") + "</div>"
             f'<div><dt>Targets outside this loop</dt>' + ("".join(offs) + (f'<dd class="on8">{off_note(rid, off, set(codes))}</dd>' if off else "")
                                                        or "<dd>None</dd>") + "</div>"
-            f'<div><dt>Band, the kind of change</dt><dd><b>{e(r["band"].capitalize())}</b></dd></div>'
+            # the band in the atlas's word and its definition, quoted, as Rules 15.11 and 15.20 print it (CE-S14)
+            f'<div><dt>Band, the kind of change</dt><dd><b>{e(r["band"].capitalize())}</b>: “{ce(C15.BANDS[r["band"]])}”</dd></div>'
             + effs +
             f'<div><dt>Evidence for the problem</dt><dd>{grade_word(r["problem_evidence"]["grade"], gloss=False)}</dd></div>'
             f'<div><dt>Evidence for the remedy</dt><dd>{grade_word(rem["grade"], gloss=False)}</dd></div>'
@@ -885,7 +892,7 @@ def rule_14_142():
         "evidence_label": "Finding",
         "grade_line": s14["grade_line"],
         "title": title,
-        "reading_guide": ("Each column is one month’s change in jobs, and the two in the strongest ink are the drops past the margin. "
+        "reading_guide": ("Each column is one month’s change in jobs, and the two in the text’s ink are the drops past the margin. "
                           "The line is the three-month average. The shaded band is the survey’s margin of error for one "
                           "month’s change. Hatched columns are preliminary."),
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
@@ -911,7 +918,7 @@ def rule_14_142():
         "illustrative": False,
         "alt": (f"Columns show the monthly change in payroll jobs from {f1['window_words']} over a shaded band from minus to plus "
                 "122,000 jobs, the survey’s margin of error for one month’s change. Seven columns fall below zero, all "
-                f"in 2025 and 2026. Two are drawn in the strongest ink and labeled, {mw(past[0])} at minus 140,000 and {mw(past[1])} at minus 156,000, "
+                f"in 2025 and 2026. Two are drawn in the text’s ink and labeled, {mw(past[0])} at minus 140,000 and {mw(past[1])} at minus 156,000, "
                 "and reach past the band; the other five end inside it. A line shows the three-month average, which stood at "
                 f"51,000 in {mw(lat['month'])}, a preliminary figure."),
         # its own caption, so a reader who lists the page's tables tells S96's from S14's (the accessibility lead's 4.4)
@@ -922,7 +929,7 @@ def rule_14_142():
                            "format": "margin", "words": {"below": "Drop past the margin", "above": "Gain past the margin",
                                                          "within": "Within the margin"}}]),
         "chart_notes": [
-            ("Key: each gray column is the jobs added or lost in the month, and the two in the strongest ink are the drops past "
+            ("Key: each gray column is the jobs added or lost in the month, and the two in the text’s ink are the drops past "
              "the margin; hatched columns are preliminary, August and September 2026."),
             "The band: the survey’s margin of error for one month’s change, plus or minus 122,000 jobs.",
             "Three-month average: the line, dashed where it includes a preliminary month.",
@@ -934,8 +941,9 @@ def rule_14_142():
         "phone_line": True,
         # checked at the rule plates' columns and swept from 224 px, since S96 sits in a rule's plate (request 4)
         "plate": "rule",
-        # in words that hold on both grounds: the subject ink is Charcoal on Newsprint and Newsprint on Charcoal
-        "phone_notes": [f"The two columns in the strongest ink: {mw(past[0])}, {k(pv[past[0]])} jobs, and {mw(past[1])}, "
+        # in words that hold on both grounds: the subject ink is Charcoal on Newsprint and Newsprint on Charcoal, the text's
+        # ink on each, the ink word the approved chart notes use (S17, S47; DR-262, D3-914; DF-4)
+        "phone_notes": [f"The two columns in the text’s ink: {mw(past[0])}, {k(pv[past[0]])} jobs, and {mw(past[1])}, "
                         f"{k(pv[past[1]])} jobs."],
         "artboard": "reading",
         "domain": s14["domain"],
@@ -986,22 +994,31 @@ def rule_14_142():
             "Written by work/build/scripts/phase-3/phase3_ch14_complex_build.py; change a word there, never here.",
         ],
     }
-    # the failure: the same columns with no band, all seven drops labeled alike as job losses (ruling c), one fault
+    # the failure: the same columns with no band, all seven drops labeled alike as job losses (ruling c), one fault.
+    # Everything else is the correct plate's (NB-S2): its measure line less the margin, its preliminary, average,
+    # seasonal adjustment and window notes in its order, no on-plot latest label (DD-E3), and the sidecar's plain source
+    # line, since a source line that names the margin would print what the drawing leaves out (ST-M1)
     losses = f1["losses"]
     fspec = {k_: v for k_, v in spec.items() if k_ not in ("notes_internal", "phone_view", "reading_guide", "phone_notes",
                                                             "phone_line", "plate")}
     fspec["scale"] = s14["scale"]      # the failure keeps S14's scale and placement; it needs none of S96's new keys
+    # S14's own preliminary note (S96's adds a sentence about the band, which the failure does not draw), then the notes
+    # S96 takes from S14 whole, in S96's order
+    keep = [s14["notes"][2]] + [n for n in spec["notes"] if n in s14["notes"]]
+    need(keep == [s14["notes"][i] for i in (2, 0, 1, 4)], "S96's notes from S14 changed; the failure keeps the same ones")
     fspec.update({
         "id": "s-14-142-failure",
         "table": dict(s14["table"], caption=f"The same {f1['n']} months, with the three-month average, as this failure case draws them"),
         "title": "The economy lost jobs in seven months of 2025 and 2026.",
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
-                         "with the three-month average."),
-        "notes": [s14["notes"][2]],
+                         "the span both jobs charts share, with the three-month average."),
+        "notes": keep,
+        "source_line": f1["source_line_plain"],
         "chart_notes": [],
-        "alt": ("The same columns with no band and the seven drops drawn alike in the strongest ink, under a title that "
+        "alt": ("The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that "
                 "counts seven months of lost jobs."),
-        "labels": dict(s14["labels"], **{"named": [{"x": m, "text": []} for m in losses]}),
+        "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ != "latest"},
+                       **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
         "annotations": [],
         "show": ["evidence", "title", "measure", "chart", "notes", "source"],
@@ -1108,6 +1125,10 @@ def check(entries, files, specs):
         ok("—" not in s and "‑" not in s, f"Rule {rid}: an em dash or U+2011 in the entry")
         ok(len(en["title"].split()) <= 15, f"Rule {rid}: title of {len(en['title'].split())} words")
         ok(en["failure"]["caption"].startswith(f"<strong>Fails Rule {rid}.</strong>"), f"Rule {rid}: the failure caption")
+    # DF-6: each loop's grade label sits above its chip and title (Rule 13.1), as on every chapter 15 plate
+    for sid, want in (("s-14-143-correct", ["evr", "hed"] * 2), ("s-14-144-correct", ["evr", "hed"])):
+        seen = re.findall(r'class="(evr|hed)"', files[sid].split("</style>", 1)[1])
+        ok(seen == want, f"{sid}: the grade label and the loop's title stand in the order {seen}, not label first (DF-6)")
     # 14.143: the stepper's markup as CE-1 lists it
     t = files["s-14-143-correct"].split("</style>", 1)[1]
     ok(t.count("data-oa-stepper") == 1 and t.count('class="oa-stepper-step"') == 7 and t.count("data-oa-part=") == 7,
@@ -1141,8 +1162,18 @@ def check(entries, files, specs):
     ok(rt.count("Not checked") == 8 and rt.count(f"Checked {SNAP}") == 1, "14.144: eight routes not checked, one dated")
     live_t = t.split('<div class="pcs8">')[0]
     ok(len(re.findall(r'data-red="working"', live_t)) == 2, "14.144: two marks under data-red on the live drawing (L39 and A5)")
+    # NB-M3: in every chooser state, a target of a reform not chosen loses every part of the red target, its ink case too,
+    # so no mark stays heavier than the loop for a reform that does not act on it
+    for rid in RIDS:
+        no = f'.p:has([value="{rid}"]:checked) [data-oa-for]:not([data-oa-for~="{rid}"])'
+        for part in (" .ak-mark{stroke:", " .pl{stroke:", " .hd{fill:", " .ak-case{stroke:none}"):
+            ok(no + part in files["s-14-144-correct"], f"14.144: with {rid} chosen, an unchosen target keeps its{part.split('{')[0]}")
     ok(len(re.findall(r'data-red="working"', t)) == 5, "14.144: the print copies mark L39 for R-06, L39 and A5 for R-30, none for R-38")
     ok("no expected effect" in rt, "14.144: a zero says what it means")
+    # CE-S14: each card's band carries the atlas's definition after its word, as Rule 15.20's panel does
+    for rid in RIDS:
+        ok(f'<b>{e(REFORM[rid]["band"].capitalize())}</b>: “{ce(C15.BANDS[REFORM[rid]["band"]])}”' in t,
+           f"14.144: Reform {rid}'s band prints as a bare word (CE-S14)")
     ok(re.search(r"<b class=\"cd\">[^<]+</b>,&#32;<span class=\"cw\">", t) is not None and "</b><span class=\"cw\">" not in t,
        "14.144: a code runs into its words")
     ok("grid-row:span 11;grid-template-rows:subgrid" in files["s-14-144-correct"], "14.144: the cards' rows would stack")
@@ -1161,6 +1192,23 @@ def check(entries, files, specs):
     for want in ("January 2022 to September 2026", "122,000", "October 2025", "February 2026", "51,000", "preliminary", "seven"):
         ok(want in allw, f"S96: {want!r} does not print")
     ok("—" not in json.dumps(specs, ensure_ascii=False), "S96: an em dash")
+    # DF-4: the approved ink word, "the text's ink", in every place S96 and its failure name the dark columns
+    fs = specs["failure"]
+    both = json.dumps([s96, fs], ensure_ascii=False)
+    ok("strongest ink" not in both, "S96: “strongest ink” where the approved chart notes say “the text’s ink” (DF-4)")
+    for where, words in (("reading guide", s96["reading_guide"]), ("alt", s96["alt"]), ("key", s96["chart_notes"][0]),
+                         ("phone note", s96["phone_notes"][0]), ("failure's alt", fs["alt"])):
+        ok("the text’s ink" in words, f"S96: its {where} does not name the text’s ink (DF-4)")
+    # NB-S2: the failure differs from S96 by the band alone: S96's notes from S14 in S96's order, its measure line less the
+    # margin, no on-plot latest label, and a source line with no margin sentence (ST-M1)
+    s14n = json.loads((SPECS / "s14.json").read_text())["notes"]
+    ok(fs["notes"] == [s14n[2]] + [n for n in s96["notes"] if n in s14n],
+       "S96's failure: its notes are not S96's preliminary, average, seasonal adjustment and window notes (NB-S2)")
+    ok(s96["measure_line"].startswith(fs["measure_line"].rsplit(", with", 1)[0]) and fs["measure_line"].endswith(", with the three-month average."),
+       "S96's failure: its measure line is not S96's less the margin (NB-S2)")
+    ok("latest" not in fs["labels"] and "latest" not in s96["labels"], "S96's failure: an on-plot latest label S96 does not carry")
+    ok("margin" not in fs["source_line"] and fs["source_line"] == FACTS["example_1"]["source_line_plain"],
+       "S96's failure: its source line names the margin the drawing leaves out (ST-M1)")
     # Rule 01.12's log (ruling (g)): 14.142 once, from S96 as the chapter's build places it; 14.143 twice, a loop each;
     # 14.144 once, Loop R8 under Housing, health care and getting ahead
     ok(not entries["14.142"].get("examples") and s96.get("domain") == "D07",
@@ -1177,7 +1225,7 @@ def outputs():
     e42, s96, fspec, f42 = rule_14_142()
     entries = {"14.142": e42, "14.143": e43, "14.144": e44}
     files = {**f42, **f43, **f44}
-    specs = {"s96": s96}
+    specs = {"s96": s96, "failure": fspec}
     out = {}
     for rid, en in entries.items():
         out[ENTRIES / f"14-{rid.split('.')[1]}.json"] = json.dumps(en, indent=1, ensure_ascii=False) + "\n"

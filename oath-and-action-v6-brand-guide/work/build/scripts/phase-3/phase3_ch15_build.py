@@ -763,25 +763,29 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
     return "".join(out), h
 
 
+FEWER = {"C1", "C5", "D3", "E1", "X2", "X5"}   # CE-S23: titles whose head noun counts ("Policy advantages ...",
+#                                                "Incumbents defeated ...") take "fewer" where the others take "less"
+
+
 def read_aloud(codes, lids, closes=True):
     """More or less at each variable, carrying the signs along the chain from a rise at the first (System 1's
     read_aloud, from the atlas's signs)."""
     up, parts = True, []
 
-    def more(name, up_):
+    def more(code, up_):
         # a title that asks how often ("How often the primary decides the winner") reads "the primary decides the winner
-        # more often"; every other title takes more or less before it
+        # more often"; every other title takes more, less or fewer before it
+        name = lc(short(code))
         if name.startswith("how often "):
             return name[len("how often "):] + (" more often" if up_ else " less often")
-        return ("more " if up_ else "less ") + name
+        return ("more " if up_ else "fewer " if code in FEWER else "less ") + name
     for i, code in enumerate(codes):
-        name = lc(short(code))
-        parts.append(more(name, up))
+        parts.append(more(code, up))
         if i < len(lids) and link(lids[i])["polarity"] == "-":
             up = not up
     line = ", ".join(parts)
     if closes:
-        line += ", and back to " + more(lc(short(codes[0])), up)
+        line += ", and back to " + more(codes[0], up)
     return line[0].upper() + line[1:] + "."
 
 
@@ -2640,8 +2644,9 @@ def rule_15_16(book):
         "title": "Show a reform’s four effects apart, with each route’s check date.",
         "rule": [
             f"Reform R-01, “{r['title']}”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 "
-            "and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the "
-            "atlas’s code, its words and the pips of Rule 13.5, and no row that adds them. Its routes follow, each with who "
+            "and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, an outcome "
+            "family being one of the four groups of results the atlas judges reforms by. Give each row the atlas’s code, its "
+            "words and the pips of Rule 13.5, and print no row that adds them. Its routes follow, each with who "
             "acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
             f"As of {SNAP}, the atlas codes its effect on the quality of democracy {EFFECT_WORDS['+M']}, on government "
             f"efficacy {EFFECT_WORDS['+S']}, and on the other two families {EFFECT_WORDS['0']}. It checked the state ballot "
@@ -3379,8 +3384,8 @@ def rule_15_20(book):
         ],
         "tokens": ["oa.color.data.emphasis.red"],
         "why": {"text": ["A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One "
-                         "choice at a time keeps each reform’s red its own, and the effects stay the atlas’s four ordinal "
-                         "codes. The assumptions sit one step away, where a reader who asks finds "
+                         "choice at a time keeps each reform’s red its own, and the effects stay the atlas’s own codes, one "
+                         "to each outcome family. The assumptions sit one step away, where a reader who asks finds "
                          "them whole."],
                 "basis": "Our systems atlas, Reforms R-03 and R-04 on Loop R4a; the choice lessons of En-ROADS, as Rules 18.3 and 18.8 set them"},
         "correct": {"specimen": "s-15-20-correct",
@@ -3412,6 +3417,10 @@ def rule_15_21(book):
          "connection L55 changed")
     num = [k for k, v in l.items() if isinstance(v, (int, float)) and not isinstance(v, bool)]
     need(not num, f"connection L55 now holds a number: {num}")
+    # CE-S12: the rule counts the atlas's effect codes, held to its glossary's list ("+L large positive, ... ? direction
+    # uncertain"), seven as of the snapshot
+    g_codes = [x.split(" ")[0] for x in GLOSS["Effect code"].split(": ", 1)[1].rstrip(".").split(", ")]
+    need(sorted(g_codes) == sorted(EFFECT_WORDS) and len(g_codes) == 7, f"the atlas's effect codes changed: {g_codes}")
     q = l["qualification"]
     need(q.endswith("relies on seats-votes analysis with no single estimate in this model."), "L55's qualification changed")
     limits = V7["methods"]["limits"]
@@ -3456,15 +3465,16 @@ def rule_15_21(book):
         "title": "Give every control the model’s own steps, and no slider for a strength.",
         "rule": [
             "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, "
-            "the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the "
-            "stepper, the radio group or the disclosure.",
+            f"the three delay classes and the {words_n(len(EFFECT_WORDS))} effect codes, ranks of direction and rough size "
+            "with no measured amount. Each is a set of named steps, so build it from the stepper, the radio group or the "
+            "disclosure.",
             "Leave totals, odds, amounts and strengths out of every control, and with them sliders, dials and fields for a "
             "number, because our systems atlas leaves the size of any effect to the studies behind each connection and says "
             f"that “{lq}” A slider set between 0 and 100 would hand a reader a figure no study supports.",
         ],
         "tokens": [TOKEN_LINE],
         "why": {"text": ["A slider promises that any value along it means something and that moving it changes the outcome "
-                         "by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so "
+                         "by that much. The atlas grades its connections in words and codes its effects in ranked steps, so "
                          "the honest control offers those steps alone."],
                 "basis": "Our systems atlas, Connection L55 and the model’s limits"},
         "correct": {"specimen": "s-15-21-correct",
@@ -3474,9 +3484,9 @@ def rule_15_21(book):
                     "caption": "<strong>Fails Rule 15.21.</strong> A slider sets the connection’s strength at 70 of 100, a "
                                "figure our systems atlas does not hold. A line under the slider says the picture made the value up."},
         "specs": [
-            {"label": "Steps a control may offer", "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"},
+            {"label": "Steps a control may offer", "value": "Loops and their steps, reforms, grade words, delay classes and effect codes"},
             {"label": "Never offered", "value": "A total, odds, an amount or a strength, whether by slider, dial or number field"},
-            {"label": "A picture of a control", "value": "Drawn, not built, with its alt saying it is a picture"},
+            {"label": "A picture of a control", "value": "A drawing of the control, with its alt saying it is a picture"},
         ],
         "related": ["13", "18"],
         "builders": ["Stop the build if a plate or a control prints a number the model’s record does not hold."],
@@ -3618,11 +3628,13 @@ class Stage:
         if self.words:
             rows.append(f'<p class="sy">{hold(e(self.words))}</p>')
         if self.stop:
-            rows.append(f'<p class="sq"><span class="sqm" aria-hidden="true"></span>{hold(e(self.stop))}</p>')
+            # CE-S6, DF-11: the words in one span, so the flex line holds two items, the mark and the words, and a
+            # held phrase (a no-wrap span) never becomes a column of its own
+            rows.append(f'<p class="sq"><span class="sqm" aria-hidden="true"></span><span>{hold(e(self.stop))}</span></p>')
         if self.then:          # DD-S3: a path that rejoins the line says where, after any words on where it stops
-            rows.append(f'<p class="sq bq">{hold(e(self.then))}</p>')
+            rows.append(f'<p class="bq">{hold(e(self.then))}</p>')
         if self.back:
-            rows.append(f'<p class="sq bq">{hold(e(self.back))}</p>')
+            rows.append(f'<p class="bq">{hold(e(self.back))}</p>')
         if sources:
             if self.cites:
                 cs = "; ".join(f"{e(c)}, read {C13.words_date(r['Checked'])}" for c, r in self.cites)
@@ -3786,7 +3798,9 @@ def fs_stages():
     president = [
         Stage(8, "st", "Enrolled and presented", "The final text is printed and sent to the President, who has 10 days, "
               "Sundays excepted, to act.", [(h, r["pres"])]),
-        Stage(9, "st", "Signed", "The President signs it, and it becomes law.", [(c7, r["veto"])]),
+        Stage(9, "br", "Signed", "The President signs it, and it becomes law.", [(c7, r["veto"])],
+              rel="If the President signs it", then="Then stage 13."),   # CE-M4: a law passed over a veto, or with no
+        #                                                                  signature, never passes stage 9
         Stage(10, "br", "Veto and override", "The President returns it with objections. Two-thirds of each chamber can still "
               "make it law.", [(c7, r["veto"])], rel="If the President vetoes it",
               stop="Short of two-thirds in either chamber, the bill dies.", then="With two-thirds in each, then stage 13."),
@@ -3806,7 +3820,7 @@ def fs_stages():
               "the final rule at least 30 days before it takes effect, unless the law makes an exception.",
               [("5 U.S.C. 553", r["rule"])]),
         Stage(16, "af", "Reported to Congress", "A major rule waits at least 60 days. A joint resolution of disapproval, "
-              "passed and signed like a bill, ends it.", [("5 U.S.C. 801 and 802", r["cra"])],
+              "passed and signed like a bill, ends it.", [("5 U.S.C. 801(a)", r["cra"]), ("5 U.S.C. 801(b)", r["dis"])],
               stop="The rule ends, and may not return in substantially the same form."),
         Stage(17, "af", "Taken to court", "A person harmed can sue in a district court and appeal. A court can hold an "
               "agency’s rule unlawful and set it aside.",
@@ -3835,7 +3849,7 @@ def rule_15_22(book):
     stages = [s for _, g in groups for s in g]
     need([s.n for s in stages] == list(range(1, len(stages) + 1)), "Route FS's stages are not numbered in reading order")
     spine = [s.n for s in stages if s.kind in ("st", "end")]
-    need(spine == [1, 2, 6, 7, 8, 9, 13], f"the spine is not the stages every enacted bill passes (ruling (e)): {spine}")
+    need(spine == [1, 2, 6, 7, 8, 13], f"the spine is not the stages every enacted bill passes (ruling (e), CE-M4): {spine}")
     need(all(s.cites for s in stages), "a stage of Route FS prints no source")
     head = hed("Route", "FS", fs["name"])
     rec = (f'<p class="rec">Our systems atlas, as of {SNAP}: {e(fs["instrument"])}. Who acts: {e(fs["who"])}.</p>')
@@ -3849,8 +3863,10 @@ def rule_15_22(book):
     key = ('<p class="k">What the marks mean</p><ul class="wk">'
            + "".join(f'<li><span class="km {c}" aria-hidden="true"></span><span>{e(w)}</span></li>' for c, w in marks)
            + "</ul>")
+    # DF-10: the atlas's snapshot date closes the atlas's part, and the stages' sources follow it, as Rule 15.24 orders them
     body = (head + rec + lab + key + wf_html(groups)
-            + src("route FS, its instrument and who acts; each stage’s source as named beside it, with the date we read it"))
+            + src("route FS, its instrument and who acts").replace("United States.</p>", "United States. Each stage’s "
+                                                                    "source as named beside it, with the date we read it.</p>"))
     book.add("s-15-22-correct", body, rule="15.22", readable=True, wide=True,
              alt=(f"Route FS, Federal statute, from our systems atlas as of {SNAP}: {fs['instrument']}. Who acts: {fs['who']}. "
                   f"Drawn as a workflow of {len(stages)} numbered stages in four groups, In Congress, At the President, Once it "
@@ -3981,9 +3997,7 @@ ROUTE_SET = {
                    ("5 On the ballot", "certificate of qualification")])],
         note=None),
     "FS": dict(
-        stages=["Introduced and sent to committee", "Passed by each chamber, by the usual rules, suspension, cloture or "
-                "reconciliation", "One text", "Presented to the President", "Signed, vetoed and overridden, or pocket vetoed",
-                "Public law", "Funded, put to work by rules, reviewed by Congress and the courts", "Ended by a sunset, a court or a repeal"],
+        stages=None,           # DF-9: Rule 15.22's stage names, read from fs_stages() by fs_card_stages()
         sources=[("the U.S. Constitution, Article I", [("Signature, veto and override", "two thirds of that House"),
                                                        ("Appropriations", "Appropriations made by Law")]),
                  ("House Rule XV and the House’s and Senate’s own pages", [("Introduction and committee", "sponsors a bill"),
@@ -3992,6 +4006,7 @@ ROUTE_SET = {
                  ("2 U.S.C. 641 and 683, and 5 U.S.C. 553, 706 and 801", [("Senate: reconciliation", "20 hours"),
                                                                           ("Funding: rescission proposals", "45-day period"),
                                                                           ("Agency rulemaking", "not less than 30 days"),
+                                                                          ("FA", "Litigation", "hold unlawful and set aside"),
                                                                           ("Congressional review of a rule", "60 days after")])],
         note=("Rule 15.22 draws all its stages, each with its source.", None, None)),
     "FR": dict(
@@ -4013,8 +4028,11 @@ ROUTE_SET = {
         sources=[("Executive Order 12866 and 44 U.S.C. 1505", [("Review of a draft rule at the White House", "90 calendar days"),
                                                                ("Publication", "Presidential proclamations and Executive orders")]),
                  ("5 U.S.C. 551, 553, 706, 801 and 802", [("What counts as a rule", "agency statement"),
+                                                          ("Proposed rule, comment and final rule", "not less than 30 days"),
                                                           ("Guidance with no comment period", "interpretative rules"),
+                                                          ("Congressional Review Act: report and waiting period", "60 days"),
                                                           ("Congressional Review Act: disapproval", "joint resolution of disapproval"),
+                                                          ("Congressional Review Act: the fast track", "introduced within 60 days"),
                                                           ("Litigation", "hold unlawful and set aside")]),
                  ("Executive Orders 13992 and 14148", [("Revocation by a later administration", "revoked 67 orders")])],
         note=("What one order does, another can undo.", None, None)),
@@ -4110,6 +4128,26 @@ def entry_date(x):
     return f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked"
 
 
+def fs_card_stages():
+    """DF-9: Route FS's card names its stages in Rule 15.22's own words, read from fs_stages(), folded where the card
+    joins stages a bill meets in one place: the floor paths, the outcomes at the President, what follows the law and what
+    ends it. A renamed stage reaches the card on the next build."""
+    groups, _, _ = fs_stages()
+    nm = {s.n: s.name for _, g in groups for s in g}
+    low = lambda n: nm[n][0].lower() + nm[n][1:]
+    up = lambda t: t[0].upper() + t[1:]
+
+    def join(ns, last):
+        xs = [low(n) for n in ns]
+        comma = "," if any(" or " in x or " and " in x for x in xs[-1:]) else ""
+        return ", ".join(xs[:-1]) + f"{comma} {last} " + xs[-1]
+    need([nm[n] for n in (2, 6)] == ["Passed by the first chamber", "Passed by the second chamber"],
+         "Route FS's floor stages were renamed; reread the card's folds")
+    return [nm[1], f"{nm[2]}, under the usual rules or by {join([3, 4, 5], 'or')}", f"{nm[6]}, by the same paths",
+            nm[7], nm[8], up(join([9, 10, 11, 12], "or")), nm[13], up(join([14, 15, 16, 17], "and")),
+            up(join([18, 19, 20], "or"))]
+
+
 def route_card(code):
     """One route as a card of live text: the atlas's name, instrument and who acts, as of the snapshot; its stages and the
     official sources behind them, with the date our research read them; what it depends on, in the atlas's words; and
@@ -4117,8 +4155,8 @@ def route_card(code):
     rt, d = ROUTE[code], ROUTE_SET[code]
     rows, cites = [], []
     for cite, keys in d["sources"]:
-        for first, ph in keys:
-            rows.append(wf_first(code, first, ph))
+        for k in keys:          # (first cell, phrase) in the route's own table, or (route, first cell, phrase) in another's
+            rows.append(wf_first(*(k if len(k) == 3 else (code, *k))))
         cites.append(cite)
     srcs = "; ".join(cites)
     note = ""
@@ -4129,7 +4167,7 @@ def route_card(code):
         note = f'<p class="rn">{e(words)}</p>'
     ents = route_entries(code)
     n_d = sum(1 for _, x in ents if x["checked"])
-    stg = "".join(f"<li>{e(s)}</li>" for s in d["stages"])
+    stg = "".join(f"<li>{e(s)}</li>" for s in (fs_card_stages() if code == "FS" else d["stages"]))
     lst = "".join(f'<li>{chip("Reform", rid)} <span class="et">“{e(REFORM[rid]["title"])}”</span>'
                   f'<span class="ef2">{chip("Route", code)} <b>{e(x["feasibility"].capitalize())}</b> feasibility. '
                   f'{e(entry_date(x))}</span></li>' for rid, x in ents)
@@ -4140,9 +4178,10 @@ def route_card(code):
             f'<div class="oa-disclosure-body"><p class="dep"><b>Depends on</b>, in the atlas’s words: {quote_ids(rt["depends"])}</p>'
             f'<p class="k">{"Its entry" if len(ents) == 1 else "Its entries"}, as of {SNAP}</p><ul class="ent">{lst}</ul></div>'
             f'</details></div></div>')
+    n_w = words_n(len(ents)).capitalize()     # DF-8: one to nine in words (H06)
     cnt = ("One reform entry names this route, and the atlas has not checked it." if len(ents) == 1 else
-           f"{len(ents)} reform entries name this route; the atlas checked {words_n(n_d)} of them, on {SNAP}." if n_d else
-           f"{len(ents)} reform entries name this route, and the atlas checked none of them.")
+           f"{n_w} reform entries name this route; the atlas checked {words_n(n_d)} of them, on {SNAP}." if n_d else
+           f"{n_w} reform entries name this route, and the atlas checked none of them.")
     return (f'<li class="rc"><p class="hed">{chip("Route", code)}<span>“{e(rt["name"])}”</span></p>'
             f'<p class="ri">{e(rt["instrument"])}.</p><p class="rw"><b>Who acts</b> {e(rt["who"])}</p>'
             f'<p class="k">Its stages</p><ol class="sl">{stg}</ol>{note}'
@@ -4205,8 +4244,9 @@ def rule_15_24(book):
               f'feasibility scale and every reform route entry, snapshot of {SNAP}, United States. Each route’s official '
               f'sources as named on its card, with the dates we read them. Of the atlas’s {total} route entries, '
               f'{dated} carry a check date.</p>')
-    alt_cards = " ".join(f"Route {c}, {ROUTE[c]['name']}: {ROUTE[c]['instrument']}; {n} entries, {d_} checked." for c, (_, n, d_)
-                         in zip(ROUTE_CODES, cards))
+    alt_cards = " ".join(f"Route {c}, {ROUTE[c]['name']}: {ROUTE[c]['instrument']}; {words_n(n)} "
+                         f"{'entry' if n == 1 else 'entries'}, {words_n(d_) if d_ else 'none'} checked."   # DF-8
+                         for c, (_, n, d_) in zip(ROUTE_CODES, cards))
     book.add("s-15-24-correct", body, rule="15.24", readable=True, wide=True, interactive=True,
              alt=(f"The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of {SNAP}. "
                   f"First, one reform read through its workflow: Reform R-28, {r28['title']}, on Route FS by reconciliation, "
@@ -4313,6 +4353,11 @@ def n_by(field, values):
     return Counter(x[field] for x in values)
 
 
+V71_READ = "October 21, 2026"   # ST-S9: the date our list of fixes for the atlas read its drawing tool (items 24 to 26),
+#                                 work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md; the tool is not in this container
+RENDERER_ROWS = (11, 17, 47, 48, 52)   # the sidecar's rows that rest partly on the drawing tool
+
+
 def recon_words():
     """Each row's words: what the earlier page showed, what the model holds (read here, as of the snapshot), and what the
     guide does. Keys are the research file's row numbers, 1 to 57."""
@@ -4340,6 +4385,8 @@ def recon_words():
     ents = [x for r in REFORM.values() for x in r["routes"]]
     n_dated = sum(1 for x in ents if x["checked"])
     rq = {r["row"]: r for r in RECON}
+    need(f"Rows {', '.join(map(str, RENDERER_ROWS[:-1]))} and {RENDERER_ROWS[-1]} rest partly on V7’s renderer"
+         in RECON_META["qualification"], "the sidecar's rows that rest on the drawing tool changed (ST-S9)")
     mv42 = rq[42]["model_value"]
     m42 = re.findall(r"(D0\d): (\d+) live reforms, (\d+) with the rejected R-35", mv42)
     need([x[0] for x in m42] == ["D03", "D04"], "row 42's model value changed shape")
@@ -4460,8 +4507,8 @@ def recon_words():
              "A variable prints its kind in words and the atlas’s sentence on what a higher value means."),
         11: ("Hypotheses in long dashes, and every other grade in words alone.",
              "The methods: a hypothesis “is drawn as a dotted line”.",
-             "The atlas’s line code: solid for documented and well supported, dashes for plausible, dash and dot for "
-             "contested, dots for a hypothesis, each with its grade word."),
+             "The atlas’s line code, as our first audit read it in the atlas’s drawing tool: solid for documented and well "
+             "supported, dashes for plausible, dash and dot for contested, dots for a hypothesis, each with its grade word."),
         12: (f"{chip('Connection', 'T01')} drawn in long dashes as the step that closes {lq('R16')}.",
              f"{chip('Connection', 'T01')} “{e(link('T01')['name'])}” is a hypothesis, and {chip('Loop', 'R16')} closes through it.",
              "A hypothesized step draws in dots, with its grade word."),
@@ -4479,7 +4526,8 @@ def recon_words():
              f"{xg['well-supported']} well supported and {xg['plausible_contested']} contested; none is a hypothesis.",
              "Layers framed and named, and every connection across them keeps its own grade’s line."),
         17: ("A dash that means plausible on one set of pages and a hypothesis on the other two.",
-             "The methods draw a hypothesis as “a dotted line”, which leaves the dash to plausible, as the atlas’s drawings use it.",
+             "The methods draw a hypothesis as “a dotted line”, which leaves the dash to plausible; our first audit read the "
+             "atlas’s drawing tool that way.",
              "A dash means plausible, as the atlas draws it."),
         18: ("“Strong evidence” first and darkest, ahead of “On the record”.",
              f"The glossary lists the grades in one order: “{e(GLOSS['Confidence label'].split(': ')[1].split('.')[0])}”.",
@@ -4547,10 +4595,10 @@ def recon_words():
              f"Connections: {grades['well-supported']} well-supported and {grades['plausible_contested']} plausible_contested; "
              f"issues use well_supported; claims use contested.",
              "One display word per grade from one table, read from the grade field."),
-        47: ("The atlas’s drawing tool draws documented and well supported in one solid line.",
+        47: (f"By our reading of {V71_READ}, the atlas’s drawing tool draws documented and well supported in one solid line.",
              f"{grades['documented']} connections are documented and {grades['well-supported']} well supported.",
              "A documented connection’s grade word opens with the record square."),
-        48: ("The drawing tool dashes a conceptual loop’s steps close to the plausible dash.",
+        48: (f"By our reading of {V71_READ}, the atlas’s drawing tool dashes a conceptual loop’s steps close to the plausible dash.",
              f"{chip('Loop', 'B2')} and {chip('Loop', 'B3')} and {chip('Loop', 'R9')} are the three conceptual loops.",
              "A conceptual step draws as a hollow line between thin pills."),
         49: ("Most route entries carry no check date.",
@@ -4562,7 +4610,7 @@ def recon_words():
         51: (f"The name of {chip('Connection', 'L23')} says poor service raises the risk of losing, while its sign is minus.",
              f"{chip('Connection', 'L23')} “{e(link('L23')['name'])}”, minus; on its sign: “{e(link('L23')['sign_meaning'])}”",
              "The connection prints the atlas’s sentence on its sign beside its name."),
-        52: ("The drawing tool ends an authority connection in an arrowhead.",
+        52: (f"By our reading of {V71_READ}, the atlas’s drawing tool ends an authority connection in an arrowhead.",
              f"{words_n(len(auth)).capitalize()} authority connections, none signed.",
              "Authority ends in the open diamond."),
         53: ("Conceptual loops carry grades with no numbered steps behind them.",
@@ -4669,6 +4717,9 @@ def rule_15_25(book):
                "8 flags were read in context and set aside", "On November 13, 2026"):
         need(ph in q, f"the reconciliation sidecar no longer says {ph!r}")
     words = recon_words()
+    for n in RENDERER_ROWS:     # ST-S9: a row that rests on the drawing tool says whose reading it prints
+        need(any(w in " ".join(words[n]) for w in ("our first audit", "By our reading of")),
+             f"row {n} states the atlas's drawing tool as fact, with no word on whose reading it is")
     need(set(words) == {r["row"] for r in RECON}, "a reconciliation row has no words")
     head = (f'<p class="k">Earlier drawings of the atlas, reconciled to the model of {SNAP}</p>'
             '<ul class="cnt">'
@@ -4808,15 +4859,18 @@ def rule_15_23(book):
     need("President on a federal bill" in next(s["value"] for s in r1["specs"] if s["label"].replace("\xa0", " ") == "Step 6"),
          "Rule 11.1 no longer names the President at step 6 of a federal bill")
     s1 = s1[:5] + ["President"]
-    map1 = {1: [1], 2: [1], 3: [1], 4: [2, 3, 4, 5], 5: [6, 7], 6: [8, 9, 10, 11, 12, 13]}
+    map1 = {1: [1], 2: [1], 3: [1], 4: [2, 3, 4, 5], 5: [3, 4, 5, 6, 7], 6: [8, 9, 10, 11, 12, 13]}   # CE-M2: suspension,
+    #                                                       cloture and reconciliation serve either chamber (stages 3 to 5)
+    need(all("stage 6" in st[n].then for n in (3, 4, 5)), "a path of stages 3 to 5 no longer says it serves the second chamber")
     after1 = [n for n in st if n > 13]
     need({n for v in map1.values() for n in v} | set(after1) == set(st) and after1 == list(range(14, len(st) + 1)),
          "Rule 15.23's bill map leaves a stage of Route FS out")
     rows1 = [(i, s1[i - 1], fsk(*map1[i])) for i in range(1, 7)] + [("after", "After step 6", fsk(*after1))]
-    b1 = xw_block(f'{chip("Route", "FS")} beside the bill tracker of <a href="#rule-11-1">Rule 11.1</a>, a federal bill',
+    b1 = xw_block(f'{chip("Route", "FS")} “{e(ROUTE["FS"]["name"])}” beside the bill tracker of '
+                  f'<a href="#rule-11-1">Rule 11.1</a>, a federal bill',
                   f"Route FS’s {len(st)} stages, numbered as Rule 15.22 draws them, behind the tracker’s six steps",
-                  rows1, f"Stages from Rule 15.22, each with its own source there. A state bill follows Route SS the "
-                            f"same way, with the governor at step 6.")
+                  rows1, f"Stages from Rule 15.22, each with its own source there. A state bill follows Route SS, the "
+                            f"{lc(ROUTE['SS']['name'])}, the same way, with the governor at step 6.")
     # Rule 11.8, a records request, against the Freedom of Information Act's steps
     r8, s8 = tracker_steps("11.8")
     fo = {r["order"]: r for r in csv_rows("govinfo-foia-request-steps.csv")}
@@ -4835,7 +4889,7 @@ def rule_15_23(book):
              (6, s8[5], [fw("6", ", with at least 90 days to do so")]),
              ("after", "After step 6", [fw("7"), fw("8")])]
     b8 = xw_block(f'The Freedom of Information Act beside the records request tracker of <a href="#rule-11-8">Rule 11.8</a>',
-                  "A federal request’s steps in the law, behind the tracker’s six steps",
+                  "A federal request’s stages in the law, behind the tracker’s six steps",      # CE-M3, DF-1
                   rows8, f"Stages from 5 U.S.C. 552 and FOIA.gov, read {C13.words_date(fm['date_retrieved'])}.")
     # Rule 11.9, an agency rule, against the federal rule-making steps
     r9, s9 = tracker_steps("11.9")
@@ -4856,7 +4910,7 @@ def rule_15_23(book):
              (6, s9[5], [rw("6", "; a major rule takes effect at least 60 days later")]),
              ("after", "After step 6", [rw("7"), rw("8")])]
     b9 = xw_block(f'Federal rule making beside the agency rule tracker of <a href="#rule-11-9">Rule 11.9</a>',
-                  "The law’s steps for a federal rule, behind the tracker’s six steps",
+                  "The law’s stages for a federal rule, behind the tracker’s six steps",        # CE-M3, DF-1
                   rows9, f"Stages from 5 U.S.C. 551, 553, 701 to 706, 801 and 802 and Executive Order 12866, read "
                          f"{C13.words_date(rm['date_retrieved'])}.")
     # Rule 11.10, a ballot measure, against Route BI's rows
@@ -4878,7 +4932,8 @@ def rule_15_23(book):
     rows10 = [(1, s10[0], [bi[0][1]]), (2, s10[1], [bi[1][1]]), (3, s10[2], [bi[2][1]]),
               (4, s10[3], [bi[3][1], bi[4][1], bi[5][1]]), (5, s10[4], [bi[6][1], bi[7][1]]), (6, s10[5], [bi[8][1]]),
               ("after", "After step 6", [bi[9][1]])]
-    b10 = xw_block(f'{chip("Route", "BI")} beside the ballot measure tracker of <a href="#rule-11-10">Rule 11.10</a>',
+    b10 = xw_block(f'{chip("Route", "BI")} “{e(ROUTE["BI"]["name"])}” beside the ballot measure tracker of '
+                   f'<a href="#rule-11-10">Rule 11.10</a>',
                    "A citizen initiative’s stages in four states’ constitutions and California’s guide, behind the tracker’s "
                    "six steps", rows10,
                    f"Stages from the constitutions of Massachusetts, Ohio and Michigan and the California Secretary of "
@@ -4907,6 +4962,10 @@ def rule_15_23(book):
                    f"a ruling at step 4 or 6 that changes what other routes may do belongs to the court doctrine route.", rows11,
                    f"Stages from 28 U.S.C., the Federal Rules of Civil and Appellate Procedure and the Rules of the Supreme "
                    f"Court, read {dates_words(r_['Checked'] for r_, _ in cr)}.")
+    for blk in (b1, b8, b9, b10, b11):     # CE-M3, DF-1: a block's subhead calls the law's parts stages, the tracker's steps
+        sub = re.search(r'<p class="xs">(.*?)</p>', blk).group(1)
+        need(re.search(r"\bstages\b.*behind the tracker", sub) and not re.search(r"\bsteps\b.*behind the tracker", sub),
+             f"Rule 15.23's subhead mixes step and stage: {sub[:80]!r}")
     folded = sum(1 for v in map1.values() if v == [1])
     head = (f'<p class="k">Five trackers, each beside its workflow</p>'
             f'<p class="rec">Each row puts a tracker’s step beside the stages of the law behind it. A step can hold several '
@@ -4916,7 +4975,8 @@ def rule_15_23(book):
     book.add("s-15-23-correct", body, rule="15.23", readable=True, wide=True,
              alt=("Five of chapter 11’s trackers, each with its six steps beside the stages of its workflow. The bill tracker "
                   f"of Rule 11.1 beside Route FS: steps 1 to 3, {', '.join(s1[:3])}, sit inside stage 1; step 4 holds stages 2 "
-                  f"to 5; step 5 holds stages 6 and 7; step 6 holds stages 8 to 13; stages 14 to {len(st)} come after step 6. The "
+                  f"to 5; step 5 holds stages 3 to 7, since suspension, cloture and reconciliation serve either chamber; step "
+                  f"6 holds stages 8 to 13; stages 14 to {len(st)} come after step 6. The "
                   "records request of Rule 11.8 beside the Freedom of Information Act: steps 2 to 5 share the agency’s 20 "
                   "working days to decide, and mediation and a lawsuit come after step 6. The agency rule of Rule 11.9 beside "
                   "federal rule making: step 1 has no stage in the law, White House review sits behind steps 2 and 5, and "

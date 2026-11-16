@@ -839,7 +839,7 @@
    "id": "15.16",
    "title": "Show a reform’s four effects apart, with each route’s check date.",
    "rule": [
-    "Reform R-01, “All-party primaries with ranked general elections”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the atlas’s code, its words and the pips of Rule 13.5, and no row that adds them. Its routes follow, each with who acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
+    "Reform R-01, “All-party primaries with ranked general elections”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, an outcome family being one of the four groups of results the atlas judges reforms by. Give each row the atlas’s code, its words and the pips of Rule 13.5, and print no row that adds them. Its routes follow, each with who acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
     "As of October 15, 2026, the atlas codes its effect on the quality of democracy moderate positive, on government efficacy small positive, and on the other two families no expected effect. It checked the state ballot and local routes on that date, and the state statute and federal statute routes carry no date."
    ],
    "tokens": [
@@ -1068,7 +1068,7 @@
    ],
    "why": {
     "text": [
-     "A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One choice at a time keeps each reform’s red its own, and the effects stay the atlas’s four ordinal codes. The assumptions sit one step away, where a reader who asks finds them whole."
+     "A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One choice at a time keeps each reform’s red its own, and the effects stay the atlas’s own codes, one to each outcome family. The assumptions sit one step away, where a reader who asks finds them whole."
     ],
     "basis": "Our systems atlas, Reforms R-03 and R-04 on Loop R4a; the choice lessons of En-ROADS, as Rules 18.3 and 18.8 set them"
    },
@@ -1115,7 +1115,7 @@
    "id": "15.21",
    "title": "Give every control the model’s own steps, and no slider for a strength.",
    "rule": [
-    "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the stepper, the radio group or the disclosure.",
+    "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, the three delay classes and the seven effect codes, ranks of direction and rough size with no measured amount. Each is a set of named steps, so build it from the stepper, the radio group or the disclosure.",
     "Leave totals, odds, amounts and strengths out of every control, and with them sliders, dials and fields for a number, because our systems atlas leaves the size of any effect to the studies behind each connection and says that “no whole loop has a measured strength.” A slider set between 0 and 100 would hand a reader a figure no study supports."
    ],
    "tokens": [
@@ -1123,7 +1123,7 @@
    ],
    "why": {
     "text": [
-     "A slider promises that any value along it means something and that moving it changes the outcome by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so the honest control offers those steps alone."
+     "A slider promises that any value along it means something and that moving it changes the outcome by that much. The atlas grades its connections in words and codes its effects in ranked steps, so the honest control offers those steps alone."
     ],
     "basis": "Our systems atlas, Connection L55 and the model’s limits"
    },
@@ -1138,7 +1138,7 @@
    "specs": [
     {
      "label": "Steps a control may offer",
-     "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"
+     "value": "Loops and their steps, reforms, grade words, delay classes and effect codes"
     },
     {
      "label": "Never offered",
@@ -1146,7 +1146,7 @@
     },
     {
      "label": "A picture of a control",
-     "value": "Drawn, not built, with its alt saying it is a picture"
+     "value": "A drawing of the control, with its alt saying it is a picture"
     }
    ],
    "related": [

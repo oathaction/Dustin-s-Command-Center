@@ -1,0 +1,730 @@
+{
+ "title": "Creative director’s scores for Phase 3, review of rounds 4 and 5 (first pass): round 4’s 13 forms and S12, the selection guide, the palette specification, Rules 14.142 to 14.144, chapter 14’s round 5 words, chapter 15 (15.19 to 15.25 and whole), chapter 11’s trackers, and chapter 14 as a page",
+ "date": "2026-11-16",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "work/handoffs/phase-3/20261116_Phase-3-Rounds-4-5-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; the shared capture set (DR-277) from the strict build of 9a6e1182 (scratchpad c07/main/guide.html, 12,107,102 bytes, 0 warnings, 369 rules, 679 specimens) and its guide-Build-Report.json; all 98 Newsprint 1x plates and whole rules at 1440 px with the four stepper and chooser states, and the round 4 and 5 plates at 390 px, read at true size by tiling; plate CSS read from the specimen files and phase3_ch15_build.py; words from the chapter files, entries and specs",
+ "review": "work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md",
+ "first_pass_of_review": "rounds 4 and 5",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "R4-A",
+   "name": "Maker A: S85 to S88 with entries 14.79 to 14.82, and sketches 14.83 and 14.84",
+   "anchor": "#group-14-9; work/build/chart-kit/specs/s85.json to s88.json; work/build/guide/entries/14-079.json to 14-084.json; specimens s-14-83-sketch, s-14-84-sketch",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S85's hundred squares, S87's Venn inside its population frame and S88's areas to one scale hold at 1x, though S86's size key draws a 40,000 circle as large as the data's largest and spreads three keys across 380 px under the drawing (CD-S2).",
+    "clarity": "each plate asks its question and the two coverage charts point to each other, though S87's title reads out four counts and S88's three with two \"and\"s (CD-S3).",
+    "brand_fidelity": "no red, one neutral ink set, and Civic Line icon CL-050 beside S85's variable as DR-266 set it.",
+    "usefulness": "the entries say what each form needs and when to use the other, and both sketches meet round 3's frame standard at true size.",
+    "evidence_honesty": "S85 says the 2025 average leaves out October and is not strictly comparable, and S87 and S88 say the overlap is Oath & Action's arithmetic with approximate margins.",
+    "accessibility": "each chart has its table and alt, and the sketches carry their Illustrative chips beside the drawing."
+   },
+   "specimens_under_the_bar": [
+    "S86"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "CD-S2",
+    "CD-S3"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 2,
+   "ready": true
+  },
+  {
+   "key": "R4-I",
+   "name": "Infographics maker: S89 to S95 with entries 14.135 to 14.141",
+   "anchor": "#group-14-17; work/build/chart-kit/specs/s89.json to s95.json; work/build/guide/entries/14-135.json to 14-141.json",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S90's number panel, S91's aligned cards, S92's steps and S93's redrawn page are editorial work of a high order, but S94's calendar, the form's only example, draws the year as a 220 px strip of 6 px squares in a 720 px column with no day ticks, and its legend reads \"Consequence in law□ No consequence stated\" with no gap (CD-S1).",
+    "clarity": "every plate names its question, though S91's title holds two findings and S94's ends in an appositive list (CD-S4).",
+    "brand_fidelity": "neutral inks only, and S95's card carries the house's evidence line and title grammar into a feed.",
+    "usefulness": "S95 shows both crops with their true size stated and the words to post, and S89 shows its phone drawing beside the desk one.",
+    "evidence_honesty": "every time limit says \"the law's limit\", S90 names a table under each figure and its COVID-19 relief, and S91 says why it prints 677 and 345.",
+    "accessibility": "the cards are live HTML text (R4-3), and each plate keeps its table."
+   },
+   "specimens_under_the_bar": [
+    "S94"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "CD-S1",
+    "CD-S4"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 2,
+   "ready": false,
+   "to_ready": "Land CD-S1 (S94's calendar drawn at the column's width with day ticks and a spaced legend); craft then reaches 4.",
+   "owner_of_lift": "Infographics maker; engineer for the legend gap"
+  },
+  {
+   "key": "R4-S",
+   "name": "S12's stacked tile and the phone codes on S12, S16 and S78",
+   "anchor": "work/build/chart-kit/specs/s12.json, s16.json, s78.json",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S12 now draws its arrows at a desk in the stacked tile, each tile holding code, value and arrow, though the phone legend drops \"9 or more\" to a line of its own.",
+    "clarity": "the key names the size of shift and the United States figure, and the frame's meaning is stated.",
+    "brand_fidelity": "one neutral ink, parties named, no red and blue.",
+    "usefulness": "the shift lists name the largest and smallest under both drawings.",
+    "evidence_honesty": "the note says New York counts fused lines and each figure rounds on its own.",
+    "accessibility": "all 51 codes print on S12's phone drawing at 390 px; S16 and S78 at phone width I did not see (Not tested)."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true
+  },
+  {
+   "key": "R5-G",
+   "name": "The selection guide, “Choose a chart”",
+   "anchor": "work/build/guide/specimens/s-14-selection-guide.html; selection_guide_build.py",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "one 2 px drawing system at 88 by 56 px that holds at 1x at 390 px, though the map row's county, district and small-multiple symbols fall to gray texture where every other family draws in lines.",
+    "clarity": "the tier key leads, the sixteen questions run in the chapter's order, and a newcomer can find a form by the question in two looks.",
+    "brand_fidelity": "neutral inks only, no red, and the party-colored map shown as a struck sketch in gray.",
+    "usefulness": "all 127 forms appear once, each a link to its entry.",
+    "evidence_honesty": "the tiers say truly which forms have finished examples and which are sketches.",
+    "accessibility": "each link is named \"Form, Tier\" with its picture hidden (R5-2), per the accessibility lead's notes."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true
+  },
+  {
+   "key": "R5-P",
+   "name": "The palette specification after Rule 14.5",
+   "anchor": "work/build/guide/specimens/s-14-palette-spec.html; work/build/scripts/phase-3/palette_spec_build.py",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "each palette's two ground panels, gray row and three color-vision rows set like a printed reference, though token names break mid-name in the table (\"oa.chart.color.\" over \"sequential.\" over \"fill.step1\") and the plate runs 8,025 px at 1440 px.",
+    "clarity": "each palette opens with its job in one sentence, though the measures read as lab notes (\"nearest neighbors stand 0.099 apart in lightness (the bar is 0.08)\").",
+    "brand_fidelity": "the four inks in DR-236's order with Stone hatched, diverging pair B with no red, and Prussian in words only.",
+    "usefulness": "token, role code, value and contrast on every approved ground, so a designer can choose a palette from this plate alone.",
+    "evidence_honesty": "every ratio rounded down, the simulation named and its limit stated.",
+    "accessibility": "swatches keep their color in forced colors and every value prints as text."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [
+    "CD-S12"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true
+  },
+  {
+   "key": "R5-1",
+   "name": "Rule 14.142 with S96 and its failure plate",
+   "anchor": "#rule-14-142; specs/s96.json; entries/14-142.json; s-14-s96, s-14-142-failure",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the band, the two named drops with their leaders and the hatched months land cleanly at 1x, and I hold 5 until the 2x captures show the band's key swatch and the hatch at true pixels.",
+    "clarity": "the title states the finding, and the failure plate shows the one misreading the band prevents.",
+    "brand_fidelity": "the named drops take the subject ink and red never marks a loss (Rule 14.6).",
+    "usefulness": "the rule says what to draw, with which tokens, and the kit draws the rest.",
+    "evidence_honesty": "the interval's source and release, the preliminary months, the revision and the inauguration window are each stated once.",
+    "accessibility": "the phone note names both drops in words and the table follows."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true
+  },
+  {
+   "key": "R5-2",
+   "name": "Rule 14.143 with Loops B4 and R10 on Rule 18.22's stepper",
+   "anchor": "#rule-14-143; entries/14-143.json; s-14-143-correct, s-14-143-failure",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the two loop drawings share one baseline at the shared pill, and the controls sit in a 2 by 2 grid, though the still list under the controls does not mark the step the status line names, where 15.19's list does (CD-S9).",
+    "clarity": "\"Each loop numbers its steps from where the atlas starts it\" settles the counting question at once.",
+    "brand_fidelity": "one ink, the shared variable filled, grades as chips, no red.",
+    "usefulness": "it shows how a builder joins two loops on Rule 18.22's part.",
+    "evidence_honesty": "every connection quotes the atlas with grade and delay, L54's \"weakest\" is the atlas's own word, and the plate says the atlas weighs neither loop.",
+    "accessibility": "the still sequence prints in full and the status line names each step's loop."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [
+    "CD-S9"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true
+  },
+  {
+   "key": "R5-3",
+   "name": "Rule 14.144 with Reforms R-06, R-30 and R-38 on Rule 15.20's chooser",
+   "anchor": "#rule-14-144; entries/14-144.json; s-14-144-correct, s-14-144-failure; phase3_ch14_complex_build.py",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the R-38 state draws L39 as a 6 px black stroke; the three choices take three widths (DD-R2), and each card repeats its reform's chip in its own first sentence across a 3,121 px plate (CD-S10).",
+    "clarity": "the cards hold every field in the same order, and \"None\" under R-38's targets on the loop says the lesson plainly.",
+    "brand_fidelity": "red does one job, where a reform acts.",
+    "usefulness": "the plate shows how to compare reforms with no total.",
+    "evidence_honesty": "in one of its three states the drawing marks a connection R-38 does not target, against the plate's own words \"turns no mark red\" (CD-M1).",
+    "accessibility": "the accessibility lead's three phrases past their card at 320 px with 200 percent text go beyond WCAG and stay optional."
+   },
+   "specimens_under_the_bar": [
+    "s-14-144-correct"
+   ],
+   "must_fix": [
+    "CD-M1"
+   ],
+   "should_fix": [
+    "CD-S5",
+    "CD-S10"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 2,
+   "ready": false,
+   "to_ready": "Land CD-M1 (reset the 6 px case stroke for an unchosen reform) and recapture the three states; craft and evidence honesty then reach 4.",
+   "owner_of_lift": "Complex examples maker; component engineer; data lead sign-off"
+  },
+  {
+   "key": "R5-W",
+   "name": "Chapter 14's intro, opener caption, Rule 14.1 and group lines 17 and 18",
+   "anchor": "work/build/guide/entries/14-chapter.json, 14-001.json; phase3_ch14_rules_build.py",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the intro and group lines read in chapter 02's voice.",
+    "clarity": "the intro names the guide, the palette plate and the three charts, but Rule 14.1 sends a reader to \"The guide at the head of this chapter\" without its name, and group 17's line names five of its seven forms (CD-S8).",
+    "brand_fidelity": "plain, spoken, no studio words but \"frozen data\" in the intro, which a newcomer will not read as a fixed copy.",
+    "usefulness": "14.1's builders line gives the spec field and the kit command.",
+    "evidence_honesty": "14.1's basis says design judgment and who approved the system.",
+    "accessibility": "plain text with its links."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [
+    "CD-S8"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true
+  },
+  {
+   "key": "C15-I",
+   "name": "Rules 15.19 to 15.21",
+   "anchor": "#rule-15-19 to #rule-15-21; work/build/guide/chapters/15-systems-graphics.json; s-15-19-*, s-15-20-*, s-15-21-*",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "stepper and chooser are the shared parts, each drawing at its true 296 px, though the chooser's choices take three widths (DD-R2) and 15.19 stacks four controls where 14.143 sets them 2 by 2.",
+    "clarity": "\"Ready. Start at ... and suppose it rises\" tells a reader what to do.",
+    "brand_fidelity": "red marks only a reform's targets.",
+    "usefulness": "15.21 states the line a control may not cross in one plate pair.",
+    "evidence_honesty": "15.21's slider is a still picture whose own line says the 70 is made up, and \"None in the model\" stands under Strength.",
+    "accessibility": "the lead passed both parts at four widths by keyboard and tree."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [
+    "CD-S5"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true
+  },
+  {
+   "key": "C15-W",
+   "name": "Rules 15.22 to 15.25",
+   "anchor": "#rule-15-22 to #rule-15-25; s-15-22-* to s-15-25-*; phase3_ch15_build.py",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "15.22's veto stage breaks two sentences into flex columns (CD-M2), 15.23's five tables start their stage column at two different offsets (CD-S6), and 15.25 prints \"2 conflict\" (CD-S7).",
+    "clarity": "each alternative path says where it leaves and where it goes next, and 15.23 explains step against stage in its first lines.",
+    "brand_fidelity": "one mark family (filled square, open square, stop square, return line) with no red.",
+    "usefulness": "twenty stages each with its source and read date, eleven routes with their official sources, and the reconciliation's counts on the plate.",
+    "evidence_honesty": "15.24 prints \"Not checked\" where the atlas never checked, 15.22 states its rule for the court case (\"The latest such ruling we found\"), and 15.25's 2,644 rerun stands because Dustin's uploads let the research lead rerun all 668 (D3-1542).",
+    "accessibility": "live HTML text throughout."
+   },
+   "specimens_under_the_bar": [
+    "s-15-22-correct"
+   ],
+   "must_fix": [
+    "CD-M2"
+   ],
+   "should_fix": [
+    "CD-S6",
+    "CD-S7"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 2,
+   "ready": false,
+   "to_ready": "Land CD-M2 (one span after the stop marker in 15.22's two lines) and recapture 15.22; craft then reaches 4.",
+   "owner_of_lift": "Systems designer"
+  },
+  {
+   "key": "C15",
+   "name": "Chapter 15 whole as a chapter",
+   "anchor": "#systems-graphics; work/build/guide/chapters/15-systems-graphics.json",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "one plate system across 25 rules, 680 px drawings with their 328 px forms and chips, grade marks and source lines in one style.",
+    "clarity": "six group lines lead a reader from reading a mark to routes and earlier drawings, though the opener teaches only the loop grammar.",
+    "brand_fidelity": "with the wordmark covered, every plate still reads as Oath & Action by its chips, its one ink and its single red job.",
+    "usefulness": "a builder can draw a loop, a reform, a route or a tracker map from these rules alone.",
+    "evidence_honesty": "every plate cites the model of October 15, 2026 and quotes it.",
+    "accessibility": "every drawing has its words beside it as text."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true
+  },
+  {
+   "key": "C11-T",
+   "name": "Rules 11.10 and 11.11 with their step tables, Rule 11.12 and the bill's step table",
+   "anchor": "#icons group 2; s-11-10-*, s-11-11-*, s-11-12-*, s-11-ballot-steps, s-11-court-steps, s-11-steps; apply_systems_ch11.py, apply_systems_ch11_ui.py",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 3
+   },
+   "reasons": {
+    "craft": "the two trackers share the bill tracker's line, circles, slash and square at 360 px, and the step tables set number, name and law in one column rhythm.",
+    "clarity": "each end word is a sentence a reader can say, and \"Affirmed\" is glossed once; the court table's \"Law:\" lines are clear.",
+    "brand_fidelity": "invented subjects tied to no party, each labeled Illustrative beside the title.",
+    "usefulness": "the step tables cite the law per step, though the ballot table writes Massachusetts's article three ways (CD-S11).",
+    "evidence_honesty": "the end words come from the law and the failure plates show the two misreadings that matter (unofficial counts, a denied petition).",
+    "accessibility": "the stage words under Rule 11.10's tracker are heard again after the image's alt, 106 nodes by the accessibility lead's count (CD-M3)."
+   },
+   "specimens_under_the_bar": [
+    "s-11-10-correct",
+    "s-11-11-correct",
+    "s-11-12-correct"
+   ],
+   "must_fix": [
+    "CD-M3"
+   ],
+   "should_fix": [
+    "CD-S11"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 1,
+   "ready": false,
+   "to_ready": "Land DR-278 (b) (CD-M3) with the accessibility reader's reach count; accessibility then reaches 4.",
+   "owner_of_lift": "Engineer (plate() in guide_build.py), with the accessibility lead"
+  },
+  {
+   "key": "C14",
+   "name": "Chapter 14 as a page at 144 rules with its front door",
+   "anchor": "#data-visualization",
+   "stage": "Phase 3, review of rounds 4 and 5, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the front door, the palette plate and the three charts lift the chapter, and S94 and S86 are the two plates a craft critic would stop at.",
+    "clarity": "\"Choose a chart\" answers the newcomer test from its first screen; 14.1 should name it (CD-S8).",
+    "brand_fidelity": "one working red per view, neutral inks for every party, and the system recognizable without the wordmark in every group.",
+    "usefulness": "every form has its entry, tokens, kit command and table.",
+    "evidence_honesty": "a grade line and a source line in H04's order on every chart.",
+    "accessibility": "tables and alt on every chart, by the owners' checks."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true
+  }
+ ],
+ "totals": {
+  "must_fix": 3,
+  "should_fix": 12,
+  "under_4": [
+   "R4-I.craft",
+   "R5-3.craft",
+   "R5-3.evidence_honesty",
+   "C15-W.craft",
+   "C11-T.accessibility"
+  ],
+  "ready": [
+   "R4-A",
+   "R4-S",
+   "R5-G",
+   "R5-P",
+   "R5-1",
+   "R5-2",
+   "R5-W",
+   "C15-I",
+   "C15",
+   "C14"
+  ],
+  "not_ready": [
+   "R4-I",
+   "R5-3",
+   "C15-W",
+   "C11-T"
+  ],
+  "specimens_under_the_bar": [
+   "S86",
+   "S94",
+   "s-14-144-correct",
+   "s-15-22-correct",
+   "s-11-10-correct",
+   "s-11-11-correct",
+   "s-11-12-correct"
+  ]
+ },
+ "lowest_score_by_item": {
+  "R4-A": 4,
+  "R4-I": 3,
+  "R4-S": 4,
+  "R5-G": 4,
+  "R5-P": 4,
+  "R5-1": 4,
+  "R5-2": 4,
+  "R5-3": 3,
+  "R5-W": 4,
+  "C15-I": 4,
+  "C15-W": 3,
+  "C15": 4,
+  "C11-T": 3,
+  "C14": 4
+ },
+ "must_fix": {
+  "CD-M1": {
+   "title": "Rule 14.144's R-38 state draws a connection R-38 does not target.",
+   "what_and_fix": "Where: `s-14-144-correct`, from `phase3_ch14_complex_build.py`. What: `.sv .crt .ak-case{stroke:var(--oa-color-graphic-essential);stroke-width:6px}` applies to L39's group at all times; each \"unchosen reform\" rule resets `.ak-mark` to 2 px but never resets `.ak-case`, so with R-38 checked L39 draws as a 6 px black stroke, heavier than any other line (seen in `states/s-14-144-correct--R-38.png`). Fix: add `.ak-case{stroke:none}` to each `.p:has([value=\"R-nn\"]:checked) [data-oa-for]:not([data-oa-for~=\"R-nn\"])` rule, or move the case into the checked rules as 15.20 does; recapture all three states on both grounds. Owner: complex examples maker; component engineer reads it; data lead signs off.",
+   "owner": "complex examples maker; component engineer reads it; data lead signs off",
+   "items": [
+    "R5-3"
+   ]
+  },
+  "CD-M2": {
+   "title": "Rule 15.22's veto stage splits two sentences into columns.",
+   "what_and_fix": "Where: `s-15-22-correct`, stage 10, from `phase3_ch15_build.py` (`.wf .sq{display:flex;gap:8px}`). What: \"Short of\", the `nw2` span \"two-thirds\" and \"in either chamber, the bill dies.\" become three flex items, and \"With two-thirds in each, then stage 13.\" prints with two 8 px gaps. Two lines in the guide, both here (counted by script over every `s-15-*` specimen). Fix: wrap the text after the marker in one span (`<span class=\"sqm\"></span><span>Short of <span class=\"nw2\">two-thirds</span> ...</span>`), rerun the brace check and recapture 15.22 at 1440, 390 and 320 px. Owner: systems designer.",
+   "owner": "systems designer",
+   "items": [
+    "C15-W"
+   ]
+  },
+  "CD-M3": {
+   "title": "DR-278 (b) for the trackers.",
+   "what_and_fix": "Where: `s-11-10-*`, `s-11-11-*`, `s-11-12-*` and every `role=\"img\"` stage the fix reaches. What: the words inside the stage are heard after its alt. Fix: `aria-hidden` on the stage's fragment in `plate()`, as DR-278 sets, with the accessibility reader's reach count. Owner: engineer (`guide_build.py`), with the accessibility lead.",
+   "owner": "engineer (`guide_build.py`), with the accessibility lead",
+   "items": [
+    "C11-T"
+   ]
+  }
+ },
+ "should_fix": {
+  "CD-S1": {
+   "title": "S94's calendar (DD-I18).",
+   "what_and_fix": "Draw the year at the column's width at a desk, days on a 1 to 31 scale with ticks at 1, 15 and the month's end labeled once at the top, squares at 8 px; give the legend items a 16 px gap and keep each item whole on a line at 358 px. Owner: infographics maker; engineer for the legend gap in the kit.",
+   "owner": "infographics maker; engineer for the legend gap in the kit",
+   "items": [
+    "R4-I"
+   ]
+  },
+  "CD-S2": {
+   "title": "S86's size key.",
+   "what_and_fix": "Nest the three key circles on one bottom line, labels to the right, beside \"Circle area shows the count\", so the key takes about 100 px and no longer reads as a second chart. Owner: maker A.",
+   "owner": "maker A",
+   "items": [
+    "R4-A"
+   ]
+  },
+  "CD-S3": {
+   "title": "S87 and S88 titles.",
+   "what_and_fix": "Lead each with one finding and let the drawing, which prints every count, carry the rest; S88 loses its second \"and\". Owner: editor, with maker A.",
+   "owner": "editor, with maker A",
+   "items": [
+    "R4-A"
+   ]
+  },
+  "CD-S4": {
+   "title": "S91 and S94 titles.",
+   "what_and_fix": "One finding each; for S94, for example: \"Seven of the 16 budget and tax deadlines federal law sets for 2027 carry a consequence in law: the six tax deadlines and the start of the fiscal year.\" Owner: editor, with the infographics maker.",
+   "owner": "editor, with the infographics maker",
+   "items": [
+    "R4-I"
+   ]
+  },
+  "CD-S5": {
+   "title": "DD-R2 with DD-R5, both plates (15.20 and 14.144).",
+   "what_and_fix": "Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5's keyline inside the red ring: my call waits on the Charcoal captures (second look). Owner: component engineer (chooser part), systems designer and complex examples maker.",
+   "owner": "component engineer (chooser part), systems designer and complex examples maker",
+   "items": [
+    "R5-3",
+    "C15-I"
+   ]
+  },
+  "CD-S6": {
+   "title": "Rule 15.23's column.",
+   "what_and_fix": "Start the stage column at one offset in all five tables. Owner: systems designer.",
+   "owner": "systems designer",
+   "items": [
+    "C15-W"
+   ]
+  },
+  "CD-S7": {
+   "title": "Rule 15.25's count.",
+   "what_and_fix": "\"2 conflict, both in row 42\" reads \"2 conflicts, both in row 42\". Owner: editor, through the systems designer.",
+   "owner": "editor, through the systems designer",
+   "items": [
+    "C15-W"
+   ]
+  },
+  "CD-S8": {
+   "title": "Rule 14.1 and group 17.",
+   "what_and_fix": "Name \"Choose a chart\" in Rule 14.1 and link it; name all seven forms in group 17's line (the annotated illustration and the calendar are missing); replace \"frozen data\" in the intro with words a reader knows (\"a fixed copy of the source's data\"). Owner: editor.",
+   "owner": "editor",
+   "items": [
+    "R5-W"
+   ]
+  },
+  "CD-S9": {
+   "title": "Rule 14.143's still list.",
+   "what_and_fix": "While the stepper runs, give the list row the status line names the selected band, as 15.19's list does, so one component reads one way in both chapters. Owner: complex examples maker, with the component engineer.",
+   "owner": "complex examples maker, with the component engineer",
+   "items": [
+    "R5-2"
+   ]
+  },
+  "CD-S10": {
+   "title": "Rule 14.144's cards.",
+   "what_and_fix": "Drop the reform chip from each card's first sentence (\"Turns one connection red\"), since the card's head names it; the plate loses three chips and one line per card. Owner: complex examples maker, editor.",
+   "owner": "complex examples maker, editor",
+   "items": [
+    "R5-3"
+   ]
+  },
+  "CD-S11": {
+   "title": "The ballot measure step table's citations.",
+   "what_and_fix": "Write each Massachusetts citation one way (\"Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3\", then the short form agreed), checked by the research lead. Owner: tracker designer, editor, research lead.",
+   "owner": "tracker designer, editor, research lead",
+   "items": [
+    "C11-T"
+   ]
+  },
+  "CD-S12": {
+   "title": "The palette plate's token names.",
+   "what_and_fix": "Let a token name break only at its dots with a zero-width break after each dot, or set the token column wider so `oa.chart.color.sequential.fill.step1` breaks once. Owner: engineer (`palette_spec_build.py`).",
+   "owner": "engineer (`palette_spec_build.py`)",
+   "items": [
+    "R5-P"
+   ]
+  }
+ },
+ "named_places": "1. Carried items. DD-R2 and DD-R5: DD-R2 yes on both plates (CD-S5); DD-R5 in the second look. S14's label 2.6 px above its gridline at 480 to 720 px: fix it, since S96 draws S14's own data with every word clear of its gridlines (DD-E7), and the two plates sit one rule group apart (owner: complex examples maker, who carried it); I did not see it at those widths. SG-6: keep the tier word under the name; the eye looks for the form's name first and the link already says \"Form, Tier\". DD-I18: CD-S1. The optional S16 note: not read, no recommendation. Round 4's cards on a phone: S95 and S91 hold at 390 px; S95's card fine print sits near 9 to 10 px at a phone's width, which is the size a feed shows it (a risk, below). The edge guard: board 3 should show it as one item, S59's \"4.1\" before and after, because turning it on changes a signed-off drawing.\n4. The selection guide at true size: at 1x at 390 px the forms read apart by shape in every family but maps, where three symbols read as texture; avoid forms are struck in mark and named \"Avoid\" in words. The capture cuts at 5,548 px at 1440 px, so the last group I read at 390 px.\n5. The palette plate: every value from the tokens, ratios rounded down, color-vision rows by filter, Prussian in words only; a designer can choose from it alone.\n6. S96: the band at plus or minus 122,000, both drops in the subject ink, preliminary months hatched, scale minus 400,000 to 850,000, phone note naming the drops; every word I could see at 1x clears its gridline. Its failure plate holds one fault.\n7. 14.143 and 14.144: each loop counts its own steps; R-38's targets off the loop are said in words, but the drawing contradicts them in R-38's state (CD-M1).\n8. Chapter 15 as one chapter: one grammar across loops, workflows, routes and tables; 15.22's stages each carry a source and read date; 15.24 prints \"Not checked\"; 15.25 states 2,644 rerun, true after D3-1542.\n10. NRSC v. FEC: the plate states the rule (\"The latest such ruling we found\") and prints the holding alone. The same rule would pick the same case for either side. The plate's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) come from laws one party passed alone; see Risks.\n11. Weight, from the build report: page 12,107,102 bytes, projection 15,117,621 of 15,500,000 with Phase 4's seven chapters at 362,857 each; chapter 14 at 2,072,555 plus the kit (565,548) and geometry, 120,739 past its figure by the build's count; selection guide 149,403; palette plate 69,443; 14.142 to 14.144 at 32,433, 43,078 and 55,628; chapter 15 at 562,202 of 600,000; chapter 11 at 500,801 of 550,000. No plate carries bytes a reader never meets that I could find, though 14.144's three print panels and three sets of state rules are its price for working with scripts off. Phase 4 has 382,379 bytes of room under 15,500,000 and 882,379 under 16 MB.\n\nThe other named places (2, 3, 9, 12) sit in other readers' lenses; I ran none of their checks.",
+ "finished_chapters_verdict": "Chapter 15, yes, once CD-M2 lands: it reads as a chapter a design firm would sign, with one idea a reader keeps (follow a mechanism one connection at a time, and never claim a strength the model lacks) and a back half that turns the atlas's routes into sourced workflows. Chapter 14, yes in structure and in its finest plates; it ships once CD-M1 and CD-S1 land, and it stays long (a reader needs \"Choose a chart\" and the local contents to move through it).",
+ "board_3_must_show": [
+  "The trackers' twelve step names and end words for approval as DR-108's were, with \"Affirmed\" and its gloss, \"Affirmed by an equally divided Court\", the denied petition's square at step 5, and the slashed Legislature step.",
+  "Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, with 14.144 in all three states after CD-M1.",
+  "\"Choose a chart\" whole at 1440 and 390 px, and the palette plate's first screen.",
+  "Rule 15.22 whole with its stated rule for the court case, 15.23's mapping, and 15.25's counts.",
+  "The changed approved drawings: S12's stacked tile at a desk, the phone codes on S12, S16 and S78, the loop drawings re-laid with each variable's title (DR-265), and the edge guard's effect on S59.",
+  "DD-R2 (and DD-R5 if adopted) as before and after on 15.20 and 14.144.",
+  "The weight figures and chapter 14's 120,739 bytes past its figure, reported, nothing cut.",
+  "The V7.1 rows proposed."
+ ],
+ "distinctiveness_test": [
+  {
+   "view": "S96 at 1440 px with the wordmark covered",
+   "verdict": "Reads as Oath & Action: evidence chip, sentence title, one ink with the named drops in the subject ink, the band in Stone."
+  },
+  {
+   "view": "\"Choose a chart\" at 390 px",
+   "verdict": "Reads as the house's drawing system: 2 px lines, neutral inks, struck avoid forms."
+  },
+  {
+   "view": "The trackers at 360 px",
+   "verdict": "Reads as one family with the bill tracker of Rule 11.1."
+  },
+  {
+   "view": "14.144 in R-38's state",
+   "verdict": "Breaks the house's red discipline in spirit: an unexplained heavy black line where the plate says nothing acts."
+  }
+ ],
+ "risks_for_dustin": [
+  "Rule 15.22's three examples of undoing a law (a sunset in Public Law 115-97, NRSC v. FEC, a change in Public Law 119-21) each come from one side's legislation or one side's win. The court case has its stated rule; the two laws do not. I recommend the plate's note state the rule for each (for example, the most recent sunset and the most recent repeal the research lead found), so a reader from either side sees a rule, not a choice.",
+  "S95's social card prints its source line near 10 px at a phone feed's width. That is the feed's own size, and it reads; raising the card's fine print by a step would cost one line of the title.",
+  "Chapter 14's length: at 144 rules the front door and the local contents carry the reader."
+ ],
+ "questions_for_dustin": [],
+ "weight": {
+  "page_bytes": 12107102,
+  "page_projection": 15117621,
+  "page_budget": 15500000,
+  "limit": 16000000,
+  "chapter_14_bytes": 2072555,
+  "chapter_14_figure": 2803941,
+  "chapter_14_past_figure_by_build_count": 120739,
+  "chart_kit": 565548,
+  "selection_guide": 149403,
+  "palette_spec": 69443,
+  "complex_examples": {
+   "14.142": 32433,
+   "14.143": 43078,
+   "14.144": 55628
+  },
+  "chapter_15": 562202,
+  "chapter_15_budget": 600000,
+  "chapter_11": 500801,
+  "chapter_11_budget": 550000,
+  "room_under_budget": 382379,
+  "room_under_limit": 882379
+ },
+ "second_look": "pending",
+ "tested": [
+  "Read the brief whole, my role file, round 3's scores and review for form, V26 sections 1 and 2, the round 4 and round 5 contracts, Master Brief sections 6, 13 and 14 (16:51 to 16:56 UTC).",
+  "Read all 98 Newsprint 1x captures at 1440 px and the four stepper and chooser states, and 38 Newsprint 1x captures at 390 px, at true size by tiling (16:53 to 17:01 UTC).",
+  "Read the plate CSS of `s-14-144-correct.html` and `s-15-20-correct.html` and found CD-M1's cause; read `phase3_ch15_build.py` line 3696 and counted by script the `.sq` lines with inline elements in every `s-15-*` specimen (2, both in 15.22).",
+  "Read titles of S12, S16, S78 and S85 to S96 from the specs and counted their words by script; read S96's phone note, labels and scale; read chapter 14's intro, opener, group lines and Rule 14.1, and chapter 15's intro, groups and rule titles from the chapter files.",
+  "Read weight figures from the build report.",
+  "Checked D3-1542 and DR-258 in the decision log for 15.25's 2,644 claim."
+ ],
+ "not_tested": [
+  "No browser opened; no keyboard, accessibility tree, axe, forced colors, reduced motion, print or 200 percent text check.",
+  "Charcoal, grayscale and 2x captures, and 1024, 768, 360 and 320 px (still landing at first scores).",
+  "S14 at 480 to 720 px; S16 and S78 at phone width; the CSV and PNG exports; S95's exported PNG at true pixels.",
+  "Screen readers, Safari and Firefox (DR-279)."
+ ]
+}

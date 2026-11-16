@@ -1,0 +1,106 @@
+{
+ "kit": 1,
+ "id": "PR1",
+ "form": "range-bar",
+ "family": "uncertainty-and-estimates",
+ "tier": "core",
+ "dataset": "census-hvs-homeownership-by-age-moe",
+ "reader_question": "Did the homeownership rate move from one period to the next by more than the survey can tell?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey, with the margins of the changes computed by Oath & Action",
+ "title": "From 2015 to 2025, the homeownership rate rose past the survey’s margin of error for all householders and for those under 45; for householders 45 and older, each change sits within it.",
+ "measure_line": "Change in the homeownership rate, the share of households that own their home, from 2015 to 2025, in percentage points, by age of the householder, annual averages, United States. Each line spans the change’s approximate 90 percent margin of error.",
+ "reading_guide": "Each dot is one group’s change from 2015 to 2025 and its line the change’s margin of error. A filled dot passes the margin; an open dot sits within it, where the survey cannot tell the change apart from none.",
+ "notes": [
+  "The margin of each change is the square root of the sum of the two years’ squared margins, which treats the two years as independent samples. The Bureau prints each year’s margin rounded to one decimal, so each change’s margin is approximate.",
+  "The 2025 average leaves out October 2025, when a lapse in federal funding stopped data collection."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Dots with margin of error lines for the change in the homeownership rate from 2015 to 2025, for all householders and five age groups. All householders rose 1.5 points, householders under 35 rose 2.0 points and those 35 to 44 rose 2.3 points, each past its margin and drawn as a filled dot. Householders 45 to 54 fell 0.2 points, 55 to 64 rose 0.5 points and 65 and over fell 0.3 points, each within its margin and drawn as an open dot.",
+ "table": {
+  "caption": "Homeownership rate by age of householder, 2015 and 2025, with the change and its margin of error",
+  "columns": [
+   {
+    "field": "age_group",
+    "label": "Age of householder",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "rate_2015",
+    "label": "2015, percent",
+    "format": "number:1"
+   },
+   {
+    "field": "rate_2025",
+    "label": "2025, percent",
+    "format": "number:1"
+   },
+   {
+    "field": "change",
+    "label": "Change, points",
+    "format": "signed:1"
+   },
+   {
+    "field": "change_moe",
+    "label": "Margin of error of the change, points",
+    "format": "number:1"
+   },
+   {
+    "field": "change_passes_moe",
+    "label": "Against the margin",
+    "format": "text",
+    "words": {
+     "true": "Past the margin",
+     "false": "Within the margin"
+    }
+   }
+  ]
+ },
+ "chart_notes": [
+  "Filled dots pass the margin of error of the change; open dots sit within it."
+ ],
+ "phone": "same",
+ "phone_notes": [
+  "Past the margin: all householders, under 35 and 35 to 44."
+ ],
+ "artboard": "reading",
+ "domain": "D09",
+ "states": [],
+ "encode": {
+  "category": "age_group",
+  "value": "change",
+  "margin": "change_moe",
+  "status": "change_passes_moe"
+ },
+ "labels": {
+  "open": "false",
+  "named": [
+   "All householders",
+   "Less than 35 years",
+   "35 to 44 years"
+  ],
+  "names": {
+   "Less than 35 years": "Under 35",
+   "35 to 44 years": "35 to 44",
+   "45 to 54 years": "45 to 54",
+   "55 to 64 years": "55 to 64",
+   "65 years and over": "65 and over"
+  },
+  "value": "{value}",
+  "key_filled": "Past the margin of error",
+  "key_open": "Within the margin of error"
+ },
+ "formats": {
+  "value": "signed:1",
+  "tick": "signed"
+ },
+ "scale": {
+  "x": [
+   -2,
+   4
+  ]
+ }
+}

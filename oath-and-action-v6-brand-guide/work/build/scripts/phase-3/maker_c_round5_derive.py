@@ -98,6 +98,8 @@ def example_1():
     need(m_ is not None, 'the sidecar\'s with_margin line no longer names the margin')
     margin = int(m_.group(1).replace(',', '')) / 1000
     need(margin == 122, f'the margin moved: {margin}')
+    need(wm.startswith(side['printed_source_line'].rstrip('.')) and 'margin' not in side['printed_source_line'],
+         'the sidecar\'s plain source line is no longer the with_margin line less its margin sentence')
     past = [m for m, v in zip(months, ch) if v < 0 and abs(v) > margin]
     need(past == ['2025-10', '2026-02'], f'DR-239\'s two drops past the margin moved: {past}')
     inside = [m for m, v in zip(months, ch) if v < 0 and abs(v) <= margin]
@@ -125,6 +127,8 @@ def example_1():
         'largest_loss': {'month': months[ch.index(min(ch))], 'change': min(ch)},
         'avg3_low': {'month': months[av.index(min(av))], 'avg3': min(av)},
         'source_line': wm,
+        # the sidecar's plain line, with no margin sentence: the failure plate's, whose drawing leaves the margin out (ST-M1)
+        'source_line_plain': side['printed_source_line'],
         'retrieved': side['date_retrieved'],
     }
 

@@ -1852,13 +1852,19 @@ def build(ctx):
                      'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
                      'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + AFFIRMED + ', '
                      'which leaves the ruling below in place; Reversed; Vacated, which cancels the ruling below; or '
-                     'Modified; joined to “and sent back” when the court returns the case. The marks never move backward, '
-                     'so a case sent back says so in a sentence '
-                     'after the end words. A case that ends before step 6 ends its line on a square at the last step it '
-                     'reached, with its words: Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the '
-                     'court, Appeal dismissed at the appellant’s request (the appellant is the side that appealed), Appeal '
-                     'dismissed by the court, or Petition denied by the Supreme Court, which ends it at step 5 and leaves the '
-                     'appeals court’s ruling standing.'],
+                     'Modified; joined to “and sent back”, which the court enters as remanded, when it returns the case. '
+                     'The marks never move backward, so a case sent back says so in a sentence after the end words.',
+                     # Call 4 (CE-S20): an unappealed ruling follows Rule 11.8's slash; the square stays for a case that
+                     # ends by settlement, dismissal or a denied petition
+                     'A ruling no one appeals keeps the steps after it under slashes once the time to appeal has passed, '
+                     'as Rule 11.8 keeps the last step of a request that was never appealed, and its words give the ruling '
+                     'and the date. A case decided at trial and never appealed keeps steps 3 to 6 under slashes, and a case '
+                     'no one takes to the Supreme Court keeps steps 5 and 6 under slashes. A case that ends by settlement, '
+                     'dismissal or a denied petition ends its line on a square at the last step it reached, with its words: '
+                     'Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the court, Appeal dismissed '
+                     'at the appellant’s request (the appellant is the side that appealed), Appeal dismissed by the court, '
+                     'or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals court’s ruling '
+                     'standing.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['In the Supreme Court’s own words, review is “not a matter of right, but of judicial '
                              'discretion”, so a denied petition says only that the Court chose not to hear the case. A '
@@ -1883,13 +1889,18 @@ def build(ctx):
                 {'label': 'A higher court’s ruling', 'value': AFFIRMED + '; Reversed; Vacated; Modified; each with the '
                                                               'court, as in “' + AFFIRMED + ' by the appeals court”, and '
                                                               '“and sent back” where the court returns the case'},
-                {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Settled by '
-                                                          'the parties; Dismissed at the plaintiff’s request; Dismissed by '
-                                                          'the court; Appeal dismissed at the appellant’s request; Appeal '
-                                                          'dismissed by the court; Petition '
-                                                          'denied by the Supreme Court, on step 5'},
-                {'label': 'Never appealed', 'value': 'A square on step 2, with “No appeal was filed in the 30 days the law '
-                                                     'allows.”, or 60 days where the United States is a party'},
+                {'label': 'Settled, dismissed or denied', 'value': 'A square at the last step reached, with its words: '
+                                                                   'Settled by the parties; Dismissed at the plaintiff’s '
+                                                                   'request; Dismissed by the court; Appeal dismissed at the '
+                                                                   'appellant’s request; Appeal dismissed by the court; '
+                                                                   'Petition denied by the Supreme Court, on step 5'},
+                {'label': 'Never appealed', 'value': 'Steps 3 to 6 under slashes once the time to appeal has passed, with '
+                                                     'the trial court’s ruling and “No appeal was filed in the 30 days the '
+                                                     'law allows.”, or 60 days where the United States is a party',
+                 'token': 'oa.component.mark.slash'},
+                {'label': 'No petition', 'value': 'Steps 5 and 6 under slashes once the time to petition the Supreme Court '
+                                                  'has passed, with the appeals court’s ruling',
+                 'token': 'oa.component.mark.slash'},
                 {'label': 'A tie in the Supreme Court', 'value': AFFIRMED + ' by an equally divided Court, which is a tie '
                                                                  'vote, and “The lower court’s ruling stands.”'},
                 {'label': 'Straight to the Supreme Court', 'value': 'Steps 3 and 4 under slashes, where a district court '

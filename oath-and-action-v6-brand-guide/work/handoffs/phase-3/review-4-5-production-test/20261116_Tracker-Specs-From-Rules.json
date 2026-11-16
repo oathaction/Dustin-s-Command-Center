@@ -1,0 +1,57 @@
+{
+ "about": "Production test, part 2 (review of rounds 4 and 5, November 16, 2026). Two tracker items written by a simulated designer at a partner organization from Rules 11.10 to 11.12 and their step tables alone, in the guide's words, before reading apply_systems_ch11.py. Then set beside the generator's item format (BALLOTS and COURTS in work/build/scripts/phase-2/apply_systems_ch11.py). Both items are invented and labeled Illustrative; no state, court or party is named. The designer is simulated and untested with a real person.",
+ "written_from_the_rules": [
+  {
+   "label": "Illustrative",
+   "number": "Measure 99017",
+   "subject": "Bridge repair bonds",
+   "kind": "A state legislative referral: the Legislature sends the measure to the voters itself, with no petition (Rule 11.10, paragraph 1)",
+   "steps": [
+    {"step": 1, "name": "Filed", "mark": "Never happened (slash)", "why": "Rule 11.10: a measure the Legislature sends has no petition, so steps 1 to 3 keep their slashes"},
+    {"step": 2, "name": "Title and summary", "mark": "Never happened (slash)", "why": "Same sentence of Rule 11.10. Guess G-T2 below"},
+    {"step": 3, "name": "Signatures", "mark": "Never happened (slash)", "why": "Same sentence"},
+    {"step": 4, "name": "Legislature", "mark": "Done", "words": "Sent to the voters by the Legislature on May 20.", "why": "Specifications, 'Sent to the voters by the Legislature': step 4 done, with those words and the date"},
+    {"step": 5, "name": "On the ballot", "mark": "Done"},
+    {"step": 6, "name": "Vote", "mark": "Guess: Done (filled)", "why": "Rule 11.10 puts a square only on a measure that ends before step 6. Guess G-T1 below"}
+   ],
+   "end_words": "Rejected by voters on November 3, certified on November 24.",
+   "sentence_after": "The Legislature sent it to the voters on May 20.",
+   "before_certification": "Step 6 of 6: Vote. The count is unofficial until the state certifies it, which it has set for November 24."
+  },
+  {
+   "label": "Illustrative",
+   "number": "Case 99018",
+   "subject": "Warehouse lease dispute",
+   "kind": "A federal civil case the plaintiff dismissed (Rule 11.11; Federal Rules of Civil Procedure, Rule 41, from the step table's step 2)",
+   "steps": [
+    {"step": 1, "name": "Filed", "mark": "Done"},
+    {"step": 2, "name": "Trial court ruling", "mark": "Guess: Stopped (square)", "why": "Rule 11.11: a case that ends before step 6 ends on a square at the last step it reached. Guess G-C1 below"},
+    {"step": 3, "name": "Appeal", "mark": "Not yet"},
+    {"step": 4, "name": "Appeals court ruling", "mark": "Not yet"},
+    {"step": 5, "name": "Supreme Court petition", "mark": "Not yet"},
+    {"step": 6, "name": "Supreme Court ruling", "mark": "Not yet"}
+   ],
+   "end_words": "Dismissed at the plaintiff’s request on March 9.",
+   "sentence_after": "The trial court had not ruled. Guess G-C2: whether the plaintiff may file again is not said"
+  }
+ ],
+ "in_the_generators_format": {
+  "note": "The same two items as apply_systems_ch11.py stores its own (dict(id, noun, kind, title, states, end, line)). The rules name the marks Done, Now, Not yet, Never happened and Stopped; the generator stores done, now, notyet, skipped and stopped, and no rule or For builders line gives those names or the fields.",
+  "ballot": {"id": "99017", "noun": "Measure", "kind": "ballot", "title": "Bridge repair bonds",
+             "states": ["skipped", "skipped", "skipped", "done", "done", "done"],
+             "end": "Rejected by voters on November 3, certified on November 24.",
+             "line": "The Legislature sent it to the voters on May 20."},
+  "court": {"id": "99018", "noun": "Case", "kind": "court", "title": "Warehouse lease dispute",
+            "states": ["done", "stopped", "notyet", "notyet", "notyet", "notyet"],
+            "end": "Dismissed at the plaintiff’s request on March 9.",
+            "line": "The trial court had not ruled."}
+ },
+ "guesses": {
+  "G-T1": "Rule 11.10 names Rejected by voters as end words but never its mark, and its correct plate shows only Approved (six filled steps). The bill tracker in the same group ends a vetoed bill on a square at step 6 (\"Stopped at step 6 of 6: Governor\", Rule 11.3's correct plate, Bill S.99005). So a rejected measure could take six filled steps, like an approved one, or a square at step 6, like a vetoed bill. I chose six filled steps from the letter of the rule; a second designer could choose the square.",
+  "G-T2": "The step table says step 2 is the attorney general clearing the measure and writing 'the title and summary that petitions and ballots carry'. A measure the Legislature sends still goes on the ballot, so I could not tell from the rules whether step 2 truly never happens for it, or happens without a petition. I followed the rule's slash. A question for the research lead, not a finding about the law.",
+  "G-T3": "Rule 11.10's For builders line says to store 'whether its initiative is direct or indirect'. A legislative referral is neither; no value is given for it.",
+  "G-T4": "Where 'Sent to the voters by the Legislature' and its date go once the vote is certified: the specification says step 4 takes 'those words and the date', but the end words then replace the line. I moved them into the sentence after.",
+  "G-C1": "Which step the square sits on for a dismissal before any ruling. 'The last step it reached' could be step 1 (Filed, the last step done) or step 2 (the step under way). The step table puts dismissal inside step 2 (Rule 41), and the records request 99005 withdrawn while searching takes its square on the step under way, so I chose step 2.",
+  "G-C2": "A dismissal at the plaintiff's request may or may not let the plaintiff sue again; the rule's end words do not say which, and a reader who sees 'Dismissed' may take the matter as over. I left it out rather than guess."
+ }
+}
