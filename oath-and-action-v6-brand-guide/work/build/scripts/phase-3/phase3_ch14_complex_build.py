@@ -1148,7 +1148,9 @@ def rule_14_142():
         "encode": s14["encode"],
         "formats": s14["formats"],
         # the data lead's yes to DD-E3 (02:44): S96 alone drops the on-plot latest label; its chart note keeps the words
-        "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ != "latest"}, **{
+        # S14's latest label and its clearance key stay S14's (DD-E3); the fitted dash over the preliminary months is S96's
+        # (the craft reader's CR-S9; the engineer's labels.average_dash, request 2)
+        "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ not in ("latest", "latest_clear")}, average_dash="fit", **{
             # under 490 px the two labels leave the plot, where October 2025's met the latest month's leader and the
             # sweep found February 2026's no clear place at 327 to 339 px; phone_notes names both in one line (S30's way)
             "named": [{"x": m, "text": [mw(m), f"{k(pv[m])} jobs"], "phone": {"hide": True}} for m in past],
@@ -1217,7 +1219,7 @@ def rule_14_142():
         "chart_notes": [],
         "alt": ("The same columns with no band and the seven drops drawn alike in the text’s ink, under a title that "
                 "states seven months of lost jobs with no word on the margin."),
-        "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ != "latest"},
+        "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ not in ("latest", "latest_clear")}, average_dash="fit",
                        **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
         # S96's in-plot "Three-month average" note, on the same scale in the same place, so the pair differ by the margin
@@ -1508,6 +1510,11 @@ def check(entries, files, specs, steps):
     ok(s96["measure_line"].startswith(fs["measure_line"].rsplit(", with", 1)[0]) and fs["measure_line"].endswith(", with the three-month average."),
        "S96's failure: its measure line is not S96's less the margin (NB-S2)")
     ok("latest" not in fs["labels"] and "latest" not in s96["labels"], "S96's failure: an on-plot latest label S96 does not carry")
+    # CR-S9 and CR-S15 (the engineer's request 2 keys): S96 and its failure fit the preliminary dash; S14 holds its latest
+    # label 4 px clear of every gridline and keeps the kit's dash (a board 1 chart: the dash is the data lead's call)
+    s14l = json.loads((SPECS / "s14.json").read_text())["labels"]
+    ok(s96["labels"].get("average_dash") == "fit" and fs["labels"].get("average_dash") == "fit" and "latest_clear" not in s96["labels"]
+       and s14l.get("latest_clear") == 4 and "average_dash" not in s14l, "S96 and S14: the request 2 keys are not as set (CR-S9, CR-S15)")
     ok("margin" not in fs["source_line"] and fs["source_line"] == FACTS["example_1"]["source_line_plain"],
        "S96's failure: its source line names the margin the drawing leaves out (ST-M1)")
     # Rule 01.12's log (ruling (g)): 14.142 once, from S96 as the chapter's build places it; 14.143 twice, a loop each;

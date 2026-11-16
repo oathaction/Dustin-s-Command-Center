@@ -73,6 +73,7 @@
   "key_preliminary": "Preliminary: August and September 2026",
   "preliminary_value": "preliminary",
   "key_average": "Three-month average",
+  "average_dash": "fit",
   "named": [
    {
     "x": "2025-01",

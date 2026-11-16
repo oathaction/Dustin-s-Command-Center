@@ -80,7 +80,8 @@
       "{y} jobs",
       "in {x}, preliminary"
     ],
-    "key_average": "Three-month average"
+    "key_average": "Three-month average",
+    "latest_clear": 4
   },
   "annotations": [
     {

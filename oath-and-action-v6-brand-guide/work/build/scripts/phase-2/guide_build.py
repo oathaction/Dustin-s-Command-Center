@@ -851,6 +851,59 @@ EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale", "literal")
 # <svg>, the half the avoid plate sets under its bar). Its better half and every other specimen keep the literal color
 # check, and nothing else in the check changes. The guide check needs no exemption: neither ink is a guide ink.
 LITERAL_HALF = {"s-14-124-sketch": 0}
+# Call 11, as the main session ruled it (18:27): the words a stage's fragment holds and the words its alt carries, by the
+# test that counted the 321 (the engineer's reach11.py): a run of letters and digits, case folded; text inside style, script
+# or defs, or under an element marked aria-hidden="true" or hidden, is left out; an inner aria-label's words are counted.
+# guide_check.js applies the same test in the browser (specimenPicture).
+PICTURE_WORD = re.compile(r"[a-z0-9]+(?:[.,'\u2019][a-z0-9]+)*")
+PICTURES = {"hidden": [], "open": []}
+
+
+def alt_words(text):
+    return set(PICTURE_WORD.findall(str(text or "").lower().replace("\u2011", "-").replace("\u00a0", " ")))
+
+
+def picture_words(fragment):
+    from html.parser import HTMLParser
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+    class W(HTMLParser):
+        def __init__(self):
+            super().__init__(convert_charrefs=True)
+            self.stack, self.words = [], set()
+
+        def off(self):
+            return any(s for _, s in self.stack)
+
+        def handle_starttag(self, tag, attrs):
+            a = dict(attrs)
+            shut = tag in ("style", "script", "defs") or a.get("aria-hidden") == "true" or "hidden" in a
+            if a.get("aria-label") and not shut and not self.off():
+                self.words |= alt_words(a["aria-label"])
+            if tag not in VOID:
+                self.stack.append((tag, shut))
+
+        def handle_startendtag(self, tag, attrs):
+            a = dict(attrs)
+            if a.get("aria-label") and a.get("aria-hidden") != "true" and "hidden" not in a and not self.off():
+                self.words |= alt_words(a["aria-label"])
+
+        def handle_endtag(self, tag):
+            for i in range(len(self.stack) - 1, -1, -1):
+                if self.stack[i][0] == tag:
+                    del self.stack[i:]
+                    break
+
+        def handle_data(self, data):
+            if not self.off():
+                self.words |= alt_words(data)
+
+    w = W()
+    w.feed(fragment)
+    w.close()
+    return w.words
+
+
 # Call 11 (fix pass after rounds 4 and 5): what an image stage's hidden picture may not hold, since aria-hidden would take it
 # from a screen reader while a keyboard still reaches it
 PICTURE_CONTROL = re.compile(r'<a\b[^>]*\shref=|<(?:button|select|textarea|summary|details|iframe)\b|<input\b(?![^>]*\stype="hidden")'
@@ -1045,22 +1098,27 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
                 stage_attrs.append(f'aria-describedby="{aid}"')
         else:
             stage_attrs.append('role="img"')
-            # Call 11 (DR-97 kept): once the picture is hidden, its own Illustrative label is no longer heard, so an alt that
-            # does not say it begins with it (31 stages on the fix pass's count; the editor's word, in the engineer's notes)
-            ill_alt = alt
-            if alt and re.search(r'class="[^"]*\billus\b', frag) and not re.search(r"\billustrative\b", alt, re.I):
-                ill_alt = "Illustrative. " + alt
-            stage_attrs.append(f'aria-label="{e(ill_alt) if ill_alt else e(lab or "Specimen")}"')
-            # DR-278 (b), fix pass call 11 (CD-M3, AX-S3, AX-S6, RP-13): an image stage is heard once, by its alt. Chromium
-            # still exposes the words inside a role="img" box, so a reader heard the stage's words again after its alt; the
-            # fragment sits in one wrapper hidden from the accessibility tree. The wrapper is a plain block with no class and
-            # no style, so no box moves (no page or plate selector reads a stage's own children: the fix pass's scan), and
-            # data-oa-picture tells it apart, so guide_check.js still measures the words inside for size and contrast.
-            # An image stage holds no control (the build warns on one below), so the wrapper hides nothing a keyboard reaches.
-            if PICTURE_CONTROL.search(re.sub(r"<(style|script)\b.*?</\1>", "", body, flags=re.S | re.I)):
-                R.warn(where, f"{spec_id}: an image stage holds a link, button, field or tab stop, which its hidden picture "
-                              "would take from a keyboard; mark it interactive or readable in its manifest")
-            body = f'<div data-oa-picture aria-hidden="true">{body}</div>'
+            # DR-278 (b), fix pass call 11 (CD-M3, AX-S3, AX-S6, RP-13), as the main session ruled it at 18:27: an image stage is
+            # heard once, by its alt, where its alt carries every word its fragment holds. There the fragment sits in one
+            # wrapper hidden from the accessibility tree; a stage whose alt lacks a word keeps its fragment in the tree, since
+            # words heard twice are a lesser fault than words never heard (its alt waits for its owner, the deferred register).
+            # The wrapper is a plain block with no class and no style, so no box moves (no page or plate selector reads a
+            # stage's own children: the fix pass's scan), and data-oa-picture tells it apart, so guide_check.js still measures
+            # the words inside for size and contrast. A stage that holds a control is never hidden, and the build warns on it.
+            # DR-97 kept: where the alt lacks only the picture's own Illustrative label, it leads with "Illustrative." and the
+            # stage is hidden; otherwise the alt stays as its maker wrote it.
+            the_alt = alt or (lab or "Specimen")
+            control = PICTURE_CONTROL.search(re.sub(r"<(style|script)\b.*?</\1>", "", body, flags=re.S | re.I))
+            if control:
+                R.warn(where, f"{spec_id}: an image stage holds a link, button, field or tab stop, which a role=\"img\" box takes "
+                              "from a screen reader; mark it interactive or readable in its manifest")
+            lacks = picture_words(body) - alt_words(the_alt)
+            if alt and lacks == {"illustrative"} and re.search(r'class="[^"]*\billus\b', frag):
+                the_alt, lacks = "Illustrative. " + alt, set()
+            stage_attrs.append(f'aria-label="{e(the_alt)}"')
+            if not lacks and not control:
+                body = f'<div data-oa-picture aria-hidden="true">{body}</div>'
+            PICTURES["hidden" if not lacks and not control else "open"].append(spec_id)
     stage = f'<div {" ".join(stage_attrs)}>{body}</div>'
     if fit:
         stage = f'<div class="plate-fit">{stage}</div>'
@@ -3333,6 +3391,8 @@ def weigh(page, sprite_bytes):
 
 
 def build(args):
+    PICTURES["hidden"].clear()
+    PICTURES["open"].clear()
     chap_dir = Path(args.chapters).resolve() if args.chapters else GUIDE / "chapters"
     spec_dir = Path(args.specimens).resolve() if args.specimens else GUIDE / "specimens"
     out_path = Path(args.out).resolve() if args.out else DEFAULT_OUT
@@ -3646,6 +3706,8 @@ def build(args):
         "start": {"file": str(start_path.relative_to(ROOT)) if start_path and ROOT in start_path.parents else (str(start_path) if start_path else None),
                   "routes": [{"id": r["id"], "steps": len(r["steps"]), "later": sum(1 for x in r["steps"] if x["later"])} for r in start["routes"]] if start else None},
         "warnings": R.warnings, "notes": R.notes,
+        # call 11: the image stages heard by their alt alone, and those whose alt lacks a word, whose words stay open
+        "pictures": {"hidden": len(PICTURES["hidden"]), "open": len(PICTURES["open"]), "open_stages": sorted(PICTURES["open"])},
     }
     rep_path = out_path.with_name(out_path.stem + "-Build-Report.json")
     rep_path.write_text(json.dumps(report, indent=1, ensure_ascii=False))
@@ -4381,6 +4443,7 @@ def self_test():
     fx_man["s-14-sel"]["interactive"] = True
     fx_man["s-14-own"]["interactive"] = True
     fx_man["s-14-pic"]["alt"] = "Words a sighted reader sees in the picture, a fixture."
+    fx_man["s-14-ill"]["alt"] = "A notice for a hearing, a fixture."
     fx14 = chapter("14", "data-visualization", "Data visualization", [rule(f"14.{i + 1}", {"correct": {"specimen": sid, "caption": "A fixture."}})
                                                                        for i, sid in enumerate(fx_ids)])
     scenarios += [
@@ -4396,10 +4459,13 @@ def self_test():
                         r'<div data-oa-picture aria-hidden="true"><p>Words a sighted reader sees in the picture\.</p></div></div>', pg) is not None),
                     ("a readable stage keeps its words open to a screen reader", lambda pg: re.search(r'data-specimen="s-14-live"[^>]*role="group"[^>]*><p>A readable', pg) is not None),
                     ("an interactive stage keeps its controls and words open", lambda pg: re.search(r'data-specimen="s-14-own"[^>]*role="group"[^>]*><div class="tt">', pg) is not None),
-                    ("every image stage holds one picture, and no other stage holds one", lambda pg: len(re.findall(r'data-specimen="[^"]+"[^>]*role="img"', pg))
-                        == pg.count('<div data-oa-picture aria-hidden="true">') == 7),
-                    ("a hidden picture's Illustrative label leads an alt that lacks it, and only there (DR-97)", lambda pg:
-                        'data-specimen="s-14-ill" data-red="specimen" data-surface="newsprint" role="img" aria-label="Illustrative. A fix pass fixture, s-14-ill, at true size."' in pg
+                    ("the main session's ruling: only the two stages whose alt carries every word are hidden, of seven image stages", lambda pg:
+                        len(re.findall(r'data-specimen="[^"]+"[^>]*role="img"', pg)) == 7 and pg.count('<div data-oa-picture aria-hidden="true">') == 2),
+                    ("a stage whose alt lacks a word keeps its fragment open, heard twice and never lost", lambda pg:
+                        'data-specimen="s-14-open"' in pg and re.search(r'data-specimen="s-14-open"[^>]*><div data-oa-picture', pg) is None),
+                    ("a stage that holds a control is never hidden, whatever its alt", lambda pg: re.search(r'data-specimen="s-14-picbtn"[^>]*><div data-oa-picture', pg) is None),
+                    ("an alt that lacks only the picture's Illustrative label leads with it, and that stage is hidden (DR-97)", lambda pg:
+                        re.search(r'data-specimen="s-14-ill"[^>]*role="img" aria-label="Illustrative\. A notice for a hearing, a fixture\."><div data-oa-picture aria-hidden="true">', pg) is not None
                         and pg.count('aria-label="Illustrative. ') == 1)]}),
     ]
     results, ok_all = [], True
