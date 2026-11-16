@@ -418,6 +418,12 @@ The selection guide maker added the road to the three charts in full (call 17 wi
 
 **Checks.** Baseline run: both files unchanged, `--check` passing. After the edits, `selection_guide_build.py` run twice (the second: both unchanged), `--check` passing (127 forms); my generator run twice, the second changing nothing, only `14-chapter.json` moved. Strict build to scratch `guide-sg.html`: exit 0, 0 warnings, 12,160,524 bytes, question 8's new line found once and the old words nowhere; `selection_guide_build.py --page` on it: 127 form links and 6 road links, each landing on its rule block, every skip link landing. The new alt and the caption reach the page through `phase3_ch14_build.py` at the join; both are in their files (by search). The `--page` run rewrote the meta file once and a plain run after it left both files unchanged, with `--check` passing. `plate-share.json` changed only its timestamp and was restored.
 
+## Second read, wave 2: chapter 15 (D3-669), 18:07 UTC, no correction
+
+The systems designer applied CD-S6, CD-S7, CR-S5 to CR-S8, CR-S18, CR-S19, CR-S21, RP-11 and RP-19 (its notes, 17:44 to 18:04) and waits only on call 15's chooser line. Read: its two draft strings and the plates' changed words. Its other items are marks, layout and CSS (the spine's top, the key's path mark, the stage column and "Stage N:" slot, 15.21's scales as lists, 15.24's drawn arrows).
+
+**Read and left as applied:** RP-11's two names, "Public Law 115-97, the tax law approved December 22, 2017, section 11022" and "Public Law 119-21, the tax law approved July 4, 2025, section 70104", which give each law a plain name as house rule H12 asks and keep R7's approval date in the same phrase (H12's own example, "Public Law 119-21, the July 2025 tax law", says the same thing with the month alone); "2 conflicts, both in row 42" on 15.25's count line and in its alt (CD-S7, CR-S18), a figure in a count line, which H06 allows; RP-19's stage 19, which keeps my 17:17 words; 15.21's grade ladder and delay classes as lists, every step's word unchanged. I wrote nothing into `phase3_ch15_build.py` on this read, so no rerun or build was needed for it; the main session was told at 18:06 and 18:07.
+
 ## S14's release and chapter 13 (the main session's question, 17:22)
 
 The main session has called that S14 names the payroll release in its source line, as S96 will. Where else the guide prints S14's line, by search of the chapter files, entries, specimens and generators:
