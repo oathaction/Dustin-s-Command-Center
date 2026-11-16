@@ -998,6 +998,14 @@ def FACTS_NOTE():
 # =====================================================================================================================
 # Rule 14.142: S14 in full, S96 (ruling c)
 # =====================================================================================================================
+# the rule that holds S14, which S96 and its failure name where S14's notes said "both jobs charts" (the reader panel's
+# RP-10), read from the plan, and the window's reason in those words
+S14_RULE = next(r["rule"] for r in json.loads(PLAN.read_text())["chapter_rules"] if r.get("spec_id") == "S14")
+need(S14_RULE == "14.32", f"S14 moved to Rule {S14_RULE}; reread the window's words")
+need(json.loads((SPECS / "s14.json").read_text())["notes"][4] == "Both jobs charts run from January 2022 to September 2026, so they "
+     "hold three full years before the January 2025 inauguration and every month since.", "S14's window note changed")
+WINDOW = (f"This chart and the jobs chart of Rule {S14_RULE} run from January 2022 to September 2026, so they hold three full "
+          "years before the January 2025 inauguration and every month since.")
 # S96's second note opens on the count of drops, which the failure keeps (R3): read from the data, checked against it
 SEVEN = "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026."
 need(FACTS["example_1"]["losses"] == ["2025-01", "2025-06", "2025-08", "2025-10", "2025-12", "2026-02", "2026-07"],
@@ -1053,7 +1061,7 @@ def rule_14_142():
                           "The line is the three-month average. The shaded band is the survey’s margin of error for one "
                           "month’s change. Hatched columns are preliminary."),
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
-                         "the span both jobs charts share, with the three-month average and the survey’s 90 percent "
+                         f"the span this chart shares with the jobs chart of Rule {S14_RULE}, with the three-month average and the survey’s 90 percent "
                          f"margin of error for one month’s change, {margin} jobs."),
         "notes": [
             # what the band means (the data lead's R4; the editor's words for ST-S1 and CE-S13): its size and source, the
@@ -1070,7 +1078,7 @@ def rule_14_142():
              "how far a revision may move a month. The average is dashed where it includes a preliminary month."),
             s14["notes"][0],
             s14["notes"][1],
-            s14["notes"][4],
+            WINDOW,
         ],
         "source_line": f1["source_line"],
         "credit": "Chart: Oath & Action",
@@ -1166,15 +1174,15 @@ def rule_14_142():
     fspec["scale"] = dict(spec["scale"])
     # S96's notes less every word of the margin (R3): the first sentence of its second note, which counts the seven drops,
     # S14's own preliminary note (S96's adds a sentence about the band), then the notes S96 takes from S14 whole, in its order
-    keep = [SEVEN, s14["notes"][2]] + [n for n in spec["notes"] if n in s14["notes"]]
-    need(keep[2:] == [s14["notes"][i] for i in (0, 1, 4)] and spec["notes"][1].startswith(SEVEN + " "),
+    keep = [SEVEN, s14["notes"][2]] + [n for n in spec["notes"] if n in s14["notes"]] + [WINDOW]
+    need(keep[2:] == [s14["notes"][0], s14["notes"][1], WINDOW] and spec["notes"][1].startswith(SEVEN + " "),
          "S96's notes from S14 changed; the failure keeps the same ones")
     fspec.update({
         "id": "s-14-142-failure",
         "table": dict(s14["table"], caption=f"The same {f1['n']} months, with the three-month average, as this failure case draws them"),
         "title": "The economy lost jobs in seven months of 2025 and 2026.",
         "measure_line": (f"Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, {f1['window_words']}, "
-                         "the span both jobs charts share, with the three-month average."),
+                         f"the span this chart shares with the jobs chart of Rule {S14_RULE}, with the three-month average."),
         "notes": keep,
         "source_line": f1["source_line_plain"],
         "chart_notes": [],
@@ -1183,7 +1191,9 @@ def rule_14_142():
         "labels": dict({k_: v for k_, v in s14["labels"].items() if k_ != "latest"},
                        **{"named": [{"x": m, "text": []} for m in losses]}),
         # the title carries the fault; a note on one column read as pointing at one month (the design director's DD-E6)
-        "annotations": [],
+        # S96's in-plot "Three-month average" note, on the same scale in the same place, so the pair differ by the margin
+        # alone (the data lead's batch 6 suggestion; DD-E6 dropped only the note on one column)
+        "annotations": spec["annotations"],
         "show": ["evidence", "title", "measure", "chart", "notes", "source"],
         "failure": {"rule": "14.142", "caption_lead": "Fails Rule 14.142."},
         "notes_internal": "Rule 14.142's failure plate (ruling c; the data lead's R3 of the fix pass): S96 with the margin "
@@ -1339,7 +1349,8 @@ def check(entries, files, specs, steps):
     ok("the grade of all three steps" in lab_b4 and "Connection" not in lab_b4, f"14.143: Loop B4's label: {lab_b4}")
     ok(".oa-stepper-step .lpn{grid-row:1" in files["s-14-143-correct"], "14.143: the first step's label sits in its own row")
     # RP-9: the key reads the ticks and the dashed step
-    ok("Ticks near a line’s start count its delay" in rt_143 and "Dashed for a step the atlas grades plausible" in rt_143,
+    ok("Ticks near a line’s start count its delay" in " ".join(rt_143.split())
+       and "Dashed for a step the atlas grades plausible" in " ".join(rt_143.split()),
        "14.143: no key for the ticks or the dashed step (RP-9)")
     # the data lead's batch 6 suggestion: Loop R10's supposition opens its first step, before its direction
     r10_1 = re.search(r'data-oa-part="Loop R10" data-oa-first[^>]*>.*?<span class="oa-stepper-line">(.*?)</span>&#32;<span', t)
@@ -1402,7 +1413,7 @@ def check(entries, files, specs, steps):
     ok("contested, in the technology layer, from" in rt and "well supported, in the economy layer, from" in rt
        and "“Cost of essentials”, in the technology layer" not in rt, "14.144: a connection's layer reads as its end's (RP-7)")
     # RP-9: each step's delay in words and a key for the ticks
-    ok(rt.count("and its effect takes over 10 years") == 2 and "Ticks near a line’s start count its delay" in rt,
+    ok(rt.count("and its effect takes over 10 years") == 2 and "Ticks near a line’s start count its delay" in " ".join(rt.split()),
        "14.144: the steps' delays or the ticks' key are missing (RP-9)")
     # R5 (DF-7): 15.16's grade form and 15.20's route form; "evidence for the problem" nowhere
     ok("vidence for the problem" not in t and t.count("evidence of the problem") == 3 and t.count('class="gp"') == 6,
@@ -1436,7 +1447,7 @@ def check(entries, files, specs, steps):
     # NB-S2: the failure differs from S96 by the band alone: S96's notes from S14 in S96's order, its measure line less the
     # margin, no on-plot latest label, and a source line with no margin sentence (ST-M1)
     s14n = json.loads((SPECS / "s14.json").read_text())["notes"]
-    ok(fs["notes"] == [SEVEN, s14n[2]] + [n for n in s96["notes"] if n in s14n],
+    ok(fs["notes"] == [SEVEN, s14n[2]] + [n for n in s96["notes"] if n in s14n] + [WINDOW] and s96["notes"][-1] == WINDOW,
        "S96's failure: its notes are not S96's count of drops, preliminary, average, seasonal adjustment and window notes (NB-S2, R3)")
     ok(not re.search(r"(?i)margin|band|nine times", " ".join(fs["notes"] + [fs["title"], fs["measure_line"], fs["source_line"]])),
        "S96's failure: a word of the margin in its notes, title, measure line or source line (R3)")
