@@ -30,7 +30,7 @@
       var named = (L.named || []).map(String), tk = c.size('tick'), lh = Math.round(tk * 1.36), chip = 20, gut = chip + 8;
       var ty = function (w) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(w).replace(/[ \t\n]+/g, ' ')); };
       // the page and the callouts: side by side where the callouts keep 220 px, else the callouts under the page
-      var side = W >= 600, pw = side ? Math.min(L.page_max || 400, W - 240) : W, pin = 14, rx = side ? 0 : 0;
+      var side = W >= 600, pw = side ? Math.min(L.page_max || 400, W - 257) : W, pin = 14, rx = side ? 0 : 0;
       var x0 = gut, x1 = pw - gut;   // the page's frame runs from x0 to x1; numbers sit outside it
       var inner = x1 - x0 - 2 * pin, mw = Math.round(inner * (L.margin_share || 0.3)), split = mw >= (L.margin_min || 84);
       var mainw = split ? inner - mw - 12 : inner, mx = x1 - pin - mw, tx = x0 + pin;
@@ -104,12 +104,18 @@
       c.line(x0, frame_bottom + 0.5, x1, frame_bottom + 0.5, { stroke: 'context', width: 1, dash: '4 3', mark: false });
       if (L.crop_words) frame_bottom = c.text(x0, frame_bottom + 8 + c.size('label') * 0.93, ty(L.crop_words), { role: 'label', fill: 'secondary', max: x1 - x0 }).bottom;
       // the numbers: the main column's in the left gutter, the margin's and the flush-right piece's outside the right edge
+      // CR-S13 (fix pass after rounds 4 and 5): two numbers in one column stand 4 px apart or more, the lower moved down
+      var low = {};
       Object.keys(placed).sort(function (a, b) { return num[a] - num[b]; }).forEach(function (key) {
         var p = placed[key]; if (p.base === undefined || p.base === null) return;
-        chipat(key, p.right ? x1 + 6 : 0, p.base);
+        var nx = p.right ? x1 + 6 : 0, top = p.base - tk * 0.35 - chip / 2, base = p.base;
+        if (low[nx] !== undefined && top < low[nx] + 4) base += low[nx] + 4 - top;
+        chipat(key, nx, base);
+        low[nx] = base - tk * 0.35 + chip / 2;
       });
-      // the callouts
-      var cx = side ? pw + 16 : 0, cw = side ? W - cx : W, cy = side ? 0 : frame_bottom + 20;
+      // the callouts; at a desk they start 33 px past the page's right-hand numbers, a hairline between (CR-S13), so the
+      // margin's numbers and the list's own read as two sets
+      var cx = side ? pw + 33 : 0, cw = side ? W - cx : W, cy = side ? 0 : frame_bottom + 20;
       c.rows.forEach(function (r) {
         var key = String(r[ek]), base = cy + c.size('label') * 0.93;
         chipat(key, cx, base);
@@ -117,7 +123,9 @@
         var u = c.text(cx + gut, t.bottom + 1 + tk * 0.93, ty(r[el]), { role: 'tick', max: cw - gut, leading: lh, fill: 'secondary' });
         cy = u.bottom + 12;
       });
-      c.height(Math.max(frame_bottom, cy - 12));
+      var hh = Math.max(frame_bottom, cy - 12);
+      if (side) c.line(pw + 16, 0, pw + 16, hh, { stroke: 'gridline', width: 1, mark: false });
+      c.height(hh);
     }
   });
 })(globalThis.OAChart);

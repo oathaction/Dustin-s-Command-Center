@@ -15,7 +15,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey, with its published margins of error",
-  "title": "In 2025, 213.2 million people had private health coverage and 119.1 million had public coverage, and 23.8 million had both.",
+  "title": "In 2025, 213.2 million people had private health coverage, about 1.8 times the 119.1 million who had public coverage.",
   "measure_line": "People by health insurance coverage, millions and percent of the 336.8 million in the civilian noninstitutionalized population, 2025, United States",
   "notes": [
     "Each circle’s area, and the area the two circles share, is in proportion to its count on one scale; Rule 14.81’s chart draws the same groups with circles of one size.",
@@ -89,7 +89,8 @@
     "Maker A, round 4. Data plan row 118, rule 14.82. Domain D09 (V7 I133). Source line: the derived file's printed line.",
     "Data lead rulings (a) nothing named; (b) three circles at true area on one scale, no frame, the third circle apart by at least its own radius, inks as S87 (1.5 px subject-ink edges, no fill, the overlap in the track ink), the everyone count in the measure line; (c) the grade line. MA-8 and the editor: the title states the two circles and their overlap.",
     "Area check (ruling (b), MA-10): the form finds the distance between the two centers by bisection on the lens formula and fails the drawing where the shared area misses 23,775,140 by more than 1 percent, at every width the build draws and sweeps; the kit's area_of check holds each circle's radius to the square root of its count on the private circle's scale within 0.5 px; maker_a_round4_derive.py --figures, check S88, recomputes the shared area at six radii. The data lead's own read of the SVGs: every area within 0.12 percent at four widths.",
-    "Checks by script (maker_a_round4_derive.py --figures, check S88): 213.2, 119.1 and 23.8 million in the title equal the published totals and the derived region, rounded; the regions sum to 336,838,154; every gap between two regions passes its approximate margin."
+    "Checks by script (maker_a_round4_derive.py --figures, check S88): 213.2, 119.1 and 23.8 million in the title equal the published totals and the derived region, rounded; the regions sum to 336,838,154; every gap between two regions passes its approximate margin.",
+    "Fix pass after rounds 4 and 5 (CD-S3, November 16, 2026): the title leads with one finding and the drawing, which prints every count, carries the rest; draft words for the editor (was: \"In 2025, 213.2 million people had private health coverage and 119.1 million had public coverage, and 23.8 million had both.\")."
   ],
   "chart_notes": [
     "Each group’s count and share sit inside it, or below the circles on a thin line where it does not fit; the overlap, people with both kinds, is shaded."

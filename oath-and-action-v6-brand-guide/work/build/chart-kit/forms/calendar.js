@@ -24,20 +24,31 @@
       var ymd = function (r) { var m = String(r[ed]).match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? [+m[1], +m[2], +m[3]] : null; };
       var year = (ymd(h.rows[0]) || [2000])[0], leap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
       var byday = {}; h.rows.forEach(function (r, i) { var e = ymd(r); if (e) (byday[e[1] + '-' + e[2]] = byday[e[1] + '-' + e[2]] || []).push(i); });
-      var W = L.mark_width || 256, rowh = 26, lab = 34, pitch = (W - lab - 4) / 31, sq = Math.min(8, Math.floor(pitch));
-      // the year mark: a month a row, a hairline for its days, each event a square on its day, stacked where a day holds several
-      var mark = h.mark(W, 12 * rowh, function (c) {
-        // the twelve names in one text, a line each, and every month's hairline in one path
-        c.text(0, rowh / 2 + 4.5, months.join(' '), { role: 'tick', fill: 'secondary', max: 1, leading: rowh });
-        var d = '';
-        for (var m = 0; m < 12; m++) d += 'M' + lab + ',' + (m * rowh + rowh / 2 + 0.5) + 'h' + K.round((DAYS[m] + (m === 1 && leap ? 1 : 0) - 1) * pitch + sq);
+      var W = L.mark_width || 256, rowh = 26, lab = 34, pitch = (W - lab - 4) / 31, sq = Math.min(8, Math.floor(pitch)), top = 20;
+      // the year mark: a month a row, a hairline for its days, each event a square on its day, stacked where a day holds several;
+      // CD-S1 (fix pass after rounds 4 and 5): the days on a 1 to 31 scale, labeled once at the top at days 1, 15 and 31,
+      // and each month's hairline ticked at its 1st, its 15th and its last day
+      var mark = h.mark(W, top + 12 * rowh, function (c) {
+        var dx = function (day) { return lab + (day - 1) * pitch + sq / 2; };
+        c.text(dx(1), 13, '1', { role: 'tick', fill: 'secondary', anchor: 'middle' });
+        c.text(dx(15), 13, '15', { role: 'tick', fill: 'secondary', anchor: 'middle' });
+        c.text(lab + 30 * pitch + sq, 13, '31', { role: 'tick', fill: 'secondary', anchor: 'end' });
+        // the twelve names in one text, a line each, and every month's hairline and ticks in one path
+        c.text(0, top + rowh / 2 + 4.5, months.join(' '), { role: 'tick', fill: 'secondary', max: 1, leading: rowh });
+        var d = '', tk = '';
+        for (var m = 0; m < 12; m++) {
+          var md = DAYS[m] + (m === 1 && leap ? 1 : 0), yl = top + m * rowh + rowh / 2;
+          d += 'M' + lab + ',' + (yl + 0.5) + 'h' + K.round((md - 1) * pitch + sq);
+          [1, 15, md].forEach(function (day) { tk += 'M' + (Math.round(dx(day) - 0.5) + 0.5) + ',' + (yl - 3) + 'v7'; });
+        }
         c.path(d, { fill: 'none', stroke: 'gridline', width: 1, mark: false });
+        c.path(tk, { fill: 'none', stroke: 'gridline', width: 1, mark: false });
         // the squares, filled ones in one path and open ones in another, each square a closed run of four sides
         var stack = {}, sq_f = [], sq_o = [], R = K.round;
         h.rows.forEach(function (r) {
           var e = ymd(r); if (!e || e[0] !== year) return;
           var key = e[1] + '-' + e[2], k = stack[key] = (stack[key] || 0) + 1, n = (byday[key] || []).length;
-          var x = lab + (e[2] - 1) * pitch, y0 = (e[1] - 1) * rowh + rowh / 2 - (n * sq + (n - 1) * 2) / 2 + (k - 1) * (sq + 2);
+          var x = lab + (e[2] - 1) * pitch, y0 = top + (e[1] - 1) * rowh + rowh / 2 - (n * sq + (n - 1) * 2) / 2 + (k - 1) * (sq + 2);
           if (strong(r)) sq_f.push([x, y0, sq]); else sq_o.push([x + 0.75, y0 + 0.75, sq - 1.5]);
         });
         var run = function (q) { return q.map(function (b) { return 'M' + R(b[0]) + ',' + R(b[1]) + 'h' + b[2] + 'v' + b[2] + 'h-' + b[2] + 'z'; }).join(''); };
@@ -62,8 +73,10 @@
           }).join('') + '</li>';
       });
       // the key: a line on the squares, then the two kinds after the squares the list uses (DD-I17)
+      // CR-S14 and CD-S1 (fix pass after rounds 4 and 5): each kind on a line of its own, so no entry parts from its square
+      // and the two never run together at a desk
       return (L.key ? '<p class="oac-h-small">' + h.words(L.key) + '</p>' : '') +
-        '<p class="oac-h-small"><span class="oac-h-sq-strong">' + h.words(tags.strong || '') + '</span> <span class="oac-h-sq">' + h.words(tags.plain || '') + '</span></p>' + mark + '<ol class="oac-h-dates" role="list">' + items.join('') + '</ol>';
+        '<p class="oac-h-small"><span class="oac-h-sq-strong">' + h.words(tags.strong || '') + '</span></p><p class="oac-h-small"><span class="oac-h-sq">' + h.words(tags.plain || '') + '</span></p>' + mark + '<ol class="oac-h-dates" role="list">' + items.join('') + '</ol>';
     }
   });
 })(globalThis.OAChart);

@@ -66,8 +66,9 @@
         if (tight) {
           var sh = shade(r[es]);
           c.rect(x, y, size, size, { fill: sh, data: { key: r[ec], field: es, value: r[es] } });
-          // a 1 px outline keeps the lightest step apart from the ground (access S5)
-          c.rect(x + 0.5, y + 0.5, size - 1, size - 1, { stroke: 'sequential-outline', width: 1, mark: false });
+          // a 1 px outline keeps the lightest step apart from the ground (access S5), in the context ink, as the palette plate
+          // sets a magnitude step's edge (CR-S20, fix pass after rounds 4 and 5; it was Verdigris's darkest step)
+          c.rect(x + 0.5, y + 0.5, size - 1, size - 1, { stroke: 'context', width: 1, mark: false });
           if (codes && fits(r[ec])) c.text(x + size / 2, y + size / 2 + 4, r[ec], { role: 'tick', size: c.t('type-tile-code-phone'), weight: 600, anchor: 'middle', fill: sh === 'mag-4' || sh === 'mag-3' ? 'label-on-subject' : 'label' });
         } else {
           // the track ground keeps the code and figure at 4.5 to 1 or more on both grounds, in the label ink
@@ -95,6 +96,8 @@
           if (kx2 > W - 80) { kx2 = 0; yy += 22; }
         });
         c.key(['mag-1', 'mag-2', 'mag-3', 'mag-4'].map(function (m) { return { fill: m, ordered: true, outline: true }; }));
+        // CR-S20: the national figure as the phone key's last line, in words, since the desk sets it with its arrow beside the key
+        if (nation && L.nation_label) { yy += 22; c.text(0, yy + 12, String(L.nation_label).replace('{shift}', K.fmt(Math.abs(nation[es]), f.shift || 'number:1')), { role: 'tick', weight: 700 }); }
         ky = yy + 22;
       }
       if (L.lists) {

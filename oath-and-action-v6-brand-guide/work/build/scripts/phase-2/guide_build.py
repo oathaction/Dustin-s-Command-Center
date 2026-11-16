@@ -1045,7 +1045,12 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
                 stage_attrs.append(f'aria-describedby="{aid}"')
         else:
             stage_attrs.append('role="img"')
-            stage_attrs.append(f'aria-label="{e(alt) if alt else e(lab or "Specimen")}"')
+            # Call 11 (DR-97 kept): once the picture is hidden, its own Illustrative label is no longer heard, so an alt that
+            # does not say it begins with it (31 stages on the fix pass's count; the editor's word, in the engineer's notes)
+            ill_alt = alt
+            if alt and re.search(r'class="[^"]*\billus\b', frag) and not re.search(r"\billustrative\b", alt, re.I):
+                ill_alt = "Illustrative. " + alt
+            stage_attrs.append(f'aria-label="{e(ill_alt) if ill_alt else e(lab or "Specimen")}"')
             # DR-278 (b), fix pass call 11 (CD-M3, AX-S3, AX-S6, RP-13): an image stage is heard once, by its alt. Chromium
             # still exposes the words inside a role="img" box, so a reader heard the stage's words again after its alt; the
             # fragment sits in one wrapper hidden from the accessibility tree. The wrapper is a plain block with no class and
@@ -4354,6 +4359,49 @@ def self_test():
                         and re.search(r'class="plate-stage" data-specimen="s-26-front"', pg) is not None
                         and re.search(r'class="plate-stage oa-surface-newsprint" data-specimen="s-26-mid"', pg) is not None and pg.count('data-oa-bare') == 1)]}),
     ]
+    # The fix pass after rounds 4 and 5 (November 16, 2026): call 11, an image stage's words in one hidden picture (DR-278 (b)),
+    # and call 14's guards: braces that balance in every plate style, no plate script that selects across the page, and a
+    # palette plate that tokens.json still makes
+    fx_specs = {"s-14-pic.html": "<p>Words a sighted reader sees in the picture.</p>",
+                "s-14-picbtn.html": '<p>A picture that holds a <button type="button">button</button>.</p>',
+                "s-14-live.html": "<p>A readable plate.</p>",
+                "s-14-brace.html": "<style>.a { color: var(--oa-color-text-primary) } } .b { color: var(--oa-color-text-primary) }</style><p>A stray brace.</p>",
+                "s-14-open.html": "<style>.a { color: var(--oa-color-text-primary) </style><p>A block left open.</p>",
+                "s-14-strings.html": ("<style>/* { */ .a::before { content: \"}\" } .b::after { content: '{' } .c { background: url(data:image/gif;base64,R0lG) }</style>"
+                                      "<p>Braces in a comment and strings.</p>"),
+                "s-14-sel.html": '<div class="tt"></div><script>document.querySelectorAll(".tt").forEach(function (b) { b.hidden = true; });</script>',
+                "s-14-own.html": ('<div class="tt"></div><script>(function () { var S = document.currentScript.closest("[data-specimen]"); if (!S) return; '
+                                  'S.querySelectorAll(".tt").forEach(function (b) { b.hidden = true; }); })();</script>'
+                                  '<script type="text/plain">document.querySelector(".tt")</script>'),
+                "s-14-palette-spec.html": "<p>A palette plate that tokens.json no longer makes.</p>",
+                "s-14-ill.html": '<p><span class="illus">Illustrative</span> A notice for a hearing.</p>'}
+    fx_ids = [k[:-5] for k in fx_specs]
+    fx_man = {sid: {"chapter": "14", "rule": f"14.{i + 1}", "alt": f"A fix pass fixture, {sid}, at true size.", "notes": "fixture"} for i, sid in enumerate(fx_ids)}
+    fx_man["s-14-live"]["readable"] = True
+    fx_man["s-14-sel"]["interactive"] = True
+    fx_man["s-14-own"]["interactive"] = True
+    fx_man["s-14-pic"]["alt"] = "Words a sighted reader sees in the picture, a fixture."
+    fx14 = chapter("14", "data-visualization", "Data visualization", [rule(f"14.{i + 1}", {"correct": {"specimen": sid, "caption": "A fixture."}})
+                                                                       for i, sid in enumerate(fx_ids)])
+    scenarios += [
+        ("the fix pass after rounds 4 and 5: an image stage heard once (call 11), and the build's guards (call 14)",
+         {"14-data-visualization.json": fx14}, {"specimens": fx_specs, "manifest": fx_man},
+         {"warn": ["s-14-palette-spec is not what tokens.json", "s-14-brace: style block 1's braces do not balance (a closing brace with no block open",
+                   "s-14-open: style block 1's braces do not balance (1 block left open", "s-14-sel: a plate script selects across the page (document.querySelectorAll)",
+                   "s-14-picbtn: an image stage holds a link, button"],
+          "absent": ["s-14-strings: style block", "s-14-own: a plate script", "s-14-pic: an image stage", "s-14-live: an image stage", "s-14-pic: style block"],
+          "tests": [("an image stage's fragment sits in one picture hidden from the accessibility tree", lambda pg: re.search(
+                        r'data-specimen="s-14-pic"[^>]*role="img" aria-label="Words a sighted reader sees in the picture, a fixture\."><div data-oa-picture aria-hidden="true"><p>Words a sighted', pg) is not None),
+                    ("the picture closes where the stage does, so nothing in the stage stands beside it", lambda pg: re.search(
+                        r'<div data-oa-picture aria-hidden="true"><p>Words a sighted reader sees in the picture\.</p></div></div>', pg) is not None),
+                    ("a readable stage keeps its words open to a screen reader", lambda pg: re.search(r'data-specimen="s-14-live"[^>]*role="group"[^>]*><p>A readable', pg) is not None),
+                    ("an interactive stage keeps its controls and words open", lambda pg: re.search(r'data-specimen="s-14-own"[^>]*role="group"[^>]*><div class="tt">', pg) is not None),
+                    ("every image stage holds one picture, and no other stage holds one", lambda pg: len(re.findall(r'data-specimen="[^"]+"[^>]*role="img"', pg))
+                        == pg.count('<div data-oa-picture aria-hidden="true">') == 7),
+                    ("a hidden picture's Illustrative label leads an alt that lacks it, and only there (DR-97)", lambda pg:
+                        'data-specimen="s-14-ill" data-red="specimen" data-surface="newsprint" role="img" aria-label="Illustrative. A fix pass fixture, s-14-ill, at true size."' in pg
+                        and pg.count('aria-label="Illustrative. ') == 1)]}),
+    ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
         roots = {k: Path(tmp) / f"families-{k}" for k in ("full", "faulty", "fits")}
@@ -4485,6 +4533,38 @@ def self_test():
             ])
     # DR-271 (November 13, 2026; it replaces board 1's hard stop, DR-238): chapter 14 over its 2,803,941 bytes is reported and
     # its page written, with --strict and without; a page over 16 MB, the one fixed limit, writes no page and exits 3 in every mode.
+    # Call 14 (the fix pass after rounds 4 and 5): the brace guard, the page-select guard and the kit share file, case by case
+    print("call 14: the brace guard, the page-select guard and the kit share file")
+    with tempfile.TemporaryDirectory(prefix="oa-guide-build-c14-") as tmp:
+        ks = Path(tmp) / "plate-share.json"
+        pp1, pp2 = {"per_plate": None, "plates_to_come": 0}, {"per_plate": 14500, "plates_to_come": 2}
+        w1 = write_kit_share(ks, pp1, "2026-11-16T10:00:00")
+        first = ks.read_text()
+        w2 = write_kit_share(ks, pp1, "2026-11-16T11:00:00")
+        second = ks.read_text()
+        w3 = write_kit_share(ks, pp2, "2026-11-16T12:00:00")
+        checks = [("a missing file is written", w1 and '"built": "2026-11-16T10:00:00"' in first),
+                  ("a build that changes only the time leaves the file as it was", not w2 and second == first),
+                  ("a change of share is written with its build's time", w3 and json.loads(ks.read_text()) == {
+                      "per_plate": 14500, "plates_to_come": 2, "built": "2026-11-16T12:00:00", "about": json.loads(first)["about"]}),
+                  ("braces that balance pass", brace_fault(".a { color: red } @media (min-width: 1px) { .b { color: red } }") is None),
+                  ("a stray closing brace is found", (brace_fault(".a { color: red } } .b { color: red }") or "").startswith("a closing brace with no block open")),
+                  ("a block left open is found", brace_fault(".a { color: red } @media x { .b { color: red }") == "1 block left open at the end"),
+                  ("braces in comments, strings and url() are not counted", brace_fault('/* } */ .a::before { content: "}{" } .b { background: url(x{y}.png) }') is None),
+                  ("a comment that never closes is found", brace_fault(".a { color: red } /* } ") == "a comment that never closes"),
+                  ("a plate script that selects through the document is found", page_selects(
+                      '<script>document.getElementById("x"); document.querySelector(".y")</script>') == ["getElementById", "querySelector"]),
+                  ("a script that finds its plate first, a data island and a comment pass", page_selects(
+                      '<script>var S = document.currentScript.closest("[data-specimen]"); S.querySelector(".y");\n// document.querySelectorAll(".x")\n</script>'
+                      '<script type="application/json">{"a": "document.querySelector(1)"}</script><script type="text/plain">document.querySelector(".x")</script>') == [])]
+        ok = all(c for _, c in checks)
+        ok_all &= ok
+        results.append({"scenario": "call 14: the brace guard, the page-select guard and the kit share file", "pass": ok,
+                        "checks": [{"check": c, "pass": p} for c, p in checks]})
+        print(f"{'pass' if ok else 'FAIL'}  call 14's helpers")
+        for c, p in checks:
+            if not p:
+                print(f"        missed: {c}")
     print("DR-271: chapter 14's stop reported, the page's 16 MB limit stopping, in a real build")
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-ch14-") as tmp:
         for name, size, strict, want_stop in (

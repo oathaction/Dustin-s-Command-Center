@@ -139,7 +139,8 @@ def s87_s88():
     shares = {k: round(float(reg[k]['pct']), 1) for k in reg}
     check('S87', [millions(v) for v in (a, b, ab, no)] == ['189.4 million', '95.4 million', '23.8 million', '28.3 million'], 'four counts in millions')
     t = spec('S87')['title'].replace(' ', ' ')
-    check('S87', all(x in t for x in ('189.4 million', '95.4 million', '23.8 million', '28.3 million', '2025')), 'title: the four counts, 2025')
+    # CD-S3 (fix pass after rounds 4 and 5): the title leads with one finding, the overlap; the drawing prints every count
+    check('S87', millions(ab) == '23.8 million' and all(x in t for x in ('23.8 million', 'both private and public', '2025')), 'title: the overlap, 23.8 million with both, 2025 (CD-S3)')
     alt = spec('S87')['alt'].replace(' ', ' ')
     check('S87', all(f'{shares[k]:.1f} percent' in alt for k in reg) and '336.8 million' in alt, 'alt: the four shares and everyone, 336.8 million')
     check('S87', sorted(shares.values()) == [7.1, 8.4, 28.3, 56.2] and round(sum(shares.values()), 1) == 100.0, 'shares 56.2, 28.3, 7.1 and 8.4 percent, summing to 100.0')
@@ -152,7 +153,9 @@ def s87_s88():
         check(sid, worst > 1, f'every gap between two regions passes its margin (closest: {worst:.1f} times)')
     s = spec('S88')
     t = s['title'].replace(' ', ' ')
-    check('S88', all(x in t for x in (millions(a + ab), millions(b + ab), millions(ab), '2025')) and millions(a + ab) == '213.2 million' and millions(b + ab) == '119.1 million', 'title: 213.2 million private, 119.1 million public, 23.8 million both (MA-8)')
+    # CD-S3: one finding, the two circles' sizes against each other, which the Euler's areas show; the ratio from the counts
+    ratio = round((a + ab) / (b + ab), 1)
+    check('S88', all(x in t for x in (millions(a + ab), millions(b + ab), '2025', f'about {ratio} times')) and millions(a + ab) == '213.2 million' and millions(b + ab) == '119.1 million' and ratio == 1.8, f'title: 213.2 million private, about {ratio} times the 119.1 million public (MA-8, CD-S3)')
     alt = s['alt'].replace(' ', ' ')
     check('S88', all(x in alt for x in ('213.2 million', '119.1 million', '23.8 million', '189.4 million', '95.4 million', '28.3 million')), 'alt: totals and regions')
     check('S88', '336.8 million' in s['measure_line'] and 'frame' not in s['labels'], 'everyone in the measure line, no frame (data lead condition)')

@@ -15,7 +15,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey, with its published margins of error",
-  "title": "In 2025, 189.4 million people had private health coverage alone, 95.4 million had public coverage alone, 23.8 million had both and 28.3 million had neither.",
+  "title": "In 2025, 23.8 million people had both private and public health coverage.",
   "measure_line": "People by health insurance coverage, millions and percent of everyone, 2025, civilian noninstitutionalized population, United States",
   "notes": [
     "The two circles share one size, so their areas carry no count; Rule 14.82’s chart draws each region at its true size.",
@@ -89,7 +89,8 @@
   "notes_internal": [
     "Maker A, round 4. Data plan row 117, rule 14.81. Domain D09 (V7 I133). Source line: the derived file's printed line.",
     "Data lead rulings (a) nothing named; (b) a frame for everyone, a 1 px context-ink rectangle named with its count, two circles of one size with 1.5 px subject-ink edges and no fill, each named, the overlap in the track ink, each group's count and share inside it with 4 px to spare or by a leader where it does not fit (MA-9: under the circles at the narrowest widths), the note on the circles' sizes; (c) the grade line.",
-    "Checks by script (maker_a_round4_derive.py --figures, check S87): the four counts and shares equal the derived file rounded and sum to 336,838,154 and 100.0 percent; private and public totals equal the published DP03 counts; every gap between two regions passes its approximate margin (the closest about 7 times over), so the title may list them in any order."
+    "Checks by script (maker_a_round4_derive.py --figures, check S87): the four counts and shares equal the derived file rounded and sum to 336,838,154 and 100.0 percent; private and public totals equal the published DP03 counts; every gap between two regions passes its approximate margin (the closest about 7 times over), so the title may list them in any order.",
+    "Fix pass after rounds 4 and 5 (CD-S3, November 16, 2026): the title leads with one finding and the drawing, which prints every count, carries the rest; draft words for the editor (was: \"In 2025, 189.4 million people had private health coverage alone, 95.4 million had public coverage alone, 23.8 million had both and 28.3 million had neither.\")."
   ],
   "chart_notes": [
     "Each group’s count and share sit inside it; the overlap, people with both kinds, is shaded. The frame stands for everyone, and the space outside both circles holds the people with no coverage."

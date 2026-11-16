@@ -2,15 +2,15 @@
 
 Oath & Action Edition 06, Phase 3, chat 7, November 16, 2026. Reader: the UX and accessibility lead (`.claude/agents/oa-ux-accessibility-lead.md`) as reviewer, under the brief `work/handoffs/phase-3/20261116_Phase-3-Rounds-4-5-Review-Brief.md`. The page read is a copy of the strict build of `9a6e1182` (`c07/main/guide.html`, 12,107,102 bytes) in `c07/review/accessibility/`. Started 16:34 UTC.
 
-Status: in progress. Sections fill as the checks run.
+Status: complete, 18:00 UTC. Every figure below comes from a check I ran; section 7 lists them and section 8 what I did not run.
 
 ## 1. Score
 
-Pending.
+**4 of 5.** The round 4 and 5 plates hold up by keyboard, in Chromium's tree, in text contrast, forced colors, reduced motion, print emulation and scripts off; their one shortfall against a WCAG number is the red target ring at 2.95 to 1 (AX-S5), a Should because words and the ring's weight carry the same fact. What keeps the lens from 5 is the shell's masthead, which at 1024 to 1360 px can hide a focused rail link whole (AX-M1, 2.4.11), with six more Should fix items: four in this review's own plates (AX-S1 to AX-S4) and two that DR-278's fixes must carry (AX-S6, AX-S7).
 
 ## 2. Must fix
 
-- **AX-M1. At 1024 to 1360 px a focused link in the chapter rail can sit wholly under the masthead (2.4.11, AA).** Where: the shell, every page width from 1024 to 1360 px (`guide-shell.css` line 122, `nav.rail { top: var(--head-h) }`, with `--head-h` at 4rem from 64em). The masthead's part links wrap to a second line there, so it measures 101 px while `--head-h` stays 64 px, and the rail's top 37 px sit under it. A rail link that takes focus scrolls to the rail's top edge. Measured in Chromium, focusing the 34 rail links from the last up as Shift+Tab does: 2 wholly hidden at 1024 px and 4 at 1200 px, with 5 more more than half hidden. The same mismatch covers the top 17 px of every group and return place a link lands on at 1024 to 1360 px, and 25 px at 360 to 372 px, where the menu button drops to a second line (DR-278 (a), section 5). Fix: in `guide-shell.js`, set `--head-h` on the root from the masthead's `clientHeight` with a `ResizeObserver`, keeping the CSS values as the scripts-off fallback; measured, it clears all 581 landings and the rail at 360, 1024 and 1280 px and moves nothing at 390 or 1440 px. For scripts off, add the two-line height to the CSS for 64em to 85em (101 px) as a floor. Owner: component engineer.
+- **AX-M1. At 1024 to 1360 px a focused link in the chapter rail can sit wholly under the masthead (2.4.11, AA).** Where: the shell, every page width from 1024 to 1360 px (`guide-shell.css` line 122, `nav.rail { top: var(--head-h) }`, with `--head-h` at 4rem from 64em). The masthead's part links wrap to a second line there, so it measures 101 px while `--head-h` stays 64 px, and the rail's top 37 px sit under it. A rail link that takes focus scrolls to the rail's top edge. Measured in Chromium, focusing the 34 rail links from the last up as Shift+Tab does: at 1024 px 7 are covered, 5 of them by half or more and 2 wholly; at 1200 px 6 are covered, 5 by half or more and 4 wholly. The same mismatch covers the top 17 px of every group and return place a link lands on at 1024 to 1360 px, and 25 px at 360 to 372 px, where the menu button drops to a second line (DR-278 (a), section 5). Fix: in `guide-shell.js`, set `--head-h` on the root from the masthead's `clientHeight` with a `ResizeObserver`, measured on a sample of 97 landings, it clears every one at 360, 1024 and 1280 px and moves none at 390 or 1440 px. For scripts off, set `--bar-h` in the CSS to the two-line height in the two ranges measured here, 64em to 85em and 22.5em to 23.3em. Retest the rail after the fix. Owner: component engineer.
 
 ## 3. Should fix
 
@@ -24,77 +24,89 @@ Pending.
 
 ## 4. The named places in this lens
 
-Draft, 16:57 UTC; lines firm up as the browser runs land.
+**Named place 1, the carried items.**
+- **SG-6, the tier word above the name: yes, on conditions.** Keep the DOM order name, comma, tier, so each link stays named "Ranked bar, Core" and its name starts with the words a voice user says ("click Ranked bar"); move the tier by its grid row inside the link only; keep the tier live text, not generated content; keep "Avoid" with its strike mark. A tier-first DOM would start 127 link names with one of four words, so a links list would read "Core, ..., Core, ...". The residual: the eye reads tier then name while the ear hears name then tier, inside one link, which changes no meaning (1.3.2 holds).
+- **DD-R5, a keyline inside the chosen pill's red ring: yes, for accessibility as well as grayscale** (AX-S5). Pillar Red on Newsprint measures 2.95 to 1, under 1.4.11's 3 to 1; a Charcoal keyline inside the ring brings the boundary to 13.29 to 1. On Charcoal the red measures 4.49 to 1 and passes. Both plates, as R4-5 says.
+- **DD-R2, one width for the chooser's choices:** no accessibility objection, provided each choice still wraps its words at 320 px with 200 percent text.
+- **Round 4's cards on a phone and on Charcoal:** S91's three cards are description lists of six terms each in Chromium's tree, read in card order; on Charcoal their words measure 7.26 to 1 or more, and at 320 to 1440 px they take no Tab stop and pass no box. The look is the design director's.
+- S14's label, DD-I18, the S16 note and the edge guard: outside this lens.
 
-1. **Carried items (named place 1).**
-   - **SG-6, the tier word above the name: yes, on conditions.** Keep the DOM order name, comma, tier, so each link stays named "Ranked bar, Core" and its name starts with the words a voice user says ("click Ranked bar"); move the tier by its grid row inside the link only; keep the tier live text, not generated content; keep "Avoid" with its strike mark. A tier-first DOM would start 127 link names with one of four words, and a links list would then read "Core, Core, Core". The residual: the eye reads tier then name while the ear hears name then tier, inside one link, which changes no meaning (1.3.2 holds).
-   - **DD-R5, a keyline inside the chosen pill's red ring: yes, and for accessibility, not only for grayscale.** Pillar Red on Newsprint measures 2.95 to 1 (#E63946 on #DCD9D2), under the 3 to 1 that 1.4.11 asks of a graphic's boundary, so on 14.144 with R-30 chosen (and on 15.20) the target pill's 3 px red ring stands under the bar. A Charcoal keyline inside it brings the boundary to 13.29 to 1. The red connection already has its keyline case. On Charcoal the red measures 4.49 to 1 and passes. Both plates, as R4-5 says.
-   - **DD-R2, one width for the chooser's choices:** no accessibility objection, provided each choice still wraps its words at 320 px with 200 percent text.
-   - Round 4's cards on a phone and on Charcoal: under contrast and keyboard below.
-2. **DR-278's four items:** measured under section 5.
-4. **The selection guide at true size.**
-   - **Structure, in Chromium's tree:** a group "Choose a chart, interactive specimen" holding 144 links: "Skip to Rule 14.1", 16 "Skip these N forms" and 127 forms each named by form and tier ("Ranked bar, Core", "Radar chart, Avoid"); 16 lists each named by its question ("Comparison: which is bigger, and how do they rank?"); the tier key as a description list; every one of the 127 pictures hidden. No heading or landmark in the plate.
-   - **Skip links:** "Skip to Rule 14.1" lands on group 1, whose first rule is 14.1, so its words now say where it goes (D3-2086 met). Each "Skip these N forms" lands on the next question's line, but the 16th passes the rule index too (AX-S4).
-   - **Shapes at 1x:** at 390 px (shared capture) and at 320 px (my capture, 2 forms a row) the symbols read apart by their outlines: bars, columns, dots, slopes, lines, areas, arrows. Forms that differ only in a detail, Column against Columns with a moving average, or Lollipop against Change lollipop with a size-of-shift key, are told apart by their names, which every tile prints. The lighter marks (Grouped bar's second series, Diverging bar's left side) stand at 1.81 to 1 on Newsprint and the gridlines at 1.47; since the pictures are hidden and every form is named, 1.4.11 does not ask more of them. In forced colors the names and tiers take the link color and the symbols keep their shapes.
-   - **Avoid forms:** each carries the strike mark in its picture and the word "Avoid" in its name and on the tile, never red alone (data lead's ruling a).
-   - **Tier words:** SG-6 under named place 1.
-   - **Weight:** outside this lens.
-5. **The palette specification:** 88 of the plate's ratios recomputed by the WCAG formula from the printed values. All 54 ground ratios match, rounded down. 16 of 36 label ratios print one hundredth high (AX-S1). No ratio crosses 3 or 4.5 the wrong way.
-7. **Rules 14.143 and 14.144 live and still: met** (Chromium, reduced motion on, 17:12 to 17:29 UTC, `scripts/modes.cjs`).
-   - **14.143 by keyboard alone:** from "Ready." the status line runs "Loop B4, step 1 of 3" to "Loop B4, step 3 of 3", then "Loop R10, step 1 of 4" to "Loop R10, step 4 of 4", where Next step turns unavailable (`aria-disabled="true"`) and stays on the last step for two more presses. Previous step returns "Loop R10, step 3 of 4"; Reset the loop returns the ready line and keeps focus on its own button. Focus never moved on its own. Play under reduced motion goes to step 1, its word turns to Pause, and it holds there after 2.5 s; Pause stops it. Each loop counts its own steps. 15.19 walks the same way, "Step 1 of 3" to "Step 3 of 3".
-   - **14.144 by arrow keys:** the radios move and choose together; the status line is empty on load and then reads, for R-38, "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer." R-38's targets off the loop are said in words. 15.20 the same, with its own sentence ("Reform R-04 acts where the marks turn red: on two connections.").
-   - **Print emulation (794 px):** 14.143 shows 7 of 7 steps and 15.19 3 of 3, no button; 14.144 and 15.20 show no radio; the selection guide shows no skip link. My four print captures timed out after 60 s each, so print is read from the computed styles only, and not from pictures.
-   - **Scripts off (390 px):** 14.143 shows its 7 steps and both drawings with no button; 15.19 its 3 steps; 14.144's three radios still choose; S96, S85, S91 and S94 print "This chart needs JavaScript" with their tables; the selection guide's 127 links and pictures stand.
-   - **Forced colors (emulated, 1440 and 390 px):** captures of 14.143, 14.144, S96, 11.10, 11.11, S85, S87, S89, S91, S94, the palette plate, 15.22 and 15.23 read. Every live word takes the system's colors; each drawing keeps its own ground. On S96 the columns turn to outlines while the two named drops stay filled, so the plate's point survives. On the selection guide at 320 px the names and tiers take the link color and the symbols keep their shapes.
-   - The three phrases past their card at 320 px with 200 percent text (D3-1890): pending the keyboard run.
-8. **Contrast by the WCAG formula, 34 pairs from the new work** (token values read from `tokens.css`, ratios rounded down; the palette plate's 88 printed ratios are under named place 5). Text needs 4.5 to 1, large text and marks 3 to 1.
+**Named place 2, DR-278's four items:** measured in section 5. In short: (a) reaches further than DR-278 says, 1024 to 1360 px and 360 to 372 px, and it hides rail links whole (AX-M1); (b) the wrapper hides the words and moves no box, but must come with a guide check change (AX-S6); (c) the step line fix works and moves nothing, but chapter 26's code sets still push the page at 320 px with 200 percent text (AX-S7); (d) one element, one script, nothing moves.
 
-   | Pair, where it appears | Ratio | Verdict |
-   |---|---|---|
-   | Charcoal words on Newsprint: every new plate's body, S96's named drops, the trackers' status lines | 13.29 | met |
-   | Deep Stone secondary words on Newsprint: the selection guide's tier words, S96's measure and source lines, the trackers' key | 5.49 | met |
-   | Deep Stone on the plate mat (#CECDC7), the size lines beside frames | 4.85 | met |
-   | Deep Stone on White, the trackers' words where a step's band is selected | 7.74 | met |
-   | Newsprint words on Charcoal: round 4's cards and chips on Charcoal | 13.29 | met |
-   | Dim Newsprint secondary words on Charcoal | 7.26 | met |
-   | Muted step words on Newsprint, 14.143's steps ahead | 5.49 | met |
-   | Muted step words on Charcoal | 7.26 | met |
-   | Charcoal on 14.143's selected band (White) | 18.73 | met |
-   | Newsprint on the selected band on Charcoal (Prussian) | 9.42 | met |
-   | Tracker marks Done, Now, Stopped and the done line (Charcoal) on Newsprint | 13.29 | met |
-   | Tracker Not yet ring and line (Stone) on Newsprint | 4.29 | met |
-   | Tracker marks on Charcoal (Newsprint) | 13.29 | met |
-   | Tracker Not yet ring on Charcoal (Dim Newsprint) | 7.26 | met |
-   | A step number knocked out of a filled mark (Newsprint on Charcoal) | 13.29 | met |
-   | Pillar Red ring of a chosen target pill on Newsprint (14.144, 15.20) | 2.95 | **under 3 (AX-S5)** |
-   | Pillar Red on the plate mat | 2.61 | under 3, only where a red mark meets the mat |
-   | Pillar Red on Charcoal | 4.49 | met |
-   | Verdigris focus ring on Newsprint | 3.36 | met |
-   | Verdigris focus ring on the plate mat | 2.97 | not used: a frame's own ring is Charcoal (11.75) |
-   | Newsprint focus ring on Charcoal | 13.29 | met |
-   | S96's columns (context, Stone) on Newsprint | 4.29 | met |
-   | S96's two named drops (Charcoal) against the Stone columns beside them | 3.09 | met |
-   | Context ink on Charcoal (#878A8F) | 5.41 | met |
-   | Light fill (#A1A2A3) on Newsprint: the selection guide's lighter marks, such as Grouped bar's second series | 1.81 | the symbols are hidden pictures and each form is named in words |
-   | Light fill on Charcoal (Stone) | 3.10 | met |
-   | Gridline on Newsprint (#B4B4B3) | 1.47 | gridlines are guides, not data |
-   | Gridline on Charcoal (#393C41) | 1.69 | as above |
-   | S12's phone tiles: Charcoal codes on magnitude step 1 (#CCCAC5) | 11.43 | met |
-   | Charcoal codes on step 2 (#A1A2A3) | 7.32 | met |
-   | Newsprint codes on step 3 (#555A63) | 4.91 | met |
-   | Newsprint codes on step 4 (#2E3034) | 9.37 | met |
-   | S12's step 1 tile against Newsprint | 1.13 | each tile carries its code, so position holds |
-   | Newsprint on Charcoal pills, 14.143's Variable C3 | 13.29 | met |
+**Named place 4, the selection guide at true size.**
+- **Structure, in Chromium's tree:** a group "Choose a chart, interactive specimen" holding 144 links: "Skip to Rule 14.1", 16 "Skip these N forms" and 127 forms each named by form and tier ("Ranked bar, Core", "Radar chart, Avoid"); 16 lists each named by its question ("Comparison: which is bigger, and how do they rank?"); the tier key as a description list; every one of the 127 pictures hidden. No heading or landmark in the plate.
+- **Skip links:** "Skip to Rule 14.1" lands on group 1, whose first rule is 14.1, so its words now say where it goes (D3-2086 met). Each "Skip these N forms" lands on the next question's line, but the 16th passes the rule index too (AX-S4).
+- **Shapes at 1x:** at 390 px (shared capture) and at 320 px (my capture, 2 forms a row) the symbols read apart by their outlines: bars, columns, dots, slopes, lines, areas, arrows. Forms that differ only in a detail, Column against Columns with a moving average, or Lollipop against Change lollipop with a size-of-shift key, are told apart by their names, which every tile prints. The lighter marks (Grouped bar's second series, Diverging bar's left side) stand at 1.81 to 1 on Newsprint and the gridlines at 1.47; since the pictures are hidden and every form is named, 1.4.11 does not ask more of them. In forced colors the names and tiers take the link color and the symbols keep their shapes.
+- **Avoid forms:** each carries the strike mark in its picture and the word "Avoid" in its name and on the tile, never red alone (data lead's ruling a).
+- **Tier words:** SG-6 under named place 1.
+- **Weight:** outside this lens.
 
-   **Measured on the rendered plates** (17:42 to 17:51 UTC, `contrast.cjs` and `contrast_eval.py`: each word's computed ink against the commonest pixel under its own text box, captured with every word made transparent, at 1440 px): 4,610 words on 16 plates on Charcoal and 15 on Newsprint (S96, S89 to S91, S94, S95, S12, the selection guide, the palette plate, 14.143, 14.144, 11.10, 11.11, the ballot step table, 15.22, 15.23), 65 distinct ink and ground pairs. Every one is 4.5 to 1 or more; the lowest are the palette plate's step numbers on their swatches (4.61, Newsprint on sequential step 3 on Charcoal; 4.70; 4.74), then the selection guide's tier key and S12's codes on its gray steps (6.93 to 7.33). S96's Newsprint capture shifted while its chart drew, so its 52 words there are not counted; its Charcoal capture is, and the shared capture shows its "Finding" chip as Newsprint on Charcoal, 13.29 to 1.
-- **Keyboard at six widths** (17:52 to 17:54 UTC, `kb.cjs`: from the figure itself, Tab until focus leaves it, 30 plates at 1440, 1024, 768, 390, 360 and 320 px, default text). The selection guide holds 144 stops at every width. 14.143 and 15.19 hold their four buttons and the caption's link; 14.144 the radio group and three disclosures; 15.20 the radio group and one disclosure; 15.24 twelve; each kit figure one ("The table and notes"); the trackers, step tables, 15.21 and 15.22 none. Every stop draws its ring. No page scrolls sideways at any width. The only stops under 24 by 24 px are links inside sentences and table cells ("Rule 18.22" 68 by 17 px, 15.25's "10.6" 27 by 17 px), which 2.5.8's inline exception covers. At 320 px each fixed plate's frame takes one stop first, as designed. At 1024 px S12's frame stop sits partly under the masthead: AX-M1 again.
-- **Text at 200 percent** (17:54 to 17:55 UTC, `kb.cjs` with the root at 200 percent, 1440, 390 and 320 px). At 1440 px nothing passes its box and the page does not scroll sideways: 14.144's round 5 Must stays fixed. At 390 px two words in 15.22 ("two-thirds", 36 and 15 px) and the palette plate's grade line label "Documented" (9 px) pass their boxes. At 320 px, beyond what WCAG asks, more do: every connection chip in 14.143's step list (62 px), 14.144's "+M renter-owner" (29 px; D3-1890's phrases, still open), 15.19's chips (14 px), 15.22's "two-thirds" (90 px) and the palette's grade labels (up to 40 px). Whether they overlap other words is being captured (pending).
-10. **Alt text and tables, S85 to S96 and the new plates** (read from the specs and the page; Chromium's tree for S89 to S91, S95 and S96).
-   - Every kit figure (S85 to S96, S12) is a group with its drawing named by the alt, a live title, measure line, notes and source, and a table behind "The table and notes" with a caption and scoped headers on every row and column (S85 5 rows, S86 8, S87 and S88 5, S89 10, S90 9, S91 4, S92 9, S93 12, S94 17, S95 52, S96 58, S12 53).
-   - The alts give what a sighted reader learns and the figures the titles name: S85's 10 of 100 squares; S86's five counts; S87's and S88's four groups with counts and shares; S95's 652 and 96 against 318; S96's band of plus or minus 122,000, the two named drops at minus 140,000 and minus 156,000, and the average of 51,000, preliminary. S90, S91, S92 and S94 name the facts in a sentence and leave the figures to their live cards and lists, which Chromium exposes as text (S91's cards are three description lists of six terms each), so nothing is held only in a picture.
-   - S96's table answers the plate's question row by row: each month's change, the three-month average, Final or Preliminary, and where it stands against the margin ("Gain past the margin" and the like).
-   - The trackers 11.10 and 11.11 name every word they print in their alts, with "Illustrative" and each step's state in the key's word; the step tables are AX-S3.
-11. **The trackers' law, as heard:** every step state in 11.10's and 11.11's alts uses the key's word ("done", "now", "not yet", "never happened", "stopped"); the denied petition is "5 Supreme Court petition stopped; 6 Supreme Court ruling not yet"; "Illustrative" is in each alt.
+**Named place 5, the palette specification.** I recomputed 88 of the plate's ratios by the WCAG formula from its printed values. All 54 ground ratios match, rounded down; 16 of 36 label ratios print one hundredth high (AX-S1); none crosses 3 or 4.5 the wrong way. The color-vision rows give each palette's nearest neighbors in words against their bars, so a reader without color sight gets the result. Prussian appears in words only: its line says no chart draws on it and gives the reason in figures, the four group inks under 3 to 1 there. In Chromium the plate is a group of four tables, each with a caption, column headers and row headers, and at 390 px the tables stack and keep those roles. The swatches are hidden pictures; every value, ratio and use is live text. A designer can choose a palette and a label ink from it alone.
+
+**Named place 7, Rules 14.143 and 14.144 live and still: met** (Chromium, reduced motion on, 17:12 to 17:29 UTC, `scripts/modes.cjs`).
+- **14.143 by keyboard alone:** from "Ready." the status line runs "Loop B4, step 1 of 3" to "Loop B4, step 3 of 3", then "Loop R10, step 1 of 4" to "Loop R10, step 4 of 4", where Next step turns unavailable (`aria-disabled="true"`) and stays on the last step for two more presses. Previous step returns "Loop R10, step 3 of 4"; Reset the loop returns the ready line and keeps focus on its own button. Focus never moved on its own. Play under reduced motion goes to step 1, its word turns to Pause, and it holds there after 2.5 s; Pause stops it. Each loop counts its own steps. 15.19 walks the same way, "Step 1 of 3" to "Step 3 of 3".
+- **14.144 by arrow keys:** the radios move and choose together; the status line is empty on load and then reads, for R-38, "Reform R-38 turns no mark red. Its two targets sit outside this loop, in the technology layer." R-38's targets off the loop are said in words. 15.20 the same, with its own sentence ("Reform R-04 acts where the marks turn red: on two connections.").
+- **Print emulation (794 px):** 14.143 shows 7 of 7 steps and 15.19 3 of 3, no button; 14.144 and 15.20 show no radio; the selection guide shows no skip link. My four print captures timed out after 60 s each, so print is read from the computed styles only, and not from pictures.
+- **Scripts off (390 px):** 14.143 shows its 7 steps and both drawings with no button; 15.19 its 3 steps; 14.144's three radios still show; S96, S85, S91 and S94 print "This chart needs JavaScript" with their tables; the selection guide's 127 links and pictures stand.
+- **Forced colors (emulated, 1440 and 390 px):** captures of 14.143, 14.144, S96, 11.10, 11.11, S85, S87, S89, S91, S94, the palette plate, 15.22 and 15.23 read. Every live word takes the system's colors; each drawing keeps its own ground. On S96 the columns turn to outlines while the two named drops stay filled, so the plate's point survives. On the selection guide at 320 px the names and tiers take the link color and the symbols keep their shapes.
+- The three phrases past their card at 320 px with 200 percent text (D3-1890) are still there: "+M renter-owner" runs 29 px past R-30's card rule and the two "Connection LE17" chips 2 px. My picture shows no word over another; WCAG does not ask for 320 px and 200 percent together, so it stays the low item D3-1890 named.
+
+**Named place 9, the trackers' law, as heard.** Every step state in 11.10's and 11.11's alts uses the key's word ("done", "now", "not yet", "never happened", "stopped"), and each alt carries "Illustrative". The denied petition reads "5 Supreme Court petition stopped; 6 Supreme Court ruling not yet", the direct initiative "4 Legislature never happened", the certified measure "Approved by voters on November 3, certified on November 24." The marks hold apart without color in the captures and in forced colors. The step names and end words themselves are the civic and statistics readers'.
+
+**Named places 3, 6, 8 and 10 to 12, where they touch this lens.** (3) The page-wide scan is the production reader's; DR-278 (d) is one instance, measured in section 5. (6) S96's table answers the plate's question month by month, its phone line names the two drops in words, and in forced colors the two drops stay filled while the other columns turn to outlines. (8) Chapter 15 reads as one family by keyboard: its live plates use the stepper of Rule 18.22, the chooser and native disclosures, with the same names, rings and status lines as chapter 14's; 15.22's description repeats its words (AX-S3). (10) to (12): outside this lens.
+
+## 4a. The brief's accessibility checks beyond the named places
+
+**Contrast by the WCAG formula, 34 pairs from the new work** (token values read from `tokens.css`, ratios rounded down; the palette plate's 88 printed ratios are under named place 5). Text needs 4.5 to 1, large text and marks 3 to 1.
+
+| Pair, where it appears | Ratio | Verdict |
+|---|---|---|
+| Charcoal words on Newsprint: every new plate's body, S96's named drops, the trackers' status lines | 13.29 | met |
+| Deep Stone secondary words on Newsprint: the selection guide's tier words, S96's measure and source lines, the trackers' key | 5.49 | met |
+| Deep Stone on the plate mat (#CECDC7), the size lines beside frames | 4.85 | met |
+| Deep Stone on White, the trackers' words where a step's band is selected | 7.74 | met |
+| Newsprint words on Charcoal: round 4's cards and chips on Charcoal | 13.29 | met |
+| Dim Newsprint secondary words on Charcoal | 7.26 | met |
+| Muted step words on Newsprint, 14.143's steps ahead | 5.49 | met |
+| Muted step words on Charcoal | 7.26 | met |
+| Charcoal on 14.143's selected band (White) | 18.73 | met |
+| Newsprint on the selected band on Charcoal (Prussian) | 9.42 | met |
+| Tracker marks Done, Now, Stopped and the done line (Charcoal) on Newsprint | 13.29 | met |
+| Tracker Not yet ring and line (Stone) on Newsprint | 4.29 | met |
+| Tracker marks on Charcoal (Newsprint) | 13.29 | met |
+| Tracker Not yet ring on Charcoal (Dim Newsprint) | 7.26 | met |
+| A step number knocked out of a filled mark (Newsprint on Charcoal) | 13.29 | met |
+| Pillar Red ring of a chosen target pill on Newsprint (14.144, 15.20) | 2.95 | **under 3 (AX-S5)** |
+| Pillar Red on the plate mat | 2.61 | under 3, only where a red mark meets the mat |
+| Pillar Red on Charcoal | 4.49 | met |
+| Verdigris focus ring on Newsprint | 3.36 | met |
+| Verdigris focus ring on the plate mat | 2.97 | not used: a frame's own ring is Charcoal (11.75) |
+| Newsprint focus ring on Charcoal | 13.29 | met |
+| S96's columns (context, Stone) on Newsprint | 4.29 | met |
+| S96's two named drops (Charcoal) against the Stone columns beside them | 3.09 | met |
+| Context ink on Charcoal (#878A8F) | 5.41 | met |
+| Light fill (#A1A2A3) on Newsprint: the selection guide's lighter marks, such as Grouped bar's second series | 1.81 | the symbols are hidden pictures and each form is named in words |
+| Light fill on Charcoal (Stone) | 3.10 | met |
+| Gridline on Newsprint (#B4B4B3) | 1.47 | gridlines are guides, not data |
+| Gridline on Charcoal (#393C41) | 1.69 | as above |
+| S12's phone tiles: Charcoal codes on magnitude step 1 (#CCCAC5) | 11.43 | met |
+| Charcoal codes on step 2 (#A1A2A3) | 7.32 | met |
+| Newsprint codes on step 3 (#555A63) | 4.91 | met |
+| Newsprint codes on step 4 (#2E3034) | 9.37 | met |
+| S12's step 1 tile against Newsprint | 1.13 | each tile carries its code, so position holds |
+| Newsprint on Charcoal pills, 14.143's Variable C3 | 13.29 | met |
+
+**Measured on the rendered plates** (17:42 to 17:51 UTC, `contrast.cjs` and `contrast_eval.py`: each word's computed ink against the commonest pixel under its own text box, captured with every word made transparent, at 1440 px): 4,610 words on 16 plates on Charcoal and 15 on Newsprint (S96, S89 to S91, S94, S95, S12, the selection guide, the palette plate, 14.143, 14.144, 11.10, 11.11, the ballot step table, 15.22, 15.23), 65 distinct ink and ground pairs. Every one is 4.5 to 1 or more; the lowest are the palette plate's step numbers on their swatches (4.61, Newsprint on sequential step 3 on Charcoal; 4.70; 4.74), then the selection guide's tier key and S12's codes on its gray steps (6.93 to 7.33). S96's Newsprint capture shifted while its chart drew, so its 52 words there are not counted; its Charcoal capture is, and the shared capture shows its "Finding" chip as Newsprint on Charcoal, 13.29 to 1.
+
+**Keyboard at six widths** (17:52 to 17:54 UTC, `kb.cjs`: from the figure itself, Tab until focus leaves it, 30 plates at 1440, 1024, 768, 390, 360 and 320 px, default text). The selection guide holds 144 stops at every width. 14.143 and 15.19 hold their four buttons and the caption's link; 14.144 the radio group and three disclosures; 15.20 the radio group and one disclosure; 15.24 twelve; each kit figure one ("The table and notes"); the trackers, step tables, 15.21 and 15.22 none. Every stop draws its ring. No page scrolls sideways at any width. The only stops under 24 by 24 px are links inside sentences and table cells ("Rule 18.22" 68 by 17 px, 15.25's "10.6" 27 by 17 px), which 2.5.8's inline exception covers. At 320 px each fixed plate's frame takes one stop first, as designed. At 1024 px S12's frame stop sits partly under the masthead: AX-M1 again.
+
+**Text at 200 percent** (17:54 to 17:59 UTC, `kb.cjs` with the root at 200 percent at 1440, 390 and 320 px, then `zshot.cjs` pictures). At 1440 px nothing passes its box and the page does not scroll sideways, so 14.144's round 5 Must stays fixed. At 390 px my script found two runs in 15.22 (36 and 15 px) and the palette plate's grade label "Documented" (9 px) past their list item boxes; my pictures of 15.22's stage 3 and of the palette's grade line show the words wrapping inside their panels with nothing overlapping. At 320 px, beyond what WCAG asks, every connection chip in 14.143's step list runs 62 px past its column and 15.19's 14 px, into empty stage, with the step words one or two to a line; 14.144's phrases are D3-1890's (named place 7); 15.24's "Expand the House" runs 17 px past its card. None of these hides or overlaps a word in the pictures I took. Reflow at 320 px with default text: no page scrolls sideways.
+
+**Alt text and tables, S85 to S96 and the new plates** (read from the specs and the page; Chromium's tree for S89 to S91, S95 and S96).
+- Every kit figure (S85 to S96, S12) is a group with its drawing named by the alt, a live title, measure line, notes and source, and a table behind "The table and notes" with a caption and scoped headers on every row and column (S85 5 rows, S86 8, S87 and S88 5, S89 10, S90 9, S91 4, S92 9, S93 12, S94 17, S95 52, S96 58, S12 53).
+- The alts give what a sighted reader learns and the figures the titles name: S85's 10 of 100 squares; S86's five counts; S87's and S88's four groups with counts and shares; S95's 652 and 96 against 318; S96's band of plus or minus 122,000, the two named drops at minus 140,000 and minus 156,000, and the average of 51,000, preliminary. S90, S91, S92 and S94 name the facts in a sentence and leave the figures to their live cards and lists, which Chromium exposes as text (S91's cards are three description lists of six terms each), so nothing is held only in a picture.
+- S96's table answers the plate's question row by row: each month's change, the three-month average, Final or Preliminary, and where it stands against the margin ("Gain past the margin" and the like).
+- The trackers 11.10 and 11.11 name every word they print in their alts, with "Illustrative" and each step's state in the key's word; the step tables are AX-S3.
 
 ## 5. Measured reach
 
@@ -115,7 +127,7 @@ Second pass in Chromium (17:03 to 17:08 UTC, `scripts/dr278c.cjs`, every 2 px fr
 - The fix with `clientHeight` (the masthead's height less its 1 px rule), on 97 sampled landings: at 390 and 1440 px none moves; at 360 px all 97 land 44 px lower and at 1024 and 1280 px 36 px lower; none is covered after. This is the version to land.
 - Larger text: with the root at 200 percent (the guide check's method) the masthead measures 178 px against 128 from 1024 to 1440 px, 50 px over, and fits at 320 and 390 px. With the browser's own text size at 32 px (`Page.setFontSizes`, so the em breakpoints move with it, as a reader's setting does) it fits at every width tested from 320 to 2560 px. The measured fix covers both, since it reads the height the masthead has.
 
-**(b) The words inside every `role="img"` stage.** From the markup: 735 plate stages, 416 of them `role="img"` and 319 `role="group"`. 413 of the 416 image stages hold HTML words, 5,008 runs of text in all, in 19 chapters (purpose 41, voice 51, identity 19, ampersand 18, color 15, type 18, layout 12, lockmark 7, pillar icons 10, symbols 15, icons 31, graphic devices 16, evidence 11, data visualization 15, systems graphics 25, motion and states 19, components 49, accessibility 15, tokens 22, outside a chapter 4). No image stage holds a focusable element, so `aria-hidden` on the fragment hides no control. No link, label or description points into an image stage's fragment from outside (the 10 `href`s that do are `<use>` references inside SVG). No CSS or script on the page selects a stage's child by `>`, and no stage is a flex or grid box, so a wrapper element moves no layout box (confirmed in Chromium, pending).
+**(b) The words inside every `role="img"` stage.** From the markup: 735 plate stages, 416 of them `role="img"` and 319 `role="group"`. 413 of the 416 image stages hold HTML words, 5,008 runs of text in all, in 19 chapters (purpose 41, voice 51, identity 19, ampersand 18, color 15, type 18, layout 12, lockmark 7, pillar icons 10, symbols 15, icons 31, graphic devices 16, evidence 11, data visualization 15, systems graphics 25, motion and states 19, components 49, accessibility 15, tokens 22, outside a chapter 4). No image stage holds a focusable element, so `aria-hidden` on the fragment hides no control. No link, label or description points into an image stage's fragment from outside (the 10 `href`s that do are `<use>` references inside SVG). No CSS or script on the page selects a stage's child by `>`, and no stage is a flex or grid box, so a wrapper element should move no layout box, as Chromium confirms below.
 
 In Chromium (16:55 to 17:12 UTC, `scripts/dr278b.cjs`, `scripts/geo.cjs`): the words are exposed today. Under Rule 11.10's tracker, whose name is its 1,308-character alt, Chromium's tree holds 33 text nodes (the heading, each measure's title and status line, the key; round 5 counted 106 nodes of every kind); 14.144's failure plate holds 36 and 18.20's anatomy 61. With one `aria-hidden="true"` wrapper around each image stage's fragment, each of eight sampled stages (11.8, 11.10, 11.11, 14.143's and 14.144's failures, 15.23's failure, 18.20's anatomy and chapter 01's opener) exposes none and keeps its name. The wrapper moves no box: with every one of the 416 image stages wrapped, the position and size of every element inside every stage, and the page's height, are the same as before at 1440, 390 and 320 px, as a block and as `display: contents` alike.
 
@@ -129,7 +141,7 @@ In Chromium (16:58 UTC, root text at 200 percent as the guide check sets it): at
 
 ## 6. Questions for Dustin
 
-1. **The masthead at 360 to 372 px.** There the 24 px wordmark returns (Rule 03.6 sets the 16 px master only under 22.5em, 360 px) and the menu button no longer fits beside it, so the masthead takes two bar lines, 133 px, a fifth of a 640 px phone screen. AX-M1's fix stops it covering focus, but the bar stays tall. Moving the 16 px master's switch to 23.5em (376 px) keeps one line at every phone width; since it changes where Rule 03.6's two masters meet, it needs your call. **Recommendation: yes**, with the design director's eye on the 16 px wordmark at 360 to 375 px first.
+1. **The masthead at 360 to 372 px.** There the masthead switches to the 24 px wordmark (the shell keeps the 16 px master only under 22.5em, 360 px, and its comment cites Rule 03.6) and the bar no longer holds the wordmark and the menu button on one line, so the masthead takes two bar lines, 133 px, a fifth of a 640 px phone screen. AX-M1's fix stops it covering focus, but the bar stays tall. Moving the 16 px master's switch to 23.5em (376 px) keeps one line at every phone width; since it changes where Rule 03.6's two masters meet, it needs your call. **Recommendation: yes**, with the design director's eye on the 16 px wordmark at 360 to 375 px first.
 
 ## 7. Tested
 
@@ -140,7 +152,10 @@ All on my copy of the strict build of `9a6e1182` (`c07/review/accessibility/guid
 - **Chromium, DR-278 (b) to (d), 16:55 to 16:58 UTC** (`dr278b.cjs`): Chromium's tree under eight image stages before and after an `aria-hidden` wrapper; the guide check's own text filter over all 416 image stages before and after, at 1440 and 390 px; axe-core's contrast rule on three stages before and after; the step lines at 320, 360 and 390 px with the root at 200 percent, before and after `overflow-wrap: anywhere`, and at the default size at five widths; the token table's selector page-wide and scoped.
 - **Chromium, DR-278 (b) and (c) follow-ups, 17:10 to 17:12 UTC** (`geo.cjs`, `wide.cjs`): every box inside all 416 image stages, and the page's height, before and after the wrapper, as a block and as `display: contents`, at 1440, 390 and 320 px; Chromium's text nodes under three stages with each wrapper; the outermost elements past the window at 320 px with the root at 200 percent, before and after the step line fix, and at 360 px and at the default size.
 - **Chromium, interaction and modes, 17:12 to 17:29 UTC** (`modes.cjs`, reduced motion on): 14.143 and 15.19 by Enter on Next step nine times, then Previous step, Reset the loop, Play and Pause; 14.144 and 15.20 by arrow keys four times; forced colors (emulated) captures of 13 plates at 1440 and 390 px and of the selection guide's first questions at 320 px; print emulation at 794 px read from computed styles; scripts off at 390 px on nine plates.
-- **The shared captures read:** `newsprint-1x/1440` (S91, S94, S95, S96, 11.10, 14.144 with R-06 and R-30, 14.143 at step 5, the selection guide's top) and `newsprint-1x/390` (the selection guide, 14.143, S96, the palette plate).
+- **Chromium, Chromium's tree, 17:41 to 17:42 and 17:55 to 17:56 UTC** (`ax.cjs`, each node read once): 15 plates at 1440 px and 7 at 390 px, their roles, names, descriptions and states. A first walk that visited some nodes twice is set aside (`ax-first-undeduped.json`) and none of its counts is used.
+- **Chromium, contrast, 17:42 to 17:51 UTC** (`contrast.cjs`, `contrast_eval.py`): 16 plates on both grounds at 1440 px, as section 4a says; plus 34 pairs computed from the token values with `wcag.py`.
+- **Chromium, keyboard and text size, 17:52 to 17:59 UTC** (`kb.cjs` at six widths with default text and at 1440, 390 and 320 px with the root at 200 percent; `zshot.cjs`, `zshot2.cjs` pictures of the words that passed their boxes).
+- **The shared captures read:** `newsprint-1x/1440` (S91, S94, S95, S96, 14.142's failure, 11.10, 14.144 with R-06 and R-30, 14.143 at step 5, the selection guide's top), `newsprint-1x/390` (the selection guide, 14.143, S96, S12, the palette plate) and `charcoal-1x/1440` (14.144). The capture run stopped partway (its log ends on a closed browser), so the 2x, gray, 1024, 768, 360 and 320 px folders were not there to read; my own captures stand in at 320 and 390 px where named.
 
 ## 8. Not tested
 

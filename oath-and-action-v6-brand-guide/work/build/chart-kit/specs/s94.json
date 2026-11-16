@@ -9,7 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the U.S. Code and the Treasury’s rule, 26 CFR 1.6081-4, as in force on November 9, 2026",
-  "title": "Of 16 budget and tax deadlines federal law sets on 13 days of 2027, seven carry a consequence, the six tax deadlines and the start of the fiscal year.",
+  "title": "Seven of the 16 budget and tax deadlines federal law sets for 2027 carry a consequence in law.",
   "measure_line": "Dates federal law sets in calendar 2027 for the budget process and for individual income tax, with what the law attaches to missing each one",
   "notes": [
     "The Budget Act’s timetable, 2 U.S.C. 631, attaches no consequence to its dates. A tax date on a weekend or a legal holiday moves to the next business day (26 U.S.C. 7503); none does in 2027.",
@@ -112,6 +112,7 @@
     "Design director DD-I16 and DD-I20 (21:28 UTC): each kind of date sits on a line of its own and its consequence on the next, so a wrapped consequence never starts under the tag; \"fiscal 2028\" held on one line.",
     "Editor's title (21:22 UTC, on MI-5) applied.",
     "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate).",
-    "IM-E7 (landed 21:37 UTC), for the design director's DD-I17 and DD-I19: each kind of date prints after the year mark's own square (filled or open) in 600 weight, the key gives the two squares beside the list's own words (the editor's 21:28 words), and the dates run as two columns from 480 px. DD-I18 (the year at the plate's width) is not taken: a mark that scales must hold no words, and the year's month names are its labels; the year stays drawn at 224 px."
+    "IM-E7 (landed 21:37 UTC), for the design director's DD-I17 and DD-I19: each kind of date prints after the year mark's own square (filled or open) in 600 weight, the key gives the two squares beside the list's own words (the editor's 21:28 words), and the dates run as two columns from 480 px. DD-I18 (the year at the plate's width) is not taken: a mark that scales must hold no words, and the year's month names are its labels; the year stays drawn at 224 px.",
+    "Fix pass after rounds 4 and 5 (CD-S4, November 16, 2026): the title leads with one finding and the drawing, which prints every count, carries the rest; draft words for the editor (was: \"Of 16 budget and tax deadlines federal law sets on 13 days of 2027, seven carry a consequence, the six tax deadlines and the start of the fiscal year.\")."
   ]
 }

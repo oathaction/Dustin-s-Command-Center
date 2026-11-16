@@ -4334,12 +4334,12 @@ CSS.update({
              ".rc .sl{list-style:none;margin:0;padding:0;display:inline}.rc .sl li{display:inline}"
              # CR-S21: the arrow is drawn (a mask on the secondary ink), since the guide's Inter subset has no U+2192; a
              # space before it lets a line break there, and no-break spaces bind it to the stage after it (DD-S8)
-             ".rc .sl li+li::before{content:\" \\00a0\\00a0\\00a0\\00a0\" / \"\";padding-right:3px;"
+             ".rc .sl li+li::before{content:\" \\00a0\\00a0\\00a0\" / \"\";padding-right:5px;"
              "background:var(--oa-color-text-secondary);"
              "-webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath "
-             "d='M0 4.25h8.5V1L12 5 8.5 9V5.75H0z' fill='black'/%3E%3C/svg%3E\") no-repeat right 3px center/12px 10px;"
+             "d='M0 4.25h8.5V1L12 5 8.5 9V5.75H0z' fill='black'/%3E%3C/svg%3E\") no-repeat right 5px center/12px 10px;"
              "mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath "
-             "d='M0 4.25h8.5V1L12 5 8.5 9V5.75H0z' fill='black'/%3E%3C/svg%3E\") no-repeat right 3px center/12px 10px}"
+             "d='M0 4.25h8.5V1L12 5 8.5 9V5.75H0z' fill='black'/%3E%3C/svg%3E\") no-repeat right 5px center/12px 10px}"
              "@media (forced-colors:active){.rc .sl li+li::before{forced-color-adjust:none;background:CanvasText}}"
              f".rc :is(.rs2,.rcn){{{C13.CAP};color:var(--oa-color-text-secondary)}}.rc .rs2{{margin-top:8px}}"
              ""

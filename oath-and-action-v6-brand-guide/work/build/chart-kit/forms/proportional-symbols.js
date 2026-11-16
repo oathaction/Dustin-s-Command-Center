@@ -2,8 +2,9 @@
  * (the radius by the square root, the largest at the drawing's widest circle), so counts too far apart for a bar's length
  * still compare. At a desk the circles stand side by side on one line, each named under it with its count; on a phone they
  * stand one under another, named beside. The circle the title names takes the subject ink with its words inside where they
- * fit; the rest take the track ink with a 1 px context-ink edge (RF-1). A size key in S16's grammar follows the circles: an
- * eyebrow title, rings at set counts side by side on one line in the context ink, each count centered under its ring. Rows too small to draw
+ * fit; the rest take the track ink with a 1 px context-ink edge (RF-1). A size key follows the circles: an eyebrow title,
+ * then rings at set counts nested on one bottom line in the context ink, each count to the right on a leader from its
+ * ring's top (CD-S2, fix pass after rounds 4 and 5, as entry 14.80 sets it; round 4 drew S16's side-by-side key). Rows too small to draw
  * at that scale print as counts in words in the key's band, never as circles: at a desk beside the key, its first line level
  * with the key's title; on a phone under the key.
  * encode: category (text), value (number).
@@ -69,7 +70,8 @@
         circ.forEach(function (r) { tw = Math.max(tw, name_w(r, W * 0.48).w, c.measure(fv(r[ev]), 'label', 400, true)); });
         R = Math.max(12, Math.min(84, Math.floor((W - 14 - tw) / 2)));
         // the key shares the scale, so the circles shrink until its steps fit the width side by side
-        var kneed = function (Rr) { return (L.key_steps || []).reduce(function (t, st) { return t + Math.max(2 * Math.sqrt(st / maxv) * Rr + 1, c.measure(fv(st), 'tick', 400, true)) + 6; }, -6); };
+        // CD-S2: the key nests its circles, so it needs the largest circle's width and the widest count beside it
+        var kneed = function (Rr) { var ks0 = L.key_steps || []; return ks0.length ? 2 * Math.sqrt(Math.max.apply(null, ks0) / maxv) * Rr + 1 + 14 + Math.max.apply(null, ks0.map(function (st) { return c.measure(fv(st), 'tick', 400, true); })) : 0; };
         while (R > 12 && kneed(R) > W - 1) R -= 1;
         circ.forEach(function (r) {
           var rad = Math.sqrt(+r[ev] / maxv) * R, nw = name_w(r, W - 2 * R - 14), th = nw.n * lh + lh;
@@ -82,23 +84,29 @@
         });
         bottom = y - 12;
       }
-      // the key, as S16 draws its size key, then the rows too small to draw, in words beside it or under it
-      var ks = L.key_steps || [], ky = bottom + 28, kx = 0, kb = ky;
-      if (L.key_title) c.text(0, ky, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
-      var kmax = ks.length ? Math.sqrt(Math.max.apply(null, ks) / maxv) * R : 0;
-      kb = ky + 14 + 2 * kmax;
-      // each step takes its circle's width with its stroke, or its count's, whichever is wider; the gaps close up to 6 px on a
-      // narrow phone, 1 px clear of the edge; the rings in the context ink, lighter than the data's edges
-      var kw = ks.map(function (st) { return Math.max(2 * Math.sqrt(st / maxv) * R + 1, c.measure(fv(st), 'tick', 400, true)); });
-      var kg = ks.length > 1 ? Math.max(6, Math.min(14, (W - 1 - kw.reduce(function (t, w) { return t + w; }, 0)) / (ks.length - 1))) : 0;
-      ks.forEach(function (st, i) {
-        var r = Math.sqrt(st / maxv) * R, mid = kx + kw[i] / 2;
-        c.circle(mid, kb - r, r, { stroke: 'context', width: 1, mark: false });
-        c.text(mid, kb + 16, fv(st), { role: 'tick', anchor: 'middle', tnum: true });
-        kx = mid + kw[i] / 2 + kg;
+      // the key: CD-S2 (fix pass after rounds 4 and 5), as entry 14.80 sets it, the circles nested on one bottom line under
+      // the key's title, each count to the right on a hairline leader from its circle's top, the rings in the context ink,
+      // lighter than the data's edges; where two counts would touch, the lower keeps its place and the next moves up.
+      // Then the rows too small to draw, in words beside the key or under it
+      var ks = (L.key_steps || []).slice().sort(function (a, b) { return b - a; }), ky = bottom + 28, kx = 0, kb = ky;
+      var ktl = L.key_title ? c.text(0, ky, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary' }) : null;
+      var kr = ks.map(function (st) { return Math.sqrt(st / maxv) * R; }), kmax = ks.length ? kr[0] : 0, kc = kmax + 0.5, tkh = c.size('tick');
+      var lx = 2 * kmax + 1 + 14, bases = [], lift = 0;
+      for (var q = ks.length - 1; q >= 0; q--) {
+        var want = kb + 14 + 2 * kmax - 2 * kr[q] + tkh * 0.35;
+        bases[q] = q === ks.length - 1 ? want : Math.min(want, bases[q + 1] - Math.round(tkh * 1.36));
+      }
+      if (ks.length) lift = Math.max(0, (ky + 6 + tkh * 0.75) - bases[0]);
+      kb = ky + 14 + 2 * kmax + lift;
+      ks.forEach(function (st, q) {
+        var r = kr[q], top = kb - 2 * r, base = bases[q] + lift;
+        c.circle(kc, kb - r, r, { stroke: 'context', width: 1, mark: false });
+        c.line(kc, top, lx - 4, base - tkh * 0.35, { stroke: 'leader', width: 1, mark: false });
+        var kt = c.text(lx, base, fv(st), { role: 'tick', tnum: true });
+        kx = Math.max(kx, kt.x + kt.w);
       });
-      kx -= kg;
-      bottom = ks.length ? kb + 20 : bottom;
+      if (ktl) kx = Math.max(kx, ktl.x + ktl.w);   // the words beside the key start past its title too
+      bottom = ks.length ? kb + 4 : bottom;
       if (words.length) {
         var wl = String(L.words || '{list}').split('{list}').join(joined), beside = !c.phone && W - kx - 18 >= 200;
         var wb = c.text(beside ? kx + 18 : 0, beside ? ky : bottom + 18 + lab * 0.86, wl, { role: 'label', weight: 400, max: beside ? W - kx - 18 : W });
