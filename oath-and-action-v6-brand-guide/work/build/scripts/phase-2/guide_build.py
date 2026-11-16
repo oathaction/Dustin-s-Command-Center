@@ -673,10 +673,62 @@ def process_fragment(src, sid, where, literal_ok=False):
     lits = [x for x in lits if not re.fullmatch(r"#\d{1,2}", x)]
     if lits and not literal_ok:
         R.warn(where, f"{sid}: {len(lits)} literal color value(s) ({', '.join(sorted(set(lits))[:4])}); use var(--oa-...) from tokens.css")
+    # Call 14 (the fix pass after rounds 4 and 5, PR-S2): every plate style's braces balance, since one stray closing brace
+    # ends the plate's @scope early and sends the rules after it to the whole page (D3-1893); and no plate script selects
+    # through the whole document, since a class of the same name in another plate would be taken for its own (PR-S1)
+    for i, css in enumerate(re.findall(r"<style\b[^>]*>(.*?)</style>", s, re.S | re.I)):
+        why = brace_fault(css)
+        if why:
+            R.warn(where, f"{sid}: style block {i + 1}'s braces do not balance ({why}); the rules after a stray brace would reach "
+                          "the whole page (PR-S2)")
+    for name in page_selects(s):
+        R.warn(where, f"{sid}: a plate script selects across the page (document.{name}); find the plate first with "
+                      "document.currentScript.closest('[data-specimen]') and select inside it (PR-S1)")
     s = inline_assets(s, sid, where)
     s = prefix_ids(s, sid)
     s = scope_styles(s, sid)
     return s.strip()
+
+
+def brace_fault(css):
+    """Call 14 (PR-S2): why a block of CSS does not balance its braces, or None. Comments, strings and unquoted url()
+    values are set aside first, so a brace inside them is not counted."""
+    s = re.sub(r"/\*.*?\*/", " ", css, flags=re.S)
+    if "/*" in s:
+        return "a comment that never closes"
+    s = re.sub(r'"(?:[^"\\\n]|\\.)*"|\'(?:[^\'\\\n]|\\.)*\'', '""', s)
+    s = re.sub(r"url\(\s*[^\s\"')][^)]*\)", "url()", s)
+    depth = 0
+    for i, ch in enumerate(s):
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth < 0:
+                near = re.sub(r"\s+", " ", s[max(0, i - 40):i]).strip()
+                return f"a closing brace with no block open, after \u201c{near}\u201d"
+    if depth:
+        return f"{depth} block{'s' if depth > 1 else ''} left open at the end"
+    return None
+
+
+PAGE_SELECT = re.compile(r"\bdocument\s*\.\s*(querySelectorAll|querySelector|getElementById|getElementsByClassName|getElementsByTagName"
+                         r"|getElementsByName)\s*\(")
+SCRIPT_TYPES = ("", "text/javascript", "application/javascript", "module")
+
+
+def page_selects(s):
+    """Call 14 (PR-S1, PR-S2): the document-wide selections a fragment's scripts make (a data island, such as a chart's
+    text/plain table or a JSON block, is no script and is skipped)."""
+    out = []
+    for m in re.finditer(r"<script\b([^>]*)>(.*?)</script>", s, re.S | re.I):
+        ty = re.search(r'\stype\s*=\s*["\']?([^"\'\s>]*)', m.group(1))
+        if ty and ty.group(1).strip().lower() not in SCRIPT_TYPES:
+            continue
+        code = re.sub(r"/\*.*?\*/", " ", m.group(2), flags=re.S)
+        code = re.sub(r"(?m)^\s*//.*$", "", code)
+        out += PAGE_SELECT.findall(code)
+    return out
 
 
 def inline_assets(s, sid, where):
@@ -1674,6 +1726,55 @@ def token_table_stale(placed):
     return None
 
 
+PALETTE_SPEC_ID = "s-14-palette-spec"
+
+
+def palette_spec_stale(placed):
+    """Call 14 (the fix pass after rounds 4 and 5, PR-S5): why the placed palette plate is not what tokens.json makes now,
+    or None. It runs palette_spec_build.py's own build, as `--check` does: the fragment and its meta file must be what the
+    tokens make, and the script must list no fault, so a token release that leaves the plate stale stops a strict build."""
+    import importlib.util
+    f = ROOT / "work/build/scripts/phase-3/palette_spec_build.py"
+    try:
+        spec = importlib.util.spec_from_file_location("oa_palette_spec_build", f)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        frag, meta = mod.build()
+    except SystemExit as ex:
+        return f"{PALETTE_SPEC_ID}: palette_spec_build.py stopped ({ex})"
+    except Exception as ex:
+        return f"{PALETTE_SPEC_ID}: palette_spec_build.py could not run ({type(ex).__name__}: {ex})"
+    p = Path(placed) if placed else None
+    stale = []
+    if not p or not p.exists() or p.read_text() != frag:
+        stale.append(f"{PALETTE_SPEC_ID}.html")
+    pm = p.with_name(f"{PALETTE_SPEC_ID}.meta.json") if p else None
+    if not pm or not pm.exists() or pm.read_text() != meta:
+        stale.append(f"{PALETTE_SPEC_ID}.meta.json")
+    if stale:
+        return f"{PALETTE_SPEC_ID} is not what tokens.json {mod.RELEASE} makes ({' and '.join(stale)}); run palette_spec_build.py"
+    if mod.FAULTS:
+        return f"{PALETTE_SPEC_ID}: palette_spec_build.py lists {len(mod.FAULTS)} fault(s), first: {mod.FAULTS[0]}"
+    return None
+
+
+def write_kit_share(path, pp, built):
+    """Call 14 (PR-S11): record chapter 14's share per plate where the chart kit reads it, only when the share or the
+    plates still to come change. A build that changes neither leaves the file, and the time of the build that set its
+    figures, alone, so a build never dirties the repository for its time alone. Returns True when it wrote."""
+    want = {"per_plate": pp["per_plate"], "plates_to_come": pp["plates_to_come"]}
+    try:
+        have = json.loads(Path(path).read_text())
+        if {k: have.get(k) for k in want} == want and have.get("built"):
+            return False
+    except (OSError, ValueError):
+        pass
+    Path(path).write_text(json.dumps(dict(want, built=built, about="Written by guide_build.py from its weight report; "
+                                          "oa-chart.mjs build prints per_plate on each spec's weight line. Never edit by hand."),
+                                     indent=1, ensure_ascii=False) + "\n")
+    return True
+
+
 def downloads_block(items, tokens, ctx, where):
     """Round 1 (DR-214): a rule's downloads. "tokens.css" is a button for the colophon's copy, which the shell starts where
     the reader is; "tokens.json" is the page's one copy of that file, placed here once, and a button for it anywhere else."""
@@ -1851,6 +1952,10 @@ def chapter_plate_css(data, cid, where):
     lits = re.findall(r"(?<![\w&])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(|\bhsla?\(", bare)
     if lits:
         R.warn(where, f"\"plate_css\": {len(lits)} literal color value(s) ({', '.join(sorted(set(lits))[:4])}); use var(--oa-...) from tokens.css")
+    why = brace_fault(css)
+    if why:
+        # call 14 (PR-S2): the chapter's block is scoped as a plate's style is, so a stray brace would reach the whole page
+        R.warn(where, f"\"plate_css\": its braces do not balance ({why}); the rules after a stray brace would reach the whole page (PR-S2)")
     return f'<style data-plate-css>@scope (#{cid} [data-specimen]) {{\n{css}\n}}</style>'
 
 
@@ -3310,6 +3415,11 @@ def build(args):
         why = token_table_stale(specs.files.get(TOKEN_TABLE_ID))
         if why:
             R.warn(specs.used[TOKEN_TABLE_ID], why)
+    # Call 14 (PR-S5): so must chapter 14's palette plate (palette_spec_build.py --check)
+    if PALETTE_SPEC_ID in specs.used:
+        why = palette_spec_stale(specs.files.get(PALETTE_SPEC_ID))
+        if why:
+            R.warn(specs.used[PALETTE_SPEC_ID], why)
     for sid in specs.manifest:
         if sid not in specs.used and not sid.startswith("s-proofs-") and not sid.startswith("s-demo-"):
             R.warn(specs.origin.get(sid, "manifest"), f"specimen {sid} is listed but no chapter places it")
@@ -3536,13 +3646,10 @@ def build(args):
     rep_path.write_text(json.dumps(report, indent=1, ensure_ascii=False))
     # D3-1497 (round 3 fix pass, second pass): a build of the guide's own chapters records chapter 14's share per plate
     # where the chart kit reads it, so `oa-chart.mjs build` prints the figure this report gives; fixture builds and the
-    # self-test (--chapters) and demo builds leave it alone
+    # self-test (--chapters) and demo builds leave it alone. Call 14 (PR-S11): only when its figures change
     pp = projection.get("chapter_14_per_plate")
     if pp and not args.chapters and not args.demo and not stop:
-        KIT_SHARE.write_text(json.dumps({"per_plate": pp["per_plate"], "plates_to_come": pp["plates_to_come"], "built": report["built"],
-                                         "about": "Written by guide_build.py from its weight report; "
-                                         "oa-chart.mjs build prints per_plate on each spec's weight line. Never edit by hand."},
-                                        indent=1, ensure_ascii=False) + "\n")
+        write_kit_share(KIT_SHARE, pp, report["built"])
     if not args.quiet:
         rel = report["page"]
         print(f"wrote {rel} ({len(page.encode()):,} bytes): {n_real} chapter file(s), {len(report['placeholders'])} placeholder(s), "

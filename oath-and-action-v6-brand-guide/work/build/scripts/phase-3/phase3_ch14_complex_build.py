@@ -641,7 +641,9 @@ def card_say(rid, on):
     head = f'{chip("Reform", rid)} '
     need(full.startswith(head + "turns "), f"Reform {rid}'s line no longer starts on its chip and “turns”")
     rest = full[len(head):]
-    return f'<span class="vh">Reform {e(rid)}: </span>{rest[0].upper()}{rest[1:]}'
+    # the editor's second read: "It turns ..." keeps the line a full sentence on screen, its subject the reform the card's
+    # head names, and the status line still hears "Reform R-06: It turns ..."
+    return f'<span class="vh">Reform {e(rid)}: </span>It {rest}'
 
 
 def loop_key(lids):
@@ -657,8 +659,9 @@ def loop_key(lids):
     if "plausible" in grades:
         need(grades <= {"documented", "well-supported", "plausible"}, "a loop here holds a grade the key does not name")
         dash, _ = C15.conn([(1, 9), (61, 9)], "plausible", None, None)
-        rows.append(f'<p class="kd2">{sv}{C15.wr(dash)}</svg><span><b>Dashed</b> for a step the atlas grades plausible; '
-                    f'every other step is solid, documented or well supported (Rule 13.4).</span></p>')
+        # the editor's second read: "solid, documented or well supported" read as three looks of one line
+        rows.append(f'<p class="kd2">{sv}{C15.wr(dash)}</svg><span><b>Dashed</b> for a step the atlas grades plausible, '
+                    f'and solid for a step it grades documented or well supported (Rule 13.4).</span></p>')
     return '<div class="lk8">' + "".join(rows) + "</div>"
 
 
@@ -1409,7 +1412,7 @@ def check(entries, files, specs, steps):
        "14.144: the phone line-up shows where the cards stand side by side")
     # CD-S10: no card's first line starts on a chip on screen; each still says its reform's name to the status line
     for rid in RIDS:
-        ok(re.search(r'data-oa-say><span class="vh">Reform ' + rid + r': </span>Turns ', t) is not None,
+        ok(re.search(r'data-oa-say><span class="vh">Reform ' + rid + r': </span>It turns ', t) is not None,
            f"14.144: {rid}'s first line keeps a chip on screen, or the status line loses its name (CD-S10)")
     # RP-7: a connection off the loop says its own layer before its two ends
     ok("contested, in the technology layer, from" in rt and "well supported, in the economy layer, from" in rt
