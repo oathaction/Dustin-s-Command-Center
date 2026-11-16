@@ -126,7 +126,8 @@
       ]
     ],
     "hold": [
-      "November 12, 2026"
+      "November 12, 2026",
+      "the law’s limit"
     ]
   },
   "notes_internal": [
@@ -137,6 +138,7 @@
     "Design director DD-I15 (21:28 UTC): each limit's own words print in bold (strong), with \", the law’s limit\" after them in the line's weight.",
     "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate).",
     "IM-E7 (landed 21:37 UTC), for the design director's DD-I13 and DD-I15: the optional step's opening line and the actor line print as eyebrows (oac-h-k, the secondary ink at 600 weight), and the limit on its own line with 8 px above it (oac-h-limit).",
-    "Fix pass after rounds 4 and 5 (RP-2, November 16, 2026): the table's third column reads each step's own condition by its order, so the appeal (row 6) says \"Only if the agency says no\" and the lawsuit (row 8) \"Only if the agency says no or misses its time limits\" (row 8's own words and 5 U.S.C. 552(a)(6)(C)(i)); rows 1 to 3 and 5 stay \"Every request\" and rows 4 and 7 \"Optional\". The same words open steps 6 and 8 in the drawing (labels.conditions), on their solid discs, since both sit on the main line once the agency says no."
+    "Fix pass after rounds 4 and 5 (RP-2, November 16, 2026): the table's third column reads each step's own condition by its order, so the appeal (row 6) says \"Only if the agency says no\" and the lawsuit (row 8) \"Only if the agency says no or misses its time limits\" (row 8's own words and 5 U.S.C. 552(a)(6)(C)(i)); rows 1 to 3 and 5 stay \"Every request\" and rows 4 and 7 \"Optional\". The same words open steps 6 and 8 in the drawing (labels.conditions), on their solid discs, since both sit on the main line once the agency says no.",
+    "Fix pass after rounds 4 and 5 (seen on the desk capture): \"the law’s limit\" held on one line, so no limit line ends on \"the\"."
   ]
 }

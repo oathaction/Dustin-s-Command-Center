@@ -270,6 +270,15 @@ def selection_guide_faults(plan, chap):
             faults.append(f"Selection guide: a link to {href!r}, which is none of the plan's forms and no skip link's target")
     if "#s-14-sg-full-t" in by_href and "s-14-sg-full-t" not in ps.ids:
         faults.append("Selection guide: the last question's skip link names s-14-sg-full-t, which the guide does not hold")
+    # SG-9 (the engineer, fix pass): where the guide closes with the three charts in full, the last question's skip link lands
+    # there and no earlier (AX-S4); each other question's lands on the next question's line
+    if qs and "s-14-sg-full-t" in ps.ids:
+        for l in ps.links:
+            if l["href"] in skips and l["href"] != "#group-14-1" or (l["href"] == "#group-14-1" and l["group"]):
+                want_to = "#s-14-sg-full-t" if str(l["group"]) == str(qs[-1]) else (f"#s-14-sg-q-{qs[qs.index(int(l['group'])) + 1]}"
+                                                                               if str(l["group"]).isdigit() else None)
+                if want_to and l["href"] != want_to:
+                    faults.append(f"Selection guide: question {l['group']}'s skip link lands on {l['href']}, not {want_to}")
     for l in ps.links:
         if l["href"] in want and not l.get("xref"):
             faults.append(f"Selection guide: the link to {l['href']} carries no data-oa-xref, so the way back cannot find it")

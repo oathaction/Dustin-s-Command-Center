@@ -87,6 +87,25 @@
   display: block;
 }
 
+/* A list of choices, one under another: every choice as wide as the group, and every choice
+   holding the check's place, so the words start at one line whichever is checked and checking a
+   choice moves nothing. Add oa-choice-row--list to the row. */
+.oa-choice-row--list {
+  flex-direction: column;
+  align-items: stretch;
+}
+.oa-choice-row--list .oa-choice-face {
+  flex: 1 1 auto;
+  padding-inline-start: calc(var(--oa-space-150) + 1px);
+}
+.oa-choice-row--list .oa-choice-check {
+  display: block;
+  visibility: hidden;
+}
+.oa-choice-row--list .oa-choice-input:checked + .oa-choice-face .oa-choice-check {
+  visibility: visible;
+}
+
 /* An unavailable choice: dashed, in the disabled colors, with its reason in words below the row */
 .oa-choice-item:has(.oa-choice-input:disabled) {
   cursor: not-allowed;
