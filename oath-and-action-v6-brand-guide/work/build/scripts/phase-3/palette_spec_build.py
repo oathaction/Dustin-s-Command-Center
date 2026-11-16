@@ -21,6 +21,12 @@ grayscale(1) filter with each step's OKLab lightness; three color-vision proofs 
 severity 1.0, linear RGB) with round 0's neighbor measure and its bar; the grade line code at 2 and 3 px on both grounds; one
 line on Prussian. The accessibility lead's section 6 sets how it reads: contrast in words and rounded down, the swatch in the
 Step cell, no empty cell, swatches that keep their color in forced colors and print, token names that break only at a dot.
+
+The fix pass after rounds 4 and 5 (November 16, 2026) adds, after the four palettes: the role inks every palette shares
+(subject, context, light fill, track, party), each with its token, its value and contrast on both grounds and the word the
+rules use (DF-13), and the one red with its keyline, its job and its never list (NB-S3); the groups' job says they are never
+for parties (NB-S3). From 40rem a table row sets its step and whole token on one line and each ground's facts a line apiece
+(CR-S12, CD-S12), and a 3 px grade line sits on a half pixel so it fills whole pixel rows (CR-S11).
 Every color shows through var(--oa-...), so the page draws what tokens.css holds; the color-vision rows apply the
 simulation matrices as SVG filters to those same swatches, so no simulated color is written as a value.
 """
@@ -139,7 +145,7 @@ PALS = [
      "carry": "Where a step stands under 3 to 1 against the ground, its value prints on or beside it."},
     {"id": "categorical", "name": "Groups, four inks", "steps": 4, "code": "cat", "fill": "oa.chart.color.categorical.fill.group{n}",
      "label": "oa.chart.color.categorical.label.group{n}", "word": "Group",
-     "job": "Up to four named groups with no order. Charcoal, Verdigris, Prussian, then Stone with its hatch, always in that order. Each group carries its name on the chart, and each line ends on its own marker. Past four groups, split the chart into small multiples, or show one group in ink and the rest in gray.",
+     "job": "Up to four named groups with no order. Charcoal, Verdigris, Prussian, then Stone with its hatch, always in that order. Each group carries its name on the chart, and each line ends on its own marker. Past four groups, split the chart into small multiples, or show one group in ink and the rest in gray. Never for parties: every party takes the one party ink, with its name on the mark (Rule 14.7).",
      "carry": ""},
     {"id": "magnitude", "name": "Magnitude, Stone", "steps": 4, "code": "mag", "fill": "oa.chart.color.magnitude.fill.step{n}",
      "label": "oa.chart.color.magnitude.label.step{n}", "word": "Step",
@@ -248,21 +254,32 @@ def ground_panel(p, g, m):
             f'<p class="ps-gn">On {WORD[g]}</p><ol class="ps-sws" role="list">{"".join(sw)}</ol>{"".join(proofs)}</div>')
 
 
+def ref_table(word, cap, rows):
+    """A reference table: a row for each step or ink, its header cell first (swatch, name, the role a form names), then its
+    token, its value on Newsprint and on Charcoal, and the Newsprint value on White paper. CR-S12 and CD-S12 (fix pass
+    after rounds 4 and 5): from 40rem each row sets the step and its whole token on one line, then the three grounds
+    under their headings, one fact a line; under 40rem each row stands as a block (6.6). The markup stays one row a
+    step, a row header and four cells, so a screen reader meets the same table at every width."""
+    head = ('<thead><tr><th scope="col">' + e(word) + '</th><th scope="col">Token</th>'
+            + "".join(f'<th scope="col">On {WORD[g]}</th>' for g in ("newsprint", "charcoal"))
+            + '<th scope="col">On White paper</th></tr></thead>')
+    body = "".join(f'<tr><th scope="row">{r["head"]}</th><td><code class="ps-tk">{dotted(r["token"])}</code></td>'
+                   + "".join(f"<td>{c}</td>" for c in r["cells"]) + "</tr>" for r in rows)
+    return f'<div class="ps-tw"><table class="ps-t"><caption>{e(cap)}</caption>{head}<tbody>{body}</tbody></table></div>'
+
+
 def table(p, m):
     n = p["steps"]
     word = p["word"]
     cap = f'{p["name"]}, {R0.nw(n)} {word.lower()}s: {p["job"].split(".")[0][0].lower() + p["job"].split(".")[0][1:]}'
-    head = ('<thead><tr><th scope="col">' + e(word) + '</th><th scope="col">Token</th>'
-            + "".join(f'<th scope="col">On {WORD[g]}</th>' for g in ("newsprint", "charcoal"))
-            + '<th scope="col">On White paper</th></tr></thead>')
-    body = []
+    rows = []
     for i in range(n):
         k = i + 1
         base = p["fill"].format(n=k)
         cat4 = p["id"] == "categorical" and i == 3
-        hdr = (f'<th scope="row">{swatch(p, k)}<span class="ps-st">{e(word)} {k}</span>'
-               f'<span class="ps-cd">{p["code"]}-{k}</span>' + ('<span class="ps-hn">Stone, hatched</span>' if cat4 else "") + "</th>")
-        cells = [f'<td><code class="ps-tk">{dotted(base)}</code></td>']
+        hdr = (f'{swatch(p, k)}<span class="ps-st">{e(word)} {k}</span>'
+               f'<span class="ps-cd">{p["code"]}-{k}</span>' + ('<span class="ps-hn">Stone, hatched</span>' if cat4 else ""))
+        cells = []
         for g in ("newsprint", "charcoal"):
             r = m[g]["rows"][i]
             fr = contrast(r["fill_hex"], GROUND[g])
@@ -271,17 +288,16 @@ def table(p, m):
             # the 36 one hundredth high. Group 4's label sits beside the hatch, on the ground, as round 0 measures it.
             lr = contrast(r["label_hex"], GROUND[g] if cat4 else r["fill_hex"])
             need(abs(lr - r["label_on_fill"]) < 0.006, f"{p['id']} {word} {k} on {g}: label ratio {lr:.4f} is not round 0's {r['label_on_fill']}")
-            carry = ""
             cells.append(
-                f'<td><span class="ps-v">{e(r["fill_hex"]).replace("#", "&#35;")}</span>'
+                f'<span class="ps-v">{e(r["fill_hex"]).replace("#", "&#35;")}</span>'
                 f'<span class="ps-l">{ratio(fr)}, {uses(fr, "fill")}</span>'
                 f'<span class="ps-l">Label in {e(alias_name(label_path(p, k, g)) or "")}{" beside it" if cat4 else ""}, {ratio(lr)}, {uses(lr, "label")}</span>'
-                f'<span class="ps-l">Lightness {r["oklab_L"]:.3f}</span>{carry}</td>')
+                f'<span class="ps-l">Lightness {r["oklab_L"]:.3f}</span>')
         rw = m["white"]["rows"][i]
         wr = contrast(rw["fill_hex"], GROUND["white"])
-        cells.append(f'<td><span class="ps-l">{ratio(wr)}, {uses(wr, "fill")}</span></td>')
-        body.append(f"<tr>{hdr}{''.join(cells)}</tr>")
-    return (f'<div class="ps-tw"><table class="ps-t"><caption>{e(cap)}</caption>{head}<tbody>{"".join(body)}</tbody></table></div>')
+        cells.append(f'<span class="ps-l">{ratio(wr)}, {uses(wr, "fill")}</span>')
+        rows.append({"head": hdr, "token": base, "cells": cells})
+    return ref_table(word, cap, rows)
 
 
 def three(x):
@@ -352,6 +368,120 @@ def palette_block(p):
             f'{measures_words(p, m)}{table(p, m)}{tok}{extra}</div>')
 
 
+# ------------------------------------------------------------------------------------------------ the role inks, the one red
+# DF-13 and NB-S3 (fix pass after rounds 4 and 5): the inks Rules 14.5 and 14.6 name inside every palette, each with its token,
+# its value on both grounds and the word the rules use, then the one red with its keyline, its job and its never list.
+# The words are the engineer's drafts for the editor, from Rules 14.5 to 14.7 as the editor wrote them in this pass and the
+# tokens' own descriptions; every value and ratio is read from tokens.json.
+ROLE_JOB = ("Inside every palette, each mark takes one of a few roles, in the same inks on every chart (Rules 05.7 and 14.5). "
+            "The subject is the series the title names, the context is every other series, and the one red goes to the point "
+            "the title names (below). A form names the role and never a color.")
+ROLES = [
+    {"id": "subject", "word": "Subject ink", "token": "oa.chart.color.subject", "cls": "oac-f-subject", "kind": "label",
+     "job": "The series the title names and its labels, in the text’s ink: 3 px lines and 6.5 px dots."},
+    {"id": "context", "word": "Context ink", "token": "oa.chart.color.context", "cls": "oac-f-context", "kind": "fill",
+     "job": "Every other series, in gray at 2 px, so the subject reads first, and the 1 px leaders from a note to its mark."},
+    {"id": "light-fill", "word": "Light fill", "token": "oa.chart.color.lightFill", "cls": "oac-f-light-fill", "kind": "fill",
+     "job": ("A paler gray for a category under the subject, with its value printed. On Newsprint it also fills every other bar "
+             "where the title names one bar; on Charcoal those bars keep the context ink (Rule 14.6).")},
+    {"id": "track", "word": "Track gray", "token": "oa.chart.color.track", "cls": "oac-f-track", "kind": "fill",
+     "job": "The whole a share sits in, drawn behind the share."},
+    {"id": "party", "word": "Party ink", "token": "oa.chart.color.party.mark", "cls": "oac-f-party", "kind": "label",
+     "job": "Every mark that stands for a party’s lead, vote or share: one neutral ink for every party, with the party’s name on the mark (Rule 14.7)."},
+]
+RED_JOB = ("Rule 05.3 gives each view one working red. In a chart it goes to the point, bar or line the title names, with its own "
+           "label beside it (Rule 14.6). On Newsprint the red measures {np}, under the 3 to 1 a mark needs, so it takes a 1 px "
+           "keyline in the text’s ink, drawn inside the mark (Rule 05.5). On Charcoal it measures {ch} and takes none.")
+RED_LINES = [("Never", "A series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss (Rule 14.6)."),
+             ("Gives way", "The named mark takes the subject ink at the subject weight, and keeps its label and its place, when an "
+                           "error or a step the reader can take holds the view’s red, or when a reader would tie the mark to a party "
+                           "(Rules 05.3 and 14.6)."),
+             ("Size", "Within 5 percent of the drawing at every width. A named area, or a mark that would pass that share, takes "
+                      "the subject ink (Rule 05.1).")]
+
+
+def ink_swatch(cls, point=False):
+    """A role ink's swatch: its fill with the plate's 1 px edge, or for the point its red with the keyline the surface class
+    gives it (Newsprint's; on Charcoal the keyline token is unset and the edge falls back to none, as the kit draws it)."""
+    edge = '<rect class="ps-kl" x=".5" y=".5" width="39" height="27"/>' if point else '<rect class="ps-edge" x=".5" y=".5" width="39" height="27"/>'
+    return (f'<svg class="ps-sw" viewBox="0 0 40 28" width="40" height="28" aria-hidden="true" focusable="false">'
+            f'<rect class="{cls}" width="40" height="28"/>{edge}</svg>')
+
+
+def ink_cell(path, g, kind):
+    h = hex_of(f"{path}.{SURF[g]}")
+    r = contrast(h, GROUND[g])
+    name = alias_name(f"{path}.{SURF[g]}")
+    named = f' <span class="ps-vn">{e(name)}</span>' if name else ""
+    return h, r, (f'<span class="ps-v">{e(h).replace("#", "&#35;")}{named}</span>'
+                  f'<span class="ps-l">{ratio(r)}, {uses(r, kind)}</span>')
+
+
+def roles_block():
+    rows, sw = [], {"newsprint": [], "charcoal": []}
+    for x in ROLES:
+        cells = []
+        for g in ("newsprint", "charcoal"):
+            h, r, c = ink_cell(x["token"], g, x["kind"])
+            cells.append(c)
+            if x["kind"] == "label":
+                need(r >= 4.5, f"{x['token']} on {g}: {r:.2f} to 1, under 4.5 to 1 for its labels")
+            elif x["id"] == "context":
+                need(r >= 3, f"{x['token']} on {g}: {r:.2f} to 1, under 3 to 1 for a 2 px line")
+        wr = contrast(hex_of(f"{x['token']}.onNewsprint"), GROUND["white"])
+        cells.append(f'<span class="ps-l">{ratio(wr)}, {uses(wr, x["kind"])}</span>')
+        rows.append({"head": f'{ink_swatch(x["cls"])}<span class="ps-st">{e(x["word"])}</span><span class="ps-cd">{e(x["id"])}</span>',
+                     "token": x["token"], "cells": cells})
+    need(hex_of("oa.chart.color.party.mark.onNewsprint") == hex_of("oa.chart.color.subject.onNewsprint"),
+         "the party ink is no longer the subject ink; reread the party ink's words")
+    panels = "".join(
+        f'<div class="ps-g oa-surface-{g}" role="img" aria-label="{e("The role inks on " + WORD[g] + ": " + ", ".join(x["word"].lower() for x in ROLES[:-1]) + " and " + ROLES[-1]["word"].lower() + ", side by side.")}">'
+        f'<p class="ps-gn">On {WORD[g]}</p><ol class="ps-sws" role="list">'
+        + "".join(f'<li>{ink_swatch(x["cls"])}<span class="ps-mk">{e(x["word"].split(" ")[0] if x["id"] != "light-fill" else "Light fill")}</span></li>' for x in ROLES)
+        + "</ol></div>" for g in ("newsprint", "charcoal"))
+    jobs = "".join(f'<li><span class="ps-lk">{e(x["word"])}</span> {e(x["job"])}</li>' for x in ROLES)
+    tok = (f'<p class="ps-note">Tokens: ' + ", ".join(f'<code class="ps-tk">{dotted(x["token"])}</code>' for x in ROLES)
+           + ', each with <code class="ps-tk">.<wbr>onNewsprint</code> and <code class="ps-tk">.<wbr>onCharcoal</code>. In a form, name the role: '
+           + ", ".join(f'<code class="ps-tk">{e(x["id"])}</code>' for x in ROLES) + ".</p>")
+    cap = "The role inks every palette shares, with the word the rules use for each"
+    return (f'<div class="ps-pal" id="ps-roles"><p class="ps-name">The role inks</p><p class="ps-job">{e(ROLE_JOB)}</p>'
+            f'<div class="ps-gs">{panels}</div><ul class="ps-lines ps-jobs" role="list">{jobs}</ul>'
+            f'{ref_table("Ink", cap, rows)}{tok}</div>')
+
+
+def red_block():
+    path, kp = "oa.chart.color.point", "oa.chart.color.pointKeyline.onNewsprint"
+    cells, rs = [], {}
+    for g in ("newsprint", "charcoal"):
+        h, r, c = ink_cell(path, g, "fill")
+        rs[g] = r
+        if g == "newsprint":
+            kr = contrast(hex_of(kp), GROUND[g])
+            c += f'<span class="ps-l">Keyline in {e(alias_name(kp) or "")}, 1 px, {ratio(kr)}, {uses(kr, "fill")}</span>'
+            need(r < 3 and kr >= 3, f"the point on Newsprint measures {r:.2f} and its keyline {kr:.2f}; reread the keyline's words")
+        else:
+            c += '<span class="ps-l">Needs no keyline</span>'
+            need(r >= 3, f"the point on Charcoal measures {r:.2f}, under 3 to 1; it would need a keyline")
+            need("onCharcoal" not in node("oa.chart.color.pointKeyline"), "tokens.json now gives the keyline a Charcoal value")
+        cells.append(c)
+    wr = contrast(hex_of(f"{path}.onNewsprint"), GROUND["white"])
+    cells.append(f'<span class="ps-l">{ratio(wr)}, {uses(wr, "fill")}</span>')
+    rows = [{"head": f'{ink_swatch("oac-f-point", point=True)}<span class="ps-st">The point</span><span class="ps-cd">point</span>',
+             "token": path, "cells": cells}]
+    job = RED_JOB.format(np=ratio(rs["newsprint"]), ch=ratio(rs["charcoal"]))
+    panels = "".join(
+        f'<div class="ps-g oa-surface-{g}" role="img" aria-label="{e("The point in Pillar Red on " + WORD[g] + (", inside its 1 px keyline." if g == "newsprint" else ", with no keyline."))}">'
+        f'<p class="ps-gn">On {WORD[g]}</p><ol class="ps-sws" role="list"><li>{ink_swatch("oac-f-point", point=True)}'
+        f'<span class="ps-mk">{"With its keyline" if g == "newsprint" else "No keyline"}</span></li></ol></div>' for g in ("newsprint", "charcoal"))
+    lines = "".join(f'<li><span class="ps-lk">{e(k)}</span> {e(v)}</li>' for k, v in RED_LINES)
+    tok = (f'<p class="ps-note">Tokens: <code class="ps-tk">{dotted(path)}</code>, with <code class="ps-tk">.<wbr>onNewsprint</code> and '
+           f'<code class="ps-tk">.<wbr>onCharcoal</code>, and its keyline <code class="ps-tk">{dotted(kp)}</code>, on Newsprint only. '
+           f'In a form, name the role: <code class="ps-tk">point</code>; the kit draws the keyline on Newsprint.</p>')
+    return (f'<div class="ps-pal" id="ps-red"><p class="ps-name">The one red</p><p class="ps-job">{e(job)}</p>'
+            f'<div class="ps-gs">{panels}</div>{ref_table("Mark", "The one red, the point the title names", rows)}'
+            f'<ul class="ps-lines ps-jobs" role="list">{lines}</ul>{tok}</div>')
+
+
 def grade_line(key, w):
     """One grade's line at width w, by the atlas build's own marks (Rule 13.4), checked against the token's pattern."""
     tok = node(f"oa.chart.grade.{key}")["$value"]
@@ -363,7 +493,10 @@ def grade_line(key, w):
              f"oa.chart.grade.{key} at {w} px: the token gives {want} {tok['lineCap']}, the atlas build {arr} {cap}")
     else:
         need(tok == "solid" and arr is None, f"oa.chart.grade.{key}: the token is {tok!r}, the atlas build draws {tex}")
-    marks, _, _ = BS.wire_marks([(1, 8), (119, 8)], key, None, None, w, lit=False)
+    # CR-S11 (fix pass after rounds 4 and 5): an odd width sits centered on a half pixel, so a 3 px line fills three whole
+    # pixel rows at 1x (7 to 10) where at y 8 it spread over four, half-covered at top and bottom
+    y = 8 + (w % 2) / 2
+    marks, _, _ = BS.wire_marks([(1, y), (119, y)], key, None, None, w, lit=False)
     marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks).replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
     marks = re.sub(r'\sstyle="[^"]*"', "", marks).replace('class="ak-mark"', 'class="oac-s-subject"').replace('class="hd"', 'class="oac-f-subject"')
     need("ak-" not in marks and 'class="hd' not in marks, f"oa.chart.grade.{key}: the atlas build drew a mark class the plate does not map")
@@ -489,6 +622,28 @@ STYLE = """
 .ps-ln { display: block }
 .ps-rs { display: inline-block; fill: var(--oa-chart-color-subject); vertical-align: .08em; margin-right: 2px }
 .ps-gw b { font-weight: var(--oa-font-weight-bold) }
+.ps-vn { font-weight: var(--oa-font-weight-regular) }
+.ps-kl { fill: none; stroke: var(--oa-chart-color-point-keyline, none); stroke-width: 1px }
+.ps-jobs { color: var(--oa-color-text-primary) }
+/* CR-S12, CD-S12: from 40rem each row is a grid. The step, its swatch and the role a form names sit on one line beside the
+   whole token, and under them the three grounds, each under its heading, one fact a line (a fact too long for its column
+   wraps under its own first word). The Step and Token headings are read by a screen reader and shown in the row itself. */
+@container (min-width: 40rem) {
+  .ps-t, .ps-t thead, .ps-t tbody { display: block }
+  .ps-t tr { display: grid; grid-template-columns: minmax(0, 1.27fr) minmax(0, 1.27fr) minmax(0, 1fr); column-gap: var(--oa-space-200) }
+  .ps-t thead tr { border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
+  .ps-t thead th { border: 0; padding: var(--oa-space-100) 0 }
+  .ps-t thead th:nth-child(-n+2) { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+  .ps-t tbody tr { padding: var(--oa-space-200) 0; border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline) }
+  .ps-t tbody tr:last-child { border-bottom: 0 }
+  .ps-t tbody th, .ps-t td { border: 0; padding: 0 }
+  .ps-t tbody th { grid-row: 1; grid-column: 1; display: flex; flex-wrap: wrap; align-items: center; column-gap: var(--oa-space-150) }
+  .ps-t th[scope="row"] .ps-sw { margin: 0 }
+  .ps-t td:nth-child(2) { grid-row: 1; grid-column: 2 / -1; align-self: center; white-space: nowrap }
+  .ps-t td:nth-child(2)::before { content: "Token"; font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: uppercase; color: var(--oa-color-text-secondary); margin-right: var(--oa-space-150) }
+  .ps-t td:nth-child(n+3) { grid-row: 2; margin-top: var(--oa-space-200) }
+  .ps-t .ps-l { padding-left: 1em; text-indent: -1em }
+}
 /* under 40rem each table row stands as a block: the step, then each value under its column's word (6.6, as chapter 26's table) */
 @container (max-width: 39.99rem) {
   .ps-t thead { display: block; position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%) }
@@ -514,19 +669,21 @@ def build():
                "simulated by Machado, Oliveira and Fernandes (2009) at full strength, which models full color blindness only; a color "
                "distance is the OKLab distance between two colors.")]
     body = (f'<div class="ps"><p class="ps-rel">Tokens {e(RELEASE)}. Every value, ratio and lightness below is read from the token files by script.</p>'
-            f'{{DEFS}}{"".join(palette_block(p) for p in PALS)}{grade_block()}'
+            f'{{DEFS}}{"".join(palette_block(p) for p in PALS)}{roles_block()}{red_block()}{grade_block()}'
             f'<ul class="ps-lines ps-method" role="list">{prussian_line()}'
             + "".join(f'<li><span class="ps-lk">{e(k)}</span> {e(v)}</li>' for k, v in method) + '</ul></div>')
     body = body.replace("{DEFS}", filters(), 1)
     frag = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14 (R5-3). Written by work/build/scripts/phase-3/palette_spec_build.py "
             f"from tokens {RELEASE}; never edit by hand. -->\n<style>{re.sub(r'[ ]*\\n[ ]*', ' ', STYLE.strip())}</style>\n{body}\n")
     meta = {"alt": ("The four data palettes, step by step, on Newsprint and Charcoal: each step’s token, value and contrast in a table, "
-                    "its swatch with its label ink, and proofs in gray and for three kinds of color blindness, then the grade line code."),
+                    "its swatch with its label ink, and proofs in gray and for three kinds of color blindness; then the role inks every "
+                    "palette shares, the one red with its keyline, and the grade line code."),
             "readable": True, "fit_switch": False,
             "notes": f"Written by palette_spec_build.py from tokens {RELEASE} (R5-3); round 0's measures on today's tokens",
             "label": "The data palettes, specified",
             "caption": ("Each data palette Rule 14.5 names, step by step: its tokens, its values on Newsprint and Charcoal, each value’s "
-                        "contrast, and proofs in gray and for three kinds of color blindness. A script writes this plate from the token files.")}
+                        "contrast, and proofs in gray and for three kinds of color blindness, then the role inks and the one red. A script "
+                        "writes this plate from the token files.")}
     return frag, json.dumps(meta, indent=1, ensure_ascii=False) + "\n"
 
 

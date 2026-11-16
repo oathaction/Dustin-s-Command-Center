@@ -95,6 +95,9 @@
       case 'month': { var mm = String(v).match(/^(\d{4})-(\d{2})/); return mm ? MONTHS[+mm[2] - 1] + ' ' + mm[1] : String(v); }
       case 'month-short': { var ms = String(v).match(/^(\d{4})-(\d{2})/); return ms ? MONTHS[+ms[2] - 1].slice(0, 3) + ' ' + ms[1] : String(v); }
       case 'date': { var d = String(v).match(/^(\d{4})-(\d{2})-(\d{2})/); return d ? MONTHS[+d[2] - 1] + ' ' + (+d[3]) + ', ' + d[1] : String(v); }
+      // DF-16 (the fix pass after rounds 4 and 5, H05): words that lead with a date, such as a committee vote "2025-12-17, 50 to
+      // 1", print the date in words and keep the rest: "December 17, 2025, 50 to 1"
+      case 'date-lead': { var dl = String(v).match(/^(\d{4})-(\d{2})-(\d{2})(.*)$/); return dl ? MONTHS[+dl[2] - 1] + ' ' + (+dl[3]) + ', ' + dl[1] + dl[4] : String(v); }
       case 'year': return String(v).slice(0, 4);
       default: return String(v);
     }

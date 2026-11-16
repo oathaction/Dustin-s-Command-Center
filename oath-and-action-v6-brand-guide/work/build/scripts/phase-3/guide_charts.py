@@ -54,6 +54,7 @@ PAGE_BUDGET = 15.5 * MB
 PAGE_LIMIT = 16 * MB
 # The allocation of each chapter not yet built (proposal section 3): Phase 3's three at their ceilings, Phase 4's seven
 # sharing 2.54 MB, Phase 5's two sharing 0.40 MB
+PHASE_4 = ("16", "20", "21", "22", "23", "24", "25")
 ALLOCATION = {"13": 0.25 * MB, "14": CHAPTER_14_STOP, "15": 0.60 * MB,
               **{n: 2.54 * MB / 7 for n in ("16", "20", "21", "22", "23", "24", "25")},
               **{n: 0.40 * MB / 2 for n in ("27", "28")}}
@@ -318,6 +319,25 @@ def gates(weights, charts, fonts_file_bytes, present, warn, note=None):
     share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES, parts14)
     if share:
         rec["chapter_14_per_plate"] = share
+    # ST-S10 (the fix pass after rounds 4 and 5): the room Phase 4 has, beside the projection. Phase 4's chapters not yet built
+    # are counted at their allocation; the break-even is what each may weigh, on average, for the page to stay under 16 MB
+    # and under the 15.5 MB warning with every other figure as projected, and the built chapters' median and mean (chapter
+    # 14 aside, which carries the chart kit) say how near today's chapters run to it
+    p4 = sorted(n for n in unbuilt if n in PHASE_4)
+    if p4:
+        rest = proj - sum(unbuilt[n] for n in p4)
+        others = sorted(v for n, v in ch.items() if n != "14")
+        mid = (others[len(others) // 2] if len(others) % 2 else (others[len(others) // 2 - 1] + others[len(others) // 2]) / 2) if others else None
+        rec["phase_4"] = {"chapters": p4, "assumed_each": round(unbuilt[p4[0]]), "break_even_each_16mb": round((PAGE_LIMIT - rest) / len(p4)),
+                          "break_even_each_15_5mb": round((PAGE_BUDGET - rest) / len(p4)),
+                          "built_chapters_median": round(mid) if mid is not None else None,
+                          "built_chapters_mean": round(sum(others) / len(others)) if others else None, "built_chapters_counted": len(others)}
+        r4 = rec["phase_4"]
+        note("page weight", f"Phase 4's {len(p4)} chapters ({', '.join(p4)}) are projected at {r4['assumed_each']:,} bytes each; for the page to stay "
+                            f"under 16 MB they may average {r4['break_even_each_16mb']:,} bytes each, and {r4['break_even_each_15_5mb']:,} to stay under "
+                            f"the 15.5 MB warning"
+                            + (f"; today's {r4['built_chapters_counted']} built chapters other than 14 weigh {r4['built_chapters_median']:,} bytes at the "
+                               f"median and {r4['built_chapters_mean']:,} on average" if others else "") + " (ST-S10)")
     if proj > PAGE_BUDGET:
         warn("page weight", f"the projected page weighs {proj / MB:.2f} MB (today's {weights['bytes'] / MB:.2f} MB plus "
                             f"{sum(unbuilt.values()) / MB:.2f} MB for the chapters not yet built and {sum(held.values()) / MB:.2f} MB still to come in "
@@ -452,6 +472,16 @@ def self_test():
     _, rec, got = run(base, {"s-14-s13": {"tier": "core", "bytes": 47_213}}, 300_000, set())
     ok = any("s-14-s13" in g for g in run.noted) and not rec["far_over_approved"]
     print(f"{'pass' if ok else 'FAIL'} S13 one byte over its board 1 weight is reported again (DR-271)")
+    bad += not ok
+    # ST-S10 (fix pass after rounds 4 and 5): Phase 4's room beside the projection, by its own arithmetic
+    w = json.loads(json.dumps(base)); w["chapters"]["01"] = {"bytes": 300_000}; w["chapters"]["02"] = {"bytes": 500_000}; w["chapters"]["03"] = {"bytes": 400_000}
+    _, rec, _ = run(w, {}, 300_000, {"01", "02", "03"})
+    p4 = rec.get("phase_4") or {}
+    rest = rec["projected_bytes"] - 7 * 2.54 * MB / 7
+    ok = (p4.get("chapters") == sorted(PHASE_4) and p4.get("assumed_each") == round(2.54 * MB / 7) and abs(p4["break_even_each_16mb"] - (PAGE_LIMIT - rest) / 7) <= 1
+          and abs(p4["break_even_each_15_5mb"] - (PAGE_BUDGET - rest) / 7) <= 1 and p4["built_chapters_median"] == 400_000 and p4["built_chapters_mean"] == 400_000
+          and any("Phase 4's 7 chapters" in n and "(ST-S10)" in n for n in run.noted))
+    print(f"{'pass' if ok else 'FAIL'} ST-S10: Phase 4's assumed size, its break-even under 16 MB and 15.5 MB, and the built chapters' median and mean, reported")
     bad += not ok
     # a chapter still being built counts at its allocation in the projection, and at its bytes once past it
     w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 200_000}

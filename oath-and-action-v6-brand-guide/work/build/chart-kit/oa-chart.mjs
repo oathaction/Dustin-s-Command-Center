@@ -1698,6 +1698,19 @@ async function self_test() {
       if (!ok) bad++;
     }
   }
+  // PR-S8 (the fix pass after rounds 4 and 5): every registered form has a starter row in the README's tables, so the
+  // README keeps up with the forms; a planted form with no row must be caught
+  {
+    const readme = fs.readFileSync(path.join(KIT, 'README.md'), 'utf8').split('\n').filter(l => l.startsWith('|'));
+    const without = (names) => names.filter(f => !readme.some(r => r.indexOf('`' + f + '`') >= 0));
+    const filed = [...new Set([].concat(...Object.values(FORM_FILES)))];   // the forms in forms/, not the self-test's own
+    const missing = without(filed);
+    console.log(`${missing.length ? 'FAIL' : 'pass'} every one of the ${filed.length} forms in forms/ has a starter row in README.md${missing.length ? ': not ' + missing.join(', ') : ''}`);
+    if (missing.length) bad++;
+    const planted = without(['a-form-with-no-row']).length === 1;
+    console.log(`${planted ? 'caught' : 'MISSED'} a form with no starter row in README.md`);
+    if (!planted) bad++;
+  }
   console.log(bad ? `self-test: ${bad} missed` : 'self-test: every planted fault caught');
   return bad ? 1 : 0;
 }

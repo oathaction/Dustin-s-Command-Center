@@ -62,6 +62,16 @@ So on both grounds the chosen pill's boundary holds a line at 3 to 1 or more aga
 
 Rule 18.22's stepper reads its parts by class, never by order, so 15.19 can take 14.143's order with no change to the shared script: in `rule_15_19()` (chapter 15, near line 3195), `right` becomes the status line, `ctl`, `why`, then the step list and the limit's note. Tab then reaches Play, Reset the loop, Previous step and Next step before the list, as on 14.143; the accessibility lead's yes on that focus order is CR-S4's condition. The sticky drawing column is not possible inside a plate today: every plate's frame (`.plate-scroll`) scrolls sideways (`overflow-x: auto`), which makes the frame the sticky element's scroll box, so a sticky drawing sticks to its frame and never to the window. See "Not fixed".
 
+### 3. To the systems designer and the complex examples maker: CR-S17, the chips that print "R - 06" (18:20 UTC)
+
+The cause, measured in Chromium on the guide's own Inter: `font-variant-numeric: tabular-nums` sets the hyphen to a figure's width as well as the figures. At the data label size the hyphen is 6.06 px wide as set and 8.42 px with tabular figures, so "R-06" grows from 31.42 to 33.72 px and the hyphen gains about 1.2 px of air on each side; in body type it grows from 7.83 to 11.03 px. The shell already holds the rule this breaks (C-S4: "tabular figures only where a column of numbers lines up, never on runs of text with hyphens"). A chip's ID never lines up in a column.
+
+201 chip IDs with a hyphen on the page take tabular figures: chapter 13's `.chip .id` (`phase3_ch13_build.py`, `CSS["chip"]`), which chapter 15's plate CSS copies and 14.144 takes from chapter 15, and Rule 18.24's code chip (`c-18-id-chip.css`, `.oa-chip-id`). They sit on `s-13-5`, `s-13-9`, `s-13-10`, `s-14-144`, `s-15-11`, `s-15-12`, `s-15-16`, `s-15-20`, `s-15-24`, `s-15-25` (correct and failure plates) and Rule 18.24's code stages.
+
+- Systems designer: in chapter 15's plate CSS, drop `.chip .id{font-variant-numeric:tabular-nums}` where it copies chapter 13's chip (or follow it with `.chip .id{font-variant-numeric:normal}`). That reaches every chip in chapter 15, which the brief keeps in scope, and 14.144 through `plate_style`.
+- Complex examples maker: confirm 14.144 takes it with chapter 15's CSS; if 14.144 writes its own chip rule, the same line there.
+- Chapter 13 and Rule 18.24's code chip are approved work outside rounds 4 and 5 and chapter 15, so they wait for board 3 (Not fixed).
+
 ## Tested
 
 All in Chromium (Playwright's headless shell), one browser at a time, each batch started by `scratch/bin/run.sh` only after `browsers.sh` printed "OK to open one", and closed at its end; one slip under "Status" (18:11). Scripts in `scratch/bin/`, results in `scratch/out/`.

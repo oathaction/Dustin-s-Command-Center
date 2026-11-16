@@ -28,22 +28,22 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 | `kit.js` | The renderer, the code that turns a spec and its rows into a drawing, reads a page's rows back and checks its layout. A page reaches it by one name, `OAChart`. It is all the guide's page carries of the kit's core |
 | `kit-build.js` | The builder's half (round 3 fix pass): the figure's words and table as HTML, atlas IDs in chips, `OAChart.render` for a plain page, and the copy of `words.json`. Node and a plain page load it after `kit.js`; the guide's page never carries it, since its figures are written at build |
 | `parts.js` | Drawing parts the forms share (since round 3 also nodes, links, trees and flows, and the map parts with `K.geo`): keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`); since round 2's fix pass, words set clear of a line (`clear_label`) and a listing's row names and values in one weight (`row_name`, `row_value`). Each part's call is in the comment above it |
-| `forms/*.js` | One file per chart form, 85 files (November 13, 2026, round 3). Each file's header lists the `encode` and `labels` names it reads |
+| `forms/*.js` | One file per chart form, 95 files holding 97 forms (November 16, 2026, the fix pass after rounds 4 and 5). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
 | `geo.js` | The map geometry, carried once a page: the studio's state tiles and four layers from the 2024 Census boundary files (states, counties, Michigan's districts, California's counties), projected and simplified at build by `tools/geo_build.py` (round 3). Never edit it by hand |
 | `kit.css` | The figure's style. It uses only `var(--oa-...)` tokens from `tokens.css` |
 | `words.json` | The words every figure prints the same way, such as "Source:". The editor owns them |
 | `plate-share.json` | Chapter 14's share per plate, written by each build of the guide's own chapters; `build` prints it on every weight line. Never edit it |
 | `checks.js`, `oa-chart.mjs` | The checks and the command |
-| `specs/` | The specs for S01 to S84, the charts in chapter 14. Each one is a starter for its form |
+| `specs/` | The specs for S01 to S96, the charts in chapter 14. Each one is a starter for its form. S97 and S98 are kept for chapter 14's worked examples, so a new spec of yours starts at S99 |
 | `tools/` | `geo_build.py` writes `geo.js`; `kit_snapshot.mjs` compares what two copies of the kit draw; `minify.mjs` shrinks the kit for the page |
 
 ## Make a chart from an existing dataset
 
 1. **Pick the data.** Open `work/build/data/`. Every table there is a `.csv` file, or a `.json` file of rows, with a
    `.meta.json` sidecar beside it. The sidecar names the columns, their types and the printed source line.
-2. **Copy a starter spec** for the form you want, from the table below, into a new file such as `specs/s17.json`. Give
-   it a new `id`.
+2. **Copy a starter spec** for the form you want, from the tables below, into a new file such as `specs/s99.json`. Give
+   it the new `id`, here `S99`.
 3. **Point it at the data.** Set `dataset` to the table's name without its extension. Set `encode`, the spec's map of
    which column draws which part of the chart, to the column names the form reads. Use `where` to keep rows, for example `{"year": 2024}` or `{"year": [2020, 2024]}`, and
    `{"function": {"not": ["Total"]}}` to leave rows out. Use `sort` to order them, for example
@@ -61,8 +61,12 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 6. **Run it:**
 
    ```sh
-   node work/build/chart-kit/oa-chart.mjs build specs/s17.json
+   node work/build/chart-kit/oa-chart.mjs build s99
    ```
+
+   An ID such as `s99` finds `specs/s99.json` in the kit's folder from wherever you stand. A path works too, read from
+   the folder you stand in: from the project folder, `node work/build/chart-kit/oa-chart.mjs build
+   work/build/chart-kit/specs/s99.json`.
 
    The command checks the spec. It then draws the chart at 1440 and 390 px on Newsprint and Charcoal, and checks every
    column width the guide gives a chart: 656, 558, 358, 326, 296 and 256 px, and a rule plate's narrower ones. Then it
@@ -70,8 +74,10 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
    reading chart, 869 px for a wide one) on Newsprint, since the guide can give a chart any of them (329 px on a 393 px
    phone, 510 px in a 574 px window, 560 px on a 768 px tablet); a fault found there prints once with the widths it
    holds at. `--no-sweep` leaves the sweep out while you work; run it before you report. It saves the exports, with a page for each
-   drawing, to one folder per spec, and its last line names the folder (`wrote: ...`); `--out FOLDER` picks another. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check
-   specs/s17.json` to check without drawing.
+   drawing, to one folder per spec, and its last line names the folder (`wrote: ...`); `--out FOLDER` picks another. With
+   `--no-png` it opens no browser and writes only the CSV and the check file for each spec, no SVG, PNG or captures; the
+   last line says so. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check s99` to check
+   without drawing.
 
 | Form | Starter spec | Form | Starter spec |
 |---|---|---|---|
@@ -96,7 +102,7 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 | `heat-table` | `specs/s37.json` | `timeline` | `specs/s09.json` |
 | `implementation-timeline` | `specs/s32.json` | `tracker-list` | `specs/s40.json` |
 | `indexed-line` | `specs/s33.json` | `unit-chart` | `specs/s08.json` |
-| `line-data-gap` | `specs/s31.json` | `sparkline-table`, `social-data-card` | Read the form's header in `forms/` |
+| `line-data-gap` | `specs/s31.json` | `sparkline-table` | Read the form's header in `forms/` |
 | `stacked-share-bar` | `specs/s43.json` | `scatter-named` | `specs/s54.json` |
 | `waterfall` | `specs/s44.json` | `bubble-scatter` | `specs/s55.json` |
 | `stacked-column` | `specs/s45.json` | `connected-scatter` | `specs/s56.json` |
@@ -123,6 +129,44 @@ Round 3's forms (diagrams and maps):
 | `roll-call-grid` | `specs/s72.json` | `district-tile-map` | `specs/s82.json` |
 | `network-diagram` | `specs/s73.json` | `dot-density-map` | `specs/s83.json` |
 | `adjacency-matrix` | `specs/s74.json` | `small-multiple-maps` | `specs/s84.json` |
+
+Round 4's forms (infographics and cards) and round 5's chart in full:
+
+| Form | Starter spec | Form | Starter spec |
+|---|---|---|---|
+| `icon-array` | `specs/s85.json` | `comparison-cards` | `specs/s91.json` |
+| `proportional-symbols` | `specs/s86.json` | `step-by-step` | `specs/s92.json` |
+| `venn-diagram` | `specs/s87.json` | `annotated-illustration` | `specs/s93.json` |
+| `euler-diagram` | `specs/s88.json` | `calendar` | `specs/s94.json` |
+| `process-explainer` | `specs/s89.json` | `social-data-card` | `specs/s95.json` |
+| `by-the-numbers` | `specs/s90.json` | `columns-moving-average` with its margin | `specs/s96.json` |
+
+The kit's self-test fails when a form in `forms/` has no row in these tables, so a new form brings its starter with it.
+
+## Cards, a chart in full, and the keys a spec may opt into (rounds 4 and 5)
+
+**Cards.** `by-the-numbers`, `comparison-cards`, `step-by-step` and `calendar` are cards: the kit writes their HTML when
+it builds, with no drawing for the page to draw, so the guide's page carries none of their code. The kit checks the HTML
+it writes (only `kit.css`'s card classes, R4-3) and, in a browser run without `--no-png`, each card's sizes, overflow,
+overlap and reading order. `social-data-card` draws each crop the spec names (`card.crops`) at its exact
+pixel size.
+
+**A chart with its margin** (S96, Rule 14.142). `columns-moving-average` takes these keys, each only where the spec sets
+it, so a spec without them draws as S14 does: `labels.named` (the columns the title names, in the subject ink, each with
+its words on a leader; every other column takes the light fill), `labels.named_stack` (those words stand as one stack),
+`labels.margin` (`value`, `label`, `key`: a band from minus to plus the value behind the columns), `scale.ticks_min` (no
+tick or gridline under this value) and `scale.y_narrow` (the value scale on a phone). Two more since the fix pass after
+rounds 4 and 5: `labels.latest_clear` (px: the latest month's words rise until they stand that far clear of every
+gridline) and `labels.average_dash: "fit"` (the dashed average starts and ends on ink). The check fails a named column
+that stands inside the margin: a column the title names is a change the survey can tell.
+
+**Open dots on a range bar.** `range-bar` draws a row open when its interval cannot tell it apart: from the reference
+row (`labels.test: "reference"`), from zero (`labels.test: "zero"`), or where a status column says so (`encode.status`
+with `labels.open`). A spec with a status column names its test as well, and the check fails every row whose dot the
+test does not give.
+
+**The evidence chip.** A spec may set `evidence_layout: "beside"` to keep a long grade line beside the evidence chip,
+wrapping under its own first word, where it would otherwise drop under the chip.
 
 ## Estimates with their intervals, stacks, bands and summaries (round 2)
 
