@@ -1692,8 +1692,10 @@ def chapter(B, sources):
         "extras": [
             {"specimen": "s-14-selection-guide", "label": "Choose a chart",
              # DD-G4, SG-5: the guide's own key now says what each tier means, so the caption keeps the order and the links
+             # the selection guide maker's SG-11 (fix pass, wave 2): the caption names the road the guide now ends on
              "caption": ("Every form in this chapter sits under the question it answers, core forms first and forms to avoid "
-                         "last, and each name leads to its entry.")},
+                         "last, and each name leads to its entry. The guide ends with links to the chapter’s three charts "
+                         "in full.")},
             {"specimen": "s-14-palette-spec", "label": "The four data palettes, step by step",
              "caption": ("Each of the four palettes appears with its job and its steps, and each step with its token name, its "
                          "value and its contrast on every ground we approve it for. Gray and three color-blind simulations follow "

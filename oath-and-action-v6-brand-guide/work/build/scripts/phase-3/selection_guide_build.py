@@ -76,8 +76,9 @@ TIER_KEY = [
 FULL_AT = {
     4: ("14.142", "A chart in full, {}, draws the monthly change in payroll jobs as columns with a moving average and "
                   "marks the survey’s margin of error."),
+    # the editor's second read: Rule 14.142 names the drops past the margin, as its rule now says (NB-S1)
     8: ("14.142", "A chart in full, {}, draws a survey’s margin of error as a band behind monthly columns and names the "
-                  "changes that pass it."),
+                  "drops that pass it."),
 }
 FULL_LEAD = "Each puts several of these forms together on one subject, with its table and its files."
 FULL = [   # group 18's three subjects, in the words of its group line in 14-chapter.json
@@ -1962,8 +1963,10 @@ def build():
         "rule": None,
         "width_px": None,
         "alt": ("Every one of the 127 forms in this chapter, under the 16 reader questions that open its groups, each named "
-                "with its tier and linked to its entry, beside a small drawing of the form. After the questions, links "
-                "lead to the chapter’s three charts in full and to chapter 15’s routes to change."),
+                "with its tier and linked to its entry, beside a small drawing of the form. Links under two of the "
+                # the editor's second read: the road also sits under questions 4 and 8, not only after the questions
+                "questions and after the last one lead to the chapter’s three charts in full, and the last also to "
+                "chapter 15’s routes to change."),
         "illustrative": False,
         "interactive": True,
         "fit_switch": False,
