@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, November 16, 2026 (
 
 What I looked at: the shared capture set (DR-277) made from the strict build of `9a6e1182` (`scratchpad/c07/main/guide.html`, 12,107,102 bytes, 0 warnings, 369 rules, 679 specimens) and its `guide-Build-Report.json`. I read all 98 plates and whole rules at Newsprint 1x at 1440 px, the four chooser and stepper states, and the round 4 and 5 plates at Newsprint 1x at 390 px, tiling the tall ones in my scratch folder so each was read at true size. I read the words from the chapter files, entries, specs and specimen files, and found the cause of two faults in the plates' own CSS. Charcoal, grayscale and 2x captures were still landing when I wrote these first scores (section "Second look" adds them).
 
-Status: first scores written 17:04 UTC, before reading any other reader's report; other reports read from 17:05 UTC. The fix pass began while I wrote (snapshot commits from 17:00 UTC, and `20261116_Rounds-4-5-Fix-Brief.md`); every finding here is against `9a6e1182` and its captures, and I did not read the fix pass's changes.
+Status: first pass complete at 17:41 UTC. First scores written 17:04 UTC, before reading any other reader's report; other reports read from 17:05 UTC; Charcoal and my own 2x pictures read from 17:37 UTC. The fix pass began while I wrote (snapshot commits from 17:00 UTC, and `20261116_Rounds-4-5-Fix-Brief.md`); every finding here is against `9a6e1182` and its captures, and I did not read the fix pass's changes.
 
 ## Decision or verdict
 
@@ -221,7 +221,12 @@ None new. The two I would have asked are settled inside the fix pass as I recomm
 
 ## Second look
 
-Pending: the Charcoal captures at 1440 and 390 px, for DD-R5 on Charcoal, round 4's cards on Charcoal and the trackers' marks.
+The main session told me at 17:25 UTC that the shared run stops after Charcoal 1x at 1440 and 390 px, with no 2x, grayscale, 320, 360, 768 or 1024 px sets, and asked me to take my own 2x pictures. I read the Charcoal 1x captures at 1440 px as they landed (round 4's and 5's plates and the trackers; chapter 15's later rules were still landing), and took my own 2x set at 1440 px in one browser, opened at 17:27 UTC after `browsers.sh` printed "OK to open one" (folder `scratchpad/c07/review/creative-director/cap2x/`): 17 plates on Newsprint, 16 on Charcoal, and 14.144's R-30 and R-38 states, then plates on Newsprint under the page's own `grayscale(1)` filter (15.20, 14.144 and S96 read).
+
+No score moves. What the pictures add:
+- **Charcoal.** S96, 14.144, S95's card and the two trackers hold on Charcoal: the named drops turn to the Newsprint ink, the band reads as a darker step, the red target keeps its keyline case, and the cards' type and dots read at true size. Round 4's cards on Charcoal (the carried item) pass my read.
+- **Grayscale, 2x, the page's own filter.** On 15.20 the chosen pills' red ring turns a mid gray, lighter than an unchosen pill's ink, and the red arrowhead turns the same gray, while the red shaft holds by its dark case. This confirms DD-R5 and CR-S1's arrowhead keyline on the page itself, not only in my luma conversion.
+- **2x, Newsprint.** CD-M1 shows at 2x as it does at 1x: L39 is a solid black bar with R-38 chosen. The "R - 06" chips (CR-S17) print with a space's width each side of the hyphen at 2x. S93's page callouts 6 and 7 touch and sit beside the list's disc 3 (CR-S13). S96's band, key and leaders land on whole pixels; the dashed average over the preliminary months is barely seen (CR-S9). The selection guide's line symbols land on whole pixels; its map symbols are filled silhouettes, the one family drawn as shapes rather than lines, as my R5-G craft reason says.
 
 ## Tested
 
@@ -233,10 +238,13 @@ Pending: the Charcoal captures at 1440 and 390 px, for DD-R5 on Charcoal, round 
 - Checked D3-1542 and DR-258 in the decision log for 15.25's 2,644 claim.
 - From 17:05 UTC, after my first scores, read the Must fix sections and score lines of the civic education, nonpartisanship and brand, statistics, production, drift and reader panel reports (accessibility and craft were not yet scored), and checked before moving a score: DR-211, DR-268 and D3-1802 in the decision log (NB-M2); `s92.json`'s path column words (RP-2); 0 heading elements in `s-14-selection-guide.html` (RP-14); 14.143's status and step 1 lines in my captures (CE-M1).
 - Converted the 15.20 and 14.144 (R-30) captures to grayscale by luma (Pillow, ITU-R 601) and compared the chosen pill's ring with an unchosen pill's (17:05 UTC). This is my conversion, not the page's grayscale filter.
+- Read the shared Charcoal 1x captures at 1440 px for S96, 14.144, S95, 11.10 and the round 4 and 5 plates that had landed (17:37 UTC).
+- Took my own 2x captures at 1440 px with `scratchpad/c07/review/creative-director/cd2x.cjs` (Playwright Chromium, device scale factor 2, masthead hidden, grounds set as the shared `cap.cjs` sets them), one browser opened at 17:27 UTC after `browsers.sh` printed "OK to open one" and closed when the batch ended; these pictures are mine, in `scratchpad/c07/review/creative-director/cap2x/`. Read at 2x: S96's chart and key, 14.144 in the R-38 state, the selection guide's structure and maps rows, S93's callouts, 11.10's tracker.
 
 ## Not tested
 
-- No browser opened; no keyboard, accessibility tree, axe, forced colors, reduced motion, print or 200 percent text check.
-- Charcoal, grayscale and 2x captures, and 1024, 768, 360 and 320 px (still landing at first scores).
+- Keyboard, accessibility tree, axe, forced colors, reduced motion, print, scripts off and 200 percent text: I ran none; the accessibility reader's measures govern.
+- Grayscale by the shared run, and 320, 360, 768 and 1024 px: the shared run made none (the main session's message at 17:25 UTC), and I took none at those widths.
+- 2x at 390 px; Charcoal at 390 px; chapter 15's Rules 15.1 to 15.25 on Charcoal (still landing when I wrote).
 - S14 at 480 to 720 px; S16 and S78 at phone width; the CSV and PNG exports; S95's exported PNG at true pixels.
 - Screen readers, Safari and Firefox (DR-279).

@@ -3646,7 +3646,7 @@ class Stage:
             rows.append(f'<p class="bq">{hold(e(self.back))}</p>')
         if sources:
             if self.cites:
-                cs = "; ".join(cite_dated(c, r) for c, r in self.cites)
+                cs = cites_line(self.cites)
                 rows.append(f'<p class="sc">Source: {hold(cs)}</p>')
             else:
                 rows.append('<p class="sc">Source not yet read</p>')
@@ -3680,6 +3680,28 @@ def usc_checked(text):
                  f"{t} U.S.C. {sec} is not among the sections F10 checked; ask the research lead before it prints")
     need("30116" not in text or "in force" not in text, "52 U.S.C. 30116(d) never prints as in force (F10)")
     return text
+
+
+def cites_line(cites):
+    """A stage's sources in order. The editor's second read: sections of one title of the U.S. Code retrieved the same day
+    print once, as "2 U.S.C. 641 and 644, as in force on November 14, 2026, the day we retrieved them", in place of the
+    same date and words twice."""
+    out, i = [], 0
+    usc = lambda c: re.fullmatch(r"(\d+) U\.S\.C\. (\d+[a-z]?(?:\([\w]+\))*)", c)
+    while i < len(cites):
+        c, r = cites[i]
+        m, j = usc(c), i + 1
+        while m and j < len(cites) and usc(cites[j][0]) and usc(cites[j][0]).group(1) == m.group(1) \
+                and cites[j][1]["Checked"] == r["Checked"]:
+            j += 1
+        if j - i > 1:
+            secs = [usc(x)[2] for x, _ in cites[i:j]]
+            label = f"{m.group(1)} U.S.C. " + ", ".join(secs[:-1]) + " and " + secs[-1]
+            out.append(cite_dated(label, r).replace("the day we retrieved it", "the day we retrieved them"))
+        else:
+            out.append(cite_dated(c, r))
+        i = j
+    return "; ".join(out)
 
 
 def cite_dated(c, r):
@@ -3838,8 +3860,9 @@ def fs_stages():
         Stage(2, "st", "Passed by the first chamber", "The first chamber passes it by a majority of the members who vote, 218 "
               "when all 435 House members vote or 51 when all 100 senators do. A tie fails, and in the Senate the Vice "
               "President may break it.",
-              [(h, r["floor"]), ("U.S. Constitution, Article I, Sections 3 and 5; House Rule XX, clause 1, as printed "
-                                 "January 16, 2025; U.S. Senate, “About Voting”", r["pass"])]),
+              # the data lead's batch 4, item 1: each source takes its own date retrieved (Rule 13.6), from F3's row
+              [(h, r["floor"]), ("U.S. Constitution, Article I, Sections 3 and 5", r["pass"]),
+               ("House Rule XX, clause 1, as printed January 16, 2025", r["pass"]), ("U.S. Senate, “About Voting”", r["pass"])]),
         Stage(3, "br", "Suspension of the rules", "The House takes the bill up on a Monday, Tuesday or Wednesday, debates it "
               "for no more than 40 minutes and passes it with two-thirds of the members voting.",
               [("House Rule XV, clause 1, as printed January 16, 2025", r["susp"])],
@@ -4072,7 +4095,7 @@ ROUTE_SET = {
                 "In force, or sent to a referendum"],
         sources=[("Massachusetts Constitution, Amendment Article LXXXIX", [("Home rule: what a city may enact", "exercise any power or function"),
                                                                         ("State limits on local power (preemption)", "regulate elections")]),
-                 ("the charters of Boston, updated as of January 2025, Baltimore, and Portland, Oregon, as amended "
+                 ("the charters of Baltimore, of Boston as updated in January 2025, and of Portland, Oregon, as amended "
                   "November 8, 2022", [("Boston, Northeast", "two thirds of all the city councillors"),
                                                                             ("Baltimore, South", "read on three different days"),
                                                                             ("Portland, Oregon, West", "The Mayor is not a member of Council")]),
@@ -4337,9 +4360,10 @@ def rule_15_24(book):
          "the earlier drawing that put one reform on a route is no longer row 41's R-28; reread Rule 15.24's example (R6)")
     one = (f'<div class="one o1"><p class="k">One reform’s route, read through its workflow</p>'
            f'<p class="hed">{chip("Reform", "R-28")}<span>“{e(r28["title"])}”</span></p>'
-           f'<p class="rec">We read this reform because it is the one an earlier drawing put on a route: our brand guide’s '
-           f'fifth edition and the atlas visual system drew it on “a federal tax-law route through reconciliation”, with '
-           f'no feasibility or date, as row 41 of <a href="#rule-15-25">Rule 15.25</a> records.</p>'
+           f'<p class="rec">We chose Reform R-28 for this example because it is the one reform an earlier drawing put on a '
+           f'route. Our brand guide’s fifth edition and the atlas visual system, a design study for the atlas, drew it on '
+           f'“a federal tax-law route through reconciliation”, with no feasibility or date, as row 41 of '
+           f'<a href="#rule-15-25">Rule 15.25</a> records.</p>'
            f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Its entry’s own words: “{e(r28["routes"][0]["who"])}”. '
            f'<b>{e(r28["routes"][0]["feasibility"].capitalize())}</b> feasibility. Not checked.</p>'
            f'<p>The entry names reconciliation, so the reform takes stage 5 of Rule 15.22’s workflow: Senate debate held to '
@@ -5042,7 +5066,7 @@ def rule_15_23(book):
     b9 = xw_block(f'Federal rule making beside the agency rule tracker of <a href="#rule-11-9">Rule 11.9</a>',
                   "The law’s stages for a federal rule, behind the tracker’s six steps",        # CE-M3, DF-1
                   rows9, f"Stages from 5 U.S.C. 551, 553, 701 to 706, 801 and 802, each as in force on the day we retrieved "
-                         f"it, and Executive Order 12866 of September 30, 1993, as amended, retrieved "
+                         f"it, and Executive Order 12866 of September 30, 1993, retrieved "
                          f"{C13.words_date(rm['date_retrieved'])}.")
     # Rule 11.10, a ballot measure, against Route BI's rows
     r10, s10 = tracker_steps("11.10")
@@ -5093,7 +5117,7 @@ def rule_15_23(book):
                    "A federal civil case’s stages in Title 28, the courts’ rules and the Supreme Court’s rules, behind the "
                    f"tracker’s six steps. The case itself runs on the enforcement and litigation route, “{e(lc(ROUTE['ENF']['instrument']))}”; "
                    f"a ruling at step 4 or 6 that changes what other routes may do belongs to the court doctrine route.", rows11,
-                   f"Stages from 28 U.S.C., as in force on the day we retrieved it, the Federal Rules of Civil Procedure of "
+                   f"Stages from title 28 of the U.S. Code, 2024 edition, the Federal Rules of Civil Procedure of "
                    f"December 1, 2025, the Federal Rules of Appellate Procedure of December 1, 2024, and the Rules of the "
                    f"Supreme Court effective March 16, 2026, retrieved {dates_words(r_['Checked'] for r_, _ in cr)}.")
     for blk in (b1, b8, b9, b10, b11):     # CE-M3, DF-1: a block's subhead calls the law's parts stages, the tracker's steps
