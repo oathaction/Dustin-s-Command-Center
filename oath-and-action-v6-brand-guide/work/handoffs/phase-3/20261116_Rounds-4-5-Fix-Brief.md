@@ -51,3 +51,37 @@ Where a code names two owners, the first named in this table writes the file and
 - **Read each other's notes.** The data lead's "Rulings", the research lead's "Facts" and the editor's "Words for <owner>" sections are written for you to read directly, so the main session relays less.
 - Read the clock with `date -u` before writing a time. Plain sentences, no em dashes, chapter 02's rules for every word a reader sees. Never touch `source/`, `work/ledger/`, `deliverables/`, any board or another owner's files. Do not commit or push. Never run `git checkout --` on anything but the one timestamp file above.
 - Reply to the main session in 150 words or fewer when you finish: what you fixed, what you did not and why, and what waits on someone else.
+
+## Addendum 1, 17:50 UTC: the second wave
+
+The creative director's first pass is in (`20261116_CD-Review-Of-Rounds-4-5.md`, `20261116_Rounds-4-5-CD-Scores.json`; seven items under 4, each lowest at 3: R4-I, R5-G, R5-2, R5-3, C15-I, C15-W, C11-T). The accessibility (AX), production (PR), reader panel (RP) and craft (CR) reports are written but still marked in progress while their browser checks wait; route from their current text and read each again when the main session says it is final. Codes already fixed in wave 1 and named again (CD-M1, CR-M2 and RP-1 are NB-M3; CD-M2, CR-M1 and RP-6 are DF-11 and CE-S6; RP-4 is CE-S1; RP-5 is CE-S2; RP-20 is ST-S1; CR-S2 is call 2) need only a check that the fix holds.
+
+### The main session's calls, continued
+
+9. **Palette ratios round down (ST-S4, AX-S1, PR-S6),** as D3-1929 already says; the plate's 16 ratios printed one hundredth high are a fault, not a choice.
+10. **DR-278 (a) is now a Must (AX-M1).** At 1024 to 1360 px a focused link in the chapter rail can sit wholly under the masthead, which fails 2.4.11 (AA), not only 2.4.12. The shell's scroll and focus offsets follow the masthead's real height at every width. Measure the reach first; board 3 shows it.
+11. **DR-278 (b) lands with its check (CD-M3, AX-S3, AX-S6, RP-13).** An image stage's fragment is hidden from the accessibility tree in `plate()` so its alt is heard once, and the guide check changes in the same commit so it tests the new rule. It reaches every image stage: count them and list any whose alt does not carry every word it hides.
+12. **DR-278 (c) and the code sets (AX-S7).** The "Where to start" links and chapter 26's code sets stop pushing the page sideways at 320 px with 200 percent text.
+13. **DR-278 (d) (PR-S1).** Chapter 26's token table script selects inside its own plate only.
+14. **Guards the build runs (PR-S2, PR-S5, PR-S11).** `guide_build.py` checks that every plate style's braces balance and that no plate script selects across the page, fails a palette plate that a token release left stale, and stops rewriting `plate-share.json` when nothing in it but its time changed, each without changing a reader's page.
+15. **The chooser changes once, on both plates (DD-R2, DD-R5, AX-S5, CR-S1, CD-S5).** One width for the choices and a keyline inside a chosen pill's red ring, which also lifts the ring's 2.95 to 1 contrast. The component engineer changes the shared chooser; the systems designer (Rule 15.20) and the complex examples maker (Rule 14.144) apply any plate-side line. Board 3 shows Rule 15.20 changed.
+16. **SG-6 is not adopted.** The tier word stays under the name, aligned by subgrid (D3-2072); no reader's report asks for the change.
+17. **The selection guide's questions stay lists (RP-14).** D3-2074 set lists, not headings, because a plate holds no heading; the guide gives a reader the road to the three charts in full instead (RP-3, PR-S9).
+18. **S95 signs off with the lockmark (NB-M2)** as DR-211 sets it: the 48 px master at 96 px on each crop, with its size line kept (AX-S2). S14's latest label (CR-S15) moves clear of its gridline only by a spec key; S14 is then listed for board 3 with its source line.
+
+### Owners and their codes, second wave
+
+| Owner | Codes | Files you may write |
+|---|---|---|
+| Engineer | Calls 9, 11, 13, 14; CD-S12, CR-S11, CR-S12 (the palette plate's lines and tables), DF-13 (the plate lists the ink words Rule 14.6 now defines), NB-S3, ST-S10, PR-S3 (with the component engineer), PR-S4, PR-S7, PR-S8, DF-16; the research lead's request to carry the three payroll release keys in `data_round0_build.py` | The kit's shared files, `guide_build.py`, `guide_check.js`, `dataviz_check.js`, `guide_charts.py`, `palette_spec_build.py`, `token_table_build.py` and chapter 26's token table, `data_round0_build.py`, `work/build/tokens/` |
+| Component engineer | Calls 10, 12, 15; CR-S4, CR-S17, CR-S22; PR-S3 (with the engineer) | `work/build/guide/code/`, the shell, chapter 18's generators, the front page's files, the keys files |
+| Round 4 maker (maker A, the infographics maker and the cartographer's files, one agent) | Call 18 (S95); RP-2 (S92's table, a Must), AX-S2, CD-S1 with CR-S14 and DD-I18 (S94), CD-S2 (S86), CD-S3 (S87, S88), CD-S4 (S91, S94), CR-S13 (S93), CR-S20 (S12 on a phone), RP-12 (S90), RP-17 (S85), RP-18 (S89), DF-15 (S85, S93, with the research lead); the carried items: the cards on a phone and on Charcoal, the optional S16 note | specs `s12.json`, `s16.json`, `s78.json` (phone codes only), `s85.json` to `s95.json`, their form modules and entries `14-079.json` to `14-084.json`, `14-135.json` to `14-141.json`, sketches `s-14-83-sketch.html` and `s-14-84-sketch.html` and their derive scripts |
+| Selection guide maker | R5-G (the creative director's accessibility reasons), AX-S4 with D3-2086 (the skip links), call 17 (RP-3, PR-S9: the road to the three charts in full); CE-S22's one reader's example under each question only if the craft reader agrees | `selection_guide_build.py`, the selection guide specimen and its symbols |
+| Systems designer (resumed) | CD-S6, CD-S7, CR-S5, CR-S6, CR-S7, CR-S8, CR-S18, CR-S19, CR-S21, RP-11, RP-19; call 15's plate-side line on Rule 15.20 | as before |
+| Complex examples maker (resumed) | CD-S10, CR-S3, CR-S9, CR-S10, CR-S15 (call 18), RP-7, RP-9, RP-10; call 15's plate-side line on Rule 14.144 | as before, and `s14.json`'s label key |
+| Tracker designer (resumed) | CD-S11, PR-S10, RP-15, RP-16 | as before |
+| Editor | Words for every code above; RP-8 ("band" in two senses), CD-S8 (Rule 14.1 and group 17), PR-S9's part in Rule 14.142's text | as before |
+| Data lead | Sign-off of every changed chart, diagram, tracker and plate, in batches from 7 | its notes |
+| Research lead | DF-15's source lines; any fact an owner asks | as before |
+
+Notes files for the new owners: `20261116_Fix-Pass-Engineer-Notes.md`, `-Component-Engineer-Notes.md`, `-Round-4-Maker-Notes.md`, `-Selection-Guide-Notes.md`, in the brief's form. Browser runs only under the load rule; three readers still wait on browsers, so do generator work and builds first.

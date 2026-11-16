@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:43 UTC. **Batch 6:** Rules 14.142 to 14.144 signed off, the failure plate's empty room under zero included; nothing sent back; two suggestions.
 - 17:40 UTC. **Batch 5:** DF-10 closed; both batch 4 items hold, and the court foot's "2024 edition" is right.
 - 17:38 UTC. **Batch 4:** NB-S5 signed off (R6 printed and held by script). DF-10 signed off but two items: stage 2's Constitution and House Rule XX parts need their dates retrieved, and 15.23's "as amended" on Executive Order 12866 goes.
 - 17:30 UTC. **Batch 3:** CE-S20's "No petition" sentence in place; chapter 11 signed off whole.
@@ -256,6 +257,37 @@ Read on the plates by script after the editor's 17:40 changes; `phase3_ch15_buil
 - No law date reads "read" on 15.22 to 15.24 (0 by script).
 
 DF-10 is signed off whole, and so is chapter 15's part of this pass, pending the editor's words and a capture of R1's marks.
+
+### Batch 6 (17:43 UTC): Rules 14.142 to 14.144 signed off; the failure plate's empty room under zero signed off (for the complex examples maker, the editor, the research lead, the component engineer and the main session)
+
+Read from the maker's notes (17:41), `s96.json`, `s14.json`, `s-14-142-failure.chart.json`, `14-142.json`, `s-14-143-correct.html` and `s-14-144-correct.html` by script, against the atlas, the payroll files and rulings R2 to R5. Marks and facts first; the words are the editor's second read. Nothing sent back.
+
+**R3, the failure plate (ST-M1, NB-S2): signed off, with its empty room under zero.**
+- It is S96 with the margin left out: S96's scale (minus 400 to 850, narrow minus 200 to 850, `ticks_min` 0), S96's measure line less the margin, no band, the seven drops drawn alike, no latest label, the plain release-named source line with no margin sentence. Its notes carry no margin word.
+- *The room under zero: yes.* One scale on both plates keeps every column the same length on each, so a reader comparing the pair sees only the fault. With no tick or gridline under zero, the empty stretch claims no figure, as batch 4 of round 5 held for S96. Read from both sides, the shared scale shortens drops and gains alike.
+- Caption and alt name one fault, the margin left out, and its effect, five of seven inside it.
+
+**R4 and R4b (ST-S1, CE-S13, ST-S2): signed off.**
+- Note 1 gives the zero-centered meaning ("If a month's true change were zero, the survey's estimate would land inside the band nine times in ten.") and the caution ("The band holds for each month alone, so across 57 months a few columns could pass it by chance"). The rule names the Bureau of Labor Statistics and says the same; the alt glosses the band once. None of R4 item 4's ruled-out words prints.
+- Note 2's split matches my table: October 2025, government −153,000 and private +13,000; February 2026, private −148,000 and government −8,000. Each pair adds to its month, no cause and no federal figure.
+
+**ST-S8, the release.** S96, its failure and S14 name "the Employment Situation for September 2026, released October 2, 2026", from the sidecar's three new keys; the sidecar's vintage says FRED posted it November 6 before that day's October release, which answers the statistics reader's inference. S96's line names the private and government series that note 2 cites, and the margin "for all nonfarm employees". S14's change is its source line alone (one key, by the maker's diff), for board 3.
+
+**R2, the walk (CE-M1): signed off.** All seven lines, by script on the plate, run in my table's directions: B4 falls, rises, rises, then the quality of public services rises against the first fall; R10 rises, goes up, falls, "can rise", "can rise again". "Can" holds from L53 to the close. Each connection's sign is in words that hold both ways; no line states "lowers" or "raises" as the scenario. B4 closes "pushes back ... balancing, as its one minus sign shows"; R10 "can feed itself ... reinforcing, as its two minus signs show". L54's limit and the strength sentence stay. The generator recomputes every direction from the signs and stops on a mismatch.
+
+**R5, the cards (DF-3, DF-7, CE-S14): signed off.**
+- *Pips.* 19 marks from `pips_svg`: 12 in the cards and 7 in the key. Every gain's pips sit right of the zero line and every cost's left (key −S at x 33, −M at 33 and 21, against the line at 44); each 0 is a bar on the line; "?" is the line alone. Counts match each code (+L three, +M two, +S one).
+- *Effects* match the model card by card, each code whole with its qualifier ("+L local", "+S delayed", "+M renter-owner", "+S sector", "+S renters"), then its words, under "Effects by outcome family"; no total, count or rank.
+- *Grades* in `grade_block`'s form, "evidence of the problem" three times; R-38's problem grade "Contested, evidence disputed". *Routes* under "Routes, with the date each was checked", feasibility in bold, R-38's state statute route alone "Checked October 15, 2026", all nine matching the model. *Band* with the atlas's definition on each card.
+- *The failure* keeps its codes as text, since four 88 px marks do not fit its 328 px stage (R5 item 7); its fault is the total alone.
+
+**The rest: signed off.** DF-6, each grade label above its loop's chip and title on 14.143 (both loops) and 14.144 (by markup order). DF-4, "the text's ink" in all five places. NB-S1's rule words. NB-M3, on the maker's Chromium probe (12 of 12 states; L39 thin with R-38 chosen); I ran no browser.
+
+**Suggestions, not conditions.**
+- On 14.143, Loop R10's first line ("Seats with little electoral competition rise, so ...") prints before "The walk moves to Loop R10, starting at ... and supposing they rise." The supposition reads truer before the step it sets up, as Loop B4's start sentence comes before its walk. The editor's call.
+- The failure figure draws no in-plot "Three-month average" label where S96 draws one. It was so in round 5 and the key names the line, so the fault still stands alone; the maker may add it for parity.
+
+**Rule 01.9.** No example is added or removed here. The maker ran the engineer's chapter build only in its mirror (112 examples logged); my recount on the joined files waits for the main session's or the engineer's run.
 
 ## Calls
 

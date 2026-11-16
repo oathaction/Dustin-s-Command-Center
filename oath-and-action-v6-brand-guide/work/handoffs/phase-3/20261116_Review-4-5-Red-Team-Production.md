@@ -4,15 +4,15 @@ Oath & Action Edition 06, Phase 3, chat 7, November 16, 2026. Reader: production
 
 Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f55a08bf-cdcf-539d-a683-426e26f4f342/scratchpad/c07/review/production/` (scripts `scan_css.py`, `scan_js.py`, `scan_inward.py`, `scan_sources.py`; results `css_scan.json`, `js_scan.json`, `inward.json`; the generator log `gen-reruns.log`; the kit log `kit-all.log`; a scratch copy of the project folder under `repo/`). The production test's files: `work/handoffs/phase-3/review-4-5-production-test/`.
 
-Started 16:34 UTC. Status: in progress (17:13 UTC): every check that needs no browser is done; the browser part of the production test waits on the load rule.
+Started 16:34 UTC; finished 17:44 UTC. One browser at a time, opened only after the load rule printed "OK to open one" (17:41), closed after each batch.
 
 ## 1. Score
 
-Pending.
+**4 of 5.** The production holds: every generator of rounds 4 and 5 reruns to an empty diff, the page rebuilds byte for byte but for its build time, no plate's style leaks, and the kit passes 96 of 96 with clean exports; but the guards around it leave gaps a partner falls through, chiefly a kit that passes a mark set apart inside its margin, a strict build that ships a stale palette plate after a token release, and a README behind for the fourth round.
 
 ## 2. Must fix
 
-Pending.
+None. The faults below are missing guards and stale words; the one on the page itself, sixteen palette ratios printed 0.01 high (PR-S6), crosses no bar, so no reader is misled and no builder is stopped. PR-S1 is fixed in this pass in any case (DR-278).
 
 ## 3. Should fix
 
@@ -126,8 +126,25 @@ Eleven, none blocking. In order of weight for a partner: PR-S7, PR-S5, PR-S8, PR
 - The palette plate's 90 printed ratios recomputed by the WCAG formula from its printed hex values and the grounds in `tokens.json` (`palette_ratios.py`); its hex values matched against every color in `tokens.json`.
 - Every download link in chapters 11, 14 and 15 listed from the page: each chapter holds one, a link to chapter 26's token files; no chart in those chapters offers its own file on the page (the kit makes them, Rule 14.14).
 - DR-278 item (b)'s reach on the static page (section 5): 416 `role="img"` stages, their text nodes and any focusable element inside.
+- The production test's browser part (17:41 to 17:43 UTC, one browser at a time): `build pr1.json s95` with exports, both PASS; PR1's PNG exports at 1440 by 396 and 716 by 422 px and S95's crops at exactly 1080 by 1080 and 1080 by 1350 px, each on its stated ground at all four corners; all twelve SVG exports parse and stand alone (title and desc, no `<use>`, no outside reference, no `var()`); the README's plain page recipe opened from disk at 1440 and 390 px with no console error, both fonts loaded, the table and source line present. Looked at PR1's Newsprint 1440 and Charcoal 390 captures.
+- The kit's `--data` option with a partner's own copy of a data file: PASS with it, "no sidecar" without it (round 3's AX-S6 fix holds).
+- All 2,480 links to a rule on the page resolve, and each prints the number of the rule it reaches; every unlinked "Rule 11.10" to "Rule 11.18" in the page text sits beside the rule it names (DR-274's map, a spot check for named place 12, which is the drift reader's).
+- S96's CSV export against its data file: 57 rows, 0 differences.
 - The production test's paper parts and the kit checks in `review-4-5-production-test/`: `pr1.json` passed `check` with the sweep and `build --no-png`; the wrong-way copies PRX and PRY passed `check` (PR-S7); the README's example command failed as written (PR-S8); two tracker items written from Rules 11.10 to 11.12 and compared with `apply_systems_ch11.py`'s format (PR-S10).
 
 ## 8. Not tested
 
-- Anything in a browser so far: the load rule printed WAIT at 16:48 UTC (2 browsers, load 3.42). The token release test and the production test follow.
+- The guide check, by the brief's rule; its `paletteSpec` test was read, not run (PR-S5).
+- Safari, Firefox and real screen readers (DR-279). DR-278 items (a) and (c), the masthead over a returned focus and the "Where to start" links at 320 px with 200 percent text: they need a browser at those widths and are the accessibility reader's to measure. Item (b) was measured on the static page only, not in the accessibility tree.
+- The checks I propose (PR-S2's brace check, PR-S5's palette check, PR-S7's margin check) are not written or run, so their reach on today's page is my reading of the code and the specs.
+- The edge guard on S59: I took the round 5 engineer's measure ("4.1" at 390 and 558 px) and did not rerun it.
+- Whether a designer can choose a palette from the palette plate alone: my test chart needed none.
+- Phase 4's weight: a projection from today's chapters, not a measure.
+- Whether a legislative referral skips step 2 in law (production test, guess G-T2): a question for the research lead, not checked.
+- The kit's sweep in a browser for card forms beyond S95, and every capture of PR1 except the two I looked at.
+
+## Change log
+
+Created: `work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md` (this report); in `work/handoffs/phase-3/review-4-5-production-test/`: `20261116_Production-Test-Log.md`, `pr1.json`, `20261116_Tracker-Specs-From-Rules.json`, and the kit's exports of PR1 `20261116_PR1-Range-Bar-Newsprint-1440.png`, `20261116_PR1-Range-Bar-Newsprint-1440.svg`, `20261116_PR1-Range-Bar-Charcoal-390.png` and `20261116_PR1-Range-Bar.csv`. Modified: none. Every generator, kit and build run happened in scratch copies of the project folder; scripts, logs and captures are in the scratch folder named above. Not committed or pushed.
+
+For the main session: at 17:42:57 UTC four files in `work/build/` changed in the repository that this reader did not touch (`guide/entries/14-142.json`, `guide/specimens/s-14-143-correct.html`, `s-14-143-failure.html`, `scripts/phase-3/phase3_ch14_complex_build.py`). Every run of mine used a scratch copy; this note only records what `git status` showed at 17:44.

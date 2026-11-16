@@ -253,8 +253,9 @@ def walk_steps():
         need((l["from"], l["to"]) == (a, b), f"Connection {x} changed")
         d = dirs[lid][i]
         closes = i == n - 1
-        again = " again" if closes and KIND[lid] == "reinforcing" else ""
-        line = f"{says(a, d['cause_up'], d['cause_can'])}, so {says(b, d['effect_up'], d['effect_can'], subject=False)}{again}."
+        # the editor's second read: the closing step's "again" lives in its result sentence ("... can rise again, on top
+        # of the first rise"), so the line states the direction alone and the step no longer says "can rise again" twice
+        line = f"{says(a, d['cause_up'], d['cause_can'])}, so {says(b, d['effect_up'], d['effect_can'], subject=False)}."
         moves = f", and {l['type']} moves along it" if l["type"] in ("money", "information", "ownership") else ""
         sign = ("a minus sign, which means that when one rises, the other falls" if l["polarity"] == "-"
                 else "a plus sign, which means that the two rise and fall together")
@@ -1144,8 +1145,8 @@ def rule_14_142():
             "it that the reader’s question asks about, here the drops, each with its month and value in the text’s ink "
             "(Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
             "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months "
-            "still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band measures "
-            "one month’s change alone. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14).",
+            "still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band does not "
+            "cover the three-month average. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14).",
         ],
         "use_when": None,
         "use_instead": [],
