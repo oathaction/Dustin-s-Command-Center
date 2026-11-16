@@ -626,7 +626,7 @@ def stacked_loop(codes, lids, labels, numbered, weakest, inside, thin, grades, w
 
 
 def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=None, hollow=False, labels=None, thin=False,
-               targets=(), shared=(), top=0, steps_g=False, lit=(), for_=None, only=None):
+               targets=(), shared=(), top=0, steps_g=False, lit=(), for_=None, only=None, keys=False):
     """A loop of three variables: the first centered at the top, the second below it to the right and the third to the
     left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. targets and shared
     as two_loop takes them. Round 4: steps_g wraps each step (its band, marks and words) in data-s and each pill in
@@ -641,7 +641,9 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     y1 = top + 4 + hs[0] / 2
     gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
-    kw_ = [dict(red=c in targets, shared=c in shared, keyline=bool(for_) and c in for_) for c in codes]
+    # call 15: a chooser's target pills carry the keyline (for_), and keys gives it to a still picture of one (its failure)
+    kw_ = [dict(red=c in targets, shared=c in shared, keyline=(bool(for_) and c in for_) or (keys and c in targets))
+           for c in codes]
     p1 = Pill(labels[0], W / 2, y1, pw[0], thin, **kw_[0])
     p2 = Pill(labels[1], W - 2 - pw[1] / 2, y2, pw[1], thin, **kw_[1])
     p3 = Pill(labels[2], 2 + pw[2] / 2, y2, pw[2], thin, **kw_[2])
@@ -3377,10 +3379,11 @@ def rule_15_20(book):
                    "Every value read from the atlas's reform and loop records.")
     book.log("15.20 correct", "Reforms R-03 and R-04 on Loop R4a, district maps", "D02")
     # the failure: both reforms lit at once, their effects added into one score, the qualifications gone
-    fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=set(owner))
+    fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=set(owner), keys=True)
     boxes = "".join(f'<li><span class="xb" aria-hidden="true">{check_.replace("oa-choice-check", "ck")}</span>'
                     f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</li>' for rid in rids)
-    fail = (dnp() + f'<ul class="kw xk">{boxes}</ul>' + hed("Loop", "R4a", lp["title"]) + fig(svg_wrap(fb, fh))
+    fail = (dnp() + f'<ul class="kw xk">{boxes}</ul>' + hed("Loop", "R4a", lp["title"])
+            + f'<div class="kd">{fig(svg_wrap(fb, fh))}</div>'
             + '<p class="nt"><b>Combined effect on democracy: +L</b></p>')
     book.add("s-15-20-failure", fail, rule="15.20",
              alt=(FC + "A picture of a chooser with two boxes, Reform R-03 and Reform R-04, both checked, over Loop R4a "
@@ -3552,7 +3555,7 @@ CSS.update({
            ".p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}"),
     # call 15: the choices take the shared list form (oa-choice-row--list, c-18-choice.css): one width, the check's place
     # kept; the first reform's red head in the markup takes a 1 px ink edge (paint-order puts the fill over the inner half)
-    "ch1": (f".lv .dw .rt .hd{{stroke:{INK};stroke-width:2px;paint-order:stroke}}" + chooser_css(["R-03", "R-04"])),
+    "ch1": (f":is(.lv .dw,.kd) .rt .hd{{stroke:{INK};stroke-width:2px;paint-order:stroke}}" + chooser_css(["R-03", "R-04"])),
     "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
            ".pn .oa-disclosure-set{margin-top:16px}@media print{.lv>.oa-choice{display:none}}"),
     "pon": ".pon{display:none}",
