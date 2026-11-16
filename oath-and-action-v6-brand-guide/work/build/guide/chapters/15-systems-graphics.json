@@ -839,7 +839,7 @@
    "id": "15.16",
    "title": "Show a reform’s four effects apart, with each route’s check date.",
    "rule": [
-    "Reform R-01, “All-party primaries with ranked general elections”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, an outcome family being one of the four groups of results the atlas judges reforms by. Give each row the atlas’s code, its words and the pips of Rule 13.5, and print no row that adds them. Its routes follow, each with who acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
+    "Reform R-01, “All-party primaries with ranked general elections”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row. An outcome family is one of the four groups of results the atlas judges reforms by. Give each row the atlas’s code, its words and the pips of Rule 13.5, and print no row that adds them. Its routes follow, each with who acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
     "As of October 15, 2026, the atlas codes its effect on the quality of democracy moderate positive, on government efficacy small positive, and on the other two families no expected effect. It checked the state ballot and local routes on that date, and the state statute and federal statute routes carry no date."
    ],
    "tokens": [
@@ -1060,8 +1060,8 @@
    "id": "15.20",
    "title": "Let a reader choose a reform and see its targets, effects and assumptions.",
    "rule": [
-    "Offer the reforms that act on one drawing as a named group of radio buttons (Rule 18.3), so a reader chooses one at a time. The chosen reform’s exact targets turn red on the drawing (Rule 15.11), and its panel lists its targets, its band, its four effects apart in the atlas’s codes with their date (Rule 15.16) and its routes, each with its check date or “Not checked”.",
-    "Keep the atlas’s qualifications and assumptions one step away, in a disclosure under the panel (Rule 18.8), and never light two reforms at once or add their effects. Offer only reforms whose every target sits on the drawing, so nothing lights for a reform that does not act there."
+    "Offer the reforms whose own records name the loop on the drawing as a named group of radio buttons (Rule 18.3), so a reader chooses one at a time. The chosen reform’s exact targets turn red on the drawing (Rule 15.11), and its panel lists its targets, its band, its four effects apart in the atlas’s codes with their date (Rule 15.16) and its routes, each with its check date or “Not checked”.",
+    "Keep the atlas’s qualifications and assumptions one step away, in a disclosure under the panel (Rule 18.8), and never light two reforms at once or add their effects. Where a reform has a target off the drawing, name it in words with its layer, as Rule 14.144 does, and say so when nothing on the drawing turns red."
    ],
    "tokens": [
     "oa.color.data.emphasis.red"
@@ -1161,7 +1161,7 @@
    "id": "15.22",
    "title": "Draw a route to change as its whole workflow, through to reversal.",
    "rule": [
-    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order, and set each number on its line with no shape around it. Run the stages every change on the route passes through on one line in the text’s ink, and the paths that leave it on the gray line, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
+    "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. Number every stage in reading order, and set each number on its line with no shape around it, since a circle, a ring or a square on a tracker marks a state (Rule 11.2). Set the stages every change on the route passes through on one line in the text’s ink, and the paths that leave it on gray lines, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
     "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back to stage 1."
    ],
    "tokens": [
@@ -1187,16 +1187,12 @@
    "specs": [
     {
      "label": "The spine",
-     "value": "The stages every change on the route passes, numbered in reading order, on a line in the text’s ink at the subject weight",
+     "value": "The stages every change on the route passes, each a bold number in reading order on a line in the text’s ink at the subject weight",
      "token": "oa.chart.line.subject"
     },
     {
-     "label": "Numbers",
-     "value": "A bold figure on its line, on a knockout in the surface color with no edge; every stage’s number alike, on the spine and off it"
-    },
-    {
      "label": "Other paths",
-     "value": "On the gray line at the context weight, set to one side on a short arrow, each saying in words where it leaves the spine",
+     "value": "Bold numbers on gray lines at the context weight, set to one side, each saying in words where it leaves the spine",
      "token": "oa.chart.color.context.onNewsprint"
     },
     {
