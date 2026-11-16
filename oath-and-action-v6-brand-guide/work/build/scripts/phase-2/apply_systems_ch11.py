@@ -1787,9 +1787,10 @@ def build(ctx):
                      'starts as a citizen initiative, which voters propose by petition, or as a legislative referral, '
                      'which the Legislature sends to the voters itself. An initiative is indirect where the Legislature '
                      'votes on it first and direct where it goes straight to the ballot. These steps follow the '
-                     'constitutions of Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed '
-                     'law, and California’s constitution and election office, where an initiative goes straight to the '
-                     'ballot; each state sets its own deadlines and signature counts. The tracker uses the bill tracker’s '
+                     # the editor's second read (fix pass, 17:25): the terms just defined, not their words again (H02)
+                     'constitutions of Massachusetts, Ohio and Michigan, where an initiative for a law is indirect, and '
+                     'California’s constitution and election office, where it is direct; each state sets its own deadlines '
+                     'and signature counts. The tracker uses the bill tracker’s '
                      'marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and '
                      'Vote. Step 4 counts only for an indirect initiative, so a direct one keeps step 4 under a slash, and '
                      'a referral, which has no petition, keeps steps 1 to 3 under slashes.',
@@ -1804,9 +1805,10 @@ def build(ctx):
                      'qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 '
                      # CE-S17 (the editor's words, final on the research lead's F9): Ohio and Massachusetts send it to the
                      # governor, Michigan makes it law with no governor (Article II, Section 9)
+                     # the editor's second read (17:25): the example sat after Michigan's clause and read as Michigan's
                      'under slashes, and its words give the date and what comes next. In Massachusetts and Ohio it goes to '
-                     'the governor, as a bill does, and in Michigan it becomes law without one: “Passed by the Legislature '
-                     'on May 2. It goes to the governor.”'],
+                     'the governor, as a bill does, so the words read “Passed by the Legislature on May 2. It goes to the '
+                     'governor.” In Michigan it becomes law without the governor.'],
             'tokens': ['oa.component.mark.slash'],
             'why': {'text': ['A count on election night is unofficial and keeps moving as ballots are counted, and only '
                              'the certified result decides a measure. Words that wait for certification keep a '
@@ -1871,7 +1873,8 @@ def build(ctx):
                      'Decided for the plaintiff or Decided for the defendant, with “without a trial” where the court '
                      'decided on the record alone. A higher court’s ruling reads as the court enters it: ' + AFFIRMED + ', '
                      'which leaves the ruling below in place; Reversed; Vacated, which cancels the ruling below; or '
-                     'Modified; joined to “and sent back”, which the court enters as remanded, when it returns the case. '
+                     'Modified. When the court returns the case, the words add “and sent back”, which the court enters as '
+                     'remanded. '
                      # CE-S19 (the editor's words, 17:11)
                      'Every ending that leaves a ruling in place says so in one sentence: “The lower court’s ruling '
                      'stands.” after ' + AFFIRMED + ' or a tie, and “The appeals court’s ruling stands.” after a denied '
@@ -1879,10 +1882,11 @@ def build(ctx):
                      'words.',
                      # Call 4 (CE-S20): an unappealed ruling follows Rule 11.8's slash; the square stays for a case that
                      # ends by settlement, dismissal or a denied petition
-                     'A ruling no one appeals keeps the steps after it under slashes once the time to appeal has passed, '
-                     'as Rule 11.8 keeps the last step of a request that was never appealed, and its words give the ruling '
-                     'and the date. A case decided at trial and never appealed keeps steps 3 to 6 under slashes, and a case '
-                     'no one takes to the Supreme Court keeps steps 5 and 6 under slashes. A case that ends by settlement, '
+                     # the editor's second read (17:25): the tracker acts (W02), and the two cases sit in one sentence (W13)
+                     'When no one appeals a ruling, the tracker sets the steps after it under slashes once the time to '
+                     'appeal has passed, as Rule 11.8 does for a request never appealed, and the end words give that ruling '
+                     'and its date: steps 3 to 6 for a case decided at trial, and steps 5 and 6 for a case no one takes to '
+                     'the Supreme Court. A case that ends by settlement, '
                      'dismissal or a denied petition ends its line on a square at the last step it reached, with its words: '
                      'Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the court, Appeal dismissed '
                      'at the appellant’s request (the appellant is the side that appealed), Appeal dismissed by the court, '
