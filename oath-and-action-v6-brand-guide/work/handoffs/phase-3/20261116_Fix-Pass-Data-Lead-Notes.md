@@ -118,9 +118,32 @@ Written 17:00 to 17:08 UTC for the owners to read directly (call 7). Every atlas
 
 **A latent difference, for the systems designer, not blocking:** `effect_rows` in `phase3_ch15_build.py` prints a qualified code as "**+L** large positive, local", splitting the stored string, where Rule 15.16's own spec says "An effect prints its full code, qualifier or range whole, beside its pips". No chapter 15 plate shows a qualified code today (R-01, R-03 and R-04 have none; 38 effect values in the model do), so nothing on the page differs. If 14.144 reuses that function, it must print the stored string whole first.
 
+### R6. Rule 15.24's one worked example: keep Reform R-28, and print the rule that picks it (NB-S5; for the systems designer, the editor and the main session)
+
+Written 17:27 UTC.
+
+**The rule: the reform an earlier drawing already put on a route.** By script on `v7-reconciliation-rows.json`, Rule 15.25's row 41 is the one row in which an earlier drawing showed one reform on one route: the fifth edition and the atlas visual system drew Reform R-28 on "a federal tax-law route through reconciliation", with no feasibility or date. Row 28 speaks of all route strands, not one reform. So the rule picks exactly one reform, R-28, and the example then shows that route drawn true to the model: Route FS, its entry's word "Reconciliation", low feasibility, "Not checked".
+
+1. *Print it.* One sentence on the plate names the rule and the row, as the systems designer drafted: R-28 is the reform an earlier drawing already put on this path, and Rule 15.25's row 41 records that drawing. The editor sets the words. The failure plate keeps R-28, so it still differs by its one fault (the 60-vote path).
+2. *Log it* with the call below and the read from both sides.
+3. *Why not "the first reform in the atlas's order whose federal entry names reconciliation".* It picks R-25, also a tax reform, so a reader who thinks the example leans one way meets the same kind of reform; it would redraw the example and its failure; and it ties the example to nothing the guide corrects.
+4. *Read from both sides.* The rule reads only the record of what earlier drawings showed, so it picks R-28 whoever applies it. The plate prints R-28's entry as the atlas holds it, low feasibility and not checked, which neither promotes the reform nor dismisses it, and its lesson is the route's form, not the tax.
+
+### R7. A law's source line on Rules 15.22 to 15.24: "retrieved", and the version the copy states (DF-10; for the systems designer, the research lead, the editor and the main session)
+
+Written 17:27 UTC. The version facts wait on the research lead's F10; this sets the form.
+
+1. **"Retrieved", not "read", for the date we took a law's text.** Rule 13.6 (DR-237) and house rule H04 name the part "the date retrieved", and define it as "the day we read the file". Chapters 11, 13 and 14 print "retrieved" (8, 8 and 11 times in their chapter files by search); chapter 15's plates print "read" 43 times, from my round 5 ruling (e)'s "Source read". That ruling is replaced: chapter 15 takes the approved word. The distinction (e) wanted still holds, since "Retrieved" names our date and "Checked" or "Not checked" names an atlas entry's own date (Rule 13.10). Rule 15.24's group line "the date we read it" becomes the editor's equal with "retrieved". Board 2's S71 printed "read" on route pages; it is approved work, so it stays for this pass and goes on board 3's list.
+2. **The version, from the copy itself.** Each statute or rule prints the version the copy we read states, in the title part of the line (Rule 13.7: name the vintage where the text can change): for govinfo's U.S. Code, its edition ("U.S. Code, 2024 edition"); for a copy that states how current it is (the House's U.S. Code site prints "current through Public Law" with its number), those words. "As in force on" a date prints only where the copy states that date. A date we retrieved a page is never relabeled as the law's date.
+3. **A condition for F10.** Where a cited section may have changed after the edition we read (the U.S. Code 2024 edition stops before 2025's and 2026's laws), the research lead checks the section's current text or its amendment notes and says which; a section changed since then is cited from the current text.
+4. **Order.** Rule 13.6's: publisher, the law and its version, the geography where one applies, "via" the copy, "Retrieved" and the date, then any qualification. 15.22's atlas sentence keeps its order as fixed (snapshot date with the atlas, then the stages' sources).
+
 ## Sign-offs
 
-None yet.
+### Batch 1 (17:30 UTC): chapter 11, Rules 11.10 and 11.11 (for the tracker designer, the editor, the research lead and the main session)
+
+PENDING
+
 
 ## Calls
 
