@@ -564,14 +564,16 @@ def rule_14_1(B):
         "14.1", "Start from the reader’s question, then choose the form.",
         ["Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names "
          "the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. The "
-         "guide at the head of this chapter lists every form under one of those questions, and each entry says when its form fits the "
-         "data at hand.",
+         # CD-S8 (fix pass, wave 2): the guide named by its label and linked, as the creative director asks
+         "guide at the head of this chapter, <a href=\"#fig-s-14-selection-guide\">Choose a chart</a>, lists every form under one of "
+         "those questions, and each entry says when its form fits the data at hand.",
          "When one figure answers the question, a sentence carries it (Rule 14.134). When a reader needs to look values up, a table does "
          "(Rule 14.133)."],
         ["Each form answers one kind of question well. Bars sorted by size show which year was largest and hide the order of the years, so "
          "a reader who asked how something changed cannot see the change."],
         [("First step", "The reader’s question, in a reader’s words, written into the chart’s spec before any drawing"),
-         ("Question to form", "The question in the guide at the head of this chapter, then the entry whose use names the data at hand"),
+         ("Question to form", "The question in Choose a chart, the guide at the head of this chapter, then the entry whose use names the "
+                              "data at hand"),
          ("One figure", "A sentence, Rule 14.134"), ("Values to look up", "A table, Rule 14.133")],
         ["14.29", "14.15", "14.133", "14.134"],
         "Write reader_question in the spec first, then pick the form from the group whose question matches; the kit draws it with "
@@ -1656,9 +1658,11 @@ GROUP_LINES = {
     16: "A table lets a reader look a value up, and one sentence answers when a single figure is the whole story.",
     # round 4: checked against entries 14.135 to 14.141 as built; a calendar, a number panel and a social card show no
     # workings, so the line names what each core form does
-    17: ("Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number "
-         "panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s "
-         "finding into a feed."),
+    # CD-S8 (fix pass, wave 2): all seven forms, each by its entry's name; the annotated illustration and the calendar were missing
+    17: ("Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A "
+         "by-the-numbers panel or a set of comparison cards puts facts or options side by side. An annotated illustration says "
+         "what each part of a document tells a reader, and a calendar marks the dates that matter in a year. A social card "
+         "carries one chart’s finding into a feed."),
     # round 5: group 18, the three charts in full (Rules 14.142 to 14.144); a working line, read again against the
     # entries as they land
     18: ("Each chart here puts several of the chapter’s forms and rules together on one subject, with its table and its "
@@ -1680,7 +1684,8 @@ def chapter(B, sources):
             "This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the "
             "question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes "
             "step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. "
-            "A core or extended form shows a finished example that our chart kit draws from frozen data, with its table as live text, and "
+            "A core or extended form shows a finished example that our chart kit draws from a fixed copy of its source’s data, with its "
+            "table as live text, and "
             "a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms "
             "and rules together on one subject.",
             "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those "

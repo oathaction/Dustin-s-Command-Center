@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 18:08 UTC. **Batch 8:** chapter 15's wave 2 and the selection guide's wave 2 signed off; R1 holds; nothing sent back; SG-9 (the engineer's checks) and call 15 still to come.
 - 17:55 UTC. **Batch 7:** chapter 11's wave 2 (CD-S11, PR-S10, RP-15, RP-16) signed off; no mark moved; nothing sent back. "Not fixed" started for the deferred fixes register (DR-282).
 - 17:43 UTC. **Batch 6:** Rules 14.142 to 14.144 signed off, the failure plate's empty room under zero included; nothing sent back; two suggestions.
 - 17:40 UTC. **Batch 5:** DF-10 closed; both batch 4 items hold, and the court foot's "2024 edition" is right.
@@ -309,6 +310,29 @@ Read from the tracker designer's notes (wave 2, 17:48 and 17:53), Rules 11.10 an
 
 **Words** are the editor's wave 2 read, already written in.
 
+### Batch 8 (18:08 UTC): chapter 15's wave 2 and the selection guide's wave 2 signed off (for the systems designer, the selection guide maker, the engineer, the editor and the main session)
+
+Read from the systems designer's notes (wave 2, to 18:04) and the selection guide maker's notes (to 18:03), the plates as built by script, `selection_guide_build.py --check` (18:07: "both files match the plan, 127 forms"). Marks and facts first. Nothing sent back.
+
+**Chapter 15, wave 2: signed off.**
+- *R1 still holds* after the wave: 15.22 has 20 `.n` numbers and 6 stop squares, its failure 6 numbers and no square, 15.23 no stage mark, and no `sq bq` line anywhere.
+- *CR-S5.* The spine now starts at stage 1, and the return line runs in its own gray into the arrowhead above stage 1's number, so the line in the text's ink holds only the stages every enacted bill passes.
+- *CD-S6, CR-S7.* 15.23's stage names start at one x in a fixed "Stage N:" slot; no mark came back with the slot.
+- *CR-S8.* 15.21's grade ladder and delay classes are each one ordered list: Documented, Well supported, Plausible, Contested, Hypothesis (Rule 13.3's order), and under 2 years, 2 to 10 years, over 10 years. The marked steps, Plausible and 2 to 10 years, are Connection L55's grade and delay in the model. The empty drawing column below the pills is a composition call for the design director (the designer's "Not fixed" item 4); it changes no fact.
+- *CD-S7, CR-S18.* 15.25 prints "2 conflicts, both in row 42", the rerun's count.
+- *CR-S21.* 15.24's joins draw their arrow, hidden from screen readers, so no glyph falls to a system font; the plate holds no U+2192 now.
+- *RP-11.* "Public Law 115-97, the tax law approved December 22, 2017, section 11022" and "Public Law 119-21, the tax law approved July 4, 2025, section 70104": the plain name H12 gives as its own example ("Public Law 119-21, the July 2025 tax law"), and the approval dates F10 records.
+- *RP-19.* "We found" is gone; stage 19 states its rule, scope and date.
+- *The split-line check.* Every stop line on all 51 plates holds its mark and one span of words, and the generator now stops on the old markup.
+
+**The selection guide, wave 2 (call 17, AX-S4): signed off on ruling (a)'s terms.**
+- *Still one form, one place.* 133 rule links: the 127 form links, each to its own rule once, and 6 road links (Rule 14.142 three times, 14.143, 14.144, 15.22), marked `sg-go`, which name no form and take no picture. The pictures still hold no text and no point, Verdigris, Prussian, sequential or diverging class (0 by script), so the plate still states no figure and logs no example.
+- *The road's facts.* Under question 4, Rule 14.142 "draws the monthly change in payroll jobs as columns with a moving average and marks the survey's margin of error"; under question 8, it "draws a survey's margin of error as a band behind monthly columns and names the drops that pass it". Both are true of S96: the editor's "drops" is right, since the 32 gains past the band are not named. The closing block's three subjects are group 18's own, R-38's line included ("three reforms whose records name one housing loop", NB-M1). The line to Rule 15.22 is fair: 15.22 draws Route FS stage by stage, and 15.24 lists each other route's stages.
+- *AX-S4.* The 16th skip link lands on the closing block, where its seven forms end.
+- *Waiting, not mine:* SG-9, the engineer's change to the two checks that now fault on the road links. The guide check of record is the engineer's; I read the maker's proposed diffs' intent and did not run them.
+
+**Accepted as declined here** (written into "Not fixed"): the map row's three symbols redrawn in outline (the creative director's craft note, not a code).
+
 ## Not fixed
 
 For the deferred fixes register (DR-282): every Should I accepted as declined, every item I sent back that was not then fixed, and, after them, the suggestions I made that no owner has taken. Each with code, file, what is wrong, the fix and why not. At 17:55 UTC every item I sent back has been fixed (batch 1's CE-S20, batch 4's two DF-10 items).
@@ -318,6 +342,7 @@ For the deferred fixes register (DR-282): every Should I accepted as declined, e
 | RP-16, widening (declined by the tracker designer; accepted) | `work/build/scripts/phase-2/apply_systems_ch11.py`, Rule 11.10 `rule[1]` | The 30 percent sentence names "a law proposed by initiative". In Massachusetts the same test also binds an initiative amendment to the constitution (Article XLVIII, The Initiative, IV, Section 5, per F12), and Rule 11.10 covers amendments too | "a law or a constitutional amendment proposed by initiative also needs yes votes equal to at least 30 percent of all the ballots cast in the election" | The sentence is true as written; F12 marks the widening optional; it would reopen the editor's second-read words. Board 3 may take it |
 | PR-S10, a court's removal of a measure (declined by the tracker designer; accepted) | Same file, Rule 11.10 spec "Ended before step 6" | "Removed from the ballot by a court" names no step, so a builder judges where its square sits | Name the step for each state once the research lead says when its courts act (Ohio's Supreme Court before the vote; California's pre-election challenges can come earlier) | The step depends on when the court acts, which the facts do not fix; "the step under way when it ended" is true in every case |
 | New endings drawn on a plate (set aside by the tracker designer; accepted) | Same file, `BALLOTS`, `COURTS`, `s_11_10()`, `s_11_11()` | No card draws an unappealed case, an unpetitioned ruling, a rejected measure, a measure the Legislature passed or a case dismissed before a ruling; the rule's and specs' words alone carry them | A fourth card, or a second correct plate, for these endings | DR-275 sets one current, one decided and one stopped item a plate; board 3 can ask for one |
+| Map symbols on the selection guide (the creative director's craft note under R5-G, not a code; set aside by the selection guide maker; accepted) | `work/build/scripts/phase-3/selection_guide_build.py`, symbols `g119`, `g120`, `g123` | At 1x on a 390 px phone the district map, county choropleth and small-multiple map symbols read as gray texture where every other family draws in lines | Redraw the three in outline: fewer, larger districts and counties in 2 px lines, the small multiples as three outlines with one shaded group each, in the neutral inks of ruling (a) | The craft score stands at 4 and no code routes it; a redraw changes symbols signed off in round 5 (batch 6), so it waits for the design director or board 3 |
 
 **Suggestions not taken, open at the time written (not conditions):**
 

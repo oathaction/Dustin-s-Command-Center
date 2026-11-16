@@ -13,7 +13,7 @@
   "readable": true
  },
  "intro": [
-  "This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. A core or extended form shows a finished example that our chart kit draws from frozen data, with its table as live text, and a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms and rules together on one subject.",
+  "This chapter sets how Oath & Action shows numbers. A guide to choosing a chart comes first, with every form listed under the question it answers. Fourteen rules then hold for every chart, and a plate after Rule 14.5 sets out the four data palettes step by step. Each of the 127 forms has its own entry, grouped by its question, with when to use it and what to use instead. A core or extended form shows a finished example that our chart kit draws from a fixed copy of its source’s data, with its table as live text, and a reference form or a form to avoid is drawn as a sketch. Three charts in full close the chapter, each putting several forms and rules together on one subject.",
   "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."
  ],
  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026",
@@ -135,7 +135,7 @@
    "before_rule": "14.135",
    "title": "Infographics: how does it work, in one look?",
    "rules": "14.135 to 14.141",
-   "line": "Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s finding into a feed."
+   "line": "Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A by-the-numbers panel or a set of comparison cards puts facts or options side by side. An annotated illustration says what each part of a document tells a reader, and a calendar marks the dates that matter in a year. A social card carries one chart’s finding into a feed."
   },
   {
    "number": 18,

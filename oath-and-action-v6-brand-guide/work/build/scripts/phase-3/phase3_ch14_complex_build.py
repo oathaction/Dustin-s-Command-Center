@@ -853,7 +853,9 @@ def rule_14_144():
             f'<div><dt>Targets outside this loop</dt>' + ("".join(offs) + (f'<dd class="on8">{off_note(rid, off, set(codes))}</dd>' if off else "")
                                                        or "<dd>None</dd>") + "</div>"
             # the band in the atlas's word and its definition, quoted, as Rules 15.11 and 15.20 print it (CE-S14)
-            f'<div><dt>Band, the kind of change</dt><dd><b>{e(r["band"].capitalize())}</b>: “{ce(C15.BANDS[r["band"]])}”</dd></div>'
+            # RP-8 (fix pass, wave 2): Rule 14.142's band is the margin of error, so the row leads with the plain words and
+            # names the atlas's word after them, which Rules 15.11 and 15.20 use
+            f'<div><dt>Kind of change, the atlas’s band</dt><dd><b>{e(r["band"].capitalize())}</b>: “{ce(C15.BANDS[r["band"]])}”</dd></div>'
             + effs +
             # the two grades apart, each as Rule 15.16's grade_block prints it: the grade chip, Rule 13.3's gloss, then
             # the atlas's term (R5, DF-7)
@@ -936,7 +938,7 @@ def rule_14_144():
         "title": "Compare reforms effect by effect, with every qualifier kept and no total score.",
         "rule": [
             "Give each reform whose record names one loop a card, in the order of their IDs and side by side where the page "
-            "is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one "
+            "is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the kind of change it makes, the four effects one "
             "outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see "
             "its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on "
             "memory. Where the cards stack one under another, set each family’s effects for all the reforms together before "
@@ -1221,7 +1223,9 @@ def rule_14_142():
             "margin, so a month with no real change lands inside the band nine times in ten. The band holds for each month "
             "alone, and over many months a few can pass it by chance, so the note says that too. Name only the changes past "
             "it that the reader’s question asks about, here the drops, each with its month and value in the text’s ink "
-            "(Rule 14.6), and print the full count beside them, so a reader still learns how many months fell.",
+            "(Rule 14.6), and print the full count beside them, so a reader still learns how many months fell. Where each "
+            # PR-S9 (fix pass, wave 2): the editor's part in Rule 14.142's text
+            "period carries a margin of its own, draw each one’s interval on its own mark instead (Rules 14.74 and 14.75).",
             "Draw every month in the window the question sets, and print the window’s reason (Rule 14.10). Hatch the months "
             "still preliminary, dash the average where it includes one (Rule 14.11), and say in a note that the band does not "
             "cover the three-month average. The kit draws the phone drawing, the table and the files (Rules 14.12 to 14.14).",
