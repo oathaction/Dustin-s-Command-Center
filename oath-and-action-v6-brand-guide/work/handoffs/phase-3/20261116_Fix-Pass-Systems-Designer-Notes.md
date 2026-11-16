@@ -60,13 +60,31 @@ Each in `work/build/scripts/phase-3/phase3_ch15_build.py`; proof is the rerun (e
 
 ## Not fixed
 
-Waiting, as of the time in Status:
+Written for the deferred fixes register (DR-282, 17:50 UTC). Line numbers are `work/build/scripts/phase-3/phase3_ch15_build.py` as it stands at 17:50 UTC. Each entry: where; what is wrong; the fix I would make; why it is not made.
 
-- **CE-S9, its source:** applied in the editor's words on Rule 11.9's authority; a row for 5 U.S.C. 553(b)(B), the good-cause exception behind an interim final rule, would let the generator hold the words to the law itself (Requests).
-- **CE-S11, "injunction" on 15.23:** stays bare by the editor's call, since Rule 11.11 glosses it first in the guide.
-- **Call 15's plate-side line on Rule 15.20:** waits on the component engineer's shared chooser change (its notes "Pending" at 17:46 UTC).
-- **CR-S19 (two header layouts for the evidence chip):** the craft report names the engineer and the plates S89, S91 and S94, all chapter 14 kit charts outside my files; chapter 15's plates take chapter 13's label and were not named. I changed nothing and ask the main session to confirm the routing (Requests).
-- None of my wave 1 codes. Board 2's S71, which prints "read" on route pages, stays for board 3's list (R7); chapters 11 and 14 are other owners'.
+### Left or only partly fixed
+
+1. **Call 15, Rule 15.20's plate-side line (with DD-R2, DD-R5, CD-S5, CR-S1).** Where: Rule 15.20, `s-15-20-correct`; `chooser_css()` (line 3281) and the `.lv`/`.ch1` and `.pl.rp` styles `rule_15_20()` uses (line 3304). What: the choices take their own widths, so the chosen ring changes length, and the chosen pill's 3 px red ring has no keyline, so it reads lighter than its neighbors in one ink (2.95 to 1). Fix: take the component engineer's shared chooser change, then set 15.20's choices to the group's full width and add the keyline inside the chosen pill's ring (Charcoal on Newsprint, Newsprint on Charcoal) and on the red arrowhead. Why not: the shared chooser change comes first, and the component engineer's notes say "Pending" at 17:46.
+2. **CR-S19, the evidence chip's two header layouts.** Where: S89, S91 and S94 in chapter 14's kit (`chart-kit/` and their specs), not a chapter 15 plate. What: the "FINDING" chip sits alone on its line on three plates and beside its grade line on nine. Fix: let the grade line wrap beside the chip with a hanging indent in the kit's header. Why not: the craft report names the engineer and the kit's files, which I may not write; asked the main session to confirm the routing.
+3. **CE-S9, the hold behind "an interim final rule".** Where: Rule 15.23, the rule-making block's row "In place of steps 2 to 4", `rule_15_23()` line 5076. What: the words now name a rule issued without advance comment, as the editor set them, and the generator holds them to Rule 11.9's own words, not to the law. Fix: once the research lead adds a row for 5 U.S.C. 553(b)(B), the "good cause" exception, hold the words to that row. Why not: no such row exists in the rule-making data file or the workflow sources file (Requests, research lead, 1).
+4. **CR-S8, the empty drawing column on 15.21.** Where: Rule 15.21, `s-15-21-correct`; `rule_15_21()` line 3449 (`beside(fig(...), words)`). What: the scales now read as vertical lists, which makes the words column taller, so the drawing's column stands empty for a longer run below the two pills. Fix: stack the plate at the wide width (drawing above, then the grade, delay and strength in three short columns), or let the drawing stick beside the words (`position: sticky`) as CR-S4 asks of 15.19. Why not: the craft report's first ask (the scales) is met; the composition is a design director's call and wants a capture first.
+5. **CR-S21, the other text arrows and the check marks.** Where: chapters 01, 02 and 11 and two failure plates (23 text arrows, 8 more in CSS), and 348 check marks in plate labels; the font build. What: Inter's embedded subset has no U+2192 or U+2713, so they fall to a system font. Fix: embed both from Inter. Why not: the engineer's files; I drew only 15.24's joins (line 4330's `rset` styles).
+6. **CR-S16, the held phrases outside chapter 15.** Where: Rule 14.143's steps, S91, the selection guide, Rule 14.144's text. Fix: hold "N to N years", "N U.S.C. N", dates and hyphened names in each owner's generator. Why not: other owners' files; chapter 15's part is done in `hold()`.
+7. **Captures of the changed plates.** Not a code, listed so the register holds it: 15.22, 15.23, 15.24 and 15.21 change height and marks, and no capture of my own backs them before 17:48 (the queued run on `g6.html` reports under Tested when it ends). Fix: capture 15.21 to 15.25 at 1440, 390 and 320 px on both grounds and read 15.22's spine top, stage 10 and the key, 15.23's stage slot and 15.24's arrow.
+
+### Weighed and set aside
+
+1. **CE-M4, the second fix.** Keep stage 9 on the spine and change the key to "A stage most enacted bills pass", with "or stage 10 or 11" under stage 9. Set aside: the reviewer's first fix keeps the rule true, so stage 9 left the spine (`fs_stages()` line 3810).
+2. **CE-M2, the second fix.** One row under step 5, "Stages 3 to 5, by the same paths as the first chamber". Set aside: listing stages 3 to 5 by name puts "Cloture" where a reader looks for it (`rule_15_23()`, `map1`).
+3. **DF-2, Rule 14.96's numbered box for each stage.** Set aside by the data lead's R1: heavy against fine edges would repeat chapter 11's now and not yet.
+4. **R1 item 5, a spine-against-path difference in 15.23's words** ("or, in place of it, Stage 3 ..."). Set aside: 15.23 sends the reader to 15.22, which draws it; the stage names stand alone (`xw_block()` line 4993).
+5. **ST-S9, one line under 15.25's table naming the five rows.** Set aside for words in each row's own cell, where a reader of that row meets them (`recon_words()`).
+6. **NB-S5 and RP-11, the structural rule "the first reform, in the atlas's order, whose federal entry names reconciliation"** (picks R-25), or printing both R-25 and R-28. Set aside by the data lead's R6: it is also a tax reform, ties the example to nothing the guide corrects, and would redraw the example and its failure.
+7. **RP-19's "As of November 14, 2026, the latest such ruling came on ..."** Set aside for the editor's final words, which state the rule's scope and its date ("in its opinions through November 9, 2026").
+8. **ST-S7's other fix, "read November 11 and 12, 2026" on both lines.** Set aside for each row's own date beside its own citation, so a later row cannot hide behind a joined date.
+9. **CR-M1's other fix, the stop line as a block with the square as `::before`.** Set aside: the one-span markup keeps the square a separate element for forced colors, and the generator now checks it.
+10. **The editor's DF-10 form for pages that are not laws ("read" kept).** Set aside by the data lead's R7 item 1: every date we took a source prints "retrieved". Board 2's S71, which prints "read" on route pages, is approved work in chapter 14 and goes to board 3's list (R7).
+11. **CE-S11's gloss of "injunction" on 15.23.** Set aside by the editor: Rule 11.11 glosses it at its first use in the guide.
 
 ## Calls
 
