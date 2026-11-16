@@ -1962,7 +1962,8 @@ def build():
         "rule": None,
         "width_px": None,
         "alt": ("Every one of the 127 forms in this chapter, under the 16 reader questions that open its groups, each named "
-                "with its tier and linked to its entry, beside a small drawing of the form."),
+                "with its tier and linked to its entry, beside a small drawing of the form. After the questions, links "
+                "lead to the chapter’s three charts in full and to chapter 15’s routes to change."),
         "illustrative": False,
         "interactive": True,
         "fit_switch": False,

@@ -2,7 +2,7 @@
   "id": "14.141",
   "title": "Use a social data card to carry one chart’s finding into a feed in two crops.",
   "rule": [
-    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart."
+    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, a short source line that says where every value is, and the lockmark’s sign-off at 96 px at the bottom right, inside the margin (Rule 08.2). Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart."
   ],
   "use_when": "A finding from a core chart goes to Substack, email or a social feed as a still image.",
   "use_instead": [
@@ -28,7 +28,7 @@
     "14.18",
     "14.85"
   ],
-  "builders": "Form social-data-card around the form encode.of names: node work/build/chart-kit/oa-chart.mjs build s95; card.crops sets the crops, card.post the words to post, labels.card_source the card’s source line and labels.card_inner what the inner form reads (dot-plot: label named, ranks across).",
+  "builders": "Form social-data-card around the form encode.of names: node work/build/chart-kit/oa-chart.mjs build s95; card.crops sets the crops, card.post the words to post, labels.card_source the card’s source line and labels.card_inner what the inner form reads (dot-plot: label named, ranks across); the form signs off each crop with the 48 px lockmark master drawn at 96 px.",
   "correct": null,
   "failure": null
 }

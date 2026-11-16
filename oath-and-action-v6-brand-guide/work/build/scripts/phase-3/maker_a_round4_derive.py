@@ -93,7 +93,9 @@ def s85():
     check('S85', 'Union density (BLS, 10.0% 2025)' in a2.get('indicator', ''), "Variable A2's own indicator is the 10.0 percent S85 draws")
     cl = atlas['claims'].get('CL1514', {})
     check('S85', cl.get('confidence') == 'documented' and 'CL1514' in s['v7']['ids'] and s['v7']['grade'] == 'documented', 'CL1514, documented, listed in v7.ids')
-    check('S85', 'October 15, 2026' in s['grade_line'] and 'October 15, 2026' not in s['source_line'], "the atlas's date prints once, in the grade line (call 1)")
+    # DF-15 (fix pass after rounds 4 and 5): Rule 13.6 puts an atlas value's snapshot date in the source line, so the date
+    # prints once, there, and the grade line drops it (call 1 of round 4, D3-1327, DR-257: once)
+    check('S85', 'October 15, 2026' not in s['grade_line'] and s['source_line'].count('snapshot of October 15, 2026') == 1 and 'via Oath & Action' in s['source_line'], "the atlas's date prints once, in the source line, after \"via\" the atlas (DF-15, Rule 13.6)")
 
 
 def s86():

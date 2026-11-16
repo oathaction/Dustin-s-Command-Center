@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:55 UTC. **Batch 7:** chapter 11's wave 2 (CD-S11, PR-S10, RP-15, RP-16) signed off; no mark moved; nothing sent back. "Not fixed" started for the deferred fixes register (DR-282).
 - 17:43 UTC. **Batch 6:** Rules 14.142 to 14.144 signed off, the failure plate's empty room under zero included; nothing sent back; two suggestions.
 - 17:40 UTC. **Batch 5:** DF-10 closed; both batch 4 items hold, and the court foot's "2024 edition" is right.
 - 17:38 UTC. **Batch 4:** NB-S5 signed off (R6 printed and held by script). DF-10 signed off but two items: stage 2's Constitution and House Rule XX parts need their dates retrieved, and 15.23's "as amended" on Executive Order 12866 goes.
@@ -288,6 +289,46 @@ Read from the maker's notes (17:41), `s96.json`, `s14.json`, `s-14-142-failure.c
 - The failure figure draws no in-plot "Three-month average" label where S96 draws one. It was so in round 5 and the key names the line, so the fault still stands alone; the maker may add it for parity.
 
 **Rule 01.9.** No example is added or removed here. The maker ran the engineer's chapter build only in its mirror (112 examples logged); my recount on the joined files waits for the main session's or the engineer's run.
+
+### Batch 7 (17:55 UTC): chapter 11's wave 2 signed off: CD-S11, PR-S10, RP-15, RP-16 (for the tracker designer, the editor, the research lead and the main session)
+
+Read from the tracker designer's notes (wave 2, 17:48 and 17:53), Rules 11.10 and 11.11 in `11-icons.json` as the editor's wave 2 read left them, and `s-11-ballot-steps.html`, by script. Marks first. Nothing sent back.
+
+**Marks: no plate moved.** The marks and drawings of `s-11-10-*`, `s-11-11-*` and the ballot step table still equal the review commit's (`8ace3dc6`). PR-S10 sets marks in words and specs only, for endings no card draws.
+
+**PR-S10: signed off.**
+- *A rejected measure, and one that fell short of a second test, end on a square at step 6.* This is the bill's grammar: six filled steps mean it became law, and a veto that stands stops a bill on a square at step 6 (Rule 11.3). A measure the voters rejected took its vote and did not become law, so it reads the same way, with the certified result in words. It keeps chapter 11's one meaning for the square, "Stopped", and my round 5 ruling (f) said a filled last mark never says an end alone.
+- *Every square sits on the step under way when the item ended.* This is Rule 11.2's own spec ("in its place") and Rule 11.3's "Stopped at step 3 of 6: Committee vote". It replaces "the last step it reached", which a builder could read as the last step done. Each named step holds: not certified on step 2, too few signatures on step 3, a case settled or dismissed before the trial court rules on step 2, an appeal dismissed on step 4 (the notice of appeal is step 3, done), a denied petition on step 5. The two plates' stopped items (99013 on step 3, 99016 on step 5) already sit there.
+- *For builders* name the five marks by Rule 11.2's tags and a measure's three kinds. True to Rule 11.2.
+
+**CD-S11: signed off.** On the research lead's F12, steps 2 and 3 cite the text that now governs, Amendment Article LXXIV (Sections 1 and 4; Section 1), since LXXIV struck the Article XLVIII section the table cited before. Step 1 gives the full form once, "as replaced by Amendment Article LXXIV, Section 1", then the short form. The basis adds LXXIV. I did not read the Massachusetts text myself.
+
+**RP-15: signed off.** Certiorari is named once at step 5, "the order that brings a case up for the Supreme Court's review", with "cert denied" explained. That matches 28 U.S.C. 1254(1) ("By writ of certiorari granted upon the petition of any party") and the Court's Rule 10, already in the source line. The step's name stays.
+
+**RP-16: signed off.** "In Massachusetts, a law proposed by initiative also needs yes votes equal to at least 30 percent of all the ballots cast in the election" matches Amendment Article LXXXI, Section 2, as the sources file's row 6 quotes it. F12 confirms that no other of the four states sets such a test. The designer's widening to constitutional amendments is accepted as declined (see "Not fixed").
+
+**Words** are the editor's wave 2 read, already written in.
+
+## Not fixed
+
+For the deferred fixes register (DR-282): every Should I accepted as declined, every item I sent back that was not then fixed, and, after them, the suggestions I made that no owner has taken. Each with code, file, what is wrong, the fix and why not. At 17:55 UTC every item I sent back has been fixed (batch 1's CE-S20, batch 4's two DF-10 items).
+
+| Code | File | What is wrong | Fix | Why not |
+|---|---|---|---|---|
+| RP-16, widening (declined by the tracker designer; accepted) | `work/build/scripts/phase-2/apply_systems_ch11.py`, Rule 11.10 `rule[1]` | The 30 percent sentence names "a law proposed by initiative". In Massachusetts the same test also binds an initiative amendment to the constitution (Article XLVIII, The Initiative, IV, Section 5, per F12), and Rule 11.10 covers amendments too | "a law or a constitutional amendment proposed by initiative also needs yes votes equal to at least 30 percent of all the ballots cast in the election" | The sentence is true as written; F12 marks the widening optional; it would reopen the editor's second-read words. Board 3 may take it |
+| PR-S10, a court's removal of a measure (declined by the tracker designer; accepted) | Same file, Rule 11.10 spec "Ended before step 6" | "Removed from the ballot by a court" names no step, so a builder judges where its square sits | Name the step for each state once the research lead says when its courts act (Ohio's Supreme Court before the vote; California's pre-election challenges can come earlier) | The step depends on when the court acts, which the facts do not fix; "the step under way when it ended" is true in every case |
+| New endings drawn on a plate (set aside by the tracker designer; accepted) | Same file, `BALLOTS`, `COURTS`, `s_11_10()`, `s_11_11()` | No card draws an unappealed case, an unpetitioned ruling, a rejected measure, a measure the Legislature passed or a case dismissed before a ruling; the rule's and specs' words alone carry them | A fourth card, or a second correct plate, for these endings | DR-275 sets one current, one decided and one stopped item a plate; board 3 can ask for one |
+
+**Suggestions not taken, open at the time written (not conditions):**
+
+| From | File | What | Suggested fix |
+|---|---|---|---|
+| Batch 1 | `apply_systems_ch11.py`, Rule 11.11 spec "Never appealed"; `phase3_ch15_build.py`, 15.23's court block | "in the 30 days the law allows" and "within 30 days": 28 U.S.C. 2107(c) lets the district court extend the time on a motion, and the sources file's step 3 row quotes 2107(a) and (b) only | "in the time the law allows, 30 days from the judgment, or 60 where the United States is a party", or the research lead adds 2107(c) to the row |
+| Batch 1 | `apply_systems_ch11.py`, specs "Never appealed" and "No petition" | Neither says the next step keeps a fine ring while the time runs, as Rule 11.8's step 6 spec does | Add "a fine ring while the time runs" to each |
+| Batch 1, batch 2 | `apply_systems_ch11.py` (`BALLOT_STEPS` step 2); `phase3_ch15_build.py` (15.23's ballot step 2) | "The attorney general writes the title and summary" rests on Massachusetts and California; the rule says the steps follow four states | The research lead confirms who acts at step 2 in Ohio and Michigan, and the row says "in Massachusetts and California" or names each |
+| Batch 4 | `phase3_ch15_build.py`, Rule 15.24's compact card | Minnesota's statute prints no version, though its page states "2026 Minnesota Statutes" (F10) | Name that edition |
+| Batch 6 | `phase3_ch14_complex_build.py`, Rule 14.143's walk | Loop R10's first line prints before "The walk moves to Loop R10, starting at ... and supposing they rise" | Set the transition before the line, as Loop B4's start comes before its walk |
+| Batch 6 | `phase3_ch14_complex_build.py`, the failure figure of Rule 14.142 | No in-plot "Three-month average" label where S96 has one (so since round 5; the key names the line) | Add S96's annotation for parity |
 
 ## Calls
 
