@@ -228,6 +228,10 @@ No score moves. What the pictures add:
 - **Grayscale, 2x, the page's own filter.** On 15.20 the chosen pills' red ring turns a mid gray, lighter than an unchosen pill's ink, and the red arrowhead turns the same gray, while the red shaft holds by its dark case. This confirms DD-R5 and CR-S1's arrowhead keyline on the page itself, not only in my luma conversion.
 - **2x, Newsprint.** CD-M1 shows at 2x as it does at 1x: L39 is a solid black bar with R-38 chosen. The "R - 06" chips (CR-S17) print with a space's width each side of the hyphen at 2x. S93's page callouts 6 and 7 touch and sit beside the list's disc 3 (CR-S13). S96's band, key and leaders land on whole pixels; the dashed average over the preliminary months is barely seen (CR-S9). The selection guide's line symbols land on whole pixels; its map symbols are filled silhouettes, the one family drawn as shapes rather than lines, as my R5-G craft reason says.
 
+## Rescore
+
+In progress from 19:06 UTC on the joined build of `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings), with my own captures at 1x and 2x on both grounds. Scores and reasons follow as they are written; the rescores file is `20261116_Rounds-4-5-CD-Rescores.json`.
+
 ## Tested
 
 - Read the brief whole, my role file, round 3's scores and review for form, V26 sections 1 and 2, the round 4 and round 5 contracts, Master Brief sections 6, 13 and 14 (16:51 to 16:56 UTC).

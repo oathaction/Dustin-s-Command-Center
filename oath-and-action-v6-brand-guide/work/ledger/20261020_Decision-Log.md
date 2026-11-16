@@ -6714,3 +6714,200 @@ The main session posted the plan for the review of rounds 4 and 5 with five ques
 |---|---|---|
 | DR-282 | Every fix a review, reader or owner flags that is not made (Should fixes declined or left, Must fixes held for his call, carried items, suggestions set aside) is recorded in one register, `work/ledger/20261116_Deferred-Fixes-Register.md`, with enough detail to act on alone; every later chat adds its rows before it hands off. Dustin plans a final finishing pass in which one model reviews everything and makes these fixes | Dustin, November 16 |
 | DR-283 | The deferred fixes register is backfilled from the very beginning, Phase 0 on, so it holds every flagged fix never made across the whole project in one master register Dustin can return to later; four read-only readers check each item against later notes, the logs and today's files and list only what still stands, with fixed items counted | Dustin, November 16: "backfill all the fixes that were not made from round zero, from the very beginning, and include them all in one master register" |
+
+### Main session, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2126 | Call 1 (DF-2, CE-S10): chapter 11's marks govern. Rules 15.22 and 15.23 take a stage mark chapter 11's key does not use, chosen by the data lead's ruling and drawn by the systems designer; the tracker steps on Rule 15.23 keep chapter 11's marks | A filled numbered square means "stopped" in chapter 11 (Rules 11.2 and 11.3, DR-108) |
+| D3-2127 | Call 2 (DF-3): Rule 13.5 governs the effect mark. Rule 14.144's cards draw the pips beside each whole code, keep the atlas's sentence that codes are never added and keep no total; the failure plate's total stays the fault. Ruling (d)'s "no pips" (D3-1973) is replaced, and board 3 shows the change | Rule 13.5 is approved (DR-237) and draws each effect code with its pips, as Rules 15.16 and 15.20 do |
+| D3-2128 | Call 3 (NB-M1): Rule 15.20's sentence is rewritten so it allows a reform whose targets sit off the drawing, named in words, and Reform R-38 stays on Rule 14.144. Group 18's line stops saying the three reforms "act on" the loop | Rule 14.144's status line already names such targets in words, and one of the three reforms does not act on the loop |
+| D3-2129 | Call 4 (CE-S20): an unappealed court case follows Rule 11.8. A case decided at trial and never appealed keeps the steps the law did not reach under slashes with its end words; the square stays for a case that ends by settlement, dismissal or a denied petition | Rule 11.8 puts the steps the law did not reach under slashes, and the square keeps its one meaning, stopped |
+| D3-2130 | Call 5 (CE-S18): "and sent back" stays on the card, and Rule 11.11's text names the court's word once ("which the court enters as remanded") | ED5-3 held "Affirmed" the same way: plain words on the card, the court's own word named once in the rule |
+| D3-2131 | Call 6: CE-S22's sharper words for three of the sixteen questions and NB-S4's lockmark on every chart the kit draws wait for board 3. Owners write the recommendation and the main session puts it to Dustin; the selection guide maker may add one reader's example under each question now if the craft reader agrees | The questions are the coverage plan's approved words (DR-62), and the charts approved at boards 1 and 2 carry no lockmark |
+| D3-2132 | Call 7: rulings first. The data lead rules within 30 minutes on the stage mark (call 1), on how Rule 14.143's walk words say a fall and its effect (CE-M1), on Rule 14.142's failure caption against its correct title (ST-M1), on what S96 says a 90 percent band means across 57 months (ST-S1, CE-S13) and on Rule 14.144's cards against Rule 15.20's panel (DF-7, call 2) | Several owners' fixes wait on these rulings; owners whose items wait start on the rest meanwhile |
+| D3-2133 | Call 8: facts first. The research lead states within 30 minutes, from the law and the sources file, when FOIA's 20 working days start (ST-M2), California's sampling rule (ST-S3), the majority a bill needs against full membership (ST-S6, CE-S1), when a conference committee meets (CE-S2), the read dates in the sources file (ST-S7), S96's release and vintage (ST-S8), stage 19's selection rule, scope and date (ST-S5, NB-S6, CE-S5), why the ballot tracker cites its four states (NB-S7) and what a governor does after a Legislature passes a measure (CE-S17) | The owners' words for these codes rest on what the law and the sources file say |
+| D3-2134 | Call 9 (ST-S4, AX-S1, PR-S6): the palette plate's ratios round down, as D3-1929 already says | The plate's 16 ratios printed one hundredth high are a fault against its own stated method |
+| D3-2135 | Call 10 (AX-M1): DR-278 (a) is now a Must. The shell's scroll and focus offsets follow the masthead's real height at every width, measured for reach first and shown on board 3 | At 1024 to 1360 px a focused link in the chapter rail can sit wholly under the masthead, which fails WCAG 2.4.11 (AA) as well as 2.4.12 |
+| D3-2136 | Call 11 (DR-278 (b), CD-M3, AX-S3, AX-S6, RP-13): an image stage's fragment is hidden from the accessibility tree in `plate()` so its alt is heard once, and the guide check changes in the same commit so it tests the new rule. The change is counted across every image stage, with a list of any whose alt does not carry every word it hides | The fix reaches every image stage in the guide, and a check left on the old rule would fail the new markup |
+| D3-2137 | Call 12 (DR-278 (c), AX-S7): the "Where to start" links and chapter 26's code sets stop pushing the page sideways at 320 px with 200 percent text | DR-278 brings this carried item into the fix pass, measured first and shown on board 3 |
+| D3-2138 | Call 13 (DR-278 (d), PR-S1): chapter 26's token table script selects inside its own plate only | Its page-wide selector broke the quick guide check in round 5 (D3-1892); DR-278 brings it into this pass |
+| D3-2139 | Call 14 (PR-S2, PR-S5, PR-S11): `guide_build.py` checks that every plate style's braces balance and that no plate script selects across the page, fails a palette plate that a token release left stale, and stops rewriting `plate-share.json` when nothing in it but its time changed, each without changing a reader's page | Faults found by hand in round 5 (D3-1892, D3-1893), and a tracked file rewritten by every build, become checks the build runs |
+| D3-2140 | Call 15 (DD-R2, DD-R5, AX-S5, CR-S1, CD-S5): the chooser changes once, on both plates: one width for the choices and a keyline inside a chosen pill's red ring, which also lifts the ring's 2.95 to 1 contrast. The component engineer changes the shared chooser; the systems designer (Rule 15.20) and the complex examples maker (Rule 14.144) apply any plate-side line; board 3 shows Rule 15.20 changed | Five readers name the same faults in one shared component, and one component keeps one look (R4-5); D3-1995 had carried DD-R2 and DD-R5 to this review |
+| D3-2141 | Call 16: SG-6 is not adopted; the tier word stays under the name, aligned by subgrid (D3-2072) | No reader's report asks for the change |
+| D3-2142 | Call 17 (RP-14): the selection guide's questions stay lists, and the guide gives a reader the road to the three charts in full instead (RP-3, PR-S9) | D3-2074 set the questions as lists because a plate holds no heading |
+| D3-2143 | Call 18 (NB-M2, AX-S2, CR-S15): S95 signs off with the lockmark as DR-211 sets it, the 48 px master drawn at 96 px on each crop, with its size line kept (AX-S2). S14's latest label moves clear of its gridline only by a spec key, and S14 is then listed for board 3 with its source line | DR-211 and Rule 08.2 give every social card the sign-off; S14 is a board 1 specimen, so only a spec key may move its label |
+| D3-2144 | Between 17:20 and 17:30 UTC: S14 names the payroll release as S96 does (the same series, with the vintage where the publisher revises), and S14 is listed for board 3 as a changed board 1 specimen. The research lead adds the release keys to the payroll sidecar and leaves the old lines, which S14 and chapter 13 print; the engineer is asked to carry the keys into `data_round0_build.py` in wave 2 | ST-S8 names S14's line too, and one series prints one release line; a sidecar key the generator does not write would be lost on its next run |
+| D3-2145 | The review's shared capture run stops after its twice-size pass at 1440 px, and the second pass takes its captures from the fixed build | The fix pass changes the plates later captures would show, so the second pass reads the fixed page |
+| D3-2146 | At 17:24 UTC: the S14 source line that chapters 02 and 13 print follows the release only on Dustin's word at board 3; the editor's words for it are in its fix notes | Chapters 02 and 13 are approved work (DR-73, DR-237) |
+| D3-2147 | Slip, logged: at 17:41 UTC the reader panel's script let a third browser run for about 20 seconds while `browsers.sh` said WAIT, against the load rule. The Charcoal capture run's stop at 17:42 was the main session's own kill, not the reader's | Recorded as a slip; it changed no result |
+| D3-2148 | Slip, logged: between 17:40 and 17:50 UTC the complex examples maker ran one browser probe while a second browser was open, having read `browsers.sh`'s exit status in place of its output, against the load rule | Recorded as a slip; it changed no result |
+| D3-2149 | Slip, logged: at 18:04 UTC the engineer ran `data_round0_build.py --help`; the script has no argument parser, so it rewrote the payroll sidecar to the generator's old output. The engineer put the research lead's keys back the same minute by carrying them into the generator, which now writes the sidecar byte for byte as the research lead left it (its notes) | Recorded as a slip; the snapshot `2dbb88fe` holds the reverted file, and the working tree holds the research lead's version again |
+| D3-2150 | Slip, logged: at 18:07 UTC the round 4 maker broke the load rule for about 40 seconds | Recorded as a slip, as every breach of the load rule is |
+| D3-2151 | At 18:10 UTC the engineer's wave 2 work is split: a second engineer takes `palette_spec_build.py` (CD-S12, CR-S11, CR-S12, DF-13, NB-S3) and the calendar and social card modules (S94 and S95, with AX-S2, CD-S1's kit side and NB-M2's feed test) | Handoff V25: split the engineer early, since a second instance took four of ten piled-up kit requests with no collision |
+| D3-2152 | CR-S17, between 18:20 and 18:30 UTC: chapter 13's chip and Rule 18.24's code chip carry the same widened hyphen as chapter 15's chips. Chapter 15's copy is fixed in this pass; chapter 13's and Rule 18.24's wait for board 3 (the component engineer's Requests 3) | Both are approved work outside rounds 4 and 5, chapter 15 and the trackers, where the brief keeps this pass |
+| D3-2153 | Call 11 narrowed at 18:27 UTC: `plate()` hides an image stage's fragment only where the stage's alt carries every word the fragment holds. On the 18:28 strict build 95 of 416 image stages are hidden and 321 keep their words open because their alts are incomplete; the 321 are listed in `work/handoffs/phase-3/20261116_Fix-Pass-Engineer-Picture-Words.json` for the deferred fixes register | Words heard twice are a lesser fault than words never heard; once an owner completes a stage's alt, the build hides that stage on its own |
+| D3-2154 | Q-18 (Atlas V7 issue I062's count against CMS's renewal count) is settled by DR-264: the V7.1 issue list's row 38, added under DR-264 (D3-1677), keeps the 25 million figure and prints KFF's period beside it. `work/ledger/20261020_Open-Questions.md` still lists Q-18 under "Open"; the main session moves it to "Answered" at the close | The backfill reader for Phases 0 and 1 found Q-18 settled (DR-283's register, part 1) |
+
+### Data visualization lead, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2155 | Rules 15.22 and 15.23 number each stage with a bold figure on its line and no shape; the stop square stays for a path that stops alone; 15.23 prints stages in words with no mark | Chapter 11 gives fill against outline and heavy against fine a state (Rules 11.2, 11.3, DR-108); a route's stage has an order and no state |
+| D3-2156 | Rule 14.143's line states the walk's direction at both ends, computed from the start and the signs, with "can" from a plausible step to the loop's close | The connection's general verb read after the supposition ran the wrong way (CE-M1); a chain is as sure as its least certain step |
+| D3-2157 | Rule 14.142's failure plate is S96 with the margin left out and nothing else changed: no latest label, plain source line, same scale; its caption names that one fault | One fault per failure plate (ruling (c)); the count of seven is what the rule asks for (ST-M1) |
+| D3-2158 | S96 and Rule 14.142 say what the band means in the zero-centered form and that it holds for each month alone; no expected-count figure prints | The band sits around zero; a count of chance passes assumes no month changed, which the data rule out (ST-S1, CE-S13) |
+| D3-2159 | S96's note 2 says where each named drop fell, private against government, same form for both months, no cause | A reader asks what fell; the split adds to each total and treats both months alike (ST-S2) |
+| D3-2160 | A ruling no one takes further keeps the steps after it under slashes at the trial court and at the appeals court; the square stays for settlement, dismissal and a denied petition | Call 4: an end by a ruling is not a stop; one meaning for the square (Rules 11.2, 11.3); Rule 11.8 and round 5's measure the Legislature passes do the same |
+| D3-2161 | Rule 15.24's worked example stays Reform R-28, chosen as the one reform an earlier drawing put on a route (Rule 15.25's row 41), with the rule printed | A rule that reads only the record of earlier drawings picks one reform for either side; the other candidate, R-25, is the same kind of reform (NB-S5) |
+| D3-2162 | A law's date on Rules 15.22 to 15.24 prints "Retrieved", with the version the copy states; ruling (e)'s "read" is replaced | Rule 13.6 and H04 name the part "the date retrieved"; chapters 11, 13 and 14 use it; "Checked" stays the atlas entry's date (DF-10) |
+| D3-2163 | Rule 14.144 draws Rule 13.5's pips with `pips_svg` and takes 15.20's route form and 15.16's grade form; D3-1973's "no pips" is replaced | Call 2 and DR-237: one mark for one property across chapters 13 to 15 (DF-3, DF-7) |
+
+### Research lead, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2164 | S96's release-named lines go in as new variants of the payroll sidecar, and `printed_source_line` and `with_margin` stay as they are | S14, its fixture and chapter 13 print the two old lines and are approved work; the kit checks S14's spec against them; ST-S8 names S14 too, so whether S14 and chapter 13 take the release words is a question for the main session |
+| D3-2165 | S96's sector line adds "for all nonfarm employees" to the approved margin sentence | The plus or minus 122,000 is the total's; with private and government named on the same line, a reader could apply it to them |
+| D3-2166 | The printed release words leave ALFRED out and the sidecar's note names it | The file was read from FRED on November 6; ALFRED was read today to prove the vintage |
+| D3-2167 | New rows in the workflow sources file take stage names no generator uses yet | Chapter 15's generator takes the last row of a stage name; a new row under an old name would change a plate's date or break a held phrase without its owner's change |
+| D3-2168 | The Massachusetts governor row is recorded as my reading of the constitution's text, labeled as such in the row | No official page read today says it in words |
+| D3-2169 | Stage 19's as-of date stays November 9, 2026 in the sources file | That is the date the rule was applied; today's recheck is in F7 and goes into the row only if the editor asks |
+
+### Editor, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2170 | Rules 14.1 to 14.12 and 14.14 each print a Basis line that names the rule's own standard or approval, and the chapter's basis keeps printing once for the form entries | DF-12: every rule in chapters 01 onward prints one, and a rule's own line tells a reader what it rests on; D3-556's one box still serves the 127 entries |
+| D3-2171 | Rule 14.6's light fill covers every other bar where the title names one bar, and every other series takes the context ink | DF-13: Rule 05.7 says every other series takes Stone, and the light fill token itself limits the fill to the other bars of a chart that names one bar |
+| D3-2172 | S96's source line sets the release with the title and keeps the approved qualification words | F6, Rule 13.7's "the release its figures come from", and the research lead's variants; the approved "are preliminary and will be revised" stays because chapters 02 and 13 print it and Rule 13.6's check holds it |
+| D3-2173 | Group 18's line says the three reforms' records name the housing loop | Call 3 and NB-M1: Reform R-38 has no target on Loop R8, so "act on" said more than the plate shows; Rule 14.144's own text already says "whose record names one loop" |
+| D3-2174 | The chart notes on S96 say "the text’s ink", and I withdraw my round 5 reason for "the strongest ink" | D3-914 and DR-262 set one ink word, and S53, which I cited in round 5, had moved to "the text’s ink" by D3-1043 |
+| D3-2175 | Rule 14.143's lines say each change in the walk's direction, cause first, with "goes up" and "goes down" after the title that asks how often | Ruling R2; "how often the primary decides the winner rises" stops the ear |
+| D3-2176 | Rule 15.22's stage 8 is named "Sent to the President", with "enrolling" kept inside its sentence | CE-S3: Rule 11.1's failure caption rules out "Enrolled" as a clerk's word |
+| D3-2177 | Stage 19 lets Marbury name the power, and the 2026 holding keeps its own words, with the selection rule stated | NB-S6 and ST-S5, on the research lead's F7 |
+| D3-2178 | A ballot measure the Legislature passes says what comes next, by state, in Rule 11.10's text, and a card takes one of two endings without naming a state | CE-S17 on F9: Massachusetts and Ohio send it to the governor, Michigan does not; the cards name no state (DR-275) |
+
+### Systems designer, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2179 | Stage 9, "Signed", draws as a path at the President, beside stages 10 to 12, each going on to stage 13 | CE-M4: a law passed over a veto or with no signature never passes stage 9, and the spine is the stages every enacted bill passes |
+| D3-2180 | Rule 15.23's step 5 lists stages 3 to 7, in their numbers' order | CE-M2: suspension, cloture and reconciliation serve either chamber; numbers in order read as 15.22 reads |
+| D3-2181 | Route FS's card on 15.24 reads its stage names from Rule 15.22's stage list | DF-9: one name for one stage (H02), and a renamed stage reaches the card on the next build |
+| D3-2182 | A stop line's words sit in one span after its mark | CE-S6, DF-11: a flex line made each text run and held phrase its own column |
+| D3-2183 | The read-aloud line says "fewer" before six titles whose head noun counts | CE-S23; "less policy advantages" on Rules 15.1 and 15.6 and "less incumbents defeated" on 15.15 |
+| D3-2184 | A route card may hold a row of another route's table | ST-S7: each law a card cites rests on a row with its own read date |
+| D3-2185 | Rule 15.23 keeps no spine-against-path difference among a step's stages | R1, item 5 leaves it to me; 15.23 sends the reader to 15.22, which draws it, and the words "Stage 3: Suspension of the rules" stand alone |
+| D3-2186 | Rule 15.24's example prints why it shows Reform R-28, and the alt reads the plate in its order | NB-S5, the data lead's R6: one rule, read from either side, picks one reform; the alt's "First" predated DD-S7's move |
+| D3-2187 | The keyline and the head's edge are opt-in to the chooser plates (15.20 and its failure; 14.144 by the complex examples maker) | Call 15 changes the chooser once; Rule 12.5's red target on approved 15.11, 15.12 and 15.16 stays as approved, for board 3 to decide |
+| D3-2188 | 15.24's joins draw their arrow as a mask, not as a glyph | CR-S21: the guide's Inter subset has no U+2192, so the glyph fell to a system font; the engineer's font build fixes the guide's other arrows |
+| D3-2189 | A stop line must hold exactly its mark and one span of words, checked by the generator | CR-M1's request; the fault came from bare text beside a held phrase in a flex line |
+| D3-2190 | 15.23's "Stage N:" sits in a fixed slot | CR-S7, CD-S6: one x for every stage name, two-digit numbers included |
+| D3-2191 | 15.22's key shows the number of the first stage of each kind (1, 3, 14) | R1, item 4: each entry draws as the plate draws it, and a real number ties the key to the plate |
+
+### Complex examples maker, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2192 | S96's failure takes the fitted dash with S96 | R3: the failure is S96 with the margin taken out and nothing else changed |
+| D3-2193 | S14 takes `latest_clear`, and the fitted dash once the data lead said yes (batch 10) | Call 18 opened S14 for its label; the dash on a board 1 chart waited for the data lead, who asked for S14 and S96 to draw it alike |
+| D3-2194 | Rule 14.144 adds call 15's keyline to Loop R8's pills itself, from each pill's box | Chapter 15's `two_loop` passes no keyline; the rect is `Pill.svg()`'s own, so both plates draw one mark (C-SD1: copy what you need) |
+| D3-2195 | The red head's ink edge also reaches the print copies' heads | One target mark on screen and on paper; on paper the red prints gray and the edge keeps the head apart from the ground |
+| D3-2196 | The plate takes chapter 15's palette `pk` entry only when it draws a palette stroke | The keyline shares that class name; leaving the palette rule out keeps the keyline's stroke from resting on rule order |
+| D3-2197 | Rule 14.144's first lines keep the reform's name for the status line in a visually hidden prefix | The status line reads the line alone (the shell's listener), and a reader who hears only it must hear which reform; the screen shows the name once, in the head (CD-S10) |
+| D3-2198 | The phone line-up runs each family's three reforms one under another, not a table with reforms as columns | A 296 px column cannot hold three 88 px pip marks and "+M renter-owner" whole side by side; the family blocks keep each comparison on one screen (CR-S3) |
+| D3-2199 | The line-up hides where the cards stand side by side and on paper | It repeats what the aligned cards show there; paper prints the cards and the three drawings |
+| D3-2200 | Loop R10's supposition opens the line of its first step, in the regular weight | The stepper reads only the line and the further words, so a sentence before the step must sit inside the line to be said first (the data lead's suggestion) |
+| D3-2201 | S96 and its failure name Rule 14.32, read from the plan; S14 keeps "Both jobs charts" | S14 sits beside S13 in chapter 14's own sequence, where "both" is clear; S96 sits 110 rules later (RP-10) |
+| D3-2202 | The failure draws S96's "Three-month average" note | One scale and one note on both plates; the fault stays the margin alone (the data lead's suggestion) |
+| D3-2203 | The unchosen-reform rule resets the ink case (`stroke:none`) beside the mark, pill and head, rather than scoping chapter 15's case rule to the print copies | The case rule is chapter 15's, shared with the print copies through `plate_style`; resetting it where a reform is not chosen is the plate's own rule, as the mark's reset already is, and leaves chapter 15's CSS whole (CD-M1 offered either) |
+| D3-2204 | The failure figure keeps the first sentence of S96's second note ("Payrolls shrank in seven months: ...") and drops the rest | R3: S96's notes less every word of the margin; that sentence counts the drops with no margin word, and its second and third sentences (the margin and the split of the two named months) point at what the failure leaves out |
+| D3-2205 | The failure figure keeps S14's preliminary note, not S96's | S96's adds "The band does not show how far a revision may move a month.", a word of the margin the failure leaves out |
+| D3-2206 | The private and government split is computed in `maker_c_round5_derive.py` from the sector file and fitted to the editor's sentence only for the directions it holds | R4b's figures stay the data's; a later file whose signs differ stops the build instead of printing a wrong verb |
+| D3-2207 | The walk's directions and "can" are computed (`directions`, `says`) and the check recomputes them separately from the figure facts | R2, item 1: the build stops if a printed direction differs from the computed one; two code paths read the signs, so one slip cannot pass both |
+| D3-2208 | Rule 14.144's effect heading and its four family rows take five rows of the cards' subgrid (nested subgrids on the group, its `dd` and its list) | DD-R1's aligned rows across the three cards hold with 15.20's one-heading form; one card a row below 680 px or 40em, as before |
+| D3-2209 | Rule 14.144's two grades sit in one list row, "Its two grades, apart", each a `grade_block` | Rule 15.16's heading and form for the same two grades (R5, DF-7); one row keeps the subgrid's count at eleven |
+| D3-2210 | The failure plate of Rule 14.144 keeps its codes as text | R5, item 7: four 88 px marks a row do not fit the 328 px stage; its fault is the total alone, so its caption stands |
+| D3-2211 | Rule 14.144's related rules add 13.3 and 13.5 | Its cards now draw Rule 13.5's mark and Rule 13.3's grade glosses |
+
+### Tracker designer, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2212 | A ruling no one appeals keeps the steps after it under slashes, at the trial court (steps 3 to 6) and at the appeals court (steps 5 and 6); the square stays for settlement, dismissal and a denied petition | Call 4 names the trial court; the same reason holds one court up, and leaving the unpetitioned appeals ruling to the old square would keep CE-S20's two marks for one kind of end. Data lead: please confirm in your sign-off |
+| D3-2213 | "No petition" names no day count | The 90 days of Supreme Court Rule 13.1 and 28 U.S.C. 2101(c) can be extended by a justice for up to 60 days (workflow sources file, step 5 row), so a fixed count would be wrong for some cases; the trial court row keeps its 30 and 60 days as approved |
+| D3-2214 | A rejected measure ends on a square at step 6 (PR-S10's recommendation, adopted by the creative director under C11-T) | One grammar across the bill and the measure: Rule 11.3 stops a bill at step 6 when a veto stands, and six filled steps read as passed at a glance |
+| D3-2215 | A square sits on the step under way when an item ended, never on the last step done | Rule 11.8's request 99005 (withdrawn while searching) and Measure 99013 (stopped at Signatures) already draw it there; "the last step it reached" let a builder put a dismissal on step 1 (the production test's G-C1) |
+| D3-2216 | The For builders lines name the marks by Rule 11.2's public tags, not the generator's internal names | The tags are what Rule 11.2 already gives builders; the generator's `done`, `notyet`, `skipped` are its own |
+| D3-2217 | CD-S11's full form keeps "as replaced by Amendment Article LXXIV, Section 1" | The sources file's row 1 records Section 3 that way; a short form that dropped it would cite text another article wrote. The research lead may shorten it |
+
+### Engineer, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2218 | An image stage's picture is a plain block `div`, not `display: contents` | `aria-hidden` on a box that generates no box is not honored the same way in every engine; no selector or script on the page reads a stage's own children (scanned), and the accessibility reader measured every box unmoved with a block wrapper |
+| D3-2219 | Where a hidden picture prints the Illustrative label and neither alt nor caption says it, the build leads the alt with "Illustrative." (31 stages) | DR-97: the wrapper would otherwise take the label from a screen reader; one rule in the build reaches all 31 owners' plates the same way, and the editor confirms the word |
+| D3-2220 | The guide check reads every text under a stage's picture and keeps every other skip of hidden text | AX-S6: the scan measures what a sighted reader sees; the picture is hidden from the tree, not from sight |
+| D3-2221 | The palette guard runs `palette_spec_build.py`'s own build and compares the plate and its meta file, and fails on the script's own faults | PR-S5 asks for its `--check` logic; the token table's guard works the same way |
+| D3-2222 | `plate-share.json` is written only when its share or plates to come change, and keeps the time of the build that set them | PR-S11; the kit prints "the guide build of <time>", which then names the build whose figures it reads |
+| D3-2223 | Request 2's keys are `labels.latest_clear` and `labels.average_dash` | The maker left the names to me; as `labels` keys the kit's unknown-label warning still covers a misspelt one |
+| D3-2224 | CR-S19 lands opt-in (`evidence_layout: "beside"`) | As a default it moves signed-off charts below their headers wherever a grade line wraps, which I could not measure without a browser at every width |
+| D3-2225 | A range bar whose status column names open rows must name its test; `range-bar` draws `test: "zero"` | PR-S7: a partner's spec then says what an open dot means, and the kit can check it; no spec in the kit sets status-driven open dots today |
+| D3-2226 | The kit's plate weight past 15,000 bytes is reported on the weight line, not raised as a warning | PR-S4, DR-271 and D3-1895: the figure is reported, not a limit |
+| D3-2227 | A new spec of a partner's starts at S99 | The plan file keeps S97 and S98 for chapter 14's worked examples |
+| D3-2228 | DF-16 by a kit format (`date-lead`), not by editing the data file | The data file holds the record's own text; the format prints its date as chapter 02's H05 asks |
+| D3-2229 | Phase 4's break-even is a note and a report field (ST-S10) | DR-271: nothing is cut; the figure is for Phase 4's plan |
+| D3-2230 | SG-9's Python check also tests each question's skip link landing | The maker's patch allowed any skip target anywhere, so AX-S4's fault as found (the last skip link back on group 1) would have passed the build's check |
+
+### Second engineer, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2231 | "The one red" follows the role inks, before the grade line code, rather than closing the plate | NB-S3 asks for a short last section; Rule 14.5 names the red point as the third of Rule 05.7's roles, so it reads with the role inks, and the grade line code is no color. Its content is NB-S3's whole list |
+| D3-2232 | The plate prints the red at 2.95 to 1 on Newsprint and 4.16 on White paper, where chapter 05 prints 2.96 and 4.17 | The plate rounds every ratio down (D3-1929, call 9) so none rounds up across a bar; the measured ratio is 2.9568. Chapter 05 is approved and not mine (Requests) |
+| D3-2233 | The role inks' panel and table follow the stage's surface for the swatch in each row, as the palettes' do; the red's keyline swatch reads the keyline token, which Charcoal leaves unset, so it draws no keyline there | The kit draws the keyline on Newsprint only (`parts.js`, `fn.keyline`), and Rule 05.5 says a red mark on Charcoal needs none; the plate shows what a chart draws |
+| D3-2234 | CD-S1's desk year is drawn at 600 px and shown from a 600 px column, not at each column's width | A card is HTML text with fixed marks; a fluid mark would scale its words under the type floor (IM-E7). 600 px is the narrowest column that shows it, so it never overflows; at 1440 px it fills 600 of the 720 px column with 8 px squares (the creative director's size). The main session approved the plan (about 18:31) |
+| D3-2235 | The desk year's months are 30 px apart, the phone's stay 26 | Three 8 px squares and two 2 px gaps make a 28 px stack on April 15, which a 26 px month overran into March and May |
+| D3-2236 | The desk table changes its look by a grid on each row and keeps its markup, with no ARIA roles added | Chromium's accessibility tree keeps each table whole with the grid (read at 1440 px), as it does for the stacked rows the accessibility lead approved (6.6); added roles would change the phone's table too |
+| D3-2237 | The feed test ran from a scratch script with the guide's own counter (`promotion_c_identity.counts`, its widths, filters, thumbnail path and the identity figures' Charcoal floor), not as `promotion_c_identity.py feed` | That step builds the guide and measures the proofs' 1200 by 630 card, and writes the identity figures file, which is not mine; S95's crops are 1080 wide, so only the sign-off's place and the reduction's scale differ |
+| D3-2238 | S94's phone year keeps its fractional day positions; only the desk year snaps to whole pixels | So the phone mark is byte for byte the one the round 4 maker built and the data lead signs off on; at 6 px squares the snap would also bunch the days unevenly |
+
+### Component engineer, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2239 | The shell's `--head-h` takes the masthead's measured height less its 1 px rule (`--head-real`, set by the shell's script from a `ResizeObserver` and once before the first landing), to a hundredth of a pixel | AX-M1's measured fix uses `clientHeight`, which rounds to a whole pixel; the masthead's height is never under the two bars' sum (each bar has that minimum), so wherever it fits, the value equals today's and nothing moves |
+| D3-2240 | Without the script, `--head-h` stays the two bars' sum, with a floor of 8.25rem from 22.5em to 23.25em and 6.25rem from 64em to 85.125em | AX-M1 asks for a scripts-off floor; the ranges and heights are the ones measured at the default text size, 1 px at a time |
+| D3-2241 | Print keeps the two bars' sum for `--head-h` | Print hides the masthead, so its measured height means nothing there; the printed cover keeps today's height |
+| D3-2242 | The rail keeps its scroll edge where the masthead's rule meets it, with no added scroll padding | AX-M1's measured fix leaves 1440 px as it is; a scroll padding would move every rail link's focus scroll at every width |
+| D3-2243 | The chooser's one width is an opt-in list form in Rule 18.3's code set (`oa-choice-row--list`) | Rule 18.3 already allows "a row of segments or a list"; an opt-in class moves no choice on today's page, and both plates take it by one class |
+
+### Round 4 maker, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2244 | S92's table states each step's condition by its order (`order` with words), not by the data's `path`, and the same words open steps 6 and 8 in the drawing | RP-2: the path column is the drawing's main line, which the appeal and the lawsuit sit on once the agency says no; a condition column keyed by step tells the reader when each step happens without changing the data file or the drawn line |
+| D3-2245 | S92's row 8 reads "Only if the agency says no or misses its time limits", not RP-2's "Only if the agency says no" | Row 8's own words in the research lead's file: "a requester whose agency misses the time limits may sue without finishing the appeal" (5 U.S.C. 552(a)(6)(C)(i)); the shorter words would teach a false limit |
+| D3-2246 | S95's sign-off draws from the 48 px master held in the form and checked against the file by script, not through a new shared kit part | Call 18 routes S95 to me and the form is mine; a shared part (`K.parts.sign_off`) would be the engineer's and is offered under Requests; the script keeps the form's copy equal to the master |
+| D3-2247 | S95's lockmark inks follow the surface class (text ink, signature red, `light-dark()` links) rather than the ground the card was drawn on | A card draws once and never redraws; the review captures and any theme switch change the stage's class after drawing, and a ground-fixed ink would leave Charcoal nodes on a Charcoal stage |
+| D3-2248 | S86's key nests its rings again, reversing round 4's DD-A5 (S16's side-by-side key) | CD-S2; entry 14.80's own words ("a key of nested circles") and ruling (b) first named nested circles; the data lead's sign-off is asked |
+| D3-2249 | S90's Value column prints whole numbers, shares included | RP-12; the kit formats a column one way, and whole numbers match the facts the panel prints (45 cents, $17,619); the CSV keeps every digit |
+| D3-2250 | S94's key sets each kind on its own line at every width | CR-S14 asks each entry whole; a 16 px gap side by side needs a kit class, and two short lines read as a key at a desk too |
+| D3-2251 | S12's phone tiles keep an edge on every tile, now in the context ink | CR-S20 asks the ink only; the edge on every tile is board 1's (access S5), so only its ink changes |
+| D3-2252 | S94's year mark takes a day scale now, at its 224 px width | CD-S1's scale and ticks fit today's mark; the column-wide year waits on a kit class (Requests) |
+| D3-2253 | S85's snapshot date prints once, in the source line, and leaves the grade line | DF-15 and Rule 13.6 (DR-237) place an atlas value's snapshot date in the source line; D3-1327 and DR-257 print it once; the research lead's F13 advises the same |
+
+### Selection guide maker, chat 7 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2254 | The road ends the guide as a closing block after the 16th question, headed by group 18's own title, "Three charts in full", ruled off as each question is | Call 17 and RP-3 ask for the road under the questions; the block keeps the chapter's order (16 questions, then group 18) and sits right after Infographics, whose Comparison cards Rule 14.144 builds on |
+| D3-2255 | Questions 4 and 8 also carry a line to Rule 14.142, between the question line and its skip link | PR-S9 and the reader panel's R3 chose Columns with a moving average and Range bar in seconds and never scrolled to the end; before the skip link, so "Skip these N forms" still skips only the forms |
+| D3-2256 | The 16th skip link lands on the closing block's line, not on the rule index's label as AX-S4 proposed | With the closing block the guide ends after it; landing on the index would pass four road links its words ("Skip these 7 forms") do not name (D3-2086) |
+| D3-2257 | Each road link is named by its rule ("Rule 14.142") in Rule 18's running-text link, the number held on one line, its sentence giving the subject | Every cross-reference in the guide is named so; its purpose reads from its sentence (2.4.4); `data-oa-xref` and a return place give the way back a form link has |
+| D3-2258 | A road link carries the class `sg-go`, so a check can tell it from a form link and a skip link | The guide check and `phase3_ch14_build.py` classify links by target; a mark of their own keeps the road out of the form count (127) and the skip rules |
+| D3-2259 | The three charts take no picture | Each puts several forms together on one subject, so one small picture would name it as one form; the 133 symbols and the checks' counts stay as they are |
+| D3-2260 | The stage's description (alt) names the road | A screen reader entering the group hears it before the 144 links; the visible caption is the editor's (request SG-11) |
+| D3-2261 | The guide keeps its questions as lists (no heading, no `role="heading"`, no landmark) | Call 17 on D3-2074; a stage holds no landmark either (AX-S8, `specimenLandmarks`) |
+| D3-2262 | CE-S22's examples are not added | Call 6's condition: the craft reader does not speak to them |
