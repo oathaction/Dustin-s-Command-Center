@@ -234,7 +234,122 @@ No score moves. What the pictures add:
 
 The joined build of the fix pass, strict build of commit `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings) and its `guide-Build-Report.json`, read in place. The fix brief (calls 1 to 18) and every owner's "Fixed" and "Not fixed" in `20261116_Fix-Pass-*-Notes.md`. My own captures of the joined build (`scratchpad/c07/review/creative-director/rescore/`), taken in one browser from 19:06 UTC under the load rule: 32 plates at Newsprint 1x at 1440 and 390 px and Charcoal 1x at 1440 px, 13 at Newsprint and Charcoal 2x at 1440 px, three under the page's grayscale filter at 2x, with 14.143 after one and five presses, 14.144 with R-30 and R-38 chosen, and 15.20 with R-04. Words and markup read from the page by script.
 
-Status: in progress, 19:20 UTC. Scores below are written as I read; pending checks are named.
+Status: scores written 19:24 UTC from the joined build at Newsprint 1x at 1440 px and the four states; the 390 px, Charcoal, 2x and grayscale reads follow under "Second look, rescore" and moved nothing unless that section says so.
+
+### Verdict
+
+Thirteen of the fourteen items now score 4 or more on every criterion. One stays under: C11-T, at 3 on accessibility, because call 11 was narrowed at 18:27 UTC (D3-2153) to hide a picture's words only where its alt carries every word, and the tracker plates' alts leave out their own titles and the key's heading ("Where three ballot measures stand", "What the marks mean"), so a screen reader still hears every tracker twice. That is a wording fix for DR-191's short second pass, not a call for Dustin. Every Must I named or adopted landed, and the fixes I checked hold at true size.
+
+### Scores after the fix pass
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
+|---|---|---|---|---|---|---|---|---|---|
+| R4-A. Maker A: S85 to S88, entries 14.79 to 14.82, sketches 14.83 and 14.84 | 4 | 5 | 4 | 4 | 5 | 4 | 0 | 0 | yes |
+| R4-I. Infographics maker: S89 to S95, entries 14.135 to 14.141 | 4 | 4 | 5 | 4 | 4 | 4 | 0 | 3 | yes |
+| R4-S. S12's stacked tile; phone codes on S12, S16, S78 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 0 | yes |
+| R5-G. "Choose a chart", the selection guide | 4 | 5 | 5 | 5 | 4 | 4 | 0 | 1 | yes |
+| R5-P. The palette specification | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 0 | yes |
+| R5-1. Rule 14.142, S96 and its failure | 4 | 5 | 5 | 5 | 5 | 4 | 0 | 0 | yes |
+| R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 1 | yes |
+| R5-3. Rule 14.144, three reforms on Loop R8 | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 0 | yes |
+| R5-W. Chapter 14's intro, opener caption, Rule 14.1, group lines 17 and 18 | 4 | 5 | 4 | 4 | 4 | 4 | 0 | 0 | yes |
+| C15-I. Rules 15.19 to 15.21 | 4 | 4 | 4 | 4 | 5 | 4 | 0 | 1 | yes |
+| C15-W. Rules 15.22 to 15.25 | 4 | 4 | 4 | 5 | 5 | 4 | 0 | 0 | yes |
+| C15. Chapter 15 whole | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 0 | yes |
+| C11-T. Rules 11.10 and 11.11 with step tables, Rule 11.12, the bill's step table | 4 | 4 | 5 | 4 | 5 | 3* | 1 | 0 | no |
+| C14. Chapter 14 as a page at 144 rules with its front door | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 0 | yes |
+
+An asterisk marks a score under 4. Specimens under the bar: s-11-10-correct, s-11-11-correct, s-11-12-correct and their failure plates (accessibility).
+
+### Reasons after the fix pass
+
+**R4-A.** Craft 4 (unchanged): S86's key now nests its three rings on one baseline beside "Circle area shows the count" and reads as a key, and S87's frame and S88's true-size areas hold at 1x, though the nested key still takes 210 px of height under a 200 px drawing. Clarity 5 (raised from 4): S87 and S88 now each title one finding ("In 2025, 23.8 million people had both private and public health coverage."), and S85's notes say in view why the Civic Line drawing sits beside the measure (RP-17). Brand fidelity 4 (unchanged): no red, one neutral ink set, CL-050 as DR-266 set it. Usefulness 4 (unchanged): the entries say what each form needs and point the Venn and the Euler at each other. Evidence honesty 5 (unchanged): the overlap is called Oath & Action's arithmetic with approximate margins on both plates. Accessibility 4 (unchanged): each chart keeps its table and alt.
+
+**R4-I.** Craft 4 (raised from 3): S94's year now draws at the column's width with day ticks at 1, 15 and 31 and its key on two lines, and S93's callouts stand apart from the parts list across a ruled gutter; at a 1024 px page the calendar still falls back to its 224 px year (RS-3). Clarity 4 (unchanged): S94's title is one finding in 20 words, though S91's grew to 33 words (RS-2). Brand fidelity 5 (raised from 3): S95's two crops sign off with the 48 px lockmark master at exactly 96 px, its one red square the only red on the card, as DR-211 sets, and the feed test passes on all four exports. Usefulness 4 (unchanged): S95 shows both crops with true sizes and the words to post, and entry 14.141 now names the sign-off. Evidence honesty 4 (raised from 3): S92's table reads "Only if the agency says no" beside the appeal and "Only if the agency says no or misses its time limits" beside the lawsuit, though S90's note still points to a "row 5" the table leaves out (RS-4). Accessibility 4 (unchanged): cards are live text and FEMA is spelled out at first use.
+
+**R4-S.** Craft 4 (unchanged): the stacked tile holds at a desk, and the phone tiles now take the context ink's edge, as the palette plate sets for a magnitude step. Clarity 4 (unchanged): the phone key now ends "United States 5.9", so the note beside it holds. Brand fidelity 4 (unchanged): one neutral ink, parties named. Usefulness 4 (unchanged): largest and smallest shifts listed under both drawings. Evidence honesty 4 (unchanged): fused lines and rounding stated. Accessibility 4 (unchanged): all 51 codes on the phone drawing.
+
+**R5-G.** Craft 4 (unchanged): one 2 px drawing system; the map symbols stay filled silhouettes, set aside and accepted by the data lead. Clarity 5 (unchanged): sixteen questions in the chapter's order, tier key first. Brand fidelity 5 (unchanged): neutral inks only, avoid forms struck. Usefulness 5 (raised from 4): the guide now ends with "Three charts in full", a link to each of Rules 14.142 to 14.144 in group 18's words, and a line sending a reader with a public process to Rule 15.22. Evidence honesty 4 (unchanged): tiers say truly which forms have finished examples. Accessibility 4 (raised from 3): call 17 keeps the questions as lists, because a plate holds no heading in this guide's outline (D3-2074), and each list is named by its question, so list navigation reaches every question; I accept that as the equivalent, and the entries' related rules still do not point to group 18 (RS-5).
+
+**R5-P.** Craft 4 (unchanged): each row now sets the swatch, step and whole token on one line and each ground's facts one to a line in tabular figures, a reference a designer can scan, though the plate has grown to 10,666 px at 1440 px. Clarity 4 (unchanged): each palette opens with its job. Brand fidelity 5 (unchanged): DR-236's order, pair B with no red, Prussian in words only. Usefulness 5 (unchanged): token, role code, value and contrast on every approved ground. Evidence honesty 5 (raised from 4): every printed ratio is now floored from the two hex values (10.46, 7.80, 4.60 and 4.91 to 1 where it printed 10.47, 7.81, 4.61 and 4.92), as the plate says. Accessibility 4 (unchanged): every value prints as text.
+
+**R5-1.** Craft 4 (unchanged): band, leaders and hatch land cleanly, and the failure plate now differs from S96 by the band alone. Clarity 5 (raised from 4): the failure caption names one fault, the note says what a 90 percent band means across 57 months ("nine times in ten", "a few columns could pass it by chance"), and the measure line names "the jobs chart of Rule 14.32". Brand fidelity 5 (unchanged): the named drops in the text's ink, red never on a loss. Usefulness 5 (unchanged): the rule says what to draw, with which tokens, and the kit draws the band from the sidecar. Evidence honesty 5 (unchanged): the source line now names the release, "the Employment Situation for September 2026, released October 2, 2026". Accessibility 4 (unchanged): phone note and table.
+
+**R5-2.** Craft 4 (unchanged): two drawings on one baseline, a key for ticks and dashes, the current step marked. Clarity 4 (raised from 3): each step now says both ends in the direction the change runs ("The quality of public services falls, so the risk of losing office rises."), and each loop says where it ends up, though Loop R10's first step prints its start twice in a row (RS-6). Brand fidelity 5 (unchanged): one ink, the shared variable filled, grades as chips, no red. Usefulness 4 (unchanged): it shows how a builder joins two loops on Rule 18.22’s part with no second copy of the code. Evidence honesty 5 (unchanged): "can" holds from the plausible step on. Accessibility 4 (unchanged): the still sequence prints in full and the status line names each step’s loop.
+
+**R5-3.** Craft 4 (raised from 3): with R-38 chosen every mark now draws at the loop's own weight, the three choices share one width with the check in a fixed slot, the chosen pill's red ring carries its keyline, and the chips print "R-06" with no air around the hyphen. Clarity 4 (unchanged): the cards hold every field in one order, the ticks have their key, and "Kind of change, the atlas's band" replaces the bare "Band". Brand fidelity 5 (raised from 4): one red job, effect pips drawn as Rule 13.5 draws them with no total, so one mark means one thing across chapters 13, 14 and 15. Usefulness 4 (unchanged): the plate shows how to compare reforms side by side with no total, and the rule now agrees with Rule 15.20. Evidence honesty 5 (raised from 3): the drawing now agrees with "Targets on Loop R8: None" in all three states, and Variable EC9 sits in one layer on both cards. Accessibility 4 (unchanged): the status line keeps each card's reform in a hidden prefix.
+
+**R5-W.** Craft 4 (unchanged): the intro, group lines and Rule 14.1 sit in the chapter’s anatomy with no stray marks. Clarity 5 (raised from 4): Rule 14.1 names and links "Choose a chart", group 17 names all seven forms, and the intro says "a fixed copy of its source's data" for "frozen data". Brand fidelity 4 (unchanged): plain, spoken words in chapter 02’s voice, and no studio words left in the intro. Usefulness 4 (unchanged): Rule 14.1’s builders line gives the spec field and the kit command. Evidence honesty 4 (unchanged): group 18 now says "three reforms whose records name one housing loop". Accessibility 4 (unchanged): plain text, and the new link to the guide is named by its words.
+
+**C15-I.** Craft 4 (unchanged): the chooser's two choices share one width and the chosen pills carry their keyline, though 15.19 still sets its controls after the list where 14.143 sets them before it (RS-7). Clarity 4 (unchanged): "Ready. Start at ... and suppose it rises" still tells a reader what to do first. Brand fidelity 4 (unchanged): red marks only a reform’s targets, now with its keyline. Usefulness 4 (raised from 3): Rule 15.20 now reads "Where a reform has a target off the drawing, name it in words with its layer, as Rule 14.144 does, and say so when nothing on the drawing turns red", so the two rules agree. Evidence honesty 5 (unchanged): 15.21’s slider stays a still picture whose own line says the 70 is made up, and "None in the model" stands under Strength. Accessibility 4 (unchanged): the shared parts keep the accessibility lead’s keyboard and tree checks, and the keyline lifts the ring’s 2.95 to 1 edge.
+
+**C15-W.** Craft 4 (raised from 3): stage 10's lines read as sentences, the stage numbers stand bare on their lines with no shape, and 15.23's five tables start their stage column at one offset with "Stage N:" in a fixed slot. Clarity 4 (raised from 3): 15.23 lists cloture and the other paths under both chambers' steps and says "stages" throughout. Brand fidelity 4 (raised from 3): the filled square now means only "a path that stops there", as chapter 11's stop square does (D3-2155). Usefulness 5 (unchanged): twenty stages each with its source and date, eleven routes with their official sources, and the reconciliation’s counts on the plate. Evidence honesty 5 (raised from 3): "Signed" left the line every enacted bill passes, the majority reads "of the members who vote", stage 7 names amendments traded and the conference, the records clock starts on receipt, and stage 19 states its rule with its scope and date ("in its opinions through November 9, 2026"). Accessibility 4 (unchanged): live text throughout, with the stop lines read as one sentence each.
+
+**C15.** Craft 4 (unchanged): one plate system across 25 rules. Clarity 4 (unchanged): six group lines lead from reading a mark to routes and earlier drawings, and step against stage now holds in every block. Brand fidelity 5 (raised from 4): one mark keeps one meaning across chapters 11 and 15. Usefulness 5 (unchanged): a builder can draw a loop, a reform, a route or a tracker map from these rules alone. Evidence honesty 5 (raised from 4): the key workflow plate now teaches the law as written. Accessibility 4 (unchanged): every drawing has its words beside it as live text.
+
+**C11-T.** Craft 4 (unchanged): the trackers and step tables hold their family at 360 px. Clarity 4 (unchanged): certiorari is glossed at step 5 and "Rejected by voters" has its mark in words. Brand fidelity 5 (unchanged): invented subjects tied to no party, each plate labeled Illustrative. Usefulness 4 (raised from 3): a rejected measure ends on a square at step 6, as a vetoed bill does, and a case ends on a square at the step under way, so a builder no longer guesses. Evidence honesty 5 (raised from 4): Measure 99013 now says "fewer than 95 percent", and the ballot table cites Amendment Article LXXIV where LXXIV replaced the text. Accessibility 3 (unchanged): the build report lists all six tracker plates among the 321 open stages, and by my script the alts leave out only the plates' titles and the key's heading, so the words are still heard after the alt (RS-1).
+
+**C14.** Craft 4 (unchanged): the front door, palette plate and three charts lift the chapter, and S94 and S86 no longer stop a craft critic. Clarity 4 (unchanged): "Choose a chart" answers the newcomer test from the chapter’s first screen and Rule 14.1 now names it. Brand fidelity 5 (unchanged): one working red per view and neutral inks for every party, recognizable without the wordmark. Usefulness 5 (unchanged): every form has its entry, tokens, kit command and table, and the guide now ends at the three charts in full. Evidence honesty 5 (unchanged): a grade line and a source line in H04’s order on every chart, with S96’s release now named. Accessibility 4 (unchanged): tables and alt on every chart by the owners’ checks.
+
+### Second pass asks
+
+**RS-1. Complete the tracker alts so their words are heard once.** Kind: Must, second pass (wording). Items: C11-T. Add each plate's title and the key's heading to its alt ("Illustrative. Where three ballot measures stand." at the head, "What the marks mean:" before the key's marks) on `s-11-10-correct`, `s-11-11-correct`, `s-11-12-correct` and the three failure plates, so `plate()` hides their fragments under D3-2153's test; rerun the build and confirm the six leave the build report's `open_stages`. Owner: tracker designer (`apply_systems_ch11.py`), with the editor for the words and the engineer for the check.
+
+**RS-2. S91's title.** Kind: Should, second pass (wording). Items: R4-I. 33 words; for example "Only district judges, of the three kinds who hear federal trial cases, serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands." (26). Owner: editor, with the infographics maker.
+
+**RS-3. S94 at a 1024 px page.** Kind: Should, second pass (craft). Items: R4-I. Show the desk year from a 480 px column, not 600, so a laptop reader sees the year drawn to the column; the second engineer declined it as a new breakpoint, and I ask for it because 1024 px is a common laptop width. Owner: engineer (`kit.css`, `forms/calendar.js`).
+
+**RS-4. S90's "row 5".** Kind: Should, second pass (wording). Items: R4-I. "Includes COVID-19 relief funds, $39.2 billion, as note 2 says." Owner: infographics maker, research lead.
+
+**RS-5. The entries' related rules.** Kind: Should, second pass (wording). Items: R5-G. Add Rule 14.142 to 14.32's and 14.74's related rules, Rule 15.22 to 14.96's and 14.135's, and Rules 11.10, 11.11 and 15.23 to 14.88's (RP-3's second half). Owner: editor, through each entry's generator.
+
+**RS-6. Loop R10's first step.** Kind: Should, second pass (wording). Items: R5-2. "Start at seats with little electoral competition, and suppose they rise." then "Seats with little electoral competition rise, so ..." prints the start twice; let the first line carry the supposition and the step line begin "So how often the primary decides the winner goes up." Owner: complex examples maker, editor.
+
+**RS-7. One order for the stepper.** Kind: Should, second pass (craft), with the accessibility lead's yes on focus order. Items: C15-I. Set 15.19 in 14.143's order (status line, controls, then the list), as the component engineer's request 2 describes; the sticky drawing column waits for the shell. Owner: systems designer.
+
+### Second look, rescore
+
+- **390 px, Newsprint 1x (19:24 to 19:33 UTC).** 15.22's stage 10 reads as two sentences on a phone, with the square, and the bare stage numbers hold their line. S12's phone tiles take the gray edge and end the key with "United States 5.9". 14.144 now adds "Each family's effects, the three reforms together" on a phone, one row per reform under each family (CR-S3), so a phone reader can compare without scrolling between cards; the plate is 7,553 px tall at 390 px, and the pips sit 40 px right of their codes' left edge, a looseness the craft reader may want squared. 15.20's two choices share one width and the chosen pills carry their keyline. No score moves.
+
+### To ready
+
+- **C11-T.** Land RS-1 (the six tracker alts completed so their pictures are hidden); accessibility then reaches 4. Second pass, wording; no call for Dustin.
+
+### Judgments
+
+- CD-M1 closed: with R-38 chosen every mark on Loop R8 draws at the loop's weight, and the status line and card say nothing turns red.
+- CD-M2 closed: stage 10's stop line and its next line read as sentences at 1440 px; the generator now checks every stop line on chapter 15's plates.
+- CD-M3 narrowed, not closed: call 11 hides 95 picture stages whose alts carry every word and leaves 321 open (D3-2153); the six tracker plates are among the open ones (RS-1).
+- DD-R2 and DD-R5 landed together on 15.20 and 14.144 (call 15): one width, a fixed check slot, a keyline inside the chosen pill's ring. Rule 15.16, approved at board 2, keeps its unkeylined ring, so board 3 shows the difference.
+- SG-6 not adopted (call 16): I agree; the tier word stays under the name.
+- The selection guide's questions stay lists (call 17): accepted, with each list named by its question.
+- DF-2 closed by D3-2155: route stages carry bare numbers, and the square means a path that stops.
+- NB-M2 closed: S95 signs off at 96 px on both crops and passes the feed test.
+
+### Questions for Dustin
+
+None that block. Board 3 already carries the trackers' step names and end words, the effect pips on 14.144 (call 2), the chooser change against Rule 15.16's approved drawing, and the stage marks beside chapter 11's square.
+
+### What board 3 must show
+
+1. The trackers' twelve step names and end words, with "Affirmed" glossed, "Affirmed by an equally divided Court", certiorari glossed, a rejected measure's square at step 6 and the denied petition's square at step 5.
+2. Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, 14.144 in all three states, with the effect pips (call 2).
+3. Rule 15.22 with its stage numbers and the route's square beside chapter 11's stop square (D3-2155), and Rule 15.23's mapping.
+4. Rule 15.20 and 14.144's chooser after call 15, beside Rule 15.16's approved red ring.
+5. "Choose a chart" whole with its road to the three charts in full, and the palette plate's new table.
+6. S95 with its sign-off at true size; S12's phone tiles with the context-ink edge; S14's label moved by its spec key.
+7. The changed approved drawings listed by the owners, the masthead and focus offsets (call 10), and the weight: page 12,174,060 bytes, projection 15,144,130 of 15,500,000, chapter 15 at 569,930 of 600,000, chapter 11 at 505,397 of 550,000.
+
+### Distinctiveness test
+
+- S96, 14.144 and the trackers with the wordmark covered still read as Oath & Action: evidence chip, sentence title, one ink, one red job.
+- 14.144 in R-38's state now keeps the house's red discipline: nothing heavier where nothing acts.
+
+### Risks for Dustin
+
+- Rule 15.22's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) are named in words as tax laws with their dates, with no stated rule for choosing them; both passed with one party's votes. Stage 19 and Rule 15.24's R-28 now state their rules. I recommend one line for the two laws ("the most recent sunset and the most recent repeal we found in force on ..."), second pass or board 3.
+- The palette plate is 10,666 px tall at 1440 px and chapter 14's two front plates weigh 235,700 bytes together. They are worth it, and the chapter now leans on the local contents.
+- Chapter 05 prints Pillar Red on Newsprint at 2.96 to 1 and the palette plate at 2.95 (D3-1929's rounding); one measure, two figures, in an approved chapter. Board 3 should settle it.
 
 ## Tested
 
@@ -249,10 +364,25 @@ Status: in progress, 19:20 UTC. Scores below are written as I read; pending chec
 - Read the shared Charcoal 1x captures at 1440 px for S96, 14.144, S95, 11.10 and the round 4 and 5 plates that had landed (17:37 UTC).
 - Took my own 2x captures at 1440 px with `scratchpad/c07/review/creative-director/cd2x.cjs` (Playwright Chromium, device scale factor 2, masthead hidden, grounds set as the shared `cap.cjs` sets them), one browser opened at 17:27 UTC after `browsers.sh` printed "OK to open one" and closed when the batch ended at 17:41 UTC (44 pictures, 0 errors); these pictures are mine, in `scratchpad/c07/review/creative-director/cap2x/`. Read at 2x: S96's chart and key, 14.144 in the R-38 state, the selection guide's structure and maps rows, S93's callouts, 11.10's tracker.
 
+### Tested, rescore
+
+- Read the fix brief's calls 1 to 18 and every owner's "Fixed" and "Not fixed" for my codes (19:06 to 19:10 UTC).
+- Took my own captures of the joined build with `scratchpad/c07/review/creative-director/cdre.cjs` (Playwright Chromium, masthead hidden, grounds set as `cap.cjs` sets them), one browser opened at 19:06 UTC after `browsers.sh` printed "OK to open one"; these pictures are mine.
+- Read at Newsprint 1x at 1440 px: 14.144 whole and with R-30 and R-38 chosen, 15.20 with R-03 and R-04, 14.143, 15.19, 15.22, 15.23, 15.24, 15.25, S86, S87, S88, S91, S93, S94, S95, S96, 14.142's failure, 11.10, 11.11, the ballot step table, the palette plate's sequential and diverging tables, and the selection guide's last screen.
+- By script on the joined page: the palette plate's printed ratios (no 10.47, 7.81, 4.61 or 4.92 left); 15.25's "2 conflicts"; the guide's 19 links to Rules 14.142 to 14.144 and its "Three charts in full"; 15.22's stage 19 and law names; 15.24's stated rule for R-28; Rules 11.10 and 11.11's new words; the six tracker plates' alts against their words (missing only titles and the key heading); the build report's open picture stages and weights.
+- Read S92's and S87, S88, S91, S94's titles and table words from the specs, and 14.142's failure caption from its entry.
+
 ## Not tested
 
 - Keyboard, accessibility tree, axe, forced colors, reduced motion, print, scripts off and 200 percent text: I ran none; the accessibility reader's measures govern.
 - Grayscale by the shared run, and 320, 360, 768 and 1024 px: the shared run made none (the main session's message at 17:25 UTC), and I took none at those widths.
 - 2x at 390 px; Charcoal at 390 px; chapter 15's Rules 15.1 to 15.25 on Charcoal (still landing when I wrote).
 - S14 at 480 to 720 px; S16 and S78 at phone width; the CSV and PNG exports; S95's exported PNG at true pixels.
+- Screen readers, Safari and Firefox (DR-279).
+
+### Not tested, rescore
+
+- Keyboard, accessibility tree, axe, forced colors, reduced motion, print, scripts off and 200 percent text on the joined build; the masthead focus fix (call 10) and DR-278 (c) and (d).
+- 320, 360, 768 and 1024 px; Charcoal at 390 px.
+- S95's exported PNGs (the round 4 maker ran the feed test, not I); the kit's CSV exports.
 - Screen readers, Safari and Firefox (DR-279).

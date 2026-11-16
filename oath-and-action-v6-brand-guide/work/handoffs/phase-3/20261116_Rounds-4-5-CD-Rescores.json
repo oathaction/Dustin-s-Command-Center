@@ -1,0 +1,968 @@
+{
+ "title": "Creative director’s rescores for Phase 3, rounds 4 and 5, after the review fix pass: round 4’s 13 forms and S12, the selection guide, the palette specification, Rules 14.142 to 14.144, chapter 14’s round 5 words, chapter 15 (15.19 to 15.25 and whole), chapter 11’s trackers, and chapter 14 as a page",
+ "date": "2026-11-16",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "The joined build of the fix pass, strict build of commit `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings) and its `guide-Build-Report.json`, read in place. The fix brief (calls 1 to 18) and every owner's \"Fixed\" and \"Not fixed\" in `20261116_Fix-Pass-*-Notes.md`. My own captures of the joined build (`scratchpad/c07/review/creative-director/rescore/`), taken in one browser from 19:06 UTC under the load rule: 32 plates at Newsprint 1x at 1440 and 390 px and Charcoal 1x at 1440 px, 13 at Newsprint and Charcoal 2x at 1440 px, three under the page's grayscale filter at 2x, with 14.143 after one and five presses, 14.144 with R-30 and R-38 chosen, and 15.20 with R-04. Words and markup read from the page by script.\n\nStatus: scores written 19:24 UTC from the joined build at Newsprint 1x at 1440 px and the four states; the 390 px, Charcoal, 2x and grayscale reads follow under \"Second look, rescore\" and moved nothing unless that section says so.",
+ "first_scores_file": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Scores.json",
+ "review": "work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md, section \"Rescore\"",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "R4-A",
+   "name": "Maker A: S85 to S88 with entries 14.79 to 14.82, and sketches 14.83 and 14.84",
+   "anchor": "#group-14-9; work/build/chart-kit/specs/s85.json to s88.json; work/build/guide/entries/14-079.json to 14-084.json; specimens s-14-83-sketch, s-14-84-sketch",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S86's key now nests its three rings on one baseline beside \"Circle area shows the count\" and reads as a key, and S87's frame and S88's true-size areas hold at 1x, though the nested key still takes 210 px of height under a 200 px drawing.",
+    "clarity": "S87 and S88 now each title one finding (\"In 2025, 23.8 million people had both private and public health coverage.\"), and S85's notes say in view why the Civic Line drawing sits beside the measure (RP-17).",
+    "brand_fidelity": "no red, one neutral ink set, CL-050 as DR-266 set it.",
+    "usefulness": "the entries say what each form needs and point the Venn and the Euler at each other.",
+    "evidence_honesty": "the overlap is called Oath & Action's arithmetic with approximate margins on both plates.",
+    "accessibility": "each chart keeps its table and alt."
+   },
+   "changed": [
+    "clarity"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CD-S2",
+    "CD-S3",
+    "RP-17"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CD-S2",
+    "CD-S3",
+    "RP-17"
+   ]
+  },
+  {
+   "key": "R4-I",
+   "name": "Infographics maker: S89 to S95 with entries 14.135 to 14.141",
+   "anchor": "#group-14-17; work/build/chart-kit/specs/s89.json to s95.json; work/build/guide/entries/14-135.json to 14-141.json",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 3,
+    "usefulness": 4,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S94's year now draws at the column's width with day ticks at 1, 15 and 31 and its key on two lines, and S93's callouts stand apart from the parts list across a ruled gutter; at a 1024 px page the calendar still falls back to its 224 px year (RS-3).",
+    "clarity": "S94's title is one finding in 20 words, though S91's grew to 33 words (RS-2).",
+    "brand_fidelity": "S95's two crops sign off with the 48 px lockmark master at exactly 96 px, its one red square the only red on the card, as DR-211 sets, and the feed test passes on all four exports.",
+    "usefulness": "S95 shows both crops with true sizes and the words to post, and entry 14.141 now names the sign-off.",
+    "evidence_honesty": "S92's table reads \"Only if the agency says no\" beside the appeal and \"Only if the agency says no or misses its time limits\" beside the lawsuit, though S90's note still points to a \"row 5\" the table leaves out (RS-4).",
+    "accessibility": "cards are live text and FEMA is spelled out at first use."
+   },
+   "changed": [
+    "craft",
+    "brand_fidelity",
+    "evidence_honesty"
+   ],
+   "first_must_fix": [
+    "NB-M2",
+    "RP-2"
+   ],
+   "first_should_fix": [
+    "CD-S1",
+    "CD-S4",
+    "RP-18",
+    "RP-12",
+    "CR-S13"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "RS-2",
+    "RS-3",
+    "RS-4"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 3,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {
+    "CD-S1": "partly: the desk year shows from a 600 px column only (RS-3)"
+   },
+   "first_items_landed": [
+    "NB-M2",
+    "RP-2",
+    "CD-S4",
+    "RP-18",
+    "RP-12",
+    "CR-S13"
+   ]
+  },
+  {
+   "key": "R4-S",
+   "name": "S12's stacked tile and the phone codes on S12, S16 and S78",
+   "anchor": "work/build/chart-kit/specs/s12.json, s16.json, s78.json",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the stacked tile holds at a desk, and the phone tiles now take the context ink's edge, as the palette plate sets for a magnitude step.",
+    "clarity": "the phone key now ends \"United States 5.9\", so the note beside it holds.",
+    "brand_fidelity": "one neutral ink, parties named.",
+    "usefulness": "largest and smallest shifts listed under both drawings.",
+    "evidence_honesty": "fused lines and rounding stated.",
+    "accessibility": "all 51 codes on the phone drawing."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CR-S20"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CR-S20"
+   ]
+  },
+  {
+   "key": "R5-G",
+   "name": "The selection guide, “Choose a chart”",
+   "anchor": "work/build/guide/specimens/s-14-selection-guide.html; selection_guide_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 3
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "one 2 px drawing system; the map symbols stay filled silhouettes, set aside and accepted by the data lead.",
+    "clarity": "sixteen questions in the chapter's order, tier key first.",
+    "brand_fidelity": "neutral inks only, avoid forms struck.",
+    "usefulness": "the guide now ends with \"Three charts in full\", a link to each of Rules 14.142 to 14.144 in group 18's words, and a line sending a reader with a public process to Rule 15.22.",
+    "evidence_honesty": "tiers say truly which forms have finished examples.",
+    "accessibility": "call 17 keeps the questions as lists, because a plate holds no heading in this guide's outline (D3-2074), and each list is named by its question, so list navigation reaches every question; I accept that as the equivalent, and the entries' related rules still do not point to group 18 (RS-5)."
+   },
+   "changed": [
+    "usefulness",
+    "accessibility"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "RP-3",
+    "RP-14"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "RS-5"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {
+    "RP-3": "partly: the guide's road landed; the entries' related rules did not (RS-5)",
+    "RP-14": "not adopted by call 17 (D3-2074); accepted"
+   },
+   "first_items_landed": []
+  },
+  {
+   "key": "R5-P",
+   "name": "The palette specification after Rule 14.5",
+   "anchor": "work/build/guide/specimens/s-14-palette-spec.html; work/build/scripts/phase-3/palette_spec_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "each row now sets the swatch, step and whole token on one line and each ground's facts one to a line in tabular figures, a reference a designer can scan, though the plate has grown to 10,666 px at 1440 px.",
+    "clarity": "each palette opens with its job.",
+    "brand_fidelity": "DR-236's order, pair B with no red, Prussian in words only.",
+    "usefulness": "token, role code, value and contrast on every approved ground.",
+    "evidence_honesty": "every printed ratio is now floored from the two hex values (10.46, 7.80, 4.60 and 4.91 to 1 where it printed 10.47, 7.81, 4.61 and 4.92), as the plate says.",
+    "accessibility": "every value prints as text."
+   },
+   "changed": [
+    "evidence_honesty"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CD-S12",
+    "ST-S4",
+    "CR-S11"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CD-S12",
+    "ST-S4",
+    "CR-S11"
+   ]
+  },
+  {
+   "key": "R5-1",
+   "name": "Rule 14.142 with S96 and its failure plate",
+   "anchor": "#rule-14-142; specs/s96.json; entries/14-142.json; s-14-s96, s-14-142-failure",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "band, leaders and hatch land cleanly, and the failure plate now differs from S96 by the band alone.",
+    "clarity": "the failure caption names one fault, the note says what a 90 percent band means across 57 months (\"nine times in ten\", \"a few columns could pass it by chance\"), and the measure line names \"the jobs chart of Rule 14.32\".",
+    "brand_fidelity": "the named drops in the text's ink, red never on a loss.",
+    "usefulness": "the rule says what to draw, with which tokens, and the kit draws the band from the sidecar.",
+    "evidence_honesty": "the source line now names the release, \"the Employment Situation for September 2026, released October 2, 2026\".",
+    "accessibility": "phone note and table."
+   },
+   "changed": [
+    "clarity"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "ST-M1",
+    "RP-10",
+    "RP-20",
+    "DF-4"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "ST-M1",
+    "RP-10",
+    "RP-20",
+    "DF-4"
+   ]
+  },
+  {
+   "key": "R5-2",
+   "name": "Rule 14.143 with Loops B4 and R10 on Rule 18.22's stepper",
+   "anchor": "#rule-14-143; entries/14-143.json; s-14-143-correct, s-14-143-failure",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 3,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "two drawings on one baseline, a key for ticks and dashes, the current step marked.",
+    "clarity": "each step now says both ends in the direction the change runs (\"The quality of public services falls, so the risk of losing office rises.\"), and each loop says where it ends up, though Loop R10's first step prints its start twice in a row (RS-6).",
+    "brand_fidelity": "one ink, the shared variable filled, grades as chips, no red.",
+    "usefulness": "it shows how a builder joins two loops on Rule 18.22’s part with no second copy of the code.",
+    "evidence_honesty": "\"can\" holds from the plausible step on.",
+    "accessibility": "the still sequence prints in full and the status line names each step’s loop."
+   },
+   "changed": [
+    "clarity"
+   ],
+   "first_must_fix": [
+    "CE-M1"
+   ],
+   "first_should_fix": [
+    "RP-9"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "RS-6"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CE-M1",
+    "RP-9"
+   ]
+  },
+  {
+   "key": "R5-3",
+   "name": "Rule 14.144 with Reforms R-06, R-30 and R-38 on Rule 15.20's chooser",
+   "anchor": "#rule-14-144; entries/14-144.json; s-14-144-correct, s-14-144-failure; phase3_ch14_complex_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "with R-38 chosen every mark now draws at the loop's own weight, the three choices share one width with the check in a fixed slot, the chosen pill's red ring carries its keyline, and the chips print \"R-06\" with no air around the hyphen.",
+    "clarity": "the cards hold every field in one order, the ticks have their key, and \"Kind of change, the atlas's band\" replaces the bare \"Band\".",
+    "brand_fidelity": "one red job, effect pips drawn as Rule 13.5 draws them with no total, so one mark means one thing across chapters 13, 14 and 15.",
+    "usefulness": "the plate shows how to compare reforms side by side with no total, and the rule now agrees with Rule 15.20.",
+    "evidence_honesty": "the drawing now agrees with \"Targets on Loop R8: None\" in all three states, and Variable EC9 sits in one layer on both cards.",
+    "accessibility": "the status line keeps each card's reform in a hidden prefix."
+   },
+   "changed": [
+    "craft",
+    "brand_fidelity",
+    "evidence_honesty"
+   ],
+   "first_must_fix": [
+    "CD-M1"
+   ],
+   "first_should_fix": [
+    "CD-S5",
+    "CD-S10",
+    "RP-7",
+    "RP-8",
+    "RP-9",
+    "CR-S17"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CD-M1",
+    "CD-S5",
+    "CD-S10",
+    "RP-7",
+    "RP-8",
+    "RP-9",
+    "CR-S17"
+   ]
+  },
+  {
+   "key": "R5-W",
+   "name": "Chapter 14's intro, opener caption, Rule 14.1 and group lines 17 and 18",
+   "anchor": "work/build/guide/entries/14-chapter.json, 14-001.json; phase3_ch14_rules_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the intro, group lines and Rule 14.1 sit in the chapter’s anatomy with no stray marks.",
+    "clarity": "Rule 14.1 names and links \"Choose a chart\", group 17 names all seven forms, and the intro says \"a fixed copy of its source's data\" for \"frozen data\".",
+    "brand_fidelity": "plain, spoken words in chapter 02’s voice, and no studio words left in the intro.",
+    "usefulness": "Rule 14.1’s builders line gives the spec field and the kit command.",
+    "evidence_honesty": "group 18 now says \"three reforms whose records name one housing loop\".",
+    "accessibility": "plain text, and the new link to the guide is named by its words."
+   },
+   "changed": [
+    "clarity"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CD-S8"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CD-S8"
+   ]
+  },
+  {
+   "key": "C15-I",
+   "name": "Rules 15.19 to 15.21",
+   "anchor": "#rule-15-19 to #rule-15-21; work/build/guide/chapters/15-systems-graphics.json; s-15-19-*, s-15-20-*, s-15-21-*",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 3,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the chooser's two choices share one width and the chosen pills carry their keyline, though 15.19 still sets its controls after the list where 14.143 sets them before it (RS-7).",
+    "clarity": "\"Ready. Start at ... and suppose it rises\" still tells a reader what to do first.",
+    "brand_fidelity": "red marks only a reform’s targets, now with its keyline.",
+    "usefulness": "Rule 15.20 now reads \"Where a reform has a target off the drawing, name it in words with its layer, as Rule 14.144 does, and say so when nothing on the drawing turns red\", so the two rules agree.",
+    "evidence_honesty": "15.21’s slider stays a still picture whose own line says the 70 is made up, and \"None in the model\" stands under Strength.",
+    "accessibility": "the shared parts keep the accessibility lead’s keyboard and tree checks, and the keyline lifts the ring’s 2.95 to 1 edge."
+   },
+   "changed": [
+    "usefulness"
+   ],
+   "first_must_fix": [
+    "NB-M1"
+   ],
+   "first_should_fix": [
+    "CD-S5",
+    "CR-S17",
+    "CR-S4"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "RS-7"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {
+    "CR-S4": "partly: 15.19 keeps its own order (RS-7)"
+   },
+   "first_items_landed": [
+    "NB-M1",
+    "CD-S5",
+    "CR-S17"
+   ]
+  },
+  {
+   "key": "C15-W",
+   "name": "Rules 15.22 to 15.25",
+   "anchor": "#rule-15-22 to #rule-15-25; s-15-22-* to s-15-25-*; phase3_ch15_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 3,
+    "usefulness": 5,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "stage 10's lines read as sentences, the stage numbers stand bare on their lines with no shape, and 15.23's five tables start their stage column at one offset with \"Stage N:\" in a fixed slot.",
+    "clarity": "15.23 lists cloture and the other paths under both chambers' steps and says \"stages\" throughout.",
+    "brand_fidelity": "the filled square now means only \"a path that stops there\", as chapter 11's stop square does (D3-2155).",
+    "usefulness": "twenty stages each with its source and date, eleven routes with their official sources, and the reconciliation’s counts on the plate.",
+    "evidence_honesty": "\"Signed\" left the line every enacted bill passes, the majority reads \"of the members who vote\", stage 7 names amendments traded and the conference, the records clock starts on receipt, and stage 19 states its rule with its scope and date (\"in its opinions through November 9, 2026\").",
+    "accessibility": "live text throughout, with the stop lines read as one sentence each."
+   },
+   "changed": [
+    "craft",
+    "clarity",
+    "brand_fidelity",
+    "evidence_honesty"
+   ],
+   "first_must_fix": [
+    "CD-M2",
+    "CE-M2",
+    "CE-M3",
+    "CE-M4",
+    "ST-M2",
+    "DF-2"
+   ],
+   "first_should_fix": [
+    "CD-S6",
+    "CD-S7",
+    "RP-4",
+    "RP-5",
+    "RP-11",
+    "RP-13",
+    "RP-19",
+    "DF-5"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CD-M2",
+    "CE-M2",
+    "CE-M3",
+    "CE-M4",
+    "ST-M2",
+    "DF-2",
+    "CD-S6",
+    "CD-S7",
+    "RP-4",
+    "RP-5",
+    "RP-11",
+    "RP-13",
+    "RP-19",
+    "DF-5"
+   ]
+  },
+  {
+   "key": "C15",
+   "name": "Chapter 15 whole as a chapter",
+   "anchor": "#systems-graphics; work/build/guide/chapters/15-systems-graphics.json",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "one plate system across 25 rules.",
+    "clarity": "six group lines lead from reading a mark to routes and earlier drawings, and step against stage now holds in every block.",
+    "brand_fidelity": "one mark keeps one meaning across chapters 11 and 15.",
+    "usefulness": "a builder can draw a loop, a reform, a route or a tracker map from these rules alone.",
+    "evidence_honesty": "the key workflow plate now teaches the law as written.",
+    "accessibility": "every drawing has its words beside it as live text."
+   },
+   "changed": [
+    "brand_fidelity",
+    "evidence_honesty"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": []
+  },
+  {
+   "key": "C11-T",
+   "name": "Rules 11.10 and 11.11 with their step tables, Rule 11.12 and the bill's step table",
+   "anchor": "#icons group 2; s-11-10-*, s-11-11-*, s-11-12-*, s-11-ballot-steps, s-11-court-steps, s-11-steps; apply_systems_ch11.py, apply_systems_ch11_ui.py",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 3,
+    "evidence_honesty": 4,
+    "accessibility": 3
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 3
+   },
+   "reasons": {
+    "craft": "the trackers and step tables hold their family at 360 px.",
+    "clarity": "certiorari is glossed at step 5 and \"Rejected by voters\" has its mark in words.",
+    "brand_fidelity": "invented subjects tied to no party, each plate labeled Illustrative.",
+    "usefulness": "a rejected measure ends on a square at step 6, as a vetoed bill does, and a case ends on a square at the step under way, so a builder no longer guesses.",
+    "evidence_honesty": "Measure 99013 now says \"fewer than 95 percent\", and the ballot table cites Amendment Article LXXIV where LXXIV replaced the text.",
+    "accessibility": "the build report lists all six tracker plates among the 321 open stages, and by my script the alts leave out only the plates' titles and the key's heading, so the words are still heard after the alt (RS-1)."
+   },
+   "changed": [
+    "usefulness",
+    "evidence_honesty"
+   ],
+   "first_must_fix": [
+    "CD-M3"
+   ],
+   "first_should_fix": [
+    "CD-S11",
+    "PR-S10",
+    "ST-S3",
+    "RP-15",
+    "RP-16"
+   ],
+   "must_fix": [
+    "RS-1"
+   ],
+   "should_fix": [],
+   "must_fix_count": 1,
+   "should_fix_count": 0,
+   "ready": false,
+   "ships": false,
+   "to_ready": "Land RS-1 (the six tracker alts completed so their pictures are hidden); accessibility then reaches 4. Second pass, wording; no call for Dustin.",
+   "first_items_open": {
+    "CD-M3": "narrowed by D3-2153; the tracker plates stay open (RS-1)"
+   },
+   "first_items_landed": [
+    "CD-S11",
+    "PR-S10",
+    "ST-S3",
+    "RP-15",
+    "RP-16"
+   ]
+  },
+  {
+   "key": "C14",
+   "name": "Chapter 14 as a page at 144 rules with its front door",
+   "anchor": "#data-visualization",
+   "stage": "Phase 3, rounds 4 and 5, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the front door, palette plate and three charts lift the chapter, and S94 and S86 no longer stop a craft critic.",
+    "clarity": "\"Choose a chart\" answers the newcomer test from the chapter’s first screen and Rule 14.1 now names it.",
+    "brand_fidelity": "one working red per view and neutral inks for every party, recognizable without the wordmark.",
+    "usefulness": "every form has its entry, tokens, kit command and table, and the guide now ends at the three charts in full.",
+    "evidence_honesty": "a grade line and a source line in H04’s order on every chart, with S96’s release now named.",
+    "accessibility": "tables and alt on every chart by the owners’ checks."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": []
+  }
+ ],
+ "totals": {
+  "must_fix": 1,
+  "should_fix": 6,
+  "under_4": [
+   "C11-T.accessibility"
+  ],
+  "ready": [
+   "R4-A",
+   "R4-I",
+   "R4-S",
+   "R5-G",
+   "R5-P",
+   "R5-1",
+   "R5-2",
+   "R5-3",
+   "R5-W",
+   "C15-I",
+   "C15-W",
+   "C15",
+   "C14"
+  ],
+  "not_ready": [
+   "C11-T"
+  ],
+  "lowest_score_by_item": {
+   "R4-A": 4,
+   "R4-I": 4,
+   "R4-S": 4,
+   "R5-G": 4,
+   "R5-P": 4,
+   "R5-1": 4,
+   "R5-2": 4,
+   "R5-3": 4,
+   "R5-W": 4,
+   "C15-I": 4,
+   "C15-W": 4,
+   "C15": 4,
+   "C11-T": 3,
+   "C14": 4
+  }
+ },
+ "must_fix": {
+  "RS-1": {
+   "title": "Complete the tracker alts so their words are heard once.",
+   "what_and_fix": "Kind: Must, second pass (wording). Items: C11-T. Add each plate's title and the key's heading to its alt (\"Illustrative. Where three ballot measures stand.\" at the head, \"What the marks mean:\" before the key's marks) on `s-11-10-correct`, `s-11-11-correct`, `s-11-12-correct` and the three failure plates, so `plate()` hides their fragments under D3-2153's test; rerun the build and confirm the six leave the build report's `open_stages`. Owner: tracker designer (`apply_systems_ch11.py`), with the editor for the words and the engineer for the check.",
+   "owner": "tracker designer (`apply_systems_ch11.py`), with the editor for the words and the engineer for the check",
+   "kind": "Must, second pass (wording)",
+   "items": [
+    "C11-T"
+   ]
+  }
+ },
+ "should_fix": {
+  "RS-2": {
+   "title": "S91's title.",
+   "what_and_fix": "Kind: Should, second pass (wording). Items: R4-I. 33 words; for example \"Only district judges, of the three kinds who hear federal trial cases, serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.\" (26). Owner: editor, with the infographics maker.",
+   "owner": "editor, with the infographics maker",
+   "kind": "Should, second pass (wording)",
+   "items": [
+    "R4-I"
+   ]
+  },
+  "RS-3": {
+   "title": "S94 at a 1024 px page.",
+   "what_and_fix": "Kind: Should, second pass (craft). Items: R4-I. Show the desk year from a 480 px column, not 600, so a laptop reader sees the year drawn to the column; the second engineer declined it as a new breakpoint, and I ask for it because 1024 px is a common laptop width. Owner: engineer (`kit.css`, `forms/calendar.js`).",
+   "owner": "engineer (`kit.css`, `forms/calendar.js`)",
+   "kind": "Should, second pass (craft)",
+   "items": [
+    "R4-I"
+   ]
+  },
+  "RS-4": {
+   "title": "S90's \"row 5\".",
+   "what_and_fix": "Kind: Should, second pass (wording). Items: R4-I. \"Includes COVID-19 relief funds, $39.2 billion, as note 2 says.\" Owner: infographics maker, research lead.",
+   "owner": "infographics maker, research lead",
+   "kind": "Should, second pass (wording)",
+   "items": [
+    "R4-I"
+   ]
+  },
+  "RS-5": {
+   "title": "The entries' related rules.",
+   "what_and_fix": "Kind: Should, second pass (wording). Items: R5-G. Add Rule 14.142 to 14.32's and 14.74's related rules, Rule 15.22 to 14.96's and 14.135's, and Rules 11.10, 11.11 and 15.23 to 14.88's (RP-3's second half). Owner: editor, through each entry's generator.",
+   "owner": "editor, through each entry's generator",
+   "kind": "Should, second pass (wording)",
+   "items": [
+    "R5-G"
+   ]
+  },
+  "RS-6": {
+   "title": "Loop R10's first step.",
+   "what_and_fix": "Kind: Should, second pass (wording). Items: R5-2. \"Start at seats with little electoral competition, and suppose they rise.\" then \"Seats with little electoral competition rise, so ...\" prints the start twice; let the first line carry the supposition and the step line begin \"So how often the primary decides the winner goes up.\" Owner: complex examples maker, editor.",
+   "owner": "complex examples maker, editor",
+   "kind": "Should, second pass (wording)",
+   "items": [
+    "R5-2"
+   ]
+  },
+  "RS-7": {
+   "title": "One order for the stepper.",
+   "what_and_fix": "Kind: Should, second pass (craft), with the accessibility lead's yes on focus order. Items: C15-I. Set 15.19 in 14.143's order (status line, controls, then the list), as the component engineer's request 2 describes; the sticky drawing column waits for the shell. Owner: systems designer.",
+   "owner": "systems designer",
+   "kind": "Should, second pass (craft), with the accessibility lead's yes on focus order",
+   "items": [
+    "C15-I"
+   ]
+  }
+ },
+ "judgments": [
+  "CD-M1 closed: with R-38 chosen every mark on Loop R8 draws at the loop's weight, and the status line and card say nothing turns red.",
+  "CD-M2 closed: stage 10's stop line and its next line read as sentences at 1440 px; the generator now checks every stop line on chapter 15's plates.",
+  "CD-M3 narrowed, not closed: call 11 hides 95 picture stages whose alts carry every word and leaves 321 open (D3-2153); the six tracker plates are among the open ones (RS-1).",
+  "DD-R2 and DD-R5 landed together on 15.20 and 14.144 (call 15): one width, a fixed check slot, a keyline inside the chosen pill's ring. Rule 15.16, approved at board 2, keeps its unkeylined ring, so board 3 shows the difference.",
+  "SG-6 not adopted (call 16): I agree; the tier word stays under the name.",
+  "The selection guide's questions stay lists (call 17): accepted, with each list named by its question.",
+  "DF-2 closed by D3-2155: route stages carry bare numbers, and the square means a path that stops.",
+  "NB-M2 closed: S95 signs off at 96 px on both crops and passes the feed test."
+ ],
+ "board_3": {
+  "ready": false,
+  "verdict": "Thirteen of the fourteen items now score 4 or more on every criterion. One stays under: C11-T, at 3 on accessibility, because call 11 was narrowed at 18:27 UTC (D3-2153) to hide a picture's words only where its alt carries every word, and the tracker plates' alts leave out their own titles and the key's heading (\"Where three ballot measures stand\", \"What the marks mean\"), so a screen reader still hears every tracker twice. That is a wording fix for DR-191's short second pass, not a call for Dustin. Every Must I named or adopted landed, and the fixes I checked hold at true size.",
+  "must_show": [
+   "The trackers' twelve step names and end words, with \"Affirmed\" glossed, \"Affirmed by an equally divided Court\", certiorari glossed, a rejected measure's square at step 6 and the denied petition's square at step 5.",
+   "Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, 14.144 in all three states, with the effect pips (call 2).",
+   "Rule 15.22 with its stage numbers and the route's square beside chapter 11's stop square (D3-2155), and Rule 15.23's mapping.",
+   "Rule 15.20 and 14.144's chooser after call 15, beside Rule 15.16's approved red ring.",
+   "\"Choose a chart\" whole with its road to the three charts in full, and the palette plate's new table.",
+   "S95 with its sign-off at true size; S12's phone tiles with the context-ink edge; S14's label moved by its spec key.",
+   "The changed approved drawings listed by the owners, the masthead and focus offsets (call 10), and the weight: page 12,174,060 bytes, projection 15,144,130 of 15,500,000, chapter 15 at 569,930 of 600,000, chapter 11 at 505,397 of 550,000."
+  ]
+ },
+ "distinctiveness_test": [
+  "S96, 14.144 and the trackers with the wordmark covered still read as Oath & Action: evidence chip, sentence title, one ink, one red job.",
+  "14.144 in R-38's state now keeps the house's red discipline: nothing heavier where nothing acts."
+ ],
+ "second_look": "",
+ "risks_for_dustin": [
+  "Rule 15.22's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) are named in words as tax laws with their dates, with no stated rule for choosing them; both passed with one party's votes. Stage 19 and Rule 15.24's R-28 now state their rules. I recommend one line for the two laws (\"the most recent sunset and the most recent repeal we found in force on ...\"), second pass or board 3.",
+  "The palette plate is 10,666 px tall at 1440 px and chapter 14's two front plates weigh 235,700 bytes together. They are worth it, and the chapter now leans on the local contents.",
+  "Chapter 05 prints Pillar Red on Newsprint at 2.96 to 1 and the palette plate at 2.95 (D3-1929's rounding); one measure, two figures, in an approved chapter. Board 3 should settle it."
+ ],
+ "questions_for_dustin": [],
+ "questions_note": "None that block. Board 3 already carries the trackers' step names and end words, the effect pips on 14.144 (call 2), the chooser change against Rule 15.16's approved drawing, and the stage marks beside chapter 11's square.",
+ "tested": [
+  "Read the fix brief's calls 1 to 18 and every owner's \"Fixed\" and \"Not fixed\" for my codes (19:06 to 19:10 UTC).",
+  "Took my own captures of the joined build with `scratchpad/c07/review/creative-director/cdre.cjs` (Playwright Chromium, masthead hidden, grounds set as `cap.cjs` sets them), one browser opened at 19:06 UTC after `browsers.sh` printed \"OK to open one\"; these pictures are mine.",
+  "Read at Newsprint 1x at 1440 px: 14.144 whole and with R-30 and R-38 chosen, 15.20 with R-03 and R-04, 14.143, 15.19, 15.22, 15.23, 15.24, 15.25, S86, S87, S88, S91, S93, S94, S95, S96, 14.142's failure, 11.10, 11.11, the ballot step table, the palette plate's sequential and diverging tables, and the selection guide's last screen.",
+  "By script on the joined page: the palette plate's printed ratios (no 10.47, 7.81, 4.61 or 4.92 left); 15.25's \"2 conflicts\"; the guide's 19 links to Rules 14.142 to 14.144 and its \"Three charts in full\"; 15.22's stage 19 and law names; 15.24's stated rule for R-28; Rules 11.10 and 11.11's new words; the six tracker plates' alts against their words (missing only titles and the key heading); the build report's open picture stages and weights.",
+  "Read S92's and S87, S88, S91, S94's titles and table words from the specs, and 14.142's failure caption from its entry."
+ ],
+ "not_tested": [
+  "Keyboard, accessibility tree, axe, forced colors, reduced motion, print, scripts off and 200 percent text on the joined build; the masthead focus fix (call 10) and DR-278 (c) and (d).",
+  "320, 360, 768 and 1024 px; Charcoal at 390 px.",
+  "S95's exported PNGs (the round 4 maker ran the feed test, not I); the kit's CSV exports.",
+  "Screen readers, Safari and Firefox (DR-279)."
+ ]
+}
