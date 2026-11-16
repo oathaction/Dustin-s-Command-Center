@@ -145,7 +145,7 @@ PALS = [
      "carry": "Where a step stands under 3 to 1 against the ground, its value prints on or beside it."},
     {"id": "categorical", "name": "Groups, four inks", "steps": 4, "code": "cat", "fill": "oa.chart.color.categorical.fill.group{n}",
      "label": "oa.chart.color.categorical.label.group{n}", "word": "Group",
-     "job": "Up to four named groups with no order. Charcoal, Verdigris, Prussian, then Stone with its hatch, always in that order. Each group carries its name on the chart, and each line ends on its own marker. Past four groups, split the chart into small multiples, or show one group in ink and the rest in gray. Never for parties: every party takes the one party ink, with its name on the mark (Rule 14.7).",
+     "job": "Up to four named groups with no order. Charcoal, Verdigris, Prussian, then Stone with its hatch, always in that order. Each group carries its name on the chart, and each line ends on its own marker. Past four groups, split the chart into small multiples, or show one group in ink and the rest in gray. Never for parties: every party takes the party ink, one neutral ink for all, with its name on the mark (Rule 14.7).",
      "carry": ""},
     {"id": "magnitude", "name": "Magnitude, Stone", "steps": 4, "code": "mag", "fill": "oa.chart.color.magnitude.fill.step{n}",
      "label": "oa.chart.color.magnitude.label.step{n}", "word": "Step",
@@ -373,12 +373,13 @@ def palette_block(p):
 # its value on both grounds and the word the rules use, then the one red with its keyline, its job and its never list.
 # The words are the engineer's drafts for the editor, from Rules 14.5 to 14.7 as the editor wrote them in this pass and the
 # tokens' own descriptions; every value and ratio is read from tokens.json.
-ROLE_JOB = ("Rule 05.7 gives every mark in a chart a role, and each role keeps its ink in every palette (Rule 14.5). The subject "
-            "is the series the title names, and the context is every other series. The one red, for the point the title names, "
-            "comes after these.")
+# the editor's read: Rule 05.7 sets the subject and the context, not every role, and the red's place is said plainly
+ROLE_JOB = ("Each mark in a chart plays a role, and each role keeps its ink whichever palette the chart uses (Rule 14.5). Rule "
+            "05.7 sets the two main roles: the subject, the series the title names, and the context, every other series. The one "
+            "red, for the point the title names, has its own section below.")
 ROLES = [
     {"id": "subject", "word": "Subject ink", "token": "oa.chart.color.subject", "cls": "oac-f-subject", "kind": "label",
-     "job": "The series the title names and its labels, in the text’s ink: 3 px lines and 6.5 px dots."},
+     "job": "The series the title names and its labels, in the text’s ink, drawn as 3 px lines and 6.5 px dots."},
     {"id": "context", "word": "Context ink", "token": "oa.chart.color.context", "cls": "oac-f-context", "kind": "fill",
      "job": "Every other series, in gray at 2 px, so the subject reads first. A leader from a note to its mark takes it at 1 px."},
     {"id": "light-fill", "word": "Light fill", "token": "oa.chart.color.lightFill", "cls": "oac-f-light-fill", "kind": "fill",
@@ -387,7 +388,7 @@ ROLES = [
     {"id": "track", "word": "Track gray", "token": "oa.chart.color.track", "cls": "oac-f-track", "kind": "fill",
      "job": "The whole a share sits in, drawn behind the share."},
     {"id": "party", "word": "Party ink", "token": "oa.chart.color.party.mark", "cls": "oac-f-party", "kind": "label",
-     "job": "Every mark that stands for a party’s lead, vote or share: one neutral ink for every party, with the party’s name on the mark (Rule 14.7)."},
+     "job": "One neutral ink for every party, on each mark that stands for a party’s lead, vote or share, with the party’s name on the mark (Rule 14.7)."},
 ]
 RED_JOB = ("Rule 05.3 gives each view one working red. In a chart it goes to the point, bar or line the title names, with its own "
            "label beside it (Rule 14.6). On Newsprint the red measures {np}, under the 3 to 1 a mark needs, so it takes a 1 px "
