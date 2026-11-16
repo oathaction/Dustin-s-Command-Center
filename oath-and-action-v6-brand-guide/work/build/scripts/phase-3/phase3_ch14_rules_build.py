@@ -43,6 +43,28 @@ TOKENS = ROOT / "work/build/tokens/tokens.json"
 WRITTEN = "November 12, 2026"
 MINUS = "−"
 BASIS = "Design judgment, from the chart system our founder and editor approved in November 2026"
+# DF-12 (the fix pass after the review of rounds 4 and 5): each rule for every chart prints its own Basis line, as every
+# rule in chapters 01 onward does. The chapter's basis above still prints once after the intro for the 127 form entries
+# (D3-556); phase3_ch14_build.py drops a rule's basis only where it repeats the chapter's, so each line here names the
+# rule's own standard or approval: DR-62 (the coverage plan), DR-52 (the chart system, "Bars always start here"), DR-234
+# and DR-236 (the group inks and the data palettes), DR-64 (ranking only past the margin; a phone drawing that changes
+# form), DR-235 (the chart kit), and the approved rules each one cites. Rule 14.13 passes its own.
+RULE_BASIS = {
+    "14.1": "Design judgment, from the coverage plan our founder and editor approved in November 2026",
+    "14.2": "Rules 13.1, 13.2, 13.6 and 13.7, and chapter 02, house rule H08; the order of the parts is design judgment",
+    "14.3": "Rule 12.6, and WCAG 2.2, success criterion 1.4.1, Use of Color",
+    "14.4": "Design judgment, from the chart system our founder and editor approved in November 2026, whose bars always "
+            "start at zero",
+    "14.5": "Design judgment, with the data palettes and the group order our founder and editor approved in November 2026",
+    "14.6": "Rules 05.1, 05.3, 05.5 and 05.7; the mark the title names is design judgment",
+    "14.7": "Rules 01.1 and 01.2, and chapter 02, house rule H10",
+    "14.8": "Design judgment, approved by our founder and editor in November 2026",
+    "14.9": "Rule 13.5, and design judgment, approved by our founder and editor in November 2026",
+    "14.10": "Chapter 02, house rule H09, and Rule 13.7",
+    "14.11": "Rule 13.7, and design judgment",
+    "14.12": "Rule 06.3, and design judgment, approved by our founder and editor in November 2026",
+    "14.14": "Design judgment, with the chart kit our founder and editor approved in November 2026; Rule 18.14",
+}
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
           "November", "December"]
 
@@ -471,7 +493,10 @@ def ex(example, domain, states=(), level="federal", where=""):
     return {"example": example, "domain": domain, "states": list(states), "level": level, "where": where}
 
 
-def entry(rid, title, rule, why, specs, related, builders, correct, failure, examples, tokens=(), basis=BASIS):
+def entry(rid, title, rule, why, specs, related, builders, correct, failure, examples, tokens=(), basis=None):
+    basis = basis or RULE_BASIS[rid]
+    # DF-12: a rule's basis that repeats the chapter's would be dropped by the chapter build, and the rule would print none
+    need(basis.rstrip(".").lower() != BASIS.lower(), f"Rule {rid}'s basis repeats the chapter's, so it would not print (DF-12)")
     return {"id": rid, "title": title, "rule": rule, "use_when": None, "use_instead": [], "why": {"text": why, "basis": basis},
             "specimen": None, "tier": None, "tokens": list(tokens), "related": related, "builders": builders,
             "specs": [dict(zip(("label", "value", "token"), s)) if len(s) == 3 else dict(zip(("label", "value"), s)) for s in specs],
@@ -1633,7 +1658,7 @@ GROUP_LINES = {
     # entries as they land
     18: ("Each chart here puts several of the chapter’s forms and rules together on one subject, with its table and its "
          "files. They show the monthly change in payroll jobs with the survey’s margin of error, two loops from our systems "
-         "atlas that share a variable, and three reforms that act on one housing loop."),
+         "atlas that share a variable, and three reforms whose records name one housing loop."),
 }
 
 

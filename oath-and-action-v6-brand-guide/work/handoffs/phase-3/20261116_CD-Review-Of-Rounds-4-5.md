@@ -177,8 +177,8 @@ I agree with each fix below as its report writes it, with its owner there; I lis
 5. The palette plate: every value from the tokens, ratios rounded down, color-vision rows by filter, Prussian in words only; a designer can choose from it alone.
 6. S96: the band at plus or minus 122,000, both drops in the subject ink, preliminary months hatched, scale minus 400,000 to 850,000, phone note naming the drops; every word I could see at 1x clears its gridline. Its failure plate holds one fault.
 7. 14.143 and 14.144: each loop counts its own steps; R-38's targets off the loop are said in words, but the drawing contradicts them in R-38's state (CD-M1).
-8. Chapter 15 as one chapter: one grammar across loops, workflows, routes and tables; 15.22's stages each carry a source and read date; 15.24 prints "Not checked"; 15.25 states 2,644 rerun, true after D3-1542.
-10. NRSC v. FEC: the plate states the rule ("The latest such ruling we found") and prints the holding alone. The same rule would pick the same case for either side. The plate's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) come from laws one party passed alone; see Risks.
+8. Chapter 15 as one chapter: one grammar across loops, routes and tables, broken only by the route's filled square (DF-2); 15.22's stages each carry a source and read date (two of which ST-S7 finds differ from the sources file); 15.24 prints "Not checked"; 15.25 states 2,644 rerun, true after D3-1542.
+10. NRSC v. FEC: the plate states the rule ("The latest such ruling we found") and prints the holding alone. The same rule would pick the same case for either side; "we found" reads as a hedge where a date would carry the limit (RP-19). The plate's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) come from laws one party passed alone; see Risks.
 11. Weight, from the build report: page 12,107,102 bytes, projection 15,117,621 of 15,500,000 with Phase 4's seven chapters at 362,857 each; chapter 14 at 2,072,555 plus the kit (565,548) and geometry, 120,739 past its figure by the build's count; selection guide 149,403; palette plate 69,443; 14.142 to 14.144 at 32,433, 43,078 and 55,628; chapter 15 at 562,202 of 600,000; chapter 11 at 500,801 of 550,000. No plate carries bytes a reader never meets that I could find, though 14.144's three print panels and three sets of state rules are its price for working with scripts off. The projection assumes 362,857 bytes for each of Phase 4's seven chapters; ST-S10 shows the page stays under 16 MB only if they average under 488,911 bytes each, and chapters 10 to 19 without 14 average 469,629, close to that line, so Phase 4's plan should start from that figure (owner: engineer, nothing cut).
 
 The other named places (2, 3, 9, 12) sit in other readers' lenses; I ran none of their checks.
@@ -218,6 +218,10 @@ None new. The two I would have asked are settled inside the fix pass as I recomm
 - Rule 15.22's three examples of undoing a law (a sunset in Public Law 115-97, NRSC v. FEC, a change in Public Law 119-21) each come from one side's legislation or one side's win. The court case has its stated rule; the two laws do not. I recommend the plate's note state the rule for each (for example, the most recent sunset and the most recent repeal the research lead found) and name each law in words, so a reader from either side sees a rule, not a choice; the reader panel's two fairness readers asked the same (RP-11), and Rule 15.24's worked Reform R-28 needs its rule too.
 - S95's social card prints its source line near 10 px at a phone feed's width. That is the feed's own size, and it reads; raising the card's fine print by a step would cost one line of the title.
 - Chapter 14's length: at 144 rules the front door and the local contents carry the reader.
+
+## Second look
+
+Pending: the Charcoal captures at 1440 and 390 px, for DD-R5 on Charcoal, round 4's cards on Charcoal and the trackers' marks.
 
 ## Tested
 
