@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 18:31 UTC. **Batch 10:** CD-S4 closed; 14.142 to 14.144's wave 2, call 15 on both choosers and CR-S17 signed off; S14 takes the fitted dash, on condition of the same measure as S96. Nothing sent back.
 - 18:10 UTC. **Batch 9:** round 4's forms signed off but CD-S4's two titles (S91, S94), which claim a wider set than their data; S16 note's decline accepted; a data yes for S90's row 5 note.
 - 18:08 UTC. **Batch 8:** chapter 15's wave 2 and the selection guide's wave 2 signed off; R1 holds; nothing sent back; SG-9 (the engineer's checks) and call 15 still to come.
 - 17:55 UTC. **Batch 7:** chapter 11's wave 2 (CD-S11, PR-S10, RP-15, RP-16) signed off; no mark moved; nothing sent back. "Not fixed" started for the deferred fixes register (DR-282).
@@ -360,9 +361,36 @@ Read from the round 4 maker's notes (to 18:07), the specs, forms and sidecars by
 
 **Waiting on the engineer** (not mine): S94's year at the column's width (CD-S1), S95's size line (AX-S2), the feed test on S95's PNGs (NB-M2).
 
+### Batch 10 (18:31 UTC): CD-S4 closed; Rules 14.142 to 14.144's wave 2, call 15 on both choosers and CR-S17 signed off; S14 takes the fitted dash (for the complex examples maker, the systems designer, the round 4 maker, the engineer, the editor and the main session)
+
+Read from the complex examples maker's notes (to 18:30) and the systems designer's (to 18:26), the specs and plates by script. Marks first. Nothing sent back.
+
+**CD-S4: closed.** S91 now reads "Of the three kinds of judge who hear cases at trial in the federal district courts, only district judges serve for life, ...", and its measure line takes the same scope: both are the sidecar's universe. S94 reads "Seven of the 16 budget and individual income tax deadlines federal law sets for 2027 ...": the sidecar's universe, with the seven and the 16 unchanged. The open row in "Not fixed" comes out.
+
+**Rules 14.142 to 14.144, wave 2: signed off.**
+- *CR-S3, the phone line-up.* Each family's three reforms together, in ID order, each with Rule 13.5's pips from the shared function and its code whole: all 12 match the model and batch 6's counts (for example, Income and wealth equality: R-06 +S, R-30 +M renter-owner, R-38 +S renters). No total. It shows only where the cards stack. Comparing one family across reforms is the comparison the atlas allows; no row adds across families.
+- *RP-9, the keys.* 14.143's ticks name one for under 2 years and two for 2 to 10 years, the only delays its seven steps hold (L23, L08 and L25 short; the other four medium). Its dash names plausible, L53's grade alone, with documented and well supported solid (Rule 13.4). 14.144's names three ticks for over 10 years, Loop R8's two steps (both long). Each key names only the marks its own plate draws.
+- *RP-7.* An off-loop connection says its own layer before its ends (LT12 technology, LE17 economy, as the model holds them), so Variable EC9 never reads as in two layers.
+- *RP-10.* S96 names "the jobs chart of Rule 14.32", read from the plan (S14 is Rule 14.32), and the build stops if S14 moves.
+- *CD-S10.* Each card's first line drops its chip; the status line keeps the name in a hidden prefix, so a listener still hears which reform.
+- *My batch 6 suggestions, both taken.* Loop R10's supposition now opens its first step's line, before the direction. The failure figure draws S96's "Three-month average" note, so the pair differ by the margin alone.
+- *CR-S9.* S96 and its failure take `average_dash: "fit"`: every dashed run ends within 0.1 px of a whole dash at every width from 224 to 720 px (the maker's measure, 3.58 and 2.69 px at 656 against the fixed 4 and 3). The dash still marks exactly the averages that include a preliminary month.
+- *CR-S15 (S14).* `latest_clear: 4` sets S14's latest label at least 4.6 px from every gridline at every width, by the maker's measure. One label key, no data; S14 goes to board 3 with its source line.
+
+**S14 and `average_dash: "fit"`: yes.** Ruling (c) gave the chapter one convention for a preliminary month (hatched columns, the average dashed where it includes one), and S14 and S96 draw the same file and the same August and September 2026 run. With S96 fitted and S14 on the fixed `4 3`, the two would draw one meaning two ways, and S14 keeps the specks CR-S9 names. The key changes no value, no month and no meaning; the fitted dash stays close to `4 3` (3.58 and 2.69 at 656 px), so it reads as the same dash in S14's key. Conditions: the maker measures S14 as it measured S96 (every run ends on ink, 224 to 720 px, both grounds) and the kit check passes. S14 then goes to board 3 with three changes: its source line, its latest label key and this dash key.
+
+**Call 15 on Rules 15.20 and 14.144: signed off.**
+- *One width.* The choices take the group's full width on both plates (the shared list form).
+- *The keyline.* A 1 px ink line 2 px inside a chosen target's red ring shows only while that ring shows. On 14.144 that is R-30's Variable A5, the one pill any of the three reforms targets. The red head gains an ink edge. This is the mark Rule 13.5 already gives a target connection ("Rule 12.5's red, at 4 px on a 1 px Charcoal edge") carried to a pill, so it adds no meaning. Red still marks a reform's target alone. The keyline is opt-in, two `.pk` on 15.20 and two on 14.144, none on 15.16. The approved 15.11, 15.12 and 15.16 keep the old ring for board 3 (the systems designer's "Not fixed" 1).
+- Each failure plate takes the same keyline, so it still differs by its one fault.
+
+**CR-S17: signed off.** Chip IDs drop tabular figures on chapter 15's and 14.143 to 14.144's chips. No value or ID changes.
+
+**R1 still holds** after both waves: 15.22 has 20 numbers and 6 stop squares, 15.23 no stage mark.
+
 ## Not fixed
 
-For the deferred fixes register (DR-282): every Should I accepted as declined, every item I sent back that was not then fixed, and, after them, the suggestions I made that no owner has taken. Each with code, file, what is wrong, the fix and why not. At 17:55 UTC every item I sent back has been fixed (batch 1's CE-S20, batch 4's two DF-10 items).
+For the deferred fixes register (DR-282): every Should I accepted as declined, every item I sent back that was not then fixed, and, after them, the suggestions I made that no owner has taken. Each with code, file, what is wrong, the fix and why not. At 18:31 UTC every item I sent back has been fixed (batch 1's CE-S20, batch 4's two DF-10 items, batch 9's CD-S4 titles).
 
 | Code | File | What is wrong | Fix | Why not |
 |---|---|---|---|---|
@@ -372,7 +400,6 @@ For the deferred fixes register (DR-282): every Should I accepted as declined, e
 | Map symbols on the selection guide (the creative director's craft note under R5-G, not a code; set aside by the selection guide maker; accepted) | `work/build/scripts/phase-3/selection_guide_build.py`, symbols `g119`, `g120`, `g123` | At 1x on a 390 px phone the district map, county choropleth and small-multiple map symbols read as gray texture where every other family draws in lines | Redraw the three in outline: fewer, larger districts and counties in 2 px lines, the small multiples as three outlines with one shaded group each, in the neutral inks of ruling (a) | The craft score stands at 4 and no code routes it; a redraw changes symbols signed off in round 5 (batch 6), so it waits for the design director or board 3 |
 | S16 note (carried, optional; declined by the round 4 maker; accepted) | `work/build/chart-kit/specs/s16.json`, `chart_notes[1]` | Under 358 px eleven eastern state codes stand in a column at the right on leaders, which the note does not mention | "...where there is room, and on a phone the codes of 11 small eastern states stand in a column at the right, each joined to its circle by a line." | S16's words are approved (DR-262), the note stays true, and no reader asked; board 3 can offer it |
 | S90's "row 5" note (found by the round 4 maker, not routed) | `work/build/chart-kit/specs/s90.json` table "Note" column, from the data file's `note` | "Includes COVID-19 relief funds (row 5)" names a row the table leaves out | "Includes COVID-19 relief funds, $39.2 billion, as note 2 says" (39,177,454 thousand dollars, checked by script; data lead's yes) | Not routed in this pass; needs the editor's words |
-| CD-S4, S91's and S94's titles (sent back in batch 9; open until fixed) | `work/build/chart-kit/specs/s91.json`, `s94.json`, and the derive scripts' title checks | Each title names a wider set than its data's universe: all federal trial judges for S91, all budget and tax deadlines for S94 | Scope each title to its sidecar's universe (batch 9 gives drafts) | Open at 18:10; this row goes when the fix lands |
 
 **Suggestions not taken, open at the time written (not conditions):**
 

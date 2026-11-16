@@ -864,7 +864,9 @@ function id_types() {
 const HTML_TAGS = ['ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'span', 'strong', 'time'];
 const HTML_CLASSES = ['oac-h-cards', 'oac-h-rows', 'oac-h-facts', 'oac-h-steps', 'oac-h-dates', 'oac-h-item', 'oac-h-branch', 'oac-h-name', 'oac-h-big', 'oac-h-body',
   'oac-h-small', 'oac-h-src', 'oac-h-fields', 'oac-h-k', 'oac-h-v', 'oac-h-tag', 'oac-h-tag-strong', 'oac-h-mark', 'oac-nw', 'oa-id',
-  'oac-h-limit', 'oac-h-sq', 'oac-h-sq-strong', 'oac-h-fluid', 'oac-h-plain'];   // IM-E7; the design director's facts variant
+  'oac-h-limit', 'oac-h-sq', 'oac-h-sq-strong', 'oac-h-fluid', 'oac-h-plain',   // IM-E7; the design director's facts variant
+  'oac-h-desk', 'oac-h-phone'];   // CD-S1 (fix pass after rounds 4 and 5): one mark for a 600 px column and up, one under it
+const HTML_DESK_MAX = 600;        // kit.css shows .oac-h-desk from a 600 px column, so its mark may be no wider
 const HTML_ATTRS = ['class', 'role', 'data-oa-row', 'data-oa-id', 'datetime', 'id', 'aria-hidden'];
 function html_tree(html) {
   const root = { tag: '#root', attrs: {}, kids: [], text: '' }, stack = [root], f = [];
@@ -888,6 +890,12 @@ function html_tree(html) {
 }
 function check_html(spec, html, rows) {
   const f = [];
+  // CD-S1 (fix pass after rounds 4 and 5): a desk mark comes with its phone mark, so a column under 600 px still shows the
+  // picture, and it fits the 600 px column it shows from
+  const nd = (String(html).match(/<span class="oac-h-desk">/g) || []).length, np = (String(html).match(/<span class="oac-h-phone">/g) || []).length;
+  if (nd !== np) f.push(`html: ${nd} desk mark(s) and ${np} phone mark(s); each .oac-h-desk needs its .oac-h-phone, so a column under ${HTML_DESK_MAX} px still shows the picture`);
+  for (const m of String(html).matchAll(/<span class="oac-h-desk"><span class="oac-h-mark[^"]*"><svg\b[^>]*?\swidth="([\d.]+)"/g))
+    if (+m[1] > HTML_DESK_MAX) f.push(`html: a desk mark ${m[1]} px wide; kit.css shows it from a ${HTML_DESK_MAX} px column, so draw it ${HTML_DESK_MAX} px wide or less`);
   const body = String(html).replace(/<span class="oac-h-mark"><svg[\s\S]*?<\/svg><\/span>/g, '<span class="oac-h-mark"></span>');
   const { root, faults } = html_tree(body);
   f.push(...faults);

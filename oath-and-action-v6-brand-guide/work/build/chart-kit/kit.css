@@ -107,6 +107,10 @@
    beside it); a limit line takes 8 px above it; a kind of date takes a 10 px square before its words, filled in the subject
    ink for the strong kind and open with a 1.5 px subject edge for the plain one; dates run as two columns from 480 px */
 .oac-h-mark.oac-h-fluid > svg.oac-svg { width: 100%; height: auto; max-width: 100%; }
+/* CD-S1 (fix pass after rounds 4 and 5): a card may draw a mark twice at fixed sizes, words and all: .oac-h-desk holds the
+   one drawn at most 600 px wide, shown from a 600 px column, and .oac-h-phone the one shown under it */
+.oac-h-desk { display: none; } .oac-h-phone { display: block; }
+@container (min-width: 600px) { .oac-h-desk { display: block; } .oac-h-phone { display: none; } }
 .oac-h-limit { margin: 8px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-note)/var(--oa-chart-type-note-leading) var(--oa-font-family-reading); max-width: 38em; }
 .oac-h-sq, .oac-h-sq-strong { font-weight: var(--oa-font-weight-semibold); }
 .oac-h-sq::before, .oac-h-sq-strong::before { content: ""; display: inline-block; width: 10px; height: 10px; box-sizing: border-box; margin-right: 6px; border: 1.5px solid var(--oa-chart-color-subject); }
