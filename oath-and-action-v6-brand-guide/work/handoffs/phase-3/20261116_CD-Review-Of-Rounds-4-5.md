@@ -230,7 +230,11 @@ No score moves. What the pictures add:
 
 ## Rescore
 
-In progress from 19:06 UTC on the joined build of `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings), with my own captures at 1x and 2x on both grounds. Scores and reasons follow as they are written; the rescores file is `20261116_Rounds-4-5-CD-Rescores.json`.
+### Basis
+
+The joined build of the fix pass, strict build of commit `b86226e8` (`scratchpad/c07/join/guide.html`, 12,174,060 bytes, 0 warnings) and its `guide-Build-Report.json`, read in place. The fix brief (calls 1 to 18) and every owner's "Fixed" and "Not fixed" in `20261116_Fix-Pass-*-Notes.md`. My own captures of the joined build (`scratchpad/c07/review/creative-director/rescore/`), taken in one browser from 19:06 UTC under the load rule: 32 plates at Newsprint 1x at 1440 and 390 px and Charcoal 1x at 1440 px, 13 at Newsprint and Charcoal 2x at 1440 px, three under the page's grayscale filter at 2x, with 14.143 after one and five presses, 14.144 with R-30 and R-38 chosen, and 15.20 with R-04. Words and markup read from the page by script.
+
+Status: in progress, 19:20 UTC. Scores below are written as I read; pending checks are named.
 
 ## Tested
 

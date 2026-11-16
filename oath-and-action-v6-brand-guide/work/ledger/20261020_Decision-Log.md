@@ -6911,3 +6911,5 @@ The main session posted the plan for the review of rounds 4 and 5 with five ques
 | D3-2260 | The stage's description (alt) names the road | A screen reader entering the group hears it before the 144 links; the visible caption is the editor's (request SG-11) |
 | D3-2261 | The guide keeps its questions as lists (no heading, no `role="heading"`, no landmark) | Call 17 on D3-2074; a stage holds no landmark either (AX-S8, `specimenLandmarks`) |
 | D3-2262 | CE-S22's examples are not added | Call 6's condition: the craft reader does not speak to them |
+| D3-2263 | The component engineer's 18:11 batch opened a browser while the limit was reached: a load rule slip with no effect on any result, recorded in its notes | The load rule protects other owners' checks; every slip is logged |
+| D3-2264 | Q-18 moves from Open to Answered in the open questions file: Dustin answered it at board 2 under DR-264 (V7.1 prints KFF's period beside the 25 million; the guide keeps CMS's figures on S65); it had stayed under Open by mistake (found by the Phases 0 and 1 backfill) | The open questions file must match the decisions |
