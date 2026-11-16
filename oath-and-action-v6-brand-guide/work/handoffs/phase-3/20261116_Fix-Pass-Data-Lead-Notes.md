@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 18:53 UTC. **Batch 11:** the palette plate (every ratio rounded down, 106 of 106 by my script), S94's desk year, S95's size line and feed test, PR-S7 and call 11's reach signed off; S94's 480 to 599 px gap accepted as declined; two suggestions. Nothing sent back.
 - 18:31 UTC. **Batch 10:** CD-S4 closed; 14.142 to 14.144's wave 2, call 15 on both choosers and CR-S17 signed off; S14 takes the fitted dash, on condition of the same measure as S96. Nothing sent back.
 - 18:10 UTC. **Batch 9:** round 4's forms signed off but CD-S4's two titles (S91, S94), which claim a wider set than their data; S16 note's decline accepted; a data yes for S90's row 5 note.
 - 18:08 UTC. **Batch 8:** chapter 15's wave 2 and the selection guide's wave 2 signed off; R1 holds; nothing sent back; SG-9 (the engineer's checks) and call 15 still to come.
@@ -388,6 +389,28 @@ Read from the complex examples maker's notes (to 18:30) and the systems designer
 
 **R1 still holds** after both waves: 15.22 has 20 numbers and 6 stop squares, 15.23 no stage mark.
 
+### Batch 11 (18:53 UTC): the engineers' work signed off: the palette plate, S94's desk year, S95's size line and feed test, PR-S7, call 11's reach (for both engineers, the round 4 maker, the editor and the main session)
+
+Read from both engineers' notes (to 18:50), the palette plate and the kit's checks by script, and the kit's own `check` on S96 and its failure (18:52, both PASS). Marks and data first; the editor reads the palette words now. Nothing sent back.
+
+**(1) The palette plate: signed off.**
+- *Call 9.* Every ratio is rounded down from the two hex values. My own script (`palette_ratios.py` and an inline label check, WCAG 2.2 from the token hexes, Newsprint #DCD9D2, Charcoal #121212, White #FFFFFF): all 72 ground and White-paper ratios and all 34 label ratios equal the floored value, 0 mismatches. The two group 4 labels "beside" the hatch read on the ground, as built.
+- *The role inks (DF-13).* Every value is from the tokens and every ratio is floored. Subject and party ink are #121212 on Newsprint and #DCD9D2 on Charcoal at 13.29 (18.73 on White). Context ink is 4.29 and 5.40. Light fill is 1.81 on Newsprint, "not for marks alone" with its value printed, and Stone 3.09 on Charcoal. Track is 1.16 and 1.50, not for marks. The build stops if the subject or party ink falls under 4.5 to 1, or the party ink stops being the subject ink (Rule 14.7). This supersedes my round 5 ruling (b), which left the role inks to Rule 05.7 and chapter 26: the drift reader showed the chapter's rules use ink words no plate defined, and DF-13 is routed to the engineer with me.
+- *The one red (NB-S3).* 2.95 to 1 on Newsprint with its 1 px Charcoal keyline at 13.29, 4.49 on Charcoal with none, and 4.16 on White, each my figure. The never, gives-way and size lines are Rules 14.6, 05.3 and 05.1's.
+- *Groups never for parties*, and party marks take the one party ink (Rule 14.7). *Crisp 3 px grade lines.* The line moves half a pixel, the same pattern and no meaning. *One fact a line*, the same table markup.
+- *Two figures for one measure, for board 3, not this pass:* chapter 05 (approved) prints Pillar Red at 2.96 and 4.17 to 1 (half up), while the plate prints 2.95 and 4.16 (rounded down by D3-1929). One measure should print one figure; chapter 05's words are the place (the engineer's request; written into "Not fixed").
+
+**(2) S94 and S95: signed off.**
+- *S94's desk year (CD-S1).* From a 600 px column the year draws at 600 px with 8 px squares, and April 15's three events stack inside April's row. The same 16 dates on 13 days and the same 7 consequences draw on both marks. The phone year is byte for byte the year batch 9 signed off. No date moved. The gap at 480 to 599 px, where the 224 px year still shows, is accepted as declined: the approved plan named one breakpoint, and S94 is past its plate figure already (written into "Not fixed").
+- *S95 (AX-S2).* The second crop's size line stays in sight and names its drawing, and no drawing changed (192 of 192 kit files identical).
+- *S95's feed test (NB-M2, Rule 08.2).* It passes on all four crops at 500 and 360 px: all eight nodes kept and the lever at 54 and 32 red pixels against 4 needed, through every filter and the thumbnail path. The control with the sign-off painted out fails, so the counter reads the right box. This is the engineer's run; I did not repeat it.
+
+**(3) PR-S7: signed off.** The kit's new check fails a columns-with-average spec that names a column inside the margin it draws (`labels.margin.value`). The engineer's self-test plants S96 naming January 2025 (−48,000, inside ±122,000) and catches it. S96 as built passes (my `check`, 18:52: 0 faults), since its two named drops end past the band. `build --all` passes 96 of 96, so no signed-off chart fails. Its failure plate also passes, and should: it draws no margin, which is its one fault, so the check has nothing to measure. That is the limit of this check: it catches a named column inside a drawn margin, not a survey chart that leaves the margin out. A suggestion for the engineer is in "Not fixed". The range bar's `test` is opt-in, and no spec sets status-driven open dots, so no drawing moves.
+
+**(4) Call 11's reach: read and signed off.** 416 image stages: 95 hidden, because each one's alt carries every word its picture holds, and 321 left open, by the main session's 18:27 ruling (words heard twice are a lesser fault than words never heard). The guide check now fails any hidden stage whose alt lacks a word, and a stage that holds a control is never hidden. For my lens: Rules 11.10 and 11.11's trackers stay open (their alts lack only the key's heading words), so every mark's state word is still heard. The 321 open stages, each with the words its alt lacks, are the engineer's register list (`20261116_Fix-Pass-Engineer-Picture-Words.json`).
+
+**Weight, reported (DR-271), no condition:** chapter 14 with the kit stands 9,283 bytes past its stop in the second engineer's 18:47 build; the palette plate adds 13,878. The cut, if one is wanted, is the main session's (the engineer names the role inks' two ground panels).
+
 ## Not fixed
 
 For the deferred fixes register (DR-282): every Should I accepted as declined, every item I sent back that was not then fixed, and, after them, the suggestions I made that no owner has taken. Each with code, file, what is wrong, the fix and why not. At 18:31 UTC every item I sent back has been fixed (batch 1's CE-S20, batch 4's two DF-10 items, batch 9's CD-S4 titles).
@@ -400,8 +423,9 @@ For the deferred fixes register (DR-282): every Should I accepted as declined, e
 | Map symbols on the selection guide (the creative director's craft note under R5-G, not a code; set aside by the selection guide maker; accepted) | `work/build/scripts/phase-3/selection_guide_build.py`, symbols `g119`, `g120`, `g123` | At 1x on a 390 px phone the district map, county choropleth and small-multiple map symbols read as gray texture where every other family draws in lines | Redraw the three in outline: fewer, larger districts and counties in 2 px lines, the small multiples as three outlines with one shaded group each, in the neutral inks of ruling (a) | The craft score stands at 4 and no code routes it; a redraw changes symbols signed off in round 5 (batch 6), so it waits for the design director or board 3 |
 | S16 note (carried, optional; declined by the round 4 maker; accepted) | `work/build/chart-kit/specs/s16.json`, `chart_notes[1]` | Under 358 px eleven eastern state codes stand in a column at the right on leaders, which the note does not mention | "...where there is room, and on a phone the codes of 11 small eastern states stand in a column at the right, each joined to its circle by a line." | S16's words are approved (DR-262), the note stays true, and no reader asked; board 3 can offer it |
 | S90's "row 5" note (found by the round 4 maker, not routed) | `work/build/chart-kit/specs/s90.json` table "Note" column, from the data file's `note` | "Includes COVID-19 relief funds (row 5)" names a row the table leaves out | "Includes COVID-19 relief funds, $39.2 billion, as note 2 says" (39,177,454 thousand dollars, checked by script; data lead's yes) | Not routed in this pass; needs the editor's words |
+| CD-S1, part: S94's year at 480 to 599 px (declined by the second engineer; accepted) | `work/build/chart-kit/kit.css`, `forms/calendar.js` | From a 480 to 599 px column, a 1024 px page among them, the card still shows the 224 px year with 6 px squares | A third mark drawn at 480 px, shown from 480 to 599 px | The approved plan named one breakpoint at 600 px; S94 is past its 15,000 byte plate figure with two marks, and a third adds about 2,000; the creative director measured at 1440 px. Board 3 may weigh it |
 
-**Suggestions not taken, open at the time written (not conditions):**
+**Suggestions not taken, open at the time written (not conditions).** Batch 6's two were taken in wave 2 (batch 10).
 
 | From | File | What | Suggested fix |
 |---|---|---|---|
@@ -409,8 +433,8 @@ For the deferred fixes register (DR-282): every Should I accepted as declined, e
 | Batch 1 | `apply_systems_ch11.py`, specs "Never appealed" and "No petition" | Neither says the next step keeps a fine ring while the time runs, as Rule 11.8's step 6 spec does | Add "a fine ring while the time runs" to each |
 | Batch 1, batch 2 | `apply_systems_ch11.py` (`BALLOT_STEPS` step 2); `phase3_ch15_build.py` (15.23's ballot step 2) | "The attorney general writes the title and summary" rests on Massachusetts and California; the rule says the steps follow four states | The research lead confirms who acts at step 2 in Ohio and Michigan, and the row says "in Massachusetts and California" or names each |
 | Batch 4 | `phase3_ch15_build.py`, Rule 15.24's compact card | Minnesota's statute prints no version, though its page states "2026 Minnesota Statutes" (F10) | Name that edition |
-| Batch 6 | `phase3_ch14_complex_build.py`, Rule 14.143's walk | Loop R10's first line prints before "The walk moves to Loop R10, starting at ... and supposing they rise" | Set the transition before the line, as Loop B4's start comes before its walk |
-| Batch 6 | `phase3_ch14_complex_build.py`, the failure figure of Rule 14.142 | No in-plot "Three-month average" label where S96 has one (so since round 5; the key names the line) | Add S96's annotation for parity |
+| Batch 11 | `work/build/chart-kit/checks.js` (PR-S7's columns check) | The check catches a named column inside a drawn margin, not a survey chart that leaves its margin out, which is S96's failure and the lesson of Rule 14.142 | Fail a columns-with-average spec that is not a labeled failure, names columns and draws no `labels.margin`, where its dataset's sidecar carries a margin (`with_margin` or `september_release_margin`) |
+| Batch 11 | `work/build/guide/chapters/05-color.json` (approved; board 3) | Chapter 05 prints Pillar Red at 2.96 and 4.17 to 1, half up; the palette plate prints 2.95 and 4.16, rounded down (D3-1929). One measure, two figures in one guide | Print the rounded-down figures in chapter 05, as D3-1929 sets for every ratio |
 
 ## Calls
 
