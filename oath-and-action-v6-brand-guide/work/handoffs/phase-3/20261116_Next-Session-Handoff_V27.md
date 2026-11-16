@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (twenty-seventh handoff, November 16)
 
-Written November 16, 2026, after the review of rounds 4 and 5 and its fix pass. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261114_Next-Session-Handoff_V26.md`. V5's sections 3 to 5, section 3 of V8 to V26, and section 3 below hold together. Decision log entries for this chat run from D3-2122 to D3-2265, with Dustin's answers DR-277 to DR-284. The change ledger runs to C-134.
+Written November 16, 2026, after the review of rounds 4 and 5 and its fix pass. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261114_Next-Session-Handoff_V26.md`. V5's sections 3 to 5, section 3 of V8 to V26, and section 3 below hold together. Decision log entries for this chat run from D3-2122 to D3-2269, with Dustin's answers DR-277 to DR-284. The change ledger runs to C-134.
 
 ## 1. Where things stand
 
@@ -34,7 +34,7 @@ Phase 3 is the active phase. The review of rounds 4 and 5 (row `c07`) is done: n
 
 **The join** (commit `b86226e8`): strict build exit 0, 0 warnings, 12,174,060 bytes, 369 rules, 679 specimens; projection 15,144,130; chapters 11, 14 and 15 at 505,397, 2,114,782 and 569,930 bytes; chapter 14 with the kit 2,817,491, past its 2,803,941 figure and reported under DR-271; kit `build --all --no-png` 96 of 96; V7 check 0 failures; data check 126 tables, 0 faults; `phase3_ch14_build.py --check` 99 of 99; guide check self-test 150 of 150 plants; reader text scan clean. The quick guide check with photographs passes on the join build (D3-2266): 1440 and 390 px, 369 rules, 735 specimens, 3,764 same-page links, 152 key path walks and 834 steps, 0 failures; the selection guide's 127 form links and 6 road links land.
 
-RESCORE_LINE
+**The rescore** (`20261116_Rounds-4-5-CD-Rescores.json`; the "Rescore" section of `20261116_CD-Review-Of-Rounds-4-5.md`): 13 of 14 items at 4 or more on all six criteria (R4-A, R4-I, R4-S, R5-G, R5-P, R5-1, R5-2, R5-3, R5-W, C15-I, C15-W, C15, C14). Under 4: C11-T, accessibility 3, because the six tracker alts leave out the plate's title and "What the marks mean", so call 11 leaves those stages open and a screen reader hears the trackers twice. The second pass for chat 8 (D3-2265): RS-1, a Must and wording only (add the title and the key's heading to the six tracker alts; the tracker designer with the editor, the engineer's check confirming the stages then hide); and six Shoulds, RS-2 (S91's title at 33 words), RS-3 (S94's year at 1024 px), RS-4 (S90's "row 5" note), RS-5 (entries' related rules), RS-6 (Loop R10's repeated start) and RS-7 (15.19's control order). None needs Dustin's call. The verification by the design director (15 of 18 craft codes held, 3 in part) and the accessibility lead (9 of 10 held; AX-S3 open) is in their reports' last sections, and two new faults (CR-S23, the 15.20 failure plate's options) are in the register as chat 8 candidates.
 
 **The register.** 90 Open and 8 Unclear rows from the backfill of Phases 0 to 3 round 5, and 76 rows from this review (15 held for Dustin, 25 Open, 23 set aside, 2 declined, 11 not tested). Every one of the 143 codes in the nine reports has a recorded outcome.
 
