@@ -32,13 +32,13 @@ Phase 3 is the active phase. The review of rounds 4 and 5 (row `c07`) is done: n
 
 **The fix pass** (brief `work/handoffs/phase-3/20261116_Rounds-4-5-Fix-Brief.md` with its calls 1 to 18; owners' notes `work/handoffs/phase-3/20261116_Fix-Pass-*-Notes.md`). The main calls: chapter 11's square keeps its one meaning, "Stopped", so Rule 15.22's stages print as bold numbers on the line (data lead's R1); Rule 13.5's effect pips on Rule 14.144's cards; Rule 15.20's sentence rewritten so Reform R-38 stays; an unappealed case under slashes; the chooser changed once on both Rules 15.20 and 14.144 (one width, a keyline in the red ring); S95 signs off with the 96 px lockmark (DR-211); S14 and S96 name the September 2026 payroll release; call 11 narrowed so a stage's words are hidden only where its alt carries every word (95 stages hidden, 321 left open and listed in `20261116_Fix-Pass-Engineer-Picture-Words.json`); the masthead's room set from its measured height (218 of 587 landings covered before, 0 after); new build guards for braces, page-wide selectors and a stale palette plate.
 
-**The join** (commit `b86226e8`): strict build exit 0, 0 warnings, 12,174,060 bytes, 369 rules, 679 specimens; projection 15,144,130; chapters 11, 14 and 15 at 505,397, 2,114,782 and 569,930 bytes; chapter 14 with the kit 2,817,491, past its 2,803,941 figure and reported under DR-271; kit `build --all --no-png` 96 of 96; V7 check 0 failures; data check 126 tables, 0 faults; `phase3_ch14_build.py --check` 99 of 99; guide check self-test 150 of 150 plants; reader text scan clean. QUICK_CHECK_LINE
+**The join** (commit `b86226e8`): strict build exit 0, 0 warnings, 12,174,060 bytes, 369 rules, 679 specimens; projection 15,144,130; chapters 11, 14 and 15 at 505,397, 2,114,782 and 569,930 bytes; chapter 14 with the kit 2,817,491, past its 2,803,941 figure and reported under DR-271; kit `build --all --no-png` 96 of 96; V7 check 0 failures; data check 126 tables, 0 faults; `phase3_ch14_build.py --check` 99 of 99; guide check self-test 150 of 150 plants; reader text scan clean. The quick guide check with photographs passes on the join build (D3-2266): 1440 and 390 px, 369 rules, 735 specimens, 3,764 same-page links, 152 key path walks and 834 steps, 0 failures; the selection guide's 127 form links and 6 road links land.
 
 RESCORE_LINE
 
 **The register.** 90 Open and 8 Unclear rows from the backfill of Phases 0 to 3 round 5, and 76 rows from this review (15 held for Dustin, 25 Open, 23 set aside, 2 declined, 11 not tested). Every one of the 143 codes in the nine reports has a recorded outcome.
 
-**Published:** the chapters page as version 12, private, at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF, from `work/boards/phase-3/review-4-5/20261116_Guide-Preview-V12.html` (the join build). VERSION_LINE
+**Published:** the chapters page as version 12, private, at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF, from `work/boards/phase-3/review-4-5/20261116_Guide-Preview-V12.html` (the join build). Version id 1794858048-3280 (D3-2267).
 
 ## 2. Next, in order
 
