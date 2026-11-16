@@ -68,6 +68,26 @@ TIER_KEY = [
     ("Reference", "Forms for a narrower job, each drawn as a sketch"),
     ("Avoid", "Forms that mislead, each sketched beside the form to use instead"),
 ]
+# The road to the chapter's three charts in full, Rules 14.142 to 14.144, and on to chapter 15's routes (fix pass after
+# the review of rounds 4 and 5, call 17 with RP-3 and PR-S9). Drafts by the selection guide maker for the editor, in the
+# fix pass notes' "Words for the editor"; "{}" is where the rule's link sits. A line under each question whose forms a
+# reader picks for Rule 14.142's job (PR-S9: Columns with a moving average under group 4, Range bar or error bar under
+# group 8), then a closing block after the last question with group 18's title and its three subjects.
+FULL_AT = {
+    4: ("14.142", "A chart in full, {}, draws the monthly change in payroll jobs as columns with a moving average and "
+                  "marks the survey’s margin of error."),
+    8: ("14.142", "A chart in full, {}, draws a survey’s margin of error as a band behind monthly columns and names the "
+                  "changes that pass it."),
+}
+FULL_LEAD = "Each puts several of these forms together on one subject, with its table and its files."
+FULL = [   # group 18's three subjects, in the words of its group line in 14-chapter.json
+    ("14.142", "the monthly change in payroll jobs, with the survey’s margin of error"),
+    ("14.143", "two loops from our systems atlas that share a variable"),
+    ("14.144", "three reforms whose records name one housing loop"),
+]
+ROUTES = ("15.22", "For a public process, such as how a bill becomes law, chapter 15 draws each route to change stage by "
+                   "stage, starting at {}.")
+FULL_GROUP = 18
 
 
 def need(cond, msg):
@@ -1809,6 +1829,15 @@ CSS = (
     # the skip links: Rule 18's skip link, shown 4 px inside the block it skips (AX 1.5)
     ".sg .sg-skip{top:4px;left:4px}"
     "@media print{.sg .sg-skip{display:none}}"
+    # the road to the three charts in full (call 17): Rule 18's link in running text, its rule number held on one line;
+    # a note under a question in the tier words' type, and a closing block ruled off as each question is
+    ".sg-go{white-space:nowrap;color:var(--oa-color-text-primary)}"
+    ".sg-gl{margin:0 0 var(--oa-space-200);font:var(--oa-type-caption);color:var(--oa-color-text-secondary);"
+    "max-width:34em;overflow-wrap:break-word}"
+    ".sg-full{padding:var(--oa-space-300) 0 0;border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}"
+    ".sg-fu{list-style:none;margin:0 0 var(--oa-space-200);padding:0;font:var(--oa-type-ui);max-width:34em;overflow-wrap:break-word}"
+    ".sg-fu>li+li{margin-top:var(--oa-space-100)}"
+    ".sg-full>p.sg-fr{margin:0;font:var(--oa-type-ui);max-width:34em;overflow-wrap:break-word}"
 )
 
 
@@ -1858,8 +1887,25 @@ def picture(n, avoid):
             f'focusable="false">{uses}</svg>')
 
 
+def go_link(rid):
+    """A link on the road to a chart in full or a route: Rule 18's link in running text, named by the rule as every
+    cross-reference in the guide is ("Rule 14.142"), and marked for the way back (data-oa-xref)."""
+    ch, num = rid.split(".")
+    return f'<a class="oa-link sg-go" href="#rule-{ch}-{num}" data-oa-xref>Rule {rid}</a>'
+
+
+def fill(words, rid):
+    need(words.count("{}") == 1, f"a road line holds {words.count('{}')} places for its link: {words!r}")
+    a, b = words.split("{}")
+    return e(a) + go_link(rid) + e(b)
+
+
 def build():
     plan, chapter, extra, by_group, printed = load()
+    need(FULL_GROUP in printed and printed[FULL_GROUP] == "Three charts in full",
+         f"14-chapter.json prints group {FULL_GROUP} as {printed.get(FULL_GROUP)!r}, not the three charts in full")
+    need([g for g in chapter["groups"] if g["number"] == FULL_GROUP][0].get("rules") == "14.142 to 14.144",
+         f"group {FULL_GROUP} no longer holds Rules 14.142 to 14.144; the road's links need a look")
     maps = Maps()
     need(set(G) == {fm["num"] for v in by_group.values() for fm in v},
          f"pictures and forms differ: {sorted(set(G) ^ {fm['num'] for v in by_group.values() for fm in v})}")
@@ -1873,7 +1919,8 @@ def build():
     order = sorted(by_group)
     for i, n in enumerate(order):
         fs = by_group[n]
-        nxt = f"#s-14-sg-q-{order[i + 1]}" if i + 1 < len(order) else "#group-14-1"
+        # the last question's skip link lands on the closing block's line, where its seven forms end (AX-S4, D3-2086)
+        nxt = f"#s-14-sg-q-{order[i + 1]}" if i + 1 < len(order) else "#s-14-sg-full-t"
         items = []
         for fm in fs:
             name = fm["form"]
@@ -1882,14 +1929,30 @@ def build():
                 f'<a href="#rule-14-{fm["num"]}" data-tier="{fm["tier_word"].lower()}" data-rule="{fm["rule"]}" data-oa-xref>'
                 f'{picture(fm["num"], fm["tier_word"] == "Avoid")}<span class="sg-n">{e(name)}<span class="sg-c">,</span></span>'
                 f'<span class="sg-t">{e(fm["tier_word"])}</span></a></li>')
+        # a chart in full that answers this question's job: its line sits under the question and before the skip link,
+        # so "Skip these N forms" still skips the forms and nothing else (call 17, PR-S9)
+        go = ""
+        if n in FULL_AT:
+            rid, words = FULL_AT[n]
+            family = printed[n].split(":")[0]
+            go = (f'<p class="sg-gl" id="s-14-sg-go-{n}" data-return-label="{e(family + " in " + label)}">'
+                  f'{fill(words, rid)}</p>')
         qs.append(
-            f'<li class="sg-q" data-group="{n}"><p class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</p>'
+            f'<li class="sg-q" data-group="{n}"><p class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</p>{go}'
             f'<a class="oa-link-skip sg-skip" href="{nxt}">Skip these {len(fs)} forms</a>'
             f'<ul class="sg-fs" role="list" aria-labelledby="s-14-sg-q-{n}">{"".join(items)}</ul></li>')
     key = "".join(f"<div><dt>{e(t)}</dt><dd>{e(w)}</dd></div>" for t, w in TIER_KEY)
+    # the road to group 18's three charts in full and to chapter 15's routes, after the last question (call 17, RP-3)
+    full_t = printed[FULL_GROUP]
+    back = e(full_t + " in " + label)
+    full = (f'<div class="sg-full"><p class="sg-qt" id="s-14-sg-full-t">{e(full_t)}</p><p class="sg-gl">{e(FULL_LEAD)}</p>'
+            f'<ul class="sg-fu" role="list" aria-labelledby="s-14-sg-full-t">'
+            + "".join(f'<li id="s-14-sg-go-{rid.split(".")[1]}" data-return-label="{back}">{go_link(rid)}: {e(w)}</li>'
+                      for rid, w in FULL)
+            + f'</ul><p class="sg-fr" id="s-14-sg-go-routes" data-return-label="{back}">{fill(ROUTES[1], ROUTES[0])}</p></div>')
     # the guide now opens the chapter before its rule index (DD-G5), so its first skip link says where it lands
     body = (f'<div class="sg"><a class="oa-link-skip sg-skip" href="#group-14-1">{e(SKIP_FIRST)}</a>'
-            f'<dl class="sg-key">{key}</dl><ol class="sg-qs" role="list">{"".join(qs)}</ol></div>')
+            f'<dl class="sg-key">{key}</dl><ol class="sg-qs" role="list">{"".join(qs)}</ol>{full}</div>')
     head = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14, the selection guide. Selection guide maker, "
             f"{WRITTEN}. Written by work/build/scripts/phase-3/selection_guide_build.py from the plan file; do not edit by "
             f"hand: run the script, whose --check fails when this file and the plan disagree. -->\n")

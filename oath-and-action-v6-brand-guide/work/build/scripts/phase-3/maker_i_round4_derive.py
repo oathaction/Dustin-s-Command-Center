@@ -136,6 +136,16 @@ def s92():
     check(sid, "two hours and 100 pages free: row 3", "first two hours of search and the first 100 pages free" in r["3"]["what_happens"])
     has(sid, t, "20 working days", "the agency's limit to decide")
     check(sid, "two optional steps, rows 4 and 7", [k for k, x in r.items() if x["path"] == "branch"] == ["4", "7"])
+    # RP-2 (fix pass after rounds 4 and 5): the table's condition column says "Every request" only of a step every request
+    # reaches (rows 1 to 3 and 5), "Optional" of the branches, and names the condition on the appeal and the lawsuit
+    col = next(c for c in s["table"]["columns"] if c["label"] == "When it happens")
+    w = col["words"]
+    check(sid, "RP-2: every row has its condition words", sorted(w, key=int) == sorted(r, key=int))
+    check(sid, "RP-2: \"Every request\" only on rows 1 to 3 and 5", [k for k in sorted(w, key=int) if w[k] == "Every request"] == ["1", "2", "3", "5"])
+    check(sid, "RP-2: \"Optional\" exactly on the branch rows", [k for k in sorted(w, key=int) if w[k] == "Optional"] == [k for k, x in r.items() if x["path"] == "branch"])
+    check(sid, "RP-2: the appeal follows a denial (row 6)", r["6"]["step"] == "Appeal a denial" and w["6"].startswith("Only if the agency says no"))
+    check(sid, "RP-2: the lawsuit follows a denial or a missed time limit (row 8)", "misses the time limits" in r["8"]["what_happens"] and "(6)(C)(i)" in r["8"]["legal_basis"] and w["8"] == "Only if the agency says no or misses its time limits")
+    check(sid, "RP-2: the drawing's eyebrows on steps 6 and 8 are the table's words", s["labels"]["conditions"] == {"6": w["6"], "8": w["8"]})
 
 
 def s93():
@@ -200,6 +210,19 @@ def s95():
     check(sid, "all states together 318", round(float(r["STATE"]["rate_2023"])) == 318)
     has(sid, t, "652", "Mississippi's rate")
     has(sid, t, "96", "Massachusetts's rate")
+    # NB-M2 and call 18 (fix pass after rounds 4 and 5, DR-211): the card form's sign-off is the 48 px master, as stored,
+    # drawn at exactly 96 px, its box on whole pixels inside the 64 px margin of both crops
+    lib = (ROOT / "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg").read_text(encoding="utf-8")
+    m = re.search(r"<svg\b[^>]*>", lib)
+    master = re.sub(r"<title>[\s\S]*?</title>", "", lib[m.end():lib.rindex("</svg>")])
+    form = (ROOT / "work/build/chart-kit/forms/social-data-card.js").read_text(encoding="utf-8")
+    held = re.search(r"var LOCK48 = '([^']*)', SIGN = (\d+)", form)
+    check(sid, "sign-off: the form holds the 48 px master's drawing exactly", bool(held) and held.group(1) == master, f"{len(master)} characters")
+    check(sid, "sign-off: drawn at 96 px, twice the master", bool(held) and int(held.group(2)) == 96 and 'viewBox="0 0 48 48"' in lib)
+    pad = (s.get("labels", {}).get("card_margin") or 64)
+    for cw, ch in s["card"]["crops"]:
+        sx, sy = cw - pad - 96, ch - pad - 96
+        check(sid, f"sign-off on the {cw} by {ch} crop at {sx}, {sy}, whole pixels inside the margin", sx == int(sx) and sy == int(sy) and sx >= pad and sy >= pad)
 
 
 CHECKS = {"S89": s89, "S90": s90, "S91": s91, "S92": s92, "S93": s93, "S94": s94, "S95": s95}
