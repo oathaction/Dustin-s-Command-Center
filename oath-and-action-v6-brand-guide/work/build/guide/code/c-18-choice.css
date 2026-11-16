@@ -96,7 +96,14 @@
 }
 .oa-choice-row--list .oa-choice-face {
   flex: 1 1 auto;
+  flex-wrap: wrap;
   padding-inline-start: calc(var(--oa-space-150) + 1px);
+}
+/* Where a choice's longest unbroken run cannot share a line with the check, as with large text
+   on a narrow screen, the words drop under the check rather than run past the edge */
+.oa-choice-row--list .oa-choice-label {
+  flex: 1 1 0;
+  min-width: min-content;
 }
 .oa-choice-row--list .oa-choice-check {
   display: block;

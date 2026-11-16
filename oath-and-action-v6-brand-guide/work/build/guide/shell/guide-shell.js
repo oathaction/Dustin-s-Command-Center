@@ -13,7 +13,8 @@
 // snaps openers, the pillar row's icons and the colophon's lockmark onto whole device pixels.
 // Phase 3 round 4, November 13, 2026: print opens every closed disclosure (Rule 18.8); a reform chooser's status line
 // (Rule 15.20). Round 5, November 14, 2026: the local contents marks a labeled extra it lists (R5-2a); a link in the
-// chart guide offers the way back to the form it left.
+// chart guide offers the way back to the form it left. Fix pass after rounds 4 and 5, November 16, 2026: every offset
+// under the masthead follows its real height (AX-M1).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -40,6 +41,25 @@
     else if (e.bottom > b.bottom - f) box.scrollTop += (e.bottom - b.bottom + f);
   }
   function sectionFor(el) { return el && el.closest ? el.closest('[data-track]') : null; }
+
+  // AX-M1 (fix pass after rounds 4 and 5, DR-278 (a)): the masthead's real height, less its 1 px rule, goes on the root
+  // as --head-real, which the stylesheet's --head-h takes in place of its two bars' sum. Where the part links wrap to a
+  // second line (1024 to 1362 px), where the menu button drops under the wordmark (360 to 372 px) and with large text,
+  // the sum fell short: a rail link that took focus could sit wholly under the masthead, and every group and way back a
+  // link landed on sat partly under it. Read now, before the first landing, and again whenever the masthead changes
+  // size. Where the masthead fits its two bars, the value equals the sum, so nothing there moves. A masthead that is not
+  // drawn (print hides it) keeps the last value, which print's own --head-h does not read.
+  var headReal = '';
+  function headHeight() {
+    if (!header) return;
+    var r = header.getBoundingClientRect();
+    if (!r.height) return;
+    var cs = getComputedStyle(header);
+    var v = Math.round((r.height - parseFloat(cs.borderTopWidth) - parseFloat(cs.borderBottomWidth)) * 100) / 100 + 'px';
+    if (v !== headReal) { headReal = v; document.documentElement.style.setProperty('--head-real', v); }
+  }
+  headHeight();
+  if (header && window.ResizeObserver) new ResizeObserver(function () { headHeight(); }).observe(header);
 
   function setCurrent(sec) {
     if (sec === current) return;

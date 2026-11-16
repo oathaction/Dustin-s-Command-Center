@@ -16,7 +16,10 @@
   --mc: 4;                                         /* columns in main */
   --bar-h: 3.5rem;
   --where-h: 2rem;
-  --head-h: calc(var(--bar-h) + var(--where-h));
+  /* AX-M1 (fix pass after rounds 4 and 5, DR-278 (a)): the offsets under the masthead read --head-h, which takes the
+     masthead's real height from the shell's script (--head-real). Without the script it is the two bars' sum, or a floor
+     where the bar takes two lines at the default text size (below). */
+  --head-h: var(--head-real, max(calc(var(--bar-h) + var(--where-h)), var(--head-floor, 0px)));
   --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --mat: var(--oa-color-tint-stone-n90);
   --keyline: var(--oa-color-border-hairline-on-newsprint);
@@ -29,6 +32,11 @@
 @media (min-width: 48em) { :root { --m: var(--oa-layout-grid-tablet-margin); --g: var(--oa-layout-grid-tablet-gutter); --mc: 8 } }
 @media (min-width: 64em) { :root { --m: var(--oa-layout-grid-desktop-margin); --g: var(--oa-layout-grid-desktop-gutter); --mc: 9; --bar-h: 4rem; --where-h: 0rem } }
 @media (min-width: 90em) { :root { --m: var(--oa-layout-grid-wide-margin); --g: var(--oa-layout-grid-wide-gutter); --mc: 10 } }
+/* AX-M1: the floors for a page without its script, measured at the default text size: the menu button drops under the
+   24 px wordmark from 22.5em to 23.25em (360 to 372 px), and the part links take two lines from 64em to 85.125em (1024
+   to 1362 px). Outside those widths the two bars' sum stands, and with the script the measured height wins. */
+@media (min-width: 22.5em) and (max-width: 23.25em) { :root { --head-floor: 8.25rem } }
+@media (min-width: 64em) and (max-width: 85.125em) { :root { --head-floor: 6.25rem } }
 
 /* D2-1133 (stage C): the guide stays on Newsprint whatever the device asks. The root carries data-oa-theme="light",
    which wins over tokens.css's dark theme (DR-204), and "only light" also keeps a browser's own dark mode from
@@ -267,7 +275,9 @@ a.toc-part-k:hover { text-decoration: underline }
 .step-t { display: block; margin: 0; text-wrap: pretty; overflow-wrap: break-word }
 /* R1 (the creative director's rescore): the rule or chapter and its name are underlined each alone; the dot and the spaces
    around it stay clear, so the line reads as one link */
-.step-to { display: inline-block; margin-top: var(--oa-space-100); font: var(--oa-type-ui) }
+/* AX-S7 (DR-278 (c), fix pass after rounds 4 and 5): a line whose words hold a no-break space ("and\a0interaction")
+   breaks inside them only where it would push the page sideways, at 320 px with text at 200 percent */
+.step-to { display: inline-block; margin-top: var(--oa-space-100); font: var(--oa-type-ui); overflow-wrap: anywhere }
 .step-to .u { text-decoration: underline; text-decoration-thickness: var(--oa-border-width-underline); text-underline-offset: .2em }
 .step-go:hover .step-to .u { text-decoration-thickness: var(--oa-border-width-underline-hover) }
 .route-step--later .step-t { padding: var(--oa-space-200) 0; color: var(--ink-2) }
@@ -426,6 +436,9 @@ a.toc-part-k:hover { text-decoration: underline }
 .tok-sw { width: 1rem; height: 1rem; flex: none; box-shadow: inset 0 0 0 var(--oa-border-width-hairline) var(--rule-strong); forced-color-adjust: none }
 .tok-val { font: var(--oa-type-caption); color: var(--ink-2) }
 .tok-th { display: inline-flex; align-items: center; gap: var(--oa-space-050) }
+/* CR-S22 (fix pass after rounds 4 and 5): a one-value token's swatch and value as one unit, so a long name that fills its
+   line takes both to the next line together; the gap is the box's own, so a box whose parts share a line keeps its size */
+.tok-v { display: inline-flex; align-items: center; gap: var(--oa-space-100) }
 
 /* The hinge divider (DR-96): ampersand B's 24 px master at 24 px, centered on a 1 px line as wide as the text it
    divides, 12 px of clear line on each side of B, in the surface's ink (D1-22, D1-26). */
@@ -644,6 +657,14 @@ a.toc-part-k:hover { text-decoration: underline }
 @media (min-width: 80em) { .code-demo--pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start } }
 .code-demo-k { margin: 0 0 var(--oa-space-100); font: var(--oa-type-caption); color: var(--ink-2) }
 .plate-stage.code-stage { forced-color-adjust: auto }
+/* AX-S7 (DR-278 (c), fix pass after rounds 4 and 5): with large text on a narrow screen, a code plate under 12rem wide
+   gives its live stages the room its two paddings took (32 px a side at 200 percent text, 320 px wide), so a set's own
+   words and buttons fit the window. At the default text size the narrowest code plate is 18rem, so this never applies. */
+.plate--code { container: oa-code / inline-size }
+@container oa-code (max-width: 12rem) {
+  .code-demo { padding-inline: var(--oa-space-050) }
+  .plate--code .plate-stage.code-stage { padding-inline: 0 }
+}
 .code-root { display: flow-root }
 .code-stage :where(a, code, pre, kbd, button, input, select, textarea) { all: revert }
 .code-stage :where(*, *::before, *::after) { box-sizing: revert }
@@ -684,6 +705,11 @@ a.toc-part-k:hover { text-decoration: underline }
 /* long chapter names wrap inside their links at large text sizes */
 .toc-list a, .toc-name, .part-list a, .related a, .rel-inline a, .chapnav a { max-width: 100% }
 .toc-list .t, .part-list .t, .related a, .chapnav a { min-width: 0; overflow-wrap: break-word }
+/* AX-S7 (DR-278 (c), fix pass after rounds 4 and 5): in a chapter's closing list a name breaks inside a word only where
+   the word alone passes the column, as "visualization" and "Photography," do at 320 px with text at 200 percent; the
+   number keeps its width, so a list that is tight at the default size sets as before */
+.related a, .related .later { overflow-wrap: anywhere }
+.related .n { flex: none }
 
 /* ---------------------------------------------------------------- Colophon, on the same columns as main */
 .colophon { padding: var(--oa-space-800) 0 var(--oa-space-1000) }
@@ -774,6 +800,8 @@ a.toc-part-k:hover { text-decoration: underline }
   .home .wm { --amp: currentColor }
 }
 @media print {
+  /* AX-M1: print hides the masthead, so its measured height is not read there; the two bars' sum stands, as before */
+  :root { --head-h: calc(var(--bar-h) + var(--where-h)) }
   .masthead, nav.rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint, .route-index { display: none !important }
   .frame { display: block; padding: 0 }
   body, .plate-scroll { background: none }
