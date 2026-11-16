@@ -10,7 +10,9 @@
  * plus it), key (code, optional: the row's key for labels; category otherwise), status (category, optional).
  * labels: reference (key of the row drawn across the rows), reference_label (words over its line, with {value}),
  * reference_band (true: a light band across the reference's own interval),
- * test ("reference": open dots computed from the margins), open (a status value drawn open), key_filled, key_open and
+ * test ("reference": open dots computed from the margins; "zero", the fix pass after rounds 4 and 5: open where the
+ * interval holds zero; with a status column and labels.open, the kit checks the status against the test, PR-S7), open (a
+ * status value drawn open), key_filled, key_open and
  * key_interval (a key above the rows, each entry left out when its words are), named (keys whose name and value print
  * bold, in the subject ink against the light fill), point (the one key in the red point), names ({key: printed name}),
  * short ({key: name printed on a phone}), value (the right column's words, with {value}, {margin}, {low}, {high};
@@ -53,6 +55,8 @@
       var is_open = function (r) {
         if (es && L.open !== undefined) return String(r[es]) === String(L.open);
         if (L.test === 'reference' && refrow) return !iv.differs(r, refrow);
+        // PR-S7 (the fix pass after rounds 4 and 5, opt-in): labels.test "zero" draws open the rows whose interval holds zero
+        if (L.test === 'zero') { var z = iv(r); return z.lo <= 0 && 0 <= z.hi; }
         return false;
       };
       var fv = f.value || 'number:1';

@@ -115,6 +115,8 @@ def s91():
     check(sid, "345 bankruptcy seats against the table's 316", int(r["2"]["seats"]) == 345 and int(r["2"]["seats_in_statute_table"]) == 316)
     has(sid, t, "except in Guam, the Northern Mariana Islands and the Virgin Islands", "the territorial judges' exception, the three territories named")
     # CD-S4 (fix pass after rounds 4 and 5): the title says only district judges serve for life; the cards print the terms
+    # the data lead's batch 9 (CD-S4): the title holds the data's universe, the judges at trial in the federal district courts
+    check(sid, "the title's scope is the district courts' three kinds of judge", "three kinds of judge who hear cases at trial in the federal district courts, only district judges" in s["title"])
     check(sid, "only the district judge's term is for life (CD-S4's title)", "only district judges serve for life" in t and "for life" in r["1"]["term"] and all("life" not in r[k]["term"] for k in ("2", "3")))
     check(sid, "677 district seats = 673 in the statute + 4 territorial", int(r["1"]["seats"]) == 677 and int(r["1"]["seats_in_statute_table"]) + int(r["1"]["seats_in_territorial_courts"]) == 677)
     check(sid, "a card field prints the seats column", any(f["field"] == "seats" for f in s["labels"]["fields"]))
@@ -191,9 +193,10 @@ def s94():
     both = sorted({x["date"] for x in rr if any(y["date"] == x["date"] and y["consequence"].startswith("None") for y in rr) and any(y["date"] == x["date"] and not y["consequence"].startswith("None") for y in rr)})
     check(sid, "April 15 and June 15 hold both kinds", both == ["2027-04-15", "2027-06-15"], f"{both}")
     check(sid, "six tax dates, and October 1 the seventh with a consequence", len(taxes) == 6 and all(not x["consequence"].startswith("None") for x in taxes) and [x["date"] for x in cons if x["track"] == "budget"] == ["2027-10-01"])
-    has(sid, t, "16 budget and tax deadlines federal law sets on 13 days", "the count of deadlines and days")
+    has(sid, t, "16 budget and individual income tax deadlines federal law sets on 13 days", "the count of deadlines and days")
     # CD-S4: the title's one finding, seven of the 16 with a consequence in law
-    check(sid, "the title: \"Seven of the 16\" carry a consequence in law", "Seven of the 16 budget and tax deadlines" in t and len(cons) == 7 and len(rr) == 16)
+    # the data lead's batch 9 (CD-S4): the title holds the sidecar's universe, the budget process and individual income tax
+    check(sid, "the title: \"Seven of the 16\" carry a consequence in law", "Seven of the 16 budget and individual income tax deadlines" in s["title"] and len(cons) == 7 and len(rr) == 16)
     check(sid, "the six tax deadlines fall on five days", len({x["date"] for x in taxes}) == 5)
     for n in re.findall(r"\b(\d+) (?:dates|events|days)\b", t):
         check(sid, f"a count the words print, {n}, is one the data gives", int(n) in (16, 13, 7, 9, 12), n)

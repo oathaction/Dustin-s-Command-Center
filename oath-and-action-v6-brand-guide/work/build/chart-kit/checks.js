@@ -349,6 +349,33 @@ function check_spec(K, spec, opts) {
       });
       const mc = first && first.meta.margin_columns;
       if (mg && mc && mc[vf] && mc[vf] !== enc.margin) f.push(`interval: the margin "${enc.margin}" is not the one the sidecar names for "${vf}"; print "${mc[vf]}" (margin_columns, AX S8)`);
+      // PR-S7 (the fix pass after rounds 4 and 5): a range bar whose status column names its open rows says which test they
+      // mean, labels.test "zero" (the interval holds zero) or "reference" (the gap to the reference row sits inside its own
+      // margin, Rule 14.9), and every row's dot agrees with that test, so no spec sets apart a change its margin cannot tell
+      const L = spec.labels || {};
+      if (spec.form === 'range-bar' && enc.status && L.open !== undefined && K.parts && K.parts.interval_of && sel.length) {
+        const iv = K.parts.interval_of({ encode: enc }), kf = enc.key || enc.category;
+        const refrow = L.reference !== undefined && L.reference !== null ? sel.find(r => String(r[kf]) === String(L.reference)) : null;
+        if (L.test !== 'zero' && L.test !== 'reference') f.push('interval: the status column names open rows, so labels.test says which test an open dot means, "zero" or "reference" (PR-S7, Rule 14.9)');
+        else if (L.test === 'reference' && !refrow) f.push('interval: labels.test is "reference" and labels.reference names no row (PR-S7)');
+        else {
+          const wrong = sel.filter(r => r !== refrow).filter(r => {
+            const x = iv(r), inside = L.test === 'zero' ? x.lo <= 0 && 0 <= x.hi : !iv.differs(r, refrow);
+            return (String(r[enc.status]) === String(L.open)) !== inside;
+          });
+          if (wrong.length) f.push(`interval: ${wrong.length} row(s) drawn ${L.test === 'zero' ? 'open where the interval leaves out zero, or filled where it holds zero' : 'open where the gap to the reference passes its margin, or filled where it does not'}: ${wrong.slice(0, 4).map(r => r[kf]).join(', ')} (PR-S7, Rule 14.9)`);
+        }
+      }
+    }
+  }
+  // PR-S7: columns with a moving average that name a column (labels.named) set it apart in the subject ink, so a named column
+  // stands past the margin the spec draws (labels.margin.value); one inside it is a change the survey cannot tell (Rule 14.142)
+  if (spec.form === 'columns-moving-average' && sel.length) {
+    const L = spec.labels || {}, enc = spec.encode || {}, mv = L.margin && isFinite(+L.margin.value) ? Math.abs(+L.margin.value) : null;
+    if (mv !== null && L.named) {
+      const xs = [].concat(L.named).map(n => String(typeof n === 'object' ? n.x : n));
+      const inside = sel.filter(r => xs.indexOf(String(r[enc.x])) >= 0 && isFinite(+r[enc.y]) && Math.abs(+r[enc.y]) <= mv);
+      if (inside.length) f.push(`interval: ${inside.length} named column(s) inside the margin of plus or minus ${mv}: ${inside.map(r => `${r[enc.x]} (${r[enc.y]})`).join(', ')}; a column the title names stands past the margin (PR-S7, Rule 14.142)`);
     }
   }
   // AX S8 (D3-905): a sidecar's check_only_columns print nowhere, and its source_line_columns name the columns each source

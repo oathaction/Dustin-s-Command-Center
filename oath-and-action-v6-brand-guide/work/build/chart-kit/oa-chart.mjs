@@ -744,19 +744,24 @@ async function build(o, check_only) {
   for (const { spec, res } of items) {
     let wt = null;
     try { wt = plate_weight(spec, res); } catch (e) { res.warnings.push('weight: not measured: ' + e.message); }
-    if (wt && wt.with_frame > wt.ceiling && +String(spec.id).replace(/^S/i, '') >= 65) res.warnings.push(`weight: about ${wt.with_frame.toLocaleString('en-US')} bytes on the page with its frame, past ${wt.ceiling.toLocaleString('en-US')}; no plate from round 3 on (S65 and later) goes past it (D3-1328)`);
+    // PR-S4 (the fix pass after rounds 4 and 5): DR-271 and D3-1895 report a plate past the 15,000 byte figure and set no limit,
+    // so the weight line says it as a report, and no warning claims a rule is broken
+    const past = wt && wt.with_frame > wt.ceiling;
     const summary = { id: spec.id, form: spec.form, spec: path.relative(ROOT, res.spec_path), rows: res.rows ? res.rows.length : 0,
       drawings: res.drawings.map(d => ({ ground: d.ground, page: d.page, width: d.width, height: d.height, svg_bytes: d.bytes })), faults: res.faults, warnings: res.warnings, weight: wt };
     if (!check_only) fs.writeFileSync(path.join(o.out, spec.id.toLowerCase(), `${spec.id.toLowerCase()}-check.json`), JSON.stringify(summary, null, 1));
     console.log(`${res.faults.length ? 'FAIL' : 'PASS'} ${spec.id} ${spec.form}: ${summary.rows} rows, ${res.drawings.length} drawings, ${res.faults.length} faults`);
     res.faults.slice(0, 40).forEach(f => console.log('  - ' + f));
-    if (wt) console.log(`  weight: ${wt.figure.toLocaleString('en-US')} bytes as the guide places it, about ${wt.with_frame.toLocaleString('en-US')} with its plate's frame; share per plate ${wt.share.toLocaleString('en-US')} (${wt.share_from}), ceiling ${wt.ceiling.toLocaleString('en-US')}`);
+    if (wt) console.log(`  weight: ${wt.figure.toLocaleString('en-US')} bytes as the guide places it, about ${wt.with_frame.toLocaleString('en-US')} with its plate's frame; share per plate ${wt.share.toLocaleString('en-US')} (${wt.share_from}), ceiling ${wt.ceiling.toLocaleString('en-US')}`
+      + (past ? `; past the plate figure of ${wt.ceiling.toLocaleString('en-US')} bytes, reported and not a limit (DR-271)` : ''));
     // AX-M2 (round 3 fix pass): a warning prints and is written to the check file; it does not fail the spec
     (res.warnings || []).forEach(x => console.log('  ~ warning: ' + x));
     if (res.faults.length) bad++;
   }
   // say where the files went, so a reader who does not code can find them (editor's read, K7)
-  if (!check_only) console.log(`wrote: ${o.out}, one folder per spec (its pages, SVG, PNG and CSV exports, captures and check file)`);
+  // PR-S4: with --no-png the run writes no PNG and takes no captures, and says so
+  if (!check_only) console.log(o.png === false ? `wrote: ${o.out}, one folder per spec (its CSV export and check file; no PNG, SVG or captures, --no-png)`
+    : `wrote: ${o.out}, one folder per spec (its pages, SVG, PNG and CSV exports, captures and check file)`);
   return bad ? 1 : 0;
 }
 
