@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:27 UTC. **Batch 1 (chapter 11):** marks unchanged; call 4's extension yes (steps 5 and 6 under slashes with no petition); facts signed off; one item sent back, CE-S20's "No petition" row needs a sentence. **Rulings R6 (NB-S5: keep R-28 with its rule printed) and R7 (DF-10: "Retrieved", and the version the copy states) written.** Batch 2, chapter 15, next.
 - 17:08 UTC. **Rulings R1 to R5 written** (call 7), with R4b for ST-S2. Owners read them under "Rulings". Sign-off batches follow as owners report fixes.
 - 17:00 UTC. Started.
 
@@ -140,9 +141,36 @@ Written 17:27 UTC. The version facts wait on the research lead's F10; this sets 
 
 ## Sign-offs
 
-### Batch 1 (17:30 UTC): chapter 11, Rules 11.10 and 11.11 (for the tracker designer, the editor, the research lead and the main session)
+### Batch 1 (17:27 UTC): chapter 11 signed off but one item: CE-S20's "No petition" row needs its words (for the tracker designer, the editor, the research lead and the main session)
 
-PENDING
+Read from the tracker designer's notes (17:23), `11-icons.json` (Rules 11.8, 11.10 and 11.11 whole, by script), `s-11-10-correct`, `s-11-ballot-steps` and the sources file's court and California rows. Marks and facts first, words last. The editor's second read of the same words runs now; nothing here sets words.
+
+**Marks: unchanged, signed off.** By script, the `data-icon` marks and drawings of `s-11-10-correct`, `s-11-11-correct`, both failure plates and the ballot step table equal those at the review commit `8ace3dc6`. Each correct plate still holds one current, one decided or certified and one stopped item (DR-275). Only words moved: `11-icons.json`, Measure 99013's line and step 2's words.
+
+**Call 4 (CE-S20) and its extension: yes.**
+- A ruling no one appeals ends by a ruling, not a stop, so the steps the law did not reach go under slashes with its words, as Rule 11.8 keeps step 6 of a request no one appealed. The square keeps chapter 11's one meaning, "Stopped", for settlement, dismissal and a denied petition. My round 5 ruling (f) and batch 1 listed "never appealed" among the squares; call 4 replaces that.
+- **Steps 5 and 6 under slashes when no one petitions the Supreme Court: yes.** The same reason holds one court up: the appeals court's ruling ends the case, and nothing stopped it. It also matches round 5's measure the Legislature passes, which keeps steps 5 and 6 under slashes after an end that is not a stop. A denied petition keeps its square at step 5, since there a step was taken and refused.
+- **"No petition" names no day count: yes.** The sources file's step 5 row quotes 28 U.S.C. 2101(c) and Supreme Court Rule 13.5: a justice may extend the 90 days by up to 60, so a fixed count would be wrong for some cases.
+
+**Sent back, by code.**
+- **CE-S20, the "No petition" row has no words for its slashes.** Rule 11.2: a shape and the words beside it say the same thing. "Never appealed" carries its sentence ("No appeal was filed in the 30 days the law allows."); "No petition" gives the appeals court's ruling alone, so a reader sees two slashes with nothing saying why. Add one sentence after the appeals court's ruling, and after CE-S19's "The lower court's ruling stands." where the ruling leaves one in place, saying no one asked the Supreme Court to review it in the time the law allows. The editor sets the words; no day count.
+
+**Suggestions, not conditions.**
+- *"Never appealed".* 28 U.S.C. 2107(c) lets the district court extend the time to appeal on a motion, and the sources file's step 3 row quotes 2107(a) and (b) only. For parity with "No petition", the sentence could read "in the time the law allows, 30 days from the judgment, or 60 where the United States is a party", or the research lead adds 2107(c) to the row. Either way the slashes wait for the time, extensions included, to pass.
+- *Both rows* could say the next step keeps a fine ring while the time runs, as Rule 11.8's step 6 spec does.
+
+**Facts: signed off, each held to its source.**
+- *ST-S3.* Measure 99013's line, "projected fewer than 95 percent of the valid signatures the law requires, so election officials did not go on to check every signature", matches the sources file's California row (Elections Code 9030 and 9031: under 95 percent fails; 95 to 110 percent a full check).
+- *CE-S19.* Each "stands" sentence matches the court's act: Affirmed leaves the judgment below in place; a tie, by the step 6 row's quote, "the decision of the lower Court stands"; a denied petition leaves the appeals court's ruling.
+- *CE-S18.* "And sent back", "which the court enters as remanded": remand is the docket's word (28 U.S.C. 2106), named once, as ED5-3 named "Affirmed".
+- *CE-S16.* The slashes the text names (step 4 for a direct initiative, steps 1 to 3 for a referral) equal the specs.
+- *CE-S17 and NB-S7*, on the research lead's F9 and F8: I did not read the four constitutions myself. The text's claims match those facts as stated: Massachusetts, Ohio and Michigan vote first on a proposed law, and California sends an initiative straight to the ballot; in Massachusetts and Ohio a passed measure goes to the governor, in Michigan it becomes law without one.
+- *CE-S15.* "Where the law asks" keeps Massachusetts's certification (Article XLVIII) apart from California, whose attorney general certifies nothing. One older point, not this pass's: step 2's law row cites Massachusetts and California only, while the rule says the steps follow four states. Whether Ohio's and Michigan's step 2 belongs to the attorney general is for the research lead to confirm; I did not read those laws, and it sends nothing back.
+- *CE-S11, CE-S21.* The gloss of "injunction" and "Fell short of the vote the law requires", with a sentence naming the test, claim nothing past their sources.
+
+**Words, last.** No em dash, en dash, straight apostrophe or listed word in Rules 11.10 and 11.11 (my scan). Every word is the editor's to set in its second read.
+
+**Not looked at:** any capture (none was taken; `browsers.sh` said WAIT for the tracker designer). I did not rerun the generator or a build; the tracker designer's three strict builds and rerun proofs are theirs.
 
 
 ## Calls

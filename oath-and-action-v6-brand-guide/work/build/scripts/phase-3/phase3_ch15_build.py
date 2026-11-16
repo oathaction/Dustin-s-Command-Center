@@ -3968,9 +3968,9 @@ def rule_15_22(book):
                                             "on a line in the text’s ink at the subject weight", "token": "oa.chart.line.subject"},
             {"label": "Other paths", "value": "Bold numbers on gray lines at the context weight, set to one side, each saying in "
                                               "words where it leaves the spine", "token": "oa.chart.color.context.onNewsprint"},
-            {"label": "After the law", "value": "Funding, rules, review and the courts on a context line, then what undoes it"},
+            {"label": "After the law", "value": "Funding, rules, review and the courts on a gray line, then what undoes it"},   # the editor's second read: the key's and the rule's word (DF-5)
             {"label": "Ends", "value": "A small square and words where a path stops, the plate’s only square"},
-            {"label": "Return", "value": "A context line back to stage 1 for an act that undoes the law"},
+            {"label": "Return", "value": "A gray line back to stage 1 for an act that undoes the law"},
             {"label": "Sources", "value": "The law or rule behind each stage, with the date we read it, beside the stage"},
         ],
         "related": ["11", "13", "14"],
@@ -4664,10 +4664,10 @@ def recon_words():
              f"Connections: {grades['well-supported']} well-supported and {grades['plausible_contested']} plausible_contested; "
              f"issues use well_supported; claims use contested.",
              "One display word per grade from one table, read from the grade field."),
-        47: (f"By our reading of {V71_READ}, the atlas’s drawing tool draws documented and well supported in one solid line.",
+        47: (f"As we read it on {V71_READ}, the atlas’s drawing tool draws documented and well supported in one solid line.",
              f"{grades['documented']} connections are documented and {grades['well-supported']} well supported.",
              "A documented connection’s grade word opens with the record square."),
-        48: (f"By our reading of {V71_READ}, the atlas’s drawing tool dashes a conceptual loop’s steps close to the plausible dash.",
+        48: (f"As we read it on {V71_READ}, the atlas’s drawing tool dashes a conceptual loop’s steps close to the plausible dash.",
              f"{chip('Loop', 'B2')} and {chip('Loop', 'B3')} and {chip('Loop', 'R9')} are the three conceptual loops.",
              "A conceptual step draws as a hollow line between thin pills."),
         49: ("Most route entries carry no check date.",
@@ -4679,7 +4679,7 @@ def recon_words():
         51: (f"The name of {chip('Connection', 'L23')} says poor service raises the risk of losing, while its sign is minus.",
              f"{chip('Connection', 'L23')} “{e(link('L23')['name'])}”, minus; on its sign: “{e(link('L23')['sign_meaning'])}”",
              "The connection prints the atlas’s sentence on its sign beside its name."),
-        52: (f"By our reading of {V71_READ}, the atlas’s drawing tool ends an authority connection in an arrowhead.",
+        52: (f"As we read it on {V71_READ}, the atlas’s drawing tool ends an authority connection in an arrowhead.",
              f"{words_n(len(auth)).capitalize()} authority connections, none signed.",
              "Authority ends in the open diamond."),
         53: ("Conceptual loops carry grades with no numbered steps behind them.",
@@ -4787,7 +4787,7 @@ def rule_15_25(book):
         need(ph in q, f"the reconciliation sidecar no longer says {ph!r}")
     words = recon_words()
     for n in RENDERER_ROWS:     # ST-S9: a row that rests on the drawing tool says whose reading it prints
-        need(any(w in " ".join(words[n]) for w in ("our first audit", "By our reading of")),
+        need(any(w in " ".join(words[n]) for w in ("our first audit", "As we read it on")),   # the editor's second read: "By our reading of [a date]" read as reading the date
              f"row {n} states the atlas's drawing tool as fact, with no word on whose reading it is")
     need(set(words) == {r["row"] for r in RECON}, "a reconciliation row has no words")
     head = (f'<p class="k">Earlier drawings of the atlas, reconciled to the model of {SNAP}</p>'
