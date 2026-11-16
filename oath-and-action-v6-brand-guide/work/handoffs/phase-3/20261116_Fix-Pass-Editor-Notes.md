@@ -122,7 +122,62 @@ Group 18's line sits in my own generator (`GROUP_LINES[18]` in `phase3_ch14_rule
 
 ## Words for the tracker designer
 
-(Being written.)
+Written 17:11 to 17:16 UTC. "Old" strings are the printed words in `apply_systems_ch11.py` (the generator splits them across lines; match the joined words) as your working copy held them at 17:10. Three rows wait on the research lead's "Facts" (CE-S17, NB-S7's reason, ST-S3's figure); each says so, and I confirm or change it here when the facts land. Your CE-S20 and CE-S18 text gets my second read once you report done.
+
+### CE-S11, "injunction" glossed where chapter 11 first uses it
+
+- Rule 11.11 `rule[0]`, old: "...as when a district court of three judges grants or denies an injunction and the law sends the appeal straight to the Supreme Court."
+- New: "...as when a district court of three judges grants or denies an injunction, a court order to do or to stop doing something, and the law sends the appeal straight to the Supreme Court."
+
+Rule 11.12 and the specs then use the word bare, as they do now.
+
+### CE-S15, "certify" as one verb
+
+- `BALLOT_STEPS`, step 2's words (line 115), old: "The attorney general clears the measure and writes the title and summary that petitions and ballots carry."
+- New: "The attorney general writes the title and summary that petitions and ballots carry, and where the law asks, first certifies that the measure is in proper form and on a subject the initiative may cover."
+- Rule 11.10 `rule[1]`, first sentence, old: "Until the state certifies the count, a measure at step 6 stays current, and its words say so: ..."
+- New: "Until the state certifies the count, which makes the result official, a measure at step 6 stays current, and its words say so: ..."
+
+Facts: the workflow sources file, row "2 Title and summary" (Massachusetts's attorney general certifies "proper form" and "only subjects not excluded from the popular initiative"; California's prepares the title and summary). "Where the law asks" keeps California true. Steps 5 and 6 keep "certifies": with the gloss and the actor named each time ("the attorney general", "the state’s election officer", "the state"), one verb now means one act, done by three offices.
+
+### CE-S16 and NB-S7, the kinds of measure and why these four states
+
+- Rule 11.10 `rule[0]`, old: "A ballot measure here is a citizen initiative: voters propose a law or an amendment to their state’s constitution by petition, and the voters decide it. These steps follow the constitutions of Massachusetts, California, Ohio and Michigan, with California’s election office, and each state sets its own deadlines and signature counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only where the Legislature votes on the measure first, so a measure that goes straight to the ballot keeps step 4 under a slash. The same steps carry a measure the Legislature sends to the voters itself, which has no petition, so steps 1 to 3 keep their slashes."
+- New: "A ballot measure here is a law or an amendment to a state’s constitution that the voters decide. It starts as a citizen initiative, which voters propose by petition, or as a legislative referral, which the Legislature sends to the voters itself. An initiative is indirect where the Legislature votes on it first and direct where it goes straight to the ballot. These steps follow the constitutions of Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and California’s constitution and election office, where an initiative goes straight to the ballot; each state sets its own deadlines and signature counts. The tracker uses the bill tracker’s marks for six steps of its own: Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 counts only for an indirect initiative, so a direct one keeps step 4 under a slash, and a referral, which has no petition, keeps steps 1 to 3 under slashes."
+- The ballot step table's caption (`s_route_steps`, line 1385), old: "The six steps of a state ballot measure, a citizen initiative, with what happens at each and where the law sets it in the four states we read."
+- New: "The six steps of a state ballot measure, with what happens at each and where the law sets it in four states: Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and California, where an initiative goes straight to the ballot."
+
+Facts: the sources file's BI rows 4 (indirect: Massachusetts, Ohio, Michigan; direct: California, Elections Code 9007) and the four states' frame the nonpartisan reader quotes from the round 5 research notes. **Waiting on** the research lead's NB-S7 fact to confirm that this is the reason the four were chosen; if its reason differs, I change the clause. "On a proposed law" keeps the clause true where a state's constitutional amendments go straight to the ballot.
+
+### CE-S17, a measure the Legislature passes (waiting on the research lead)
+
+- Measure end words and Rule 11.10 `rule[1]`'s last sentence, old: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date: “Passed by the Legislature on May 2.”"
+- If the facts say the governor then acts in every one of the four states, new: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date and what comes next: “Passed by the Legislature on May 2. It goes to the governor.”"
+- If the facts say it differs by state, new: "A measure the Legislature passes keeps steps 5 and 6 under slashes, and its words give the date and what comes next, as the state’s law sets it: “Passed by the Legislature on May 2. It goes to the governor.” where the governor then signs or vetoes it, and “Passed by the Legislature on May 2. It becomes law with no signature.” where the governor takes no part." Then the spec "Passed by the Legislature" takes the same two endings.
+
+I write the final row here when the research lead's CE-S17 fact lands.
+
+### CE-S19, every "Affirmed" says what stands
+
+- Rule 11.11 `rule[1]`, after "...when it returns the case.", add: "Every ending that leaves a ruling in place says so in one sentence: “The lower court’s ruling stands.” after Affirmed or a tie, and “The appeals court’s ruling stands.” after a denied petition."
+- Spec "A higher court’s ruling", old: "Affirmed; Reversed; Vacated; Modified; each with the court, as in “Affirmed by the appeals court”, and “and sent back” where the court returns the case"
+- New: "Affirmed, then “The lower court’s ruling stands.”; Reversed; Vacated; Modified; each with the court, as in “Affirmed by the appeals court”, and “and sent back” where the court returns the case"
+
+The tie's spec ("Affirmed by an equally divided Court, which is a tie vote, and “The lower court’s ruling stands.”") and Measure 99016's "The appeals court’s ruling stands." already match. The failure plate's "Affirmed by the Supreme Court on January 11." stays: it is the fault.
+
+### CE-S21, the measure most voters approved
+
+- Rule 11.10 spec "The end, in words", old: "...; Not approved by voters where most said yes but a second test failed, with a sentence that names it"
+- New: "...; Fell short of the vote the law requires, where most said yes but a second test failed, with a sentence that names the test"
+
+No plate prints it today. The sentence after it, where a card needs one, follows my round 5 row: "Most voters said yes, but the law also needs yes votes equal to 30 percent of all ballots cast." (Massachusetts's Amendment Article LXXXI, the sources file's row "6 Vote, certification and effect"; the cards name no state, so "the law".)
+
+### ST-S3, the sample that stopped Measure 99013
+
+- `BALLOTS`, Measure 99013's `line` (line 259), old: "On July 14, a random sample of the signatures projected fewer valid ones than the law requires."
+- New: "On July 14, a random sample of the signatures projected fewer than 95 percent of the valid signatures the law requires, so election officials did not go on to check every signature."
+
+Facts: the sources file's row "3 Signatures" (California Elections Code 9030 and 9031: projected under 95 percent, the measure "fails to qualify for the ballot"; 95 to 110 percent, a "full check"). "Election officials" is the step table's own actor for step 3. If the research lead's ST-S3 fact reads the rule differently, I change this row.
 
 ## Fixed
 

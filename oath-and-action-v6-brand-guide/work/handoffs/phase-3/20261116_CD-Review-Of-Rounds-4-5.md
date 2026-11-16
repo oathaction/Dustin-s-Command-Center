@@ -32,7 +32,7 @@ Final first-pass scores, after reading the other eight reports (17:15 UTC). My o
 | R5-G. "Choose a chart", the selection guide | 4 | 5 | 5 | 4 | 4 | 3* | 0 | 2 | no |
 | R5-P. The palette specification | 4 | 4 | 5 | 5 | 4 | 4 | 0 | 2 | yes |
 | R5-1. Rule 14.142, S96 and its failure | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 4 | yes |
-| R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 3* | 5 | 4 | 5 | 4 | 1 | 2 | no |
+| R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 3* | 5 | 4 | 5 | 4 | 1 | 1 | no |
 | R5-3. Rule 14.144, three reforms on Loop R8 | 3* | 4 | 4 | 4 | 3* | 4 | 1 | 5 | no |
 | R5-W. Chapter 14's intro, opener caption, Rule 14.1, group lines 17 and 18 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 1 | yes |
 | C15-I. Rules 15.19 to 15.21 | 4 | 4 | 4 | 3* | 5 | 4 | 1 | 1 | no |
@@ -55,7 +55,7 @@ My accessibility scores rest on the captures, the specs' alt text and tables, th
 | R5-G. "Choose a chart", the selection guide | 4 | 5 | 5 | 5 | 4 | 4 | 0 | 0 | yes |
 | R5-P. The palette specification | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 1 | yes |
 | R5-1. Rule 14.142, S96 and its failure | 4 | 5 | 5 | 5 | 5 | 4 | 0 | 0 | yes |
-| R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 1 | yes |
+| R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 0 | yes |
 | R5-3. Rule 14.144, three reforms on Loop R8 | 3* | 4 | 4 | 4 | 3* | 4 | 1 | 2 | no |
 | R5-W. Chapter 14's intro, opener caption, Rule 14.1, group lines 17 and 18 | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 1 | yes |
 | C15-I. Rules 15.19 to 15.21 | 4 | 4 | 4 | 4 | 5 | 4 | 0 | 1 | yes |
@@ -80,7 +80,7 @@ One sentence per score, as I wrote them at 17:04 UTC. Where a score changed, the
 
 **R5-1.** Craft 4: the band, the two named drops with their leaders and the hatched months land cleanly at 1x, and I hold 5 until the 2x captures show the band's key swatch and the hatch at true pixels. Clarity 5: the title states the finding, and the failure plate shows the one misreading the band prevents. Brand fidelity 5: the named drops take the subject ink and red never marks a loss (Rule 14.6). Usefulness 5: the rule says what to draw, with which tokens, and the kit draws the rest. Evidence honesty 5: the interval's source and release, the preliminary months, the revision and the inauguration window are each stated once. Accessibility 4: the phone note names both drops in words and the table follows.
 
-**R5-2.** Craft 4: the two loop drawings share one baseline at the shared pill, and the controls sit in a 2 by 2 grid, though the still list under the controls does not mark the step the status line names, where 15.19's list does (CD-S9). Clarity 4: "Each loop numbers its steps from where the atlas starts it" settles the counting question at once. Brand fidelity 5: one ink, the shared variable filled, grades as chips, no red. Usefulness 4: it shows how a builder joins two loops on Rule 18.22's part. Evidence honesty 5: every connection quotes the atlas with grade and delay, L54's "weakest" is the atlas's own word, and the plate says the atlas weighs neither loop. Accessibility 4: the still sequence prints in full and the status line names each step's loop.
+**R5-2.** Craft 4: the two loop drawings share one baseline at the shared pill, the controls sit in a 2 by 2 grid, and the list marks the current step with Rule 18.22's bar (corrected at 17:13 UTC: I first wrote that it did not, and withdrew CD-S9 after reading the step-five capture). Clarity 4: "Each loop numbers its steps from where the atlas starts it" settles the counting question at once. Brand fidelity 5: one ink, the shared variable filled, grades as chips, no red. Usefulness 4: it shows how a builder joins two loops on Rule 18.22's part. Evidence honesty 5: every connection quotes the atlas with grade and delay, L54's "weakest" is the atlas's own word, and the plate says the atlas weighs neither loop. Accessibility 4: the still sequence prints in full and the status line names each step's loop.
 
 **R5-3.** Craft 3: the R-38 state draws L39 as a 6 px black stroke; the three choices take three widths (DD-R2), and each card repeats its reform's chip in its own first sentence across a 3,121 px plate (CD-S10). Clarity 4: the cards hold every field in the same order, and "None" under R-38's targets on the loop says the lesson plainly. Brand fidelity 4: red does one job, where a reform acts. Usefulness 4: the plate shows how to compare reforms with no total. Evidence honesty 3: in one of its three states the drawing marks a connection R-38 does not target, against the plate's own words "turns no mark red" (CD-M1). Accessibility 4: the accessibility lead's three phrases past their card at 320 px with 200 percent text go beyond WCAG and stay optional.
 
@@ -145,7 +145,7 @@ No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 fo
 
 **CD-S8. Rule 14.1 and group 17.** Name "Choose a chart" in Rule 14.1 and link it; name all seven forms in group 17's line (the annotated illustration and the calendar are missing); replace "frozen data" in the intro with words a reader knows ("a fixed copy of the source's data"). Owner: editor.
 
-**CD-S9. Rule 14.143's still list.** Rule 18.22's anatomy marks the current step with a 4 px bar and the surface fill (`s-18-22-anatomy`), and 15.19's list mutes the steps not yet reached; 14.143's list, after five presses of Next step, shows every row in full ink and none marked. While the stepper runs, give the row the status line names the current-step treatment, so one component reads one way in chapters 14, 15 and 18. Owner: complex examples maker, with the component engineer.
+**CD-S9. Withdrawn.** I first wrote that 14.143's still list does not mark the current step. The step-five capture shows it does: Loop R10's step 2 takes Rule 18.22's 4 px bar and surface fill, and the steps ahead are muted. Withdrawn at 17:13 UTC.
 
 **CD-S10. Rule 14.144's cards.** Drop the reform chip from each card's first sentence ("Turns one connection red"), since the card's head names it; the plate loses three chips and one line per card. Owner: complex examples maker, editor.
 
