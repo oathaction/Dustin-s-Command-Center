@@ -54,16 +54,24 @@
     "evidence_honesty": "S85 says the 2025 average leaves out October and is not strictly comparable, and S87 and S88 say the overlap is Oath & Action's arithmetic with approximate margins.",
     "accessibility": "each chart has its table and alt, and the sketches carry their Illustrative chips beside the drawing."
    },
-   "specimens_under_the_bar": [
-    "S86"
-   ],
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {},
+   "specimens_under_the_bar": [],
    "must_fix": [],
    "should_fix": [
     "CD-S2",
-    "CD-S3"
+    "CD-S3",
+    "RP-17"
    ],
    "must_fix_count": 0,
-   "should_fix_count": 2,
+   "should_fix_count": 3,
    "ready": true
   },
   {
@@ -74,32 +82,61 @@
    "scores": {
     "craft": 3,
     "clarity": 4,
-    "brand_fidelity": 4,
+    "brand_fidelity": 3,
     "usefulness": 4,
-    "evidence_honesty": 5,
+    "evidence_honesty": 3,
     "accessibility": 4
    },
    "reasons": {
     "craft": "S90's number panel, S91's aligned cards, S92's steps and S93's redrawn page are editorial work of a high order, but S94's calendar, the form's only example, draws the year as a 220 px strip of 6 px squares in a 720 px column with no day ticks, and its legend reads \"Consequence in law□ No consequence stated\" with no gap (CD-S1).",
     "clarity": "every plate names its question, though S91's title holds two findings and S94's ends in an appositive list (CD-S4).",
-    "brand_fidelity": "neutral inks only, and S95's card carries the house's evidence line and title grammar into a feed.",
+    "brand_fidelity": "S95, the guide's one social card, ends on \"Chart: Oath & Action\" with no lockmark, though DR-211, approved by name, has social cards sign off with the 48 px master at 96 px; D3-1802's reading of DR-268 moved only the vertical frame to chapter 23. Found by NB-M2; I confirmed DR-211 and DR-268 in the decision log.",
     "usefulness": "S95 shows both crops with their true size stated and the words to post, and S89 shows its phone drawing beside the desk one.",
-    "evidence_honesty": "every time limit says \"the law's limit\", S90 names a table under each figure and its COVID-19 relief, and S91 says why it prints 677 and 345.",
+    "evidence_honesty": "S92's table prints \"Every request\" beside \"Appeal a denial\" and \"Go to court\", so the table teaches that every records request ends in an appeal and a lawsuit. Found by RP-2; I confirmed the column's words map in `s92.json` (\"main\" to \"Every request\").",
     "accessibility": "the cards are live HTML text (R4-3), and each plate keeps its table."
    },
+   "first_reading_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "brand_fidelity": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "neutral inks only, and S95's card carries the house's evidence line and title grammar into a feed.",
+     "reason": "S95, the guide's one social card, ends on \"Chart: Oath & Action\" with no lockmark, though DR-211, approved by name, has social cards sign off with the 48 px master at 96 px; D3-1802's reading of DR-268 moved only the vertical frame to chapter 23. Found by NB-M2; I confirmed DR-211 and DR-268 in the decision log."
+    },
+    "evidence_honesty": {
+     "from": 5,
+     "to": 3,
+     "first_reading_reason": "every time limit says \"the law's limit\", S90 names a table under each figure and its COVID-19 relief, and S91 says why it prints 677 and 345.",
+     "reason": "S92's table prints \"Every request\" beside \"Appeal a denial\" and \"Go to court\", so the table teaches that every records request ends in an appeal and a lawsuit. Found by RP-2; I confirmed the column's words map in `s92.json` (\"main\" to \"Every request\")."
+    }
+   },
    "specimens_under_the_bar": [
-    "S94"
+    "S92",
+    "S94",
+    "S95"
    ],
-   "must_fix": [],
+   "must_fix": [
+    "NB-M2",
+    "RP-2"
+   ],
    "should_fix": [
     "CD-S1",
-    "CD-S4"
+    "CD-S4",
+    "RP-18",
+    "RP-12"
    ],
-   "must_fix_count": 0,
-   "should_fix_count": 2,
+   "must_fix_count": 2,
+   "should_fix_count": 4,
    "ready": false,
-   "to_ready": "Land CD-S1 (S94's calendar drawn at the column's width with day ticks and a spaced legend); craft then reaches 4.",
-   "owner_of_lift": "Infographics maker; engineer for the legend gap"
+   "to_ready": "Land NB-M2 (S95's sign-off), RP-2 (S92's table words) and CD-S1 (S94's calendar at the column's width); brand fidelity, evidence honesty and craft then reach 4.",
+   "owner_of_lift": "Infographics maker; engineer for the sign-off and the legend gap; editor"
   },
   {
    "key": "R4-S",
@@ -122,6 +159,15 @@
     "evidence_honesty": "the note says New York counts fused lines and each figure rounds on its own.",
     "accessibility": "all 51 codes print on S12's phone drawing at 390 px; S16 and S78 at phone width I did not see (Not tested)."
    },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {},
    "specimens_under_the_bar": [],
    "must_fix": [],
    "should_fix": [],
@@ -138,24 +184,53 @@
     "craft": 4,
     "clarity": 5,
     "brand_fidelity": 5,
-    "usefulness": 5,
+    "usefulness": 4,
     "evidence_honesty": 4,
-    "accessibility": 4
+    "accessibility": 3
    },
    "reasons": {
     "craft": "one 2 px drawing system at 88 by 56 px that holds at 1x at 390 px, though the map row's county, district and small-multiple symbols fall to gray texture where every other family draws in lines.",
     "clarity": "the tier key leads, the sixteen questions run in the chapter's order, and a newcomer can find a form by the question in two looks.",
     "brand_fidelity": "neutral inks only, no red, and the party-colored map shown as a struck sketch in gray.",
-    "usefulness": "all 127 forms appear once, each a link to its entry.",
+    "usefulness": "The front door lists 127 forms and never reaches the three charts in full, so a reader who chooses columns with a moving average for a margin question never meets Rule 14.142. Found by PR-S9 and RP-3.",
     "evidence_honesty": "the tiers say truly which forms have finished examples and which are sketches.",
-    "accessibility": "each link is named \"Form, Tier\" with its picture hidden (R5-2), per the accessibility lead's notes."
+    "accessibility": "The sixteen questions are `p.sg-qt` paragraphs set in the h4 style, so a reader who moves by headings passes all 144 links without meeting a question. Found by RP-14; I counted 0 heading elements and 0 `role=\"heading\"` in the specimen file."
    },
-   "specimens_under_the_bar": [],
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "usefulness": {
+     "from": 5,
+     "to": 4,
+     "first_reading_reason": "all 127 forms appear once, each a link to its entry.",
+     "reason": "The front door lists 127 forms and never reaches the three charts in full, so a reader who chooses columns with a moving average for a margin question never meets Rule 14.142. Found by PR-S9 and RP-3."
+    },
+    "accessibility": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "each link is named \"Form, Tier\" with its picture hidden (R5-2), per the accessibility lead's notes.",
+     "reason": "The sixteen questions are `p.sg-qt` paragraphs set in the h4 style, so a reader who moves by headings passes all 144 links without meeting a question. Found by RP-14; I counted 0 heading elements and 0 `role=\"heading\"` in the specimen file."
+    }
+   },
+   "specimens_under_the_bar": [
+    "s-14-selection-guide"
+   ],
    "must_fix": [],
-   "should_fix": [],
+   "should_fix": [
+    "RP-3",
+    "RP-14"
+   ],
    "must_fix_count": 0,
-   "should_fix_count": 0,
-   "ready": true
+   "should_fix_count": 2,
+   "ready": false,
+   "to_ready": "Land RP-14 (the sixteen questions as headings) and RP-3 (a road to group 18); accessibility and usefulness then hold at 4.",
+   "owner_of_lift": "Selection guide maker; accessibility lead confirms"
   },
   {
    "key": "R5-P",
@@ -167,7 +242,7 @@
     "clarity": 4,
     "brand_fidelity": 5,
     "usefulness": 5,
-    "evidence_honesty": 5,
+    "evidence_honesty": 4,
     "accessibility": 4
    },
    "reasons": {
@@ -175,16 +250,33 @@
     "clarity": "each palette opens with its job in one sentence, though the measures read as lab notes (\"nearest neighbors stand 0.099 apart in lightness (the bar is 0.08)\").",
     "brand_fidelity": "the four inks in DR-236's order with Stone hatched, diverging pair B with no red, and Prussian in words only.",
     "usefulness": "token, role code, value and contrast on every approved ground, so a designer can choose a palette from this plate alone.",
-    "evidence_honesty": "every ratio rounded down, the simulation named and its limit stated.",
+    "evidence_honesty": "The plate says every ratio is rounded down, yet 16 of its 34 label ratios print 0.01 high because they floor a figure round 0 had already rounded; none crosses 3 or 4.5. Found by ST-S4 and PR-S6.",
     "accessibility": "swatches keep their color in forced colors and every value prints as text."
+   },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "evidence_honesty": {
+     "from": 5,
+     "to": 4,
+     "first_reading_reason": "every ratio rounded down, the simulation named and its limit stated.",
+     "reason": "The plate says every ratio is rounded down, yet 16 of its 34 label ratios print 0.01 high because they floor a figure round 0 had already rounded; none crosses 3 or 4.5. Found by ST-S4 and PR-S6."
+    }
    },
    "specimens_under_the_bar": [],
    "must_fix": [],
    "should_fix": [
-    "CD-S12"
+    "CD-S12",
+    "ST-S4"
    ],
    "must_fix_count": 0,
-   "should_fix_count": 1,
+   "should_fix_count": 2,
    "ready": true
   },
   {
@@ -194,7 +286,7 @@
    "stage": "Phase 3, review of rounds 4 and 5, first pass",
    "scores": {
     "craft": 4,
-    "clarity": 5,
+    "clarity": 4,
     "brand_fidelity": 5,
     "usefulness": 5,
     "evidence_honesty": 5,
@@ -202,17 +294,38 @@
    },
    "reasons": {
     "craft": "the band, the two named drops with their leaders and the hatched months land cleanly at 1x, and I hold 5 until the 2x captures show the band's key swatch and the hatch at true pixels.",
-    "clarity": "the title states the finding, and the failure plate shows the one misreading the band prevents.",
+    "clarity": "The failure caption names \"the title counts seven losses as findings\" as the fault, while the correct plate's title also counts seven and the rule asks for the full count; and the failure plate adds a latest-month label the correct plate dropped. Found by ST-M1. I hold it as a Should: the correct plate teaches the lesson, and only the caption's wording misplaces it.",
     "brand_fidelity": "the named drops take the subject ink and red never marks a loss (Rule 14.6).",
     "usefulness": "the rule says what to draw, with which tokens, and the kit draws the rest.",
     "evidence_honesty": "the interval's source and release, the preliminary months, the revision and the inauguration window are each stated once.",
     "accessibility": "the phone note names both drops in words and the table follows."
    },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "clarity": {
+     "from": 5,
+     "to": 4,
+     "first_reading_reason": "the title states the finding, and the failure plate shows the one misreading the band prevents.",
+     "reason": "The failure caption names \"the title counts seven losses as findings\" as the fault, while the correct plate's title also counts seven and the rule asks for the full count; and the failure plate adds a latest-month label the correct plate dropped. Found by ST-M1. I hold it as a Should: the correct plate teaches the lesson, and only the caption's wording misplaces it."
+    }
+   },
    "specimens_under_the_bar": [],
    "must_fix": [],
-   "should_fix": [],
+   "should_fix": [
+    "ST-M1",
+    "RP-10",
+    "RP-20",
+    "DF-4"
+   ],
    "must_fix_count": 0,
-   "should_fix_count": 0,
+   "should_fix_count": 4,
    "ready": true
   },
   {
@@ -222,7 +335,7 @@
    "stage": "Phase 3, review of rounds 4 and 5, first pass",
    "scores": {
     "craft": 4,
-    "clarity": 4,
+    "clarity": 3,
     "brand_fidelity": 5,
     "usefulness": 4,
     "evidence_honesty": 5,
@@ -230,20 +343,43 @@
    },
    "reasons": {
     "craft": "the two loop drawings share one baseline at the shared pill, and the controls sit in a 2 by 2 grid, though the still list under the controls does not mark the step the status line names, where 15.19's list does (CD-S9).",
-    "clarity": "\"Each loop numbers its steps from where the atlas starts it\" settles the counting question at once.",
+    "clarity": "The walk opens \"suppose it falls\" and step 1 then reads \"The quality of public services lowers the risk of losing office\", so a newcomer hears the fall lower the risk, the reverse of Connection L23; Loop R10 does the same, and the drawings' delay ticks and dashed grade have no key on the plate. Found by CE-M1 and RP-9; I confirmed both lines in my 1440 px captures.",
     "brand_fidelity": "one ink, the shared variable filled, grades as chips, no red.",
     "usefulness": "it shows how a builder joins two loops on Rule 18.22's part.",
     "evidence_honesty": "every connection quotes the atlas with grade and delay, L54's \"weakest\" is the atlas's own word, and the plate says the atlas weighs neither loop.",
     "accessibility": "the still sequence prints in full and the status line names each step's loop."
    },
-   "specimens_under_the_bar": [],
-   "must_fix": [],
-   "should_fix": [
-    "CD-S9"
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "clarity": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "\"Each loop numbers its steps from where the atlas starts it\" settles the counting question at once.",
+     "reason": "The walk opens \"suppose it falls\" and step 1 then reads \"The quality of public services lowers the risk of losing office\", so a newcomer hears the fall lower the risk, the reverse of Connection L23; Loop R10 does the same, and the drawings' delay ticks and dashed grade have no key on the plate. Found by CE-M1 and RP-9; I confirmed both lines in my 1440 px captures."
+    }
+   },
+   "specimens_under_the_bar": [
+    "s-14-143-correct"
    ],
-   "must_fix_count": 0,
-   "should_fix_count": 1,
-   "ready": true
+   "must_fix": [
+    "CE-M1"
+   ],
+   "should_fix": [
+    "CD-S9",
+    "RP-9"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 2,
+   "ready": false,
+   "to_ready": "Land CE-M1 (the walk follows the supposed change through each step) and RP-9's key; clarity then reaches 4.",
+   "owner_of_lift": "Complex examples maker, editor"
   },
   {
    "key": "R5-3",
@@ -266,6 +402,15 @@
     "evidence_honesty": "in one of its three states the drawing marks a connection R-38 does not target, against the plate's own words \"turns no mark red\" (CD-M1).",
     "accessibility": "the accessibility lead's three phrases past their card at 320 px with 200 percent text go beyond WCAG and stay optional."
    },
+   "first_reading_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {},
    "specimens_under_the_bar": [
     "s-14-144-correct"
    ],
@@ -274,10 +419,13 @@
    ],
    "should_fix": [
     "CD-S5",
-    "CD-S10"
+    "CD-S10",
+    "RP-7",
+    "RP-8",
+    "RP-9"
    ],
    "must_fix_count": 1,
-   "should_fix_count": 2,
+   "should_fix_count": 5,
    "ready": false,
    "to_ready": "Land CD-M1 (reset the 6 px case stroke for an unchosen reform) and recapture the three states; craft and evidence honesty then reach 4.",
    "owner_of_lift": "Complex examples maker; component engineer; data lead sign-off"
@@ -303,6 +451,15 @@
     "evidence_honesty": "14.1's basis says design judgment and who approved the system.",
     "accessibility": "plain text with its links."
    },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {},
    "specimens_under_the_bar": [],
    "must_fix": [],
    "should_fix": [
@@ -321,7 +478,7 @@
     "craft": 4,
     "clarity": 4,
     "brand_fidelity": 4,
-    "usefulness": 4,
+    "usefulness": 3,
     "evidence_honesty": 5,
     "accessibility": 4
    },
@@ -329,18 +486,40 @@
     "craft": "stepper and chooser are the shared parts, each drawing at its true 296 px, though the chooser's choices take three widths (DD-R2) and 15.19 stacks four controls where 14.143 sets them 2 by 2.",
     "clarity": "\"Ready. Start at ... and suppose it rises\" tells a reader what to do.",
     "brand_fidelity": "red marks only a reform's targets.",
-    "usefulness": "15.21 states the line a control may not cross in one plate pair.",
+    "usefulness": "Rule 15.20 says \"Offer only reforms whose every target sits on the drawing\", and Rule 14.144, a correct application on the same chooser, offers R-38, which has none there, so a builder who follows 15.20 cannot build 14.144. Found by NB-M1; the fix is 15.20's words, since 14.144's selection is sound.",
     "evidence_honesty": "15.21's slider is a still picture whose own line says the 70 is made up, and \"None in the model\" stands under Strength.",
     "accessibility": "the lead passed both parts at four widths by keyboard and tree."
    },
-   "specimens_under_the_bar": [],
-   "must_fix": [],
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "usefulness": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "15.21 states the line a control may not cross in one plate pair.",
+     "reason": "Rule 15.20 says \"Offer only reforms whose every target sits on the drawing\", and Rule 14.144, a correct application on the same chooser, offers R-38, which has none there, so a builder who follows 15.20 cannot build 14.144. Found by NB-M1; the fix is 15.20's words, since 14.144's selection is sound."
+    }
+   },
+   "specimens_under_the_bar": [
+    "s-15-20-correct"
+   ],
+   "must_fix": [
+    "NB-M1"
+   ],
    "should_fix": [
     "CD-S5"
    ],
-   "must_fix_count": 0,
+   "must_fix_count": 1,
    "should_fix_count": 1,
-   "ready": true
+   "ready": false,
+   "to_ready": "Land NB-M1 (Rule 15.20's last sentence agrees with Rule 14.144); usefulness then reaches 4.",
+   "owner_of_lift": "Systems designer, editor, data lead"
   },
   {
    "key": "C15-W",
@@ -349,35 +528,75 @@
    "stage": "Phase 3, review of rounds 4 and 5, first pass",
    "scores": {
     "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 3,
+    "usefulness": 5,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "15.22's veto stage breaks two sentences into flex columns (CD-M2), 15.23's five tables start their stage column at two different offsets (CD-S6), and 15.25 prints \"2 conflict\" (CD-S7).",
+    "clarity": "Rule 15.23, whose one job is step against stage, calls the law's stages \"steps\" in two of its five blocks and lists cloture only under step 4, the first chamber. Found by CE-M2, CE-M3 and DF-1.",
+    "brand_fidelity": "A filled, numbered square means \"stopped\" in chapter 11 (DR-108) and \"a stage every enacted bill passes\" on 15.22 and 15.23, and an outlined square sits where chapter 11 uses an open ring for \"not yet\". One mark, two meanings across two approved chapters. Found by DF-2.",
+    "usefulness": "twenty stages each with its source and read date, eleven routes with their official sources, and the reconciliation's counts on the plate.",
+    "evidence_honesty": "The key puts \"Signed\" on the line every enacted bill passes, though the plate's own veto override and law-without-signature paths go around it; and 15.23 starts the records law's 20 working days at acknowledgment, where 5 U.S.C. 552(a)(6)(A)(ii) starts them on receipt. Found by CE-M4 and ST-M2.",
+    "accessibility": "live HTML text throughout."
+   },
+   "first_reading_scores": {
+    "craft": 3,
     "clarity": 4,
     "brand_fidelity": 4,
     "usefulness": 5,
     "evidence_honesty": 5,
     "accessibility": 4
    },
-   "reasons": {
-    "craft": "15.22's veto stage breaks two sentences into flex columns (CD-M2), 15.23's five tables start their stage column at two different offsets (CD-S6), and 15.25 prints \"2 conflict\" (CD-S7).",
-    "clarity": "each alternative path says where it leaves and where it goes next, and 15.23 explains step against stage in its first lines.",
-    "brand_fidelity": "one mark family (filled square, open square, stop square, return line) with no red.",
-    "usefulness": "twenty stages each with its source and read date, eleven routes with their official sources, and the reconciliation's counts on the plate.",
-    "evidence_honesty": "15.24 prints \"Not checked\" where the atlas never checked, 15.22 states its rule for the court case (\"The latest such ruling we found\"), and 15.25's 2,644 rerun stands because Dustin's uploads let the research lead rerun all 668 (D3-1542).",
-    "accessibility": "live HTML text throughout."
+   "changed_after_other_reports": {
+    "clarity": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "each alternative path says where it leaves and where it goes next, and 15.23 explains step against stage in its first lines.",
+     "reason": "Rule 15.23, whose one job is step against stage, calls the law's stages \"steps\" in two of its five blocks and lists cloture only under step 4, the first chamber. Found by CE-M2, CE-M3 and DF-1."
+    },
+    "brand_fidelity": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "one mark family (filled square, open square, stop square, return line) with no red.",
+     "reason": "A filled, numbered square means \"stopped\" in chapter 11 (DR-108) and \"a stage every enacted bill passes\" on 15.22 and 15.23, and an outlined square sits where chapter 11 uses an open ring for \"not yet\". One mark, two meanings across two approved chapters. Found by DF-2."
+    },
+    "evidence_honesty": {
+     "from": 5,
+     "to": 3,
+     "first_reading_reason": "15.24 prints \"Not checked\" where the atlas never checked, 15.22 states its rule for the court case (\"The latest such ruling we found\"), and 15.25's 2,644 rerun stands because Dustin's uploads let the research lead rerun all 668 (D3-1542).",
+     "reason": "The key puts \"Signed\" on the line every enacted bill passes, though the plate's own veto override and law-without-signature paths go around it; and 15.23 starts the records law's 20 working days at acknowledgment, where 5 U.S.C. 552(a)(6)(A)(ii) starts them on receipt. Found by CE-M4 and ST-M2."
+    }
    },
    "specimens_under_the_bar": [
-    "s-15-22-correct"
+    "s-15-22-correct",
+    "s-15-23-correct"
    ],
    "must_fix": [
-    "CD-M2"
+    "CD-M2",
+    "CE-M2",
+    "CE-M3",
+    "CE-M4",
+    "ST-M2",
+    "DF-2"
    ],
    "should_fix": [
     "CD-S6",
-    "CD-S7"
+    "CD-S7",
+    "RP-4",
+    "RP-5",
+    "RP-11",
+    "RP-13",
+    "RP-19",
+    "DF-5"
    ],
-   "must_fix_count": 1,
-   "should_fix_count": 2,
+   "must_fix_count": 6,
+   "should_fix_count": 8,
    "ready": false,
-   "to_ready": "Land CD-M2 (one span after the stop marker in 15.22's two lines) and recapture 15.22; craft then reaches 4.",
-   "owner_of_lift": "Systems designer"
+   "to_ready": "Land CD-M2, CE-M2, CE-M3, CE-M4, ST-M2 and DF-2 and recapture 15.22 and 15.23; craft, clarity, brand fidelity and evidence honesty then reach 4.",
+   "owner_of_lift": "Systems designer, with the research lead, editor and data lead"
   },
   {
    "key": "C15",
@@ -387,18 +606,40 @@
    "scores": {
     "craft": 4,
     "clarity": 4,
-    "brand_fidelity": 5,
+    "brand_fidelity": 4,
     "usefulness": 5,
-    "evidence_honesty": 5,
+    "evidence_honesty": 4,
     "accessibility": 4
    },
    "reasons": {
     "craft": "one plate system across 25 rules, 680 px drawings with their 328 px forms and chips, grade marks and source lines in one style.",
     "clarity": "six group lines lead a reader from reading a mark to routes and earlier drawings, though the opener teaches only the loop grammar.",
-    "brand_fidelity": "with the wordmark covered, every plate still reads as Oath & Action by its chips, its one ink and its single red job.",
+    "brand_fidelity": "DF-2's square and CE-M4's \"Signed\" reach the chapter's key workflow plate; the chapter still reads as one chapter.",
     "usefulness": "a builder can draw a loop, a reform, a route or a tracker map from these rules alone.",
-    "evidence_honesty": "every plate cites the model of October 15, 2026 and quotes it.",
+    "evidence_honesty": "DF-2's square and CE-M4's \"Signed\" reach the chapter's key workflow plate; the chapter still reads as one chapter.",
     "accessibility": "every drawing has its words beside it as text."
+   },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {
+    "brand_fidelity": {
+     "from": 5,
+     "to": 4,
+     "first_reading_reason": "with the wordmark covered, every plate still reads as Oath & Action by its chips, its one ink and its single red job.",
+     "reason": "DF-2's square and CE-M4's \"Signed\" reach the chapter's key workflow plate; the chapter still reads as one chapter."
+    },
+    "evidence_honesty": {
+     "from": 5,
+     "to": 4,
+     "first_reading_reason": "every plate cites the model of October 15, 2026 and quotes it.",
+     "reason": "DF-2's square and CE-M4's \"Signed\" reach the chapter's key workflow plate; the chapter still reads as one chapter."
+    }
    },
    "specimens_under_the_bar": [],
    "must_fix": [],
@@ -416,34 +657,59 @@
     "craft": 4,
     "clarity": 4,
     "brand_fidelity": 5,
-    "usefulness": 4,
-    "evidence_honesty": 5,
+    "usefulness": 3,
+    "evidence_honesty": 4,
     "accessibility": 3
    },
    "reasons": {
     "craft": "the two trackers share the bill tracker's line, circles, slash and square at 360 px, and the step tables set number, name and law in one column rhythm.",
     "clarity": "each end word is a sentence a reader can say, and \"Affirmed\" is glossed once; the court table's \"Law:\" lines are clear.",
     "brand_fidelity": "invented subjects tied to no party, each labeled Illustrative beside the title.",
-    "usefulness": "the step tables cite the law per step, though the ballot table writes Massachusetts's article three ways (CD-S11).",
-    "evidence_honesty": "the end words come from the law and the failure plates show the two misreadings that matter (unofficial counts, a denied petition).",
+    "usefulness": "A rejected measure has end words but no stated mark, and a case dismissed before any ruling has no stated step, so two partners will draw them two ways. Found by PR-S10.",
+    "evidence_honesty": "Measure 99013's stop line says a sample \"projected fewer valid ones than the law requires\", where California fails a measure on the sample only under 95 percent. Found by ST-S3.",
     "accessibility": "the stage words under Rule 11.10's tracker are heard again after the image's alt, 106 nodes by the accessibility lead's count (CD-M3)."
+   },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 3
+   },
+   "changed_after_other_reports": {
+    "usefulness": {
+     "from": 4,
+     "to": 3,
+     "first_reading_reason": "the step tables cite the law per step, though the ballot table writes Massachusetts's article three ways (CD-S11).",
+     "reason": "A rejected measure has end words but no stated mark, and a case dismissed before any ruling has no stated step, so two partners will draw them two ways. Found by PR-S10."
+    },
+    "evidence_honesty": {
+     "from": 5,
+     "to": 4,
+     "first_reading_reason": "the end words come from the law and the failure plates show the two misreadings that matter (unofficial counts, a denied petition).",
+     "reason": "Measure 99013's stop line says a sample \"projected fewer valid ones than the law requires\", where California fails a measure on the sample only under 95 percent. Found by ST-S3."
+    }
    },
    "specimens_under_the_bar": [
     "s-11-10-correct",
-    "s-11-11-correct",
-    "s-11-12-correct"
+    "s-11-11-correct"
    ],
    "must_fix": [
     "CD-M3"
    ],
    "should_fix": [
-    "CD-S11"
+    "CD-S11",
+    "PR-S10",
+    "ST-S3",
+    "RP-15",
+    "RP-16"
    ],
    "must_fix_count": 1,
-   "should_fix_count": 1,
+   "should_fix_count": 5,
    "ready": false,
-   "to_ready": "Land DR-278 (b) (CD-M3) with the accessibility reader's reach count; accessibility then reaches 4.",
-   "owner_of_lift": "Engineer (plate() in guide_build.py), with the accessibility lead"
+   "to_ready": "Land DR-278 (b) (CD-M3) with the accessibility reader's reach count, and PR-S10's marks for the two ordinary endings, shown on board 3; accessibility and usefulness then reach 4.",
+   "owner_of_lift": "Engineer (plate() in guide_build.py), with the accessibility lead; tracker designer for PR-S10"
   },
   {
    "key": "C14",
@@ -466,6 +732,15 @@
     "evidence_honesty": "a grade line and a source line in H04's order on every chart.",
     "accessibility": "tables and alt on every chart, by the owners' checks."
    },
+   "first_reading_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "changed_after_other_reports": {},
    "specimens_under_the_bar": [],
    "must_fix": [],
    "should_fix": [],
@@ -475,54 +750,67 @@
   }
  ],
  "totals": {
-  "must_fix": 3,
-  "should_fix": 12,
+  "must_fix": 12,
+  "should_fix": 35,
   "under_4": [
    "R4-I.craft",
+   "R4-I.brand_fidelity",
+   "R4-I.evidence_honesty",
+   "R5-G.accessibility",
+   "R5-2.clarity",
    "R5-3.craft",
    "R5-3.evidence_honesty",
+   "C15-I.usefulness",
    "C15-W.craft",
+   "C15-W.clarity",
+   "C15-W.brand_fidelity",
+   "C15-W.evidence_honesty",
+   "C11-T.usefulness",
    "C11-T.accessibility"
   ],
   "ready": [
    "R4-A",
    "R4-S",
-   "R5-G",
    "R5-P",
    "R5-1",
-   "R5-2",
    "R5-W",
-   "C15-I",
    "C15",
    "C14"
   ],
   "not_ready": [
    "R4-I",
+   "R5-G",
+   "R5-2",
    "R5-3",
+   "C15-I",
    "C15-W",
    "C11-T"
   ],
   "specimens_under_the_bar": [
-   "S86",
+   "S92",
    "S94",
+   "S95",
+   "s-14-selection-guide",
+   "s-14-143-correct",
    "s-14-144-correct",
+   "s-15-20-correct",
    "s-15-22-correct",
+   "s-15-23-correct",
    "s-11-10-correct",
-   "s-11-11-correct",
-   "s-11-12-correct"
+   "s-11-11-correct"
   ]
  },
  "lowest_score_by_item": {
   "R4-A": 4,
   "R4-I": 3,
   "R4-S": 4,
-  "R5-G": 4,
+  "R5-G": 3,
   "R5-P": 4,
   "R5-1": 4,
-  "R5-2": 4,
+  "R5-2": 3,
   "R5-3": 3,
   "R5-W": 4,
-  "C15-I": 4,
+  "C15-I": 3,
   "C15-W": 3,
   "C15": 4,
   "C11-T": 3,
@@ -552,6 +840,87 @@
    "items": [
     "C11-T"
    ]
+  },
+  "NB-M2": {
+   "title": "S95 ships with no sign-off, against DR-211 and Rule 08.2",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Engineer, infographics maker, editor",
+   "items": [
+    "R4-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Nonpartisan-Brand.md"
+  },
+  "RP-2": {
+   "title": "S92's table says every records request ends in an appeal and a lawsuit",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Infographics maker, editor",
+   "items": [
+    "R4-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "CE-M1": {
+   "title": "Rule 14.143's walk tells a newcomer the reverse of the loop",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker, editor",
+   "items": [
+    "R5-2"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md"
+  },
+  "NB-M1": {
+   "title": "Rule 14.144 offers a reform that Rule 15.20 forbids; fix Rule 15.20's words and group 18's line",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, editor, data lead",
+   "items": [
+    "C15-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Nonpartisan-Brand.md"
+  },
+  "CE-M2": {
+   "title": "Rule 15.23 puts cloture only under step 4",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md"
+  },
+  "CE-M3": {
+   "title": "Rule 15.23 calls the law's stages steps (with DF-1)",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, editor",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md; work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
+  },
+  "CE-M4": {
+   "title": "Rule 15.22 puts Signed on the line every enacted bill passes",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, research lead",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md"
+  },
+  "ST-M2": {
+   "title": "Rule 15.23 starts the records law's 20 working days at the wrong step",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, research lead",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md"
+  },
+  "DF-2": {
+   "title": "The filled numbered square means stopped in chapter 11 and a stage passed in 15.22 and 15.23",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, data lead ruling",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
   }
  },
  "should_fix": {
@@ -589,7 +958,7 @@
   },
   "CD-S5": {
    "title": "DD-R2 with DD-R5, both plates (15.20 and 14.144).",
-   "what_and_fix": "Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5's keyline inside the red ring: my call waits on the Charcoal captures (second look). Owner: component engineer (chooser part), systems designer and complex examples maker.",
+   "what_and_fix": "Set every choice in a group to the group's full width, so the chosen ring never changes length and the three reforms read as one list. DD-R5 yes as well: in my own luma conversion of the 15.20 and 14.144 captures, the chosen pill's 3 px Pillar Red ring turns a lighter gray than an unchosen pill's ink, so the target reads weaker than its neighbors in print and one-ink copies, while the red connection holds by its keyline case; give the pill the same keyline inside its ring (Charcoal on Newsprint, Newsprint on Charcoal), on both plates. Owner: component engineer (chooser part), systems designer and complex examples maker.",
    "owner": "component engineer (chooser part), systems designer and complex examples maker",
    "items": [
     "R5-3",
@@ -651,18 +1020,228 @@
    "items": [
     "R5-P"
    ]
+  },
+  "RP-17": {
+   "title": "S85's Civic Line line explained in the visible notes",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Maker A, editor",
+   "items": [
+    "R4-A"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-18": {
+   "title": "S89 spells out FEMA at first use",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Infographics maker, editor",
+   "items": [
+    "R4-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-12": {
+   "title": "S90's table prints counts without a decimal",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Infographics maker",
+   "items": [
+    "R4-I"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-3": {
+   "title": "A road from Choose a chart to group 18 and chapter 15 (with PR-S9)",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Selection guide maker, editor",
+   "items": [
+    "R5-G"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md; work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md"
+  },
+  "RP-14": {
+   "title": "The sixteen questions as headings",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Selection guide maker; accessibility lead confirms",
+   "items": [
+    "R5-G"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "ST-S4": {
+   "title": "Label ratios computed from the hex values and floored (with PR-S6)",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Engineer",
+   "items": [
+    "R5-P"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md; work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md"
+  },
+  "ST-M1": {
+   "title": "Rule 14.142's failure caption names one fault (held as Should)",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker, editor, data lead",
+   "items": [
+    "R5-1"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md"
+  },
+  "RP-10": {
+   "title": "Rule 14.142 names the other jobs chart",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker, editor",
+   "items": [
+    "R5-1"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-20": {
+   "title": "Rule 14.142 glosses 90 percent",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker, editor, data lead",
+   "items": [
+    "R5-1"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "DF-4": {
+   "title": "S96 says the text's ink, not the strongest ink",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker",
+   "items": [
+    "R5-1"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
+  },
+  "RP-9": {
+   "title": "A key for delay ticks and grade lines on 14.143 and 14.144",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker",
+   "items": [
+    "R5-2",
+    "R5-3"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-7": {
+   "title": "One layer for Variable EC9 on 14.144's cards",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker",
+   "items": [
+    "R5-3"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-8": {
+   "title": "Kind of change for the atlas's band on 14.144",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Complex examples maker, editor",
+   "items": [
+    "R5-3"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-4": {
+   "title": "Rule 15.22 stage 2: a simple majority of those voting",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, research lead, editor",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-5": {
+   "title": "Rule 15.22 stage 7: how the chambers agree",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, research lead, editor",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-11": {
+   "title": "Stated rules for Reform R-28 and the sunset and repeal laws, laws named in words",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, data lead, editor",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-13": {
+   "title": "Short group descriptions on chapter 15's live-text plates",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer; accessibility lead confirms",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-19": {
+   "title": "A date in place of we found on stage 19",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, editor",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "DF-5": {
+   "title": "Rule 15.22's key says the text's ink and gray",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Systems designer, editor",
+   "items": [
+    "C15-W"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
+  },
+  "PR-S10": {
+   "title": "Marks for a rejected measure and a case dismissed before a ruling",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Tracker designer, editor",
+   "items": [
+    "C11-T"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md"
+  },
+  "ST-S3": {
+   "title": "Measure 99013's sampling line states California's 95 percent",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Tracker designer, editor",
+   "items": [
+    "C11-T"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md"
+  },
+  "RP-15": {
+   "title": "Rule 11.11 glosses certiorari",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Tracker designer, editor",
+   "items": [
+    "C11-T"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+  },
+  "RP-16": {
+   "title": "Rule 11.10 names or drops the second test",
+   "what_and_fix": "Adopted as its report writes it; see the report.",
+   "owner": "Tracker designer, research lead",
+   "items": [
+    "C11-T"
+   ],
+   "source_report": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
   }
  },
- "named_places": "1. Carried items. DD-R2 and DD-R5: DD-R2 yes on both plates (CD-S5); DD-R5 in the second look. S14's label 2.6 px above its gridline at 480 to 720 px: fix it, since S96 draws S14's own data with every word clear of its gridlines (DD-E7), and the two plates sit one rule group apart (owner: complex examples maker, who carried it); I did not see it at those widths. SG-6: keep the tier word under the name; the eye looks for the form's name first and the link already says \"Form, Tier\". DD-I18: CD-S1. The optional S16 note: not read, no recommendation. Round 4's cards on a phone: S95 and S91 hold at 390 px; S95's card fine print sits near 9 to 10 px at a phone's width, which is the size a feed shows it (a risk, below). The edge guard: board 3 should show it as one item, S59's \"4.1\" before and after, because turning it on changes a signed-off drawing.\n4. The selection guide at true size: at 1x at 390 px the forms read apart by shape in every family but maps, where three symbols read as texture; avoid forms are struck in mark and named \"Avoid\" in words. The capture cuts at 5,548 px at 1440 px, so the last group I read at 390 px.\n5. The palette plate: every value from the tokens, ratios rounded down, color-vision rows by filter, Prussian in words only; a designer can choose from it alone.\n6. S96: the band at plus or minus 122,000, both drops in the subject ink, preliminary months hatched, scale minus 400,000 to 850,000, phone note naming the drops; every word I could see at 1x clears its gridline. Its failure plate holds one fault.\n7. 14.143 and 14.144: each loop counts its own steps; R-38's targets off the loop are said in words, but the drawing contradicts them in R-38's state (CD-M1).\n8. Chapter 15 as one chapter: one grammar across loops, workflows, routes and tables; 15.22's stages each carry a source and read date; 15.24 prints \"Not checked\"; 15.25 states 2,644 rerun, true after D3-1542.\n10. NRSC v. FEC: the plate states the rule (\"The latest such ruling we found\") and prints the holding alone. The same rule would pick the same case for either side. The plate's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) come from laws one party passed alone; see Risks.\n11. Weight, from the build report: page 12,107,102 bytes, projection 15,117,621 of 15,500,000 with Phase 4's seven chapters at 362,857 each; chapter 14 at 2,072,555 plus the kit (565,548) and geometry, 120,739 past its figure by the build's count; selection guide 149,403; palette plate 69,443; 14.142 to 14.144 at 32,433, 43,078 and 55,628; chapter 15 at 562,202 of 600,000; chapter 11 at 500,801 of 550,000. No plate carries bytes a reader never meets that I could find, though 14.144's three print panels and three sets of state rules are its price for working with scripts off. Phase 4 has 382,379 bytes of room under 15,500,000 and 882,379 under 16 MB.\n\nThe other named places (2, 3, 9, 12) sit in other readers' lenses; I ran none of their checks.",
- "finished_chapters_verdict": "Chapter 15, yes, once CD-M2 lands: it reads as a chapter a design firm would sign, with one idea a reader keeps (follow a mechanism one connection at a time, and never claim a strength the model lacks) and a back half that turns the atlas's routes into sourced workflows. Chapter 14, yes in structure and in its finest plates; it ships once CD-M1 and CD-S1 land, and it stays long (a reader needs \"Choose a chart\" and the local contents to move through it).",
+ "named_places": "1. Carried items. DD-R2 and DD-R5: yes to both, on both plates (CD-S5). S14's label 2.6 px above its gridline at 480 to 720 px: fix it, since S96 draws S14's own data with every word clear of its gridlines (DD-E7), and the two plates sit one rule group apart (owner: complex examples maker, who carried it); I did not see it at those widths. SG-6: keep the tier word under the name; the eye looks for the form's name first and the link already says \"Form, Tier\". DD-I18: CD-S1. The optional S16 note: not read, no recommendation. Round 4's cards on a phone: S95 and S91 hold at 390 px; S95's card fine print sits near 9 to 10 px at a phone's width, which is the size a feed shows it (a risk, below). The edge guard: board 3 should show it as one item, S59's \"4.1\" before and after, because turning it on changes a signed-off drawing.\n4. The selection guide at true size: at 1x at 390 px the forms read apart by shape in every family but maps, where three symbols read as texture; avoid forms are struck in mark and named \"Avoid\" in words. The capture cuts at 5,548 px at 1440 px, so the last group I read at 390 px.\n5. The palette plate: every value from the tokens, ratios rounded down, color-vision rows by filter, Prussian in words only; a designer can choose from it alone.\n6. S96: the band at plus or minus 122,000, both drops in the subject ink, preliminary months hatched, scale minus 400,000 to 850,000, phone note naming the drops; every word I could see at 1x clears its gridline. Its failure plate holds one fault.\n7. 14.143 and 14.144: each loop counts its own steps; R-38's targets off the loop are said in words, but the drawing contradicts them in R-38's state (CD-M1).\n8. Chapter 15 as one chapter: one grammar across loops, workflows, routes and tables; 15.22's stages each carry a source and read date; 15.24 prints \"Not checked\"; 15.25 states 2,644 rerun, true after D3-1542.\n10. NRSC v. FEC: the plate states the rule (\"The latest such ruling we found\") and prints the holding alone. The same rule would pick the same case for either side. The plate's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) come from laws one party passed alone; see Risks.\n11. Weight, from the build report: page 12,107,102 bytes, projection 15,117,621 of 15,500,000 with Phase 4's seven chapters at 362,857 each; chapter 14 at 2,072,555 plus the kit (565,548) and geometry, 120,739 past its figure by the build's count; selection guide 149,403; palette plate 69,443; 14.142 to 14.144 at 32,433, 43,078 and 55,628; chapter 15 at 562,202 of 600,000; chapter 11 at 500,801 of 550,000. No plate carries bytes a reader never meets that I could find, though 14.144's three print panels and three sets of state rules are its price for working with scripts off. The projection assumes 362,857 bytes for each of Phase 4's seven chapters; ST-S10 shows the page stays under 16 MB only if they average under 488,911 bytes each, and chapters 10 to 19 without 14 average 469,629, close to that line, so Phase 4's plan should start from that figure (owner: engineer, nothing cut).\n\nThe other named places (2, 3, 9, 12) sit in other readers' lenses; I ran none of their checks.",
+ "chapters_14_and_15_finished": "Not yet, and both are close. Chapter 15 reads as a chapter a design firm would sign in its structure, its voice and its first 21 rules: one idea a reader keeps (follow a mechanism one connection at a time, and never claim a strength the model lacks) and a back half that turns the atlas's routes into sourced workflows. It is finished when 15.22 and 15.23 stop teaching the four wrong things the readers found (CE-M2, CE-M3, CE-M4, ST-M2), the route's square stops meaning \"stopped\" (DF-2), and 15.20's words agree with 14.144 (NB-M1). Chapter 14 is finished in structure and in its finest plates; it ships when 14.144's R-38 state is honest (CD-M1), 14.143's walk follows the change (CE-M1), round 4's infographics are corrected (RP-2, NB-M2, CD-S1), and the front door's questions are headings with a road to group 18. It stays long, and \"Choose a chart\" with the local contents carries the reader through it.",
  "board_3_must_show": [
-  "The trackers' twelve step names and end words for approval as DR-108's were, with \"Affirmed\" and its gloss, \"Affirmed by an equally divided Court\", the denied petition's square at step 5, and the slashed Legislature step.",
-  "Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, with 14.144 in all three states after CD-M1.",
+  "The trackers' twelve step names and end words for approval as DR-108's were: \"Affirmed\" with its gloss, \"Affirmed by an equally divided Court\", the denied petition's square at step 5, the slashed Legislature step, and the mark for a rejected measure and a case dismissed before any ruling (PR-S10; I recommend the square at the last step reached, as a vetoed bill's).",
+  "Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, with 14.144 in all three states after CD-M1, and 14.143's walk with its new words.",
   "\"Choose a chart\" whole at 1440 and 390 px, and the palette plate's first screen.",
-  "Rule 15.22 whole with its stated rule for the court case, 15.23's mapping, and 15.25's counts.",
-  "The changed approved drawings: S12's stacked tile at a desk, the phone codes on S12, S16 and S78, the loop drawings re-laid with each variable's title (DR-265), and the edge guard's effect on S59.",
-  "DD-R2 (and DD-R5 if adopted) as before and after on 15.20 and 14.144.",
-  "The weight figures and chapter 14's 120,739 bytes past its figure, reported, nothing cut.",
+  "Rule 15.22 whole after CE-M4 and DF-2, with its stated rule for the court case and the named laws; 15.23's mapping after CE-M2; 15.25's counts (2,644 rerun, true after D3-1542).",
+  "Chapter 11's stop square beside 15.22's new stage mark, so Dustin sees one mark keep one meaning (DF-2).",
+  "The changed approved drawings: S12's stacked tile at a desk, the phone codes on S12, S16 and S78, the loop drawings re-laid with each variable's title (DR-265), and the edge guard's effect on S59's \"4.1\".",
+  "DD-R2 and DD-R5 as before and after on 15.20 and 14.144, with the grayscale view.",
+  "S95 with its sign-off, or the question of holding it (question 2).",
+  "The weight figures with chapter 14's 120,739 bytes past its figure and ST-S10's break-even for Phase 4, reported, nothing cut.",
   "The V7.1 rows proposed."
  ],
  "distinctiveness_test": [
@@ -684,11 +1263,14 @@
   }
  ],
  "risks_for_dustin": [
-  "Rule 15.22's three examples of undoing a law (a sunset in Public Law 115-97, NRSC v. FEC, a change in Public Law 119-21) each come from one side's legislation or one side's win. The court case has its stated rule; the two laws do not. I recommend the plate's note state the rule for each (for example, the most recent sunset and the most recent repeal the research lead found), so a reader from either side sees a rule, not a choice.",
+  "Rule 15.22's three examples of undoing a law (a sunset in Public Law 115-97, NRSC v. FEC, a change in Public Law 119-21) each come from one side's legislation or one side's win. The court case has its stated rule; the two laws do not. I recommend the plate's note state the rule for each (for example, the most recent sunset and the most recent repeal the research lead found) and name each law in words, so a reader from either side sees a rule, not a choice; the reader panel's two fairness readers asked the same (RP-11), and Rule 15.24's worked Reform R-28 needs its rule too.",
   "S95's social card prints its source line near 10 px at a phone feed's width. That is the feed's own size, and it reads; raising the card's fine print by a step would cost one line of the title.",
   "Chapter 14's length: at 144 rules the front door and the local contents carry the reader."
  ],
- "questions_for_dustin": [],
+ "questions_for_dustin": [
+  "**Effect pips on Rule 14.144's cards (DF-3).** Rule 13.5, which you approved (DR-237), draws each effect code with one to three pips, and Rule 15.20's chooser draws them; 14.144 forbids them so no reader adds pips across three cards. I recommend the pips, as DF-3 does: each card already prints the atlas's sentence that codes are never added, the failure plate shows the total to avoid, and one mark for one property across chapters 13, 14 and 15 is the stronger system.",
+  "**S95's sign-off (NB-M2).** DR-211 sets the lockmark at 96 px on social cards; the studio read DR-268 as leaving the card's marks to chapter 23. I recommend the sign-off now, on both crops, since the plate exports a PNG and words to post; the alternative is a caption saying the card is not for posting until chapter 23."
+ ],
  "weight": {
   "page_bytes": 12107102,
   "page_projection": 15117621,
@@ -719,7 +1301,9 @@
   "Read the plate CSS of `s-14-144-correct.html` and `s-15-20-correct.html` and found CD-M1's cause; read `phase3_ch15_build.py` line 3696 and counted by script the `.sq` lines with inline elements in every `s-15-*` specimen (2, both in 15.22).",
   "Read titles of S12, S16, S78 and S85 to S96 from the specs and counted their words by script; read S96's phone note, labels and scale; read chapter 14's intro, opener, group lines and Rule 14.1, and chapter 15's intro, groups and rule titles from the chapter files.",
   "Read weight figures from the build report.",
-  "Checked D3-1542 and DR-258 in the decision log for 15.25's 2,644 claim."
+  "Checked D3-1542 and DR-258 in the decision log for 15.25's 2,644 claim.",
+  "From 17:05 UTC, after my first scores, read the Must fix sections and score lines of the civic education, nonpartisanship and brand, statistics, production, drift and reader panel reports (accessibility and craft were not yet scored), and checked before moving a score: DR-211, DR-268 and D3-1802 in the decision log (NB-M2); `s92.json`'s path column words (RP-2); 0 heading elements in `s-14-selection-guide.html` (RP-14); 14.143's status and step 1 lines in my captures (CE-M1).",
+  "Converted the 15.20 and 14.144 (R-30) captures to grayscale by luma (Pillow, ITU-R 601) and compared the chosen pill's ring with an unchosen pill's (17:05 UTC). This is my conversion, not the page's grayscale filter."
  ],
  "not_tested": [
   "No browser opened; no keyboard, accessibility tree, axe, forced colors, reduced motion, print or 200 percent text check.",

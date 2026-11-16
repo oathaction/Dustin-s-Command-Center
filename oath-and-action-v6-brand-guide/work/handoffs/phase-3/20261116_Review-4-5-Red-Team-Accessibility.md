@@ -73,7 +73,12 @@ Pending.
 
 ## 7. Tested
 
-Pending.
+All on my copy of the strict build of `9a6e1182` (`c07/review/accessibility/guide.html`, 12,107,102 bytes), with scripts in `c07/review/accessibility/scripts/` and results in `.../out/`. Every browser run started after `browsers.sh` printed "OK to open one", one browser at a time, each closed at the end of its batch.
+
+- **By script on the markup (Python, lxml), 16:35 to 16:50 UTC:** DR-278's four reaches (`reach.py`); every in-scope plate's role, name, description, tables, controls and live regions (`plates.py`, `skel.py`); the selection guide's 144 links, 17 skip links and their targets, 16 named lists, 127 hidden pictures and tier words; the 132 group plates whose description might repeat their words; 88 of the palette plate's printed ratios against the WCAG formula from its printed values (`wcag.py`).
+- **Chromium, DR-278 (a), 16:50 to 16:55 and 17:03 to 17:08 UTC** (`dr278.cjs`, `dr278c.cjs`): the masthead against `--head-h` every 2 to 4 px from 300 to 1440 px; 581 landings (369 rules, 65 groups, 147 return places) at 360, 1024, 1100, 1280 and 1440 px; the 34 rail links focused bottom up at 1024, 1200 and 1440 px; the `ResizeObserver` fix with the full height and with `clientHeight`; the root at 200 percent and the browser's text size at 32 px.
+- **Chromium, DR-278 (b) to (d), 16:55 to 16:58 UTC** (`dr278b.cjs`): Chromium's tree under eight image stages before and after an `aria-hidden` wrapper; the guide check's own text filter over all 416 image stages before and after, at 1440 and 390 px; axe-core's contrast rule on three stages before and after; the step lines at 320, 360 and 390 px with the root at 200 percent, before and after `overflow-wrap: anywhere`, and at the default size at five widths; the token table's selector page-wide and scoped.
+- **The shared captures read:** `newsprint-1x/1440` (S91, S94, S95, S96, 11.10, 14.144 with R-06 and R-30, 14.143 at step 5, the selection guide's top) and `newsprint-1x/390` (the selection guide, 14.143, S96, the palette plate).
 
 ## 8. Not tested
 

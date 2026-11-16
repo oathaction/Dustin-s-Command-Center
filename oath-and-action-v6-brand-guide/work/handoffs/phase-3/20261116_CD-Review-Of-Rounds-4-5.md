@@ -153,6 +153,23 @@ No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 fo
 
 **CD-S12. The palette plate's token names.** Let a token name break only at its dots with a zero-width break after each dot, or set the token column wider so `oa.chart.color.sequential.fill.step1` breaks once. Owner: engineer (`palette_spec_build.py`).
 
+### Adopted from the other readers
+
+I agree with each fix below as its report writes it, with its owner there; I list the code, the item it lifts and whether I hold it as Must or Should. The reports carry the quotes.
+
+**Must, adopted:**
+- **NB-M2** (R4-I, brand fidelity). S95's sign-off at 96 px from the 48 px master on both crops and grounds, entry 14.141 naming it, and Rule 08.2's feed test on both PNGs. If the studio wants to hold the sign-off for chapter 23, that is Dustin's call (question 2). Owners: engineer, infographics maker, editor.
+- **RP-2** (R4-I, evidence honesty). S92's table: "Only if the agency says no" for the appeal and the lawsuit. Owners: infographics maker, editor.
+- **CE-M1** (R5-2, clarity). 14.143's walk follows the supposed change through each step ("the risk of losing office rises"), and says where each loop ends up. Owners: complex examples maker, editor.
+- **NB-M1** (C15-I, usefulness; R5-3). Rule 15.20's last sentence offers the reforms whose records name the loop and names off-drawing targets in words; group 18's line reads "three reforms whose records name one housing loop". Owners: systems designer, editor, data lead.
+- **CE-M4** (C15-W, evidence honesty). Stage 9 drawn as the first of three outcomes at the President beside 10 and 11, each going on to stage 13, so the dark line holds only what every enacted bill passes. Owner: systems designer, research lead.
+- **CE-M2** (C15-W, clarity). Stages 3 to 5 behind step 5 as well as step 4 on 15.23. Owner: systems designer.
+- **CE-M3 and DF-1** (C15-W, clarity). "stages" in both subheads on 15.23. Owner: systems designer, editor.
+- **ST-M2** (C15-W, evidence honesty). The 20 working days counted from receipt, with 552(a)(6)(A)(ii) in the sources file. Owners: systems designer, research lead.
+- **DF-2** (C15-W, brand fidelity). The route's stages take a mark of their own that chapter 11 does not use for "stopped": I recommend the numbered square outlined in the text's ink for a stage on the main line, and a smaller filled square kept only for "a path that stops there", so the stop square means one thing across chapters 11 and 15. Owner: systems designer, with the data lead's ruling; board 3 shows it beside chapter 11's square.
+
+**Should, adopted:** RP-17 (R4-A, S85's Civic Line line explained in the visible notes); RP-18 and RP-12 (R4-I, FEMA spelled out; S90's counts without a decimal); RP-3 with PR-S9 and RP-14 (R5-G, a line to group 18 and chapter 15 under the questions; the questions as headings); ST-S4 with PR-S6 (R5-P, label ratios computed and floored); ST-M1, held as Should, with RP-10, RP-20 and DF-4 (R5-1, the failure caption, "both jobs charts" named, "90 percent" glossed, "the text's ink"); RP-9 (R5-2 and R5-3, a key for delay ticks and grade lines); RP-7 and RP-8 (R5-3, one layer for EC9, "Kind of change" for "Band"); RP-4, RP-5, RP-11, RP-13, RP-19 and DF-5 (C15-W, a simple majority of those voting, how chambers agree, the rule for R-28 and the laws named in words, short group descriptions on live-text plates for the accessibility lead to confirm, a date in place of "we found", "the text's ink" in 15.22's key); PR-S10, ST-S3, RP-15 and RP-16 (C11-T, a rejected measure's square at step 6 and a dismissed case's step, California's 95 percent, certiorari glossed, the second test named or dropped).
+
 ## The named places in my lens
 
 1. Carried items. DD-R2 and DD-R5: yes to both, on both plates (CD-S5). S14's label 2.6 px above its gridline at 480 to 720 px: fix it, since S96 draws S14's own data with every word clear of its gridlines (DD-E7), and the two plates sit one rule group apart (owner: complex examples maker, who carried it); I did not see it at those widths. SG-6: keep the tier word under the name; the eye looks for the form's name first and the link already says "Form, Tier". DD-I18: CD-S1. The optional S16 note: not read, no recommendation. Round 4's cards on a phone: S95 and S91 hold at 390 px; S95's card fine print sits near 9 to 10 px at a phone's width, which is the size a feed shows it (a risk, below). The edge guard: board 3 should show it as one item, S59's "4.1" before and after, because turning it on changes a signed-off drawing.
@@ -162,24 +179,26 @@ No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 fo
 7. 14.143 and 14.144: each loop counts its own steps; R-38's targets off the loop are said in words, but the drawing contradicts them in R-38's state (CD-M1).
 8. Chapter 15 as one chapter: one grammar across loops, workflows, routes and tables; 15.22's stages each carry a source and read date; 15.24 prints "Not checked"; 15.25 states 2,644 rerun, true after D3-1542.
 10. NRSC v. FEC: the plate states the rule ("The latest such ruling we found") and prints the holding alone. The same rule would pick the same case for either side. The plate's sunset and repeal examples (Public Law 115-97 and Public Law 119-21) come from laws one party passed alone; see Risks.
-11. Weight, from the build report: page 12,107,102 bytes, projection 15,117,621 of 15,500,000 with Phase 4's seven chapters at 362,857 each; chapter 14 at 2,072,555 plus the kit (565,548) and geometry, 120,739 past its figure by the build's count; selection guide 149,403; palette plate 69,443; 14.142 to 14.144 at 32,433, 43,078 and 55,628; chapter 15 at 562,202 of 600,000; chapter 11 at 500,801 of 550,000. No plate carries bytes a reader never meets that I could find, though 14.144's three print panels and three sets of state rules are its price for working with scripts off. Phase 4 has 382,379 bytes of room under 15,500,000 and 882,379 under 16 MB.
+11. Weight, from the build report: page 12,107,102 bytes, projection 15,117,621 of 15,500,000 with Phase 4's seven chapters at 362,857 each; chapter 14 at 2,072,555 plus the kit (565,548) and geometry, 120,739 past its figure by the build's count; selection guide 149,403; palette plate 69,443; 14.142 to 14.144 at 32,433, 43,078 and 55,628; chapter 15 at 562,202 of 600,000; chapter 11 at 500,801 of 550,000. No plate carries bytes a reader never meets that I could find, though 14.144's three print panels and three sets of state rules are its price for working with scripts off. The projection assumes 362,857 bytes for each of Phase 4's seven chapters; ST-S10 shows the page stays under 16 MB only if they average under 488,911 bytes each, and chapters 10 to 19 without 14 average 469,629, close to that line, so Phase 4's plan should start from that figure (owner: engineer, nothing cut).
 
 The other named places (2, 3, 9, 12) sit in other readers' lenses; I ran none of their checks.
 
 ## Are chapters 14 and 15 finished chapters?
 
-Chapter 15, yes, once CD-M2 lands: it reads as a chapter a design firm would sign, with one idea a reader keeps (follow a mechanism one connection at a time, and never claim a strength the model lacks) and a back half that turns the atlas's routes into sourced workflows. Chapter 14, yes in structure and in its finest plates; it ships once CD-M1 and CD-S1 land, and it stays long (a reader needs "Choose a chart" and the local contents to move through it).
+Not yet, and both are close. Chapter 15 reads as a chapter a design firm would sign in its structure, its voice and its first 21 rules: one idea a reader keeps (follow a mechanism one connection at a time, and never claim a strength the model lacks) and a back half that turns the atlas's routes into sourced workflows. It is finished when 15.22 and 15.23 stop teaching the four wrong things the readers found (CE-M2, CE-M3, CE-M4, ST-M2), the route's square stops meaning "stopped" (DF-2), and 15.20's words agree with 14.144 (NB-M1). Chapter 14 is finished in structure and in its finest plates; it ships when 14.144's R-38 state is honest (CD-M1), 14.143's walk follows the change (CE-M1), round 4's infographics are corrected (RP-2, NB-M2, CD-S1), and the front door's questions are headings with a road to group 18. It stays long, and "Choose a chart" with the local contents carries the reader through it.
 
 ## What board 3 must show Dustin
 
-1. The trackers' twelve step names and end words for approval as DR-108's were, with "Affirmed" and its gloss, "Affirmed by an equally divided Court", the denied petition's square at step 5, and the slashed Legislature step.
-2. Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, with 14.144 in all three states after CD-M1.
+1. The trackers' twelve step names and end words for approval as DR-108's were: "Affirmed" with its gloss, "Affirmed by an equally divided Court", the denied petition's square at step 5, the slashed Legislature step, and the mark for a rejected measure and a case dismissed before any ruling (PR-S10; I recommend the square at the last step reached, as a vetoed bill's).
+2. Rules 14.142 to 14.144 at 1440 and 390 px on both grounds, with 14.144 in all three states after CD-M1, and 14.143's walk with its new words.
 3. "Choose a chart" whole at 1440 and 390 px, and the palette plate's first screen.
-4. Rule 15.22 whole with its stated rule for the court case, 15.23's mapping, and 15.25's counts.
-5. The changed approved drawings: S12's stacked tile at a desk, the phone codes on S12, S16 and S78, the loop drawings re-laid with each variable's title (DR-265), and the edge guard's effect on S59.
-6. DD-R2 (and DD-R5 if adopted) as before and after on 15.20 and 14.144.
-7. The weight figures and chapter 14's 120,739 bytes past its figure, reported, nothing cut.
-8. The V7.1 rows proposed.
+4. Rule 15.22 whole after CE-M4 and DF-2, with its stated rule for the court case and the named laws; 15.23's mapping after CE-M2; 15.25's counts (2,644 rerun, true after D3-1542).
+5. Chapter 11's stop square beside 15.22's new stage mark, so Dustin sees one mark keep one meaning (DF-2).
+6. The changed approved drawings: S12's stacked tile at a desk, the phone codes on S12, S16 and S78, the loop drawings re-laid with each variable's title (DR-265), and the edge guard's effect on S59's "4.1".
+7. DD-R2 and DD-R5 as before and after on 15.20 and 14.144, with the grayscale view.
+8. S95 with its sign-off, or the question of holding it (question 2).
+9. The weight figures with chapter 14's 120,739 bytes past its figure and ST-S10's break-even for Phase 4, reported, nothing cut.
+10. The V7.1 rows proposed.
 
 ## Distinctiveness test
 
@@ -190,9 +209,14 @@ Chapter 15, yes, once CD-M2 lands: it reads as a chapter a design firm would sig
 | The trackers at 360 px | Reads as one family with the bill tracker of Rule 11.1. |
 | 14.144 in R-38's state | Breaks the house's red discipline in spirit: an unexplained heavy black line where the plate says nothing acts. |
 
+## Questions for Dustin
+
+1. **Effect pips on Rule 14.144's cards (DF-3).** Rule 13.5, which you approved (DR-237), draws each effect code with one to three pips, and Rule 15.20's chooser draws them; 14.144 forbids them so no reader adds pips across three cards. I recommend the pips, as DF-3 does: each card already prints the atlas's sentence that codes are never added, the failure plate shows the total to avoid, and one mark for one property across chapters 13, 14 and 15 is the stronger system.
+2. **S95's sign-off (NB-M2).** DR-211 sets the lockmark at 96 px on social cards; the studio read DR-268 as leaving the card's marks to chapter 23. I recommend the sign-off now, on both crops, since the plate exports a PNG and words to post; the alternative is a caption saying the card is not for posting until chapter 23.
+
 ## Risks for Dustin to weigh
 
-- Rule 15.22's three examples of undoing a law (a sunset in Public Law 115-97, NRSC v. FEC, a change in Public Law 119-21) each come from one side's legislation or one side's win. The court case has its stated rule; the two laws do not. I recommend the plate's note state the rule for each (for example, the most recent sunset and the most recent repeal the research lead found), so a reader from either side sees a rule, not a choice.
+- Rule 15.22's three examples of undoing a law (a sunset in Public Law 115-97, NRSC v. FEC, a change in Public Law 119-21) each come from one side's legislation or one side's win. The court case has its stated rule; the two laws do not. I recommend the plate's note state the rule for each (for example, the most recent sunset and the most recent repeal the research lead found) and name each law in words, so a reader from either side sees a rule, not a choice; the reader panel's two fairness readers asked the same (RP-11), and Rule 15.24's worked Reform R-28 needs its rule too.
 - S95's social card prints its source line near 10 px at a phone feed's width. That is the feed's own size, and it reads; raising the card's fine print by a step would cost one line of the title.
 - Chapter 14's length: at 144 rules the front door and the local contents carry the reader.
 
@@ -204,6 +228,7 @@ Chapter 15, yes, once CD-M2 lands: it reads as a chapter a design firm would sig
 - Read titles of S12, S16, S78 and S85 to S96 from the specs and counted their words by script; read S96's phone note, labels and scale; read chapter 14's intro, opener, group lines and Rule 14.1, and chapter 15's intro, groups and rule titles from the chapter files.
 - Read weight figures from the build report.
 - Checked D3-1542 and DR-258 in the decision log for 15.25's 2,644 claim.
+- From 17:05 UTC, after my first scores, read the Must fix sections and score lines of the civic education, nonpartisanship and brand, statistics, production, drift and reader panel reports (accessibility and craft were not yet scored), and checked before moving a score: DR-211, DR-268 and D3-1802 in the decision log (NB-M2); `s92.json`'s path column words (RP-2); 0 heading elements in `s-14-selection-guide.html` (RP-14); 14.143's status and step 1 lines in my captures (CE-M1).
 - Converted the 15.20 and 14.144 (R-30) captures to grayscale by luma (Pillow, ITU-R 601) and compared the chosen pill's ring with an unchosen pill's (17:05 UTC). This is my conversion, not the page's grayscale filter.
 
 ## Not tested

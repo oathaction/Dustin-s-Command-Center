@@ -640,7 +640,13 @@ CARD_CSS = (
     ".rl8{list-style:none;margin:0;padding:0}.rl8 li+li{margin-top:8px}.rl8 .rn,.rl8 .rw{display:block}"
     ".rl8 .rw{color:var(--oa-color-text-secondary)}"
     ".ky8{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;font:var(--oa-type-caption)}"
-    ".ky8 b{font-variant-numeric:tabular-nums}.pon{display:none}"
+    ".ky8 b{font-variant-numeric:tabular-nums}.ky8 li{display:flex;align-items:center;gap:8px}.pon{display:none}"
+    # the effects' rows (Rule 13.5's mark beside each code, as Rule 15.20's panel sets them), the two grades and the
+    # routes' lines
+    ".cd8 .ef8{list-style:none;margin:0;padding:0}.cd8 .ef8>li{padding:6px 0}"
+    ".cd8 .ef8>li+li{border-top:1px solid var(--oa-color-border-hairline)}.cd8 .fn8{display:block}"
+    ".cd8 .fv8{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}"
+    ".cd8 .gd8 dd+dd{margin-top:10px}.cd8 .gd8 .evr{margin:0}.rl8 .rf{display:block}"
     # on the 680 px stage the three cards stand side by side, and each row of one card lines up with the same row of the
     # others: a card spans thirteen rows of the list's grid (its head, the eleven rows of its list, its disclosure), its
     # list eleven. Three columns only while the frame holds 40em of the plate's own text as well (680 px at the guide's
@@ -648,7 +654,10 @@ CARD_CSS = (
     "@container oa-frame (min-width:680px) and (min-width:40em){.cds{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;"
     "grid-template-rows:repeat(13,auto);row-gap:0}"
     "@supports (grid-template-rows:subgrid){.cd8{display:grid;grid-row:span 13;grid-template-rows:subgrid;row-gap:0}"
-    ".cd8 dl{display:grid;grid-row:span 11;grid-template-rows:subgrid;row-gap:0}}}"
+    ".cd8 dl{display:grid;grid-row:span 11;grid-template-rows:subgrid;row-gap:0}"
+    # the effects' heading and its four family rows take five of the list's rows, so each family lines up across the cards
+    ".cd8 .ef8g{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}"
+    ".cd8 .ef8g>dd,.cd8 .ef8{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0}}}"
     ".pcs8{display:none}"
     "@media print{.lv>.oa-choice{display:none}.pcs8{display:grid;grid-template-columns:repeat(auto-fill,296px);gap:16px 24px;"
     "margin-top:16px}.pcs8 .pc8{break-inside:avoid}.mn8,.lv [data-oa-print]{display:none!important}}"
@@ -707,16 +716,23 @@ def rule_14_144():
         for t in off:
             lay = (LINK[t]["layer"] if t in LINK else NODE[t]["layer"])
             offs.append(f"<dd>{off_words(rid, t, set(codes))}</dd>")
-        # one row a family, its code and qualifier whole at the start of the line, so each family's code sits on one line
-        # across the three cards (the design director's DD-R1)
-        effs = "".join(f'<div><dt>Effect on {e(lc(C13.FAMILY[f]))}</dt><dd>{effect_cell(r["effects"][f])}</dd></div>'
-                       for f in ("DQ", "GE", "EP", "EQ"))
+        # the effects as Rules 15.16 and 15.20 print them (the data lead's R5, DF-3): one heading, then one row a family in
+        # the atlas's order, its name, Rule 13.5's pips from chapter 13's own pips_svg, and the code and qualifier whole
+        # with the code's words. Each family's row lines up across the three cards (the design director's DD-R1); no row
+        # adds them
+        effs = ('<div class="ef8g"><dt>Effects by outcome family</dt><dd><ul class="ef8" role="list">'
+                + "".join(f'<li><span class="fn8">{e(C13.FAMILY[f])}</span><span class="fv8">'
+                          f'{C13.pips_svg(r["effects"][f].split(" ")[0])}<span>{effect_cell(r["effects"][f])}</span></span></li>'
+                          for f in ("DQ", "GE", "EP", "EQ")) + "</ul></dd></div>")
+        # each route as route_rows in phase3_ch15_build.py prints it (R5, DF-7): chip and name, who acts, the feasibility
+        # word in bold, and the route's own check date or "Not checked", each on its own line
         routes = []
         for x in r["routes"]:
             when = f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked"
             routes.append(f'<li><span class="rn">{chip("Route", x["route"])} {e(C13.ROUTE_NAME[x["route"]])}</span>'
                           f'<span class="rw">{ce(x["who"])}</span>'
-                          f'<span class="rw">{e(x["feasibility"].capitalize())} feasibility. {e(when)}.</span></li>')
+                          f'<span class="rf"><b>{e(x["feasibility"].capitalize())}</b> feasibility</span>'
+                          f'<span class="rf">{e(when)}</span></li>')
         rem = r["remedy_evidence"]
         disc = (f'<div class="oa-disclosure-set"><div class="oa-disclosure-stack"><details class="oa-disclosure">'
                 f'<summary class="oa-disclosure-summary"><span class="oa-disclosure-label">The atlas’s evidence and '
@@ -734,15 +750,18 @@ def rule_14_144():
             # the band in the atlas's word and its definition, quoted, as Rules 15.11 and 15.20 print it (CE-S14)
             f'<div><dt>Band, the kind of change</dt><dd><b>{e(r["band"].capitalize())}</b>: “{ce(C15.BANDS[r["band"]])}”</dd></div>'
             + effs +
-            f'<div><dt>Evidence for the problem</dt><dd>{grade_word(r["problem_evidence"]["grade"], gloss=False)}</dd></div>'
-            f'<div><dt>Evidence for the remedy</dt><dd>{grade_word(rem["grade"], gloss=False)}</dd></div>'
+            # the two grades apart, each as Rule 15.16's grade_block prints it: the grade chip, Rule 13.3's gloss, then
+            # the atlas's term (R5, DF-7)
+            f'<div class="gd8"><dt>Its two grades, apart</dt>'
+            f'<dd>{C15.grade_block(r["problem_evidence"]["grade"], "evidence of the problem")}</dd>'
+            f'<dd>{C15.grade_block(rem["grade"], "evidence for the remedy")}</dd></div>'
             f'<div><dt>The atlas’s confidence in the effects</dt><dd>“{ce(r["effects_confidence"])}”</dd></div>'
-            f'<div><dt>Routes</dt><dd><ul class="rl8">{"".join(routes)}</ul></dd></div>'
+            f'<div><dt>Routes, with the date each was checked</dt><dd><ul class="rl8">{"".join(routes)}</ul></dd></div>'
             f'</dl>{disc}</li>')
     order = ["+L", "+M", "+S", "0", "-S", "-M", "?"]
     need(list(C13.EFFECT_WORDS) == order, "the atlas's effect codes changed")
-    key = ('<ul class="ky8">' + "".join(f'<li><b>{e(c.replace("-", MINUS))}</b> {e(C13.EFFECT_WORDS[c])}</li>' for c in order)
-           + "</ul>")
+    key = ('<ul class="ky8">' + "".join(f'<li>{C13.pips_svg(c)}<span><b>{e(c.replace("-", MINUS))}</b> {e(C13.EFFECT_WORDS[c])}</span></li>'
+                                        for c in order) + "</ul>")
     note = FACTS_NOTE()
     body = (f'<div class="lv" data-oa-chooser>{group}' + C15.beside(left, right)
             + f'<p class="k kb">The three reforms compared, as of {SNAP}</p>'
@@ -754,9 +773,10 @@ def rule_14_144():
     files = {"s-14-144-correct": fragment("s-14-144-correct", body, style)}
     alt = ("A reform chooser on Loop R8 from our systems atlas: a group of three radio buttons, Reform R-06, Reform R-30 "
            "and Reform R-38, with R-06 chosen; the loop drawn as two pills with the chosen reform’s targets on it in "
-           f"red; and three cards, one per reform, each with its targets on the loop and outside it, its band, "
-           f"its four effects one family to a row as of {SNAP} with each code and qualifier whole, its evidence grades and "
-           "its routes, and its evidence and tradeoffs one step away in a disclosure. No row adds the effects.")
+           f"red; and three cards, one per reform, each with its targets on the loop and outside it, its band with the "
+           f"atlas’s definition, its four effects one family to a row as of {SNAP}, each code and qualifier whole beside "
+           "its pips, its two evidence grades apart, its routes each with its check date or not checked, and its evidence "
+           "and tradeoffs one step away in a disclosure. No row adds the effects.")
     meta = {"s-14-144-correct": plate_meta(alt, interactive=True, keys=True,
                                            notes="Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; "
                                                  "the choice shows through the plate's own CSS from the checked radio, scripts "
@@ -807,8 +827,9 @@ def rule_14_144():
             "outside the loop in words, with its layer, and draw no path the atlas does not hold.",
             "Print each effect as the atlas stores it, the code and then any qualifier, followed by the code’s meaning. A "
             "qualifier is the words after a code that say where, when or for whom the effect holds, as in “+L local” or "
-            "“+M renter-owner”. A zero says “no expected effect”. Set the codes as text in the text ink, with no total, count, "
-            "average or rank, since the atlas never adds effects across families (Rules 15.16 and 15.21). Print each "
+            "“+M renter-owner”. A zero says “no expected effect”. Draw each code whole beside the pips of Rule 13.5, in the "
+            "text’s ink, with no total, count, average or rank, since the atlas never adds effects across families (Rules "
+            "15.16 and 15.21). Print each "
             f"route’s check date or “Not checked”, with the model’s date, {SNAP}.",
         ],
         "use_when": None,
@@ -822,7 +843,7 @@ def rule_14_144():
         "specimen": None,
         "tier": None,
         "tokens": ["oa.color.data.emphasis.red", "oa.color.state.selected.bar"],
-        "related": ["13.10", "15.11", "15.16", "15.20", "15.21", "18.3", "18.8"],
+        "related": ["13.3", "13.5", "13.10", "15.11", "15.16", "15.20", "15.21", "18.3", "18.8"],
         "builders": ("Read every row from the reforms’ own records, show the chosen reform’s targets from the checked "
                      "radio with CSS so the choice works with scripts off, and stop the build if any line adds, counts or "
                      "ranks the effects."),
@@ -832,9 +853,10 @@ def rule_14_144():
              "token": "oa.color.data.emphasis.red"},
             {"label": "Cards", "value": "One per reform, the same rows in the same order, all on the page whichever is chosen; the chosen one takes the selected bar",
              "token": "oa.color.state.selected.bar"},
-            {"label": "Effects", "value": "The atlas’s code and qualifier whole, then its words; zero in words; never added"},
+            {"label": "Effects", "value": "Rule 13.5’s pips, then the atlas’s code and qualifier whole and its words; zero in words; never added"},
+            {"label": "Grades", "value": "Each of the two apart, its grade word and Rule 13.3’s gloss, as Rule 15.16 prints them"},
             {"label": "Routes", "value": "Name, who acts, feasibility, and the check date or “Not checked”"},
-            {"label": "Never", "value": "A total, a count of plus codes, a rank, or a fill, bar or shade by code"},
+            {"label": "Never", "value": "A total, a count of codes or pips, a rank, or a fill, shade, length or color by code"},
         ],
         "correct": dict({"specimen": "s-14-144-correct",
                          "caption": ("Reforms R-06, R-30 and R-38 on Loop R8, live. Choose one and its targets on the loop "
@@ -1127,7 +1149,7 @@ def check(entries, files, specs):
         ok(en["failure"]["caption"].startswith(f"<strong>Fails Rule {rid}.</strong>"), f"Rule {rid}: the failure caption")
     # DF-6: each loop's grade label sits above its chip and title (Rule 13.1), as on every chapter 15 plate
     for sid, want in (("s-14-143-correct", ["evr", "hed"] * 2), ("s-14-144-correct", ["evr", "hed"])):
-        seen = re.findall(r'class="(evr|hed)"', files[sid].split("</style>", 1)[1])
+        seen = re.findall(r'class="(evr|hed)"', files[sid].split("</style>", 1)[1].split('<div class="pcs8">')[0])
         ok(seen == want, f"{sid}: the grade label and the loop's title stand in the order {seen}, not label first (DF-6)")
     # 14.143: the stepper's markup as CE-1 lists it
     t = files["s-14-143-correct"].split("</style>", 1)[1]
@@ -1180,7 +1202,20 @@ def check(entries, files, specs):
     ok("@container oa-frame (min-width:680px) and (min-width:40em){.cds{grid-template-columns:repeat(3," in files["s-14-144-correct"]
        and files["s-14-144-correct"].count(".cds{grid-template-columns:repeat(3,") == 1,
        "14.144: the three cards side by side must hang on the frame's width in em, so larger text takes one card a row (1.4.4)")
-    ok(t.count("<dt>") == 33 and t.count("<dl>") == 3, "14.144: eleven rows in each card's list, so the subgrid spans hold")
+    ok(t.count("<dt>") == 21 and t.count("<dl>") == 3 and t.count('class="ef8g"') == 3 and t.count('<ul class="ef8"') == 3,
+       "14.144: seven groups in each card's list, the effects' five rows among them, so the subgrid spans hold (eleven rows)")
+    # R5 (DF-3): Rule 13.5's pips beside every code, from chapter 13's own function, in each card and in the key
+    for rid in RIDS:
+        for f in ("DQ", "GE", "EP", "EQ"):
+            v = REFORM[rid]["effects"][f]
+            ok(f'{C13.pips_svg(v.split(" ")[0])}<span>{effect_cell(v)}</span>' in t, f"14.144: {rid}'s {f} effect lacks its pips or its whole code")
+    ok(t.count('<svg class="pp"') == 3 * 4 + 7, "14.144: twelve effect marks in the cards and seven in the key")
+    # R5 (DF-7): 15.16's grade form and 15.20's route form; "evidence for the problem" nowhere
+    ok("vidence for the problem" not in t and t.count("evidence of the problem") == 3 and t.count('class="gp"') == 6,
+       "14.144: each card's two grades as Rule 15.16 prints them, “evidence of the problem” (DF-7)")
+    ok(t.count("Routes, with the date each was checked") == 3 and "feasibility." not in t
+       and len(re.findall(r'<span class="rf"><b>[A-Z][a-z ]+</b> feasibility</span>', t)) == 9,
+       "14.144: the routes as Rule 15.20 prints them, the feasibility word in bold on its own line (DF-7)")
     pr38 = reader_text(re.search(r'data-oa-print="R-38">.*?</p>', t).group(0))
     ok("in red" not in pr38, f"14.144: R-38's print line says red: {pr38}")
     ft = reader_text(files["s-14-144-failure"])

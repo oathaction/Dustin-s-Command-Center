@@ -3554,9 +3554,10 @@ CSS.update({
 # whose rows live in the workflow sources file. Every stage a plate prints names the row of that file it rests on, and the
 # build stops if the row is gone, if its words no longer hold the phrase the stage relies on, or if its read date is not a
 # date. A workflow is a stage list in live HTML text (R4-3), its marks drawn by the chapter's block as Rule 14.6 sets a
-# process: the spine, the stages every enacted bill passes, in Charcoal at the subject weight with filled squares; the
-# paths that leave it, and what follows the law, in the context ink with outlined squares; a small square where a path
-# stops (DR-108); and a line back to step 1 for the act that undoes the law. Two dates never share one word (ruling (e)):
+# process: each stage's number on its line with no shape around it (the data lead's ruling R1, November 16, 2026); the
+# spine, the stages every enacted bill passes, on the line in the text's ink at the subject weight; the paths that leave
+# it, and what follows the law, on the gray line at the context weight; a small square where a path stops (DR-108), the
+# only square; and a line back to step 1 for the act that undoes the law. Two dates never share one word (ruling (e)):
 # "read" for the date our research read a source, "Checked" or "Not checked" for an atlas route entry (Rule 13.10).
 # ===============================================================================================================
 WF_SRC = ROOT / "work/research/20261111_Policy-Workflow-Sources.md"
@@ -3611,9 +3612,9 @@ def wf_row(route, stage, *phrases):
 
 
 class Stage:
-    """A stage of a workflow. kind: "st" a spine stage (filled square, the subject line), "end" the spine's last stage,
-    "br" a path that leaves the spine (set in, outlined, in the context ink), "af" a stage after the spine on the context
-    line. cites pairs a short citation with its row of the sources file; rel says in words where a path leaves the
+    """A stage of a workflow. kind: "st" a spine stage (its number on the subject line), "end" the spine's last stage,
+    "br" a path that leaves the spine (its number set in on a short gray arrow), "af" a stage after the spine on the gray
+    context line. Every number draws alike (R1). cites pairs a short citation with its row of the sources file; rel says in words where a path leaves the
     spine; stop ends a path on a small square; then says where a path goes next; back sends it to step 1."""
 
     def __init__(self, n, kind, name, words, cites, rel=None, stop=None, then=None, back=None):
@@ -3676,11 +3677,14 @@ def wf_html(groups, sources=True, back=True):
 
 
 CSS.update({
-    # a workflow (Rule 15.22, ruling (e) and Rule 14.6): a 22 px numbered square on its line, the line at x 11. The spine
-    # (.st, .end and the .br and .gh rows it passes) is Charcoal at the subject weight with filled squares; a path that
-    # leaves it (.br) steps in 32 px with a short context line, an arrowhead and an outlined square; what follows the law
-    # (.af) runs on a context line with outlined squares; a path that stops ends on a 10 px square; with .bk a context line
-    # runs from the last stage down, left, up and into step 1. At 680 px each stage's source moves to a column of its own
+    # a workflow (Rule 15.22, ruling (e) and Rule 14.6; the stage mark by the data lead's ruling R1, November 16, 2026): each
+    # stage's number is a bold figure in the text's ink on a 22 px knockout in the surface color with no edge, centered on
+    # its line at x 11, so the line breaks around it and no shape reads as a mark; every number looks the same. The spine
+    # (.st, .end and the .br and .gh rows it passes) runs on the line in the text's ink at the subject weight; a path that
+    # leaves it (.br) steps in 32 px on a short gray arrow to its number; what follows the law (.af) runs on the gray line
+    # at the context weight; a path that stops ends on the 10 px square, chapter 11's stop and the plate's only square;
+    # with .bk a gray line runs from the last stage down, left, up and into step 1. At 680 px each stage's source moves to
+    # a column of its own
     "wf": (".wfh{margin:20px 0 26px}.wf{position:relative;padding-left:18px;margin:0 0 30px}"
            f".wf.bk::before{{content:\"\";position:absolute;left:0;top:-18px;bottom:-18px;width:29px;"
            f"border:var(--oa-chart-line-context) solid {CTX};border-right:0;border-radius:8px 0 0 8px}}"
@@ -3694,10 +3698,9 @@ CSS.update({
            ".wf:not(.bk) li:last-child::before{bottom:auto;height:11px}.wf.bk li:first-child::before{top:-18px}"
            f".wf.bk li:first-child::after{{content:\"\";position:absolute;left:6px;top:-10px;width:10px;height:8px;background:{CTX};"
            "clip-path:polygon(0 0,100% 0,50% 100%)}"
-           f".wf .n{{position:relative;z-index:1;display:grid;place-items:center;width:22px;height:22px;background:{SUBJ};"
-           "color:var(--oa-color-surface);font:var(--oa-type-data-label);font-weight:var(--oa-font-weight-bold)}"
-           f".wf :is(.br,.af) .n{{background:var(--oa-color-surface);color:var(--oa-color-text-primary);"
-           f"border:var(--oa-chart-line-context) solid {CTX}}}"
+           ".wf .n{position:relative;z-index:1;display:grid;place-items:center;width:22px;height:22px;"
+           "background:var(--oa-color-surface);color:var(--oa-color-text-primary);font:var(--oa-type-data-label);"
+           "font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
            ".wf .br{padding-left:32px}"
            f".wf .br::after{{content:\"\";position:absolute;left:12px;top:10px;width:14px;border-top:var(--oa-chart-line-context) solid {CTX}}}"
            f".wf .br .sx::before{{content:\"\";position:absolute;left:24px;top:6px;width:8px;height:10px;background:{CTX};"
@@ -3711,26 +3714,29 @@ CSS.update({
            "@container oa-frame (min-width:680px){.wd .wf li{grid-template-columns:22px minmax(0,1fr) 196px;column-gap:16px}"
            ".wd .wf .sx{display:contents}.wd .wf .sx>*{grid-column:2;margin:0}.wd .wf .sx>*+*{margin-top:2px}"
            ".wd .wf .sx>.sc{grid-column:3;grid-row:1/span 6;margin:0;align-self:start}}"
-           # forced colors: the squares and lines keep their shape in the reader's text color
-           "@media (forced-colors:active){.wf .n,.wf .sqm,.wf.bk li:first-child::after,.wf .br .sx::before{forced-color-adjust:none;"
-           "background:CanvasText;color:Canvas}.wf :is(.br,.af) .n{background:Canvas;color:CanvasText;border-color:CanvasText}}"),
+           # forced colors (R1, item 6): the number in CanvasText on a Canvas knockout; the stop square and the arrowheads in
+           # CanvasText, and the lines take it from the forced border color
+           "@media (forced-colors:active){.wf .sqm,.wf.bk li:first-child::after,.wf .br .sx::before{forced-color-adjust:none;"
+           "background:CanvasText}.wf .n{forced-color-adjust:none;background:Canvas;color:CanvasText}}"),
     "rec": f".rec{{{C13.CAP};color:var(--oa-color-text-secondary);margin:4px 0 12px;max-width:40em}}",
-    # 15.22's key: each mark drawn as the workflow draws it, beside its words, with no rule between entries (DD-S1)
+    # 15.22's key: each mark drawn as the workflow draws it, beside its words, with no rule between entries (DD-S1); a
+    # stage's number (.kn) on its knockout as on the plate (R1, item 4)
     "wk": (".wk{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;font:var(--oa-type-body-small)}"
            ".wk li{display:grid;grid-template-columns:44px minmax(0,1fr);column-gap:10px;align-items:start}"
            ".km{position:relative;display:block;height:22px}"
-           f".km::after{{content:\"\";position:absolute;top:3px;width:16px;height:16px;box-sizing:border-box}}"
+           ".km .kn{position:absolute;top:0;left:0;z-index:1;display:grid;place-items:center;width:22px;height:22px;"
+           "background:var(--oa-color-surface);color:var(--oa-color-text-primary);font:var(--oa-type-data-label);"
+           "font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
            f".km-st::before{{content:\"\";position:absolute;left:9.5px;top:0;bottom:0;border-left:var(--oa-chart-line-subject) solid {SUBJ}}}"
-           f".km-st::after{{left:3px;background:{SUBJ}}}"
-           f".km-br::before{{content:\"\";position:absolute;left:2px;top:10px;width:16px;border-top:var(--oa-chart-line-context) solid {CTX}}}"
-           f".km-br::after{{left:24px;background:var(--oa-color-surface);border:var(--oa-chart-line-context) solid {CTX}}}"
+           f".km-br::before{{content:\"\";position:absolute;left:2px;top:10px;width:14px;border-top:var(--oa-chart-line-context) solid {CTX}}}"
+           f".km-br::after{{content:\"\";position:absolute;left:14px;top:6px;width:8px;height:10px;background:{CTX};"
+           "clip-path:polygon(0 0,100% 50%,0 100%)}.km-br .kn{left:22px}"
            f".km-af::before{{content:\"\";position:absolute;left:10px;top:0;bottom:0;border-left:var(--oa-chart-line-context) solid {CTX}}}"
-           f".km-af::after{{left:3px;background:var(--oa-color-surface);border:var(--oa-chart-line-context) solid {CTX}}}"
-           f".km-sq::after{{left:6px;top:6px;width:10px;height:10px;background:var(--oa-color-graphic-essential)}}"
-           f".km-bk::after{{left:4px;top:1px;width:14px;height:20px;border:var(--oa-chart-line-context) solid {CTX};border-right:0;"
-           "border-radius:6px 0 0 6px}"
+           f".km-sq::after{{content:\"\";position:absolute;left:6px;top:6px;width:10px;height:10px;background:var(--oa-color-graphic-essential)}}"
+           f".km-bk::after{{content:\"\";position:absolute;left:4px;top:1px;width:14px;height:20px;box-sizing:border-box;"
+           f"border:var(--oa-chart-line-context) solid {CTX};border-right:0;border-radius:6px 0 0 6px}}"
            "@media (forced-colors:active){.km::before,.km::after{forced-color-adjust:none;border-color:CanvasText}"
-           ".km-st::after,.km-sq::after{background:CanvasText}}"),
+           ".km-sq::after,.km-br::after{background:CanvasText}.km .kn{forced-color-adjust:none;background:Canvas;color:CanvasText}}"),
 })
 
 
@@ -3855,13 +3861,17 @@ def rule_15_22(book):
     rec = (f'<p class="rec">Our systems atlas, as of {SNAP}: {e(fs["instrument"])}. Who acts: {e(fs["who"])}.</p>')
     lab = diagram_label("documented", "on the public record: the law or rule behind each stage, with the date we read it")
     # DD-S1, DD-S2: the key before the stages, each mark drawn beside its words, one look to one meaning
-    marks = [("km-st", "A stage every enacted bill passes, in order, on the dark line"),
-             ("km-br", "A path a bill can take instead, set to one side on a short arrow, saying where it leaves and where it goes next"),
-             ("km-af", "What can follow the law, on the lighter line"),
-             ("km-sq", "A path that stops there"),
-             ("km-bk", "The line on the left: a repeal is a new act, so it runs back to stage 1")]
+    # R1, item 4: each key entry draws as the plate draws it, with the number of the first stage of its kind on the plate
+    first = lambda *kinds: str(next(s.n for s in stages if s.kind in kinds))
+    marks = [("km-st", first("st"), "A stage every enacted bill passes, in order, its number on the line in the text’s ink"),
+             ("km-br", first("br"), "A path a bill can take instead, set to one side on a short gray arrow, saying where it "
+                                    "leaves and where it goes next"),
+             ("km-af", first("af"), "What can follow the law, on the gray line"),
+             ("km-sq", None, "A path that stops there"),
+             ("km-bk", None, "The line on the left: a repeal is a new act, so it runs back to stage 1")]
     key = ('<p class="k">What the marks mean</p><ul class="wk">'
-           + "".join(f'<li><span class="km {c}" aria-hidden="true"></span><span>{e(w)}</span></li>' for c, w in marks)
+           + "".join(f'<li><span class="km {c}" aria-hidden="true">{f"<span class=\"kn\">{n}</span>" if n else ""}</span>'
+                     f'<span>{e(w)}</span></li>' for c, n, w in marks)
            + "</ul>")
     # DF-10: the atlas's snapshot date closes the atlas's part, and the stages' sources follow it, as Rule 15.24 orders them
     body = (head + rec + lab + key + wf_html(groups)
@@ -3870,9 +3880,10 @@ def rule_15_22(book):
     book.add("s-15-22-correct", body, rule="15.22", readable=True, wide=True,
              alt=(f"Route FS, Federal statute, from our systems atlas as of {SNAP}: {fs['instrument']}. Who acts: {fs['who']}. "
                   f"Drawn as a workflow of {len(stages)} numbered stages in four groups, In Congress, At the President, Once it "
-                  "is law and Undoing it, each with its source and the date we read it. The stages every enacted bill passes "
-                  "sit on a dark line in filled squares; the other paths and what follows the law are in a lighter ink with "
-                  "outlined squares. " + " ".join(s.say() for s in stages) + " A line runs from the last stage back to stage 1."),
+                  "is law and Undoing it, each with its source and the date we read it. Each stage’s number sits on its line "
+                  "with no mark around it. The stages every enacted bill passes sit on the line in the text’s ink; the other "
+                  "paths and what follows the law sit on the gray line, and a path that stops ends on a small square. "
+                  + " ".join(s.say() for s in stages) + " A line runs from the last stage back to stage 1."),
              notes="Each stage's words rest on a row of the workflow sources file, held by phrase and read date; the route's "
                    "record from the atlas.")
     book.log("15.22 correct", "Route FS, a federal statute's workflow", "D04")
@@ -3896,10 +3907,11 @@ def rule_15_22(book):
         "title": "Draw a route to change as its whole workflow, through to reversal.",
         "rule": [
             "Draw a route to change as the whole path a change takes, from its first stage to the one that can undo it. "
-            "Number every stage in reading order. Set the stages every change on the route passes through on one dark line in filled "
-            "squares, and the paths that leave it in the lighter context ink with outlined squares, each saying in words "
-            "where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small square, as a tracker ends "
-            "a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets it, with the date we read it.",
+            "Number every stage in reading order, and set each number on its line with no shape around it. Run the stages "
+            "every change on the route passes through on one line in the text’s ink, and the paths that leave it on the gray "
+            "line, each saying in words where it leaves, as Rule 14.6 sets a diagram’s path. End a path that stops on a small "
+            "square, as a tracker ends a bill that stops (Rule 11.3), and print beside each stage the law or rule that sets "
+            "it, with the date we read it.",
             "Our systems atlas’s federal statute route, Route FS, runs past the President’s signature. A spending act brings "
             "the money, an agency writes the rules that put the law to work, Congress can strike a rule, a court can set one "
             "aside, and a sunset date, a court or a later act can end the law. A repeal is a new act, so its line runs back "
@@ -3921,12 +3933,14 @@ def rule_15_22(book):
                                "It leaves out the veto, the money, the rules, the courts and repeal, and no stage names its "
                                "source."},
         "specs": [
-            {"label": "The spine", "value": "The stages every change on the route passes, numbered in reading order, filled squares on a "
-                                            "line in Charcoal at the subject weight", "token": "oa.chart.line.subject"},
-            {"label": "Other paths", "value": "Outlined squares in the context ink, set to one side, each saying in words where it "
-                                              "leaves the spine", "token": "oa.chart.color.context.onNewsprint"},
+            {"label": "The spine", "value": "The stages every change on the route passes, numbered in reading order, on a line "
+                                            "in the text’s ink at the subject weight", "token": "oa.chart.line.subject"},
+            {"label": "Numbers", "value": "A bold figure on its line, on a knockout in the surface color with no edge; every "
+                                          "stage’s number alike, on the spine and off it"},
+            {"label": "Other paths", "value": "On the gray line at the context weight, set to one side on a short arrow, each "
+                                              "saying in words where it leaves the spine", "token": "oa.chart.color.context.onNewsprint"},
             {"label": "After the law", "value": "Funding, rules, review and the courts on a context line, then what undoes it"},
-            {"label": "Ends", "value": "A small square and words where a path stops"},
+            {"label": "Ends", "value": "A small square and words where a path stops, the plate’s only square"},
             {"label": "Return", "value": "A context line back to stage 1 for an act that undoes the law"},
             {"label": "Sources", "value": "The law or rule behind each stage, with the date we read it, beside the stage"},
         ],
@@ -4842,9 +4856,9 @@ def xw_block(head, sub, rows, src_line):
     out = []
     for key, name, stages in rows:
         lab = (f'<span class="xn">{key}</span> {e(name)}' if isinstance(key, int) else f'<span class="xo">{e(name)}</span>')
-        items = "".join((f'<li><span class="wq{" wo" if k != "st" else ""}" aria-hidden="true">{n}</span>'
-                         f'<span class="vh">Stage {n}: </span>{hold(e(w))}</li>') if n else f"<li>{hold(e(w))}</li>"
-                        for n, k, w in stages)
+        # R1, item 5: a Route FS stage prints in words, "Stage 3: Suspension of the rules", with no square, ring or
+        # other mark, since the table follows no bill and any mark would claim a state
+        items = "".join(f"<li>{f'Stage&#160;{n}: ' if n else ''}{hold(e(w))}</li>" for n, k, w in stages)
         out.append(f'<li class="xr{" xe" if not isinstance(key, int) else ""}"><p class="xt">{lab}</p><ul class="xg">{items}</ul></li>')
     return (f'<div class="xw"><p class="xhd">{hold(head)}</p><p class="xs">{hold(sub)}</p><ol class="xl">{"".join(out)}</ol>'
             f'<p class="sc">{hold(src_line)}</p></div>')
@@ -5031,7 +5045,7 @@ def rule_15_23(book):
         "specs": [
             {"label": "Rows", "value": "One a step, numbered as the tracker numbers it, its stages beside it"},
             {"label": "Before and after", "value": "Rows for the stages before step 1 and after step 6, each named"},
-            {"label": "Stages", "value": "Route FS’s with Rule 15.22’s numbers and squares; the others by name, from "
+            {"label": "Stages", "value": "Route FS’s in words, “Stage” and Rule 15.22’s number, with no mark; the others by name, from "
                                          "their sources"},
             {"label": "Sources", "value": "Under each block, with the date we read them"},
         ],
@@ -5051,10 +5065,7 @@ CSS.update({
            ".xo{color:var(--oa-color-text-secondary);font-weight:var(--oa-font-weight-regular)}"
            ".xg{list-style:none;margin:4px 0 0;padding:0 0 0 20px}.xg li+li{margin-top:4px}"
            ".xg li{position:relative}"
-           f".wq{{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 3px;margin-right:6px;background:{SUBJ};"
-           "color:var(--oa-color-surface);font:var(--oa-type-data-label);font-weight:var(--oa-font-weight-bold);vertical-align:1px}"
-           f".wq.wo{{background:var(--oa-color-surface);color:var(--oa-color-text-primary);border:var(--oa-chart-line-context) solid {CTX}}}"
-           ".xg li:has(.wq){padding-left:0;margin-left:-20px}"
+
            f".xw .sc{{{C13.CAP};color:var(--oa-color-text-secondary);margin-top:8px}}"
            "@container oa-frame (min-width:680px){.wd .xr{display:grid;grid-template-columns:184px minmax(0,1fr);column-gap:20px}"
            ".wd .xg{margin:0}}"),
