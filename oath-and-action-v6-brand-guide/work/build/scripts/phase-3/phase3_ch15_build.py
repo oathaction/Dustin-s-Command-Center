@@ -472,14 +472,14 @@ class Pill:
     """A variable as a pill with its own title inside (System 1's station_block, DR-36), or a thin pill for a station
     that is no numbered variable (a conceptual loop's)."""
 
-    def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False):
+    def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False, keyline=False):
         pw = pill_w(label, pw)
         self.rows = rows_of(label, pw - 2 * PAD)
         need(len(self.rows) <= MAX_ROWS or label not in DR265_TITLES,
              f"the title {label!r} takes {len(self.rows)} rows in a {pw:.0f} px pill; ruling (e) holds a pill to {MAX_ROWS}")
         self.h = max(len(self.rows) * LH + 22, 44)
         self.cx, self.cy, self.pw, self.thin, self.cls = cx, cy, pw, thin, cls
-        self.red, self.shared = red, shared
+        self.red, self.shared, self.keyline = red, shared, keyline
 
     @property
     def top(self):
@@ -503,8 +503,13 @@ class Pill:
         c = ("pl" + (" th" if self.thin else "") + (" rp" if self.red else "") + (" sh" if self.shared else "")
              + (" " + self.cls if self.cls else ""))
         ty = self.cy - (len(self.rows) - 1) * LH / 2 + 15 * 0.35
+        # call 15 (DD-R5, AX-S5, CD-S5): a chooser's target pill carries a 1 px keyline 2 px inside its outline, shown
+        # only while its red ring shows, so the ring holds an ink edge in one ink and on Newsprint (the component
+        # engineer's request 1, item 2). Opt-in: no other plate's red pill takes it (Rule 12.5 as approved)
+        pk = (f'<rect class="pk" x="{F(self.left + 2)}" y="{F(self.top + 2)}" width="{F(self.pw - 4)}" '
+              f'height="{F(self.h - 4)}" rx="{F(self.h / 2 - 2)}"/>') if self.keyline else ""
         return (f'<rect class="{c}" x="{F(self.left)}" y="{F(self.top)}" width="{F(self.pw)}" height="{F(self.h)}" '
-                f'rx="{F(self.h / 2)}"{RED if self.red else ""}/>' + lines(self.cx, ty, self.rows, "t ts" if self.shared else "t"))
+                f'rx="{F(self.h / 2)}"{RED if self.red else ""}/>' + pk + lines(self.cx, ty, self.rows, "t ts" if self.shared else "t"))
 
 
 def svg_wrap(body, h, label=None, w=W):
@@ -636,7 +641,7 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     y1 = top + 4 + hs[0] / 2
     gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
-    kw_ = [dict(red=c in targets, shared=c in shared) for c in codes]
+    kw_ = [dict(red=c in targets, shared=c in shared, keyline=bool(for_) and c in for_) for c in codes]
     p1 = Pill(labels[0], W / 2, y1, pw[0], thin, **kw_[0])
     p2 = Pill(labels[1], W - 2 - pw[1] / 2, y2, pw[1], thin, **kw_[1])
     p3 = Pill(labels[2], 2 + pw[2] / 2, y2, pw[2], thin, **kw_[2])
@@ -853,7 +858,9 @@ CSS.update({
     "rt": (".sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}"
            ".sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}"
            f".sv .rt .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}.sv .rt .hd{{fill:var(--oa-color-data-emphasis-red)}}"),
-    "rp": ".sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}",
+    "rp": (".sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}"
+           # call 15: a chooser target's keyline, in ink, shown while its pill is red
+           f".sv .pk{{fill:none;stroke:{INK};stroke-width:1px;display:none}}.sv .pl.rp+.pk{{display:inline}}"),
     # Rule 15.15's shared variable: the pill filled in ink and its name in the surface color
     "sh": f".sv .pl.sh{{fill:{INK}}}.sv .ts{{fill:var(--oa-color-surface)}}",
     "pp": C13.CSS["pp"],
@@ -3288,10 +3295,12 @@ def chooser_css(rids):
         # the chosen reform's targets take Rule 12.5's red (the lit marks, a 4 px red line on a 6 px ink case, red head,
         # a 3 px red outline), as the class rt and rp draw the first reform's in the markup; the others go back to ink
         out.append(f'{no} .hi,{yes} .lo{{display:none}}{no} .lo,{yes} .hi{{display:inline}}'
-                   f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}{no} .hd{{fill:{INK}}}'
+                   f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}'
+                   f'{no} .hd{{fill:{INK};stroke:none}}{no} .pk{{display:none}}'
                    f'{yes} .ak-mark{{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}}'
-                   f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}{yes} .hd{{fill:var(--oa-color-data-emphasis-red)}}'
-                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}')
+                   f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}'
+                   f'{yes} .hd{{fill:var(--oa-color-data-emphasis-red);stroke:{INK};stroke-width:2px;paint-order:stroke}}'
+                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}{yes} .pk{{display:inline}}')
     # the chosen panel alone shows, with no rule or space above it where another panel stood before it
     shows = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-panel]:not([data-oa-panel="{rid}"]){{display:none}}'
                     f'.p:has([value="{rid}"]:checked) [data-oa-panel="{rid}"]{{margin:0;padding:0;border:0}}' for rid in rids)
@@ -3325,7 +3334,8 @@ def rule_15_20(book):
         f'{" checked" if k == 0 else ""}><span class="oa-choice-face">{check_}<span class="oa-choice-label">'
         f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</span></span></label>' for k, rid in enumerate(rids))
     group = (f'<fieldset class="oa-choice"><legend class="oa-choice-legend">Show one reform on Loop R4a</legend>'
-             f'<div class="oa-choice-row ch1">{items}</div></fieldset><p class="vh" role="status" data-oa-chooser-status></p>')
+             f'<div class="oa-choice-row oa-choice-row--list">{items}</div></fieldset><p class="vh" role="status" '
+             f'data-oa-chooser-status></p>')       # call 15: the shared list form, one width for every choice
     tg = set(rs[0]["targets"])
     lit = {t_ for r_ in rs for t_ in r_["targets"] if t_ in LINK}
     b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner)
@@ -3540,7 +3550,9 @@ CSS.update({
            ".p .oa-stepper .oa-stepper-step{background:none;border-left-color:transparent;color:inherit}"
            f".p .oa-stepper .dw :is([data-s],[data-p]){{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
            ".p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}"),
-    "ch1": ".ch1{flex-direction:column;align-items:flex-start}" + chooser_css(["R-03", "R-04"]),
+    # call 15: the choices take the shared list form (oa-choice-row--list, c-18-choice.css): one width, the check's place
+    # kept; the first reform's red head in the markup takes a 1 px ink edge (paint-order puts the fill over the inner half)
+    "ch1": (f".lv .dw .rt .hd{{stroke:{INK};stroke-width:2px;paint-order:stroke}}" + chooser_css(["R-03", "R-04"])),
     "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
            ".pn .oa-disclosure-set{margin-top:16px}@media print{.lv>.oa-choice{display:none}}"),
     "pon": ".pon{display:none}",
