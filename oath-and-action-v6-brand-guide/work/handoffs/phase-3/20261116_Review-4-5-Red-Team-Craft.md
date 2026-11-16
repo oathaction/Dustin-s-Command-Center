@@ -108,3 +108,7 @@ Oath & Action Edition 06, Phase 3, review of rounds 4 and 5, chat 7, November 16
 - Rules 15.1 to 15.12, 15.14, 15.15, 15.17 and 15.18, the chapter 11 failure plates other than 11.11's, and Rule 11.12's failure: captured, not looked at closely.
 - Print, reduced motion, scripts off, forced colors, 200 percent text, keyboard and focus order; screen readers, Safari and Firefox (DR-279).
 - S16 and its note; S59's crossing measured; 14.143's still sequence.
+
+## Verification of the fix pass
+
+Started 19:06 UTC on the joined page (`c07/join/guide.html`, 12,174,060 bytes, copied to `verify/guide.html` in my scratch; commit `b86226e8`). Static checks on its markup and CSS are in; the browser batch (`bin/verify.cjs`, measures and captures at 1x and 2x, 1440, 390 and 320 px, both grounds) waits on the load rule. Verdicts follow when it lands.
