@@ -2056,15 +2056,41 @@ def check(frag, by_group, printed):
     ids = re.findall(r'\sid="([^"]+)"', frag)
     if len(ids) != len(set(ids)):
         faults.append("an id repeats")
-    # the skip links: one past the guide, one a question to the next question's line (AX 1.5)
+    # the skip links: one past the guide, one a question to the next question's line, and the last question's to the
+    # closing block's line, where its forms end (AX 1.5, AX-S4, D3-2086)
     skips = re.findall(r'<a class="oa-link-skip sg-skip" href="#([^"]+)">([^<]+)</a>', frag)
     if not skips or skips[0] != ("group-14-1", SKIP_FIRST):
         faults.append("the guide's first stop is not its skip link")
     order = sorted(by_group)
     for i, n in enumerate(order):
-        want_t = f"s-14-sg-q-{order[i + 1]}" if i + 1 < len(order) else "group-14-1"
+        want_t = f"s-14-sg-q-{order[i + 1]}" if i + 1 < len(order) else "s-14-sg-full-t"
         if (want_t, f"Skip these {len(by_group[n])} forms") not in skips:
             faults.append(f"group {n}'s skip link is missing or wrong")
+    if len(skips) != len(order) + 1:
+        faults.append(f"{len(skips)} skip links, not {len(order) + 1}")
+    # the road (call 17): each of Rules 14.142 to 14.144 once in the closing block, after the last question and before
+    # the guide ends, with chapter 15's routes; the lines under questions sit between the question line and its skip link
+    full = re.search(r'</ol><div class="sg-full"><p class="sg-qt" id="s-14-sg-full-t">([^<]+)</p>(.*?)</div></div>$',
+                     frag.rstrip("\n"), re.S)
+    if not full:
+        faults.append("the closing block does not follow the last question at the guide's end")
+    else:
+        got = re.findall(r'<a class="oa-link sg-go" href="#rule-(\d+)-(\d+)" data-oa-xref>Rule (\d+)\.(\d+)</a>', full.group(2))
+        if [(a, b) for a, b, c, d in got if (a, b) != (c, d)]:
+            faults.append("a link in the closing block names another rule than it lands on")
+        if [f"{a}.{b}" for a, b, _, _ in got] != [r for r, _ in FULL] + [ROUTES[0]]:
+            faults.append(f"the closing block links {[f'{a}.{b}' for a, b, _, _ in got]}, not Rules 14.142 to 14.144 and 15.22")
+    for n, (rid, _) in FULL_AT.items():
+        num = rid.split(".")[1]
+        if not re.search(rf'id="s-14-sg-q-{n}">[^<]+</p><p class="sg-gl" id="s-14-sg-go-{n}"[^>]*>[^<]*'
+                         rf'<a class="oa-link sg-go" href="#rule-14-{num}" data-oa-xref>Rule {re.escape(rid)}</a>[^<]*</p>'
+                         rf'<a class="oa-link-skip sg-skip"', frag):
+            faults.append(f"group {n}'s line to Rule {rid} is missing or out of place")
+    if frag.count('class="oa-link sg-go"') != len(FULL) + 1 + len(FULL_AT):
+        faults.append(f"{frag.count('class=\"oa-link sg-go\"')} road links, not {len(FULL) + 1 + len(FULL_AT)}")
+    for w in [FULL_LEAD, ROUTES[1]] + [x for _, x in FULL] + [x for _, x in FULL_AT.values()]:
+        if re.search(r"—|‑|'", w):
+            faults.append(f"a road line needs a look: {w[:40]!r}")
     need(not faults, "faults:\n  " + "\n  ".join(faults))
 
 
