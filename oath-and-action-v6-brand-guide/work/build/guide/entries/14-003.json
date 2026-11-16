@@ -11,7 +11,7 @@
   "text": [
    "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name beside each line is read in place."
   ],
-  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  "basis": "Rule 12.6, and WCAG 2.2, success criterion 1.4.1, Use of Color"
  },
  "specimen": null,
  "tier": null,
