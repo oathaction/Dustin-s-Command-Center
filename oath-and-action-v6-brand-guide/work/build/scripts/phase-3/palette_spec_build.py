@@ -457,7 +457,7 @@ def red_block():
         rs[g] = r
         if g == "newsprint":
             kr = contrast(hex_of(kp), GROUND[g])
-            c += f'<span class="ps-l">Keyline in {e(alias_name(kp) or "")}, 1 px, {ratio(kr)}, {uses(kr, "fill")}</span>'
+            c += f'<span class="ps-l">{e(alias_name(kp) or "")} keyline, {ratio(kr)}, {uses(kr, "fill")}</span>'
             need(r < 3 and kr >= 3, f"the point on Newsprint measures {r:.2f} and its keyline {kr:.2f}; reread the keyline's words")
         else:
             c += '<span class="ps-l">Needs no keyline</span>'
@@ -630,7 +630,7 @@ STYLE = """
    wraps under its own first word). The Step and Token headings are read by a screen reader and shown in the row itself. */
 @container (min-width: 40rem) {
   .ps-t, .ps-t thead, .ps-t tbody { display: block }
-  .ps-t tr { display: grid; grid-template-columns: minmax(0, 1.27fr) minmax(0, 1.27fr) minmax(0, 1fr); column-gap: var(--oa-space-200) }
+  .ps-t tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 13rem; column-gap: var(--oa-space-200) }
   .ps-t thead tr { border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-strong) }
   .ps-t thead th { border: 0; padding: var(--oa-space-100) 0 }
   .ps-t thead th:nth-child(-n+2) { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
