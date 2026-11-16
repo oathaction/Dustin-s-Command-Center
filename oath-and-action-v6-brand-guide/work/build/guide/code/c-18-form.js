@@ -14,7 +14,8 @@
   // Replace this with your own request. It calls done() once the server has the form.
   function send(form, done) { setTimeout(done, 800); }
 
-  document.querySelectorAll('[data-oa-form]').forEach(function (form) {
+  // Only a form element: a chart may carry data-oa-form for its own form name, and is never this script's
+  document.querySelectorAll('form[data-oa-form]').forEach(function (form) {
     var ask = form.querySelector('.oa-form-send');
     var status = form.querySelector('.oa-form-status');
     var fields = Array.prototype.slice.call(form.querySelectorAll('[data-oa-check]'));
