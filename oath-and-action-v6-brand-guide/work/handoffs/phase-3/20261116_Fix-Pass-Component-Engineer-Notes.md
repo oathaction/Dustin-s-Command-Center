@@ -20,12 +20,18 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Not fixed
 
-Pending.
+- **CR-S4, partly: 15.19's sticky drawing column.** Where: Rule 15.19, `s-15-19-correct` (`phase3_ch15_build.py`, `rule_15_19()`), and the shell's plate frame (`guide-shell.css`, `.plate-scroll`). Wrong: at a desk 15.19's drawing ends about 340 px above Play, so its column stands empty while a reader steps through the list (the craft report's measure). Fix I would make: an opt-in in the shell, a frame that fits its stage and holds a part marked `data-oa-sticky` clips (`overflow: clip`) instead of scrolling, so that part can stick under the masthead (`top: calc(var(--head-h) + var(--oa-space-300))`, which now follows the masthead's real height); then the systems designer marks 15.19's drawing column. Why not: every plate's frame scrolls sideways today (`overflow-x: auto`), which makes it the scroll box a sticky part sticks to; changing that reaches every frame's clipping and its keyboard scrolling, and the craft report asks for the accessibility lead's yes on the focus order first. Board 3: whether a sticky drawing at a desk, and a sticky control row on a phone, are wanted. 15.19's order: Requests 2.
+- **AX section 6, question 1 (the 16 px wordmark's switch at 23.5em).** Where: Rule 03.6's two masters in the shell's masthead (`guide-shell.css`, `@media (max-width: 22.49em)`). Wrong: at 360 to 372 px the 24 px wordmark returns and the menu button drops to a second bar line, 132 px of masthead. Fix: move the switch to 23.5em. Why not: it changes where Rule 03.6's two masters meet, which is Dustin's call (the accessibility lead's question). If he says yes, the shell's scripts-off floor for 22.5em to 23.25em goes with it; with the script on, nothing else needs to change.
 
 ## Calls
 
 | call | reason |
 |---|---|
+| The shell's `--head-h` takes the masthead's measured height less its 1 px rule (`--head-real`, set by the shell's script from a `ResizeObserver` and once before the first landing), to a hundredth of a pixel | AX-M1's measured fix uses `clientHeight`, which rounds to a whole pixel; the masthead's height is never under the two bars' sum (each bar has that minimum), so wherever it fits, the value equals today's and nothing moves |
+| Without the script, `--head-h` stays the two bars' sum, with a floor of 8.25rem from 22.5em to 23.25em and 6.25rem from 64em to 85.125em | AX-M1 asks for a scripts-off floor; the ranges and heights are the ones measured at the default text size, 1 px at a time |
+| Print keeps the two bars' sum for `--head-h` | Print hides the masthead, so its measured height means nothing there; the printed cover keeps today's height |
+| The rail keeps its scroll edge where the masthead's rule meets it, with no added scroll padding | AX-M1's measured fix leaves 1440 px as it is; a scroll padding would move every rail link's focus scroll at every width |
+| The chooser's one width is an opt-in list form in Rule 18.3's code set (`oa-choice-row--list`) | Rule 18.3 already allows "a row of segments or a list"; an opt-in class moves no choice on today's page, and both plates take it by one class |
 
 ## Requests
 
@@ -62,4 +68,6 @@ Pending.
 
 ## Not tested
 
-Pending.
+- **The guide check** (`guide_check.js`), quick or full: not run, by the brief; the main session runs it on the joined build. Its keys paths for 14.143 and 14.144 were checked against today's plates by script only: each plate still holds 7 steps with `data-oa-part` "Loop B4" three times and "Loop R10" four times, and each of 14.144's three `[data-oa-say]` lines still starts "Reform R-06", "Reform R-30" and "Reform R-38", the words the keys file looks for; no browser walked them.
+- **Any screen reader, Safari, Firefox, a real phone, a real print dialog.** None runs here. `ResizeObserver`, container queries and `max()` inside a custom property are read in Chromium only.
+- **Windows forced colors** on a real system.

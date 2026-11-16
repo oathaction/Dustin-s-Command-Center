@@ -114,7 +114,7 @@
             for (var ri = 1; ri < r.length; ri++) len += Math.hypot(r[ri][0] - r[ri - 1][0], r[ri][1] - r[ri - 1][1]);
             var nd = Math.max(1, Math.round((len + 3) / 7)), sc = len / (nd * 4 + (nd - 1) * 3);
             var d = r.map(function (q, qi) { return (qi ? 'L' : 'M') + K.round(q[0]) + ',' + K.round(q[1]); }).join('');
-            c.path(d, { stroke: ink, width: lw, dash: K.round(4 * sc) + ' ' + K.round(3 * sc), data: { field: ea, status: prelim_value } }, [x0, top, x1 - x0, plotH]);
+            c.path(d, { stroke: ink, width: lw, dash: (Math.round(400 * sc) / 100) + ' ' + (Math.round(300 * sc) / 100), data: { field: ea, status: prelim_value } }, [x0, top, x1 - x0, plotH]);
           });
         } else if (dash) c.path(dash, { stroke: ink, width: lw, dash: '4 3', data: { field: ea, status: prelim_value } }, [x0, top, x1 - x0, plotH]);
       }

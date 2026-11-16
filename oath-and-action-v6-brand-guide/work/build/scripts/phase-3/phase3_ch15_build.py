@@ -3337,8 +3337,9 @@ def rule_15_20(book):
         f'{" checked" if k == 0 else ""}><span class="oa-choice-face">{check_}<span class="oa-choice-label">'
         f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</span></span></label>' for k, rid in enumerate(rids))
     group = (f'<fieldset class="oa-choice"><legend class="oa-choice-legend">Show one reform on Loop R4a</legend>'
-             f'<div class="oa-choice-row oa-choice-row--list">{items}</div></fieldset><p class="vh" role="status" '
-             f'data-oa-chooser-status></p>')       # call 15: the shared list form, one width for every choice
+             f'<div class="oa-choice-row oa-choice-row--list ch1">{items}</div></fieldset><p class="vh" role="status" '
+             f'data-oa-chooser-status></p>')       # call 15: the shared list form, one width for every choice; "ch1" now
+    #                                               sets no layout and only carries the chooser's styles into the block
     tg = set(rs[0]["targets"])
     lit = {t_ for r_ in rs for t_ in r_["targets"] if t_ in LINK}
     b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner, keys=True)
@@ -5509,6 +5510,9 @@ def check(data, book):
             if not re.fullmatch(r'<span class="sqm" aria-hidden="true"></span><span>(?:(?!</?p\b).)*</span>', inner) \
                     or inner.count("<span") - inner.count("</span>") != 0:
                 fails.append(f"{sid}: a stop line holds more than its mark and one span of words: {inner[:80]!r}")
+    # call 15: the chooser's styles reach the chapter's block (plate_css keeps a style only where a plate uses its class)
+    if 'value="R-04"]:checked' not in data["plate_css"] or ".ch1{" in data["plate_css"]:
+        fails.append("plate_css: Rule 15.20's chooser styles are missing, or the old .ch1 layout came back (call 15)")
     # BC S16: punctuation never touches a typed chip, whose padding and edge would set it apart ("Variable C1 , seats")
     for sid, frag in book.files.items():
         for m in re.finditer(r'<span class="chip">([^<]*)<span class="id">([^<]*)</span></span>([,.;:!?)’])', frag):
