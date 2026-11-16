@@ -9,7 +9,7 @@
  "geography": "United States",
  "universe_or_base": "Nonfarm payroll jobs",
  "date_retrieved": "2026-11-06",
- "vintage": "the Bureau of Labor Statistics’ Employment Situation for September 2026, released October 2, 2026, as FRED posted it on November 6, 2026 before that day’s October release; the latest two months are preliminary and BLS revises them",
+ "vintage": "as posted on FRED on November 6, 2026; the latest two months are preliminary and BLS revises them",
  "qualification": "Seasonally adjusted. The Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, so August and September 2026 are preliminary, and a yearly benchmark revision can move earlier months. FRED copies the Bureau of Labor Statistics series; bls.gov refuses automated requests, so the studio read FRED (DR-60).",
  "domain": "D07",
  "states": [],
@@ -43,13 +43,7 @@
   "S14"
  ],
  "source_line_variants": {
-  "with_margin": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
-  "september_release": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, from the Employment Situation for September 2026, released October 2, 2026, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary, and later releases revise them.",
-  "september_release_margin": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, from the Employment Situation for September 2026, released October 2, 2026, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary, and later releases revise them. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
-  "september_release_sectors_margin": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm, private and government employees, monthly change, seasonally adjusted, from the Employment Situation for September 2026, released October 2, 2026, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary, and later releases revise them. The margin of error for all nonfarm employees is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release."
+  "with_margin": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release."
  },
- "derivation": "From series PAYEMS: each month’s level minus the month before; avg3_thousands is the three-month moving average ending in that month, computed from December 2021 on so January 2022 has one. Rows from January 2022 on.",
- "notes": [
-  "Vintage, checked November 16, 2026: all 69 months of PAYEMS in fred-payrolls-by-sector.csv (January 2021 to September 2026), and of USPRIV, USGOVT and CES9091000001, equal ALFRED’s vintage of October 2, 2026 (https://alfred.stlouisfed.org/graph/alfredgraph.csv?id=PAYEMS&vintage_date=2026-10-02); the vintage of November 6, 2026 differs in August 2026 (159,068 against 159,015) and September 2026 (159,128 against 159,044) and adds October 2026. ALFRED’s release dates for the Employment Situation list October 2 and November 6, 2026. The september_release variants name that release for S96 (ST-S8); printed_source_line and with_margin stay as S14 and chapter 13 print them."
- ]
+ "derivation": "From series PAYEMS: each month’s level minus the month before; avg3_thousands is the three-month moving average ending in that month, computed from December 2021 on so January 2022 has one. Rows from January 2022 on."
 }
