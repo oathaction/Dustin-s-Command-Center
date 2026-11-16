@@ -145,7 +145,7 @@ No report changed my scores for R4-A, R4-S, R5-3, R5-W or C14; NB-M3 and RP-1 fo
 
 **CD-S8. Rule 14.1 and group 17.** Name "Choose a chart" in Rule 14.1 and link it; name all seven forms in group 17's line (the annotated illustration and the calendar are missing); replace "frozen data" in the intro with words a reader knows ("a fixed copy of the source's data"). Owner: editor.
 
-**CD-S9. Rule 14.143's still list.** While the stepper runs, give the list row the status line names the selected band, as 15.19's list does, so one component reads one way in both chapters. Owner: complex examples maker, with the component engineer.
+**CD-S9. Rule 14.143's still list.** Rule 18.22's anatomy marks the current step with a 4 px bar and the surface fill (`s-18-22-anatomy`), and 15.19's list mutes the steps not yet reached; 14.143's list, after five presses of Next step, shows every row in full ink and none marked. While the stepper runs, give the row the status line names the current-step treatment, so one component reads one way in chapters 14, 15 and 18. Owner: complex examples maker, with the component engineer.
 
 **CD-S10. Rule 14.144's cards.** Drop the reform chip from each card's first sentence ("Turns one connection red"), since the card's head names it; the plate loses three chips and one line per card. Owner: complex examples maker, editor.
 
