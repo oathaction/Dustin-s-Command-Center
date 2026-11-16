@@ -81,7 +81,7 @@ Read at 1440 px from the Newsprint 1x captures and the page text, then at 390 px
 
 | Plate | What it taught (simulated) | What confused (simulated) | The word that stopped them |
 |---|---|---|---|
-| "Choose a chart" | "I can find my question and see the shape before I click. The little drawings help more than the names." | "Nothing here tells me which colors. 'Reference' and 'Extended' do not tell me whether I am allowed to use them." | "tier" (in the entries' tier line) |
+| "Choose a chart" | "I can find my question and see the shape before I click. The little drawings help more than the names." | "Nothing here tells me which colors. The key says a Reference form is 'drawn as a sketch'; am I allowed to publish one?" | "Reference" |
 | 14.142 | "Put the margin behind the bars and say its size and source." | "'The kit draws the phone drawing, the table and the files.' I work in a design app; I do not have the kit." | "kit" |
 | 14.143 | "Number each loop's steps on its own." | "I would never make this; it reads as the studio's own tool." | "pill" |
 | 14.144 | "Same rows on every card, no totals." | "Too much for me to copy." | "layer" |
@@ -138,7 +138,7 @@ Summary in the reader's words (simulated): "The jobs chart surprised me by being
 
 | Plate | What it taught (simulated) | What confused (simulated) | The word that stopped them |
 |---|---|---|---|
-| "Choose a chart" | "A group named 'Choose a chart', then sixteen lists, each named by its question, with links like 'Ranked bar, Core'. The 'Skip these 10 forms' links let me jump a question." | "I move by headings. The sixteen questions are not headings, so pressing H took me past all 144 links to Rule 14.1. I found the questions only by list navigation." | "Core" (heard after every name, 127 times) |
+| "Choose a chart" | "A group named 'Choose a chart', then sixteen lists, each named by its question, with links like 'Ranked bar, Core'. The 'Skip these 10 forms' links let me jump a question." | "I move by headings. The sixteen questions are not headings, so pressing H took me past all 144 links to the first heading after the guide. I found the questions only by list navigation." | "Core" (heard after every name, 127 times) |
 | 14.142, S96 | "The table is the chart for me: 57 rows, and a last column that says 'Drop past the margin' twice and 'Within the margin' where the survey cannot tell. The alt text gives both named drops." | "The alt says 'Two are drawn in the strongest ink'. Ink tells me nothing; 'the two marked drops' would." | "strongest ink" |
 | 14.143 | "The status line reads 'Loop R10, step 2 of 4' and the step, so I always know which loop I am in. 'Reset the loop' and 'Previous step' say why they are unavailable." | "The group's description says the shared variable is 'the pill filled in ink in both'." | "pill" |
 | 14.144 | "Three radio buttons in a group named 'Show one reform on Loop R8'. Each card reads row by row, with every effect code then its meaning." | "'Reform R-06 turns one connection red.' The status line has to tell me which one; the card's sentence is about a color I cannot see." | "red" |
@@ -194,3 +194,42 @@ This section is the panel agent's own reading of what the simulated readers met,
 **RP-17. Rule 14.79, S85: the Civic Line heading reads as a second title.** Where: S85, the line "Worker bargaining power | Variable A2" above the grid. R3 read it as a claim that union membership measures bargaining power. The sentence that explains it, "The drawing beside “Worker bargaining power” is the atlas's symbol for Variable A2", sits only in the closed "The table and notes". DR-266 set the drawing, so it stays. Fix: move that sentence, with what ties the measure to the variable, into the visible notes. Owner: maker A, with the editor.
 
 **RP-18. Rule 14.135, S89 never spells out FEMA.** Where: S89's grade line, title, steps and notes; "Federal Emergency Management Agency" appears nowhere in Rule 14.135 (counted by script). H02 and H11. Fix: spell it out at first use in the grade line or the first step. Owner: infographics maker, with the editor.
+
+**RP-19. Rule 15.22, stage 19 hedges its stated rule.** Where: stage 19. Quoted: "The latest such ruling we found came on June 30, 2026". The rule that picks the case is stated and date-based, so it would pick the same case for either side, and R5L and R5R both accepted the plain holding. "We found" is what made R5L ask how hard the studio looked: it reads as a hedge (chapter 02, W16) where a date would carry the limit. Fix: "As of November 14, 2026, the latest such ruling came on June 30, 2026, when ...". Owner: systems designer, with the editor.
+
+**RP-20. Rule 14.142 never says what "90 percent" means.** Where: S96's measure line, notes and source line, which give "the survey’s 90 percent margin of error" and "the Bureau’s 90 percent interval" with no plain gloss; Rule 14.9, which the rule cites, does not give one either. R1 and R3 stopped on it. Fix: one clause in the first note, for example "a range the Bureau expects to hold the true change in nine samples of ten", worded with the data lead. Owner: complex examples maker, with the editor and the data lead.
+
+## The twelve named places, as the panel met them
+
+1. **Carried items.** The panel's readers did not stumble on the chooser's pill widths (DD-R2); the keyline case under a chosen target (DD-R5's neighbor) is where RP-1's fault lives, so whichever way the design director's pair is ruled, the case must clear when a reform with no target is chosen. SG-6: readers met the tier after the name ("Ranked bar, Core"); R6 hears "Core" 127 times as a suffix and R4 asked what a tier allows, which a tier word above the name would not change. S14's label, S94's year mark and S16's note were not in the panel's reading. Round 4's cards: S95 read at 1440 and 390 on Newsprint; see "Tested" for Charcoal.
+2. **DR-278's four items.** Item (b) is what R6 met on Rules 11.10 and 11.11: the plate's words heard again after its label (873 and 599 characters). Items (a), (c) and (d) were outside the panel's reading.
+3. **Page-wide reach.** Outside the panel's lens. The one style fault the readers exposed, RP-6, stays inside 15.22's `.wf` scope and reaches 2 lines.
+4. **The selection guide at true size.** At 1440 and 390 the readers told forms apart by their drawings (R4: "the little drawings help more than the names"). At 390 the guide runs 11,375 px tall, about sixteen phone screens, and R1 scrolled it whole. "Skip to Rule 14.1" lands on Group 1's head, directly above Rule 14.1. RP-3 and RP-14 are this place's faults.
+5. **The palette specification.** Not in the panel's reading.
+6. **Rule 14.142.** Every reader learned the band's lesson in one reading, and both fairness readers called the chart fair, R5R because the failure plate is the headline he expected. RP-10 ("both jobs charts") is the one word fault; R1's reading of the band label is below.
+7. **Rules 14.143 and 14.144 live and still.** The stepper counts each loop's own steps: after five presses the status line reads "Loop R10, step 2 of 4" (state capture). RP-1 is the live chooser's fault; RP-7, RP-8 and RP-9 are words and marks.
+8. **Chapter 15 as one chapter.** The panel read 15.22 to 15.24 only. R2 and R3 told a step from a stage after 15.23; R1 lost the thread in 15.24's eleven cards. RP-4, RP-5, RP-6, RP-11, RP-13 and RP-19.
+9. **The trackers' law.** Readers understood "Affirmed", "Vacated" with its gloss, the tie and the denied petition at step 5 without the law in hand. RP-15 (certiorari) and RP-16 (the second test) are the gaps they named.
+10. **NRSC v. FEC from the left and the right.** The rule is stated and dated, the plate prints the holding alone, and the same rule would pick the same case whoever won it. R5L asked how the case was found (RP-19); both fairness readers asked instead about 15.24's R-28 and 15.22's two tax-law sources, which have no stated rule (RP-11).
+11. **Weight.** Outside the panel's lens.
+12. **Loop titles and DR-274's numbers.** Each variable's own title prints in every loop the readers read (14.143, 14.144). No stale "Rule 11.1N" citation appeared in the text the panel extracted from its nine rules and seven forms; the panel did not scan the rest of the guide.
+
+## Questions for Dustin
+
+None. Every fix above sits inside an owner's approved work. The two that touch what board 3 shows him, RP-15 (a gloss for certiorari beside the court case tracker's step 5) and RP-16 (the ballot tracker's "second test"), change no step name or end word; board 3 still shows those for his approval.
+
+## Tested
+
+- Page text for the selection guide, Rules 14.142, 14.143, 14.144, 15.22, 15.23, 15.24, 11.10, 11.11 and 11.12, the two step tables and seven round 4 forms (14.79, 14.81, 14.135 to 14.138, 14.141), extracted by script from the strict build of `9a6e1182` (`scratchpad/c07/main/guide.html`), never read whole.
+- The selection guide's questions, forms, tiers and links counted by script (16 questions, 127 forms, 144 links), and every link on the page that points to Rules 14.142 to 14.144 traced to its source (rule index, local contents, chapter 14's token table, two chapter 15 disclosures).
+- Captures read with the file reader: Newsprint 1x at 1440 px for every plate above, the 1440 state captures of 14.143 (step 5) and 14.144 (R-30 and R-38), and Newsprint 1x at 390 px for S96, S92, 14.143, 14.144 and the selection guide; further widths and grounds as listed under "Captures read" below.
+- RP-1's cause read from the plate's own styles; RP-2's from `s92.json` and its data file; RP-6's from the page's `.wf .sq` rule, with its reach counted page-wide (2 lines); RP-7 against `atlas-v7-data.json`; RP-11 against the atlas's reform routes and the decision log (searched for "R-28"); RP-12 from `s90.json`; RP-13's characters counted per plate; RP-14 from the selection guide's markup; RP-18 by a count of "Federal Emergency" in Rule 14.135 and its spec and entry.
+- R6's transcript, built by script from the markup as described under R6, with the browser rule checked by `browsers.sh` at 16:41, 16:51 and 16:56 UTC (all "WAIT").
+
+## Not tested
+
+- No real reader. Every reader is simulated (DR-202).
+- No screen reader, Safari or Firefox (DR-279). R6 is a model built from markup, and CSS hiding was not seen.
+- No browser was opened by the panel while `browsers.sh` printed "WAIT".
+- The panel ran no guide check, no kit build and no contrast measure.
+- The palette specification, S86, S88, S93, S94, the two sketches, S12's tile, Rule 15.25 and Rule 18.22's plates were outside the panel's reading.
