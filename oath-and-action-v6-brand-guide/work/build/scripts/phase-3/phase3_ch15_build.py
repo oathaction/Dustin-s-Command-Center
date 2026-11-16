@@ -4294,8 +4294,16 @@ def rule_15_24(book):
     need([(x["route"], x["who"], x["feasibility"], x["checked"]) for x in r28["routes"]] == [("FS", "Reconciliation", "low", None)],
          "Reform R-28's route changed")
     rr = wf_first("FS", "Senate: reconciliation", "limited to not more than 20 hours")
+    # NB-S5, the data lead's R6: the example is the one reform an earlier drawing put on a route, the reform of Rule
+    # 15.25's row 41, held by script: the one reconciliation row whose item names a reform and a route
+    one_rows = [r_ for r_ in RECON if re.fullmatch(r"R-\d{2} route", r_["item"])]
+    need([(r_["row"], r_["item"]) for r_ in one_rows] == [(41, "R-28 route")] and "reconciliation" in one_rows[0]["value_shown"],
+         "the earlier drawing that put one reform on a route is no longer row 41's R-28; reread Rule 15.24's example (R6)")
     one = (f'<div class="one o1"><p class="k">One reform’s route, read through its workflow</p>'
            f'<p class="hed">{chip("Reform", "R-28")}<span>“{e(r28["title"])}”</span></p>'
+           f'<p class="rec">We read this reform because it is the one an earlier drawing put on a route: our brand guide’s '
+           f'fifth edition and the atlas visual system drew it on “a federal tax-law route through reconciliation”, with '
+           f'no feasibility or date, as row 41 of <a href="#rule-15-25">Rule 15.25</a> records.</p>'
            f'<p>{chip("Route", "FS")} {e(ROUTE["FS"]["name"])}. Its entry’s own words: “{e(r28["routes"][0]["who"])}”. '
            f'<b>{e(r28["routes"][0]["feasibility"].capitalize())}</b> feasibility. Not checked.</p>'
            f'<p>The entry names reconciliation, so the reform takes stage 5 of Rule 15.22’s workflow: Senate debate held to '
@@ -4318,11 +4326,13 @@ def rule_15_24(book):
                          for c, (_, n, d_) in zip(ROUTE_CODES, cards))
     book.add("s-15-24-correct", body, rule="15.24", readable=True, wide=True, interactive=True,
              alt=(f"The atlas’s eleven routes to change as a reference set, one card each in the atlas’s order, as of {SNAP}. "
-                  f"First, one reform read through its workflow: Reform R-28, {r28['title']}, on Route FS by reconciliation, "
-                  "its entry’s words “Reconciliation”, low feasibility, not checked, which takes stage 5 of Rule 15.22’s workflow. Then the atlas’s four feasibility "
-                  "words and five dependency questions. Each card gives the route’s name, instrument, who acts, its stages, "
-                  "its official sources with the date we read them, what it depends on, and how many reform entries "
-                  "name it, listed in a disclosure with each one’s check date or not checked. " + alt_cards),
+                  "First the atlas’s four feasibility words and five dependency questions. Each card gives the route’s name, "
+                  "instrument, who acts, its stages, its official sources with the date we read them, what it depends on, "
+                  "and how many reform entries name it, listed in a disclosure with each one’s check date or not checked. "
+                  + alt_cards + f" After the cards, one reform read through its workflow: Reform R-28, {r28['title']}, the "
+                  "one reform an earlier drawing put on a route, as row 41 of Rule 15.25 records, on Route FS by "
+                  "reconciliation, its entry’s words “Reconciliation”, low feasibility, not checked, which takes stage 5 of "
+                  "Rule 15.22’s workflow."),
              notes="Every atlas value read by script; each route's stages and sources held to rows of the workflow sources "
                    "file; each entry's date from its own record.")
     book.log("15.24 correct", "The atlas's eleven routes to change", "all")

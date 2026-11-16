@@ -1886,7 +1886,8 @@ def build(ctx):
                      'When no one appeals a ruling, the tracker sets the steps after it under slashes once the time to '
                      'appeal has passed, as Rule 11.8 does for a request never appealed, and the end words give that ruling '
                      'and its date: steps 3 to 6 for a case decided at trial, and steps 5 and 6 for a case no one takes to '
-                     'the Supreme Court. A case that ends by settlement, '
+                     'the Supreme Court. A sentence after the end words says why the line ends there, as in “No one asked '
+                     'the Supreme Court to review the case in the time the law allows.” A case that ends by settlement, '
                      'dismissal or a denied petition ends its line on a square at the last step it reached, with its words: '
                      'Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the court, Appeal dismissed '
                      'at the appellant’s request (the appellant is the side that appealed), Appeal dismissed by the court, '
@@ -1926,8 +1927,12 @@ def build(ctx):
                                                      'the trial court’s ruling and “No appeal was filed in the 30 days the '
                                                      'law allows.”, or 60 days where the United States is a party',
                  'token': 'oa.component.mark.slash'},
+                # the data lead's batch 1 (CE-S20): the slashes take a sentence that says why, as "Never appealed" does
+                # (Rule 11.2); no day count, since a justice may extend the 90 days (28 U.S.C. 2101(c))
                 {'label': 'No petition', 'value': 'Steps 5 and 6 under slashes once the time to petition the Supreme Court '
-                                                  'has passed, with the appeals court’s ruling',
+                                                  'has passed, with the appeals court’s ruling, “The lower court’s ruling '
+                                                  'stands.” where the ruling leaves one in place, and “No one asked the '
+                                                  'Supreme Court to review the case in the time the law allows.”',
                  'token': 'oa.component.mark.slash'},
                 {'label': 'A tie in the Supreme Court', 'value': AFFIRMED + ' by an equally divided Court, which is a tie '
                                                                  'vote, and “The lower court’s ruling stands.”'},
