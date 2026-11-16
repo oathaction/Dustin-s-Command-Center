@@ -1287,7 +1287,9 @@
         if (ci > 0 && sid && doc.getElementById(sid)) lid = sid;
         var r = K.draw(spec, rows, { width: cr[0], crop: cr, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-c' + cr[1] + '-' + cr[0], label_id: lid, bare: true });
         a.insertAdjacentHTML('beforeend', r.svg);
-        if (lid) (fig.ownerDocument || root.document).getElementById(lid).hidden = true;
+        // AX-S2 (fix pass after rounds 4 and 5): only the alt paragraph hides once it names a drawing; a later crop's size
+        // line stays in sight, since it is that crop's printed label as well as its name
+        if (lid && lid === fig.id + '-alt') doc.getElementById(lid).hidden = true;
         if (r.guard.length || r.warnings.length) fig.setAttribute('data-oa-warnings', String(r.guard.length + r.warnings.length));
       });
       fig.setAttribute('data-oa-drawn', 'card');
