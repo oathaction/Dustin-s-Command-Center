@@ -799,6 +799,10 @@ EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale", "literal")
 # <svg>, the half the avoid plate sets under its bar). Its better half and every other specimen keep the literal color
 # check, and nothing else in the check changes. The guide check needs no exemption: neither ink is a guide ink.
 LITERAL_HALF = {"s-14-124-sketch": 0}
+# Call 11 (fix pass after rounds 4 and 5): what an image stage's hidden picture may not hold, since aria-hidden would take it
+# from a screen reader while a keyboard still reaches it
+PICTURE_CONTROL = re.compile(r'<a\b[^>]*\shref=|<(?:button|select|textarea|summary|details|iframe)\b|<input\b(?![^>]*\stype="hidden")'
+                             r'|\stabindex="(?!-)|\scontenteditable(?:=|\s|>)|<(?:video|audio)\b[^>]*\scontrols\b', re.I)
 SCALE_WORDS = {0.5: "Half size", 0.25: "One quarter size", 0.2: "One fifth size", 0.125: "One eighth size", 0.1: "One tenth size",
                2: "Twice true size"}
 
@@ -990,6 +994,16 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         else:
             stage_attrs.append('role="img"')
             stage_attrs.append(f'aria-label="{e(alt) if alt else e(lab or "Specimen")}"')
+            # DR-278 (b), fix pass call 11 (CD-M3, AX-S3, AX-S6, RP-13): an image stage is heard once, by its alt. Chromium
+            # still exposes the words inside a role="img" box, so a reader heard the stage's words again after its alt; the
+            # fragment sits in one wrapper hidden from the accessibility tree. The wrapper is a plain block with no class and
+            # no style, so no box moves (no page or plate selector reads a stage's own children: the fix pass's scan), and
+            # data-oa-picture tells it apart, so guide_check.js still measures the words inside for size and contrast.
+            # An image stage holds no control (the build warns on one below), so the wrapper hides nothing a keyboard reaches.
+            if PICTURE_CONTROL.search(re.sub(r"<(style|script)\b.*?</\1>", "", body, flags=re.S | re.I)):
+                R.warn(where, f"{spec_id}: an image stage holds a link, button, field or tab stop, which its hidden picture "
+                              "would take from a keyboard; mark it interactive or readable in its manifest")
+            body = f'<div data-oa-picture aria-hidden="true">{body}</div>'
     stage = f'<div {" ".join(stage_attrs)}>{body}</div>'
     if fit:
         stage = f'<div class="plate-fit">{stage}</div>'

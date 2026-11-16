@@ -109,16 +109,20 @@ RULE_STEPS = [
 # in six steps on the bill tracker's marks. Step names, what happens and the law behind each step are the research lead's
 # "Facts for owners", item 1 (20261114_Round-5-Research-Notes.md, every source read November 14, 2026); each row is
 # (name, what happens, where the law sets it). The extras after Rules 11.10 and 11.11 print these rows as tables.
+# CD-S11 (wave 2): each state's document is named in full at its first row and in one short form after it: "Massachusetts
+# Constitution, Amendment Article XLVIII, The Initiative, II, Section 3, as replaced by Amendment Article LXXIV, Section 1",
+# then "Massachusetts, Amendment Article ..." (the sources file's rows 1 to 6, read November 14, 2026)
 BALLOT_STEPS = [
     ('Filed', 'The sponsors file the measure’s full text with the attorney general.',
-     'Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9001'),
+     'Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3, as replaced by Amendment '
+     'Article LXXIV, Section 1; California Elections Code 9001'),
     # CE-S15 (the editor's words, 17:11): "certifies" names one act, by the office named each time
     ('Title and summary', 'The attorney general writes the title and summary that petitions and ballots carry, and where '
                           'the law asks, first certifies that the measure is in proper form and on a subject the '
                           'initiative may cover.',
-     'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014'),
+     'Massachusetts, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9004 and 9014'),
     ('Signatures', 'The sponsors gather signatures, and election officials count and check them.',
-     'Massachusetts, Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031'),
+     'Massachusetts, Amendment Article XLVIII, The Initiative, II, Section 3; California Elections Code 9030 and 9031'),
     ('Legislature', 'The Legislature votes on the measure first, where the state’s initiative is indirect. A measure '
                     'that goes straight to the ballot keeps this step under a slash.',
      'Massachusetts, Amendment Article LXXXI, Section 2; Ohio Constitution, Article II, Section 1b; Michigan '
@@ -1798,10 +1802,17 @@ def build(ctx):
                      'current, and its words say so: '
                      '“Step 6 of 6: Vote. The count is unofficial until the state certifies it, which it has set for '
                      'November 25.” Once '
-                     'the count is certified, the words say Approved by voters or Rejected by voters, with the date of the '
-                     'vote and the date it was certified, then when an approved measure takes effect. A measure that ends '
-                     'before step 6 ends its line on a square at the last step it reached, with its words and the date: '
-                     'Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to '
+                     'the count is certified, the words give the result with the date of the vote and the date it was '
+                     # PR-S10 (wave 2, draft for the editor): Approved fills six steps; Rejected ends on a square at step
+                     # 6, as a veto that stands stops a bill (Rule 11.3); RP-16: the second test named, from
+                     # Massachusetts's Amendment Article LXXXI, Section 2
+                     'certified. Approved by voters fills all six steps and says when the measure takes effect. Rejected by '
+                     'voters ends the line on a square at step 6, as a veto that stands stops a bill at step 6 (Rule '
+                     '11.3). So does Fell short of the vote the law requires, for a measure most voters approved that '
+                     'failed a second test the state sets: in Massachusetts a law proposed by initiative also needs yes '
+                     'votes equal to at least 30 percent of all the ballots cast in the election. A measure that ends '
+                     'before step 6 ends its line on a square at the step under way when it ended, with its words and the '
+                     'date: Not certified by the attorney general, Withdrawn by its sponsors, Too few valid signatures to '
                      'qualify, or Removed from the ballot by a court. A measure the Legislature passes keeps steps 5 and 6 '
                      # CE-S17 (the editor's words, final on the research lead's F9): Ohio and Massachusetts send it to the
                      # governor, Michigan makes it law with no governor (Article II, Section 9)
@@ -1814,7 +1825,7 @@ def build(ctx):
                              'the certified result decides a measure. Words that wait for certification keep a '
                              'reader from treating a lead as law. The slash on step 4 keeps every measure counting to six '
                              'and still says that no legislature voted on a direct initiative.'],
-                    'basis': 'Massachusetts Constitution, Amendment Articles XLVIII and LXXXI; California Constitution, '
+                    'basis': 'Massachusetts Constitution, Amendment Articles XLVIII, LXXIV and LXXXI; California Constitution, '
                              'Article II, and Elections Code; Ohio and Michigan Constitutions, Article II'},
             'correct': {'specimen': 's-11-10-correct',
                         'caption': 'Three measures at 360 px. One went straight to the ballot, so step 4 keeps its slash, '
@@ -1833,14 +1844,16 @@ def build(ctx):
                  'token': 'oa.component.mark.slash'},
                 {'label': 'Before the count is certified', 'value': '“Step 6 of 6: Vote.” with the date the state has '
                                                                     'set to certify; never Approved or Rejected'},
-                {'label': 'The end, in words', 'value': 'Approved by voters or Rejected by voters, with the date of the '
-                                                        'vote and the date it was certified, then when it takes effect; '
-                                                        'Fell short of the vote the law requires, where most said yes '
-                                                        'but a second test failed, with a sentence that names the test'},
-                {'label': 'Ended before step 6', 'value': 'A square at the last step reached, with its words: Not '
-                                                          'certified by the attorney general; Withdrawn by its sponsors; '
-                                                          'Too few valid signatures to qualify; Removed from the ballot by '
-                                                          'a court'},
+                {'label': 'The end, in words', 'value': 'Approved by voters, with all six steps filled; Rejected by voters, '
+                                                        'on a square at step 6; Fell short of the vote the law requires, '
+                                                        'on a square at step 6, where most said yes but a second test '
+                                                        'failed, with a sentence that names the test; each with the date '
+                                                        'of the vote and the date it was certified, and an approved '
+                                                        'measure with when it takes effect'},
+                {'label': 'Ended before step 6', 'value': 'A square on the step under way when it ended, with its words: '
+                                                          'Not certified by the attorney general, on step 2; Withdrawn by '
+                                                          'its sponsors; Too few valid signatures to qualify, on step 3; '
+                                                          'Removed from the ballot by a court'},
                 {'label': 'Passed by the Legislature', 'value': 'Steps 5 and 6 under slashes, then “Passed by the '
                                                                 'Legislature on” with its date and what comes next: “It '
                                                                 'goes to the governor.”, or “It becomes law without the '
@@ -1852,10 +1865,13 @@ def build(ctx):
                 {'label': 'Marks and sizes', 'value': 'The bill tracker’s, from Rules 11.2 and 11.7'},
             ],
             'related': ['13', '15'],
-            'builders': ['Store each measure’s steps, whether its initiative is direct or indirect, and the dates its state '
-                         'publishes, and print Approved or Rejected only from the certified result. Number an invented '
-                         'measure '
-                         'from 99001 up, name no state, and label it Illustrative.'],
+            # PR-S10 (wave 2): the kind of measure, including a referral, and the five marks by Rule 11.2's names
+            'builders': ['Store each measure’s kind (a direct initiative, an indirect initiative or a legislative '
+                         'referral), each step’s state as one of the five marks Rule 11.2 tags, <code>S-done</code>, '
+                         '<code>S-now</code>, <code>S-not-yet</code>, <code>S-never-happened</code> or '
+                         '<code>S-stopped</code>, and the dates its state publishes, and print Approved or Rejected only '
+                         'from the certified result. Number an invented measure from 99001 up, name no state, and label it '
+                         'Illustrative.'],
         },
         {
             'id': '11.11', 'title': f'Follow a court case through six steps, and end a{C.NBSP}denied{C.NBSP}petition at step 5.',
@@ -1865,7 +1881,12 @@ def build(ctx):
                      'Title 28 of the U.S. Code, the federal rules of civil and appellate procedure and the Supreme '
                      'Court’s own rules; a criminal case, or a case in a state’s courts, runs on other rules. The tracker '
                      'uses the bill tracker’s marks for six steps of its own: Filed, Trial court ruling, Appeal, Appeals '
-                     'court ruling, Supreme Court petition and Supreme Court ruling. A step the law gives this case no '
+                     'court ruling, Supreme Court petition and Supreme Court ruling. '
+                     # RP-15 (wave 2, draft for the editor): 28 U.S.C. 1254(1), "By writ of certiorari granted upon the
+                     # petition of any party", and the Court's Rule 10; the step name stays
+                     'At step 5 the side that lost petitions for a writ of certiorari, the order that brings a case up for '
+                     'the Supreme Court’s review, which news reports shorten to cert, so “cert denied” is a denied '
+                     'petition. A step the law gives this case no '
                      'room for keeps its number under a slash, as when a district court of three judges grants or denies '
                      'an injunction, a court order to do or to stop doing something, and the law sends the appeal straight '
                      'to the Supreme Court.',
@@ -1888,7 +1909,10 @@ def build(ctx):
                      'and its date: steps 3 to 6 for a case decided at trial, and steps 5 and 6 for a case no one takes to '
                      'the Supreme Court. A sentence after the end words says why the line ends there, as in “No one asked '
                      'the Supreme Court to review the case in the time the law allows.” A case that ends by settlement, '
-                     'dismissal or a denied petition ends its line on a square at the last step it reached, with its words: '
+                     # PR-S10 (wave 2, draft for the editor): the square sits on the step under way, so a case settled
+                     # or dismissed before the trial court rules ends on step 2, as Rule 11.8's request does
+                     'dismissal or a denied petition ends its line on a square at the step under way when it ended, so a '
+                     'case settled or dismissed before the trial court rules ends on step 2, with its words: '
                      'Settled by the parties, Dismissed at the plaintiff’s request, Dismissed by the court, Appeal dismissed '
                      'at the appellant’s request (the appellant is the side that appealed), Appeal dismissed by the court, '
                      'or Petition denied by the Supreme Court, which ends it at step 5 and leaves the appeals court’s ruling '
@@ -1918,11 +1942,12 @@ def build(ctx):
                                                               'Reversed; Vacated; Modified; each with the '
                                                               'court, as in “' + AFFIRMED + ' by the appeals court”, and '
                                                               '“and sent back” where the court returns the case'},
-                {'label': 'Settled, dismissed or denied', 'value': 'A square at the last step reached, with its words: '
-                                                                   'Settled by the parties; Dismissed at the plaintiff’s '
-                                                                   'request; Dismissed by the court; Appeal dismissed at the '
-                                                                   'appellant’s request; Appeal dismissed by the court; '
-                                                                   'Petition denied by the Supreme Court, on step 5'},
+                {'label': 'Settled, dismissed or denied', 'value': 'A square on the step under way when the case ended, '
+                                                                   'with its words: Settled by the parties; Dismissed at the '
+                                                                   'plaintiff’s request or Dismissed by the court, on step 2 '
+                                                                   'before the trial court rules; Appeal dismissed at the '
+                                                                   'appellant’s request or Appeal dismissed by the court, on '
+                                                                   'step 4; Petition denied by the Supreme Court, on step 5'},
                 {'label': 'Never appealed', 'value': 'Steps 3 to 6 under slashes once the time to appeal has passed, with '
                                                      'the trial court’s ruling and “No appeal was filed in the 30 days the '
                                                      'law allows.”, or 60 days where the United States is a party',
@@ -1945,9 +1970,12 @@ def build(ctx):
                 {'label': 'Marks and sizes', 'value': 'The bill tracker’s, from Rules 11.2 and 11.7'},
             ],
             'related': ['13', '15'],
-            'builders': ['Store each court’s ruling as data, with its date and the verb the court used, and print that '
-                         'verb. Number an invented case from 99001 up, name no party or court, and label it '
-                         'Illustrative.'],
+            # PR-S10 (wave 2): the five marks by Rule 11.2's names
+            'builders': ['Store each step’s state as one of the five marks Rule 11.2 tags, <code>S-done</code>, '
+                         '<code>S-now</code>, <code>S-not-yet</code>, <code>S-never-happened</code> or '
+                         '<code>S-stopped</code>, and each court’s ruling as data, with its date and the verb the court '
+                         'used, and print that verb. Number an invented case from 99001 up, name no party or court, and '
+                         'label it Illustrative.'],
         },
         {
             'id': '11.12', 'title': 'Say a wait or a later step in words, and keep the count at six.',
@@ -2084,7 +2112,7 @@ def build(ctx):
             'end, behind Rule 11.9.',
             # Round 5: the research lead's facts, item 1 (20261114_Round-5-Research-Notes.md), each source read on
             # November 14, 2026; the full quotes are in the workflow sources file, "Round 5"
-            'Sources: the Massachusetts Constitution, Amendment Articles XLVIII and LXXXI, via malegislature.gov; the Ohio '
+            'Sources: the Massachusetts Constitution, Amendment Articles XLVIII, LXXIV and LXXXI, via malegislature.gov; the Ohio '
             'Constitution, Article II, Section 1b, and Article XVI, Section 1, via codes.ohio.gov; the Michigan '
             'Constitution of 1963, Article II, Section 9, via legislature.mi.gov; each as in force on November 14, 2026; '
             'and California Secretary of State, “Statewide Initiative Guide”, revised January 2026; all retrieved '

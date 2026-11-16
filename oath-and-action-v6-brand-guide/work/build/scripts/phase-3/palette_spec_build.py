@@ -266,7 +266,11 @@ def table(p, m):
         for g in ("newsprint", "charcoal"):
             r = m[g]["rows"][i]
             fr = contrast(r["fill_hex"], GROUND[g])
-            lr = r["label_on_fill"]
+            # call 9 (ST-S4, AX-S1, PR-S6): the label's ratio measured here from the two hex values, as the ground's is, and
+            # then rounded down by ratio(); round 0's label_on_fill is already rounded half up, so flooring it printed 16 of
+            # the 36 one hundredth high. Group 4's label sits beside the hatch, on the ground, as round 0 measures it.
+            lr = contrast(r["label_hex"], GROUND[g] if cat4 else r["fill_hex"])
+            need(abs(lr - r["label_on_fill"]) < 0.006, f"{p['id']} {word} {k} on {g}: label ratio {lr:.4f} is not round 0's {r['label_on_fill']}")
             carry = ""
             cells.append(
                 f'<td><span class="ps-v">{e(r["fill_hex"]).replace("#", "&#35;")}</span>'

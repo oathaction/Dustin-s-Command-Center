@@ -6707,3 +6707,9 @@ The main session posted the plan for the review of rounds 4 and 5 with five ques
 | DR-280 | The chapters page is republished privately as version 12 after the fix pass, so board 3 opens on the fixed page | Dustin, November 16, as recommended (Q7-4) |
 | DR-281 | This chat commits and pushes to `claude/friendly-brahmagupta-tonmfa`, as the starting prompt says; the session's own branch `claude/happy-hawking-7xi0li` is left as opened | Dustin, November 16, as recommended (Q7-5) |
 | D3-2125 | The quick guide check with photographs passes on this chat's strict build (16:21 to 16:50 UTC): 1440 and 390 px, 369 rules, 735 specimens, 3,748 same-page links, 0 failures; 152 key path walks and 834 steps; the selection guide's 127 form links, 17 skip links, 16 questions and 133 symbols for 164 pictures; the palette plate's 51 swatches against their printed values; token table 545 rows at 6.0.0-gate3.3. The committed state is confirmed | The second half of Dustin's ask; every figure equals D3-2119's |
+
+## Dustin's instruction, November 16, 2026
+
+| # | Decision | Source |
+|---|---|---|
+| DR-282 | Every fix a review, reader or owner flags that is not made (Should fixes declined or left, Must fixes held for his call, carried items, suggestions set aside) is recorded in one register, `work/ledger/20261116_Deferred-Fixes-Register.md`, with enough detail to act on alone; every later chat adds its rows before it hands off. Dustin plans a final finishing pass in which one model reviews everything and makes these fixes | Dustin, November 16 |

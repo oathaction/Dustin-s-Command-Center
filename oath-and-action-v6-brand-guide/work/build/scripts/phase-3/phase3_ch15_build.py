@@ -2577,7 +2577,7 @@ def route_rows(r, dated=True):
     for x in r["routes"]:
         when = (f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked") if dated else f"Checked {SNAP}"
         out.append(f'<li><span>{chip("Route", x["route"])} {e(C13.ROUTE_NAME[x["route"]])}</span>'
-                   f'<p class="sub">{e(x["who"])}</p>'
+                   f'<p class="sub">{hold(e(x["who"]))}</p>'
                    f'<p><b>{e(x["feasibility"].capitalize())}</b> feasibility</p><p>{e(when)}</p></li>')
     return '<ul class="ef">' + "".join(out) + "</ul>"
 
@@ -3544,7 +3544,8 @@ CSS.update({
     "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
            ".pn .oa-disclosure-set{margin-top:16px}@media print{.lv>.oa-choice{display:none}}"),
     "pon": ".pon{display:none}",
-    "ld": (".ld{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:var(--oa-type-body-small);"
+    # CR-S8: a scale reads as one ordered list, one step a line, the connection's own step marked
+    "ld": (".ld{list-style:none;margin:4px 0 0;padding:0;display:grid;justify-items:start;gap:2px;font:var(--oa-type-body-small);"
            "color:var(--oa-color-text-secondary)}.ld .on{color:var(--oa-color-text-primary);font-weight:var(--oa-font-weight-bold);"
            "border-bottom:2px solid var(--oa-color-border-strong)}"),
     "pb": (".pb{display:flex;gap:12px;align-items:center;margin-top:12px}"
@@ -3721,6 +3722,7 @@ def hold(s):
                "\\1&#160;\\2,&#160;\\3", s)
     s = re.sub(r"\b(clause|Rules?|section|Section|Article) (\d[\w.()]*|[IVXL]+\b)", "\\1&#160;\\2", s)
     s = re.sub(r"\b(U\.S\.C\.|CFR) (\d)", "\\1&#160;\\2", s)
+    s = re.sub(r"\b(\d{1,2}) (U\.S\.C\.|CFR)", "\\1&#160;\\2", s)      # CR-S16: "2 U.S.C." never breaks after the 2
     return re.sub(r"\b((?:[Tt]wo|[Tt]hree)-(?:thirds|fifths|fourths))\b", '<span class="nw2">\\1</span>', s)
 
 
@@ -3757,7 +3759,10 @@ CSS.update({
            ".wf .end::before{bottom:auto;height:11px}"
            f".wf .end::after{{content:\"\";position:absolute;left:10px;top:11px;bottom:0;border-left:var(--oa-chart-line-context) solid {CTX}}}"
            ".wf li:last-child{padding-bottom:0}.wf.bk li:last-child::before{bottom:-18px}"
-           ".wf:not(.bk) li:last-child::before{bottom:auto;height:11px}.wf.bk li:first-child::before{top:-18px}"
+           ".wf:not(.bk) li:last-child::before{bottom:auto;height:11px}"
+           # CR-S5: the spine starts at stage 1; the return's own gray segment runs from its top line to the arrowhead,
+           # whose tip stops 2 px above stage 1's number
+           f".wf.bk::after{{content:\"\";position:absolute;left:28px;top:-18px;height:8px;border-left:var(--oa-chart-line-context) solid {CTX}}}"
            f".wf.bk li:first-child::after{{content:\"\";position:absolute;left:6px;top:-10px;width:10px;height:8px;background:{CTX};"
            "clip-path:polygon(0 0,100% 0,50% 100%)}"
            ".wf .n{position:relative;z-index:1;display:grid;place-items:center;width:22px;height:22px;"
@@ -3920,7 +3925,8 @@ def fs_stages():
     ]
     undo = [
         Stage(18, "af", "Ended by a sunset", "A date in the law’s own text ends a part of it, unless a later act moves the "
-              "date.", [("Public Law 115-97, section 11022, approved December 22, 2017", r["rep"])], stop="That part ends on its date."),
+              "date.", [("Public Law 115-97, the tax law approved December 22, 2017, section 11022", r["rep"])],
+              stop="That part ends on its date."),
         Stage(19, "af", "Struck down by a court", "A court can rule that a law, or a part of it, violates the Constitution, a "
               "power the Supreme Court set out in Marbury v. Madison in 1803. The Supreme Court’s most recent decision to hold "
               "part of an Act of Congress unconstitutional, in its opinions through November 9, 2026, came on June 30, 2026, "
@@ -3930,7 +3936,8 @@ def fs_stages():
                ("National Republican Senatorial Committee v. Federal Election Commission, No. 24-621", r["nrsc"])],
               stop="The part the court holds void no longer applies."),
         Stage(20, "af", "Repealed or changed", "Congress passes a later act that repeals or rewrites it.",
-              [("Public Law 119-21, section 70104, approved July 4, 2025", r["rep"])], back="A repeal is a new act: back to stage 1."),
+              [("Public Law 119-21, the tax law approved July 4, 2025, section 70104", r["rep"])],
+              back="A repeal is a new act: back to stage 1."),
     ]
     return [("In Congress", congress), ("At the President", president), ("Once it is law", after),
             ("Undoing it", undo)], fs, r
@@ -4325,7 +4332,15 @@ CSS.update({
              ".rc>*+*{margin-top:4px}.rc>.k{margin-top:10px;margin-bottom:2px}.rc .hed{margin:0 0 2px}"
              ".rc .ri{font-weight:var(--oa-font-weight-semibold)}.rc b{font-weight:var(--oa-font-weight-semibold)}"
              ".rc .sl{list-style:none;margin:0;padding:0;display:inline}.rc .sl li{display:inline}"
-             ".rc .sl li+li::before{content:\" →\\00a0\" / \"\";color:var(--oa-color-text-secondary)}"
+             # CR-S21: the arrow is drawn (a mask on the secondary ink), since the guide's Inter subset has no U+2192; a
+             # space before it lets a line break there, and no-break spaces bind it to the stage after it (DD-S8)
+             ".rc .sl li+li::before{content:\" \\00a0\\00a0\\00a0\\00a0\" / \"\";padding-right:3px;"
+             "background:var(--oa-color-text-secondary);"
+             "-webkit-mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath "
+             "d='M0 4.25h8.5V1L12 5 8.5 9V5.75H0z' fill='black'/%3E%3C/svg%3E\") no-repeat right 3px center/12px 10px;"
+             "mask:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath "
+             "d='M0 4.25h8.5V1L12 5 8.5 9V5.75H0z' fill='black'/%3E%3C/svg%3E\") no-repeat right 3px center/12px 10px}"
+             "@media (forced-colors:active){.rc .sl li+li::before{forced-color-adjust:none;background:CanvasText}}"
              f".rc :is(.rs2,.rcn){{{C13.CAP};color:var(--oa-color-text-secondary)}}.rc .rs2{{margin-top:8px}}"
              ""
              ".rc .oa-disclosure-set{margin-top:8px}.ent{list-style:none;margin:0;padding:0}"
@@ -4864,7 +4879,7 @@ def rule_15_25(book):
             '<ul class="cnt">'
             '<li><b>2,644</b> comparisons with the model, rerun November 13, 2026</li>'
             '<li><b>2,642</b> match the model</li>'
-            '<li><b>2</b> conflict, both in row 42</li>'
+            '<li><b>2</b> conflicts, both in row 42</li>'
             f'<li><b>{len(RECON)}</b> rows: {len(phase0)} from our first audit, {len(added)} drawn for this edition</li></ul>'
             '<p class="rec">Our first audit, on October 20, 2026, compared every ID and value on three earlier sets of pages '
             'with the model: our brand guide’s fifth edition, and two design studies for the atlas, the atlas visual system '
@@ -4886,7 +4901,7 @@ def rule_15_25(book):
                      '13, 2026.</p>')
     book.add("s-15-25-correct", body, rule="15.25", readable=True, wide=True, interactive=True,
              alt=(f"The reconciliation of earlier atlas drawings to the model of {SNAP}. Four counts: 2,644 comparisons with "
-                  "the model, rerun November 13, 2026; 2,642 match; 2 conflict, both in row 42; "
+                  "the model, rerun November 13, 2026; 2,642 match; 2 conflicts, both in row 42; "
                   f"{len(RECON)} rows, {len(phase0)} from our first audit and {len(added)} drawn for this edition. A table shows "
                   "the four rows on a value, a sign, a grade and a delay, each with what the earlier page showed, what the "
                   "model holds and what the guide does, with the rules where it does so. A disclosure holds the other rows in order, "
@@ -4983,7 +4998,8 @@ def xw_block(head, sub, rows, src_line):
         lab = (f'<span class="xn">{key}</span> {e(name)}' if isinstance(key, int) else f'<span class="xo">{e(name)}</span>')
         # R1, item 5: a Route FS stage prints in words, "Stage 3: Suspension of the rules", with no square, ring or
         # other mark, since the table follows no bill and any mark would claim a state
-        items = "".join(f"<li>{f'Stage&#160;{n}: ' if n else ''}{hold(e(w))}</li>" for n, k, w in stages)
+        items = "".join((f'<li class="sgl"><span class="sg">Stage&#160;{n}:</span> <span>{hold(e(w))}</span></li>' if n
+                         else f"<li>{hold(e(w))}</li>") for n, k, w in stages)
         out.append(f'<li class="xr{" xe" if not isinstance(key, int) else ""}"><p class="xt">{lab}</p><ul class="xg">{items}</ul></li>')
     return (f'<div class="xw"><p class="xhd">{hold(head)}</p><p class="xs">{hold(sub)}</p><ol class="xl">{"".join(out)}</ol>'
             f'<p class="sc">{hold(src_line)}</p></div>')
@@ -5210,6 +5226,9 @@ CSS.update({
            ".xr .xt{font-weight:var(--oa-font-weight-semibold)}.xn{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
            ".xo{color:var(--oa-color-text-secondary);font-weight:var(--oa-font-weight-regular)}"
            ".xg{list-style:none;margin:4px 0 0;padding:0 0 0 20px}.xg li+li{margin-top:4px}"
+           # CR-S7, CD-S6: one column line in all five blocks; "Stage N:" in a slot as wide as "Stage 20:", tabular
+           ".xg .sgl{display:grid;grid-template-columns:4.6em minmax(0,1fr);column-gap:4px}"
+           ".xg .sg{font-variant-numeric:tabular-nums;white-space:nowrap}"
            ".xg li{position:relative}"
 
            f".xw .sc{{{C13.CAP};color:var(--oa-color-text-secondary);margin-top:8px}}"
@@ -5466,6 +5485,14 @@ def check(data, book):
     op = book.files[data["opener"]["specimen"]]
     if len(op.encode()) > 12 * 1024:
         fails.append(f"the opener's fragment weighs {len(op.encode()):,} bytes; it must stay well under 16 KB as placed")
+    # CR-M1, CD-M2, RP-6: a flex line holds its mark and one span of words, never bare text beside a held phrase, which
+    # would set each run as a column of its own
+    for sid, frag in book.files.items():
+        for m in re.finditer(r'<p class="sq">(.*?)</p>', frag):
+            inner = m.group(1)
+            if not re.fullmatch(r'<span class="sqm" aria-hidden="true"></span><span>(?:(?!</?p\b).)*</span>', inner) \
+                    or inner.count("<span") - inner.count("</span>") != 0:
+                fails.append(f"{sid}: a stop line holds more than its mark and one span of words: {inner[:80]!r}")
     # BC S16: punctuation never touches a typed chip, whose padding and edge would set it apart ("Variable C1 , seats")
     for sid, frag in book.files.items():
         for m in re.finditer(r'<span class="chip">([^<]*)<span class="id">([^<]*)</span></span>([,.;:!?)’])', frag):

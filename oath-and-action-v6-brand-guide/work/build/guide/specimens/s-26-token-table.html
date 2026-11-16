@@ -68,7 +68,12 @@
 // Chapter 26's token table (round 2, call 13): each category is a group, closed until a reader opens it or searches.
 // The search filters the rows, opens every group that holds a match and hides the rest, and says how many show; clearing
 // it puts each group back as the reader left it. The index opens the group it names. Each Copy copies its CSS name.
-document.querySelectorAll('.tt').forEach(function (box) {
+// The script reads its own plate only, as every other plate script does (fix pass, call 13, DR-278 (d)): a class tt
+// anywhere else on the page is never taken for the table.
+(function () {
+var S = document.currentScript && document.currentScript.closest('[data-specimen]');
+if (!S) return;
+S.querySelectorAll('.tt').forEach(function (box) {
   var q = box.querySelector('.tt-q'), status = box.querySelector('.tt-status'), words = status.querySelector('.tt-t');
   var groups = Array.prototype.slice.call(box.querySelectorAll('.tt-grp'));
   var rows = Array.prototype.slice.call(box.querySelectorAll('tbody tr'));
@@ -102,7 +107,7 @@ document.querySelectorAll('.tt').forEach(function (box) {
   box.addEventListener('click', function (ev) {
     var a = ev.target.closest && ev.target.closest('.tt-index a');
     if (a) {
-      var g = document.getElementById(a.getAttribute('href').slice(1));
+      var id = a.getAttribute('href').slice(1), g = groups.filter(function (x) { return x.id === id; })[0];
       if (g) { ev.preventDefault(); if (searching) { q.value = ''; filter(); } g.setAttribute('data-user-open', '1'); openTo(g, true);
         var sm = g.querySelector('summary'); g.scrollIntoView({ block: 'start' }); sm.focus({ preventScroll: true }); }
       return;
@@ -118,4 +123,5 @@ document.querySelectorAll('.tt').forEach(function (box) {
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(name).then(function () { say('Copied ' + name + '.', 'ok'); }, fail); else fail();
   });
 });
+})();
 </script>

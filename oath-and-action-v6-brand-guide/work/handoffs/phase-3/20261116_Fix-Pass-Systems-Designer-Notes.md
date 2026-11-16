@@ -2,10 +2,14 @@
 
 Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and 5, chat 7, November 16, 2026. Written by the systems designer (a general-purpose agent briefed as the designer who drew chapter 15) under `work/handoffs/phase-3/20261116_Rounds-4-5-Fix-Brief.md`. Paths are relative to `oath-and-action-v6-brand-guide/`. My files: `work/build/scripts/phase-3/phase3_ch15_build.py` and what it writes (`15-systems-graphics.json`, `s-15-*`, `manifest-systems-graphics.json`). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f55a08bf-cdcf-539d-a683-426e26f4f342/scratchpad/c07/fix/systems-designer/`. Written as I go; the container can restart.
 
+Wave 2 (Addendum 1, 17:50 UTC): CD-S6, CD-S7, CR-S5, CR-S6, CR-S7, CR-S8, CR-S18, CR-S19, CR-S21, RP-11, RP-19, call 15's plate-side line on Rule 15.20; and a check that CR-M1, CD-M2 and RP-6 hold.
+
 My codes: CE-M2, CE-M3, CE-M4, CE-S1 to CE-S10, CE-S11 (chapter 15's part), CE-S12, CE-S23; ST-M2, ST-S5, ST-S6, ST-S7, ST-S9; DF-1, DF-2, DF-5, DF-8, DF-9, DF-10, DF-11, DF-14; NB-M1 (Rule 15.20's sentence), NB-S5, NB-S6.
 
 ## Status
 
+- 17:48 UTC. **Wave 2 applied** but call 15, which waits on the component engineer's chooser line (its notes say "Pending" at 17:46). The generator runs twice clean, the second run changing nothing; strict build `g6.html` (17:47) exit 0, 0 warnings, chapter 15 at 568,734 bytes. A capture of the changed plates is queued for a free browser (WAIT at 17:47).
+- 17:44 UTC. Resumed for wave 2.
 - 17:34 UTC. **Done again.** R6 (NB-S5) and R7 (DF-10) with the research lead's F10 and F11 applied; the generator runs twice clean, the second run changing nothing; strict build `g5.html` exit 0, 0 warnings (chapter 15 at 566,245 bytes); V7 check PASS, 0 failures. Every code routed to me is now fixed. The words marked draft below wait on the editor's read.
 - 17:29 UTC. Resumed at 17:28 after the editor's second read. The data lead's R6 (NB-S5) applied with my draft words (below, for the editor); R7 (DF-10) waits on the research lead's F10.
 - 17:24 UTC. **Done, and reported to the main session.** Every code routed to me is fixed but NB-S5 and the rest of DF-10, which wait on the data lead's and the research lead's answers (Requests). Ready for the editor's second read (D3-669) and the data lead's sign-off. Captures were not taken: two other browsers held the machine with the load over 4 from 17:09 to 17:23, so I opened none (Not tested); the capture script is ready in my scratch folder (`sdcap.cjs`).
@@ -41,13 +45,28 @@ Each in `work/build/scripts/phase-3/phase3_ch15_build.py`; proof is the rerun (e
 
 - **DF-10, by the data lead's R7 with the research lead's F10 and F11 (17:33 UTC).** Every date we took a source on Rules 15.22 to 15.24 now prints "retrieved", Rule 13.6's word, in place of "read" (R7 item 1). A U.S. Code section beside a stage prints "as in force on" the day we retrieved it, as the main session relayed F10: "Source: 2 U.S.C. 641, as in force on November 14, 2026, the day we retrieved it". F10's 29 sections are a list in the generator (`USC_SAME`), and a cited section outside it stops the build; 52 U.S.C. 30116(d) never prints "in force" (it prints only in stage 19's words). Every other rule or law prints the version its copy states (F10's table): House Rules XV and XX "as printed January 16, 2025"; Public Law 115-97 "approved December 22, 2017" and Public Law 119-21 "approved July 4, 2025"; on 15.24's cards, the Standing Rules of the Senate "revised to January 24, 2013", Executive Order 12866 "of September 30, 1993", 16 CFR 2.34 "2025 edition", the Rules of the Supreme Court "effective March 16, 2026", the California guide "revised January 2026", Boston's charter "updated as of January 2025", Portland's "as amended November 8, 2022", the Minneapolis rules "as revised in 2026", the Massachusetts Joint Rules "adopted June 26, 2025", the Nebraska rules "for 2025 to 2026"; each card's U.S. Code sections "each as in force on the day we retrieved it". 15.23's four dated foot lines take the same form (the court block names the civil rules of December 1, 2025, the appellate rules of December 1, 2024 and the Supreme Court's of March 16, 2026; the rule-making block "Executive Order 12866 of September 30, 1993, as amended"). Pages that are not laws (the House's, the Senate's, the courts', FOIA.gov) and the two court cases print "retrieved" and their date. The state constitutions state no single version, so they print none (F10). **F11:** stage 8 now cites "U.S. Constitution, Article I, Section 7, clause 2" (row `pock`, retrieved November 11) beside the House page. The chapter's source list now computes its span from the plates: "with the date we retrieved each, November 11 to 16, 2026" (it said 11 to 14, before the November 16 rows). **Draft words for the editor (R7 item 1's "editor's equal"):** 15.22's diagram label, source line, alt, rule and "Sources" spec ("with the date we retrieved it", the spec adding "and a section of the U.S. Code as in force on that day"); 15.23's "Sources" spec; 15.24's rule ("cite the route’s official source with the date we retrieved it"; "“Retrieved” and its date say when we read the law behind a route"), its "Two dates" spec ("“Retrieved” for our research"), basis, source line and alt; group 5's line ("the date we retrieved it"); the chapter's source list. Board 2's S71 keeps "read" (R7: board 3's list).
 
+### Wave 2 (17:44 to 17:48 UTC)
+
+- **CR-M1, CD-M2, RP-6 hold (stage 10's split lines, DF-11's fix).** In the built plate stage 10's stop line is `<span class="sqm"></span><span>Short of <span class="nw2">two-thirds</span> in either chamber, the bill dies.</span>`, two flex items, and "With two-thirds in each, then stage 13." is a plain block. CR-M1's check is now in the generator: every `p.sq` on every plate must hold exactly its mark and one span of words; planted in memory, the old markup is caught and the new passes. Not yet seen in a capture (Not tested).
+- **CR-S5 (15.22, the top of the spine).** The spine now starts at stage 1 (its upward run to the return line is gone), and the return comes down from its top line in its own gray (`.wf.bk::after`, 2 px at x 28 to 30, from y −18 to −10) into the arrowhead, whose tip stops 2 px above stage 1's number.
+- **CR-S6 (15.22's key mark for a path).** Already drawn in R1's key (17:11): a short gray line, an arrowhead, then the number, as the stage draws it.
+- **CR-S7, CD-S6 (15.23, one column line, a ragged name edge).** The FS block's −20 px pull for its squares went with the squares (R1), so all five blocks start their stage column at one offset. Each Route FS stage's "Stage N:" now sits in a 4.6 em slot in tabular figures, so "Signed" and "Veto and override" start at one x, and a long name wraps under itself.
+- **CR-S8 (15.21, scales broken across lines).** The grade ladder and the delay classes are each a vertical list, one step a line, the connection's own step in bold with its underline, so each reads as one ordered scale. The drawing's column will stand a little emptier below the pills; I left it (the words column sets the height).
+- **CD-S7, CR-S18 (15.25's count).** "2 conflicts, both in row 42" on the plate and in the alt.
+- **CR-S21 (15.24's arrows, not in the guide's font).** The joins are a drawn arrow: a mask of a 12 by 10 px arrow on the secondary ink, a space before it so a line may break there and four no-break spaces binding it to the stage after it (DD-S8); `CanvasText` in forced colors; the screen reader still hears nothing. Only 15.24's runs change; the other 22 text arrows and the check marks are the engineer's (font build).
+- **RP-11 (two choices with no stated rule).** The worked reform's rule printed under R6 (17:29). Each public law is now named in words beside its number (H12), draft for the editor: "Public Law 115-97, the tax law approved December 22, 2017, section 11022" and "Public Law 119-21, the tax law approved July 4, 2025, section 70104".
+- **RP-19 (stage 19's hedge).** Holds: the editor's final words of 17:17 ("The Supreme Court’s most recent decision to hold part of an Act of Congress unconstitutional, in its opinions through November 9, 2026, came on June 30, 2026, ...") replaced "The latest such ruling we found"; "we found" is gone from the chapter.
+- **CR-S16, chapter 15's part (not routed to me, done because the fix sits in my `hold()`):** a title number stays with "U.S.C." ("2&#160;U.S.C.&#160;644"), and Rules 15.16 and 15.20's route lines hold their phrases ("(2 U.S.C. 2c)" no longer breaks).
+
 ## Not fixed
 
 Waiting, as of the time in Status:
 
 - **CE-S9, its source:** applied in the editor's words on Rule 11.9's authority; a row for 5 U.S.C. 553(b)(B), the good-cause exception behind an interim final rule, would let the generator hold the words to the law itself (Requests).
 - **CE-S11, "injunction" on 15.23:** stays bare by the editor's call, since Rule 11.11 glosses it first in the guide.
-- None of my codes now. Board 2's S71, which prints "read" on route pages, stays for board 3's list (R7); chapters 11 and 14 are other owners'.
+- **Call 15's plate-side line on Rule 15.20:** waits on the component engineer's shared chooser change (its notes "Pending" at 17:46 UTC).
+- **CR-S19 (two header layouts for the evidence chip):** the craft report names the engineer and the plates S89, S91 and S94, all chapter 14 kit charts outside my files; chapter 15's plates take chapter 13's label and were not named. I changed nothing and ask the main session to confirm the routing (Requests).
+- None of my wave 1 codes. Board 2's S71, which prints "read" on route pages, stays for board 3's list (R7); chapters 11 and 14 are other owners'.
 
 ## Calls
 
@@ -61,6 +80,9 @@ Waiting, as of the time in Status:
 | A route card may hold a row of another route's table | ST-S7: each law a card cites rests on a row with its own read date |
 | Rule 15.23 keeps no spine-against-path difference among a step's stages | R1, item 5 leaves it to me; 15.23 sends the reader to 15.22, which draws it, and the words "Stage 3: Suspension of the rules" stand alone |
 | Rule 15.24's example prints why it shows Reform R-28, and the alt reads the plate in its order | NB-S5, the data lead's R6: one rule, read from either side, picks one reform; the alt's "First" predated DD-S7's move |
+| 15.24's joins draw their arrow as a mask, not as a glyph | CR-S21: the guide's Inter subset has no U+2192, so the glyph fell to a system font; the engineer's font build fixes the guide's other arrows |
+| A stop line must hold exactly its mark and one span of words, checked by the generator | CR-M1's request; the fault came from bare text beside a held phrase in a flex line |
+| 15.23's "Stage N:" sits in a fixed slot | CR-S7, CD-S6: one x for every stage name, two-digit numbers included |
 | 15.22's key shows the number of the first stage of each kind (1, 3, 14) | R1, item 4: each entry draws as the plate draws it, and a real number ties the key to the plate |
 
 ## Requests
@@ -76,8 +98,12 @@ Waiting, as of the time in Status:
 2. **DF-10's word.** One of "read" and "retrieved" for the guide's law sources across chapters 11, 14 and 15. Chapter 15 says "read" (ruling (e): "read" for our research's date, "Checked" for an atlas entry); chapter 11 says "retrieved". I change mine on your word.
 3. **Sign-off, one batch** (when you are ready): R1 on 15.22 and 15.23 (DF-2, DF-5, CE-S10); CE-M2, CE-M3, CE-M4, CE-S1 to CE-S9, CE-S11 (chapter 15's part), CE-S12, CE-S23, ST-M2, ST-S5 to ST-S7, ST-S9, DF-1, DF-8, DF-9, DF-10's source line order, DF-11, DF-14, NB-M1 (Rule 15.20's sentence), NB-S6, and your R5 note, as listed under Fixed. No capture backs them yet (Not tested).
 
+### To the main session
+1. **CR-S19** is routed to me in Addendum 1, but the craft report names the engineer and kit plates S89, S91 and S94. Please confirm it belongs to the engineer, or name a chapter 15 plate it reaches.
+
 ### To the editor
-1. The draft words under Fixed (CE-S12, CE-S23, ST-S9, R1 and DF-5's key, alt, rule and specs, DF-9's folds on the FS card, CE-S7's route names) are yours to set; send replacements as old and new strings and I apply them, or write them into the generator once I report done (D3-669).
+1. Wave 2's draft words: RP-11's two public law names (above) and "2 conflicts" (CD-S7, CR-S18).
+2. The draft words under Fixed (CE-S12, CE-S23, ST-S9, R1 and DF-5's key, alt, rule and specs, DF-9's folds on the FS card, CE-S7's route names) are yours to set; send replacements as old and new strings and I apply them, or write them into the generator once I report done (D3-669).
 
 ## Tested
 

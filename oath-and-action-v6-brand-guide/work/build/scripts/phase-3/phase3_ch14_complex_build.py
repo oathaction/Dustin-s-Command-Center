@@ -268,9 +268,13 @@ def walk_steps():
         wk = re.search(r"For U\.S\. services the weakest is (L\d+), (since [^.]+)\.", lp["evidence_summary"])
         if wk and wk.group(1) == x:
             more += f" The atlas names it the weakest step for U.S. services, \u201c{ce(wk.group(2))}\u201d."
+        # Loop R10's supposition comes before the step it sets up, as Loop B4's does in the ready line (the data lead's
+        # batch 6 suggestion): it opens the step's line, in regular weight, so the status line says it first
+        lead = ""
         if i == 0 and lid == "R10":
             s_, v_ = START["R10"]
-            more = (f"The walk moves to Loop R10, starting at {in_sentence(s_)} and supposing they {v_}. " + more)
+            lead = f"Start at {in_sentence(s_)}, and suppose they {v_}."
+
         if b == "C3" or a == "C3":
             if lid == "B4" and b == "C3":
                 more += f" {in_sentence('C3', True)} is the variable both loops pass through."
@@ -296,9 +300,9 @@ def walk_steps():
             if lid == "R10":
                 more += " The atlas holds no measure of either loop’s strength, so the walk weighs neither against the other."
         need(KIND[lid] == ("reinforcing" if C15.minus_count(lp["links"]) % 2 == 0 else "balancing"), f"Loop {lid}'s kind changed")
-        said = f"Loop {lid}, step {i + 1} of {n}: {line} {re.sub(r'<[^>]+>', '', html.unescape(more))}"
+        said = f"Loop {lid}, step {i + 1} of {n}: {(lead + ' ') if lead else ''}{line} {re.sub(r'<[^>]+>', '', html.unescape(more))}"
         hold = max(6000, 250 * len(said.split()))
-        out.append({"k": k, "loop": lid, "i": i + 1, "n": n, "link": x, "line": line, "more": more, "hold": hold, "said": said,
+        out.append({"k": k, "loop": lid, "i": i + 1, "n": n, "link": x, "line": line, "lead": lead, "more": more, "hold": hold, "said": said,
                     "dir": d})
     need(f2["loops"]["B4"]["into_C3"] == "L23" and f2["loops"]["R10"]["into_C3"] == "L25", "Variable C3's steps changed")
     return out
@@ -367,7 +371,9 @@ def walk_css(steps):
                ".oa-stepper-step[data-oa-first]{counter-set:st 0}"
                ".oa-stepper-step[data-oa-first]::before{grid-row:2/span 2}"
                ".oa-stepper-step .lpn{grid-row:1;display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 6px;"
-               "font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}")
+               "font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}"
+               # Loop R10's supposition, on its own line before the step's direction, in the regular weight
+               ".oa-stepper-line .sup8{display:block;margin-bottom:2px;font-weight:var(--oa-font-weight-regular)}")
     return "".join(out)
 
 
@@ -391,7 +397,8 @@ def rule_14_143():
         first = st["i"] == 1
         tag = (f'<span class="lpn">{chip("Loop", st["loop"])}&#32;{words_n(st["n"])} steps</span>' if first else "")
         lis.append(f'<li class="oa-stepper-step" data-oa-part="Loop {st["loop"]}"{" data-oa-first" if first else ""} '
-                   f'data-oa-hold="{st["hold"]}">{tag}<span class="oa-stepper-line">{e(st["line"])}</span>&#32;'
+                   f'data-oa-hold="{st["hold"]}">{tag}<span class="oa-stepper-line">'
+                   + (f'<span class="sup8">{e(st["lead"])}</span>&#32;' if st["lead"] else "") + f'{e(st["line"])}</span>&#32;'
                    f'<span class="oa-stepper-more">{st["more"]}</span></li>')
     cols = []
     for lid in ("B4", "R10"):
@@ -413,7 +420,9 @@ def rule_14_143():
     drop = round(c3_mid(svgs["R10"], "R10-C3") - c3_mid(svgs["B4"], "B4-C3"))
     need(0 <= drop <= 160, f"Loop B4's drawing would drop {drop} px to meet Loop R10's pill")
     shared = (f'<p class="nt">{C15.vt("C3")} is the pill filled in ink in both drawings: both loops pass through it. '
-              f'Each loop numbers its steps from where the atlas starts it.</p>')
+              f'Each loop numbers its steps from where the atlas starts it.</p>'
+              # the ticks and the dashed step, which no other words on the plate read (the reader panel's RP-9)
+              + loop_key(b4["links"] + r10["links"]))
     limits = (f'<p class="k">The atlas’s limits on the two loops</p>'
               f'<p class="nt">{chip("Loop", "B4")} “{ce(b4["qualification"])}”</p>'
               f'<p class="nt">{chip("Loop", "R10")} “{ce(r10["qualification"])}”</p>')
@@ -425,7 +434,8 @@ def rule_14_143():
             # order in the markup, never by CSS; the still list follows
             f'{ctl}{why}<ol class="oa-stepper-steps" role="list">{"".join(lis)}</ol>{limits}'
             + src("loops B4 and R10 and connections L23, L24, L54, L08, L25, L53 and L42") + "</div>")
-    css_live = walk_css(steps) + f"@container oa-frame (min-width:680px){{.b4w{{padding-top:{drop}px}}}}"
+    css_live = (walk_css(steps) + f"@container oa-frame (min-width:680px){{.b4w{{padding-top:{drop}px}}}}"
+                ".lk8{margin-top:12px}")
     style = plate_style(root, swap={C15.stepper_css(3): css_live})
     alt = (f"Loop B4 from our systems atlas, “{b4['title']}”, beside Loop R10, “{r10['title']}”, each drawn "
            f"with its steps numbered from 1, and Variable C3, {lc(short('C3'))}, the pill filled in ink in both. Under them "
@@ -623,14 +633,45 @@ def say_line(rid, on):
     return s
 
 
+def card_say(rid, on):
+    """The card's first line (CD-S10): the status line's words with the reform's chip dropped from the screen, since the
+    card's head names it, and kept for the status line in a visually hidden prefix, so a reader who hears the line alone
+    still hears which reform it is."""
+    full = say_line(rid, on)
+    head = f'{chip("Reform", rid)} '
+    need(full.startswith(head + "turns "), f"Reform {rid}'s line no longer starts on its chip and “turns”")
+    rest = full[len(head):]
+    return f'<span class="vh">Reform {e(rid)}: </span>{rest[0].upper()}{rest[1:]}'
+
+
+def loop_key(lids):
+    """A key for the marks a loop drawing carries and no other words read (the reader panel's RP-9): the delay ticks, in
+    the words of chapter 15's own keys (ticks_line, Rules 13.5 and 15.13), and, where a drawing holds a dashed step, the
+    grade its pattern draws (Rule 13.4). Each sample is drawn by chapter 15's conn, read-only."""
+    sv = '<svg class="sv" viewBox="0 0 64 18" width="64" height="18" aria-hidden="true" focusable="false">'
+    delays = [k for k in ("S", "M", "L") if any(link(x)["delay"] == k for x in lids)]
+    tick, _ = C15.conn([(1, 9), (61, 9)], "documented", None, delays[-1])
+    rows = [f'<p class="kd2">{sv}{C15.wr(tick)}</svg><span><b>Ticks</b> near a line’s start count its delay, '
+            f'{C15.ticks_line(lids)}.</span></p>']
+    grades = {link(x)["evidence"] for x in lids}
+    if "plausible" in grades:
+        need(grades <= {"documented", "well-supported", "plausible"}, "a loop here holds a grade the key does not name")
+        dash, _ = C15.conn([(1, 9), (61, 9)], "plausible", None, None)
+        rows.append(f'<p class="kd2">{sv}{C15.wr(dash)}</svg><span><b>Dashed</b> for a step the atlas grades plausible; '
+                    f'every other step is solid, documented or well supported (Rule 13.4).</span></p>')
+    return '<div class="lk8">' + "".join(rows) + "</div>"
+
+
 def off_words(rid, t, loop_vars):
     """An off-loop target in words (A-2, item 2): its typed chip, the atlas's title, for a connection its grade and its two
     ends, and its layer."""
     if t in LINK:
+        # its layer right after its own name and grade, before its two ends, so a reader never takes the connection's layer
+        # for its end variable's (the reader panel's RP-7: LT12 sits in the technology layer, Variable EC9 in the economy)
         l = link(t)
-        return (f'{chip("Connection", t)} \u201c{ce(l["name"])}\u201d, {GRADE[l["evidence"]][0].lower()}, from '
-                f'{chip("Variable", l["from"])} to {chip("Variable", l["to"])} \u201c{ce(node(l["to"])["title"])}\u201d, '
-                f'in {LAYER[l["layer"]]}')
+        return (f'{chip("Connection", t)} \u201c{ce(l["name"])}\u201d, {GRADE[l["evidence"]][0].lower()}, in '
+                f'{LAYER[l["layer"]]}, from {chip("Variable", l["from"])} to {chip("Variable", l["to"])} '
+                f'\u201c{ce(node(l["to"])["title"])}\u201d')
     return f'{chip("Variable", t)} \u201c{ce(node(t)["title"])}\u201d, in {LAYER[NODE[t]["layer"]]}'
 
 
@@ -694,8 +735,15 @@ CARD_CSS = (
     # routes' lines
     ".cd8 .ef8{list-style:none;margin:0;padding:0}.cd8 .ef8>li{padding:6px 0}"
     ".cd8 .ef8>li+li{border-top:1px solid var(--oa-color-border-hairline)}.cd8 .fn8{display:block}"
-    ".cd8 .fv8{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}"
+    ".fv8{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}"
     ".cd8 .gd8 dd+dd{margin-top:10px}.cd8 .gd8 .evr{margin:0}.rl8 .rf{display:block}"
+    # the phone line-up (CR-S3): a family a block, its three reforms one a row, the chip beside the pips and the code
+    ".ph8{margin-top:16px}.pt8,.pr8{list-style:none;margin:0;padding:0}.pt8>li{padding:8px 0;border-top:1px solid "
+    "var(--oa-color-border-hairline)}.pt8 .fn8{font:var(--oa-type-body-small);font-weight:var(--oa-font-weight-semibold)}"
+    ".pr8>li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:center;margin-top:6px;"
+    "font:var(--oa-type-body-small)}.pr8 .fv8{margin-top:0}"
+    "@container oa-frame (min-width:680px) and (min-width:40em){.ph8{display:none}}@media print{.ph8{display:none}}"
+    ".lk8{margin-top:12px}"
     # on the 680 px stage the three cards stand side by side, and each row of one card lines up with the same row of the
     # others: a card spans thirteen rows of the list's grid (its head, the eleven rows of its list, its disclosure), its
     # list eleven. Three columns only while the frame holds 40em of the plate's own text as well (680 px at the guide's
@@ -752,9 +800,11 @@ def rule_14_144():
         copies.append(f'<div class="pc8"><p class="nt">{line}</p><div class="dg">{C15.svg_wrap(cb, ch_)}</div></div>')
     pcopies = '<div class="pcs8">' + "".join(copies) + "</div>"
     # each step of the loop with its connection's chip, its name and its grade word (H11: an ID says what it refers to)
+    # each step with its delay in words, and a key for the ticks that draw it (the reader panel's RP-9)
     right = ('<p class="k">Each step</p>' + "".join(
         f'<p class="nt"><b>{i}</b>&#160;{chip("Connection", x)} \u201c{ce(link(x)["name"])}\u201d, '
-        f'{GRADE[link(x)["evidence"]][0].lower()}</p>' for i, x in enumerate(lp["links"], 1)) + lists_)
+        f'{GRADE[link(x)["evidence"]][0].lower()}, and its effect takes {DELAY[link(x)["delay"]][1]}</p>'
+        for i, x in enumerate(lp["links"], 1)) + loop_key(lp["links"]) + lists_)
     cards = []
     for rid in RIDS:
         r = REFORM[rid]
@@ -790,7 +840,10 @@ def rule_14_144():
                 f'<p>Its tradeoffs: “{ce(r["tradeoffs"])}”</p></div></details></div></div>')
         cards.append(
             f'<li class="cd8" data-oa-panel="{rid}"><div><p class="ch">{chip("Reform", rid)} “{ce(r["title"])}”</p>'
-            f'<p class="nt" data-oa-say>{say_line(rid, on)}</p></div>'
+            # the card's head names the reform, so its first line starts on the verb (the creative director's CD-S10, the
+            # craft reader's CR-S2); the status line, which reads this line alone, keeps the name in words a screen
+            # shows nowhere
+            f'<p class="nt" data-oa-say>{card_say(rid, on)}</p></div>'
             f'<dl>'
             f'<div><dt>Targets on Loop R8</dt>'
             + ("".join(f"<dd>{target_words(t)}</dd>" for t in mine) or "<dd>None</dd>") + "</div>"
@@ -812,10 +865,20 @@ def rule_14_144():
     key = ('<ul class="ky8">' + "".join(f'<li>{C13.pips_svg(c)}<span><b>{e(c.replace("-", MINUS))}</b> {e(C13.EFFECT_WORDS[c])}</span></li>'
                                         for c in order) + "</ul>")
     note = FACTS_NOTE()
+    # where the cards stack one under another (a phone, or text set large), each family's effects for the three reforms
+    # sit together before the cards, so a reader compares them without holding one card in mind across the others (the
+    # craft reader's CR-S3, DD-R1's phone half). Rule 13.5's pips and each code whole, as in the cards; no total. Hidden
+    # where the cards stand side by side and on paper, which prints the cards
+    by_family = ('<div class="ph8"><p class="k">Each family’s effects, the three reforms together</p><ul class="pt8" role="list">'
+                 + "".join(f'<li><p class="fn8">{e(C13.FAMILY[f])}</p><ul class="pr8" role="list">'
+                           + "".join(f'<li>{chip("Reform", rid)}<span class="fv8">{C13.pips_svg(REFORM[rid]["effects"][f].split(" ")[0])}'
+                                     f'<span>{effect_cell(REFORM[rid]["effects"][f])}</span></span></li>' for rid in RIDS)
+                           + "</ul></li>" for f in ("DQ", "GE", "EP", "EQ"))
+                 + "</ul></div>")
     body = (f'<div class="lv" data-oa-chooser>{group}' + C15.beside(left, right)
             + f'<p class="k kb">The three reforms compared, as of {SNAP}</p>'
             + key + f'<p class="nt">The atlas’s note on the codes: “{e(note)}”</p>'
-            + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>'
+            + by_family + pcopies + f'<ul class="cds" role="list">{"".join(cards)}</ul>'
             + src("reforms R-06, R-30 and R-38, their targets, effects, evidence and routes, and loop R8 with its "
                   "connections") + "</div>")
     style = plate_style(body, swap={C15.chooser_css(["R-03", "R-04"]): ""}, extra=chooser_css(RIDS) + CARD_CSS)
@@ -1275,6 +1338,13 @@ def check(entries, files, specs, steps):
     lab_b4 = reader_text(re.search(r'<div class="evr">.*?</div>', t).group(0))
     ok("the grade of all three steps" in lab_b4 and "Connection" not in lab_b4, f"14.143: Loop B4's label: {lab_b4}")
     ok(".oa-stepper-step .lpn{grid-row:1" in files["s-14-143-correct"], "14.143: the first step's label sits in its own row")
+    # RP-9: the key reads the ticks and the dashed step
+    ok("Ticks near a line’s start count its delay" in rt_143 and "Dashed for a step the atlas grades plausible" in rt_143,
+       "14.143: no key for the ticks or the dashed step (RP-9)")
+    # the data lead's batch 6 suggestion: Loop R10's supposition opens its first step, before its direction
+    r10_1 = re.search(r'data-oa-part="Loop R10" data-oa-first[^>]*>.*?<span class="oa-stepper-line">(.*?)</span>&#32;<span', t)
+    ok(r10_1 is not None and r10_1.group(1).startswith('<span class="sup8">Start at seats with little electoral competition, and suppose they rise.</span>')
+       and "The walk moves to Loop R10" not in rt_143, "14.143: Loop R10's supposition does not come before its first step")
     ok("weakest step for U.S. services, \u201csince its main study covers Brazilian mayors\u201d" in reader_text(t),
        "14.143: the atlas's weakest-step claim for Loop B4")
     # 14.144: the chooser's markup as CE-2 lists it, and no total
@@ -1314,7 +1384,26 @@ def check(entries, files, specs, steps):
         for f in ("DQ", "GE", "EP", "EQ"):
             v = REFORM[rid]["effects"][f]
             ok(f'{C13.pips_svg(v.split(" ")[0])}<span>{effect_cell(v)}</span>' in t, f"14.144: {rid}'s {f} effect lacks its pips or its whole code")
-    ok(t.count('<svg class="pp"') == 3 * 4 + 7, "14.144: twelve effect marks in the cards and seven in the key")
+    ok(t.count('<svg class="pp"') == 3 * 4 * 2 + 7, "14.144: twelve effect marks in the cards, twelve in the phone line-up and seven in the key")
+    # CR-S3: the phone line-up holds every family's three codes, whole, beside their pips, in the families' and the IDs'
+    # order, and shows only where the cards stack
+    ph = t[t.index('<div class="ph8">'):t.index('<div class="pcs8">')]
+    want = [(f, rid) for f in ("DQ", "GE", "EP", "EQ") for rid in RIDS]
+    got = re.findall(r'<li><span class="chip">Reform <span class="id">(R-\d+)</span></span><span class="fv8">', ph)
+    ok(got == [rid for _, rid in want] and all(f'<b class="cd">{e(REFORM[rid]["effects"][f].replace("-", MINUS, 1) if REFORM[rid]["effects"][f].startswith("-") else REFORM[rid]["effects"][f])}</b>' in ph
+                                              for f, rid in want), "14.144: the phone line-up's twelve rows (CR-S3)")
+    ok("@container oa-frame (min-width:680px) and (min-width:40em){.ph8{display:none}}" in files["s-14-144-correct"],
+       "14.144: the phone line-up shows where the cards stand side by side")
+    # CD-S10: no card's first line starts on a chip on screen; each still says its reform's name to the status line
+    for rid in RIDS:
+        ok(re.search(r'data-oa-say><span class="vh">Reform ' + rid + r': </span>Turns ', t) is not None,
+           f"14.144: {rid}'s first line keeps a chip on screen, or the status line loses its name (CD-S10)")
+    # RP-7: a connection off the loop says its own layer before its two ends
+    ok("contested, in the technology layer, from" in rt and "well supported, in the economy layer, from" in rt
+       and "“Cost of essentials”, in the technology layer" not in rt, "14.144: a connection's layer reads as its end's (RP-7)")
+    # RP-9: each step's delay in words and a key for the ticks
+    ok(rt.count("and its effect takes over 10 years") == 2 and "Ticks near a line’s start count its delay" in rt,
+       "14.144: the steps' delays or the ticks' key are missing (RP-9)")
     # R5 (DF-7): 15.16's grade form and 15.20's route form; "evidence for the problem" nowhere
     ok("vidence for the problem" not in t and t.count("evidence of the problem") == 3 and t.count('class="gp"') == 6,
        "14.144: each card's two grades as Rule 15.16 prints them, “evidence of the problem” (DF-7)")
