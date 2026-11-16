@@ -64,7 +64,9 @@ Rule 18.22's stepper reads its parts by class, never by order, so 15.19 can take
 
 ## Tested
 
-Pending.
+All in Chromium (Playwright's headless shell), one browser at a time, each batch started by `scratch/bin/run.sh` only after `browsers.sh` printed "OK to open one", and closed at its end; one slip under "Status" (18:11). Scripts in `scratch/bin/`, results in `scratch/out/`.
+
+- **Call 10, measured first (18:03 to 18:08 UTC, `cmp.cjs` sweep on `c1/`):** the masthead's height less its 1 px rule against the resolved `--head-h`, every width from 320 to 1920 px at the default text size (1,601 widths), every 2 px with the root's text at 200 percent (801), every 4 px with the browser's own text at 32 px (401), on the page as it is and on the candidate. As it is: the masthead stands over `--head-h` by 44 px at 360 to 372 px and by 36 px at 1024 to 1362 px; by 48.78 px at 1024 to 1764 px with the root at 200 percent; never with the browser's text at 32 px. With the fix: `--head-h` equals the masthead at all 2,803 widths (within a 64th of a pixel at 200 percent, the layout's own step). `--head-h` changes at exactly 352 of the 1,601 default widths (the 13 from 360 to 372, by 44 px; the 339 from 1024 to 1362, by 36 px) and at the 371 widths from 1024 to 1764 at 200 percent (by 48.77 px); at the other 1,249 default widths, the 430 others at 200 percent and all 401 at 32 px it is the same to the hundredth of a pixel.
 
 ## Not tested
 
