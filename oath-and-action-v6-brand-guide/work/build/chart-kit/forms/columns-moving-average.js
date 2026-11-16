@@ -16,7 +16,12 @@
  *   opt-in): [lo, hi], the value scale where the drawing is a phone's (under 480 px), where the named words take their phone setting.
  * labels.margin: {value, label, key}, a band from minus to plus value (the y unit) across the plot, behind the columns, in
  *   magnitude step 1 with its 1 px context edges (K.parts.band); label set in the band below zero at the plot's left, key
- *   as its own key entry. */
+ *   as its own key entry.
+ * The fix pass after rounds 4 and 5 (the complex examples maker's request 2; opt-in, so a spec without them draws as before):
+ * labels.latest_clear: px (CR-S15), the latest month's words rise until every line of them stands at least that many px clear
+ *   of every gridline and the zero line, at every width; the leader follows them.
+ * labels.average_dash: "fit" (CR-S9), each dashed run of the average is one line whose dash stretches so the run starts and
+ *   ends on ink, in place of the fixed 4 and 3. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -24,7 +29,8 @@
     name: 'Columns With Moving Average',
     family: 'change-over-time',
     encode: { x: 'month', y: 'number', average: 'number?', status: 'category?' },
-    labels: ['key_columns', 'key_preliminary', 'key_average', 'latest', 'preliminary_value', 'named', 'named_stack', 'margin'],
+    labels: ['key_columns', 'key_preliminary', 'key_average', 'latest', 'preliminary_value', 'named', 'named_stack', 'margin',
+      'latest_clear', 'average_dash'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, rows = c.rows, ex = c.field('x'), ey = c.field('y'), ea = c.field('average', false), es = c.field('status', false);
@@ -94,7 +100,23 @@
         var lw = named ? c.t('line-context') : c.t('columns-average-line'), ink = named ? 'context' : 'subject';
         if (solid) c.path(solid, { stroke: 'surface', width: lw + 2 * c.t('keyline'), mark: false });
         if (solid) c.path(solid, { stroke: ink, width: lw, data: { field: ea } }, [x0, top, x1 - x0, plotH]);
-        if (dash) c.path(dash, { stroke: ink, width: lw, dash: '4 3', data: { field: ea, status: prelim_value } }, [x0, top, x1 - x0, plotH]);
+        if (dash && c.labels.average_dash === 'fit') {
+          // CR-S9 (opt-in): each run of dashed segments drawn as one line, its 4 and 3 stretched to a whole number of dashes,
+          // so the run starts and ends on ink (as chapter 15's connections and the grade lines fit their patterns)
+          var runs = [], run = null, pv = null;
+          pts.forEach(function (p) {
+            if (!p) { pv = null; run = null; return; }
+            if (pv && p[2]) { if (!run) { run = [pv]; runs.push(run); } run.push(p); } else run = null;
+            pv = p;
+          });
+          runs.forEach(function (r) {
+            var len = 0;
+            for (var ri = 1; ri < r.length; ri++) len += Math.hypot(r[ri][0] - r[ri - 1][0], r[ri][1] - r[ri - 1][1]);
+            var nd = Math.max(1, Math.round((len + 3) / 7)), sc = len / (nd * 4 + (nd - 1) * 3);
+            var d = r.map(function (q, qi) { return (qi ? 'L' : 'M') + K.round(q[0]) + ',' + K.round(q[1]); }).join('');
+            c.path(d, { stroke: ink, width: lw, dash: K.round(4 * sc) + ' ' + K.round(3 * sc), data: { field: ea, status: prelim_value } }, [x0, top, x1 - x0, plotH]);
+          });
+        } else if (dash) c.path(dash, { stroke: ink, width: lw, dash: '4 3', data: { field: ea, status: prelim_value } }, [x0, top, x1 - x0, plotH]);
       }
       // the time axis
       var tlo = K.time(rows[0][ex]), thi = K.time(rows[n - 1][ex]);
@@ -113,6 +135,21 @@
         var lx = xc(n - 1), ly = Math.min(ys(last[ey]), ys(0)) - 8;
         var lt = top - 4 + c.size('label');
         var hi_y = Math.min(ly - 12 - (lines.length - 1) * 19, lt);
+        var clear = c.labels.latest_clear;
+        if (clear !== undefined && clear !== null && isFinite(+clear) && +clear > 0) {
+          // CR-S15 (opt-in): the words rise, half a pixel at a time, until each line's box stands clear of every gridline and the
+          // zero line by the spec's px; where no place within 60 px holds them, they stay where they were
+          var gys = ticks.map(function (tv) { return ys(tv); }).concat([ys(0)]), need = +clear, start = hi_y;
+          var lo_of = function (li) { return li ? { role: 'label', weight: 400, anchor: 'end', size: c.size('tick') + 1 } : { role: 'label', weight: 700, anchor: 'end' }; };
+          var hits = function (hy) {
+            return lines.some(function (ln, li) {
+              var b = c.text_box(W, hy + li * 19, ln, lo_of(li));
+              return gys.some(function (g) { return g > b.y - need && g < b.y + b.h + need; });
+            });
+          };
+          while (hits(hi_y) && start - hi_y < 60) hi_y -= 0.5;
+          if (hits(hi_y)) hi_y = start;
+        }
         c.text(W, hi_y, lines[0], { role: 'label', weight: 700, anchor: 'end', halo: true });
         for (var li = 1; li < lines.length; li++) c.text(W, hi_y + li * 19, lines[li], { role: 'label', weight: 400, anchor: 'end', fill: 'secondary', halo: true, size: c.size('tick') + 1 });
         c.line(lx, hi_y + (lines.length - 1) * 19 + 6, lx, ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });

@@ -144,6 +144,10 @@ def plate_style(body, swap=None, extra=""):
     used |= {k for k, v in RENAME.items() if v in used}
     parts = [C15.BASE, ".p{padding:16px}"]       # chapter 14's block pads .p 24 px from 48em; a 328 px stage keeps 16
     for k, css in C15.CSS.items():
+        # call 15's keyline takes the class pk, which also names chapter 15's palette strokes (".sv .pk{stroke: Prussian}");
+        # that entry comes in only for a plate that draws a palette stroke, so the keyline never rests on rule order
+        if k == "pk" and not used & {"gk", "sk", "pkf", "gkf", "skf"}:
+            continue
         if k in used:
             for old, new in (swap or {}).items():
                 if old in css:
@@ -1444,6 +1448,7 @@ def check(entries, files, specs, steps):
         ok(no + " .pk{display:none}" in files["s-14-144-correct"] and yes + " .pk{display:inline}" in files["s-14-144-correct"]
            and yes + " .hd{fill:var(--oa-color-data-emphasis-red);stroke:" in files["s-14-144-correct"]
            and no + " .hd{fill:" in files["s-14-144-correct"], f"14.144: the keyline or the head's edge does not follow {rid} (call 15)")
+    ok("palette-prussian" not in files["s-14-144-correct"], "14.144: chapter 15's Prussian palette stroke reaches the keyline's class")
     ok(".sv .crt .hd{stroke:var(--oa-color-graphic-essential);stroke-width:2px;paint-order:stroke}" in files["s-14-144-correct"],
        "14.144: the first reform's red head in the markup has no ink edge (call 15)")
     # CD-S10: no card's first line starts on a chip on screen; each still says its reform's name to the status line

@@ -457,7 +457,9 @@
     var has = function (k) { return show.indexOf(k) >= 0 || (k === 'evidence' && show.indexOf('title') >= 0 && !spec.show) || (k === 'guide' && show.indexOf('measure') >= 0 && !spec.show); };
     var p = [];
     if (has('evidence') && spec.evidence_label) {
-      p.push('<div class="oac-ev"><p class="oac-ev-k" data-role="evidence-label">' + esc(spec.evidence_label) + '</p>' +
+      // CR-S19 (the fix pass after rounds 4 and 5, opt-in): spec.evidence_layout "beside" keeps the grade line beside the chip,
+      // wrapping under its own first word (a hanging indent), so a long grade line never drops under the chip alone
+      p.push('<div class="oac-ev' + (spec.evidence_layout === 'beside' ? ' oac-ev--beside' : '') + '"><p class="oac-ev-k" data-role="evidence-label">' + esc(spec.evidence_label) + '</p>' +
         (spec.grade_line ? '<p class="oac-ev-g" data-role="grade">' + K.chips(spec.grade_line, ids) + '</p>' : '') + '</div>');
     }
     if (has('title')) p.push('<p class="oac-title" id="' + id + '-t" data-role="title">' + K.chips(spec.title, ids) + '</p>');

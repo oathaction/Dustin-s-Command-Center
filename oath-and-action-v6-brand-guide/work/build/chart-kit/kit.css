@@ -7,6 +7,9 @@
 .oac-ev { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 12px; }
 .oac-ev-k { margin: 0; padding: 2px 6px; background: var(--oa-color-text-primary); color: var(--oa-color-surface); font: var(--oa-font-weight-bold) var(--oa-chart-type-eyebrow)/18px var(--oa-font-family-reading); letter-spacing: 0.04em; text-transform: uppercase; }
 .oac-ev-g { margin: 0; font: var(--oa-font-weight-regular) 14px/20px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-ev--beside { flex-wrap: nowrap; align-items: baseline; }
+.oac-ev--beside .oac-ev-k { flex: none; }
+.oac-ev--beside .oac-ev-g { flex: 1 1 0; min-width: 0; }
 .oac-title { margin: 0; font: var(--oa-font-weight-extrabold) var(--oa-chart-type-title-size)/var(--oa-chart-type-title-leading) var(--oa-font-family-display); letter-spacing: -0.02em; text-wrap: balance; max-width: 30em; }
 .oac-guide { margin: 10px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); max-width: 42em; text-wrap: pretty; }
 .oac-measure { margin: 10px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-measure-size)/var(--oa-chart-type-measure-leading) var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; text-wrap: pretty; }
