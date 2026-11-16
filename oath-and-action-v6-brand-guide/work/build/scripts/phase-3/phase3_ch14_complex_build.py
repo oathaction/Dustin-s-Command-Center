@@ -888,7 +888,8 @@ def rule_14_144():
            f"red; and three cards, one per reform, each with its targets on the loop and outside it, its band with the "
            f"atlas’s definition, its four effects one family to a row as of {SNAP}, each code and qualifier whole beside "
            "its pips, its two evidence grades apart, its routes each with its check date or not checked, and its evidence "
-           "and tradeoffs one step away in a disclosure. No row adds the effects.")
+           "and tradeoffs one step away in a disclosure. Where the cards stack, each family’s three effects sit together "
+           "above them. No row adds the effects.")
     meta = {"s-14-144-correct": plate_meta(alt, interactive=True, keys=True,
                                            notes="Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; "
                                                  "the choice shows through the plate's own CSS from the checked radio, scripts "
@@ -935,7 +936,8 @@ def rule_14_144():
             "is wide enough, each with the same rows in the same order: the targets on the loop, the targets outside it, the band, the four effects one "
             "outcome family to a row, the evidence grades and the routes. Let a reader choose one reform at a time to see "
             "its targets on the loop turn red (Rule 15.20), and keep every card on the page as the choice changes, so the comparison never rests on "
-            "memory. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target "
+            "memory. Where the cards stack one under another, set each family’s effects for all the reforms together before "
+            "them. A reform can name a loop and target nothing on it, as Reform R-38 does with Loop R8. Name each target "
             "outside the loop in words, with its layer, and draw no path the atlas does not hold.",
             "Draw each effect with Rule 13.5’s pips in the text’s ink, then print it as the atlas stores it, the code and "
             "then any qualifier, followed by the code’s meaning. A qualifier is the words after a code that say where, when "
@@ -1000,7 +1002,7 @@ def FACTS_NOTE():
 # =====================================================================================================================
 # the rule that holds S14, which S96 and its failure name where S14's notes said "both jobs charts" (the reader panel's
 # RP-10), read from the plan, and the window's reason in those words
-S14_RULE = next(r["rule"] for r in json.loads(PLAN.read_text())["chapter_rules"] if r.get("spec_id") == "S14")
+S14_RULE = next(r["rule"] for r in json.loads(PLAN.read_text())["forms"] if r.get("spec_id") == "S14")
 need(S14_RULE == "14.32", f"S14 moved to Rule {S14_RULE}; reread the window's words")
 need(json.loads((SPECS / "s14.json").read_text())["notes"][4] == "Both jobs charts run from January 2022 to September 2026, so they "
      "hold three full years before the January 2025 inauguration and every month since.", "S14's window note changed")

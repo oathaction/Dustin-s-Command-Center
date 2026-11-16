@@ -10,13 +10,13 @@
  "evidence_label": "Finding",
  "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
  "title": "The economy lost jobs in seven months of 2025 and 2026.",
- "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span both jobs charts share, with the three-month average.",
+ "measure_line": "Monthly change in payroll jobs, all nonfarm, seasonally adjusted, United States, January 2022 to September 2026, the span this chart shares with the jobs chart of Rule 14.32, with the three-month average.",
  "notes": [
   "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026.",
   "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month.",
   "The three-month average for a month is the mean of that month’s change and the two before it, so the averages for January and February 2022 draw on November and December 2021, months the chart does not show.",
   "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next.",
-  "Both jobs charts run from January 2022 to September 2026, so they hold three full years before the January 2025 inauguration and every month since."
+  "This chart and the jobs chart of Rule 14.32 run from January 2022 to September 2026, so they hold three full years before the January 2025 inauguration and every month since."
  ],
  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, from the Employment Situation for September 2026, released October 2, 2026, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary, and later releases revise them.",
  "credit": "Chart: Oath & Action",
@@ -104,7 +104,20 @@
    }
   ]
  },
- "annotations": [],
+ "annotations": [
+  {
+   "at": {
+    "x": "2023-06"
+   },
+   "text": "Three-month average",
+   "target": "average",
+   "place": "above",
+   "dy": -88,
+   "phone": {
+    "hide": true
+   }
+  }
+ ],
  "scale": {
   "y": [
    -400,
