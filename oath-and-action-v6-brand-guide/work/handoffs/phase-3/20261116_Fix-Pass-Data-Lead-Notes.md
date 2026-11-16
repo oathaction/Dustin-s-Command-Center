@@ -4,6 +4,8 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:31 UTC. **Batch 3:** CE-S20's "No petition" sentence in place; chapter 11 signed off whole.
+- 17:30 UTC. **Batch 2 (chapter 15):** the R1 stage marks signed off as built; every other code signed off on its source; DF-10 and NB-S5 wait on R7 and R6 being applied. Nothing sent back.
 - 17:27 UTC. **Batch 1 (chapter 11):** marks unchanged; call 4's extension yes (steps 5 and 6 under slashes with no petition); facts signed off; one item sent back, CE-S20's "No petition" row needs a sentence. **Rulings R6 (NB-S5: keep R-28 with its rule printed) and R7 (DF-10: "Retrieved", and the version the copy states) written.** Batch 2, chapter 15, next.
 - 17:08 UTC. **Rulings R1 to R5 written** (call 7), with R4b for ST-S2. Owners read them under "Rulings". Sign-off batches follow as owners report fixes.
 - 17:00 UTC. Started.
@@ -173,6 +175,56 @@ Read from the tracker designer's notes (17:23), `11-icons.json` (Rules 11.8, 11.
 **Not looked at:** any capture (none was taken; `browsers.sh` said WAIT for the tracker designer). I did not rerun the generator or a build; the tracker designer's three strict builds and rerun proofs are theirs.
 
 
+### Batch 2 (17:30 UTC): chapter 15 signed off, the R1 stage marks first; DF-10 and NB-S5 wait on R7 and R6 being applied (for the systems designer, the editor, the research lead, the design director and the main session)
+
+Read from the systems designer's notes (17:24), the generator's CSS for the marks, the plates `s-15-22-*` to `s-15-25-*`, `s-15-1`, `s-15-6` and `s-15-15-correct` by script, and Rules 15.20 to 15.23 in `15-systems-graphics.json`. `phase3_ch15_build.py --check-only` (17:29): exit 0, 25 rules, 51 plates. Marks and facts first, words last. The two rulings the main session asked for are R6 and R7 above.
+
+**R1, the stage marks: signed off as built.**
+- *15.22, by markup.* 20 stages, each a `.n` number and no other mark; 0 `.wq` squares; the six `.sqm` stop squares are the only squares, each on a path that stops (stages 10, 12, 16, 17, 18, 19). The `.n` rule has no edge and no fill but the surface knockout, in the text's ink, bold, tabular, and the old `.br`/`.af` outline rule is gone, so every number looks alike on and off the spine.
+- *Spine and paths by line alone.* The spine's `li` line is the subject ink at the subject weight; `.af` lines and the `.br` arrows are the context ink at the context weight.
+- *Key.* Three numbered entries (1 on the line in the text's ink, 3 on a short gray arrow, 14 on the gray line), then the stop square and the return line, drawn with the plate's own parts. No "dark" or "lighter" anywhere on the plate (DF-5).
+- *Forced colors.* The number in `CanvasText` on `Canvas`, the stop square and arrowheads in `CanvasText`, on the plate and in the key.
+- *Failure plates.* `s-15-22-failure` draws six numbered stages in the same marks, and no square; `s-15-23-failure` and `s-15-23-correct` hold no stage mark.
+- *15.23.* Stages print "Stage 3: Suspension of the rules" with no mark; steps keep chapter 11's numbers and names. The lead line says so (CE-S10). The designer's call to keep no spine-against-path difference on 15.23 stands: the stage names say it, and the plate sends the reader to 15.22.
+- *The rule and specs.* 15.22's text now gives the reason, "since a circle, a ring or a square on a tracker marks a state (Rule 11.2)", and the specs call the stop square "the plate's only square".
+- Not seen: no capture exists, so the knockout's look on both grounds, at 390 px and in forced colors is the design director's to judge once a browser is free.
+
+**Structure: signed off.**
+- *CE-M4.* The line in the text's ink runs 1, 2, 6, 7, 8, 13 (by markup: `st` 1, 2, 6, 7, 8; `end` 13). Stage 9, "Signed", is a path at the President beside 10 to 12, each going on to stage 13. The key's "A stage every enacted bill passes" is now true: an enacted bill is always presented (8) and numbered (13).
+- *CE-M2.* Step 5 holds stages 3 to 7, and stages 3 to 5 each still send the bill to stage 6.
+- *CE-M3, DF-1.* "A federal request's stages in the law" and "The law's stages for a federal rule".
+- *CE-S6, DF-11.* Every stop line is the mark and one span of words; the "Then stage 13." lines are plain blocks.
+- *CE-S7, DF-9.* Route names after each chip; Route FS's card reads its stage names from 15.22's list.
+
+**Facts: signed off, each held to its source.**
+- *CE-S1, ST-S6 (stage 2).* "a majority of the members who vote, 218 when all 435 House members vote or 51 when all 100 senators do. A tie fails, and in the Senate the Vice President may break it." Right, and on F3's row.
+- *CE-S2 (stage 7)*, on F4: one text by amendment between the chambers or in conference.
+- *CE-S3, CE-S4, DF-14.* Stage 8 named "Sent to the President"; reconciliation glossed in the atlas glossary's words; the Byrd rule as an objection the presiding officer sustains (2 U.S.C. 644, as batch 3 of round 5 held); stages 3, 5, 6, 8, 11, 14 and 16 open with who acts.
+- *CE-S5, ST-S5, NB-S6 (stage 19).* "The Supreme Court's most recent decision to hold part of an Act of Congress unconstitutional, in its opinions through November 9, 2026": the research row's rule, scope and date, on F7. Marbury names the power without "repugnant". The holding stays in the syllabus's words.
+- *ST-M2, CE-S8 (15.23's records request).* The 20 working days start when the right office receives the request, and no later than 10 days after any office the agency names for requests receives it: the paragraph of 5 U.S.C. 552(a)(6)(A) the statistics reader quoted, on F1. Steps 2 to 5 now say what the agency does inside that clock.
+- *CE-S9.* "A rule issued without advance comment, such as an interim final rule, or guidance, ..." matches Rule 11.9. The designer's request for a 553(b)(B) row stands with the research lead.
+- *ST-S7.* Stage 16 cites 801(a) of November 11 and 801(b) of November 12; the FA and FS cards widen their dates to the rows they cite.
+- *CE-S11, CE-S12, CE-S23.* Motions, discovery and doctrine glossed; "the seven effect codes, ranks of direction and rough size with no measured amount", and "ordinal" gone from chapter 15's reader text (0 by search); "fewer" on 15.1, 15.6 and 15.15.
+- *ST-S9.* Rows 11 and 17 say "as our first audit read it"; rows 47, 48 and 52 open "As we read it on October 21, 2026", the date of our V7.1 list.
+- *DF-8.* "Seven", "Six", "Five", "Four", "Three" and "One reform entry"; no "1 entries" left.
+- *NB-M1 (Rule 15.20's sentence).* It offers "the reforms whose own records name the loop on the drawing" and names an off-drawing target in words with its layer, as 14.144 does.
+- *My R5 note.* `effect_rows` now prints a qualified code whole, and stops the build on a range or a second code; no plate moved (the designer's hashes).
+- *Rule 01.9.* Unchanged by this pass: 39 examples, Elections and representation (D02) the largest at 8, under one in four (9.75).
+
+**Waiting, not sent back.**
+- **DF-10**, the rest: R7 ("Retrieved" for the 43 "read" dates, the source line's "the date we read it", 15.24's group line, and each law's version from F10). Stage 2's line shows why: "U.S. Constitution, Article I, Sections 3 and 5; House Rule XX, clause 1" carry no date or version of their own; under R7 each part names its version (House Rule XX in the 119th Congress's rules) and its retrieved date. 15.22's source line order (snapshot date with the atlas) is signed off.
+- **NB-S5**: R6's sentence and its log row. I read both when the designer reports them (batch 3).
+
+**Two older points, not this pass's, sending nothing back.** 15.23's ballot step 2 ("The attorney general's title and summary") rests on Massachusetts and California, as batch 1 notes for Rule 11.10. And the court block's "within 30 days" takes the same 28 U.S.C. 2107(c) suggestion as batch 1.
+
+**Words, last.** No em dash, en dash, straight apostrophe or listed word in the chapter file or any `s-15-*` plate (my scan, styles excluded). The words are the editor's second read.
+
+### Batch 3 (17:31 UTC): CE-S20 closed; chapter 11 signed off whole (for the tracker designer, the editor and the main session)
+
+The editor's sentence (17:29) prints in `11-icons.json`, from `apply_systems_ch11.py` (lines 1889 and 1934): Rule 11.11's third paragraph says a sentence after the end words gives the reason, "No one asked the Supreme Court to review the case in the time the law allows.", and the "No petition" row now carries the appeals court's ruling, "The lower court's ruling stands." where one stands, and that sentence, with no day count. The slashes and their words now say the same thing (Rule 11.2). By script, the court plates' marks still equal the review commit's. Batch 1's one item is closed, and Rules 11.10 and 11.11 are signed off whole. Batch 1's two suggestions (28 U.S.C. 2107(c) beside "the 30 days the law allows", and a fine ring while the time runs) stay suggestions.
+
+Next: R6 and R7 as the systems designer applies them, with the research lead's F10.
+
 ## Calls
 
 | call | reason |
@@ -182,6 +234,9 @@ Read from the tracker designer's notes (17:23), `11-icons.json` (Rules 11.8, 11.
 | Rule 14.142's failure plate is S96 with the margin left out and nothing else changed: no latest label, plain source line, same scale; its caption names that one fault | One fault per failure plate (ruling (c)); the count of seven is what the rule asks for (ST-M1) |
 | S96 and Rule 14.142 say what the band means in the zero-centered form and that it holds for each month alone; no expected-count figure prints | The band sits around zero; a count of chance passes assumes no month changed, which the data rule out (ST-S1, CE-S13) |
 | S96's note 2 says where each named drop fell, private against government, same form for both months, no cause | A reader asks what fell; the split adds to each total and treats both months alike (ST-S2) |
+| A ruling no one takes further keeps the steps after it under slashes at the trial court and at the appeals court; the square stays for settlement, dismissal and a denied petition | Call 4: an end by a ruling is not a stop; one meaning for the square (Rules 11.2, 11.3); Rule 11.8 and round 5's measure the Legislature passes do the same |
+| Rule 15.24's worked example stays Reform R-28, chosen as the one reform an earlier drawing put on a route (Rule 15.25's row 41), with the rule printed | A rule that reads only the record of earlier drawings picks one reform for either side; the other candidate, R-25, is the same kind of reform (NB-S5) |
+| A law's date on Rules 15.22 to 15.24 prints "Retrieved", with the version the copy states; ruling (e)'s "read" is replaced | Rule 13.6 and H04 name the part "the date retrieved"; chapters 11, 13 and 14 use it; "Checked" stays the atlas entry's date (DF-10) |
 | Rule 14.144 draws Rule 13.5's pips with `pips_svg` and takes 15.20's route form and 15.16's grade form; D3-1973's "no pips" is replaced | Call 2 and DR-237: one mark for one property across chapters 13 to 15 (DF-3, DF-7) |
 
 ## Requests
@@ -194,5 +249,7 @@ Read from the tracker designer's notes (17:23), `11-icons.json` (Rules 11.8, 11.
 - Rulings (17:00 to 17:08 UTC), by script with `python3 -I`: Loops B4 and R10's connections, ends, signs, grades and delays, and each step's direction under the walk's start supposition; Reforms R-03, R-04, R-06, R-30 and R-38's effects, grades, routes and check dates; the count of qualified effect values in the model (38); October 2025's and February 2026's changes by sector from `fred-payrolls-by-sector.csv`; S96's spec (title, notes, source line, alt) and the guide's failure spec; the review build's placed failure figure for its source line; chapter 11's Rules 11.2 and 11.3 and Rule 11.10's step spec; Rule 13.5's and 13.3's specs; Rule 14.96's entry; `pips_svg`, `effect_rows`, `route_rows` and `grade_block` in the generators; the marks and key CSS of 15.22 and 15.23 in `phase3_ch15_build.py`; the text of `s-15-16-correct`, `s-15-20-correct`, `s-15-23-correct`, `s-14-144-correct` and `s-14-144-failure`.
 
 ## Not tested
+
+- Batches 1 and 2: no capture of any changed plate exists (each owner found `browsers.sh` at WAIT), so marks were read from markup and CSS only; I opened no browser. I did not rerun either generator except chapter 15's `--check-only`, nor build the page; the owners' strict builds are theirs. The four constitutions, Title 28 and 5 U.S.C. 552 were not reread by me (the research lead's rows and F1 to F9).
 
 - Rulings: no capture looked at and no browser opened; S66 (Rule 14.96) read from its entry only, not its drawing. The BLS technical note not reread by me (ledger P7-042 through the statistics report). Whether the 14.144 failure table can hold pips at 328 px is left to the maker.

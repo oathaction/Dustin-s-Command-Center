@@ -5155,6 +5155,19 @@ CSS.update({
 })
 
 
+def route_read_span(book):
+    """The first and last dates our research read a route source, as Rules 15.22 to 15.24 print them, in words: the
+    chapter's source list says the span the plates hold, read from the plates, so a new row's date reaches it."""
+    days = set()
+    for sid in ("s-15-22-correct", "s-15-23-correct", "s-15-24-correct"):
+        t = html.unescape(book.files[sid]).replace("\xa0", " ")
+        for m in re.finditer(r"\b(?:read|retrieved) (November) ((?:\d{1,2}, )*\d{1,2}(?:,? and \d{1,2})?), (2026)", t):
+            days |= {int(d) for d in re.findall(r"\d{1,2}", m.group(2))}
+    need(days, "no read date found on Rules 15.22 to 15.24")
+    lo, hi = min(days), max(days)
+    return f"November {lo}, 2026" if lo == hi else f"November {lo} to {hi}, 2026"
+
+
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
@@ -5223,7 +5236,7 @@ def chapter(book):
              "Retrieved November 12, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot "
              "alone does not mean a fact was rechecked on that date."),
             ("Sources for the routes to change: the constitutions, statutes, court rules and chamber rules each plate of "
-             "Rules 15.22 to 15.24 names, with the date we read each, November 11 to 14, 2026. The reconciliation of Rule 15.25: "
+             f"Rules 15.22 to 15.24 names, with the date we read each, {route_read_span(book)}. The reconciliation of Rule 15.25: "
              "our first audit of three earlier sets of pages, October 20, 2026, rerun November 13, 2026."),
         ],
     }

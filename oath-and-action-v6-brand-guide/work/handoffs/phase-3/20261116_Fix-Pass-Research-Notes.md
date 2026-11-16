@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, the fix pass after the review of rounds 4 and
 
 ## Status
 
+- 17:30 UTC. F10 (DF-10, the version of every statute and rule on 15.22 to 15.24) and F11 (stage 8, the ten days from the Constitution) written under "Facts".
 - 17:18 UTC. The complex examples maker's request 1 done: three new source line variants in the payroll sidecar name the September 2026 release, one with the private and government series for S96; the two existing lines stay as S14 and chapter 13 print them. Data check 126 tables, 0 faults; S14 and S96 build with 0 faults. Returning to the main session; resume me for further requests and the source line check.
 - 17:15 UTC. Facts F1 to F9 written below. New rows for them added to the workflow sources file, section "Fix pass: sources for the review of rounds 4 and 5".
 - 17:02 UTC. Started at 16:59 UTC. Read `CLAUDE.md`, the role file, the fix brief whole, the codes call 8 names in the statistics, civic education and nonpartisan brand reports, round 5's research notes and the workflow sources file. Fetching the official sources for the nine facts now.
@@ -67,6 +68,46 @@ From `work/research/20261111_Policy-Workflow-Sources.md`, by script today:
 - **Massachusetts: the governor acts, by the constitution's text; no official page I found says so in words.** "No bill or resolve of the senate or house of representatives shall become a law, and have force as such, until it shall have been laid before the governor for his revisal" (Part the Second, Chapter I, Section I, Article II). Article XLVIII makes no exception for a law the General Court enacts on an initiative petition, and its General Provisions put the General Court's changes to a law the people approved "Subject to the veto power of the governor". Massachusetts Constitution, https://malegislature.gov/Laws/Constitution , read November 16, 2026. That a law the General Court enacts this way goes to the governor is my reading of those texts. The Elections Division's guide (May 2025) and the Supreme Judicial Court's opinion of April 27, 2026 (Senate No. 3066) were read and do not address it (Claims I could not verify).
 - **So:** "Passed by the Legislature" is not yet law in Ohio, and by the text not in Massachusetts, until the governor signs or the Legislature overrides a veto; in Michigan it is law once enacted, with no governor. Suggested words for Rule 11.10: "Passed by the Legislature on May 2. In Massachusetts and Ohio it then goes to the governor, as a bill does; in Michigan it becomes law without one." I read no other state, so the words should not say "most states". Each state's own rule for when such a law takes effect was not read today.
 
+### F10. The version of every statute and rule Rules 15.22 to 15.24 cite (DF-10; for the systems designer and the editor)
+
+Written 17:30 UTC. The citations are read from the built plates `s-15-22-correct`, `s-15-23-correct` and `s-15-24-correct` by script (`scripts/plate_sources2.py`). "Read" is the date the workflow sources file records; "today" is November 16, 2026.
+
+**The U.S. Code: the same text from January 6, 2025 to today.** By script (`scripts/usc_compare.py`), the statutory text of all 29 sections the three plates cite or draw on reads the same, word for word with spaces set aside, in two official sources: govinfo's United States Code, 2024 edition, whose record for each of titles 1, 2, 5, 15, 28, 29, 44 and 52 gives "Laws In Effect As Of Date: January 6, 2025" (https://www.govinfo.gov/wssearch/getContentDetail?packageId=USCODE-2024-title5 and the same for each title), and the Office of the Law Revision Counsel's release, "current through Public Law 119-142 (November 10, 2026)" (https://uscode.house.gov/currency.html ; title files from https://uscode.house.gov/download.html , release point 119-142). Congress.gov's law list for the 119th Congress counts 142 public laws today, the last 119-142, signed November 10, 2026, so no later law exists to check. The script found the one change it should: 26 U.S.C. 7508A, which Public Law 119-29 amended, differs between the two, as round 4 found. The 29 sections: 1 U.S.C. 106b; 2 U.S.C. 641, 644, 683, 684; 5 U.S.C. 551, 552, 553, 701 to 706, 801, 802; 15 U.S.C. 16, 45; 28 U.S.C. 1253, 1254, 1291, 1331, 2101, 2106, 2107; 29 U.S.C. 157, 160; 44 U.S.C. 1505; 52 U.S.C. 30116. All read today.
+- **So:** each of these may print "as in force on" its read date (November 11, 12 or 14, 2026), or on November 16, 2026, and be true; the text did not change in that time. A form that matches chapter 14 (S70, S91): "5 U.S.C. 553, as in force on November 11, 2026". The edition is "United States Code, 2024 edition" if a line names it. One caution for stage 19: 52 U.S.C. 30116(d) is still printed in the Code; the Court's holding of June 30, 2026 does not remove its text, so "in force" should not be said of 30116(d) itself. Name the Act and the decision, as the stage does now.
+
+**Other statutes and rules, with the version each official source states:**
+
+| Cited on | Source | Version the source states | Read |
+|---|---|---|---|
+| 15.22 stages 9 to 14, 15.24 FS, FR, AV, IC, CIV | U.S. Constitution, National Archives transcription | "a transcription of the Constitution as it was inscribed by Jacob Shallus on parchment"; "The blue hyperlinked text in the body of the Constitution indicates subsequent amendments". By the page's own links, later amendments changed passages in Article I, Sections 2, 3 (how senators are chosen), 4 and 9 (direct taxes), Article II, Section 1, Article III and Article IV. None is a clause the plates rely on: Article I, Sections 5, 7, 9 (the appropriations clause) and 10; Article II, Section 2; Article V; the First Amendment | November 11 and 12; re-read today |
+| 15.22 stages 18 and 20 | Public Law 115-97, section 11022 | "Approved December 22, 2017" (govinfo, PLAW-115publ97) | November 11; re-read today |
+| 15.22 stage 20 | Public Law 119-21, section 70104 | "Date Approved: July 4, 2025" (govinfo record, PLAW-119publ21) | November 11; re-read today |
+| 15.22 stage 3, 15.24 FS and FR | House Rule XV; Rules of the House | "Rules of the House of Representatives, One Hundred Nineteenth Congress", prepared by the Clerk, January 16, 2025 ("Rev. 1-16-25"); adopted by H.Res. 5 on January 3, 2025 (sources file, FR). Later changes to Rule XV were not looked for | November 14; re-read today |
+| 15.24 FR | Standing Rules of the Senate | Senate Document 113-18, "revised to January 24, 2013" (sources file, FR); "The rules of the Senate shall continue from one Congress to the next Congress unless they are changed as provided in these rules" | November 12 |
+| 15.24 FA | Executive Order 12866 | "of September 30, 1993", 58 FR (October 4, 1993), National Archives copy; later orders amended parts of it, not traced | November 12 |
+| 15.24 FA | Executive Orders 13992 and 14148 | 86 FR 7049 (January 25, 2021); 90 FR 8237 (January 28, 2025) | November 12 |
+| 15.24 ENF | 16 CFR 2.34 | Code of Federal Regulations, 2025 edition, govinfo | November 12 |
+| 15.23 court block, 15.24 CRT | Federal Rules of Civil Procedure | "edition of December 1, 2025" | November 14 |
+| 15.23 court block | Federal Rules of Appellate Procedure | edition of December 1, 2024 (the December 1, 2025 file has no text layer) | November 14 |
+| 15.23 court block, 15.24 CRT | Rules of the Supreme Court | "adopted February 17, 2026, effective March 16, 2026"; the CRT card's round 1 row cites the 2023 rules, which the round 5 script found the same for the rules cited | November 12 and 14 |
+| 15.23 BI block, 15.24 BI | Ohio Constitution, Article II, Sections 1b and 16; Article XVI, Section 1 | codes.ohio.gov: "Effective: November 4, 2008" (II, 1b); "Effective: May 8, 1973" (II, 16); "Effective: May 7, 1974" (XVI, 1) | November 14; re-read today |
+| 15.23 BI block, 15.24 BI | Michigan Constitution, Article II, Section 9 | "History: Const. 1963, Art. II, § 9, Eff. Jan. 1, 1964" | November 14; re-read today |
+| 15.23 BI block, 15.24 BI, LOC, SS | Massachusetts Constitution, Amendment Articles XLVIII, LXXIV, LXXXI, LXXXIX and the Articles cited for SS | malegislature.gov prints the whole constitution with each amendment as adopted and states no as-of date; each article carries its own adoption | November 11 and 14; re-read today |
+| 15.23 BI block, 15.24 BI | California Secretary of State, Statewide Initiative Guide | "Revised January 2026" (a guide, not the statute; the Elections Code refused) | November 14; re-read today |
+| 15.24 SS | Constitution of Virginia, Article V, Section 6, and Article IV, Section 11 | Article V, Section 6: "The amendment ratified November 8, 1994 and effective January 1, 1995"; Article IV, Section 11: "The amendment ratified November 4, 1980 and effective January 1, 1981" (the latest each page lists) | November 11 and 14; re-read today |
+| 15.24 SS | Nebraska Constitution, Article IV, Section 15, and Article III, Section 13 | Article IV, Section 15's source note ends "Amended 1976, Laws 1975, LB 17, sec. 1"; no as-of date on the page | November 11 and 14; re-read today |
+| 15.24 SS | Arizona Constitution, Article 5, Section 7, and Article 4, Part 2, Sections 12 and 15 | azleg.gov states no version date | November 11 and 14; re-read today |
+| 15.24 SS | Massachusetts Joint Rules; Rules of the Nebraska Legislature | Joint Rules of the 194th General Court, "Adopted by the Senate and House of Representatives on June 26, 2025"; Nebraska's rules for the One Hundred Ninth Legislature, 2025 to 2026 | November 14; Massachusetts re-read today |
+| 15.24 LOC | Boston, Baltimore and Portland charters; Minneapolis council rules | Boston: "Updated as of January 2025"; Portland, Chapter 2: "amended November 8, 2022, effective January 1, 2025"; Baltimore: no date on the page; Minneapolis: rules adopted under Resolution 2026R-004 (2026 revision) | November 14; Portland and Baltimore re-read today |
+| 15.24 IC | Revised Code of Washington 29A.56.300; Minnesota Statutes 208.051 | Minnesota: "2026 Minnesota Statutes", history "2023 c 62 art 4 s 124"; Washington's page was read and its version line not found in today's text | November 12; re-read today |
+
+- **So:** every federal statute these plates cite can carry "as in force on" its read date. The House and Senate rules, the court rules and the Code of Federal Regulations carry their edition ("Rules of the House, 119th Congress, January 16, 2025 printing"; "the Federal Rules of Civil Procedure, December 1, 2025 edition"; "the Rules of the Supreme Court, effective March 16, 2026"; "16 CFR 2.34, 2025 edition"). The two Public Laws are cited as enacted, with their dates. The state constitutions and charters print no single as-of date on their official pages, except Minnesota's 2026 edition, Boston's January 2025 update and the effective dates listed above; for those, "as in force on" the read date rests on the official page as read that day, and I did not look for later amendments beyond what each page lists. Which word, "read" or "retrieved", is the editor's and the data lead's call.
+
+### F11. The President's ten days, from the Constitution (stage 8; for the systems designer)
+
+- **The source:** "If any Bill shall not be returned by the President within ten Days (Sundays excepted) after it shall have been presented to him, the Same shall be a Law, in like Manner as if he had signed it, unless the Congress by their Adjournment prevent its Return, in which Case it shall not be a Law." U.S. Constitution, Article I, Section 7, clause 2 (the second paragraph of Section 7; the transcription does not number clauses), National Archives transcription, https://www.archives.gov/founding-docs/constitution-transcript . Read November 11, 2026 (sources file, FS row "Law without signature, and the pocket veto") and again today, November 16, 2026, word for word the same.
+- **So:** stage 8 can cite `(c7, r["pock"])`, the row the generator already loads as `pock`, beside the House page; its date stays November 11, 2026. Presentment itself ("Every Bill which shall have passed ... be presented to the President") is in the same clause and in the FS row "Enrolling and presentment" (`r["pres"]`), also read November 11. The House page's "10 days" leaves out "Sundays excepted"; the Constitution is the source for both words.
+
 ## Fixed
 
 - **Call 8, the facts** (ST-M2, ST-S3, ST-S5, ST-S6, ST-S7, ST-S8, NB-S6, NB-S7, CE-S1, CE-S2, CE-S5, CE-S17): F1 to F9 above, each with its official source, section and read date.
@@ -109,6 +150,8 @@ From `work/research/20261111_Policy-Workflow-Sources.md`, by script today:
 - The workflow sources file parsed as chapter 15's generator parses it (`scripts/check_wf_rows.py`): 22 lookups, 0 faults.
 - The payroll sidecar script's assertions; a second run "unchanged"; the data check, 126 tables, 0 faults; S14 and S96 built by the kit with `--no-png`, 0 faults each.
 - No em dash in the notes, the sources file's new section or the sidecar (by search).
+- F10: the three plates' citations read from the built specimens by script (`scripts/plate_sources2.py`); 29 U.S. Code sections compared, govinfo's 2024 edition against the Law Revision Counsel's release 119-142 (`scripts/usc_compare.py`), 29 the same; a control, 26 U.S.C. 7508A, found changed as expected; govinfo's in-effect date read from each title's record; Congress.gov's law list (142 laws, the last 119-142); Public Law 115-97's and 119-21's approval dates; the state pages' version lines.
+- F11: Article I, Section 7 re-read today in the National Archives transcription, the same words as the sources file's row of November 11.
 
 ## Not tested
 
@@ -119,6 +162,7 @@ From `work/research/20261111_Policy-Workflow-Sources.md`, by script today:
 - S96 and the failure plate with the new lines: they still print the old line until the maker points their specs at the new keys.
 - Chapter 15's generator was not run (it is the systems designer's); the check of its lookups was by a parse of the file.
 - S14 and S96 page captures: built with `--no-png`.
+- F10: later amendments to the state constitutions and charters beyond what each official page lists; Washington's version line; whether the House changed Rule XV after January 16, 2025; the orders that amended Executive Order 12866.
 
 ## Claims I could not verify
 
