@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, November 20, 2026 (chat 9). Creative director
 
 ## Status
 
+- 23:31 UTC. **Confirmed on the rebuild: ready to ship.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 4, Accessibility 4. G3-M5, G3-S13 and G3-S14 fixed; one new small Should (G3-S15). Read from files, no browser. See "Confirmation" at the end.
 - 23:30 UTC. **Rescore on the fix round: not ready yet, 1 Must fix, 2 Should fix.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 3, Accessibility 4. All 4 first Musts and all 12 Shoulds fixed; one new Must (G3-M5, P4-5's photographs unsized against the reserve) and two small Shoulds (G3-S13, G3-S14). Read from files, no browser. See "Rescore" at the end.
 - 23:17 UTC. **First score. Not ready to ship: 4 Must fix, 12 Should fix.** Craft 4, Clarity 4, Brand fidelity 3, Usefulness 4, Evidence honesty 3, Accessibility 4. Every fix is words in the report's sections 9 and 10, a figure the builder already reads, or a caption. None touches the guide.
 - Board scored: the builder's run 3 (22:57 to 22:59 UTC, on version 14; 140,067 bytes; SHA-256 `9ed7f6f790be0665…`; 48 pictures), frozen with its pictures in my scratch folder at 23:01 UTC and unchanged at 23:13. Panel 5's slot for this score and panel 7's two check slots wait, as the brief sets.
@@ -239,3 +240,15 @@ With G3-M5's sentence, the proposal would produce finished work at the bar. It n
 - The quick check with photographs, still running.
 
 Change log, rescore: modified this file (this section appended) and `work/handoffs/phase-3/20261120_Gate-3-Board-CD-Scores.json` (rescore added, first scores kept); scratch only in `scratchpad/c09/creative-director/` (`frozen2/`, `g3/board2.txt`, `png/r2-*`).
+
+### Confirmation
+
+Read at 23:31 UTC from the builder's rebuild of 23:31 UTC (153,393 bytes; SHA-256 `d60d93791ed8cefb…`; 48 pictures), frozen in `frozen3/`, on the report as the main session revised it at 23:34 UTC. No browser; the board's `--check` has not run on this build.
+
+**Ready to ship.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 4 (raised from 3), Accessibility 4.
+
+- **G3-M5, fixed.** P4-5 names the two photographs, the Capitol Rotunda and the public meeting, and says that embedding them again would add 489,284 bytes, more than the reserve. Its default has the engineer embed each once in chat 10 for both chapters, which frees the meeting photograph's second copy (190,992 bytes), with placeholders and the question back on Phase 4 board 1 if one copy cannot serve both. Chapter 16's two rows say the same.
+- **G3-S13, fixed.** The check reads "your rule against red and blue on election graphics covers social cards".
+- **G3-S14, fixed.** The website row lists the home page, an article page and an Act page, each on Newsprint and in the dark mode with its switch.
+- **G3-S15, new and small.** Panel 1's list and P4-5's card read "…returns to you on Phase 4 board 1. the question of commissioning photographs stays open." Start it "The question". Owner: main session; builder rebuilds.
+- By script: no dashes, straight quotes or codes on the face; 48 pictures and every same-page link intact. Panel 5 shows this file's scores after the builder's next rebuild.

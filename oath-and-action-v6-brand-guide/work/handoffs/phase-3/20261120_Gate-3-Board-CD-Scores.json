@@ -35,9 +35,9 @@
  "items": [
   {
    "key": "gate_3_board",
-   "name": "The Gate 3 board as built (fix round, 23:25 UTC, on version 14)",
+   "name": "The Gate 3 board as built (confirmation rebuild, 23:31 UTC, on version 14)",
    "anchor": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html",
-   "stage": "Phase 3, Gate 3 board, rescore after the fix round",
+   "stage": "Phase 3, Gate 3 board, rescore after the fix round, confirmed",
    "first_scores": {
     "craft": 4,
     "clarity": 4,
@@ -51,7 +51,7 @@
     "clarity": 4,
     "brand_fidelity": 4,
     "usefulness": 4,
-    "evidence_honesty": 3,
+    "evidence_honesty": 4,
     "accessibility": 4
    },
    "first_reasons": {
@@ -64,14 +64,15 @@
    },
    "reasons": {
     "craft": "No straight quote or apostrophe is left on the face; item 4 shows its two colors on Charcoal at 96 by 56 px; the read-aloud and chapter 04 pairs crop to their blocks with 16 px of ground. I hold 4 because I read this round from files, at 1x, with no browser.",
-    "clarity": "Board 3's closed choices now sit apart under \"Board 3’s other choice, not taken\", the two domains have names, panel 2's studio words are plain, and item 7 says \"five defaults\". Panel 1 grows to 1,712 words, nine minutes, and stays answer-first. Two small gaps remain (G3-S13, G3-S14).",
+    "clarity": "Board 3's closed choices now sit apart under \"Board 3’s other choice, not taken\", the two domains have names, panel 2's studio words are plain, and item 7 says \"five defaults\". Panel 1 grows to 1,856 words, about nine minutes, and stays answer-first. P4-5's default starts a sentence in lowercase (G3-S15).",
     "brand_fidelity": "Panel 2 now names DR-204's dark mode and switch on chapters 20 and 21, DR-36's system on Newsprint (DR-121) with its finishing list, DR-116's avatar, DR-211's sign-off, DR-210's print lockup, DR-102's host order, DR-55's web address and DR-268's vertical frame. Item 6 brings Rule 05.3 in with 05.5. The header still sets the name in live type.",
-    "usefulness": "Dustin now sees each word he approves in item 6, both colors in item 4, and both projections in panel 6. P4-5's default commits bytes the plan does not hold (G3-M5).",
-    "evidence_honesty": "G3-M1 to G3-M3 are fixed: panel 6 labels both projections (15,180,545 as the build counts today; 15,650,545 with panel 2's allocations, 97.8 percent of 16 MB and 101.0 percent of the line), item 5 says band edges, item 6's reason now holds, and item 1 and panel 7 read the four-width file. One new gap holds the score: chapter 16's allocation leaves out the photographs P4-5's default adds, and \"two or three\" counts a photograph chapter 01 does not have (G3-M5).",
+    "usefulness": "Dustin now sees each word he approves in item 6, both colors in item 4, both projections in panel 6, and what P4-5's default costs and how it is paid for.",
+    "evidence_honesty": "G3-M1 to G3-M3 and G3-M5 are fixed: panel 6 labels both projections (15,180,545 as the build counts today; 15,650,545 with panel 2's allocations, 97.8 percent of 16 MB and 101.0 percent of the line), item 5 says band edges, item 6's reason holds, item 1 and panel 7 read the four-width file, and P4-5 names chapter 01's two photographs, their 489,284 bytes and how chapter 16 draws them from one copy at no new bytes, with placeholders as the fallback.",
     "accessibility": "The luma alts now say what they show, and the 48 pictures keep their size, lazy loading and alt. The new swatches hide their color blocks from screen readers and print each color's hex and ratios in text. The board check has not run on this build, so the PASS I rely on is run 3's."
    },
    "changed": [
-    "brand_fidelity"
+    "brand_fidelity",
+    "evidence_honesty"
    ],
    "first_must_fix": [
     "G3-M1",
@@ -93,30 +94,25 @@
     "G3-S11",
     "G3-S12"
    ],
-   "must_fix": [
-    "G3-M5"
-   ],
+   "must_fix": [],
    "should_fix": [
-    "G3-S13",
-    "G3-S14"
+    "G3-S15"
    ],
-   "must_fix_count": 1,
-   "should_fix_count": 2,
-   "ready": false,
-   "ships": false,
-   "to_ready": "Land G3-M5's sentence in the report's sections 9 and 10 (the two photographs and how chapter 16 pays for them). Evidence honesty then reaches 4, and I can confirm it from the rebuilt file with no browser. G3-S13 and G3-S14 are small and block nothing."
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready. G3-S15 is one capital letter and blocks nothing. Panel 5 shows these scores after the builder's next rebuild, and the board's --check still runs after the quick check ends."
   }
  ],
  "totals": {
-  "must_fix": 1,
-  "should_fix": 2,
-  "under_4": [
-   "gate_3_board.evidence_honesty"
-  ],
-  "ready": [],
-  "not_ready": [
+  "must_fix": 0,
+  "should_fix": 1,
+  "under_4": [],
+  "ready": [
    "gate_3_board"
   ],
+  "not_ready": [],
   "first_score": {
    "must_fix": 4,
    "should_fix": 12,
@@ -124,10 +120,17 @@
     "gate_3_board.brand_fidelity",
     "gate_3_board.evidence_honesty"
    ]
+  },
+  "rescore_before_confirmation": {
+   "must_fix": 1,
+   "should_fix": 2,
+   "under_4": [
+    "gate_3_board.evidence_honesty"
+   ]
   }
  },
  "lowest_score_by_item": {
-  "gate_3_board": 3
+  "gate_3_board": 4
  },
  "must_fix": {
   "G3-M1": {
@@ -278,6 +281,14 @@
    "items": [
     "gate_3_board"
    ]
+  },
+  "G3-S15": {
+   "title": "A lowercase sentence in P4-5's default",
+   "what_and_fix": "Panel 1's list and P4-5's card read \"…returns to you on Phase 4 board 1. the question of commissioning photographs stays open.\" Start it \"The question\".",
+   "owner": "main session (report section 10); builder rebuilds",
+   "items": [
+    "gate_3_board"
+   ]
   }
  },
  "settled_list_read": {
@@ -365,7 +376,7 @@
  "rescored_utc": "2026-11-20T23:30:00Z",
  "rescore_basis": "The builder's fix round (23:20 to 23:25 UTC, --reuse --no-browser, 0 warnings; 151,411 bytes; SHA-256 a6eaa197ba1d9eab…; 48 pictures, four re-cropped), frozen with its pictures in scratchpad/c09/creative-director/frozen2/ at 23:26 UTC, on the report as D3-2372 and D3-2373 revised it. No browser opened: the quick check with photographs holds the machine until about 23:55 UTC. I read the page's text and markup by script, the four new crops as image files, and the builder's \"Fix round\" notes. The board check has not run on this build; its results file is run 3's (22:58 UTC). Panel 7's quick check slot still waits.",
  "verdict_first": "The board is the right size for a gate and shows all six points of my list, with panel 5 matching my files cell for cell. Four things kept it from shipping: two projections for one page, item 5 overstating the label check, item 6 without its words and leaving Rules 05.3 and 05.7 on the keyline, and item 7's scope leaving out DR-204 and DR-36.",
- "verdict": "Not ready yet: one new Must, two small Shoulds. All four first Musts and all twelve Shoulds are fixed. The new Must comes from my own addition, which I did not size: P4-5's default teaches chapter 16 on \"two or three\" of chapter 01's photographs; chapter 01 holds two, at 298,292 and 190,992 bytes as embedded, which would add 489,284 bytes against a 349,455 reserve and take the plan to 16,139,829 bytes. The fix is one sentence. Read against the settled list, no recommendation now changes or drops a settled element.",
+ "verdict": "Ready to ship. Every criterion reaches 4 and every Must is fixed. P4-5 now names chapter 01's two photographs, their 489,284 bytes and how chapter 16 draws them from one copy at no new bytes, with placeholders as the fallback; the website row matches chapter 20; the checks name the election graphics rule in words. One small Should is new (G3-S15). Read against the settled list, no recommendation changes or drops a settled element.",
  "must_fix_checked": {
   "G3-M1": {
    "state": "Fixed",
@@ -382,6 +393,10 @@
   "G3-M4": {
    "state": "Fixed",
    "what_i_read": "Chapters 20 and 21 name the dark mode with its switch; chapter 21 reads \"in the atlas visual system you settled, on Newsprint and in the dark mode, finished by its finishing list\", with the four concepts named; the checks add dark-mode captures and the switch by keyboard."
+  },
+  "G3-M5": {
+   "state": "Fixed",
+   "what_i_read": "P4-5 names the two photographs (the Capitol Rotunda and the public meeting) and their 489,284 bytes; its default has the engineer embed each once in chat 10 for both chapters, freeing the meeting photograph's second copy (190,992 bytes), with placeholders and the question back on Phase 4 board 1 if one copy cannot serve both. Chapter 16's two rows say the same."
   }
  },
  "should_fix_checked": {
@@ -432,6 +447,14 @@
   "G3-S12": {
    "state": "Fixed",
    "what_i_read": "The two text pairs re-cropped with 16 px of ground (318 and 624 px wide)."
+  },
+  "G3-S13": {
+   "state": "Fixed",
+   "what_i_read": "\"0 failures (your rule against red and blue on election graphics covers social cards)\"."
+  },
+  "G3-S14": {
+   "state": "Fixed",
+   "what_i_read": "The website row lists the home page, an article page and an Act page, each on Newsprint and in the dark mode with its switch."
   }
  },
  "phase_4_view_rescore": "With G3-M5's sentence, the proposal would produce finished work at the bar: each channel's set with its profile as a reader meets it, every settled answer its screen and print work must keep, allocations that chat 10 re-sizes from measured bytes before Phase 4 board 1, and checks for contrast, small sizes, print preflight, dark mode, keyboard, captions, spread and rights alongside dimensions. Its remaining risk is weight: a 349,455-byte reserve, about 2 percent of the page, and a start past the 15.5 MB warning line.",
@@ -450,5 +473,7 @@
   "The board at 2x, in Safari or Firefox, printed, or as the host shows it; a keyboard walk and a screen reader.",
   "Whether one embedded photograph can serve two chapters in the guide's build; that is the engineer's to confirm.",
   "The quick check with photographs, still running."
- ]
+ ],
+ "confirmed_utc": "2026-11-20T23:31:00Z",
+ "confirmation_basis": "The builder's rebuild at 23:31 UTC (153,393 bytes; SHA-256 d60d93791ed8cefb…; 48 pictures), frozen in scratchpad/c09/creative-director/frozen3/, on the report as the main session revised it at 23:34 UTC. Read by script with no browser: the diff against the fix round, the face for dashes, straight quotes, codes and lowercase sentence starts, pictures and links. The board's --check has not run on this build."
 }
