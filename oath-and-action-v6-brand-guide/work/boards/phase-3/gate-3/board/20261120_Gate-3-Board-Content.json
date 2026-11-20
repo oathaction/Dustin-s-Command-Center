@@ -1436,7 +1436,7 @@
    "n": 7,
    "nav": "Tested and not tested",
    "title": "Tested and not tested",
-   "refs": "DR-213 · DR-279 · D3-2355 · D3-2356",
+   "refs": "DR-213 · DR-279 · D3-2355 · D3-2356 · D3-2377",
    "lede": "Each figure here is read from the file that records it.",
    "tested_h": "Tested",
    "not_h": "Not tested",
@@ -1465,7 +1465,11 @@
      "kind": "check_file",
      "slot": "quick_check",
      "owner": "main",
-     "words": "run by the main session on version 14 at {widths} px, with its photographs: {specimens} drawn examples and {links} same-page links read, with {failures} failures"
+     "words": "run by the main session on version 14 from {start} to {end} UTC at {widths} px, with its photographs: {specimens} drawn examples and {links} same-page links read; it {pass} with {failures} failures",
+     "window": {
+      "file": "work/ledger/20261020_Decision-Log.md",
+      "pattern": "\\| D3-2377 \\| The quick check with photographs passes on version 14 \\((\\d\\d:\\d\\d) to (\\d\\d:\\d\\d) UTC"
+     }
     },
     {
      "label": "The guide check’s self-test",
@@ -1558,7 +1562,7 @@
   "tokens_css": "work/build/tokens/tokens.css",
   "preview_url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
   "four_width_check": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Four-Width-Check-Results.json",
-  "quick_check": null,
+  "quick_check": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Quick-Check-Results.json",
   "v7_check": "[scratch]/c09/final/v7.json",
   "board_rescore_keys": [
    "rescored_utc",

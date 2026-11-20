@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html",
- "checked": "2026-11-20T22:58:27.663Z",
+ "checked": "2026-11-20T23:39:38.362Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1333,
+   "texts": 1406,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -42,7 +42,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 47753,
+   "height": 51124,
    "axe": [
     {
      "id": "html-has-lang",
@@ -58,7 +58,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1333,
+   "texts": 1406,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -91,7 +91,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 66047,
+   "height": 72818,
    "axe": [
     {
      "id": "html-has-lang",
@@ -107,7 +107,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1333,
+   "texts": 1406,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -140,7 +140,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 67789,
+   "height": 74825,
    "axe": [
     {
      "id": "html-has-lang",
