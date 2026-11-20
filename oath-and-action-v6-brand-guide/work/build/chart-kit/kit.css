@@ -111,6 +111,11 @@
    one drawn at most 600 px wide, shown from a 600 px column, and .oac-h-phone the one shown under it */
 .oac-h-desk { display: none; } .oac-h-phone { display: block; }
 @container (min-width: 600px) { .oac-h-desk { display: block; } .oac-h-phone { display: none; } }
+/* RS-3 (second pass after rounds 4 and 5): a card with a desk mark may also draw it at most 480 px wide in .oac-h-mid, set
+   before its phone mark, shown from a 480 px column until the desk mark takes over at 600, so a 1024 px page shows the year */
+.oac-h-mid { display: none; }
+@container (min-width: 480px) { .oac-h-mid { display: block; } .oac-h-mid ~ .oac-h-phone { display: none; } }
+@container (min-width: 600px) { .oac-h-mid { display: none; } }
 .oac-h-limit { margin: 8px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-note)/var(--oa-chart-type-note-leading) var(--oa-font-family-reading); max-width: 38em; }
 .oac-h-sq, .oac-h-sq-strong { font-weight: var(--oa-font-weight-semibold); }
 .oac-h-sq::before, .oac-h-sq-strong::before { content: ""; display: inline-block; width: 10px; height: 10px; box-sizing: border-box; margin-right: 6px; border: 1.5px solid var(--oa-chart-color-subject); }

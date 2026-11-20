@@ -1278,18 +1278,21 @@ def s_11_11(ctx):
     """Rule 11.11, the court case (DR-231, R5-7): three federal civil cases in three states, and the fault of reading a
     denied petition as a Supreme Court ruling."""
     nm = names('court')
-    html = records_piece(ctx, 'Where three court cases stand', COURTS, nm, used_marks(COURTS))
-    alt = ('Three Illustrative federal civil cases at 360 px on Newsprint, each drawn as six numbered steps with the bill '
-           'tracker’s marks, and a key of the six steps, Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme '
-           'Court petition and Supreme Court ruling, and of the marks. ' + alt_rows(COURTS, nm))
+    title, show = 'Where three court cases stand', used_marks(COURTS)
+    html = records_piece(ctx, title, COURTS, nm, show)
+    # RS-1: the alt reads the plate in its own order, the Illustrative label and the title first and the key last
+    alt = (f'Illustrative. {title}. The plate is 360 px wide on Newsprint and draws each federal civil case as six '
+           'numbered steps with the bill tracker’s marks. ' + alt_rows(COURTS, nm) + ' ' + alt_key(nm, show))
     spec(ctx, 's-11-11-correct', html, '11.11', alt, width=360, illustrative=True)
     bad = dict(COURTS[2], states=['done'] * 6, end=f'{AFFIRMED} by the Supreme Court on January 11.',
                line='The Supreme Court left the appeals court’s ruling in place.')
-    html2 = records_piece(ctx, 'Where the highway noise walls case stands', [bad], nm, ('done',), band=True)
-    alt2 = ('Failure case: do not publish. An Illustrative federal civil case, 99016, Highway noise walls, at 360 px, with '
-            f'all six steps drawn as done, Supreme Court ruling among them. The words read “{AFFIRMED} by the Supreme Court '
-            'on January 11. The Supreme Court left the appeals court’s ruling in place.” The Court denied the petition and '
-            'never heard the case, and nothing on the card says so.')
+    title2, show2 = 'Where the highway noise walls case stands', ('done',)
+    html2 = records_piece(ctx, title2, [bad], nm, show2, band=True)
+    alt2 = (f'Failure case: do not publish. Illustrative. {title2}. Case 99016, Highway noise walls, a federal civil case '
+            'at 360 px: all six steps drawn as done, Supreme Court ruling among them. The words read '
+            f'“{AFFIRMED} by the Supreme Court on January 11. The Supreme Court left the appeals court’s ruling in place.” '
+            'The Court denied the petition and never heard the case, and nothing on the card says so. '
+            + alt_key(nm, show2))
     spec(ctx, 's-11-11-failure', html2, '11.11', alt2, width=360, illustrative=True)
 
 
@@ -1329,21 +1332,24 @@ def s_11_12(ctx):
                  line='The appeal office kept the agency’s answer. The requester took the request to federal court on '
                       'August 3.')
     items = [WAIT_REQUEST, later]
-    html = records_piece(ctx, 'Two records requests, one paused and one past the agency', items, nm, ('done', 'now', 'notyet'))
-    alt = ('Two Illustrative records requests at 360 px on Newsprint, with a key of the six steps and the marks. '
-           + alt_rows(items, nm))
+    title, show = 'Two records requests, one paused and one past the agency', ('done', 'now', 'notyet')
+    html = records_piece(ctx, title, items, nm, show)
+    # RS-1: the alt reads the plate in its own order, the Illustrative label and the title first and the key last
+    alt = (f'Illustrative. {title}. The plate is 360 px wide on Newsprint and draws each request as six numbered steps '
+           'with the bill tracker’s marks. ' + alt_rows(items, nm) + ' ' + alt_key(nm, show))
     spec(ctx, 's-11-12-correct', html, '11.12', alt, width=360, illustrative=True)
     nm7 = nm[:3] + ['Fee estimate'] + nm[3:]
     bad = dict(WAIT_REQUEST, states=['done', 'done', 'done', 'now', 'notyet', 'notyet', 'notyet'],
                line='The agency sent a fee estimate on April 2.', wait=None, checked=None)
     css = piece_css(ctx, 'n', 's') + records_css(ctx)
     fcss, band = ctx.fail_band(flush=True)
-    html2 = (f'<style>{css}{fcss}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">Where the weather station records '
-             f'request stands</p><ul class="rows">{row(bad, "s", nm7)}</ul>{key(nm7, ("done", "now", "notyet"))}</div>')
-    alt2 = ('Failure case: do not publish. An Illustrative records request, 99007, Weather station repair records, at 360 '
-            'px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. The '
-            'words read “Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.”, and the key lists seven '
-            'steps.')
+    title2, show2 = 'Where the weather station records request stands', ('done', 'now', 'notyet')
+    html2 = (f'<style>{css}{fcss}</style>{band}<div class="pc"><p>{ILLUS}</p><p class="hd">{title2}</p>'
+             f'<ul class="rows">{row(bad, "s", nm7)}</ul>{key(nm7, show2)}</div>')
+    alt2 = (f'Failure case: do not publish. Illustrative. {title2}. Request 99007, Weather station repair records, at 360 '
+            'px, drawn as seven numbered steps: the fee estimate has become step 4, between Searching and Reviewing. Steps '
+            '1 to 3 are done, step 4 is where the request is now, and steps 5 to 7 are not yet reached. The words read '
+            '“Step 4 of 7: Fee estimate. The agency sent a fee estimate on April 2.” ' + alt_key(nm7, show2))
     spec(ctx, 's-11-12-failure', html2, '11.12', alt2, width=360, illustrative=True)
 
 

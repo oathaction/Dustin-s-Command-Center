@@ -10,7 +10,10 @@
  * {consequence} for the column's words), who_words (default "for {who}"), mark_width (px, default 256).
  * CD-S1 (fix pass after rounds 4 and 5): the year is drawn twice at fixed sizes, words and all: at mark_width with 26 px
  * months for a phone (.oac-h-phone), and at 600 px with 30 px months, so 8 px squares and a three-event day fit, for a
- * column of 600 px or more (.oac-h-desk, kit.css's container query). The phone mark draws first and keeps its bytes. */
+ * column of 600 px or more (.oac-h-desk, kit.css's container query). The phone mark draws first and keeps its bytes.
+ * RS-3 (second pass after rounds 4 and 5): a third year at 480 px with the same 30 px months and 8 px squares, for a column
+ * from 480 to 599 px (.oac-h-mid), so a 1024 px page shows the year to its 558 px column; it draws last, so the phone and
+ * desk marks keep their bytes, and sits first, since kit.css hides the phone mark after it. */
 (function (K) {
   'use strict';
   var DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -64,8 +67,10 @@
           if (sq_o.length) c.path(run(sq_o), { fill: 'surface', stroke: 'subject', width: 1.5, pts: pts(sq_o), closed: true }, box(sq_o));
         });
       };
-      // CD-S1: the phone's year first (its bytes as before), then the desk's, which kit.css shows from a 600 px column
-      var mark = '<span class="oac-h-phone">' + draw_year(L.mark_width || 256, 26, false) + '</span><span class="oac-h-desk">' + draw_year(600, 30, true) + '</span>';
+      // CD-S1: the phone's year first (its bytes as before), then the desk's, which kit.css shows from a 600 px column;
+      // RS-3: then the year at 480 px, which kit.css shows from a 480 px column to 599 px, set before the other two
+      var phone = draw_year(L.mark_width || 256, 26, false), desk = draw_year(600, 30, true), mid = draw_year(480, 30, true);
+      var mark = '<span class="oac-h-mid">' + mid + '</span><span class="oac-h-phone">' + phone + '</span><span class="oac-h-desk">' + desk + '</span>';
       // the list: one item a day, each event on it with its kind in words; who acts where the event's words do not name it
       var days = [];
       h.rows.forEach(function (r, i) { var e = ymd(r), key = e ? e[1] + '-' + e[2] : String(i); if (!byday[key + '#']) { byday[key + '#'] = true; days.push(key); } });

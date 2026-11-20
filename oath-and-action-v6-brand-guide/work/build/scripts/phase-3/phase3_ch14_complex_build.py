@@ -260,6 +260,7 @@ def walk_steps():
         # the editor's second read: the closing step's "again" lives in its result sentence ("... can rise again, on top
         # of the first rise"), so the line states the direction alone and the step no longer says "can rise again" twice
         line = f"{says(a, d['cause_up'], d['cause_can'])}, so {says(b, d['effect_up'], d['effect_can'], subject=False)}."
+        whole = line    # the step said whole, cause first, for a list with no supposition beside it (the failure plate)
         moves = f", and {l['type']} moves along it" if l["type"] in ("money", "information", "ownership") else ""
         sign = ("a minus sign, which means that when one rises, the other falls" if l["polarity"] == "-"
                 else "a plus sign, which means that the two rise and fall together")
@@ -278,6 +279,10 @@ def walk_steps():
         if i == 0 and lid == "R10":
             s_, v_ = START["R10"]
             lead = f"Start at {in_sentence(s_)}, and suppose they {v_}."
+            # RS-6 (second pass, the rescore's words): the supposition carries the start and its direction, so the step's
+            # own line opens on the effect and the start is printed once
+            need(d["cause_up"] == (v_ in ("rise", "rises")) and not d["cause_can"], "Loop R10's supposition and its first step disagree")
+            line = f"So {says(b, d['effect_up'], d['effect_can'], subject=False)}."
 
         if b == "C3" or a == "C3":
             if lid == "B4" and b == "C3":
@@ -306,7 +311,8 @@ def walk_steps():
         need(KIND[lid] == ("reinforcing" if C15.minus_count(lp["links"]) % 2 == 0 else "balancing"), f"Loop {lid}'s kind changed")
         said = f"Loop {lid}, step {i + 1} of {n}: {(lead + ' ') if lead else ''}{line} {re.sub(r'<[^>]+>', '', html.unescape(more))}"
         hold = max(6000, 250 * len(said.split()))
-        out.append({"k": k, "loop": lid, "i": i + 1, "n": n, "link": x, "line": line, "lead": lead, "more": more, "hold": hold, "said": said,
+        out.append({"k": k, "loop": lid, "i": i + 1, "n": n, "link": x, "line": line, "whole": whole, "lead": lead, "more": more,
+                    "hold": hold, "said": said,
                     "dir": d})
     need(f2["loops"]["B4"]["into_C3"] == "L23" and f2["loops"]["R10"]["into_C3"] == "L25", "Variable C3's steps changed")
     return out
@@ -463,7 +469,8 @@ def rule_14_143():
     need(m_all == 3, "the two loops' minus signs changed")
     fail = (dnp() + f'<p class="hed"><span>“One loop through the risk of losing office: seven steps, '
             f'{words_n(m_all)} minus signs, balancing”</span></p><div class="cfx pr">{"".join(fcols)}</div>'
-            '<ol class="fl7">' + "".join(f"<li>{e(st['line'])}</li>" for st in steps) + "</ol>")
+            # each step whole, cause first: the list prints no supposition, so Loop R10's first step keeps its cause (RS-6)
+            '<ol class="fl7">' + "".join(f"<li>{e(st['whole'])}</li>" for st in steps) + "</ol>")
     fstyle = plate_style(fail, extra=".fl7{margin:12px 0 0;padding-left:1.4em;font:var(--oa-type-body-small)}"
                                       ".fl7 li+li{margin-top:4px}")
     files["s-14-143-failure"] = fragment("s-14-143-failure", fail, fstyle)
@@ -1361,7 +1368,12 @@ def check(entries, files, specs, steps):
     for lid in ("B4", "R10"):
         up, can = START[lid][1] in ("rise", "rises"), False
         for st_, sf in zip([x for x in steps if x["loop"] == lid], FACTS["example_2"]["loops"][lid]["steps"]):
-            cause, effect = st_["line"].rstrip(".").split(", so ", 1)
+            if st_["lead"]:
+                # RS-6: Loop R10's first step says its cause in the supposition and its effect in a line that opens "So"
+                ok(st_["line"].startswith("So ") and ", so " not in st_["line"], f"14.143: {st_['link']}'s line after the supposition")
+                cause, effect = st_["lead"].rstrip("."), st_["line"].rstrip(".")[3:]
+            else:
+                cause, effect = st_["line"].rstrip(".").split(", so ", 1)
             nxt = up if sf["sign"] == "+" else not up
             can_e = can or sf["grade"] == "plausible"
             for words, want_up, want_can in ((cause, up, can), (effect.removesuffix(" again"), nxt, can_e)):
@@ -1389,6 +1401,9 @@ def check(entries, files, specs, steps):
     r10_1 = re.search(r'data-oa-part="Loop R10" data-oa-first[^>]*>.*?<span class="oa-stepper-line">(.*?)</span>&#32;<span', t)
     ok(r10_1 is not None and r10_1.group(1).startswith('<span class="sup8">Start at seats with little electoral competition, and suppose they rise.</span>')
        and "The walk moves to Loop R10" not in rt_143, "14.143: Loop R10's supposition does not come before its first step")
+    ok(r10_1 is not None and reader_text(r10_1.group(1)).count("little electoral competition") == 1
+       and "So how often the primary decides the winner goes up." in reader_text(r10_1.group(1)),
+       "14.143: Loop R10's first step prints its start twice (RS-6)")
     ok("weakest step for U.S. services, \u201csince its main study covers Brazilian mayors\u201d" in reader_text(t),
        "14.143: the atlas's weakest-step claim for Loop B4")
     # 14.144: the chooser's markup as CE-2 lists it, and no total
