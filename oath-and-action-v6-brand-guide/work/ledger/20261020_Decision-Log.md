@@ -6924,3 +6924,14 @@ The main session posted the plan for the review of rounds 4 and 5 with five ques
 | D3-2267 | The chapters page is republished privately as version 12 (version id 1794858048-3280, sequence 12) at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF from `work/boards/phase-3/review-4-5/20261116_Guide-Preview-V12.html` (the join build, 12,174,060 bytes, SHA-256 `ad1e6f6e…`), keeping contract 0.2.96 and `downloads`; version 11 stays in its history | DR-280 |
 | D3-2268 | The creative director's rescore on the join build: 13 of 14 items at 4 or more on all six criteria; C11-T stays at 3 for accessibility (the six tracker alts lack the title and the key's heading, so their stages stay open under call 11); DR-191's second pass in chat 8 takes RS-1 (a Must, wording) and RS-2 to RS-7 (Shoulds); none needs Dustin's call; the design director's verification holds 15 of 18 craft codes and 3 in part, the accessibility lead's 9 of 10; the new faults go to the register | The review's last step before board 3 (DR-284, D3-2265) |
 | D3-2269 | This chat hands off with handoff V27; work tracker row `c07` set done | Dustin asked to wrap up; V27 section 2 sets chat 8's order |
+
+## Chat 8, November 20, 2026
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2270 | The new chat opened on `claude/zen-babbage-ugu3a3`, whose tip equals the remote `claude/friendly-brahmagupta-tonmfa` (`7e96e5e6`); the pasted copy of handoff V27 held three unfilled lines, so the committed V27 governs. V11's three setup steps ran on the fresh container, and the session runs on "Oath & Action Brand Polish - Round 2", which holds the keys | V19: fetch and compare tips first; V26: check the environment before testing keys |
+| D3-2271 | The three key tests pass: api.open.fec.gov 200, api.congress.gov 200, the Census API 200 with `CENSUS_API_KEY`; no key value was printed or written | V27 2A; Dustin's "test each with one request before use" |
+| D3-2272 | The strict build passes as committed (16:31 UTC, to scratch): exit 0, 0 warnings, 12,174,060 bytes, 369 rules, 679 specimens, projection 15,144,130, chapter 14 with the kit 2,817,491, 95 image stages hidden and 321 open; it differs from the V12 preview only in the build's date and time (9 bytes); the working tree stays clean. Work tracker row `c08` set active | Section 1 of V27; the figures equal the join's (D3-2266, D3-2267) |
+| D3-2273 | The full four-width guide check (1440, 1024, 390 and 360 px, `--no-captures`) starts at 16:32 UTC on a copy of that build, in the background on a quiet machine (load 0.4), while the plan waits for Dustin's go; no agent runs until it ends | DR-284 makes it chat 8's first step; it builds nothing; earlier four-width runs used `--no-captures` (D3-894, D3-1317), and load breaks the check (V21) |
