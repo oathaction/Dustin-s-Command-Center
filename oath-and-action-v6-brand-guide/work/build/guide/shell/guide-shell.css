@@ -32,10 +32,10 @@
 @media (min-width: 48em) { :root { --m: var(--oa-layout-grid-tablet-margin); --g: var(--oa-layout-grid-tablet-gutter); --mc: 8 } }
 @media (min-width: 64em) { :root { --m: var(--oa-layout-grid-desktop-margin); --g: var(--oa-layout-grid-desktop-gutter); --mc: 9; --bar-h: 4rem; --where-h: 0rem } }
 @media (min-width: 90em) { :root { --m: var(--oa-layout-grid-wide-margin); --g: var(--oa-layout-grid-wide-gutter); --mc: 10 } }
-/* AX-M1: the floors for a page without its script, measured at the default text size: the menu button drops under the
-   24 px wordmark from 22.5em to 23.25em (360 to 372 px), and the part links take two lines from 64em to 85.125em (1024
-   to 1362 px). Outside those widths the two bars' sum stands, and with the script the measured height wins. */
-@media (min-width: 22.5em) and (max-width: 23.25em) { :root { --head-floor: 8.25rem } }
+/* AX-M1: the floor for a page without its script, measured at the default text size: the part links take two lines
+   from 64em to 85.125em (1024 to 1362 px). Outside those widths the two bars' sum stands, and with the script the
+   measured height wins. Board 3, reply 10 (A5): the 16 px wordmark now holds through 23.25em (372 px), so the menu
+   button no longer drops under the 24 px wordmark from 360 to 372 px, and the floor that covered it went with it. */
 @media (min-width: 64em) and (max-width: 85.125em) { :root { --head-floor: 6.25rem } }
 
 /* D2-1133 (stage C): the guide stays on Newsprint whatever the device asks. The root carries data-oa-theme="light",
@@ -83,8 +83,8 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
 .skip:not(:focus) { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap }
 
 /* ---------------------------------------------------------------- Masthead
-   One bar with the wordmark from its 24 px master (Rule 03.6; the 16 px master only under 22.5em), and under 64em a
-   second line that names where the reader is in full (AX-S7). */
+   One bar with the wordmark from its 24 px master (Rule 03.6; the 16 px master through 23.25em, 372 px, board 3's
+   reply 10), and under 64em a second line that names where the reader is in full (AX-S7). */
 .masthead { position: sticky; top: 0; z-index: var(--oa-z-index-sticky); padding: 0 var(--m); background: var(--oa-color-surface-newsprint);
   border-bottom: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .mh-bar, .where { max-width: calc(100rem - 2 * var(--m)); margin-inline: auto }
@@ -118,7 +118,7 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
 @media (min-resolution: 2dppx) { .oa-at-1x { display: none } .oa-at-2x { display: inline } }
 .where { min-height: var(--where-h); margin-block: 0; padding-bottom: var(--oa-space-050); display: flex; align-items: center; font: var(--oa-type-caption);
   color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
-@media (max-width: 22.49em) { .home .wm-24 { display: none } .home .wm-16 { display: block } }
+@media (max-width: 23.25em) { .home .wm-24 { display: none } .home .wm-16 { display: block } }
 @media (min-width: 48em) { .edition { display: inline } }
 @media (min-width: 64em) { .partnav { display: block } .where, .menubtn { display: none } }
 
