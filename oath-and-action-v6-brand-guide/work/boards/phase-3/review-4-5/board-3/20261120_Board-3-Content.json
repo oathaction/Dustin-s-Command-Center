@@ -190,7 +190,7 @@
    "refs": "DR-271 · DR-275",
    "lede": "Round 5 built the guide that opens chapter 14, the plate that sets out the four data palettes, and three charts in full. Each shows as the final build draws it, at true size.",
    "guide_h": "Choose a chart",
-   "guide_line": "The guide lists the chapter’s forms under {questions} questions, with {form_links} links to forms and {road_links} links to the three charts in full and the rules, counted on the final build’s page.",
+   "guide_line": "The guide lists the chapter’s forms under {questions} questions, with {form_links} links to forms and {road_links} links to the three charts in full and the rules, counted by the four-width guide check on version 13.",
    "palette_h": "The four data palettes, step by step",
    "charts_h": "Three charts in full",
    "chart_live": "Open the live entry",
@@ -431,13 +431,13 @@
      "kind": "check_file",
      "slot": "four_width_first",
      "owner": "main",
-     "words": "run by the main session on the build before the last two fixes, at {widths} px, with {failures} failure; its rerun on version 13 is pending"
+     "words": "run by the main session on the build before the last two fixes, at {widths} px, with {failures} failure, which the rerun on version 13 no longer finds"
     },
     {
      "label": "The four-width guide check on version 13",
      "kind": "check_file",
      "slot": "four_width_check",
-     "words": "run by the main session at {widths} px, with {failures} failures",
+     "words": "run by the main session at {widths} px: {specimens} drawn examples and {links} same-page links read, with {failures} failures",
      "owner": "main"
     },
     {
@@ -535,7 +535,7 @@
   "final_page": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
   "final_report": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13-Build-Report.json",
   "final_label": "version 13, the final build of chat 8",
-  "four_width_check": null,
+  "four_width_check": "[scratch]/fourwidth2/20261120_Guide-Four-Width-V13-Guide-Check-Results.json",
   "quick_check": null,
   "readers": [
    {

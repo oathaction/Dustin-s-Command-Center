@@ -814,13 +814,13 @@ STACK = {}                # a made picture's key -> [(photograph key, label)], s
 # is the union of the blocks that hold the words, patterns or parts named, inside the element named, on the page named.
 CROPS = {
     'where-to-start': [
-        dict(page='v11', el='start', w=320, text_scale=2, patterns=[r'Identity\s+proofs'], overflow=True, context=150, block='li', role='before', row='c1',
+        dict(page='v11', el='start', w=320, text_scale=2, patterns=[r'Identity\s+proofs'], overflow=True, context=140, block='span.u', role='before', row='c1',
              label='Before the fix pass, at a 320 px window with text at 200 percent: the link “Identity proofs” runs past the window’s right edge'),
-        dict(page='final', el='start', w=320, text_scale=2, patterns=[r'Identity\s+proofs'], overflow=True, context=150, block='li', role='after', row='c1',
+        dict(page='final', el='start', w=320, text_scale=2, patterns=[r'Identity\s+proofs'], overflow=True, context=140, block='span.u', role='after', row='c1',
              label='Now: the same link wraps inside the window'),
-        dict(page='v11', el='start', w=320, text_scale=2, patterns=[r'Components\s+and\s+interaction'], overflow=True, context=150, block='li', role='before', row='c2',
+        dict(page='v11', el='start', w=320, text_scale=2, patterns=[r'Components\s+and\s+interaction'], overflow=True, context=140, block='span.u', role='before', row='c2',
              label='Before the fix pass: the link “Components and interaction” runs past the edge too'),
-        dict(page='final', el='start', w=320, text_scale=2, patterns=[r'Components\s+and\s+interaction'], overflow=True, context=150, block='li', role='after', row='c2',
+        dict(page='final', el='start', w=320, text_scale=2, patterns=[r'Components\s+and\s+interaction'], overflow=True, context=140, block='span.u', role='after', row='c2',
              label='Now: it wraps inside the window'),
     ],
     '14.144-pips': [
@@ -1885,6 +1885,16 @@ def round5_panel(G, held, shots):
     missing = []
     # the selection guide
     sc = selection_counts(G) if G['usable'] else {}
+    # the brief's counts are read from the check: the four-width guide check on version 13, where it has landed; the
+    # board's own count of the page stands in until then, and the two must agree
+    cp = scratch_path(C['slots'].get('four_width_check'))
+    if cp and cp.is_file():
+        sg = ((json.loads(cp.read_text()).get('runs') or [{}])[0].get('selectionGuide') or {})
+        ck = {'form_links': sg.get('links'), 'road_links': sg.get('road'), 'questions': sg.get('questions')}
+        if all(v is not None for v in ck.values()):
+            if sc and ck != sc:
+                warn(f'the selection guide: the check counts {ck} and the page {sc}')
+            sc = ck
     FIG['selection_guide'] = sc
     out.append(f'<h3 class="sub grp" id="r5-guide">{esc(S["guide_h"])}</h3>')
     if sc:
@@ -2374,7 +2384,9 @@ def tested_panel(G):
                 J = json.loads(p.read_text())
                 runs = J.get('runs') if isinstance(J.get('runs'), list) else []
                 widths = [str(r.get('width')) for r in runs if r.get('width')]
-                w = fill(it['words'], {'widths': join_words(widths) or '?', 'failures': nw(len(J.get('failures', [])))})
+                r0 = runs[0] if runs else {}
+                w = fill(it['words'], {'widths': join_words(widths) or '?', 'failures': nw(len(J.get('failures', []))),
+                                       'specimens': f'{(r0.get("specimens") or {}).get("stages", 0):,}', 'links': f'{(r0.get("anchors") or {}).get("links", 0):,}'})
                 FIG.setdefault('checks_read', {})[it['slot']] = {'file': rel(p), 'failures': J.get('failures'), 'pass': J.get('pass')}
         elif kind == 'v7':
             p = scratch_path(C['slots'].get(it['slot']))

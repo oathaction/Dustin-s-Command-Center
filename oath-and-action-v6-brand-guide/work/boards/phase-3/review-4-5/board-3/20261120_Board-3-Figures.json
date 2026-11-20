@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T18:54:02.258097+00:00",
+ "built": "2026-11-20T19:00:28.727894+00:00",
  "decisions": {
   "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
   "state": "signed off",
@@ -26,12 +26,12 @@
  },
  "photographs_asked": 168,
  "render_seconds": {
-  "guide": 130
+  "guide": 58
  },
  "shots": {
   "guide": {
    "asked": 168,
-   "taken": 11,
+   "taken": 4,
    "missing": []
   },
   "made": {
@@ -875,8 +875,8 @@
  },
  "tested": {
   "The final build’s strict build": "read from its report, built November 20, 2026: no warnings, 12,178,909 bytes, 369 rules and 679 examples placed",
-  "The four-width guide check, first run": "run by the main session on the build before the last two fixes, at 1440, 1024, 390 and 360 px, with one failure; its rerun on version 13 is pending",
-  "The four-width guide check on version 13": "Waiting for its file",
+  "The four-width guide check, first run": "run by the main session on the build before the last two fixes, at 1440, 1024, 390 and 360 px, with one failure, which the rerun on version 13 no longer finds",
+  "The four-width guide check on version 13": "run by the main session at 1440, 1024, 390 and 360 px: 735 drawn examples and 3,767 same-page links read, with no failures",
   "The quick guide check with photographs": "Waiting for its file",
   "The kit’s build of every chart": "the kit built every chart from the final files, without pictures: 96 of 96 pass, as the decision log records it",
   "Chapter 14’s build check": "99 of 99 of its files up to date with the build, as the decision log records it",
@@ -896,6 +896,11 @@
    ],
    "pass": false
   },
+  "four_width_check": {
+   "file": "[scratch]/fourwidth2/20261120_Guide-Four-Width-V13-Guide-Check-Results.json",
+   "failures": [],
+   "pass": true
+  },
   "v7_check": {
    "file": "[scratch]/c08/v7-check.json",
    "failures": []
@@ -908,11 +913,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
- "html_bytes": 379374,
+ "html_bytes": 379495,
  "images": 184,
- "image_bytes": 17413641,
+ "image_bytes": 17373373,
  "folder_files": 188,
- "folder_bytes": 17872474,
+ "folder_bytes": 17832752,
  "largest_image": [
   966992,
   "20261120_Decide-where-to-start-2.png"
@@ -1237,13 +1242,13 @@
  ],
  "notes": [
   "the final build named on the command line: work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
-  "18:54:03 UTC guide: OK to open one (browsers running: 1, load: 1.53)",
-  "18:56:18 UTC the board check: OK to open one (browsers running: 1, load: 2.31)",
-  "18:57:05 UTC the wrapped board check: OK to open one (browsers running: 0, load: 1.79)"
+  "19:00:30 UTC guide: OK to open one (browsers running: 1, load: 1.59)",
+  "19:01:31 UTC the board check: OK to open one (browsers running: 1, load: 2.17)",
+  "19:02:17 UTC the wrapped board check: OK to open one (browsers running: 1, load: 1.81)"
  ],
  "warnings": [],
- "seconds": 136,
- "words": 21371,
+ "seconds": 63,
+ "words": 21395,
  "check": {
   "page": {
    "failures": [
