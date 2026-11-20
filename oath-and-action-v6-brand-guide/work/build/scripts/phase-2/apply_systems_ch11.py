@@ -1179,6 +1179,20 @@ def alt_rows(items, nm):
     return ' '.join(out)
 
 
+# RS-1 (second pass after rounds 4 and 5, the editor's words): each mark's shape in words, as Rule 11.2's alt gives it
+MARK_SHAPE = {'done': 'a filled circle', 'now': 'a heavy ring',
+              'take': 'the heavy ring with a small red disc at its upper right', 'notyet': 'a fine ring',
+              'skipped': 'the fine ring under a slash', 'stopped': 'a filled square'}
+
+
+def alt_key(nm, show):
+    """The key as the picture prints it, under its two headings: the steps by number and name, then "What the marks
+    mean" with each mark's word and its shape, in the key's order (RS-1), so the alt carries every word the key holds."""
+    steps = ', '.join(f'{i + 1} {n}' for i, n in enumerate(nm))
+    marks = '; '.join(f'{STATE_WORD[s]}, {MARK_SHAPE[s]}' for s in show)
+    return f'The {C.num(len(nm))} steps: {steps}. What the marks mean: {marks}.'
+
+
 def records_piece(ctx, title, items, nm, show, band=''):
     css = piece_css(ctx, 'n', 's') + records_css(ctx)
     fcss = ''
@@ -1242,19 +1256,21 @@ def s_11_10(ctx):
     """Rule 11.10, the ballot measure (DR-231, R5-7): three measures in three states, and the fault a tracker most often
     makes on election night, a count read as a result."""
     nm = names('ballot')
-    html = records_piece(ctx, 'Where three ballot measures stand', BALLOTS, nm, used_marks(BALLOTS))
-    alt = ('Three Illustrative state ballot measures at 360 px on Newsprint, each drawn as six numbered steps with the bill '
-           'tracker’s marks, and a key of the six steps, Filed, Title and summary, Signatures, Legislature, On the ballot '
-           'and Vote, and of the marks. ' + alt_rows(BALLOTS, nm))
+    title, show = 'Where three ballot measures stand', used_marks(BALLOTS)
+    html = records_piece(ctx, title, BALLOTS, nm, show)
+    # RS-1: the alt reads the plate in its own order, the Illustrative label and the title first and the key last
+    alt = (f'Illustrative. {title}. The plate is 360 px wide on Newsprint and draws each state ballot measure as six '
+           'numbered steps with the bill tracker’s marks. ' + alt_rows(BALLOTS, nm) + ' ' + alt_key(nm, show))
     spec(ctx, 's-11-10-correct', html, '11.10', alt, width=360, illustrative=True)
     bad = dict(BALLOTS[0], states=['done', 'done', 'done', 'skipped', 'done', 'done'], end='Approved by voters.',
                line=f'Yes leads with 52{C.NBSP}percent of the votes counted on election night, November 3.')
-    html2 = records_piece(ctx, 'Where the park entry fee measure stands', [bad], nm, ('done', 'skipped'), band=True)
-    alt2 = ('Failure case: do not publish. An Illustrative ballot measure, 99010, State park entry fees, at 360 px: steps '
-            '1 to 3 done, step 4 never happened, and steps 5 and 6 drawn as done, so the vote reads as finished. The words '
-            'read “Approved by voters. Yes leads with 52 percent of the votes counted on election night, November 3.” '
-            'The count is '
-            'unofficial, the state has not certified it, and nothing on the card says so.')
+    title2, show2 = 'Where the park entry fee measure stands', ('done', 'skipped')
+    html2 = records_piece(ctx, title2, [bad], nm, show2, band=True)
+    alt2 = (f'Failure case: do not publish. Illustrative. {title2}. Measure 99010, State park entry fees, at 360 px: '
+            'steps 1 to 3 done, step 4 never happened, and steps 5 and 6 drawn as done, so the vote reads as finished. '
+            'The words read “Approved by voters. Yes leads with 52 percent of the votes counted on election night, '
+            'November 3.” The count is unofficial, the state has not certified it, and nothing on the card says so. '
+            + alt_key(nm, show2))
     spec(ctx, 's-11-10-failure', html2, '11.10', alt2, width=360, illustrative=True)
 
 
