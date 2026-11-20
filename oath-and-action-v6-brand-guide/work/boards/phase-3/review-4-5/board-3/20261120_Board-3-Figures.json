@@ -912,7 +912,7 @@
  "images": 184,
  "image_bytes": 17413641,
  "folder_files": 188,
- "folder_bytes": 17872627,
+ "folder_bytes": 17872474,
  "largest_image": [
   966992,
   "20261120_Decide-where-to-start-2.png"
@@ -1237,9 +1237,37 @@
  ],
  "notes": [
   "the final build named on the command line: work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
-  "18:54:03 UTC guide: OK to open one (browsers running: 1, load: 1.53)"
+  "18:54:03 UTC guide: OK to open one (browsers running: 1, load: 1.53)",
+  "18:56:18 UTC the board check: OK to open one (browsers running: 1, load: 2.31)",
+  "18:57:05 UTC the wrapped board check: OK to open one (browsers running: 0, load: 1.79)"
  ],
  "warnings": [],
  "seconds": 136,
- "words": 21371
+ "words": 21371,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/c08/board-3/builder/publish-view/20261120_Board-3-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ },
+ "fails": []
 }
