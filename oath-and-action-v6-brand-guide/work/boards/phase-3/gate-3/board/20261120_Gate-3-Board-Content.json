@@ -1,0 +1,612 @@
+{
+ "about": "The Gate 3 board's own words and the files it reads. Every number, picture and teammate's word on the board is read from the files under slots at build time by work/build/scripts/phase-3/gate_3_board_build.py. Written by the board builder (oa-design-director as page builder), November 20, 2026.",
+ "title": "Edition 06 Gate 3",
+ "cover": {
+  "kicker": "Edition 06 · Phase 3 · Gate 3",
+  "title": "Chapters 13 to 15 and the plan for Phase 4",
+  "for_line": "For Dustin Cathcart · {built_date}",
+  "deck": [
+   "Phase 3 built chapters 13, 14 and 15 with the chart kit behind them, and this gate’s pass applied your {n_answers} answers on board 3.",
+   "Panel 1 asks for your word on {n_decisions_w} decisions and {n_questions_w} questions about Phase 4, each with the studio’s recommendation. The panels after it show the Phase 4 proposal, each of board 3’s answers before and after at true size, the label clearance list, the scores, the page’s weight and what was tested."
+  ],
+  "toc_h": "On this board",
+  "minutes": "Panel 1 takes about {p1_min} to read ({p1_words} words), at 200 words a minute. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
+ },
+ "status_words": {
+  "ready": "Ready",
+  "waiting": "Waiting for {who}",
+  "partial": "Part waiting for {who}"
+ },
+ "status_short": {
+  "ready": "Ready",
+  "waiting": "Waiting",
+  "partial": "Part waiting"
+ },
+ "owners": {
+  "report": "the Gate 3 report",
+  "final": "version 14",
+  "build": "version 14’s build report",
+  "render": "the board’s photographs",
+  "facts": "a figure from the owners’ notes",
+  "cd_board": "the creative director’s score of this board",
+  "main": "the main session’s check files"
+ },
+ "page_words": {
+  "v13": "version 13, the page before this pass",
+  "final": "version 14, the final build"
+ },
+ "role_words": {
+  "before": "Version 13",
+  "after": "Version 14",
+  "view": "Version 14",
+  "export": "The kit’s export"
+ },
+ "section_to_panel": {
+  "3": 5,
+  "9": 2
+ },
+ "face_words": {
+  "oa-chart.mjs": "the kit’s renderer",
+  "kit.css": "its style sheet",
+  "work/research/YYYYMMDD_Platform-Specifications.md": "a platform specifications file"
+ },
+ "sections": {
+  "decide": {
+   "n": 1,
+   "nav": "What you decide",
+   "title": "What you decide at Gate 3",
+   "refs": "DR-293",
+   "wait": "Waiting for the Gate 3 report’s section 10.",
+   "lede": "Gate 3 asks for your word on {n_decisions_w} decisions and {n_questions_w} questions about Phase 4. Each item opens with the studio’s recommendation, then what it rests on.",
+   "list_h": "The {n_items_w} items",
+   "decisions_h": "The decisions",
+   "questions_h": "The questions on Phase 4",
+   "item_label": "Item {n}",
+   "question_label": "Question {n}",
+   "rec_tag": "Recommendation",
+   "default_tag": "Until you answer",
+   "rests_k": "What it rests on",
+   "covers_k": "What it covers",
+   "see_panel": "Panel {n} shows it.",
+   "approve_h": "What you approve",
+   "reply": "To answer, reply “As proposed”, or name the item and your change."
+  },
+  "phase4": {
+   "n": 2,
+   "nav": "The Phase 4 proposal",
+   "title": "The Phase 4 proposal",
+   "refs": "DR-271 · DR-292 · DR-296 · DR-297 · DR-298",
+   "wait": "Waiting for the Gate 3 report’s section 9.",
+   "produces_h": "What Phase 4 produces",
+   "channels_h": "The eight channels",
+   "build_h": "How the applications are built",
+   "weight_h": "Page weight",
+   "chats_h": "Chats and boards",
+   "team_h": "Team and checks",
+   "alloc_caption": "Each Phase 4 chapter’s allocation, as a share of the room Phase 4 has under 16 MB",
+   "alloc_cols": ["Chapter", "Share of Phase 4’s room", "Allocation in bytes"],
+   "alloc_line": "The bars read the allocations against the {room} bytes Phase 4 has under 16 MB, worked out by this board from version 14’s build report. The seven come to {total}, which leaves {reserve} in reserve.",
+   "room_mismatch": "The report gives {said} bytes of room, and version 14’s build report gives {room}."
+  },
+  "answers": {
+   "n": 3,
+   "nav": "Board 3’s answers, applied",
+   "title": "Board 3’s answers, applied",
+   "refs": "DR-291 · DR-293",
+   "lede": "You answered all {n_answers} of board 3’s replies as recommended. One card a reply, in reply order: what you approved, what changed and in which rule, and version 13 beside version 14 at true size where the change shows. The {n_none_w} replies that changed nothing on the page take one line each.",
+   "none_h": "The replies that changed nothing on the page",
+   "approved_k": "What you approved",
+   "changed_k": "What changed",
+   "checked_k": "On screen",
+   "rule_link": "Rule {rule} in version 14",
+   "reply_tag": "Reply {n}",
+   "luma_h": "The same three red targets in luma",
+   "luma_label": "{label}, in luma",
+   "luma_alt": "{label}, converted to gray by luma (ITU-R 601-2), so each red target reads by lightness alone.",
+   "alt_auto": "{label}. Photographed from {page} at a {w} px window.",
+   "export_alt": "{label}. Drawn from the kit’s own export file at true size, its last lines shown.",
+   "picture_wait": "Waiting for this picture: {label}.",
+   "panel_link": "Panel {n} shows it before and after.",
+   "cards": [
+    {
+     "n": 1,
+     "none": "The plate prints the six step names as you approved them, and nothing changed."
+    },
+    {
+     "n": 2,
+     "none": "The plate prints the six step names as you approved them, and nothing changed."
+    },
+    {
+     "n": 3,
+     "none": "The changes stand as listed, and nothing more changed."
+    },
+    {
+     "n": 4,
+     "none": "The questions stand as approved; the next reply’s example lines answer the likeness."
+    },
+    {
+     "n": 5,
+     "none": "The sixteen example lines wait in the deferred fixes register for the finishing pass, as you answered."
+    },
+    {
+     "n": 6,
+     "rule": ["08.2"],
+     "changed": "A chart exported to stand alone, as an SVG or a PNG, now closes with the source line the guide prints under it and the 16 px lockmark at the line’s right end. Before this pass the exported files held the drawing alone. Rule 08.2’s footer row now says the lockmark goes “on a chart exported alone”, and the guide’s own plates did not change. The data lead read all {footers} exported footers against their charts’ source lines.",
+     "facts": [
+      {"name": "footers", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md", "pattern": "(\\d+) exported SVGs carry the footer"}
+     ],
+     "refs": "NB-S4 · D3-2338 · D3-2347",
+     "pictures": [
+      {"id": "x14n", "kind": "export", "spec": "s14", "ground": "newsprint", "w": 1440, "context": 40, "role": "export", "row": "x",
+       "label": "S14 exported for a 1440 px page, on Newsprint",
+       "alt": "S14, the jobs chart, exported for a 1440 px page on Newsprint, at true size: the last columns, then a hairline, the source line in six lines of small type, and the 16 px lockmark at the right end of its last line."},
+      {"id": "x14c", "kind": "export", "spec": "s14", "ground": "charcoal", "w": 390, "context": 40, "role": "export", "row": "x",
+       "label": "S14 exported for a 390 px phone, on Charcoal",
+       "alt": "S14 exported for a 390 px phone on Charcoal, at true size: the source line in light type under a hairline, with the lockmark in its Charcoal inks at the right end of the last line."}
+     ]
+    },
+    {
+     "n": 7,
+     "rule": ["13.6"],
+     "changed": "Chapter 13’s copies of S14’s source line, on Rule 13.6’s plate and in the chapter’s list of sources, now print the line S14 prints, which names the September 2026 release. Rule 02.22 in chapter 02 keeps its older line, as you chose.",
+     "refs": "D3-2343",
+     "pictures": [
+      {"id": "r7a", "page": "v13", "el": "fig-s-13-6-correct", "w": 1440, "role": "before", "row": "r7",
+       "clip": {"patterns": ["^Source: U\\.S\\. Bureau of Labor Statistics"], "block": "p", "first": 1, "context": 16},
+       "label": "Rule 13.6’s source line in version 13",
+       "alt": "Rule 13.6’s source line in version 13: the Bureau of Labor Statistics line without the release, ending “will be revised”."},
+      {"id": "r7b", "page": "final", "el": "fig-s-13-6-correct", "w": 1440, "role": "after", "row": "r7",
+       "clip": {"patterns": ["^Source: U\\.S\\. Bureau of Labor Statistics"], "block": "p", "first": 1, "context": 16},
+       "label": "The same line in version 14",
+       "alt": "Rule 13.6’s source line in version 14: it names the Employment Situation for September 2026, released October 2, 2026, and ends “later releases revise them”."}
+     ]
+    },
+    {
+     "n": 8,
+     "changed": "“Choose a chart”, its 16 questions and chapter 14’s 18 group heads are now headings, so a reader who moves by headings meets them.",
+     "checked": "Nothing moved. The accessibility lead read Chromium’s accessibility tree: {added} headings added and no level skipped, and the plate and all 18 group blocks match version 13 pixel for pixel at 1440 and 390 px.",
+     "facts": [
+      {"name": "added", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md", "pattern": "The (\\d+) added are exactly"}
+     ],
+     "refs": "RP-14 · D3-2340 · D3-2352 · D3-2353"
+    },
+    {
+     "n": 9,
+     "rule": ["14.77"],
+     "changed": "S59’s “4.1”, the first projected year’s median, now sits clear of the band’s edge, moved by a setting in S59’s own file. No other word or shape moved. The label clearance check stays off for every other chart until you decide.",
+     "panel": "clearance",
+     "refs": "DR-295 · D3-2341 · D3-2350"
+    },
+    {
+     "n": 10,
+     "rule": ["03.6"],
+     "changed": "The masthead keeps the 16 px wordmark through 372 px, so on a phone 360 to 372 px wide the menu button sits on the wordmark’s line and the masthead stands {after} px tall where it stood {before}. From 373 px the 24 px wordmark returns, so 375 px looks as it did. Neither wordmark’s drawing changed.",
+     "facts": [
+      {"name": "before", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md", "pattern": "\\| 360, 372 px \\|[^|]*masthead (\\d+) px \\|"},
+      {"name": "after", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md", "pattern": "\\| 360, 372 px \\|[^|]*\\|[^|]*masthead (\\d+) px \\|"}
+     ],
+     "refs": "D3-2326",
+     "pictures": [
+      {"id": "m360a", "page": "v13", "el": "header.masthead", "w": 360, "draw": false, "sticky": true, "role": "before", "row": "m360",
+       "label": "The masthead at 360 px in version 13",
+       "alt": "The masthead at a 360 px window in version 13: the 24 px wordmark fills the bar and the menu button drops to a second line."},
+      {"id": "m360b", "page": "final", "el": "header.masthead", "w": 360, "draw": false, "sticky": true, "role": "after", "row": "m360",
+       "label": "The masthead at 360 px in version 14",
+       "alt": "The masthead at a 360 px window in version 14: the 16 px wordmark with the menu button on its line."},
+      {"id": "m372a", "page": "v13", "el": "header.masthead", "w": 372, "draw": false, "sticky": true, "role": "before", "row": "m372",
+       "label": "At 372 px in version 13",
+       "alt": "The masthead at a 372 px window in version 13: the 24 px wordmark, with the menu button on a second line."},
+      {"id": "m372b", "page": "final", "el": "header.masthead", "w": 372, "draw": false, "sticky": true, "role": "after", "row": "m372",
+       "label": "At 372 px in version 14",
+       "alt": "The masthead at a 372 px window in version 14: the 16 px wordmark and the menu button on one line."},
+      {"id": "m375a", "page": "v13", "el": "header.masthead", "w": 375, "draw": false, "sticky": true, "role": "before", "row": "m375",
+       "label": "At 375 px in version 13",
+       "alt": "The masthead at a 375 px window in version 13: the 24 px wordmark and the menu button on one line."},
+      {"id": "m375b", "page": "final", "el": "header.masthead", "w": 375, "draw": false, "sticky": true, "role": "after", "row": "m375",
+       "label": "At 375 px in version 14, unchanged",
+       "alt": "The masthead at a 375 px window in version 14: the same 24 px wordmark and button line as version 13."}
+     ]
+    },
+    {
+     "n": 11,
+     "rule": ["15.20", "14.144", "15.12", "15.4"],
+     "changed": "The keyline inside a chosen pill’s red ring and the ink edge on the red arrowhead came off Rules 15.20 and 14.144, so the red target now draws as Rules 15.11, 15.12 and 15.16 draw it, the atlas’s way: a 3 px red ring and a red head. Rule 15.12’s note now names its target in words, “Availability of local reporting”. Taking the keyline’s style off also brought back the blue step on Rule 15.4’s failure plate, which that style had hidden since November 16, so board 3 showed the plate without it. The plate now matches the drawing you approved at board 2.",
+     "refs": "DR-36 · D3-2292 · D3-2349",
+     "luma": ["k7", "k4", "k6"],
+     "pictures": [
+      {"id": "k1", "page": "v13", "el": "fig-s-15-4-failure", "w": 1440, "role": "before", "row": "k154",
+       "label": "Rule 15.4’s failure plate in version 13",
+       "alt": "Rule 15.4’s failure plate in version 13: two of its three connections draw, and the middle card says “raises” with no line, sign or ticks, since a style hid the blue step."},
+      {"id": "k2", "page": "final", "el": "fig-s-15-4-failure", "w": 1440, "role": "after", "row": "k154",
+       "label": "The same plate in version 14, as board 2 approved it",
+       "alt": "Rule 15.4’s failure plate in version 14: all three connections draw in green, blue and gray, as its key and caption say."},
+      {"id": "k3", "page": "v13", "el": "fig-s-15-20-correct", "w": 1440, "role": "before", "row": "k1520",
+       "label": "Rule 15.20 in version 13, with the keyline",
+       "alt": "Rule 15.20’s plate in version 13: each chosen pill’s red ring holds a thin dark keyline, and the red arrowhead has an ink edge."},
+      {"id": "k4", "page": "final", "el": "fig-s-15-20-correct", "w": 1440, "role": "after", "row": "k1520",
+       "label": "Rule 15.20 in version 14",
+       "alt": "Rule 15.20’s plate in version 14: each chosen pill takes a 3 px red ring with no keyline, and the arrowhead is red with no edge."},
+      {"id": "k5", "page": "v13", "el": "fig-s-14-144-correct", "w": 1440, "role": "before", "row": "k14144",
+       "clip": {"subs": [".oa-choice-row", "svg.sv"], "context": 16},
+       "label": "Rule 14.144’s chooser and drawing in version 13",
+       "alt": "Rule 14.144 in version 13: the reform chooser above a loop drawing whose red target pills hold a keyline."},
+      {"id": "k6", "page": "final", "el": "fig-s-14-144-correct", "w": 1440, "role": "after", "row": "k14144",
+       "clip": {"subs": [".oa-choice-row", "svg.sv"], "context": 16},
+       "label": "Rule 14.144 in version 14",
+       "alt": "Rule 14.144 in version 14: the same chooser and drawing, its red target pills drawn as plain 3 px red rings."},
+      {"id": "k7", "page": "final", "el": "fig-s-15-11-correct", "w": 1440, "role": "view", "row": "k1511",
+       "label": "Rule 15.11, unchanged, the atlas’s red target",
+       "alt": "Rule 15.11’s plate, the same in both versions: the atlas’s red target, a 3 px red ring round each chosen pill and a red arrowhead."},
+      {"id": "k8", "page": "v13", "el": "fig-s-15-12-correct", "w": 1440, "role": "before", "row": "k1512",
+       "clip": {"texts": ["It acts where the marks turn red"], "block": "p", "context": 16},
+       "label": "Rule 15.12’s note in version 13",
+       "alt": "Rule 15.12’s note in version 13: “It acts where the marks turn red: on two connections and one variable.”"},
+      {"id": "k9", "page": "final", "el": "fig-s-15-12-correct", "w": 1440, "role": "after", "row": "k1512",
+       "clip": {"texts": ["It acts where the marks turn red"], "block": "p", "context": 16},
+       "label": "The same note in version 14",
+       "alt": "Rule 15.12’s note in version 14: “It acts where the marks turn red: on both connections and on Variable B2 ‘Availability of local reporting’.”"}
+     ]
+    },
+    {
+     "n": 12,
+     "rule": ["18.24"],
+     "changed": "Chips now set Inter’s own figures, so the hyphen in an ID such as “R-04” stays narrow: chapter 13’s chips, the chip chapter 15 copies from them, and Rule 18.24’s code chip, whose key now says so. In the code set “R-04” measures {now} px wide where it measured {was}.",
+     "facts": [
+      {"name": "was", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md", "pattern": "(\\d+\\.\\d) px wide with `tabular-nums` before"},
+      {"name": "now", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md", "pattern": "(\\d+\\.\\d) px with `normal` after"}
+     ],
+     "refs": "CR-S17",
+     "pictures": [
+      {"id": "c1", "page": "v13", "el": "fig-s-18-24-anatomy", "w": 1440, "role": "before", "row": "c",
+       "label": "Rule 18.24’s anatomy in version 13",
+       "alt": "Rule 18.24’s chip anatomy in version 13: the chip “R-04” set in tabular figures, and callout 2 reading “The atlas ID, in tabular figures”."},
+      {"id": "c2", "page": "final", "el": "fig-s-18-24-anatomy", "w": 1440, "role": "after", "row": "c",
+       "label": "The same anatomy in version 14",
+       "alt": "Rule 18.24’s chip anatomy in version 14: the chip with a narrower hyphen, and callout 2 reading “The atlas ID, each figure at its own width, so the hyphen stays narrow”."}
+     ]
+    },
+    {
+     "n": 13,
+     "rule": ["14.101"],
+     "changed": "“Retrieved” now names the date a source was taken on S71, S67, S41, S42, S53 and Rule 01.5’s map, and Rule 14.101 asks for “the date it was retrieved”. “Read” stays where it names which texts the studio read. No figure moved; S71’s drawing grew a few pixels where two lines take the longer word.",
+     "refs": "DF-10 · D3-2318 · D3-2336 · D3-2345",
+     "pictures": [
+      {"id": "t1", "page": "v13", "el": "oac-s-14-s71", "w": 1440, "role": "before", "row": "t71",
+       "clip": {"subs": [".oac-ev"], "context": 10},
+       "label": "S71’s grade line in version 13",
+       "alt": "S71’s evidence chip and grade line in version 13: the official pages behind each route, “read on November 11 and 12, 2026”."},
+      {"id": "t2", "page": "final", "el": "oac-s-14-s71", "w": 1440, "role": "after", "row": "t71",
+       "clip": {"subs": [".oac-ev"], "context": 10},
+       "label": "The same line in version 14",
+       "alt": "S71’s grade line in version 14: the official pages behind each route, “retrieved on November 11 and 12, 2026”."},
+      {"id": "t3", "page": "v13", "el": "oac-s-14-s67", "w": 1440, "role": "before", "row": "t67",
+       "clip": {"subs": [".oac-measure"], "context": 10},
+       "label": "S67’s measure line in version 13",
+       "alt": "S67’s measure line in version 13: “read November 6, 2026, and read again November 12, 2026”."},
+      {"id": "t4", "page": "final", "el": "oac-s-14-s67", "w": 1440, "role": "after", "row": "t67",
+       "clip": {"subs": [".oac-measure"], "context": 10},
+       "label": "The same line in version 14",
+       "alt": "S67’s measure line in version 14: “retrieved November 6, 2026, and retrieved again November 12, 2026”."}
+     ]
+    },
+    {
+     "n": 14,
+     "rule": ["14.6"],
+     "changed": "Rule 14.6 now says “the text’s ink at the subject weight” where it said “Charcoal at the subject weight”, in its text and its specifications, which holds on both grounds. Two more “Charcoal” phrases in the rule wait for your word in panel 1, item 6.",
+     "refs": "D3-2319",
+     "pictures": [
+      {"id": "i1", "page": "v13", "el": "rule-14-6", "w": 1440, "role": "before", "row": "i",
+       "clip": {"patterns": ["(Charcoal|the text’s ink) at the subject weight"], "block": "p", "first": 1, "context": 16},
+       "label": "Rule 14.6’s paragraph in version 13",
+       "alt": "A paragraph of Rule 14.6 in version 13, which names “Charcoal at the subject weight”."},
+      {"id": "i2", "page": "final", "el": "rule-14-6", "w": 1440, "role": "after", "row": "i",
+       "clip": {"patterns": ["(Charcoal|the text’s ink) at the subject weight"], "block": "p", "first": 1, "context": 16},
+       "label": "The same paragraph in version 14",
+       "alt": "The same paragraph of Rule 14.6 in version 14, which names “the text’s ink at the subject weight”."}
+     ]
+    },
+    {
+     "n": 15,
+     "rule": ["14.5"],
+     "changed": "The palette plate now prints “rounded down” beside each of its {figures} contrast figures, so its 4.16 for Pillar Red on White paper and chapter 05’s 4.17, rounded to the nearest, read as one measure. Chapter 05 is unchanged. At 1440 px the figures that sat on one line now wrap.",
+     "facts": [
+      {"name": "figures", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md", "pattern": "(\\d+) figures now name their rounding"}
+     ],
+     "refs": "D3-2319",
+     "pictures": [
+      {"id": "p1", "page": "v13", "el": "fig-s-14-palette-spec", "w": 1440, "role": "before", "row": "p",
+       "clip": {"texts": ["Charcoal keyline, 13.29 to 1"], "block": "tr", "first": 1, "context": 8},
+       "label": "The palette plate’s row for the point, in version 13",
+       "alt": "The palette plate’s row for the point, Pillar Red, in version 13: “2.95 to 1”, “4.49 to 1” and “4.16 to 1”, each figure bare."},
+      {"id": "p2", "page": "final", "el": "fig-s-14-palette-spec", "w": 1440, "role": "after", "row": "p",
+       "clip": {"texts": ["Charcoal keyline, 13.29 to 1"], "block": "tr", "first": 1, "context": 8},
+       "label": "The same row in version 14",
+       "alt": "The same row in version 14: each figure followed by “rounded down”, so several lines now wrap."}
+     ]
+    },
+    {
+     "n": 16,
+     "rule": ["15.15"],
+     "changed": "Rule 15.15’s read-aloud lines, and the plates of Rules 15.1, 15.6, 15.8, 15.13, 15.14 and 15.18 that print one, now give each variable’s own title and say whether it rises or falls, starting with a rise and turning at each minus sign.",
+     "refs": "DR-265",
+     "pictures": [
+      {"id": "a1", "page": "v13", "el": "fig-s-15-15-correct", "w": 1440, "role": "before", "row": "a",
+       "clip": {"patterns": ["^(The quality of public services rises|More quality of public services)"], "block": "p", "first": 1, "context": 16},
+       "label": "Loop B4’s read-aloud line on Rule 15.15, version 13",
+       "alt": "Loop B4’s read-aloud line in version 13: “More quality of public services, less risk of losing office, fewer incumbents defeated or pushed into retirement, and back to less quality of public services.”"},
+      {"id": "a2", "page": "final", "el": "fig-s-15-15-correct", "w": 1440, "role": "after", "row": "a",
+       "clip": {"patterns": ["^(The quality of public services rises|More quality of public services)"], "block": "p", "first": 1, "context": 16},
+       "label": "The same line in version 14",
+       "alt": "Loop B4’s line in version 14: “The quality of public services rises, the risk of losing office falls, the number of incumbents defeated or pushed into retirement falls, and back at the start, the quality of public services falls.”"}
+     ]
+    },
+    {
+     "n": 17,
+     "rule": ["14.135", "14.137", "14.140"],
+     "changed": "S89, S91 and S94 now set the evidence chip’s grade line beside the chip. The heads grow shorter from 390 px up and taller at 360 and 320 px, where the column beside the chip narrows; at 320 px S89’s grade line takes seven lines. The kit’s default layout stays as it was.",
+     "refs": "CR-S19",
+     "pictures": [
+      {"id": "h1440a", "role": "before", "row": "h1440", "label": "The three heads at 1440 px in version 13",
+       "alt": "The heads of S89, S91 and S94 at a 1440 px window in version 13, stacked: each grade line under its evidence chip.",
+       "parts": [
+        {"page": "v13", "el": "oac-s-14-s89", "w": 1440, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S89"},
+        {"page": "v13", "el": "oac-s-14-s91", "w": 1440, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S91"},
+        {"page": "v13", "el": "oac-s-14-s94", "w": 1440, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S94"}]},
+      {"id": "h1440b", "role": "after", "row": "h1440", "label": "The same heads in version 14",
+       "alt": "The heads of S89, S91 and S94 at 1440 px in version 14, stacked: each grade line beside its chip, so each head is shorter.",
+       "parts": [
+        {"page": "final", "el": "oac-s-14-s89", "w": 1440, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S89"},
+        {"page": "final", "el": "oac-s-14-s91", "w": 1440, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S91"},
+        {"page": "final", "el": "oac-s-14-s94", "w": 1440, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S94"}]},
+      {"id": "h390a", "role": "before", "row": "h390", "label": "At 390 px in version 13",
+       "alt": "The three heads at a 390 px window in version 13, stacked: each grade line under its chip.",
+       "parts": [
+        {"page": "v13", "el": "oac-s-14-s89", "w": 390, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S89"},
+        {"page": "v13", "el": "oac-s-14-s91", "w": 390, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S91"},
+        {"page": "v13", "el": "oac-s-14-s94", "w": 390, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S94"}]},
+      {"id": "h390b", "role": "after", "row": "h390", "label": "At 390 px in version 14",
+       "alt": "The three heads at 390 px in version 14, stacked: each grade line beside its chip.",
+       "parts": [
+        {"page": "final", "el": "oac-s-14-s89", "w": 390, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S89"},
+        {"page": "final", "el": "oac-s-14-s91", "w": 390, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S91"},
+        {"page": "final", "el": "oac-s-14-s94", "w": 390, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S94"}]},
+      {"id": "h320a", "role": "before", "row": "h320", "label": "At 320 px in version 13",
+       "alt": "The three heads at a 320 px window in version 13, stacked: each grade line under its chip.",
+       "parts": [
+        {"page": "v13", "el": "oac-s-14-s89", "w": 320, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S89"},
+        {"page": "v13", "el": "oac-s-14-s91", "w": 320, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S91"},
+        {"page": "v13", "el": "oac-s-14-s94", "w": 320, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S94"}]},
+      {"id": "h320b", "role": "after", "row": "h320", "label": "At 320 px in version 14",
+       "alt": "The three heads at 320 px in version 14, stacked: each grade line in a narrow column beside its chip, S89’s running to seven lines.",
+       "parts": [
+        {"page": "final", "el": "oac-s-14-s89", "w": 320, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S89"},
+        {"page": "final", "el": "oac-s-14-s91", "w": 320, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S91"},
+        {"page": "final", "el": "oac-s-14-s94", "w": 320, "clip": {"subs": [".oac-ev", ".oac-title"], "context": 8}, "label": "S94"}]}
+     ]
+    },
+    {
+     "n": 18,
+     "rule": ["15.22"],
+     "changed": "Rule 15.22 now prints why it shows these two laws: stages 18 and 20 take their examples from the child tax credit, whose top amount Rule 14.36 charts. The 2017 tax law set its rules for the credit to end after 2025, and the 2025 tax law struck that end date. The data lead checked each fact against the studio’s sources file.",
+     "pictures": [
+      {"id": "n1", "page": "v13", "el": "fig-s-15-22-correct", "w": 1440, "role": "before", "row": "n",
+       "clip": {"patterns": ["^Repealed or changed$", "^Stages 18 and 20 take", "^Source: Oath"], "block": "li,p", "context": 12},
+       "label": "Rule 15.22’s last stage in version 13",
+       "alt": "The end of Rule 15.22’s plate in version 13: stage 20, “Repealed or changed”, then the source line, with no note."},
+      {"id": "n2", "page": "final", "el": "fig-s-15-22-correct", "w": 1440, "role": "after", "row": "n",
+       "clip": {"patterns": ["^Repealed or changed$", "^Stages 18 and 20 take", "^Source: Oath"], "block": "li,p", "context": 12},
+       "label": "The same place in version 14, with the note",
+       "alt": "The end of Rule 15.22’s plate in version 14: stage 20, then the note on why stages 18 and 20 take the child tax credit’s laws, then the source line."}
+     ]
+    },
+    {
+     "n": 19,
+     "none": "Panel 2 sizes each Phase 4 chapter from its nearest built chapter, and nothing was cut."
+    },
+    {
+     "n": 20,
+     "rule": ["11.1", "11.2", "11.10", "11.11"],
+     "changed": "Chapter 11’s four step and marks tables keep their description to the head sentence and take that sentence as a caption hidden from sight, so a screen reader meets the steps once, from the table.",
+     "checked": "Nothing changed on screen. The accessibility lead found the four plates pixel for pixel the same at 1440, 390 and 360 px, and each table named by its caption in Chromium’s tree. Whether a screen reader speaks the head sentence once is still to test.",
+     "refs": "AX-S3 · DR-294 · D3-2354"
+    },
+    {
+     "n": 21,
+     "none": "The drawing that stays in view waits in the deferred fixes register for the page frame’s next pass, as you answered."
+    },
+    {
+     "n": 22,
+     "rule": ["14.32"],
+     "changed": "{lists} of chapter 14’s rules now print their related rules as links in the rule’s foot, {links} links in all, and each lands on the rule it names. The engineer measured the cost first, {bytes} bytes, as you asked.",
+     "facts": [
+      {"name": "lists", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md", "pattern": "All (\\d+) lists print exactly"},
+      {"name": "links", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md", "pattern": "all (\\d+) links land on a rule block"},
+      {"name": "bytes", "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md", "pattern": "so ([\\d,]+) bytes \\("}
+     ],
+     "refs": "RS-5",
+     "pictures": [
+      {"id": "f1", "page": "v13", "el": "rule-14-32", "w": 1440, "role": "before", "row": "f",
+       "clip": {"subs": [".rule-foot"], "context": 12},
+       "label": "Rule 14.32’s foot in version 13",
+       "alt": "Rule 14.32’s foot in version 13: the builders’ line alone."},
+      {"id": "f2", "page": "final", "el": "rule-14-32", "w": 1440, "role": "after", "row": "f",
+       "clip": {"subs": [".rule-foot"], "context": 12},
+       "label": "The same foot in version 14",
+       "alt": "Rule 14.32’s foot in version 14: a Related rules list with links to Rules 14.9, 14.11 and 14.142 beside the builders’ line."}
+     ]
+    },
+    {
+     "n": 23,
+     "changed": "Chapter 04’s opening now says that before launch a trademark attorney will check whether our name, our monogram and the ampersand are clear to use. No drawing changed.",
+     "refs": "Q-12 · D3-2310",
+     "pictures": [
+      {"id": "o1", "page": "v13", "el": "ampersand", "w": 1440, "role": "before", "row": "o",
+       "clip": {"within": "#ampersand .ch-head", "texts": ["Ampersand B is our own drawing"], "block": "p", "context": 16},
+       "label": "Chapter 04’s first paragraph in version 13",
+       "alt": "Chapter 04’s first paragraph in version 13, ending with how Ampersand B is drawn."},
+      {"id": "o2", "page": "final", "el": "ampersand", "w": 1440, "role": "after", "row": "o",
+       "clip": {"within": "#ampersand .ch-head", "texts": ["Ampersand B is our own drawing"], "block": "p", "context": 16},
+       "label": "The same paragraph in version 14",
+       "alt": "The same paragraph in version 14, with a last sentence on the trademark attorney’s check before launch."}
+     ]
+    },
+    {
+     "n": 24,
+     "none": "The atlas V7.1 issue list gains row {row}, on the who-acts words in reform routes; the guide is unchanged.",
+     "facts": [
+      {"name": "row", "file": "work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md", "pattern": "^\\| (46) \\| Each reform route’s who-acts field"}
+     ]
+    }
+   ]
+  },
+  "clearance": {
+   "n": 4,
+   "nav": "The label clearance list",
+   "title": "The label clearance list",
+   "refs": "DR-295 · D3-2341 · D3-2350",
+   "lede": "The kit’s label clearance check moves a value label off a band edge that runs through it. Today only S59 turns it on. The engineer ran the check’s own test over every chart as a list, moving nothing, to show what switching it on for every chart would move.",
+   "result_line": "With S59’s own setting in place, the test read {specs} charts in {drawings} drawings, at every width the kit draws each one, and found no chart it would move.",
+   "none_word": "None",
+   "before_h": "Before S59’s setting",
+   "before_lede": "Before S59 took its setting, the same test found one chart, S59, whose “4.1” a band edge crossed at {count} widths. The setting moved that one word, at those widths only.",
+   "cols": ["Chart", "Rule", "Label", "Drawing widths where an edge crossed it", "Widths"],
+   "caption": "The charts the label clearance check would move",
+   "pic_lede": "S59 at a 390 px window, where the chart draws 358 px wide, one of the widths that failed: the moved label beside its old place.",
+   "pictures": [
+    {"id": "s59a", "page": "v13", "el": "oac-s-14-s59", "w": 390, "role": "before", "row": "s",
+     "clip": {"subs": ["svg.oac-svg"], "context": 8},
+     "label": "S59 at 390 px in version 13",
+     "alt": "S59, the fan chart, at a 390 px window in version 13: the value “4.1” over 2026 sits on the rising edge of the outer band, which runs through it."},
+    {"id": "s59b", "page": "final", "el": "oac-s-14-s59", "w": 390, "role": "after", "row": "s",
+     "clip": {"subs": ["svg.oac-svg"], "context": 8},
+     "label": "S59 at 390 px in version 14",
+     "alt": "S59 at 390 px in version 14: the same “4.1” moved up, clear of the band’s edge; every other word and shape is where it was."}
+   ]
+  },
+  "scores": {
+   "n": 5,
+   "nav": "Scores",
+   "title": "Scores",
+   "refs": "DR-277 · DR-286",
+   "lede": "The creative director scores each item from 1 to 5 on six criteria: craft, clarity, brand fidelity, usefulness, evidence honesty and accessibility. An item ships at 4 or more on all six with no Must fix open.",
+   "items_h": "Every Phase 3 item, at its last score",
+   "items_line": "{ok} of the {n} items score 4 or more on all six.",
+   "items_caption": "The creative director’s last score for every Phase 3 item",
+   "items_cols": ["Item", "Round", "Craft", "Clarity", "Brand fidelity", "Usefulness", "Evidence honesty", "Accessibility", "Last scored in"],
+   "file_words": {
+    "20261111_Round-0-CD-Scores.json": "Round 0 score",
+    "20261112_Round-0-CD-Rescores.json": "Round 0 rescore",
+    "20261112_Round-1-CD-Scores.json": "Round 1 score",
+    "20261112_Round-1-CD-Rescores.json": "Round 1 rescore",
+    "20261112_Round-2-CD-Scores.json": "Round 2 score",
+    "20261112_Round-2-CD-Rescores.json": "Round 2 rescore",
+    "20261113_Round-3-CD-Scores.json": "Round 3 score",
+    "20261113_Round-3-CD-Rescores.json": "Round 3 rescore",
+    "20261116_Rounds-4-5-CD-Scores.json": "Rounds 4 and 5 score",
+    "20261116_Rounds-4-5-CD-Rescores.json": "Rounds 4 and 5 rescore",
+    "20261120_Second-Pass-CD-Rescores.json": "Second pass rescore",
+    "20261120_Apply-Pass-CD-Rescores.json": "This gate’s rescore"
+   },
+   "apply_h": "This gate’s rescore",
+   "apply_lede": "After the apply pass the creative director rescored the {n} items it touched. Each cell gives the score before the pass, small, then the score after it.",
+   "apply_line": "{ready} of the {n} rescored items ship, with no Must fix or Should fix open; {rose} scores rose and {fell} fell.",
+   "apply_caption": "The creative director’s rescore after the apply pass",
+   "legend": "A box marks a score under 4; a shaded cell marks a score that moved.",
+   "boards_h": "The boards",
+   "boards_lede": "The creative director scores each board as a page, then again after one fix round.",
+   "boards_caption": "The creative director’s scores for boards 2 and 3",
+   "boards_cols": ["Board", "Craft", "Clarity", "Brand fidelity", "Usefulness", "Evidence honesty", "Accessibility"],
+   "board_names": {"board_2": "Board 2", "board_3": "Board 3", "gate_3_board": "This board"},
+   "first_words": "first read",
+   "after_words": "after the fix round",
+   "this_h": "This board",
+   "this_wait": "Waiting for the creative director’s score of this board.",
+   "this_line": "The creative director’s score of this board, read from its file."
+  },
+  "weight": {
+   "n": 6,
+   "nav": "Page weight",
+   "title": "Page weight",
+   "refs": "DR-271 · D3-1310",
+   "wait": "Waiting for version 14’s build report.",
+   "lede": "Version 14 weighs {page} bytes, read from its build report of {built}. As you decided, only the page’s 16 MB stops a build; every other figure is reported against its line and nothing is cut to meet it.",
+   "top_caption": "The page, chapter 14 and the chart kit against their figures, in bytes",
+   "cols": ["Part", "Share of its figure", "Bytes", "Figure"],
+   "rows": {
+    "page_limit": "The page today, against 16 MB",
+    "proj_limit": "The page as projected with every chapter built, against 16 MB",
+    "proj_warn": "The page as projected, against the 15.5 MB line the build warns at",
+    "ch14": "Chapter 14 with the chart kit, against its figure",
+    "kit": "The chart kit, against its figure"
+   },
+   "chapters_h": "Each chapter against its figure",
+   "chapters_caption": "Each built chapter of version 14 against its figure, in bytes",
+   "chapter_word": "Chapter {n}",
+   "room_h": "Phase 4’s room under 16 MB",
+   "room_line": "Under 16 MB, the page has {free} bytes left. Chapter 15 holds {held} of them to finish its allocation and chapters 27 and 28 take {phase5}, which leaves Phase 4’s seven chapters {room} bytes, and {room_warn} under the 15.5 MB line. Panel 2 allocates {alloc} of it.",
+   "kit_note_re": "chart kit weighs ([\\d,]+) bytes, over its budget of ([\\d,]+)"
+  },
+  "tested": {
+   "n": 7,
+   "nav": "Tested and not tested",
+   "title": "Tested and not tested",
+   "refs": "DR-213 · DR-279",
+   "lede": "Each figure here is read from the file that records it.",
+   "tested_h": "Tested",
+   "not_h": "Not tested",
+   "wait_words": "Waiting for its file",
+   "board_not_h": "This board",
+   "tested": [
+    {"label": "The strict build of version 14", "kind": "build", "owner": "build",
+     "words": "read from its report, built {when}: {warnings} warnings, {bytes} bytes, {rules} rules and {specimens} examples placed"},
+    {"label": "The four-width guide check", "kind": "check_file", "slot": "four_width_check", "owner": "main",
+     "words": "run by the main session on version 14 at {widths} px: {specimens} drawn examples and {links} same-page links read, with {failures} failures"},
+    {"label": "The quick guide check with photographs", "kind": "check_file", "slot": "quick_check", "owner": "main",
+     "words": "run by the main session on version 14 at {widths} px, with its photographs: {specimens} drawn examples and {links} same-page links read, with {failures} failures"},
+    {"label": "The guide check’s self-test", "kind": "notes", "owner": "main",
+     "sources": [{"scratch_file": "c09/checks/selftest.log", "pattern": "(\\d+) of (\\d+) planted faults caught; (\\d+) of (\\d+) allowed cases left alone",
+                  "words": "run by the main session: {1} of {2} planted faults caught and {3} of {4} allowed cases left alone"}]},
+    {"label": "The kit’s build of every chart, without pictures", "kind": "count", "owner": "main",
+     "scratch_file": "c09/final/kit.log", "pass": "^PASS S\\d+", "fail": "^FAIL\\b",
+     "words": "run by the main session on the final files: {pass} charts pass and {fail} fail"},
+    {"label": "Chapter 14’s build check", "kind": "notes", "owner": "facts",
+     "sources": [{"file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md", "pattern": "Closing, at [^:]*?(\\d\\d:\\d\\d) UTC: .*?`phase3_ch14_build\\.py --check` (\\d+) of (\\d+)",
+                  "words": "{2} of {3} of its files current, in the engineer’s closing run at {1} UTC"}]},
+    {"label": "The data check", "kind": "notes", "owner": "report",
+     "sources": [{"file": "work/ledger/20261120_Gate-3-Report.md", "pattern": "The data check: ([\\d,]+) tables, (\\d+) faults",
+                  "words": "{1} tables and {2} faults, as the Gate 3 report records it"}]},
+    {"label": "The atlas check", "kind": "v7", "slot": "v7_check", "owner": "main",
+     "words": "run by the main session on version 14: {chips} chips in chapters {chapters} and {specs} kit chart files read, with {failures} failures"},
+    {"label": "Links to the chapters page", "kind": "preview_links", "owner": "final",
+     "words": "{links} links to {anchors} rules, each target checked by this board’s build on version 14’s page: {found} of {links} found"},
+    {"label": "This board’s own check", "kind": "board_check", "owner": "render",
+     "words": "on its last run at {widths} px, {failures} failures apart from the page’s language, which the host sets when it wraps the page"}
+   ],
+   "not_tested_board": [
+    "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
+    "Every picture by eye: the build checks each one’s size and source, and the builder looked at a sample.",
+    "A keyboard walk past the board check’s first stops, and a screen reader."
+   ]
+  }
+ },
+ "foot": "Built {built_date} from the studio’s files. Every number and picture on this board is read from them at build time.",
+ "slots": {
+  "report": "work/ledger/20261120_Gate-3-Report.md",
+  "answers": "work/handoffs/phase-3/20261120_Board-3-Answers.md",
+  "final_page": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14.html",
+  "final_report": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Build-Report.json",
+  "final_label": "version 14, the final build of chat 9",
+  "pages": {"v13": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html"},
+  "label_list": "work/handoffs/phase-3/20261120_Label-Clearance-List.json",
+  "scores_script": "work/build/scripts/phase-3/gate_3_scores.py",
+  "apply_rescore": "work/handoffs/phase-3/20261120_Apply-Pass-CD-Rescores.json",
+  "board_scores": "work/handoffs/phase-3/20261120_Gate-3-Board-CD-Scores.json",
+  "kit_dir": "work/build/chart-kit",
+  "kit_command": "work/build/chart-kit/oa-chart.mjs",
+  "tokens_css": "work/build/tokens/tokens.css",
+  "preview_url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
+  "four_width_check": "[scratch]/c09/final/four/v14-Guide-Check-Results.json",
+  "quick_check": null,
+  "v7_check": "[scratch]/c09/final/v7.json"
+ }
+}
