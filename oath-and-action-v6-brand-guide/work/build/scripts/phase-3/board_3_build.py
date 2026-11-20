@@ -1,39 +1,40 @@
-"""Build board 2 of Phase 3 (November 13, 2026; the board builder, working as the design director).
+"""Build board 3 of Phase 3 (November 20, 2026; the board builder, working as the design director).
 
-Built on board 1's and the round 2 progress page's builders, which stay as they are. Usage:
-    python3 -I work/build/scripts/phase-3/board_2_build.py [--reuse] [--check] [--strict] [--scratch DIR] [--out PATH]
-                                                           [--decisions FILE]
+Copied from board 2's builder (board_2_build.py), which stays as it is, as every earlier builder does. Usage:
+    python3 -I work/build/scripts/phase-3/board_3_build.py [--reuse] [--check] [--strict] [--scratch DIR] [--out PATH]
+                                                           [--decisions FILE] [--final PAGE] [--final-report FILE]
+                                                           [--no-browser]
 
 Reads, on every run:
-    work/boards/phase-3/round-3/board-2/20261113_Board-2-Content.json   the board's own words and the files it reads
-    work/handoffs/phase-3/20261113_Board-2-Decisions.json               panel 1's items and the Rule 01.9 and DR-229
-                                                                         counts (the data lead's; --decisions reads
-                                                                         another file, for a test only)
-    work/handoffs/phase-3/20261112_Chapter-14-Plan.json                 the 114 forms of rounds 1 to 3, by family
-    a fresh strict build of the guide (guide_build.py --strict --out <scratch>/guide/): every guide photograph, each
-        chart's printed title, evidence label, source line and table, the width the guide draws each chart at 1440 and
-        390 px, every entry's anchor, and the weights in its report
+    work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Content.json   the board's own words and the files it reads
+    work/handoffs/phase-3/20261120_Board-3-Decisions.json                  panel 1's items, the pages they name and the
+                                                                            Rule 01.9 and DR-229 counts (the data lead's;
+                                                                            --decisions reads another file, for a test only)
+    the final build (the content file's slots.final_page, or --final) and its build report (slots.final_report, or
+        --final-report, else the page's name with -Build-Report.json): every "final" photograph, each chart's printed
+        title, evidence label, source line and table, the width it draws each chart at 1440 and 390 px, every entry's
+        anchor, and every weight. The board never builds the guide itself.
+    the earlier pages the decisions file names under "pages" (V9 to V12), for the "before" photographs
+    work/handoffs/phase-3/20261112_Chapter-14-Plan.json                    round 4's 13 forms, by family
     the chart kit's own captures, built afresh into <scratch>/kit-out/ by oa-chart.mjs at the widths the guide draws
-        (one folder per chart: both grounds, both widths, the grayscale proofs, the check file with its weight line)
-    work/boards/phase-3/round-0/specimens/                              board 1's captures, check files and exports
-    work/handoffs/phase-3/board-2-pictures/                             the cartographer's board-only pictures
-    work/build/guide/chapters/14-data-visualization.json                rules 14.1 to 14.14, the opener, the sketches
-    the creative director's scores and rescores and the red team reports of rounds 1 to 3, the board's own scores
-        when they land, the quick guide check's results file the main session names, the engineer's notes
+    work/build/guide/chapters/14-data-visualization.json and 15-systems-graphics.json: round 5's charts, chapter 15's rules
+    the nine readers' reports, the creative director's scores, rescore and second pass rescore, and this board's scores
+        when they land; the check files the main session names in the content file
     work/build/tokens/tokens.css (the :root tokens the page's styles name, and only those)
-    work/ledger/*_Decision-Log.md and *_Open-Questions.md               every code in a reference line must exist
+    work/ledger/*_Decision-Log.md and *_Open-Questions.md                  every code in a reference line must exist
 Writes:
-    work/boards/phase-3/round-3/board-2/20261113_Board-2.html           the board (no scripts; the host wraps it)
-    work/boards/phase-3/round-3/board-2/img/                            every picture it shows, composed
-    work/boards/phase-3/round-3/board-2/20261113_Board-2-Figures.json   every figure it prints, with its source
-    work/boards/phase-3/round-3/board-2/20261113_Board-2-Check-Results.json  (written by dataviz_check.js)
-    <scratch>/  the guide build, the kit's builds, the photographs, the measurements and the composition cache
-It also puts back work/build/chart-kit/plate-share.json as it found it, since the strict build rewrites its timestamp.
+    work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html           the board (no scripts; the host wraps it)
+    work/boards/phase-3/review-4-5/board-3/img/                            every picture it shows, composed
+    work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Figures.json   every figure it prints, with its source
+    work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Check-Results.json  (written by dataviz_check.js)
+    <scratch>/  the kit's builds, the photographs, the pictures made in scratch copies, the measurements and the cache
 
 --reuse keeps a kit capture when its spec, data, form module, the kit's shared files and the widths asked are unchanged,
-and a guide photograph or measurement when its element's HTML, the page's styles and scripts and the window width are
-unchanged; without it, every capture and photograph is made afresh. --check runs dataviz_check.js with --board
---no-captures, from work/build, on the page itself and on a copy wrapped as the host wraps it; the page carries no
+and a photograph or measurement when its element's HTML, the page's styles and scripts, the window width and the
+picture's setup are unchanged; without it, every capture and photograph is made afresh. --no-browser opens no browser at
+all: it builds the page from the captures already in scratch and shows the rest as waiting. Before every browser run the
+build runs the machine's browsers.sh and waits until it prints "OK to open one". --check runs dataviz_check.js with
+--board --no-captures, from work/build, on the page itself and on a copy wrapped as the host wraps it; the page carries no
 <html> tag by contract, so axe's html-has-lang is the one failure allowed on the page itself. --strict exits 1 on any
 warning. A part whose file is missing or still pending prints "Waiting for". Images the page no longer names are removed.
 """
@@ -49,6 +50,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 
 ROOT = pathlib.Path(__file__).resolve().parents[4]
 SCRIPTS2 = ROOT / 'work/build/scripts/phase-2'
@@ -56,22 +58,23 @@ SCRIPTS3 = ROOT / 'work/build/scripts/phase-3'
 sys.path.insert(0, str(SCRIPTS3))
 import board_1_build as B1  # noqa: E402   board 1's Markdown readers and quoted-words rules (D3-206)
 
-DATE = '20261113'
-BOARD_DIR = ROOT / 'work/boards/phase-3/round-3/board-2'
+DATE = '20261120'
+BOARD_DIR = ROOT / 'work/boards/phase-3/review-4-5/board-3'
 IMG = BOARD_DIR / 'img'
-CONTENT = BOARD_DIR / f'{DATE}_Board-2-Content.json'
-FIGURES = BOARD_DIR / f'{DATE}_Board-2-Figures.json'
-OUT = BOARD_DIR / f'{DATE}_Board-2.html'
-SCRATCH_DEFAULT = pathlib.Path('/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/builder')
-SCRATCH_ROOT = pathlib.Path('/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad')
+CONTENT = BOARD_DIR / f'{DATE}_Board-3-Content.json'
+FIGURES = BOARD_DIR / f'{DATE}_Board-3-Figures.json'
+OUT = BOARD_DIR / f'{DATE}_Board-3.html'
+SCRATCH_ROOT = pathlib.Path('/tmp/claude-0/-home-user-Dustin-s-Command-Center/318bf243-c48f-583b-8dd6-5600224b4263/scratchpad')
+SCRATCH_DEFAULT = SCRATCH_ROOT / 'c08/board-3/builder'
+BROWSERS_SH = SCRATCH_ROOT / 'c08/browsers.sh'
 LABEL_FONT = '/usr/share/fonts/opentype/inter/Inter-Medium.otf'
 NEWSPRINT = (0xDC, 0xD9, 0xD2)
 LABEL_INK = (0x4E, 0x53, 0x5B)
 PAD = 16                  # B2-S12: the inner margin round a picture on Charcoal
 CONTENT_W = 1280          # the widest picture that sits in the board's column at a 1440 px window with no frame scroll
 REGION_W = 288            # a picture wider than a 320 px window's column scrolls in its own named frame
-FILES_AIM = 330           # the brief: about 300 files
-BYTES_AIM = 120_000_000   # and under 120 MB
+FILES_AIM = 260           # the brief: about 250 pictures
+BYTES_AIM = 60_000_000    # and under 60 MB, so one publish carries it
 LIMIT_FILES = 511
 LIMIT_TOTAL = 256_000_000
 LIMIT_IMAGE = 15_000_000
@@ -80,6 +83,8 @@ FLAGGED = B1.FLAGGED
 CODE_DEC = B1.CODE_DEC
 IMG_EXT = ('.png', '.jpg', '.jpeg', '.webp')
 DESK, PHONE = 1440, 390   # the two windows the board shows each chart at
+# studio codes a teammate's words may carry in a parenthesis; they move to the panel's reference line
+STUDIO = r'(?:DR|D3|D2|D1|G1|G2|DC|Q|C|RS|CR|AX|CE|NB|ST|PR|RP|DF|DD|CA|DT|UX|R4|R5|AX-S|CR-S)-[A-Z]{0,2}\d+[a-z]?'
 
 C = {}
 D = None                  # the decisions file, or None while it is missing
@@ -91,14 +96,16 @@ IMAGES = {}
 STATUS = {}
 CACHE = {}
 ANCHORS = set()
-V9_IDS = None             # the ids on the published preview's page, when the content file names it
-LINKS = []                # every link to the guide preview, one entry a link
+PREVIEW_IDS = None        # the ids on the final page, which version 13 publishes
+LINKS = []                # every link to the chapters page, one entry a link
 FAILS = []                # B2-M6: what fails the build outright, whatever --strict says
 MEAS = {}                 # spec -> {window: the guide's measure of its figure}
 SPECINFO = {}             # spec -> {'form', 'title', 'rule'}
 FORMPIC = {}              # spec -> (panel 2's Newsprint picture, its rule, its alt)
-PLATES = None             # the engineer's plate measures (B2-M4)
 CHARCOAL = None           # the Charcoal ground, from tokens.css
+PAGES = {}                # page key -> {'path', 'text', 'frame'}
+NO_BROWSER = False
+MOVED_REFS = []           # studio codes moved out of a teammate's words, for the panel's reference line
 
 
 def fail(msg):
@@ -179,59 +186,100 @@ def rid_anchor(rid):
 
 
 def rule_href(rid):
-    """A form's live entry in the guide preview, as board C's builder links rules; the anchor must be on today's build."""
+    """A rule's live entry in the chapters page (version 13); the anchor must be on the final build's page."""
     a = rid_anchor(rid)
-    if ANCHORS and a not in ANCHORS:
-        warn(f'Rule {rid}: #{a} is not on today’s strict build')
-    if V9_IDS is not None and a not in V9_IDS:
-        fail(f'Rule {rid}: #{a} is not on the published preview’s page')
+    if PREVIEW_IDS is not None and a not in PREVIEW_IDS:
+        fail(f'Rule {rid}: #{a} is not on the final build’s page')
     LINKED.add(a)
     LINKS.append(a)
     return f'{C["slots"]["preview_url"]}#{a}'
 
 
-# ------------------------------------------------------------------------------------------------------- the guide
-def guide_build():
-    d = SCRATCH / 'guide'
-    d.mkdir(parents=True, exist_ok=True)
-    page = d / f'{DATE}_Board-2-Guide.html'
-    rep = d / f'{DATE}_Board-2-Guide-Build-Report.json'
-    for p in (page, rep):
-        if p.exists():
-            p.unlink()
-    share = ROOT / C['slots']['plate_share']
-    before = share.read_bytes() if share.exists() else None
-    r = subprocess.run([sys.executable, '-I', str(ROOT / C['slots']['guide_build']), '--strict', '--out', str(page)], cwd=ROOT,
-                       capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
-    (SCRATCH / 'guide-build.log').write_text(r.stdout + r.stderr)
-    # the strict build rewrites plate-share.json; this board's build is a scratch build, so it puts back what was there
-    # whenever the file holds this build's own timestamp (another owner's build since then is left as it wrote it)
-    if before is not None and share.exists() and share.read_bytes() != before:
-        a, b = json.loads(before), json.loads(share.read_text())
-        mine = rep.exists() and b.get('built') == json.loads(rep.read_text()).get('built')
-        if mine:
-            share.write_bytes(before)
-            if a.get('per_plate') != b.get('per_plate'):
-                NOTES.append(f'this build’s share per plate is {b.get("per_plate")}; {rel(share)} keeps {a.get("per_plate")}, as found')
-        else:
-            warn(f'{rel(share)} changed during this build and not by it; left as it is')
-    ok = r.returncode == 0 and page.exists() and rep.exists()
-    if not ok:
-        warn(f'the strict guide build failed (exit {r.returncode}); the guide pictures wait for a passing build')
-    report = json.loads(rep.read_text()) if rep.exists() else {}
-    text = page.read_text() if page.exists() else ''
-    ANCHORS.update(re.findall(r'\sid="(rule-14-\d+)"', text))
-    FIG['guide_build'] = {'exit': r.returncode, 'bytes': report.get('bytes'), 'rules': report.get('rules'),
-                          'specimens': report.get('specimens_placed'), 'warnings': len(report.get('warnings', [])), 'built': report.get('built')}
-    return {'ok': ok, 'usable': ok, 'page': page, 'text': text, 'report': report, 'mtime': page.stat().st_mtime if page.exists() else None}
+def slug(s):
+    return re.sub(r'[^A-Za-z0-9]+', '-', str(s)).strip('-')
 
 
-def element_html(page, el_id):
-    """The source of the element with this id, its own tag balanced, so a picture's signature changes only when it does."""
-    i = page.find(f'id="{el_id}"')
-    if i < 0:
+# ------------------------------------------------------------------------------------------------------- the pages
+def scratch_path(s):
+    """A slot's path: '[scratch]/...' under this session's scratch folder, else relative to the project."""
+    if not s:
         return None
-    start = page.rfind('<', 0, i)
+    s = str(s)
+    if s.startswith('[scratch]/'):
+        return SCRATCH_ROOT / s[len('[scratch]/'):]
+    p = pathlib.Path(s)
+    return p if p.is_absolute() else ROOT / p
+
+
+def load_pages(final, final_report):
+    """The final build (the board never builds the guide: it reads the page the main session names) and the earlier pages
+    the decisions file names. -> G, the final page's record, in board 2's shape."""
+    pages = dict((D or {}).get('pages') or {})
+    for k, v in list(pages.items()):
+        if k == 'final':
+            continue
+        p = ROOT / v
+        PAGES[k] = {'path': p, 'text': None, 'frame': None}
+        if not p.is_file():
+            warn(f'the decisions file names {v} for {k}, and it is not there')
+    fp = final or scratch_path(C['slots'].get('final_page'))
+    rp = final_report or scratch_path(C['slots'].get('final_report'))
+    if fp and not rp:
+        rp = fp.with_name(fp.stem + '-Build-Report.json')
+    ok = bool(fp and fp.is_file())
+    PAGES['final'] = {'path': fp, 'text': None, 'frame': None}
+    report = {}
+    if rp and rp.is_file():
+        report = json.loads(rp.read_text())
+        if ok and report.get('bytes') and report['bytes'] != fp.stat().st_size:
+            warn(f'the final build’s report gives {report["bytes"]:,} bytes and its page is {fp.stat().st_size:,}')
+    elif ok:
+        warn(f'the final build’s report is not there: {rel(rp) if rp else "no path"}')
+    if not ok:
+        warn('the final build’s page is not there; every final picture waits for it')
+    text = page_text('final') if ok else ''
+    ANCHORS.update(re.findall(r'\sid="(rule-1[0-9]-\d+)"', text))
+    FIG['final_build'] = {'page': rel(fp) if fp else None, 'report': rel(rp) if rp else None, 'bytes': report.get('bytes'),
+                          'built': report.get('built'), 'warnings': len(report.get('warnings', [])), 'rules': report.get('rules'),
+                          'specimens': report.get('specimens_placed'), 'label': C['slots'].get('final_label')}
+    FIG['pages'] = {k: rel(v['path']) if v['path'] else None for k, v in PAGES.items()}
+    return {'ok': ok and bool(report), 'usable': ok, 'page': fp, 'text': text, 'report': report,
+            'mtime': fp.stat().st_mtime if ok else None}
+
+
+def page_text(key):
+    P = PAGES.get(key)
+    if not P or not P['path'] or not P['path'].is_file():
+        return ''
+    if P['text'] is None:
+        P['text'] = P['path'].read_text()
+    return P['text']
+
+
+def page_frame(key):
+    P = PAGES.get(key)
+    if P is None:
+        return ''
+    if P['frame'] is None:
+        P['frame'] = page_frame_sig(page_text(key))
+    return P['frame']
+
+
+def element_html(page, el):
+    """The source of the element an id names, or a 'tag.class' selector names (its first match), its own tag balanced,
+    so a picture's signature changes only when it does."""
+    el = el.lstrip('#')
+    if '.' in el and not el.startswith(('fig-', 'oac-', 's-', 'rule-')):
+        tag, cls = el.split('.', 1)
+        m = re.search(r'<' + re.escape(tag) + r'\b[^>]*\bclass="(?:[^"]*\s)?' + re.escape(cls) + r'(?:\s[^"]*)?"', page)
+        if not m:
+            return None
+        start = m.start()
+    else:
+        i = page.find(f'id="{el}"')
+        if i < 0:
+            return None
+        start = page.rfind('<', 0, i)
     tag = re.match(r'<([a-zA-Z0-9]+)', page[start:]).group(1)
     depth = 0
     for m in re.compile(r'<(/?)' + tag + r'\b[^>]*?(/?)>').finditer(page, start):
@@ -244,6 +292,13 @@ def element_html(page, el_id):
     return page[start:]
 
 
+def css_selector(el):
+    el = el.lstrip('#')
+    if '.' in el and not el.startswith(('fig-', 'oac-', 's-', 'rule-')):
+        return el
+    return f'#{el}'
+
+
 def page_frame_sig(page):
     """Every style and script of the guide page that is not a data island: what draws every element."""
     parts = re.findall(r'<style\b[^>]*>(.*?)</style>', page, flags=re.S)
@@ -251,15 +306,34 @@ def page_frame_sig(page):
     return sha(*parts)
 
 
+def browser_gate(label):
+    """The machine's rule: before each browser run, run browsers.sh and open one only when it prints "OK to open one".
+    Waits up to 20 minutes, asking every 30 seconds; its exit status is never read."""
+    if NO_BROWSER:
+        return False
+    for k in range(40):
+        r = subprocess.run(['bash', str(BROWSERS_SH)], capture_output=True, text=True)
+        out = (r.stdout or '').strip()
+        if 'OK to open one' in out:
+            NOTES.append(f'{datetime.datetime.now(datetime.timezone.utc):%H:%M:%S} UTC {label}: {out}')
+            return True
+        print(f'waiting to open a browser for {label}: {out}')
+        time.sleep(30)
+    warn(f'no browser opened for {label}: browsers.sh never printed "OK to open one" in 20 minutes')
+    return False
+
+
 def run_render(jobs, label):
-    """One browser at a time: board_2_render.js opens each page in turn and closes the browser at the end."""
-    if not jobs:
+    """One browser at a time: board_3_render.js opens each page in turn and closes the browser at the end."""
+    if not jobs or not browser_gate(label):
         return
     jp = SCRATCH / f'render-jobs-{label}.json'
     jp.write_text(json.dumps(jobs))
-    r = subprocess.run(['node', str(SCRIPTS3 / 'board_2_render.js'), str(jp)], cwd=ROOT / 'work/build',
+    t0 = time.time()
+    r = subprocess.run(['node', str(SCRIPTS3 / 'board_3_render.js'), str(jp)], cwd=ROOT / 'work/build',
                        capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
     (SCRATCH / f'render-{label}.log').write_text(r.stdout + r.stderr)
+    FIG.setdefault('render_seconds', {})[label] = round(time.time() - t0)
     for line in r.stdout.splitlines():
         if line.startswith('failed') or line.startswith('page error'):
             warn('render: ' + line)
@@ -267,42 +341,75 @@ def run_render(jobs, label):
         warn('the renderer stopped: ' + r.stderr[-300:])
 
 
-def run_shots(G, items, reuse):
-    """items: [(key, element id, width)] or [(key, element id, width, 'measure')] -> {key: path}. One page load per width,
-    only for the items that changed."""
+def run_shots(items, reuse, label='guide'):
+    """items: dicts {key, page, el, w, measure, text_scale, actions, recipe, session} -> {key: path}. One page load per
+    page, window and session, only for the items that changed. Actions add up through a session's items in order."""
     shots = SCRATCH / 'shots'
     shots.mkdir(parents=True, exist_ok=True)
     sig_file = SCRATCH / 'shot-sigs.json'
     sigs = json.loads(sig_file.read_text()) if sig_file.exists() else {}
-    frame = page_frame_sig(G['text'])
-    paths, todo = {}, {}
-    for key, el, w, *kind in items:
-        measure = bool(kind and kind[0] == 'measure')
+    paths, todo, prefix = {}, {}, {}
+    for it in items:
+        key, pk, el, w = it['key'], it['page'], it['el'], it['w']
+        measure = bool(it.get('measure'))
         p = shots / (f'{key}.json' if measure else f'{key}.png')
         paths[key] = p
-        src = element_html(G['text'], el.split()[0])
-        if src is None:
-            warn(f'the guide holds no element #{el.split()[0]}')
+        text = page_text(pk)
+        if not text:
             continue
-        s = sha(frame, w, src, el, 'measure' if measure else 'picture')
+        src = element_html(text, el)
+        if src is None:
+            warn(f'{pk}: the page holds no element {el}')
+            continue
+        if it.get('recipe') == 'rail-focus':
+            src += element_html(text, 'nav.rail') or ''
+        sess = it.get('session') or ''
+        gk = (pk, w, it.get('text_scale') or 1, sess)
+        acts = prefix.setdefault(gk, [])
+        acts += it.get('actions') or []
+        s = sha(page_frame(pk), w, src, el, 'measure' if measure else 'picture', it.get('text_scale') or 1, it.get('recipe') or '',
+                json.dumps(acts), 'b3r1')
         if reuse and p.exists() and sigs.get(key) == s:
             continue
-        todo.setdefault(w, []).append((key, el, s, p, measure))
-    jobs = [{'file': str(G['page']), 'width': w, 'height': 900 if w > 600 else 844, 'static_sticky': True, 'draw_all': True,
-             'items': [{'selector': f'#{el}', 'out': str(p), 'measure': m} for key, el, s, p, m in its]} for w, its in sorted(todo.items(), reverse=True)]
+        todo.setdefault(gk, []).append((key, it, s, p, measure))
+    jobs = []
+    for (pk, w, ts, sess), its in sorted(todo.items(), key=lambda kv: (kv[0][0], -kv[0][1], kv[0][3])):
+        if sess:
+            # a session's actions add up from the page's load: every item of the session is taken again, in order
+            its = [(it['key'], it, None, paths[it['key']], bool(it.get('measure'))) for it in items
+                   if (it['page'], it['w'], it.get('text_scale') or 1, it.get('session') or '') == (pk, w, ts, sess)]
+        setup_job = any(it.get('recipe') for _, it, *_ in its)
+        jobs.append({'file': str(PAGES[pk]['path']), 'width': w, 'height': 900 if w > 600 else 844, 'static_sticky': not setup_job,
+                     'draw_all': True, 'text_scale': ts,
+                     'items': [{'selector': css_selector(it['el']), 'out': str(p), 'measure': m, 'actions': it.get('actions') or [],
+                                'recipe': it.get('recipe')} for key, it, s, p, m in its]})
     if jobs:
-        print(f'photographing or measuring {sum(len(j["items"]) for j in jobs)} elements of the guide ...')
-        for its in todo.values():
-            for key, el, s, p, m in its:
-                if p.exists():
-                    p.unlink()
-        run_render(jobs, 'guide')
-        for its in todo.values():
-            for key, el, s, p, m in its:
-                if p.exists():
-                    sigs[key] = s
+        n = sum(len(j['items']) for j in jobs)
+        print(f'photographing or measuring {n} elements on {len(jobs)} page loads ...')
+        for j in jobs:
+            for x in j['items']:
+                if pathlib.Path(x['out']).exists():
+                    pathlib.Path(x['out']).unlink()
+        run_render(jobs, label)
+        # the signatures, worked out again for every item now on disk
+        prefix = {}
+        for it in items:
+            gk = (it['page'], it['w'], it.get('text_scale') or 1, it.get('session') or '')
+            acts = prefix.setdefault(gk, [])
+            acts += it.get('actions') or []
+            p = paths[it['key']]
+            text = page_text(it['page'])
+            src = element_html(text, it['el']) if text else None
+            if src is None or not p.exists():
+                continue
+            if it.get('recipe') == 'rail-focus':
+                src += element_html(text, 'nav.rail') or ''
+            sigs[it['key']] = sha(page_frame(it['page']), it['w'], src, it['el'], 'measure' if it.get('measure') else 'picture',
+                                  it.get('text_scale') or 1, it.get('recipe') or '', json.dumps(acts), 'b3r1')
         sig_file.write_text(json.dumps(sigs, indent=1))
-    FIG['shots'] = {'taken': sorted(k for its in todo.values() for k, *_ in its), 'reused': sorted(k for k in paths if all(k != x[0] for its in todo.values() for x in its))}
+    taken = {x['out'] for j in jobs for x in j['items']}
+    FIG.setdefault('shots', {})[label] = {'asked': len(items), 'taken': sum(1 for k, p in paths.items() if str(p) in taken and p.exists()),
+                                          'missing': sorted(k for k, p in paths.items() if not p.exists())[:40]}
     return paths
 
 
@@ -435,6 +542,8 @@ def kit_build(groups, reuse):
         # one kit browser at a time, in batches of 12 charts, so no browser stays open long
         for k in range(0, len(todo), 12):
             batch = todo[k:k + 12]
+            if not browser_gate(f'the kit, {len(batch)} charts'):
+                break
             r = subprocess.run(['node', str(ROOT / S['kit_command']), 'build', *[s.lower() for s, _ in batch], '--widths', ','.join(map(str, widths)),
                                 '--out', str(out), '--date', DATE], cwd=ROOT, capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
             logs.append(r.stdout + r.stderr)
@@ -449,56 +558,6 @@ def kit_build(groups, reuse):
         (SCRATCH / 'kit-build.log').write_text('\n'.join(logs))
     FIG['kit_builds'] = {'rebuilt': rebuilt, 'reused': reused, 'widths': {f'{a},{b}': ids for (a, b), ids in groups.items()}}
     return out
-
-
-def board1_compare(ids, kit_out, pages):
-    """Whether each board 1 chart's drawing changed since board 1, two ways. (1) Panel 1: the charts the decisions file's
-    "board-1-changed" group names, in its items or rows, are the changes the data lead lists. (2) Pixels: the kit's
-    drawing alone at a 1440 px window on Newsprint, at twice the pixels, compared pixel for pixel with board 1's file of
-    the same drawing; where the guide draws the chart at another width, the kit draws it again at 1440 px for this test
-    alone. A difference that panel 1 does not name is a warning for the data lead."""
-    from PIL import Image, ImageChops
-    S = C['slots']
-    b1 = ROOT / S['board1_specimens']
-    out = SCRATCH / 'board1-compare'
-    need_run = [s for s in ids if pages.get(s, (DESK,))[0] != DESK]
-    sig = sha(kit_shared_sig(), *[kit_sig(s, '', (1440,)) for s in need_run])
-    stamp = out / 'sig.txt'
-    if need_run and not (stamp.exists() and stamp.read_text() == sig):
-        shutil.rmtree(out, ignore_errors=True)
-        out.mkdir(parents=True, exist_ok=True)
-        r = subprocess.run(['node', str(ROOT / S['kit_command']), 'build', *[s.lower() for s in need_run], '--widths', '1440', '--grounds', 'newsprint',
-                            '--no-sweep', '--out', str(out), '--date', DATE], cwd=ROOT, capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
-        (SCRATCH / 'board1-compare.log').write_text(r.stdout + r.stderr)
-        stamp.write_text(sig)
-    named = {}
-    for g in (D or {}).get('panels', []):
-        if g.get('id') != C['sections']['forms']['b1_group']:
-            continue
-        for it in g.get('items', []):
-            sp = item_spec(it)
-            if sp:
-                named.setdefault(sp, it.get('id'))
-            for r_ in it.get('rows') or []:
-                if r_.get('spec'):
-                    named.setdefault(str(r_['spec']).upper(), it.get('id'))
-    res = {}
-    for sid in ids:
-        lo = sid.lower()
-        old = sorted(b1.glob(f'*_{sid}-*-Newsprint-1440.png'))
-        new = sorted(((out if sid in need_run else kit_out) / lo).glob(f'{DATE}_{sid}-*-Newsprint-1440.png'))
-        same = None
-        if old and new:
-            a, b = Image.open(old[-1]).convert('RGB'), Image.open(new[-1]).convert('RGB')
-            same = a.size == b.size and ImageChops.difference(a, b).getbbox() is None
-        else:
-            warn(f'board 1 comparison for {sid}: a drawing file is missing')
-        res[sid] = {'named_in_panel_1': named.get(sid), 'desk_pixels_same': same,
-                    'files': [rel(old[-1]) if old else None, rel(new[-1]) if new else None]}
-        if same is False and D is not None and sid not in named:
-            fail(f'{sid}: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it')
-    FIG['board1_compare'] = res
-    return res
 
 
 # ------------------------------------------------------------------------------------------------------- pictures
