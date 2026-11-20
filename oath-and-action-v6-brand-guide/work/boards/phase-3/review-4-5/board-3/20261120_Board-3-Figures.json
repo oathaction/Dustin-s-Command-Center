@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T18:14:52.973784+00:00",
+ "built": "2026-11-20T18:18:28.447826+00:00",
  "decisions": {
   "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
   "state": "signed off",
@@ -33,7 +33,7 @@
   },
   "made": {
    "asked": 10,
-   "taken": 4,
+   "taken": 0,
    "missing": []
   }
  },
@@ -64,9 +64,6 @@
    "14.11",
    "14.142"
   ]
- },
- "render_seconds": {
-  "made": 51
  },
  "guide_widths": {
   "S85": {
@@ -459,7 +456,7 @@
   "items_waiting": [],
   "pictures_waiting": 0
  },
- "panel_1_words": 7763,
+ "panel_1_words": 7775,
  "selection_guide": {
   "form_links": 127,
   "road_links": 6,
@@ -902,11 +899,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
- "html_bytes": 365033,
+ "html_bytes": 365073,
  "images": 170,
  "image_bytes": 17159893,
  "folder_files": 174,
- "folder_bytes": 17602889,
+ "folder_bytes": 17602468,
  "largest_image": [
   966992,
   "20261120_Decide-where-to-start-2.png"
@@ -1218,10 +1215,37 @@
   "rule-15-9"
  ],
  "notes": [
-  "18:14:55 UTC made: OK to open one (browsers running: 1, load: 1.44)"
+  "the final build named on the command line: work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
+  "18:18:32 UTC the board check: OK to open one (browsers running: 1, load: 1.20)",
+  "18:19:20 UTC the wrapped board check: OK to open one (browsers running: 1, load: 1.56)"
  ],
  "warnings": [],
- "seconds": 55,
- "words": 20705,
+ "seconds": 4,
+ "words": 20717,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/c08/board-3/builder/publish-view/20261120_Board-3-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ },
  "fails": []
 }
