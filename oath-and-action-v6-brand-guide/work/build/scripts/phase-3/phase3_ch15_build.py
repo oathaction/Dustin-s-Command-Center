@@ -3208,18 +3208,21 @@ def rule_15_19(book):
     # &#32; keeps the space between the line and its more words, which the plate minifier would close up
     lis = "".join(f'<li class="oa-stepper-step" data-oa-hold="{hd}"><span class="oa-stepper-line">{e(ln)}</span>&#32;'
                   f'<span class="oa-stepper-more">{mo}</span></li>' for ln, mo, hd in steps)
+    # RS-7 (second pass after rounds 4 and 5, the component engineer's request 2): Rule 14.143's order, the status line,
+    # the buttons and their reason line, then the still list and the limit, so Tab reaches Play before the list and, on a
+    # phone, the buttons sit under the drawing they light; the order in the markup, never by CSS (DD-C1, 2.8)
     right = (f'<p class="oa-stepper-status" role="status" data-oa-ready="{e(ready)}">{e(ready)}</p>'
-             f'<ol class="oa-stepper-steps" role="list">{lis}</ol>{ctl}{why}'
+             f'{ctl}{why}<ol class="oa-stepper-steps" role="list">{lis}</ol>'
              f'<p class="nt">The atlas’s limit on the loop: “{e(qual)}”</p>'
              + src("loop R1 and connections L01, L02 and L03"))
-    root = (f'<div class="oa-stepper lv" data-oa-stepper>'
+    root = (f'<div class="oa-stepper lv st1" data-oa-stepper>'
             + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", lid, lp["title"]) + f'<div class="dw">{svg_wrap(body, h)}</div>', right) + "</div>")
     book.keys["s-15-19-correct"] = stepper_keys(lid, n_steps=len(steps))
     book.add("s-15-19-correct", root, rule="15.19", wide=True, interactive=True,
              alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, drawn as three pills with its steps numbered 1 to 3, "
-                  "beside the loop stepper of Rule 18.22: a status line, the three steps in order, and four buttons, Play, "
-                  "Reset the loop, Previous step and Next step. The current step lights in the drawing and in the list. "
+                  "beside the loop stepper of Rule 18.22: a status line, four buttons (Play, Reset the loop, Previous step "
+                  "and Next step) and the three steps in order. The current step lights in the drawing and in the list. "
                   "With scripts off or in print, the list shows every step in order."),
              notes="Rule 18.22's markup with no script of its own (C-1); its controls and reason line read from "
                    "work/build/guide/code/c-18-loop-stepper.html; the drawing follows data-oa-at through the chapter's "
@@ -3388,9 +3391,13 @@ def rule_15_20(book):
     book.log("15.20 correct", "Reforms R-03 and R-04 on Loop R4a, district maps", "D02")
     # the failure: both reforms lit at once, their effects added into one score, the qualifications gone
     fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=set(owner), keys=True)
-    boxes = "".join(f'<li><span class="xb" aria-hidden="true">{check_.replace("oa-choice-check", "ck")}</span>'
-                    f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</li>' for rid in rids)
-    fail = (dnp() + f'<ul class="kw xk">{boxes}</ul>' + hed("Loop", "R4a", lp["title"])
+    # CR-S1's remainder (second pass after rounds 4 and 5): the two options in the shared chooser's list form, as the
+    # correct plate sets them (oa-choice-row--list, D3-2243), each drawn checked with no input, so the chip and its quoted
+    # name wrap as one label and never stand as columns; the fault stays the caption's, both reforms lit at once
+    boxes = "".join(f'<li class="oa-choice-item"><span class="oa-choice-face">{check_}<span class="oa-choice-label">'
+                    f'{chip("Reform", rid)} “{e(REFORM[rid]["title"])}”</span></span></li>' for rid in rids)
+    fail = (dnp() + f'<div class="oa-choice xk"><ul class="oa-choice-row oa-choice-row--list">{boxes}</ul></div>'
+            + hed("Loop", "R4a", lp["title"])
             + f'<div class="kd">{fig(svg_wrap(fb, fh))}</div>'
             + '<p class="nt"><b>Combined effect on democracy: +L</b></p>')
     book.add("s-15-20-failure", fail, rule="15.20",
@@ -3567,16 +3574,22 @@ CSS.update({
     "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
            ".pn .oa-disclosure-set{margin-top:16px}@media print{.lv>.oa-choice{display:none}}"),
     "pon": ".pon{display:none}",
+    # RS-7: 15.19's reason line keeps 16 px before the list under it, as Rule 14.143's does
+    "st1": ".st1 .oa-stepper-why{margin-bottom:16px}",
     # CR-S8: a scale reads as one ordered list, one step a line, the connection's own step marked
     "ld": (".ld{list-style:none;margin:4px 0 0;padding:0;display:grid;justify-items:start;gap:2px;font:var(--oa-type-body-small);"
            "color:var(--oa-color-text-secondary)}.ld .on{color:var(--oa-color-text-primary);font-weight:var(--oa-font-weight-bold);"
            "border-bottom:2px solid var(--oa-color-border-strong)}"),
     "pb": (".pb{display:flex;gap:12px;align-items:center;margin-top:12px}"
            ".ib{display:inline-grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid var(--oa-color-border-strong)}"
-           ".ib svg,.xb svg{fill:none;stroke:currentColor;stroke-width:var(--oa-component-icon-utility-line-medium);"
+           ".ib svg{fill:none;stroke:currentColor;stroke-width:var(--oa-component-icon-utility-line-medium);"
            "stroke-linecap:round;stroke-linejoin:round}"),
-    "xk": (".xk{margin-bottom:12px}.xk li{display:flex;gap:8px;align-items:center}.xb{display:inline-grid;place-items:center;"
-           "flex:none;width:24px;height:24px;border:2px solid var(--oa-color-border-strong)}.xb svg{width:20px;height:20px}"),
+    # CR-S1's remainder: 15.20's failure draws both choices with the shared choice's checked look (Rule 18.3's check, bold
+    # words, a 2 px edge), with no input to read it from
+    "xk": (".xk{margin-bottom:12px}.xk ul{margin:0;padding:0;list-style:none}"
+           ".xk .oa-choice-row--list .oa-choice-face{padding:calc(var(--oa-space-100) - 1px) var(--oa-space-200) "
+           "calc(var(--oa-space-100) - 1px) var(--oa-space-150);border-width:var(--oa-border-width-rule);"
+           "font-weight:var(--oa-font-weight-bold)}.xk .oa-choice-row--list .oa-choice-check{visibility:visible}"),
 })
 
 
@@ -5608,6 +5621,12 @@ def check(data, book):
             fails.append("s-15-19-correct: Rule 18.22's markup is incomplete (C-1)")
         if f19.count('class="oa-stepper-step"') != len(LOOP["R1"]["links"]):
             fails.append("s-15-19-correct: the steps differ from Loop R1's connections")
+        # RS-7: Rule 14.143's reading order, drawing, status line, controls, reason line, list, limit (DD-C1, 2.8)
+        o19 = [f19.find(x) for x in ('class="dw"', 'class="oa-stepper-status"', 'class="oa-stepper-controls"',
+                                     'class="oa-stepper-why"', 'class="oa-stepper-steps"', "The atlas’s limit on the loop")]
+        if not (all(x >= 0 for x in o19) and o19 == sorted(o19)):
+            fails.append("s-15-19-correct: the reading order is not drawing, status line, controls, reason line, list, limit "
+                         "(Rule 14.143's, RS-7)")
     if "s-15-20-correct" in book.files:
         f20 = book.files["s-15-20-correct"]
         radios = re.findall(r'<input class="oa-choice-input" type="radio" name="s-15-20-reform" value="([^"]+)"', f20)
@@ -5622,7 +5641,7 @@ def check(data, book):
         ours = [k for k in book.files if k.startswith(("s-15-19-", "s-15-20-", "s-15-21-"))]
         frag_b = sum(len(book.files[k].encode()) for k in ours)
         rules_b = sum(len(json.dumps(r_, ensure_ascii=False, indent=1).encode()) for r_ in data["rules"] if r_["id"] in INTERACTION)
-        css_b = sum(len(CSS[k].encode()) for k in ("lv", "dw", "ch1", "pn", "pon", "ld", "pb", "xk"))
+        css_b = sum(len(CSS[k].encode()) for k in ("lv", "dw", "ch1", "pn", "pon", "ld", "pb", "xk", "st1"))
         tot = frag_b + rules_b + css_b + SHELL_CHOOSER_BYTES
         INTERACTION_BYTES[:] = [frag_b, rules_b, css_b, SHELL_CHOOSER_BYTES, tot]
         # DR-271 (November 13, 2026): R4-6's 75,000 bytes is a figure the build reports, not a stop (main() prints it)

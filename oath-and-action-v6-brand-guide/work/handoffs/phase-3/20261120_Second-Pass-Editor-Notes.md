@@ -8,6 +8,8 @@ Started 16:38 UTC. RS-1 in at 16:43 UTC, proved by a strict build. RS-6 in at 16
 
 HANDOVER: phase3_ch14_complex_build.py is free
 
+A slip to report (16:48 UTC): to measure S90 and S91 before my word changes, I ran the kit's single-spec build (`oa-chart.mjs build <spec> --out <scratch>`) twice without `--no-png`, as the brief's command reads. Each run launched a headless Chromium through Playwright for its PNG exports and captures, and closed it when the run ended, at about 16:48 UTC, while the guide check's own browser (running since 16:32) was up. That broke this run's no-browser condition. No page or file in the repository changed from it; the PNGs sit in my scratch folder. Every kit build after it carries `--no-png`.
+
 Message for the main session (16:45 UTC): RS-6 is in and `phase3_ch14_complex_build.py` passes its own check, so the engineer can take the file for CR-S23 now; I will not edit it again in this pass.
 
 ## Fixed
