@@ -37,8 +37,9 @@ def main():
             s = it.get("scores")
             if not s:
                 continue
-            k = (rnd, it["key"])
-            last[k] = {"round": rnd, "key": it["key"], "name": it.get("name", ""), "file": f,
+            r = it.get("round", rnd)  # the apply pass rescore names each item's round
+            k = (r, it["key"])
+            last[k] = {"round": r, "key": it["key"], "name": it.get("name", ""), "file": f,
                        "scores": {c: s.get(c) for c in CRIT}, "min": min(v for v in s.values() if isinstance(v, int))}
     boards = []
     for f in BOARD_FILES:

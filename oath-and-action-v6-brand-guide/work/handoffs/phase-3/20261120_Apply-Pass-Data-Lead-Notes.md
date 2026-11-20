@@ -1,8 +1,8 @@
 # Apply pass, data lead notes (chat 9, board 3 answers)
 
-Status: 21:18 UTC. Batch 1 (the editor's twelve items and the main session's three A8 lines, D3-2318) reviewed: all signed. Batch 2 (the engineer's eight items) in review, since the engineer's notes say done at 21:15.
+Status: 21:33 UTC. Done. Batch 1 (the editor's twelve items and the main session's three A8 lines, D3-2318): all signed. Batch 2 (the engineer's eight items, A1, A3, A4, A5, A6, A7c, A12 and A15): all signed. Nothing sent back.
 
-What I reviewed against: the baseline is commit `6ba13ecd` (before any owner's work); batch 1 is commit `5dc0d359`, before the engineer's A6. I built both pages strict in my scratch folder and compared them figure by figure, token by token (tags apart from words), and reran every batch 1 generator in a scratch copy of `5dc0d359`.
+What I reviewed against: the baseline is commit `6ba13ecd` (before any owner's work); batch 1 is commit `5dc0d359`, before the engineer's A6; batch 2 is commit `b23b1e1c` (the tree at `7c944045` holds the same build files). I built the three pages strict in my scratch folder and compared them figure by figure, token by token (tags apart from words), and reran every generator of each batch in scratch copies of its commit.
 
 ## Sign-off
 
@@ -28,7 +28,18 @@ Generator trap, batch 1: in a scratch copy of `5dc0d359` I reran `phase3_ch15_bu
 
 ### Batch 2, the engineer's items
 
-(in review)
+| Batch | Item | Verdict | What I checked |
+|---|---|---|---|
+| 2 | A1 (reply 6, NB-S4), the lockmark on charts exported alone | Signed | **Inside reply 6.** The approved recommendation puts the 16 px lockmark "at the source line's end" on the PNG and SVG a partner takes away; the exports had no source line, so the line has to come with it, and it is the figure's own line, word for word, which also keeps every exported statistic with its source. **Each exported line matches its sidecar.** I built all 96 specs with exports in scratch (96 PASS, 0 faults; the kit also checks each 2x PNG's size against its SVG): 364 exported SVGs carry the footer, and in all 364 the footer's words equal the spec's `source_line` or, where a spec prints none, its sidecar's `printed_source_line`, a variant or a filled template (S45's `span_september_2026_release`, 2000 to 2025); a spec with two datasets prints its own line, which the kit holds to both sidecars' publishers and dates. The lockmark in every footer is the 16 px master's geometry exactly, at whole pixels, flush with the export's right and bottom edges; its inks are Rule 08.2's (links Stone, nodes Charcoal, lever Pillar Red on Newsprint; links and nodes Newsprint, lever Pillar Red on Charcoal); no `var(` and no class is left. The four card forms (S90, S91, S92, S94) take the footer on their PNGs (looked at on Newsprint at 390 and Charcoal at 1440); S95's four social crops take none (Calls). **The guide's plates do not change for A1:** every figure that differs from the baseline page is explained by another item, and the kit's fragments for S41, S42, S53, S67 and S71 differ only by A8's word |
+| 2 | A4 (reply 9, DR-295), S59's "4.1" and the clearance list | Signed | **The list is right.** I read `work/handoffs/phase-3/20261120_Label-Clearance-List.json` and the engineer's probe (`.../c09/engineer/js/edge_probe.mjs`, a scratch script): it applies the kit's own DD-E1 test from `checks.js` (`b.band_edge && b.seq < t.seq && t.halo`) with only the `clear_edges` opt-in taken away, at the 1440 and 390 exports on both grounds, every guide column and every whole width of the sweep, and reads card marks on both grounds. I reran it unchanged: 96 specs, 43,897 drawings, 0 charts. Pointed at the baseline kit, the same probe finds S59's "4.1" at exactly the 344 widths the list names (274 to 617 px), so it catches what it should. **S59 itself:** its 1440 drawing is byte for byte the same; its 390 drawing differs in one place, "4.1" at y 180.3 to 168.4 (11.9 px up), and everything but that word's position is identical; every number, word and mark holds. The key is in S59's spec alone; the kit's default is unchanged |
+| 2 | A6 (reply 11), the keyline off Rules 15.20 and 14.144 | Signed | The plates lose only the keyline rects (`class="pk"`, two in each of 15.20's plates and two in 14.144) and the keyline and head-edge styles; the red ring (`.pl.rp`, 3 px) and the red head fill stay. On the new page no rule gives a head a stroke and no `pk` rect is left. The removed head-edge rule `:is(.lv .dw,.kd) .rt .hd` reached only 15.20's heads on the baseline page (checked by walking every plate's tree), so 15.11, 15.12 and 15.16 cannot have changed, and their figures are byte for byte the same. No rule's words mention the keyline. **Rule 15.4's failure plate now matches its approved drawing.** Its fragment today is byte for byte the one in Guide Previews V10 and V11 (November 13 and 14), where no style hid it; the hiding rule `.sv .pk{...display:none}` arrived with call 15 in V12 (November 16) and stayed through V13, so board 3's preview showed it without its Prussian connection. In Chromium at 1440 px the Prussian step's group and line now compute `display: inline` with stroke #1F2D5A (before: `none`), and the plate looks as it did in V11: three connections in green, blue and gray, as its own alt ("green for money, blue for information and gray for ownership"), key and caption say. Before, its middle card showed "raises" with no line, sign or ticks |
+| 2 | A3 (reply 8, RP-14), headings | Signed, words and look | In the selection guide plate the only change is 17 `p` to `h4` and the label `p` to `h3`; once those tag names are set aside the plate is identical, and its words are identical. Chapter 14's 18 group heads are `h3` with the same words in the same order; the other 47 group heads stay paragraphs. The heading levels, the 17th heading ("Three charts in full", see Calls) and the guide check's new allowance are the accessibility lead's and the main session's to rule on |
+| 2 | A5 (reply 10), the masthead | Signed, data and drawings | One query moves from 22.49em to 23.25em (372 px) and the scripts-off floor that covered the old drop goes; no file under `work/build/assets/` or `work/build/tokens/` changed, so neither wordmark master moved. The heights are the engineer's and the accessibility lead's measures |
+| 2 | A7c (reply 12), Rule 18.24's code chip | Signed | `c-18-id-chip.css` drops `font-variant-numeric: tabular-nums` from `.oa-chip-id` and nothing else; on the page `.oa-chip-id` sets only `white-space: nowrap`; `stage_c_ch18_build.py --check` "chapter 18: current". The anatomy key (A7w) and the drawing agree |
+| 2 | A12 (reply 17, CR-S19), S89, S91 and S94 | Signed | Each spec gains `"evidence_layout": "beside"` and one internal note; the placed figures differ only by the class `oac-ev--beside`; words, numbers, marks and inks the same in the kit's fragments. The kit's default is unchanged. The grade line and the evidence chip stay two separate encodings, as the chart system needs |
+| 2 | A15 (reply 22, RS-5), related rules as links | Signed | All 138 lists print exactly their rule's `related_rules`, in order, from chapter 14's file; all 363 links land on a rule block on the page and each link's words name that rule ("Rule 14.29" to `#rule-14-29`). Every rule's words outside its plates are the same as on the baseline once the new "Related rules" label is set aside; the only rules whose words differ are those other items changed (chapter 04's opening, which my script counts with Rule 03.8 before it; 08.2; chapter 13's list of sources, counted with Rule 13.13; 14.6; 14.101; 15.6; 15.8). The engineer measured the bytes first (33,665 more), as the answer asks |
+
+Generator trap, batch 2: in a scratch copy of the committed tree I reran `selection_guide_build.py`, `phase3_ch15_build.py`, `phase3_ch14_complex_build.py`, `phase3_ch14_build.py` and `stage_c_ch18_build.py`: every file under `work/build/` came out byte for byte as committed. `phase3_ch14_build.py --check` 99 of 99, `phase3_ch14_complex_build.py --check` 10 of 10, `phase3_ch15_build.py --check-only` exit 0, `stage_c_ch18_build.py --check` current.
 
 ## Calls
 
@@ -36,10 +47,16 @@ Generator trap, batch 1: in a scratch copy of `5dc0d359` I reran `phase3_ch15_bu
 - D3-xxx | Chapter 13's copy of S14's line leaves out S14's margin of error sentence | No chapter 13 plate prints the margin figure, the plate never says the line is S14's, the six-part table has no row for it, and the words shown to Dustin for the new copies had none
 - D3-xxx | D3-2318's two sidecar lines were edited in place, not added as new variants | No other spec reads `survey_only_margin_credited` or `with_program_ages`, no generator writes the census sidecar, and `data_round0_build.py` reproduces the other; the data rows stay frozen, so the brief's rule holds
 - D3-xxx | S71's drawing growing 34 px from the longer word is inside reply 13 | The bars, numbers, marks and inks are unchanged; only two under-lines wrap
+- D3-xxx | Batch 2 signed whole: A1, A3, A4, A5, A6, A7c, A12 and A15 | Each matches its approved answer; the guide's plates moved only where an item names them; numbers, marks and inks hold
+- D3-xxx | A1's source line on the standalone exports stays inside reply 6 | The answer places the lockmark at the source line's end on the exported files, which had no line; the line printed is the figure's own, and all 364 exported footers match the spec or sidecar line
+- D3-xxx | A1: S95's social crops take no footer (the engineer's call), agreed | A crop keeps its fixed size and signs with Rule 08.2's 96 px sign-off; reply 6 names the chart files a partner or story takes away
+- D3-xxx | Rule 15.4's failure plate, which draws its Prussian connection again after A6, matches its approved drawing | Its fragment is byte for byte the board 2 era plate (Guide Previews V10 and V11); call 15's keyline style hid the step by a class clash from V12 on, which nobody approved; the creative director should see it at the rescore
+- D3-xxx | A4's clearance list (no chart but S59, and S59 cleared by its own key) is confirmed | The probe is the kit's own DD-E1 test without the opt-in, at every width the kit draws; my rerun gives 0 of 96, and on the baseline kit it finds S59's 344 widths
+- D3-xxx | A3's 17th heading, "Three charts in full", is left to the accessibility lead | It goes one heading past reply 8's "16 questions" for a reason of heading navigation, with nothing on screen changed; words and look are mine to check, and they hold
 
 ## Not fixed
 
-(none from batch 1)
+None. Nothing in either batch goes back.
 
 ## Tested
 
@@ -51,9 +68,18 @@ Generator trap, batch 1: in a scratch copy of `5dc0d359` I reran `phase3_ch15_bu
 - Reruns of every batch 1 generator and of `data_round0_build.py` in scratch copies, compared by hash; `phase3_ch14_build.py --check` 99 of 99; `palette_spec_build.py --check` 2 of 2; `data_round0_build.py --check` 126 tables, 0 faults.
 - A mutation of `read_aloud` in a scratch copy: chapter 15's direction check fails it.
 - Em dashes: 0 on either page; 0 in any added line of the generators', specs', data and chapter diffs.
+- Batch 2: strict page build at 21:17 UTC on the committed tree: exit 0, 0 warnings, 12,210,634 bytes (the engineer's figure), 369 rules, 679 specimens, 101 hidden and 315 open. Notes as before: the chart kit part 571,235 bytes, over its 560,000 budget, and chapter 14 over its stop, both reported under DR-271.
+- Kit `build --all` with exports (no sweep) in scratch: 96 of 96 PASS, 0 faults; my script read all 368 exported SVGs (364 footers, S95's 4 crops none); I looked at the footers of S14 (Newsprint 390), S59 (Charcoal 1440), S41 (Newsprint 1440) and the four card forms.
+- The engineer's edge probe, rerun unchanged over all 96 specs (0 charts), and pointed at the baseline kit for S58 to S60 (S59 at 344 widths).
+- Kit fragments for S59, S89, S91 and S94 at the baseline and now, compared drawing by drawing.
+- Chromium (Playwright, after `browsers.sh` said "OK to open one"): Rule 15.4's failure plate at 1440 px on the baseline page, the new page and Guide Preview V11, with the Prussian step's computed display and stroke; looked at all three.
+- Scripts on the page: the related rules lists against chapter 14's file, every link's target and words, and every rule's words before and after; heading tags and words in the selection guide and the group heads; every `.hd` stroke rule and every `pk` element on both pages.
+- `git status` after every run: only my notes and the accessibility lead's notes; `plate-share.json` untouched.
 
 ## Not tested
 
 - Batch 1's plates in a browser; I compared bytes, words and shapes, not layout. The accessibility lead checks A14.
-- The guide check (the main session runs it).
-- How the read-aloud lines and captions sound in a real screen reader.
+- The masthead (A5) and the heading levels (A3) in a browser; the accessibility lead checks both.
+- A1's exports with the sweep; my full build ran with `--no-sweep` (the engineer's closing build ran the sweep with `--no-png`).
+- The guide check, its self-test included (the main session runs it).
+- How the read-aloud lines, captions, headings and related rules sound in a real screen reader.
