@@ -69,7 +69,14 @@
    "covers_k": "What it covers",
    "see_panel": "Panel {n} shows it.",
    "approve_h": "What you approve",
-   "reply": "To answer, reply “As proposed”, or name the item and your change."
+   "reply": "To answer, reply “As proposed”, or name the item and your change.",
+   "swatch_caption": "Item 4’s two colors on Charcoal at true size, with the ratios the palette plate prints for each on Charcoal",
+   "swatch_item": "{hex}: {ratio} to 1 against Charcoal, rounded down, {use}; a label set on it in {label_in} measures {lratio} to 1",
+   "swatch_use": {
+    "marks": "enough for a mark alone",
+    "not for marks alone": "too faint for a mark alone"
+   },
+   "words_caption": "Item 6, today’s words beside the proposed words"
   },
   "phase4": {
    "n": 2,
@@ -124,7 +131,7 @@
    "reply_tag": "Reply {n}",
    "luma_h": "The same three red targets in luma",
    "luma_label": "{label}, in luma",
-   "luma_alt": "{label}, converted to gray by luma (ITU-R 601-2), so each red target reads by lightness alone.",
+   "luma_alt": "{label}, converted to gray by luma (ITU-R 601-2): the chosen pill’s red ring reads lighter than a plain pill’s black edge, so the target is the faintest mark in the drawing.",
    "alt_auto": "{label}. Photographed from {page} at a {w} px window.",
    "export_alt": "{label}. Drawn from the kit’s own export file at true size, its last lines shown.",
    "picture_wait": "Waiting for this picture: {label}.",
@@ -172,9 +179,9 @@
        "ground": "newsprint",
        "w": 1440,
        "context": 140,
-       "role": "export",
+       "role": "none",
        "row": "x",
-       "label": "S14 exported for a 1440 px page, on Newsprint",
+       "label": "S14 as the kit exports it alone, for a 1440 px page, on Newsprint",
        "alt": "S14, the jobs chart, exported for a 1440 px page on Newsprint, at true size: the last columns, then a hairline, the source line in six lines of small type, and the 16 px lockmark at the right end of its last line."
       },
       {
@@ -184,9 +191,9 @@
        "ground": "charcoal",
        "w": 390,
        "context": 140,
-       "role": "export",
+       "role": "none",
        "row": "x",
-       "label": "S14 exported for a 390 px phone, on Charcoal",
+       "label": "S14 as the kit exports it alone, for a 390 px phone, on Charcoal",
        "alt": "S14 exported for a 390 px phone on Charcoal, at true size: the source line in light type under a hairline, with the lockmark in its Charcoal inks at the right end of the last line."
       }
      ]
@@ -752,7 +759,12 @@
         "context": 8
        },
        "label": "Loop B4’s read-aloud line on Rule 15.15, version 13",
-       "alt": "Loop B4’s read-aloud line in version 13: “More quality of public services, less risk of losing office, fewer incumbents defeated or pushed into retirement, and back to less quality of public services.”"
+       "alt": "Loop B4’s read-aloud line in version 13: “More quality of public services, less risk of losing office, fewer incumbents defeated or pushed into retirement, and back to less quality of public services.”",
+       "tidy": {
+        "context": 8,
+        "column": true,
+        "pad": 16
+       }
       },
       {
        "id": "a2",
@@ -770,7 +782,12 @@
         "context": 8
        },
        "label": "The same line in version 14",
-       "alt": "Loop B4’s line in version 14: “The quality of public services rises, the risk of losing office falls, the number of incumbents defeated or pushed into retirement falls, and back at the start, the quality of public services falls.”"
+       "alt": "Loop B4’s line in version 14: “The quality of public services rises, the risk of losing office falls, the number of incumbents defeated or pushed into retirement falls, and back at the start, the quality of public services falls.”",
+       "tidy": {
+        "context": 8,
+        "column": true,
+        "pad": 16
+       }
       }
      ]
     },
@@ -1221,7 +1238,11 @@
         "context": 16
        },
        "label": "Chapter 04’s first paragraph in version 13",
-       "alt": "Chapter 04’s first paragraph in version 13, ending with how Ampersand B is drawn."
+       "alt": "Chapter 04’s first paragraph in version 13, ending with how Ampersand B is drawn.",
+       "tidy": {
+        "context": 16,
+        "pad": 16
+       }
       },
       {
        "id": "o2",
@@ -1239,7 +1260,11 @@
         "context": 16
        },
        "label": "The same paragraph in version 14",
-       "alt": "The same paragraph in version 14, with a last sentence on the trademark attorney’s check before launch."
+       "alt": "The same paragraph in version 14, with a last sentence on the trademark attorney’s check before launch.",
+       "tidy": {
+        "context": 16,
+        "pad": 16
+       }
       }
      ]
     },
@@ -1254,7 +1279,9 @@
       }
      ]
     }
-   ]
+   ],
+   "other_k": "Board 3’s other choice, not taken",
+   "luma_note": "In gray, each chosen pill’s red ring reads lighter than a plain pill’s black edge, so the target is the faintest mark, and the words beside each plate carry it."
   },
   "clearance": {
    "n": 4,
@@ -1390,23 +1417,26 @@
    ],
    "rows": {
     "page_limit": "The page today, against 16 MB",
-    "proj_limit": "The page as projected with every chapter built, against 16 MB",
-    "proj_warn": "The page as projected, against the 15.5 MB line the build warns at",
+    "proj_limit": "The page as the build projects it today, with each Phase 4 chapter at {each} bytes, against 16 MB",
+    "proj_warn": "The same projection, against the 15.5 MB line the build warns at",
     "ch14": "Chapter 14 with the chart kit, against its figure",
-    "kit": "The chart kit, against its figure"
+    "kit": "The chart kit, against its figure",
+    "alloc_limit": "The page with panel 2’s allocations, against 16 MB",
+    "alloc_warn": "The page with panel 2’s allocations, against the 15.5 MB line"
    },
    "chapters_h": "Each chapter against its figure",
    "chapters_caption": "Each built chapter of version 14 against its figure, in bytes",
    "chapter_word": "Chapter {n}",
    "room_h": "Phase 4’s room under 16 MB",
    "room_line": "Under 16 MB, the page has {free} bytes left. Chapter 15 holds {held} of them to finish its allocation and chapters 27 and 28 take {phase5}, which leaves Phase 4’s seven chapters {room} bytes, and {room_warn} under the 15.5 MB line. Panel 2 allocates {alloc} of it.",
-   "kit_note_re": "chart kit weighs ([\\d,]+) bytes, over its budget of ([\\d,]+)"
+   "kit_note_re": "chart kit weighs ([\\d,]+) bytes, over its budget of ([\\d,]+)",
+   "chapter_14_word": "Chapter 14 without the kit; with it, {pct} percent (above)"
   },
   "tested": {
    "n": 7,
    "nav": "Tested and not tested",
    "title": "Tested and not tested",
-   "refs": "DR-213 · DR-279",
+   "refs": "DR-213 · DR-279 · D3-2355 · D3-2356",
    "lede": "Each figure here is read from the file that records it.",
    "tested_h": "Tested",
    "not_h": "Not tested",
@@ -1424,7 +1454,11 @@
      "kind": "check_file",
      "slot": "four_width_check",
      "owner": "main",
-     "words": "run by the main session on version 14 at {widths} px: {specimens} drawn examples and {links} same-page links read, with {failures} failures"
+     "words": "run by the main session on version 14 from {start} to {end} UTC at {widths} px: {specimens} drawn examples and {links} same-page links read; it {pass} with {failures} failures",
+     "window": {
+      "file": "work/ledger/20261020_Decision-Log.md",
+      "pattern": "\\| D3-2356 \\| The four-width guide check passes on version 14 \\((\\d\\d:\\d\\d) to (\\d\\d:\\d\\d) UTC"
+     }
     },
     {
      "label": "The quick guide check with photographs",
@@ -1457,24 +1491,24 @@
     {
      "label": "Chapter 14’s build check",
      "kind": "notes",
-     "owner": "facts",
+     "owner": "main",
      "sources": [
       {
-       "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md",
-       "pattern": "Closing, at (\\d\\d:\\d\\d) to (\\d\\d:\\d\\d) UTC: [^\\n]*?`phase3_ch14_build\\.py --check` (\\d+) of (\\d+)",
-       "words": "{3} of {4} of its files current, in the engineer’s closing run from {1} to {2} UTC"
+       "file": "work/ledger/20261020_Decision-Log.md",
+       "pattern": "\\| D3-2355 \\|[^\\n]*?`phase3_ch14_build\\.py --check` (\\d+) of (\\d+)",
+       "words": "{1} of {2} of its files current, in the main session’s closing run on version 14’s tree, as the decision log records it"
       }
      ]
     },
     {
      "label": "The data check",
      "kind": "notes",
-     "owner": "report",
+     "owner": "main",
      "sources": [
       {
-       "file": "work/ledger/20261120_Gate-3-Report.md",
-       "pattern": "The data check: ([\\d,]+) tables, (\\d+) faults",
-       "words": "{1} tables and {2} faults, as the Gate 3 report records it"
+       "file": "work/ledger/20261020_Decision-Log.md",
+       "pattern": "\\| D3-2355 \\|[^\\n]*?data check ([\\d,]+) tables, (\\d+) faults",
+       "words": "{1} tables and {2} faults, in the main session’s closing run on version 14’s tree, as the decision log records it"
       }
      ]
     },
@@ -1523,8 +1557,15 @@
   "kit_command": "work/build/chart-kit/oa-chart.mjs",
   "tokens_css": "work/build/tokens/tokens.css",
   "preview_url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
-  "four_width_check": "[scratch]/c09/final/four/v14-Guide-Check-Results.json",
+  "four_width_check": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Four-Width-Check-Results.json",
   "quick_check": null,
-  "v7_check": "[scratch]/c09/final/v7.json"
+  "v7_check": "[scratch]/c09/final/v7.json",
+  "board_rescore_keys": [
+   "rescored_utc",
+   "rescore_basis"
+  ]
+ },
+ "code_words": {
+  "Q-04": "the question of commissioning photographs"
  }
 }

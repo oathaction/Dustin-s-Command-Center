@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T22:57:50.639032+00:00",
+ "built": "2026-11-20T23:24:50.977015+00:00",
  "final_build": {
   "page": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14.html",
   "report": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Build-Report.json",
@@ -17,7 +17,7 @@
  },
  "report": {
   "file": "work/ledger/20261120_Gate-3-Report.md",
-  "bytes": 38038,
+  "bytes": 44450,
   "placeholders": [
    "{AGENT_COUNT}",
    "{BOARD_URL}",
@@ -34,23 +34,32 @@
   ]
  },
  "photographs_asked": 57,
- "render_seconds": {
-  "guide": 35
- },
  "shots": {
   "guide": {
    "asked": 57,
-   "taken": 4,
-   "page_loads": 2,
+   "taken": 0,
+   "page_loads": 0,
    "missing": []
   }
  },
+ "decide_reads": {
+  "four_width": {
+   "file": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Four-Width-Check-Results.json",
+   "pass": true,
+   "failures": 0
+  },
+  "swatches": [
+   "#828A9D: 5.41 to 1 against Charcoal, rounded down, enough for a mark alone; a label set on it in Charcoal measures 5.41 to 1",
+   "#505C7D: 2.82 to 1 against Charcoal, rounded down, too faint for a mark alone; a label set on it in Newsprint measures 4.70 to 1"
+  ]
+ },
  "decide": {
   "decisions": 7,
-  "questions": 4,
+  "questions": 5,
+  "word_rows": 5,
   "from": "work/ledger/20261120_Gate-3-Report.md, section 10"
  },
- "panel_1_words": 1106,
+ "panel_1_words": 1706,
  "phase4": {
   "room": {
    "limit": 16000000,
@@ -140,6 +149,13 @@
     "46"
    ]
   },
+  "The four-width guide check window": {
+   "file": "work/ledger/20261020_Decision-Log.md",
+   "value": [
+    "22:27",
+    "23:04"
+   ]
+  },
   "The guide check’s self-test": {
    "file": "[scratch]/c09/checks/selftest.log",
    "value": [
@@ -150,16 +166,14 @@
    ]
   },
   "Chapter 14’s build check": {
-   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md",
+   "file": "work/ledger/20261020_Decision-Log.md",
    "value": [
-    "21:13",
-    "21:15",
     "99",
     "99"
    ]
   },
   "The data check": {
-   "file": "work/ledger/20261120_Gate-3-Report.md",
+   "file": "work/ledger/20261020_Decision-Log.md",
    "value": [
     "126",
     "0"
@@ -329,13 +343,13 @@
   },
   "a1": {
    "src": "img/20261120_Pic-a1.webp",
-   "w": 868,
-   "h": 101
+   "w": 318,
+   "h": 117
   },
   "a2": {
    "src": "img/20261120_Pic-a2.webp",
-   "w": 868,
-   "h": 122
+   "w": 318,
+   "h": 138
   },
   "h1440a": {
    "src": "img/20261120_Pic-h1440a.webp",
@@ -389,12 +403,12 @@
   },
   "o1": {
    "src": "img/20261120_Pic-o1.webp",
-   "w": 868,
+   "w": 624,
    "h": 169
   },
   "o2": {
    "src": "img/20261120_Pic-o2.webp",
-   "w": 868,
+   "w": 624,
    "h": 223
   },
   "s59a": {
@@ -461,11 +475,19 @@
   "rose": 3,
   "fell": 0
  },
+ "board_score": {
+  "file": "work/handoffs/phase-3/20261120_Gate-3-Board-CD-Scores.json",
+  "state": "first score only; the slot waits for the rescore"
+ },
  "weight": {
   "page": 12210634,
   "limit": 16000000,
   "warn_line": 15500000,
   "projected": 15180545,
+  "projected_with_allocations": 15650545,
+  "phase4_each_in_projection": [
+   362857
+  ],
   "ch14_with_kit": 2855909,
   "ch14_stop": 2803941,
   "kit": 571235,
@@ -560,17 +582,22 @@
  },
  "tested": {
   "The strict build of version 14": "read from its report, built November 20, 2026 at 22:21 UTC: no warnings, 12,210,634 bytes, 369 rules and 679 examples placed",
-  "The four-width guide check": "Waiting for its file",
+  "The four-width guide check": "run by the main session on version 14 from 22:27 to 23:04 UTC at 1440, 1024, 390 and 360 px: 735 drawn examples and 4,130 same-page links read; it passes with no failures",
   "The quick guide check with photographs": "Waiting for its file",
   "The guide check’s self-test": "run by the main session: 154 of 154 planted faults caught and 48 of 48 allowed cases left alone",
   "The kit’s build of every chart, without pictures": "run by the main session on the final files: 96 charts pass and none fail",
-  "Chapter 14’s build check": "99 of 99 of its files current, in the engineer’s closing run from 21:13 to 21:15 UTC",
-  "The data check": "126 tables and 0 faults, as the Gate 3 report records it",
+  "Chapter 14’s build check": "99 of 99 of its files current, in the main session’s closing run on version 14’s tree, as the decision log records it",
+  "The data check": "126 tables and 0 faults, in the main session’s closing run on version 14’s tree, as the decision log records it",
   "The atlas check": "run by the main session on version 14: 780 chips in chapters 13, 14 and 15 and 115 kit chart files read, with no failures",
   "Links to the chapters page": "23 links to 22 rules, each target checked by this board’s build on version 14’s page: 23 of 23 found",
   "This board’s own check": "on its last run at 1440, 390 and 360 px, no failures apart from the page’s language, which the host sets when it wraps the page"
  },
  "checks_read": {
+  "four_width_check": {
+   "file": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Four-Width-Check-Results.json",
+   "failures": [],
+   "pass": true
+  },
   "The kit’s build of every chart, without pictures": {
    "file": "[scratch]/c09/final/kit.log",
    "words": "run by the main session on the final files: 96 charts pass and none fail"
@@ -585,13 +612,13 @@
   "anchors": 22,
   "found": 23
  },
- "tokens_used": 110,
+ "tokens_used": 114,
  "page": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html",
- "html_bytes": 140067,
+ "html_bytes": 151411,
  "images": 48,
- "image_bytes": 797708,
+ "image_bytes": 791474,
  "folder_files": 52,
- "folder_bytes": 1010222,
+ "folder_bytes": 1018542,
  "largest_image": [
   49366,
   "20261120_Pic-k7.webp"
@@ -644,8 +671,8 @@
   "img/20261120_Pic-i2.webp": "[scratch]/c09/builder/shots/p-i2.png",
   "img/20261120_Pic-p1.webp": "[scratch]/c09/builder/shots/p-p1.png",
   "img/20261120_Pic-p2.webp": "[scratch]/c09/builder/shots/p-p2.png",
-  "img/20261120_Pic-a1.webp": "[scratch]/c09/builder/shots/p-a1.png",
-  "img/20261120_Pic-a2.webp": "[scratch]/c09/builder/shots/p-a2.png",
+  "img/20261120_Pic-a1.webp": "[scratch]/c09/builder/made/tidy-p-a1.png",
+  "img/20261120_Pic-a2.webp": "[scratch]/c09/builder/made/tidy-p-a2.png",
   "img/20261120_Pic-h1440a.webp": "[scratch]/c09/builder/shots/p-h1440a-0.png, [scratch]/c09/builder/shots/p-h1440a-1.png, [scratch]/c09/builder/shots/p-h1440a-2.png",
   "img/20261120_Pic-h1440b.webp": "[scratch]/c09/builder/shots/p-h1440b-0.png, [scratch]/c09/builder/shots/p-h1440b-1.png, [scratch]/c09/builder/shots/p-h1440b-2.png",
   "img/20261120_Pic-h390a.webp": "[scratch]/c09/builder/shots/p-h390a-0.png, [scratch]/c09/builder/shots/p-h390a-1.png, [scratch]/c09/builder/shots/p-h390a-2.png",
@@ -656,8 +683,8 @@
   "img/20261120_Pic-n2.webp": "[scratch]/c09/builder/shots/p-n2.png",
   "img/20261120_Pic-f1.webp": "[scratch]/c09/builder/shots/p-f1.png",
   "img/20261120_Pic-f2.webp": "[scratch]/c09/builder/shots/p-f2.png",
-  "img/20261120_Pic-o1.webp": "[scratch]/c09/builder/shots/p-o1.png",
-  "img/20261120_Pic-o2.webp": "[scratch]/c09/builder/shots/p-o2.png",
+  "img/20261120_Pic-o1.webp": "[scratch]/c09/builder/made/tidy-p-o1.png",
+  "img/20261120_Pic-o2.webp": "[scratch]/c09/builder/made/tidy-p-o2.png",
   "img/20261120_Pic-s59a.webp": "[scratch]/c09/builder/shots/p-s59a.png",
   "img/20261120_Pic-s59b.webp": "[scratch]/c09/builder/shots/p-s59b.png"
  },
@@ -680,12 +707,24 @@
   "D3-2352",
   "D3-2353",
   "D3-2354",
+  "D3-2355",
+  "D3-2356",
+  "DR-100",
+  "DR-102",
+  "DR-116",
+  "DR-121",
   "DR-191",
   "DR-202",
+  "DR-204",
+  "DR-210",
+  "DR-211",
   "DR-213",
+  "DR-223",
   "DR-235",
   "DR-236",
+  "DR-238",
   "DR-265",
+  "DR-268",
   "DR-271",
   "DR-277",
   "DR-279",
@@ -699,6 +738,8 @@
   "DR-297",
   "DR-298",
   "DR-36",
+  "DR-55",
+  "DR-64",
   "DR-93",
   "Q-04",
   "Q-12"
@@ -727,38 +768,9 @@
   "rule-15-4",
   "rule-18-24"
  ],
- "notes": [
-  "22:57:51 UTC guide: OK to open one (browsers running: 1, load: 1.42)",
-  "22:58:27 UTC the board check: OK to open one (browsers running: 1, load: 1.68)",
-  "22:59:06 UTC the wrapped board check: OK to open one (browsers running: 1, load: 1.39)"
- ],
+ "notes": [],
  "warnings": [],
- "seconds": 37,
- "words": 7727,
- "check": {
-  "page": {
-   "failures": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "allowed": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "results": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board-Check-Results.json"
-  },
-  "wrapped": {
-   "failures": [],
-   "pass": true,
-   "results": "[scratch]/c09/builder/publish-view/20261120_Gate-3-Board-Check-Results.json"
-  },
-  "widths": [
-   1440,
-   390,
-   360
-  ]
- },
+ "seconds": 1,
+ "words": 9136,
  "fails": []
 }

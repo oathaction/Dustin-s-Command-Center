@@ -565,14 +565,36 @@ def face(s):
             return 'a file'
         return m.group(0)
     s = re.sub(r'`([^`]+)`', span, s)
+    for code, w_ in (C.get('code_words') or {}).items():
+        if re.search(r'\b' + re.escape(code) + r'\b', s):
+            B1.MOVED.add(code)
+            s = re.sub(r'\s*\(' + re.escape(code) + r'\)', '', s)
+            s = re.sub(r'\b' + re.escape(code) + r'\b', w_, s)
     sp = C.get('section_to_panel', {})
     s = re.sub(r'\b(?:this report[’\']s )?section (\d+)\b', lambda m: f'panel {sp[m.group(1)]}' if m.group(1) in sp else m.group(0), s)
     return s
 
 
+def curl(s):
+    """Straight quotes and apostrophes curled (Master Brief section 6), outside code spans: an apostrophe after a letter or
+    figure closes, one at a word's start opens; a double quote after a space, a bracket or the start opens."""
+    out = []
+    for k, part in enumerate(re.split(r'(`[^`]*`)', s or '')):
+        if k % 2:
+            out.append(part)
+            continue
+        part = re.sub(r"(?<=[\w.,;:!?)\]%])'", '’', part)
+        part = re.sub(r"'", '‘', part)
+        part = re.sub(r'(^|(?<=[\s(\[—-]))"', '“', part)
+        part = part.replace('"', '”')
+        out.append(part)
+    return ''.join(out)
+
+
 def quoted(s):
-    """Quoted words rendered: codes to the reference line (board 1's rules), Markdown bold and code set."""
-    s = face(s)
+    """Quoted words rendered: codes to the reference line (board 1's rules), straight quotes curled, Markdown bold and
+    code set."""
+    s = curl(face(s))
     QUOTED.append(B1.strip_codes(s))
     return B1.md_inline(s, quote=True)
 
@@ -687,41 +709,140 @@ def first_sentence(s):
     return s.strip().rstrip('.') + '.', ''
 
 
-def decide_panel(R):
+def four_width():
+    """The four-width guide check's results on version 14, or None."""
+    p = scratch_path(C['slots'].get('four_width_check'))
+    if not (p and p.is_file()):
+        return None
+    J = json.loads(p.read_text())
+    f = J.get('failures')
+    J['_n_fail'] = f if isinstance(f, int) else len(f or [])
+    J['_file'] = rel(p)
+    return J
+
+
+def four_width_clause(s):
+    """Item 1's clause on the four-width check, read from the check's own results file, so the two cannot disagree."""
+    m = re.search(r'the four-width check passes on version 14 with (\d+) failures', s)
+    if not m:
+        return s
+    J = four_width()
+    if J is None:
+        warn('item 1 names the four-width check, and its results file is not there')
+        return s
+    if int(m.group(1)) != J['_n_fail'] or not J.get('pass'):
+        warn(f'the report gives the four-width check {m.group(1)} failures, and its file {J["_n_fail"]} (pass: {J.get("pass")})')
+    words = (f'the four-width check passes on version 14 with {nw(J["_n_fail"])} failures' if J.get('pass')
+             else f'the four-width check fails on version 14 with {nw(J["_n_fail"])} failures')
+    FIG.setdefault('decide_reads', {})['four_width'] = {'file': J['_file'], 'pass': J.get('pass'), 'failures': J['_n_fail']}
+    return s[:m.start()] + words + s[m.end():]
+
+
+def wcag(h1, h2):
+    def lum(h):
+        c = [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+        c = [x / 12.92 if x <= 0.04045 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+    a, b = lum(h1.lstrip('#')), lum(h2.lstrip('#'))
+    return (max(a, b) + 0.05) / (min(a, b) + 0.05)
+
+
+SWATCH_CSS = []
+
+
+def swatches(what, G):
+    """Item 4's colors on Charcoal at true size: each hex the item names with its token, drawn from tokens.css, with the
+    ratios the palette plate on version 14 prints for it on Charcoal (checked here against WCAG's formula)."""
+    S = C['sections']['decide']
+    tk = (ROOT / C['slots']['tokens_css']).read_text()
+    m = re.search(r'--oa-color-palette-charcoal:\s*(#[0-9A-Fa-f]{6})', tk)
+    charcoal = m.group(1) if m else None
+    plate = element_html(G['text'], 'fig-s-14-palette-spec') or '' if G.get('text') else ''
+    ptxt = re.sub(r'(\s*\|\s*)+', ' | ', re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' | ', plate))))
+    items = []
+    for hx in dict.fromkeys(re.findall(r'#[0-9A-Fa-f]{6}', what)):
+        var = next((v for v, val in re.findall(r'(--oa-color-[a-z0-9-]+):\s*([^;]+);', tk) if val.strip().upper() == hx.upper()), None)
+        if not var:
+            warn(f'item 4 names {hx}, which tokens.css does not define')
+            continue
+        cls = 'sw-' + slug(var.replace('--oa-color-', ''))
+        SWATCH_CSS.append(f'.{cls}{{background:var({var})}}')
+        # the plate's Charcoal column: the hex, then its mark ratio, then its label line
+        pm = re.search(re.escape(hx.upper()) + r' \| ([\d.]+)\xa0?\s*to\s*1 rounded down, ([a-z ]+?) \| Label in (\w+), ([\d.]+)\s*to\s*1 rounded down, text', ptxt)
+        if not pm:
+            warn(f'the palette plate prints no ratio for {hx}')
+            continue
+        ratio, use, label_in, lratio = pm.groups()
+        if charcoal:
+            calc = int(wcag(hx, charcoal) * 100) / 100
+            if f'{calc:.2f}' != ratio:
+                warn(f'{hx} on Charcoal: the plate prints {ratio} to 1 and WCAG gives {calc:.2f}')
+        items.append(fill(S['swatch_item'], {'hex': hx, 'ratio': ratio, 'use': S['swatch_use'].get(use.strip(), use.strip()), 'label_in': label_in, 'lratio': lratio}))
+        items[-1] = (cls, hx, items[-1])
+    if not items:
+        return ''
+    QUOTED.extend(x[2] for x in items)
+    cells = ''.join(f'<li><span class="sw {cls}" aria-hidden="true"></span><span class="sw-t">{esc(words_)}</span></li>' for cls, hx, words_ in items)
+    FIG.setdefault('decide_reads', {})['swatches'] = [x[2] for x in items]
+    return (f'<figure class="swf"><figcaption>{esc(S["swatch_caption"])}</figcaption><ul class="sw-ground">{cells}</ul></figure>')
+
+
+def other_choice(rec):
+    """Board 3's closed alternative, as the approved recommendation prints it: the sentence that offers another reply."""
+    parts = re.split(r'(?<=[.”])\s+(?=[A-Z])', rec.strip())
+    keep = [x for x in parts if not re.search(r'\breply “', x)]
+    gone = [x for x in parts if re.search(r'\breply “', x)]
+    return ' '.join(keep), ' '.join(gone)
+
+
+def decide_panel(R, G):
     S = C['sections']['decide']
     sec = report_section(R, 10)
     if not sec:
         return section('decide', pending(S['wait']), ('waiting', 'report')), 0
     bl = blocks(sec)
-    tables = [b for b in bl if b[0] == 'table']
-    need(len(tables) >= 2, 'section 10 of the Gate 3 report holds fewer than two tables')
-    dec, que = tables[0], tables[1]
+    by_head = lambda name: next((b for b in bl if b[0] == 'table' and len(b[1]) > 1 and b[1][1].strip().lower().startswith(name)), None)
+    dec, que = by_head('decision'), by_head('question')
+    words_t = next((b for b in bl if b[0] == 'table' and b[1] and b[1][0].strip().lower() == 'change'), None)
+    need(dec and que, 'section 10 of the Gate 3 report holds no decisions or no questions table')
     paras = [b[1] for b in bl if b[0] == 'p']
     approve = next((p for p in paras if p.startswith('**What you approve')), '')
+    # the paragraphs after the word for word table and before the questions belong to item 6
+    w_notes = []
+    if words_t:
+        k = bl.index(words_t) + 1
+        while k < len(bl) and bl[k][0] == 'p' and not bl[k][1].startswith('**'):
+            w_notes.append(bl[k][1])
+            k += 1
     FILL.update({'n_decisions_w': nw(len(dec[2])), 'n_questions_w': nw(len(que[2])), 'n_items_w': nw(len(dec[2]) + len(que[2]))})
     parts = [f'<p class="intro">{esc(fill(S["lede"]))}</p>']
-    # the list first: each item's number, its head and the recommendation's first sentence, linked to its card
     lis, cards_d, cards_q = [], [], []
     for row in dec[2]:
         n, what, rec = row[0], row[1], row[2]
-        head, rest = split_first(what)
-        ans, rests = first_sentence(rec)
+        head, rest = split_first(what, (': ', '. ', '; '))
+        ans, rests = first_sentence(four_width_clause(rec))
         lis.append(f'<li><a href="#d-{esc(n)}"><span class="rn">{esc(fill(S["item_label"], {"n": n}))}</span> <span class="rb"><span class="rl">{quoted(head)}</span>'
                    f'<span class="rr"><span class="k">{esc(S["rec_tag"])}</span> {quoted(ans)}</span></span></a></li>')
         dl = []
         if rests:
             dl.append((S['rests_k'], quoted(period(rests))))
         if rest:
-            dl.append((S['covers_k'], quoted(period(cap(rest)))))
+            dl.append((S['covers_k'], quoted(period(cap(face(rest))))))
         m = re.search(r'\(section (\d+)\)', what)
         link = ''
         if m and m.group(1) in C.get('section_to_panel', {}):
             pn = C['section_to_panel'][m.group(1)]
             key = next(k for k, v in C['sections'].items() if v['n'] == pn)
             link = f'<p class="small"><a href="#p-{key}">{esc(fill(S["see_panel"], {"n": pn}))}</a></p>'
+        extra = ''
+        if re.findall(r'#[0-9A-Fa-f]{6}', what) and G.get('text'):
+            extra += swatches(what, G)
+        if n == '6' and words_t:
+            extra += table(words_t[1], words_t[2], S['words_caption'], cls='dt ww')
+            extra += ''.join(f'<p>{quoted(x)}</p>' for x in w_notes)
         cards_d.append(f'<article class="dec" id="d-{esc(n)}"><p class="label">{esc(fill(S["item_label"], {"n": n}))}</p><h4 class="dec-h">{quoted(head)}</h4>'
                        f'<p class="dec-rec"><span class="tag rec">{esc(S["rec_tag"])}</span> {quoted(ans)}</p>'
-                       + ('<dl class="facts f2">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{b}</dd></div>' for a, b in dl) + '</dl>' if dl else '') + link + '</article>')
+                       + ('<dl class="facts f2">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{b}</dd></div>' for a, b in dl) + '</dl>' if dl else '') + extra + link + '</article>')
     for row in que[2]:
         n, q, dft = row[0], period(row[1]), period(row[2])
         lis.append(f'<li><a href="#d-{esc(slug(n))}"><span class="rn">{esc(fill(S["question_label"], {"n": n}))}</span> <span class="rb"><span class="rl">{quoted(q)}</span>'
@@ -736,7 +857,8 @@ def decide_panel(R):
         body = re.sub(r'^\*\*What you approve at this gate\.\*\*\s*', '', approve)
         parts.append(f'<h3 class="sub grp">{esc(S["approve_h"])}</h3><p class="approve">{quoted(body)}</p>')
     parts.append(f'<p class="reply">{esc(S["reply"])}</p>')
-    FIG['decide'] = {'decisions': len(dec[2]), 'questions': len(que[2]), 'from': C['slots']['report'] + ', section 10'}
+    FIG['decide'] = {'decisions': len(dec[2]), 'questions': len(que[2]), 'word_rows': len(words_t[2]) if words_t else 0,
+                     'from': C['slots']['report'] + ', section 10'}
     html_ = section('decide', ''.join(parts), 'ready')
     return html_, len(dec[2]) + len(que[2])
 
@@ -862,6 +984,46 @@ def gray_copy(src):
     return g
 
 
+def tidy(src, t):
+    """A text crop cut to its own block: the rows of the matched block (the crop less its context), and with `column` the
+    block's own column (from its first ink to the first gap 24 px wide), then `pad` px of the block's own ground on every
+    side. Board-only; the photograph in scratch is kept."""
+    from PIL import Image
+    out = SCRATCH / 'made' / f'tidy-{pathlib.Path(src).stem}.png'
+    out.parent.mkdir(parents=True, exist_ok=True)
+    if out.exists() and out.stat().st_mtime >= pathlib.Path(src).stat().st_mtime and CACHE.get(out.name) == json.dumps(t, sort_keys=True):
+        return out
+    im = Image.open(src).convert('RGB')
+    W, H = im.size
+    px = im.load()
+    ctx = int(t.get('context', 8))
+    y0, y1 = ctx, H - ctx
+    dark = lambda c: sum(c) / 3 < 140
+    always = {x for x in range(W) if sum(1 for y in range(H) if dark(px[x, y])) > 0.9 * H}
+    cols = [x for x in range(W) if x not in always and any(dark(px[x, y]) for y in range(y0, y1))]
+    if not cols:
+        return src
+    x0 = min(cols)
+    x1 = max(cols) + 1
+    if t.get('column'):
+        gap, x = 0, x0
+        while x < W:
+            gap = gap + 1 if x not in cols else 0
+            if gap >= 24:
+                x1 = x - gap + 1
+                break
+            x += 1
+    from collections import Counter
+    ground = Counter(px[x, y] for x in range(x0, x1) for y in range(y0, y1)).most_common(1)[0][0]
+    pad = int(t.get('pad', 16))
+    box = im.crop((x0, y0, x1, y1))
+    cv = Image.new('RGB', (box.size[0] + 2 * pad, box.size[1] + 2 * pad), ground)
+    cv.paste(box, (pad, pad))
+    cv.save(out, optimize=True)
+    CACHE[out.name] = json.dumps(t, sort_keys=True)
+    return out
+
+
 def pic_html(p, shots, S, luma=False):
     """One picture at true size with its label above it, or a waiting line."""
     label = p.get('label', '')
@@ -874,6 +1036,8 @@ def pic_html(p, shots, S, luma=False):
         path = shots.get(f'p-{p["id"]}')
         if not path or not path.exists():
             return None
+        if p.get('tidy'):
+            path = tidy(path, p['tidy'])
         if luma:
             path = gray_copy(path)
         rec = compose(f'Pic-{slug(p["id"])}' + ('-Luma' if luma else ''), [(path, '')])
@@ -886,7 +1050,9 @@ def pic_html(p, shots, S, luma=False):
         alt = fill(S['export_alt'], {'label': label})
     else:
         alt = fill(S['alt_auto'], {'label': label, 'page': C['page_words'].get(p.get('page'), p.get('page')), 'w': p.get('w')})
-    role = 'view' if luma else p.get('role', 'view')
+    role = '' if luma else p.get('role', 'view')
+    if role == 'none':
+        role = ''
     rw = C['role_words'].get(role, '')
     cap_html = (f'<span class="role {esc(role)}">{esc(rw)}</span> ' if rw else '') + f'<b>{esc(label)}</b>'
     FIG.setdefault('pictures', {})[p['id'] + ('-luma' if luma else '')] = {'src': rec['src'], 'w': rec['w'], 'h': rec['h']}
@@ -959,11 +1125,14 @@ def answers_panel(shots):
             facts_missing.append(n)
         if c.get('none'):
             line = fill(c['none'], vals)
-            none_lis.append(f'<li id="r-{n}"><span class="tag rn">{esc(fill(S["reply_tag"], {"n": n}))}</span> <b>{quoted(title)}</b>. {esc(line)}</li>')
+            none_lis.append(f'<li id="r-{n}"><span class="tag rn">{esc(fill(S["reply_tag"], {"n": n}))}</span> <b>{quoted(period(title))}</b> {esc(line)}</li>')
             continue
+        rec_, other = other_choice(rec)
         h = (f'<article class="dec" id="r-{n}"><p class="label">{esc(fill(S["reply_tag"], {"n": n}))}</p><h4 class="dec-h">{quoted(title)}</h4>'
-             f'<dl class="facts f2"><div><dt>{esc(S["approved_k"])}</dt><dd>{quoted(rec)}</dd></div>'
+             f'<dl class="facts f2"><div><dt>{esc(S["approved_k"])}</dt><dd>{quoted(rec_)}</dd></div>'
              f'<div><dt>{esc(S["changed_k"])}</dt><dd>{esc(fill(c["changed"], vals))}</dd></div></dl>')
+        if other:
+            h += f'<p class="small"><b>{esc(S["other_k"])}.</b> {quoted(other)}</p>'
         if c.get('checked'):
             h += f'<p class="what"><b>{esc(S["checked_k"])}.</b> {esc(fill(c["checked"], vals))}</p>'
         if c.get('panel'):
@@ -977,7 +1146,7 @@ def answers_panel(shots):
                 lp = [next(p for p in c['pictures'] if p['id'] == k) for k in c['luma']]
                 lh = [pic_html(p, shots, S, luma=True) for p in lp]
                 if all(lh):
-                    h += f'<h5 class="luma-h">{esc(S["luma_h"])}</h5><div class="pair ba">{"".join(lh)}</div>'
+                    h += f'<h5 class="luma-h">{esc(S["luma_h"])}</h5><p class="what">{esc(S["luma_note"])}</p><div class="pair ba">{"".join(lh)}</div>'
                 else:
                     missing.append(f'luma {n}')
         if c.get('rule'):
@@ -1131,9 +1300,17 @@ def scores_panel(R):
     # this board
     out.append(f'<h3 class="sub">{esc(S["this_h"])}</h3>')
     bp = ROOT / C['slots']['board_scores']
+    Bj = None
     if bp.exists():
         try:
             Bj = json.loads(bp.read_text())
+        except json.JSONDecodeError as e:
+            warn(f'{rel(bp)} could not be read: {e}')
+    if Bj is not None and not any(Bj.get(k) for k in C['slots'].get('board_rescore_keys', [])):
+        Bj = None
+        FIG['board_score'] = {'file': C['slots']['board_scores'], 'state': 'first score only; the slot waits for the rescore'}
+    if Bj is not None:
+        try:
             it = Bj['items'][0]
             first, last = it.get('first_scores') or it.get('scores'), it.get('scores')
             hd = ''.join(f'<th scope="col"{" class=\"n\"" if k >= 1 else ""}>{esc(c)}</th>' for k, c in enumerate(S['boards_cols']))
@@ -1193,17 +1370,28 @@ def weight_panel(G, R):
         bw = built
     FILL.update({'page': f'{page:,}', 'built': bw})
     out = [f'<p class="intro">{esc(fill(S["lede"]))}</p>']
-    rows = [(S['rows']['page_limit'], page, limit), (S['rows']['proj_limit'], proj, limit), (S['rows']['proj_warn'], proj, warn_line),
-            (S['rows']['ch14'], with_kit, stop)]
+    unb = pj.get('unbuilt') or {}
+    p4 = sorted({int(v) for k, v in unb.items() if k not in ('27', '28')})
+    each = f'{p4[0]:,}' if len(p4) == 1 else join_words(f'{v:,}' for v in p4)
+    rm = phase4_room(G)
+    alloc = (FIG.get('phase4') or {}).get('allocations', {}).get('total')
+    with_alloc = page + rm['held'] + rm['phase5'] + alloc if alloc else None
+    rows = [(S['rows']['page_limit'], page, limit), (fill(S['rows']['proj_limit'], {'each': each}), proj, limit),
+            (fill(S['rows']['proj_warn'], {'each': each}), proj, warn_line)]
+    if with_alloc:
+        rows += [(S['rows']['alloc_limit'], with_alloc, limit), (S['rows']['alloc_warn'], with_alloc, warn_line)]
+        said = re.search(r'the page projects to ([\d,]+) bytes', B1.md_section(report_section(R, 9) or '', ['Page weight']) or '')
+        if said and int(said.group(1).replace(',', '')) != with_alloc:
+            warn(f'the report projects the page with its allocations at {said.group(1)} bytes, and the board at {with_alloc:,}')
+    rows.append((S['rows']['ch14'], with_kit, stop))
     if kit_fig:
         rows.append((S['rows']['kit'], kit, kit_fig))
     out.append(bar_table(rows, S['cols'], S['top_caption']))
-    crow = [(fill(S['chapter_word'], {'n': k}), int(v['bytes']), int(v['budget']) if v.get('budget') else None) for k, v in sorted(ch.items())]
+    crow = [(fill(S['chapter_14_word'] if k == '14' else S['chapter_word'], {'n': k, 'pct': f'{100 * with_kit / stop:.1f}' if stop else '?'}), int(v['bytes']),
+             int(v['budget']) if v.get('budget') else None) for k, v in sorted(ch.items())]
     out.append(f'<h3 class="sub">{esc(S["chapters_h"])}</h3>' + bar_table(crow, S['cols'], S['chapters_caption']))
-    rm = phase4_room(G)
-    alloc = (FIG.get('phase4') or {}).get('allocations', {}).get('total')
     out.append(f'<h3 class="sub">{esc(S["room_h"])}</h3><p>{esc(fill(S["room_line"], {"free": f"{rm["free"]:,}", "held": f"{rm["held"]:,}", "phase5": f"{rm["phase5"]:,}", "room": f"{rm["room"]:,}", "room_warn": f"{rm["room_warn"]:,}", "alloc": f"{alloc:,}" if alloc else "?"}))}</p>')
-    FIG['weight'] = {'page': page, 'limit': limit, 'warn_line': warn_line, 'projected': proj, 'ch14_with_kit': with_kit, 'ch14_stop': stop, 'kit': kit,
+    FIG['weight'] = {'page': page, 'limit': limit, 'warn_line': warn_line, 'projected': proj, 'projected_with_allocations': with_alloc, 'phase4_each_in_projection': p4, 'ch14_with_kit': with_kit, 'ch14_stop': stop, 'kit': kit,
                      'kit_figure': kit_fig, 'chapters': {k: v for k, v in ch.items()}, 'phase4_room': rm}
     return section('weight', ''.join(out), 'ready')
 
@@ -1230,8 +1418,16 @@ def tested_panel(G, R):
                 runs = J.get('runs') if isinstance(J.get('runs'), list) else []
                 widths = [str(r.get('width')) for r in runs if r.get('width')]
                 r0 = runs[0] if runs else {}
-                w = fill(it['words'], {'widths': join_words(widths) or '?', 'failures': nw(len(J.get('failures', []))),
-                                       'specimens': f'{(r0.get("specimens") or {}).get("stages", 0):,}', 'links': f'{(r0.get("anchors") or {}).get("links", 0):,}'})
+                fl = J.get('failures', [])
+                nf = fl if isinstance(fl, int) else len(fl or [])
+                extra = {}
+                if it.get('window'):
+                    m = read_fact({'name': it['label'] + ' window', **it['window']})
+                    extra = {'start': m.group(1), 'end': m.group(2)} if m else {}
+                ck = J.get('checked', '')
+                w = fill(it['words'], {'widths': join_words(widths) or '?', 'failures': nw(nf), 'checked': ck[11:16] if len(ck) > 16 else ck,
+                                       'specimens': f'{(r0.get("specimens") or {}).get("stages", 0):,}', 'links': f'{(r0.get("anchors") or {}).get("links", 0):,}',
+                                       'pass': 'passes' if J.get('pass') else 'fails', **extra})
                 FIG.setdefault('checks_read', {})[it['slot']] = {'file': rel(p), 'failures': J.get('failures'), 'pass': J.get('pass')}
         elif kind == 'count':
             p = scratch_path('[scratch]/' + it['scratch_file'])
@@ -1500,6 +1696,13 @@ ul.nones .tag{margin-right:var(--oa-space-100)}
 .luma-h{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin:var(--oa-space-400) 0 0}
 .rl a{display:inline-flex;align-items:center;min-height:2.75rem}
 .tb{margin-top:var(--oa-space-300)}
+.swf{margin:var(--oa-space-300) 0}
+.swf figcaption{font:var(--oa-type-caption);color:var(--ink-2);margin-bottom:var(--oa-space-100);max-width:var(--oa-layout-measure-intro-max)}
+.sw-ground{list-style:none;margin:0;padding:var(--oa-space-300);display:flex;flex-wrap:wrap;gap:var(--oa-space-300) var(--oa-space-500);background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);max-width:var(--oa-layout-measure-intro-max)}
+.sw-ground li{flex:1 1 12rem;min-width:0}
+.sw{display:block;width:96px;height:56px}
+.sw-t{display:block;font:var(--oa-type-body-small);margin-top:var(--oa-space-100)}
+table.dt.ww{min-width:44rem}
 '''
 
 
@@ -1535,7 +1738,7 @@ FONTS = 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&f
 
 
 def build_page(body):
-    css = strip_css(CSS)
+    css = strip_css(CSS + '\n'.join(dict.fromkeys(SWATCH_CSS)))
     return (f'<title>{esc(C["title"])}</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n<meta name="chart-views" content="overview">\n'
             f'<style>@import url("{FONTS}");\n{token_root(css)}\n{css}</style>\n'
             f'<div class="page" data-view-root="overview"><main class="inner">\n{body}\n<p class="foot caption">{esc(fill(C["foot"]))}</p>\n</main></div>\n')
@@ -1554,6 +1757,10 @@ def checks(page):
         i = t.find('—')
         if i >= 0:
             warn('an em dash in the board’s ' + where + ': ' + t[max(0, i - 60):i + 20])
+    vis = visible_text(re.sub(r'<code>.*?</code>', ' ', page, flags=re.S))
+    straight = re.findall(r".{0,30}['\"].{0,10}", vis)
+    if straight:
+        warn('straight quotes or apostrophes on the board: ' + ' | '.join(x.strip() for x in straight[:4]))
     own_page = page
     for q in sorted({q for q in QUOTED if q}, key=len, reverse=True):
         for frag in (B1.md_inline(q), B1.md_inline(q, quote=False), esc(q)):
@@ -1708,7 +1915,7 @@ def main():
     FIG['photographs_asked'] = len(items)
     shots = run_shots(items, a.reuse) if G['usable'] else {}
     # 2. the panels
-    s_decide, n_items = decide_panel(R)
+    s_decide, n_items = decide_panel(R, G)
     w1 = panel_words(s_decide)
     FILL.update({'p1_words': f'{w1:,}', 'p1_min': f'{nw(max(1, round(w1 / 200)))} minute' + ('' if max(1, round(w1 / 200)) == 1 else 's')})
     FIG['panel_1_words'] = w1

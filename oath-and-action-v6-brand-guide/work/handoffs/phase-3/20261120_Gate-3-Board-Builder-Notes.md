@@ -4,7 +4,25 @@ Written November 20, 2026, by the board builder (`oa-design-director` as page bu
 
 ## Status
 
-22:59 UTC: **First full build ready.** Run 3 (`gate_3_board_build.py --reuse --check --strict`, exit 0): 0 warnings, 0 failures. Check: the page alone fails only axe's html-has-lang at 1440, 390 and 360 px (allowed, the host sets the language); wrapped as the host wraps it, PASS. Page 140,067 bytes, 7,727 words; 48 pictures, 797,708 bytes; the folder 52 files, 1,010,222 bytes. Panels 1 to 4 and 6 ready; panel 5 waits for the creative director's score of this board; panel 7 waits for the four-width check's and the quick check's files.
+23:25 UTC: **Fix round in; the checked run waits for the main session's go.** My items from the creative director's review (G3-M1, G3-S1, S2, S4 to S8, S11, S12, and the one-line replies' full stop) are in, and panels 1 and 2 quote the report's revised sections 9 and 10. Built with `--reuse --no-browser` (no browser, as the main session asked while the quick check runs): 0 warnings, 0 failures. Page 151,411 bytes, 9,136 words (panel 1: 1,706); 48 pictures, 791,474 bytes; the folder 52 files, 1,018,542 bytes. Panels 1 to 4 and 6 ready; panel 5's slot for this board's score waits for the rescore (the first score is not shown); panel 7 waits only for the quick check's file. The board check has not run on this build; `--reuse --check --strict` runs when the main session says a browser may open.
+
+22:59 UTC: First full build ready (run 3, `--reuse --check --strict`, exit 0, 0 warnings; page alone html-has-lang only at 1440, 390 and 360 px; wrapped PASS). The creative director scored it 4, 4, 3, 4, 3, 4 with four Musts and twelve Shoulds.
+
+## Fix round (the creative director's review, 23:17 UTC)
+
+- **G3-M1.** Panel 6's first table now carries both projections, each labeled: the build's own (15,180,545, "with each Phase 4 chapter at 362,857 bytes", the figure read from the build report's projection) against 16 MB and the 15.5 MB line, and the page with panel 2's allocations (15,650,545: the page, chapter 15's held bytes, Phase 5's two chapters and panel 2's total, all read from files), 97.8 percent of 16 MB and 101.0 percent of the 15.5 MB line. The build checks that figure against the report's "projects to" sentence.
+- **G3-M2 to G3-M4, G3-S3, S9, S10.** The main session's words in sections 9 and 10, quoted as they stand. Panel 1 now finds its tables by their heads: the decisions, item 6's word for word table (set in item 6's card with the two notes under it) and the five questions.
+- **G3-S1.** Every quoted word is curled at build, outside code spans; the build now warns on any straight quote or apostrophe left in the visible text (none).
+- **G3-S2.** Item 4's card shows its two colors on Charcoal at true size (96 by 56 px swatches drawn from their tokens), each with the ratios the palette plate on version 14 prints for it on Charcoal, read from the plate and checked against WCAG's formula: #828A9D 5.41 to 1, #505C7D 2.82 to 1 (with its Newsprint label at 4.70).
+- **G3-S4.** Replies 7, 11 and 18 print the closed alternative under "Board 3’s other choice, not taken", apart from what Dustin approved.
+- **G3-S5.** The luma row carries the creative director's sentence, and each luma alt says the chosen pill's ring reads lighter than a plain pill's edge.
+- **G3-S6.** Chapter 14's row in the chapter table reads "Chapter 14 without the kit; with it, 101.9 percent (above)".
+- **G3-S7.** Item 1's clause is rebuilt from the four-width results file beside version 14 (pass, 0 failures), with a warning if the report's number differs; panel 7's line reads the same file, with the window (22:27 to 23:04 UTC) from D3-2356: 1440, 1024, 390 and 360 px, 735 drawn examples, 4,130 same-page links, no failures.
+- **G3-S8.** Panel 7's chapter 14 check and data check read D3-2355, the main session's closing run on version 14's tree.
+- **G3-S11.** Reply 6's captions read "S14 as the kit exports it alone, for a 1440 px page, on Newsprint" and the same for the phone on Charcoal, with no version chip.
+- **G3-S12.** Re-cropped from my photographs in scratch, with no new capture: the read-aloud pair cut to its own column and block, and chapter 04's pair to its block, each with 16 px of its own ground on every side.
+- **One-line replies.** The full stop now sits inside the bold title, so no reader's text pulls a space before it.
+- Q-04 in P4-5's default reads "the question of commissioning photographs" on the face; the code moves to the reference line (board 1's code stripper had turned it into "a logged decision").
 
 ## What the board holds
 
@@ -35,6 +53,10 @@ The creative director's list "What the Gate 3 board must show from this pass" is
 - D3-xxx | Chapter 14's build check is read from the engineer's closing run (21:13 to 21:15 UTC) and the data check from the report's section 4 | No file of the main session's closing run of those two checks was in scratch; the line names whose run it is
 - D3-xxx | The four-width check's slot names `[scratch]/c09/final/four/v14-Guide-Check-Results.json`, the name the check gives its results beside `v14.html`; the quick check's slot is empty | Panel 7 shows both waiting until their files exist
 - D3-xxx | The board's own check line reads the last run's results file, as board 3's did | The check runs after the page is written
+- D3-xxx | Panel 5 keeps this board's score waiting until the scores file carries a rescore (`rescored_utc` or `rescore_basis`, as board 3's file does) | The main session's word: the slot stays waiting until the rescore
+- D3-xxx | Item 4's swatch ratios are the palette plate's own printed figures, read from version 14, with WCAG's formula as a check | The board prints what the guide prints; a recomputed figure could round another way
+- D3-xxx | Text crops are trimmed to the matched block and padded with 16 px of that block's own ground, from the photographs in scratch | G3-S12 asks for a line's boundary with ground on every side, and no browser could open; the pad repeats the block's ground color and adds no other content
+- D3-xxx | Bare codes a quoted sentence uses as a noun take words from the content file (`code_words`: Q-04) | Board 1's stripper writes "a logged decision" for any bare code, which misnames an open question
 
 ## Requests
 
@@ -51,7 +73,10 @@ The creative director's list "What the Gate 3 board must show from this pass" is
 - By eye, from the pictures: Rule 15.4's failure plate in both versions (the blue step back in version 14), Rules 15.20 and 14.144 before and after (the keyline inside the red rings in version 13 only), the masthead at 360 px (133 px tall with the button on a second line, then 89 px on one line), S59 at 390 px (the "4.1" on the band's edge, then clear of it), S14's export footers on both grounds, the three heads at 390 px, the palette row, and the small crops for replies 7, 11, 13, 16, 22 and 23. The wrapped board's cover and panel 6 photographed at 1440 px and looked at.
 - The board's 23 links to the chapters page land on 22 rules that version 14 holds (23 of 23 found).
 
+- Fix round, 23:20 to 23:25 UTC: `--reuse --no-browser`, three runs, the last with 0 warnings and 0 failures; the swatch ratios read from the plate and checked against WCAG; the panel 6 projection checked against the report's 15,650,545; the re-cropped text pairs looked at; the page's visible text searched for straight quotes (none), em and en dashes (none) and decision codes on the face (none).
+
 ## Not tested
+- The fix round's build in the board check: it waits for the main session's go.
 
 - The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a keyboard walk past the board check's first stops, and a screen reader.
 - Every picture by eye: I looked at the sample above, not all 48. Three of my element photographs of the wrapped board at 390 px failed on a 1 px offset, so I did not look at panel 1's cards or reply 17's card on a phone, beyond the board check's run at 390 and 360 px.
