@@ -1,0 +1,801 @@
+{
+ "built": "2026-11-20T17:30:16.945513+00:00",
+ "decisions": {
+  "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
+  "state": "signed off",
+  "updated_utc": "2026-11-20T17:13:38Z",
+  "schema": "board-3-decisions/1",
+  "signed_off_utc": "2026-11-20T17:13:38Z"
+ },
+ "final_build": {
+  "page": "[scratch]/join/20261120_Guide-Join.html",
+  "report": "[scratch]/join/20261120_Guide-Join-Build-Report.json",
+  "bytes": 12178927,
+  "built": "2026-11-20T17:12:56",
+  "warnings": 0,
+  "rules": 369,
+  "specimens": 679,
+  "label": "the joined build of the second pass, standing in for version 13"
+ },
+ "pages": {
+  "v9": "work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html",
+  "v10": "work/boards/phase-3/round-4/20261113_Guide-Preview-V10.html",
+  "v11": "work/boards/phase-3/round-5/20261114_Guide-Preview-V11.html",
+  "v12": "work/boards/phase-3/review-4-5/20261116_Guide-Preview-V12.html",
+  "final": "[scratch]/join/20261120_Guide-Join.html"
+ },
+ "photographs_asked": 156,
+ "shots": {
+  "guide": {
+   "asked": 156,
+   "taken": 0,
+   "missing": [
+    "g-final-fig-s-02-22-correct-1440",
+    "g-final-fig-s-05-3-correct-1440",
+    "g-final-fig-s-11-10-correct-1440",
+    "g-final-fig-s-11-10-correct-390",
+    "g-final-fig-s-11-10-failure-1440",
+    "g-final-fig-s-11-11-correct-1440",
+    "g-final-fig-s-11-11-correct-390",
+    "g-final-fig-s-11-11-failure-1440",
+    "g-final-fig-s-11-ballot-steps-1440",
+    "g-final-fig-s-11-court-steps-1440",
+    "g-final-fig-s-11-marks-1440",
+    "g-final-fig-s-11-steps-1440",
+    "g-final-fig-s-13-5-correct-1440",
+    "g-final-fig-s-13-6-correct-1440",
+    "g-final-fig-s-14-142-failure-1440",
+    "g-final-fig-s-14-143-correct-1440",
+    "g-final-fig-s-14-143-correct-390",
+    "g-final-fig-s-14-143-failure-1440",
+    "g-final-fig-s-14-144-correct-1440",
+    "g-final-fig-s-14-144-correct-390",
+    "g-final-fig-s-14-144-failure-1440",
+    "g-final-fig-s-14-palette-spec-1440",
+    "g-final-fig-s-14-s96-1440",
+    "g-final-fig-s-14-s96-390",
+    "g-final-fig-s-14-selection-guide-1440",
+    "g-final-fig-s-14-selection-guide-390",
+    "g-final-fig-s-15-1-correct-1440",
+    "g-final-fig-s-15-1-failure-1440",
+    "g-final-fig-s-15-10-correct-1440",
+    "g-final-fig-s-15-10-failure-1440",
+    "g-final-fig-s-15-11-correct-1440",
+    "g-final-fig-s-15-11-failure-1440",
+    "g-final-fig-s-15-12-correct-1440",
+    "g-final-fig-s-15-12-failure-1440",
+    "g-final-fig-s-15-13-correct-1440",
+    "g-final-fig-s-15-13-failure-1440",
+    "g-final-fig-s-15-14-correct-1440",
+    "g-final-fig-s-15-14-failure-1440",
+    "g-final-fig-s-15-15-correct-1440",
+    "g-final-fig-s-15-15-failure-1440"
+   ]
+  },
+  "made": {
+   "asked": 2,
+   "taken": 0,
+   "missing": [
+    "made-masthead-360-360",
+    "made-masthead-360-375"
+   ]
+  }
+ },
+ "made": {
+  "made-masthead-360-360": null,
+  "made-masthead-360-375": null
+ },
+ "guide_widths": {
+  "S85": {
+   "1440": null,
+   "390": null
+  },
+  "S86": {
+   "1440": null,
+   "390": null
+  },
+  "S87": {
+   "1440": null,
+   "390": null
+  },
+  "S88": {
+   "1440": null,
+   "390": null
+  },
+  "S89": {
+   "1440": null,
+   "390": null
+  },
+  "S90": {
+   "1440": null,
+   "390": null
+  },
+  "S91": {
+   "1440": null,
+   "390": null
+  },
+  "S92": {
+   "1440": null,
+   "390": null
+  },
+  "S93": {
+   "1440": null,
+   "390": null
+  },
+  "S94": {
+   "1440": null,
+   "390": null
+  },
+  "S95": {
+   "1440": null,
+   "390": null
+  }
+ },
+ "forms": {
+  "14.84": {
+   "rule": "14.84",
+   "form": "Rose chart",
+   "tier": "Avoid",
+   "round": 4,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-84-sketch",
+   "heading": "Rose chart, a form that misleads",
+   "caption": "A rose chart draws four illustrative values as wedges sized by their radius, so a value twice another looks four times as large."
+  },
+  "14.79": {
+   "rule": "14.79",
+   "form": "Icon array with Civic Line icons",
+   "tier": "Core",
+   "round": 4,
+   "maker": "A",
+   "status": "new",
+   "spec": "S85",
+   "title": "One in ten U.S. wage and salary workers belonged to a union in 2025.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How many of every 100 workers belong to a union?"
+  },
+  "14.80": {
+   "rule": "14.80",
+   "form": "Proportional symbols",
+   "tier": "Extended",
+   "round": 4,
+   "maker": "A",
+   "status": "new",
+   "spec": "S86",
+   "title": "Special districts were the most common kind of government in the country in 2022, 39,555 of the 90,888 the Census Bureau counted.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How many governments of each kind does the country have?"
+  },
+  "14.81": {
+   "rule": "14.81",
+   "form": "Venn diagram",
+   "tier": "Extended",
+   "round": 4,
+   "maker": "A",
+   "status": "new",
+   "spec": "S87",
+   "title": "In 2025, 23.8 million people had both private and public health coverage.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How many people have private health coverage, public coverage, both, or neither?"
+  },
+  "14.82": {
+   "rule": "14.82",
+   "form": "Euler diagram",
+   "tier": "Extended",
+   "round": 4,
+   "maker": "A",
+   "status": "new",
+   "spec": "S88",
+   "title": "In 2025, 213.2 million people had private health coverage, about 1.8 times the 119.1 million who had public coverage.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How many people have private health coverage, public coverage, both, or neither, with each region drawn at its true size?"
+  },
+  "14.83": {
+   "rule": "14.83",
+   "form": "Packed circles or bubble cloud",
+   "tier": "Reference",
+   "round": 4,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-83-sketch",
+   "heading": "Packed circles or bubble cloud, a sketch",
+   "caption": "Packed circles for an illustrative city budget, one circle for each line, its area in proportion to the amount, the four largest named."
+  },
+  "14.135": {
+   "rule": "14.135",
+   "form": "Process explainer",
+   "tier": "Core",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S89",
+   "title": "Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How does a disaster declaration bring federal help, and who asks for it at each step?"
+  },
+  "14.136": {
+   "rule": "14.136",
+   "form": "By-the-numbers panel",
+   "tier": "Core",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S90",
+   "title": "Public school systems spent $17,619 a pupil in fiscal 2024, and 88 cents of each dollar they took in came from state and local sources.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "What do public schools spend, and where does the money come from?"
+  },
+  "14.137": {
+   "rule": "14.137",
+   "form": "Comparison cards",
+   "tier": "Core",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S91",
+   "title": "Of the federal district courts’ three kinds of judge, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How do the three kinds of judges who hear cases at trial in the federal district courts differ: district, bankruptcy and magistrate judges?"
+  },
+  "14.138": {
+   "rule": "14.138",
+   "form": "Step-by-step",
+   "tier": "Core",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S92",
+   "title": "A federal agency has 20 working days under the law to answer a records request, and a requester it turns down can appeal, ask for mediation or sue.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How do I ask a federal agency for its records, and what can I do if it says no?"
+  },
+  "14.139": {
+   "rule": "14.139",
+   "form": "Annotated illustration",
+   "tier": "Extended",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S93",
+   "title": "Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "What does the first page of a law tell a reader?"
+  },
+  "14.140": {
+   "rule": "14.140",
+   "form": "Calendar",
+   "tier": "Extended",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S94",
+   "title": "Seven of the 16 budget and individual income tax deadlines federal law sets for 2027 carry a consequence in law.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "Which dates does federal law set for the budget and for taxes in 2027?"
+  },
+  "14.141": {
+   "rule": "14.141",
+   "form": "Social data card",
+   "tier": "Core",
+   "round": 4,
+   "maker": "I",
+   "status": "new",
+   "spec": "S95",
+   "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
+   "evidence": "Finding",
+   "estimate": false,
+   "question": "How many residents per 100,000 does each state hold in prison?"
+  }
+ },
+ "forms_summary": {
+  "forms": 13,
+  "shown": 13,
+  "ready": 0,
+  "estimate": [],
+  "waiting": [
+   "14.84",
+   "14.79",
+   "14.80",
+   "14.81",
+   "14.82",
+   "14.83",
+   "14.135",
+   "14.136",
+   "14.137",
+   "14.138",
+   "14.139",
+   "14.140",
+   "14.141"
+  ]
+ },
+ "panel_1_top_words": 881,
+ "decide": {
+  "items": 39,
+  "questions": 23,
+  "replies": 24,
+  "state": "signed off",
+  "items_waiting": [
+   "11.10",
+   "11.11",
+   "board-1-maps",
+   "S37",
+   "S14",
+   "S40",
+   "rules-14-1-to-14-14",
+   "14.144-pips",
+   "15.20-chooser",
+   "chapter-15-approved",
+   "chapter-11",
+   "masthead",
+   "where-to-start",
+   "chapter-18-and-shell",
+   "related-chapters",
+   "CE-S22-words",
+   "CE-S22-examples",
+   "NB-S4",
+   "S14-line-02-13",
+   "S59-label",
+   "masthead-360",
+   "red-target-keyline",
+   "CR-S17-chips",
+   "S71-retrieved",
+   "pillar-red-ratio",
+   "CR-S19-chip",
+   "15.22-examples",
+   "CR-S4-sticky",
+   "related-rules",
+   "routes-who"
+  ],
+  "pictures_waiting": 8
+ },
+ "panel_1_words": 7656,
+ "selection_guide": {
+  "form_links": 127,
+  "road_links": 6,
+  "questions": 16
+ },
+ "round5": {
+  "missing": [
+   "the guide at 1440 px",
+   "the guide at 390 px",
+   "the palette plate",
+   "Rule 14.142 at 1440 px",
+   "Rule 14.142 at 390 px",
+   "Rule 14.142’s failure plate",
+   "Rule 14.143 at 1440 px",
+   "Rule 14.143 at 390 px",
+   "Rule 14.143’s failure plate",
+   "Rule 14.143: On load, the first step",
+   "Rule 14.143: After two presses of Next step",
+   "Rule 14.143: After five presses of Next step",
+   "Rule 14.144 at 1440 px",
+   "Rule 14.144 at 390 px",
+   "Rule 14.144’s failure plate",
+   "Rule 14.144: On load, Reform R-06 chosen",
+   "Rule 14.144: Reform R-30 chosen",
+   "Rule 14.144: Reform R-38 chosen"
+  ]
+ },
+ "reconciliation": {
+  "tables": 2,
+  "rows_naming_v7_1": 0
+ },
+ "ch15_missing": [
+  "Rule 15.1",
+  "Rule 15.2",
+  "Rule 15.3",
+  "Rule 15.4",
+  "Rule 15.5",
+  "Rule 15.6",
+  "Rule 15.7",
+  "Rule 15.8",
+  "Rule 15.9",
+  "Rule 15.10",
+  "Rule 15.11",
+  "Rule 15.12",
+  "Rule 15.13",
+  "Rule 15.14",
+  "Rule 15.15",
+  "Rule 15.16",
+  "Rule 15.17",
+  "Rule 15.18",
+  "Rule 15.19",
+  "Rule 15.20",
+  "Rule 15.21",
+  "Rule 15.22",
+  "Rule 15.23",
+  "Rule 15.24",
+  "Rule 15.25",
+  "Rule 15.6 at 390 px",
+  "Rule 15.19 at 390 px",
+  "Rule 15.20 at 390 px",
+  "Rule 15.21 at 390 px",
+  "Rule 15.23 at 390 px",
+  "Rule 15.24 at 390 px"
+ ],
+ "spend": {
+  "rows": [
+   [
+    "Chapter 14 with the chart kit",
+    2820373,
+    2803941
+   ],
+   [
+    "Chapter 14’s own entries and plates",
+    2117492,
+    null
+   ],
+   [
+    "The chart kit the page carries",
+    569764,
+    null
+   ],
+   [
+    "Rules 14.1 to 14.14 with the opener",
+    177979,
+    212288
+   ],
+   [
+    "Map shapes",
+    133117,
+    250000
+   ],
+   [
+    "The whole guide today",
+    12178927,
+    15500000
+   ],
+   [
+    "The whole guide, as projected",
+    15148599,
+    15500000
+   ],
+   [
+    "The whole guide, as projected, against the 16 MB limit",
+    15148599,
+    16000000
+   ]
+  ],
+  "round_5": {
+   "s-14-selection-guide": 152233,
+   "s-14-palette-spec": 83467,
+   "Rule 14.142": 34251,
+   "Rule 14.143": 45304,
+   "Rule 14.144": 70376
+  },
+  "heaviest": [
+   {
+    "spec": "S13",
+    "rule": "14.34",
+    "bytes": 33488
+   },
+   {
+    "spec": "S05",
+    "rule": "14.30",
+    "bytes": 30312
+   },
+   {
+    "spec": "S25",
+    "rule": "14.27",
+    "bytes": 22806
+   },
+   {
+    "spec": "S08",
+    "rule": "14.49",
+    "bytes": 21780
+   },
+   {
+    "spec": "S94",
+    "rule": "14.140",
+    "bytes": 16789
+   },
+   {
+    "spec": "S15",
+    "rule": "14.125",
+    "bytes": 16673
+   },
+   {
+    "spec": "S33",
+    "rule": "14.40",
+    "bytes": 16583
+   },
+   {
+    "spec": "S37",
+    "rule": "14.129",
+    "bytes": 16296
+   },
+   {
+    "spec": "S06",
+    "rule": "14.76",
+    "bytes": 16085
+   },
+   {
+    "spec": "S96",
+    "rule": "",
+    "bytes": 16022
+   }
+  ],
+  "ch14_with_kit_minus_figure": 16432
+ },
+ "count": {
+  "total": 112,
+  "recount": 112,
+  "dr_229": 18
+ },
+ "scores": {
+  "readers": [
+   {
+    "name": "Statistics",
+    "state": "ready",
+    "score": "3.5 of 5",
+    "must_fix": 2,
+    "should_fix": 10,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md"
+   },
+   {
+    "name": "Civic education",
+    "state": "ready",
+    "score": "3 of 5",
+    "must_fix": 4,
+    "should_fix": 23,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md"
+   },
+   {
+    "name": "Accessibility",
+    "state": "ready",
+    "score": "4 of 5",
+    "must_fix": 1,
+    "should_fix": 7,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Accessibility.md"
+   },
+   {
+    "name": "Nonpartisanship and brand",
+    "state": "ready",
+    "score": "3 of 5",
+    "must_fix": 3,
+    "should_fix": 7,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Nonpartisan-Brand.md"
+   },
+   {
+    "name": "Craft at twice size",
+    "state": "ready",
+    "score": "3.5 of 5",
+    "must_fix": 2,
+    "should_fix": 22,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+   },
+   {
+    "name": "Production",
+    "state": "ready",
+    "score": "4 of 5",
+    "must_fix": 0,
+    "should_fix": 11,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md"
+   },
+   {
+    "name": "Reader panel, simulated",
+    "state": "ready",
+    "score": "3 of 5",
+    "must_fix": 2,
+    "should_fix": 18,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+   },
+   {
+    "name": "Drift read",
+    "state": "ready",
+    "score": "3 of 5",
+    "must_fix": 3,
+    "should_fix": 13,
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
+   },
+   {
+    "name": "Creative director",
+    "state": "ready",
+    "score": "7 of 14 items ready",
+    "must_fix": 12,
+    "should_fix": 42,
+    "file": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Scores.json"
+   }
+  ],
+  "cd": {
+   "first_ready": 7,
+   "rescore_ready": 13,
+   "items": 14
+  }
+ },
+ "tested": {
+  "Strict build of the guide": "the final build’s report: exit 0 recorded as no warnings, 12,178,927 bytes, 369 rules and 679 examples placed, built November 20, 2026",
+  "The four-width guide check": "Waiting for its file",
+  "The quick guide check with photographs": "Waiting for its file",
+  "The kit’s build of every chart": "build --all --no-png in the engineer’s second pass, 96 of 96 charts pass, exit 0",
+  "The data check": "Waiting for its file",
+  "The atlas check": "Waiting for its file",
+  "Links to the chapters page": "63 links to 56 entries, each anchor read by this board’s build on the final build’s page, 63 of 63 found",
+  "This board’s own check": "Waiting for its file"
+ },
+ "preview_links": {
+  "links": 63,
+  "anchors": 56,
+  "found": 63
+ },
+ "tokens_used": 110,
+ "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
+ "html_bytes": 224245,
+ "images": 1,
+ "image_bytes": 19060,
+ "folder_files": 3,
+ "folder_bytes": 266223,
+ "largest_image": [
+  19060,
+  "20261120_Decide-board-1-maps-1.webp"
+ ],
+ "status": {
+  "forms": [
+   "partial",
+   "kit"
+  ],
+  "decide": [
+   "partial",
+   "pictures"
+  ],
+  "round5": [
+   "partial",
+   "render"
+  ],
+  "ch15": [
+   "partial",
+   "render"
+  ],
+  "spend": "ready",
+  "count": "ready",
+  "scores": [
+   "partial",
+   "cd_second"
+  ],
+  "tested": [
+   "partial",
+   "main"
+  ],
+  "next": "ready"
+ },
+ "image_sources": {
+  "img/20261120_Decide-board-1-maps-1.webp": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png"
+ },
+ "codes_in_reference_lines": [
+  "D3-1310",
+  "D3-1553",
+  "D3-1556",
+  "D3-1701",
+  "D3-1705",
+  "D3-1710",
+  "D3-1711",
+  "D3-1712",
+  "D3-1861",
+  "D3-1929",
+  "D3-1973",
+  "D3-2011",
+  "D3-2074",
+  "D3-2127",
+  "D3-2131",
+  "D3-2135",
+  "D3-2137",
+  "D3-2140",
+  "D3-2142",
+  "D3-2143",
+  "D3-2144",
+  "D3-2152",
+  "D3-2153",
+  "D3-2243",
+  "D3-2278",
+  "D3-593",
+  "D3-689",
+  "DR-108",
+  "DR-124",
+  "DR-150",
+  "DR-211",
+  "DR-213",
+  "DR-229",
+  "DR-231",
+  "DR-237",
+  "DR-252",
+  "DR-261",
+  "DR-263",
+  "DR-264",
+  "DR-265",
+  "DR-267",
+  "DR-271",
+  "DR-274",
+  "DR-275",
+  "DR-277",
+  "DR-278",
+  "DR-279",
+  "DR-286",
+  "DR-287",
+  "DR-288",
+  "DR-290",
+  "DR-36",
+  "DR-52",
+  "DR-62",
+  "DR-93",
+  "Q-12"
+ ],
+ "anchors_linked": [
+  "rule-11-10",
+  "rule-11-11",
+  "rule-14-101",
+  "rule-14-125",
+  "rule-14-129",
+  "rule-14-132",
+  "rule-14-135",
+  "rule-14-136",
+  "rule-14-137",
+  "rule-14-138",
+  "rule-14-139",
+  "rule-14-140",
+  "rule-14-141",
+  "rule-14-142",
+  "rule-14-143",
+  "rule-14-144",
+  "rule-14-27",
+  "rule-14-30",
+  "rule-14-32",
+  "rule-14-34",
+  "rule-14-40",
+  "rule-14-49",
+  "rule-14-6",
+  "rule-14-76",
+  "rule-14-77",
+  "rule-14-79",
+  "rule-14-80",
+  "rule-14-81",
+  "rule-14-82",
+  "rule-14-83",
+  "rule-14-84",
+  "rule-15-1",
+  "rule-15-10",
+  "rule-15-11",
+  "rule-15-12",
+  "rule-15-13",
+  "rule-15-14",
+  "rule-15-15",
+  "rule-15-16",
+  "rule-15-17",
+  "rule-15-18",
+  "rule-15-19",
+  "rule-15-2",
+  "rule-15-20",
+  "rule-15-21",
+  "rule-15-22",
+  "rule-15-23",
+  "rule-15-24",
+  "rule-15-25",
+  "rule-15-3",
+  "rule-15-4",
+  "rule-15-5",
+  "rule-15-6",
+  "rule-15-7",
+  "rule-15-8",
+  "rule-15-9"
+ ],
+ "notes": [],
+ "warnings": [
+  "flagged words in the board’s own words: very",
+  "decision codes in the words the board quotes from teammates’ files, on its face: D3-1701, D3-1705, D3-1712, D3-2140, D3-2142, D3-2243, D3-689, DR-108, DR-231, DR-265, DR-271, DR-274, DR-278, DR-62, Q-12"
+ ],
+ "seconds": 3,
+ "words": 19170,
+ "fails": []
+}

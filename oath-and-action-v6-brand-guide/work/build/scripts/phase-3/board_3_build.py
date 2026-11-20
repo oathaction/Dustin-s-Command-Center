@@ -2285,15 +2285,19 @@ DECISIONS_PATH = None
 
 
 def main():
-    global C, D, LOG, SCRATCH, CACHE, DECISIONS_PATH
+    global C, D, LOG, SCRATCH, CACHE, DECISIONS_PATH, NO_BROWSER, PREVIEW_IDS, CHARCOAL
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
-    ap.add_argument('--reuse', action='store_true', help='keep kit captures and guide photographs whose sources have not changed')
+    ap.add_argument('--reuse', action='store_true', help='keep kit captures and photographs whose sources have not changed')
     ap.add_argument('--check', action='store_true', help='run dataviz_check.js --board on the board and on a wrapped copy')
     ap.add_argument('--strict', action='store_true', help='exit 1 on any warning')
     ap.add_argument('--scratch', type=pathlib.Path, default=SCRATCH_DEFAULT)
     ap.add_argument('--out', type=pathlib.Path, default=OUT)
     ap.add_argument('--decisions', type=pathlib.Path, help='read the decisions from this file, for a test only')
+    ap.add_argument('--final', type=pathlib.Path, help='the final build’s page (else the content file’s slots.final_page)')
+    ap.add_argument('--final-report', type=pathlib.Path, help='its build report (else slots.final_report, else beside the page)')
+    ap.add_argument('--no-browser', action='store_true', help='open no browser: build from the captures already in scratch')
     a = ap.parse_args()
+    NO_BROWSER = a.no_browser
     SCRATCH = a.scratch
     SCRATCH.mkdir(parents=True, exist_ok=True)
     os.environ['TMPDIR'] = str(SCRATCH)
@@ -2304,6 +2308,8 @@ def main():
     DECISIONS_PATH = a.decisions or (ROOT / C['slots']['decisions'])
     if a.decisions:
         warn(f'the decisions come from {rel(a.decisions)}, a test file; never a board to publish')
+    if a.final:
+        NOTES.append(f'the final build named on the command line: {rel(a.final)}')
     LOG = B1.read_log()
     IMG.mkdir(parents=True, exist_ok=True)
     cache_file = SCRATCH / 'compose-cache.json'
@@ -2312,69 +2318,52 @@ def main():
     FILL['built_date'] = B1.words_when(built)
     FIG['built'] = built.isoformat()
     t0 = datetime.datetime.now()
-    print('building the guide (strict) ...')
-    G = guide_build()
+    D = decisions()
+    G = load_pages(a.final.resolve() if a.final else None, a.final_report.resolve() if a.final_report else None)
+    if G['usable']:
+        PREVIEW_IDS = set(re.findall(r'\sid="([^"]+)"', G['text']))
     P, rn = plan()
     ch, held = chapter14()
-    D = decisions()
-    global V9_IDS
-    vp = ROOT / C['slots'].get('preview_page', '-')
-    if vp.is_file():
-        V9_IDS = set(re.findall(r'\sid="([^"]+)"', vp.read_text()))
-        FIG['preview_page'] = {'file': rel(vp), 'ids': len(V9_IDS)}
+    ch15, held15 = chapter15()
+    FILL['n_15'] = len(held15)
     specs = sorted({f['spec_id'] for f in rn if f.get('spec_id')}, key=lambda s: int(s[1:]))
-    global CHARCOAL, PLATES
     m = re.search(r'--oa-color-palette-charcoal:\s*#([0-9A-Fa-f]{6})', (ROOT / C['slots']['tokens_css']).read_text())
     need(m, 'tokens.css names no Charcoal')
     CHARCOAL = tuple(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4))
-    pp_ = ROOT / C['slots']['plate_bytes']
-    if pp_.exists():
-        try:
-            PLATES = json.loads(pp_.read_text())
-            FIG['plate_bytes'] = {'file': rel(pp_), 'page': PLATES.get('page'), 'measured_utc': PLATES.get('measured_utc')}
-            pb = (PLATES.get('page') or {}).get('bytes')
-            if pb and G['report'].get('bytes') and pb != G['report']['bytes']:
-                warn(f'the engineer measured the plates on a {pb:,}-byte build and this board’s strict build is {G["report"]["bytes"]:,}')
-        except json.JSONDecodeError as e:
-            warn(f'{rel(pp_)} does not parse: {e}')
     for f in rn:
         if f.get('spec_id') and f['spec_id'] not in SPECINFO:
             sj = json.loads((ROOT / C['slots']['specs_dir'] / f'{f["spec_id"].lower()}.json').read_text())
             SPECINFO[f['spec_id']] = {'form': f['form'], 'title': sj.get('title', ''), 'rule': f['rule']}
-    # 1. the guide: measure each chart's drawing at both windows, and photograph sketches, plates and panel 1's pictures
-    shots = {}
+    # 1. what to photograph, in the brief's priority order: panel 1's pictures, the forms' measures and sketches, round 5,
+    #    chapter 15. One list per page, so each page loads once a window.
     items = []
-    if G['usable']:
-        for sid in specs:
-            items += [(f'm-{sid}-{w}', f'oac-s-14-{sid.lower()}', w, 'measure') for w in (DESK, PHONE)]
-        for f in rn:
-            if f['status'] == 'sketch':
-                sp = f.get('sketch_id') or (held.get(f['rule'], {}).get('correct') or {}).get('specimen')
-                items.append((f'sketch-{f["rule"]}', f'fig-{sp}', DESK))
-        if (ch.get('opener') or {}).get('specimen'):
-            items.append(('ch14-opener', f'fig-{ch["opener"]["specimen"]}', DESK))
-        for i in range(1, 15):
-            r = held.get(f'14.{i}', {})
-            for k in ('correct', 'failure'):
-                sp = (r.get(k) or {}).get('specimen')
-                if sp:
-                    items.append((f'plate-14.{i}-{k}', f'fig-{sp}', DESK))
-    freqs = []
     for it, pic in all_pictures(D):
-        req = pic_request(it, pic, 0)
+        req = pic_request(it, pic)
         PIC_KEYS[id(pic)] = req
-        if req and req[0] == 'guide' and G['usable']:
-            items.append((req[1], req[2], req[3]))
-        elif req and req[0] == 'file':
-            freqs.append(req[1:])
-            if req[5] and G['usable']:
-                items.append((f'dec-{req[5]}-{req[3]}', req[5], req[3]))
-    if items:
-        shots = run_shots(G, list({x[0]: x for x in items}.values()), a.reuse)
-    fshots = file_shots(G, list({x[0]: x for x in freqs}.values()), a.reuse, shots) if freqs and G['usable'] else {}
-    # 2. the kit, at the window widths that give the guide's drawing widths
-    # the kit's window for each drawing: its own 1440 px where the guide draws the chart at 720 px (the reading width), else
-    # the window that gives the guide's width (the kit's gutter is 32 px a side from 600 px, 16 under it)
+        if req and req['kind'] == 'guide':
+            items.append({k: req[k] for k in ('key', 'page', 'el', 'w', 'text_scale', 'recipe') if k in req})
+    for sid in specs:
+        items += [{'key': f'm-{sid}-{w}', 'page': 'final', 'el': f'oac-s-14-{sid.lower()}', 'w': w, 'measure': True} for w in (DESK, PHONE)]
+    for f in rn:
+        if f['status'] == 'sketch':
+            sp = f.get('sketch_id') or (held.get(f['rule'], {}).get('correct') or {}).get('specimen')
+            items.append({'key': f'sketch-{f["rule"]}', 'page': 'final', 'el': f'fig-{sp}', 'w': DESK})
+    items += r5_items(held)
+    items += c15_items(held15)
+    seen, uniq = set(), []
+    for x in items:
+        if x['key'] not in seen:
+            seen.add(x['key'])
+            uniq.append(x)
+    FIG['photographs_asked'] = len(uniq)
+    shots = run_shots(uniq, a.reuse) if G['usable'] or any(x['page'] != 'final' for x in uniq) else {}
+    make_pictures(a.reuse)
+    for it, pic in all_pictures(D):
+        if pic.get('kind') == 'to-make':
+            PIC_KEYS[id(pic)] = pic_request(it, pic)
+    # 2. the kit, at the window widths that give the guide's drawing widths: its own 1440 px where the guide draws the chart
+    #    at 720 px (the reading width), else the window that gives the guide's width (the kit's gutter is 32 px a side
+    #    from 600 px, 16 under it)
     pages, groups, measured = {}, {}, {}
     for sid in specs:
         mw = {}
@@ -2383,28 +2372,29 @@ def main():
             mw[w] = json.loads(p.read_text()).get('svg_w') if p and p.exists() else None
         measured[sid] = mw
         MEAS[sid] = {w: (json.loads(shots[f'm-{sid}-{w}'].read_text()) if shots.get(f'm-{sid}-{w}') and shots[f'm-{sid}-{w}'].exists() else {}) for w in (DESK, PHONE)}
-        dp = DESK if not mw[DESK] or int(mw[DESK]) <= 720 else int(mw[DESK]) + 64
-        pw = int(mw[PHONE]) + 32 if mw[PHONE] else PHONE
+        if not (mw[DESK] and mw[PHONE]):
+            continue
+        dp = DESK if int(mw[DESK]) <= 720 else int(mw[DESK]) + 64
+        pw = int(mw[PHONE]) + 32
         pages[sid] = (dp, pw)
         groups.setdefault((dp, pw), []).append(sid)
     FIG['guide_widths'] = measured
-    kit_out = kit_build(groups, a.reuse)
-    for sid in specs:
+    kit_out = kit_build(groups, a.reuse) if groups else SCRATCH / 'kit-out'
+    for sid in pages:
         chk = kit_out / sid.lower() / f'{sid.lower()}-check.json'
-        if chk.exists() and measured[sid][DESK]:
+        if chk.exists():
             dw = {(x['ground'], x['page']): x['width'] for x in json.loads(chk.read_text()).get('drawings', [])}
             for w, pw in ((DESK, pages[sid][0]), (PHONE, pages[sid][1])):
                 if measured[sid][w] and dw.get(('newsprint', pw)) and int(dw[('newsprint', pw)]) != int(measured[sid][w]):
                     warn(f'{sid}: the guide draws {measured[sid][w]} px at a {w} px window and the kit {dw[("newsprint", pw)]} px at {pw}')
-    b1cmp = board1_compare([s for s in specs if s in C['board1_ids']], kit_out, pages)
-    # 3. the panels: the forms first, so panel 1 can show their Newsprint pictures (B2-M7); the tested panel last of all
-    s_forms = forms_panel(G, P, rn, held, kit_out, pages, b1cmp, shots)
-    s_decide = decide_panel(shots, fshots, kit_out, pages)
+    # 3. the panels: the forms first, so panel 1 could show their pictures; the tested panel last of all
+    s_forms = forms_panel(G, P, rn, held, kit_out, pages, shots)
+    s_decide = decide_panel(shots)
     w1 = panel_words(s_decide)
     FILL.update({'p1_words': f'{w1:,}', 'p1_min': max(1, round(w1 / 200))})
     FIG['panel_1_words'] = w1
-    others = [rules_panel(G, ch, held, shots), count_panel(), spend_panel(G, rn, kit_out), scores_panel()]
-    parts = [s_decide, s_forms] + others + [tested_panel(G, kit_out, specs), next_panel()]
+    others = [round5_panel(G, held, shots), ch15_panel(G, ch15, held15, shots), spend_panel(G, P, held), count_panel(), scores_panel()]
+    parts = [s_decide, s_forms] + others + [tested_panel(G), next_panel()]
     cache_file.write_text(json.dumps(CACHE))
     keep = set(IMAGES)
     for p in [q for q in IMG.iterdir() if q.suffix.lower() in IMG_EXT]:
@@ -2426,9 +2416,9 @@ def main():
         warn('images over 15 MB: ' + ', '.join(big))
     total = sum(p.stat().st_size for p in files)
     if len(files) > FILES_AIM:
-        warn(f'the folder holds {len(files)} files, past the brief’s about 300')
+        warn(f'the folder holds {len(files)} files, past the brief’s about 250')
     if total >= BYTES_AIM:
-        warn(f'the folder comes to {total / 1e6:.2f} MB, at or over 120 MB')
+        warn(f'the folder comes to {total / 1e6:.2f} MB, at or over 60 MB')
     FIG.update({'page': rel(a.out), 'html_bytes': len(page.encode()), 'images': len(imgs), 'image_bytes': sum(p.stat().st_size for p in imgs),
                 'folder_files': len(files), 'folder_bytes': total, 'largest_image': max(((p.stat().st_size, p.name) for p in imgs), default=(0, None)),
                 'status': {k: (v if isinstance(v, str) else list(v)) for k, v in STATUS.items()},
