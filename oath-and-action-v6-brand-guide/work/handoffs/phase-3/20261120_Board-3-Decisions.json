@@ -1,7 +1,7 @@
 {
  "schema": "board-3-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-20T17:09:31Z",
+ "updated_utc": "2026-11-20T17:13:38Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -733,11 +733,11 @@
     {
      "id": "15.20-chooser",
      "rule": "15.20",
-     "title": "Rule 15.20: the chooser’s list form and its keyline",
-     "answer": "The two reforms now sit in one list at one width, a chosen pill’s red ring carries a 1 px keyline inside it, and the red arrowhead takes a 1 px ink edge. The failure plate takes the same list form.",
-     "what_changed": "Call 15 changed the shared chooser once, on Rules 15.20 and 14.144: one width for the choices, through Rule 18.3’s opt-in list form (`oa-choice-row--list`, D3-2243), and a keyline inside a chosen pill’s red ring, which lifts the ring’s 2.95 to 1 contrast on Newsprint (D3-2140). The second pass gave the failure plate the same list form, so its options stop splitting into columns; its fault, both reforms lit at once with a combined score, stays as captioned (CR-S1’s remainder).",
+     "title": "Rule 15.20: the chooser’s list form",
+     "answer": "The two reforms now sit in one list at one width, and the failure plate takes the same list form. The keyline these plates draw inside the red ring is a separate question below, since it touches a settled mark.",
+     "what_changed": "Call 15 changed the shared chooser once, on Rules 15.20 and 14.144: one width for the choices, through Rule 18.3’s opt-in list form (`oa-choice-row--list`, D3-2243), and a keyline inside a chosen pill’s red ring (D3-2140; see the keyline item under “Held for you”). The second pass gave the failure plate the same list form, so its options stop splitting into columns; its fault, both reforms lit at once with a combined score, stays as captioned (CR-S1’s remainder).",
      "why": "Five readers named the same faults in one shared component (DD-R2, DD-R5, AX-S5, CR-S1, CD-S5).",
-     "recommendation": "Approve the chooser as drawn.",
+     "recommendation": "Approve the chooser’s list form, on both plates.",
      "refs": [
       "D3-2140",
       "D3-2243",
@@ -1547,17 +1547,18 @@
      },
      "question_for_dustin": true,
      "id": "red-target-keyline",
-     "title": "The keyline on the red targets of Rules 15.11, 15.12 and 15.16",
-     "answer": "Give every red target the keyline Rules 15.20 and 14.144 now draw, so one red target has one look.",
-     "what_changed": "Nothing yet on the three approved plates. Rules 15.20 and 14.144 draw a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead; Rules 15.11, 15.12 and 15.16 do not, and on Newsprint their plain red mark stands at about 2.95 to 1.",
-     "why": "It moves Rule 12.5’s approved mark on three approved plates (call 15, D3-2140).",
-     "recommendation": "Yes: the keyline on every red pill and the ink edge on every red head.",
+     "title": "The keyline inside the red target: two settled rules disagree",
+     "answer": "Two things you settled point different ways, so only you can choose. Rule 05.5 says a red mark that carries meaning on Newsprint takes a 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 there. The atlas visual system (DR-36) draws its red target with no keyline. Rules 15.20 and 14.144 now draw the keyline; Rules 15.11, 15.12 and 15.16 do not.",
+     "what_changed": "Call 15 (D3-2140) gave the chooser plates, Rules 15.20 and 14.144, a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead. Rules 15.11, 15.12 and 15.16, approved at board 2, keep the atlas’s red target with no keyline, so on Newsprint their red stands at about 2.95 to 1, under the 3 to 1 that Rule 05.5 and WCAG 2.2’s 1.4.11 ask of a mark a reader needs. Today one red target has two looks.",
+     "why": "Rule 05.5 (chapter 05, approved) and the atlas visual system’s red target (DR-36) are both on your settled list, and on these five plates they cannot both hold.",
+     "recommendation": "Keep the atlas’s red target as you settled it (DR-36): the keyline and the ink edge come off Rules 15.20 and 14.144, so one red target has one look again. The cost: on Newsprint the red ring stands at about 2.95 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and WCAG 2.2’s 1.4.11 ask (the accessibility reader’s AX-S5). The keyline everywhere would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it takes your own word: reply “Keyline everywhere”.",
      "settled": {
       "touches": [
-       "Rule 12.5’s red target (Gate 2), a mark of the atlas visual system (DR-36)",
+       "Rule 05.5’s keyline on a red mark on Newsprint (chapter 05, approved)",
+       "Rule 12.5’s red target, a mark of the atlas visual system (DR-36)",
        "Rules 15.11, 15.12 and 15.16 (board 2)"
       ],
-      "respects": "The red, the ring and the pill stay as the atlas visual system draws them; a 1 px keyline is added inside the ring, as call 15 already did on Rules 15.20 and 14.144 (D3-2140), so one mark keeps one look. The choice is yours because it touches DR-36’s mark."
+      "respects": "The recommendation changes nothing you settled: it returns Rules 15.20 and 14.144 to the atlas’s drawing. The keyline everywhere happens only on your named reply."
      },
      "refs": [
       "D3-2140",
@@ -1908,7 +1909,7 @@
      "id": "Q-PR1",
      "title": "Room on the page for Phase 4",
      "answer": "Size each Phase 4 chapter from its nearest built chapter before Phase 4 starts, and decide then what ships as a download; cut nothing now.",
-     "what_changed": "Nothing. The projection gives Phase 4’s seven chapters 362,857 bytes each, against 484,488 each to stay under 16 MB and 413,060 under the 15.5 MB warning; today’s 18 built chapters other than 14 weigh 323,348 at the median and 459,192 on average.",
+     "what_changed": "Nothing. The projection gives Phase 4’s seven chapters 362,857 bytes each, against 484,486 each to stay under 16 MB and 413,057 under the 15.5 MB warning; today’s 18 built chapters other than 14 weigh 323,348 at the median and 459,192 on average.",
      "why": "The production reader put it to you; DR-271 keeps the page’s 16 MB as the one fixed limit.",
      "recommendation": "As suggested: the engineer sizes each chapter first; nothing is cut now (DR-271).",
      "settled": {
@@ -1918,11 +1919,11 @@
      "facts": [
       {
        "label": "Projected page",
-       "value": "15,148,583 bytes"
+       "value": "15,148,599 bytes"
       },
       {
        "label": "Page today",
-       "value": "12,178,911 bytes"
+       "value": "12,178,927 bytes"
       }
      ],
      "refs": [
@@ -2215,9 +2216,9 @@
   }
  ],
  "changed_found": {
-  "script": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/318bf243-c48f-583b-8dd6-5600224b4263/scratchpad/c08/data-lead/board_3_data_lead_counts.py",
+  "script": "work/build/scripts/phase-3/board_3_data_lead_counts.py",
   "requested_home": "work/build/scripts/phase-3/board_3_data_lead_counts.py",
-  "run_utc": "2026-11-20T17:09:31Z",
+  "run_utc": "2026-11-20T17:13:38Z",
   "ledger": "work/ledger/20261020_Change-Ledger.md",
   "rows_read": "C-108 to C-134",
   "match": [
@@ -2604,10 +2605,10 @@
   }
  },
  "counts": {
-  "script": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/318bf243-c48f-583b-8dd6-5600224b4263/scratchpad/c08/data-lead/board_3_data_lead_counts.py",
+  "script": "work/build/scripts/phase-3/board_3_data_lead_counts.py",
   "requested_home": "work/build/scripts/phase-3/board_3_data_lead_counts.py",
   "made_by": "make_board_3_decisions.py, beside the script",
-  "run_utc": "2026-11-20T17:09:31Z",
+  "run_utc": "2026-11-20T17:13:38Z",
   "rule_01_9": {
    "limits": {
     "domain": "1 in 4",
@@ -4299,8 +4300,8 @@
    "n": 11,
    "panel": "held",
    "id": "red-target-keyline",
-   "line": "The keyline on the red targets of Rules 15.11, 15.12 and 15.16.",
-   "recommendation": "Yes: the keyline on every red pill and the ink edge on every red head.",
+   "line": "The keyline inside the red target: two settled rules disagree.",
+   "recommendation": "Keep the atlas’s red target as you settled it (DR-36): the keyline and the ink edge come off Rules 15.20 and 14.144, so one red target has one look again. The cost: on Newsprint the red ring stands at about 2.95 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and WCAG 2.2’s 1.4.11 ask (the accessibility reader’s AX-S5). The keyline everywhere would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it takes your own word: reply “Keyline everywhere”.",
    "item": "red-target-keyline"
   },
   {
@@ -4408,11 +4409,11 @@
    "item": "routes-who"
   }
  ],
- "signed_off_utc": "2026-11-20T17:09:31Z",
+ "signed_off_utc": "2026-11-20T17:13:38Z",
  "signed_off_note": "Signed off by the data lead: every count read by script (board_3_data_lead_counts.py) from the repository and from the strict build report named in `build_report`; every picture's element found in the page it names; the words are a first draft, which the editor owns from here.",
  "build_report": {
-  "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/318bf243-c48f-583b-8dd6-5600224b4263/scratchpad/c08/data-lead/b2/guide-Build-Report.json",
-  "bytes": 12178911,
+  "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/318bf243-c48f-583b-8dd6-5600224b4263/scratchpad/join/20261120_Guide-Join-Build-Report.json",
+  "bytes": 12178927,
   "warnings": 0,
   "pictures_hidden": 101,
   "pictures_open": 315

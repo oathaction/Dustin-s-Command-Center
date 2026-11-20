@@ -8,7 +8,7 @@ Written November 20, 2026, by the data lead (`oa-dataviz-systems-lead`). Brief: 
 16:54 UTC: batch 1 (RS-1, RS-6, RS-3) and batch 2 (RS-7, CR-S1's remainder) signed off from source, the plates' HTML and my strict build. Waiting for RS-2, RS-4, RS-5 and CR-S23.
 17:00 UTC: batch 3 (RS-2, RS-4, RS-5 as data, and D3-2280's S91 check) signed off. RS-5's visible half goes to board 3 as a held item (D3-2278), with its reach, in the decision file. Waiting for CR-S23.
 17:01 UTC: batch 4 (CR-S23) signed off. **All nine items are signed off from source, specs, the plates' HTML and a strict build of the joined pass (17:00 UTC, exit 0, 0 warnings).** The browser views listed under Not tested wait for the main session's word that the guide check has ended; I run them then and add a batch only if one changes a sign-off.
-17:11 UTC: batch 5, CR-S23's revision (the engineer's 17:04 UTC layout, after snapshot e1e4e369), reread from the current files and signed off. The pass stays signed off whole.
+17:10 UTC: batch 5, CR-S23's revision (the engineer's 17:04 UTC layout, after snapshot e1e4e369), reread from the current files and signed off. The pass stays signed off whole.
 
 ## Sign-off
 
@@ -64,7 +64,7 @@ Each batch answers three questions: does the change say only what the data and t
 - `s-14-144-correct.html` changes inside its style alone: outside the `<style>` block the markup is byte for byte as committed in db231c9b, so every reform, code, qualifier and pip count prints as before. The line-up's rows change from a two-column grid to a wrapping row whose pips, code and words form one group that never wraps inside, so a code's pips stay on its line. 51,724 to 51,875 bytes.
 - Rule 13.5's mark is unchanged (the 22 px pips, read from chapter 13's `pips_svg`), the cards and the key do not move, and the plate still prints no total: the atlas's codes stay uncombined (ruling (d), D3-2127). Rule 14.144 is a round 5 plate shown on board 3, and its pips are already a board 3 item (D3-2127), so no approved drawing changes.
 
-### Batch 5, 17:11 UTC: CR-S23 revised (after snapshot e1e4e369)
+### Batch 5, 17:10 UTC: CR-S23 revised (after snapshot e1e4e369)
 
 **CR-S23, the engineer's second layout.** Signed off from the current files; batch 4's sign-off stands for the revision.
 - The revision changes only the line-up's style: the group of pips, code and words takes its own line under the chip unless the line has room for the chip, the pips and about 11em of words (`flex: 1 1 calc(96px + 11em)`), and the row gap drops from 4 to 2 px. Outside the `<style>` block `s-14-144-correct.html` is still byte for byte as committed in db231c9b, so every reform, code, qualifier and pip count prints as before, and the plate still prints no total and no combined score. 51,724 to 51,891 bytes against db231c9b.

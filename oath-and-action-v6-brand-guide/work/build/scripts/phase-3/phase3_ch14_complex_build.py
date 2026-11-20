@@ -449,8 +449,8 @@ def rule_14_143():
     style = plate_style(root, swap={C15.stepper_css(3): css_live})
     alt = (f"Loop B4 from our systems atlas, “{b4['title']}”, beside Loop R10, “{r10['title']}”, each drawn "
            f"with its steps numbered from 1, and Variable C3, {lc(short('C3'))}, the pill filled in ink in both. Under them "
-           "the loop stepper of Rule 18.22: a status line, the seven steps in order, Loop B4’s three then Loop R10’s "
-           "four, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in its "
+           "the loop stepper of Rule 18.22: a status line, four buttons (Play, Reset the loop, Previous step and Next "
+           "step) and the seven steps in order, Loop B4’s three then Loop R10’s four. The current step lights in its "
            "drawing and in the list. With scripts off or in print, the list shows every step in order.")
     files = {"s-14-143-correct": fragment("s-14-143-correct", root, style)}
     meta = {"s-14-143-correct": plate_meta(alt, interactive=True, keys=True,
