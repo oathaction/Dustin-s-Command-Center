@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, November 20, 2026 (chat 8). Creative director
 
 ## Status
 
+- 19:05 UTC. **Rescore on run 12: ready to ship.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 4, Accessibility 4. All 4 Must fixes fixed; 7 of 9 Should fixes fixed, B3-S5 in part, B3-S6 fixed in markup (not seen, no browser); two small new Should fixes (B3-S10, B3-S11). See "Rescore" at the end.
 - 18:31 UTC. **First score. Not ready to ship: 4 Must fix, 9 Should fix.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 3, Accessibility 4. Every fix is words, a figure rerun or a picture crop; none touches the guide.
 - Board scored: the builder's run 8 (18:18 to 18:19 UTC, on version 13; 365,073 bytes; SHA-256 `376ed92eb8bb66dd…`; 170 pictures), frozen with its pictures in my scratch folder at 18:24 UTC. Panel 8's four-width rerun and quick check are pending and not scored.
 - 18:20 UTC. Started.
@@ -120,3 +121,81 @@ I would choose "Keyline everywhere". The keyline is a 1 px line inside the ring 
 
 - Created: `work/handoffs/phase-3/20261120_CD-Review-Of-Board-3.md` (this file) and `work/handoffs/phase-3/20261120_Board-3-CD-Scores.json`.
 - Scratch only: `scratchpad/c08/board-3/creative-director/` (the frozen board, `b3.cjs`, captures, crops and text dumps).
+
+## Rescore
+
+### Basis
+
+The builder's run 12 (19:01 to 19:03 UTC, on version 13; 379,495 bytes; SHA-256 `9e2d960715b8f839…`; 184 pictures), frozen with its pictures in my scratch folder (`frozen2/`) at 19:03 UTC. The editor's fix round ("EDITOR FIX ROUND DONE", 18:39 UTC), the builder's "Fix round" notes, and D3-2299 to D3-2303. At the coordinator's word I opened no browser: the quick check with photographs is rerunning. I read the page's HTML and text by script, its pictures as image files, `20261120_Board-3-Check-Results.json` (page alone, 19:01 UTC: only the page's language fails, at 1440, 390 and 360 px) and the builder's report of the wrapped copy's PASS. Panel 8's pending quick check is not scored.
+
+Status: rescore written 19:05 UTC.
+
+### Verdict, rescore
+
+**Ready to ship.** Every criterion reaches 4 and every Must is fixed. The keyline item now carries the accessibility lead's ruling, D3-2301's recommendation, the grayscale cost in one sentence and a grayscale pair that shows it. The masthead item stops at 372 px, so 375 px keeps the larger wordmark. The page prints one page size. "Where to start" shows the overflow before and the wrap after in four crops of 317 to 401 px, with the long strips folded.
+
+Read against the settled list, no recommendation changes a settled element. Reply 11 keeps DR-36's mark and adds words to Rule 15.12's plate, which the item names. Reply 16 now names the read-aloud device and keeps its rule. Two small Shoulds are new (B3-S10, B3-S11).
+
+### Scores after the fix round
+
+| Criterion | Score |
+|---|---|
+| Craft | 4 |
+| Clarity | 4 |
+| Brand fidelity | 4 |
+| Usefulness | 4 |
+| Evidence honesty | 4 |
+| Accessibility | 4 |
+
+### Reasons after the fix round
+
+- **Craft, 4 (unchanged).** Each one-approval item now opens on a crop of its change: "Where to start" (four crops, 317 to 401 px), Rule 14.144 (one card and the line-up), Rules 14.1 to 14.14 (the changed sentences) and S40 (its five rows), with whole plates in the folds. The page at 1440 fell from 334,447 to 291,913 px. I hold 4 because I read this round from files, at 1x, with no browser.
+- **Clarity, 4 (unchanged).** The second pass table now says what its small figures are and that every item of rounds 4 and 5 is ready. Reply lines 10, 11 and 16 carry the new recommendations. The cover's times are true at 645 words and about 42 minutes.
+- **Brand fidelity, 4 (unchanged).** Reply 10 now keeps the 24 px wordmark at 375 px. Every recommendation keeps a settled element or names its change as a reply. The chrome still uses token colors only. I hold 4 because the board's header sets the name in live Inter Tight rather than the wordmark master, as board 2's did.
+- **Usefulness, 4 (unchanged).** Every picture pair I opened now shows its change at true size. The keyline item gives Dustin the ruling, the cost and both looks in color and in gray before he replies.
+- **Evidence honesty, 4 (raised from 3).** The keyline item says which plates meet WCAG 2.2 AA and why, and names its grayscale cost. The masthead item's words match its pictures. Panel 1 prints 12,178,909 bytes and a 459,191 mean, as panels 5 and 8 do. S59's sketch moves one label only, as its words say. Two small gaps stay (B3-S10, B3-S11).
+- **Accessibility, 4 (unchanged).** The wrapped copy passes by the builder's run 12, and the page alone fails only its language. Quotes no longer nest in alts, and the new crops' alts say what each shows. The other panel 1 alts still name the item and the build (B3-S5, in part).
+
+### Must fix, checked
+
+| Code | State | What I read |
+|---|---|---|
+| B3-M1 | Fixed | The answer ends on the accessibility lead's ruling (15.11, 15.16, 15.20 and 14.144 meet AA by their words; 15.12 does not). The recommendation adds D3-2301's words for Rule 15.12, so all five plates meet AA with the settled mark kept. "What changed" names the grayscale cost, and two luma pictures of Rule 15.11, today and with the keyline, show it. Reply 11 matches. |
+| B3-M2 | Fixed | Title, answer, recommendation and reply 10 say 360 to 372 px, with the switch at 372 px, and "Today at 375 px" is labeled "fits on one line, and stays". Two alts still describe the working copy's 375 px switch (B3-S10). |
+| B3-M3 | Fixed | 12,178,927 and 459,192 appear nowhere; 12,178,909 appears four times and 459,191 once (D3-2300). |
+| B3-M4 | Fixed | Before: "Identity proofs" runs past a 320 px window; now it wraps inside. The same for "Components and interaction". Both 19,000 px strips sit in the fold. |
+
+### Should fix, checked
+
+| Code | State | What I read |
+|---|---|---|
+| B3-S1 | Fixed | Crops open, whole plates folded, on Rule 14.144, Rules 14.1 to 14.14 and S40. |
+| B3-S2 | Fixed | 2027's "4.1" gives way again, and only 2026's label moves. The lifted label sits about 0.8 points above its dot with no leader; the picture shows it, and the finishing pass sets the final place. |
+| B3-S3 | Fixed | Touches names "the read-aloud line, a device of the atlas visual system you settled", and the item says the line keeps its rule: it starts with a rise and flips at each minus. The editor found the "start with more" key line printed nowhere today. |
+| B3-S4 | Fixed | The legend line and "every item of rounds 4 and 5 is ready" print under the second pass table. |
+| B3-S5 | Fixed in part | Nested quotes fixed, and the new crops' alts describe them. The other panel 1 alts still give label, page and window; the editor offers to write each picture's one fact. |
+| B3-S6 | Fixed in markup | Each bar carries a dashed line at 100 percent of its figure (`.lim` at 99.4 percent of a track that reaches 100.6). I did not see it drawn. |
+| B3-S7 | Fixed | S96 prints "14.142" and "Columns with a moving average". |
+| B3-S8 | Fixed | My view prints as a quotation under the keyline recommendation, with two bracketed edits that keep codes off the face. |
+| B3-S9 | Fixed | The election data test ends on its full stop. |
+
+### New Should fix (neither blocks shipping)
+
+- **B3-S10. The masthead's two working-copy pictures.** Their alts say the switch moved "from 359 px to 375 px", and "At 375 px with the 16 px wordmark, for comparison only" sits open beside the recommendation. Say 372 px in the 360 px picture's alt, and fold the comparison picture. Owner: builder; editor.
+- **B3-S11. "Where to start" shows a cost its words leave out.** The new "Now" crops break "Identity proo/fs" and "Components and interacti/on" mid-word with no hyphen at 320 px with 200 percent text. Add one sentence saying so, and put the guide fix (hyphenate, or break at the " · ") on the deferred fixes list for the finishing pass. Owner: editor (words); main session (the register row).
+
+### Tested, rescore
+
+- Read the editor's "Fix round", the builder's "Fix round" and runs 9 to 12, and D3-2292 to D3-2303 (19:03 UTC).
+- Froze run 12's page and 184 pictures (19:03 UTC).
+- By script on the frozen page: the keyline, masthead, S59, Rule 15.15, Q-PR1 and panel 5, 6 and 7 words; every page size and mean on the board; each changed item's pictures with size and fold; the spend panel's bar and line markup; the face of all nine panels for dashes and codes (none but the two quoted en dashes); the cover's reading times.
+- Read as image files at true size: the four "Where to start" crops, the four Rule 14.144 crops, the keyline grayscale pair, and S59 today and sketched (2x zoom).
+- Read `20261120_Board-3-Check-Results.json` (19:01 UTC).
+
+### Not tested, rescore
+
+- Any browser view, at the coordinator's word while the quick check reruns. That leaves out the spend panel's 100 percent lines as drawn, the views block's layout, panel 1's height and every picture as the page places it, at 1440, 390 and 360 px.
+- The wrapped copy's check: the PASS is the builder's run 12, and its file records the page alone.
+- The board at 2x, in Safari or Firefox, printed, or as the host shows it; a keyboard walk and a screen reader.
+- The accessibility lead's ruling behind B3-M1, which is theirs; I read its words on the board and in D3-2301.
+- Panel 8's pending quick check, as asked.

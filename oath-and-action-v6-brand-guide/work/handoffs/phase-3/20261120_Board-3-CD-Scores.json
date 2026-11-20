@@ -1,5 +1,5 @@
 {
- "title": "Creative director's score of board 3, after Phase 3's rounds 4 and 5 and chapter 15, as the builder's run 8 left it",
+ "title": "Creative director's score of board 3, first score (run 8) and rescore after the fix round (run 12)",
  "date": "2026-11-20",
  "written_utc": "2026-11-20T18:31:00Z",
  "author": "Creative director (oa-creative-director), subagent of the main session",
@@ -35,10 +35,10 @@
  "items": [
   {
    "key": "board_3",
-   "name": "Board 3 as built (run 8, 18:19 UTC, on version 13)",
+   "name": "Board 3 as built (run 12, 19:03 UTC, on version 13)",
    "anchor": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
-   "stage": "Phase 3, board 3, first score",
-   "scores": {
+   "stage": "Phase 3, board 3, rescore after the fix round",
+   "first_scores": {
     "craft": 4,
     "clarity": 4,
     "brand_fidelity": 4,
@@ -46,7 +46,15 @@
     "evidence_honesty": 3,
     "accessibility": 4
    },
-   "reasons": {
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "first_reasons": {
     "craft": "Panels 2 to 4 compose 13 forms, round 5 and 25 rules at true size on both grounds, with grayscale and tables in folds, and each panel 1 item sets its pictures straight under its recommendation. Four one-approval items set whole plates or page strips where the change is a few lines: \"Where to start\" at 19,547 px, Rule 14.144's pips at 14,796, Rules 14.1 to 14.14 at 11,379 and S40 at 6,792 for five date cells. That leaves panel 1 at 144,509 px at 1440 (B3-M4, B3-S1).",
     "clarity": "The reply list, answer-first items, plain words where codes stood and terms defined at first use let Dustin say what each item asks from its first lines. The second pass score table never says what its small figures are or that all 14 items are now ready (B3-S4).",
     "brand_fidelity": "The board's chrome uses eight token colors with no Pillar Red or Prussian. With the wordmark covered the page reads as Oath & Action by Newsprint, Inter Tight and the evidence chips. Every recommendation keeps a settled element or offers its change as a named reply. Reply 10 as worded would shrink the wordmark on 375 px phones that need no change (B3-M2).",
@@ -54,13 +62,24 @@
     "evidence_honesty": "The keyline item calls 2.96 to 1 \"under the 3 to 1 that … WCAG 2.2, 1.4.11 ask of a mark a reader needs\" without saying whether the plates fail AA, since they also name their targets in words, and it omits the grayscale cost (B3-M1). The masthead item says the menu drops at 360 to 375 px, where its own 375 px picture shows one line (B3-M2). Panel 1 prints the page at 12,178,927 bytes and a 459,192 mean where panels 5 and 8 print version 13's 12,178,909 and the report's 459,191 (B3-M3). S59's sketch prints a label the item does not mention (B3-S2).",
     "accessibility": "The wrapped copy passes the board check at 1440, 390 and 360 px: no type under 13 px, no low contrast, no sideways scroll and 40 focus stops with rings. Every picture has alt, size and lazy loading, and tables are live text. Panel 1's alts name the item and the build, not what the picture shows (B3-S5)."
    },
-   "must_fix": [
+   "reasons": {
+    "craft": "Each one-approval item now opens on a crop of its change: \"Where to start\" (four crops, 317 to 401 px), Rule 14.144 (one card and the line-up), Rules 14.1 to 14.14 (the changed sentences) and S40 (its five rows), with whole plates in the folds. The page at 1440 fell from 334,447 to 291,913 px. I hold 4 because I read this round from files, at 1x, with no browser.",
+    "clarity": "The second pass table now says what its small figures are and that every item of rounds 4 and 5 is ready. Reply lines 10, 11 and 16 carry the new recommendations. The cover's times are true at 645 words and about 42 minutes.",
+    "brand_fidelity": "Reply 10 now keeps the 24 px wordmark at 375 px. Every recommendation keeps a settled element or names its change as a reply. The chrome still uses token colors only. I hold 4 because the board's header sets the name in live Inter Tight rather than the wordmark master, as board 2's did.",
+    "usefulness": "Every picture pair I opened now shows its change at true size. The keyline item gives Dustin the ruling, the cost and both looks in color and in gray before he replies.",
+    "evidence_honesty": "The keyline item says which plates meet WCAG 2.2 AA and why, and names its grayscale cost. The masthead item's words match its pictures. Panel 1 prints 12,178,909 bytes and a 459,191 mean, as panels 5 and 8 do. S59's sketch moves one label only, as its words say. Two small gaps stay (B3-S10, B3-S11).",
+    "accessibility": "The wrapped copy passes by the builder's run 12, and the page alone fails only its language. Quotes no longer nest in alts, and the new crops' alts say what each shows. The other panel 1 alts still name the item and the build (B3-S5, in part)."
+   },
+   "changed": [
+    "evidence_honesty"
+   ],
+   "first_must_fix": [
     "B3-M1",
     "B3-M2",
     "B3-M3",
     "B3-M4"
    ],
-   "should_fix": [
+   "first_should_fix": [
     "B3-S1",
     "B3-S2",
     "B3-S3",
@@ -71,27 +90,39 @@
     "B3-S8",
     "B3-S9"
    ],
-   "must_fix_count": 4,
-   "should_fix_count": 9,
-   "ready": false,
-   "to_ready": "Land B3-M1 to B3-M4: evidence honesty reaches 4 with M1 to M3; M4 makes the one picture pair that cannot show its change show it. No score sits under 3."
+   "must_fix": [],
+   "should_fix": [
+    "B3-S5",
+    "B3-S6",
+    "B3-S10",
+    "B3-S11"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 4,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready. B3-S5 (in part), B3-S6 (fixed in markup, not seen in a browser), B3-S10 and B3-S11 are small and block nothing."
   }
  ],
  "totals": {
-  "must_fix": 4,
-  "should_fix": 9,
-  "under_4": [
-   "board_3.evidence_honesty"
-  ],
-  "ready": [],
-  "not_ready": [
+  "must_fix": 0,
+  "should_fix": 4,
+  "under_4": [],
+  "ready": [
    "board_3"
-  ]
+  ],
+  "not_ready": [],
+  "first_score": {
+   "must_fix": 4,
+   "should_fix": 9,
+   "under_4": [
+    "board_3.evidence_honesty"
+   ]
+  }
  },
  "lowest_score_by_item": {
-  "board_3": 3
+  "board_3": 4
  },
- "verdict": "Board 3 meets board 2's bar for how Dustin decides. Panel 1 opens with the 24 numbered replies, each with its recommendation and a link, then the reply line; the cover says the replies take three minutes and the whole panel 39, which is true. Every item opens with its answer and recommendation, the named alternatives are one phrase each (\"Chapter 02 too\", \"Keyline everywhere\", \"Run the search\"), and no decision code or file name sits on the face. Panels 2 to 4 set round 4's forms, round 5 and all of chapter 15 at true size in board 2's anatomy, and the scores panel matches my files cell for cell.\n\nFour things keep it from shipping, all small. The keyline item states its contrast cost without saying whether the recommended state still meets WCAG 2.2 AA, and leaves out the grayscale cost its own plates show. The masthead item recommends the smaller wordmark up to 375 px, where its own picture shows the larger one already fits. Panel 1 prints a page size from an earlier build. The \"Where to start\" pair cannot show its change.\n\nRead against the brief's settled list, no recommendation changes a settled element outright. Reply 11 keeps the atlas visual system's target. Reply 7 keeps chapter 02. Reply 4 keeps the coverage plan's questions. Reply 16 touches System 1's read-aloud device without naming it (B3-S3); in my reading, as the owner of DR-36's finishing list, it keeps that device and its rule. Each recommendation reads the same from the left and the right. Reply 18 swaps no law to even the sides, and the sixteen example lines name no party.",
  "must_fix": {
   "B3-M1": {
    "title": "The keyline item leaves its accessibility cost unruled and its grayscale cost unstated.",
@@ -194,6 +225,22 @@
    "items": [
     "board_3"
    ]
+  },
+  "B3-S10": {
+   "title": "The masthead's two working-copy pictures",
+   "what_and_fix": "Their alts say the switch moved \"from 359 px to 375 px\", and \"At 375 px with the 16 px wordmark, for comparison only\" sits open beside the recommendation. Say 372 px in the 360 px picture's alt, and fold the comparison picture.",
+   "owner": "builder; editor",
+   "items": [
+    "board_3"
+   ]
+  },
+  "B3-S11": {
+   "title": "\"Where to start\" shows a cost its words leave out",
+   "what_and_fix": "The new \"Now\" crops break \"Identity proo/fs\" and \"Components and interacti/on\" mid-word with no hyphen at 320 px with 200 percent text. Add one sentence saying so, and put the guide fix (hyphenate, or break at the \" · \") on the deferred fixes list for the finishing pass.",
+   "owner": "editor (words); main session (the register row)",
+   "items": [
+    "board_3"
+   ]
   }
  },
  "named_places": {
@@ -237,5 +284,79 @@
   "The facts behind the tracker steps, Q-12 and the V7.1 row (the research lead's), and the Rule 01.9 and DR-229 counts (the data lead's).",
   "Whether the five red target plates meet WCAG 1.4.11 without the keyline: that is the accessibility lead's ruling (B3-M1).",
   "Panel 8's pending checks, as asked."
+ ],
+ "rescored_utc": "2026-11-20T19:05:00Z",
+ "rescore_basis": "The builder's run 12 (19:01 to 19:03 UTC, on version 13; 379,495 bytes; SHA-256 `9e2d960715b8f839…`; 184 pictures), frozen with its pictures in my scratch folder (`frozen2/`) at 19:03 UTC. The editor's fix round (\"EDITOR FIX ROUND DONE\", 18:39 UTC), the builder's \"Fix round\" notes, and D3-2299 to D3-2303. At the coordinator's word I opened no browser: the quick check with photographs is rerunning. I read the page's HTML and text by script, its pictures as image files, `20261120_Board-3-Check-Results.json` (page alone, 19:01 UTC: only the page's language fails, at 1440, 390 and 360 px) and the builder's report of the wrapped copy's PASS. Panel 8's pending quick check is not scored.\n\nStatus: rescore written 19:05 UTC.",
+ "verdict_first": "Board 3 meets board 2's bar for how Dustin decides. Panel 1 opens with the 24 numbered replies, each with its recommendation and a link, then the reply line; the cover says the replies take three minutes and the whole panel 39, which is true. Every item opens with its answer and recommendation, the named alternatives are one phrase each (\"Chapter 02 too\", \"Keyline everywhere\", \"Run the search\"), and no decision code or file name sits on the face. Panels 2 to 4 set round 4's forms, round 5 and all of chapter 15 at true size in board 2's anatomy, and the scores panel matches my files cell for cell.\n\nFour things keep it from shipping, all small. The keyline item states its contrast cost without saying whether the recommended state still meets WCAG 2.2 AA, and leaves out the grayscale cost its own plates show. The masthead item recommends the smaller wordmark up to 375 px, where its own picture shows the larger one already fits. Panel 1 prints a page size from an earlier build. The \"Where to start\" pair cannot show its change.\n\nRead against the brief's settled list, no recommendation changes a settled element outright. Reply 11 keeps the atlas visual system's target. Reply 7 keeps chapter 02. Reply 4 keeps the coverage plan's questions. Reply 16 touches System 1's read-aloud device without naming it (B3-S3); in my reading, as the owner of DR-36's finishing list, it keeps that device and its rule. Each recommendation reads the same from the left and the right. Reply 18 swaps no law to even the sides, and the sixteen example lines name no party.",
+ "verdict": "**Ready to ship.** Every criterion reaches 4 and every Must is fixed. The keyline item now carries the accessibility lead's ruling, D3-2301's recommendation, the grayscale cost in one sentence and a grayscale pair that shows it. The masthead item stops at 372 px, so 375 px keeps the larger wordmark. The page prints one page size. \"Where to start\" shows the overflow before and the wrap after in four crops of 317 to 401 px, with the long strips folded.\n\nRead against the settled list, no recommendation changes a settled element. Reply 11 keeps DR-36's mark and adds words to Rule 15.12's plate, which the item names. Reply 16 now names the read-aloud device and keeps its rule. Two small Shoulds are new (B3-S10, B3-S11).",
+ "must_fix_checked": {
+  "B3-M1": {
+   "state": "Fixed",
+   "what_i_read": "The answer ends on the accessibility lead's ruling (15.11, 15.16, 15.20 and 14.144 meet AA by their words; 15.12 does not). The recommendation adds D3-2301's words for Rule 15.12, so all five plates meet AA with the settled mark kept. \"What changed\" names the grayscale cost, and two luma pictures of Rule 15.11, today and with the keyline, show it. Reply 11 matches."
+  },
+  "B3-M2": {
+   "state": "Fixed",
+   "what_i_read": "Title, answer, recommendation and reply 10 say 360 to 372 px, with the switch at 372 px, and \"Today at 375 px\" is labeled \"fits on one line, and stays\". Two alts still describe the working copy's 375 px switch (B3-S10)."
+  },
+  "B3-M3": {
+   "state": "Fixed",
+   "what_i_read": "12,178,927 and 459,192 appear nowhere; 12,178,909 appears four times and 459,191 once (D3-2300)."
+  },
+  "B3-M4": {
+   "state": "Fixed",
+   "what_i_read": "Before: \"Identity proofs\" runs past a 320 px window; now it wraps inside. The same for \"Components and interaction\". Both 19,000 px strips sit in the fold."
+  }
+ },
+ "should_fix_checked": {
+  "B3-S1": {
+   "state": "Fixed",
+   "what_i_read": "Crops open, whole plates folded, on Rule 14.144, Rules 14.1 to 14.14 and S40."
+  },
+  "B3-S2": {
+   "state": "Fixed",
+   "what_i_read": "2027's \"4.1\" gives way again, and only 2026's label moves. The lifted label sits about 0.8 points above its dot with no leader; the picture shows it, and the finishing pass sets the final place."
+  },
+  "B3-S3": {
+   "state": "Fixed",
+   "what_i_read": "Touches names \"the read-aloud line, a device of the atlas visual system you settled\", and the item says the line keeps its rule: it starts with a rise and flips at each minus. The editor found the \"start with more\" key line printed nowhere today."
+  },
+  "B3-S4": {
+   "state": "Fixed",
+   "what_i_read": "The legend line and \"every item of rounds 4 and 5 is ready\" print under the second pass table."
+  },
+  "B3-S5": {
+   "state": "Fixed in part",
+   "what_i_read": "Nested quotes fixed, and the new crops' alts describe them. The other panel 1 alts still give label, page and window; the editor offers to write each picture's one fact."
+  },
+  "B3-S6": {
+   "state": "Fixed in markup",
+   "what_i_read": "Each bar carries a dashed line at 100 percent of its figure (`.lim` at 99.4 percent of a track that reaches 100.6). I did not see it drawn."
+  },
+  "B3-S7": {
+   "state": "Fixed",
+   "what_i_read": "S96 prints \"14.142\" and \"Columns with a moving average\"."
+  },
+  "B3-S8": {
+   "state": "Fixed",
+   "what_i_read": "My view prints as a quotation under the keyline recommendation, with two bracketed edits that keep codes off the face."
+  },
+  "B3-S9": {
+   "state": "Fixed",
+   "what_i_read": "The election data test ends on its full stop."
+  }
+ },
+ "tested_rescore": [
+  "Read the editor's \"Fix round\", the builder's \"Fix round\" and runs 9 to 12, and D3-2292 to D3-2303 (19:03 UTC).",
+  "Froze run 12's page and 184 pictures (19:03 UTC).",
+  "By script on the frozen page: the keyline, masthead, S59, Rule 15.15, Q-PR1 and panel 5, 6 and 7 words; every page size and mean on the board; each changed item's pictures with size and fold; the spend panel's bar and line markup; the face of all nine panels for dashes and codes (none but the two quoted en dashes); the cover's reading times.",
+  "Read as image files at true size: the four \"Where to start\" crops, the four Rule 14.144 crops, the keyline grayscale pair, and S59 today and sketched (2x zoom).",
+  "Read `20261120_Board-3-Check-Results.json` (19:01 UTC)."
+ ],
+ "not_tested_rescore": [
+  "Any browser view, at the coordinator's word while the quick check reruns. That leaves out the spend panel's 100 percent lines as drawn, the views block's layout, panel 1's height and every picture as the page places it, at 1440, 390 and 360 px.",
+  "The wrapped copy's check: the PASS is the builder's run 12, and its file records the page alone.",
+  "The board at 2x, in Safari or Firefox, printed, or as the host shows it; a keyboard walk and a screen reader.",
+  "The accessibility lead's ruling behind B3-M1, which is theirs; I read its words on the board and in D3-2301.",
+  "Panel 8's pending quick check, as asked."
  ]
 }

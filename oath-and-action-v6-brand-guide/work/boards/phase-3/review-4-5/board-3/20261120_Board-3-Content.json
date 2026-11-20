@@ -583,7 +583,7 @@
   "board_rescores": "work/handoffs/phase-3/20261120_Board-3-CD-Rescores.json",
   "made": {
    "masthead-360": {
-    "how": "the 16 px wordmark’s widest screen moved from 359 px to 375 px, in a working copy of the final build"
+    "how": "a working copy of the final build that shows the 16 px wordmark up to 375 px, for comparison only; the recommendation stops it at 372 px"
    },
    "red-target-keyline": {
     "how": "chapter 15’s build run for this one plate in a working copy with the keyline switched on, and the red arrowhead given the 1 px ink edge Rule 15.20 draws"

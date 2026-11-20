@@ -1032,7 +1032,7 @@
      "id": "where-to-start",
      "title": "“Where to start” at 320 px with 200 percent text",
      "answer": "At 320 px with text at 200 percent, the page no longer scrolls sideways; it used to scroll 33 px.",
-     "what_changed": "The “Where to start” lines, the narrow code plates and the related lists at the end of each chapter now wrap.",
+     "what_changed": "The “Where to start” lines, the narrow code plates and the related lists at the end of each chapter now wrap. At that size two long words now break inside the word, “proofs” and “interaction”, where the lines meet the screen’s edge; a hyphen or a softer break rule waits for the finishing pass.",
      "why": "Sideways scrolling at 320 px fails WCAG 1.4.10, the accessibility standard’s rule on reflow, and this item was carried from earlier boards.",
      "recommendation": "Approve the change.",
      "refs": [
