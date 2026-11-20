@@ -6997,3 +6997,13 @@ The main session posted the plan with six questions (Q8-1 to Q8-6). Dustin: "as 
 | # | Decision | Source |
 |---|---|---|
 | DR-292 | The web and applications work (Phase 4) covers eight channels by name: Substack, X (Twitter), Threads, Instagram, YouTube, TikTok, LinkedIn and the Oath & Action website. Each gets its own finished applications and specifications, read from the platform's official help pages on the day they are built (Master Brief, applications table). Threads, Instagram and YouTube join the brief's named channels; until now the brief named only X, LinkedIn, TikTok, Substack and the web, and covered the rest with generic social sizes. The Phase 4 proposal at Gate 3 sets the work per channel | Dustin, November 20: "make sure you account for the following social media channels that I'll be on: Substack, Twitter or X, Threads, Instagram, YouTube, TikTok, LinkedIn, and then of course my own website" |
+
+## Chat 9, November 20, 2026
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2311 | The new chat opened on `claude/fervent-volta-imjj9b`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `a24f29fd`, "Handoff V28: starting prompt order") and works on it, as DR-285 and Dustin's opening message set. The session runs on "Oath & Action Brand Polish - Round 2", which holds the keys; V11's three setup steps ran on the fresh container | V19: fetch and compare tips first; V26: check the environment before testing keys |
+| D3-2312 | The three key tests pass (20:09 UTC): api.open.fec.gov 200, api.congress.gov 200, the Census API 200 with `CENSUS_API_KEY`; no key value was printed or written | V28 2A; Dustin's "test each with one request before use" |
+| D3-2313 | The strict build passes as committed (20:09 UTC, to scratch): exit 0, 0 warnings, 12,178,909 bytes, 369 rules, 679 specimens, 101 image stages hidden and 315 open; projection 15,148,599; chapter 14 with the kit 2,820,373; it differs from version 13's file only in the build's time (one line); the working tree stays clean. Work tracker row `c08b` set active | V28 2A; the figures equal D3-2295's |
