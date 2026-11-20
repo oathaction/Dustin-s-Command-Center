@@ -8,12 +8,12 @@ Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 20
 
 | # | Question | Why it matters | Default until answered | Raised by |
 |---|---|---|---|---|
-| Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement | The guide flags the need. No filing assumed | Research lead, Gate 1 |
 
 ## Answered
 
 | # | Question | Answer | Date |
 |---|---|---|---|
+| Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | Yes, before Phase 5's release; chapter 04 says so in one sentence until the attorney reports (DR-291, board 3 reply 23) | November 20, 2026 |
 | Q-18 | Atlas V7's issue I062 cites KFF for “more than 25 million disenrolled, 69 percent for procedural reasons”. CMS's own renewal outcomes for renewals due April 2023 to March 2024 sum to 22,914,537 ended, 15,966,431 of them (69.7 percent) for procedural reasons. Should the atlas's V7.1 date I062's count to KFF's period, or keep it as written? | Answered at board 2 under DR-264 ("as each item recommends"): V7.1 prints KFF's period beside the 25 million wherever the atlas gives the figure without one, and keeps the figure; the guide keeps CMS's figures with CMS's period on S65 and corrects nothing in the atlas (V7.1 issue list). Moved here on November 16 from Open, where it had stayed by mistake (D3-2264) | November 13, 2026 |
 | Q-11 | Can the environment's network access be widened before Phase 3? | Answered in practice (DR-222): census.gov, fec.gov, api.congress.gov and data.gov answer from the container; bls.gov and Missouri's secretary of state return 403 through their own checks for automated visitors. Phase 3 plans on public data downloads | November 11, 2026 |
 | Q-14 | Who made page 14 of `pics_i_like.pdf`, the rendered data visualization study? | Dustin made it with ChatGPT, describing what he wanted; no outside sources were used (DR-212). It is Oath & Action's own design study, and a reference that does not ship | November 10, 2026 |
