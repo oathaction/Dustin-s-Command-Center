@@ -747,7 +747,7 @@ def chooser_css(rids):
     return edge + f"@supports selector(:has(*)){{{''.join(out)}@media print{{{prints}{{display:block}}}}}}"
 
 
-PIPS_H = int(re.search(r'<svg class="pp"[^>]*\sheight="(\d+)"', C13.pips_svg("0")).group(1))   # Rule 13.5's mark, 22 px
+PIPS_W, PIPS_H = (int(x) for x in re.search(r'<svg class="pp"[^>]*\swidth="(\d+)" height="(\d+)"', C13.pips_svg("0")).groups())   # Rule 13.5's mark, 88 by 22 px
 CARD_CSS = (
     ".cds{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}"
     ".cd8{border-top:4px solid var(--oa-color-border-hairline);padding-top:10px}"
@@ -772,11 +772,12 @@ CARD_CSS = (
     ".ph8{margin-top:16px}.pt8,.pr8{list-style:none;margin:0;padding:0}.pt8>li{padding:8px 0;border-top:1px solid "
     "var(--oa-color-border-hairline)}.pt8 .fn8{font:var(--oa-type-body-small);font-weight:var(--oa-font-weight-semibold)}"
     # CR-S23 (second pass after rounds 4 and 5): each reform's pips stay on its code's line at every width, as the key sets
-    # them: the chip, then the pips and the code, the words wrapping after the code in their own column; where the chip,
-    # the pips, the code and the longest word cannot share a line, the pips, code and words drop together under the chip.
+    # them: the pips, the code, then the words, wrapping after the code in their own column. The group never wraps inside;
+    # it takes its own line under the chip unless the line has room for the chip and about 11em of words beside the pips
+    # (so a phone reads each effect on one line, as the key does, and a wide stage with large text keeps the chip beside it).
     # The chip and the code share a baseline, and the pips sit on the middle of the code's line (1 px where lh is unknown)
-    ".pr8>li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:6px;font:var(--oa-type-body-small)}"
-    ".pr8 .fv8{flex:1 1 0;flex-wrap:nowrap;align-items:baseline;gap:8px;margin-top:0}"
+    ".pr8>li{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;margin-top:6px;font:var(--oa-type-body-small)}"
+    f".pr8 .fv8{{flex:1 1 calc({PIPS_W + 8}px + 11em);flex-wrap:nowrap;align-items:baseline;gap:8px;margin-top:0}}"
     f".pr8 .fv8>.pp{{flex:none;align-self:flex-start;margin-top:1px;margin-top:calc((1lh - {PIPS_H}px) / 2)}}"
     ".pr8 .fv8>span{flex:1 1 0}"
     "@container oa-frame (min-width:680px) and (min-width:40em){.ph8{display:none}}@media print{.ph8{display:none}}"
@@ -1461,7 +1462,7 @@ def check(entries, files, specs, steps):
     ok("@container oa-frame (min-width:680px) and (min-width:40em){.ph8{display:none}}" in files["s-14-144-correct"],
        "14.144: the phone line-up shows where the cards stand side by side")
     # CR-S23: in the line-up the pips and the code never part: their row does not wrap, and only the words wrap after the code
-    ok(".pr8 .fv8{flex:1 1 0;flex-wrap:nowrap;" in files["s-14-144-correct"]
+    ok(re.search(r"\.pr8 \.fv8\{flex:1 1 [^;]+;flex-wrap:nowrap;", files["s-14-144-correct"]) is not None
        and re.search(r'<span class="fv8"><svg class="pp"[^>]*>.*?</svg><span><b class="cd">', ph) is not None,
        "14.144: the phone line-up lets a reform's pips part from its code (CR-S23)")
     # call 15: the shared list row, a keyline after every pill that is red or can turn red (A5 live; R-30's print copy),

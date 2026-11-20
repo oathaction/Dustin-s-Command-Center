@@ -7,7 +7,8 @@ Written November 20, 2026, by the data lead (`oa-dataviz-systems-lead`). Brief: 
 16:49 UTC: started. Role file read at `oath-and-action-v6-brand-guide/.claude/agents/oa-dataviz-systems-lead.md` (the repository root has no `.claude/agents/`). No browser until the main session says the guide check has ended (about 17:45 UTC).
 16:54 UTC: batch 1 (RS-1, RS-6, RS-3) and batch 2 (RS-7, CR-S1's remainder) signed off from source, the plates' HTML and my strict build. Waiting for RS-2, RS-4, RS-5 and CR-S23.
 17:00 UTC: batch 3 (RS-2, RS-4, RS-5 as data, and D3-2280's S91 check) signed off. RS-5's visible half goes to board 3 as a held item (D3-2278), with its reach, in the decision file. Waiting for CR-S23.
-17:01 UTC: batch 4 (CR-S23) signed off. **All nine items are signed off from source, specs, the plates' HTML and a strict build of the joined pass (17:00 UTC, exit 0, 0 warnings).** The browser views listed under Not tested wait for the main session's word that the guide check has ended; I run them then and add a batch 5 only if one changes a sign-off.
+17:01 UTC: batch 4 (CR-S23) signed off. **All nine items are signed off from source, specs, the plates' HTML and a strict build of the joined pass (17:00 UTC, exit 0, 0 warnings).** The browser views listed under Not tested wait for the main session's word that the guide check has ended; I run them then and add a batch only if one changes a sign-off.
+17:11 UTC: batch 5, CR-S23's revision (the engineer's 17:04 UTC layout, after snapshot e1e4e369), reread from the current files and signed off. The pass stays signed off whole.
 
 ## Sign-off
 
@@ -63,6 +64,13 @@ Each batch answers three questions: does the change say only what the data and t
 - `s-14-144-correct.html` changes inside its style alone: outside the `<style>` block the markup is byte for byte as committed in db231c9b, so every reform, code, qualifier and pip count prints as before. The line-up's rows change from a two-column grid to a wrapping row whose pips, code and words form one group that never wraps inside, so a code's pips stay on its line. 51,724 to 51,875 bytes.
 - Rule 13.5's mark is unchanged (the 22 px pips, read from chapter 13's `pips_svg`), the cards and the key do not move, and the plate still prints no total: the atlas's codes stay uncombined (ruling (d), D3-2127). Rule 14.144 is a round 5 plate shown on board 3, and its pips are already a board 3 item (D3-2127), so no approved drawing changes.
 
+### Batch 5, 17:11 UTC: CR-S23 revised (after snapshot e1e4e369)
+
+**CR-S23, the engineer's second layout.** Signed off from the current files; batch 4's sign-off stands for the revision.
+- The revision changes only the line-up's style: the group of pips, code and words takes its own line under the chip unless the line has room for the chip, the pips and about 11em of words (`flex: 1 1 calc(96px + 11em)`), and the row gap drops from 4 to 2 px. Outside the `<style>` block `s-14-144-correct.html` is still byte for byte as committed in db231c9b, so every reform, code, qualifier and pip count prints as before, and the plate still prints no total and no combined score. 51,724 to 51,891 bytes against db231c9b.
+- The pips' size, 88 by 22 px, is read from chapter 13's `pips_svg` (Rule 13.5's mark) and not restated, so the mark cannot drift from Rule 13.5. The generator's `--check` reads 10 of 10 files current at 17:10 UTC.
+- The engineer's Chromium measures (17:06 to 17:08 UTC, their notes) put all twelve rows' pips on their code's line at 390, 360 and 320 px and with 200 percent text, every code whole at one x; I have not run a browser, so those figures are theirs.
+
 ### The joined pass, 17:00 UTC
 
 A strict build of the tree at 15591677 (every item in): exit 0, 0 warnings, 12,178,911 bytes, the editor's figure; pictures 101 hidden and 315 open. My two scripts rerun on it: the six tracker alts agree with their marks and keys, and S94's three year marks carry the same 16 events on the same days. The page prints S91's new title once and the old one nowhere, and S90's new note once, after the note it points to, with "row 5" nowhere.
@@ -84,7 +92,8 @@ None. Every item the pass changed is signed off for data and the chart rules. Th
 - `rs1_check.py` (scratch): the six tracker plates' drawn marks, key words and step names against their alts; exit 0.
 - `rs3_check.py` (scratch): S94's mid, desk and phone year marks in my strict page carry the same 16 events on the same days.
 - Atlas query: Loop R10 and connection L08 (from, to, sign, evidence) against RS-6's line.
-- Fragment comparisons against commit db231c9b: words and SVGs of `s-15-19-correct` and `s-15-20-failure`; the markup of `s-14-144-correct` outside its style; byte sizes.
+- Fragment comparisons against commit db231c9b: words and SVGs of `s-15-19-correct` and `s-15-20-failure`; the markup of `s-14-144-correct` outside its style, at 16:59 UTC and again at 17:10 UTC after CR-S23's revision; byte sizes.
+- `phase3_ch14_complex_build.py --check` at 17:10 UTC: 10 of 10 files current.
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/b2/guide.html` at 17:00 UTC on 15591677: exit 0, 0 warnings, 12,178,911 bytes, pictures 101 hidden and 315 open; `rs1_check.py` and `rs3_check.py` rerun on it; S91's title and S90's note read in the page; the working tree unchanged by the build.
 - S90's data row 5 (39,177,454 thousand dollars) against "$39.2 billion"; S91's three cards and terms against the title; the kit's S90 CSV export from the editor's scratch run (it leaves row 5 out and keeps "(row 5)").
 - RS-5: the five rules' `related_rules` and `related` before and after in the chapter file; every related rule in chapter 14 checked to exist as a rule in the guide; the reach counted (138 of 144 rules, 363 links).
