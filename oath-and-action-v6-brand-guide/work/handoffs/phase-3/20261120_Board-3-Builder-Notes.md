@@ -6,6 +6,23 @@ Written November 20, 2026, by the board builder (`oa-design-director` as page bu
 
 18:20 UTC: **run 8 landed** on version 13 (`--final work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html --reuse --check`, the page as rebuilt at 18:00 UTC, 12,178,909 bytes) with the editor's words in both JSON files. 0 warnings, 0 failures. Check: the page alone fails only html-has-lang at 1440, 390 and 360 px (allowed); wrapped as the host wraps it, PASS. 170 images, 17,159,893 bytes; the folder 174 files, 17,602,468 bytes; page 365,073 bytes. All 8 pictures to make are made in scratch. Waiting for: the creative director's score of the board, the four-width check on version 13 and the quick check with photographs (panel 8 shows them pending), then the fix round and the final run with `--check --strict`.
 
+## Fix round (the creative director's review, 18:31 UTC)
+
+My items, as the main session assigned them, all in `board_3_build.py` and `board_3_render.js` (I did not edit the JSON files while the editor held them):
+
+- **B3-M4, "Where to start".** A new render recipe, `clip`, crops to the change: the union of the blocks holding given words, patterns or parts inside an element, with context above and below, at the element's width or, where the page overflows, at its whole scroll width. A probe at 320 px with 200 percent text found the two links that ran past the window in V11 ("Identity proofs" and "Components and interaction", the page 339 px wide) and none in version 13 (320 px). Each now shows before and after, cropped round the link with the overflow in view; the two 19,000 px strips move into the item's fold.
+- **B3-S1.** The same recipe crops Rule 14.144 to Reform R-06's card at 1440 px and, on a phone, V11's card against version 13's line-up block (`.ph8`); Rule 14.6 to its changed sentences; S40 to its five vote date rows, its table opened first (the dates print only in the table). Whole plates move into each item's fold.
+- **B3-M1, picture half.** Rule 15.11 today and with the keyline, each converted to gray by luma (ITU-R 601-2, PIL's "L" mode), labeled so, set after the item's pictures.
+- **B3-S2.** S59's sketch now moves one label only: the kit mirror's patch keeps the lifted label's old place taken, so 2027's "4.1" gives way as it did before. The lifted 2026 label sits over the band's rising edge, above its dot, with no leader line; the editor has those words.
+- **B3-S5.** An alt whose item title quotes words keeps them in single quotes inside the alt's double quotes. The alts still say the picture's label, page and window; the one fact each shows needs words per picture (`alt` on each picture in the decision file), which are the editor's.
+- **B3-S6.** Panel 5's bars share one scale that reaches the largest share, and each bar carries its figure's line at 100 percent.
+- **B3-S7.** The heaviest charts print S96 with Rule 14.142 (from chapter 14's plates) and "Columns with a moving average" (the plan's name for its form id).
+- **B3-S8.** Board 2's views block, ported: the creative director's view prints as a quotation under the keyline item's recommendation.
+- **B3-S4.** The second pass table prints `scores.second_legend` under its lede when the content file holds it.
+- **B3-M2** is not mine to decide: the masthead pictures were made with the switch at 23.49em (376 px). If the data lead sets 372 px (23.25em), the 375 px picture with the 16 px master no longer applies and the decision file should drop it; I remake the 360 px picture at the new switch on request.
+
+A slip of mine: adding the crop to every photograph's signature changed every signature, so run 9 took all 168 photographs again (about 12 minutes); the signatures hold from here.
+
 ## Schema
 
 I read the decision file as the data lead wrote it (`board-3-decisions/1`, the notes' "Schema changes" included): `pages`, `page` on a guide picture, `element` as a selector where it holds a dot, `setup`, `kind: "to-make"` shown waiting with its owner and how, `shows: false` with `shows_note`, `specs`, `register`, `settled`, `steps`, `marks`, `counts`, `verb_led`, `top`. No change asked of the data lead.

@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T18:18:28.447826+00:00",
+ "built": "2026-11-20T18:54:02.258097+00:00",
  "decisions": {
   "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
   "state": "signed off",
@@ -24,11 +24,14 @@
   "v12": "work/boards/phase-3/review-4-5/20261116_Guide-Preview-V12.html",
   "final": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html"
  },
- "photographs_asked": 156,
+ "photographs_asked": 168,
+ "render_seconds": {
+  "guide": 130
+ },
  "shots": {
   "guide": {
-   "asked": 156,
-   "taken": 0,
+   "asked": 168,
+   "taken": 11,
    "missing": []
   },
   "made": {
@@ -447,7 +450,7 @@
   "estimate": [],
   "waiting": []
  },
- "panel_1_top_words": 631,
+ "panel_1_top_words": 645,
  "decide": {
   "items": 39,
   "questions": 23,
@@ -456,7 +459,7 @@
   "items_waiting": [],
   "pictures_waiting": 0
  },
- "panel_1_words": 7775,
+ "panel_1_words": 8305,
  "selection_guide": {
   "form_links": 127,
   "road_links": 6,
@@ -770,7 +773,7 @@
    },
    {
     "spec": "S96",
-    "rule": "",
+    "rule": "14.142",
     "bytes": 16022
    }
   ],
@@ -780,6 +783,12 @@
   "total": 112,
   "recount": 112,
   "dr_229": 18
+ },
+ "board_score": {
+  "file": "work/handoffs/phase-3/20261120_Board-3-CD-Scores.json",
+  "rescore": null,
+  "ready": 0,
+  "items": 1
  },
  "scores": {
   "readers": [
@@ -873,7 +882,7 @@
   "Chapter 14’s build check": "99 of 99 of its files up to date with the build, as the decision log records it",
   "The data check": "on the final build, 126 tables and 0 faults, as the decision log records it",
   "The atlas check": "run by the main session on version 13’s page: 779 chips in chapters 13, 14 and 15 and 115 kit chart files read, with no failures",
-  "Links to the chapters page": "63 links to 56 entries, each target checked by this board’s build on the final build’s page: 63 of 63 found",
+  "Links to the chapters page": "64 links to 56 entries, each target checked by this board’s build on the final build’s page: 64 of 64 found",
   "This board’s own check": "on its last run at 1440, 390 and 360 px, no failures apart from the page’s language, which the host sets when it wraps the page"
  },
  "checks_read": {
@@ -893,17 +902,17 @@
   }
  },
  "preview_links": {
-  "links": 63,
+  "links": 64,
   "anchors": 56,
-  "found": 63
+  "found": 64
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
- "html_bytes": 365073,
- "images": 170,
- "image_bytes": 17159893,
- "folder_files": 174,
- "folder_bytes": 17602468,
+ "html_bytes": 379374,
+ "images": 184,
+ "image_bytes": 17413641,
+ "folder_files": 188,
+ "folder_bytes": 17872627,
  "largest_image": [
   966992,
   "20261120_Decide-where-to-start-2.png"
@@ -915,10 +924,7 @@
   "ch15": "ready",
   "spend": "ready",
   "count": "ready",
-  "scores": [
-   "partial",
-   "cd_board"
-  ],
+  "scores": "ready",
   "tested": [
    "partial",
    "main"
@@ -988,14 +994,22 @@
   "img/20261120_Decide-S14-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s14-390.png",
   "img/20261120_Decide-S40-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-oac-s-14-s40-1440.png",
   "img/20261120_Decide-S40-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s40-1440.png",
+  "img/20261120_Crop-S40-0.webp": "[scratch]/c08/board-3/builder/shots/crop-S40-0.png",
+  "img/20261120_Crop-S40-1.webp": "[scratch]/c08/board-3/builder/shots/crop-S40-1.png",
   "img/20261120_Decide-rules-14-1-to-14-14-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-rule-14-6-1440.png",
   "img/20261120_Decide-rules-14-1-to-14-14-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-6-1440.png",
   "img/20261120_Decide-rules-14-1-to-14-14-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-rule-14-1-1440.png",
   "img/20261120_Decide-rules-14-1-to-14-14-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-1-1440.png",
+  "img/20261120_Crop-rules-14-1-to-14-14-0.webp": "[scratch]/c08/board-3/builder/shots/crop-rules-14-1-to-14-14-0.png",
+  "img/20261120_Crop-rules-14-1-to-14-14-1.webp": "[scratch]/c08/board-3/builder/shots/crop-rules-14-1-to-14-14-1.png",
   "img/20261120_Decide-14-144-pips-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-14-144-correct-1440.png",
   "img/20261120_Decide-14-144-pips-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-1440.png",
   "img/20261120_Decide-14-144-pips-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-14-144-correct-390.png",
   "img/20261120_Decide-14-144-pips-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-390.png",
+  "img/20261120_Crop-14-144-pips-0.webp": "[scratch]/c08/board-3/builder/shots/crop-14-144-pips-0.png",
+  "img/20261120_Crop-14-144-pips-1.webp": "[scratch]/c08/board-3/builder/shots/crop-14-144-pips-1.png",
+  "img/20261120_Crop-14-144-pips-2.webp": "[scratch]/c08/board-3/builder/shots/crop-14-144-pips-2.png",
+  "img/20261120_Crop-14-144-pips-3.webp": "[scratch]/c08/board-3/builder/shots/crop-14-144-pips-3.png",
   "img/20261120_Decide-15-20-chooser-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-15-20-correct-1440.png",
   "img/20261120_Decide-15-20-chooser-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-1440.png",
   "img/20261120_Decide-15-20-chooser-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-15-20-correct-390.png",
@@ -1012,6 +1026,10 @@
   "img/20261120_Decide-masthead-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-header-masthead-1024-railfocus.png",
   "img/20261120_Decide-where-to-start-1.png": "[scratch]/c08/board-3/builder/shots/g-v11-start-320-text200.png",
   "img/20261120_Decide-where-to-start-2.png": "[scratch]/c08/board-3/builder/shots/g-final-start-320-text200.png",
+  "img/20261120_Crop-where-to-start-0.webp": "[scratch]/c08/board-3/builder/shots/crop-where-to-start-0.png",
+  "img/20261120_Crop-where-to-start-1.webp": "[scratch]/c08/board-3/builder/shots/crop-where-to-start-1.png",
+  "img/20261120_Crop-where-to-start-2.webp": "[scratch]/c08/board-3/builder/shots/crop-where-to-start-2.png",
+  "img/20261120_Crop-where-to-start-3.webp": "[scratch]/c08/board-3/builder/shots/crop-where-to-start-3.png",
   "img/20261120_Decide-chapter-18-and-shell-1.webp": "[scratch]/c08/board-3/builder/shots/g-v9-fig-s-18-22-anatomy-390.png",
   "img/20261120_Decide-chapter-18-and-shell-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-18-22-anatomy-390.png",
   "img/20261120_Decide-chapter-18-and-shell-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-18-14-anatomy-1440.png",
@@ -1035,6 +1053,8 @@
   "img/20261120_Decide-red-target-keyline-3.webp": "[scratch]/c08/board-3/builder/shots/made-red-target-keyline-1440.png",
   "img/20261120_Decide-red-target-keyline-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-12-correct-1440.png",
   "img/20261120_Decide-red-target-keyline-5.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-16-correct-1440.png",
+  "img/20261120_Gray-red-target-keyline-0.webp": "[scratch]/c08/board-3/builder/made/gray-g-final-fig-s-15-11-correct-1440.png",
+  "img/20261120_Gray-red-target-keyline-1.webp": "[scratch]/c08/board-3/builder/made/gray-made-red-target-keyline-1440.png",
   "img/20261120_Decide-CR-S17-chips-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-13-5-correct-1440.png",
   "img/20261120_Decide-CR-S17-chips-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-18-24-anatomy-1440.png",
   "img/20261120_Decide-S71-retrieved-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s71-1440.png",
@@ -1124,6 +1144,7 @@
   "D3-2243",
   "D3-2278",
   "D3-2284",
+  "D3-2301",
   "D3-593",
   "D3-689",
   "DR-108",
@@ -1216,36 +1237,9 @@
  ],
  "notes": [
   "the final build named on the command line: work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
-  "18:18:32 UTC the board check: OK to open one (browsers running: 1, load: 1.20)",
-  "18:19:20 UTC the wrapped board check: OK to open one (browsers running: 1, load: 1.56)"
+  "18:54:03 UTC guide: OK to open one (browsers running: 1, load: 1.53)"
  ],
  "warnings": [],
- "seconds": 4,
- "words": 20717,
- "check": {
-  "page": {
-   "failures": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "allowed": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "results": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Check-Results.json"
-  },
-  "wrapped": {
-   "failures": [],
-   "pass": true,
-   "results": "[scratch]/c08/board-3/builder/publish-view/20261120_Board-3-Check-Results.json"
-  },
-  "widths": [
-   1440,
-   390,
-   360
-  ]
- },
- "fails": []
+ "seconds": 136,
+ "words": 21371
 }

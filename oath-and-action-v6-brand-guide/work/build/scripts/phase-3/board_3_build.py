@@ -814,22 +814,24 @@ STACK = {}                # a made picture's key -> [(photograph key, label)], s
 # is the union of the blocks that hold the words, patterns or parts named, inside the element named, on the page named.
 CROPS = {
     'where-to-start': [
-        dict(page='v11', el='start', w=320, text_scale=2, texts=['Identity proofs'], overflow=True, context=150, block='li', role='before', row='c1',
+        dict(page='v11', el='start', w=320, text_scale=2, patterns=[r'Identity\s+proofs'], overflow=True, context=150, block='li', role='before', row='c1',
              label='Before the fix pass, at a 320 px window with text at 200 percent: the link “Identity proofs” runs past the window’s right edge'),
-        dict(page='final', el='start', w=320, text_scale=2, texts=['Identity proofs'], overflow=True, context=150, block='li', role='after', row='c1',
+        dict(page='final', el='start', w=320, text_scale=2, patterns=[r'Identity\s+proofs'], overflow=True, context=150, block='li', role='after', row='c1',
              label='Now: the same link wraps inside the window'),
-        dict(page='v11', el='start', w=320, text_scale=2, texts=['Components and interaction'], overflow=True, context=150, block='li', role='before', row='c2',
+        dict(page='v11', el='start', w=320, text_scale=2, patterns=[r'Components\s+and\s+interaction'], overflow=True, context=150, block='li', role='before', row='c2',
              label='Before the fix pass: the link “Components and interaction” runs past the edge too'),
-        dict(page='final', el='start', w=320, text_scale=2, texts=['Components and interaction'], overflow=True, context=150, block='li', role='after', row='c2',
+        dict(page='final', el='start', w=320, text_scale=2, patterns=[r'Components\s+and\s+interaction'], overflow=True, context=150, block='li', role='after', row='c2',
              label='Now: it wraps inside the window'),
     ],
     '14.144-pips': [
-        dict(page='v11', el='fig-s-14-144-correct', w=DESK, subs=['.cd8'], context=12, role='before', row='card',
-             label='Before the fix pass: Reform R-06’s card at a 1440 px window, its effects in words with no pips'),
-        dict(page='final', el='fig-s-14-144-correct', w=DESK, subs=['.cd8'], context=12, role='after', row='card',
-             label='Now: the same card, with pips beside each effect code'),
-        dict(page='v11', el='fig-s-14-144-correct', w=PHONE, subs=['.cd8'], context=12, role='before', row='phone',
-             label='Before the fix pass, on a 390 px phone: the same card'),
+        dict(page='v11', el='fig-s-14-144-correct', within='#fig-s-14-144-correct .cd8', w=DESK, block='div',
+             texts=['Effect on quality of democracy', 'Effect on income and wealth equality'], context=12, role='before', row='card',
+             label='Before the fix pass: the four effects on Reform R-06’s card at a 1440 px window, in words with no pips'),
+        dict(page='final', el='fig-s-14-144-correct', within='#fig-s-14-144-correct .cd8', w=DESK, subs=['.ef8g'], context=12, role='after', row='card',
+             label='Now: the same card’s effects, with pips beside each code'),
+        dict(page='v11', el='fig-s-14-144-correct', within='#fig-s-14-144-correct .cd8', w=PHONE, block='div',
+             texts=['Effect on quality of democracy', 'Effect on income and wealth equality'], context=12, role='before', row='phone',
+             label='Before the fix pass, on a 390 px phone: the same card’s effects'),
         dict(page='final', el='fig-s-14-144-correct', w=PHONE, subs=['.ph8'], context=12, role='after', row='phone',
              label='Now, on a phone: the line-up, each family’s effects with the three reforms together'),
     ],
@@ -854,7 +856,7 @@ def crop_items():
     for iid, cs in CROPS.items():
         for k, c in enumerate(cs):
             clip = {x: c[x] for x in ('texts', 'patterns', 'subs', 'open', 'block', 'context', 'overflow') if x in c}
-            clip['within'] = css_selector(c['el'])
+            clip['within'] = c.get('within') or css_selector(c['el'])
             out.append({'key': f'crop-{slug(iid)}-{k}', 'page': c['page'], 'el': c['el'], 'w': c['w'], 'text_scale': c.get('text_scale') or 1,
                         'recipe': 'clip', 'clip': clip, 'session': 'crops'})
     return out
