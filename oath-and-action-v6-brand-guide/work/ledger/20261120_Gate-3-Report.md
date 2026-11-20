@@ -2,7 +2,7 @@
 
 Oath & Action Brand Guide, Edition 06. Phase 3, November 20, 2026. Status: waiting for Dustin's approval. The main session of chat 9 wrote this report from the files each section names.
 
-Gate 3 asks you to approve chapters 13, 14 and 15 as built, the chart kit as an asset of the package, the reconciliation table and the atlas V7.1 rows, the chart tokens, and the Phase 4 proposal in section 9. Section 10 lists each decision with the studio's recommendation and four questions on Phase 4. Reply "As proposed", or name the item and your change.
+Gate 3 asks you to approve chapters 13, 14 and 15 as built, the chart kit as an asset of the package, the reconciliation table and the atlas V7.1 rows, the chart tokens, and the Phase 4 proposal in section 9. Section 10 lists each decision with the studio's recommendation and five questions on Phase 4, each with a default. Reply "As proposed", or name the item and your change.
 
 DR numbers are your decisions and D3 numbers are the studio's routine calls, both in `work/ledger/20261020_Decision-Log.md`. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
@@ -140,7 +140,7 @@ Gate 2's section 9 set ten checks for Gate 3. Each result below was read from it
 | A text or table equivalent for every specimen | The build fails any specimen without one | The strict build passes: exit 0, 0 warnings, 369 rules, 679 specimens, 101 image stages hidden and 315 open |
 | The guide check at four widths with axe-core, and the chart check | 0 failures | {FOUR_WIDTH} |
 | The chart rules of DR-64, and Rule 01.9's spread | 0 failures; no domain over one in four, no state over one in five | The kit checks DR-64 on every spec, 96 of 96. Chapter 14 holds 112 examples: the largest topic, taxes, wealth and economic security, supplies 16 against a limit of 28, and no state more than 5 against 22. 18 of the 112 draw election or voting data, and every new form that keeps it passes DR-229's test |
-| Page weight | Chapter 14 under its figure; the projection under 15.5 MB | The page 12,210,634 bytes; the projection 15,180,545 of 15,500,000. Chapter 14 with the kit weighs 2,855,909 bytes against its 2,803,941 figure, reported under DR-271, which made the page's 16 MB the one fixed limit |
+| Page weight | Chapter 14 under its figure; the projection under 15.5 MB | The page 12,210,634 bytes; the build's projection 15,180,545 of 15,500,000, with each Phase 4 chapter at 362,857 bytes; with section 9's allocations, 15,650,545, under 16 MB and past the 15.5 MB line. Chapter 14 with the kit weighs 2,855,909 bytes against its 2,803,941 figure, reported under DR-271, which made the page's 16 MB the one fixed limit |
 | Dark mode, long labels, 200 percent text, 320 px reflow, reduced motion, forced colors and print, in emulation | No lost content | Met in the review (November 16) for rounds 4 and 5, and in each round's accessibility check before it. Three phrases still pass their card at 320 px with 200 percent text, and two long words break inside the word in "Where to start"; no word covers another, and all sit in the register |
 | DR-213's four device scripts | Not run in this container | Not run; listed under Not tested |
 
@@ -192,19 +192,19 @@ The deferred fixes register (`work/ledger/20261116_Deferred-Fixes-Register.md`) 
 
 ## 9. The Phase 4 proposal
 
-Phase 4 builds the seven application chapters and the twelve-page report, under the Phase 4 prompt (`brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md`) and Master Brief sections 16, 18 and 19. It builds on answers you have already given: the eight channels by name (DR-292), the seven chapters that hold them (DR-296), applications drawn live with their export files beside the guide (DR-297), a platform-neutral website and handles labeled until you name them (DR-298), and each chapter sized before it is built, with nothing cut (board 3's reply 19). The page stays one file, and its only fixed limit is 16 MB (DR-271).
+Phase 4 builds the seven application chapters and the twelve-page report, under the Phase 4 prompt (`brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md`) and Master Brief sections 16, 18 and 19. It builds on answers you have already given: the eight channels by name (DR-292), the seven chapters that hold them (DR-296), applications drawn live with their export files beside the guide (DR-297), a platform-neutral website and handles labeled until you name them (DR-298), and each chapter sized before it is built, with nothing cut (board 3's reply 19). It also carries answers you gave before Phase 3: one dark mode for every screen product, with a visible switch that remembers the reader's choice (DR-204); the atlas visual system you settled (DR-36), on Newsprint (DR-121); ampersand B alone on the Charcoal tile as the social avatar (DR-116); the 96 px sign-off on social cards (DR-211); the print lockup (DR-210); and a web address on social cards only once the site is settled (DR-55). The page stays one file, and its only fixed limit is 16 MB (DR-271).
 
 ### What Phase 4 produces
 
 | Chapter | What it holds | Lead |
 |---|---|---|
-| 16 Photography, illustration and video | Image selection, cropping, captions (who, what, where, when), credits, consent and rights, alt text written for purpose; where spot illustration, exploded diagrams and generated conceptual images may appear, and how each is labeled; labeled placeholders until a photography commission exists (Q-04); short-video structure, open and closed captions, transcripts, title and end frames, and the fallback when an embed fails | Creative director with the design director |
-| 20 Web | Your website: desktop and mobile mastheads, home navigation, the footer, an article page, the share preview and the favicon set, at 1440, 1024, 390 and 360 px, built from the tokens and chapter 18's components | Design director with the accessibility lead |
-| 21 The atlas | Atlas home, a detail page, the evidence view (the Register), loop pages and typed ID chips, drawn from Concepts 03, 09, 10 and 11; the atlas system test | Design director with the data visualization lead |
-| 22 Newsletter and email | Substack: the publication's logo, wordmark, cover, email header, post opener, divider, section heads and welcome words, set within what Substack lets a publisher change; one complete working HTML email for any sender other than Substack, readable with images off and web fonts missing | Design director with the editor |
-| 23 Social and video | One section each for X, Threads, Instagram, YouTube, TikTok and LinkedIn, then the video frames shared across them | Design director with the accessibility lead |
-| 24 Reports | The twelve-page report with a full editorial and visual pass: cover, executive brief, chart page, evidence spread, source notes and closing page at full size, in the report reader with its keyboard support | Design director with the editor |
-| 25 Print and presentation | The one-page explainer, letterhead, slide cover, content and data layouts, the event poster and the table sign | Design director with the engineer |
+| 16 Photography, illustration and video | Image selection, cropping, captions (who, what, where, when), credits, consent and rights, alt text written for purpose, taught on two or three of the public-domain federal photographs chapter 01 already shows (DR-238; question P4-5), each with its rights row; where spot illustration, exploded diagrams and generated conceptual images may appear, and how each is labeled; labeled placeholders hold the place of commissioned work until a photography commission exists (Q-04); short-video structure, open and closed captions, transcripts, title and end frames, and the fallback when an embed fails | Creative director with the design director |
+| 20 Web | Your website: desktop and mobile mastheads, home navigation, the footer, the home page, an article page and one Act page that gives the reader a practical way to take part, the share preview and the favicon set, at 1440, 1024, 390 and 360 px, each page on Newsprint and in the dark mode with its switch (DR-204), built from the tokens and chapter 18's components | Design director with the accessibility lead |
+| 21 The atlas | Atlas home, a detail page, the evidence view (the Register), loop pages and typed ID chips, in the atlas visual system you settled (DR-36), on Newsprint (DR-121) and in the dark mode, finished by its finishing list, with views drawn from the concepts Field Manual (03), The Circuit (09), Who Can Act (10) and Register (11); the atlas system test | Design director with the data visualization lead |
+| 22 Newsletter and email | Substack: the publication's logo, wordmark, cover, email header, post opener, divider, section heads and welcome words, set within what Substack lets a publisher change, and one chart inside a post at Substack's body width, as a still image with its alt text and source line; one complete working HTML email for any sender other than Substack, readable with images off and web fonts missing, in a mail app's dark mode, with a plain-text part, alt text on every image, and small enough that Gmail shows it whole (the research lead confirms Gmail's limit) | Design director with the editor |
+| 23 Social and video | One section each for X, Threads, Instagram, YouTube, TikTok and LinkedIn, each with the profile as a reader meets it (the avatar over the banner at desktop and phone widths, where the crops collide), then the video frames shared across them; the social card's 1080 x 1920 frame, held for this chapter (DR-268) | Design director with the accessibility lead |
+| 24 Reports | The twelve-page report with a full editorial and visual pass: cover, executive brief, chart page, evidence spread, source notes and closing page at full size, in the report reader with its keyboard support; US Letter, 8.5 x 11 in, with bleed and margins stated | Design director with the editor |
+| 25 Print and presentation | The one-page explainer and letterhead on US Letter, slide cover, content and data layouts at 1920 x 1080, the event poster at 24 x 36 in and the table sign at 11 x 17 in, each with bleed and margins stated and the print lockup (DR-210); an event piece with a partner puts the host's name first (DR-102) | Design director with the engineer |
 
 ### The eight channels
 
@@ -214,7 +214,7 @@ Every size below is a starting point. The research lead reads each platform's of
 |---|---|---|---|
 | Oath & Action website | 20 | Mastheads, home navigation, footer, article page, share preview, favicon set | Page widths 1440, 1024, 390 and 360 px; share preview 1200 x 630; favicons from the standard set |
 | Substack | 22 | Logo, wordmark, cover, email header, post opener, divider, section heads, welcome words, share preview | Logo, wordmark and cover sizes from Substack's help center; Substack sends posts in its own email template, and the research lead lists which parts a publisher sets |
-| X (Twitter) | 23 | Avatar, header, post images in one and four, a thread's opening card, link card | Avatar 400 x 400 with a circle-safe area; header 1500 x 500; post image 1600 x 900; link card 1200 x 628 |
+| X (Twitter) | 23 | Avatar (ampersand B on the Charcoal tile, DR-116), header, post images in one and four, a thread's opening card, link card | Avatar 400 x 400 with a circle-safe area; header 1500 x 500; post image 1600 x 900; link card 1200 x 628 |
 | Threads | 23 | Avatar, single and carousel posts, link preview | Avatar shared with Instagram unless set apart; posts at Instagram's sizes; link preview from the website's share image |
 | Instagram | 23 | Avatar, square, portrait and carousel posts, Stories and Reels covers with their safe zones, the profile grid's crop | Avatar 320 x 320 shown, 1080 x 1080 uploaded; square 1080 x 1080; portrait 1080 x 1350; vertical 1080 x 1920; the grid's current crop from the help page |
 | YouTube | 23 | Avatar, channel banner with its safe area, video thumbnail, Shorts cover, watermark, title and end frames | Avatar 800 x 800; banner 2560 x 1440 with its central safe area; thumbnail 1280 x 720; video 1920 x 1080; Shorts 1080 x 1920 |
@@ -225,7 +225,7 @@ Video frames serve YouTube, TikTok, Instagram's Reels and LinkedIn's video at 19
 
 ### How the applications are built
 
-The chart kit is the model. The engineer builds one application kit: a renderer per application type that reads a small content file and draws the application in HTML or SVG with the guide's own fonts and tokens. The guide shows each one live at true size in a scaled frame, the way chapter 14 shows a chart, and the same source writes the export files (PNG, PDF and the email's HTML) into a Phase 4 exports folder that Phase 5 packages (DR-297). A dimension script checks every export's pixels or page size against the specifications table, and every social, video and email application carries a safe-area overlay a reader can switch on. Chapter 18's components and the shell's styles are reused, never copied.
+The chart kit is the model. The engineer builds one application kit: a renderer per application type that reads a small content file and draws the application in HTML or SVG with the guide's own fonts and tokens. The guide shows each one live at true size in a scaled frame, the way chapter 14 shows a chart, and the same source writes the export files (PNG, PDF and the email's HTML) into a Phase 4 exports folder that Phase 5 packages (DR-297). A dimension script checks every export's pixels or page size against the specifications table, and every social, video and email application carries a safe-area overlay a reader can switch on. Chapter 18's components and the guide's own page styles are reused, never copied.
 
 Content comes from real Oath & Action material where it exists and from real public examples the research lead finds, and carries the Illustrative label beside any invented person, quote, place or figure. Examples rotate across issues, states and sides, by one standard of evidence (DR-93). No generated image serves as evidence or as documentary imagery.
 
@@ -244,7 +244,7 @@ Board 3's reply 19 asked for each Phase 4 chapter to be sized before it is built
 | 25 Print and presentation | 08 Lockmark, 38,944; 17, 32,856 | About 9 | 340,000 |
 | All seven | | | 3,010,000 |
 
-That leaves 349,455 bytes under 16 MB as a reserve, and puts the page about 150,545 bytes past the 15.5 MB line, which the build reports and does not stop on (DR-271). Each allocation moves as its content needs; only the 16 MB stops a build. The application kit draws at build time into static markup, so the page carries no second renderer beside the chart kit, and every export lives outside the page (DR-297).
+That leaves 349,455 bytes under 16 MB as a reserve, and puts the page about 150,545 bytes past the 15.5 MB line, which the build reports and does not stop on (DR-271). With these allocations the page projects to 15,650,545 bytes, 97.8 percent of 16 MB. The build's own projection today, 15,180,545, still counts each Phase 4 chapter at 362,857 bytes; chat 10 sets it to these figures. Each allocation moves as its content needs; only the 16 MB stops a build. The method counts rules, and chapters 20 and 23 draw more than their nearest built chapters do, so chat 10 measures the application kit's bytes for one social post, one web page at four widths with its dark mode and one report page, re-sizes the seven from those figures, and shows the result on Phase 4 board 1. Chapter 27's 200,000 bytes must also index every export Phase 4 makes. The application kit draws at build time into static markup, so the page carries no second renderer beside the chart kit, and every export lives outside the page (DR-297).
 
 ### Chats and boards
 
@@ -252,23 +252,23 @@ Phase 4 runs in seven chats with three boards, one more chat than the work track
 
 | Chat | What it builds | Ends with |
 |---|---|---|
-| 10 | Platform specifications for all eight channels, read from their official help pages; chapter 16; the application kit's first build | Handoff |
-| 11 | Chapter 20, your website; chapter 21, the atlas with its system test | Handoff before the review |
+| 10 | Platform specifications for all eight channels, read from their official help pages; chapter 16; the application kit's first build and its measured bytes | A note for the next chat |
+| 11 | Chapter 20, your website; chapter 21, the atlas with its system test. If it runs long, the atlas moves to a chat of its own with its system test whole | A note for the next chat, before the review |
 | 12 | The review of chapters 16, 20 and 21, the fix pass and the rescore; Phase 4 board 1 | Your answers |
-| 13 | Chapter 22, Substack and email; chapter 23's X, Threads and Instagram | Handoff |
+| 13 | Chapter 22, Substack and email; chapter 23's X, Threads and Instagram | A note for the next chat |
 | 14 | Chapter 23's YouTube, TikTok and LinkedIn, and the video frames; the review of chapters 22 and 23, the fix pass; Phase 4 board 2 | Your answers |
 | 15 | Chapter 24, the twelve-page report; chapter 25, print and presentation; their review and fix pass; Phase 4 board 3 | Your answers |
-| 16 | A drift read of the seven chapters, the closing checks, the chapters page, the Gate 4 report with its board and the Phase 5 proposal | Your approval at Gate 4 |
+| 16 | A read across the seven chapters for anything stated two ways, the closing checks, the chapters page, the Gate 4 report with its board and the Phase 5 proposal | Your approval at Gate 4 |
 
 | Board | After | What it shows | What you decide |
 |---|---|---|---|
-| Phase 4 board 1 | Chats 10 to 12 | Chapter 16's rules with their placeholders; the website at 1440, 1024, 390 and 360 px; the atlas's home, detail and evidence views; the application kit and the specifications table | The website's look; anything that changes approved work |
+| Phase 4 board 1 | Chats 10 to 12 | Chapter 16's rules with their photographs and placeholders; the website at 1440, 1024, 390 and 360 px, on Newsprint and in the dark mode; the atlas's home, detail and evidence views with its system test; the application kit, its measured bytes and the re-sized allocations; the specifications table | Chapter 16's rules; the website's look; the atlas's views; anything that changes approved work |
 | Phase 4 board 2 | Chats 13 and 14 | Every channel's applications at true size with their safe-area overlays and export sizes; the working email at 600 and 375 px with images off | Each channel's set; the handles once you name them |
 | Phase 4 board 3 | Chat 15 | The twelve report pages at full size in the reader; the print pieces and slides at true size | The report and the print pieces |
 
 ### Team and checks
 
-The research lead stays a chat ahead with each channel's specifications and real examples. The creative director and the design director write chapter 16. The design director resolves every application with the accessibility lead, and the editor writes every word a reader sees. The engineer builds the application kit, its exports and its checks. The data visualization lead signs off any chart, map or atlas view an application carries. Each board's review runs the six red team lenses Phase 3 used, with a simulated reader panel reported as simulated (DR-202), one fix pass, DR-191's short second pass and the creative director's scores; an item ships at 4 or more on all six criteria.
+The research lead stays a chat ahead with each channel's specifications and real examples. The creative director and the design director write chapter 16. The design director resolves every application with the accessibility lead, and the editor writes every word a reader sees. The engineer builds the application kit, its exports and its checks. The data visualization lead signs off any chart, map or atlas view an application carries. Each board's review runs the six readings Phase 3 used (statistics, civic education, accessibility, nonpartisanship and brand, craft at twice size, and production, where a simulated producer makes one new application from the chapter alone), with a simulated reader panel reported as simulated (DR-202), one fix pass, DR-191's short second pass and the creative director's scores; an item ships at 4 or more on all six criteria.
 
 | Check | Passes when |
 |---|---|
@@ -280,32 +280,53 @@ The research lead stays a chat ahead with each channel's specifications and real
 | The Illustrative label beside every realistic quote, person, place, handle and figure | Every one |
 | The guide check at four widths and the quick check with photographs, on the final build | 0 failures |
 | Page weight | The page under 16 MB; each chapter's figure reported against its allocation |
+| Contrast measured on every export's pixels, text on photographs and on Charcoal included | Every text and mark at its ratio (Master Brief section 22) |
+| The guide check's red, party and label tests on every social and video application | 0 failures (DR-64 covers social cards) |
+| Each avatar, favicon and thumbnail at the smallest size its platform shows | The mark and any words still read |
+| Print preflight for every print piece | Bleed, embedded fonts, each image's resolution at its printed size, and each ink's print value |
+| Each web and atlas page in the dark mode at 1440 and 390 px | Captured; the switch reached by keyboard and remembered |
+| Keyboard walks of the site's menu and of the report reader | Every control reached and named |
+| Alt text on every export, and captions and a transcript for every video frame set | Every one |
+| Rule 01.9's spread over Phase 4's examples, the locked lines on every application, and a rights row for every image and platform mark | By script; 0 faults |
 | Safari, Firefox, real screen readers and email clients other than the one tested | Listed as not tested at Gate 4 (DR-279) |
 
 ## 10. At Gate 3 you decide
 
-Reply "As proposed" to take every recommendation below, or name the item and your change.
+Reply "As proposed" to take every recommendation and every default below, or name the item and your change.
 
 | # | Decision | The studio's recommendation |
 |---|---|---|
-| 1 | Chapters 13, 14 and 15 as built, with the creative director's scores (section 3) | Approve them. All 33 items score 4 or more on all six criteria, and the four-width check passes with 0 failures |
+| 1 | Chapters 13, 14 and 15 as built, with the creative director's scores (section 3) | Approve them. All 33 items score 4 or more on all six criteria, and the four-width check passes on version 14 with 0 failures (D3-2356) |
 | 2 | The chart kit as an asset of Phase 5's package: `oa-chart.mjs`, its forms, the 96 specs, `kit.css` and the checks, with each chart's SVG, PNG and CSV exports | Approve it. A partner or a story can draw a chart from a CSV with no install (DR-235), and every export now carries its source line and the lockmark |
-| 3 | The reconciliation table (Rule 15.25) and the atlas V7.1 rows. The table's 57 rows each name what the guide does about a difference, with its rules; the November 13 rerun of all 2,644 comparisons found Phase 0's results again, and two values still differ from the model, both in one row (D03 and D04's reform counts), where the guide prints the model's. V7.1 rows 38 to 46 are on the issue list (`work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md`) | Approve the resolutions as the table prints them, and the issue list as it stands for the atlas's next version |
-| 4 | The chart tokens of releases 6.0.0-gate3.1 to 6.0.0-gate3.3: the two new colors `oa.color.tint.prussianN56` (#828A9D) and `prussianN29` (#505C7D) for the diverging scale on Charcoal; the roles `oa.chart.color.diverging` on Charcoal, `oa.chart.color.categorical`, `oa.chart.color.ghost` and `oa.chart.grade`; and `oa.chart.tile.phoneGap` at 2 px | Approve them for version 6.0.0, which ships at Phase 5. The colors are the ones you approved at board 1 (DR-236); no other token changed in Phase 3 |
-| 5 | The kit's label clearance check for every chart. Today it runs only on S59. Run as a list over all 96 charts, it would move none (DR-295) | Switch it on for every chart, so a later chart cannot run a line through its own label |
-| 6 | Three word changes in approved chapters, found in this pass: (a) Rule 14.6's other two "Charcoal" phrases take "the text’s ink", as reply 14 did for its first; (b) Rule 06.3's data label spec adds "except a chip's ID (Rule 18.24)"; (c) Rule 05.5 names the atlas's red target as its one exception, citing the atlas visual system | Yes to all three, made in Phase 4's first chat. Each is words only, and each makes the guide say one thing in one way |
-| 7 | The Phase 4 proposal (section 9) | Approve it as proposed, with the four answers below |
+| 3 | The reconciliation table (Rule 15.25) and the atlas V7.1 rows. The table's 57 rows each name what the guide does about a difference, with its rules. The November 13 rerun of all 2,644 comparisons found Phase 0's results again; two values still differ from the model, both in one row, the reform counts of two atlas domains (Money, lobbying and influence, and Congress, agencies and public services), and the guide prints the model's. V7.1 rows 38 to 46 are on the issue list (`work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md`) | Approve the resolutions as the table prints them, and the issue list as it stands for the atlas's next version |
+| 4 | The chart colors and roles added to the design tokens in Phase 3: two lighter Prussians that let the diverging scale run on Charcoal, #828A9D (`oa.color.tint.prussianN56`) and #505C7D (`prussianN29`), the colors you approved at board 1 (DR-236); four new roles that name existing colors for charts (the diverging scale on Charcoal, the four-ink group order, the faint lines behind small multiples, and the evidence line code); and the phone tile gap at 2 px. Releases 6.0.0-gate3.1 to 6.0.0-gate3.3 | Approve them for version 6.0.0, which ships at Phase 5. No other token changed in Phase 3 |
+| 5 | The kit's label clearance check for every chart. It tests one thing: a band's edge, such as a fan chart's range, drawn through a value label. Today it runs only on S59; run as a list over all 96 charts, it would move none (DR-295). A series line, an axis or another label crossing a word stays for the maker and the reviewer to catch | Switch it on for every chart, so no band's edge can run through a value label |
+| 6 | Three word changes in approved chapters, found in this pass; the words below are today's and the proposed | Yes to all three, made in Phase 4's first chat. Each is words only, and each makes the guide say one thing in one way |
+| 7 | The Phase 4 proposal (section 9) | Approve it as proposed, with the five defaults below unless you answer |
 
-**Four questions on Phase 4.**
+**Item 6, word for word.**
+
+| Change | Today | Proposed |
+|---|---|---|
+| (a) Rule 14.6, its fifth paragraph | "so a named area, whose size follows its data, takes Charcoal at any size" | "so a named area, whose size follows its data, takes the text’s ink at any size" |
+| (a) Rule 14.6, its specification "A named area, or past 5 percent of the drawing" | "Charcoal, with the label (Rule 05.1)" | "The text’s ink, with the label (Rule 05.1)" |
+| (b) Rule 06.3, its "Data label" specification | "Inter 600, 13 px, line height 1.3, tabular figures" | "Inter 600, 13 px, line height 1.3, tabular figures, except a chip’s ID (Rule 18.24)" |
+| (c) Rule 05.5, after "The error bar takes none, since the error mark and the word “Error:” carry the error and the 4 px bar beside them repeats it." | Nothing | "The atlas’s red target takes none either: the atlas draws it as a red ring and arrowhead, and each plate names its target in words beside the drawing (Rule 15.11)." |
+| (c) Rule 05.3, its reason | "On Newsprint it measures 2.96 to 1, so a working red mark there takes a keyline, a 1 px Charcoal edge drawn inside the mark (Rule 05.5)." | "On Newsprint it measures 2.96 to 1, so a working red mark there takes a keyline, a 1 px Charcoal edge drawn inside the mark, apart from the two marks Rule 05.5 names." |
+
+Rule 05.7 keeps its words: its keyline belongs to a chart's named point, such as a single bar, which keeps it, and the atlas's target is no chart point. The main session drafted (c)'s two sentences for this report; the editor reads them before they are built.
+
+**Five questions on Phase 4.**
 
 | # | Question | Default until you answer |
 |---|---|---|
 | P4-1 | LinkedIn: will Oath & Action post from your personal profile, from a company page, or both? The banners differ in size | Both, each with its own banner |
 | P4-2 | Which tool do you present slides in: PowerPoint, Keynote or Google Slides? | Slide layouts as PDF and PNG at 1920 x 1080, plus a PowerPoint file, which Keynote and Google Slides both open |
-| P4-3 | Image generation. This environment has Canva's and Figma's image tools connected. May chapter 16 use one for the few conceptual illustrations a rule needs to show its own label, each logged in the rights ledger with the tool, date, prompt and terms? | Labeled placeholders and written prompts only, and a generated image only where you say yes; never as evidence or documentary imagery |
-| P4-4 | Do you want the twelve-page report's content refreshed with current figures, or its V5 content kept and given the editorial and visual pass alone? | The V5 content kept, each figure checked against its source and dated, and any figure the research lead finds superseded flagged for you |
+| P4-3 | Generated images. The Master Brief already allows labeled generated conceptual images from a connected tool, logged with the tool, date, prompt and terms, and never as evidence (section 16). This environment has Canva's and Figma's image tools. Should chapter 16 use them, once the research lead has read each tool's terms against the rights ledger, or stay narrower than the brief? | Narrower than the brief: labeled placeholders and written prompts, and a generated image only where a rule cannot show its own label without one, after its tool's terms are read |
+| P4-4 | Do you want the twelve-page report's content refreshed with current figures, or its V5 content kept and given the editorial and visual pass alone? | The V5 content kept, each figure checked against its source and dated, any figure the research lead finds superseded flagged for you, the editor's disclosure left out (DR-100), and Reforms R-01 and R-02 treated as every other reform (DR-223) |
+| P4-5 | May chapter 16 teach selection, cropping and captions on two or three of the public-domain federal photographs chapter 01 already shows (DR-238), each with its rights row, while placeholders hold the place of commissioned work? | Yes, two or three of them, each with its rights row; Q-04 stays open |
 
-**What you approve at this gate.** Chapters 13 to 15 as built, the chart kit as an asset, the reconciliation table and V7.1 rows, the chart tokens, the label clearance check, the three word changes, and the Phase 4 proposal. Phase 4 starts in a new chat after your reply.
+**What you approve at this gate.** Chapters 13 to 15 as built, the chart kit as an asset, the reconciliation table and V7.1 rows, the chart tokens, the label clearance check, the three word changes, and the Phase 4 proposal with its five defaults. Phase 4 starts in a new chat after your reply.
 
 ## 11. Change log
 
