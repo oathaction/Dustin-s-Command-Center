@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, November 20, 2026 (chat 9). Creative director
 
 ## Status
 
+- 23:30 UTC. **Rescore on the fix round: not ready yet, 1 Must fix, 2 Should fix.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 3, Accessibility 4. All 4 first Musts and all 12 Shoulds fixed; one new Must (G3-M5, P4-5's photographs unsized against the reserve) and two small Shoulds (G3-S13, G3-S14). Read from files, no browser. See "Rescore" at the end.
 - 23:17 UTC. **First score. Not ready to ship: 4 Must fix, 12 Should fix.** Craft 4, Clarity 4, Brand fidelity 3, Usefulness 4, Evidence honesty 3, Accessibility 4. Every fix is words in the report's sections 9 and 10, a figure the builder already reads, or a caption. None touches the guide.
 - Board scored: the builder's run 3 (22:57 to 22:59 UTC, on version 14; 140,067 bytes; SHA-256 `9ed7f6f790be0665…`; 48 pictures), frozen with its pictures in my scratch folder at 23:01 UTC and unchanged at 23:13. Panel 5's slot for this score and panel 7's two check slots wait, as the brief sets.
 - I opened no browser. At 23:05 UTC the main session asked for the machine while the quick check with photographs runs, so every view here is read from files. Tested says which.
@@ -152,3 +153,89 @@ Read from the page's style and the check's runs, since I saw no browser: a Newsp
 
 - Created: `work/handoffs/phase-3/20261120_CD-Review-Of-Gate-3-Board.md` (this file) and `work/handoffs/phase-3/20261120_Gate-3-Board-CD-Scores.json`.
 - Scratch only: `scratchpad/c09/creative-director/` (`frozen/`, `g3/`, `png/`, `py/`): the frozen board, its text, my score comparison, PNG copies and zooms of the pictures.
+
+## Rescore
+
+### Basis
+
+The builder's fix round (23:20 to 23:25 UTC, `--reuse --no-browser`, 0 warnings; 151,411 bytes; SHA-256 `a6eaa197ba1d9eab…`; 48 pictures, four re-cropped), frozen with its pictures in my scratch folder (`frozen2/`) at 23:26 UTC, on the report as D3-2372 and D3-2373 revised it. I opened no browser: the quick check with photographs holds the machine until about 23:55 UTC. I read the page's text and markup by script, the four new crops as image files, and the builder's "Fix round" notes. The board check has not run on this build; its results file is run 3's (22:58 UTC). Panel 7's quick check slot still waits, as the brief sets.
+
+Status: rescore written 23:30 UTC.
+
+### Verdict, rescore
+
+**Not ready yet: one new Must, two small Shoulds.** All four first Musts and all twelve Shoulds are fixed. Panel 2 now carries DR-204's dark mode, DR-36's atlas system on Newsprint, the home and Act pages, print sizes, the measured re-size in chat 10 and ten new checks; item 6 prints today's and the proposed words; item 5 says band edges.
+
+The new Must comes from my own addition, which I did not size. P4-5's default teaches chapter 16 on "two or three" of chapter 01's public-domain photographs. Chapter 01 holds two, which weigh 298,292 and 190,992 bytes as the page embeds them, and chapter 16's allocation still reads "with labeled placeholder plates". Embedded again, the two add 489,284 bytes against a 349,455 reserve and take the plan to 16,139,829 bytes, past the one fixed limit. The fix is one sentence; I can confirm it from the rebuilt file with no browser.
+
+Read against the settled list, no recommendation now changes or drops a settled element. Item 6's (c) asks by name for Rules 05.5 and 05.3, and Rule 05.7 keeps its words for a chart's point; the guide draws the atlas's selection in ink, so 05.7's note holds. P4-4's default now leaves out the editor's disclosure (DR-100) and treats Reforms R-01 and R-02 as every other reform (DR-223).
+
+### Scores after the fix round
+
+| Criterion | First | Now |
+|---|---|---|
+| Craft | 4 | 4 |
+| Clarity | 4 | 4 |
+| Brand fidelity | 3 | 4 |
+| Usefulness | 4 | 4 |
+| Evidence honesty | 3 | 3 |
+| Accessibility | 4 | 4 |
+
+### Reasons after the fix round
+
+- **Craft, 4 (unchanged).** No straight quote or apostrophe is left on the face; item 4 shows its two colors on Charcoal at 96 by 56 px; the read-aloud and chapter 04 pairs crop to their blocks with 16 px of ground. I hold 4 because I read this round from files, at 1x, with no browser.
+- **Clarity, 4 (unchanged).** Board 3's closed choices now sit apart under "Board 3’s other choice, not taken", the two domains have names, panel 2's studio words are plain, and item 7 says "five defaults". Panel 1 grows to 1,712 words, nine minutes, and stays answer-first. Two small gaps remain (G3-S13, G3-S14).
+- **Brand fidelity, 4 (raised from 3).** Panel 2 now names DR-204's dark mode and switch on chapters 20 and 21, DR-36's system on Newsprint (DR-121) with its finishing list, DR-116's avatar, DR-211's sign-off, DR-210's print lockup, DR-102's host order, DR-55's web address and DR-268's vertical frame. Item 6 brings Rule 05.3 in with 05.5. The header still sets the name in live type.
+- **Usefulness, 4 (unchanged).** Dustin now sees each word he approves in item 6, both colors in item 4, and both projections in panel 6. P4-5's default commits bytes the plan does not hold (G3-M5).
+- **Evidence honesty, 3 (unchanged).** G3-M1 to G3-M3 are fixed: panel 6 labels both projections (15,180,545 as the build counts today; 15,650,545 with panel 2's allocations, 97.8 percent of 16 MB and 101.0 percent of the line), item 5 says band edges, item 6's reason now holds, and item 1 and panel 7 read the four-width file. One new gap holds the score: chapter 16's allocation leaves out the photographs P4-5's default adds, and "two or three" counts a photograph chapter 01 does not have (G3-M5).
+- **Accessibility, 4 (unchanged).** The luma alts now say what they show, and the 48 pictures keep their size, lazy loading and alt. The new swatches hide their color blocks from screen readers and print each color's hex and ratios in text. The board check has not run on this build, so the PASS I rely on is run 3's.
+
+### Must fix, checked
+
+| Code | State | What I read |
+|---|---|---|
+| G3-M1 | Fixed | Panel 6 prints the build's projection labeled "with each Phase 4 chapter at 362,857 bytes" (94.9 and 97.9 percent) and the page with panel 2's allocations, 15,650,545 (97.8 and 101.0 percent); panel 2 explains the difference and says chat 10 updates the build's figures. |
+| G3-M2 | Fixed | "Switch it on for every chart, so no band’s edge can run through a value label", with "It tests one thing" and the line on what stays for the maker and the reviewer. |
+| G3-M3 | Fixed | A five-row table of today's and proposed words; (c) adds Rule 05.5's sentence and changes Rule 05.3's reason to "apart from the two marks Rule 05.5 names"; Rule 05.7 keeps its words, with the reason. The "Today" column matches `14-006.json`, chapter 06 and chapter 05 word for word. The sentences are the main session's drafts, and the editor reads them before they are built (D3-2373). |
+| G3-M4 | Fixed | Chapters 20 and 21 name the dark mode with its switch; chapter 21 reads "in the atlas visual system you settled, on Newsprint and in the dark mode, finished by its finishing list", with the four concepts named; the checks add dark-mode captures and the switch by keyboard. |
+
+### Should fix, checked
+
+All twelve fixed. G3-S1: 0 straight quotes or apostrophes on the face. G3-S2: two swatches with 5.41, 2.82 and 4.70 to 1, which I recomputed by WCAG's formula (5.416, 2.826, 4.703). G3-S3: the domains named. G3-S4: the three closed choices set apart. G3-S5: my sentence above the luma pictures, and each alt says it. G3-S6: chapter 14's row says "without the kit". G3-S7: item 1 and panel 7 read the four-width file (22:27 to 23:04 UTC, no failures). G3-S8: chapter 14's check and the data check read the main session's closing run on version 14's tree (D3-2355), from the decision log. G3-S9: P4-3 says the brief already allows it and asks what is open. G3-S10: "a read across the seven chapters for anything stated two ways", "six readings" named one by one, "the guide’s own page styles", "a note for the next chat", the concepts named, "five defaults". G3-S11: "S14 as the kit exports it alone". G3-S12: the two text pairs re-cropped (318 and 624 px wide).
+
+### New Must fix
+
+**G3-M5. P4-5's default commits photographs that chapter 16's allocation leaves out.**
+Where: panel 1, question P4-5 and its default; panel 2, chapter 16's rows in "What Phase 4 produces" and in the allocation table ("About 12, with labeled placeholder plates", 300,000).
+What: Chapter 01 holds two distinct public-domain photographs: the Capitol Rotunda (Rule 01.6, 298,292 bytes as embedded) and the public meeting (Rule 01.8, 190,992 bytes, embedded twice). "Two or three of them" can only mean two. Embedded again for chapter 16, they add 489,284 bytes, more than chapter 16's whole allocation and the 349,455 reserve, and take the plan to 16,139,829 bytes. My review proposed this question without sizing it.
+Fix: Say "the two public-domain photographs chapter 01 already shows". In chapter 16's allocation row and P4-5's default, say how they are paid for: drawn from chapter 01's files, embedded once for the whole page (the engineer confirms it in chat 10; embedding the meeting photograph once also frees 190,992 bytes), or chapter 16's allocation raised by their bytes from the reserve.
+Owner: Main session (report sections 9 and 10); builder rebuilds.
+
+### New Should fix (neither blocks shipping)
+
+- **G3-S13. A stand-in phrase in panel 2's checks.** "0 failures (a logged decision covers social cards)" is board 1's code stripper writing over DR-64. Use the builder's `code_words`: "your rule against red and blue on election graphics covers social cards". Owner: builder.
+- **G3-S14. The channel table's website row** still lists "Mastheads, home navigation, footer, article page, share preview, favicon set". Add the home page, the Act page, and the dark mode with its switch, to match chapter 20's row. Owner: main session.
+
+### My view of the Phase 4 proposal, after the fix round
+
+With G3-M5's sentence, the proposal would produce finished work at the bar. It now holds each channel's set with its profile as a reader meets it, every settled answer its screen and print work must keep, allocations that chat 10 re-sizes from measured bytes before Phase 4 board 1, and checks for contrast, small sizes, print preflight, dark mode, keyboard, captions, spread and rights alongside dimensions. Its remaining risk is weight: the reserve is 349,455 bytes, about 2 percent of the page, and the plan starts past the 15.5 MB warning line.
+
+### Tested, rescore
+
+- Read the builder's "Fix round" notes, D3-2350 to D3-2373, and the coordinator's 23:26 UTC message (23:26 UTC).
+- Froze the fix round's page and 48 pictures (23:26 UTC); hash unchanged at 23:28.
+- By script on the frozen page: every panel's text, diffed against the first build for panels 3 to 7; panel 1's words (1,712); dashes, straight quotes and apostrophes, and codes on the face; all 48 pictures' size, lazy loading and alt against their files; 22 same-page links (none broken); outside requests; the swatch markup and styles.
+- The two swatch colors' ratios by WCAG's formula; panel 6's new projection by arithmetic.
+- Item 6's "Today" words against `14-006.json`, chapter 06's and chapter 05's files; chapter 15's file for the atlas's selection ink.
+- Version 14's page for chapter 01's embedded photographs: two distinct, 298,292 and 190,992 bytes, the second twice.
+- The four re-cropped text pictures read as image files at 1x.
+
+### Not tested, rescore
+
+- Any browser view, at the main session's word while the quick check runs: the swatches, the item 6 table and panel 2's longer tables as drawn at 1440 and 390 px, and the page's height.
+- The board check on this build; the PASS I rely on is run 3's, before the fix round.
+- The board at 2x, in Safari or Firefox, printed, or as the host shows it; a keyboard walk and a screen reader.
+- Whether one embedded photograph can serve two chapters in the guide's build; that is the engineer's to confirm.
+- The quick check with photographs, still running.
+
+Change log, rescore: modified this file (this section appended) and `work/handoffs/phase-3/20261120_Gate-3-Board-CD-Scores.json` (rescore added, first scores kept); scratch only in `scratchpad/c09/creative-director/` (`frozen2/`, `g3/board2.txt`, `png/r2-*`).
