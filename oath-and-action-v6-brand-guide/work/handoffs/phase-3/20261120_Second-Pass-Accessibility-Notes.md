@@ -80,3 +80,7 @@ Stages `s-11-10-correct`, `s-11-10-failure`, `s-11-11-correct`, `s-11-11-failure
 - 360 and 320 px, 200 percent text, forced colors, Charcoal, print and scripts off, for every plate here.
 - Target sizes and contrast on the changed plates.
 - The guide check, which the main session runs on the joined build.
+
+## Board 3 ruling: the keyline
+
+Without the keyline, Rules 15.11, 15.16, 15.20 and 14.144 still meet WCAG 2.2 AA (1.4.11): each names every red target in words beside the drawing, by the title its pill or step carries, so the 2.96 to 1 ring is never the only way to find one. Rule 15.12 does not: its words never name the one red variable, “Availability of local reporting”, so the ring is a sighted reader’s only sign of it (the alt reaches screen readers only); naming it in the plate’s words, or the keyline, would meet AA.

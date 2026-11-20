@@ -1572,11 +1572,11 @@
      },
      "question_for_dustin": true,
      "id": "masthead-360",
-     "title": "The masthead on phones 360 to 375 px wide",
-     "answer": "Use the 16 px wordmark on screens up to 375 px wide, where it now stops at 359 px, so the menu button stays on the wordmark’s line.",
-     "what_changed": "Nothing yet. At 360 to 372 px the 24 px wordmark returns and the menu button drops to a second line, so the masthead takes 132 to 133 px, about a fifth of a 640 px phone screen. With the 16 px wordmark at 360 px it takes 89 px, on one line.",
+     "title": "The masthead on phones 360 to 372 px wide",
+     "answer": "Use the 16 px wordmark on screens up to 372 px wide, where it now stops at 359 px, so the menu button stays on the wordmark’s line. At 375 px the 24 px wordmark already fits on one line, and it stays.",
+     "what_changed": "Nothing yet. At 360 to 372 px the 24 px wordmark returns and the menu button drops to a second line, so the masthead takes 132 to 133 px, about a fifth of a 640 px phone screen. With the 16 px wordmark at 360 px it takes 89 px, on one line. At 375 px the 24 px wordmark and the menu button already share one line.",
      "why": "It moves where the two wordmark masters you approved in Rule 03.6 meet, so it waits on your reply. Neither drawing changes.",
-     "recommendation": "Yes. The design director looked at both widths and sees nothing against it, and the accessibility lead recommends it.",
+     "recommendation": "Yes, with the switch at 372 px, so phones 375 px wide keep the 24 px wordmark. The design director looked at the 16 px wordmark at 360 px and sees nothing against it, and the accessibility lead recommends the change.",
      "settled": {
       "touches": [
        "Rule 03.6’s two wordmark masters, approved at Gate 2"
@@ -1595,7 +1595,7 @@
        "width": 360,
        "ground": "newsprint",
        "path": null,
-       "label": "Today at 360 px",
+       "label": "Today at 360 px: the menu button on a second line",
        "role": "after",
        "row": "360"
       },
@@ -1603,7 +1603,7 @@
        "kind": "to-make",
        "path": null,
        "width": 360,
-       "label": "At 360 px with the 16 px master",
+       "label": "At 360 px with the 16 px wordmark: one line",
        "role": "view",
        "owner": "design director",
        "how": "the page frame with the switch at about 376 px, in a working copy of the final build",
@@ -1616,7 +1616,7 @@
        "width": 375,
        "ground": "newsprint",
        "path": null,
-       "label": "Today at 375 px",
+       "label": "Today at 375 px: the 24 px wordmark fits on one line, and stays",
        "role": "after",
        "row": "375"
       },
@@ -1624,7 +1624,7 @@
        "kind": "to-make",
        "path": null,
        "width": 375,
-       "label": "At 375 px with the 16 px master",
+       "label": "At 375 px with the 16 px wordmark, for comparison only",
        "role": "view",
        "owner": "design director",
        "how": "the same working copy",
@@ -1643,7 +1643,7 @@
      "id": "red-target-keyline",
      "title": "The red target’s keyline: two things you settled disagree",
      "answer": "Two things you settled point different ways, so only you can choose. Rule 05.5 gives a red mark that carries meaning on Newsprint a 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 against Newsprint. The atlas visual system you chose draws its red target with no keyline. Rules 15.20 and 14.144 now draw the keyline; Rules 15.11, 15.12 and 15.16 do not.",
-     "what_changed": "The fix pass gave the chooser plates, Rules 15.20 and 14.144, a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead. Rules 15.11, 15.12 and 15.16, approved at board 2, keep the atlas’s red target with no keyline. Today one red target has two looks.",
+     "what_changed": "The fix pass gave the chooser plates, Rules 15.20 and 14.144, a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead. Rules 15.11, 15.12 and 15.16, approved at board 2, keep the atlas’s red target with no keyline. Today one red target has two looks. In grayscale or one-ink print, Rule 15.11 today turns its red targets a mid gray, lighter than the black outline of the pill beside them, so the targets read weakest; with the keyline they read strongest.",
      "why": "Rule 05.5, in chapter 05, and the atlas visual system’s red target are both on your settled list, and on these five plates they cannot both hold.",
      "recommendation": "Keep the atlas’s red target as you settled it. The keyline and the arrowhead’s ink edge come off Rules 15.20 and 14.144, so the red target has one look again. The cost: on Newsprint the red ring stays at 2.96 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and the web accessibility standard (WCAG 2.2, 1.4.11) ask of a mark a reader needs. A keyline on every red target would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it needs your own word: reply “Keyline everywhere”.",
      "settled": {
@@ -1716,7 +1716,14 @@
        "fold": true
       }
      ],
-     "reply_number": 11
+     "reply_number": 11,
+     "views": [
+      {
+       "who": "creative director",
+       "text": "I would choose “Keyline everywhere”. The keyline is a 1 px line inside the ring and a thin edge on the arrowhead. The red, the ring and the pill stay as the atlas draws them. It meets Rule 05.5, which Dustin approved at Gate 2, after [he chose] the atlas system. It keeps the target the strongest mark in grayscale and in one-ink copies, where without it the target reads weakest. [His choice] made the atlas system’s finishing work the creative director’s list, and I would add the keyline to it. The studio’s recommendation cannot change a settled element, so this stays my view, and the choice is his.",
+       "source": "work/handoffs/phase-3/20261120_CD-Review-Of-Board-3.md#my-view-on-the-keyline-for-panel-1"
+      }
+     ]
     },
     {
      "register": {
@@ -1904,12 +1911,14 @@
      "settled": {
       "touches": [
        "Rule 15.15, approved at board 2",
+       "the read-aloud line, a device of the atlas visual system you settled (DR-36)",
        "your answer that each variable keeps its own title"
       ],
-      "respects": "Each variable keeps its own title."
+      "respects": "Each variable keeps its own title, and the line keeps the atlas visual system’s rule for reading a loop aloud: it starts with a rise and flips at each minus sign."
      },
      "refs": [
-      "DR-265"
+      "DR-265",
+      "DR-36"
      ],
      "pictures": [],
      "reply_number": 16
@@ -3968,7 +3977,7 @@
    "caption": "Chapter 14’s examples by topic and by state, of 112, rounds 0 to 5."
   },
   "dr_229": {
-   "test": "A form keeps election data only where the coverage plan writes its use as an election question",
+   "test": "A form keeps election data only where the coverage plan writes its use as an election question.",
    "refs": [
     "DR-229",
     "D3-689"
@@ -4396,8 +4405,8 @@
    "n": 10,
    "panel": "held",
    "id": "masthead-360",
-   "line": "The masthead on phones 360 to 375 px wide.",
-   "recommendation": "Yes, use the 16 px wordmark up to 375 px.",
+   "line": "The masthead on phones 360 to 372 px wide.",
+   "recommendation": "Yes, use the 16 px wordmark up to 372 px; 375 px keeps the 24 px wordmark.",
    "item": "masthead-360"
   },
   {
@@ -4523,5 +4532,5 @@
   "pictures_open": 315
  },
  "words_edited_by": "editor",
- "words_edited_utc": "2026-11-20T18:16:30Z"
+ "words_edited_utc": "2026-11-20T18:36:26Z"
 }

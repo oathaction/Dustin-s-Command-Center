@@ -4,9 +4,26 @@ Written November 20, 2026, by the editor (`oa-editor`). Brief: `20261120_Board-3
 
 ## Status
 
+Fix round, 18:37 UTC: every item assigned to me is in the two JSON files except B3-M1's ruling sentence, which waits for the accessibility lead's ruling through the coordinator. See "Fix round" below.
+
 EDITOR DONE, 18:18 UTC. Both JSON files carry my words: `work/handoffs/phase-3/20261120_Board-3-Decisions.json` (154,682 bytes) and `work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Content.json` (27,940 bytes). The builder reruns when the main session says; the board on disk (18:09 UTC) predates my edits. Nothing blocks.
 
 One risk: the builder was still adding slots to the content file while I worked (18:09 and 18:14 UTC). Every write I made read the file fresh and changed only word fields, so its additions are kept. If the builder writes the content file again from a copy it read before 18:15 UTC, my words there are lost; the list under "Content file" says what to look for.
+
+## Fix round
+
+From the creative director's review (`20261120_CD-Review-Of-Board-3.md`) and the coordinator's list. The main session's 18:33 UTC page figures in the decision file (12,178,909 bytes, 459,191, the version 13 report path) are kept. I did not run the builder.
+
+- **B3-M2, masthead-360.** Title, answer, recommendation, what changed, the four picture labels and reply 10 now say 360 to 372 px: the switch at 372 px (23.25em, the register's range), so phones 375 px wide keep the 24 px wordmark, which already fits on one line there. The design director's look is now stated for 360 px, the width that changes. The two "with the 16 px wordmark" pictures were made with the switch at about 376 px; at 360 px that is the same picture as a 372 px switch, and the 375 px one is now labeled "for comparison only". Builder: fold that last picture if you like; its `row` pairs it with "Today at 375 px".
+- **B3-S3, reply 16 (15.15-read-aloud).** Touches now names "the read-aloud line, a device of the atlas visual system you settled (DR-36)"; the parenthesis moves to the reference line, and DR-36 is in `refs`. Respects says the line keeps the system's rule: it starts with a rise and flips at each minus sign. The check the review asks for: the key line "Built from the signs: start with more, flip at each minus." sits only in DR-36's finishing list (`work/handoffs/phase-2/20261105_CD-Review-Of-Editorial-Systems.md`, item 6); no chapter, plate or generator prints it today (searched `work/build/guide/` and the build scripts). The new form starts with a rise, so if that key line is ever printed beside a read-aloud line, its words become "start with a rise, flip at each minus".
+- **B3-S4, the second pass score table (content file).** `scores.second_lede` adds "Each cell gives the score after the fix pass, small, then the score after the second pass." and `second_line` ends "and with this pass every item of rounds 4 and 5 is ready." (true by the rescore file and the second pass file, 13 then 14 of 14; D3-2292). No number is written into the words.
+- **B3-S8, the keyline item.** The creative director's view is in a new `views` key on `red-target-keyline`, board 2's schema (`who`, `text`, `source`), and the content file's `decide.view_by` is board 2's "The {who}’s view.". Builder: `decide_item()` in `board_3_build.py` has no views block; board 2's (`board_2_build.py`, lines 897 to 900) sets each view as a blockquote, and it belongs right after the recommendation. The quote is the review's "My view on the keyline, for panel 1" word for word, but for two bracketed changes that keep decision codes off the face ("after [he chose] the atlas system" for "after DR-36 chose the atlas system"; "[His choice] made" for "DR-36 made") and curled apostrophes.
+- **B3-S9, panel 6.** `counts.dr_229.test` ends with its full stop. A `--counts-only` run rewrites that key from the counts script, so the script needs the full stop too (data lead or main session).
+- **B3-M1, the grayscale half.** The keyline item's what changed ends: "In grayscale or one-ink print, Rule 15.11 today turns its red targets a mid gray, lighter than the black outline of the pill beside them, so the targets read weakest; with the keyline they read strongest." (the creative director's luma reading). The recommendation is as D3-2284 set it, untouched. The ruling sentence waits.
+- **B3-S5.** The builder has not asked; I am ready to write each picture's one fact into an `alt` key on its picture, which `picture_alt()` already reads first.
+- Not mine but noted: B3-S2 says S59's sketch also prints 2027's "4.1"; the item's "Only the label’s place moves." stays true of the proposal, and the sketch is the builder's to correct or for me to describe once the builder says which.
+
+Lint after the fix round (`face.py`): 0 em or en dashes, flagged words, decision codes, studio codes or paths on panel 1's face.
 
 ## What I changed and why
 

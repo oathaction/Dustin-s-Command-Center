@@ -143,7 +143,8 @@
    "sketch_label": "A studio sketch of the proposal · {label}",
    "nb_today": "Today: the source line of S85’s figure as the kit builds it",
    "nb_sketch": "A studio sketch of the proposal: the 16 px lockmark at the source line’s right end",
-   "sg_part": "At a {w} px window: {q}"
+   "sg_part": "At a {w} px window: {q}",
+   "view_by": "The {who}’s view."
   },
   "forms": {
    "n": 2,
@@ -394,9 +395,9 @@
    "cd_caption": "The creative director’s scores for rounds 4 and 5",
    "cd_line": "The first pass found {first} of the {n} items ready; the rescore after the fix pass finds {now}.",
    "second_h": "The second pass rescore",
-   "second_lede": "After the second pass the creative director rescored only the items that changed.",
+   "second_lede": "After the second pass the creative director rescored only the items that changed. Each cell gives the score after the fix pass, small, then the score after the second pass.",
    "second_caption": "The creative director’s second pass rescore",
-   "second_line": "The second pass rescore finds {now} of the {n} items it read ready.",
+   "second_line": "The second pass rescore finds {now} of the {n} items it read ready, and with this pass every item of rounds 4 and 5 is ready.",
    "second_wait": "Waiting for the creative director’s second pass rescore.",
    "wait_cd": "Waiting for the creative director’s scores.",
    "board_h": "This board",

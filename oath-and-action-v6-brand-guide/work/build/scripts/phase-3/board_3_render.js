@@ -127,6 +127,48 @@ async function holdStill(pg, read, tries = 20, wait = 250) {
             console.log('ok', path.basename(it.out), JSON.stringify(got));
             continue;
           }
+          if (it.recipe === 'clip') {
+            // a crop to the change (the creative director's B3-M4 and B3-S1): the union of the blocks that hold the given
+            // words or patterns, or of the given parts, inside the element; the element's folds opened first where asked;
+            // `context` px above and below; the element's own width, or the page's whole scroll width where it overflows
+            const o = it.clip || {};
+            const got = await pg.evaluate((o) => {
+              const root = document.querySelector(o.within);
+              if (!root) return { err: 'no match for ' + o.within };
+              if (o.open) root.querySelectorAll('details').forEach((d) => { d.open = true; });
+              const out = [];
+              const blk = (n) => { const e = n.nodeType === 3 ? n.parentElement : n; return e.closest(o.block || 'p,li,dd,td,th,tr,figcaption,h3,h4') || e; };
+              for (const s of o.subs || []) { const e = root.querySelector(s); if (e) out.push(e); }
+              const pats = (o.texts || []).map((t) => ({ t })).concat((o.patterns || []).map((p) => ({ re: new RegExp(p) })));
+              if (pats.length) {
+                const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+                let n;
+                while ((n = w.nextNode())) {
+                  const s = n.textContent;
+                  if (pats.some((p) => (p.t ? s.includes(p.t) : p.re.test(s)))) out.push(blk(n));
+                }
+              }
+              const rs = out.map((e) => e.getBoundingClientRect()).filter((r) => r.width && r.height);
+              if (!rs.length) return { err: 'nothing matched in ' + o.within };
+              const rr = root.getBoundingClientRect();
+              return { top: Math.min(...rs.map((r) => r.top)) + scrollY, bottom: Math.max(...rs.map((r) => r.bottom)) + scrollY,
+                       left: rr.left, right: rr.right, maxRight: Math.max(...rs.map((r) => r.right)), n: rs.length,
+                       scrollW: document.documentElement.scrollWidth };
+            }, o);
+            if (got.err) throw new Error(got.err);
+            await pg.waitForTimeout(250);
+            const ctxPx = o.context || 24;
+            const y0 = Math.max(0, Math.floor(got.top - ctxPx)), h = Math.ceil(got.bottom + ctxPx) - y0;
+            if (h + 4 > winH) { winH = h + 4; await pg.setViewportSize({ width: j.width, height: winH }); await pg.waitForTimeout(250); }
+            await pg.evaluate((y) => window.scrollTo(0, y), y0);
+            await pg.waitForTimeout(250);
+            const sy = await pg.evaluate(() => scrollY);
+            const x0 = o.overflow ? 0 : Math.max(0, Math.floor(got.left));
+            const x1 = o.overflow ? Math.max(j.width, got.scrollW, Math.ceil(got.maxRight) + 4) : Math.ceil(got.right);
+            await pg.screenshot({ path: it.out, clip: { x: x0, y: y0 - sy, width: x1 - x0, height: h }, animations: 'disabled' });
+            console.log('ok', path.basename(it.out), JSON.stringify({ n: got.n, width: x1 - x0, height: h, scrollW: got.scrollW }));
+            continue;
+          }
           const el = await pg.$(it.selector);
           if (!el) throw new Error('no match for ' + it.selector);
           if (it.measure) {

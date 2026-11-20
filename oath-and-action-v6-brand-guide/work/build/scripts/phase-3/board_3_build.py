@@ -105,7 +105,7 @@ FORMPIC = {}              # spec -> (panel 2's Newsprint picture, its rule, its 
 CHARCOAL = None           # the Charcoal ground, from tokens.css
 PAGES = {}                # page key -> {'path', 'text', 'frame'}
 NO_BROWSER = False
-RECIPE_V = {'rail-focus': 'rail-focus-2'}   # a recipe's version: a change to it in the renderer takes its pictures again
+RECIPE_V = {'rail-focus': 'rail-focus-2', 'clip': 'clip-1'}   # a recipe's version: a change to it in the renderer takes its pictures again
 MOVED_REFS = []           # studio codes moved out of a teammate's words, for the panel's reference line
 
 
@@ -368,7 +368,7 @@ def run_shots(items, reuse, label='guide'):
         gk = (pk, w, it.get('text_scale') or 1, sess)
         acts = prefix.setdefault(gk, [])
         acts += it.get('actions') or []
-        s = sha(page_frame(pk), w, src, el, 'measure' if measure else 'picture', it.get('text_scale') or 1, RECIPE_V.get(it.get('recipe'), '') + (it.get('until_text') or ''),
+        s = sha(page_frame(pk), w, src, el, 'measure' if measure else 'picture', it.get('text_scale') or 1, RECIPE_V.get(it.get('recipe'), '') + (it.get('until_text') or '') + json.dumps(it.get('clip') or '', sort_keys=True),
                 json.dumps(acts), 'b3r1')
         if reuse and p.exists() and sigs.get(key) == s:
             continue
@@ -379,11 +379,11 @@ def run_shots(items, reuse, label='guide'):
             # a session's actions add up from the page's load: every item of the session is taken again, in order
             its = [(it['key'], it, None, paths[it['key']], bool(it.get('measure'))) for it in items
                    if (it['page'], it['w'], it.get('text_scale') or 1, it.get('session') or '') == (pk, w, ts, sess)]
-        setup_job = any(it.get('recipe') for _, it, *_ in its)
+        setup_job = any(it.get('recipe') == 'rail-focus' for _, it, *_ in its)
         jobs.append({'file': str(PAGES[pk]['path']), 'width': w, 'height': 900 if w > 600 else 844, 'static_sticky': not setup_job,
                      'draw_all': True, 'text_scale': ts,
                      'items': [{'selector': css_selector(it['el']), 'out': str(p), 'measure': m, 'actions': it.get('actions') or [],
-                                'recipe': it.get('recipe'), 'until_text': it.get('until_text')} for key, it, s, p, m in its]})
+                                'recipe': it.get('recipe'), 'until_text': it.get('until_text'), 'clip': it.get('clip')} for key, it, s, p, m in its]})
     if jobs:
         n = sum(len(j['items']) for j in jobs)
         print(f'photographing or measuring {n} elements on {len(jobs)} page loads ...')
@@ -406,7 +406,7 @@ def run_shots(items, reuse, label='guide'):
             if it.get('recipe') == 'rail-focus':
                 src += element_html(text, 'nav.rail') or ''
             sigs[it['key']] = sha(page_frame(it['page']), it['w'], src, it['el'], 'measure' if it.get('measure') else 'picture',
-                                  it.get('text_scale') or 1, RECIPE_V.get(it.get('recipe'), '') + (it.get('until_text') or ''), json.dumps(acts), 'b3r1')
+                                  it.get('text_scale') or 1, RECIPE_V.get(it.get('recipe'), '') + (it.get('until_text') or '') + json.dumps(it.get('clip') or '', sort_keys=True), json.dumps(acts), 'b3r1')
         sig_file.write_text(json.dumps(sigs, indent=1))
     taken = {x['out'] for j in jobs for x in j['items']}
     FIG.setdefault('shots', {})[label] = {'asked': len(items), 'taken': sum(1 for k, p in paths.items() if str(p) in taken and p.exists()),
@@ -809,6 +809,123 @@ def pic_request(it, pic):
 MADE = {}                 # key -> the photograph's path, for pictures this board makes from a scratch copy of the final build
 STACK = {}                # a made picture's key -> [(photograph key, label)], stacked into one picture
 
+# The creative director's fix round (B3-M4, B3-S1): crops to the change, before and after, for four one-approval items whose
+# decision pictures are whole plates or page strips. The crops lead the item; its own pictures move into its fold. Each crop
+# is the union of the blocks that hold the words, patterns or parts named, inside the element named, on the page named.
+CROPS = {
+    'where-to-start': [
+        dict(page='v11', el='start', w=320, text_scale=2, texts=['Identity proofs'], overflow=True, context=150, block='li', role='before', row='c1',
+             label='Before the fix pass, at a 320 px window with text at 200 percent: the link “Identity proofs” runs past the window’s right edge'),
+        dict(page='final', el='start', w=320, text_scale=2, texts=['Identity proofs'], overflow=True, context=150, block='li', role='after', row='c1',
+             label='Now: the same link wraps inside the window'),
+        dict(page='v11', el='start', w=320, text_scale=2, texts=['Components and interaction'], overflow=True, context=150, block='li', role='before', row='c2',
+             label='Before the fix pass: the link “Components and interaction” runs past the edge too'),
+        dict(page='final', el='start', w=320, text_scale=2, texts=['Components and interaction'], overflow=True, context=150, block='li', role='after', row='c2',
+             label='Now: it wraps inside the window'),
+    ],
+    '14.144-pips': [
+        dict(page='v11', el='fig-s-14-144-correct', w=DESK, subs=['.cd8'], context=12, role='before', row='card',
+             label='Before the fix pass: Reform R-06’s card at a 1440 px window, its effects in words with no pips'),
+        dict(page='final', el='fig-s-14-144-correct', w=DESK, subs=['.cd8'], context=12, role='after', row='card',
+             label='Now: the same card, with pips beside each effect code'),
+        dict(page='v11', el='fig-s-14-144-correct', w=PHONE, subs=['.cd8'], context=12, role='before', row='phone',
+             label='Before the fix pass, on a 390 px phone: the same card'),
+        dict(page='final', el='fig-s-14-144-correct', w=PHONE, subs=['.ph8'], context=12, role='after', row='phone',
+             label='Now, on a phone: the line-up, each family’s effects with the three reforms together'),
+    ],
+    'rules-14-1-to-14-14': [
+        dict(page='v11', el='rule-14-6', w=DESK, texts=['In a chart, the red goes to the point'], context=24, role='before', row='r6',
+             label='Rule 14.6 before the fix pass: the sentence on the red and the other marks'),
+        dict(page='final', el='rule-14-6', w=DESK, texts=['In a chart, the red goes to the point', 'Every other series takes the context ink', 'Where the title names one bar'],
+             context=24, role='after', row='r6', label='Rule 14.6 now: the same lines, with the role inks defined and the light fill only where the title names one bar'),
+    ],
+    'S40': [
+        dict(page='v11', el='oac-s-14-s40', w=DESK, patterns=[r'^\d{4}-\d{2}-\d{2}, \d+ to \d+$'], open=True, block='tr', context=12, role='before', row='d',
+             label='Before the fix pass: S40’s table, opened, with its five committee vote dates as numbers'),
+        dict(page='final', el='oac-s-14-s40', w=DESK, patterns=[r'^[A-Z][a-z]+ \d{1,2}, \d{4}, \d+ to \d+$'], open=True, block='tr', context=12, role='after', row='d',
+             label='Now: the same five cells, the dates in words'),
+    ],
+}
+CROP_ALT = '{label}. Photographed from {page} at a {w} px window, cropped to the change.'
+
+
+def crop_items():
+    out = []
+    for iid, cs in CROPS.items():
+        for k, c in enumerate(cs):
+            clip = {x: c[x] for x in ('texts', 'patterns', 'subs', 'open', 'block', 'context', 'overflow') if x in c}
+            clip['within'] = css_selector(c['el'])
+            out.append({'key': f'crop-{slug(iid)}-{k}', 'page': c['page'], 'el': c['el'], 'w': c['w'], 'text_scale': c.get('text_scale') or 1,
+                        'recipe': 'clip', 'clip': clip, 'session': 'crops'})
+    return out
+
+
+def crop_html(it, shots):
+    """The crops that lead an item, in rows of before and after; None where the item has none or one is missing."""
+    cs = CROPS.get(str(it.get('id')))
+    if not cs:
+        return None
+    S = C['sections']['decide']
+    rows, order = {}, []
+    for k, c in enumerate(cs):
+        p = shots.get(f'crop-{slug(it.get("id"))}-{k}')
+        if not p or not p.exists():
+            return None
+        rec = compose(f'Crop-{slug(it.get("id"))}-{k}', [(p, '')])
+        alt = fill(CROP_ALT, {'label': c['label'], 'page': C['page_words'].get(c['page'], c['page']), 'w': c['w']})
+        rw = S['role_words'].get(c['role'], '')
+        QUOTED.extend([c['label'], alt])
+        h = figure(rec, alt, (f'<span class="role {esc(c["role"])}">{esc(rw)}</span> ' if rw else '') + f'<b>{esc(c["label"])}</b>', top=True)
+        if c['row'] not in rows:
+            rows[c['row']] = []
+            order.append(c['row'])
+        rows[c['row']].append(h)
+    return ''.join(f'<div class="pair ba">{"".join(rows[r])}</div>' for r in order)
+
+
+# B3-M1's picture half: Rule 15.11 today and with the keyline, each converted to gray by luma (ITU-R 601-2, as PIL's 'L'
+# mode gives), set after the keyline item's own pictures
+GRAY_PAIR = {'red-target-keyline': [
+    ('g-final-fig-s-15-11-correct-1440', 'Rule 15.11 today, in grayscale by luma (ITU-R 601-2)'),
+    ('made-red-target-keyline-1440', 'Rule 15.11 with the keyline, in grayscale by luma (ITU-R 601-2)'),
+]}
+
+
+def gray_pair_html(it, shots):
+    pairs = GRAY_PAIR.get(str(it.get('id')))
+    if not pairs:
+        return ''
+    from PIL import Image
+    hs = []
+    for k, (key, label) in enumerate(pairs):
+        src = shots.get(key) or MADE.get(key)
+        if not src or not pathlib.Path(src).exists():
+            return ''
+        g = SCRATCH / 'made' / f'gray-{key}.png'
+        if not g.exists() or g.stat().st_mtime < pathlib.Path(src).stat().st_mtime:
+            Image.open(src).convert('RGB').convert('L').save(g, optimize=True)
+        rec = compose(f'Gray-{slug(it.get("id"))}-{k}', [(g, '')])
+        alt = f'{label}: the same plate as above in gray, so the target pills read by lightness alone.'
+        QUOTED.extend([label, alt])
+        hs.append(figure(rec, alt, f'<b>{esc(label)}</b>', top=True))
+    return f'<div class="pair ba">{"".join(hs)}</div>'
+
+
+# B3-S2: the S59 sketch moves one label only. The kit mirror's patch lifts 2026's value and keeps its old place taken, so
+# the labels after it give way as they did before; this patch stands in for the content file's while the editor holds it.
+KIT_PATCH = {'S59-label': {'set': {'first_value_clear': True}, 'patch': {'forms/fan-chart.js': [
+    ["labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap'],",
+     "labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap', 'first_value_clear'],"],
+    ["        if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;",
+     "        if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;\n        var vy0 = vy;\n"
+     "        // board 3's sketch (the held item S59-label): labels.first_value_clear lifts the first value over the outer band's rising edge across its own width\n"
+     "        if (L.first_value_clear && i === 0 && main.length > 1) { var hw = c.measure(K.fmt(r[ey], fy), 'tick', 600) / 2 + 3, e0 = ys(r[eoh]), e1 = ys(main[1][eoh]); vy = Math.min(vy, e0 + (e1 - e0) * Math.min(1, hw / (px(1) - px(0))) - 3); }"],
+    ["        vlab.push({ x: px(i), y: vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1, give: i === 0 && i !== main.length - 1 && hist.length > 0 });",
+     "        vlab.push({ x: px(i), y: vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1, give: i === 0 && i !== main.length - 1 && hist.length > 0, ghost: vy !== vy0 ? vy0 : undefined });"],
+    ["        setl.push(b);\n        c.text(v.x, v.y, v.words,",
+     "        setl.push(b);\n        if (v.ghost !== undefined) setl.push(lbox(Object.assign({}, v, { y: v.ghost })));   // the moved label's old place stays taken\n        c.text(v.x, v.y, v.words,"],
+]}}}
+
 
 def made_key(it, pic):
     return f'made-{slug(it.get("id"))}-{int(pic.get("width") or DESK)}'
@@ -963,7 +1080,8 @@ def make_pictures(reuse):
         elif iid == 'S59-label':
             # a studio sketch: S59 drawn by a scratch mirror of the kit whose fan-chart form takes one new label key,
             # labels.history_last_below (the last history value set under its dot), from a scratch copy of the spec
-            km = kit_mirror(d, C['slots']['made']['S59-label'].get('patch') or {})
+            kp = KIT_PATCH.get('S59-label') or C['slots']['made']['S59-label']
+            km = kit_mirror(d, kp.get('patch') or {})
             if not km:
                 continue
             sid = 's59'
@@ -972,7 +1090,7 @@ def make_pictures(reuse):
             sd = d / 'kit-s59'
             (sd / 'specs').mkdir(parents=True, exist_ok=True)
             spec_ = json.loads((ROOT / C['slots']['specs_dir'] / f'{sid}.json').read_text())
-            spec_.setdefault('labels', {}).update(C['slots']['made']['S59-label'].get('set') or {})
+            spec_.setdefault('labels', {}).update(kp.get('set') or {})
             (sd / 'specs' / f'{sid}.json').write_text(json.dumps(spec_, indent=1, ensure_ascii=False))
             sig_ = sha(json.dumps(spec_, sort_keys=True), km[1], win)
             png = sd / 'out' / sid / f'{sid}-newsprint-{win}.png'
@@ -1165,7 +1283,9 @@ def picture_alt(it, pic, label, req):
     src = S['alt_source'].get(pic.get('kind'), '')
     if pic.get('kind') == 'guide':
         src = fill(src, {'page': C['page_words'].get(req.get('page'), req.get('page'))})
-    what = fill(S['alt_other'], {'src': src, 'w': int(pic.get('width') or DESK), 'title': move_codes(it.get('title', ''))})
+    # B3-S5: a title that quotes words keeps them in single quotes inside the alt's own double quotes
+    title = move_codes(it.get('title', '')).replace('“', '‘').replace('”', '’')
+    what = fill(S['alt_other'], {'src': src, 'w': int(pic.get('width') or DESK), 'title': title})
     return (f'{label}. ' if label else '') + what
 
 
@@ -1227,9 +1347,10 @@ def picture_html(it, pics, shots):
                 rows.append(cur)
             cur[1].append(h)
         return ''.join(f'<div class="pair {k}">{"".join(hs)}</div>' for k, hs in rows)
-    main_ = [(p, h) for p, h in out if not p.get('fold')]
-    folded = [(p, h) for p, h in out if p.get('fold')]
-    html_ = arrange(main_)
+    lead = crop_html(it, shots)
+    main_ = [(p, h) for p, h in out if not p.get('fold') and lead is None]
+    folded = [(p, h) for p, h in out if p.get('fold') or lead is not None]
+    html_ = (lead or '') + arrange(main_) + gray_pair_html(it, shots)
     if folded:
         ft = it.get('fold_title') or S['fold_title']
         QUOTED.append(ft)
@@ -1935,9 +2056,13 @@ def spend_panel(G, P, held):
                  'proj': f'{proj:,}', 'budget_mb': f'{budget / 1e6:g}', 'proj_room': f'{budget - proj:,}', 'limit_room': f'{limit - proj:,}',
                  'page_now': f'{int(W.get("bytes", 0)):,}', 'build_when': B1.words_when(datetime.datetime.fromtimestamp(G['mtime'], datetime.timezone.utc)) if G.get('mtime') else ''})
     trs = ''
+    # B3-S6: every bar on one scale that reaches the largest share, with its figure's line drawn where 100 percent falls
+    top_share = max([100.0] + [100 * b / lim for _, b, lim in rows if lim])
     for name, b, lim in rows:
         share = 100 * b / lim if lim else None
-        bar = (f'<span class="bar" data-mark="bar" data-value="{share:.3f}" data-key="{esc(name)}" style="width:{min(share, 100):.3f}%"></span><span class="pct">{share:.1f} percent</span>'
+        fig_at = 100 * 100 / top_share
+        bar = (f'<span class="track"><span class="lim" style="left:{fig_at:.3f}%"></span><span class="bar" data-mark="bar" data-value="{share:.3f}" data-key="{esc(name)}" '
+               f'style="width:{100 * share / top_share:.3f}%"></span></span><span class="pct">{share:.1f} percent</span>'
                if share is not None else f'<span class="pct">{esc(S["no_limit"])}</span>')
         trs += f'<tr><th scope="row">{esc(name)}</th><td class="barcell">{bar}</td><td class="num">{b:,}</td><td class="num">{"" if lim is None else f"{lim:,}"}</td></tr>'
     hd = ''.join(f'<th scope="col"{" class=\"n\"" if i >= 2 else ""}>{esc(c)}</th>' for i, c in enumerate(S['cols']))
@@ -1958,16 +2083,25 @@ def spend_panel(G, P, held):
                  f'<table class="wt r5t"><caption>{esc(S["r5_caption"])}</caption><thead><tr><th scope="col">{esc(S["r5_cols"][0])}</th><th scope="col" class="n">{esc(S["r5_cols"][1])}</th></tr></thead><tbody>{rr}</tbody></table></div>')
     # the heaviest charts
     charts = W.get('charts', {})
-    by_spec = {}
+    by_spec, form_name = {}, {}
     for f in P['forms']:
         if f.get('spec_id'):
             by_spec.setdefault(f['spec_id'].upper(), (f['rule'], f['form']))
+        if f.get('form_id'):
+            form_name.setdefault(f['form_id'], f['form'])
+    # a kit chart that serves a rule outside the plan's forms (S96 on Rule 14.142): its rule from the chapter's plates, and
+    # its form's name from the plan's form ids
+    for rid, r in held.items():
+        sp = ((r.get('correct') or {}).get('specimen') or '')
+        if re.fullmatch(r's-14-s\d+', sp) and sp[5:].upper() not in by_spec:
+            by_spec[sp[5:].upper()] = (rid, '')
     top = sorted(((int(v.get('bytes', 0)), k) for k, v in charts.items() if k.startswith('s-14-s')), reverse=True)[:int(S.get('heaviest_n', 10))]
     hrows = ''
     heavy = []
     for b, k in top:
         sid = k.replace('s-14-', '').upper()
-        rule, form = by_spec.get(sid, ('', charts[k].get('form', '')))
+        rule, form = by_spec.get(sid, ('', ''))
+        form = form or form_name.get(charts[k].get('form', ''), charts[k].get('form', ''))
         heavy.append({'spec': sid, 'rule': rule, 'bytes': b})
         rl = f'<a href="{esc(rule_href(rule))}">{esc(rule)}</a>' if rule and rid_anchor(rule) in ANCHORS else esc(rule)
         hrows += f'<tr><th scope="row">{esc(sid)}</th><td>{rl}</td><td>{esc(form)}</td><td class="num">{b:,}</td></tr>'
@@ -2170,7 +2304,8 @@ def scores_panel():
     else:
         out.append(pending(S['wait_cd']))
         status = ('partial', 'cd')
-    out.append(f'<h3 class="sub">{esc(S["second_h"])}</h3><p>{esc(S["second_lede"])}</p>')
+    out.append(f'<h3 class="sub">{esc(S["second_h"])}</h3><p>{esc(S["second_lede"])}</p>'
+               + (f'<p class="small">{esc(S["second_legend"])}</p>' if S.get('second_legend') else ''))
     if sp.exists():
         try:
             SP = json.loads(sp.read_text())
@@ -2705,6 +2840,7 @@ def main():
             items.append({'key': f'sketch-{f["rule"]}', 'page': 'final', 'el': f'fig-{sp}', 'w': DESK})
     items += r5_items(held)
     items += c15_items(held15)
+    items += crop_items()
     seen, uniq = set(), []
     for x in items:
         if x['key'] not in seen:
