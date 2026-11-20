@@ -855,7 +855,7 @@
    "source": "s90.json"
   },
   {
-   "example": "Of the three kinds of judge who hear cases at trial in the federal district courts, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.",
+   "example": "Of the federal district courts’ three kinds of judge, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.",
    "domain": "D05",
    "states": [],
    "rule": "14.137",

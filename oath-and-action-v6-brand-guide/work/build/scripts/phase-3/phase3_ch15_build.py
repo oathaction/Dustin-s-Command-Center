@@ -3586,7 +3586,7 @@ CSS.update({
            "stroke-linecap:round;stroke-linejoin:round}"),
     # CR-S1's remainder: 15.20's failure draws both choices with the shared choice's checked look (Rule 18.3's check, bold
     # words, a 2 px edge), with no input to read it from
-    "xk": (".xk{margin-bottom:12px}.xk ul{margin:0;padding:0;list-style:none}"
+    "xk": (".xk{margin-bottom:12px}.xk ul{margin:0;padding:0;list-style:none}.xk .oa-choice-item{cursor:default}"
            ".xk .oa-choice-row--list .oa-choice-face{padding:calc(var(--oa-space-100) - 1px) var(--oa-space-200) "
            "calc(var(--oa-space-100) - 1px) var(--oa-space-150);border-width:var(--oa-border-width-rule);"
            "font-weight:var(--oa-font-weight-bold)}.xk .oa-choice-row--list .oa-choice-check{visibility:visible}"),

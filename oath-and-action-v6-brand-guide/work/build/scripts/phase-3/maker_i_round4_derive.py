@@ -116,7 +116,11 @@ def s91():
     has(sid, t, "except in Guam, the Northern Mariana Islands and the Virgin Islands", "the territorial judges' exception, the three territories named")
     # CD-S4 (fix pass after rounds 4 and 5): the title says only district judges serve for life; the cards print the terms
     # the data lead's batch 9 (CD-S4): the title holds the data's universe, the judges at trial in the federal district courts
-    check(sid, "the title's scope is the district courts' three kinds of judge", "three kinds of judge who hear cases at trial in the federal district courts, only district judges" in s["title"])
+    # RS-2 (second pass): the title cut from 33 words to 26 keeps that universe in "the federal district courts’ three kinds of
+    # judge"; the measure line still names the judges who hear cases at trial there
+    check(sid, "the title's scope is the district courts' three kinds of judge", "Of the federal district courts’ three kinds of judge, only district judges" in s["title"]
+          and "who hears cases at trial in the federal district courts" in s["measure_line"])
+    check(sid, "the title is one finding near 26 words (RS-2)", len(s["title"].split()) <= 27, f"{len(s['title'].split())} words")
     check(sid, "only the district judge's term is for life (CD-S4's title)", "only district judges serve for life" in t and "for life" in r["1"]["term"] and all("life" not in r[k]["term"] for k in ("2", "3")))
     check(sid, "677 district seats = 673 in the statute + 4 territorial", int(r["1"]["seats"]) == 677 and int(r["1"]["seats_in_statute_table"]) + int(r["1"]["seats_in_territorial_courts"]) == 677)
     check(sid, "a card field prints the seats column", any(f["field"] == "seats" for f in s["labels"]["fields"]))

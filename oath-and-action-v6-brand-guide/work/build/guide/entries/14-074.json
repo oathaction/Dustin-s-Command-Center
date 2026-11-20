@@ -31,7 +31,8 @@
  "related": [
   "14.9",
   "13.5",
-  "13.1"
+  "13.1",
+  "14.142"
  ],
  "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words; encode.margin takes the column the sidecar’s margin_columns names for the value, and a column in check_only_columns serves the data check alone.",
  "correct": null,

@@ -1680,7 +1680,8 @@
    "builders": "Form columns-moving-average: node work/build/chart-kit/oa-chart.mjs build s14; encode.status marks preliminary months.",
    "related_rules": [
     "14.9",
-    "14.11"
+    "14.11",
+    "14.142"
    ],
    "entry": true,
    "use_when": "The reader asks how many jobs the economy added or lost each month, and the trend matters more than any one month.",
@@ -3316,7 +3317,8 @@
    "related_rules": [
     "14.9",
     "13.5",
-    "13.1"
+    "13.1",
+    "14.142"
    ],
    "entry": true,
    "use_when": "The reader asks how places compare on a survey figure, and how sure each one is.",
@@ -3876,13 +3878,17 @@
    },
    "tokens": [],
    "related": [
-    "11"
+    "11",
+    "15"
    ],
    "builders": "Form step-tracker: node work/build/chart-kit/oa-chart.mjs build s62; labels.steps gives each step’s name, the action codes that mark it done and its note, and labels.became the end words.",
    "related_rules": [
     "11.1",
     "11.2",
-    "14.12"
+    "11.10",
+    "11.11",
+    "14.12",
+    "15.23"
    ],
    "entry": true,
    "use_when": "The reader asks where one bill is in its path to law, or how it got there, such as a bill that skipped its committee.",
@@ -4190,13 +4196,15 @@
    },
    "tokens": [],
    "related": [
-    "11"
+    "11",
+    "15"
    ],
    "builders": "Form process-diagram: node work/build/chart-kit/oa-chart.mjs build s66; encode.path marks the main steps with labels.main, labels.branches gives each branch the step it leaves or enters (at), its way (dir, out or in) and its line of words, and the table sorts by encode.key’s values in reading order.",
    "related_rules": [
     "11.9",
     "14.88",
-    "14.97"
+    "14.97",
+    "15.22"
    ],
    "entry": true,
    "use_when": "The reader asks how an institution makes or changes something, such as how an agency writes a rule, and where Congress, a court or the public can step in.",
@@ -5750,12 +5758,15 @@
     ]
    },
    "tokens": [],
-   "related": [],
+   "related": [
+    "15"
+   ],
    "builders": "Form process-explainer: node work/build/chart-kit/oa-chart.mjs build s89; encode key, path, step, level, who and limit; labels.lanes names each column and the levels it holds, labels.branches gives a step taken in place of another (at), labels.together sets steps side by side in one row, and labels.limit_words prints each limit in its words.",
    "related_rules": [
     "14.96",
     "14.112",
-    "14.138"
+    "14.138",
+    "15.22"
    ],
    "entry": true,
    "use_when": "The reader asks how a public process runs across levels of government and who has to ask or act at each step, such as how a disaster declaration brings federal help.",

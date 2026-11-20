@@ -137,7 +137,12 @@
   "typography": {
     "curl_quotes": true,
     "nbsp": true,
-    "replace": [],
+    "replace": [
+      [
+        "Includes COVID-19 relief funds (row 5)",
+        "Includes $39.2 billion in COVID-19 relief funds, as the first note says."
+      ]
+    ],
     "hold": [
       "day-to-day"
     ]
@@ -152,6 +157,7 @@
     "Data lead MI-3 (21:25 UTC), with the research lead's reading of the Bureau's documentation (school24doc.docx and Appendix A of elsec24_sumtables.xlsx): current spending leaves out capital outlay (construction and equipment), debt service (interest on debt) and payments to other governments; the per-pupil figure also leaves out adult education and community services. The enrollment year is fall 2023 (Table 8's note mislabels it fall 2022; S90 cites Table 19 for it).",
     "Design director DD-I24: \"day-to-day\" held on one line (typography.hold).",
     "Design director DD-I10 and DD-I11 (with the engineer's oac-h-plain and the source line at each fact's foot, landed 21:45 UTC): each fact sits under a hairline with no frame, as S60's facts do, so S90 reads as facts and S91 alone as cards.",
-    "Fix pass after rounds 4 and 5 (RP-12, November 16, 2026): the table's Value column prints whole numbers (format integer), so no count of students or thousands of dollars carries a decimal (\"46,370,928.0 students\"). The three shares print as whole percents (45, 43 and 12, summing to 100) and the per-pupil dollars as whole dollars, as the facts above print them (45 cents, 43 cents, $17,619, $31,918); the kit has no format by row."
+    "Fix pass after rounds 4 and 5 (RP-12, November 16, 2026): the table's Value column prints whole numbers (format integer), so no count of students or thousands of dollars carries a decimal (\"46,370,928.0 students\"). The three shares print as whole percents (45, 43 and 12, summing to 100) and the per-pupil dollars as whole dollars, as the facts above print them (45 cents, 43 cents, $17,619, $31,918); the kit has no format by row.",
+    "Editor, second pass (RS-4, November 20, 2026): typography.replace prints row 4's note as \u201cIncludes $39.2 billion in COVID-19 relief funds, as the first note says.\u201d The data file's own note names row 5, which is true of the file, and the table leaves row 5 out by where, so the printed words point to the plate's first note, which gives the same $39.2 billion. The research lead's frozen data file is unchanged."
   ]
 }

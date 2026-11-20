@@ -4,7 +4,7 @@ Written November 20, 2026, by the editor. Brief: `20261120_Second-Pass-Brief.md`
 
 ## Status
 
-Started 16:38 UTC. RS-1 in at 16:43 UTC, proved by a strict build. RS-6 in at 16:45 UTC; its generator's check passes and a strict build is clean. Working on RS-2 next.
+Started 16:38 UTC. RS-1 in at 16:43 UTC, proved by a strict build. RS-6 in at 16:45 UTC; its generator's check passes and a strict build is clean. RS-2 and RS-4 in at 16:54 UTC. Working on RS-5.
 
 HANDOVER: phase3_ch14_complex_build.py is free
 
@@ -30,6 +30,25 @@ Message for the main session (16:45 UTC): RS-6 is in and `phase3_ch14_complex_bu
 - **File:** `work/build/scripts/phase-3/phase3_ch14_complex_build.py` (`walk_steps()`, the failure list in `rule_14_143()`, the checks). Output changed: `work/build/guide/specimens/s-14-143-correct.html` only.
 - **Proof.** `--check` before the edit: 10 of 10 files current. After: the generator ran with 0 faults and wrote one file; `--check` then reads 10 of 10 current (exit 0). Strict build to my scratch folder: exit 0, 0 warnings, pictures 101 hidden and 315 open, unchanged by RS-6.
 - **Bytes.** Fragment `s-14-143-correct` 25,269 to 25,223; the plate in the page 27,451 to 27,405. `s-14-143-failure` unchanged at 9,134 (10,655 in the page).
+
+### RS-2: S91's title, one finding in 26 words
+
+- **Original (33 words):** "Of the three kinds of judge who hear cases at trial in the federal district courts, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands."
+- **Revision (26 words):** "Of the federal district courts’ three kinds of judge, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands."
+- **Why these words and not the rescore's example.** The example, "Only district judges, of the three kinds who hear federal trial cases, serve for life, ...", widens the title's universe from the district courts to every federal trial court. Judges of the Court of International Trade also hold trials and serve for life, and the Court of Federal Claims and the Tax Court hear federal trial cases too, so "the three kinds who hear federal trial cases" would claim more than S91's data holds (H08, W20). The data lead's batch 9 (CD-S4) set the district courts as the title's universe, and the revision keeps it in "the federal district courts’ three kinds of judge", while the measure line under the title still says "who hears cases at trial in the federal district courts". The territorial exception stays whole, as the data lead's MI-4 and MI-7 ask (Puerto Rico's district judges serve for life, so the three territories are named).
+- **Files:** `work/build/chart-kit/specs/s91.json` (the title; no generator writes this spec: `maker_i_round4_derive.py` only checks it). The derive script's S91 check looked for the old title's words, so I changed that one check in `work/build/scripts/phase-3/maker_i_round4_derive.py` to read the new scope words together with the measure line's universe, and added a check that the title stays at 27 words or fewer. Every other S91 check is as it was. `phase3_ch14_build.py` copies the title into Rule 01.12's example log (`14-example-log.json`, Rule 14.137's row) when it runs for RS-5.
+- **Proof.** `maker_i_round4_derive.py --figures S90 S91`: all passed, exit 0. Kit: `oa-chart.mjs build s91 --no-png`: PASS, 0 faults; `build --all --no-png`: 96 specs PASS, exit 0, `plate-share.json` untouched. Strict guide build: exit 0, 0 warnings; the page prints the new title.
+- **Bytes:** kit figure 6,762 to 6,734 as the guide places it; the plate in the page (`s-14-s91`) 7,559 to 7,531.
+
+### RS-4: S90's row 4 note no longer points to a row the table leaves out
+
+- **Original (the Note cell of row 4, "Share of revenue from federal sources"):** "Includes COVID-19 relief funds (row 5)"
+- **Revision:** "Includes $39.2 billion in COVID-19 relief funds, as the first note says."
+- **Why not "as note 2 says".** The plate prints its notes unnumbered, and the COVID-19 relief note comes first ("Federal revenue includes $39.2 billion in one-time COVID-19 relief, ..."); the second note is the Census Bureau's count of school systems. "Note 2" would send a reader to the wrong note, so the cell says "the first note". The figure is the rescore's, $39.2 billion, and the cell now says it the way the source line does ("Federal revenue includes $39.2 billion in COVID-19 relief funds.").
+- **How.** The words come from the research lead's frozen data file (`census-school-system-finances-2024.csv`, row 4's note, which names its own row 5 truly), and the table leaves row 5 out by `where`. The spec's `typography.replace` now prints the revision in place of the file's note, as the kit sets printed words for a spec, and a line in `notes_internal` says why. The data file is unchanged, and no other word on the plate holds the replaced phrase.
+- **File:** `work/build/chart-kit/specs/s90.json`. `maker_i_round4_derive.py` does not write this spec, so it is unchanged for RS-4.
+- **Proof.** `maker_i_round4_derive.py --figures S90`: all passed. Kit: `build s90 --no-png` PASS, 0 faults, and `build --all --no-png` as above. Strict guide build: exit 0, 0 warnings; the page prints the revision once and "row 5" nowhere.
+- **Bytes:** kit figure 5,675 to 5,709; the plate in the page (`s-14-s90`) 6,439 to 6,473.
 
 ## Not fixed
 

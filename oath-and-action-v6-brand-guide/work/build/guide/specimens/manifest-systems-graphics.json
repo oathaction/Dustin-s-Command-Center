@@ -416,7 +416,7 @@
   "width_px": 328,
   "fit_switch": false,
   "frame_container": true,
-  "alt": "Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, drawn as three pills with its steps numbered 1 to 3, beside the loop stepper of Rule 18.22: a status line, the three steps in order, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in the drawing and in the list. With scripts off or in print, the list shows every step in order.",
+  "alt": "Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, drawn as three pills with its steps numbered 1 to 3, beside the loop stepper of Rule 18.22: a status line, four buttons (Play, Reset the loop, Previous step and Next step) and the three steps in order. The current step lights in the drawing and in the list. With scripts off or in print, the list shows every step in order.",
   "illustrative": false,
   "notes": "Rule 18.22's markup with no script of its own (C-1); its controls and reason line read from work/build/guide/code/c-18-loop-stepper.html; the drawing follows data-oa-at through the chapter's block; every word of the steps read from the atlas's loop and connection records.",
   "wide_px": 680,
