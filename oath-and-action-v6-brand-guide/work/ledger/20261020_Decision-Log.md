@@ -7007,3 +7007,17 @@ The main session posted the plan with six questions (Q8-1 to Q8-6). Dustin: "as 
 | D3-2311 | The new chat opened on `claude/fervent-volta-imjj9b`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `a24f29fd`, "Handoff V28: starting prompt order") and works on it, as DR-285 and Dustin's opening message set. The session runs on "Oath & Action Brand Polish - Round 2", which holds the keys; V11's three setup steps ran on the fresh container | V19: fetch and compare tips first; V26: check the environment before testing keys |
 | D3-2312 | The three key tests pass (20:09 UTC): api.open.fec.gov 200, api.congress.gov 200, the Census API 200 with `CENSUS_API_KEY`; no key value was printed or written | V28 2A; Dustin's "test each with one request before use" |
 | D3-2313 | The strict build passes as committed (20:09 UTC, to scratch): exit 0, 0 warnings, 12,178,909 bytes, 369 rules, 679 specimens, 101 image stages hidden and 315 open; projection 15,148,599; chapter 14 with the kit 2,820,373; it differs from version 13's file only in the build's time (one line); the working tree stays clean. Work tracker row `c08b` set active | V28 2A; the figures equal D3-2295's |
+
+### Dustin's answers on chat 9's plan, November 20, 2026
+
+The main session posted the apply pass plan with seven questions (Q9-1 to Q9-7). Dustin: "As recommended".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-293 | Gate 3 has a board on board 3's model, smaller: each applied answer before and after at true size, the Phase 4 proposal by channel, the scores, and Tested and Not tested; the creative director scores it; the chapters page goes up as version 14 first | Dustin, November 20, as recommended (Q9-1) |
+| DR-294 | AX-S3's fix (board 3 reply 20) reaches all four of chapter 11's plates now: the bill's step table and the marks plate, approved at Gate 2, and the ballot measure and court case step tables; each alt becomes its head sentence and each table takes that sentence as a caption hidden from sight, so nothing changes on screen. AX-S3's other group stages (Rule 15.22, chapter 19 and the rest) and Rules 11.8 and 11.9's alts stay in the register | Dustin, November 20, as recommended (Q9-2) |
+| DR-295 | After S59's label moves by its own key, the engineer runs the kit's label clearance check over every chart as a list only, moving nothing; the Gate 3 board shows which approved charts it would move, for Dustin's call on switching it on | Dustin, November 20, as recommended (Q9-3) |
+| DR-296 | Phase 4 keeps the architecture map's seven chapters: chapter 20 holds the Oath & Action website, chapter 22 Substack, and chapter 23 one section each for X, Threads, Instagram, YouTube, TikTok and LinkedIn, with the video frames | Dustin, November 20, as recommended (Q9-4) |
+| DR-297 | The guide draws each Phase 4 application live in HTML and SVG at true size, as chapter 14 draws charts; the export files (PNGs, the working email, slides) sit beside the guide in the asset package, and the dimension script checks them | Dustin, November 20, as recommended (Q9-5) |
+| DR-298 | The website is designed platform-neutral, in HTML and CSS built from the tokens; channel handles print with an Illustrative label until Dustin names them; Phase 4 runs in the brief's order while the newsletter and website are on hold | Dustin, November 20, as recommended (Q9-6) |
+| DR-299 | One engineer takes every code item of the apply pass | Dustin, November 20, as recommended (Q9-7), to save credits |
