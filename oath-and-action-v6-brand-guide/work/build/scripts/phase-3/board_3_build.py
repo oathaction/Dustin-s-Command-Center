@@ -1425,6 +1425,14 @@ def decide_item(it, S, shots, reply_n, refs):
     rec_ = words(it, 'recommendation')
     if rec_:
         body += f'<p class="dec-rec"><span class="tag rec">{esc(S["tag_rec"])}</span> {prose(rec_)}</p>'
+    # B3-S8: a teammate's view beside the recommendation, as board 2 set the creative director's view on S12
+    for v in it.get('views') or []:
+        vt = move_codes(v.get('text', ''))
+        QUOTED.extend([vt, v.get('note', '')])
+        if v.get('source'):
+            refs.append(str(v['source']))
+        body += (f'<blockquote class="q"><p>{prose(vt)}</p><footer>{esc(fill(S.get("view_by", "The {who}’s view."), {"who": v.get("who", "")}))}'
+                 + (f' {esc(v["note"])}' if v.get('note') else '') + '</footer></blockquote>')
     dl = [(S['what_changed'], words(it, 'what_changed')), (S['why'], words(it, 'why'))]
     if it.get('shows') is False and it.get('shows_note'):
         dl.append((S['shows_no'], words(it, 'shows_note')))
