@@ -903,6 +903,38 @@ def make_pictures(reuse):
             PAGES['made-related'] = {'path': copy, 'text': text, 'frame': None}
             FIG['made_related'] = {'rule': rid, 'links': rr}
             items.append({'key': made_key(it, pic), 'page': 'made-related', 'el': f'rule-{rid.replace(".", "-")}', 'w': int(pic.get('width') or DESK)})
+        elif iid == 'CE-S22-examples':
+            # a studio sketch: the editor's example lines (the picture's own "lines") set under their questions in a scratch
+            # copy of the final page's selection guide, in the tier words' type (.sg-t), before each question's skip link
+            lines = pic.get('lines') or []
+            text, done_, qmap = src, [], {}
+            for ln in lines:
+                m = re.search(r'<li class="sg-q" data-group="(\d+)"><p class="sg-qt" id="[^"]*">' + re.escape(html.escape(ln['question'], quote=False).replace('&#x27;', '’')) + r'</p>', text)
+                if not m:
+                    m = re.search(r'<li class="sg-q" data-group="(\d+)"><p class="sg-qt" id="[^"]*">' + re.escape(ln['question']) + r'</p>', text)
+                if not m:
+                    warn(f'CE-S22-examples: the selection guide holds no question “{ln["question"]}”')
+                    continue
+                g = m.group(1)
+                ex = (f'<p class="sg-t sg-ex" style="margin:calc(var(--oa-space-100) - var(--oa-space-200)) 0 var(--oa-space-200);max-width:34em">'
+                      f'{esc(ln["example"])}</p>')
+                new = m.group(0).replace('<li class="sg-q"', f'<li class="sg-q" id="board3-sg-q-{g}"', 1) + ex
+                text = text.replace(m.group(0), new, 1)
+                done_.append(g)
+                qmap[g] = ln['question']
+            if len(done_) != len(lines) or not lines:
+                continue
+            copy = d / f'{DATE}_Selection-Guide-Examples-Sketch.html'
+            if not copy.exists() or copy.read_text() != text:
+                copy.write_text(text)
+            PAGES['made-sg'] = {'path': copy, 'text': text, 'frame': None}
+            parts = []
+            for w_ in (DESK, PHONE):
+                for g in done_:
+                    k_ = f'made-sg-{g}-{w_}'
+                    items.append({'key': k_, 'page': 'made-sg', 'el': f'board3-sg-q-{g}', 'w': w_})
+                    parts.append((k_, fill(S_['sg_part'], {'w': f'{w_:,}', 'q': qmap[g]})))
+            STACK[made_key(it, pic)] = parts
         elif iid == 'NB-S4':
             # a studio sketch: one round 4 chart's figure from the kit, as built in scratch, with the 16 px lockmark master
             # set after the credit at the source line's right end; today's figure and the sketch, source rows stacked

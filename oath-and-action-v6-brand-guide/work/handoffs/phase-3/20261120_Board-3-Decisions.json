@@ -16,16 +16,16 @@
   {
    "id": "trackers",
    "title": "The two new trackers’ step names",
-   "lede": "Rules 11.10 and 11.11 track a state ballot measure and a federal court case in six steps each, on the bill tracker’s marks. Their twelve step names come from the law, each with its source, and they wait for your word as the bill’s six did (DR-108).",
+   "lede": "Rules 11.10 and 11.11 track a state ballot measure and a federal court case in six steps each, with the bill tracker’s marks. Each of the twelve step names comes from the law that sets the step, and they need your word, as the bill’s six names did.",
    "approval": "each",
    "items": [
     {
      "id": "11.10",
      "rule": "11.10",
      "title": "Rule 11.10, a state ballot measure, in six steps",
-     "answer": "The six names are Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 holds only where a state’s initiative goes to the Legislature first; a measure that goes straight to the ballot keeps step 4 under a slash, as the bill tracker marks a step that never happened.",
-     "what_changed": "New in round 5 (C-118). The plate draws three invented measures, each labeled Illustrative: one counted but not yet certified, one approved by voters and certified, and one that failed to qualify, which ends on a square at step 3. A table after the rule gives each step, what happens at it and where the law of Massachusetts, California, Ohio and Michigan sets it. The review’s fixes changed words only (C-123), and the second pass gave the plate’s alt its title and key, so a screen reader hears it once (RS-1).",
-     "why": "DR-108 approved the bill’s six names by name, and DR-231 puts these trackers under the same rule, so their names need the same word from you.",
+     "answer": "The six steps are Filed, Title and summary, Signatures, Legislature, On the ballot and Vote. Step 4 applies only where a state sends an initiative to its Legislature first; elsewhere it sits under a slash, the bill tracker’s mark for a step that never happened.",
+     "what_changed": "New in round 5. The plate draws three invented measures, each labeled Illustrative: one counted but not yet certified, one passed and certified, and one that failed to qualify and stops on a square at step 3. A table after the rule gives each step, what happens at it and the law that sets it in Massachusetts, California, Ohio and Michigan. After the review only the words changed, and the plate’s text description for screen readers gained its title and key.",
+     "why": "You approved the bill tracker’s six names by name and put these trackers under the same rule.",
      "recommendation": "Approve the six names as the plate prints them.",
      "refs": [
       "DR-108",
@@ -35,7 +35,8 @@
       "DR-275",
       "D3-2011",
       "C-118",
-      "C-123"
+      "C-123",
+      "RS-1"
      ],
      "question_for_dustin": true,
      "steps": [
@@ -86,7 +87,7 @@
      "facts": [
       {
        "label": "Invented items",
-       "value": "Measures 99010, 99011 and 99013, labeled Illustrative (DR-275)"
+       "value": "Measures 99010, 99011 and 99013, each labeled Illustrative"
       },
       {
        "label": "States read for the law",
@@ -144,9 +145,9 @@
      "id": "11.11",
      "rule": "11.11",
      "title": "Rule 11.11, a federal court case, in six steps",
-     "answer": "The six names are Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A petition the Supreme Court denies ends on a square at step 5, and the appeals court’s ruling stands.",
-     "what_changed": "New in round 5 (C-118). The plate draws three invented federal civil cases, each labeled Illustrative: one argued and waiting on the appeals court, one reversed and sent back by the Supreme Court, and one whose petition the Court denied. A table after the rule gives each step and the rule or statute behind it. The review’s fixes changed words only, among them a ruling no one appeals, which keeps the steps after it under slashes (C-123, calls 4 and 5); the second pass gave the plate’s alt its title and key (RS-1).",
-     "why": "As for Rule 11.10: DR-231 puts the court case tracker under DR-108, which approved the bill’s names by name.",
+     "answer": "The six steps are Filed, Trial court ruling, Appeal, Appeals court ruling, Supreme Court petition and Supreme Court ruling. A denied petition stops on a square at step 5, and the appeals court’s ruling stands.",
+     "what_changed": "New in round 5. The plate draws three invented federal civil cases, each labeled Illustrative: one argued and waiting on the appeals court, one the Supreme Court reversed and sent back, and one whose petition it denied. A table after the rule gives each step and the court rule or statute behind it. After the review only the words changed: when no one appeals a ruling, the steps after it sit under slashes, and the plate’s text description gained its title and key.",
+     "why": "As with Rule 11.10, you put this tracker under the rule that approved the bill’s names.",
      "recommendation": "Approve the six names as the plate prints them.",
      "refs": [
       "DR-108",
@@ -155,7 +156,9 @@
       "DR-275",
       "D3-2011",
       "C-118",
-      "C-123"
+      "C-123",
+      "ED5-3",
+      "RS-1"
      ],
      "question_for_dustin": true,
      "steps": [
@@ -205,11 +208,11 @@
      "facts": [
       {
        "label": "Invented items",
-       "value": "Cases 99014, 99015 and 99016, labeled Illustrative (DR-275)"
+       "value": "Cases 99014, 99015 and 99016, each labeled Illustrative"
       },
       {
        "label": "The docket’s word",
-       "value": "“Affirmed”, explained once in the rule’s text (ED5-3)"
+       "value": "“Affirmed”, explained once in the rule’s text"
       }
      ],
      "pictures": [
@@ -275,7 +278,7 @@
   {
    "id": "changed-approved",
    "title": "Changed approved work",
-   "lede": "16 changes reach work you approved at board 1, board 2 or Gate 2, or work a decision sent to this board. A script found 10 change ledger rows that list them for this board, and the decision log and the second pass add the rest. Each shows the page before the change beside today’s at true size, or says in one line that it does not show.",
+   "lede": "Sixteen changes reach work you approved at board 1, board 2 or Gate 2, or work a decision sent to this board. A script found ten rows of the change ledger that list them for this board, and the decision log and the second pass add the rest. Each item shows the page before the change beside today’s at true size, or says in one line why there is nothing to see.",
    "approval": "one",
    "items": [
     {
@@ -287,10 +290,10 @@
       "S78",
       "S07"
      ],
-     "answer": "S12 now draws the stacked tile you chose on board 2, and on a phone S12, S16 and S78 print a code in every one of the 51 tiles. S07’s phone tiles move 1 px.",
-     "what_changed": "At a desk S12 draws its stacked tile from a 618 px drawing (DR-261). At the 326 px phone drawing, S12, S16 and S78 code all 51 states: S16 in a code column under 358 px, S12 and S78 on a 2 px tile gap, the token release 6.0.0-gate3.3 (2.5 px before), which also moves S07’s phone tiles 1 px. S12’s phone tiles now take their edge in the context ink, and its phone key prints “United States 5.9”.",
-     "why": "Board 2 noted three states with no code on S12’s phone drawing; the tile gap is a chart token, which Gate 3 decides.",
-     "recommendation": "Approve them as drawn.",
+     "answer": "At a desk S12 now draws the stacked tile you chose on board 2. On a phone S12, S16 and S78 print a code in all 51 tiles, and S07’s tiles move 1 px.",
+     "what_changed": "S12 draws its stacked tile from a 618 px drawing. In the 326 px phone drawing, S16 moves its codes into a column when the drawing is narrower than 358 px, and S12 and S78 sit on a tile gap of 2 px, down from 2.5. That gap is a chart token, a value all charts share, so S07’s phone tiles move too. S12’s phone tiles take their edge in the context ink, the gray for what a title does not name, and its phone key prints “United States 5.9”.",
+     "why": "Board 2 found three states with no code on S12’s phone drawing, and Gate 3 decides chart tokens.",
+     "recommendation": "Approve the four maps as drawn.",
      "refs": [
       "DR-261",
       "D3-1553",
@@ -423,7 +426,7 @@
        "width": 390,
        "ground": "newsprint",
        "path": null,
-       "label": "S07 on a phone now, its tiles 1 px apart from the gap token",
+       "label": "S07 on a phone now, its tiles moved 1 px by the new gap",
        "role": "after",
        "spec": "S07",
        "row": "s07-phone",
@@ -436,9 +439,9 @@
      "spec": "S37",
      "rule": "14.129",
      "title": "S37, the heat table: curled apostrophes",
-     "answer": "S37’s drawn labels and its table print curled apostrophes.",
-     "what_changed": "Straight apostrophes in S37’s drawn labels and table became curled ones. Board 2’s pass held S37 because two drawn labels change, so it carried to round 4 with its drawing shown here (D3-1556). No figure or mark moves.",
-     "why": "Printed words take curled apostrophes; data and exports keep them as stored (D3-1556).",
+     "answer": "S37’s drawn labels and its table now print curled apostrophes. No figure or mark moves.",
+     "what_changed": "Straight apostrophes in S37’s drawn labels and table became curled. Board 2 held S37 back because two drawn labels change, so its drawing is shown here.",
+     "why": "Printed words take curled apostrophes, and data files and exports keep them as stored.",
      "recommendation": "Approve it as drawn.",
      "refs": [
       "D3-1556",
@@ -483,10 +486,10 @@
      "id": "S14",
      "spec": "S14",
      "rule": "14.32",
-     "title": "S14, monthly jobs: its source line and its two label keys",
-     "answer": "S14’s source line names the September 2026 release, as S96 does, and two label keys move its latest label clear of a gridline and dash its average over the preliminary months.",
-     "what_changed": "The source line names the payroll release (D3-2144). Two opt-in keys in S14’s spec, `labels.latest_clear` and `labels.average_dash`, move the latest label clear of its gridline and dash the average where it includes a preliminary month (D3-2143). The data, the scale and the title are as board 1 approved.",
-     "why": "One series prints one release line, and a label crossed by a gridline is hard to read (call 18).",
+     "title": "S14, monthly jobs: its source line and two label settings",
+     "answer": "S14’s source line now names the September 2026 release, as S96’s does, and two new settings move its latest label clear of a gridline and dash its average over the preliminary months.",
+     "what_changed": "Two settings in S14’s own chart file move the latest label clear of its gridline and dash the average where it takes in a preliminary month. The data and the title are as board 1 approved them.",
+     "why": "One data series prints one release line, and a label crossed by a gridline is hard to read.",
      "recommendation": "Approve the three changes as drawn.",
      "refs": [
       "D3-2143",
@@ -557,12 +560,13 @@
      "spec": "S40",
      "rule": "14.132",
      "title": "S40, the tracker list: committee vote dates in words",
-     "answer": "S40 prints its committee vote dates in words through a new table format, `date-lead`.",
-     "what_changed": "Four cells such as “2025-12-17, 50 to 1” now read “December 17, 2025, 50 to 1” (C-130). No row, mark or value changes.",
-     "why": "Chapter 02’s house rule H05 writes the month as a word; S40’s were the only figure dates in chapters 11, 13, 14 and 15 (DF-16).",
+     "answer": "S40 now prints its five committee vote dates in words, through a new table format in the chart kit.",
+     "what_changed": "Five cells such as “2025-12-17, 50 to 1” now read “December 17, 2025, 50 to 1”. No row, mark or value changes.",
+     "why": "Chapter 02’s house rule H05 writes the month as a word, and S40’s were the only dates set in figures in chapters 11, 13, 14 and 15.",
      "recommendation": "Approve it as drawn.",
      "refs": [
-      "C-130"
+      "C-130",
+      "DF-16"
      ],
      "ledger": [
       "C-130"
@@ -600,12 +604,16 @@
     {
      "id": "rules-14-1-to-14-14",
      "title": "Rules 14.1 to 14.14: words",
-     "answer": "The fourteen chart rules shown at board 2 changed in words only: each prints its own Basis line, the role inks are defined where first used, and Rule 14.1 links “Choose a chart”.",
-     "what_changed": "Rules 14.1 to 14.12 and 14.14 each print their own Basis line; Rules 14.5 and 14.6 define the three role inks at first use, and Rule 14.6’s light fill covers every other bar only where the title names one bar; Rule 14.3’s spec says “the text’s ink”; Rule 14.1 names and links “Choose a chart”; the chapter’s introduction says “a fixed copy of its source’s data”; group 17’s line names all seven of its forms; group 18’s line says the three reforms’ “records name one housing loop”.",
-     "why": "The review found the rules leaning on terms they had not defined (DF-12, DF-13, CD-S8, NB-M1; call 3).",
+     "answer": "The fourteen chart rules you saw at board 2 changed in words only, mostly to define terms where they first appear.",
+     "what_changed": "Rules 14.1 to 14.12 and 14.14 each print their own Basis line. Rules 14.5 and 14.6 define the three role inks at first use, and Rule 14.6’s light fill covers every other bar only where the title names one bar. Rule 14.3’s specifications say “the text’s ink”, Rule 14.1 names and links “Choose a chart”, and the chapter’s introduction says “a fixed copy of its source’s data”. Group 17’s line names all seven of its forms, and group 18’s line says the three reforms’ “records name one housing loop”.",
+     "why": "The review found the rules using terms they had not defined.",
      "recommendation": "Approve the words as printed.",
      "refs": [
-      "C-128"
+      "C-128",
+      "DF-12",
+      "DF-13",
+      "CD-S8",
+      "NB-M1"
      ],
      "ledger": [
       "C-128"
@@ -666,16 +674,17 @@
      "id": "14.144-pips",
      "rule": "14.144",
      "title": "Rule 14.144: pips beside each effect code, and the phone line-up",
-     "answer": "Each reform card draws Rule 13.5’s pips beside each whole effect code, and on a phone each code’s pips stay on its line. The cards still print no total.",
-     "what_changed": "Ruling (d) had printed the effects as words with no pips (D3-1973). Call 2 replaced that: Rule 13.5, which you approved with chapter 13, governs the effect mark, so each code draws its pips (D3-2127). The phone line-up sets each family’s effects one reform a row (CR-S3), and the second pass keeps every reform’s pips on its code’s line at every width (CR-S23). The atlas’s sentence that codes are never added stays, and the failure plate’s total stays its fault.",
-     "why": "One effect mark across the guide; Rules 15.16 and 15.20 already draw the pips (DR-237).",
+     "answer": "Each reform card on Rule 14.144 now draws pips, the one to three small marks that size an effect, beside each whole effect code, as Rule 13.5 does. On a phone each family’s effects line up one reform to a row, and the cards still print no total.",
+     "what_changed": "A ruling in round 5’s plan printed the effects as words with no pips. The fix pass replaced it, since Rule 13.5, approved with chapter 13, governs the effect mark. The second pass keeps each reform’s pips on its code’s line at every phone width. The atlas’s sentence that codes are never added together stays, and the failure plate’s total stays its fault.",
+     "why": "The guide draws one effect mark everywhere, and Rules 15.16 and 15.20 already draw the pips.",
      "recommendation": "Approve the pips as drawn.",
      "refs": [
       "D3-1973",
       "D3-2127",
       "DR-237",
       "C-124",
-      "CR-S23"
+      "CR-S23",
+      "CR-S3"
      ],
      "ledger": [
       "C-124"
@@ -734,16 +743,20 @@
      "id": "15.20-chooser",
      "rule": "15.20",
      "title": "Rule 15.20: the chooser’s list form",
-     "answer": "The two reforms now sit in one list at one width, and the failure plate takes the same list form. The keyline these plates draw inside the red ring is a separate question below, since it touches a settled mark.",
-     "what_changed": "Call 15 changed the shared chooser once, on Rules 15.20 and 14.144: one width for the choices, through Rule 18.3’s opt-in list form (`oa-choice-row--list`, D3-2243), and a keyline inside a chosen pill’s red ring (D3-2140; see the keyline item under “Held for you”). The second pass gave the failure plate the same list form, so its options stop splitting into columns; its fault, both reforms lit at once with a combined score, stays as captioned (CR-S1’s remainder).",
-     "why": "Five readers named the same faults in one shared component (DD-R2, DD-R5, AX-S5, CR-S1, CD-S5).",
-     "recommendation": "Approve the chooser’s list form, on both plates.",
+     "answer": "Rule 15.20’s two reforms now sit in one list at one width, and its failure plate uses the same list. The keyline inside the red ring is a separate choice under “Held for you”.",
+     "what_changed": "The fix pass changed the shared chooser once, for Rules 15.20 and 14.144: its choices take one width through a list form Rule 18.3’s chooser now offers, and a chosen pill’s red ring gained a keyline. The second pass gave the failure plate the list form too. Its fault, both reforms lit at once with a combined score, stays as captioned.",
+     "why": "Five readers found the same faults in this one shared chooser.",
+     "recommendation": "Approve the chooser’s list form on both plates.",
      "refs": [
       "D3-2140",
       "D3-2243",
       "C-129",
       "C-132",
-      "CR-S1"
+      "CR-S1",
+      "DD-R2",
+      "DD-R5",
+      "AX-S5",
+      "CD-S5"
      ],
      "ledger": [
       "C-129",
@@ -826,9 +839,9 @@
     {
      "id": "chapter-15-approved",
      "title": "Rules 15.1, 15.6, 15.11, 15.12, 15.15 and 15.16: words and chips",
-     "answer": "Six chapter 15 rules you approved at board 2 changed in small ways: three read-aloud lines say “fewer”, three plates’ chips drop the wide hyphen, and Rule 15.16 explains “outcome family”.",
-     "what_changed": "The read-aloud lines on Rules 15.1, 15.6 and 15.15 say “fewer” where a count falls; Rule 15.16 glosses “outcome family”; chip IDs drop tabular figures on 37 plates, among them Rules 15.11, 15.12 and 15.16, so “R-04” no longer reads “R - 04”. No mark or loop drawing moves.",
-     "why": "The review’s word and craft readers (C-129).",
+     "answer": "Six chapter 15 rules you approved at board 2 changed in small ways: three read-aloud lines say “fewer”, chips lose a hyphen that was too wide, and Rule 15.16 explains “outcome family”.",
+     "what_changed": "The read-aloud lines on Rules 15.1, 15.6 and 15.15, the sentence under a loop that reads it step by step, say “fewer” where a count falls. The chip IDs on 37 plates, Rules 15.11, 15.12 and 15.16 among them, no longer set figures at a fixed width, so “R-04” stops reading “R - 04”. No mark or loop drawing moves.",
+     "why": "The review’s word and craft readers asked for these.",
      "recommendation": "Approve them as printed.",
      "refs": [
       "C-129"
@@ -869,7 +882,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "Rule 15.11 before",
+       "label": "Rule 15.11 before the fix pass",
        "role": "before",
        "row": "15.11",
        "fold": true
@@ -891,10 +904,10 @@
     {
      "id": "chapter-11",
      "title": "Chapter 11: the bill’s step table and the new numbers",
-     "answer": "The bill’s step table sets each step’s number over its name, like the two new tables, and Rules 11.10 to 11.16 became 11.12 to 11.18 to make room for the new trackers.",
-     "what_changed": "`s-11-steps` changes layout only: number over name (C-118). The old Rules 11.10 to 11.16 are now 11.12 to 11.18, with every link and citation fixed in one pass (DR-274); past boards and the decision log keep the numbers they printed. In the second pass the alt of Rule 11.12’s two plates, records requests, gained its title and key (RS-1), which hides the picture from a screen reader and changes nothing a reader sees.",
-     "why": "DR-274 placed the new trackers in group 2 and renumbered the rules after them.",
-     "recommendation": "Approve the table as drawn.",
+     "answer": "The bill’s step table now sets each step’s number over its name, like the two new tables, and Rules 11.10 to 11.16 became 11.12 to 11.18 to make room for the new trackers.",
+     "what_changed": "The bill’s step table changes layout only. Every link and citation to the renumbered rules was fixed in one pass; past boards and the decision log keep their old numbers. In the second pass the text description of Rule 11.12’s two plates gained their title and key, so a screen reader hears them once; nothing on the screen changes.",
+     "why": "You placed the new trackers in group 2, which renumbered the rules after them.",
+     "recommendation": "Approve the table as drawn and the new numbers.",
      "refs": [
       "DR-274",
       "C-118",
@@ -933,10 +946,10 @@
     },
     {
      "id": "image-stages",
-     "title": "The words inside image stages: heard once",
-     "answer": "A screen reader now hears 101 image stages by their alt alone, once, where it heard them twice; nothing changes on the screen.",
-     "what_changed": "`plate()` hides an image stage’s picture from a screen reader where its alt carries every word the picture holds (D3-2153): 95 of 416 at the fix pass, 101 after the second pass gave six tracker alts their missing words (RS-1). The other 315 keep their words open, since their alts lack a word, and wait in the deferred fixes register. Two alts that hid the Illustrative label now lead with it.",
-     "why": "Words heard twice were a carried item that reaches approved work in 19 chapters and the proofs (DR-278 (b)).",
+     "title": "Words inside pictures: heard once",
+     "answer": "A screen reader now hears 101 of the guide’s 416 plate pictures once, from their text descriptions, where it heard their words twice. Nothing changes on the screen.",
+     "what_changed": "Where a picture’s description holds every word the picture shows, the build hides the picture from a screen reader: 95 pictures at the fix pass, and 101 once the second pass completed six tracker descriptions. The other 315 descriptions miss a word, so those pictures stay open and wait on the list of deferred fixes. Two descriptions that left out the Illustrative label now open with it.",
+     "why": "Words heard twice were carried from earlier boards, and the fix reaches approved work in 19 chapters and the proofs.",
      "recommendation": "Approve the change.",
      "refs": [
       "DR-278",
@@ -949,15 +962,15 @@
      ],
      "approved_at": "19 chapters and the proofs, Gate 2 on",
      "shows": false,
-     "shows_note": "Nothing changes on the screen; the change is in what a screen reader hears.",
+     "shows_note": "Only what a screen reader hears changes.",
      "facts": [
       {
        "label": "Hidden",
-       "value": "101 of 416 image stages"
+       "value": "101 of 416 pictures"
       },
       {
        "label": "Open",
-       "value": "315, listed for the register"
+       "value": "315, listed for a later fix"
       }
      ],
      "question_for_dustin": false,
@@ -965,15 +978,16 @@
     },
     {
      "id": "masthead",
-     "title": "The masthead’s measured room and focus offsets",
-     "answer": "A focused link no longer hides under the masthead at 360 to 372 px, at 1,024 to 1,362 px or with large text.",
-     "what_changed": "The shell measures the masthead’s real height and sets the scroll and focus offsets from it, with floors for a page with scripts off (call 10).",
-     "why": "At 1,024 to 1,360 px a focused link in the chapter rail could sit wholly under the masthead (AX-M1; WCAG 2.4.11).",
+     "title": "A focused link stays clear of the masthead",
+     "answer": "A focused link no longer hides under the masthead at 360 to 372 px, at 1,024 to 1,362 px, or with large text.",
+     "what_changed": "The page frame measures the masthead’s real height and stops a jump or a focused link below it, with fixed minimums when scripts are off.",
+     "why": "At 1,024 to 1,362 px a focused link in the side list of chapters could sit wholly under the masthead, which fails WCAG 2.4.11, the accessibility standard’s rule that focus stays in view.",
      "recommendation": "Approve the change.",
      "refs": [
       "DR-278",
       "D3-2135",
-      "C-132"
+      "C-132",
+      "AX-M1"
      ],
      "ledger": [
       "C-132"
@@ -989,7 +1003,7 @@
        "width": 1024,
        "ground": "newsprint",
        "path": null,
-       "label": "Before the fix pass: a focused rail link under the masthead",
+       "label": "Before the fix pass: a focused link in the chapter list, under the masthead",
        "role": "before",
        "row": "1024",
        "setup": {
@@ -1017,14 +1031,15 @@
     {
      "id": "where-to-start",
      "title": "“Where to start” at 320 px with 200 percent text",
-     "answer": "The page no longer scrolls sideways at 320 px with text at 200 percent; it scrolled 33 px.",
-     "what_changed": "The “Where to start” lines, narrow code plates and closing related lists now wrap (call 12).",
-     "why": "A page that scrolls sideways at 320 px fails reflow (AX-S7; WCAG 1.4.10); a carried item (DR-278 (c)).",
+     "answer": "At 320 px with text at 200 percent, the page no longer scrolls sideways; it used to scroll 33 px.",
+     "what_changed": "The “Where to start” lines, the narrow code plates and the related lists at the end of each chapter now wrap.",
+     "why": "Sideways scrolling at 320 px fails WCAG 1.4.10, the accessibility standard’s rule on reflow, and this item was carried from earlier boards.",
      "recommendation": "Approve the change.",
      "refs": [
       "DR-278",
       "D3-2137",
-      "C-132"
+      "C-132",
+      "AX-S7"
      ],
      "ledger": [
       "C-132"
@@ -1065,10 +1080,10 @@
     },
     {
      "id": "chapter-26-selector",
-     "title": "Chapter 26’s token table script",
-     "answer": "The token table’s script now looks only inside its own plate.",
-     "what_changed": "It selected across the whole page; it now selects inside its plate (call 13).",
-     "why": "A page-wide selector could catch another plate’s parts (DR-278 (d)).",
+     "title": "Chapter 26’s token table: its script stays inside its plate",
+     "answer": "The script behind chapter 26’s token table now searches only its own plate, where it searched the whole page.",
+     "what_changed": "It used to search the whole page for its parts.",
+     "why": "A page-wide search could catch another plate’s parts.",
      "recommendation": "Approve the change.",
      "refs": [
       "DR-278",
@@ -1085,10 +1100,10 @@
     },
     {
      "id": "chapter-18-and-shell",
-     "title": "Chapter 18’s code and the shell",
-     "answer": "Fixes that keep approved rules true: the stepper script, printing with every disclosure open, Rule 18.14’s file size, the 18.22 plate’s buttons on a phone, the chooser’s list form and the form script’s reach.",
-     "what_changed": "Rule 18.22’s stepper script writes `data-oa-live` and `data-oa-at`, and its step list keeps `role=\"list\"`; the shell opens every closed disclosure at print (Rule 18.8’s promise) and holds 15.20’s status line; Rule 18.14’s example names tokens.css at 105 KB, where it said 95; the 18.22 anatomy plate’s buttons no longer break mid-word at 320 to 390 px; Rule 18.3’s chooser gains an opt-in list form, `oa-choice-row--list`; chapter 18’s form script selects `form[data-oa-form]` only; the shell holds `.tok-v`, unused until a plate asks for it.",
-     "why": "Defects in approved rules, and round 4’s interaction (D3-1701, D3-1705, D3-1712; calls 10, 12 and 15).",
+     "title": "Chapter 18’s code and the page frame",
+     "answer": "Small fixes keep chapter 18’s approved rules and the page frame working as they promise.",
+     "what_changed": "Rule 18.22’s stepper script gains two lines that other plates read, and its step list stays marked as a list for screen readers. The page frame opens every closed section when the page prints, as Rule 18.8 promises, and holds the status line Rule 15.20 uses. Rule 18.14’s example gives the token file’s size as 105 KB, where it said 95. The buttons on Rule 18.22’s plate no longer break mid-word at 320 to 390 px. Rule 18.3’s chooser gains a list form a plate can switch on. Chapter 18’s form script now reaches only the guide’s own forms, and the page frame holds one style that no plate uses yet.",
+     "why": "Each fixes a defect in an approved rule or serves the controls round 4 added.",
      "recommendation": "Approve the changes.",
      "refs": [
       "D3-1701",
@@ -1143,8 +1158,8 @@
     {
      "id": "source-line-wrap",
      "title": "Source lines wrap more evenly",
-     "answer": "Every HTML source line sets `text-wrap: pretty`, so a line’s last word stops sitting alone.",
-     "what_changed": "Line breaks move in 4 of 107 source lines at 1,440 px and 20 at 390 px; no word or drawing moves (D3-1711).",
+     "answer": "Every source line set in the page’s text, outside a drawing, now balances its line breaks, so its last word no longer sits alone.",
+     "what_changed": "Line breaks move in four of 107 source lines at 1,440 px and in 20 at 390 px. No word or drawing moves.",
      "why": "A single word on a source line’s last row reads as a stray.",
      "recommendation": "Approve the change.",
      "refs": [
@@ -1153,20 +1168,21 @@
      "ledger": [],
      "approved_at": "board 1 and board 2 charts",
      "shows": false,
-     "shows_note": "Shows only as where 4 of 107 source lines break at 1,440 px and 20 at 390 px.",
+     "shows_note": "It shows only in where four of the 107 source lines break at 1,440 px, and 20 at 390 px.",
      "question_for_dustin": false,
      "pictures": []
     },
     {
      "id": "related-chapters",
-     "title": "Second pass: chapter 15 joins three rules’ related chapters",
-     "answer": "Rules 14.88 and 14.96, shown at board 2, and Rule 14.135 now list “15 Systems graphics” under Related chapters.",
-     "what_changed": "The second pass gave five entries the related rules the reader panel asked for (RS-5). The page prints a rule’s related items as chapters only, so the one visible change is chapter 15 under Related chapters on 14.88, 14.96 and 14.135. Printing the rules themselves is held for you below (D3-2278).",
-     "why": "RP-3’s reader, who picks a form and never meets the chapter that maps its process.",
+     "title": "Chapter 15 joins three rules’ related chapters",
+     "answer": "Rules 14.88 and 14.96, which you saw at board 2, and Rule 14.135 now list “15 Systems graphics” under Related chapters.",
+     "what_changed": "The second pass gave five entries the related rules the reader panel asked for, but the page prints related items only as chapters, so the change a reader sees is chapter 15 under Related chapters on these three rules. Printing the rules themselves is held for you below.",
+     "why": "Otherwise a reader who picks a form here never meets the chapter that maps its process.",
      "recommendation": "Approve the change.",
      "refs": [
       "RS-5",
-      "D3-2278"
+      "D3-2278",
+      "RP-3"
      ],
      "ledger": [],
      "approved_at": "board 2 (14.88, 14.96)",
@@ -1205,7 +1221,7 @@
   {
    "id": "held",
    "title": "Held for you",
-   "lede": "16 rows of the deferred fixes register stand under “Held for Dustin (board 3)”, and 2 more rows elsewhere in it name board 3. With RS-5’s visible half from the second pass and Q-12, each is a choice only you can make.",
+   "lede": "Twenty choices wait on you. Eighteen come from the list of deferred fixes: the sixteen rows it holds for this board and two more rows elsewhere in it whose status names this board. The second pass adds one, and the trademark question open since Gate 1 is the last.",
    "approval": "each",
    "items": [
     {
@@ -1216,16 +1232,16 @@
      },
      "question_for_dustin": true,
      "id": "CE-S22-words",
-     "title": "Three pairs of the selection guide’s questions overlap",
-     "answer": "Keep the sixteen family questions as you approved them in the coverage plan.",
+     "title": "Three pairs of questions in “Choose a chart” sound alike",
+     "answer": "Keep the sixteen questions in “Choose a chart” as you approved them, though three pairs sound alike to a newcomer, and tell the pairs apart with examples, the next item.",
      "what_changed": "Nothing yet. The civic education reader found three pairs of questions that ask nearly the same thing in a newcomer’s words: Shift and swing with Change over time, Composition with Proportion and overlap, and Structure with Infographics.",
-     "why": "The questions are the coverage plan’s words (DR-62), which your settled list holds.",
-     "recommendation": "Keep the questions. Take the next item’s example lines instead, which leave the questions as approved.",
+     "why": "The questions are the coverage plan’s words, which you settled.",
+     "recommendation": "Keep the questions, and take the next item’s example lines in place of new wording.",
      "settled": {
       "touches": [
-       "DR-62, the coverage plan"
+       "the coverage plan’s sixteen questions, which you settled"
       ],
-      "respects": "The recommendation changes no question."
+      "respects": "No question changes."
      },
      "refs": [
       "DR-62",
@@ -1254,14 +1270,14 @@
      },
      "question_for_dustin": true,
      "id": "CE-S22-examples",
-     "title": "One reader’s example under each of the sixteen questions",
-     "answer": "Add a short example under each question, in a reader’s words, in the finishing pass.",
-     "what_changed": "Nothing yet. Under each question, before its skip link, one line such as “How did turnout change between 2020 and 2024?” under Shift and swing, set in the tier words’ type; the editor writes all sixteen, and any figure in them is labeled Illustrative.",
-     "why": "Call 6 allowed the lines only if the craft reader agreed, and the craft report does not speak to them.",
-     "recommendation": "Add the sixteen lines in the finishing pass: about 100 bytes each, no new keyboard stop, and the approved questions unchanged.",
+     "title": "An example question under each of the sixteen",
+     "answer": "Add one example under each question in “Choose a chart”, worded as a reader would ask it, so the pairs that sound alike read apart. All sixteen are listed below.",
+     "what_changed": "Nothing yet. Each line sits under its question, before the link that skips its forms, in the tier words’ type. None holds an invented figure, person or place, so none needs the Illustrative label.",
+     "why": "The fix pass allowed these lines only if the craft reader agreed, and the craft report is silent on them.",
+     "recommendation": "Add the sixteen lines in the finishing pass, about 100 bytes each, with no new keyboard stop and the questions unchanged.",
      "settled": {
       "touches": [],
-      "respects": "The questions stay the coverage plan’s words (DR-62)."
+      "respects": "The questions keep the coverage plan’s words."
      },
      "refs": [
       "CE-S22",
@@ -1272,13 +1288,89 @@
        "kind": "to-make",
        "path": null,
        "width": 1440,
-       "label": "Two questions with an example line under each, at 1,440 and 390 px",
+       "label": "Two questions with their example lines, at 1,440 and 390 px",
        "role": "view",
-       "owner": "editor and board builder",
-       "how": "the editor’s two example lines set under their questions in a scratch copy of the plate"
+       "owner": "board builder",
+       "how": "the editor’s two lines, under Shift and swing and under Change over time, set in a working copy of the selection guide",
+       "lines": [
+        {
+         "question": "Shift and swing: what moved, and which way?",
+         "example": "Did turnout rise or fall in each state from 2020 to 2024?"
+        },
+        {
+         "question": "Change over time: how has it moved?",
+         "example": "How have job numbers moved month by month since 2022?"
+        }
+       ]
       }
      ],
-     "reply_number": 5
+     "reply_number": 5,
+     "rows": [
+      {
+       "question": "Comparison: which is bigger, and how do they rank?",
+       "example": "Which states spend the most per student on public schools?"
+      },
+      {
+       "question": "Shift and swing: what moved, and which way?",
+       "example": "Did turnout rise or fall in each state from 2020 to 2024?"
+      },
+      {
+       "question": "Change over time: how has it moved?",
+       "example": "How have job numbers moved month by month since 2022?"
+      },
+      {
+       "question": "Composition: what is it made of?",
+       "example": "What makes up my monthly electric bill?"
+      },
+      {
+       "question": "Distribution and density: how are the values spread?",
+       "example": "How long do most voters wait in line, and how many wait over an hour?"
+      },
+      {
+       "question": "Correlation: do two things move together?",
+       "example": "Do counties with more broadband also have more people working from home?"
+      },
+      {
+       "question": "Uncertainty and estimates: how sure is it?",
+       "example": "How sure is the survey’s count of people without health insurance in my state?"
+      },
+      {
+       "question": "Proportion and overlap: how much, and how do groups overlap?",
+       "example": "How many people qualify for both Medicare and Medicaid?"
+      },
+      {
+       "question": "Gauges and indicators: where does it stand now?",
+       "example": "How much of the road repair money has the city spent so far?"
+      },
+      {
+       "question": "Behavior: how do people move through a process?",
+       "example": "How many people who start an unemployment claim finish it?"
+      },
+      {
+       "question": "Structure: who decides, and how does it work?",
+       "example": "Who has to sign off before a new bus route starts?"
+      },
+      {
+       "question": "Relationships: who is connected to whom?",
+       "example": "Which agencies share responsibility for my drinking water?"
+      },
+      {
+       "question": "Flow: where does it go?",
+       "example": "Where does the money from the gas tax end up?"
+      },
+      {
+       "question": "Maps: where is it happening?",
+       "example": "Which counties have no hospital that delivers babies?"
+      },
+      {
+       "question": "Tables and plain words: where does a reader look things up, and when do words answer faster?",
+       "example": "What is the minimum wage in my state this year?"
+      },
+      {
+       "question": "Infographics: how does it work, in one look?",
+       "example": "What does my mail ballot envelope ask me to fill in?"
+      }
+     ]
     },
     {
      "register": {
@@ -1289,16 +1381,16 @@
      "question_for_dustin": true,
      "id": "NB-S4",
      "title": "The lockmark at the end of a chart’s source line",
-     "answer": "Draw the 16 px lockmark at the right end of the source line on a chart exported alone, and keep the guide’s plates as they are.",
-     "what_changed": "Nothing yet. Rule 08.2’s footer row puts the lockmark “16 px at the right end of a chart’s source line”; no kit chart or export carries it, only the credit “Chart: Oath & Action” in words (D3-593).",
-     "why": "Every chart approved at boards 1 and 2 carries no lockmark, so a change to them all is yours to make.",
-     "recommendation": "The kit’s exports, the PNG and SVG a partner or a story takes away, draw the 16 px lockmark at the source line’s right end; the on-page plates stay as approved, since a view shows the lockmark once (Rule 08.2); Rule 08.2’s row adds “on a chart exported alone”.",
+     "answer": "Draw the 16 px lockmark at the right end of the source line on charts exported to stand alone, and leave the guide’s plates as they are.",
+     "what_changed": "Nothing yet. Rule 08.2’s footer row puts the lockmark “16 px at the right end of a chart’s source line”, but no chart the kit draws or exports carries it, only the credit “Chart: Oath & Action”.",
+     "why": "No chart you approved at boards 1 and 2 carries the lockmark, so a change that reaches them all is yours.",
+     "recommendation": "Yes. The PNG and SVG files a partner or a story takes away carry the 16 px lockmark at the source line’s end. The guide’s plates stay as approved, since Rule 08.2 shows the lockmark once on a page, and Rule 08.2’s row adds “on a chart exported alone”.",
      "settled": {
       "touches": [
-       "Rule 08.2 (Gate 2)",
-       "the charts approved at boards 1 and 2"
+       "Rule 08.2, approved at Gate 2",
+       "the charts you approved at boards 1 and 2"
       ],
-      "respects": "No chart on the page changes; the chart system’s plates are as approved (DR-52)."
+      "respects": "No chart on the guide’s page changes."
      },
      "refs": [
       "NB-S4",
@@ -1313,7 +1405,7 @@
        "label": "A kit export with the 16 px lockmark at its source line’s end, beside today’s export",
        "role": "view",
        "owner": "engineer",
-       "how": "one spec built with and without the mark in a scratch kit"
+       "how": "one chart built with and without the mark in a working copy of the kit"
       }
      ],
      "reply_number": 6
@@ -1326,20 +1418,22 @@
      },
      "question_for_dustin": true,
      "id": "S14-line-02-13",
-     "title": "S14’s source line where chapters 02 and 13 print it",
-     "answer": "Print S14’s new source line in the two places chapters 02 and 13 quote it.",
-     "what_changed": "S14’s own source line now names the September 2026 release (D3-2144); Rules 02.22 and 13.6 print the older line as their example.",
-     "why": "Chapters 02 and 13 are approved.",
-     "recommendation": "Update both copies to S14’s line as it prints today; the editor’s words are ready.",
+     "title": "S14’s source line where chapters 02 and 13 quote it",
+     "answer": "Chapters 02 and 13 still quote S14’s older source line as an example. Update chapter 13’s copies, and keep chapter 02’s, which belongs to the writing rules you settled.",
+     "what_changed": "Nothing yet. S14’s line now names its release, the Employment Situation for September 2026, released October 2, 2026. Rule 02.22 prints the older line three times, Rule 13.6 twice, and chapter 13’s list of sources once. The editor’s words for the new copies are ready.",
+     "why": "Chapter 02’s writing rules are on your settled list, and chapter 13 is approved, so neither copy changes without your word.",
+     "recommendation": "Update chapter 13’s copies to S14’s line as it prints today, and keep the older line in Rule 02.22, chapter 02’s house rules, as you settled it; both lines are true of the same data. To update chapter 02 too, reply “Chapter 02 too”.",
      "settled": {
       "touches": [
-       "chapter 02’s plate 02.22 (an example line, not a writing rule)",
-       "chapter 13 (DR-237)"
+       "Rule 02.22, the house rules in chapter 02’s writing section, which you settled",
+       "Rule 13.6 and chapter 13’s sources, approved at board 1"
       ],
-      "respects": "Chapter 02’s writing rules do not change."
+      "respects": "Chapter 02 changes only on your named reply."
      },
      "refs": [
-      "D3-2144"
+      "D3-2144",
+      "DR-73",
+      "DR-237"
      ],
      "pictures": [
       {
@@ -1387,14 +1481,14 @@
      },
      "question_for_dustin": true,
      "id": "RP-14-headings",
-     "title": "Headings in the selection guide and chapter 14’s group heads",
-     "answer": "Make “Choose a chart” a level 3 heading and each question a level 4 heading, and give chapter 14’s 18 group heads heading levels in the same pass.",
-     "what_changed": "Nothing yet. A reader who moves by headings passes the selection guide’s links without meeting a heading, as they pass chapter 14’s group heads; a reader who moves by lists meets 16 lists, each named by its question.",
-     "why": "The main session declined it in the fix pass (call 17, D3-2142), since a plate holds no heading; the maker put it to you as a choice.",
-     "recommendation": "Yes. The selection guide sits in the chapter’s head with no frame, so its questions work as the chapter’s own headings; the guide check allows headings in that one plate.",
+     "title": "Headings in “Choose a chart” and chapter 14’s group heads",
+     "answer": "Make “Choose a chart” a heading with its sixteen questions as headings under it, and give chapter 14’s 18 group heads heading levels too, so a reader who moves by headings finds them.",
+     "what_changed": "Nothing yet. A screen reader user moving by headings passes every link in the guide, and chapter 14’s group heads, without meeting a heading. One moving by lists meets 16 lists, each named by its question.",
+     "why": "The studio declined it in the fix pass, since the guide’s rules put no heading inside a plate, and the guide’s maker put it to you.",
+     "recommendation": "Yes. The selection guide sits at the head of chapter 14 with no frame, so its questions can serve as the chapter’s headings, and the guide check allows headings in that one plate.",
      "settled": {
       "touches": [],
-      "respects": "No settled element changes; the words stay the coverage plan’s."
+      "respects": "The questions keep the coverage plan’s words."
      },
      "refs": [
       "RP-14",
@@ -1415,16 +1509,16 @@
      "id": "S59-label",
      "spec": "S59",
      "rule": "14.77",
-     "title": "S59’s “4.1” label against its line",
-     "answer": "Move S59’s “4.1” label clear of its line by a spec key, as S14’s was moved.",
-     "what_changed": "Nothing yet. At 390 and 558 px the label sits against a line of the fan chart.",
-     "why": "S59 is approved (DR-263); the fix pass moved only S14’s label (call 18).",
-     "recommendation": "Move it, by a spec key alone. Turn the kit’s edge guard on for every form only after a sweep lists each approved chart the guard would move, for you to see first.",
+     "title": "S59’s “4.1” label sits against its line",
+     "answer": "Move the “4.1” label on S59, the fan chart, clear of the line it touches, by a setting in S59’s own chart file, as S14’s label was moved.",
+     "what_changed": "Nothing yet. On a 390 px phone and in a 1,024 px window, the label sits against a line of the fan chart.",
+     "why": "You approved S59 at board 2, and the fix pass moved only S14’s label.",
+     "recommendation": "Yes, by that setting alone. Switch on the kit’s label-clearance check for every chart only after a run lists each approved chart it would move, for you to see first.",
      "settled": {
       "touches": [
-       "S59 (DR-263)"
+       "S59, approved at board 2"
       ],
-      "respects": "The data, scale and words of S59 stay; only the label’s place moves."
+      "respects": "Only the label’s place moves."
      },
      "refs": [
       "DR-263",
@@ -1451,7 +1545,7 @@
        "label": "With the label moved, on a 390 px phone",
        "role": "view",
        "owner": "engineer",
-       "how": "S59 built with the spec key in a scratch kit",
+       "how": "S59 built with the new setting in a working copy of the kit",
        "row": "390"
       },
       {
@@ -1478,16 +1572,16 @@
      },
      "question_for_dustin": true,
      "id": "masthead-360",
-     "title": "The masthead at 360 to 375 px",
-     "answer": "Move the 16 px wordmark master’s switch to 376 px, after the design director has looked at it there.",
-     "what_changed": "Nothing yet. At 360 to 372 px the 24 px wordmark returns and the menu button drops to a second line, so the masthead takes 132 to 133 px, about a fifth of a 640 px phone screen.",
-     "why": "It changes where Rule 03.6’s two approved masters meet; a change to identity needs your named approval (gate rule 4).",
-     "recommendation": "Yes, with the design director’s look at 360 to 375 px first; the accessibility lead recommends it.",
+     "title": "The masthead on phones 360 to 375 px wide",
+     "answer": "Use the 16 px wordmark on screens up to 375 px wide, where it now stops at 359 px, so the menu button stays on the wordmark’s line.",
+     "what_changed": "Nothing yet. At 360 to 372 px the 24 px wordmark returns and the menu button drops to a second line, so the masthead takes 132 to 133 px, about a fifth of a 640 px phone screen. With the 16 px wordmark at 360 px it takes 89 px, on one line.",
+     "why": "It moves where the two wordmark masters you approved in Rule 03.6 meet, so it waits on your reply. Neither drawing changes.",
+     "recommendation": "Yes. The design director looked at both widths and sees nothing against it, and the accessibility lead recommends it.",
      "settled": {
       "touches": [
-       "Rule 03.6’s wordmark masters (Gate 2)"
+       "Rule 03.6’s two wordmark masters, approved at Gate 2"
       ],
-      "respects": "Neither master’s drawing changes; only the width where one gives way to the other."
+      "respects": "Only the screen width where one master gives way to the other moves."
      },
      "refs": [
       "AX question 1",
@@ -1512,7 +1606,7 @@
        "label": "At 360 px with the 16 px master",
        "role": "view",
        "owner": "design director",
-       "how": "the shell with the switch at 23.5em in scratch",
+       "how": "the page frame with the switch at about 376 px, in a working copy of the final build",
        "row": "360"
       },
       {
@@ -1533,7 +1627,7 @@
        "label": "At 375 px with the 16 px master",
        "role": "view",
        "owner": "design director",
-       "how": "as above",
+       "how": "the same working copy",
        "row": "375"
       }
      ],
@@ -1547,22 +1641,25 @@
      },
      "question_for_dustin": true,
      "id": "red-target-keyline",
-     "title": "The keyline inside the red target: two settled rules disagree",
-     "answer": "Two things you settled point different ways, so only you can choose. Rule 05.5 says a red mark that carries meaning on Newsprint takes a 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 there. The atlas visual system (DR-36) draws its red target with no keyline. Rules 15.20 and 14.144 now draw the keyline; Rules 15.11, 15.12 and 15.16 do not.",
-     "what_changed": "Call 15 (D3-2140) gave the chooser plates, Rules 15.20 and 14.144, a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead. Rules 15.11, 15.12 and 15.16, approved at board 2, keep the atlas’s red target with no keyline, so on Newsprint their red stands at about 2.95 to 1, under the 3 to 1 that Rule 05.5 and WCAG 2.2’s 1.4.11 ask of a mark a reader needs. Today one red target has two looks.",
-     "why": "Rule 05.5 (chapter 05, approved) and the atlas visual system’s red target (DR-36) are both on your settled list, and on these five plates they cannot both hold.",
-     "recommendation": "Keep the atlas’s red target as you settled it (DR-36): the keyline and the ink edge come off Rules 15.20 and 14.144, so one red target has one look again. The cost: on Newsprint the red ring stands at about 2.95 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and WCAG 2.2’s 1.4.11 ask (the accessibility reader’s AX-S5). The keyline everywhere would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it takes your own word: reply “Keyline everywhere”.",
+     "title": "The red target’s keyline: two things you settled disagree",
+     "answer": "Two things you settled point different ways, so only you can choose. Rule 05.5 gives a red mark that carries meaning on Newsprint a 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 against Newsprint. The atlas visual system you chose draws its red target with no keyline. Rules 15.20 and 14.144 now draw the keyline; Rules 15.11, 15.12 and 15.16 do not.",
+     "what_changed": "The fix pass gave the chooser plates, Rules 15.20 and 14.144, a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead. Rules 15.11, 15.12 and 15.16, approved at board 2, keep the atlas’s red target with no keyline. Today one red target has two looks.",
+     "why": "Rule 05.5, in chapter 05, and the atlas visual system’s red target are both on your settled list, and on these five plates they cannot both hold.",
+     "recommendation": "Keep the atlas’s red target as you settled it. The keyline and the arrowhead’s ink edge come off Rules 15.20 and 14.144, so the red target has one look again. The cost: on Newsprint the red ring stays at 2.96 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and the web accessibility standard (WCAG 2.2, 1.4.11) ask of a mark a reader needs. A keyline on every red target would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it needs your own word: reply “Keyline everywhere”.",
      "settled": {
       "touches": [
-       "Rule 05.5’s keyline on a red mark on Newsprint (chapter 05, approved)",
-       "Rule 12.5’s red target, a mark of the atlas visual system (DR-36)",
-       "Rules 15.11, 15.12 and 15.16 (board 2)"
+       "Rule 05.5’s keyline on a red mark on Newsprint, in chapter 05, approved at Gate 2",
+       "Rule 12.5’s red target, a mark of the atlas visual system you settled",
+       "Rules 15.11, 15.12 and 15.16, approved at board 2"
       ],
-      "respects": "The recommendation changes nothing you settled: it returns Rules 15.20 and 14.144 to the atlas’s drawing. The keyline everywhere happens only on your named reply."
+      "respects": "The recommendation changes nothing you settled: it returns Rules 15.20 and 14.144 to the atlas’s drawing. A keyline on every red target happens only on your named reply."
      },
      "refs": [
       "D3-2140",
-      "CR-S1"
+      "CR-S1",
+      "DR-36",
+      "D3-2284",
+      "AX-S5"
      ],
      "pictures": [
       {
@@ -1594,7 +1691,7 @@
        "label": "Rule 15.11 with the keyline",
        "role": "view",
        "owner": "systems designer",
-       "how": "the `keyline` flag set in a scratch run of the chapter 15 build"
+       "how": "the keyline switched on in a working run of chapter 15’s build"
       },
       {
        "kind": "guide",
@@ -1630,20 +1727,21 @@
      "question_for_dustin": true,
      "id": "CR-S17-chips",
      "title": "Chapter 13’s chips and Rule 18.24’s code chip",
-     "answer": "Drop tabular figures from the chip ID in chapter 13 and in Rule 18.24, as chapter 15’s chips already do.",
-     "what_changed": "Nothing yet. Tabular figures set Inter’s hyphen at a figure’s width, so “R-04” reads “R - 04”, the hyphen 8.42 px wide against 6.06.",
-     "why": "Both are approved work outside this pass’s rows.",
-     "recommendation": "Yes, with the anatomy key’s words changed to match.",
+     "answer": "Set the chip IDs in chapter 13 and Rule 18.24 with figures at their natural width, as chapter 15’s chips are, so “R-04” stops reading “R - 04”.",
+     "what_changed": "Nothing yet. Fixed-width figures widen Inter’s hyphen to 8.42 px from 6.06.",
+     "why": "Both are approved work that the fix pass could not reach.",
+     "recommendation": "Yes, with Rule 18.24’s anatomy key reworded to match.",
      "settled": {
       "touches": [
-       "chapter 13 (DR-237)",
-       "Rule 18.24 (Gate 2)"
+       "chapter 13, approved at board 1",
+       "Rule 18.24, approved at Gate 2"
       ],
       "respects": "The chip’s drawing stays."
      },
      "refs": [
       "CR-S17",
-      "D3-2152"
+      "D3-2152",
+      "DR-237"
      ],
      "pictures": [
       {
@@ -1681,16 +1779,17 @@
      "id": "S71-retrieved",
      "spec": "S71",
      "rule": "14.101",
-     "title": "S71 says “read” where every other date says “retrieved”",
-     "answer": "Print “retrieved” on S71’s route pages, as chapter 15’s plates do.",
-     "what_changed": "Nothing yet. S71 prints “read” for the date a source was taken; chapters 11, 14 and 15 say “retrieved” (ruling R7).",
-     "why": "S71 is approved at board 2.",
-     "recommendation": "Yes.",
+     "title": "“Read” or “retrieved” for the date a source was taken",
+     "answer": "Five charts and one map say “read” for the date a source was taken, where the rest of the guide says “retrieved”. Print “retrieved” in all six, and in Rule 14.101’s instruction.",
+     "what_changed": "Nothing yet. S71 prints “read” in its grade line and route table, as S41, S42, S53, S67 and Rule 01.5’s map do. Chapter 15’s plates and S71’s own source line say “retrieved”.",
+     "why": "One kind of date takes one word (Rule 13.6). All six are approved work, so one answer covers them.",
+     "recommendation": "Yes: S71, S41, S42, S53, S67 and Rule 01.5’s map print “retrieved”, and Rule 14.101 asks for “the date it was retrieved”, where it says “the date it was read”.",
      "settled": {
       "touches": [
-       "S71 (board 2)"
+       "S71, S41, S42, S53, S67 and Rule 14.101, approved at board 2",
+       "Rule 01.5’s map, approved at Gate 2"
       ],
-      "respects": "One word in the source dates; no figure moves."
+      "respects": "One word changes; no figure moves."
      },
      "refs": [
       "DF-10",
@@ -1722,18 +1821,20 @@
      "id": "14.6-ink",
      "rule": "14.6",
      "title": "Rule 14.6 names a color that changes with the ground",
-     "answer": "Say “the text’s ink at the subject weight” in Rule 14.6, where it says “Charcoal at the subject weight”.",
-     "what_changed": "Nothing yet. On a Charcoal ground the text’s ink is light, so “Charcoal” names the wrong color there.",
-     "why": "Rules 14.1 to 14.14 changed only for DF-12 and DF-13 in the fix pass.",
-     "recommendation": "Yes.",
+     "answer": "Rule 14.6 says “Charcoal at the subject weight”, but on a Charcoal ground the text’s ink is light. Say “the text’s ink at the subject weight”.",
+     "what_changed": "Nothing yet; on Charcoal the words name the wrong color.",
+     "why": "You approved Rule 14.6 at board 2, and the fix pass changed Rules 14.1 to 14.14 only to define terms.",
+     "recommendation": "Yes, wherever Rule 14.6’s text and specifications say it.",
      "settled": {
       "touches": [
-       "Rule 14.6 (board 2)"
+       "Rule 14.6, approved at board 2"
       ],
       "respects": "Words only."
      },
      "refs": [
-      "DF-5"
+      "DF-5",
+      "DF-12",
+      "DF-13"
      ],
      "pictures": [],
      "reply_number": 14
@@ -1747,13 +1848,13 @@
      "question_for_dustin": true,
      "id": "pillar-red-ratio",
      "title": "Pillar Red’s contrast printed two ways",
-     "answer": "Keep chapter 05 as approved, and let the palette plate name its rounding beside each figure.",
-     "what_changed": "Nothing yet. The palette plate prints 2.95 and 4.16 to 1, rounded down (call 9); chapter 05 prints 2.96 and 4.17, rounded to the nearest, from the same measured 2.9568.",
-     "why": "Chapter 05 is approved, and each figure is true to two places.",
-     "recommendation": "The palette plate names its rounding beside the figure, as its method line already says; chapter 05 stays as you approved it.",
+     "answer": "The palette plate prints Pillar Red on Newsprint at 2.95 to 1, rounded down, and chapter 05 at 2.96, rounded to the nearest, from one measure, 2.9568. Keep chapter 05, and have the palette plate say beside each figure that it rounds down.",
+     "what_changed": "Nothing yet. The plate rounds every ratio down so that none rounds up past a threshold such as 3 to 1; on White it prints 4.16 where chapter 05 prints 4.17.",
+     "why": "Chapter 05 is approved, and each figure is true to two decimal places.",
+     "recommendation": "Yes; chapter 05 stays as you approved it.",
      "settled": {
       "touches": [
-       "chapter 05 (Gate 2)"
+       "chapter 05, approved at Gate 2"
       ],
       "respects": "Chapter 05 does not change."
      },
@@ -1796,16 +1897,16 @@
      "id": "15.15-read-aloud",
      "rule": "15.15",
      "title": "Rule 15.15’s read-aloud line",
-     "answer": "Read the loop as “The quality of public services rises ...”, which keeps the variable’s own title.",
-     "what_changed": "Nothing yet. The line reads “More quality of public services ... and back to less quality of public services”.",
-     "why": "Rule 15.15 is approved, and “more” and “less” before a quality noun is the read-aloud function’s rule for every loop, so a change reaches every read-aloud line of that kind.",
-     "recommendation": "Yes, the “The quality of ... rises” form, which keeps each variable’s own title as DR-265 asks; the editor lists every read-aloud line it changes before the build.",
+     "answer": "Rule 15.15’s loop reads aloud as “More quality of public services … and back to less quality of public services”. Say “The quality of public services rises ...” instead, which keeps the variable’s title.",
+     "what_changed": "Nothing yet. The full line reads “More quality of public services, less risk of losing office, fewer incumbents defeated or pushed into retirement, and back to less quality of public services.”",
+     "why": "Rule 15.15 is approved, and one build rule writes “more” or “less” before the title in every loop’s read-aloud line, so the change reaches every line of that kind.",
+     "recommendation": "Yes, the “The quality of … rises” form, which keeps each variable’s own title as you asked at board 2; the editor lists every line it changes before the build.",
      "settled": {
       "touches": [
-       "Rule 15.15 (board 2)",
-       "DR-265"
+       "Rule 15.15, approved at board 2",
+       "your answer that each variable keeps its own title"
       ],
-      "respects": "The variable keeps its own title."
+      "respects": "Each variable keeps its own title."
      },
      "refs": [
       "DR-265"
@@ -1822,15 +1923,15 @@
      "question_for_dustin": true,
      "id": "CR-S19-chip",
      "title": "The evidence chip when its grade line wraps",
-     "answer": "Set the grade line beside the chip on S89, S91 and S94, which are not yet approved, and keep today’s layout on every approved chart.",
-     "what_changed": "The layout landed opt-in as `\"evidence_layout\": \"beside\"`; no spec sets it. Where a grade line does not fit beside the chip it drops under the chip alone, so the heads of S89, S91 and S94 read in a second layout.",
-     "why": "As the kit’s default it moves every signed-off chart whose grade line wraps at some width, which no browser has measured.",
-     "recommendation": "Take the opt-in on S89, S91 and S94 in the finishing pass; leave the default, so no approved chart moves, unless a sweep at every width lists the charts it would move for you to see.",
+     "answer": "On a narrow screen a chart’s grade line can drop under its evidence chip, the tag naming its kind of evidence. Set the grade line beside the chip on the three new charts S89, S91 and S94, and keep today’s layout on every approved chart.",
+     "what_changed": "Nothing on the page yet. The kit gained the layout as a setting no chart turns on, so the heads of S89, S91 and S94 still drop the grade line under the chip.",
+     "why": "As the default it would move every approved chart whose grade line wraps at some width, and no browser has measured which.",
+     "recommendation": "Turn the side-by-side layout on for S89, S91 and S94 in the finishing pass, and leave the kit’s default, so no approved chart moves until a run at every width lists the charts a new default would move.",
      "settled": {
       "touches": [
-       "the chart system’s header (DR-52)"
+       "the chart header in the chart system you settled"
       ],
-      "respects": "No approved chart moves."
+      "respects": "No approved chart moves; only three charts not yet approved take the layout."
      },
      "refs": [
       "CR-S19"
@@ -1855,7 +1956,7 @@
        "label": "S91 with the grade line beside the chip",
        "role": "view",
        "owner": "engineer",
-       "how": "S91 built with the opt-in in a scratch kit",
+       "how": "S91 built with the side-by-side layout in a working copy of the kit",
        "row": "390"
       }
      ],
@@ -1871,13 +1972,13 @@
      "id": "15.22-examples",
      "rule": "15.22",
      "title": "Why Rule 15.22 shows these two laws",
-     "answer": "State the rule that chose each law in the plate’s note.",
-     "what_changed": "Nothing yet. The sunset example is Public Law 115-97, section 11022, and the later change is Public Law 119-21, section 70104; the plate names each law but not the rule that chose it.",
-     "why": "Raised by the creative director as a risk for you to weigh (RP-11).",
-     "recommendation": "State the rule in the note, for example the most recent sunset and the most recent repeal the research lead found, with the date searched. The laws stay as the rule finds them; none is swapped to even the sides (DR-93).",
+     "answer": "Rule 15.22’s plate shows a sunset with Public Law 115-97, the tax law approved December 22, 2017, and a later change with Public Law 119-21, the tax law approved July 4, 2025, without saying why these two. Print the rule that chose them.",
+     "what_changed": "Nothing yet. The plate cites section 11022 of the 2017 law and section 70104 of the 2025 law, and its court case already prints the rule that chose it.",
+     "why": "The creative director raised it as a risk: with no stated rule, a reader on either side may see a choice. No search for the most recent sunset or repeal has run, so the plate cannot claim one.",
+     "recommendation": "Print the rule the files show: both are the child tax credit’s own laws, which S30 charts; the 2017 law set the credit’s end date and the 2025 law struck it. For a stated search instead, such as the most recent sunset and repeal enacted by a named date, reply “Run the search”, and the plate prints what it finds with the date searched. Either way, no law is swapped to even the sides.",
      "settled": {
       "touches": [],
-      "respects": "One standard of evidence (DR-93); every line read from both sides (DR-124)."
+      "respects": "One standard of evidence for everyone, read from the left and from the right."
      },
      "refs": [
       "RP-11",
@@ -1908,13 +2009,13 @@
      "question_for_dustin": true,
      "id": "Q-PR1",
      "title": "Room on the page for Phase 4",
-     "answer": "Size each Phase 4 chapter from its nearest built chapter before Phase 4 starts, and decide then what ships as a download; cut nothing now.",
-     "what_changed": "Nothing. The projection gives Phase 4’s seven chapters 362,857 bytes each, against 484,486 each to stay under 16 MB and 413,057 under the 15.5 MB warning; today’s 18 built chapters other than 14 weigh 323,348 at the median and 459,192 on average.",
-     "why": "The production reader put it to you; DR-271 keeps the page’s 16 MB as the one fixed limit.",
-     "recommendation": "As suggested: the engineer sizes each chapter first; nothing is cut now (DR-271).",
+     "answer": "Size each Phase 4 chapter from the nearest chapter already built before Phase 4 starts, decide then what ships as a download, and cut nothing now.",
+     "what_changed": "Nothing yet. The projection gives each of Phase 4’s seven chapters 362,857 bytes, against 484,486 each to stay under 16 MB and 413,057 under the 15.5 MB warning. The other 18 built chapters, chapter 14 aside, weigh 323,348 bytes at the median and 459,192 on average.",
+     "why": "The production reader put it to you, and you set the 16 MB as the page’s one fixed limit.",
+     "recommendation": "Yes; only the page’s 16 MB is fixed.",
      "settled": {
       "touches": [],
-      "respects": "DR-271"
+      "respects": "Only the 16 MB is fixed, as you set it."
      },
      "facts": [
       {
@@ -1942,19 +2043,20 @@
      },
      "question_for_dustin": true,
      "id": "AX-S3-tables",
-     "title": "Chapter 11’s step tables and marks plate: an alt that repeats the table",
-     "answer": "Shorten the alts of the bill’s step table and the marks plate to their head sentence, and give each table a caption with the same sentence.",
-     "what_changed": "Nothing yet. Each table’s alt repeats every step’s words and law (1,509 characters against a 1,373-character table), and no table has a caption, so a list of tables names each one only “table”.",
-     "why": "`s-11-steps` and `s-11-marks-drawn` are approved at Gate 2; the two new tables are not.",
-     "recommendation": "Yes, with the caption visually hidden or set as the plate’s label, so nothing on the screen changes.",
+     "title": "Chapter 11’s step table and marks plate: descriptions that repeat the table",
+     "answer": "Cut the text descriptions of the bill’s step table and the marks plate to their opening sentence, and give each table that sentence as its caption, so a screen reader stops hearing every step twice.",
+     "what_changed": "Nothing yet. Each step table’s description repeats every step and law, up to 1,509 characters against a 1,373-character table, and with no captions a screen reader names each table only “table”.",
+     "why": "These two plates were approved at Gate 2; the two new tables get the same fix in the finishing pass.",
+     "recommendation": "Yes, with each caption hidden from sight or set as the plate’s label, so nothing on the screen changes.",
      "settled": {
       "touches": [
-       "chapter 11 (Gate 2)"
+       "chapter 11, approved at Gate 2"
       ],
       "respects": "Nothing changes on the screen."
      },
      "refs": [
-      "AX-S3"
+      "AX-S3",
+      "DR-286"
      ],
      "pictures": [],
      "reply_number": 20
@@ -1969,10 +2071,10 @@
      "id": "CR-S4-sticky",
      "rule": "15.19",
      "title": "A drawing that stays in view while a reader steps through Rule 15.19",
-     "answer": "Leave the drawing as it is for now; the second pass fixed the order, and the sticky frame waits for the shell.",
-     "what_changed": "The second pass set Rule 15.19’s parts in Rule 14.143’s order (RS-7). At a desk the drawing still ends about 340 px above Play, so its column stands empty while a reader steps through the list.",
-     "why": "Every plate frame scrolls sideways today, so a sticky part sticks to its frame; changing that reaches every frame’s clipping and keyboard scrolling.",
-     "recommendation": "Hold the sticky frame for the shell’s next pass, when every frame can be measured at once.",
+     "answer": "Leave Rule 15.19’s drawing as it is for now. The second pass fixed the order of its parts, and a drawing that stays in view while the reader scrolls waits for the page frame’s next pass.",
+     "what_changed": "The second pass set Rule 15.19’s parts in Rule 14.143’s order. At a desk the drawing still ends about 340 px above the Play button, so its column stands empty while a reader steps through the list.",
+     "why": "Every plate frame scrolls sideways today, so a part set to stay in view stays inside its frame, and changing that touches how every frame clips and scrolls.",
+     "recommendation": "Hold it for that pass, when every plate frame can be measured at once.",
      "settled": {
       "touches": [],
       "respects": "No approved plate changes."
@@ -2002,10 +2104,10 @@
       "code": "D3-2278",
       "file": "work/ledger/20261020_Decision-Log.md"
      },
-     "answer": "Print a “Related rules” line of links beside Related chapters on chapter 14’s entries.",
-     "what_changed": "The second pass gave entries 14.32, 14.74, 14.88, 14.96 and 14.135 the related rules the reader panel asked for (RS-5), but the page prints a rule’s related items only as chapters, so no rule number reaches a reader.",
-     "why": "It changes the foot of every approved chapter 14 entry that carries related rules.",
-     "recommendation": "Yes. The data is in every entry already, so it is one build change; the engineer measures the bytes before it is built.",
+     "answer": "Add a “Related rules” line of links beside Related chapters at the foot of chapter 14’s entries.",
+     "what_changed": "Nothing on the page yet. The second pass gave entries 14.32, 14.74, 14.88, 14.96 and 14.135 the related rules the reader panel asked for, but the page prints related items only as chapters.",
+     "why": "It changes the foot of every approved chapter 14 entry with related rules.",
+     "recommendation": "Yes. Every entry already holds the data, so it is one change to the build, and the engineer measures the bytes before it is built.",
      "facts": [
       {
        "label": "Rules that would print the line",
@@ -2021,12 +2123,12 @@
       },
       {
        "label": "Estimated weight",
-       "value": "About 37,000 bytes, by one link per related rule in the page’s link form; an estimate, not measured"
+       "value": "About 37,000 bytes, estimated from one link per related rule in the page’s link form; no one has measured it yet"
       }
      ],
      "settled": {
       "touches": [
-       "chapter 14’s entries (board 2)"
+       "the foot of chapter 14’s entries, approved at board 2"
       ],
       "respects": "No rule’s words change."
      },
@@ -2055,7 +2157,7 @@
        "label": "Rule 14.32’s foot with a Related rules line",
        "role": "view",
        "owner": "engineer",
-       "how": "a scratch build that prints related_rules",
+       "how": "a working build that prints the related rules as links",
        "row": "a"
       }
      ],
@@ -2066,12 +2168,14 @@
      "title": "Trademark clearance for the name, the monogram and the ampersand",
      "question": "Q-12",
      "answer": "Have a trademark attorney run clearance on OATH & ACTION, the monogram and the standalone ampersand before launch.",
-     "what_changed": "Nothing. The question has stood since Gate 1; the guide flags the need and assumes no filing.",
-     "why": "The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement",
-     "recommendation": "Yes, before Phase 5’s release; the guide keeps its flag until the attorney reports. The research lead adds the facts.",
+     "what_changed": "Nothing. The question has stood since Gate 1. Its default says the guide flags the need and assumes no filing, but no chapter prints that flag yet; the list of deferred fixes holds the missing sentence as open.",
+     "why": "The drawn ampersand’s value depends on clearance, and Braver Angels had to rename in 2020 after a trademark settlement. No file records a trademark search for these marks.",
+     "recommendation": "Yes, before Phase 5’s release. Until the attorney reports, chapter 04 adds one sentence where it explains why ampersand B is drawn: a trademark attorney’s clearance of the name, the monogram and the ampersand is pending before launch. Ampersand B’s likeness check against commercial serif ampersands runs before that clearance. Chapter 04 is approved, so a yes here also approves that sentence.",
      "settled": {
-      "touches": [],
-      "respects": "No design changes."
+      "touches": [
+       "chapter 04, approved at Gate 2, for one sentence"
+      ],
+      "respects": "No mark’s drawing changes."
      },
      "refs": [
       "Q-12"
@@ -2086,16 +2190,16 @@
   {
    "id": "atlas-v7-1",
    "title": "The proposed atlas V7.1 row",
-   "lede": "One finding from round 4 for the atlas editor’s list, which needs your word to join it (D3-1861).",
+   "lede": "One finding from round 4 for the list of fixes to the atlas’s next version, V7.1. A new row joins that list only with your word.",
    "approval": "one",
    "items": [
     {
      "id": "routes-who",
-     "title": "Each reform route’s “who” field holds three kinds of thing",
-     "answer": "Add a row to the V7.1 list: keep `who` for who acts, and move an instrument or an action to the route’s note or a new field.",
-     "what_changed": "Nothing in the atlas. Of its 126 route entries (89 values), many name an actor (“Congress” 12, “Voters” 9, “Legislatures” 8), others an instrument (“Statute” 5, “Amendment” 3), and 5 an action that opens with a verb, such as R-03’s federal statute route, “Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting”. Rule 15.20’s correct plate prints that line on R-03’s route card.",
-     "why": "A new row on the V7.1 list needs your word (D3-1861); the guide never changes the V7 model.",
-     "recommendation": "Add the row, as board 2’s items were added (DR-264).",
+     "title": "The atlas’s who-acts words for reform routes hold three kinds of thing",
+     "answer": "Add a row to the list of fixes for the atlas’s next version, V7.1: keep each route’s who-acts field for who acts, and move an instrument or an action into a field of its own, as the atlas’s eleven route records already do.",
+     "what_changed": "Nothing in the atlas. Its 126 route entries hold 89 different who-acts values: most name who acts (“Congress” 12 times), others an instrument (“Statute” 5), and five an action that opens with a verb, such as the federal statute route of Reform R-03, proportional elections in multi-seat House districts: “Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting”. Rule 15.20’s correct plate prints that line as stored, with no “Who acts” label.",
+     "why": "A new V7.1 row needs your word, and the guide never changes the atlas’s model. The route entries’ notes already hold text on 50 entries, so a field of its own is the clearer home.",
+     "recommendation": "Add the row, as your board 2 answer added the other V7.1 items.",
      "new_to_v7_1_list": true,
      "counts": [
       {
@@ -2205,7 +2309,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "Rule 15.20 today: R-03’s federal statute route prints an action where it means who acts",
+       "label": "Rule 15.20 today: under R-03’s federal statute route, the atlas’s words name an action, where the card’s other routes name who acts",
        "role": "after",
        "fold": true
       }
@@ -3860,7 +3964,7 @@
      "round": 5
     }
    ],
-   "note": "Chapter 14 as finished holds 112 examples: 13 on rule plates, 96 kit charts and 3 in the three charts in full; its 30 sketches draw invented data and count none. The largest domain, Taxes, wealth and economic security, supplies 16 against a limit of 28, and no state supplies more than 5 against 22. The recount agrees with the generator’s log row for row.",
+   "note": "Chapter 14 as finished holds 112 examples: 13 on rule plates, 96 kit charts and 3 in the charts in full. Its 30 sketches draw invented data and count none. The largest topic, Taxes, wealth and economic security, supplies 16 against a limit of 28, and no state supplies more than 5 against a limit of 22. The recount agrees row for row with the log the chapter’s build keeps.",
    "caption": "Chapter 14’s examples by topic and by state, of 112, rounds 0 to 5."
   },
   "dr_229": {
@@ -4211,7 +4315,7 @@
    "added_since_board_2": [
     "Rule 14.143 plate (Rule 14.143)"
    ],
-   "note": "18 of the 112 examples draw election or voting data: 13 in elections and representation and 5 on reported voting. Every new form that keeps election data passes D3-689’s test (5 pass, 0 fail). Since board 2 one example joined: Loop R10 on Rule 14.143, one of Gate 2’s three named complex examples.",
+   "note": "Of the 112 examples, 18 draw election or voting data: 13 under elections and representation and 5 on reported voting. All five new forms that keep election data pass the test above, and none fails. One example has joined since board 2: Loop R10 on Rule 14.143, one of the three complex examples Gate 2 named.",
    "caption": "Examples that draw election or voting data, of the 112 in chapter 14."
   }
  },
@@ -4220,23 +4324,23 @@
    "n": 1,
    "panel": "trackers",
    "id": "11.10",
-   "line": "Rule 11.10, a state ballot measure, in six steps: approve the six names.",
-   "recommendation": "Approve the six names as the plate prints them.",
+   "line": "Rule 11.10’s six step names for a state ballot measure.",
+   "recommendation": "Approve them as the plate prints them.",
    "item": "11.10"
   },
   {
    "n": 2,
    "panel": "trackers",
    "id": "11.11",
-   "line": "Rule 11.11, a federal court case, in six steps: approve the six names.",
-   "recommendation": "Approve the six names as the plate prints them.",
+   "line": "Rule 11.11’s six step names for a federal court case.",
+   "recommendation": "Approve them as the plate prints them.",
    "item": "11.11"
   },
   {
    "n": 3,
    "panel": "changed-approved",
    "id": null,
-   "line": "The 16 changes to approved work, as listed.",
+   "line": "The 16 changes to work you approved.",
    "recommendation": "Approve them as listed.",
    "item": "changed-approved"
   },
@@ -4244,16 +4348,16 @@
    "n": 4,
    "panel": "held",
    "id": "CE-S22-words",
-   "line": "Three pairs of the selection guide’s questions overlap.",
-   "recommendation": "Keep the questions. Take the next item’s example lines instead, which leave the questions as approved.",
+   "line": "Three pairs of questions in “Choose a chart” sound alike.",
+   "recommendation": "Keep the questions as approved, and take the next reply’s example lines in place of new wording.",
    "item": "CE-S22-words"
   },
   {
    "n": 5,
    "panel": "held",
    "id": "CE-S22-examples",
-   "line": "One reader’s example under each of the sixteen questions.",
-   "recommendation": "Add the sixteen lines in the finishing pass: about 100 bytes each, no new keyboard stop, and the approved questions unchanged.",
+   "line": "An example question under each of the sixteen.",
+   "recommendation": "Add the sixteen lines in the finishing pass.",
    "item": "CE-S22-examples"
   },
   {
@@ -4261,23 +4365,23 @@
    "panel": "held",
    "id": "NB-S4",
    "line": "The lockmark at the end of a chart’s source line.",
-   "recommendation": "The kit’s exports, the PNG and SVG a partner or a story takes away, draw the 16 px lockmark at the source line’s right end; the on-page plates stay as approved, since a view shows the lockmark once (Rule 08.2); Rule 08.2’s row adds “on a chart exported alone”.",
+   "recommendation": "Draw it on charts exported to stand alone, and leave the guide’s plates as approved.",
    "item": "NB-S4"
   },
   {
    "n": 7,
    "panel": "held",
    "id": "S14-line-02-13",
-   "line": "S14’s source line where chapters 02 and 13 print it.",
-   "recommendation": "Update both copies to S14’s line as it prints today; the editor’s words are ready.",
+   "line": "S14’s source line where chapters 02 and 13 quote it.",
+   "recommendation": "Update chapter 13’s copies and keep chapter 02’s as you settled it. To update both, reply “Chapter 02 too”.",
    "item": "S14-line-02-13"
   },
   {
    "n": 8,
    "panel": "held",
    "id": "RP-14-headings",
-   "line": "Headings in the selection guide and chapter 14’s group heads.",
-   "recommendation": "Yes. The selection guide sits in the chapter’s head with no frame, so its questions work as the chapter’s own headings; the guide check allows headings in that one plate.",
+   "line": "Headings in “Choose a chart” and chapter 14’s group heads.",
+   "recommendation": "Yes, make them headings.",
    "item": "RP-14-headings"
   },
   {
@@ -4285,23 +4389,23 @@
    "panel": "held",
    "id": "S59-label",
    "line": "S59’s “4.1” label against its line.",
-   "recommendation": "Move it, by a spec key alone. Turn the kit’s edge guard on for every form only after a sweep lists each approved chart the guard would move, for you to see first.",
+   "recommendation": "Move it by a setting in S59’s own file, and turn on the kit-wide check only after you see what it moves.",
    "item": "S59-label"
   },
   {
    "n": 10,
    "panel": "held",
    "id": "masthead-360",
-   "line": "The masthead at 360 to 375 px.",
-   "recommendation": "Yes, with the design director’s look at 360 to 375 px first; the accessibility lead recommends it.",
+   "line": "The masthead on phones 360 to 375 px wide.",
+   "recommendation": "Yes, use the 16 px wordmark up to 375 px.",
    "item": "masthead-360"
   },
   {
    "n": 11,
    "panel": "held",
    "id": "red-target-keyline",
-   "line": "The keyline inside the red target: two settled rules disagree.",
-   "recommendation": "Keep the atlas’s red target as you settled it (DR-36): the keyline and the ink edge come off Rules 15.20 and 14.144, so one red target has one look again. The cost: on Newsprint the red ring stands at about 2.95 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and WCAG 2.2’s 1.4.11 ask (the accessibility reader’s AX-S5). The keyline everywhere would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it takes your own word: reply “Keyline everywhere”.",
+   "line": "The red target’s keyline, where two things you settled disagree.",
+   "recommendation": "Keep the atlas’s red target as you settled it: the keyline and the arrowhead’s edge come off Rules 15.20 and 14.144, and the red stays under 3 to 1 on Newsprint. For a keyline on every red target, reply “Keyline everywhere”.",
    "item": "red-target-keyline"
   },
   {
@@ -4309,23 +4413,23 @@
    "panel": "held",
    "id": "CR-S17-chips",
    "line": "Chapter 13’s chips and Rule 18.24’s code chip.",
-   "recommendation": "Yes, with the anatomy key’s words changed to match.",
+   "recommendation": "Yes, narrow the hyphen, with the anatomy key’s words to match.",
    "item": "CR-S17-chips"
   },
   {
    "n": 13,
    "panel": "held",
    "id": "S71-retrieved",
-   "line": "S71 says “read” where every other date says “retrieved”.",
-   "recommendation": "Yes.",
+   "line": "“Read” or “retrieved” for the date a source was taken.",
+   "recommendation": "Print “retrieved” in all six places and in Rule 14.101’s instruction.",
    "item": "S71-retrieved"
   },
   {
    "n": 14,
    "panel": "held",
    "id": "14.6-ink",
-   "line": "Rule 14.6 names a color that changes with the ground.",
-   "recommendation": "Yes.",
+   "line": "Rule 14.6’s “Charcoal at the subject weight”.",
+   "recommendation": "Yes, say “the text’s ink at the subject weight”.",
    "item": "14.6-ink"
   },
   {
@@ -4333,7 +4437,7 @@
    "panel": "held",
    "id": "pillar-red-ratio",
    "line": "Pillar Red’s contrast printed two ways.",
-   "recommendation": "The palette plate names its rounding beside the figure, as its method line already says; chapter 05 stays as you approved it.",
+   "recommendation": "Keep chapter 05, and have the palette plate name its rounding beside each figure.",
    "item": "pillar-red-ratio"
   },
   {
@@ -4341,7 +4445,7 @@
    "panel": "held",
    "id": "15.15-read-aloud",
    "line": "Rule 15.15’s read-aloud line.",
-   "recommendation": "Yes, the “The quality of ... rises” form, which keeps each variable’s own title as DR-265 asks; the editor lists every read-aloud line it changes before the build.",
+   "recommendation": "Yes, use “The quality of … rises”, which keeps each variable’s title.",
    "item": "15.15-read-aloud"
   },
   {
@@ -4349,7 +4453,7 @@
    "panel": "held",
    "id": "CR-S19-chip",
    "line": "The evidence chip when its grade line wraps.",
-   "recommendation": "Take the opt-in on S89, S91 and S94 in the finishing pass; leave the default, so no approved chart moves, unless a sweep at every width lists the charts it would move for you to see.",
+   "recommendation": "Turn the side-by-side layout on for S89, S91 and S94 only.",
    "item": "CR-S19-chip"
   },
   {
@@ -4357,7 +4461,7 @@
    "panel": "held",
    "id": "15.22-examples",
    "line": "Why Rule 15.22 shows these two laws.",
-   "recommendation": "State the rule in the note, for example the most recent sunset and the most recent repeal the research lead found, with the date searched. The laws stay as the rule finds them; none is swapped to even the sides (DR-93).",
+   "recommendation": "Print the rule the files show: both are the child tax credit’s laws. For a stated search instead, reply “Run the search”.",
    "item": "15.22-examples"
   },
   {
@@ -4365,31 +4469,31 @@
    "panel": "held",
    "id": "Q-PR1",
    "line": "Room on the page for Phase 4.",
-   "recommendation": "As suggested: the engineer sizes each chapter first; nothing is cut now (DR-271).",
+   "recommendation": "Size each Phase 4 chapter first, and cut nothing now.",
    "item": "Q-PR1"
   },
   {
    "n": 20,
    "panel": "held",
    "id": "AX-S3-tables",
-   "line": "Chapter 11’s step tables and marks plate: an alt that repeats the table.",
-   "recommendation": "Yes, with the caption visually hidden or set as the plate’s label, so nothing on the screen changes.",
+   "line": "Chapter 11’s step table and marks plate: descriptions that repeat the table.",
+   "recommendation": "Yes, with nothing changed on the screen.",
    "item": "AX-S3-tables"
   },
   {
    "n": 21,
    "panel": "held",
    "id": "CR-S4-sticky",
-   "line": "A drawing that stays in view while a reader steps through Rule 15.19.",
-   "recommendation": "Hold the sticky frame for the shell’s next pass, when every frame can be measured at once.",
+   "line": "A drawing that stays in view on Rule 15.19.",
+   "recommendation": "Hold it for the page frame’s next pass.",
    "item": "CR-S4-sticky"
   },
   {
    "n": 22,
    "panel": "held",
    "id": "related-rules",
-   "line": "Print each chapter 14 rule’s related rules as links.",
-   "recommendation": "Yes. The data is in every entry already, so it is one build change; the engineer measures the bytes before it is built.",
+   "line": "Related rules as links on chapter 14’s entries.",
+   "recommendation": "Yes, once the engineer has measured the bytes.",
    "item": "related-rules"
   },
   {
@@ -4397,15 +4501,15 @@
    "panel": "held",
    "id": "Q-12",
    "line": "Trademark clearance for the name, the monogram and the ampersand.",
-   "recommendation": "Yes, before Phase 5’s release; the guide keeps its flag until the attorney reports. The research lead adds the facts.",
+   "recommendation": "Yes, before Phase 5’s release, with one sentence in chapter 04 until the attorney reports.",
    "item": "Q-12"
   },
   {
    "n": 24,
    "panel": "atlas-v7-1",
    "id": "routes-who",
-   "line": "Each reform route’s “who” field holds three kinds of thing.",
-   "recommendation": "Add the row, as board 2’s items were added (DR-264).",
+   "line": "A V7.1 row for the atlas’s who-acts words on reform routes.",
+   "recommendation": "Add the row.",
    "item": "routes-who"
   }
  ],
@@ -4417,5 +4521,7 @@
   "warnings": 0,
   "pictures_hidden": 101,
   "pictures_open": 315
- }
+ },
+ "words_edited_by": "editor",
+ "words_edited_utc": "2026-11-20T18:16:30Z"
 }

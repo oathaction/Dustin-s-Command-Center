@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T17:54:58.757918+00:00",
+ "built": "2026-11-20T18:14:52.973784+00:00",
  "decisions": {
   "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
   "state": "signed off",
@@ -10,8 +10,8 @@
  "final_build": {
   "page": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
   "report": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13-Build-Report.json",
-  "bytes": 12178907,
-  "built": "2026-11-20T17:50:25",
+  "bytes": 12178909,
+  "built": "2026-11-20T18:00:12",
   "warnings": 0,
   "rules": 369,
   "specimens": 679,
@@ -25,31 +25,48 @@
   "final": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html"
  },
  "photographs_asked": 156,
- "render_seconds": {
-  "guide": 336,
-  "made": 72
- },
  "shots": {
   "guide": {
    "asked": 156,
-   "taken": 134,
+   "taken": 0,
    "missing": []
   },
   "made": {
-   "asked": 3,
-   "taken": 3,
+   "asked": 10,
+   "taken": 4,
    "missing": []
   }
+ },
+ "made": {
+  "made-S59-label-390": "[scratch]/c08/board-3/builder/made/kit-s59/out/s59/s59-newsprint-358.png",
+  "made-CR-S19-chip-390": "[scratch]/c08/board-3/builder/made/kit-CR-S19-chip/out/s91/s91-newsprint-358.png",
+  "made-sg-3-1440": "[scratch]/c08/board-3/builder/shots/made-sg-3-1440.png",
+  "made-sg-4-1440": "[scratch]/c08/board-3/builder/shots/made-sg-4-1440.png",
+  "made-sg-3-390": "[scratch]/c08/board-3/builder/shots/made-sg-3-390.png",
+  "made-sg-4-390": "[scratch]/c08/board-3/builder/shots/made-sg-4-390.png",
+  "made-nb-today": "[scratch]/c08/board-3/builder/shots/made-nb-today.png",
+  "made-nb-sketch": "[scratch]/c08/board-3/builder/shots/made-nb-sketch.png",
+  "made-masthead-360-360": "[scratch]/c08/board-3/builder/shots/made-masthead-360-360.png",
+  "made-masthead-360-375": "[scratch]/c08/board-3/builder/shots/made-masthead-360-375.png",
+  "made-red-target-keyline-1440": "[scratch]/c08/board-3/builder/shots/made-red-target-keyline-1440.png",
+  "made-related-rules-1440": "[scratch]/c08/board-3/builder/shots/made-related-rules-1440.png",
+  "made-CE-S22-examples-1440": "[scratch]/c08/board-3/builder/made/made-CE-S22-examples-1440.png",
+  "made-NB-S4-1440": "[scratch]/c08/board-3/builder/made/made-NB-S4-1440.png"
  },
  "made_keyline": {
   "keyline_rects": 2,
   "edge": "stroke:var(--oa-color-graphic-essential);stroke-width:2px;paint-order:stroke"
  },
- "made": {
-  "made-CR-S19-chip-390": "[scratch]/c08/board-3/builder/made/kit-CR-S19-chip/out/s91/s91-newsprint-358.png",
-  "made-masthead-360-360": "[scratch]/c08/board-3/builder/shots/made-masthead-360-360.png",
-  "made-masthead-360-375": "[scratch]/c08/board-3/builder/shots/made-masthead-360-375.png",
-  "made-red-target-keyline-1440": "[scratch]/c08/board-3/builder/shots/made-red-target-keyline-1440.png"
+ "made_related": {
+  "rule": "14.32",
+  "links": [
+   "14.9",
+   "14.11",
+   "14.142"
+  ]
+ },
+ "render_seconds": {
+  "made": 51
  },
  "guide_widths": {
   "S85": {
@@ -433,21 +450,16 @@
   "estimate": [],
   "waiting": []
  },
- "panel_1_top_words": 881,
+ "panel_1_top_words": 631,
  "decide": {
   "items": 39,
   "questions": 23,
   "replies": 24,
   "state": "signed off",
-  "items_waiting": [
-   "CE-S22-examples",
-   "NB-S4",
-   "S59-label",
-   "related-rules"
-  ],
-  "pictures_waiting": 4
+  "items_waiting": [],
+  "pictures_waiting": 0
  },
- "panel_1_words": 7444,
+ "panel_1_words": 7763,
  "selection_guide": {
   "form_links": 127,
   "road_links": 6,
@@ -692,7 +704,7 @@
    ],
    [
     "The whole guide today",
-    12178907,
+    12178909,
     15500000
    ],
    [
@@ -856,14 +868,32 @@
   }
  },
  "tested": {
-  "The final build’s strict build": "read from its report, built November 20, 2026: no warnings, 12,178,907 bytes, 369 rules and 679 examples placed",
-  "The four-width guide check": "Waiting for its file",
+  "The final build’s strict build": "read from its report, built November 20, 2026: no warnings, 12,178,909 bytes, 369 rules and 679 examples placed",
+  "The four-width guide check, first run": "run by the main session on the build before the last two fixes, at 1440, 1024, 390 and 360 px, with one failure; its rerun on version 13 is pending",
+  "The four-width guide check on version 13": "Waiting for its file",
   "The quick guide check with photographs": "Waiting for its file",
-  "The kit’s build of every chart": "build --all --no-png in the engineer’s second pass, 96 of 96 charts pass, exit 0",
-  "The data check": "Waiting for its file",
-  "The atlas check": "Waiting for its file",
-  "Links to the chapters page": "63 links to 56 entries, each anchor read by this board’s build on the final build’s page, 63 of 63 found",
-  "This board’s own check": "on its last run at 1440, 390 and 360 px, with no failures once the page’s language is left aside, since the host’s wrapper sets it"
+  "The kit’s build of every chart": "the kit built every chart from the final files, without pictures: 96 of 96 pass, as the decision log records it",
+  "Chapter 14’s build check": "99 of 99 of its files up to date with the build, as the decision log records it",
+  "The data check": "on the final build, 126 tables and 0 faults, as the decision log records it",
+  "The atlas check": "run by the main session on version 13’s page: 779 chips in chapters 13, 14 and 15 and 115 kit chart files read, with no failures",
+  "Links to the chapters page": "63 links to 56 entries, each target checked by this board’s build on the final build’s page: 63 of 63 found",
+  "This board’s own check": "on its last run at 1440, 390 and 360 px, no failures apart from the page’s language, which the host sets when it wraps the page"
+ },
+ "checks_read": {
+  "four_width_first": {
+   "file": "[scratch]/fourwidth/20261120_Guide-Four-Width-Guide-Check-Results.json",
+   "failures": [
+    {
+     "key": "typeScale",
+     "msg": "1024: 1 specimen(s) with type off the D2-254 sizes: s-15-25-correct (22.41 px)"
+    }
+   ],
+   "pass": false
+  },
+  "v7_check": {
+   "file": "[scratch]/c08/v7-check.json",
+   "failures": []
+  }
  },
  "preview_links": {
   "links": 63,
@@ -872,21 +902,18 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
- "html_bytes": 356978,
- "images": 166,
- "image_bytes": 16885391,
- "folder_files": 170,
- "folder_bytes": 17316893,
+ "html_bytes": 365033,
+ "images": 170,
+ "image_bytes": 17159893,
+ "folder_files": 174,
+ "folder_bytes": 17602889,
  "largest_image": [
   966992,
   "20261120_Decide-where-to-start-2.png"
  ],
  "status": {
   "forms": "ready",
-  "decide": [
-   "partial",
-   "pictures"
-  ],
+  "decide": "ready",
   "round5": "ready",
   "ch15": "ready",
   "spend": "ready",
@@ -994,11 +1021,14 @@
   "img/20261120_Decide-related-chapters-1.webp": "[scratch]/c08/board-3/builder/shots/g-v12-rule-14-88-1440.png",
   "img/20261120_Decide-related-chapters-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-88-1440.png",
   "img/20261120_Decide-CE-S22-words-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-selection-guide-1440.png",
+  "img/20261120_Decide-CE-S22-examples-1.webp": "[scratch]/c08/board-3/builder/made/made-CE-S22-examples-1440.png",
+  "img/20261120_Decide-NB-S4-1.webp": "[scratch]/c08/board-3/builder/made/made-NB-S4-1440.png",
   "img/20261120_Decide-S14-line-02-13-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-02-22-correct-1440.png",
   "img/20261120_Decide-S14-line-02-13-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-13-6-correct-1440.png",
   "img/20261120_Decide-S14-line-02-13-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s14-1440.png",
   "img/20261120_Decide-S59-label-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s59-390.png",
-  "img/20261120_Decide-S59-label-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s59-1024.png",
+  "img/20261120_Decide-S59-label-2.webp": "[scratch]/c08/board-3/builder/made/kit-s59/out/s59/s59-newsprint-358.png",
+  "img/20261120_Decide-S59-label-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s59-1024.png",
   "img/20261120_Decide-masthead-360-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-header-masthead-360.png",
   "img/20261120_Decide-masthead-360-2.webp": "[scratch]/c08/board-3/builder/shots/made-masthead-360-360.png",
   "img/20261120_Decide-masthead-360-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-header-masthead-375.png",
@@ -1018,6 +1048,7 @@
   "img/20261120_Decide-15-22-examples-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-22-correct-1440.png",
   "img/20261120_Decide-CR-S4-sticky-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-19-correct-1440.png",
   "img/20261120_Decide-related-rules-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-32-1440.png",
+  "img/20261120_Decide-related-rules-2.webp": "[scratch]/c08/board-3/builder/shots/made-related-rules-1440.png",
   "img/20261120_Decide-routes-who-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-1440.png",
   "img/20261120_R5-Guide-1440.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-selection-guide-1440.png",
   "img/20261120_R5-Guide-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-selection-guide-390.png",
@@ -1095,6 +1126,7 @@
   "D3-2153",
   "D3-2243",
   "D3-2278",
+  "D3-2284",
   "D3-593",
   "D3-689",
   "DR-108",
@@ -1122,8 +1154,8 @@
   "DR-288",
   "DR-290",
   "DR-36",
-  "DR-52",
   "DR-62",
+  "DR-73",
   "DR-93",
   "Q-12"
  ],
@@ -1186,40 +1218,10 @@
   "rule-15-9"
  ],
  "notes": [
-  "17:55:00 UTC guide: OK to open one (browsers running: 0, load: 0.76)",
-  "18:00:37 UTC made: OK to open one (browsers running: 0, load: 2.23)",
-  "18:02:30 UTC the board check: OK to open one (browsers running: 0, load: 2.25)",
-  "18:03:17 UTC the wrapped board check: OK to open one (browsers running: 0, load: 1.86)"
+  "18:14:55 UTC made: OK to open one (browsers running: 1, load: 1.44)"
  ],
- "warnings": [
-  "decision codes in the words the board quotes from teammates’ files, on its face: D3-1701, D3-1705, D3-1712, D3-2140, D3-2142, D3-2243, D3-689, DR-108, DR-231, DR-265, DR-271, DR-274, DR-278, DR-62, Q-12"
- ],
- "seconds": 451,
- "words": 19913,
- "check": {
-  "page": {
-   "failures": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "allowed": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "results": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Check-Results.json"
-  },
-  "wrapped": {
-   "failures": [],
-   "pass": true,
-   "results": "[scratch]/c08/board-3/builder/publish-view/20261120_Board-3-Check-Results.json"
-  },
-  "widths": [
-   1440,
-   390,
-   360
-  ]
- },
+ "warnings": [],
+ "seconds": 55,
+ "words": 20705,
  "fails": []
 }

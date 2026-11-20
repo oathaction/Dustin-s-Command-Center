@@ -59,7 +59,7 @@
    "nav": "What you decide",
    "title": "What you decide",
    "refs": "DR-290",
-   "lede": "{n_replies_w} replies are yours to give, listed first with the studio’s recommendation for each and a link to its item below. Each item opens with its answer, then the recommendation and the pictures it needs.",
+   "lede": "{n_replies_w} replies are yours to give. They come first, each with the studio’s recommendation and a link to its item. Each item below opens with its answer and the recommendation, then what changed, why, and the pictures it needs.",
    "wait": "Waiting for the data lead’s decisions file. This panel fills in when it lands.",
    "picture_wait": "Waiting for the picture {path}.",
    "to_make_wait": "Waiting for this picture. {owner_cap} makes it: {how}.",
@@ -138,11 +138,12 @@
     "to-make": "made for this board"
    },
    "alt_other": "A picture for “{title}”, {src}, at a {w} px window.",
-   "alt_made": "{label}. Made for this board in scratch: {how}.",
+   "alt_made": "{label}. Made for this board in a working copy: {how}.",
    "picture_alts": {},
    "sketch_label": "A studio sketch of the proposal · {label}",
    "nb_today": "Today: the source line of S85’s figure as the kit builds it",
-   "nb_sketch": "A studio sketch of the proposal: the 16 px lockmark at the source line’s right end"
+   "nb_sketch": "A studio sketch of the proposal: the 16 px lockmark at the source line’s right end",
+   "sg_part": "At a {w} px window: {q}"
   },
   "forms": {
    "n": 2,
@@ -263,7 +264,7 @@
     "15.24"
    ],
    "recon_h": "The reconciliation table, Rule 15.25",
-   "recon_lede": "Rule 15.25 reconciles every earlier drawing of the atlas with the model. Its two tables follow as the final build prints them, with what the earlier page showed, what the model holds and where the guide applies the answer. Gate 3 decides any new item for the atlas’s next version.",
+   "recon_lede": "Rule 15.25 checks every earlier drawing of the atlas against the atlas’s model. Its two tables follow as the final build prints them: what the earlier page showed, what the model holds, and where the guide applies the answer. Two rows concern the atlas’s next version, V7.1. Row 56, the who-acts words on reform routes, is the row panel 1 asks you to add, and row 57, the Article V route, is already on that list from your board 2 answers.",
    "recon_v71": "Rows that name the atlas’s next version",
    "live": "Open the live entry",
    "wait": "Waiting for the photographs of this rule’s plates."
@@ -274,7 +275,7 @@
    "title": "What chapter 14 has spent",
    "refs": "DR-271 · D3-1310",
    "wait": "Waiting for the final build’s report.",
-   "lede": "Chapter 14 with its chart kit stands at {ch14_kit} bytes against its {stop}-byte figure, {over_words}, read from the final build’s report of {build_when}. Under DR-271 the figure is reported, and nothing is cut to meet it.",
+   "lede": "Chapter 14 with its chart kit stands at {ch14_kit} bytes against its {stop}-byte figure, {over_words}, read from the final build’s report of {build_when}. As you decided, the figure is reported and nothing is cut to meet it.",
    "over": "{n} bytes past it",
    "under": "{n} bytes under it",
    "caption": "Chapter 14 and the page against their figures, in bytes",
@@ -319,7 +320,7 @@
     "Bytes"
    ],
    "heavy_note": "Each figure is the build’s own count of the chart as it places it on the page.",
-   "parts_line": "The first row is the next three added: chapter 14’s own entries and plates, {own} bytes; the chart kit, {kit}; and the map shapes, {geo}."
+   "parts_line": "The first row adds up the next three: chapter 14’s own entries and plates, {own} bytes; the chart kit, {kit}; and the map shapes, {geo}."
   },
   "count": {
    "n": 6,
@@ -451,9 +452,21 @@
      "owner": "notes",
      "sources": [
       {
-       "file": "work/handoffs/phase-3/20261120_Second-Pass-Engineer-Notes.md",
-       "pattern": "After, in a copy with only my three files changed[^*]*\\*\\*`build --all --no-png` (\\d+) of (\\d+) PASS, exit (\\d)",
-       "words": "build --all --no-png in the engineer’s second pass, {1} of {2} charts pass, exit {3}"
+       "file": "work/ledger/20261020_Decision-Log.md",
+       "pattern": "\\| D3-2295 \\|[^\\n]*?kit `build --all --no-png` (\\d+) of (\\d+) PASS",
+       "words": "the kit built every chart from the final files, without pictures: {1} of {2} pass, as the decision log records it"
+      }
+     ]
+    },
+    {
+     "label": "Chapter 14’s build check",
+     "kind": "notes",
+     "owner": "notes",
+     "sources": [
+      {
+       "file": "work/ledger/20261020_Decision-Log.md",
+       "pattern": "\\| D3-2295 \\|[^\\n]*?`phase3_ch14_build\\.py --check` (\\d+) of (\\d+)",
+       "words": "{1} of {2} of its files up to date with the build, as the decision log records it"
       }
      ]
     },
@@ -464,8 +477,8 @@
      "sources": [
       {
        "file": "work/ledger/20261020_Decision-Log.md",
-       "pattern": "\\| D3-2293 \\|[^\\n]*?([\\d,]+) tables?[^\\n]*?(\\d+) faults?",
-       "words": "run on the final build, {1} tables and {2} faults, as the decision log records it"
+       "pattern": "\\| D3-2295 \\|[^\\n]*?data check ([\\d,]+) tables, (\\d+) faults",
+       "words": "on the final build, {1} tables and {2} faults, as the decision log records it"
       }
      ]
     },
@@ -474,25 +487,25 @@
      "kind": "v7",
      "owner": "notes",
      "slot": "v7_check",
-     "words": "v7_check.py on version 13’s page: {chips} chips in chapters {chapters} and {specs} kit specs read, with {failures} failures"
+     "words": "run by the main session on version 13’s page: {chips} chips in chapters {chapters} and {specs} kit chart files read, with {failures} failures"
     },
     {
      "label": "Links to the chapters page",
      "kind": "preview_links",
      "owner": "final",
-     "words": "{links} links to {anchors} entries, each anchor read by this board’s build on the final build’s page, {found} of {links} found"
+     "words": "{links} links to {anchors} entries, each target checked by this board’s build on the final build’s page: {found} of {links} found"
     },
     {
      "label": "This board’s own check",
      "kind": "board_check",
-     "words": "on its last run at {widths} px, with {failures} failures once the page’s language is left aside, since the host’s wrapper sets it",
+     "words": "on its last run at {widths} px, {failures} failures apart from the page’s language, which the host sets when it wraps the page",
      "owner": "render"
     }
    ],
    "not_tested": [
     "The guide check itself: the main session runs it, and this board’s build never does.",
     "Safari, Firefox and real screen readers, which stay not tested until Phase 5, and the four scripts for real devices.",
-    "The {n_links} links to the chapters page clicked in the published page: each anchor was read on the final build’s file.",
+    "The {n_links} links to the chapters page clicked in the published page: each target was checked on the final build’s file.",
     "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
     "Every picture by eye: the build checks each one’s size and source, and the builder looked at a sample.",
     "A keyboard walk past the check’s first stops, and a screen reader."
@@ -569,42 +582,46 @@
   "board_rescores": "work/handoffs/phase-3/20261120_Board-3-CD-Rescores.json",
   "made": {
    "masthead-360": {
-    "how": "the 16 px master’s switch moved from 22.49em to 23.49em in a scratch copy of the final build"
+    "how": "the 16 px wordmark’s widest screen moved from 359 px to 375 px, in a working copy of the final build"
    },
    "red-target-keyline": {
-    "how": "chapter 15’s generator run for this one plate in a scratch copy with its keyline flag set, and the red arrowhead given the 1 px ink edge Rule 15.20 draws"
+    "how": "chapter 15’s build run for this one plate in a working copy with the keyline switched on, and the red arrowhead given the 1 px ink edge Rule 15.20 draws"
    },
    "CR-S19-chip": {
-    "how": "S91 drawn by the chart kit from a scratch copy of its spec with the opt-in key set, at the window that gives the guide’s phone drawing"
+    "how": "S91 drawn by the chart kit from a working copy of its chart file with the side-by-side layout turned on, at the window that gives the guide’s phone drawing"
    },
    "related-rules": {
     "rule": "14.32",
     "sketch": true,
-    "how": "Rule 14.32’s foot in a scratch copy of version 13, with a Related rules line of links in the page’s own link form, read from the rule’s related rules"
+    "how": "Rule 14.32’s foot in a working copy of version 13, with a Related rules line of links in the page’s own link form, read from the rule’s related rules"
    },
    "NB-S4": {
     "spec": "S85",
     "sketch": true,
-    "how": "S85’s figure as the kit builds it in scratch, copied, with the 16 px lockmark master set after the credit at the source line’s right end"
+    "how": "S85’s figure as the kit builds it, copied, with the 16 px lockmark master set after the credit at the source line’s right end"
    },
    "S59-label": {
     "sketch": true,
-    "how": "S59 drawn by a scratch copy of the chart kit whose fan chart takes one new label key, which sets the last actual rate’s label under its dot, at the window that gives the guide’s phone drawing",
+    "how": "S59 drawn by a working copy of the chart kit whose fan chart takes one new label setting, which lifts the first projected year’s value clear of the outer band’s rising edge, at the window that gives the guide’s phone drawing",
     "set": {
-     "history_last_below": true
+     "first_value_clear": true
     },
     "patch": {
      "forms/fan-chart.js": [
       [
        "labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap'],",
-       "labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap', 'history_last_below'],"
+       "labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap', 'first_value_clear'],"
       ],
       [
-       "          vlab.push({ x: hx(j), y: ys(hv(h)) - 8, words: K.fmt(hv(h), fy), weight: 400, must: j === lastj });",
-       "          vlab.push({ x: hx(j), y: (L.history_last_below && j === lastj) ? ys(hv(h)) + tick + 6 : ys(hv(h)) - 8, words: K.fmt(hv(h), fy), weight: 400, must: j === lastj });"
+       "        if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;",
+       "        if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;\n        // board 3's sketch (the held item S59-label): labels.first_value_clear lifts the first value over the outer band's rising edge across its own width\n        if (L.first_value_clear && i === 0 && main.length > 1) { var hw = c.measure(K.fmt(r[ey], fy), 'tick', 600) / 2 + 3, e0 = ys(r[eoh]), e1 = ys(main[1][eoh]); vy = Math.min(vy, e0 + (e1 - e0) * Math.min(1, hw / (px(1) - px(0))) - 3); }"
       ]
      ]
     }
+   },
+   "CE-S22-examples": {
+    "sketch": true,
+    "how": "the editor’s two example lines set under their questions, in the tier words’ type, in a working copy of the selection guide in version 13"
    }
   },
   "made_kit": {
