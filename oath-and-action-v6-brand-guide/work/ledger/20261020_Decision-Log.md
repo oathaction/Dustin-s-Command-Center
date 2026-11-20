@@ -7034,3 +7034,51 @@ The main session posted the apply pass plan with seven questions (Q9-1 to Q9-7).
 | D3-2324 | The creative director's apply pass rescore: the 14 items the pass touched score 4 or more on all six criteria with no Must or Should, and a new item, this pass's changes to Gate 2 chapters, scores 4 4 5 4 5 4; `gate_3_scores.py` reads 33 of 33 items at 4 or more. Its items for Dustin (Rule 15.4's restored step, Rule 05.5's words, D3-2319's two items, the target in gray print, chapter 14 past its figure) go to the Gate 3 report and the register | `work/handoffs/phase-3/20261120_Apply-Pass-CD-Rescores.json`; "Apply pass rescore" in `20261116_CD-Review-Of-Rounds-4-5.md` |
 | D3-2325 | The accessibility lead's focus probe, tabbing the whole page, was narrowed by the main session at 22:17 UTC to about 20 links across the page at four widths, since the four-width check tests focus offsets at every width | The probe had run 25 minutes on a 12 MB page; the guide check covers the rest |
 | D3-2326 | The accessibility lead confirms A3 (36 headings added, 505 in the tree, one h1, no skipped level, no pixel changed at 1440 or 390 px, no other plate with a heading), A5 (the 16 px wordmark and an 89 px masthead through 372 px, the 24 px from 373 px, the menu button on the bar's line with scripts on and off; 270 key presses on 18 links left focus clear of the masthead) and A14 (each alt its head sentence, each table named by its caption, nothing changed on screen). Not confirmed without a screen reader: chapter 11's head sentence sits three times in the tree (description, table name, caption); accepted for now, and the register takes the row | `work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md` |
+
+### Editor, chat 9 apply pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2327 | Loop B2's read-aloud line on Rule 15.18 takes the same rises-and-falls form as `read_aloud`'s lines | `rule_15_18` writes it by hand by the same rule, and one chapter reading every other loop with "rises" and this one with "more" would teach two forms |
+| D3-2328 | Rules 15.6 and 15.8's "Read aloud" specs now say "whether each variable rises or falls" | the specs described the old "more or less" form, so the rule and its plates would disagree |
+| D3-2329 | The read-aloud lines take Rule 14.143's words for the six variables the two share ("the number of incumbents defeated or pushed into retirement", "seats with little electoral competition rise", "how often the primary decides the winner goes up") | the guide then says each variable one way, and those words come from the atlas's own readings of Loops B4 and R10 |
+| D3-2330 | A closed loop's line ends "and back at the start, ..." | the old "and back to" needs a noun after it, and the new form ends on a clause |
+| D3-2331 | Chapter 15 gains a read-aloud direction check in `check()` | the brief asks for the generator's direction check, and chapter 15 had only the loop-kind check; Rule 14.143's direction check is in another generator |
+| D3-2332 | Rule 15.12's note names both connections and Variable B2 and drops the count "two connections and one variable" | "one variable, Variable B2" stutters read aloud, and the note still says which marks are red |
+| D3-2333 | Rule 15.22's alt does not take the new note | the plate is readable, so a screen reader reaches the note in the plate's words, and AX-S3 already finds this alt repeats 79 percent of the plate |
+| D3-2334 | Chapter 13 prints S14's line less its margin of error sentence (the sidecar's `september_release` line), and the build holds the two together | the margin sentence sources the margin figure in S14's own note, and no chapter 13 plate prints that figure; chapter 13's copy has left it out since S14 took it (D3-268), and the line now names the release, which is what reply 7 changes |
+| D3-2335 | Chapter 11's hidden captions use a plate copy of the shell's visually hidden rule | the plate pipeline renames the class `vh` to `sx-vh`, so the shell's own rule never matches; Rule 11.15's plate already carries the same copy |
+| D3-2336 | A8 changes only "read" before a date, and keeps the words around it ("retrieved on November 11 and 12", "as retrieved November 6, 2026") | reply 13 says one word changes; "Where they were read" (an address) and "the examples read" (which texts) name no date, so they stay |
+| D3-2337 | S67's Tennessee cell takes "retrieved" through its spec's `typography.replace`, and the data row stays as written | the brief sends a word from a research file through the spec's existing override, never the frozen data |
+
+### Engineer, chat 9 apply pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2338 | A1: the kit's standalone SVG and PNG exports now print the figure's source line under the drawing, with the 16 px lockmark at its right end | The exports held the drawing alone, with no source line for the lockmark to end; Rule 08.2's footer row and reply 6 place it at the source line's end, so the line comes with it, set as the figure sets it |
+| D3-2339 | A1: a social card's crops (S95) take no footer | A crop keeps its exact size (1080 by 1350, 1080 by 1080), and a social card signs with Rule 08.2's 96 px sign-off, a different place; one lockmark a view |
+| D3-2340 | A3: "Three charts in full", the selection guide's closing line, is an h4 with the 16 questions | It looks like them and heads its own links; left a paragraph, a reader moving by headings would hear its four links under question 17 |
+| D3-2341 | A4: S59's value moves only where the guard finds an edge through it, and which values print is chosen at their first places | Moving every value 4 px clear of every edge moved 2027's value up to 36 px and printed values the drawing left out; this way only the first projected "4.1" moves, at 344 of 465 widths |
+
+### Data visualization lead, chat 9 apply pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2342 | Batch 1 signed whole: A1w, A2, A6w, A7, A7w, A8 (the editor's lines and D3-2318's three), A9, A10, A11, A13, A14 and A16 | Each matches its approved answer and goes no further; no number, mark or ink key moved; the facts check against the atlas, the sources file, S30 and the tokens |
+| D3-2343 | Chapter 13's copy of S14's line leaves out S14's margin of error sentence | No chapter 13 plate prints the margin figure, the plate never says the line is S14's, the six-part table has no row for it, and the words shown to Dustin for the new copies had none |
+| D3-2344 | D3-2318's two sidecar lines were edited in place, not added as new variants | No other spec reads `survey_only_margin_credited` or `with_program_ages`, no generator writes the census sidecar, and `data_round0_build.py` reproduces the other; the data rows stay frozen, so the brief's rule holds |
+| D3-2345 | S71's drawing growing 34 px from the longer word is inside reply 13 | The bars, numbers, marks and inks are unchanged; only two under-lines wrap |
+| D3-2346 | Batch 2 signed whole: A1, A3, A4, A5, A6, A7c, A12 and A15 | Each matches its approved answer; the guide's plates moved only where an item names them; numbers, marks and inks hold |
+| D3-2347 | A1's source line on the standalone exports stays inside reply 6 | The answer places the lockmark at the source line's end on the exported files, which had no line; the line printed is the figure's own, and all 364 exported footers match the spec or sidecar line |
+| D3-2348 | A1: S95's social crops take no footer (the engineer's call), agreed | A crop keeps its fixed size and signs with Rule 08.2's 96 px sign-off; reply 6 names the chart files a partner or story takes away |
+| D3-2349 | Rule 15.4's failure plate, which draws its Prussian connection again after A6, matches its approved drawing | Its fragment is byte for byte the board 2 era plate (Guide Previews V10 and V11); call 15's keyline style hid the step by a class clash from V12 on, which nobody approved; the creative director should see it at the rescore |
+| D3-2350 | A4's clearance list (no chart but S59, and S59 cleared by its own key) is confirmed | The probe is the kit's own DD-E1 test without the opt-in, at every width the kit draws; my rerun gives 0 of 96, and on the baseline kit it finds S59's 344 widths |
+| D3-2351 | A3's 17th heading, "Three charts in full", is left to the accessibility lead | It goes one heading past reply 8's "16 questions" for a reason of heading navigation, with nothing on screen changed; words and look are mine to check, and they hold |
+
+### Accessibility lead, chat 9 apply pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2352 | A3: chapter 14's group heads stand at h3, peers of the rules' h3s, and the rules are not moved under them to h4 | The brief asks for levels that skip none, and this outline skips none. Moving chapter 14's rules to h4 would make one chapter's rules differ from every other chapter's for a reader moving by headings |
+| D3-2353 | A3: "Three charts in full" as the 17th h4 in "Choose a chart" stands (the engineer's call) | It heads its own links. As a paragraph, its links would fall under question 16 for a reader moving by headings |
+| D3-2354 | A14: accept as built, with the head sentence kept as the stage's description beside the table's caption | Dustin's answer sets the same sentence in both places, and the tree then holds it three times in a row. If the main session wants it heard once, the cure is a build rule in `work/build/scripts/phase-2/guide_build.py` (the engineer's file): leave out `aria-describedby` on a readable stage whose one table carries a `<caption>` that matches its alt. That is best taken in the finishing pass with AX-S3's 30 other readable plates |
