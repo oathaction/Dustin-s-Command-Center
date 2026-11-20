@@ -706,7 +706,7 @@ def chapter14():
 
 
 # ------------------------------------------------------------------------------------------------------- the decisions
-PIC_KEYS = {}             # id(picture) -> (kind, key)
+PIC_KEYS = {}             # id(picture) -> request
 
 
 def decisions():
@@ -720,7 +720,8 @@ def decisions():
         return None
     if '—' in p.read_text():
         warn(f'{rel(p)} holds an em dash')
-    FIG['decisions'] = {'file': rel(p), 'state': d.get('state'), 'updated_utc': d.get('updated_utc'), 'schema': d.get('schema')}
+    FIG['decisions'] = {'file': rel(p), 'state': d.get('state'), 'updated_utc': d.get('updated_utc'), 'schema': d.get('schema'),
+                        'signed_off_utc': d.get('signed_off_utc')}
     return d
 
 
@@ -745,104 +746,161 @@ def item_specs(it):
     return list(dict.fromkeys(([s] if s else []) + ids)) if len(ids) > 1 or not s else [s]
 
 
-def pic_request(it, pic, n):
-    """Where a picture comes from, before any capture runs: ('guide', key, element, width), ('kit', spec, ground, width),
-    ('path', file) or ('file', key, path, width, ground, element)."""
+def pic_request(it, pic):
+    """Where a picture comes from, before any capture runs: {'kind': 'guide', key, page, el, w, ...}, {'kind': 'made', ...},
+    {'kind': 'path', 'file'} or {'kind': 'missing', 'why', 'owner', 'how'}. A guide picture with no page reads "final"
+    (the data lead's schema); a setup's focus is the rail recipe and its text_scale the page's text size."""
     kind = pic.get('kind')
-    spec = (pic.get('spec') or item_spec(it) or '').lower()
     w = int(pic.get('width') or DESK)
-    g = (pic.get('ground') or 'newsprint').lower()
     if kind == 'guide':
+        spec = (pic.get('spec') or item_spec(it) or '').lower()
         el = pic.get('element') or (f'oac-s-14-{spec}' if spec else None)
         if not el:
             warn(f'a guide picture in item {it.get("id")} names no element or spec')
             return None
-        return ('guide', f'dec-{re.sub(r"[^A-Za-z0-9-]+", "-", el)}-{w}', el, w)
-    if kind == 'kit':
-        if not spec:
-            warn(f'a kit picture in item {it.get("id")} names no spec')
+        pk = pic.get('page') or 'final'
+        if pk not in PAGES:
+            warn(f'a picture in item {it.get("id")} names the page {pk}, which the decisions file does not map')
             return None
-        return ('kit', spec.upper(), g, w)
+        st = pic.get('setup') or {}
+        req = {'kind': 'guide', 'page': pk, 'el': el, 'w': w, 'text_scale': st.get('text_scale') or 1}
+        tag = ''
+        if st.get('focus'):
+            req['recipe'] = 'rail-focus'
+            tag += '-railfocus'
+        if st.get('text_scale') and st['text_scale'] != 1:
+            tag += f'-text{int(100 * st["text_scale"])}'
+        req['key'] = f'g-{pk}-{slug(el)}-{w}{tag}'
+        return req
+    if kind == 'to-make':
+        made = (C['slots'].get('made') or {}).get(str(it.get('id')))
+        mk = made_key(it, pic)
+        if made and mk in MADE:
+            return {'kind': 'made', 'key': mk, 'how': made.get('how', ''), 'w': w}
+        p = pic.get('path')
+        if p and (ROOT / p).is_file():
+            return {'kind': 'path', 'file': ROOT / p}
+        return {'kind': 'missing', 'why': pic.get('label') or 'a picture to make', 'owner': pic.get('owner') or '', 'how': pic.get('how') or ''}
     path = pic.get('path')
     if not path:
-        return ('missing', pic.get('label') or kind)
+        return {'kind': 'missing', 'why': pic.get('label') or kind}
     fp = ROOT / path
     if not fp.exists():
-        return ('missing', path)
+        return {'kind': 'missing', 'why': path}
     if fp.suffix.lower() in IMG_EXT:
-        return ('path', fp)
-    return ('file', f'file-{re.sub(r"[^A-Za-z0-9]+", "-", fp.stem)}-{g}-{w}', fp, w, g, pic.get('element'))
+        return {'kind': 'path', 'file': fp}
+    return {'kind': 'missing', 'why': path}
+
+
+# ------------------------------------------------------------------------------------------------------- pictures made in scratch
+MADE = {}                 # key -> the photograph's path, for pictures this board makes from a scratch copy of the final build
+
+
+def made_key(it, pic):
+    return f'made-{slug(it.get("id"))}-{int(pic.get("width") or DESK)}'
+
+
+def make_pictures(reuse):
+    """The pictures a builder can make from a scratch copy of the final build, as the decisions file's owner asks. Today:
+    the masthead with the 16 px wordmark master's switch at 23.5em (376 px), the design director's own picture to make.
+    The copy changes the one media query the shell's CSS gives the switch, and nothing else."""
+    made = C['slots'].get('made') or {}
+    want = []
+    for it, pic in all_pictures(D):
+        if pic.get('kind') == 'to-make' and str(it.get('id')) in made:
+            want.append((it, pic))
+    if not want:
+        return
+    src = page_text('final')
+    if not src:
+        return
+    d = SCRATCH / 'made'
+    d.mkdir(parents=True, exist_ok=True)
+    items = []
+    for it, pic in want:
+        iid = str(it.get('id'))
+        if iid == 'masthead-360':
+            copy = d / f'{DATE}_Masthead-Switch-23-5em.html'
+            old = re.findall(r'@media\s*\(max-width:\s*22\.49em\)\s*\{\s*\.home \.wm-24\s*\{\s*display:\s*none\s*\}', src)
+            if len(old) != 1:
+                warn(f'the final build’s CSS holds {len(old)} switches for the 16 px master where one was expected; masthead pictures wait')
+                continue
+            new = old[0].replace('22.49em', '23.49em')
+            text = src.replace(old[0], new)
+            if not copy.exists() or copy.read_text() != text:
+                copy.write_text(text)
+            PAGES['made-masthead'] = {'path': copy, 'text': text, 'frame': None}
+            mk = made_key(it, pic)
+            items.append({'key': mk, 'page': 'made-masthead', 'el': 'header.masthead', 'w': int(pic.get('width') or DESK)})
+        else:
+            warn(f'the content file names {iid} under made, and the build knows no way to make it')
+    if items:
+        shots = run_shots(items, reuse, 'made')
+        for x in items:
+            if shots.get(x['key']) and shots[x['key']].exists():
+                MADE[x['key']] = shots[x['key']]
+        FIG['made'] = {x['key']: rel(MADE[x['key']]) if x['key'] in MADE else None for x in items}
 
 
 # ------------------------------------------------------------------------------------------------------- panel 1
+def move_codes(s):
+    """A teammate's words keep their sentences; a parenthesis that holds only studio codes moves to the reference line."""
+    if not s:
+        return s
+
+    def mv(m):
+        MOVED_REFS.extend(re.findall(STUDIO, m.group(0)))
+        return ''
+    s = re.sub(r'\s*\((?:' + STUDIO + r')(?:(?:,\s*|\s+and\s+|;\s*|\s+to\s+)(?:' + STUDIO + r'))*\)', mv, str(s))
+    return re.sub(r'\s+([.,;:])', r'\1', s)
+
+
 def picture_alt(it, pic, label, req):
-    """B2-S3: a picture's alt text says what it shows: the data lead's alt, else the label, the chart's form and id,
-    where the picture comes from and at what window, and the chart's title."""
+    """B2-S3: a picture's alt text says what it shows: the data lead's alt, else the label, where the picture comes from
+    and at what window, and the item's title."""
     if pic.get('alt'):
-        return pic['alt']
-    by_file = C['sections']['decide'].get('picture_alts', {})
-    if pic.get('path') in by_file:
-        return by_file[pic['path']]
-    spec = (pic.get('spec') or item_spec(it) or '').upper()
-    w = int(pic.get('width') or DESK)
-    src = C['sections']['decide']['alt_source'].get(pic.get('kind'), '')
-    info = SPECINFO.get(spec)
-    if info:
-        what = fill(C['sections']['decide']['alt_chart'], {'form': info['form'], 'spec': spec, 'src': src, 'w': w, 'title': info['title']})
-    else:
-        what = fill(C['sections']['decide']['alt_other'], {'src': src, 'w': w, 'title': it.get('title', '')})
+        return move_codes(pic['alt'])
+    S = C['sections']['decide']
+    if req['kind'] == 'made':
+        return fill(S['alt_made'], {'label': label or it.get('title', ''), 'how': req.get('how', '')})
+    src = S['alt_source'].get(pic.get('kind'), '')
+    if pic.get('kind') == 'guide':
+        src = fill(src, {'page': C['page_words'].get(req.get('page'), req.get('page'))})
+    what = fill(S['alt_other'], {'src': src, 'w': int(pic.get('width') or DESK), 'title': move_codes(it.get('title', ''))})
     return (f'{label}. ' if label else '') + what
 
 
-def phone_px(pic, spec):
-    """B2-M3: the drawing width of a phone picture, read from the file that made it."""
-    w = int(pic.get('width') or DESK)
-    if w >= 600 or not spec:
-        return None
-    kind = pic.get('kind')
-    if kind == 'guide':
-        return (MEAS.get(spec, {}).get(w) or {}).get('svg_w')
-    if kind == 'board-1':
-        p = ROOT / C['slots']['board1_specimens'] / f'{spec.lower()}-check.json'
-        if p.exists():
-            for d in json.loads(p.read_text()).get('drawings', []):
-                if d['ground'] == (pic.get('ground') or 'newsprint') and d['page'] == w:
-                    return d['width']
-    return None
-
-
-def picture_html(it, pics, shots, fshots, kit_out, pages):
+def picture_html(it, pics, shots):
     """An item's pictures, each at true size with its label above it. Pictures that share a `row` sit side by side, rows
     in order of first appearance; without rows, a "before" opens a row that the "after" pictures after it join, and views
-    sit in rows of their own. Pictures marked `fold` go in one closed fold at the item's end (B2-M2)."""
+    sit in rows of their own. Pictures marked `fold` go in one closed fold at the item's end (B2-M2). A picture still to
+    make shows who makes it and how."""
     S = C['sections']['decide']
     out, n = [], 0
     for pic in pics:
         req = PIC_KEYS.get(id(pic))
-        label = pic.get('label') or ''
+        label = move_codes(pic.get('label') or '')
         role = pic.get('role') or 'view'
-        spec = (pic.get('spec') or item_spec(it) or '').upper()
-        path = None
         if req is None:
             continue
-        if req[0] == 'guide':
-            path = shots.get(req[1])
-        elif req[0] == 'kit':
-            sp, g, w = req[1], req[2], req[3]
-            ww = pages.get(sp, (DESK, PHONE))[0 if w >= 600 else 1]
-            path = kit_out / sp.lower() / f'{sp.lower()}-{g}-{ww}.png'
-        elif req[0] == 'path':
-            path = req[1]
-        elif req[0] == 'file':
-            path = fshots.get(req[1])
-        if req[0] == 'missing' or not path or not pathlib.Path(path).exists():
-            out.append((pic, pending(fill(S['picture_wait'], {'path': label or str(req[1])}))))
+        path = None
+        if req['kind'] == 'guide':
+            path = shots.get(req['key'])
+        elif req['kind'] == 'made':
+            path = MADE.get(req['key'])
+        elif req['kind'] == 'path':
+            path = req['file']
+        if req['kind'] == 'missing' and req.get('owner'):
+            who = req['owner']
+            words_ = fill(S['to_make_wait'], {'owner_cap': cap(who), 'how': req.get('how', '').rstrip('.')})
+            out.append((pic, f'<figure class="shot"><figcaption class="top"><b>{esc(label)}</b></figcaption>{pending(words_)}</figure>'))
+            QUOTED.extend([label, words_])
+            continue
+        if req['kind'] == 'missing' or not path or not pathlib.Path(path).exists():
+            out.append((pic, pending(fill(S['picture_wait'], {'path': label or str(req.get('why', ''))}))))
             continue
         n += 1
-        px = phone_px(pic, spec)
-        if px and not re.search(r'\d px drawing', label):
-            label = f'{label} · {px} px drawing' if label else f'{px} px drawing'
-        rec = compose(f'Decide-{re.sub(r"[^A-Za-z0-9]+", "-", str(it.get("id")))}-{n}', [(path, '')])
+        rec = compose(f'Decide-{slug(it.get("id"))}-{n}', [(path, '')])
         alt = picture_alt(it, pic, label, req)
         QUOTED.extend([label, alt])
         rw = S['role_words'].get(role, '')
@@ -879,19 +937,19 @@ def picture_html(it, pics, shots, fshots, kit_out, pages):
 
 
 def words(it, key):
-    v = it.get(key)
+    v = move_codes(it.get(key))
     if v:
         QUOTED.append(v)
     return v
 
 
-def rows_table(rows, caption):
+def rows_table(rows, caption, names=None, cls='dt'):
     keys = []
     for r in rows:
         for k in r:
             if k not in keys and k not in ('refs',):
                 keys.append(k)
-    names = C['sections']['decide']['row_heads']
+    names = names or C['sections']['decide']['row_heads']
     head = ''.join(f'<th scope="col">{esc(names.get(k, cap(k.replace("_", " "))))}</th>' for k in keys)
     body = ''
     for r in rows:
@@ -899,6 +957,7 @@ def rows_table(rows, caption):
         for i, k in enumerate(keys):
             v = r.get(k, '')
             v = ', '.join(map(str, v)) if isinstance(v, list) else ('' if v is None else str(v))
+            v = move_codes(v)
             QUOTED.append(v)
             if k == 'rule' and v and rid_anchor(v) in ANCHORS:
                 cell = f'<a href="{esc(rule_href(v))}">{esc(v)}</a>'
@@ -906,120 +965,128 @@ def rows_table(rows, caption):
                 cell = esc(v)
             cells.append(f'<th scope="row">{cell}</th>' if i == 0 else f'<td>{cell}</td>')
         body += '<tr>' + ''.join(cells) + '</tr>'
-    return (f'<div class="tw" role="region" tabindex="0" aria-label="{esc(caption)}; scrolls sideways"><table class="dt">'
+    QUOTED.append(caption)
+    return (f'<div class="tw" role="region" tabindex="0" aria-label="{esc(caption)}; scrolls sideways"><table class="{cls}">'
             f'<caption>{esc(caption)}</caption><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>')
 
 
-def form_pictures(it, S):
-    """B2-M7: an item about a chart with no pictures of its own shows panel 2's Newsprint picture of each chart it covers,
-    the same file, linked to the form in panel 2."""
-    out = []
-    for sid in item_specs(it):
-        fp = FORMPIC.get(sid)
-        if not fp:
-            continue
-        rec, rule, alt = fp
-        cap_html = (f'<b>{esc(fill(S["form_pic"], {"spec": sid, "rule": rule}))}</b> '
-                    f'<a href="#form-{rule.replace(".", "-")}">{esc(fill(S["form_link"], {"rule": rule}))}</a>')
-        out.append(figure(rec, alt, cap_html, top=True))
-    return f'<div class="pair view">{"".join(out)}</div>' if out else ''
-
-
-def decide_item(it, S, shots, fshots, kit_out, pages, reply_n, done, refs):
-    spec, rule = item_spec(it), it.get('rule')
+def decide_item(it, S, shots, reply_n, refs):
+    rule = it.get('rule')
     rr = it.get('refs') or []
     refs += rr if isinstance(rr, list) else re.split(r'[,;]\s*|\s+·\s+', rr)
-    q = bool(it.get('question_for_dustin')) and not done
+    for k in ('ledger',):
+        refs += [x for x in (it.get(k) or []) if isinstance(x, str)]
+    reg = it.get('register') or {}
+    if reg.get('code'):
+        refs.append(f'register: {reg["code"]}')
+    if (it.get('decision') or {}).get('code'):
+        refs.append(it['decision']['code'])
+    if it.get('question'):
+        refs.append(str(it['question']))
+    q = bool(it.get('question_for_dustin'))
     tags = ''
     if reply_n:
         tags += f' <span class="tag rn">{esc(fill(S["reply_tag"], {"n": reply_n}))}</span>'
     if q:
         tags += f' <span class="tag q">{esc(S["tag_question"])}</span>'
-    label = join_words([x for x in [("Rule " + rule) if rule else "", ', '.join(item_specs(it))] if x])
+    label = join_words([x for x in [("Rule " + rule) if rule else "", ', '.join(s for s in item_specs(it) if s)] if x])
     head = ((f'<p class="label">{esc(label)}</p>' if label else '')
             + f'<h4 class="dec-h">{esc(words(it, "title") or it.get("id", ""))}{tags}</h4>')
     body = ''
     if it.get('answer'):
         body += f'<p class="dec-a">{esc(words(it, "answer"))}</p>'
-    if it.get('question'):
-        body += f'<p class="dec-q">{esc(words(it, "question"))}</p>'
     rec_ = words(it, 'recommendation')
-    if rec_ and not (done and re.fullmatch(r'(?i)\s*done\.?\s*', rec_)):
-        body += (f'<p class="dec-rec"><span class="tag rec">{esc(S["tag_rec"])}</span> {esc(rec_)}</p>' if not done
-                 else f'<p class="dec-done">{esc(rec_)}</p>')
-    if not it.get('pictures'):
-        body += form_pictures(it, S)
+    if rec_:
+        body += f'<p class="dec-rec"><span class="tag rec">{esc(S["tag_rec"])}</span> {esc(rec_)}</p>'
     dl = [(S['what_changed'], words(it, 'what_changed')), (S['why'], words(it, 'why'))]
+    if it.get('shows') is False and it.get('shows_note'):
+        dl.append((S['shows_no'], words(it, 'shows_note')))
+    st_ = it.get('settled') or {}
+    if st_.get('touches'):
+        t_ = '; '.join(move_codes(x) for x in st_['touches'])
+        QUOTED.append(t_)
+        dl.append((S['settled_touches'], t_))
+    if st_.get('respects'):
+        r_ = move_codes(st_['respects'])
+        QUOTED.append(r_)
+        dl.append((S['settled_respects'], r_))
     dl = [(a, b) for a, b in dl if b]
     if dl:
         body += '<dl class="facts f2">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in dl) + '</dl>'
-    for v in it.get('views') or []:
-        QUOTED.extend([v.get('text', ''), v.get('note', '')])
-        body += (f'<blockquote class="q"><p>{esc(v.get("text", ""))}</p><footer>{esc(fill(S["view_by"], {"who": v.get("who", "")}))}'
-                 + (f' {esc(v["note"])}' if v.get('note') else '') + '</footer></blockquote>')
-    pr_, bu_ = (it.get('plan_row') or {}).get('said'), it.get('built')
-    if pr_ or bu_:
-        QUOTED.extend([pr_ or '', bu_ or ''])
-        body += ('<dl class="facts f2">' + (f'<div><dt>{esc(S["plan_said"])}</dt><dd>{B1.md_inline(pr_, quote=False)}</dd></div>' if pr_ else '')
-                 + (f'<div><dt>{esc(S["built_k"])}</dt><dd>{B1.md_inline(bu_, quote=False)}</dd></div>' if bu_ else '') + '</dl>')
-    if it.get('old') or it.get('new'):
-        body += (f'<div class="oldnew"><div><p class="row-label">{esc(S["old"])}</p><p class="was">{esc(words(it, "old") or "")}</p></div>'
-                 f'<div><p class="row-label">{esc(S["new"])}</p><p class="now">{esc(words(it, "new") or "")}</p></div></div>')
+    if it.get('steps'):
+        body += rows_table([{k: x.get(k, '') for k in ('n', 'name', 'what_happens', 'law') if k in x} for x in it['steps']],
+                           fill(S['steps_caption'], {'title': move_codes(it.get('title', ''))}), S['step_heads'])
+    if it.get('marks'):
+        mk = it['marks'] if isinstance(it['marks'], list) else [it['marks']]
+        mw = '; '.join(move_codes(m if isinstance(m, str) else ' '.join(str(v) for v in m.values())) for m in mk)
+        QUOTED.append(mw)
+        body += f'<dl class="facts"><div><dt>{esc(S["marks_k"])}</dt><dd>{esc(mw)}</dd></div></dl>'
     if it.get('facts'):
-        # a fact whose value names a file goes to the panel's reference line, where file paths belong
         fpath = [f for f in it['facts'] if re.search(PATH_RE, str(f.get('value', '')))]
         shown = [f for f in it['facts'] if f not in fpath]
         refs += [f'{f.get("label", "")}: {f.get("value", "")}' for f in fpath]
         if shown:
-            body += '<dl class="facts">' + ''.join(f'<div><dt>{esc(f.get("label", ""))}</dt><dd>{esc(f.get("value", ""))}</dd></div>' for f in shown) + '</dl>'
-        QUOTED.extend(f.get('label', '') + ' ' + str(f.get('value', '')) for f in shown)
+            body += '<dl class="facts">' + ''.join(f'<div><dt>{esc(move_codes(f.get("label", "")))}</dt><dd>{esc(move_codes(f.get("value", "")))}</dd></div>' for f in shown) + '</dl>'
+        QUOTED.extend(move_codes(f.get('label', '')) + ' ' + move_codes(str(f.get('value', ''))) for f in shown)
+    if it.get('counts'):
+        rows = [{'label': x.get('label', ''), 'value': f'{x["value"]:,}' if isinstance(x.get('value'), int) else x.get('value', '')} for x in it['counts']]
+        refs += sorted({x.get('from', '') for x in it['counts'] if x.get('from') and x.get('from') != 'the same'})
+        body += rows_table(rows, S['counts_caption'], {'label': S['count_heads'][0], 'value': S['count_heads'][1]})
+    if it.get('verb_led'):
+        body += rows_table(it['verb_led'], S['verb_caption'], S['verb_heads'])
+    if it.get('top'):
+        tbl = rows_table(it['top'], S['top_caption'], S['top_heads'])
+        body += f'<details class="more"><summary>{esc(S["top_caption"])}</summary>{tbl}</details>'
+    if it.get('source'):
+        refs.append(str(it['source']))
     if it.get('rows'):
-        tbl = rows_table(it['rows'], fill(S['rows_caption'], {'title': it.get('title', '')}))
+        tbl = rows_table(it['rows'], fill(S['rows_caption'], {'title': move_codes(it.get('title', ''))}))
         if len(it['rows']) > int(S.get('rows_fold_over', 6)):
             body += f'<details class="more"><summary>{esc(fill(S["rows_summary"], {"n": len(it["rows"])}))}</summary>{tbl}</details>'
         else:
             body += tbl
-        for r_ in it['rows']:
-            r2 = r_.get('refs') or []
-            refs += r2 if isinstance(r2, list) else re.split(r'[,;]\s*', r2)
     missing = False
     if it.get('pictures'):
-        ph = picture_html(it, it['pictures'], shots, fshots, kit_out, pages)
+        ph = picture_html(it, it['pictures'], shots)
         missing = 'class="pending"' in ph
         body += ph
     if rule and rid_anchor(rule) in ANCHORS:
         body += f'<p class="small"><a href="{esc(rule_href(rule))}">{esc(fill(S["entry_link"], {"rule": rule}))}</a></p>'
-    aid = re.sub(r"[^A-Za-z0-9-]+", "-", str(it.get("id")))
-    return f'<article class="dec{" done" if done else ""}" id="d-{esc(aid)}">{head}{body}</article>', missing, q
+    aid = slug(it.get('id'))
+    return f'<article class="dec" id="d-{esc(aid)}">{head}{body}</article>', missing, q
 
 
-def decide_panel(shots, fshots, kit_out, pages):
-    """Panel 1 serves the decision first (B2-M1): the five replies Dustin owes as a numbered list with links, then the
-    reply line; then the groups, each reply's item or group tagged with its number; the answered items fold closed
-    under one "Done" heading (B2-S5)."""
+def decide_panel(shots):
+    """Panel 1 serves the decision first (B2-M1): the replies Dustin owes as a numbered list with links, then the reply
+    line; then the four groups in the decisions file's order, each reply's item or group tagged with its number."""
     S = C['sections']['decide']
     if D is None:
-        return section('decide', f'<p class="intro">{esc(S["lede"])}</p>' + pending(S['wait']), ('waiting', 'data_lead'))
+        return section('decide', f'<p class="intro">{esc(fill(S["lede"]))}</p>' + pending(S['wait']), ('waiting', 'data_lead'))
     refs = []
-    parts = [f'<p class="intro">{esc(S["lede"])}</p>']
+    reps = D.get('replies') or []
+    FILL['n_replies_w'] = cap(nw(len(reps))) if reps else 'The'
+    parts = [f'<p class="intro">{esc(fill(S["lede"]))}</p>']
+    FILL['n_replies_w'] = nw(len(reps))
     reply = D.get('reply_line') or S['reply']
     QUOTED.append(reply)
-    reps = D.get('replies') or []
     rmap = {}
     if reps:
         lis = []
         for k, r in enumerate(reps, 1):
             n = r.get('n', k)
-            rmap[str(r.get('item'))] = n
-            QUOTED.extend([r.get('line', ''), r.get('recommendation', '')])
-            aid = re.sub(r"[^A-Za-z0-9-]+", "-", str(r.get('item')))
-            rr_ = (f'<span class="rr"><span class="k">{esc(S["tag_rec"])}</span> {esc(r["recommendation"])}</span>' if r.get('recommendation') else '')
-            lis.append(f'<li><a href="#d-{esc(aid)}"><span class="rn">{esc(fill(S["reply_tag"], {"n": n}))}</span> <span class="rb"><span class="rl">{esc(r.get("line", ""))}</span>{rr_}</span></a></li>')
+            key = str(r.get('id') if r.get('id') is not None else r.get('item') or r.get('panel'))
+            rmap[key] = n
+            if r.get('id') is None and r.get('panel'):
+                rmap[str(r['panel'])] = n
+            line, rec = move_codes(r.get('line', '')), move_codes(r.get('recommendation', ''))
+            QUOTED.extend([line, rec])
+            aid = slug(r.get('id') if r.get('id') is not None else r.get('panel'))
+            rr_ = (f'<span class="rr"><span class="k">{esc(S["tag_rec"])}</span> {esc(rec)}</span>' if rec else '')
+            lis.append(f'<li><a href="#d-{esc(aid)}"><span class="rn">{esc(fill(S["reply_tag"], {"n": n}))}</span> <span class="rb"><span class="rl">{esc(line)}</span>{rr_}</span></a></li>')
         parts.append(f'<h3 class="sub rep-h">{esc(fill(S["replies_h"], {"n": nw(len(reps))}))}</h3><ol class="replies">{"".join(lis)}</ol>')
     else:
         parts.append(pending(S['replies_wait']))
     parts.append(f'<p class="reply">{esc(reply)}</p>')
-    # the words a reader meets to answer from the top: the lede, the numbered replies and the reply line
     tw = panel_words(''.join(parts))
     tm = max(1, round(tw / 200))
     FILL.update({'p1_top_words': f'{tw:,}', 'p1_top_min': f'{nw(tm)} minute' + ('' if tm == 1 else 's')})
@@ -1030,37 +1097,38 @@ def decide_panel(shots, fshots, kit_out, pages):
         gid = g.get('id', '')
         items = g.get('items', [])
         title = words(g, 'title') or gid
-        done = gid == S['done_group']
-        gn = rmap.get(gid)
+        gn = rmap.get(gid) if g.get('approval') == 'one' else None
         gtag = f' <span class="tag rn">{esc(fill(S["reply_tag"], {"n": gn}))}</span>' if gn else ''
         inner = ''
         if g.get('lede'):
             inner += f'<p class="intro">{esc(words(g, "lede"))}</p>'
-        if g.get('approval') == 'one' and not done:
+        if g.get('approval') == 'one':
             inner += f'<p class="approve">{esc(S["approval_one"])}</p>'
+        elif g.get('approval') == 'each' and len(items) > 1:
+            inner += f'<p class="approve">{esc(S["approval_each"])}</p>'
         if not items:
             inner += pending(S['group_wait'])
             missing.append(gid)
+        grefs = []
         for it in items:
             n_items += 1
-            h, miss, q = decide_item(it, S, shots, fshots, kit_out, pages, rmap.get(str(it.get('id'))), done, refs)
+            rn_ = rmap.get(str(it.get('id'))) if g.get('approval') != 'one' else None
+            h, miss, q = decide_item(it, S, shots, rn_, grefs)
             n_q += q
             if miss:
                 missing.append(it.get('id'))
             inner += h
-        if done:
-            parts.append(f'<details class="done-g" id="d-{esc(gid)}"><summary><span class="tag done">{esc(S["done_chip"])}</span> '
-                         f'<span class="dg-t">{esc(title)}</span> <span class="n">{esc(fill(S["done_count"], {"n": len(items)}))}</span></summary>{inner}</details>')
-        else:
-            parts.append(f'<h3 class="sub grp" id="d-{esc(gid)}">{esc(title)}{gtag}</h3>{inner}')
-    if reps and len(rmap) != len(reps):
-        warn('two replies name the same item')
-    for item in rmap:
+        refs += grefs
+        parts.append(f'<h3 class="sub grp" id="d-{esc(slug(gid))}">{esc(title)}{gtag}</h3>{inner}')
+    for item, n in rmap.items():
         if not any(str(it.get('id')) == item for g in D.get('panels', []) for it in g.get('items', [])) and not any(g.get('id') == item for g in D.get('panels', [])):
-            warn(f'reply {rmap[item]} names {item}, which no item or group holds')
-    FIG['decide'] = {'items': n_items, 'questions': n_q, 'replies': len(reps), 'state': D.get('state'), 'pictures_waiting': missing}
+            warn(f'reply {n} names {item}, which no item or group holds')
+    waiting_pics = sum(1 for it, pic in all_pictures(D) if (PIC_KEYS.get(id(pic)) or {}).get('kind') == 'missing')
+    FIG['decide'] = {'items': n_items, 'questions': n_q, 'replies': len(reps), 'state': D.get('state'), 'items_waiting': missing,
+                     'pictures_waiting': waiting_pics}
     FILL.update({'n_items': n_items, 'n_questions_w': nw(n_q)})
-    refs = [r.strip() for r in refs if r and r.strip()]
+    refs = [r.strip() for r in refs + MOVED_REFS if r and r.strip()]
+    MOVED_REFS.clear()
     st = ('ready' if D.get('state') == 'signed off' and not missing and reps else
           ('partial', 'data_lead' if D.get('state') != 'signed off' or not reps else 'pictures'))
     return section('decide', ''.join(parts), st, ' · '.join(dict.fromkeys(refs)))
@@ -1126,29 +1194,13 @@ def form_head(f, held, S, extra=''):
             f'<h4 class="f-t">{esc(f["form"])}{extra}</h4>'), r
 
 
-def plate_weight(G, sid, chk=None):
-    """One measure on the whole board (B2-M4), from the engineer's plate file: the build report's bytes as placed, plus
-    what the page adds inside the figure and the plate's own frame, measured on the page; the plate's ceiling where it is
-    set on that whole measure (round 3, D3-1328)."""
+def plate_weight(G, sid):
+    """The chart's bytes as the final build places it, from the build's report (board 3 has no frame measure)."""
     placed = ((G['report'].get('weight', {}).get('charts', {}).get(f's-14-{sid.lower()}') or {}).get('bytes'))
-    ents = (PLATES or {}).get('entries') or []
-    e = next((x for x in ents if str(x.get('spec', '')).upper() == sid), {})
-    frame_b = on_page = None
-    added = 0
-    if e:
-        if placed is not None and e.get('bytes_as_placed') is not None and int(e['bytes_as_placed']) != int(placed):
-            warn(f'{sid}: the engineer measured {e["bytes_as_placed"]:,} bytes as placed and this build’s report gives {placed:,}')
-        frame_b = int(e.get('frame_bytes', 0)) + int(e.get('added_on_page', 0))
-        added = int(e.get('added_on_page', 0))
-        if placed is None:
-            placed = e.get('bytes_as_placed')
-        on_page = placed + frame_b if placed is not None else None
-    ce = e.get('ceiling') or {}
-    ceiling = ce.get('bytes') if ce.get('measure') == 'total' else None
-    return {'placed': placed, 'frame': frame_b, 'added': added, 'on_page': on_page, 'ceiling': ceiling, 'within': e.get('within_ceiling')}
+    return {'placed': placed}
 
 
-def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
+def form_article(G, f, held, S, kit_out, pages, rendered, sk_shots):
     rid, sid = f['rule'], f.get('spec_id')
     aid = f'form-{rid.replace(".", "-")}'
     rec = {'rule': rid, 'form': f['form'], 'tier': f.get('tier'), 'round': f['round'], 'maker': f.get('maker'), 'status': f['status']}
@@ -1168,14 +1220,13 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
         if hd and p and p.exists():
             im = compose(f'Sketch-{rid.replace(".", "-")}', [(p, '')])
             capt = (f'{esc(S["heading_k"])} <b>{esc(hd)}</b><br>{esc(S["caption_k"])} ' + (f'<span class="chip">{esc(chip_)}</span> ' if chip_ else '') + esc(wd))
-            body = figure(im, f'The sketch for Rule {rid}, headed “{hd}”, with its caption, as the guide prints it at a 1440 px window, at true size. {wd}', capt)
+            body = figure(im, f'The sketch for Rule {rid}, headed “{hd}”, with its caption, as the final build prints it at a 1440 px window, at true size. {wd}', capt)
             ok = True
         else:
             body = pending(S['wait_photo'])
             ok = False
         rec.update({'kind': kind or 'sketch', 'specimen': specimen, 'heading': hd, 'caption': wd})
         return f'<article class="form sk" id="{aid}">{head}{body}</article>', rec, ok
-    # a form with a specimen
     head, r = form_head(f, held, S)
     lo = sid.lower()
     spec = json.loads((ROOT / C['slots']['specs_dir'] / f'{lo}.json').read_text())
@@ -1186,24 +1237,11 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
     ev = pr.get('evidence') or spec.get('evidence_label') or ''
     QUOTED.extend([title, ev, pr.get('source') or '', pr.get('grade') or ''])
     if G['usable'] and not pr.get('found'):
-        warn(f'{sid} was not found in the guide')
+        warn(f'{sid} was not found in the final build')
     est = ev.strip().lower() == C['sections']['forms']['estimate_label'].lower()
     head += (f'<p class="f-q"><span class="k">{esc(S["question"])}</span> {esc(q)}</p>' if q else '')
     head += f'<div class="f-ev"><span class="ev-k{" est" if est else ""}">{esc(ev)}</span><p class="f-ct">{esc(title)}</p></div></header>'
-    b1 = sid in C['board1_ids']
     notes = []
-    b1_link = None
-    if b1:
-        cmp_ = b1cmp.get(sid) or {}
-        if cmp_.get('named_in_panel_1'):
-            notes.append(S['b1_named'])
-            b1_link = f'#d-{re.sub(r"[^A-Za-z0-9-]+", "-", str(cmp_["named_in_panel_1"]))}'
-        elif cmp_.get('desk_pixels_same'):
-            notes.append(S['b1_same'])
-        elif cmp_.get('desk_pixels_same') is False:
-            notes.append(S['b1_differs'])
-        else:
-            notes.append(S['b1_unknown'])
     if sid in rendered:
         notes.append(fill(S['shared_spec'], {'rule': rendered[sid]}))
     d = kit_out / lo
@@ -1212,7 +1250,7 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
     caps = {(g, w, x): d / f'{lo}-{g}-{w}{x}.png' for g in ('newsprint', 'charcoal') for w in (dp, pw) for x in ('', '-grayscale')}
     body = ''
     if notes:
-        body += '<p class="what">' + ' '.join(esc(n) for n in notes) + (f' <a href="{b1_link}">{esc(S["b1_link"])}</a>' if b1_link else '') + '</p>'
+        body += '<p class="what">' + ' '.join(esc(n) for n in notes) + '</p>'
     ok = True
     if not chk_p.exists() or not all(p.exists() for p in caps.values()):
         body += pending(S['wait_kit'])
@@ -1243,21 +1281,12 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
         pics.append(f'<details class="more gray"><summary>{esc(S["row_gray"])}</summary>{frame(im, f"{f["form"]}, Rule {rid}, in grayscale: Newsprint and Charcoal, each at a {DESK} px window and a {PHONE} px window.")}</details>')
         body += ''.join(pics)
         faults = chk.get('faults', [])
-        W_ = plate_weight(G, sid, chk)
-        wf = W_['on_page']
-        if wf is not None:
-            bytes_line = fill(S['bytes_line_added'] if W_['added'] else S['bytes_line'],
-                              {'on_page': f'{wf:,}', 'placed': f'{W_["placed"]:,}', 'frame': f'{W_["frame"] - W_["added"]:,}', 'added': f'{W_["added"]:,}'})
-        else:
-            bytes_line = fill(S['bytes_wait'], {'placed': f'{W_["placed"]:,}' if W_['placed'] is not None else '?'})
-        if W_['ceiling']:
-            bytes_line += ' ' + fill(S['ceiling_line'] if wf is None or wf <= W_['ceiling'] else S['ceiling_over'], {'ceiling': f'{int(W_["ceiling"]):,}'})
-            if wf is not None and wf > W_['ceiling'] and sid != 'S69':
-                warn(f'{sid}: {wf:,} bytes on the page, over its {int(W_["ceiling"]):,}-byte ceiling')
         result = S['kit_pass'] if not faults else fill(S['kit_faults'], {'n': nw(len(faults))})
         src = pr.get('source')
         if src:
             body += f'<p class="src">{esc(src)}</p>'
+        W_ = plate_weight(G, sid)
+        bytes_line = fill(S['bytes_line'], {'placed': f'{W_["placed"]:,}'}) if W_['placed'] is not None else S['bytes_wait']
         body += f'<p class="ch-line">{esc(bytes_line)} {esc(result)}</p>'
         if faults:
             ok = False
@@ -1271,13 +1300,13 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
         QUOTED.append(text_of(pr['table']))
         body += f'<details class="more"><summary>{esc(S["table_summary"])}<span class="vh">: {esc(cname)}</span></summary>{clean_table(pr["table"], cname)}</details>'
     elif G['usable']:
-        warn(f'{sid}: the guide prints no table')
-    rec.update({'spec': sid, 'title': title, 'evidence': ev, 'estimate': est, 'board_1': b1, 'question': q})
+        warn(f'{sid}: the final build prints no table')
+    rec.update({'spec': sid, 'title': title, 'evidence': ev, 'estimate': est, 'question': q})
     rendered.setdefault(sid, rid)
     return f'<article class="form" id="{aid}">{head}{body}</article>', rec, ok
 
 
-def forms_panel(G, P, rn, held, kit_out, pages, b1cmp, sk_shots):
+def forms_panel(G, P, rn, held, kit_out, pages, sk_shots):
     S = C['sections']['forms']
     groups = {g.get('family_section'): g for g in P['groups']}
     order = form_order(rn, held)
@@ -1293,7 +1322,7 @@ def forms_panel(G, P, rn, held, kit_out, pages, b1cmp, sk_shots):
             parts.append(f'<h3 class="sub grp fam" id="fam-{cur.replace(".", "-")}">{esc(g.get("title", f["family"]))}</h3>'
                          f'<p class="small">{esc(fill(S["family_line"], {"n": len(fl), "n_w": nw(len(fl)), "s": sum(1 for x in fl if x["status"] == "sketch")}))}</p>')
             idx.append([g.get('title', f['family']), cur, []])
-        body, rec, ok = form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots)
+        body, rec, ok = form_article(G, f, held, S, kit_out, pages, rendered, sk_shots)
         parts.append(body)
         idx[-1][2].append(f)
         FIG.setdefault('forms', {})[f['rule']] = rec
@@ -1312,9 +1341,9 @@ def forms_panel(G, P, rn, held, kit_out, pages, b1cmp, sk_shots):
                  'n_est_w': nw(len(est)), 'est_rules': join_words(est), 'n_fams': len(idx)})
     FIG['forms_summary'] = {'forms': len(rn), 'shown': len(order), 'ready': n_ok, 'estimate': est, 'waiting': missing}
     lede = (f'<p class="intro">{esc(fill(S["lede"]))}</p><p>{esc(fill(S["how"]))}</p>'
-            + f'<p class="measure">{esc(S["measure_line"] if PLATES else S["measure_wait"])}</p>'
+            + f'<p class="measure">{esc(S["measure_line"])}</p>'
             + (f'<p>{esc(fill(S["lede_est"]))}</p>' if est else ''))
-    st = 'ready' if not missing and G['ok'] and PLATES else ('partial', 'build' if not G['ok'] else ('kit' if missing else 'engineer'))
+    st = 'ready' if not missing and G['ok'] else ('partial', 'final' if not G['ok'] else 'kit')
     if missing:
         lede += pending(fill(S['wait_some'], {'list': join_words(missing[:12]) + (f' and {len(missing) - 12} more' if len(missing) > 12 else '')}))
     return section('forms', lede + nav + ''.join(parts), st)

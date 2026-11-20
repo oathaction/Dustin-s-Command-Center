@@ -4882,7 +4882,10 @@ CSS.update({
             "var(--oa-color-border-strong)}.wd .rtb td{width:31%}}"),
     "cnt": (".cnt{list-style:none;margin:12px 0 16px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}"
             ".cnt li{border-top:2px solid var(--oa-color-border-strong);padding-top:6px;font:var(--oa-type-body-small)}"
-            ".cnt b{display:block;font:var(--oa-font-weight-extrabold) var(--oa-type-h4-font-size)/1.1 var(--oa-font-family-display);"
+            # the four-width check (D2-254): a figure in this fixed 328 px stage holds the h4 style's phone floor, 1.25rem
+            # (20 px), at every page width, as it reads on a phone, where the fluid h4 size fell between steps at 1024 px;
+            # chapter 13's cards hold the same floor the same way
+            ".cnt b{display:block;font:var(--oa-font-weight-extrabold) 1.25rem/1.1 var(--oa-font-family-display);"
             "font-variant-numeric:tabular-nums}"
             "@container oa-frame (min-width:680px){.wd .cnt{grid-template-columns:repeat(4,minmax(0,1fr))}}"),
 })
