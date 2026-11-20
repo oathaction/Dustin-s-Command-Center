@@ -485,3 +485,106 @@ None. No item needs Dustin's call to ship.
 - Safari and Firefox (DR-279).
 
 Change log: modified this file (this section appended); created `work/handoffs/phase-3/20261120_Second-Pass-CD-Rescores.json`; scratch only in `scratchpad/c08/cd/`.
+
+## Apply pass rescore
+
+Written November 20, 2026 (chat 9), by the creative director (`oa-creative-director`), a subagent of the main session, after the apply pass of board 3's answers (DR-291, brief `20261120_Board-3-Apply-Brief.md`). The scores, reasons and lists are also in `20261120_Apply-Pass-CD-Rescores.json`, in the rescore file's form, each item with its round. Status: scores written 22:11 UTC.
+
+### Basis
+
+A fresh strict build of HEAD `a7d87b23` at 21:35 UTC in my scratch folder (`scratchpad/c09/creative-director/guide.html`): exit 0, 0 warnings, 12,210,634 bytes, 369 rules, 679 specimens, pictures 101 hidden and 315 open. Version 13 is the before. I read the four owners' notes (the accessibility lead's as of 21:45 UTC, with A3 and A14 confirmed and A5 still running) and D3-2314 to D3-2323, diffed every chapter's words between the two pages by script, and read element captures from Chromium at 1x, one browser at a time, each opened after `browsers.sh` printed "OK to open one". The first run, on version 13, stopped at its time limit after its 1440 and 390 px captures; the rest ran one load to a page, from 21:51 to 22:07 UTC. I read the kit's exports from the data lead's scratch build.
+
+### Verdict, apply pass
+
+All thirteen rescored items and the new `approved-outside` item score 4 or more on all six criteria, with no Must and no Should, so each ships. Three scores rose and none fell. Every visible change matches its approved answer and goes no further.
+
+### Scores after the apply pass
+
+| Item | Round | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Ships |
+|---|---|---|---|---|---|---|---|---|
+| C15-I. Rules 15.19 to 15.21 | Rounds 4 and 5 | 4 | 4 | 5 | 4 | 5 | 4 | yes |
+| R5-3. Rule 14.144 | Rounds 4 and 5 | 4 | 4 | 5 | 4 | 5 | 4 | yes |
+| C15. Chapter 15 whole | Rounds 4 and 5 | 4 | 4 | 5 | 5 | 5 | 4 | yes |
+| C14. Chapter 14 as a page | Rounds 4 and 5 | 4 | 4 | 5 | 5 | 5 | 4 | yes |
+| R5-G. "Choose a chart" | Rounds 4 and 5 | 4 | 5 | 5 | 5 | 4 | 5 | yes |
+| R5-P. The palette plate | Rounds 4 and 5 | 4 | 4 | 5 | 5 | 5 | 4 | yes |
+| C11-T. Chapter 11's step tables | Rounds 4 and 5 | 4 | 4 | 5 | 4 | 5 | 4 | yes |
+| R4-I. S89 to S95 | Rounds 4 and 5 | 4 | 4 | 5 | 4 | 5 | 4 | yes |
+| ch13. Chapter 13 | Round 0 | 4 | 4 | 4 | 4 | 4 | 4 | yes |
+| kit. The chart kit and its exports | Round 0 | 4 | 4 | 5 | 4 | 4 | 4 | yes |
+| maker_a. S41, S42 | Round 1 | 4 | 4 | 4 | 4 | 4 | 4 | yes |
+| maker_b. S53, S59 | Round 2 | 4 | 4 | 4 | 4 | 4 | 4 | yes |
+| maker_a. S67, S71 | Round 3 | 4 | 4 | 4 | 4 | 4 | 4 | yes |
+| approved-outside. Gate 2 chapters | Gate 2 | 4 | 4 | 5 | 4 | 5 | 4 | yes |
+
+Raised: C15-I brand fidelity 4 to 5, R5-G accessibility 4 to 5, the kit's brand fidelity 4 to 5. C15-W keeps its second pass scores; Rule 15.22's note is scored under C15, as the brief directs.
+
+### Reasons after the apply pass
+
+**C15-I and R5-3, the keyline (D3-2292).** Rules 15.20 and 14.144 now draw the red target as 15.11 does: a 3 px ring with no keyline inside it, a red head with no edge, the cased connection kept. Rules 15.11, 15.12 and 15.16 did not change. With Rule 12.5's marker, the guide draws one red target on six plates, the atlas's (DR-36), so C15-I's brand fidelity rises to 5. In luma the chosen pill now reads lighter than a plain pill's black edge, where the keyline made it the strongest mark. Board 3 showed that cost beside reply 11, and the words beside each plate carry the target (D3-2301), so craft and accessibility hold at 4.
+
+**C15.** Rule 15.4's failure plate draws its Prussian step again. From version 12 to version 13 the keyline's style hid it, and its middle card showed "raises" with no line; my earlier scores missed that. Rule 15.12 names "Availability of local reporting", the one plate short of AA. Rule 15.22's note gives the rule the files show, checked by the data lead against the sources file. The read-aloud lines keep each variable's title and say whether it rises or falls, as Rule 14.143 does; a few read stiffly, so clarity holds at 4.
+
+**C14 and R5-G.** 138 rule feet gain related rules as links, set like the related chapters; 363 links land where they say. Rule 14.6 now says "the text's ink", true on both grounds. The selection guide's questions and the 18 group heads are headings now, with no pixel moved and no level skipped (the accessibility lead's tree check), so R5-G's accessibility rises to 5. Chapter 14 grows 34,065 bytes.
+
+**R5-P.** "Rounded down" sits beside all 112 figures. At 1440 px the facts I credited for one line each now wrap, and the plate grows from 10,383 to 11,018 px. Each fact still starts flush, so craft holds.
+
+**C11-T.** Each of the four tables is read once now, named by its hidden caption; nothing on screen moved. The tracker alts still run long, so accessibility holds at 4.
+
+**R4-I.** The beside layout tidies the heads at 1440 and 390 px. At 320 px S89's grade line takes seven lines in a 190 px column beside the chip, read in order. Craft holds.
+
+**ch13, the three makers' items and the kit.** "Retrieved" now names the date a text was taken on S41, S42, S53, S67, S71 and Rule 14.101; "read" stays where it names which texts. S59's "4.1" moves 12 px up, clear of the band's edge. Chapter 13's copy of S14's line matches the chart's own, and its chips close up "R-04". The kit's SVG and PNG now close on the figure's source line with the 16 px lockmark at its end, matched in all 364 footers (data lead), so the kit's brand fidelity rises to 5. Its evidence honesty holds at 4, since the CSV carries a source code and no line.
+
+**approved-outside.** At 360 and 372 px the masthead takes the 16 px wordmark with the menu button on its line, 89 px tall where the engineer measured 133; 375 px keeps the 24 px wordmark, and neither master changed. Chapter 04 says the attorney's check is still to come, with nothing assumed. Rule 08.2 says where the kit puts the lockmark, and Rule 18.24's key says what the chip now does.
+
+### Must and Should
+
+None.
+
+### For Dustin at Gate 3
+
+- Rule 15.4's failure plate: board 3's preview showed it without its blue step. It now draws as board 2 approved it. Show it before and after.
+- Rule 05.5 still says a red mark that carries meaning on Newsprint takes a keyline, and the atlas ring, as reply 11 kept it, takes none. The plates follow reply 11. Whether a rule's words name that exception is his word.
+- D3-2319's two word items are his to answer.
+- Costs of approved answers, now visible: the target in gray print, the palette plate's wraps, S89's seven lines at 320 px, and the related links' 33,665 bytes.
+
+### What the Gate 3 board must show from this pass
+
+1. Rule 15.4's failure plate in version 13 and now.
+2. Rules 15.11, 15.20 and 14.144 side by side, in color and in luma.
+3. The masthead at 360, 372 and 375 px, before and after.
+4. S89, S91 and S94's heads at 1440, 390 and 320 px.
+5. One exported chart's footer on each ground at true size.
+6. A palette row at 1440 px before and after, one rule foot with its related rules, Rules 15.12 and 15.22's notes, and S59's label at 390 px.
+
+### For the register
+
+- The kit's CSV exports carry a source code (`source_id`) and no source line, for the asset package to decide.
+- `board_3_build.py` still calls `three_loop(..., keys=True)`, which A6 removed; it matters only if board 3 is rebuilt.
+
+### Risks for Dustin, apply pass
+
+- Chapter 14 with the kit weighs 2,855,909 bytes against its 2,803,941 stop, 51,968 over (16,432 in version 13), and the chart kit 571,235 against 560,000, both reported under DR-271.
+- The atlas target is the weakest mark in gray print and one-ink copies; the words carry it.
+
+### Distinctiveness test, apply pass
+
+With the wordmark covered, an exported chart still signs itself by the lockmark at its source line's end, and the red target reads one way across chapters 12, 14 and 15. Read from the left and from the right, no changed line takes a side (DR-93), and no new pairing of Pillar Red with Prussian appears.
+
+### Tested, apply pass
+
+- The strict build as given under Basis; `git status` afterwards showed only the accessibility lead's notes changed.
+- By script on both pages: every chapter's words, the read-aloud lines, the "retrieved" lines, 15.4's hiding style (in version 13, gone now), Rule 12.5's and Rule 05.5's words, the heading tags, and the 138 related rules lists.
+- In Chromium, captures read at true size: 15.20, 15.11, 14.144, 15.4's failure plate, 15.12, 15.15 and 15.22; S89, S91 and S94 at 1440, 390 and 320 px; S59 at 390 (zoomed 2x); the masthead at 360, 372, 375 and 390 px with its height; Rule 18.24's anatomy; Rule 13.6; S71, S67 and Rule 01.5's map at 390; s-11-steps (pixel for pixel the same); the palette plate's tables and height; Rule 12.5's marker; two rule feet.
+- A luma conversion of 15.20's pills; pixel differences by script.
+- Exports of S14, S59, S41, S91 and S23 read as images; two CSVs read as text.
+
+### Not tested, apply pass
+
+- 2x and Charcoal plates on the page; 768 and 1024 px.
+- Keyboard, screen readers, forced colors, print, scripts off and 200 percent text; the masthead's focus and larger text are the accessibility lead's A5 check, still running when I scored.
+- The kit's build and checks; I built no export.
+- The guide check, which the main session runs.
+- Safari and Firefox (DR-279).
+
+Change log: modified this file (this section appended); created `work/handoffs/phase-3/20261120_Apply-Pass-CD-Rescores.json`; scratch only in `scratchpad/c09/creative-director/`.
