@@ -2010,7 +2010,7 @@
      "id": "Q-PR1",
      "title": "Room on the page for Phase 4",
      "answer": "Size each Phase 4 chapter from the nearest chapter already built before Phase 4 starts, decide then what ships as a download, and cut nothing now.",
-     "what_changed": "Nothing yet. The projection gives each of Phase 4’s seven chapters 362,857 bytes, against 484,486 each to stay under 16 MB and 413,057 under the 15.5 MB warning. The other 18 built chapters, chapter 14 aside, weigh 323,348 bytes at the median and 459,192 on average.",
+     "what_changed": "Nothing yet. The projection gives each of Phase 4’s seven chapters 362,857 bytes, against 484,486 each to stay under 16 MB and 413,057 under the 15.5 MB warning. The other 18 built chapters, chapter 14 aside, weigh 323,348 bytes at the median and 459,191 on average.",
      "why": "The production reader put it to you, and you set the 16 MB as the page’s one fixed limit.",
      "recommendation": "Yes; only the page’s 16 MB is fixed.",
      "settled": {
@@ -2024,7 +2024,7 @@
       },
       {
        "label": "Page today",
-       "value": "12,178,927 bytes"
+       "value": "12,178,909 bytes"
       }
      ],
      "refs": [
@@ -4516,8 +4516,8 @@
  "signed_off_utc": "2026-11-20T17:13:38Z",
  "signed_off_note": "Signed off by the data lead: every count read by script (board_3_data_lead_counts.py) from the repository and from the strict build report named in `build_report`; every picture's element found in the page it names; the words are a first draft, which the editor owns from here.",
  "build_report": {
-  "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/318bf243-c48f-583b-8dd6-5600224b4263/scratchpad/join/20261120_Guide-Join-Build-Report.json",
-  "bytes": 12178927,
+  "file": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13-Build-Report.json",
+  "bytes": 12178909,
   "warnings": 0,
   "pictures_hidden": 101,
   "pictures_open": 315
