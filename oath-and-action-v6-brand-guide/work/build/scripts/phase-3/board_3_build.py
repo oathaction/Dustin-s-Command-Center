@@ -1354,45 +1354,206 @@ def caption_text(x):
     return text_of(x.get('caption', '')) if isinstance(x, dict) else ''
 
 
-def rules_panel(G, ch, held, shots):
-    S = C['sections']['rules']
-    ids = [f'14.{i}' for i in range(1, 15)]
-    out, missing = [f'<p class="intro">{esc(S["lede"])}</p>'], []
-    op = (ch.get('opener') or {}).get('specimen')
-    if op and shots.get('ch14-opener', pathlib.Path('-')).exists():
-        rec = compose('Ch14-Opener', [(shots['ch14-opener'], '')])
-        ct = caption_text(ch['opener'])
-        QUOTED.append(ct)
-        out.append(f'<h3 class="sub">{esc(S["opener_h"])}</h3>' + figure(rec, f'Chapter 14’s opening plate at a 1440 px window. {ct}', esc(ct)))
-    elif op:
-        missing.append('the opener')
-    for rid in ids:
-        r = held.get(rid)
-        if not r:
-            warn(f'chapter 14 holds no Rule {rid}')
-            continue
-        keys = [f'plate-{rid}-{k}' for k in ('correct', 'failure') if isinstance(r.get(k), dict)]
-        have = [k for k in keys if shots.get(k, pathlib.Path('-')).exists()]
+def gkey(page, el, w):
+    return f'g-{page}-{slug(el)}-{w}'
+
+
+def chapter15():
+    ch = json.loads((ROOT / C['slots']['chapter15']).read_text())
+    return ch, {r['id']: r for r in ch['rules']}
+
+
+def r5_charts(held):
+    """Rules 14.142 to 14.144, each with its correct and failure plates' elements, read from chapter 14's file."""
+    out = []
+    for rid in ('14.142', '14.143', '14.144'):
+        r = held.get(rid) or {}
+        c, f = (r.get('correct') or {}).get('specimen'), (r.get('failure') or {}).get('specimen')
+        out.append({'rule': rid, 'title': r.get('title', ''), 'correct': f'fig-{c}' if c else None, 'failure': f'fig-{f}' if f else None,
+                    'cc': caption_text(r.get('correct')), 'fc': caption_text(r.get('failure'))})
+    return out
+
+
+def r5_items(held):
+    """Every photograph panel 3 asks of the final build, in priority order."""
+    S = C['sections']['round5']
+    items = [{'key': gkey('final', 'fig-s-14-selection-guide', w), 'page': 'final', 'el': 'fig-s-14-selection-guide', 'w': w} for w in (DESK, PHONE)]
+    items.append({'key': gkey('final', 'fig-s-14-palette-spec', DESK), 'page': 'final', 'el': 'fig-s-14-palette-spec', 'w': DESK})
+    for ch in r5_charts(held):
+        if ch['correct']:
+            items += [{'key': gkey('final', ch['correct'], w), 'page': 'final', 'el': ch['correct'], 'w': w} for w in (DESK, PHONE)]
+        if ch['failure']:
+            items.append({'key': gkey('final', ch['failure'], DESK), 'page': 'final', 'el': ch['failure'], 'w': DESK})
+        for k, stt in enumerate(S['states'].get(ch['rule'], [])):
+            if stt.get('actions') and ch['correct']:
+                items.append({'key': f'st-{slug(ch["rule"])}-{k}', 'page': 'final', 'el': ch['correct'], 'w': DESK,
+                              'actions': stt['actions'], 'session': f'states-{ch["rule"]}'})
+    return items
+
+
+def selection_counts(G):
+    fig = element_html(G['text'], 'fig-s-14-selection-guide') or ''
+    hrefs = re.findall(r'<a\b[^>]*href="#([^"]+)"', fig)
+    form = sum(1 for h in hrefs if re.fullmatch(r'rule-14-(\d+)', h) and 15 <= int(h.split('-')[-1]) <= 141)
+    road = sum(1 for h in hrefs if re.fullmatch(r'rule-14-14[234]|rule-15-\d+', h))
+    qs = len(re.findall(r'class="[^"]*\bsg-q\b', fig))
+    return {'form_links': form, 'road_links': road, 'questions': qs}
+
+
+def one_pic(shots, key, name, alt, label=''):
+    p = shots.get(key)
+    if not p or not p.exists():
+        return None
+    rec = compose(name, [(p, '')])
+    QUOTED.extend([alt, label])
+    return figure(rec, alt, f'<b>{esc(label)}</b>' if label else '', top=True)
+
+
+def round5_panel(G, held, shots):
+    S = C['sections']['round5']
+    out = [f'<p class="intro">{esc(S["lede"])}</p>']
+    missing = []
+    # the selection guide
+    sc = selection_counts(G) if G['usable'] else {}
+    FIG['selection_guide'] = sc
+    out.append(f'<h3 class="sub grp" id="r5-guide">{esc(S["guide_h"])}</h3>')
+    if sc:
+        out.append(f'<p>{esc(fill(S["guide_line"], sc))}</p>')
+    row = []
+    for w in (DESK, PHONE):
+        h = one_pic(shots, gkey('final', 'fig-s-14-selection-guide', w), f'R5-Guide-{w}',
+                    f'Choose a chart, the guide that opens chapter 14, as the final build draws it at a {w} px window, at true size: '
+                    f'{sc.get("questions", "the")} questions, each with its forms as named symbols and links.', f'At a {w} px window')
+        if h:
+            row.append(h)
+        else:
+            missing.append(f'the guide at {w} px')
+            row.append(pending(S['wait']))
+    out.append(f'<div class="pair view">{"".join(row)}</div>')
+    # the palette plate
+    out.append(f'<h3 class="sub grp" id="r5-palette">{esc(S["palette_h"])}</h3>')
+    h = one_pic(shots, gkey('final', 'fig-s-14-palette-spec', DESK), 'R5-Palette-1440',
+                'The palette plate after Rule 14.5 at a 1440 px window, at true size: the four data palettes, each with its job and its steps, '
+                'with the ground and label ratios printed beside each step.', 'At a 1440 px window')
+    if h:
+        out.append(h)
+    else:
+        missing.append('the palette plate')
+        out.append(pending(S['wait']))
+    # the three charts in full
+    out.append(f'<h3 class="sub grp" id="r5-charts">{esc(S["charts_h"])}</h3>')
+    for ch in r5_charts(held):
+        rid = ch['rule']
+        QUOTED.append(ch['title'])
+        link = f' <a class="live" href="{esc(rule_href(rid))}">{esc(S["chart_live"])}</a>' if rid_anchor(rid) in ANCHORS else ''
+        art = f'<article class="rule" id="r5-{slug(rid)}"><h4 class="r-h"><span class="rid">Rule {esc(rid)}{link}</span> {esc(ch["title"])}</h4>'
+        pics = []
+        for w, lab in ((DESK, fill(S['correct_label'], {'w': DESK})), (PHONE, S['phone_label'])):
+            h = one_pic(shots, gkey('final', ch['correct'], w), f'R5-{slug(rid)}-{w}', f'Rule {rid}’s chart in full at a {w} px window, at true size. {ch["cc"]}', lab) if ch['correct'] else None
+            if h:
+                pics.append(h)
+            else:
+                missing.append(f'Rule {rid} at {w} px')
+                pics.append(pending(S['wait']))
+        art += f'<div class="pair view">{"".join(pics)}</div>'
+        h = one_pic(shots, gkey('final', ch['failure'], DESK), f'R5-{slug(rid)}-Failure', f'Rule {rid}’s failure plate at a 1440 px window, at true size. {ch["fc"]}', S['failure_label']) if ch['failure'] else None
+        if h:
+            art += h
+        else:
+            missing.append(f'Rule {rid}’s failure plate')
+            art += pending(S['wait'])
+        sts = S['states'].get(rid) or []
+        if sts:
+            row = []
+            for k, stt in enumerate(sts):
+                key = f'st-{slug(rid)}-{k}' if stt.get('actions') else gkey('final', ch['correct'], DESK)
+                h = one_pic(shots, key, f'R5-{slug(rid)}-State-{k}', f'Rule {rid}’s chart in full at a 1440 px window, {stt["label"][0].lower() + stt["label"][1:]}, at true size.', stt['label'])
+                if h:
+                    row.append(h)
+                else:
+                    missing.append(f'Rule {rid}: {stt["label"]}')
+                    row.append(pending(S['wait']))
+            art += f'<details class="more pics"><summary>{esc(S["states_h"])}</summary><div class="pair view">{"".join(row)}</div></details>'
+        out.append(art + '</article>')
+    FIG['round5'] = {'missing': missing}
+    return section('round5', ''.join(out), 'ready' if not missing and G['ok'] else ('partial', 'render' if G['usable'] else 'final'))
+
+
+# ------------------------------------------------------------------------------------------------------- panel 4
+def c15_items(held15):
+    S = C['sections']['ch15']
+    items = []
+    for r in held15.values():
+        for k in ('correct', 'failure'):
+            sp = (r.get(k) or {}).get('specimen')
+            if sp:
+                items.append({'key': gkey('final', f'fig-{sp}', DESK), 'page': 'final', 'el': f'fig-{sp}', 'w': DESK})
+    for rid in S['phone_rules']:
+        sp = ((held15.get(rid) or {}).get('correct') or {}).get('specimen')
+        if sp:
+            items.append({'key': gkey('final', f'fig-{sp}', PHONE), 'page': 'final', 'el': f'fig-{sp}', 'w': PHONE})
+    return items
+
+
+def ch15_panel(G, ch15, held15, shots):
+    S = C['sections']['ch15']
+    FILL['n_15'] = len(held15)
+    out = [f'<p class="intro">{esc(S["lede"])}</p>']
+    missing = []
+    op = (ch15.get('opener') or {}).get('specimen')
+    for r in held15.values():
+        rid = r['id']
+        keys = [(k, f'fig-{r[k]["specimen"]}') for k in ('correct', 'failure') if isinstance(r.get(k), dict) and r[k].get('specimen')]
+        have = [(k, shots[gkey('final', el, DESK)]) for k, el in keys if shots.get(gkey('final', el, DESK), pathlib.Path('-')).exists()]
         QUOTED.append(r['title'])
-        link = f' <a class="live" href="{esc(rule_href(rid))}">{esc(C["sections"]["forms"]["live"])}</a>' if rid_anchor(rid) in ANCHORS else ''
-        h = f'<h3 class="r-h" id="r-{rid.replace(".", "-")}"><span class="rid">Rule {esc(rid)}{link}</span> {esc(r["title"])}</h3>'
+        link = f' <a class="live" href="{esc(rule_href(rid))}">{esc(S["live"])}</a>' if rid_anchor(rid) in ANCHORS else ''
+        h = f'<h3 class="r-h" id="c15-{rid.replace(".", "-")}"><span class="rid">Rule {esc(rid)}{link}</span> {esc(r["title"])}</h3>'
         if len(have) < len(keys) or not keys:
             missing.append(f'Rule {rid}')
             out.append(f'<article class="rule">{h}{pending(S["wait"])}</article>')
             continue
-        side = side_or_stack([shots[k] for k in have])
-        rec = compose(f'Rule-{rid.replace(".", "-")}-Plates', [(shots[k], '') for k in have], cols=side, gap=24 if side > 1 else 32)
+        side = side_or_stack([p for _, p in have])
+        rec = compose(f'C15-{rid.replace(".", "-")}-Plates', [(p, '') for _, p in have], cols=side, gap=24 if side > 1 else 32)
         cc, fc = caption_text(r.get('correct')), caption_text(r.get('failure'))
         alt = (f'Rule {rid}: the correct plate, then the failure plate, ' + ('side by side' if side > 1 else 'one above the other')
-               + f', as the guide draws them at a 1440 px window. Correct: {cc} Failure: {fc}')
+               + f', as the final build draws them at a 1440 px window. Correct: {cc} Failure: {fc}')
         out.append(f'<article class="rule">{h}{figure(rec, alt)}</article>')
-        FIG.setdefault('rules', {})[rid] = {'plates': len(have), 'layout': 'side by side' if side > 1 else 'stacked', 'size': [rec['w'], rec['h']]}
-    if missing:
-        warn('plates not photographed: ' + ', '.join(missing))
-    return section('rules', ''.join(out), 'ready' if not missing else ('partial', 'render'))
+        FIG.setdefault('ch15', {})[rid] = {'plates': len(have), 'layout': 'side by side' if side > 1 else 'stacked', 'size': [rec['w'], rec['h']]}
+    # phone views
+    out.append(f'<h3 class="sub grp" id="c15-phone">{esc(S["phone_h"])}</h3><p>{esc(S["phone_lede"])}</p>')
+    row = []
+    for rid in S['phone_rules']:
+        sp = ((held15.get(rid) or {}).get('correct') or {}).get('specimen')
+        h = one_pic(shots, gkey('final', f'fig-{sp}', PHONE), f'C15-{slug(rid)}-390',
+                    f'Rule {rid}’s correct plate at a 390 px window, at true size. {caption_text((held15.get(rid) or {}).get("correct"))}', f'Rule {rid} at a 390 px window') if sp else None
+        if h:
+            row.append(h)
+        else:
+            missing.append(f'Rule {rid} at 390 px')
+            row.append(pending(S['wait']))
+    out.append(f'<div class="pair view">{"".join(row)}</div>')
+    # the reconciliation table
+    out.append(f'<h3 class="sub grp" id="c15-recon">{esc(S["recon_h"])}</h3><p>{esc(S["recon_lede"])}</p>')
+    sp = ((held15.get('15.25') or {}).get('correct') or {}).get('specimen')
+    fig = element_html(G['text'], f'fig-{sp}') if sp and G['usable'] else None
+    tabs = re.findall(r'<table\b.*?</table>', fig or '', flags=re.S)
+    v71 = 0
+    for k, tb in enumerate(tabs):
+        capm = re.search(r'<caption[^>]*>(.*?)</caption>', tb, flags=re.S)
+        cname = text_of(capm.group(1)) if capm else f'Rule 15.25’s table {k + 1}'
+        QUOTED.extend([cname, text_of(tb)])
+        v71 += len(re.findall(r'<tr\b(?:(?!</tr>).)*V7\.1(?:(?!</tr>).)*</tr>', tb, flags=re.S))
+        t_ = clean_table(tb, cname).replace('<table class="ft">', '<table class="ft rc">', 1)
+        out.append(t_ if k == 0 else f'<details class="more"><summary>{esc(cname)}</summary>{t_}</details>')
+    if not tabs:
+        missing.append('the reconciliation table')
+        out.append(pending(S['wait']))
+    FIG['reconciliation'] = {'tables': len(tabs), 'rows_naming_v7_1': v71}
+    FIG['ch15_missing'] = missing
+    return section('ch15', ''.join(out), 'ready' if not missing and G['ok'] else ('partial', 'render' if G['usable'] else 'final'))
 
 
-# ------------------------------------------------------------------------------------------------------- panel 4
+# ------------------------------------------------------------------------------------------------------- panel 5
 def bar_rows(rows, cols, caption, unit=''):
     """A live table with a bar per row: rows [(name, value, limit, passes)]."""
     mx = max([v for _, v, lim, _ in rows] + [lim or 0 for _, _, lim, _ in rows] + [1])
@@ -1407,86 +1568,33 @@ def bar_rows(rows, cols, caption, unit=''):
             f'<caption>{esc(caption)}</caption><thead><tr>{hd}</tr></thead><tbody>{trs}</tbody></table></div>')
 
 
-def count_panel():
-    S = C['sections']['count']
-    k = (D or {}).get('counts')
-    if not k:
-        return section('count', f'<p class="intro">{esc(S["lede"])}</p>' + pending(S['wait']), ('waiting', 'data_lead'))
-    r9 = k.get('rule_01_9') or {}
-    out = [f'<p class="intro">{esc(S["lede"])}</p>']
-    facts = []
-    bt = (r9.get('built') or {}).get('examples') if r9 else None
-    if r9:
-        lim = r9.get('limits', {})
-        if bt is not None:
-            facts.append((S['facts']['built'], f'{bt}'))
-        facts += [(S['facts']['total'], f'{r9.get("total_examples", "?")}'), (S['facts']['ruling'], f'{r9.get("ruling_g", "?")}'),
-                  (S['facts']['recount'], f'{r9.get("recount", "?")}'), (S['facts']['limits'], fill(S['limits_words'], {'d': lim.get('domain', '?'), 's': lim.get('state', '?')}))]
-    out.append('<dl class="facts">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in facts) + '</dl>')
-    if r9.get('note'):
-        QUOTED.append(r9['note'])
-        out.append(f'<p>{esc(r9["note"])}</p>')
-    for key, h in (('by_domain', S['domain_h']), ('by_state', S['state_h'])):
-        rows = r9.get(key) or []
-        if rows:
-            name_k = 'domain' if key == 'by_domain' else 'state'
-            out.append(f'<h3 class="sub">{esc(h)}</h3>')
-            out.append(bar_rows([(str(x.get('title') or x.get(name_k, '')), int(x.get('count', 0)), x.get('limit'), bool(x.get('passes', True))) for x in rows], S['cols'],
-                                fill(S['caption'], {'what': h.lower(), 'base': r9.get('total_examples', '?'), 'built': bt if bt is not None else '?',
-                                                    'planned': (r9.get('total_examples') - bt) if bt is not None and r9.get('total_examples') is not None else '?'})))
-    dr = k.get('dr_229') or {}
-    if dr:
-        out.append(f'<h3 class="sub">{esc(S["dr229_h"])}</h3>')
-        if dr.get('test'):
-            QUOTED.append(dr['test'])
-            out.append(f'<p>{esc(dr["test"])}</p>')
-        if dr.get('count') is not None:
-            out.append(f'<p class="big">{esc(fill(S["dr229_count"], {"n": dr["count"]}))}</p>')
-        df = [(lab, dr[k]) for k, lab in S['dr229_facts'].items() if dr.get(k) is not None]
-        if df:
-            out.append('<dl class="facts">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in df) + '</dl>')
-        ex = dr.get('examples') or dr.get('forms') or []
-        if ex:
-            cols = [c for c in S['dr229_cols'] if any(c in x for x in ex)]
-            for x in ex:
-                # B2-M6: a "No" stands only where the test was applied and failed
-                if x.get('passes') is False and re.search(S['not_applied_re'], str(x.get('test', '')), flags=re.I):
-                    fail(f'the election table prints “No” for {x.get("where") or x.get("spec")}, whose test was not applied ({x.get("test")})')
-            yn = lambda v: S['not_applied'] if v is None else ((S['pass_words'] if v else S['fail_words']) if isinstance(v, bool) else v)
-            out.append(rows_table([{c: yn(x.get(c)) if c == 'passes' else x.get(c, '') for c in cols} for x in ex],
-                                  fill(S['dr229_caption'], {'built': bt if bt is not None else '?', 'n': len(ex)})))
-        if dr.get('note'):
-            QUOTED.append(dr['note'])
-            out.append(f'<p>{esc(dr["note"])}</p>')
-    FIG['count'] = {'recount': r9.get('recount'), 'ruling_g': r9.get('ruling_g'), 'dr_229': dr.get('count')}
-    st = 'ready' if (D or {}).get('state') == 'signed off' else ('partial', 'data_lead')
-    return section('count', ''.join(out), st, fill(S['script_ref'], {'script': k.get('script', '')}) if k.get('script') else '')
-
-
-# ------------------------------------------------------------------------------------------------------- panel 5
-def spend_panel(G, rn, kit_out):
+def spend_panel(G, P, held):
     S = C['sections']['spend']
     if not G['report']:
         return section('spend', pending(S['wait']), ('waiting', 'build'))
     W = G['report'].get('weight', {})
     pj = W.get('projection', {})
-    pp = pj.get('chapter_14_per_plate', {})
     mg = pj.get('map_geometry', {})
     cr = pj.get('chapter_14_rules', {}) or W.get('chapter_14_parts', {})
-    parts = W.get('parts', {})
-    kit = int(parts.get('chart kit', 0))
-    stop = int(pp.get('stop') or W.get('chapters', {}).get('14', {}).get('budget') or 0)
+    ch14 = W.get('chapters', {}).get('14', {})
+    stop = int(ch14.get('budget') or (pj.get('chapter_14_per_plate') or {}).get('stop') or 0)
+    kit = int(W.get('parts', {}).get('chart kit', 0))
+    with_kit = int(pj.get('chapter_14_with_kit', 0))
     budget = int(pj.get('budget') or W.get('budget_page') or 0)
-    rows = [(S['rows']['ch14'], int(pj.get('chapter_14_with_kit', 0)), stop),
+    limit = int(W.get('limit') or LIMIT_PAGE)
+    proj = int(pj.get('projected_bytes', 0))
+    rows = [(S['rows']['ch14'], with_kit, stop),
+            (S['rows']['ch14_only'], int(ch14.get('bytes', 0)), None),
             (S['rows']['kit'], kit, None),
-            (S['rows']['geo'], int(mg.get('bytes', 0)), int(mg.get('allowance', 0))),
-            (S['rows']['rules'], int(cr.get('rules_and_opener', 0)), int(cr.get('allowance', 0))),
-            (S['rows']['page'], int(pj.get('projected_bytes', 0)), budget)]
-    FILL.update({'ch14_kit': f'{int(pj.get("chapter_14_with_kit", 0)):,}', 'stop': f'{stop:,}', 'kit': f'{kit:,}', 'geo': f'{int(mg.get("bytes", 0)):,}',
-                 'geo_allow': f'{int(mg.get("allowance", 0)):,}', 'geo_room': f'{int(mg.get("room", 0)):,}', 'rules_b': f'{int(cr.get("rules_and_opener", 0)):,}',
-                 'rules_allow': f'{int(cr.get("allowance", 0)):,}', 'per_plate': f'{int(pp.get("per_plate", 0)):,}', 'to_come': pp.get('plates_to_come', '?'),
-                 'proj': f'{int(pj.get("projected_bytes", 0)):,}', 'budget_mb': f'{budget / 1e6:g}', 'proj_room': f'{budget - int(pj.get("projected_bytes", 0)):,}',
-                 'page_now': f'{int(W.get("bytes", 0)):,}', 'build_when': when_utc(G['mtime']) if G.get('mtime') else ''})
+            (S['rows']['rules'], int(cr.get('rules_and_opener', 0)), int(cr.get('allowance', 0)) or None),
+            (S['rows']['geo'], int(mg.get('bytes', 0)), int(mg.get('allowance', 0)) or None),
+            (S['rows']['page_now'], int(W.get('bytes', 0)), budget),
+            (S['rows']['page'], proj, budget),
+            (S['rows']['limit'], proj, limit)]
+    diff = with_kit - stop
+    FILL.update({'ch14_kit': f'{with_kit:,}', 'stop': f'{stop:,}', 'over_words': fill(S['over'] if diff > 0 else S['under'], {'n': f'{abs(diff):,}'}),
+                 'proj': f'{proj:,}', 'budget_mb': f'{budget / 1e6:g}', 'proj_room': f'{budget - proj:,}', 'limit_room': f'{limit - proj:,}',
+                 'page_now': f'{int(W.get("bytes", 0)):,}', 'build_when': B1.words_when(datetime.datetime.fromtimestamp(G['mtime'], datetime.timezone.utc)) if G.get('mtime') else ''})
     trs = ''
     for name, b, lim in rows:
         share = 100 * b / lim if lim else None
@@ -1497,57 +1605,98 @@ def spend_panel(G, rn, kit_out):
     body = (f'<p class="intro">{esc(fill(S["lede"]))}</p>'
             f'<figure class="wfig"><div class="tw" role="region" tabindex="0" aria-label="{esc(S["caption"])}; scrolls sideways"><table class="wt">'
             f'<caption>{esc(S["caption"])}</caption><thead><tr>{hd}</tr></thead><tbody>{trs}</tbody></table></div></figure>'
-            f'<p>{esc(fill(S["per_plate"]))}</p><p>{esc(fill(S["geo_line"]))}</p><p>{esc(fill(S["page_line"]))}</p>')
-    # bytes by family: each plate's bytes as the build placed it, and each sketch entry's, summed by the plan's families
+            f'<p>{esc(fill(S["page_line"]))}</p>')
+    # round 5's plates
+    r5 = pj.get('chapter_14_round_5') or {}
+    if r5:
+        rr = ''.join(f'<tr><th scope="row">{esc(S["r5_names"].get(k, k))}</th><td class="num">{int(v):,}</td></tr>' for k, v in r5.items())
+        body += (f'<h3 class="sub">{esc(S["r5_h"])}</h3><div class="tw" role="region" tabindex="0" aria-label="{esc(S["r5_caption"])}; scrolls sideways">'
+                 f'<table class="wt r5t"><caption>{esc(S["r5_caption"])}</caption><thead><tr><th scope="col">{esc(S["r5_cols"][0])}</th><th scope="col" class="n">{esc(S["r5_cols"][1])}</th></tr></thead><tbody>{rr}</tbody></table></div>')
+    # the heaviest charts
     charts = W.get('charts', {})
-    sk = {x['rule']: x for x in W.get('chapter_14_parts', {}).get('sketch_entries', [])}
-    P = json.loads((ROOT / C['slots']['plan']).read_text())
-    titles = {g.get('family_section'): g['title'] for g in P['groups']}
-    fam, seen = {}, set()
-    for f in rn:
-        fs = f['family_section']
-        e = fam.setdefault(fs, [0, 0, 0])
-        if f.get('spec_id') and f['spec_id'] not in seen:
-            seen.add(f['spec_id'])
-            b = (charts.get(f's-14-{f["spec_id"].lower()}') or {}).get('bytes')
-            if b:
-                e[0] += int(b)
-                e[1] += 1
-        elif f['status'] == 'sketch' and f['rule'] in sk:
-            e[0] += int(sk[f['rule']]['bytes'])
-            e[2] += 1
-    frows = ''
-    mx = max([v[0] for v in fam.values()] + [1])
-    for fs, (b, n, m) in fam.items():
-        t = re.sub(r':.*$', '', titles.get(fs, fs))
-        frows += (f'<tr><th scope="row">{esc(t)}</th><td class="barcell"><span class="bar" data-mark="bar" data-value="{b}" data-key="{esc(t)}" style="width:{100 * b / mx:.3f}%"></span></td>'
-                  f'<td class="num">{n}</td><td class="num">{m}</td><td class="num">{b:,}</td></tr>')
-    body += (f'<h3 class="sub">{esc(S["fam_h"])}</h3><p>{esc(S["fam_lede"])}</p><div class="tw" role="region" tabindex="0" aria-label="{esc(S["fam_caption"])}; scrolls sideways">'
-             f'<table class="wt ft2"><caption>{esc(S["fam_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col"{" class=\"n\"" if i >= 2 else ""}>{esc(c)}</th>' for i, c in enumerate(S['fam_cols']))
-             + f'</tr></thead><tbody>{frows}</tbody></table></div>')
-    # the heaviest plates, with the kit's measure with the plate's frame
-    plates = []
-    for sid in sorted({f['spec_id'] for f in rn if f.get('spec_id')}):
-        W_ = plate_weight(G, sid)
-        rule = next((f['rule'] for f in rn if f.get('spec_id') == sid), '')
-        form = next((f['form'] for f in rn if f.get('spec_id') == sid), '')
-        plates.append((W_['on_page'] if W_['on_page'] is not None else int(W_['placed'] or 0), sid, rule, form, W_))
-    plates.sort(key=lambda x: -x[0])
-    top = plates[:int(S.get('heaviest_n', 10))]
-    nb = lambda v: '' if v is None else f'{v:,}'
-    added_top = [sid for b, sid, rule, form, W_ in top if W_.get('added')]
-    hrows = ''.join(f'<tr><th scope="row">{esc(sid)}</th><td><a href="#form-{rule.replace(".", "-")}">{esc(rule)}</a></td><td>{esc(form)}</td>'
-                    f'<td class="num">{nb(W_["placed"])}</td><td class="num">{nb(W_["frame"])}</td><td class="num">{nb(W_["on_page"])}</td></tr>'
-                    for b, sid, rule, form, W_ in top)
+    by_spec = {}
+    for f in P['forms']:
+        if f.get('spec_id'):
+            by_spec.setdefault(f['spec_id'].upper(), (f['rule'], f['form']))
+    top = sorted(((int(v.get('bytes', 0)), k) for k, v in charts.items() if k.startswith('s-14-s')), reverse=True)[:int(S.get('heaviest_n', 10))]
+    hrows = ''
+    heavy = []
+    for b, k in top:
+        sid = k.replace('s-14-', '').upper()
+        rule, form = by_spec.get(sid, ('', charts[k].get('form', '')))
+        heavy.append({'spec': sid, 'rule': rule, 'bytes': b})
+        rl = f'<a href="{esc(rule_href(rule))}">{esc(rule)}</a>' if rule and rid_anchor(rule) in ANCHORS else esc(rule)
+        hrows += f'<tr><th scope="row">{esc(sid)}</th><td>{rl}</td><td>{esc(form)}</td><td class="num">{b:,}</td></tr>'
     body += (f'<h3 class="sub">{esc(fill(S["heavy_h"], {"n": len(top)}))}</h3><div class="tw" role="region" tabindex="0" aria-label="{esc(S["heavy_caption"])}; scrolls sideways">'
              f'<table class="wt ht"><caption>{esc(S["heavy_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col"{" class=\"n\"" if i >= 3 else ""}>{esc(c)}</th>' for i, c in enumerate(S['heavy_cols']))
-             + f'</tr></thead><tbody>{hrows}</tbody></table></div><p class="small">{esc(S["heavy_note"])}'
-             + (f' {esc(fill(S["heavy_added"], {"specs": join_words(added_top)}))}' if added_top else '') + '</p>')
-    FIG['spend'] = {'rows': rows, 'per_plate': pp.get('per_plate'), 'plates_to_come': pp.get('plates_to_come'), 'by_family': fam, 'heaviest': top}
+             + f'</tr></thead><tbody>{hrows}</tbody></table></div><p class="small">{esc(S["heavy_note"])}</p>')
+    FIG['spend'] = {'rows': rows, 'round_5': r5, 'heaviest': heavy, 'ch14_with_kit_minus_figure': diff}
     return section('spend', body, 'ready' if G['ok'] else ('partial', 'build'))
 
 
 # ------------------------------------------------------------------------------------------------------- panel 6
+def count_panel():
+    S = C['sections']['count']
+    k = (D or {}).get('counts')
+    if not k:
+        return section('count', f'<p class="intro">{esc(S["lede"])}</p>' + pending(S['wait']), ('waiting', 'data_lead'))
+    r9 = k.get('rule_01_9') or {}
+    out = [f'<p class="intro">{esc(S["lede"])}</p>']
+    lim = r9.get('limits', {})
+    log_ = r9.get('generator_examples')
+    facts = [(S['facts']['total'], f'{r9.get("total_examples", "?")}'), (S['facts']['recount'], f'{r9.get("recount", "?")}'),
+             (S['facts']['log'], f'{log_}' + (', agrees row for row' if r9.get('agrees_with_generator_log') else '') if log_ is not None else '?'),
+             (S['facts']['limits'], fill(S['limits_words'], {'d': lim.get('domain', '?'), 's': lim.get('state', '?')})),
+             (S['facts']['atlas_wide'], f'{r9.get("atlas_wide", "?")}')]
+    QUOTED.extend(b for _, b in facts)
+    out.append('<dl class="facts">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in facts) + '</dl>')
+    if r9.get('note'):
+        n_ = move_codes(r9['note'])
+        QUOTED.append(n_)
+        out.append(f'<p>{esc(n_)}</p>')
+    base = r9.get('total_examples', '?')
+    for key, h in (('by_domain', S['domain_h']), ('by_state', S['state_h'])):
+        rows = r9.get(key) or []
+        if rows:
+            name_k = 'domain' if key == 'by_domain' else 'state'
+            out.append(f'<h3 class="sub">{esc(h)}</h3>')
+            out.append(bar_rows([(str(x.get('title') or x.get(name_k, '')), int(x.get('count', 0)), x.get('limit'), bool(x.get('passes', True))) for x in rows], S['cols'],
+                                fill(S['caption'], {'what': h.lower(), 'base': base})))
+            QUOTED.extend(str(x.get('title') or x.get(name_k, '')) for x in rows)
+    dr = k.get('dr_229') or {}
+    if dr:
+        out.append(f'<h3 class="sub">{esc(S["dr229_h"])}</h3>')
+        if dr.get('test'):
+            t_ = move_codes(dr['test'])
+            QUOTED.append(t_)
+            out.append(f'<p>{esc(t_)}</p>')
+        if dr.get('count') is not None:
+            out.append(f'<p class="big">{esc(fill(S["dr229_count"], {"n": dr["count"]}))}</p>')
+        df = [(lab, dr[kk]) for kk, lab in S['dr229_facts'].items() if dr.get(kk) is not None]
+        if df:
+            out.append('<dl class="facts">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in df) + '</dl>')
+        ex = dr.get('examples') or []
+        if ex:
+            cols = [c for c in S['dr229_cols'] if any(c in x for x in ex)]
+            for x in ex:
+                if x.get('passes') is False and re.search(S['not_applied_re'], str(x.get('test', '')), flags=re.I):
+                    fail(f'the election table prints “No” for {x.get("where")}, whose test was not applied ({x.get("test")})')
+            yn = lambda v: S['not_applied'] if v is None else ((S['pass_words'] if v else S['fail_words']) if isinstance(v, bool) else v)
+            out.append(rows_table([{c: yn(x.get(c)) if c == 'passes' else x.get(c, '') for c in cols} for x in ex],
+                                  fill(S['dr229_caption'], {'base': base, 'n': len(ex)})))
+        if dr.get('note'):
+            n_ = move_codes(dr['note'])
+            QUOTED.append(n_)
+            out.append(f'<p>{esc(n_)}</p>')
+    FIG['count'] = {'total': r9.get('total_examples'), 'recount': r9.get('recount'), 'dr_229': dr.get('count')}
+    st = 'ready' if (D or {}).get('state') == 'signed off' else ('partial', 'data_lead')
+    refs = fill(S['script_ref'], {'script': k.get('script', '')}) if k.get('script') else ''
+    refs = ' · '.join(x for x in [refs] + MOVED_REFS if x)
+    MOVED_REFS.clear()
+    return section('count', ''.join(out), st, refs)
+
+
+# ------------------------------------------------------------------------------------------------------- panel 7
 ID = r'[A-Z]{1,4}(?:[- ][A-Z]{1,3})?-?\d{1,3}'
 PATH_RE = r'\b(?:work|source|deliverables|brief)/[\w./-]+|\b[\w-]+\.(?:json|md|py|mjs|js|csv|html)\b'
 
@@ -1569,7 +1718,8 @@ def findings(body):
 
 
 def score_in(part):
-    """The first "N of 5" under a heading that names a score, the heading's own words included; a half point kept."""
+    """The first "N of 5" under a heading that names a score, the heading's own words included; a half point kept. Else
+    a bold "Score: N of 5" line at the report's head."""
     for m in re.finditer(r'^(#+)\s*(?:\d+\.\s*)?(.*\bscore\b.*)$', part, flags=re.M | re.I):
         nxt = re.search(r'^#+\s', part[m.end():], flags=re.M)
         block = m.group(2) + '\n' + part[m.end():m.end() + (nxt.start() if nxt else len(part))]
@@ -1577,23 +1727,34 @@ def score_in(part):
         if s:
             v = s.group(1) or s.group(2)
             return float(v) if '.' in v else int(v)
+    s = re.search(r'\*\*Score:\s*([1-5](?:\.\d)?)\s*of\s*5', part)
+    if s:
+        v = s.group(1)
+        return float(v) if '.' in v else int(v)
     return None
 
 
-def red_team(rt):
-    t = read(rt['file'])
+def reader_row(rd):
+    t = read(rd['file'])
+    if rd.get('cd_json'):
+        p = ROOT / rd['cd_json']
+        if not p.exists():
+            return {'name': rd['name'], 'state': 'missing'}
+        J = json.loads(p.read_text())
+        items = J.get('items', [])
+        ready = sum(1 for i in items if i.get('ready'))
+        return {'name': rd['name'], 'state': 'ready', 'score': f'{ready} of {len(items)} items ready',
+                'must_fix': sum(int(i.get('must_fix_count') or 0) for i in items), 'should_fix': sum(int(i.get('should_fix_count') or 0) for i in items),
+                'file': rd['cd_json']}
     if t is None:
-        return {'name': rt['name'], 'round': rt['round'], 'state': 'missing'}
+        return {'name': rd['name'], 'state': 'missing'}
     m = re.search(r'^##\s+(?:\d+\.\s*)?Second pass\b.*$', t, flags=re.M | re.I)
-    first_part, second_part = (t[:m.start()], t[m.start():]) if m else (t, '')
-    score = score_in(first_part)
-    score2 = score_in(second_part) if second_part else None
-    mf = findings(B1.md_section(first_part, [r'(?:\d+\.\s*)?must fix']))
-    sf = findings(B1.md_section(first_part, [r'(?:\d+\.\s*)?should fix']))
+    first = t[:m.start()] if m else t
+    score = score_in(first)
+    mf = findings(B1.md_section(first, [r'(?:\d+\.\s*)?must fix']))
+    sf = findings(B1.md_section(first, [r'(?:\d+\.\s*)?should fix']))
     state = 'ready' if score is not None and mf is not None and sf is not None else 'waiting'
-    if second_part and score2 is None:
-        warn(f'round {rt["round"]} {rt["name"]}: its second pass gives no score')
-    return {'name': rt['name'], 'round': rt['round'], 'state': state, 'score': score, 'must_fix': mf, 'should_fix': sf, 'second_score': score2, 'file': rt['file']}
+    return {'name': rd['name'], 'state': state, 'score': f'{score} of 5' if score is not None else None, 'must_fix': mf, 'should_fix': sf, 'file': rd['file']}
 
 
 def drop_ids(s):
@@ -1602,7 +1763,7 @@ def drop_ids(s):
 
 
 def short_name(s):
-    """An item's name as the scores print it: the words before its parenthesis."""
+    """An item's name as the scores print it: the words before its first colon or parenthesis."""
     return drop_ids(re.sub(r'\s*\(.*$', '', s or '')).strip()
 
 
@@ -1616,7 +1777,7 @@ def cd_table(first, rescore, caption):
     rows = []
     for it in items:
         sc = it.get('scores', {})
-        fs = (f_items.get(it.get('key'), {}) or {}).get('scores') or {}
+        fs = (f_items.get(it.get('key'), {}) or {}).get('scores') or it.get('first_scores') or {}
 
         def cell(c):
             v = sc.get(c['key'], '')
@@ -1639,36 +1800,46 @@ def cd_table(first, rescore, caption):
 
 def scores_panel():
     S = C['sections']['scores']
-    out = [f'<p class="intro">{esc(S["lede"])}</p><p class="small">{esc(S["legend"])}</p>']
+    out = [f'<p class="intro">{esc(S["lede"])}</p>']
     status = 'ready'
-    summ = []
-    for rnd in C['rounds']:
-        sl = C['slots']['scores'][str(rnd)]
-        fp, rp = ROOT / sl['first'], ROOT / sl['rescore']
-        first = json.loads(fp.read_text()) if fp.exists() else None
-        rescore = json.loads(rp.read_text()) if rp.exists() else None
-        if not first:
-            out.append(pending(fill(S['wait_round'], {'r': rnd})))
-            status = ('partial', 'cd')
-            continue
-        tbl, fr, nr, n = cd_table(first, rescore, fill(S['cd_caption'], {'r': rnd}))
-        line = fill(S['cd_line'], {'r': rnd, 'first': nw(fr, 'none'), 'now': 'all ' + nw(nr) if nr == n else nw(nr, 'none'), 'n': nw(n)})
-        out.append(f'<h3 class="sub">{esc(fill(S["cd_h"], {"r": rnd}))}</h3><p>{esc(line)}</p>{tbl}')
-        summ.append({'round': rnd, 'first_ready': fr, 'now_ready': nr, 'items': n})
-    # the red teams
-    rts = [red_team(rt) for rt in C['slots']['red_teams']]
+    rows = [reader_row(rd) for rd in C['slots']['readers']]
     trs = []
-    for r in rts:
+    for r in rows:
         if r['state'] != 'ready':
-            trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{r["round"]}</td><td colspan="4">{esc(S["rt_wait"])}</td></tr>')
+            trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td colspan="3">{esc(S["reader_wait"])}</td></tr>')
             status = ('partial', 'red')
             continue
-        s2 = f'{r["second_score"]} of 5' if r.get('second_score') is not None else esc(S['rt_wait2'])
-        trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{r["round"]}</td><td class="num">{r["score"]} of 5</td><td class="num">{r["must_fix"]}</td>'
-                   f'<td class="num">{r["should_fix"]}</td><td class="num">{s2}</td></tr>')
-    hd = ''.join(f'<th scope="col"{" class=\"n\"" if i >= 1 else ""}>{esc(c)}</th>' for i, c in enumerate(S['rt_cols']))
-    out.append(f'<h3 class="sub">{esc(S["rt_h"])}</h3><p>{esc(S["rt_lede"])}</p>'
-               f'<div class="tw" role="region" tabindex="0" aria-label="{esc(S["rt_h"])}; scrolls sideways"><table class="rt"><caption>{esc(S["rt_h"])}</caption><thead><tr>{hd}</tr></thead><tbody>{"".join(trs)}</tbody></table></div>')
+        trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{esc(r["score"])}</td><td class="num">{r["must_fix"]}</td><td class="num">{r["should_fix"]}</td></tr>')
+    hd = ''.join(f'<th scope="col"{" class=\"n\"" if i >= 1 else ""}>{esc(c)}</th>' for i, c in enumerate(S['readers_cols']))
+    out.append(f'<h3 class="sub">{esc(S["readers_h"])}</h3><p>{esc(S["readers_lede"])}</p>'
+               f'<div class="tw" role="region" tabindex="0" aria-label="{esc(S["readers_caption"])}; scrolls sideways"><table class="rt"><caption>{esc(S["readers_caption"])}</caption><thead><tr>{hd}</tr></thead><tbody>{"".join(trs)}</tbody></table></div>')
+    # the creative director: first pass and rescore
+    fp, rp, sp = ROOT / C['slots']['cd_first'], ROOT / C['slots']['cd_rescore'], ROOT / C['slots']['cd_second']
+    first = json.loads(fp.read_text()) if fp.exists() else None
+    rescore = json.loads(rp.read_text()) if rp.exists() else None
+    summ = {}
+    out.append(f'<h3 class="sub">{esc(S["cd_h"])}</h3><p class="small">{esc(S["legend"])}</p>')
+    if first:
+        tbl, fr, nr, n = cd_table(first, rescore, S['cd_caption'])
+        out.append(f'<p>{esc(fill(S["cd_line"], {"first": nw(fr, "none"), "now": "all " + nw(nr) if nr == n else nw(nr, "none"), "n": nw(n)}))}</p>{tbl}')
+        summ = {'first_ready': fr, 'rescore_ready': nr, 'items': n}
+    else:
+        out.append(pending(S['wait_cd']))
+        status = ('partial', 'cd')
+    out.append(f'<h3 class="sub">{esc(S["second_h"])}</h3><p>{esc(S["second_lede"])}</p>')
+    if sp.exists():
+        try:
+            SP = json.loads(sp.read_text())
+            tbl, fr, nr, n = cd_table(rescore or first, SP, S['second_caption'])
+            out.append(f'<p>{esc(fill(S["second_line"], {"now": nw(nr, "none"), "n": nw(n)}))}</p>{tbl}')
+            summ.update({'second_ready': nr, 'second_items': n})
+        except (json.JSONDecodeError, KeyError, TypeError) as e:
+            warn(f'{rel(sp)} could not be read: {e}')
+            out.append(pending(S['second_wait']))
+            status = status if status != 'ready' else ('partial', 'cd_second')
+    else:
+        out.append(pending(S['second_wait']))
+        status = status if status != 'ready' else ('partial', 'cd_second')
     # the board's own score, when it lands
     bp = ROOT / C['slots']['board_scores']
     brp = ROOT / C['slots'].get('board_rescores', '-')
@@ -1693,57 +1864,36 @@ def scores_panel():
     else:
         out.append(pending(S['board_wait']))
         status = status if status != 'ready' else ('partial', 'cd_board')
-    FIG['scores'] = {'cd': summ, 'red_teams': rts}
+    FIG['scores'] = {'readers': rows, 'cd': summ}
     return section('scores', ''.join(out), status)
 
 
-# ------------------------------------------------------------------------------------------------------- panel 7
-def tested_panel(G, kit_out, all_specs):
+# ------------------------------------------------------------------------------------------------------- panel 8
+def tested_panel(G):
     S = C['sections']['tested']
     rows, missing = [], []
     for it in S['tested']:
         kind, w = it.get('kind'), None
         if kind == 'build':
             rep = G['report']
-            if G['ok']:
+            if rep:
                 w = fill(it['words'], {'bytes': f'{rep.get("bytes", 0):,}', 'warnings': nw(len(rep.get('warnings', []))), 'rules': rep.get('rules'),
-                                       'specimens': rep.get('specimens_placed'), 'when': when_utc(G['mtime'])})
-            elif rep:
-                w = fill(it['words_failed'], {'exit': FIG['guide_build']['exit']})
-        elif kind == 'guide_check':
-            p = SCRATCH_ROOT / it['scratch_file']
-            if p.exists():
+                                       'specimens': rep.get('specimens_placed'), 'when': B1.words_when(datetime.datetime.fromtimestamp(G['mtime'], datetime.timezone.utc)) if G.get('mtime') else ''})
+        elif kind == 'check_file':
+            p = scratch_path(C['slots'].get(it['slot']))
+            if p and p.is_file():
                 J = json.loads(p.read_text())
                 runs = J.get('runs') if isinstance(J.get('runs'), list) else []
                 widths = [str(r.get('width')) for r in runs if r.get('width')]
-                r0 = runs[0] if runs else {}
-                sp = (r0.get('specimens') or {}).get('stages') if isinstance(r0.get('specimens'), dict) else None
-                an = (r0.get('anchors') or {}).get('links') if isinstance(r0.get('anchors'), dict) else None
-                pg = p.with_name(re.sub(r'-Guide-Check-Results\.json$', '.html', p.name))
-                other = pg.exists() and G['report'].get('bytes') and pg.stat().st_size != G['report']['bytes']
-                w = fill(it['words_other'] if other and it.get('words_other') else it['words'],
-                         {'widths': join_words(widths), 'failures': nw(len(J.get('failures', []))), 'specimens': f'{sp:,}' if sp else '?',
-                          'links': f'{an:,}' if an else '?', 'page_bytes': f'{pg.stat().st_size:,}' if pg.exists() else '?',
-                          'build_bytes': f'{G["report"].get("bytes", 0):,}'})
-                FIG['guide_check'] = {'file': '[scratch]/' + it['scratch_file'], 'failures': J.get('failures'), 'pass': J.get('pass'),
-                                      'page_bytes': pg.stat().st_size if pg.exists() else None}
-                if other and not it.get('words_other'):
-                    warn(f'the quick guide check ran on {pg.stat().st_size:,} bytes and this board’s strict build is {G["report"]["bytes"]:,}')
-        elif kind == 'kit':
-            fs = [kit_out / s.lower() / f'{s.lower()}-check.json' for s in all_specs]
-            fs = [f for f in fs if f.exists()]
-            if fs:
-                ok_n = sum(1 for f in fs if not json.loads(f.read_text()).get('faults'))
-                wn = sum(len(json.loads(f.read_text()).get('warnings') or []) for f in fs)
-                w = fill(it['words'], {'pass': f'{ok_n:,}', 'n': f'{len(fs):,}', 'warnings': nw(wn)})
-                FIG['kit_checks'] = {'check_files': len(fs), 'pass': ok_n, 'warnings': wn}
+                w = fill(it['words'], {'widths': join_words(widths) or '?', 'failures': nw(len(J.get('failures', [])))})
+                FIG.setdefault('checks_read', {})[it['slot']] = {'file': rel(p), 'failures': J.get('failures'), 'pass': J.get('pass')}
         elif kind == 'preview_links':
-            if V9_IDS is not None:
-                hit = sum(1 for a in LINKS if a in V9_IDS)
+            if PREVIEW_IDS is not None:
+                hit = sum(1 for a in LINKS if a in PREVIEW_IDS)
                 w = fill(it['words'], {'links': f'{len(LINKS):,}', 'anchors': f'{len(set(LINKS)):,}', 'found': f'{hit:,}'})
-                FIG['preview_links'] = {'page': C['slots'].get('preview_page'), 'links': len(LINKS), 'anchors': len(set(LINKS)), 'found': hit}
+                FIG['preview_links'] = {'links': len(LINKS), 'anchors': len(set(LINKS)), 'found': hit}
         elif kind == 'board_check':
-            p = BOARD_DIR / f'{DATE}_Board-2-Check-Results.json'
+            p = BOARD_DIR / f'{DATE}_Board-3-Check-Results.json'
             if p.exists():
                 J = json.loads(p.read_text())
                 fails = [f for f in J.get('failures', []) if 'html-has-lang' not in f]
@@ -1765,8 +1915,7 @@ def tested_panel(G, kit_out, all_specs):
         FIG.setdefault('tested', {})[it['label']] = w
     FILL['n_links'] = f'{len(LINKS):,}'
     FILL['n_anchors'] = f'{len(set(LINKS)):,}'
-    nl = S['not_tested'] if V9_IDS is None else [x for x in S['not_tested'] if '{n_links}' not in x] + S.get('not_tested_published', [])
-    nots = ''.join(f'<li>{esc(fill(x))}</li>' for x in nl)
+    nots = ''.join(f'<li>{esc(fill(x))}</li>' for x in S['not_tested'])
     body = (f'<p class="intro">{esc(S["lede"])}</p><div class="tcols">'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["tested_h"])}</h3><ul>{"".join(rows)}</ul></div>'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["not_h"])}</h3><ul>{nots}</ul></div></div>')
@@ -1779,7 +1928,7 @@ def next_panel():
 
 
 # ------------------------------------------------------------------------------------------------------- page
-ORDER = ['decide', 'forms', 'rules', 'count', 'spend', 'scores', 'tested', 'next']
+ORDER = ['decide', 'forms', 'round5', 'ch15', 'spend', 'count', 'scores', 'tested', 'next']
 
 
 def panel_words(html_):
@@ -1950,7 +2099,7 @@ thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spa
 tbody th{font:var(--oa-type-body-small);font-weight:600;color:var(--wink)}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 table.ft td:not(.t),table.ft th[scope=col]:not(.t){text-align:right;font-variant-numeric:tabular-nums}
-table.ft{min-width:24rem}
+table.ft{min-width:24rem}table.ft.rc{min-width:56rem}table.ft.rc td,table.ft.rc th{text-align:left!important}
 .wt td.num,.rt td.num,.ft2 td.num,.ht td.num{text-align:right}
 th.n{text-align:right}
 table.scores{min-width:44rem}table.rt{min-width:36rem}table.wt{min-width:40rem}table.dt{min-width:36rem}
@@ -2100,6 +2249,9 @@ def run_checks(out, page):
         J = json.loads(res.read_text()) if res.exists() else {}
         (SCRATCH / f'check-{pathlib.Path(path).parent.name}.log').write_text(r.stdout + r.stderr)
         return r, J
+    if not browser_gate('the board check'):
+        warn('the board check did not run: no browser could open')
+        return False
     r1, J1 = check(out)
     fails1 = J1.get('failures', ['no results file'])
     other = [f for f in fails1 if not re.search(r'axe html-has-lang', f)]
@@ -2112,12 +2264,15 @@ def run_checks(out, page):
     wrapped = wrap_dir / out.name
     wrapped.write_text('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
                        '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head>\n<body>\n' + page + '</body></html>\n')
+    if not browser_gate('the wrapped board check'):
+        warn('the wrapped board check did not run: no browser could open')
+        return False
     r2, J2 = check(wrapped)
     fails2 = J2.get('failures', ['no results file'])
     print('the board itself: ' + ('PASS' if not fails1 else f'{len(fails1)} failures: ' + '; '.join(fails1[:6])))
     print('the board as the host wraps it: ' + ('PASS' if not fails2 else f'{len(fails2)} failures: ' + '; '.join(fails2[:6])))
     FIG['check'] = {'page': {'failures': fails1, 'allowed': [f for f in fails1 if f not in other], 'results': rel(out.with_name(out.stem + '-Check-Results.json'))},
-                    'wrapped': {'failures': fails2, 'pass': J2.get('pass'), 'results': '[scratch]/phase-3/board-2/builder/publish-view/' + wrapped.stem + '-Check-Results.json'},
+                    'wrapped': {'failures': fails2, 'pass': J2.get('pass'), 'results': '[scratch]/c08/board-3/builder/publish-view/' + wrapped.stem + '-Check-Results.json'},
                     'widths': [x.get('width') for x in J2.get('runs', [])]}
     if other:
         warn('the board check failed: ' + '; '.join(other[:6]))
