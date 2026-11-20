@@ -4,7 +4,7 @@ Written November 20, 2026, by the board builder (`oa-design-director` as page bu
 
 ## Status
 
-19:03 UTC: **the fix round's run landed** (run 12, `--final work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html --reuse --check`). 0 warnings, 0 failures. Check: the page alone fails only html-has-lang at 1440, 390 and 360 px (allowed); wrapped as the host wraps it, PASS. 184 images, 17,373,373 bytes; the folder 188 files, 17,832,752 bytes; page 379,495 bytes, 21,395 words. Every panel ready but panel 8, whose quick check with photographs is pending until the main session sends its file. The final run with `--check --strict` follows when it lands.
+19:59 UTC: **DONE. The last run landed** (run 13, `--final work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html --reuse --check --strict`, exit 0). 0 warnings, 0 failures; every panel ready. Check: the page alone fails only html-has-lang at 1440, 390 and 360 px (allowed, the host sets the language); wrapped as the host wraps it, PASS. Page 379,986 bytes, 21,445 words; 184 images, 17,373,373 bytes; the folder 188 files, 17,833,571 bytes, so one publish carries it. The creative director's rescore of run 12: 4 on all six criteria.
 
 ## Fix round (the creative director's review, 18:31 UTC)
 
@@ -49,6 +49,7 @@ All on "final" = `[scratch]/join/20261120_Guide-Join.html` (12,178,927 bytes, re
 - **Run 9** (18:39 to 18:53, `--final <V13> --reuse`): the fix round's pictures. My signature slip (see "Fix round") took all 168 photographs again on 23 page loads. The four "Where to start" crops failed ("nothing matched": the links' words hold a non-breaking space), fixed by matching a pattern with `\s+`.
 - **Run 10** (18:54 to 18:57, `--check`): the crops taken (14.144 cut to the card's effects); the creative director's board score read; check as before, PASS wrapped.
 - **Run 11** (18:58 to 19:00, `--check`): the four-width check on version 13 read into panel 8 (1440, 1024, 390 and 360 px; 735 drawn examples, 3,767 same-page links, no failures), and the selection guide's counts read from that check (127, 6, 16, the same as the page's own count).
+- **Run 13** (19:58, `--check --strict`, the last): panel 8's quick check with photographs read from `[scratch]/quick13/20261120_Guide-Quick-V13-Guide-Check-Results.json` (1440 and 390 px, 735 drawn examples, 3,767 same-page links, no failures); the main session's words for B3-S10 and B3-S11; the 375 px working copy of the masthead moved into the item's fold (B3-S10; the 360 px picture's alt reads the recommendation's 372 px from the content file's "how" line). Results as in Status.
 - **Run 12** (19:01 to 19:02, `--check`): "Where to start" cropped to the link and 140 px round it (317 to 401 px tall); results as in Status.
 - **Run 8** (18:18 to 18:19, `--final <V13> --reuse --check`): the editor's words (decision file 154,682 bytes, content file 27,940 bytes, both read fresh); no photograph needed again (Rule 15.25's plate was retaken at 18:04, after the 18:00 rebuild, and its markup has not changed since); 0 warnings, 0 failures; check as in Status. Panel 1: 7,775 words with its folds closed, the replies list 631; the page 20,717 words.
 - **Run 7** (18:14 to 18:15, `--reuse`, no check): the selection guide sketch made (4 photographs on 2 page loads), on the decision file as the editor had it at 18:14; 0 warnings; 170 images, the folder 174 files, 17,602,889 bytes; page 365 kB.
@@ -90,4 +91,8 @@ The decision file asks for 8. The build makes all 8 in scratch, from copies, and
 - Every picture by eye: I looked at the sample above, not all 166.
 - The four pictures still to make, and the editor's words.
 - The board in Safari or Firefox, printed, at 2x, or as the host shows it once published; a keyboard walk and a screen reader.
-- Panel 8's four-width check, quick check, data check and V7 check lines: their files are not named yet, so the board shows them waiting.
+- Panel 8's lines are read from the files the main session named; I ran none of those checks.
+
+## Change log
+
+Created (all mine): `work/build/scripts/phase-3/board_3_build.py` and `board_3_render.js` (copied from board 2's, then changed); `work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html`, `20261120_Board-3-Content.json` (its words since the editor's), `20261120_Board-3-Figures.json`, `20261120_Board-3-Check-Results.json` and `img/` (184 composed pictures); this notes file. Scratch only: photographs, kit builds, the kit mirror, the working copies of version 13 and `keyline_15_11.py`, `probe_overflow.cjs`. Not touched: `source/`, `deliverables/`, `work/ledger/`, any generator, chapter, spec or kit file, any earlier board or builder. Nothing committed, pushed or published by me.

@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T19:00:28.727894+00:00",
+ "built": "2026-11-20T19:57:42.196366+00:00",
  "decisions": {
   "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
   "state": "signed off",
@@ -25,13 +25,10 @@
   "final": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html"
  },
  "photographs_asked": 168,
- "render_seconds": {
-  "guide": 58
- },
  "shots": {
   "guide": {
    "asked": 168,
-   "taken": 4,
+   "taken": 0,
    "missing": []
   },
   "made": {
@@ -459,7 +456,7 @@
   "items_waiting": [],
   "pictures_waiting": 0
  },
- "panel_1_words": 8305,
+ "panel_1_words": 8332,
  "selection_guide": {
   "form_links": 127,
   "road_links": 6,
@@ -787,7 +784,7 @@
  "board_score": {
   "file": "work/handoffs/phase-3/20261120_Board-3-CD-Scores.json",
   "rescore": null,
-  "ready": 0,
+  "ready": 1,
   "items": 1
  },
  "scores": {
@@ -877,7 +874,7 @@
   "The final build’s strict build": "read from its report, built November 20, 2026: no warnings, 12,178,909 bytes, 369 rules and 679 examples placed",
   "The four-width guide check, first run": "run by the main session on the build before the last two fixes, at 1440, 1024, 390 and 360 px, with one failure, which the rerun on version 13 no longer finds",
   "The four-width guide check on version 13": "run by the main session at 1440, 1024, 390 and 360 px: 735 drawn examples and 3,767 same-page links read, with no failures",
-  "The quick guide check with photographs": "Waiting for its file",
+  "The quick guide check with photographs": "run by the main session on version 13 at 1440 and 390 px, with its photographs: 735 drawn examples and 3,767 same-page links read, with no failures",
   "The kit’s build of every chart": "the kit built every chart from the final files, without pictures: 96 of 96 pass, as the decision log records it",
   "Chapter 14’s build check": "99 of 99 of its files up to date with the build, as the decision log records it",
   "The data check": "on the final build, 126 tables and 0 faults, as the decision log records it",
@@ -901,6 +898,11 @@
    "failures": [],
    "pass": true
   },
+  "quick_check": {
+   "file": "[scratch]/quick13/20261120_Guide-Quick-V13-Guide-Check-Results.json",
+   "failures": [],
+   "pass": true
+  },
   "v7_check": {
    "file": "[scratch]/c08/v7-check.json",
    "failures": []
@@ -913,11 +915,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
- "html_bytes": 379495,
+ "html_bytes": 379986,
  "images": 184,
  "image_bytes": 17373373,
  "folder_files": 188,
- "folder_bytes": 17832752,
+ "folder_bytes": 17833571,
  "largest_image": [
   966992,
   "20261120_Decide-where-to-start-2.png"
@@ -930,10 +932,7 @@
   "spend": "ready",
   "count": "ready",
   "scores": "ready",
-  "tested": [
-   "partial",
-   "main"
-  ],
+  "tested": "ready",
   "next": "ready"
  },
  "image_sources": {
@@ -1242,13 +1241,12 @@
  ],
  "notes": [
   "the final build named on the command line: work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
-  "19:00:30 UTC guide: OK to open one (browsers running: 1, load: 1.59)",
-  "19:01:31 UTC the board check: OK to open one (browsers running: 1, load: 2.17)",
-  "19:02:17 UTC the wrapped board check: OK to open one (browsers running: 1, load: 1.81)"
+  "19:57:46 UTC the board check: OK to open one (browsers running: 0, load: 0.14)",
+  "19:58:34 UTC the wrapped board check: OK to open one (browsers running: 0, load: 0.24)"
  ],
  "warnings": [],
- "seconds": 63,
- "words": 21395,
+ "seconds": 5,
+ "words": 21445,
  "check": {
   "page": {
    "failures": [

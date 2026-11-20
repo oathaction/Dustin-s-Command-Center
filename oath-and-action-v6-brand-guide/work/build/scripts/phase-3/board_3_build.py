@@ -848,6 +848,9 @@ CROPS = {
              label='Now: the same five cells, the dates in words'),
     ],
 }
+# B3-S10: the masthead's 375 px working copy shows the 16 px wordmark where the recommendation keeps the 24 px one, so it
+# sits in the item's fold, for comparison only
+FOLD_PICS = {('masthead-360', 'to-make', 375)}
 CROP_ALT = '{label}. Photographed from {page} at a {w} px window, cropped to the change.'
 
 
@@ -1350,8 +1353,9 @@ def picture_html(it, pics, shots):
             cur[1].append(h)
         return ''.join(f'<div class="pair {k}">{"".join(hs)}</div>' for k, hs in rows)
     lead = crop_html(it, shots)
-    main_ = [(p, h) for p, h in out if not p.get('fold') and lead is None]
-    folded = [(p, h) for p, h in out if p.get('fold') or lead is not None]
+    fold_ = lambda p: p.get('fold') or lead is not None or (str(it.get('id')), p.get('kind'), int(p.get('width') or DESK)) in FOLD_PICS
+    main_ = [(p, h) for p, h in out if not fold_(p)]
+    folded = [(p, h) for p, h in out if fold_(p)]
     html_ = (lead or '') + arrange(main_) + gray_pair_html(it, shots)
     if folded:
         ft = it.get('fold_title') or S['fold_title']

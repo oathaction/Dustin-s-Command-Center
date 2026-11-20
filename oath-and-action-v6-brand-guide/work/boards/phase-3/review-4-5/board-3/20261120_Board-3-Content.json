@@ -444,7 +444,7 @@
      "label": "The quick guide check with photographs",
      "kind": "check_file",
      "slot": "quick_check",
-     "words": "run by the main session at {widths} px, with {failures} failures",
+     "words": "run by the main session on version 13 at {widths} px, with its photographs: {specimens} drawn examples and {links} same-page links read, with {failures} failures",
      "owner": "main"
     },
     {
@@ -536,7 +536,7 @@
   "final_report": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13-Build-Report.json",
   "final_label": "version 13, the final build of chat 8",
   "four_width_check": "[scratch]/fourwidth2/20261120_Guide-Four-Width-V13-Guide-Check-Results.json",
-  "quick_check": null,
+  "quick_check": "[scratch]/quick13/20261120_Guide-Quick-V13-Guide-Check-Results.json",
   "readers": [
    {
     "name": "Statistics",
