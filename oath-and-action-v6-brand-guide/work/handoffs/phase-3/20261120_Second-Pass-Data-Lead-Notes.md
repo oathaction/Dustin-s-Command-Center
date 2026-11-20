@@ -6,6 +6,8 @@ Written November 20, 2026, by the data lead (`oa-dataviz-systems-lead`). Brief: 
 
 16:49 UTC: started. Role file read at `oath-and-action-v6-brand-guide/.claude/agents/oa-dataviz-systems-lead.md` (the repository root has no `.claude/agents/`). No browser until the main session says the guide check has ended (about 17:45 UTC).
 16:54 UTC: batch 1 (RS-1, RS-6, RS-3) and batch 2 (RS-7, CR-S1's remainder) signed off from source, the plates' HTML and my strict build. Waiting for RS-2, RS-4, RS-5 and CR-S23.
+17:00 UTC: batch 3 (RS-2, RS-4, RS-5 as data, and D3-2280's S91 check) signed off. RS-5's visible half goes to board 3 as a held item (D3-2278), with its reach, in the decision file. Waiting for CR-S23.
+17:01 UTC: batch 4 (CR-S23) signed off. **All nine items are signed off from source, specs, the plates' HTML and a strict build of the joined pass (17:00 UTC, exit 0, 0 warnings).** The browser views listed under Not tested wait for the main session's word that the guide check has ended; I run them then and add a batch 5 only if one changes a sign-off.
 
 ## Sign-off
 
@@ -40,9 +42,39 @@ Each batch answers three questions: does the change say only what the data and t
 - `s-15-20-failure.html` keeps its words in the same order and its loop drawing byte for byte; the two check marks change class only (`ck` to `oa-choice-check`, the same `U-selected-check` symbol). The options now sit in the shared chooser's list form, as on the correct plate, so the failure plate differs from the correct one in its fault alone: both reforms chosen and lit at once, a combined "+L" no atlas reform carries, and no qualification. That is the caption's fault, unchanged, and V7's effect codes stay uncombined everywhere but this do-not-publish plate. 5,223 to 5,415 bytes.
 - The chapter's shared style lost `.xb` and changed `.xk`; only `s-15-20-failure` uses either class, so no other plate changes.
 
+### Batch 3, 17:00 UTC: RS-2, RS-4, RS-5 (data only) and the S91 check (D3-2280)
+
+**RS-2, S91's title (26 words).** Signed off.
+- Data. The title keeps batch 9's universe (CD-S4), the federal district courts: S91's three cards are district judges, bankruptcy judges and magistrate judges, from 28 U.S.C. 133, 134, 152, 631 and 633, and bankruptcy courts are units of the district courts (28 U.S.C. 151), so "the federal district courts’ three kinds of judge" names exactly the cards. "Only district judges serve for life" matches the data's terms (row 1 "for life"; rows 2 and 3 fixed terms), and the territorial exception names the three territories whose district judges serve fixed terms (MI-4, MI-7; Puerto Rico's serve for life, so it stays out). The editor's reason for leaving the rescore's example is right: "the three kinds who hear federal trial cases" would take in the Court of International Trade, whose judges also serve for life, a claim S91's data does not hold. The verb stays a documented finding, as the grade line says.
+- Read from the left and the right: the title names no party or official.
+- The example log's row for Rule 14.137 takes the new title; its domain and states are unchanged, so Rule 01.9's count does not move.
+
+**D3-2280, the S91 check in `maker_i_round4_derive.py`.** Signed off. The check still guards the same universe: it now looks for the new title's scope words and, with them, the measure line's "who hears cases at trial in the federal district courts", so a later title cannot drop the district courts without failing. The added check holds the title at 27 words or fewer. Every other S91 check is unchanged, and the editor's run passes them all.
+
+**RS-4, S90's row 4 note.** Signed off for the page.
+- Data. Row 5 of `census-school-system-finances-2024.csv` holds 39,177,454 thousand dollars of COVID-19 relief within federal revenue, which is $39.2 billion to one decimal. The plate's first note prints the same $39.2 billion, and Rule 14.2's anatomy sets the notes above the table, so "as the first note says" points to a note the reader has just passed. The data file is unchanged; the spec's `typography.replace` changes printed words only.
+- Not part of RS-4, found while checking it: the kit's CSV export of S90 leaves row 5 out by the spec's `where` and still prints row 4's note "Includes COVID-19 relief funds (row 5)", so the export's note points to a row it does not carry. The guide page is right. See Calls; it goes to the register, owner the engineer (the kit's export), as the editor's Request 2 asks.
+
+**RS-5, the entries' related rules, as data.** Signed off as data. The five entries carry the related rules the rescore names, each target a rule that exists in the guide, and each pairing fits the form: 14.32's noisy monthly columns and 14.74's survey margin with Rule 14.142's margin band; 14.88's bill tracker with the two new trackers (11.10, 11.11) and Rule 15.23's tracker map; 14.96's and 14.135's process forms with Rule 15.22's statute path. The chapter file changes only those five rules' `related_rules`, and `related` gains chapter 15 on 14.88, 14.96 and 14.135, which the page prints as "15 Systems graphics" under Related chapters. That line is the only visible change; Rules 14.88 and 14.96 were shown at board 2, so it joins panel 1's list of changed approved work. The page prints no rule numbers from `related_rules` (`related_inline()` prints chapters only), so the half a reader would see is held for Dustin on board 3 (D3-2278): 138 of chapter 14's 144 rules carry related rules, 363 links in all (284 inside chapter 14, 79 to chapters 01, 05, 06, 11, 12, 13, 15, 18 and 19), against 38 rules that print a Related chapters line today.
+
+### Batch 4, 17:01 UTC: CR-S23, Rule 14.144's phone line-up
+
+**CR-S23.** Signed off from source; the 360 and 390 px measure waits for a browser.
+- `s-14-144-correct.html` changes inside its style alone: outside the `<style>` block the markup is byte for byte as committed in db231c9b, so every reform, code, qualifier and pip count prints as before. The line-up's rows change from a two-column grid to a wrapping row whose pips, code and words form one group that never wraps inside, so a code's pips stay on its line. 51,724 to 51,875 bytes.
+- Rule 13.5's mark is unchanged (the 22 px pips, read from chapter 13's `pips_svg`), the cards and the key do not move, and the plate still prints no total: the atlas's codes stay uncombined (ruling (d), D3-2127). Rule 14.144 is a round 5 plate shown on board 3, and its pips are already a board 3 item (D3-2127), so no approved drawing changes.
+
+### The joined pass, 17:00 UTC
+
+A strict build of the tree at 15591677 (every item in): exit 0, 0 warnings, 12,178,911 bytes, the editor's figure; pictures 101 hidden and 315 open. My two scripts rerun on it: the six tracker alts agree with their marks and keys, and S94's three year marks carry the same 16 events on the same days. The page prints S91's new title once and the old one nowhere, and S90's new note once, after the note it points to, with "row 5" nowhere.
+
 ## Not signed off
 
+None. Every item the pass changed is signed off for data and the chart rules. The views a browser must confirm are listed under Not tested, with the owner who measures each.
+
 ## Calls
+
+- D3-xxx | On D3-2281 (S90's CSV export): the fix belongs in the kit's export, which should print the words the plate prints by applying the spec's `typography.replace` to exported cells, and the research lead's frozen data file keeps its note | the file's "(row 5)" is true of the file; the export leaves row 5 out by `where`, so the fault is the export's, and one change in the kit fixes every spec that replaces printed words; owner the engineer, in the finishing pass
+- D3-xxx | RS-5 signs off as data only; printing `related_rules` as links goes to board 3 held for Dustin (D3-2278) with its reach: 138 of 144 rules, 363 links | the page prints related items as chapters only, and a new line on 138 rules changes every approved chapter 14 entry's foot
 
 - D3-xxx | The six tracker alts may leave out the sample figure "4" printed inside the key's marks | the marks are `aria-hidden` drawing samples, not data, and D3-2153's test reads them as hidden
 
@@ -52,9 +84,13 @@ Each batch answers three questions: does the change say only what the data and t
 - `rs1_check.py` (scratch): the six tracker plates' drawn marks, key words and step names against their alts; exit 0.
 - `rs3_check.py` (scratch): S94's mid, desk and phone year marks in my strict page carry the same 16 events on the same days.
 - Atlas query: Loop R10 and connection L08 (from, to, sign, evidence) against RS-6's line.
-- Fragment comparisons against commit db231c9b: words and SVGs of `s-15-19-correct` and `s-15-20-failure`; byte sizes.
+- Fragment comparisons against commit db231c9b: words and SVGs of `s-15-19-correct` and `s-15-20-failure`; the markup of `s-14-144-correct` outside its style; byte sizes.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/b2/guide.html` at 17:00 UTC on 15591677: exit 0, 0 warnings, 12,178,911 bytes, pictures 101 hidden and 315 open; `rs1_check.py` and `rs3_check.py` rerun on it; S91's title and S90's note read in the page; the working tree unchanged by the build.
+- S90's data row 5 (39,177,454 thousand dollars) against "$39.2 billion"; S91's three cards and terms against the title; the kit's S90 CSV export from the editor's scratch run (it leaves row 5 out and keeps "(row 5)").
+- RS-5: the five rules' `related_rules` and `related` before and after in the chapter file; every related rule in chapter 14 checked to exist as a rule in the guide; the reach counted (138 of 144 rules, 363 links).
 
 ## Not tested
 
-- Any browser view, while the guide check holds the machine: S94 at a 1024 px page, Rule 15.20's failure plate options at 1440 and 390 px, Rule 15.19 in a page.
+- Any browser view, while the guide check holds the machine: S94's year at a 1024 px page (the engineer measures it too); Rule 15.20's failure plate options at 1440 and 390 px, whether they stop splitting into columns; Rule 14.144's line-up at 360 and 390 px, pips on the code's line; S90 and S91 at 390 px and on Charcoal; Rule 15.19 in a page.
+- The kit's whole build (`build --all --no-png`): the editor and the engineer ran it (96 of 96); I did not.
 - The accessibility tree for RS-1's six pictures and RS-7's focus order; both are the accessibility lead's.
