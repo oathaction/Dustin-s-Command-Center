@@ -472,14 +472,14 @@ class Pill:
     """A variable as a pill with its own title inside (System 1's station_block, DR-36), or a thin pill for a station
     that is no numbered variable (a conceptual loop's)."""
 
-    def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False, keyline=False):
+    def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False):
         pw = pill_w(label, pw)
         self.rows = rows_of(label, pw - 2 * PAD)
         need(len(self.rows) <= MAX_ROWS or label not in DR265_TITLES,
              f"the title {label!r} takes {len(self.rows)} rows in a {pw:.0f} px pill; ruling (e) holds a pill to {MAX_ROWS}")
         self.h = max(len(self.rows) * LH + 22, 44)
         self.cx, self.cy, self.pw, self.thin, self.cls = cx, cy, pw, thin, cls
-        self.red, self.shared, self.keyline = red, shared, keyline
+        self.red, self.shared = red, shared
 
     @property
     def top(self):
@@ -503,13 +503,9 @@ class Pill:
         c = ("pl" + (" th" if self.thin else "") + (" rp" if self.red else "") + (" sh" if self.shared else "")
              + (" " + self.cls if self.cls else ""))
         ty = self.cy - (len(self.rows) - 1) * LH / 2 + 15 * 0.35
-        # call 15 (DD-R5, AX-S5, CD-S5): a chooser's target pill carries a 1 px keyline 2 px inside its outline, shown
-        # only while its red ring shows, so the ring holds an ink edge in one ink and on Newsprint (the component
-        # engineer's request 1, item 2). Opt-in: no other plate's red pill takes it (Rule 12.5 as approved)
-        pk = (f'<rect class="pk" x="{F(self.left + 2)}" y="{F(self.top + 2)}" width="{F(self.pw - 4)}" '
-              f'height="{F(self.h - 4)}" rx="{F(self.h / 2 - 2)}" fill="none" display="none"/>') if self.keyline else ""
+        # board 3, reply 11 (A6): a red target pill is the atlas's red ring alone (DR-36), with no keyline inside it
         return (f'<rect class="{c}" x="{F(self.left)}" y="{F(self.top)}" width="{F(self.pw)}" height="{F(self.h)}" '
-                f'rx="{F(self.h / 2)}"{RED if self.red else ""}/>' + pk + lines(self.cx, ty, self.rows, "t ts" if self.shared else "t"))
+                f'rx="{F(self.h / 2)}"{RED if self.red else ""}/>' + lines(self.cx, ty, self.rows, "t ts" if self.shared else "t"))
 
 
 def svg_wrap(body, h, label=None, w=W):
@@ -626,7 +622,7 @@ def stacked_loop(codes, lids, labels, numbered, weakest, inside, thin, grades, w
 
 
 def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=None, hollow=False, labels=None, thin=False,
-               targets=(), shared=(), top=0, steps_g=False, lit=(), for_=None, only=None, keys=False):
+               targets=(), shared=(), top=0, steps_g=False, lit=(), for_=None, only=None):
     """A loop of three variables: the first centered at the top, the second below it to the right and the third to the
     left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. targets and shared
     as two_loop takes them. Round 4: steps_g wraps each step (its band, marks and words) in data-s and each pill in
@@ -641,10 +637,7 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     y1 = top + 4 + hs[0] / 2
     gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
-    # call 15: keys draws the keyline in a chooser's target pills (for_), or in a still picture's red pills (its failure);
-    # off by default, so a plate that imports this function (C-SD1) changes nothing until it asks
-    kw_ = [dict(red=c in targets, shared=c in shared, keyline=keys and (c in for_ if for_ else c in targets))
-           for c in codes]
+    kw_ = [dict(red=c in targets, shared=c in shared) for c in codes]
     p1 = Pill(labels[0], W / 2, y1, pw[0], thin, **kw_[0])
     p2 = Pill(labels[1], W - 2 - pw[1] / 2, y2, pw[1], thin, **kw_[1])
     p3 = Pill(labels[2], 2 + pw[2] / 2, y2, pw[2], thin, **kw_[2])
@@ -886,9 +879,7 @@ CSS.update({
     "rt": (".sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}"
            ".sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}"
            f".sv .rt .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}.sv .rt .hd{{fill:var(--oa-color-data-emphasis-red)}}"),
-    "rp": (".sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}"
-           # call 15: a chooser target's keyline, in ink, shown while its pill is red
-           f".sv .pk{{fill:none;stroke:{INK};stroke-width:1px;display:none}}.sv .pl.rp+.pk{{display:inline}}"),
+    "rp": ".sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}",
     # Rule 15.15's shared variable: the pill filled in ink and its name in the surface color
     "sh": f".sv .pl.sh{{fill:{INK}}}.sv .ts{{fill:var(--oa-color-surface)}}",
     "pp": C13.CSS["pp"],
@@ -3338,11 +3329,11 @@ def chooser_css(rids):
         # a 3 px red outline), as the class rt and rp draw the first reform's in the markup; the others go back to ink
         out.append(f'{no} .hi,{yes} .lo{{display:none}}{no} .lo,{yes} .hi{{display:inline}}'
                    f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}'
-                   f'{no} .hd{{fill:{INK};stroke:none}}{no} .pk{{display:none}}'
+                   f'{no} .hd{{fill:{INK}}}'
                    f'{yes} .ak-mark{{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}}'
                    f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}'
-                   f'{yes} .hd{{fill:var(--oa-color-data-emphasis-red);stroke:{INK};stroke-width:2px;paint-order:stroke}}'
-                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}{yes} .pk{{display:inline}}')
+                   f'{yes} .hd{{fill:var(--oa-color-data-emphasis-red)}}'
+                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}')
     # the chosen panel alone shows, with no rule or space above it where another panel stood before it
     shows = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-panel]:not([data-oa-panel="{rid}"]){{display:none}}'
                     f'.p:has([value="{rid}"]:checked) [data-oa-panel="{rid}"]{{margin:0;padding:0;border:0}}' for rid in rids)
@@ -3381,7 +3372,7 @@ def rule_15_20(book):
     #                                               sets no layout and only carries the chooser's styles into the block
     tg = set(rs[0]["targets"])
     lit = {t_ for r_ in rs for t_ in r_["targets"] if t_ in LINK}
-    b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner, keys=True)
+    b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg, lit=lit, for_=owner)
     drawn = set(codes) | set(lp["links"])
     panels = []
     for r_ in rs:
@@ -3420,7 +3411,7 @@ def rule_15_20(book):
                    "Every value read from the atlas's reform and loop records.")
     book.log("15.20 correct", "Reforms R-03 and R-04 on Loop R4a, district maps", "D02")
     # the failure: both reforms lit at once, their effects added into one score, the qualifications gone
-    fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=set(owner), keys=True)
+    fb, fh = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=set(owner))
     # CR-S1's remainder (second pass after rounds 4 and 5): the two options in the shared chooser's list form, as the
     # correct plate sets them (oa-choice-row--list, D3-2243), each drawn checked with no input, so the chip and its quoted
     # name wrap as one label and never stand as columns; the fault stays the caption's, both reforms lit at once
@@ -3599,8 +3590,8 @@ CSS.update({
            f".p .oa-stepper .dw :is([data-s],[data-p]){{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
            ".p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}"),
     # call 15: the choices take the shared list form (oa-choice-row--list, c-18-choice.css): one width, the check's place
-    # kept; the first reform's red head in the markup takes a 1 px ink edge (paint-order puts the fill over the inner half)
-    "ch1": (f":is(.lv .dw,.kd) .rt .hd{{stroke:{INK};stroke-width:2px;paint-order:stroke}}" + chooser_css(["R-03", "R-04"])),
+    # kept; board 3, reply 11 (A6): the red head takes the atlas's red alone, with no ink edge (DR-36)
+    "ch1": chooser_css(["R-03", "R-04"]),
     "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
            ".pn .oa-disclosure-set{margin-top:16px}@media print{.lv>.oa-choice{display:none}}"),
     "pon": ".pon{display:none}",
