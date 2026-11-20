@@ -6935,3 +6935,16 @@ The main session posted the plan for the review of rounds 4 and 5 with five ques
 | D3-2271 | The three key tests pass: api.open.fec.gov 200, api.congress.gov 200, the Census API 200 with `CENSUS_API_KEY`; no key value was printed or written | V27 2A; Dustin's "test each with one request before use" |
 | D3-2272 | The strict build passes as committed (16:31 UTC, to scratch): exit 0, 0 warnings, 12,174,060 bytes, 369 rules, 679 specimens, projection 15,144,130, chapter 14 with the kit 2,817,491, 95 image stages hidden and 321 open; it differs from the V12 preview only in the build's date and time (9 bytes); the working tree stays clean. Work tracker row `c08` set active | Section 1 of V27; the figures equal the join's (D3-2266, D3-2267) |
 | D3-2273 | The full four-width guide check (1440, 1024, 390 and 360 px, `--no-captures`) starts at 16:32 UTC on a copy of that build, in the background on a quiet machine (load 0.4), while the plan waits for Dustin's go; no agent runs until it ends | DR-284 makes it chat 8's first step; it builds nothing; earlier four-width runs used `--no-captures` (D3-894, D3-1317), and load breaks the check (V21) |
+
+### Dustin's answers on chat 8's plan, November 20, 2026
+
+The main session posted the plan with six questions (Q8-1 to Q8-6). Dustin: "as recommended".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-285 | Chat 8 commits and pushes to `claude/friendly-brahmagupta-tonmfa`, the repository's default branch, as DR-281 set; the session's own branch `claude/zen-babbage-ugu3a3` holds only the opening commit, and its draft pull request (oathaction/Dustin-s-Command-Center#1) closes as merged when that commit reaches the default branch | Dustin, November 20, as recommended (Q8-1) |
+| DR-286 | DR-191's second pass takes nine items: RS-1 (a Must), RS-2 to RS-7, CR-S23 and the rest of CR-S1 (Rule 15.20's failure plate); AX-S3 stays in the deferred fixes register for the finishing pass | Dustin, November 20, as recommended (Q8-2) |
+| DR-287 | The second pass runs five agents: an editor for every word item, one engineer for every code item and the only writer of each file it takes, the data lead's sign-off, the accessibility lead's check of RS-1 and RS-7, and the creative director's rescore of the changed items alone | Dustin, November 20, as recommended (Q8-3), to save credits |
+| DR-288 | After the second pass the four-width guide check (no photographs) and the quick check with photographs run again on the final build | Dustin, November 20, as recommended (Q8-4); Gate 2 section 9's checks ask for four widths with 0 failures at Gate 3 |
+| DR-289 | The chapters page is republished privately as version 13 after the second pass, so board 3's links open the page it describes | Dustin, November 20, as recommended (Q8-5), as version 9 preceded board 2 (DR-259) |
+| DR-290 | Dustin's go covers board 3's build on board 2's model with five runs (data lead, editor, research lead, a board builder, the creative director); the board is his review point | Dustin, November 20, as recommended (Q8-6) |
