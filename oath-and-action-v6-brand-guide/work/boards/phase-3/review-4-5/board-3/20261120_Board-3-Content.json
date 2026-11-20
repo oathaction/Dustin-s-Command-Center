@@ -1,7 +1,9 @@
 {
  "about": "Board 3's own words and the files each panel reads. work/build/scripts/phase-3/board_3_build.py reads this file on every run; every number, picture and quoted word on the board comes from the files named under slots, read at build time. A {name} in a sentence is filled from those files. Codes in a 'refs' field print only in the small reference lines. The editor owns these words once the first full build lands; the data lead's decisions file holds panel 1's items and panel 6's counts.",
  "title": "Edition 06 Board 3",
- "rounds": [4],
+ "rounds": [
+  4
+ ],
  "makers": {
   "A": "Maker A",
   "B": "Maker B",
@@ -10,7 +12,7 @@
  },
  "cover": {
   "kicker": "Edition 06 · Phase 3 · Board 3",
-  "title": "Rounds 4 and 5, chapter 15, and what waits for you before Gate 3",
+  "title": "Chapter 14 finished, chapter 15 whole",
   "for_line": "For Dustin Cathcart · {built_date}",
   "deck": [
    "Rounds 4 and 5 finished chapter 14: its last {n_forms} forms, a guide to choosing a chart, the palette plate and three charts in full. Chapter 15 now holds all {n_15} of its rules, and chapter 11 has two new trackers.",
@@ -49,7 +51,7 @@
   "v10": "version 10, the page after round 4",
   "v11": "version 11, the page before the fix pass",
   "v12": "version 12, the page before the second pass",
-  "final": "the final build"
+  "final": "version 13, the final build"
  },
  "sections": {
   "decide": {
@@ -72,7 +74,7 @@
    "shows_no": "Not on the page",
    "settled_touches": "What it touches",
    "settled_respects": "How it keeps what you settled",
-   "steps_caption": "The six steps of {title}, as the plate prints them",
+   "steps_caption": "The steps of Rule {rule} as the plate prints them, with what happens at each and where the law sets it",
    "step_heads": {
     "n": "Step",
     "name": "Name",
@@ -81,7 +83,10 @@
    },
    "marks_k": "The marks its key prints",
    "counts_caption": "The counts behind this row",
-   "count_heads": ["What was counted", "Count"],
+   "count_heads": [
+    "What was counted",
+    "Count"
+   ],
    "verb_caption": "The five route values that open with a verb",
    "verb_heads": {
     "reform": "Reform",
@@ -133,8 +138,11 @@
     "to-make": "made for this board"
    },
    "alt_other": "A picture for “{title}”, {src}, at a {w} px window.",
-   "alt_made": "{label}, made for this board from a scratch copy of the final build: {how}.",
-   "picture_alts": {}
+   "alt_made": "{label}. Made for this board in scratch: {how}.",
+   "picture_alts": {},
+   "sketch_label": "A studio sketch of the proposal · {label}",
+   "nb_today": "Today: the source line of S85’s figure as the kit builds it",
+   "nb_sketch": "A studio sketch of the proposal: the 16 px lockmark at the source line’s right end"
   },
   "forms": {
    "n": 2,
@@ -170,7 +178,8 @@
    "kit_pass": "Passes every check in the kit.",
    "kit_faults": "{n} faults in the kit’s checks:",
    "table_summary": "The table, as the guide prints it",
-   "measure_line": "Every weight in this panel is the bytes the final build reports for the chart as it places it, read from the build’s report."
+   "measure_line": "Every weight in this panel is the bytes the final build reports for the chart as it places it, read from the build’s report.",
+   "label_card": "The kit’s page at a 1440 px window · the card in its crops of {crops} px, at true size"
   },
   "round5": {
    "n": 3,
@@ -190,14 +199,50 @@
    "wait": "Waiting for this picture from the final build.",
    "states": {
     "14.143": [
-     {"label": "On load, the first step", "actions": []},
-     {"label": "After two presses of Next step", "actions": [{"click": ".oa-stepper-next", "times": 2}]},
-     {"label": "After five presses of Next step", "actions": [{"click": ".oa-stepper-next", "times": 3}]}
+     {
+      "label": "On load, the first step",
+      "actions": []
+     },
+     {
+      "label": "After two presses of Next step",
+      "actions": [
+       {
+        "click": ".oa-stepper-next",
+        "times": 2
+       }
+      ]
+     },
+     {
+      "label": "After five presses of Next step",
+      "actions": [
+       {
+        "click": ".oa-stepper-next",
+        "times": 3
+       }
+      ]
+     }
     ],
     "14.144": [
-     {"label": "On load, Reform R-06 chosen", "actions": []},
-     {"label": "Reform R-30 chosen", "actions": [{"check": "input.oa-choice-input[value=\"R-30\"]"}]},
-     {"label": "Reform R-38 chosen", "actions": [{"check": "input.oa-choice-input[value=\"R-38\"]"}]}
+     {
+      "label": "On load, Reform R-06 chosen",
+      "actions": []
+     },
+     {
+      "label": "Reform R-30 chosen",
+      "actions": [
+       {
+        "check": "input.oa-choice-input[value=\"R-30\"]"
+       }
+      ]
+     },
+     {
+      "label": "Reform R-38 chosen",
+      "actions": [
+       {
+        "check": "input.oa-choice-input[value=\"R-38\"]"
+       }
+      ]
+     }
     ]
    }
   },
@@ -209,7 +254,14 @@
    "lede": "Chapter 15 sets how the guide draws the systems atlas: loops, chains, layers, reforms and the routes to change. Each rule shows its title with its correct and failure plates, photographed from the final build at a 1440 px window.",
    "phone_h": "On a phone",
    "phone_lede": "The plates a phone reader uses most, at a 390 px window: the ones a reader steps through, chooses in or reads as a list.",
-   "phone_rules": ["15.6", "15.19", "15.20", "15.21", "15.23", "15.24"],
+   "phone_rules": [
+    "15.6",
+    "15.19",
+    "15.20",
+    "15.21",
+    "15.23",
+    "15.24"
+   ],
    "recon_h": "The reconciliation table, Rule 15.25",
    "recon_lede": "Rule 15.25 reconciles every earlier drawing of the atlas with the model. Its two tables follow as the final build prints them, with what the earlier page showed, what the model holds and where the guide applies the answer. Gate 3 decides any new item for the atlas’s next version.",
    "recon_v71": "Rows that name the atlas’s next version",
@@ -226,7 +278,12 @@
    "over": "{n} bytes past it",
    "under": "{n} bytes under it",
    "caption": "Chapter 14 and the page against their figures, in bytes",
-   "cols": ["Part", "Share of its figure", "Bytes", "Figure"],
+   "cols": [
+    "Part",
+    "Share of its figure",
+    "Bytes",
+    "Figure"
+   ],
    "rows": {
     "ch14": "Chapter 14 with the chart kit",
     "ch14_only": "Chapter 14’s own entries and plates",
@@ -241,7 +298,10 @@
    "page_line": "The guide is {page_now} bytes today and projects to {proj} bytes when every chapter is built: {proj_room} under the {budget_mb} MB figure and {limit_room} under the 16 MB limit.",
    "r5_h": "Round 5’s plates",
    "r5_caption": "Round 5’s plates in the final build, in bytes",
-   "r5_cols": ["Plate", "Bytes"],
+   "r5_cols": [
+    "Plate",
+    "Bytes"
+   ],
    "r5_names": {
     "s-14-selection-guide": "Choose a chart, the selection guide",
     "s-14-palette-spec": "The palette plate",
@@ -252,8 +312,14 @@
    "heaviest_n": 10,
    "heavy_h": "The {n} heaviest charts in chapter 14",
    "heavy_caption": "The heaviest charts in chapter 14, as the final build places them, in bytes",
-   "heavy_cols": ["Chart", "Rule", "Form", "Bytes"],
-   "heavy_note": "Each figure is the build’s own count of the chart as it places it on the page."
+   "heavy_cols": [
+    "Chart",
+    "Rule",
+    "Form",
+    "Bytes"
+   ],
+   "heavy_note": "Each figure is the build’s own count of the chart as it places it on the page.",
+   "parts_line": "The first row is the next three added: chapter 14’s own entries and plates, {own} bytes; the chart kit, {kit}; and the map shapes, {geo}."
   },
   "count": {
    "n": 6,
@@ -272,7 +338,13 @@
    "limits_words": "{d} for a topic, {s} for a state",
    "domain_h": "By topic of the atlas",
    "state_h": "By state",
-   "cols": ["Topic or state", "Examples, drawn to scale", "Count", "Limit", "Within it"],
+   "cols": [
+    "Topic or state",
+    "Examples, drawn to scale",
+    "Count",
+    "Limit",
+    "Within it"
+   ],
    "caption": "Chapter 14’s {base} examples {what}, against Rule 01.9’s limit",
    "pass_words": "Yes",
    "fail_words": "No",
@@ -288,7 +360,14 @@
     "rule_plates": "Rule plates",
     "charts_in_full": "Charts in full"
    },
-   "dr229_cols": ["where", "form", "example", "data", "test", "passes"],
+   "dr229_cols": [
+    "where",
+    "form",
+    "example",
+    "data",
+    "test",
+    "passes"
+   ],
    "script_ref": "counted by {script}",
    "not_applied": "Not applied",
    "not_applied_re": "^\\s*not (?:a form|applied|tested)|before the test|not applied"
@@ -301,7 +380,12 @@
    "lede": "Nine readers reviewed rounds 4 and 5, each for one part of the work. The creative director then scored the work on six criteria from 1 to 5; an item is ready when every score is 4 or more with no Must fix open.",
    "readers_h": "The nine readers",
    "readers_lede": "Each reader’s score with its Must fix and Should fix counts, read from the report’s own findings.",
-   "readers_cols": ["Reader", "Score", "Must fix", "Should fix"],
+   "readers_cols": [
+    "Reader",
+    "Score",
+    "Must fix",
+    "Should fix"
+   ],
    "readers_caption": "The nine readers of rounds 4 and 5",
    "reader_wait": "Waiting for this report.",
    "legend": "Each cell gives the first score, small, then the score after the fix pass. A box marks a score under 4.",
@@ -335,13 +419,20 @@
    "wait_words": "Waiting for its file",
    "tested": [
     {
-     "label": "Strict build of the guide",
+     "label": "The final build’s strict build",
      "kind": "build",
-     "words": "the final build’s report: exit 0 recorded as {warnings} warnings, {bytes} bytes, {rules} rules and {specimens} examples placed, built {when}",
+     "words": "read from its report, built {when}: {warnings} warnings, {bytes} bytes, {rules} rules and {specimens} examples placed",
      "owner": "build"
     },
     {
-     "label": "The four-width guide check",
+     "label": "The four-width guide check, first run",
+     "kind": "check_file",
+     "slot": "four_width_first",
+     "owner": "main",
+     "words": "run by the main session on the build before the last two fixes, at {widths} px, with {failures} failure; its rerun on version 13 is pending"
+    },
+    {
+     "label": "The four-width guide check on version 13",
      "kind": "check_file",
      "slot": "four_width_check",
      "words": "run by the main session at {widths} px, with {failures} failures",
@@ -370,13 +461,20 @@
      "label": "The data check",
      "kind": "notes",
      "owner": "notes",
-     "sources": []
+     "sources": [
+      {
+       "file": "work/ledger/20261020_Decision-Log.md",
+       "pattern": "\\| D3-2293 \\|[^\\n]*?([\\d,]+) tables?[^\\n]*?(\\d+) faults?",
+       "words": "run on the final build, {1} tables and {2} faults, as the decision log records it"
+      }
+     ]
     },
     {
      "label": "The atlas check",
-     "kind": "notes",
+     "kind": "v7",
      "owner": "notes",
-     "sources": []
+     "slot": "v7_check",
+     "words": "v7_check.py on version 13’s page: {chips} chips in chapters {chapters} and {specs} kit specs read, with {failures} failures"
     },
     {
      "label": "Links to the chapters page",
@@ -420,21 +518,49 @@
   "data_dir": "work/build/data",
   "tokens_css": "work/build/tokens/tokens.css",
   "preview_url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
-  "final_page": "[scratch]/join/20261120_Guide-Join.html",
-  "final_report": "[scratch]/join/20261120_Guide-Join-Build-Report.json",
-  "final_label": "the joined build of the second pass, standing in for version 13",
+  "final_page": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
+  "final_report": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13-Build-Report.json",
+  "final_label": "version 13, the final build of chat 8",
   "four_width_check": null,
   "quick_check": null,
   "readers": [
-   {"name": "Statistics", "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md"},
-   {"name": "Civic education", "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md"},
-   {"name": "Accessibility", "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Accessibility.md"},
-   {"name": "Nonpartisanship and brand", "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Nonpartisan-Brand.md"},
-   {"name": "Craft at twice size", "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"},
-   {"name": "Production", "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md"},
-   {"name": "Reader panel, simulated", "file": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"},
-   {"name": "Drift read", "file": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"},
-   {"name": "Creative director", "cd_json": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Scores.json", "file": "work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md"}
+   {
+    "name": "Statistics",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Statistics.md"
+   },
+   {
+    "name": "Civic education",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Civic-Education.md"
+   },
+   {
+    "name": "Accessibility",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Accessibility.md"
+   },
+   {
+    "name": "Nonpartisanship and brand",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Nonpartisan-Brand.md"
+   },
+   {
+    "name": "Craft at twice size",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Craft.md"
+   },
+   {
+    "name": "Production",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Red-Team-Production.md"
+   },
+   {
+    "name": "Reader panel, simulated",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Reader-Panel-Simulated.md"
+   },
+   {
+    "name": "Drift read",
+    "file": "work/handoffs/phase-3/20261116_Review-4-5-Drift-Read.md"
+   },
+   {
+    "name": "Creative director",
+    "cd_json": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Scores.json",
+    "file": "work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md"
+   }
   ],
   "cd_first": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Scores.json",
   "cd_rescore": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Rescores.json",
@@ -442,7 +568,55 @@
   "board_scores": "work/handoffs/phase-3/20261120_Board-3-CD-Scores.json",
   "board_rescores": "work/handoffs/phase-3/20261120_Board-3-CD-Rescores.json",
   "made": {
-   "masthead-360": {"how": "the 16 px master’s switch moved from 22.49em to 23.49em in a scratch copy of the final build"}
-  }
+   "masthead-360": {
+    "how": "the 16 px master’s switch moved from 22.49em to 23.49em in a scratch copy of the final build"
+   },
+   "red-target-keyline": {
+    "how": "chapter 15’s generator run for this one plate in a scratch copy with its keyline flag set, and the red arrowhead given the 1 px ink edge Rule 15.20 draws"
+   },
+   "CR-S19-chip": {
+    "how": "S91 drawn by the chart kit from a scratch copy of its spec with the opt-in key set, at the window that gives the guide’s phone drawing"
+   },
+   "related-rules": {
+    "rule": "14.32",
+    "sketch": true,
+    "how": "Rule 14.32’s foot in a scratch copy of version 13, with a Related rules line of links in the page’s own link form, read from the rule’s related rules"
+   },
+   "NB-S4": {
+    "spec": "S85",
+    "sketch": true,
+    "how": "S85’s figure as the kit builds it in scratch, copied, with the 16 px lockmark master set after the credit at the source line’s right end"
+   },
+   "S59-label": {
+    "sketch": true,
+    "how": "S59 drawn by a scratch copy of the chart kit whose fan chart takes one new label key, which sets the last actual rate’s label under its dot, at the window that gives the guide’s phone drawing",
+    "set": {
+     "history_last_below": true
+    },
+    "patch": {
+     "forms/fan-chart.js": [
+      [
+       "labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap'],",
+       "labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap', 'history_last_below'],"
+      ],
+      [
+       "          vlab.push({ x: hx(j), y: ys(hv(h)) - 8, words: K.fmt(hv(h), fy), weight: 400, must: j === lastj });",
+       "          vlab.push({ x: hx(j), y: (L.history_last_below && j === lastj) ? ys(hv(h)) + tick + 6 : ys(hv(h)) - 8, words: K.fmt(hv(h), fy), weight: 400, must: j === lastj });"
+      ]
+     ]
+    }
+   }
+  },
+  "made_kit": {
+   "CR-S19-chip": {
+    "spec": "S91",
+    "set": {
+     "evidence_layout": "beside"
+    }
+   }
+  },
+  "rail_focus_text": "Graphic devices",
+  "four_width_first": "[scratch]/fourwidth/20261120_Guide-Four-Width-Guide-Check-Results.json",
+  "v7_check": "[scratch]/c08/v7-check.json"
  }
 }

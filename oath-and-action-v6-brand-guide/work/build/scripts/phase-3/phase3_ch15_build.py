@@ -4795,7 +4795,7 @@ def recon_words():
              f"{len(ents)} route entries: {n_dated} checked {SNAP}, {len(ents) - n_dated} with no date.",
              "A route with no date prints “Not checked”, and no date comes from a reform’s status."),
         50: (f"{chip('Variable', 'D6')} typed as a flow and described as a stock.",
-             f"{vq('D6')}: type “{e(d6['type'])}”; its description opens “{e(d6['kind_plain'].split('.')[0])}”.",
+             f"{vq('D6')}: type “{e(d6['type'])}”; its kind in words opens “{e(d6['kind_plain'].split('.')[0])}”.",
              f"Chapter 15 prints no kind for {chip('Variable', 'D6')} until the atlas settles it."),
         51: (f"The name of {chip('Connection', 'L23')} says poor service raises the risk of losing, while its sign is minus.",
              f"{chip('Connection', 'L23')} “{e(link('L23')['name'])}”, minus; on its sign: “{e(link('L23')['sign_meaning'])}”",

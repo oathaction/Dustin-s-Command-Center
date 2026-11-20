@@ -101,16 +101,24 @@ async function holdStill(pg, read, tries = 20, wait = 250) {
             if (!links.length) throw new Error('no rail links');
             await links[links.length - 1].focus();
             await pg.waitForTimeout(150);
+            // the first link, going up, whose focus makes the rail scroll: the rail brings it to its own top edge, where
+            // AX-M1 found the masthead covering it; the picture is taken while that link holds focus
+            const read = () => pg.evaluate((sel) => {
+              const a = document.activeElement, r = a.getBoundingClientRect(), rail = a.closest(sel);
+              const rr = rail ? rail.getBoundingClientRect() : { top: 0 };
+              return { top: r.top, bottom: r.bottom, railTop: rr.top, scroll: rail ? rail.scrollTop : null, text: (a.textContent || '').trim().slice(0, 60) };
+            }, it.rail || 'nav.rail');
             let got = null;
+            let prev = await read();
             for (let k = 0; k < Math.min(links.length + 2, 60); k++) {
-              const st = await pg.evaluate((sel) => {
-                const a = document.activeElement, r = a.getBoundingClientRect(), rail = a.closest(sel);
-                const rr = rail ? rail.getBoundingClientRect() : { top: 0 };
-                return { top: r.top, bottom: r.bottom, railTop: rr.top, scroll: rail ? rail.scrollTop : 0, text: (a.textContent || '').trim().slice(0, 60) };
-              }, it.rail || 'nav.rail');
-              if (st.scroll > 0 && st.top <= st.railTop + 6) { got = st; } else if (got) { break; }
               await pg.keyboard.press('Shift+Tab');
-              await pg.waitForTimeout(120);
+              await pg.waitForTimeout(150);
+              const st = await read();
+              if (st.scroll === null) break;
+              // with until_text, the same link on every page: the one whose words hold it
+              if (it.until_text) { if (st.text.includes(it.until_text)) { got = st; break; } prev = st; continue; }
+              if (prev.scroll !== null && st.scroll < prev.scroll) { got = st; break; }
+              prev = st;
             }
             if (!got) throw new Error('the rail never scrolled a focused link to its top edge');
             const h = await pg.evaluate((sel) => Math.ceil(document.querySelector(sel).getBoundingClientRect().bottom), it.head || 'header.masthead');

@@ -1246,7 +1246,7 @@
  "s-14-143-correct": {
   "chapter": "14",
   "rule": "14.143",
-  "alt": "Loop B4 from our systems atlas, “Electoral consequences can improve public performance”, beside Loop R10, “Safe seats shift accountability to small primary electorates”, each drawn with its steps numbered from 1, and Variable C3, risk of losing office, the pill filled in ink in both. Under them the loop stepper of Rule 18.22: a status line, the seven steps in order, Loop B4’s three then Loop R10’s four, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in its drawing and in the list. With scripts off or in print, the list shows every step in order.",
+  "alt": "Loop B4 from our systems atlas, “Electoral consequences can improve public performance”, beside Loop R10, “Safe seats shift accountability to small primary electorates”, each drawn with its steps numbered from 1, and Variable C3, risk of losing office, the pill filled in ink in both. Under them the loop stepper of Rule 18.22: a status line, four buttons (Play, Reset the loop, Previous step and Next step) and the seven steps in order, Loop B4’s three then Loop R10’s four. The current step lights in its drawing and in the list. With scripts off or in print, the list shows every step in order.",
   "width_px": 328,
   "illustrative": false,
   "notes": "Rule 18.22's markup with no script of its own (CE-1); loops drawn by phase3_ch15_build.py's three_loop and four_loop, imported read-only; every word of the steps read from the atlas's loop and connection records.",

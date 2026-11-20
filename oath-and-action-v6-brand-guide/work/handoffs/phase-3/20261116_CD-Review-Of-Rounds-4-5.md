@@ -390,3 +390,98 @@ None that block. Board 3 already carries the trackers' step names and end words,
 - 320, 360, 768 and 1024 px; Charcoal at 390 px; Charcoal 1x for all but six rescored plates.
 - S95's exported PNGs (the round 4 maker ran the feed test, not I); the kit's CSV exports.
 - Screen readers, Safari and Firefox (DR-279).
+
+## Second pass rescore
+
+Written November 20, 2026 (chat 8), by the creative director (`oa-creative-director`), a subagent of the main session, for DR-191's second pass (`20261120_Second-Pass-Brief.md`). The scores, reasons and pending items are also in `20261120_Second-Pass-CD-Rescores.json`, in the rescore file's form.
+
+### Basis
+
+A fresh strict build of the current tree in my scratch folder (`scratchpad/c08/cd/guide.html`), run at 17:31 UTC on HEAD `6f11834d` with only the board builder's uncommitted `board_3_build.py` beside it: exit 0, 0 warnings, 12,178,907 bytes, 369 rules, 679 specimens, pictures 101 hidden and 315 open. The four owners' notes (`20261120_Second-Pass-*-Notes.md`) and D3-2270 to D3-2291. Words, alts and markup read from my page by script. My own element captures from one browser at Newsprint 1x, opened at 17:33:54 UTC after `browsers.sh` printed "OK to open one" (one browser running, load 1.18) and closed at 17:40:48: S94 at 1440, 1024 and 390 px; S90 and S91 at 1440 and 390; Rule 15.19 at 1440 and 390; Rule 15.20's failure and correct plates at 1440, 390 and 320; Rule 15.25's counts at 1440 and 1024; Rule 14.144's phone line-up at 390, 360 and 320; Rule 14.143 at 1440 after four presses of Next step. I read each at true size in 900 px tiles.
+
+I rescored the seven items the brief and the main session named. I added R5-3, which holds Rule 14.144, where CR-S23 landed; the brief files CR-S23 under C14, so I score it in both. The other six items keep their fix-pass scores. Status: scores written 17:47 UTC.
+
+### Verdict, second pass
+
+All eight rescored items score 4 or more on every criterion, and none carries a Must. C11-T rises to 4 on accessibility and ships, so all fourteen items of rounds 4 and 5 are ready for board 3. All nine asks landed as a reader meets them, with two halves held for Dustin: RS-5's related rules are in the data and print only as chapters (D3-2278), and Rule 14.143's corrected description is in source and waits for the chapter 14 build (D3-2288). Neither keeps an item under 4.
+
+### Scores after the second pass
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
+|---|---|---|---|---|---|---|---|---|---|
+| C11-T. Rules 11.10 and 11.11 with step tables, Rule 11.12, the bill's step table | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 0 | yes |
+| R4-I. Infographics maker: S89 to S95, entries 14.135 to 14.141 | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 0 | yes |
+| R5-G. "Choose a chart", the selection guide | 4 | 5 | 5 | 5 | 4 | 4 | 0 | 0 | yes |
+| R5-2. Rule 14.143, Loops B4 and R10 on the stepper | 4 | 5 | 5 | 4 | 5 | 4 | 0 | 0 | yes |
+| R5-3. Rule 14.144, three reforms on Loop R8 (added) | 4 | 4 | 5 | 4 | 5 | 4 | 0 | 0 | yes |
+| C15-I. Rules 15.19 to 15.21 | 4 | 4 | 4 | 4 | 5 | 4 | 0 | 0 | yes |
+| C15-W. Rules 15.22 to 15.25 | 4 | 4 | 4 | 5 | 5 | 4 | 0 | 0 | yes |
+| C14. Chapter 14 as a page at 144 rules with its front door | 4 | 4 | 5 | 5 | 5 | 4 | 0 | 0 | yes |
+
+Three scores rose: C11-T accessibility 3 to 4, R4-I evidence honesty 4 to 5, R5-2 clarity 4 to 5. None fell.
+
+### Reasons after the second pass
+
+**C11-T.** Craft 4 (unchanged): the six fragments are byte for byte as committed, so the trackers keep their family at 360 px. Clarity 4 (unchanged): each end word stays a sentence a reader can say, with certiorari glossed. Brand fidelity 5 (unchanged): invented subjects tied to no party. Usefulness 4 (unchanged): a rejected measure and a dismissed case each end on a stated square. Evidence honesty 5 (unchanged): the 95 percent sample rule and Article LXXIV stand. Accessibility 4 (raised from 3): on my build none of the six stages is open, each picture sits under an `aria-hidden` wrapper, the build's own word test finds no picture word missing from any alt, and each alt opens "Illustrative." and the plate's title and closes on the key in words; the accessibility lead heard each once in Chromium's tree with no control lost.
+
+**R4-I.** Craft 4 (unchanged): at a 1024 px page S94's year now draws at 480 px in a 558 px column, with 8 px squares, 30 px months and day ticks at 1, 15 and 31, where it fell to the 224 px strip before, and 1440 px keeps the 600 px year; I hold 4 because I read it at 1x only. Clarity 4 (unchanged): S91's title is one finding in 26 words on three balanced lines at 1440 px, and the set's titles still run 20 to 29 words. Brand fidelity 5 (unchanged): S95 signs off as DR-211 sets. Usefulness 4 (unchanged): both crops with the words to post. Evidence honesty 5 (raised from 4): S90's row 4 note reads "Includes $39.2 billion in COVID-19 relief funds, as the first note says.", the note sits above the table, the figure is the data's row 5, and "row 5" prints nowhere; the editor kept S91's universe at the district courts, where my example would have taken in the Court of International Trade, and that is the honest choice. Accessibility 4 (unchanged): live text and a table for each plate.
+
+**R5-G.** All six scores unchanged at 4, 5, 5, 5, 4 and 4. RS-5's one visible change is "15 Systems graphics" under Related chapters on 14.88, 14.96 and 14.135; Rule 14.142 still reaches the reader of 14.32 and 14.74 only through the guide's "Three charts in full", which already earned usefulness its 5.
+
+**R5-2.** Craft 4 (unchanged): two drawings on one baseline, the current step lit with its bar. Clarity 5 (raised from 4): after four presses the status line reads "Loop R10, step 1 of 4: Start at seats with little electoral competition, and suppose they rise. So how often the primary decides the winner goes up.", the list prints the start once, and both loops walk cause first in the direction the change runs, with the key for ticks and dashes on the first screen. Brand fidelity 5 (unchanged): one ink, the shared variable filled, no red. Usefulness 4 (unchanged): it shows how to join two loops on Rule 18.22's part. Evidence honesty 5 (unchanged): Connection L08 carries a plus sign and the grade documented, and the step says "goes up" with no "can"; the failure plate keeps its whole line and its one fault. Accessibility 4 (unchanged): the page still describes the parts as a status line, the steps and then the buttons, while a listener meets the buttons first; the corrected line waits on D3-2288.
+
+**R5-3 (added, Rule 14.144).** Craft 4 (unchanged): at 390, 360 and 320 px all twelve rows set the pips on the code's line, the codes run down one edge, and each chip takes its own line above; at 320 px the words wrap after the code, as CR-S23 asked. I hold 4 at 1x, and the chooser's keyline is a board 3 item (D3-2284). Clarity 4 (unchanged): the line-up reads as the key above it reads, one effect to a line. Brand fidelity 5 (unchanged): Rule 13.5's pips at chapter 13's size, and no total. Usefulness 4 (unchanged): reforms compared side by side. Evidence honesty 5 (unchanged): the markup outside the style block is as committed, by the data lead's diff. Accessibility 4 (unchanged): the accessibility lead found the line-up's reading order equal to what the eye sees, with nothing focusable; at 200 percent text on a 390 px page "+M renter-owner" wraps inside its column.
+
+**C15-I.** Craft 4 (unchanged): 15.19 now sets status line, controls, reason line and list in 14.143's order at 1440 and 390 px, and 15.20's failure options take the list form at one width (296 px, 256 px at 320) with the check in its slot, the correct plate's geometry at phone widths; at a desk 15.19 stacks its four buttons in its 304 px words column where 14.143 sets them 2 by 2, which the column decides. Clarity 4 (unchanged): the failure plate now differs from its correct plate by its fault alone, both reforms lit with a combined "+L". Brand fidelity 4 (unchanged): red marks only a reform's targets; whether 15.20 keeps its keyline is held for Dustin (D3-2284). Usefulness 4 (unchanged): 15.20 and 14.144 agree. Evidence honesty 5 (unchanged): 15.21's made-up 70 stays labeled. Accessibility 4 (unchanged): the accessibility lead matched 15.19's DOM order, Tab order and first words heard with 14.143's; 15.20's failure plate stays an open stage, as before this pass, its alt short of the two quoted titles.
+
+**C15-W.** Craft 4 (unchanged): Rule 15.25's four counts read 20 px in tabular figures at 1440 and 1024 px, where they read 24 and 22.41, so they sit on D2-254's scale at every width; at a desk they lead their captions a little more quietly, which I accept for the scale. Clarity 4, brand fidelity 4, usefulness 5 and evidence honesty 5 (unchanged): no word or mark moved. Accessibility 4 (unchanged): the four-width check's one failure is fixed on my build, and the check reruns on the final build (DR-288).
+
+**C14.** Craft 4 (unchanged): S94 at a laptop width and 14.144's phone line-up close the two craft notes this pass carried for the chapter. Clarity 4 (unchanged): S91's title and Loop R10's first step now read cleanly. Brand fidelity 5, usefulness 5 and evidence honesty 5 (unchanged): no chart's inks, entries or source lines moved. Accessibility 4 (unchanged): 14.143's description waits on D3-2288.
+
+### Under 4 after the second pass
+
+None. No item needs Dustin's call to ship.
+
+### Held for Dustin, and what each would change
+
+- **D3-2278, RS-5's visible half.** A yes prints a related rules line on 138 of chapter 14's 144 rules, 363 links: 14.32 and 14.74 point to 14.142, 14.88 to 11.10, 11.11 and 15.23, and 14.96 and 14.135 to 15.22. No score moves, since R5-G's usefulness is already 5; RP-3's reader would meet Rule 14.142 from the chart they chose. I recommend yes, because Master Brief section 7 asks for useful cross-references and the data is in. Board 3 should show one entry's foot at true size before he answers, since the line changes approved work. A no moves nothing.
+- **D3-2288, Rule 14.143's description.** A yes runs `phase3_ch14_build.py`, and the page names the plate's parts in the order a listener meets them, as 15.19's does. R5-2 and C14 stay at 4 on accessibility either way; a no leaves a Could.
+- **D3-2284, board 3's keyline item (outside this pass).** If the keyline comes off 15.20 and 14.144, I rescore C15-I and R5-3 on craft and accessibility, since my fix-pass grayscale read found the chosen pill by its keyline.
+
+### For the register
+
+- The order inside each correct tracker card's alt, sentences before marks: a Could for the editor (the accessibility lead's notes).
+- Rules 11.8 and 11.9's correct plates stay open for the reason RS-1 closed (D3-2279); they sit outside C11-T.
+- S90's CSV export still prints "(row 5)" (D3-2281). The page offers no CSV for S90 today; if the asset package ships the export unchanged, R4-I's evidence honesty falls back to 4 for that download.
+
+### Risks for Dustin, second pass
+
+- The correct tracker alts run 194 to 284 words, heard as one image name that a listener cannot step through by line. That is the cost of D3-2153's rule, and the accessibility lead passed it; screen reader tests (DR-279) are where it would show.
+- Chapter 14 with the kit weighs 2,820,373 bytes against its 2,803,941 stop, and S94's plate 16,789 bytes against the 15,000 plate figure, both reported under DR-271. The page is 12,178,907 bytes, projected at 15,148,599 of 15,500,000.
+
+### What board 3 must show from this pass
+
+1. The six tracker alts in words beside their plates, "Illustrative." first.
+2. S94 at 1024 and 1440 px; S91's new title; S90's row 4 note.
+3. Rule 14.143 at Loop R10's first step, and 15.19 beside 14.143 in one order.
+4. Rule 15.20's failure plate beside its correct plate; 14.144's line-up at 390 and 320 px.
+5. Rule 15.25's counts at 20 px at 1440 px.
+
+### Tested, second pass
+
+- Read my role file, `CLAUDE.md`, Master Brief sections 1 to 7, the brief, my rescore section and scores file, the four owners' notes, D3-2270 to D3-2291, the craft report's CR-S1 and CR-S23 lines and the register's last table (17:30 to 17:31 UTC).
+- Strict build at 17:31 UTC as given under Basis; none of the six tracker stages in `open_stages`; `git status` afterwards showed only the board builder's file.
+- By script on my page, with the build's own `picture_words()` and `alt_words()`: the six tracker alts against their pictures (no word missing), each wrapper `aria-hidden`, each alt's opening and closing words.
+- By script on my page: Loop R10's line printed once (the old line only on the failure plate); S91's new title once and the old one nowhere; S90's note once, "row 5" nowhere, the notes above the table and no CSV offered; the related lines of 14.32, 14.74, 14.88, 14.96 and 14.135; the descriptions of 14.143 and 15.19; `.cnt b` at 1.25rem; chapter weights from the build report.
+- In Chromium, one browser as given under Basis: which S94 year shows and its width at 1440, 1024, 390, 360 and 320 px; 15.25's figure size at all five; 15.20's option widths and list form on both plates; 14.144's line-up rows, pips on the code's line and the codes' edge at 390, 360 and 320 px; 14.143's status line after four presses. Element captures read at true size.
+- The title word counts of S89 to S95 from their specs.
+
+### Not tested, second pass
+
+- 2x, Charcoal and grayscale for any changed plate; 768 px.
+- Keyboard, the accessibility tree, screen readers, forced colors, reduced motion, print, scripts off and 200 percent text: I ran none. The checks of RS-1 and RS-7 in the tree and by keyboard are the accessibility lead's, and the 200 percent measures the engineer's.
+- Play and its timing on 14.143 after RS-6's shorter hold.
+- S90's CSV export; the kit's builds and checks; the four-width guide check (the main session's, DR-288).
+- Safari and Firefox (DR-279).
+
+Change log: modified this file (this section appended); created `work/handoffs/phase-3/20261120_Second-Pass-CD-Rescores.json`; scratch only in `scratchpad/c08/cd/`.

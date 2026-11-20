@@ -105,6 +105,7 @@ FORMPIC = {}              # spec -> (panel 2's Newsprint picture, its rule, its 
 CHARCOAL = None           # the Charcoal ground, from tokens.css
 PAGES = {}                # page key -> {'path', 'text', 'frame'}
 NO_BROWSER = False
+RECIPE_V = {'rail-focus': 'rail-focus-2'}   # a recipe's version: a change to it in the renderer takes its pictures again
 MOVED_REFS = []           # studio codes moved out of a teammate's words, for the panel's reference line
 
 
@@ -367,7 +368,7 @@ def run_shots(items, reuse, label='guide'):
         gk = (pk, w, it.get('text_scale') or 1, sess)
         acts = prefix.setdefault(gk, [])
         acts += it.get('actions') or []
-        s = sha(page_frame(pk), w, src, el, 'measure' if measure else 'picture', it.get('text_scale') or 1, it.get('recipe') or '',
+        s = sha(page_frame(pk), w, src, el, 'measure' if measure else 'picture', it.get('text_scale') or 1, RECIPE_V.get(it.get('recipe'), '') + (it.get('until_text') or ''),
                 json.dumps(acts), 'b3r1')
         if reuse and p.exists() and sigs.get(key) == s:
             continue
@@ -382,7 +383,7 @@ def run_shots(items, reuse, label='guide'):
         jobs.append({'file': str(PAGES[pk]['path']), 'width': w, 'height': 900 if w > 600 else 844, 'static_sticky': not setup_job,
                      'draw_all': True, 'text_scale': ts,
                      'items': [{'selector': css_selector(it['el']), 'out': str(p), 'measure': m, 'actions': it.get('actions') or [],
-                                'recipe': it.get('recipe')} for key, it, s, p, m in its]})
+                                'recipe': it.get('recipe'), 'until_text': it.get('until_text')} for key, it, s, p, m in its]})
     if jobs:
         n = sum(len(j['items']) for j in jobs)
         print(f'photographing or measuring {n} elements on {len(jobs)} page loads ...')
@@ -405,7 +406,7 @@ def run_shots(items, reuse, label='guide'):
             if it.get('recipe') == 'rail-focus':
                 src += element_html(text, 'nav.rail') or ''
             sigs[it['key']] = sha(page_frame(it['page']), it['w'], src, it['el'], 'measure' if it.get('measure') else 'picture',
-                                  it.get('text_scale') or 1, it.get('recipe') or '', json.dumps(acts), 'b3r1')
+                                  it.get('text_scale') or 1, RECIPE_V.get(it.get('recipe'), '') + (it.get('until_text') or ''), json.dumps(acts), 'b3r1')
         sig_file.write_text(json.dumps(sigs, indent=1))
     taken = {x['out'] for j in jobs for x in j['items']}
     FIG.setdefault('shots', {})[label] = {'asked': len(items), 'taken': sum(1 for k, p in paths.items() if str(p) in taken and p.exists()),
@@ -530,6 +531,9 @@ def kit_build(groups, reuse):
             want = kit_sig(sid, shared, widths)
             have = all((out / lo / f'{lo}-{g}-{w}{x}.png').exists() for g in ('newsprint', 'charcoal') for w in widths for x in ('', '-grayscale')) \
                 and (out / lo / f'{lo}-check.json').exists()
+            # a social data card draws its own crops whatever the widths: its 1440 px page pictures are what it makes
+            have = have or ((out / lo / f'{lo}-check.json').exists()
+                            and all((out / lo / f'{lo}-{g}-1440{x}.png').exists() for g in ('newsprint', 'charcoal') for x in ('', '-grayscale')))
             if reuse and have and sigs.get(sid) == want:
                 reused.append(sid)
             else:
@@ -578,6 +582,9 @@ def compose(name, parts, cols=None, gap=24, label_h=26):
     from PIL import Image, ImageDraw, ImageFont
     out = IMG / f'{DATE}_{name}.webp'
     pads = [x[2] if len(x) > 2 else None for x in parts]
+    # WebP holds at most 16,383 px a side: a taller picture is saved as a lossless PNG instead
+    if any(img_size(x[0])[1] > 16000 or img_size(x[0])[0] > 16000 for x in parts if pathlib.Path(x[0]).exists()):
+        out = IMG / f'{DATE}_{name}.png'
     parts = [(x[0], x[1]) for x in parts]
     for p, _ in parts:
         need(pathlib.Path(p).exists(), f'missing picture {rel(p)} for {name}')
@@ -627,7 +634,11 @@ def compose(name, parts, cols=None, gap=24, label_h=26):
                 canvas.paste(im, (x, y + label_h))
                 x += col_w[k] + gap
             y += row_h[r] + label_h + gap
-        canvas.save(out, 'WEBP', lossless=True, quality=100, method=4)
+        if out.suffix == '.png' or W > 16383 or H > 16383:
+            out = out.with_suffix('.png')
+            canvas.save(out, 'PNG', optimize=True)
+        else:
+            canvas.save(out, 'WEBP', lossless=True, quality=100, method=4)
         CACHE[out.name] = sig
         w, h = W, H
     rec = {'src': f'img/{out.name}', 'file': out, 'w': w, 'h': h, 'source': ', '.join(rel(p) for p, _ in parts)}
@@ -767,6 +778,8 @@ def pic_request(it, pic):
         tag = ''
         if st.get('focus'):
             req['recipe'] = 'rail-focus'
+            req['session'] = 'rail-focus'
+            req['until_text'] = C['slots'].get('rail_focus_text')
             tag += '-railfocus'
         if st.get('text_scale') and st['text_scale'] != 1:
             tag += f'-text{int(100 * st["text_scale"])}'
@@ -776,7 +789,7 @@ def pic_request(it, pic):
         made = (C['slots'].get('made') or {}).get(str(it.get('id')))
         mk = made_key(it, pic)
         if made and mk in MADE:
-            return {'kind': 'made', 'key': mk, 'how': made.get('how', ''), 'w': w}
+            return {'kind': 'made', 'key': mk, 'how': made.get('how', ''), 'w': w, 'sketch': bool(made.get('sketch'))}
         p = pic.get('path')
         if p and (ROOT / p).is_file():
             return {'kind': 'path', 'file': ROOT / p}
@@ -794,17 +807,53 @@ def pic_request(it, pic):
 
 # ------------------------------------------------------------------------------------------------------- pictures made in scratch
 MADE = {}                 # key -> the photograph's path, for pictures this board makes from a scratch copy of the final build
+STACK = {}                # a made picture's key -> [(photograph key, label)], stacked into one picture
 
 
 def made_key(it, pic):
     return f'made-{slug(it.get("id"))}-{int(pic.get("width") or DESK)}'
 
 
+def keyline_fragments(d):
+    """Rule 15.11's correct plate from chapter 15's own generator, as built and with three_loop's keys flag set, in a
+    scratch Book; the generator is imported read-only and write() is never called. Cached on the generator's bytes."""
+    gen = SCRIPTS3 / 'phase3_ch15_build.py'
+    sig = sha(gen.read_bytes(), (ROOT / 'work/extract/atlas-v7-data.json').read_bytes() if (ROOT / 'work/extract/atlas-v7-data.json').exists() else b'')
+    cache = d / 'keyline'
+    cache.mkdir(parents=True, exist_ok=True)
+    a_, k_, s_ = cache / 's-15-11-correct.as-built.html', cache / 's-15-11-correct.keyline.html', cache / 'sig.txt'
+    if not (a_.exists() and k_.exists() and s_.exists() and s_.read_text() == sig):
+        import importlib.util
+        sys.path.insert(0, str(SCRIPTS2))
+        spec = importlib.util.spec_from_file_location('ch15gen_board3', gen)
+        M = importlib.util.module_from_spec(spec)
+        try:
+            spec.loader.exec_module(M)
+            orig = M.three_loop
+            for path_, keys in ((a_, False), (k_, True)):
+                M.three_loop = (lambda *a, _k=keys, **kw: orig(*a, **dict(kw, keys=True)) if _k else orig(*a, **kw))
+                book = M.Book()
+                M.rule_15_11(book)
+                path_.write_text(book.files['s-15-11-correct'])
+            M.three_loop = orig
+        except Exception as e:  # noqa: BLE001   the generator's own checks stop it; the picture then waits
+            warn(f'chapter 15’s generator could not make Rule 15.11 with the keyline: {e}')
+            return None
+        s_.write_text(sig)
+    spec_file = ROOT / 'work/build/guide/specimens/s-15-11-correct.html'
+    if spec_file.exists() and spec_file.read_text() != a_.read_text():
+        warn('the generator’s Rule 15.11 as built differs from the committed specimen; the keyline picture is set on the generator’s')
+    return a_.read_text(), k_.read_text()
+
+
 def make_pictures(reuse):
-    """The pictures a builder can make from a scratch copy of the final build, as the decisions file's owner asks. Today:
-    the masthead with the 16 px wordmark master's switch at 23.5em (376 px), the design director's own picture to make.
-    The copy changes the one media query the shell's CSS gives the switch, and nothing else."""
+    """The pictures a builder can make in scratch, as the decisions file's "how" asks, for the items the content file
+    names under slots.made: the masthead with the 16 px wordmark master's switch at 23.5em (376 px), in a scratch copy of
+    the final build that changes that one media query; a chart the kit builds from a scratch copy of its spec with one
+    opt-in key (slots.made_kit); and Rule 15.11 with chapter 15's keyline flag set (keyline_fragments). Nothing in the
+    repository changes."""
     made = C['slots'].get('made') or {}
+    S_ = C['sections']['decide']
     want = []
     for it, pic in all_pictures(D):
         if pic.get('kind') == 'to-make' and str(it.get('id')) in made:
@@ -832,6 +881,153 @@ def make_pictures(reuse):
             PAGES['made-masthead'] = {'path': copy, 'text': text, 'frame': None}
             mk = made_key(it, pic)
             items.append({'key': mk, 'page': 'made-masthead', 'el': 'header.masthead', 'w': int(pic.get('width') or DESK)})
+        elif iid == 'related-rules':
+            # a studio sketch: Rule 14.32's foot in a scratch copy of the final page with a "Related rules" line of links,
+            # set in the page's own link form (the foot's "Related chapters" markup), read from chapter 14's related_rules
+            rid = C['slots']['made']['related-rules'].get('rule', '14.32')
+            rr = ((chapter14()[1].get(rid) or {}).get('related_rules')) or []
+            fs = src.find(f'id="rule-{rid.replace(".", "-")}"')
+            fe = src.find('<div class="rule"', fs + 10)
+            seg = src[fs:fe]
+            k = seg.find('<div class="foot-pair">')
+            if not rr or fs < 0 or k < 0:
+                warn(f'the related rules sketch could not be set: Rule {rid} has {len(rr)} related rules and its foot was {"found" if k >= 0 else "not found"}')
+                continue
+            lis = ''.join(f'<li><a class="xref" href="#rule-{x.replace(".", "-")}"><span class="n">{esc(x)}</span> {esc(rule_name(x))}</a></li>' for x in rr)
+            block = f'<div class="foot-block foot-related"><p class="label">Related rules</p><ul class="rel-inline">{lis}</ul></div>'
+            k += len('<div class="foot-pair">')
+            text = src[:fs] + seg[:k] + block + seg[k:] + src[fe:]
+            copy = d / f'{DATE}_Related-Rules-Sketch.html'
+            if not copy.exists() or copy.read_text() != text:
+                copy.write_text(text)
+            PAGES['made-related'] = {'path': copy, 'text': text, 'frame': None}
+            FIG['made_related'] = {'rule': rid, 'links': rr}
+            items.append({'key': made_key(it, pic), 'page': 'made-related', 'el': f'rule-{rid.replace(".", "-")}', 'w': int(pic.get('width') or DESK)})
+        elif iid == 'NB-S4':
+            # a studio sketch: one round 4 chart's figure from the kit, as built in scratch, with the 16 px lockmark master
+            # set after the credit at the source line's right end; today's figure and the sketch, source rows stacked
+            sid = C['slots']['made']['NB-S4'].get('spec', 'S85').lower()
+            today = SCRATCH / 'kit-out' / sid / f'{sid}.html'
+            lm = ROOT / 'work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg'
+            if not today.exists() or not lm.exists():
+                warn(f'NB-S4: the kit’s figure of {sid.upper()} or the 16 px lockmark master is missing; its picture waits')
+                continue
+            ft = today.read_text()
+            credit = re.search(r'<p class="oac-credit">(.*?)</p>', ft, flags=re.S)
+            if not credit:
+                warn('NB-S4: the kit’s figure prints no credit line; its picture waits')
+                continue
+            inner = re.sub(r'<title>.*?</title>', '', re.search(r'<svg[^>]*>(.*)</svg>', lm.read_text(), flags=re.S).group(1), flags=re.S)
+            mark = (f'<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="flex:none">{inner}</svg>')
+            sk = ft.replace(credit.group(0), f'<p class="oac-credit" style="display:flex;align-items:center;gap:8px">{credit.group(1)}{mark}</p>', 1)
+            sk_p = today.with_name(f'{sid}-lockmark-sketch.html')
+            if not sk_p.exists() or sk_p.read_text() != sk:
+                sk_p.write_text(sk)
+            PAGES['made-nb-today'] = {'path': today, 'text': ft, 'frame': None}
+            PAGES['made-nb-sketch'] = {'path': sk_p, 'text': sk, 'frame': None}
+            items += [{'key': 'made-nb-today', 'page': 'made-nb-today', 'el': 'div.oac-src', 'w': DESK},
+                      {'key': 'made-nb-sketch', 'page': 'made-nb-sketch', 'el': 'div.oac-src', 'w': DESK}]
+            STACK[made_key(it, pic)] = [('made-nb-today', S_['nb_today']), ('made-nb-sketch', S_['nb_sketch'])]
+        elif iid == 'S59-label':
+            # a studio sketch: S59 drawn by a scratch mirror of the kit whose fan-chart form takes one new label key,
+            # labels.history_last_below (the last history value set under its dot), from a scratch copy of the spec
+            km = kit_mirror(d, C['slots']['made']['S59-label'].get('patch') or {})
+            if not km:
+                continue
+            sid = 's59'
+            w_ = int(pic.get('width') or PHONE)
+            win = w_ - 64 + 32 if w_ < 600 else DESK     # the guide's phone figure is the window less 64 px; the kit's page adds 32
+            sd = d / 'kit-s59'
+            (sd / 'specs').mkdir(parents=True, exist_ok=True)
+            spec_ = json.loads((ROOT / C['slots']['specs_dir'] / f'{sid}.json').read_text())
+            spec_.setdefault('labels', {}).update(C['slots']['made']['S59-label'].get('set') or {})
+            (sd / 'specs' / f'{sid}.json').write_text(json.dumps(spec_, indent=1, ensure_ascii=False))
+            sig_ = sha(json.dumps(spec_, sort_keys=True), km[1], win)
+            png = sd / 'out' / sid / f'{sid}-newsprint-{win}.png'
+            stamp = sd / 'sig.txt'
+            if not (reuse and png.exists() and stamp.exists() and stamp.read_text() == sig_):
+                shutil.rmtree(sd / 'out', ignore_errors=True)
+                if browser_gate('the kit mirror, S59-label'):
+                    r = subprocess.run(['node', str(km[0] / 'oa-chart.mjs'), 'build', sid, '--specs', str(sd / 'specs'), '--widths', str(win),
+                                        '--grounds', 'newsprint', '--no-sweep', '--out', str(sd / 'out'), '--date', DATE], cwd=km[0].parents[2],
+                                       capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
+                    (sd / 'kit.log').write_text(r.stdout + r.stderr)
+                    if png.exists():
+                        stamp.write_text(sig_)
+            if png.exists():
+                MADE[made_key(it, pic)] = png
+                FIG.setdefault('made', {})[made_key(it, pic)] = rel(png)
+            else:
+                warn('S59-label: the kit mirror made no picture')
+        elif iid in C['slots'].get('made_kit', {}):
+            # a chart built by the kit from a scratch copy of its spec with one opt-in key set (the spec in the repository
+            # stays as it is), at the window that gives the guide's phone drawing, on Newsprint
+            mk_ = C['slots']['made_kit'][iid]
+            sid = mk_['spec'].lower()
+            w_ = int(pic.get('width') or PHONE)
+            mp = SCRATCH / 'shots' / f'm-{sid.upper()}-{w_}.json'
+            mj = json.loads(mp.read_text()) if mp.exists() else {}
+            sw = mj.get('svg_w') or (round(float(mj['el_w'])) if mj.get('el_w') else None)
+            if not sw:
+                warn(f'{iid}: no measure of {sid.upper()} at {w_} px yet; its picture waits')
+                continue
+            win = int(sw) + (32 if w_ < 600 else 64)
+            sd = d / f'kit-{slug(iid)}'
+            (sd / 'specs').mkdir(parents=True, exist_ok=True)
+            spec_ = json.loads((ROOT / C['slots']['specs_dir'] / f'{sid}.json').read_text())
+            spec_.update(mk_['set'])
+            (sd / 'specs' / f'{sid}.json').write_text(json.dumps(spec_, indent=1, ensure_ascii=False))
+            sig_ = sha(json.dumps(spec_, sort_keys=True), kit_shared_sig(), win)
+            png = sd / 'out' / sid / f'{sid}-newsprint-{win}.png'
+            stamp = sd / 'sig.txt'
+            if not (reuse and png.exists() and stamp.exists() and stamp.read_text() == sig_):
+                shutil.rmtree(sd / 'out', ignore_errors=True)
+                if browser_gate(f'the kit, {iid}'):
+                    r = subprocess.run(['node', str(ROOT / C['slots']['kit_command']), 'build', sid, '--specs', str(sd / 'specs'), '--widths', str(win),
+                                        '--grounds', 'newsprint', '--no-sweep', '--out', str(sd / 'out'), '--date', DATE], cwd=ROOT,
+                                       capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
+                    (sd / 'kit.log').write_text(r.stdout + r.stderr)
+                    if png.exists():
+                        stamp.write_text(sig_)
+            if png.exists():
+                MADE[made_key(it, pic)] = png
+                FIG.setdefault('made', {})[made_key(it, pic)] = rel(png)
+            else:
+                warn(f'{iid}: the kit made no picture in scratch')
+        elif iid == 'red-target-keyline':
+            # Rule 15.11's correct plate with the keyline flag set: chapter 15's generator imported read-only and run for
+            # this one plate into a scratch Book, never written; its two keyline rects go in after the two red pills of a
+            # scratch copy of the final build, and the red arrowhead takes the 1 px ink edge Rule 15.20's styles give it
+            frags = keyline_fragments(d)
+            if not frags:
+                continue
+            built, keyed = frags
+            fs = src.find('id="fig-s-15-11-correct"')
+            fa = src.rfind('<', 0, fs)
+            fe = src.find('</figure>', fs)
+            fig = src[fa:fe]
+            if built.strip()[:200] not in fig:
+                warn('Rule 15.11’s plate in the final build is not the generator’s as built; the keyline picture waits')
+                continue
+            new_fig, n_pk = fig, 0
+            for m in re.finditer(r'<rect class="pk"[^>]*/>', keyed):
+                pill = keyed[keyed.rfind('<rect', 0, m.start()):m.start()]
+                if new_fig.count(pill) != 1:
+                    continue
+                new_fig = new_fig.replace(pill, pill + m.group(0))
+                n_pk += 1
+            edge = re.search(r':is\(\.lv \.dw,\.kd\) \.rt \.hd\{([^}]*)\}', src)
+            if not n_pk or not edge:
+                warn('the keyline picture could not be set: no keyline rect or no arrowhead edge style found')
+                continue
+            style = f'<style>#fig-s-15-11-correct .sv .rt .hd{{{edge.group(1)}}}</style>'
+            text = src[:fa] + style + new_fig + src[fe:]
+            copy = d / f'{DATE}_Rule-15-11-Keyline.html'
+            if not copy.exists() or copy.read_text() != text:
+                copy.write_text(text)
+            PAGES['made-keyline'] = {'path': copy, 'text': text, 'frame': None}
+            FIG['made_keyline'] = {'keyline_rects': n_pk, 'edge': edge.group(1)}
+            items.append({'key': made_key(it, pic), 'page': 'made-keyline', 'el': 'fig-s-15-11-correct', 'w': int(pic.get('width') or DESK)})
         else:
             warn(f'the content file names {iid} under made, and the build knows no way to make it')
     if items:
@@ -839,7 +1035,78 @@ def make_pictures(reuse):
         for x in items:
             if shots.get(x['key']) and shots[x['key']].exists():
                 MADE[x['key']] = shots[x['key']]
-        FIG['made'] = {x['key']: rel(MADE[x['key']]) if x['key'] in MADE else None for x in items}
+        FIG.setdefault('made', {}).update({x['key']: rel(MADE[x['key']]) if x['key'] in MADE else None for x in items})
+    # a picture made of two photographs, stacked with their labels (NB-S4: today's source row and the sketch's)
+    for mk, parts in STACK.items():
+        ps = [(MADE.get(k), lab) for k, lab in parts]
+        if all(x and pathlib.Path(x).exists() for x, _ in ps):
+            out = d / f'{mk}.png'
+            stack_png(out, ps)
+            MADE[mk] = out
+            FIG.setdefault('made', {})[mk] = rel(out)
+
+
+def stack_png(out, parts, gap=24, label_h=26):
+    """Two or more photographs one above the other, each with its label in Inter Medium 13 px above it (board 2's look)."""
+    from PIL import Image, ImageDraw, ImageFont
+    ims = [Image.open(p).convert('RGB') for p, _ in parts]
+    W = max(im.size[0] for im in ims)
+    H = sum(im.size[1] + label_h for im in ims) + gap * (len(ims) - 1)
+    cv = Image.new('RGB', (W, H), NEWSPRINT)
+    dr = ImageDraw.Draw(cv)
+    font = ImageFont.truetype(LABEL_FONT, 13)
+    y = 0
+    for im, (_, lab) in zip(ims, parts):
+        dr.text((0, y + 4), lab, font=font, fill=LABEL_INK)
+        cv.paste(im, (0, y + label_h))
+        y += im.size[1] + label_h + gap
+    cv.save(out, 'PNG', optimize=True)
+
+
+def rule_name(rid):
+    """A rule's name as a related-rules link prints it: its form's name where the plan gives one, else its title."""
+    P = json.loads((ROOT / C['slots']['plan']).read_text())
+    f = next((x for x in P['forms'] if x['rule'] == rid), None)
+    if f:
+        return f['form']
+    num = rid.split('.')[0]
+    for fp in sorted((ROOT / 'work/build/guide/chapters').glob(f'{num}-*.json')):
+        r = next((x for x in json.loads(fp.read_text()).get('rules', []) if x.get('id') == rid), None)
+        if r:
+            return text_of(r.get('title', '')).rstrip('.')
+    return ''
+
+
+def kit_mirror(d, patch):
+    """A scratch mirror of the chart kit: work/build/chart-kit copied, the folders it reads from the project root linked,
+    and the patch applied to the copy ({file: [[old, new], ...]}). The repository's kit is never touched. -> (kit folder,
+    signature) or None."""
+    src = ROOT / C['slots']['kit_dir']
+    m = d / 'kit-mirror'
+    kit = m / 'work/build/chart-kit'
+    sig = sha(kit_shared_sig(), json.dumps(patch, sort_keys=True), *[(src / f).read_bytes() for f in sorted(patch) if (src / f).exists()])
+    stamp = m / 'sig.txt'
+    if not (stamp.exists() and stamp.read_text() == sig):
+        shutil.rmtree(kit, ignore_errors=True)
+        shutil.copytree(src, kit, ignore=shutil.ignore_patterns('node_modules'))
+        for name in ('tokens', 'assets', 'data', 'guide', 'node_modules'):
+            ln = m / 'work/build' / name
+            if not ln.exists():
+                ln.symlink_to(ROOT / 'work/build' / name, target_is_directory=True)
+        ex = m / 'work/extract'
+        if not ex.exists():
+            ex.symlink_to(ROOT / 'work/extract', target_is_directory=True)
+        for f, pairs in patch.items():
+            fp = kit / f
+            t = fp.read_text()
+            for old, new in pairs:
+                if t.count(old) != 1:
+                    warn(f'the kit mirror’s patch to {f} does not apply: {old[:60]}')
+                    return None
+                t = t.replace(old, new)
+            fp.write_text(t)
+        stamp.write_text(sig)
+    return kit, sig
 
 
 # ------------------------------------------------------------------------------------------------------- panel 1
@@ -899,6 +1166,8 @@ def picture_html(it, pics, shots):
         if req['kind'] == 'missing' or not path or not pathlib.Path(path).exists():
             out.append((pic, pending(fill(S['picture_wait'], {'path': label or str(req.get('why', ''))}))))
             continue
+        if req['kind'] == 'made' and req.get('sketch'):
+            label = fill(S['sketch_label'], {'label': label})
         n += 1
         rec = compose(f'Decide-{slug(it.get("id"))}-{n}', [(path, '')])
         alt = picture_alt(it, pic, label, req)
@@ -934,6 +1203,11 @@ def picture_html(it, pics, shots):
         QUOTED.append(ft)
         html_ += f'<details class="more pics"><summary>{esc(ft)}</summary>{arrange(folded)}</details>'
     return html_
+
+
+def prose(s):
+    """A teammate's sentence as text, with its Markdown code spans and bold set (board 1's reader)."""
+    return B1.md_inline(s or '', quote=False)
 
 
 def words(it, key):
@@ -994,10 +1268,10 @@ def decide_item(it, S, shots, reply_n, refs):
             + f'<h4 class="dec-h">{esc(words(it, "title") or it.get("id", ""))}{tags}</h4>')
     body = ''
     if it.get('answer'):
-        body += f'<p class="dec-a">{esc(words(it, "answer"))}</p>'
+        body += f'<p class="dec-a">{prose(words(it, "answer"))}</p>'
     rec_ = words(it, 'recommendation')
     if rec_:
-        body += f'<p class="dec-rec"><span class="tag rec">{esc(S["tag_rec"])}</span> {esc(rec_)}</p>'
+        body += f'<p class="dec-rec"><span class="tag rec">{esc(S["tag_rec"])}</span> {prose(rec_)}</p>'
     dl = [(S['what_changed'], words(it, 'what_changed')), (S['why'], words(it, 'why'))]
     if it.get('shows') is False and it.get('shows_note'):
         dl.append((S['shows_no'], words(it, 'shows_note')))
@@ -1012,10 +1286,10 @@ def decide_item(it, S, shots, reply_n, refs):
         dl.append((S['settled_respects'], r_))
     dl = [(a, b) for a, b in dl if b]
     if dl:
-        body += '<dl class="facts f2">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in dl) + '</dl>'
+        body += '<dl class="facts f2">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{prose(b)}</dd></div>' for a, b in dl) + '</dl>'
     if it.get('steps'):
         body += rows_table([{k: x.get(k, '') for k in ('n', 'name', 'what_happens', 'law') if k in x} for x in it['steps']],
-                           fill(S['steps_caption'], {'title': move_codes(it.get('title', ''))}), S['step_heads'])
+                           fill(S['steps_caption'], {'title': move_codes(it.get('title', '')), 'rule': it.get('rule') or ''}), S['step_heads'])
     if it.get('marks'):
         mk = it['marks'] if isinstance(it['marks'], list) else [it['marks']]
         mw = '; '.join(move_codes(m if isinstance(m, str) else ' '.join(str(v) for v in m.values())) for m in mk)
@@ -1097,11 +1371,11 @@ def decide_panel(shots):
         gid = g.get('id', '')
         items = g.get('items', [])
         title = words(g, 'title') or gid
-        gn = rmap.get(gid) if g.get('approval') == 'one' else None
+        gn = rmap.get(gid)
         gtag = f' <span class="tag rn">{esc(fill(S["reply_tag"], {"n": gn}))}</span>' if gn else ''
         inner = ''
         if g.get('lede'):
-            inner += f'<p class="intro">{esc(words(g, "lede"))}</p>'
+            inner += f'<p class="intro">{prose(words(g, "lede"))}</p>'
         if g.get('approval') == 'one':
             inner += f'<p class="approve">{esc(S["approval_one"])}</p>'
         elif g.get('approval') == 'each' and len(items) > 1:
@@ -1112,7 +1386,7 @@ def decide_panel(shots):
         grefs = []
         for it in items:
             n_items += 1
-            rn_ = rmap.get(str(it.get('id'))) if g.get('approval') != 'one' else None
+            rn_ = rmap.get(str(it.get('id')))
             h, miss, q = decide_item(it, S, shots, rn_, grefs)
             n_q += q
             if miss:
@@ -1252,7 +1526,38 @@ def form_article(G, f, held, S, kit_out, pages, rendered, sk_shots):
     if notes:
         body += '<p class="what">' + ' '.join(esc(n) for n in notes) + '</p>'
     ok = True
-    if not chk_p.exists() or not all(p.exists() for p in caps.values()):
+    # a social data card (Rule 14.141) draws its own crops at 1080 px whatever the window: the kit's page at 1440 px shows
+    # both crops, on each ground, and stands in for the desk and phone pair
+    card = {(g, x): d / f'{lo}-{g}-1440{x}.png' for g in ('newsprint', 'charcoal') for x in ('', '-grayscale')}
+    is_card = (chk_p.exists() and not all(p.exists() for p in caps.values()) and all(p.exists() for p in card.values())
+               and all(int(x.get('width', 0)) == 1080 for x in json.loads(chk_p.read_text()).get('drawings', [])))
+    if is_card:
+        chk = json.loads(chk_p.read_text())
+        crops = join_words([f'{x["width"]:,} by {x["height"]:,}' for x in chk.get('drawings', []) if x['ground'] == 'newsprint'])
+        lab = fill(S['label_card'], {'crops': crops})
+        alt = text_of(spec.get('alt', ''))
+        pics = []
+        for g, gname in (('newsprint', S['row_newsprint']), ('charcoal', S['row_charcoal'])):
+            pad = CHARCOAL if g == 'charcoal' else None
+            im = compose(f'Form-{sid}-{cap(g)}', [(card[(g, '')], lab, pad)])
+            a = f'{f["form"]}, Rule {rid}, on {cap(g)}: the kit’s page at a {DESK} px window with the card in its crops of {crops} px.' + (f' {alt}' if g == 'newsprint' else '')
+            pics.append(f'<p class="row-label">{esc(gname)}</p>{frame(im, a)}')
+            if g == 'newsprint':
+                FORMPIC.setdefault(sid, (im, rid, a))
+        im = compose(f'Form-{sid}-Grayscale', [(card[('newsprint', '-grayscale')], fill(S['gray_label'], {'g': 'Newsprint', 'w': DESK})),
+                                               (card[('charcoal', '-grayscale')], fill(S['gray_label'], {'g': 'Charcoal', 'w': DESK}), CHARCOAL)], cols=1)
+        pics.append(f'<details class="more gray"><summary>{esc(S["row_gray"])}</summary>{frame(im, f"{f["form"]}, Rule {rid}, in grayscale: Newsprint and Charcoal, the kit’s page at a {DESK} px window.")}</details>')
+        body += ''.join(pics)
+        faults = chk.get('faults', [])
+        result = S['kit_pass'] if not faults else fill(S['kit_faults'], {'n': nw(len(faults))})
+        if pr.get('source'):
+            body += f'<p class="src">{esc(pr["source"])}</p>'
+        W_ = plate_weight(G, sid)
+        bytes_line = fill(S['bytes_line'], {'placed': f'{W_["placed"]:,}'}) if W_['placed'] is not None else S['bytes_wait']
+        body += f'<p class="ch-line">{esc(bytes_line)} {esc(result)}</p>'
+        ok = not faults
+        rec.update({'weight': W_, 'faults': len(faults), 'card': crops})
+    elif not chk_p.exists() or not all(p.exists() for p in caps.values()):
         body += pending(S['wait_kit'])
         ok = False
     else:
@@ -1386,8 +1691,10 @@ def r5_items(held):
             items.append({'key': gkey('final', ch['failure'], DESK), 'page': 'final', 'el': ch['failure'], 'w': DESK})
         for k, stt in enumerate(S['states'].get(ch['rule'], [])):
             if stt.get('actions') and ch['correct']:
+                # each action's selector is read inside the chart's own figure, since other choosers share its names
+                acts = [{kk: (f'#{ch["correct"]} {vv}' if kk in ('click', 'check') else vv) for kk, vv in x.items()} for x in stt['actions']]
                 items.append({'key': f'st-{slug(ch["rule"])}-{k}', 'page': 'final', 'el': ch['correct'], 'w': DESK,
-                              'actions': stt['actions'], 'session': f'states-{ch["rule"]}'})
+                              'actions': acts, 'session': f'states-{ch["rule"]}'})
     return items
 
 
@@ -1586,8 +1893,8 @@ def spend_panel(G, P, held):
     rows = [(S['rows']['ch14'], with_kit, stop),
             (S['rows']['ch14_only'], int(ch14.get('bytes', 0)), None),
             (S['rows']['kit'], kit, None),
-            (S['rows']['rules'], int(cr.get('rules_and_opener', 0)), int(cr.get('allowance', 0)) or None),
             (S['rows']['geo'], int(mg.get('bytes', 0)), int(mg.get('allowance', 0)) or None),
+            (S['rows']['rules'], int(cr.get('rules_and_opener', 0)), int(cr.get('allowance', 0)) or None),
             (S['rows']['page_now'], int(W.get('bytes', 0)), budget),
             (S['rows']['page'], proj, budget),
             (S['rows']['limit'], proj, limit)]
@@ -1606,6 +1913,11 @@ def spend_panel(G, P, held):
             f'<figure class="wfig"><div class="tw" role="region" tabindex="0" aria-label="{esc(S["caption"])}; scrolls sideways"><table class="wt">'
             f'<caption>{esc(S["caption"])}</caption><thead><tr>{hd}</tr></thead><tbody>{trs}</tbody></table></div></figure>'
             f'<p>{esc(fill(S["page_line"]))}</p>')
+    own, geo = int(ch14.get('bytes', 0)), int(mg.get('bytes', 0))
+    if own + kit + geo == with_kit:
+        body += f'<p class="small">{esc(fill(S["parts_line"], {"own": f"{own:,}", "kit": f"{kit:,}", "geo": f"{geo:,}"}))}</p>'
+    else:
+        warn(f'chapter 14 with the kit ({with_kit:,}) is not its entries, kit and map shapes added ({own + kit + geo:,}); the board says nothing of its parts')
     # round 5's plates
     r5 = pj.get('chapter_14_round_5') or {}
     if r5:
@@ -1887,6 +2199,17 @@ def tested_panel(G):
                 widths = [str(r.get('width')) for r in runs if r.get('width')]
                 w = fill(it['words'], {'widths': join_words(widths) or '?', 'failures': nw(len(J.get('failures', [])))})
                 FIG.setdefault('checks_read', {})[it['slot']] = {'file': rel(p), 'failures': J.get('failures'), 'pass': J.get('pass')}
+        elif kind == 'v7':
+            p = scratch_path(C['slots'].get(it['slot']))
+            if p and p.is_file():
+                J = json.loads(p.read_text())
+                chs = J.get('chapters') or {}
+                pg = J.get('page') or ''
+                if PAGES.get('final', {}).get('path') and pg and not str(PAGES['final']['path']).endswith(pg):
+                    warn(f'the atlas check read {pg}, and the board reads {rel(PAGES["final"]["path"])}')
+                w = fill(it['words'], {'chips': f'{sum(int(v.get("chips", 0)) for v in chs.values()):,}', 'chapters': join_words(sorted(chs)),
+                                       'specs': J.get('kit_specs', '?'), 'failures': nw(len(J.get('failures', [])))})
+                FIG.setdefault('checks_read', {})[it['slot']] = {'file': rel(p), 'failures': J.get('failures')}
         elif kind == 'preview_links':
             if PREVIEW_IDS is not None:
                 hit = sum(1 for a in LINKS if a in PREVIEW_IDS)
@@ -2182,7 +2505,7 @@ def checks(page):
             i = t.find(ch)
             if i >= 0:
                 warn(f'{name} in the board’s {where}: ' + t[max(0, i - 60):i + 20])
-    own_page = re.sub(r'<div class="tw"[^>]*><table class="ft">.*?</table></div>', ' ', page, flags=re.S)
+    own_page = re.sub(r'<div class="tw"[^>]*><table class="ft[^"]*">.*?</table></div>', ' ', page, flags=re.S)
     for q in sorted({q for q in QUOTED if q}, key=len, reverse=True):
         for frag in (B1.md_inline(q), B1.md_inline(q, quote=False), esc(q)):
             own_page = own_page.replace(frag, ' ')
@@ -2341,7 +2664,7 @@ def main():
         req = pic_request(it, pic)
         PIC_KEYS[id(pic)] = req
         if req and req['kind'] == 'guide':
-            items.append({k: req[k] for k in ('key', 'page', 'el', 'w', 'text_scale', 'recipe') if k in req})
+            items.append({k: req[k] for k in ('key', 'page', 'el', 'w', 'text_scale', 'recipe', 'session', 'until_text') if k in req})
     for sid in specs:
         items += [{'key': f'm-{sid}-{w}', 'page': 'final', 'el': f'oac-s-14-{sid.lower()}', 'w': w, 'measure': True} for w in (DESK, PHONE)]
     for f in rn:
@@ -2369,7 +2692,9 @@ def main():
         mw = {}
         for w in (DESK, PHONE):
             p = shots.get(f'm-{sid}-{w}')
-            mw[w] = json.loads(p.read_text()).get('svg_w') if p and p.exists() else None
+            # a form drawn in HTML has no svg.oac-svg: its figure's own width stands in (S90 to S92's cards)
+            mj = json.loads(p.read_text()) if p and p.exists() else {}
+            mw[w] = mj.get('svg_w') or (round(float(mj['el_w'])) if mj.get('el_w') else None)
         measured[sid] = mw
         MEAS[sid] = {w: (json.loads(shots[f'm-{sid}-{w}'].read_text()) if shots.get(f'm-{sid}-{w}') and shots[f'm-{sid}-{w}'].exists() else {}) for w in (DESK, PHONE)}
         if not (mw[DESK] and mw[PHONE]):

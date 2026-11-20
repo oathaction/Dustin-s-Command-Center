@@ -1,0 +1,632 @@
+{
+ "title": "Creative director's rescores after DR-191's second pass: C11-T, R4-I, R5-G, R5-2, R5-3, C15-I, C15-W and C14",
+ "date": "2026-11-20",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "A fresh strict build of the current tree (HEAD 6f11834d with only the board builder's uncommitted board_3_build.py beside it), run at 17:31 UTC to scratchpad/c08/cd/guide.html: exit 0, 0 warnings, 12,178,907 bytes, 369 rules, 679 specimens, pictures 101 hidden and 315 open. The four owners' notes (20261120_Second-Pass-*-Notes.md) and D3-2270 to D3-2291. Words, alts and markup read from the page by script. My own element captures from one browser at Newsprint 1x, opened 17:33:54 UTC after browsers.sh printed \"OK to open one\" and closed 17:40:48: S94 at 1440, 1024 and 390 px; S90 and S91 at 1440 and 390; 15.19 at 1440 and 390; 15.20's failure and correct plates at 1440, 390 and 320; 15.25's counts at 1440 and 1024; 14.144's line-up at 390, 360 and 320; 14.143 at 1440 after four presses of Next step.",
+ "first_scores_file": "work/handoffs/phase-3/20261116_Rounds-4-5-CD-Rescores.json",
+ "key_note": "In this file first_scores are the fix-pass rescores, first_must_fix and first_should_fix are the second pass codes open on the item before this pass, and first_items_landed and first_items_open say what the pass did with them.",
+ "review": "work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md, section \"Second pass rescore\"",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "C11-T",
+   "name": "Rules 11.10 and 11.11 with their step tables, Rule 11.12 and the bill's step table",
+   "anchor": "#icons group 2; s-11-10-*, s-11-11-*, s-11-12-*, s-11-ballot-steps, s-11-court-steps, s-11-steps; apply_systems_ch11.py, apply_systems_ch11_ui.py",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 3
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "the six fragments are byte for byte as committed, so the trackers keep their family at 360 px.",
+    "clarity": "each end word stays a sentence a reader can say, with certiorari glossed.",
+    "brand_fidelity": "invented subjects tied to no party.",
+    "usefulness": "a rejected measure and a dismissed case each end on a stated square.",
+    "evidence_honesty": "the 95 percent sample rule and Article LXXIV stand.",
+    "accessibility": "on my build none of the six stages is open, each picture sits under an aria-hidden wrapper, the build's own word test finds no picture word missing from any alt, and each alt opens \"Illustrative.\" and the plate's title and closes on the key in words; the accessibility lead heard each once in Chromium's tree with no control lost."
+   },
+   "changed": [
+    "accessibility"
+   ],
+   "first_must_fix": [
+    "RS-1"
+   ],
+   "first_should_fix": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready: RS-1 landed and accessibility reached 4.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "RS-1"
+   ]
+  },
+  {
+   "key": "R4-I",
+   "name": "Infographics maker: S89 to S95 with entries 14.135 to 14.141",
+   "anchor": "#group-14-17; work/build/chart-kit/specs/s89.json to s95.json; work/build/guide/entries/14-135.json to 14-141.json",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "at a 1024 px page S94's year now draws at 480 px in a 558 px column, with 8 px squares, 30 px months and day ticks at 1, 15 and 31, where it fell to the 224 px strip before, and 1440 px keeps the 600 px year; I hold 4 because I read it at 1x only.",
+    "clarity": "S91's title is one finding in 26 words on three balanced lines at 1440 px, and the set's titles still run 20 to 29 words.",
+    "brand_fidelity": "S95 signs off as DR-211 sets.",
+    "usefulness": "both crops with the words to post.",
+    "evidence_honesty": "S90's row 4 note reads \"Includes $39.2 billion in COVID-19 relief funds, as the first note says.\", the note sits above the table, the figure is the data's row 5, and \"row 5\" prints nowhere; the editor kept S91's universe at the district courts, where my example would have taken in the Court of International Trade, and that is the honest choice.",
+    "accessibility": "live text and a table for each plate."
+   },
+   "changed": [
+    "evidence_honesty"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "RS-2",
+    "RS-3",
+    "RS-4"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "RS-2",
+    "RS-3",
+    "RS-4",
+    "CD-S1"
+   ]
+  },
+  {
+   "key": "R5-G",
+   "name": "The selection guide, “Choose a chart”",
+   "anchor": "work/build/guide/specimens/s-14-selection-guide.html; selection_guide_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "unchanged; the plate did not change in this pass.",
+    "clarity": "unchanged.",
+    "brand_fidelity": "unchanged.",
+    "usefulness": "RS-5's one visible change is \"15 Systems graphics\" under Related chapters on 14.88, 14.96 and 14.135; Rule 14.142 still reaches the reader of 14.32 and 14.74 only through the guide's \"Three charts in full\", which already earned this 5.",
+    "evidence_honesty": "unchanged.",
+    "accessibility": "unchanged: each question's list is named by its question."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "RS-5"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {
+    "RS-5": "data in; the visible half (rule numbers as links) is held for Dustin at board 3 (D3-2278)",
+    "RP-3": "the guide's road stands; the entries' related rules are in the data only (D3-2278)"
+   },
+   "first_items_landed": []
+  },
+  {
+   "key": "R5-2",
+   "name": "Rule 14.143 with Loops B4 and R10 on Rule 18.22's stepper",
+   "anchor": "#rule-14-143; entries/14-143.json; s-14-143-correct, s-14-143-failure",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "two drawings on one baseline, the current step lit with its bar.",
+    "clarity": "after four presses the status line reads \"Loop R10, step 1 of 4: Start at seats with little electoral competition, and suppose they rise. So how often the primary decides the winner goes up.\", the list prints the start once, and both loops walk cause first in the direction the change runs, with the key for ticks and dashes on the first screen.",
+    "brand_fidelity": "one ink, the shared variable filled, no red.",
+    "usefulness": "it shows how to join two loops on Rule 18.22's part.",
+    "evidence_honesty": "Connection L08 carries a plus sign and the grade documented, and the step says \"goes up\" with no \"can\"; the failure plate keeps its whole line and its one fault.",
+    "accessibility": "the page still describes the parts as a status line, the steps and then the buttons, while a listener meets the buttons first; the corrected line is in source and waits on D3-2288."
+   },
+   "changed": [
+    "clarity"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "RS-6"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {
+    "RS-7 follow-up (14.143's alt)": "fixed in source and entry; reaches the page when the chapter 14 build runs (D3-2288)"
+   },
+   "first_items_landed": [
+    "RS-6"
+   ]
+  },
+  {
+   "key": "R5-3",
+   "name": "Rule 14.144 with Reforms R-06, R-30 and R-38 on Rule 15.20's chooser",
+   "anchor": "#rule-14-144; entries/14-144.json; s-14-144-correct, s-14-144-failure; phase3_ch14_complex_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "at 390, 360 and 320 px all twelve rows set the pips on the code's line, the codes run down one edge, and each chip takes its own line above; at 320 px the words wrap after the code, as CR-S23 asked. I hold 4 at 1x, and the chooser's keyline is a board 3 item (D3-2284).",
+    "clarity": "the line-up reads as the key above it reads, one effect to a line.",
+    "brand_fidelity": "Rule 13.5's pips at chapter 13's size, and no total.",
+    "usefulness": "reforms compared side by side.",
+    "evidence_honesty": "the markup outside the style block is as committed, by the data lead's diff.",
+    "accessibility": "the accessibility lead found the line-up's reading order equal to what the eye sees, with nothing focusable; at 200 percent text on a 390 px page \"+M renter-owner\" wraps inside its column."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CR-S23"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CR-S23"
+   ],
+   "note": "Added: R5-3 holds Rule 14.144, where CR-S23 landed; the brief files CR-S23 under C14, which is scored too."
+  },
+  {
+   "key": "C15-I",
+   "name": "Rules 15.19 to 15.21",
+   "anchor": "#rule-15-19 to #rule-15-21; work/build/guide/chapters/15-systems-graphics.json; s-15-19-*, s-15-20-*, s-15-21-*",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "15.19 now sets status line, controls, reason line and list in 14.143's order at 1440 and 390 px, and 15.20's failure options take the list form at one width (296 px, 256 px at 320) with the check in its slot, the correct plate's geometry at phone widths; at a desk 15.19 stacks its four buttons in its 304 px words column where 14.143 sets them 2 by 2, which the column decides.",
+    "clarity": "the failure plate now differs from its correct plate by its fault alone, both reforms lit with a combined \"+L\".",
+    "brand_fidelity": "red marks only a reform's targets; whether 15.20 keeps its keyline is held for Dustin (D3-2284).",
+    "usefulness": "15.20 and 14.144 agree.",
+    "evidence_honesty": "15.21's made-up 70 stays labeled.",
+    "accessibility": "the accessibility lead matched 15.19's DOM order, Tab order and first words heard with 14.143's; 15.20's failure plate stays an open stage, as before this pass, its alt short of the two quoted titles."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "RS-7",
+    "CR-S1 remainder"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "RS-7",
+    "CR-S1 remainder",
+    "CR-S4"
+   ]
+  },
+  {
+   "key": "C15-W",
+   "name": "Rules 15.22 to 15.25",
+   "anchor": "#rule-15-22 to #rule-15-25; s-15-22-* to s-15-25-*; phase3_ch15_build.py",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Rule 15.25's four counts read 20 px in tabular figures at 1440 and 1024 px, where they read 24 and 22.41, so they sit on D2-254's scale at every width; at a desk they lead their captions a little more quietly, which I accept for the scale.",
+    "clarity": "unchanged: no word moved.",
+    "brand_fidelity": "unchanged: no mark moved.",
+    "usefulness": "unchanged.",
+    "evidence_honesty": "unchanged.",
+    "accessibility": "the four-width check's one failure (typeScale at 1024 px) is fixed on my build, and the check reruns on the final build (DR-288)."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "D3-2289"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "D3-2289"
+   ],
+   "note": "Rescored for Rule 15.25's figure size (D3-2289 to D3-2291), which the four-width check found during the pass."
+  },
+  {
+   "key": "C14",
+   "name": "Chapter 14 as a page at 144 rules with its front door",
+   "anchor": "#data-visualization",
+   "stage": "Phase 3, rounds 4 and 5, after DR-191's second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S94 at a laptop width and 14.144's phone line-up close the two craft notes this pass carried for the chapter.",
+    "clarity": "S91's title and Loop R10's first step now read cleanly.",
+    "brand_fidelity": "no chart's inks changed.",
+    "usefulness": "no entry's rule or tokens changed; RS-5's related rules are data only (D3-2278).",
+    "evidence_honesty": "no source line changed, and S90's note now points to a note the reader has passed.",
+    "accessibility": "14.143's description waits on D3-2288."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "CR-S23"
+   ],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready.",
+   "first_items_open": {},
+   "first_items_landed": [
+    "CR-S23",
+    "RS-2",
+    "RS-3",
+    "RS-4",
+    "RS-6"
+   ]
+  }
+ ],
+ "carried_items": {
+  "R4-A": {
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "ready": true,
+   "note": "not touched by the second pass; fix-pass score carried"
+  },
+  "R4-S": {
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "ready": true,
+   "note": "not touched by the second pass; fix-pass score carried"
+  },
+  "R5-P": {
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "ready": true,
+   "note": "not touched by the second pass; fix-pass score carried"
+  },
+  "R5-1": {
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "ready": true,
+   "note": "not touched by the second pass; fix-pass score carried"
+  },
+  "R5-W": {
+   "scores": {
+    "craft": 4,
+    "clarity": 5,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "ready": true,
+   "note": "not touched by the second pass; fix-pass score carried"
+  },
+  "C15": {
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 5,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "ready": true,
+   "note": "not touched by the second pass; fix-pass score carried"
+  }
+ },
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 0,
+  "under_4": [],
+  "ready": [
+   "R4-A",
+   "R4-I",
+   "R4-S",
+   "R5-G",
+   "R5-P",
+   "R5-1",
+   "R5-2",
+   "R5-3",
+   "R5-W",
+   "C15-I",
+   "C15-W",
+   "C15",
+   "C11-T",
+   "C14"
+  ],
+  "not_ready": [],
+  "rescored": [
+   "C11-T",
+   "R4-I",
+   "R5-G",
+   "R5-2",
+   "R5-3",
+   "C15-I",
+   "C15-W",
+   "C14"
+  ],
+  "raised": [
+   "C11-T.accessibility 3 to 4",
+   "R4-I.evidence_honesty 4 to 5",
+   "R5-2.clarity 4 to 5"
+  ],
+  "lowered": [],
+  "lowest_score_by_item": {
+   "R4-A": 4,
+   "R4-I": 4,
+   "R4-S": 4,
+   "R5-G": 4,
+   "R5-P": 4,
+   "R5-1": 4,
+   "R5-2": 4,
+   "R5-3": 4,
+   "R5-W": 4,
+   "C15-I": 4,
+   "C15-W": 4,
+   "C15": 4,
+   "C11-T": 4,
+   "C14": 4
+  }
+ },
+ "must_fix": {},
+ "should_fix": {},
+ "held_for_dustin": [
+  {
+   "code": "D3-2278",
+   "item": "RS-5's visible half (R5-G)",
+   "what_a_yes_changes": "A related rules line on 138 of chapter 14's 144 rules, 363 links: 14.32 and 14.74 point to 14.142, 14.88 to 11.10, 11.11 and 15.23, 14.96 and 14.135 to 15.22. No score moves; R5-G's usefulness is already 5. RP-3's reader would meet Rule 14.142 from the chart they chose.",
+   "what_a_no_changes": "Nothing; the data stays in for later.",
+   "creative_director_view": "Yes, since Master Brief section 7 asks for useful cross-references and the data is in; board 3 should show one entry's foot at true size before he answers, because the line changes approved work."
+  },
+  {
+   "code": "D3-2288",
+   "item": "Rule 14.143's description on the page (R5-2, C14)",
+   "what_a_yes_changes": "phase3_ch14_build.py runs, and the page names the plate's parts in the order a listener meets them, as 15.19's does. R5-2 and C14 stay at 4 on accessibility.",
+   "what_a_no_changes": "The description keeps the old order, a Could."
+  },
+  {
+   "code": "D3-2284",
+   "item": "Board 3's keyline item, outside this pass (C15-I, R5-3)",
+   "what_a_yes_changes": "If the keyline comes off 15.20 and 14.144, I rescore C15-I and R5-3 on craft and accessibility, since my fix-pass grayscale read found the chosen pill by its keyline.",
+   "what_a_no_changes": "Scores stand."
+  }
+ ],
+ "register": [
+  "The order inside each correct tracker card's alt, sentences before marks: a Could for the editor (accessibility lead's notes).",
+  "Rules 11.8 and 11.9's correct plates stay open for the reason RS-1 closed (D3-2279); outside C11-T.",
+  "S90's CSV export still prints \"(row 5)\" (D3-2281); the page offers no CSV for S90 today, and if the asset package ships the export unchanged, R4-I's evidence honesty falls back to 4 for that download."
+ ],
+ "judgments": [
+  "RS-1 closed: the six tracker stages left open_stages (101 hidden, 315 open), every picture word is in its alt, and each alt opens \"Illustrative.\" and the title.",
+  "RS-2 closed with the editor's words: 26 words, one finding, the district courts' universe kept (D3-2280's check holds it).",
+  "RS-3 closed: S94's year draws at 480 px from a 480 px column; at a 1024 px page it fills its column with 78 px to spare.",
+  "RS-4 closed on the page: \"as the first note says\", because the plate prints its notes unnumbered and the relief note first.",
+  "RS-5 closed as data; the visible half is held for Dustin (D3-2278).",
+  "RS-6 closed: Loop R10's first step prints its start once, and the build's direction check reads the supposition.",
+  "RS-7 closed: 15.19 matches 14.143's order on the page and in the accessibility tree; 14.143's own description waits on D3-2288.",
+  "CR-S1's remainder closed: 15.20's failure plate takes the shared chooser's list form and keeps its one fault.",
+  "CR-S23 closed: 14.144's line-up keeps each effect's pips on its code's line at 390, 360 and 320 px.",
+  "Rule 15.25's figures sit at 20 px at every width (D3-2291)."
+ ],
+ "board_3": {
+  "ready": true,
+  "verdict": "All eight rescored items score 4 or more on every criterion, and none carries a Must. C11-T rises to 4 on accessibility and ships, so all fourteen items of rounds 4 and 5 are ready for board 3. All nine asks landed as a reader meets them, with two halves held for Dustin: RS-5's related rules are in the data and print only as chapters (D3-2278), and Rule 14.143's corrected description is in source and waits for the chapter 14 build (D3-2288). Neither keeps an item under 4.",
+  "must_show": [
+   "The six tracker alts in words beside their plates, \"Illustrative.\" first.",
+   "S94 at 1024 and 1440 px; S91's new title; S90's row 4 note.",
+   "Rule 14.143 at Loop R10's first step, and 15.19 beside 14.143 in one order.",
+   "Rule 15.20's failure plate beside its correct plate; 14.144's line-up at 390 and 320 px.",
+   "Rule 15.25's counts at 20 px at 1440 px."
+  ]
+ },
+ "distinctiveness_test": [
+  "No change in this pass touches the identity: the changed plates keep their evidence chips, sentence titles, one ink and one red job."
+ ],
+ "risks_for_dustin": [
+  "The correct tracker alts run 194 to 284 words, heard as one image name that a listener cannot step through by line. That is the cost of D3-2153's rule, and the accessibility lead passed it; screen reader tests (DR-279) are where it would show.",
+  "Chapter 14 with the kit weighs 2,820,373 bytes against its 2,803,941 stop, and S94's plate 16,789 bytes against the 15,000 plate figure, both reported under DR-271. The page is 12,178,907 bytes, projected at 15,148,599 of 15,500,000."
+ ],
+ "questions_for_dustin": [],
+ "questions_note": "None new. D3-2278 and D3-2288 are already held for board 3.",
+ "tested": [
+  "Read my role file, CLAUDE.md, Master Brief sections 1 to 7, the brief, my rescore section and scores file, the four owners' notes, D3-2270 to D3-2291, the craft report's CR-S1 and CR-S23 lines and the register's last table (17:30 to 17:31 UTC).",
+  "Strict build at 17:31 UTC as given under basis; none of the six tracker stages in open_stages; git status afterwards showed only the board builder's file.",
+  "By script on my page, with the build's own picture_words() and alt_words(): the six tracker alts against their pictures (no word missing), each wrapper aria-hidden, each alt's opening and closing words.",
+  "By script on my page: Loop R10's line printed once (the old line only on the failure plate); S91's new title once and the old one nowhere; S90's note once, \"row 5\" nowhere, the notes above the table and no CSV offered; the related lines of 14.32, 14.74, 14.88, 14.96 and 14.135; the descriptions of 14.143 and 15.19; .cnt b at 1.25rem; chapter weights from the build report.",
+  "In Chromium, one browser as given under basis: which S94 year shows and its width at 1440, 1024, 390, 360 and 320 px; 15.25's figure size at all five; 15.20's option widths and list form on both plates; 14.144's line-up rows, pips on the code's line and the codes' edge at 390, 360 and 320 px; 14.143's status line after four presses. Element captures read at true size.",
+  "The title word counts of S89 to S95 from their specs."
+ ],
+ "not_tested": [
+  "2x, Charcoal and grayscale for any changed plate; 768 px.",
+  "Keyboard, the accessibility tree, screen readers, forced colors, reduced motion, print, scripts off and 200 percent text: I ran none. The checks of RS-1 and RS-7 in the tree and by keyboard are the accessibility lead's, and the 200 percent measures the engineer's.",
+  "Play and its timing on 14.143 after RS-6's shorter hold.",
+  "S90's CSV export; the kit's builds and checks; the four-width guide check (the main session's, DR-288).",
+  "Safari and Firefox (DR-279)."
+ ]
+}

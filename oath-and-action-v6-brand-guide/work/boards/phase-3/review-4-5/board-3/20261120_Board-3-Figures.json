@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T17:30:16.945513+00:00",
+ "built": "2026-11-20T17:54:58.757918+00:00",
  "decisions": {
   "file": "work/handoffs/phase-3/20261120_Board-3-Decisions.json",
   "state": "signed off",
@@ -8,127 +8,128 @@
   "signed_off_utc": "2026-11-20T17:13:38Z"
  },
  "final_build": {
-  "page": "[scratch]/join/20261120_Guide-Join.html",
-  "report": "[scratch]/join/20261120_Guide-Join-Build-Report.json",
-  "bytes": 12178927,
-  "built": "2026-11-20T17:12:56",
+  "page": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
+  "report": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13-Build-Report.json",
+  "bytes": 12178907,
+  "built": "2026-11-20T17:50:25",
   "warnings": 0,
   "rules": 369,
   "specimens": 679,
-  "label": "the joined build of the second pass, standing in for version 13"
+  "label": "version 13, the final build of chat 8"
  },
  "pages": {
   "v9": "work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html",
   "v10": "work/boards/phase-3/round-4/20261113_Guide-Preview-V10.html",
   "v11": "work/boards/phase-3/round-5/20261114_Guide-Preview-V11.html",
   "v12": "work/boards/phase-3/review-4-5/20261116_Guide-Preview-V12.html",
-  "final": "[scratch]/join/20261120_Guide-Join.html"
+  "final": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html"
  },
  "photographs_asked": 156,
+ "render_seconds": {
+  "guide": 336,
+  "made": 72
+ },
  "shots": {
   "guide": {
    "asked": 156,
-   "taken": 0,
-   "missing": [
-    "g-final-fig-s-02-22-correct-1440",
-    "g-final-fig-s-05-3-correct-1440",
-    "g-final-fig-s-11-10-correct-1440",
-    "g-final-fig-s-11-10-correct-390",
-    "g-final-fig-s-11-10-failure-1440",
-    "g-final-fig-s-11-11-correct-1440",
-    "g-final-fig-s-11-11-correct-390",
-    "g-final-fig-s-11-11-failure-1440",
-    "g-final-fig-s-11-ballot-steps-1440",
-    "g-final-fig-s-11-court-steps-1440",
-    "g-final-fig-s-11-marks-1440",
-    "g-final-fig-s-11-steps-1440",
-    "g-final-fig-s-13-5-correct-1440",
-    "g-final-fig-s-13-6-correct-1440",
-    "g-final-fig-s-14-142-failure-1440",
-    "g-final-fig-s-14-143-correct-1440",
-    "g-final-fig-s-14-143-correct-390",
-    "g-final-fig-s-14-143-failure-1440",
-    "g-final-fig-s-14-144-correct-1440",
-    "g-final-fig-s-14-144-correct-390",
-    "g-final-fig-s-14-144-failure-1440",
-    "g-final-fig-s-14-palette-spec-1440",
-    "g-final-fig-s-14-s96-1440",
-    "g-final-fig-s-14-s96-390",
-    "g-final-fig-s-14-selection-guide-1440",
-    "g-final-fig-s-14-selection-guide-390",
-    "g-final-fig-s-15-1-correct-1440",
-    "g-final-fig-s-15-1-failure-1440",
-    "g-final-fig-s-15-10-correct-1440",
-    "g-final-fig-s-15-10-failure-1440",
-    "g-final-fig-s-15-11-correct-1440",
-    "g-final-fig-s-15-11-failure-1440",
-    "g-final-fig-s-15-12-correct-1440",
-    "g-final-fig-s-15-12-failure-1440",
-    "g-final-fig-s-15-13-correct-1440",
-    "g-final-fig-s-15-13-failure-1440",
-    "g-final-fig-s-15-14-correct-1440",
-    "g-final-fig-s-15-14-failure-1440",
-    "g-final-fig-s-15-15-correct-1440",
-    "g-final-fig-s-15-15-failure-1440"
-   ]
+   "taken": 134,
+   "missing": []
   },
   "made": {
-   "asked": 2,
-   "taken": 0,
-   "missing": [
-    "made-masthead-360-360",
-    "made-masthead-360-375"
-   ]
+   "asked": 3,
+   "taken": 3,
+   "missing": []
   }
  },
+ "made_keyline": {
+  "keyline_rects": 2,
+  "edge": "stroke:var(--oa-color-graphic-essential);stroke-width:2px;paint-order:stroke"
+ },
  "made": {
-  "made-masthead-360-360": null,
-  "made-masthead-360-375": null
+  "made-CR-S19-chip-390": "[scratch]/c08/board-3/builder/made/kit-CR-S19-chip/out/s91/s91-newsprint-358.png",
+  "made-masthead-360-360": "[scratch]/c08/board-3/builder/shots/made-masthead-360-360.png",
+  "made-masthead-360-375": "[scratch]/c08/board-3/builder/shots/made-masthead-360-375.png",
+  "made-red-target-keyline-1440": "[scratch]/c08/board-3/builder/shots/made-red-target-keyline-1440.png"
  },
  "guide_widths": {
   "S85": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S86": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S87": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S88": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S89": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S90": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S91": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S92": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S93": {
-   "1440": null,
-   "390": null
+   "1440": 720,
+   "390": 326
   },
   "S94": {
-   "1440": null,
-   "390": null
+   "1440": 480,
+   "390": 480
   },
   "S95": {
-   "1440": null,
-   "390": null
+   "1440": 1080,
+   "390": 1080
+  }
+ },
+ "kit_builds": {
+  "rebuilt": [],
+  "reused": [
+   "S95",
+   "S85",
+   "S86",
+   "S87",
+   "S88",
+   "S89",
+   "S90",
+   "S91",
+   "S92",
+   "S93",
+   "S94"
+  ],
+  "widths": {
+   "1440,358": [
+    "S85",
+    "S86",
+    "S87",
+    "S88",
+    "S89",
+    "S90",
+    "S91",
+    "S92",
+    "S93"
+   ],
+   "1440,512": [
+    "S94"
+   ],
+   "1144,1112": [
+    "S95"
+   ]
   }
  },
  "forms": {
@@ -151,6 +152,20 @@
    "round": 4,
    "maker": "A",
    "status": "new",
+   "weight": {
+    "placed": 4464
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
    "spec": "S85",
    "title": "One in ten U.S. wage and salary workers belonged to a union in 2025.",
    "evidence": "Finding",
@@ -164,6 +179,20 @@
    "round": 4,
    "maker": "A",
    "status": "new",
+   "weight": {
+    "placed": 4283
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
    "spec": "S86",
    "title": "Special districts were the most common kind of government in the country in 2022, 39,555 of the 90,888 the Census Bureau counted.",
    "evidence": "Finding",
@@ -177,6 +206,20 @@
    "round": 4,
    "maker": "A",
    "status": "new",
+   "weight": {
+    "placed": 4611
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
    "spec": "S87",
    "title": "In 2025, 23.8 million people had both private and public health coverage.",
    "evidence": "Finding",
@@ -190,6 +233,20 @@
    "round": 4,
    "maker": "A",
    "status": "new",
+   "weight": {
+    "placed": 4686
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
    "spec": "S88",
    "title": "In 2025, 213.2 million people had private health coverage, about 1.8 times the 119.1 million who had public coverage.",
    "evidence": "Finding",
@@ -215,6 +272,20 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 10073
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
    "spec": "S89",
    "title": "Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help.",
    "evidence": "Finding",
@@ -228,6 +299,15 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 5719
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {},
    "spec": "S90",
    "title": "Public school systems spent $17,619 a pupil in fiscal 2024, and 88 cents of each dollar they took in came from state and local sources.",
    "evidence": "Finding",
@@ -241,6 +321,15 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 6744
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {},
    "spec": "S91",
    "title": "Of the federal district courts’ three kinds of judge, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.",
    "evidence": "Finding",
@@ -254,6 +343,15 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 8927
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {},
    "spec": "S92",
    "title": "A federal agency has 20 working days under the law to answer a records request, and a requester it turns down can appeal, ask for mediation or sue.",
    "evidence": "Finding",
@@ -267,6 +365,20 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 6794
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
    "spec": "S93",
    "title": "Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as.",
    "evidence": "Finding",
@@ -280,6 +392,15 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 16789
+   },
+   "faults": 0,
+   "kit_windows": [
+    1440,
+    512
+   ],
+   "drawn": {},
    "spec": "S94",
    "title": "Seven of the 16 budget and individual income tax deadlines federal law sets for 2027 carry a consequence in law.",
    "evidence": "Finding",
@@ -293,6 +414,11 @@
    "round": 4,
    "maker": "I",
    "status": "new",
+   "weight": {
+    "placed": 11660
+   },
+   "faults": 0,
+   "card": "1,080 by 1,350 and 1,080 by 1,080",
    "spec": "S95",
    "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
    "evidence": "Finding",
@@ -303,23 +429,9 @@
  "forms_summary": {
   "forms": 13,
   "shown": 13,
-  "ready": 0,
+  "ready": 13,
   "estimate": [],
-  "waiting": [
-   "14.84",
-   "14.79",
-   "14.80",
-   "14.81",
-   "14.82",
-   "14.83",
-   "14.135",
-   "14.136",
-   "14.137",
-   "14.138",
-   "14.139",
-   "14.140",
-   "14.141"
-  ]
+  "waiting": []
  },
  "panel_1_top_words": 881,
  "decide": {
@@ -328,104 +440,229 @@
   "replies": 24,
   "state": "signed off",
   "items_waiting": [
-   "11.10",
-   "11.11",
-   "board-1-maps",
-   "S37",
-   "S14",
-   "S40",
-   "rules-14-1-to-14-14",
-   "14.144-pips",
-   "15.20-chooser",
-   "chapter-15-approved",
-   "chapter-11",
-   "masthead",
-   "where-to-start",
-   "chapter-18-and-shell",
-   "related-chapters",
-   "CE-S22-words",
    "CE-S22-examples",
    "NB-S4",
-   "S14-line-02-13",
    "S59-label",
-   "masthead-360",
-   "red-target-keyline",
-   "CR-S17-chips",
-   "S71-retrieved",
-   "pillar-red-ratio",
-   "CR-S19-chip",
-   "15.22-examples",
-   "CR-S4-sticky",
-   "related-rules",
-   "routes-who"
+   "related-rules"
   ],
-  "pictures_waiting": 8
+  "pictures_waiting": 4
  },
- "panel_1_words": 7656,
+ "panel_1_words": 7444,
  "selection_guide": {
   "form_links": 127,
   "road_links": 6,
   "questions": 16
  },
  "round5": {
-  "missing": [
-   "the guide at 1440 px",
-   "the guide at 390 px",
-   "the palette plate",
-   "Rule 14.142 at 1440 px",
-   "Rule 14.142 at 390 px",
-   "Rule 14.142’s failure plate",
-   "Rule 14.143 at 1440 px",
-   "Rule 14.143 at 390 px",
-   "Rule 14.143’s failure plate",
-   "Rule 14.143: On load, the first step",
-   "Rule 14.143: After two presses of Next step",
-   "Rule 14.143: After five presses of Next step",
-   "Rule 14.144 at 1440 px",
-   "Rule 14.144 at 390 px",
-   "Rule 14.144’s failure plate",
-   "Rule 14.144: On load, Reform R-06 chosen",
-   "Rule 14.144: Reform R-30 chosen",
-   "Rule 14.144: Reform R-38 chosen"
-  ]
+  "missing": []
+ },
+ "ch15": {
+  "15.1": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1464
+   ]
+  },
+  "15.2": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1164
+   ]
+  },
+  "15.3": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1661
+   ]
+  },
+  "15.4": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1507
+   ]
+  },
+  "15.5": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1360
+   ]
+  },
+  "15.6": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1913
+   ]
+  },
+  "15.7": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1621
+   ]
+  },
+  "15.8": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1637
+   ]
+  },
+  "15.9": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1647
+   ]
+  },
+  "15.10": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1626
+   ]
+  },
+  "15.11": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1936
+   ]
+  },
+  "15.12": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2198
+   ]
+  },
+  "15.13": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1860
+   ]
+  },
+  "15.14": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1497
+   ]
+  },
+  "15.15": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2462
+   ]
+  },
+  "15.16": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2799
+   ]
+  },
+  "15.17": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2322
+   ]
+  },
+  "15.18": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1689
+   ]
+  },
+  "15.19": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2489
+   ]
+  },
+  "15.20": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2840
+   ]
+  },
+  "15.21": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1762
+   ]
+  },
+  "15.22": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    5245
+   ]
+  },
+  "15.23": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    5167
+   ]
+  },
+  "15.24": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    5815
+   ]
+  },
+  "15.25": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2560
+   ]
+  }
  },
  "reconciliation": {
   "tables": 2,
   "rows_naming_v7_1": 0
  },
- "ch15_missing": [
-  "Rule 15.1",
-  "Rule 15.2",
-  "Rule 15.3",
-  "Rule 15.4",
-  "Rule 15.5",
-  "Rule 15.6",
-  "Rule 15.7",
-  "Rule 15.8",
-  "Rule 15.9",
-  "Rule 15.10",
-  "Rule 15.11",
-  "Rule 15.12",
-  "Rule 15.13",
-  "Rule 15.14",
-  "Rule 15.15",
-  "Rule 15.16",
-  "Rule 15.17",
-  "Rule 15.18",
-  "Rule 15.19",
-  "Rule 15.20",
-  "Rule 15.21",
-  "Rule 15.22",
-  "Rule 15.23",
-  "Rule 15.24",
-  "Rule 15.25",
-  "Rule 15.6 at 390 px",
-  "Rule 15.19 at 390 px",
-  "Rule 15.20 at 390 px",
-  "Rule 15.21 at 390 px",
-  "Rule 15.23 at 390 px",
-  "Rule 15.24 at 390 px"
- ],
+ "ch15_missing": [],
  "spend": {
   "rows": [
    [
@@ -444,18 +681,18 @@
     null
    ],
    [
-    "Rules 14.1 to 14.14 with the opener",
-    177979,
-    212288
-   ],
-   [
     "Map shapes",
     133117,
     250000
    ],
    [
+    "Rules 14.1 to 14.14 with the opener",
+    177979,
+    212288
+   ],
+   [
     "The whole guide today",
-    12178927,
+    12178907,
     15500000
    ],
    [
@@ -613,18 +850,20 @@
   "cd": {
    "first_ready": 7,
    "rescore_ready": 13,
-   "items": 14
+   "items": 14,
+   "second_ready": 8,
+   "second_items": 8
   }
  },
  "tested": {
-  "Strict build of the guide": "the final build’s report: exit 0 recorded as no warnings, 12,178,927 bytes, 369 rules and 679 examples placed, built November 20, 2026",
+  "The final build’s strict build": "read from its report, built November 20, 2026: no warnings, 12,178,907 bytes, 369 rules and 679 examples placed",
   "The four-width guide check": "Waiting for its file",
   "The quick guide check with photographs": "Waiting for its file",
   "The kit’s build of every chart": "build --all --no-png in the engineer’s second pass, 96 of 96 charts pass, exit 0",
   "The data check": "Waiting for its file",
   "The atlas check": "Waiting for its file",
   "Links to the chapters page": "63 links to 56 entries, each anchor read by this board’s build on the final build’s page, 63 of 63 found",
-  "This board’s own check": "Waiting for its file"
+  "This board’s own check": "on its last run at 1440, 390 and 360 px, with no failures once the page’s language is left aside, since the host’s wrapper sets it"
  },
  "preview_links": {
   "links": 63,
@@ -633,37 +872,28 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3.html",
- "html_bytes": 224245,
- "images": 1,
- "image_bytes": 19060,
- "folder_files": 3,
- "folder_bytes": 266223,
+ "html_bytes": 356978,
+ "images": 166,
+ "image_bytes": 16885391,
+ "folder_files": 170,
+ "folder_bytes": 17316893,
  "largest_image": [
-  19060,
-  "20261120_Decide-board-1-maps-1.webp"
+  966992,
+  "20261120_Decide-where-to-start-2.png"
  ],
  "status": {
-  "forms": [
-   "partial",
-   "kit"
-  ],
+  "forms": "ready",
   "decide": [
    "partial",
    "pictures"
   ],
-  "round5": [
-   "partial",
-   "render"
-  ],
-  "ch15": [
-   "partial",
-   "render"
-  ],
+  "round5": "ready",
+  "ch15": "ready",
   "spend": "ready",
   "count": "ready",
   "scores": [
    "partial",
-   "cd_second"
+   "cd_board"
   ],
   "tested": [
    "partial",
@@ -672,7 +902,172 @@
   "next": "ready"
  },
  "image_sources": {
-  "img/20261120_Decide-board-1-maps-1.webp": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png"
+  "img/20261120_Sketch-14-84.webp": "[scratch]/c08/board-3/builder/shots/sketch-14.84.png",
+  "img/20261120_Form-S85-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s85/s85-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s85/s85-newsprint-358.png",
+  "img/20261120_Form-S85-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s85/s85-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s85/s85-charcoal-358.png",
+  "img/20261120_Form-S85-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s85/s85-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s85/s85-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s85/s85-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s85/s85-charcoal-358-grayscale.png",
+  "img/20261120_Form-S86-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s86/s86-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s86/s86-newsprint-358.png",
+  "img/20261120_Form-S86-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s86/s86-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s86/s86-charcoal-358.png",
+  "img/20261120_Form-S86-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s86/s86-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s86/s86-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s86/s86-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s86/s86-charcoal-358-grayscale.png",
+  "img/20261120_Form-S87-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s87/s87-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s87/s87-newsprint-358.png",
+  "img/20261120_Form-S87-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s87/s87-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s87/s87-charcoal-358.png",
+  "img/20261120_Form-S87-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s87/s87-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s87/s87-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s87/s87-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s87/s87-charcoal-358-grayscale.png",
+  "img/20261120_Form-S88-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s88/s88-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s88/s88-newsprint-358.png",
+  "img/20261120_Form-S88-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s88/s88-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s88/s88-charcoal-358.png",
+  "img/20261120_Form-S88-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s88/s88-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s88/s88-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s88/s88-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s88/s88-charcoal-358-grayscale.png",
+  "img/20261120_Sketch-14-83.webp": "[scratch]/c08/board-3/builder/shots/sketch-14.83.png",
+  "img/20261120_Form-S89-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s89/s89-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s89/s89-newsprint-358.png",
+  "img/20261120_Form-S89-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s89/s89-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s89/s89-charcoal-358.png",
+  "img/20261120_Form-S89-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s89/s89-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s89/s89-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s89/s89-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s89/s89-charcoal-358-grayscale.png",
+  "img/20261120_Form-S90-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s90/s90-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s90/s90-newsprint-358.png",
+  "img/20261120_Form-S90-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s90/s90-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s90/s90-charcoal-358.png",
+  "img/20261120_Form-S90-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s90/s90-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s90/s90-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s90/s90-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s90/s90-charcoal-358-grayscale.png",
+  "img/20261120_Form-S91-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s91/s91-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s91/s91-newsprint-358.png",
+  "img/20261120_Form-S91-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s91/s91-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s91/s91-charcoal-358.png",
+  "img/20261120_Form-S91-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s91/s91-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s91/s91-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s91/s91-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s91/s91-charcoal-358-grayscale.png",
+  "img/20261120_Form-S92-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s92/s92-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s92/s92-newsprint-358.png",
+  "img/20261120_Form-S92-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s92/s92-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s92/s92-charcoal-358.png",
+  "img/20261120_Form-S92-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s92/s92-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s92/s92-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s92/s92-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s92/s92-charcoal-358-grayscale.png",
+  "img/20261120_Form-S93-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s93/s93-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s93/s93-newsprint-358.png",
+  "img/20261120_Form-S93-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s93/s93-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s93/s93-charcoal-358.png",
+  "img/20261120_Form-S93-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s93/s93-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s93/s93-newsprint-358-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s93/s93-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s93/s93-charcoal-358-grayscale.png",
+  "img/20261120_Form-S94-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s94/s94-newsprint-1440.png, [scratch]/c08/board-3/builder/kit-out/s94/s94-newsprint-512.png",
+  "img/20261120_Form-S94-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s94/s94-charcoal-1440.png, [scratch]/c08/board-3/builder/kit-out/s94/s94-charcoal-512.png",
+  "img/20261120_Form-S94-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s94/s94-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s94/s94-newsprint-512-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s94/s94-charcoal-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s94/s94-charcoal-512-grayscale.png",
+  "img/20261120_Form-S95-Newsprint.webp": "[scratch]/c08/board-3/builder/kit-out/s95/s95-newsprint-1440.png",
+  "img/20261120_Form-S95-Charcoal.webp": "[scratch]/c08/board-3/builder/kit-out/s95/s95-charcoal-1440.png",
+  "img/20261120_Form-S95-Grayscale.webp": "[scratch]/c08/board-3/builder/kit-out/s95/s95-newsprint-1440-grayscale.png, [scratch]/c08/board-3/builder/kit-out/s95/s95-charcoal-1440-grayscale.png",
+  "img/20261120_Decide-11-10-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-10-correct-1440.png",
+  "img/20261120_Decide-11-10-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-10-correct-390.png",
+  "img/20261120_Decide-11-10-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-ballot-steps-1440.png",
+  "img/20261120_Decide-11-10-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-10-failure-1440.png",
+  "img/20261120_Decide-11-11-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-11-correct-1440.png",
+  "img/20261120_Decide-11-11-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-11-correct-390.png",
+  "img/20261120_Decide-11-11-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-court-steps-1440.png",
+  "img/20261120_Decide-11-11-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-11-failure-1440.png",
+  "img/20261120_Decide-11-11-5.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-marks-1440.png",
+  "img/20261120_Decide-board-1-maps-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s12-1440.png",
+  "img/20261120_Decide-board-1-maps-2.webp": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png",
+  "img/20261120_Decide-board-1-maps-3.webp": "[scratch]/c08/board-3/builder/shots/g-v9-oac-s-14-s12-390.png",
+  "img/20261120_Decide-board-1-maps-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s12-390.png",
+  "img/20261120_Decide-board-1-maps-5.webp": "[scratch]/c08/board-3/builder/shots/g-v9-oac-s-14-s16-390.png",
+  "img/20261120_Decide-board-1-maps-6.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s16-390.png",
+  "img/20261120_Decide-board-1-maps-7.webp": "[scratch]/c08/board-3/builder/shots/g-v9-oac-s-14-s78-390.png",
+  "img/20261120_Decide-board-1-maps-8.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s78-390.png",
+  "img/20261120_Decide-board-1-maps-9.webp": "[scratch]/c08/board-3/builder/shots/g-v9-oac-s-14-s07-390.png",
+  "img/20261120_Decide-board-1-maps-10.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s07-390.png",
+  "img/20261120_Decide-S37-1.webp": "[scratch]/c08/board-3/builder/shots/g-v9-oac-s-14-s37-1440.png",
+  "img/20261120_Decide-S37-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s37-1440.png",
+  "img/20261120_Decide-S14-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-oac-s-14-s14-1440.png",
+  "img/20261120_Decide-S14-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s14-1440.png",
+  "img/20261120_Decide-S14-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-oac-s-14-s14-390.png",
+  "img/20261120_Decide-S14-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s14-390.png",
+  "img/20261120_Decide-S40-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-oac-s-14-s40-1440.png",
+  "img/20261120_Decide-S40-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s40-1440.png",
+  "img/20261120_Decide-rules-14-1-to-14-14-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-rule-14-6-1440.png",
+  "img/20261120_Decide-rules-14-1-to-14-14-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-6-1440.png",
+  "img/20261120_Decide-rules-14-1-to-14-14-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-rule-14-1-1440.png",
+  "img/20261120_Decide-rules-14-1-to-14-14-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-1-1440.png",
+  "img/20261120_Decide-14-144-pips-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-14-144-correct-1440.png",
+  "img/20261120_Decide-14-144-pips-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-1440.png",
+  "img/20261120_Decide-14-144-pips-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-14-144-correct-390.png",
+  "img/20261120_Decide-14-144-pips-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-390.png",
+  "img/20261120_Decide-15-20-chooser-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-15-20-correct-1440.png",
+  "img/20261120_Decide-15-20-chooser-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-1440.png",
+  "img/20261120_Decide-15-20-chooser-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-15-20-correct-390.png",
+  "img/20261120_Decide-15-20-chooser-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-390.png",
+  "img/20261120_Decide-15-20-chooser-5.webp": "[scratch]/c08/board-3/builder/shots/g-v12-fig-s-15-20-failure-1440.png",
+  "img/20261120_Decide-15-20-chooser-6.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-failure-1440.png",
+  "img/20261120_Decide-chapter-15-approved-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-15-16-correct-1440.png",
+  "img/20261120_Decide-chapter-15-approved-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-16-correct-1440.png",
+  "img/20261120_Decide-chapter-15-approved-3.webp": "[scratch]/c08/board-3/builder/shots/g-v11-fig-s-15-11-correct-1440.png",
+  "img/20261120_Decide-chapter-15-approved-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-11-correct-1440.png",
+  "img/20261120_Decide-chapter-11-1.webp": "[scratch]/c08/board-3/builder/shots/g-v10-fig-s-11-steps-1440.png",
+  "img/20261120_Decide-chapter-11-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-11-steps-1440.png",
+  "img/20261120_Decide-masthead-1.webp": "[scratch]/c08/board-3/builder/shots/g-v11-header-masthead-1024-railfocus.png",
+  "img/20261120_Decide-masthead-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-header-masthead-1024-railfocus.png",
+  "img/20261120_Decide-where-to-start-1.png": "[scratch]/c08/board-3/builder/shots/g-v11-start-320-text200.png",
+  "img/20261120_Decide-where-to-start-2.png": "[scratch]/c08/board-3/builder/shots/g-final-start-320-text200.png",
+  "img/20261120_Decide-chapter-18-and-shell-1.webp": "[scratch]/c08/board-3/builder/shots/g-v9-fig-s-18-22-anatomy-390.png",
+  "img/20261120_Decide-chapter-18-and-shell-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-18-22-anatomy-390.png",
+  "img/20261120_Decide-chapter-18-and-shell-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-18-14-anatomy-1440.png",
+  "img/20261120_Decide-related-chapters-1.webp": "[scratch]/c08/board-3/builder/shots/g-v12-rule-14-88-1440.png",
+  "img/20261120_Decide-related-chapters-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-88-1440.png",
+  "img/20261120_Decide-CE-S22-words-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-selection-guide-1440.png",
+  "img/20261120_Decide-S14-line-02-13-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-02-22-correct-1440.png",
+  "img/20261120_Decide-S14-line-02-13-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-13-6-correct-1440.png",
+  "img/20261120_Decide-S14-line-02-13-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s14-1440.png",
+  "img/20261120_Decide-S59-label-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s59-390.png",
+  "img/20261120_Decide-S59-label-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s59-1024.png",
+  "img/20261120_Decide-masthead-360-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-header-masthead-360.png",
+  "img/20261120_Decide-masthead-360-2.webp": "[scratch]/c08/board-3/builder/shots/made-masthead-360-360.png",
+  "img/20261120_Decide-masthead-360-3.webp": "[scratch]/c08/board-3/builder/shots/g-final-header-masthead-375.png",
+  "img/20261120_Decide-masthead-360-4.webp": "[scratch]/c08/board-3/builder/shots/made-masthead-360-375.png",
+  "img/20261120_Decide-red-target-keyline-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-11-correct-1440.png",
+  "img/20261120_Decide-red-target-keyline-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-1440.png",
+  "img/20261120_Decide-red-target-keyline-3.webp": "[scratch]/c08/board-3/builder/shots/made-red-target-keyline-1440.png",
+  "img/20261120_Decide-red-target-keyline-4.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-12-correct-1440.png",
+  "img/20261120_Decide-red-target-keyline-5.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-16-correct-1440.png",
+  "img/20261120_Decide-CR-S17-chips-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-13-5-correct-1440.png",
+  "img/20261120_Decide-CR-S17-chips-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-18-24-anatomy-1440.png",
+  "img/20261120_Decide-S71-retrieved-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s71-1440.png",
+  "img/20261120_Decide-pillar-red-ratio-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-palette-spec-1440.png",
+  "img/20261120_Decide-pillar-red-ratio-2.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-05-3-correct-1440.png",
+  "img/20261120_Decide-CR-S19-chip-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-oac-s-14-s91-390.png",
+  "img/20261120_Decide-CR-S19-chip-2.webp": "[scratch]/c08/board-3/builder/made/kit-CR-S19-chip/out/s91/s91-newsprint-358.png",
+  "img/20261120_Decide-15-22-examples-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-22-correct-1440.png",
+  "img/20261120_Decide-CR-S4-sticky-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-19-correct-1440.png",
+  "img/20261120_Decide-related-rules-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-rule-14-32-1440.png",
+  "img/20261120_Decide-routes-who-1.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-1440.png",
+  "img/20261120_R5-Guide-1440.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-selection-guide-1440.png",
+  "img/20261120_R5-Guide-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-selection-guide-390.png",
+  "img/20261120_R5-Palette-1440.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-palette-spec-1440.png",
+  "img/20261120_R5-14-142-1440.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-s96-1440.png",
+  "img/20261120_R5-14-142-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-s96-390.png",
+  "img/20261120_R5-14-142-Failure.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-142-failure-1440.png",
+  "img/20261120_R5-14-143-1440.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-143-correct-1440.png",
+  "img/20261120_R5-14-143-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-143-correct-390.png",
+  "img/20261120_R5-14-143-Failure.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-143-failure-1440.png",
+  "img/20261120_R5-14-143-State-0.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-143-correct-1440.png",
+  "img/20261120_R5-14-143-State-1.webp": "[scratch]/c08/board-3/builder/shots/st-14-143-1.png",
+  "img/20261120_R5-14-143-State-2.webp": "[scratch]/c08/board-3/builder/shots/st-14-143-2.png",
+  "img/20261120_R5-14-144-1440.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-1440.png",
+  "img/20261120_R5-14-144-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-390.png",
+  "img/20261120_R5-14-144-Failure.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-failure-1440.png",
+  "img/20261120_R5-14-144-State-0.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-14-144-correct-1440.png",
+  "img/20261120_R5-14-144-State-1.webp": "[scratch]/c08/board-3/builder/shots/st-14-144-1.png",
+  "img/20261120_R5-14-144-State-2.webp": "[scratch]/c08/board-3/builder/shots/st-14-144-2.png",
+  "img/20261120_C15-15-1-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-1-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-1-failure-1440.png",
+  "img/20261120_C15-15-2-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-2-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-2-failure-1440.png",
+  "img/20261120_C15-15-3-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-3-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-3-failure-1440.png",
+  "img/20261120_C15-15-4-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-4-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-4-failure-1440.png",
+  "img/20261120_C15-15-5-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-5-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-5-failure-1440.png",
+  "img/20261120_C15-15-6-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-6-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-6-failure-1440.png",
+  "img/20261120_C15-15-7-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-7-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-7-failure-1440.png",
+  "img/20261120_C15-15-8-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-8-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-8-failure-1440.png",
+  "img/20261120_C15-15-9-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-9-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-9-failure-1440.png",
+  "img/20261120_C15-15-10-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-10-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-10-failure-1440.png",
+  "img/20261120_C15-15-11-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-11-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-11-failure-1440.png",
+  "img/20261120_C15-15-12-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-12-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-12-failure-1440.png",
+  "img/20261120_C15-15-13-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-13-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-13-failure-1440.png",
+  "img/20261120_C15-15-14-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-14-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-14-failure-1440.png",
+  "img/20261120_C15-15-15-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-15-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-15-failure-1440.png",
+  "img/20261120_C15-15-16-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-16-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-16-failure-1440.png",
+  "img/20261120_C15-15-17-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-17-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-17-failure-1440.png",
+  "img/20261120_C15-15-18-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-18-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-18-failure-1440.png",
+  "img/20261120_C15-15-19-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-19-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-19-failure-1440.png",
+  "img/20261120_C15-15-20-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-failure-1440.png",
+  "img/20261120_C15-15-21-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-21-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-21-failure-1440.png",
+  "img/20261120_C15-15-22-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-22-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-22-failure-1440.png",
+  "img/20261120_C15-15-23-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-23-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-23-failure-1440.png",
+  "img/20261120_C15-15-24-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-24-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-24-failure-1440.png",
+  "img/20261120_C15-15-25-Plates.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-25-correct-1440.png, [scratch]/c08/board-3/builder/shots/g-final-fig-s-15-25-failure-1440.png",
+  "img/20261120_C15-15-6-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-6-correct-390.png",
+  "img/20261120_C15-15-19-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-19-correct-390.png",
+  "img/20261120_C15-15-20-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-20-correct-390.png",
+  "img/20261120_C15-15-21-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-21-correct-390.png",
+  "img/20261120_C15-15-23-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-23-correct-390.png",
+  "img/20261120_C15-15-24-390.webp": "[scratch]/c08/board-3/builder/shots/g-final-fig-s-15-24-correct-390.png"
  },
  "codes_in_reference_lines": [
   "D3-1310",
@@ -790,12 +1185,41 @@
   "rule-15-8",
   "rule-15-9"
  ],
- "notes": [],
+ "notes": [
+  "17:55:00 UTC guide: OK to open one (browsers running: 0, load: 0.76)",
+  "18:00:37 UTC made: OK to open one (browsers running: 0, load: 2.23)",
+  "18:02:30 UTC the board check: OK to open one (browsers running: 0, load: 2.25)",
+  "18:03:17 UTC the wrapped board check: OK to open one (browsers running: 0, load: 1.86)"
+ ],
  "warnings": [
-  "flagged words in the board’s own words: very",
   "decision codes in the words the board quotes from teammates’ files, on its face: D3-1701, D3-1705, D3-1712, D3-2140, D3-2142, D3-2243, D3-689, DR-108, DR-231, DR-265, DR-271, DR-274, DR-278, DR-62, Q-12"
  ],
- "seconds": 3,
- "words": 19170,
+ "seconds": 451,
+ "words": 19913,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/review-4-5/board-3/20261120_Board-3-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/c08/board-3/builder/publish-view/20261120_Board-3-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ },
  "fails": []
 }
