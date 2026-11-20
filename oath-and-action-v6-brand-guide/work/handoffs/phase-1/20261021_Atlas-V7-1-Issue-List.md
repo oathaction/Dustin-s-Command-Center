@@ -254,6 +254,7 @@ These belong to the supplied demonstrations, which V6 replaces. They need no V7.
 - Created: `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (this file), by `work/build/scripts/phase-1/build_v71_issue_list.py`.
 - Modified: none. V7 and every file in `source/` are unchanged.
 - Modified November 13, 2026, by the research lead: added "Added November 13, 2026" (rows 38 to 45, a line on item 8 and a line on the FEC item) under DR-264 and DR-265, then widened row 39 to Missouri's Proposition A under DR-269. Every ID, field and count in it was read by script from `work/extract/atlas-v7-data.json` (SHA-256 ef1028ac...c7f2). V7 and `source/` are unchanged.
+- Modified November 20, 2026, by the main session of chat 9: added "Added November 20, 2026" (row 46) under DR-291, board 3's reply 24. V7 and `source/` are unchanged.
 
 ## Added November 6, 2026
 
@@ -290,3 +291,12 @@ Item 8, Variable D6's type, keeps its place above. DR-264 approves its fix as th
 Board 2's item on the FEC's joint fundraising totals (RL-3), which add line 22 transfers and line 28C refunds and leave out line 21B, gets no row: no atlas field names joint fundraising, so under DR-264 it comes off the list and stays a note with the two FEC data files, `work/build/data/fec-jfc-transfers-2024.csv` and `work/build/data/fec-jfc-transfers-2024-all-committees.csv`, in the qualification and notes of their sidecars (`.meta.json`).
 
 Dustin approved rows 38 to 45 and the line on item 8 in board 2's reply 4 (DR-264), and the one name for each variable in row 45 in reply 5 (DR-265), on November 13, 2026. The same day, answering the round 4 plan, he added Missouri's Proposition A to row 39, so all three measures update by one rule (DR-269).
+
+## Added November 20, 2026
+
+Dustin approved this row on board 3 on November 20, 2026 (reply 24, DR-291). The main session recounted every figure by script from the Atlas V7 snapshot of October 15, 2026 (`work/extract/atlas-v7-data.json`, SHA-256 ef1028ac...c7f2) on November 20. Nothing in V7 changed.
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 46 | Each reform route's who-acts field holds three kinds of thing. Of the 126 route entries (89 distinct values), most name who acts ("Congress" 12 times, "Voters" 9, "Legislatures" 8), some name an instrument ("Statute" 5, "Amendment" 3), and five state an action that opens with a verb: R-03's federal statute route, "Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting"; R-11's, "Restructure the commission"; R-17's, "Codify protections and reverse Schedule Policy/Career"; R-17's federal agency route, "Rescind the OPM rule"; and R-47's state statute route, "Legalize fusion". Rule 15.20's correct plate prints such a line as stored, with no "Who acts" label | `reforms[].routes[].who` | Keep `who` for who acts, and move an instrument or an action into a field of its own, as the atlas's eleven route records already separate them; the route entries' notes already hold text on 50 entries, so a new field is the clearer home (the research lead's round 4 notes, D3-1861) |
+
