@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (twenty-eighth handoff, November 20)
 
-Written November 20, 2026, at the close of chat 8. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261116_Next-Session-Handoff_V27.md`. V5's sections 3 to 5, section 3 of V8 to V27, and section 3 below hold together. Decision log entries for this chat run from D3-2270 to D3-2310, with Dustin's answers DR-285 to DR-291. The change ledger runs to C-139.
+Written November 20, 2026, at the close of chat 8. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261116_Next-Session-Handoff_V27.md`. V5's sections 3 to 5, section 3 of V8 to V27, and section 3 below hold together. Decision log entries for this chat run from D3-2270 to D3-2310, with Dustin's answers DR-285 to DR-292. The change ledger runs to C-139.
 
 ## 1. Where things stand
 
@@ -13,6 +13,7 @@ Phase 3 is the active phase. Chat 8 (work tracker row `c08`) ran the four-width 
 - DR-288: the four-width check and the quick check with photographs run again on the final build.
 - DR-289: the chapters page as version 13 after the second pass.
 - DR-290: one go for the second pass and board 3's build.
+- DR-292: Phase 4 covers eight channels by name: Substack, X (Twitter), Threads, Instagram, YouTube, TikTok, LinkedIn and his own website.
 - He also said yes to running the chapter 14 build for Rule 14.143's corrected alt (D3-2293), after the permission check had refused it to an agent (D3-2288).
 
 **The second pass** (brief `work/handoffs/phase-3/20261120_Second-Pass-Brief.md`; notes `20261120_Second-Pass-*-Notes.md`). The editor wrote RS-1 (the six tracker alts), RS-2 (S91's title), RS-4 (S90's note), RS-5 (the entries' related rules, as data) and RS-6 (Loop R10's repeated start). The engineer made RS-3 (S94's year from a 480 px column), RS-7 (15.19's order), CR-S1's remainder and CR-S23, and fixed the four-width check's one failure (Rule 15.25's figures, D3-2291). The data lead signed off all nine in five batches; the accessibility lead confirmed RS-1 and RS-7 in Chromium's accessibility tree and fixed Rule 14.143's alt. The creative director's rescore: all 14 items of rounds 4 and 5 at 4 or more on all six criteria (D3-2292). RS-5's printed half (related rules as links) goes to board 3 (D3-2278).
@@ -34,7 +35,7 @@ Set the tracker's row `c08b` active. V11's three setup steps and the three key t
 As board 2's apply pass did (`work/handoffs/phase-3/20261113_Board-2-Brief.md`, Part A): each answer to its owner, through generators only, signed off by the data lead; a strict build, the quick check, and the four-width check if a change reaches layout. If the keyline answer is "As recommended", the keyline comes off Rules 15.20 and 14.144 (the `keyline` flag in `phase3_ch15_build.py` and the plate side in `phase3_ch14_complex_build.py`) and Rule 15.12 names "Availability of local reporting" in its words; the creative director then rescores C15-I and R5-3 (D3-2292). Every answer not applied goes into the register.
 
 ### C. The Gate 3 report
-As CLAUDE.md's gate rules and Gate 2 section 9's "At Gate 3 you decide" set it: chapters 13, 14 and 15 as built with the creative director's scores; the chart kit as an asset of the package; the reconciliation table's resolutions and any new V7.1 items; any token release that adds chart tokens; and the Phase 4 proposal, with its chapter ceilings set from what Phase 3 spent (`brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md`; Q-PR1's answer on board 3). Tested and Not tested apart; Safari, Firefox, real screen readers and DR-213's device scripts stay not tested (DR-279). Then stop for Dustin's approval.
+As CLAUDE.md's gate rules and Gate 2 section 9's "At Gate 3 you decide" set it: chapters 13, 14 and 15 as built with the creative director's scores; the chart kit as an asset of the package; the reconciliation table's resolutions and any new V7.1 items; any token release that adds chart tokens; and the Phase 4 proposal, with its chapter ceilings set from what Phase 3 spent (`brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md`; Q-PR1's answer on board 3). The proposal names the work for each of Dustin's eight channels (DR-292): Substack, X (Twitter), Threads, Instagram, YouTube, TikTok, LinkedIn and the Oath & Action website, each with its own applications and the specifications its official help pages give on the day they are built; Threads, Instagram and YouTube are new to the brief's named list. Tested and Not tested apart; Safari, Firefox, real screen readers and DR-213's device scripts stay not tested (DR-279). Then stop for Dustin's approval.
 
 ## 3. Working notes added this chat
 
@@ -55,14 +56,16 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 Board 3 is published, and I answered all 24 of its replies as recommended (DR-291; the list is work/handoffs/phase-3/20261120_Board-3-Answers.md). First, confirm the committed state, then apply my board 3 answers, then write the Gate 3 report with the Phase 4 proposal, as handoff V28 section 2 sets it.
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-2270 to the end, with DR-285 to DR-291), the change ledger (to C-139), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-2270 to the end, with DR-285 to DR-292), the change ledger (to C-139), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-3/20261120_Next-Session-Handoff_V28.md, then section 3 of V5 to V27's handoffs, the board 3 brief, decision file and my answers (work/handoffs/phase-3/20261120_Board-3-Brief.md, 20261120_Board-3-Decisions.json, 20261120_Board-3-Answers.md), the board 2 brief's Part A as the model for the apply pass (20261113_Board-2-Brief.md), and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md).
 
 Data keys are saved on this environment: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-291. Size allocations move as content needs; only the page's 16 MB is fixed (DR-271).
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-292.
+
+Phase 4 covers these channels by name, each with its own applications and specifications (DR-292): Substack, X (Twitter), Threads, Instagram, YouTube, TikTok, LinkedIn and my own website. Size allocations move as content needs; only the page's 16 MB is fixed (DR-271).
 
 Every fix flagged and not made goes into the deferred fixes register before you hand off (DR-282). I will run a final finishing pass from it when the guide is complete.
 
@@ -89,7 +92,7 @@ Created, all under `work/` unless named:
 - **Boards:** `boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html` with its build report; `boards/phase-3/review-4-5/board-3/` (the page, content, figures, check results and `img/`).
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (D3-2270 to D3-2310, DR-285 to DR-291); `ledger/20261020_Open-Questions.md` (Q-12 moved to Answered); `ledger/20261020_Change-Ledger.md` (C-135 to C-139); `ledger/20261116_Deferred-Fixes-Register.md` (chat 8's section; rows closed).
+- `ledger/20261020_Decision-Log.md` (D3-2270 to D3-2310, DR-285 to DR-292); `ledger/20261020_Open-Questions.md` (Q-12 moved to Answered; Q-08 updated by DR-292); `ledger/20261020_Change-Ledger.md` (C-135 to C-139); `ledger/20261116_Deferred-Fixes-Register.md` (chat 8's section; rows closed).
 - Generators and outputs, each by its owner: `apply_systems_ch11.py` and `manifest-systems.json` (the alts); `phase3_ch14_complex_build.py`, entry `14-143.json`, `s-14-143-correct.html`, `s-14-144-correct.html`, `manifest-data-visualization.json`; specs `s90.json`, `s91.json`, `maker_i_round4_derive.py`; entries `14-032`, `14-074`, `14-088`, `14-096`, `14-135`, `14-example-log.json`, chapter 14's file; `phase3_ch15_build.py`, chapter 15's file, `s-15-19-correct`, `s-15-20-failure`, `s-15-25-correct`, `manifest-systems-graphics.json`; the kit's `kit.css`, `forms/calendar.js`, `checks.js`.
 
 Published: the chapters page as version 13 and board 3 (both private). Work tracker: row `c08` done; row `c08b` added for the apply pass and the Gate 3 report. Not touched: `source/`, `deliverables/`, Atlas V7.
