@@ -1,0 +1,764 @@
+{
+ "built": "2026-11-20T22:57:50.639032+00:00",
+ "final_build": {
+  "page": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14.html",
+  "report": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Build-Report.json",
+  "bytes": 12210634,
+  "built": "2026-11-20T22:21:52",
+  "warnings": 0,
+  "rules": 369,
+  "specimens": 679,
+  "label": "version 14, the final build of chat 9",
+  "sha256": "2fe7618c81e93f08df8374f0e7dc920d5c06714092a7682df58257b57188a7c0"
+ },
+ "pages": {
+  "v13": "work/boards/phase-3/review-4-5/20261120_Guide-Preview-V13.html",
+  "final": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14.html"
+ },
+ "report": {
+  "file": "work/ledger/20261120_Gate-3-Report.md",
+  "bytes": 38038,
+  "placeholders": [
+   "{AGENT_COUNT}",
+   "{BOARD_URL}",
+   "{CLOSING_CHECKS}",
+   "{CREATED}",
+   "{D3_COUNT}",
+   "{D3_LAST}",
+   "{FOUR_WIDTH}",
+   "{GATE_BOARD_SCORE}",
+   "{MODIFIED}",
+   "{RESUME_COUNT}",
+   "{TESTED}",
+   "{V14_DECISION}"
+  ]
+ },
+ "photographs_asked": 57,
+ "render_seconds": {
+  "guide": 35
+ },
+ "shots": {
+  "guide": {
+   "asked": 57,
+   "taken": 4,
+   "page_loads": 2,
+   "missing": []
+  }
+ },
+ "decide": {
+  "decisions": 7,
+  "questions": 4,
+  "from": "work/ledger/20261120_Gate-3-Report.md, section 10"
+ },
+ "panel_1_words": 1106,
+ "phase4": {
+  "room": {
+   "limit": 16000000,
+   "page": 12210634,
+   "held": 29911,
+   "phase5": 400000,
+   "room": 3359455,
+   "room_warn": 2859455,
+   "free": 3789366
+  },
+  "allocations": {
+   "16 Photography, illustration and video": 300000,
+   "20 Web": 500000,
+   "21 The atlas": 460000,
+   "22 Newsletter and email": 300000,
+   "23 Social and video": 660000,
+   "24 Reports": 450000,
+   "25 Print and presentation": 340000,
+   "total": 3010000
+  },
+  "report_room": "3,359,455"
+ },
+ "facts": {
+  "footers": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md",
+   "value": [
+    "364"
+   ]
+  },
+  "added": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md",
+   "value": [
+    "36"
+   ]
+  },
+  "before": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md",
+   "value": [
+    "133"
+   ]
+  },
+  "after": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Accessibility-Notes.md",
+   "value": [
+    "89"
+   ]
+  },
+  "was": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md",
+   "value": [
+    "33.7"
+   ]
+  },
+  "now": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md",
+   "value": [
+    "31.8"
+   ]
+  },
+  "figures": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md",
+   "value": [
+    "112"
+   ]
+  },
+  "lists": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md",
+   "value": [
+    "138"
+   ]
+  },
+  "links": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Data-Lead-Notes.md",
+   "value": [
+    "363"
+   ]
+  },
+  "bytes": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md",
+   "value": [
+    "33,665"
+   ]
+  },
+  "row": {
+   "file": "work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md",
+   "value": [
+    "46"
+   ]
+  },
+  "The guide check’s self-test": {
+   "file": "[scratch]/c09/checks/selftest.log",
+   "value": [
+    "154",
+    "154",
+    "48",
+    "48"
+   ]
+  },
+  "Chapter 14’s build check": {
+   "file": "work/handoffs/phase-3/20261120_Apply-Pass-Engineer-Notes.md",
+   "value": [
+    "21:13",
+    "21:15",
+    "99",
+    "99"
+   ]
+  },
+  "The data check": {
+   "file": "work/ledger/20261120_Gate-3-Report.md",
+   "value": [
+    "126",
+    "0"
+   ]
+  }
+ },
+ "pictures": {
+  "x14n": {
+   "src": "img/20261120_Pic-x14n.webp",
+   "w": 720,
+   "h": 259
+  },
+  "x14c": {
+   "src": "img/20261120_Pic-x14c.webp",
+   "w": 358,
+   "h": 385
+  },
+  "r7a": {
+   "src": "img/20261120_Pic-r7a.webp",
+   "w": 868,
+   "h": 101
+  },
+  "r7b": {
+   "src": "img/20261120_Pic-r7b.webp",
+   "w": 868,
+   "h": 122
+  },
+  "m360a": {
+   "src": "img/20261120_Pic-m360a.webp",
+   "w": 360,
+   "h": 133
+  },
+  "m360b": {
+   "src": "img/20261120_Pic-m360b.webp",
+   "w": 360,
+   "h": 89
+  },
+  "m372a": {
+   "src": "img/20261120_Pic-m372a.webp",
+   "w": 372,
+   "h": 133
+  },
+  "m372b": {
+   "src": "img/20261120_Pic-m372b.webp",
+   "w": 372,
+   "h": 89
+  },
+  "m375a": {
+   "src": "img/20261120_Pic-m375a.webp",
+   "w": 375,
+   "h": 89
+  },
+  "m375b": {
+   "src": "img/20261120_Pic-m375b.webp",
+   "w": 375,
+   "h": 89
+  },
+  "k1": {
+   "src": "img/20261120_Pic-k1.webp",
+   "w": 868,
+   "h": 715
+  },
+  "k2": {
+   "src": "img/20261120_Pic-k2.webp",
+   "w": 868,
+   "h": 716
+  },
+  "k3": {
+   "src": "img/20261120_Pic-k3.webp",
+   "w": 868,
+   "h": 670
+  },
+  "k4": {
+   "src": "img/20261120_Pic-k4.webp",
+   "w": 868,
+   "h": 670
+  },
+  "k5": {
+   "src": "img/20261120_Pic-k5.webp",
+   "w": 868,
+   "h": 624
+  },
+  "k6": {
+   "src": "img/20261120_Pic-k6.webp",
+   "w": 868,
+   "h": 624
+  },
+  "k7": {
+   "src": "img/20261120_Pic-k7.webp",
+   "w": 868,
+   "h": 1131
+  },
+  "k8": {
+   "src": "img/20261120_Pic-k8.webp",
+   "w": 868,
+   "h": 74
+  },
+  "k9": {
+   "src": "img/20261120_Pic-k9.webp",
+   "w": 868,
+   "h": 96
+  },
+  "k7-luma": {
+   "src": "img/20261120_Pic-k7-Luma.webp",
+   "w": 868,
+   "h": 1131
+  },
+  "k4-luma": {
+   "src": "img/20261120_Pic-k4-Luma.webp",
+   "w": 868,
+   "h": 670
+  },
+  "k6-luma": {
+   "src": "img/20261120_Pic-k6-Luma.webp",
+   "w": 868,
+   "h": 624
+  },
+  "c1": {
+   "src": "img/20261120_Pic-c1.webp",
+   "w": 868,
+   "h": 707
+  },
+  "c2": {
+   "src": "img/20261120_Pic-c2.webp",
+   "w": 868,
+   "h": 707
+  },
+  "t1": {
+   "src": "img/20261120_Pic-t1.webp",
+   "w": 721,
+   "h": 89
+  },
+  "t2": {
+   "src": "img/20261120_Pic-t2.webp",
+   "w": 721,
+   "h": 89
+  },
+  "t3": {
+   "src": "img/20261120_Pic-t3.webp",
+   "w": 721,
+   "h": 102
+  },
+  "t4": {
+   "src": "img/20261120_Pic-t4.webp",
+   "w": 721,
+   "h": 102
+  },
+  "i1": {
+   "src": "img/20261120_Pic-i1.webp",
+   "w": 868,
+   "h": 297
+  },
+  "i2": {
+   "src": "img/20261120_Pic-i2.webp",
+   "w": 868,
+   "h": 297
+  },
+  "p1": {
+   "src": "img/20261120_Pic-p1.webp",
+   "w": 868,
+   "h": 156
+  },
+  "p2": {
+   "src": "img/20261120_Pic-p2.webp",
+   "w": 868,
+   "h": 198
+  },
+  "a1": {
+   "src": "img/20261120_Pic-a1.webp",
+   "w": 868,
+   "h": 101
+  },
+  "a2": {
+   "src": "img/20261120_Pic-a2.webp",
+   "w": 868,
+   "h": 122
+  },
+  "h1440a": {
+   "src": "img/20261120_Pic-h1440a.webp",
+   "w": 721,
+   "h": 717
+  },
+  "h1440b": {
+   "src": "img/20261120_Pic-h1440b.webp",
+   "w": 721,
+   "h": 656
+  },
+  "h390a": {
+   "src": "img/20261120_Pic-h390a.webp",
+   "w": 326,
+   "h": 922
+  },
+  "h390b": {
+   "src": "img/20261120_Pic-h390b.webp",
+   "w": 326,
+   "h": 881
+  },
+  "h320a": {
+   "src": "img/20261120_Pic-h320a.webp",
+   "w": 256,
+   "h": 1050
+  },
+  "h320b": {
+   "src": "img/20261120_Pic-h320b.webp",
+   "w": 256,
+   "h": 1089
+  },
+  "n1": {
+   "src": "img/20261120_Pic-n1.webp",
+   "w": 868,
+   "h": 218
+  },
+  "n2": {
+   "src": "img/20261120_Pic-n2.webp",
+   "w": 868,
+   "h": 293
+  },
+  "f1": {
+   "src": "img/20261120_Pic-f1.webp",
+   "w": 868,
+   "h": 125
+  },
+  "f2": {
+   "src": "img/20261120_Pic-f2.webp",
+   "w": 868,
+   "h": 148
+  },
+  "o1": {
+   "src": "img/20261120_Pic-o1.webp",
+   "w": 868,
+   "h": 169
+  },
+  "o2": {
+   "src": "img/20261120_Pic-o2.webp",
+   "w": 868,
+   "h": 223
+  },
+  "s59a": {
+   "src": "img/20261120_Pic-s59a.webp",
+   "w": 326,
+   "h": 410
+  },
+  "s59b": {
+   "src": "img/20261120_Pic-s59b.webp",
+   "w": 326,
+   "h": 410
+  }
+ },
+ "answers": {
+  "replies": 24,
+  "cards": 16,
+  "one_line": 8,
+  "pictures_waiting": [],
+  "facts_missing": []
+ },
+ "clearance": {
+  "file": "work/handoffs/phase-3/20261120_Label-Clearance-List.json",
+  "specs": 96,
+  "drawings": 43897,
+  "would_move": [],
+  "before": [
+   {
+    "id": "S59",
+    "spec": "work/build/chart-kit/specs/s59.json",
+    "form": "fan-chart",
+    "rule": "14.77",
+    "label": "4.1",
+    "which": "the first projected period's median value, 2026",
+    "widths_px": "274 to 617",
+    "widths_count": 344,
+    "fixed_by": "labels.values_clear_edges: true in S59's own spec (board 3, reply 9): the value moves up 6.5 to 21.7 px at those 344 widths only, to the lowest place over its dot 4 px clear of every band edge; from 618 to 720 px no edge crosses it and it stays put; from 256 to 273 px it does not print, as before, since the form lets it give way on a narrow plot (the table keeps it); no other word moves, and no shape changes at any of the 465 widths from 256 to 720 px"
+   }
+  ],
+  "pictures_waiting": []
+ },
+ "scores": {
+  "items": 33,
+  "at_4_or_more": 33,
+  "files_read": [
+   "20261111_Round-0-CD-Scores.json",
+   "20261112_Round-0-CD-Rescores.json",
+   "20261112_Round-1-CD-Scores.json",
+   "20261112_Round-1-CD-Rescores.json",
+   "20261112_Round-2-CD-Scores.json",
+   "20261112_Round-2-CD-Rescores.json",
+   "20261113_Round-3-CD-Scores.json",
+   "20261113_Round-3-CD-Rescores.json",
+   "20261116_Rounds-4-5-CD-Scores.json",
+   "20261116_Rounds-4-5-CD-Rescores.json",
+   "20261120_Second-Pass-CD-Rescores.json",
+   "20261120_Apply-Pass-CD-Rescores.json"
+  ],
+  "names_from_report": true
+ },
+ "apply_rescore": {
+  "file": "work/handoffs/phase-3/20261120_Apply-Pass-CD-Rescores.json",
+  "items": 14,
+  "ready": 14,
+  "rose": 3,
+  "fell": 0
+ },
+ "weight": {
+  "page": 12210634,
+  "limit": 16000000,
+  "warn_line": 15500000,
+  "projected": 15180545,
+  "ch14_with_kit": 2855909,
+  "ch14_stop": 2803941,
+  "kit": 571235,
+  "kit_figure": 560000,
+  "chapters": {
+   "01": {
+    "bytes": 1356074,
+    "budget": 2700000.0
+   },
+   "02": {
+    "bytes": 646262,
+    "budget": 850000.0
+   },
+   "03": {
+    "bytes": 463067,
+    "budget": 650000.0
+   },
+   "04": {
+    "bytes": 252540,
+    "budget": 450000.0
+   },
+   "05": {
+    "bytes": 240636,
+    "budget": 450000.0
+   },
+   "06": {
+    "bytes": 148041,
+    "budget": 350000.0
+   },
+   "07": {
+    "bytes": 103883,
+    "budget": 300000.0
+   },
+   "08": {
+    "bytes": 116832,
+    "budget": 300000.0
+   },
+   "09": {
+    "bytes": 135187,
+    "budget": 400000.0
+   },
+   "10": {
+    "bytes": 522987,
+    "budget": 1000000.0
+   },
+   "11": {
+    "bytes": 503027,
+    "budget": 550000.0
+   },
+   "12": {
+    "bytes": 196048,
+    "budget": 500000.0
+   },
+   "13": {
+    "bytes": 243173,
+    "budget": 250000.0
+   },
+   "14": {
+    "bytes": 2151557,
+    "budget": 2803941
+   },
+   "15": {
+    "bytes": 570089,
+    "budget": 600000.0
+   },
+   "17": {
+    "bytes": 394271,
+    "budget": 500000.0
+   },
+   "18": {
+    "bytes": 1167619,
+    "budget": 1250000.0
+   },
+   "19": {
+    "bytes": 173430,
+    "budget": 300000.0
+   },
+   "26": {
+    "bytes": 1028216,
+    "budget": 1100000.0
+   }
+  },
+  "phase4_room": {
+   "limit": 16000000,
+   "page": 12210634,
+   "held": 29911,
+   "phase5": 400000,
+   "room": 3359455,
+   "room_warn": 2859455,
+   "free": 3789366
+  }
+ },
+ "tested": {
+  "The strict build of version 14": "read from its report, built November 20, 2026 at 22:21 UTC: no warnings, 12,210,634 bytes, 369 rules and 679 examples placed",
+  "The four-width guide check": "Waiting for its file",
+  "The quick guide check with photographs": "Waiting for its file",
+  "The guide check’s self-test": "run by the main session: 154 of 154 planted faults caught and 48 of 48 allowed cases left alone",
+  "The kit’s build of every chart, without pictures": "run by the main session on the final files: 96 charts pass and none fail",
+  "Chapter 14’s build check": "99 of 99 of its files current, in the engineer’s closing run from 21:13 to 21:15 UTC",
+  "The data check": "126 tables and 0 faults, as the Gate 3 report records it",
+  "The atlas check": "run by the main session on version 14: 780 chips in chapters 13, 14 and 15 and 115 kit chart files read, with no failures",
+  "Links to the chapters page": "23 links to 22 rules, each target checked by this board’s build on version 14’s page: 23 of 23 found",
+  "This board’s own check": "on its last run at 1440, 390 and 360 px, no failures apart from the page’s language, which the host sets when it wraps the page"
+ },
+ "checks_read": {
+  "The kit’s build of every chart, without pictures": {
+   "file": "[scratch]/c09/final/kit.log",
+   "words": "run by the main session on the final files: 96 charts pass and none fail"
+  },
+  "v7_check": {
+   "file": "[scratch]/c09/final/v7.json",
+   "failures": []
+  }
+ },
+ "preview_links": {
+  "links": 23,
+  "anchors": 22,
+  "found": 23
+ },
+ "tokens_used": 110,
+ "page": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html",
+ "html_bytes": 140067,
+ "images": 48,
+ "image_bytes": 797708,
+ "folder_files": 52,
+ "folder_bytes": 1010222,
+ "largest_image": [
+  49366,
+  "20261120_Pic-k7.webp"
+ ],
+ "status": {
+  "decide": "ready",
+  "phase4": "ready",
+  "answers": "ready",
+  "clearance": "ready",
+  "scores": [
+   "partial",
+   "cd_board"
+  ],
+  "weight": "ready",
+  "tested": [
+   "partial",
+   "main"
+  ]
+ },
+ "image_sources": {
+  "img/20261120_Pic-x14n.webp": "[scratch]/c09/builder/shots/p-x14n.png",
+  "img/20261120_Pic-x14c.webp": "[scratch]/c09/builder/shots/p-x14c.png",
+  "img/20261120_Pic-r7a.webp": "[scratch]/c09/builder/shots/p-r7a.png",
+  "img/20261120_Pic-r7b.webp": "[scratch]/c09/builder/shots/p-r7b.png",
+  "img/20261120_Pic-m360a.webp": "[scratch]/c09/builder/shots/p-m360a.png",
+  "img/20261120_Pic-m360b.webp": "[scratch]/c09/builder/shots/p-m360b.png",
+  "img/20261120_Pic-m372a.webp": "[scratch]/c09/builder/shots/p-m372a.png",
+  "img/20261120_Pic-m372b.webp": "[scratch]/c09/builder/shots/p-m372b.png",
+  "img/20261120_Pic-m375a.webp": "[scratch]/c09/builder/shots/p-m375a.png",
+  "img/20261120_Pic-m375b.webp": "[scratch]/c09/builder/shots/p-m375b.png",
+  "img/20261120_Pic-k1.webp": "[scratch]/c09/builder/shots/p-k1.png",
+  "img/20261120_Pic-k2.webp": "[scratch]/c09/builder/shots/p-k2.png",
+  "img/20261120_Pic-k3.webp": "[scratch]/c09/builder/shots/p-k3.png",
+  "img/20261120_Pic-k4.webp": "[scratch]/c09/builder/shots/p-k4.png",
+  "img/20261120_Pic-k5.webp": "[scratch]/c09/builder/shots/p-k5.png",
+  "img/20261120_Pic-k6.webp": "[scratch]/c09/builder/shots/p-k6.png",
+  "img/20261120_Pic-k7.webp": "[scratch]/c09/builder/shots/p-k7.png",
+  "img/20261120_Pic-k8.webp": "[scratch]/c09/builder/shots/p-k8.png",
+  "img/20261120_Pic-k9.webp": "[scratch]/c09/builder/shots/p-k9.png",
+  "img/20261120_Pic-k7-Luma.webp": "[scratch]/c09/builder/made/luma-p-k7.png",
+  "img/20261120_Pic-k4-Luma.webp": "[scratch]/c09/builder/made/luma-p-k4.png",
+  "img/20261120_Pic-k6-Luma.webp": "[scratch]/c09/builder/made/luma-p-k6.png",
+  "img/20261120_Pic-c1.webp": "[scratch]/c09/builder/shots/p-c1.png",
+  "img/20261120_Pic-c2.webp": "[scratch]/c09/builder/shots/p-c2.png",
+  "img/20261120_Pic-t1.webp": "[scratch]/c09/builder/shots/p-t1.png",
+  "img/20261120_Pic-t2.webp": "[scratch]/c09/builder/shots/p-t2.png",
+  "img/20261120_Pic-t3.webp": "[scratch]/c09/builder/shots/p-t3.png",
+  "img/20261120_Pic-t4.webp": "[scratch]/c09/builder/shots/p-t4.png",
+  "img/20261120_Pic-i1.webp": "[scratch]/c09/builder/shots/p-i1.png",
+  "img/20261120_Pic-i2.webp": "[scratch]/c09/builder/shots/p-i2.png",
+  "img/20261120_Pic-p1.webp": "[scratch]/c09/builder/shots/p-p1.png",
+  "img/20261120_Pic-p2.webp": "[scratch]/c09/builder/shots/p-p2.png",
+  "img/20261120_Pic-a1.webp": "[scratch]/c09/builder/shots/p-a1.png",
+  "img/20261120_Pic-a2.webp": "[scratch]/c09/builder/shots/p-a2.png",
+  "img/20261120_Pic-h1440a.webp": "[scratch]/c09/builder/shots/p-h1440a-0.png, [scratch]/c09/builder/shots/p-h1440a-1.png, [scratch]/c09/builder/shots/p-h1440a-2.png",
+  "img/20261120_Pic-h1440b.webp": "[scratch]/c09/builder/shots/p-h1440b-0.png, [scratch]/c09/builder/shots/p-h1440b-1.png, [scratch]/c09/builder/shots/p-h1440b-2.png",
+  "img/20261120_Pic-h390a.webp": "[scratch]/c09/builder/shots/p-h390a-0.png, [scratch]/c09/builder/shots/p-h390a-1.png, [scratch]/c09/builder/shots/p-h390a-2.png",
+  "img/20261120_Pic-h390b.webp": "[scratch]/c09/builder/shots/p-h390b-0.png, [scratch]/c09/builder/shots/p-h390b-1.png, [scratch]/c09/builder/shots/p-h390b-2.png",
+  "img/20261120_Pic-h320a.webp": "[scratch]/c09/builder/shots/p-h320a-0.png, [scratch]/c09/builder/shots/p-h320a-1.png, [scratch]/c09/builder/shots/p-h320a-2.png",
+  "img/20261120_Pic-h320b.webp": "[scratch]/c09/builder/shots/p-h320b-0.png, [scratch]/c09/builder/shots/p-h320b-1.png, [scratch]/c09/builder/shots/p-h320b-2.png",
+  "img/20261120_Pic-n1.webp": "[scratch]/c09/builder/shots/p-n1.png",
+  "img/20261120_Pic-n2.webp": "[scratch]/c09/builder/shots/p-n2.png",
+  "img/20261120_Pic-f1.webp": "[scratch]/c09/builder/shots/p-f1.png",
+  "img/20261120_Pic-f2.webp": "[scratch]/c09/builder/shots/p-f2.png",
+  "img/20261120_Pic-o1.webp": "[scratch]/c09/builder/shots/p-o1.png",
+  "img/20261120_Pic-o2.webp": "[scratch]/c09/builder/shots/p-o2.png",
+  "img/20261120_Pic-s59a.webp": "[scratch]/c09/builder/shots/p-s59a.png",
+  "img/20261120_Pic-s59b.webp": "[scratch]/c09/builder/shots/p-s59b.png"
+ },
+ "codes_in_reference_lines": [
+  "D3-1310",
+  "D3-2292",
+  "D3-2310",
+  "D3-2318",
+  "D3-2319",
+  "D3-2326",
+  "D3-2336",
+  "D3-2338",
+  "D3-2340",
+  "D3-2341",
+  "D3-2343",
+  "D3-2345",
+  "D3-2347",
+  "D3-2349",
+  "D3-2350",
+  "D3-2352",
+  "D3-2353",
+  "D3-2354",
+  "DR-191",
+  "DR-202",
+  "DR-213",
+  "DR-235",
+  "DR-236",
+  "DR-265",
+  "DR-271",
+  "DR-277",
+  "DR-279",
+  "DR-286",
+  "DR-291",
+  "DR-292",
+  "DR-293",
+  "DR-294",
+  "DR-295",
+  "DR-296",
+  "DR-297",
+  "DR-298",
+  "DR-36",
+  "DR-93",
+  "Q-04",
+  "Q-12"
+ ],
+ "anchors_linked": [
+  "rule-03-6",
+  "rule-08-2",
+  "rule-11-1",
+  "rule-11-10",
+  "rule-11-11",
+  "rule-11-2",
+  "rule-13-6",
+  "rule-14-101",
+  "rule-14-135",
+  "rule-14-137",
+  "rule-14-140",
+  "rule-14-144",
+  "rule-14-32",
+  "rule-14-5",
+  "rule-14-6",
+  "rule-14-77",
+  "rule-15-12",
+  "rule-15-15",
+  "rule-15-20",
+  "rule-15-22",
+  "rule-15-4",
+  "rule-18-24"
+ ],
+ "notes": [
+  "22:57:51 UTC guide: OK to open one (browsers running: 1, load: 1.42)",
+  "22:58:27 UTC the board check: OK to open one (browsers running: 1, load: 1.68)",
+  "22:59:06 UTC the wrapped board check: OK to open one (browsers running: 1, load: 1.39)"
+ ],
+ "warnings": [],
+ "seconds": 37,
+ "words": 7727,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/c09/builder/publish-view/20261120_Gate-3-Board-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ },
+ "fails": []
+}
