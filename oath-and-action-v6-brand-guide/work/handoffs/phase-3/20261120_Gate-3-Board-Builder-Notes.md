@@ -4,6 +4,8 @@ Written November 20, 2026, by the board builder (`oa-design-director` as page bu
 
 ## Status
 
+23:40 UTC: **DONE. The fix round's checked run landed** (`--reuse --check --strict`, exit 0, 0 warnings, 0 failures; every panel ready). Check: the page alone fails only axe's html-has-lang at 1440, 390 and 360 px (allowed, the host sets the language); wrapped as the host wraps it, PASS at 1440, 390 and 360 px. Panel 7 reads the quick check's results file (pass, 0 failures; window 23:05 to 23:39 UTC from D3-2377) and panel 5 the creative director's rescore of this board, 4 on all six. Page 153,526 bytes; 48 pictures, 791,474 bytes; the folder 52 files, 1,021,553 bytes. No capture was deferred: G3-S12's crops came from the photographs already in scratch. Nothing published by me.
+
 23:31 UTC: G3-S13 in: DR-64 in quoted report words now reads "your rule against red and blue on election graphics" (`code_words`), and no other bare code on the page prints as a stand-in ("a logged decision" and the stripper's other stand-ins: 0). Rebuilt `--reuse --no-browser`: 0 warnings, 153 kB, 48 pictures; panel 5 now prints this board's first score and rescore from the creative director's file (rescored 23:30 UTC). The checked run still waits for the main session's go.
 
 23:25 UTC: **Fix round in; the checked run waits for the main session's go.** My items from the creative director's review (G3-M1, G3-S1, S2, S4 to S8, S11, S12, and the one-line replies' full stop) are in, and panels 1 and 2 quote the report's revised sections 9 and 10. Built with `--reuse --no-browser` (no browser, as the main session asked while the quick check runs): 0 warnings, 0 failures. Page 151,411 bytes, 9,136 words (panel 1: 1,706); 48 pictures, 791,474 bytes; the folder 52 files, 1,018,542 bytes. Panels 1 to 4 and 6 ready; panel 5's slot for this board's score waits for the rescore (the first score is not shown); panel 7 waits only for the quick check's file. The board check has not run on this build; `--reuse --check --strict` runs when the main session says a browser may open.
@@ -78,7 +80,6 @@ The creative director's list "What the Gate 3 board must show from this pass" is
 - Fix round, 23:20 to 23:25 UTC: `--reuse --no-browser`, three runs, the last with 0 warnings and 0 failures; the swatch ratios read from the plate and checked against WCAG; the panel 6 projection checked against the report's 15,650,545; the re-cropped text pairs looked at; the page's visible text searched for straight quotes (none), em and en dashes (none) and decision codes on the face (none).
 
 ## Not tested
-- The fix round's build in the board check: it waits for the main session's go.
 
 - The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a keyboard walk past the board check's first stops, and a screen reader.
 - Every picture by eye: I looked at the sample above, not all 48. Three of my element photographs of the wrapped board at 390 px failed on a 1 px offset, so I did not look at panel 1's cards or reply 17's card on a phone, beyond the board check's run at 390 and 360 px.
