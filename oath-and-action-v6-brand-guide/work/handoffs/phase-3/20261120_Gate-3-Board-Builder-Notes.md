@@ -4,6 +4,8 @@ Written November 20, 2026, by the board builder (`oa-design-director` as page bu
 
 ## Status
 
+23:31 UTC: G3-S13 in: DR-64 in quoted report words now reads "your rule against red and blue on election graphics" (`code_words`), and no other bare code on the page prints as a stand-in ("a logged decision" and the stripper's other stand-ins: 0). Rebuilt `--reuse --no-browser`: 0 warnings, 153 kB, 48 pictures; panel 5 now prints this board's first score and rescore from the creative director's file (rescored 23:30 UTC). The checked run still waits for the main session's go.
+
 23:25 UTC: **Fix round in; the checked run waits for the main session's go.** My items from the creative director's review (G3-M1, G3-S1, S2, S4 to S8, S11, S12, and the one-line replies' full stop) are in, and panels 1 and 2 quote the report's revised sections 9 and 10. Built with `--reuse --no-browser` (no browser, as the main session asked while the quick check runs): 0 warnings, 0 failures. Page 151,411 bytes, 9,136 words (panel 1: 1,706); 48 pictures, 791,474 bytes; the folder 52 files, 1,018,542 bytes. Panels 1 to 4 and 6 ready; panel 5's slot for this board's score waits for the rescore (the first score is not shown); panel 7 waits only for the quick check's file. The board check has not run on this build; `--reuse --check --strict` runs when the main session says a browser may open.
 
 22:59 UTC: First full build ready (run 3, `--reuse --check --strict`, exit 0, 0 warnings; page alone html-has-lang only at 1440, 390 and 360 px; wrapped PASS). The creative director scored it 4, 4, 3, 4, 3, 4 with four Musts and twelve Shoulds.

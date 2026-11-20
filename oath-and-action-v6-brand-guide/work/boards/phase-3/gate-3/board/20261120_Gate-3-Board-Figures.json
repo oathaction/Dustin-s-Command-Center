@@ -1,5 +1,5 @@
 {
- "built": "2026-11-20T23:24:50.977015+00:00",
+ "built": "2026-11-20T23:31:01.550326+00:00",
  "final_build": {
   "page": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14.html",
   "report": "work/boards/phase-3/gate-3/20261120_Guide-Preview-V14-Build-Report.json",
@@ -17,7 +17,7 @@
  },
  "report": {
   "file": "work/ledger/20261120_Gate-3-Report.md",
-  "bytes": 44450,
+  "bytes": 45091,
   "placeholders": [
    "{AGENT_COUNT}",
    "{BOARD_URL}",
@@ -59,7 +59,7 @@
   "word_rows": 5,
   "from": "work/ledger/20261120_Gate-3-Report.md, section 10"
  },
- "panel_1_words": 1706,
+ "panel_1_words": 1856,
  "phase4": {
   "room": {
    "limit": 16000000,
@@ -477,7 +477,14 @@
  },
  "board_score": {
   "file": "work/handoffs/phase-3/20261120_Gate-3-Board-CD-Scores.json",
-  "state": "first score only; the slot waits for the rescore"
+  "scores": {
+   "craft": 4,
+   "clarity": 4,
+   "brand_fidelity": 4,
+   "usefulness": 4,
+   "evidence_honesty": 3,
+   "accessibility": 4
+  }
  },
  "weight": {
   "page": 12210634,
@@ -614,11 +621,11 @@
  },
  "tokens_used": 114,
  "page": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html",
- "html_bytes": 151411,
+ "html_bytes": 153393,
  "images": 48,
  "image_bytes": 791474,
  "folder_files": 52,
- "folder_bytes": 1018542,
+ "folder_bytes": 1020590,
  "largest_image": [
   49366,
   "20261120_Pic-k7.webp"
@@ -628,10 +635,7 @@
   "phase4": "ready",
   "answers": "ready",
   "clearance": "ready",
-  "scores": [
-   "partial",
-   "cd_board"
-  ],
+  "scores": "ready",
   "weight": "ready",
   "tested": [
    "partial",
@@ -771,6 +775,6 @@
  "notes": [],
  "warnings": [],
  "seconds": 1,
- "words": 9136,
+ "words": 9346,
  "fails": []
 }
