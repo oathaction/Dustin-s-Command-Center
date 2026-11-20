@@ -8,7 +8,7 @@ DR numbers are your decisions and D3 numbers are the studio's routine calls, bot
 
 ## 1. What Phase 3 did
 
-Phase 3 began when you approved Gate 2 on November 11, 2026 (G2-01 to G2-04). It built the three chapters Gate 2 proposed, chapter 13 Evidence and sourcing, chapter 14 Data visualization and chapter 15 Systems graphics, with the chart kit behind them, and the ballot measure and court case trackers you added to chapter 11 (DR-231). Along the way you made 67 decisions (DR-233 to DR-299) and the studio logged {D3_COUNT} routine calls (D3-01 to D3-{D3_LAST}).
+Phase 3 began when you approved Gate 2 on November 11, 2026 (G2-01 to G2-04). It built the three chapters Gate 2 proposed, chapter 13 Evidence and sourcing, chapter 14 Data visualization and chapter 15 Systems graphics, with the chart kit behind them, and the ballot measure and court case trackers you added to chapter 11 (DR-231). Along the way you made 67 decisions (DR-233 to DR-299) and the studio logged 2,385 routine calls (D3-01 to D3-2385).
 
 | Dates | What the studio built | What you settled |
 |---|---|---|
@@ -60,10 +60,10 @@ Each studio agent ran as a subagent of the main session, briefed to read and ado
 | The headings, the masthead and chapter 11's tables in the accessibility tree | UX and accessibility lead | `20261120_Apply-Pass-Accessibility-Notes.md` |
 | The rescore of the changed items | Creative director | `20261120_Apply-Pass-CD-Rescores.json`; "Apply pass rescore" in `20261116_CD-Review-Of-Rounds-4-5.md` |
 | The guide check's self-test, the strict build, the four-width check, the quick check with photographs, the kit, data and V7 checks | Main session | Section 4 |
-| Version 14 published | Main session | D3-2378 |
+| Version 14 published, and the Gate 3 board after the main session's read | Main session | D3-2378, D3-2384 |
 | The Gate 3 board, built by script | Board builder (the design director building a review board) | `work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html` |
 | The board's score | Creative director | `20261120_Gate-3-Board-CD-Scores.json` |
-| The deferred fixes register's chat 9 section, the change ledger, this report and its Phase 4 proposal | Main session | `work/ledger/` |
+| The deferred fixes register's chat 9 section, the change ledger, this report and its Phase 4 proposal, with sections 9 and 10 revised after the board's review | Main session | `work/ledger/` |
 
 ## 2. The pages to open
 
@@ -71,7 +71,7 @@ Every page is private, so each stays with you until you choose to share it.
 
 | Page | Address | What to look at |
 |---|---|---|
-| The Gate 3 board | {BOARD_URL} | Panel 1, what you decide; panel 2, the Phase 4 proposal by channel; panel 3, each of board 3's answers before and after at true size, with Rule 15.4's failure plate; panel 4, the label clearance list; then the scores, page weight, and Tested and Not tested |
+| The Gate 3 board | https://claude.ai/artifact/5Q9nwPxdupLEBN7S1QyYDi | Panel 1, what you decide; panel 2, the Phase 4 proposal by channel; panel 3, each of board 3's answers before and after at true size, with Rule 15.4's failure plate; panel 4, the label clearance list; then the scores, page weight, and Tested and Not tested |
 | The chapters page, version 14 | https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF | Chapter 14's "Choose a chart" and any entry's foot, where its related rules now print as links; Rules 15.20 and 14.144 without the keyline; Rule 15.12's words; the masthead on a phone 360 to 372 px wide |
 | Board 3, as you answered it | https://claude.ai/artifact/DTyFuqgpUj4FybK7JdyaEb | The record of DR-291's 24 replies |
 | Board 2 | https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2 | The record of rounds 1 to 3's 114 forms |
@@ -146,7 +146,7 @@ Gate 2's section 9 set ten checks for Gate 3. Each result below was read from it
 
 ## 5. Decisions made
 
-You made 67 decisions in Phase 3, DR-233 to DR-299, and the studio logged {D3_COUNT} routine calls. The ones that shaped the chapters:
+You made 67 decisions in Phase 3, DR-233 to DR-299, and the studio logged 2,385 routine calls. The ones that shaped the chapters:
 
 | Decisions | What they settled |
 |---|---|
@@ -179,7 +179,7 @@ The deferred fixes register (`work/ledger/20261116_Deferred-Fixes-Register.md`) 
 - The label clearance check as a list over all 96 specs and 43,897 drawings: no chart it would move (DR-295).
 - Every text change from version 13 to version 14, read by script by the main session: 632 lines added and 127 removed, all the apply pass's, and no em dash (D3-2378).
 - The live version 13 against its committed file before the republish: equal but for the host's wrapper (D3-2378).
-- The Gate 3 board's check, on the page and on a copy wrapped as the host wraps it: {BOARD_CHECK}.
+- The Gate 3 board's check, on the page and on a copy wrapped as the host wraps it: `--check --strict` exit 0 with 0 warnings; the wrapped copy passes at 1440, 390 and 360 px, and the page alone fails only html-has-lang, which the host sets (D3-2383).
 
 ### Not tested
 
@@ -350,7 +350,7 @@ Rule 05.7 keeps its words: its keyline belongs to a chart's named point, such as
 - `work/ledger/20261120_Gate-3-Report.md` (this report)
 
 **Modified**
-- `work/ledger/`: the decision log (D3-2311 to {D3_LAST}, DR-293 to DR-299), the change ledger (C-140 to C-148), the deferred fixes register (chat 9's section)
+- `work/ledger/`: the decision log (D3-2311 to 2385, DR-293 to DR-299), the change ledger (C-140 to C-148), the deferred fixes register (chat 9's section)
 - `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (row 46); `work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md` ("Apply pass rescore")
 - Generators: `work/build/scripts/phase-2/` `apply_systems_ch11.py`, `guide_build.py`, `guide_check.js`, `guide_editor_ch01.py`, `stage_a_identity_chapters.py`, `stage_c_ch18_anatomy_build.py`; `work/build/scripts/phase-3/` `data_round0_build.py`, `palette_spec_build.py`, `phase3_ch13_build.py`, `phase3_ch14_build.py`, `phase3_ch14_complex_build.py`, `phase3_ch14_rules_build.py`, `phase3_ch15_build.py`, `selection_guide_build.py`
 - The chart kit: `oa-chart.mjs`, `forms/fan-chart.js`, and the specs of S41, S42, S53, S59, S67, S71, S89, S91 and S94

@@ -7121,3 +7121,20 @@ The main session posted the apply pass plan with seven questions (Q9-1 to Q9-7).
 | D3-2376 | The creative director confirms the Gate 3 board from the 23:31 rebuild: 4 on all six criteria, evidence honesty up from 3, ready to ship; G3-M5, G3-S13 and G3-S14 fixed. G3-S15 (P4-5's default opened a sentence with a lowercase phrase where the board writes Q-04 in words) is fixed in the report by a sentence with no code | `work/handoffs/phase-3/20261120_CD-Review-Of-Gate-3-Board.md`; `20261120_Gate-3-Board-CD-Scores.json` |
 | D3-2377 | The quick check with photographs passes on version 14 (23:05 to 23:39 UTC, on a copy of the 22:21 build, a quiet machine): 1440 and 390 px, 369 rules, 735 specimens, 4,130 same-page links, 0 failures; 152 key path walks and 834 steps; the selection guide's 127 form links, 6 road links, 17 skip links and 16 questions; the palette plate's 51 swatches at 6.0.0-gate3.3. With D3-2356, both closing checks pass on the final build; its results file is kept beside version 14 | DR-288's model |
 | D3-2378 | The chapters page is republished privately as version 14 (version id 1795217990-e778) at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF from `work/boards/phase-3/gate-3/20261120_Guide-Preview-V14.html` (the 22:21 build of commit 40cae05a, 12,210,634 bytes, SHA-256 `2fe7618c…`), keeping contract 0.2.96 and `downloads`. Before it, the live version 13 (1795204373-def0) was found equal to the committed V13 file but for the host's wrapper, and the main session had read every text change from version 13 to 14 by script (632 lines added, 127 removed, all the apply pass's; no em dash); version 13 stays in its history | DR-293; both closing checks pass on this build (D3-2356, D3-2377) |
+
+### Board builder, Gate 3 board, fix round
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2379 | Panel 5 keeps this board's score waiting until the scores file carries a rescore (`rescored_utc` or `rescore_basis`, as board 3's file does) | The main session's word: the slot stays waiting until the rescore |
+| D3-2380 | Item 4's swatch ratios are the palette plate's own printed figures, read from version 14, with WCAG's formula as a check | The board prints what the guide prints; a recomputed figure could round another way |
+| D3-2381 | Text crops are trimmed to the matched block and padded with 16 px of that block's own ground, from the photographs in scratch | G3-S12 asks for a line's boundary with ground on every side, and no browser could open; the pad repeats the block's ground color and adds no other content |
+| D3-2382 | Bare codes a quoted sentence uses as a noun take words from the content file (`code_words`: Q-04) | Board 1's stripper writes "a logged decision" for any bare code, which misnames an open question |
+
+### Main session, chat 9 close
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-2383 | The Gate 3 board's final run passes `--reuse --check --strict` (exit 0, 0 warnings; the host-wrapped copy passes at 1440, 390 and 360 px; the page alone fails only html-has-lang, which the host sets). Before publishing, the main session's own read: the title, no script or document tags, no em dash, every one of 48 pictures referenced with its alt, size and lazy loading, outside hosts only Google Fonts and links to the chapters page, item 6's words and P4-5 as the report prints them, and a contact sheet of all 48 pictures | V8 and V13: read every file before publishing it |
+| D3-2384 | The Gate 3 board is published privately at https://claude.ai/artifact/5Q9nwPxdupLEBN7S1QyYDi (version 1, version id 1795218086-9da2) from `work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html` (153,526 bytes) with its 48 pictures in one publish (folder 52 files, 1,021,553 bytes) | DR-293; the creative director's confirmation at 4 on all six (D3-2376) |
+| D3-2385 | Chat 9 hands off with handoff V29 and stops at Gate 3; work tracker row `c08b` set done with the Gate 3 report and board published, and its Phase 4 rows wait for Dustin's Gate 3 answer before they are rewritten to the report's seven chats | CLAUDE.md gate rule 1: Phase 4 starts only after Dustin approves Gate 3 in the conversation |
