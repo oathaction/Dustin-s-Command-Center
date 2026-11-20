@@ -1642,24 +1642,25 @@
      "question_for_dustin": true,
      "id": "red-target-keyline",
      "title": "The red target’s keyline: two things you settled disagree",
-     "answer": "Two things you settled point different ways, so only you can choose. Rule 05.5 gives a red mark that carries meaning on Newsprint a 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 against Newsprint. The atlas visual system you chose draws its red target with no keyline. Rules 15.20 and 14.144 now draw the keyline; Rules 15.11, 15.12 and 15.16 do not.",
+     "answer": "Two things you settled point different ways, so only you can choose. Rule 05.5 gives a red mark that carries meaning on Newsprint a 1 px Charcoal keyline, since Pillar Red measures 2.96 to 1 against Newsprint. The atlas visual system you chose draws its red target with no keyline. Rules 15.20 and 14.144 now draw the keyline; Rules 15.11, 15.12 and 15.16 do not. The accessibility lead finds that without the keyline Rules 15.11, 15.16, 15.20 and 14.144 still meet the web accessibility standard, WCAG 2.2 AA, because each names every red target in words beside the drawing, and that Rule 15.12 falls short, because its words never name its one red variable, “Availability of local reporting”.",
      "what_changed": "The fix pass gave the chooser plates, Rules 15.20 and 14.144, a 1 px keyline inside a chosen pill’s red ring and a 1 px ink edge on the red arrowhead. Rules 15.11, 15.12 and 15.16, approved at board 2, keep the atlas’s red target with no keyline. Today one red target has two looks. In grayscale or one-ink print, Rule 15.11 today turns its red targets a mid gray, lighter than the black outline of the pill beside them, so the targets read weakest; with the keyline they read strongest.",
      "why": "Rule 05.5, in chapter 05, and the atlas visual system’s red target are both on your settled list, and on these five plates they cannot both hold.",
-     "recommendation": "Keep the atlas’s red target as you settled it. The keyline and the arrowhead’s ink edge come off Rules 15.20 and 14.144, so the red target has one look again. The cost: on Newsprint the red ring stays at 2.96 to 1 on all five plates, under the 3 to 1 that Rule 05.5 and the web accessibility standard (WCAG 2.2, 1.4.11) ask of a mark a reader needs. A keyline on every red target would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it needs your own word: reply “Keyline everywhere”.",
+     "recommendation": "Keep the atlas’s red target as you settled it. The keyline and the arrowhead’s ink edge come off Rules 15.20 and 14.144, so the red target has one look again, and Rule 15.12, which you approved at board 2, names its red variable, “Availability of local reporting”, in the plate’s own words once you answer. All five plates then meet WCAG 2.2 AA with no change to the settled mark. The cost: the five plates go without Rule 05.5’s keyline, so in grayscale their red targets read weakest. A keyline on every red target would meet Rule 05.5 and keep the red, the ring and the pill as the atlas draws them, but it changes a settled mark, so it needs your own word: reply “Keyline everywhere”.",
      "settled": {
       "touches": [
        "Rule 05.5’s keyline on a red mark on Newsprint, in chapter 05, approved at Gate 2",
        "Rule 12.5’s red target, a mark of the atlas visual system you settled",
-       "Rules 15.11, 15.12 and 15.16, approved at board 2"
+       "Rules 15.11, 15.12 and 15.16, approved at board 2, and the words of Rule 15.12’s plate"
       ],
-      "respects": "The recommendation changes nothing you settled: it returns Rules 15.20 and 14.144 to the atlas’s drawing. A keyline on every red target happens only on your named reply."
+      "respects": "The recommendation changes nothing you settled: it returns Rules 15.20 and 14.144 to the atlas’s drawing and adds words to Rule 15.12’s plate, leaving its marks as drawn. A keyline on every red target happens only on your named reply."
      },
      "refs": [
       "D3-2140",
       "CR-S1",
       "DR-36",
       "D3-2284",
-      "AX-S5"
+      "AX-S5",
+      "D3-2301"
      ],
      "pictures": [
       {
@@ -4414,7 +4415,7 @@
    "panel": "held",
    "id": "red-target-keyline",
    "line": "The red target’s keyline, where two things you settled disagree.",
-   "recommendation": "Keep the atlas’s red target as you settled it: the keyline and the arrowhead’s edge come off Rules 15.20 and 14.144, and the red stays under 3 to 1 on Newsprint. For a keyline on every red target, reply “Keyline everywhere”.",
+   "recommendation": "Keep the atlas’s red target as you settled it: the keyline and the arrowhead’s edge come off Rules 15.20 and 14.144, and Rule 15.12 names its red variable in words, so all five plates meet WCAG 2.2 AA. For a keyline on every red target, reply “Keyline everywhere”.",
    "item": "red-target-keyline"
   },
   {
@@ -4532,5 +4533,5 @@
   "pictures_open": 315
  },
  "words_edited_by": "editor",
- "words_edited_utc": "2026-11-20T18:36:26Z"
+ "words_edited_utc": "2026-11-20T18:38:30Z"
 }

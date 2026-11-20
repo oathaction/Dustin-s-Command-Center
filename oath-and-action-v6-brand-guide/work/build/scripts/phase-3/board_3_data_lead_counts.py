@@ -199,7 +199,7 @@ def dr_229(log):
         row["passes"] = True if row["test"] == "Passes" else False if row["test"] == "Fails" else None
         out.append(row)
     return {
-        "test": "A form keeps election data only where the coverage plan writes its use as an election question",
+        "test": "A form keeps election data only where the coverage plan writes its use as an election question.",
         "refs": ["DR-229", "D3-689"],
         "examples": out, "count": len(out),
         "election_domain": sum(1 for x in out if x["domain"] == "D02"),
