@@ -43,11 +43,11 @@ Reply 5's sixteen example lines and reply 21's sticky drawing wait in the deferr
 
 **Sign-off and rescore.** The data lead signed all 20 items in two batches and sent none back (D3-2322). The accessibility lead checked the headings, the masthead and chapter 11's tables in Chromium's accessibility tree (all three confirmed, with no fault found; one row for the finishing pass, D3-2326). The creative director rescored the 14 items the pass touched, and every one scores 4 or more on all six criteria with no Must or Should; across Phase 3, all 33 items now stand at 4 or more (section 3).
 
-**The closing checks.** {CLOSING_CHECKS}
+**The closing checks.** Version 14 is the strict build of commit 40cae05a: exit 0, 0 warnings, 12,210,634 bytes. On its tree the kit builds 96 of 96, chapter 14's check reads 99 of 99 current, chapter 15's is current, the data check finds 126 tables with 0 faults, and the V7 check 0 failures (D3-2355). The four-width check passes at 1440, 1024, 390 and 360 px with 0 failures (D3-2356), and the quick check with photographs at 1440 and 390 px with 0 failures (D3-2377). The guide check's self-test catches all 154 planted faults and stays quiet on 48 allowed cases (D3-2321). The chapters page went up as version 14 after both checks passed (D3-2378).
 
 ### Who did each step
 
-Each studio agent ran as a subagent of the main session, briefed to read and adopt its role file in `.claude/agents/`. Phase 3 ran in nine chats; this gate's chat ran {AGENT_COUNT} agents and {RESUME_COUNT} resumed runs. The main session did the steps marked "Main session" itself, with no separate agent.
+Each studio agent ran as a subagent of the main session, briefed to read and adopt its role file in `.claude/agents/`. Phase 3 ran in nine chats; this gate's chat ran seven agents and eight resumed runs. The main session did the steps marked "Main session" itself, with no separate agent.
 
 | Step | Who ran it | Output |
 |---|---|---|
@@ -60,7 +60,7 @@ Each studio agent ran as a subagent of the main session, briefed to read and ado
 | The headings, the masthead and chapter 11's tables in the accessibility tree | UX and accessibility lead | `20261120_Apply-Pass-Accessibility-Notes.md` |
 | The rescore of the changed items | Creative director | `20261120_Apply-Pass-CD-Rescores.json`; "Apply pass rescore" in `20261116_CD-Review-Of-Rounds-4-5.md` |
 | The guide check's self-test, the strict build, the four-width check, the quick check with photographs, the kit, data and V7 checks | Main session | Section 4 |
-| Version 14 published | Main session | {V14_DECISION} |
+| Version 14 published | Main session | D3-2378 |
 | The Gate 3 board, built by script | Board builder (the design director building a review board) | `work/boards/phase-3/gate-3/board/20261120_Gate-3-Board.html` |
 | The board's score | Creative director | `20261120_Gate-3-Board-CD-Scores.json` |
 | The deferred fixes register's chat 9 section, the change ledger, this report and its Phase 4 proposal | Main session | `work/ledger/` |
@@ -119,7 +119,7 @@ Master Brief section 6 sets the ship threshold at 4 on each of six criteria: Cr 
 | Chapter 14 whole, at 144 rules | Rounds 4 and 5 | 4 | 4 | 5 | 5 | 5 | 4 | This gate’s rescore |
 | This pass’s changes to Gate 2 chapters (01, 04, 08, 18 and the masthead) | Gate 2 | 4 | 4 | 5 | 4 | 5 | 4 | This gate’s rescore |
 
-The boards were scored as pages: board 2 at 4 on all six after one fix round (first read 3 on craft, clarity, usefulness and evidence honesty), board 3 at 4 on all six after one fix round (first read 3 on evidence honesty), and the Gate 3 board {GATE_BOARD_SCORE}.
+The boards were scored as pages: board 2 at 4 on all six after one fix round (first read 3 on craft, clarity, usefulness and evidence honesty), board 3 at 4 on all six after one fix round (first read 3 on evidence honesty), and the Gate 3 board at 4 on all six after one fix round and a confirmation (first read 3 on brand fidelity and evidence honesty, with four Musts; the rescore found one more Must, fixed in this report; D3-2371, D3-2374, D3-2376).
 
 What the creative director asks you to weigh, from this gate's rescore (`work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md`, "Apply pass rescore"):
 
@@ -138,7 +138,7 @@ Gate 2's section 9 set ten checks for Gate 3. Each result below was read from it
 | Grayscale captures of every specimen at 1440 and 390 px, each key tested | Every key, at each board | Shown for every specimen on boards 1, 2 and 3 as built. This gate's pass moved no mark, ink or key (D3-2322), so no specimen needed a new proof |
 | The three complex examples: both widths, a Tab walk, reading order, the controls, each export against its data | Every stop named and visible, every export matching | Met in round 5 and the review (the accessibility lead's named place 7, November 16), and again after the second pass (D3-2287) |
 | A text or table equivalent for every specimen | The build fails any specimen without one | The strict build passes: exit 0, 0 warnings, 369 rules, 679 specimens, 101 image stages hidden and 315 open |
-| The guide check at four widths with axe-core, and the chart check | 0 failures | {FOUR_WIDTH} |
+| The guide check at four widths with axe-core, and the chart check | 0 failures | The four-width check on version 14 (22:27 to 23:04 UTC, `--no-captures`): 1440, 1024, 390 and 360 px, 369 rules, 735 specimens, 4,130 same-page links, 0 failures (D3-2356). The quick check with photographs at 1440 and 390 px: 0 failures (D3-2377). The kit's chart check: 96 of 96 |
 | The chart rules of DR-64, and Rule 01.9's spread | 0 failures; no domain over one in four, no state over one in five | The kit checks DR-64 on every spec, 96 of 96. Chapter 14 holds 112 examples: the largest topic, taxes, wealth and economic security, supplies 16 against a limit of 28, and no state more than 5 against 22. 18 of the 112 draw election or voting data, and every new form that keeps it passes DR-229's test |
 | Page weight | Chapter 14 under its figure; the projection under 15.5 MB | The page 12,210,634 bytes; the build's projection 15,180,545 of 15,500,000, with each Phase 4 chapter at 362,857 bytes; with section 9's allocations, 15,650,545, under 16 MB and past the 15.5 MB line. Chapter 14 with the kit weighs 2,855,909 bytes against its 2,803,941 figure, reported under DR-271, which made the page's 16 MB the one fixed limit |
 | Dark mode, long labels, 200 percent text, 320 px reflow, reduced motion, forced colors and print, in emulation | No lost content | Met in the review (November 16) for rounds 4 and 5, and in each round's accessibility check before it. Three phrases still pass their card at 320 px with 200 percent text, and two long words break inside the word in "Where to start"; no word covers another, and all sit in the register |
@@ -168,7 +168,18 @@ The deferred fixes register (`work/ledger/20261116_Deferred-Fixes-Register.md`) 
 
 ### Tested
 
-{TESTED}
+- The strict build of version 14 (commit 40cae05a): exit 0, 0 warnings, 12,210,634 bytes, 369 rules, 679 specimens, 101 image stages hidden and 315 open (D3-2355).
+- The four-width guide check with axe-core at 1440, 1024, 390 and 360 px, without photographs: 0 failures, 735 specimens, 4,130 same-page links, 152 key path walks and 834 steps, the selection guide's 127 form links and 16 questions, the palette plate's 51 swatches, the token table's 545 rows, fonts loaded with the network shut (D3-2356).
+- The quick check with photographs at 1440 and 390 px: 0 failures (D3-2377).
+- The guide check's self-test: 154 planted faults caught, 48 allowed cases quiet (D3-2321).
+- The chart kit, `build --all --no-png`: 96 of 96; the 364 exported footers against their source lines, read by the data lead (D3-2322).
+- `phase3_ch14_build.py --check` 99 of 99; chapter 15's generator current; the data check, 126 tables and 0 faults; the V7 check, 0 failures (D3-2355).
+- Chromium's accessibility tree: the 36 new headings in order with one h1 and no skipped level; the masthead at 360, 372, 375 and 390 px with scripts on and off, and 270 key presses on 18 links with focus clear of it; chapter 11's four tables named by their captions (D3-2326).
+- The data lead's scripts: every read-aloud line against the atlas's signs, every palette figure recomputed from its hex, Rule 15.22's note against its sources, and Rule 15.4's failure plate byte for byte against board 2's drawing (D3-2322).
+- The label clearance check as a list over all 96 specs and 43,897 drawings: no chart it would move (DR-295).
+- Every text change from version 13 to version 14, read by script by the main session: 632 lines added and 127 removed, all the apply pass's, and no em dash (D3-2378).
+- The live version 13 against its committed file before the republish: equal but for the host's wrapper (D3-2378).
+- The Gate 3 board's check, on the page and on a copy wrapped as the host wraps it: {BOARD_CHECK}.
 
 ### Not tested
 
@@ -333,9 +344,17 @@ Rule 05.7 keeps its words: its keyline belongs to a chart's named point, such as
 ### This chat (chat 9)
 
 **Created**
-{CREATED}
+- `work/handoffs/phase-3/`: `20261120_Board-3-Apply-Brief.md`, `20261120_Gate-3-Board-Brief.md`, `20261120_Apply-Pass-Editor-Notes.md`, `20261120_Apply-Pass-Engineer-Notes.md`, `20261120_Apply-Pass-Data-Lead-Notes.md`, `20261120_Apply-Pass-Accessibility-Notes.md`, `20261120_Apply-Pass-CD-Rescores.json`, `20261120_Label-Clearance-List.json`, `20261120_Gate-3-Board-Builder-Notes.md`, `20261120_CD-Review-Of-Gate-3-Board.md`, `20261120_Gate-3-Board-CD-Scores.json`, `20261120_Next-Session-Handoff_V29.md`
+- `work/boards/phase-3/gate-3/`: `20261120_Guide-Preview-V14.html` with its build report, four-width results and quick check results; `board/` with `20261120_Gate-3-Board.html`, its content, figures and check results files, and 48 pictures in `img/`
+- `work/build/scripts/phase-3/`: `gate_3_scores.py`, `gate_3_board_build.py`, `gate_3_board_render.js`
+- `work/ledger/20261120_Gate-3-Report.md` (this report)
 
 **Modified**
-{MODIFIED}
+- `work/ledger/`: the decision log (D3-2311 to {D3_LAST}, DR-293 to DR-299), the change ledger (C-140 to C-148), the deferred fixes register (chat 9's section)
+- `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (row 46); `work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md` ("Apply pass rescore")
+- Generators: `work/build/scripts/phase-2/` `apply_systems_ch11.py`, `guide_build.py`, `guide_check.js`, `guide_editor_ch01.py`, `stage_a_identity_chapters.py`, `stage_c_ch18_anatomy_build.py`; `work/build/scripts/phase-3/` `data_round0_build.py`, `palette_spec_build.py`, `phase3_ch13_build.py`, `phase3_ch14_build.py`, `phase3_ch14_complex_build.py`, `phase3_ch14_rules_build.py`, `phase3_ch15_build.py`, `selection_guide_build.py`
+- The chart kit: `oa-chart.mjs`, `forms/fan-chart.js`, and the specs of S41, S42, S53, S59, S67, S71, S89, S91 and S94
+- The guide's sources and outputs: five chapter files in `work/build/guide/chapters/`, two entries, 37 specimens, `work/build/guide/code/c-18-id-chip.css`, `work/build/guide/shell/guide-shell.css`; two sidecars in `work/build/data/`
+- Outside the repository: the chapters page at its address as version 14; the Gate 3 board, new; the work tracker's row `c08b`
 
 All commits are on `claude/friendly-brahmagupta-tonmfa`, pushed. `source/` and `deliverables/` are unchanged.

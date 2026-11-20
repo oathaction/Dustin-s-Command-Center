@@ -637,7 +637,7 @@
  "images": 48,
  "image_bytes": 791474,
  "folder_files": 52,
- "folder_bytes": 1021110,
+ "folder_bytes": 1021553,
  "largest_image": [
   49366,
   "20261120_Pic-k7.webp"
@@ -782,8 +782,37 @@
   "rule-15-4",
   "rule-18-24"
  ],
- "notes": [],
+ "notes": [
+  "23:39:38 UTC the board check: OK to open one (browsers running: 0, load: 0.64)",
+  "23:40:17 UTC the wrapped board check: OK to open one (browsers running: 0, load: 0.42)"
+ ],
  "warnings": [],
  "seconds": 1,
- "words": 9376
+ "words": 9376,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/gate-3/board/20261120_Gate-3-Board-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/c09/builder/publish-view/20261120_Gate-3-Board-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ },
+ "fails": []
 }
