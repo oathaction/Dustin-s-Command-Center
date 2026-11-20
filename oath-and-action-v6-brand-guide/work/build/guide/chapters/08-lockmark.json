@@ -119,7 +119,7 @@
     },
     {
      "label": "Footer",
-     "value": "24 px, then 12 px of space and the tagline, on one line at the footer’s left edge, at the foot of a page, an email or a letter; 16 px at the right end of a chart’s source line. L6, the strip that closes a report, carries it at L6’s own proportion (Rule 03.2), and a page narrower than L6’s 884 px closes with this footer"
+     "value": "24 px, then 12 px of space and the tagline, on one line at the footer’s left edge, at the foot of a page, an email or a letter; 16 px at the right end of the source line on a chart exported alone. L6, the strip that closes a report, carries it at L6’s own proportion (Rule 03.2), and a page narrower than L6’s 884 px closes with this footer"
     },
     {
      "label": "Sign-off",

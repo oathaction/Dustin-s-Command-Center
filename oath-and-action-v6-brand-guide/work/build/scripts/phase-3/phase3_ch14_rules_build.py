@@ -918,12 +918,14 @@ def rule_14_6(B):
          "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on "
          "Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s "
          "plate, keeps the light fill with its label.",
-         # round 3, the data lead's principles 1 and 2 (diagrams answer with their path, maps with their pattern)
+         # round 3, the data lead's principles 1 and 2 (diagrams answer with their path, maps with their pattern). Board 3, reply 14:
+        # "the text’s ink at the subject weight" in place of "Charcoal at the subject weight", here and in the specs, since on a
+        # Charcoal ground the text's ink is light (DF-5's fault); the tokens stay
          "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the "
-         "reader’s question follows takes Charcoal at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s "
+         "reader’s question follows takes the text’s ink at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s "
          "diagram. A map gives the red only to a place "
          "its title names as a point, such as the town on Rule 14.118’s locator.",
-         "The named mark gives up the red and takes Charcoal at the subject weight when an error or a step the reader can take holds the "
+         "The named mark gives up the red and takes the text’s ink at the subject weight when an error or a step the reader can take holds the "
          "red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, "
          "01.2 and 14.7).",
          # RF-1 (D3-890, BC M1, CD A-M2): Rule 05.1's share, stated once here; RF-17's two findings live in their row and the why
@@ -935,17 +937,17 @@ def rule_14_6(B):
         [("The point", "Pillar Red with a 1 px Charcoal keyline (Rule 05.5)", "oa.chart.color.point.onNewsprint"),
          ("Its label", "Beside the mark, in the text’s ink"),
          ("Marks named together", "Share the red, as the bars of one age band do"),
-         ("A chart of one mark", "One line, bar or path, with no other mark to set it apart from, in Charcoal at the subject weight, the "
+         ("A chart of one mark", "One line, bar or path, with no other mark to set it apart from, in the text’s ink at the subject weight, the "
                                  "title’s value labeled", "oa.chart.color.subject.onNewsprint"),
-         ("A diagram’s path", "The path the question follows in Charcoal at the subject weight and the branches it leaves in the context "
+         ("A diagram’s path", "The path the question follows in the text’s ink at the subject weight and the branches it leaves in the context "
                               "ink; where the reader’s own case picks the path, as in a decision tree, every branch in one ink; no red",
           "oa.chart.color.subject.onNewsprint"),
          ("A comparison", "The light fill, with its label", "oa.chart.color.lightFill.onNewsprint"),
-         ("An error, a step or a sign", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
+         ("An error, a step or a sign", "The text’s ink at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
          ("A party tie", "A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a "
-                         "candidate, or a policy readers link to one party: Charcoal at the subject weight, with the label",
+                         "candidate, or a policy readers link to one party: the text’s ink at the subject weight, with the label",
           "oa.chart.color.subject.onNewsprint"),
-         ("Two findings", "Both in Charcoal at the subject weight, each with its label"),
+         ("Two findings", "Both in the text’s ink at the subject weight, each with its label"),
          ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1): a part of a treemap, pie, donut or "
                                                             "funnel, a region on a map, a node (a box or dot where a diagram’s "
                                                             "links meet), a cell of a matrix, or a line or band whose width carries "

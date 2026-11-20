@@ -8,7 +8,7 @@
   "reader_question": "Which of the eleven routes can carry a reform, and what does each one take?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the Constitution, statutes and official pages behind each route, read on November 11 and 12, 2026; route names and our count of reforms from the atlas, as of October 15, 2026",
+  "grade_line": "Documented: the Constitution, statutes and official pages behind each route, retrieved on November 11 and 12, 2026; route names and our count of reforms from the atlas, as of October 15, 2026",
   "title": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
   "measure_line": "The eleven routes to change in our systems atlas, with what the Constitution, statutes and official pages require of each and how many of the atlas’s reform profiles list each route",
   "notes": [
@@ -20,7 +20,7 @@
   "illustrative": false,
   "alt": "A grid of the eleven routes to change in our systems atlas, each with who acts, what it takes, how it can be undone and how many of the atlas’s reform profiles list it. A federal statute takes a majority of each chamber, 60 senators to end debate on most bills and the President’s signature, and 38 reforms list it. Twenty-nine reforms list a state statute, 15 the local route and 11 a state ballot measure. Seven reforms list executive action and seven court doctrine, six a chamber rule or confirmation, five enforcement and litigation, four civil society, three an amendment under Article V and one an interstate compact.",
   "table": {
-    "caption": "The atlas’s eleven routes to change, with what the official texts require of each and the date they were read",
+    "caption": "The atlas’s eleven routes to change, with what the official texts require of each and the date they were retrieved",
     "columns": [
       {
         "field": "name",
@@ -60,13 +60,13 @@
       },
       {
         "field": "date_read_words",
-        "label": "Read",
+        "label": "Retrieved",
         "format": "text"
       }
     ]
   },
   "chart_notes": [
-    "Each row is one route. The bar gives how many of the atlas’s reform profiles list the route. Under what each route takes sit the texts it rests on and the date they were read."
+    "Each row is one route. The bar gives how many of the atlas’s reform profiles list the route. Under what each route takes sit the texts it rests on and the date they were retrieved."
   ],
   "phone": "differs",
   "phone_note": "Where a column of words would fall under 96 px, each route runs as a block down the page: its name and count, then each column’s name over its words.",
@@ -93,7 +93,7 @@
         "field": "what_it_takes",
         "label": "What it takes",
         "share": 1.75,
-        "under_words": "{sources}; read {date_read_words}"
+        "under_words": "{sources}; retrieved {date_read_words}"
       },
       {
         "field": "how_it_can_be_undone",

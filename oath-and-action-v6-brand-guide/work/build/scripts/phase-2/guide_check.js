@@ -8,10 +8,13 @@
 //                                                                the test catches it (results default to the Gate 2 board folder)
 //
 // Widths: 1440, 1024, 390 and 360 px (--quick: 1440 and 390). At every width it checks:
-//   structure  exactly one h1; no skipped heading level; no heading inside a specimen; every h3 in a chapter is a rule
-//              h3 or one of the closers (Specifications, Related chapters, For builders); every rule h3 starts with
+//   structure  exactly one h1; no skipped heading level; no heading inside a specimen but the one plate in HEADING_PLATES
+//              (chapter 14's "Choose a chart", board 3's reply 8, whose headings join the order test); every h3 in a chapter
+//              is a rule h3, one of the closers (Specifications, Related chapters, For builders), a group head in its group
+//              block (.rule-group > h3.rg-head) or that plate's label (h3.plate-label); every rule h3 starts with
 //              "Rule NN.n", NN is its chapter's number, and its rule block carries id="rule-NN-n" (map sections 4 and 5)
-//   anchors    unique ids; every same-page link lands on an id; every Related chapters link lands on a chapter; V5 aliases
+//   anchors    unique ids; every same-page link lands on an id; every Related chapters link lands on a chapter, and
+//              every Related rules link (.rel-rules, board 3's reply 22) on a rule's block; V5 aliases
 //              (#grid and the rest) sit inside their new chapter when that chapter is in the page
 //   specimens  every plate stage named by its alt (15 characters or more) or described when interactive; no pending
 //              specimen; every <img> has alt; every inline <svg> is named or hidden
@@ -155,6 +158,9 @@ const LOCKED = [
 const ALIASES = [['grid', 'lockmark'], ['topic-icons', 'symbols'], ['data', 'data-visualization'], ['motion', 'motion-and-states'],
   ['atlas-system', 'systems-graphics'], ['in-use', 'part-applications']];
 const CLOSERS = ['Specifications', 'Related chapters', 'For builders'];
+// Board 3, reply 8 (RP-14, A3): the one plate allowed headings: its label is an h3 and its question lines h4s. A heading
+// in any other specimen still fails (specimenHeadings). guide_build.py holds the same plate (HEADING_PLATES).
+const HEADING_PLATES = ['s-14-selection-guide'];
 // D2-254: fixed artboards up to 600 px take each style's phone floor; from 1,200 px its desktop ceiling.
 const SCALE_FLOOR = [56, 44, 48, 26, 20, 24, 19, 17, 15, 14, 13];
 const SCALE_CEIL = [110, 80, 104, 32, 24, 22, 19, 17, 15, 14, 13];
@@ -196,7 +202,7 @@ const RETIRED_CLASSES = ['oai-grid', 'oai-lg', 'oai-st', 'oai-gl', 'oai-gl-d', '
 
 // ------------------------------------------------------------------------------------------------ in-page audit
 function audit(page) {
-  return page.evaluate(({ RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS, RETIRED_WORDS, RETIRED_CLASSES }) => {
+  return page.evaluate(({ RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, HEADING_PLATES, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS, RETIRED_WORDS, RETIRED_CLASSES }) => {
     const parse = (c) => { const m = c && c.match(/rgba?\(([^)]+)\)/); if (!m) return null; const p = m[1].split(',').map(parseFloat); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; };
     const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
     const lum = (c) => 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
@@ -214,8 +220,10 @@ function audit(page) {
     const out = {};
 
     // ---------------- structure
+    // board 3, reply 8: a heading inside the one heading plate is a page heading, so it joins the order test
+    const headingPlate = (h) => { const sp = h.closest('[data-specimen]'); return !!sp && HEADING_PLATES.includes(sp.getAttribute('data-specimen')); };
     const hs = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6,[role="heading"]')]
-      .filter((h) => !h.closest('dialog:not([open])') && !h.closest('[aria-hidden="true"]') && !h.closest('[data-specimen]') && visible(h));
+      .filter((h) => !h.closest('dialog:not([open])') && !h.closest('[aria-hidden="true"]') && (!h.closest('[data-specimen]') || headingPlate(h)) && visible(h));
     const lvl = (h) => h.getAttribute('role') === 'heading' ? parseInt(h.getAttribute('aria-level') || '2', 10) : parseInt(h.tagName[1], 10);
     const st = { headings: hs.length, h1: hs.filter((h) => lvl(h) === 1).map((h) => norm(h.textContent)), skips: [], inSpecimen: [], badH3: [], ruleIds: [], ruleAnchors: [], rulesWithoutH3: [], rules: 0 };
     let prev = 0;
@@ -225,7 +233,7 @@ function audit(page) {
       else if (i > 0 && l > prev + 1) st.skips.push({ text: norm(h.textContent).slice(0, 50), from: prev, to: l });
       prev = l;
     });
-    document.querySelectorAll('[data-specimen] :is(h1,h2,h3,h4,h5,h6,[role="heading"])').forEach((h) => st.inSpecimen.push({ specimen: h.closest('[data-specimen]').getAttribute('data-specimen'), text: norm(h.textContent).slice(0, 40) }));
+    document.querySelectorAll('[data-specimen] :is(h1,h2,h3,h4,h5,h6,[role="heading"])').forEach((h) => { if (!headingPlate(h)) st.inSpecimen.push({ specimen: h.closest('[data-specimen]').getAttribute('data-specimen'), text: norm(h.textContent).slice(0, 40) }); });
     document.querySelectorAll('section.chapter').forEach((sec) => {
       const num = sec.getAttribute('data-chapter');
       sec.querySelectorAll('h3').forEach((h) => {
@@ -245,6 +253,9 @@ function audit(page) {
           if (!c) st.badH3.push({ chapter: num, text: t, problem: 'a closer h3 outside its closer block' });
           return;
         }
+        // board 3, reply 8: a group head printed as a heading, in its own group block, and the heading plate's label
+        if (h.matches('.rg-head') && h.parentElement && h.parentElement.matches('.rule-group[id]')) return;
+        if (h.matches('.plate-label') && HEADING_PLATES.some((id) => h.closest('figure.plate') && h.closest('figure.plate').id === 'fig-' + id)) return;
         if (/^Rule\b/.test(t)) st.ruleIds.push({ chapter: num, text: t.slice(0, 50), problem: 'starts with "Rule" but not with an ID of the form NN.n' });
         else st.badH3.push({ chapter: num, text: t.slice(0, 50), problem: 'an h3 that is neither a rule (Rule NN.n) nor a closer' });
       });
@@ -255,7 +266,7 @@ function audit(page) {
     // ---------------- anchors
     const counts = new Map();
     document.querySelectorAll('[id]').forEach((el) => counts.set(el.id, (counts.get(el.id) || 0) + 1));
-    const an = { ids: counts.size, duplicates: [...counts].filter(([, n]) => n > 1).map(([id, n]) => ({ id, n })).slice(0, 20), links: 0, broken: [], relatedLinks: 0, relatedBad: [], aliases: [] };
+    const an = { ids: counts.size, duplicates: [...counts].filter(([, n]) => n > 1).map(([id, n]) => ({ id, n })).slice(0, 20), links: 0, broken: [], relatedLinks: 0, relatedBad: [], relatedRuleLinks: 0, relatedRuleBad: [], aliases: [] };
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
       const href = a.getAttribute('href'); if (href === '#') return; an.links++;
       if (!document.getElementById(decodeURIComponent(href.slice(1)))) an.broken.push({ href, text: norm(a.textContent).slice(0, 40), where: where(a) });
@@ -264,6 +275,13 @@ function audit(page) {
       an.relatedLinks++;
       const t = document.getElementById(decodeURIComponent((a.getAttribute('href') || '').slice(1)));
       if (!t || !t.matches('section.chapter')) an.relatedBad.push({ href: a.getAttribute('href'), text: norm(a.textContent).slice(0, 40), where: where(a) });
+    });
+    // board 3, reply 22 (A15): a rule's Related rules link lands on the block of the rule its words name
+    document.querySelectorAll('.rel-rules a').forEach((a) => {
+      an.relatedRuleLinks++;
+      const href = a.getAttribute('href') || '', t = document.getElementById(decodeURIComponent(href.slice(1)));
+      const m = norm(a.textContent).match(/^Rule (\d{2})\.(\d{1,3})$/);
+      if (!t || !t.matches('.rule') || !m || t.id !== `rule-${m[1]}-${m[2]}`) an.relatedRuleBad.push({ href, text: norm(a.textContent).slice(0, 40), where: where(a) });
     });
     for (const [alias, target] of ALIASES) {
       const t = document.getElementById(target); if (!t) continue;
@@ -485,7 +503,7 @@ function audit(page) {
           }
         }
       };
-      document.querySelectorAll('p, li, dd, dt, td, th, figcaption, caption, h2, h3, label, legend, blockquote, span').forEach((el) => {
+      document.querySelectorAll('p, li, dd, dt, td, th, figcaption, caption, h2, h3, h4, label, legend, blockquote, span').forEach((el) => {
         if (el.closest('script,style')) return;
         const t = norm(el.textContent); if (t.includes('Rule')) cite(t, where(el), 'text');
       });
@@ -620,7 +638,7 @@ function audit(page) {
     out.height = document.documentElement.scrollHeight;
     out.fonts = [...new Set([...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, '')))];
     return out;
-  }, { RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS, RETIRED_WORDS, RETIRED_CLASSES });
+  }, { RED, PRUSSIAN, LOCKED, ALIASES, CLOSERS, HEADING_PLATES, SCALE_FLOOR, SCALE_CEIL, TYPE_STYLES, CHART_SIZES, CODE_PATTERNS, RETIRED_WORDS, RETIRED_CLASSES });
 }
 
 function failuresFrom(a, width) {
@@ -638,6 +656,7 @@ function failuresFrom(a, width) {
   if (an.duplicates.length) add('duplicateIds', `${an.duplicates.length} duplicate id(s), first: ${JSON.stringify(an.duplicates[0])}`);
   if (an.broken.length) add('brokenLinks', `${an.broken.length} same-page link(s) to no id, first: ${JSON.stringify(an.broken[0])}`);
   if (an.relatedBad.length) add('relatedLinks', `${an.relatedBad.length} Related chapters link(s) that do not land on a chapter, first: ${JSON.stringify(an.relatedBad[0])}`);
+  if (an.relatedRuleBad.length) add('relatedRules', `${an.relatedRuleBad.length} Related rules link(s) that do not land on the rule they name, first: ${JSON.stringify(an.relatedRuleBad[0])}`);
   if (an.aliases.length) add('aliases', `V5 alias problem(s): ${JSON.stringify(an.aliases)}`);
   const sp = a.specimens;
   if (sp.pending.length) add('pendingSpecimens', `${sp.pending.length} specimen file(s) missing: ${sp.pending.slice(0, 6).join(', ')}`);
@@ -2575,9 +2594,21 @@ const PLANTS = [
   { key: 'ruleIds', fault: "a rule h3 whose ID names another chapter", js: () => { document.querySelector('.rule .rid-n').textContent = '09.1'; } },
   { key: 'ruleAnchors', fault: 'a rule block whose id does not match its Rule ID', js: () => { document.querySelector('.rule').id = 'rule-xx'; } },
   { key: 'chapterH3', fault: 'a stray h3 in a chapter', js: () => { const h = document.createElement('h3'); h.textContent = 'Why it works'; document.querySelector('.rule .why').prepend(h); } },
+  // board 3, reply 8 (A3): "Choose a chart" as the one heading plate, its label an h3 over h4 question lines, and a group
+  // head printed as an h3 in its group block, are allowed; a heading in any other plate, a skipped level inside the
+  // heading plate and a group head h3 outside its group block still fail
+  { key: 'specimenHeadings', expect: false, fault: 'h4 question lines inside "Choose a chart", the one heading plate (allowed: must not be flagged)', js: headingPlant('clean') },
+  { key: 'chapterH3', expect: false, fault: 'the heading plate\'s h3 label and a group head h3 in its group block (allowed: must not be flagged)', js: headingPlant('clean') },
+  { key: 'headingOrder', expect: false, fault: 'h2, then the heading plate\'s h3 and h4s, then a group head h3 (allowed: must not be flagged)', js: headingPlant('clean') },
+  { key: 'specimenHeadings', fault: 'an h4 inside a plate other than "Choose a chart"', js: () => { const h = document.createElement('h4'); h.textContent = 'Mockup headline'; document.querySelector('[data-specimen]:not([data-pending])').prepend(h); } },
+  { key: 'headingOrder', fault: 'an h5 straight after "Choose a chart"\'s h3 label, inside the heading plate', js: headingPlant('skip') },
+  { key: 'chapterH3', fault: 'a group head h3 outside its group block', js: headingPlant('looseGroupHead') },
   { key: 'duplicateIds', fault: 'two elements with one id', js: () => { const p = document.createElement('p'); p.id = 'contents'; p.textContent = 'Duplicate'; document.querySelector('.chapter .ch-head').append(p); } },
   { key: 'brokenLinks', fault: 'a same-page link to no id', js: () => { const a = document.createElement('a'); a.href = '#nowhere'; a.textContent = 'Nowhere'; document.querySelector('.rule .why').append(a); } },
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
+  // board 3, reply 22 (A15): a Related rules link lands on the rule it names, and a right one is left alone
+  { key: 'relatedRules', fault: 'a Related rules link that lands on a chapter, not on a rule', js: () => { const w = document.querySelector('.rule .why'), r = w.closest('.rule'), m = r.id.match(/^rule-(\d+)-(\d+)$/); w.insertAdjacentHTML('beforeend', `<ul class="rel-rules"><li><a class="xref" href="#${r.closest('section.chapter').id}">Rule ${m[1]}.${m[2]}</a></li></ul>`); } },
+  { key: 'relatedRules', expect: false, fault: 'a Related rules link that lands on the rule it names (allowed: must not be flagged)', js: () => { const w = document.querySelector('.rule .why'), r = w.closest('.rule'), m = r.id.match(/^rule-(\d+)-(\d+)$/); w.insertAdjacentHTML('beforeend', `<ul class="rel-rules"><li><a class="xref" href="#${r.id}">Rule ${m[1]}.${m[2]}</a></li></ul>`); } },
   { key: 'aliases', fault: 'the #grid alias removed from 08 The lockmark', js: () => { document.getElementById('grid').remove(); } },
   { key: 'specimenAlt', fault: 'a specimen stage with no alt', js: () => { document.querySelector('[data-specimen][role="img"]').removeAttribute('aria-label'); } },
   // call 11 (DR-278 (b), AX-S6, the fix pass after rounds 4 and 5, with the main session's 18:27 ruling): a stage is hidden
@@ -2974,6 +3005,22 @@ function sgPlant(variant) {
     + forms.map((f) => `<div class="rule" id="rule-14-${n(f)}"></div>`).join('')
     + ['14.142', '14.143', '14.144', '15.22'].map((r) => `<div class="rule" id="rule-${r.replace('.', '-')}"></div>`).join('');
   return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
+}
+
+// board 3, reply 8 (A3): chapter 14's "Choose a chart" as the heading plate at the end of the first chapter's head, with
+// its h3 label over h4 question lines, and a group head h3 in a group block before the first rule. 'skip' sets an h5 for
+// the first question line; 'looseGroupHead' puts the group head h3 in a rule's text, outside any group block.
+function headingPlant(variant) {
+  const q = variant === 'skip' ? 'h5' : 'h4';
+  const plate = '<figure class="plate plate--extra" id="fig-s-14-selection-guide"><div class="plate-head"><h3 class="plate-label"><span class="plate-label-t">Choose a chart</span></h3></div>'
+    + '<div class="plate-scroll"><div class="plate-stage" data-specimen="s-14-selection-guide" data-red="specimen" role="group" aria-label="Choose a chart, interactive specimen">'
+    + `<ol role="list"><li><${q} class="sg-qt" id="s-14-sg-q-2">Comparison: which is bigger, and how do they rank?</${q}></li></ol>`
+    + '<div class="sg-full"><h4 class="sg-qt" id="s-14-sg-full-t">Three charts in full</h4></div></div></div></figure>';
+  const head = '<h3 class="rg-head"><span class="rg-n"><span class="rg-w">Group</span> 9</span> <span class="rg-t">A group head, a plant</span></h3>';
+  const group = variant === 'looseGroupHead' ? '' : `<div class="rule-group" id="group-plant-9" data-group="9">${head}</div>`;
+  return new Function(`document.querySelector('.chapter .ch-head').insertAdjacentHTML('beforeend', ${JSON.stringify(plate)});`
+    + `document.querySelector('.chapter .rule').insertAdjacentHTML('beforebegin', ${JSON.stringify(group)});`
+    + (variant === 'looseGroupHead' ? `document.querySelector('.rule .why').insertAdjacentHTML('afterbegin', ${JSON.stringify(head)});` : ''));
 }
 
 // the palette plate's plants: one step of sequential Verdigris in its table and on each ground, from tokens.json

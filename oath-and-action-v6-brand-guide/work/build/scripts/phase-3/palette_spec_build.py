@@ -104,11 +104,17 @@ def dotted(path):
     return ".<wbr>".join(e(x) for x in path.split("."))
 
 
+def floor2(x):
+    """A contrast figure rounded down to two places, so it never rounds up across a bar (6.2)."""
+    return f"{math.floor(x * 100 + 1e-9) / 100:.2f}"
+
+
 def ratio(x):
-    """A contrast ratio rounded down to two places, so it never rounds up across a bar (6.2)."""
+    """A contrast ratio rounded down to two places, with its rounding named beside it (board 3, reply 15): chapter 05 rounds
+    the same measure to the nearest, so Pillar Red reads 4.16 on White paper here and 4.17 there, and both are true."""
     # the accessibility lead's item 6: a ratio holds together ("1.21 to 1" never breaks), and a line may break before the words
     # after it
-    return f"{math.floor(x * 100 + 1e-9) / 100:.2f}\u00a0to\u00a01"
+    return f"{floor2(x)}\u00a0to\u00a01 rounded down"
 
 
 def contrast(a, b):
@@ -540,7 +546,8 @@ def prussian_line():
     need(max(rs) < 3, "a group ink reaches 3 to 1 on Prussian; reread ruling b's Prussian line")
     lo, hi = min(rs), max(rs)
     return (f'<li><span class="ps-lk">On Prussian</span> No chart draws on it. A chart in a Prussian panel sits on its own Newsprint '
-            f'or Charcoal plate, since the four group inks measure {ratio(lo).replace("\u00a0to\u00a01", "")} to {ratio(hi)} on Prussian, under the 3 to 1 a mark '
+            f'or Charcoal plate, since the four group inks measure {floor2(lo)} to {floor2(hi)}\u00a0to\u00a01 on Prussian, both figures '
+            f'rounded down, under the 3 to 1 a mark '
             f'needs, and red never sits on Prussian (Rule 05.3).</li>')
 
 
@@ -674,6 +681,9 @@ def build():
             f'<ul class="ps-lines ps-method" role="list">{prussian_line()}'
             + "".join(f'<li><span class="ps-lk">{e(k)}</span> {e(v)}</li>' for k, v in method) + '</ul></div>')
     body = body.replace("{DEFS}", filters(), 1)
+    # board 3, reply 15: every contrast figure names its rounding beside it
+    bare = re.findall(r"\d\.\d\d\u00a0to\u00a01(?! rounded down| on Prussian, both figures rounded down)", body)
+    need(not bare, f"{len(bare)} contrast figure(s) print without their rounding: {bare[:3]}")
     frag = (f"<!-- {SID}: Oath & Action guide, Edition 06, chapter 14 (R5-3). Written by work/build/scripts/phase-3/palette_spec_build.py "
             f"from tokens {RELEASE}; never edit by hand. -->\n<style>{re.sub(r'[ ]*\\n[ ]*', ' ', STYLE.strip())}</style>\n{body}\n")
     meta = {"alt": ("The four data palettes, step by step, on Newsprint and Charcoal: each step’s token, value and contrast in a table, "

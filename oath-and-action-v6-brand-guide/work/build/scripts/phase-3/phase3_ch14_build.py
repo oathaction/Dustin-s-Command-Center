@@ -176,6 +176,7 @@ def selection_guide_faults(plan, chap):
         def __init__(self):
             super().__init__(convert_charrefs=True)
             self.stack, self.links, self.symbols, self.uses, self.svgs, self.ids, self.bad = [], [], [], [], [], [], []
+            self.heads = []
             self.groups = {}
             self.cur = None
 
@@ -190,7 +191,11 @@ def selection_guide_faults(plan, chap):
             for k in ("fill", "stroke", "color", "stop-color"):
                 if a.get(k) and COLOR_LITERAL.search(a[k]):
                     self.bad.append(f"a literal color {a[k]!r} on <{tag}>")
-            if tag in ("h1", "h2", "h3", "h4", "h5", "h6", "title", "desc"):
+            # board 3, reply 8 (A3): a question line, and the closing block's line, is an h4 of class sg-qt, under the
+            # plate's label that the page prints as an h3; any other heading, and every title or desc, stays a fault
+            if tag == "h4" and a.get("class") == "sg-qt" and str(a.get("id") or "").startswith("s-14-sg-"):
+                self.heads.append(a["id"])
+            elif tag in ("h1", "h2", "h3", "h4", "h5", "h6", "title", "desc"):
                 self.bad.append(f"a <{tag}> element")
             if tag == "symbol":
                 self.symbols.append(a.get("id"))
@@ -286,6 +291,10 @@ def selection_guide_faults(plan, chap):
     for q in qs:
         if f"s-14-sg-q-{q}" not in ps.ids:
             faults.append(f"Selection guide: group {q}'s question line has no id s-14-sg-q-{q}, the skip links' target")
+    want_heads = [f"s-14-sg-q-{q}" for q in qs] + (["s-14-sg-full-t"] if "s-14-sg-full-t" in ps.ids else [])
+    if ps.heads != want_heads:
+        faults.append(f"Selection guide: its h4 headings are {ps.heads}; each question line and the closing block's line is one, "
+                      f"in order (board 3, reply 8)")
     for g, title in printed.items():
         if g in [str(x) for x in group_of.values()] and norm(title) not in norm(ps.groups.get(g, "")):
             faults.append(f"Selection guide: group {g}'s question is not printed as the chapter prints it, {title!r}")
@@ -483,6 +492,9 @@ def outputs(rounds):
         chapter["extras"] = extras
     if any(x["specimen"] == SELECTION_GUIDE for x in extras):
         faults.extend(selection_guide_faults(plan, chap))
+    # board 3, reply 8 (RP-14, A3): chapter 14's group heads print as h3 headings, at the rules' level under the chapter's
+    # h2, so a reader who moves by headings meets each group; they look as they did (the shell's .rg-head)
+    chapter["group_heading_level"] = 3
     chapter.update({"intro": chap.get("intro") or [], "groups": groups, "rules": rules,
                     "related_chapters": chap.get("related_chapters") or [], "sources": chap.get("sources") or [],
                     "planned_rules": [x for x in planned if x not in ids]})

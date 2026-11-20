@@ -272,6 +272,23 @@ function font_css() {
   return Object.entries(fam).map(([f, files]) => files.map(x => `@font-face{font-family:"${f}";src:url(data:font/woff2;base64,${fs.readFileSync(path.join(FONTS, x)).toString('base64')}) format("woff2");font-weight:100 900;font-display:block}`).join('\n')).join('\n');
 }
 
+// Board 3, reply 6 (NB-S4, A1): a chart exported to stand alone, its SVG and PNG, closes with the source line it prints and
+// the 16 px lockmark at that line's right end (Rule 08.2's footer row), drawn from the lockmark's 16 px master on whole
+// pixels: its nodes in the text's ink, its links in Stone on a light ground and in the nodes' ink on Charcoal, its lever in
+// the signature color, as Rule 08.2's plate draws a chart's footer. Only the exports take it: K.figure, the fragments the
+// guide places and the page's drawings never do, so the guide's plates do not change. A social card's crop keeps its
+// exact size and Rule 08.2's sign-off, so it takes no footer.
+export const LOCK16_FILE = path.join(ROOT, 'work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg');
+export function lockmark16() {
+  const m = /^<svg\b[^>]*\bviewBox="0 0 16 16"[^>]*>([\s\S]*)<\/svg>$/.exec(fs.readFileSync(LOCK16_FILE, 'utf8').trim());
+  if (!m || !/var\(--link,/.test(m[1]) || !/var\(--lever,/.test(m[1]) || !/currentColor/.test(m[1])) throw new Error(`the lockmark's 16 px master is not the drawing the exports expect: ${LOCK16_FILE}`);
+  return m[1].replace(/<title>[\s\S]*?<\/title>/, '');
+}
+// the footer's inks on a ground, read in the page from the ground's own tokens
+const FOOT_INKS = `(sec) => { const pr = document.createElement('span'); sec.append(pr); const ink = (v) => { pr.style.color = v; return getComputedStyle(pr).color; };
+  const g = sec.getAttribute('data-ground'), node = ink('var(--oa-color-text-primary)'); const o = { node, link: g === 'charcoal' ? node : ink('var(--oa-color-palette-stone)'), lever: ink('var(--oa-color-identity-signature)') }; pr.remove(); return o; }`;
+const LOCK16 = lockmark16();   // read once, so a changed master fails the run at its start
+
 export function used_columns(spec, columns) {
   // the columns a spec names anywhere (encode, table, pivot, where, sort, formats, a label's {placeholder}): load-trim keeps only these
   const names = new Set(Object.keys(columns));
@@ -481,7 +498,7 @@ async function captures(items, o) {
           for (const g of o.grounds) for (const crop of crops) {
             const fid = `#oac-${spec.id.toLowerCase()}-${g}`, sel = crop ? `[data-oa-crop="${crop}"] svg.oac-svg` : 'svg.oac-svg';
             const node = res.drawings.find(d => d.ground === g && (crop ? d.crop === crop : d.page === w));
-            const info = await p.evaluate(({ fid, sel, node_svg, title, alt, fonts_note }) => {
+            const info = await p.evaluate(({ fid, sel, node_svg, title, alt, fonts_note, foot }) => {
               const f = document.querySelector(fid);
               const err = f.getAttribute('data-oa-error');
               const svg = f.querySelector(sel);
@@ -555,12 +572,49 @@ async function captures(items, o) {
               rect.setAttribute('width', '100%'); rect.setAttribute('height', '100%'); rect.setAttribute('fill', bg);
               const firstMark = ex.querySelector(':scope > :not(title):not(desc):not(defs)');
               ex.insertBefore(rect, firstMark);
+              // board 3, reply 6 (A1): the source line under the drawing as the figure sets it (13 px on 18, its label in the
+              // semibold primary ink, the rest in the secondary), wrapped short of the lockmark, a hairline 20 px under the
+              // drawing and 10 px over the words, and the 16 px lockmark at the right end, its foot on the last line's foot
+              const srcEl = foot && f.querySelector('.oac-source');
+              if (srcEl) {
+                const kEl = srcEl.querySelector('.oac-src-k'), cs = getComputedStyle(srcEl), ks = kEl ? getComputedStyle(kEl) : cs;
+                const k = (0, eval)(foot.inks)(f.closest('.oac-ground'));
+                const size = parseFloat(cs.fontSize), lh = parseFloat(cs.lineHeight), fam = cs.fontFamily.replace(/"/g, "'");
+                const words = srcEl.textContent.replace(/\s+/g, ' ').trim(), label = kEl ? kEl.textContent.replace(/\s+/g, ' ').trim() : '';
+                const W = Math.floor(parseFloat(ex.getAttribute('width'))), H = Math.ceil(parseFloat(ex.getAttribute('height')));
+                const lines = window.OAChart.wrap(words, size, W - 36, 400, 'reading');
+                const top = H + 31, base = (lh - 1.21 * size) / 2 + 0.969 * size, H2 = Math.ceil(top + lines.length * lh);
+                const g = document.createElementNS(NS, 'g');
+                g.setAttribute('data-oa-export-foot', '');
+                const hr = document.createElementNS(NS, 'rect');
+                [['x', 0], ['y', H + 20], ['width', W], ['height', 1], ['fill', getComputedStyle(f.querySelector('.oac-src')).borderTopColor]].forEach(([a, v]) => hr.setAttribute(a, v));
+                g.append(hr);
+                lines.forEach((ln, i) => {
+                  const t = document.createElementNS(NS, 'text');
+                  [['x', 0], ['y', +(top + i * lh + base).toFixed(2)], ['font-family', fam], ['font-size', size + 'px'], ['font-weight', cs.fontWeight], ['fill', cs.color]].forEach(([a, v]) => t.setAttribute(a, v));
+                  const head = !i && label && ln.startsWith(label) ? label : '';
+                  if (head) {
+                    const a = document.createElementNS(NS, 'tspan');
+                    a.setAttribute('font-weight', ks.fontWeight); a.setAttribute('fill', ks.color); a.textContent = head;
+                    t.append(a, ln.slice(head.length));
+                  } else t.textContent = ln;
+                  g.append(t);
+                });
+                const lm = document.createElementNS(NS, 'g');
+                lm.setAttribute('transform', `translate(${W - 16},${H2 - 16})`);
+                lm.innerHTML = foot.lock.replace(/var\(--link,[^)]*\)/g, k.link).replace(/var\(--lever,[^)]*\)/g, k.lever).replace(/currentColor/g, k.node);
+                g.append(lm);
+                ex.append(g);
+                ex.setAttribute('height', H2);
+                ex.setAttribute('viewBox', `0 0 ${W} ${H2}`);
+                out.export_w = W; out.export_h = H2; out.foot_lines = lines.length;
+              }
               out.export = '<?xml version="1.0" encoding="UTF-8"?>\n' + ser.serializeToString(ex);
               out.bg = bg;
               const back = new DOMParser().parseFromString(out.export, 'image/svg+xml');
               out.export_ok = !back.querySelector('parsererror') && !!back.querySelector('svg > title') && !!back.querySelector('svg > desc') && out.export.indexOf('var(') < 0 && out.export.indexOf(' class=') < 0;
               return out;
-            }, { fid, sel, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt, fonts_note: K.words.export_fonts });
+            }, { fid, sel, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt, fonts_note: K.words.export_fonts, foot: crop ? null : { lock: LOCK16, inks: FOOT_INKS } });
             if (info.err) { res.faults.push(`page: ${g} ${w}: ${info.err}`); continue; }
             if (dpr === 1) {
               // the page names its drawing's ids from the figure's id and the width it drew at (K.mount); Node from the spec's id
@@ -590,11 +644,13 @@ async function captures(items, o) {
               await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${w}-grayscale.png`) });
               await p.addStyleTag({ content: 'html{filter:none}' });
             } else {
-              const svgEl = await p.$(fid + ' svg.oac-svg');
+              // board 3, reply 6 (A1): the PNG is the standalone SVG itself, footer and lockmark included, drawn on the page at 2x
               const pf = path.join(dir, `${stem}-${title_case(g)}-${w}.png`);
-              await svgEl.screenshot({ path: pf, omitBackground: false });
+              await p.evaluate((x) => { const d = document.createElement('div'); d.id = 'oac-export-shot'; d.style.cssText = 'position:absolute;left:0;top:0;line-height:0;z-index:9'; d.innerHTML = x.replace(/^<\?xml[^>]*>\s*/, ''); document.body.append(d); }, info.export);
+              await (await p.$('#oac-export-shot > svg')).screenshot({ path: pf, omitBackground: false });
+              await p.evaluate(() => document.getElementById('oac-export-shot').remove());
               const sz = png_size(fs.readFileSync(pf));
-              const want = { w: 2 * node.width, h: 2 * node.height };
+              const want = info.export_h ? { w: 2 * info.export_w, h: 2 * info.export_h } : { w: 2 * node.width, h: 2 * node.height };
               if (sz.w !== want.w || sz.h !== want.h) res.faults.push(`png: ${path.basename(pf)} is ${sz.w} by ${sz.h}, expected ${want.w} by ${want.h}`);
             }
           }
@@ -689,9 +745,31 @@ async function card_captures(items, o) {
           const fid = `#oac-${spec.id.toLowerCase()}-${g}`;
           const art = await p.$(fid + ' [data-oa-html]'), fig = await p.$(fid);
           const pf = path.join(dir, `${stem}-${title_case(g)}-${pw}.png`);
-          await art.screenshot({ path: pf });
-          const bb = await art.boundingBox(), sz = png_size(fs.readFileSync(pf));
-          if (Math.abs(sz.w - Math.round(bb.width)) > 1 || Math.abs(sz.h - Math.round(bb.height)) > 1) res.faults.push(`png: ${path.basename(pf)} is ${sz.w} by ${sz.h}, the cards' box ${Math.round(bb.width)} by ${Math.round(bb.height)}`);
+          // board 3, reply 6 (A1): the cards' box closes with the figure's source line and the 16 px lockmark at its right
+          // end, set under the box for the picture only and taken away after it
+          const foot = await p.evaluate(({ fid, lock, inks }) => {
+            const f = document.querySelector(fid), a = f.querySelector('[data-oa-html]'), src = f.querySelector('.oac-source');
+            if (!src) return false;
+            const k = (0, eval)(inks)(f.closest('.oac-ground')), d = document.createElement('div'), q = src.cloneNode(true);
+            d.id = 'oac-export-foot';
+            d.style.cssText = `display:flex;align-items:flex-end;gap:16px;margin-top:20px;padding-top:10px;border-top:1px solid ${getComputedStyle(f.querySelector('.oac-src')).borderTopColor}`;
+            q.style.cssText = 'flex:1;max-width:none';
+            d.append(q);
+            d.insertAdjacentHTML('beforeend', '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="flex:none;display:block">'
+              + lock.replace(/var\(--link,[^)]*\)/g, k.link).replace(/var\(--lever,[^)]*\)/g, k.lever).replace(/currentColor/g, k.node) + '</svg>');
+            a.after(d);
+            return true;
+          }, { fid, lock: LOCK16, inks: FOOT_INKS });
+          // the box and its footer in the document's own coordinates, for a full-page picture clipped to them
+          const bb = await p.evaluate((fid) => {
+            const a = document.querySelector(fid + ' [data-oa-html]').getBoundingClientRect(), ft = document.getElementById('oac-export-foot');
+            const b = ft ? ft.getBoundingClientRect() : a;
+            return { x: a.left + scrollX, y: a.top + scrollY, width: a.width, height: b.bottom - a.top };
+          }, fid);
+          await p.screenshot({ path: pf, clip: bb, fullPage: true });
+          if (foot) await p.evaluate(() => document.getElementById('oac-export-foot').remove());
+          const sz = png_size(fs.readFileSync(pf));
+          if (Math.abs(sz.w - Math.round(bb.width)) > 1 || Math.abs(sz.h - Math.round(bb.height)) > 1) res.faults.push(`png: ${path.basename(pf)} is ${sz.w} by ${sz.h}, the cards' box and its footer ${Math.round(bb.width)} by ${Math.round(bb.height)}`);
           await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${pw}.png`) });
           await p.addStyleTag({ content: 'html{filter:grayscale(1)}' });
           await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${pw}-grayscale.png`) });

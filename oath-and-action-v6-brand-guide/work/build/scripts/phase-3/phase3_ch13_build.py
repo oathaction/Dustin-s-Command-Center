@@ -313,8 +313,10 @@ CSS = {
            "color:var(--oa-color-text-secondary);max-width:40em}.sub+.ms{margin-top:8px}"),
     "nt": f".nt{{{CAP};margin-top:10px;max-width:40em}}",
     "src": f".src{{{CAP};color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}}",
+    # board 3, reply 12 (CR-S17): the chip's ID sets its figures at their natural width, as chapter 15's chips do, so
+    # Inter's hyphen stays narrow and "R-04" never reads "R - 04"; tabular figures widened it from 6.06 to 8.42 px
     "chip": (".chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);"
-             "font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}"),
+             "font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}"),
     "k": f".k{{{LBL};color:var(--oa-color-text-secondary);margin:0 0 6px}}",
     "ln": (".ln{display:block;flex:none;overflow:visible}.ln path{fill:none}.ln .ak-case{stroke:none}.ln .ak-mark{stroke:var(--oa-color-graphic-essential)}"
            ".ln .hd,.ln .tg polygon{fill:var(--oa-color-graphic-essential)}.ln .tg .sg{fill:var(--oa-color-surface)}"
@@ -1096,17 +1098,29 @@ def rule_13_5(book):
 # ===============================================================================================================
 # Rule 13.6, the six parts of a source line
 # ===============================================================================================================
+def pay_line():
+    """S14's source line as chapter 13 prints it (board 3, reply 7): the payroll sidecar's september_release line, which
+    names the release the figures come from (Rule 13.7's vintage) and is S14's printed line less its margin of error
+    sentence. That sentence sources the margin figure in S14's own note, and no plate here prints the figure. Read from
+    the sidecar, never retyped, and held to S14's line so the two cannot drift apart."""
+    line = sidecar("fred-payrolls-monthly-change")["source_line_variants"]["september_release"]
+    s14 = json.loads((ROOT / "work/build/chart-kit/specs/s14.json").read_text())["source_line"]
+    need(s14.startswith(line) and "The margin of error" in s14[len(line):], "S14's source line no longer starts with the "
+         "payroll sidecar's september_release line; reread Rule 13.6 (board 3, reply 7)")
+    return line
+
+
 def rule_13_6(book):
-    sc = sidecar("fred-payrolls-monthly-change")
-    line = sc["printed_source_line"]
+    line = pay_line()
     parts = [
         ("Publisher", "U.S. Bureau of Labor Statistics"),
-        ("Title or table", "Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted"),
+        ("Title or table", "Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, from the "
+                           "Employment Situation for September 2026, released October 2, 2026"),
         ("Observation period", "January 2022 to September 2026"),
         ("Geography", "United States"),
         ("The copy we read", "via FRED, Federal Reserve Bank of St. Louis"),
         ("Date retrieved", "Retrieved November 6, 2026."),
-        ("Qualification", "August and September 2026 are preliminary and will be revised."),
+        ("Qualification", "August and September 2026 are preliminary, and later releases revise them."),
     ]
     pos = -1
     for _, words in parts:
@@ -1138,8 +1152,8 @@ def rule_13_6(book):
                   f"what seasonally adjusted means, and the source line, {line} A table then takes the line apart: publisher, "
                   "title or table, observation period, geography, the copy we read, date retrieved and qualification. Under it, "
                   "a source line for a value from our systems atlas follows the same order."),
-             notes="The source line is the engineer's sidecar printed_source_line for fred-payrolls-monthly-change, read by "
-                   "script, never retyped. The title is level and counts no drops (D3-87, statistics M4); the three-month "
+             notes="The source line is the payroll sidecar's september_release line for fred-payrolls-monthly-change, S14's "
+                   "line less its margin sentence, read by script, never retyped. The title is level and counts no drops (D3-87, statistics M4); the three-month "
                    "average, 50.7 thousand, is read from the same file.")
     book.log("13.6 correct", "Monthly payroll change (BLS via FRED)", "D07")
     fail = dnp() + chart_head("Finding", GL_BLS, title, "Monthly change in jobs, thousands", source="Source: FRED data.")
@@ -1884,7 +1898,6 @@ def chapter(book):
     spec, r13 = rule_13_13(book)
     rules.append(r13)
     cps = sidecar("census-spm-child-poverty")
-    pay = sidecar("fred-payrolls-monthly-change")
     data = {
         "number": "13",
         "anchor": "evidence",
@@ -1925,7 +1938,7 @@ def chapter(book):
             cps["source_line_variants"]["source_line_first_published"].replace(
                 "Rates as first published; the Bureau revised 2019 to 2024 in August 2026.",
                 "Rates before the Bureau’s August 2026 correction to the poverty thresholds."),
-            pay["printed_source_line"],
+            pay_line(),
             (f"Source: {ATLAS}, the records each rule names (connections, loops, reforms, claims, the repair log, the delivery "
              f"log, the headline figures and the glossary), snapshot of {SNAP}, United States. Retrieved November 11, 2026. "
              "Facts the atlas rechecked carry their own check dates; inclusion in the snapshot alone does not mean a fact was "

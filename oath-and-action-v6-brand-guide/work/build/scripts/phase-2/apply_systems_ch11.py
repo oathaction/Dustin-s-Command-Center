@@ -706,6 +706,20 @@ def alt_list(bills, nm=None):
     return ' '.join(out)
 
 
+# The shell's visually hidden rule (guide-shell.css, .vh), carried in the plate as Rule 11.15's plate carries it
+# (apply_systems_ch11_ui.py): prefix_classes() renames every plate class but three, so the shell's own .vh never reaches
+# a plate's markup
+VH_CSS = '.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}'
+
+
+def vh_caption(head):
+    """Board 3, reply 20 (AX-S3): a step table's or the marks table's caption, the plate's head sentence, hidden from sight
+    by the visually hidden rule in VH_CSS, so a screen reader's list of tables names the table and the screen is unchanged."""
+    if not head.endswith('.') or re.search(r'[<>&"]', head):
+        raise ValueError(f'a hidden caption takes one plain sentence: {head!r}')
+    return f'<caption class="vh">{head}</caption>'
+
+
 def s_steps(ctx):
     rows = ''.join(f'<tr><th scope="row"><span class="n">{i + 1}</span> {n if i < 5 else "Governor or President"}</th>'
                    f'<td>{m if i < 5 else STEP6_BOTH}</td></tr>' for i, (n, m) in enumerate(STEPS))
@@ -720,11 +734,14 @@ def s_steps(ctx):
            # DD-T1 (design director, round 5): one step-table grammar in chapter 11, as s_route_steps() sets it
            f'@container (max-width:30rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid '
            f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}tbody th,td{{display:block;width:auto;padding:0;border:0}}'
-           f'tbody th{{padding-bottom:4px}}th .n{{display:inline-block;min-width:1.4em}}}}.wr{{container-type:inline-size}}')
-    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th>'
+           f'tbody th{{padding-bottom:4px}}th .n{{display:inline-block;min-width:1.4em}}}}.wr{{container-type:inline-size}}'
+           + VH_CSS)
+    # board 3, reply 20 (AX-S3): the alt is the head sentence alone, and the table takes the same sentence as a caption
+    # hidden from sight (the shell's .vh), so a list of tables names it and nothing on the screen changes
+    head = 'The six steps, with what happens at each.'
+    html = (f'<style>{css}</style><div class="wr"><table>{vh_caption(head)}<thead><tr><th scope="col">Step</th>'
             f'<th scope="col">What happens</th></tr></thead><tbody>{rows}</tbody></table></div>')
-    alt = ('The six steps, with what happens at each. ' + ' '.join(
-        f'{i + 1}, {n if i < 5 else "Governor or President"}: {m if i < 5 else STEP6_BOTH}' for i, (n, m) in enumerate(STEPS)))
+    alt = head
     return spec(ctx, 's-11-steps', html, None, alt, readable=True,
                 notes='A readable table (D2-255). Step 6 is named for whoever signs (DR-128).')
 
@@ -792,13 +809,15 @@ def s_marks_table(ctx):
            f'{ctx.v("oa.color.border.hairline.onNewsprint")}}}th,td,td:nth-child(3),td:nth-child(4){{display:block;width:auto;'
            f'padding:0 0 6px;border:0}}'
            f'td:nth-child(3)::before{{content:"Line or size: "}}td:nth-child(4)::before{{content:"Color: "}}}}'
-           f'.wr{{container-type:inline-size}}')
-    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Mark</th><th scope="col">How to draw '
+           f'.wr{{container-type:inline-size}}' + VH_CSS)
+    # board 3, reply 20 (AX-S3): the alt is the head sentence alone, and the table takes it as a caption hidden from sight
+    head = ('Drawing the marks: a table of each mark, how to draw it at the four circle sizes, its line or size token and '
+            'its color token.')
+    html = (f'<style>{css}</style><div class="wr"><table>{vh_caption(head)}<thead><tr><th scope="col">Mark</th>'
+            f'<th scope="col">How to draw '
             f'it at 24, 26, 28 and 30 px</th><th scope="col">Line or size token</th><th scope="col">Color token</th>'
             f'</tr></thead><tbody>{rows}</tbody></table></div>')
-    plain = lambda t: re.sub(r'<[^>]+>', '', t).replace('&lt;', '<').replace('&gt;', '>')
-    alt = ('Drawing the marks: a table of each mark, how to draw it at the four circle sizes, its line or size token and '
-           'its color token. ' + ' '.join(f'{m}: {plain(how)}' for m, how, _, _ in mark_rows()))
+    alt = head
     return spec(ctx, 's-11-marks-drawn', html, None, alt, readable=True,
                 notes='A readable table (D2-255) for PP-M1. Every figure is computed from node() and line_segments().')
 
@@ -1317,10 +1336,11 @@ def s_route_steps(ctx, sid, steps, what, alt_head):
            f'@container (max-width:30rem){{thead{{display:none}}tr{{display:block;padding:12px 0;border-bottom:1px solid '
            f'{hair}}}tbody th,td{{display:block;width:auto;padding:0;border:0}}tbody th{{padding-bottom:4px}}'
            f'th .n{{display:inline-block;min-width:1.4em}}}}'
-           f'.wr{{container-type:inline-size}}')
-    html = (f'<style>{css}</style><div class="wr"><table><thead><tr><th scope="col">Step</th><th scope="col">What happens, '
-            f'and the law that sets it</th></tr></thead><tbody>{rows}</tbody></table></div>')
-    alt = (alt_head + ' ' + ' '.join(f'{i + 1}, {n}: {m} Law: {law}.' for i, (n, m, law) in enumerate(steps)))
+           f'.wr{{container-type:inline-size}}' + VH_CSS)
+    # board 3, reply 20 (AX-S3): the alt is the head sentence alone, and the table takes it as a caption hidden from sight
+    html = (f'<style>{css}</style><div class="wr"><table>{vh_caption(alt_head)}<thead><tr><th scope="col">Step</th>'
+            f'<th scope="col">What happens, and the law that sets it</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    alt = alt_head
     return spec(ctx, sid, html, None, alt, readable=True,
                 notes=f'A readable table (D2-255, R4-3) of {what}, from the research lead’s round 5 facts.')
 

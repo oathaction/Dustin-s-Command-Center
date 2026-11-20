@@ -337,7 +337,9 @@ CH04 = {
     "instruction": "Use the ampersand once per composition to join a commitment to what it produces.",
     "opener": {"specimen": "s-04-opener", "caption": "Ampersand B at display size, and a hinge headline in its own frame, since a composition carries one ampersand moment (Rule 04.2). On a phone the headline drops to 26 px, so each phrase stays whole on its line."},
     "intro": [
-        "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline.",
+        "The ampersand is the hinge of the brand. It joins an oath, the commitment a person or an office makes, to the action that keeps it, and in our headlines it joins a rule to its result. Ampersand B is our own drawing: one pen path that crosses itself at the waist, with a beak at the top right and a tail that lands on the baseline. "
+        # board 3, reply 23 (Q-12, D3-2310): one sentence until the trademark attorney reports
+        "Before launch, a trademark attorney will check whether our name, our monogram and this ampersand are clear to use.",
         "This chapter covers B drawn alone and the places the hinge appears: the hinge headline, the hinge divider, the hinge diagram, the end mark that closes an article and the hinge-circle badge. It ends with the tiles for avatars and the app icon, and the large crop for covers.",
     ],
     "rules": [
@@ -495,7 +497,7 @@ CH08 = {
           tokens=["oa.color.identity.signature.onNewsprint"],
           specs=[S("Masthead", "L3 on screens from 48em, 768 px at the default text size, and in the email header, from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master (Rule 03.6). In print, L3's print master, with the lockmark at the same 2.18 cap heights (Rule 03.2)"),
                  S("Page header", "24 px beside the section label on report and slide pages; 0.25 in in print"),
-                 S("Footer", "24 px, then 12 px of space and the tagline, on one line at the footer's left edge, at the foot of a page, an email or a letter; 16 px at the right end of a chart's source line. L6, the strip that closes a report, carries it at L6's own proportion (Rule 03.2), and a page narrower than L6's 884 px closes with this footer"),
+                 S("Footer", "24 px, then 12 px of space and the tagline, on one line at the footer's left edge, at the foot of a page, an email or a letter; 16 px at the right end of the source line on a chart exported alone. L6, the strip that closes a report, carries it at L6's own proportion (Rule 03.2), and a page narrower than L6's 884 px closes with this footer"),
                  S("Sign-off", "Bottom right, inside the margin. On a social card, 96 px: the 48 px master drawn at exactly twice its size, so every node, every link and the lever land on whole pixels. On a cover or poster, 48 px from the 48 px master. In print, 0.50 in from the display master, since the 48 px master is drawn for a screen's pixel grid"),
                  S("Feed test", "A 1200 by 630 px card, reduced to 500 and 360 px wide, as a feed shows it, must keep a visible lockmark. On a light ground, such as Newsprint or White, each of its eight dark nodes keeps at least one near-black pixel (every color channel under 70), and the lever keeps at least four red pixels (red over 170, green and blue under 120). Reduce the card with Lanczos resampling, a common filter for shrinking images, and count each node's square plus 1 px on every side"),
                  S("Feed test, dark card", _feed_dark("rule")),

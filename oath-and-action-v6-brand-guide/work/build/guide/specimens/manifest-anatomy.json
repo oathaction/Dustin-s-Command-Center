@@ -187,7 +187,7 @@
   "chapter": "18",
   "rule": "18.24",
   "width_px": null,
-  "alt": "Anatomy of typed ID chips, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Type word: Loop, Variable, Reform or Domain, before the code. 2, Code: The atlas ID, in tabular figures. 3, Edge: A hairline in the strong border color. 4, Target: As a link, at least 24 px tall. 5, As a link: It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here.",
+  "alt": "Anatomy of typed ID chips, drawn from its code to copy on Newsprint, with five numbered callouts and a key. 1, Type word: Loop, Variable, Reform or Domain, before the code. 2, Code: The atlas ID, each figure at its own width, so the hyphen stays narrow. 3, Edge: A hairline in the strong border color. 4, Target: As a link, at least 24 px tall. 5, As a link: It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here.",
   "illustrative": false,
   "notes": "Drawn from work/build/guide/code/c-18-id-chip.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366)."
  },

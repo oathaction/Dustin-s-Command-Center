@@ -580,7 +580,7 @@ def v7_tables():
                                   # ENG-12 (round 1 fix pass, ST S11): the margin credited to the Program's page, reread November 12
                                   'survey_only_margin_credited': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
                                                                   'United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. '
-                                                                  'A margin of error of plus or minus 1.9 points for the whole sample, with none by party, from the Program’s survey page, read November 12, 2026.')},
+                                                                  'A margin of error of plus or minus 1.9 points for the whole sample, with none by party, from the Program’s survey page, retrieved November 12, 2026.')},
             v7_figure=n7, notes=['The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.',
                                  'DR-98: a chart names "H.R. 7008, the Stop Insider Trading Act" with both provisions at first mention; the spec carries those words.'])
 

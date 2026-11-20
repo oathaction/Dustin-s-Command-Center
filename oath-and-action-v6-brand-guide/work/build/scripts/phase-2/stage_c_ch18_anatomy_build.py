@@ -1165,7 +1165,8 @@ def p24():
     bracket(link, 4)
     pin(link, 5, 'tr')
     key = [(1, 'Type word', 'Loop, Variable, Reform or Domain, before the code'),
-           (2, 'Code', 'The atlas ID, in tabular figures'),
+           # board 3, reply 12 (CR-S17): the code chip drops tabular figures, which widened the ID's hyphen
+           (2, 'Code', 'The atlas ID, each figure at its own width, so the hyphen stays narrow'),
            (3, 'Edge', 'A hairline in the strong border color'),
            (4, 'Target', 'As a link, at least 24 px tall'),
            (5, 'As a link', 'It opens the record; its words keep a 1 px underline, 2 px under a pointer, as here')]

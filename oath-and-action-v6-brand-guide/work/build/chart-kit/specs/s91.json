@@ -9,6 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: title 28 of the U.S. Code, as in force on November 12, 2026, with seats as the federal courts counted them on September 30, 2025",
+  "evidence_layout": "beside",
   "title": "Of the federal district courts’ three kinds of judge, only district judges serve for life, except in Guam, the Northern Mariana Islands and the Virgin Islands.",
   "measure_line": "Who appoints each kind of judge who hears cases at trial in the federal district courts, with whose consent, for how long, what cases they hear, how many seats there are and who sets that number, from 28 U.S.C. 133, 134, 152, 631 and 633 and the federal courts’ count",
   "notes": [
@@ -151,7 +152,8 @@
     "\"Virgin Islands\" and \"14 years\" held on one line (typography.hold), so the title never breaks \"Virgin / Islands\" or \"14 / years\"; \"Northern Mariana Islands\" is not held, since held whole it runs past a 224 px column at the phone title size.",
     "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate).",
     "Fix pass after rounds 4 and 5 (CD-S4, November 16, 2026): the title leads with one finding and the drawing, which prints every count, carries the rest; draft words for the editor (was: \"District judges serve for life except in Guam, the Northern Mariana Islands and the Virgin Islands; courts pick bankruptcy judges for 14 years and full-time magistrate judges for eight.\").",
-    "Fix pass after rounds 4 and 5 (CR-S16's S91 part, seen on the phone capture): \"10-year terms\" held on one line, so the seats note never breaks \"10-\" from \"year\" at 390 px."
+    "Fix pass after rounds 4 and 5 (CR-S16's S91 part, seen on the phone capture): \"10-year terms\" held on one line, so the seats note never breaks \"10-\" from \"year\" at 390 px.",
+    "Board 3, reply 17 (CR-S19, the apply pass, chat 9): evidence_layout \"beside\" keeps the grade line beside the evidence chip, wrapping under its own first word, where it would drop under the chip; the kit’s default stays. Only the head’s layout moves; no word changes."
   ],
   "source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include four in the territorial courts."
 }

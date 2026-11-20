@@ -2,7 +2,7 @@
   "id": "14.101",
   "title": "Use a comparison grid to weigh a few options against the same questions in words.",
   "rule": [
-    "Give each option a row, named in bold, and each question a column, every cell in words in the text’s ink with a thin gray rule between rows. Keep the options in the order their source gives them, and draw a count, where one helps, as a single series of bars with its value printed. Under a cell that rests on a text, print the text and the date it was read. On a phone each option runs as a block: its name and count, then each column’s name over its words."
+    "Give each option a row, named in bold, and each question a column, every cell in words in the text’s ink with a thin gray rule between rows. Keep the options in the order their source gives them, and draw a count, where one helps, as a single series of bars with its value printed. Under a cell that rests on a text, print the text and the date it was retrieved. On a phone each option runs as a block: its name and count, then each column’s name over its words."
   ],
   "use_when": "The reader weighs a handful of options against the same questions, such as what each route to change a law takes and how it can be undone.",
   "use_instead": [

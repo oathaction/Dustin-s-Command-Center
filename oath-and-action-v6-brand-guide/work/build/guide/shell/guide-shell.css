@@ -372,9 +372,10 @@ a.toc-part-k:hover { text-decoration: underline }
 .ri-after { margin: var(--oa-space-400) 0 0; font: var(--oa-type-body-small) }
 .ri-after-k { color: var(--ink-2); margin-right: .6em }
 
-/* Rule group block: page text, not a heading (map section 5), outside any mat */
+/* Rule group block: page text outside any mat. Its head is a paragraph, or an h3 where the chapter file asks (chapter 14,
+   board 3's reply 8): the rule below sets every property the paragraph took, overflow-wrap included, so both look alike */
 .rule-group { margin-top: var(--oa-space-1300); padding-top: var(--oa-space-400); border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
-.rg-head { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance }
+.rg-head { margin: 0; font: var(--oa-type-h4); letter-spacing: var(--oa-type-h4-letter-spacing); text-wrap: balance; overflow-wrap: break-word }
 .rg-n { display: block; margin-bottom: var(--oa-space-100); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing) }
 .rg-w { color: var(--ink-2); margin-right: .25em }
 .rg-line { margin: var(--oa-space-200) 0 0; font: var(--oa-type-intro); max-width: var(--oa-layout-measure-intro-max); color: var(--ink-2) }
@@ -452,6 +453,8 @@ a.toc-part-k:hover { text-decoration: underline }
 .plate-head { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: var(--oa-space-050) var(--oa-space-300);
   padding: var(--oa-space-100) 0; border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }
 .plate-label { margin: 0; display: inline-flex; gap: .6em; align-items: baseline; max-width: 100% }
+/* board 3, reply 8: the one plate whose label is a heading ("Choose a chart") keeps the wrap its paragraph took */
+h3.plate-label { text-wrap: pretty; overflow-wrap: break-word }
 .plate-label-t { min-width: 0; overflow-wrap: break-word }
 .plate-glyph { font: var(--oa-type-ui); font-size: 1rem; line-height: 1 }
 .plate-size { margin: 0 0 0 auto; font: var(--oa-type-caption); color: var(--ink-2) }
@@ -579,6 +582,9 @@ a.toc-part-k:hover { text-decoration: underline }
 .rel-inline a { display: inline-flex; gap: .4em; align-items: center; min-height: var(--oa-size-target-touch); font: var(--oa-type-ui) }
 .rel-inline .later { font: var(--oa-type-body-small); color: var(--ink-2) }
 .rel-inline li { display: flex; align-items: center; gap: .5em; flex-wrap: wrap }
+/* board 3, reply 22 (A15): a rule's related rules, links named by the rule, set as the related chapters' links are */
+.rel-rules { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--oa-space-050) var(--oa-space-300) }
+.rel-rules a { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); max-width: 100%; font: var(--oa-type-ui) }
 
 /* Sources and closers */
 .sources { margin-top: var(--oa-space-1000); border-top: var(--oa-border-width-hairline) solid var(--rule-strong) }

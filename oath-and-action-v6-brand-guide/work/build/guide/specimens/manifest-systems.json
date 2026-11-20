@@ -1072,7 +1072,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The six steps of a state ballot measure, with what happens at each and where the law sets it in four states: Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and California, where an initiative goes straight to the ballot. 1, Filed: The sponsors file the measure’s full text with the attorney general. Law: Massachusetts Constitution, Amendment Article XLVIII, The Initiative, II, Section 3, as replaced by Amendment Article LXXIV, Section 1; California Elections Code 9001. 2, Title and summary: The attorney general writes the title and summary that petitions and ballots carry, and where the law asks, first certifies that the measure is in proper form and on a subject the initiative may cover. Law: Massachusetts, Amendment Article LXXIV, Sections 1 and 4; California Elections Code 9004 and 9014. 3, Signatures: The sponsors gather signatures, and election officials count and check them. Law: Massachusetts, Amendment Article LXXIV, Section 1; California Elections Code 9030 and 9031. 4, Legislature: The Legislature votes on the measure first, where the state’s initiative is indirect. A measure that goes straight to the ballot keeps this step under a slash. Law: Massachusetts, Amendment Article LXXXI, Section 2; Ohio Constitution, Article II, Section 1b; Michigan Constitution, Article II, Section 9. 5, On the ballot: The state’s election officer certifies the measure for the ballot. Law: California Elections Code 9033; Massachusetts, Amendment Article LXXXI, Section 2. 6, Vote: The voters decide, and the state certifies the result. Law: California Constitution, Article II, Section 10(a); Massachusetts, Amendment Article LXXXI, Section 2; Ohio, Article II, Section 1b; Michigan, Article II, Section 9.",
+  "alt": "The six steps of a state ballot measure, with what happens at each and where the law sets it in four states: Massachusetts, Ohio and Michigan, where the Legislature votes first on a proposed law, and California, where an initiative goes straight to the ballot.",
   "illustrative": false,
   "notes": "A readable table (D2-255, R4-3) of a ballot measure’s six steps, from the research lead’s round 5 facts.",
   "readable": true
@@ -1081,7 +1081,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The six steps of a federal civil case, with what happens at each and where the law sets it. 1, Filed: One side sues the other in a federal district court, the trial court. Law: Federal Rules of Civil Procedure, Rule 3; 28 U.S.C. 1331. 2, Trial court ruling: The trial court decides, with or without a trial, unless the case settles or is dismissed. Law: Federal Rules of Civil Procedure, Rules 41, 56 and 58. 3, Appeal: The side that lost asks a court of appeals to review the ruling. Law: 28 U.S.C. 1291 and 2107; Federal Rules of Appellate Procedure, Rule 4. 4, Appeals court ruling: Three judges of the court of appeals decide. Law: 28 U.S.C. 2106; Federal Rules of Appellate Procedure, Rules 40 and 41. 5, Supreme Court petition: The side that lost asks the Supreme Court to hear the case, and the Court agrees or declines. Law: Rules of the Supreme Court, Rules 10, 13 and 16; 28 U.S.C. 1254 and 2101. 6, Supreme Court ruling: The Supreme Court decides. Law: 28 U.S.C. 2106; Rules of the Supreme Court, Rule 16.",
+  "alt": "The six steps of a federal civil case, with what happens at each and where the law sets it.",
   "illustrative": false,
   "notes": "A readable table (D2-255, R4-3) of a federal civil case’s six steps, from the research lead’s round 5 facts.",
   "readable": true
@@ -1118,7 +1118,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "Drawing the marks: a table of each mark, how to draw it at the four circle sizes, its line or size token and its color token. Done: A filled circle as wide as the step, its number in the surface color. Now: A ring as wide as the step, its 3 px line drawn inside the edge, filled with the surface. Its number in Inter 700, in ink. You can take part now: The Now ring with an 11 px disc. The disc’s center sits 0.72 of the circle’s radius right of and above the circle’s center, at 45 degrees: 8.64, 9.36, 10.08 and 10.8 px. A 1 px Charcoal keyline sits inside the disc’s edge, and 1.5 px of the surface is cut around it. Not yet: A ring as wide as the step, its 1.5 px line drawn inside the edge, filled with the surface. Its number in Inter 600, in the secondary text color. Never happened: The Not yet ring under a 2 px slash in ink at 45 degrees, from lower left to upper right through the center. The slash is 4 px longer than the circle is wide, 28, 30, 32 and 34 px, so it runs 2 px past the ring at each end. Halo: On a step that never happened, a 4 px stroke in the surface color painted under the number, which shows 2 px around each figure and parts it from the slash. Stopped: A filled square 2 px narrower than the circle, 22, 24, 26 and 28 px, centered where the circle would be. Its number in the surface color. The line ends here. Line reached: A 2 px bar centered on the circles, from step to step as far as the record has come. It runs into a step that never happened, the last step included, since the record moved past it. Line ahead: A 1 px bar from the current step to the next one and on. After a stopped step, no line. Numbers: Inter at 13 px in circles of 24 and 26 px and 14 px from 28 px, tabular figures, centered, with the baseline 0.36 of the type size below the circle’s center.",
+  "alt": "Drawing the marks: a table of each mark, how to draw it at the four circle sizes, its line or size token and its color token.",
   "illustrative": false,
   "notes": "A readable table (D2-255) for PP-M1. Every figure is computed from node() and line_segments().",
   "readable": true
@@ -1145,7 +1145,7 @@
   "chapter": "11",
   "rule": null,
   "width_px": null,
-  "alt": "The six steps, with what happens at each. 1, Filed: A legislator files the bill, and it goes to a committee. 2, Hearing: The committee holds a hearing and takes testimony on the bill. Many state legislatures take testimony from the public there. In Congress, the committee hears the witnesses it invites. A bill’s own page says how to take part. 3, Committee vote: The committee votes on whether to send the bill to the full House or Senate. 4, First chamber: The full House or Senate, wherever the bill was filed, votes on it. 5, Second chamber: The other chamber takes the bill up. Its own committee can hold a hearing first, and then the full chamber votes and both chambers agree on one text. Nebraska has one chamber, so a Nebraska bill keeps this step under a slash. 6, Governor or President: The governor signs a state bill and the President signs a federal one. Either can veto it, and lawmakers can vote to override a veto.",
+  "alt": "The six steps, with what happens at each.",
   "illustrative": false,
   "notes": "A readable table (D2-255). Step 6 is named for whoever signs (DR-128).",
   "readable": true

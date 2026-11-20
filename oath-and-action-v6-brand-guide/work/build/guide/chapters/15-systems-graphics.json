@@ -357,7 +357,7 @@
     },
     {
      "label": "Read aloud",
-     "value": "One sentence that carries more or less around the loop and back to the start"
+     "value": "One sentence that says whether each variable rises or falls, around the loop and back to the start"
     }
    ],
    "related": [
@@ -461,7 +461,7 @@
     },
     {
      "label": "Read aloud",
-     "value": "More or less at each variable, carrying the signs, as Rule 15.6 reads a loop"
+     "value": "Whether each variable rises or falls, carrying the signs, as Rule 15.6 reads a loop"
     }
    ],
    "related": [

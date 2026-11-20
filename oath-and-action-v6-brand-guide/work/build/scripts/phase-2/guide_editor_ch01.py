@@ -884,7 +884,7 @@ def build(book):
         "why": {"text": ["A map colored by winner splits the country into two camps and gives large, thinly settled states the most ink. "
                          "What a reader wants to know is whether a rule reaches the place where they live."],
                 "basis": "Design judgment"},
-        "correct": {"specimen": A("s-01-5-correct", f'<div class="ed"><p class="ct">{e(t5)}</p><p class="cm">Statewide citizen-initiated measures, by state, as read November 6, 2026</p>'
+        "correct": {"specimen": A("s-01-5-correct", f'<div class="ed"><p class="ct">{e(t5)}</p><p class="cm">Statewide citizen-initiated measures, by state, as retrieved November 6, 2026</p>'
                                                     f'{svg_rule}{key_rule}<p class="src">{e(SRC_INITIATIVE)}</p></div>',
                                   css=(BASE, CHART, MAP), rule="01.5",
                                   alt=f"Tile map of the 50 states and DC. {t5} Those tiles are solid Charcoal; Mississippi is hatched; the other {cnt['none']} states are open. Key below the map. {SRC_INITIATIVE}",

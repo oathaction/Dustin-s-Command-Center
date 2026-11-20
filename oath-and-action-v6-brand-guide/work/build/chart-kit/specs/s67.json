@@ -13,7 +13,7 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, as of November 2026; the city route from the atlas, as of October 15, 2026",
   "title": "A state ban on ranked-choice voting reaches city elections in 18 states and partly in Ohio, and elsewhere the answer turns on state home-rule law.",
-  "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, read November 6, 2026, and read again November 12, 2026, after the November 3 election",
+  "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, retrieved November 6, 2026, and retrieved again November 12, 2026, after the November 3 election",
   "notes": [
     "Tennessee’s ban covers some elections, but it names local government offices and counts an incorporated city or town as local government, so its cities follow the first answer with the other 17 states.",
     "Every ban but Tennessee’s rests on Ballotpedia’s quotation of the law, Ohio’s terms included; we read Tennessee’s act, Public Chapter 621, ourselves."
@@ -139,6 +139,10 @@
       [
         "1966852 to 906851",
         "1,966,852 to 906,851"
+      ],
+      [
+        "(read November 12, 2026)",
+        "(retrieved November 12, 2026)"
       ]
     ]
   },

@@ -103,7 +103,8 @@
       "y": "unemployment_rate"
     },
     "key_history": "Actual rate",
-    "key_gap": "No 2025 average"
+    "key_gap": "No 2025 average",
+    "values_clear_edges": true
   },
   "formats": {
     "y": "number:1",
@@ -121,7 +122,8 @@
     "R2-C1: the fan registers interval: \"level\"; the measure line names \"a 70 percent probability\".",
     "Figures checked by maker_b_round2_derive.py --figures (check S59): medians 4.1 for 2026 to 2029 and 4.2 for the longer run; the 2029 band 2.0 to 6.2; errors 0.5, 1.3, 1.9 and 2.1.",
     "Read from the left and the right: the title reports the officials’ own projection and its error range, and names no official or party.",
-    "Review fix pass: the data lead’s RF-20 (BC S10): the actual rate’s fourth-quarter average, the projections’ own measure, for 2021 to 2024 from the derived fred-unemployment-fourth-quarter (maker_b_round2_derive.py, from P7-030’s monthly file), one dot a year in the subject ink at the field weight, the line ending at 2024 and 2025’s missing quarter a light column named in the key; the source line is the research lead’s with_unemployment_history variant and the grade line names both publishers. H09: the window runs from the data’s reach back four years, the projections’ own span; no value sits on either side of the January 2025 inauguration within a year, and the note gives every value. RF-2: both bands take 1 px edges in the context ink, and their key swatches ask for the same (request RB-G6). Checked by maker_b_round2_derive.py --figures (check S59)."
+    "Review fix pass: the data lead’s RF-20 (BC S10): the actual rate’s fourth-quarter average, the projections’ own measure, for 2021 to 2024 from the derived fred-unemployment-fourth-quarter (maker_b_round2_derive.py, from P7-030’s monthly file), one dot a year in the subject ink at the field weight, the line ending at 2024 and 2025’s missing quarter a light column named in the key; the source line is the research lead’s with_unemployment_history variant and the grade line names both publishers. H09: the window runs from the data’s reach back four years, the projections’ own span; no value sits on either side of the January 2025 inauguration within a year, and the note gives every value. RF-2: both bands take 1 px edges in the context ink, and their key swatches ask for the same (request RB-G6). Checked by maker_b_round2_derive.py --figures (check S59).",
+    "Board 3, reply 9 (the apply pass, chat 9): labels.values_clear_edges sets each median value clear of every band edge across its width, 4 px to spare, and turns the kit’s edge guard (DD-E1) on for those values, so the first period’s “4.1” no longer sits against the outer band’s rising edge. Only the label’s place moves; no figure, word or mark changes."
   ],
   "source_line": "Source: Board of Governors of the Federal Reserve System, Summary of Economic Projections, September 16, 2026, Tables 1 and 2, unemployment rate projections for 2026 to 2029, United States; U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 (November 6, 2026), unemployment rate, seasonally adjusted, fourth-quarter averages, 2021 to 2024, United States, as copied by the Federal Reserve Bank of St. Louis (FRED). Retrieved November 11, 2026. Officials’ projections; the band applies the average error of past forecasts. Fourth-quarter averages of the monthly rate computed by Oath & Action; no rate was published for October 2025, so 2025 has no fourth-quarter average."
 }

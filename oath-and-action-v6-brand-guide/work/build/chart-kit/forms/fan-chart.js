@@ -6,7 +6,11 @@
  * encode: x (category: the periods, years in order, and the one drawn apart), y (number: the median), outer_low and
  * outer_high (numbers), inner_low and inner_high (numbers, optional).
  * labels: apart (the x value drawn apart), apart_label (its words under the axis), key_outer, key_inner, key_median (the
- * key's words; an entry is left out when its words are), y_axis (words over the value axis).
+ * key's words; an entry is left out when its words are), y_axis (words over the value axis), values_clear_edges (true:
+ * a median value a band edge runs through moves up to the lowest place over its dot that stands 4 px clear of every
+ * band edge, and the kit's edge guard (DD-E1) holds every median value; a value no edge crosses stays put, and which
+ * values print is chosen at their first places, so the key moves a value and never adds or drops one; board 3's reply 9,
+ * for S59. Unset, a value sits over its dot and only clears the outer band's edge at the dot itself, as before).
  * history ({dataset, x, y}: where the measure stood before the projections, from the spec's second dataset, one dot a
  * period joined by a line in the subject ink at the field's weight, on the same axis of periods; a period with no value
  * breaks the line and takes a light column, named in the key), key_history and key_gap (their key words).
@@ -21,7 +25,7 @@
     name: 'Fan Chart',
     family: 'uncertainty-and-estimates',
     encode: { x: 'category', y: 'number', outer_low: 'number', outer_high: 'number', inner_low: 'number?', inner_high: 'number?' },
-    labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap'],
+    labels: ['apart', 'apart_label', 'key_outer', 'key_inner', 'key_median', 'y_axis', 'history', 'key_history', 'key_gap', 'values_clear_edges'],
     interval: 'level',
     phone: 'same',
     draw: function (c) {
@@ -71,6 +75,36 @@
       P.band(c, main.map(function (r, i) { return { x: px(i), y0: ys(r[eol]), y1: ys(r[eoh]), key: key(r), low: r[eol], high: r[eoh] }; }), { fill: 'mag-1', edge: 'context', field_low: eol, field_high: eoh });
       if (eil && eih) P.band(c, main.map(function (r, i) { return { x: px(i), y0: ys(r[eil]), y1: ys(r[eih]), key: key(r), low: r[eil], high: r[eih] }; }), { fill: 'mag-2', edge: 'context', field_low: eil, field_high: eih });
       var vlab = [], vdots = [];   // the values over the dots, set after every dot: the ones a reader must have first, then the rest where they sit apart
+      // labels.values_clear_edges (board 3, reply 9): a value the edge guard (checks.js, DD-E1) finds a band edge running
+      // through, by the kit's own test (K.stroke_crosses on the word's box), moves up to the lowest place over its dot
+      // whose box, [x - w/2, x + w/2] by [y - 0.864 size, y + 0.136 size] (the kit's line box less its half-leading),
+      // stands 4 px or more from every band edge; a value no edge crosses stays where it was
+      var clear = L.values_clear_edges === true, edges = [];
+      if (clear) {
+        var eline = function (k) { return main.map(function (r, i) { return [K.round(px(i)), K.round(ys(r[k]))]; }); };
+        edges = [eline(eoh), eline(eol)].concat(eil && eih ? [eline(eih), eline(eil)] : []).map(function (ln) {
+          var xs_ = ln.map(function (q) { return q[0]; }), ys_ = ln.map(function (q) { return q[1]; });
+          var x_ = Math.min.apply(null, xs_), y_ = Math.min.apply(null, ys_);
+          return { subs: [ln], x: x_, y: y_, w: Math.max.apply(null, xs_) - x_, h: Math.max.apply(null, ys_) - y_ };
+        });
+      }
+      var span = function (ln, a, b) {   // an edge's highest and lowest y between x = a and x = b
+        var ys_ = [];
+        for (var q = 0; q + 1 < ln.length; q++) {
+          var p0 = ln[q], p1 = ln[q + 1], lo = Math.max(a, p0[0]), hi = Math.min(b, p1[0]);
+          if (lo > hi) continue;
+          [lo, hi].forEach(function (xq) { ys_.push(p1[0] === p0[0] ? p0[1] : p0[1] + (p1[1] - p0[1]) * (xq - p0[0]) / (p1[0] - p0[0])); });
+        }
+        return ys_.length ? [Math.min.apply(null, ys_), Math.max.apply(null, ys_)] : null;
+      };
+      var clear_y = function (x, vy, words) {
+        var w = c.measure(words, 'tick', 600), a = x - w / 2, b = x + w / 2, up = 0.864 * tick, dn = 0.136 * tick, gap = 4;
+        if (!edges.some(function (e) { return K.stroke_crosses(e, { x: a, y: vy - up, w: w, h: tick }); })) return vy;
+        var spans = edges.map(function (e) { return span(e.subs[0], a, b); }).filter(Boolean);
+        var ok = function (y) { return spans.every(function (sp) { return y + dn + gap <= sp[0] || y - up - gap >= sp[1]; }); };
+        var cand = spans.map(function (sp) { return sp[0] - gap - dn; }).filter(function (y) { return y <= vy && ok(y); });
+        return cand.length ? Math.max.apply(null, cand) : vy;
+      };
       // the history: one dot a period joined in the subject ink at the field's weight, broken where a period has no value;
       // the last value printed always, the others where they sit apart
       if (hist.length) {
@@ -98,7 +132,8 @@
         if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;
         // the first period's value gives way where it would touch the history's last value on a narrow plot (the table
         // keeps it); the last period's value always prints
-        vlab.push({ x: px(i), y: vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1, give: i === 0 && i !== main.length - 1 && hist.length > 0 });
+        // with values_clear_edges, cy is where it prints; y, its first place, still decides whether it prints
+        vlab.push({ x: px(i), y: vy, cy: clear ? clear_y(px(i), vy, K.fmt(r[ey], fy)) : vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1, give: i === 0 && i !== main.length - 1 && hist.length > 0, clear: clear });
         vdots.push({ x: px(i), y: ys(r[ey]), r: c.t('dot-vertex-radius') + 2 });
       });
       var setl = [], lbox = function (v) { var w = c.measure(v.words, 'tick', v.weight); return { x: v.x - w / 2 - 3, y: v.y - tick, w: w + 6, h: tick + 2 }; };
@@ -110,7 +145,7 @@
         var b = lbox(v);
         if ((!v.must || v.give) && clash(b)) return;
         setl.push(b);
-        c.text(v.x, v.y, v.words, { role: 'tick', weight: v.weight, anchor: 'middle', fill: 'label', halo: !!v.halo });
+        c.text(v.x, v.cy === undefined ? v.y : v.cy, v.words, { role: 'tick', weight: v.weight, anchor: 'middle', fill: 'label', halo: !!v.halo, clear_edges: !!v.clear });
       });
       // the outer band's ends at the last period
       var lr = main[main.length - 1], lx = px(main.length - 1) + 8;

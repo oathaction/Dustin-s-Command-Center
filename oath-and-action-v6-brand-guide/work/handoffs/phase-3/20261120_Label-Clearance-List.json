@@ -1,0 +1,29 @@
+{
+ "title": "Label clearance list: the charts the kit's edge guard would move if it applied to every spec",
+ "written": "2026-11-20T20:46:24Z",
+ "written_by": "the engineer (oa-engineer), board 3 apply pass, chat 9, item A4 (reply 9, DR-295)",
+ "what_this_is": "A list only. Nothing in it moved a chart. The kit's label clearance check (the opt-in edge guard, DD-E1, in work/build/chart-kit/checks.js crossing_faults) fails a band edge drawn under haloed words that a form marks clear_edges. This run applied that one test to every haloed word of every spec, as if every form marked them, and lists each chart where a band edge runs through a word, with the drawing width and the words.",
+ "how": "A scratch script (not in the repository) loaded the kit through oa-chart.mjs and checks.js, drew each spec in work/build/chart-kit/specs/ at every width the kit checks it at (the 1440 and 390 px exports on Newsprint and Charcoal, each guide column, and the sweep of every whole width from 256 px, or 224 for a rule plate, to the spec's artboard), and for a card form each mark on both grounds, then ran K.crossed_by(ink, word, edge => edge.band_edge && edge.seq < word.seq && word.halo) on every word: the guard's own condition without its clear_edges opt-in.",
+ "specs_checked": 96,
+ "drawings_checked": 43897,
+ "charts_it_would_move": [],
+ "result": "None. After S59's own key (below), no chart in the kit has a word a band edge runs through at any width it is drawn at, so turning the guard on for every form would move no chart today. Turning it on stays Dustin's call (DR-295); the kit's default is unchanged.",
+ "before_s59s_key": {
+  "run_at": "this pass, before labels.values_clear_edges was set in s59.json",
+  "specs_checked": 91,
+  "note": "The first run read 91 specs and left out the 5 card forms (S90, S91, S92, S94 and S95); the run after the key read their marks too, so the counts differ by those 5.",
+  "charts": [
+   {
+    "id": "S59",
+    "spec": "work/build/chart-kit/specs/s59.json",
+    "form": "fan-chart",
+    "rule": "14.77",
+    "label": "4.1",
+    "which": "the first projected period's median value, 2026",
+    "widths_px": "274 to 617",
+    "widths_count": 344,
+    "fixed_by": "labels.values_clear_edges: true in S59's own spec (board 3, reply 9): the value moves up 6.5 to 21.7 px at those 344 widths only, to the lowest place over its dot 4 px clear of every band edge; from 618 to 720 px no edge crosses it and it stays put; from 256 to 273 px it does not print, as before, since the form lets it give way on a narrow plot (the table keeps it); no other word moves, and no shape changes at any of the 465 widths from 256 to 720 px"
+   }
+  ]
+ }
+}

@@ -771,30 +771,48 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
     return "".join(out), h
 
 
-FEWER = {"C1", "C5", "D3", "E1", "X2", "X5"}   # CE-S23: titles whose head noun counts ("Policy advantages ...",
-#                                                "Incumbents defeated ...") take "fewer" where the others take "less"
+# Board 3, reply 16 (Rule 15.15's read-aloud line, the "The quality of ... rises" form): each variable's own title whole
+# (DR-265), then whether it rises or falls, starting with a rise and flipping at each minus sign, as System 1's read_aloud
+# carries the atlas's signs (DR-36). How each title enters the line, in the words Rule 14.143's walk already uses for the
+# variables the two share (phase3_ch14_complex_build.py, THE, OBJECT and PLURAL), so the guide says each variable one way:
+# (words before the title, plural). "The" before the four titles English needs it for; "the number of" before Variable C5,
+# as Loop B4's own reading in the atlas says it. A title that asks how often takes "goes up" and "goes down", since "how
+# often ... rises" stops the ear. A variable not listed here stops the build until the editor sets its words.
+SAY = {"A1": ("the ", False), "A4": ("", False), "A5": ("", False), "A6": ("", False), "B1": ("", False),
+       "C1": ("", True), "C2": ("", False), "C3": ("the ", False), "C4": ("", False), "C5": ("the number of ", False),
+       "D4": ("the ", False), "D5": ("the ", False), "D6": ("", False), "E1": ("", True), "EC6": ("", False)}
+
+
+def rises(name, up_, plural=False):
+    """A title, already lowercased and introduced, and which way it moves."""
+    if name.startswith("how often "):
+        return name + (" goes up" if up_ else " goes down")
+    return name + ((" rise" if up_ else " fall") if plural else (" rises" if up_ else " falls"))
 
 
 def read_aloud(codes, lids, closes=True):
-    """More or less at each variable, carrying the signs along the chain from a rise at the first (System 1's
-    read_aloud, from the atlas's signs)."""
+    """Whether each variable rises or falls, carrying the signs along the chain from a rise at the first (System 1's
+    read_aloud, from the atlas's signs), and for a loop, back at the start in the direction the signs give."""
     up, parts = True, []
 
-    def more(code, up_):
-        # a title that asks how often ("How often the primary decides the winner") reads "the primary decides the winner
-        # more often"; every other title takes more, less or fewer before it
-        name = lc(short(code))
-        if name.startswith("how often "):
-            return name[len("how often "):] + (" more often" if up_ else " less often")
-        return ("more " if up_ else "fewer " if code in FEWER else "less ") + name
+    def says(code, up_):
+        need(code in SAY, f"read_aloud: Variable {code} has no words in SAY yet")
+        pre, plural = SAY[code]
+        return rises(pre + lc(short(code)), up_, plural)
     for i, code in enumerate(codes):
-        parts.append(more(code, up))
+        parts.append(says(code, up))
         if i < len(lids) and link(lids[i])["polarity"] == "-":
             up = not up
-    line = ", ".join(parts)
     if closes:
-        line += ", and back to " + more(codes[0], up)
-    return line[0].upper() + line[1:] + "."
+        line = ", ".join(parts) + ", and back at the start, " + says(codes[0], up)
+    else:
+        line = (", ".join(parts[:-1]) + ", and " + parts[-1]) if len(parts) > 2 else " and ".join(parts)
+    line = line[0].upper() + line[1:] + "."
+    RA_SEEN.append((tuple(codes), tuple(lids), closes, line))
+    return line
+
+
+RA_SEEN = []      # every line read_aloud writes, with its variables and connections, for check()'s direction check
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -809,10 +827,11 @@ def read_aloud(codes, lids, closes=True):
 CSS = {k: C13.CSS[k] for k in ("dnp", "evr", "ev", "gr", "chip", "k", "rs", "gw", "nw2", "src", "nt", "hed", "sub", "mk")}
 # CR-S17 (the component engineer's request 3): tabular figures widen a chip ID's hyphen ("R - 06"; 6.06 to 8.42 px at the
 # data label size), and a chip's ID never lines up in a column (C-S4), so chapter 15's copy of chapter 13's chip drops them.
-# Chapter 13's own chip and Rule 18.24's code chip are approved work and wait for board 3
+# Board 3, reply 12 drops them from chapter 13's own chip as well, so the line below then finds nothing to take out; the
+# build stops only if the copy still sets tabular figures
 _TAB_ID = ".chip .id{font-variant-numeric:tabular-nums}"
-need(_TAB_ID in CSS["chip"], "chapter 13's chip style changed; reread CR-S17's line")
 CSS["chip"] = CSS["chip"].replace(_TAB_ID, "")
+need("tabular-nums" not in CSS["chip"], "chapter 13's chip style sets tabular figures again; reread CR-S17's line")
 STAGE = W + 2 * 16          # 328 px: the opener's limit on a 360 px screen, and every plate's narrow true width
 WIDE = 680                  # the wide true width, where the frame's content box holds it (D3-480; the shell's switch)
 GAP_A, GAP_PR, GAP_TRI = 32, 40, 16       # the column gaps of the wide compositions, inside 24 px gutters
@@ -1625,7 +1644,8 @@ def rule_15_6(book):
             {"label": "Step number", "value": "Bold, before the verb, from the atlas’s first connection: 1 raises"},
             {"label": "Inside the loop", "value": "The loop’s typed ID in bold, such as Loop R10, then reinforcing or balancing"},
             {"label": "Kind check", "value": "An even count of minus signs for reinforcing, odd for balancing; the build checks every numbered loop"},
-            {"label": "Read aloud", "value": "One sentence that carries more or less around the loop and back to the start"},
+            {"label": "Read aloud", "value": "One sentence that says whether each variable rises or falls, around the loop "
+                                             "and back to the start"},
         ],
         "related": ["11", "13", "18"],
         "builders": ["Number steps in the order of the loop’s own list of connections, and stop the build if a loop’s kind and "
@@ -1795,7 +1815,8 @@ def rule_15_8(book):
             {"label": "Direction", "value": "One way, first variable to last; an open chain never bends back into a loop"},
             {"label": "Combined sign", "value": "An even count of minus signs for the same direction, odd for the opposite"},
             {"label": "Core arrow", "value": "Beside the chain where the page shows both, with its own sign"},
-            {"label": "Read aloud", "value": "More or less at each variable, carrying the signs, as Rule 15.6 reads a loop"},
+            {"label": "Read aloud", "value": "Whether each variable rises or falls, carrying the signs, as Rule 15.6 reads a "
+                                             "loop"},
         ],
         "related": ["13"],
         "builders": ["Work out the combined sign by script from each connection’s record, and stop the build if it disagrees "
@@ -2207,10 +2228,16 @@ def rule_15_12(book):
                        f'{grade_word(link(x)["evidence"], gloss=False)}</p>' for i, x in enumerate(chain, 1)))
     words = f'<p class="k">Two grades, apart</p>{blocks}'
     key = reading_key(chain, layers=("Technology layer", "Core layer"))
+    # Board 3, reply 11: the note names the plate's red variable in words, so a reader who cannot see the red still learns
+    # which variable is the target; its red connections are the drawing's only two, which the step list names
+    tv = [t for t in r["targets"] if t not in LINK]
+    need(tv == ["B2"] and sorted(t for t in r["targets"] if t in LINK) == sorted(chain)
+         and node("B2")["title"] == "Availability of local reporting", "Reform R-32's targets or Variable B2's title changed")
+    acts = f'<p class="nt">It acts where the marks turn red: on both connections and on {vt("B2")}.</p>'
     # SD-9: in the page's order (one column, and for a screen reader at every width) the two grades come before the
     # step list; at 680 px the steps still sit under the drawing, with the grades in the right column across both rows
     body = (hed("Reform", "R-32", r["title"])
-            + f'<div class="fx g3"><div>{fig(svg)}{acts_note("R-32", r)}</div><div>{words}</div><div>{steps}</div></div>'
+            + f'<div class="fx g3"><div>{fig(svg)}{acts}</div><div>{words}</div><div>{steps}</div></div>'
             + f'<div class="kb"><p class="k">Reading a step</p>{key}</div>'
             + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
     need(body.index("Two grades, apart") < body.index("Each step") and body.index('class="ev"') > body.index("Two grades, apart"),
@@ -2967,13 +2994,16 @@ def rule_15_18(book):
     o_items = [f'{chip("Loop", "B3")} “{e(b3["title"])}”. {grade_word("well-supported")}, where entry is possible. '
                f'No numbered chain: “{e(others["B3"][1])}”',
                f'{chip("Loop", "R9")} “{e(r9["title"])}”. {grade_word("hypothesis")}. “{e(others["R9"][1])}”']
+    # board 3, reply 16: the loop's stations read aloud in read_aloud's form, rises or falls after each, from a rise at the
+    # first and flipping at each minus sign (Loop B2 has stations, not numbered variables, so it reads them here)
     up, parts = True, []
     for lab, s_ in zip(st, sg):
-        parts.append(("more " if up else "less ") + lab.split(" (")[0].lower())
+        parts.append(rises(lab.split(" (")[0].lower(), up))
         up = up if s_ == "+" else not up
-    ra = ", ".join(parts) + ", and back to " + ("more " if up else "less ") + st[0].lower() + "."
+    ra = ", ".join(parts) + ", and back at the start, " + rises(st[0].lower(), up) + "."
     ra = ra[0].upper() + ra[1:]
-    need(ra == "More household hardship, more automatic support, and back to less household hardship.", f"Loop B2 reads {ra!r}")
+    need(ra == "Household hardship rises, automatic support rises, and back at the start, household hardship falls.",
+         f"Loop B2 reads {ra!r}")
     words = (ra_p(ra)
              + f'<p class="k">The missing chain</p><p class="nt">The atlas: “{e(es[0])} {e(miss)}”</p>'
              + f'<p class="nt">Household hardship is “{e(rev)}”, which is {chip("Variable", "A4")} in the atlas’s model.</p>'
@@ -2988,8 +3018,8 @@ def rule_15_18(book):
              alt=(f"Loop B2 from our systems atlas, “{b2['title']}”, under a label reading Well supported, the atlas’s grade "
                   "for the mechanism; no numbered chain, which the atlas calls the weakest point. Two thin pills, Household "
                   "hardship and Automatic support (UI, credits), joined by hollow lines: plus, raises, over the top, and minus, "
-                  "lowers, under the bottom, with no step numbers. The loop reads: more household hardship, more automatic "
-                  f"support, and back to less household hardship. Beside it, the atlas’s words: {es[0]} {miss} Household "
+                  f"lowers, under the bottom, with no step numbers. The loop reads: {ra} Beside it, the atlas’s words: "
+                  f"{es[0]} {miss} Household "
                   f"hardship is {rev}, which is Variable A4 in the atlas’s model. In the pill, UI is unemployment insurance, "
                   f"the atlas’s example of {ui[0]} that {ui[1]}. Then the atlas’s other conceptual loops: Loop B3, "
                   f"{b3['title']}, well supported where entry is possible, with no numbered chain; Loop R9, {r9['title']}, "
@@ -4002,8 +4032,18 @@ def rule_15_22(book):
            + "".join(f'<li><span class="km {c}" aria-hidden="true">{f"<span class=\"kn\">{n}</span>" if n else ""}</span>'
                      f'<span>{e(w)}</span></li>' for c, n, w in marks)
            + "</ul>")
+    # Board 3, reply 18: the note prints the rule that chose stages 18 and 20's two laws, as the files show it. Both are the
+    # child tax credit's own laws, the credit Rule 14.36's chart (S30) draws: the workflow sources file's FS row "Repeal or
+    # sunset" (read November 11, 2026) quotes section 11022's end date and says section 70104 struck it
+    wf_row("FS", "Repeal or sunset", "Public Law 115-97, sec. 11022, applied its child tax credit rules to",
+           "and before January 1, 2026", "Public Law 119-21, sec. 70104, struck the end date")
+    s18, s20 = (next(s for s in stages if s.n == n_) for n_ in (18, 20))
+    need("Public Law 115-97" in s18.cites[0][0] and "Public Law 119-21" in s20.cites[0][0], "stages 18 and 20 changed their laws")
+    why_two = ('<p class="nt">Stages 18 and 20 take their examples from one credit, the child tax credit, whose top amount '
+               'Rule 14.36 charts. The 2017 tax law set its rules for the credit to end after 2025, and the 2025 tax law '
+               'struck that end date.</p>')
     # DF-10: the atlas's snapshot date closes the atlas's part, and the stages' sources follow it, as Rule 15.24 orders them
-    body = (head + rec + lab + key + wf_html(groups)
+    body = (head + rec + lab + key + wf_html(groups) + why_two
             + src("route FS, its instrument and who acts").replace("United States.</p>", "United States. Each stage’s "
                                                                     "source as named beside it, with the date we retrieved it.</p>"))
     book.add("s-15-22-correct", body, rule="15.22", readable=True, wide=True,
@@ -5648,6 +5688,27 @@ def check(data, book):
         tot = frag_b + rules_b + css_b + SHELL_CHOOSER_BYTES
         INTERACTION_BYTES[:] = [frag_b, rules_b, css_b, SHELL_CHOOSER_BYTES, tot]
         # DR-271 (November 13, 2026): R4-6's 75,000 bytes is a figure the build reports, not a stop (main() prints it)
+    # Board 3, reply 16: the direction check on every read-aloud line read_aloud wrote. Each variable's title stands whole
+    # (DR-265), and the verb after it rises at the first and flips at each minus sign; a loop's line comes back at the
+    # start rising only when the loop reinforces, as the atlas's own record of its kind says
+    ups, downs = (" rises", " rise", " goes up"), (" falls", " fall", " goes down")
+    for codes, lids, closes, line in RA_SEEN:
+        low, at, want = line[0].lower() + line[1:], 0, True
+        for i, c in enumerate(list(codes) + ([codes[0]] if closes else [])):
+            t = SAY[c][0] + lc(short(c))
+            j = low.find(t, at)
+            if j < 0:
+                fails.append(f"read-aloud line {line!r}: Variable {c}'s title is not whole in its place")
+                break
+            at = j + len(t)
+            if not any(low.startswith(v, at) for v in (ups if want else downs)):
+                fails.append(f"read-aloud line {line!r}: Variable {c} should {'rise' if want else 'fall'} at step {i + 1}")
+            said = want
+            if i < len(lids) and link(lids[i])["polarity"] == "-":
+                want = not want
+        lp = [p for p in LOOP.values() if [c for c, _ in p["chain"]] == list(codes) and p["links"] == list(lids)]
+        if closes and (not lp or said != (lp[0]["type"] == "R")):
+            fails.append(f"read-aloud line {line!r}: it is no atlas loop, or it comes back against the loop's kind")
     # the model's own consistency, which every rule here leans on
     for k, p in LOOP.items():
         if p["links"] and ("R" if minus_count(p["links"]) % 2 == 0 else "B") != p["type"]:

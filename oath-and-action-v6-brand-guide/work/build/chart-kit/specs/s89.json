@@ -9,6 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Stafford Act and the rule of the Federal Emergency Management Agency (FEMA), 44 CFR part 206, as in force on November 9, 2026",
+  "evidence_layout": "beside",
   "title": "Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help.",
   "measure_line": "The steps from a disaster to federal help in 42 U.S.C. 5170 and 5191 and 44 CFR 206.33 to 206.40, 206.112 and 206.202, with who acts at each step and the longest time the law allows",
   "notes": [
@@ -202,7 +203,8 @@
     "Design director DD-I1 to DD-I5 (21:22 UTC): the emergency request's link drops down the middle of the local lane, clear of the lane rules; four equal lanes, every head on one line on one baseline (lanes only where each holds 150 px and its head); set-in boxes at 44 px on a phone, so each link shows a 16 px stem; no lone last word: \"the law’s limit\" and \"30 days\" held on one line (typography.hold); a hold on words in the table's row header column (\"individual help\") fails the kit's parity check, reported to the engineer (IM-E6). Lanes sized by a stated rule (DD-I2's Should): a lane's share follows the steps it holds alone, so Local, which holds none alone, takes 0.6; State and tribal (two) and Federal (three) 1.2 each; Residents (one) 1.0; each head on one line.",
     "Editor's ruling (21:24 UTC, from the design director's request): the branch's eyebrow reads \"In place of step 3\", so \"Or\" no longer prints twice.",
     "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate).",
-    "Fix pass after rounds 4 and 5 (RP-18, November 16, 2026): the Federal Emergency Management Agency is named in full, with its short form, at its first use in the grade line, the plate's first words after the evidence word, and at its first use in the alt (step 2), which a screen reader hears apart from the plate (H02)."
+    "Fix pass after rounds 4 and 5 (RP-18, November 16, 2026): the Federal Emergency Management Agency is named in full, with its short form, at its first use in the grade line, the plate's first words after the evidence word, and at its first use in the alt (step 2), which a screen reader hears apart from the plate (H02).",
+    "Board 3, reply 17 (CR-S19, the apply pass, chat 9): evidence_layout \"beside\" keeps the grade line beside the evidence chip, wrapping under its own first word, where it would drop under the chip; the kit’s default stays. Only the head’s layout moves; no word changes."
   ],
   "source_line": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, United States. Retrieved November 12, 2026. Times are the law’s limits."
 }

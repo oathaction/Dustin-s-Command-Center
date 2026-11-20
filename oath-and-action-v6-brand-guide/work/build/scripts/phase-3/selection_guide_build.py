@@ -1810,6 +1810,8 @@ CSS = (
     ".sg-q{position:relative;padding:var(--oa-space-300) 0}"
     ".sg-q:last-child{padding-bottom:0}"
     ".sg-q+.sg-q{border-top:var(--oa-border-width-hairline) solid var(--oa-color-border-hairline)}"
+    # board 3, reply 8 (RP-14, A3): each question line, and the closing block's line, is an h4 under the plate's label,
+    # which the page prints as an h3; the class sets every property the line had as a paragraph, so it looks the same
     ".sg-qt{margin:0 0 var(--oa-space-200);font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);"
     "text-wrap:balance;max-width:34em;overflow-wrap:break-word;break-after:avoid}"
     # tiles on one column grid in rem, so larger text takes fewer columns (AX 1.8); 7.25rem holds the widest unbroken
@@ -1939,14 +1941,14 @@ def build():
             go = (f'<p class="sg-gl" id="s-14-sg-go-{n}" data-return-label="{e(family + " in " + label)}">'
                   f'{fill(words, rid)}</p>')
         qs.append(
-            f'<li class="sg-q" data-group="{n}"><p class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</p>{go}'
+            f'<li class="sg-q" data-group="{n}"><h4 class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</h4>{go}'
             f'<a class="oa-link-skip sg-skip" href="{nxt}">Skip these {len(fs)} forms</a>'
             f'<ul class="sg-fs" role="list" aria-labelledby="s-14-sg-q-{n}">{"".join(items)}</ul></li>')
     key = "".join(f"<div><dt>{e(t)}</dt><dd>{e(w)}</dd></div>" for t, w in TIER_KEY)
     # the road to group 18's three charts in full and to chapter 15's routes, after the last question (call 17, RP-3)
     full_t = printed[FULL_GROUP]
     back = e(full_t + " in " + label)
-    full = (f'<div class="sg-full"><p class="sg-qt" id="s-14-sg-full-t">{e(full_t)}</p><p class="sg-gl">{e(FULL_LEAD)}</p>'
+    full = (f'<div class="sg-full"><h4 class="sg-qt" id="s-14-sg-full-t">{e(full_t)}</h4><p class="sg-gl">{e(FULL_LEAD)}</p>'
             f'<ul class="sg-fu" role="list" aria-labelledby="s-14-sg-full-t">'
             + "".join(f'<li id="s-14-sg-go-{rid.split(".")[1]}" data-return-label="{back}">{go_link(rid)}: {e(w)}</li>'
                       for rid, w in FULL)
@@ -2008,7 +2010,7 @@ def check(frag, by_group, printed):
         if not block:
             faults.append(f"group {n} has no block")
             continue
-        if f'id="s-14-sg-q-{n}">{e(printed[n])}</p>' not in block.group(1):
+        if f'<h4 class="sg-qt" id="s-14-sg-q-{n}">{e(printed[n])}</h4>' not in block.group(1):
             faults.append(f"group {n}'s question line is not the chapter's title")
         for fm in fs:
             m = re.search(rf'<a href="#rule-14-{fm["num"]}"[^>]*>(.*?)</a>', block.group(1))
@@ -2048,7 +2050,13 @@ def check(frag, by_group, printed):
     for t, w in TIER_KEY:
         if t not in TIER_ORDER or re.search(r"\u2014|\u2011|'", w):
             faults.append(f"the tier key's line for {t} needs a look")
-    for bad, why in ((r"<h[1-6]\b", "a heading"), (r"\sstyle=", "a style attribute"), (r"#[0-9a-fA-F]{3,6}\b(?![\w-])", "a literal color"),
+    # board 3, reply 8 (A3): the question lines and the closing block's line are h4s, one each, and the fragment holds no
+    # other heading (the page prints the plate's label as the h3 above them)
+    heads = re.findall(r"<h([1-6])\b([^>]*)>", frag)
+    if [h for h in heads if h[0] != "4" or not h[1].startswith(' class="sg-qt" id="s-14-sg-')] or len(heads) != len(by_group) + 1:
+        faults.append(f"the fragment holds {len(heads)} headings; it holds one h4 per question and one for the closing block, "
+                      f"{len(by_group) + 1}, and no other")
+    for bad, why in ((r"<h(?!4 class=\"sg-qt\" id=\"s-14-sg-)[1-6]\b", "a heading other than a question line"), (r"\sstyle=", "a style attribute"), (r"#[0-9a-fA-F]{3,6}\b(?![\w-])", "a literal color"),
                      ("—", "an em dash"), ("‑", "U+2011"), (r"<title\b", "a title"), (r"\stitle=", "a title attribute")):
         body = frag.split("</style>", 1)[1]
         body = re.sub(r'href="#[^"]+"', "", body)
@@ -2074,7 +2082,7 @@ def check(frag, by_group, printed):
         faults.append(f"{len(skips)} skip links, not {len(order) + 1}")
     # the road (call 17): each of Rules 14.142 to 14.144 once in the closing block, after the last question and before
     # the guide ends, with chapter 15's routes; the lines under questions sit between the question line and its skip link
-    full = re.search(r'</ol><div class="sg-full"><p class="sg-qt" id="s-14-sg-full-t">([^<]+)</p>(.*?)</div></div>$',
+    full = re.search(r'</ol><div class="sg-full"><h4 class="sg-qt" id="s-14-sg-full-t">([^<]+)</h4>(.*?)</div></div>$',
                      frag.rstrip("\n"), re.S)
     if not full:
         faults.append("the closing block does not follow the last question at the guide's end")
@@ -2086,7 +2094,7 @@ def check(frag, by_group, printed):
             faults.append(f"the closing block links {[f'{a}.{b}' for a, b, _, _ in got]}, not Rules 14.142 to 14.144 and 15.22")
     for n, (rid, _) in FULL_AT.items():
         num = rid.split(".")[1]
-        if not re.search(rf'id="s-14-sg-q-{n}">[^<]+</p><p class="sg-gl" id="s-14-sg-go-{n}"[^>]*>[^<]*'
+        if not re.search(rf'id="s-14-sg-q-{n}">[^<]+</h4><p class="sg-gl" id="s-14-sg-go-{n}"[^>]*>[^<]*'
                          rf'<a class="oa-link sg-go" href="#rule-14-{num}" data-oa-xref>Rule {re.escape(rid)}</a>[^<]*</p>'
                          rf'<a class="oa-link-skip sg-skip"', frag):
             faults.append(f"group {n}'s line to Rule {rid} is missing or out of place")

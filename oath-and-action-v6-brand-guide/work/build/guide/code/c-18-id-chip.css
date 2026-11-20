@@ -34,10 +34,9 @@
   overflow-wrap: anywhere;
 }
 
-/* An ID never breaks at its hyphen */
+/* An ID never breaks at its hyphen. It sets the font's own figures, so "R-04" keeps the hyphen's own width */
 .oa-chip-id {
   white-space: nowrap;
-  font-variant-numeric: tabular-nums;
 }
 .oa-chip--link {
   min-height: var(--oa-size-target-minimum);

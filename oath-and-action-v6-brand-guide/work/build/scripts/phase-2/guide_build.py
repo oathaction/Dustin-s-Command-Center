@@ -654,10 +654,12 @@ def process_fragment(src, sid, where, literal_ok=False):
         heads = re.findall(r"<style\b.*?</style>", re.search(r"<head\b.*?</head>", s, re.S | re.I).group(0), re.S | re.I) if re.search(r"<head\b", s, re.I) else []
         s = "".join(heads) + (m.group(1) if m else "")
     s = re.sub(r"<!doctype[^>]*>", "", s, flags=re.I)
-    # heading rule: no h1 to h6 inside a specimen (map section 5)
-    hs = re.findall(r"<h[1-6]\b", s, re.I)
+    # heading rule: no h1 to h6 inside a specimen (map section 5); the one plate in HEADING_PLATES holds its own level only
+    allowed = HEADING_PLATES.get(sid, {}).get("fragment")
+    hs = [h for h in re.findall(r"<h([1-6])\b", s, re.I) if int(h) != allowed]
     if hs:
-        R.warn(where, f"{sid}: {len(hs)} heading element(s) inside the specimen; use styled text (heading rule)")
+        R.warn(where, f"{sid}: {len(hs)} heading element(s) inside the specimen; use styled text (heading rule)"
+                      + (f"; this plate holds h{allowed} headings only (board 3, reply 8)" if allowed else ""))
     if "—" in re.sub(r"<[^>]+>", "", s) and "data-allow-emdash" not in s:
         R.warn(where, f"{sid}: an em dash in the text (DR-79); only W21's labeled specimen may show one, with data-allow-emdash")
     # colors only through var(--oa-...): look for literal colors outside var() fallbacks
@@ -851,6 +853,10 @@ EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale", "literal")
 # <svg>, the half the avoid plate sets under its bar). Its better half and every other specimen keep the literal color
 # check, and nothing else in the check changes. The guide check needs no exemption: neither ink is a guide ink.
 LITERAL_HALF = {"s-14-124-sketch": 0}
+# Board 3, reply 8 (RP-14, A3): the one plate that holds headings. Chapter 14's "Choose a chart" sits at the head of its
+# chapter with no frame (DD-G6), so its label prints as an h3 under the chapter's h2 and its fragment's question lines are
+# h4s; every other plate's fragment holds no heading (map section 5), and guide_check.js holds the same one plate.
+HEADING_PLATES = {"s-14-selection-guide": {"label": 3, "fragment": 4}}
 # Call 11, as the main session ruled it (18:27): the words a stage's fragment holds and the words its alt carries, by the
 # test that counted the 321 (the engineer's reach11.py): a run of letters and digits, case folded; text inside style, script
 # or defs, or under an element marked aria-hidden="true" or hidden, is left out; an inner aria-label's words are counted.
@@ -997,7 +1003,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         # Stage C (D2-1103): the words sit in one span, so the label stays one flex item beside its glyph. Bare words
         # broke into one flex item per ID once D2-975 held IDs whole, which set a .6em gap for a space and kept the
         # label from wrapping at 200 percent text.
-        head.append(f'<p class="plate-label">{g}<span class="plate-label-t">{e(lab)}</span></p>')
+        # board 3, reply 8 (A3): the heading plate's label is a heading over its fragment's headings, in the same look
+        ht = f'h{HEADING_PLATES[spec_id]["label"]}' if spec_id in HEADING_PLATES else "p"
+        head.append(f'<{ht} class="plate-label">{g}<span class="plate-label-t">{e(lab)}</span></{ht}>')
     size_bits = []
     if width:
         size_bits.append(f"{num(width)} px wide" if isinstance(width, (int, float)) else f"{e(str(width))} wide")
@@ -1545,6 +1553,28 @@ def related_inline(nums, ctx, where):
     return f'<ul class="rel-inline">{"".join(items)}</ul>' if items else ""
 
 
+def related_rules_inline(ids, ctx, where, self_id):
+    """Board 3, reply 22 (RS-5, A15): a rule's related_rules as links named by the rule, as every cross-reference in the
+    guide is ("Rule 14.29"), each landing on its rule's block; one that names no rule on the page, or the rule itself,
+    is a warning and prints nothing. No rule's words change: the list comes from the entry's own related_rules."""
+    items, seen = [], set()
+    for x in ids or []:
+        m = re.fullmatch(r"(\d{2})\.(\d{1,3})", str(x).strip())
+        if not m:
+            R.warn(where, f"related rule {x!r} is not a rule number such as 14.29")
+            continue
+        rid, anchor = f"{m.group(1)}.{m.group(2)}", f"rule-{m.group(1)}-{m.group(2)}"
+        if rid == self_id or rid in seen:
+            R.warn(where, f"related rule {rid} is {'the rule itself' if rid == self_id else 'listed twice'}")
+            continue
+        seen.add(rid)
+        if anchor not in ctx["rule_anchors"]:
+            R.warn(where, f"related rule {rid} is not a rule on the page, so its link would land on nothing")
+            continue
+        items.append(f'<li><a class="xref" href="#{anchor}">Rule {rid}</a></li>')
+    return f'<ul class="rel-rules">{"".join(items)}</ul>' if items else ""
+
+
 def specs_list(specs_rows, tokens, where):
     rows = []
     for s in specs_rows or []:
@@ -1737,8 +1767,11 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
         foot.append(f'<div class="foot-block foot-specs"><p class="label">Specifications</p>{sl}{fl}</div>')
     pair = []
     rel = related_inline(r.get("related"), ctx, where)
-    if rel:
-        pair.append(f'<div class="foot-block foot-related"><p class="label">Related chapters</p>{rel}</div>')
+    # board 3, reply 22 (A15): the rule's related rules print as rule links under its related chapters, in the same block
+    rrl = related_rules_inline(r.get("related_rules"), ctx, where, rid)
+    if rel or rrl:
+        pair.append('<div class="foot-block foot-related">' + (f'<p class="label">Related chapters</p>{rel}' if rel else "")
+                    + (f'<p class="label">Related rules</p>{rrl}' if rrl else "") + '</div>')
     if r.get("builders"):
         pair.append(f'<div class="foot-block foot-builders"><p class="label">For builders</p>{paras(r.get("builders"), ctx)}</div>')
     if pair:
@@ -2125,6 +2158,12 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         extra_plate(x)
     all_tokens, all_files, rule_related = [], [], []
     starts = {str(g["before_rule"]): g for g in groups}
+    # board 3, reply 8 (RP-14, A3): a chapter file's "group_heading_level": 3 prints its group heads as h3 headings, at its
+    # rules' level under the chapter's h2 (chapter 14, from phase3_ch14_build.py); without it a group head is a paragraph
+    gl = None if placeholder else (data or {}).get("group_heading_level")
+    if gl not in (None, 3):
+        R.warn(where, f"\"group_heading_level\" is {gl!r}; only 3 is known, the rules' own level")
+    gtag = "h3" if gl == 3 else "p"
     for r in rules:
         r = normalize_rule(r)
         rid = str(r.get("id"))
@@ -2135,8 +2174,8 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         if g:
             gid = group_id(num, g)
             body.append(f'<div class="rule-group" id="{gid}" data-group="{e(str(g.get("number")))}">'
-                        f'<p class="rg-head"><span class="rg-n"><span class="rg-w">Group</span> {e(str(g.get("number")))}</span> '
-                        f'<span class="rg-t">{inline(g.get("title"))}</span></p><p class="return" hidden></p>'
+                        f'<{gtag} class="rg-head"><span class="rg-n"><span class="rg-w">Group</span> {e(str(g.get("number")))}</span> '
+                        f'<span class="rg-t">{inline(g.get("title"))}</span></{gtag}><p class="return" hidden></p>'
                         f'{paras(g.get("line"), cctx, "rg-line")}</div>')
             toc.append((gid, "group", f'{g.get("number")} {g.get("title")}'))
         h, anchor, title = render_rule(num, r, specs, tokens, cctx, amp_svg, demo=demo)

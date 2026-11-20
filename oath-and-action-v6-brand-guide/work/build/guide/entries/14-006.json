@@ -4,8 +4,8 @@
  "rule": [
   "Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule 05.5’s keyline, a 1 px edge around the red, and with its own label. Every other series takes the context ink, the gray Rule 05.7 gives each series the title does not name. Where the title names one bar, every other bar takes the light fill on Newsprint, a paler gray, so the named bar still stands apart in gray print, and keeps the context ink on Charcoal.",
   "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s plate, keeps the light fill with its label.",
-  "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the reader’s question follows takes Charcoal at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s diagram. A map gives the red only to a place its title names as a point, such as the town on Rule 14.118’s locator.",
-  "The named mark gives up the red and takes Charcoal at the subject weight when an error or a step the reader can take holds the red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
+  "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the reader’s question follows takes the text’s ink at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s diagram. A map gives the red only to a place its title names as a point, such as the town on Rule 14.118’s locator.",
+  "The named mark gives up the red and takes the text’s ink at the subject weight when an error or a step the reader can take holds the red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
   "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, whose size follows its data, takes Charcoal at any size, and so does a named mark that would pass that share, such as a tall column in a short run."
  ],
  "use_when": null,
@@ -49,12 +49,12 @@
   },
   {
    "label": "A chart of one mark",
-   "value": "One line, bar or path, with no other mark to set it apart from, in Charcoal at the subject weight, the title’s value labeled",
+   "value": "One line, bar or path, with no other mark to set it apart from, in the text’s ink at the subject weight, the title’s value labeled",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
    "label": "A diagram’s path",
-   "value": "The path the question follows in Charcoal at the subject weight and the branches it leaves in the context ink; where the reader’s own case picks the path, as in a decision tree, every branch in one ink; no red",
+   "value": "The path the question follows in the text’s ink at the subject weight and the branches it leaves in the context ink; where the reader’s own case picks the path, as in a decision tree, every branch in one ink; no red",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
@@ -64,17 +64,17 @@
   },
   {
    "label": "An error, a step or a sign",
-   "value": "Charcoal at the subject weight, with the label",
+   "value": "The text’s ink at the subject weight, with the label",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
    "label": "A party tie",
-   "value": "A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate, or a policy readers link to one party: Charcoal at the subject weight, with the label",
+   "value": "A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate, or a policy readers link to one party: the text’s ink at the subject weight, with the label",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
    "label": "Two findings",
-   "value": "Both in Charcoal at the subject weight, each with its label"
+   "value": "Both in the text’s ink at the subject weight, each with its label"
   },
   {
    "label": "A named area, or past 5 percent of the drawing",
