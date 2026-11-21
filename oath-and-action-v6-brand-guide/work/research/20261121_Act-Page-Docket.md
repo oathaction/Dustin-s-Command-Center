@@ -48,3 +48,41 @@ Others weighed and set aside: the FCC's Internet of Things labeling notice (comm
 ## For the page
 
 A process piece leaves the side to the reader (Rule 01.22): the page explains what the rule would do, who decides, by when, and how a comment is made and read, and asks the reader for nothing but taking part if they choose. The one way to take part is the link to the comment page (Rule 11.4, the one working red). Print the docket number, the close date with its time zone, the rule's citation and "checked November 21, 2026" on the page.
+
+## Added 20:17 to 20:19 UTC: answers to the design director’s R3 and R5
+
+Read by the main session from two primary sources: H.R. 7008's bill status file on govinfo (`https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119hr7008.xml`, HTTP 200, updated October 1, 2026) and the rule's own text in govinfo's PDF, page by page (PDF pages 1 to 10 are Federal Register pages 73717 to 73726).
+
+### R3 (a) and (b): H.R. 7008's committee steps
+
+| Date | Step | Source |
+|---|---|---|
+| January 12, 2026 | Introduced; referred to the House Committee on House Administration | Bill status, actions |
+| January 14, 2026 | Committee consideration and markup session held; ordered to be reported (amended) by the yeas and nays, 7 to 4 | Same |
+| February 3, 2026 | Reported (amended) by the Committee on House Administration, H. Rept. 119-479; placed on the Union Calendar, Calendar No. 409 | Same |
+| July 22, 2026 | Passed the House 232 to 198 (roll no. 280), after a motion to recommit failed 211 to 218 (roll no. 279) | Same; research ledger P7-019 |
+| September 30, 2026 | Cloture on the Senate's motion to proceed not invoked, 53 to 47 (record vote 253) | Same; P7-019 |
+
+**(a) Hearing.** The bill status file lists no committee hearing for H.R. 7008: the committee's activities are "Referred To", "Markup By" and "Reported By" only. Print the step as a markup, never as a hearing.
+**(b) Committee vote.** Yes: 7 to 4 on January 14, 2026, to report the bill as amended.
+
+### R3 (c): an advance notice before the proposed rule?
+
+The rule's background (II.B, pages 73719 to 73720) and its section IV.B (pages 73722 to 73723) name no advance notice of proposed rulemaking. The steps the rule itself records are:
+
+| Date | Step | Page |
+|---|---|---|
+| 2001, 2010 and July 2020 | FDA states that NAC-containing products are excluded from the dietary supplement definition (a 2001 response to a health claim petition; a 2010 response to an NDI notification; July 2020 warning letters to companies selling hangover products labeled as supplements) | 73719 to 73720 |
+| 2021 | Two citizen petitions ask FDA to conclude that NAC is not excluded (dockets FDA-2021-P-0523 and FDA-2021-P-0938); one also asks for notice-and-comment rulemaking if FDA keeps its position | 73720 |
+| March 31, 2022 | FDA's joint final response denies one petition in full and the other in part, and says it is considering rulemaking | 73720 |
+| April 22, 2022 | Draft enforcement discretion guidance (87 FR 24170), with a 30-day comment period; it says FDA was likely to propose such a rule if no safety concern arose | 73723 |
+| August 2, 2022 | Final enforcement discretion guidance (87 FR 47220): FDA will not act against certain NAC products labeled as supplements until it completes rulemaking or denies the remaining request | 73720 |
+| November 17, 2026 | The proposed rule (91 FR 73717); comments open until January 19, 2027 | 73717 |
+
+So the Act page's step 1 is the 2021 petitions (or the 2022 response), never an advance notice. "Names no advance notice" is what the rule's text shows; a search of the docket on Regulations.gov could not be run (403).
+
+### R5: what the rule reports from each side (Rule 01.22)
+
+- **Those who asked for the change.** "In 2021, we received two citizen petitions requesting that we conclude that NAC is not excluded from the definition of dietary supplement under section 201(ff)(3)(B) of the FD&C Act" (page 73720). The rule does not name the petitioners in the text read.
+- **The case against, as the rule states it.** The rule records no objector. It says: "To date, we have not received any comments expressing concern or providing data to demonstrate that allowing the sale of NAC in or as a dietary supplement would impact drug development or identifying any other concerns" (page 73723). The concern the law itself guards is new drug development: the exclusion clause exists in part "to protect the incentives for new drug development" (page 73721), and FDA "invite[s] comment on whether the sale of NAC-containing products labeled as dietary supplements in the United States has negatively impacted NAC drug development or is anticipated to in the future" (page 73723). FDA's own earlier position, from 2001 to 2022, was that NAC is excluded (pages 73719 to 73720).
+- **For the page (DR-93).** The record does not hold two sides of equal length. Print what each side has on the record: the petitioners' request, FDA's earlier position with its reason in the law, and the rule's own statement that no comment so far has raised a concern, with the question FDA asks commenters. Do not write an opponents' paragraph the record does not support.
