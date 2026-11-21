@@ -21,7 +21,8 @@ Drawing methods (the round 0 pilot measures each):
 The weight gates (Phase 3 proposal, section 3, DR-227): chapter 13 at most 0.25 MB, chapter 15 at most 0.60 MB (warnings
 that --strict turns into failures); chapter 14 with the chart kit at most 2,803,941 bytes (DR-238; 1.75 MB until board 1),
 a hard stop in every mode; the fonts as their own part, checked against the font manifest's bytes; a projection of the
-whole page, today's bytes plus the allocation of every chapter not yet built, against 15.5 MB; and each chapter 14
+whole page, today's bytes plus the allocation of every chapter not yet built, against 15.5 MB (a note, the early
+warning, since chat 10: the Gate 3 report's section 9 and DR-271); and each chapter 14
 specimen against its tier's average.
 
 The per-plate share (board 1 apply, item 3): the build report carries chapter 14's room under its stop, after the chart
@@ -51,6 +52,8 @@ PAGE_BUDGET = 15.5 * MB
 # every mode. Every allocation inside the page (chapter ceilings, chapter 14's stop, the chart kit and map geometry parts,
 # the rules' allowance, a chart's tier average) is a figure the build reports as a note; the projection over 15.5 MB stays a
 # warning, the page limit's early warning.
+# Chat 10: the Gate 3 report Dustin approved (section 9) has the build report the projection past 15.5 MB and not stop on it,
+# so it is a note marked as the early warning, and a strict build passes; the line stays at 15.5 MB.
 PAGE_LIMIT = 16 * MB
 # The allocation of each chapter not yet built (proposal section 3): Phase 3's three at their ceilings, Phase 4's seven
 # at their own figures, Phase 5's two sharing 0.40 MB.
@@ -357,10 +360,15 @@ def gates(weights, charts, fonts_file_bytes, present, warn, note=None):
                             f"the 15.5 MB warning"
                             + (f"; today's {r4['built_chapters_counted']} built chapters other than 14 weigh {r4['built_chapters_median']:,} bytes at the "
                                f"median and {r4['built_chapters_mean']:,} on average" if others else "") + " (ST-S10)")
+    # Chat 10: the Gate 3 report Dustin approved (section 9, "Page weight") has the build report a projection past the 15.5 MB
+    # line and not stop on it (DR-271); so it prints as a note, marked as the early warning, and a strict build passes. The
+    # line stays at 15.5 MB, and only the page itself past 16 MB stops a build (above)
+    rec["past_15_5mb"] = proj > PAGE_BUDGET
     if proj > PAGE_BUDGET:
-        warn("page weight", f"the projected page weighs {proj / MB:.2f} MB (today's {weights['bytes'] / MB:.2f} MB plus "
+        note("page weight", f"early warning: the projected page weighs {proj / MB:.2f} MB (today's {weights['bytes'] / MB:.2f} MB plus "
                             f"{sum(unbuilt.values()) / MB:.2f} MB for the chapters not yet built and {sum(held.values()) / MB:.2f} MB still to come in "
-                            f"chapters being built), over its budget of {PAGE_BUDGET / MB:.1f} MB")
+                            f"chapters being built), past the {PAGE_BUDGET / MB:.1f} MB line, {proj - PAGE_BUDGET:,.0f} bytes over it and "
+                            f"{PAGE_LIMIT - proj:,.0f} under the 16 MB limit; reported, not failed (Gate 3 report, section 9; DR-271)")
     return stop, rec
 
 
@@ -439,7 +447,7 @@ def self_test():
     cases.append(("DR-271: a specimen far over its form's average is reported", base, {"s-14-s99": {"tier": "core", "bytes": 3 * 8 * 1024 + 1}}, 300_000, set(), "note", "far over"))
     cases.append(("a specimen just under three times passes", base, {"s-14-s98": {"tier": "core", "bytes": 3 * 8 * 1024}}, 300_000, set(), "none", "far over"))
     w = json.loads(json.dumps(base)); w["bytes"] = int(PAGE_BUDGET - sum(ALLOCATION.values()) + 1 + 100_000)
-    cases.append(("a projection over the budget", w, {}, 300_000, set(), "warn", "projected page"))
+    cases.append(("chat 10: a projection past 15.5 MB is reported as the early warning, never failed (Gate 3 report section 9, DR-271)", w, {}, 300_000, set(), "note", "early warning: the projected page"))
     w = json.loads(json.dumps(base)); w["chapters"]["13"] = {"bytes": int(CEILING["13"]) + 1}
     cases.append(("DR-271: chapter 13 over its ceiling is reported", w, {}, 300_000, {"13"}, "note", "chapter 13"))
     w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": int(CEILING["15"]) + 1}

@@ -80,53 +80,69 @@ export function today() {
 
 // The plate's own style, scoped by class: the frame, the scaled drawing, the switch and the overlay. Colors only by token.
 export const PLATE_CSS = `
-.oa-app-plate{display:grid;gap:8px;max-width:100%}
-.oa-app-switch{display:flex;align-items:center;gap:8px;min-height:44px;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.875rem/1.3 var(--oa-type-label-font-family);color:var(--oa-color-text-primary)}
-.oa-app-switch input{width:20px;height:20px;margin:0;accent-color:var(--oa-color-action-primary-background, var(--oa-color-text-primary))}
-.oa-app-switch input:focus-visible{outline:2px solid var(--oa-color-focus-ring, var(--oa-color-text-primary));outline-offset:2px}
-.oa-app-frame{border:1px solid var(--oa-color-border-strong);background:var(--oa-color-surface-white);max-width:100%}
+.oa-app-plate{display:grid;gap:8px;max-width:100%;margin:0 0 32px}
+.oa-app-head{margin:0;font:var(--oa-type-label-font-style) var(--oa-type-label-font-weight) 0.8125rem/1.3 var(--oa-type-label-font-family);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--oa-color-text-primary)}
+.oa-app-size{margin:0;font:var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) 0.875rem/1.4 var(--oa-type-caption-font-family);color:var(--oa-color-text-secondary)}
+.oa-app-switch{display:inline-flex;align-items:center;gap:8px;min-height:44px;font:var(--oa-type-ui-font-style) var(--oa-type-ui-font-weight) var(--oa-type-ui-font-size)/1.3 var(--oa-type-ui-font-family);color:var(--oa-color-text-primary)}
+.oa-app-switch input{width:20px;height:20px;margin:0}
+.oa-app-switch input:focus-visible{outline:var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);outline-offset:2px}
+.oa-app-row{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start}
+.oa-app-frame{border:1px solid var(--oa-color-border-strong);max-width:100%;flex:1 1 320px}
+.oa-app-frame.oa-app-feed{flex:0 0 auto;width:min(390px,100%)}
 .oa-app-frame svg.oa-app-scale{display:block;width:100%;height:auto}
 .oa-app-safe{display:none}
 .oa-app-plate:has(.oa-app-switch input:checked) .oa-app-safe{display:inline}
-.oa-app-safe .zone{fill:var(--oa-color-signature-red, currentColor);fill-opacity:.28}
-.oa-app-safe .line{fill:none;stroke:var(--oa-color-signature-red, currentColor);stroke-width:4;stroke-dasharray:16 10}
-.oa-app-safe text{font:600 28px/1 var(--oa-type-label-font-family);fill:var(--oa-color-text-primary);paint-order:stroke;stroke:var(--oa-color-surface-white);stroke-width:6px}
-.oa-app-size{margin:0;font:var(--oa-type-caption-font-style) var(--oa-type-caption-font-weight) 0.875rem/1.4 var(--oa-type-caption-font-family);color:var(--oa-color-text-secondary)}
+.oa-app-safe .shade{fill:var(--oa-color-text-primary);fill-opacity:.32}
+.oa-app-safe .hatch{fill:url(#oa-app-hatch)}
+.oa-app-safe .edge{fill:none;stroke:var(--oa-color-text-primary);stroke-dasharray:12 8}
+.oa-app-safe .solid{fill:none;stroke:var(--oa-color-text-primary)}
+.oa-app-safe .col{fill:var(--oa-color-text-primary);fill-opacity:.08}
+.oa-app-safe .chip{fill:var(--oa-color-surface)}
+.oa-app-safe text{font-family:var(--oa-type-label-font-family);font-weight:600;letter-spacing:.06em;text-transform:uppercase;fill:var(--oa-color-text-primary)}
 `;
 
-// The overlay: everything outside the safe box shaded, the box's edge dashed, each named zone (a platform's button or
-// crop zone) shaded and named. zones: [{ x, y, w, h, label }]
-export function overlay(w, h, boxes, zones = []) {
-  const parts = [];
-  if (boxes.safe) {
-    const [x, y, bw, bh] = boxes.safe;
-    parts.push(`<path class="zone" fill-rule="evenodd" d="M0 0H${w}V${h}H0Z M${x} ${y}V${y + bh}H${x + bw}V${y}Z"/>`);
-    parts.push(`<rect class="line" x="${x}" y="${y}" width="${bw}" height="${bh}"/>`);
+// The overlay, in the application's own units (px), from named layers, each drawn as a 2 px dashed edge (scaled with the
+// drawing) with its name on a chip in the label style:
+//   { x, y, w, h, label, kind: 'edge' (dashed, default) | 'solid' | 'shade' (dims what lies outside the box) | 'hatch'
+//     (hatches what lies outside the box) | 'cols' (cols: [[x, w], ...] columns of the box), sw (stroke width, default 2),
+//     ls (label size, default 26), lx, ly (label place) }
+export function overlay(w, h, layers = []) {
+  if (!layers.length) return '';
+  const p = [];
+  for (const L of layers) {
+    const sw = L.sw || 2, ls = L.ls || 26;
+    const out = `M0 0H${w}V${h}H0Z M${L.x} ${L.y}V${L.y + L.h}H${L.x + L.w}V${L.y}Z`;
+    if (L.kind === 'shade') p.push(`<path class="shade" fill-rule="evenodd" d="${out}"/>`);
+    if (L.kind === 'hatch') p.push(`<path class="hatch" fill-rule="evenodd" d="${out}"/>`);
+    if (L.kind === 'cols') for (const [cx, cw] of L.cols) p.push(`<rect class="col" x="${cx}" y="${L.y}" width="${cw}" height="${L.h}"/>`);
+    if (L.kind !== 'cols') p.push(`<rect class="${L.kind === 'solid' ? 'solid' : 'edge'}" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}" stroke-width="${sw}"${L.kind === 'solid' ? '' : ` stroke-dasharray="${6 * sw} ${4 * sw}"`}/>`);
+    if (L.label) {
+      const tx = L.lx ?? L.x + 8, ty = L.ly ?? L.y + 8, tw = Math.round(L.label.length * ls * 0.68 + ls * 0.8);
+      p.push(`<rect class="chip" x="${tx}" y="${ty}" width="${tw}" height="${Math.round(ls * 1.6)}"/><text x="${tx + ls * 0.4}" y="${ty + ls * 1.12}" font-size="${ls}">${esc(L.label)}</text>`);
+    }
   }
-  if (boxes.circle) {
-    const [cx, cy, r] = boxes.circle;
-    parts.push(`<path class="zone" fill-rule="evenodd" d="M0 0H${w}V${h}H0Z M${cx - r} ${cy}a${r} ${r} 0 1 0 ${2 * r} 0a${r} ${r} 0 1 0 ${-2 * r} 0Z"/>`);
-    parts.push(`<circle class="line" cx="${cx}" cy="${cy}" r="${r}"/>`);
-  }
-  for (const z of zones) {
-    parts.push(`<rect class="zone" x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}"/>`);
-    if (z.label) parts.push(`<text x="${z.x + 12}" y="${z.y + 36}">${esc(z.label)}</text>`);
-  }
-  return parts.length ? `<g class="oa-app-safe" aria-hidden="true">${parts.join('')}</g>` : '';
+  const hatch = layers.some((L) => L.kind === 'hatch') ? '<defs><pattern id="oa-app-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="3" height="8" style="fill:var(--oa-color-text-primary);fill-opacity:.45"/></pattern></defs>' : '';
+  return `<g class="oa-app-safe" aria-hidden="true">${hatch}${p.join('')}</g>`;
 }
 
-// The plate: the application's markup at true size (w by h px) inside an SVG whose viewBox scales it to the frame's width,
-// the overlay drawn in the same coordinates over it, and the switch above. id must be unique on a page.
-export function plate({ id, w, h, html, css = '', alt, boxes = { safe: null, circle: null }, zones = [], size_line = null, switch_words = 'Show the safe area' }) {
-  const ov = overlay(w, h, boxes, zones);
-  const sw = ov ? `<label class="oa-app-switch"><input type="checkbox" name="${esc(id)}-safe">${esc(switch_words)}</label>` : '';
+// One frame: the application's markup at true size (w by h px) inside an SVG whose viewBox scales it to the frame's width,
+// with the overlay over it in the same coordinates. The markup sits in foreignObject, so its words stay live text.
+export function frame({ w, h, html, alt, layers = [], cls = '', art_attrs = '' }) {
+  return `<div class="oa-app-frame${cls ? ' ' + cls : ''}"><svg class="oa-app-scale" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(alt)}">`
+    + `<foreignObject x="0" y="0" width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art" style="width:${w}px;height:${h}px"${art_attrs}>${html}</div></foreignObject>`
+    + overlay(w, h, layers) + `</svg></div>`;
+}
+
+// The plate: a head line, the switch (a native checkbox; :has() shows every overlay in the plate, so it works by keyboard
+// with scripts off), the frames in a row, and the line under them. css goes in once for the plate.
+export function plate({ id, head, line = null, css = '', frames = [], switch_words = 'Show the safe areas' }) {
+  const has_overlay = frames.some((f) => f.includes('class="oa-app-safe"'));
   return `<div class="oa-app-plate" data-oa-app="${esc(id)}">`
     + (css ? `<style>${css}</style>` : '')
-    + sw
-    + `<div class="oa-app-frame"><svg class="oa-app-scale" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(alt)}">`
-    + `<foreignObject x="0" y="0" width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art" style="width:${w}px;height:${h}px">${html}</div></foreignObject>`
-    + ov + `</svg></div>`
-    + (size_line ? `<p class="oa-app-size">${esc(size_line)}</p>` : '')
+    + `<p class="oa-app-head">${esc(head)}</p>`
+    + (has_overlay ? `<label class="oa-app-switch"><input type="checkbox" name="${esc(id)}-safe">${esc(switch_words)}</label>` : '')
+    + `<div class="oa-app-row">${frames.join('')}</div>`
+    + (line ? `<p class="oa-app-size">${esc(line)}</p>` : '')
     + `</div>`;
 }
 
@@ -149,4 +165,51 @@ ${css}</style>
 <body><div class="oa-app-art">${html}</div></body>
 </html>
 `;
+}
+
+// A type style by its token (oa.type.<name>), as the guide's own specimens set one: face, weight, size, line height,
+// tracking, case and figures. Pass size to set a size the token does not hold (an artboard or a printed page, where the
+// spec names the rule that allows it); lh likewise.
+export function type_css(name, { size = null, lh = null, weight = null } = {}) {
+  const v = (k) => `var(--oa-type-${name}-${k})`;
+  return `font-family:${v('font-family')};font-style:${v('font-style')};font-weight:${weight || v('font-weight')};`
+    + `font-size:${size || v('font-size')};line-height:${lh || v('line-height')};letter-spacing:${v('letter-spacing')};`
+    + `text-transform:${v('text-transform')};font-variant-numeric:${v('font-variant-numeric')}`;
+}
+
+// An identity master inlined from its file, so currentColor and its paint variables (--amp, --link, --lever) take tokens.
+// opts: cls, width, height (px), label (role="img" with that name; else aria-hidden), style, red ("signature" or "working")
+export function mark(rel, { cls = '', width = null, height = null, label = null, style = '', red = null, attrs = '' } = {}) {
+  let s = fs.readFileSync(path.join(ROOT, rel), 'utf8').replace(/<\?xml[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '');
+  s = s.replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, '').trim();
+  const a = [label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"', 'focusable="false"'];
+  if (cls) a.push(`class="${cls}"`);
+  if (width != null) a.push(`width="${width}"`);
+  if (height != null) a.push(`height="${height}"`);
+  if (style) a.push(`style="${style}"`);
+  if (red) a.push(`data-red="${red}"`);
+  if (attrs) a.push(attrs);
+  return s.replace(/<svg\b/, '<svg ' + a.join(' ')).replace(/\s*\n\s*/g, ' ');
+}
+
+// The fluid tokens (sizes that follow the window, in vw) restated in cqi, so an application drawn in a frame takes the size
+// its own width gives it: inside the frame, 1cqi is one percent of the application's width, as 1vw is of its own window.
+// Read from tokens.css at build, so the values stay the tokens' own.
+export function fluid_cqi() {
+  const out = [];
+  const seen = new Set();
+  for (const m of tokens_css().matchAll(/(--oa-[a-z0-9-]+)\s*:\s*([^;]*\dvw\b[^;]*);/g)) {
+    if (seen.has(m[1])) continue;
+    seen.add(m[1]);
+    out.push(`${m[1]}:${m[2].replace(/(\d)vw\b/g, '$1cqi')}`);
+  }
+  return out.join(';');
+}
+
+// Every var(--oa-...) a piece of CSS or markup names that tokens.css (or the chart kit's style) does not define
+let DEFINED = null;
+export function missing_tokens(text, extra = '') {
+  if (!DEFINED) DEFINED = new Set([...tokens_css().matchAll(/(--oa-[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
+  const local = new Set([...String(extra + text).matchAll(/(--oa-[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
+  return [...new Set([...String(text).matchAll(/var\((--oa-[a-z0-9-]+)/g)].map((m) => m[1]))].filter((n) => !DEFINED.has(n) && !local.has(n));
 }

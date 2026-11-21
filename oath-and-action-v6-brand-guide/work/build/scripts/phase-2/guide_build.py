@@ -3462,8 +3462,9 @@ def weigh(page, sprite_bytes):
             continue   # guide_charts.gates() weighs it against its allowance and warns past it (R3-2)
         if b > WEIGHT_FIXED.get(k, 0) * MB:   # DR-271: reported, never failed
             R.note(f"page weight: {k} weighs {b:,} bytes, over its budget of {WEIGHT_FIXED.get(k, 0) * MB:,.0f}, reported (DR-271)")
-    if total > WEIGHT_PAGE:
-        R.warn("page weight", f"the page weighs {total / MB:.2f} MB, over its budget of {WEIGHT_PAGE / MB:.1f} MB (the limit is {WEIGHT_LIMIT / MB:.0f} MB)")
+    if total > WEIGHT_PAGE:   # chat 10: reported as the early warning, never failed; past 16 MB guide_charts.gates() stops the build
+        R.note(f"page weight: early warning: the page weighs {total / MB:.2f} MB, past the {WEIGHT_PAGE / MB:.1f} MB line "
+               f"(the limit is {WEIGHT_LIMIT / MB:.0f} MB); reported, not failed (Gate 3 report, section 9; DR-271)")
     return {"bytes": total, "budget_page": WEIGHT_PAGE, "limit": WEIGHT_LIMIT, "parts": parts,
             "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, guide_charts.ALLOCATION[n] if n in guide_charts.PHASE_4
                                                                             else WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())},

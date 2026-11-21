@@ -1,0 +1,26 @@
+{
+ "id": "A01",
+ "type": "social-post",
+ "platform": "instagram.portrait",
+ "label": "Studio sample",
+ "spec_source": "work/handoffs/phase-4/20261121_Kit-Sample-Specs.md, section 1",
+ "export_name": "Studio-Sample-Instagram-Portrait-1080x1350",
+ "kicker": [
+  "Explainer",
+  " · Public records"
+ ],
+ "headline": [
+  "The records law",
+  "your answer."
+ ],
+ "hinge_job": "the one point the headline names",
+ "figure": "20",
+ "counts": "working days for a federal agency to decide on your records request under the Freedom of Information Act",
+ "context": "Unusual circumstances can add up to 10 more.",
+ "source": "Source: Freedom of Information Act, 5 U.S.C. 552(a)(6), United States Code, 2024 edition, federal agencies. Retrieved November 12, 2026. Times are the law’s limits; state records laws differ.",
+ "alt_short": "The records law and your answer: a federal agency has 20 working days to decide on a records request.",
+ "alt": "A Newsprint card headed Explainer, Public records. Headline: The records law and your answer. The figure 20: working days for a federal agency to decide on your records request under the Freedom of Information Act. Unusual circumstances can add up to 10 more. A dark band at the foot gives the source, the Freedom of Information Act, 5 U.S.C. 552(a)(6), retrieved November 12, 2026, and the lockmark.",
+ "post_text": "A federal agency has 20 working days under the Freedom of Information Act, the federal records law, to decide on a records request, and unusual circumstances can add up to 10 more. The days are the law’s limit; our systems atlas records that agencies often take weeks or months (Issue I013, “Public records arrive too late to be useful”). FOIA.gov’s page “How do I make a FOIA request?” shows where to send yours.",
+ "plate_head": "Studio sample · Instagram portrait post, 1080 by 1350 px",
+ "plate_line": "Drawn by the application kit at build. The figure is real and sourced on the card."
+}
