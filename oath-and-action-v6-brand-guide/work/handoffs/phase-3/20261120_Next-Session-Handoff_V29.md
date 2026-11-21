@@ -1,10 +1,10 @@
 # Handoff for the next session: Oath & Action Edition 06 (twenty-ninth handoff, November 20)
 
-Written November 20, 2026, at the close of chat 9. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261120_Next-Session-Handoff_V28.md`. V5's sections 3 to 5, section 3 of V8 to V28, and section 3 below hold together. Decision log entries for this chat run from D3-2311 to D3-2385, with Dustin's answers DR-293 to DR-299. The change ledger runs to C-148.
+Written November 20, 2026, at the close of chat 9. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261120_Next-Session-Handoff_V28.md`. V5's sections 3 to 5, section 3 of V8 to V28, and section 3 below hold together. Decision log entries for this chat run from D3-2311 to D3-2386, with Dustin's answers DR-293 to DR-299 and his Gate 3 decisions G3-01 to G3-09. The change ledger runs to C-148.
 
 ## 1. Where things stand
 
-Phase 3 is complete and waiting at Gate 3. Chat 9 (work tracker row `c08b`) applied Dustin's 24 board 3 answers (DR-291), ran the closing checks, published the chapters page as version 14 and the Gate 3 board, and wrote the Gate 3 report with the Phase 4 proposal: `work/ledger/20261120_Gate-3-Report.md`. Nothing in Phase 4 starts until Dustin approves Gate 3 in the conversation (CLAUDE.md, gate rule 1).
+Phase 3 is complete, and Dustin approved Gate 3 "As proposed" on November 21 (G3-01 to G3-09). Phase 4 is the active phase. Chat 9 (work tracker row `c08b`) applied Dustin's 24 board 3 answers (DR-291), ran the closing checks, published the chapters page as version 14 and the Gate 3 board, and wrote the Gate 3 report with the Phase 4 proposal: `work/ledger/20261120_Gate-3-Report.md`. Every recommendation and default in the report's section 10 is approved, including the three word changes, the label check for every chart and P4-1 to P4-5's defaults (G3-08).
 
 **Dustin's answers this chat**
 - DR-293: a Gate 3 board on board 3's model.
@@ -27,8 +27,8 @@ Phase 3 is complete and waiting at Gate 3. Chat 9 (work tracker row `c08b`) appl
 
 ## 2. Next, in order
 
-### A. Record Dustin's Gate 3 answer
-Log his reply as G3 decisions (G3-01 on, as G2-01 to G2-04 were), with his answers to item 6 and P4-1 to P4-5. Phase 3 closes and Phase 4 becomes the active phase. Set the work tracker's row `c08b` done and rewrite its Phase 4 rows to the report's seven chats (section 9, "Chats and boards"): today's rows c09 to c14 name chats 9 to 14, and Phase 4 now runs chats 10 to 16.
+### A. Gate 3 is recorded
+Done in chat 9: G3-01 to G3-09 in the decision log; the work tracker's row `c08b` done, rows `c09` to `c14` rewritten as chats 10 to 15, a new row `c14b` for chat 16, and Phase 5's rows as chats 17 to 20 (D3-2386). Chat 10 sets row `c09` active, numbers its routine calls from D4-01 and continues Dustin's decisions from DR-300.
 
 ### B. Phase 4's first chat (chat 10)
 As the Gate 3 report's section 9 sets it, and the Phase 4 prompt (`brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md`) with "Gate 3 decisions" filled in: Gate 3's item 6 word changes (with the editor's read of (c)), the platform specifications for all eight channels from their official help pages, chapter 16, the application kit's first build with its measured bytes, the photographs embedded once (P4-5), and the allocations re-sized for Phase 4 board 1.
@@ -52,10 +52,10 @@ As the Gate 3 report's section 9 sets it, and the Phase 4 prompt (`brief/phase-p
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Gate 3: [write "As proposed", or name your changes, including item 6 and P4-1 to P4-5]. Record my Gate 3 approval in the decision log, then start Phase 4 as the Gate 3 report's section 9 sets it, beginning with chat 10's work.
+I approved Gate 3 as proposed on November 21 (G3-01 to G3-09, already in the decision log). Start Phase 4 as the Gate 3 report's section 9 sets it, beginning with chat 10's work.
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-2311 to the end, with DR-293 to DR-299), the change ledger (to C-148), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-2311 to the end, with DR-293 to DR-299 and G3-01 to G3-09), the change ledger (to C-148), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-3/20261120_Next-Session-Handoff_V29.md, then section 3 of V5 to V28's handoffs, the Phase 4 prompt (brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md), Master Brief sections 15, 16, 18 and 19, and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md).
 
 Data keys are saved on this environment: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
@@ -91,7 +91,7 @@ How to work with me:
 - `work/ledger/20261120_Gate-3-Report.md`
 
 **Modified**
-- `work/ledger/`: the decision log (D3-2311 to D3-2385, DR-293 to DR-299), the change ledger (C-140 to C-148), the deferred fixes register (chat 9's section)
+- `work/ledger/`: the decision log (D3-2311 to D3-2386, DR-293 to DR-299, G3-01 to G3-09), the change ledger (C-140 to C-148), the deferred fixes register (chat 9's section)
 - `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (row 46); `work/handoffs/phase-3/20261116_CD-Review-Of-Rounds-4-5.md` ("Apply pass rescore")
 - Generators, kit, specs, chapters, entries, specimens, the code chip, the shell and two sidecars, as change ledger rows C-140 to C-147 list them
 - Outside the repository: the chapters page as version 14; the Gate 3 board, new; the work tracker's row `c08b`
