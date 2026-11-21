@@ -1,6 +1,6 @@
 # Chat 11: board builder's notes
 
-Started November 21, 2026 at 21:00 UTC; page written at 21:12 UTC (each time read with `date -u`). Work: chat 11's progress board for Dustin, modeled on chat 10's (`chat_10_progress_build.py`). It asks for no decision.
+Started November 21, 2026 at 21:00 UTC; first draft written at 21:12 UTC; rebuilt from the final exports at 21:21 UTC (each time read with `date -u`). Work: chat 11's progress board for Dustin, modeled on chat 10's (`chat_10_progress_build.py`). It asks for no decision.
 
 ## What I built
 
@@ -8,11 +8,14 @@ Started November 21, 2026 at 21:00 UTC; page written at 21:12 UTC (each time rea
 - What it reads: the 30 `20261121_Web-*` exports; the kit's plates `a06.json` to `a08.json` (`views[].screens`, contract C5); Rule 20.9's `section_words` from `phase4_ch20_build.py`, read as text and never run; `20-web.json` for the rule count; the chapter 21 plan for its groups, 16 rule titles, 712,600-byte estimate and 655,000 allocation.
 - Sections: the opening; the website (each page's first screen large at 1440, 1024, 390 and 360 px light and 1440 and 390 px dark, each captioned with page, width and theme and linking its whole page; the menu open at 390 and 360 px light and 390 px dark; the share preview; the icons at their sizes, the ICO's three images also at four times, pixelated); Rule 05.1 under DR-310 (one table per page and view, 90 screens, Newsprint, dark and red percent); checked and not checked; chapter 21's plan; the seven items for Phase 4 board 1 with the studio's recommendations.
 - Pictures: whole pages as WebP at quality 88, first screens (cropped to C5's window heights) at 92, menus and share card at 92; icons lossless; the SVG favicon copied as the file the site serves. The ICO's 16, 32 and 48 px images are extracted to three lossless WebP files.
-- The main session's two corrections at about 21:05 UTC are in: 182,474 bytes is printed as the projected page's room (15.82 MB projected, 13.08 MB today), and chapter 19's seven criteria are named with their rules.
+- The main session's two corrections at about 21:05 UTC are in: the projected page's room is printed as the projection (15.82 MB projected, 13.08 MB today), and chapter 19's seven criteria are named with their rules.
+- 21:21 UTC, the main session's second message: the page now prints the final strict build of 21:20:35 UTC (13,080,193 bytes, 393 rules, 731 specimens; chapter 20 at 838,748 against 757,000; 182,246 bytes under 16 MB projected) and a "Done after the board's first draft" paragraph naming the engineer's three fixes and the sweep. `CAPTION_NOTES` is empty, and the 1024 px article's alt describes the fixed panel. Every picture comes from the exports written 21:17:43 to 21:18:20 UTC; the plates a06 to a08 were written 21:18:00 to 21:18:19, and all 90 screens still pass.
 
-**The folder:** 48 files (the page and 47 pictures), 6,812,403 bytes. The page alone is 66,914 bytes.
+**The folder:** 48 files (the page and 47 pictures), 6,817,834 bytes. The page alone is 67,429 bytes.
 
 ## Found while building, for the main session
+
+Both are fixed in the 21:18 exports, and the engineer fixed a third ("How the Census Bureau counts them" set far from its text). I looked at the new pictures at 21:21 UTC: the article's 1024 px count panel shows 39,555 whole, with no ink in the panel's last 30 columns; the Census heading sits with its paragraph at 1440 and 390 px; "Who decides" has its space above it at 1440 and 390 px. Of the 18 first screens, only the article's 1024 px one changed from the first draft's, inside the count panel.
 
 1. **The article at 1024 px:** the count panel's figure "39,555" runs to the panel's right edge and its last digit is cut (`20261121_Web-Article-Page-Special-Districts-1024-Light.png`, the panel ends at x = 984, and in its last column, x = 983, the digit's light ink fills 48 of the 70 rows from 505 to 574, so the glyph is cut at the edge). The frames match the exports, so Rule 20.7's plate in the guide shows it too. The board prints a caption note under that picture and its alt text says so; when the export is redrawn, clear `CAPTION_NOTES` and the alt in `ALT[('article', 1024, 'Light')]`, then rerun the script.
 2. **The Act page, "Who decides":** the heading sits on the last line of "What the record shows" with no space above it, at 1440 px and at 390 px (the two widths I looked at). The board does not mention it.

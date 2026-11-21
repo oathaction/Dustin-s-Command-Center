@@ -83,7 +83,8 @@ ALT = {
         'the most common kind of government, of the 90,888 governments the Census Bureau counted, with its source line.',
     ('article', 1024, 'Light'): f'The article’s first screen at 1024 px on Newsprint: {HEAD_WIDE}, with Explain current. The '
         'headline What a special district does, the opening paragraph and the byline, and the Charcoal count panel at the '
-        'right, where the figure 39,555 runs to the panel’s right edge and its last digit is cut.',
+        'right: 39,555 special districts in 2022, the most common kind of government, of the 90,888 governments the '
+        'Census Bureau counted, with the start of its source line at the window’s foot.',
     ('article', 390, 'Light'): f'The article’s first screen at 390 px on Newsprint: {HEAD_PHONE}. The pillar row on two '
         'lines with Explain current, the kicker, the headline on three lines, the opening paragraph, and the top of the '
         'Charcoal count panel showing 39,555 special districts in 2022.',
@@ -115,10 +116,7 @@ ALT = {
 }
 
 # A fault seen in a picture while building this page, printed under it; clear the entry once the export is redrawn
-CAPTION_NOTES = {
-    ('article', 1024, 'Light'): 'At this width the figure 39,555 runs to the count panel’s right edge and its last digit '
-                                'is cut, a fault found while building this page and sent to the main session.',
-}
+CAPTION_NOTES = {}  # the 1024 px article's cut figure, noted here in the first draft, was fixed in the 21:18 exports
 
 STILLS = {
     'menu390l': ('20261121_Web-Menu-Open-390-Light', 'Menu open, 390 px, light theme',
@@ -486,7 +484,7 @@ li.tocome { font-weight: 700; }
     <div class="fact" role="listitem"><b>{{N20_RULES}}</b><span>rules in chapter 20, shown on {{N20_SPECS}} plates</span></div>
     <div class="fact" role="listitem"><b>41 of 41</b><span>kit exports at their exact sizes, by the size check</span></div>
     <div class="fact" role="listitem"><b>{{N_SCREENS}} of {{N_SCREENS}}</b><span>measured screens inside Rule 05.1&#8217;s color limits</span></div>
-    <div class="fact" role="listitem"><b>182,474</b><span>bytes of room under 16 MB for the projected page, with the chapters still to build</span></div>
+    <div class="fact" role="listitem"><b>182,246</b><span>bytes of room under 16 MB for the projected page, with the chapters still to build</span></div>
   </div>
 
   <section aria-labelledby="h-site">
@@ -550,9 +548,9 @@ li.tocome { font-weight: 700; }
       <div>
         <h3>Checked</h3>
         <ul class="plain">
-          <li>The closing strict build exits 0 with 0 warnings: 13,079,965 bytes, 393 rules and 731 specimens.</li>
-          <li>Chapter 20 weighs 838,520 bytes against its 757,000 allocation, 111 percent. The build reports it and cuts nothing (DR-271).</li>
-          <li>The page weighs 13.08 MB today. With the chapters still to build at their allocations, it projects to 15.82 MB, 182,474 bytes under 16 MB.</li>
+          <li>The closing strict build exits 0 with 0 warnings: 13,080,193 bytes, 393 rules and 731 specimens.</li>
+          <li>Chapter 20 weighs 838,748 bytes against its 757,000 allocation, 111 percent. The build reports it and cuts nothing (DR-271).</li>
+          <li>The page weighs 13.08 MB today. With the chapters still to build at their allocations, it projects to 15.82 MB, 182,246 bytes under 16 MB.</li>
           <li>The chart kit passes 96 of 96 charts, and chapter 14&#8217;s check finds 99 of 99 files current.</li>
           <li>All 41 kit exports match their sizes in the specifications table. Each page plate in the guide matches its export pixel for pixel, 18 of 18.</li>
           <li>On the working pages, axe finds 0 violations at all 18 views. Tab order, the theme kept after a reload, reflow at 320 px and text at 200 percent show 0 faults.</li>
@@ -576,6 +574,10 @@ li.tocome { font-weight: 700; }
           <li>A reading aloud by a person.</li>
         </ul>
       </div>
+    </div>
+    <div class="col">
+      <h3>Done after the board&#8217;s first draft</h3>
+      <p>The engineer fixed three craft faults found in the pictures: the article&#8217;s 39,555, cut at the count panel&#8217;s edge at 1024 px; its heading &#8220;How the Census Bureau counts them&#8221;, set far from its paragraph; and the Act page&#8217;s &#8220;Who decides&#8221;, with no space above it. A sweep of every view then found 0 overflows and 0 headings out of rhythm. Every picture on this page comes from those final exports, and the figures above from the strict build that followed them.</p>
     </div>
   </section>
 
