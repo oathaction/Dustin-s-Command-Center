@@ -7316,3 +7316,9 @@ The main session posted chat 10's plan with five questions (Q10-1 to Q10-5). Dus
 | D4-90 | The guide check's self-test passes on today's tree (02:40 to 02:55 UTC): 203 planted faults, every one caught, the clean cases quiet. The first quick check with photographs (02:55 to 03:38 UTC, on the 02:37 build) fails on chapter 16 alone: Rule 16.10's ask chip, White on Pillar Red at 13 px, measures 4.17 to 1, and at 390 px Rule 16.11's caption file scrolls sideways with no keyboard stop | A check is reported as it ran; a failed run is fixed and rerun, never counted |
 | D4-91 | Rule 16.10's ask chip takes the ask's own type token, `oa.type.ask` (Inter 700, 19 px), as chapter 18's ask button does, so White on Pillar Red meets WCAG's 3 to 1 for large text | The approved ask meets contrast by its size; a smaller ask would teach a red the brand does not allow |
 | D4-92 | Rule 16.11's caption file keeps its own line breaks and scrolls inside a named, focusable region (`tabindex="0"`, `role="region"`, its heading as the name), the pattern of chapter 18's code block. A first fix that wrapped the lines was undone, since a wrapped cue looks like four caption lines on a rule about caption lines | A WebVTT file shows its real lines; the region meets axe's scrollable-region-focusable |
+
+### Main session, chat 10 quick check, second run
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-93 | The second quick check (03:41 to 04:25 UTC, on the 03:40 build) clears both faults and finds one new one: `role="region"` on Rule 16.11's caption file is a landmark inside a plate, which the guide check fails at both widths. The file takes `role="group"` with the same name and keyboard stop, and the quick check runs a third time on the 04:25 build | A landmark inside a plate breaks a reader's landmark list; a group is no landmark and keeps the name |
