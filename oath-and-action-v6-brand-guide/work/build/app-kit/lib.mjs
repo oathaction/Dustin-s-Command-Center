@@ -14,6 +14,7 @@
 // No part of this module runs on the guide's page: the kit draws at build time into static markup (G3-07).
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
 export const KIT = path.dirname(fileURLToPath(import.meta.url));
@@ -23,6 +24,7 @@ export const FONT_MANIFEST = path.join(ROOT, 'work/build/assets/fonts/20261111_F
 export const CODE = path.join(ROOT, 'work/build/guide/code');
 export const SPECS_TABLE = path.join(ROOT, 'work/research/20261121_Platform-Specifications.json');
 export const EXPORTS = path.join(ROOT, 'work/build/exports/phase-4');
+export const PLATES = path.join(KIT, 'plates');   // chat 11, contract C4: the plates the guide build places
 
 export const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -127,11 +129,31 @@ export function overlay(w, h, layers = []) {
 
 // One frame: the application's markup at true size (w by h px) inside an SVG whose viewBox scales it to the frame's width,
 // with the overlay over it in the same coordinates. The markup sits in foreignObject, so its words stay live text.
-export function frame({ w, h, html, alt, layers = [], cls = '', art_attrs = '' }) {
-  return `<div class="oa-app-frame${cls ? ' ' + cls : ''}"><svg class="oa-app-scale" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(alt)}">`
-    + `<foreignObject x="0" y="0" width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art" style="width:${w}px;height:${h}px"${art_attrs}>${html}</div></foreignObject>`
+// page: { id, key, type } makes it a page frame (chat 11, contract C4): a picture of a working page, named by its alt, whose
+// markup (headings, links, the switch) is inert and hidden from the accessibility tree, so the guide's outline and Tab order
+// never meet it; data-oa-picture keeps its words under the guide check's 13 px floor and contrast test.
+export function frame({ w, h, html, alt, layers = [], cls = '', art_attrs = '', page = null }) {
+  const pf = page ? ` data-oa-page-frame="${esc(page.id)} ${esc(page.key)}" data-oa-app-type="${esc(page.type)}" data-w="${w}" data-h="${h}"` : '';
+  const hide = page ? ' inert aria-hidden="true" data-oa-picture' : '';
+  return `<div class="oa-app-frame${cls ? ' ' + cls : ''}"${pf}><svg class="oa-app-scale" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(alt)}">`
+    + `<foreignObject x="0" y="0" width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art"${hide} style="width:${w}px;height:${h}px"${art_attrs}>${html}</div></foreignObject>`
     + overlay(w, h, layers) + `</svg></div>`;
 }
+
+// Chat 11 (contract C4): every file the kit reads while it draws an application, so the guide build can tell when a plate is
+// older than its inputs. track() starts a record; the kit's modules all read through fs.readFileSync, the chart kit's too.
+const READS = { on: null };
+const _read = fs.readFileSync;
+fs.readFileSync = function (p, ...rest) {
+  if (READS.on && (typeof p === 'string' || p instanceof URL)) {
+    const abs = path.resolve(p instanceof URL ? fileURLToPath(p) : p);
+    if (abs.startsWith(ROOT + path.sep)) READS.on.add(path.relative(ROOT, abs));
+  }
+  return _read.call(fs, p, ...rest);
+};
+export function track() { READS.on = new Set(); return READS.on; }
+export function untrack() { const s = READS.on; READS.on = null; return s; }
+export function sha256(rel) { return crypto.createHash('sha256').update(_read.call(fs, path.join(ROOT, rel))).digest('hex'); }
 
 // The plate: a head line, the switch (a native checkbox; :has() shows every overlay in the plate, so it works by keyboard
 // with scripts off), the frames in a row, and the line under them. css goes in once for the plate.
