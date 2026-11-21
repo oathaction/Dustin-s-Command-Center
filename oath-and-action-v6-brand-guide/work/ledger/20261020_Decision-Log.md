@@ -7160,3 +7160,13 @@ Dustin's words, in chat 9 after the Gate 3 report and board: "As proposed". Ever
 | # | Decision | Reason |
 |---|---|---|
 | D3-2386 | The work tracker's Phase 4 rows are rewritten to the report's seven chats: rows `c09` to `c14` become chats 10 to 15 with section 9's work, a new row `c14b` (order 14.5) holds chat 16 and the Gate 4 report, and Phase 5's rows `c15` to `c18` become chats 17 to 20. Handoff V29's sections 1, 2 and 4 now carry the approval, so the next chat starts Phase 4 without logging it again. Phase 4's routine calls start at D4-01 in chat 10 | V29 section 2A; one series of routine calls per phase (D3-01) |
+
+## Chat 10, November 21, 2026 (Phase 4)
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-01 | The new chat opened on `claude/sleepy-franklin-d7zjmn`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `5c51257c`, "Gate 3 approved as proposed") and works on it, as DR-285 and Dustin's opening message set. V11's three setup steps ran on the fresh container | V19: fetch the remote tip first; V11's setup |
+| D4-02 | The three key tests fail here (00:42 UTC): api.open.fec.gov 403 and api.congress.gov 403, and `CENSUS_API_KEY` is unset. This session runs on the "Oath & Action" environment, which holds no key; the keys sit on "Oath & Action Brand Polish - Round 2", which a running session cannot move onto (unrestricted network), as V26 found. Chat 10's work needs no data key; the question of where later chats run goes to Dustin | V26: check the environment before testing keys; Dustin's "test each with one request before use" |
+| D4-03 | The strict build passes as committed (00:43 UTC, to scratch): exit 0, 0 warnings, 12,210,634 bytes, 369 rules, 679 specimens; it differs from version 14's file only in its three date and time lines, and the working tree stays clean | V29 section 1's figures |
