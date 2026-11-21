@@ -1,6 +1,13 @@
 # Chat 11: engineer notes
 
-Status: 20:16 UTC. Started 18:57 UTC. All four steps done. Step 5 (chapter 21's atlas renderers) was not asked for.
+Status: 20:26 UTC. Started 18:57 UTC. All four steps done; the main session's DD-6 job (20:22 to 20:26 UTC) done: A04 to A10 redrawn at 20:24:56 to 20:25:31, after the generator's last change (20:24:16), all seven plates fresh.
+
+**DD-6 round, for the main session (20:26 UTC):**
+1. 12.1: from 64em the article's step box spans cols 1 to 12 with its words held to the body's columns by padding (one column and gutter at 1024, two at 1440). The Step screen now measures **81.8 percent Newsprint at 1,440 px** and 79.3 at 1,024 (71.5 at 390, 66.0 at 360): inside Rule 05.1 under DR-310. (The 20:23 drawing measured 88.4 because the body's measure cap still held the box at 542 px; fixed at 20:24.)
+2. 12.2: the home page's Track and Act cards draw their six steps, and the Act page's status panel its upright steps, from **chapter 11's own code**: a new kit tool, `work/build/app-kit/tools/ch11_marks.py`, runs `apply_systems_ch11.py`'s `steps_svg` (Rule 11.5's card row: 24 px, the first circle on the text edge, 60 px apart, 57 on the 309 px card at 1440) and `sample` (Rule 11.6's 28 px marks), with its `MARK_CSS` and its state words, read-only. H.R. 7008's step 2 draws the Not yet ring under the 2 px slash with its halo; the NAC rule's step 3 carries the take-part disc. Screen readers get each card's steps in words (Rule 11.2's hidden list, "Step 2, Hearing: never happened."). The ask now shares Rule 11.4's red job, "take part now", with the take-part mark. "What the record shows" prints from the generator.
+3. Checks on the redrawn views: `check-dimensions.py` 41 of 41; pixel checks **27 of 27 views pass** (every screen of every page, light and dark, inside Rule 05.1; one red job a view); axe 0, Tab order, theme after reload, reflow 320 px and 200 percent text: 0 faults on 18 views; frames against exports 18 of 18 identical.
+4. Strict build 20:26: exit 0, 0 warnings, 13,076,424 bytes, 393 rules, 731 specimens; **chapter 20 835,047 against 757,000 (110 percent)**, reported (DR-271); projection 15.81 MB, 186,015 under 16 MB.
+5. **For the accessibility lead:** the three working pages in `work/build/exports/phase-4/` changed at 20:23:05 to 20:23:41 and again at 20:24:56 to 20:25:31 UTC (the trackers, the step box, the ask's red job, the record's two sides); a walk before 20:25:31 saw the earlier pages.
 
 **Summary for the main session (20:16 UTC):**
 1. C4 live: specimens ask for the kit's drawing by `<div data-oa-app="A06" data-oa-app-views="...">`; the build places the kit's frames (pictures: SVG named by alt, page inert and hidden), checks each plate's inputs and its own words by hash, puts the kit's styles in the head and its identity masters in one hidden sprite, once each, and weighs them in chapter 20. Headings and landmarks are allowed only inside such frames; guide check `pageFrame` added. Build self-test 40 of 40 (414 expectations); guide check self-test PASS, 159 of 159 faults caught, 53 of 53 allowed cases quiet.
@@ -134,6 +141,9 @@ Written 20:04 UTC; live since 19:49 UTC.
 - D4-xxx | A plate's freshness covers its own words by hash of its entry in `--page-words all` (A10 also the home page's, for its tab title), not the generator file | Every word edit anywhere staled all seven plates; now only the plate whose words changed
 - D4-xxx | The ask breaks into its two phrases and stays as wide as the longer one wherever its panel has less room than its words (a container query at 19rem on the panel), one line elsewhere | DD-5 11.4 ("as wide as its words, never stretched"); the 1,024 px status panel has 235 px inside, so the window's width could not decide it; rem, since the status box sets 15 px type
 - D4-xxx | The article's closing step (the paragraph that ends on B) stands in the step box; the fact box's source line stands under the box | DD-5 11.1 and 11.2
+- D4-xxx | The trackers' marks are drawn by chapter 11's own generator code through `tools/ch11_marks.py` (`steps_svg`, `sample`, `MARK_CSS`, `STATE_WORD`), read-only; the marks' color variables are set on the element that holds them | The main session's 20:23 instruction ("reuse chapter 11's drawing of the marks from its source, never a copy"); chapter 18's tracker draws 26 px marks, and the cards take Rule 11.5's 24 px; variables set on the holder resolve inside a Charcoal panel
+- D4-xxx | The ask's red job is "take part now", Rule 11.4's own, shared with the take-part mark | Rule 11.4's builders; the page's window rule allows two reds of one job in a view
+- D4-xxx | From 64em the step box drops the body's measure cap (its words keep it) | 12.1; the cap had held the box at 542 px
 - D4-xxx | The exports manifest is one file for the folder: a build of some applications replaces their entries and keeps the others' | Chat 10's command rewrote the manifest with only the applications it built, which would drop A01 to A03 from `check-dimensions.py` on the next build
 
 ## Done
@@ -188,9 +198,11 @@ Step 4, bytes. At 20:02 UTC (strict build, the design director's chapter 20 in p
 
 The chapter's section holds 708,626 bytes; the rest of its 773,336 is the kit's styles and sprite (64,710 at 20:13). What weighs most in a page frame is the chart kit's figure (S10, S66, S86 at the frame's column), which is content.
 
+DD-6 round (20:22 to 20:26 UTC): `renderers/web-site.mjs` (trackers, upright marks, step box, ask job), `tools/ch11_marks.py` (new); plates `a04.json` to `a10.json` and the 30 website exports rewritten at 20:24:56 to 20:25:31. Each plate as placed after this round is in the strict build of 20:26; chapter 20 835,047 bytes.
+
 ## Requests
 
-- **Design director, the screens after DD-5** (C5, 20:13 UTC; each frame's numbers are in `plates/a06.json` to `a08.json`, `views[].screens`): every screen of every light and dark page passes but one, the article's **Step** screen at 1440 px, **90.8 percent Newsprint** (the step box at the body's 533 px columns is small against a 1,440 px window). A design call; I changed nothing. (DD-4 and DD-5's earlier failures are all cleared: Count 56.0 and 49.8 on phones, Proposal 88.6 at 1440, Comment's red 6.27 at 390.)
+- **Design director:** after DD-6 (20:25 UTC) every screen of every page passes Rule 05.1 under DR-310, the article's Step at 1440 included (81.8). The numbers per frame are in `plates/a06.json` to `a08.json`, `views[].screens`.
 - **Design director:** R1, R2, R4, R6, R7, R8 and R9 are done (C7). The A10 plate's overlay switch reads "Show the safe areas" (C3's words) until the editor words it: a key for it in the generator (A10 `switch_words`) would let me read it from there.
 - **Design director:** the Act page's status panel prints steps 2 to 6 as words, no circles, while step 1 is pending (my reading of DD-3; Routine calls). If you want circles for 2 to 6 with step 1 left out, say so and it is one switch.
 - **Accessibility lead:** your three requests are met (C7): the working pages' paths, AL-06's close-on-widen, the title line by `data-oa-app-title`.

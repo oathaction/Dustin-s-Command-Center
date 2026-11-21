@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "How to comment on the FDA’s proposed rule on NAC | Oath & Action",
  "css": "web-site.css",
- "written": "2026-11-21T20:23:40.778Z",
+ "written": "2026-11-21T20:25:30.605Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -454,7 +454,7 @@
   "work/build/app-kit/renderers/site-parts.mjs": "54318bfeac15b652fa9c6a30eb2da4379c4e7a5e14607fa93533c1c688bdd710",
   "work/build/app-kit/renderers/social-post.mjs": "c63ec01f45fdbde3713400533b54416f2c70fe96353e97e89fc74bc6850dc840",
   "work/build/app-kit/renderers/web-page.mjs": "36a79d119844b1c2bf2e18f53b702f2c68d49b79b70e0d8412b3e5cffe5b49c0",
-  "work/build/app-kit/renderers/web-site.mjs": "a2bdc8fc842f2317614aa957f6ffa10c03c5b645ed127ea889bd4fd1c3319252",
+  "work/build/app-kit/renderers/web-site.mjs": "2fe5ead57ab97c378784e4fbb93a1e67b8079b39325fc77d597a69b7654506ab",
   "work/build/app-kit/specs/a08-web-act.json": "198054dfa0dd3e3bb0532dfcc3f7648e0e0279a976d39f19ca4dd15283df97b8",
   "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg": "78e237c09788d3c7ffdbedebb4b282d91850134c230b1eba39725cb87885b938",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",

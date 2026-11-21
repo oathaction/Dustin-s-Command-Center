@@ -600,8 +600,8 @@
       "id": "20.8",
       "title": "Build an Act page as a process piece that names who decides and by when, with one way to take part in red.",
       "rule": [
-        "An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s own summary, sets out what supporters and opponents have said at the same length, and takes no side.",
-        "After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read other comments, and gives the ask again. The ask is a red link to the comment page that names the docket and the place, and every fact carries the day we checked it."
+        "An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s own summary, sets out what the record shows from those who asked for the change and on the concern the law guards, at the length the record holds, and takes no side.",
+        "After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read other comments, and gives the ask again. The ask is a red link to the comment page that names the action and the place, with the docket number beside it, and every fact carries the day we checked it."
       ],
       "tokens": [
         "oa.type.section",
@@ -624,7 +624,7 @@
       },
       "failure": {
         "specimen": "s-20-8-failure",
-        "caption": "<strong>Fails Rule 20.8.</strong> “Take action” names no docket and no place, so a reader cannot tell where the link leads or that it leaves our site."
+        "caption": "<strong>Fails Rule 20.8.</strong> “Take action” names no place, so a reader cannot tell where the link leads or that it leaves our site."
       },
       "specs": [
         {
@@ -649,7 +649,7 @@
         },
         {
           "label": "The ask",
-          "value": "A link, White on Pillar Red in the ask style, 48 px tall at least, with the mark for another site and “(another site)” for screen readers; on Charcoal, so it needs no keyline"
+          "value": "A link that names the action and the place, “Comment at Regulations.gov”, on one line, White on Pillar Red in the ask style, 48 px tall at least, with the mark for another site and “(another site)” for screen readers; on Charcoal, so it needs no keyline; the docket number in the panel’s label above it"
         },
         {
           "label": "The address",

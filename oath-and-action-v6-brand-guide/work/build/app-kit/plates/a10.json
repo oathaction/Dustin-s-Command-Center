@@ -3,13 +3,13 @@
  "type": "favicon-set",
  "title": null,
  "css": "favicon-set.css",
- "written": "2026-11-21T20:23:41.716Z",
+ "written": "2026-11-21T20:25:31.602Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "switch_words": "Show the safe areas",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
   "id": "A10,A06",
-  "sha256": "6852cd1c3fea0fa9b6100cd75fe8f517323ddc0e6f0df6d9fd16c88ff84cae92"
+  "sha256": "bd9cd9a0ab7ff01226f4428e7fa04445a9bd568b1078461176d2d5354a7dcf79"
  },
  "views": [
   {
@@ -70,7 +70,7 @@
   "work/build/app-kit/renderers/site-parts.mjs": "54318bfeac15b652fa9c6a30eb2da4379c4e7a5e14607fa93533c1c688bdd710",
   "work/build/app-kit/renderers/social-post.mjs": "c63ec01f45fdbde3713400533b54416f2c70fe96353e97e89fc74bc6850dc840",
   "work/build/app-kit/renderers/web-page.mjs": "36a79d119844b1c2bf2e18f53b702f2c68d49b79b70e0d8412b3e5cffe5b49c0",
-  "work/build/app-kit/renderers/web-site.mjs": "a2bdc8fc842f2317614aa957f6ffa10c03c5b645ed127ea889bd4fd1c3319252",
+  "work/build/app-kit/renderers/web-site.mjs": "2fe5ead57ab97c378784e4fbb93a1e67b8079b39325fc77d597a69b7654506ab",
   "work/build/app-kit/specs/a10-web-favicons.json": "f06628f2261449f5c09cb02c410ea9939a50ff6e456fb319d9ee3164cc37b382",
   "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg": "f8a2aedcea4e135009cc75e50db6b55c5fc1246a77502d8ef6edca3072a0617d",
   "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg": "f10c0ffbda8b22feafc09b7a8eb11624a3154a215566803a859d2e181e6c5b31",

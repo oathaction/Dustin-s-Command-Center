@@ -358,7 +358,7 @@ ${at(BP.tablet, '.ws-cpanel{padding:32px}')}
 /* DD-6, 12.1: from 64em the step box spans the content width, its words held to the body's columns by padding equal to
    the columns before them (one column and gutter at 1024, two at 1440) */
 .ws-g{--colw:calc((100cqi - 2 * var(--m) - (var(--c) - 1) * var(--g)) / var(--c))}
-${at(BP.desktop, `.ws-art .ws-stepbox-w{grid-column:1/-1}.ws-art .ws-stepbox{padding:32px 32px 32px calc(var(--colw) + var(--g))}
+${at(BP.desktop, `.ws-art .ws-stepbox-w{grid-column:1/-1}.ws-art .ws-stepbox{max-width:none;padding:32px 32px 32px calc(var(--colw) + var(--g))}
  .ws-art .ws-stepbox .ws-p{max-width:min(var(--oa-layout-measure-body-ideal),calc(7 * var(--colw) + 6 * var(--g)))}`)}
 ${at(BP.wide, `.ws-art .ws-stepbox{padding-left:calc(2 * var(--colw) + 2 * var(--g))}
  .ws-art .ws-stepbox .ws-p{max-width:min(var(--oa-layout-measure-body-ideal),calc(5 * var(--colw) + 4 * var(--g)))}`)}
