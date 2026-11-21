@@ -28,3 +28,8 @@ Logged as D4-04 to D4-11 at 02:28 UTC. Later calls go under a new heading.
 ## Quick check, second run
 
 - D4-xxx | The second quick check (03:41 to 04:25 UTC, on the 03:40 build) clears both faults and finds one new one: `role="region"` on Rule 16.11's caption file is a landmark inside a plate, which the guide check fails at both widths. The file takes `role="group"` with the same name and keyboard stop, and the quick check runs a third time on the 04:25 build | A landmark inside a plate breaks a reader's landmark list; a group is no landmark and keeps the name
+
+## Quick check, third and fourth runs
+
+- D4-xxx | The third and fourth quick checks with photographs (04:25 to 04:44 and 04:44 to 05:03 UTC, on the 04:25 build) crash in the section photographs: Playwright times out "waiting for element to be stable" at 390 px on the identity proofs appendix (`proofs`), a section chat 10 did not change, after every 1440 px photograph and the 390 px ones before it are taken. Neither run wrote results, so neither is counted. Runs 1 and 2 photographed every section at both widths, on builds that differ from this one in chapter 16 alone | A crashed check is rerun or named, never counted (V21)
+- D4-xxx | The closing check of record is the quick check without photographs (`--quick --no-captures`) on the 04:25 build, with run 2's photographs (the 03:40 build, whose one difference is Rule 16.11's `role="group"` for `role="region"`) kept as the photographs; the crash goes to the register | The tests run before the photographs and the photographs test nothing new; the gate's checks run on the final build again
