@@ -37,7 +37,7 @@ export function masthead({ pid, parts, home, sw }) {
   h = h.replace(/\s*<button\s+type="button"\s+class="oa-masthead-row"[\s\S]*?<\/button>\s*<ul class="oa-masthead-sub"[\s\S]*?<\/ul>/, '');
   h = h.replace(/href="#oa-masthead-page"/, `href="${esc(home.href)}"`);
   h = h.replace(/aria-label="Oath &amp; Action"/g, `aria-label="${esc(home.name)}"`);
-  h = h.replace(/oa-masthead-dialog-name/g, `${pid}-menu-name`).replace(/"oa-masthead-dialog"/g, `"${pid}-menu"`);
+  h = h.replace(/(id|aria-labelledby)="oa-masthead-dialog-name"/g, `$1="${pid}-menu-name"`).replace(/(id|aria-controls)="oa-masthead-dialog"/g, `$1="${pid}-menu"`);
   // AL-07, AL-08: the switch after the parts in the bar, and at the top of the menu after its head
   h = h.replace(/(<\/nav>\s*)(<button\s+type="button"\s+class="oa-masthead-menu")/, `$1${theme_switch({ ...sw, group: `${sw.group}-bar`, cls: 'oa-site-switch-bar' })}$2`);
   h = h.replace(/(<\/div>\s*)(<nav\s+class="oa-masthead-dialog-nav")/, `$1${theme_switch({ ...sw, group: `${sw.group}-menu`, cls: 'oa-site-switch-menu' })}$2`);

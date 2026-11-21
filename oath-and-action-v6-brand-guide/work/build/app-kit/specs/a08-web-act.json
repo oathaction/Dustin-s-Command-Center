@@ -1,0 +1,48 @@
+{
+ "id": "A08",
+ "type": "web-site",
+ "page": "act",
+ "part": "page",
+ "guide": true,
+ "spec_source": "work/handoffs/phase-4/20261121_Web-Page-Specs.md, section 7",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 1024,
+   "vh": 768,
+   "platform": "website.page_1024"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  },
+  {
+   "w": 360,
+   "vh": 780,
+   "platform": "website.page_360"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "1024-light",
+  "390-light",
+  "360-light",
+  "1440-dark",
+  "390-dark"
+ ],
+ "export_name": "Web-Act-Page-Comment-On-A-Proposed-Rule",
+ "charts": {
+  "s66": [
+   621,
+   328
+  ]
+ },
+ "alt": "The website's Act page, how to comment on the FDA's proposed rule on NAC",
+ "plate_head": "Act page",
+ "plate_line": "Drawn by the application kit at build."
+}

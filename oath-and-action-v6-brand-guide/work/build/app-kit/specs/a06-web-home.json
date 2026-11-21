@@ -1,0 +1,51 @@
+{
+ "id": "A06",
+ "type": "web-site",
+ "page": "home",
+ "part": "page",
+ "guide": true,
+ "spec_source": "work/handoffs/phase-4/20261121_Web-Page-Specs.md, section 5",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 1024,
+   "vh": 768,
+   "platform": "website.page_1024"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  },
+  {
+   "w": 360,
+   "vh": 780,
+   "platform": "website.page_360"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "1024-light",
+  "390-light",
+  "360-light",
+  "1440-dark",
+  "390-dark",
+  "1440-light-screen",
+  "390-light-screen",
+  "390-dark-screen"
+ ],
+ "export_name": "Web-Home-Page",
+ "charts": {
+  "s10": [
+   541,
+   328
+  ]
+ },
+ "alt": "The website's home page",
+ "plate_head": "Home page",
+ "plate_line": "Drawn by the application kit at build."
+}

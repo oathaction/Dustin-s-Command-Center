@@ -5,10 +5,11 @@ Charcoal or Prussian), and Pillar Red within 5 percent, signature red included. 
 the first screen and for each section's opening screen; screens of running text between them may hold more Newsprint.
 
 A screen is one window's height at the page's width. The first screen runs from the top of the page; a section's opening
-screen runs from the section's top edge (an element marked data-oa-section) one window down, cut at the page's end. A dark
-panel is an element painted Charcoal or Prussian, the outermost of nested ones, of 3 percent of a screen's area or more (a
-button or a chip is no panel); it counts in the section where its top falls, and the first screen holds those above the
-first marked section.
+screen runs from the section's top edge (an element marked data-oa-section) one window down, and for a section that starts
+within a window of the page's end it is the page's last window, since a reader can scroll no further. A dark panel is an
+element painted Charcoal or Prussian, the outermost of nested ones, of 1 percent of a screen's area or more (a button or a
+chip is no panel); it counts in the section whose element holds it, and an element in no section counts with the first
+screen (where the kit gives no section, in the section where its top falls).
 
 A light page is judged on all three limits; a dark page (DR-204's dark mode) is printed in full and judged on red alone,
 since Rule 05.1's Newsprint share is the light view's.
@@ -30,7 +31,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[4]
 TOKENS = (ROOT / "work/build/tokens/tokens.css").read_text()
-PANEL_MIN = 0.03     # of a screen's area
+PANEL_MIN = 0.01     # of a screen's area: a 1,440 px home page's head cell (309 by 112 px) is 2.7 percent; a button is under 1
 TOL, RED_TOL = 3, 24
 
 
@@ -65,10 +66,14 @@ def measure(png, vh, sections=(), dark=(), theme="light", width=None):
     starts = [{"name": "first screen", "top": 0}] + [s for s in secs if s["top"] > 0]
     out = []
     for i, s in enumerate(starts):
-        top = s["top"]
+        top = min(s["top"], max(0, H - vh))
         bottom = min(H, top + vh)
         nxt = starts[i + 1]["top"] if i + 1 < len(starts) else H + 1
-        mine = [p for p in panels if top <= p["rect"][1] < nxt]
+        if panels and all("section" in p for p in panels):
+            name = None if s["name"] == "first screen" else s["name"]
+            mine = [p for p in panels if p["section"] == name]
+        else:
+            mine = [p for p in panels if s["top"] <= p["rect"][1] < nxt]
         sh = shares(px[top:bottom])
         faults = []
         if theme == "light":
@@ -78,7 +83,14 @@ def measure(png, vh, sections=(), dark=(), theme="light", width=None):
                 faults.append(f"{len(mine)} dark panels in the section, past one")
         if sh["red"] > 5:
             faults.append(f"Pillar Red {sh['red']} percent, past 5")
-        out.append({"screen": s["name"], "top": top, "bottom": bottom, **sh, "panels": len(mine),
+        boxes = []
+        for p in mine:
+            x, y, w, h = p["rect"]
+            y0, y1 = max(top, y), min(bottom, y + h)
+            if y1 > y0:
+                boxes.append({"x": round(x / width * 100, 1), "y": round((y0 - top) / (bottom - top) * 100, 1),
+                              "w": round(w / width * 100, 1), "h": round((y1 - y0) / (bottom - top) * 100, 1)})
+        out.append({"screen": s["name"], "top": top, "bottom": bottom, **sh, "panels": len(mine), "panels_box": boxes,
                     "panel_list": [f"{p.get('tag', '?')}.{p.get('cls', '')} {p.get('color', '')} at {p['rect'][1]}" for p in mine],
                     "judged": "all three limits" if theme == "light" else "red only (dark mode)", "faults": faults})
     return out
@@ -116,6 +128,11 @@ def self_test():
         check("its Newsprint share is the screen's own, 80 percent", r[1]["newsprint"] == 80.0)
         r = measure(p, 1000, [{"name": "A", "top": 1000}], dark, theme="dark")
         check("a dark page is judged on red alone", not r[1]["faults"])
+        r = measure(p, 1000, [{"name": "A", "top": 1000}, {"name": "Footer", "top": 1800}], dark)
+        check("a section within a window of the page's end opens on the page's last window", r[2]["top"] == 1000 and r[2]["bottom"] == 2000)
+        held = [dict(x, section=s) for x, s in zip(dark, [None, "A", "B", "A"])]
+        r = measure(p, 1000, [{"name": "A", "top": 1000}, {"name": "B", "top": 1000}], held)
+        check("a panel counts in the section that holds it, side-by-side sections apart", r[1]["panels"] == 1 and r[2]["panels"] == 1 and r[0]["panels"] == 1)
         im[:] = NEWSPRINT
         im[0:1000, 0:6] = RED
         Image.fromarray(im).save(p)
@@ -135,9 +152,15 @@ if __name__ == "__main__":
     ap.add_argument("--theme", default="light", choices=("light", "dark"))
     ap.add_argument("--json")
     ap.add_argument("--self-test", action="store_true")
+    ap.add_argument("--batch", nargs=2, metavar=("IN", "OUT"), help="a JSON list of {png, vh, sections, dark, theme, width}; writes the screens of each")
     a = ap.parse_args()
     if a.self_test:
         sys.exit(1 if self_test() else 0)
+    if a.batch:
+        items = json.loads(Path(a.batch[0]).read_text())
+        Path(a.batch[1]).write_text(json.dumps([measure(i["png"], i["vh"], i.get("sections") or [], i.get("dark") or [], i.get("theme", "light"), i.get("width"))
+                                                for i in items], indent=1))
+        sys.exit(0)
     if not a.png or not a.vh:
         ap.error("give a capture and --vh")
     secs = [{"name": x.rsplit(":", 1)[0], "top": int(x.rsplit(":", 1)[1])} for x in a.sections.split(",") if x.strip()]

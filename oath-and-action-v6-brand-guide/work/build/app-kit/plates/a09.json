@@ -1,0 +1,46 @@
+{
+ "id": "A09",
+ "type": "share-image",
+ "title": null,
+ "css": "share-image.css",
+ "written": "2026-11-21T20:14:13.763Z",
+ "by": "work/build/app-kit/oa-app.mjs",
+ "words": {
+  "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
+  "id": "A09",
+  "sha256": "1a00ed3e800646d4ebb5775b8b88e220e7431de6758fbfc13bc77570f69a3afe"
+ },
+ "views": [
+  {
+   "key": "1200-light",
+   "w": 1200,
+   "h": 630,
+   "theme": "light",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A09 1200-light\" data-oa-app-type=\"share-image\" data-w=\"1200\" data-h=\"630\"><svg class=\"oa-app-scale\" viewBox=\"0 0 1200 630\" role=\"img\" aria-label=\"\"><foreignObject x=\"0\" y=\"0\" width=\"1200\" height=\"630\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:1200px;height:630px\"><div class=\"sh\" data-oa-application=\"A09\"><p class=\"sh-k\">Explainer<span class=\"t\"> · Local government</span></p><p class=\"sh-hl\"><span class=\"ln\">What&nbsp;a&nbsp;special</span><span class=\"ln\">district&nbsp;does</span></p><div class=\"sh-band oa-surface-charcoal\"></div><svg role=\"img\" aria-label=\"Oath &amp; Action\" focusable=\"false\" data-oa-master=\"20261028_Wordmark-Display-Master\" class=\"sh-wm\" width=\"398.57\" height=\"44\" data-red=\"signature\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 978.31 108\"><path fill=\"currentColor\" d=\"M47.72 105.34Q34.23 105.34 23.39 99.37Q12.55 93.4 6.28 81.95Q0 70.51 0 54.07Q0 37.56 6.28 26.05Q12.55 14.54 23.39 8.6Q34.23 2.66 47.72 2.66Q61.14 2.66 71.95 8.6Q82.76 14.54 89.06 26.05Q95.37 37.56 95.37 54.07Q95.37 70.51 89.06 81.99Q82.76 93.46 71.95 99.4Q61.14 105.34 47.72 105.34ZM835.77 105.34Q822.28 105.34 811.44 99.37Q800.6 93.4 794.33 81.95Q788.05 70.51 788.05 54.07Q788.05 37.56 794.33 26.05Q800.6 14.54 811.44 8.6Q822.28 2.66 835.77 2.66Q849.19 2.66 860 8.6Q870.8 14.54 877.11 26.05Q883.42 37.56 883.42 54.07Q883.42 70.51 877.11 81.99Q870.8 93.46 860 99.4Q849.19 105.34 835.77 105.34ZM978.31 4V104H957.9L918.11 46.28H917.37V104H893.27V4H914.08L953.41 61.58H954.21V4ZM119.13 104H93.16L126.99 4H159.07L192.83 104H166.92L160.32 82.99H125.73ZM495.65 104H469.68L503.5 4H535.58L569.34 104H543.44L536.84 82.99H502.25ZM272.42 104V4H296.51V44.13H335.98V4H360.07V104H335.98V63.8H296.51V104ZM614.58 105.34Q601.02 105.34 590.32 99.37Q579.61 93.4 573.41 81.95Q567.2 70.51 567.2 54.07Q567.2 37.56 573.47 26.05Q579.75 14.54 590.52 8.6Q601.29 2.66 614.58 2.66Q623.64 2.66 631.36 5.17Q639.08 7.69 644.95 12.52Q650.82 17.36 654.45 24.34Q658.07 31.32 659.01 40.31H634.58Q634.11 36.55 632.6 33.5Q631.09 30.44 628.57 28.3Q626.06 26.15 622.7 24.97Q619.35 23.8 615.18 23.8Q607.94 23.8 602.7 27.39Q597.47 30.98 594.65 37.72Q591.83 44.47 591.83 54.07Q591.83 63.93 594.68 70.68Q597.53 77.42 602.73 80.81Q607.94 84.2 615.12 84.2Q619.08 84.2 622.37 83.16Q625.65 82.12 628.17 80.14Q630.69 78.16 632.33 75.31Q633.98 72.46 634.58 68.83H659.01Q658.34 75.48 655.18 81.99Q652.03 88.5 646.43 93.77Q640.82 99.03 632.84 102.19Q624.85 105.34 614.58 105.34ZM181.28 23.66V4H265.71V23.66H235.38V104H211.62V23.66ZM662.97 23.66V4H747.4V23.66H717.07V104H693.31V23.66ZM778.2 4V104H754.11V4ZM835.77 84.2Q842.95 84.2 848.12 80.71Q853.29 77.22 856.04 70.51Q858.79 63.8 858.79 54.07Q858.79 44.27 856.04 37.52Q853.29 30.78 848.12 27.29Q842.95 23.8 835.77 23.8Q828.59 23.8 823.42 27.29Q818.25 30.78 815.47 37.52Q812.68 44.27 812.68 54.07Q812.68 63.8 815.47 70.51Q818.25 77.22 823.42 80.71Q828.59 84.2 835.77 84.2ZM47.72 84.2Q54.9 84.2 60.07 80.71Q65.24 77.22 67.99 70.51Q70.74 63.8 70.74 54.07Q70.74 44.27 67.99 37.52Q65.24 30.78 60.07 27.29Q54.9 23.8 47.72 23.8Q40.54 23.8 35.37 27.29Q30.21 30.78 27.42 37.52Q24.63 44.27 24.63 54.07Q24.63 63.8 27.42 70.51Q30.21 77.22 35.37 80.71Q40.54 84.2 47.72 84.2ZM154.55 64.6 143.43 29.17H142.62L131.5 64.6ZM531.07 64.6 519.95 29.17H519.14L508.02 64.6Z\"/><path fill=\"var(--amp,#E63946)\" d=\"M409.54 2.66C395.83 2.66 384.4 12 384.4 27.43C384.4 37.43 388.4 45.71 396.69 53.71C385.26 60.86 369.4 69.43 369.4 80.29C369.4 94.86 385.83 105.34 404.97 105.34C417.54 105.34 427.54 102.29 436.11 96C441.26 101.43 447.83 104 455.83 104H462.69V92C456.97 91.71 451.4 87.71 448.54 80.29C450.83 74 453.54 67.14 453.54 58.57V48.57H434.11V58H438.4C439.69 58 440.4 59.43 440.4 62C440.4 63.74 440.44 64.71 440.48 65.55C440.53 66.92 440.58 67.92 440.4 71.29L419.54 54.14C425.83 46.43 433.26 40.29 433.26 27.14C433.26 12.86 422.69 2.66 409.54 2.66ZM426.69 89.86C420.97 91.86 416.97 92.49 410.4 92.49C400.11 92.49 391.11 87.43 391.11 77.43C391.11 71.14 396.26 66.86 402.83 63.71ZM408.11 15.23C413.26 15.23 415.54 19.43 415.54 24.86C415.54 32.57 413.83 41 410.4 47.29C405.54 41.57 401.97 30.57 401.97 24.29C401.97 19.14 403.83 15.23 408.11 15.23Z\"/></svg><svg aria-hidden=\"true\" focusable=\"false\" data-oa-master=\"20261109_Lockmark-48px-Master-Outline\" class=\"sh-sign\" width=\"96\" height=\"96\" data-red=\"signature\" data-oa-sign-off=\"lockmark-48-at-96\" shape-rendering=\"crispEdges\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 48\"><g fill=\"var(--link,#5D636D)\"><rect x=\"4.5\" y=\"4\" width=\"38\" height=\"1\"/><rect x=\"4\" y=\"4.5\" width=\"1\" height=\"38\"/><rect x=\"4.5\" y=\"23\" width=\"38\" height=\"1\"/><rect x=\"23\" y=\"4.5\" width=\"1\" height=\"38\"/><rect x=\"4.5\" y=\"42\" width=\"38\" height=\"1\"/><rect x=\"42\" y=\"4.5\" width=\"1\" height=\"38\"/></g><g fill=\"currentColor\"><path d=\"M3 1H6V2H7V3H8V6H7V7H6V8H3V7H2V6H1V3H2V2H3Z\"/><path d=\"M22 1H25V2H26V3H27V6H26V7H25V8H22V7H21V6H20V3H21V2H22Z\"/><path d=\"M41 1H44V2H45V3H46V6H45V7H44V8H41V7H40V6H39V3H40V2H41Z\"/><path d=\"M3 20H6V21H7V22H8V25H7V26H6V27H3V26H2V25H1V22H2V21H3Z\"/><path d=\"M22 20H25V21H26V22H27V25H26V26H25V27H22V26H21V25H20V22H21V21H22Z\"/><path d=\"M41 20H44V21H45V22H46V25H45V26H44V27H41V26H40V25H39V22H40V21H41Z\"/><path d=\"M3 39H6V40H7V41H8V44H7V45H6V46H3V45H2V44H1V41H2V40H3Z\"/><path d=\"M22 39H25V40H26V41H27V44H26V45H25V46H22V45H21V44H20V41H21V40H22Z\"/></g><path fill=\"var(--lever,#E63946)\" d=\"M40 38H45V39H46V40H47V45H46V46H45V47H40V46H39V45H38V40H39V39H40Z\"/></svg></div></div></foreignObject><g class=\"oa-app-safe\" aria-hidden=\"true\"><rect class=\"edge\" x=\"72\" y=\"72\" width=\"1056\" height=\"486\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><rect class=\"chip\" x=\"72\" y=\"24\" width=\"251\" height=\"42\"/><text x=\"82.4\" y=\"53.120000000000005\" font-size=\"26\">Margin, 72 px</text></g></svg></div>"
+  }
+ ],
+ "inputs": {
+  "work/build/app-kit/lib.mjs": "f00e4bd3af21e4437d7a110e4d85400be6545e468ff9912afb3a506bf1a10398",
+  "work/build/app-kit/oa-app.mjs": "896f5efba9183c174cd80e278d98d5dd5be5c598487e18027bf9e9f246ee797f",
+  "work/build/app-kit/renderers/favicon-set.mjs": "8f3ff25bde39bc4e18c82b0841ce51877295dfbbc5bc7aa57eae35c8d9d6104c",
+  "work/build/app-kit/renderers/report-page.mjs": "59982838a81625cbcf4eb51441459435150e566e68ef7284edbe42b1dceddd48",
+  "work/build/app-kit/renderers/share-image.mjs": "1f2ff66d37f9427b10f7ba193ff58e63743aa6d3f4afcb8b6ab64a3f412d0b85",
+  "work/build/app-kit/renderers/site-parts.mjs": "54318bfeac15b652fa9c6a30eb2da4379c4e7a5e14607fa93533c1c688bdd710",
+  "work/build/app-kit/renderers/social-post.mjs": "c63ec01f45fdbde3713400533b54416f2c70fe96353e97e89fc74bc6850dc840",
+  "work/build/app-kit/renderers/web-page.mjs": "36a79d119844b1c2bf2e18f53b702f2c68d49b79b70e0d8412b3e5cffe5b49c0",
+  "work/build/app-kit/renderers/web-site.mjs": "16b584c04fdf949be01e28eebfe0be9833de6e4147b21b315560eff5e0a1f017",
+  "work/build/app-kit/specs/a09-web-share-preview.json": "99194a53d071de532ea85384022cf9d815a99a02afd5cacb27399f727bd08850",
+  "work/build/assets/fonts/20261111_Font-Manifest.json": "af9eb0878f22ccf83553ebd0c400f5d308c4c6c913a83a558bc379297345d910",
+  "work/build/assets/fonts/inter-tight/20261111_Inter-Tight-Latin-Ext.woff2": "27877a44778f7b27708859516c9d9868325a2b185ae3e5bd0f3401861eb5e270",
+  "work/build/assets/fonts/inter-tight/20261111_Inter-Tight-Latin.woff2": "b4b4a0877ce8d65c2c194dec15236e4861d3b3c111b3aa3d54fc4efbe6171027",
+  "work/build/assets/fonts/inter/20261111_Inter-Latin-Ext.woff2": "34b9c504cab7a73e37b746343a449132e56cf7b5481af2cb81dc74dcff25c956",
+  "work/build/assets/fonts/inter/20261111_Inter-Latin.woff2": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62",
+  "work/build/assets/fonts/lora/20261111_Lora-Italic-Latin-Ext.woff2": "45f989df83f3a9f40007d2ecdea98bff248c8767a1a0bbe60e94fb37b605ecee",
+  "work/build/assets/fonts/lora/20261111_Lora-Italic-Latin.woff2": "d824d807d4d832d12c87932d0b8ec1314dcfd502157a56dee6bb04cf8a3768ae",
+  "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg": "f10c0ffbda8b22feafc09b7a8eb11624a3154a215566803a859d2e181e6c5b31",
+  "work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg": "875abce60a7744086cb701d02aac7d312bb7a1b4217f1d3b161b2cd677ee6c71",
+  "work/build/assets/identity/wordmark/20261028_Wordmark-Display-Master.svg": "9a7d811650a0952e09e713ab68836a0901edd780c04f796c385278015cff423a",
+  "work/build/tokens/tokens.css": "3ecfb1cb943a8844e55c7bf46dcce934d8ce255dce4f95c47de7074ccf3e3d0d",
+  "work/research/20261121_Platform-Specifications.json": "9f6110c07a395f54d642c8da3bb630901b97ceaf0067f02b207f208d28a899ec"
+ }
+}

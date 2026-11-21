@@ -3458,6 +3458,10 @@ def weigh(page, sprite_bytes):
     for m in app_plates.STYLE_RE.finditer(page[:page.find("<body")]):
         app_kit[m.group(1)] = {"bytes": size(m.group(0)), "chapter": None}
         parts["head and shell"] -= size(m.group(0))
+    # chat 11 (step 4): the kit's identity sprite at the top of the body, charged with the frames' own style
+    sp_ = app_plates.sprite_span(page)
+    if sp_:
+        app_kit["identity"] = {"bytes": size(page[sp_[0]:sp_[1]]), "chapter": None}
     marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
     end = page.find("</main>")
     anchors = {a: n for n, a, *_ in CHAPTERS}
@@ -3466,12 +3470,13 @@ def weigh(page, sprite_bytes):
         b = size(page[start:nxt])
         if kind == "chapter" and anchor in anchors:
             for t, rec in app_kit.items():
-                first = page.find('data-oa-page-frame=' if t == "plate" else f'data-oa-app-type="{t}"', start, nxt)
+                first = page.find('data-oa-page-frame=' if t in ("plate", "identity") else f'data-oa-app-type="{t}"', start, nxt)
                 if rec["chapter"] is None and first >= 0:
                     rec["chapter"] = anchors[anchor]
                     b += rec["bytes"]
-                    R.note(f"application kit: its {t} style, {rec['bytes']:,} bytes in the head, weighs in chapter {anchors[anchor]}, "
-                           "the first to draw it (contract C4)")
+                    R.note(f"application kit: {'its identity masters, drawn once for the page,' if t == 'identity' else f'its {t} style,'} "
+                           f"{rec['bytes']:,} bytes {'at the top of the body' if t == 'identity' else 'in the head'}, weighs in chapter "
+                           f"{anchors[anchor]}, the first to draw it (contract C4)")
             chapters[anchors[anchor]] = b
         elif kind == "appendix":
             parts["appendix"] = parts.get("appendix", 0) + b
@@ -3782,6 +3787,11 @@ def build(args):
     app_styles = app_plates.head_styles()
     if app_styles:
         page = page.replace("</head>", app_styles + "\n</head>", 1)
+    # chat 11 (step 4): the identity masters the kit's frames draw by <use>, once for the page, at the top of the body
+    app_sprite = app_plates.body_sprite()
+    if app_sprite:
+        bi = page.find(">", page.find("<body")) + 1
+        page = page[:bi] + app_sprite + page[bi:]
     page, n_whole = keep_ids_whole(page)   # D2-975
     if tokens.final:
         unread = [n for n in unread if n not in sprites.parity(tokens)]
@@ -4640,6 +4650,7 @@ def self_test():
 
     def app_plate(app_id, stale=False):
         return json.dumps({"id": app_id, "type": "web-page", "css": "web-page.css",
+                           "symbols": {"oa-app-id-fixture-mark": '<symbol id="oa-app-id-fixture-mark" viewBox="0 0 4 4"><rect width="4" height="4"/></symbol>'},
                            "views": [{"key": k, "w": w, "h": h, "theme": "light", "alt": f"A fixture page at {w} px.", "html": app_frame(app_id, k, w, h)}
                                      for k, w, h in (("1440-light", 1440, 900), ("390-light", 390, 1200))],
                            "inputs": {tok_rel: "0" * 64 if stale else tok_hash}})
@@ -4665,7 +4676,7 @@ def self_test():
                    "s-20-3-correct: A90 has no view 768-light"],
           "absent": ["s-20-1-correct:", "s-20-1-failure: 1 heading", "s-20-1-failure: 2 heading", "s-20-1-failure: an image stage holds a link",
                      "s-20-2-failure: 2 heading", "s-20-2-failure: 3 heading"],
-          "note": ["application kit: its web-page style", "weighs in chapter 20, the first to draw it"],
+          "note": ["application kit: its web-page style", "weighs in chapter 20, the first to draw it", "application kit: its identity masters, drawn once for the page,"],
           "tests": [("the kit's style for each type sits once in the head, with the frames' own", lambda pg: pg.count('<style data-oa-app-kit="web-page">') == 1
                      and pg.count('<style data-oa-app-kit="plate">') == 1 and pg.find('data-oa-app-kit="web-page"') < pg.find("</head>")),
                     ("a placeholder becomes the chosen frame in a row, at its true width's share", lambda pg: re.search(
@@ -4673,7 +4684,9 @@ def self_test():
                     ("the frame's page stays inert and hidden, its ids prefixed by the specimen", lambda pg: re.search(
                         r'class="oa-app-art" inert aria-hidden="true" data-oa-picture[^>]*><div class="wa" id="s-20-1-correct--a90-390-light"><a href="#s-20-1-correct--a90-390-light-main"', pg) is not None),
                     ("the readable page plate is a group, the frame one image inside it", lambda pg: re.search(
-                        r'data-specimen="s-20-1-correct"[^>]*role="group"', pg) is not None)]}),
+                        r'data-specimen="s-20-1-correct"[^>]*role="group"', pg) is not None),
+                    ("the identity masters the frames draw sit once in the page, hidden, at the top of the body", lambda pg:
+                        pg.count('<symbol id="oa-app-id-fixture-mark"') == 1 and re.search(r'<body[^>]*><svg data-oa-app-kit="identity" aria-hidden="true"', pg) is not None)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

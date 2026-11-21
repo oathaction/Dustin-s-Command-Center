@@ -1,6 +1,14 @@
 # Chat 11: engineer notes
 
-Status: 19:05 UTC. Started 18:57 UTC. Step 1's three contracts (C4, C5, C6) written at 19:05, before any build; building C4 now.
+Status: 20:16 UTC. Started 18:57 UTC. All four steps done. Step 5 (chapter 21's atlas renderers) was not asked for.
+
+**Summary for the main session (20:16 UTC):**
+1. C4 live: specimens ask for the kit's drawing by `<div data-oa-app="A06" data-oa-app-views="...">`; the build places the kit's frames (pictures: SVG named by alt, page inert and hidden), checks each plate's inputs and its own words by hash, puts the kit's styles in the head and its identity masters in one hidden sprite, once each, and weighs them in chapter 20. Headings and landmarks are allowed only inside such frames; guide check `pageFrame` added. Build self-test 40 of 40 (414 expectations); guide check self-test PASS, 159 of 159 faults caught, 53 of 53 allowed cases quiet.
+2. C5 live: `tools/screen_shares.py`, per frame and screen, in `export_checks.py` and in each page plate's JSON (R6).
+3. C6 live: `share-image` (A09) and `favicon-set` (A10); `check-dimensions.py` learns ICO, SVG and HTML.
+4. C7: the website, A04 to A10, from the specs, DD-4 and DD-5, words from the chapter generator; 41 of 41 exports pass the dimension check; 26 of 27 views pass the pixel checks (one screen open, Requests); axe 0, Tab order, theme kept, reflow all pass; 18 of 18 page frames pixel-identical to their exports.
+5. Strict build 20:13: exit 0, 0 warnings, 13,014,713 bytes, 393 rules, 731 specimens; **chapter 20 773,336 against 757,000 (102 percent)**, reported (DR-271); projection 15.75 MB, 247,726 under 16 MB.
+6. After any word edit in `phase4_ch20_build.py`, rerun the kit (`oa-app.mjs build A04 A05 A06 A07 A08 A09 A10`, under the lock) or the strict build warns a plate is stale.
 
 ## Contracts
 
@@ -8,7 +16,7 @@ Chat 10's C1 (photographs), C2 (chapter 16 in the build) and C3 (the application
 
 ### C4. Page plates in the guide: the kit's frames, their headings and their icons (register row "The article plate's headings and icon path")
 
-Written 19:05 UTC, before the build. **Not live yet**; this section says when it is.
+Written 19:05 UTC, before the build. **Live since 19:09 UTC** in `guide_build.py` (hook in `work/build/app-kit/tools/app_plates.py`) and `guide_check.js` (19:27 UTC). Revised 19:52 to 20:00: freshness of words by hash (below), the overlay switch, the title line.
 
 **How a chapter asks for an application.** A specimen file holds one placeholder where the kit's drawing goes, as a chart specimen holds `data-oa-chart`:
 
@@ -21,7 +29,7 @@ Written 19:05 UTC, before the build. **Not live yet**; this section says when it
 - `data-oa-app-title` (optional, web pages): prints the page's own `<title>`, read from the kit's plate, on a line above the frames, led by the attribute's words, for example `data-oa-app-title="Page title"` (AL-01: "copied from the page's markup by the renderer, never typed twice").
 - Nothing else inside the placeholder. The specimen keeps its own words around it (a label line, a key) as any specimen does. Never copy a frame's markup into a specimen: markup carrying `data-oa-page-frame` in a specimen's own file is a build warning, so `--strict` fails.
 
-**Where the drawing comes from.** A content file that sets `"guide": true` gets a guide plate: `node work/build/app-kit/oa-app.mjs build A05` (under the lock) draws the application and writes `work/build/app-kit/plates/a05.json`: its frames (view key, width, height, alt, markup) and `inputs`, every file the kit read to draw it with its SHA-256. The guide build puts the frames in place of the placeholder and re-hashes `inputs`; a file that changed since the kit drew the plate is a warning ("run oa-app.mjs build A05"), so a strict build never prints a stale drawing. The kit's shared style for each renderer type (`plates/<type>.css`) goes into the page once, in the head (`<style data-oa-app-kit="web-page">`), and weighs against the chapter whose section first draws that type (chapter 20 for `web-page`).
+**Where the drawing comes from.** A content file that sets `"guide": true` gets a guide plate: `node work/build/app-kit/oa-app.mjs build A05` (under the lock) draws the application and writes `work/build/app-kit/plates/a05.json`: its frames (view key, width, height, alt, markup, and for a page's full-length views its `screens`, R6), `inputs` (every file the kit read or imported to draw it, with its SHA-256) and `words` (the hash of that application's entry in the chapter generator's `--page-words all` output). The guide build puts the frames in place of the placeholder and checks both: a changed input or changed words is a warning ("run oa-app.mjs build A05"), so a strict build never prints a stale drawing. Words are checked by their own hash, not the generator file's, so an edit to one page's words stales only that plate. **After any word edit in `phase4_ch20_build.py`, run `node work/build/app-kit/oa-app.mjs build A04 A05 A06 A07 A08 A09 A10` under the lock** (about 3 minutes); it also rewrites the exports. The kit's shared style for each renderer type (`plates/<type>.css`) goes into the page once, in the head (`<style data-oa-app-kit="web-page">`), and weighs against the chapter whose section first draws that type (chapter 20 for `web-page`).
 
 **What a frame is in the guide.** Every kit frame, a web page's or a still's (the share preview, each icon), is a picture named by its own alt, with the application's real markup inside it:
 
@@ -47,21 +55,29 @@ Written 19:05 UTC, before the build. **Not live yet**; this section says when it
 
 **Ids.** The kit gives every id in a frame a prefix of its own (`a05-390-light-`), and the build adds the specimen's, so one plate can sit in two specimens.
 
+**What a frame carries.** Only what its width can show: the kit renders each frame alone at its width, removes what the page sets `display: none` there (the other wordmark masters, Menu or the bar's switch, the closed dialog, a closed disclosure's contents) and, for a one-window view, everything that starts below the window, and keeps the result only if a capture before and after is the same pixel for pixel (every frame passed). A frame keeps only the chart drawing its column shows (R4), drawn at that column's width (R8).
+
+**Identity masters once for the page** (added 20:07 UTC, step 4). In a guide frame each identity master (L3, the lockmark, ampersand B's masters, chapter 18's two wordmarks) is an `<svg>` around a `<use>` of one `<symbol>`; the plate JSON carries the symbols (`symbols`), and the build puts each once in a hidden `<svg data-oa-app-kit="identity">` at the top of the body (13,105 bytes for seven masters), counted in chapter 20. The kit captures every frame before and after the swap and stops if one pixel differs (it caught L3's viewBox, which starts at y −12, on its first run). Exports keep their masters inline.
+
+**An overlay.** A plate whose frame carries a safe-area layer (A10's 512 px icon) gets C3's switch, a native checkbox labeled by the plate JSON's `switch_words` ("Show the safe areas" until the editor words it).
+
 ### C5. Color by screen, for DR-310 (Rule 05.1 on a long page)
 
-Written 19:05 UTC. **Not live yet.**
+Written 19:05 UTC. **Live since 19:43 UTC**; revised 19:47 and 19:51 (below, marked).
 
 **What it measures.** On a page capture, Newsprint, dark (Charcoal plus Prussian) and Pillar Red shares, and the dark panels, for the page's first screen and for each section's opening screen; Rule 05.1 as DR-310 words it. A screen is the window's height at that width (the spec's `vh`: 900 at 1440, 768 at 1024, 844 at 390, 780 at 360 unless the page spec sets others).
 
-**How a page marks its sections.** Put `data-oa-section="<short name>"` on the outer element of each section after the first screen (for example `<section data-oa-section="Track" ...>`). Its top edge starts that section's opening screen: from its top down one window's height, cut at the page's end. The first screen (0 to one window) is always measured and needs no mark. A dark panel is any element painted Charcoal or Prussian (read from the computed background, the outermost of nested ones), and it counts in the section where its top falls; the footer counts in the last.
+**How a page marks its sections.** Put `data-oa-section="<short name>"` on the outer element of each section after the first screen (for example `<section data-oa-section="Track" ...>`). Its top edge starts that section's opening screen: from its top down one window's height; **for a section that starts within a window of the page's end, the page's last window** (revised 19:47: a reader can scroll no further, so the footer's own screen is the last window). The first screen (0 to one window) is always measured and needs no mark. A dark panel is any element painted Charcoal or Prussian (read from the computed background, the outermost of nested ones) of **1 percent of a screen or more** (revised 19:51 from 3: a 1,440 px home page cell is 2.7 percent; a button stays under 1), and it **counts in the section whose element holds it** (revised 19:47: side-by-side sections at 1,024 px each keep their own cell); one in no section counts with the first screen. The footer carries `data-oa-section="Footer"` and is its own section (R2).
 
 **What it judges.** A light frame: Newsprint 60 to 85 percent, at most one dark panel per section, Pillar Red (signature red included) within 5 percent, on each measured screen. A dark frame: its shares and panels are printed, and only the red limit is judged (Rule 05.1's Newsprint share is the light view's; the dark mode is DR-204's). Pixels count as a color within 3 levels on each channel of the token (24 for red, which antialiasing spreads).
 
-**How to run it.** The kit records each frame's sections and panels when it captures the frame, and `python3 -I work/build/app-kit/tools/export_checks.py OUT EXPORTS` prints a line per frame and screen, for example `1440 light, first screen: Newsprint 71.2, dark 14.0, red 0.3; 1 panel` with PASS or FAIL. Alone, on any capture: `python3 -I work/build/app-kit/tools/screen_shares.py CAPTURE.png --vh 900 --sections "Track:1320,Act:2980" [--theme light] [--json OUT]`.
+**Working red on a long page** (added 19:46): two working reds of different jobs (`data-red-job`) may not stand within one window of each other; marks of one job, the take-part mark and its ask (Rule 11.4), may share a view.
+
+**How to run it.** The kit records each frame's sections and panels when it captures the frame, writes each full-length view's screens into the page plate's JSON (`views[].screens`: `name`, `newsprint`, `dark`, `red`, `panels`, `panels_box` in percent of the screen, R6), and `python3 -I work/build/app-kit/tools/export_checks.py OUT EXPORTS` prints a line per frame and screen, for example `1440 light, first screen: Newsprint 71.2, dark 14.0, red 0.3; 1 panel` with PASS or FAIL. Alone, on any capture: `python3 -I work/build/app-kit/tools/screen_shares.py CAPTURE.png --vh 900 --sections "Track:1320,Act:2980" [--theme light] [--json OUT]`, or `--batch IN.json OUT.json`.
 
 ### C6. The share preview and the favicon set as kit types
 
-Written 19:05 UTC. **Not live yet.**
+Written 19:05 UTC. **Live since 19:36 UTC.** A09 follows the page specs' section 8 (a Charcoal foot band holding the wordmark and the sign-off); A10 takes its ink from the generator (`favicon_ink`). Files: `20261121_Web-Share-Preview-Special-Districts-1200x630.png`, `20261121_Web-Favicon.svg` (serve as `favicon.svg`), `20261121_Web-Favicon-16-32-48.ico` (`favicon.ico`), `20261121_Web-Apple-Touch-Icon-180.png` (`apple-touch-icon.png`), `20261121_Web-Manifest-Icon-192.png`, `20261121_Web-Manifest-Icon-512-Maskable.png`; each entry in the manifest names its `serve_as`.
 
 Two renderer types, sized from the website rows of `work/research/20261121_Platform-Specifications.json`, each drawn from ampersand B's masters (DR-116; Rule 04.7; Rule 08.2's row "Favicon: never the lockmark").
 
@@ -79,6 +95,19 @@ Two renderer types, sized from the website rows of `work/research/20261121_Platf
 
 The red on Charcoal holds 4.49 to 1 (Rule 04.7's reason). The no-tile favicon's ink follows Rule 04.7's plate (signature red on a light and a dark tab); the content file's `favicon_ink` key carries it, so the design director's page specs can set another. Each file's dimensions are checked by `check-dimensions.py`, which learns ICO (every size inside the file) and SVG (a square viewBox).
 
+
+### C7. The website kit (for the design director, the accessibility lead and the editor)
+
+Written 20:04 UTC; live since 19:49 UTC.
+
+- **Renderer** `work/build/app-kit/renderers/web-site.mjs` (type `web-site`), with `renderers/site-parts.mjs` (chapter 18's masthead, dialog, switch and scripts, read from their files; the website's close-on-widen script, AL-06). Content files `specs/a04-web-masthead-and-menu.json` to `a10-web-favicons.json` hold layout keys only; **every word comes from `phase4_ch20_build.py --page-words all`**, read-only, as DD-3 sets, in the shape the generator prints (each application's own entry with its `site` words; A04 and A05 take `article`).
+- **Views** (C4 keys): A04 `1440-light` to `390-dark` (the masthead band) and `390-light-open`, `360-light-open`, `390-dark-open` (one window, the menu open); A05 the footer band at five views; A06 the six full-length views and `1440-light-screen`, `390-light-screen`, `390-dark-screen` (R1); A07 and A08 the six full-length views; A09 `1200-light`; A10 `tab-light`, `tab-dark`, `ico`, `180`, `192`, `512` (the 512 with its safe circle as an overlay).
+- **Working pages, for the accessibility lead's walks** (AL request 1): `work/build/exports/phase-4/20261121_Web-Home-Page.html`, `20261121_Web-Article-Page-Special-Districts.html`, `20261121_Web-Act-Page-Comment-On-A-Proposed-Rule.html`. Each is one self-contained file (fonts, tokens, sprite, chapter 18's scripts and the head script); `<html lang="en">`, the page's `<title>` per AL-01, the theme follows the device until chosen, and the choice is kept under `oa-theme`. Menu opens chapter 18's modal dialog with focus on the current part (or Close the menu on the home page); Escape returns focus to Menu with `aria-expanded="false"`; widening past 64em with the menu open closes it and puts focus on the current part's link in the bar or the home link (AL-06, request 2). The skip link is the first stop and moves focus to `main`. Captures of every width and theme sit beside each page, and `20261121_Web-Menu-Open-390-Light.png`, `-360-Light.png`, `-390-Dark.png` show the menu open.
+- **Title line** (AL request 3): a specimen adds `data-oa-app-title="Page title"` to its placeholder and the hook prints the page's own `<title>` above the frames (C4).
+- **The page in each theme.** Light and dark frames set `data-oa-theme` on the frame's root; the switch in each frame shows that theme checked. On the dark page every Charcoal panel and the head cells draw a 1 px `--oa-color-border-hairline-on-charcoal` edge (Rule 20.5's correct plate).
+- **Charts** S10, S66 and S86 are the chart kit's own figures (its `run_spec`, `K.draw`, `K.figure`); a frame or capture carries the one drawing its column shows, drawn at that column's width (R4, R8); the working page keeps the kit's lean pair (desk 541 or 621 px, phone 328 px).
+- **Manifest** entries carry `spec` and `size` words a plate can print (R7), for example "1,440 by 2,950 px", "16, 32 and 48 px", "the working page, at any width".
+
 ## Routine calls
 
 - D4-xxx | A page plate asks for the kit's drawing by a placeholder (`<div data-oa-app="A05">`) that the guide build fills from `work/build/app-kit/plates/<id>.json`, as a chart specimen holds `data-oa-chart` | The kit needs Chromium to measure each frame's height, so it draws when `oa-app.mjs build` runs and the build only places; the placeholder keeps kit markup out of every specimen file (brief section 6.3), and the build refuses a frame copied into one
@@ -93,11 +122,84 @@ The red on Charcoal holds 4.49 to 1 (Rule 04.7's reason). The no-tile favicon's 
 - D4-xxx | A dark page is judged on red alone under Rule 05.1; its Newsprint share is printed, not judged | Rule 05.1's Newsprint limit is the light view's; the dark mode is DR-204's
 - D4-xxx | The favicon draws in signature red with no tile on light and dark tabs, from B's 16 px master centered in a 16 px square; the app icons put B at 58 percent of a full-bleed Charcoal square from the display master | Rule 04.7's text and its plate (s-04-7-correct), which draws the favicon in signature red on both tabs and the app icon at 94.84 by 104.40 px in 180
 - D4-xxx | The ICO holds three PNG images (16, 32 and 48 px) the kit drew, written by `tools/ico.py` | The row's studio choice; PNG inside ICO is read by every current browser, and writing it needs no package
+- D4-xxx | The website is one renderer type, `web-site`, for every page and part (A04 to A08), with chapter 18's masthead, dialog, switch and scripts read from their files and changed only by DR-307's parts, the site's breakpoints and the switch's two places | One source draws the masthead and footer for every page, so 3.2.6's help link cannot drift (AL-04); chapter 18 stays approved and unchanged
+- D4-xxx | The working pages are exports in their own right (HTML), and every PNG of a page is captured from them | The accessibility lead's walks need working pages; DR-298's site is HTML and CSS from the tokens; the captures then show the page a reader gets
+- D4-xxx | The parts sit in the bar from 64em and the switch on a row under it; under 64em Menu opens the dialog with the switch at its top; the bar's breakpoints are container queries on the page's root, which resets to 1rem | The page specs' section 2; a container query's em reads the container's own font size, so `.ws` takes `1rem` and the body type moves to its inner block (found at 19:40: 90em had become 1,530 px)
+- D4-xxx | On the Act page, while a step of the status panel is pending (Request R3), the steps print as words with no circles and the pending step is left out; the take-part mark goes with the circles, and the ask carries the view's working red | DD-3: "while `pending` is not empty the kit draws the status words and no circles"; I read the status panel's `pending` as the tracker's
+- D4-xxx | A docket number in the ask stays on one line (`white-space: nowrap` on the text, never the address) | It is an ID; the 19:44 drawing broke "FDA-2025-N-" from "2699"
+- D4-xxx | Each frame and each capture draws its chart at the column it fills (R8); the working page keeps the kit's lean pair at its narrowest columns | No frame scales a drawing past its true size; the working page must serve every width from one file
+- D4-xxx | Kit frames carry only what they show, proved by a capture before and after pruning, pixel for pixel | 30 to 88 percent of each frame's markup was invisible there (closed disclosures, other widths' wordmarks, the closed dialog, below the window)
+- D4-xxx | The A10 plate draws the favicon in `currentColor` set from `--oa-color-identity-signature-on-white` and `-on-charcoal`; the exported SVG keeps the literal color the token resolves to | R9: a guide frame takes no literal color; a favicon file reads no stylesheet
+- D4-xxx | In guide frames, each identity master is drawn by `<use>` of one symbol the page carries once, proved pixel for pixel per frame; exports keep them inline | 161 KB of the same seven drawings repeated across 43 frames; the C1 pattern (one copy for the page); chapter 20 fell from 885,184 to 773,336 bytes
+- D4-xxx | A plate's freshness covers its own words by hash of its entry in `--page-words all` (A10 also the home page's, for its tab title), not the generator file | Every word edit anywhere staled all seven plates; now only the plate whose words changed
+- D4-xxx | The ask breaks into its two phrases and stays as wide as the longer one wherever its panel has less room than its words (a container query at 19rem on the panel), one line elsewhere | DD-5 11.4 ("as wide as its words, never stretched"); the 1,024 px status panel has 235 px inside, so the window's width could not decide it; rem, since the status box sets 15 px type
+- D4-xxx | The article's closing step (the paragraph that ends on B) stands in the step box; the fact box's source line stands under the box | DD-5 11.1 and 11.2
 - D4-xxx | The exports manifest is one file for the folder: a build of some applications replaces their entries and keeps the others' | Chat 10's command rewrote the manifest with only the applications it built, which would drop A01 to A03 from `check-dimensions.py` on the next build
 
 ## Done
 
+Step 1, the three "now" items (19:05 to 19:43 UTC).
+
+| Item | What changed | Files | Proof |
+|---|---|---|---|
+| (a) Page plates: headings, icons, a narrow allowance (C4) | The kit writes guide plates with frames whose page is inert and hidden; the build places them from a placeholder, checks freshness, keeps the kit's style once in the head and weighs it in chapter 20; headings, landmarks and controls allowed only inside such frames; every icon by `<use>` of the guide's sprite (chapter 18's check, menu and close icons converted as read) | `work/build/app-kit/lib.mjs` (frame `page`, `track`, `touch`, `sha256`, `token_value`, circle overlay), `oa-app.mjs`, `tools/app_plates.py` (new), `renderers/web-page.mjs` (`sprite_icons`, chart widths); `work/build/scripts/phase-2/guide_build.py` (import, `process_fragment`, `plate()`, page head, `weigh()`, `--app-plates`, a self-test scenario); `work/build/scripts/phase-2/guide_check.js` (`inPageFrame`, `pageFrame`, `typeScale` probe, nine plants) | `app_plates.py --self-test` 12 of 12; `guide_build.py --self-test` 40 of 40 scenarios, 414 of 414 expectations (was 39 and 395); `guide_check.js --self-test --results <scratch>` PASS: clean demo passes, 159 of 159 planted faults caught, 53 of 53 allowed cases left alone (19:27); strict build identical to the baseline but its built time (19:09) |
+| (b) Color by screen (C5) | `tools/screen_shares.py` (new) and its use in `tools/export_checks.py`; the kit gathers sections, dark elements with their section, and each red with its job | `work/build/app-kit/tools/screen_shares.py`, `tools/export_checks.py`, `oa-app.mjs` | `screen_shares.py --self-test` 9 of 9 |
+| (c) Share preview and favicon set (C6) | Two renderer types, an ICO writer, ICO, SVG and HTML in the dimension check, the icon checks | `renderers/share-image.mjs`, `renderers/favicon-set.mjs` (new), `tools/ico.py` (new), `check-dimensions.py`, `tools/export_checks.py` | `ico.py --self-test` 2 of 2; `check-dimensions.py --self-test` 13 of 13 cases right |
+
+Step 2, the website (19:28 to 20:00 UTC): `renderers/web-site.mjs` and `renderers/site-parts.mjs` (new); content files `specs/a04` to `a10` (new); DD-4's five revisions (19:56). Plates in `work/build/app-kit/plates/` (`a04.json` to `a10.json`, `web-site.css`, `share-image.css`, `favicon-set.css`).
+
+Step 3, exports (20:00 UTC): 30 new files in `work/build/exports/phase-4/` (three working pages; 18 page captures; three menu captures; the share preview; six icon files) beside chat 10's 11; `20261121_Phase-4-Exports-Manifest.json` holds all 41. `check-dimensions.py`: **41 of 41 pass.**
+
+**Contrast, measured on the exports' pixels** (`tools/export_checks.py`, word by word; lowest pair per page):
+
+| Pair | Where | Ratio |
+|---|---|---|
+| Charcoal on Newsprint | every light page's text | 13.29 |
+| Deep Stone on Newsprint | secondary words, captions, source lines | 5.49 (the lowest on every light page and the share card) |
+| Dim Newsprint on Charcoal | panels' secondary words, every dark page's secondary words | 7.26 (the lowest on every dark page but the Act page's) |
+| White on Pillar Red | the Act page's ask, 19 px bold (large text, 3 to 1 needed) | 4.17 |
+| Pillar Red on Charcoal | the app icons' B (a mark, 3 to 1 needed) | 4.49 |
+
+**Rule 08.2's feed test, dark card** (A09): 500 px wide, 8 of 8 nodes, 45 red pixels; 360 px, 8 of 8 nodes, 24 red pixels. Newsprint 60.8 percent of the card (the band 31.7).
+
+**Icons** (A10): the ICO holds 16, 32 and 48 px PNGs; B stands 104, 112 and 296 px in the 180, 192 and 512 px tiles (57.8 to 58.3 percent); on the 512 its ink reaches 197.4 px from the center, inside the 204.8 px safe circle.
+
+**Screens (C5) after DD-5** (20:13 UTC): every screen passes but the article's Step at 1440 px (90.8 percent Newsprint); 26 of 27 views pass all their pixel checks. Before DD-5, after DD-4 (20:00 UTC): 52 of 60 light screens passed. Fail: article Step 87.8 (1440), 95.3 (1024), 90.3 (390), 88.8 (360) percent Newsprint; article Count 56.0 (390) and 49.8 (360); Act Proposal 88.6 (1440); Act Comment red 6.27 percent at 390. Every first screen passes (home 81.7, 77.5, 71.6, 70.6; article 81.0, 80.3, 69.3, 76.8; Act 72.6, 69.5, 69.1, 73.2). On the dark pages 29 of 30 screens pass; the Act page's Comment screen at 390 px fails the same red limit (6.27 percent).
+
+**Web checks on the working pages** (each width and theme): axe 0 violations at all 18 page views; Tab order at 1440: skip link, home, the seven parts, the switch (one stop), then content; at 390: skip link, home, Menu, then content; each stop with a 2 px ring; Dark chosen at 1440, reloaded: the root is dark, `oa-theme` holds dark and both switches show Dark (and Light the same); 320 px: nothing wider than the window; 200 percent text at 1024 px: nothing wider. Menu: opens with focus on Explain (the current part), Escape closes it with focus on Menu and `aria-expanded="false"`, at 390 and 360 light and 390 dark.
+
+**Frames against exports:** every page frame of A06, A07 and A08 rendered at true size beside its export capture: **18 of 18 identical, 0 differing pixels** (the frame 1 px taller in 10, an empty row from rounding up).
+
+Step 4, bytes. At 20:02 UTC (strict build, the design director's chapter 20 in place) chapter 20 weighed 885,184 bytes against 757,000 (117 percent). The identity sprite (20:07) brought it to 761,278; after DD-5 and the sprite counted whole (its first measure stopped at L3's nested `</svg>`), **773,336 bytes against 757,000 (102 percent)** at 20:13, reported, not failed (DR-271); the page 13,014,713 bytes; projection 15.75 MB, 247,726 under 16 MB. Counted in chapter 20 from outside its section: the kit's styles in the head (web-site 44,695 at 20:09, plate 2,296, share-image 1,990, favicon-set 1,050) and the identity sprite (13,105). `guide_charts.py`'s allocation for chapter 20 stays 757,000; nothing in the projection's method moved. Each plate as placed (its figure, frames, caption and words), strict build of 20:13:
+
+| Plate | Bytes | Frames |
+|---|---|---|
+| s-20-opener (A06) | 24,182 | 2 |
+| s-20-1-correct (A04) | 15,625 | 6 |
+| s-20-2-correct (A04) | 14,043 | 3 |
+| s-20-3-correct (A05) | 14,215 | 5 |
+| s-20-5-correct (A06) | 10,710 | 2 |
+| s-20-6-correct (A06) | 180,282 | 6 |
+| s-20-7-correct (A07) | 101,175 | 6 |
+| s-20-8-correct (A08) | 160,634 | 6 |
+| s-20-10-correct (A09) | 7,713 | 1 |
+| s-20-11-correct (A10) | 11,874 | 6 |
+| All plates with kit frames | 540,453 | 43 |
+
+The chapter's section holds 708,626 bytes; the rest of its 773,336 is the kit's styles and sprite (64,710 at 20:13). What weighs most in a page frame is the chart kit's figure (S10, S66, S86 at the frame's column), which is content.
+
 ## Requests
+
+- **Design director, the screens after DD-5** (C5, 20:13 UTC; each frame's numbers are in `plates/a06.json` to `a08.json`, `views[].screens`): every screen of every light and dark page passes but one, the article's **Step** screen at 1440 px, **90.8 percent Newsprint** (the step box at the body's 533 px columns is small against a 1,440 px window). A design call; I changed nothing. (DD-4 and DD-5's earlier failures are all cleared: Count 56.0 and 49.8 on phones, Proposal 88.6 at 1440, Comment's red 6.27 at 390.)
+- **Design director:** R1, R2, R4, R6, R7, R8 and R9 are done (C7). The A10 plate's overlay switch reads "Show the safe areas" (C3's words) until the editor words it: a key for it in the generator (A10 `switch_words`) would let me read it from there.
+- **Design director:** the Act page's status panel prints steps 2 to 6 as words, no circles, while step 1 is pending (my reading of DD-3; Routine calls). If you want circles for 2 to 6 with step 1 left out, say so and it is one switch.
+- **Accessibility lead:** your three requests are met (C7): the working pages' paths, AL-06's close-on-widen, the title line by `data-oa-app-title`.
+- **Main session:** after any change to the chapter generator's words, the kit must be rerun (`node work/build/app-kit/oa-app.mjs build A04 A05 A06 A07 A08 A09 A10` under the lock) or the strict build warns that a plate is stale; a plate goes stale only when its own words change.
+- **Main session:** the guide check's self-test ran under the lock for 15 minutes (19:13 to 19:28), holding other owners' builds; it builds only a demo page in a temporary folder, so I suggest it need not take the lock.
+
+### Earlier requests from chat 10, answered here
+
+- Chat 10's "Design director and chapter 20's builder: placed in the guide as a plate, the article frames hold 16 headings ... and chapter 18's switch markup inlines the Selected check path": settled by C4 (register row "The article plate's headings and icon path").
 
 ## Not fixed
 
@@ -106,4 +208,17 @@ The red on Charcoal holds 4.49 to 1 (Rule 04.7's reason). The no-tile favicon's 
 
 ## Tested
 
+- C4: `app_plates.py --self-test` (12); `guide_build.py --self-test` (40 scenarios, 412 expectations) at 19:08, 19:33 and 20:01, and 414 at 20:06 with the identity sprite's case; `guide_check.js --self-test --results` (scratch) at 19:13 to 19:28, PASS (the guide check has not changed since); strict builds at 19:04 (baseline), 19:09, 19:33, 20:02, 20:08, 20:09 and 20:13, each exit 0 with 0 warnings (one at 20:06 failed on stale plates, as it should, while the kit stopped on L3's pixel proof; rerun clean); the built guide's masthead, article and favicon plates captured in Chromium and looked at; a fixture chapter 20 (every view of A04 to A10) built strictly at 19:59, exit 0, 0 warnings, after the stale check had caught four plates older than the kit's code and seven older than the generator's words.
+- C5: `screen_shares.py --self-test` (9); the measure on every light and dark page capture.
+- C6: `ico.py --self-test`; `check-dimensions.py --self-test` (13 cases); `check-dimensions.py` on the exports, 41 of 41; the icon checks; the feed test on A09.
+- The pages: axe, Tab order, theme after reload, reflow at 320 px and text at 200 percent, on every view of A06 to A08 in Chromium, last at 20:13 (0 faults); the menu's open and Escape states at 390 and 360 px; frames against exports (18 of 18, pixel for pixel, at 19:45 and again at 20:14 with the identity sprite); pruning proved per frame by captures before and after (all identical); contrast word by word on every export. I looked at the home page at 1440, 1024 and 390 px, the article at 1440 and 390 px light and dark, the Act page at 1440 and 390 px, the menu open in three captures, the share card and the maskable icon.
+
 ## Not tested
+
+- The guide check's full run on a page with chapter 20 in place, at any width: the main session runs the closing checks. Only its self-test ran, with fixture frames.
+- Safari and Firefox: only Chromium is installed. The working pages use container queries, `:has()`, `inert`, `<dialog>` and CSS `@scope` in the guide; each is in current Safari and Firefox by their published compatibility data, which I did not open this chat.
+- A screen reader on the working pages; the accessibility lead's walks are hers.
+- The working pages on a real 2x screen: captures ran at 1x; the 2x drawings (the end mark's master, the icons' masters) were not captured.
+- The favicon in a real browser tab and the ICO on Windows; the manifest icons on Android (no `site.webmanifest` is exported).
+- Print emulation and forced colors on the pages.
+- Chat 10's A02 sample was not redrawn: its renderer now draws the Selected check from the sprite, so its exports would change if it were rebuilt.

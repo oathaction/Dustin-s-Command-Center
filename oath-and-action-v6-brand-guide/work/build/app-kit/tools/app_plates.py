@@ -27,12 +27,29 @@ FRAME_ATTR = "data-oa-page-frame"
 # a page frame as the kit writes it, from its opening tag to the end of its svg, for the checks that leave it alone
 FRAME_RE = re.compile(r'<div class="oa-app-frame[^"]*"[^>]*\sdata-oa-page-frame="[^"]*"[^>]*>.*?</foreignObject>.*?</svg></div>', re.S)
 
-STATE = {"types": {}, "plates": {}, "dir": PLATES}
+STATE = {"types": {}, "plates": {}, "dir": PLATES, "words": {}, "symbols": {}}
+GENERATOR = "work/build/scripts/phase-4/phase4_ch20_build.py"   # DD-3: the chapter 20 generator prints the pages' words
+
+
+def words_hash(app_id, generator=GENERATOR):
+    """The SHA-256 of one application's words as the chapter generator prints them now (--page-words all, read-only), in a
+    canonical JSON; None when the generator prints none for it. Cached for the run."""
+    import subprocess
+    if generator not in STATE["words"]:
+        r = subprocess.run(["python3", "-I", str(ROOT / generator), "--page-words", "all"], capture_output=True, text=True, cwd=str(ROOT))
+        STATE["words"][generator] = json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else {}
+    ids = str(app_id).split(",")
+    entry = STATE["words"][generator].get(ids[0]) if len(ids) == 1 else {i: STATE["words"][generator].get(i) for i in ids}
+    if entry is None or (isinstance(entry, dict) and len(ids) > 1 and any(v is None for v in entry.values())):
+        return None
+    return hashlib.sha256(json.dumps(entry, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
 
 
 def reset(plates_dir=None):
     STATE["types"].clear()
     STATE["plates"].clear()
+    STATE["words"].clear()
+    STATE["symbols"].clear()
     STATE["dir"] = Path(plates_dir) if plates_dir else PLATES
 
 
@@ -46,8 +63,12 @@ def _load(app_id):
 
 
 def stale(data):
-    """The inputs whose bytes changed since the kit drew the plate (or that are gone)."""
+    """The inputs whose bytes changed since the kit drew the plate (or that are gone), and its words, where the plate took
+    them from the chapter generator, if they changed since."""
     out = []
+    w = data.get("words")
+    if w and words_hash(w.get("id", data["id"]), w.get("generator", GENERATOR)) != w.get("sha256"):
+        out.append(f"its words in {w.get('generator', GENERATOR)}")
     for rel, h in sorted((data.get("inputs") or {}).items()):
         f = ROOT / rel
         if not f.is_file() or hashlib.sha256(f.read_bytes()).hexdigest() != h:
@@ -73,6 +94,9 @@ def expand(src, sid, warn):
             warn(f"{sid}: no plate for {app_id} in {STATE['dir'].relative_to(ROOT) if ROOT in STATE['dir'].parents else STATE['dir']}; "
                  f"run node work/build/app-kit/oa-app.mjs build {app_id} (contract C4)")
             return m.group(0)
+        if data.get("provisional_words"):
+            warn(f"{sid}: the kit drew {app_id} from stand-in words ({data['provisional_words']}), not the chapter generator's; "
+                 f"run node work/build/app-kit/oa-app.mjs build {app_id} once the generator prints them (contract C4, DD-3)")
         old = stale(data)
         if old:
             warn(f"{sid}: the kit's plate {app_id} is older than {len(old)} of its inputs ({', '.join(old[:3])}); "
@@ -86,6 +110,11 @@ def expand(src, sid, warn):
         if not chosen:
             return m.group(0)
         STATE["types"].setdefault(data["type"], data.get("css") or f"{data['type']}.css")
+        # the identity masters the frames draw by <use>, carried once for the page (step 4)
+        for sid_, sym in (data.get("symbols") or {}).items():
+            if sid_ in STATE["symbols"] and STATE["symbols"][sid_] != sym:
+                warn(f"{sid}: {app_id} draws {sid_} unlike another plate; rebuild the kit's plates together (contract C4)")
+            STATE["symbols"][sid_] = sym
         STATE["types"].setdefault("plate", None)
         frames = []
         for v in chosen:
@@ -99,7 +128,14 @@ def expand(src, sid, warn):
                          f'<span class="oa-app-title-t">{html.escape(data["title"])}</span></p>')
             else:
                 warn(f"{sid}: {app_id} has no page title to print (contract C4)")
-        return title + f'<div class="oa-app-row" data-oa-app="{html.escape(app_id)}">' + "".join(frames) + "</div>"
+        row = f'<div class="oa-app-row" data-oa-app="{html.escape(app_id)}">' + "".join(frames) + "</div>"
+        if any('class="oa-app-safe"' in f for f in frames):
+            # contract C3: a frame with an overlay takes the plate's switch, a native checkbox that shows it by keyboard
+            # with scripts off (PLATE_CSS's :has() rule reads it inside .oa-app-plate)
+            words_ = html.escape(data.get("switch_words") or "Show the safe areas")
+            return (f'<div class="oa-app-plate" data-oa-app-switch="{html.escape(app_id)}">{title}<label class="oa-app-switch">'
+                    f'<input type="checkbox" name="{html.escape(sid)}-safe">{words_}</label>{row}</div>')
+        return title + row
     return PLACEHOLDER.sub(repl, src)
 
 
@@ -134,6 +170,25 @@ def head_styles():
 
 
 STYLE_RE = re.compile(r'<style data-oa-app-kit="([^"]+)">.*?</style>', re.S)
+def sprite_span(page):
+    """Where the identity sprite sits in the page, (start, end), counting nested <svg> (L3's master holds one); or None."""
+    i = page.find('<svg data-oa-app-kit="identity"')
+    if i < 0:
+        return None
+    depth = 0
+    for m in re.finditer(r"<svg\b|</svg>", page[i:]):
+        depth += 1 if m.group(0) == "<svg" else -1
+        if depth == 0:
+            return i, i + m.end()
+    return None
+
+
+def body_sprite():
+    """The identity masters every placed frame draws by <use>, once for the page, hidden, for the top of the body."""
+    if not STATE["symbols"]:
+        return ""
+    return ('<svg data-oa-app-kit="identity" aria-hidden="true" focusable="false" width="0" height="0" '
+            'style="position:absolute;width:0;height:0;overflow:hidden">' + "".join(STATE["symbols"].values()) + "</svg>")
 
 
 def self_test():
@@ -189,13 +244,31 @@ def self_test():
         w = []
         expand('<div data-oa-app="A99" data-oa-app-size="2"></div>', "s-20-x", w.append)
         check("an attribute the hook does not read warns", any("data-oa-app-size" in x for x in w))
-        hs = head_styles()
+        hs_kept = head_styles()
+        # the words: a plate whose generator now prints other words for it is stale; another page's words do not touch it
+        gen = d / "gen.py"
+        gen.write_text('import json,sys\nprint(json.dumps({"A99": {"title": "One"}, "A98": {"title": "x"}}))\n')
+        h = hashlib.sha256(json.dumps({"title": "One"}, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
+        reset(d)
+        fresh = stale({"id": "A99", "inputs": {}, "words": {"generator": str(gen), "sha256": h}})
+        gen.write_text('import json,sys\nprint(json.dumps({"A99": {"title": "One"}, "A98": {"title": "changed"}}))\n')
+        reset(d)
+        other = stale({"id": "A99", "inputs": {}, "words": {"generator": str(gen), "sha256": h}})
+        gen.write_text('import json,sys\nprint(json.dumps({"A99": {"title": "Two"}}))\n')
+        reset(d)
+        mine = stale({"id": "A99", "inputs": {}, "words": {"generator": str(gen), "sha256": h}})
+        check("a plate stays fresh while its own words do (another page's words changing), and goes stale when they change",
+              fresh == [] and other == [] and mine and "its words" in mine[0])
+        hs = hs_kept
         check("the page's head gets each placed type's style once, and the frames' own", hs.count("<style") == 2 and ".wa{color:red}" in hs and ".oa-app-frame" in hs)
     reset()
     return bad
 
 
 if __name__ == "__main__":
+    if "--words-hash" in sys.argv:
+        print(words_hash(sys.argv[sys.argv.index("--words-hash") + 1]) or "")
+        sys.exit(0)
     if "--self-test" in sys.argv:
         sys.exit(1 if self_test() else 0)
     print(__doc__)

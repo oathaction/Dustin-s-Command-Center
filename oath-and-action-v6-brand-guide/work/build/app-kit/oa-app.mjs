@@ -20,7 +20,8 @@ import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
 import { createRequire } from 'module';
-import { KIT, ROOT, EXPORTS, PLATES, PLATE_CSS, esc, export_page, font_css, frame, missing_tokens, plate, sha256, today, tokens_css, track, untrack } from './lib.mjs';
+import { KIT, ROOT, EXPORTS, PLATES, PLATE_CSS, esc, export_page, font_css, frame, identity_sprite, missing_tokens, plate, sha256, symbolize, today, tokens_css, track, untrack } from './lib.mjs';
+import { words } from './renderers/web-site.mjs';
 
 const require = createRequire(import.meta.url);
 const SCRATCH = process.env.OA_APP_OUT || '/tmp/claude-0/-home-user-Dustin-s-Command-Center/ac32a0f7-d562-5d93-9aba-0ef59f7ca891/scratchpad/c11/engineer/app-out';
@@ -78,9 +79,11 @@ function page_facts() {
     if (r.width < 1 || r.height < 1 || getComputedStyle(s).display === 'none') return;
     out.marks.push({ cls: String(s.getAttribute('class') || ''), red: s.getAttribute('data-red'), rect: [r.left + scrollX, r.top + scrollY, r.width, r.height] });
   });
-  document.querySelectorAll('[data-red]').forEach((e) => { const r = e.getBoundingClientRect(); if (r.width && getComputedStyle(e).display !== 'none') out.reds.push(e.getAttribute('data-red')); });
+  out.red_marks = [];
+  document.querySelectorAll('[data-red]').forEach((e) => { const r = e.getBoundingClientRect(); if (r.width && getComputedStyle(e).display !== 'none') { out.reds.push(e.getAttribute('data-red'));
+    out.red_marks.push({ red: e.getAttribute('data-red'), job: e.getAttribute('data-red-job') || '', rect: [Math.round(r.left + scrollX), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)] }); } });
   // chat 11 (contract C5): each section's top, from data-oa-section, and each element painted Charcoal or Prussian, the
-  // outermost of nested ones, on the page (tools/screen_shares.py keeps those of 3 percent of a screen or more as panels)
+  // outermost of nested ones, on the page (tools/screen_shares.py keeps those of 1 percent of a screen or more as panels)
   out.sections = [...document.querySelectorAll('[data-oa-section]')].map((e) => ({ name: e.getAttribute('data-oa-section'), top: Math.round(e.getBoundingClientRect().top + scrollY) }));
   const DARK = { 'rgb(18, 18, 18)': 'charcoal', 'rgb(31, 45, 90)': 'prussian' };
   const darkOf = (e) => DARK[getComputedStyle(e).backgroundColor];
@@ -91,7 +94,8 @@ function page_facts() {
     for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) if (darkOf(p)) return;
     const r = e.getBoundingClientRect();
     if (r.width < 1 || r.height < 1 || r.bottom + scrollY <= 0 || getComputedStyle(e).visibility === 'hidden') return;
-    out.dark.push({ color: k, tag: e.tagName.toLowerCase(), cls: String(e.getAttribute('class') || '').slice(0, 40), rect: [Math.round(r.left + scrollX), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)] });
+    const sec = e.closest('[data-oa-section]');
+    out.dark.push({ color: k, tag: e.tagName.toLowerCase(), cls: String(e.getAttribute('class') || '').slice(0, 40), section: sec ? sec.getAttribute('data-oa-section') : null, rect: [Math.round(r.left + scrollX), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)] });
   });
   return out;
 }
@@ -104,12 +108,13 @@ async function web_checks(p, url, vw, vh) {
   r.axe_violations = ax;
   const order = [];
   await p.evaluate(() => { document.activeElement && document.activeElement.blur(); window.scrollTo(0, 0); });
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < (r.tabs || 12); i++) {
     await p.keyboard.press('Tab');
     order.push(await p.evaluate(() => { const a = document.activeElement; if (!a || a === document.body) return null; const st = getComputedStyle(a); const f = a.matches('input') ? getComputedStyle(a.nextElementSibling || a) : st;
       return { tag: a.tagName.toLowerCase(), name: (a.getAttribute('aria-label') || a.value || a.textContent || '').trim().slice(0, 40), ring: f.outlineStyle !== 'none' && parseFloat(f.outlineWidth) >= 2 }; }));
   }
   r.tab_order = order;
+  if (!(await p.evaluate(() => !!document.querySelector('.wa-h1')))) return r;
   r.headline_lines = await p.evaluate(() => { const h = document.querySelector('.wa-h1'); const rg = document.createRange(); rg.selectNodeContents(h); const ys = new Set([...rg.getClientRects()].map((x) => Math.round(x.top))); return { lines: ys.size, text: h.textContent }; });
   r.headline_breaks = await p.evaluate(() => { const t = document.querySelector('.wa-h1').firstChild;
     const rg = document.createRange(); const words = t.textContent.split(' '); let pos = 0; const out = [];
@@ -122,18 +127,46 @@ async function web_checks(p, url, vw, vh) {
 // a stale drawing. The renderer type's style goes beside it once (plates/<type>.css), for the page's head.
 function write_plate(dir, gp, read, R, spec) {
   fs.mkdirSync(dir, { recursive: true });
-  const code = ['work/build/app-kit/lib.mjs', 'work/build/app-kit/oa-app.mjs', `work/build/app-kit/renderers/${spec.type}.mjs`];
+  // the kit's own code, every renderer included (renderers import each other), and, for an application with a chart, the
+  // chart kit's code and the forms its charts draw: modules load by import, which the read record does not see
+  const code = ['work/build/app-kit/lib.mjs', 'work/build/app-kit/oa-app.mjs',
+    ...fs.readdirSync(path.join(KIT, 'renderers')).filter((f) => f.endsWith('.mjs')).map((f) => `work/build/app-kit/renderers/${f}`)];
+  const charts = Object.keys(spec.charts || {});
+  if (charts.length) {
+    const ck = path.join(ROOT, 'work/build/chart-kit');
+    code.push(...fs.readdirSync(ck).filter((f) => /\.(m?js|css)$|^words\.json$/.test(f)).map((f) => `work/build/chart-kit/${f}`));
+    for (const c of charts) {
+      const form = JSON.parse(fs.readFileSync(path.join(ck, 'specs', `${c}.json`), 'utf8')).form;
+      if (form && fs.existsSync(path.join(ck, 'forms', `${form}.js`))) code.push(`work/build/chart-kit/forms/${form}.js`);
+    }
+  }
   if (R.code_inputs) code.push(...R.code_inputs(spec));
   const specdir = spec.__dir || path.join(KIT, 'specs');
   const specfile = fs.readdirSync(specdir).find((f) => f.toLowerCase().startsWith(spec.id.toLowerCase() + '-'));
   const inputs = {};
+  // contract C4: the words a plate takes from the chapter generator are checked by their own hash (words_hash), so an edit
+  // to another page's words leaves this plate fresh; the generator file itself is no input
+  const GEN = 'work/build/scripts/phase-4/phase4_ch20_build.py';
+  let words_rec = null;
+  if (read.has(GEN)) {
+    read.delete(GEN);
+    // the entries the plate prints: its own, and for the favicon plate's tab the home page's title too
+    const ids = spec.type === 'favicon-set' ? `${spec.id},A06` : spec.id;
+    const wh = spawnSync('python3', ['-I', path.join(KIT, 'tools/app_plates.py'), '--words-hash', ids], { encoding: 'utf8', cwd: ROOT });
+    if (wh.status !== 0 || !wh.stdout.trim()) throw new Error(`words hash for ${ids}: ${(wh.stderr || wh.stdout).trim()}`);
+    words_rec = { generator: GEN, id: ids, sha256: wh.stdout.trim() };
+  }
   for (const rel of [...new Set([...code, path.relative(ROOT, path.join(specdir, specfile)), ...read])].sort()) {
     if (fs.existsSync(path.join(ROOT, rel)) && fs.statSync(path.join(ROOT, rel)).isFile()) inputs[rel] = sha256(rel);
   }
   const css_file = `${gp.type}.css`;
   fs.writeFileSync(path.join(dir, css_file), gp.css);
-  const out = { id: spec.id, type: gp.type, title: spec.title || null, css: css_file, written: new Date().toISOString(), by: 'work/build/app-kit/oa-app.mjs',
-    views: gp.views.map(({ key, w, h, theme, alt, html }) => ({ key, w, h, theme, alt, html })), inputs };
+  const out = { id: spec.id, type: gp.type, title: gp.title || spec.title || null, css: css_file,
+    ...(gp.words_from && !String(gp.words_from).startsWith('work/') ? { provisional_words: gp.words_from } : {}), written: new Date().toISOString(), by: 'work/build/app-kit/oa-app.mjs',
+    ...(gp.switch_words ? { switch_words: gp.switch_words } : {}),
+    ...(words_rec ? { words: words_rec } : {}),
+    ...(gp.symbols && Object.keys(gp.symbols).length ? { symbols: gp.symbols } : {}),
+    views: gp.views.map(({ key, w, h, theme, alt, screens, html }) => ({ key, w, h, theme, alt, ...(screens ? { screens } : {}), html })), inputs };
   fs.writeFileSync(path.join(dir, `${spec.id.toLowerCase()}.json`), JSON.stringify(out, null, 1));
   console.log(`  plate ${spec.id}: ${gp.views.length} frame(s), ${Object.keys(inputs).length} inputs -> ${path.relative(ROOT, path.join(dir, spec.id.toLowerCase() + '.json'))}`);
 }
@@ -156,7 +189,8 @@ async function main() {
       const dir = path.join(o.out, spec.id.toLowerCase());
       fs.mkdirSync(dir, { recursive: true });
       const facts = { id: spec.id, type: spec.type, views: [] };
-      const miss = missing_tokens((r.css || '') + (r.html || '') + (r.page ? r.page({}) : ''), (r.fig && r.fig.css) || '');
+      const miss = missing_tokens((r.css || '') + (r.html || '') + (typeof r.page === 'function' ? r.page({}) : '') + (r.body ? r.body({ pid: 'x', theme: 'light' }) : ''),
+        ((r.fig && r.fig.css) || '') + (r.kit_css || ''));
       facts.missing_tokens = miss;
       if (miss.length) console.log(`  ~ ${spec.id}: tokens not in tokens.css: ${miss.join(', ')}`);
       const stem = (n) => `${o.date}_${n}`;
@@ -174,7 +208,7 @@ async function main() {
           if (ex.kind === 'png') {
             const file = stem(ex.name) + '.png';
             await p.screenshot({ path: path.join(o.exports, file), clip: { x: 0, y: 0, width: r.w, height: r.h } });
-            manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', theme: ex.theme, ...(ex.proof ? { expect: { width: r.w, height: r.h }, note: 'proof of the sheet at 96 ppi' } : {}), ...(r.meta ? { meta: r.meta } : {}) });
+            manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', theme: ex.theme, size: `${r.w.toLocaleString('en-US')} by ${r.h.toLocaleString('en-US')} px`, ...(ex.proof ? { expect: { width: r.w, height: r.h }, note: 'proof of the sheet at 96 ppi' } : {}), ...(r.meta ? { meta: r.meta } : {}) });
             f.png = file;
           } else if (ex.kind === 'pdf') {
             const file = stem(ex.name) + '.pdf';
@@ -208,7 +242,7 @@ async function main() {
           const pid = `${spec.id.toLowerCase()}-${ex.name.toLowerCase()}`;
           if (ex.kind === 'svg') {
             const file = stem(ex.name) + '.svg';
-            if (o.export) { fs.writeFileSync(path.join(o.exports, file), ex.text); manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'svg', serve_as: ex.serve_as }); }
+            if (o.export) { fs.writeFileSync(path.join(o.exports, file), ex.text); manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'svg', serve_as: ex.serve_as, size: '16 by 16 px drawing, at any size' }); }
             facts.views.push({ svg: file, kind: 'svg' });
           } else if (ex.kind === 'ico') {
             const parts = [];
@@ -226,7 +260,7 @@ async function main() {
             if (o.export) {
               const ic = spawnSync('python3', ['-I', path.join(KIT, 'tools/ico.py'), path.join(o.exports, file), ...parts], { encoding: 'utf8' });
               if (ic.status !== 0) throw new Error('ico: ' + (ic.stderr || ic.stdout));
-              manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'ico', serve_as: ex.serve_as, sizes: ex.sizes });
+              manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'ico', serve_as: ex.serve_as, sizes: ex.sizes, size: '16, 32 and 48 px' });
             }
             facts.views.push({ ico: file, kind: 'ico', parts: parts.map((x) => path.basename(x)) });
           } else {
@@ -236,7 +270,7 @@ async function main() {
             const p = await browser.newPage({ viewport: { width: ex.w, height: ex.h }, deviceScaleFactor: 1 });
             await p.goto('file://' + pf, { waitUntil: 'load' });
             const file = stem(ex.name) + '.png';
-            if (o.export) { await p.screenshot({ path: path.join(o.exports, file), clip: { x: 0, y: 0, width: ex.w, height: ex.h } }); manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', serve_as: ex.serve_as, theme: 'light' }); }
+            if (o.export) { await p.screenshot({ path: path.join(o.exports, file), clip: { x: 0, y: 0, width: ex.w, height: ex.h } }); manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', serve_as: ex.serve_as, theme: 'light', size: `${ex.w} by ${ex.h} px` }); }
             facts.views.push({ png: file, kind: 'app-icon', w: ex.w, h: ex.h, b: ex.b, safe: ex.platform === 'website.manifest_512' ? r.safe_512 : null });
             await p.close();
             if (spec.guide) {
@@ -247,14 +281,207 @@ async function main() {
           }
         }
         if (spec.guide) {
-          const fav = r.svg.replace(/<title[\s\S]*?<\/title>|<desc[\s\S]*?<\/desc>/g, '').replace(/\s(role|aria-labelledby)="[^"]*"/g, '').replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+          // the guide's views (spec 9, R9): the favicon drawn in currentColor from the token (a frame takes no literal color),
+          // on a light and a dark tab showing the home page's title as a tab does; the ICO's three sizes at their own
+          // pixels; the three tiles, the 512 with its safe circle as an overlay a reader switches on (contract C3)
+          const fav = (px) => r.svg.replace(/<title[\s\S]*?<\/title>|<desc[\s\S]*?<\/desc>/g, '').replace(/\s(role|aria-labelledby)="[^"]*"/g, '')
+            .replace('<svg ', '<svg aria-hidden="true" focusable="false" ').replace(/\swidth="16" height="16"/, ` width="${px}" height="${px}"`).replace(/fill="#[0-9A-Fa-f]{6}"/, 'fill="currentColor"');
+          let tab_title = 'Oath & Action';
+          try { tab_title = (words().A06 || {}).title || tab_title; } catch (e) { /* the content file's words */ }
+          const vs = [];
           for (const g of ['light', 'dark']) {
-            const key = `16-${g}`;
-            const alt = `${spec.alt} The favicon at 16 px on a ${g} browser tab.`;
-            views.unshift({ key, w: 16, h: 16, theme: g, alt, html: frame({ w: 16, h: 16, html: `<div class="fi-fav fi-fav--${g}">${fav}</div>`, alt, page: { id: spec.id, key, type: spec.type } }) });
+            const key = `tab-${g}`;
+            const alt = `${spec.alt} The favicon at 16 px on a ${g === 'light' ? 'light' : 'dark'} browser tab beside the page's title.`;
+            vs.push({ key, w: 240, h: 40, theme: g, alt, html: frame({ w: 240, h: 40, alt, page: { id: spec.id, key, type: spec.type },
+              html: `<div class="fi-tab fi-tab--${g}">${fav(16)}<span>${esc(tab_title)}</span></div>` }) });
           }
-          guide_plates.push({ spec, type: spec.type, css: r.exports.filter((x) => x.css).map((x) => x.css)[0] + '.fi-fav{width:16px;height:16px}.fi-fav svg{display:block}', views });
+          vs.push({ key: 'ico', w: 128, h: 48, theme: 'light', alt: `${spec.alt} The favicon.ico file's three images at their own pixels: 16, 32 and 48 px.`,
+            html: frame({ w: 128, h: 48, alt: `${spec.alt} The favicon.ico file's three images at their own pixels: 16, 32 and 48 px.`, page: { id: spec.id, key: 'ico', type: spec.type },
+              html: `<div class="fi-ico">${fav(16)}${fav(32)}${fav(48)}</div>` }) });
+          for (const v of views) {
+            if (v.key === '512') {
+              const c = r.safe_512;
+              v.html = frame({ w: v.w, h: v.h, alt: v.alt, page: { id: spec.id, key: v.key, type: spec.type }, html: r.exports.find((x) => x.w === 512).html,
+                layers: [{ kind: 'circle', cx: c.cx, cy: c.cy, r: c.r, sw: 2, label: 'Safe circle, 40 percent', lx: 16, ly: 16, x: 0, y: 0, w: 0, h: 0 }] });
+            }
+            vs.push(v);
+          }
+          const tile_css = r.exports.filter((x) => x.css).map((x) => x.css).join('');
+          guide_plates.push({ spec, type: spec.type, views: vs, switch_words: spec.plate_switch || 'Show the safe areas',
+            css: tile_css + '.fi-tab{display:flex;align-items:center;gap:8px;width:240px;height:40px;padding:0 12px;box-sizing:border-box;font:var(--oa-type-ui-font-weight) 13px/1 var(--oa-type-ui-font-family);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+              + '.fi-tab span{overflow:hidden;text-overflow:ellipsis}.fi-tab svg{flex:none;display:block}'
+              + '.fi-tab--light{background:var(--oa-color-surface-white);color:var(--oa-color-text-primary-on-white)}.fi-tab--light svg{color:var(--oa-color-identity-signature-on-white)}'
+              + '.fi-tab--dark{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal)}.fi-tab--dark svg{color:var(--oa-color-identity-signature-on-charcoal)}'
+              + '.fi-ico{display:flex;align-items:flex-end;gap:16px;height:48px}.fi-ico svg{display:block;color:var(--oa-color-identity-signature)}' });
         }
+      } else if (spec.type === 'web-site') {
+        // chat 11: the website's pages (A04 to A08). The working page goes to the exports as HTML; each width and theme is
+        // captured from it as a full-length PNG with the page's facts and its web checks; the menu's open states are
+        // captured by pressing Menu; each guide frame is measured on its own markup at its width.
+        const kit_css = r.kit_css || '';
+        const head_of = (title, theme) => `<!doctype html>
+<html lang="en"${theme ? ` data-oa-theme="${theme}"` : ''}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>${esc(title)}</title>
+<script>${r.scripts.head}</script>
+<style>${fonts}</style>
+<style>${tokens}</style>
+<style>${kit_css}</style>
+<style>html,body{margin:0;padding:0}body{background:var(--oa-color-surface)}${r.css}${r.export_css || ''}</style>
+${r.head_links || ''}
+</head>
+`;
+        const page_html = (theme, fig_w = null) => head_of(r.title, theme) + `<body>${r.sprite}${r.body({ pid: 'site', theme: theme || 'device', fig_w }).replace(/id="site-main"/g, 'id="main"').replace(/href="#site-main"/g, 'href="#main"')}<script>${r.scripts.tail}</script></body>
+</html>
+`;
+        if (r.part === 'page') {
+          const file = stem(spec.export_name) + '.html';
+          const html = page_html(null);
+          fs.writeFileSync(path.join(dir, 'export.html'), html);
+          if (o.export) { fs.writeFileSync(path.join(o.exports, file), html); manifest.files.push({ file, spec: spec.id, platform: 'website.page_1440', format: 'html', width: 1440, size: 'the working page, at any width', note: 'the working page; every width and theme is captured from it' }); }
+          facts.page_html = file;
+        }
+        const heights = {};
+        const needs = new Set((spec.views || []).map((k) => k.split('-').slice(0, 2).join('-')));
+        if (r.part === 'page') {
+          for (const wv of r.widths) for (const t of ['light', 'dark']) {
+            if (!needs.has(`${wv.w}-${t}`) && !(spec.capture || []).includes(`${wv.w}-${t}`)) continue;
+            const pf = path.join(dir, `export-${wv.w}-${t}.html`);
+            fs.writeFileSync(pf, page_html(t, wv.w));
+            const p = await browser.newPage({ viewport: { width: wv.w, height: wv.vh }, deviceScaleFactor: 1 });
+            await p.goto('file://' + pf, { waitUntil: 'load' });
+            await p.evaluate(() => document.fonts.ready);
+            const f = await p.evaluate(page_facts);
+            f.width = wv.w; f.vh = wv.vh; f.theme = t; f.checked = await p.evaluate(() => [...document.querySelectorAll('.oa-theme-input:checked')].map((x) => x.value));
+            if (o.export) {
+              const file = stem(`${spec.export_name}-${wv.w}-${t === 'light' ? 'Light' : 'Dark'}`) + '.png';
+              await p.screenshot({ path: path.join(o.exports, file), fullPage: true });
+              const ph = await p.evaluate(() => document.documentElement.scrollHeight);
+              manifest.files.push({ file, spec: spec.id, platform: wv.platform, format: 'png', theme: t, size: `${wv.w.toLocaleString('en-US')} by ${ph.toLocaleString('en-US')} px` });
+              f.png = file;
+            }
+            f.checks = await web_checks(p, pf, wv.w, wv.vh);
+            if (wv.w === 1440) {
+              const other = t === 'light' ? 'dark' : 'light';
+              await p.click(`.oa-site-switch-bar .oa-theme-input[value="${other}"]`, { force: true });
+              await p.reload({ waitUntil: 'load' });
+              f.checks.theme_after_reload = { chose: other, root: await p.evaluate(() => document.documentElement.getAttribute('data-oa-theme')), stored: await p.evaluate(() => { try { return localStorage.getItem('oa-theme'); } catch (e) { return 'unreadable'; } }),
+                checked: await p.evaluate(() => [...document.querySelectorAll('.oa-theme-input:checked')].map((x) => x.value)) };
+              await p.evaluate(() => { try { localStorage.removeItem('oa-theme'); } catch (e) {} });
+            }
+            facts.views.push(f);
+            await p.close();
+          }
+          // R6 (the design director's request): each full-length view's screens by contract C5, for the plate's JSON
+          if (o.export) {
+            const items = facts.views.filter((v) => v.png && v.vh).map((v) => ({ key: `${v.width}-${v.theme}`, png: path.join(o.exports, v.png), vh: v.vh, sections: v.sections, dark: v.dark, theme: v.theme, width: v.width }));
+            const bi = path.join(dir, 'screens-in.json'), bo = path.join(dir, 'screens-out.json');
+            fs.writeFileSync(bi, JSON.stringify(items));
+            const sr = spawnSync('python3', ['-I', path.join(KIT, 'tools/screen_shares.py'), '--batch', bi, bo], { encoding: 'utf8' });
+            if (sr.status !== 0) throw new Error('screens: ' + (sr.stderr || sr.stdout));
+            JSON.parse(fs.readFileSync(bo, 'utf8')).forEach((scr, i) => {
+              facts.screens = facts.screens || {};
+              facts.screens[items[i].key] = scr.map((x) => ({ name: x.screen === 'first screen' ? 'first' : x.screen, newsprint: x.newsprint, dark: x.dark,
+                red: Math.round(x.red * 10) / 10, panels: x.panels, panels_box: x.panels_box, judged: x.judged, faults: x.faults }));
+            });
+          }
+          for (const [vw, zoom] of [[320, 1], [1024, 2]]) {
+            const p = await browser.newPage({ viewport: { width: vw, height: 900 } });
+            await p.goto('file://' + path.join(dir, 'export.html'), { waitUntil: 'load' });
+            if (zoom !== 1) await p.addStyleTag({ content: 'html{font-size:200%}' });
+            await p.evaluate(() => document.fonts.ready);
+            facts[`reflow_${vw}_${zoom * 100}`] = await p.evaluate(() => ({ scroll_w: document.documentElement.scrollWidth, win_w: innerWidth,
+              wider: [...document.querySelectorAll('.ws *')].filter((e) => e.getBoundingClientRect().right > innerWidth + 1 && !e.closest('.oac-art,.oac-tw,.ws-skip,dialog')).slice(0, 5).map((e) => e.tagName.toLowerCase() + '.' + String(e.className).slice(0, 24)) }));
+            await p.close();
+          }
+        } else if (r.part === 'masthead' && o.export) {
+          // the menu open, from the working article page: Menu pressed, one window captured
+          const pf = path.join(dir, 'menu.html');
+          for (const key of spec.views.filter((k) => k.endsWith('-open'))) {
+            const [w, t] = key.split('-');
+            const wv = r.widths.find((x) => String(x.w) === w);
+            fs.writeFileSync(pf, page_html(t));
+            const p = await browser.newPage({ viewport: { width: wv.w, height: wv.vh }, deviceScaleFactor: 1 });
+            await p.goto('file://' + pf, { waitUntil: 'load' });
+            await p.evaluate(() => document.fonts.ready);
+            await p.click('.oa-masthead-menu');
+            await p.mouse.move(1, wv.vh - 2);   // the pointer off every control, so no hover style shows in the capture
+            const st = await p.evaluate(() => ({ open: document.querySelector('dialog').open, expanded: document.querySelector('.oa-masthead-menu').getAttribute('aria-expanded'), focus: (document.activeElement.textContent || '').trim().slice(0, 40) }));
+            const file = stem(`${spec.export_name}-Open-${w}-${t === 'light' ? 'Light' : 'Dark'}`) + '.png';
+            await p.screenshot({ path: path.join(o.exports, file) });
+            manifest.files.push({ file, spec: spec.id, platform: wv.platform, format: 'png', theme: t, size: `${wv.w} by ${wv.vh} px`, note: 'the menu open, one window' });
+            await p.keyboard.press('Escape');
+            await p.waitForFunction(() => !document.querySelector('dialog').open);
+            await p.waitForTimeout(50);
+            st.after_escape = await p.evaluate(() => ({ open: document.querySelector('dialog').open, expanded: document.querySelector('.oa-masthead-menu').getAttribute('aria-expanded'), focus: document.activeElement.className }));
+            facts.views.push({ key, png: file, menu: st });
+            await p.close();
+          }
+        }
+        // the guide's frames, each measured on its own markup at its width
+        const views = [];
+        const plate_symbols = {};
+        const mp = path.join(dir, 'measure-frame.html');
+        for (const key of spec.views || []) {
+          const [w, t, kind] = key.split('-');
+          const wv = r.widths.find((x) => String(x.w) === w);
+          const pid = `${spec.id.toLowerCase()}-${key}`;
+          const part = r.part === 'footer' ? 'footer' : r.part === 'masthead' ? 'masthead' : 'page';
+          const html = r.body({ pid, theme: t, theme_for: pid, part, width: wv.w, vh: wv.vh, open: kind === 'open' });
+          fs.writeFileSync(mp, head_of(spec.id, null) + `<body>${r.sprite}${html}</body></html>`);
+          const p = await browser.newPage({ viewport: { width: wv.w, height: wv.vh }, deviceScaleFactor: 1 });
+          await p.goto('file://' + mp, { waitUntil: 'load' });
+          await p.evaluate(() => document.fonts.ready);
+          const full = await p.evaluate(() => Math.ceil(document.querySelector('.ws').getBoundingClientRect().height));
+          const h = kind === 'screen' || kind === 'open' ? wv.vh : full;
+          // a frame is a picture, so it carries only what its width and window can show (bytes; no pixel moves): a closed
+          // disclosure keeps its summary alone, an element the page sets display:none goes, and a one-window view drops
+          // everything that starts below the window. The page is captured before and after, and the two must match.
+          const before = await p.screenshot({ clip: { x: 0, y: 0, width: wv.w, height: h } });
+          const pruned = await p.evaluate((limit) => {
+            const root = document.querySelector('.ws');
+            const out = [];
+            const html = (e) => !(e instanceof SVGElement) || e.ownerSVGElement === null;
+            for (const e of root.querySelectorAll('*')) {
+              if (!html(e) || out.some((x) => x.contains(e))) continue;
+              const d = e.parentElement && e.parentElement.closest('details:not([open])');
+              if (d && e.parentElement === d && e.tagName !== 'SUMMARY') { out.push(e); continue; }
+              // a drawing switched by screen resolution (the end mark's fit and master, a 1x and 2x pair) stays: the guide
+              // shows one or the other by the reader's screen, and this page renders at 1x only
+              if (getComputedStyle(e).display === 'none' && !e.closest('.ws-end, [class*="oa-at-"]')) { out.push(e); continue; }
+              if (limit && e.getBoundingClientRect().top + scrollY >= limit) out.push(e);
+            }
+            out.forEach((e) => e.remove());
+            return { removed: out.length, html: root.outerHTML };
+          }, kind === 'screen' ? wv.vh : 0);
+          const after = await p.screenshot({ clip: { x: 0, y: 0, width: wv.w, height: h } });
+          const same = Buffer.compare(before, after) === 0;
+          if (!same) throw new Error(`${spec.id} ${key}: pruning what the frame cannot show changed its pixels`);
+          // step 4: each identity master by <use> of one symbol the page carries once; captured again, it must match
+          const sym = symbolize(pruned.html);
+          await p.evaluate(({ html, sprite_ }) => { const ws = document.querySelector('.ws'); ws.insertAdjacentHTML('beforebegin', sprite_); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); }, { html: sym.html, sprite_: identity_sprite(sym.symbols) });
+          await p.evaluate(() => document.fonts.ready);
+          const again = await p.screenshot({ clip: { x: 0, y: 0, width: wv.w, height: h } });
+          await p.close();
+          const same2 = Buffer.compare(after, again) === 0;
+          if (!same2) throw new Error(`${spec.id} ${key}: drawing the identity masters by <use> changed the frame's pixels`);
+          facts.pruned = facts.pruned || {};
+          facts.pruned[key] = { removed: pruned.removed, bytes_before: Buffer.byteLength(html), bytes_after: Buffer.byteLength(pruned.html), bytes_symbolized: Buffer.byteLength(sym.html), pixels_same: same && same2 };
+          Object.assign(plate_symbols, sym.symbols);
+          const frame_html = sym.html;
+          const alt = r.view_alt ? r.view_alt(key) : `${spec.alt} At ${w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark mode'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
+          views.push({ key, w: wv.w, h, theme: t, alt, ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}),
+            html: frame({ w: wv.w, h, html: frame_html, alt, page: { id: spec.id, key, type: spec.type } }) });
+          heights[key] = h;
+        }
+        facts.frame_heights = heights;
+        if (spec.guide) guide_plates.push({ spec, type: spec.type, css: r.css, views, words_from: r.words_from, title: r.title, symbols: plate_symbols });
+        plates.push({ id: spec.id, html: plate({ id: spec.id.toLowerCase(), head: r.plate.head, line: r.plate.line, css: r.css, frames: views.map((v) => v.html) }) });
+        extra_page.kit_css = extra_page.kit_css || kit_css;
+        extra_page.sprite.push(r.sprite);
       } else if (spec.type === 'web-page') {
         extra_page.sprite.push(r.sprite);
         extra_page.kit_css = r.fig.css;

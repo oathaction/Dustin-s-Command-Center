@@ -1,0 +1,51 @@
+{
+ "id": "A04",
+ "type": "web-site",
+ "page": "article",
+ "part": "masthead",
+ "guide": true,
+ "spec_source": "work/handoffs/phase-4/20261121_Web-Page-Specs.md, sections 2 and 3",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 1024,
+   "vh": 768,
+   "platform": "website.page_1024"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  },
+  {
+   "w": 360,
+   "vh": 780,
+   "platform": "website.page_360"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "1024-light",
+  "390-light",
+  "360-light",
+  "1440-dark",
+  "390-dark",
+  "390-light-open",
+  "360-light-open",
+  "390-dark-open"
+ ],
+ "export_name": "Web-Menu",
+ "charts": {
+  "s86": [
+   621,
+   328
+  ]
+ },
+ "alt": "The website's masthead on the article page, Explain current",
+ "plate_head": "Masthead and menu",
+ "plate_line": "Drawn by the application kit at build."
+}

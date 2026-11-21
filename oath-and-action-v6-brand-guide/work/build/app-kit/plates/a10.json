@@ -1,0 +1,80 @@
+{
+ "id": "A10",
+ "type": "favicon-set",
+ "title": null,
+ "css": "favicon-set.css",
+ "written": "2026-11-21T20:14:14.317Z",
+ "by": "work/build/app-kit/oa-app.mjs",
+ "switch_words": "Show the safe areas",
+ "words": {
+  "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
+  "id": "A10,A06",
+  "sha256": "b5760334147e103e3215dbf420faef2c8eac7bd1165c43118a6c6b0433e8da18"
+ },
+ "views": [
+  {
+   "key": "tab-light",
+   "w": 240,
+   "h": 40,
+   "theme": "light",
+   "alt": "The website's icons, each ampersand B from its masters. The favicon at 16 px on a light browser tab beside the page's title.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A10 tab-light\" data-oa-app-type=\"favicon-set\" data-w=\"240\" data-h=\"40\"><svg class=\"oa-app-scale\" viewBox=\"0 0 240 40\" role=\"img\" aria-label=\"The website's icons, each ampersand B from its masters. The favicon at 16 px on a light browser tab beside the page's title.\"><foreignObject x=\"0\" y=\"0\" width=\"240\" height=\"40\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:240px;height:40px\"><div class=\"fi-tab fi-tab--light\"><svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\"><g transform=\"translate(1 0)\" fill=\"currentColor\"><path d=\"M4.4 0H7.2C8.9 0 10 1.2 10 2.8V4.2C10 5.6 8.9 6.9 7.6 8.1L11 10.9V9.6Q11 9 10.4 9H10V7H13V9.8C13 10.8 12.6 11.5 12.1 12.1C12.6 13.3 13.2 13.9 14 14V16H12.8C11.7 16 10.8 15.3 10.2 14.6C9.2 15.6 7.8 16 6.2 16H4.4C1.8 16 0 14.5 0 12.4V11.6C0 9.8 1.6 8.8 3.8 8C2.7 7.1 2 5.8 2 4.6V3C2 1.2 3 0 4.4 0ZM5.1 9.4C3.8 9.7 3 10.2 3 10.9V12.3C3 13.3 3.6 14 4.6 14H6.5C7.3 14 8.1 13.8 8.7 13.3ZM5.5 2C4.6 2 4 2.6 4 3.5V4.4C4 5.4 4.9 6.3 5.8 7C6.6 6.1 7 5.3 7 4.3V3.5C7 2.6 6.4 2 5.5 2Z\"/></g></svg>\n<span>Oath &amp; Action | A country that answers to its people.</span></div></div></foreignObject></svg></div>"
+  },
+  {
+   "key": "tab-dark",
+   "w": 240,
+   "h": 40,
+   "theme": "dark",
+   "alt": "The website's icons, each ampersand B from its masters. The favicon at 16 px on a dark browser tab beside the page's title.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A10 tab-dark\" data-oa-app-type=\"favicon-set\" data-w=\"240\" data-h=\"40\"><svg class=\"oa-app-scale\" viewBox=\"0 0 240 40\" role=\"img\" aria-label=\"The website's icons, each ampersand B from its masters. The favicon at 16 px on a dark browser tab beside the page's title.\"><foreignObject x=\"0\" y=\"0\" width=\"240\" height=\"40\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:240px;height:40px\"><div class=\"fi-tab fi-tab--dark\"><svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\"><g transform=\"translate(1 0)\" fill=\"currentColor\"><path d=\"M4.4 0H7.2C8.9 0 10 1.2 10 2.8V4.2C10 5.6 8.9 6.9 7.6 8.1L11 10.9V9.6Q11 9 10.4 9H10V7H13V9.8C13 10.8 12.6 11.5 12.1 12.1C12.6 13.3 13.2 13.9 14 14V16H12.8C11.7 16 10.8 15.3 10.2 14.6C9.2 15.6 7.8 16 6.2 16H4.4C1.8 16 0 14.5 0 12.4V11.6C0 9.8 1.6 8.8 3.8 8C2.7 7.1 2 5.8 2 4.6V3C2 1.2 3 0 4.4 0ZM5.1 9.4C3.8 9.7 3 10.2 3 10.9V12.3C3 13.3 3.6 14 4.6 14H6.5C7.3 14 8.1 13.8 8.7 13.3ZM5.5 2C4.6 2 4 2.6 4 3.5V4.4C4 5.4 4.9 6.3 5.8 7C6.6 6.1 7 5.3 7 4.3V3.5C7 2.6 6.4 2 5.5 2Z\"/></g></svg>\n<span>Oath &amp; Action | A country that answers to its people.</span></div></div></foreignObject></svg></div>"
+  },
+  {
+   "key": "ico",
+   "w": 128,
+   "h": 48,
+   "theme": "light",
+   "alt": "The website's icons, each ampersand B from its masters. The favicon.ico file's three images at their own pixels: 16, 32 and 48 px.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A10 ico\" data-oa-app-type=\"favicon-set\" data-w=\"128\" data-h=\"48\"><svg class=\"oa-app-scale\" viewBox=\"0 0 128 48\" role=\"img\" aria-label=\"The website's icons, each ampersand B from its masters. The favicon.ico file's three images at their own pixels: 16, 32 and 48 px.\"><foreignObject x=\"0\" y=\"0\" width=\"128\" height=\"48\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:128px;height:48px\"><div class=\"fi-ico\"><svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" width=\"16\" height=\"16\"><g transform=\"translate(1 0)\" fill=\"currentColor\"><path d=\"M4.4 0H7.2C8.9 0 10 1.2 10 2.8V4.2C10 5.6 8.9 6.9 7.6 8.1L11 10.9V9.6Q11 9 10.4 9H10V7H13V9.8C13 10.8 12.6 11.5 12.1 12.1C12.6 13.3 13.2 13.9 14 14V16H12.8C11.7 16 10.8 15.3 10.2 14.6C9.2 15.6 7.8 16 6.2 16H4.4C1.8 16 0 14.5 0 12.4V11.6C0 9.8 1.6 8.8 3.8 8C2.7 7.1 2 5.8 2 4.6V3C2 1.2 3 0 4.4 0ZM5.1 9.4C3.8 9.7 3 10.2 3 10.9V12.3C3 13.3 3.6 14 4.6 14H6.5C7.3 14 8.1 13.8 8.7 13.3ZM5.5 2C4.6 2 4 2.6 4 3.5V4.4C4 5.4 4.9 6.3 5.8 7C6.6 6.1 7 5.3 7 4.3V3.5C7 2.6 6.4 2 5.5 2Z\"/></g></svg>\n<svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" width=\"32\" height=\"32\"><g transform=\"translate(1 0)\" fill=\"currentColor\"><path d=\"M4.4 0H7.2C8.9 0 10 1.2 10 2.8V4.2C10 5.6 8.9 6.9 7.6 8.1L11 10.9V9.6Q11 9 10.4 9H10V7H13V9.8C13 10.8 12.6 11.5 12.1 12.1C12.6 13.3 13.2 13.9 14 14V16H12.8C11.7 16 10.8 15.3 10.2 14.6C9.2 15.6 7.8 16 6.2 16H4.4C1.8 16 0 14.5 0 12.4V11.6C0 9.8 1.6 8.8 3.8 8C2.7 7.1 2 5.8 2 4.6V3C2 1.2 3 0 4.4 0ZM5.1 9.4C3.8 9.7 3 10.2 3 10.9V12.3C3 13.3 3.6 14 4.6 14H6.5C7.3 14 8.1 13.8 8.7 13.3ZM5.5 2C4.6 2 4 2.6 4 3.5V4.4C4 5.4 4.9 6.3 5.8 7C6.6 6.1 7 5.3 7 4.3V3.5C7 2.6 6.4 2 5.5 2Z\"/></g></svg>\n<svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" width=\"48\" height=\"48\"><g transform=\"translate(1 0)\" fill=\"currentColor\"><path d=\"M4.4 0H7.2C8.9 0 10 1.2 10 2.8V4.2C10 5.6 8.9 6.9 7.6 8.1L11 10.9V9.6Q11 9 10.4 9H10V7H13V9.8C13 10.8 12.6 11.5 12.1 12.1C12.6 13.3 13.2 13.9 14 14V16H12.8C11.7 16 10.8 15.3 10.2 14.6C9.2 15.6 7.8 16 6.2 16H4.4C1.8 16 0 14.5 0 12.4V11.6C0 9.8 1.6 8.8 3.8 8C2.7 7.1 2 5.8 2 4.6V3C2 1.2 3 0 4.4 0ZM5.1 9.4C3.8 9.7 3 10.2 3 10.9V12.3C3 13.3 3.6 14 4.6 14H6.5C7.3 14 8.1 13.8 8.7 13.3ZM5.5 2C4.6 2 4 2.6 4 3.5V4.4C4 5.4 4.9 6.3 5.8 7C6.6 6.1 7 5.3 7 4.3V3.5C7 2.6 6.4 2 5.5 2Z\"/></g></svg>\n</div></div></foreignObject></svg></div>"
+  },
+  {
+   "key": "180",
+   "w": 180,
+   "h": 180,
+   "theme": "light",
+   "alt": "The website's icons, each ampersand B from its masters. The apple-touch-icon icon, 180 by 180 px.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A10 180\" data-oa-app-type=\"favicon-set\" data-w=\"180\" data-h=\"180\"><svg class=\"oa-app-scale\" viewBox=\"0 0 180 180\" role=\"img\" aria-label=\"The website's icons, each ampersand B from its masters. The apple-touch-icon icon, 180 by 180 px.\"><foreignObject x=\"0\" y=\"0\" width=\"180\" height=\"180\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:180px;height:180px\"><div class=\"fi-tile fi-tile--180\"><svg width=\"94.84\" height=\"104.4\" aria-hidden=\"true\" focusable=\"false\" data-red=\"signature\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 -1.34 93.29 102.69\"><path fill=\"currentColor\" d=\"M40.14 -1.34C26.43 -1.34 15 8 15 23.43C15 33.43 19 41.71 27.29 49.71C15.86 56.86 0 65.43 0 76.29C0 90.86 16.43 101.34 35.57 101.34C48.14 101.34 58.14 98.29 66.71 92C71.86 97.43 78.43 100 86.43 100H93.29V88C87.57 87.71 82 83.71 79.14 76.29C81.43 70 84.14 63.14 84.14 54.57V44.57H64.71V54H69C70.29 54 71 55.43 71 58C71 59.74 71.04 60.71 71.08 61.55C71.13 62.92 71.18 63.92 71 67.29L50.14 50.14C56.43 42.43 63.86 36.29 63.86 23.14C63.86 8.86 53.29 -1.34 40.14 -1.34ZM57.29 85.86C51.57 87.86 47.57 88.49 41 88.49C30.71 88.49 21.71 83.43 21.71 73.43C21.71 67.14 26.86 62.86 33.43 59.71ZM38.71 11.23C43.86 11.23 46.14 15.43 46.14 20.86C46.14 28.57 44.43 37 41 43.29C36.14 37.57 32.57 26.57 32.57 20.29C32.57 15.14 34.43 11.23 38.71 11.23Z\"/></svg> </div></div></foreignObject></svg></div>"
+  },
+  {
+   "key": "192",
+   "w": 192,
+   "h": 192,
+   "theme": "light",
+   "alt": "The website's icons, each ampersand B from its masters. The icon-192 icon, 192 by 192 px.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A10 192\" data-oa-app-type=\"favicon-set\" data-w=\"192\" data-h=\"192\"><svg class=\"oa-app-scale\" viewBox=\"0 0 192 192\" role=\"img\" aria-label=\"The website's icons, each ampersand B from its masters. The icon-192 icon, 192 by 192 px.\"><foreignObject x=\"0\" y=\"0\" width=\"192\" height=\"192\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:192px;height:192px\"><div class=\"fi-tile fi-tile--192\"><svg width=\"101.17\" height=\"111.36\" aria-hidden=\"true\" focusable=\"false\" data-red=\"signature\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 -1.34 93.29 102.69\"><path fill=\"currentColor\" d=\"M40.14 -1.34C26.43 -1.34 15 8 15 23.43C15 33.43 19 41.71 27.29 49.71C15.86 56.86 0 65.43 0 76.29C0 90.86 16.43 101.34 35.57 101.34C48.14 101.34 58.14 98.29 66.71 92C71.86 97.43 78.43 100 86.43 100H93.29V88C87.57 87.71 82 83.71 79.14 76.29C81.43 70 84.14 63.14 84.14 54.57V44.57H64.71V54H69C70.29 54 71 55.43 71 58C71 59.74 71.04 60.71 71.08 61.55C71.13 62.92 71.18 63.92 71 67.29L50.14 50.14C56.43 42.43 63.86 36.29 63.86 23.14C63.86 8.86 53.29 -1.34 40.14 -1.34ZM57.29 85.86C51.57 87.86 47.57 88.49 41 88.49C30.71 88.49 21.71 83.43 21.71 73.43C21.71 67.14 26.86 62.86 33.43 59.71ZM38.71 11.23C43.86 11.23 46.14 15.43 46.14 20.86C46.14 28.57 44.43 37 41 43.29C36.14 37.57 32.57 26.57 32.57 20.29C32.57 15.14 34.43 11.23 38.71 11.23Z\"/></svg> </div></div></foreignObject></svg></div>"
+  },
+  {
+   "key": "512",
+   "w": 512,
+   "h": 512,
+   "theme": "light",
+   "alt": "The website's icons, each ampersand B from its masters. The icon-512-maskable icon, 512 by 512 px.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A10 512\" data-oa-app-type=\"favicon-set\" data-w=\"512\" data-h=\"512\"><svg class=\"oa-app-scale\" viewBox=\"0 0 512 512\" role=\"img\" aria-label=\"The website's icons, each ampersand B from its masters. The icon-512-maskable icon, 512 by 512 px.\"><foreignObject x=\"0\" y=\"0\" width=\"512\" height=\"512\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:512px;height:512px\"><div class=\"fi-tile fi-tile--512\"><svg width=\"269.78\" height=\"296.96\" aria-hidden=\"true\" focusable=\"false\" data-red=\"signature\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 -1.34 93.29 102.69\"><path fill=\"currentColor\" d=\"M40.14 -1.34C26.43 -1.34 15 8 15 23.43C15 33.43 19 41.71 27.29 49.71C15.86 56.86 0 65.43 0 76.29C0 90.86 16.43 101.34 35.57 101.34C48.14 101.34 58.14 98.29 66.71 92C71.86 97.43 78.43 100 86.43 100H93.29V88C87.57 87.71 82 83.71 79.14 76.29C81.43 70 84.14 63.14 84.14 54.57V44.57H64.71V54H69C70.29 54 71 55.43 71 58C71 59.74 71.04 60.71 71.08 61.55C71.13 62.92 71.18 63.92 71 67.29L50.14 50.14C56.43 42.43 63.86 36.29 63.86 23.14C63.86 8.86 53.29 -1.34 40.14 -1.34ZM57.29 85.86C51.57 87.86 47.57 88.49 41 88.49C30.71 88.49 21.71 83.43 21.71 73.43C21.71 67.14 26.86 62.86 33.43 59.71ZM38.71 11.23C43.86 11.23 46.14 15.43 46.14 20.86C46.14 28.57 44.43 37 41 43.29C36.14 37.57 32.57 26.57 32.57 20.29C32.57 15.14 34.43 11.23 38.71 11.23Z\"/></svg> </div></div></foreignObject><g class=\"oa-app-safe\" aria-hidden=\"true\"><circle class=\"edge\" cx=\"256\" cy=\"256\" r=\"204.8\" stroke-width=\"2\" stroke-dasharray=\"12 8\"/><rect class=\"chip\" x=\"16\" y=\"16\" width=\"427\" height=\"42\"/><text x=\"26.4\" y=\"45.120000000000005\" font-size=\"26\">Safe circle, 40 percent</text></g></svg></div>"
+  }
+ ],
+ "inputs": {
+  "work/build/app-kit/lib.mjs": "f00e4bd3af21e4437d7a110e4d85400be6545e468ff9912afb3a506bf1a10398",
+  "work/build/app-kit/oa-app.mjs": "896f5efba9183c174cd80e278d98d5dd5be5c598487e18027bf9e9f246ee797f",
+  "work/build/app-kit/renderers/favicon-set.mjs": "8f3ff25bde39bc4e18c82b0841ce51877295dfbbc5bc7aa57eae35c8d9d6104c",
+  "work/build/app-kit/renderers/report-page.mjs": "59982838a81625cbcf4eb51441459435150e566e68ef7284edbe42b1dceddd48",
+  "work/build/app-kit/renderers/share-image.mjs": "1f2ff66d37f9427b10f7ba193ff58e63743aa6d3f4afcb8b6ab64a3f412d0b85",
+  "work/build/app-kit/renderers/site-parts.mjs": "54318bfeac15b652fa9c6a30eb2da4379c4e7a5e14607fa93533c1c688bdd710",
+  "work/build/app-kit/renderers/social-post.mjs": "c63ec01f45fdbde3713400533b54416f2c70fe96353e97e89fc74bc6850dc840",
+  "work/build/app-kit/renderers/web-page.mjs": "36a79d119844b1c2bf2e18f53b702f2c68d49b79b70e0d8412b3e5cffe5b49c0",
+  "work/build/app-kit/renderers/web-site.mjs": "16b584c04fdf949be01e28eebfe0be9833de6e4147b21b315560eff5e0a1f017",
+  "work/build/app-kit/specs/a10-web-favicons.json": "f06628f2261449f5c09cb02c410ea9939a50ff6e456fb319d9ee3164cc37b382",
+  "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg": "f8a2aedcea4e135009cc75e50db6b55c5fc1246a77502d8ef6edca3072a0617d",
+  "work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg": "f10c0ffbda8b22feafc09b7a8eb11624a3154a215566803a859d2e181e6c5b31",
+  "work/build/tokens/tokens.css": "3ecfb1cb943a8844e55c7bf46dcce934d8ce255dce4f95c47de7074ccf3e3d0d",
+  "work/research/20261121_Platform-Specifications.json": "9f6110c07a395f54d642c8da3bb630901b97ceaf0067f02b207f208d28a899ec"
+ }
+}

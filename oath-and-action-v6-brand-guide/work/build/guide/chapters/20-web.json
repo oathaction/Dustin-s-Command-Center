@@ -1,0 +1,970 @@
+{
+  "number": "20",
+  "anchor": "web",
+  "title": "Web",
+  "part": "applications",
+  "opener": "s-20-opener",
+  "instruction": "Build each web page from the system, opening on the reader’s question.",
+  "intro": [
+    "This chapter sets how our website looks and works: the masthead, the menu and the footer every page shares, the three kinds of page we publish most, the preview a link shows when someone shares it, and the icon in a browser tab. Every page is built from the tokens and the components in chapter 18, on Newsprint and in the dark mode, at the four widths we test.",
+    "The pages here are real. The home page leads with our explainer on special districts, H.R. 7008 and a rule open for comment, and the Act page walks through commenting on that rule, checked November 21, 2026. Only the web address is a stand-in, labeled Illustrative until our founder and editor settles it."
+  ],
+  "groups": [
+    {
+      "before_rule": "20.1",
+      "number": 1,
+      "title": "The frame every page shares",
+      "line": "Every page opens with the same masthead, closes with the same footer, names itself in its title and offers the theme switch in one place."
+    },
+    {
+      "before_rule": "20.6",
+      "number": 2,
+      "title": "Three pages",
+      "line": "The home page, an article and an Act page, each at four widths and in the dark mode, built from one set of parts."
+    },
+    {
+      "before_rule": "20.10",
+      "number": 3,
+      "title": "Beyond the page",
+      "line": "The preview a shared link shows, and the icons a browser and a phone draw for the site."
+    }
+  ],
+  "rules": [
+    {
+      "id": "20.1",
+      "title": "Open every page with the masthead, and move its parts behind Menu once they no longer fit beside L3.",
+      "rule": [
+        "Every page opens with the same masthead. From 64em, 1,024 px at the default text size, the bar holds L3 at the left and the seven parts of the site at the right, in this order: Explain, Track, Connect, Act, Who Do They Answer To?, About and Subscribe. The theme switch sits on a row beneath them, at the right edge.",
+        "Between 48em and 64em the bar keeps L3 and moves the parts and the switch behind Menu, and under 48em the bar sets the wordmark alone with Menu beside it. The part the reader is in shows in bold with a 2 px underline. Every part stays in the masthead’s ink, Subscribe included, so the view’s one red stays free for the step a reader can take. On an atlas page, the atlas’s own title bar sits under the masthead."
+      ],
+      "tokens": [
+        "oa.type.ui",
+        "oa.color.surface",
+        "oa.color.text.primary",
+        "oa.color.border.hairline",
+        "oa.border.width.rule",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A reader finds the parts in the same place on every page, and a screen reader reaches them as one named navigation. The parts come in the order of the pillars and then the rest, so the list itself says what we do. Once the seven no longer fit beside L3, a Menu button keeps them one press away and leaves the wordmark its room."
+        ],
+        "basis": "Rules 03.6, 08.2 and 18.6; the parts approved by our founder and editor on November 21, 2026; design judgment for the breakpoints, from measured word widths"
+      },
+      "correct": {
+        "specimen": "s-20-1-correct",
+        "caption": "The masthead at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark theme, drawn on the article page, where Explain is the current part."
+      },
+      "failure": {
+        "specimen": "s-20-1-failure",
+        "caption": "<strong>Fails Rule 20.1.</strong> Subscribe takes a red fill in the masthead, so every page spends its one red on a sign-up, and on the Act page the ask becomes the second red in the first screen."
+      },
+      "specs": [
+        {
+          "label": "Bar, from 64em",
+          "value": "80 px tall: L3 from its masthead master, 282 by 48 px on whole pixels, at the left margin; the seven parts at the right, each a 44 px box in the interface style, 32 px apart from 90em and 16 px apart below it"
+        },
+        {
+          "label": "Switch row, from 64em",
+          "value": "The theme switch, 44 px tall, at the right edge under the parts, with 16 px under it and then the 1 px hairline"
+        },
+        {
+          "label": "48em to 64em",
+          "value": "An 80 px bar with L3 and Menu"
+        },
+        {
+          "label": "Under 48em",
+          "value": "A 56 px bar: L1 from the 24 px master, 221 by 24 px, and Menu; under 24.375em, L1 from the 16 px master, 152 by 16 px"
+        },
+        {
+          "label": "Measured",
+          "value": "The seven words take 484 px in the interface style, 580 px with their gaps at 1,024 px; with L3 and 32 px of space they fill 894 of the 944 px inside the margins"
+        },
+        {
+          "label": "Divider",
+          "value": "A 1 px hairline, 20 px tall, in the gap before Who Do They Answer To?, so the four pillars read as a set"
+        },
+        {
+          "label": "Current part",
+          "value": "Bold, with a 2 px underline at 0.3 em, and aria-current"
+        },
+        {
+          "label": "Red",
+          "value": "None of its own: the wordmark’s ampersand and the lockmark’s lever are signature red"
+        },
+        {
+          "label": "Sticking",
+          "value": "Never; the masthead scrolls away, so its lockmark and the footer’s never share a screen"
+        },
+        {
+          "label": "Landmarks",
+          "value": "One header; the parts in a navigation named “Parts of the site”"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.3.1, 2.4.1, 2.4.3, 3.2.3, 3.2.4, 4.1.2"
+        }
+      ],
+      "related": [
+        "03",
+        "08",
+        "18"
+      ],
+      "related_rules": [
+        "03.6",
+        "08.2",
+        "18.4",
+        "18.6",
+        "18.7",
+        "20.2",
+        "20.5"
+      ],
+      "builders": [
+        "Write the parts once and let the bar or the menu show them. Test the bar at 1,024 px with the longest current part in bold before you add an eighth part."
+      ]
+    },
+    {
+      "id": "20.2",
+      "title": "Under 64em, open the parts in a menu that holds focus, with the theme switch at its top.",
+      "rule": [
+        "Menu opens the parts of the site in a dialog that covers the page. Its title, Menu, and Close the menu sit at the top, then the theme switch, then the seven parts as rows, with the current part on the selected band.",
+        "Focus moves to the current part, or to Close the menu on a page with no current part. The Tab key stays inside, and Escape, Close the menu or a part closes it and returns focus to Menu. If the window widens past 64em while the menu is open, it closes and focus moves to the current part in the bar."
+      ],
+      "tokens": [
+        "oa.color.surface",
+        "oa.color.border.strong",
+        "oa.color.state.selected.band",
+        "oa.color.state.selected.bar",
+        "oa.border.width.bar",
+        "oa.size.target.touch"
+      ],
+      "why": {
+        "text": [
+          "A dialog makes the page behind it unreachable, so a keyboard or screen reader user never walks into links the menu covers. The switch at the top keeps the theme one press away on a phone, where the bar has no room for it."
+        ],
+        "basis": "Rule 18.6 and the APG’s Dialog (Modal) pattern; design judgment for the order inside"
+      },
+      "correct": {
+        "specimen": "s-20-2-correct",
+        "caption": "The menu open over the article page at 390 and 360 px in the light theme and at 390 px in the dark theme, with Explain on the selected band."
+      },
+      "failure": {
+        "specimen": "s-20-2-failure",
+        "caption": "<strong>Fails Rule 20.2.</strong> The menu leaves the theme switch out, so on a phone a reader cannot change the theme from any page."
+      },
+      "specs": [
+        {
+          "label": "Dialog",
+          "value": "The whole window, on the surface of the theme it opens in, with the page’s own side margins"
+        },
+        {
+          "label": "Head",
+          "value": "56 px: the title Menu in bold at the left; Close the menu, 44 px tall with its icon and word, at the right; a 1 px strong line under it"
+        },
+        {
+          "label": "Switch",
+          "value": "24 px under the head: the legend on its own line, then the three choices; at 360 px Match my device wraps to its own line, and at 320 px each choice takes a line"
+        },
+        {
+          "label": "Parts",
+          "value": "24 px under the switch: rows at least 44 px tall with a hairline under each, and a strong line after Act"
+        },
+        {
+          "label": "Current part",
+          "value": "The selected band, the 4 px bar at its left edge, bold words and aria-current"
+        },
+        {
+          "label": "Opening",
+          "value": "Focus to the current part’s link, or to Close the menu where no part is current"
+        },
+        {
+          "label": "Closing",
+          "value": "Escape, Close the menu or a part; focus back to Menu, and aria-expanded back to false"
+        },
+        {
+          "label": "Navigation name",
+          "value": "“Parts of the site, in the menu”"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "2.1.1, 2.1.2, 2.4.3, 2.4.7, 2.4.11, 2.5.3, 2.5.8, 4.1.2"
+        }
+      ],
+      "related": [
+        "18"
+      ],
+      "related_rules": [
+        "18.4",
+        "18.6",
+        "18.7",
+        "18.8",
+        "20.1"
+      ],
+      "builders": [
+        "Open the menu with <code>showModal()</code> and test it with the keyboard alone: Menu, Tab to the end, Shift+Tab back, Escape."
+      ]
+    },
+    {
+      "id": "20.3",
+      "title": "Close every page with the same footer: the parts, help in one place, and the lockmark with the tagline.",
+      "rule": [
+        "Every page ends with the same footer on Charcoal. Four lists name the site again: our work by pillar, the atlas, Oath & Action, and Help, whose one link, Contact us, reaches the editor. Help keeps its place in that order on every page, the atlas’s pages included.",
+        "Under the lists, the lockmark at 24 px and the tagline close the page on one line, with the web address after them."
+      ],
+      "tokens": [
+        "oa.color.surface.charcoal",
+        "oa.color.text.primary.onCharcoal",
+        "oa.color.text.secondary.onCharcoal",
+        "oa.color.border.hairline.onCharcoal",
+        "oa.color.identity.signature.onCharcoal",
+        "oa.type.label",
+        "oa.type.bodySmall",
+        "oa.type.caption"
+      ],
+      "why": {
+        "text": [
+          "A reader who gets stuck finds help where they found it last time, which matters most on the page where they are trying to take part. The footer is the lockmark’s place on a page, so the masthead can show the wordmark it needs with no second lockmark in view."
+        ],
+        "basis": "Rule 08.2; WCAG 2.2 SC 3.2.6, as the W3C’s page “Understanding Success Criterion 3.2.6: Consistent Help”, retrieved November 21, 2026, sets it; the web address shown as a stand-in, approved by our founder and editor on November 21, 2026"
+      },
+      "correct": {
+        "specimen": "s-20-3-correct",
+        "caption": "The footer at 1440, 1024, 390 and 360 px in the light theme, and at 1440 px in the dark theme, where a hairline along its top sets it apart from the page."
+      },
+      "failure": {
+        "specimen": "s-20-3-failure",
+        "caption": "<strong>Fails Rule 20.3.</strong> Help moves and changes its words from one page to the next, so a reader has to hunt for it on the page where they need it most."
+      },
+      "specs": [
+        {
+          "label": "Ground",
+          "value": "Charcoal in both themes; in the dark theme a 1 px hairline along its top"
+        },
+        {
+          "label": "Space",
+          "value": "104 px above it; 64 px of padding at its top and 40 px at its foot"
+        },
+        {
+          "label": "Lists",
+          "value": "Four groups, each a heading in the label style and links in the small body style on 44 px rows; four across from 48em, two by two on phones"
+        },
+        {
+          "label": "Help",
+          "value": "The fourth group, with Contact us its first link, on every page"
+        },
+        {
+          "label": "Lockmark row",
+          "value": "48 px under the lists, a hairline, then 32 px: the lockmark’s 24 px master, 12 px, and the tagline, on one line at the left"
+        },
+        {
+          "label": "Web address",
+          "value": "At the row’s right end from 48em and on its own line under it, in the caption style, with the Illustrative label until our address is settled"
+        },
+        {
+          "label": "Navigation name",
+          "value": "“Site map”, which differs from the masthead’s"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "3.2.6, 3.2.3, 3.2.4, 2.5.8"
+        }
+      ],
+      "related": [
+        "08",
+        "13",
+        "18"
+      ],
+      "related_rules": [
+        "08.1",
+        "08.2",
+        "13.8",
+        "18.5",
+        "20.1"
+      ],
+      "builders": [
+        "Draw the footer from one source for every page, and never move or rename the help link for one page."
+      ]
+    },
+    {
+      "id": "20.4",
+      "title": "Name every page in its title, and set its language in the markup.",
+      "rule": [
+        "Give every page a title that starts with its own words and ends with our name, as in “What a special district does | Oath & Action”. The home page leads with our name and the tagline. Set the language of every page on its root, as <code>lang=\"en\"</code>.",
+        "When a passage or phrase is in another language, mark the smallest element that holds it with its own language, and leave names and terms that English uses as they are, such as Regulations.gov or N-acetyl-L-cysteine."
+      ],
+      "tokens": [
+        "oa.type.bodySmall",
+        "oa.type.caption"
+      ],
+      "why": {
+        "text": [
+          "A title is the first thing a screen reader says and the name a tab, a bookmark and a search result show, so a reader with ten tabs open can find this one. The language tells a screen reader how to pronounce the words and tells a browser which characters to draw."
+        ],
+        "basis": "WCAG 2.2 SC 2.4.2, 3.1.1 and 3.1.2, and Technique G88, as the W3C’s pages set them, retrieved November 21, 2026"
+      },
+      "correct": {
+        "specimen": "s-20-4-correct",
+        "caption": "Three tabs a reader can tell apart, the head every page carries, and a phrase in another language marked with its own."
+      },
+      "failure": {
+        "specimen": "s-20-4-failure",
+        "caption": "<strong>Fails Rule 20.4.</strong> Every tab says Oath & Action, so a reader cannot tell the explainer from the Act page without opening each one."
+      },
+      "specs": [
+        {
+          "label": "Title",
+          "value": "The page’s headline, or a shorter form of it past about 60 characters, then a spaced vertical bar and Oath & Action"
+        },
+        {
+          "label": "Home page",
+          "value": "“Oath & Action | A country that answers to its people.”"
+        },
+        {
+          "label": "Atlas pages",
+          "value": "The view, then Who Do They Answer To?, then Oath & Action, each after a spaced vertical bar"
+        },
+        {
+          "label": "Language",
+          "value": "<code>lang=\"en\"</code> on the root of every page"
+        },
+        {
+          "label": "Another language",
+          "value": "Its own <code>lang</code> code on the smallest element that holds the passage; on a link or a button when the passage is its whole name; <code>hreflang</code> on a link to a page in another language"
+        },
+        {
+          "label": "Head, in order",
+          "value": "Character set, viewport, title, color scheme, the head script that applies a stored theme, the stylesheet, the icons, the preview tags"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "2.4.2, 3.1.1, 3.1.2 (the markup)"
+        }
+      ],
+      "related": [
+        "02",
+        "18",
+        "19",
+        "26"
+      ],
+      "related_rules": [
+        "18.12",
+        "20.10",
+        "20.11",
+        "26.6"
+      ],
+      "builders": [
+        "Write the title when you write the headline, and check it in a tab beside two other pages."
+      ]
+    },
+    {
+      "id": "20.5",
+      "title": "Draw every page in the dark mode from the same markup, and keep each panel’s edge.",
+      "rule": [
+        "Every page follows the reader’s device at first and changes theme from the switch, with no second page and no second set of words. The dark theme sets Charcoal for the page and the matching value for every part.",
+        "A dark panel keeps its Charcoal and draws a 1 px edge, so it still reads as a panel on a Charcoal page. Charts take the kit’s Charcoal drawing, and the identity marks take their paint for Charcoal."
+      ],
+      "tokens": [
+        "oa.color.surface",
+        "oa.color.border.hairline.onCharcoal",
+        "oa.color.text.primary.onCharcoal",
+        "oa.color.identity.signature.onCharcoal"
+      ],
+      "why": {
+        "text": [
+          "One page in two themes keeps the words, links and order the same for every reader. Without an edge, a Charcoal panel on a Charcoal page disappears, and the section loses the signal that told the reader it had turned."
+        ],
+        "basis": "One dark mode for every screen product, with a visible switch that remembers the reader’s choice, approved by our founder and editor on November 10, 2026; Rules 18.4 and 26.6; design judgment for the edge"
+      },
+      "correct": {
+        "specimen": "s-20-5-correct",
+        "caption": "The home page’s first screen at 390 px in the light and the dark theme, from the same markup. On the dark page each head cell of the pillar row keeps a 1 px edge."
+      },
+      "failure": {
+        "specimen": "s-20-5-failure",
+        "caption": "<strong>Fails Rule 20.5.</strong> With no edge, the pillar cell melts into the dark page, and only its icon and word show where the section begins."
+      },
+      "specs": [
+        {
+          "label": "Themes",
+          "value": "Light, dark, or the device’s, set on the page’s root and kept under the key <code>oa-theme</code> (Rule 18.4)"
+        },
+        {
+          "label": "Panel edge",
+          "value": "A 1 px hairline for Charcoal on all four sides; along the top only on the footer"
+        },
+        {
+          "label": "Contrast",
+          "value": "The edge, Stone on Charcoal, measures 3.10 to 1, past the 3 to 1 a boundary needs"
+        },
+        {
+          "label": "Charts",
+          "value": "The kit’s Charcoal drawing in every dark frame"
+        },
+        {
+          "label": "Marks",
+          "value": "L3, L1 and the lockmark take their paint for Charcoal, with signature red kept"
+        },
+        {
+          "label": "The switch",
+          "value": "In the masthead from 64em, at the top of the menu under it"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.4.3, 1.4.11, 3.2.2, 3.2.3, 4.1.2"
+        }
+      ],
+      "related": [
+        "05",
+        "18",
+        "26"
+      ],
+      "related_rules": [
+        "05.1",
+        "18.4",
+        "20.1",
+        "20.2",
+        "26.6"
+      ],
+      "builders": [
+        "Build the light page with the theme’s own token names only, then switch the theme and look for any panel or mark that disappeared."
+      ]
+    },
+    {
+      "id": "20.6",
+      "title": "Open the home page on one piece for each pillar, with the step a reader can take now.",
+      "rule": [
+        "The home page opens on the pillar row, with one piece under each pillar: an explainer, a tracker, a guide and a step a reader can take now. Each piece is a card with its kicker, headline, a few lines and its date. The Act card carries the take-part mark on its step and the view’s one red.",
+        "Below them, the atlas’s section opens on the everyday questions it answers, with a chart and its source line."
+      ],
+      "tokens": [
+        "oa.type.intro",
+        "oa.type.h3",
+        "oa.type.bodySmall",
+        "oa.type.label",
+        "oa.type.caption",
+        "oa.type.section",
+        "oa.size.icon.large",
+        "oa.color.surface.charcoal"
+      ],
+      "why": {
+        "text": [
+          "A first-time reader sees in one screen what each pillar does and one thing to do this week. The pillar row is the order of our work, so it can order the page without a word of explanation."
+        ],
+        "basis": "Rules 01.21, 09.1, 09.4, 11.4, 11.5 and 11.9; design judgment for the layout"
+      },
+      "correct": {
+        "specimen": "s-20-6-correct",
+        "caption": "The home page at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark theme. At 1,024 px the pillar row breaks after Track, two pillars to a line, as Rule 09.1 sets it."
+      },
+      "failure": {
+        "specimen": "s-20-6-failure",
+        "caption": "<strong>Fails Rule 20.6.</strong> The first screen opens on a slogan, so a reader learns nothing they can use and finds no step to take."
+      },
+      "specs": [
+        {
+          "label": "Pillar row",
+          "value": "Each pillar section opens with its cell: Charcoal, the 48 px pillar icon in one color, its word in the intro style, bold, and an arrow to the next; at 1440 px the four cells meet as one band, at 1,024 px two to a line, and on phones one at the top of each section"
+        },
+        {
+          "label": "Cards",
+          "value": "309 px wide at 1440, 460 at 1,024, 350 at 390 and 328 at 360: kicker, headline in the H3 style, a few lines in the small body style, and the date or “As of” line"
+        },
+        {
+          "label": "Trackers",
+          "value": "Six circles at 24 px, 60 px apart, 57 px on the 309 px card; steps drawn only from the record"
+        },
+        {
+          "label": "The step",
+          "value": "The take-part mark on step 3 of the rule, “You can take part now.” in bold, the deadline and a text link at least 44 px tall"
+        },
+        {
+          "label": "The atlas",
+          "value": "Its questions on a Charcoal panel, first in the section at every width, and chart S10 whole with its source line"
+        },
+        {
+          "label": "Title",
+          "value": "“Oath & Action | A country that answers to its people.”"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.3.1, 1.4.1, 1.4.10, 2.4.6"
+        }
+      ],
+      "related": [
+        "01",
+        "05",
+        "09",
+        "11",
+        "14"
+      ],
+      "related_rules": [
+        "01.21",
+        "05.1",
+        "05.3",
+        "09.1",
+        "09.4",
+        "11.4",
+        "11.5",
+        "11.9",
+        "20.9"
+      ],
+      "builders": [
+        "Choose the four pieces by pillar, then check that the Act card’s step is still open on the day the page goes up."
+      ]
+    },
+    {
+      "id": "20.7",
+      "title": "Build an article from its question to its step, with the chart whole in its column.",
+      "rule": [
+        "An article opens with the compact pillar row, its kicker and a headline that answers the reader’s question, then an intro of two or three sentences and the byline. Its body runs at the reading measure, and a chart keeps all its parts, its source line and its table in the body’s column.",
+        "The last section ends on a step the reader can take, and the last word carries ampersand B."
+      ],
+      "tokens": [
+        "oa.type.title",
+        "oa.type.intro",
+        "oa.type.h3",
+        "oa.type.body",
+        "oa.type.figure",
+        "oa.type.caption",
+        "oa.layout.measure.bodyIdeal"
+      ],
+      "why": {
+        "text": [
+          "A reader who came with a question gets the answer in the headline and the evidence in the column they are already reading. Ending on a step tells them what to do with what they learned."
+        ],
+        "basis": "Rules 01.21, 04.6, 07.3, 09.1 and 14.2; chapter 02’s W08; the counts from the Census Bureau’s 2022 Census of Governments"
+      },
+      "correct": {
+        "specimen": "s-20-7-correct",
+        "caption": "The article at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark theme. The count panel is the first screen’s one dark panel."
+      },
+      "failure": {
+        "specimen": "s-20-7-failure",
+        "caption": "<strong>Fails Rule 20.7.</strong> The article ends on a slogan, so a reader who wants to look up the districts where they live finishes with nowhere to go."
+      },
+      "specs": [
+        {
+          "label": "Pillar row",
+          "value": "The 24 px row in the piece’s header, Explain bold and underlined, every icon in one color"
+        },
+        {
+          "label": "Headline",
+          "value": "The title style, balanced: 110 px at 1440, 88.6 at 1,024 and 56 on phones"
+        },
+        {
+          "label": "Count panel",
+          "value": "Charcoal, beside the intro from 64em and after it on phones: the figure in the figure style, two lines on what it counts and the counts’ source line"
+        },
+        {
+          "label": "Body",
+          "value": "Five of 12 columns at 1440 and seven at 1,024 (Rule 07.3)"
+        },
+        {
+          "label": "Chart",
+          "value": "S86 whole, six of 12 columns at 1440, each frame carrying only the drawing its width shows"
+        },
+        {
+          "label": "Ending",
+          "value": "The step, a link to another site with its mark, and B after the last word"
+        },
+        {
+          "label": "Title",
+          "value": "“What a special district does | Oath & Action”"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.1.1, 1.3.1, 1.4.1, 1.4.4, 1.4.10, 1.4.12, 2.4.6"
+        }
+      ],
+      "related": [
+        "01",
+        "04",
+        "07",
+        "09",
+        "14"
+      ],
+      "related_rules": [
+        "01.21",
+        "04.6",
+        "07.3",
+        "09.1",
+        "14.2",
+        "14.13",
+        "20.9"
+      ],
+      "builders": [
+        "Write the step before you write the headline, then check that the last section still ends on it."
+      ]
+    },
+    {
+      "id": "20.8",
+      "title": "Build an Act page as a process piece that names who decides and by when, with one way to take part in red.",
+      "rule": [
+        "An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s own summary, sets out what supporters and opponents have said at the same length, and takes no side.",
+        "After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read other comments, and gives the ask again. The ask is a red link to the comment page that names the docket and the place, and every fact carries the day we checked it."
+      ],
+      "tokens": [
+        "oa.type.section",
+        "oa.type.intro",
+        "oa.type.quote",
+        "oa.type.ask",
+        "oa.color.action.ask.fill.onCharcoal",
+        "oa.color.action.ask.label.onCharcoal",
+        "oa.color.identity.hingeDivider"
+      ],
+      "why": {
+        "text": [
+          "A reader of any view can use the page, because it tells them how to be heard and leaves what to say to them. Naming the place in the link tells a reader they are leaving our site before they press it."
+        ],
+        "basis": "Rules 01.22, 04.4, 11.4, 11.6, 11.9 and 11.15; the docket as the Federal Register and govinfo.gov printed it, retrieved November 21, 2026; the page’s subject approved by our founder and editor on November 21, 2026"
+      },
+      "correct": {
+        "specimen": "s-20-8-correct",
+        "caption": "The Act page at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark theme. Its red does one job, the step: the take-part mark with the ask under it, and the ask again after the instructions."
+      },
+      "failure": {
+        "specimen": "s-20-8-failure",
+        "caption": "<strong>Fails Rule 20.8.</strong> “Take action” names no docket and no place, so a reader cannot tell where the link leads or that it leaves our site."
+      },
+      "specs": [
+        {
+          "label": "Opening",
+          "value": "The 24 px pillar row with Act current, the kicker “Act · How to take part” alone, the headline in the section style, the intro and “Checked November 21, 2026”"
+        },
+        {
+          "label": "Status panel",
+          "value": "Charcoal, beside the opening from 64em: the rule’s six steps down the panel, 28 px circles, step 3 with the take-part mark, and under it the deadline and the ask"
+        },
+        {
+          "label": "Summary panel",
+          "value": "Charcoal: the agency’s summary word for word in the quotation style, with its citation"
+        },
+        {
+          "label": "Who decides",
+          "value": "One paragraph and chart S66 whole with its source line"
+        },
+        {
+          "label": "Hinge divider",
+          "value": "Before the steps to comment (Rule 04.4)"
+        },
+        {
+          "label": "The ask",
+          "value": "A link, White on Pillar Red in the ask style, 48 px tall at least, with the mark for another site and “(another site)” for screen readers; on Charcoal, so it needs no keyline"
+        },
+        {
+          "label": "The address",
+          "value": "Printed in full under each ask, so a reader can copy it or read it on paper"
+        },
+        {
+          "label": "Red",
+          "value": "One job, the step: the take-part mark and each ask; the two asks never share a screen"
+        },
+        {
+          "label": "Title",
+          "value": "“How to comment on the FDA’s proposed rule on NAC | Oath & Action”"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.4.1, 1.4.3, 2.4.4, 2.5.8, 3.2.5"
+        }
+      ],
+      "related": [
+        "01",
+        "04",
+        "11",
+        "18"
+      ],
+      "related_rules": [
+        "01.22",
+        "04.4",
+        "11.4",
+        "11.6",
+        "11.9",
+        "11.15",
+        "18.5",
+        "20.6"
+      ],
+      "builders": [
+        "Check the docket on the day the page goes up and again the week it closes, and take the red away the day comments close."
+      ]
+    },
+    {
+      "id": "20.9",
+      "title": "Give each section one dark panel in its opening screen, and let running text stay Newsprint.",
+      "rule": [
+        "Measure a long page one screen at a time. The first screen and each section’s opening screen hold 60 to 85 percent Newsprint and at most one dark panel, and Pillar Red stays within 5 percent.",
+        "Put each section’s dark panel where its opening screen needs it, and let the screens of running text between them hold more Newsprint."
+      ],
+      "tokens": [
+        "oa.color.surface.newsprint",
+        "oa.color.surface.charcoal",
+        "oa.color.palette.pillarRed"
+      ],
+      "why": {
+        "text": [
+          "A reader judges a page one screen at a time. A dark panel at the turn of each section tells them something new begins, and long stretches of reading stay calm on Newsprint."
+        ],
+        "basis": "Rule 05.1, with its sentence for long pages approved by our founder and editor on November 21, 2026; the application kit’s measure of each screen"
+      },
+      "correct": {
+        "specimen": "s-20-9-correct",
+        "caption": "Every first and opening screen of the three pages at 1440 px in the light theme, measured on the kit’s captures."
+      },
+      "failure": {
+        "specimen": "s-20-9-failure",
+        "caption": "<strong>Fails Rule 20.9.</strong> With no panel in its first screen, our studio sample of this article measured 88.2 percent Newsprint, past the 85 a screen allows."
+      },
+      "specs": [
+        {
+          "label": "Screens",
+          "value": "1440 by 900, 1024 by 768, 390 by 844 and 360 by 780 px"
+        },
+        {
+          "label": "Each first and opening screen",
+          "value": "Newsprint 60 to 85 percent; one dark panel at most; Pillar Red within 5 percent, signature red included"
+        },
+        {
+          "label": "Sections",
+          "value": "Marked in the markup, the footer its own"
+        },
+        {
+          "label": "A pixel",
+          "value": "Counts as a color within 3 levels on each channel, or 24 for red"
+        },
+        {
+          "label": "Panels",
+          "value": "Charcoal or Prussian, counted in the section where the panel’s top falls"
+        },
+        {
+          "label": "Dark frames",
+          "value": "Shares printed; the red limit judged"
+        }
+      ],
+      "related": [
+        "05"
+      ],
+      "related_rules": [
+        "05.1",
+        "05.3",
+        "20.6",
+        "20.7",
+        "20.8"
+      ],
+      "builders": [
+        "Run the measure on every light frame before a page goes up, and move a panel before you add one."
+      ]
+    },
+    {
+      "id": "20.10",
+      "title": "Share every page as a 1200 by 630 card, its headline over a Charcoal foot that holds the sign-off.",
+      "rule": [
+        "Each page shares as a 1200 by 630 card on Newsprint: the page’s kicker in the H3 style, its headline at the title size, and a Charcoal foot that holds the wordmark at the left and the lockmark’s 96 px sign-off at the right.",
+        "The card carries no web address until ours is settled, no deck and no icon, and its words go into the image’s alt text too."
+      ],
+      "tokens": [
+        "oa.type.title",
+        "oa.type.h3",
+        "oa.color.surface.newsprint",
+        "oa.color.surface.charcoal",
+        "oa.color.identity.signature.onCharcoal"
+      ],
+      "why": {
+        "text": [
+          "A feed shows the card at about 500 px wide, so only the headline and the marks survive, and the sign-off at 96 px keeps its lever red at that size. The foot puts the card in Rule 05.1’s range and gives every shared page the same signature in the same place."
+        ],
+        "basis": "Rule 08.2 and its feed test; the link-preview card in the identity proofs; the platform rows retrieved November 21, 2026; design judgment for the foot"
+      },
+      "correct": {
+        "specimen": "s-20-10-correct",
+        "caption": "The article’s share preview at full size and at the two widths a feed shows it."
+      },
+      "failure": {
+        "specimen": "s-20-10-failure",
+        "caption": "<strong>Fails Rule 20.10.</strong> At 48 px the sign-off loses its lever’s red once a feed shrinks the card to 360 px; Rule 08.2 counted no red pixel left on our card."
+      },
+      "specs": [
+        {
+          "label": "Size",
+          "value": "1200 by 630 px, PNG"
+        },
+        {
+          "label": "Margin",
+          "value": "72 px"
+        },
+        {
+          "label": "Kicker",
+          "value": "The H3 style at 32 px: the label in Charcoal, the topic in Deep Stone"
+        },
+        {
+          "label": "Headline",
+          "value": "The title style at 110 px, two lines at most, balanced"
+        },
+        {
+          "label": "Foot",
+          "value": "Charcoal, full width, 186 px tall: the wordmark’s display master, 44 px tall, at the left; the lockmark’s 48 px master at twice its size, bottom right inside the margin"
+        },
+        {
+          "label": "Feed test",
+          "value": "Rule 08.2’s test for a dark card, at 500 and 360 px wide"
+        },
+        {
+          "label": "Tags",
+          "value": "og:image with its width, height and alt; twitter:card summary_large_image with its alt"
+        }
+      ],
+      "related": [
+        "01",
+        "05",
+        "08"
+      ],
+      "related_rules": [
+        "01.21",
+        "05.1",
+        "08.2",
+        "16.3",
+        "16.4"
+      ],
+      "builders": [
+        "Write the headline for the card first: if it runs to three lines at 110 px, the editor shortens it for the card alone."
+      ]
+    },
+    {
+      "id": "20.11",
+      "title": "Draw the favicon from ampersand B’s 16 px master, and the app icons from B on the Charcoal tile.",
+      "rule": [
+        "The browser tab shows ampersand B from its 16 px master, with no tile, in signature red. The home screen and app icons show B on the Charcoal square at 58 percent of the tile.",
+        "Never use the lockmark or the wordmark as a favicon."
+      ],
+      "tokens": [
+        "oa.component.appIcon.tile",
+        "oa.color.identity.signature"
+      ],
+      "why": {
+        "text": [
+          "At 16 px, B holds its shape and reads as ours on a light or a dark tab. The lockmark’s nine nodes run together at that size."
+        ],
+        "basis": "Rules 04.7 and 08.2; ampersand B alone on the Charcoal tile for avatars and the app icon, approved by our founder and editor on November 7, 2026; the platform rows retrieved November 21, 2026"
+      },
+      "correct": {
+        "specimen": "s-20-11-correct",
+        "caption": "The favicon on a light and a dark tab, and each icon file at its own size."
+      },
+      "failure": {
+        "specimen": "s-20-11-failure",
+        "caption": "<strong>Fails Rule 20.11.</strong> The lockmark at 16 px reads as a gray square in the tab."
+      },
+      "specs": [
+        {
+          "label": "SVG favicon",
+          "value": "B’s 16 px master in a 16 by 16 view, no tile, declared for every size"
+        },
+        {
+          "label": "favicon.ico",
+          "value": "16, 32 and 48 px in one file"
+        },
+        {
+          "label": "Apple touch icon",
+          "value": "180 by 180 px, B on the Charcoal square"
+        },
+        {
+          "label": "Manifest icons",
+          "value": "192 and 512 px; the 512 px icon maskable, with B inside the circle of 40 percent of its width"
+        },
+        {
+          "label": "Head",
+          "value": "One link for each, and a manifest that names the two manifest icons"
+        }
+      ],
+      "related": [
+        "03",
+        "04",
+        "08"
+      ],
+      "related_rules": [
+        "03.4",
+        "04.1",
+        "04.7",
+        "08.2",
+        "20.4"
+      ],
+      "builders": [
+        "Look at the favicon at 16 px on a dark tab before you ship it."
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "after_rule": "20.9",
+      "specimen": "s-20-files",
+      "label": "The pages and their files",
+      "caption": "Every page this chapter shows, as a file in our exports, by the studio’s file names."
+    }
+  ],
+  "related_chapters": [
+    {
+      "chapter": "01",
+      "reason": "Content labels, process pieces and the spread of examples across issues and places."
+    },
+    {
+      "chapter": "02",
+      "reason": "The writing rules, and the two retired lines the failure plates show (W08 and W19)."
+    },
+    {
+      "chapter": "03",
+      "reason": "L3 and L1 in the masthead (Rule 03.6)."
+    },
+    {
+      "chapter": "04",
+      "reason": "The end mark, the favicon and the app icon (Rules 04.6 and 04.7)."
+    },
+    {
+      "chapter": "05",
+      "reason": "One dark panel a section and one working red a view (Rules 05.1 and 05.3)."
+    },
+    {
+      "chapter": "07",
+      "reason": "The grid at each width (Rules 07.2 and 07.3)."
+    },
+    {
+      "chapter": "08",
+      "reason": "The lockmark’s places: the footer and the sign-off (Rule 08.2)."
+    },
+    {
+      "chapter": "09",
+      "reason": "The pillar rows (Rule 09.1)."
+    },
+    {
+      "chapter": "11",
+      "reason": "The step trackers and the mark for a link to another site."
+    },
+    {
+      "chapter": "14",
+      "reason": "The charts the pages carry, whole."
+    },
+    {
+      "chapter": "18",
+      "reason": "The masthead, menu, theme switch, links and disclosure these pages reuse."
+    },
+    {
+      "chapter": "19",
+      "reason": "The WCAG map this chapter completes."
+    },
+    {
+      "chapter": "21",
+      "reason": "The atlas’s pages inside the site."
+    },
+    {
+      "chapter": "26",
+      "reason": "The head script that applies a stored theme."
+    }
+  ],
+  "sources": [
+    "Source: W3C, “Understanding Success Criterion 2.4.2: Page Titled”, “3.1.1: Language of Page”, “3.1.2: Language of Parts” and “3.2.6: Consistent Help”, and Technique G88, retrieved November 21, 2026. Behind Rules 20.3 and 20.4.",
+    "Source: Federal Register, document 2026-23351, “Rulemaking To Provide That N-acetyl-L-cysteine Is Not Excluded From the Dietary Supplement Definition”, 91 FR 73717, November 17, 2026, docket FDA-2025-N-2699, and its PDF on govinfo.gov, retrieved November 21, 2026. Behind the Act page.",
+    "Source: U.S. Census Bureau, Individual State Descriptions: 2022 Census of Governments, report G22-CG-ISD, April 30, 2024, and the Census of Governments glossary, retrieved November 21, 2026. Behind the article.",
+    "Source: U.S. Census Bureau, 2022 Census of Governments: Organization, tables CG2200ORG01 and CG2200ORG02, released August 24, 2023, United States. Retrieved November 12, 2026. School districts run by a state, county, city or township count with that government. The article’s counts.",
+    "Source: Office of the Clerk, U.S. House of Representatives, roll call 280, July 22, 2026; U.S. Senate, roll call vote 253, September 30, 2026; H.R. 7008, United States Congress. Retrieved November 11, 2026. The Senate vote was on ending debate on taking up the bill and needed 60 votes. The home page’s tracker.",
+    "Source: Oath & Action’s systems atlas, Who Do They Answer To?, everyday answer “Electric and utility bills”, decision makers, as of October 15, 2026, United States. Snapshot of October 15, 2026. Roles as the atlas states them. The home page’s guide.",
+    "Source: the platform rows for our website in our platform specifications, checked November 21, 2026: the share preview at 1200 by 630 px, the favicons and the app icons. Behind Rules 20.10 and 20.11."
+  ]
+}

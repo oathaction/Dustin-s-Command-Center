@@ -1,0 +1,11 @@
+{
+ "id": "A09",
+ "type": "share-image",
+ "guide": true,
+ "spec_source": "work/handoffs/phase-4/20261121_Web-Page-Specs.md, section 8",
+ "platform": "website.share_preview",
+ "band": 200,
+ "export_name": "Web-Share-Preview-Special-Districts-1200x630",
+ "plate_head": "Share preview, 1200 by 630 px",
+ "plate_line": "Drawn by the application kit at build."
+}

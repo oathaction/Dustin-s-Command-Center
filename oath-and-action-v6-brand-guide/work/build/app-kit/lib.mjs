@@ -50,6 +50,7 @@ export function component_css(name) {
 let TABLE = null;
 export function platform(id) {
   if (!TABLE) TABLE = JSON.parse(fs.readFileSync(SPECS_TABLE, 'utf8'));
+  touch(SPECS_TABLE);
   const r = TABLE.rows.find((x) => x.id === id);
   if (!r) throw new Error(`the specifications table has no row ${id} (${path.relative(ROOT, SPECS_TABLE)})`);
   return r;
@@ -117,7 +118,9 @@ export function overlay(w, h, layers = []) {
     if (L.kind === 'shade') p.push(`<path class="shade" fill-rule="evenodd" d="${out}"/>`);
     if (L.kind === 'hatch') p.push(`<path class="hatch" fill-rule="evenodd" d="${out}"/>`);
     if (L.kind === 'cols') for (const [cx, cw] of L.cols) p.push(`<rect class="col" x="${cx}" y="${L.y}" width="${cw}" height="${L.h}"/>`);
-    if (L.kind !== 'cols') p.push(`<rect class="${L.kind === 'solid' ? 'solid' : 'edge'}" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}" stroke-width="${sw}"${L.kind === 'solid' ? '' : ` stroke-dasharray="${6 * sw} ${4 * sw}"`}/>`);
+    // chat 11: a circle (a maskable icon's safe circle): cx, cy, r
+    if (L.kind === 'circle') p.push(`<circle class="edge" cx="${L.cx}" cy="${L.cy}" r="${L.r}" stroke-width="${sw}" stroke-dasharray="${6 * sw} ${4 * sw}"/>`);
+    if (L.kind !== 'cols' && L.kind !== 'circle') p.push(`<rect class="${L.kind === 'solid' ? 'solid' : 'edge'}" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}" stroke-width="${sw}"${L.kind === 'solid' ? '' : ` stroke-dasharray="${6 * sw} ${4 * sw}"`}/>`);
     if (L.label) {
       const tx = L.lx ?? L.x + 8, ty = L.ly ?? L.y + 8, tw = Math.round(L.label.length * ls * 0.68 + ls * 0.8);
       p.push(`<rect class="chip" x="${tx}" y="${ty}" width="${tw}" height="${Math.round(ls * 1.6)}"/><text x="${tx + ls * 0.4}" y="${ty + ls * 1.12}" font-size="${ls}">${esc(L.label)}</text>`);
@@ -152,6 +155,12 @@ fs.readFileSync = function (p, ...rest) {
   return _read.call(fs, p, ...rest);
 };
 export function track() { READS.on = new Set(); return READS.on; }
+// a file a cached value came from, counted as read by the application being drawn now
+export function touch(abs_or_rel) {
+  if (!READS.on) return;
+  const abs = path.isAbsolute(abs_or_rel) ? abs_or_rel : path.join(ROOT, abs_or_rel);
+  if (abs.startsWith(ROOT + path.sep)) READS.on.add(path.relative(ROOT, abs));
+}
 export function untrack() { const s = READS.on; READS.on = null; return s; }
 export function sha256(rel) { return crypto.createHash('sha256').update(_read.call(fs, path.join(ROOT, rel))).digest('hex'); }
 
@@ -204,7 +213,7 @@ export function type_css(name, { size = null, lh = null, weight = null } = {}) {
 export function mark(rel, { cls = '', width = null, height = null, label = null, style = '', red = null, attrs = '' } = {}) {
   let s = fs.readFileSync(path.join(ROOT, rel), 'utf8').replace(/<\?xml[^>]*>/, '').replace(/<!--[\s\S]*?-->/g, '');
   s = s.replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, '').trim();
-  const a = [label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"', 'focusable="false"'];
+  const a = [label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true"', 'focusable="false"', `data-oa-master="${path.basename(rel, '.svg')}"`];
   if (cls) a.push(`class="${cls}"`);
   if (width != null) a.push(`width="${width}"`);
   if (height != null) a.push(`height="${height}"`);
@@ -244,8 +253,46 @@ export function token_value(name) {
     TOKVALS = new Map();
     for (const m of tokens_css().matchAll(/(--oa-[a-z0-9-]+)\s*:\s*([^;]+);/g)) if (!TOKVALS.has(m[1])) TOKVALS.set(m[1], m[2].trim());
   }
+  touch(TOKENS_CSS);
   let v = TOKVALS.get(name);
   if (v == null) throw new Error(`tokens.css has no ${name}`);
   for (let i = 0; i < 12 && /var\(/.test(v); i++) v = v.replace(/var\((--oa-[a-z0-9-]+)\)/g, (m, n) => TOKVALS.get(n) ?? m);
   return v;
 }
+
+// Chat 11 (step 4, bytes): a guide frame draws each identity master by <use> of one symbol the page carries once, as chat
+// 10's C1 carries each photograph once. symbolize(html) finds every inlined master (lib.mark()'s data-oa-master, and chapter
+// 18's two wordmark masters by their class), moves its drawing into a <symbol> with the master's viewBox, and leaves the
+// <svg> with its own attributes around a <use>. currentColor and the masters' paint variables (--amp, --link, --lever)
+// reach a <use> instance by inheritance, so the drawing paints as before; the kit proves each frame's pixels unchanged.
+export function symbolize(html) {
+  const symbols = {};
+  let out = '', i = 0;
+  const open = /<svg\b[^>]*?(?:\sdata-oa-master="([^"]+)"|\sclass="oa-masthead-wm oa-masthead-wm--(24|16)")[^>]*>/g;
+  let m;
+  while ((m = open.exec(html))) {
+    const start = m.index;
+    // the element's end: count nested <svg> openings and closings
+    const re = /<svg\b|<\/svg>/g;
+    re.lastIndex = start + 1;
+    let depth = 1, mm, end = -1;
+    while ((mm = re.exec(html))) { depth += mm[0] === '<svg' ? 1 : -1; if (!depth) { end = mm.index; break; } }
+    if (end < 0) break;
+    const tag = m[0];
+    const inner = html.slice(start + tag.length, end);
+    const name = m[1] || `chapter-18-wordmark-${m[2]}px`;
+    const id = 'oa-app-id-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const vb = (tag.match(/\sviewBox="([^"]+)"/) || [])[1];
+    if (!vb) { open.lastIndex = start + 1; continue; }
+    const sym = `<symbol id="${id}" viewBox="${vb}">${inner}</symbol>`;
+    if (symbols[id] && symbols[id] !== sym) throw new Error(`two drawings named ${id}`);
+    symbols[id] = sym;
+    // the instance takes the viewBox's own rectangle, since a master's viewBox need not start at 0 (L3's starts at y -12)
+    const [vx, vy, vw, vh] = vb.trim().split(/[\s,]+/);
+    out += html.slice(i, start) + tag + `<use href="#${id}" x="${vx}" y="${vy}" width="${vw}" height="${vh}"/></svg>`;
+    i = end + '</svg>'.length;
+    open.lastIndex = i;
+  }
+  return { html: out + html.slice(i), symbols };
+}
+export const identity_sprite = (symbols) => `<svg data-oa-app-kit="identity" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">${Object.values(symbols).join('')}</svg>`;

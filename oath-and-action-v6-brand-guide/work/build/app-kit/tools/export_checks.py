@@ -157,7 +157,17 @@ def check_view(view, exports, kind):
             res["faults"].append(f"{len(small)} word run(s) under {view['floor_px']} px")
     working = [r for r in view["reds"] if r == "working"]
     res["red"] = {"working": len(working), "signature": len([r for r in view["reds"] if r == "signature"])}
-    if len(working) > 1:
+    if kind == "web-site" and view.get("vh"):
+        # chat 11: on a long page a view is one window (Rule 05.3 read as DR-310 reads Rule 05.1): two working reds with
+        # different jobs may not stand within one window of each other; marks of one job (the take-part mark and the ask,
+        # Rule 11.4) may share a view
+        wm = [m for m in view.get("red_marks", []) if m["red"] == "working"]
+        clash = [(a["job"], b["job"]) for i, a in enumerate(wm) for b in wm[i + 1:]
+                 if a["job"] != b["job"] and abs(a["rect"][1] - b["rect"][1]) < view["vh"]]
+        res["red"]["jobs"] = sorted({m["job"] for m in wm})
+        if clash:
+            res["faults"].append(f"working reds of different jobs within one window: {clash[:2]}")
+    elif len(working) > 1:
         res["faults"].append(f"{len(working)} working reds in one view")
     rows = []
     for w in view["words"]:
@@ -244,6 +254,11 @@ def main(out_dir, exports, report=None):
         for v in facts["views"]:
             if not v.get("png"):
                 continue
+            if "words" not in v:
+                # a capture with no page facts (the menu open, chat 11): its state is in facts.json, checked there
+                all_res[v["png"]] = {"faults": [] if (v.get("menu") or {}).get("open") else ["the menu did not open"], "menu": v.get("menu")}
+                print(f"{'PASS' if (v.get('menu') or {}).get('open') else 'FAIL'} {v['png']}: menu {v.get('menu')}")
+                continue
             r = check_view(v, exports, facts["type"])
             if facts["type"] in ("social-post", "share-image") and v.get("sign_off"):
                 r["feed"] = feed_test(exports / v["png"], v["sign_off"], (500, 360) if facts["type"] == "share-image" else (432, 360))
@@ -252,7 +267,7 @@ def main(out_dir, exports, report=None):
                 nsh = r["shares"]["newsprint"]
                 if v["sign_off"].get("ground", "newsprint") == "newsprint" and not 60 <= nsh <= 85:
                     r["faults"].append(f"Newsprint covers {nsh} percent, outside Rule 05.1's 60 to 85")
-            if facts["type"] == "web-page" and v.get("vh"):
+            if facts["type"] in ("web-page", "web-site") and v.get("vh"):
                 # chat 11 (contract C5, DR-310): Rule 05.1 by screen, the first and each section's opening screen
                 r["screens"] = screen_shares.measure(exports / v["png"], v["vh"], v.get("sections") or [], v.get("dark") or [],
                                                      v.get("theme", "light"), v.get("width"))

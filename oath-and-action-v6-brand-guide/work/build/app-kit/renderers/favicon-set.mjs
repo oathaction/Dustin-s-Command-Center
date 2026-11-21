@@ -15,6 +15,7 @@
 import fs from 'fs';
 import path from 'path';
 import { ROOT, esc, platform, token_value } from '../lib.mjs';
+import { words } from './web-site.mjs';
 
 export const type = 'favicon-set';
 const AMP16 = 'work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg';
@@ -43,15 +44,19 @@ function app_icon(px) {
   const m = master(AMP_DISPLAY);
   const [, , vw, vh] = m.vb;
   const bh = +(B_SHARE * px).toFixed(2), bw = +(vw * bh / vh).toFixed(2);
-  const css = `.fi-tile{width:${px}px;height:${px}px;display:flex;align-items:center;justify-content:center;background:var(--oa-component-app-icon-tile)}`
-    + `.fi-tile svg{display:block;color:var(--oa-component-app-icon-accent)}`;
+  // each size its own class, so a plate holding all three tiles sizes each one right
+  const css = `.fi-tile--${px}{width:${px}px;height:${px}px;display:flex;align-items:center;justify-content:center;background:var(--oa-component-app-icon-tile)}`
+    + `.fi-tile--${px} svg{display:block;color:var(--oa-component-app-icon-accent)}`;
   const t = fs.readFileSync(path.join(ROOT, AMP_DISPLAY), 'utf8').replace(/<\?xml[^>]*>/, '').replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, '');
   const svg = t.replace(/<svg\b/, `<svg width="${bw}" height="${bh}" aria-hidden="true" focusable="false" data-red="signature"`).replace(/\s*\n\s*/g, ' ');
-  return { css, html: `<div class="fi-tile">${svg}</div>`, b: [bw, bh] };
+  return { css, html: `<div class="fi-tile fi-tile--${px}">${svg}</div>`, b: [bw, bh] };
 }
 
 export function render(spec) {
-  const ink = spec.favicon_ink || '--oa-color-identity-signature-on-white';
+  // the ink is the chapter generator's word (DD-3: A10 favicon_ink), else the content file's, else signature red
+  let gen = null;
+  try { gen = (words()[spec.id] || {}).favicon_ink; } catch (e) { gen = null; }
+  const ink = gen || spec.favicon_ink || '--oa-color-identity-signature-on-white';
   const stem = spec.export_stem || 'Website';
   const svg = favicon_svg(ink);
   const rows = { svg: platform('website.favicon_svg'), ico: platform('website.favicon_ico'), apple: platform('website.apple_touch_icon'),
@@ -62,7 +67,7 @@ export function render(spec) {
   return {
     id: spec.id, type, alt: spec.alt, svg,
     exports: [
-      { kind: 'svg', name: `${stem}-Favicon`, platform: rows.svg.id, text: svg, serve_as: 'icon.svg', theme: 'light' },
+      { kind: 'svg', name: `${stem}-Favicon`, platform: rows.svg.id, text: svg, serve_as: 'favicon.svg', theme: 'light' },
       { kind: 'ico', name: `${stem}-Favicon-16-32-48`, platform: rows.ico.id, sizes: ico_sizes, serve_as: 'favicon.ico', theme: 'light',
         html_at: (px) => `<img src="data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}" width="${px}" height="${px}" alt="" style="display:block">` },
       ...tiles,

@@ -35,6 +35,8 @@ Words in this file are drafts under chapter 02's rules. The editor writes the fi
 
 A04 and A05 may be views of the same `web-page` renderer clipped to the masthead's or footer's box, if that is how the kit draws them best; the frames' contents and sizes are what this file sets.
 
+Rows on the plates (C4: frames in one placeholder share one row at one scale): each page plate asks for four rows, `1440-light`; `1024-light`; `390-light 360-light 390-dark`; `1440-dark`. The masthead and footer plates put each wide frame in a row of its own and the phones together; the menu plate sets its three open frames in one row; the opener sets the 1440 px first screen and the 390 px dark first screen in rows of their own.
+
 ## 2. The masthead (all pages; plan Rule 20.1)
 
 ### 2.1 Layout by width
@@ -241,7 +243,7 @@ Working red: the Act card's take-part mark only. Signature red: L3's ampersand a
 | Kicker | As the chat 10 sample: "Explainer · Local government" with CL-031 at 24 px | As the sample | 24 px |
 | Headline (h1) | `oa.type.title` (110 / 88.6 / 56 px), balanced: "What a special / district does" at 1440 and 1024, "What a / special / district does" at 390 and 360 (measured) | Primary | 32 px |
 | Intro | `oa.type.intro`, the sample's words | Primary | 32 px |
-| Count panel | `.oa-surface-charcoal`, padding 32 px (24 on phones). "39,555" in `oa.type.figure` (tabular, 104 / 82.2 / 48 px); 8 px; "special districts in 2022, the most common kind of government" in `oa.type.body`; 8 px; "of the 90,888 governments the Census Bureau counted" in `oa.type.body-small`; 16 px; the counts' source line in `oa.type.caption`: `census-cog-2022-governments-by-type.meta.json`'s printed source line, word for word | Figure and first line `--oa-color-text-primary-on-charcoal`; the rest `--oa-color-text-secondary-on-charcoal` | 32 px under it on phones |
+| Count panel | `.oa-surface-charcoal`, padding 32 px (24 on phones). "39,555" in `oa.type.figure` (tabular, 104 / 81.8 / 48 px); 8 px; "special districts in 2022, the most common kind of government" in `oa.type.body`; 8 px; "of the 90,888 governments the Census Bureau counted" in `oa.type.body-small`; 16 px; the counts' source line in `oa.type.caption`: `census-cog-2022-governments-by-type.meta.json`'s printed source line, word for word | Figure and first line `--oa-color-text-primary-on-charcoal`; the rest `--oa-color-text-secondary-on-charcoal` | 32 px under it on phones |
 | Byline | As the sample: name in `oa.type.ui`, date in `oa.type.caption`, a hairline above, 16 px between | As the sample | |
 | Section heading (h2) | `oa.type.h3`, balanced | Primary | 80 px above (Rule 07.4), 16 px under |
 | Body | `oa.type.body`, measure capped at `--oa-layout-measure-body-ideal` | Primary | 16 px between paragraphs |
@@ -291,7 +293,7 @@ The opener sets the status panel beside the whole opener from 64em, so its step 
 |---|---|---|---|
 | Pillar row | Rule 09.1's 24 px row, Act bold with a 2 px underline | Primary | 32 px |
 | Kicker | "Act · How to take part", the label alone (Rule 01.22) | Primary | 24 px |
-| Headline (h1) | `oa.type.section` (80 / 65.7 / 44 px), balanced; draft "How to comment on the FDA’s proposed rule on NAC": 3 lines at 866 px (measured), about 4 in the 644 px column, 4 at 390 and 360 px | Primary | 32 px |
+| Headline (h1) | `oa.type.section` (80 / 65.7 / 44 px), balanced; draft "How to comment on the FDA’s proposed rule on NAC", measured: 4 lines in the 644 px column at 1440 (330 px tall), 3 lines in the 621 px column at 1024 (203 px), 4 lines at 390 and 360 px (181 px) | Primary | 32 px |
 | Intro | `oa.type.intro`, draft: "The Food and Drug Administration proposes to let products containing N-acetyl-L-cysteine (NAC) be sold as dietary supplements. Anyone may comment until January 19, 2027, and the agency then decides whether to make the rule final." | Primary | 24 px |
 | Checked line | "Checked November 21, 2026", `oa.type.caption` | Secondary | 24 px |
 | Byline | As the article | | |
@@ -335,12 +337,93 @@ The identity proofs' link-preview card (`s-proofs-social`), with a Charcoal foot
 | Ground | 0, 0, 1200, 630 | Newsprint | |
 | Kicker | 72, 72, auto, 35 | The H3 style at 32 px (the proof's): "Explainer" then " · Local government" | Charcoal, then Deep Stone |
 | Headline | 72, 131, 1056, 209 | `oa.type.title` at 110 px, line height 0.95, balanced: "What a special / district does" | Charcoal |
-| Foot band | 0, 430, 1200, 200, full bleed | `.oa-surface-charcoal`; the card's one dark panel | |
+| Foot band | 0, 444, 1200, 186, full bleed | `.oa-surface-charcoal`; the card's one dark panel | |
 | Wordmark | 72, centered on the lockmark (y 488), 44 px tall | The wordmark's display master (the proof's), `data-red="signature"` | Letters Newsprint; ampersand `--oa-color-identity-signature-on-charcoal` |
 | Sign-off | 1032, 462, 96, 96, on whole pixels | The lockmark's 48 px master at exactly twice its size (Rule 08.2) | Nodes Newsprint; links the nodes' color; lever signature red on Charcoal |
 
-No web address, deck or icon (the proof's "Left out"). Alt text and `og:image:alt`, draft: "Explainer, Local government: What a special district does. Oath & Action." Checks: 1200 x 630 exactly (`website.share_preview`); Rule 08.2's feed test, dark card, at 500 and 360 px; Rule 05.1 on the card (60 to 85 percent Newsprint; the band is 31.7 percent of the area, so the card should measure near 60; if it measures under 60, the band shortens to 186 px, with the sign-off kept 72 px from the bottom and right). Head tags on every page: `og:title` (the page title's first part), `og:type` (article, or website for home), `og:image` and its `:width`, `:height` and `:alt`, `twitter:card` `summary_large_image`, `twitter:image:alt`.
+No web address, deck or icon (the proof's "Left out"). Alt text and `og:image:alt`, draft: "Explainer, Local government: What a special district does. Oath & Action." Checks: 1200 x 630 exactly (`website.share_preview`); Rule 08.2's feed test, dark card, at 500 and 360 px; Rule 05.1 on the card (60 to 85 percent Newsprint): my prototype of this card measured 63.0 percent with the 186 px band and 60.8 with a 200 px band, so the band is 186 px, with the sign-off kept 72 px from the bottom and the right (19:35 UTC, scratch `proto/share-186.png`). Head tags on every page: `og:title` (the page title's first part), `og:type` (article, or website for home), `og:image` and its `:width`, `:height` and `:alt`, `twitter:card` `summary_large_image`, `twitter:image:alt`.
 
 ## 9. The favicon set (A10; plan Rule 20.11)
 
 Contract C6's table stands as the engineer wrote it, with B's ink on the no-tile favicon in signature red (`favicon_ink`: `--oa-color-identity-signature`), as Rule 04.7's plate draws it on a light and a dark tab. The plate shows: the SVG favicon at 16 px on a light tab (Newsprint-like gray of a browser's light tab is not ours to set, so the plate draws the tab in `--oa-color-surface-white` and the dark tab in `--oa-color-surface-charcoal`, each labeled as a tab); the ICO's three sizes at their own pixels; the Apple touch icon at 180 px; the manifest icons at 192 and 512 px, the 512 with its 40 percent safe circle as a 2 px dashed overlay that a reader switches on (C3's overlay). Head links: `<link rel="icon" href="/favicon.svg" type="image/svg+xml">`, `<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">`, `<link rel="apple-touch-icon" href="/apple-touch-icon.png">`, `<link rel="manifest" href="/site.webmanifest">` with the 192 and 512 icons (the 512 `purpose: "maskable"`).
+
+## 10. Revisions after the first drawing (DD-4, 19:54 UTC)
+
+I measured every light frame the kit drew at 19:49 UTC with the kit's own `screen_shares.measure()` (C5) on the exports and the kit's facts. These screens break Rule 05.1 under DR-310 (Newsprint 60 to 85 percent):
+
+| Page | Screen | 1440 | 1024 | 390 | 360 | Cause |
+|---|---|---|---|---|---|---|
+| Home | Atlas | 75.3 | 65.1 | 38.9 | 39.2 | The questions panel is too tall on phones |
+| Home, article, Act page | Footer (the last window) | 51.7, 52.0, 53.3 | 44.6, 43.8, 45.4 | 27.7, 27.1, 29.2 | 24.2, 23.0, 23.6 | The footer is all Charcoal, 412 to 590 px tall |
+| Article | Count | 91.6 | 86.9 | 81.7 | 83.3 | No dark element in its opening screen at wide widths |
+| Article | Step | 55.0 | 63.0 | 69.6 | 77.2 | The footer, in the page's last window |
+| Act page | Proposal | 69.6 | 58.5 | 31.1 | 25.6 | The summary panel is too tall on narrow screens |
+| Act page | Comment | 89.0 | 89.9 | 87.6 | 87.8 | The comment panel sits below the opening screen |
+
+Every other screen passes (home first screens 81.7, 77.5, 71.6 and 70.6; article first screens 81.0, 80.3, 69.3 and 76.8; Act page first screens 72.6, 69.5, 69.1 and 73.2, with red at most 2.35 percent). The cure is one pattern: **a section's dark panel is compact, and long content stays on Newsprint.** Five changes:
+
+### 10.1 The footer: lists on Newsprint, a Charcoal closing strip (replaces section 4's ground)
+
+- `<footer>` takes `--oa-color-surface` (the page's own ground in each theme), with a 2 px `--oa-color-border-strong` rule along its top, across the content width. 104 px above the rule, 48 px of padding under it.
+- The four link groups as section 4.1 sets them, in the surface's inks: headings `--oa-color-text-secondary`, links `--oa-color-text-primary`.
+- 48 px under the lists, the **closing strip**: full bleed, `.oa-surface-charcoal` in both themes, padding 56 px above and below from 48em and 40 px under it; the lockmark row of section 4.2 inside it (lockmark, 12 px, tagline at the left; address and its Illustrative label at the right from 48em, on its own line 8 px under the row below 48em). In the dark theme the strip draws a 1 px `--oa-color-border-hairline-on-charcoal` along its top (Rule 20.5).
+- The strip is the footer's one dark panel: 136 px tall from 48em (15 percent of a 900 px window) and about 133 px on phones.
+
+### 10.2 The home page's atlas section: the atlas's title bar as its head (replaces section 5.4's placements)
+
+- The section opens with the **atlas's title bar**, its one dark panel: `.oa-surface-charcoal`, across cols 1 to 12 (1440, 1024) and full content width on phones, padding 32 px (24 on phones): "Our systems atlas" in `oa.type.label` in `--oa-color-text-secondary-on-charcoal`, 8 px, then the `h2` "Who Do They Answer To?" in `oa.type.section` in `--oa-color-text-primary-on-charcoal`. It echoes the pillar cells above it and the title bar the atlas keeps under the masthead on its own pages (DR-307).
+- On Newsprint under it, 32 px down: the intro (cols 1 to 7 / 1 to 8 / full), then 48 px, then the questions list and S10: the list at cols 1 to 4 (1440) and 1 to 5 (1024), first on phones; S10 at cols 5 to 12 and 6 to 12, after the list on phones.
+- The questions list on Newsprint: "Questions the atlas answers" in `oa.type.label`, `--oa-color-text-secondary`; 8 px; a 2 px `--oa-color-border-strong` rule; then the five questions as rows at least 44 px tall, each with a 1 px `--oa-color-border-hairline` under it, words in `oa.type.body` with the 16 px arrow **held to the last word** in a span that does not wrap (today two rows set it at the row's right edge and three after the word; one rule for all five); then 24 px and "Open the atlas" in `oa.type.ui` with its 1 px underline, a 44 px box.
+
+### 10.3 The article's Count section: a fact box (adds to section 6)
+
+- After the section's `h2`, beside its first paragraph from 64em (cols 9 to 12, top level with the `h2`), after that paragraph on phones and before S86: the **fact box**, the section's one dark panel, `.oa-surface-charcoal`, padding 32 px (24 on phones). "5" in `oa.type.figure`; 8 px; "years between each census of governments" in `oa.type.body`, Newsprint; 8 px; "Federal law requires the Census Bureau to take one at five-year intervals (Title 13, U.S. Code, Section 161)." in `oa.type.body-small`, Dim Newsprint; 16 px; its source line in `oa.type.caption`, Dim Newsprint. Words in PAGES A07 `count_fact`.
+- The first paragraph loses its last sentence ("The bureau takes this count every five years, as federal law requires."), which the box now carries.
+
+### 10.4 The Act page's Proposal section: a document strip, the quotation on Newsprint (replaces section 7.4's summary panel)
+
+- Under the `h2`, 24 px down, the **document strip**, the section's one dark panel, across the body's wide columns (cols 3 to 10 / 2 to 11 / full), `.oa-surface-charcoal`, padding 24 px: "The proposed rule" in `oa.type.label`, Dim Newsprint; 8 px; one line in `oa.type.body-small`, Newsprint, its parts joined by a middle dot with 8 px each side and wrapping between parts: "Food and Drug Administration", "Docket FDA-2025-N-2699", "91 FR 73717", "Published November 17, 2026". A document reference, as chapter 12 draws one.
+- 32 px under it, the agency's summary as a `blockquote` on Newsprint: `oa.type.quote` (Lora Italic) in `--oa-color-text-primary`, a 2 px `--oa-color-border-strong` rule at its left with 24 px between rule and words, at the body columns (cols 3 to 8 / 2 to 9 / full); its citation 16 px under it in `oa.type.caption`, secondary. Then "Who decides" and S66 as before.
+
+### 10.5 The Act page's Comment section: the panel follows the steps (reorders section 7.5)
+
+Order inside the section: `h2`; the four steps; 32 px; the comment panel (deadline and the ask, the address under it); 48 px; the mail paragraph; "Read other comments"; "The rule at a glance". The panel then stands in the section's opening screen at every width.
+
+### 10.6 The share preview's band (section 8, revised at 19:35 UTC)
+
+The foot band is 186 px tall (y 444 to 630), the sign-off kept 72 px from the bottom and the right. The 19:49 export drew the earlier 200 px band and measures 60.8 percent Newsprint, inside the range by 0.8; my prototype of the 186 px band measured 63.0.
+
+### 10.7 Expected shares after the changes
+
+Estimated from the measured screens, to be measured again on the new drawing: home Atlas about 76 (1440) and 73 (390); every last window about 80 (the strip 15 percent of it); article Count about 82 (1440) and 74 (1024); Act Proposal about 80 at every width; Act Comment about 75 (1440) and 63 (390). I measure them again with C5 when the kit redraws.
+
+## 11. Second revisions (DD-5)
+
+Measured with C5 on the kit's 19:57 drawing (the screens in each plate's JSON): the home page passes on every screen at every width (Newsprint 63.9 to 81.9 on light frames, footers 79.6 to 81.9); four screens still break Rule 05.1:
+
+| Page | Screen | 1440 | 1024 | 390 | 360 | Cause |
+|---|---|---|---|---|---|---|
+| Article | Count | 79.8 | 77.3 | 56.0 | 49.8 | The fact box carries its five-line source line inside, too tall on phones |
+| Article | Step | 87.8 | 95.3 | 90.3 | 88.8 | No dark element: the closing strip falls past its opening screen |
+| Act page | Proposal | 88.6 | 81.6 | 71.3 | 69.6 | The document strip covers too little of a 1440 px screen |
+| Act page | Comment | 84.5 | 76.7 | 68.6 | 75.7 | Red 6.27 percent at 390 px: the ask wraps to three lines |
+
+### 11.1 The article's fact box: its source line under it (revises 10.3)
+
+The source line moves out of the box to 8 px under it, in `oa.type.caption`, `--oa-color-text-secondary`, on Newsprint. The box keeps the figure and its two lines.
+
+### 11.2 The article's Step section: the step on a Charcoal box (revises 6.4)
+
+After the section's first paragraph, the closing step stands in a **step box**, the section's one dark panel, `.oa-surface-charcoal`, at the body's columns (cols 3 to 7 / 2 to 8 / full), padding 32 px (24 on phones): the paragraph with its link (Newsprint words, a 1 px Newsprint underline, the another-site mark in Newsprint) and ampersand B after "government." in Newsprint, the text's ink on Charcoal (Rule 04.6). The definition's source line follows 24 px under the box, on Newsprint.
+
+### 11.3 The Act page's document strip: across the content width (revises 10.4)
+
+The strip runs across cols 1 to 12 from 64em, padding 32 px (24 on phones), so it reads as the section's turn, as the home page's atlas title bar does.
+
+### 11.4 The ask's words and size (revises 7.5 and AL-13's example)
+
+Both asks read, draft, "Comment at Regulations.gov", with the 16 px another-site mark and "(another site)" for screen readers; padding 12 px by 16 px; still at least 48 px tall. **The ask is as wide as its words, never stretched to the panel** (`display: inline-flex`, `width: fit-content`): measured, the words take 268.4 px in `oa.type.ask`, so the ask runs on one line from 48em and on two (“Comment at / Regulations.gov”) inside the 302 and 280 px of a phone's panel, about 190 by 70 px. (Added 20:08 UTC: the 20:07 drawing stretched the ask across the panel, 301 by 70 px, 5.79 percent red at 390 px.) The docket number stands in the panel's label right above each ask ("Docket FDA-2025-N-2699"), and the full address prints under each. The ask then covers under 5 percent of a phone's screen (Rule 05.1), where the three-line ask covered 6.27.
+
+### 11.5 The Act page's comment panel across the wide body columns (added 20:09 UTC)
+
+The 20:07 drawing measures the Comment section's opening screen at 1440 px at 85.4 percent Newsprint, past 85 by 0.4. The comment panel takes the wide body columns, as the summary did: cols 3 to 10 (866.7 px) at 1440 and cols 2 to 11 (782.7 px) at 1024; full width on phones as before. Its words keep their measure inside it (`max-width: var(--oa-layout-measure-body-ideal)`).

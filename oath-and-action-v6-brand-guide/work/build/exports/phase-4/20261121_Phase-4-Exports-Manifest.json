@@ -1,5 +1,5 @@
 {
- "written": "2026-11-21T02:20:48.183Z",
+ "written": "2026-11-21T20:13:38.349Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -84,6 +84,265 @@
     "height": 1080
    },
    "note": "proof of the sheet at 96 ppi"
+  },
+  {
+   "file": "20261121_Web-Menu-Open-390-Light.png",
+   "spec": "A04",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "light",
+   "size": "390 by 844 px",
+   "note": "the menu open, one window"
+  },
+  {
+   "file": "20261121_Web-Menu-Open-360-Light.png",
+   "spec": "A04",
+   "platform": "website.page_360",
+   "format": "png",
+   "theme": "light",
+   "size": "360 by 780 px",
+   "note": "the menu open, one window"
+  },
+  {
+   "file": "20261121_Web-Menu-Open-390-Dark.png",
+   "spec": "A04",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "dark",
+   "size": "390 by 844 px",
+   "note": "the menu open, one window"
+  },
+  {
+   "file": "20261121_Web-Home-Page.html",
+   "spec": "A06",
+   "platform": "website.page_1440",
+   "format": "html",
+   "width": 1440,
+   "size": "the working page, at any width",
+   "note": "the working page; every width and theme is captured from it"
+  },
+  {
+   "file": "20261121_Web-Home-Page-1440-Light.png",
+   "spec": "A06",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "light",
+   "size": "1,440 by 2,950 px"
+  },
+  {
+   "file": "20261121_Web-Home-Page-1440-Dark.png",
+   "spec": "A06",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "dark",
+   "size": "1,440 by 2,950 px"
+  },
+  {
+   "file": "20261121_Web-Home-Page-1024-Light.png",
+   "spec": "A06",
+   "platform": "website.page_1024",
+   "format": "png",
+   "theme": "light",
+   "size": "1,024 by 3,563 px"
+  },
+  {
+   "file": "20261121_Web-Home-Page-390-Light.png",
+   "spec": "A06",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "light",
+   "size": "390 by 5,415 px"
+  },
+  {
+   "file": "20261121_Web-Home-Page-390-Dark.png",
+   "spec": "A06",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "dark",
+   "size": "390 by 5,415 px"
+  },
+  {
+   "file": "20261121_Web-Home-Page-360-Light.png",
+   "spec": "A06",
+   "platform": "website.page_360",
+   "format": "png",
+   "theme": "light",
+   "size": "360 by 5,583 px"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts.html",
+   "spec": "A07",
+   "platform": "website.page_1440",
+   "format": "html",
+   "width": 1440,
+   "size": "the working page, at any width",
+   "note": "the working page; every width and theme is captured from it"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts-1440-Light.png",
+   "spec": "A07",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "light",
+   "size": "1,440 by 3,632 px"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts-1440-Dark.png",
+   "spec": "A07",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "dark",
+   "size": "1,440 by 3,632 px"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts-1024-Light.png",
+   "spec": "A07",
+   "platform": "website.page_1024",
+   "format": "png",
+   "theme": "light",
+   "size": "1,024 by 3,712 px"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts-390-Light.png",
+   "spec": "A07",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "light",
+   "size": "390 by 4,946 px"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts-390-Dark.png",
+   "spec": "A07",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "dark",
+   "size": "390 by 4,946 px"
+  },
+  {
+   "file": "20261121_Web-Article-Page-Special-Districts-360-Light.png",
+   "spec": "A07",
+   "platform": "website.page_360",
+   "format": "png",
+   "theme": "light",
+   "size": "360 by 5,095 px"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule.html",
+   "spec": "A08",
+   "platform": "website.page_1440",
+   "format": "html",
+   "width": 1440,
+   "size": "the working page, at any width",
+   "note": "the working page; every width and theme is captured from it"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Light.png",
+   "spec": "A08",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "light",
+   "size": "1,440 by 5,575 px"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Dark.png",
+   "spec": "A08",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "dark",
+   "size": "1,440 by 5,575 px"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1024-Light.png",
+   "spec": "A08",
+   "platform": "website.page_1024",
+   "format": "png",
+   "theme": "light",
+   "size": "1,024 by 5,445 px"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Light.png",
+   "spec": "A08",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "light",
+   "size": "390 by 7,656 px"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Dark.png",
+   "spec": "A08",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "dark",
+   "size": "390 by 7,656 px"
+  },
+  {
+   "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-360-Light.png",
+   "spec": "A08",
+   "platform": "website.page_360",
+   "format": "png",
+   "theme": "light",
+   "size": "360 by 7,845 px"
+  },
+  {
+   "file": "20261121_Web-Share-Preview-Special-Districts-1200x630.png",
+   "spec": "A09",
+   "platform": "website.share_preview",
+   "format": "png",
+   "theme": "light",
+   "size": "1,200 by 630 px",
+   "meta": {
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Explainer, Local government: What a special district does. Oath & Action."
+   }
+  },
+  {
+   "file": "20261121_Web-Favicon.svg",
+   "spec": "A10",
+   "platform": "website.favicon_svg",
+   "format": "svg",
+   "serve_as": "favicon.svg",
+   "size": "16 by 16 px drawing, at any size"
+  },
+  {
+   "file": "20261121_Web-Favicon-16-32-48.ico",
+   "spec": "A10",
+   "platform": "website.favicon_ico",
+   "format": "ico",
+   "serve_as": "favicon.ico",
+   "sizes": [
+    16,
+    32,
+    48
+   ],
+   "size": "16, 32 and 48 px"
+  },
+  {
+   "file": "20261121_Web-Apple-Touch-Icon-180.png",
+   "spec": "A10",
+   "platform": "website.apple_touch_icon",
+   "format": "png",
+   "serve_as": "apple-touch-icon.png",
+   "theme": "light",
+   "size": "180 by 180 px"
+  },
+  {
+   "file": "20261121_Web-Manifest-Icon-192.png",
+   "spec": "A10",
+   "platform": "website.manifest_192",
+   "format": "png",
+   "serve_as": "icon-192.png",
+   "theme": "light",
+   "size": "192 by 192 px"
+  },
+  {
+   "file": "20261121_Web-Manifest-Icon-512-Maskable.png",
+   "spec": "A10",
+   "platform": "website.manifest_512",
+   "format": "png",
+   "serve_as": "icon-512-maskable.png",
+   "theme": "light",
+   "size": "512 by 512 px"
   }
  ]
 }

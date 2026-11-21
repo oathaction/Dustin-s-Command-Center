@@ -29,7 +29,7 @@ async function kit() {
   }
   return KITMOD;
 }
-export async function chart_figure(id, fid) {
+export async function chart_figure(id, fid, desk = 621, phone = 328) {
   const { m, K, C } = await kit();
   const sp = path.join(KIT, 'specs', `${id}.json`);
   const spec = JSON.parse(fs.readFileSync(sp, 'utf8'));
@@ -40,7 +40,7 @@ export async function chart_figure(id, fid) {
     faults.push(...C.check_drawing(spec, d, m.TOK.newsprint, `${w} px for the article`));
     return d.svg.replace('class="oac-svg"', `class="oac-svg ${cls}"`);
   };
-  const svg = draw(621, 'oac-desk') + draw(328, 'oac-phone');
+  const svg = draw(desk, 'oac-desk') + draw(phone, 'oac-phone');
   // K.figure holds phrases together with HTML spans across the whole figure, opts.svg included, and an HTML <span> inside
   // an inline SVG's text ends the SVG when the page is parsed; so the figure is written around a mark and the drawings go
   // in after (the kit's lean method has the same fault: engineer notes, "Not fixed")

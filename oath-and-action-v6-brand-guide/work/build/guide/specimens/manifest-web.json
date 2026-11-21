@@ -1,0 +1,219 @@
+{
+ "s-20-1-correct": {
+  "chapter": "20",
+  "rule": "20.1",
+  "width_px": null,
+  "alt": "Six mastheads stacked, from a 1440 px desktop to a 360 px phone and two in the dark theme. On the desktop, L3 at the left and seven parts at the right with Explain underlined, and the theme switch on a row beneath. On the phones, the wordmark and a Menu button.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A04): the masthead closed at six views, on the article page.",
+  "readable": true
+ },
+ "s-20-1-failure": {
+  "chapter": "20",
+  "rule": "20.1",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The right end of a desktop masthead: Explain, Track, Connect, Act, Who Do They Answer To? and About in ink, and Subscribe as a red button.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: Subscribe as a red button, with the ask’s fill and label tokens.",
+  "readable": true
+ },
+ "s-20-10-correct": {
+  "chapter": "20",
+  "rule": "20.10",
+  "width_px": null,
+  "alt": "A Newsprint card reading Explainer, Local government, and the headline What a special district does, with a Charcoal foot holding the wordmark and the lockmark, shown at full size and at two feed sizes.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A09).",
+  "readable": true
+ },
+ "s-20-10-failure": {
+  "chapter": "20",
+  "rule": "20.10",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same card with a small lockmark in its foot, half the size of the sign-off.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the sign-off at 48 px in place of 96. Rule 08.2 counts the red pixels.",
+  "readable": true
+ },
+ "s-20-11-correct": {
+  "chapter": "20",
+  "rule": "20.11",
+  "width_px": null,
+  "alt": "Ampersand B in red at 16 px on a light and a dark browser tab, then the favicon file at 16, 32 and 48 px, and B on a Charcoal square at 180, 192 and 512 px.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A10).",
+  "readable": true
+ },
+ "s-20-11-failure": {
+  "chapter": "20",
+  "rule": "20.11",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A browser tab with the lockmark at 16 px as its icon, a small gray square, before the page title.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the lockmark’s 16 px master as a favicon (Rule 08.2’s row says never).",
+  "readable": true
+ },
+ "s-20-2-correct": {
+  "chapter": "20",
+  "rule": "20.2",
+  "width_px": null,
+  "alt": "Three phone screens with the menu open: Menu and Close the menu at the top, the theme switch under them, and seven rows from Explain to Subscribe, Explain on a white band with a dark bar at its left. The third screen is in the dark theme.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A04): the menu open, one window tall, at three views.",
+  "readable": true
+ },
+ "s-20-2-failure": {
+  "chapter": "20",
+  "rule": "20.2",
+  "width_px": 390,
+  "alt": "Failure case: do not publish. A phone menu with Menu and Close the menu at the top and seven rows under them, and no theme switch.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: chapter 18’s menu rows with the theme switch left out.",
+  "readable": true
+ },
+ "s-20-3-correct": {
+  "chapter": "20",
+  "rule": "20.3",
+  "width_px": null,
+  "alt": "Five footers on Charcoal: four link groups, Our work, The atlas, Oath & Action and Help, then a line with the lockmark, the tagline and the web address with its Illustrative label. On the phones the groups sit two by two.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A05): the footer at five views.",
+  "readable": true
+ },
+ "s-20-3-failure": {
+  "chapter": "20",
+  "rule": "20.3",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Two footers side by side. The home page’s ends its lists with Help and Contact us; the Act page’s has no Help group and ends its Oath & Action list with Get in touch.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: two footers whose help link moves and changes its words; the help links are set in bold here only so the fault can be found.",
+  "readable": true
+ },
+ "s-20-4-correct": {
+  "chapter": "20",
+  "rule": "20.4",
+  "width_px": null,
+  "alt": "A browser’s tab strip with three titles: Oath & Action with the tagline, What a special district does, and How to comment on the FDA’s proposed rule on NAC, each ending with Oath & Action. Under it, the head of a page in code, and a sentence that marks the Latin motto E pluribus unum.",
+  "illustrative": false,
+  "notes": "The titles are the pages’ own, from this generator’s PAGES words, which the kit prints in each page’s head. The Latin motto is marked with lang=\"la\" in this plate’s own markup too.",
+  "readable": true
+ },
+ "s-20-4-failure": {
+  "chapter": "20",
+  "rule": "20.4",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A browser’s tab strip with three tabs that each read Oath & Action, and a page root with no language.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: three identical titles.",
+  "readable": true
+ },
+ "s-20-5-correct": {
+  "chapter": "20",
+  "rule": "20.5",
+  "width_px": null,
+  "alt": "Two phone screens of the home page side by side, light and dark. Each shows the wordmark and Menu, then the Explain cell on Charcoal and the explainer under it; on the dark screen a thin edge outlines the Charcoal cell.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A06): the home page’s first screen at 390 px in both themes.",
+  "readable": true
+ },
+ "s-20-5-failure": {
+  "chapter": "20",
+  "rule": "20.5",
+  "width_px": 390,
+  "alt": "Failure case: do not publish. A phone screen in the dark theme where the Explain cell has no edge, so its icon and word float on the page with nothing to show the cell.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the dark home page’s first screen with the cell’s edge left off.",
+  "surface": "charcoal",
+  "readable": true
+ },
+ "s-20-6-correct": {
+  "chapter": "20",
+  "rule": "20.6",
+  "width_px": null,
+  "alt": "The home page at six sizes. Under the masthead, the pillar row on Charcoal, Explain, Track, Connect and Act, with a card under each: an explainer on special districts, a tracker for H.R. 7008, a guide to who sets an electric bill, and a step to comment on the FDA’s proposed rule on NAC, its step marked in red. Below, the atlas’s questions on Charcoal beside a chart, then the footer.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A06): six views.",
+  "readable": true
+ },
+ "s-20-6-failure": {
+  "chapter": "20",
+  "rule": "20.6",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A desktop first screen with a Charcoal panel that reads Make your voice heard! and a Subscribe button, and nothing else.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: a first screen that opens on a slogan with no piece and no step.",
+  "readable": true
+ },
+ "s-20-7-correct": {
+  "chapter": "20",
+  "rule": "20.7",
+  "width_px": null,
+  "alt": "The article What a special district does at six sizes: the compact pillar row with Explain underlined, the kicker, the headline, the intro beside a Charcoal panel reading 39,555, the byline, a section with chart S86, and a closing section that points to the Census Bureau’s report on each state, ending on ampersand B.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A07): six views.",
+  "readable": true
+ },
+ "s-20-7-failure": {
+  "chapter": "20",
+  "rule": "20.7",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The last lines of the article, ending on the line Put the promise to work. and ampersand B.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the article’s last paragraph, then a slogan in place of the step.",
+  "readable": true
+ },
+ "s-20-8-correct": {
+  "chapter": "20",
+  "rule": "20.8",
+  "width_px": null,
+  "alt": "The Act page at six sizes: the compact pillar row with Act underlined, the kicker Act, How to take part, the headline How to comment on the FDA’s proposed rule on NAC, and a Charcoal panel of six steps with step 3, Comments open, marked in red and a red link under it; then the FDA’s summary on Charcoal, chart S66, the hinge divider, the steps to comment, a Charcoal panel with the deadline and the red link again, and the rule’s facts.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A08): six views.",
+  "readable": true
+ },
+ "s-20-8-failure": {
+  "chapter": "20",
+  "rule": "20.8",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A Charcoal panel with the docket number and the deadline, and a red button that reads Take action.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the comment panel with an ask that names no docket and no place.",
+  "readable": true
+ },
+ "s-20-9-correct": {
+  "chapter": "20",
+  "rule": "20.9",
+  "width_px": null,
+  "alt": "Small boxes, one for each first and opening screen of the home page, the article and the Act page at 1440 px, each with its Charcoal panel drawn in place and its measured Newsprint, dark and red shares beside it.",
+  "illustrative": false,
+  "notes": "Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5).",
+  "readable": true
+ },
+ "s-20-9-failure": {
+  "chapter": "20",
+  "rule": "20.9",
+  "width_px": null,
+  "alt": "Failure case: do not publish. One screen drawn as a box, nearly all Newsprint, with the measure beside it: 88.2 percent Newsprint and no dark panel.",
+  "illustrative": false,
+  "notes": "The figure is the chat 10 sample’s measure (D4-11), the first screen alone.",
+  "readable": true
+ },
+ "s-20-files": {
+  "chapter": "20",
+  "rule": null,
+  "width_px": null,
+  "alt": "A table of the chapter’s export files: each application, its file name and its pixel size.",
+  "illustrative": false,
+  "notes": "Read from the kit’s exports manifest; each size read from its file.",
+  "readable": true
+ },
+ "s-20-opener": {
+  "chapter": "20",
+  "rule": null,
+  "width_px": null,
+  "alt": "The home page’s first screen twice: on a desktop at 1440 px in the light theme, and on a phone at 390 px in the dark theme. Each shows the masthead, the pillar row and the first pieces under it.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A06, the home page): its first screen at 1440 px light and 390 px dark, one window tall each.",
+  "readable": true
+ }
+}
