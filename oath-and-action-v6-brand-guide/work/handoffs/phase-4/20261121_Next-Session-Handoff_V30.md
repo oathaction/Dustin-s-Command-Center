@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirtieth handoff, November 21)
 
-Written November 21, 2026, at the close of chat 10, Phase 4's first chat. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261120_Next-Session-Handoff_V29.md`. V5's sections 3 to 5, section 3 of V8 to V29, and section 3 below hold together. Decision log entries for this chat run from D4-01 to D4-89, with Dustin's answers DR-300 to DR-304. The change ledger runs to C-155.
+Written November 21, 2026, at the close of chat 10, Phase 4's first chat. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261120_Next-Session-Handoff_V29.md`. V5's sections 3 to 5, section 3 of V8 to V29, and section 3 below hold together. Decision log entries for this chat run from D4-01 to D4-99, with Dustin's answers DR-300 to DR-304. The change ledger runs to C-156.
 
 ## 1. Where things stand
 
@@ -21,11 +21,11 @@ Phase 4 is active (Gate 3 approved as proposed, G3-01 to G3-09). Chat 10 (work t
 - Chapter 16, Photography, illustration and video: 13 rules, 28 plates, 219,091 bytes against 300,000, generator `work/build/scripts/phase-4/phase4_ch16_build.py`.
 - The application kit's first build (`work/build/app-kit/`), three studio samples and 11 exports, 11 of 11 at their sizes; the measured bytes re-size the seven allocations (`work/handoffs/phase-4/20261121_Phase-4-Allocations.md`): 16 300,000; 20 757,000; 21 655,000; 22 277,000; 23 743,000; 24 338,000; 25 214,000. The page projects to 15,734,059 bytes, 265,941 under 16 MB.
 
-**The final build and its checks:** strict build of commit 15a7262f, exit 0, 0 warnings, 12,239,251 bytes, 20 chapters, 382 rules, 707 specimens; kit 96 of 96; chapter 14's check 99 of 99; CHECKS_LINE.
+**The final build and its checks:** version 15's file `work/boards/phase-4/chat-10/20261121_Guide-Preview-V15.html` (the 04:25 strict build of commit 1ca561ce), exit 0, 0 warnings, 12,239,498 bytes, 20 chapters, 382 rules, 707 specimens; the projection 15,734,059, an early warning past 15.5 MB; kit 96 of 96; chapter 14's check 99 of 99; the guide check's self-test 203 plants caught, the clean cases quiet; the quick check without photographs PASS at 1440 and 390 px, 0 failures, 4,334 same-page links. The quick check with photographs ran four times: run 1 failed on two chapter 16 plates (fixed), run 2 on a landmark inside a plate (fixed), and runs 3 and 4 crashed photographing the identity proofs appendix at 390 px, so neither counts (D4-90 to D4-95; register row).
 
-**Published** (private): PUBLISHED_LINE
+**Published** (private): the chapters page as version 15 at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (version id 1795239630-9ff1, contract 0.2.96 and `downloads` kept); chat 10's progress page at https://claude.ai/artifact/L2HXPZXrYTELnLhQNynZB9 (version id 1795239684-0a64, six pictures).
 
-**The register.** Chat 10's section in `work/ledger/20261116_Deferred-Fixes-Register.md` adds 15 rows, among them ED10-1 to ED10-3 held for Dustin, C16-CD-01 (chapter 01's photographs in color) held for Phase 4 board 1, the article sample's Newsprint share and its headings for chapter 20, the print PDF's fonts for chat 15, and the 14 search-result rows for chat 13.
+**The register.** Chat 10's section in `work/ledger/20261116_Deferred-Fixes-Register.md` adds 16 rows, among them ED10-1 to ED10-3 held for Dustin, C16-CD-01 (chapter 01's photographs in color) held for Phase 4 board 1, the article sample's Newsprint share and its headings for chapter 20, the print PDF's fonts for chat 15, the 14 search-result rows for chat 13, and the quick check's crash photographing the proofs appendix.
 
 ## 2. Next, in order
 
@@ -47,6 +47,8 @@ Chapter 20, the website: desktop and mobile mastheads, home navigation, the foot
 - **Logging.** `python3 -I work/build/scripts/phase-4/log_routine_calls.py <notes> "<heading>" ["<section>"]` numbers "D4-xxx" lines, padded to two digits. A section with `###` subsections logs whole by its `##` heading.
 - **Times in messages.** The main session wrote three times by hand in messages to agents without reading the clock; one reached a notes file and was corrected. Read `date -u` before writing any time, in a message too.
 - **Two settled things can disagree, again.** An approved word change (G3-06 (c)) contradicted Rule 12.5. The editor's read before building caught it; build as approved, report, and ask Dustin with both texts.
+- **The quick check's photographs can crash on an unchanged section.** Runs 3 and 4 timed out "waiting for element to be stable" on the proofs appendix at 390 px; the tests run before the photographs, so `--no-captures` gives the result when the photographs crash, and the crash is named, never counted. Budget about 45 minutes a quick check on the 12 MB page.
+- **A focusable scroll box inside a plate takes `role="group"`, never `role="region"`;** the guide check fails a landmark inside a plate.
 - **Context.** This chat ran five agents and three resumed runs (the design director's Job B, the engineer's Job 2, the editor's chapter 16 words).
 
 ## 4. Starting prompt for the new chat
@@ -57,7 +59,7 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 Phase 4 is active. Chat 10 is done. Start chat 11 as the Gate 3 report's section 9 and handoff V30 set it: chapter 20, my website, and chapter 21, the atlas.
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-155), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-156), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md, then section 3 of V5 to V29's handoffs, the chat 10 brief (work/handoffs/phase-4/20261121_Chat-10-Brief.md), the Phase 4 prompt (brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md), Master Brief sections 10, 14, 17, 18 and 22, and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md): chat 10's section, and the rows for chapters 20 and 21.
 
 This session should run on the "Oath & Action Brand Polish - Round 2" environment (DR-300). Data keys are saved there: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
@@ -92,12 +94,12 @@ How to work with me:
 - `work/build/scripts/phase-4/`: `phase4_ch16_build.py`, `log_routine_calls.py`, `chat_10_progress_build.py`
 - `work/build/guide/chapters/16-photography.json`, 28 `work/build/guide/specimens/s-16-*` files and `manifest-photography.json`
 - `work/build/app-kit/` (the application kit) and `work/build/exports/phase-4/` (11 exports and a manifest)
-- `work/boards/phase-4/chat-10/` (the progress page and six pictures)
+- `work/boards/phase-4/chat-10/` (the progress page and six pictures; version 15's file with its build report and quick check results)
 
 **Modified**
-- `work/ledger/`: the decision log (D4-01 to D4-89, DR-300 to DR-304), the change ledger (C-149 to C-155), the deferred fixes register (chat 10's section)
+- `work/ledger/`: the decision log (D4-01 to D4-99, DR-300 to DR-304), the change ledger (C-149 to C-156), the deferred fixes register (chat 10's section)
 - `work/research/20261020_Rights-Ledger.md` (rows p4-01 to p4-05)
 - Generators and outputs for chapters 05, 06 and 14 (G3-06); `work/build/chart-kit/checks.js` and `forms/fan-chart.js` (G3-05); `work/build/scripts/phase-2/guide_build.py`, `guide_check.js`, `guide_editor_ch01.py` and chapter 01's three photograph plates' sources (P4-5); `work/build/scripts/phase-3/guide_charts.py` (allocations); `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json` (its render line)
-- Outside the repository: OUTSIDE_LINE
+- Outside the repository: the chapters page as version 15; chat 10's progress page, new; the work tracker's row `c09` set active, then done
 
 All commits are on `claude/friendly-brahmagupta-tonmfa`, pushed. `source/` and `deliverables/` are unchanged.

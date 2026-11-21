@@ -95,7 +95,7 @@ def alloc_table():
     body = ''
     for n, name in CHAPTERS.items():
         d = NEW[n] - OLD[n]
-        ch = '0' if d == 0 else (f'+{d:,}' if d > 0 else f'minus {abs(d):,}')
+        ch = '0' if d == 0 else (f'+{d:,}' if d > 0 else f'\u2212{abs(d):,}')
         body += f'<tr><th scope="row">{n} {e(name)}</th><td class="num">{OLD[n]:,}</td><td class="num">{NEW[n]:,}</td><td class="num">{ch}</td></tr>'
     t_old, t_new = sum(OLD.values()), sum(NEW.values())
     body += (f'<tr class="total"><th scope="row">All seven</th><td class="num">{t_old:,}</td><td class="num">{t_new:,}</td>'
@@ -219,7 +219,8 @@ table { border-collapse: collapse; width: 100%; font-size: 15px; }
 th, td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid color-mix(in srgb, var(--rule) 45%, transparent); vertical-align: top; }
 thead th { font: 700 13px/1.3 var(--text); letter-spacing: 0.06em; text-transform: uppercase; color: var(--quiet); border-bottom: 1px solid var(--rule); }
 td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
-.alloc td.num { padding-right: 0; padding-left: 16px; }
+.alloc td.num { padding-right: 0; padding-left: 12px; }
+@media (max-width: 480px) { table { font-size: 14px; } th, td { padding-right: 6px; } .alloc td.num { padding-left: 6px; } .alloc tbody th { font-weight: 600; font-size: 14px; } }
 .alloc tbody th { font-weight: 600; }
 tr.total th, tr.total td { font-weight: 700; border-top: 2px solid var(--ink); }
 details.spec { border-top: 1px solid var(--rule); }
@@ -227,7 +228,7 @@ details.spec:last-of-type { border-bottom: 1px solid var(--rule); }
 details.spec summary { cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; font-weight: 700; }
 details.spec summary .count { font-weight: 400; color: var(--quiet); font-size: 14px; }
 details.spec table { margin-bottom: 16px; }
-.st { font: 600 12px/1 var(--text); padding: 3px 6px; border: 1px solid currentColor; white-space: nowrap; }
+.st { display: inline-block; font: 600 12px/1.2 var(--text); padding: 3px 6px; border: 1px solid currentColor; }
 .st-read { color: var(--good); }
 .st-search { color: var(--ink); border-style: dashed; }
 .st-none { color: var(--quiet); border-style: dotted; }
@@ -269,7 +270,7 @@ ul.plain li { margin-bottom: 6px; }
     <div class="samples">
       <figure>
         <img src="{{IMG_post}}" width="1080" height="1350" loading="lazy" alt="Studio sample, Instagram portrait post. An Explainer card on public records. Headline: The records law and your answer, with the red ampersand. The figure 20, working days for a federal agency to decide on your records request under the Freedom of Information Act; unusual circumstances can add up to 10 more. A Charcoal band at the foot holds the source line, the Freedom of Information Act, 5 U.S.C. 552(a)(6), retrieved November 12, 2026, and the lockmark sign-off.">
-        <figcaption><span class="label">Studio sample</span>Instagram portrait, 1080 x 1350 px, shown here at about a third of its size. The source line and the 96 px sign-off sit on a Charcoal band.</figcaption>
+        <figcaption><span class="label">Studio sample</span>Instagram portrait, 1080 x 1350 px, shown here scaled down. The source line and the 96 px sign-off sit on a Charcoal band.</figcaption>
       </figure>
       <figure>
         <img src="{{IMG_report}}" width="840" height="1080" loading="lazy" alt="Studio sample, report page 3, the executive summary, on US Letter with bleed. Headline: A useful question has a clear address. Three figures down the right, 100 units allocated, 40 units for public hours and 4 handoffs to a published answer, each labeled Illustrative. Sections: The allocation, The decision, The household perspective. A source line at the foot, labeled Illustrative.">
@@ -327,9 +328,10 @@ ul.plain li { margin-bottom: 6px; }
     </div>
     <div class="tablewrap">
       <table class="alloc">
-        <thead><tr><th scope="col">Chapter</th><th scope="col" class="num">Gate 3, bytes</th><th scope="col" class="num">Re-sized, bytes</th><th scope="col" class="num">Change</th></tr></thead>
+        <thead><tr><th scope="col">Chapter</th><th scope="col" class="num">Gate 3</th><th scope="col" class="num">Re-sized</th><th scope="col" class="num">Change</th></tr></thead>
         <tbody>{{ALLOC_ROWS}}</tbody>
       </table>
+      <p class="note" style="margin-top:8px">Figures in bytes.</p>
     </div>
     <p class="note" style="margin-top:12px">The page projects to 15,734,059 bytes with every chapter at its figure: 265,941 under 16 MB and 234,059 past the 15.5 MB line, which the build prints as an early warning and does not stop on, as the Gate 3 report has it (DR-271). Each allocation moves as its content needs. The report reader&#8217;s controls are counted at 10,000 bytes, assumed and not yet measured.</p>
   </section>
