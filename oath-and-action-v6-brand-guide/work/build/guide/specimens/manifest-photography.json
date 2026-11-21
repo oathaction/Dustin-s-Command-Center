@@ -5,7 +5,7 @@
   "width_px": null,
   "alt": "A table, the shot list, with columns Subject, Where, How and Status. Two rows are photographs in the guide, the Capitol Rotunda in 2005 and a public meeting at Lake Isabella in 2014; ten rows are subjects to commission, from a planning board meeting in a school cafeteria to a volunteer with a clipboard on a sidewalk, each with where it is set and how to shoot it.",
   "illustrative": false,
-  "notes": "Live text. Rows 3 to 12 are our fifth edition’s shot list (Phase 0 census, photography entries 30 to 49), with a level and a region added; six How lines were cut by the census and completed by the studio.",
+  "notes": "Live text. Rows 3 to 12 take their subjects from our fifth edition’s shot list (Phase 0 census, photography entries 30 to 49), with a level and a region added; the How lines are the guide’s own direction.",
   "readable": true
  },
  "s-16-1-failure": {
@@ -156,7 +156,7 @@
   "chapter": "16",
   "rule": "16.5",
   "width_px": null,
-  "alt": "The Rotunda photograph small in black and white, beside its caption with each part underlined and keyed: who, what, who, what, where, when and the credit, with a note that the record knows only the month.",
+  "alt": "The Rotunda photograph small in black and white, beside its caption with each part underlined and keyed: who, what, who, what, where, when and the credit, with a note that the record dates the photograph only to two days.",
   "illustrative": false,
   "notes": "Each part’s key comes first in reading order and shows under its words (column-reverse).",
   "readable": true
@@ -174,7 +174,7 @@
   "chapter": "16",
   "rule": "16.6",
   "width_px": null,
-  "alt": "The Lake Isabella photograph in black and white with two numbered markers: 1 beside the official, 2 on a resident’s back. A key says the official is named by role and the residents are unnamed. Under it, the rights record: maker, agency, date, place, license, consent and rights rows.",
+  "alt": "The Lake Isabella photograph in black and white with two numbered markers: 1 beside the official, 2 on a resident’s back. A key says the official is named with his role and the residents are unnamed. Under it, the rights record: maker, agency, date, place, license, consent and rights rows.",
   "illustrative": false,
   "notes": "Markers set in HTML over the frame (contract C1), hidden from a screen reader; the key carries their words.",
   "readable": true
@@ -245,7 +245,7 @@
   "chapter": "16",
   "rule": null,
   "width_px": null,
-  "alt": "Two documentary photographs in black and white, side by side. A federal official answers residents at a public meeting in Lake Isabella, California, in 2014; members of the public file past the casket of Rosa Parks in the Capitol Rotunda in 2005. Each carries its full caption.",
+  "alt": "Two documentary photographs in black and white. A federal official answers residents at a public meeting in Lake Isabella, California, in 2014, and members of the public file past the casket of Rosa Parks in the Capitol Rotunda in 2005. Each carries its full caption.",
   "illustrative": false,
   "notes": "Both photographs from contract C1, in black and white (Rule 16.2): Lake Isabella by CSS at 3:2, the Rotunda by data-oa-crop 60 0 1080 720, which keeps the agency’s corner mark out.",
   "readable": true

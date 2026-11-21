@@ -78,3 +78,72 @@ None.
 - The changed rules in a browser at any width. I read their words in the built page by script and did not look at their layout.
 - The four-width guide check and the quick check with photographs, which the main session runs at the close.
 - Read aloud by a person: my read of (c) for the ear is my own.
+
+## Chapter 16 words
+
+Job 2, from 02:22 UTC. The design director handed chapter 16's words over at 02:21 UTC ("Words ready for the editor"); since then I am the only writer of the word fields in `work/build/scripts/phase-4/phase4_ch16_build.py` (`W`, `R['16.1']` to `R['16.13']`, `EXTRA_KINDS`). Marks, crops, sizes and plate structure are as the design director built them: by script, every plate's tags and styles match its 02:20 build, and the one changed attribute is an alt text in `s-16-3-correct`. Chapter 05 stays as built until Dustin answers on G3-06 (c).
+
+### Routine calls
+
+- D4-xxx | The shot list's How column becomes the guide's own direction for each shot, and the plate's caption says so ("with our direction for the shot"); three lines keep our fifth edition's words whole (rows 8, 10 and 11), and the six the census cut, with the kitchen-table line, are written for this guide, so no line passes for a quote of our fifth edition | The main session asked that the studio's completions carry the Illustrative label or give way to real material. A How line is an instruction to a photographer, the rule's own words, which H03's label (invented people, quotes, places and figures a reader could take for real) does not fit; framed as our direction, none is a completed quote, and "Hands, not faces." no longer prints as a corrective negation (W09)
+- D4-xxx | Rows 1 and 2 of the shot list describe the two photographs from the pictures themselves: "From behind the line of people" for the Rotunda (the draft's "From the gallery level" is not where it was taken) and "from behind the residents" at Lake Isabella; row 1 now says "the casket of Rosa Parks", as chapter 01's caption does | Checked against both 1,200 px files by eye
+- D4-xxx | The video plates' figures (Rules 16.10 to 16.13) carry chart S04's own source line in each correct caption, read from `work/build/chart-kit/specs/s04.json` by the generator (`S04_SOURCE`), and the chapter's source list prints the same line | House rule H04: every public policy statistic carries its source, period and qualification; reading it from the spec keeps the two lines one
+- D4-xxx | Rule 16.12's Why names the page and its date: "The W3C’s page “Understanding Success Criterion 1.2.5: Audio Description (Prerecorded)”, retrieved November 21, 2026, notes that …", with the note quoted word for word from the main session's read (research lead's notes, addendum of 02:21 UTC) | The main session's second point
+- D4-xxx | Rule 16.6's failure caption credits "Photograph: Dustin Cathcart, Oath & Action.", Rule 16.5's form for our own photographs, in place of "Photograph: Oath & Action." | The plate then shows one fault, the missing permission, and agrees with Rule 16.5's credit forms; DR-301 makes Dustin the maker at public events. Rule 16.9's failure keeps "Photograph: Oath & Action.", since a photograph's credit on a generated picture is that plate's fault
+- D4-xxx | Rule 16.5's credit forms confirmed as the plan drafted them: "Photograph: Dustin Cathcart, Oath & Action." for ours and "Photograph: [name] for Oath & Action." for a photographer we hire | Both follow the form the two federal credits take, the maker and then the organization
+- D4-xxx | Rule 16.3's set and Rule 16.7's pair print each photograph's own caption with its credit (chapter 01's, word for word) in place of a sentence about the caption | Rule 16.5 asks every photograph to run with its caption and credit, and the shortened Rotunda caption dropped "the civil rights pioneer"
+- D4-xxx | Rule 16.4's headline takes the agency's verb: "At a public meeting in 2014, the Army Corps discussed the dam project’s proposed land purchases with Lake Isabella residents." | The record says Zianno "discusses impacted properties and proposed real estate actions with local residents"; "walked … through" claimed more (H08). Its length stays within three characters of the draft, so the failure plate's measured box still fits it
+- D4-xxx | Studio words leave the reader's text: "Master Brief section 16", "Gate 1’s recommendation S10", "Gate 3’s answer P4-3", "Gate 1, Y6", "sidecars" and the bare codes pho-01 to pho-04r. The Basis lines name our founder and editor's approvals by date (October 28, 2026 for black and white and the hand-drawn treatment; November 21, 2026 for generated images and the two video forms), and the rights record names what pho-04 and pho-04r refer to (H11) | No other chapter prints "Master Brief"; house rule H11
+- D4-xxx | The hand-drawn spot illustration row keeps "at 96 px and larger, drawn by a person" and drops "in Charcoal on Newsprint" | The approved treatments map (Gate 1, October 28, 2026) gives 96 px and up; I found no approval of the colors, and the row cites that approval
+- D4-xxx | A generated picture "appears only with its label" in the intro and the group line, where the draft said it "serves only as a labeled illustration" | Rule 16.9 also allows the setting around our work in a mockup; the summary said less than the rule
+- D4-xxx | Rule 16.2 leaves off "every other effect" where the draft said "filters" | The same rule sets <code>filter: grayscale(1)</code>, so "filters off" contradicted it
+- D4-xxx | Rule 16.8's padding spec reads "24 px; 16 px in a frame 320 px wide or narrower" | The plates draw the 320 px and 240 px frames at 16 px, so the spec now says what they show
+- D4-xxx | Rule 16.13's Controls spec gives 44 px to the Play button and names every control by its words | The plate's two links are text links, not 44 px controls
+- D4-xxx | Rule 16.10's name plate spec places it "in the lower third, clear of each platform’s buttons and the captions" | The plan's hand-over to chapter 23 says so; the draft put it inside the caption-safe area the captions use
+- D4-xxx | Terms defined at first use: rights ledger (16.6), mockup (16.9), caption file, WebVTT and SubRip (16.11), caption-safe area (16.11), audio description and a described version (16.12); L8 named as "L8, the monogram" (16.10, as Rule 12.3 does) | House rules H02 and H11
+- D4-xxx | Placeholder frames and rule-text examples (the jar of brown tap water, the resident at a microphone, the phone on a kitchen table) carry no Illustrative label | Each announces itself as a shot to make or a prompt, and none claims a real event; the label stays on every invented caption, quote and name (Rules 16.5, 16.6, 16.9 failures, and the four video plates)
+
+### Done
+
+`work/build/scripts/phase-4/phase4_ch16_build.py`, its WORDS section rewritten field by field (keys and tuple shapes unchanged), its module docstring and the shot list plate's manifest note made accurate. Run under the lock at 02:34 UTC, it rewrote `work/build/guide/chapters/16-photography.json` (50,016 to 54,238 bytes), `manifest-photography.json` (alts and one note) and eleven plates, in words only:
+
+| Plate | Bytes before | After |
+|---|---|---|
+| `s-16-1-correct` | 5,339 | 5,437 |
+| `s-16-3-correct` | 3,288 | 3,499 |
+| `s-16-4-correct` | 2,669 | 2,669 |
+| `s-16-4-failure` | 2,852 | 2,852 |
+| `s-16-5-correct` | 2,993 | 3,030 |
+| `s-16-6-correct` | 4,117 | 4,172 |
+| `s-16-6-failure` | 3,365 | 3,382 |
+| `s-16-7-correct` | 2,600 | 2,627 |
+| `s-16-9-correct` | 3,388 | 3,402 |
+| `s-16-10-correct` | 3,964 | 3,933 |
+| `s-16-picture-kinds` | 3,474 | 3,490 |
+
+The other seventeen plates are byte for byte as before. All 28 plates as written: 82,739 bytes. Chapter 16 on the strict build: 218,566 bytes against its 300,000 (73 percent), up from 213,681; most of the rise is chart S04's source line in four captions.
+
+### Requests
+
+- For the main session to relay: `s16_7_failure()` in `phase4_ch16_build.py` shows the tight Rotunda crop with no caption, while every other photograph plate prints its caption and credit (Rule 16.5). Add `{cap(W["cap_rotunda"])}` after the alt line, as `s16_7_correct()` does. A layout change, so I have not made it.
+
+### Not fixed
+
+| Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
+|---|---|---|---|---|---|---|
+| ED10-4 | Editor, chat 10 | Rule 16.7's failure plate, `s16_7_failure()` in `phase4_ch16_build.py` | The photograph runs with no caption or credit, a second fault beside the alt text the plate teaches | The request above | A layout change; the brief keeps plate structure with its builder | Open, requested |
+
+### Tested
+
+- `phase4_ch16_build.py --check` and then the write, under the lock (02:33 and 02:34 UTC): 13 rules, 28 specimens, 82,739 bytes, 18 photograph uses; the chapter check and every specimen check passed (no dash, no straight quote, no listed filler, no literal color, no heading element).
+- The strict build to my scratch under the lock (02:34 UTC): exit 0, 0 warnings, 12,238,726 bytes, 382 rules, 707 specimens; chapter 16 at 218,566 of 300,000.
+- By script, before against after: every plate keeps its tags and styles, the one changed attribute being an alt in `s-16-3-correct`; the manifest keeps its 28 keys, with only alts and one note changed.
+- Word search of the strict build's chapter 16: Rule 16.12's Why prints the page's name, "retrieved November 21, 2026" and the W3C's note word for word, once; the new How lines print; chart S04's source line prints five times (four captions and the sources); "Photograph: Dustin Cathcart, Oath & Action." prints twice (Rule 16.5's spec and Rule 16.6's failure). The old words print 0 times: "residents on the benches", "Here is what its survey found", "The register, the window, the street outside", "Hands, not faces", "From the gallery level", "walked Lake Isabella residents", "Gate 1", "Master Brief", "sidecar", "pho-01", "P4-3". Eleven Illustrative labels in the chapter.
+- A script read of all 436 strings in the chapter and its plates (9,530 words): 0 em or en dashes, 0 listed fillers, hedges or corporate verbs, 0 "not … but" or ", not" turns, 0 straight quotes, 0 studio words. I recast the runs it flagged (two sentences in a row on one opener, three sentences of near-equal length) and read every field by hand against chapter 02's rules.
+- Facts checked: every figure in the video plates against S04's spec (47.7 percent, down 3.7 points, near 75 percent for 65 and over, the gap from 23 to 27 points, and "answers to a survey, which run higher than counted ballots"); the SPJ quotes and the YouTube quote against the research lead's section D and B; the agency's words for Rule 16.4's headline and 16.5's failure caption against the photograph's sidecar; the two photographs' contents and crops by eye on the 1,200 px files; the 96 px hand-drawn treatment against the Gate 1 board.
+
+### Not tested
+
+- Chapter 16 in a browser at any width: I did not look at how the new words wrap on the plates, including Rule 16.4's headline over the photograph and the longer captions under the video plates.
+- The guide check (axe, contrast on pixels, the red test) and the four-width check, which the main session runs.
+- Read aloud by a person.

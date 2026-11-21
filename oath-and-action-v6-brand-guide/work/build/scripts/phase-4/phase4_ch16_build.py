@@ -20,8 +20,8 @@ Words. Every word a reader sees sits in the WORDS section near the top of this f
 and nothing else changes: W (the chapter's title, instruction, intro, group lines, the two photographs' captions and
 alts, the opener's alt, related chapters and sources), R['16.1'] to R['16.13'] (each rule's title, rule, why, basis,
 specs, builders, correct_caption, failure_caption, correct_alt and failure_alt, then the words drawn inside its plates
-under the keys that follow) and EXTRA_KINDS (the extra after Rule 16.9). Lines marked "# completed" in R['16.1']['rows']
-are How lines the census cut at 50 characters, completed by the studio. The layout code below holds no reader text of its
+under the keys that follow) and EXTRA_KINDS (the extra after Rule 16.9). The How lines in R['16.1']['rows'] are the guide's own
+direction for each shot, as the plate's caption says (editor, chat 10). The layout code below holds no reader text of its
 own, apart from the Illustrative label and the do-not-publish band the stage A helpers add.
 
 Photographs. A plate never embeds a photograph. It asks for one by name with an <img data-oa-photo> and its own alt
@@ -105,32 +105,39 @@ R_NC = ctx.ratio('oa.color.text.primary.onCharcoal', 'oa.color.surface.charcoal'
 
 # ================================================================================================ WORDS
 # Everything a reader sees. The editor's fields. Keys name the rule (r1 to r13), the plate, or the chapter part.
+# Chart S04's own source line, read from its spec, so the video example's figures carry the line the chart prints
+# (house rule H04; editor, chat 10)
+S04_SOURCE = json.loads((ROOT / 'work/build/chart-kit/specs/s04.json').read_text())['source_line'].rstrip('.') + '.'
+if not S04_SOURCE.startswith('Source: U.S. Census Bureau, Current Population Survey'):
+    raise SystemExit('chart S04’s source line has changed; reread Rules 16.10 to 16.13')
+S04_FIGURES = 'The figures are chart S04’s, reported voting by age (Rule 14.19). ' + S04_SOURCE
+
 W = {
     'title': 'Photography, illustration and video',
     'instruction': 'Show public life as it happens, and label every placeholder and generated image.',
     'intro': [
-        'This chapter sets how Oath & Action shows public life in pictures: the photographs we choose and make, the '
-        'frames that hold a photograph’s place until we have it, the few drawn and generated pictures we allow, and the '
-        'videos we publish. A photograph here is a record. It shows people doing public work, and its caption tells a '
-        'reader who, what, where and when, so they can check it.',
-        'Two public-domain photographs from federal agencies teach every photograph rule, the same two chapter 01 shows. '
-        'Until we commission photographs of our own, a frame that says Placeholder holds each one’s place. A generated '
-        'picture serves only as a labeled illustration.'],
+        'A photograph in Oath & Action is a record a reader can check. It shows people doing public work, and its caption '
+        'says who, what, where and when, then names whoever made it. This chapter covers how we choose, crop, caption and '
+        'credit photographs, how a frame holds a photograph’s place until we have one, where the few drawn and generated '
+        'pictures may appear, and how we make and publish video.',
+        'Two public-domain photographs from federal agencies, the same two chapter 01 shows, teach the photograph rules. '
+        'Until we commission photographs of our own, a frame that says Placeholder holds each one’s place, and a '
+        'generated picture appears only with its label and never stands for a real event.'],
     'groups': [
         ('16.1', 'Choosing and framing a photograph',
          'A photograph shows people at public work, in black and white unless its color is part of the record, and its '
          'crop and the words around it keep that work in view.'),
         ('16.5', 'The record behind each photograph',
-         'Each photograph runs with a caption a reader can check and alt text for each crop, and its rights and any '
-         'consent go into our rights ledger before it runs.'),
+         'Each photograph runs with a caption a reader can check and alt text for each crop, and our rights ledger '
+         'records its rights and any consent before it runs.'),
         ('16.8', 'Placeholders and made pictures',
-         'A frame that says Placeholder holds the place of a photograph we have yet to make, and a generated picture '
-         'serves only as a labeled illustration.'),
+         'A frame that says Placeholder holds the place of a photograph we have yet to make, and a drawn or generated '
+         'picture appears only where the table after Rule 16.9 allows, with its label.'),
         ('16.10', 'Video',
-         'A video answers one question. A person checks its captions, its soundtrack says what the screen shows, and it '
-         'plays only when a viewer presses Play.'),
+         'A video answers one question. Its soundtrack says what the screen shows, a person checks every caption, its '
+         'transcript holds every word, and it plays only when a viewer presses Play.'),
     ],
-    # the two photographs as chapter 01 captions them, and chapter 01's alts for the wide crops
+    # the two photographs as chapter 01 captions them, and chapter 01's alts for the wide crops (word for word)
     'cap_lake': 'Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers '
                 'Sacramento District, explains the Isabella Lake Dam safety project’s land purchases to residents at a '
                 'public meeting in Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army.',
@@ -140,15 +147,15 @@ W = {
     'alt_lake': 'An official points to a project map while two residents, seen from behind, listen.',
     'alt_rotunda': 'Mourners file past a casket ringed by velvet ropes in the Capitol Rotunda, under its paintings and '
                    'statues.',
-    'opener_alt': 'Two documentary photographs in black and white, side by side. A federal official answers residents at '
-                  'a public meeting in Lake Isabella, California, in 2014; members of the public file past the casket of '
-                  'Rosa Parks in the Capitol Rotunda in 2005. Each carries its full caption.',
+    'opener_alt': 'Two documentary photographs in black and white. A federal official answers residents at a public '
+                  'meeting in Lake Isabella, California, in 2014, and members of the public file past the casket of Rosa '
+                  'Parks in the Capitol Rotunda in 2005. Each carries its full caption.',
     'related_chapters': [
         ('01', 'Rules 01.6 and 01.8 and the rotation log, which these photographs and settings serve.'),
         ('02', 'Rule 02.9’s rewrite of our fifth edition’s headline, and house rules H03 to H05.'),
         ('03', 'A logo over a photograph, on its panel (Rule 03.3).'),
         ('05', 'The red rule, which black and white keeps clear (Rule 05.3).'),
-        ('12', 'L8 in a video’s corner and the exploded view.'),
+        ('12', 'L8, the monogram, in a video’s corner, and the exploded view.'),
         ('13', 'The Illustrative label and source lines.'),
         ('14', 'Chart S04 and its table, which the video example reads aloud.'),
         ('17', 'No autoplay, and playback a reader starts.'),
@@ -158,22 +165,21 @@ W = {
     'sources': [
         'Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, success '
         'criteria 1.1.1, 1.2.1 to 1.2.5, 1.3.1, 1.4.1 to 1.4.3, 1.4.5, 2.1.1, 2.2.2 and 4.1.2, and its definitions of '
-        'captions and of an alternative for time-based media, retrieved November 21, 2026. Behind Rules 16.4, 16.7, 16.8 '
-        'and 16.11 to 16.13.',
+        'captions and of an alternative for time-based media, retrieved November 21, 2026. Behind Rules 16.2, 16.4, 16.7 '
+        'to 16.9 and 16.11 to 16.13.',
         'Source: W3C, “Understanding Success Criterion 1.2.5: Audio Description (Prerecorded)”, retrieved November 21, '
-        '2026. Its note on video whose soundtrack carries what the picture shows, behind Rule 16.12.',
+        '2026. Its note on video whose soundtrack already carries what the picture shows, behind Rule 16.12.',
         'Source: Society of Professional Journalists, “SPJ Code of Ethics”, revised October 4, 2026, retrieved November '
         '21, 2026. Behind Rules 16.3, 16.5, 16.6 and 16.9.',
         'Source: Reporters Committee for Freedom of the Press, “Reporter’s Recording Guide”, retrieved November 21, '
         '2026. Its state-by-state guide to recording sound, named in Rule 16.6; this guide gives no legal advice.',
         'Source: YouTube Help, LinkedIn Help, X Help, TikTok’s newsroom and Community Guidelines, and Meta’s newsroom, '
-        'on caption files and labels for generated content, read or seen through a search result November 21, 2026, as '
-        'Rules 16.9 and 16.11 mark each. Platforms change these pages; check them before a video posts.',
-        'Source: Wikimedia Commons file pages for the two photographs, their license boxes read November 21, 2026, '
-        'with the studio’s sidecars and rights rows pho-01, pho-01r, pho-04 and pho-04r. Both are public-domain works of '
-        'federal agencies.',
-        'Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, through chart S04’s '
-        'source line, for the video example in Rules 16.10 to 16.13.',
+        'on caption files and labels for generated content, retrieved November 21, 2026. Where a page would not open to '
+        'us, Rules 16.9 and 16.11 say so and give what a search of that page showed. Platforms change these pages; check '
+        'them before a video posts.',
+        'Source: Wikimedia Commons file pages for the two photographs, their license boxes retrieved November 21, 2026, '
+        'and both photographs’ rows in our rights ledger. Both are public-domain works of federal agencies.',
+        S04_SOURCE + ' Chart S04’s line, for the video example in Rules 16.10 to 16.13.',
     ],
 }
 
@@ -183,25 +189,26 @@ R = {}
 R['16.1'] = {
     'title': 'Photograph public work while it happens.',
     'rule': ['Photograph people while they do public work, such as a resident testifying, a clerk counting ballots or an '
-             'official answering questions at a public meeting, with officials among them. Choose the frame where the '
-             'act and the people it serves are both in view.',
-             'Leave raised fists, megaphones, flag-waving, handshake close-ups, the dome at sunset, protest signs used as a '
-             'motif, glossy stock and crowds of identical smiling people out of our pictures, because each stands for '
-             'civic life in general and shows no decision a reader can follow.'],
-    'why': 'A reader can check a picture of a real meeting on a real day, and a picture of the idea of one gives them '
-           'nothing to check.',
+             'official answering questions at a public meeting. Choose the frame where the act and the people it serves '
+             'are both in view.',
+             'Leave raised fists, megaphones, flag-waving, handshake close-ups, people pointing at laptops, the Capitol '
+             'dome at sunset, protest signs used as a motif, glossy stock and crowds of identical smiling people out of '
+             'our pictures, because each stands for civic life in general and shows no decision a reader can follow.'],
+    'why': 'A picture of a real meeting on a real day gives a reader a place, a date and people they can check against '
+           'the record.',
     'basis': 'Design judgment, from our fifth edition’s photography direction',
-    'specs': [('Subject', 'People doing public work, officials among them'),
+    'specs': [('Subject', 'People doing public work, officials included'),
               ('Frame', 'The act and the people it serves, both in view'),
               ('Light', 'Available light, at eye level, as our fifth edition set it'),
-              ('Staging', 'None: photograph what happens'),
+              ('Staging', 'None; photograph what happens'),
               ('Settings', 'Spread across states, regions and levels of government, logged in chapter 01’s rotation log (Rules 01.9, 01.10 and 01.12)'),
               ('Leave out', 'The list in the rule')],
     'builders': 'Write the subject and the act you need in the shot list’s form before a shoot or a search, then choose '
                 'the frame where the act is happening.',
-    'correct_caption': 'The shot list, as a commissioning brief. The first two rows are the photographs this guide shows. '
-                       'The other ten are our fifth edition’s subjects, each given a level of government and a region, and '
-                       'a placeholder holds each one’s place until it is made.',
+    'correct_caption': 'The shot list, a brief for the photographs we will commission. The first two rows are the '
+                       'photographs this guide shows. The other ten take their subjects from our fifth edition, each set at '
+                       'a level of government and in a region with our direction for the shot, and a placeholder holds each '
+                       'one’s place until it is made.',
     'failure_caption': '<strong>Fails Rule 16.1.</strong> Cropped to its paintings and carved panels, the same photograph '
                        'shows an empty room, so it stands for government in general and records no public act.',
     'correct_alt': 'A table, the shot list, with columns Subject, Where, How and Status. Two rows are photographs in the '
@@ -217,34 +224,38 @@ R['16.1'] = {
     'status_have_6': 'In the guide (Rule 01.6)',
     'status_have_8': 'In the guide (Rule 01.8)',
     'status_todo': 'To commission; a placeholder holds its place (Rule 16.8)',
-    # Subject, Where, How. Rows 3 to 12 are our fifth edition's subjects and its How lines; the census cut six How lines
-    # at 50 characters, and the studio completed them (EDITOR: confirm or rewrite each line marked "completed").
+    # Subject, Where, How. Rows 3 to 12 take their subjects from our fifth edition's shot list. The How column is the
+    # guide's own direction for each shot (editor, chat 10), and the caption says so: three lines keep our fifth edition's
+    # words whole (rows 8, 10 and 11), and the rest are written for this guide, so no line passes for a quote of a text
+    # the census cut at 50 characters. The plate describes the two photographs it has from the photographs themselves.
     'rows': [
-        ('Members of the public file past Rosa Parks in the Capitol Rotunda', 'Washington, D.C.; federal; South',
-         'From the gallery level, the line of people and the casket in one frame', 'have6'),
+        ('Members of the public file past the casket of Rosa Parks in the Capitol Rotunda',
+         'Washington, D.C.; federal; South',
+         'From behind the line of people, with the casket and the room in one frame', 'have6'),
         ('A federal official answers residents at a public meeting', 'Lake Isabella, California; federal; West',
-         'Eye level, from among the residents; the official, a resident and the project map in one frame', 'have8'),
+         'At eye level, from behind the residents, with the official, two residents and the project map in one frame',
+         'have8'),
         ('A planning board meeting in a school cafeteria', 'Town; Northeast',
-         'Folding tables, paper agendas, residents on the benches.', 'todo'),                       # completed
+         'Folding tables and paper agendas, with the board and the residents in one frame.', 'todo'),
         ('A resident testifying at a microphone in a state house hearing room', 'State; Midwest',
-         'From the side, at eye level. The dais stays in frame.', 'todo'),                          # completed
+         'From the side, at eye level, with the committee’s dais in frame.', 'todo'),
         ('A kitchen table with bills and a laptop at night', 'Household; South',
-         'Available light from the lamp, with the hands in frame and the faces out of it.', 'todo'),  # rewritten, Rule 02.9
+         'Available light from the lamp, with the hands in frame and the faces out of it.', 'todo'),
         ('A polling place in a gymnasium', 'County; West',
-         'Wide, from the door. The line, the booths, the banner. Ask the election official first, and leave out every '
-         'marked ballot and every person voting.', 'todo'),                                          # completed
+         'Wide, from the door, with the line and the booths in frame. Ask the election official first, and leave out '
+         'every marked ballot and every voter at a booth.', 'todo'),
         ('A small business owner at the counter', 'City; West',
-         'Mid-task. The register, the window, the street outside.', 'todo'),                        # completed
+         'Mid-task, with the register and the street through the window.', 'todo'),
         ('Neighbors talking on a front porch', 'Neighborhood; South',
          'Late afternoon. Nobody looks at the lens.', 'todo'),
-        ('A union hall meeting', 'Members’ meeting; Midwest',
-         'From the back of the hall, the folding chairs in rows toward the front.', 'todo'),        # completed
+        ('A union hall meeting', 'A union local; Midwest',
+         'From the back of the hall, with the rows of folding chairs and the speaker in one frame.', 'todo'),
         ('A library bulletin board with meeting notices', 'Town; Northeast',
          'Flat, overhead or straight on. Pins and paper.', 'todo'),
-        ('Veterans and families at a town hall', 'A member of Congress’s district meeting; South',
+        ('Veterans and families at a town hall', 'Federal, a member of Congress’s district meeting; South',
          'Seated, listening. Caps and jackets, no ceremony.', 'todo'),
         ('A volunteer with a clipboard on a sidewalk', 'City; West',
-         'Walking toward the camera, mid-conversation with a neighbor.', 'todo'),                  # completed
+         'Walking toward the camera while talking with a neighbor.', 'todo'),
     ],
 }
 
@@ -253,24 +264,25 @@ R['16.2'] = {
     'rule': ['Show every photograph in black and white, converted from the color original, unless its color is part of '
              'what it records, such as the brown of tap water a resident holds up at a hearing. A photograph kept in color '
              'says in its caption what the color shows.',
-             'Change only tone and exposure, evenly across the frame. Leave tints, color grades, vignettes and filters off, '
-             'since each changes how the place looked.'],
+             'Change only tone, exposure and contrast, evenly across the frame. Leave off tints, color grades, vignettes '
+             'and every other effect, since each changes how the place looked.'],
     'why': 'Black and white keeps a photograph’s own reds and blues off our page. The Rotunda photograph in color holds '
            'red coats and red, white and blue wreaths; in black and white the view’s one working red (Rule 05.3) stays '
-           'the only red a reader sees. It also lets photographs from different agencies, cameras and years sit together '
-           'as one publication.',
-    'basis': 'Gate 1’s recommendation S10, approved by our founder and editor; design judgment for the reasons',
+           'the only red a reader sees. Black and white also lets photographs from different agencies, cameras and years '
+           'sit together as one publication.',
+    'basis': 'The photography direction our founder and editor approved on October 28, 2026, black and white with color '
+             'where color is evidence; design judgment for the reasons',
     'specs': [('Default', 'Black and white, from the color original'),
-              ('On screen', 'filter: grayscale(1) on the photograph, and nothing else'),
-              ('For print or an export', 'A grayscale conversion of the original file, never of the 1,200 px rendition'),
+              ('On screen', '<code>filter: grayscale(1)</code> on the photograph, and nothing else'),
+              ('For print or an export', 'A grayscale conversion made from the original file, never from the 1,200 px copy the page shows'),
               ('Color', 'Only where it is part of the record, named in the caption'),
               ('Adjust', 'Tone, exposure and contrast, evenly across the frame'),
-              ('Never', 'A tint, a duotone in a brand color, a color grade, a vignette or a filter'),
+              ('Never', 'A tint, a duotone in a brand color, a color grade, a vignette or any other effect'),
               ('On Charcoal', 'The photograph unchanged; the caption in Charcoal’s text tokens', 'oa.color.text.primary.onCharcoal')],
-    'builders': 'On a page, set filter: grayscale(1) on the photograph. For print, convert the original file and compare '
-                'it with the screen version at the same size.',
+    'builders': 'On a page, set <code>filter: grayscale(1)</code> on the photograph. For print, convert the original file '
+                'and compare it with the screen version at the same size.',
     'correct_caption': 'The Rotunda photograph in black and white, beside a placeholder for the one kind of photograph '
-                       'that keeps its color: a picture whose color is the evidence, with a caption that says so.',
+                       'that keeps its color, a picture whose color is the evidence, with a caption that says so.',
     'failure_caption': '<strong>Fails Rule 16.2.</strong> A Prussian tint dresses the people at the meeting in our color, '
                        'as if they belonged to our message, and shows a room that never looked that way.',
     'correct_alt': 'Two panels. The Capitol Rotunda photograph in black and white with its caption, and beside it a '
@@ -287,13 +299,13 @@ R['16.2'] = {
 R['16.3'] = {
     'title': 'Crop to keep the act whole, and change nothing inside the frame.',
     'rule': ['Crop a photograph so the person acting, at least one person they serve and the thing they are working on '
-             'stay in view at every ratio it runs at. One photograph can serve all five ratios below; set each crop by '
-             'hand and check that the caption still describes what the crop shows.',
+             'stay in view at every ratio it runs at. One photograph can serve all five ratios below. Set each crop by '
+             'hand, then check that the caption still describes what the crop shows.',
              'A mark laid on the picture after it was taken, such as an agency’s corner logo, comes out in the crop, and its '
              'credit goes in the caption. A sign, a map or a badge that was in the room stays, since it is part of what '
              'happened. Add, move, remove and retouch nothing inside the frame.'],
-    'why': 'A crop decides what a reader believes happened. Cut the residents away and an official seems to lecture no '
-           'one; cut the official and the caption names a man who is no longer there.',
+    'why': 'A crop decides what a reader believes happened. With the residents cut away, an official seems to lecture an '
+           'empty room, and a crop that loses the official leaves the caption naming a man the reader cannot see.',
     'basis': 'Society of Professional Journalists, Code of Ethics, revised October 4, 2026: “Never publish fabricated '
              'content that could be confused with reality.” Design judgment for the ratios',
     'specs': [('3:2', 'Articles, reports and web pages, the default. Lake Isabella 24 0 1152 768; Rotunda 60 0 1080 720'),
@@ -301,7 +313,7 @@ R['16.3'] = {
               ('1:1', 'A square post. Lake Isabella 108 0 768 768; Rotunda 300 0 720 720'),
               ('4:5', 'A portrait post. Lake Isabella 205 0 614 768; Rotunda 370 0 576 720'),
               ('1.91:1', 'The share preview (chapter 20). Lake Isabella 0 21 1200 628; Rotunda 0 0 1200 628'),
-              ('Rectangles', 'x, y, width and height in the photograph’s own pixels, ready for data-oa-crop. Every Rotunda rectangle stops at row 720, so the agency’s mark at the lower right stays out'),
+              ('Rectangles', 'x, y, width and height in the photograph’s own pixels, ready for <code>data-oa-crop</code>. Every Rotunda rectangle ends at row 720 or above, so the agency’s mark at the lower right stays out'),
               ('Keep in every crop', 'The person acting, at least one person they serve, and what they work on where it fits'),
               ('Smallest shown', '240 px wide; below that, faces and hands stop reading'),
               ('Sharpness', 'The crop’s width in photograph pixels at least twice the frame’s width'),
@@ -309,7 +321,7 @@ R['16.3'] = {
     'builders': 'Take a crop from the table, then read the caption against the cropped picture. If a person the caption '
                 'names has left the frame, choose another crop.',
     'correct_caption': 'One photograph at four of the five ratios, each crop set by hand. Every crop keeps the official, '
-                       'his hand at work and at least one resident.',
+                       'his hand at work and at least one resident, so one caption serves them all.',
     'failure_caption': '<strong>Fails Rule 16.3.</strong> The portrait crop keeps a resident and the map and cuts out the '
                        'official, so the caption names a man the picture no longer shows.',
     'correct_alt': 'The Lake Isabella photograph four times in black and white, each labeled with its ratio and use: 3:2 '
@@ -318,51 +330,53 @@ R['16.3'] = {
     'failure_alt': 'A 4:5 crop of the Lake Isabella photograph: one resident seen from behind and the project map, with '
                    'the official cut out, over the caption that names him.',
     'alt_wide': 'An official points to a project map while two residents, seen from behind, listen.',
-    'alt_tight': 'An official explains something to residents, his arm reaching past one of them.',
+    'alt_tight': 'An official speaks to two residents, his arm reaching past one of them toward a map.',
     'failure_photo_alt': 'A resident, seen from behind, faces a large project map on an easel.',
     'labels': [('3:2', 'Article and report'), ('16:9', 'Video poster and thumbnail'), ('1:1', 'Square post'), ('4:5', 'Portrait post')],
-    'set_caption': 'The same caption serves every crop here: each keeps Paul Zianno at work and the residents he serves.',
+    # the set's caption is the photograph's own, with its credit, as Rule 16.5 asks of every photograph shown
+    'set_caption': W['cap_lake'],
 }
 
 R['16.4'] = {
-    'title': 'Set words beside a photograph or on a solid panel, never on the picture itself.',
+    'title': 'Set words beside a photograph, or on a solid panel over a plain part of it.',
     'rule': ['Set a headline, a label or a logo beside a photograph, or on a solid Charcoal or Newsprint panel laid over a '
-             'plain part of it that covers no face, no hand at work and no sign. Words never sit straight on the image, '
-             'with or without a shadow or a gradient behind them.'],
+             'plain part of it, clear of faces, hands at work and signs. Words never sit straight on the image, with or '
+             'without a shadow or a gradient behind them.'],
     'why': 'Over a photograph, the ground under each letter changes from one letter to the next, so parts of a headline '
-           'fade for every reader. A solid panel gives the words one ground and a contrast we can measure, and live text '
-           'grows, reflows and reads aloud (Rule 19.4).',
+           'fade for every reader. A solid panel gives the words one ground and a contrast we can measure. Live text also '
+           'stays text, so a reader can enlarge it or have it read aloud (Rule 19.4).',
     'basis': 'WCAG 2.2 success criteria 1.4.3 and 1.4.5; our fifth edition’s rule',
     'specs': [('Beside the photograph', 'The default'),
               ('Panel', f'Solid Charcoal or Newsprint, words in that surface’s text tokens; Newsprint on Charcoal measures {R_NC} to 1', 'oa.color.surface.charcoal'),
-              ('A panel covers', 'A plain area, never a face, a hand at work or a sign'),
-              ('Never', 'Words on the image, a text shadow, a gradient scrim'),
+              ('Where a panel sits', 'On a plain area, clear of faces, hands at work and signs'),
+              ('Never', 'Words on the image, a text shadow, or a gradient laid behind the words'),
               ('A logo over a photograph', 'On Rule 03.3’s panel')],
     'builders': 'Set the headline above or beside the photograph first. Use a panel only where the layout has no room '
                 'beside it, and check that the panel covers no face, hand at work or sign.',
     'correct_caption': 'An article opener: its kicker and headline set above the photograph as live text, and the caption '
                        'under it.',
     'failure_caption': f'<strong>Fails Rule 16.4.</strong> Set on the picture, the headline crosses dark coats and a pale '
-                       f'map, so parts of it fall to {LOW} to 1 and {UNDER3} percent of the ground under it measures under 3 '
-                       f'to 1. It also covers the people the meeting was for.',
+                       f'map. The contrast under parts of it falls to {LOW} to 1, and {UNDER3} percent of the ground under '
+                       f'it measures under 3 to 1. It also covers the people the meeting was for.',
     'correct_alt': 'An article opener: the kicker Report, Public lands, then the headline as live text, then the Lake '
                    'Isabella photograph in black and white and its caption.',
     'failure_alt': f'The same headline in pale type set straight across the photograph, over the residents and the map, '
                    f'with a soft shadow; parts of it fade into the map, down to {LOW} to 1.',
     'kicker': ('Report', 'Public lands'),
-    'headline': 'At a public meeting in 2014, the Army Corps walked Lake Isabella residents through the dam project’s '
-                'proposed land purchases.',
+    # from the agency's record: Zianno "discusses impacted properties and proposed real estate actions with local residents"
+    'headline': 'At a public meeting in 2014, the Army Corps discussed the dam project’s proposed land purchases with '
+                'Lake Isabella residents.',
 }
 
 # ---- Group 2
 R['16.5'] = {
     'title': 'Caption who, what, where and when from the record, then credit the maker.',
-    'rule': ['Write each caption from the record: the agency’s own caption, our capture notes or the event’s public '
+    'rule': ['Write each caption from the record: the agency’s own caption, our notes from the event or the event’s public '
              'notice. Name who is shown, what they are doing, where and when, in that order, then give the credit.',
-             'Give only as much as the record holds: when it knows only the month, the caption gives only the month. Claim '
-             'no feeling, motive or result that the picture and the record do not show.'],
+             'Give only as much as the record holds, so a record that knows only the month gets a caption that gives only '
+             'the month. Claim no feeling, motive or result that the picture and the record do not show.'],
     'why': 'A caption is the part of a photograph a reader can check, and each of its four parts sends them to a record. A '
-           'guess in any part spends the trust the photograph earned.',
+           'guess in any part gives the reader a fact no record backs.',
     'basis': 'Society of Professional Journalists, Code of Ethics, revised October 4, 2026: “Take responsibility for the '
              'accuracy of their work before releasing it.” and “Never plagiarize. Always attribute.” Rule 01.8',
     'specs': [('Order', 'Who, what, where, when, then the credit'),
@@ -375,65 +389,68 @@ R['16.5'] = {
               ('Length', 'One or two sentences', 'oa.type.caption')],
     'builders': 'Copy the record’s facts into the four parts before you write a sentence, then join them in order and add '
                 'the credit.',
-    'correct_caption': 'Chapter 01’s caption for the Rotunda photograph, each part keyed. The record dates the event to '
-                       'October 30 or 31, 2005, so the caption gives the month.',
+    'correct_caption': 'Chapter 01’s caption for the Rotunda photograph, with each part keyed in the order this rule sets.',
     'failure_caption': '<strong>Fails Rule 16.5.</strong> The caption claims anger and a seizure that neither the picture '
-                       'nor the agency’s record shows; the record says he discussed proposed real estate actions with '
+                       'nor the agency’s record shows. The record says he discussed proposed real estate actions with '
                        'residents.',
     'correct_alt': 'The Rotunda photograph small in black and white, beside its caption with each part underlined and '
-                   'keyed: who, what, who, what, where, when and the credit, with a note that the record knows only the month.',
+                   'keyed: who, what, who, what, where, when and the credit, with a note that the record dates the '
+                   'photograph only to two days.',
     'failure_alt': 'The Lake Isabella photograph in black and white over an invented caption: angry homeowners confront '
                    'an Army official over the seizure of their land.',
     'parts': [('Who', 'Members of the public'), ('What', 'file past the casket'), (None, 'of'),
               ('Who', 'Rosa Parks, the civil rights pioneer,'), ('What', 'as she lies in honor'),
               ('Where', 'in the Rotunda of the U.S. Capitol, Washington, D.C.,'), ('When', 'October 2005.'),
               ('Credit', 'Photograph: Architect of the Capitol.')],
-    'when_note': 'When: the record dates the event to October 30 or 31, 2005, so the caption gives the month.',
+    'when_note': 'When: the record places the photograph on October 30 or 31, 2005, the two days she lay in honor, so '
+                 'the caption gives the month.',
     'bad_caption': 'Angry Lake Isabella homeowners confront an Army official over the seizure of their land, March 2014. '
                    'Photograph: John Prettyman, U.S. Army.',
 }
 
 R['16.6'] = {
     'title': 'Before a photograph runs, record its rights and any consent it needs.',
-    'rule': ['Dustin, on a phone at a public event, and any photographer we hire work to the same rules. Check the host’s '
-             'rules on cameras before the event starts, and photograph from where the public may stand. A public official '
-             'doing public work may be shown and named by role. A member of the public may appear in a scene and stay '
-             'unnamed. Ask a person’s permission, and write down the answer, before you single them out in a close picture '
-             'or name them in a caption. Show a person under 18 so they can be recognized only with a parent’s or '
-             'guardian’s permission. Stop photographing anyone who asks you to, and leave their picture out.',
-             'Before any photograph runs, give it a row in our rights ledger: who made it, where it came from, the license '
-             'or permission that covers it, and any consent. Some of this is a matter of state law that differs from state '
-             'to state, such as recording a conversation’s sound or using a person’s likeness, and this guide gives no '
-             'legal advice.'],
-    'why': 'The Society of Professional Journalists puts it this way: “Private people have a greater right to control '
-           'information about themselves than public figures and others who seek power, influence or attention.” Its code '
+    'rule': ['The same rules hold for our founder and editor, Dustin Cathcart, photographing on a phone at a public event, '
+             'and for any photographer we hire. Check the host’s rules on cameras before the event starts, and photograph from '
+             'where the public may stand. A public official doing public work may be shown and named with their role, and '
+             'a member of the public may appear in a scene unnamed. Ask a person’s permission, and write down the answer, '
+             'before you single them out in a close picture or name them in a caption. A person under 18 may be shown so '
+             'they can be recognized only with a parent’s or guardian’s permission. Stop photographing anyone who asks you '
+             'to, and leave their picture out.',
+             'Before any photograph runs, give it a row in our rights ledger, our record of every picture we use: who made '
+             'it, where it came from, the license or permission that covers it, and any consent. Some of this is a matter '
+             'of state law that differs from state to state, such as recording a conversation’s sound or using a person’s '
+             'likeness, and this guide gives no legal advice.'],
+    'why': 'The Society of Professional Journalists’ Code of Ethics says: “Private people have a greater right to control '
+           'information about themselves than public figures and others who seek power, influence or attention.” The code '
            'also asks for “heightened sensitivity” with juveniles. A photograph of a private person outlasts the meeting, '
            'so the permission has to be on the record before it runs.',
     'basis': 'Society of Professional Journalists, Code of Ethics, revised October 4, 2026; Reporters Committee for '
              'Freedom of the Press, “Reporter’s Recording Guide”; design judgment for the record’s fields',
-    'specs': [('Makers', 'Dustin on a phone at public events; a hired photographer; one set of rules'),
+    'specs': [('Makers', 'Dustin Cathcart on a phone at public events, and any photographer we hire; one set of rules'),
               ('Before the event', 'The host’s rules on cameras, which differ by body'),
-              ('Officials doing public work', 'Shown and named by role'),
+              ('Officials doing public work', 'Shown, and named with their role from the record'),
               ('Members of the public in a scene', 'Shown and unnamed'),
               ('A close picture or a named caption of a private person', 'Their permission, written into the record'),
               ('Under 18', 'Recognizable only with a parent’s or guardian’s permission'),
               ('Asked to stop', 'Stop, and leave the picture out'),
-              ('Polling places', 'Ask the election official first; leave out every marked ballot and every person voting'),
+              ('Polling places', 'Ask the election official first; leave out every marked ballot and every voter at a booth'),
               ('Matters of state law', 'Recording a conversation’s sound, a person’s likeness and pictures of minors; the Reporters Committee keeps a state-by-state guide to recording. No legal advice'),
               ('The rights ledger row', 'Maker, source, date, place, license or permission, consent, where the caption came from, the file and its original')],
     'builders': 'Fill the rights ledger row as you take or find the photograph, and leave the photograph out of any draft '
                 'until the row is complete.',
-    'correct_caption': 'The meeting photograph with two markers and its record. The official is named by role from his '
-                       'agency’s caption; the residents are seen from behind and named nowhere, so no consent was needed.',
+    'correct_caption': 'The meeting photograph with two markers and its record. The official is named, with his role, from '
+                       'his agency’s caption, and the residents are seen from behind and named nowhere, so no consent was '
+                       'needed.',
     'failure_caption': '<strong>Fails Rule 16.6.</strong> The caption names a 14-year-old and her school, and the record '
                        'holds no permission from a parent or guardian.',
     'correct_alt': 'The Lake Isabella photograph in black and white with two numbered markers: 1 beside the official, '
-                   '2 on a resident’s back. A key says the official is named by role and the residents are unnamed. Under '
-                   'it, the rights record: maker, agency, date, place, license, consent and rights rows.',
+                   '2 on a resident’s back. A key says the official is named with his role and the residents are unnamed. '
+                   'Under it, the rights record: maker, agency, date, place, license, consent and rights rows.',
     'failure_alt': 'A placeholder frame for a close portrait of a ninth grader speaking at a school board meeting, with an '
                    'invented caption that names her, her age and her school, and a record line that shows no permission '
                    'from a parent or guardian.',
-    'keys': ['Named by role. A public official at a public meeting, named in the agency’s own caption.',
+    'keys': ['Named, with his role. A public official at a public meeting, named in the agency’s own caption.',
              'Unnamed. Members of the public, seen from behind and named nowhere in the record.'],
     'record_head': 'The record',
     'record': [('Maker', 'John Prettyman, U.S. Army'),
@@ -442,10 +459,12 @@ R['16.6'] = {
                ('Place', 'Lake Isabella, Kern County, California'),
                ('License', 'Public domain in the United States as a work of the federal government (17 U.S.C. 105), read on the Commons file page November 21, 2026'),
                ('Consent', 'None needed: one official at public work, named by his agency; residents unnamed and seen from behind'),
-               ('Rights rows', 'pho-04 and pho-04r')],
+               ('Rights rows', 'pho-04 for the source file and pho-04r for the copy the page shows')],
     'fail_plh': 'Placeholder for this failure: a close portrait of a ninth grader speaking at a school board meeting.',
+    # the credit follows Rule 16.5's form for our own photographs, so the plate shows one fault, the missing permission
     'fail_caption_parts': ('Maya Brooks, 14,', 'a ninth grader at', 'Alder County High School,',
-                           'asks the school board to keep the late bus, April 2026. Photograph: Oath & Action.'),
+                           'asks the school board to keep the late bus, April 2026. Photograph: Dustin Cathcart, Oath & '
+                           'Action.'),
     'fail_record': 'Permission from a parent or guardian: none recorded.',
 }
 
@@ -477,8 +496,8 @@ R['16.7'] = {
     'alt_tight': 'Mourners wait in line along velvet ropes in the Capitol Rotunda, beside a wreath and under a large painting.',
     'alt_head': 'Alt text',
     'labels': ('Wide, 3:2', 'Tight, 4:5'),
-    'shared_caption': 'Members of the public file past the casket of Rosa Parks as she lies in honor in the Rotunda of the '
-                      'U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.',
+    # the photograph's own caption, word for word as chapter 01 prints it
+    'shared_caption': W['cap_rotunda'],
 }
 
 # ---- Group 3
@@ -488,15 +507,16 @@ R['16.8'] = {
              'with the word Placeholder at its top, the shot it waits for in live text and the caption’s parts still to '
              'write. Here a placeholder means that frame, apart from the hint text in a form field.',
              'A placeholder imitates no photograph, so it takes no gray fill, texture, silhouette or stock picture. A '
-             'published piece with no photograph runs without one; placeholders belong in this guide, in templates and in '
-             'drafts.'],
+             'published piece with no photograph runs without one, and placeholders stay in this guide, in templates and '
+             'in drafts.'],
     'why': 'A gray box at a photograph’s size reads as a picture still loading, and our fifth edition’s panels told a '
            'screen reader “Photograph” for pictures that did not exist. Words in the frame tell every reader what is '
            'missing and what will fill it.',
-    'basis': 'Master Brief section 16; WCAG 2.2 success criterion 1.1.1; the Phase 0 rights audit of our fifth edition',
+    'basis': 'The direction our founder and editor set for this edition’s pictures, which asks every placeholder to '
+             'announce itself; WCAG 2.2 success criterion 1.1.1; our October 2026 audit of the fifth edition’s photographs',
     'specs': [('Frame', 'The photograph’s ratio and display size', 'oa.color.border.strong.onNewsprint'),
               ('Edge', 'A 1 px keyline in the surface’s strong border, no fill, and four corner crop marks: 1 px, 12 px arms, 6 px off each corner'),
-              ('Inside', 'Padding of 24 px', 'oa.space.300'),
+              ('Inside', 'Padding of 24 px; 16 px in a frame 320 px wide or narrower', 'oa.space.300'),
               ('Words', '“Placeholder”, what it waits for, the shot, the ratio and the treatment', 'oa.type.label'),
               ('Caption', 'The parts still to write', 'oa.type.caption'),
               ('Markup', 'Live text in a figure, the word Placeholder first; no image role and no alt text'),
@@ -521,6 +541,7 @@ R['16.8'] = {
     'meta': '3:2 · Black and white · Shot list, row 4 (Rule 16.1)',
     'meta_45': '4:5 · Black and white · Shot list, row 4',
     'cap': 'Caption to write from the record: who, what, where and when, then the credit.',
+    # our fifth edition's own words on its panel, kept as it printed them
     'v5_cap': 'A polling place in a gymnasium',
     'v5_meta': 'Natural color / 3:2',
 }
@@ -528,31 +549,33 @@ R['16.8'] = {
 R['16.9'] = {
     'title': 'Label a generated image beside it, and never let one stand for a real event.',
     'rule': ['A generated image is a picture an AI tool makes from a written prompt. It may serve only as a labeled '
-             'conceptual illustration or as the scene around our real work in a mockup. It carries the words “Generated '
-             'image” on a solid tab at its top left corner, its caption says what idea it shows and names the tool and the '
-             'date, and its alt text begins “Generated image”.',
-             'It never shows a real person or a real place on a real day, and nothing a reader could take for a '
+             'conceptual illustration, or as the setting around our real work in a mockup, a picture that shows our page '
+             'where a reader would meet it. Every one carries the words “Generated image” on a solid tab at its top left corner, '
+             'its caption says what idea it shows and names the tool and the date, and its alt text begins “Generated '
+             'image”.',
+             'It never shows a real person or a real place on a real day, or anything a reader could take for a '
              'photograph of an event. Where a platform has its own label, we turn it on too, and we keep the Content '
-             'Credentials, the data some tools write into the file to say how it was made. Each one gets a rights row with '
-             'the tool, the date, the prompt and the tool’s terms.'],
+             'Credentials, the data some tools write into the file to say how it was made. Each generated image gets a '
+             'rights row with the tool, the date, the prompt and the tool’s terms.'],
     'why': 'The Society of Professional Journalists asks journalists to “Never publish fabricated content that could be '
-           'confused with reality. Clearly label illustrations and reenactments.” A label on the picture, in its caption '
-           'and in its alt text reaches every reader, wherever the picture travels.',
-    'basis': 'Master Brief section 16; Gate 3’s answer P4-3; Society of Professional Journalists, Code of Ethics, revised '
-             'October 4, 2026; each platform’s help or policy page',
-    'specs': [('May serve as', 'A conceptual illustration; the scene around our real work in a mockup'),
+           'confused with reality. Clearly label illustrations and reenactments.” The tab stays on the picture when it is '
+           'shared without its caption, and the alt text gives the label to a reader who cannot see the picture.',
+    'basis': 'The direction our founder and editor set for this edition’s pictures, and his answer of November 21, 2026 '
+             'on generated images; Society of Professional Journalists, Code of Ethics, revised October 4, 2026; each '
+             'platform’s help or policy page',
+    'specs': [('May serve as', 'A conceptual illustration; the setting around our real work in a mockup'),
               ('Label on the picture', '“Generated image” on a solid Charcoal tab, top left', 'oa.color.surface.charcoal'),
               ('Caption', 'The idea it shows, then “Generated image, [tool], [date]”'),
               ('Alt text', 'Begins “Generated image”'),
               ('Never', 'A real person, a real place on a real day, evidence or documentary imagery'),
-              ('File and record', 'YYYYMMDD_Generated-[Subject].png; a rights row with the tool, the date, the prompt and the tool’s terms as read'),
+              ('File and record', '<code>YYYYMMDD_Generated-[Subject].png</code>; a rights row with the tool, the date, the prompt and the tool’s terms as read'),
               ('Content Credentials', 'Kept in the file'),
-              ('YouTube', 'Answer Yes to its question on altered or synthetic content for any realistic generated content (its help page, read)'),
-              ('TikTok', 'Turn on its label for AI-generated content, which it requires for realistic scenes or people (its rule read; the label’s words seen through a search result)'),
-              ('Instagram, Threads and Facebook', 'Turn on the label Meta shows as “AI info” (Meta’s newsroom, read; Instagram’s help seen through a search result)'),
-              ('LinkedIn', 'No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (read)'),
-              ('X', 'No label a poster sets was found; our own tab and caption carry the label (search result)')],
-    'builders': 'Before you make one, check the extra after this rule for where a generated picture may appear. Write the '
+              ('YouTube', 'In YouTube Studio’s “AI use” setting, answer Yes for any realistic generated or altered content (YouTube Help, read November 21, 2026)'),
+              ('TikTok', 'Turn on its label for AI-generated content, which it requires for realistic scenes or people (its Community Guidelines, read November 21, 2026; the label’s wording from a search of TikTok’s help pages, which would not open to us)'),
+              ('Instagram, Threads and Facebook', 'Turn on Instagram’s “Label as made with AI” when sharing; Meta shows the label as “AI info” (Meta’s newsroom, read November 21, 2026; Instagram’s help page from a search, since it would not open to us)'),
+              ('LinkedIn', 'No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (LinkedIn Help, read November 21, 2026)'),
+              ('X', 'We found no label a poster sets; X may add its own “Manipulated media” label, and our tab and caption carry ours (X Help, from a search, since it would not open to us)')],
+    'builders': 'Before you make one, check the table after this rule for where a generated picture may appear. Write the '
                 'prompt into the rights row, make the image, and set the tab, caption and alt text before it goes anywhere.',
     'correct_caption': 'Where a generated image would sit in a mockup, held by a placeholder: the tab at its corner, the '
                        'prompt, and the caption that labels the scene and keeps our real page’s own credit.',
@@ -567,8 +590,8 @@ R['16.9'] = {
     'tab': 'Generated image',
     'prompt': 'A phone lying screen up on a kitchen table beside a folded utility bill and a mug, morning light, seen from '
               'above. The screen is blank for our page to be placed on. No people, no logos, no words.',
-    'caption': 'Mockup: where a reader meets our explainer. The page on the screen is ours; the scene is a generated image, '
-               '[tool], [date].',
+    'caption': 'Mockup: where a reader meets our explainer. The page on the screen is ours, and the scene around it is a '
+               'generated image, [tool], [date].',
     'record': 'Rights row: tool, date, prompt, terms read. File: YYYYMMDD_Generated-Mockup-Kitchen-Table-Phone.png',
     'fail_plh': 'Placeholder for this failure: a generated picture of a packed hearing room.',
     'fail_caption': ('Residents fill the', 'Alder County', 'hearing room before the rezoning vote, March 3, 2026. '
@@ -577,9 +600,9 @@ R['16.9'] = {
 
 EXTRA_KINDS = {
     'label': 'Where each kind of picture may appear',
-    'caption': 'Five kinds of picture, where each may appear, how each is labeled and the rule that sets it. No spot '
-               'illustration exists yet: Gate 1 found the hand-drawn icon study was likely generated, so a commission '
-               'fills that row.',
+    'caption': 'Five kinds of picture, where each may appear, how each is labeled and the rule that sets it. We have no '
+               'hand-drawn spot illustration yet. The hand-drawn study among our references was probably made by an image '
+               'generator, so it cannot ship, and a commissioned drawing will fill that row.',
     'alt': 'A table of five kinds of picture: documentary photograph, placeholder, hand-drawn spot illustration, exploded '
            'view and generated image, with where each may appear, its label, what it never does and its rules.',
     'head': ('Kind', 'Where it may appear', 'Its label', 'Never', 'Rules'),
@@ -589,16 +612,18 @@ EXTRA_KINDS = {
          'Rules 16.1 to 16.7, 01.6 and 01.8'),
         ('Placeholder', 'This guide, templates, drafts', '“Placeholder” in its frame', 'In a published piece', 'Rule 16.8'),
         ('Hand-drawn spot illustration', 'Article openers, report spreads and event signs, at 96 px and larger, drawn by a '
-         'person in Charcoal on Newsprint (Gate 1, Y6)', '“Illustration: maker”',
-         'An icon; red and blue together; a Capitol dome or scales; a generated drawing in its place', 'Gate 1, Y6'),
+         'person', '“Illustration: maker”',
+         'An icon; red and blue together; a Capitol dome or scales; a generated drawing in its place',
+         'None yet; approved by our founder and editor, October 28, 2026'),
         ('Exploded view', 'The atlas’s three layers only', 'Its names, flat beside each plane', 'Anything else', 'Rule 12.8'),
-        ('Generated image', 'A conceptual illustration; the scene around our work in a mockup',
+        ('Generated image', 'A conceptual illustration; the setting around our work in a mockup',
          '“Generated image” tab, a caption with the tool and date, alt text that begins “Generated image”',
          'Evidence, a real person, a real place on a real day', 'Rule 16.9'),
     ],
 }
 
-# ---- Group 4, the video example: chart S04 (Rule 14.19), every figure from its spec
+# ---- Group 4, the video example: chart S04 (Rule 14.19), every figure from its spec; the video is not made, so each
+# plate carries the Illustrative label, and each caption carries the chart's source line
 R['16.10'] = {
     'title': 'Make each video answer one question, from its title frame to its step.',
     'rule': ['Each video answers one question a viewer could ask, such as “Which age groups reported voting in 2024?” It '
@@ -606,24 +631,24 @@ R['16.10'] = {
              'between them. The first sentence spoken asks the question or answers it. Every chart on screen carries its '
              'source line for as long as it shows.',
              'The video ends on a step a viewer can take, then the end frame. The first time Dustin appears, his name plate '
-             'reads “Dustin Cathcart, Founder and Editor”. L8 signs the corner (Rule 12.3). Chapter 23 draws the title '
-             'frame, the end frame, the name plate and each platform’s safe areas.'],
+             'reads “Dustin Cathcart, Founder and Editor”. L8, the monogram, signs a top corner (Rule 12.3). Chapter 23 '
+             'draws the title frame, the end frame, the name plate and each platform’s safe areas.'],
     'why': 'A viewer scrolling a feed decides fast whether to stay, so the question comes first. A video that answers one '
            'question can be captioned, described and summed up in one sentence, which its card needs (Rule 16.13).',
-    'basis': 'Design judgment',
+    'basis': 'Design judgment; the two forms are the ones our founder and editor chose on November 21, 2026',
     'specs': [('Question', 'One, in a viewer’s words'),
               ('Forms', 'Dustin on camera as host; his voice over charts and atlas views'),
               ('First sentence', 'Asks or answers the question'),
               ('Charts', 'From the chart kit, each with its source line on screen while it shows (Rule 13.6)'),
-              ('Name plate', '“Dustin Cathcart, Founder and Editor”, the first time he appears; chapter 23 places it inside the caption-safe area'),
-              ('Signature', 'L8, 24 px in from the frame’s top and side edges (Rule 12.3)'),
+              ('Name plate', '“Dustin Cathcart, Founder and Editor”, the first time he appears; chapter 23 places it in the lower third, clear of each platform’s buttons and the captions'),
+              ('Signature', 'L8, the monogram, 24 px in from the frame’s top and side edges (Rule 12.3)'),
               ('Ending', 'The step, then the end frame. A process piece names the step and leaves the position to the viewer (Rule 01.22); a position piece shows its label before the ask (Rule 01.23)'),
               ('Title and end frames', 'Chapter 23, at 1920 by 1080 and 1080 by 1920, each with its caption-safe area'),
               ('Music', 'Under the voice, and silent while a figure is read')],
     'builders': 'Write the question first, then the one sentence that answers it, and build the script from that '
                 'sentence outward.',
     'correct_caption': 'A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and '
-                       'the step at 50; every figure said is the chart’s own.',
+                       'the step at 0:50, and every figure said is the chart’s own. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.10.</strong> The question arrives at 0:21, after an animated logo and a '
                        'greeting, so a viewer who scrolls on never learns what the video answers.',
     'correct_alt': 'A storyboard of six video frames with their times and words: the title frame with the question at 0:00; '
@@ -636,7 +661,7 @@ R['16.10'] = {
     'frames': [
         ('0:00', 'title', 'Title frame', ''),
         ('0:02', 'host', 'Placeholder: Dustin Cathcart on camera',
-         'Which age groups told the Census Bureau they voted in 2024? Here is what its survey found.'),
+         'Which age groups told the Census Bureau they voted in 2024?'),
         ('0:08', 'chart', 'Chart S04, with its source line',
          'Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points from 2020. Those 65 and over stayed near 75 '
          'percent.'),
@@ -660,12 +685,14 @@ R['16.11'] = {
     'title': 'Caption every video, and have a person check every word.',
     'rule': ['Every video carries closed captions, made from the final script and checked word for word against the final '
              'cut by a person before it posts. Captions, in the W3C’s words, are a “synchronized visual and/or text '
-             'alternative for both speech and non-speech audio information needed to understand the media content”; '
-             'closed captions can be turned off, and open captions, burned into the picture, cannot.',
-             'Upload a caption file wherever a platform takes one: WebVTT on our own pages, WebVTT or SubRip on YouTube, '
-             'SubRip on LinkedIn and X. On TikTok and Instagram, where we found no way to upload a file, turn on the app’s '
-             'own captions and correct every word before publishing. Treat any automatic caption as a first draft. Burn '
-             'captions in only where a platform offers neither, inside chapter 23’s caption-safe area, and never on top of '
+             'alternative for both speech and non-speech audio information needed to understand the media content”. '
+             'A viewer can turn closed captions on and off in the player. Open captions are burned into the picture '
+             'itself.',
+             'Upload a caption file, a text file of timed lines, wherever a platform takes one: WebVTT (.vtt) on our own '
+             'pages, WebVTT or SubRip (.srt) on YouTube, and SubRip on LinkedIn and X. On TikTok and Instagram, where we '
+             'found no way to upload a file, turn on the app’s own captions and correct every word before publishing. '
+             'Treat any automatic caption as a first draft. Burn captions in only where a platform offers neither, inside '
+             'chapter 23’s caption-safe area, the part of the frame no app button or crop covers, and never on top of '
              'closed captions. Put a sound that matters, such as a gavel, in square brackets, and name a speaker who is '
              'off screen.'],
     'why': 'Automatic captions mishear names and numbers, and a misheard number tells a viewer who cannot hear something '
@@ -673,19 +700,19 @@ R['16.11'] = {
            'haven’t been properly transcribed.”',
     'basis': 'WCAG 2.2 success criterion 1.2.2; each platform’s help page',
     'specs': [('Closed captions', 'On every video'),
-              ('Files', 'WebVTT (.vtt) on our pages; YouTube takes .vtt, .srt and others (read); LinkedIn takes .srt on desktop (read); X takes .srt (its help page seen through a search result)'),
-              ('TikTok and Instagram', 'The app’s own captions, corrected word for word; no caption file upload found on either (each seen through a search result, November 21, 2026)'),
+              ('Files', 'WebVTT (<code>.vtt</code>) on our pages; YouTube takes <code>.vtt</code>, <code>.srt</code> and other formats (YouTube Help, read November 21, 2026); LinkedIn takes <code>.srt</code> on desktop (LinkedIn Help, read November 21, 2026); X takes <code>.srt</code> (X Help, from a search, since it would not open to us)'),
+              ('TikTok and Instagram', 'The app’s own captions, corrected word for word; we found no caption file upload on either (each from a search of its help pages, November 21, 2026)'),
               ('Automatic captions', 'A first draft only'),
               ('Burned-in captions', 'Only where a platform offers neither, inside chapter 23’s caption-safe area, never doubled'),
               ('Lines', 'Two at most, about 42 characters each, broken at a phrase'),
               ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; chapter 23 sets the size for each frame', 'oa.color.surface.charcoal'),
               ('Sounds and speakers', 'Sounds in square brackets when they carry meaning; speakers named when off screen'),
               ('Checked by', 'A person, against the final cut, before posting'),
-              ('Live', 'A live stream needs live captions; none streams today')],
+              ('Live', 'A live stream needs live captions (WCAG 2.2 success criterion 1.2.4); we stream nothing live as of November 2026')],
     'builders': 'Make the caption file from the final script, play the final cut beside it, and correct every line before '
                 'it uploads.',
     'correct_caption': 'A vertical frame at a quarter of 1080 by 1920, its captions on a Charcoal band inside the '
-                       'caption-safe area, beside the WebVTT lines that make them.',
+                       'caption-safe area, beside the WebVTT lines that make them. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.11.</strong> Nobody checked the automatic caption, so a fall of 3.7 points '
                        'reads as 37.',
     'correct_alt': 'A 9:16 video frame drawn at a quarter size: a placeholder for Dustin’s voice over chart S04, an outlined '
@@ -703,19 +730,18 @@ R['16.11'] = {
 
 R['16.12'] = {
     'title': 'Say aloud what the screen shows, and publish a transcript with every video.',
-    'rule': ['Write the script so the soundtrack carries every fact the picture shows: read each figure and what it '
-             'measures, say whose source it is, and name what a gesture points at. A viewer who cannot see the screen then '
-             'misses nothing; that spoken account of the picture is audio description. Where the picture shows something '
-             'there is no time to say, make a described version too.',
-             'Publish a transcript on the video’s page and link it from every post: every word spoken, who speaks, the '
-             'sounds that matter and what the screen shows that the words leave out, in order, corrected to the final cut. '
-             'Link each chart in the transcript to its table.'],
-    'why': 'The W3C’s guidance on audio description says: “if all of the important information in the video track is '
-           'already conveyed in the audio track, no additional audio description is necessary.” A voice that reads each '
-           'chart aloud describes it as it goes, which serves a viewer who cannot see the screen and one who has the sound '
-           'on and is looking away.',
-    # EDITOR: the main session filled the plan's why_understanding_quote from the W3C's "Understanding SC 1.2.5" note
-    # (research lead's notes, the addendum of 02:21 UTC); it is the quote in the Why above.
+    'rule': ['Audio description is a spoken account of what the picture shows. Write the script so the soundtrack gives '
+             'it as the video runs: read each figure and what it measures, say whose source it is, and name what a gesture '
+             'points at. Where the picture shows something there is no time to say, make a described version too, a '
+             'second cut that adds the description in the pauses.',
+             'Publish a transcript on the video’s page and link it from every post. It holds every word spoken, who speaks, '
+             'the sounds that matter and what the screen shows that the words leave out, in order and corrected to the '
+             'final cut, and it links each chart to its table.'],
+    'why': 'The W3C’s page “Understanding Success Criterion 1.2.5: Audio Description (Prerecorded)”, retrieved November '
+           '21, 2026, notes that “if all of the important information in the video track is already conveyed in the audio '
+           'track, no additional audio description is necessary.” A voice that reads each chart aloud describes it as it '
+           'goes, which serves a viewer who cannot see the screen and one who has the sound on and is looking away.',
+    # the W3C's note, quoted in the Why above word for word (the main session's read of the page, 02:21 UTC)
     'why_understanding_quote': '“if all of the important information in the video track is already conveyed in the audio '
                                'track, no additional audio description is necessary.”',
     'basis': 'WCAG 2.2 success criteria 1.2.1, 1.2.3 and 1.2.5, and the W3C’s Understanding page for 1.2.5',
@@ -728,7 +754,7 @@ R['16.12'] = {
     'builders': 'Read the script with your eyes closed. Any line that only makes sense while you watch needs the words '
                 'for what is on screen.',
     'correct_caption': 'A script that says what the chart shows, with the transcript that follows from it. The transcript '
-                       'links the chart to its table in chapter 14.',
+                       'links the chart to its table in chapter 14. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.12.</strong> The voice points at the chart and reads none of it, so a '
                        'listener hears that something dropped and never learns by how much or in which survey.',
     'correct_alt': 'A two-column script, On screen and Said, three rows that read chart S04’s figures and source aloud, '
@@ -761,19 +787,20 @@ R['16.13'] = {
              'still gives the finding in its summary and the whole video in its transcript.'],
     'why': 'A card that stands on its own serves every reader the player fails, and it keeps the platform’s player off the '
            'page until a reader asks for it. Sound that starts by itself talks over a screen reader.',
-    'basis': 'Master Brief section 16; WCAG 2.2 success criteria 1.4.2 and 2.2.2; Rules 17.1 and 17.3',
+    'basis': 'The direction our founder and editor set for this edition’s video; WCAG 2.2 success criteria 1.4.2 and '
+             '2.2.2; Rules 17.1 and 17.3',
     'specs': [('Card', 'Poster, title, length, summary, Play, transcript link, platform link'),
               ('Poster', 'A frame from the video, usually its title frame (chapter 23), with alt text that gives its words (Rule 19.4)'),
               ('Player', 'Loads only on Play'),
               ('Playback', 'Never by itself, with sound or without (Rule 17.1)'),
               ('Captions', 'On at the start where the player allows'),
               ('If the player fails', 'The card stays whole'),
-              ('Controls', 'Each 44 px tall and named by its words (Rule 19.3)', 'oa.size.target.touch'),
+              ('Controls', 'The Play button 44 px tall; every control named by its words (Rule 19.3)', 'oa.size.target.touch'),
               ('Email', 'A still and a link, no player (chapter 22)')],
     'builders': 'Build the card first and check it with scripts off. Add the player behind Play only once the card reads '
                 'whole on its own.',
     'correct_caption': 'The video card at true size, with its controls drawn: a poster that stands in for chapter 23’s '
-                       'title frame, the title, the length, the finding in one sentence, Play and two links.',
+                       'title frame, the title, the length, the finding in one sentence, Play and two links. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.13.</strong> The player failed to load and the page offers nothing in its '
                        'place, so a reader gets no finding, no transcript and no link.',
     'correct_alt': 'A video card: a Charcoal poster with the question Which age groups reported voting in 2024? and L8 at '
@@ -788,6 +815,7 @@ R['16.13'] = {
     'another_site': '(another site)',
     'unavailable': 'Video unavailable',
 }
+
 
 WCAG = {
     '16.2': ['1.4.1'], '16.4': ['1.4.3', '1.4.5'], '16.7': ['1.1.1'], '16.8': ['1.1.1', '1.3.1'], '16.9': ['1.1.1'],
@@ -976,8 +1004,8 @@ def s16_1_correct():
     html = (css() + '<div class="w"><table class="tb"><thead><tr>' + ''.join(f'<th scope="col">{x}</th>' for x in h)
             + f'</tr></thead><tbody>{rows}</tbody></table></div>')
     return spec('s-16-1-correct', html, '16.1', r['correct_alt'],
-                notes='Live text. Rows 3 to 12 are our fifth edition’s shot list (Phase 0 census, photography entries 30 '
-                      'to 49), with a level and a region added; six How lines were cut by the census and completed by the studio.')
+                notes='Live text. Rows 3 to 12 take their subjects from our fifth edition’s shot list (Phase 0 census, '
+                      'photography entries 30 to 49), with a level and a region added; the How lines are the guide’s own direction.')
 
 
 def s16_1_failure():
@@ -1140,7 +1168,8 @@ def s16_7_correct():
 def s16_7_failure():
     r = R['16.7']
     html = (css('.alt{margin-top:8px;max-width:34rem}') + '<div class="w"><div class="fig w280">'
-            f'{photo("rotunda-2005", W["alt_rotunda"], "ph", (0, 77, 576, 720))}<p class="lab mt8">{r["labels"][1]}</p>'
+            f'{photo("rotunda-2005", W["alt_rotunda"], "ph", (0, 77, 576, 720))}{cap(W["cap_rotunda"])}'  # ED10-4: one fault a plate
+            f'<p class="lab mt8">{r["labels"][1]}</p>'
             f'<p class="alt sm"><span class="lab">{r["alt_head"]}</span> {W["alt_rotunda"]}</p></div></div>')
     return spec('s-16-7-failure', html, '16.7', r['failure_alt'])
 
