@@ -154,7 +154,7 @@ Two teaching points the records already hold, for the plan: the Rotunda photogra
 - Any platform's real rendering: no upload, post or capture was made on any platform, so no crop, avatar overlap or smallest display size was observed.
 - The engineer's dimension script against the JSON; it did not exist when these notes were written.
 
-## Addendum by the main session: Understanding SC 1.2.5 (02:21 UTC)
+## Addendum by the main session: Understanding SC 1.2.5 (about 02:00 UTC)
 
 The creative director's plan leaves `why_understanding_quote` on Rule 16.12 waiting for this page. The main session read it (HTTP 200): W3C, "Understanding Success Criterion 1.2.5: Audio Description (Prerecorded)", https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html, retrieved November 21, 2026. Its "Intent" section:
 

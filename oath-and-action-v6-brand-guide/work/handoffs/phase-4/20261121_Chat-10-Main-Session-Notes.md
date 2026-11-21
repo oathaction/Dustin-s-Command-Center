@@ -1,6 +1,6 @@
 # Chat 10: main session notes
 
-Logged as D4-04 to D4-11 at 03:20 UTC. Later calls go under a new heading.
+Logged as D4-04 to D4-11 at 02:28 UTC. Later calls go under a new heading.
 
 ## Routine calls
 - D4-xxx | Five owners start at 01:35 UTC under `work/handoffs/phase-4/20261121_Chat-10-Brief.md`: the research lead, the creative director, the design director, the editor and the engineer, one writer per file, every generator run and page build under one file lock. The accessibility lead and the data lead sit this chat out | DR-300 to DR-304 and the plan Dustin approved; chapter 16's review falls in chat 12 and no chart changes
