@@ -7182,3 +7182,98 @@ The main session posted chat 10's plan with five questions (Q10-1 to Q10-5). Dus
 | DR-302 | Channel handles stay labeled Illustrative through Phase 4 board 2 (DR-298) | Dustin, November 21, as recommended (Q10-3) |
 | DR-303 | At chat 10's close the main session republishes the chapters page as version 15, with chapter 16 and Gate 3's three word changes, and builds a short progress page with the platform specifications table, the application kit's three measurement samples and the re-sized allocations; neither asks Dustin for a decision | Dustin, November 21, as recommended (Q10-4) |
 | DR-304 | Dustin uploads the V5 Polished guide at the start of chat 15 for the twelve report pages; chapter 16 works from the V5 text in the Phase 0 census (`work/handoffs/phase-0/text-census.json`) | Dustin, November 21, as recommended (Q10-5) |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-04 | Five owners start at 01:35 UTC under `work/handoffs/phase-4/20261121_Chat-10-Brief.md`: the research lead, the creative director, the design director, the editor and the engineer, one writer per file, every generator run and page build under one file lock. The accessibility lead and the data lead sit this chat out | DR-300 to DR-304 and the plan Dustin approved; chapter 16's review falls in chat 12 and no chart changes |
+| D4-05 | The editor's fault in G3-06 (c) is checked against the chapter files and confirmed: Rule 12.5 says "On Newsprint a red connection carries a 1 px Charcoal edge", so the approved sentence's "takes none" is wrong for the red connections. (c) stays built as approved, and the fix, with two specification lines (the editor's ED10-2 and ED10-3), goes to Dustin by name | Approved words change only on Dustin's word (CLAUDE.md gate rule 4; V28: two settled things can disagree) |
+| D4-06 | The main session reads the W3C's "Understanding SC 1.2.5" page (HTTP 200) and adds its intent and its note to the research lead's notes, so Rule 16.12's quote rests on the page itself | The creative director's plan left the field waiting; the research lead had finished, and one page read did not need a new run |
+| D4-07 | The main session's own drawing comparison for G3-05 could not run: `kit_snapshot.mjs` stops on "token --oa-chart-type-tick is missing from tokens.css" on both the chat's starting commit (306760f8) and today's tree, though `tokens.css` holds the token, so the tool reads tokens another way than the kit's build does. The engineer's comparison (192 written files and 376 drawings hashed the same before and after) stands as the evidence, and the tool's fault goes to the register | Brief section 10 gives the comparison to the main session; a check that did not run is never reported as run |
+| D4-08 | The report sample's PDF keeps the font type Chromium writes; embedded TrueType or CFF fonts for print go to chapter 25's preflight in chat 15. The `brotli` install the permission check refused is not run, and the question goes to Dustin for chat 15; static Inter 4.000 OTF files on the system may serve without it | V28: a refused action goes to Dustin; the sample measures bytes, not print readiness |
+| D4-09 | The projection past the 15.5 MB line prints as a note and does not fail a strict build; only the page past 16 MB fails | The Gate 3 report's section 9, approved as proposed (G3-07): "which the build reports and does not stop on (DR-271)" |
+| D4-10 | The engineer also turns the page's own 15.5 MB warning in `guide_build.py` into a note; accepted under the same reason | The Gate 3 report's section 9 (G3-07) and DR-271: the 15.5 MB line is the early warning, and only 16 MB stops a build |
+| D4-11 | The article sample's light captures cover 88.2 percent Newsprint at 1440 px and 85.9 at 1024, past Rule 05.1's 85; the sample stays as drawn, and how Rule 05.1's share applies to a long reading page at wide widths goes to chapter 20 in chat 11 with a register row | The samples measure bytes and are labeled studio samples; the website's design is chapter 20's, and the wide margins drive the share |
+
+### Research lead, chat 10
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-12 | The ethics source for chapter 16 is the SPJ Code of Ethics as revised October 4, 2026 | It was read in full on its own site; the NPPA code's official page draws its text by script and could not be read, and copies elsewhere are third-party |
+| D4-13 | Sizes the platforms give in MB or KB are stored as decimal bytes (1 MB = 1,000,000) | The smaller reading, so an export that passes passes either way |
+| D4-14 | Meta's and TikTok's ads-guide safe zones stand in for organic Stories, Reels and TikTok video, labeled as ads figures | They are the only safe zones either company publishes; both pages were read |
+| D4-15 | Instagram posts stay at 1080 x 1350 (4:5), with words inside the center 1012 x 1350 (a 3:4 crop) | Instagram's help text shows two tall limits (4:5 and 3:4) and no page states the profile grid's crop; 4:5 passes every version and the 3:4 box survives either grid |
+| D4-16 | The shared vertical video frame takes the larger of TikTok's and Instagram's margins on each side, plus TikTok's button column | One frame then serves both apps and YouTube Shorts |
+| D4-17 | YouTube's banner safe area is scaled from 1235 x 338 at 2048 x 1152 to 1,544 x 423 at 2560 x 1440 | YouTube states it only at the minimum size; the scale is 1.25 |
+| D4-18 | Upload sizes the platforms do not state are the studio's: Instagram, Threads and TikTok avatars at 1080 x 1080, YouTube's at 800 x 800, LinkedIn document pages at 1080 x 1350, the YouTube Short at 1080 x 1920 | Each is inside the platform's stated limits and marked "studio choice" |
+| D4-19 | Print bleed is 0.125 in a side on every print piece, stated as the studio's choice | No platform governs print (brief section 5, item 4) |
+| D4-20 | The email body width rests on Mailchimp's help pages (600 px), recorded as an email service's guidance; Gmail's clipping size rests on Substack's page (about 102 KB), recorded as Substack's statement | No Google or mail-client page states either (brief section 5, item 2) |
+| D4-21 | Platform marks get no rights row until each platform's brand guidelines are read; applications name the platform in words until then (rights row p4-03) | No platform mark is drawn in chat 10 |
+
+### Creative director, chat 10
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-22 | Chapter 16 has 13 rules in four groups and one extra, "Where each kind of picture may appear" | Master Brief section 16 names sixteen subjects, and thirteen rules carry them with no rule doing two jobs; the brief asked for about 12 |
+| D4-23 | Black and white is chapter 16's default treatment, with color only where it is part of the record, and V5's Charcoal duotone retires | Gate 1's S10 (G1-03) replaced V5's natural-color default; one treatment keeps photographs from different sources together and keeps a photograph's own reds off the view's one working red (Rule 05.3) |
+| D4-24 | Chapter 16 uses no generated image; Rule 16.9 shows its label on a placeholder frame | P4-3's test: the label is a tab, a caption line and the start of the alt text, and a frame shows all three at true size |
+| D4-25 | Every 3:2 use of the Rotunda photograph takes the rectangle 60 0 1080 720 | A CSS crop at 3:2 keeps the full 797 px height, which shows the Architect of the Capitol's corner mark, so these uses take `data-oa-crop` |
+| D4-26 | The four video rules follow one example video built on chart S04 | Every figure on a video plate is then real and carries S04's source; only the video itself is Illustrative |
+| D4-27 | Placeholder frames take a solid keyline and corner crop marks, with no dashed line and no cross | Dashes carry evidence grades in chapters 13 and 15, and a cross can read to a newcomer as a failure mark |
+| D4-28 | A photograph shows at 240 px wide or more | Below that, faces and hands stop reading; design judgment |
+| D4-29 | On TikTok and Instagram, captions are the app's own, corrected word for word; burned-in captions only where a platform offers neither | The research lead found no caption file upload on either; burned-in captions cannot be turned off or read aloud |
+| D4-30 | Rule 16.9's prompt describes a mockup scene (a phone on a kitchen table), with no conceptual drawing | A generated drawing would take the hand-drawn spot illustration's job, which Gate 1's Y6 gives to a person |
+| D4-31 | Rule 16.3's failure crops the official out and keeps chapter 01's caption naming him | The fault a crop most often makes: the caption names someone the picture no longer shows |
+
+### Design director, chat 10
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-32 | The social post carries S92's figure, 20 working days under the Freedom of Information Act, with S92's source line naming its paragraph | One real figure an approved chart prints (brief 7.1); a rule a reader can look up, so the hinge headline "The records law & your answer." passes Rule 02.27 |
+| D4-33 | The post's source line and sign-off sit on a full-bleed Charcoal band, the card's one dark panel | Rule 05.1: the band puts the card at 66.3 percent Newsprint; S95's all-Newsprint foot measures 88.7 and a figure-in-band version 58.0 |
+| D4-34 | The post keeps the proof card's kicker (the H3 face) at 36 px, not 32 | Rule 14.141's 36 px floor for a portrait post shown at about a third of its size |
+| D4-35 | The article sample is an Explainer on special districts with chart S86, its headline "What a special district does" | S86 is a compact reading chart that follows the theme; "What is a special district?" would leave one word on its last line at 56 px (Rule 06.6) |
+| D4-36 | The article's provisional header sets L1, the wordmark alone, at every width, and the footer keeps the lockmark | Rule 08.2, once in a view: each full-page capture shows header and footer together |
+| D4-37 | The article's kicker draws CL-031 from the guide's sprite, never from its fit file | The fit file is Charcoal only and vanished in the dark prototype |
+| D4-38 | The report page's page-header lockmark takes the 24 px master at 0.25 in | At 96 px to the inch 0.25 in is 24 px, the 24 px master's range (Rule 08.1); the display master's nodes would print 0.39 mm across |
+| D4-39 | Chapter 16: every plate is a readable stage (a group its alt describes), except Rule 16.8's failure, an image stage | Rule 16.8 makes a placeholder live text; the fifth edition's panel is a picture of a fault |
+| D4-40 | Chapter 16's placeholder frames keep 19 px above and below for their crop marks and none at the sides | The marks then clear the words around them, and the stage's 24 px padding holds them at the sides |
+| D4-41 | Rule 16.2's correct plate sets the photograph at 360 px and the placeholder at 320 px, side by side | The plan's 540 and 260 px wrap in the 722 px stage at 1440 |
+| D4-42 | Rule 16.10's storyboard runs one frame a row under 48em | Two a row on a 390 px phone clip a 16:9 frame's words |
+| D4-43 | Rule 16.4's correct kicker is "Report · Public lands" | The plan left the label to the design director; the headline reports an agency's record (Rule 01.21) |
+| D4-44 | Each chapter 16 rule prints a "WCAG 2.2" specification row with the plan's criteria | The plan names them by rule, and chapter 19's map reads them there |
+| D4-45 | Rule 16.4's failure figures come from the photograph's pixels, measured by the generator: lowest 1.0 to 1, 17 percent of the ground under 3 to 1 | The plan asked for the measured figure in the caption |
+| D4-46 | The report page's four cut paragraphs are completed by the studio from the report's own later pages and marked as such in the spec, for chat 15 to replace | The census keeps 50 characters a paragraph; V5 arrives at chat 15 (DR-304) |
+
+### Engineer, chat 10
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-47 | Each photograph is drawn through CSS content replacement on its own `<img>` (`img[data-oa-photo="<name>"]{content:url(data:...)}` in one head style), not through SVG `<use>` | The SVG route resampled the photograph (softer at 1x; mean 2 to 4 levels off `<img>` in Chromium, even with `image-rendering` hints), so chapter 01 would have changed on screen; content replacement keeps the `<img>`, its alt and crop, and matched pixel for pixel; MDN's data gives it from Chrome 28, Firefox 63 and Safari 9 |
+| D4-48 | The photographs weigh as their own part of the page, "photographs", with a 0.5 MB figure, outside every chapter | They are carried once for the page and shown by chapters 01 and 16, so charging them to either chapter would misstate both; chapter 16's 300,000 already assumed them free |
+| D4-49 | Chapter 01's three plates keep their tags as they were except the `src`, which gives way to `data-oa-photo` (the 1200 x 720 size hint and `loading` stay) | The fewest changes to approved plates; the captures prove nothing moved |
+| D4-50 | A tight crop (`data-oa-crop`) is a frame the build writes around the `<img>`, placing the photograph by percent | `object-view-box` is Chromium only; percent placement works in every browser and keeps the crop at every width |
+| D4-51 | G3-05: the edge guard in `checks.js` now holds every haloed word of every chart (the `t.clear_edges` gate is gone), and the fan chart's `labels.values_clear_edges` is on unless a spec sets it false | "Switch it on for every chart" covers both the test and the one form whose key moves a value; S59 is the only fan chart and already set it, so no drawing changes |
+| D4-52 | Phase 4's seven chapters join `guide_charts.IN_PROGRESS`, so a chapter in place counts at its bytes or its allocation, whichever is more, until Gate 4 | Each is built across chats; a half-built chapter at its bytes alone would hand the rest of its allocation to the page's room |
+| D4-53 | `guide_check.js` gains `photoDrawn` (every photograph request draws its copy) with one self-test plant | The build proves one copy; only a browser proves the CSS draws it |
+| D4-54 | The projection past the 15.5 MB line prints as a note marked "early warning" and no longer fails a strict build; the line stays at 15.5 MB, and only the page past 16 MB stops a build | The Gate 3 report Dustin approved, section 9 ("the build reports and does not stop on", DR-271); the main session's answer at 02:08 |
+| D4-55 | The page's own size past 15.5 MB (`guide_build.py`'s `weigh()`) became the same early-warning note | The main session's rule that only the page itself past 16 MB fails; today's page is 12.23 MB, so nothing reads differently now |
+| D4-56 | The report sample's PDF keeps the font types Chromium writes (Inter as Type 3, Inter Tight as CID TrueType); a "Not fixed" row hands the print fonts to chapter 25's preflight | The main session's answer at 02:08; nothing installed |
+| D4-57 | The application kit lives in `work/build/app-kit/` on the chart kit's pattern: content files in `specs/`, one renderer per type in `renderers/`, one command (`oa-app.mjs build`), checks in `check-dimensions.py` and `tools/export_checks.py` | The brief's section 9 and the chart kit's layout |
+| D4-58 | A plate draws its application at true size inside an SVG `viewBox` with the markup in `foreignObject`, so the frame scales it to the column with no script; the overlay draws in the same coordinates and a native checkbox shows it through `:has()` | Static markup (G3-07), keyboard and scripts-off both proved in Chromium |
+| D4-59 | The web sample lays out by container queries on its own root and restates the seven fluid type tokens in `cqi`, read from `tokens.css`; its root resets to `1rem` and its landmarks set their own box properties | So each frame lays out as the page does alone at that width: an iframe per frame would carry the fonts again, and `vw` and a host page's `main {}` rule reached inside the frames until these went in |
+| D4-60 | S86 in the article is drawn by the kit's own `run_spec` and `K.figure` at 621 and 328 px, and the drawings are set into the figure after `K.figure` | The narrowest column each drawing serves, so a drawing only scales up and no word drops under 13 px; `K.figure` holds phrases with HTML spans inside the SVG text, which ends the SVG when parsed ("Not fixed") |
+| D4-61 | The kicker's CL-031 is drawn by `guide_build.Sprites` through `tools/sprite_symbols.py`, and chapter 18's theme switch by reading its own three files | Reuse, never copy (Gate 3 report section 9) |
+| D4-62 | The sign-off is drawn from the 48 px master file with the social card's paint rule (links take the nodes' color on a dark ground) | The social card holds its paint inside its draw function, where nothing else can call it; the master is the source the card's copy came from |
+| D4-63 | Re-sized Phase 4 allocations: 16 300,000; 20 757,000; 21 655,000; 22 277,000; 23 743,000; 24 338,000; 25 214,000; 3,284,000 in all | Measured plates times what section 9 says each chapter draws (`20261121_Phase-4-Allocations.md`); Gate 3's figures stay in the code as `PHASE_4_GATE_3` |
+| D4-64 | The census entry numbers in the sample spec read zero-based (entry 41 is "Executive summary") | Checked against the file; every word the report sample prints matches its entry |
+
+### Editor, G3-06, chat 10
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-65 | (c)'s two sentences are built word for word as approved, with my concerns and proposed words under "For Dustin" | G3-06 approves them as printed; brief section 8 says build them and report the fault |
+| D4-66 | Each generator change carries a one-line `# G3-06 (a)`, `(b)` or `(c)` comment beside the words it changed | The next maker can trace each phrase to Gate 3's item 6 |
+| D4-67 | The measurement record keeps its new render line (Chromium 157.0.8103.78, 01:41:10 UTC) | `stage_a_systems_build.py final` writes it; every rendered figure (55 of 55) matches the committed record, so the render line is all that moved, as in round 5's rebuild |
+| D4-68 | `phase3_ch14_build.py` runs right after `phase3_ch14_rules_build.py`, inside the same lock | Chapter 14's file is assembled from the entries; the chat 9 apply pass ran it the same way (A9), and `--check` stays at 99 of 99 for the engineer |
