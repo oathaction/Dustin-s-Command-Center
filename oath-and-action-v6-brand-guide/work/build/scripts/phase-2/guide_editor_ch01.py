@@ -161,6 +161,8 @@ SRC_CLOTURE = "Source: " + ATLAS + ", glossary entry “Cloture”, snapshot of 
 # each photograph at 600 px wide at most. The 1,920 px originals beside them stay the source, each with its record.
 PHOTO_PARKS = "work/build/assets/photography/20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg"
 PHOTO_ZIANNO = "work/build/assets/photography/20261112_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno-1200-Wide.jpg"
+# Chat 10 (P4-5): the names the page's one copy of each answers to (work/build/scripts/phase-4/guide_photos.py, PHOTOS)
+PHOTO_NAME = {PHOTO_PARKS: "rotunda-2005", PHOTO_ZIANNO: "lake-isabella-2014"}
 CAP_PARKS = ("Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the "
              "Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.")
 CAP_ZIANNO = ("Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento "
@@ -911,7 +913,9 @@ def build(book):
           f".ed .card .dek{{position:relative;max-width:40ch}}"
           f".ed .dome{{position:absolute;right:-16px;top:36px;width:200px;height:auto;color:var(--oa-color-graphic-subtle)}}")
     # The size hint is the rendition's width at 5:3 (DR-238); the crop classes set each frame's own ratio.
-    ph = lambda src, crop, alt, cap: (f'<div class="phw"><img src="{src}" alt="{e(alt)}" class="ph {crop}" width="1200" height="720" loading="lazy">'
+    # Chat 10 (P4-5, the engineer's contract C1): each photograph is asked for by name and drawn from the one copy the page
+    # carries (guide_photos.PHOTOS), so Rule 01.8's two plates no longer carry it twice; only the src gives way to the name.
+    ph = lambda src, crop, alt, cap: (f'<div class="phw"><img data-oa-photo="{PHOTO_NAME[src]}" alt="{e(alt)}" class="ph {crop}" width="1200" height="720" loading="lazy">'
                                       f'<p class="phc">{cap}</p></div>')
     dome = ('<svg class="dome" viewBox="0 0 260 200" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3">'
             '<path d="M70 120 A60 60 0 0 1 190 120"/><path d="M60 120h140M55 132h150"/><path d="M130 60v-26M122 34h16"/>'

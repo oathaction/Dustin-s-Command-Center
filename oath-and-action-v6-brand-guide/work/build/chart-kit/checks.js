@@ -592,11 +592,13 @@ function crossing_faults(d, at) {
       seen.add(k);
       f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} runs through "${String(t.words).slice(0, 30)}"${b.seq > t.seq ? ', drawn after the words' : ''}; draw the words after it with K.parts.clear_label, move them clear, or mark a stroke drawn through words on purpose strike: true (AX S2, BC S1)${at}`);
     }
-    // round 5 (the design director's DD-E1): a band's edge through words a form keeps off the edges (c.text's clear_edges)
-    // fails, halo or not, since the halo leaves the edge showing between and beside the letters; opt-in, since the guard
-    // applied to every word would newly fail S59's "4.1" at 390 and 558 px, a signed-off drawing (a stroke drawn after the
-    // words, or before words with no halo, fails above already)
-    for (const b of K.crossed_by(ink, t, b => b.band_edge && b.seq < t.seq && t.halo && t.clear_edges)) {
+    // round 5 (the design director's DD-E1): a band's edge through haloed words fails, since the halo leaves the edge showing
+    // between and beside the letters (a stroke drawn after the words, or before words with no halo, fails above already).
+    // G3-05 (Gate 3, item 5, Dustin, November 21, 2026; chat 10): the guard holds every word of every chart, where it held only
+    // the words a form marked clear_edges. The November 20 list (work/handoffs/phase-3/20261120_Label-Clearance-List.json)
+    // ran this same test over all 96 specs at every width they draw and found no chart it would fail once S59 set
+    // labels.values_clear_edges; c.text's clear_edges flag still marks the words a form sets clear, and no longer gates this test
+    for (const b of K.crossed_by(ink, t, b => b.band_edge && b.seq < t.seq && t.halo)) {
       const k = 'e|' + t.words;
       if (seen.has(k)) continue;
       seen.add(k);

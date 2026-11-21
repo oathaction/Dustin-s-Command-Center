@@ -14,14 +14,15 @@
    "aspect": "Width to height as the platform writes it, such as '1.91:1' or '4:5', or null",
    "formats": "Lowercase file types the platform accepts, or null where it states none",
    "max_bytes": "File size limit in bytes, decimal (1 MB = 1,000,000), or null",
-   "safe_area": "null, or an object: {'type': 'insets', 'top', 'right', 'bottom', 'left'} in the row's unit; {'type': 'box', 'width', 'height'} centered; {'type': 'circle', 'diameter' or 'radius_pct'} centered",
+   "safe_area": "null, or an object: {'type': 'insets', 'top', 'right', 'bottom', 'left'} in the row's unit, with an optional 'exclude' list of boxes {'x', 'y', 'width', 'height'} measured from the top left that must also stay clear; {'type': 'box', 'width', 'height'} centered; {'type': 'circle', 'radius_pct'} centered, as a percent of the width",
    "smallest_shown_px": "The smallest size, in CSS px, at which the platform's own page says it shows the item, or null where the page does not say",
    "source": "The official page's address",
    "checked": "2026-11-21",
    "status": "read, search-result or not-found",
    "match": "exact (the export must be this size), min (this size or larger, same ratio), max (this size or smaller), or ratio (any size at the aspect)",
-   "basis": "platform (the platform states it) or studio-choice (no platform governs; the studio sets it)",
-   "note": "Plain words on anything a script should not assume"
+   "basis": "platform (the platform states the figure) or studio-choice (the studio sets the figure, inside any platform limits the note names)",
+   "note": "Plain words on anything a script should not assume",
+   "bleed": "Print rows only: the bleed on each side, in inches. width and height are the trim size. A PDF passes when its TrimBox equals the trim size and its BleedBox (or MediaBox) equals the trim plus twice the bleed (8.75 x 11.25 in for Letter). Null on every other row"
   },
   "check": "A dimension script compares an export's pixel or page size to width and height by 'match'. Rows with status other than 'read' still check, and the script should print their status beside the result so a reader sees which figures rest on a search result."
  },
@@ -43,7 +44,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "At least 1200 x 630 for high resolution screens; 200 x 200 is the smallest accepted; 600 x 315 for the large link layout. Set og:image:width, og:image:height and og:image:alt."
+   "note": "At least 1200 x 630 for high resolution screens; 200 x 200 is the smallest accepted; 600 x 315 for the large link layout. Set og:image:width, og:image:height and og:image:alt.",
+   "bleed": null
   },
   {
    "id": "website.x_card",
@@ -67,7 +69,8 @@
    "status": "search-result",
    "match": "min",
    "basis": "platform",
-   "note": "Largest 4096 x 4096. Only the first frame of an animated GIF shows, per the search result. The website's 1200 x 630 image serves; X crops it to 2:1."
+   "note": "Largest 4096 x 4096. X's stated minimum, 300 x 157, is not exactly 2:1; it is recorded as stated. Only the first frame of an animated GIF shows, per the search result. Not an export target: the website's 1200 x 630 image serves, and X crops it to 2:1.",
+   "bleed": null
   },
   {
    "id": "website.favicon_search",
@@ -94,7 +97,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"Your favicon must be a square (1:1 aspect ratio) that's at least 8x8px. While the minimum size requirement is 8x8px, we recommend using a favicon that's larger than 48x48px\". One favicon per hostname. SVG is not listed."
+   "note": "\"Your favicon must be a square (1:1 aspect ratio) that's at least 8x8px. While the minimum size requirement is 8x8px, we recommend using a favicon that's larger than 48x48px\". One favicon per hostname. SVG is not listed.",
+   "bleed": null
   },
   {
    "id": "website.favicon_ico",
@@ -115,7 +119,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Studio choice: 16, 32 and 48 px inside one ICO. The HTML standard says a browser may request /favicon.ico when no icon is named, and sets no size."
+   "note": "Studio choice: 16, 32 and 48 px inside one ICO. The HTML standard says a browser may request /favicon.ico when no icon is named, and sets no size.",
+   "bleed": null
   },
   {
    "id": "website.favicon_svg",
@@ -136,7 +141,8 @@
    "status": "read",
    "match": "ratio",
    "basis": "studio-choice",
-   "note": "The HTML standard's example declares an SVG icon with sizes=\"any\". Google Search does not list SVG, so keep the ICO and PNG."
+   "note": "The HTML standard's example declares an SVG icon with sizes=\"any\". Google Search does not list SVG, so keep the ICO and PNG.",
+   "bleed": null
   },
   {
    "id": "website.apple_touch_icon",
@@ -157,7 +163,8 @@
    "status": "read",
    "match": "exact",
    "basis": "platform",
-   "note": "Apple's archived guide lists 180 x 180 (iPhone, high resolution), 167 x 167 (iPad Pro) and 152 x 152 (iPad), PNG. iOS rounds the corners itself."
+   "note": "Apple's archived guide lists 180 x 180 (iPhone, high resolution), 167 x 167 (iPad Pro) and 152 x 152 (iPad), PNG. iOS rounds the corners itself.",
+   "bleed": null
   },
   {
    "id": "website.manifest_192",
@@ -178,7 +185,8 @@
    "status": "read",
    "match": "exact",
    "basis": "platform",
-   "note": "\"Providing 192px and 512px icons is sufficient for most cases\" (web.dev, last updated 2024-09-18)."
+   "note": "\"Providing 192px and 512px icons is sufficient for most cases\" (web.dev, last updated 2024-09-18).",
+   "bleed": null
   },
   {
    "id": "website.manifest_512",
@@ -202,7 +210,8 @@
    "status": "read",
    "match": "exact",
    "basis": "platform",
-   "note": "A maskable icon keeps its mark \"within a circular area in the center of the icon with a radius equal to 40% of the icon width. The outer 10% edge might be cropped on some platforms.\""
+   "note": "A maskable icon keeps its mark \"within a circular area in the center of the icon with a radius equal to 40% of the icon width. The outer 10% edge might be cropped on some platforms.\"",
+   "bleed": null
   },
   {
    "id": "website.page_1440",
@@ -221,7 +230,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "The guide's own test width. No platform governs."
+   "note": "The guide's own test width. No platform governs.",
+   "bleed": null
   },
   {
    "id": "website.page_1024",
@@ -240,7 +250,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "The guide's own test width."
+   "note": "The guide's own test width.",
+   "bleed": null
   },
   {
    "id": "website.page_390",
@@ -259,7 +270,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "The guide's own test width."
+   "note": "The guide's own test width.",
+   "bleed": null
   },
   {
    "id": "website.page_360",
@@ -278,7 +290,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "The guide's own test width."
+   "note": "The guide's own test width.",
+   "bleed": null
   },
   {
    "id": "substack.logo",
@@ -297,7 +310,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"256×256 px or larger, transparent background\". Website editor, Assets, Logo."
+   "note": "\"256×256 px or larger, transparent background\". Website editor, Assets, Logo.",
+   "bleed": null
   },
   {
    "id": "substack.wordmark",
@@ -316,7 +330,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"1344×256 px or larger (a wide, horizontal image)\". Replaces the text name in the site header."
+   "note": "\"1344×256 px or larger (a wide, horizontal image)\". Replaces the text name in the site header.",
+   "bleed": null
   },
   {
    "id": "substack.cover",
@@ -335,7 +350,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"1600 px wide or wider\". Website editor, Header card, Layout: Cover. Height not stated."
+   "note": "\"1600 px wide or wider\". Website editor, Header card, Layout: Cover. Height not stated.",
+   "bleed": null
   },
   {
    "id": "substack.welcome_image",
@@ -354,7 +370,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"600×600 px or larger\"."
+   "note": "\"600×600 px or larger\".",
+   "bleed": null
   },
   {
    "id": "substack.email_banner",
@@ -375,7 +392,8 @@
    "status": "read",
    "match": "exact",
    "basis": "platform",
-   "note": "\"1100×220 px PNG, transparent background\"; \"Image must be in PNG format.\" Optional. Shows in emails only."
+   "note": "\"1100×220 px PNG, transparent background\"; \"Image must be in PNG format.\" Optional. Shows in emails only.",
+   "bleed": null
   },
   {
    "id": "substack.social_preview",
@@ -401,7 +419,8 @@
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "Substack crops it to portrait, square and landscape thumbnails; set the crop and focal point on the web, or Substack picks \"the area of the image with the most detail or highest contrast\"."
+   "note": "Substack crops it to portrait, square and landscape thumbnails; set the crop and focal point on the web, or Substack picks \"the area of the image with the most detail or highest contrast\".",
+   "bleed": null
   },
   {
    "id": "substack.post_thumbnail",
@@ -420,7 +439,8 @@
    "status": "read",
    "match": "ratio",
    "basis": "platform",
-   "note": "Ratio only; drawn from the social preview image."
+   "note": "Ratio only; drawn from the social preview image.",
+   "bleed": null
   },
   {
    "id": "substack.post_image_full",
@@ -446,7 +466,8 @@
    "status": "read",
    "match": "ratio",
    "basis": "platform",
-   "note": "\"Up to 1:1; taller images are cropped to 1:1\". Width not stated; chapter 22 measures the body width on a published post."
+   "note": "\"Up to 1:1; taller images are cropped to 1:1\". Width not stated; chapter 22 measures the body width on a published post.",
+   "bleed": null
   },
   {
    "id": "substack.body_width",
@@ -465,7 +486,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "platform",
-   "note": "Measure on a published post in chat 13 and record as the studio's measurement."
+   "note": "Measure on a published post in chat 13 and record as the studio's measurement.",
+   "bleed": null
   },
   {
    "id": "instagram.avatar",
@@ -487,7 +509,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Upload size is the studio's. The app shows it in a circle; keep the mark inside the inscribed circle."
+   "note": "Upload size is the studio's. The app shows it in a circle; keep the mark inside the inscribed circle.",
+   "bleed": null
   },
   {
    "id": "instagram.square",
@@ -509,7 +532,8 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "Width 1080 from the help page (search-result). The publishing page (read) allows JPEG up to 8 MB, 320 to 1440 px wide."
+   "note": "Width 1080 from the help page (search-result). The publishing page (read) allows JPEG up to 8 MB, 320 to 1440 px wide.",
+   "bleed": null
   },
   {
    "id": "instagram.portrait",
@@ -535,7 +559,8 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "4:5 is inside every version of the help page and the publishing page's 4:5 to 1.91:1 range (read). The safe box is the studio's: the center 3:4 crop the grid may take."
+   "note": "4:5 is inside every version of the help page and the publishing page's 4:5 to 1.91:1 range (read). The safe box is the studio's: the center 3:4 crop the grid may take.",
+   "bleed": null
   },
   {
    "id": "instagram.portrait_3x4",
@@ -554,7 +579,8 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "One version of the help page allows 3:4; the publishing page (read) does not. Do not build to it until it is confirmed."
+   "note": "One version of the help page allows 3:4; the publishing page (read) does not. Do not build to it until it is confirmed.",
+   "bleed": null
   },
   {
    "id": "instagram.landscape",
@@ -573,7 +599,8 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "1.91:1 is the wide limit in the help page and the publishing page."
+   "note": "1.91:1 is the wide limit in the help page and the publishing page.",
+   "bleed": null
   },
   {
    "id": "instagram.carousel",
@@ -596,7 +623,8 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "Every item in a post takes the one orientation chosen for it (help page \"Crop your photo on Instagram\", search-result). The studio builds carousels at 4:5."
+   "note": "Every item in a post takes the one orientation chosen for it (help page \"Crop your photo on Instagram\", search-result). The studio builds carousels at 4:5.",
+   "bleed": null
   },
   {
    "id": "instagram.grid",
@@ -615,7 +643,8 @@
    "status": "not-found",
    "match": "ratio",
    "basis": "platform",
-   "note": "Reported as 3:4 by Kapwing and 4:5 by the Inquirer; Substack's page says 4:5. Unconfirmed."
+   "note": "Reported as 3:4 by Kapwing and 4:5 by the Inquirer; Substack's page says 4:5. Unconfirmed.",
+   "bleed": null
   },
   {
    "id": "instagram.story",
@@ -643,7 +672,8 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "9:16 recommended by the publishing page (read); 1080 x 1920 from an older Instagram creator page (search-result). Safe zones from Meta's ads guide (read): 14 percent top, 35 percent bottom, 6 percent each side."
+   "note": "9:16 recommended by the publishing page (read); 1080 x 1920 from an older Instagram creator page (search-result). Safe zones from Meta's ads guide (read): 14 percent top, 35 percent bottom, 6 percent each side.",
+   "bleed": null
   },
   {
    "id": "instagram.reel",
@@ -671,16 +701,17 @@
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "Help page (search-result): 1.91:1 to 9:16, at least 720 px and 30 fps. Publishing page (read): up to 1920 px across, 300 MB, 3 seconds to 15 minutes. Safe zones from the ads guide (read)."
+   "note": "Help page (search-result): 1.91:1 to 9:16, at least 720 px and 30 fps. Publishing page (read): up to 1920 px across, 300 MB, 3 seconds to 15 minutes. Safe zones from the ads guide (read).",
+   "bleed": null
   },
   {
    "id": "instagram.reel_cover",
    "channel": "instagram",
    "application": "Reel cover",
-   "width": 420,
-   "height": 654,
+   "width": 1080,
+   "height": 1920,
    "unit": "px",
-   "aspect": "1:1.55",
+   "aspect": "9:16",
    "formats": [
     "jpg"
    ],
@@ -694,9 +725,10 @@
    "source": "https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
    "checked": "2026-11-21",
    "status": "search-result",
-   "match": "min",
-   "basis": "platform",
-   "note": "The help page recommends 420 x 654 (search-result). The publishing page (read) recommends 9:16 and crops \"the middle most 9:16 rectangle\". Build the cover at 1080 x 1920 with its words inside the center 1080 x 1676 (the 1:1.55 crop) and inside the reel's safe zone."
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "The help page recommends 420 x 654 (1:1.55) (search-result). The publishing page (read) recommends 9:16 and crops \"the middle most 9:16 rectangle\". The studio builds the cover at 1080 x 1920 with its words inside the center 1080 x 1676 (the 1:1.55 crop) and inside the reel's safe zone.",
+   "bleed": null
   },
   {
    "id": "threads.avatar",
@@ -718,7 +750,8 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Shared with Instagram's avatar."
+   "note": "Shared with Instagram's avatar.",
+   "bleed": null
   },
   {
    "id": "threads.image",
@@ -740,7 +773,8 @@
    "status": "read",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Threads accepts 320 px wide up to 4096 x 4096 at a ratio up to 10:1 (read). 1080 x 1350 is the studio's, to match Instagram."
+   "note": "Threads accepts 320 px wide up to 4096 x 4096 at a ratio up to 10:1 (read). 1080 x 1350 is the studio's, to match Instagram.",
+   "bleed": null
   },
   {
    "id": "threads.carousel",
@@ -762,7 +796,8 @@
    "status": "read",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "2 to 20 items (read)."
+   "note": "2 to 20 items (read).",
+   "bleed": null
   },
   {
    "id": "threads.video",
@@ -784,7 +819,8 @@
    "status": "read",
    "match": "max",
    "basis": "platform",
-   "note": "9:16 recommended; up to 1920 px across; 5 minutes; 1 GB (read)."
+   "note": "9:16 recommended; up to 1920 px across; 5 minutes; 1 GB (read).",
+   "bleed": null
   },
   {
    "id": "threads.link_preview",
@@ -803,7 +839,667 @@
    "status": "not-found",
    "match": "min",
    "basis": "studio-choice",
-   "note": "Uses the website's Open Graph image."
+   "note": "Uses the website's Open Graph image.",
+   "bleed": null
+  },
+  {
+   "id": "x.avatar",
+   "channel": "x",
+   "application": "Profile photo (ampersand B on the Charcoal tile)",
+   "width": 400,
+   "height": 400,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": [
+    "jpg",
+    "gif",
+    "png"
+   ],
+   "max_bytes": 2000000,
+   "safe_area": {
+    "type": "circle",
+    "radius_pct": 50
+   },
+   "smallest_shown_px": null,
+   "source": "https://help.x.com/en/managing-your-account/how-to-customize-your-profile ; https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+   "checked": "2026-11-21",
+   "status": "search-result",
+   "match": "min",
+   "basis": "platform",
+   "note": "No animated GIF. Shown in a circle.",
+   "bleed": null
+  },
+  {
+   "id": "x.header",
+   "channel": "x",
+   "application": "Header",
+   "width": 1500,
+   "height": 500,
+   "unit": "px",
+   "aspect": "3:1",
+   "formats": [
+    "jpg",
+    "gif",
+    "png"
+   ],
+   "max_bytes": null,
+   "safe_area": {
+    "type": "insets",
+    "top": 60,
+    "right": 0,
+    "bottom": 60,
+    "left": 0
+   },
+   "smallest_shown_px": null,
+   "source": "https://help.x.com/en/managing-your-account/how-to-customize-your-profile",
+   "checked": "2026-11-21",
+   "status": "search-result",
+   "match": "exact",
+   "basis": "platform",
+   "note": "About 60 px at the top and bottom may be cropped by screen and browser (search-result). The profile photo sits over the lower left of the header; its exact footprint is not stated and is measured by capture in chapter 23.",
+   "bleed": null
+  },
+  {
+   "id": "x.post_image",
+   "channel": "x",
+   "application": "Single image post",
+   "width": 1600,
+   "height": 900,
+   "unit": "px",
+   "aspect": "16:9",
+   "formats": [
+    "jpg",
+    "png",
+    "gif",
+    "webp"
+   ],
+   "max_bytes": 5000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://help.x.com/en/using-x/posting-gifs-and-pictures ; https://docs.x.com/x-api/media/quickstart/best-practices",
+   "checked": "2026-11-21",
+   "status": "search-result",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "X shows a single photo whole between 2:1 and 3:4 (search-result); 1600 x 900 is the studio's starting size inside that range. 5 MB and the four formats are read on docs.x.com.",
+   "bleed": null
+  },
+  {
+   "id": "x.post_four",
+   "channel": "x",
+   "application": "Four-image post",
+   "width": null,
+   "height": null,
+   "unit": "px",
+   "aspect": null,
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://help.x.com/en/using-x/posting-gifs-and-pictures",
+   "checked": "2026-11-21",
+   "status": "not-found",
+   "match": "ratio",
+   "basis": "platform",
+   "note": "Up to four photos a post (read on docs.x.com). How the grid crops them is not stated.",
+   "bleed": null
+  },
+  {
+   "id": "x.link_card",
+   "channel": "x",
+   "application": "Link card",
+   "width": 1200,
+   "height": 630,
+   "unit": "px",
+   "aspect": "1.91:1 (shown at 2:1)",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image",
+   "checked": "2026-11-21",
+   "status": "search-result",
+   "match": "min",
+   "basis": "studio-choice",
+   "note": "The website's share image (website.share_preview) through the summary_large_image card.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.avatar",
+   "channel": "youtube",
+   "application": "Channel profile picture",
+   "width": 800,
+   "height": 800,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": [
+    "jpg",
+    "gif",
+    "bmp",
+    "png"
+   ],
+   "max_bytes": 15000000,
+   "safe_area": {
+    "type": "circle",
+    "radius_pct": 50
+   },
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/10456525",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "The page says only that the picture renders at 98 x 98 px; 800 x 800 upload is the studio's. No animated GIF.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.banner",
+   "channel": "youtube",
+   "application": "Channel banner",
+   "width": 2560,
+   "height": 1440,
+   "unit": "px",
+   "aspect": "16:9",
+   "formats": null,
+   "max_bytes": 6000000,
+   "safe_area": {
+    "type": "box",
+    "width": 1544,
+    "height": 423
+   },
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/10456525",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Minimum 2048 x 1152 with a 1235 x 338 safe area for text and logos; 2560 x 1440 recommended. Safe box scaled by the studio to 2560.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.thumbnail",
+   "channel": "youtube",
+   "application": "Video thumbnail",
+   "width": 3840,
+   "height": 2160,
+   "unit": "px",
+   "aspect": "16:9",
+   "formats": [
+    "jpg",
+    "png"
+   ],
+   "max_bytes": 2000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/72431",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Minimum 640 px wide. 2 MB from a phone, 50 MB from a computer; the stricter 2 MB is stored.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.shorts_thumbnail",
+   "channel": "youtube",
+   "application": "Shorts thumbnail",
+   "width": 2160,
+   "height": 3840,
+   "unit": "px",
+   "aspect": "9:16",
+   "formats": [
+    "jpg",
+    "png"
+   ],
+   "max_bytes": 2000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/72431",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Minimum 640 px high. Uploaded from YouTube Studio on a computer only.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.video",
+   "channel": "youtube",
+   "application": "Video",
+   "width": 1920,
+   "height": 1080,
+   "unit": "px",
+   "aspect": "16:9",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/6375112",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "1080p in YouTube's list of 16:9 resolutions.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.shorts",
+   "channel": "youtube",
+   "application": "Short",
+   "width": 1080,
+   "height": 1920,
+   "unit": "px",
+   "aspect": "9:16",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/12779649",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "\"Up to 3 minutes. With a square or vertical aspect ratio.\" Pixel size is the studio's.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.watermark",
+   "channel": "youtube",
+   "application": "Video watermark",
+   "width": 150,
+   "height": 150,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": null,
+   "max_bytes": 1000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/10456525",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "min",
+   "basis": "platform",
+   "note": "\"Minimum 150x150 pixels. Square image less than 1 MB in size.\" Hidden during end screens.",
+   "bleed": null
+  },
+  {
+   "id": "youtube.end_screen",
+   "channel": "youtube",
+   "application": "End screen (last 5 to 20 seconds)",
+   "width": 1920,
+   "height": 1080,
+   "unit": "px",
+   "aspect": "16:9",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/6388789",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "Up to four elements at 16:9; the video must run at least 25 seconds. Element positions are set in YouTube Studio; no zone is stated.",
+   "bleed": null
+  },
+  {
+   "id": "tiktok.avatar",
+   "channel": "tiktok",
+   "application": "Profile photo",
+   "width": 1080,
+   "height": 1080,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": {
+    "type": "box",
+    "width": 727,
+    "height": 727
+   },
+   "smallest_shown_px": null,
+   "source": "https://ads.tiktok.com/help/article/tiktok-auction-in-feed-ads (ads profile photo only)",
+   "checked": "2026-11-21",
+   "status": "not-found",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "No organic size found. Ads profile photo: 98 x 98 px, key element in the center 66 x 66. The studio's safe box keeps that proportion at 1080.",
+   "bleed": null
+  },
+  {
+   "id": "tiktok.video",
+   "channel": "tiktok",
+   "application": "Video",
+   "width": 1080,
+   "height": 1920,
+   "unit": "px",
+   "aspect": "9:16",
+   "formats": [
+    "mp4",
+    "webm",
+    "mov"
+   ],
+   "max_bytes": 500000000,
+   "safe_area": {
+    "type": "insets",
+    "top": 240,
+    "right": 120,
+    "bottom": 660,
+    "left": 120,
+    "exclude": [
+     {
+      "x": 780,
+      "y": 840,
+      "width": 180,
+      "height": 420
+     }
+    ]
+   },
+   "smallest_shown_px": null,
+   "source": "https://ads.tiktok.com/help/article/tiktok-auction-in-feed-ads ; https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "Ads: 9:16 at 540 x 960 or more, 500 MB. Developer guide: 360 to 4096 px, 4 GB. 1080 x 1920 is the studio's. Safe zone measured from TikTok's in-feed template, scaled 1.5 from 720 x 1280.",
+   "bleed": null
+  },
+  {
+   "id": "tiktok.photo",
+   "channel": "tiktok",
+   "application": "Photo post (up to 35 photos)",
+   "width": 1080,
+   "height": 1920,
+   "unit": "px",
+   "aspect": "9:16",
+   "formats": [
+    "jpg",
+    "webp"
+   ],
+   "max_bytes": 20000000,
+   "safe_area": {
+    "type": "insets",
+    "top": 240,
+    "right": 120,
+    "bottom": 660,
+    "left": 120,
+    "exclude": [
+     {
+      "x": 780,
+      "y": 840,
+      "width": 180,
+      "height": 420
+     }
+    ]
+   },
+   "smallest_shown_px": null,
+   "source": "https://developers.tiktok.com/doc/content-posting-api-media-transfer-guide ; https://developers.tiktok.com/doc/content-posting-api-reference-photo-post",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "max",
+   "basis": "studio-choice",
+   "note": "\"Maximum 1080p\", 20 MB each, up to 35 photos; the cover is one of the photos. 9:16 is the studio's choice, so the photos share the video's safe zone.",
+   "bleed": null
+  },
+  {
+   "id": "tiktok.cover",
+   "channel": "tiktok",
+   "application": "Video cover",
+   "width": 1080,
+   "height": 1920,
+   "unit": "px",
+   "aspect": "9:16",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": {
+    "type": "insets",
+    "top": 240,
+    "right": 120,
+    "bottom": 660,
+    "left": 120,
+    "exclude": [
+     {
+      "x": 780,
+      "y": 840,
+      "width": 180,
+      "height": 420
+     }
+    ]
+   },
+   "smallest_shown_px": null,
+   "source": "No TikTok page found",
+   "checked": "2026-11-21",
+   "status": "not-found",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "Chosen in the app from the video; size not stated. Build it as a frame of the video, inside the video's safe zone.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.avatar_personal",
+   "channel": "linkedin",
+   "application": "Personal profile photo",
+   "width": 400,
+   "height": 400,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": [
+    "png",
+    "jpg"
+   ],
+   "max_bytes": 8000000,
+   "safe_area": {
+    "type": "circle",
+    "radius_pct": 50
+   },
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a549049",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "min",
+   "basis": "platform",
+   "note": "Between 400 x 400 and 7680 x 4320 px. Dustin's own photograph, not the brand avatar.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.banner_personal",
+   "channel": "linkedin",
+   "application": "Personal profile cover image",
+   "width": 1584,
+   "height": 396,
+   "unit": "px",
+   "aspect": "4:1",
+   "formats": [
+    "jpg",
+    "png"
+   ],
+   "max_bytes": 8000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a568217",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Appears behind the profile photo; the photo's footprint on the cover is not stated and is measured by capture in chapter 23.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.page_logo",
+   "channel": "linkedin",
+   "application": "Company page logo",
+   "width": 400,
+   "height": 400,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": [
+    "png",
+    "jpg"
+   ],
+   "max_bytes": 3000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a563309",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Minimum 268 x 268. Shown on light and dark backgrounds; a transparent logo shows on white.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.page_cover",
+   "channel": "linkedin",
+   "application": "Company page cover",
+   "width": 1512,
+   "height": 256,
+   "unit": "px",
+   "aspect": "189:32",
+   "formats": [
+    "png",
+    "jpg"
+   ],
+   "max_bytes": 3000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a563309",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Minimum and recommended are the same. Keep key details away from the edges, especially the lower right; may be trimmed to fit a screen.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.image_landscape",
+   "channel": "linkedin",
+   "application": "Single image post, landscape",
+   "width": 1200,
+   "height": 627,
+   "unit": "px",
+   "aspect": "1.91:1",
+   "formats": [
+    "jpg",
+    "png"
+   ],
+   "max_bytes": 5000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a527229 ; https://www.linkedin.com/help/linkedin/answer/a563309",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "Inside LinkedIn's 3:1 to 4:5 range; 1200 x 627 is LinkedIn's own figure for a page post's link image.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.image_square",
+   "channel": "linkedin",
+   "application": "Single image post, square",
+   "width": 1080,
+   "height": 1080,
+   "unit": "px",
+   "aspect": "1:1",
+   "formats": [
+    "jpg",
+    "png"
+   ],
+   "max_bytes": 5000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a527229",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "1080 wide is LinkedIn's recommendation; square is inside the range.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.image_portrait",
+   "channel": "linkedin",
+   "application": "Single image post, portrait",
+   "width": 1080,
+   "height": 1350,
+   "unit": "px",
+   "aspect": "4:5",
+   "formats": [
+    "jpg",
+    "png"
+   ],
+   "max_bytes": 5000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a527229",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "4:5 is LinkedIn's tallest ratio; taller is centered and cropped.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.document",
+   "channel": "linkedin",
+   "application": "Document post (PDF carousel)",
+   "width": 1080,
+   "height": 1350,
+   "unit": "px",
+   "aspect": "4:5",
+   "formats": [
+    "pdf"
+   ],
+   "max_bytes": 100000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a518909 ; https://www.linkedin.com/help/linkedin/answer/a523054",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "100 MB and 300 pages at most; one page size throughout; flatten layers. Page size is the studio's.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.link_card",
+   "channel": "linkedin",
+   "application": "Link preview",
+   "width": 1200,
+   "height": 627,
+   "unit": "px",
+   "aspect": "1.91:1",
+   "formats": null,
+   "max_bytes": 5000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a521928",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "min",
+   "basis": "platform",
+   "note": "The website's 1200 x 630 share image meets it.",
+   "bleed": null
+  },
+  {
+   "id": "linkedin.video",
+   "channel": "linkedin",
+   "application": "Video post",
+   "width": 1920,
+   "height": 1080,
+   "unit": "px",
+   "aspect": "16:9 or 9:16",
+   "formats": null,
+   "max_bytes": 5000000000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://www.linkedin.com/help/linkedin/answer/a527229",
+   "checked": "2026-11-21",
+   "status": "search-result",
+   "match": "max",
+   "basis": "studio-choice",
+   "note": "5 GB; 3 seconds to 15 minutes from a computer (search-result). The shared video frames serve (section 11).",
+   "bleed": null
   },
   {
    "id": "print.letter",
@@ -817,20 +1513,15 @@
     "pdf"
    ],
    "max_bytes": null,
-   "safe_area": {
-    "type": "insets",
-    "top": 0.125,
-    "right": 0.125,
-    "bottom": 0.125,
-    "left": 0.125
-   },
+   "safe_area": null,
    "smallest_shown_px": null,
    "source": "Gate 3 report, section 9 (chapters 24 and 25)",
    "checked": "2026-11-21",
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Trim 8.5 x 11 in; bleed 0.125 in each side (studio choice), so the bleed box is 8.75 x 11.25 in. The safe_area here is the bleed, which is trimmed off."
+   "note": "Trim 8.5 x 11 in; bleed 0.125 in each side (studio choice), so the bleed box is 8.75 x 11.25 in.",
+   "bleed": 0.125
   },
   {
    "id": "print.letterhead",
@@ -844,20 +1535,15 @@
     "pdf"
    ],
    "max_bytes": null,
-   "safe_area": {
-    "type": "insets",
-    "top": 0.125,
-    "right": 0.125,
-    "bottom": 0.125,
-    "left": 0.125
-   },
+   "safe_area": null,
    "smallest_shown_px": null,
    "source": "Gate 3 report, section 9 (chapter 25)",
    "checked": "2026-11-21",
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "As print.letter."
+   "note": "As print.letter.",
+   "bleed": 0.125
   },
   {
    "id": "print.poster",
@@ -871,20 +1557,15 @@
     "pdf"
    ],
    "max_bytes": null,
-   "safe_area": {
-    "type": "insets",
-    "top": 0.125,
-    "right": 0.125,
-    "bottom": 0.125,
-    "left": 0.125
-   },
+   "safe_area": null,
    "smallest_shown_px": null,
    "source": "Gate 3 report, section 9 (chapter 25)",
    "checked": "2026-11-21",
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Trim 24 x 36 in; 0.125 in bleed (studio choice)."
+   "note": "Trim 24 x 36 in; 0.125 in bleed (studio choice).",
+   "bleed": 0.125
   },
   {
    "id": "print.table_sign",
@@ -898,20 +1579,15 @@
     "pdf"
    ],
    "max_bytes": null,
-   "safe_area": {
-    "type": "insets",
-    "top": 0.125,
-    "right": 0.125,
-    "bottom": 0.125,
-    "left": 0.125
-   },
+   "safe_area": null,
    "smallest_shown_px": null,
    "source": "Gate 3 report, section 9 (chapter 25)",
    "checked": "2026-11-21",
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Trim 11 x 17 in; 0.125 in bleed (studio choice)."
+   "note": "Trim 11 x 17 in; 0.125 in bleed (studio choice).",
+   "bleed": 0.125
   },
   {
    "id": "slides.layout",
@@ -934,7 +1610,144 @@
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "The studio's export size. PowerPoint's own widescreen page size is recorded on the row below once read."
+   "note": "The studio's export size. PowerPoint's own widescreen page is the row below.",
+   "bleed": null
+  },
+  {
+   "id": "slides.powerpoint",
+   "channel": "slides",
+   "application": "PowerPoint widescreen page",
+   "width": 13.333,
+   "height": 7.5,
+   "unit": "in",
+   "aspect": "16:9",
+   "formats": [
+    "pptx"
+   ],
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.microsoft.com/en-us/office/change-the-size-of-your-slides-040a811c-be43-40b9-8d04-0de5ed79987e",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "platform",
+   "note": "Microsoft: \"Widescreen sets it to 13.333 in x 7.5 in\" and it is \"the default value for new presentations\". 1920 x 1080 px maps to it at 144 px an inch.",
+   "bleed": null
+  },
+  {
+   "id": "video.landscape",
+   "channel": "video",
+   "application": "Video frame, landscape (title, end, chart and host frames)",
+   "width": 1920,
+   "height": 1080,
+   "unit": "px",
+   "aspect": "16:9",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.google.com/youtube/answer/6375112",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "YouTube's 1080p. Safe area set in chapter 23.",
+   "bleed": null
+  },
+  {
+   "id": "video.vertical",
+   "channel": "video",
+   "application": "Video frame, vertical",
+   "width": 1080,
+   "height": 1920,
+   "unit": "px",
+   "aspect": "9:16",
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": {
+    "type": "insets",
+    "top": 269,
+    "right": 120,
+    "bottom": 672,
+    "left": 120,
+    "exclude": [
+     {
+      "x": 780,
+      "y": 840,
+      "width": 180,
+      "height": 420
+     }
+    ]
+   },
+   "smallest_shown_px": null,
+   "source": "https://ads.tiktok.com/help/article/tiktok-auction-in-feed-ads ; https://www.facebook.com/business/ads-guide/update/image/instagram-reels",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "The larger of TikTok's and Instagram's margins on each side, plus TikTok's button column.",
+   "bleed": null
+  },
+  {
+   "id": "email.body_width",
+   "channel": "email",
+   "application": "HTML email body",
+   "width": 600,
+   "height": null,
+   "unit": "px",
+   "aspect": null,
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://mailchimp.com/help/about-template-widths/ ; https://mailchimp.com/help/about-html-email/",
+   "checked": "2026-11-21",
+   "status": "read",
+   "match": "max",
+   "basis": "studio-choice",
+   "note": "An email service's guidance (Mailchimp), not a platform rule.",
+   "bleed": null
+  },
+  {
+   "id": "email.phone_check",
+   "channel": "email",
+   "application": "Email phone check",
+   "width": 375,
+   "height": null,
+   "unit": "px",
+   "aspect": null,
+   "formats": null,
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "Gate 3 report, section 9",
+   "checked": "2026-11-21",
+   "status": "not-found",
+   "match": "exact",
+   "basis": "studio-choice",
+   "note": "The studio's phone width for the check.",
+   "bleed": null
+  },
+  {
+   "id": "email.gmail_clip",
+   "channel": "email",
+   "application": "Gmail's clipping size for one message",
+   "width": null,
+   "height": null,
+   "unit": "px",
+   "aspect": null,
+   "formats": null,
+   "max_bytes": 102000,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "No Google page found; figure from https://support.substack.com/hc/en-us/articles/360038866571 (read)",
+   "checked": "2026-11-21",
+   "status": "not-found",
+   "match": "exact",
+   "basis": "platform",
+   "note": "\"Gmail clips emails larger than about 102KB\" (Substack). The whole message's HTML counts.",
+   "bleed": null
   }
  ]
 }

@@ -6,11 +6,12 @@
  * encode: x (category: the periods, years in order, and the one drawn apart), y (number: the median), outer_low and
  * outer_high (numbers), inner_low and inner_high (numbers, optional).
  * labels: apart (the x value drawn apart), apart_label (its words under the axis), key_outer, key_inner, key_median (the
- * key's words; an entry is left out when its words are), y_axis (words over the value axis), values_clear_edges (true:
- * a median value a band edge runs through moves up to the lowest place over its dot that stands 4 px clear of every
- * band edge, and the kit's edge guard (DD-E1) holds every median value; a value no edge crosses stays put, and which
- * values print is chosen at their first places, so the key moves a value and never adds or drops one; board 3's reply 9,
- * for S59. Unset, a value sits over its dot and only clears the outer band's edge at the dot itself, as before).
+ * key's words; an entry is left out when its words are), y_axis (words over the value axis), values_clear_edges (on
+ * unless set false: a median value a band edge runs through moves up to the lowest place over its dot that stands 4 px
+ * clear of every band edge; a value no edge crosses stays put, and which values print is chosen at their first places,
+ * so the key moves a value and never adds or drops one; board 3's reply 9, for S59, and on for every fan chart since
+ * G3-05, chat 10. Set false, a value sits over its dot and only clears the outer band's edge at the dot itself, and the
+ * kit's edge guard (DD-E1), which holds every word of every chart since G3-05, fails any value an edge still crosses).
  * history ({dataset, x, y}: where the measure stood before the projections, from the spec's second dataset, one dot a
  * period joined by a line in the subject ink at the field's weight, on the same axis of periods; a period with no value
  * breaks the line and takes a light column, named in the key), key_history and key_gap (their key words).
@@ -79,7 +80,7 @@
       // through, by the kit's own test (K.stroke_crosses on the word's box), moves up to the lowest place over its dot
       // whose box, [x - w/2, x + w/2] by [y - 0.864 size, y + 0.136 size] (the kit's line box less its half-leading),
       // stands 4 px or more from every band edge; a value no edge crosses stays where it was
-      var clear = L.values_clear_edges === true, edges = [];
+      var clear = L.values_clear_edges !== false, edges = [];   // G3-05: on unless a spec sets it false
       if (clear) {
         var eline = function (k) { return main.map(function (r, i) { return [K.round(px(i)), K.round(ys(r[k]))]; }); };
         edges = [eline(eoh), eline(eol)].concat(eil && eih ? [eline(eih), eline(eil)] : []).map(function (ln) {

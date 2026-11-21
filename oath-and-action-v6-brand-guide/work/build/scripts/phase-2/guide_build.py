@@ -57,6 +57,9 @@ ROOT = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(ROOT / "work/build/scripts/phase-3"))
 import guide_charts  # noqa: E402
 import weight_pass  # noqa: E402   Phase 3 weight pass: CSS white space and PNG compression, no change a reader sees
+# Chat 10 (P4-5): the photographs the page carries once, which any plate shows by name (contract C1, engineer notes)
+sys.path.insert(0, str(ROOT / "work/build/scripts/phase-4"))
+import guide_photos  # noqa: E402
 GUIDE = ROOT / "work/build/guide"
 SHELL = GUIDE / "shell"
 TOKENS_CSS = ROOT / "work/build/tokens/tokens.css"
@@ -686,6 +689,12 @@ def process_fragment(src, sid, where, literal_ok=False):
     for name in page_selects(s):
         R.warn(where, f"{sid}: a plate script selects across the page (document.{name}); find the plate first with "
                       "document.currentScript.closest('[data-specimen]') and select inside it (PR-S1)")
+    # Chat 10 (P4-5, contract C1): a photograph is asked for by name, <img data-oa-photo="..."> with no src, and drawn from
+    # the page's one copy; one placed by its path would be carried again inside this plate
+    for f in guide_photos.placed_by_path(s):
+        R.warn(where, f"{sid}: places the photograph {Path(f).name} by its path; ask for it by name with <img data-oa-photo=\"...\">, "
+                      "so the page carries it once (P4-5, contract C1)")
+    s, _ = guide_photos.expand(s, where, lambda w, m: R.warn(w, f"{sid}: {m}"))
     s = inline_assets(s, sid, where)
     s = prefix_ids(s, sid)
     s = scope_styles(s, sid)
@@ -2921,7 +2930,9 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.22, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
-                "fonts": 0.5, "chart kit": 0.56, "map geometry": 0.25}
+                "fonts": 0.5, "chart kit": 0.56, "map geometry": 0.25, "photographs": 0.5}
+# Chat 10 (P4-5): the photographs weigh as their own part, carried once in the head (<style id="oa-photos">) and shown by any
+# chapter; 0.5 MB holds chapter 01's two at 489,284 bytes of image data
 # Round 4 (November 13, 2026, the main session's call): the chart kit's part rises from 0.55 to 0.56 MB once all 97 forms are
 # registered (549,966 bytes on the 21:21 strict build); chapter 14's stop of 2,803,941 bytes and the 15.5 MB projection
 # (15,050,450) do not move, as D3-345's rise from 0.22 MB reasoned. The four card forms (R4-3) ride on no page.
@@ -3380,6 +3391,31 @@ def keep_ids_whole(page, wrap=True, mark=""):
     return "".join(out), n_ids
 
 
+def place_photos(page):
+    """Chat 10 (P4-5, contract C1): one rule per photograph the page names, in <style id="oa-photos"> in the head, which draws
+    it through every <img data-oa-photo> that names it (CSS content replacement, no script). Each photograph's data must sit
+    in the page once. Returns the page and a record: each photograph's uses, the plates that show it and its rule's bytes."""
+    names = [n for n in guide_photos.PHOTOS if re.search(r'<img\b[^>]*\sdata-oa-photo="' + re.escape(n) + '"', page)]
+    if not names:
+        return page, {}
+    page = page.replace("</head>", guide_photos.photo_style(names) + "\n</head>", 1)
+    rec = {}
+    for n in names:
+        data = guide_photos.uri(n).split(",", 1)[1]
+        probe = data[len(data) // 2:len(data) // 2 + 96]   # a run from the middle of its data, found wherever a copy sits
+        copies = page.count(probe)
+        if copies != 1:
+            R.warn("photographs", f"{n} ({Path(guide_photos.PHOTOS[n]['file']).name}) sits in the page {copies} times; the page carries "
+                                  "each photograph once and every plate draws that copy (P4-5, contract C1)")
+        plates = []
+        for m in re.finditer(r'<img\b[^>]*\sdata-oa-photo="' + re.escape(n) + '"', page):
+            st = page.rfind('data-specimen="', 0, m.start())
+            plates.append(page[st + 15:page.find('"', st + 15)] if st >= 0 else "?")
+        rec[n] = {"file": guide_photos.PHOTOS[n]["file"], "rights": guide_photos.PHOTOS[n]["rights"], "uses": len(plates),
+                  "plates": plates, "rule_bytes": len(guide_photos.rule(n).encode()), "copies": copies}
+    return page, rec
+
+
 def weigh(page, sprite_bytes):
     """Bytes by part of the page: head and shell, sprites, each chapter, the appendix and the rest, against the budgets."""
     size = lambda x: len(x.encode())
@@ -3389,6 +3425,11 @@ def weigh(page, sprite_bytes):
     if fm:
         parts["fonts"] = size(fm.group(0))
         parts["head and shell"] -= parts["fonts"]
+    # Chat 10 (P4-5): the photographs, carried once in the head, weigh as their own part, out of every chapter's share
+    pm = re.search(r'<style id="oa-photos">.*?</style>', page, re.S)
+    if pm:
+        parts["photographs"] = size(pm.group(0))
+        parts["head and shell"] -= parts["photographs"]
     # Phase 3: the chart kit's style (in the head) and script (before the closing script) weigh as their own part
     kb = guide_charts.kit_bytes(page)
     if kb:
@@ -3411,8 +3452,8 @@ def weigh(page, sprite_bytes):
             parts["front matter and part openers"] = parts.get("front matter and part openers", 0) + b
     total = size(page)
     for n, b in sorted(chapters.items()):
-        if n in guide_charts.CEILING:
-            continue   # Phase 3's chapters: guide_charts.gates() reports them (DR-271)
+        if n in guide_charts.CEILING or n in guide_charts.PHASE_4:
+            continue   # Phase 3's and Phase 4's chapters: guide_charts.gates() reports them against their own figures (DR-271)
         budget = WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB
         if b > budget:   # DR-271: reported, never failed
             R.note(f"chapter {n} weighs {b / MB:.2f} MB, over its budget of {budget / MB:.2f} MB, reported (DR-271)")
@@ -3424,7 +3465,8 @@ def weigh(page, sprite_bytes):
     if total > WEIGHT_PAGE:
         R.warn("page weight", f"the page weighs {total / MB:.2f} MB, over its budget of {WEIGHT_PAGE / MB:.1f} MB (the limit is {WEIGHT_LIMIT / MB:.0f} MB)")
     return {"bytes": total, "budget_page": WEIGHT_PAGE, "limit": WEIGHT_LIMIT, "parts": parts,
-            "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())},
+            "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, guide_charts.ALLOCATION[n] if n in guide_charts.PHASE_4
+                                                                            else WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())},
             # call 4 (Phase 3 round 1 fix pass): chapter 14's rules with the opener, and its sketch entries whole
             "chapter_14_parts": guide_charts.chapter14_parts(page)}
 
@@ -3704,6 +3746,7 @@ def build(args):
     page, charts = guide_charts.expand(page, getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD, chart_dirs, R.warn, note=R.note)
     sprites.check_res(page)
     page, sprite_bytes, sprite_counts = sprites.inject(page)
+    page, photo_rec = place_photos(page)   # chat 10 (P4-5): each named photograph once, in the head
     page, n_whole = keep_ids_whole(page)   # D2-975
     if tokens.final:
         unread = [n for n in unread if n not in sprites.parity(tokens)]
@@ -3747,6 +3790,8 @@ def build(args):
         "warnings": R.warnings, "notes": R.notes,
         # call 11: the image stages heard by their alt alone, and those whose alt lacks a word, whose words stay open
         "pictures": {"hidden": len(PICTURES["hidden"]), "open": len(PICTURES["open"]), "open_stages": sorted(PICTURES["open"])},
+        # chat 10 (P4-5): each photograph the page carries once, its uses and the plates that show it
+        "photographs": photo_rec,
     }
     rep_path = out_path.with_name(out_path.stem + "-Build-Report.json")
     rep_path.write_text(json.dumps(report, indent=1, ensure_ascii=False))
@@ -4506,6 +4551,41 @@ def self_test():
                     ("an alt that lacks only the picture's Illustrative label leads with it, and that stage is hidden (DR-97)", lambda pg:
                         re.search(r'data-specimen="s-14-ill"[^>]*role="img" aria-label="Illustrative\. A notice for a hearing, a fixture\."><div data-oa-picture aria-hidden="true">', pg) is not None
                         and pg.count('aria-label="Illustrative. ') == 1)]}),
+    ]
+    # Chat 10 (P4-5, contract C1): a photograph two plates name is carried once, in the head; a tight crop takes its frame;
+    # a photograph placed by its path, an unknown name and a request with no alt warn, and a second copy is found; chapter 16
+    # builds in place of its placeholder, under Evidence and media
+    lake = guide_photos.uri("lake-isabella-2014").split(",", 1)[1]
+    ph_specs = {"s-16-1-correct.html": '<img data-oa-photo="lake-isabella-2014" alt="An official at a map, a fixture." class="ph">',
+                "s-16-1-failure.html": '<img data-oa-photo="lake-isabella-2014" data-oa-crop="24 0 600 400" alt="A tight crop, a fixture." class="ph">',
+                "s-16-2-correct.html": f'<img src="{guide_photos.PHOTOS["rotunda-2005"]["file"]}" alt="Placed by its path, a fixture.">',
+                "s-16-3-correct.html": '<img data-oa-photo="nowhere" alt="An unknown name, a fixture.">',
+                "s-16-4-correct.html": '<img data-oa-photo="rotunda-2005" class="ph">'}
+    ph_ids = [k[:-5] for k in ph_specs]
+    ph_man = {sid: {"chapter": "16", "rule": f"16.{sid.split('-')[2]}", "alt": f"A photograph fixture, {sid}, at true size.", "notes": "fixture"} for sid in ph_ids}
+    ph16 = chapter("16", "photography", "Photography, illustration and video", [
+        rule("16.1", {"correct": {"specimen": "s-16-1-correct", "caption": "A fixture."}, "failure": {"specimen": "s-16-1-failure", "caption": "A fixture."}}),
+        rule("16.2", {"correct": {"specimen": "s-16-2-correct", "caption": "A fixture."}}),
+        rule("16.3", {"correct": {"specimen": "s-16-3-correct", "caption": "A fixture."}}),
+        rule("16.4", {"correct": {"specimen": "s-16-4-correct", "caption": "A fixture."}})], part="evidence")
+    scenarios += [
+        ("chat 10: each photograph carried once for the page and drawn by name (P4-5, contract C1); chapter 16 in its place",
+         {"16-photography.json": ph16}, {"specimens": ph_specs, "manifest": ph_man},
+         {"warn": ["s-16-2-correct: places the photograph 20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg by its path",
+                   's-16-3-correct: a photograph request names "nowhere"', "s-16-4-correct: the request for rotunda-2005 has no alt",
+                   "rotunda-2005 (20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg) sits in the page 2 times"],
+          "absent": ["lake-isabella-2014 (", "s-16-1-correct:", "s-16-1-failure:"],
+          "tests": [("one style block in the head carries the photographs", lambda pg: pg.count('<style id="oa-photos">') == 1
+                     and pg.find('<style id="oa-photos">') < pg.find("</head>")),
+                    ("the photograph two plates name sits in the page once", lambda pg: pg.count(lake[len(lake) // 2:len(lake) // 2 + 96]) == 1
+                     and pg.count('img[data-oa-photo="lake-isabella-2014"]{content:url(data:image/jpeg;base64,') == 1),
+                    ("each request keeps its <img>, its alt and its class, with no src", lambda pg: re.search(
+                        r'<img data-oa-photo="lake-isabella-2014" alt="An official at a map, a fixture\." class="ph">', pg) is not None),
+                    ("a tight crop takes a frame of its ratio, with the request's class, the photograph placed by percent", lambda pg: re.search(
+                        r'<span class="oa-photo-crop ph" style="display:block;position:relative;overflow:hidden;aspect-ratio:600/400"><img data-oa-photo="lake-isabella-2014" '
+                        r'data-oa-crop="24 0 600 400" alt="A tight crop, a fixture\." style="position:absolute;[^"]*width:200%;height:auto;left:-4%;top:0%"></span>', pg) is not None),
+                    ("chapter 16 builds in place of its placeholder", lambda pg: re.search(r'<section class="chapter[^"]*" id="photography"', pg) is not None
+                     and 'data-rule="16.1"' in pg)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

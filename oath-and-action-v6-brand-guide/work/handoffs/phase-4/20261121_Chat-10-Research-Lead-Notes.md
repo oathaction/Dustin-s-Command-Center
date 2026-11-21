@@ -38,7 +38,7 @@ What this means for Oath & Action's two video forms (DR-301), as the criteria re
 | LinkedIn video | Yes, on desktop: "You must have an associated SRT (SubRip Subtitle) file attached to the video before it can be posted." "Closed captions can be added to videos posted either by personal accounts or LinkedIn Pages." Page marked "Last updated: 5 years ago" | SRT only, per the page | Yes. "Add auto captions" toggle, with "Review captions before viewers can see them"; captions can be edited or removed after posting. Page marked "Last updated: 2 years ago" | Not offered on the pages read | https://www.linkedin.com/help/linkedin/answer/a552177 ; https://www.linkedin.com/help/linkedin/answer/a1327025 | 2026-11-21 | read |
 | X video | Yes. In the post composer, "Upload caption file (.srt)", then "Upload captions"; verified subscribers can also upload in Media Studio. Captions show "toward the bottom of the video" for viewers who turn captions on | .srt | X's help text is reported to say captions generate automatically; a hearing-loss charity (RNID) reports it could not make that work. Not confirmed | Not found | https://help.x.com/en/using-x/upload-caption-srt-file (HTTP 403 to the automated reader) | 2026-11-21 | search-result |
 
-Burned-in captions, which WCAG calls open captions, are words drawn into the video's own pixels. Every platform shows them because they are part of the picture, and none can switch them off or hand them to a screen reader. That makes them a second layer at most: the closed caption file stays the one a reader can turn on, resize or read aloud. Where a burned-in line runs, it must clear each app's button and caption zones, which the specifications file records per channel (section "Safe areas" of `work/research/20261121_Platform-Specifications.md`, as each channel lands).
+Burned-in captions, which WCAG calls open captions, are words drawn into the video's own pixels. Every platform shows them because they are part of the picture, and none can switch them off or hand them to a screen reader. That makes them a second layer at most: the closed caption file stays the one a reader can turn on, resize or read aloud. Where a burned-in line runs, it must clear each app's button and caption zones, which the specifications file records per channel in its "Safe area or crop" column (`work/research/20261121_Platform-Specifications.md`; the shared video frames are its section 11).
 
 ### C. Each platform's own label for AI-generated or altered content
 
@@ -99,19 +99,57 @@ Two teaching points the records already hold, for the plan: the Rotunda photogra
 - `width` or `height` is null where the platform states only one side or none; a dimension check skips the null side and checks the ratio where `aspect` is set.
 - `safe_area` is null, or `{"type": "insets", "top", "right", "bottom", "left"}` in the row's unit, or `{"type": "box", "width", "height"}` centered, or `{"type": "circle", "radius_pct"}` centered.
 - Byte limits are decimal (1 MB = 1,000,000), the smaller reading.
-- The ids the three samples need: `instagram.portrait` (the social post), `website.page_1440`, `website.page_1024`, `website.page_390`, `website.page_360` (the web page) and `print.letter` (the report page). The Instagram and print rows land next; until they do, the ids are fixed here.
+- The ids the three samples need: `instagram.portrait` (the social post, 1080 x 1350), `website.page_1440`, `website.page_1024`, `website.page_390`, `website.page_360` (the web page, width only) and `print.letter` (the report page, 8.5 x 11 in trim). All six are in the file.
+- Complete at 01:57 UTC: 74 rows over twelve channels (website, Substack, Instagram, Threads, X, YouTube, TikTok, LinkedIn, print, slides, shared video frames, email). Later additions to the rows, if any, keep these ids and keys.
+- Added after the first landing: `safe_area` of type `insets` may carry `exclude`, a list of boxes `{"x", "y", "width", "height"}` measured from the top left that must also stay clear (TikTok's button column, used by `tiktok.*` and `video.vertical`). Print rows carry `bleed` (inches per side); their `width` and `height` are the trim. A Letter PDF passes when its TrimBox is 8.5 x 11 in and its BleedBox or MediaBox is 8.75 x 11.25 in. `bleed` is null elsewhere.
+- `aspect` is a string. Parse it only when it reads number:number; some rows say "1:1 at most", "3:4 (reported)" or "16:9 or 9:16" and carry the rule in `note`.
+- A row with `basis: studio-choice` holds a size the studio set inside the platform's limits; the dimension check treats it like any other row. The check should print each row's `status` beside its result, so a pass on a `search-result` row reads as such.
 
 ## Routine calls
 
+- D4-xxx | The ethics source for chapter 16 is the SPJ Code of Ethics as revised October 4, 2026 | It was read in full on its own site; the NPPA code's official page draws its text by script and could not be read, and copies elsewhere are third-party
+- D4-xxx | Sizes the platforms give in MB or KB are stored as decimal bytes (1 MB = 1,000,000) | The smaller reading, so an export that passes passes either way
+- D4-xxx | Meta's and TikTok's ads-guide safe zones stand in for organic Stories, Reels and TikTok video, labeled as ads figures | They are the only safe zones either company publishes; both pages were read
+- D4-xxx | Instagram posts stay at 1080 x 1350 (4:5), with words inside the center 1012 x 1350 (a 3:4 crop) | Instagram's help text shows two tall limits (4:5 and 3:4) and no page states the profile grid's crop; 4:5 passes every version and the 3:4 box survives either grid
+- D4-xxx | The shared vertical video frame takes the larger of TikTok's and Instagram's margins on each side, plus TikTok's button column | One frame then serves both apps and YouTube Shorts
+- D4-xxx | YouTube's banner safe area is scaled from 1235 x 338 at 2048 x 1152 to 1,544 x 423 at 2560 x 1440 | YouTube states it only at the minimum size; the scale is 1.25
+- D4-xxx | Upload sizes the platforms do not state are the studio's: Instagram, Threads and TikTok avatars at 1080 x 1080, YouTube's at 800 x 800, LinkedIn document pages at 1080 x 1350, the YouTube Short at 1080 x 1920 | Each is inside the platform's stated limits and marked "studio choice"
+- D4-xxx | Print bleed is 0.125 in a side on every print piece, stated as the studio's choice | No platform governs print (brief section 5, item 4)
+- D4-xxx | The email body width rests on Mailchimp's help pages (600 px), recorded as an email service's guidance; Gmail's clipping size rests on Substack's page (about 102 KB), recorded as Substack's statement | No Google or mail-client page states either (brief section 5, item 2)
+- D4-xxx | Platform marks get no rights row until each platform's brand guidelines are read; applications name the platform in words until then (rights row p4-03) | No platform mark is drawn in chat 10
+
 ## Done
 
+- `work/handoffs/phase-4/20261121_Chat-10-Research-Lead-Notes.md` (new): chapter 16 facts (WCAG 2.2 media criteria, captions and AI labels on five platforms, the SPJ code, the two photographs), contracts, calls and checks.
+- `work/research/20261121_Platform-Specifications.md` (new): one table per channel, twelve channels, 74 rows, each with its source page, date and status; a section on what differs from the Gate 3 report's starting sizes; a closing list of every row not marked read.
+- `work/research/20261121_Platform-Specifications.json` (new): the same 74 rows for scripts, with a `contract` key describing every field.
+- `work/research/20261020_Rights-Ledger.md` (modified): a new section at the end, "Added November 21, 2026: platform references for Phase 4 (chat 10)", rows p4-01 to p4-05.
+- Both specification files are written by a generator in the research lead's scratch folder (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/127ebfa4-7663-587b-a8ae-9ad439f7784c/scratchpad/c10/research-lead/specs_build.py` with its data in `specs_data.py`), so the Markdown and the JSON cannot disagree. The downloaded pages sit beside it in `dl/`. The scratch folder is not durable; the two project files are the record.
+
 ## Requests
+
+- For the main session, to relay to Dustin or to the next chat's research lead: X's help center (help.x.com and business.x.com) and Instagram's (help.instagram.com) refuse automated readers, so 14 rows rest on search results for those official pages. Before chat 13 builds Instagram and X, a person or a browser session should open these pages and confirm the figures: Instagram's "Image resolution of photos you share" (4:5 or 3:4 tall limit), "Reel size & aspect ratios", the profile grid's crop; X's "How to customize your profile" (400 x 400, 1500 x 500, 2 MB) and "How to post photos or GIFs" (2:1 to 3:4 shown whole). The rows to update are named in the specifications file's "Could not verify" list.
+- For the engineer (through the main session): `work/research/20261121_Platform-Specifications.json` is complete; please read the `match`, `bleed` and `safe_area.exclude` keys as the Contracts section describes, and print each row's `status` beside each pass or fail.
+- For the creative director (through the main session): cite WCAG 2.2 criteria and the SPJ code by number, name and date in Basis lines. Printing a criterion's full text or the code's sentences in the guide waits on rights rows p4-04 and p4-05, since neither body's reuse terms were read today.
 
 ## Not fixed
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
+| C10-RL-1 | Research lead, chat 10 | Gate 3 report, section 9, "The eight channels" table | Several starting sizes differ from what the platforms state today: YouTube thumbnail (now 3840 x 2160 recommended), LinkedIn company page cover (1512 x 256), X post image (1600 x 900 has no X source), Instagram avatar (320 x 320 has no Instagram source), YouTube avatar (800 x 800 has no YouTube source) | Build to `work/research/20261121_Platform-Specifications.json`; the report's figures were starting points to verify, so the report itself needs no change | The report is approved and closed; the table was written as figures to check | Open, for the main session to note in handoff V30 |
 
 ## Tested
 
+- Downloaded and read in full, November 21, 2026: WCAG 2.2 (W3C), the SPJ Code of Ethics, YouTube help (captions, caption formats, automatic captions, AI disclosure, channel branding, banner tips, thumbnails, resolution and aspect ratios, Shorts, end screens, encoding), LinkedIn help (closed captions, auto captions, content credentials, profile photo, cover image, Pages images, photo sharing, website sharing, documents and their FAQ), Substack help through its public article interface (image dimensions, email header and footer, social preview, thumbnail crop, truncation, custom theme, fonts, welcome emails, sender name, image editing, media embeds), TikTok's community guidelines and AIGC safety page, TikTok's in-feed ads help, TikTok's developer media and photo-post pages, Meta's newsroom post on AI labels, docs.x.com media best practices and ads creatives, ogp.me, Google Search's favicon page, Apple's archived web clip page, web.dev's manifest and maskable icon pages, the HTML standard's links section, Mailchimp's two width pages, Microsoft's slide-size page, the Reporters Committee's recording guide page, and the two Commons file pages' license boxes.
+- Read through the fetch reader where a plain download was refused: Meta's "Images in Link Shares", Meta's publishing reference for Instagram, Meta's ads guide for Instagram Feed, Stories and Reels, and Meta's Threads API overview.
+- Opened TikTok's in-feed safe-zone file and read its marked margins (80, 160, 440 and a 120 px column on a 720 x 1280 frame).
+- Matched chapter 01's printed captions, credits and alt text for Rules 01.6 and 01.8 against the built specimens, the sidecars and rights rows pho-01, pho-01r, pho-04 and pho-04r.
+- By script: the JSON parses; 74 rows with unique ids; every status is read, search-result or not-found; every row has a source and the date 2026-11-21; every box, inset and exclusion fits inside its row's width and height; every number:number aspect matches its width and height within 2 percent except `website.x_card`, whose 300 x 157 minimum is X's own figure and is noted; the six sample ids are present; no em dash in the Markdown.
+
 ## Not tested
+
+- Any page on help.x.com, business.x.com, help.instagram.com, support.tiktok.com, the NPPA's code page, Apple's design guidelines and the W3C document license: each refused the reader or drew its text by script. Their figures are marked search-result or not-found.
+- Whether Substack carries the site's colors and fonts into its emails; no page says, and no test email was sent.
+- Substack's post body width; no page states it.
+- Any platform's real rendering: no upload, post or capture was made on any platform, so no crop, avatar overlap or smallest display size was observed.
+- The engineer's dimension script against the JSON; it did not exist when these notes were written.
