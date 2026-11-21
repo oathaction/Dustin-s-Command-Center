@@ -7363,3 +7363,10 @@ The main session posted chat 11's plan with six questions (Q11-1 to Q11-6). Dust
 | DR-309 | Chapter 20's example Act page is a process piece (Rule 01.22) on a real procedure any reader in any state can use: commenting on a proposed federal rule, with a real docket checked and dated | Dustin, November 21, as recommended (Q11-5) |
 | DR-310 | Rule 05.1 gains one sentence: "On a long page the limits hold for the first screen and for each section’s opening screen; screens of running text between them may hold more Newsprint." Chapter 20 measures its pages that way | Dustin, November 21, as recommended (Q11-6, option A) |
 | DR-311 | Chat 11's plan as posted: one brief, one file lock, one writer per file; the design director with the accessibility lead on chapter 20 (light at four widths, dark at 1440 and 390 px), the engineer on the application kit's web and atlas renderers and exports, the data visualization lead on chapter 21's plan, rulings and system test, the editor on DR-305 and DR-310 first and then chapter 20's words; chapter 21's build after chapter 20 lands, likely in a chat of its own as the Gate 3 report's section 9 allows | Dustin, November 21, as recommended |
+
+### Main session, chat 11
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-104 | The Act page's docket is the FDA's proposed rule on N-acetyl-L-cysteine (document 2026-23351, docket FDA-2025-N-2699, comments close January 19, 2027), read by the main session through the Federal Register's API and govinfo's PDF and written to `work/research/20261121_Act-Page-Docket.md` | DR-309's four tests: open past the boards, the common Regulations.gov route, a subject that touches every side, a summary a reader can follow; one short read did not need a research lead run (D4-06's precedent) |
+| D4-105 | The research note first said its reads ran "between 19:00 and 19:20 UTC", a time written without reading the clock; the clock read 18:55 at the commit, and the note now says 18:52 to 18:56 | V22: clock times come from `date -u` |

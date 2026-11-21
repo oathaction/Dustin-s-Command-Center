@@ -1,6 +1,6 @@
 # The Act page's docket: commenting on a proposed federal rule
 
-Written November 21, 2026 by the main session, chat 11, for chapter 20's example Act page (DR-309: a process piece under Rule 01.22, on a real procedure any reader in any state can use, with a real docket checked and dated). Every fact below was read on November 21, 2026 between 19:00 and 19:20 UTC.
+Written November 21, 2026 by the main session, chat 11, for chapter 20's example Act page (DR-309: a process piece under Rule 01.22, on a real procedure any reader in any state can use, with a real docket checked and dated). Every fact below was read on November 21, 2026 between 18:52 and 18:56 UTC.
 
 ## How the docket was chosen
 
