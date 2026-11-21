@@ -639,7 +639,8 @@ def build(ctx):
                 'specs': [
                     {'label': 'Floor', 'value': '13 px (0.8125 rem), no screen exceptions', 'token': 'oa.type.label'},
                     {'label': 'Label', 'value': 'Inter 700, capitals, 13 px, line height 1.4, +6% tracking', 'token': 'oa.type.label'},
-                    {'label': 'Data label', 'value': 'Inter 600, 13 px, line height 1.3, tabular figures', 'token': 'oa.type.dataLabel'},
+                    {'label': 'Data label', 'value': 'Inter 600, 13 px, line height 1.3, tabular figures, except a chip’s ID (Rule 18.24)',
+                     'token': 'oa.type.dataLabel'},   # G3-06 (b), Gate 3 item 6
                     {'label': 'Caption', 'value': 'Inter 400, 14 px, line height 1.5', 'token': 'oa.type.caption'},
                     {'label': 'Print floor', 'value': 'Taglines 7 pt, capitals 3 mm in identity marks', 'token': None},
                 ],

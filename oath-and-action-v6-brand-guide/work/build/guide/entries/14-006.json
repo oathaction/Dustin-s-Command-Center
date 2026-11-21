@@ -6,7 +6,7 @@
   "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s plate, keeps the light fill with its label.",
   "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the reader’s question follows takes the text’s ink at the subject weight, the 3 px line of the series a title names, as on Rule 14.96’s diagram. A map gives the red only to a place its title names as a point, such as the town on Rule 14.118’s locator.",
   "The named mark gives up the red and takes the text’s ink at the subject weight when an error or a step the reader can take holds the red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
-  "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, whose size follows its data, takes Charcoal at any size, and so does a named mark that would pass that share, such as a tall column in a short run."
+  "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, whose size follows its data, takes the text’s ink at any size, and so does a named mark that would pass that share, such as a tall column in a short run."
  ],
  "use_when": null,
  "use_instead": [],
@@ -78,7 +78,7 @@
   },
   {
    "label": "A named area, or past 5 percent of the drawing",
-   "value": "Charcoal, with the label (Rule 05.1): a part of a treemap, pie, donut or funnel, a region on a map, a node (a box or dot where a diagram’s links meet), a cell of a matrix, or a line or band whose width carries an amount, such as a flow",
+   "value": "The text’s ink, with the label (Rule 05.1): a part of a treemap, pie, donut or funnel, a region on a map, a node (a box or dot where a diagram’s links meet), a cell of a matrix, or a line or band whose width carries an amount, such as a flow",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {

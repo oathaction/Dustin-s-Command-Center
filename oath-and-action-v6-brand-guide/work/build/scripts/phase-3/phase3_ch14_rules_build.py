@@ -929,8 +929,9 @@ def rule_14_6(B):
          "red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, "
          "01.2 and 14.7).",
          # RF-1 (D3-890, BC M1, CD A-M2): Rule 05.1's share, stated once here; RF-17's two findings live in their row and the why
+         # G3-06 (a), Gate 3 item 6: "the text’s ink" for "Charcoal" here and in the spec "A named area, or past 5 percent"
          "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, "
-         "whose size follows its data, takes Charcoal at any size, and so does a named mark that would pass that share, such as a tall "
+         "whose size follows its data, takes the text’s ink at any size, and so does a named mark that would pass that share, such as a tall "
          "column in a short run."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
@@ -948,7 +949,7 @@ def rule_14_6(B):
                          "candidate, or a policy readers link to one party: the text’s ink at the subject weight, with the label",
           "oa.chart.color.subject.onNewsprint"),
          ("Two findings", "Both in the text’s ink at the subject weight, each with its label"),
-         ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1): a part of a treemap, pie, donut or "
+         ("A named area, or past 5 percent of the drawing", "The text’s ink, with the label (Rule 05.1): a part of a treemap, pie, donut or "
                                                             "funnel, a region on a map, a node (a box or dot where a diagram’s "
                                                             "links meet), a cell of a matrix, or a line or band whose width carries "
                                                             "an amount, such as a flow", "oa.chart.color.subject.onNewsprint"),

@@ -1107,9 +1107,11 @@ def build(ctx):
                                  'compete: a reader has to fix an error before taking a step, and a step a reader can take '
                                  'matters more than a point we want to make. Signature red is part of the marks themselves, '
                                  'so it never competes with the working red.',
+                                 # G3-06 (c), Gate 3 item 6: the exception points to the two marks Rule 05.5 names
                                  f'Red never sits on Prussian, where it measures {red_p} to 1 and reads as a party pair of '
                                  f'red and blue. On Newsprint it measures {red_n} to 1, so a working red mark there takes a '
-                                 f'keyline, a 1 px Charcoal edge drawn inside the mark (Rule 05.5).'],
+                                 f'keyline, a 1 px Charcoal edge drawn inside the mark, apart from the two marks Rule 05.5 '
+                                 f'names.'],
                         'basis': 'Design judgment'},
                 'correct': {'specimen': 's-05-3-correct',
                             'caption': 'One view at true size, with two reds. The wordmark’s ampersand is signature red and '
@@ -1194,7 +1196,10 @@ def build(ctx):
                 'rule': [f'An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its '
                          f'surface. Pillar Red measures {red_n} to 1 on Newsprint, so a red mark that carries meaning there '
                          f'takes a 1 px Charcoal keyline. The error bar takes none, since the error mark and the word '
-                         f'“Error:” carry the error and the 4 px bar beside them repeats it. Stone passes for marks on light '
+                         f'“Error:” carry the error and the 4 px bar beside them repeats it. '
+                         # G3-06 (c), Gate 3 item 6: the atlas's red target as the second exception (DR-36, board 3 reply 11)
+                         f'The atlas’s red target takes none either: the atlas draws it as a red ring and arrowhead, and each '
+                         f'plate names its target in words beside the drawing (Rule 15.11). Stone passes for marks on light '
                          f'surfaces, and a hairline that carries no meaning may sit lower.'],
                 'tokens': ['oa.color.graphic.essential.onNewsprint', 'oa.color.graphic.subtle.onNewsprint',
                            'oa.color.border.strong.onNewsprint', 'oa.color.border.hairline.onNewsprint',

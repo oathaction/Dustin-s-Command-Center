@@ -207,7 +207,7 @@
       "why": {
         "text": [
           "One red tells the eye where to go first. The order settles which mark gets it when two compete: a reader has to fix an error before taking a step, and a step a reader can take matters more than a point we want to make. Signature red is part of the marks themselves, so it never competes with the working red.",
-          "Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue. On Newsprint it measures 2.96 to 1, so a working red mark there takes a keyline, a 1 px Charcoal edge drawn inside the mark (Rule 05.5)."
+          "Red never sits on Prussian, where it measures 3.19 to 1 and reads as a party pair of red and blue. On Newsprint it measures 2.96 to 1, so a working red mark there takes a keyline, a 1 px Charcoal edge drawn inside the mark, apart from the two marks Rule 05.5 names."
         ],
         "basis": "Design judgment"
       },
@@ -375,7 +375,7 @@
       "id": "05.5",
       "title": "Keep marks that carry meaning at 3 to 1.",
       "rule": [
-        "An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its surface. Pillar Red measures 2.96 to 1 on Newsprint, so a red mark that carries meaning there takes a 1 px Charcoal keyline. The error bar takes none, since the error mark and the word “Error:” carry the error and the 4 px bar beside them repeats it. Stone passes for marks on light surfaces, and a hairline that carries no meaning may sit lower."
+        "An icon, a chart mark, a control’s edge or a focus ring needs a ratio of 3 to 1 against its surface. Pillar Red measures 2.96 to 1 on Newsprint, so a red mark that carries meaning there takes a 1 px Charcoal keyline. The error bar takes none, since the error mark and the word “Error:” carry the error and the 4 px bar beside them repeats it. The atlas’s red target takes none either: the atlas draws it as a red ring and arrowhead, and each plate names its target in words beside the drawing (Rule 15.11). Stone passes for marks on light surfaces, and a hairline that carries no meaning may sit lower."
       ],
       "tokens": [
         "oa.color.graphic.essential.onNewsprint",
