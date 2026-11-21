@@ -235,3 +235,17 @@ export function missing_tokens(text, extra = '') {
   const local = new Set([...String(extra + text).matchAll(/(--oa-[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
   return [...new Set([...String(text).matchAll(/var\((--oa-[a-z0-9-]+)/g)].map((m) => m[1]))].filter((n) => !DEFINED.has(n) && !local.has(n));
 }
+
+// Chat 11 (contract C6): a token's value on the light page, read from tokens.css with every var() resolved, for a file that
+// reads no stylesheet (a favicon): token_value('--oa-color-identity-signature-on-white') -> '#E63946'
+let TOKVALS = null;
+export function token_value(name) {
+  if (!TOKVALS) {
+    TOKVALS = new Map();
+    for (const m of tokens_css().matchAll(/(--oa-[a-z0-9-]+)\s*:\s*([^;]+);/g)) if (!TOKVALS.has(m[1])) TOKVALS.set(m[1], m[2].trim());
+  }
+  let v = TOKVALS.get(name);
+  if (v == null) throw new Error(`tokens.css has no ${name}`);
+  for (let i = 0; i < 12 && /var\(/.test(v); i++) v = v.replace(/var\((--oa-[a-z0-9-]+)\)/g, (m, n) => TOKVALS.get(n) ?? m);
+  return v;
+}

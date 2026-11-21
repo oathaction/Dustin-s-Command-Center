@@ -16,6 +16,11 @@ Checks, per file:
   PDF     every page's trim box (TrimBox, else MediaBox) against the row's size in inches, to 0.01 in; where the row
           states a bleed, the media box and bleed box are the trim size plus the bleed on each side and the trim box sits
           the bleed in from each edge; every font embedded; its bytes under max_bytes
+  ICO     (chat 11) every image inside it is square; the row's size is among them; the entry's "sizes" are exactly the
+          sizes inside (the row's studio choice for favicon.ico: 16, 32 and 48 px)
+  SVG     (chat 11) a square viewBox for a 1:1 row, and a title and a desc, as every standalone SVG export carries
+  HTML    (chat 11) a working page: a doctype, <html lang>, a <title>, the viewport meta, and, for a row with a width, the
+          entry's "width" equal to it; the page's own pixels are checked through its PNG captures
 A file the manifest names that is missing, a row id the table lacks, or a format the row does not list, fails.
 Exit 0 when every file passes, 1 otherwise.
 """
@@ -133,6 +138,61 @@ def check_pdf(path, row):
     return faults, facts
 
 
+def check_ico(path, row, ent):
+    sys.path.insert(0, str(Path(__file__).resolve().parent / "tools"))
+    import ico
+    faults, facts = [], {}
+    try:
+        entries = ico.read(path)
+    except (ValueError, OSError) as e:
+        return [f"not a readable icon file ({e})"], facts
+    sizes = [e["width"] for e in entries]
+    facts.update(sizes=sizes, formats=sorted({e["format"] for e in entries}), width=row.get("width"), height=row.get("height"))
+    if any(e["width"] != e["height"] for e in entries):
+        faults.append("an image inside is not square")
+    if row.get("width") and row["width"] not in sizes:
+        faults.append(f"holds {sizes} px; the row's {row['width']} px is not among them")
+    if ent.get("sizes") and sorted(ent["sizes"]) != sorted(sizes):
+        faults.append(f"holds {sizes} px; the manifest says {ent['sizes']}")
+    return faults, facts
+
+
+def check_svg(path, row):
+    faults, facts = [], {}
+    t = Path(path).read_text()
+    vb = re.search(r'<svg\b[^>]*\sviewBox="([^"]+)"', t)
+    nums = [float(x) for x in vb.group(1).replace(",", " ").split()] if vb else []
+    facts.update(viewBox=nums, title=bool(re.search(r"<title\b", t)), desc=bool(re.search(r"<desc\b", t)))
+    if len(nums) != 4:
+        faults.append("no viewBox")
+    else:
+        r = ratio(row.get("aspect"))
+        if r and abs(nums[2] / nums[3] - r) > 0.01 * r:
+            faults.append(f"the viewBox is {nums[2]:g} by {nums[3]:g}; the row wants {row.get('aspect')}")
+    if not facts["title"] or not facts["desc"]:
+        faults.append("a standalone SVG export carries a title and a desc")
+    return faults, facts
+
+
+def check_html(path, row, ent):
+    faults, facts = [], {}
+    t = Path(path).read_text()
+    facts.update(lang=(re.search(r'<html\b[^>]*\slang="([^"]+)"', t) or [None, None])[1],
+                 title=(re.search(r"<title>([^<]*)</title>", t) or [None, None])[1],
+                 viewport=bool(re.search(r'<meta name="viewport"', t)), width=ent.get("width"))
+    if not t.lstrip().lower().startswith("<!doctype html>"):
+        faults.append("no doctype")
+    if not facts["lang"]:
+        faults.append("no lang on <html>")
+    if not facts["title"]:
+        faults.append("no <title>")
+    if not facts["viewport"]:
+        faults.append("no viewport meta")
+    if row.get("width") and ent.get("width") != row["width"]:
+        faults.append(f"the entry's width is {ent.get('width')}; the row is {row['width']} px")
+    return faults, facts
+
+
 def newest_manifest(d):
     ms = sorted(d.glob("*_Phase-4-Exports-Manifest.json"))
     return ms[-1] if ms else None
@@ -160,12 +220,18 @@ def run(exports, specs_path, out=None):
             faults.append("the file is missing")
         else:
             fmt = ent.get("format") or f.suffix.lstrip(".").lower()
-            if row.get("formats") and fmt not in [x.lower() for x in row["formats"]] and not (fmt == "png" and row.get("basis") == "studio-choice"):
+            if row.get("formats") and fmt not in [x.lower() for x in row["formats"]] and not (fmt in ("png", "html") and row.get("basis") == "studio-choice"):
                 faults.append(f"{fmt} is not among the row's formats ({', '.join(row['formats'])})")
             if fmt == "png":
                 fa, facts = check_png(f, row)
             elif fmt == "pdf":
                 fa, facts = check_pdf(f, row)
+            elif fmt == "ico":
+                fa, facts = check_ico(f, row, ent)
+            elif fmt == "svg":
+                fa, facts = check_svg(f, row)
+            elif fmt == "html":
+                fa, facts = check_html(f, row, ent)
             else:
                 fa = [f"no check for {fmt}"]
             faults += fa
@@ -181,7 +247,9 @@ def run(exports, specs_path, out=None):
         if row:
             want = f"{row.get('width')} x {row.get('height')} {row.get('unit')}" + (f", {row.get('match')}" if row.get("match") not in (None, "exact") else "") \
                    + (f", bleed {row.get('bleed')} in" if row.get("bleed") else "")
-        got = (f"{facts.get('width')} x {facts.get('height')} px" if "width" in facts else
+        got = (f"sizes {facts['sizes']} px" if "sizes" in facts else f"viewBox {facts['viewBox']}" if "viewBox" in facts else
+               f"page, lang {facts['lang']}, width {facts.get('width')}" if "lang" in facts else
+               f"{facts.get('width')} x {facts.get('height')} px" if "width" in facts else
                (f"trim {facts['page 1']['trim_in'][0]} x {facts['page 1']['trim_in'][1]} in, media {facts['page 1']['media_in'][0]} x {facts['page 1']['media_in'][1]} in"
                 if "page 1" in facts else ""))
         print(f"{'PASS' if ok else 'FAIL'} {ent['file']}  [{ent['platform']}: {want}]  {got}")
@@ -218,16 +286,33 @@ def self_test():
             {"id": "web", "width": 1440, "height": None, "unit": "px", "match": "exact"},
             {"id": "og", "width": 1200, "height": 630, "unit": "px", "match": "min", "aspect": "1.91:1"},
             {"id": "letter", "width": 8.5, "height": 11, "unit": "in", "bleed": 0.125, "match": "exact", "formats": ["pdf"]}]}
+        # chat 11: an ICO of 16, 32 and 48 px; one missing 32; a square SVG with title and desc; one without; a page
+        sys.path.insert(0, str(Path(__file__).resolve().parent / "tools"))
+        import ico
+        for px in (16, 32, 48):
+            Image.new("RGBA", (px, px)).save(d / f"i{px}.png")
+        ico.write(d / "h.ico", [d / "i16.png", d / "i32.png", d / "i48.png"])
+        ico.write(d / "k.ico", [d / "i16.png", d / "i48.png"])
+        (d / "m.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><title>t</title><desc>d</desc></svg>')
+        (d / "n.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 16"></svg>')
+        (d / "p.html").write_text('<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width"><title>A page</title></head></html>')
+        specs["rows"] += [{"id": "ico", "width": 32, "height": 32, "unit": "px", "match": "exact", "formats": ["ico"]},
+                          {"id": "svg", "width": None, "height": None, "unit": "px", "aspect": "1:1", "match": "ratio", "formats": ["svg"]},
+                          {"id": "page", "width": 1440, "height": None, "unit": "px", "match": "exact", "basis": "studio-choice"}]
         (d / "specs.json").write_text(json.dumps(specs))
         man = {"files": [{"file": "a.png", "platform": "ig.p"}, {"file": "b.png", "platform": "ig.p"}, {"file": "c.png", "platform": "web"},
                          {"file": "e.png", "platform": "og"}, {"file": "f.pdf", "platform": "letter"}, {"file": "g.pdf", "platform": "letter"},
-                         {"file": "h.png", "platform": "ig.p"}, {"file": "a.png", "platform": "nowhere"}]}
+                         {"file": "h.png", "platform": "ig.p"}, {"file": "a.png", "platform": "nowhere"},
+                         {"file": "h.ico", "platform": "ico", "format": "ico", "sizes": [16, 32, 48]}, {"file": "k.ico", "platform": "ico", "format": "ico", "sizes": [16, 48]},
+                         {"file": "m.svg", "platform": "svg", "format": "svg"}, {"file": "n.svg", "platform": "svg", "format": "svg"},
+                         {"file": "p.html", "platform": "page", "format": "html", "width": 1440}]}
         (d / "20260101_Phase-4-Exports-Manifest.json").write_text(json.dumps(man))
         code, res = run(d, d / "specs.json")
-        want = [True, False, True, True, True, False, False, False]
+        want = [True, False, True, True, True, False, False, False, True, False, True, False, True]
         got = [r["pass"] for r in res]
         ok = got == want and code == 1
-        print(f"{'pass' if ok else 'FAIL'} self-test: exact PNG, a pixel short, a free height, a minimum, a PDF with bleed, a PDF with none, a missing file and an unknown row: {got}")
+        print(f"{'pass' if ok else 'FAIL'} self-test: exact PNG, a pixel short, a free height, a minimum, a PDF with bleed, a PDF with none, a missing file, an unknown row, "
+              f"an ICO of 16, 32 and 48, one without 32, a square SVG with title and desc, one not square and bare, and a working page: {got}")
         bad += not ok
     return bad
 

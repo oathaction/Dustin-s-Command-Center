@@ -57,7 +57,20 @@ function theme_switch(theme, target_id, group) {
   fs_ = target_id ? fs_.replace(/data-oa-theme-for="[^"]*"/, `data-oa-theme-for="${target_id}"`) : fs_.replace(/\s*data-oa-theme-for="[^"]*"/, '');
   fs_ = fs_.replace(/name="oa-theme"/g, `name="${group}"`).replace(/\s+checked>/g, '>');
   fs_ = fs_.replace(new RegExp(`(value="${theme}")`), '$1 checked');
+  // chat 11 (contract C4): the Selected check is the guide's sprite symbol, drawn by <use>, never the file's inline path
+  fs_ = sprite_icons(fs_);
   return fs_.replace(/\s*\n\s*/g, ' ').replace(/<input\s+/g, '<input ');
+}
+// A utility icon a component file draws inline (<svg ... data-icon="U-<name>" ...><path .../></svg>) becomes a <use> of the
+// guide's sprite at the svg's own size; the file keeps its own markup. Throws on an icon the sprite lacks.
+export const SPRITE_UTILITY = ['another-site', 'arrow', 'chevron', 'close', 'copy', 'download', 'error', 'filter', 'menu', 'pause',
+  'play', 'reset', 'search', 'selected-check', 'sort', 'success', 'view-full-size', 'warning'];
+export function sprite_icons(html) {
+  return html.replace(/(<svg\b[^>]*\bdata-icon="U-([a-z-]+)"[^>]*>)([\s\S]*?)(<\/svg>)/g, (m, open, name, inner, close) => {
+    if (!SPRITE_UTILITY.includes(name)) throw new Error(`the guide's sprite has no utility icon ${name}`);
+    const px = /\swidth="16"/.test(open) ? 16 : 24;
+    return `${open}<use href="#oa-sym-u-${name}-${px}px"/>${close}`;
+  });
 }
 export const switch_css = () => fs.readFileSync(path.join(CODE, 'c-18-theme-switch.css'), 'utf8');
 export const switch_js = () => fs.readFileSync(path.join(CODE, 'c-18-theme-switch.js'), 'utf8');
@@ -176,7 +189,7 @@ export async function render(spec) {
   return {
     id: spec.id, type, unit: 'px', alt: spec.alt, fig,
     css: page_css() + '\n' + switch_css() + '\n' + res_switch_css(),
-    sprite: sprite([`oa-sym-${spec.kicker_symbol}`, `oa-sym-${spec.kicker_symbol}-24px`]),
+    sprite: sprite([`oa-sym-${spec.kicker_symbol}`, `oa-sym-${spec.kicker_symbol}-24px`, 'oa-sym-u-selected-check-24px']),
     page: (o) => page_html(spec, fig.html, o),
     widths: spec.widths, themes: ['light', 'dark'],
     exports: spec.widths.flatMap((x) => ['light', 'dark'].map((t) => ({ kind: 'png', full_page: true, theme: t, platform: x.platform,

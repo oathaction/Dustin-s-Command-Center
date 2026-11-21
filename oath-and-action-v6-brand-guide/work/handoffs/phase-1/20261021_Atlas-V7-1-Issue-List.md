@@ -300,3 +300,11 @@ Dustin approved this row on board 3 on November 20, 2026 (reply 24, DR-291). The
 |---|---|---|---|
 | 46 | Each reform route's who-acts field holds three kinds of thing. Of the 126 route entries (89 distinct values), most name who acts ("Congress" 12 times, "Voters" 9, "Legislatures" 8), some name an instrument ("Statute" 5, "Amendment" 3), and five state an action that opens with a verb: R-03's federal statute route, "Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting"; R-11's, "Restructure the commission"; R-17's, "Codify protections and reverse Schedule Policy/Career"; R-17's federal agency route, "Rescind the OPM rule"; and R-47's state statute route, "Legalize fusion". Rule 15.20's correct plate prints such a line as stored, with no "Who acts" label | `reforms[].routes[].who` | Keep `who` for who acts, and move an instrument or an action into a field of its own, as the atlas's eleven route records already separate them; the route entries' notes already hold text on 50 entries, so a new field is the clearer home (the research lead's round 4 notes, D3-1861) |
 
+
+## Added November 21, 2026
+
+Found by the data visualization lead in chat 11 while planning chapter 21, and confirmed by the main session from the Atlas V7 snapshot of October 15, 2026 (`work/extract/atlas-v7-data.json`). No guide plate prints the field. Nothing in V7 changed.
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 47 | Loop R18's valence text has a word missing: "Harmful; this is 's B1b with its true polarity. When the person inspected can remove the inspector, the breaker becomes a bypass." The possessive has no owner before "'s" | `loops[]`, id R18, field `valence` | Restore the missing word before "'s B1b" from the atlas editor's draft, or rewrite the clause as "this is Loop B1b with its true polarity" |

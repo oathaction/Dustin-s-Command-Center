@@ -20,14 +20,14 @@ import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
 import { createRequire } from 'module';
-import { KIT, ROOT, EXPORTS, PLATE_CSS, esc, export_page, font_css, frame, missing_tokens, plate, today, tokens_css } from './lib.mjs';
+import { KIT, ROOT, EXPORTS, PLATES, PLATE_CSS, esc, export_page, font_css, frame, missing_tokens, plate, sha256, today, tokens_css, track, untrack } from './lib.mjs';
 
 const require = createRequire(import.meta.url);
-const SCRATCH = '/tmp/claude-0/-home-user-Dustin-s-Command-Center/127ebfa4-7663-587b-a8ae-9ad439f7784c/scratchpad/c10/engineer/app-out';
+const SCRATCH = process.env.OA_APP_OUT || '/tmp/claude-0/-home-user-Dustin-s-Command-Center/ac32a0f7-d562-5d93-9aba-0ef59f7ca891/scratchpad/c11/engineer/app-out';
 const AXE = path.join(ROOT, 'work/build/node_modules/axe-core/axe.min.js');
 
 function args(argv) {
-  const o = { _: [], out: SCRATCH, exports: EXPORTS, date: today(), export: true };
+  const o = { _: [], out: SCRATCH, exports: EXPORTS, plates: PLATES, date: today(), export: true };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--all') o.all = true;
@@ -35,16 +35,19 @@ function args(argv) {
     else if (a === '--exports') o.exports = path.resolve(argv[++i]);
     else if (a === '--date') o.date = argv[++i];
     else if (a === '--no-export') o.export = false;
+    else if (a === '--plates') o.plates = path.resolve(argv[++i]);
+    else if (a === '--no-plates') o.plates = null;
+    else if (a === '--spec-dir') o.spec_dir = path.resolve(argv[++i]);
     else o._.push(a);
   }
   return o;
 }
 
 function specs(o) {
-  const dir = path.join(KIT, 'specs');
+  const dir = o.spec_dir || path.join(KIT, 'specs');
   const all = fs.readdirSync(dir).filter((f) => /^a\d+-.*\.json$/.test(f)).sort();
   const pick = o.all || !o._.length ? all : all.filter((f) => o._.some((x) => f.toLowerCase().startsWith(x.toLowerCase())));
-  return pick.map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
+  return pick.map((f) => Object.defineProperty(JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')), '__dir', { value: dir, enumerable: false }));
 }
 
 async function renderer(t) { return import(path.join(KIT, 'renderers', `${t}.mjs`)); }
@@ -76,6 +79,20 @@ function page_facts() {
     out.marks.push({ cls: String(s.getAttribute('class') || ''), red: s.getAttribute('data-red'), rect: [r.left + scrollX, r.top + scrollY, r.width, r.height] });
   });
   document.querySelectorAll('[data-red]').forEach((e) => { const r = e.getBoundingClientRect(); if (r.width && getComputedStyle(e).display !== 'none') out.reds.push(e.getAttribute('data-red')); });
+  // chat 11 (contract C5): each section's top, from data-oa-section, and each element painted Charcoal or Prussian, the
+  // outermost of nested ones, on the page (tools/screen_shares.py keeps those of 3 percent of a screen or more as panels)
+  out.sections = [...document.querySelectorAll('[data-oa-section]')].map((e) => ({ name: e.getAttribute('data-oa-section'), top: Math.round(e.getBoundingClientRect().top + scrollY) }));
+  const DARK = { 'rgb(18, 18, 18)': 'charcoal', 'rgb(31, 45, 90)': 'prussian' };
+  const darkOf = (e) => DARK[getComputedStyle(e).backgroundColor];
+  out.dark = [];
+  document.querySelectorAll('body *').forEach((e) => {
+    const k = darkOf(e);
+    if (!k) return;
+    for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) if (darkOf(p)) return;
+    const r = e.getBoundingClientRect();
+    if (r.width < 1 || r.height < 1 || r.bottom + scrollY <= 0 || getComputedStyle(e).visibility === 'hidden') return;
+    out.dark.push({ color: k, tag: e.tagName.toLowerCase(), cls: String(e.getAttribute('class') || '').slice(0, 40), rect: [Math.round(r.left + scrollX), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)] });
+  });
   return out;
 }
 
@@ -101,19 +118,40 @@ async function web_checks(p, url, vw, vh) {
   return r;
 }
 
+// Contract C4: the plate the guide build places for a data-oa-app placeholder, with every input's hash so the build can tell
+// a stale drawing. The renderer type's style goes beside it once (plates/<type>.css), for the page's head.
+function write_plate(dir, gp, read, R, spec) {
+  fs.mkdirSync(dir, { recursive: true });
+  const code = ['work/build/app-kit/lib.mjs', 'work/build/app-kit/oa-app.mjs', `work/build/app-kit/renderers/${spec.type}.mjs`];
+  if (R.code_inputs) code.push(...R.code_inputs(spec));
+  const specdir = spec.__dir || path.join(KIT, 'specs');
+  const specfile = fs.readdirSync(specdir).find((f) => f.toLowerCase().startsWith(spec.id.toLowerCase() + '-'));
+  const inputs = {};
+  for (const rel of [...new Set([...code, path.relative(ROOT, path.join(specdir, specfile)), ...read])].sort()) {
+    if (fs.existsSync(path.join(ROOT, rel)) && fs.statSync(path.join(ROOT, rel)).isFile()) inputs[rel] = sha256(rel);
+  }
+  const css_file = `${gp.type}.css`;
+  fs.writeFileSync(path.join(dir, css_file), gp.css);
+  const out = { id: spec.id, type: gp.type, title: spec.title || null, css: css_file, written: new Date().toISOString(), by: 'work/build/app-kit/oa-app.mjs',
+    views: gp.views.map(({ key, w, h, theme, alt, html }) => ({ key, w, h, theme, alt, html })), inputs };
+  fs.writeFileSync(path.join(dir, `${spec.id.toLowerCase()}.json`), JSON.stringify(out, null, 1));
+  console.log(`  plate ${spec.id}: ${gp.views.length} frame(s), ${Object.keys(inputs).length} inputs -> ${path.relative(ROOT, path.join(dir, spec.id.toLowerCase() + '.json'))}`);
+}
+
 async function main() {
   const o = args(process.argv.slice(2));
   const { chromium } = require('playwright');
   fs.mkdirSync(o.out, { recursive: true });
   if (o.export) fs.mkdirSync(o.exports, { recursive: true });
   const manifest = { written: new Date().toISOString(), by: 'work/build/app-kit/oa-app.mjs', specs: 'work/research/20261121_Platform-Specifications.json', files: [] };
-  const plates = [];
+  const plates = [], guide_plates = [];
   const extra_page = { sprite: [], kit_css: null };
   const browser = await chromium.launch();
   const fonts = font_css(), tokens = tokens_css();
   try {
     for (const spec of specs(o)) {
       const R = await renderer(spec.type);
+      const reads = track();   // contract C4: every file read while this application is drawn
       const r = await R.render(spec);
       const dir = path.join(o.out, spec.id.toLowerCase());
       fs.mkdirSync(dir, { recursive: true });
@@ -122,7 +160,7 @@ async function main() {
       facts.missing_tokens = miss;
       if (miss.length) console.log(`  ~ ${spec.id}: tokens not in tokens.css: ${miss.join(', ')}`);
       const stem = (n) => `${o.date}_${n}`;
-      if (spec.type === 'social-post' || spec.type === 'report-page') {
+      if (spec.type === 'social-post' || spec.type === 'report-page' || spec.type === 'share-image') {
         const html = export_page({ title: r.title || spec.plate_head, w: r.w, h: r.h, html: r.html, css: r.css, page: r.print || null });
         const pf = path.join(dir, 'export.html');
         fs.writeFileSync(pf, html);
@@ -136,7 +174,7 @@ async function main() {
           if (ex.kind === 'png') {
             const file = stem(ex.name) + '.png';
             await p.screenshot({ path: path.join(o.exports, file), clip: { x: 0, y: 0, width: r.w, height: r.h } });
-            manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', theme: ex.theme, ...(ex.proof ? { expect: { width: r.w, height: r.h }, note: 'proof of the sheet at 96 ppi' } : {}) });
+            manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', theme: ex.theme, ...(ex.proof ? { expect: { width: r.w, height: r.h }, note: 'proof of the sheet at 96 ppi' } : {}), ...(r.meta ? { meta: r.meta } : {}) });
             f.png = file;
           } else if (ex.kind === 'pdf') {
             const file = stem(ex.name) + '.pdf';
@@ -155,6 +193,68 @@ async function main() {
         const fr = [frame({ w: r.w, h: r.h, html: r.html, alt: r.alt, layers: r.layers })];
         if (r.plate.feed_px) fr.push(frame({ w: r.w, h: r.h, html: r.html, alt: r.alt + ' Shown at the 390 px width a phone’s feed gives it.', cls: 'oa-app-feed' }));
         plates.push({ id: spec.id, html: plate({ id: spec.id.toLowerCase(), head: r.plate.head, line: r.plate.line, css: r.css, frames: fr }) });
+        // contract C4: a still drawn for the guide, one view at its true size
+        if (spec.guide) {
+          const key = `${r.w}-${r.exports[0].theme || 'light'}`;
+          const alt = spec.alt;
+          guide_plates.push({ spec, type: spec.type, css: r.css, views: [{ key, w: r.w, h: r.h, theme: r.exports[0].theme || 'light', alt,
+            html: frame({ w: r.w, h: r.h, html: r.html, alt, layers: r.layers, page: { id: spec.id, key, type: spec.type } }) }] });
+        }
+      } else if (spec.type === 'favicon-set') {
+        // contract C6: the SVG favicon as written, the ICO from three PNGs the kit draws at 16, 32 and 48 px on a clear
+        // ground, and the three app icons at their rows' sizes
+        const views = [];
+        for (const ex of r.exports) {
+          const pid = `${spec.id.toLowerCase()}-${ex.name.toLowerCase()}`;
+          if (ex.kind === 'svg') {
+            const file = stem(ex.name) + '.svg';
+            if (o.export) { fs.writeFileSync(path.join(o.exports, file), ex.text); manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'svg', serve_as: ex.serve_as }); }
+            facts.views.push({ svg: file, kind: 'svg' });
+          } else if (ex.kind === 'ico') {
+            const parts = [];
+            for (const px of ex.sizes) {
+              const pf = path.join(dir, `ico-${px}.html`);
+              fs.writeFileSync(pf, `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:transparent}</style></head><body>${ex.html_at(px)}</body></html>`);
+              const p = await browser.newPage({ viewport: { width: px, height: px }, deviceScaleFactor: 1 });
+              await p.goto('file://' + pf, { waitUntil: 'load' });
+              const png = path.join(dir, `ico-${px}.png`);
+              await p.screenshot({ path: png, clip: { x: 0, y: 0, width: px, height: px }, omitBackground: true });
+              await p.close();
+              parts.push(png);
+            }
+            const file = stem(ex.name) + '.ico';
+            if (o.export) {
+              const ic = spawnSync('python3', ['-I', path.join(KIT, 'tools/ico.py'), path.join(o.exports, file), ...parts], { encoding: 'utf8' });
+              if (ic.status !== 0) throw new Error('ico: ' + (ic.stderr || ic.stdout));
+              manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'ico', serve_as: ex.serve_as, sizes: ex.sizes });
+            }
+            facts.views.push({ ico: file, kind: 'ico', parts: parts.map((x) => path.basename(x)) });
+          } else {
+            const html = export_page({ title: spec.plate_head, w: ex.w, h: ex.h, html: ex.html, css: ex.css, fonts: false });
+            const pf = path.join(dir, `${ex.name}.html`);
+            fs.writeFileSync(pf, html);
+            const p = await browser.newPage({ viewport: { width: ex.w, height: ex.h }, deviceScaleFactor: 1 });
+            await p.goto('file://' + pf, { waitUntil: 'load' });
+            const file = stem(ex.name) + '.png';
+            if (o.export) { await p.screenshot({ path: path.join(o.exports, file), clip: { x: 0, y: 0, width: ex.w, height: ex.h } }); manifest.files.push({ file, spec: spec.id, platform: ex.platform, format: 'png', serve_as: ex.serve_as, theme: 'light' }); }
+            facts.views.push({ png: file, kind: 'app-icon', w: ex.w, h: ex.h, b: ex.b, safe: ex.platform === 'website.manifest_512' ? r.safe_512 : null });
+            await p.close();
+            if (spec.guide) {
+              const key = `${ex.w}`;
+              const alt = `${spec.alt} The ${ex.serve_as.replace(/\.png$/, '')} icon, ${ex.w} by ${ex.h} px.`;
+              views.push({ key, w: ex.w, h: ex.h, theme: 'light', alt, html: frame({ w: ex.w, h: ex.h, html: ex.html, alt, page: { id: spec.id, key, type: spec.type } }) });
+            }
+          }
+        }
+        if (spec.guide) {
+          const fav = r.svg.replace(/<title[\s\S]*?<\/title>|<desc[\s\S]*?<\/desc>/g, '').replace(/\s(role|aria-labelledby)="[^"]*"/g, '').replace('<svg ', '<svg aria-hidden="true" focusable="false" ');
+          for (const g of ['light', 'dark']) {
+            const key = `16-${g}`;
+            const alt = `${spec.alt} The favicon at 16 px on a ${g} browser tab.`;
+            views.unshift({ key, w: 16, h: 16, theme: g, alt, html: frame({ w: 16, h: 16, html: `<div class="fi-fav fi-fav--${g}">${fav}</div>`, alt, page: { id: spec.id, key, type: spec.type } }) });
+          }
+          guide_plates.push({ spec, type: spec.type, css: r.exports.filter((x) => x.css).map((x) => x.css)[0] + '.fi-fav{width:16px;height:16px}.fi-fav svg{display:block}', views });
+        }
       } else if (spec.type === 'web-page') {
         extra_page.sprite.push(r.sprite);
         extra_page.kit_css = r.fig.css;
@@ -185,7 +285,7 @@ async function main() {
             await p.goto('file://' + pf, { waitUntil: 'load' });
             await p.evaluate(() => document.fonts.ready);
             const f = await p.evaluate(page_facts);
-            f.width = wv.w; f.theme = t; f.checked = await p.evaluate(() => (document.querySelector('.oa-theme-input:checked') || {}).value);
+            f.width = wv.w; f.vh = wv.vh; f.theme = t; f.checked = await p.evaluate(() => (document.querySelector('.oa-theme-input:checked') || {}).value);
             heights[wv.w] = f.doc_h;
             const ex = r.exports.find((x) => x.viewport[0] === wv.w && x.theme === t);
             if (o.export) {
@@ -219,14 +319,22 @@ async function main() {
         }
         // the plate: one frame per width, Light and Dark side by side, each its own page at its width (container queries
         // and cqi type), the switch inside each frame setting that frame
-        const fr = [];
+        const fr = [], views = [];
         for (const wv of r.widths) for (const t of r.themes) {
-          const pid = `a02-${wv.w}-${t}`;
+          const key = `${wv.w}-${t}`;
+          const pid = `${spec.id.toLowerCase()}-${key}`;
           const body = r.page({ pid, theme: t, theme_for: pid, group: `oa-theme-${pid}` });
-          fr.push(frame({ w: wv.w, h: heights[wv.w], html: body, alt: `${r.alt} At ${wv.w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark mode'}.` }));
+          const alt = (r.view_alt ? r.view_alt(wv, t) : null) || `${r.alt} At ${wv.w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark mode'}.`;
+          const html = frame({ w: wv.w, h: heights[wv.w], html: body, alt, page: { id: spec.id, key, type: spec.type } });
+          fr.push(html);
+          views.push({ key, w: wv.w, h: heights[wv.w], theme: t, alt, html });
         }
-        plates.push({ id: spec.id, html: plate({ id: 'a02', head: r.plate.head, line: r.plate.line, css: r.css, frames: fr }) });
+        plates.push({ id: spec.id, html: plate({ id: spec.id.toLowerCase(), head: r.plate.head, line: r.plate.line, css: r.css, frames: fr }) });
+        if (spec.guide) guide_plates.push({ spec, type: spec.type, css: r.css, views });   // contract C4: a plate for the guide
       }
+      const read = untrack();
+      const gp = guide_plates.find((x) => x.spec === spec);
+      if (gp && o.plates) write_plate(o.plates, gp, read, R, spec);
       fs.writeFileSync(path.join(dir, 'facts.json'), JSON.stringify(facts, null, 1));
       console.log(`${spec.id} ${spec.type}: ${facts.views.length} view(s)${facts.missing_tokens.length ? ', ' + facts.missing_tokens.length + ' unknown token(s)' : ''}`);
     }
@@ -235,6 +343,13 @@ async function main() {
   }
   if (o.export && manifest.files.length) {
     const mf = path.join(o.exports, `${o.date}_Phase-4-Exports-Manifest.json`);
+    // chat 11: one manifest for the folder; a build of some applications replaces their entries and keeps the others'
+    const built = new Set(manifest.files.map((f) => f.spec));
+    let prev = null;
+    const olds = fs.readdirSync(o.exports).filter((f) => /^\d{8}_Phase-4-Exports-Manifest\.json$/.test(f)).sort();
+    if (olds.length) prev = JSON.parse(fs.readFileSync(path.join(o.exports, olds[olds.length - 1]), 'utf8'));
+    if (prev) manifest.files = prev.files.filter((f) => !built.has(f.spec)).concat(manifest.files);
+    for (const f of olds) if (path.join(o.exports, f) !== mf) fs.unlinkSync(path.join(o.exports, f));
     fs.writeFileSync(mf, JSON.stringify(manifest, null, 1));
     console.log(`wrote ${manifest.files.length} exports and ${path.relative(ROOT, mf)}`);
   }

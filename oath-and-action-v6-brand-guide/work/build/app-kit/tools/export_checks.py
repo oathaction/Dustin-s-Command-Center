@@ -11,6 +11,9 @@ Per view (each PNG export with its facts):
             word's box, the ink the pixel farthest from it in luminance; the WCAG 2.2 ratio of the two, against 4.5 to 1
             (3 to 1 for 24 px and up, or 18.66 px bold and up)
   shares    the Newsprint share of the export (Rule 05.1: 60 to 85 percent), the Charcoal share, and the red share
+  screens   a web page (chat 11, contract C5; DR-310): the shares and dark panels of its first screen and of each section's
+            opening screen, by tools/screen_shares.py, judged by Rule 05.1 on a light page (red alone on a dark one); this
+            replaces the whole capture's Newsprint test for web pages
   feed      the post only (Rule 08.2's feed test, dark card): reduced with Lanczos to 432 and 360 px wide, each of the
             sign-off's eight nodes keeps a 2 by 2 block with every channel over 155, and the lever at least four red pixels
 """
@@ -22,6 +25,9 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import screen_shares  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[4]
 TOKENS = (ROOT / "work/build/tokens/tokens.css").read_text()
@@ -97,25 +103,33 @@ def need(word):
     return 3.0 if size >= 24 or (size >= 18.66 and weight >= 700) else 4.5
 
 
-def feed_test(png, sign):
-    """Rule 08.2's dark-card feed test at 432 and 360 px wide."""
+def feed_test(png, sign, widths=(432, 360)):
+    """Rule 08.2's feed test: the dark card's (a 2 by 2 block of every channel over 155 in each node) by default, or on a
+    light ground (sign["ground"] newsprint or white) one near-black pixel, every channel under 70, in each node's square plus
+    1 px on every side; the lever keeps four red pixels either way. The 1200 by 630 card is reduced to 500 and 360 px."""
     im = Image.open(png).convert("RGB")
     out = {}
     s0, sx, sy = sign["size"] / 48, sign["x"], sign["y"]
+    light = sign.get("ground") in ("newsprint", "white")
     centers = [(4.5, 4.5), (23.5, 4.5), (42.5, 4.5), (4.5, 23.5), (23.5, 23.5), (42.5, 23.5), (4.5, 42.5), (23.5, 42.5)]
     lever = (42.5, 42.5)
-    for w in (432, 360):
+    for w in widths:
         k = w / im.width
         sm = np.asarray(im.resize((w, round(im.height * k)), Image.LANCZOS)).astype(int)
         nodes = []
         for cx, cy in centers:
             X, Y = (sx + cx * s0) * k, (sy + cy * s0) * k
             ok = False
-            for yy in range(int(Y) - 2, int(Y) + 2):
-                for xx in range(int(X) - 2, int(X) + 2):
-                    blk = sm[yy:yy + 2, xx:xx + 2]
-                    if blk.shape[:2] == (2, 2) and (blk > 155).all():
-                        ok = True
+            if light:
+                h = 4.5 * s0 * k + 1
+                sq = sm[max(0, int(np.floor(Y - h))):int(np.ceil(Y + h)) + 1, max(0, int(np.floor(X - h))):int(np.ceil(X + h)) + 1]
+                ok = bool((sq < 70).all(axis=2).any())
+            else:
+                for yy in range(int(Y) - 2, int(Y) + 2):
+                    for xx in range(int(X) - 2, int(X) + 2):
+                        blk = sm[yy:yy + 2, xx:xx + 2]
+                        if blk.shape[:2] == (2, 2) and (blk > 155).all():
+                            ok = True
             nodes.append(ok)
         X, Y, R = (sx + lever[0] * s0) * k, (sy + lever[1] * s0) * k, 6 * s0 * k
         reg = sm[max(0, int(Y - R)):int(Y + R) + 1, max(0, int(X - R)):int(X + R) + 1]
@@ -161,26 +175,90 @@ def check_view(view, exports, kind):
     return res
 
 
+def check_icons(facts, exports):
+    """Chat 11 (contract C6): the favicon set. The SVG favicon's viewBox is square and it names itself; the ICO holds 16, 32
+    and 48 px PNGs; each app icon's B, measured on its pixels against its tile, holds 3 to 1 (Rule 04.7's 4.49 for signature
+    red on Charcoal), stands 58 percent of the tile tall to within a pixel, and on the maskable icon its ink stays inside the
+    row's safe circle."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import ico as icomod
+    res = {}
+    for v in facts["views"]:
+        faults, out = [], {}
+        if v.get("kind") == "svg":
+            t = (exports / v["svg"]).read_text()
+            vb = re.search(r'viewBox="([^"]+)"', t)
+            nums = [float(x) for x in vb.group(1).split()] if vb else []
+            out = {"viewBox": nums, "title": bool(re.search(r"<title\b", t)), "desc": bool(re.search(r"<desc\b", t)), "bytes": len(t.encode())}
+            if len(nums) != 4 or nums[2] != nums[3]:
+                faults.append("the viewBox is not square")
+            if not out["title"] or not out["desc"]:
+                faults.append("no title or desc")
+            key = v["svg"]
+        elif v.get("kind") == "ico":
+            ent = icomod.read(exports / v["ico"])
+            out = {"entries": [(e["width"], e["format"]) for e in ent]}
+            if sorted(e["width"] for e in ent) != [16, 32, 48]:
+                faults.append(f"holds {[e['width'] for e in ent]}, not 16, 32 and 48 px")
+            key = v["ico"]
+        elif v.get("kind") == "app-icon":
+            px = np.asarray(Image.open(exports / v["png"]).convert("RGB")).astype(int)
+            tile = Counter(map(tuple, px.reshape(-1, 3))).most_common(1)[0][0]
+            ink = np.abs(px - np.array(tile)).max(axis=2) > 24
+            ys, xs = np.where(ink)
+            red = px[(np.abs(px - np.array(RED)).max(axis=2) <= 3)]
+            h = int(ys.max() - ys.min() + 1) if len(ys) else 0
+            out = {"tile": "#%02X%02X%02X" % tuple(tile), "b_height_px": h, "b_share": round(h / px.shape[0] * 100, 1),
+                   "contrast": round(ratio(RED, tile), 2), "red_pixels": int(len(red))}
+            if out["contrast"] < 3:
+                faults.append(f"B on its tile measures {out['contrast']} to 1, under 3")
+            if abs(h - 0.58 * px.shape[0]) > 1.5:
+                faults.append(f"B stands {h} px, not 58 percent of {px.shape[0]}")
+            if v.get("safe"):
+                c = v["safe"]
+                d = np.sqrt((xs + 0.5 - c["cx"]) ** 2 + (ys + 0.5 - c["cy"]) ** 2)
+                out["farthest_ink_px"] = round(float(d.max()), 1)
+                out["safe_radius_px"] = c["r"]
+                if d.max() > c["r"]:
+                    faults.append(f"ink reaches {d.max():.1f} px from the center, past the safe circle's {c['r']}")
+            key = v["png"]
+        else:
+            continue
+        res[key] = {"faults": faults, **out}
+        print(f"{'PASS' if not faults else 'FAIL'} {key}: " + ", ".join(f"{k} {val}" for k, val in out.items()))
+        for f in faults:
+            print("  - " + f)
+    return res
+
+
 def main(out_dir, exports, report=None):
     out_dir, exports = Path(out_dir), Path(exports)
     all_res, bad = {}, 0
     for fp in sorted(out_dir.glob("a*/facts.json")):
         facts = json.loads(fp.read_text())
+        if facts["type"] == "favicon-set":
+            for k, r in check_icons(facts, exports).items():
+                all_res[k] = r
+                bad += bool(r["faults"])
+            continue
         for v in facts["views"]:
             if not v.get("png"):
                 continue
             r = check_view(v, exports, facts["type"])
-            if facts["type"] == "social-post" and v.get("sign_off"):
-                r["feed"] = feed_test(exports / v["png"], v["sign_off"])
+            if facts["type"] in ("social-post", "share-image") and v.get("sign_off"):
+                r["feed"] = feed_test(exports / v["png"], v["sign_off"], (500, 360) if facts["type"] == "share-image" else (432, 360))
                 if not all(x["pass"] for x in r["feed"].values()):
                     r["faults"].append("the feed test fails")
                 nsh = r["shares"]["newsprint"]
-                if not 60 <= nsh <= 85:
+                if v["sign_off"].get("ground", "newsprint") == "newsprint" and not 60 <= nsh <= 85:
                     r["faults"].append(f"Newsprint covers {nsh} percent, outside Rule 05.1's 60 to 85")
-            if facts["type"] == "web-page" and v.get("theme") == "light":
-                nsh = r["shares"]["newsprint"]
-                if not 60 <= nsh <= 85:
-                    r["faults"].append(f"Newsprint covers {nsh} percent of the light capture, outside Rule 05.1's 60 to 85 (sample spec 2.7)")
+            if facts["type"] == "web-page" and v.get("vh"):
+                # chat 11 (contract C5, DR-310): Rule 05.1 by screen, the first and each section's opening screen
+                r["screens"] = screen_shares.measure(exports / v["png"], v["vh"], v.get("sections") or [], v.get("dark") or [],
+                                                     v.get("theme", "light"), v.get("width"))
+                for scr in r["screens"]:
+                    for f in scr["faults"]:
+                        r["faults"].append(f"{scr['screen']}: {f}")
             key = v["png"]
             all_res[key] = r
             bad += bool(r["faults"])
@@ -189,6 +267,8 @@ def main(out_dir, exports, report=None):
                   f"Newsprint {r['shares']['newsprint']}%, Charcoal {r['shares']['charcoal']}%, red {r['shares']['red']}%; "
                   f"reds {r['red']['working']} working, {r['red']['signature']} signature"
                   + (f"; feed test {', '.join(f'{k} px {x['nodes_kept']} of 8 nodes, {x['lever_red_pixels']} red' for k, x in r['feed'].items())}" if r.get("feed") else ""))
+            for scr in r.get("screens") or []:
+                print("  " + screen_shares.line(f"{v.get('width')} {v.get('theme')}", scr))
             for f in r["faults"]:
                 print("  - " + f)
     if report:
