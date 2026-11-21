@@ -62,7 +62,12 @@ PAGE_LIMIT = 16 * MB
 # (362,857 bytes) each. The application kit's measured bytes re-size them later in chat 10 (PHASE_4_ALLOCATION's history is
 # in work/handoffs/phase-4/20261121_Phase-4-Allocations.md). Each figure moves as its content needs; only 16 MB stops a build.
 PHASE_4 = ("16", "20", "21", "22", "23", "24", "25")
-PHASE_4_ALLOCATION = {"16": 300_000, "20": 500_000, "21": 460_000, "22": 300_000, "23": 660_000, "24": 450_000, "25": 340_000}
+PHASE_4_GATE_3 = {"16": 300_000, "20": 500_000, "21": 460_000, "22": 300_000, "23": 660_000, "24": 450_000, "25": 340_000}
+# Re-sized later in chat 10 from the application kit's measured plates (one artboard plate 8,039 bytes as placed, an article
+# page at four widths and two themes 187,145, a report page 11,355, a rule's words and frames 6,726 at today's median),
+# counting what each chapter draws from the Gate 3 report's section 9 tables: 3,284,000 bytes in all, 274,000 more than
+# Gate 3's. The counts and the arithmetic are in work/handoffs/phase-4/20261121_Phase-4-Allocations.md.
+PHASE_4_ALLOCATION = {"16": 300_000, "20": 757_000, "21": 655_000, "22": 277_000, "23": 743_000, "24": 338_000, "25": 214_000}
 ALLOCATION = {"13": 0.25 * MB, "14": CHAPTER_14_STOP, "15": 0.60 * MB,
               **PHASE_4_ALLOCATION,
               **{n: 0.40 * MB / 2 for n in ("27", "28")}}
@@ -505,22 +510,22 @@ def self_test():
     _, rec, _ = run(w, {}, 300_000, {"01", "02", "03"})
     p4 = rec.get("phase_4") or {}
     rest = rec["projected_bytes"] - sum(PHASE_4_ALLOCATION.values())
-    ok = (p4.get("chapters") == sorted(PHASE_4) and p4.get("allocations") == PHASE_4_ALLOCATION and p4.get("allocated") == 3_010_000
+    ok = (p4.get("chapters") == sorted(PHASE_4) and p4.get("allocations") == PHASE_4_ALLOCATION and p4.get("allocated") == sum(PHASE_4_ALLOCATION.values()) == 3_284_000
           and abs(p4["break_even_each_16mb"] - (PAGE_LIMIT - rest) / 7) <= 1
           and abs(p4["break_even_each_15_5mb"] - (PAGE_BUDGET - rest) / 7) <= 1 and p4["built_chapters_median"] == 400_000 and p4["built_chapters_mean"] == 400_000
-          and any("Phase 4's 7 chapters" in n and "(ST-S10)" in n and "23: 660,000" in n and "3,010,000 bytes in all" in n for n in run.noted))
+          and any("Phase 4's 7 chapters" in n and "(ST-S10)" in n and "23: 743,000" in n and "3,284,000 bytes in all" in n for n in run.noted))
     print(f"{'pass' if ok else 'FAIL'} ST-S10: Phase 4's seven allocations, their sum, the break-even under 16 MB and 15.5 MB, and the built chapters' median and mean, reported")
     bad += not ok
     # chat 10 (G3-07): the seven figures the Gate 3 report approved, and each built Phase 4 chapter reported against its own
-    ok = PHASE_4_ALLOCATION == {"16": 300_000, "20": 500_000, "21": 460_000, "22": 300_000, "23": 660_000, "24": 450_000, "25": 340_000} \
-        and all(ALLOCATION[n] == PHASE_4_ALLOCATION[n] for n in PHASE_4) and set(PHASE_4) <= set(IN_PROGRESS)
-    print(f"{'pass' if ok else 'FAIL'} G3-07: Phase 4's seven chapters at the Gate 3 report's allocations, 3,010,000 bytes in all, each held to it while built")
+    ok = (sum(PHASE_4_GATE_3.values()) == 3_010_000 and PHASE_4_ALLOCATION == {"16": 300_000, "20": 757_000, "21": 655_000, "22": 277_000, "23": 743_000, "24": 338_000, "25": 214_000}
+          and all(ALLOCATION[n] == PHASE_4_ALLOCATION[n] for n in PHASE_4) and set(PHASE_4) <= set(IN_PROGRESS))
+    print(f"{'pass' if ok else 'FAIL'} G3-07: Phase 4's seven chapters at their re-sized allocations, 3,284,000 bytes in all (Gate 3's 3,010,000 kept as the record), each held to it while built")
     bad += not ok
-    w = json.loads(json.dumps(base)); w["chapters"]["16"] = {"bytes": 250_000}; w["chapters"]["23"] = {"bytes": 660_001}
+    w = json.loads(json.dumps(base)); w["chapters"]["16"] = {"bytes": 250_000}; w["chapters"]["23"] = {"bytes": 743_001}
     _, rec, got = run(w, {}, 300_000, {"16", "23"})
-    ok = (rec["phase_4_built"] == {"16": {"bytes": 250_000, "allocation": 300_000, "room": 50_000}, "23": {"bytes": 660_001, "allocation": 660_000, "room": -1}}
+    ok = (rec["phase_4_built"] == {"16": {"bytes": 250_000, "allocation": 300_000, "room": 50_000}, "23": {"bytes": 743_001, "allocation": 743_000, "room": -1}}
           and any(n.startswith("chapter 16: weighs 250,000 bytes against its allocation of 300,000 (83 percent), 50,000 bytes to spare") for n in run.noted)
-          and any(n.startswith("chapter 23: weighs 660,001 bytes against its allocation of 660,000") and "over it, reported (DR-271)" in n for n in run.noted)
+          and any(n.startswith("chapter 23: weighs 743,001 bytes against its allocation of 743,000") and "over it, reported (DR-271)" in n for n in run.noted)
           and not any("chapter 23" in g for g in got) and rec["held_to_allocation"].get("16") == 50_000 and "23" not in rec["held_to_allocation"]
           and rec["phase_4"]["chapters"] == ["20", "21", "22", "24", "25"])
     print(f"{'pass' if ok else 'FAIL'} G3-07: a built Phase 4 chapter is reported against its own allocation (under it, and one byte over), and held to it in the projection")
