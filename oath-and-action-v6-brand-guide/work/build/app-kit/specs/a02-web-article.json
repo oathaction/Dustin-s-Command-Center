@@ -1,0 +1,58 @@
+{
+ "id": "A02",
+ "type": "web-page",
+ "label": "Studio sample",
+ "spec_source": "work/handoffs/phase-4/20261121_Kit-Sample-Specs.md, section 2",
+ "export_name": "Studio-Sample-Article",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 1024,
+   "vh": 768,
+   "platform": "website.page_1024"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  },
+  {
+   "w": 360,
+   "vh": 780,
+   "platform": "website.page_360"
+  }
+ ],
+ "skip": "Skip to the article",
+ "strip": [
+  "Studio sample",
+  "A provisional header and footer. The studio wrote this page to measure the application kit."
+ ],
+ "home_name": "Oath & Action, home",
+ "kicker": [
+  "Explainer",
+  "Local government"
+ ],
+ "kicker_symbol": "cl-031",
+ "headline": "What a special district does",
+ "intro": "A special district is a local government that state law sets up to do one job or a few, such as supplying water or fighting fires. It keeps enough control over its own work and money to count as a government of its own, apart from the county, city or town around it.",
+ "byline": [
+  "Dustin Cathcart, Founder and Editor",
+  "November 21, 2026"
+ ],
+ "date_iso": "2026-11-21",
+ "section": "How the Census Bureau counts them",
+ "p1": "The Census Bureau’s 2022 Census of Governments found 90,888 governments in the country: the federal government, the 50 states and 90,837 local governments. Special districts made up 39,555 of the local ones, more than four in ten.",
+ "chart": "s86",
+ "p2": "A district can go by many names, such as authority, board or commission. The state law that creates it names the jobs it may do, from running a library to building a transit line.",
+ "def_source": "Source for the definition: U.S. Census Bureau, Census of Governments glossary, “Special district governments” and its function entries, United States. Retrieved November 21, 2026. The counts are the chart’s.",
+ "tagline": "A country that answers to its people.",
+ "footer_note": "Studio sample. The site’s own footer is chapter 20’s work.",
+ "title": "What a special district does: studio sample, Oath & Action",
+ "alt": "A studio sample of an Oath & Action article page: a provisional header with the wordmark and a theme switch; the kicker Explainer, Local government; the headline What a special district does; an intro, the byline Dustin Cathcart, Founder and Editor, and one section, How the Census Bureau counts them, with chart S86 on the kinds of government the Census Bureau counted in 2022; and a Charcoal footer with the lockmark and the tagline.",
+ "plate_head": "Studio sample · Article page at 1440, 1024, 390 and 360 px, light and dark",
+ "plate_line": "One frame per width, each with a Light and Dark pair; the switch in the page works inside the frame."
+}

@@ -52,8 +52,9 @@ export function render(spec) {
     + `</div>`;
   // the overlay's layers: the margin, and the grid's centered crop from the platform row's safe area
   const box = safe_boxes(row, W, H).safe;
-  const layers = [{ x: M, y: M, w: W - 2 * M, h: H - 2 * M, label: 'Margin, 64 px', lx: M + 8, ly: M + 8 }];
-  if (box) layers.push({ x: box[0], y: box[1], w: box[2], h: box[3], kind: 'shade', label: 'Profile grid crop, 3:4', lx: box[0] + 8, ly: H / 2 });
+  // each name sits where no word does: the margin's in the top margin, the crop's in the card's rest above the band
+  const layers = [{ x: M, y: M, w: W - 2 * M, h: H - 2 * M, label: 'Margin, 64 px', lx: M, ly: 11 }];
+  if (box) layers.push({ x: box[0], y: box[1], w: box[2], h: box[3], kind: 'shade', label: 'Profile grid crop, 3:4, centered', lx: M, ly: 840 });
   return {
     id: spec.id, type, w: W, h: H, unit: 'px', css, html, layers, alt: spec.alt, alt_short: spec.alt_short,
     // what the export checks read: the live box no word or mark may leave, and the floor every word keeps

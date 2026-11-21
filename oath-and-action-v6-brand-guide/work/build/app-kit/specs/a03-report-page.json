@@ -1,0 +1,64 @@
+{
+ "id": "A03",
+ "type": "report-page",
+ "platform": "print.letter",
+ "label": "Studio sample",
+ "spec_source": "work/handoffs/phase-4/20261121_Kit-Sample-Specs.md, section 3",
+ "export_name": "Studio-Sample-Report-Page-03-Letter",
+ "title": "Oath & Action, Research brief 01, page 3: Executive summary (studio sample)",
+ "section_label": "Executive summary",
+ "folio": "3",
+ "illustrative": "Illustrative",
+ "headline": [
+  "A useful question",
+  "has a clear address."
+ ],
+ "intro": "A town allocates 100 units of its budget to one public service, and a resident asks about its hours.",
+ "sections": [
+  [
+   "The allocation",
+   "40 units fund public hours, 35 support facilities and 25 pay for access."
+  ],
+  [
+   "The decision",
+   "The resident submits a question. A clerk places it on an agenda, the council considers it with the evidence, and the council office publishes the decision with its reasons."
+  ],
+  [
+   "The household perspective",
+   "Work and caring responsibilities can make a published schedule hard to use."
+  ]
+ ],
+ "figures": [
+  [
+   "100",
+   "units allocated"
+  ],
+  [
+   "40",
+   "units for public hours"
+  ],
+  [
+   "4",
+   "handoffs to a published answer"
+  ]
+ ],
+ "sources": "Sources: Town budget, fiscal 2026, table 4; town clerk, public comment procedure, section 3.",
+ "series": [
+  "Research brief 01",
+  "October 2026"
+ ],
+ "census": {
+  "section": "reports",
+  "entries": "41 to 55, 119, 176 and 187",
+  "completed_by_studio": [
+   "intro (43)",
+   "paragraph 45",
+   "paragraph 47",
+   "paragraph 49"
+  ],
+  "note": "Completions stand until chat 15 replaces them with V5's full words (DR-304); every figure is invented and labeled Illustrative until chat 15 checks the report (P4-4)."
+ },
+ "alt": "A studio sample of page 3 of Oath & Action's Research brief 01, the executive summary, on US Letter: the lockmark and the label Executive summary at the head, the headline A useful question has a clear address., an intro about a town's budget for one public service, three short sections headed The allocation, The decision and The household perspective, and a rail of three invented figures, 100 units allocated, 40 units for public hours and 4 handoffs to a published answer, each labeled Illustrative.",
+ "plate_head": "Studio sample · Research brief page 3, US Letter with 0.125 in bleed",
+ "plate_line": "The figures are invented, as our fifth edition printed them, and carry the Illustrative label until chat 15 checks the report."
+}

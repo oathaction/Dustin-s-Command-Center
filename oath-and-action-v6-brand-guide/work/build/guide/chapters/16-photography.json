@@ -1,0 +1,1086 @@
+{
+  "number": "16",
+  "anchor": "photography",
+  "title": "Photography, illustration and video",
+  "part": "evidence",
+  "opener": "s-16-opener",
+  "instruction": "Show public life as it happens, and label every placeholder and generated image.",
+  "intro": [
+    "This chapter sets how Oath & Action shows public life in pictures: the photographs we choose and make, the frames that hold a photograph’s place until we have it, the few drawn and generated pictures we allow, and the videos we publish. A photograph here is a record. It shows people doing public work, and its caption tells a reader who, what, where and when, so they can check it.",
+    "Two public-domain photographs from federal agencies teach every photograph rule, the same two chapter 01 shows. Until we commission photographs of our own, a frame that says Placeholder holds each one’s place. A generated picture serves only as a labeled illustration."
+  ],
+  "groups": [
+    {
+      "before_rule": "16.1",
+      "number": 1,
+      "title": "Choosing and framing a photograph",
+      "line": "A photograph shows people at public work, in black and white unless its color is part of the record, and its crop and the words around it keep that work in view."
+    },
+    {
+      "before_rule": "16.5",
+      "number": 2,
+      "title": "The record behind each photograph",
+      "line": "Each photograph runs with a caption a reader can check and alt text for each crop, and its rights and any consent go into our rights ledger before it runs."
+    },
+    {
+      "before_rule": "16.8",
+      "number": 3,
+      "title": "Placeholders and made pictures",
+      "line": "A frame that says Placeholder holds the place of a photograph we have yet to make, and a generated picture serves only as a labeled illustration."
+    },
+    {
+      "before_rule": "16.10",
+      "number": 4,
+      "title": "Video",
+      "line": "A video answers one question. A person checks its captions, its soundtrack says what the screen shows, and it plays only when a viewer presses Play."
+    }
+  ],
+  "rules": [
+    {
+      "id": "16.1",
+      "title": "Photograph public work while it happens.",
+      "rule": [
+        "Photograph people while they do public work, such as a resident testifying, a clerk counting ballots or an official answering questions at a public meeting, with officials among them. Choose the frame where the act and the people it serves are both in view.",
+        "Leave raised fists, megaphones, flag-waving, handshake close-ups, the dome at sunset, protest signs used as a motif, glossy stock and crowds of identical smiling people out of our pictures, because each stands for civic life in general and shows no decision a reader can follow."
+      ],
+      "tokens": [
+        "oa.type.label",
+        "oa.type.bodySmall",
+        "oa.color.border.hairline.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "A reader can check a picture of a real meeting on a real day, and a picture of the idea of one gives them nothing to check."
+        ],
+        "basis": "Design judgment, from our fifth edition’s photography direction"
+      },
+      "correct": {
+        "specimen": "s-16-1-correct",
+        "caption": "The shot list, as a commissioning brief. The first two rows are the photographs this guide shows. The other ten are our fifth edition’s subjects, each given a level of government and a region, and a placeholder holds each one’s place until it is made."
+      },
+      "failure": {
+        "specimen": "s-16-1-failure",
+        "caption": "<strong>Fails Rule 16.1.</strong> Cropped to its paintings and carved panels, the same photograph shows an empty room, so it stands for government in general and records no public act."
+      },
+      "specs": [
+        {
+          "label": "Subject",
+          "value": "People doing public work, officials among them"
+        },
+        {
+          "label": "Frame",
+          "value": "The act and the people it serves, both in view"
+        },
+        {
+          "label": "Light",
+          "value": "Available light, at eye level, as our fifth edition set it"
+        },
+        {
+          "label": "Staging",
+          "value": "None: photograph what happens"
+        },
+        {
+          "label": "Settings",
+          "value": "Spread across states, regions and levels of government, logged in chapter 01’s rotation log (Rules 01.9, 01.10 and 01.12)"
+        },
+        {
+          "label": "Leave out",
+          "value": "The list in the rule"
+        }
+      ],
+      "related": [
+        "01",
+        "02"
+      ],
+      "related_rules": [
+        "01.6",
+        "01.8",
+        "01.9",
+        "01.10",
+        "01.12",
+        "02.9"
+      ],
+      "builders": "Write the subject and the act you need in the shot list’s form before a shoot or a search, then choose the frame where the act is happening."
+    },
+    {
+      "id": "16.2",
+      "title": "Show a photograph in black and white, and keep color only where it is part of the record.",
+      "rule": [
+        "Show every photograph in black and white, converted from the color original, unless its color is part of what it records, such as the brown of tap water a resident holds up at a hearing. A photograph kept in color says in its caption what the color shows.",
+        "Change only tone and exposure, evenly across the frame. Leave tints, color grades, vignettes and filters off, since each changes how the place looked."
+      ],
+      "tokens": [
+        "oa.type.caption",
+        "oa.color.text.primary.onNewsprint",
+        "oa.color.text.primary.onCharcoal"
+      ],
+      "why": {
+        "text": [
+          "Black and white keeps a photograph’s own reds and blues off our page. The Rotunda photograph in color holds red coats and red, white and blue wreaths; in black and white the view’s one working red (Rule 05.3) stays the only red a reader sees. It also lets photographs from different agencies, cameras and years sit together as one publication."
+        ],
+        "basis": "Gate 1’s recommendation S10, approved by our founder and editor; design judgment for the reasons"
+      },
+      "correct": {
+        "specimen": "s-16-2-correct",
+        "caption": "The Rotunda photograph in black and white, beside a placeholder for the one kind of photograph that keeps its color: a picture whose color is the evidence, with a caption that says so."
+      },
+      "failure": {
+        "specimen": "s-16-2-failure",
+        "caption": "<strong>Fails Rule 16.2.</strong> A Prussian tint dresses the people at the meeting in our color, as if they belonged to our message, and shows a room that never looked that way."
+      },
+      "specs": [
+        {
+          "label": "Default",
+          "value": "Black and white, from the color original"
+        },
+        {
+          "label": "On screen",
+          "value": "filter: grayscale(1) on the photograph, and nothing else"
+        },
+        {
+          "label": "For print or an export",
+          "value": "A grayscale conversion of the original file, never of the 1,200 px rendition"
+        },
+        {
+          "label": "Color",
+          "value": "Only where it is part of the record, named in the caption"
+        },
+        {
+          "label": "Adjust",
+          "value": "Tone, exposure and contrast, evenly across the frame"
+        },
+        {
+          "label": "Never",
+          "value": "A tint, a duotone in a brand color, a color grade, a vignette or a filter"
+        },
+        {
+          "label": "On Charcoal",
+          "value": "The photograph unchanged; the caption in Charcoal’s text tokens",
+          "token": "oa.color.text.primary.onCharcoal"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.4.1"
+        }
+      ],
+      "related": [
+        "05",
+        "01",
+        "19"
+      ],
+      "related_rules": [
+        "05.3",
+        "01.1",
+        "01.6",
+        "19.1"
+      ],
+      "builders": "On a page, set filter: grayscale(1) on the photograph. For print, convert the original file and compare it with the screen version at the same size."
+    },
+    {
+      "id": "16.3",
+      "title": "Crop to keep the act whole, and change nothing inside the frame.",
+      "rule": [
+        "Crop a photograph so the person acting, at least one person they serve and the thing they are working on stay in view at every ratio it runs at. One photograph can serve all five ratios below; set each crop by hand and check that the caption still describes what the crop shows.",
+        "A mark laid on the picture after it was taken, such as an agency’s corner logo, comes out in the crop, and its credit goes in the caption. A sign, a map or a badge that was in the room stays, since it is part of what happened. Add, move, remove and retouch nothing inside the frame."
+      ],
+      "tokens": [
+        "oa.type.label",
+        "oa.color.text.secondary.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "A crop decides what a reader believes happened. Cut the residents away and an official seems to lecture no one; cut the official and the caption names a man who is no longer there."
+        ],
+        "basis": "Society of Professional Journalists, Code of Ethics, revised October 4, 2026: “Never publish fabricated content that could be confused with reality.” Design judgment for the ratios"
+      },
+      "correct": {
+        "specimen": "s-16-3-correct",
+        "caption": "One photograph at four of the five ratios, each crop set by hand. Every crop keeps the official, his hand at work and at least one resident."
+      },
+      "failure": {
+        "specimen": "s-16-3-failure",
+        "caption": "<strong>Fails Rule 16.3.</strong> The portrait crop keeps a resident and the map and cuts out the official, so the caption names a man the picture no longer shows."
+      },
+      "specs": [
+        {
+          "label": "3:2",
+          "value": "Articles, reports and web pages, the default. Lake Isabella 24 0 1152 768; Rotunda 60 0 1080 720"
+        },
+        {
+          "label": "16:9",
+          "value": "A video’s poster frame and thumbnail (chapter 23). Lake Isabella 0 19 1200 675; Rotunda 0 0 1200 675"
+        },
+        {
+          "label": "1:1",
+          "value": "A square post. Lake Isabella 108 0 768 768; Rotunda 300 0 720 720"
+        },
+        {
+          "label": "4:5",
+          "value": "A portrait post. Lake Isabella 205 0 614 768; Rotunda 370 0 576 720"
+        },
+        {
+          "label": "1.91:1",
+          "value": "The share preview (chapter 20). Lake Isabella 0 21 1200 628; Rotunda 0 0 1200 628"
+        },
+        {
+          "label": "Rectangles",
+          "value": "x, y, width and height in the photograph’s own pixels, ready for data-oa-crop. Every Rotunda rectangle stops at row 720, so the agency’s mark at the lower right stays out"
+        },
+        {
+          "label": "Keep in every crop",
+          "value": "The person acting, at least one person they serve, and what they work on where it fits"
+        },
+        {
+          "label": "Smallest shown",
+          "value": "240 px wide; below that, faces and hands stop reading"
+        },
+        {
+          "label": "Sharpness",
+          "value": "The crop’s width in photograph pixels at least twice the frame’s width"
+        },
+        {
+          "label": "Print",
+          "value": "300 pixels per inch at the printed size, made from the original file"
+        }
+      ],
+      "related": [
+        "01"
+      ],
+      "related_rules": [
+        "01.6",
+        "01.8"
+      ],
+      "builders": "Take a crop from the table, then read the caption against the cropped picture. If a person the caption names has left the frame, choose another crop."
+    },
+    {
+      "id": "16.4",
+      "title": "Set words beside a photograph or on a solid panel, never on the picture itself.",
+      "rule": [
+        "Set a headline, a label or a logo beside a photograph, or on a solid Charcoal or Newsprint panel laid over a plain part of it that covers no face, no hand at work and no sign. Words never sit straight on the image, with or without a shadow or a gradient behind them."
+      ],
+      "tokens": [
+        "oa.color.surface.charcoal",
+        "oa.color.surface.newsprint",
+        "oa.color.text.primary.onCharcoal",
+        "oa.type.h3"
+      ],
+      "why": {
+        "text": [
+          "Over a photograph, the ground under each letter changes from one letter to the next, so parts of a headline fade for every reader. A solid panel gives the words one ground and a contrast we can measure, and live text grows, reflows and reads aloud (Rule 19.4)."
+        ],
+        "basis": "WCAG 2.2 success criteria 1.4.3 and 1.4.5; our fifth edition’s rule"
+      },
+      "correct": {
+        "specimen": "s-16-4-correct",
+        "caption": "An article opener: its kicker and headline set above the photograph as live text, and the caption under it."
+      },
+      "failure": {
+        "specimen": "s-16-4-failure",
+        "caption": "<strong>Fails Rule 16.4.</strong> Set on the picture, the headline crosses dark coats and a pale map, so parts of it fall to 1.0 to 1 and 17 percent of the ground under it measures under 3 to 1. It also covers the people the meeting was for."
+      },
+      "specs": [
+        {
+          "label": "Beside the photograph",
+          "value": "The default"
+        },
+        {
+          "label": "Panel",
+          "value": "Solid Charcoal or Newsprint, words in that surface’s text tokens; Newsprint on Charcoal measures 13.29 to 1",
+          "token": "oa.color.surface.charcoal"
+        },
+        {
+          "label": "A panel covers",
+          "value": "A plain area, never a face, a hand at work or a sign"
+        },
+        {
+          "label": "Never",
+          "value": "Words on the image, a text shadow, a gradient scrim"
+        },
+        {
+          "label": "A logo over a photograph",
+          "value": "On Rule 03.3’s panel"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.4.3, 1.4.5"
+        }
+      ],
+      "related": [
+        "03",
+        "19"
+      ],
+      "related_rules": [
+        "03.3",
+        "19.4"
+      ],
+      "builders": "Set the headline above or beside the photograph first. Use a panel only where the layout has no room beside it, and check that the panel covers no face, hand at work or sign."
+    },
+    {
+      "id": "16.5",
+      "title": "Caption who, what, where and when from the record, then credit the maker.",
+      "rule": [
+        "Write each caption from the record: the agency’s own caption, our capture notes or the event’s public notice. Name who is shown, what they are doing, where and when, in that order, then give the credit.",
+        "Give only as much as the record holds: when it knows only the month, the caption gives only the month. Claim no feeling, motive or result that the picture and the record do not show."
+      ],
+      "tokens": [
+        "oa.type.caption",
+        "oa.type.label",
+        "oa.color.graphic.essential.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "A caption is the part of a photograph a reader can check, and each of its four parts sends them to a record. A guess in any part spends the trust the photograph earned."
+        ],
+        "basis": "Society of Professional Journalists, Code of Ethics, revised October 4, 2026: “Take responsibility for the accuracy of their work before releasing it.” and “Never plagiarize. Always attribute.” Rule 01.8"
+      },
+      "correct": {
+        "specimen": "s-16-5-correct",
+        "caption": "Chapter 01’s caption for the Rotunda photograph, each part keyed. The record dates the event to October 30 or 31, 2005, so the caption gives the month."
+      },
+      "failure": {
+        "specimen": "s-16-5-failure",
+        "caption": "<strong>Fails Rule 16.5.</strong> The caption claims anger and a seizure that neither the picture nor the agency’s record shows; the record says he discussed proposed real estate actions with residents."
+      },
+      "specs": [
+        {
+          "label": "Order",
+          "value": "Who, what, where, when, then the credit"
+        },
+        {
+          "label": "Who",
+          "value": "Officials by name and role, from the record; members of the public unnamed unless the record names them and they agreed (Rule 16.6)"
+        },
+        {
+          "label": "What",
+          "value": "Present tense, the act in view"
+        },
+        {
+          "label": "Where",
+          "value": "The place, the city or town, and the state written out"
+        },
+        {
+          "label": "When",
+          "value": "The date in words (house rule H05), only as exact as the record"
+        },
+        {
+          "label": "Credit",
+          "value": "“Photograph: John Prettyman, U.S. Army.” for a named maker; “Photograph: Architect of the Capitol.” when the agency made it; “Photograph: Dustin Cathcart, Oath & Action.” for ours; “Photograph: [name] for Oath & Action.” for a photographer we hire"
+        },
+        {
+          "label": "Never",
+          "value": "The website that hosts the file, such as Wikimedia Commons, in place of the maker; a guess"
+        },
+        {
+          "label": "Length",
+          "value": "One or two sentences",
+          "token": "oa.type.caption"
+        }
+      ],
+      "related": [
+        "01",
+        "13",
+        "02"
+      ],
+      "related_rules": [
+        "01.8",
+        "13.6",
+        "13.12",
+        "02.22"
+      ],
+      "builders": "Copy the record’s facts into the four parts before you write a sentence, then join them in order and add the credit."
+    },
+    {
+      "id": "16.6",
+      "title": "Before a photograph runs, record its rights and any consent it needs.",
+      "rule": [
+        "Dustin, on a phone at a public event, and any photographer we hire work to the same rules. Check the host’s rules on cameras before the event starts, and photograph from where the public may stand. A public official doing public work may be shown and named by role. A member of the public may appear in a scene and stay unnamed. Ask a person’s permission, and write down the answer, before you single them out in a close picture or name them in a caption. Show a person under 18 so they can be recognized only with a parent’s or guardian’s permission. Stop photographing anyone who asks you to, and leave their picture out.",
+        "Before any photograph runs, give it a row in our rights ledger: who made it, where it came from, the license or permission that covers it, and any consent. Some of this is a matter of state law that differs from state to state, such as recording a conversation’s sound or using a person’s likeness, and this guide gives no legal advice."
+      ],
+      "tokens": [
+        "oa.color.surface.charcoal",
+        "oa.color.text.primary.onCharcoal",
+        "oa.type.label",
+        "oa.type.bodySmall"
+      ],
+      "why": {
+        "text": [
+          "The Society of Professional Journalists puts it this way: “Private people have a greater right to control information about themselves than public figures and others who seek power, influence or attention.” Its code also asks for “heightened sensitivity” with juveniles. A photograph of a private person outlasts the meeting, so the permission has to be on the record before it runs."
+        ],
+        "basis": "Society of Professional Journalists, Code of Ethics, revised October 4, 2026; Reporters Committee for Freedom of the Press, “Reporter’s Recording Guide”; design judgment for the record’s fields"
+      },
+      "correct": {
+        "specimen": "s-16-6-correct",
+        "caption": "The meeting photograph with two markers and its record. The official is named by role from his agency’s caption; the residents are seen from behind and named nowhere, so no consent was needed."
+      },
+      "failure": {
+        "specimen": "s-16-6-failure",
+        "caption": "<strong>Fails Rule 16.6.</strong> The caption names a 14-year-old and her school, and the record holds no permission from a parent or guardian."
+      },
+      "specs": [
+        {
+          "label": "Makers",
+          "value": "Dustin on a phone at public events; a hired photographer; one set of rules"
+        },
+        {
+          "label": "Before the event",
+          "value": "The host’s rules on cameras, which differ by body"
+        },
+        {
+          "label": "Officials doing public work",
+          "value": "Shown and named by role"
+        },
+        {
+          "label": "Members of the public in a scene",
+          "value": "Shown and unnamed"
+        },
+        {
+          "label": "A close picture or a named caption of a private person",
+          "value": "Their permission, written into the record"
+        },
+        {
+          "label": "Under 18",
+          "value": "Recognizable only with a parent’s or guardian’s permission"
+        },
+        {
+          "label": "Asked to stop",
+          "value": "Stop, and leave the picture out"
+        },
+        {
+          "label": "Polling places",
+          "value": "Ask the election official first; leave out every marked ballot and every person voting"
+        },
+        {
+          "label": "Matters of state law",
+          "value": "Recording a conversation’s sound, a person’s likeness and pictures of minors; the Reporters Committee keeps a state-by-state guide to recording. No legal advice"
+        },
+        {
+          "label": "The rights ledger row",
+          "value": "Maker, source, date, place, license or permission, consent, where the caption came from, the file and its original"
+        }
+      ],
+      "related": [
+        "01",
+        "13"
+      ],
+      "related_rules": [
+        "01.8",
+        "13.8"
+      ],
+      "builders": "Fill the rights ledger row as you take or find the photograph, and leave the photograph out of any draft until the row is complete."
+    },
+    {
+      "id": "16.7",
+      "title": "Write alt text for what each crop shows.",
+      "rule": [
+        "Write alt text for each use of a photograph, for what that crop shows happening, in one or two sentences. Leave the names, the place, the date and the credit to the caption, which a screen reader also reads. When a photograph runs at a new crop, write its alt text again."
+      ],
+      "tokens": [
+        "oa.type.label",
+        "oa.type.bodySmall"
+      ],
+      "why": {
+        "text": [
+          "One photograph can run in five crops, and each shows something different. Alt text written for the wide frame describes things a tight crop has cut away."
+        ],
+        "basis": "WCAG 2.2 success criterion 1.1.1; Rule 19.2"
+      },
+      "correct": {
+        "specimen": "s-16-7-correct",
+        "caption": "Two crops of the Rotunda photograph, each with alt text written for what it shows. The tight crop holds the line of mourners, a wreath, a painting and a statue, and no casket."
+      },
+      "failure": {
+        "specimen": "s-16-7-failure",
+        "caption": "<strong>Fails Rule 16.7.</strong> The tight crop reuses the wide crop’s alt text, so a screen reader hears of a casket this crop has cut away."
+      },
+      "specs": [
+        {
+          "label": "Length",
+          "value": "One or two sentences"
+        },
+        {
+          "label": "Says",
+          "value": "What is happening and who acts, in plain words"
+        },
+        {
+          "label": "Leaves to the caption",
+          "value": "Names, place, date, credit"
+        },
+        {
+          "label": "Each use",
+          "value": "Its own alt text for its own crop"
+        },
+        {
+          "label": "Never",
+          "value": "A file name, “photo of” or “image of”, or the caption repeated"
+        },
+        {
+          "label": "A placeholder frame",
+          "value": "Live text and no alt text (Rule 16.8)"
+        },
+        {
+          "label": "A generated image",
+          "value": "Alt text that begins “Generated image” (Rule 16.9)"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.1.1"
+        }
+      ],
+      "related": [
+        "19"
+      ],
+      "related_rules": [
+        "19.2",
+        "16.3"
+      ],
+      "builders": "Look at the crop as it will run, without the caption, and write what a person who cannot see it needs to follow the story."
+    },
+    {
+      "id": "16.8",
+      "title": "Hold a commissioned photograph’s place with a frame that says Placeholder.",
+      "rule": [
+        "Until we commission a photograph, a placeholder holds its place: a frame at the photograph’s ratio and size, with the word Placeholder at its top, the shot it waits for in live text and the caption’s parts still to write. Here a placeholder means that frame, apart from the hint text in a form field.",
+        "A placeholder imitates no photograph, so it takes no gray fill, texture, silhouette or stock picture. A published piece with no photograph runs without one; placeholders belong in this guide, in templates and in drafts."
+      ],
+      "tokens": [
+        "oa.color.border.strong.onNewsprint",
+        "oa.type.label",
+        "oa.type.body",
+        "oa.type.caption",
+        "oa.space.300"
+      ],
+      "why": {
+        "text": [
+          "A gray box at a photograph’s size reads as a picture still loading, and our fifth edition’s panels told a screen reader “Photograph” for pictures that did not exist. Words in the frame tell every reader what is missing and what will fill it."
+        ],
+        "basis": "Master Brief section 16; WCAG 2.2 success criterion 1.1.1; the Phase 0 rights audit of our fifth edition"
+      },
+      "correct": {
+        "specimen": "s-16-8-correct",
+        "caption": "Two placeholders: a 3:2 frame on Newsprint for an article, and a 4:5 frame on Charcoal for a portrait post in a dark mode. Each says what it waits for in words."
+      },
+      "failure": {
+        "specimen": "s-16-8-failure",
+        "caption": "<strong>Fails Rule 16.8.</strong> Our fifth edition’s panel looks like a picture still loading, and a screen reader announced it as a photograph that never existed."
+      },
+      "specs": [
+        {
+          "label": "Frame",
+          "value": "The photograph’s ratio and display size",
+          "token": "oa.color.border.strong.onNewsprint"
+        },
+        {
+          "label": "Edge",
+          "value": "A 1 px keyline in the surface’s strong border, no fill, and four corner crop marks: 1 px, 12 px arms, 6 px off each corner"
+        },
+        {
+          "label": "Inside",
+          "value": "Padding of 24 px",
+          "token": "oa.space.300"
+        },
+        {
+          "label": "Words",
+          "value": "“Placeholder”, what it waits for, the shot, the ratio and the treatment",
+          "token": "oa.type.label"
+        },
+        {
+          "label": "Caption",
+          "value": "The parts still to write",
+          "token": "oa.type.caption"
+        },
+        {
+          "label": "Markup",
+          "value": "Live text in a figure, the word Placeholder first; no image role and no alt text"
+        },
+        {
+          "label": "Where",
+          "value": "This guide, templates and drafts; never a published piece"
+        },
+        {
+          "label": "Surfaces",
+          "value": "Newsprint, White and Charcoal, each in its own tokens",
+          "token": "oa.color.border.strong.onCharcoal"
+        },
+        {
+          "label": "Never",
+          "value": "A dashed edge, which carries evidence grades in chapters 13 and 15, or a cross through the frame"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.1.1, 1.3.1"
+        }
+      ],
+      "related": [
+        "13",
+        "18"
+      ],
+      "related_rules": [
+        "16.1",
+        "13.8"
+      ],
+      "builders": "Draw the frame at the size the photograph will run, write the shot from the shot list (Rule 16.1) and leave the caption’s parts open."
+    },
+    {
+      "id": "16.9",
+      "title": "Label a generated image beside it, and never let one stand for a real event.",
+      "rule": [
+        "A generated image is a picture an AI tool makes from a written prompt. It may serve only as a labeled conceptual illustration or as the scene around our real work in a mockup. It carries the words “Generated image” on a solid tab at its top left corner, its caption says what idea it shows and names the tool and the date, and its alt text begins “Generated image”.",
+        "It never shows a real person or a real place on a real day, and nothing a reader could take for a photograph of an event. Where a platform has its own label, we turn it on too, and we keep the Content Credentials, the data some tools write into the file to say how it was made. Each one gets a rights row with the tool, the date, the prompt and the tool’s terms."
+      ],
+      "tokens": [
+        "oa.color.surface.charcoal",
+        "oa.color.text.primary.onCharcoal",
+        "oa.type.label",
+        "oa.type.caption"
+      ],
+      "why": {
+        "text": [
+          "The Society of Professional Journalists asks journalists to “Never publish fabricated content that could be confused with reality. Clearly label illustrations and reenactments.” A label on the picture, in its caption and in its alt text reaches every reader, wherever the picture travels."
+        ],
+        "basis": "Master Brief section 16; Gate 3’s answer P4-3; Society of Professional Journalists, Code of Ethics, revised October 4, 2026; each platform’s help or policy page"
+      },
+      "correct": {
+        "specimen": "s-16-9-correct",
+        "caption": "Where a generated image would sit in a mockup, held by a placeholder: the tab at its corner, the prompt, and the caption that labels the scene and keeps our real page’s own credit."
+      },
+      "failure": {
+        "specimen": "s-16-9-failure",
+        "caption": "<strong>Fails Rule 16.9.</strong> A generated picture runs with a news caption and a photograph’s credit, so a reader believes a hearing looked this way."
+      },
+      "specs": [
+        {
+          "label": "May serve as",
+          "value": "A conceptual illustration; the scene around our real work in a mockup"
+        },
+        {
+          "label": "Label on the picture",
+          "value": "“Generated image” on a solid Charcoal tab, top left",
+          "token": "oa.color.surface.charcoal"
+        },
+        {
+          "label": "Caption",
+          "value": "The idea it shows, then “Generated image, [tool], [date]”"
+        },
+        {
+          "label": "Alt text",
+          "value": "Begins “Generated image”"
+        },
+        {
+          "label": "Never",
+          "value": "A real person, a real place on a real day, evidence or documentary imagery"
+        },
+        {
+          "label": "File and record",
+          "value": "YYYYMMDD_Generated-[Subject].png; a rights row with the tool, the date, the prompt and the tool’s terms as read"
+        },
+        {
+          "label": "Content Credentials",
+          "value": "Kept in the file"
+        },
+        {
+          "label": "YouTube",
+          "value": "Answer Yes to its question on altered or synthetic content for any realistic generated content (its help page, read)"
+        },
+        {
+          "label": "TikTok",
+          "value": "Turn on its label for AI-generated content, which it requires for realistic scenes or people (its rule read; the label’s words seen through a search result)"
+        },
+        {
+          "label": "Instagram, Threads and Facebook",
+          "value": "Turn on the label Meta shows as “AI info” (Meta’s newsroom, read; Instagram’s help seen through a search result)"
+        },
+        {
+          "label": "LinkedIn",
+          "value": "No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (read)"
+        },
+        {
+          "label": "X",
+          "value": "No label a poster sets was found; our own tab and caption carry the label (search result)"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.1.1"
+        }
+      ],
+      "related": [
+        "13"
+      ],
+      "related_rules": [
+        "13.1",
+        "13.8",
+        "16.8"
+      ],
+      "builders": "Before you make one, check the extra after this rule for where a generated picture may appear. Write the prompt into the rights row, make the image, and set the tab, caption and alt text before it goes anywhere."
+    },
+    {
+      "id": "16.10",
+      "title": "Make each video answer one question, from its title frame to its step.",
+      "rule": [
+        "Each video answers one question a viewer could ask, such as “Which age groups reported voting in 2024?” It takes one of two forms, Dustin on camera as host or his voice over charts and atlas views, and it may move between them. The first sentence spoken asks the question or answers it. Every chart on screen carries its source line for as long as it shows.",
+        "The video ends on a step a viewer can take, then the end frame. The first time Dustin appears, his name plate reads “Dustin Cathcart, Founder and Editor”. L8 signs the corner (Rule 12.3). Chapter 23 draws the title frame, the end frame, the name plate and each platform’s safe areas."
+      ],
+      "tokens": [
+        "oa.color.surface.charcoal",
+        "oa.color.surface.newsprint",
+        "oa.type.label",
+        "oa.type.caption"
+      ],
+      "why": {
+        "text": [
+          "A viewer scrolling a feed decides fast whether to stay, so the question comes first. A video that answers one question can be captioned, described and summed up in one sentence, which its card needs (Rule 16.13)."
+        ],
+        "basis": "Design judgment"
+      },
+      "correct": {
+        "specimen": "s-16-10-correct",
+        "caption": "A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and the step at 50; every figure said is the chart’s own."
+      },
+      "failure": {
+        "specimen": "s-16-10-failure",
+        "caption": "<strong>Fails Rule 16.10.</strong> The question arrives at 0:21, after an animated logo and a greeting, so a viewer who scrolls on never learns what the video answers."
+      },
+      "specs": [
+        {
+          "label": "Question",
+          "value": "One, in a viewer’s words"
+        },
+        {
+          "label": "Forms",
+          "value": "Dustin on camera as host; his voice over charts and atlas views"
+        },
+        {
+          "label": "First sentence",
+          "value": "Asks or answers the question"
+        },
+        {
+          "label": "Charts",
+          "value": "From the chart kit, each with its source line on screen while it shows (Rule 13.6)"
+        },
+        {
+          "label": "Name plate",
+          "value": "“Dustin Cathcart, Founder and Editor”, the first time he appears; chapter 23 places it inside the caption-safe area"
+        },
+        {
+          "label": "Signature",
+          "value": "L8, 24 px in from the frame’s top and side edges (Rule 12.3)"
+        },
+        {
+          "label": "Ending",
+          "value": "The step, then the end frame. A process piece names the step and leaves the position to the viewer (Rule 01.22); a position piece shows its label before the ask (Rule 01.23)"
+        },
+        {
+          "label": "Title and end frames",
+          "value": "Chapter 23, at 1920 by 1080 and 1080 by 1920, each with its caption-safe area"
+        },
+        {
+          "label": "Music",
+          "value": "Under the voice, and silent while a figure is read"
+        }
+      ],
+      "related": [
+        "12",
+        "13",
+        "14",
+        "01"
+      ],
+      "related_rules": [
+        "12.3",
+        "13.6",
+        "01.22",
+        "01.23",
+        "14.19"
+      ],
+      "builders": "Write the question first, then the one sentence that answers it, and build the script from that sentence outward."
+    },
+    {
+      "id": "16.11",
+      "title": "Caption every video, and have a person check every word.",
+      "rule": [
+        "Every video carries closed captions, made from the final script and checked word for word against the final cut by a person before it posts. Captions, in the W3C’s words, are a “synchronized visual and/or text alternative for both speech and non-speech audio information needed to understand the media content”; closed captions can be turned off, and open captions, burned into the picture, cannot.",
+        "Upload a caption file wherever a platform takes one: WebVTT on our own pages, WebVTT or SubRip on YouTube, SubRip on LinkedIn and X. On TikTok and Instagram, where we found no way to upload a file, turn on the app’s own captions and correct every word before publishing. Treat any automatic caption as a first draft. Burn captions in only where a platform offers neither, inside chapter 23’s caption-safe area, and never on top of closed captions. Put a sound that matters, such as a gavel, in square brackets, and name a speaker who is off screen."
+      ],
+      "tokens": [
+        "oa.color.surface.charcoal",
+        "oa.color.text.primary.onCharcoal",
+        "oa.color.border.hairline.onNewsprint",
+        "oa.type.label"
+      ],
+      "why": {
+        "text": [
+          "Automatic captions mishear names and numbers, and a misheard number tells a viewer who cannot hear something false. YouTube’s own help page says “You should always review automatic captions and edit any parts that haven’t been properly transcribed.”"
+        ],
+        "basis": "WCAG 2.2 success criterion 1.2.2; each platform’s help page"
+      },
+      "correct": {
+        "specimen": "s-16-11-correct",
+        "caption": "A vertical frame at a quarter of 1080 by 1920, its captions on a Charcoal band inside the caption-safe area, beside the WebVTT lines that make them."
+      },
+      "failure": {
+        "specimen": "s-16-11-failure",
+        "caption": "<strong>Fails Rule 16.11.</strong> Nobody checked the automatic caption, so a fall of 3.7 points reads as 37."
+      },
+      "specs": [
+        {
+          "label": "Closed captions",
+          "value": "On every video"
+        },
+        {
+          "label": "Files",
+          "value": "WebVTT (.vtt) on our pages; YouTube takes .vtt, .srt and others (read); LinkedIn takes .srt on desktop (read); X takes .srt (its help page seen through a search result)"
+        },
+        {
+          "label": "TikTok and Instagram",
+          "value": "The app’s own captions, corrected word for word; no caption file upload found on either (each seen through a search result, November 21, 2026)"
+        },
+        {
+          "label": "Automatic captions",
+          "value": "A first draft only"
+        },
+        {
+          "label": "Burned-in captions",
+          "value": "Only where a platform offers neither, inside chapter 23’s caption-safe area, never doubled"
+        },
+        {
+          "label": "Lines",
+          "value": "Two at most, about 42 characters each, broken at a phrase"
+        },
+        {
+          "label": "Type",
+          "value": "Inter 600 in Newsprint on a Charcoal band, 13.29 to 1; chapter 23 sets the size for each frame",
+          "token": "oa.color.surface.charcoal"
+        },
+        {
+          "label": "Sounds and speakers",
+          "value": "Sounds in square brackets when they carry meaning; speakers named when off screen"
+        },
+        {
+          "label": "Checked by",
+          "value": "A person, against the final cut, before posting"
+        },
+        {
+          "label": "Live",
+          "value": "A live stream needs live captions; none streams today"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.2.2"
+        }
+      ],
+      "related": [
+        "19"
+      ],
+      "related_rules": [
+        "19.1"
+      ],
+      "builders": "Make the caption file from the final script, play the final cut beside it, and correct every line before it uploads."
+    },
+    {
+      "id": "16.12",
+      "title": "Say aloud what the screen shows, and publish a transcript with every video.",
+      "rule": [
+        "Write the script so the soundtrack carries every fact the picture shows: read each figure and what it measures, say whose source it is, and name what a gesture points at. A viewer who cannot see the screen then misses nothing; that spoken account of the picture is audio description. Where the picture shows something there is no time to say, make a described version too.",
+        "Publish a transcript on the video’s page and link it from every post: every word spoken, who speaks, the sounds that matter and what the screen shows that the words leave out, in order, corrected to the final cut. Link each chart in the transcript to its table."
+      ],
+      "tokens": [
+        "oa.type.bodySmall",
+        "oa.type.label",
+        "oa.color.border.hairline.onNewsprint"
+      ],
+      "why": {
+        "text": [
+          "The W3C’s guidance on audio description says: “if all of the important information in the video track is already conveyed in the audio track, no additional audio description is necessary.” A voice that reads each chart aloud describes it as it goes, which serves a viewer who cannot see the screen and one who has the sound on and is looking away."
+        ],
+        "basis": "WCAG 2.2 success criteria 1.2.1, 1.2.3 and 1.2.5, and the W3C’s Understanding page for 1.2.5"
+      },
+      "correct": {
+        "specimen": "s-16-12-correct",
+        "caption": "A script that says what the chart shows, with the transcript that follows from it. The transcript links the chart to its table in chapter 14."
+      },
+      "failure": {
+        "specimen": "s-16-12-failure",
+        "caption": "<strong>Fails Rule 16.12.</strong> The voice points at the chart and reads none of it, so a listener hears that something dropped and never learns by how much or in which survey."
+      },
+      "specs": [
+        {
+          "label": "Script",
+          "value": "Every figure, its measure and its source said while it shows; gestures named"
+        },
+        {
+          "label": "Described version",
+          "value": "Where the picture outruns the voice"
+        },
+        {
+          "label": "Transcript",
+          "value": "On the video’s page, linked from every post: speakers, sounds that matter and what is shown, in order, corrected to the final cut"
+        },
+        {
+          "label": "Charts",
+          "value": "Linked from the transcript to their tables"
+        },
+        {
+          "label": "A clip with sound only",
+          "value": "A transcript"
+        },
+        {
+          "label": "A clip with no sound",
+          "value": "A transcript or a voice track"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.2.1, 1.2.3, 1.2.5"
+        }
+      ],
+      "related": [
+        "14",
+        "18",
+        "19"
+      ],
+      "related_rules": [
+        "14.19",
+        "18.23",
+        "19.2"
+      ],
+      "builders": "Read the script with your eyes closed. Any line that only makes sense while you watch needs the words for what is on screen."
+    },
+    {
+      "id": "16.13",
+      "title": "Where a video sits, show its poster, summary and transcript, and play it only when a reader presses Play.",
+      "rule": [
+        "On our pages a video sits in a card: its poster frame, its title as live text, its length, one sentence with what it finds, a Play button, a link to the transcript and a link to watch it on the platform. The platform’s player loads only when a reader presses Play, and the video never plays by itself, with sound or without it.",
+        "If the player cannot load, because a reader is offline, blocks the platform or runs no scripts, the card still gives the finding in its summary and the whole video in its transcript."
+      ],
+      "tokens": [
+        "oa.size.target.touch",
+        "oa.color.surface.charcoal",
+        "oa.color.text.primary.onCharcoal",
+        "oa.type.h4",
+        "oa.type.bodySmall",
+        "oa.type.label"
+      ],
+      "why": {
+        "text": [
+          "A card that stands on its own serves every reader the player fails, and it keeps the platform’s player off the page until a reader asks for it. Sound that starts by itself talks over a screen reader."
+        ],
+        "basis": "Master Brief section 16; WCAG 2.2 success criteria 1.4.2 and 2.2.2; Rules 17.1 and 17.3"
+      },
+      "correct": {
+        "specimen": "s-16-13-correct",
+        "caption": "The video card at true size, with its controls drawn: a poster that stands in for chapter 23’s title frame, the title, the length, the finding in one sentence, Play and two links."
+      },
+      "failure": {
+        "specimen": "s-16-13-failure",
+        "caption": "<strong>Fails Rule 16.13.</strong> The player failed to load and the page offers nothing in its place, so a reader gets no finding, no transcript and no link."
+      },
+      "specs": [
+        {
+          "label": "Card",
+          "value": "Poster, title, length, summary, Play, transcript link, platform link"
+        },
+        {
+          "label": "Poster",
+          "value": "A frame from the video, usually its title frame (chapter 23), with alt text that gives its words (Rule 19.4)"
+        },
+        {
+          "label": "Player",
+          "value": "Loads only on Play"
+        },
+        {
+          "label": "Playback",
+          "value": "Never by itself, with sound or without (Rule 17.1)"
+        },
+        {
+          "label": "Captions",
+          "value": "On at the start where the player allows"
+        },
+        {
+          "label": "If the player fails",
+          "value": "The card stays whole"
+        },
+        {
+          "label": "Controls",
+          "value": "Each 44 px tall and named by its words (Rule 19.3)",
+          "token": "oa.size.target.touch"
+        },
+        {
+          "label": "Email",
+          "value": "A still and a link, no player (chapter 22)"
+        },
+        {
+          "label": "WCAG 2.2",
+          "value": "1.4.2, 2.2.2, 2.1.1, 4.1.2"
+        }
+      ],
+      "related": [
+        "17",
+        "18",
+        "19"
+      ],
+      "related_rules": [
+        "17.1",
+        "17.3",
+        "19.3",
+        "19.4"
+      ],
+      "builders": "Build the card first and check it with scripts off. Add the player behind Play only once the card reads whole on its own."
+    }
+  ],
+  "extras": [
+    {
+      "after_rule": "16.9",
+      "specimen": "s-16-picture-kinds",
+      "label": "Where each kind of picture may appear",
+      "caption": "Five kinds of picture, where each may appear, how each is labeled and the rule that sets it. No spot illustration exists yet: Gate 1 found the hand-drawn icon study was likely generated, so a commission fills that row."
+    }
+  ],
+  "related_chapters": [
+    {
+      "chapter": "01",
+      "reason": "Rules 01.6 and 01.8 and the rotation log, which these photographs and settings serve."
+    },
+    {
+      "chapter": "02",
+      "reason": "Rule 02.9’s rewrite of our fifth edition’s headline, and house rules H03 to H05."
+    },
+    {
+      "chapter": "03",
+      "reason": "A logo over a photograph, on its panel (Rule 03.3)."
+    },
+    {
+      "chapter": "05",
+      "reason": "The red rule, which black and white keeps clear (Rule 05.3)."
+    },
+    {
+      "chapter": "12",
+      "reason": "L8 in a video’s corner and the exploded view."
+    },
+    {
+      "chapter": "13",
+      "reason": "The Illustrative label and source lines."
+    },
+    {
+      "chapter": "14",
+      "reason": "Chart S04 and its table, which the video example reads aloud."
+    },
+    {
+      "chapter": "17",
+      "reason": "No autoplay, and playback a reader starts."
+    },
+    {
+      "chapter": "18",
+      "reason": "Buttons and links in the video card."
+    },
+    {
+      "chapter": "19",
+      "reason": "Alt text, live text and the WCAG map."
+    }
+  ],
+  "sources": [
+    "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, success criteria 1.1.1, 1.2.1 to 1.2.5, 1.3.1, 1.4.1 to 1.4.3, 1.4.5, 2.1.1, 2.2.2 and 4.1.2, and its definitions of captions and of an alternative for time-based media, retrieved November 21, 2026. Behind Rules 16.4, 16.7, 16.8 and 16.11 to 16.13.",
+    "Source: W3C, “Understanding Success Criterion 1.2.5: Audio Description (Prerecorded)”, retrieved November 21, 2026. Its note on video whose soundtrack carries what the picture shows, behind Rule 16.12.",
+    "Source: Society of Professional Journalists, “SPJ Code of Ethics”, revised October 4, 2026, retrieved November 21, 2026. Behind Rules 16.3, 16.5, 16.6 and 16.9.",
+    "Source: Reporters Committee for Freedom of the Press, “Reporter’s Recording Guide”, retrieved November 21, 2026. Its state-by-state guide to recording sound, named in Rule 16.6; this guide gives no legal advice.",
+    "Source: YouTube Help, LinkedIn Help, X Help, TikTok’s newsroom and Community Guidelines, and Meta’s newsroom, on caption files and labels for generated content, read or seen through a search result November 21, 2026, as Rules 16.9 and 16.11 mark each. Platforms change these pages; check them before a video posts.",
+    "Source: Wikimedia Commons file pages for the two photographs, their license boxes read November 21, 2026, with the studio’s sidecars and rights rows pho-01, pho-01r, pho-04 and pho-04r. Both are public-domain works of federal agencies.",
+    "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, through chart S04’s source line, for the video example in Rules 16.10 to 16.13."
+  ]
+}

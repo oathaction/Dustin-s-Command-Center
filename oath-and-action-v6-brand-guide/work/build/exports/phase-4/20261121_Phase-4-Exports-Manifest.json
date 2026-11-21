@@ -1,0 +1,89 @@
+{
+ "written": "2026-11-21T02:20:48.183Z",
+ "by": "work/build/app-kit/oa-app.mjs",
+ "specs": "work/research/20261121_Platform-Specifications.json",
+ "files": [
+  {
+   "file": "20261121_Studio-Sample-Instagram-Portrait-1080x1350.png",
+   "spec": "A01",
+   "platform": "instagram.portrait",
+   "format": "png",
+   "theme": "light"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-1440-Light.png",
+   "spec": "A02",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "light"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-1440-Dark.png",
+   "spec": "A02",
+   "platform": "website.page_1440",
+   "format": "png",
+   "theme": "dark"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-1024-Light.png",
+   "spec": "A02",
+   "platform": "website.page_1024",
+   "format": "png",
+   "theme": "light"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-1024-Dark.png",
+   "spec": "A02",
+   "platform": "website.page_1024",
+   "format": "png",
+   "theme": "dark"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-390-Light.png",
+   "spec": "A02",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "light"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-390-Dark.png",
+   "spec": "A02",
+   "platform": "website.page_390",
+   "format": "png",
+   "theme": "dark"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-360-Light.png",
+   "spec": "A02",
+   "platform": "website.page_360",
+   "format": "png",
+   "theme": "light"
+  },
+  {
+   "file": "20261121_Studio-Sample-Article-360-Dark.png",
+   "spec": "A02",
+   "platform": "website.page_360",
+   "format": "png",
+   "theme": "dark"
+  },
+  {
+   "file": "20261121_Studio-Sample-Report-Page-03-Letter.pdf",
+   "spec": "A03",
+   "platform": "print.letter",
+   "format": "pdf",
+   "theme": "light"
+  },
+  {
+   "file": "20261121_Studio-Sample-Report-Page-03-Letter-Proof-96ppi.png",
+   "spec": "A03",
+   "platform": null,
+   "format": "png",
+   "theme": "light",
+   "expect": {
+    "width": 840,
+    "height": 1080
+   },
+   "note": "proof of the sheet at 96 ppi"
+  }
+ ]
+}

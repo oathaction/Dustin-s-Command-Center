@@ -114,8 +114,13 @@ def check_pdf(path, row):
         fd = res.get("/Font") or {}
         for _, ref in fd.items():
             f = ref.get_object()
-            name = str(f.get("/BaseFont"))
-            fonts.add(name)
+            sub = str(f.get("/Subtype"))
+            if sub == "/Type0" and "/DescendantFonts" in f:
+                sub = "/Type0 " + str(f["/DescendantFonts"][0].get_object().get("/Subtype"))
+            name = str(f.get("/BaseFont") or f.get("/Name") or "(unnamed)")
+            fonts.add(f"{name} ({sub.replace('/', '')})")
+            if sub == "/Type3":
+                continue   # a Type 3 font draws its glyphs from procedures inside the file: embedded, with no font file
             desc = f.get("/FontDescriptor")
             if desc is None and "/DescendantFonts" in f:
                 desc = f["/DescendantFonts"][0].get_object().get("/FontDescriptor")
@@ -144,10 +149,13 @@ def run(exports, specs_path, out=None):
     results, bad = [], 0
     for ent in man["files"]:
         f = exports / ent["file"]
-        row = rows.get(ent["platform"])
+        # a studio proof that no platform governs (the report page's 96 ppi sheet) names its exact size in "expect"
+        row = rows.get(ent["platform"]) if ent.get("platform") else (
+            {"width": ent["expect"]["width"], "height": ent["expect"]["height"], "unit": "px", "match": "exact", "status": "studio proof"}
+            if ent.get("expect") else None)
         faults, facts = [], {}
         if row is None:
-            faults.append(f"the table has no row {ent['platform']}")
+            faults.append(f"the table has no row {ent.get('platform')}")
         elif not f.exists():
             faults.append("the file is missing")
         else:

@@ -1,0 +1,262 @@
+{
+ "s-16-1-correct": {
+  "chapter": "16",
+  "rule": "16.1",
+  "width_px": null,
+  "alt": "A table, the shot list, with columns Subject, Where, How and Status. Two rows are photographs in the guide, the Capitol Rotunda in 2005 and a public meeting at Lake Isabella in 2014; ten rows are subjects to commission, from a planning board meeting in a school cafeteria to a volunteer with a clipboard on a sidewalk, each with where it is set and how to shoot it.",
+  "illustrative": false,
+  "notes": "Live text. Rows 3 to 12 are our fifth edition’s shot list (Phase 0 census, photography entries 30 to 49), with a level and a region added; six How lines were cut by the census and completed by the studio.",
+  "readable": true
+ },
+ "s-16-1-failure": {
+  "chapter": "16",
+  "rule": "16.1",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The upper walls of the Capitol Rotunda in black and white: two large framed paintings between carved stone panels and pilasters, and no people.",
+  "illustrative": false,
+  "notes": "Rotunda, data-oa-crop 240 0 720 360 (2:1).",
+  "readable": true
+ },
+ "s-16-10-correct": {
+  "chapter": "16",
+  "rule": "16.10",
+  "width_px": null,
+  "alt": "A storyboard of six video frames with their times and words: the title frame with the question at 0:00; Dustin on camera with his name plate at 0:02; chart S04 with its source line at 0:08; the gap marked at 0:30; the step at 0:50; the end frame at 1:00.",
+  "illustrative": true,
+  "notes": "The video is not made, so the plate carries the Illustrative label at its head; every figure is chart S04’s (work/build/chart-kit/specs/s04.json). The step frame holds the view’s one working red.",
+  "readable": true
+ },
+ "s-16-10-failure": {
+  "chapter": "16",
+  "rule": "16.10",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same storyboard with the logo animating to music at 0:00, a greeting at 0:08 and the question only at 0:21.",
+  "illustrative": true,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-11-correct": {
+  "chapter": "16",
+  "rule": "16.11",
+  "width_px": null,
+  "alt": "A 9:16 video frame drawn at a quarter size: a placeholder for Dustin’s voice over chart S04, an outlined caption-safe area, and inside it two caption lines on a Charcoal band, Citizens 18 to 24 reported voting, at 47.7 percent, down 3.7 points. Beside it, the WebVTT file with the same lines and their times.",
+  "illustrative": true,
+  "notes": "Drawn at a quarter of 1080 by 1920, so the caption band’s 13 px words stand for about 52 px on the real frame; chapter 23 sets the real size. The video is not made.",
+  "readable": true
+ },
+ "s-16-11-failure": {
+  "chapter": "16",
+  "rule": "16.11",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same frame with an automatic caption that reads down 37 points.",
+  "illustrative": true,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-12-correct": {
+  "chapter": "16",
+  "rule": "16.12",
+  "width_px": null,
+  "alt": "A two-column script, On screen and Said, three rows that read chart S04’s figures and source aloud, then a transcript excerpt with the speaker, the time, the words and a bracketed line for what is on screen, and a link to the chart’s table.",
+  "illustrative": true,
+  "notes": "The link goes to chart S04’s rule in chapter 14, where its table opens.",
+  "readable": true
+ },
+ "s-16-12-failure": {
+  "chapter": "16",
+  "rule": "16.12",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same script with one row: the chart on screen, and the voice saying As you can see, young people dropped off right here.",
+  "illustrative": true,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-13-correct": {
+  "chapter": "16",
+  "rule": "16.13",
+  "width_px": null,
+  "alt": "A video card: a Charcoal poster with the question Which age groups reported voting in 2024? and L8 at its corner; under it the title, the length 1:05, a one-sentence finding, a Play button and the links Read the transcript and Watch on YouTube.",
+  "illustrative": true,
+  "notes": "Controls drawn as text, since nothing can load in the guide; L8 from its master, 48 px wide, 24 px in from the poster’s top and right edges (Rule 12.3).",
+  "readable": true
+ },
+ "s-16-13-failure": {
+  "chapter": "16",
+  "rule": "16.13",
+  "width_px": null,
+  "alt": "Failure case: do not publish. An empty dark box at video size with the words Video unavailable in small gray type, and nothing else.",
+  "illustrative": false,
+  "notes": "Picture of a fault: Stone words on Charcoal, 3.10 to 1, as the empty player it copies.",
+  "check_exempt": [
+   "contrast"
+  ],
+  "readable": true
+ },
+ "s-16-2-correct": {
+  "chapter": "16",
+  "rule": "16.2",
+  "width_px": null,
+  "alt": "Two panels. The Capitol Rotunda photograph in black and white with its caption, and beside it a placeholder frame for a photograph kept in color: a resident holding up a jar of brown tap water at a city council hearing, whose caption names the color as the evidence.",
+  "illustrative": false,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-2-failure": {
+  "chapter": "16",
+  "rule": "16.2",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The Lake Isabella meeting photograph with a Prussian duotone: dark blue shadows and pale highlights over the official, the residents and the map.",
+  "illustrative": false,
+  "notes": "Picture of a fault: a Prussian duotone, drawn by two blended layers over the black and white photograph (screen in Prussian, then multiply in Newsprint). No red on the plate.",
+  "check_exempt": [
+   "contrast"
+  ],
+  "readable": true
+ },
+ "s-16-3-correct": {
+  "chapter": "16",
+  "rule": "16.3",
+  "width_px": null,
+  "alt": "The Lake Isabella photograph four times in black and white, each labeled with its ratio and use: 3:2 for articles and reports, 16:9 for a video poster, 1:1 for a square post and 4:5 for a portrait post. Each keeps the official explaining and at least one resident.",
+  "illustrative": false,
+  "notes": "CSS crops: 3:2 at 50% 50%, 16:9 at 50% 20%, 1:1 at 25% 50%, 4:5 at 35% 50% (the plan’s rectangles).",
+  "readable": true
+ },
+ "s-16-3-failure": {
+  "chapter": "16",
+  "rule": "16.3",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A 4:5 crop of the Lake Isabella photograph: one resident seen from behind and the project map, with the official cut out, over the caption that names him.",
+  "illustrative": false,
+  "notes": "Lake Isabella, data-oa-crop 660 0 540 675 (4:5).",
+  "readable": true
+ },
+ "s-16-4-correct": {
+  "chapter": "16",
+  "rule": "16.4",
+  "width_px": null,
+  "alt": "An article opener: the kicker Report, Public lands, then the headline as live text, then the Lake Isabella photograph in black and white and its caption.",
+  "illustrative": false,
+  "notes": "The kicker opens with one content label, Report (Rule 01.21); the headline is live text in the H3 style.",
+  "readable": true
+ },
+ "s-16-4-failure": {
+  "chapter": "16",
+  "rule": "16.4",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same headline in pale type set straight across the photograph, over the residents and the map, with a soft shadow; parts of it fade into the map, down to 1.0 to 1.",
+  "illustrative": false,
+  "notes": "Picture of a fault: Newsprint words on the photograph. Measured by this generator: the ground under the headline’s box falls to 1.0 to 1 against Newsprint, and 17 percent of it is under 3 to 1.",
+  "check_exempt": [
+   "contrast"
+  ],
+  "readable": true
+ },
+ "s-16-5-correct": {
+  "chapter": "16",
+  "rule": "16.5",
+  "width_px": null,
+  "alt": "The Rotunda photograph small in black and white, beside its caption with each part underlined and keyed: who, what, who, what, where, when and the credit, with a note that the record knows only the month.",
+  "illustrative": false,
+  "notes": "Each part’s key comes first in reading order and shows under its words (column-reverse).",
+  "readable": true
+ },
+ "s-16-5-failure": {
+  "chapter": "16",
+  "rule": "16.5",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The Lake Isabella photograph in black and white over an invented caption: angry homeowners confront an Army official over the seizure of their land.",
+  "illustrative": true,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-6-correct": {
+  "chapter": "16",
+  "rule": "16.6",
+  "width_px": null,
+  "alt": "The Lake Isabella photograph in black and white with two numbered markers: 1 beside the official, 2 on a resident’s back. A key says the official is named by role and the residents are unnamed. Under it, the rights record: maker, agency, date, place, license, consent and rights rows.",
+  "illustrative": false,
+  "notes": "Markers set in HTML over the frame (contract C1), hidden from a screen reader; the key carries their words.",
+  "readable": true
+ },
+ "s-16-6-failure": {
+  "chapter": "16",
+  "rule": "16.6",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A placeholder frame for a close portrait of a ninth grader speaking at a school board meeting, with an invented caption that names her, her age and her school, and a record line that shows no permission from a parent or guardian.",
+  "illustrative": true,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-7-correct": {
+  "chapter": "16",
+  "rule": "16.7",
+  "width_px": null,
+  "alt": "Two crops of the Rotunda photograph in black and white, each with its alt text printed under it: the wide crop’s mentions the casket, the tight crop’s mentions the line of mourners, a wreath and a painting.",
+  "illustrative": false,
+  "notes": "Each printed alt text is the same words as its <img> alt.",
+  "readable": true
+ },
+ "s-16-7-failure": {
+  "chapter": "16",
+  "rule": "16.7",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The tight crop of the Rotunda photograph, with the wide crop’s alt text printed under it, which names a casket the crop does not show.",
+  "illustrative": false,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-8-correct": {
+  "chapter": "16",
+  "rule": "16.8",
+  "width_px": null,
+  "alt": "Two placeholder frames with corner crop marks and no fill. On Newsprint, a 3:2 frame: Placeholder, photograph to commission, a resident testifies at a microphone in a state house hearing room. On Charcoal, a 4:5 frame with the same words in Charcoal’s colors.",
+  "illustrative": false,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-8-failure": {
+  "chapter": "16",
+  "rule": "16.8",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A Stone panel at a photograph’s size with a small caption bar reading A polling place in a gymnasium and Natural color 3:2, which our fifth edition announced to screen readers as a photograph.",
+  "illustrative": false,
+  "notes": "Our fifth edition’s panel, redrawn as a picture: an image stage, so the guide’s own reader hears its alt."
+ },
+ "s-16-9-correct": {
+  "chapter": "16",
+  "rule": "16.9",
+  "width_px": null,
+  "alt": "A placeholder frame for a generated image, with the Generated image tab at its top left and the written prompt inside: a phone on a kitchen table beside a utility bill and a mug. Under it, a caption that labels the scene as a generated image, with fields for the tool and the date, and a rights record line.",
+  "illustrative": false,
+  "notes": "No generated image: the studio’s call for chat 10. The tab sits where it sits on a real one.",
+  "readable": true
+ },
+ "s-16-9-failure": {
+  "chapter": "16",
+  "rule": "16.9",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A placeholder frame for a generated picture of a packed hearing room, with no tab, over a news caption and a photograph’s credit for an invented hearing.",
+  "illustrative": true,
+  "notes": "",
+  "readable": true
+ },
+ "s-16-opener": {
+  "chapter": "16",
+  "rule": null,
+  "width_px": null,
+  "alt": "Two documentary photographs in black and white, side by side. A federal official answers residents at a public meeting in Lake Isabella, California, in 2014; members of the public file past the casket of Rosa Parks in the Capitol Rotunda in 2005. Each carries its full caption.",
+  "illustrative": false,
+  "notes": "Both photographs from contract C1, in black and white (Rule 16.2): Lake Isabella by CSS at 3:2, the Rotunda by data-oa-crop 60 0 1080 720, which keeps the agency’s corner mark out.",
+  "readable": true
+ },
+ "s-16-picture-kinds": {
+  "chapter": "16",
+  "rule": null,
+  "width_px": null,
+  "alt": "A table of five kinds of picture: documentary photograph, placeholder, hand-drawn spot illustration, exploded view and generated image, with where each may appear, its label, what it never does and its rules.",
+  "illustrative": false,
+  "notes": "",
+  "readable": true
+ }
+}
