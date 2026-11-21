@@ -230,7 +230,7 @@ async function main() {
         // contract C4: a still drawn for the guide, one view at its true size
         if (spec.guide) {
           const key = `${r.w}-${r.exports[0].theme || 'light'}`;
-          const alt = spec.alt;
+          const alt = r.alt || spec.alt;   // W6: the share preview's alt is the generator's words (r.alt)
           guide_plates.push({ spec, type: spec.type, css: r.css, views: [{ key, w: r.w, h: r.h, theme: r.exports[0].theme || 'light', alt,
             html: frame({ w: r.w, h: r.h, html: r.html, alt, layers: r.layers, page: { id: spec.id, key, type: spec.type } }) }] });
         }
@@ -275,7 +275,8 @@ async function main() {
             await p.close();
             if (spec.guide) {
               const key = `${ex.w}`;
-              const alt = `${spec.alt} The ${ex.serve_as.replace(/\.png$/, '')} icon, ${ex.w} by ${ex.h} px.`;
+              const ICON = { 'apple-touch-icon.png': 'The Apple touch icon', 'icon-192.png': 'The web app manifest icon', 'icon-512-maskable.png': 'The maskable web app manifest icon' };
+              const alt = `${String(spec.alt).replace(/\.?$/, '.')} ${ICON[ex.serve_as] || 'The icon'}, ${ex.w} by ${ex.h} px.`;
               views.push({ key, w: ex.w, h: ex.h, theme: 'light', alt, html: frame({ w: ex.w, h: ex.h, html: ex.html, alt, page: { id: spec.id, key, type: spec.type } }) });
             }
           }
@@ -472,7 +473,8 @@ ${r.head_links || ''}
           facts.pruned[key] = { removed: pruned.removed, bytes_before: Buffer.byteLength(html), bytes_after: Buffer.byteLength(pruned.html), bytes_symbolized: Buffer.byteLength(sym.html), pixels_same: same && same2 };
           Object.assign(plate_symbols, sym.symbols);
           const frame_html = sym.html;
-          const alt = r.view_alt ? r.view_alt(key) : `${spec.alt} At ${w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark mode'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
+          // W6 and ED11-4: the application's words end in a period, then the view's own sentence
+          const alt = r.view_alt ? r.view_alt(key) : `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark theme'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
           views.push({ key, w: wv.w, h, theme: t, alt, ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}),
             html: frame({ w: wv.w, h, html: frame_html, alt, page: { id: spec.id, key, type: spec.type } }) });
           heights[key] = h;

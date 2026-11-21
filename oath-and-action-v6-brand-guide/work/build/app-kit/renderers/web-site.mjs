@@ -80,6 +80,10 @@ const kick = (k) => (Array.isArray(k) ? k : [k, null]);
 // ---------------------------------------------------------------------------------------------------------------- style
 const g = (k) => `--c:var(--oa-layout-grid-${k}-columns);--g:var(--oa-layout-grid-${k}-gutter);--m:var(--oa-layout-grid-${k}-margin)`;
 const at = (em, body) => `@container ws (min-width: ${em}em){${body}}`;
+// W2 (the accessibility lead's walk): a rule for the dark page, chosen or by the device, keyed as tokens.css keys the dark
+// tokens: an explicit Dark on the page or the frame, and the device's dark where no Light was chosen
+const dark = (sel, decl) => `[data-oa-theme="dark"] .ws ${sel},.ws[data-oa-theme="dark"] ${sel}{${decl}}`
+  + `@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) ${sel}{${decl}}}`;
 const under = (em, body) => `@container ws (max-width: ${em - 0.001}em){${body}}`;
 
 export function site_css() {
@@ -109,7 +113,7 @@ ${at(BP.wide, `.ws-in{${g('wide')}}`)}
 .ws .ws-l3,.ws .oa-masthead-wm--16{display:none}
 .ws .oa-masthead-wm--24{display:block}
 .ws .ws-l3{color:var(--oa-color-text-primary);--amp:var(--oa-color-identity-signature);--lever:var(--oa-color-identity-signature);--link:var(--oa-color-palette-stone);--line:var(--oa-color-palette-stone)}
-[data-oa-theme="dark"] .ws .ws-l3,.ws[data-oa-theme="dark"] .ws-l3{--link:var(--oa-color-text-primary);--line:var(--oa-color-text-primary)}
+${dark('.ws-l3', '--link:var(--oa-color-text-primary);--line:var(--oa-color-text-primary)')}
 ${under(BP.phone, '.ws .oa-masthead-wm--24{display:none}.ws .oa-masthead-wm--16{display:block}.ws .oa-masthead-home{padding-block:14px}')}
 ${at(BP.tablet, '.ws .oa-masthead-wm--24,.ws .oa-masthead-wm--16{display:none}.ws .ws-l3{display:block}.ws .oa-masthead-bar{min-height:80px}')}
 .ws .oa-masthead-nav{display:none}
@@ -130,6 +134,9 @@ ${at(BP.wide, '.ws{--ws-part-gap:32px}')}
 /* the menu (spec 3) */
 .ws .oa-masthead-dialog{padding:0 var(--m) 32px}
 .ws .oa-masthead-dialog-head{min-height:56px}
+/* W1 (2.4.11): the menu's title row sticks, so a focused row scrolled under it stays clear: the dialog's scroll padding
+   is the row's height and its rule (the site's script sets it from the row when the menu opens, should the row wrap) */
+.ws .oa-masthead-dialog{scroll-padding-top:57px}
 .ws .oa-masthead-dialog-nav{margin-top:24px}
 .ws .oa-masthead-list>li:nth-child(4){border-bottom-color:var(--oa-color-border-strong)}
 .ws.ws-open{min-height:var(--ws-vh)}
@@ -140,7 +147,7 @@ ${at(BP.wide, '.ws{--ws-part-gap:32px}')}
 .ws-foot-lists{border-top:2px solid var(--oa-color-border-strong);padding-top:48px}
 .ws-strip{margin-top:48px;padding-block:40px}
 ${at(BP.tablet, '.ws-strip{padding-block:56px}')}
-[data-oa-theme="dark"] .ws .ws-strip,.ws[data-oa-theme="dark"] .ws-strip{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)}
+${dark('.ws-strip', 'box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)')}
 .ws-foot nav>.ws-g{padding-inline:0;row-gap:32px}
 .ws-foot .grp{grid-column:span 2}
 ${at(BP.tablet, '.ws-foot .grp{grid-column:span 2}')}
@@ -156,7 +163,7 @@ ${at(BP.desktop, '.ws-foot .grp{grid-column:span 3}')}
 ${under(BP.tablet, '.ws-foot .addr{flex:0 0 100%}.ws-foot .row{row-gap:8px}')}
 .ws-illus{${type_css('label')};padding:2px 6px;border:1px solid var(--oa-color-border-strong-on-charcoal);color:var(--oa-color-text-secondary)}
 /* panels: one a section, Charcoal in both themes, with a 1 px edge on the dark page (Rule 20.5's correct plate) */
-[data-oa-theme="dark"] .ws .ws-panel,.ws[data-oa-theme="dark"] .ws-panel{box-shadow:inset 0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}
+${dark('.ws-panel', 'box-shadow:inset 0 0 0 1px var(--oa-color-border-hairline-on-charcoal)')}
 /* main */
 .ws-main{display:block;padding-top:32px}
 ${at(BP.tablet, '.ws-main{padding-top:48px}')}
@@ -200,7 +207,7 @@ ${at(BP.tablet, '.ws-main{padding-top:48px}')}
 .ws-card>*+*{margin-top:12px !important}
 .ws-card .ws-kick+*{margin-top:16px !important}
 .ws-card h3{${type_css('h3')};text-wrap:balance}
-.ws-card h3 a{text-decoration:none}
+.ws-card h3 a{display:block;padding-block:6.5px;margin-block:-6.5px;text-decoration:none}
 .ws-card h3 a:hover,.ws-card h3 a:focus-visible{text-decoration:underline;text-decoration-thickness:2px}
 .ws-card .dek{${type_css('body-small')};text-wrap:pretty}
 .ws-card .st{${type_css('body-small')}}
@@ -225,7 +232,7 @@ ${at(BP.wide, `.ws-home>.ws-sec{grid-column:span 3}
  .ws-home>.ws-sec:nth-child(4) .ws-cell{margin-right:0}
  .ws-home>.ws-sec:nth-child(2) .ws-cell .ar{right:calc(var(--g) / -2)}`)}
 .ws-cell .ar.last{display:none}
-[data-oa-theme="dark"] .ws .ws-cell,.ws[data-oa-theme="dark"] .ws-cell{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal),inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)}
+${dark('.ws-cell', 'box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal),inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)')}
 .ws-atlas{margin-top:32px}
 .ws-atlas .lab{${type_css('label')};color:var(--oa-color-text-secondary);margin-bottom:8px !important}
 .ws-abar{padding:24px}
@@ -646,7 +653,10 @@ export async function render(spec) {
     const fw = width || fig_w;
     const cols = fw ? columns(spec, fw) : null;
     const F = fw && figs_at[fw] ? figs_at[fw] : figs;
-    const main = part !== 'page' ? '' : page === 'home' ? home_main(pw, F, pid, cols, marks, fw) : page === 'article' ? article_main(pw, F, pid, cols) : act_main(pw, F, pid, cols, marks);
+    let main = part !== 'page' ? '' : page === 'home' ? home_main(pw, F, pid, cols, marks, fw) : page === 'article' ? article_main(pw, F, pid, cols) : act_main(pw, F, pid, cols, marks);
+    // W3 (2.1.1): on a working page each chart table's scroll frame is a Tab stop, a named group (the guide's pattern,
+    // D4-92); a guide frame is a picture and takes none
+    if (!width) main = main.replace(/<div class="oac-tw" role="group"/g, '<div class="oac-tw" role="group" tabindex="0"');
     const parts_ = {
       masthead: head,
       main: `<main id="${pid}-main" class="ws-main" tabindex="-1">${main}</main>`,

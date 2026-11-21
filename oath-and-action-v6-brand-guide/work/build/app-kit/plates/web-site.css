@@ -24,7 +24,7 @@
 .ws .ws-l3,.ws .oa-masthead-wm--16{display:none}
 .ws .oa-masthead-wm--24{display:block}
 .ws .ws-l3{color:var(--oa-color-text-primary);--amp:var(--oa-color-identity-signature);--lever:var(--oa-color-identity-signature);--link:var(--oa-color-palette-stone);--line:var(--oa-color-palette-stone)}
-[data-oa-theme="dark"] .ws .ws-l3,.ws[data-oa-theme="dark"] .ws-l3{--link:var(--oa-color-text-primary);--line:var(--oa-color-text-primary)}
+[data-oa-theme="dark"] .ws .ws-l3,.ws[data-oa-theme="dark"] .ws-l3{--link:var(--oa-color-text-primary);--line:var(--oa-color-text-primary)}@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) .ws-l3{--link:var(--oa-color-text-primary);--line:var(--oa-color-text-primary)}}
 @container ws (max-width: 24.374em){.ws .oa-masthead-wm--24{display:none}.ws .oa-masthead-wm--16{display:block}.ws .oa-masthead-home{padding-block:14px}}
 @container ws (min-width: 48em){.ws .oa-masthead-wm--24,.ws .oa-masthead-wm--16{display:none}.ws .ws-l3{display:block}.ws .oa-masthead-bar{min-height:80px}}
 .ws .oa-masthead-nav{display:none}
@@ -45,6 +45,9 @@
 /* the menu (spec 3) */
 .ws .oa-masthead-dialog{padding:0 var(--m) 32px}
 .ws .oa-masthead-dialog-head{min-height:56px}
+/* W1 (2.4.11): the menu's title row sticks, so a focused row scrolled under it stays clear: the dialog's scroll padding
+   is the row's height and its rule (the site's script sets it from the row when the menu opens, should the row wrap) */
+.ws .oa-masthead-dialog{scroll-padding-top:57px}
 .ws .oa-masthead-dialog-nav{margin-top:24px}
 .ws .oa-masthead-list>li:nth-child(4){border-bottom-color:var(--oa-color-border-strong)}
 .ws.ws-open{min-height:var(--ws-vh)}
@@ -55,7 +58,7 @@
 .ws-foot-lists{border-top:2px solid var(--oa-color-border-strong);padding-top:48px}
 .ws-strip{margin-top:48px;padding-block:40px}
 @container ws (min-width: 48em){.ws-strip{padding-block:56px}}
-[data-oa-theme="dark"] .ws .ws-strip,.ws[data-oa-theme="dark"] .ws-strip{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)}
+[data-oa-theme="dark"] .ws .ws-strip,.ws[data-oa-theme="dark"] .ws-strip{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)}@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) .ws-strip{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)}}
 .ws-foot nav>.ws-g{padding-inline:0;row-gap:32px}
 .ws-foot .grp{grid-column:span 2}
 @container ws (min-width: 48em){.ws-foot .grp{grid-column:span 2}}
@@ -71,7 +74,7 @@
 @container ws (max-width: 47.999em){.ws-foot .addr{flex:0 0 100%}.ws-foot .row{row-gap:8px}}
 .ws-illus{font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);padding:2px 6px;border:1px solid var(--oa-color-border-strong-on-charcoal);color:var(--oa-color-text-secondary)}
 /* panels: one a section, Charcoal in both themes, with a 1 px edge on the dark page (Rule 20.5's correct plate) */
-[data-oa-theme="dark"] .ws .ws-panel,.ws[data-oa-theme="dark"] .ws-panel{box-shadow:inset 0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}
+[data-oa-theme="dark"] .ws .ws-panel,.ws[data-oa-theme="dark"] .ws-panel{box-shadow:inset 0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) .ws-panel{box-shadow:inset 0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}}
 /* main */
 .ws-main{display:block;padding-top:32px}
 @container ws (min-width: 48em){.ws-main{padding-top:48px}}
@@ -115,7 +118,7 @@
 .ws-card>*+*{margin-top:12px !important}
 .ws-card .ws-kick+*{margin-top:16px !important}
 .ws-card h3{font-family:var(--oa-type-h3-font-family);font-style:var(--oa-type-h3-font-style);font-weight:var(--oa-type-h3-font-weight);font-size:var(--oa-type-h3-font-size);line-height:var(--oa-type-h3-line-height);letter-spacing:var(--oa-type-h3-letter-spacing);text-transform:var(--oa-type-h3-text-transform);font-variant-numeric:var(--oa-type-h3-font-variant-numeric);text-wrap:balance}
-.ws-card h3 a{text-decoration:none}
+.ws-card h3 a{display:block;padding-block:6.5px;margin-block:-6.5px;text-decoration:none}
 .ws-card h3 a:hover,.ws-card h3 a:focus-visible{text-decoration:underline;text-decoration-thickness:2px}
 .ws-card .dek{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric);text-wrap:pretty}
 .ws-card .st{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
@@ -140,7 +143,7 @@
  .ws-home>.ws-sec:nth-child(4) .ws-cell{margin-right:0}
  .ws-home>.ws-sec:nth-child(2) .ws-cell .ar{right:calc(var(--g) / -2)}}
 .ws-cell .ar.last{display:none}
-[data-oa-theme="dark"] .ws .ws-cell,.ws[data-oa-theme="dark"] .ws-cell{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal),inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)}
+[data-oa-theme="dark"] .ws .ws-cell,.ws[data-oa-theme="dark"] .ws-cell{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal),inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)}@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) .ws-cell{box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal),inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)}}
 .ws-atlas{margin-top:32px}
 .ws-atlas .lab{font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);color:var(--oa-color-text-secondary);margin-bottom:8px !important}
 .ws-abar{padding:24px}

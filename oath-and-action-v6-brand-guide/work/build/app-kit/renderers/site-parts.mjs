@@ -55,6 +55,15 @@ export const switch_head_js = () => read('c-18-theme-switch.head.js');
 // home link when no part is current, since Menu is then hidden. bp_em is the masthead's breakpoint in em.
 export function close_on_widen_js(bp_em) {
   return `(function () {
+  // W1 (2.4.11): when the menu opens, its scroll padding is its sticky title row's height and rule, so no focused row
+  // hides under the row, at any text size
+  document.querySelectorAll('[data-oa-masthead] .oa-masthead-menu').forEach(function (menu) {
+    menu.addEventListener('click', function () {
+      var dialog = document.getElementById(menu.getAttribute('aria-controls'));
+      var head = dialog && dialog.querySelector('.oa-masthead-dialog-head');
+      if (head) dialog.style.scrollPaddingTop = Math.ceil(head.getBoundingClientRect().height) + 'px';
+    });
+  });
   var mq = window.matchMedia('(min-width: ${bp_em}em)');
   function widened() {
     if (!mq.matches) return;
