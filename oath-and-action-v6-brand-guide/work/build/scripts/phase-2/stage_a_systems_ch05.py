@@ -1031,6 +1031,9 @@ def build(ctx):
                 'rule': ['Every view keeps three limits. Newsprint covers 60 to 85 percent of it, each section holds one '
                          'dark panel at most, in Charcoal or Prussian, and Pillar Red stays within 5 percent, signature red '
                          'included.',
+                         # DR-310: a long page keeps the limits on its first screen and each section's opening screen
+                         'On a long page the limits hold for the first screen and for each section’s opening screen; '
+                         'screens of running text between them may hold more Newsprint. '
                          'The other shares in the palette sheet below, carried from our fifth edition, set the balance '
                          'across a body of work, such as a month of stories or a whole report. A single view may fall '
                          'outside them.'],
@@ -1107,11 +1110,11 @@ def build(ctx):
                                  'compete: a reader has to fix an error before taking a step, and a step a reader can take '
                                  'matters more than a point we want to make. Signature red is part of the marks themselves, '
                                  'so it never competes with the working red.',
-                                 # G3-06 (c), Gate 3 item 6: the exception points to the two marks Rule 05.5 names
+                                 # DR-305 (ED10-1): the exceptions named, in a sentence of their own
                                  f'Red never sits on Prussian, where it measures {red_p} to 1 and reads as a party pair of '
                                  f'red and blue. On Newsprint it measures {red_n} to 1, so a working red mark there takes a '
-                                 f'keyline, a 1 px Charcoal edge drawn inside the mark, apart from the two marks Rule 05.5 '
-                                 f'names.'],
+                                 f'keyline, a 1 px Charcoal edge drawn inside the mark. Rule 05.5 lets the error bar, and '
+                                 f'the red outlines and arrowheads of the atlas’s target, go without one.'],
                         'basis': 'Design judgment'},
                 'correct': {'specimen': 's-05-3-correct',
                             'caption': 'One view at true size, with two reds. The wordmark’s ampersand is signature red and '
@@ -1138,7 +1141,8 @@ def build(ctx):
                     {'label': 'The hinge diagram', 'value': R053[1]},
                     {'label': 'A hinge headline', 'value': R053[6]},
                     {'label': 'Hinge divider ampersand', 'value': R053[7], 'token': 'oa.color.identity.hingeDivider.onNewsprint'},
-                    {'label': 'Keyline on a red mark on Newsprint', 'value': f'Charcoal, 1 px, {ch_n} to 1', 'token': 'oa.component.button.ask.keyline.onNewsprint'},
+                    # DR-305 (ED10-3): the keyline's exceptions point to Rule 05.5
+                    {'label': 'Keyline on a red mark on Newsprint', 'value': f'Charcoal, 1 px, {ch_n} to 1, except the marks Rule 05.5 names', 'token': 'oa.component.button.ask.keyline.onNewsprint'},
                     {'label': 'Ask label', 'value': f'White on Pillar Red, {wl_red} to 1, 19 px bold or larger', 'token': 'oa.type.ask'},
                     {'label': 'In this guide', 'value': R053[8]},
                 ],
@@ -1197,10 +1201,12 @@ def build(ctx):
                          f'surface. Pillar Red measures {red_n} to 1 on Newsprint, so a red mark that carries meaning there '
                          f'takes a 1 px Charcoal keyline. The error bar takes none, since the error mark and the word '
                          f'“Error:” carry the error and the 4 px bar beside them repeats it. '
-                         # G3-06 (c), Gate 3 item 6: the atlas's red target as the second exception (DR-36, board 3 reply 11)
-                         f'The atlas’s red target takes none either: the atlas draws it as a red ring and arrowhead, and each '
-                         f'plate names its target in words beside the drawing (Rule 15.11). Stone passes for marks on light '
-                         f'surfaces, and a hairline that carries no meaning may sit lower.'],
+                         # DR-305 (ED10-1): the atlas's red target, its connections edged (Rule 12.5), its outlines and
+                         # arrowheads not (DR-36, board 3 reply 11)
+                         f'On the atlas’s red target, only the red connections carry a 1 px Charcoal edge on each side '
+                         f'(Rule 12.5). Every plate names each target in words beside the drawing (Rule 15.11), so the red '
+                         f'outline of a target variable and each red arrowhead go without an edge. Stone passes for marks on '
+                         f'light surfaces, and a hairline that carries no meaning may sit lower.'],
                 'tokens': ['oa.color.graphic.essential.onNewsprint', 'oa.color.graphic.subtle.onNewsprint',
                            'oa.color.border.strong.onNewsprint', 'oa.color.border.hairline.onNewsprint',
                            'oa.chart.color.pointKeyline.onNewsprint', 'oa.border.width.hairline'],
@@ -1224,6 +1230,10 @@ def build(ctx):
                     {'label': 'Keyline on red', 'value': '1 px Charcoal border, inside the mark', 'token': 'oa.border.width.hairline'},
                     {'label': 'Error bar', 'value': '4 px Pillar Red with no keyline; the error mark and “Error:” carry the error',
                      'token': 'oa.color.state.error.bar.onNewsprint'},
+                    # DR-305 (ED10-2): the atlas's red target, the rule's second exception, gets its row
+                    {'label': 'Atlas red target', 'value': 'Red connections on a 1 px Charcoal edge each side (Rule 12.5); a '
+                                                           'target variable’s red outline and its arrowheads with no keyline; '
+                                                           'the words beside the drawing name each target (Rule 15.11)'},
                 ],
                 'sources_note': None,
                 'related': ['12', '14', '18'],
