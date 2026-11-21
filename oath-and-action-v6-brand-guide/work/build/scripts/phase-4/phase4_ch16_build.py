@@ -1303,7 +1303,7 @@ def vertical(r, lines, bad=False):
 def s16_11_correct():
     r = R['16.11']
     html = (css(CAPF) + '<div class="w"><div class="row">' + vertical(r, r['lines'])
-            + f'<div style="min-width:0;max-width:26rem"><p class="lab">{r["file_head"]}</p><pre class="code mt8" tabindex="0" role="region" aria-label="{r["file_head"]}"><code>{r["vtt"]}</code></pre></div>'
+            + f'<div style="min-width:0;max-width:26rem"><p class="lab">{r["file_head"]}</p><pre class="code mt8" tabindex="0" role="group" aria-label="{r["file_head"]}"><code>{r["vtt"]}</code></pre></div>'
             '</div></div>')
     return spec('s-16-11-correct', html, '16.11', r['correct_alt'], illustrative=True,
                 notes='Drawn at a quarter of 1080 by 1920, so the caption band’s 13 px words stand for about 52 px on the '
