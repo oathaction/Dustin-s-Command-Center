@@ -427,3 +427,17 @@ Both asks read, draft, "Comment at Regulations.gov", with the 16 px another-site
 ### 11.5 The Act page's comment panel across the wide body columns (added 20:09 UTC)
 
 The 20:07 drawing measures the Comment section's opening screen at 1440 px at 85.4 percent Newsprint, past 85 by 0.4. The comment panel takes the wide body columns, as the summary did: cols 3 to 10 (866.7 px) at 1440 and cols 2 to 11 (782.7 px) at 1024; full width on phones as before. Its words keep their measure inside it (`max-width: var(--oa-layout-measure-body-ideal)`).
+
+## 12. Third revision and the record’s answers (DD-6, 20:20 UTC)
+
+### 12.1 The article's step box spans the content width from 64em (revises 11.2)
+
+On the 20:14 drawing every first and opening screen of the three pages passes Rule 05.1 but one: the article's Step section at 1440 px, 90.8 percent Newsprint. Its 533 by 173 px step box is 7.1 percent of the screen, and the closing strip starts 15 px past the screen's foot. From 64em the step box runs across the content width (cols 1 to 12), with its words held to the body's columns inside it (cols 3 to 7 at 1440, 2 to 8 at 1024) by padding equal to the columns before them, 32 px above and below. Phones keep the box as it is. Expected: about 18 percent of the 1440 px screen, Newsprint near 80; at 1024 near 72.
+
+### 12.2 The trackers and the Act page's two sides, from the main session's answers (R3, R5)
+
+The facts are in `work/research/20261121_Act-Page-Docket.md`, "Added 20:17 to 20:19 UTC", and the words in the generator's PAGES (the kit reads them by `--page-words`):
+
+- **H.R. 7008 (home Track card):** 1 Filed, done; 2 Hearing, never happened (the bill status file lists no hearing; Rule 11.2's slash, never a hearing printed); 3 Committee vote, done (7 to 4, January 14, 2026); 4 First chamber, done; 5 Second chamber, now; 6 President, ahead. "As of November 21, 2026". The card's source line adds the bill status file.
+- **The NAC rule (home Act card and the Act page's status panel):** 1 Early notice, done, note "March 31, 2022: the FDA said it was considering a rule" (page 73720; the agency's own notice, so step 1 under Rule 11.9); 2 Proposed, done; 3 Comments open, now, with the take-part mark; 4 to 6 ahead. No step waits now, so the kit draws every tracker's circles and the take-part mark.
+- **What the record shows (Act page, Proposal section, after the summary):** an `h3` "What the record shows" and two paragraphs, the petitioners' request and the concern the law guards, each quoting the rule with its page. They are not the same length, because the rule records no objector; DR-93 and the main session's D4-108 rule that the page prints what the record holds and invents no counterweight.

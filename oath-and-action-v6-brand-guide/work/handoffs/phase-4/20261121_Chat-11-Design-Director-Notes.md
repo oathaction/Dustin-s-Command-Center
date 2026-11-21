@@ -17,6 +17,8 @@ Started November 21, 2026, 18:56 UTC. Owner: oa-design-director. Files held this
 
 - **DD-5. Second revisions, 19:58 UTC.** Specs section 11. Measured with C5 on the 19:57 drawing: the home page passes every screen; four screens still break Rule 05.1 (article Count on phones 56.0 and 49.8; article Step 87.8 to 95.3; Act Proposal at 1440 88.6; Act Comment's red 6.27 percent at 390). Changes: 11.1 the fact box's source line moves under it; 11.2 the article's closing step on a Charcoal step box with B in Newsprint; 11.3 the Act page's document strip across cols 1 to 12; 11.4 both asks read “Comment at Regulations.gov”, padding 12 by 16 px, the docket number in the label above, and (added 20:08 after the 20:07 drawing, which stretched the ask across the panel at 5.79 percent red on a phone) each ask as wide as its words, never stretched to the panel; 11.5 (20:09) the comment panel across the wide body columns, since the 20:07 drawing measured the Comment screen at 1440 at 85.4. The ask's words are in the generator now.
 
+- **DD-6. Third revision and the record's answers, 20:20 UTC.** Specs section 12. 12.1: on the 20:14 drawing every first and opening screen passes Rule 05.1 but the article's Step screen at 1440 (90.8 percent Newsprint); from 64em the step box spans the content width (cols 1 to 12) with its words held to the body's columns inside it. 12.2: the main session's answers to R3 and R5 (20:19) are in PAGES now: H.R. 7008's step 2 never happened (no hearing; Rule 11.2's slash) and step 3 is done (7 to 4, January 14, 2026), "As of November 21, 2026"; the NAC rule's step 1 is done (March 31, 2022, the FDA said it was considering a rule); no step waits, so the kit draws every tracker and the take-part mark; the Act page gains "What the record shows" (two paragraphs quoting the rule with pages, unequal by the record, DR-93 and D4-108). Needs a redraw of A06 to A08 (and of every plate, since the generator's words moved).
+
 ## Routine calls
 
 - D4-xxx | Chapter 20 has 11 rules in three groups and one extra ("The pages and their files") | The brief asked for about 10; eleven carry the owed criteria (2.4.2, 3.1.1, 3.1.2's markup, 3.2.6) with no rule doing two jobs
@@ -49,12 +51,14 @@ Started November 21, 2026, 18:56 UTC. Owner: oa-design-director. Files held this
 - **R7, engineer (the extra "The pages and their files"):** each chapter 20 export in the exports manifest with `spec` (A04 to A10) and `size` in words the plate can print, such as "1440 by 5,230 px" or "16, 32 and 48 px".
 - **R8, engineer (19:37 UTC, from reading `specs/a06-web-home.json`):** draw each chart at the column it fills at each width, so no frame scales a drawing past its true size: S10 at 866.7 (1440, cols 5 to 12), 540.7 (1024, cols 6 to 12) and 350 and 328 (phones); S86 and S66 at 644 (1440, cols 3 to 8), 621.3 (1024, cols 2 to 9) and 350 and 328. A drawing made for 541 px and shown at 867 sets its 13 px words at 21 px, out of step with the page's type. With R4 (one drawing a frame) the extra widths add no bytes to a frame.
 - **R9, engineer:** the A10 plate prints Pillar Red as a literal twice (#E63946), which the strict build warns on (19:56 build); the favicon's drawing in the plate takes `var(--oa-color-identity-signature)` or the master's own paint variable.
+- **R10, main session (20:20 UTC), answering your 20:19 message:** R3 and R5 are used (DD-6). The article's Step screen at 1440 (the engineer's 90.8) is settled by DD-6's 12.1, which needs the engineer's one more redraw of A07, and of A04 to A10 because the generator's words changed (the strict build marks every plate stale until then). After that redraw I run the generator and the strict build and write "Words ready for the editor".
 - **To the accessibility lead (for agreement, no file):** 390 px keeps L1's 24 px master (Routine call above), and Rule 20.4's passage is the Great Seal's motto.
 
 ## Not fixed
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
+| DD11-NF1 | Design director, from the main session's R5 answer (20:19) | Rule 01.22's rule text, "sets out what supporters and opponents have said at the same length" | Read with DR-93, the rule asks for a counterweight the record may not hold: the FDA's NAC rule records no objector, so equal length would mean inventing one. Chapter 20's Rule 20.8 says "at the length the record holds" | Rule 01.22 reads "sets out what the record shows from each side, at the length the record holds" | Approved chapter 01; a change needs Dustin's word (the main session logged D4-108 for this page) | Open, for Phase 4 board 1 |
 
 ## Tested
 

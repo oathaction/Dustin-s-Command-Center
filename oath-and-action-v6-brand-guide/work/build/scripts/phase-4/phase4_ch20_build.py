@@ -111,6 +111,21 @@ _need(_DK, '11:59 p.m. Eastern Time', 'Food and Drug Administration (FDA), Depar
       'between 9 a.m. and 4 p.m., Monday through Friday', 'THIS DOCUMENT CONTAINS CONFIDENTIAL INFORMATION',
       'medical information, your or anyone else’s Social Security number, or confidential business information',
       'read on November 21, 2026', where=DOCKET_FILE)
+# The record's own words on each side and on the steps before the proposal (the main session's addendum, 20:17 to 20:19
+# UTC, read from govinfo's PDF page by page and H.R. 7008's bill status file); each must stand in the file word for word
+REC = {
+    'petitions': 'In 2021, we received two citizen petitions requesting that we conclude that NAC is not excluded from the '
+                 'definition of dietary supplement under section 201(ff)(3)(B) of the FD&C Act',
+    'incentives': 'to protect the incentives for new drug development',
+    'no_concern': 'To date, we have not received any comments expressing concern or providing data to demonstrate that '
+                  'allowing the sale of NAC in or as a dietary supplement would impact drug development or identifying any '
+                  'other concerns',
+    'question': 'whether the sale of NAC-containing products labeled as dietary supplements in the United States has '
+                'negatively impacted NAC drug development or is anticipated to in the future',
+}
+_need(_DK, *REC.values(), '(page 73720)', '(page 73721)', '(page 73723)', 'March 31, 2022', '2001, 2010 and July 2020',
+      'says it is considering rulemaking', 'January 14, 2026', 'yeas and nays, 7 to 4', 'lists no committee hearing',
+      where=DOCKET_FILE)
 _m = re.search(r'\*\*The agency.s summary, quoted\.\*\* "(.+?)"\n', _DK)
 if not _m:
     raise SystemExit(f'{DOCKET_FILE}: the agency’s summary is no longer where Rule 20.8 reads it')
@@ -256,14 +271,18 @@ PAGES = {
              'headline': 'H.R.' + NB + '7008, the Stop Insider Trading Act', 'href': '/track/hr-7008',
              'dek': 'The bill would limit members’ stock purchases and require photo ID to vote in federal elections.',
              'tracker': {'kind': 'bill', 'steps': [
-                 {'n': 1, 'name': 'Filed', 'state': 'done'}, {'n': 2, 'name': 'Hearing', 'state': 'pending'},
-                 {'n': 3, 'name': 'Committee vote', 'state': 'pending'}, {'n': 4, 'name': 'First chamber', 'state': 'done'},
+                 {'n': 1, 'name': 'Filed', 'state': 'done'}, {'n': 2, 'name': 'Hearing', 'state': 'never'},
+                 {'n': 3, 'name': 'Committee vote', 'state': 'done'}, {'n': 4, 'name': 'First chamber', 'state': 'done'},
                  {'n': 5, 'name': 'Second chamber', 'state': 'now'}, {'n': 6, 'name': 'President', 'state': 'ahead'}],
-                 'pending': [2, 3]},
+                 'pending': []},
              'status': [['Step 5 of 6: Second chamber.', True],
                         [f'On September 30, 2026, a Senate vote to take it up got {SEN_YES} votes, seven short of the 60 '
                          'it needed.', False]],
-             'dateline': 'As of ' + HR_ASOF, 'source': HR_SOURCE, 'link': None},
+             'dateline': 'As of November 21, 2026',
+             'source': HR_SOURCE + ' Steps from the bill’s status file, U.S. Government Publishing Office, govinfo.gov, '
+                       'retrieved November 21, 2026: no committee hearing; the committee’s vote, 7 to 4, January 14, '
+                       '2026.',
+             'link': None},
             {'pillar': 'connect', 'word': 'Connect', 'icon': 'cl-021',
              'kicker': ['Guide', 'Electric bills'], 'symbol': None,
              'headline': 'Who sets your electric bill', 'href': '/connect/electric-bills',
@@ -276,11 +295,11 @@ PAGES = {
              'dek': 'The Food and Drug Administration proposes to let products containing N-acetyl-L-cysteine (NAC) be '
                     'sold as dietary supplements.',
              'tracker': {'kind': 'rule', 'steps': [
-                 {'n': 1, 'name': 'Early notice', 'state': 'pending'}, {'n': 2, 'name': 'Proposed', 'state': 'done'},
+                 {'n': 1, 'name': 'Early notice', 'state': 'done'}, {'n': 2, 'name': 'Proposed', 'state': 'done'},
                  {'n': 3, 'name': 'Comments open', 'state': 'now', 'take_part': True},
                  {'n': 4, 'name': 'Comments closed', 'state': 'ahead'}, {'n': 5, 'name': 'Final rule', 'state': 'ahead'},
                  {'n': 6, 'name': 'In effect', 'state': 'ahead'}],
-                 'pending': [1]},
+                 'pending': []},
              'status': [['Step 3 of 6: Comments open.', True], ['You can take part now.', True],
                         ['Comments close ' + DOCKET['closes'] + '.', False]],
              'dateline': None, 'source': None, 'link': ['How to send a comment', '/act/fda-nac-rule#comment']},
@@ -342,14 +361,15 @@ PAGES = {
         'status': {
             'label': 'Where the rule stands',
             'state_words': {'done': 'Done', 'now': 'Now', 'ahead': 'Not yet'},
-            'steps': [{'n': 1, 'name': 'Early notice', 'state': 'pending', 'note': ''},
+            'steps': [{'n': 1, 'name': 'Early notice', 'state': 'done',
+                       'note': 'March 31, 2022: the FDA said it was considering a rule'},
                       {'n': 2, 'name': 'Proposed', 'state': 'done', 'note': 'Published ' + DOCKET['published']},
                       {'n': 3, 'name': 'Comments open', 'state': 'now', 'note': 'Until ' + DOCKET['closes'],
                        'take_part': True},
                       {'n': 4, 'name': 'Comments closed', 'state': 'ahead', 'note': ''},
                       {'n': 5, 'name': 'Final rule', 'state': 'ahead', 'note': ''},
                       {'n': 6, 'name': 'In effect', 'state': 'ahead', 'note': ''}],
-            'pending': [1],
+            'pending': [],
             'box': [['You can take part now.', True],
                     ['Comments close ' + DOCKET['closes'] + ', at 11:59 p.m. Eastern Time.', False]],
         },
@@ -364,7 +384,15 @@ PAGES = {
             'cite': 'The Food and Drug Administration’s summary of its proposed rule, ' + DOCKET['citation_short'] + ', '
                     + DOCKET['published'],
             'cite_href': DOCKET['rule_url'],
-            'sides': None,   # Request R5: what supporters and opponents have said, from the rule's preamble
+            # Rule 01.22's two sides, as the record holds them (DR-93; D4-108): the request, the law's concern with the
+            # FDA's earlier position, the rule's statement that no comment has raised a concern, and the FDA's question
+            'sides': {'heading': 'What the record shows',
+                      'paragraphs': [
+                          'The request. The rule says: “' + REC['petitions'] + '” (page 73720).',
+                          'The concern in the law. In 2001, 2010 and 2020, the FDA said products containing NAC are '
+                          'excluded from the dietary supplement definition (pages 73719 to 73720). The exclusion exists in '
+                          'part “' + REC['incentives'] + '” (page 73721). The rule says: “' + REC['no_concern'] + '” (page '
+                          '73723), and it asks commenters “' + REC['question'] + '” (page 73723).']},
             'decides_heading': 'Who decides',
             'decides': 'The FDA decides whether to make the rule final. Once it does, Congress and the President can '
                        'strike the rule down, and a court can set it aside.',
@@ -665,7 +693,8 @@ R['20.8'] = {
     'title': 'Build an Act page as a process piece that names who decides and by when, with one way to take part in red.',
     'rule': ['An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, '
              'with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s '
-             'own summary, sets out what supporters and opponents have said at the same length, and takes no side.',
+             'own summary, sets out what the record shows from those who asked for the change and on the concern the law '
+             'guards, at the length the record holds, and takes no side.',
              'After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read '
              'other comments, and gives the ask again. The ask is a red link to the comment page that names the action '
              'and the place, with the docket number beside it, and every fact carries the day we checked it.'],
