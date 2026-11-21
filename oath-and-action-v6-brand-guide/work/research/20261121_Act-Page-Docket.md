@@ -79,7 +79,7 @@ The rule's background (II.B, pages 73719 to 73720) and its section IV.B (pages 7
 | August 2, 2022 | Final enforcement discretion guidance (87 FR 47220): FDA will not act against certain NAC products labeled as supplements until it completes rulemaking or denies the remaining request | 73720 |
 | November 17, 2026 | The proposed rule (91 FR 73717); comments open until January 19, 2027 | 73717 |
 
-So the Act page's step 1 is the 2021 petitions (or the 2022 response), never an advance notice. "Names no advance notice" is what the rule's text shows; a search of the docket on Regulations.gov could not be run (403).
+For Rule 11.9's step 1, Early notice, the agency's public notice is the Federal Register notice of April 22, 2022 (87 FR 24170), in which FDA said it was considering rulemaking and was likely to propose a rule providing that NAC is not excluded (the rule, page 73723). Mark step 1 done with that date and citation. The 2021 petitions are the public's request, not an agency notice, and the March 31, 2022 response went to the petitioners. FDA published no formal advance notice of proposed rulemaking in the rule's record; a search of the docket on Regulations.gov could not be run (403). (Corrected at 20:30 UTC by the main session; an earlier line here pointed step 1 at the petitions or the 2022 response.)
 
 ### R5: what the rule reports from each side (Rule 01.22)
 
