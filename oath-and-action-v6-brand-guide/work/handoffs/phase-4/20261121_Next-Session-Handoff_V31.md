@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirty-first handoff, November 21)
 
-Written November 21, 2026, at the close of chat 11, Phase 4's second chat. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md`. V5's sections 3 to 5, section 3 of V8 to V30, and section 3 below hold together. Decision log entries for this chat run from D4-100 to D4-207, with Dustin's answers DR-305 to DR-311. The change ledger runs to C-164.
+Written November 21, 2026, at the close of chat 11, Phase 4's second chat. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md`. V5's sections 3 to 5, section 3 of V8 to V30, and section 3 below hold together. Decision log entries for this chat run from D4-100 to D4-211, with Dustin's answers DR-305 to DR-311. The change ledger runs to C-165.
 
 ## 1. Where things stand
 
@@ -17,14 +17,14 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 11 (work tracker row `c10`) bui
 
 **Done**
 - Chapter 05: DR-305 and DR-310 built word for word (C-157).
-- Chapter 20, Web: 11 rules in three groups, 24 plates, generator `work/build/scripts/phase-4/phase4_ch20_build.py`. The home, article and Act pages at 1440, 1024, 390 and 360 px light and 1440 and 390 px dark, the masthead and menu, the footer, the share preview and the favicon set, all drawn by the application kit at build time and placed as page frames (contract C4). Every first and opening screen passes Rule 05.1 under DR-310 (90 of 90). Rules 20.3 and 20.4 meet WCAG 2.4.2, 3.1.1, 3.2.6 and the markup half of 3.1.2. 838,520 bytes against 757,000 (111 percent, reported, DR-271).
+- Chapter 20, Web: 11 rules in three groups, 24 plates, generator `work/build/scripts/phase-4/phase4_ch20_build.py`. The home, article and Act pages at 1440, 1024, 390 and 360 px light and 1440 and 390 px dark, the masthead and menu, the footer, the share preview and the favicon set, all drawn by the application kit at build time and placed as page frames (contract C4). Every first and opening screen passes Rule 05.1 under DR-310 (90 of 90). Rules 20.3 and 20.4 meet WCAG 2.4.2, 3.1.1, 3.2.6 and the markup half of 3.1.2. 839,154 bytes against 757,000 (111 percent, reported, DR-271). After the board's first draft: three craft faults fixed (the article's "39,555" cut at 1024 px, a heading set far from its text, "Who decides" with no space above) and a sweep of every view (0 overflows, 0 headings out of rhythm).
 - The application kit: web renderers A04 to A10, the share preview and favicon types, the per-screen share measure (C5), `tools/ch11_marks.py` (chapter 11's tracker marks drawn from its own code), and the walk fixes W1, W2, W3, W5 and W6. 41 of 41 exports at their sizes; the three working pages in `work/build/exports/phase-4/`.
 - The accessibility lead's rulings AL-01 to AL-24 (chapter 20 and the atlas's UX-4, F-8, F-14, F-15) and walks: axe 0 on 18 page views, keyboard, menu, switch, contrast on pixels, zoom and reflow passed; W1 (WCAG 2.4.11) found and fixed on the website, its rerun by the engineer.
 - Chapter 19's map: 1.2.1, 1.2.2, 1.2.3, 1.2.5, 2.4.2, 3.1.1 and 3.2.6 Met; 3.1.2 stays a gap owed by chapter 02.
 - Chapter 21's plan, build-ready: `work/handoffs/phase-4/20261121_Chapter-21-Plan.md` (16 rules; the home with "Why can the same care produce different bills?" pressed, Reform R-23, Register sheet D04, Loop R18; every value from a 17-query script; about 712,600 bytes against 655,000).
 - Research: `work/research/20261121_Act-Page-Docket.md` (the docket, H.R. 7008's committee steps from govinfo's bill status file, the rule's history and what it records from each side). Atlas V7.1 row 47 (Loop R18's valence text).
 
-**The final build and its checks:** strict build 20:59:19 UTC on commit 5223a61c's tree: exit 0, 0 warnings, 13,079,965 bytes, 393 rules, 731 specimens; the projection 15.82 MB, 182,474 bytes under 16 MB (an early warning past 15.5 MB). Chart kit 96 of 96, 0 faults; chapter 14's check 99 of 99. Quick guide check at 1440 and 390 px: QUICK_CHECK_RESULT.
+**The final build and its checks:** strict build 23:24:58 UTC on commit 82d35eaa's tree: exit 0, 0 warnings, 0 stale plates, 13,080,599 bytes, 393 rules, 731 specimens; the projection 15.82 MB, 181,840 bytes under 16 MB (an early warning past 15.5 MB). Chart kit 96 of 96, 0 faults; chapter 14's check 99 of 99; the guide check's self-test 163 of 163 caught, 55 of 55 allowed. Quick guide check at 1440 and 390 px: QUICK_CHECK_RESULT. Two earlier runs failed and are not counted: the first measured the page frames' insides as live text (the check fixed, D4-209), the second caught Rule 20.10's failure plate at 7.8 px (made a picture, D4-211); a third, stopped at 21:13 for the craft fixes, wrote nothing (D4-208).
 
 **Published** (private): chat 11's progress board at BOARD_URL. The chapters page stays at version 15 (https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF); chapter 20 first appears there with Phase 4 board 1 in chat 12.
 
@@ -55,8 +55,10 @@ Build from `work/handoffs/phase-4/20261121_Chapter-21-Plan.md`: the design direc
 - **An approved component's fault can be fixed in the application.** W1 sat in chapter 18's menu; the website's own stylesheet fixed it, and chapter 18's fix went to the register for Dustin.
 - **The record decides balance.** Rule 01.22 asks for two sides at equal length; where the record holds one, DR-93 governs and the page prints what the record holds (D4-108).
 - **A checker that reports a figure as the page's when it is the projection's** was caught by the clerk; say "projected" whenever the 16 MB room comes from `gates()`.
+- **The guide check reads a C4 page frame as a picture.** Its live-content tests skip a frame's interior; the frame itself is tested as a picture with a complete alt, an inert page and words at the frame's own width (six plants). A drawing of a fault that is not a kit frame takes `readable=False` and an alt with every word.
+- **Budget three quick checks at a close that changes plates late.** Each takes about 45 minutes on the 13 MB page; look at the board's pictures before the first one, so craft faults land before the check.
 - **The chart kit's default output folder** points at an old chat's scratch path (`oa-chart.mjs`, line 28); pass an output folder or expect files there.
-- **Context.** This chat ran seven agents (five owners, a clerk, a board builder) and about twelve resumed runs.
+- **Context.** This chat ran seven agents (five owners, a clerk, a board builder) and about fifteen resumed runs.
 
 ## 4. Starting prompt for the new chat
 
@@ -66,7 +68,7 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 Phase 4 is active. Chat 11 is done. Start chat 11b as handoff V31 sets it: chapter 21, the atlas, with its system test, built from chat 11's plan.
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-164), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-165), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-4/20261121_Next-Session-Handoff_V31.md, then section 3 of V5 to V30's handoffs, the chat 11 brief (work/handoffs/phase-4/20261121_Chat-11-Brief.md), chapter 21's plan (work/handoffs/phase-4/20261121_Chapter-21-Plan.md), the Phase 4 prompt (brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md), Master Brief sections 14, 18 and 22, and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md): chat 11's section, and the rows for chapter 21.
 
 This session should run on the "Oath & Action Brand Polish - Round 2" environment (DR-300). Data keys are saved there: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.

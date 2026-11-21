@@ -484,7 +484,7 @@ li.tocome { font-weight: 700; }
     <div class="fact" role="listitem"><b>{{N20_RULES}}</b><span>rules in chapter 20, shown on {{N20_SPECS}} plates</span></div>
     <div class="fact" role="listitem"><b>41 of 41</b><span>kit exports at their exact sizes, by the size check</span></div>
     <div class="fact" role="listitem"><b>{{N_SCREENS}} of {{N_SCREENS}}</b><span>measured screens inside Rule 05.1&#8217;s color limits</span></div>
-    <div class="fact" role="listitem"><b>181,874</b><span>bytes of room under 16 MB for the projected page, with the chapters still to build</span></div>
+    <div class="fact" role="listitem"><b>181,840</b><span>bytes of room under 16 MB for the projected page, with the chapters still to build</span></div>
   </div>
 
   <section aria-labelledby="h-site">
@@ -548,9 +548,9 @@ li.tocome { font-weight: 700; }
       <div>
         <h3>Checked</h3>
         <ul class="plain">
-          <li>The closing strict build exits 0 with 0 warnings: 13,080,565 bytes, 393 rules and 731 specimens.</li>
-          <li>Chapter 20 weighs 839,120 bytes against its 757,000 allocation, 111 percent. The build reports it and cuts nothing (DR-271).</li>
-          <li>The page weighs 13.08 MB today. With the chapters still to build at their allocations, it projects to 15.82 MB, 181,874 bytes under 16 MB.</li>
+          <li>The closing strict build exits 0 with 0 warnings: 13,080,599 bytes, 393 rules and 731 specimens.</li>
+          <li>Chapter 20 weighs 839,154 bytes against its 757,000 allocation, 111 percent. The build reports it and cuts nothing (DR-271).</li>
+          <li>The page weighs 13.08 MB today. With the chapters still to build at their allocations, it projects to 15.82 MB, 181,840 bytes under 16 MB.</li>
           <li>The chart kit passes 96 of 96 charts, and chapter 14&#8217;s check finds 99 of 99 files current.</li>
           <li>All 41 kit exports match their sizes in the specifications table. Each page plate in the guide matches its export pixel for pixel, 18 of 18.</li>
           <li>On the working pages, axe finds 0 violations at all 18 views. Tab order, the theme kept after a reload, reflow at 320 px and text at 200 percent show 0 faults.</li>
@@ -578,7 +578,7 @@ li.tocome { font-weight: 700; }
     <div class="col">
       <h3>Done after the board&#8217;s first draft</h3>
       <p>The engineer fixed three craft faults found in the pictures: the article&#8217;s 39,555, cut at the count panel&#8217;s edge at 1024 px; its heading &#8220;How the Census Bureau counts them&#8221;, set far from its paragraph; and the Act page&#8217;s &#8220;Who decides&#8221;, with no space above it. A sweep of every view then found 0 overflows and 0 headings out of rhythm. Every picture on this page comes from those final exports, and the figures above from the strict build that followed them.</p>
-      <p>The first quick guide check on that build failed inside chapter 20&#8217;s page pictures: it measured the scaled-down pages&#8217; words and buttons as if they were live text on the guide. The engineer changed the check to read a page picture as a picture, with its words measured at the picture&#8217;s own width, and proved the change with planted faults, 163 of 163 caught. Two faults were real at that width, a chart drawn too wide on the home page and a tracker&#8217;s step words lost in a trimmed picture, and both are fixed.</p>
+      <p>The first quick guide check on that build failed inside chapter 20&#8217;s page pictures: it measured the scaled-down pages&#8217; words and buttons as if they were live text on the guide. The engineer changed the check to read a page picture as a picture, with its words measured at the picture&#8217;s own width, and proved the change with planted faults, 163 of 163 caught. Two faults were real at that width, a chart drawn too wide on the home page and a tracker&#8217;s step words lost in a trimmed picture, and both are fixed. A second run then found one fault of its own kind: Rule 20.10&#8217;s failure plate, a drawing of a share card, set the card&#8217;s words at 7.8 px on a phone. That plate is now a picture whose description carries every word the card shows, as the guide&#8217;s other drawings of a fault are.</p>
     </div>
   </section>
 
