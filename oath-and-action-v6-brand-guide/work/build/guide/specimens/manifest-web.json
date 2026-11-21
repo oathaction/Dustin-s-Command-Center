@@ -48,7 +48,7 @@
   "chapter": "20",
   "rule": "20.11",
   "width_px": null,
-  "alt": "Failure case: do not publish. A browser tab with the lockmark at 16 px as its icon, a small gray square, before the page title.",
+  "alt": "Failure case: do not publish. A browser tab with the lockmark at 16 px as its icon, a small cluster of dots, before the page title.",
   "illustrative": false,
   "notes": "A drawing of a fault: the lockmark’s 16 px master as a favicon (Rule 08.2’s row says never).",
   "readable": true

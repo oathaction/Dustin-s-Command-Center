@@ -757,8 +757,14 @@ R['20.9'] = {
                        'article measured 88.2 percent Newsprint, past the 85 a screen allows.',
     'failure_alt': 'One screen drawn as a box, nearly all Newsprint, with the measure beside it: 88.2 percent Newsprint and '
                    'no dark panel.',
-    'screen_words': {'first': 'First screen', 'news': 'Newsprint', 'dark': 'dark', 'red': 'red', 'panel': 'panel',
+    'screen_words': {'first': 'first screen', 'news': 'Newsprint', 'dark': 'dark', 'red': 'red', 'panel': 'panel',
                      'panels': 'panels', 'none': 'no panel', 'pct': 'percent'},
+    # each page and section named as a reader meets it, for the boxes in the correct plate
+    'page_words': {'A06': 'Home page', 'A07': 'Article', 'A08': 'Act page'},
+    'section_words': {'Explain': 'Explain', 'Track': 'Track', 'Connect': 'Connect', 'Act': 'Act',
+                      'Atlas': 'Who Do They Answer To?', 'Count': 'How the Census Bureau counts them',
+                      'Step': 'Find the districts where you live', 'Proposal': 'What the FDA proposes',
+                      'Comment': 'How to send a comment', 'Footer': 'footer'},
     'fail_value': '88.2',
     'fail_label': 'Studio sample article, 1440 px, first screen',
 }
@@ -812,8 +818,9 @@ R['20.11'] = {
     'correct_caption': 'The favicon on a light and a dark tab, and each icon file at its own size.',
     'correct_alt': 'Ampersand B in red at 16 px on a light and a dark browser tab, then the favicon file at 16, 32 and 48 '
                    'px, and B on a Charcoal square at 180, 192 and 512 px.',
-    'failure_caption': '<strong>Fails Rule 20.11.</strong> The lockmark at 16 px reads as a gray square in the tab.',
-    'failure_alt': 'A browser tab with the lockmark at 16 px as its icon, a small gray square, before the page title.',
+    'failure_caption': '<strong>Fails Rule 20.11.</strong> The lockmark at 16 px shrinks to a cluster of dots in the tab, '
+                       'too small to read as our mark.',
+    'failure_alt': 'A browser tab with the lockmark at 16 px as its icon, a small cluster of dots, before the page title.',
 }
 EXTRA_FILES = {
     'label': 'The pages and their files',
@@ -1023,7 +1030,7 @@ def s20_1_correct():
                 notes='Drawn by the application kit (A04): the masthead closed at six views, on the article page.')
 
 
-FAIL_BAR = (f'.bar{{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 32px;padding:18px 24px;'
+FAIL_BAR = (f'.bar{{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 16px;padding:18px 24px;'
             f'background:var(--oa-color-surface-newsprint);color:var(--oa-color-text-primary-on-newsprint);'
             f'border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint);{ty("ui")}}}'
             '.bar span{display:inline-flex;align-items:center;min-height:44px}'
@@ -1308,6 +1315,8 @@ def s20_9_correct():
     data = screens()
     if data is None:
         raise Waiting('Rule 20.9’s correct plate needs the kit’s screen shares (C5) in plates/a06.json to a08.json')
+    def nm(names):
+        return ', '.join(r['section_words'].get(x.strip(), x.strip()) for x in names.split(','))
     cells = []
     for aid, scr0 in data:
         # sections that open on the same screen (the home page's four pillars at 1440 px) share one box
@@ -1325,8 +1334,7 @@ def s20_9_correct():
                          f'height:{p["h"]:.2f}%"></span>' for p in s.get('panels_box', []))
             n = s.get('panels', 0)
             cells.append(f'<div class="scb"><div class="box" aria-hidden="true">{pn}</div>'
-                         f'<p class="sub">{PAGES[aid]["title"].split(" | ")[0] if aid != "A06" else "Home page"}, '
-                         f'{sw["first"] if s["name"] == "first" else s["name"]}</p>'
+                         f'<p class="sub">{r["page_words"][aid]}, {sw["first"] if s["name"] == "first" else nm(s["name"])}</p>'
                          f'<p class="fig">{s["newsprint"]:.1f} {sw["pct"]} {sw["news"]}</p>'
                          f'<p class="sub">{s["dark"]:.1f} {sw["dark"]}, {s["red"]:.1f} {sw["red"]}; '
                          f'{sw["none"] if n == 0 else (str(n) + " " + (sw["panel"] if n == 1 else sw["panels"]))}</p></div>')

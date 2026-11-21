@@ -851,7 +851,7 @@
       },
       "failure": {
         "specimen": "s-20-11-failure",
-        "caption": "<strong>Fails Rule 20.11.</strong> The lockmark at 16 px reads as a gray square in the tab."
+        "caption": "<strong>Fails Rule 20.11.</strong> The lockmark at 16 px shrinks to a cluster of dots in the tab, too small to read as our mark."
       },
       "specs": [
         {
