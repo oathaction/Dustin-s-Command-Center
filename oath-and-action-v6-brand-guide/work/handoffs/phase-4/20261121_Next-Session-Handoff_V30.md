@@ -58,7 +58,7 @@ Phase 4 is active. Chat 10 is done. Start chat 11 as the Gate 3 report's section
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-155), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
-2. oath-and-action-v6-brand-guide/work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md, then section 3 of V5 to V29's handoffs, the chat 10 brief (work/handoffs/phase-4/20261121_Chat-10-Brief.md), the Phase 4 prompt (brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md), Master Brief sections 10, 14, 17, 18 and 22, and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md): chat 10's section, and the rows for chapters 20 and 21.
+2. oath-and-action-v6-brand-guide/work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md, then section 3 of V5 to V29's handoffs, the chat 10 brief (work/handoffs/phase-4/20261121_Chat-10-Brief.md), the Phase 4 prompt (brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md), Master Brief sections 14, 16, 18 and 22, and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md): chat 10's section, and the rows for chapters 20 and 21.
 
 This session should run on the "Oath & Action Brand Polish - Round 2" environment (DR-300). Data keys are saved there: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
 
