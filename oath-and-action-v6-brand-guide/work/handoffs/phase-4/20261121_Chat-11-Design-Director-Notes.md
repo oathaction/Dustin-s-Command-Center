@@ -4,7 +4,7 @@ Started November 21, 2026, 18:56 UTC. Owner: oa-design-director. Files held this
 
 ## Where I am
 
-19:36 UTC. Plan written (19:15 to 19:18). Page specs handed over (DD-1 at 19:20, DD-2 at 19:24, DD-3 at 19:25). Generator `work/build/scripts/phase-4/phase4_ch20_build.py` runs its `--check`: 11 rules, 22 of 24 specimens, 47,503 bytes before the kit's frames; two plates wait for the kit's screen shares (R6) and exports (R7). Nothing written to `work/build/guide/` yet. Prototypes of the home page's first screen and the share card measured inside Rule 05.1. Waiting for the kit's first plates (C4) to review them and build; R3 and R5 wait on the main session.
+20:23 UTC. Plan, specs (sections 0 to 12) and generator written; DD-1 to DD-6 handed over. The kit's 20:14 drawing passes Rule 05.1 on every first and opening screen but the article's Step at 1440 (DD-6 12.1 fixes it). The main session's R3 and R5 answers (20:19) are in the generator's words. Waiting for the engineer's redraw of A04 to A10 (DD-6, the home cards' trackers); then the generator, the strict build under the lock, the bytes, and "Words ready for the editor". Messages sent to the main session at 20:21 and 20:22.
 
 ## Contracts
 

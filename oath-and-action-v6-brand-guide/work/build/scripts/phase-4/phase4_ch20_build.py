@@ -279,9 +279,7 @@ PAGES = {
                         [f'On September 30, 2026, a Senate vote to take it up got {SEN_YES} votes, seven short of the 60 '
                          'it needed.', False]],
              'dateline': 'As of November 21, 2026',
-             'source': HR_SOURCE + ' Steps from the bill’s status file, U.S. Government Publishing Office, govinfo.gov, '
-                       'retrieved November 21, 2026: no committee hearing; the committee’s vote, 7 to 4, January 14, '
-                       '2026.',
+             'source': HR_SOURCE + ' Steps from the bill’s status file on govinfo.gov, retrieved November 21, 2026.',
              'link': None},
             {'pillar': 'connect', 'word': 'Connect', 'icon': 'cl-021',
              'kicker': ['Guide', 'Electric bills'], 'symbol': None,

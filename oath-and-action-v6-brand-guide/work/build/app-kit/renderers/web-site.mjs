@@ -49,6 +49,24 @@ export function words() {
   return WORDS;
 }
 const PAGE_ID = { home: 'A06', article: 'A07', act: 'A08' };
+// DD-6: the trackers' marks are chapter 11's own drawing (tools/ch11_marks.py runs apply_systems_ch11.py's steps_svg and
+// sample, read-only); the states map from the generator's words to chapter 11's
+const CH11 = { done: 'done', now: 'now', ahead: 'notyet', never: 'skipped', stopped: 'stopped' };
+const ch11_state = (x) => (x.state === 'now' && x.take_part ? 'take' : CH11[x.state]);
+function ch11(reqs) {
+  const f = path.join(process.env.TMPDIR || '/tmp', `oa-ch11-${process.pid}-${Date.now()}.json`);
+  fs.writeFileSync(f, JSON.stringify(reqs));
+  const r = spawnSync('python3', ['-I', path.join(ROOT, 'work/build/app-kit/tools/ch11_marks.py'), f], { encoding: 'utf8' });
+  fs.unlinkSync(f);
+  if (r.status !== 0) throw new Error('chapter 11 marks: ' + (r.stderr || r.stdout).trim().slice(0, 400));
+  fs.readFileSync(path.join(ROOT, 'work/build/scripts/phase-2/apply_systems_ch11.py'));   // an input of the plate (C4)
+  return JSON.parse(r.stdout);
+}
+// the marks' colors, resolved on the element that holds them, so a mark inside a Charcoal panel takes the panel's inks
+const MARK_VARS = '--ink:var(--oa-color-graphic-essential);--sub:var(--oa-color-graphic-subtle);--bg:var(--oa-color-surface);'
+  + '--txt:var(--oa-color-text-primary);--txt2:var(--oa-color-text-secondary);--red:var(--oa-color-palette-pillar-red);'
+  + '--key:var(--oa-component-button-ask-keyline-on-newsprint)';
+const STEP_SAY = (w, st) => String(st === 'take' ? w.now : w[st]).toLowerCase();
 // the words for one application: its own entry, whose "site" holds the shared words; A04 and A05 take the article's
 function page_words(W, id, page) {
   const e = W[id];
@@ -186,6 +204,7 @@ ${at(BP.tablet, '.ws-main{padding-top:48px}')}
 .ws-card h3 a:hover,.ws-card h3 a:focus-visible{text-decoration:underline;text-decoration-thickness:2px}
 .ws-card .dek{${type_css('body-small')};text-wrap:pretty}
 .ws-card .st{${type_css('body-small')}}
+.ws-card .ws-trk svg{display:block;max-width:100%;height:auto}
 .ws-card .st b{font-weight:var(--oa-font-weight-bold)}
 .ws-card .dt,.ws-card .src{${type_css('caption')};color:var(--oa-color-text-secondary)}
 .ws-card .dt+.src{margin-top:8px !important}
@@ -280,10 +299,12 @@ ${under(BP.desktop, '.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lea
 .ws-status{padding:24px;align-self:start}
 .ws-status .lab,.ws-cpanel .lab{${type_css('label')};color:var(--oa-color-text-secondary);margin-bottom:16px !important}
 .ws-steps{list-style:none;padding:0;position:relative}
-.ws-steps li{position:relative;display:grid;grid-template-columns:28px 1fr;column-gap:16px;padding-bottom:20px}
-.ws-steps li::before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:1px;background:var(--oa-color-text-secondary)}
-.ws-steps li.done::before{left:13px;width:2px;background:var(--oa-color-text-primary)}
+.ws-steps li{position:relative;display:grid;grid-template-columns:42px 1fr;column-gap:10px;padding-bottom:12px}
+.ws-steps li::before{content:"";position:absolute;left:20.5px;top:21px;bottom:-21px;width:1px;background:var(--sub)}
+.ws-steps li.on::before{left:20px;width:2px;background:var(--ink)}
 .ws-steps li:last-child::before{display:none}
+.ws-steps .mkw{position:relative;z-index:1;display:block;width:42px;height:42px}
+.ws-steps li>span:last-child{padding-top:9px}
 .ws-steps .c{position:relative;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:var(--oa-font-weight-bold) 14px/1 var(--oa-font-family-reading);font-variant-numeric:tabular-nums}
 .ws-steps .done .c{background:var(--oa-color-text-primary);color:var(--oa-color-surface)}
 .ws-steps .now .c{box-shadow:inset 0 0 0 3px var(--oa-color-text-primary);color:var(--oa-color-text-primary)}
@@ -334,6 +355,13 @@ ${at(BP.tablet, '.ws-cpanel{padding:32px}')}
 .ws-links li a{display:inline-flex;align-items:center;min-height:var(--oa-size-target-touch);${type_css('body-small')};text-decoration-thickness:1px}
 .ws-sec-end{margin-bottom:48px !important}
 .ws-stepbox-w{margin-top:24px}
+/* DD-6, 12.1: from 64em the step box spans the content width, its words held to the body's columns by padding equal to
+   the columns before them (one column and gutter at 1024, two at 1440) */
+.ws-g{--colw:calc((100cqi - 2 * var(--m) - (var(--c) - 1) * var(--g)) / var(--c))}
+${at(BP.desktop, `.ws-art .ws-stepbox-w{grid-column:1/-1}.ws-art .ws-stepbox{padding:32px 32px 32px calc(var(--colw) + var(--g))}
+ .ws-art .ws-stepbox .ws-p{max-width:min(var(--oa-layout-measure-body-ideal),calc(7 * var(--colw) + 6 * var(--g)))}`)}
+${at(BP.wide, `.ws-art .ws-stepbox{padding-left:calc(2 * var(--colw) + 2 * var(--g))}
+ .ws-art .ws-stepbox .ws-p{max-width:min(var(--oa-layout-measure-body-ideal),calc(5 * var(--colw) + 4 * var(--g)))}`)}
 .ws-stepbox{padding:24px;color:var(--oa-color-text-primary)}
 .ws-stepbox .ws-p{color:var(--oa-color-text-primary)}
 ${at(BP.tablet, '.ws-stepbox{padding:32px}')}
@@ -418,7 +446,16 @@ function figure(fig, pid, col_w) {
 }
 
 // ---------------------------------------------------------------------------------------------------------------- pages
-function home_main(A, figs, pid, cols) {
+// Rule 11.5's card row: chapter 11's drawing with the first circle on the text edge and each next 60 px on, 57 on the
+// 309 px card at 1440; screen readers get the steps in words (Rule 11.2's hidden list)
+function card_tracker(t, marks, w) {
+  if ((t.pending || []).length) return '';
+  const svg = marks.rows[`${t.kind}:${w || 'page'}`];
+  const say = t.steps.map((x) => `<li>Step ${x.n}, ${esc(x.name)}: ${esc(STEP_SAY(marks.words, ch11_state(x)))}.</li>`).join('');
+  return `<div class="ws-trk">${svg}<ol class="vh">${say}</ol></div>`;
+}
+
+function home_main(A, figs, pid, cols, marks, w) {
   const secs = A.pillars.map((p, i) => {
     // status words: runs of [text, bold] (DD-3), Rule 11.1's status words and Rule 11.4's "You can take part now." in bold
     const st = p.status ? `<p class="st">${p.status.map(([t, bold]) => (bold ? `<b>${esc(t)}</b>` : esc(t))).join(' ')}</p>` : '';
@@ -426,7 +463,7 @@ function home_main(A, figs, pid, cols) {
       + `<div class="ws-cell oa-surface-charcoal ws-panel"><h2 id="${pid}-p${i}">${cl48(p.icon)}<span>${esc(p.word)}</span></h2>`
       + (i < 3 ? use('u-arrow-24px', 24, 'ar') : '') + `</div>`
       + `<div class="ws-card">${kicker(p.kicker, p.symbol)}<h3><a href="${esc(p.href)}">${esc(p.headline)}</a></h3>`
-      + `<p class="dek">${esc(p.dek)}</p>` + st
+      + `<p class="dek">${esc(p.dek)}</p>` + (p.tracker ? card_tracker(p.tracker, marks, w) : '') + st
       + (p.dateline ? `<p class="dt">${esc(p.dateline)}</p>` : '')
       + (p.source ? `<p class="src">${esc(p.source)}</p>` : '')
       + (p.link ? `<a class="go" href="${esc(p.link[1])}">${esc(p.link[0])}</a>` : '')
@@ -476,19 +513,21 @@ function ask(A) {
   // other, so on a phone the ask breaks between them and stays as wide as its longer line; a docket number stays whole
   const ws = String(a.words).split(' ');
   const last = ws.pop();
-  return `<a href="${esc(a.href)}" class="ws-ask" data-red="working" data-red-job="take part: comment on the proposed rule">`
+  return `<a href="${esc(a.href)}" class="ws-ask" data-red="working" data-red-job="take part now">`
     + (ws.length ? `<span>${esc(ws.join(' '))}</span>` : '') + `<span class="ws-out">${esc(last)}${out_mark(a.hidden || '(another site)')}</span></a>`;
 }
 const runs = (rs) => rs.map(([t, bold]) => (bold ? `<b>${esc(t)}</b>` : esc(t))).join(' ');
 
-function act_main(A, figs, pid, cols) {
+function act_main(A, figs, pid, cols, marks) {
   const S = A.status;
   const sw = S.state_words || { done: 'Done', now: 'Now', ahead: 'Not yet' };
   // Rule 11.6's upright steps; while a step is pending (Request R3) the steps print as words with no circles, and the
   // pending step is left out, since no step is drawn from a guess (DD-3)
   const pending = (S.pending || []).length > 0;
   const shown = S.steps.filter((x) => x.state !== 'pending');
-  const steps = shown.map((x) => `<li class="${x.state}">${pending ? '' : `<span class="c" aria-hidden="true">${x.n}${x.take_part ? '<span class="tp" data-red="working" data-red-job="take part: comment on the proposed rule"></span>' : ''}</span>`}`
+  // Rule 11.6's upright steps, each mark chapter 11's own (sample at 28 px); the line 2 px into a step the record has
+  // reached and 1 px after the current one
+  const steps = shown.map((x, i) => `<li class="${x.state}${shown[i + 1] && shown[i + 1].state !== 'ahead' ? ' on' : ''}">${pending ? '' : `<span class="mkw">${marks.steps[x.n]}</span>`}`
     + `<span><span class="nm"><span class="vh">Step ${x.n}: </span>${esc(x.name)}</span><span class="sw">${esc(sw[x.state] || '')}</span>${x.note ? `<span class="nt">${esc(x.note)}</span>` : ''}</span></li>`).join('');
   const status = `<div class="ws-status oa-surface-charcoal ws-panel"><p class="lab">${esc(S.label)}</p><ol class="ws-steps${pending ? ' ws-steps--words' : ''}" start="${shown[0].n}">${steps}</ol>`
     + `<div class="ws-box"><p>${runs(S.box)}</p><p class="lab ws-ask-lab">${esc(A.comment.panel_label)}</p>${ask(A)}<p class="ws-addr">${esc(A.ask.address)}</p></div></div>`;
@@ -567,6 +606,27 @@ export async function render(spec) {
       figs_at[wv.w][cid] = await chart_figure(cid, 'oac-' + cid, colw, colw);
     }
   }
+  // DD-6: chapter 11's marks for this page: the cards' rows at each width (309 px at 1440, else 324) and the upright steps
+  const reqs = [], keys = [];
+  for (const p of pw.pillars || []) {
+    if (!p.tracker || (p.tracker.pending || []).length) continue;
+    const states = p.tracker.steps.map(ch11_state);
+    for (const w of [...(spec.widths || []).map((x) => x.w), 'page']) {
+      reqs.push({ kind: 'row', states, W: w === 1440 ? 309 : 324, d: 24 });
+      keys.push(['row', `${p.tracker.kind}:${w}`]);
+    }
+  }
+  for (const x of ((pw.status || {}).steps || [])) {
+    if (x.state === 'pending') continue;
+    reqs.push({ kind: 'mark', state: ch11_state(x), d: 28, num: x.n });
+    keys.push(['step', x.n]);
+  }
+  const marks = { rows: {}, steps: {}, css: '', words: {} };
+  if (reqs.length) {
+    const got = ch11(reqs);
+    marks.css = got.css; marks.words = got.words;
+    got.svgs.forEach((svg, i) => { const [k, id] = keys[i]; marks[k === 'row' ? 'rows' : 'steps'][id] = svg; });
+  }
   const parts = site.parts.map(([label, href]) => ({ label, href, current: pw.current && label === pw.current ? 'page' : false }));
   const body = ({ pid, theme, theme_for = null, part = 'page', width = null, vh = null, open = false, fig_w = null } = {}) => {
     const group = `oa-theme-${pid}`;
@@ -586,7 +646,7 @@ export async function render(spec) {
     const fw = width || fig_w;
     const cols = fw ? columns(spec, fw) : null;
     const F = fw && figs_at[fw] ? figs_at[fw] : figs;
-    const main = part !== 'page' ? '' : page === 'home' ? home_main(pw, F, pid, cols) : page === 'article' ? article_main(pw, F, pid, cols) : act_main(pw, F, pid, cols);
+    const main = part !== 'page' ? '' : page === 'home' ? home_main(pw, F, pid, cols, marks, fw) : page === 'article' ? article_main(pw, F, pid, cols) : act_main(pw, F, pid, cols, marks);
     const parts_ = {
       masthead: head,
       main: `<main id="${pid}-main" class="ws-main" tabindex="-1">${main}</main>`,
@@ -603,7 +663,9 @@ export async function render(spec) {
     ...((pw.pillars || []).filter((p) => p.symbol).flatMap((p) => [`oa-sym-${p.symbol}`, `oa-sym-${p.symbol}-24px`]))];
   return {
     id: spec.id, type, page, part: spec.part || 'page', title: pw.title, words_from: W.__from,
-    css: site_css() + '\n' + masthead_css() + '\n' + switch_css(),
+    // chapter 11's mark style (MARK_CSS), each selector held inside a website page, with the marks' colors on their holders
+    css: site_css() + '\n' + masthead_css() + '\n' + switch_css() + '\n'
+      + (marks.css ? marks.css.replace(/\.mk\b/g, '.ws .mk') + `.ws-trk,.ws-steps{${MARK_VARS}}` : ''),
     // the guide shell's 1x and 2x icon switch (DR-179), which the guide's page already carries and an export page needs
     export_css: res_switch_css(),
     kit_css, figs, sprite: sprite([...new Set(syms)]),

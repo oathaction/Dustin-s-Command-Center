@@ -1,5 +1,5 @@
 {
- "written": "2026-11-21T20:13:38.349Z",
+ "written": "2026-11-21T20:23:05.526Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -127,7 +127,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 2,950 px"
+   "size": "1,440 by 3,078 px"
   },
   {
    "file": "20261121_Web-Home-Page-1440-Dark.png",
@@ -135,7 +135,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 2,950 px"
+   "size": "1,440 by 3,078 px"
   },
   {
    "file": "20261121_Web-Home-Page-1024-Light.png",
@@ -143,7 +143,7 @@
    "platform": "website.page_1024",
    "format": "png",
    "theme": "light",
-   "size": "1,024 by 3,563 px"
+   "size": "1,024 by 3,714 px"
   },
   {
    "file": "20261121_Web-Home-Page-390-Light.png",
@@ -151,7 +151,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 5,415 px"
+   "size": "390 by 5,587 px"
   },
   {
    "file": "20261121_Web-Home-Page-390-Dark.png",
@@ -159,7 +159,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 5,415 px"
+   "size": "390 by 5,587 px"
   },
   {
    "file": "20261121_Web-Home-Page-360-Light.png",
@@ -167,7 +167,7 @@
    "platform": "website.page_360",
    "format": "png",
    "theme": "light",
-   "size": "360 by 5,583 px"
+   "size": "360 by 5,755 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts.html",
@@ -184,7 +184,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 3,632 px"
+   "size": "1,440 by 3,687 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-1440-Dark.png",
@@ -192,7 +192,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 3,632 px"
+   "size": "1,440 by 3,687 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-1024-Light.png",
@@ -241,7 +241,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 5,575 px"
+   "size": "1,440 by 6,190 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Dark.png",
@@ -249,7 +249,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 5,575 px"
+   "size": "1,440 by 6,190 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1024-Light.png",
@@ -257,7 +257,7 @@
    "platform": "website.page_1024",
    "format": "png",
    "theme": "light",
-   "size": "1,024 by 5,445 px"
+   "size": "1,024 by 6,140 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Light.png",
@@ -265,7 +265,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 7,656 px"
+   "size": "390 by 8,550 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Dark.png",
@@ -273,7 +273,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 7,656 px"
+   "size": "390 by 8,550 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-360-Light.png",
@@ -281,7 +281,7 @@
    "platform": "website.page_360",
    "format": "png",
    "theme": "light",
-   "size": "360 by 7,845 px"
+   "size": "360 by 8,765 px"
   },
   {
    "file": "20261121_Web-Share-Preview-Special-Districts-1200x630.png",
