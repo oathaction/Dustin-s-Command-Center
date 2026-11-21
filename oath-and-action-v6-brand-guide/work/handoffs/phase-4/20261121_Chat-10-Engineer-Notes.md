@@ -1,6 +1,16 @@
 # Chat 10: engineer notes
 
-Status: 01:45 UTC. Started 01:36 UTC. Job 1 item 2's contract written first (C1 below, revised 01:45 UTC); building it now.
+Status: 02:07 UTC. Started 01:36 UTC. Job 1 done (all four items). Job 2 started, then **stopped at 02:06 UTC on a refused permission** (Requests, first item); handed back to the main session as the brief asks.
+
+**Job 1 summary (02:03 UTC), for the main session:**
+1. P4-5: photographs drawn by name from one copy per page (contract C1), by CSS content replacement on each `<img>`; chapter 01's three plates changed only their `src`.
+2. 190,804 bytes freed (12,210,920 to 12,020,116); chapter 01 675,807; new "photographs" part 489,462.
+3. Rules 01.6 and 01.8: 36 of 36 captures pixel-identical (1440, 1024, 390, 360 px at 1x; 1440 and 390 at 2x).
+4. G3-05: the edge guard holds every word of every chart, and the fan chart's key is on by default; kit 96 of 96, all 192 written files and all 376 drawings hash the same before and after.
+5. Projection: Phase 4's seven allocations (3,010,000) in `guide_charts.py`; each built Phase 4 chapter reported against its own; projection 15,460,028, 39,972 under 15.5 MB.
+6. Chapter 16 builds in place with no further change (contract C2, proved on a fixture).
+7. Closing: strict exit 0, 0 warnings, 12,020,117 bytes; build self-test 39 of 39; chapter 14 check 99 of 99. The guide check's new `photoDrawn` is yours to run.
+Job 2 is under way: the sample specs and the specifications JSON are both in.
 
 ## Contracts
 
@@ -43,7 +53,7 @@ A new photograph joins this list only through the engineer (the registry is `PHO
 
 ### C2. Chapter 16 in the build (for the design director)
 
-Proved at 01:57 UTC with a fixture chapter 16 (two rules, three plates, two photograph requests) built strictly into a copy of today's chapters: the page puts `16-photography.json` in place of the placeholder, under Evidence and media (`<section class="chapter chapter--grouped" id="photography" data-part="evidence" data-chapter="16">`), with no change to the build needed beyond this chat's. What the build asks of the chapter:
+Proved at 01:56 UTC with a fixture chapter 16 (two rules, three plates, two photograph requests) built strictly into a copy of today's chapters: the page puts `16-photography.json` in place of the placeholder, under Evidence and media (`<section class="chapter chapter--grouped" id="photography" data-part="evidence" data-chapter="16">`), with no change to the build needed beyond this chat's. What the build asks of the chapter:
 
 - `16-photography.json` in `work/build/guide/chapters/`, the shape of `17-motion-and-states.json`; `opener` is optional.
 - Every rule needs a `failure` block, or the build warns ("the rule has no 'failure' block") and `--strict` fails.
@@ -63,7 +73,30 @@ Proved at 01:57 UTC with a fixture chapter 16 (two rules, three plates, two phot
 
 ## Done
 
+Job 1, finished 02:02 UTC.
+
+| Item | What changed | Files | Proof |
+|---|---|---|---|
+| 2, P4-5: each photograph once for the page | A specimen asks for a photograph by name, `<img data-oa-photo="<name>">` with no `src` (contract C1). The build checks each request (a known name, an alt, no `src`, a crop inside the photograph), turns a `data-oa-crop` request into its frame, warns on any photograph placed by its path, writes one rule per named photograph into `<style id="oa-photos">` in the head, and warns if any photograph's data sits in the page more than once. The photographs weigh as their own part, "photographs" (0.5 MB figure). The build report gains `photographs`: each one's uses, plates and copies. Chapter 01's three plates ask by name; only their `src` changed | New `work/build/scripts/phase-4/guide_photos.py` (registry `PHOTOS`, `photo_img()`, `photo_style()`, `expand()`, self-test); `work/build/scripts/phase-2/guide_build.py` (import, `process_fragment`, `place_photos()`, `weigh()`, `WEIGHT_FIXED`, report, one self-test scenario); `work/build/scripts/phase-2/guide_editor_ch01.py` (`PHOTO_NAME`, the `ph` tag); outputs `s-01-6-correct.html`, `s-01-8-correct.html`, `s-01-8-failure.html`; `work/build/scripts/phase-2/guide_check.js` (`photoDrawn` and its plant) | Chapter 01's chain (`guide_editor_build.py`, then `stage_b_identity_ch01.py`) rerun under the lock: of every file under `work/build/guide/`, only those three plates changed, each by its `src` alone. **Bytes freed: 190,804** (strict page 12,210,920 to 12,020,116 on the same inputs; chapter 01 1,356,074 to 675,807; the new photographs part 489,462; head 1 byte more). Captures of Rules 01.6 and 01.8, whole rule blocks and all four plates, at 1440, 1024, 390 and 360 px at 1x and at 1440 and 390 px at 2x: **36 of 36 identical, pixel for pixel**, before and after |
+| 1, G3-05: label clearance on for every chart | The edge guard (DD-E1) in `checks.js` holds every haloed word of every chart; the `t.clear_edges` gate is gone. The fan chart's `labels.values_clear_edges` is on unless a spec sets it false | `work/build/chart-kit/checks.js`, `work/build/chart-kit/forms/fan-chart.js` (header and one line) | Kit `build --all --no-png` (sweep included) before and after, under the lock: **96 of 96 PASS both times; all 192 files it writes (96 CSV exports, 96 check files) hash the same.** That run writes no SVG (its own last line says "no PNG, SVG or captures"), so I also hashed every drawing the SVG exports are drawn from, by the kit's own `run_spec` (each spec at 1440 and 390 px on Newsprint and Charcoal, S95's crops, the card forms' HTML): **368 SVG drawings and 8 card HTML outputs, all the same; 0 faults before and after.** `plate-share.json` unchanged. Hashes and logs: `.../scratchpad/c10/engineer/g305/` |
+| 3, the weight projection | Phase 4's seven chapters take the Gate 3 report's allocations (16: 300,000; 20: 500,000; 21: 460,000; 22: 300,000; 23: 660,000; 24: 450,000; 25: 340,000; 3,010,000 in all) in place of 362,857 each. Each built Phase 4 chapter is reported against its own figure on every build ("chapter 16: weighs N bytes against its allocation of 300,000 (P percent)"), recorded in `projection.phase_4_built`, and held to its allocation in the projection while built. The ST-S10 note lists each figure and their sum | `work/build/scripts/phase-3/guide_charts.py` (`PHASE_4_ALLOCATION`, `ALLOCATION`, `IN_PROGRESS`, `gates()`, self-test); `guide_build.py` (`weigh()` leaves Phase 4 chapters to `guide_charts` and gives each its allocation as its budget) | `guide_charts.py --self-test`: 34 pass, every planted fault caught, two new (the seven figures; a built chapter under and one byte over). Strict build: **projection 15,460,028 bytes** (12,020,117 today plus 3,010,000 plus chapter 15's 29,899 held), 539,972 under 16 MB and 39,972 under the 15.5 MB warning. Without this chat's 190,804 bytes freed it would sit 150,832 past 15.5 MB, as the Gate 3 report foresaw |
+| 4, chapter 16's place in the build | Nothing more needed: contract C2 | (none beyond the above) | A fixture chapter 16 built strictly into copies of today's chapters and specimens: placed under Evidence and media, reported at 10,499 of 300,000 bytes; the photographs carried once with five uses across chapters 01 and 16; the only warning was the fixture's own missing failure plate. The build's self-test now holds a chapter 16 scenario |
+
+Job 2, the application kit, where it stood at 02:06 UTC:
+
+| Part | State | File |
+|---|---|---|
+| Dimension script | Written and self-tested: PNG pixels (exact, at least, at most, ratio; a null side skipped), PDF trim, media and bleed boxes against the row's bleed, every font embedded, bytes under `max_bytes`; reads the newest `*_Phase-4-Exports-Manifest.json` in `work/build/exports/phase-4/` and the research lead's JSON; a pass or fail per file | `work/build/app-kit/check-dimensions.py` |
+| Shared parts | Written, not yet run end to end: tokens and fonts for export pages, chapter 18's component CSS read from its own file, the platform rows, safe-area boxes from a row's `safe_area`, the plate (the drawing at true size in an SVG `viewBox` frame that scales it, an overlay in the same coordinates, switched on by a native checkbox and `:has()`, so keyboard and scripts off both work), the export page | `work/build/app-kit/lib.mjs` |
+| Renderers, command, specs, exports, measurement, allocations file | Not started. The plan, from the sample spec: the web sample lays out with container queries on its own root and re-declares the fluid type tokens with `cqi` read from `tokens.css` (they use `vw`, which inside a guide frame would follow the guide's window; an iframe per width would carry the fonts again in every frame); S86 drawn by the kit's own `run_spec` and `K.figure` at 621 and 328 px, the smallest width each drawing serves, so no word drops under 13 px when it scales; the kicker's CL-031 from `guide_build.Sprites`, the guide's own sprite code; the sign-off from the 48 px master with the social card's paint rule; chapter 18's theme switch read from `c-18-theme-switch.html`, `.css` and `.js` | (next) |
+
+Closing, 02:00 to 02:02 UTC: strict build exit 0, 0 warnings, 12,020,117 bytes, 369 rules, 679 specimens (the chart kit part 1 byte more, from `fan-chart.js`); `guide_build.py --self-test` 39 of 39 scenarios, 395 of 395 expectations; `phase3_ch14_build.py --check` 99 of 99; kit 96 of 96.
+
 ## Requests
+
+- **Main session, for a decision (02:06 UTC): the permission check refused `pip install brotli`** (auto mode classifier, "Undermining Oversight"). I did not route around it. Why I asked: the report page's PDF (sample spec 3.4) must embed Inter as TrueType, since the design director's test print found Chromium writing the variable Inter as Type 3, which some print workflows reject; the fix the spec names is static instances of Inter 400, 600 and 700, and fontTools needs the `brotli` package to read the guide's WOFF2 files to make them. Options: (a) allow the install (one small package from PyPI, into the container, nothing in the repository); (b) build the report sample with whatever Chromium writes and list Inter's font type in the preflight as not fixed, leaving it to chapter 25's print preflight; (c) another owner supplies static Inter TTF instances made elsewhere. Nothing else in Job 2 depends on it: the social post, the web article, the dimension script and the measurement can go ahead on resume.
+- Main session: run `guide_check.js --self-test` on the joined build. It gains one plant (`photoDrawn`); I proved its expression with a probe on my page (3 requests drawn, 0 undrawn; the plant caught), not by running the check.
+- Main session: the projection now sits 39,972 bytes under the 15.5 MB warning. The warning fails a strict build, so once Job 2 re-sizes the allocations upward (chapters 20 and 23 draw more than their nearest chapters), the strict build will warn until the 15.5 MB line is raised or the figures move. I will report the re-sized projection in the allocations file and leave the line where it is.
 
 ## Not fixed
 
@@ -72,4 +105,13 @@ Proved at 01:57 UTC with a fixture chapter 16 (two rules, three plates, two phot
 
 ## Tested
 
+- Job 1 (01:40 to 02:02 UTC), each in its row under Done: chapter 01's generator chain with hashes of every guide output; the strict build before and after; 36 Chromium captures compared pixel for pixel; a prototype of three other routes (SVG `<use>`, CSS background, `image-rendering` hints), measured against `<img>`, rejected; MDN's compatibility data for content replacement (read, not run in other browsers); `guide_photos.py --self-test` 9 of 9; a chapter 16 fixture build; the kit's whole build and every drawing hashed before and after G3-05; `guide_charts.py --self-test`; `guide_build.py --self-test`; `phase3_ch14_build.py --check`; a probe of `photoDrawn`.
+- `check-dimensions.py --self-test` (Job 2's script): an exact PNG, one a pixel short, a free height, a minimum, a PDF with bleed and trim boxes, one without, a missing file and an unknown row, each judged right.
+
 ## Not tested
+
+- Job 2's renderers, exports, safe-area and contrast checks, and the measurement: not started when the permission stop came.
+- Content replacement in Firefox and Safari: only Chromium is installed here. MDN's data lists it from Firefox 63 and Safari 9; Safari, Firefox and real screen readers stay on Gate 4's list (DR-279).
+- The guide check (`guide_check.js`) itself, its self-test included: the main session runs it.
+- The photographs in print emulation and forced colors (content replacement is not a background, so neither should drop it; not looked at).
+- A full kit `build --all` with PNG and SVG files: G3-05's SVGs were proved by hashing every drawing they are made from, in Node.
