@@ -130,6 +130,9 @@
 //   chartEdges         every chart kit drawing (figure.oac-fig svg.oac-svg, every one drawn first) and every chapter 14
 //                      sketch (svg.oac-sketch) holds each shape it paints inside its own box, within 1.5 px: a drawing's
 //                      overflow is visible, so a shape outside it paints over the figure's words (CD RM1, K-S2)
+// Added in chat 10 (November 21, 2026, P4-5):
+//   photoDrawn         every photograph request (<img data-oa-photo>, no src) draws the one copy of its photograph the
+//                      page carries in <style id="oa-photos"> (its computed content is the image)
 // Added in the fix pass after rounds 4 and 5 (November 16, 2026, call 11, DR-278 (b)):
 //   specimenPicture    every image stage (role="img") holds its picture in one wrapper, [data-oa-picture] with
 //                      aria-hidden="true", and nothing beside it, so a screen reader hears the stage once, by its alt;
@@ -291,7 +294,7 @@ function audit(page) {
     out.anchors = an;
 
     // ---------------- specimens and alt text
-    const sp = { stages: 0, pending: [], noAlt: [], imgNoAlt: [], svgUnnamed: [], exemptions: [], pictures: 0, picturesHidden: 0, picturesOpen: 0, pictureOpen: [], pictureControl: [], pictureAltShort: [] };
+    const sp = { stages: 0, pending: [], noAlt: [], imgNoAlt: [], photoUndrawn: [], svgUnnamed: [], exemptions: [], pictures: 0, picturesHidden: 0, picturesOpen: 0, pictureOpen: [], pictureControl: [], pictureAltShort: [] };
     // call 11: the words a picture holds and an alt carries, by the build's test (guide_build.py, picture_words and alt_words)
     const picWordSet = (txt) => new Set((String(txt || '').toLowerCase().replace(/\u2011/g, '-').replace(/\u00a0/g, ' ').match(/[a-z0-9]+(?:[.,'\u2019][a-z0-9]+)*/g)) || []);
     const picShut = (el, root) => { for (let e = el; e && e !== root; e = e.parentElement) { const n = e.tagName.toLowerCase(); if (n === 'style' || n === 'script' || n === 'defs' || e.getAttribute('aria-hidden') === 'true' || e.hasAttribute('hidden')) return true; } return false; };
@@ -344,6 +347,10 @@ function audit(page) {
       }
     });
     document.querySelectorAll('img').forEach((im) => { if (!im.hasAttribute('alt')) sp.imgNoAlt.push({ src: (im.getAttribute('src') || '').slice(0, 60), where: where(im) }); });
+    // chat 10 (P4-5, contract C1): a photograph request, <img data-oa-photo> with no src, draws the page's one copy of that
+    // photograph through <style id="oa-photos">, so its computed content is the image; a name the page carries no copy of
+    // draws nothing
+    document.querySelectorAll('img[data-oa-photo]').forEach((im) => { if (!/^url\(/.test(getComputedStyle(im).content || '')) sp.photoUndrawn.push({ photo: im.getAttribute('data-oa-photo'), where: where(im) }); });
     document.querySelectorAll('svg').forEach((s) => {
       if (s.parentElement && s.parentElement.closest('svg')) return;
       const anc = s.parentElement && s.parentElement.closest('[role="img"], [aria-hidden="true"]');
@@ -662,6 +669,7 @@ function failuresFrom(a, width) {
   if (sp.pending.length) add('pendingSpecimens', `${sp.pending.length} specimen file(s) missing: ${sp.pending.slice(0, 6).join(', ')}`);
   if (sp.noAlt.length) add('specimenAlt', `${sp.noAlt.length} specimen(s) without alt text, first: ${JSON.stringify(sp.noAlt[0])}`);
   if (sp.imgNoAlt.length) add('imgAlt', `${sp.imgNoAlt.length} <img> without alt, first: ${JSON.stringify(sp.imgNoAlt[0])}`);
+  if (sp.photoUndrawn.length) add('photoDrawn', `${sp.photoUndrawn.length} photograph request(s) draw no photograph (no copy in <style id="oa-photos">), first: ${JSON.stringify(sp.photoUndrawn[0])}`);
   if (sp.pictureOpen.length) add('specimenPicture', `${sp.pictureOpen.length} of ${sp.picturesHidden + sp.pictureOpen.length} hidden picture(s) that do not hold their stage whole, hidden (DR-278 (b)): ${sp.pictureOpen.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureOpen[0])}`);
   if (sp.pictureAltShort.length) add('specimenPicture', `${sp.pictureAltShort.length} image stage(s) hidden behind an alt that lacks a word their picture holds, so a screen reader never hears it: ${sp.pictureAltShort.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureAltShort[0])}`);
   if (sp.pictureControl.length) add('specimenPicture', `${sp.pictureControl.length} image stage(s) whose hidden picture holds a control a keyboard still reaches: ${sp.pictureControl.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureControl[0])}`);
@@ -2625,6 +2633,7 @@ const PLANTS = [
   { key: 'specimenAlt', fault: 'a card figure (R4-3) whose group label is too short to name it', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="plate-stage" data-specimen="s-14-t-card" role="group" aria-label="Cards, specimen"><figure class="oac-fig" data-oa-html><div class="oac-art oac-html" role="group" aria-label="Six facts"><ul class="oac-h-facts" role="list"><li class="oac-h-item">A fact</li></ul></div></figure></div>'); } },
   { key: 'specimenAlt', expect: false, fault: 'a card figure (R4-3) named by its group label of 15 characters or more (allowed: must not be flagged)', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div class="plate-stage" data-specimen="s-14-t-card" role="group" aria-label="Cards, specimen"><figure class="oac-fig" data-oa-html><div class="oac-art oac-html" role="group" aria-label="Six facts on what public school systems spend"><ul class="oac-h-facts" role="list"><li class="oac-h-item">A fact</li></ul></div></figure></div>'); } },
   { key: 'imgAlt', fault: 'an <img> with no alt', js: () => { const i = document.createElement('img'); i.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACw='; i.width = 20; i.height = 20; document.querySelector('.rule .why').append(i); } },
+  { key: 'photoDrawn', fault: 'a photograph request whose name the page carries no copy of (P4-5)', js: () => { const i = document.createElement('img'); i.setAttribute('data-oa-photo', 'nowhere'); i.alt = 'A photograph request, a fixture.'; i.width = 20; i.height = 20; document.querySelector('.rule .why').append(i); } },
   { key: 'svgNames', fault: 'an inline SVG neither named nor hidden', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<svg width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="currentColor"/></svg>'); } },
   { key: 'pendingSpecimens', fault: 'a specimen file missing', js: () => { document.querySelector('[data-specimen]').setAttribute('data-pending', 'true'); } },
   { key: 'under13', fault: '12 px text outside an exempt plate', js: () => { document.querySelector('.rule-text').style.fontSize = '12px'; } },

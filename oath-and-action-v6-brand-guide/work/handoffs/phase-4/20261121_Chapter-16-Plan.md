@@ -16,7 +16,7 @@ The chapter teaches on the two public-domain federal photographs chapter 01 alre
 
 - **Number, anchor, title, part:** `16`, `photography`, "Photography, illustration and video", `evidence`.
 - **Instruction (fixed):** "Show public life as it happens, and label every placeholder and generated image."
-- **Opener plate, `s-16-opener`:** the two teaching photographs side by side at 1440 px (stacked on phones), each at 3:2 in black and white, each with its full caption from chapter 01. Lake Isabella: `data-oa-photo="lake-isabella-2014" data-oa-ratio="3:2"` (the rectangle 24 0 1152 768), up to 576 px wide. Rotunda: `data-oa-photo="rotunda-2005" data-oa-crop="60 0 1080 720"`, up to 540 px wide; this 3:2 rectangle keeps the Architect of the Capitol's corner mark out, which the ratio method alone would not. Alts: chapter 01's two alts. Draft plate caption: "Our two teaching photographs, each in black and white with its full caption: a federal official answers residents at a public meeting in Lake Isabella, California, in 2014, and members of the public file past Rosa Parks in the Capitol Rotunda in 2005. Both are public-domain works of federal agencies."
+- **Opener plate, `s-16-opener`:** the two teaching photographs side by side at 1440 px (stacked on phones), each at 3:2 in black and white, each with its full caption from chapter 01. Lake Isabella: `data-oa-photo="lake-isabella-2014"` cropped in the plate's CSS at `aspect-ratio:3/2; object-position:50% 50%` (the rectangle 24 0 1152 768), up to 576 px wide. Rotunda: `data-oa-photo="rotunda-2005" data-oa-crop="60 0 1080 720"`, up to 540 px wide; this 3:2 rectangle keeps the Architect of the Capitol's corner mark out, which a CSS crop at 3:2 would not, since it keeps the photograph's full height. Alts: chapter 01's two alts. Draft plate caption: "Our two teaching photographs, each in black and white with its full caption: a federal official answers residents at a public meeting in Lake Isabella, California, in 2014, and members of the public file past Rosa Parks in the Capitol Rotunda in 2005. Both are public-domain works of federal agencies."
 - **Intro, draft, two paragraphs:**
   1. "This chapter sets how Oath & Action shows public life in pictures: the photographs we choose and make, the frames that hold a photograph's place until we have it, the few drawn and generated pictures we allow, and the videos we publish. A photograph here is a record. It shows people doing public work, and its caption tells a reader who, what, where and when, so they can check it."
   2. "Two public-domain photographs from federal agencies teach every photograph rule, the same two chapter 01 shows. Until we commission photographs of our own, a frame that says Placeholder holds each one's place. A generated picture serves only as a labeled illustration."
@@ -32,7 +32,7 @@ The chapter teaches on the two public-domain federal photographs chapter 01 alre
 
 ## 4. The rules
 
-Thirteen rules and one extra. The brief asked for about 12; Master Brief section 16 names sixteen subjects, and thirteen rules carry them with no rule doing two jobs. Every photograph plate draws from contract C1: `data-oa-photo`, a crop by `data-oa-crop` or by `data-oa-ratio` with `data-oa-focus`, its own `alt`, and the black and white treatment as CSS on the plate's class (`filter: grayscale(1)`), which C1 carries over to the drawing. No plate embeds a file. Every crop below was checked by eye on the 1,200 px renditions (previews in my scratch folder).
+Thirteen rules and one extra. The brief asked for about 12; Master Brief section 16 names sixteen subjects, and thirteen rules carry them with no rule doing two jobs. Every photograph plate draws from contract C1 as revised at 01:45 UTC and live since 01:51 UTC: an `<img>` with `data-oa-photo` and its own `alt`, cropped either in the plate's CSS (`object-fit:cover`, an `aspect-ratio` and an `object-position`, the way chapter 01 crops) or, for a tight crop, by `data-oa-crop="x y width height"`. The black and white treatment is `filter: grayscale(1)` on the plate's photograph class; under `data-oa-crop` the build's wrapping frame takes the same class. No plate embeds a file. Below, a crop written as a rectangle with a ratio and a focus means the CSS way; a rectangle alone means `data-oa-crop`. Every crop below was checked by eye on the 1,200 px renditions (previews in my scratch folder).
 
 A note on sharpness from C1: a crop looks sharp on a 2x screen while its width in photograph pixels is at least twice the frame's CSS width. Each plate size below keeps to that.
 
@@ -58,7 +58,7 @@ A note on sharpness from C1: a crop looks sharp on a 2x screen while its width i
 - **Rule, draft:** "Show every photograph in black and white, converted from the color original, unless its color is part of what it records, such as the brown of tap water a resident holds up at a hearing. A photograph kept in color says in its caption what the color shows. Change only tone and exposure, evenly across the frame; leave tints, color grades, vignettes and filters off, since each changes how the place looked."
 - **Why, draft:** "Black and white keeps a photograph's own reds and blues off our page. The Rotunda photograph in color holds red coats and red, white and blue wreaths; in black and white the view's one working red (Rule 05.3) stays the only red a reader sees, and red never meets blue beside our marks. It also lets photographs from different agencies, cameras and years sit together as one publication."
 - **Correct plate `s-16-2-correct`:** two panels. (a) `rotunda-2005`, `data-oa-crop="60 0 1080 720"`, black and white, 540 px wide, chapter 01's caption and alt. (b) A placeholder frame (Rule 16.8's drawing) at 3:2, 260 px wide: "Placeholder. A resident holds up a jar of brown tap water at a city council hearing. Kept in color, since the water's color is the evidence, and the caption says so in words."
-- **Failure plate `s-16-2-failure`:** `lake-isabella-2014`, `data-oa-ratio="3:2"`, 540 px wide, with a Prussian duotone: black and white first, then a Prussian layer over the frame in an HTML element with `mix-blend-mode` (C1 allows marks over a photograph in HTML; the design director picks the blend that reads as a duotone). Same caption and alt as chapter 01. Draft failure caption: "Fails Rule 16.2. A Prussian tint dresses the people at the meeting in our color, as if they belonged to our message, and shows a room that never looked that way." No red on this plate, so the failure is the tint alone.
+- **Failure plate `s-16-2-failure`:** `lake-isabella-2014` at 3:2 (CSS, `object-position:50% 50%`), 540 px wide, with a Prussian duotone: black and white first, then a Prussian layer over the frame in an HTML element with `mix-blend-mode` (C1 allows marks over a photograph in HTML; the design director picks the blend that reads as a duotone). Same caption and alt as chapter 01. Draft failure caption: "Fails Rule 16.2. A Prussian tint dresses the people at the meeting in our color, as if they belonged to our message, and shows a room that never looked that way." No red on this plate, so the failure is the tint alone.
 - **Specifications:** Default: black and white, from the color original. On screen: `filter: grayscale(1)` on the photograph and nothing else. For print or an export: a grayscale conversion of the original file, never of the 1,200 px rendition (register row "SA, the photographs"). Color: only where it is part of the record, named in the caption. Adjust: tone, exposure and contrast, evenly across the frame. Never: a tint, a duotone in a brand color, a color grade, a vignette or a filter. On Charcoal: the photograph unchanged; the caption takes Charcoal's text tokens.
 - **Basis:** Gate 1 recommendation S10, approved by our founder and editor (G1-03); design judgment for the reasons.
 - **Tokens:** `oa.type.caption`, `oa.color.text.primary`; on Charcoal `oa.color.text.primary.onCharcoal`.
@@ -73,12 +73,12 @@ A note on sharpness from C1: a crop looks sharp on a 2x screen while its width i
 - **Why, draft:** "A crop decides what a reader believes happened. Cut the residents away and an official seems to lecture no one; cut the official and the caption names a man who is no longer there."
 - **Correct plate `s-16-3-correct`:** `lake-isabella-2014` four times, black and white, each labeled under its frame with its ratio, its use and its focus:
 
-  | Ratio | Use | Request | Rectangle | Shown at |
+  | Ratio | Use | Plate CSS | Rectangle | Shown at |
   |---|---|---|---|---|
-  | 3:2 | Article and report | `data-oa-ratio="3:2"` | 24 0 1152 768 | 360 px |
-  | 16:9 | Video poster and thumbnail | `data-oa-ratio="16:9" data-oa-focus="50% 20%"` | 0 19 1200 675 | 360 px |
-  | 1:1 | Square post | `data-oa-ratio="1:1" data-oa-focus="25% 50%"` | 108 0 768 768 | 240 px |
-  | 4:5 | Portrait post | `data-oa-ratio="4:5" data-oa-focus="35% 50%"` | 205 0 614 768 | 240 px |
+  | 3:2 | Article and report | `aspect-ratio:3/2; object-position:50% 50%` | 24 0 1152 768 | 360 px |
+  | 16:9 | Video poster and thumbnail | `aspect-ratio:16/9; object-position:50% 20%` | 0 19 1200 675 | 360 px |
+  | 1:1 | Square post | `aspect-ratio:1/1; object-position:25% 50%` | 108 0 768 768 | 240 px |
+  | 4:5 | Portrait post | `aspect-ratio:4/5; object-position:35% 50%` | 205 0 614 768 | 240 px |
 
   Two rows at 1440 px (the wide pair, then the tall pair), one column on phones. Each keeps the official's face and hand and at least one resident; the 1:1 also keeps both residents and an edge of the map. One shared caption under the set. Each use carries its own alt (Rule 16.7); for the 1:1 and 4:5, "An official explains something to residents, his arm reaching past one of them."
 - **Failure plate `s-16-3-failure`:** `lake-isabella-2014`, `data-oa-crop="660 0 540 675"` (4:5), black and white, 240 px wide, with chapter 01's caption, which names Paul Zianno. The crop keeps one resident's back and the map; the official is gone. Draft failure caption: "Fails Rule 16.3. The portrait crop keeps a resident and the map and cuts out the official, so the caption names a man the picture no longer shows." Alt: "A resident, seen from behind, faces a large project map on an easel."
@@ -89,7 +89,7 @@ A note on sharpness from C1: a crop looks sharp on a 2x screen while its width i
   - Smallest shown: 240 px wide (design judgment; below that, faces and hands stop reading).
   - Sharpness: the crop's width in photograph pixels at least twice the frame's width (C1).
   - Print: 300 pixels per inch at the printed size, made from the original file.
-  - Crops for builders, both photographs, as C1 rectangles:
+  - Crops for builders, both photographs, as rectangles in the photograph's pixels (any of them works as a `data-oa-crop`):
 
   | Ratio | Lake Isabella | Rotunda |
   |---|---|---|
@@ -124,7 +124,7 @@ A note on sharpness from C1: a crop looks sharp on a 2x screen while its width i
 #### 16.5 Caption who, what, where and when from the record, then credit the maker.
 
 - **Teaches:** the caption's parts, its source, and how far it may go.
-- **Rule, draft:** "Write each caption from the record: the agency's own caption, our capture notes or the event's public notice. Name who is shown, what they are doing, where and when, in that order, then give the credit. Give only as much as the record holds: when it knows the month and not the day, the caption gives the month. Claim no feeling, motive or result that the picture and the record do not show."
+- **Rule, draft:** "Write each caption from the record: the agency's own caption, our capture notes or the event's public notice. Name who is shown, what they are doing, where and when, in that order, then give the credit. Give only as much as the record holds: when it knows only the month, the caption gives only the month. Claim no feeling, motive or result that the picture and the record do not show."
 - **Why, draft:** "A caption is the part of a photograph a reader can check, and each of its four parts sends them to a record. A guess in any part spends the trust the photograph earned."
 - **Correct plate `s-16-5-correct`:** `rotunda-2005` at 3:2 (`data-oa-crop="60 0 1080 720"`), black and white, 240 px wide, beside chapter 01's caption set at true size, with each part underlined and keyed by a small label under it: Who ("Members of the public", "Rosa Parks, the civil rights pioneer"), What ("file past the casket", "as she lies in honor"), Where ("in the Rotunda of the U.S. Capitol, Washington, D.C."), When ("October 2005"), Credit ("Photograph: Architect of the Capitol."). A note under When, from the sidecar: "The record dates the event to October 30 or 31, so the caption gives the month." The underline follows chapter 02's `ins` style; the keys are live text, read in order.
 - **Failure plate `s-16-5-failure`:** `lake-isabella-2014` at 3:2, black and white, 540 px wide, chapter 01's alt, with an invented caption and the Illustrative label beside it: "Angry Lake Isabella homeowners confront an Army official over the seizure of their land, March 2014. Photograph: John Prettyman, U.S. Army." Draft failure caption: "Fails Rule 16.5. The caption claims anger and a seizure that neither the picture nor the agency's record shows; the record says he discussed proposed real estate actions with residents."
@@ -139,7 +139,7 @@ A note on sharpness from C1: a crop looks sharp on a 2x screen while its width i
   - Length: one or two sentences.
 - **Basis:** SPJ Code of Ethics, revised October 4, 2026: "Take responsibility for the accuracy of their work before releasing it." and "Never plagiarize. Always attribute." Rule 01.8.
 - **Tokens:** `oa.type.caption`, `oa.type.label` (keys), `oa.color.graphic.essential` (the underline, as chapter 02's `ins`).
-- **Related:** Rules 01.8, 13.6, 13.12, 02.23 (H05; the design director checks the number).
+- **Related:** Rules 01.8, 13.6, 13.12, and 02.22 for house rule H05.
 - **WCAG:** none of its own. The caption carries the facts the alt text leaves out (Rule 16.7).
 
 #### 16.6 Before a photograph runs, record its rights and any consent it needs.
@@ -371,7 +371,7 @@ Criteria text: the research lead's section A, read from the W3C on November 21, 
 
 ## 6. Plates and bytes
 
-Allocation 300,000 bytes (Gate 3 report, section 9). Under contract C1 the photographs weigh as a part of the page of their own, outside every chapter, and each use costs about 200 bytes. Estimates below come from built chapters: chapter 12's plates average 5,489 bytes, chapter 13's 3,662, and each built rule's own text, frame and links come to about 10,000 bytes (chapter 12: 196,047 bytes for nine rules with 104,292 of plates; chapter 13: 243,178 for thirteen with 117,198 of plates).
+Allocation 300,000 bytes (Gate 3 report, section 9). Under contract C1 the photographs weigh as a part of the page of their own, outside every chapter, and each use costs only its `<img>` tag, about 150 bytes with its alt. Estimates below come from built chapters: chapter 12's plates average 5,489 bytes, chapter 13's 3,662, and each built rule's own text, frame and links come to about 10,000 bytes (chapter 12: 196,047 bytes for nine rules with 104,292 of plates; chapter 13: 243,178 for thirteen with 117,198 of plates).
 
 | Plate | What it holds | Photograph uses | Estimate, bytes |
 |---|---|---|---|
@@ -403,7 +403,7 @@ Allocation 300,000 bytes (Gate 3 report, section 9). Under contract C1 the photo
 | s-16-12-failure | Voice that reads nothing | 0 | 4,000 |
 | s-16-13-correct | Video card | 0 | 7,000 |
 | s-16-13-failure | Empty player | 0 | 3,500 |
-| **Plates** | 28 | 20 uses | **160,500** |
+| **Plates** | 28 | 18 uses | **160,500** |
 | Rule text, specifications and frames | 13 rules at about 10,000 | | 130,000 |
 | Chapter head, groups, related chapters, sources | | | 8,000 |
 | **Chapter 16** | | | **about 298,500** |

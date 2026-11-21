@@ -6,7 +6,7 @@ Status: 01:45 UTC. Started 01:36 UTC. Job 1 item 2's contract written first (C1 
 
 ### C1. Photographs: one copy for the page, drawn by name (P4-5)
 
-Written 01:40 UTC and revised 01:45 UTC, before the build, so chapter 16 can be planned and built against it. **The 01:45 version replaces the 01:40 one**: a prototype showed that an SVG `<use>` drawing resamples the photograph differently from `<img>` (softer at 1x, mean 2 to 3 levels off), so chapter 01 would have changed on screen. The request stays an `<img>`, and it draws the one copy through CSS content replacement, which matched today's plates pixel for pixel in Chromium at 1440, 1024, 390 and 360 px, at 1x and 2x. The build side lands in `guide_build.py`; this section says when it is live.
+Written 01:40 UTC and revised 01:45 UTC, before the build, so chapter 16 can be planned and built against it. **Live since 01:51 UTC** in `guide_build.py`, with `work/build/scripts/phase-4/guide_photos.py`; chapter 01 draws this way now. **The 01:45 version replaces the 01:40 one**: a prototype showed that an SVG `<use>` drawing resamples the photograph differently from `<img>` (softer at 1x, mean 2 to 3 levels off), so chapter 01 would have changed on screen. The request stays an `<img>`, and it draws the one copy through CSS content replacement, which matched today's plates pixel for pixel in Chromium at 1440, 1024, 390 and 360 px, at 1x and 2x. The build side lands in `guide_build.py`; this section says when it is live.
 
 **What changes.** Today a specimen embeds a photograph by its file path, `<img src="work/build/assets/photography/....jpg">`, and the build turns each path into a data URI inside that plate, so a photograph placed twice is carried twice (the Lake Isabella photograph sits in Rule 01.8's correct and failure plates: 190,992 bytes twice). From this chat a specimen asks for a photograph by name. The build carries each named photograph once for the whole page, in one style block in the page's head, `img[data-oa-photo="<name>"]{content:url(data:image/jpeg;base64,...)}`, and every `<img>` that names it shows that one copy. No script is involved. CSS content replacement is standard track and supported since Chrome 28, Firefox 63 and Safari 9 (MDN's compatibility data, read 01:43 UTC).
 
@@ -41,7 +41,25 @@ A new photograph joins this list only through the engineer (the registry is `PHO
 
 **Chapter 01, the new way.** Rule 01.6: `data-oa-photo="rotunda-2005"`, class `ph r53` (5:3 from the top, `object-position:50% 0%`). Rule 01.8, both plates: `data-oa-photo="lake-isabella-2014"`, class `ph r32` (3:2, centered). Only the `src` changes in their three tags.
 
+### C2. Chapter 16 in the build (for the design director)
+
+Proved at 01:57 UTC with a fixture chapter 16 (two rules, three plates, two photograph requests) built strictly into a copy of today's chapters: the page puts `16-photography.json` in place of the placeholder, under Evidence and media (`<section class="chapter chapter--grouped" id="photography" data-part="evidence" data-chapter="16">`), with no change to the build needed beyond this chat's. What the build asks of the chapter:
+
+- `16-photography.json` in `work/build/guide/chapters/`, the shape of `17-motion-and-states.json`; `opener` is optional.
+- Every rule needs a `failure` block, or the build warns ("the rule has no 'failure' block") and `--strict` fails.
+- Each specimen `work/build/guide/specimens/s-16-*.html` has an entry in `manifest-photography.json` with `chapter`, `rule`, `alt` (15 characters or more), and `width_px` (a number for a fixed plate, or null for one that flows), plus `illustrative: true` where it shows an illustrative item.
+- Photographs only by contract C1. A placeholder plate is ordinary HTML and CSS from the tokens.
+- The weight: every build now notes "chapter 16: weighs N bytes against its allocation of 300,000 (P percent)". The photographs count in the page's "photographs" part, never in chapter 16.
+
 ## Routine calls
+
+- D4-xxx | Each photograph is drawn through CSS content replacement on its own `<img>` (`img[data-oa-photo="<name>"]{content:url(data:...)}` in one head style), not through SVG `<use>` | The SVG route resampled the photograph (softer at 1x; mean 2 to 4 levels off `<img>` in Chromium, even with `image-rendering` hints), so chapter 01 would have changed on screen; content replacement keeps the `<img>`, its alt and crop, and matched pixel for pixel; MDN's data gives it from Chrome 28, Firefox 63 and Safari 9
+- D4-xxx | The photographs weigh as their own part of the page, "photographs", with a 0.5 MB figure, outside every chapter | They are carried once for the page and shown by chapters 01 and 16, so charging them to either chapter would misstate both; chapter 16's 300,000 already assumed them free
+- D4-xxx | Chapter 01's three plates keep their tags as they were except the `src`, which gives way to `data-oa-photo` (the 1200 x 720 size hint and `loading` stay) | The fewest changes to approved plates; the captures prove nothing moved
+- D4-xxx | A tight crop (`data-oa-crop`) is a frame the build writes around the `<img>`, placing the photograph by percent | `object-view-box` is Chromium only; percent placement works in every browser and keeps the crop at every width
+- D4-xxx | G3-05: the edge guard in `checks.js` now holds every haloed word of every chart (the `t.clear_edges` gate is gone), and the fan chart's `labels.values_clear_edges` is on unless a spec sets it false | "Switch it on for every chart" covers both the test and the one form whose key moves a value; S59 is the only fan chart and already set it, so no drawing changes
+- D4-xxx | Phase 4's seven chapters join `guide_charts.IN_PROGRESS`, so a chapter in place counts at its bytes or its allocation, whichever is more, until Gate 4 | Each is built across chats; a half-built chapter at its bytes alone would hand the rest of its allocation to the page's room
+- D4-xxx | `guide_check.js` gains `photoDrawn` (every photograph request draws its copy) with one self-test plant | The build proves one copy; only a browser proves the CSS draws it
 
 ## Done
 

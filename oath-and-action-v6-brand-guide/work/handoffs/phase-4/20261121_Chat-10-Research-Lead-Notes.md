@@ -153,3 +153,13 @@ Two teaching points the records already hold, for the plan: the Rotunda photogra
 - Substack's post body width; no page states it.
 - Any platform's real rendering: no upload, post or capture was made on any platform, so no crop, avatar overlap or smallest display size was observed.
 - The engineer's dimension script against the JSON; it did not exist when these notes were written.
+
+## Addendum by the main session: Understanding SC 1.2.5 (02:21 UTC)
+
+The creative director's plan leaves `why_understanding_quote` on Rule 16.12 waiting for this page. The main session read it (HTTP 200): W3C, "Understanding Success Criterion 1.2.5: Audio Description (Prerecorded)", https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html, retrieved November 21, 2026. Its "Intent" section:
+
+- "The intent of this success criterion is to provide people who are blind or visually impaired access to the visual information in a synchronized media presentation in the same human language as the video or page on which it appears."
+- "During existing pauses in dialogue, audio description provides information about actions, characters, scene changes, and on-screen text that are important and are not described or spoken in the main sound track."
+- Its note: "For 1.2.3, 1.2.5, and 1.2.7, if all of the important information in the video track is already conveyed in the audio track, no additional audio description is necessary."
+
+The note is the quote that grounds Rule 16.12: a narrator who says aloud what the screen shows meets 1.2.5 with no separate description track.
