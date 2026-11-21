@@ -1241,7 +1241,7 @@ VF = (f'.sb{{display:grid;grid-template-columns:minmax(0,1fr);gap:24px 16px;alig
       '.vf.dkf{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);border-color:var(--oa-color-surface-charcoal)}'
       '.vf .slot{color:var(--oa-color-text-secondary-on-charcoal)}'
       '.np{align-self:flex-start;padding:2px 6px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal)}'
-      f'.ask{{align-self:flex-start;padding:6px 10px;background:var(--oa-color-action-ask-fill-on-newsprint);'
+      f'.ask{{align-self:flex-start;padding:6px 10px;{ty("ask")};background:var(--oa-color-action-ask-fill-on-newsprint);'  # quick check: the ask's own type, as Rule 18.2's button
       f'color:var(--oa-color-action-ask-label-on-newsprint);box-shadow:inset 0 0 0 1px var(--oa-component-button-ask-keyline-on-newsprint)}}'
       '.said{margin-top:8px}')
 
@@ -1303,7 +1303,7 @@ def vertical(r, lines, bad=False):
 def s16_11_correct():
     r = R['16.11']
     html = (css(CAPF) + '<div class="w"><div class="row">' + vertical(r, r['lines'])
-            + f'<div style="min-width:0;max-width:26rem"><p class="lab">{r["file_head"]}</p><pre class="code mt8"><code>{r["vtt"]}</code></pre></div>'
+            + f'<div style="min-width:0;max-width:26rem"><p class="lab">{r["file_head"]}</p><pre class="code mt8" tabindex="0" role="region" aria-label="{r["file_head"]}"><code>{r["vtt"]}</code></pre></div>'
             '</div></div>')
     return spec('s-16-11-correct', html, '16.11', r['correct_alt'], illustrative=True,
                 notes='Drawn at a quarter of 1080 by 1920, so the caption band’s 13 px words stand for about 52 px on the '
