@@ -7170,3 +7170,15 @@ Dustin's words, in chat 9 after the Gate 3 report and board: "As proposed". Ever
 | D4-01 | The new chat opened on `claude/sleepy-franklin-d7zjmn`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `5c51257c`, "Gate 3 approved as proposed") and works on it, as DR-285 and Dustin's opening message set. V11's three setup steps ran on the fresh container | V19: fetch the remote tip first; V11's setup |
 | D4-02 | The three key tests fail here (00:42 UTC): api.open.fec.gov 403 and api.congress.gov 403, and `CENSUS_API_KEY` is unset. This session runs on the "Oath & Action" environment, which holds no key; the keys sit on "Oath & Action Brand Polish - Round 2", which a running session cannot move onto (unrestricted network), as V26 found. Chat 10's work needs no data key; the question of where later chats run goes to Dustin | V26: check the environment before testing keys; Dustin's "test each with one request before use" |
 | D4-03 | The strict build passes as committed (00:43 UTC, to scratch): exit 0, 0 warnings, 12,210,634 bytes, 369 rules, 679 specimens; it differs from version 14's file only in its three date and time lines, and the working tree stays clean | V29 section 1's figures |
+
+### Dustin's answers on chat 10's plan, November 21, 2026
+
+The main session posted chat 10's plan with five questions (Q10-1 to Q10-5). Dustin: "As recommended".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-300 | Chat 11 onward starts on the "Oath & Action Brand Polish - Round 2" environment, which holds the api.data.gov key and `CENSUS_API_KEY`; chat 10 needs no key and stays where it is | Dustin, November 21, as recommended (Q10-1) |
+| DR-301 | Chapter 16's capture and consent rules serve two makers: Dustin on a phone at public events, and a hired photographer who follows the same rules. Video takes two forms: Dustin on camera as host, and a voiceover over charts and atlas views; his name plate reads "Dustin Cathcart, Founder and Editor" | Dustin, November 21, as recommended (Q10-2) |
+| DR-302 | Channel handles stay labeled Illustrative through Phase 4 board 2 (DR-298) | Dustin, November 21, as recommended (Q10-3) |
+| DR-303 | At chat 10's close the main session republishes the chapters page as version 15, with chapter 16 and Gate 3's three word changes, and builds a short progress page with the platform specifications table, the application kit's three measurement samples and the re-sized allocations; neither asks Dustin for a decision | Dustin, November 21, as recommended (Q10-4) |
+| DR-304 | Dustin uploads the V5 Polished guide at the start of chat 15 for the twelve report pages; chapter 16 works from the V5 text in the Phase 0 census (`work/handoffs/phase-0/text-census.json`) | Dustin, November 21, as recommended (Q10-5) |
