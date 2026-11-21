@@ -3,13 +3,13 @@
  "type": "favicon-set",
  "title": null,
  "css": "favicon-set.css",
- "written": "2026-11-21T20:25:31.602Z",
+ "written": "2026-11-21T20:42:54.944Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "switch_words": "Show the safe areas",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
   "id": "A10,A06",
-  "sha256": "bd9cd9a0ab7ff01226f4428e7fa04445a9bd568b1078461176d2d5354a7dcf79"
+  "sha256": "2e59d1038bb46913aa9222ebe767cb4f403ac9626b8eefd3c13957c8b046ea98"
  },
  "views": [
   {

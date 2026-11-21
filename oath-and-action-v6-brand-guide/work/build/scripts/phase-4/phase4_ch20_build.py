@@ -123,9 +123,12 @@ REC = {
     'question': 'whether the sale of NAC-containing products labeled as dietary supplements in the United States has '
                 'negatively impacted NAC drug development or is anticipated to in the future',
 }
-_need(_DK, *REC.values(), '(page 73720)', '(page 73721)', '(page 73723)', 'March 31, 2022', '2001, 2010 and July 2020',
-      'says it is considering rulemaking', 'January 14, 2026', 'yeas and nays, 7 to 4', 'lists no committee hearing',
-      where=DOCKET_FILE)
+# The rule's step 1, Early notice (Rule 11.9): the FDA's Federal Register notice of April 22, 2022, in which it said it was
+# likely to propose this rule (the rule, page 73723; D4-110). The page prints its date, so the date stands in the file.
+EARLY_NOTICE = {'date': 'April 22, 2022', 'citation': '87 FR 24170'}
+_need(_DK, *REC.values(), '(page 73720)', '(page 73721)', '(page 73723)', '2001, 2010 and July 2020',
+      EARLY_NOTICE['date'], EARLY_NOTICE['citation'], 'was likely to propose', 'January 14, 2026',
+      'yeas and nays, 7 to 4', 'lists no committee hearing', where=DOCKET_FILE)
 _m = re.search(r'\*\*The agency.s summary, quoted\.\*\* "(.+?)"\n', _DK)
 if not _m:
     raise SystemExit(f'{DOCKET_FILE}: the agency’s summary is no longer where Rule 20.8 reads it')
@@ -179,31 +182,35 @@ W = {
     'title': 'Web',
     'instruction': 'Build each web page from the system, opening on the reader’s question.',
     'intro': [
-        'This chapter sets how our website looks and works: the masthead, the menu and the footer every page shares, the '
-        'three kinds of page we publish most, the preview a link shows when someone shares it, and the icon in a browser '
-        'tab. Every page is built from the tokens and the components in chapter 18, on Newsprint and in the dark mode, at '
-        'the four widths we test.',
-        'The pages here are real. The home page leads with our explainer on special districts, H.R.' + NB + '7008 and a '
-        'rule open for comment, and the Act page walks through commenting on that rule, checked November 21, 2026. Only '
-        'the web address is a stand-in, labeled Illustrative until our founder and editor settles it.'],
+        'This chapter sets how our website looks and works. It covers the masthead, the menu and the footer every page '
+        'shares; the home page, an article and an Act page; the preview a link shows when someone shares it; and the '
+        'icon in a browser tab. Every page is built from the tokens and the components in chapter 18, in the '
+        'light and the dark theme, at the four widths we test.',
+        # DR-98: the bill named whole, with both provisions, at its first mention in the chapter
+        'The pages here are real. The home page leads with one piece for each pillar: our explainer on special '
+        'districts; our tracker for H.R.' + NB + '7008, the Stop Insider Trading Act, a bill that would limit stock '
+        'purchases by members of Congress and require photo ID to vote in federal elections; a guide to who sets an '
+        'electric bill; and a rule open for comment. The Act page walks through commenting on that rule, checked '
+        'November 21, 2026. Only the web address is a stand-in, labeled Illustrative until our founder and editor '
+        'settles it.'],
     'groups': [
         ('20.1', 'The frame every page shares',
          'Every page opens with the same masthead, closes with the same footer, names itself in its title and offers '
          'the theme switch in one place.'),
         ('20.6', 'Three pages',
-         'The home page, an article and an Act page, each at four widths and in the dark mode, built from one set of '
+         'The home page, an article and an Act page, each at four widths and in the dark theme, built from one set of '
          'parts.'),
         ('20.10', 'Beyond the page',
          'The preview a shared link shows, and the icons a browser and a phone draw for the site.'),
     ],
     'opener_alt': 'The home page’s first screen twice: on a desktop at 1440 px in the light theme, and on a phone at 390 px '
                   'in the dark theme. Each shows the masthead, the pillar row and the first pieces under it.',
-    'opener_caption': 'The home page’s first screen on a desktop in the light theme and on a phone in the dark theme: the '
-                      'masthead, the pillar row, and one piece for each pillar, the last of them a step a reader can take '
-                      'now.',
+    'opener_caption': 'The home page’s first screen on a desktop in the light theme and on a phone in the dark theme. On '
+                      'the desktop the pillar row heads one piece for each pillar, the last of them a step a reader can '
+                      'take now; on the phone each pillar heads its own section.',
     'related_chapters': [
         ('01', 'Content labels, process pieces and the spread of examples across issues and places.'),
-        ('02', 'The writing rules, and the two retired lines the failure plates show (W08 and W19).'),
+        ('02', 'The writing rules, among them Rules 02.8 and 02.19, which retire the two lines the failure plates show.'),
         ('03', 'L3 and L1 in the masthead (Rule 03.6).'),
         ('04', 'The end mark, the favicon and the app icon (Rules 04.6 and 04.7).'),
         ('05', 'One dark panel a section and one working red a view (Rules 05.1 and 05.3).'),
@@ -269,7 +276,8 @@ PAGES = {
             {'pillar': 'track', 'word': 'Track', 'icon': 'cl-020',
              'kicker': ['Tracker', 'Congress'], 'symbol': None,
              'headline': 'H.R.' + NB + '7008, the Stop Insider Trading Act', 'href': '/track/hr-7008',
-             'dek': 'The bill would limit members’ stock purchases and require photo ID to vote in federal elections.',
+             'dek': 'The bill would limit stock purchases by members of Congress and require photo ID to vote in federal '
+                    'elections.',
              'tracker': {'kind': 'bill', 'steps': [
                  {'n': 1, 'name': 'Filed', 'state': 'done'}, {'n': 2, 'name': 'Hearing', 'state': 'never'},
                  {'n': 3, 'name': 'Committee vote', 'state': 'done'}, {'n': 4, 'name': 'First chamber', 'state': 'done'},
@@ -285,7 +293,7 @@ PAGES = {
              'kicker': ['Guide', 'Electric bills'], 'symbol': None,
              'headline': 'Who sets your electric bill', 'href': '/connect/electric-bills',
              'dek': 'A regulator or a board approves your rate. Our systems atlas lists eight bodies behind an electric '
-                    'bill, and six of them can change the rules behind it.',
+                    'bill, and six of them can change the rules that set it.',
              'tracker': None, 'status': None, 'dateline': None, 'source': EL_SOURCE, 'link': None},
             {'pillar': 'act', 'word': 'Act', 'icon': 'cl-022',
              'kicker': ['Act · How to take part', None], 'symbol': None,
@@ -330,15 +338,17 @@ PAGES = {
                 {'chart': 's86'},
                 {'p': 'A district can go by many names, such as authority, board or commission. The state law that '
                       'creates it names the jobs it may do, from running a library to building a transit line.'}]},
-            {'key': 'Step', 'heading': 'Find the districts where you live', 'blocks': [
+            # the report explains how each state organizes its governments, in one summary a state, so the step is to
+            # read your state's summary (the report's page, read by the design director at 19:03 UTC)
+            {'key': 'Step', 'heading': 'See which districts your state has', 'blocks': [
                 {'p': 'Each state’s laws decide which kinds of special district it allows and what they may do.'},
-                {'p': 'The Census Bureau’s report {link} gives a summary for each state and the District of Columbia, '
-                      'arranged by kind of government.',
+                {'p': 'Read your state’s summary in the Census Bureau’s report {link}. It covers each state and the '
+                      'District of Columbia, arranged by kind of government.',
                  'link': [ISD['title'], ISD['url']], 'link_kind': 'another-site', 'end_mark': True}]},
         ],
-        'count_fact': {'figure': '5', 'line1': 'years between each census of governments',
-                       'line2': 'Federal law requires the Census Bureau to take one at five-year intervals (Title 13, U.S. '
-                                'Code, Section 161).',
+        'count_fact': {'figure': '5', 'line1': 'years between censuses of governments',
+                       'line2': 'Federal law requires the Census Bureau to take one every five years (Title 13, U.S. Code, '
+                                'Section 161).',
                        'source': 'Source: U.S. Census Bureau, ' + ISD['title'] + ', report ' + ISD['report'] + ', '
                                  'introduction, ' + ISD['date'] + ', United States. Retrieved November 21, 2026.'},
         'def_source': 'Source for the definition and the report: U.S. Census Bureau, Census of Governments glossary, '
@@ -360,7 +370,7 @@ PAGES = {
             'label': 'Where the rule stands',
             'state_words': {'done': 'Done', 'now': 'Now', 'ahead': 'Not yet'},
             'steps': [{'n': 1, 'name': 'Early notice', 'state': 'done',
-                       'note': 'March 31, 2022: the FDA said it was considering a rule'},
+                       'note': EARLY_NOTICE['date'] + ': the FDA said it was likely to propose this rule'},
                       {'n': 2, 'name': 'Proposed', 'state': 'done', 'note': 'Published ' + DOCKET['published']},
                       {'n': 3, 'name': 'Comments open', 'state': 'now', 'note': 'Until ' + DOCKET['closes'],
                        'take_part': True},
@@ -388,7 +398,7 @@ PAGES = {
                       'paragraphs': [
                           'The request. The rule says: “' + REC['petitions'] + '” (page 73720).',
                           'The concern in the law. In 2001, 2010 and 2020, the FDA said products containing NAC are '
-                          'excluded from the dietary supplement definition (pages 73719 to 73720). The exclusion exists in '
+                          'excluded from the dietary supplement definition (pages 73719 to 73720). That exclusion exists in '
                           'part “' + REC['incentives'] + '” (page 73721). The rule says: “' + REC['no_concern'] + '” (page '
                           '73723), and it asks commenters “' + REC['question'] + '” (page 73723).']},
             'decides_heading': 'Who decides',
@@ -410,11 +420,12 @@ PAGES = {
             'panel_label': 'Docket ' + DOCKET['docket'],
             'deadline': 'Comments close ' + DOCKET['closes'] + ', at 11:59 p.m. Eastern Time.',
             'others_heading': 'Read other comments',
-            'others': 'Regulations.gov shows the comments the FDA receives, and the Dockets Management Staff shows them in '
-                      'person from 9 a.m. to 4 p.m., Monday through Friday; call ' + DOCKET['phone'] + '.',
+            'others': 'You can read the comments the FDA receives on Regulations.gov, or in person at the Dockets '
+                      'Management Staff from 9 a.m. to 4 p.m., Monday through Friday (' + DOCKET['phone'] + ').',
             'glance_heading': 'The rule at a glance',
             'glance': [['Agency', 'Food and Drug Administration, Department of Health and Human Services'],
-                       ['Docket', DOCKET['docket']], ['RIN', DOCKET['rin']], ['Citation', DOCKET['citation']],
+                       ['Docket', DOCKET['docket']], ['Regulation Identifier Number', DOCKET['rin']],
+                       ['Citation', DOCKET['citation']],
                        ['Published', DOCKET['published']],
                        ['Comments close', DOCKET['closes'] + ', 11:59 p.m. Eastern Time']],
             'checked': 'Checked ' + DOCKET['checked'] + '.',
@@ -434,16 +445,17 @@ R = {}
 
 # ---- Group 1, the frame every page shares
 R['20.1'] = {
-    'title': 'Open every page with the masthead, and move its parts behind Menu once they no longer fit beside L3.',
-    'rule': ['Every page opens with the same masthead. From 64em, 1,024 px at the default text size, the bar holds L3 at '
-             'the left and the seven parts of the site at the right, in this order: Explain, Track, Connect, Act, Who Do '
-             'They Answer To?, About and Subscribe. The theme switch sits on a row beneath them, at the right edge.',
+    'title': 'Open every page with the same masthead, and move its parts behind Menu once they no longer fit in the bar.',
+    'rule': ['Every page opens with the same masthead. From 64em, 1,024 px at the default text size, the bar holds L3, the '
+             'wordmark with the lockmark, at the left and the seven parts of the site at the right, in this order: '
+             'Explain, Track, Connect, Act, Who Do They Answer To?, About and Subscribe. The theme switch sits on a row '
+             'beneath them, at the right edge.',
              'Between 48em and 64em the bar keeps L3 and moves the parts and the switch behind Menu, and under 48em the '
-             'bar sets the wordmark alone with Menu beside it. The part the reader is in shows in bold with a 2 px '
+             'bar sets L1, the wordmark alone, with Menu beside it. The part the reader is in shows in bold with a 2 px '
              'underline. Every part stays in the masthead’s ink, Subscribe included, so the view’s one red stays free '
              'for the step a reader can take. On an atlas page, the atlas’s own title bar sits under the masthead.'],
-    'why': 'A reader finds the parts in the same place on every page, and a screen reader reaches them as one named '
-           'navigation. The parts come in the order of the pillars and then the rest, so the list itself says what we do. '
+    'why': 'A reader finds the parts in the same place on every page, and a screen reader reaches them as one named set '
+           'of links. The parts come in the order of the pillars and then the rest, so the list itself says what we do. '
            'Once the seven no longer fit beside L3, a Menu button keeps them one press away and leaves the wordmark its '
            'room.',
     'basis': 'Rules 03.6, 08.2 and 18.6; the parts approved by our founder and editor on November 21, 2026; design '
@@ -456,7 +468,7 @@ R['20.1'] = {
               ('48em to 64em', 'An 80 px bar with L3 and Menu'),
               ('Under 48em', 'A 56 px bar: L1 from the 24 px master, 221 by 24 px, and Menu; under 24.375em, L1 from '
                              'the 16 px master, 152 by 16 px'),
-              ('Measured', 'The seven words take 484 px in the interface style, 580 px with their gaps at 1,024 px; with '
+              ('Measured', 'The seven parts take 484 px in the interface style, 580 px with their gaps at 1,024 px; with '
                            'L3 and 32 px of space they fill 894 of the 944 px inside the margins'),
               ('Divider', 'A 1 px hairline, 20 px tall, in the gap before Who Do They Answer To?, so the four pillars '
                           'read as a set'),
@@ -483,23 +495,26 @@ R['20.2'] = {
     'rule': ['Menu opens the parts of the site in a dialog that covers the page. Its title, Menu, and Close the menu sit '
              'at the top, then the theme switch, then the seven parts as rows, with the current part on the selected '
              'band.',
-             'Focus moves to the current part, or to Close the menu on a page with no current part. The Tab key stays '
-             'inside, and Escape, Close the menu or a part closes it and returns focus to Menu. If the window widens '
-             'past 64em while the menu is open, it closes and focus moves to the current part in the bar.'],
+             'Focus moves to the current part, or to Close the menu on a page with no current part. Tab and Shift+Tab '
+             'keep focus inside the menu. Escape or Close the menu closes it and returns focus to Menu, and a part opens '
+             'its page. If the window widens past 64em while the menu is open, it closes and focus moves to the current '
+             'part in the bar, or to the home link on a page with none.'],
     'why': 'A dialog makes the page behind it unreachable, so a keyboard or screen reader user never walks into links '
            'the menu covers. The switch at the top keeps the theme one press away on a phone, where the bar has no room '
            'for it.',
-    'basis': 'Rule 18.6 and the APG’s Dialog (Modal) pattern; design judgment for the order inside',
+    'basis': 'Rule 18.6 and the Dialog (Modal) pattern in the W3C’s ARIA Authoring Practices Guide; design judgment for '
+             'the order inside',
     'specs': [('Dialog', 'The whole window, on the surface of the theme it opens in, with the page’s own side margins'),
-              ('Head', '56 px: the title Menu in bold at the left; Close the menu, 44 px tall with its icon and word, at '
+              ('Head', '56 px: the title Menu in bold at the left; Close the menu, 44 px tall with its icon and words, at '
                        'the right; a 1 px strong line under it'),
-              ('Switch', '24 px under the head: the legend on its own line, then the three choices; at 360 px Match my '
-                         'device wraps to its own line, and at 320 px each choice takes a line'),
+              ('Switch', '24 px under the head: its legend, Theme, on its own line, then the three choices; at 360 px '
+                         'Match my device wraps to its own line, and at 320 px each choice takes a line'),
               ('Parts', '24 px under the switch: rows at least 44 px tall with a hairline under each, and a strong line '
                         'after Act'),
               ('Current part', 'The selected band, the 4 px bar at its left edge, bold words and aria-current'),
               ('Opening', 'Focus to the current part’s link, or to Close the menu where no part is current'),
-              ('Closing', 'Escape, Close the menu or a part; focus back to Menu, and aria-expanded back to false'),
+              ('Closing', 'Escape or Close the menu, with focus back to Menu and aria-expanded back to false; a part opens '
+                          'its page'),
               ('Navigation name', '“Parts of the site, in the menu”')],
     'builders': ['Open the menu with <code>showModal()</code> and test it with the keyboard alone: Menu, Tab to the end, '
                  'Shift+Tab back, Escape.'],
@@ -514,33 +529,35 @@ R['20.2'] = {
 }
 R['20.3'] = {
     'title': 'Close every page with the same footer: the parts, help in one place, and the lockmark with the tagline.',
-    'rule': ['Every page ends with the same footer on Charcoal. Four lists name the site again: our work by pillar, the '
-             'atlas, Oath & Action, and Help, whose one link, Contact us, reaches the editor. Help keeps its place in '
-             'that order on every page, the atlas’s pages included.',
-             'Under the lists, the lockmark at 24 px and the tagline close the page on one line, with the web address '
-             'after them.'],
+    'rule': ['Every page ends with the same footer. Four lists name the site again: our work by pillar, the atlas, Oath & '
+             'Action, and Help, whose one link, Contact us, opens our contact page. Help keeps its place in that order on every '
+             'page, the atlas’s pages included.',
+             'Under the lists, a Charcoal strip closes the page with the lockmark at 24 px and the tagline on one line, '
+             'and the web address after them.'],
     'why': 'A reader who gets stuck finds help where they found it last time, which matters most on the page where they '
-           'are trying to take part. The footer is the lockmark’s place on a page, so the masthead can show the '
-           'wordmark it needs with no second lockmark in view.',
+           'are trying to take part. The lockmark closes the page in the footer, and since the masthead scrolls away, '
+           'its lockmark and the footer’s never share a screen (Rule 08.2).',
     'basis': 'Rule 08.2; WCAG 2.2 SC 3.2.6, as the W3C’s page “Understanding Success Criterion 3.2.6: Consistent Help”, '
              'retrieved November 21, 2026, sets it; the web address shown as a stand-in, approved by our founder and '
              'editor on November 21, 2026',
-    'specs': [('Ground', 'Charcoal in both themes; in the dark theme a 1 px hairline along its top'),
-              ('Space', '104 px above it; 64 px of padding at its top and 40 px at its foot'),
+    'specs': [('Ground', 'The lists on the page’s own ground, under a 2 px strong line; then the closing strip, Charcoal '
+                         'in both themes and the footer’s one dark panel, with a 1 px hairline edge in the dark theme'),
+              ('Space', '104 px above the footer and 48 px between its line and the lists; the strip 48 px under the '
+                        'lists, with 56 px of padding above and below from 48em and 40 px on phones'),
               ('Lists', 'Four groups, each a heading in the label style and links in the small body style on 44 px rows; '
                         'four across from 48em, two by two on phones'),
               ('Help', 'The fourth group, with Contact us its first link, on every page'),
-              ('Lockmark row', '48 px under the lists, a hairline, then 32 px: the lockmark’s 24 px master, 12 px, and '
-                               'the tagline, on one line at the left'),
-              ('Web address', 'At the row’s right end from 48em and on its own line under it, in the caption style, with '
-                              'the Illustrative label until our address is settled'),
+              ('Lockmark row', 'In the strip: the lockmark’s 24 px master, 12 px, and the tagline, on one line at the '
+                               'left'),
+              ('Web address', 'At the row’s right end from 48em, and on its own line under the row on phones, in the '
+                              'caption style, with the Illustrative label until our address is settled'),
               ('Navigation name', '“Site map”, which differs from the masthead’s')],
     'builders': ['Draw the footer from one source for every page, and never move or rename the help link for one page.'],
     'correct_caption': 'The footer at 1440, 1024, 390 and 360 px in the light theme, and at 1440 px in the dark theme, '
-                       'where a hairline along its top sets it apart from the page.',
-    'correct_alt': 'Five footers on Charcoal: four link groups, Our work, The atlas, Oath & Action and Help, then a line '
-                   'with the lockmark, the tagline and the web address with its Illustrative label. On the phones the '
-                   'groups sit two by two.',
+                       'where a hairline edges its Charcoal strip.',
+    'correct_alt': 'Five footers. Each shows four link groups, Our work, The atlas, Oath & Action and Help, then a '
+                   'Charcoal strip with the lockmark, the tagline and the web address with its Illustrative label. On '
+                   'the phones the groups sit two by two.',
     'failure_caption': '<strong>Fails Rule 20.3.</strong> Help moves and changes its words from one page to the next, so '
                        'a reader has to hunt for it on the page where they need it most.',
     'failure_alt': 'Two footers side by side. The home page’s ends its lists with Help and Contact us; the Act page’s has '
@@ -587,30 +604,31 @@ R['20.4'] = {
     'failure_alt': 'A browser’s tab strip with three tabs that each read Oath & Action, and a page root with no language.',
 }
 R['20.5'] = {
-    'title': 'Draw every page in the dark mode from the same markup, and keep each panel’s edge.',
+    'title': 'Draw every page in the dark theme from the same markup, and keep each panel’s edge.',
     'rule': ['Every page follows the reader’s device at first and changes theme from the switch, with no second page and '
              'no second set of words. The dark theme sets Charcoal for the page and the matching value for every part.',
              'A dark panel keeps its Charcoal and draws a 1 px edge, so it still reads as a panel on a Charcoal page. '
-             'Charts take the kit’s Charcoal drawing, and the identity marks take their paint for Charcoal.'],
+             'Charts take the chart kit’s Charcoal drawing, and the identity marks take their paint for Charcoal.'],
     'why': 'One page in two themes keeps the words, links and order the same for every reader. Without an edge, a '
            'Charcoal panel on a Charcoal page disappears, and the section loses the signal that told the reader it had '
            'turned.',
-    'basis': 'One dark mode for every screen product, with a visible switch that remembers the reader’s choice, approved '
+    'basis': 'One dark theme for every screen product, with a visible switch that remembers the reader’s choice, approved '
              'by our founder and editor on November 10, 2026; Rules 18.4 and 26.6; design judgment for the edge',
     'specs': [('Themes', 'Light, dark, or the device’s, set on the page’s root and kept under the key '
                          '<code>oa-theme</code> (Rule 18.4)'),
-              ('Panel edge', 'A 1 px hairline for Charcoal on all four sides; along the top only on the footer'),
+              ('Panel edge', 'A 1 px hairline for Charcoal around each dark panel, the footer’s strip included; along '
+                             'the top and foot only on the pillar row’s cells, which meet as one band at 1440 px'),
               ('Contrast', 'The edge, Stone on Charcoal, measures 3.10 to 1, past the 3 to 1 a boundary needs'),
-              ('Charts', 'The kit’s Charcoal drawing in every dark frame'),
+              ('Charts', 'The chart kit’s Charcoal drawing in every dark frame'),
               ('Marks', 'L3, L1 and the lockmark take their paint for Charcoal, with signature red kept'),
               ('The switch', 'In the masthead from 64em, at the top of the menu under it')],
     'builders': ['Build the light page with the theme’s own token names only, then switch the theme and look for any '
                  'panel or mark that disappeared.'],
     'correct_caption': 'The home page’s first screen at 390 px in the light and the dark theme, from the same markup. On '
-                       'the dark page each head cell of the pillar row keeps a 1 px edge.',
+                       'the dark page each head cell of the pillar row keeps a 1 px edge along its top and foot.',
     'correct_alt': 'Two phone screens of the home page side by side, light and dark. Each shows the wordmark and Menu, '
-                   'then the Explain cell on Charcoal and the explainer under it; on the dark screen a thin edge outlines '
-                   'the Charcoal cell.',
+                   'then the Explain cell on Charcoal and the explainer under it; on the dark screen thin lines above '
+                   'and below set off the Charcoal cell.',
     'failure_caption': '<strong>Fails Rule 20.5.</strong> With no edge, the pillar cell melts into the dark page, and '
                        'only its icon and word show where the section begins.',
     'failure_alt': 'A phone screen in the dark theme where the Explain cell has no edge, so its icon and word float on '
@@ -623,9 +641,9 @@ R['20.6'] = {
     'rule': ['The home page opens on the pillar row, with one piece under each pillar: an explainer, a tracker, a guide '
              'and a step a reader can take now. Each piece is a card with its kicker, headline, a few lines and its '
              'date. The Act card carries the take-part mark on its step and the view’s one red.',
-             'Below them, the atlas’s section opens on the everyday questions it answers, with a chart and its source '
-             'line.'],
-    'why': 'A first-time reader sees in one screen what each pillar does and one thing to do this week. The pillar row is '
+             'Below them, the atlas’s section opens on its title bar, then lists the everyday questions it answers '
+             'beside a chart and its source line.'],
+    'why': 'A first-time reader sees in one screen what each pillar does and one thing they can do now. The pillar row is '
            'the order of our work, so it can order the page without a word of explanation.',
     'basis': 'Rules 01.21, 09.1, 09.4, 11.4, 11.5 and 11.9; design judgment for the layout',
     'specs': [('Pillar row', 'Each pillar section opens with its cell: Charcoal, the 48 px pillar icon in one color, its '
@@ -636,8 +654,9 @@ R['20.6'] = {
               ('Trackers', 'Six circles at 24 px, 60 px apart, 57 px on the 309 px card; steps drawn only from the record'),
               ('The step', 'The take-part mark on step 3 of the rule, “You can take part now.” in bold, the deadline and '
                            'a text link at least 44 px tall'),
-              ('The atlas', 'Its questions on a Charcoal panel, first in the section at every width, and chart S10 whole '
-                            'with its source line'),
+              ('The atlas', 'Its title bar on Charcoal, the section’s one dark panel; its questions on Newsprint, first '
+                            'at every width; and chart S10, the atlas’s claims by evidence grade, whole with its source '
+                            'line'),
               ('Title', '“Oath & Action | A country that answers to its people.”')],
     'builders': ['Choose the four pieces by pillar, then check that the Act card’s step is still open on the day the page '
                  'goes up.'],
@@ -647,14 +666,15 @@ R['20.6'] = {
     'correct_alt': 'The home page at six sizes. Under the masthead, the pillar row on Charcoal, Explain, Track, Connect '
                    'and Act, with a card under each: an explainer on special districts, a tracker for H.R. 7008, a guide '
                    'to who sets an electric bill, and a step to comment on the FDA’s proposed rule on NAC, its step '
-                   'marked in red. Below, the atlas’s questions on Charcoal beside a chart, then the footer.',
+                   'marked in red. Below, the atlas’s title bar on Charcoal, its questions beside a chart, then the '
+                   'footer.',
     'failure_caption': '<strong>Fails Rule 20.6.</strong> The first screen opens on a slogan, so a reader learns nothing '
                        'they can use and finds no step to take.',
     'failure_alt': 'A desktop first screen with a Charcoal panel that reads Make your voice heard! and a Subscribe button, '
                    'and nothing else.',
     'fail_slogan': 'Make your voice heard!',
     'fail_button': 'Subscribe',
-    'fail_note': 'Our fifth edition’s line, which chapter 02 retires (W19)',
+    'fail_note': 'Our fifth edition’s line, which Rule 02.19 retires',
 }
 R['20.7'] = {
     'title': 'Build an article from its question to its step, with the chart whole in its column.',
@@ -664,28 +684,32 @@ R['20.7'] = {
              'The last section ends on a step the reader can take, and the last word carries ampersand B.'],
     'why': 'A reader who came with a question gets the answer in the headline and the evidence in the column they are '
            'already reading. Ending on a step tells them what to do with what they learned.',
-    'basis': 'Rules 01.21, 04.6, 07.3, 09.1 and 14.2; chapter 02’s W08; the counts from the Census Bureau’s 2022 Census '
-             'of Governments',
+    'basis': 'Rules 01.21, 02.8, 04.6, 07.3, 09.1 and 14.2; the counts from the Census Bureau’s 2022 Census of '
+             'Governments',
     'specs': [('Pillar row', 'The 24 px row in the piece’s header, Explain bold and underlined, every icon in one color'),
               ('Headline', 'The title style, balanced: 110 px at 1440, 88.6 at 1,024 and 56 on phones'),
               ('Count panel', 'Charcoal, beside the intro from 64em and after it on phones: the figure in the figure '
                               'style, two lines on what it counts and the counts’ source line'),
               ('Body', 'Five of 12 columns at 1440 and seven at 1,024 (Rule 07.3)'),
-              ('Chart', 'S86 whole, six of 12 columns at 1440, each frame carrying only the drawing its width shows'),
-              ('Ending', 'The step, a link to another site with its mark, and B after the last word'),
+              ('Fact box', 'Charcoal, beside the Count section’s first paragraph from 64em and after it on phones, its '
+                           'source line under it on Newsprint'),
+              ('Chart', 'S86, the count of governments by type, whole, six of 12 columns at 1440, each frame carrying '
+                        'only the drawing its width shows'),
+              ('Ending', 'The step on a Charcoal box, across the content width from 64em with its words in the body’s '
+                         'columns: a link to another site with its mark, and B after the last word'),
               ('Title', '“What a special district does | Oath & Action”')],
     'builders': ['Write the step before you write the headline, then check that the last section still ends on it.'],
     'correct_caption': 'The article at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark '
                        'theme. The count panel is the first screen’s one dark panel.',
     'correct_alt': 'The article What a special district does at six sizes: the compact pillar row with Explain '
                    'underlined, the kicker, the headline, the intro beside a Charcoal panel reading 39,555, the byline, '
-                   'a section with chart S86, and a closing section that points to the Census Bureau’s report on each '
-                   'state, ending on ampersand B.',
-    'failure_caption': '<strong>Fails Rule 20.7.</strong> The article ends on a slogan, so a reader who wants to look up '
-                       'the districts where they live finishes with nowhere to go.',
+                   'a section with a Charcoal fact box and chart S86, and a closing section whose step, on a Charcoal '
+                   'box, points to the Census Bureau’s report on each state and ends on ampersand B.',
+    'failure_caption': '<strong>Fails Rule 20.7.</strong> The article ends on a slogan, so a reader who wants to see '
+                       'which districts their state has finishes with nowhere to go.',
     'failure_alt': 'The last lines of the article, ending on the line Put the promise to work. and ampersand B.',
     'fail_slogan': 'Put the promise to work.',
-    'fail_note': 'Our fifth edition’s closing headline, which chapter 02 retires (W08)',
+    'fail_note': 'Our fifth edition’s closing headline, which Rule 02.8 retires',
 }
 R['20.8'] = {
     'title': 'Build an Act page as a process piece that names who decides and by when, with one way to take part in red.',
@@ -695,7 +719,7 @@ R['20.8'] = {
              'guards, at the length the record holds, and takes no side.',
              'After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read '
              'other comments, and gives the ask again. The ask is a red link to the comment page that names the action '
-             'and the place, with the docket number beside it, and every fact carries the day we checked it.'],
+             'and the place, with the docket number beside it, and the page says the day we checked its facts.'],
     'why': 'A reader of any view can use the page, because it tells them how to be heard and leaves what to say to them. '
            'Naming the place in the link tells a reader they are leaving our site before they press it.',
     'basis': 'Rules 01.22, 04.4, 11.4, 11.6, 11.9 and 11.15; the docket as the Federal Register and govinfo.gov printed '
@@ -705,10 +729,15 @@ R['20.8'] = {
                           'in the section style, the intro and “Checked November 21, 2026”'),
               ('Status panel', 'Charcoal, beside the opening from 64em: the rule’s six steps down the panel, 28 px '
                                'circles, step 3 with the take-part mark, and under it the deadline and the ask'),
-              ('Summary panel', 'Charcoal: the agency’s summary word for word in the quotation style, with its citation'),
-              ('Who decides', 'One paragraph and chart S66 whole with its source line'),
+              ('Document strip', 'Charcoal, across the content width from 64em, the section’s one dark panel: the '
+                                 'agency, the docket, the citation and the date of the proposed rule'),
+              ('Summary', 'On Newsprint under the strip: the agency’s summary word for word in the quotation style, a '
+                          '2 px line at its left and its citation under it'),
+              ('Who decides', 'One paragraph and chart S66, the steps of federal rule making, whole with its source '
+                              'line'),
               ('Hinge divider', 'Before the steps to comment (Rule 04.4)'),
-              ('The ask', 'A link that names the action and the place, “Comment at Regulations.gov”, on one line, White '
+              ('The ask', 'A link that names the action and the place, “Comment at Regulations.gov”, on one line where '
+                          'its panel gives it 304 px and in two phrases where it does not, as on phones, White '
                           'on Pillar Red in the ask style, 48 px tall at least, with the mark for another site and '
                           '“(another site)” for screen readers; on Charcoal, so it needs no keyline; the docket number '
                           'in the panel’s label above it'),
@@ -722,9 +751,9 @@ R['20.8'] = {
                        'again after the instructions.',
     'correct_alt': 'The Act page at six sizes: the compact pillar row with Act underlined, the kicker Act, How to take '
                    'part, the headline How to comment on the FDA’s proposed rule on NAC, and a Charcoal panel of six '
-                   'steps with step 3, Comments open, marked in red and a red link under it; then the FDA’s summary on '
-                   'Charcoal, chart S66, the hinge divider, the steps to comment, a Charcoal panel with the deadline and '
-                   'the red link again, and the rule’s facts.',
+                   'steps with step 3, Comments open, marked in red and a red link under it; then a Charcoal strip '
+                   'naming the proposed rule with the FDA’s summary under it, chart S66, the hinge divider, the steps '
+                   'to comment, a Charcoal panel with the deadline and the red link again, and the rule’s facts.',
     'failure_caption': '<strong>Fails Rule 20.8.</strong> “Take action” names no place, so a reader cannot tell where '
                        'the link leads or that it leaves our site.',
     'failure_alt': 'A Charcoal panel with the docket number and the deadline, and a red button that reads Take action.',
@@ -746,10 +775,10 @@ R['20.9'] = {
               ('Sections', 'Marked in the markup, the footer its own'),
               ('A pixel', 'Counts as a color within 3 levels on each channel, or 24 for red'),
               ('Panels', 'Charcoal or Prussian, counted in the section where the panel’s top falls'),
-              ('Dark frames', 'Shares printed; the red limit judged')],
+              ('Dark frames', 'Shares printed for the record; only the red limit is judged')],
     'builders': ['Run the measure on every light frame before a page goes up, and move a panel before you add one.'],
     'correct_caption': 'Every first and opening screen of the three pages at 1440 px in the light theme, measured on the '
-                       'kit’s captures.',
+                       'application kit’s captures.',
     'correct_alt': 'Small boxes, one for each first and opening screen of the home page, the article and the Act page at '
                    '1440 px, each with its Charcoal panel drawn in place and its measured Newsprint, dark and red shares '
                    'beside it.',
@@ -763,7 +792,7 @@ R['20.9'] = {
     'page_words': {'A06': 'Home page', 'A07': 'Article', 'A08': 'Act page'},
     'section_words': {'Explain': 'Explain', 'Track': 'Track', 'Connect': 'Connect', 'Act': 'Act',
                       'Atlas': 'Who Do They Answer To?', 'Count': 'How the Census Bureau counts them',
-                      'Step': 'Find the districts where you live', 'Proposal': 'What the FDA proposes',
+                      'Step': 'See which districts your state has', 'Proposal': 'What the FDA proposes',
                       'Comment': 'How to send a comment', 'Footer': 'footer'},
     'fail_value': '88.2',
     'fail_label': 'Studio sample article, 1440 px, first screen',
@@ -824,7 +853,7 @@ R['20.11'] = {
 }
 EXTRA_FILES = {
     'label': 'The pages and their files',
-    'caption': 'Every page this chapter shows, as a file in our exports, by the studio’s file names.',
+    'caption': 'Each page, preview and icon this chapter shows, as a file in our exports, with its size.',
     'head': ['Application', 'File', 'Size'],
     'alt': 'A table of the chapter’s export files: each application, its file name and its pixel size.',
     'apps': {'A04': 'Masthead and menu', 'A05': 'Footer', 'A06': 'Home page', 'A07': 'Article page', 'A08': 'Act page',

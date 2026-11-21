@@ -210,11 +210,11 @@ def check_printed(printed):
 # listed with the one that states the criterion most fully first.
 MAP = {
     '1.1.1': ('met', ['19.2', '10.6', '11.13', '18.23'], 'Charts and atlas drawings add their table and reading guide in chapters 14 and 15.'),
-    '1.2.1': ('gap', [], 'Chapters 16 and 23, with audio and video.'),
-    '1.2.2': ('gap', [], 'Chapters 16 and 23, with video.'),
-    '1.2.3': ('gap', [], 'Chapters 16 and 23, with video.'),
+    '1.2.1': ('met', ['16.12'], 'Every video publishes a transcript that also says what the screen shows. No product publishes sound alone today.'),  # chat 11: chapter 16's own WCAG rows
+    '1.2.2': ('met', ['16.11'], ''),  # chat 11: chapter 16's own WCAG rows
+    '1.2.3': ('met', ['16.12'], ''),  # chat 11
     '1.2.4': ('none', [], 'No product streams live today; chapter 23 if one does.'),
-    '1.2.5': ('gap', [], 'Chapters 16 and 23, with video.'),
+    '1.2.5': ('met', ['16.12'], ''),  # chat 11
     '1.3.1': ('part', ['18.10', '18.3', '18.17', '18.6', '18.7', '11.5'], 'Tables, forms, lists, landmarks and the current place keep their structure in markup; chapter 20 owes the headings of a whole page.'),
     '1.3.2': ('part', ['18.22', '18.6'], 'Components keep their order; chapter 20 owes the reading order of a whole page.'),
     '1.3.3': ('met', ['19.3'], ''),
@@ -236,7 +236,7 @@ MAP = {
     '2.2.2': ('met', ['17.3', '17.4', '18.22'], ''),
     '2.3.1': ('part', ['17.1', '17.3'], 'Motion plays only on request; chapter 23 owes the flash test for video.'),
     '2.4.1': ('met', ['18.5', '18.6'], ''),
-    '2.4.2': ('gap', [], 'Chapter 20, with each web page. This guide’s own page has a title.'),
+    '2.4.2': ('met', ['20.4'], ''),  # chat 11: Rule 20.4
     '2.4.3': ('part', ['18.6', '18.16', '18.17', '18.21', '18.22', '18.23'], 'Each component says where focus goes; chapter 20 owes the focus order of a whole page.'),
     '2.4.4': ('met', ['18.5', '18.14', '11.15'], ''),
     '2.4.5': ('part', ['18.15', '18.7'], 'Search and location lists; chapter 20 owes the ways around a whole site.'),
@@ -249,13 +249,13 @@ MAP = {
     '2.5.4': ('met', ['19.5'], ''),
     '2.5.7': ('met', ['19.5'], ''),
     '2.5.8': ('met', ['11.7', '18.1'], 'Every rule of chapter 18 gives its target size.'),
-    '3.1.1': ('gap', [], 'Chapter 20, with each web page. This guide’s own page sets its language.'),
-    '3.1.2': ('gap', [], 'Chapters 02 and 20, for a passage in another language.'),
+    '3.1.1': ('met', ['20.4'], ''),  # chat 11: Rule 20.4
+    '3.1.2': ('gap', [], 'Chapter 02 owes the writer’s rule for a passage in another language. Rule 20.4 already gives its markup.'),  # chat 11
     '3.2.1': ('part', ['18.3', '18.9'], 'No component changes the page on focus; chapter 20 owes the rule for a whole page.'),
     '3.2.2': ('met', ['18.3', '18.4', '18.16'], ''),
     '3.2.3': ('met', ['18.6', '18.4'], ''),
     '3.2.4': ('met', ['11.14', '17.10', '18.22'], ''),
-    '3.2.6': ('gap', [], 'Chapter 20, which places help in the same spot on every page.'),
+    '3.2.6': ('met', ['20.3'], ''),  # chat 11: Rule 20.3
     '3.3.1': ('met', ['18.17', '11.17'], ''),
     '3.3.2': ('met', ['18.17', '18.15'], ''),
     '3.3.3': ('met', ['18.17', '11.17'], ''),
@@ -267,8 +267,7 @@ MAP = {
 }
 STATUS_WORD = {'met': 'Met', 'part': 'Met in part', 'gap': 'Gap', 'none': 'Not used today'}
 # The chapters that owe each gap, and what no product does today, for Rule 19.1's specifications
-GAP_OWNERS = {'1.2.1': ['16', '23'], '1.2.2': ['16', '23'], '1.2.3': ['16', '23'], '1.2.5': ['16', '23'], '2.4.2': ['20'],
-              '3.1.1': ['20'], '3.1.2': ['02', '20'], '3.2.6': ['20'], '3.3.4': ['18']}
+GAP_OWNERS = {'3.1.2': ['02'], '3.3.4': ['18']}  # chat 11: 1.2.1 to 1.2.5 met by chapter 16, 2.4.2, 3.1.1 and 3.2.6 by chapter 20
 NONE_WHAT = {'1.2.4': 'live captions', '1.4.2': 'sound that plays itself', '2.2.1': 'time limits',
              '3.3.7': 'forms of more than one step', '3.3.8': 'sign-in'}
 

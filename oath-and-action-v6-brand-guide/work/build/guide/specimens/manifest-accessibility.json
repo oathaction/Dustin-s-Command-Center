@@ -131,7 +131,7 @@
   "chapter": "19",
   "rule": "19.1",
   "width_px": null,
-  "alt": "A searchable list of the 55 WCAG 2.2 success criteria at levels A and AA, in W3C’s words. Each entry gives the number, the name, the level, a tag for the six new in 2.2, the criterion’s words, and how this guide meets it: 33 are met by a rule, 8 in part, 9 are gaps with the chapter that owes each, and 5 govern things no product does today. A search field and a choice of All, Met, Met in part, Gaps or Not used today narrow the list, and a status line says how many show. A last line says 4.1.1 Parsing was removed in WCAG 2.2.",
+  "alt": "A searchable list of the 55 WCAG 2.2 success criteria at levels A and AA, in W3C’s words. Each entry gives the number, the name, the level, a tag for the six new in 2.2, the criterion’s words, and how this guide meets it: 40 are met by a rule, 8 in part, 2 are gaps with the chapter that owes each, and 5 govern things no product does today. A search field and a choice of All, Met, Met in part, Gaps or Not used today narrow the list, and a status line says how many show. A last line says 4.1.1 Parsing was removed in WCAG 2.2.",
   "illustrative": false,
   "notes": "Live: search and a radio choice filter the list; the count goes to a polite status line (Rule 18.15).",
   "interactive": true
@@ -158,7 +158,7 @@
   "chapter": "19",
   "rule": null,
   "width_px": null,
-  "alt": "Where this guide stands on WCAG 2.2’s 55 criteria at levels A and AA: 33 met, where a rule states what the criterion asks; 8 met in part; 9 gaps, each with the chapter that owes it; and 5 not used today, since no product does what they cover yet.",
+  "alt": "Where this guide stands on WCAG 2.2’s 55 criteria at levels A and AA: 40 met, where a rule states what the criterion asks; 8 met in part; 2 gaps, each with the chapter that owes it; and 5 not used today, since no product does what they cover yet.",
   "illustrative": false,
   "notes": "Chapter 19’s opener (CD-S18, D2-1550): the counts from Rule 19.1’s map, as a picture that flows with the column at true size."
  },

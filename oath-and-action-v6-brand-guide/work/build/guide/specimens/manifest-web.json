@@ -75,7 +75,7 @@
   "chapter": "20",
   "rule": "20.3",
   "width_px": null,
-  "alt": "Five footers on Charcoal: four link groups, Our work, The atlas, Oath & Action and Help, then a line with the lockmark, the tagline and the web address with its Illustrative label. On the phones the groups sit two by two.",
+  "alt": "Five footers. Each shows four link groups, Our work, The atlas, Oath & Action and Help, then a Charcoal strip with the lockmark, the tagline and the web address with its Illustrative label. On the phones the groups sit two by two.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A05): the footer at five views.",
   "readable": true
@@ -111,7 +111,7 @@
   "chapter": "20",
   "rule": "20.5",
   "width_px": null,
-  "alt": "Two phone screens of the home page side by side, light and dark. Each shows the wordmark and Menu, then the Explain cell on Charcoal and the explainer under it; on the dark screen a thin edge outlines the Charcoal cell.",
+  "alt": "Two phone screens of the home page side by side, light and dark. Each shows the wordmark and Menu, then the Explain cell on Charcoal and the explainer under it; on the dark screen thin lines above and below set off the Charcoal cell.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A06): the home page’s first screen at 390 px in both themes.",
   "readable": true
@@ -130,7 +130,7 @@
   "chapter": "20",
   "rule": "20.6",
   "width_px": null,
-  "alt": "The home page at six sizes. Under the masthead, the pillar row on Charcoal, Explain, Track, Connect and Act, with a card under each: an explainer on special districts, a tracker for H.R. 7008, a guide to who sets an electric bill, and a step to comment on the FDA’s proposed rule on NAC, its step marked in red. Below, the atlas’s questions on Charcoal beside a chart, then the footer.",
+  "alt": "The home page at six sizes. Under the masthead, the pillar row on Charcoal, Explain, Track, Connect and Act, with a card under each: an explainer on special districts, a tracker for H.R. 7008, a guide to who sets an electric bill, and a step to comment on the FDA’s proposed rule on NAC, its step marked in red. Below, the atlas’s title bar on Charcoal, its questions beside a chart, then the footer.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A06): six views.",
   "readable": true
@@ -148,7 +148,7 @@
   "chapter": "20",
   "rule": "20.7",
   "width_px": null,
-  "alt": "The article What a special district does at six sizes: the compact pillar row with Explain underlined, the kicker, the headline, the intro beside a Charcoal panel reading 39,555, the byline, a section with chart S86, and a closing section that points to the Census Bureau’s report on each state, ending on ampersand B.",
+  "alt": "The article What a special district does at six sizes: the compact pillar row with Explain underlined, the kicker, the headline, the intro beside a Charcoal panel reading 39,555, the byline, a section with a Charcoal fact box and chart S86, and a closing section whose step, on a Charcoal box, points to the Census Bureau’s report on each state and ends on ampersand B.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A07): six views.",
   "readable": true
@@ -166,7 +166,7 @@
   "chapter": "20",
   "rule": "20.8",
   "width_px": null,
-  "alt": "The Act page at six sizes: the compact pillar row with Act underlined, the kicker Act, How to take part, the headline How to comment on the FDA’s proposed rule on NAC, and a Charcoal panel of six steps with step 3, Comments open, marked in red and a red link under it; then the FDA’s summary on Charcoal, chart S66, the hinge divider, the steps to comment, a Charcoal panel with the deadline and the red link again, and the rule’s facts.",
+  "alt": "The Act page at six sizes: the compact pillar row with Act underlined, the kicker Act, How to take part, the headline How to comment on the FDA’s proposed rule on NAC, and a Charcoal panel of six steps with step 3, Comments open, marked in red and a red link under it; then a Charcoal strip naming the proposed rule with the FDA’s summary under it, chart S66, the hinge divider, the steps to comment, a Charcoal panel with the deadline and the red link again, and the rule’s facts.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A08): six views.",
   "readable": true
