@@ -60,6 +60,9 @@ import weight_pass  # noqa: E402   Phase 3 weight pass: CSS white space and PNG 
 # Chat 10 (P4-5): the photographs the page carries once, which any plate shows by name (contract C1, engineer notes)
 sys.path.insert(0, str(ROOT / "work/build/scripts/phase-4"))
 import guide_photos  # noqa: E402
+# Chat 11 (contract C4): the application kit's plates, placed by the hook in the kit's own folder
+sys.path.insert(0, str(ROOT / "work/build/app-kit/tools"))
+import app_plates  # noqa: E402
 GUIDE = ROOT / "work/build/guide"
 SHELL = GUIDE / "shell"
 TOKENS_CSS = ROOT / "work/build/tokens/tokens.css"
@@ -657,9 +660,16 @@ def process_fragment(src, sid, where, literal_ok=False):
         heads = re.findall(r"<style\b.*?</style>", re.search(r"<head\b.*?</head>", s, re.S | re.I).group(0), re.S | re.I) if re.search(r"<head\b", s, re.I) else []
         s = "".join(heads) + (m.group(1) if m else "")
     s = re.sub(r"<!doctype[^>]*>", "", s, flags=re.I)
-    # heading rule: no h1 to h6 inside a specimen (map section 5); the one plate in HEADING_PLATES holds its own level only
+    # Chat 11 (contract C4): a placeholder <div data-oa-app="A05"> becomes the frames the application kit drew; only the hook
+    # writes a page frame, so a specimen that carries one in its own file is a fault
+    if app_plates.raw_frames(s):
+        R.warn(where, f"{sid}: carries the application kit's page frame markup (data-oa-page-frame) in its own file; ask for the "
+                      "application with <div data-oa-app=\"A..\"></div> and the build places the kit's frames (contract C4)")
+    s = app_plates.expand(s, sid, lambda m: R.warn(where, m))
+    # heading rule: no h1 to h6 inside a specimen (map section 5); the one plate in HEADING_PLATES holds its own level only.
+    # Chat 11 (contract C4): a page's own headings inside the kit's page frames, inert and hidden, are allowed
     allowed = HEADING_PLATES.get(sid, {}).get("fragment")
-    hs = [h for h in re.findall(r"<h([1-6])\b", s, re.I) if int(h) != allowed]
+    hs = [h for h in re.findall(r"<h([1-6])\b", app_plates.outside_frames(s), re.I) if int(h) != allowed]
     if hs:
         R.warn(where, f"{sid}: {len(hs)} heading element(s) inside the specimen; use styled text (heading rule)"
                       + (f"; this plate holds h{allowed} headings only (board 3, reply 8)" if allowed else ""))
@@ -1125,7 +1135,11 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
             # DR-97 kept: where the alt lacks only the picture's own Illustrative label, it leads with "Illustrative." and the
             # stage is hidden; otherwise the alt stays as its maker wrote it.
             the_alt = alt or (lab or "Specimen")
-            control = PICTURE_CONTROL.search(re.sub(r"<(style|script)\b.*?</\1>", "", body, flags=re.S | re.I))
+            # chat 11 (contract C4): a page plate is a group of named pictures, never one image around them
+            if app_plates.frames_in(body):
+                R.warn(where, f"{spec_id}: holds the application kit's page frames; set \"readable\": true in its manifest entry, so "
+                              "the stage is a group and each frame an image named by its own alt (contract C4)")
+            control = PICTURE_CONTROL.search(re.sub(r"<(style|script)\b.*?</\1>", "", app_plates.outside_frames(body), flags=re.S | re.I))
             if control:
                 R.warn(where, f"{spec_id}: an image stage holds a link, button, field or tab stop, which a role=\"img\" box takes "
                               "from a screen reader; mark it interactive or readable in its manifest")
@@ -3438,6 +3452,12 @@ def weigh(page, sprite_bytes):
         if geo:
             parts["map geometry"] = geo
         parts["head and shell"] -= sum(size(m.group(0)) for m in guide_charts.KIT_RE.finditer(page[:page.find("<body")]))
+    # Chat 11 (contract C4): the application kit's style for each renderer type sits once in the head and weighs against the
+    # chapter whose section first draws a frame of that type (the frames' own style, against the first frame's chapter)
+    app_kit = {}
+    for m in app_plates.STYLE_RE.finditer(page[:page.find("<body")]):
+        app_kit[m.group(1)] = {"bytes": size(m.group(0)), "chapter": None}
+        parts["head and shell"] -= size(m.group(0))
     marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
     end = page.find("</main>")
     anchors = {a: n for n, a, *_ in CHAPTERS}
@@ -3445,6 +3465,13 @@ def weigh(page, sprite_bytes):
     for (start, kind, anchor), nxt in zip(marks, [m[0] for m in marks[1:]] + [end]):
         b = size(page[start:nxt])
         if kind == "chapter" and anchor in anchors:
+            for t, rec in app_kit.items():
+                first = page.find('data-oa-page-frame=' if t == "plate" else f'data-oa-app-type="{t}"', start, nxt)
+                if rec["chapter"] is None and first >= 0:
+                    rec["chapter"] = anchors[anchor]
+                    b += rec["bytes"]
+                    R.note(f"application kit: its {t} style, {rec['bytes']:,} bytes in the head, weighs in chapter {anchors[anchor]}, "
+                           "the first to draw it (contract C4)")
             chapters[anchors[anchor]] = b
         elif kind == "appendix":
             parts["appendix"] = parts.get("appendix", 0) + b
@@ -3469,12 +3496,15 @@ def weigh(page, sprite_bytes):
             "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, guide_charts.ALLOCATION[n] if n in guide_charts.PHASE_4
                                                                             else WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())},
             # call 4 (Phase 3 round 1 fix pass): chapter 14's rules with the opener, and its sketch entries whole
-            "chapter_14_parts": guide_charts.chapter14_parts(page)}
+            "chapter_14_parts": guide_charts.chapter14_parts(page),
+            # chat 11 (contract C4): the application kit's styles, each counted in the chapter named
+            "application_kit": app_kit}
 
 
 def build(args):
     PICTURES["hidden"].clear()
     PICTURES["open"].clear()
+    app_plates.reset(getattr(args, "app_plates", None))   # chat 11 (contract C4)
     chap_dir = Path(args.chapters).resolve() if args.chapters else GUIDE / "chapters"
     spec_dir = Path(args.specimens).resolve() if args.specimens else GUIDE / "specimens"
     out_path = Path(args.out).resolve() if args.out else DEFAULT_OUT
@@ -3748,6 +3778,10 @@ def build(args):
     sprites.check_res(page)
     page, sprite_bytes, sprite_counts = sprites.inject(page)
     page, photo_rec = place_photos(page)   # chat 10 (P4-5): each named photograph once, in the head
+    # chat 11 (contract C4): the application kit's style for each renderer type the page placed, once, in the head
+    app_styles = app_plates.head_styles()
+    if app_styles:
+        page = page.replace("</head>", app_styles + "\n</head>", 1)
     page, n_whole = keep_ids_whole(page)   # D2-975
     if tokens.final:
         unread = [n for n in unread if n not in sprites.parity(tokens)]
@@ -4588,6 +4622,59 @@ def self_test():
                     ("chapter 16 builds in place of its placeholder", lambda pg: re.search(r'<section class="chapter[^"]*" id="photography"', pg) is not None
                      and 'data-rule="16.1"' in pg)]}),
     ]
+    # Chat 11 (contract C4): a specimen asks for an application by id and the build places the kit's frames; a page's own
+    # headings and links inside those inert, hidden frames are allowed; a frame copied into a specimen's file, a plate older
+    # than its inputs, an unknown view, a heading outside the frames and a page plate left as one image all warn; the
+    # kit's style sits once in the head and weighs in the chapter that first draws a frame
+    import hashlib
+    tok_rel = "work/build/tokens/tokens.css"
+    tok_hash = hashlib.sha256((ROOT / tok_rel).read_bytes()).hexdigest()
+
+    def app_frame(app_id, key, w, h):
+        return (f'<div class="oa-app-frame" data-oa-page-frame="{app_id} {key}" data-oa-app-type="web-page" data-w="{w}" data-h="{h}">'
+                f'<svg class="oa-app-scale" viewBox="0 0 {w} {h}" role="img" aria-label="A fixture page at {w} px, on Newsprint.">'
+                f'<foreignObject x="0" y="0" width="{w}" height="{h}"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art" inert '
+                f'aria-hidden="true" data-oa-picture style="width:{w}px;height:{h}px"><div class="wa" id="{app_id.lower()}-{key}"><a href="#{app_id.lower()}-{key}-main">Skip</a>'
+                f'<main id="{app_id.lower()}-{key}-main"><h1>A page title</h1><h2>A section</h2><p>Words of the page.</p></main></div></div>'
+                f'</foreignObject></svg></div>')
+
+    def app_plate(app_id, stale=False):
+        return json.dumps({"id": app_id, "type": "web-page", "css": "web-page.css",
+                           "views": [{"key": k, "w": w, "h": h, "theme": "light", "alt": f"A fixture page at {w} px.", "html": app_frame(app_id, k, w, h)}
+                                     for k, w, h in (("1440-light", 1440, 900), ("390-light", 390, 1200))],
+                           "inputs": {tok_rel: "0" * 64 if stale else tok_hash}})
+    app_specs = {"s-20-1-correct.html": '<p>The page at two widths.</p><div data-oa-app="A90" data-oa-app-views="390-light"></div>',
+                 "s-20-1-failure.html": '<div data-oa-app="A90"></div>',
+                 "s-20-2-correct.html": app_frame("A90", "390-light", 390, 1200),
+                 "s-20-2-failure.html": '<h2>A loose heading</h2><div data-oa-app="A91"></div>',
+                 "s-20-3-correct.html": '<div data-oa-app="A90" data-oa-app-views="768-light"></div>'}
+    app_man = {sid[:-5]: {"chapter": "20", "rule": f"20.{sid.split('-')[2]}", "alt": f"A web page fixture, {sid[:-5]}, at two widths.",
+                          "notes": "fixture", **({} if sid == "s-20-1-failure.html" else {"readable": True})} for sid in app_specs}
+    web20 = chapter("20", "web", "Web", [
+        rule("20.1", {"correct": {"specimen": "s-20-1-correct", "caption": "A fixture."}, "failure": {"specimen": "s-20-1-failure", "caption": "A fixture."}}),
+        rule("20.2", {"correct": {"specimen": "s-20-2-correct", "caption": "A fixture."}, "failure": {"specimen": "s-20-2-failure", "caption": "A fixture."}}),
+        rule("20.3", {"correct": {"specimen": "s-20-3-correct", "caption": "A fixture."}})], part="applications")
+    scenarios += [
+        ("chat 11: the application kit's page plates (contract C4): frames by id, their own headings allowed inside, the kit's style once",
+         {"20-web.json": web20}, {"specimens": app_specs, "manifest": app_man,
+                                  "plates": {"a90.json": app_plate("A90"), "a91.json": app_plate("A91", stale=True), "web-page.css": ".wa{display:block}"}},
+         {"warn": ["s-20-1-failure: holds the application kit's page frames; set \"readable\": true",
+                   "s-20-2-correct: carries the application kit's page frame markup",
+                   "s-20-2-failure: 1 heading element(s) inside the specimen",
+                   "s-20-2-failure: the kit's plate A91 is older than 1 of its inputs (work/build/tokens/tokens.css)",
+                   "s-20-3-correct: A90 has no view 768-light"],
+          "absent": ["s-20-1-correct:", "s-20-1-failure: 1 heading", "s-20-1-failure: 2 heading", "s-20-1-failure: an image stage holds a link",
+                     "s-20-2-failure: 2 heading", "s-20-2-failure: 3 heading"],
+          "note": ["application kit: its web-page style", "weighs in chapter 20, the first to draw it"],
+          "tests": [("the kit's style for each type sits once in the head, with the frames' own", lambda pg: pg.count('<style data-oa-app-kit="web-page">') == 1
+                     and pg.count('<style data-oa-app-kit="plate">') == 1 and pg.find('data-oa-app-kit="web-page"') < pg.find("</head>")),
+                    ("a placeholder becomes the chosen frame in a row, at its true width's share", lambda pg: re.search(
+                        r'<div class="oa-app-row" data-oa-app="A90"><div class="oa-app-frame" style="flex:390 1 0;max-width:390px" data-oa-page-frame="A90 390-light"', pg) is not None),
+                    ("the frame's page stays inert and hidden, its ids prefixed by the specimen", lambda pg: re.search(
+                        r'class="oa-app-art" inert aria-hidden="true" data-oa-picture[^>]*><div class="wa" id="s-20-1-correct--a90-390-light"><a href="#s-20-1-correct--a90-390-light-main"', pg) is not None),
+                    ("the readable page plate is a group, the frame one image inside it", lambda pg: re.search(
+                        r'data-specimen="s-20-1-correct"[^>]*role="group"', pg) is not None)]}),
+    ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
         roots = {k: Path(tmp) / f"families-{k}" for k in ("full", "faulty", "fits")}
@@ -4608,6 +4695,10 @@ def self_test():
                 (base / "code").mkdir()
                 for fn, text in extra["code"].items():
                     (base / "code" / fn).write_text(text)
+            # chat 11 (contract C4): the scenario's own application kit plates, or an empty folder
+            (base / "plates").mkdir()
+            for fn, text in (extra.get("plates") or {}).items():
+                (base / "plates" / fn).write_text(text)
             R = Report()
             LEGACY_FILE = extra.get("legacy", kept_legacy)
             SPRITE_ROOT = roots[extra.get("sprites", "full")]
@@ -4615,7 +4706,7 @@ def self_test():
             out = base / "page.html"
             try:
                 build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
-                                         code=str(base / "code"), demo=False, strict=False, quiet=True))
+                                         code=str(base / "code"), demo=False, strict=False, quiet=True, app_plates=str(base / "plates")))
             finally:
                 LEGACY_FILE, SPRITE_ROOT, CONSTRUCTION = kept_legacy, kept_root, kept_list
             warns = [f"[{w['where']}] {w['message']}" for w in R.warnings]
@@ -4816,6 +4907,7 @@ def main():
     ap.add_argument("--pilot", help="Phase 3: a folder whose chapters/ and specimens/ join the page (the drawing-method pilot)")
     ap.add_argument("--no-weight-pass", action="store_true", help="Phase 3: build without the weight pass, to compare (it changes no pixel)")
     ap.add_argument("--chart-method", choices=guide_charts.METHODS, help=f"Phase 3: how charts are drawn (default {guide_charts.DEFAULT_METHOD})")
+    ap.add_argument("--app-plates", help="chat 11: the folder of the application kit's plates (default work/build/app-kit/plates)")
     args = ap.parse_args()
     if args.sprite_root:
         global SPRITE_ROOT

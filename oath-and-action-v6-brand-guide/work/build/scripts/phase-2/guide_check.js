@@ -130,6 +130,12 @@
 //   chartEdges         every chart kit drawing (figure.oac-fig svg.oac-svg, every one drawn first) and every chapter 14
 //                      sketch (svg.oac-sketch) holds each shape it paints inside its own box, within 1.5 px: a drawing's
 //                      overflow is visible, so a shape outside it paints over the figure's words (CD RM1, K-S2)
+// Added in chat 11 (November 21, 2026, contract C4):
+//   pageFrame          every application kit page frame ([data-oa-page-frame]) is a picture of a working page: an SVG named
+//                      by an alt of 15 characters or more (role="img"), its page markup in one .oa-app-art that is inert,
+//                      aria-hidden="true" and data-oa-picture, inside a stage that is a group, never an image stage. Inside
+//                      such a frame alone, a page's own headings and landmarks are allowed (specimenHeadings,
+//                      specimenLandmarks), and typeScale reads its words against the type tokens at the frame's own width
 // Added in chat 10 (November 21, 2026, P4-5):
 //   photoDrawn         every photograph request (<img data-oa-photo>, no src) draws the one copy of its photograph the
 //                      page carries in <style id="oa-photos"> (its computed content is the image)
@@ -225,6 +231,10 @@ function audit(page) {
     // ---------------- structure
     // board 3, reply 8: a heading inside the one heading plate is a page heading, so it joins the order test
     const headingPlate = (h) => { const sp = h.closest('[data-specimen]'); return !!sp && HEADING_PLATES.includes(sp.getAttribute('data-specimen')); };
+    // chat 11 (contract C4): inside an application kit page frame whose page is inert and hidden, as the kit writes it, a
+    // page's own headings and landmarks never reach the guide's outline or landmark list, so they are allowed there alone
+    const inPageFrame = (el) => { const art = el.closest('.oa-app-art'); const f = art && art.closest('[data-oa-page-frame]');
+      return !!f && art.hasAttribute('inert') && art.getAttribute('aria-hidden') === 'true' && !!art.closest('svg[role="img"]') && f.contains(art); };
     const hs = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6,[role="heading"]')]
       .filter((h) => !h.closest('dialog:not([open])') && !h.closest('[aria-hidden="true"]') && (!h.closest('[data-specimen]') || headingPlate(h)) && visible(h));
     const lvl = (h) => h.getAttribute('role') === 'heading' ? parseInt(h.getAttribute('aria-level') || '2', 10) : parseInt(h.tagName[1], 10);
@@ -236,7 +246,7 @@ function audit(page) {
       else if (i > 0 && l > prev + 1) st.skips.push({ text: norm(h.textContent).slice(0, 50), from: prev, to: l });
       prev = l;
     });
-    document.querySelectorAll('[data-specimen] :is(h1,h2,h3,h4,h5,h6,[role="heading"])').forEach((h) => { if (!headingPlate(h)) st.inSpecimen.push({ specimen: h.closest('[data-specimen]').getAttribute('data-specimen'), text: norm(h.textContent).slice(0, 40) }); });
+    document.querySelectorAll('[data-specimen] :is(h1,h2,h3,h4,h5,h6,[role="heading"])').forEach((h) => { if (!headingPlate(h) && !inPageFrame(h)) st.inSpecimen.push({ specimen: h.closest('[data-specimen]').getAttribute('data-specimen'), text: norm(h.textContent).slice(0, 40) }); });
     document.querySelectorAll('section.chapter').forEach((sec) => {
       const num = sec.getAttribute('data-chapter');
       sec.querySelectorAll('h3').forEach((h) => {
@@ -365,9 +375,27 @@ function audit(page) {
     const LANDMARK = 'nav, article, header, footer, main, aside, section[aria-label], section[aria-labelledby], form[aria-label], form[aria-labelledby], '
       + ['banner', 'complementary', 'contentinfo', 'form', 'main', 'navigation', 'region', 'search', 'article', 'feed'].map((r) => `[role~="${r}"]`).join(', ');
     document.querySelectorAll('[data-specimen]').forEach((s) => {
-      s.querySelectorAll(LANDMARK).forEach((el) => sp.landmarks.push({ specimen: s.getAttribute('data-specimen'), element: el.tagName.toLowerCase() + (el.getAttribute('role') ? `[role=${el.getAttribute('role')}]` : '') }));
+      s.querySelectorAll(LANDMARK).forEach((el) => !inPageFrame(el) && sp.landmarks.push({ specimen: s.getAttribute('data-specimen'), element: el.tagName.toLowerCase() + (el.getAttribute('role') ? `[role=${el.getAttribute('role')}]` : '') }));
     });
     out.specimens = sp;
+    // chat 11 (contract C4): each page frame as the kit writes it
+    sp.pageFrames = 0; sp.pageFrameBad = [];
+    document.querySelectorAll('[data-oa-page-frame]').forEach((f) => {
+      sp.pageFrames++;
+      const svg = f.querySelector(':scope > svg.oa-app-scale'), art = svg && svg.querySelector('foreignObject > .oa-app-art');
+      const stage = f.closest('[data-specimen]');
+      const why = [];
+      if (!stage) why.push('outside a specimen');
+      else if (stage.getAttribute('role') === 'img') why.push('inside an image stage (set "readable": true)');
+      if (!svg || svg.getAttribute('role') !== 'img' || norm(svg.getAttribute('aria-label')).length < 15) why.push('its picture is not named by an alt of 15 characters or more');
+      if (!art) why.push('no .oa-app-art inside its foreignObject');
+      else {
+        if (!art.hasAttribute('inert')) why.push('its page is not inert');
+        if (art.getAttribute('aria-hidden') !== 'true') why.push('its page is not hidden from the accessibility tree');
+        if (!art.hasAttribute('data-oa-picture')) why.push('its page lacks data-oa-picture, so the text check would skip it');
+      }
+      if (why.length) sp.pageFrameBad.push({ frame: f.getAttribute('data-oa-page-frame'), specimen: stage && stage.getAttribute('data-specimen'), why });
+    });
 
     // ---------------- accessible names: no entity text (AX-M2, RP-M4)
     const ENT = /&(?:[a-z][a-z0-9]{1,31}|#\d+|#x[0-9a-f]+);/i;
@@ -408,6 +436,19 @@ function audit(page) {
       let allowed = w === null ? [...SCALE_FLOOR, ...SCALE_CEIL, ...fluid] : w <= 600 ? SCALE_FLOOR : w >= 1200 ? SCALE_CEIL : [...SCALE_FLOOR, ...SCALE_CEIL];
       allowed = allowed.concat(chart);
       const ok = (size) => allowed.some((a) => Math.abs(size - a) <= 0.3 || (sc !== 1 && Math.abs(size / sc - a) <= 0.3 / sc));
+      // chat 11 (contract C4): a page frame's words take the type tokens as they compute at the frame's own width, read by
+      // a probe inside the frame's page (its fluid sizes are restated there in cqi)
+      const frameSizes = new Map();
+      const sizesIn = (art) => {
+        if (!frameSizes.has(art)) {
+          const host = art.firstElementChild || art;
+          const pr = document.createElement('span'); pr.textContent = 'x'; pr.style.position = 'absolute'; pr.style.visibility = 'hidden';
+          (host.firstElementChild || host).append(pr);
+          frameSizes.set(art, TYPE_STYLES.map((st) => { pr.style.fontSize = `var(--oa-type-${st}-font-size)`; return parseFloat(getComputedStyle(pr).fontSize); }).filter((x) => x > 0));
+          pr.remove();
+        }
+        return frameSizes.get(art);
+      };
       const offHere = new Map();
       stage.querySelectorAll('*').forEach((el) => {
         if (['SCRIPT', 'STYLE', 'TITLE', 'DESC', 'DEFS', 'OPTION'].includes(el.tagName.toUpperCase()) || el.closest('title,desc,defs,.vh')) return;
@@ -416,7 +457,8 @@ function audit(page) {
         const r = el.getBoundingClientRect(); if (r.width <= 1 && r.height <= 1) return;
         let size = parseFloat(getComputedStyle(el).fontSize);
         if (el instanceof SVGElement) { const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; if (vb && vb.width) size = +(size * s.getBoundingClientRect().width / vb.width).toFixed(2); }
-        if (!ok(size)) { const k = +size.toFixed(2); if (!offHere.has(k)) offHere.set(k, own.slice(0, 40)); }
+        const fart = el.closest('[data-oa-page-frame] .oa-app-art');
+        if (!ok(size) && !(fart && sizesIn(fart).some((a) => Math.abs(size - a) <= 0.3))) { const k = +size.toFixed(2); if (!offHere.has(k)) offHere.set(k, own.slice(0, 40)); }
       });
       if (offHere.size) ts.off.push({ specimen: id, width: w, scale: sc === 1 ? undefined : sc, sizes: [...offHere.keys()], sample: [...offHere.values()][0] });
     });
@@ -674,6 +716,7 @@ function failuresFrom(a, width) {
   if (sp.pictureAltShort.length) add('specimenPicture', `${sp.pictureAltShort.length} image stage(s) hidden behind an alt that lacks a word their picture holds, so a screen reader never hears it: ${sp.pictureAltShort.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureAltShort[0])}`);
   if (sp.pictureControl.length) add('specimenPicture', `${sp.pictureControl.length} image stage(s) whose hidden picture holds a control a keyboard still reaches: ${sp.pictureControl.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureControl[0])}`);
   if (sp.svgUnnamed.length) add('svgNames', `${sp.svgUnnamed.length} inline SVG(s) neither named nor hidden, first: ${JSON.stringify(sp.svgUnnamed[0])}`);
+  if (sp.pageFrameBad && sp.pageFrameBad.length) add('pageFrame', `${sp.pageFrameBad.length} of ${sp.pageFrames} application kit page frame(s) not as the kit writes them (contract C4), first: ${JSON.stringify(sp.pageFrameBad[0])}`);
   if (sp.landmarks.length) add('specimenLandmarks', `${sp.landmarks.length} landmark or article element(s) inside stages, in ${[...new Set(sp.landmarks.map((x) => x.specimen))].join(', ')}; first: ${JSON.stringify(sp.landmarks[0])}`);
   if (a.names.count) add('nameEntities', `${a.names.count} accessible name(s) or text(s) holding an entity, first: ${JSON.stringify(a.names.entities[0])}`);
   if (a.typeScale.off.length) add('typeScale', `${a.typeScale.off.length} specimen(s) with type off the D2-254 sizes: ${a.typeScale.off.map((x) => `${x.specimen} (${x.sizes.join(', ')} px)`).join('; ')}`);
@@ -2611,6 +2654,18 @@ const PLANTS = [
   { key: 'specimenHeadings', fault: 'an h4 inside a plate other than "Choose a chart"', js: () => { const h = document.createElement('h4'); h.textContent = 'Mockup headline'; document.querySelector('[data-specimen]:not([data-pending])').prepend(h); } },
   { key: 'headingOrder', fault: 'an h5 straight after "Choose a chart"\'s h3 label, inside the heading plate', js: headingPlant('skip') },
   { key: 'chapterH3', fault: 'a group head h3 outside its group block', js: headingPlant('looseGroupHead') },
+  // chat 11 (contract C4): the application kit's page frames: a page's own headings, landmarks and type at its own width are
+  // allowed inside a frame whose page is inert and hidden; the same page left open, a frame in an image stage, and a size
+  // off every token at the frame's width still fail
+  { key: 'specimenHeadings', expect: false, fault: 'a page\'s h1 and h2 inside an application kit page frame, inert and hidden (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'specimenLandmarks', expect: false, fault: 'a page\'s header, main and footer inside a page frame, inert and hidden (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'typeScale', expect: false, fault: 'a 1,024 px page frame\'s title at the title token\'s size for 1,024 px, 88.6 px (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'pageFrame', expect: false, fault: 'a page frame as the kit writes it, in a group stage (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'h1', expect: false, fault: 'a page\'s h1 inside a page frame leaves the guide one h1 (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'specimenHeadings', fault: 'a page\'s h1 inside a page frame whose page is not inert or hidden', js: pageFramePlant('open') },
+  { key: 'pageFrame', fault: 'a page frame whose page is not inert or hidden', js: pageFramePlant('open') },
+  { key: 'pageFrame', fault: 'a page frame inside an image stage', js: pageFramePlant('imageStage') },
+  { key: 'typeScale', fault: 'a 21.3 px line inside a page frame, off every token at its width', js: pageFramePlant('offScale') },
   { key: 'duplicateIds', fault: 'two elements with one id', js: () => { const p = document.createElement('p'); p.id = 'contents'; p.textContent = 'Duplicate'; document.querySelector('.chapter .ch-head').append(p); } },
   { key: 'brokenLinks', fault: 'a same-page link to no id', js: () => { const a = document.createElement('a'); a.href = '#nowhere'; a.textContent = 'Nowhere'; document.querySelector('.rule .why').append(a); } },
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
@@ -3013,6 +3068,25 @@ function sgPlant(variant) {
     + `<div class="sg">${first}<ol role="list">${body}</ol>${full}</div></div><div id="group-14-1"></div>`
     + forms.map((f) => `<div class="rule" id="rule-14-${n(f)}"></div>`).join('')
     + ['14.142', '14.143', '14.144', '15.22'].map((r) => `<div class="rule" id="rule-${r.replace('.', '-')}"></div>`).join('');
+  return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
+}
+
+// chat 11 (contract C4): a stage holding one application kit page frame at 1,024 px as the kit writes it, its fluid title
+// restated in cqi on the page's container (lib.fluid_cqi); variants leave the page open, put the frame in an image stage,
+// or add a line at a size no token takes
+function pageFramePlant(variant) {
+  const hidden = variant === 'open' ? '' : ' inert aria-hidden="true" data-oa-picture';
+  const role = variant === 'imageStage' ? 'role="img" aria-label="A web page fixture at 1,024 px, a picture."' : 'role="group" aria-label="A web page fixture, specimen"';
+  const off = variant === 'offScale' ? '<p style="font-size:21.3px;margin:0">A line at a size no token takes.</p>' : '';
+  const html = `<div class="plate-stage oa-surface-newsprint" data-specimen="s-demo-app" ${role}>`
+    + '<div class="oa-app-row" data-oa-app="A90"><div class="oa-app-frame" style="flex:1024 1 0;max-width:1024px" data-oa-page-frame="A90 1024-light" data-oa-app-type="web-page" data-w="1024" data-h="600">'
+    + '<svg class="oa-app-scale" viewBox="0 0 1024 600" role="img" aria-label="A fixture web page at 1,024 px, on Newsprint." style="display:block;width:100%;height:auto">'
+    + `<foreignObject x="0" y="0" width="1024" height="600"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art"${hidden} style="width:1024px;height:600px">`
+    + '<div class="wa" style="container:wa/inline-size;--oa-type-title-font-size:clamp(3.5rem, 2.2464rem + 5.1429cqi, 6.875rem);background:var(--oa-color-surface);color:var(--oa-color-text-primary)">'
+    + '<header><a href="#s-demo-app--main" style="font-size:17px">Home</a></header><main id="s-demo-app--main">'
+    + '<h1 style="font-size:var(--oa-type-title-font-size);line-height:1;margin:0">A page title</h1><h2 style="font-size:32px;margin:0">A section</h2>'
+    + `<p style="font-size:17px;margin:0">Words of the page.</p>${off}</main><footer><p style="font-size:15px;margin:0">A footer.</p></footer></div>`
+    + '</div></foreignObject></svg></div></div></div>';
   return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
 }
 
