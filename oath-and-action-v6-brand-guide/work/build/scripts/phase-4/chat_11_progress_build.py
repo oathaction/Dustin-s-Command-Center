@@ -555,7 +555,7 @@ li.tocome { font-weight: 700; }
           <li>All 41 kit exports match their sizes in the specifications table. Each page plate in the guide matches its export pixel for pixel, 18 of 18.</li>
           <li>On the working pages, axe finds 0 violations at all 18 views. Tab order, the theme kept after a reload, reflow at 320 px and text at 200 percent show 0 faults.</li>
           <li>The accessibility lead walked the pages by keyboard 12 times and the menu nine times, and measured 3,554 text boxes on pixels with none under its contrast need. The lowest pair is White on Pillar Red, 4.17 to 1, on the ask&#8217;s 19 px bold words, which count as large text.</li>
-          <li>Her walks found one WCAG fault, W1, a menu link that Shift+Tab could hide under the menu&#8217;s title row at 320 by 256 px. The engineer fixed it and four lesser findings in the application kit, and a rerun of the menu case found 0 hidden in 6 of 6 runs.</li>
+          <li>The accessibility lead&#8217;s walks found one WCAG fault, W1, a menu link that Shift+Tab could hide under the menu&#8217;s title row at 320 by 256 px. The engineer fixed it and four lesser findings in the application kit, and a rerun of the menu case found 0 hidden in 6 of 6 runs.</li>
           <li>Chapter 05 prints your DR-305 and DR-310 words once each, and the old words nowhere.</li>
           <li>Chapter 19&#8217;s map of WCAG criteria marks seven Met that chapters 16 and 20 owed: four on prerecorded video and sound (1.2.1, 1.2.2, 1.2.3 and 1.2.5) by Rules 16.11 and 16.12, page titles and page language (2.4.2 and 3.1.1) by Rule 20.4, and consistent help (3.2.6) by Rule 20.3. Language of parts (3.1.2) stays a gap that chapter 02 owes.</li>
           <li class="tocome">{{QUICK}}</li>
