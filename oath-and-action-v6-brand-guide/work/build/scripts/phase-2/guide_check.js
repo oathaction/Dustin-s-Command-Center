@@ -136,6 +136,12 @@
 //                      aria-hidden="true" and data-oa-picture, inside a stage that is a group, never an image stage. Inside
 //                      such a frame alone, a page's own headings and landmarks are allowed (specimenHeadings,
 //                      specimenLandmarks), and typeScale reads its words against the type tokens at the frame's own width
+//                      (22:07 call) Inside a well-formed frame the page is a picture, as an image stage's is: the tests
+//                      of live content (brokenLinks, overflow, fitSwitch, the glyph, control and title tests, stateWords,
+//                      forcedGlyphs) leave it alone. The frame keeps its own tests: pageFrame, and its words read at the
+//                      frame's own width (its scale divided out) for under13, contrast and typeScale, whose sizes there
+//                      are D2-254's for the frame's width, its tokens and the chart sizes as they compute inside it. A
+//                      frame whose page is not inert and hidden, or whose alt is short, fails pageFrame and is read live
 // Added in chat 10 (November 21, 2026, P4-5):
 //   photoDrawn         every photograph request (<img data-oa-photo>, no src) draws the one copy of its photograph the
 //                      page carries in <style id="oa-photos"> (its computed content is the image)
@@ -233,8 +239,26 @@ function audit(page) {
     const headingPlate = (h) => { const sp = h.closest('[data-specimen]'); return !!sp && HEADING_PLATES.includes(sp.getAttribute('data-specimen')); };
     // chat 11 (contract C4): inside an application kit page frame whose page is inert and hidden, as the kit writes it, a
     // page's own headings and landmarks never reach the guide's outline or landmark list, so they are allowed there alone
-    const inPageFrame = (el) => { const art = el.closest('.oa-app-art'); const f = art && art.closest('[data-oa-page-frame]');
-      return !!f && art.hasAttribute('inert') && art.getAttribute('aria-hidden') === 'true' && !!art.closest('svg[role="img"]') && f.contains(art); };
+    // 22:07 call: the page an element sits in when that page is a well-formed frame's picture (inert, hidden, inside the
+    // frame's named SVG), else null; a frame's own scale is its SVG's drawn width over its viewBox width
+    const pageArt = (el) => { const art = el.closest('.oa-app-art'); const f = art && art.closest('[data-oa-page-frame]');
+      return f && art.hasAttribute('inert') && art.getAttribute('aria-hidden') === 'true' && !!art.closest('svg[role="img"]') && f.contains(art) ? art : null; };
+    const inPageFrame = (el) => !!pageArt(el);
+    const frameScale = new Map();
+    const scaleOf = (art) => {
+      if (!frameScale.has(art)) { const s = art.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; frameScale.set(art, vb && vb.width ? s.getBoundingClientRect().width / vb.width || 1 : 1); }
+      return frameScale.get(art);
+    };
+    // a word's size where it is drawn: an SVG text by its own drawing's scale; inside a frame, at the frame's own width
+    // (the frame's scale divided out), so a page's words keep the 13 px floor and D2-254 at the size its page sets them
+    const drawnSize = (el, art) => {
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      if (el instanceof SVGElement) {
+        const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal;
+        if (vb && vb.width) size = size * s.getBoundingClientRect().width / vb.width / (art ? scaleOf(art) : 1);
+      }
+      return +size.toFixed(2);
+    };
     const hs = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6,[role="heading"]')]
       .filter((h) => !h.closest('dialog:not([open])') && !h.closest('[aria-hidden="true"]') && (!h.closest('[data-specimen]') || headingPlate(h)) && visible(h));
     const lvl = (h) => h.getAttribute('role') === 'heading' ? parseInt(h.getAttribute('aria-level') || '2', 10) : parseInt(h.tagName[1], 10);
@@ -280,8 +304,12 @@ function audit(page) {
     const counts = new Map();
     document.querySelectorAll('[id]').forEach((el) => counts.set(el.id, (counts.get(el.id) || 0) + 1));
     const an = { ids: counts.size, duplicates: [...counts].filter(([, n]) => n > 1).map(([id, n]) => ({ id, n })).slice(0, 20), links: 0, broken: [], relatedLinks: 0, relatedBad: [], relatedRuleLinks: 0, relatedRuleBad: [], aliases: [] };
+    an.inFrames = 0;
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
-      const href = a.getAttribute('href'); if (href === '#') return; an.links++;
+      const href = a.getAttribute('href'); if (href === '#') return;
+      // 22:07 call: a link inside a frame's inert, hidden page is part of a picture no reader can follow
+      if (inPageFrame(a)) { an.inFrames++; return; }
+      an.links++;
       if (!document.getElementById(decodeURIComponent(href.slice(1)))) an.broken.push({ href, text: norm(a.textContent).slice(0, 40), where: where(a) });
     });
     document.querySelectorAll('.rel-inline a, ul.related a').forEach((a) => {
@@ -444,10 +472,18 @@ function audit(page) {
           const host = art.firstElementChild || art;
           const pr = document.createElement('span'); pr.textContent = 'x'; pr.style.position = 'absolute'; pr.style.visibility = 'hidden';
           (host.firstElementChild || host).append(pr);
-          frameSizes.set(art, TYPE_STYLES.map((st) => { pr.style.fontSize = `var(--oa-type-${st}-font-size)`; return parseFloat(getComputedStyle(pr).fontSize); }).filter((x) => x > 0));
+          frameSizes.set(art, TYPE_STYLES.map((st) => { pr.style.fontSize = `var(--oa-type-${st}-font-size)`; return parseFloat(getComputedStyle(pr).fontSize); })
+            .concat(CHART_SIZES.map((v) => { pr.style.fontSize = `var(${v})`; return parseFloat(getComputedStyle(pr).fontSize); })).filter((x) => x > 0));
           pr.remove();
         }
         return frameSizes.get(art);
+      };
+      // 22:07 call: a frame's words read at the frame's own width against D2-254 for that width (the phone floor up to
+      // 600 px, the desktop ceiling from 1,200, either between), its tokens and the chart sizes as they compute inside it
+      const frameOk = (art, size) => {
+        const fw = parseFloat(art.closest('[data-oa-page-frame]').getAttribute('data-w')) || null;
+        const base = fw === null || (fw > 600 && fw < 1200) ? [...SCALE_FLOOR, ...SCALE_CEIL] : fw <= 600 ? SCALE_FLOOR : SCALE_CEIL;
+        return base.concat(chart, sizesIn(art)).some((a) => Math.abs(size - a) <= 0.3);
       };
       const offHere = new Map();
       stage.querySelectorAll('*').forEach((el) => {
@@ -455,10 +491,9 @@ function audit(page) {
         const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join(' ');
         if (!own || !visible(el)) return;
         const r = el.getBoundingClientRect(); if (r.width <= 1 && r.height <= 1) return;
-        let size = parseFloat(getComputedStyle(el).fontSize);
-        if (el instanceof SVGElement) { const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; if (vb && vb.width) size = +(size * s.getBoundingClientRect().width / vb.width).toFixed(2); }
-        const fart = el.closest('[data-oa-page-frame] .oa-app-art');
-        if (!ok(size) && !(fart && sizesIn(fart).some((a) => Math.abs(size - a) <= 0.3))) { const k = +size.toFixed(2); if (!offHere.has(k)) offHere.set(k, own.slice(0, 40)); }
+        const fart = pageArt(el);
+        const size = drawnSize(el, fart);
+        if (fart ? !frameOk(fart, size) : !ok(size)) { const k = +size.toFixed(2); if (!offHere.has(k)) offHere.set(k, own.slice(0, 40)); }
       });
       if (offHere.size) ts.off.push({ specimen: id, width: w, scale: sc === 1 ? undefined : sc, sizes: [...offHere.keys()], sample: [...offHere.values()][0] });
     });
@@ -569,33 +604,34 @@ function audit(page) {
     }
 
     // ---------------- text size and contrast
-    const svgUnder = (el) => {
+    // k: a frame's own scale (22:07 call), so the 8 px floor for a shape behind a word is read at the frame's own width
+    const svgUnder = (el, k = 1) => {
       if (!(el instanceof SVGElement)) return null;
       const bb = el.getBoundingClientRect(); const cx = bb.x + bb.width / 2, cy = bb.y + bb.height / 2;
       for (let node = el; node && !(node instanceof SVGSVGElement); node = node.parentElement) {
         for (let sib = node.previousElementSibling; sib; sib = sib.previousElementSibling) {
           const shapes = [sib, ...sib.querySelectorAll('circle,rect,polygon,path,ellipse')].filter((s) => ['circle', 'rect', 'polygon', 'path', 'ellipse'].includes(s.tagName)).reverse();
-          for (const sh of shapes) { const f = parse(getComputedStyle(sh).fill); if (!f || f.a < 0.5 || getComputedStyle(sh).fill === 'none') continue; const b = sh.getBoundingClientRect(); if (b.width < 8 || b.height < 8) continue; if (cx >= b.x && cx <= b.right && cy >= b.y && cy <= b.bottom) return f; }
+          for (const sh of shapes) { const f = parse(getComputedStyle(sh).fill); if (!f || f.a < 0.5 || getComputedStyle(sh).fill === 'none') continue; const b = sh.getBoundingClientRect(); if (b.width < 8 * k || b.height < 8 * k) continue; if (cx >= b.x && cx <= b.right && cy >= b.y && cy <= b.bottom) return f; }
         }
       }
       return null;
     };
-    const bgOf = (el) => { const u = svgUnder(el); if (u) return u; for (let e = el; e && e.nodeType === 1; e = e.parentElement) { if (!(e instanceof SVGElement)) { const c = parse(getComputedStyle(e).backgroundColor); if (c && c.a > 0.5) return c; } } return parse(getComputedStyle(document.body).backgroundColor) || { r: 255, g: 255, b: 255, a: 1 }; };
+    const bgOf = (el, k = 1) => { const u = svgUnder(el, k); if (u) return u; for (let e = el; e && e.nodeType === 1; e = e.parentElement) { if (!(e instanceof SVGElement)) { const c = parse(getComputedStyle(e).backgroundColor); if (c && c.a > 0.5) return c; } } return parse(getComputedStyle(document.body).backgroundColor) || { r: 255, g: 255, b: 255, a: 1 }; };
     const all = [...document.querySelectorAll('body *')].filter((el) => !['SCRIPT', 'STYLE', 'TITLE', 'DESC', 'DEFS', 'NOSCRIPT'].includes(el.tagName.toUpperCase()) && !el.closest('title,desc,defs'));
-    const tx = { texts: 0, inPictures: 0, minSize: 99, under13: [], lowContrast: [], skipped: 0 };
+    const tx = { texts: 0, inPictures: 0, inFrames: 0, minSize: 99, under13: [], lowContrast: [], skipped: 0 };
     for (const el of all) {
       const own = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join(' ');
       // call 11 (AX-S6): an image stage's own hidden picture is still read here, so its words keep the 13 px floor and the
       // contrast bar; any other aria-hidden text is skipped, as before
       if (!own || !visible(el) || (el.closest('[aria-hidden="true"]:not([data-oa-picture])') && !(el instanceof SVGElement))) continue;
-      const cs = getComputedStyle(el); let size = parseFloat(cs.fontSize);
+      // 22:07 call: a word inside a frame's page is read at the frame's own width, as its page sets it
+      const cs = getComputedStyle(el); const art = pageArt(el); const size = drawnSize(el, art);
       const isSvg = el instanceof SVGElement;
-      if (isSvg) { const s = el.closest('svg'); const vb = s && s.viewBox && s.viewBox.baseVal; if (vb && vb.width) size = +(size * s.getBoundingClientRect().width / vb.width).toFixed(2); }
       const fg = parse(isSvg ? cs.fill : cs.color); if (!fg) continue;
-      tx.texts++; if (el.closest('[data-oa-picture]')) tx.inPictures++;
+      tx.texts++; if (el.closest('[data-oa-picture]')) tx.inPictures++; if (art) tx.inFrames++;
       if (!exempt(el, 'size')) { tx.minSize = Math.min(tx.minSize, size); if (size < 12.95) tx.under13.push({ text: own.slice(0, 40), size, where: where(el) }); } else tx.skipped++;
       if (!exempt(el, 'contrast')) {
-        const cr = ratio(fg, bgOf(el)); const large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight, 10) >= 700);
+        const cr = ratio(fg, bgOf(el, art ? scaleOf(art) : 1)); const large = size >= 24 || (size >= 18.66 && parseInt(cs.fontWeight, 10) >= 700);
         if (cr < (large ? 3 : 4.5) - 0.005) tx.lowContrast.push({ text: own.slice(0, 50), size, ratio: +cr.toFixed(2), where: where(el) });
       }
     }
@@ -608,6 +644,7 @@ function audit(page) {
     for (const el of all) {
       if (!visible(el)) continue;
       const box = el.closest('[data-plate-scroll], [role="region"][tabindex]'); if (box && box !== el) continue;
+      if (inPageFrame(el)) continue;   // 22:07 call: a frame's page lies inside its picture; the frame itself is measured
       if (el.closest('.skip')) continue;
       const r = el.getBoundingClientRect(); if (r.right > vw + 0.5) ov.overflowing.push({ tag: el.tagName, cls: String(el.className && el.className.baseVal !== undefined ? el.className.baseVal : el.className).slice(0, 40), right: Math.round(r.right), where: where(el) });
     }
@@ -923,7 +960,11 @@ window.__sb = (() => {
     for (let e = el; e && e.nodeType === 1; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') return false; }
     return true;
   };
-  const picture = (el) => !!el.closest('[data-specimen][role="img"]');
+  // 22:07 call: a C4 page frame's page, inert and hidden inside its named SVG, is a picture as an image stage is, so
+  // the tests of live glyphs, controls and trackers leave it to the frame's own tests (pageFrame, typeScale, under13)
+  const framePage = (el) => { const art = el.closest('.oa-app-art'); const f = art && art.closest('[data-oa-page-frame]');
+    return !!f && art.hasAttribute('inert') && art.getAttribute('aria-hidden') === 'true' && !!art.closest('svg[role="img"]') && f.contains(art); };
+  const picture = (el) => !!el.closest('[data-specimen][role="img"]') || framePage(el);
   const vhidden = (e) => { const r = e.getBoundingClientRect(); const cs = getComputedStyle(e); return (r.width <= 1 && r.height <= 1) || /inset\\(50%\\)/.test(cs.clipPath) || cs.display === 'none' || cs.visibility === 'hidden'; };
   // The words a sighted reader sees in an element: text not under aria-hidden, a data-icon or a visually hidden box.
   const seen = (root) => {
@@ -992,7 +1033,7 @@ window.__sb = (() => {
     const ok = paints.filter((c) => c && c.a > 0.5);
     return ok.length ? Math.max(...ok.map((c) => ratio(c, behind))) : 1;
   };
-  return { parse, ratio, bgBehind, rendered, picture, seen, key, CONTROLS, where, desc, vhidden };
+  return { parse, ratio, bgBehind, rendered, picture, framePage, seen, key, CONTROLS, where, desc, vhidden };
 })();`;
 
 async function sbInstall(page) { await page.evaluate((src) => { if (!window.__sb) (0, eval)(src); }, SB_HELPERS); }
@@ -1007,6 +1048,8 @@ async function sbInstall(page) { await page.evaluate((src) => { if (!window.__sb
 async function fitSwitch(page, dpr) {
   return page.evaluate(({ READS_AT_24, dpr }) => {
     const out = { dpr, glyphs: 0, pairs: 0, fitShown: 0, masterShown: 0, fixed: 0, problems: [] };
+    const framePage = (el) => { const art = el.closest('.oa-app-art'); const f = art && art.closest('[data-oa-page-frame]');
+      return !!f && art.hasAttribute('inert') && art.getAttribute('aria-hidden') === 'true' && !!art.closest('svg[role="img"]') && f.contains(art); };
     const where = (el) => { const st = el.closest('[data-specimen]'); const sec = el.closest('section[id]'); return st ? st.getAttribute('data-specimen') : sec ? '#' + sec.id : 'masthead and shell'; };
     const ref = (u) => (u.getAttribute('href') || u.getAttribute('xlink:href') || '').replace(/^#/, '');
     const kind = (sid) => {
@@ -1019,7 +1062,7 @@ async function fitSwitch(page, dpr) {
     const drawn = (el) => { const r = el.getBoundingClientRect(); if (!r.width && !r.height) return false; for (let e = el; e && e.nodeType === 1; e = e.parentElement) { const cs = getComputedStyle(e); if (cs.display === 'none' || cs.visibility === 'hidden') return false; } return !el.closest('dialog:not([open])'); };
     const on41 = (k) => k && READS_AT_24.includes(k.id) && (!k.fit || k.size === 24);
     for (const svg of document.querySelectorAll('svg')) {
-      if (svg.closest('.oa-sprite')) continue;
+      if (svg.closest('.oa-sprite') || framePage(svg)) continue;   // 22:07 call: a frame's page is a picture
       const uses = [...svg.querySelectorAll('use')].filter((u) => u.closest('svg') === svg)
         .map((u) => ({ u, sid: ref(u), k: kind(ref(u)), one: u.classList.contains('oa-at-1x'), two: u.classList.contains('oa-at-2x') }));
       const ones = uses.filter((x) => x.one), twos = uses.filter((x) => x.two);
@@ -1176,7 +1219,8 @@ async function sbAudit(page) {
       // a plate may draw one row twice, one copy for each screen width, and hide the other: only the copy on screen counts,
       // as only it reaches a reader (round 3, the editor's note on s-01-pieces)
       const onScreen = (s) => [...s.querySelectorAll('[data-icon-family="status"][data-icon]')].filter((m) => rendered(m));
-      const trackers = [...st.querySelectorAll('svg')].filter((s) => onScreen(s).length >= 3);
+      // 22:07 call: a tracker drawn in a frame's page belongs to the picture; the frame's alt describes it
+      const trackers = [...st.querySelectorAll('svg')].filter((s) => !window.__sb.framePage(s) && onScreen(s).length >= 3);
       if (!trackers.length) continue;
       out.stateStages++;
       const marks = trackers.flatMap(onScreen).filter((m) => WORDS[m.getAttribute('data-icon')]);
@@ -2666,6 +2710,15 @@ const PLANTS = [
   { key: 'pageFrame', fault: 'a page frame whose page is not inert or hidden', js: pageFramePlant('open') },
   { key: 'pageFrame', fault: 'a page frame inside an image stage', js: pageFramePlant('imageStage') },
   { key: 'typeScale', fault: 'a 21.3 px line inside a page frame, off every token at its width', js: pageFramePlant('offScale') },
+  // 22:07 call: a frame's page is a picture. Its words read at the frame's own width; its links, glyphs and trackers are
+  // left to the frame's own tests; a fault at the frame's own width, the same fault outside it, and a frame that is not a
+  // closed picture still fail
+  { key: 'under13', expect: false, fault: 'a 1,024 px page frame\'s 15 and 17 px words, HTML and SVG, drawn under 13 px on screen by the frame\'s scale (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'brokenLinks', expect: false, fault: 'a link to no id inside a page frame\'s inert, hidden page, which no reader can follow (allowed: must not be flagged)', js: pageFramePlant('clean') },
+  { key: 'under13', fault: '12 px words inside a 300 px page frame drawn larger than 13 px on screen, read at the frame\'s own width', js: pageFramePlant('small') },
+  { key: 'under13', fault: 'the same 12 px words in a page frame\'s stage, outside the frame', js: pageFramePlant('smallOutside') },
+  { key: 'pageFrame', fault: 'a page frame whose page is hidden but not inert', js: pageFramePlant('notInert') },
+  { key: 'pageFrame', fault: 'a page frame whose alt is empty', js: pageFramePlant('noAlt') },
   { key: 'duplicateIds', fault: 'two elements with one id', js: () => { const p = document.createElement('p'); p.id = 'contents'; p.textContent = 'Duplicate'; document.querySelector('.chapter .ch-head').append(p); } },
   { key: 'brokenLinks', fault: 'a same-page link to no id', js: () => { const a = document.createElement('a'); a.href = '#nowhere'; a.textContent = 'Nowhere'; document.querySelector('.rule .why').append(a); } },
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
@@ -3075,18 +3128,27 @@ function sgPlant(variant) {
 // restated in cqi on the page's container (lib.fluid_cqi); variants leave the page open, put the frame in an image stage,
 // or add a line at a size no token takes
 function pageFramePlant(variant) {
-  const hidden = variant === 'open' ? '' : ' inert aria-hidden="true" data-oa-picture';
+  // 22:07 call: 'small' sets 12 px words in a 300 px frame drawn at the column's width, so the frame's scale draws them
+  // larger than 13 px on screen and only a reading at the frame's own width catches them; 'smallOutside' sets the same
+  // words in the stage beside a 1,024 px frame; 'notInert' keeps the page hidden but not inert; 'noAlt' empties the alt
+  const W = variant === 'small' ? 300 : 1024;
+  const hidden = variant === 'open' ? '' : variant === 'notInert' ? ' aria-hidden="true" data-oa-picture' : ' inert aria-hidden="true" data-oa-picture';
   const role = variant === 'imageStage' ? 'role="img" aria-label="A web page fixture at 1,024 px, a picture."' : 'role="group" aria-label="A web page fixture, specimen"';
-  const off = variant === 'offScale' ? '<p style="font-size:21.3px;margin:0">A line at a size no token takes.</p>' : '';
+  const alt = variant === 'noAlt' ? '' : 'A fixture web page at 1,024 px, on Newsprint.';
+  const off = variant === 'offScale' ? '<p style="font-size:21.3px;margin:0">A line at a size no token takes.</p>'
+    : variant === 'small' ? '<p style="font-size:12px;margin:0">Small words in the page.</p>' : '';
+  const beside = variant === 'smallOutside' ? '<p style="font-size:12px;margin:0">Small words in the page.</p>' : '';
   const html = `<div class="plate-stage oa-surface-newsprint" data-specimen="s-demo-app" ${role}>`
-    + '<div class="oa-app-row" data-oa-app="A90"><div class="oa-app-frame" style="flex:1024 1 0;max-width:1024px" data-oa-page-frame="A90 1024-light" data-oa-app-type="web-page" data-w="1024" data-h="600">'
-    + '<svg class="oa-app-scale" viewBox="0 0 1024 600" role="img" aria-label="A fixture web page at 1,024 px, on Newsprint." style="display:block;width:100%;height:auto">'
-    + `<foreignObject x="0" y="0" width="1024" height="600"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art"${hidden} style="width:1024px;height:600px">`
+    + `<div class="oa-app-row" data-oa-app="A90"><div class="oa-app-frame" style="${W === 1024 ? 'flex:1024 1 0;max-width:1024px' : 'max-width:none'}" data-oa-page-frame="A90 ${W}-light" data-oa-app-type="web-page" data-w="${W}" data-h="600">`
+    + `<svg class="oa-app-scale" viewBox="0 0 ${W} 600" role="img" aria-label="${alt}" style="display:block;width:100%;height:auto">`
+    + `<foreignObject x="0" y="0" width="${W}" height="600"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art"${hidden} style="width:${W}px;height:600px">`
     + '<div class="wa" style="container:wa/inline-size;--oa-type-title-font-size:clamp(3.5rem, 2.2464rem + 5.1429cqi, 6.875rem);background:var(--oa-color-surface);color:var(--oa-color-text-primary)">'
-    + '<header><a href="#s-demo-app--main" style="font-size:17px">Home</a></header><main id="s-demo-app--main">'
+    + '<header><a href="#s-demo-app--main" style="font-size:17px">Home</a> <a href="#a90-1024-light-nowhere" style="font-size:17px">A link to no id</a></header><main id="s-demo-app--main">'
     + '<h1 style="font-size:var(--oa-type-title-font-size);line-height:1;margin:0">A page title</h1><h2 style="font-size:32px;margin:0">A section</h2>'
-    + `<p style="font-size:17px;margin:0">Words of the page.</p>${off}</main><footer><p style="font-size:15px;margin:0">A footer.</p></footer></div>`
-    + '</div></foreignObject></svg></div></div></div>';
+    + `<p style="font-size:17px;margin:0">Words of the page.</p>${off}`
+    + '<svg viewBox="0 0 240 24" width="240" height="24" style="display:block"><text x="0" y="18" style="font-size:15px;fill:currentColor">A 15 px label</text></svg>'
+    + '</main><footer><p style="font-size:15px;margin:0">A footer.</p></footer></div>'
+    + `</div></foreignObject></svg></div></div>${beside}</div>`;
   return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
 }
 

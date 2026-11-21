@@ -453,6 +453,10 @@ ${r.head_links || ''}
               // a drawing switched by screen resolution (the end mark's fit and master, a 1x and 2x pair) stays: the guide
               // shows one or the other by the reader's screen, and this page renders at 1x only
               if (getComputedStyle(e).display === 'none' && !e.closest('.ws-end, [class*="oa-at-"]')) { out.push(e); continue; }
+              // 22:07 call: a visually hidden word list stays while its holder starts inside the window, so a tracker the
+              // window shows keeps its steps' states in words (A-5); it draws nothing
+              const vh = e.closest('.vh');
+              if (vh && vh.parentElement && vh.parentElement.getBoundingClientRect().top + scrollY < limit) continue;
               if (limit && e.getBoundingClientRect().top + scrollY >= limit) out.push(e);
             }
             out.forEach((e) => e.remove());

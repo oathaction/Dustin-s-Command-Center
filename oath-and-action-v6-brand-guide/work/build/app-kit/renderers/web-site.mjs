@@ -600,7 +600,8 @@ function frame_masthead(head, w, open) {
 // ---------------------------------------------------------------------------------------------------------------- render
 function columns(spec, w) {
   // the figure's column at a width, for R4 and R8 (spec 5.4, 6.2, 7.2): under 64em the content width; from 64em the spec's
-  // columns; each chart is drawn at exactly this width for a frame, so no frame scales a drawing past its true size
+  // columns; each chart is drawn at exactly this width for a frame, so no frame scales a drawing past its true size, capped
+  // at the chart's artboard (chart_figure), the widest its figure shows
   const W = { 1440: { figure: 644, atlas: 866.7 }, 1024: { figure: 621.3, atlas: 540.7 } };
   if (W[w]) return W[w];
   const m = w < 390 ? 16 : 20;

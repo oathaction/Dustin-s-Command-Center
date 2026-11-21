@@ -1,5 +1,5 @@
 {
- "written": "2026-11-21T21:17:42.272Z",
+ "written": "2026-11-21T22:33:48.816Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -127,7 +127,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 3,036 px"
+   "size": "1,440 by 3,142 px"
   },
   {
    "file": "20261121_Web-Home-Page-1440-Dark.png",
@@ -135,7 +135,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 3,036 px"
+   "size": "1,440 by 3,142 px"
   },
   {
    "file": "20261121_Web-Home-Page-1024-Light.png",

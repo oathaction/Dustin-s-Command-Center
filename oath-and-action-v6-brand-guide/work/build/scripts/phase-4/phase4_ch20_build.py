@@ -1459,8 +1459,11 @@ def s20_10_failure():
             f'<p class="hl">{"<br>".join(a["headline"])}</p><div class="ft dk">'
             f'<span class="wm">{master(WM_DISPLAY, 398.57, 44, INK_CHAR)}</span>'
             f'<span class="lm">{master(LOCK48, 48, 48, INK_CHAR)}</span></div></div></div>')
-    return spec('s-20-10-failure', html, '20.10', r['failure_alt'],
-                notes='A drawing of a fault: the sign-off at 48 px in place of 96. Rule 08.2 counts the red pixels.')
+    # D4-210: the card is a 1200 by 630 artboard drawn in cqi at the frame's scale, so its words sit off the screen
+    # scale, as the kit's own frames do (contract C4); the correct plate is a kit frame and needs no exemption
+    return spec('s-20-10-failure', html, '20.10', r['failure_alt'], exempt=['scale'],
+                notes='A drawing of a fault: the sign-off at 48 px in place of 96. Rule 08.2 counts the red pixels. '
+                      'The card is an artboard drawn to its frame\'s scale, so its words sit off the screen type scale.')
 
 
 def s20_11_correct():

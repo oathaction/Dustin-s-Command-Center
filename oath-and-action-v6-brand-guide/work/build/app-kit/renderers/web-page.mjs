@@ -35,6 +35,10 @@ export async function chart_figure(id, fid, desk = 621, phone = 328) {
   const spec = JSON.parse(fs.readFileSync(sp, 'utf8'));
   const res = m.run_spec(spec, { grounds: ['newsprint'], widths: [1440, 390], spec_path: sp, sweep: false, no_narrow: true });
   const faults = [...res.faults];
+  // 22:07 call: a figure never shows wider than its artboard (kit.css caps .oac-fig there, 720 px for a reading chart), so a
+  // column wider than the artboard draws at the artboard; drawn wider, the drawing scaled down and set its words under 13 px
+  const art = K.artboard(spec, K.token_reader(m.TOK.newsprint));
+  desk = Math.min(desk, art); phone = Math.min(phone, art);
   const draw = (w, cls) => {
     const d = K.draw(spec, res.rows, { width: w, ground: 'newsprint', tokens: m.TOK.newsprint, extra: m.extra_rows({ datasets: res.datasets }) });
     faults.push(...C.check_drawing(spec, d, m.TOK.newsprint, `${w} px for the article`));
