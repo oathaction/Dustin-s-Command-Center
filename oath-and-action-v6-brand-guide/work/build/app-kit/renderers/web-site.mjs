@@ -135,8 +135,9 @@ ${at(BP.wide, '.ws{--ws-part-gap:32px}')}
 .ws .oa-masthead-dialog{padding:0 var(--m) 32px}
 .ws .oa-masthead-dialog-head{min-height:56px}
 /* W1 (2.4.11): the menu's title row sticks, so a focused row scrolled under it stays clear: the dialog's scroll padding
-   is the row's height and its rule (the site's script sets it from the row when the menu opens, should the row wrap) */
-.ws .oa-masthead-dialog{scroll-padding-top:57px}
+   clears the row and the 2 px focus ring set 2 px out (the accessibility lead's tested value; the site's script sets it
+   from the row's own height when the menu opens, should the row wrap at a large text size) */
+.ws .oa-masthead-dialog{scroll-padding-top:calc(var(--oa-space-800) + 1px)}
 .ws .oa-masthead-dialog-nav{margin-top:24px}
 .ws .oa-masthead-list>li:nth-child(4){border-bottom-color:var(--oa-color-border-strong)}
 .ws.ws-open{min-height:var(--ws-vh)}
@@ -207,7 +208,8 @@ ${at(BP.tablet, '.ws-main{padding-top:48px}')}
 .ws-card>*+*{margin-top:12px !important}
 .ws-card .ws-kick+*{margin-top:16px !important}
 .ws-card h3{${type_css('h3')};text-wrap:balance}
-.ws-card h3 a{display:block;padding-block:6.5px;margin-block:-6.5px;text-decoration:none}
+/* W5 (AL-15): the headline link's box reaches the 44 px target from its own line height, the type unmoved */
+.ws-card h3 a{--pad:max(0px, calc((var(--oa-size-target-touch) - 1lh) / 2));display:block;padding-block:var(--pad);margin-block:calc(-1 * var(--pad));text-decoration:none}
 .ws-card h3 a:hover,.ws-card h3 a:focus-visible{text-decoration:underline;text-decoration-thickness:2px}
 .ws-card .dek{${type_css('body-small')};text-wrap:pretty}
 .ws-card .st{${type_css('body-small')}}

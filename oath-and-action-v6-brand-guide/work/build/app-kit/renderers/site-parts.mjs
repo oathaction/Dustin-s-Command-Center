@@ -61,7 +61,8 @@ export function close_on_widen_js(bp_em) {
     menu.addEventListener('click', function () {
       var dialog = document.getElementById(menu.getAttribute('aria-controls'));
       var head = dialog && dialog.querySelector('.oa-masthead-dialog-head');
-      if (head) dialog.style.scrollPaddingTop = Math.ceil(head.getBoundingClientRect().height) + 'px';
+      // the row, then room for the focus ring (2 px, 2 px out) and a little air
+      if (head) dialog.style.scrollPaddingTop = (Math.ceil(head.getBoundingClientRect().height) + 9) + 'px';
     });
   });
   var mq = window.matchMedia('(min-width: ${bp_em}em)');

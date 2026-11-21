@@ -292,12 +292,12 @@ async function main() {
           const vs = [];
           for (const g of ['light', 'dark']) {
             const key = `tab-${g}`;
-            const alt = `${spec.alt} The favicon at 16 px on a ${g === 'light' ? 'light' : 'dark'} browser tab beside the page's title.`;
+            const alt = `${spec.alt} The favicon at 16 px on a ${g === 'light' ? 'light' : 'dark'} browser tab beside the page’s title.`;
             vs.push({ key, w: 240, h: 40, theme: g, alt, html: frame({ w: 240, h: 40, alt, page: { id: spec.id, key, type: spec.type },
               html: `<div class="fi-tab fi-tab--${g}">${fav(16)}<span>${esc(tab_title)}</span></div>` }) });
           }
-          vs.push({ key: 'ico', w: 128, h: 48, theme: 'light', alt: `${spec.alt} The favicon.ico file's three images at their own pixels: 16, 32 and 48 px.`,
-            html: frame({ w: 128, h: 48, alt: `${spec.alt} The favicon.ico file's three images at their own pixels: 16, 32 and 48 px.`, page: { id: spec.id, key: 'ico', type: spec.type },
+          vs.push({ key: 'ico', w: 128, h: 48, theme: 'light', alt: `${spec.alt} The favicon.ico file’s three images at their own pixels: 16, 32 and 48 px.`,
+            html: frame({ w: 128, h: 48, alt: `${spec.alt} The favicon.ico file’s three images at their own pixels: 16, 32 and 48 px.`, page: { id: spec.id, key: 'ico', type: spec.type },
               html: `<div class="fi-ico">${fav(16)}${fav(32)}${fav(48)}</div>` }) });
           for (const v of views) {
             if (v.key === '512') {
