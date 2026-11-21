@@ -30,13 +30,12 @@
   "chapter": "20",
   "rule": "20.10",
   "width_px": null,
-  "alt": "Failure case: do not publish. The same card with a small lockmark in its foot, half the size of the sign-off.",
+  "alt": "Failure case: do not publish. The same share card, its kicker Explainer, Local government, and its headline What a special district does, with the wordmark Oath & Action in its Charcoal foot and a small lockmark beside it, half the size of the sign-off.",
   "illustrative": false,
   "notes": "A drawing of a fault: the sign-off at 48 px in place of 96. Rule 08.2 counts the red pixels. The card is an artboard drawn to its frame's scale, so its words sit off the screen type scale.",
   "check_exempt": [
    "scale"
-  ],
-  "readable": true
+  ]
  },
  "s-20-11-correct": {
   "chapter": "20",

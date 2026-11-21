@@ -826,7 +826,10 @@ R['20.10'] = {
                    'with a Charcoal foot holding the wordmark and the lockmark, shown at full size and at two feed sizes.',
     'failure_caption': '<strong>Fails Rule 20.10.</strong> At 48 px the sign-off loses its lever’s red once a feed '
                        'shrinks the card to 360 px; Rule 08.2 counted no red pixel left on our card.',
-    'failure_alt': 'The same card with a small lockmark in its foot, half the size of the sign-off.',
+    # D4-211: the plate is a picture, so its alt carries every word the card shows
+    'failure_alt': ('The same share card, its kicker Explainer, Local government, and its headline What a special '
+                    'district does, with the wordmark Oath & Action in its Charcoal foot and a small lockmark beside '
+                    'it, half the size of the sign-off.'),
 }
 R['20.11'] = {
     'title': 'Draw the favicon from ampersand B’s 16 px master, and the app icons from B on the Charcoal tile.',
@@ -1461,7 +1464,7 @@ def s20_10_failure():
             f'<span class="lm">{master(LOCK48, 48, 48, INK_CHAR)}</span></div></div></div>')
     # D4-210: the card is a 1200 by 630 artboard drawn in cqi at the frame's scale, so its words sit off the screen
     # scale, as the kit's own frames do (contract C4); the correct plate is a kit frame and needs no exemption
-    return spec('s-20-10-failure', html, '20.10', r['failure_alt'], exempt=['scale'],
+    return spec('s-20-10-failure', html, '20.10', r['failure_alt'], exempt=['scale'], readable=False,
                 notes='A drawing of a fault: the sign-off at 48 px in place of 96. Rule 08.2 counts the red pixels. '
                       'The card is an artboard drawn to its frame\'s scale, so its words sit off the screen type scale.')
 
