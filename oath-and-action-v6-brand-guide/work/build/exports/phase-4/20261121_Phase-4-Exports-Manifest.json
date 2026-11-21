@@ -1,5 +1,5 @@
 {
- "written": "2026-11-21T20:56:53.638Z",
+ "written": "2026-11-21T21:17:42.272Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -200,7 +200,7 @@
    "platform": "website.page_1024",
    "format": "png",
    "theme": "light",
-   "size": "1,024 by 3,712 px"
+   "size": "1,024 by 3,684 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-390-Light.png",
@@ -241,7 +241,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 6,190 px"
+   "size": "1,440 by 6,244 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Dark.png",
@@ -249,7 +249,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 6,190 px"
+   "size": "1,440 by 6,244 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1024-Light.png",
@@ -257,7 +257,7 @@
    "platform": "website.page_1024",
    "format": "png",
    "theme": "light",
-   "size": "1,024 by 6,140 px"
+   "size": "1,024 by 6,191 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Light.png",
@@ -265,7 +265,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 8,622 px"
+   "size": "390 by 8,670 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Dark.png",
@@ -273,7 +273,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 8,622 px"
+   "size": "390 by 8,670 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-360-Light.png",
@@ -281,7 +281,7 @@
    "platform": "website.page_360",
    "format": "png",
    "theme": "light",
-   "size": "360 by 8,813 px"
+   "size": "360 by 8,861 px"
   },
   {
    "file": "20261121_Web-Share-Preview-Special-Districts-1200x630.png",

@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "What a special district does | Oath & Action",
  "css": "web-site.css",
- "written": "2026-11-21T20:56:58.436Z",
+ "written": "2026-11-21T21:17:47.703Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -64,7 +64,7 @@
   "work/build/app-kit/renderers/site-parts.mjs": "5e07d7f78af6970c5e79b01c06918d79998d0ff8cadd278463b252f2357846b2",
   "work/build/app-kit/renderers/social-post.mjs": "c63ec01f45fdbde3713400533b54416f2c70fe96353e97e89fc74bc6850dc840",
   "work/build/app-kit/renderers/web-page.mjs": "36a79d119844b1c2bf2e18f53b702f2c68d49b79b70e0d8412b3e5cffe5b49c0",
-  "work/build/app-kit/renderers/web-site.mjs": "9cb21c0c7ea38c513032bdeef668b76effb8c0d56b58f8d37405fca04521ca73",
+  "work/build/app-kit/renderers/web-site.mjs": "d0fdba2296dbb6ef57dd3ae8246bf41a39e1961efedc56aa2f37872b1c32474f",
   "work/build/app-kit/specs/a05-web-footer.json": "30b2ca46cbbe73007b476a63e6cf5a3223fa5e7fbb2891d0caf566f3c32d16db",
   "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg": "f8a2aedcea4e135009cc75e50db6b55c5fc1246a77502d8ef6edca3072a0617d",
   "work/build/assets/identity/ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg": "42d921bf1ec95c5e587afbb1dbc5338488a8028718e50e3bebeac537354eeccd",

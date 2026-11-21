@@ -197,6 +197,8 @@ ${at(BP.tablet, '.ws-main{padding-top:48px}')}
 .ws-src{${type_css('caption')};color:var(--oa-color-text-secondary);max-width:var(--oa-layout-measure-body-ideal);margin-top:24px !important}
 .ws-h2{${type_css('h3')};text-wrap:balance;margin:80px 0 16px !important}
 .ws-h3{${type_css('h4')};text-wrap:balance;margin:0 0 16px !important}
+/* Rule 07.4: a heading after a block of the section sits 48 px under it and 16 px over its own text */
+.ws-body>.ws-h3:not(:first-child),.ws-body+.ws-body>.ws-h3:first-child{margin-top:48px !important}
 /* the home page (spec 5) */
 .ws-home{row-gap:48px}
 .ws-sec{display:block;min-width:0}
@@ -267,13 +269,17 @@ ${at(BP.wide, `.ws-atlas .intro{grid-column:1/8}.ws-atlas .pair .ws-qs{grid-colu
 .ws-by time{${type_css('caption')};color:var(--oa-color-text-secondary)}
 .ws-count,.ws-fact{padding:24px;align-self:start}
 :is(.ws-count,.ws-fact) .fig{${type_css('figure')};color:var(--oa-color-text-primary)}
+/* a figure fits its panel at every width: from 64em to 90em the grid gives the panel four of twelve columns (235 px inside
+   at 1,024), so the figure steps down the type scale to the section size (the panel cannot be a query container itself:
+   that would size its fluid type by the panel) */
+@container ws (min-width: 64em) and (max-width: 89.99em){:is(.ws-count,.ws-fact) .fig{font-size:var(--oa-type-section-font-size);line-height:var(--oa-type-section-line-height)}}
 :is(.ws-count,.ws-fact) .l1{${type_css('body')};color:var(--oa-color-text-primary);margin-top:8px !important}
 :is(.ws-count,.ws-fact) .l2{${type_css('body-small')};color:var(--oa-color-text-secondary);margin-top:8px !important}
 :is(.ws-count,.ws-fact) .src{${type_css('caption')};color:var(--oa-color-text-secondary);margin-top:16px !important}
 .ws-fact-w{margin-top:32px;align-self:start}
 .ws-fact-src{${type_css('caption')};color:var(--oa-color-text-secondary);margin-top:8px !important}
 ${at(BP.tablet, '.ws-count,.ws-status,.ws-fact{padding:32px}')}
-${at(BP.desktop, '.ws-has-fact>.ws-fact-w{grid-column:9/13;grid-row:1/3;margin-top:80px}.ws-has-fact>.ws-body:nth-child(1){grid-row:1}.ws-has-fact>.ws-body:nth-child(2){grid-row:2}')}
+${at(BP.desktop, '.ws-has-fact>.ws-fact-w{grid-column:9/13;grid-row:1;margin-top:80px}.ws-has-fact>.ws-body:nth-child(1){grid-row:1}')}
 .ws-stack{display:contents}
 ${at(BP.desktop, `.ws-art .ws-head{grid-template-rows:auto auto auto auto 1fr}
  .ws-art .ws-lead2{grid-row:5;align-self:start}
@@ -329,8 +335,10 @@ ${under(BP.desktop, '.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lea
 .ws-box .ws-ask-lab{margin:16px 0 8px !important}
 .ws-ask{display:inline-flex;flex-wrap:wrap;align-items:center;column-gap:.28em;width:fit-content;min-height:48px;padding:12px 16px;background:var(--oa-color-action-ask-fill-on-charcoal);color:var(--oa-color-action-ask-label-on-charcoal) !important;${type_css('ask')};text-decoration:none;max-width:100%}
 .ws-ask>span{white-space:nowrap}
-/* the ask breaks into its two phrases, as wide as the longer, wherever its panel has less room than its words (304 px) */
-.ws-box,.ws-cpanel{container:ask/inline-size}
+/* the ask breaks into its two phrases, as wide as the longer, wherever its panel has less room than its words (304 px).
+   The query container is a wrapper around the ask alone: a container also sets what cqi means inside it, so a panel made a
+   container would size its fluid type by the panel (found 21:15: the comment panel's h4 at 21.6 px for the page's 24) */
+.ws-ask-w{container:ask/inline-size}
 @container ask (max-width: 19rem){.ws-ask{width:min-content}}
 .ws-nb{white-space:nowrap}
 .ws-ask svg{width:16px;height:16px;margin-left:6px;vertical-align:-2px}
@@ -503,12 +511,12 @@ function article_main(A, figs, pid, cols) {
   // DD-5, 11.1: the box keeps the figure and its two lines; its source line stands 8 px under it, on Newsprint
   const fact = cf ? `<div class="ws-fact-w"><div class="ws-fact oa-surface-charcoal ws-panel"><p class="fig">${esc(cf.figure)}</p><p class="l1">${esc(cf.line1)}</p><p class="l2">${esc(cf.line2)}</p></div><p class="ws-fact-src">${esc(cf.source)}</p></div>` : '';
   const secs = A.sections.map((s, i) => `<section class="ws-g${s.key === 'Count' && fact ? ' ws-has-fact' : ''}" data-oa-section="${esc(s.key)}" aria-labelledby="${pid}-s${i}">`
-    + `<div class="ws-body"><h2 class="ws-h2" id="${pid}-s${i}">${esc(s.heading)}</h2></div>`
-    // consecutive paragraphs share one body block, so Rule 07's 16 px sits between them; a chart takes its own block
+    // the section's heading opens the body block of its first paragraphs, so the text sits directly under its heading
+    // whatever stands beside it (Rule 07.4; found 21:14: the fact box's height had pushed the paragraph 160 px down)
     + s.blocks.reduce((acc, b) => { if (b.chart) acc.push({ fig: b.chart }); else if (acc.length && acc[acc.length - 1].ps) acc[acc.length - 1].ps.push(b); else acc.push({ ps: [b] }); return acc; }, [])
       // DD-5, 11.2: the closing step (the paragraph that ends on B) stands in a step box, the section's one dark panel
-      .map((g, j) => (g.fig ? figure(figs[g.fig], pid, cols ? cols.figure : null)
-        : `<div class="ws-body">${g.ps.filter((b) => !b.end_mark).map(paragraph).join('')}</div>`
+      .map((g, j) => (g.fig ? (j === 0 ? `<div class="ws-body"><h2 class="ws-h2" id="${pid}-s${i}">${esc(s.heading)}</h2></div>` : '') + figure(figs[g.fig], pid, cols ? cols.figure : null)
+        : `<div class="ws-body">${j === 0 ? `<h2 class="ws-h2" id="${pid}-s${i}">${esc(s.heading)}</h2>` : ''}${g.ps.filter((b) => !b.end_mark).map(paragraph).join('')}</div>`
           + g.ps.filter((b) => b.end_mark).map((b) => `<div class="ws-body ws-stepbox-w"><div class="ws-stepbox oa-surface-charcoal ws-panel">${paragraph(b)}</div></div>`).join(''))
         + (j === 0 && s.key === 'Count' ? fact : '')).join('')
     + (i === A.sections.length - 1 ? `<div class="ws-body"><p class="ws-src">${esc(A.def_source)}</p></div>` : '')
@@ -517,6 +525,9 @@ function article_main(A, figs, pid, cols) {
 }
 
 function ask(A) {
+  return `<div class="ws-ask-w">${ask_link(A)}</div>`;
+}
+function ask_link(A) {
   const a = A.ask;
   // DD-5, 11.4: as wide as its words: the words before the last in one unbroken phrase, the last held to its mark in the
   // other, so on a phone the ask breaks between them and stays as wide as its longer line; a docket number stays whole

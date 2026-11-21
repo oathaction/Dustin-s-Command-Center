@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "Oath & Action | A country that answers to its people.",
  "css": "web-site.css",
- "written": "2026-11-21T20:57:10.702Z",
+ "written": "2026-11-21T21:18:00.477Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -713,7 +713,7 @@
   "work/build/app-kit/renderers/site-parts.mjs": "5e07d7f78af6970c5e79b01c06918d79998d0ff8cadd278463b252f2357846b2",
   "work/build/app-kit/renderers/social-post.mjs": "c63ec01f45fdbde3713400533b54416f2c70fe96353e97e89fc74bc6850dc840",
   "work/build/app-kit/renderers/web-page.mjs": "36a79d119844b1c2bf2e18f53b702f2c68d49b79b70e0d8412b3e5cffe5b49c0",
-  "work/build/app-kit/renderers/web-site.mjs": "9cb21c0c7ea38c513032bdeef668b76effb8c0d56b58f8d37405fca04521ca73",
+  "work/build/app-kit/renderers/web-site.mjs": "d0fdba2296dbb6ef57dd3ae8246bf41a39e1961efedc56aa2f37872b1c32474f",
   "work/build/app-kit/specs/a06-web-home.json": "1eaeb183580491c5893c490908b85cd01664ea877bb90121ef73ce58ea2954b8",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",
   "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg": "90034ceaf3998a2d91217e452b5cbc054bfc4a56e668fd267849ba4fd6f1fef1",
