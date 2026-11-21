@@ -7338,3 +7338,28 @@ The main session posted chat 10's plan with five questions (Q10-1 to Q10-5). Dus
 | D4-97 | The chapters page is republished privately as version 15 (version id 1795239630-9ff1) at https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF from `work/boards/phase-4/chat-10/20261121_Guide-Preview-V15.html` (12,239,498 bytes, SHA-256 `9c740e0e…`), keeping contract 0.2.96 and `downloads`. Before it, the live version 14 (1795217990-e778) was found equal to the committed V14 file but for the host's wrapper, and the main session read every text change from version 14 to 15 by script (no em or en dash, no filler word; Gate 3's (a) and (b) printed once each and their old words nowhere; (c) as approved) | DR-303 |
 | D4-98 | Chat 10's progress page is published privately at https://claude.ai/artifact/L2HXPZXrYTELnLhQNynZB9 (version id 1795239684-0a64) with its six pictures, after one look at 390 px: no sideways scroll, and every table fits once two headers were shortened, a decrease printed with a minus sign and the status chips allowed to wrap. Every picture on it was looked at before publishing | DR-303; V8: read every file before publishing it |
 | D4-99 | The work tracker's row `c09` is set done, and chat 10 hands off with handoff V30 | The section 9 plan: chat 10 ends with a note for the next chat; DR-300 moves chat 11 to the keyed environment |
+
+## Chat 11, November 21, 2026 (Phase 4)
+
+### Main session, opening
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-100 | Chat 11 opened on `claude/oath-action-phase-4-chat-11-e4qn5k`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `bf58cd7e`, chat 10's close), fast-forwarded the local copy and works on it, as Dustin's opening message sets. V11's three setup steps ran on the fresh container | V19: fetch the remote tip first; V11's setup |
+| D4-101 | The three key tests fail again (17:36 UTC): api.open.fec.gov 403, api.congress.gov 403, `CENSUS_API_KEY` unset. This session runs on "Oath & Action", not on "Oath & Action Brand Polish - Round 2" as DR-300 set, and a running session cannot move onto an unrestricted network. Put to Dustin as Q11-2 | Dustin's "test each with one request before use"; V26 |
+| D4-102 | The strict build passes as committed (17:37 UTC, to scratch): exit 0, 0 warnings, 12,239,498 bytes, 382 rules, 707 specimens; it differs from version 15's file only in its date line, and the working tree stays clean | V30 section 1's figures |
+| D4-103 | The container restarted between Dustin's two messages (up 0 minutes at 18:52 UTC); the setup, the atlas extract and the scratch build survived | V23: check the disk after a restart |
+
+### Dustin's answers on chat 11's questions, November 21, 2026
+
+The main session posted chat 11's plan with six questions (Q11-1 to Q11-6). Dustin: "as recommended."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-305 | Gate 3's change (c) takes the editor's words (ED10-1): Rule 05.5's sentence becomes "On the atlas’s red target, only the red connections carry a 1 px Charcoal edge on each side (Rule 12.5). Every plate names each target in words beside the drawing (Rule 15.11), so the red outline of a target variable and each red arrowhead go without an edge." Rule 05.3's reason becomes "On Newsprint it measures 2.96 to 1, so a working red mark there takes a keyline, a 1 px Charcoal edge drawn inside the mark. Rule 05.5 lets the error bar, and the red outlines and arrowheads of the atlas’s target, go without one." Rule 05.5 gains the specification row "Atlas red target" (ED10-2) and Rule 05.3's keyline row gains "except the marks Rule 05.5 names" (ED10-3) | Dustin, November 21, as recommended (Q11-1) |
+| DR-306 | Chat 11 continues on the "Oath & Action" environment, with no key; chapters 20 and 21 draw on the atlas model in the repository and on charts and sources the guide already prints. The next chat starts on "Oath & Action Brand Polish - Round 2" | Dustin, November 21, as recommended (Q11-2) |
+| DR-307 | The website's menu carries the four pillars (Explain, Track, Connect, Act), the atlas under its own name "Who Do They Answer To?", About, and Subscribe. The atlas lives inside the website, under the site's masthead, with its own title bar beneath | Dustin, November 21, as recommended (Q11-3) |
+| DR-308 | The website's plates print the web address oathandaction.org with an Illustrative label beside it, as the handles carry one (DR-302), until Dustin confirms the address; DR-55 and DR-102 hold for the colophon and the social cards | Dustin, November 21, as recommended (Q11-4) |
+| DR-309 | Chapter 20's example Act page is a process piece (Rule 01.22) on a real procedure any reader in any state can use: commenting on a proposed federal rule, with a real docket checked and dated | Dustin, November 21, as recommended (Q11-5) |
+| DR-310 | Rule 05.1 gains one sentence: "On a long page the limits hold for the first screen and for each section’s opening screen; screens of running text between them may hold more Newsprint." Chapter 20 measures its pages that way | Dustin, November 21, as recommended (Q11-6, option A) |
+| DR-311 | Chat 11's plan as posted: one brief, one file lock, one writer per file; the design director with the accessibility lead on chapter 20 (light at four widths, dark at 1440 and 390 px), the engineer on the application kit's web and atlas renderers and exports, the data visualization lead on chapter 21's plan, rulings and system test, the editor on DR-305 and DR-310 first and then chapter 20's words; chapter 21's build after chapter 20 lands, likely in a chat of its own as the Gate 3 report's section 9 allows | Dustin, November 21, as recommended |
