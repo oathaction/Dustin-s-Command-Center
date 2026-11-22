@@ -213,6 +213,9 @@ ATLAS = {
                    'rule-change': 'Rule change', 'delivery-case': 'Delivery case'},
     'not_checked': 'Not checked',
     'checked': 'Checked {date}',
+    # Rule 15.4's words for a connection's type, for the Register's Type column
+    'types': {'causal': 'Causal', 'money': 'Money', 'information': 'Information', 'ownership': 'Ownership',
+              'authority': 'Authority'},
     'as_of': 'As of {date}',
 }
 
@@ -243,11 +246,15 @@ PAGES = {
             'lit': 'This question reaches here',
             'status': 'This question reaches {parts}.',
             'answer_label': 'The short answer',
+            # the claim's disclosure: its summary after the claim's chip, and its record's row labels (R5)
+            'claim_summary': 'in full',
+            'claim_labels': {'grade': 'Grade', 'population': 'People', 'jurisdiction': 'Place', 'period': 'Period',
+                             'limitation': 'Limit', 'sources': 'Sources'},
             'drawing_label': 'The parts of the system and the connections between them',
         },
     },
     'A12': {
-        'view': 'Reform R-23',
+        'view': 'Reform R-23, {title}',            # {title}: the kit fills the record's title from the model
         'current_view': 'Reforms',
         'crumbs': [['Home', '/atlas'], ['Reforms', '/atlas/reforms']],
         'page': {
@@ -260,6 +267,7 @@ PAGES = {
             'touches': 'Its record names {loop} as a loop it touches. That loop’s steps hold none of the reform’s '
                        'targets, so the drawing leaves it out.',
             'aims_here': 'also aim here',
+            'aims_here_one': 'also aims here',
             'grades_heading': 'How sure our atlas is',
             'source_link': 'Its source',
             'effects_heading': 'What it would change',
@@ -297,15 +305,26 @@ PAGES = {
             'rejected_heading': 'Rejected option',
             # our words before the atlas's own sentence, which the kit quotes from the stored text (DR-37)
             'rejected_grade': 'For a rejected option, the grade measures confidence in harm',
+            # the rejected option's two grade rows (Rule 15.12's labels)
+            'problem': 'Evidence of the problem',
+            'remedy': 'Evidence for the remedy',
+            # between a connection's two variables, in the table and in a reviewed connection's line
+            'to': 'to',
+            # R11: a reviewed connection's words before its variables; {id} is its ID, printed with no chip
+            'reviewed_word': 'reviewed connection {id}',
             'reviewed_heading': 'Reviewed and not drawn',
             'records_heading': 'Its issue records',
             'filters': 'Filters',
             'filters_on': 'Filters, {n} on',
-            'showing': '{n} of {total} issue records.',
+            'filters_clear': 'Clear filters',
+            # the status line, as chapter 18's script writes it after each change: "{n} of {total} " and the noun
+            'showing': '{n} of {total} issue records',
+            'records_noun': 'issue records',
+            'records_none': 'No issue record matches. Turn a filter off, or clear the filters, to see more.',
         },
     },
     'A14': {
-        'view': 'Loop R18',
+        'view': 'Loop R18, “{title}”',             # in quotation marks, as Rule 18.22 names a loop
         'current_view': 'Loops',
         'crumbs': [['Home', '/atlas'], ['Loops', '/atlas/loops']],
         'page': {

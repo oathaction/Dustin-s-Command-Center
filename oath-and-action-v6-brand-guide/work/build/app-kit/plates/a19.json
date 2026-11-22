@@ -1,15 +1,15 @@
 {
  "id": "A19",
  "type": "atlas-page",
- "title": "Loop R18 | Who Do They Answer To? | Oath & Action",
+ "title": "Loop R18, “Weakening watchdogs lowers the cost of further unilateral action” | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-22T23:01:24.204Z",
+ "written": "2026-11-22T23:05:27.540Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
    "generator": "work/build/scripts/phase-4/phase4_ch21_build.py",
    "id": "A14",
-   "sha256": "a368db6ce25b88d9b4bd8725c6f9cb31f6e4e4661343635c89b3850d01f5c3db"
+   "sha256": "fdcc5f235fa0cf78de0dcdb31d3d53dbf8277ef8cce0451c07fef121394ddd6c"
   },
   {
    "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -96,13 +96,11 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "atlas_test": {
-  "ran": "2026-11-22T23:01:35.770Z",
+  "ran": "2026-11-22T23:05:39.172Z",
   "pass": 64,
   "fail": 0,
   "first_fail": null,
-  "self_test": "FAIL",
-  "self_test_misses": [
-   "FAIL the clean pages stay quiet: 26 page(s), 12 FAIL line(s), first: FAIL T16 A11 export 1440-dark: a word the generator does not print yet: ['claim_summary', 'grade', 'jurisdiction', 'limitation', 'period', 'population'] (contract C9)"
-  ]
+  "self_test": "PASS",
+  "self_test_misses": []
  }
 }

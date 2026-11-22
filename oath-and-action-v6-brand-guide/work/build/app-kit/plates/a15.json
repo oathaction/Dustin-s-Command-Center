@@ -3,13 +3,13 @@
  "type": "atlas-page",
  "title": "Loops | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-22T23:01:10.815Z",
+ "written": "2026-11-22T23:05:13.634Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
    "generator": "work/build/scripts/phase-4/phase4_ch21_build.py",
    "id": "A15",
-   "sha256": "00d2153b380a31da14c2c90fa843a3afb6d037edac91db8bcb6d588486295e4a"
+   "sha256": "c98866972ca05d7fa603065db213321feb35f1c43d4440f0ea8d89bb0b99cc19"
   },
   {
    "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -298,13 +298,11 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "atlas_test": {
-  "ran": "2026-11-22T23:01:35.770Z",
+  "ran": "2026-11-22T23:05:39.172Z",
   "pass": 96,
   "fail": 0,
   "first_fail": null,
-  "self_test": "FAIL",
-  "self_test_misses": [
-   "FAIL the clean pages stay quiet: 26 page(s), 12 FAIL line(s), first: FAIL T16 A11 export 1440-dark: a word the generator does not print yet: ['claim_summary', 'grade', 'jurisdiction', 'limitation', 'period', 'population'] (contract C9)"
-  ]
+  "self_test": "PASS",
+  "self_test_misses": []
  }
 }
