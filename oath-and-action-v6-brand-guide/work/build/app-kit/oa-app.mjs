@@ -123,14 +123,24 @@ async function web_checks(p, url, vw, vh) {
   return r;
 }
 
+// chat 11c: a kit module and every module it imports by a relative path, followed through their imports
+function imports_of(rel, seen = new Set()) {
+  if (seen.has(rel)) return seen;
+  seen.add(rel);
+  const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+  for (const m of src.matchAll(/^import\s[^;]*?\sfrom\s+'(\.{1,2}\/[^']+\.mjs)'/gm)) imports_of(path.relative(ROOT, path.resolve(path.dirname(path.join(ROOT, rel)), m[1])), seen);
+  return seen;
+}
+
 // Contract C4: the plate the guide build places for a data-oa-app placeholder, with every input's hash so the build can tell
 // a stale drawing. The renderer type's style goes beside it once (plates/<type>.css), for the page's head.
 function write_plate(dir, gp, read, R, spec) {
   fs.mkdirSync(dir, { recursive: true });
   // the kit's own code, every renderer included (renderers import each other), and, for an application with a chart, the
   // chart kit's code and the forms its charts draw: modules load by import, which the read record does not see
-  const code = ['work/build/app-kit/lib.mjs', 'work/build/app-kit/oa-app.mjs',
-    ...fs.readdirSync(path.join(KIT, 'renderers')).filter((f) => f.endsWith('.mjs')).map((f) => `work/build/app-kit/renderers/${f}`)];
+  // chat 11c: the renderer's own module and the modules it imports, followed through their imports, so an edit to one
+  // renderer stales only the plates drawn by the renderers that load it (chapter 20's plates never read atlas-page.mjs)
+  const code = ['work/build/app-kit/oa-app.mjs', ...imports_of(`work/build/app-kit/renderers/${spec.type}.mjs`)];
   const charts = Object.keys(spec.charts || {});
   if (charts.length) {
     const ck = path.join(ROOT, 'work/build/chart-kit');
@@ -147,14 +157,22 @@ function write_plate(dir, gp, read, R, spec) {
   // contract C4: the words a plate takes from the chapter generator are checked by their own hash (words_hash), so an edit
   // to another page's words leaves this plate fresh; the generator file itself is no input
   const GEN = 'work/build/scripts/phase-4/phase4_ch20_build.py';
+  const GENS = [GEN, 'work/build/scripts/phase-4/phase4_ch21_build.py'];
+  const hash_of = (generator, ids) => {
+    const wh = spawnSync('python3', ['-I', path.join(KIT, 'tools/app_plates.py'), '--words-hash', ids, '--generator', generator], { encoding: 'utf8', cwd: ROOT });
+    if (wh.status !== 0 || !wh.stdout.trim()) throw new Error(`words hash for ${ids} in ${generator}: ${(wh.stderr || wh.stdout).trim()}`);
+    return { generator, id: ids, sha256: wh.stdout.trim() };
+  };
   let words_rec = null;
-  if (read.has(GEN)) {
+  if (gp.words_records) {
+    // chat 11c (contract C9): an atlas page's words are chapter 21's entry for it and chapter 20's site words; a record
+    // whose generator is not written yet (stand-in words, a provisional plate) is left out
+    for (const g of GENS) read.delete(g);
+    words_rec = gp.words_records.filter((w) => fs.existsSync(path.join(ROOT, w.generator))).map((w) => hash_of(w.generator, w.id));
+  } else if (read.has(GEN)) {
     read.delete(GEN);
     // the entries the plate prints: its own, and for the favicon plate's tab the home page's title too
-    const ids = spec.type === 'favicon-set' ? `${spec.id},A06` : spec.id;
-    const wh = spawnSync('python3', ['-I', path.join(KIT, 'tools/app_plates.py'), '--words-hash', ids], { encoding: 'utf8', cwd: ROOT });
-    if (wh.status !== 0 || !wh.stdout.trim()) throw new Error(`words hash for ${ids}: ${(wh.stderr || wh.stdout).trim()}`);
-    words_rec = { generator: GEN, id: ids, sha256: wh.stdout.trim() };
+    words_rec = hash_of(GEN, spec.type === 'favicon-set' ? `${spec.id},A06` : spec.id);
   }
   for (const rel of [...new Set([...code, path.relative(ROOT, path.join(specdir, specfile)), ...read])].sort()) {
     if (fs.existsSync(path.join(ROOT, rel)) && fs.statSync(path.join(ROOT, rel)).isFile()) inputs[rel] = sha256(rel);
@@ -165,6 +183,8 @@ function write_plate(dir, gp, read, R, spec) {
     ...(gp.words_from && !String(gp.words_from).startsWith('work/') ? { provisional_words: gp.words_from } : {}), written: new Date().toISOString(), by: 'work/build/app-kit/oa-app.mjs',
     ...(gp.switch_words ? { switch_words: gp.switch_words } : {}),
     ...(words_rec ? { words: words_rec } : {}),
+    ...(gp.styles ? { styles: gp.styles } : {}),
+    ...(gp.atlas ? { atlas: gp.atlas } : {}),
     ...(gp.symbols && Object.keys(gp.symbols).length ? { symbols: gp.symbols } : {}),
     views: gp.views.map(({ key, w, h, theme, alt, screens, html }) => ({ key, w, h, theme, alt, ...(screens ? { screens } : {}), html })), inputs };
   fs.writeFileSync(path.join(dir, `${spec.id.toLowerCase()}.json`), JSON.stringify(out, null, 1));
@@ -315,7 +335,7 @@ async function main() {
               + '.fi-tab--dark{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal)}.fi-tab--dark svg{color:var(--oa-color-identity-signature-on-charcoal)}'
               + '.fi-ico{display:flex;align-items:flex-end;gap:16px;height:48px}.fi-ico svg{display:block;color:var(--oa-color-identity-signature)}' });
         }
-      } else if (spec.type === 'web-site') {
+      } else if (spec.type === 'web-site' || spec.type === 'atlas-page') {
         // chat 11: the website's pages (A04 to A08). The working page goes to the exports as HTML; each width and theme is
         // captured from it as a full-length PNG with the page's facts and its web checks; the menu's open states are
         // captured by pressing Menu; each guide frame is measured on its own markup at its width.
@@ -484,7 +504,9 @@ ${r.head_links || ''}
           heights[key] = h;
         }
         facts.frame_heights = heights;
-        if (spec.guide) guide_plates.push({ spec, type: spec.type, css: r.css, views, words_from: r.words_from, title: r.title, symbols: plate_symbols });
+        // chat 11c: an atlas plate carries only its own rules (r.plate_css) and names the website's style it stands on
+        if (spec.guide) guide_plates.push({ spec, type: spec.type, css: r.plate_css || r.css, views, words_from: r.words_from, title: r.title, symbols: plate_symbols,
+          ...(r.styles ? { styles: r.styles } : {}), ...(r.atlas ? { atlas: r.atlas } : {}), ...(r.words_records ? { words_records: r.words_records } : {}) });
         plates.push({ id: spec.id, html: plate({ id: spec.id.toLowerCase(), head: r.plate.head, line: r.plate.line, css: r.css, frames: views.map((v) => v.html) }) });
         extra_page.kit_css = extra_page.kit_css || kit_css;
         extra_page.sprite.push(r.sprite);

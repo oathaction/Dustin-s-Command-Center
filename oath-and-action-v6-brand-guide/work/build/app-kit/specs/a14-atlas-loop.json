@@ -1,0 +1,19 @@
+{
+ "id": "A14",
+ "type": "atlas-page",
+ "guide": true,
+ "view": "loop",
+ "record": "R18",
+ "chosen_reform": "R-11",
+ "step": null,
+ "spec_source": "work/handoffs/phase-4/20261121_Chapter-21-Plan.md, section 3.5; the design director's atlas view specs",
+ "widths": [
+  {"w": 1440, "vh": 900, "platform": "website.page_1440"},
+  {"w": 390, "vh": 844, "platform": "website.page_390"}
+ ],
+ "views": ["1440-light", "390-light", "1440-dark", "390-dark"],
+ "export_name": "Atlas-Loop-R18-Page",
+ "alt": "Loop R18’s page in our systems atlas.",
+ "plate_head": "Loop page",
+ "plate_line": "Drawn by the application kit at build."
+}

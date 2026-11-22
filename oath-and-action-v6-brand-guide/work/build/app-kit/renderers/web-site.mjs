@@ -413,7 +413,8 @@ function pillar_row(current) {
     + (i < 3 ? use('u-arrow-16px', 16, 'ar') : '') + `</li>`).join('') + `</ol>`;
 }
 
-function footer(W) {
+// chat 11c: exported for the atlas pages (renderers/atlas-page.mjs), which draw the website's own footer by import
+export function footer(W) {
   const f = W.footer;
   const groups = f.groups.map(([h, links], i) => `<div class="grp"><h2 id="{pid}-fg${i}">${esc(h)}</h2><ul aria-labelledby="{pid}-fg${i}">`
     + links.map(([w, href]) => `<li><a href="${esc(href)}">${esc(w)}</a></li>`).join('') + `</ul></div>`).join('');
@@ -583,7 +584,8 @@ function drop(html, open, tag) {
   while ((m = re.exec(html))) { depth += m[0][1] === '/' ? -1 : 1; if (!depth) return html.slice(0, i) + html.slice(m.index + m[0].length); }
   return html;
 }
-function frame_masthead(head, w, open) {
+// chat 11c: exported for the atlas pages, whose frames carry the masthead as the website's frames do
+export function frame_masthead(head, w, open) {
   const em = w / 16;
   if (em >= BP.tablet) { head = drop(head, /<svg class="oa-masthead-wm oa-masthead-wm--24"/, 'svg'); head = drop(head, /<svg class="oa-masthead-wm oa-masthead-wm--16"/, 'svg'); }
   else { head = drop(head, /<svg [^>]*class="ws-l3"/, 'svg'); head = drop(head, em >= BP.phone ? /<svg class="oa-masthead-wm oa-masthead-wm--16"/ : /<svg class="oa-masthead-wm oa-masthead-wm--24"/, 'svg'); }

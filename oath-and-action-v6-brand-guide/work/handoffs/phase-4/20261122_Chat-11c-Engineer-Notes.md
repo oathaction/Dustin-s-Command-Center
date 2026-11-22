@@ -2,13 +2,14 @@
 
 Engineer, chat 11c, November 22, 2026. Brief: `work/handoffs/phase-4/20261122_Chat-11c-Brief.md`, section 6.4. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/e76584b2-1bba-5266-a75e-730f247433d8/scratchpad/c11c/engineer/`. Started 21:48:21 UTC (`date -u`).
 
-Status: 21:52 UTC. Reading done; the contracts below are fixed for the design director, the data lead and the editor. Building the renderer's shell, the figure step, the content files and the atlas test's harness now, before the shell spec and the rulings land.
+Status: 21:59 UTC. The data lead's rulings R1 to R13 read at 21:58; C9 takes R1's additions (below). Reading done; the contracts below are fixed for the design director, the data lead and the editor. Building the renderer's shell, the figure step, the content files and the atlas test's harness now, before the shell spec and the rulings land.
 
 ## Routine calls
 
 - D4-xxx | The atlas pages take the application IDs A11 to A16: A11 the atlas home, A12 Reform R-23's page, A13 the Register with sheet D04 open, A14 Loop R18's page, A15 the loop index, A16 How to read | Plan 9.2 leaves the IDs after A10 to the engineer; one ID a page keeps one working export and one plate a page, as A06 to A08 do
 - D4-xxx | The `atlas-page` renderer returns the same shape the `web-site` renderer returns, so `oa-app.mjs` draws, exports, prunes, measures (C5) and checks an atlas page in the website's own branch | One path for every page of the site: the frames, captures, axe, Tab order, reflow and screens checks chapter 20 proved apply unchanged
 - D4-xxx | A plate's code inputs are the renderer modules its own renderer imports, followed through their imports, not every file in `renderers/` | Otherwise each edit to `atlas-page.mjs` would stale chapter 20's seven plates, and chapter 20 must not move
+- D4-xxx | The figure step's plate inputs are every file it opens under the project folder (an audit hook) and the sources of the modules it loads, less `guide_build.py`, which chapter 15 reads at import only to check that the shell still reads its plate keys | A drawing goes stale when anything it reads changes; the guide build draws nothing in an atlas figure and is the engineer's file to change this chat
 - D4-xxx | The figure step extends chapter 15's `SAY` table in its own process for a variable chapter 15 never read aloud (Variable D2: no article, singular), never in chapter 15's file | `read_aloud` stops on a variable with no entry; chapter 15 is read and never edited (plan 9.3)
 
 ## Rulings
@@ -71,13 +72,18 @@ The site's masthead and footer words stay chapter 20's (`phase4_ch20_build.py --
 | `data-count`, `data-count-of` | every printed count | the number, and the method's key: `part-inside:B`, `flow:A>B`, `sheet:D04:connections`, `sheet:D04:grade:plausible`, `atlas:variables`, `records-shown:D04`, `loop:R18:minus`, `loop:R18:records` |
 | `data-red="working"`, `data-red-job` | every red mark | Rule 12.5's marker, `where a reform acts` |
 | `data-effect-family`, `data-effect-code` | each effect row | `DQ`, `GE`, `EP`, `EQ`, and the code as stored |
-| `data-route`, `data-checked` | each route row | the route's code, and its check date or `none` |
-| `data-status-date` | each "As of" | the date the record holds |
-| `data-evidence-href` | every claim, figure, connection chip and step | the link or disclosure that holds its record (`#register-l14`, `#claim-cl1340`) |
+| `data-route`, `data-checked` | each route row | the route's code, and its own check date or `none`, never the reform's status date |
+| `data-status-date` | each "As of" | the date the record's `status.checked` holds |
+| `data-evidence-href` | every claim, figure, connection chip and step | the link or disclosure that holds its record, by the data lead's R5 and the paths below |
 | `data-oa-section` | each section after the first screen, and the footer | C5's section name, for the screens measure |
 | `data-oa-part` | the parts a crop may name | as listed above |
-| `data-atlas-reads` | the line read aloud | the variables and connections it reads, in order |
+| `data-atlas-reads` | the line read aloud | the variables and connections it reads, in order, each variable with its direction: `D2:rises L14 D4:falls L15 D2:rises` (the data lead's R1 and R4) |
+| `data-weakest="true"` | the weakest step's mark only, in the drawing and the stepper | the step the loop's evidence summary names by the data lead's R8 |
+| `data-part` | a part's box on the home drawing and its card at 390 px, never `data-atlas-kind` (a part is no typed record, Rule 10.8) | `A` to `E`, `X`, `EC`, `TC`; with a question pressed, `data-lit="true"` or `"false"` |
+| `data-pathway` | the pressed question's button | the pathway's ID, `PW06` |
 | `data-oa-hold` | each stepper step | the hold in ms (chapter 18's stepper) |
+
+**Paths and anchors** (the data lead's R5 leaves the prefixes to me). The atlas home `/atlas`; the loop index `/atlas/loops`, a loop `/atlas/loops/r18`; reforms `/atlas/reforms`, a reform `/atlas/reforms/r-23`; the Register `/atlas/register`, a sheet `/atlas/register/d04`, `/atlas/register/ec`, `/atlas/register/tc`; How to read `/atlas/how-to-read`; a route's workflow `/atlas/routes/ss`. Anchors on a sheet: `register-<connection>`, `variable-<variable>`, `issue-<issue>`; a claim's disclosure on the page that prints its figure, `claim-<claim>`. All lowercase; the sheet in a path is computed by `sheet()`, never typed. Inside one export a link to its own sheet is the bare anchor. The generator's `views` and `crumbs` hrefs take these paths.
 
 **The atlas test** (`work/build/app-kit/tools/atlas_test.py`, live when marked Done). Plan section 8's 16 checks, one line a check and view: `PASS T2 A14 1440-light: 2 connections match the model` or `FAIL T2 A14 1440-light Connection L15: printed documented, model plausible`. It reads each working export and each plate frame with the model, and the kit's facts for the pixel and size checks (T13, T14). `oa-app.mjs build` runs it after drawing any atlas page and stops on a FAIL; it writes `work/build/app-kit/plates/atlas-test.json` (the lines, the model's hash, each plate's hash), which the strict guide build reads: a FAIL, a missing report or a report older than a placed atlas plate is a warning, so `--strict` fails. `--self-test` plants one fault a check in a copy of an export and passes only when each plant is caught by its own check and the clean pages stay quiet; the kit's build and the strict build both run it. Rule 21.16's correct plate may print the report from `atlas-test.json`.
 
@@ -86,6 +92,8 @@ The site's masthead and footer words stay chapter 20's (`phase4_ch20_build.py --
 ## Done
 
 ## Requests
+
+- **Design director and data lead (21:59 UTC): a red target on a patterned connection.** R10 makes Connections L14 and L15 red when Reform R-11 is chosen on Loop R18, and L15 is plausible, drawn dashed. Chapter 15's drawing code refuses a red target on a patterned line (`phase3_ch15_build.py`, `conn()`: "a red target here draws a solid connection; a patterned one needs its lead-in at 6 px"), and Rule 12.5's rows set the red at 4 px on a 6 px Charcoal case without saying how a pattern runs at that weight. I can draw it in the figure step from System 1's own `wire_marks(lit=True)` and `fitted()` pattern at the 4 px weight, the case under it dashed on the same rhythm, with the 28 px lead-in solid, and leave chapter 15's file alone. Please say (a) whether the case follows the dashes or runs solid under them, and (b) the dash lengths at 4 px (System 1's pattern scaled by weight, or the 2 px pattern's lengths kept). Until then the figure step draws L14 and Variable D4 red and names L15 under `not_red`, and the atlas test fails T6 on the loop page, as it should.
 
 ## Not fixed
 

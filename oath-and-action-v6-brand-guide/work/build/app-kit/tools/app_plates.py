@@ -33,13 +33,20 @@ GENERATOR = "work/build/scripts/phase-4/phase4_ch20_build.py"   # DD-3: the chap
 
 def words_hash(app_id, generator=GENERATOR):
     """The SHA-256 of one application's words as the chapter generator prints them now (--page-words all, read-only), in a
-    canonical JSON; None when the generator prints none for it. Cached for the run."""
+    canonical JSON; None when the generator prints none for it. Cached for the run. An ID may name one key of an entry,
+    "A06:site" (chat 11c: an atlas page's plate holds chapter 20's site words, not the home page's)."""
     import subprocess
     if generator not in STATE["words"]:
         r = subprocess.run(["python3", "-I", str(ROOT / generator), "--page-words", "all"], capture_output=True, text=True, cwd=str(ROOT))
         STATE["words"][generator] = json.loads(r.stdout) if r.returncode == 0 and r.stdout.strip() else {}
     ids = str(app_id).split(",")
-    entry = STATE["words"][generator].get(ids[0]) if len(ids) == 1 else {i: STATE["words"][generator].get(i) for i in ids}
+    got = STATE["words"][generator]
+
+    def one(i):
+        k, _, sub = i.partition(":")
+        e = got.get(k)
+        return e.get(sub) if (sub and isinstance(e, dict)) else (e if not sub else None)
+    entry = one(ids[0]) if len(ids) == 1 else {i: one(i) for i in ids}
     if entry is None or (isinstance(entry, dict) and len(ids) > 1 and any(v is None for v in entry.values())):
         return None
     return hashlib.sha256(json.dumps(entry, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
@@ -66,9 +73,11 @@ def stale(data):
     """The inputs whose bytes changed since the kit drew the plate (or that are gone), and its words, where the plate took
     them from the chapter generator, if they changed since."""
     out = []
-    w = data.get("words")
-    if w and words_hash(w.get("id", data["id"]), w.get("generator", GENERATOR)) != w.get("sha256"):
-        out.append(f"its words in {w.get('generator', GENERATOR)}")
+    # chat 11c: a plate may hold its words from more than one generator (an atlas page: chapter 21's and chapter 20's site)
+    ws = data.get("words")
+    for w in (ws if isinstance(ws, list) else [ws] if ws else []):
+        if words_hash(w.get("id", data["id"]), w.get("generator", GENERATOR)) != w.get("sha256"):
+            out.append(f"its words in {w.get('generator', GENERATOR)}")
     for rel, h in sorted((data.get("inputs") or {}).items()):
         f = ROOT / rel
         if not f.is_file() or hashlib.sha256(f.read_bytes()).hexdigest() != h:
@@ -110,6 +119,20 @@ def expand(src, sid, warn):
         if not chosen:
             return m.group(0)
         STATE["types"].setdefault(data["type"], data.get("css") or f"{data['type']}.css")
+        # chat 11c (DR-319): an atlas plate stands on the website's style, which its frames need in the head too
+        for t in data.get("styles") or []:
+            STATE["types"].setdefault(t, f"{t}.css")
+        # chat 11c (contract C9): an atlas plate carries the atlas test's result for its own frames and working page; a
+        # FAIL, a self-test that failed or no result is a warning, so --strict fails (Rule 21.16)
+        if data["type"] == "atlas-page":
+            at = data.get("atlas_test")
+            if not at:
+                warn(f"{sid}: the kit's plate {app_id} carries no atlas test result; run node work/build/app-kit/oa-app.mjs build {app_id} (contract C9)")
+            else:
+                if at.get("fail"):
+                    warn(f"{sid}: the atlas test fails {app_id} {at['fail']} time(s), first: {at.get('first_fail', '')} (Rule 21.16, contract C9)")
+                if at.get("self_test") != "PASS":
+                    warn(f"{sid}: the atlas test's self-test did not pass when the kit drew {app_id} ({at.get('self_test')}) (contract C9)")
         # the identity masters the frames draw by <use>, carried once for the page (step 4)
         for sid_, sym in (data.get("symbols") or {}).items():
             if sid_ in STATE["symbols"] and STATE["symbols"][sid_] != sym:
@@ -261,13 +284,39 @@ def self_test():
               fresh == [] and other == [] and mine and "its words" in mine[0])
         hs = hs_kept
         check("the page's head gets each placed type's style once, and the frames' own", hs.count("<style") == 2 and ".wa{color:red}" in hs and ".oa-app-frame" in hs)
+        # chat 11c: one key of an entry, a plate with two generators' words, an atlas plate's styles and its test result
+        gen.write_text('import json,sys\nprint(json.dumps({"A06": {"site": {"skip": "Skip"}, "title": "Home"}, "A99": {"title": "Two"}}))\n')
+        reset(d)
+        hs_ = hashlib.sha256(json.dumps({"skip": "Skip"}, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
+        check("a words record may name one key of an entry (A06:site)", words_hash("A06:site", str(gen)) == hs_)
+        two = [{"generator": str(gen), "id": "A06:site", "sha256": hs_}, {"generator": str(gen), "id": "A99", "sha256": h}]
+        reset(d)
+        both = stale({"id": "A99", "inputs": {}, "words": two})
+        check("a plate with two generators' words goes stale when either changes", len(both) == 1 and "its words" in both[0])
+        atlas = {"id": "A97", "type": "atlas-page", "css": "atlas-page.css", "styles": ["web-site"], "inputs": {},
+                 "views": [{"key": "390-light", "w": 390, "h": 800, "theme": "light", "alt": "x", "html": frame.replace("A99", "A97")}]}
+        (d / "atlas-page.css").write_text(".wa-tb{display:block}")
+        (d / "web-site.css").write_text(".ws{display:block}")
+        for name, rec, want in (("no atlas test result", None, "carries no atlas test result"),
+                                ("an atlas test FAIL", {"pass": 40, "fail": 1, "first_fail": "FAIL T2 A97 390-light", "self_test": "PASS"}, "the atlas test fails A97"),
+                                ("a self-test that did not pass", {"pass": 41, "fail": 0, "self_test": "FAIL"}, "self-test did not pass"),
+                                ("a clean result", {"pass": 41, "fail": 0, "self_test": "PASS"}, None)):
+            a_ = dict(atlas, **({"atlas_test": rec} if rec else {}))
+            (d / "a97.json").write_text(json.dumps(a_))
+            reset(d)
+            w = []
+            expand('<div data-oa-app="A97"></div>', "s-21-x", w.append)
+            check(f"an atlas plate with {name} {'warns' if want else 'is quiet'}", any(want in x for x in w) if want else not w)
+        hs2 = head_styles()
+        check("an atlas plate puts the website's style in the head beside its own", ".ws{display:block}" in hs2 and ".wa-tb{display:block}" in hs2)
     reset()
     return bad
 
 
 if __name__ == "__main__":
     if "--words-hash" in sys.argv:
-        print(words_hash(sys.argv[sys.argv.index("--words-hash") + 1]) or "")
+        gen = sys.argv[sys.argv.index("--generator") + 1] if "--generator" in sys.argv else GENERATOR
+        print(words_hash(sys.argv[sys.argv.index("--words-hash") + 1], gen) or "")
         sys.exit(0)
     if "--self-test" in sys.argv:
         sys.exit(1 if self_test() else 0)

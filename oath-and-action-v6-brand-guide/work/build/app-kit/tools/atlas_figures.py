@@ -194,6 +194,52 @@ def reform_rec(rid):
             "complements": r["complements"], "sources": r["sources"], "tradeoffs": r.get("tradeoffs")}
 
 
+GRADE_ORDER = ["documented", "well-supported", "plausible", "plausible_contested", "hypothesis"]   # Rule 13.3's order
+
+
+def weakest_step(lid):
+    """The weakest step by the data lead's ruling R8: the connection the loop's own evidence summary names as weakest, its
+    grade the least certain among the loop's steps (ties allowed; a step that fails the check stops the build); None when
+    the sentence names no ID."""
+    V = model()
+    lp = V["loops"][lid]
+    txt = lp["evidence_summary"] or ""
+    for k in lp["links"]:                       # 1. "<ID>: <connection name>" becomes the bare ID
+        txt = txt.replace(f"{k}: {V['links'][k]['name']}", k)
+    sent = next((x for x in re.split(r"(?<=[.;])\s+", txt) if re.search(r"\bweake(st|r)\b", x)), None)   # 2.
+    if not sent:
+        return None
+    ids = r"\b(?:[A-Z]{1,3}\d+[a-z]?)\b"
+    m = re.search(r"\bweake(?:st|r)\b(?:\s+step)?\s+is\s+(" + ids + ")", sent)                     # 3.
+    if m:
+        k = m.group(1)
+    else:
+        before = sent[:re.search(r"\bweake(st|r)\b", sent).start()]
+        found = [x for x in re.findall(ids, before) if x in V["links"]]
+        k = found[-1] if found else None
+    if k is None or k not in V["links"]:
+        return None                              # 5. no ID: no step marked
+    lo = max(GRADE_ORDER.index(V["links"][x]["evidence"]) for x in lp["links"])
+    need(k in lp["links"] and GRADE_ORDER.index(V["links"][k]["evidence"]) == lo,
+         f"Loop {lid}'s evidence summary names {k} its weakest step, which is not its least certain step (R8)")    # 4.
+    return k
+
+
+def reads(lid):
+    """The read-aloud line's marks by the data lead's R4: the first variable rises, and each connection turns the next
+    variable at a minus only: "D2:rises L14 D4:falls L15 D2:rises"."""
+    V = model()
+    lp = V["loops"][lid]
+    codes = [c for c, _ in lp["chain"]]
+    up, out = True, [f"{codes[0]}:rises"]
+    for i, k in enumerate(lp["links"]):
+        if V["links"][k]["polarity"] == "-":
+            up = not up
+        out += [k, f"{codes[(i + 1) % len(codes)]}:{'rises' if up else 'falls'}"]
+    need((out[-1].endswith(":rises")) == (lp["type"] == "R"), f"Loop {lid}'s signs and its kind disagree (R4)")
+    return " ".join(out)
+
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Figures, by chapter 15's own drawing code
 # ---------------------------------------------------------------------------------------------------------------------
@@ -215,9 +261,8 @@ def loop_figure(lid, targets=()):
     lp = C.LOOP[lid]
     codes = [c for c, _ in lp["chain"]]
     lids = lp["links"]
-    weak_g = C.least_certain(lids)
-    weak = [i for i, x in enumerate(lids) if C.link(x)["evidence"] == weak_g]
-    weakest = weak[0] if len({C.link(x)["evidence"] for x in lids}) > 1 and len(weak) == 1 else None
+    wk = weakest_step(lid)                       # the data lead's R8
+    weakest = lids.index(wk) if wk else None
     kind = "reinforcing" if lp["type"] == "R" else "balancing"
     drawable = {t for t in targets if t in C.NODE or (t in C.LINK and C.tex(C.link(t)["evidence"]) == "solid")}
     not_red = [t for t in targets if t not in drawable]
@@ -227,10 +272,31 @@ def loop_figure(lid, targets=()):
         body, h = C.three_loop(codes, lids, weakest=weakest, inside=(lid, kind), targets=drawable)
     else:
         need(False, f"Loop {lid} has {len(codes)} variables; the figure step draws two and three today")
-    svg = C.svg_wrap(body, h)
-    return {"svg": svg, "w": C.W, "h": h, "variables": codes, "connections": lids, "weakest": lids[weakest] if weakest is not None else None,
+    svg = mark_svg(C.svg_wrap(body, h), codes, lids, wk)
+    return {"svg": svg, "w": C.W, "h": h, "variables": codes, "connections": lids, "weakest": wk,
             "red": sorted(drawable & set(codes + lids)), "not_red": not_red, "kind": kind,
-            "read_aloud": C.read_aloud(codes, lids), "minus": C.minus_count(lids)}
+            "read_aloud": C.read_aloud(codes, lids), "reads": reads(lid), "minus": C.minus_count(lids)}
+
+
+def mark_svg(svg, codes, lids, weakest=None):
+    """The marks the atlas test reads (contract C9, the data lead's R1), set on chapter 15's drawing as it comes: each
+    connection's group, in the loop's order, takes its ID, sign, type, delay and grade, and the weakest step data-weakest;
+    each pill, in the chain's order, its variable's ID. Chapter 15 draws the connections first, then the pills."""
+    V = model()
+    groups = [m.start() for m in re.finditer(r'<g class="wr', svg)]
+    need(len(groups) == len(lids), f"the drawing holds {len(groups)} connection groups for {len(lids)} connections")
+    for i in reversed(range(len(lids))):
+        x = V["links"][lids[i]]
+        at = groups[i] + len('<g')
+        a = (f' data-atlas-kind="Connection" data-atlas-id="{lids[i]}" data-sign="{x["polarity"] or "none"}" data-type="{x["type"]}"'
+             f' data-delay="{x["delay"]}" data-grade="{x["evidence"]}"' + (' data-weakest="true"' if lids[i] == weakest else ""))
+        svg = svg[:at] + a + svg[at:]
+    pills = [m.start() for m in re.finditer(r'<rect class="pl', svg)]
+    need(len(pills) == len(codes), f"the drawing holds {len(pills)} pills for {len(codes)} variables")
+    for i in reversed(range(len(codes))):
+        at = pills[i] + len('<rect')
+        svg = svg[:at] + f' data-atlas-kind="Variable" data-atlas-id="{codes[i]}"' + svg[at:]
+    return svg
 
 
 def target_figure(a_code, b_code, lid, targets=()):
@@ -246,7 +312,7 @@ def target_figure(a_code, b_code, lid, targets=()):
         at = pills[i]
         end = body.index("/>", at)
         body = body[:at] + body[at:end].replace('class="pl"', 'class="pl rp"', 1) + C.RED + body[end:]
-    return {"svg": C.svg_wrap(body, h, w=C.card_width(a_code, b_code, lid)), "h": h, "variables": [a_code, b_code],
+    return {"svg": mark_svg(C.svg_wrap(body, h, w=C.card_width(a_code, b_code, lid)), [a_code, b_code], [lid]), "h": h, "variables": [a_code, b_code],
             "connections": [lid], "red": red}
 
 
@@ -274,7 +340,7 @@ def view_loop(spec):
                      "delay": delay(lp["delay"]) if lp.get("delay") in ("S", "M", "L") else lp.get("delay"),
                      "records": lp["records"], "reforms_listed": lp["reforms"]},
             "variables": [var_rec(c) for c, _ in lp["chain"]], "steps": steps, "minus": fig["minus"],
-            "weakest": fig["weakest"], "read_aloud": fig["read_aloud"],
+            "weakest": fig["weakest"], "read_aloud": fig["read_aloud"], "reads": fig["reads"],
             "offered": [reform_rec(k) for k in offered], "chosen": chosen, "tags": others,
             "figure": {k: fig[k] for k in ("svg", "w", "h", "red", "not_red")}}
 
@@ -305,7 +371,8 @@ def build(spec):
     rec = spec.get("record")
     out = {"model": {"sha256": sha(), "title": V["meta"]["title"], "subtitle": V["meta"]["subtitle"],
                      "snapshot": V["meta"]["snapshot"], "snapshot_words": words_date(V["meta"]["snapshot"])},
-           "parts": parts(), "kind_words": list(KIND.values())}
+           "parts": parts(), "kind_words": list(KIND.values()),
+           "effect_words": V["outcomes"]["effect_codes"]}
     fn = VIEWS.get(spec["view"])
     out["view"] = fn(spec) if fn else {}
     # the locator (Rule 12.7): the parts the page's record sits in
@@ -347,6 +414,10 @@ def self_test():
           and V["links"][v["weakest"]]["evidence"] == c15().least_certain(V["loops"]["R18"]["links"]))
     check("a red target is drawn only where chapter 15 can draw it; the rest are named", set(v["figure"]["red"]) | set(v["figure"]["not_red"]) == set(V["reforms"]["R-11"]["targets"]))
     check("the read-aloud line comes back where it began, rising, on a reinforcing loop", v["loop"]["type"] == "R" and v["read_aloud"].endswith(" rises."))
+    check("its marks carry each variable's direction (R4): D2 rises, L14, D4 falls, L15, D2 rises", v["reads"] == "D2:rises L14 D4:falls L15 D2:rises")
+    got = {k: weakest_step(k) for k, lp in V["loops"].items() if not lp["closure"].startswith("conceptual")}
+    check("R8's weakest steps on every numbered loop: R18 L15, R1 L02, R10 L53, R7 and R8 none",
+          got["R18"] == "L15" and got["R1"] == "L02" and got["R10"] == "L53" and got["R7"] is None and got["R8"] is None and got["R16"] == "T01")
     r = view_reform({"record": "R-23"})
     check("Reform R-23's page reads four effect rows, one a family", [e_["family"] for e_ in r["reform"]["effects"]] == ["DQ", "GE", "EP", "EQ"])
     check("every file this step read sits under the project folder and the model is one of them", "work/extract/atlas-v7-data.json" in READ)
