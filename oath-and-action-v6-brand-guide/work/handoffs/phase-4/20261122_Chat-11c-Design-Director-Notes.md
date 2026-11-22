@@ -36,6 +36,14 @@ I follow the data lead's R1 to R13 (read whole at 22:08 UTC). My answers to the 
 - **DD11C-C4, hand-over 2, the loop and reform views: landed 22:03 UTC** (specs sections 7 to 9): what every view shares inside main (columns, the head of a record's page, section heads, quotations, chips, candidate panels by a `panels` choice in the content file, red, crops); Loop R18 (A14) and Reform R-23 (A12), block by block, with their sections, columns at 1440 and 390, panels (the head panel on in each), red and dark frames. Two content-file choices are new: `panels` (the sections whose candidate panel is on) and, for A12, `remedy_split` (the sentence of the stored remedy text that opens the second reading).
 - **DD11C-C5, the page words: live 22:09 UTC.** `python3 -I work/build/scripts/phase-4/phase4_ch21_build.py --page-words <A11 to A16 | all>` prints C9's shape (`title`, `atlas`, `current_view`, `crumbs`, `page`), writes nothing and exits 0; the engineer can drop the `OA_ATLAS_WORDS` stand-in. Additions to C9: `atlas.views_button`, `atlas.parts` (the plain names and questions by part key), `atlas.grades`, `signs`, `delays`, `kinds`, `kind_words`, `not_checked`, `checked`, `as_of`; `page.steps[].hold` counted by the generator (AL-24). A page key the kit needs and the generator lacks goes under my "Requests" in the engineer's notes; the words are the editor's from 22:09 UTC.
 - **DD11C-C6, hand-overs 3 and 4: landed 22:20 UTC** (specs sections 10 to 13). Section 10, the Register (A13): the index table with its head row on Charcoal (and a grade key on Charcoal under 48em, where the head row is hidden), the sheet band on Charcoal, the variables and connections tables with their widths, the rejected option per DD-11C-1, the filters and records. Section 11, the loop index (A15, two frames, light only) and How to read (A16, one frame, meanings only per DD-11C-2). Section 12, the atlas home (A11): the head band on Charcoal joined to the title bar, the drawing's boxes and all 27 routes in a table with their count places (7 crossings, each a break), the phone form (R7) under 75em, the questions and the answer. Section 13, the rule plates: what each holds and which frames, with four new application states for the engineer to number (A17 to A20 proposed: home with every variable; Register with D10 open; Loop R18 on step 2; home with Claim CL1340's record open).
+- **DD11C-C7, revisions after the first drawing (DD-7): landed 23:06 UTC** in specs section 14, from the engineer's C5 table (23:01) and its Requests 4 and 7, for the engineer to draw:
+  - **C7.1, the section band** (specs 14.1): a Charcoal band at least 128 px tall from 64em (112 below), cols 1 to 12, holding the section's `h2` and a lede, on A11 `Questions`; A12 `Grades`, `Effects` (the as-of line and confidence words move in), `Routes` (the complements line moves in); A13 `Rejected`, `Records`; A14 `Stepper` (ED-F6's arithmetic line moves in), `Record`, `Evidence` (the records line moves in); A15 `Reinforcing` and `Balancing` (their table head rows go back to Newsprint). Until the editor's seven lede keys land, a band prints its `h2` alone at its minimum height.
+  - **C7.2, the phone heads** (specs 14.2): A11 under 64em, the head band holds the `h1` and the switch, the intro follows on Newsprint; A12 under 48em, the status panel holds its label, the as-of date and the two grades, with the status text and band words after it on Newsprint; A14 under 48em, the facts panel's rows in two columns without hairlines, Closure under the grade line on Newsprint.
+  - **C7.3** (specs 14.3): A13's index head row 88 px tall; A16 opens with a head band from edge to edge joined to the title bar, at least 160 px from 64em, `h1` then intro.
+  - **C7.4, the home drawing** (specs 14.4, your Request 7): the core row 184 px, box padding 12 px above and below, the question in `oa.type.caption`, 2 px and 6 px gaps; the lower row stays 104 px with its boxes in two columns (name, question, title left; lit line and counts right); closed height 568 px. The open drawing (A17): side padding 12 px, pills 172 px; a title that still needs four rows takes four there, named in the plate's notes.
+  - **C7.5, the crossing** (your Request 4): the rule governs: E to Your household breaks at X to Technology (the lower count), as you drew it; the specs' list is corrected.
+  - **C7.6, the remedy** (the data lead's Request 3): specs 9.1's remedy row reads "each at the length the record holds, both with the same standing (R15; DR-314, DR-323)".
+  - **C7.7, Rule 21.15's table** (your Request 8): the generator already reads `views[].contrast` in the shape you wrote (`text`, `secondary`, `red`, `hairline`, each with `token` and `ratio`) from A14 `1440-dark`.
 - **DD11C-C2, style placement (for the engineer):** an `atlas-page` plate needs `web-site.css` and `atlas-page.css` on the guide's page, each once; `tools/app_plates.py` registers one file a renderer type today, so it needs a way for one type to name both (specs section 5). `web-site.css` must stay byte-identical, so chapter 20's frames do not move.
 - **DD11C-C3, words (for the engineer, the editor):** chapter 21's generator prints C9's page-words shape, plus one key: `atlas.views_button`, the phone's button words (specs 2.4), beside `atlas.views_label`, the navigation's name. Live when this file says "Words for the editor".
 
@@ -59,9 +67,18 @@ Rules for the fields: a `{name}` in braces is a fact the build or the kit fills 
 - 22:09 UTC: the generator `phase4_ch21_build.py` with `--page-words` and `--check`; word fields handed to the editor.
 - 22:20 UTC: hand-overs 3 and 4 (specs sections 10 to 13), with the home drawing's routes proved by a prototype that reads the model (`home_proto.py` and `home_proto.png` in my scratch).
 - 22:25 UTC: the generator's plates: 34 plate functions; the 16 failure plates and the chips plate are drawn (59,721 bytes before the kit's frames); the 17 kit plates wait on A11 to A20 and the atlas test's report, so the generator writes nothing until the kit has drawn them.
+- 23:06 UTC: specs section 14, the revisions after the first drawing (C5's 26 screens, the home's rows, the crossing, R15's remedy row), as Contracts C7.1 to C7.7.
+- 23:09 UTC: the generator placed every plate and wrote the chapter: `work/build/guide/chapters/21-atlas.json`, 34 specimens `s-21-*.html`, `manifest-atlas.json` (`git status`: those 36 new files and the generator, specs and notes changed, nothing else). It now also fills `{title}` in a page's view from the kit's content file, fills `{retired}` in the Rule 21.9 failure plate, and checks each stepper line against the model (the editor's request 10: typed ID, stored name, grade word, delay words, both variables' titles; both lines pass). Rule 21.16's correct plate became a table of the sixteen checks by the four views, read from `plates/atlas-test.json` (1,264 lines, self-test PASS).
+- 23:09 UTC: strict build to my scratch under the lock: **exit 1, 16 warnings, all "the kit's plate is older than its words"** for A12, A14 and A19 (their words changed after the kit's 23:01 build: the editor's 23:05 edits and the `{title}` fill), so the engineer's run order (generator, kit build of A12, A14 and A19 with the section 14 revisions, generator, strict build) clears them; 14,622,706 bytes; no other warning.
 - 22:03 UTC: hand-over 2, the loop and reform views (specs sections 7 to 9).
 
 ## Requests
+
+- **DD11C-Q6, to the engineer (23:09 UTC): crops carry only their part.** A crop frame (`<width>-<theme>-<part>`) places the whole page's markup clipped to its part, so the eleven crop plates weigh about 560,000 bytes. Please draw a crop from the part's own subtree inside the page's root, its shell and its section wrappers (the classes and container queries it needs), so the picture is the same and the markup is the part's. My estimate: about 380,000 bytes back, with nothing a reader sees lost (as DR-319's savings).
+- **DD11C-Q7, to the engineer (23:09 UTC): the `atlas-page` style.** It places 52,907 bytes in the head against the plan's 13,000 for a renderer type's shared style; please list what it holds (chapter 18's code sets, the figures' style, the views' rules) and prune what no placed frame uses, as the generators prune their specimens.
+- **DD11C-Q8, to the editor (23:09 UTC):** Rule 21.16's correct plate is now a table, the sixteen checks against the four views, each cell PASS (or FAIL) with how many frames and exports the check read, from the test's own report; `R['21.16']['correct_alt']` and `correct_caption` still describe a list of lines. Also, the generator now fills `{retired}` in `whole_issues` (in words, "one") for its Rule 21.9 failure plate, and `{title}` in a page's `view` from the record the kit's content file names, so both can go into the words; the kit fills `{retired}` on the page (the engineer's side).
+
+- **DD11C-Q5, to the editor (23:06 UTC):** seven lede keys for the section bands of specs 14.1: `questions_lede` (A11), `grades_lede` (A12), `rejected_lede` and `records_lede` (A13), `record_lede` (A14), `reinforcing_lede` and `balancing_lede` (A15), drafts in the table there. The bands draw without them, at the same height.
 
 - **DD11C-Q4, to the editor (22:25 UTC):** `R['21.5']['specs']` still says a tag sits "6 px from the mark" and "Stacked under one leader line"; the kit lists the tags beside the drawing, one group under each mark's chip (specs 8.1, 9.1; DD-11C-6), so please word the Tag and Several tags rows that way. Also `R['21.1']['specs']`, Title bar: the atlas home's head band joins the title bar on Charcoal (specs 12.1), if you want the rule to say so.
 
@@ -77,36 +94,56 @@ Rules for the fields: a `{name}` in braces is a fact the build or the kit fills 
 
 ## Bytes (D4-63: chapter 21 at 655,000)
 
-Measured 22:27 UTC by `phase4_ch21_build.py --check` (each specimen's own bytes, before the kit's frames; the kit's frames and its `atlas-page.css` are not drawn yet, so the chapter's total waits):
+**Chapter 21 as placed: 1,539,423 bytes, 235 percent of its 655,000, 884,423 over** (strict build to my scratch, 23:09 UTC, its weight report). The page: 14,622,706 bytes today; the build projects **16.71 MB** with the chapters still to build at their allocations, **705,267 bytes past the 16 MB limit** (it was 15.82 MB with chapter 21 counted at 655,000). Under DR-271 nothing is cut to meet a figure; the 16 MB page is the one stop, so the projection is the main session's and Dustin's to weigh (Requests DD11C-Q6 and Q7 below would recover a large part with no content lost).
 
-| Plate | Bytes | Plan's estimate |
-|---|---|---|
-| s-21-1-failure | 2,983 | |
-| s-21-2-failure | 3,342 | |
-| s-21-3-failure | 2,453 | |
-| s-21-4-failure | 2,432 | |
-| s-21-5-failure | 3,055 | |
-| s-21-6-failure | 2,468 | |
-| s-21-7-failure | 6,089 | |
-| s-21-8-failure | 5,981 | |
-| s-21-9-failure | 2,465 | |
-| s-21-10-failure | 2,938 | |
-| s-21-11-failure | 3,164 | |
-| s-21-12-failure | 3,094 | |
-| s-21-13-failure | 2,174 | |
-| s-21-14-failure | 3,972 | |
-| s-21-15-failure | 3,432 | |
-| s-21-16-failure | 2,823 | |
-| **16 failure plates** | **52,865** | 80,000 |
-| s-21-chips | 8,583 | 8,000 |
-| **Drawn here, in all** | **61,448** | |
+Each plate as placed: its own fragment plus the kit's frames it places (each frame's markup as the kit's plate holds it; the guide wraps them in a few hundred bytes more). Measured 23:09 UTC from the specimens written and `work/build/app-kit/plates/a11.json` to `a20.json`:
 
-Still to measure once the kit draws A11 to A20: the four view plates, the eleven crop plates, How to read, Rule 21.15's and 21.16's plates, the shared `atlas-page.css` (DR-319: `web-site.css` costs chapter 21 nothing), the rule text, and the chapter's total against 655,000.
+| Plate | Own | Kit frames | As placed | Frames |
+|---|---|---|---|---|
+| s-21-1-correct | 1,086 | 9,497 | 10,583 | A14 1440-light-top 5,367; A14 390-light-open-top 4,130 |
+| s-21-1-failure | 2,983 | 0 | 2,983 | drawn here |
+| s-21-2-correct | 920 | 23,932 | 24,852 | A17 1440-light-drawing 23,932 |
+| s-21-2-failure | 3,342 | 0 | 3,342 | drawn here |
+| s-21-3-correct | 1,262 | 71,841 | 73,103 | A11 1440-light-drawing 16,789; A11 1440-light-questions 24,482; A11 390-light-questions 15,288; A11 390-dark-questions 15,282 |
+| s-21-3-failure | 2,453 | 0 | 2,453 | drawn here |
+| s-21-4-failure | 2,445 | 0 | 2,445 | drawn here |
+| s-21-5-correct | 1,065 | 20,821 | 21,886 | A12 1440-light-targets 11,337; A12 390-light-targets 9,484 |
+| s-21-5-failure | 3,075 | 0 | 3,075 | drawn here |
+| s-21-6-failure | 2,468 | 0 | 2,468 | drawn here |
+| s-21-7-correct | 1,224 | 96,443 | 97,667 | A20 1440-light-answer 29,563; A14 1440-light-rowl14 26,904; A13 1440-light-rowl14 39,976 |
+| s-21-7-failure | 6,089 | 0 | 6,089 | drawn here |
+| s-21-8-failure | 5,975 | 0 | 5,975 | drawn here |
+| s-21-9-correct | 921 | 56,301 | 57,222 | A18 1440-light-sheet 56,301 |
+| s-21-9-failure | 2,465 | 0 | 2,465 | drawn here |
+| s-21-10-correct | 1,077 | 113,021 | 114,098 | A13 390-light-rejected 56,358; A18 390-light-rejected 56,663 |
+| s-21-10-failure | 2,938 | 0 | 2,938 | drawn here |
+| s-21-11-correct | 976 | 124,623 | 125,599 | A13 390-light-records 62,339; A13 390-dark-records 62,284 |
+| s-21-11-failure | 3,164 | 0 | 3,164 | drawn here |
+| s-21-12-failure | 3,094 | 0 | 3,094 | drawn here |
+| s-21-13-correct | 1,059 | 36,389 | 37,448 | A19 390-light-stepper 17,277; A19 1440-dark-stepper 19,112 |
+| s-21-13-failure | 2,174 | 0 | 2,174 | drawn here |
+| s-21-14-correct | 1,019 | 75,381 | 76,400 | A15 1440-light 39,199; A15 390-light 36,182 |
+| s-21-14-failure | 3,972 | 0 | 3,972 | drawn here |
+| s-21-15-correct | 2,644 | 38,885 | 41,529 | A14 1440-dark-drawing 15,096; A14 1440-dark-chooser 23,789 |
+| s-21-15-failure | 3,444 | 0 | 3,444 | drawn here |
+| s-21-16-correct | 4,889 | 0 | 4,889 | drawn here |
+| s-21-16-failure | 2,823 | 0 | 2,823 | drawn here |
+| s-21-chips | 8,583 | 0 | 8,583 | drawn here |
+| s-21-home | 1,164 | 99,011 | 100,175 | A11 1440-light 31,215; A11 390-light 18,313; A11 390-dark 18,296; A11 1440-dark 31,187 |
+| s-21-how-to-read | 2,722 | 16,061 | 18,783 | A16 1440-light 16,061 |
+| s-21-loop | 1,164 | 112,241 | 113,405 | A14 1440-light 28,967; A14 390-light 27,184; A14 390-dark 27,159; A14 1440-dark 28,931 |
+| s-21-reform | 1,164 | 71,965 | 73,129 | A12 1440-light 18,898; A12 390-light 17,115; A12 390-dark 17,090; A12 1440-dark 18,862 |
+| s-21-register | 1,164 | 260,303 | 261,467 | A13 1440-light 66,918; A13 390-light 63,302; A13 390-dark 63,239; A13 1440-dark 66,844 |
+
+Sums: the 34 fragments 87,007 bytes; the kit's frames they place 1,226,715; together 1,313,722. Beside them: the kit's `atlas-page` style, 52,907 bytes in the head (its file 60,935), which weighs in chapter 21 as the first to draw it, where the plan priced 13,000; the chapter's words and the guide's wrappers make up the rest (the chapter file is 52,316 bytes). `web-site.css` weighs in chapter 20 (DR-319's saving, 49,344 bytes, holds).
+
+Where it goes: the crop plates carry whole pages. Each `<width>-<theme>-<part>` frame holds the page's full markup clipped to the part (A13 `390-light-rejected`, 56,330 bytes, is the whole Register at 390), so the eleven crop plates place about 560,000 bytes, most of them markup no reader sees. The four view plates place 548,176, the Register alone 261,467 (four frames near 65,000 each).
 
 ## Tested
 
 - Word widths in the guide's fonts in Chromium (21:51 and 21:54 UTC), by `measure.mjs` in my scratch: the atlas's name 201.5 px (label), subtitle 217 and snapshot 197.5 px (caption), the five views 42.7, 44.4, 60.9, 91.7 and 87.1 px (ui), "Views" 44.3 and "Atlas views" 82.6 px (ui), the breadcrumb's words (body-small) and two chips (data-label, bold).
 - Chapter 20's built masthead heights from the plate `a04.json`: 141 px at 1440 and 1024, 57 px at 390 and 360.
+- `phase4_ch21_build.py` (writing) under the lock at 23:09 UTC: 34 specimens, the chapter and the manifest written; `git status` shows only those files new. Strict build to scratch at 23:08 UTC: exit 1 on 16 stale-plate warnings (A12, A14, A19), nothing else.
 - `phase4_ch21_build.py --check` under the lock, last at 22:27 UTC: exit 0; 16 rules; 17 specimens drawn; every word field through chapter 02's mechanical checks (`check_words`, `check_chapter`); the 17 kit plates report as waiting. `--page-words all` prints A11 to A16; A14's holds counted by `_holds()`; A11's intro keeps its five count placeholders.
 - The home drawing's routes, by `home_proto.py` (scratch) on the model: 27 pairs, 81 connections between parts and 37 inside (118), 7 crossings, every pair routed; the render `home_proto.png` read by eye.
 - The 17 own-drawn specimens rendered in Chromium with the guide's fonts and tokens (scratch `prev/`, contact sheets read by eye at 22:20 to 22:27 UTC); four fixed after the look: 21.2 redrawn at its true 866 px (its words were 9 px when scaled), 21.5's targets red as on the correct plate, the chips plate's pairs set on one row each, 21.15's names inside the pills and its White bar on a chooser row.
@@ -114,5 +151,7 @@ Still to measure once the kit draws A11 to A20: the four view plates, the eleven
 ## Not tested
 
 - The shell and the views are not drawn yet: no kit frame, no C5 measure, no contrast measure on pixels. The heights in specs sections 4 and 12 are arithmetic from the measures above.
-- The chapter file, its specimens and its manifest are not written: the generator writes only once the kit has drawn A11 to A20 and the atlas test's report exists, so no strict build has run with chapter 21 in it.
+- Chapter 21 as placed in the guide was not opened in a browser by me, and the guide check was not run (the main session's closing check). The strict build ran once (23:09 UTC) and failed only on the three stale plates.
+- Specs section 14's revisions are not drawn or measured yet; its percentages are estimates.
+- The per-plate bytes are the fragment plus the kit's frame markup, not the guide's placed bytes per plate, which the build reports only per chapter.
 - The failure plates' words are my drafts until the editor writes the fields; the plates were not read by the data lead.

@@ -1062,6 +1062,23 @@ def _fill(s):
     return s.format(**{k: (f'{v:,}' if isinstance(v, int) else v) for k, v in FACT.items() if not isinstance(v, list)})
 
 
+SPECS_DIR = ROOT / 'work/build/app-kit/specs'
+LOOPS_M, REFORMS_M = M['loops'], M['reforms']
+
+
+def record_of(aid):
+    """The record an atlas page is about, read from the kit's content file (the engineer's, read-only)."""
+    f = next(iter(sorted(SPECS_DIR.glob(f'{aid.lower()}-*.json'))), None)
+    if not f:
+        raise SystemExit(f'{aid}: no content file in {SPECS_DIR.relative_to(ROOT)}')
+    c = json.loads(f.read_text())
+    return c['view'], c.get('record')
+
+
+def number_words(n):
+    return ['none', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'][n] if n <= 10 else f'{n:,}'
+
+
 def page_words(aid):
     """One atlas page's words for the kit (the engineer's C9 handshake): its whole title, the shared words, its current
     view, its breadcrumb and its template's own words. Templates in braces stay for the kit to fill from the model, counts
@@ -1074,8 +1091,12 @@ def page_words(aid):
     page = dict(p['page'])
     if aid == 'A14':
         page['steps'] = [{'line': s['line'], 'hold': s['hold']} for s in page['steps']]
+    view = p['view']
+    if '{title}' in view:
+        kind, rid = record_of(aid)
+        view = view.replace('{title}', {'loop': LOOPS_M, 'reform': REFORMS_M}[kind][rid]['title'])
     return {
-        'title': f'{p["view"]} | {META["title"]} | {ATLAS["title_end"]}',
+        'title': f'{view} | {META["title"]} | {ATLAS["title_end"]}',
         'atlas': {k: v for k, v in ATLAS.items() if k != 'title_end'},
         'current_view': p['current_view'],
         'crumbs': p['crumbs'],
@@ -1101,6 +1122,26 @@ def check_words():
     for aid, p in PAGES.items():
         if p['current_view'] not in views:
             raise SystemExit(f'{aid}: current view {p["current_view"]!r} is not one of the atlas’s views')
+    check_steps()
+
+
+def check_steps():
+    """The editor's request 10c: each stepper line quotes stored names, so it must still hold, for its own step, the
+    connection's typed ID and stored name, its grade word and delay words, and both variables' titles, as the model
+    stores them now; a line that drifts stops the build."""
+    kind, rid = record_of('A14')
+    lids = M['loops'][rid]['links']
+    steps = PAGES['A14']['page']['steps']
+    if len(steps) != len(lids):
+        raise SystemExit(f'A14: {len(steps)} stepper lines for {len(lids)} steps of Loop {rid}')
+    for i, (s_, lid) in enumerate(zip(steps, lids), 1):
+        l = M['links'][lid]
+        line = s_['line'].lower()
+        need_ = [f'{ATLAS["kind_words"]["connection"]} {lid}', l['name'], ATLAS['grades'][l['evidence']],
+                 ATLAS['delays'][l['delay']], M['nodes'][l['from']]['title'], M['nodes'][l['to']]['title']]
+        miss = [x for x in need_ if x.lower() not in line]
+        if miss:
+            raise SystemExit(f'A14 step {i}: the line no longer holds {", ".join(repr(x) for x in miss)} from the model')
 
 
 # ================================================================================================ LAYOUT
@@ -1392,16 +1433,41 @@ def s21_15_correct():
 
 
 def s21_16_correct():
+    """The atlas test's report as the kit's last build wrote it: one row a check, one column a view, each cell the
+    check's result and how many of that view's frames and exports it read (the test's own lines, counted)."""
     r = R['21.16']
     f = KIT_PLATES / 'atlas-test.json'
     if not f.exists():
-        raise Waiting('Rule 21.16’s plate needs the atlas test’s report (work/build/app-kit/plates/atlas-test.json)')
-    rep = json.loads(f.read_text())
-    lines = rep.get('lines') or []
-    body = ''.join(f'<div><span class="dl">{_esc(x if isinstance(x, str) else x.get("line", ""))}</span></div>' for x in lines[:48])
-    html = css('.rows>div{padding:4px 0}') + f'<div class="w pane"><p class="lab">{_esc(r["report_label"])}</p><div class="rows">{body}</div></div>'
+        raise Waiting('Rule 21.16\u2019s plate needs the atlas test\u2019s report (work/build/app-kit/plates/atlas-test.json)')
+    rep_ = json.loads(f.read_text())
+    cells, names = {}, {}
+    for ln in rep_.get('lines') or []:
+        m = re.match(r'(PASS|FAIL) (T\d+) (A\d+) \S+ \S+: ([^,]+)', ln if isinstance(ln, str) else ln.get('line', ''))
+        if not m:
+            continue
+        res, t, aid, name = m.groups()
+        names[t] = name
+        c = cells.setdefault((t, aid), {'PASS': 0, 'FAIL': 0})
+        c[res] += 1
+    apps = ['A11', 'A12', 'A13', 'A14']
+    if not names:
+        raise Waiting('the atlas test\u2019s report holds no lines')
+    head = '<span class="dl"></span>' + ''.join(f'<span class="dl">{_esc(PAGES[a]["current_view"])}</span>' for a in apps)
+    body = ''
+    for t in sorted(names, key=lambda k: int(k[1:])):
+        row = f'<span class="sm">{t} {_esc(names[t])}</span>'
+        for a in apps:
+            c = cells.get((t, a), {'PASS': 0, 'FAIL': 0})
+            word = 'FAIL' if c['FAIL'] else 'PASS'
+            row += f'<span class="dl{" fl" if c["FAIL"] else ""}">{word} {c["FAIL"] or c["PASS"]}</span>'
+        body += f'<div class="g5">{row}</div>'
+    html = (css('.g5{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:4px 12px;padding:6px 0;'
+                'border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint);font-variant-numeric:tabular-nums}'
+                '.fl{font-weight:var(--oa-font-weight-bold)}.blk{max-width:54rem}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["report_label"])}</p><div class="g5">{head}</div>{body}</div>')
     return spec('s-21-16-correct', html, '21.16', r['correct_alt'],
-                notes='Read from the atlas test’s report as the kit’s last build wrote it.')
+                notes=f'Read from the atlas test\u2019s report (plates/atlas-test.json, {len(rep_.get("lines") or []):,} lines, '
+                      f'self-test {rep_.get("self_test")}), counted by check and view for the four views.')
 
 
 # ------------------------------------------------------------------------------------------------ the chips plate (21.6)
@@ -1606,7 +1672,7 @@ def s21_9_failure():
     pw = PAGES['A13']['page']
     active = sum(1 for v in REFORMS.values() if not v.get('rejected'))
     vals = [FACT['variables'], FACT['double'], FACT['loops_numbered'], active,
-            pw['whole_issues'].format(n=FACT['issues'])]
+            pw['whole_issues'].format(n=f"{FACT['issues']:,}", retired=number_words(FACT['retired']))]
     head = ''.join(f'<span class="dl">{_esc(h)}</span>' for h in pw['index_head'])
     row = f'<span class="sm b">{_esc(pw["whole"])}</span>' + ''.join(f'<span class="sm b">{_esc(f"{v:,}" if isinstance(v, int) else v)}</span>' for v in vals)
     html = (css('.g6{display:grid;grid-template-columns:2fr repeat(5,1fr);gap:8px 12px;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint)}'
@@ -1794,7 +1860,22 @@ def main():
             print(f'  {sid}: {len(ctx.specs[sid]["html"].encode()):,} bytes before the kit\u2019s frames')
         return
     if waiting:
-        raise SystemExit('not written: plates wait for the kit or for hand-over 4')
+        raise SystemExit('not written: plates wait for the kit')
+    used = {ch['opener']} | {x['specimen'] for x in ch['extras']}
+    for rr in ch['rules']:
+        used |= {rr['correct']['specimen'], rr['failure']['specimen']}
+    ours = set(ctx.specs)
+    if used - ours or ours - used:
+        raise SystemExit(f'specimens missing {sorted(used - ours)} unused {sorted(ours - used)}')
+    OUT_CH.write_text(json.dumps(ch, indent=2, ensure_ascii=False) + '\n')
+    for f in OUT_SP.glob('s-21-*.html'):
+        if f.stem not in ours:
+            f.unlink()
+    for sid, s_ in ctx.specs.items():
+        (OUT_SP / f'{sid}.html').write_text(s_['html'])
+    MANIFEST.write_text(json.dumps(dict(sorted((k, v['meta']) for k, v in ctx.specs.items())), indent=1,
+                                   ensure_ascii=False) + '\n')
+    print(f'wrote {OUT_CH.relative_to(ROOT)}, {len(ctx.specs)} specimens, {MANIFEST.relative_to(ROOT)}')
 
 
 if __name__ == '__main__':

@@ -241,7 +241,7 @@ Every block keeps its place; the page's ground is Charcoal; the facts panel draw
 | | Note and ink tags | Beside the drawing at cols 8 to 12 from 64em, under it on phones: one sentence naming the reform and its two targets in words (Rule 15.11, the editor's frame around the model's titles); each target's `increase_means` sentence with its chip; the ink tags as the loop page lists them, one group a target headed by its chip (Variable A4: Reforms R-24, R-25, R-26 and R-31, each "aims here"; Variable EC7 has none, so no group), never red; then "It touches" (draft) and the chip Loop R6 with its title, and one line that R6's chain holds neither target (plan 3.3) | `oa.type.body-small`; chips `oa.type.data-label` |
 | `Grades` | `h2` (`data-oa-part="grades"` on the section) | Draft "How sure our atlas is" | |
 | | The problem | Row: cols 1 to 4 the head (label "The problem", the display word in `oa.type.h4`, Rule 13.3's gloss in `oa.type.body-small`, secondary); cols 5 to 12 the stored text, quoted (7's quotation form) | Under 64em the head over the text |
-| | The remedy | Row, 48 px down: cols 1 to 4 the head ("The remedy", Contested, its gloss); cols 5 to 8 the first reading, cols 9 to 12 the second (the stored text split at `remedy_split`), each in the quotation form and each ending with a link to its source in `Sources` (R5's anchors, `#source-q257` and `#source-q256`); the two blocks top-aligned, their lengths within one line of each other at 1440 (T10, H08) | Under 64em the head, then the two readings one after the other, 24 px apart |
+| | The remedy | Row, 48 px down: cols 1 to 4 the head ("The remedy", Contested, its gloss); cols 5 to 8 the first reading, cols 9 to 12 the second (the stored text split at `remedy_split`), each in the quotation form and each ending with a link to its source in `Sources` (R5's anchors, `#source-q257` and `#source-q256`); the two blocks top-aligned, each at the length the record holds, both with the same standing (R15; DR-314, DR-323) | Under 64em the head, then the two readings one after the other, 24 px apart |
 | `Effects` | `h2` (`data-oa-part="effects"`) | Draft "What it would change"; "As of" the status date in words | |
 | | Four rows | R12: DQ, GE, EP, EQ; the label (`oa.type.ui`), Rule 13.5's pips (the figure step's), the code whole with true minus and its words; the range row draws both ends joined (R12); then the atlas's confidence words quoted once | A table (Rule 18.10), cols 1 to 8, each row 44 px at least with a 1 px hairline under it; at 390 each row label over pips and code |
 | `Routes` | `h2` (`data-oa-part="routes"`) | Draft "How it could pass" | |
@@ -369,7 +369,7 @@ Rows: the band; gap 1, 56 px; the core row; gap 2, 112 px; the lower row; the bo
 | D to Technology, back | D+130 down; D+170 up | Right of each line, at the gap's middle |
 | Technology to Your household | Across the lower channel at `yl + 72`, right to left | Above the line |
 
-The five gap-2 lanes keep 20 px apart (24 before the last), so each lane's count fits above it clear of the lane over it. **Crossings, 7, each a break:** the subtle line breaks 6 px either side of the line it meets and the essential line runs on (X to Your household and X to Technology at the return; X to Technology at E to Your household; B to E at X to C and X to D; D to Your household at Technology to A and B). Where two subtle lines cross, the one with the lower count breaks; on a tie, the vertical. No other crossing; the build stops on one it did not expect, and on any pair the model holds with no route in this table (ED-F10: a new pair needs its lane drawn first).
+The five gap-2 lanes keep 20 px apart (24 before the last), so each lane's count fits above it clear of the lane over it. **Crossings, 7, each a break:** the subtle line breaks 6 px either side of the line it meets and the essential line runs on (X to Your household and X to Technology at the return; E to Your household at X to Technology, the lower count breaking, as the rule below sets and the kit draws (revised 23:06 UTC; the list had named X to Technology); B to E at X to C and X to D; D to Your household at Technology to A and B). Where two subtle lines cross, the one with the lower count breaks; on a tie, the vertical. No other crossing; the build stops on one it did not expect, and on any pair the model holds with no route in this table (ED-F10: a new pair needs its lane drawn first).
 
 **Inks.** R6: the five main-circuit arrows in `--oa-color-graphic-essential`, counts bold; the other 22 in `--oa-color-graphic-subtle`; every count in the text ink, `oa.type.data-label`, `tabular-nums`. No red.
 
@@ -423,3 +423,51 @@ Each plate places the kit's frames by placeholder (D4-134) or is a small drawing
 | `s-21-16-failure` | 21.16 | Drawn here: a step labeled Documented beside the test's FAIL line with both grades | 866 by about 160 px |
 
 Every failure plate carries the do-not-publish band (`Ctx.spec`), draws from tokens and the model, and never copies kit markup.
+
+
+## 14. Revisions after the first drawing (DD-7, 23:06 UTC)
+
+The engineer's C5 table (light frames from the plates written 23:01 UTC, its notes, "Done" 8) puts 26 screens outside Rule 05.1 under DR-310 (Newsprint 60 to 85 percent): later sections on Newsprint alone run 85.6 to 97.6, and three phone screens with a tall head panel run 49.5 to 57.8. The cure is chapter 20's (D4-119): a section's dark panel is compact, every long section opens on one, and a phone keeps its head panel short. The kit's drawing of the home also needs taller boxes (the engineer's Request 7). Estimates below are the measured figure less the panel's share of the window; I measure again with C5 on the next drawing.
+
+### 14.1 The section band (new; replaces each listed section's `h2` block)
+
+A Charcoal band across the content width (cols 1 to 12 from 64em; the full content width below), `oa-surface-charcoal ws-panel`, padding 32 px from 48em and 24 px below, **at least 128 px tall from 64em and 112 px below**, its contents centered in its height: the section's `h2` in `.ws-h2`'s type (`oa.type.h3`) in `--oa-color-text-primary-on-charcoal`, then 8 px and a lede in `oa.type.body-small`, `--oa-color-text-secondary-on-charcoal` (the editor's words, named below). The section's own top margin (80 px) stays above the band; 32 px of Newsprint follow it. Chips, links and marks inside take the band's tokens through `.oa-surface-charcoal`. It is the section's one panel, so a section with a band turns its other candidate off. It never holds red or a drawing with red.
+
+| Page | Section | Band's lede (word key, the editor's; draft) | C5 now, 1440 / 390 | Estimate |
+|---|---|---|---|---|
+| A11 | `Questions` | `questions_lede`, "Press a question to see which parts of the system decide it." | 93 / 89.8 | 80 / 78 |
+| A12 | `Grades` | `grades_lede`, "Our atlas grades the evidence that the problem exists apart from the evidence that the remedy works." | 95 / 89.1 | 82 / 77 |
+| A12 | `Effects` | the existing `as_of` line and `effects_confidence`, moved from under the rows into the band | 96.4 / 91 | 83 / 79 |
+| A12 | `Routes` | the complements line moved into the band: `complements_heading` and Reform R-25's linked chip and title (the `h3` and its block below the table go) | 97.6 / 93 | 83 / 80 |
+| A13 | `Rejected` | `rejected_lede`, "What our atlas weighed and set aside, with its reasons." | 94.4 / 89.5 | 81 / 77 |
+| A13 | `Records` | `records_lede`, "Each record names the conditions it touches; narrow the list by one of them." | 94.7 / 89.9 | 82 / 78 |
+| A14 | `Stepper` | the existing `arithmetic` line (ED-F6), moved from the read-aloud block into the band | 92.5 / 87.8 | 80 / 76 |
+| A14 | `Record` | `record_lede`, "Our atlas's own words for this loop, as it stores them." | 95.5 / 87.9 | 82 / 76 |
+| A14 | `Evidence` | the existing `records_line` with its link, moved into the band (its block below the step rows goes) | 85.6 / 94 | 73 / 82 |
+| A15 | `Reinforcing` | the kind word and its count in the `h2`; `reinforcing_lede`, "Loops that feed themselves: an even count of minus signs." | 90.2 / 92.2 | 82 / 80 |
+| A15 | `Balancing` | as above; `balancing_lede`, "Loops that hold themselves in check: an odd count of minus signs." | 95.3 / 90.8 | 82 / 79 |
+
+On A15 the `h1` and intro stay above the first band, and both tables' head rows go back to Newsprint under the 2 px strong rule (one panel a section). New word keys for the editor: `questions_lede` (A11), `grades_lede` (A12), `rejected_lede` and `records_lede` (A13), `record_lede` (A14), `reinforcing_lede` and `balancing_lede` (A15); until they land, the band prints its `h2` alone at its minimum height, which carries the same share.
+
+### 14.2 The heads on phones (under 48em unless said)
+
+| Page | Change | C5 now (390) | Estimate |
+|---|---|---|---|
+| A11 | Under 64em the head band holds the `h1` and the switch only; the intro follows the band on Newsprint, 24 px down, before the drawing | first screen 49.5, `System` 56.6 | 70, 75 |
+| A12 | The status panel holds its label, "As of" and the two grades in brief; `status.text` and the band's words follow it on Newsprint, 16 px down, in `oa.type.body-small` and `oa.type.caption` | `Reform` 54.3 (first screen 65.6) | 75 (72) |
+| A14 | The facts panel sets its rows as a two-column list of label and value (Kind, Steps, Minus signs, Delay, Weakest step), 4 px between rows, no hairlines; Closure leaves the panel and prints under the grade line in `oa.type.caption`, secondary, on Newsprint (from 48em it stays in the panel) | first screen 57.8, `Loop` 52 | 72, 70 |
+
+### 14.3 The Register's index and How to read (from 64em)
+
+- **A13 `Index`** (85.6 at 1440): the head row grows from 64 to 88 px (each grade head's line sample and word with 16 px above and below), adding about 2.4 percent of the window. Estimate 83.
+- **A16 `Marks`** (first screen 88, `Marks` 94 at 1440): the page opens as the home does, its `h1` and intro in a head band from edge to edge joined to the title bar (12.1's band, at least 160 px tall from 64em, the intro on its own line under the `h1`); the Grades group's candidate stays off (one panel a section). Estimates 71 and 77.
+
+### 14.4 The home drawing's rows (the engineer's Request 7)
+
+The core row grows from 168 to **184 px**, and every box's padding drops to 12 px above and below (16 at the sides); the question sets in `oa.type.caption` in place of `oa.type.body-small`; 2 px between name, question and title, 6 px before the lit line and before the counts. Measured needs at the kit's 1440 capture were Checks 205 and Wealth 181 px; with the caption question and the tighter gaps Checks needs about 182. The lower row keeps **104 px** and lays each box in two columns: the name, question and title at the left; the lit line and the counts at the right, right-aligned to the box's inner edge (Your household needed 147 px stacked; side by side about 98). The drawing's closed height becomes 568 px (56, 56, 184, 112, 104, 56), and at 1440 it ends near y 891, inside the first screen. Every lane keeps its place relative to its row's edges, so the route table stands.
+
+**The open drawing (A17):** each box's side padding drops to 12 px there, so a pill is 172 px wide; a title that still needs four of chapter 15's rows (`rows_of`) takes four in the open drawing alone, and the plate's notes name it (Variables C5 and D3 today).
+
+### 14.5 Unchanged
+
+The loop and reform first screens at 1440 (72.5 and 73.7), the Register's `Sheet` band, the footers, every dark frame (red at most 0.5 percent) and every phone screen not listed here pass as drawn.

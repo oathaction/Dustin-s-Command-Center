@@ -1,0 +1,311 @@
+{
+ "s-21-1-correct": {
+  "chapter": "21",
+  "rule": "21.1",
+  "width_px": null,
+  "alt": "Two crops of a loop page’s top. On the desktop, the site’s masthead with Who Do They Answer To? underlined; a Charcoal title bar with the atlas’s name, its subtitle and snapshot date, and five views with Loops underlined; then a breadcrumb ending on the chip Loop R18, and a small map of eight boxes with one filled. On the phone, the masthead, then the Charcoal title bar open to five rows with Loops marked, then the breadcrumb.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A14): the top of the loop page, and at 390 px with the views open.",
+  "readable": true
+ },
+ "s-21-1-failure": {
+  "chapter": "21",
+  "rule": "21.1",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The top of an atlas page with two mastheads: the site’s, with no part marked, and under it a second banner with its own wordmark and its own copy of the site’s parts. The tab reads Oath & Action alone.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: a second banner under the site’s masthead, its parts chapter 20’s words, its wordmark inlined from the 24 px master; no part is marked current.",
+  "readable": true
+ },
+ "s-21-10-correct": {
+  "chapter": "21",
+  "rule": "21.10",
+  "width_px": null,
+  "alt": "A block headed by the chip Reform R-35 and its title, which opens with Rejected option, holding its effects, its two grades and a quoted line on what its remedy’s grade measures; then a block headed Reviewed and not drawn with its connections, their variables and the atlas’s reasons, and no lines.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A13 and A18): the rejected option, and connections reviewed and not drawn.",
+  "readable": true
+ },
+ "s-21-10-failure": {
+  "chapter": "21",
+  "rule": "21.10",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A list of reforms in which Reform R-35 sits with no label and the words Well supported.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: Reform R-35 among the sheet’s reforms with no label, its remedy grade read as for a remedy that works; titles and grades as stored.",
+  "readable": true
+ },
+ "s-21-11-correct": {
+  "chapter": "21",
+  "rule": "21.11",
+  "width_px": null,
+  "alt": "A Filters button reading one on, its check boxes open with Variable D4 checked, a line giving how many of the sheet’s records show, and the records as rows, each with its chip, title and grade word.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A13): the filtered issue records.",
+  "readable": true
+ },
+ "s-21-11-failure": {
+  "chapter": "21",
+  "rule": "21.11",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Three tabs, one filled, over a list of record titles with no count and no grades.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: color alone marks the filter, no count, no grades; the titles as stored.",
+  "readable": true
+ },
+ "s-21-12-failure": {
+  "chapter": "21",
+  "rule": "21.12",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Loop R18’s head with the word Documented beside its title, no reading of its signs and no weakest step.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: Loop R18’s head with the grade of its first step and no reading of its signs.",
+  "readable": true
+ },
+ "s-21-13-correct": {
+  "chapter": "21",
+  "rule": "21.13",
+  "width_px": null,
+  "alt": "Two steppers on step 2, each with its status line, Step 2 of 2 and the step’s words, and four buttons, Play, Reset the loop, Previous step and Next step: two by two on the phone and in one row on the desktop.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A19, Loop R18 on step 2).",
+  "readable": true
+ },
+ "s-21-13-failure": {
+  "chapter": "21",
+  "rule": "21.13",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A stepper with Play, Previous step, Next step and Reset in one row, and a note reading 3,200 ms a step.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the stepper’s buttons in the atlas’s own order today and its 3,200 ms pace (registers F-8 and F-15).",
+  "readable": true
+ },
+ "s-21-14-correct": {
+  "chapter": "21",
+  "rule": "21.14",
+  "width_px": null,
+  "alt": "A table of loops in two groups, reinforcing then balancing, each row with its chip, title, steps, minus signs, how it closes and its grade, and a line under it on the titles.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A15, the loop index).",
+  "readable": true
+ },
+ "s-21-14-failure": {
+  "chapter": "21",
+  "rule": "21.14",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A list of loops, each with a horizontal bar of a different length, labeled Illustrative.",
+  "illustrative": true,
+  "notes": "A drawing of a fault: bar lengths invented for the drawing, labeled Illustrative; the atlas measures no strength. Titles as stored.",
+  "readable": true
+ },
+ "s-21-15-correct": {
+  "chapter": "21",
+  "rule": "21.15",
+  "width_px": null,
+  "alt": "On Charcoal, a loop drawing with a variable’s outline and both connections in red, a chooser of reforms with one chosen, and a table of contrast ratios measured on the frame.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A14, dark), with the ratios the kit measured on that frame’s pixels.",
+  "readable": true
+ },
+ "s-21-15-failure": {
+  "chapter": "21",
+  "rule": "21.15",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A dark drawing with gray muted marks and a white selection bar.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: muted marks in Stone on Charcoal and the chosen reform’s bar in White, the colors of the dark kit today (register F-14); the reforms are those whose own records name Loop R18.",
+  "readable": true
+ },
+ "s-21-16-correct": {
+  "chapter": "21",
+  "rule": "21.16",
+  "width_px": null,
+  "alt": "A list of check lines, each beginning PASS, with the check, the page and what it read.",
+  "illustrative": false,
+  "notes": "Read from the atlas test’s report (plates/atlas-test.json, 1,264 lines, self-test PASS), counted by check and view for the four views.",
+  "readable": true
+ },
+ "s-21-16-failure": {
+  "chapter": "21",
+  "rule": "21.16",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A loop step labeled Documented beside a test line beginning FAIL that names the page, the connection, the printed grade and the model’s grade.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: Connection L15 printed documented, beside the test’s line with the model’s grade.",
+  "readable": true
+ },
+ "s-21-2-correct": {
+  "chapter": "21",
+  "rule": "21.2",
+  "width_px": null,
+  "alt": "The atlas’s eight parts as boxes, each open to list its variables as pills, with arrows between the parts, a count on each arrow and the main circuit drawn darker.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A17, the atlas home with every variable shown).",
+  "readable": true
+ },
+ "s-21-2-failure": {
+  "chapter": "21",
+  "rule": "21.2",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The five core parts and Your household as boxes, with arrows of different widths between them and no key; the widest runs from Your household to Wealth.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: each arrow 1 px wide for each connection it carries, read from the model, with no key; drawn at 866 px, its true size.",
+  "readable": true
+ },
+ "s-21-3-correct": {
+  "chapter": "21",
+  "rule": "21.3",
+  "width_px": null,
+  "alt": "Crops of the atlas home. The drawing, with the parts the question reaches in full ink, each labeled This question reaches here, and the other parts muted; and the questions under their hubs, one marked by a check, bold words and a heavier edge, on the desktop and on a light and a dark phone.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A11): the pressed question and the lit parts.",
+  "readable": true
+ },
+ "s-21-3-failure": {
+  "chapter": "21",
+  "rule": "21.3",
+  "width_px": null,
+  "alt": "Failure case: do not publish. Three questions, one in bold with no check and no heavier edge, and three part boxes, two tinted with no words.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the pressed question in bold alone, and two parts tinted with no words; the questions as the atlas stores them.",
+  "readable": true
+ },
+ "s-21-4-failure": {
+  "chapter": "21",
+  "rule": "21.4",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A remedy panel headed Well supported with one reading, of little job loss, and no second reading.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the first reading of Reform R-23’s stored remedy text alone, under a grade the atlas does not give it.",
+  "readable": true
+ },
+ "s-21-5-correct": {
+  "chapter": "21",
+  "rule": "21.5",
+  "width_px": null,
+  "alt": "Two variables joined by one connection, both outlined in red, and beside them a list headed by the chip Variable A4, holding the chips of the other reforms that aim there and the words also aim here.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A12): Reform R-23’s targets and the ink tags.",
+  "readable": true
+ },
+ "s-21-5-failure": {
+  "chapter": "21",
+  "rule": "21.5",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The same two variables with every reform’s tag drawn in red, the page’s own among them.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: every reform that names Variable A4 in its own targets tagged in red, so five working reds share the view.",
+  "check_exempt": [
+   "red"
+  ],
+  "readable": true
+ },
+ "s-21-6-failure": {
+  "chapter": "21",
+  "rule": "21.6",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A list headed Variables with three bare codes and their names, B4, D4 and R1; B4 and R1 are loops.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: bare codes with their stored names; B4 and R1 name loops.",
+  "readable": true
+ },
+ "s-21-7-correct": {
+  "chapter": "21",
+  "rule": "21.7",
+  "width_px": null,
+  "alt": "A short answer with a figure followed by the chip Claim CL1340, its record open beneath with its grade, people, place, period and limit; then the chip Connection L14 in the loop page’s evidence row, beside its line on the Register’s sheet for Domain D04.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A20, A14 and A13): a figure’s claim record open, and a step’s chip beside its Register line.",
+  "readable": true
+ },
+ "s-21-7-failure": {
+  "chapter": "21",
+  "rule": "21.7",
+  "width_px": null,
+  "alt": "Failure case: do not publish. A short answer with a figure and no chip, and a long numbered list of sources at the foot.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the pathway’s stored short answer, its figure with no chip, and its 29 sources listed at the foot, none tied to the figure.",
+  "readable": true
+ },
+ "s-21-8-failure": {
+  "chapter": "21",
+  "rule": "21.8",
+  "width_px": null,
+  "alt": "Failure case: do not publish. An index with one bar for each sheet, shaded from dark to light, and no numbers.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: each sheet’s connections by grade as one bar shaded dark to light, its shares read from the model, no counts.",
+  "readable": true
+ },
+ "s-21-9-correct": {
+  "chapter": "21",
+  "rule": "21.9",
+  "width_px": null,
+  "alt": "A table of connections, each row with its chip, its two variables, a sign tag with raises or lowers, its type, delay ticks, a grade line and word, and the atlas’s citation; the contested rows draw dash and dot.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A18, the Register with sheet D10 open).",
+  "readable": true
+ },
+ "s-21-9-failure": {
+  "chapter": "21",
+  "rule": "21.9",
+  "width_px": null,
+  "alt": "Failure case: do not publish. The whole-atlas row of the index reading twice the atlas’s count of connections.",
+  "illustrative": false,
+  "notes": "A drawing of a fault: the whole-atlas row with each connection filed on both its variables’ sheets, 236 where the model holds 118.",
+  "readable": true
+ },
+ "s-21-chips": {
+  "chapter": "21",
+  "rule": "21.6",
+  "width_px": null,
+  "alt": "Two panels, light and dark. In each, ten chips, plain and underlined, from Variable D4 to Delivery case DL05, each followed by its record’s name; then four pairs side by side: Variable B4 and Loop B4, Loop R1 and Reform R-01, Variable D4 and Domain D04, and Variable X1 and Issue X01.",
+  "illustrative": false,
+  "notes": "Drawn here from the model: each chip’s kind from where its ID lives, each name as stored; claim, rule change and delivery case records store a sentence, not a name, so their chips stand alone.",
+  "readable": true
+ },
+ "s-21-home": {
+  "chapter": "21",
+  "rule": null,
+  "width_px": null,
+  "alt": "Four frames of the atlas’s home page, at 1440 px and 390 px, each in the light and the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the atlas’s eight parts sit as boxes with a count on each arrow between them on the desktop, and as a stacked list on the phone. A question about medical bills is pressed, and the parts it reaches stay in full ink while the others are muted.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A11, the atlas home), full length at four views.",
+  "readable": true
+ },
+ "s-21-how-to-read": {
+  "chapter": "21",
+  "rule": null,
+  "width_px": null,
+  "alt": "A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; the hollow line, the red target, the ink tag and the weakest step; the typed chip and the pressed question. Beside it, a table names the rule for each mark.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A16, How to read), with the rule that sets each mark listed under it (DD-11C-2: the public page prints meanings alone).",
+  "readable": true
+ },
+ "s-21-loop": {
+  "chapter": "21",
+  "rule": "21.12",
+  "width_px": null,
+  "alt": "Loop R18’s page four times: its head with the grade of each step and a Charcoal panel of facts that names the weakest step; the loop read aloud beside its two-step drawing, the weakest step marked and Reform R-11’s targets in red; the stepper; the reform chooser with the chosen reform’s effects and routes; the loop in the atlas’s words; and the evidence for each step.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A14, Loop R18’s page), full length at four views.",
+  "readable": true
+ },
+ "s-21-reform": {
+  "chapter": "21",
+  "rule": "21.4",
+  "width_px": null,
+  "alt": "Reform R-23’s page four times: its head with a Charcoal status panel; a drawing of its two targets outlined in red, with the other reforms that aim at one of them listed in ink; its two grades, the contested remedy’s two readings side by side; its effects, one row a family; its routes, each with its check date or Not checked; and a closed disclosure of sources.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A12, Reform R-23’s page), full length at four views.",
+  "readable": true
+ },
+ "s-21-register": {
+  "chapter": "21",
+  "rule": "21.8",
+  "width_px": null,
+  "alt": "The Register four times: an index table with a row for each sheet and one for the whole atlas, its counts and five grade columns under a Charcoal head row; then the sheet for Domain D04 on a Charcoal band, its variables, its connections with their signs, types, delays, grade lines and citations, the reform the atlas rejects, and its issue records with one filter on.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A13, the Register with sheet D04 open), full length at four views.",
+  "readable": true
+ }
+}
