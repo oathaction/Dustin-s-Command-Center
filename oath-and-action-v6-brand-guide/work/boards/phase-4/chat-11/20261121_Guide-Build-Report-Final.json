@@ -1,0 +1,1837 @@
+{
+ "page": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/ac32a0f7-d562-5d93-9aba-0ef59f7ca891/scratchpad/c11/main/guide-v5.html",
+ "built": "2026-11-22T00:07:13",
+ "chapters": [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "17",
+  "18",
+  "19",
+  "20",
+  "26"
+ ],
+ "placeholders": [],
+ "rules": 393,
+ "specimens_placed": 731,
+ "tokens": "tokens.css",
+ "demo": false,
+ "bytes": 13080604,
+ "weight": {
+  "bytes": 13080604,
+  "budget_page": 15500000.0,
+  "limit": 16000000,
+  "parts": {
+   "head and shell": 181238,
+   "sprites": 210685,
+   "fonts": 343169,
+   "photographs": 489462,
+   "chart kit": 571236,
+   "map geometry": 133117,
+   "front matter and part openers": 31104,
+   "appendix": 0
+  },
+  "chapters": {
+   "01": {
+    "bytes": 675678,
+    "budget": 2700000.0
+   },
+   "02": {
+    "bytes": 646036,
+    "budget": 850000.0
+   },
+   "03": {
+    "bytes": 462986,
+    "budget": 650000.0
+   },
+   "04": {
+    "bytes": 252540,
+    "budget": 450000.0
+   },
+   "05": {
+    "bytes": 241529,
+    "budget": 450000.0
+   },
+   "06": {
+    "bytes": 148076,
+    "budget": 350000.0
+   },
+   "07": {
+    "bytes": 103762,
+    "budget": 300000.0
+   },
+   "08": {
+    "bytes": 116832,
+    "budget": 300000.0
+   },
+   "09": {
+    "bytes": 135187,
+    "budget": 400000.0
+   },
+   "10": {
+    "bytes": 522987,
+    "budget": 1000000.0
+   },
+   "11": {
+    "bytes": 502946,
+    "budget": 550000.0
+   },
+   "12": {
+    "bytes": 196048,
+    "budget": 500000.0
+   },
+   "13": {
+    "bytes": 243027,
+    "budget": 250000.0
+   },
+   "14": {
+    "bytes": 2151573,
+    "budget": 2803941
+   },
+   "15": {
+    "bytes": 570101,
+    "budget": 600000.0
+   },
+   "16": {
+    "bytes": 219338,
+    "budget": 300000
+   },
+   "17": {
+    "bytes": 394285,
+    "budget": 500000.0
+   },
+   "18": {
+    "bytes": 1167458,
+    "budget": 1250000.0
+   },
+   "19": {
+    "bytes": 173323,
+    "budget": 300000.0
+   },
+   "20": {
+    "bytes": 839159,
+    "budget": 757000
+   },
+   "26": {
+    "bytes": 1028196,
+    "budget": 1100000.0
+   }
+  },
+  "chapter_14_parts": {
+   "rules_1_to_14": 171273,
+   "opener": 6084,
+   "plate_css": 4479,
+   "rules_and_opener": 181836,
+   "allowance": 212288,
+   "sketch_entries": [
+    {
+     "rule": "14.24",
+     "kind": "avoid",
+     "bytes": 8140,
+     "sketch_bytes": 3556
+    },
+    {
+     "rule": "14.43",
+     "kind": "sketch",
+     "bytes": 6419,
+     "sketch_bytes": 2604
+    },
+    {
+     "rule": "14.44",
+     "kind": "sketch",
+     "bytes": 5591,
+     "sketch_bytes": 1876
+    },
+    {
+     "rule": "14.45",
+     "kind": "avoid",
+     "bytes": 7444,
+     "sketch_bytes": 3536
+    },
+    {
+     "rule": "14.54",
+     "kind": "sketch",
+     "bytes": 5277,
+     "sketch_bytes": 1166
+    },
+    {
+     "rule": "14.55",
+     "kind": "sketch",
+     "bytes": 5073,
+     "sketch_bytes": 1105
+    },
+    {
+     "rule": "14.56",
+     "kind": "sketch",
+     "bytes": 6231,
+     "sketch_bytes": 1984
+    },
+    {
+     "rule": "14.57",
+     "kind": "avoid",
+     "bytes": 6338,
+     "sketch_bytes": 2343
+    },
+    {
+     "rule": "14.63",
+     "kind": "sketch",
+     "bytes": 7019,
+     "sketch_bytes": 3408
+    },
+    {
+     "rule": "14.64",
+     "kind": "sketch",
+     "bytes": 6699,
+     "sketch_bytes": 3167
+    },
+    {
+     "rule": "14.65",
+     "kind": "sketch",
+     "bytes": 6622,
+     "sketch_bytes": 3106
+    },
+    {
+     "rule": "14.66",
+     "kind": "sketch",
+     "bytes": 6699,
+     "sketch_bytes": 3258
+    },
+    {
+     "rule": "14.70",
+     "kind": "sketch",
+     "bytes": 7244,
+     "sketch_bytes": 3797
+    },
+    {
+     "rule": "14.71",
+     "kind": "sketch",
+     "bytes": 7438,
+     "sketch_bytes": 4043
+    },
+    {
+     "rule": "14.72",
+     "kind": "sketch",
+     "bytes": 5082,
+     "sketch_bytes": 1708
+    },
+    {
+     "rule": "14.73",
+     "kind": "avoid",
+     "bytes": 7648,
+     "sketch_bytes": 3533
+    },
+    {
+     "rule": "14.78",
+     "kind": "sketch",
+     "bytes": 6518,
+     "sketch_bytes": 2853
+    },
+    {
+     "rule": "14.83",
+     "kind": "sketch",
+     "bytes": 6077,
+     "sketch_bytes": 1923
+    },
+    {
+     "rule": "14.84",
+     "kind": "avoid",
+     "bytes": 7145,
+     "sketch_bytes": 3072
+    },
+    {
+     "rule": "14.91",
+     "kind": "avoid",
+     "bytes": 6520,
+     "sketch_bytes": 2391
+    },
+    {
+     "rule": "14.92",
+     "kind": "avoid",
+     "bytes": 6304,
+     "sketch_bytes": 2237
+    },
+    {
+     "rule": "14.94",
+     "kind": "sketch",
+     "bytes": 6604,
+     "sketch_bytes": 2760
+    },
+    {
+     "rule": "14.95",
+     "kind": "sketch",
+     "bytes": 6030,
+     "sketch_bytes": 2328
+    },
+    {
+     "rule": "14.103",
+     "kind": "sketch",
+     "bytes": 6404,
+     "sketch_bytes": 2469
+    },
+    {
+     "rule": "14.107",
+     "kind": "sketch",
+     "bytes": 5983,
+     "sketch_bytes": 2372
+    },
+    {
+     "rule": "14.108",
+     "kind": "sketch",
+     "bytes": 6696,
+     "sketch_bytes": 2652
+    },
+    {
+     "rule": "14.109",
+     "kind": "sketch",
+     "bytes": 5785,
+     "sketch_bytes": 1995
+    },
+    {
+     "rule": "14.111",
+     "kind": "sketch",
+     "bytes": 6689,
+     "sketch_bytes": 3019
+    },
+    {
+     "rule": "14.113",
+     "kind": "sketch",
+     "bytes": 6656,
+     "sketch_bytes": 2700
+    },
+    {
+     "rule": "14.124",
+     "kind": "avoid",
+     "bytes": 8844,
+     "sketch_bytes": 4039
+    }
+   ],
+   "extras": {
+    "s-14-selection-guide": 152269,
+    "s-14-palette-spec": 84937
+   },
+   "complex_examples": {
+    "14.142": 34757,
+    "14.143": 45653,
+    "14.144": 69866
+   }
+  },
+  "application_kit": {
+   "web-site": {
+    "bytes": 49347,
+    "chapter": "20"
+   },
+   "plate": {
+    "bytes": 2296,
+    "chapter": "20"
+   },
+   "share-image": {
+    "bytes": 1990,
+    "chapter": "20"
+   },
+   "favicon-set": {
+    "bytes": 1486,
+    "chapter": "20"
+   },
+   "identity": {
+    "bytes": 13105,
+    "chapter": "20"
+   }
+  },
+  "pass": {
+   "before": 13137161,
+   "css": {
+    "bytes_saved": 56001,
+    "blocks": 778
+   },
+   "png": {
+    "bytes_saved": 556,
+    "images": 9,
+    "shown_pngs": 13
+   },
+   "after": 13080604,
+   "bytes_saved": 56557
+  },
+  "sprites": {
+   "civic-line": 69,
+   "fit-24": 37,
+   "pillar": 8,
+   "utility": 36
+  },
+  "fonts_files": 255920,
+  "projection": {
+   "page_bytes": 13080604,
+   "unbuilt": {
+    "21": 655000,
+    "22": 277000,
+    "23": 743000,
+    "24": 338000,
+    "25": 214000,
+    "27": 200000,
+    "28": 200000
+   },
+   "held_to_allocation": {
+    "15": 29899,
+    "16": 80662
+   },
+   "projected_bytes": 15818165,
+   "budget": 15500000.0,
+   "chapter_14_with_kit": 2855926,
+   "chart_kit": 704353,
+   "far_over_approved": {
+    "s-14-s05": {
+     "bytes": 30312,
+     "board_1_bytes": 31961,
+     "tier_average": 8192
+    },
+    "s-14-s13": {
+     "bytes": 33488,
+     "board_1_bytes": 47212,
+     "tier_average": 8192
+    }
+   },
+   "phase_4_built": {
+    "16": {
+     "bytes": 219338,
+     "allocation": 300000,
+     "room": 80662
+    },
+    "20": {
+     "bytes": 839159,
+     "allocation": 757000,
+     "room": -82159
+    }
+   },
+   "chapter_14_rules": {
+    "rules_1_to_14": 171273,
+    "opener": 6084,
+    "plate_css": 4479,
+    "rules_and_opener": 181836,
+    "allowance": 212288
+   },
+   "chapter_14_round_5": {
+    "s-14-selection-guide": 152269,
+    "s-14-palette-spec": 84937,
+    "Rule 14.142": 34757,
+    "Rule 14.143": 45653,
+    "Rule 14.144": 69866
+   },
+   "map_geometry": {
+    "bytes": 133117,
+    "allowance": 250000,
+    "room": 116883
+   },
+   "chapter_14_per_plate": {
+    "per_plate": null,
+    "plates_to_come": 0,
+    "plates_placed": 95,
+    "room": -199320,
+    "stop": 2803941,
+    "renderer_grown": 571236,
+    "renderer_now": 571236,
+    "forms_registered": 97,
+    "form_average": 4489,
+    "not_plates": {
+     "selection guide and palette specification": 0,
+     "three complex examples": 0,
+     "shared map geometry": 250000,
+     "sketch entries whole (0 to come at 4,096 bytes of sketch and 3,874 of words and frame)": 0,
+     "rules 14.1 to 14.14 with the opener, unspent of their allowance (call 4)": 30452
+    },
+    "chapter_14_now": 2151573,
+    "line": "chapter 14's plates: all 95 finished specimens are placed, none still to come; -199,320 bytes of room under its 2,803,941 byte stop, after the renderer grown to 97 forms, 571,236, the parts that are not plates, 280,452, and the chapter as built, 2,151,573"
+   },
+   "phase_4": {
+    "chapters": [
+     "21",
+     "22",
+     "23",
+     "24",
+     "25"
+    ],
+    "allocations": {
+     "21": 655000,
+     "22": 277000,
+     "23": 743000,
+     "24": 338000,
+     "25": 214000
+    },
+    "allocated": 2227000,
+    "break_even_each_16mb": 481767,
+    "break_even_each_15_5mb": 381767,
+    "room_under_16mb": 181835,
+    "room_under_15_5mb": -318165,
+    "built_chapters_median": 323412,
+    "built_chapters_mean": 431975,
+    "built_chapters_counted": 20
+   },
+   "past_15_5mb": true
+  },
+  "charts": {
+   "s-13-7-children": {
+    "id": "s-13-7-children",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 20,
+    "bytes": 4681,
+    "spec": "work/build/guide/specimens/s-13-7-children.chart.json"
+   },
+   "s-13-7-all": {
+    "id": "s-13-7-all",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 20,
+    "bytes": 4655,
+    "spec": "work/build/guide/specimens/s-13-7-all.chart.json"
+   },
+   "s-13-7-fail-all": {
+    "id": "s-13-7-fail-all",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 11,
+    "bytes": 3635,
+    "spec": "work/build/guide/specimens/s-13-7-fail-all.chart.json"
+   },
+   "s-13-13-correct": {
+    "id": "s-13-13-correct",
+    "form": "ranked-bar",
+    "tier": "core",
+    "rows": 3,
+    "bytes": 1856,
+    "spec": "work/build/guide/specimens/s-13-13-correct.chart.json"
+   },
+   "s-13-13-fail-chart": {
+    "id": "s-13-13-fail-chart",
+    "form": "ranked-bar",
+    "tier": "core",
+    "rows": 3,
+    "bytes": 1872,
+    "spec": "work/build/guide/specimens/s-13-13-fail-chart.chart.json"
+   },
+   "s-14-1-line": {
+    "id": "s-14-1-line",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 21,
+    "bytes": 4068,
+    "spec": "work/build/guide/specimens/s-14-1-line.chart.json"
+   },
+   "s-14-2-full": {
+    "id": "s-14-2-full",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 26,
+    "bytes": 4286,
+    "spec": "work/build/guide/specimens/s-14-2-full.chart.json"
+   },
+   "s-14-2-bare": {
+    "id": "s-14-2-bare",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 26,
+    "bytes": 3158,
+    "spec": "work/build/guide/specimens/s-14-2-bare.chart.json"
+   },
+   "s-14-3-lines": {
+    "id": "s-14-3-lines",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 24,
+    "bytes": 5053,
+    "spec": "work/build/guide/specimens/s-14-3-lines.chart.json"
+   },
+   "s-14-4-cols": {
+    "id": "s-14-4-cols",
+    "form": "column",
+    "tier": "core",
+    "rows": 12,
+    "bytes": 3228,
+    "spec": "work/build/guide/specimens/s-14-4-cols.chart.json"
+   },
+   "s-14-6-bars": {
+    "id": "s-14-6-bars",
+    "form": "ranked-bar",
+    "tier": "core",
+    "rows": 12,
+    "bytes": 3421,
+    "spec": "work/build/guide/specimens/s-14-6-bars.chart.json"
+   },
+   "s-14-7-seats": {
+    "id": "s-14-7-seats",
+    "form": "ranked-bar",
+    "tier": "core",
+    "rows": 3,
+    "bytes": 2456,
+    "spec": "work/build/guide/specimens/s-14-7-seats.chart.json"
+   },
+   "s-14-8-panels": {
+    "id": "s-14-8-panels",
+    "form": "multi-line-highlight",
+    "tier": "core",
+    "rows": 35,
+    "bytes": 5928,
+    "spec": "work/build/guide/specimens/s-14-8-panels.chart.json"
+   },
+   "s-14-9-range": {
+    "id": "s-14-9-range",
+    "form": "range-bar",
+    "tier": "core",
+    "rows": 11,
+    "bytes": 3935,
+    "spec": "work/build/guide/specimens/s-14-9-range.chart.json"
+   },
+   "s-14-10-line": {
+    "id": "s-14-10-line",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 26,
+    "bytes": 3844,
+    "spec": "work/build/guide/specimens/s-14-10-line.chart.json"
+   },
+   "s-14-11-line": {
+    "id": "s-14-11-line",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 23,
+    "bytes": 5295,
+    "spec": "work/build/guide/specimens/s-14-11-line.chart.json"
+   },
+   "s-14-12-cols": {
+    "id": "s-14-12-cols",
+    "form": "column",
+    "tier": "core",
+    "rows": 12,
+    "bytes": 3453,
+    "spec": "work/build/guide/specimens/s-14-12-cols.chart.json"
+   },
+   "s-14-13-cols": {
+    "id": "s-14-13-cols",
+    "form": "column",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 3375,
+    "spec": "work/build/guide/specimens/s-14-13-cols.chart.json"
+   },
+   "s-14-s03": {
+    "id": "S03",
+    "form": "ranked-bar",
+    "tier": "core",
+    "rows": 7,
+    "bytes": 8557,
+    "spec": "work/build/chart-kit/specs/s03.json"
+   },
+   "s-14-s17": {
+    "id": "S17",
+    "form": "column",
+    "tier": "core",
+    "rows": 10,
+    "bytes": 4259,
+    "spec": "work/build/chart-kit/specs/s17.json"
+   },
+   "s-14-s18": {
+    "id": "S18",
+    "form": "bar-benchmark-tick",
+    "tier": "core",
+    "rows": 5,
+    "bytes": 4221,
+    "spec": "work/build/chart-kit/specs/s18.json"
+   },
+   "s-14-s19": {
+    "id": "S19",
+    "form": "dot-plot",
+    "tier": "core",
+    "rows": 51,
+    "bytes": 10541,
+    "spec": "work/build/chart-kit/specs/s19.json"
+   },
+   "s-14-s04": {
+    "id": "S04",
+    "form": "dumbbell",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 4713,
+    "spec": "work/build/chart-kit/specs/s04.json"
+   },
+   "s-14-s20": {
+    "id": "S20",
+    "form": "slope",
+    "tier": "core",
+    "rows": 10,
+    "bytes": 4430,
+    "spec": "work/build/chart-kit/specs/s20.json"
+   },
+   "s-14-s21": {
+    "id": "S21",
+    "form": "lollipop",
+    "tier": "extended",
+    "rows": 16,
+    "bytes": 5703,
+    "spec": "work/build/chart-kit/specs/s21.json"
+   },
+   "s-14-s22": {
+    "id": "S22",
+    "form": "grouped-bar",
+    "tier": "extended",
+    "rows": 26,
+    "bytes": 5083,
+    "spec": "work/build/chart-kit/specs/s22.json"
+   },
+   "s-14-s23": {
+    "id": "S23",
+    "form": "small-multiple-bars",
+    "tier": "extended",
+    "rows": 20,
+    "bytes": 6227,
+    "spec": "work/build/chart-kit/specs/s23.json"
+   },
+   "s-14-s11": {
+    "id": "S11",
+    "form": "shift-arrows",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 14248,
+    "spec": "work/build/chart-kit/specs/s11.json"
+   },
+   "s-14-s24": {
+    "id": "S24",
+    "form": "change-lollipop",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 9368,
+    "spec": "work/build/chart-kit/specs/s24.json"
+   },
+   "s-14-s25": {
+    "id": "S25",
+    "form": "diverging-bar",
+    "tier": "core",
+    "rows": 130,
+    "bytes": 22806,
+    "spec": "work/build/chart-kit/specs/s25.json"
+   },
+   "s-14-s26": {
+    "id": "S26",
+    "form": "diverging-bar-arrows",
+    "tier": "extended",
+    "rows": 38,
+    "bytes": 9626,
+    "spec": "work/build/chart-kit/specs/s26.json"
+   },
+   "s-14-s02": {
+    "id": "S02",
+    "form": "line-event-notes",
+    "tier": "core",
+    "rows": 39,
+    "bytes": 10655,
+    "spec": "work/build/chart-kit/specs/s02.json"
+   },
+   "s-14-s05": {
+    "id": "S05",
+    "form": "multi-line-highlight",
+    "tier": "core",
+    "rows": 132,
+    "bytes": 30312,
+    "spec": "work/build/chart-kit/specs/s05.json"
+   },
+   "s-14-s27": {
+    "id": "S27",
+    "form": "line-field",
+    "tier": "extended",
+    "rows": 416,
+    "bytes": 14193,
+    "spec": "work/build/chart-kit/specs/s27.json"
+   },
+   "s-14-s14": {
+    "id": "S14",
+    "form": "columns-moving-average",
+    "tier": "core",
+    "rows": 57,
+    "bytes": 11480,
+    "spec": "work/build/chart-kit/specs/s14.json"
+   },
+   "s-14-s28": {
+    "id": "S28",
+    "form": "sparkline",
+    "tier": "core",
+    "rows": 26,
+    "bytes": 5849,
+    "spec": "work/build/chart-kit/specs/s28.json"
+   },
+   "s-14-s13": {
+    "id": "S13",
+    "form": "area-sparklines",
+    "tier": "core",
+    "rows": 1026,
+    "bytes": 33488,
+    "spec": "work/build/chart-kit/specs/s13.json"
+   },
+   "s-14-s29": {
+    "id": "S29",
+    "form": "area",
+    "tier": "extended",
+    "rows": 26,
+    "bytes": 5210,
+    "spec": "work/build/chart-kit/specs/s29.json"
+   },
+   "s-14-s30": {
+    "id": "S30",
+    "form": "step-line",
+    "tier": "extended",
+    "rows": 10,
+    "bytes": 6098,
+    "spec": "work/build/chart-kit/specs/s30.json"
+   },
+   "s-14-s31": {
+    "id": "S31",
+    "form": "line-data-gap",
+    "tier": "core",
+    "rows": 58,
+    "bytes": 8142,
+    "spec": "work/build/chart-kit/specs/s31.json"
+   },
+   "s-14-s09": {
+    "id": "S09",
+    "form": "timeline",
+    "tier": "core",
+    "rows": 24,
+    "bytes": 13027,
+    "spec": "work/build/chart-kit/specs/s09.json"
+   },
+   "s-14-s32": {
+    "id": "S32",
+    "form": "implementation-timeline",
+    "tier": "core",
+    "rows": 6,
+    "bytes": 7049,
+    "spec": "work/build/chart-kit/specs/s32.json"
+   },
+   "s-14-s33": {
+    "id": "S33",
+    "form": "indexed-line",
+    "tier": "core",
+    "rows": 110,
+    "bytes": 16583,
+    "spec": "work/build/chart-kit/specs/s33.json"
+   },
+   "s-14-s34": {
+    "id": "S34",
+    "form": "bubble-timeline",
+    "tier": "extended",
+    "rows": 55,
+    "bytes": 11324,
+    "spec": "work/build/chart-kit/specs/s34.json"
+   },
+   "s-14-s35": {
+    "id": "S35",
+    "form": "benefit-cliff",
+    "tier": "extended",
+    "rows": 61,
+    "bytes": 10079,
+    "spec": "work/build/chart-kit/specs/s35.json"
+   },
+   "s-14-s10": {
+    "id": "S10",
+    "form": "percent-bar",
+    "tier": "core",
+    "rows": 16,
+    "bytes": 7427,
+    "spec": "work/build/chart-kit/specs/s10.json"
+   },
+   "s-14-s43": {
+    "id": "S43",
+    "form": "stacked-share-bar",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 9988,
+    "spec": "work/build/chart-kit/specs/s43.json"
+   },
+   "s-14-s44": {
+    "id": "S44",
+    "form": "waterfall",
+    "tier": "core",
+    "rows": 30,
+    "bytes": 8313,
+    "spec": "work/build/chart-kit/specs/s44.json"
+   },
+   "s-14-s08": {
+    "id": "S08",
+    "form": "unit-chart",
+    "tier": "core",
+    "rows": 64,
+    "bytes": 21780,
+    "spec": "work/build/chart-kit/specs/s08.json"
+   },
+   "s-14-s45": {
+    "id": "S45",
+    "form": "stacked-column",
+    "tier": "extended",
+    "rows": 26,
+    "bytes": 6884,
+    "spec": "work/build/chart-kit/specs/s45.json"
+   },
+   "s-14-s46": {
+    "id": "S46",
+    "form": "stacked-area",
+    "tier": "extended",
+    "rows": 65,
+    "bytes": 11096,
+    "spec": "work/build/chart-kit/specs/s46.json"
+   },
+   "s-14-s47": {
+    "id": "S47",
+    "form": "treemap",
+    "tier": "extended",
+    "rows": 17,
+    "bytes": 5338,
+    "spec": "work/build/chart-kit/specs/s47.json"
+   },
+   "s-14-s48": {
+    "id": "S48",
+    "form": "parliament",
+    "tier": "extended",
+    "rows": 4,
+    "bytes": 3860,
+    "spec": "work/build/chart-kit/specs/s48.json"
+   },
+   "s-14-s49": {
+    "id": "S49",
+    "form": "histogram",
+    "tier": "core",
+    "rows": 22,
+    "bytes": 5527,
+    "spec": "work/build/chart-kit/specs/s49.json"
+   },
+   "s-14-s50": {
+    "id": "S50",
+    "form": "beeswarm",
+    "tier": "core",
+    "rows": 51,
+    "bytes": 9798,
+    "spec": "work/build/chart-kit/specs/s50.json"
+   },
+   "s-14-s51": {
+    "id": "S51",
+    "form": "box-plot",
+    "tier": "extended",
+    "rows": 4,
+    "bytes": 6626,
+    "spec": "work/build/chart-kit/specs/s51.json"
+   },
+   "s-14-s52": {
+    "id": "S52",
+    "form": "line-histogram",
+    "tier": "extended",
+    "rows": 74,
+    "bytes": 7633,
+    "spec": "work/build/chart-kit/specs/s52.json"
+   },
+   "s-14-s53": {
+    "id": "S53",
+    "form": "population-pyramid",
+    "tier": "extended",
+    "rows": 202,
+    "bytes": 11459,
+    "spec": "work/build/chart-kit/specs/s53.json"
+   },
+   "s-14-s54": {
+    "id": "S54",
+    "form": "scatter-named",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 9710,
+    "spec": "work/build/chart-kit/specs/s54.json"
+   },
+   "s-14-s55": {
+    "id": "S55",
+    "form": "bubble-scatter",
+    "tier": "extended",
+    "rows": 52,
+    "bytes": 11004,
+    "spec": "work/build/chart-kit/specs/s55.json"
+   },
+   "s-14-s56": {
+    "id": "S56",
+    "form": "connected-scatter",
+    "tier": "extended",
+    "rows": 103,
+    "bytes": 14640,
+    "spec": "work/build/chart-kit/specs/s56.json"
+   },
+   "s-14-s57": {
+    "id": "S57",
+    "form": "range-bar",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 11137,
+    "spec": "work/build/chart-kit/specs/s57.json"
+   },
+   "s-14-s58": {
+    "id": "S58",
+    "form": "line-confidence-band",
+    "tier": "core",
+    "rows": 61,
+    "bytes": 11448,
+    "spec": "work/build/chart-kit/specs/s58.json"
+   },
+   "s-14-s06": {
+    "id": "S06",
+    "form": "scenario-directions",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 16085,
+    "spec": "work/build/chart-kit/specs/s06.json"
+   },
+   "s-14-s59": {
+    "id": "S59",
+    "form": "fan-chart",
+    "tier": "extended",
+    "rows": 5,
+    "bytes": 6735,
+    "spec": "work/build/chart-kit/specs/s59.json"
+   },
+   "s-14-s85": {
+    "id": "S85",
+    "form": "icon-array",
+    "tier": "core",
+    "rows": 4,
+    "bytes": 4464,
+    "spec": "work/build/chart-kit/specs/s85.json"
+   },
+   "s-14-s86": {
+    "id": "S86",
+    "form": "proportional-symbols",
+    "tier": "extended",
+    "rows": 7,
+    "bytes": 4283,
+    "spec": "work/build/chart-kit/specs/s86.json"
+   },
+   "s-14-s87": {
+    "id": "S87",
+    "form": "venn-diagram",
+    "tier": "extended",
+    "rows": 4,
+    "bytes": 4611,
+    "spec": "work/build/chart-kit/specs/s87.json"
+   },
+   "s-14-s88": {
+    "id": "S88",
+    "form": "euler-diagram",
+    "tier": "extended",
+    "rows": 4,
+    "bytes": 4686,
+    "spec": "work/build/chart-kit/specs/s88.json"
+   },
+   "s-14-s01": {
+    "id": "S01",
+    "form": "big-number",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 6927,
+    "spec": "work/build/chart-kit/specs/s01.json"
+   },
+   "s-14-s60": {
+    "id": "S60",
+    "form": "indicator-row",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 9092,
+    "spec": "work/build/chart-kit/specs/s60.json"
+   },
+   "s-14-s61": {
+    "id": "S61",
+    "form": "progress-bar",
+    "tier": "core",
+    "rows": 3,
+    "bytes": 3896,
+    "spec": "work/build/chart-kit/specs/s61.json"
+   },
+   "s-14-s62": {
+    "id": "S62",
+    "form": "step-tracker",
+    "tier": "core",
+    "rows": 7,
+    "bytes": 5189,
+    "spec": "work/build/chart-kit/specs/s62.json"
+   },
+   "s-14-s63": {
+    "id": "S63",
+    "form": "status-chips",
+    "tier": "core",
+    "rows": 6,
+    "bytes": 10346,
+    "spec": "work/build/chart-kit/specs/s63.json"
+   },
+   "s-14-s64": {
+    "id": "S64",
+    "form": "bullet-graph",
+    "tier": "extended",
+    "rows": 1,
+    "bytes": 3750,
+    "spec": "work/build/chart-kit/specs/s64.json"
+   },
+   "s-14-s65": {
+    "id": "S65",
+    "form": "funnel",
+    "tier": "extended",
+    "rows": 9,
+    "bytes": 5832,
+    "spec": "work/build/chart-kit/specs/s65.json"
+   },
+   "s-14-s66": {
+    "id": "S66",
+    "form": "process-diagram",
+    "tier": "core",
+    "rows": 10,
+    "bytes": 9432,
+    "spec": "work/build/chart-kit/specs/s66.json"
+   },
+   "s-14-s67": {
+    "id": "S67",
+    "form": "decision-tree",
+    "tier": "core",
+    "rows": 51,
+    "bytes": 12355,
+    "spec": "work/build/chart-kit/specs/s67.json"
+   },
+   "s-14-s68": {
+    "id": "S68",
+    "form": "who-decides",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 9125,
+    "spec": "work/build/chart-kit/specs/s68.json"
+   },
+   "s-14-s69": {
+    "id": "S69",
+    "form": "org-chart",
+    "tier": "extended",
+    "rows": 136,
+    "bytes": 13807,
+    "spec": "work/build/chart-kit/specs/s69.json"
+   },
+   "s-14-s70": {
+    "id": "S70",
+    "form": "hierarchy-tree",
+    "tier": "extended",
+    "rows": 111,
+    "bytes": 10349,
+    "spec": "work/build/chart-kit/specs/s70.json"
+   },
+   "s-14-s71": {
+    "id": "S71",
+    "form": "comparison-grid",
+    "tier": "extended",
+    "rows": 11,
+    "bytes": 12075,
+    "spec": "work/build/chart-kit/specs/s71.json"
+   },
+   "s-14-s72": {
+    "id": "S72",
+    "form": "roll-call-grid",
+    "tier": "extended",
+    "rows": 533,
+    "bytes": 7309,
+    "spec": "work/build/chart-kit/specs/s72.json"
+   },
+   "s-14-s73": {
+    "id": "S73",
+    "form": "network-diagram",
+    "tier": "extended",
+    "rows": 125,
+    "bytes": 13263,
+    "spec": "work/build/chart-kit/specs/s73.json"
+   },
+   "s-14-s74": {
+    "id": "S74",
+    "form": "adjacency-matrix",
+    "tier": "extended",
+    "rows": 44,
+    "bytes": 11029,
+    "spec": "work/build/chart-kit/specs/s74.json"
+   },
+   "s-14-s75": {
+    "id": "S75",
+    "form": "arc-diagram",
+    "tier": "extended",
+    "rows": 33,
+    "bytes": 7181,
+    "spec": "work/build/chart-kit/specs/s75.json"
+   },
+   "s-14-s76": {
+    "id": "S76",
+    "form": "sankey",
+    "tier": "extended",
+    "rows": 16,
+    "bytes": 6945,
+    "spec": "work/build/chart-kit/specs/s76.json"
+   },
+   "s-14-s77": {
+    "id": "S77",
+    "form": "journey-map",
+    "tier": "core",
+    "rows": 5,
+    "bytes": 6997,
+    "spec": "work/build/chart-kit/specs/s77.json"
+   },
+   "s-14-s07": {
+    "id": "S07",
+    "form": "tile-map-categorical",
+    "tier": "core",
+    "rows": 51,
+    "bytes": 13619,
+    "spec": "work/build/chart-kit/specs/s07.json"
+   },
+   "s-14-s12": {
+    "id": "S12",
+    "form": "tile-map-shift-arrows",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 13331,
+    "spec": "work/build/chart-kit/specs/s12.json"
+   },
+   "s-14-s16": {
+    "id": "S16",
+    "form": "bubble-map",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 10250,
+    "spec": "work/build/chart-kit/specs/s16.json"
+   },
+   "s-14-s78": {
+    "id": "S78",
+    "form": "choropleth",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 8781,
+    "spec": "work/build/chart-kit/specs/s78.json"
+   },
+   "s-14-s79": {
+    "id": "S79",
+    "form": "locator-map",
+    "tier": "core",
+    "rows": 2,
+    "bytes": 3569,
+    "spec": "work/build/chart-kit/specs/s79.json"
+   },
+   "s-14-s80": {
+    "id": "S80",
+    "form": "district-map",
+    "tier": "extended",
+    "rows": 13,
+    "bytes": 6156,
+    "spec": "work/build/chart-kit/specs/s80.json"
+   },
+   "s-14-s81": {
+    "id": "S81",
+    "form": "county-choropleth",
+    "tier": "extended",
+    "rows": 3144,
+    "bytes": 12905,
+    "spec": "work/build/chart-kit/specs/s81.json"
+   },
+   "s-14-s82": {
+    "id": "S82",
+    "form": "district-tile-map",
+    "tier": "extended",
+    "rows": 435,
+    "bytes": 13234,
+    "spec": "work/build/chart-kit/specs/s82.json"
+   },
+   "s-14-s83": {
+    "id": "S83",
+    "form": "dot-density-map",
+    "tier": "extended",
+    "rows": 3144,
+    "bytes": 12713,
+    "spec": "work/build/chart-kit/specs/s83.json"
+   },
+   "s-14-s84": {
+    "id": "S84",
+    "form": "small-multiple-maps",
+    "tier": "extended",
+    "rows": 204,
+    "bytes": 10738,
+    "spec": "work/build/chart-kit/specs/s84.json"
+   },
+   "s-14-s15": {
+    "id": "S15",
+    "form": "results-table",
+    "tier": "core",
+    "rows": 52,
+    "bytes": 16673,
+    "spec": "work/build/chart-kit/specs/s15.json"
+   },
+   "s-14-s36": {
+    "id": "S36",
+    "form": "ranked-register",
+    "tier": "core",
+    "rows": 25,
+    "bytes": 10283,
+    "spec": "work/build/chart-kit/specs/s36.json"
+   },
+   "s-14-s37": {
+    "id": "S37",
+    "form": "heat-table",
+    "tier": "extended",
+    "rows": 126,
+    "bytes": 16296,
+    "spec": "work/build/chart-kit/specs/s37.json"
+   },
+   "s-14-s38": {
+    "id": "S38",
+    "form": "filterable-lookup-table",
+    "tier": "extended",
+    "rows": 17,
+    "bytes": 10072,
+    "spec": "work/build/chart-kit/specs/s38.json"
+   },
+   "s-14-s39": {
+    "id": "S39",
+    "form": "evidence-table",
+    "tier": "core",
+    "rows": 11,
+    "bytes": 10406,
+    "spec": "work/build/chart-kit/specs/s39.json"
+   },
+   "s-14-s40": {
+    "id": "S40",
+    "form": "tracker-list",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 8981,
+    "spec": "work/build/chart-kit/specs/s40.json"
+   },
+   "s-14-s41": {
+    "id": "S41",
+    "form": "plain-table",
+    "tier": "core",
+    "rows": 3,
+    "bytes": 3413,
+    "spec": "work/build/chart-kit/specs/s41.json"
+   },
+   "s-14-s42": {
+    "id": "S42",
+    "form": "one-sentence",
+    "tier": "core",
+    "rows": 2,
+    "bytes": 2459,
+    "spec": "work/build/chart-kit/specs/s42.json"
+   },
+   "s-14-s89": {
+    "id": "S89",
+    "form": "process-explainer",
+    "tier": "core",
+    "rows": 9,
+    "bytes": 10088,
+    "spec": "work/build/chart-kit/specs/s89.json"
+   },
+   "s-14-s90": {
+    "id": "S90",
+    "form": "by-the-numbers",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 5719,
+    "spec": "work/build/chart-kit/specs/s90.json"
+   },
+   "s-14-s91": {
+    "id": "S91",
+    "form": "comparison-cards",
+    "tier": "core",
+    "rows": 3,
+    "bytes": 6759,
+    "spec": "work/build/chart-kit/specs/s91.json"
+   },
+   "s-14-s92": {
+    "id": "S92",
+    "form": "step-by-step",
+    "tier": "core",
+    "rows": 8,
+    "bytes": 8927,
+    "spec": "work/build/chart-kit/specs/s92.json"
+   },
+   "s-14-s93": {
+    "id": "S93",
+    "form": "annotated-illustration",
+    "tier": "extended",
+    "rows": 11,
+    "bytes": 6794,
+    "spec": "work/build/chart-kit/specs/s93.json"
+   },
+   "s-14-s94": {
+    "id": "S94",
+    "form": "calendar",
+    "tier": "extended",
+    "rows": 16,
+    "bytes": 16804,
+    "spec": "work/build/chart-kit/specs/s94.json"
+   },
+   "s-14-s95": {
+    "id": "S95",
+    "form": "social-data-card",
+    "tier": "core",
+    "rows": 51,
+    "bytes": 11660,
+    "spec": "work/build/chart-kit/specs/s95.json"
+   },
+   "s-14-s96": {
+    "id": "S96",
+    "form": "columns-moving-average",
+    "tier": "core",
+    "rows": 57,
+    "bytes": 16022,
+    "spec": "work/build/chart-kit/specs/s96.json"
+   },
+   "s-14-142-failure": {
+    "id": "s-14-142-failure",
+    "form": "columns-moving-average",
+    "tier": "core",
+    "rows": 57,
+    "bytes": 10700,
+    "spec": "work/build/guide/specimens/s-14-142-failure.chart.json"
+   }
+  },
+  "chart_method": "load-table"
+ },
+ "ids_held_whole": 1005,
+ "fonts": {
+  "embedded": true,
+  "files": 6,
+  "file_bytes": 255920,
+  "page_bytes": 343169,
+  "manifest": "work/build/assets/fonts/20261111_Font-Manifest.json"
+ },
+ "start": {
+  "file": "work/build/guide/front/where-to-start.json",
+  "routes": [
+   {
+    "id": "newcomer",
+    "steps": 7,
+    "later": 0
+   },
+   {
+    "id": "designer",
+    "steps": 7,
+    "later": 1
+   },
+   {
+    "id": "builder",
+    "steps": 7,
+    "later": 0
+   }
+  ]
+ },
+ "warnings": [],
+ "notes": [
+  "Rule 01.5: Files leaves out work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 02.22: Files leaves out work/boards/phase-2/voice/20261106_Voice-Rules-Content.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 02.22: Files leaves out work/handoffs/phase-2/20261106_Voice-Writing-Rules.md, a studio source, which stays off the page (DT-M1)",
+  "Rule 03.4: Files leaves out work/build/assets/identity/20261028_Identity-Minimum-Sizes.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 05.6: Files leaves out work/build/tokens/src/oa-tokens.src.mjs, a studio source, which stays off the page (DT-M1)",
+  "Rule 05.7: Files leaves out work/boards/phase-2/data-viz/shared/20261106_Palette-Lab.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 09.3: Files leaves out work/build/assets/pillar-icons/20261110_Pillar-Icons-Manifest.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.1: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.3: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.4: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.6: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.8: Files leaves out work/build/assets/civic-line-v6/20261110_Civic-Line-V6-Inventory.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.9: Files leaves out work/build/scripts/phase-2/icon_likeness_check.js, a studio source, which stays off the page (DT-M1)",
+  "Rule 10.9: Files leaves out work/build/assets/civic-line-24-fit/qa/20261110_Five-Look-Alikes-Fits-Likeness.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 10.10: Files leaves out work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, a studio source, which stays off the page (DT-M1)",
+  "Rule 11.13: Files leaves out work/build/assets/utility/20261110_Utility-Icons-Manifest.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 11.14: Files leaves out work/build/assets/utility/20261110_Utility-Icons-Manifest.json, an inventory or record beside the assets, which does not ship (DT-M1)",
+  "Rule 12.5: Files leaves out work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.5: Files leaves out work/boards/phase-2/atlas-concepts/shared/atlas-kit.css, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.6: Files leaves out work/boards/phase-2/data-viz/01-explainer/build_concept.py, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.7: Files leaves out work/boards/phase-2/data-viz/shared/geo/us-state-tile-grid.json, a studio source, which stays off the page (DT-M1)",
+  "Rule 12.8: Files leaves out work/extract/atlas-v7-data.json, a studio source, which stays off the page (DT-M1)",
+  "[chapter 20] the opener s-20-opener weighs 20,531 bytes as placed, with its frame, over its 16,384 (16 KB), reported (DR-271)",
+  "application kit: its web-site style, 49,347 bytes in the head, weighs in chapter 20, the first to draw it (contract C4)",
+  "application kit: its plate style, 2,296 bytes in the head, weighs in chapter 20, the first to draw it (contract C4)",
+  "application kit: its share-image style, 1,990 bytes in the head, weighs in chapter 20, the first to draw it (contract C4)",
+  "application kit: its favicon-set style, 1,486 bytes in the head, weighs in chapter 20, the first to draw it (contract C4)",
+  "application kit: its identity masters, drawn once for the page, 13,105 bytes at the top of the body, weighs in chapter 20, the first to draw it (contract C4)",
+  "page weight: chart kit weighs 571,236 bytes, over its budget of 560,000, reported (DR-271)",
+  "chapter 16: weighs 219,338 bytes against its allocation of 300,000 (73 percent), 80,662 bytes to spare",
+  "chapter 20: weighs 839,159 bytes against its allocation of 757,000 (111 percent), over it, reported (DR-271)",
+  "chapter 14: with the chart kit weighs 2,855,926 bytes (2.856 MB), over its stop of 2,803,941 bytes (DR-227, raised by DR-238), reported; the studio raises it and logs the raise (DR-271)",
+  "chapter 14: round 5's plates as placed, with their frames: s-14-selection-guide 152,269 bytes; s-14-palette-spec 84,937 bytes; Rule 14.142 34,757 bytes; Rule 14.143 45,653 bytes; Rule 14.144 69,866 bytes",
+  "page weight: Phase 4's 5 chapters still to build are projected at their own allocations (21: 655,000; 22: 277,000; 23: 743,000; 24: 338,000; 25: 214,000), 2,227,000 bytes in all; for the page to stay under 16 MB they may average 481,767 bytes each, and 381,767 to stay under the 15.5 MB warning; today's 20 built chapters other than 14 weigh 323,412 bytes at the median and 431,975 on average (ST-S10)",
+  "page weight: early warning: the projected page weighs 15.82 MB (today's 13.08 MB plus 2.63 MB for the chapters not yet built and 0.11 MB still to come in chapters being built), past the 15.5 MB line, 318,165 bytes over it and 181,835 under the 16 MB limit; reported, not failed (Gate 3 report, section 9; DR-271)",
+  "chapter 14's plates: all 95 finished specimens are placed, none still to come; -199,320 bytes of room under its 2,803,941 byte stop, after the renderer grown to 97 forms, 571,236, the parts that are not plates, 280,452, and the chapter as built, 2,151,573",
+  "chart s-14-s05 weighs 30,312 bytes, over three times its tier's average of 8,192; approved on board 1 at up to 31,961 bytes, so listed here and not failed",
+  "chart s-14-s13 weighs 33,488 bytes, over three times its tier's average of 8,192; approved on board 1 at up to 47,212 bytes, so listed here and not failed"
+ ],
+ "pictures": {
+  "hidden": 103,
+  "open": 315,
+  "open_stages": [
+   "s-01-1-correct",
+   "s-01-1-failure",
+   "s-01-11-correct",
+   "s-01-11-failure",
+   "s-01-14-failure",
+   "s-01-15-failure",
+   "s-01-16-correct",
+   "s-01-16-failure",
+   "s-01-18-failure",
+   "s-01-19-correct",
+   "s-01-2-correct",
+   "s-01-2-failure",
+   "s-01-21-correct",
+   "s-01-21-failure",
+   "s-01-22-correct",
+   "s-01-22-failure",
+   "s-01-23-correct",
+   "s-01-23-failure",
+   "s-01-3-correct",
+   "s-01-3-failure",
+   "s-01-4-correct",
+   "s-01-4-failure",
+   "s-01-5-correct",
+   "s-01-5-failure",
+   "s-01-6-failure",
+   "s-01-7-correct",
+   "s-01-7-failure",
+   "s-01-opener",
+   "s-02-1-fault",
+   "s-02-10-fault",
+   "s-02-11-fault",
+   "s-02-12-fault",
+   "s-02-13-fault",
+   "s-02-14-fault",
+   "s-02-15-fault",
+   "s-02-16-fault",
+   "s-02-17-fault",
+   "s-02-18-fault",
+   "s-02-19-fault",
+   "s-02-2-fault",
+   "s-02-20-fault",
+   "s-02-21-fault",
+   "s-02-21-pair",
+   "s-02-22-failure",
+   "s-02-23-correct",
+   "s-02-23-failure",
+   "s-02-24-correct",
+   "s-02-24-failure",
+   "s-02-27-failure",
+   "s-02-3-fault",
+   "s-02-4-fault",
+   "s-02-5-fault",
+   "s-02-6-fault",
+   "s-02-7-fault",
+   "s-02-8-fault",
+   "s-02-9-fault",
+   "s-03-2-correct",
+   "s-03-2-failure",
+   "s-03-3-correct",
+   "s-03-3-failure",
+   "s-03-4-correct",
+   "s-03-4-failure",
+   "s-03-5-correct",
+   "s-03-6-correct",
+   "s-03-7-correct",
+   "s-03-8-correct",
+   "s-03-l6",
+   "s-03-lockups",
+   "s-03-misuse",
+   "s-03-opener",
+   "s-04-1-correct",
+   "s-04-1-failure",
+   "s-04-2-correct",
+   "s-04-2-failure",
+   "s-04-3-correct",
+   "s-04-3-corrective",
+   "s-04-3-failure",
+   "s-04-4-correct",
+   "s-04-4-failure",
+   "s-04-5-correct",
+   "s-04-6-correct",
+   "s-04-6-failure",
+   "s-04-7-correct",
+   "s-04-7-failure",
+   "s-04-8-correct",
+   "s-04-8-failure",
+   "s-04-opener",
+   "s-05-1-correct",
+   "s-05-1-failure",
+   "s-05-2-correct",
+   "s-05-2-failure",
+   "s-05-3-correct",
+   "s-05-3-corrective",
+   "s-05-3-failure",
+   "s-05-4-correct",
+   "s-05-4-failure",
+   "s-05-5-correct",
+   "s-05-5-failure",
+   "s-05-6-failure",
+   "s-05-7-correct",
+   "s-05-7-failure",
+   "s-06-1-correct",
+   "s-06-1-failure",
+   "s-06-10-correct",
+   "s-06-10-failure",
+   "s-06-2-failure",
+   "s-06-3-correct",
+   "s-06-3-failure",
+   "s-06-4-correct",
+   "s-06-4-failure",
+   "s-06-5-failure",
+   "s-06-6-correct",
+   "s-06-6-failure",
+   "s-06-8-failure",
+   "s-06-9-correct",
+   "s-06-9-failure",
+   "s-07-1-correct",
+   "s-07-1-failure",
+   "s-07-2-correct",
+   "s-07-2-failure",
+   "s-07-3-correct",
+   "s-07-3-failure",
+   "s-07-4-correct",
+   "s-07-4-failure",
+   "s-07-5-failure",
+   "s-07-6-correct",
+   "s-07-6-failure",
+   "s-07-opener",
+   "s-08-1-correct",
+   "s-08-1-failure",
+   "s-08-2-correct",
+   "s-08-2-failure",
+   "s-08-3-failure",
+   "s-08-opener",
+   "s-09-1-correct",
+   "s-09-2-correct",
+   "s-09-2-failure",
+   "s-09-3-correct",
+   "s-09-3-failure",
+   "s-09-opener",
+   "s-09-phone",
+   "s-10-1-failure",
+   "s-10-10-failure",
+   "s-10-4-correct",
+   "s-10-5-correct",
+   "s-10-7-correct",
+   "s-10-7-failure",
+   "s-10-9-failure",
+   "s-11-1-correct",
+   "s-11-1-failure",
+   "s-11-14-failure",
+   "s-11-15-failure",
+   "s-11-16-failure",
+   "s-11-18-correct",
+   "s-11-18-failure",
+   "s-11-2-failure",
+   "s-11-3-correct",
+   "s-11-3-failure",
+   "s-11-4-correct",
+   "s-11-4-failure",
+   "s-11-5-correct",
+   "s-11-5-failure",
+   "s-11-6-correct",
+   "s-11-6-failure",
+   "s-11-7-failure",
+   "s-11-8-correct",
+   "s-11-8-failure",
+   "s-11-9-correct",
+   "s-11-9-failure",
+   "s-11-list-600-charcoal",
+   "s-11-opener",
+   "s-12-divider-correct",
+   "s-12-divider-failure",
+   "s-12-key-correct",
+   "s-12-key-failure",
+   "s-12-locator-correct",
+   "s-12-locator-failure",
+   "s-12-marker-correct",
+   "s-12-marker-failure",
+   "s-12-pattern-correct",
+   "s-12-pattern-failure",
+   "s-12-signature-correct",
+   "s-12-signature-failure",
+   "s-12-watermark-correct",
+   "s-12-watermark-failure",
+   "s-13-1-failure",
+   "s-13-10-failure",
+   "s-13-11-failure",
+   "s-13-2-failure",
+   "s-13-3-failure",
+   "s-13-4-failure",
+   "s-13-5-failure",
+   "s-13-6-failure",
+   "s-13-8-failure",
+   "s-14-1-failure",
+   "s-14-10-failure",
+   "s-14-11-failure",
+   "s-14-12-failure",
+   "s-14-13-failure",
+   "s-14-14-failure",
+   "s-14-143-failure",
+   "s-14-144-failure",
+   "s-14-3-failure",
+   "s-14-4-failure",
+   "s-14-5-failure",
+   "s-14-6-failure",
+   "s-14-7-failure",
+   "s-14-8-failure",
+   "s-14-9-failure",
+   "s-15-1-failure",
+   "s-15-11-failure",
+   "s-15-12-failure",
+   "s-15-13-failure",
+   "s-15-14-failure",
+   "s-15-15-failure",
+   "s-15-16-failure",
+   "s-15-18-failure",
+   "s-15-19-failure",
+   "s-15-20-failure",
+   "s-15-22-failure",
+   "s-15-23-failure",
+   "s-15-24-failure",
+   "s-15-25-failure",
+   "s-15-4-failure",
+   "s-15-7-failure",
+   "s-17-1-failure",
+   "s-17-10-correct",
+   "s-17-10-failure",
+   "s-17-11-correct",
+   "s-17-11-failure",
+   "s-17-12-failure",
+   "s-17-2-failure",
+   "s-17-3-correct",
+   "s-17-3-failure",
+   "s-17-4-failure",
+   "s-17-5-failure",
+   "s-17-7-failure",
+   "s-17-8-failure",
+   "s-17-9-correct",
+   "s-17-9-failure",
+   "s-17-hinge-failure",
+   "s-18-01-anatomy",
+   "s-18-02-anatomy",
+   "s-18-02-failure",
+   "s-18-03-anatomy",
+   "s-18-04-anatomy",
+   "s-18-04-failure",
+   "s-18-05-anatomy",
+   "s-18-05-failure",
+   "s-18-06-anatomy",
+   "s-18-06-failure",
+   "s-18-07-anatomy",
+   "s-18-07-failure",
+   "s-18-08-anatomy",
+   "s-18-08-failure",
+   "s-18-09-anatomy",
+   "s-18-10-anatomy",
+   "s-18-10-failure",
+   "s-18-11-anatomy",
+   "s-18-11-failure",
+   "s-18-12-anatomy",
+   "s-18-12-failure",
+   "s-18-13-anatomy",
+   "s-18-13-failure",
+   "s-18-14-anatomy",
+   "s-18-15-anatomy",
+   "s-18-16-anatomy",
+   "s-18-16-failure",
+   "s-18-17-anatomy",
+   "s-18-18-anatomy",
+   "s-18-18-failure",
+   "s-18-19-anatomy",
+   "s-18-19-failure",
+   "s-18-20-anatomy",
+   "s-18-20-failure",
+   "s-18-21-anatomy",
+   "s-18-21-failure",
+   "s-18-22-anatomy",
+   "s-18-23-anatomy",
+   "s-18-24-anatomy",
+   "s-19-2-correct",
+   "s-19-2-failure",
+   "s-19-3-failure",
+   "s-19-4-correct",
+   "s-19-4-failure",
+   "s-19-5-correct",
+   "s-19-5-failure",
+   "s-19-7-failure",
+   "s-19-8-failure",
+   "s-19-9-failure",
+   "s-19-opener",
+   "s-26-1-correct",
+   "s-26-1-failure",
+   "s-26-2-correct",
+   "s-26-2-failure",
+   "s-26-3-correct",
+   "s-26-3-failure",
+   "s-26-4-1-correct",
+   "s-26-4-1-failure",
+   "s-26-4-2-correct",
+   "s-26-4-2-failure",
+   "s-26-4-3-correct",
+   "s-26-4-3-failure",
+   "s-26-4-4-failure",
+   "s-26-5-correct",
+   "s-26-5-failure",
+   "s-26-6-correct",
+   "s-26-6-failure",
+   "s-26-7-failure",
+   "s-26-8-failure",
+   "s-26-opener",
+   "s-proofs-avatar",
+   "s-proofs-masthead",
+   "s-proofs-social",
+   "s-proofs-stacked"
+  ]
+ },
+ "photographs": {
+  "rotunda-2005": {
+   "file": "work/build/assets/photography/20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg",
+   "rights": "pho-01r",
+   "uses": 8,
+   "plates": [
+    "s-01-6-correct",
+    "s-16-opener",
+    "s-16-1-failure",
+    "s-16-2-correct",
+    "s-16-5-correct",
+    "s-16-7-correct",
+    "s-16-7-correct",
+    "s-16-7-failure"
+   ],
+   "rule_bytes": 298363,
+   "copies": 1
+  },
+  "lake-isabella-2014": {
+   "file": "work/build/assets/photography/20261112_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno-1200-Wide.jpg",
+   "rights": "pho-04r",
+   "uses": 13,
+   "plates": [
+    "s-01-8-correct",
+    "s-01-8-failure",
+    "s-16-opener",
+    "s-16-2-failure",
+    "s-16-3-correct",
+    "s-16-3-correct",
+    "s-16-3-correct",
+    "s-16-3-correct",
+    "s-16-3-failure",
+    "s-16-4-correct",
+    "s-16-4-failure",
+    "s-16-5-failure",
+    "s-16-6-correct"
+   ],
+   "rule_bytes": 191069,
+   "copies": 1
+  }
+ }
+}

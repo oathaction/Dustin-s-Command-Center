@@ -34,7 +34,8 @@
   "illustrative": false,
   "notes": "A drawing of a fault: the sign-off at 48 px in place of 96. Rule 08.2 counts the red pixels. The card is an artboard drawn to its frame's scale, so its words sit off the screen type scale.",
   "check_exempt": [
-   "scale"
+   "scale",
+   "size"
   ]
  },
  "s-20-11-correct": {
