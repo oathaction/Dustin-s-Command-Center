@@ -7586,3 +7586,15 @@ The main session posted chat 11b's plan for chapter 21 with four questions (Q11b
 | D4-234 | Chat 11b closes after the apply jobs: DR-323 to DR-325 and chapter 21's build move to chat 11c (work tracker row `c10c`, order 10.6), and row `c10b` is set done | Dustin asked for the next handoff prompt with his answers; the apply jobs needed no build of chapter 21 |
 | D4-235 | The engineer's E11b-1 (`[aria-current]` also matches "false") and E11b-2 (the menu's first focus ring under the title row's rule) go to the register for chat 12's review, unfixed | Both sit in approved chapter 18 beyond what DR-316 and DR-317 name, and neither fails WCAG 2.2 AA |
 | D4-236 | Closing strict build (19:49:05 UTC, on commit 57f7184d's tree): exit 0, 0 warnings, 0 stale plates, 13,083,858 bytes, 393 rules, 731 specimens; the projection 15.82 MB, 178,581 bytes under 16 MB (an early warning past 15.5 MB). No guide check ran this chat; chat 11c's closing check covers chapter 18's new keys file | The closing check of record; a check that did not run is named, never counted |
+
+## Chat 11c, November 22, 2026 (Phase 4)
+
+### Main session, opening
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-237 | Chat 11c opened on `claude/oath-action-phase-4-chat-11c-xvk30x`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `486bb2bb`, chat 11b's close) and works on it, as Dustin's opening message sets. V11's three setup steps ran on the fresh container | V19: fetch the remote tip first; V11's setup |
+| D4-238 | The three key tests fail (21:45 UTC): api.open.fec.gov 403, api.congress.gov 403, `CENSUS_API_KEY` unset. This session runs on "Oath & Action", not on "Oath & Action Brand Polish - Round 2" as DR-300 set, and a running session cannot move onto an unrestricted network. Chapter 21 reads only the atlas model in the repository (DR-306), so the plan holds and the build starts; Dustin is told | Dustin's "test each with one request before use"; his opening message starts the build unless the opening finds something that changes the plan |
+| D4-239 | The strict build passes as committed (21:45 UTC, to scratch): exit 0, 0 warnings, 0 stale plates, 13,083,858 bytes, 393 rules, 731 specimens, the figures V32 records; the working tree stays clean | V32 section 1's figures |
+| D4-240 | The work tracker's row `c10c` is set active | V32 section 2A |
+| D4-241 | Four owners start at once under `work/handoffs/phase-4/20261122_Chat-11c-Brief.md` (written 21:47 UTC): the editor (DR-323 to DR-325 first, then chapter 21's words), the data visualization lead (rulings in 20 minutes, the query rerun, sign-offs), the design director (the shell's hand-over first, then the views and the generator) and the engineer (the `atlas-page` renderer, the figure step, the exports and the atlas test); one writer per file, one file lock. Chapter 21's page words live in its generator and reach the kit through `--page-words`, chapter 20's pattern (D4-155) | DR-319 to DR-325 and V32 section 2B; the editor's apply jobs touch no file chapter 21's build touches |
