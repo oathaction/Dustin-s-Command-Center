@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirty-first handoff, November 21)
 
-Written November 21, 2026, at the close of chat 11, Phase 4's second chat. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md`. V5's sections 3 to 5, section 3 of V8 to V30, and section 3 below hold together. Decision log entries for this chat run from D4-100 to D4-213, with Dustin's answers DR-305 to DR-311. The change ledger runs to C-165.
+Written November 21, 2026, at the close of chat 11, Phase 4's second chat. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261121_Next-Session-Handoff_V30.md`. V5's sections 3 to 5, section 3 of V8 to V30, and section 3 below hold together. Decision log entries for this chat run from D4-100 to D4-213, with Dustin's answers DR-305 to DR-318. The change ledger runs to C-165.
 
 ## 1. Where things stand
 
@@ -28,18 +28,20 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 11 (work tracker row `c10`) bui
 
 **Published** (private): chat 11's progress board at https://claude.ai/artifact/RJyNPMoAGD66R9BayXJkrt (version id 1795306101-7f26). The chapters page stays at version 15 (https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF); chapter 20 first appears there with Phase 4 board 1 in chat 12.
 
-**Held for Dustin, on Phase 4 board 1** (rows in the register's chat 11 section)
-- ED11-1: Rule 05.1's specification row "Newsprint in each view: 60 to 85 percent" lacks DR-310's long-page exception; the editor's words: "60 to 85 percent; on a long page, screens of running text between the opening screens may hold more". Recommended yes. **If Dustin answers in a later message, log it as DR-312 before anything else.**
-- ED11-2: chapter 20 sets L1 from the 16 px master at 360 px, where approved Rule 03.6 gives the 24 px master under 48em; the guide's own masthead keeps the 16 px wordmark through 372 px (board 3's reply 10). Recommended: keep it, and add the exception to Rule 03.6.
-- DD11-NF1: Rule 01.22 asks for both sides at the same length; the NAC rule records no objector, so DR-93 governs (D4-108).
-- ED-F1: the atlas finishing list's layer color against Rule 15.25's resolution (G3-03); the wall test runs on the built views in chat 12 first.
-- AL11-1 and AL11-2: chapter 18's menu (the current-page mark inside a section; the focus fix W1, made on the website only).
-- C16-CD-01 (from chat 10): chapter 01's photographs in color.
+**Dustin's answers on November 22** ("Let's proceed as recommended" on the board's seven items, DR-312 to DR-318; none applied yet, all for chat 11b's opening except DR-315). The items as they stood:
+- ED11-1: Rule 05.1's specification row "Newsprint in each view: 60 to 85 percent" lacks DR-310's long-page exception; the editor's words: "60 to 85 percent; on a long page, screens of running text between the opening screens may hold more". Approved (DR-312).
+- ED11-2: chapter 20 sets L1 from the 16 px master at 360 px, where approved Rule 03.6 gives the 24 px master under 48em; the guide's own masthead keeps the 16 px wordmark through 372 px (board 3's reply 10). Approved: keep it, and Rule 03.6 gains "Site, under 24.375em: L1 from the 16 px master, 152 px wide" (DR-313).
+- DD11-NF1: Rule 01.22 asks for both sides at the same length; the NAC rule records no objector, so DR-93 governs (D4-108). Approved: Rule 01.22 reads "sets out what the record shows from each side, at the length the record holds" (DR-314).
+- ED-F1: the atlas finishing list's layer color against Rule 15.25's resolution (G3-03); the wall test runs on the built views in chat 12 first (DR-315).
+- AL11-1 and AL11-2: chapter 18's menu (the current-page mark inside a section; the focus fix W1, made on the website only). Approved: `aria-current="page"` on a part's front page and `"true"` inside it (DR-316); the scroll padding in chapter 18's menu (DR-317).
+- C16-CD-01 (from chat 10): chapter 01's photographs in color. Approved: black and white on the three plates (DR-318).
 
 ## 2. Next, in order
 
 ### A. Chat 11b's opening
-On "Oath & Action Brand Polish - Round 2" (DR-300, DR-306): fetch the branch, V11's three setup steps, the three key tests, a strict build to scratch matching section 1's figures. Set the tracker's row `c10b` active (https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA, collection `items`) and `c10` done if this chat did not.
+On "Oath & Action Brand Polish - Round 2" (DR-300, DR-306): fetch the branch, V11's three setup steps, the three key tests, a strict build to scratch matching section 1's figures. Set the tracker's row `c10b` active (https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA, collection `items`); `c10` is done.
+
+Then apply Dustin's November 22 answers, word for word as the decision log prints them, each through its generator and proved with `git diff --stat` and a word search of the strict build: the editor makes DR-312 (Rule 05.1's row, through `stage_a_systems_ch05.py` and `stage_a_systems_build.py` probe, capture, final), DR-313 (Rule 03.6's row, in the identity generator that writes chapter 03) and DR-314 (Rule 01.22, through `guide_editor_ch01.py`, then `stage_b_identity_ch01.py`); the engineer makes DR-316 and DR-317 (chapter 18's menu code set in `work/build/guide/code/` and its keys file through `stage_c_ch18_build.py`, and the website's menu in the application kit, then the kit's rebuild in its run order) and DR-318 (the grayscale on Rules 01.6 and 01.8's three plates, chapter 01 the same otherwise, checked by capture). Close those rows in the register. These run beside chapter 21's build, on files chapter 21 does not touch.
 
 ### B. Chat 11b's work: chapter 21, the atlas
 Build from `work/handoffs/phase-4/20261121_Chapter-21-Plan.md`: the design director builds (`work/build/scripts/phase-4/phase4_ch21_build.py`, `21-atlas.json`, `s-21-*`, `manifest-atlas.json`), the engineer adds the atlas view renderers the plan names to the application kit (inside the website's masthead, from `site-parts.mjs`), the data visualization lead signs off every view it draws, the editor writes every word, and the accessibility lead walks the views and confirms UX-4, F-8, F-14 and F-15. The atlas system test runs and hands its lines to chapter 28. 655,000 bytes allocated. Then chat 12 reviews chapters 16, 20 and 21 and builds Phase 4 board 1.
@@ -65,7 +67,7 @@ Build from `work/handoffs/phase-4/20261121_Chapter-21-Plan.md`: the design direc
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Phase 4 is active. Chat 11 is done. Start chat 11b as handoff V31 sets it: chapter 21, the atlas, with its system test, built from chat 11's plan.
+Phase 4 is active. Chat 11 is done. Start chat 11b as handoff V31 sets it: first apply my November 22 answers (DR-312 to DR-318, all as recommended), then build chapter 21, the atlas, with its system test, from chat 11's plan.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-165), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
@@ -75,7 +77,7 @@ This session should run on the "Oath & Action Brand Polish - Round 2" environmen
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); chapters 13, 14 and 15 as approved at Gate 3; and every answer I have given from DR-95 on, including DR-225 to DR-311 and my Gate 3 decisions. Size allocations move as content needs; only the page's 16 MB is fixed (DR-271).
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); chapters 13, 14 and 15 as approved at Gate 3; and every answer I have given from DR-95 on, including DR-225 to DR-318 and my Gate 3 decisions. Size allocations move as content needs; only the page's 16 MB is fixed (DR-271).
 
 Phase 4 covers these channels by name, each with its own applications and specifications (DR-292): Substack, X (Twitter), Threads, Instagram, YouTube, TikTok, LinkedIn and my own website.
 
@@ -106,7 +108,7 @@ How to work with me:
 - `work/boards/phase-4/chat-11/` (the progress board and its pictures; the quick check's results)
 
 **Modified**
-- `work/ledger/`: the decision log (D4-100 to D4-207, DR-305 to DR-311), the change ledger (C-157 to C-164), the deferred fixes register (chat 11's section and its outcomes table)
+- `work/ledger/`: the decision log (D4-100 to D4-213, DR-305 to DR-318), the change ledger (C-157 to C-165), the deferred fixes register (chat 11's section, its outcomes tables and Dustin's November 22 answers)
 - Chapter 05's generator and output (`stage_a_systems_ch05.py`, `05-color.json`) and the Stage A measurement record's render line
 - `work/build/scripts/phase-2/guide_build.py`, `guide_check.js`; `stage_c_ch19_build.py` and chapter 19's outputs; `work/build/app-kit/oa-app.mjs`, `lib.mjs`, `check-dimensions.py`; the exports manifest
 - `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` (row 47)

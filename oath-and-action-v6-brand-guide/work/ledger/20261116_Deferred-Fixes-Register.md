@@ -730,3 +730,15 @@ Rows from chat 11's owners' notes (`work/handoffs/phase-4/20261121_Chat-11-*-Not
 |---|---|---|---|---|---|---|
 | C11-1, wide page frames on phones | The main session, chat 11 close (D4-209) | Chapter 20's page plates (`phase4_ch20_build.py`, `PAGE_ROWS`; the kit's frames, contract C4) | In the guide at 390 px, a page frame drawn at 1440 or 1024 px shrinks to about 330 px wide, so its words show near 2.6 px; the frame is a picture with a full alt, and the 390 and 360 px frames show at true size, but a phone reader cannot read the wide pages | Show the 390 and 360 px frames first on narrow screens and let the wide frames open at true size in a scroll box, or link each wide frame to its export | A design call for chapter 20's review in chat 12 | Open, for chat 12 |
 | C11-2, the quick check's first two runs | D4-209, D4-211 | `work/build/scripts/phase-2/guide_check.js` | The first two quick checks on chat 11's final builds failed: the first because the check measured page frames' insides as live text (fixed in the check, with plants), the second on Rule 20.10's failure plate (fixed in the generator). A reviewer should confirm the check's frame exemption covers only C4 frames | Chat 12's production reader reads the new frame logic and its six plants | Fixed this chat; the review confirms | Open, for chat 12 to confirm |
+
+### Dustin's answers on chat 11's board (November 22, 2026)
+
+| Code | Answer | Status |
+|---|---|---|
+| ED11-1 | DR-312: Rule 05.1's row takes the editor's words | Approved; apply in chat 11b's opening |
+| ED11-2 | DR-313: keep the 16 px master at 360 px; Rule 03.6 gains the site row | Approved; apply in chat 11b's opening |
+| DD11-NF1 | DR-314: Rule 01.22 reads "sets out what the record shows from each side, at the length the record holds" | Approved; apply in chat 11b's opening |
+| ED-F1 | DR-315: the wall test on chapter 21's built views in chat 12 first | Open, for chat 12 |
+| AL11-1 | DR-316: `aria-current="page"` on a part's front page, `"true"` inside it | Approved; apply in chat 11b's opening |
+| AL11-2 | DR-317: chapter 18's menu takes the scroll padding | Approved; apply in chat 11b's opening |
+| C16-CD-01 | DR-318: chapter 01's three photograph plates in black and white | Approved; apply in chat 11b's opening |
