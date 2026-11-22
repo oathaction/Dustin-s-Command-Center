@@ -1053,7 +1053,11 @@ def build(ctx):
                                        f'Newsprint falls to {nf} percent and dark surfaces take {chf + prf}, so no panel can '
                                        f'mark a turn. Every text pair here still passes 4.5 to 1, and the fault lies in how '
                                        f'much of the view is dark.'},
-                'specs': [{'label': 'Newsprint in each view', 'value': '60 to 85 percent', 'token': P('newsprint')},
+                # DR-312 (ED11-1): a long page's running-text screens between the opening screens may hold more Newsprint
+                'specs': [{'label': 'Newsprint in each view',
+                           'value': '60 to 85 percent; on a long page, screens of running text between the opening screens '
+                                    'may hold more',
+                           'token': P('newsprint')},
                           {'label': 'Dark panels in each section', 'value': 'One at most, in Charcoal or Prussian', 'token': 'oa.color.surface.prussian'},
                           {'label': 'Pillar Red in each view', 'value': 'Within 5 percent, signature red included', 'token': P('pillarRed')}] +
                          [{'label': f'{PNAME[k]} across a body of work', 'value': (f'{SHARE[k][0]} to {SHARE[k][1]} percent' if SHARE[k] else 'As needed'),

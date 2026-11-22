@@ -912,6 +912,10 @@ def build(book):
           f".ed .card .hl{{{fx('h3')};margin:0 0 10px;position:relative;max-width:16ch}}"
           f".ed .card .dek{{position:relative;max-width:40ch}}"
           f".ed .dome{{position:absolute;right:-16px;top:36px;width:200px;height:auto;color:var(--oa-color-graphic-subtle)}}")
+    # DR-318 (C16-CD-01): the photograph plates of Rules 01.6 and 01.8 show their photographs in black and white, as Gate 1's
+    # S10 and chapter 16 set, with the filter alone and no new image. Only these three plates take PH_BW; class ph marks no
+    # other element in chapter 01, and each plate's style is scoped to its own specimen.
+    PH_BW = PH + ".ed .ph{filter:grayscale(1)}"
     # The size hint is the rendition's width at 5:3 (DR-238); the crop classes set each frame's own ratio.
     # Chat 10 (P4-5, the engineer's contract C1): each photograph is asked for by name and drawn from the one copy the page
     # carries (guide_photos.PHOTOS), so Rule 01.8's two plates no longer carry it twice; only the src gives way to the name.
@@ -928,7 +932,7 @@ def build(book):
                          "office or event, so they give the reader nothing to check or act on."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-6-correct", '<div class="ed">' + ph(PHOTO_PARKS, "r53", "Mourners file past a casket ringed by velvet ropes in the Capitol Rotunda, under its paintings and statues.", e(CAP_PARKS)) + "</div>",
-                                  css=(BASE, PH), rule="01.6",
+                                  css=(BASE, PH_BW), rule="01.6",
                                   alt="A documentary photograph of the U.S. Capitol Rotunda, its pilasters, framed paintings and statues above a line of people "
                                       "filing past a casket inside velvet ropes, with Capitol Police officers among them. Caption: " + CAP_PARKS,
                                   notes="DR-101, round two: the research lead's recommended photograph (pho-01 in the rights ledger), a public-domain work of the "
@@ -983,7 +987,7 @@ def build(book):
         "why": {"text": ["A reader trusts a picture of a real hearing more than a picture of the idea of one, and a full caption lets them check it."],
                 "basis": "Design judgment"},
         "correct": {"specimen": A("s-01-8-correct", '<div class="ed">' + ph(PHOTO_ZIANNO, "r32", "An official points to a project map while two residents, seen from behind, listen.", e(CAP_ZIANNO)) + "</div>",
-                                  css=(BASE, PH), rule="01.8",
+                                  css=(BASE, PH_BW), rule="01.8",
                                   alt="A documentary photograph of a public meeting: a federal official facing the camera points to a large map of Lake Isabella while two "
                                       "residents, seen from behind, listen; a board at left reads Steps in the real estate process. Caption: " + CAP_ZIANNO,
                                   notes="DR-101, round two: the research lead's recommended photograph (pho-04), a public-domain work of the U.S. Army Corps of Engineers, from "
@@ -992,7 +996,7 @@ def build(book):
                                         "DR-238: the plate shows the research lead's 1,200 px wide rendition of that file; the 1,920 px file stays the source."),
                     "caption": "The caption names the official and his job, what he is doing, where and when, then the credit. The residents face away and stay unnamed."},
         "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + dnp() + ph(PHOTO_ZIANNO, "r32", "The same photograph of the public meeting.", "Democracy in action. " + ill()) + "</div>",
-                                  css=(BASE, PH), rule="01.8",
+                                  css=(BASE, PH_BW), rule="01.8",
                                   alt=f"{FC}The same photograph of the public meeting, captioned only Democracy in action, a caption invented for this example and labeled Illustrative."),
                     "caption": "The caption names no person, act, place or date, so a reader cannot check the picture and learns nothing from it."},
         "specs": [{"label": "Caption", "value": "Who is shown, what they are doing, where and when, then the credit"},
@@ -1397,8 +1401,9 @@ def build(book):
 
     rules.append({
         "id": "01.22", "title": "Leave the side to the reader in a process piece.",
-        "rule": ["An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what supporters and opponents "
-                 "have said at the same length, and takes no side. Its ask is the view’s one working red."],
+        # DR-314 (DD11-NF1): what the record shows from each side, at the length the record holds (DR-93), as Rule 20.8 words it
+        "rule": ["An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what the record shows "
+                 "from each side, at the length the record holds, and takes no side. Its ask is the view’s one working red."],
         "tokens": ["oa.color.action.ask.fill.onNewsprint", "oa.color.action.ask.label.onNewsprint", "oa.component.button.ask.keyline.onNewsprint"],
         "why": {"text": ["A reader of any view can use a process piece, because it tells them how to be heard and leaves what to say to them."],
                 "basis": "Design judgment"},

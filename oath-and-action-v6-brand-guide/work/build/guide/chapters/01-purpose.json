@@ -971,7 +971,7 @@
    "id": "01.22",
    "title": "Leave the side to the reader in a process piece.",
    "rule": [
-    "An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what supporters and opponents have said at the same length, and takes no side. Its ask is the view’s one working red."
+    "An Act piece labeled “Act · How to take part” gives one step with its date and place, sets out what the record shows from each side, at the length the record holds, and takes no side. Its ask is the view’s one working red."
    ],
    "tokens": [
     "oa.color.action.ask.fill.onNewsprint",

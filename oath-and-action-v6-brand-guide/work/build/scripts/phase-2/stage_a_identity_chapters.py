@@ -287,6 +287,8 @@ CH03 = {
           "L3 squeezed to 150 px across a phone bar, under its 196 px minimum. Its capitals fall to 12 px, under the 14 px floor, and the lockmark to 26 px.",
           specs=[S("Site, from 48em", "L3 from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master, 282 by 48 px on whole pixels; bar 80 px tall"),
                  S("Site, under 48em", "L1 from the 24 px master, 221 px wide; bar 56 px; menu button 44 px", "oa.size.target.touch"),
+                 # DR-313 (ED11-2): a site under 24.375em keeps L1 from the 16 px master, as chapter 20 does
+                 S("Site, under 24.375em", "L1 from the 16 px master, 152 px wide"),
                  S("Email header", "L3 at 282 px in a 600 px header, sent as a PNG at twice size"),
                  S("In print", "L3's print master, with the lockmark at 2.18 cap heights, the masthead's proportion (Rule 03.2)"),
                  S("Section masthead", "L7: L1, a hairline and the pillar's name in Inter 600 capitals, in the surface's ink")],

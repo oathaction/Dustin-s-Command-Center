@@ -43,7 +43,7 @@
       "specs": [
         {
           "label": "Newsprint in each view",
-          "value": "60 to 85 percent",
+          "value": "60 to 85 percent; on a long page, screens of running text between the opening screens may hold more",
           "token": "oa.color.palette.newsprint"
         },
         {

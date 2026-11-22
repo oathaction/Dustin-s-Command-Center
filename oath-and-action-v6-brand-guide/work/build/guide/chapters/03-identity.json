@@ -352,6 +352,10 @@
      "token": "oa.size.target.touch"
     },
     {
+     "label": "Site, under 24.375em",
+     "value": "L1 from the 16 px master, 152 px wide"
+    },
+    {
      "label": "Email header",
      "value": "L3 at 282 px in a 600 px header, sent as a PNG at twice size"
     },
