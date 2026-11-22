@@ -17,7 +17,7 @@
     },
     {
      "key": "Tab",
-     "focus": ".oa-masthead-part[aria-current=\"page\"]",
+     "focus": ".oa-masthead-part[aria-current=\"true\"]",
      "states": [
       {
        "el": ".oa-masthead-menu",
@@ -62,7 +62,7 @@
     },
     {
      "key": "Enter",
-     "focus": ".oa-masthead-row-link[aria-current=\"page\"]",
+     "focus": ".oa-masthead-row-link[aria-current=\"true\"]",
      "states": [
       {
        "el": ".oa-masthead-menu",
@@ -94,7 +94,7 @@
     },
     {
      "key": "Space",
-     "focus": ".oa-masthead-row-link[aria-current=\"page\"]",
+     "focus": ".oa-masthead-row-link[aria-current=\"true\"]",
      "states": [
       {
        "el": ".oa-masthead-dialog",
@@ -109,7 +109,7 @@
     },
     {
      "key": "Tab",
-     "focus": ".oa-masthead-row-link[aria-current=\"page\"]"
+     "focus": ".oa-masthead-row-link[aria-current=\"true\"]"
     },
     {
      "key": "Tab",
@@ -159,7 +159,7 @@
     },
     {
      "key": "Enter",
-     "focus": ".oa-masthead-row-link[aria-current=\"page\"]"
+     "focus": ".oa-masthead-row-link[aria-current=\"true\"]"
     },
     {
      "key": "Shift+Tab",

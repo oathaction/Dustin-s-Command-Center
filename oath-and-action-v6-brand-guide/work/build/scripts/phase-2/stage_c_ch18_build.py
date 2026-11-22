@@ -546,11 +546,17 @@ rule(n=5, set='c-18-link', name='Links',
          notes='Picture of a fault: links told apart by color alone, and link words that name no place.'))
 
 # ---- 18.6 Masthead and phone menu -------------------------------------------------------------------------------
+# DR-316 (AL11-1): the rule's first paragraph and its States and Hear rows take the editor's words (chat 11b): "page" on
+# the part's own front page and "true" on the pages inside it; the code set and its key paths show "true" (KEYS, 6).
+# DR-317 (AL11-2): c-18-masthead.css and .js give the open menu its scroll padding; no words change, since the rule
+# already asks it of a sticky masthead (the editor's notes, chat 11b)
 rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
      title='Give every page one masthead with its parts in a named navigation.',
      rule=['The masthead holds the product’s name, which links home, and its parts in a navigation landmark, a region a '
-           'screen reader can jump to, named for what it holds, such as “Parts of the site”. The link to the part the reader is in carries <code>aria-current="page"</code>, bold words and a 2 px '
-           'underline. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the '
+           'screen reader can jump to, named for what it holds, such as “Parts of the site”. The link to the part the reader '
+           'is in carries bold words, a 2 px underline and aria-current: <code>aria-current="page"</code> on that part’s own '
+           'front page, and <code>aria-current="true"</code>, which a screen reader announces as “current”, on the pages '
+           'inside it. When the parts no longer fit on one line, they move behind a Menu button, its three bars beside the '
            'word Menu, which opens them in a native modal dialog.',
            'The open menu covers the page and holds focus. Focus moves to the current part’s link, the Tab key reaches '
            'nothing on the page behind it, and Escape or “Close the menu” shuts it and returns focus to Menu. The rows inside open and close as disclosures '
@@ -575,15 +581,16 @@ rule(n=6, set='c-18-masthead', name='Masthead and phone menu',
          (L_PAT, 'Landmarks, banner and navigation; APG Dialog (Modal) for the phone menu; Disclosure for its rows. A '
                  'dropdown that leaves the page in view follows APG’s Disclosure Navigation Menu example, and no part of '
                  'the masthead takes the menu role.'),
-         (L_ST, 'Current part: bold words, a 2 px underline and aria-current. Hover: a 1 px underline. Menu closed or open, with '
+         (L_ST, 'Current part: bold words, a 2 px underline and aria-current, “page” on the part’s own front page and “true” '
+                'on the pages inside it. Hover: a 1 px underline. Menu closed or open, with '
                 'aria-expanded. Rows closed or open, the chevron down or up. Focus: the ring.'),
          (L_KEY, 'Tab through the home link and the parts. On a phone, Enter or Space on Menu opens the menu with focus on '
                  'the current part’s link; Tab and Shift+Tab move through the menu and never reach the page behind it; Escape '
                  'or Close the menu shuts it, and focus returns to Menu.'),
          (L_NAME, 'The navigation’s label, such as “Parts of the site”; “Menu”, with <code>aria-haspopup="dialog"</code>; the dialog named by its '
                   'title; “Close the menu”.'),
-         (L_HEAR, 'The navigation and its name on entry; “current page” on the current part; on Menu, “collapsed” or '
-                  '“expanded”, and once it opens, the dialog’s name.'),
+         (L_HEAR, 'The navigation and its name on entry; on the current part, “current page” on its own front page and '
+                  '“current” on the pages inside it; on Menu, “collapsed” or “expanded”, and once it opens, the dialog’s name.'),
          (L_TGT, 'Each link and Menu at least 44 px tall; Close the menu 44 by 44 px.', 'oa.size.target.touch'),
          (L_FC, 'The bars, the chevrons and the underline draw in ButtonText or LinkText, and the current part keeps its '
                 'underline. The dialog draws a 1 px edge in CanvasText.'),
@@ -1776,22 +1783,24 @@ KEYS = {
             step('Tab', '.oa-link-skip'),
             step('Tab', '.oa-link-text a[href^="#"]'),
             step('Enter', '[id$="oa-link-steps"]')])],
+    # DR-316 (AL11-1): the code set's page sits inside Explainers, so its current part carries aria-current="true"
+    # ("page" only on the part's own front page); every path finds that link by its value
     6: [path('Wide: Tab through the home link and the parts; the current part says so', [
         step('Tab', '.oa-masthead-home'),
-        step('Tab', '.oa-masthead-part[aria-current="page"]', [st('.oa-masthead-menu', visible=False)]),
+        step('Tab', '.oa-masthead-part[aria-current="true"]', [st('.oa-masthead-menu', visible=False)]),
         step('Tab', '.oa-masthead-part:not([aria-current])'),
         step('Enter', '[id$="oa-masthead-page"]')], widths=[1440]),
         path('Narrow: Menu opens a modal menu at the current part; Tab moves through it; Escape and Close the menu return to Menu', [
             step('Tab', '.oa-masthead-home'),
             step('Tab', '.oa-masthead-menu', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'false'}),
                                               st('.oa-masthead-parts', visible=False)]),
-            step('Enter', '.oa-masthead-row-link[aria-current="page"]', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'true'}),
+            step('Enter', '.oa-masthead-row-link[aria-current="true"]', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'true'}),
                                                                         st('.oa-masthead-dialog', prop='open', **{'is': True})]),
             step('Escape', '.oa-masthead-menu', [st('.oa-masthead-menu', attr='aria-expanded', **{'is': 'false'}),
                                                  st('.oa-masthead-dialog', prop='open', **{'is': False})]),
-            step('Space', '.oa-masthead-row-link[aria-current="page"]', [st('.oa-masthead-dialog', prop='open', **{'is': True})]),
+            step('Space', '.oa-masthead-row-link[aria-current="true"]', [st('.oa-masthead-dialog', prop='open', **{'is': True})]),
             step('Shift+Tab', '.oa-masthead-close'),
-            step('Tab', '.oa-masthead-row-link[aria-current="page"]'),
+            step('Tab', '.oa-masthead-row-link[aria-current="true"]'),
             step('Tab', '.oa-masthead-dialog .oa-masthead-row-link:not([aria-current])'),
             step('Tab', '.oa-masthead-dialog .oa-masthead-row-link:not([aria-current])'),
             step('Tab', '.oa-masthead-dialog .oa-masthead-row-link:not([aria-current])'),
@@ -1800,7 +1809,7 @@ KEYS = {
                                                                    st('[id$="oa-masthead-topics"]', visible=True)]),
             step('Tab', '[id$="oa-masthead-topics"] .oa-masthead-row-link'),
             step('Escape', '.oa-masthead-menu', [st('.oa-masthead-dialog', prop='open', **{'is': False})]),
-            step('Enter', '.oa-masthead-row-link[aria-current="page"]'),
+            step('Enter', '.oa-masthead-row-link[aria-current="true"]'),
             step('Shift+Tab', '.oa-masthead-close'),
             step('Enter', '.oa-masthead-menu', [st('.oa-masthead-dialog', prop='open', **{'is': False})])], widths=[390])],
     7: [path('Tab through the breadcrumb, the list and the links before and after; each current place says so', [

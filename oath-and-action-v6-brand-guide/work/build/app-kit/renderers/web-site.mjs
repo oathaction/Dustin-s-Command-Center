@@ -134,10 +134,6 @@ ${at(BP.wide, '.ws{--ws-part-gap:32px}')}
 /* the menu (spec 3) */
 .ws .oa-masthead-dialog{padding:0 var(--m) 32px}
 .ws .oa-masthead-dialog-head{min-height:56px}
-/* W1 (2.4.11): the menu's title row sticks, so a focused row scrolled under it stays clear: the dialog's scroll padding
-   clears the row and the 2 px focus ring set 2 px out (the accessibility lead's tested value; the site's script sets it
-   from the row's own height when the menu opens, should the row wrap at a large text size) */
-.ws .oa-masthead-dialog{scroll-padding-top:calc(var(--oa-space-800) + 1px)}
 .ws .oa-masthead-dialog-nav{margin-top:24px}
 .ws .oa-masthead-list>li:nth-child(4){border-bottom-color:var(--oa-color-border-strong)}
 .ws.ws-open{min-height:var(--ws-vh)}
@@ -648,7 +644,10 @@ export async function render(spec) {
     marks.css = got.css; marks.words = got.words;
     got.svgs.forEach((svg, i) => { const [k, id] = keys[i]; marks[k === 'row' ? 'rows' : 'steps'][id] = svg; });
   }
-  const parts = site.parts.map(([label, href]) => ({ label, href, current: pw.current && label === pw.current ? 'page' : false }));
+  // DR-316 (AL11-1): the current part's link carries aria-current="page" on that part's own front page and "true" on the
+  // pages inside it. The kit draws no part's front page: its article sits inside Explain and its Act page inside Act, so
+  // both take "true"; the home page marks its home link "page" (below)
+  const parts = site.parts.map(([label, href]) => ({ label, href, current: pw.current && label === pw.current ? 'true' : false }));
   const body = ({ pid, theme, theme_for = null, part = 'page', width = null, vh = null, open = false, fig_w = null } = {}) => {
     const group = `oa-theme-${pid}`;
     const sw = { theme: theme_for ? theme : 'device', target: theme_for, group };

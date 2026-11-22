@@ -8,6 +8,8 @@
 // parts become the site's, ids take the page's prefix, and every icon is a <use> of the guide's sprite (contract C4).
 // From c-18-theme-switch.html: the fieldset alone, twice: in the bar after the parts (AL-07, AL-08) and in the menu after its
 // head; each instance its own radio group, both setting one target, so chapter 18's script keeps them showing one choice.
+// DR-316 (AL11-1): a part's current value is the caller's, "page" on that part's own front page and "true" on the pages
+// inside it (web-site.mjs); `true` alone still means "page".
 import fs from 'fs';
 import path from 'path';
 import { CODE, esc } from '../lib.mjs';
@@ -53,18 +55,10 @@ export const switch_head_js = () => read('c-18-theme-switch.head.js');
 // AL-06, the website's addition to chapter 18's masthead script (not chapter 18's code set): when the window widens past
 // the breakpoint while the menu is open, the menu closes and focus goes to the current part's link in the bar, or to the
 // home link when no part is current, since Menu is then hidden. bp_em is the masthead's breakpoint in em.
+// DR-317 (AL11-2): W1's scroll padding (2.4.11) is chapter 18's own now, in c-18-masthead.css and c-18-masthead.js, which
+// masthead_css() and masthead_js() read; the site's copies of it (D4-161) went, so one rule holds it.
 export function close_on_widen_js(bp_em) {
   return `(function () {
-  // W1 (2.4.11): when the menu opens, its scroll padding is its sticky title row's height and rule, so no focused row
-  // hides under the row, at any text size
-  document.querySelectorAll('[data-oa-masthead] .oa-masthead-menu').forEach(function (menu) {
-    menu.addEventListener('click', function () {
-      var dialog = document.getElementById(menu.getAttribute('aria-controls'));
-      var head = dialog && dialog.querySelector('.oa-masthead-dialog-head');
-      // the row, then room for the focus ring (2 px, 2 px out) and a little air
-      if (head) dialog.style.scrollPaddingTop = (Math.ceil(head.getBoundingClientRect().height) + 9) + 'px';
-    });
-  });
   var mq = window.matchMedia('(min-width: ${bp_em}em)');
   function widened() {
     if (!mq.matches) return;

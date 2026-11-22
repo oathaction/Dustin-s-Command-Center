@@ -143,10 +143,13 @@
 </a>
     <nav class="oa-masthead-nav" aria-label="Parts of the site">
       <ul class="oa-masthead-parts">
+        <!-- This page sits inside Explainers, so the link to Explainers carries aria-current="true", which a
+             screen reader announces as "current". On the front page of Explainers itself, it carries
+             aria-current="page". -->
         <li><a
           class="oa-masthead-part"
           href="#oa-masthead-page"
-          aria-current="page">Explainers</a></li>
+          aria-current="true">Explainers</a></li>
         <li><a class="oa-masthead-part" href="#oa-masthead-page">Bills</a></li>
         <li><a class="oa-masthead-part" href="#oa-masthead-page">Atlas</a></li>
         <li><a class="oa-masthead-part" href="#oa-masthead-page">About</a></li>
@@ -194,7 +197,7 @@
         <li><a
           class="oa-masthead-row-link"
           href="#oa-masthead-page"
-          aria-current="page">Explainers</a></li>
+          aria-current="true">Explainers</a></li>
         <li><a class="oa-masthead-row-link" href="#oa-masthead-page">Bills</a></li>
         <li><a class="oa-masthead-row-link" href="#oa-masthead-page">Atlas</a></li>
         <li><a class="oa-masthead-row-link" href="#oa-masthead-page">About</a></li>
