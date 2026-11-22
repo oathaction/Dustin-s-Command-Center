@@ -7527,3 +7527,15 @@ The progress board (https://claude.ai/artifact/RJyNPMoAGD66R9BayXJkrt) listed se
 | DR-316 | AL11-1: Rule 18.6's menu marks the current part with `aria-current="page"` on that part's own front page and `aria-current="true"` (announced "current") on the pages inside it; the bold words and the 2 px underline stay. Chapter 18's code set and its keys file, and the website's menu in the application kit, follow | Dustin, November 22, as recommended |
 | DR-317 | AL11-2: chapter 18's menu dialog takes the scroll padding the website already carries (W1, WCAG 2.4.11), so the guide's component matches the website | Dustin, November 22, as recommended |
 | DR-318 | C16-CD-01: Rules 01.6 and 01.8's three plates show their photographs in black and white (`filter: grayscale(1)` on the photograph's class, no new bytes), as Gate 1's S10 and chapter 16 set (`guide_editor_ch01.py`) | Dustin, November 22, as recommended |
+
+## Chat 11b, November 22, 2026 (Phase 4)
+
+### Main session, opening
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-214 | Chat 11b opened on `claude/admiring-maxwell-cbptl4`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `cb332f40`, Dustin's November 22 answers and handoff V31) and works on it, as Dustin's opening message sets. V11's three setup steps ran on the fresh container | V19: fetch the remote tip first; V11's setup |
+| D4-215 | This session runs on "Oath & Action Brand Polish - Round 2", as DR-300 and DR-306 set. The three key tests pass (15:30 UTC): api.open.fec.gov 200, api.congress.gov 200, and `CENSUS_API_KEY` set, with api.census.gov 200 | Dustin's "test each with one request before use" |
+| D4-216 | The strict build passes as committed (15:30 UTC, to scratch): exit 0, 0 warnings, 13,080,604 bytes, the size V31 records; the working tree stays clean | V31 section 1's figures |
+| D4-217 | The work tracker's row `c10b` is set active | V31 section 2A |
+| D4-218 | The apply jobs for DR-312 to DR-318 start at once under `work/handoffs/phase-4/20261122_Chat-11b-Brief.md`, before Dustin's go on chapter 21's build: the editor makes DR-312, DR-313, DR-314 and DR-318, and the engineer DR-316 and DR-317. DR-318 moves from the engineer to the editor, since `guide_editor_ch01.py` carries both DR-314 and DR-318 and one writer holds a file; Rule 18.6's words for DR-316 are the editor's, typed by the engineer, since `stage_c_ch18_build.py` holds both the keys table and the rule's words | Dustin's opening message orders the answers applied first, and they are approved; one writer per file (V27) |
