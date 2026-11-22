@@ -11,6 +11,11 @@ Data visualization lead, Phase 4, chat 11c, November 22, 2026. Started 21:48 UTC
 - D4-xxx | A red target on a patterned connection draws its 6 px case on the red's rhythm, each case dash 1 px longer at each end, with the pattern at the drawn width (16 and 8 px at 4 px) and the case Charcoal in both themes (R14) | A solid case reads as a solid line in gray (Rule 13.4's failure); Rule 13.4 states patterns in line widths; Rule 12.5 names a Charcoal edge
 - D4-xxx | T10 checks a contested remedy's stored text whole, in order, split at one sentence, both blocks with the same standing, and prints their lengths without judging them (R15) | DR-37 keeps the stored text; DR-314 and DR-323 set "at the length the record holds"; H08 never set a length
 - D4-xxx | Plan corrections C1 to C5 (below, under Done): "same length" and the H08 citation leave sections 3.3, 5 (Rule 21.4's draft and specifications) and 8 (T10) | They followed Rule 01.22's old words, which DR-314 replaced, and cited a house rule that sets no length
+- D4-xxx | The atlas title bar stays a Charcoal band in both themes (R17), and plan 3.1 follows the build (C6) | AL-17's "never a second banner" concerns landmarks, met by one header and a named nav; chapter 20 as built and D4-189 set the band; brief section 5 makes the build govern the shell
+- D4-xxx | Count keys `records-naming:<S>:<V>` and `atlas:loops-reinforcing`/`-balancing` join R2 (R16), the latter over all 23 loops | The engineer's ask; the loop index prints all 23 by kind (DR-321)
+- D4-xxx | The loop index's grade column follows R11's grade-line form for every loop (R18) | It prints the same stored field as Loop R18's grade line, and Rule 13.3 allows no stored spelling on a page
+- D4-xxx | Batch 1 signs off every view's data and holds every view for display faults, requests 4 to 28 | Data matched the model on all 59 pages; the faults are in marks and layout, which the plates show to readers
+
 ## Rulings
 
 Landed in this file by 21:53 UTC (`date -u` read at 21:53:52, straight after the write; corrections at 21:53 UTC). For the design director and the engineer. Every value named here is read from the model at build time; the values in brackets are today's, for checking only (R9).
@@ -213,10 +218,88 @@ T10 passes a contested remedy when:
 
 Today only Reform R-23 has a contested remedy. Its stored text splits into four sentences of 8, 21, 13 and 38 words; `remedy_split: 4` gives blocks of 42 and 38 words, and the four sentences rejoin to the stored text exactly (checked by script at 22:26 UTC). Whether a split separates the two readings, rather than cutting one in half, is a judgment the test cannot make; I check it at sign-off, and R-23's split at "Main limitation" does separate them.
 
+### R16. Two more count keys (the engineer's ask, batch 1)
+
+Written 23:20:20 UTC. Added to R2's table, with these methods; the atlas test already counts them this way.
+
+| `data-count-of` | Counts |
+|---|---|
+| `records-naming:<S>:<V>` | Issue records on sheet S whose `nodes` hold Variable V, whatever the filter shows [D04: D1 8, D4 9, D5 11] |
+| `atlas:loops-reinforcing`, `atlas:loops-balancing` | All 23 loops by their stored `type`, numbered or conceptual [18 and 5], as the loop index prints all 23 (DR-321). A count of numbered loops alone would take `atlas:loops-numbered-reinforcing` and `-balancing` [17 and 3]; no page prints one today |
+
+### R17. The atlas title bar on a Charcoal band stands (the design director's DD11C-R1)
+
+Written 23:20:20 UTC. The specs' shell section sets the title bar as `<nav class="wa-bar oa-surface-charcoal" aria-label="Atlas views">`, Charcoal in both themes. It stands, for four reasons:
+
+1. **AL-17 is met.** AL-17's "never a second banner" is about landmarks: the atlas's bar must be a second navigation named for what it holds, not a second `banner`. On all six exports I counted one `<header>` (the site's masthead), no `role="banner"`, a `nav` named "Atlas views", one `main` and one `h1` (by script, between date reads at 23:09 and 23:14 UTC). The band carries no wordmark and no copy of the site's parts.
+2. **Chapter 20 as built governs the shell** (brief section 5), and its home page opens the atlas section with this same bar on Charcoal (D4-189). A reader who follows it into the atlas meets the same band, which WCAG 3.2.4's consistent identification favors.
+3. **Rule 05.1 under DR-310.** On pages whose first screen is a drawing or a table on Newsprint, the band is that screen's dark element (6.2 percent of a 1440 by 900 window, by the specs' measure).
+4. **My plan's sentence "never a dark panel" (section 3.1) predates D4-189.** I wrote it to keep the bar from reading as a banner; the band does that work through its markup and contents instead. I correct the plan (C6, under Done).
+
+It stands on these conditions, all met today: it stays a `nav` with no wordmark or site parts; it holds no red; in the dark theme its bottom edge takes the 1 px `--oa-color-border-hairline-on-charcoal` so it does not merge into the ground (specs, shell section); and its words keep 4.5 to 1 through `.oa-surface-charcoal`'s tokens.
+
+### R18. The loop index's grade column is each loop's grade line (batch 1, A15)
+
+Written 23:20:20 UTC. R11 composes Loop R18's grade line from its stored `evidence` field, and the loop index (Rule 21.14) prints the same field for all 23 loops, so R11 applies to every row. In each row, every stored grade token (`documented`, `well-supported`, `plausible`, `plausible_contested`, `hypothesis`) becomes its Rule 13.3 display word, capitalized at the start of the field and after a semicolon and lowercase elsewhere, never with a hyphen or an underscore; every bare variable code becomes its chip; every other word stays as stored. A field that is one grade alone prints the display word alone: "Plausible", "Contested", "Hypothesis", "Well supported". Loop B4's row becomes "Well supported where seats are competitive; Variable C5 to Variable D5 well supported". T10 then reads these cells as composed text.
+
 ## Contracts
 
 - For the engineer: C9's marks, with R1's additions (`data-atlas-reads` with directions, `data-weakest`, `data-part` in place of a kind on a part box, `data-lit`, `data-pathway`) and R2's method for each `data-count-of` key, in C9's naming. Aligned at 21:55:55 UTC.
 - For the design director: R6's inks and R7's 390 px form; R10's red table; R12's range row.
+
+## Sign-offs
+
+### Batch 1 (A11 to A20), 23:20:20 UTC
+
+**What I checked, and how.**
+- **Data, by my own script, not the atlas test.** I wrote `signoff/check.py` in my scratch: it reads the six working exports (`work/build/exports/phase-4/20261122_Atlas-*.html`) and every frame of the ten plates (`work/build/app-kit/plates/a11.json` to `a20.json`), 59 pages in all, and checks each mark against the model by R1 to R18's methods. Run at 23:09 UTC: 1,560 typed IDs (each kind and ID in the model, each chip's words), 164 connection marks (sign, type, delay, grade), 2,544 counts (each key's method and its number in the words), 11 read-aloud lines (R4), 88 effect rows (code whole, true minus), 54 routes (check date or "Not checked"), every status date, every in-page evidence link's target, the lit parts, the weakest step (L15 only) and 18 stepper holds (L14 37 words, 9,250 ms; L15 64 words, 16,000 ms). **0 faults.** No bare ID in any text outside a chip.
+- **Red, by pixels.** Every PNG export scanned for Pillar Red (23:08 UTC). Beyond the identity marks every chapter 20 page carries (the masthead's red ampersand and lockmark dot, and the footer lockmark's dot), red appears only on Reform R-23's page (two outlines, EC7 and A4) and Loop R18's page (the drawing alone, D4, L14 and L15), in light and dark, at 1440 and 390 px. None on the home, the Register, the loop index or How to read. In markup, every `data-red` mark is a target of its view's reform.
+- **L15 against R14,** in the A14 export's markup and its 1440 px captures, light, dark and gray: 28 px solid lead-in with its two ticks; 8 px gap; red dashes 15.75 and 7.87 px, case 17.75 and 5.87 px offset 1 px, with 1 px stubs ringing the run's ends; the fit ending at the 6 px arrowhead's base; the red arrowhead with no edge; the case pinned to Charcoal in both themes (`.ws.wa .sv .rt .ak-case`). In gray it reads as a dashed line next to L14's solid one. **R14 holds.**
+- **Stored text whole,** by script: Loop R18's summary, case, qualification and adaptation; PW06's short answer; Reform R-23's summary, problem, status and both remedy blocks; Reform R-35's remedy and its 87 percent route note; all ten D04 citations; D04's everyday question.
+- **Both sides (plan 3.6, DR-55, DR-93).** Each view prints the finding each side may want to skip at the standing of its section: PW06's 254 percent figure and its Medicare outpatient sentence; the CBO estimate beside the $7.25 floor and 30 states; L14 documented beside R-35's finding of harm and its 87 percent note; R18's 2025 removals beside the 2021 removals and the plausible return step. Nothing added or softened.
+- **By eye:** the 1440 px light captures of A11 to A16, A11's 1440 dark and 390 light, A13's and A14's 390 light, and A17 to A20 as headless screenshots of the engineer's scratch exports (23:14 UTC, load 0.03).
+
+**Verdicts.** Every value on every view matches the model: IDs, signs, grades, delays, counts, effects, routes, dates and stored text. **Signed off on data for A11 to A20.** No view is signed off whole yet: each has display faults in its marks or layout, listed below with the request that fixes it.
+
+| View | Data | Held for (request) |
+|---|---|---|
+| A11 home | Signed | Box text overflowing at 1440 (4); two counts run together (5); the main circuit lost at 390 (6); the key's words (7) |
+| A12 reform R-23 | Signed | LE15 unnamed and a step from nothing (8); "As of" after the status (9); feasibility without its word (10); the spaced colon (11) |
+| A13 Register, D04 | Signed | The grade head row (12); the record square (13); chips broken mid-word (14); the 390 px row heads hidden (15); R-35's targets and its date (16) |
+| A14 loop R18 | Signed | The chooser's red, the engineer's E11c-2 (17); no note naming R-11's targets (18); the 390 px stepper in one column (19); an opening quotation mark (20) |
+| A15 loop index | Signed | Grade words (21, R18); "No numbered chain" broken mid-word (22) |
+| A16 How to read | Signed (its chips) | The red target sample drawn in ink (23); the authority diamond filled (24); the Documented sample (25); two samples without their words (26) |
+| A17 every variable | Signed | A pill and the count line overflow the Checks box; a pill's words overflow it in Policy (27) |
+| A18 Register, D10 | Signed | Requests 12 to 15 as on A13; the editor's words still missing (T16), so "reviewed connection LTR1" (R11) is not yet seen |
+| A19 loop on step 2 | Signed | Held with A14 (17 to 19) |
+| A20 claim open | Signed (CL1340's six fields and its source) | The field labels wait for the editor's words (T16) |
+
+**The atlas test against these findings.** Its report (`atlas-test.json`, run 23:01:35 UTC) passes every check but T16 on every view, yet requests 8, 12 to 15, 17, 21 and 23 to 25 are faults the plan's checks name. Job 4 below says which check misses each and why.
+
+### Job 4: the atlas test against plan section 8
+
+Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/atlas_test.py`, 908 lines, SHA-256 19f6201f... Each check against the line it prints. "Tests its line" means the check would catch any page that breaks the condition as plan section 8 states it.
+
+| Check | Tests its line? | What it misses |
+|---|---|---|
+| T1 Typed IDs | Yes | Alt text and `aria-label` are not read. A chip hidden by CSS (A13 at 390, request 15) counts as present |
+| T2 Connection marks | **In part** | Reads the four attributes against the model, and a drawing only as solid or patterned: a plausible step drawn dotted passes. In a table row it fails a wrong grade word but never an absent one, and never reads the sign, type or delay words. It never checks the record square (requests 13, 25) |
+| T3 Counts | Yes, for every marked count | A number printed without `data-count` is never read; chapter 28's line says "every count on an atlas page" |
+| T4 Loops | **In part** | The read-aloud line and the weakest step, yes. "Kind matches its count of minus signs" is checked on the model, not on the page; the page's kind is checked only as the word appearing anywhere in it |
+| T5 Authority | Yes | (The open diamond is Rule 15.5's, not T5's line; request 24 escapes every check) |
+| T6 Red | **In part** | Only the chooser's state on load: R-15's and R-48's states are never read (E11c-2 escapes). It skips How to read's sample entirely, so a red target drawn in ink passes (request 23). It reads markup only: a red painted without `data-red` escapes; a pixel scan beside it would catch one. Its first `jobs =` line is dead code |
+| T7 Effects | Yes | |
+| T8 Routes and dates | Mostly | The words "As of" and their place before the status are not checked (request 9) |
+| T9 Evidence a step away | **In part** | Checks every `data-evidence-href` and every connection chip; never a reform chip or a figure without a link, and never a drawn connection that no chip or link on the page names (LE15, request 8). In a frame every `#` link passes unread |
+| T10 Grades in words | **In part** | R15's four points exactly. But it skips every `[data-atlas-field]`, so the loop index's grade column, composed text under R18, prints `plausible_contested` and passes (request 21). It never requires a display word to be present for a `data-grade` mark |
+| T11 Stepper | Yes | (Buttons' layout at 390 px is AL-22's and no check's; request 19 escapes) |
+| T12 Pressed and lit | **In part** | No check of the 2 px edge, and none of the lit parts being named in the status line, both in its line |
+| T13 Colors | **In part** | Text at 4.5 to 1 from the measured words, yes. "Marks at 3 to 1 on the frame's pixels" is not measured: `atlas_contrast.py` puts four rows in each plate's `contrast`, and T13 reads none of them |
+| T14 Type | **In part** | Sizes, yes. The one-word last line skips every label whose first line starts with a digit, which is every step label, the labels ED-F9 names. Chapter 15's approved typed step ("1 money," then "lowers") explains the skip; the exception should name that form, not every step |
+| T15 Site frame | Mostly | The bar's name is not compared with "Atlas views"; Help's "Contact us" is read only through the group heads |
+| T16 Words retired | **In part** | Its list holds one newspaper's name, "Times Explainer"; the other editorial system named for a newspaper, "Economist Register", is not on it (D2-65). It also carries the stand-in check (`⟦…⟧`), so a T16 FAIL today means missing words, not retired ones; that check wants its own line |
+
+**The self-test** plants one fault a check (17 plants with T10's second) and, on the 23:01 report, catches all 17; it fails only because the clean pages are not quiet while the editor's words are missing. Each plant is the easiest case of its check, so none exercises the gaps above. Plants that would: a plausible step drawn dotted (T2); a minus row whose word reads "raises" (T2); red on a drawn variable the chosen reform does not target, and the chooser's second state (T6); a drawn connection named nowhere (T9); `plausible_contested` in a loop index grade cell (T10); a mark under 3 to 1 (T13); a two-line step label ending on one word (T14).
 
 ## Done
 
@@ -233,11 +316,40 @@ Today only Reform R-23 has a contested remedy. Its stored text splits into four 
   - C4, section 8, T10's pass condition: R15's condition in place of "within a line's length of each other (H08)".
   - C5, Rule 21.4's draft rule: "print both readings at the same length" becomes the editor's chat 11c words, "set the readings its record holds side by side, in the atlas's own words" (their Request 2). Draft words stay the editor's to finish.
 
+- R16, R17 and R18, and sign-off batch 1 with job 4's reading of the atlas test, written by 23:20:20 UTC.
+- **Plan correction C6** (`work/handoffs/phase-4/20261121_Chapter-21-Plan.md`, section 3.1, 23:20:29 UTC; copy before it in my scratch, `plan_before_C6.md`): "The title bar takes the page's own ground, Newsprint or Charcoal, and is never a dark panel" becomes the Charcoal band that chapter 20 as built and D4-189 set, by R17; logged in the plan's dated note.
+
 ## Requests
 
 - **1. To the engineer, R14 (written 22:27:48 UTC):** in `work/build/app-kit/tools/atlas_figures.py`, draw L15's red target as R14 sets it: case dashed on the red's rhythm, each case dash 2 px longer and offset 1 px back; the pattern at 4 px (16 and 8 px) fitted to the run from the lead-in's 8 px gap to the 6 px arrowhead's base; the 28 px lead-in solid; tag, ticks and arrowhead as chapter 15's `rt` block draws them; the case stroked with `--oa-color-graphic-essential-on-newsprint` in both themes, on L14's solid target too. Then L15 leaves `not_red`, and T6 should pass on A14.
 - **2. To the engineer, R15:** T10's contested-remedy check as R15's four points, with System 1's sentence splitter shared by the kit and the test, and each block's words and 1440 px line count printed in the line. Length never fails it.
 - **3. To the design director, R15:** `work/handoffs/phase-4/20261122_Atlas-View-Specs.md`, the reform view's row "The remedy" (about line 244): "their lengths within one line of each other at 1440 (T10, H08)" becomes "each at the length the record holds, both with the same standing (R15; DR-314, DR-323)". The split at `remedy_split: 4` stands; it separates the two readings.
+- **Batch 1 requests, written 23:20:20 UTC.** Owners as the brief's section 4 sets them; the main session relays.
+- **4. Engineer (A11, A17; `atlas-page.css`):** at 1440 px the count lines overflow three boxes: in Checks, "7 variables 7 connections inside" runs under the box's bottom edge into the flow labels; in Your household, "This question reaches here" sits on the box's bottom edge; in Technology, its count line sits on it. Grow each box to hold its words, or move the flows that run under it.
+- **5. Editor and engineer (A11 at 1440 and 390, A17):** each box prints its two counts as one run, "6 variables 6 connections inside", which reads as "6 variables 6". Set them apart, on two lines or with words between them; the editor's words.
+- **6. Engineer (A11 at 390):** every outgoing line prints bold, and no key appears, so the main circuit cannot be told from the other flows. R7: the main-circuit line bold with the key's words, the rest regular.
+- **7. Editor (A11's key):** "Other flows Each number counts connections" runs two phrases together; it needs its stop.
+- **8. Engineer and editor (A12):** the drawing joins EC7 and A4 by Connection LE15, but no chip, words or link name it, so its documented grade, under-2-year delay and line are a step from nothing (Rules 13.4, 21.7; plan 3.3 item 2). Add the chip Connection LE15 with its name and its marks in words beside the drawing ("raises, under 2 years, Documented" with the record square), linked to `#register-le15` on sheet EC.
+- **9. Engineer (A12):** "As of October 15, 2026" prints after the status words; Rule 13.10 puts "As of" and the date before them.
+- **10. Editor (A12, A13, A14 routes):** feasibility prints as a bare "high", "medium" or "low". Chapter 15's route rows print "High feasibility" (Rule 15.16's form).
+- **11. Engineer (A12):** the tag line reads "Variable A4 : Reform R-24 ..." with a spaced colon; drop the space before it, or set the chip as the line's head.
+- **12. Engineer (A13, A18, head row on Charcoal):** at 1440 px "Documented" and "Well supported" collide ("Documentedsupported") and "Hypothesis" is clipped by the table's right edge. Widen the grade columns or let the head wrap within its own cell.
+- **13. Engineer (A13, A18, rows and the 390 px key):** R3 and Rule 13.4 put the 7 px record square inline before the word Documented. The head sample has none; in the rows and the phone key the square sits after the arrowhead and wraps away from the word.
+- **14. Engineer (A13, A18 at 1440):** the first column breaks the chip's kind word mid-word ("Connec / tion L10"). Rule 13.9 holds a chip on one line; widen the column or keep the chip from wrapping.
+- **15. Engineer (A13, A18 at 390, light and dark):** the restyled table hides each row's head: the index cards begin "Variables: 3" with no sheet chip or title, and each connection block begins "From, to:" with no Connection chip. Show the row's `th` as each card's head (specs: "the sheet's chip and title on a line"). The test cannot see this (T1, job 4).
+- **16. Engineer and editor (A13, R-35):** the rejected option never names its targets, Connections L18 and L19, so a reader cannot see why it files on D04 (plan 3.4, Rule 21.10). Name both in ink chips, linked to their lines. Its effects also want "As of October 15, 2026" over them, as on every reform (Rule 15.16).
+- **17. Engineer (A14, A19 working pages; the engineer's E11c-2):** choosing R-15 or R-48 leaves R-11's red; Variable D4 stays red though neither targets it. R10 moves the red with the choice: R-15 lights L14 and L15 (its third target, L16, is not on this loop; its panel names it in words), R-48 lights L14 and L15, and D4 returns to ink. The ink tags change with it ("Reform R-11 and Reform R-48 also aim here" when R-15 is chosen). T6 should read each chooser state.
+- **18. Engineer and editor (A14, A19):** no note names the chosen reform and its targets beside the drawing. Rule 12.5 asks one: "Reform R-11 acts where the marks turn red: on Variable D4, Connection L14 and Connection L15" (draft), changing with the chooser.
+- **19. Engineer (A14, A19 at 390):** the stepper's buttons stack one to a row. AL-22 asks a two-by-two grid on phones in reading order, Play and Reset the loop, then Previous step and Next step (plan 3.5).
+- **20. Engineer (A14):** Loop R18's case stores `'almost undoubtedly'` with straight marks, and the page prints `’almost undoubtedly’`, its opening mark turned the wrong way. Print the stored marks as stored (DR-37), or pair them as ‘ and ’.
+- **21. Engineer (A15):** the grade column prints stored spellings ("plausible_contested", "well-supported", a lowercase "plausible" standing alone). R18 sets every row; T10 should read these cells (job 4).
+- **22. Engineer and editor (A15):** "No numbered chain" in the Steps and Minus signs columns breaks mid-word ("numbere / d chain"). Print a short word the column holds, such as "None", and let the closure column explain it.
+- **23. Engineer (A16):** the "Red target" sample draws in ink, not red: its svg class `tgt` has no style, `.ln .ak-case{stroke:none}` removes the case, and both the 2 px and the 6 px tag and arrowhead show, the larger arrowhead running into the words' column. Give it the `rt` style (4 px red on the 6 px Charcoal case, the 6 px marks only) and keep it in its cell. No PNG of A16 holds red beyond the masthead's and footer's identity marks (scan at 23:08 UTC).
+- **24. Engineer (A16):** the "Open diamond, decides" sample fills its diamond in ink; `.dm`'s open style is scoped to `.wa-tagm` only. Rule 15.5: an open diamond, surface fill, 2 px ink edge.
+- **25. Engineer (A16):** the Documented sample sets the record square after the arrowhead, while its own words say "with a filled square before the word". Put the square before the row's word Documented (Rule 13.4).
+- **26. Design director (A16; suggestions):** the "Weakest step" sample is a plain dashed line, the same as Plausible's; add the words "weakest step" under it as the drawings print them. The "Pressed question" sample is a box with a check and no words; Rule 17.10's look is the check, bold words and the 2 px edge.
+- **27. Engineer (A17):** with every variable shown, the Checks box's seventh pill ("Entrenched control of rule-setting institutions") and its count line run past the box's bottom into the flows, and in Policy the first pill's words overflow its outline. Grow the boxes to their pills.
+- **28. Engineer (the atlas test, job 4):** close the gaps in job 4's table, and add the plants it lists, so the test catches requests 8, 13, 15, 17, 21 and 23 to 25 the next time they occur. The most urgent are T6 (every chooser state, and How to read's sample), T9 (drawn connections) and T10 (loop grade lines).
 
 ## Not fixed
 
@@ -257,11 +369,15 @@ Today only Reform R-23 has a contested remedy. Its stored text splits into four 
 - L15's run in the figure step's A14 output (run under the lock between 22:22 and 22:26 UTC; read by script at 22:26:07): 28 px lead-in, then about 196 px at the 2 px gap; about 192 px to the trimmed end and about 180 px to the 6 px arrowhead's base at 4 px.
 - Chapter 15's `rt` block, `conn()` and System 1's `wire_marks`, `pattern`, `fitted`, `tick_marks`, `TAG` and `ARROW`, read for R14; and the dark theme's `--oa-color-graphic-essential` in `tokens.css`.
 - The plan before and after C1 to C5, by `diff` against my scratch copy: only the five lines and the dated note moved.
+- Batch 1's data check, `signoff/check.py` (23:09 UTC), and its pixel scan, `signoff/redscan.py` (23:08 UTC), in my scratch, as the Sign-offs section lists; the landmark count of the six exports and the stored-text check (both between date reads at 23:09 and 23:14 UTC); headless screenshots of A17 to A20 at 1440 px from the engineer's scratch exports (23:14 UTC, load 0.03, one browser at a time, closed after each).
+- The atlas test read whole (908 lines) against plan section 8; its 23:01:35 UTC report read for every FAIL line.
 
 ## Not tested
 
 - The plan's prose values outside Appendix B and the two tables of section 3.4 were not parsed one by one; each carries its query tag, and every tagged query's output matches Appendix B exactly.
 - Chapter 15's `effect_rows` was read, not run, for R12's finding that it stops on a range code.
-- No view has been handed to me for sign-off yet (job 3). The atlas test now exists in the engineer's tree (his notes: run on A12 and A14 in scratch at 22:21 UTC); I have not read it yet (job 4).
 - R14 is not yet drawn, so the gray reading it predicts rests on luminance arithmetic, not on a capture; I check it at sign-off on the A14 frames, in color and in grayscale.
 - Whether chapter 15's own plates draw a red target on Charcoal with a Newsprint case (R14 (d)).
+- Batch 1 looked by eye at the 1440 light captures of A11 to A16, A11 dark and 390 light, A13 and A14 at 390 light, and A14's drawing in dark and gray. The other dark captures (A12, A13 at 1440 and 390; A14 at 390 dark) were checked by pixels for red and inks only, and A11's dark inks by sampled pixels.
+- A17 to A20 were seen only as headless screenshots of the engineer's scratch exports at 1440 px, in their state on load: A19's step 2 and A20's open claim were read in the plates' frame markup, not seen drawn.
+- I ran neither the atlas test nor its self-test; I read its code and its 23:01:35 report.

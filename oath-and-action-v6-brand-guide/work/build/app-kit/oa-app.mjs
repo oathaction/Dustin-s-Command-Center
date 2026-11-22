@@ -127,6 +127,138 @@ async function web_checks(p, url, vw, vh) {
   return r;
 }
 
+// A frame is a picture, so it carries only what its width and window can show (bytes; no pixel moves): a closed
+// disclosure keeps its summary alone, an element the page sets display:none goes, and a one-window view drops everything
+// that starts below the window (limit). Runs in the page; returns the root's markup.
+function PRUNE(arg) {
+  // chat 11c: arg is the limit, or { limit, careful }; a careful prune (the atlas pages) keeps an element below the window
+  // whose parent lays its children out as a grid, flex row or table and starts inside the window, since taking one child
+  // out of such a parent can move its siblings above the window
+  const limit = typeof arg === 'object' && arg ? arg.limit : arg;
+  const careful = typeof arg === 'object' && arg ? arg.careful : false;
+  const flowing = (el) => { const d = getComputedStyle(el).display; return /grid|flex|table/.test(d); };
+  const root = document.querySelector('.ws');
+  const out = [];
+  const html = (e) => !(e instanceof SVGElement) || e.ownerSVGElement === null;
+  for (const e of root.querySelectorAll('*')) {
+    if (!html(e) || out.some((x) => x.contains(e))) continue;
+    const d = e.parentElement && e.parentElement.closest('details:not([open])');
+    if (d && e.parentElement === d && e.tagName !== 'SUMMARY') { out.push(e); continue; }
+    // a drawing switched by screen resolution (the end mark's fit and master, a 1x and 2x pair) stays: the guide shows one
+    // or the other by the reader's screen, and this page renders at 1x only
+    if (getComputedStyle(e).display === 'none' && !e.closest('.ws-end, [class*="oa-at-"]')) { out.push(e); continue; }
+    // 22:07 call: a visually hidden word list stays while its holder starts inside the window, so a tracker the window
+    // shows keeps its steps' states in words (A-5); it draws nothing
+    const vh = e.closest('.vh');
+    if (vh && vh.parentElement && vh.parentElement.getBoundingClientRect().top + scrollY < limit) continue;
+    if (limit && e.getBoundingClientRect().top + scrollY >= limit) {
+      const par = e.parentElement;
+      if (careful && par && flowing(par) && par.getBoundingClientRect().top + scrollY < limit) continue;
+      out.push(e);
+    }
+  }
+  out.forEach((e) => e.remove());
+  return { removed: out.length, html: root.outerHTML };
+}
+
+// A style sheet's text as a tree of rules, comments out: { tree: [{ prelude, body | children, sel }], selectors }; each
+// style rule's selector is numbered in the order it appears, for css_rebuild
+function css_rules(css) {
+  const text = css.replace(/\/\*[\s\S]*?\*\//g, '');
+  const selectors = [];
+  let i = 0;
+  const block = () => {   // from just after '{' to its matching '}', returns the body text
+    let depth = 1, start = i, q = null;
+    for (; i < text.length; i++) {
+      const c = text[i];
+      if (q) { if (c === q && text[i - 1] !== '\\') q = null; continue; }
+      if (c === '"' || c === "'") q = c;
+      else if (c === '{') depth++;
+      else if (c === '}') { depth--; if (!depth) { const b = text.slice(start, i); i++; return b; } }
+    }
+    throw new Error('css_rules: an unclosed block');
+  };
+  const list = (end) => {
+    const out = [];
+    while (i < text.length) {
+      while (i < text.length && /\s/.test(text[i])) i++;
+      if (i >= text.length || text[i] === '}') { if (text[i] === '}') i++; break; }
+      const open = text.indexOf('{', i), semi = text.indexOf(';', i);
+      if (semi >= 0 && (open < 0 || semi < open)) { out.push({ prelude: text.slice(i, semi + 1), statement: true }); i = semi + 1; continue; }
+      const prelude = text.slice(i, open).trim();
+      i = open + 1;
+      if (/^@(media|container|supports|layer|scope|document)\b/.test(prelude)) out.push({ prelude, children: list() });
+      else if (prelude.startsWith('@')) out.push({ prelude, body: block() });
+      else { out.push({ prelude, body: block(), sel: selectors.length }); selectors.push(prelude); }
+    }
+    return out;
+  };
+  return { tree: list(), selectors };
+}
+function css_rebuild(tree, flags) {
+  return tree.map((r) => {
+    if (r.statement) return r.prelude;
+    if (r.children) { const inner = css_rebuild(r.children, flags); return inner ? `${r.prelude}{${inner}}` : ''; }
+    if (r.sel !== undefined && !flags[r.sel]) return '';
+    return `${r.prelude}{${r.body}}`;
+  }).filter(Boolean).join('\n');
+}
+
+// chat 11c (DD11C-Q7, the C1 and D4-152 way): the atlas-page style placed in the guide's head serves pictures only, so it
+// keeps a rule when its selector, with its hover and focus states read as plain, matches an element in some atlas plate's
+// frame, and drops the rest; grouping rules keep their kept rules. Every frame of every atlas plate is captured at its true
+// size with the full style and with the pruned one, and the two must match pixel for pixel, or the full style stays.
+async function prune_atlas_css(browser, o, fonts, tokens, sprite_) {
+  const full_f = path.join(o.out, 'atlas-page.full.css');
+  const css_f = path.join(o.plates, 'atlas-page.css');
+  // the style the renderer wrote this build is the full one; a later build of some atlas plates writes it whole again
+  const full = fs.readFileSync(css_f, 'utf8');
+  fs.writeFileSync(full_f, full);
+  const plates_ = fs.readdirSync(o.plates).filter((f) => /^a\d+\.json$/.test(f)).map((f) => JSON.parse(fs.readFileSync(path.join(o.plates, f), 'utf8')))
+    .filter((x) => x.type === 'atlas-page');
+  const syms = Object.assign({}, ...plates_.map((x) => x.symbols || {}));
+  const web = fs.readFileSync(path.join(o.plates, 'web-site.css'), 'utf8');
+  const frames = plates_.flatMap((x) => x.views.map((v) => ({ id: `${x.id} ${v.key}`, w: v.w, html: v.html })));
+  const page = (css) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${fonts}</style><style>${tokens}</style><style>${PLATE_CSS}</style>`
+    + `<style>${web}</style><style id="atlas">${css}</style><style>body{margin:0;background:var(--oa-color-surface)}.f{display:block}</style></head><body>${sprite_}${identity_sprite(syms)}`
+    + frames.map((f, i) => `<div class="f" id="f${i}" style="width:${f.w}px">${f.html}</div>`).join('') + `</body></html>`;
+  const pf = path.join(o.out, 'atlas-css-prune.html');
+  fs.writeFileSync(pf, page(full));
+  const pg = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+  await pg.goto('file://' + pf, { waitUntil: 'load' });
+  await pg.evaluate(() => document.fonts.ready);
+  // the rules are cut from the style's own text, never rebuilt from the CSSOM, whose serialization drops a shorthand set
+  // by a variable when a longhand follows it (it did: chapter 18's filter status lost its font); each style rule's
+  // selector is judged in the page
+  const parsed = css_rules(full);
+  const flags = await pg.evaluate((sels) => {
+    const plain = (sel) => sel.replace(/::?(hover|focus-visible|focus-within|focus|active|visited|before|after|marker|placeholder|-webkit-[a-z-]+)(\([^)]*\))?/g, '');
+    return sels.map((sel) => sel.split(',').some((x) => { const q = plain(x).trim() || '*'; try { return !!document.querySelector(q); } catch (e) { return true; } }));
+  }, parsed.selectors);
+  const pruned = { css: css_rebuild(parsed.tree, flags), kept: flags.filter(Boolean).length, dropped: flags.filter((x) => !x).length };
+  const shots = async () => { const out = []; for (let i = 0; i < frames.length; i++) out.push(await pg.locator(`#f${i}`).screenshot()); return out; };
+  const a = await shots();
+  await pg.evaluate((css) => { document.getElementById('atlas').textContent = css; }, pruned.css);
+  await pg.evaluate(() => document.fonts.ready);
+  const b = await shots();
+  await pg.close();
+  fs.writeFileSync(path.join(o.out, 'atlas-page.pruned.css'), pruned.css);
+  const diff = frames.filter((f, i) => Buffer.compare(a[i], b[i]) !== 0).map((f) => f.id);
+  if (diff.length) {
+    console.log(`  ~ atlas style: pruning changed ${diff.length} frame(s) (${diff.slice(0, 4).join(', ')}); the full style stays`);
+    return;
+  }
+  fs.writeFileSync(css_f, pruned.css);
+  for (const x of plates_) {
+    // each atlas plate's record of its style's bytes, for the build's report and the next reader
+    const f = path.join(o.plates, `${x.id.toLowerCase()}.json`);
+    const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+    d.css_pruned = { full: Buffer.byteLength(full), placed: Buffer.byteLength(pruned.css), rules_kept: pruned.kept, rules_dropped: pruned.dropped, frames_same: frames.length };
+    fs.writeFileSync(f, JSON.stringify(d, null, 1));
+  }
+  console.log(`atlas style: ${Buffer.byteLength(full).toLocaleString('en-US')} bytes to ${Buffer.byteLength(pruned.css).toLocaleString('en-US')}, ${pruned.kept} rules kept and ${pruned.dropped} dropped; ${frames.length} of ${frames.length} frames the same`);
+}
+
 // chat 11c: a kit module and every module it imports by a relative path, followed through their imports
 function imports_of(rel, seen = new Set()) {
   if (seen.has(rel)) return seen;
@@ -488,29 +620,50 @@ ${r.head_links || ''}
           // disclosure keeps its summary alone, an element the page sets display:none goes, and a one-window view drops
           // everything that starts below the window. The page is captured before and after, and the two must match.
           const before = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
-          const pruned = await p.evaluate((limit) => {
-            const root = document.querySelector('.ws');
-            const out = [];
-            const html = (e) => !(e instanceof SVGElement) || e.ownerSVGElement === null;
-            for (const e of root.querySelectorAll('*')) {
-              if (!html(e) || out.some((x) => x.contains(e))) continue;
-              const d = e.parentElement && e.parentElement.closest('details:not([open])');
-              if (d && e.parentElement === d && e.tagName !== 'SUMMARY') { out.push(e); continue; }
-              // a drawing switched by screen resolution (the end mark's fit and master, a 1x and 2x pair) stays: the guide
-              // shows one or the other by the reader's screen, and this page renders at 1x only
-              if (getComputedStyle(e).display === 'none' && !e.closest('.ws-end, [class*="oa-at-"]')) { out.push(e); continue; }
-              // 22:07 call: a visually hidden word list stays while its holder starts inside the window, so a tracker the
-              // window shows keeps its steps' states in words (A-5); it draws nothing
-              const vh = e.closest('.vh');
-              if (vh && vh.parentElement && vh.parentElement.getBoundingClientRect().top + scrollY < limit) continue;
-              if (limit && e.getBoundingClientRect().top + scrollY >= limit) out.push(e);
-            }
-            out.forEach((e) => e.remove());
-            return { removed: out.length, html: root.outerHTML };
-          }, kind === 'screen' ? wv.vh : crop ? y0 + h : 0);
+          const lim = kind === 'screen' ? wv.vh : crop ? y0 + h : 0;
+          const pruned = await p.evaluate(PRUNE, spec.type === 'atlas-page' ? { limit: lim, careful: true } : lim);
           const after = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
           const same = Buffer.compare(before, after) === 0;
           if (!same) throw new Error(`${spec.id} ${key}: pruning what the frame cannot show changed its pixels`);
+          // chat 11c (DD11C-Q6): a crop to a part carries the part's own subtree, its ancestors up to the page's root and,
+          // in a table, the head row that sets its columns; every other branch goes. The page is drawn again so, and the
+          // part's pixels at its new place must equal its pixels in the whole page, or the crop keeps the clipped page.
+          if (crop && crop !== 'top') {
+            await p.goto('file://' + mp, { waitUntil: 'load' });
+            await p.evaluate(() => document.fonts.ready);
+            const nb = await p.evaluate((name) => {
+              const part = document.querySelector(`.ws [data-oa-part="${name}"]`);
+              const root = document.querySelector('.ws');
+              let n = part;
+              while (n && n !== root) {
+                const parent = n.parentElement;
+                for (const sib of [...parent.children]) {
+                  if (sib === n) continue;
+                  if (parent.tagName === 'TABLE' && (sib.tagName === 'THEAD' || sib.tagName === 'COLGROUP')) continue;
+                  sib.remove();
+                }
+                n = parent;
+              }
+              const b = part.getBoundingClientRect();
+              return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY) };
+            }, crop);
+            const sub = await p.evaluate(PRUNE, 0);
+            if (nb.bottom - nb.top === h) {
+              const mine = await p.screenshot({ clip: { x: 0, y: nb.top, width: wv.w, height: h } });
+              if (Buffer.compare(before, mine) === 0) {
+                facts.subtree = facts.subtree || {};
+                facts.subtree[key] = { bytes_clipped: Buffer.byteLength(pruned.html), bytes_subtree: Buffer.byteLength(sub.html), top_before: y0, top_after: nb.top };
+                pruned.html = sub.html; pruned.removed += sub.removed;
+                y0 = nb.top;
+              } else {
+                facts.subtree = facts.subtree || {};
+                facts.subtree[key] = { kept_clipped: 'the part alone did not draw the same pixels' };
+                await p.goto('file://' + mp, { waitUntil: 'load' });
+                await p.evaluate(() => document.fonts.ready);
+                await p.evaluate(PRUNE, { limit: y0 + h, careful: true });
+              }
+            }
+          }
           // step 4: each identity master by <use> of one symbol the page carries once; captured again, it must match
           const sym = symbolize(pruned.html);
           await p.evaluate(({ html, sprite_ }) => { const ws = document.querySelector('.ws'); ws.insertAdjacentHTML('beforebegin', sprite_); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); }, { html: sym.html, sprite_: identity_sprite(sym.symbols) });
@@ -629,6 +782,8 @@ ${r.head_links || ''}
       fs.writeFileSync(path.join(dir, 'facts.json'), JSON.stringify(facts, null, 1));
       console.log(`${spec.id} ${spec.type}: ${facts.views.length} view(s)${facts.missing_tokens.length ? ', ' + facts.missing_tokens.length + ' unknown token(s)' : ''}`);
     }
+    // chat 11c (DD11C-Q7): the atlas plates' style in the guide holds only the rules some drawn frame uses
+    if (o.plates && specs(o).some((x) => x.type === 'atlas-page')) await prune_atlas_css(browser, o, fonts, tokens, extra_page.sprite.join(''));
   } finally {
     await browser.close();
   }

@@ -3,9 +3,7 @@
  "type": "atlas-page",
  "guide": true,
  "view": "loop-index",
- "panels": [
-  "Reinforcing"
- ],
+ "panels": [],
  "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, section 11.1; chapter 21's plan, Rule 21.14",
  "widths": [
   {

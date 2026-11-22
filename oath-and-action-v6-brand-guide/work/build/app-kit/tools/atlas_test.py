@@ -372,8 +372,10 @@ def t5(pg):
 
 def t6(pg):
     faults, n = [], 0
-    reds = pg.all('[data-red="working"]')
     chosen = pg.chosen()
+    # E11c-2: a loop page carries one drawing a reform it offers; only the chosen one's marks are read
+    mine = lambda el: all(a.get("data-atlas-for") == chosen for a in el.find_parents(attrs={"data-atlas-for": True}))
+    reds = [el for el in pg.all('[data-red="working"]') if mine(el)]
     tg = set(RF[chosen]["targets"]) if chosen in RF else set()
     jobs = {el.get("data-red-job") for el in reds}
     jobs = {el.get("data-red-job") for el in reds if not in_any(el, [".wa-marks"])}
@@ -390,7 +392,7 @@ def t6(pg):
             faults.append(f"{el.get('data-atlas-kind')} {i}: red, and Reform {chosen} does not target it (Rule 12.5)")
         if "oa-chip" in (el.get("class") or []) or in_any(el, [".wa-tag", ".oa-chip", "button", "h1", "h2"]):
             faults.append(f"{i}: red on a chip, tag, button or heading (R10)")
-    drawn = {el.get("data-atlas-id") for el in pg.all("svg [data-atlas-id]")}
+    drawn = {el.get("data-atlas-id") for el in pg.all("svg [data-atlas-id]") if mine(el)}
     for t in sorted(tg & drawn):
         n += 1
         if not any(el.get("data-atlas-id") == t for el in reds):

@@ -458,7 +458,9 @@ def view_loop(spec):
             "variables": [var_rec(c) for c, _ in lp["chain"]], "steps": steps, "minus": fig["minus"],
             "weakest": fig["weakest"], "read_aloud": fig["read_aloud"], "reads": fig["reads"],
             "offered": [reform_rec(k) for k in offered], "chosen": chosen, "tags": others,
-            "figure": {k: fig[k] for k in ("svg", "w", "h", "red", "not_red")}}
+            "figure": {k: fig[k] for k in ("svg", "w", "h", "red", "not_red")},
+            # E11c-2: the drawing for each reform the chooser offers, so choosing one moves the red to its own targets
+            "figures": {k: loop_figure(lid, V["reforms"][k]["targets"])["svg"] for k in offered}}
 
 
 def view_reform(spec):
@@ -598,14 +600,14 @@ def view_home(spec):
                 # chapter 15's pill at the box's inner width, its title wrapped by rows_of; chapter 15's own Pill()
                 # refuses a title past three rows (ruling (e)), so the rows are read here and a longer title reported
                 t = N_title(v)
-                rows = C.rows_of(t, 164 - 2 * C.PAD)
+                rows = C.rows_of(t, 172 - 2 * C.PAD)       # specs 14.4: the open box's pill, 172 px
                 pills[v] = {"title": t, "h": max(len(rows) * C.LH + 22, 44), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
     if not pills:                          # the switch on the working page opens every box, so the pills are always drawn
         C = c15()
         for p_ in ps:
             for v in p_["variables"]:
                 t = N_title(v)
-                rows = C.rows_of(t, 164 - 2 * C.PAD)
+                rows = C.rows_of(t, 172 - 2 * C.PAD)       # specs 14.4: the open box's pill, 172 px
                 pills[v] = {"title": t, "h": max(len(rows) * C.LH + 22, 44), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
     closed = home_drawing(fl, False, pills, ps)
     opened = home_drawing(fl, True, pills, ps)
@@ -639,7 +641,7 @@ def home_drawing(flows_, every=False, pills=None, parts_=None):
     band_h = 56 + (max((ph(v) for v in vs["X"]), default=0) + PW_GAP if every else 0)
     yb = band_h
     yc = yb + 56
-    hc = 168 + max(stack(vs[k]) for k in X0)
+    hc = 184 + max(stack(vs[k]) for k in X0)          # specs 14.4: the core row 184 px
     ycb = yc + hc
     yl = ycb + 112
     hl = 104 + max(grid(vs["EC"], 3), grid(vs["TC"], 2))
