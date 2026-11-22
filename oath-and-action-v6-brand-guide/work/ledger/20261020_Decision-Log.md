@@ -7539,3 +7539,50 @@ The progress board (https://claude.ai/artifact/RJyNPMoAGD66R9BayXJkrt) listed se
 | D4-216 | The strict build passes as committed (15:30 UTC, to scratch): exit 0, 0 warnings, 13,080,604 bytes, the size V31 records; the working tree stays clean | V31 section 1's figures |
 | D4-217 | The work tracker's row `c10b` is set active | V31 section 2A |
 | D4-218 | The apply jobs for DR-312 to DR-318 start at once under `work/handoffs/phase-4/20261122_Chat-11b-Brief.md`, before Dustin's go on chapter 21's build: the editor makes DR-312, DR-313, DR-314 and DR-318, and the engineer DR-316 and DR-317. DR-318 moves from the engineer to the editor, since `guide_editor_ch01.py` carries both DR-314 and DR-318 and one writer holds a file; Rule 18.6's words for DR-316 are the editor's, typed by the engineer, since `stage_c_ch18_build.py` holds both the keys table and the rule's words | Dustin's opening message orders the answers applied first, and they are approved; one writer per file (V27) |
+
+### Dustin's answers on chat 11b's questions, November 22, 2026
+
+The main session posted chat 11b's plan for chapter 21 with four questions (Q11b-1 to Q11b-4) and, after the editor's apply job, three more (Q11b-5 to Q11b-7). Dustin: "As recommended", and asked for the next handoff prompt, so chapter 21's build moves to the next chat, chat 11c.
+
+| # | Decision | Source |
+|---|---|---|
+| DR-319 | Chapter 21 takes the plan's two savings that lose no content: the atlas pages share chapter 20's `web-site` style wherever the rules match, and the How to read extra drops its dark frame, since every view plate shows the dark theme | Dustin, November 22, as recommended (Q11b-1) |
+| DR-320 | The accessibility lead's keyboard walks of the four atlas pages move to chat 12's review; until then the atlas test and axe cover order, names, colors and pace by script, and UX-4, F-8, F-14 and F-15 close in chat 12 | Dustin, November 22, as recommended (Q11b-2) |
+| DR-321 | The loop index (Rule 21.14) prints all 23 loop titles as the atlas stores them, R5 and R11 included, with a one-line note under the index that the atlas's next version reviews titles that state an effect (V7.1 item 44; DR-37) | Dustin, November 22, as recommended (Q11b-3) |
+| DR-322 | Chapter 21's chat closes with a short progress board built by the main session from the kit's exports, with no extra agent: the four views at 1440 and 390 px, light and dark, the atlas test's report and the applied answers; it asks Dustin nothing | Dustin, November 22, as recommended (Q11b-4) |
+| DR-323 | ED11B-1: Rule 13.12's phrase reads "An Act piece sets out what the record shows from each side, at the length the record holds (Rule 01.22)" in place of "An Act piece quotes each side at the same length (Rule 01.22)" (`work/build/scripts/phase-3/phase3_ch13_build.py`) | Dustin, November 22, as recommended (Q11b-5) |
+| DR-324 | ED11B-2: Rule 03.6's sentence reads "Under 48em, it sets L1 from the 24 px master beside the menu button, and under 24.375em, 390 px, from the 16 px master.", and the row "Site, under 48em" becomes "Site, from 24.375em to 48em" (`stage_a_identity_chapters.py`) | Dustin, November 22, as recommended (Q11b-6) |
+| DR-325 | ED11B-3: Rule 03.6's file list adds `wordmark/20261028_Wordmark-16px-Master.svg` after the 24 px master (`stage_a_identity_chapters.py`) | Dustin, November 22, as recommended (Q11b-7) |
+
+### Editor, chat 11b (DR-312 to DR-318)
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-219 | Rule 18.6 needs no new words for DR-317 | It has no specification row on the open menu's scroll; its rule text already asks a sticky masthead for scroll-padding-top, its basis cites SC 2.4.11 and its "Browser support" row lists `scroll-padding` and `sticky`; DR-317 names the code alone |
+| D4-220 | Rule 18.7's list of aria-current values ("page", "location", "step") stays | DR-316 names Rule 18.6 alone, and 18.7's lists never mark a section that holds the page |
+| D4-221 | DR-313's 152 px is the figure built: the 16 px master draws a 152 by 16 CSS px box at 16 px tall; its ink spans 152 px at 1x and 151.5 CSS px at 2x, and its path reaches 151.17 of the viewBox's 152 units | The row prints the box width, as Rule 03.4 and the minimum sizes table print "152 px wide" for the same master; no difference to report |
+| D4-222 | After the identity chain ran, five files it rewrote beyond chapter 03 went back to their prior bytes: `s-04-1-correct`, `s-09-3-correct`, `s-09-3-failure` and `s-17-hinge-failure` from my copies taken before the run, and `work/boards/phase-2/stage-a/proofs/20261110_Letterhead-Proof.html` from its committed bytes (`git show HEAD:<path> > <path>`, no checkout) | The four specimens' base64 PNGs re-encoded pixel-identical (checked, 0 pixels differ in all 9 images) but 72 to 1,240 bytes larger, and the letterhead proof picked up today's tokens; DR-313 names chapter 03's row alone. The rewritten copies are kept in scratch, `identity-run-side-effects/` |
+| D4-223 | DR-318's filter is its own rule, `.ed .ph{filter:grayscale(1)}`, added through `PH_BW` to the three plates' style alone, and `PH` stays as it was | `PH` also styles `s-01-6-failure`, `s-01-7-correct` and `s-01-7-failure`, which hold no photograph; the rule there would add bytes that draw nothing |
+| D4-224 | The swatch labels "Newsprint, 60 to 85 percent" in `s-05-palette`, chapter 05's opening figure and `s-05-1-failure`'s alt stay | They give the share across a body of work, which Rule 05.1's second paragraph keeps; DR-312 names the row alone, and Rule 05.1's rule text already carries the long-page exception (DR-310), so the row now agrees with it |
+| D4-225 | DR-312's run left `work/handoffs/phase-2/20261106_Stage-A-Systems-Measurements.json` with one change, its capture date | An output `stage_a_systems_build.py` writes (brief section 4); every measured figure held, so chapters 06 and 07 and all 56 systems specimens kept their bytes |
+
+### Engineer, chat 11b (DR-316, DR-317)
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-226 | Chapter 18's code set draws its page inside Explainers: both Explainers links carry `aria-current="true"`, and an HTML comment in the parts list says the part's own front page takes `aria-current="page"` | DR-316 names the code set and its keys file; the set's one generic page shows the case DR-316 adds, and the key paths now prove the value. The comment sits inside the list the website replaces, so no site page carries it |
+| D4-227 | Chapter 18's CSS keeps its `[aria-current]` selectors, which match both values | DR-316 asks the CSS to match either value, and these already do; no approved CSS line changes for DR-316 (the `"false"` value is under "Not fixed", E11b-1) |
+| D4-228 | DR-317 in chapter 18: the dialog takes `scroll-padding-top: calc(var(--oa-space-800) + 1px)` in `c-18-masthead.css`, and `c-18-masthead.js` sets it on opening to the title row's height plus 9 px (the 2 px ring set 2 px out, and 5 px of air), measured after `showModal()` and before focus moves | The website's D4-161 values, the accessibility lead's AL11-2 fix; the row can only be measured once the dialog shows, and setting it before focus moves means the first scroll already respects it; a row that wraps at a large text size still clears |
+| D4-229 | The website's scroll padding defers to chapter 18's: the site's own CSS rule and its copy in the site's script (D4-161) are removed, and the site reads chapter 18's through `masthead_css()` and `masthead_js()` | One rule holds it (reuse, never copy); the values are the same, so the site behaves as before, proved by the W1 rerun on the three working pages (below) |
+| D4-230 | On the website the current part takes `"true"`: the kit draws no part's front page (its article sits inside Explain, its Act page inside Act), and the home page keeps `aria-current="page"` on the home link | DR-316; `site-parts.mjs`'s `masthead()` already took `'page'` or `'true'` from its caller |
+| D4-231 | The kit runs with `--date 20261121`, so it rewrites the 41 exports in place | CLAUDE.md: a file keeps the date it was first created; the default (today) would have written a second set of 41 files and a renamed manifest beside the first |
+| D4-232 | Register codes (`DR-316 (AL11-1)`, `DR-317 (AL11-2)`) go in the Python generator and the kit's sources; the code set's own comments are plain words | The code set's text prints in the guide as code to copy, and no code set file carries a register code |
+
+### Main session, chat 11b close
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-233 | The main session changes the two "Current part" rows of `work/handoffs/phase-4/20261121_Web-Page-Specs.md` to DR-316's values, at the engineer's request | The design director, who wrote the specs, is not running this chat; a one-line change to a handoff file (D4-86's precedent) |
+| D4-234 | Chat 11b closes after the apply jobs: DR-323 to DR-325 and chapter 21's build move to chat 11c (work tracker row `c10c`, order 10.6), and row `c10b` is set done | Dustin asked for the next handoff prompt with his answers; the apply jobs needed no build of chapter 21 |
+| D4-235 | The engineer's E11b-1 (`[aria-current]` also matches "false") and E11b-2 (the menu's first focus ring under the title row's rule) go to the register for chat 12's review, unfixed | Both sit in approved chapter 18 beyond what DR-316 and DR-317 name, and neither fails WCAG 2.2 AA |
+| D4-236 | Closing strict build (19:49:05 UTC, on commit 57f7184d's tree): exit 0, 0 warnings, 0 stale plates, 13,083,858 bytes, 393 rules, 731 specimens; the projection 15.82 MB, 178,581 bytes under 16 MB (an early warning past 15.5 MB). No guide check ran this chat; chat 11c's closing check covers chapter 18's new keys file | The closing check of record; a check that did not run is named, never counted |

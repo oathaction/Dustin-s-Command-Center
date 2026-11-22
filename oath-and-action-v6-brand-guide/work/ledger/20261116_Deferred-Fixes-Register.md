@@ -742,3 +742,28 @@ Rows from chat 11's owners' notes (`work/handoffs/phase-4/20261121_Chat-11-*-Not
 | AL11-1 | DR-316: `aria-current="page"` on a part's front page, `"true"` inside it | Approved; apply in chat 11b's opening |
 | AL11-2 | DR-317: chapter 18's menu takes the scroll padding | Approved; apply in chat 11b's opening |
 | C16-CD-01 | DR-318: chapter 01's three photograph plates in black and white | Approved; apply in chat 11b's opening |
+
+## Chat 11b: Dustin's November 22 answers applied (November 22, 2026)
+
+Rows from chat 11b's notes (`work/handoffs/phase-4/20261122_Chat-11b-Editor-Notes.md` and `-Engineer-Notes.md`, "Not fixed") and the main session's close (D4-233 to D4-236). Dustin answered ED11B-1 to ED11B-3 as recommended (DR-323 to DR-325); chat 11c applies them.
+
+| Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
+|---|---|---|---|---|---|---|
+| ED11B-1 | The editor's notes, "Not fixed" | Rule 13.12, rule text, second paragraph (`work/build/scripts/phase-3/phase3_ch13_build.py`, line 1716; `13-evidence.json`) | It reads "An Act piece quotes each side at the same length (Rule 01.22)", the wording DR-314 replaced in Rule 01.22 | "An Act piece sets out what the record shows from each side, at the length the record holds (Rule 01.22)" | Found after DR-314; approved chapter 13 needed Dustin's word | Approved (DR-323); apply in chat 11c's opening |
+| ED11B-2 | The editor's notes, "Not fixed" | Rule 03.6, rule text and the row "Site, under 48em" (`work/build/scripts/phase-2/stage_a_identity_chapters.py`) | The rule text gives only the 24 px master under 48em, so a reader who stops at the text misses DR-313's step under 24.375em | Sentence: "Under 48em, it sets L1 from the 24 px master beside the menu button, and under 24.375em, 390 px, from the 16 px master."; row label "Site, from 24.375em to 48em" | DR-313 named the row alone | Approved (DR-324); apply in chat 11c's opening |
+| ED11B-3 | The editor's notes, "Not fixed" | Rule 03.6, "Files" (`stage_a_identity_chapters.py`, `files=`) | The list names the 24 px master and leaves out the 16 px master the new row cites | Add `A + "wordmark/20261028_Wordmark-16px-Master.svg"` after the 24 px master | DR-313 named the row alone | Approved (DR-325); apply in chat 11c's opening |
+| E11b-1 | The engineer's notes, "Not fixed" | `work/build/guide/code/c-18-masthead.css` (`.oa-masthead-part[aria-current]`, `.oa-masthead-row-link[aria-current]` and the forced-colors rule) and `c-18-masthead.js` (`dialog.querySelector('[aria-current]')`) | The selectors match any `aria-current` value, "false" included, which ARIA defines as not current; a copy that writes "false" on the other links would draw them all as current, and the menu would open on the first | Match `[aria-current]:not([aria-current="false"])`, as `guide_check.js` already reads it | Approved chapter 18; DR-316 asks only that the CSS match both values; no page writes "false" | Open, for chat 12's review |
+| E11b-2 | The engineer's notes, "Not fixed"; W1 runs | `c-18-masthead.css`: the dialog's navigation sits flush under `.oa-masthead-dialog-head` | At the top of the open menu the first row's 2 px ring, set 2 px out, draws its top side under the title row's 1 px rule (40 of 40 such stops, before and after DR-317); the row is never hidden, so WCAG 2.4.11 is met | A gap of at least 4 px between the title row and the first row, as the website's menu has | Approved layout; DR-317 names the scroll padding only | Open, for chat 12's review |
+| C11B-1, the identity chain's side effects | The editor's notes, Routine calls; D4-222 | The chain that rebuilds chapter 03 from `work/build/scripts/phase-2/stage_a_identity_chapters.py` | A run rewrites files beyond its chapter: four specimens (`s-04-1-correct`, `s-09-3-correct`, `s-09-3-failure`, `s-17-hinge-failure`) with pixel-identical PNGs re-encoded 72 to 1,240 bytes larger, and `work/boards/phase-2/stage-a/proofs/20261110_Letterhead-Proof.html` with today's tokens | Write a specimen only when its pixels or markup change, or encode PNGs deterministically; until then restore the five after each run | Found while applying DR-313; the editor restored all five | Open, low |
+
+### Outcomes of earlier rows
+
+| Code | Outcome | Status |
+|---|---|---|
+| ED11-1 | Rule 05.1's row takes the editor's words (C-166) | Closed (DR-312, commit 3bb5a1b0) |
+| ED11-2 | Rule 03.6 gains the site row under 24.375em (C-167); ED11B-2 and ED11B-3 carry the rule's text and file list | Closed (DR-313, commit 3bb5a1b0) |
+| DD11-NF1 | Rule 01.22 reads "at the length the record holds" (C-168); ED11B-1 carries Rule 13.12 | Closed (DR-314, commit 3bb5a1b0) |
+| AL11-1 | Rule 18.6, its code set, keys and anatomy, and the website's menu mark a part "page" on its front page and "true" inside it (C-169) | Closed (DR-316, commits a0ff7648 and 57f7184d) |
+| AL11-2 | Chapter 18's menu dialog takes the scroll padding; the website reads it from chapter 18 (C-169) | Closed (DR-317, commits a0ff7648 and 57f7184d) |
+| C16-CD-01 | Chapter 01's three photograph plates in black and white (C-168) | Closed (DR-318, commit 3bb5a1b0) |
+| UX-4, F-8, F-14, F-15 | Their walks move to chat 12's review (DR-320); the atlas test checks them by script in chat 11c | Open until chapter 21 is built and walked |
