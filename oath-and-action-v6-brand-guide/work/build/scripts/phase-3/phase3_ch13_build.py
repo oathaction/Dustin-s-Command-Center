@@ -1713,8 +1713,9 @@ def rule_13_12(book):
             "interview. A source line gives the record a reader can open. Words we add for sense sit in square brackets, and an "
             "ellipsis marks a cut only where the meaning stays the same.",
             "In a chart or diagram, a quote sits beside the mark it speaks to as a note with its attribution, and the title stays "
-            "our sentence about the evidence (Rule 13.1). An Act piece quotes each side at the same length (Rule 01.22), and an "
-            "invented quote carries the Illustrative label beside it (Rule 13.8).",
+            # DR-323 (ED11B-1): Rule 01.22's wording since DR-314; DR-93 governs where the record holds one side
+            "our sentence about the evidence (Rule 13.1). An Act piece sets out what the record shows from each side, at the "
+            "length the record holds (Rule 01.22), and an invented quote carries the Illustrative label beside it (Rule 13.8).",
         ],
         "tokens": ["oa.font.family.quote"],
         "why": {"text": ["A quotation is the one place we print someone else’s words as theirs. The exact words with who, when "

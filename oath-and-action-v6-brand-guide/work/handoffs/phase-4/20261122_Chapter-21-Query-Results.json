@@ -1,0 +1,1091 @@
+{
+ "title": "Chapter 21: Appendix A's queries rerun on today's model, with the checks behind Rulings R2 to R11",
+ "written_by": "Data visualization lead, chat 11c",
+ "written_utc": "2026-11-22T21:55:13Z",
+ "model": {
+  "path": "work/extract/atlas-v7-data.json",
+  "sha256": "ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2",
+  "snapshot": "2026-10-15"
+ },
+ "tokens_for_Q14": {
+  "path": "work/build/tokens/tokens.css",
+  "sha256": "3ecfb1cb943a8844e55c7bf46dcce934d8ce255dce4f95c47de7074ccf3e3d0d"
+ },
+ "script": {
+  "source": "work/handoffs/phase-4/20261121_Chapter-21-Plan.md, Appendix A, copied unchanged",
+  "copy": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/e76584b2-1bba-5266-a75e-730f247433d8/scratchpad/c11c/dataviz-lead/ch21_queries.py",
+  "sha256": "84cfd834e1531ed0fcfad497c8d0a4a13eeb1b06b8251a0397d4f9c6a47f95a4",
+  "command": "flock <scratch>/c11c/build.lock python3 -I <scratch>/c11c/dataviz-lead/ch21_queries.py, from the project folder",
+  "run_utc": "2026-11-22T21:54:10Z",
+  "exit": 0
+ },
+ "comparison_with_appendix_b": {
+  "result": "identical",
+  "bytes_run": 30336,
+  "bytes_appendix_b": 30336,
+  "lines_compared": 197,
+  "differences": [],
+  "plan_corrections": "none needed"
+ },
+ "queries": {
+  "Q01": [
+   "snapshot 2026-10-15 | counts {\"variables\": 51, \"connections\": 118, \"loops\": 23, \"loops_numbered\": 20, \"issues\": 194, \"issues_active\": 193, \"reforms\": 50, \"sources\": 1099, \"sources_total_ids\": 1140, \"pathways\": 16, \"hubs\": 5, \"claims\": 433, \"core_links\": 72, \"economy_links\": 27, \"technology_links\": 19, \"core_variables\": 31}",
+   "variables by type {'stock': 31, 'flow': 9, 'auxiliary': 6, 'driver': 5} by layer {'core': 31, 'economy': 12, 'technology': 8}",
+   "connections by type {'money': 17, 'causal': 80, 'information': 9, 'ownership': 5, 'authority': 7} | sign {'+': 70, '-': 41, 'none': 7}",
+   "connections by grade {'well-supported': 37, 'plausible': 35, 'documented': 32, 'plausible_contested': 7, 'hypothesis': 7} | delay {'S': 38, 'M': 45, 'L': 35}",
+   "loops by kind {'R': 18, 'B': 5} | closure {'closed: every step is a numbered connection': 18, 'closed with a hypothesized step': 2, 'conceptual: no complete numbered chain': 3}",
+   "issue records 194 retired ['I128']",
+   "reforms 50 rejected ['R-35']",
+   "route entries 126 with a check date 13"
+  ],
+  "Q02": [
+   "variables per part {'A': 6, 'B': 6, 'C': 5, 'D': 7, 'E': 2, 'X': 5, 'EC': 12, 'TC': 8}",
+   "region titles {'A': 'Economic structure', 'B': 'Political inputs', 'C': 'Electoral competition', 'D': 'Governing institutions', 'E': 'Legitimacy', 'X': 'Outside drivers'} | layers {'core': 'Power and accountability', 'economy': 'How the economy reaches a household', 'technology': 'Technology and its effects'}",
+   "inside a part {'C': 5, 'D': 7, 'B': 5, 'A': 6, 'EC': 11, 'TC': 3} total 37",
+   "between parts {'A->B': 5, 'A->EC': 4, 'B->C': 4, 'B->D': 2, 'B->E': 3, 'C->B': 3, 'C->D': 4, 'D->B': 2, 'D->C': 3, 'D->E': 4, 'D->EC': 3, 'D->TC': 4, 'E->A': 3, 'E->D': 5, 'E->EC': 1, 'EC->A': 7, 'TC->A': 1, 'TC->B': 2, 'TC->D': 1, 'TC->EC': 5, 'X->A': 5, 'X->B': 4, 'X->C': 1, 'X->D': 1, 'X->E': 1, 'X->EC': 1, 'X->TC': 2} total 81",
+   "among core parts 38 | from outside drivers 15 | to, from or within the lower layers 28"
+  ],
+  "Q03": [
+   "spine connections 19 ['L01', 'L02', 'L03', 'L08', 'L10', 'L11', 'L12', 'L14', 'L15', 'L20', 'L21', 'L23', 'L24', 'L25', 'L26', 'L28', 'L42', 'L53', 'L54']",
+   "main circuit flows {'A->B': 5, 'B->C': 4, 'C->D': 4, 'D->E': 4, 'E->A': 3}"
+  ],
+  "Q04": [
+   "hub Cost of living | ['Why did my rent go up?', 'Why is my grocery bill higher?', 'Why is my electric bill going up?', 'Why did my home insurance premium go up?']",
+   "hub Health and care | ['Why is it hard to find an appointment?', 'Why can the same care produce different bills?', \"Why does childcare cost so much, and why can't I find an opening?\", 'Why is it so hard to get help at home as I age or live with a disability?']",
+   "hub Work and financial security | [\"Why isn't my pay keeping up with what my work produces?\", 'How do taxes and benefit rules change what my household keeps?', 'What will I get from Social Security, and could the rules change before I retire?']",
+   "hub Public services where you live | ['Who makes sure my tap water is safe?', 'Why is the repair on my street taking so long?', \"Why does my child's school have less than schools in other districts?\"]",
+   "hub Voice, power and information | ['Which election decides who represents me, and how can I influence the people who decide?', 'How do algorithms affect the prices I pay, my job, what I see online and the services I get?']",
+   "pressed question: Why can the same care produce different bills? | variables ['A3', 'EC9', 'EC8', 'A4', 'D4'] -> parts ['A', 'D', 'EC']",
+   "  connections ['LE16', 'LE26', 'LE27'] | loops ['B3'] | reforms ['R-19', 'R-20'] | issues ['I134', 'I085', 'I084', 'I092', 'I123']",
+   "  short answer: Most of a medical bill's price comes from a private contract. Each insurer or employer plan negotiates its own rates with each hospital and clinician, so a scan can cost widely different amounts within one city. Hospitals with few nearby rivals win higher rates, and Medicare pays more for some services in hospital outpatient departments than in doctors' offices. RAND, a nonprofit research organization, found private plans paid hospitals 254% of Medicare rates in 2022. For medicines, the manufacturer sets a list price protected by patents, and pharmacy benefit managers negotiate rebates off that price, so a patient's coinsurance can still be based on the full list price.",
+   "  figures in it: ['254%', '2022.'] | claims 28 | sources 29",
+   "  CL1340 {'claim': 'In 2022, employers and private insurers paid hospitals 254% of what Medicare would have paid for the same services, with wide differences by state.', 'confidence': 'well-supported', 'population': 'Privately insured patients in participating employer and insurer data', 'jurisdiction': 'United States, by state', 'period': '2020 to 2022', 'limitation': 'Claims come from participating employers and insurers, not a random sample of all private plans.'}",
+   "  CL1340 sources ['Q212']"
+  ],
+  "Q05": [
+   "title = \"Minimum wage that rises with an index\"",
+   "band = \"parameter\"",
+   "targets = [\"EC7\", \"A4\"]",
+   "loops = [\"R6\"]",
+   "effects = {\"DQ\": \"0\", \"GE\": \"0\", \"EP\": \"0 to -S at high bite\", \"EQ\": \"+M lower tail\"}",
+   "effects_confidence = \"high to 60% of median; low above\"",
+   "complements = [\"R-25\"]",
+   "sources = [\"Q255\", \"Q257\", \"Q256\"]",
+   "rejected = false",
+   "problem documented | The federal minimum wage has been $7.25 an hour since July 2009, according to the Department of Labor.",
+   "remedy contested | Within studied ranges, evidence finds little job loss. Cengiz, Dube, Lindner and Zipperer (2019), studying state increases through 2016, found no detectable job loss, a result other methods dispute. The evidence is strongest up to about 60% of the local median wage. Main limitation: higher floors fall outside the studied range; the Congressional Budget Office's 2019 median estimate for a $15 federal floor by 2025 was 1.3 million jobs lost and 1.3 million people lifted from poverty, with wide uncertainty.",
+   "status {\"text\": \"As of the Labor Department's state table updated July 1, 2026, 30 states and the District of Columbia set a minimum wage above the federal $7.25 an hour.\", \"checked\": \"2026-10-15\", \"result\": \"confirmed\", \"sources\": [\"Q255\", \"K1508\"]}",
+   "routes [('SS', 'Legislatures', 'high', None, None), ('BI', 'Voters', 'high', None, None), ('LOC', 'Cities', 'medium', 'Where not preempted.', None), ('FS', 'Congress', 'low', None, None)]",
+   "target titles {'EC7': 'Household income', 'A4': \"Households' financial security\"} | increase_means {'EC7': 'A higher value means households receive more money over the year.', 'A4': 'A higher value means more households can cover their needs and a surprise bill.'}",
+   "between the targets: ['LE15 EC7->A4 sign=+ type=causal delay=S grade=documented contested=False | Higher income strengthens household security']",
+   "other reforms with these targets {'EC7': [], 'A4': ['R-24', 'R-25', 'R-26', 'R-31']}",
+   "Loop R6's chain ['A2', 'A1', 'B1', 'E1'] | issues aiming R-23 ['I104', 'X08']",
+   "sources {'Q255': ('U.S. Department of Labor, Wage and Hour Division', 'History of Federal Minimum Wage Rates Under the FLSA', 'current'), 'Q257': ('Quarterly Journal of Economics', 'The Effect of Minimum Wages on Low-Wage Jobs (Cengiz, Dube, Lindner, Zipperer)', '2019'), 'Q256': ('Congressional Budget Office', 'The Effects on Employment and Family Income of Increasing the Federal Minimum Wage', '2019')}",
+   "band words Changes a number: a rate, a subsidy, a tax, a budget, or the size of a stock such as staff (Meadows levels 12 to 10)."
+  ],
+  "Q06": [
+   "D01: variables 3, connections 9, loops 2, reforms 3, issues 17 | documented 1, well-supported 3, plausible 3, plausible_contested 0, hypothesis 2",
+   "D02: variables 8, connections 19, loops 10, reforms 14, issues 22 | documented 5, well-supported 9, plausible 5, plausible_contested 0, hypothesis 0",
+   "D03: variables 2, connections 7, loops 8, reforms 7, issues 17 | documented 1, well-supported 2, plausible 3, plausible_contested 0, hypothesis 1",
+   "D04: variables 3, connections 10, loops 6, reforms 10, issues 20 | documented 2, well-supported 2, plausible 5, plausible_contested 0, hypothesis 1",
+   "D05: variables 3, connections 7, loops 5, reforms 7, issues 26 | documented 2, well-supported 2, plausible 3, plausible_contested 0, hypothesis 0",
+   "D06: variables 2, connections 1, loops 0, reforms 2, issues 17 | documented 0, well-supported 0, plausible 1, plausible_contested 0, hypothesis 0",
+   "D07: variables 1, connections 4, loops 2, reforms 4, issues 20 | documented 0, well-supported 2, plausible 1, plausible_contested 1, hypothesis 0",
+   "D08: variables 3, connections 13, loops 3, reforms 6, issues 19 | documented 5, well-supported 7, plausible 1, plausible_contested 0, hypothesis 0",
+   "D09: variables 2, connections 4, loops 1, reforms 3, issues 19 | documented 0, well-supported 2, plausible 2, plausible_contested 0, hypothesis 0",
+   "D10: variables 4, connections 10, loops 4, reforms 6, issues 17 | documented 0, well-supported 3, plausible 5, plausible_contested 2, hypothesis 0",
+   "EC: variables 12, connections 25, loops 0, reforms 19, issues 0 | documented 11, well-supported 4, plausible 5, plausible_contested 4, hypothesis 1",
+   "TC: variables 8, connections 9, loops 0, reforms 5, issues 0 | documented 5, well-supported 1, plausible 1, plausible_contested 0, hypothesis 2",
+   "whole atlas: variables 51 connections 118 numbered loops 20 reforms not rejected 49 issue records 194"
+  ],
+  "Q07": [
+   "D04 Congress, agencies and public services | Why does it take so long to get a benefit, a permit or a new law?",
+   "  variable D1 stock | Congress's ability to write and check policy | A higher value means Congress has more staff and expertise to draft laws and oversee agencies.",
+   "  variable D4 stock | Ability to investigate and enforce the rules | A higher value means watchdogs can get records, investigate and make findings stick.",
+   "  variable D5 stock | Quality of public services | A higher value means services are delivered faster and with fewer errors.",
+   "   L10 B4->D1 sign=- type=causal delay=M grade=well-supported contested=False | Partisan hostility weakens Congress's capacity | citation: Binder 2003, Stalemate; Lee 2016, Insecure Majorities",
+   "   L12 D2->D1 sign=- type=causal delay=L grade=plausible contested=False | Presidential action erodes Congress's will to legislate | citation: Chafetz 2017, Congress's Constitution",
+   "   L14 D2->D4 sign=- type=causal delay=S grade=documented contested=False | Presidential removals weaken watchdog agencies | citation: 17 IGs removed Jan 24, 2025; ruled unlawful Sept 24, 2025; FEC without quorum since May 1, 2025",
+   "   L17 E1->D4 sign=+ type=causal delay=M grade=plausible contested=False | Visible favoritism can prompt investigations | citation: HB6 investigation (DOJ 2023); GAO mandate structure",
+   "   L19 E1->D1 sign=- type=causal delay=L grade=hypothesis contested=False | Insider-tilted policy may weaken congressional expertise | citation: 1995 staff cuts and OTA abolition (event)",
+   "   L21 E2->D5 sign=+ type=causal delay=L grade=plausible contested=False | Earned trust supports compliance and service funding | citation: Luttmer and Singhal 2014, JEP (tax morale); Bargain and Aminjonov 2020 (COVID compliance)",
+   "   L22 E1->D5 sign=- type=money delay=M grade=documented contested=False | Insider-tilted policy cuts public service capacity | citation: TIGTA and OPM staffing data (official)",
+   "   T03 D4->D5 sign=+ type=causal delay=M grade=plausible contested=False | Oversight corrects failing public services | citation: GAO recommendations implemented",
+   "   L54 C5->D5 sign=+ type=causal delay=M grade=well-supported contested=False | Removing incumbents improves performance of those remaining | citation: Ferraz and Finan 2011 (audits and reelection incentives); Besley 2006",
+   "   LT15 TC5->D5 sign=+ type=causal delay=M grade=plausible contested=False | In-house digital teams improve service delivery | citation: GAO on HealthCare.gov (W117); GAO on UI improper payments (W118); Direct File volumes (W120)",
+   "  issue records 20 {'well_supported': 6, 'plausible': 3, 'documented': 11}",
+   "  naming each variable {'D1': 8, 'D4': 9, 'D5': 11} | naming none 2",
+   "  naming D4: [('I053', 'plausible', 'Deadline bills bundle unrelated choices with little scrutiny'), ('I055', 'documented', 'Debt-limit standoffs create a risk of default'), ('I056', 'documented', \"Congress's demands for information can expire unanswered\"), ('I057', 'documented', 'Programs continue without evidence of results'), ('I061', 'plausible', 'Contracting rules can reward paperwork over results'), ('I064', 'documented', 'Permitting reviews lack a predictable path to a decision'), ('I164', 'documented', 'Empty seats and acting officials can stop agencies from acting'), ('X04', 'documented', 'Removing job protections shifts agencies from career to political control'), ('X14', 'documented', 'Court rulings and White House orders move agency decisions to the President and the courts')]"
+  ],
+  "Q08": [
+   "R-35 Rejected option: term limits for legislators | targets ['L18', 'L19'] -> sheets ['D03', 'D04'] | loops ['R2'] | effects {'DQ': '-S', 'GE': '-M', 'EP': '0', 'EQ': '0'} | problem documented | remedy well-supported",
+   "  remedy words: Here the grade measures confidence in a finding of harm: strong evidence that term limits weaken legislatures. That finding is the reason the option is rejected, and a strong grade on this page is a warning against adoption. Olson and Rogowski (2020), using st",
+   "LTR1 reviewed and not drawn | TC1: How platforms rank feeds and seek attention -> B4: Hostility toward the other political party | sheet D10 | sources 7",
+   "LTR2 reviewed and not drawn | X4: Foreign interference -> B4: Hostility toward the other political party | sheet D10 | sources 1",
+   "LTR3 reviewed and not drawn | EC10: Costs of tariffs and trade rules -> A2: Workers' bargaining power | sheet D07 | sources 0",
+   "omissions 9"
+  ],
+  "Q09": [
+   "title = \"Weakening watchdogs lowers the cost of further unilateral action\"",
+   "type = \"R\"",
+   "closure = \"closed: every step is a numbered connection\"",
+   "evidence = \"documented for D2 to D4; plausible for D4 to D2\"",
+   "delay = \"M\"",
+   "direction = \"running_up\"",
+   "chain = [[\"D2\", \"-\"], [\"D4\", \"-\"]]",
+   "links = [\"L14\", \"L15\"]",
+   "reforms = [\"R-11\", \"R-15\"]",
+   "records = [\"I056\", \"I070\", \"I161\", \"I163\", \"I164\", \"X04\", \"X06\", \"X14\"]",
+   "summary = A president can remove inspectors general, leave commissions without a quorum or cut investigative staff. With fewer independent watchdogs, the next action taken without Congress meets less resistance. Each removal makes the next one cheaper.",
+   "how_to_read = Presidential action without new legislation lowers the ability to investigate and enforce the rules, and weaker enforcement raises presidential action without new legislation; two negative steps make the loop reinforcing.",
+   "evidence_summary = L14: Presidential removals weaken watchdog agencies is documented by the January 2025 removals and the Federal Election Commission's loss of a quorum on May 1, 2025. The return step, L15: Independent watchdogs restrain unilateral action, is plausible and the weaker: GAO found several 2025 impoundments unlawful, and restraint depends on courts and Congress acting on such findings.",
+   "qualification = Watchdogs restrain action only when they answer to the law and their findings can be enforced, so the loop's strength depends on remedies such as subpoena enforcement and standing to sue.",
+   "case = Seventeen inspectors general were removed by email on January 24, 2025, without the 30 days' notice the law requires. On September 24, 2025, a federal court said the removals 'almost undoubtedly' violated the law and reinstated no one, because the President could remove them again with proper notice; no ruling on the merits had been issued as of October 15, 2026. The case documents the first step and does not show that later actions met less resistance.",
+   "adaptation = The 2021 removals of NLRB general counsel Peter Robb and SSA commissioner Andrew Saul, both later upheld under Collins v. Yellen, are the other party's instances; each administration widens the channel the last one opened.",
+   "   L14 D2->D4 sign=- type=causal delay=S grade=documented contested=False | Presidential removals weaken watchdog agencies | plain: Firing inspectors general and commissioners, leaving boards without a quorum and cutting staff all reduce what watchdogs can investigate and enforce.",
+   "   L15 D4->D2 sign=- type=causal delay=M grade=plausible contested=False | Independent watchdogs restrain unilateral action | plain: Audits, lawsuits and enforcement raise the cost of acting without a law, provided the enforcer does not answer to the official being checked.",
+   "minus signs 2 | variables {'D2': ('Presidential action without new legislation', 'D', 'D05'), 'D4': ('Ability to investigate and enforce the rules', 'D', 'D04')}",
+   "connection sheets {'L14': 'D04', 'L15': 'D05'}",
+   "reforms whose records name R18 ['R-11', 'R-15', 'R-48'] | the loop's own list ['R-11', 'R-15']",
+   "   R-11 A Federal Election Commission able to act | band feedback | targets ['D4', 'L14', 'L15'] | effects {'DQ': '+M precondition', 'GE': '+S', 'EP': '0', 'EQ': '0'} | problem documented | remedy plausible | routes [('FR', 'medium', None), ('FS', 'low', None)]",
+   "   R-15 Inspectors general with remedies that work | band feedback | targets ['L14', 'L15', 'L16'] | effects {'DQ': '+M', 'GE': '+M', 'EP': '+S', 'EQ': '0'} | problem documented | remedy plausible | routes [('FS', 'low', None), ('CRT', 'low', None)]",
+   "   R-48 Agency independence after the Slaughter ruling | band rules | targets ['L14', 'L15'] | effects {'DQ': '+M', 'GE': '+S', 'EP': '0', 'EQ': '0'} | problem documented | remedy hypothesis | routes [('FS', 'low', None), ('CRT', 'low', None)]",
+   "records [('I056', 'documented', 'D04', \"Congress's demands for information can expire unanswered\"), ('I070', 'documented', 'D05', 'Firing and emptying watchdog offices weakens oversight'), ('I161', 'documented', 'D05', 'Presidential direction of prosecutions threatens equal enforcement'), ('I163', 'documented', 'D05', 'At-will removal of regulators narrows agency independence'), ('I164', 'documented', 'D04', 'Empty seats and acting officials can stop agencies from acting'), ('X04', 'documented', 'D04', 'Removing job protections shifts agencies from career to political control'), ('X06', 'documented', 'D05', 'An attempted removal tests Federal Reserve independence'), ('X14', 'documented', 'D04', 'Court rulings and White House orders move agency decisions to the President and the courts')]"
+  ],
+  "Q10": [
+   "L14 39 words -> 9750 ms | Step 1 of 2: Presidential action without new legislation lowers the ability to investigate and enforce the rules. Firing inspectors general and commissioners, leaving boards without a quorum and cutting staff all reduce what watchdogs can investigate and enforce.",
+   "L15 58 words -> 14500 ms | Step 2 of 2: The ability to investigate and enforce the rules can lower presidential action without new legislation, where the loop began. Audits, lawsuits and enforcement raise the cost of acting without a law, provided the enforcer does not answer to the official being checked. Our atlas grades this step plausible, the least certain in the loop."
+  ],
+  "Q11": [
+   "R1 R steps=3 minus=0 delay=L closure=closed: every step is a numbered connection | grade=plausible | Wealth and political influence reinforce each other",
+   "R1b R steps=2 minus=0 delay=L closure=closed: every step is a numbered connection | grade=plausible | Political spending and court rulings reinforce each other",
+   "R2 R steps=2 minus=2 delay=L closure=closed with a hypothesized step | grade=hypothesis | Congress becomes dependent on outside expertise",
+   "R3 R steps=2 minus=0 delay=S closure=closed: every step is a numbered connection | grade=plausible_contested | Political hostility and hostile content may reinforce each other",
+   "R4a R steps=3 minus=0 delay=M closure=closed: every step is a numbered connection | grade=documented for C4 to C1 and D7 to C4; plausible for C1 to D7 | Majorities draw maps that help them keep control",
+   "R4b R steps=2 minus=2 delay=M closure=closed: every step is a numbered connection | grade=plausible | Voting rules shape who can hold rule-makers accountable",
+   "R5 R steps=3 minus=2 delay=L closure=closed: every step is a numbered connection | grade=plausible | Financial strain narrows who takes part in policy decisions",
+   "R6 R steps=4 minus=2 delay=L closure=closed: every step is a numbered connection | grade=well-supported for A2 to A1; plausible for the rest | Weak bargaining power and concentrated wealth reinforce each other",
+   "R7 R steps=2 minus=0 delay=L closure=closed: every step is a numbered connection | grade=hypothesis for the named direction; plausible for the compliance channel; the delivery leg is documented case by case in the Delivery Log, though no study measures the loop closing | Service performance and earned trust can reinforce each other",
+   "R8 R steps=2 minus=0 delay=L closure=closed: every step is a numbered connection | grade=well-supported for both links; the loop no longer depends on A1 | Housing scarcity strengthens owners' incentive to restrict building",
+   "R10 R steps=4 minus=2 delay=M closure=closed: every step is a numbered connection | grade=documented for C1 to C2; well-supported for C2 to C3; plausible for C3 to C4 (the weakest link) | Safe seats shift accountability to small primary electorates",
+   "R11 R steps=3 minus=2 delay=M closure=closed: every step is a numbered connection | grade=well-supported for B4 to C3; plausible for the rest | Party loyalty weakens consequences for breaking norms",
+   "R12 R steps=4 minus=0 delay=L closure=closed: every step is a numbered connection | grade=documented for D3 to C4; plausible for C1 to D7 and D7 to D3 | Entrenched majorities shape courts that rule on election rules",
+   "R13 R steps=2 minus=2 delay=L closure=closed: every step is a numbered connection | grade=well-supported for D1 to D2; plausible for D2 to D1 | Congressional weakness creates room for presidential action",
+   "R15 R steps=4 minus=2 delay=L closure=closed: every step is a numbered connection | grade=plausible | Unions, civic ties and equal turnout reinforce each other",
+   "R16 R steps=2 minus=0 delay=L closure=closed with a hypothesized step | grade=well-supported for the step from local reporting to the risk of losing office; hypothesis for the closing step | Local news loss and weak electoral pressure may reinforce each other",
+   "R18 R steps=2 minus=2 delay=M closure=closed: every step is a numbered connection | grade=documented for D2 to D4; plausible for D4 to D2 | Weakening watchdogs lowers the cost of further unilateral action",
+   "B1a B steps=2 minus=1 delay=M closure=closed: every step is a numbered connection | grade=plausible for E1 to D4; well-supported for D4 to E1 | Independent oversight can limit policy favoritism",
+   "B4 B steps=3 minus=1 delay=M closure=closed: every step is a numbered connection | grade=well-supported where seats are competitive; C5 to D5 well-supported | Electoral consequences can improve public performance",
+   "B5 B steps=2 minus=1 delay=L closure=closed: every step is a numbered connection | grade=plausible | State and local experiments can correct policy favoritism",
+   "B2 B steps=0 minus=0 delay=S closure=conceptual: no complete numbered chain | grade=well-supported | Automatic benefits cushion economic shocks",
+   "B3 B steps=0 minus=0 delay=M closure=conceptual: no complete numbered chain | grade=well-supported where entry is possible | New competitors can limit market power",
+   "R9 R steps=0 minus=0 delay=M closure=conceptual: no complete numbered chain | grade=hypothesis | Taking part in a successful repair may support the next one"
+  ],
+  "Q12": [
+   "Variable B4 Hostility toward the other political party | Loop B4 Electoral consequences can improve public performance",
+   "Loop R1 Wealth and political influence reinforce each other | Reform R-01 All-party primaries with ranked general elections",
+   "Variable D4 Ability to investigate and enforce the rules | Domain D04 Congress, agencies and public services",
+   "Variable X1 What new technology can do | Issue X01 In safe seats, a small primary electorate picks the winner",
+   "Connection L14 Presidential removals weaken watchdog agencies | Issue I164 Empty seats and acting officials can stop agencies from acting | Claim CL1340 In 2022, employers and private insurers paid hospitals 254% ",
+   "Route SS State statute",
+   "Rule change RL19 2022-12-29 United States | The Electoral Count Reform Act made the Vice President's role ministerial and raised the t",
+   "Delivery case DL05 1965-07-30 to 1966-07-01 federal | Congress enrolled every American over 65 in a single hospital insurance program and stood "
+  ],
+  "Q13": [
+   "families {'DQ': 'Democratic quality', 'GE': 'Government efficacy', 'EP': 'Economic performance', 'EQ': 'Income and wealth equality'}",
+   "effect codes {'+L': 'large positive', '+M': 'moderate positive', '+S': 'small positive', '0': 'no expected effect', '-S': 'small negative', '-M': 'moderate negative', '?': 'direction uncertain'}",
+   "route names {'LOC': 'Local', 'SS': 'State statute', 'BI': 'State ballot', 'FS': 'Federal statute', 'FR': 'Chamber rule or confirmation', 'FA': 'Federal executive action', 'ENF': 'Enforcement and litigation', 'CRT': 'Court doctrine', 'AV': 'Article V', 'IC': 'Interstate compact', 'CIV': 'Civil society'}",
+   "bands ['parameter', 'feedback', 'information', 'rules', 'power to change the rules', 'goals']"
+  ],
+  "Q14": [
+   "oa-color-palette-charcoal #121212 on oa-color-palette-newsprint #DCD9D2: 13.29",
+   "oa-color-palette-newsprint #DCD9D2 on oa-color-palette-newsprint #DCD9D2: 1.00",
+   "oa-color-derived-dim-newsprint #A3A19C on oa-color-palette-newsprint #DCD9D2: 1.83",
+   "oa-color-palette-stone #5D636D on oa-color-palette-newsprint #DCD9D2: 4.29",
+   "oa-color-derived-deep-stone #4E535B on oa-color-palette-newsprint #DCD9D2: 5.49",
+   "oa-color-palette-pillar-red #E63946 on oa-color-palette-newsprint #DCD9D2: 2.96",
+   "oa-color-palette-prussian #1F2D5A on oa-color-palette-newsprint #DCD9D2: 9.42",
+   "oa-color-tint-prussian-n62 #8E94A4 on oa-color-palette-newsprint #DCD9D2: 2.15",
+   "oa-color-palette-verdigris #4A7C74 on oa-color-palette-newsprint #DCD9D2: 3.37",
+   "oa-color-palette-white #FFFFFF on oa-color-palette-newsprint #DCD9D2: 1.41",
+   "oa-color-palette-charcoal #121212 on oa-color-palette-charcoal #121212: 1.00",
+   "oa-color-palette-newsprint #DCD9D2 on oa-color-palette-charcoal #121212: 13.29",
+   "oa-color-derived-dim-newsprint #A3A19C on oa-color-palette-charcoal #121212: 7.26",
+   "oa-color-palette-stone #5D636D on oa-color-palette-charcoal #121212: 3.10",
+   "oa-color-derived-deep-stone #4E535B on oa-color-palette-charcoal #121212: 2.42",
+   "oa-color-palette-pillar-red #E63946 on oa-color-palette-charcoal #121212: 4.49",
+   "oa-color-palette-prussian #1F2D5A on oa-color-palette-charcoal #121212: 1.41",
+   "oa-color-tint-prussian-n62 #8E94A4 on oa-color-palette-charcoal #121212: 6.18",
+   "oa-color-palette-verdigris #4A7C74 on oa-color-palette-charcoal #121212: 3.95",
+   "oa-color-palette-white #FFFFFF on oa-color-palette-charcoal #121212: 18.73"
+  ],
+  "Q15": [
+   "D10 Taking part, trust and shared norms | Why does showing up feel pointless, and why do people across the party divide distrust each other so much?",
+   "   L09 C2->B4 sign=+ type=causal delay=L grade=plausible_contested contested=True | Decisive primaries may deepen partisan hostility | citation: McGhee, Masket, Shor, Rogers and McCarty 2014, AJPS; Hirano et al. 2010; Reilly, Wright and Lublin 2025 (Alaska, one cycle, moderation)",
+   "   L20 D5->E2 sign=+ type=causal delay=L grade=plausible contested=False | Better public services build earned trust | citation: Hetherington 2005, Why Trust Matters",
+   "   L27 B2->B4 sign=- type=information delay=M grade=well-supported contested=False | Local reporting can temper partisan hostility | citation: Darr, Hitt and Dunaway 2018, Journal of Communication",
+   "   L32 A2->B3 sign=+ type=causal delay=L grade=plausible contested=False | Strong unions build cross-group civic ties | citation: Ahlquist 2017, Annual Review of Political Science",
+   "   L33 B3->B4 sign=- type=causal delay=L grade=plausible contested=False | Cross-group ties reduce partisan hostility | citation: Mason 2018; Pettigrew and Tropp 2006 (contact, general)",
+   "   L41 B4->E2 sign=- type=causal delay=M grade=well-supported contested=False | Partisan hostility lowers trust in government | citation: Hetherington and Rudolph 2015, Why Washington Won't Work",
+   "   L47 B6->B4 sign=+ type=information delay=S grade=plausible_contested contested=True | Hostile content may raise partisan hostility slightly | citation: Guess et al. 2023 (W090); Nyhan et al. 2023 (W091); Allcott et al. 2024 (W093); Gauthier et al. 2026 (W095); Piccardi et al. 2025 (W096); Allcott et al. 2020 (W094); Budak et al. 2024 on concentrated exposure (W098)",
+   "   L52 D2->B4 sign=+ type=causal delay=M grade=plausible contested=False | Unilateral action deepens partisan hostility | citation: Mason 2018 (mechanism); no direct test",
+   "   T08 X3->B4 sign=+ type=causal delay=L grade=well-supported contested=False | Trade shocks deepen partisan polarization | citation: Autor, Dorn, Hanson and Majlesi 2020, AER",
+   "   T10 X4->E2 sign=- type=causal delay=S grade=plausible contested=False | Foreign interference can lower trust in elections | citation: Eady et al. 2023 (discussion)",
+   "  reviewed and not drawn: LTR1 | TC1: How platforms rank feeds and seek attention -> B4: Hostility toward the other political party | reason: Feed ranking changes what people see (LT01). In the largest experiments, changing the feed did not measurably change hostility toward the other party: Facebook and Instagram feed changes in 2020, plat",
+   "  reviewed and not drawn: LTR2 | X4: Foreign interference -> B4: Hostility toward the other political party | reason: Measured exposure to the 2016 Russian influence campaign on Twitter was concentrated in about 1% of users and showed no meaningful relationship with attitudes or votes. Foreign operations stay in the "
+  ],
+  "Q16": [
+   "R-35 routes [('BI', 'Voters', 'high', '87% of adults favored congressional term limits (Pew, July 2023).', None), ('AV', 'Amendment', 'very low', None, None)]",
+   "R-35 effects_confidence medium | status {\"text\": \"Research on state legislatures links term limits to weaker legislative capacity.\", \"checked\": \"2026-10-15\", \"result\": \"confirmed\", \"sources\": [\"N52\", \"N53\"]}"
+  ],
+  "Q17": [
+   "variable fields ['band', 'cluster', 'description', 'domain', 'id', 'increase_means', 'indicator', 'indicator_note', 'kind_plain', 'layer', 'part_of', 'records', 'title', 'type'] | a why-it-matters field: none",
+   "Loop R18 valence = \"Harmful; this is 's B1b with its true polarity. When the person inspected can remove the inspector, the breaker becomes a bypass.\""
+  ]
+ },
+ "checks_beyond_appendix_a": {
+  "script": {
+   "copy": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/e76584b2-1bba-5266-a75e-730f247433d8/scratchpad/c11c/dataviz-lead/ruling_checks.py",
+   "sha256": "50424f74d779be6c69ae05a5488645f86c07a18a012f26812567b327f472ec7c",
+   "run_utc": "2026-11-22T21:54:56Z",
+   "exit": 0
+  },
+  "R8_weakest_step": {
+   "R1": {
+    "weakest_named": "L02",
+    "least_certain": [
+     "L02"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The middle step, L02, is plausible and the weakest."
+   },
+   "R1b": {
+    "weakest_named": "L04",
+    "least_certain": [
+     "L04"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The weakest step is L04, graded plausible: the cited work is a history of organized legal movements (Teles 2008), with no estimate of how much money changes confirmations."
+   },
+   "R2": {
+    "weakest_named": "L19",
+    "least_certain": [
+     "L18",
+     "L19"
+    ],
+    "least_grade": "Hypothesis",
+    "check": "pass",
+    "sentence": "The return step, L19, is the weakest, since it rests on a single event: the 1995 staff cuts."
+   },
+   "R3": {
+    "weakest_named": "L47",
+    "least_certain": [
+     "L47"
+    ],
+    "least_grade": "Contested",
+    "check": "pass",
+    "sentence": "The return step, L47, is contested and the weakest."
+   },
+   "R4a": {
+    "weakest_named": "L55",
+    "least_certain": [
+     "L55"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The weakest is L55, graded plausible, because seat safety is documented while its effect on how long majorities last rests on seats-votes analysis without a single estimate."
+   },
+   "R4b": {
+    "weakest_named": "L45",
+    "least_certain": [
+     "L45"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The return step, L45, is plausible and the weaker of the two;"
+   },
+   "R5": {
+    "weakest_named": "L36",
+    "least_certain": [
+     "L36"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The middle step, L36, is plausible and the weakest: its main evidence is Australia's adoption of compulsory voting in the early 20th century (Fowler 2013)."
+   },
+   "R6": {
+    "weakest_named": "L02",
+    "least_certain": [
+     "L02",
+     "L31"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The weakest is L02."
+   },
+   "R7": {
+    "weakest_named": null,
+    "least_certain": [
+     "L20",
+     "L21"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "its funding channel is a hypothesis and the weakest part of the loop."
+   },
+   "R8": {
+    "weakest_named": null,
+    "least_certain": [
+     "L38",
+     "L39"
+    ],
+    "least_grade": "Well supported",
+    "check": "pass",
+    "sentence": "it is the weaker step because equity is one motive among several for opposing construction."
+   },
+   "R10": {
+    "weakest_named": "L53",
+    "least_certain": [
+     "L53"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The weakest step is L53, graded plausible: its evidence is the 2025 mid-decade redistricting in states with one-party control and legal analysis."
+   },
+   "R11": {
+    "weakest_named": "L52",
+    "least_certain": [
+     "L52"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The weakest step is L52, graded plausible, which rests on social identity research (Mason 2018) without a direct test."
+   },
+   "R12": {
+    "weakest_named": "L57",
+    "least_certain": [
+     "L55",
+     "L57"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "L55 and L57 are plausible, and L57 is the weakest: the pattern of favorable rulings is read across decisions without a scoring rule, and some 2025 to 2026 rulings went against the appointing coalition."
+   },
+   "R13": {
+    "weakest_named": "L12",
+    "least_certain": [
+     "L12"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The return step, L12, is plausible and the weaker, resting on legal and historical analysis (Chafetz 2017)."
+   },
+   "R15": {
+    "weakest_named": "L32",
+    "least_certain": [
+     "L32",
+     "L36",
+     "L31"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The other three steps, L32, L36 and L31, are plausible, and the weakest is L32 because unions' effect on ties beyond the workplace is not measured."
+   },
+   "R16": {
+    "weakest_named": "T01",
+    "least_certain": [
+     "T01"
+    ],
+    "least_grade": "Hypothesis",
+    "check": "pass",
+    "sentence": "The return step, T01, is a hypothesis with no cited study and the weakest step;"
+   },
+   "R18": {
+    "weakest_named": "L15",
+    "least_certain": [
+     "L15"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "The return step, L15, is plausible and the weaker: GAO found several 2025 impoundments unlawful, and restraint depends on courts and Congress acting on such findings."
+   },
+   "B1a": {
+    "weakest_named": "L17",
+    "least_certain": [
+     "L17"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "L17 is plausible and the weaker step: investigations follow only some scandals, and a response needs a watchdog with staff and legal power."
+   },
+   "B4": {
+    "weakest_named": "L54",
+    "least_certain": [
+     "L23",
+     "L24",
+     "L54"
+    ],
+    "least_grade": "Well supported",
+    "check": "pass",
+    "sentence": "services the weakest is L54, since its main study covers Brazilian mayors."
+   },
+   "B5": {
+    "weakest_named": "L49",
+    "least_certain": [
+     "L48",
+     "L49"
+    ],
+    "least_grade": "Plausible",
+    "check": "pass",
+    "sentence": "L49 is the weaker: the spread of reforms is documented, and whether that spread reduces favoritism is not measured."
+   }
+  },
+  "R4_read_aloud": {
+   "R1": {
+    "directions": [
+     [
+      "A1",
+      "rises"
+     ],
+     [
+      "B1",
+      "rises"
+     ],
+     [
+      "E1",
+      "rises"
+     ],
+     [
+      "A1",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R1b": {
+    "directions": [
+     [
+      "B1",
+      "rises"
+     ],
+     [
+      "D3",
+      "rises"
+     ],
+     [
+      "B1",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R2": {
+    "directions": [
+     [
+      "D1",
+      "rises"
+     ],
+     [
+      "E1",
+      "falls"
+     ],
+     [
+      "D1",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R3": {
+    "directions": [
+     [
+      "B4",
+      "rises"
+     ],
+     [
+      "B6",
+      "rises"
+     ],
+     [
+      "B4",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R4a": {
+    "directions": [
+     [
+      "C4",
+      "rises"
+     ],
+     [
+      "C1",
+      "rises"
+     ],
+     [
+      "D7",
+      "rises"
+     ],
+     [
+      "C4",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R4b": {
+    "directions": [
+     [
+      "C4",
+      "rises"
+     ],
+     [
+      "B5",
+      "falls"
+     ],
+     [
+      "C4",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R5": {
+    "directions": [
+     [
+      "A4",
+      "rises"
+     ],
+     [
+      "B5",
+      "rises"
+     ],
+     [
+      "E1",
+      "falls"
+     ],
+     [
+      "A4",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R6": {
+    "directions": [
+     [
+      "A2",
+      "rises"
+     ],
+     [
+      "A1",
+      "falls"
+     ],
+     [
+      "B1",
+      "falls"
+     ],
+     [
+      "E1",
+      "falls"
+     ],
+     [
+      "A2",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R7": {
+    "directions": [
+     [
+      "D5",
+      "rises"
+     ],
+     [
+      "E2",
+      "rises"
+     ],
+     [
+      "D5",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R8": {
+    "directions": [
+     [
+      "A5",
+      "rises"
+     ],
+     [
+      "A6",
+      "rises"
+     ],
+     [
+      "A5",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R10": {
+    "directions": [
+     [
+      "C1",
+      "rises"
+     ],
+     [
+      "C2",
+      "rises"
+     ],
+     [
+      "C3",
+      "falls"
+     ],
+     [
+      "C4",
+      "rises"
+     ],
+     [
+      "C1",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R11": {
+    "directions": [
+     [
+      "B4",
+      "rises"
+     ],
+     [
+      "C3",
+      "falls"
+     ],
+     [
+      "D2",
+      "rises"
+     ],
+     [
+      "B4",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R12": {
+    "directions": [
+     [
+      "D3",
+      "rises"
+     ],
+     [
+      "C4",
+      "rises"
+     ],
+     [
+      "C1",
+      "rises"
+     ],
+     [
+      "D7",
+      "rises"
+     ],
+     [
+      "D3",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R13": {
+    "directions": [
+     [
+      "D1",
+      "rises"
+     ],
+     [
+      "D2",
+      "falls"
+     ],
+     [
+      "D1",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R15": {
+    "directions": [
+     [
+      "A2",
+      "rises"
+     ],
+     [
+      "B3",
+      "rises"
+     ],
+     [
+      "B5",
+      "rises"
+     ],
+     [
+      "E1",
+      "falls"
+     ],
+     [
+      "A2",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R16": {
+    "directions": [
+     [
+      "B2",
+      "rises"
+     ],
+     [
+      "C3",
+      "rises"
+     ],
+     [
+      "B2",
+      "rises"
+     ]
+    ],
+    "minus": 0,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "R18": {
+    "directions": [
+     [
+      "D2",
+      "rises"
+     ],
+     [
+      "D4",
+      "falls"
+     ],
+     [
+      "D2",
+      "rises"
+     ]
+    ],
+    "minus": 2,
+    "returns": "same way",
+    "kind": "R",
+    "check": "pass"
+   },
+   "B1a": {
+    "directions": [
+     [
+      "E1",
+      "rises"
+     ],
+     [
+      "D4",
+      "rises"
+     ],
+     [
+      "E1",
+      "falls"
+     ]
+    ],
+    "minus": 1,
+    "returns": "other way",
+    "kind": "B",
+    "check": "pass"
+   },
+   "B4": {
+    "directions": [
+     [
+      "D5",
+      "rises"
+     ],
+     [
+      "C3",
+      "falls"
+     ],
+     [
+      "C5",
+      "falls"
+     ],
+     [
+      "D5",
+      "falls"
+     ]
+    ],
+    "minus": 1,
+    "returns": "other way",
+    "kind": "B",
+    "check": "pass"
+   },
+   "B5": {
+    "directions": [
+     [
+      "E1",
+      "rises"
+     ],
+     [
+      "D6",
+      "rises"
+     ],
+     [
+      "E1",
+      "falls"
+     ]
+    ],
+    "minus": 1,
+    "returns": "other way",
+    "kind": "B",
+    "check": "pass"
+   }
+  },
+  "R5_figure_claims": {
+   "pathway": "PW06",
+   "question": "Why can the same care produce different bills?",
+   "figures": {
+    "254%": {
+     "year_near_figure": [
+      "2022"
+     ],
+     "claims_holding_it": [
+      "CL1340"
+     ],
+     "check": "pass"
+    }
+   }
+  },
+  "R7_390_sums": {
+   "outgoing_lines": 27,
+   "outgoing_total": 81,
+   "inside_total": 37,
+   "all": 118,
+   "connections": 118,
+   "per_part_outgoing": {
+    "X": {
+     "X>A": 5,
+     "X>B": 4,
+     "X>C": 1,
+     "X>D": 1,
+     "X>E": 1,
+     "X>EC": 1,
+     "X>TC": 2
+    },
+    "A": {
+     "A>B": 5,
+     "A>EC": 4
+    },
+    "B": {
+     "B>C": 4,
+     "B>D": 2,
+     "B>E": 3
+    },
+    "C": {
+     "C>B": 3,
+     "C>D": 4
+    },
+    "D": {
+     "D>B": 2,
+     "D>C": 3,
+     "D>E": 4,
+     "D>EC": 3,
+     "D>TC": 4
+    },
+    "E": {
+     "E>A": 3,
+     "E>D": 5,
+     "E>EC": 1
+    },
+    "EC": {
+     "EC>A": 7
+    },
+    "TC": {
+     "TC>A": 1,
+     "TC>B": 2,
+     "TC>D": 1,
+     "TC>EC": 5
+    }
+   }
+  },
+  "R2_question_parts": {
+   "PW06": [
+    "A",
+    "D",
+    "EC"
+   ]
+  },
+  "R2_filter": {
+   "D04_D4_showing": 9,
+   "D04_of": 20,
+   "D04_grades": {
+    "well_supported": 6,
+    "plausible": 3,
+    "documented": 11
+   }
+  },
+  "R10_red": {
+   "R-23": [
+    "EC7",
+    "A4"
+   ],
+   "R-11": [
+    "D4",
+    "L14",
+    "L15"
+   ],
+   "R18_reforms_by_own_records": [
+    "R-11",
+    "R-15",
+    "R-48"
+   ],
+   "R-35_rejected": true,
+   "R-35_targets": [
+    "L18",
+    "L19"
+   ]
+  },
+  "R11_bare_ids_in_stored_text": {
+   "R18.evidence": [
+    [
+     "D2",
+     [
+      "variable"
+     ]
+    ],
+    [
+     "D4",
+     [
+      "variable"
+     ]
+    ],
+    [
+     "D4",
+     [
+      "variable"
+     ]
+    ],
+    [
+     "D2",
+     [
+      "variable"
+     ]
+    ]
+   ],
+   "R18.evidence_summary": [
+    [
+     "L14",
+     [
+      "connection"
+     ]
+    ],
+    [
+     "L15",
+     [
+      "connection"
+     ]
+    ]
+   ]
+  },
+  "R11_texts_scanned": [
+   "A4.increase_means",
+   "D04.everyday_question",
+   "D1.increase_means",
+   "D2.increase_means",
+   "D4.increase_means",
+   "D5.increase_means",
+   "EC7.increase_means",
+   "L10.citation",
+   "L12.citation",
+   "L14.citation",
+   "L17.citation",
+   "L19.citation",
+   "L21.citation",
+   "L22.citation",
+   "L54.citation",
+   "LT15.citation",
+   "PW06.short_answer",
+   "R-11.summary",
+   "R-23.effects_confidence",
+   "R-23.problem",
+   "R-23.remedy",
+   "R-23.status",
+   "R-23.summary",
+   "R-35.problem",
+   "R-35.remedy",
+   "R-35.route_notes",
+   "R18.adaptation",
+   "R18.case",
+   "R18.closure",
+   "R18.evidence",
+   "R18.evidence_summary",
+   "R18.qualification",
+   "R18.summary",
+   "R18.title",
+   "T03.citation"
+  ],
+  "plan_3_4_index": {
+   "rows_compared": 13,
+   "mismatches": []
+  },
+  "plan_3_4_D04_table": {
+   "rows_compared": 10,
+   "mismatches": []
+  }
+ }
+}

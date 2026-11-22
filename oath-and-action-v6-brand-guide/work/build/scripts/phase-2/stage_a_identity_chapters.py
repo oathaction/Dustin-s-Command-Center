@@ -280,19 +280,23 @@ CH03 = {
           related=["05", "12", "27"],
           builders="Pick the surface first. On Prussian, place the file whose name ends in Prussian-White; it needs no CSS."),
         R("03.6", "Use L3 for the masthead, and drop the lockmark when the bar gets narrow.",
-          "The masthead is the bar across the top of every page and email. From 48em wide, 768 px at the default text size, it sets L3 from its masthead master: the wordmark at left and, to its right, the lockmark's 48 px master at 48 px. Under 48em, it sets L1 from the 24 px master beside the menu button. Email takes L3 as an image.",
+          # DR-324 (ED11B-2): the rule text names the 16 px master under 24.375em, as DR-313's row does
+          "The masthead is the bar across the top of every page and email. From 48em wide, 768 px at the default text size, it sets L3 from its masthead master: the wordmark at left and, to its right, the lockmark's 48 px master at 48 px. Under 48em, it sets L1 from the 24 px master beside the menu button, and under 24.375em, 390 px, from the 16 px master. Email takes L3 as an image.",
           "The masthead is the one place every reader sees the mark, so it carries the fullest lockup the width allows. The lockmark needs about 34 px to show its nine nodes and its lever, and on a phone that room goes to the menu button.",
           DJ,
           "Three mastheads at true size: the site at 1440 px, the site on a 390 px phone and a 600 px email header, each from the master drawn for its height.",
           "L3 squeezed to 150 px across a phone bar, under its 196 px minimum. Its capitals fall to 12 px, under the 14 px floor, and the lockmark to 26 px.",
           specs=[S("Site, from 48em", "L3 from its masthead master: the 24 px wordmark master, 13 px of space and the lockmark at 48 px from its 48 px master, 282 by 48 px on whole pixels; bar 80 px tall"),
-                 S("Site, under 48em", "L1 from the 24 px master, 221 px wide; bar 56 px; menu button 44 px", "oa.size.target.touch"),
+                 # DR-324 (ED11B-2): the 24 px master's row ends where DR-313's row begins
+                 S("Site, from 24.375em to 48em", "L1 from the 24 px master, 221 px wide; bar 56 px; menu button 44 px", "oa.size.target.touch"),
                  # DR-313 (ED11-2): a site under 24.375em keeps L1 from the 16 px master, as chapter 20 does
                  S("Site, under 24.375em", "L1 from the 16 px master, 152 px wide"),
                  S("Email header", "L3 at 282 px in a 600 px header, sent as a PNG at twice size"),
                  S("In print", "L3's print master, with the lockmark at 2.18 cap heights, the masthead's proportion (Rule 03.2)"),
                  S("Section masthead", "L7: L1, a hairline and the pillar's name in Inter 600 capitals, in the surface's ink")],
-          files=[A + L3["masthead"], A + "wordmark/20261028_Wordmark-24px-Master.svg", A + LOCK[48], A + L3["print"]],
+          # DR-325 (ED11B-3): the 16 px master that DR-313's row cites, after the 24 px master
+          files=[A + L3["masthead"], A + "wordmark/20261028_Wordmark-24px-Master.svg", A + "wordmark/20261028_Wordmark-16px-Master.svg",
+                 A + LOCK[48], A + L3["print"]],
           related=["07", "20", "22"],
           builders="Write the switch as a media query in em, <code>@media (min-width: 48em)</code>, so it follows the reader's text size (Rule 07.5). In email, export the masthead as a PNG at twice its size with the alt text \"Oath & Action\". Most email clients drop web fonts, and several show no inline SVG. In a short email whose footer shows in the same view as its header, set L1 at the top and keep the lockmark in the footer (Rule 08.2)."),
         R("03.7", "Use L8 as the one monogram, and retire the spaced \"O & A\".",
