@@ -301,6 +301,13 @@ PAGES = {
             'minus_odd': '{n}, an odd count',
             'stepper_heading': 'Step through the loop',
             'read_label': 'Read aloud',
+            # the read-aloud line (R4), composed by the kit from these templates: {var} a variable's chip and title,
+            # {conn} a connection's chip, {sign} a word from ATLAS['signs'], {dir} a word from 'dirs'
+            'read_start': 'Start with {var} rising.',
+            'read_step': '{conn} {sign} it, so {var} {dir}.',
+            'read_end_same': 'The loop comes back moving the same way it started.',
+            'read_end_other': 'The loop comes back moving the other way.',
+            'dirs': {'up': 'rises', 'down': 'falls'},
             'arithmetic': 'Built from the signs: start with more, flip at each minus.',
             'parity_even': '{n} minus signs, an even count: the loop feeds itself.',
             'parity_odd': '{n} minus signs, an odd count: the loop holds itself in check.',
@@ -318,6 +325,7 @@ PAGES = {
                          'grades this step plausible, the least certain in the loop.'},
             ],
             'step_prefix': 'Step {n} of {m}:',
+            'stepper_ready': 'Press Play to step through the loop, or move one step at a time.',
             'chooser_legend': 'Reforms that aim at this loop',
             'effects_heading': 'Its effects',
             'routes_heading': 'How it could pass',
@@ -843,7 +851,8 @@ VIEW_WORDS = {
               'targets': 'where it acts', 'grades': 'the two grades', 'effects': 'the effects', 'routes': 'the routes',
               'index': 'the index', 'sheet': 'the open sheet', 'records': 'the issue records',
               'rejected': 'the rejected option', 'stepper': 'the stepper', 'chooser': 'the chooser',
-              'read': 'the loop read aloud', 'evidence': 'the evidence', 'claim': 'the claim’s record'},
+              'read': 'the loop read aloud', 'evidence': 'the evidence', 'claim': 'the claim’s record',
+              'facts': 'the loop’s facts', 'status': 'where it stands', 'rowl14': 'Connection L14’s row'},
 }
 
 WCAG = {
@@ -919,16 +928,14 @@ def _fill(s):
 
 def page_words(aid):
     """One atlas page's words for the kit (the engineer's C9 handshake): its whole title, the shared words, its current
-    view, its breadcrumb and its template's own words. Templates in braces stay for the kit to fill from the model, except
-    the chapter's own counts in an intro, which this file fills."""
+    view, its breadcrumb and its template's own words. Templates in braces stay for the kit to fill from the model, counts
+    included, so each count it prints carries its data-count mark (T3)."""
     if aid == 'all':
         return {k: page_words(k) for k in APPS}
     if aid not in PAGES:
         raise SystemExit(f'no atlas page {aid}; use {", ".join(APPS)} or all')
     p = PAGES[aid]
     page = dict(p['page'])
-    if 'intro' in page:
-        page['intro'] = _fill(page['intro'])
     if aid == 'A14':
         page['steps'] = [{'line': s['line'], 'hold': s['hold']} for s in page['steps']]
     return {
@@ -969,20 +976,626 @@ class Waiting(Exception):
     """A plate that needs the kit's drawing or report before it can be written."""
 
 
-# The plates come with hand-over 4 (specs section 11); until then the chapter waits.
-PLATES = []
+# ------------------------------------------------------------------------------------------------ facts the plates draw
+def _esc(s):
+    return C.esc(str(s))
 
 
-def spec(sid, html, rule, alt, **kw):
-    kw.setdefault('readable', True)
-    ctx.spec(sid, html, CH, rule, alt, **kw)
+def kw(kind):
+    return ATLAS['kind_words'][kind]
+
+
+NODES, LINKS, LOOPS, REFORMS, ISSUES = M['nodes'], M['links'], M['loops'], M['reforms'], M['issues']
+DOMAINS = {d['id']: d for d in M['domains']}
+PATHWAYS = {p['id']: p for p in M['pathways']}
+LAYER_OF = {}
+for _lk, _L in M['layers'].items():
+    for _reg in _L.get('regions', []):
+        for _n in _reg.get('nodes', []):
+            LAYER_OF[_n] = _reg['id'] if _lk == 'core' else ('EC' if _lk == 'economy' else 'TC')
+
+
+def part_of(v):
+    """The data lead's part(): EC or TC for the two layers, else the variable's cluster (R2)."""
+    lay = LAYER_OF.get(v)
+    return lay if lay in ('EC', 'TC') else (NODES[v].get('cluster') or lay)
+
+
+def sheet_of(v):
+    lay = LAYER_OF.get(v)
+    return lay if lay in ('EC', 'TC') else str(NODES[v]['domain']).split('/')[0]
+
+
+FLOWS, INSIDE = {}, {}
+for _k, _l in LINKS.items():
+    _a, _b = part_of(_l['from']), part_of(_l['to'])
+    if _a == _b:
+        INSIDE[_a] = INSIDE.get(_a, 0) + 1
+    else:
+        FLOWS[(_a, _b)] = FLOWS.get((_a, _b), 0) + 1
+assert sum(FLOWS.values()) + sum(INSIDE.values()) == FACT['connections'], 'flows and inside counts miss connections'
+
+
+def sentences(t):
+    return re.split(r'(?<=[.;])\s+(?=[A-Z])', t)
+
+
+def kit_plate(aid):
+    f = KIT_PLATES / f'{aid.lower()}.json'
+    if not f.exists():
+        raise Waiting(f'the kit has not drawn {aid} yet (work/build/app-kit/plates/{aid.lower()}.json)')
+    return json.loads(f.read_text())
+
+
+# ------------------------------------------------------------------------------------------------ style
+BASE = (
+    f'.w{{{ty("body")};color:var(--oa-color-text-primary-on-newsprint);max-width:100%}}.w p{{margin:0}}.w *{{box-sizing:border-box}}'
+    f'.lab{{{ty("label")};margin:0 0 12px;color:var(--oa-color-text-secondary-on-newsprint)}}'
+    f'.sm{{{ty("bodySmall")}}}.cap{{{ty("caption")};color:var(--oa-color-text-secondary-on-newsprint)}}'
+    f'.dl{{{ty("dataLabel")}}}.ui{{{ty("ui")}}}'
+    '.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}'
+    '.pane{padding:16px;background:var(--oa-color-surface-newsprint);border:1px solid var(--oa-color-border-hairline-on-newsprint)}'
+    '.dk{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal)}'
+    '.dk .lab,.dk .cap{color:var(--oa-color-text-secondary-on-charcoal)}'
+    f'.chip{{display:inline-flex;align-items:center;gap:.3em;padding:0 8px;border:1px solid var(--oa-color-border-strong-on-newsprint);{ty("dataLabel")};white-space:nowrap}}'
+    '.dk .chip{border-color:var(--oa-color-border-strong-on-charcoal)}'
+    '.chip.ln{min-height:24px;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}'
+    '.row{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}'
+    '.rows>div{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint)}'
+    '.svgw{display:block;width:100%;height:auto}'
+    '.sv text{fill:var(--oa-color-text-primary-on-newsprint)}'
+    f'.sv .t{{{ty("dataLabel")}}}.sv .tb{{{ty("dataLabel")};font-weight:var(--oa-font-weight-bold)}}'
+    f'.sv .tn{{{ty("ui")}}}'
+)
+
+
+def css(extra=''):
+    return f'<style>{BASE}{extra}</style>'
+
+
+def prune_css(css_, used):
+    out, i = [], 0
+    while i < len(css_):
+        j = css_.find('{', i)
+        if j < 0:
+            out.append(css_[i:])
+            break
+        sel = css_[i:j].strip()
+        depth, k = 0, j
+        while True:
+            if css_[k] == '{':
+                depth += 1
+            elif css_[k] == '}':
+                depth -= 1
+                if depth == 0:
+                    break
+            k += 1
+        body = css_[j + 1:k]
+        if sel.startswith(('@media', '@container', '@supports')):
+            inner = prune_css(body, used)
+            if inner.strip():
+                out.append(f'{sel}{{{inner}}}')
+        elif sel.startswith('@'):
+            out.append(f'{sel}{{{body}}}')
+        else:
+            keep = [p for p in sel.split(',') if all(c in used for c in re.findall(r'\.([A-Za-z][\w-]*)', p))]
+            if keep:
+                out.append(','.join(keep) + '{' + body + '}')
+        i = k + 1
+    return ''.join(out)
+
+
+def prune(html):
+    bare = re.sub(r'<style\b[^>]*>.*?</style>', '', html, flags=re.S)
+    used = {c for v in re.findall(r'class="([^"]*)"', bare) for c in v.split()}
+    out = re.sub(r'(<style\b[^>]*>)(.*?)(</style>)', lambda m: m.group(1) + prune_css(m.group(2), used) + m.group(3),
+                 html, flags=re.S)
+    return out.replace('<style></style>', '')
+
+
+def spec(sid, html, rule, alt, **kw_):
+    kw_.setdefault('readable', True)
+    ctx.spec(sid, prune(html), CH, rule, alt, **kw_)
     return sid
 
 
 def app(aid, views=None):
-    """The kit's placeholder (contract C4). The guide build sets the kit's frames in its place."""
+    """The kit's placeholder (contract C4), placed only once the kit has drawn the application."""
+    kit_plate(aid)
     v = f' data-oa-app-views="{views}"' if views else ''
     return f'<div data-oa-app="{aid}"{v}></div>'
+
+
+def view_words(key):
+    bits = key.split('-')
+    out = [VIEW_WORDS['px'].format(w=bits[0]), VIEW_WORDS[bits[1]]]
+    for b in bits[2:]:
+        out.append(VIEW_WORDS.get(b) if b in ('screen', 'open') else VIEW_WORDS['parts'].get(b, b))
+    return ', '.join(out)
+
+
+ROWS_CSS = '.rw2+.rw2{margin-top:32px}'
+PAGE_ROWS = [['1440-light'], ['390-light', '390-dark'], ['1440-dark']]
+
+
+def rows(aid, layout):
+    return ''.join(f'<div class="rw2"><p class="lab">{" · ".join(view_words(v) for v in r)}</p>{app(aid, " ".join(r))}</div>'
+                   for r in layout)
+
+
+def chip(kind, rid, link=False):
+    return f'<span class="chip{" ln" if link else ""}">{_esc(kw(kind))} <span>{_esc(rid)}</span></span>'
+
+
+def gline(grade, w=40, ink='var(--oa-color-graphic-essential-on-newsprint)'):
+    """A grade's line sample (R3): solid, dashed, dash and dot, or dots; the record square before documented."""
+    t = {'documented': '', 'well-supported': '', 'plausible': ' stroke-dasharray="8 4"',
+         'plausible_contested': ' stroke-dasharray="8 3 2 3"', 'contested': ' stroke-dasharray="8 3 2 3"',
+         'hypothesis': ' stroke-dasharray="0 5" stroke-linecap="round"'}[grade]
+    sq = f'<rect x="0" y="0.5" width="7" height="7" fill="{ink}"/>' if grade == 'documented' else ''
+    x0 = 11 if sq else 0
+    return (f'<svg class="gl" viewBox="0 0 {w + x0} 8" width="{w + x0}" height="8" aria-hidden="true" focusable="false">{sq}'
+            f'<line x1="{x0}" y1="4" x2="{w + x0}" y2="4" stroke="{ink}" stroke-width="2"{t}/></svg>')
+
+
+def grade_word(g):
+    return ATLAS['grades'][g]
+
+
+# ------------------------------------------------------------------------------------------------ the view plates
+def s_opener():
+    html = css(ROWS_CSS) + f'<div class="w">{rows("A11", PAGE_ROWS)}</div>'
+    return spec('s-21-home', html, None, W['opener_alt'],
+                notes='Drawn by the application kit (A11, the atlas home), full length at four views.')
+
+
+def s_view(sid, aid, rid, what):
+    r = R[rid]
+    html = css(ROWS_CSS) + f'<div class="w">{rows(aid, PAGE_ROWS)}</div>'
+    return spec(sid, html, rid, r['correct_alt'], notes=f'Drawn by the application kit ({aid}, {what}), full length at four views.')
+
+
+def s21_reform():
+    return s_view('s-21-reform', 'A12', '21.4', 'Reform R-23’s page')
+
+
+def s21_register():
+    return s_view('s-21-register', 'A13', '21.8', 'the Register with sheet D04 open')
+
+
+def s21_loop():
+    return s_view('s-21-loop', 'A14', '21.12', 'Loop R18’s page')
+
+
+def s_parts(sid, rid, layout, notes):
+    html = css(ROWS_CSS) + '<div class="w">' + ''.join(rows(aid, lay) for aid, lay in layout) + '</div>'
+    return spec(sid, html, rid, R[rid]['correct_alt'], notes=notes)
+
+
+def s21_1_correct():
+    return s_parts('s-21-1-correct', '21.1', [('A14', [['1440-light-top'], ['390-light-open-top']])],
+                   'Drawn by the application kit (A14): the top of the loop page, and at 390 px with the views open.')
+
+
+def s21_2_correct():
+    return s_parts('s-21-2-correct', '21.2', [('A17', [['1440-light-drawing']])],
+                   'Drawn by the application kit (A17, the atlas home with every variable shown).')
+
+
+def s21_3_correct():
+    return s_parts('s-21-3-correct', '21.3', [('A11', [['1440-light-drawing'], ['1440-light-questions'],
+                                                      ['390-light-questions', '390-dark-questions']])],
+                   'Drawn by the application kit (A11): the pressed question and the lit parts.')
+
+
+def s21_5_correct():
+    return s_parts('s-21-5-correct', '21.5', [('A12', [['1440-light-targets'], ['390-light-targets']])],
+                   'Drawn by the application kit (A12): Reform R-23’s targets and the ink tags.')
+
+
+def s21_7_correct():
+    return s_parts('s-21-7-correct', '21.7', [('A20', [['1440-light-answer']]), ('A14', [['1440-light-rowl14']]),
+                                             ('A13', [['1440-light-rowl14']])],
+                   'Drawn by the application kit (A20, A14 and A13): a figure’s claim record open, and a step’s '
+                   'chip beside its Register line.')
+
+
+def s21_9_correct():
+    return s_parts('s-21-9-correct', '21.9', [('A18', [['1440-light-sheet']])],
+                   'Drawn by the application kit (A18, the Register with sheet D10 open).')
+
+
+def s21_10_correct():
+    return s_parts('s-21-10-correct', '21.10', [('A13', [['390-light-rejected']]), ('A18', [['390-light-rejected']])],
+                   'Drawn by the application kit (A13 and A18): the rejected option, and connections reviewed and not drawn.')
+
+
+def s21_11_correct():
+    return s_parts('s-21-11-correct', '21.11', [('A13', [['390-light-records', '390-dark-records']])],
+                   'Drawn by the application kit (A13): the filtered issue records.')
+
+
+def s21_13_correct():
+    return s_parts('s-21-13-correct', '21.13', [('A19', [['390-light-stepper'], ['1440-dark-stepper']])],
+                   'Drawn by the application kit (A19, Loop R18 on step 2).')
+
+
+def s21_14_correct():
+    return s_parts('s-21-14-correct', '21.14', [('A15', [['1440-light'], ['390-light']])],
+                   'Drawn by the application kit (A15, the loop index).')
+
+
+HOW_RULES = [('Sign tag, raises and lowers', '15.3'), ('Type words', '15.4'), ('Open diamond, decides', '15.5'),
+             ('Grade words and glosses', '13.3'), ('Grade lines and the record square', '13.4'), ('Delay ticks', '13.5'),
+             ('Hollow line', '15.7'), ('Red target', '12.5'), ('Ink tag, aims here', '21.5'), ('Weakest step', '15.13'),
+             ('Typed chip', '13.9'), ('Pressed question', '17.10')]
+
+
+def s21_how():
+    table = ''.join(f'<div><span class="sm">{_esc(a)}</span><span class="cap">Rule {b}</span></div>' for a, b in HOW_RULES)
+    html = (css(ROWS_CSS + '.rows{max-width:40rem}') + f'<div class="w">{rows("A16", [["1440-light"]])}'
+            f'<div class="rows mt24">{table}</div></div>')
+    return spec('s-21-how-to-read', html, None, EXTRA_HOW['alt'],
+                notes='Drawn by the application kit (A16, How to read), with the rule that sets each mark listed under it '
+                      '(DD-11C-2: the public page prints meanings alone).')
+
+
+def s21_15_correct():
+    r = R['21.15']
+    plate = kit_plate('A14')
+    view = next((v for v in plate.get('views', []) if v.get('key') == '1440-dark'), None)
+    ratios = (view or {}).get('contrast')
+    if not ratios:
+        raise Waiting('Rule 21.15’s ratio table needs the kit’s measured contrast on A14 1440-dark (views[].contrast)')
+    body = ''.join(f'<div><span class="sm">{_esc(r["ratio_rows"].get(k, k))}</span><span class="cap">{_esc(v.get("token", ""))}</span>'
+                   f'<span class="dl">{_esc(r["ratio_value"].format(r=v.get("ratio")))}</span></div>' for k, v in ratios.items())
+    html = (css(ROWS_CSS) + '<div class="w">' + rows('A14', [['1440-dark-drawing'], ['1440-dark-chooser']])
+            + f'<p class="lab mt24">{" · ".join(r["ratio_head"])}</p><div class="rows">{body}</div></div>')
+    return spec('s-21-15-correct', html, '21.15', r['correct_alt'],
+                notes='Drawn by the application kit (A14, dark), with the ratios the kit measured on that frame’s pixels.')
+
+
+def s21_16_correct():
+    r = R['21.16']
+    f = KIT_PLATES / 'atlas-test.json'
+    if not f.exists():
+        raise Waiting('Rule 21.16’s plate needs the atlas test’s report (work/build/app-kit/plates/atlas-test.json)')
+    rep = json.loads(f.read_text())
+    lines = rep.get('lines') or []
+    body = ''.join(f'<div><span class="dl">{_esc(x if isinstance(x, str) else x.get("line", ""))}</span></div>' for x in lines[:48])
+    html = css('.rows>div{padding:4px 0}') + f'<div class="w pane"><p class="lab">{_esc(r["report_label"])}</p><div class="rows">{body}</div></div>'
+    return spec('s-21-16-correct', html, '21.16', r['correct_alt'],
+                notes='Read from the atlas test’s report as the kit’s last build wrote it.')
+
+
+# ------------------------------------------------------------------------------------------------ the chips plate (21.6)
+def _route(code):
+    return next(x for x in M['routes']['items'] if x.get('code') == code)
+
+
+def s21_chips():
+    r = R['21.6']
+    recs = [('variable', 'D4', NODES['D4']['title']), ('connection', 'L14', LINKS['L14']['name']),
+            ('loop', 'R18', LOOPS['R18']['title']), ('reform', 'R-23', REFORMS['R-23']['title']),
+            ('issue', 'I164', ISSUES['I164']['title']), ('claim', 'CL1340', None), ('domain', 'D04', DOMAINS['D04']['title']),
+            ('route', 'SS', _route('SS')['name']), ('rule-change', 'RL19', None), ('delivery-case', 'DL05', None)]
+    pairs = [(('variable', 'B4', NODES['B4']['title']), ('loop', 'B4', LOOPS['B4']['title'])),
+             (('loop', 'R1', LOOPS['R1']['title']), ('reform', 'R-01', REFORMS['R-01']['title'])),
+             (('variable', 'D4', NODES['D4']['title']), ('domain', 'D04', DOMAINS['D04']['title'])),
+             (('variable', 'X1', NODES['X1']['title']), ('issue', 'X01', ISSUES['X01']['title']))]
+
+    def one(dark):
+        cls = ' dk' if dark else ''
+        kinds = ''.join(f'<div>{chip(k, i)}{chip(k, i, True)}{f"<span class=sm>{_esc(t)}</span>" if t else ""}</div>'
+                        for k, i, t in recs)
+        prs = ''.join(f'<div><span class="pr">{chip(a[0], a[1])}<span class="sm">{_esc(a[2])}</span></span>'
+                      f'<span class="pr">{chip(b[0], b[1])}<span class="sm">{_esc(b[2])}</span></span></div>' for a, b in pairs)
+        return (f'<div class="pane{cls}"><p class="lab">{_esc(r["on_charcoal" if dark else "on_newsprint"])}</p>'
+                f'<p class="lab">{_esc(r["chips_plain"])} · {_esc(r["chips_link"])}</p><div class="rows ck">{kinds}</div>'
+                f'<p class="lab mt24">{_esc(r["chips_pairs"])}</p><div class="rows ck">{prs}</div></div>')
+    html = (css('.ck>div{gap:8px 12px;align-items:center}.pr{display:inline-flex;flex-wrap:wrap;gap:4px 12px;align-items:center;flex:1 1 18rem}.dk .rows>div{border-color:var(--oa-color-border-hairline-on-charcoal)}'
+                '.two{display:grid;gap:16px}')
+            + f'<div class="w two">{one(False)}{one(True)}</div>')
+    return spec('s-21-chips', html, '21.6', r['correct_alt'],
+                notes='Drawn here from the model: each chip’s kind from where its ID lives, each name as stored; claim, '
+                      'rule change and delivery case records store a sentence, not a name, so their chips stand alone.')
+
+
+# ------------------------------------------------------------------------------------------------ failure plates
+def _site_parts():
+    import subprocess
+    out = subprocess.run([sys.executable, '-I', str(HERE / 'phase4_ch20_build.py'), '--page-words', 'A04'],
+                         capture_output=True, text=True, check=True).stdout
+    return [p for p, _ in json.loads(out)['site']['parts']]
+
+
+def master(path, w, h, style, red='signature'):
+    dr = f' data-red="{red}"' if red else ''
+    return f'<span class="mk"{dr}><img data-inline src="{path}" alt="" width="{w}" height="{h}" style="{style}"></span>'
+
+
+WM24 = 'work/build/assets/identity/wordmark/20261028_Wordmark-24px-Master.svg'
+INK_NEWS = ('color:var(--oa-color-text-primary-on-newsprint);--amp:var(--oa-color-identity-signature-on-newsprint);'
+            '--lever:var(--oa-color-identity-signature-on-newsprint)')
+
+
+def s21_1_failure():
+    r = R['21.1']
+    parts = _site_parts()
+    items = ''.join(f'<span>{_esc(p)}</span>' for p in parts)
+    html = (css('.tab{display:inline-block;padding:6px 16px;border:1px solid var(--oa-color-border-hairline-on-newsprint);'
+                'border-bottom:0;background:var(--oa-color-surface-newsprint)}'
+                f'.bar{{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 16px;padding:14px 24px;'
+                f'border:1px solid var(--oa-color-border-hairline-on-newsprint);{ty("ui")}}}'
+                '.bar2{justify-content:space-between;background:var(--oa-color-surface-newsprint)}'
+                '.mk{display:inline-block;line-height:0}')
+            + f'<div class="w"><p class="lab">{_esc(r["fail_label"])}</p><span class="tab sm">{_esc(r["fail_tab"])}</span>'
+            f'<div class="bar">{items}</div><div class="bar bar2">{master(WM24, 221, 24, INK_NEWS)}<span class="row">{items}</span></div></div>')
+    return spec('s-21-1-failure', html, '21.1', r['failure_alt'],
+                notes='A drawing of a fault: a second banner under the site’s masthead, its parts chapter 20’s words, '
+                      'its wordmark inlined from the 24 px master; no part is marked current.')
+
+
+def s21_2_failure():
+    r = R['21.2']
+    bw, gap, x0, W2 = 132, 37, 28, 866
+    xs = {p: x0 + i * (bw + gap) for i, p in enumerate('ABCDE')}
+
+    def head(x, y, ux, uy, w):
+        k = 8 + w
+        return (f'<path d="M{x} {y}L{x - k * ux - (k / 2) * uy} {y - k * uy - (k / 2) * ux}'
+                f'L{x - k * ux + (k / 2) * uy} {y - k * uy + (k / 2) * ux}Z" fill="var(--ink)"/>')
+    out = []
+    for p_, x in xs.items():
+        out.append(f'<rect x="{x + .5}" y="20.5" width="{bw - 1}" height="79" fill="none" stroke="var(--ink)"/>'
+                   f'<text class="tn" x="{x + 12}" y="48">{_esc(PARTS[p_][0])}</text>')
+    out.append(f'<rect x="{x0 + .5}" y="180.5" width="{xs["C"] + bw - x0 - 1}" height="49" fill="none" stroke="var(--ink)"/>'
+               f'<text class="tn" x="{x0 + 12}" y="210">{_esc(PARTS["EC"][0])}</text>')
+    for a_, b_ in (('A', 'B'), ('B', 'C'), ('C', 'D'), ('D', 'E')):
+        n = FLOWS[(a_, b_)]
+        out.append(f'<line x1="{xs[a_] + bw}" y1="60" x2="{xs[b_] - 8 - n}" y2="60" stroke="var(--ink)" stroke-width="{n}"/>'
+                   + head(xs[b_], 60, 1, 0, n))
+    n = FLOWS[('EC', 'A')]
+    xa = xs['A'] + 70
+    out.append(f'<line x1="{xa}" y1="180" x2="{xa}" y2="{100 + 8 + n}" stroke="var(--ink)" stroke-width="{n}"/>' + head(xa, 100, 0, -1, n))
+    n = FLOWS[('E', 'A')]
+    out.append(f'<path d="M{xs["E"] + bw} 86H{W2 - 14}V250H10V86H{xs["A"] - 8 - n}" fill="none" stroke="var(--ink)" stroke-width="{n}"/>'
+               + head(xs['A'], 86, 1, 0, n))
+    svg = (f'<svg class="sv" viewBox="0 0 {W2} 262" width="{W2}" height="262" style="--ink:var(--oa-color-graphic-essential-on-newsprint);max-width:100%;height:auto" '
+           f'aria-hidden="true" focusable="false">{"".join(out)}</svg>')
+    html = css() + f'<div class="w"><p class="lab">{_esc(r["fail_label"])}</p>{svg}</div>'
+    return spec('s-21-2-failure', html, '21.2', r['failure_alt'],
+                notes='A drawing of a fault: each arrow 1 px wide for each connection it carries, read from the model, with '
+                      'no key; drawn at 866 px, its true size.')
+
+
+def s21_3_failure():
+    r = R['21.3']
+    hub = PATHWAYS['PW06']['hub']
+    qs = [p for p in M['pathways'] if p['hub'] == hub][:3]
+    btn = ''.join(f'<span class="q{" on" if p["id"] == "PW06" else ""}">{_esc(p["question"])}</span>' for p in qs)
+    boxes = ''.join(f'<span class="bx{" tn" if p in ("A", "D") else ""}">{_esc(PARTS[p][0])}</span>' for p in ('A', 'B', 'D'))
+    html = (css(f'.q{{display:block;padding:10px 12px;border:1px solid var(--oa-color-border-strong-on-newsprint);{ty("bodySmall")}}}'
+                '.q+.q{margin-top:8px}.q.on{font-weight:var(--oa-font-weight-bold)}'
+                f'.bx{{display:block;padding:12px 16px;border:1px solid var(--oa-color-graphic-essential-on-newsprint);{ty("ui")}}}'
+                '.bx+.bx{margin-top:8px}.bx.tn{background:var(--oa-color-tint-stone-n70)}.qq{max-width:390px}')
+            + f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p>{btn}<div class="mt16">{boxes}</div></div>')
+    return spec('s-21-3-failure', html, '21.3', r['failure_alt'],
+                notes='A drawing of a fault: the pressed question in bold alone, and two parts tinted with no words; the '
+                      'questions as the atlas stores them.')
+
+
+def s21_4_failure():
+    r = R['21.4']
+    text = REFORMS['R-23']['remedy_evidence']['text']
+    first = ' '.join(sentences(text)[:3])
+    html = (css('.blk{max-width:54rem;padding-top:16px;border-top:2px solid var(--oa-color-border-strong-on-newsprint)}'
+                f'.gw{{{ty("h4")}}}.qt{{padding-left:24px;border-left:2px solid var(--oa-color-border-strong-on-newsprint)}}')
+            + f'<div class="w"><p class="lab">{_esc(r["fail_label"])}</p><div class="blk"><p class="lab">'
+            f'{_esc(PAGES["A12"]["page"]["remedy"])}</p><p class="gw">{_esc(r["fail_grade"])}</p>'
+            f'<p class="qt mt16">{_esc(first)}</p></div></div>')
+    return spec('s-21-4-failure', html, '21.4', r['failure_alt'], width=None,
+                notes='A drawing of a fault: the first reading of Reform R-23’s stored remedy text alone, under a grade '
+                      'the atlas does not give it.')
+
+
+def s21_5_failure():
+    r = R['21.5']
+    others = sorted(k for k, v in REFORMS.items() if 'A4' in v['targets'])
+    tags = ''.join(f'<span class="tg" data-red="working">{chip("reform", k)} {_esc(PAGES["A12"]["page"]["aims_here"])}</span>' for k in others)
+    html = (css(f'.pl{{display:block;padding:10px 16px;border:4px solid var(--oa-color-data-emphasis-red-on-newsprint);box-shadow:0 0 0 1px var(--oa-color-palette-charcoal);border-radius:22px;{ty("bodySmall")}}}'
+                '.ln2{width:2px;height:32px;margin-left:40px;background:var(--oa-color-graphic-essential-on-newsprint)}'
+                '.tg{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--oa-color-data-emphasis-red-on-newsprint)}'
+                '.tg .chip{border-color:currentColor}.qq{max-width:390px}')
+            + f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p><span class="pl" data-red="working">{_esc(NODES["EC7"]["title"])}</span>'
+            f'<div class="ln2"></div><span class="pl" data-red="working">{_esc(NODES["A4"]["title"])}</span><div class="mt8">{tags}</div></div>')
+    return spec('s-21-5-failure', html, '21.5', r['failure_alt'],
+                notes='A drawing of a fault: every reform that names Variable A4 in its own targets tagged in red, so five '
+                      'working reds share the view.', exempt=['red'])
+
+
+def s21_6_failure():
+    r = R['21.6']
+    items = [('B4', LOOPS['B4']['title']), ('D4', NODES['D4']['title']), ('R1', LOOPS['R1']['title'])]
+    body = ''.join(f'<div><span class="dl">{c}</span><span class="sm">{_esc(t)}</span></div>' for c, t in items)
+    html = css('.qq{max-width:390px}') + (f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p>'
+                                         f'<p class="ui">{_esc(r["fail_head"])}</p><div class="rows">{body}</div></div>')
+    return spec('s-21-6-failure', html, '21.6', r['failure_alt'],
+                notes='A drawing of a fault: bare codes with their stored names; B4 and R1 name loops.')
+
+
+def s21_7_failure():
+    r = R['21.7']
+    pw = PATHWAYS['PW06']
+    src = M['sources']
+    lis = ''.join(f'<li class="cap">{_esc(src[s]["publisher"] if src.get(s) and src[s].get("publisher") not in (None, "None") else "")}'
+                  f'{", " if src.get(s, {}).get("publisher") not in (None, "None") else ""}{_esc(src.get(s, {}).get("title", s))}</li>'
+                  for s in pw['source_ids'])
+    html = (css('.ol{margin:16px 0 0;padding-left:2em;columns:2;column-gap:32px}.blk{max-width:54rem}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["fail_label"])}</p><p>{_esc(pw["short_answer"])}</p>'
+            f'<p class="lab mt24">{_esc(r["fail_sources"])}</p><ol class="ol">{lis}</ol></div>')
+    return spec('s-21-7-failure', html, '21.7', r['failure_alt'],
+                notes=f'A drawing of a fault: the pathway’s stored short answer, its figure with no chip, and its '
+                      f'{len(pw["source_ids"])} sources listed at the foot, none tied to the figure.')
+
+
+GRADES5 = ['documented', 'well-supported', 'plausible', 'plausible_contested', 'hypothesis']
+SHADES = ['var(--oa-color-palette-charcoal)', 'var(--oa-color-palette-stone)', 'var(--oa-color-derived-dim-newsprint)',
+          'var(--oa-color-tint-stone-n70)', 'var(--oa-color-surface-newsprint)']
+
+
+def s21_8_failure():
+    r = R['21.8']
+    sheets = [d['id'] for d in M['domains']] + ['EC', 'TC']
+    by = {s: [0] * 5 for s in sheets}
+    for k, l in LINKS.items():
+        by[sheet_of(l['to'])][GRADES5.index(l['evidence'])] += 1
+    titles = {**{d['id']: d['title'] for d in M['domains']}, 'EC': M['layers']['economy']['title'],
+              'TC': M['layers']['technology']['title']}
+    rows_ = ''
+    for s in sheets:
+        tot = sum(by[s]) or 1
+        segs = ''.join(f'<span style="flex:{n};background:{SHADES[i]}"></span>' for i, n in enumerate(by[s]) if n)
+        rows_ += f'<div><span class="sm nm">{_esc(titles[s])}</span><span class="bar">{segs}</span></div>'
+    html = (css('.rows>div{flex-wrap:nowrap;align-items:center}.nm{flex:0 0 22rem}'
+                '.bar{display:flex;flex:1;height:14px;border:1px solid var(--oa-color-graphic-essential-on-newsprint)}.blk{max-width:54rem}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["fail_label"])}</p><div class="rows">{rows_}</div></div>')
+    return spec('s-21-8-failure', html, '21.8', r['failure_alt'],
+                notes='A drawing of a fault: each sheet’s connections by grade as one bar shaded dark to light, its '
+                      'shares read from the model, no counts.')
+
+
+def s21_9_failure():
+    r = R['21.9']
+    pw = PAGES['A13']['page']
+    active = sum(1 for v in REFORMS.values() if not v.get('rejected'))
+    vals = [FACT['variables'], FACT['double'], FACT['loops_numbered'], active,
+            pw['whole_issues'].format(n=FACT['issues'])]
+    head = ''.join(f'<span class="dl">{_esc(h)}</span>' for h in pw['index_head'])
+    row = f'<span class="sm b">{_esc(pw["whole"])}</span>' + ''.join(f'<span class="sm b">{_esc(f"{v:,}" if isinstance(v, int) else v)}</span>' for v in vals)
+    html = (css('.g6{display:grid;grid-template-columns:2fr repeat(5,1fr);gap:8px 12px;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint)}'
+                '.b{font-weight:var(--oa-font-weight-semibold);font-variant-numeric:tabular-nums}.blk{max-width:54rem}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["fail_label"])}</p><div class="g6">{head}</div><div class="g6">{row}</div></div>')
+    return spec('s-21-9-failure', html, '21.9', r['failure_alt'],
+                notes=f'A drawing of a fault: the whole-atlas row with each connection filed on both its variables’ '
+                      f'sheets, {FACT["double"]:,} where the model holds {FACT["connections"]:,}.')
+
+
+def _d04_reforms():
+    vars_ = {k for k in NODES if sheet_of(k) == 'D04'}
+    out = []
+    for k, v in REFORMS.items():
+        hit = any(t in vars_ or (t in LINKS and sheet_of(LINKS[t]['to']) == 'D04') for t in v['targets'])
+        if hit:
+            out.append(k)
+    return out
+
+
+def s21_10_failure():
+    r = R['21.10']
+    ks = [k for k in _d04_reforms() if not REFORMS[k].get('rejected')][:3] + ['R-35']
+    body = ''.join(f'<div>{chip("reform", k)}<span class="sm">{_esc(REFORMS[k]["title"])}</span>'
+                   f'<span class="dl">{_esc(grade_word(REFORMS[k]["remedy_evidence"]["grade"]))}</span></div>' for k in ks)
+    html = css('.qq{max-width:390px}') + f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p><div class="rows">{body}</div></div>'
+    return spec('s-21-10-failure', html, '21.10', r['failure_alt'],
+                notes='A drawing of a fault: Reform R-35 among the sheet’s reforms with no label, its remedy grade read '
+                      'as for a remedy that works; titles and grades as stored.')
+
+
+def s21_11_failure():
+    r = R['21.11']
+    recs = [k for k in DOMAINS['D04']['issues'] if 'D4' in (ISSUES[k].get('nodes') or [])]
+    tabs = ''.join(f'<span class="tb{" on" if v == "D4" else ""}">{_esc(v)}</span>' for v in ('D1', 'D4', 'D5'))
+    body = ''.join(f'<div><span class="sm">{_esc(ISSUES[k]["title"])}</span></div>' for k in recs)
+    html = (css(f'.tb{{display:inline-block;padding:8px 16px;{ty("ui")};background:var(--oa-color-tint-stone-n70)}}'
+                '.tb.on{background:var(--oa-color-palette-prussian);color:var(--oa-color-text-primary-on-charcoal)}.qq{max-width:390px}')
+            + f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p><div class="row">{tabs}</div><div class="rows mt8">{body}</div></div>')
+    return spec('s-21-11-failure', html, '21.11', r['failure_alt'],
+                notes='A drawing of a fault: color alone marks the filter, no count, no grades; the titles as stored.')
+
+
+def s21_12_failure():
+    r = R['21.12']
+    html = (css(f'.h{{{ty("h3")}}}.blk{{max-width:54rem}}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["fail_label"])}</p><p class="row">{chip("loop", "R18")}'
+            f'<span class="lab">{_esc(ATLAS["kinds"][LOOPS["R18"]["type"]])}</span></p>'
+            f'<p class="h mt8">“{_esc(LOOPS["R18"]["title"])}”</p><p class="row mt16">{gline("documented")}'
+            f'<span class="ui">{_esc(grade_word("documented"))}</span></p></div>')
+    return spec('s-21-12-failure', html, '21.12', r['failure_alt'],
+                notes='A drawing of a fault: Loop R18’s head with the grade of its first step and no reading of its signs.')
+
+
+def s21_13_failure():
+    r = R['21.13']
+    btns = ''.join(f'<span class="bt">{_esc(b)}</span>' for b in r['fail_buttons'])
+    html = (css(f'.bt{{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--oa-color-border-strong-on-newsprint);{ty("ui")}}}'
+                '.qq{max-width:390px}')
+            + f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p><div class="row">{btns}</div>'
+            f'<p class="cap mt8">{_esc(r["fail_hold"])}</p></div>')
+    return spec('s-21-13-failure', html, '21.13', r['failure_alt'],
+                notes='A drawing of a fault: the stepper’s buttons in the atlas’s own order today and its 3,200 ms pace '
+                      '(registers F-8 and F-15).')
+
+
+def s21_14_failure():
+    r = R['21.14']
+    ks = [k for k, v in LOOPS.items() if v['type'] == 'R'][:8]
+    widths = [92, 80, 74, 66, 58, 47, 35, 22]
+    body = ''.join(f'<div>{chip("loop", k)}<span class="sm nm">{_esc(LOOPS[k]["title"])}</span>'
+                   f'<span class="bar"><span style="width:{w}%"></span></span></div>' for k, w in zip(ks, widths))
+    html = (css('.rows>div{flex-wrap:nowrap;align-items:center}.nm{flex:0 0 26rem}.bar{flex:1;height:12px}'
+                '.bar span{display:block;height:100%;background:var(--oa-color-graphic-essential-on-newsprint)}.blk{max-width:58rem}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["fail_label"])}</p>{ILLUS}<div class="rows mt8">{body}</div></div>')
+    return spec('s-21-14-failure', html, '21.14', r['failure_alt'], illustrative=True,
+                notes='A drawing of a fault: bar lengths invented for the drawing, labeled Illustrative; the atlas measures '
+                      'no strength. Titles as stored.')
+
+
+def two_lines(t, x, y):
+    """A stored title set whole on two lines, broken at the space nearest its middle."""
+    words = t.split()
+    best = min(range(1, len(words)), key=lambda i: abs(len(' '.join(words[:i])) - len(' '.join(words[i:])))) if len(words) > 1 else 1
+    l1, l2 = ' '.join(words[:best]), ' '.join(words[best:])
+    return (f'<text class="tk" x="{x}" y="{y}" text-anchor="middle">{_esc(l1)}</text>'
+            f'<text class="tk" x="{x}" y="{y + 17}" text-anchor="middle">{_esc(l2)}</text>')
+
+
+def s21_15_failure():
+    r = R['21.15']
+    a_, b_ = NODES['D2']['title'], NODES['D4']['title']
+    st = 'var(--oa-color-palette-stone)'
+    svg = (f'<svg class="sv" viewBox="0 0 600 220" width="600" height="220" style="max-width:100%;height:auto" aria-hidden="true" focusable="false">'
+           f'<path d="M130 80V30H470V80" fill="none" stroke="{st}" stroke-width="2"/>'
+           f'<path d="M470 140V190H130V140" fill="none" stroke="{st}" stroke-width="2" stroke-dasharray="8 4"/>'
+           f'<rect x="20" y="82" width="240" height="56" rx="28" fill="none" stroke="{st}" stroke-width="2"/>'
+           f'<rect x="340" y="82" width="240" height="56" rx="28" fill="none" stroke="{st}" stroke-width="2"/>'
+           f'{two_lines(a_, 140, 108)}{two_lines(b_, 460, 108)}</svg>')
+    picks = [k for k, v in REFORMS.items() if 'R18' in (v.get('loops') or [])]
+    ch = ''.join(f'<div class="pk{" on" if i == 0 else ""}">{chip("reform", k)}</div>' for i, k in enumerate(picks))
+    html = (css('.dkp{padding:16px}.sv .tk{fill:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-data-label)}'
+                '.pk{padding:6px 12px;border-left:4px solid transparent}.pk.on{border-left-color:var(--oa-color-palette-white)}')
+            + f'<div class="w"><p class="lab">{_esc(r["fail_label"])}</p><div class="dk dkp">{svg}<div class="mt8">{ch}</div></div></div>')
+    return spec('s-21-15-failure', html, '21.15', r['failure_alt'],
+                notes='A drawing of a fault: muted marks in Stone on Charcoal and the chosen reform\u2019s bar in White, the '
+                      'colors of the dark kit today (register F-14); the reforms are those whose own records name Loop R18.')
+
+
+def s21_16_failure():
+    r = R['21.16']
+    line = r['fail_line'].format(printed=LINKS['L15']['evidence'] and 'documented', model=LINKS['L15']['evidence'])
+    html = (css('.fl{padding:12px 16px;border-left:4px solid var(--oa-color-graphic-essential-on-newsprint);background:var(--oa-color-surface-newsprint)}.blk{max-width:54rem}')
+            + f'<div class="w blk"><p class="lab">{_esc(r["fail_label"])}</p><p class="row">{chip("connection", "L15")}'
+            f'{gline("documented")}<span class="ui">{_esc(grade_word("documented"))}</span></p>'
+            f'<p class="fl dl mt16">{_esc(line)}</p></div>')
+    return spec('s-21-16-failure', html, '21.16', r['failure_alt'],
+                notes='A drawing of a fault: Connection L15 printed documented, beside the test’s line with the model’s grade.')
+
+
+PLATES = [s_opener, s21_1_correct, s21_1_failure, s21_2_correct, s21_2_failure, s21_3_correct, s21_3_failure,
+          s21_reform, s21_4_failure, s21_5_correct, s21_5_failure, s21_chips, s21_6_failure, s21_7_correct, s21_7_failure,
+          s21_register, s21_8_failure, s21_9_correct, s21_9_failure, s21_10_correct, s21_10_failure, s21_11_correct,
+          s21_11_failure, s21_loop, s21_12_failure, s21_13_correct, s21_13_failure, s21_14_correct, s21_14_failure,
+          s21_how, s21_15_correct, s21_15_failure, s21_16_correct, s21_16_failure]
 
 
 # ------------------------------------------------------------------------------------------------ the chapter
@@ -993,8 +1606,6 @@ def build_chapter():
             f()
         except Waiting as e:
             waiting.append(str(e))
-    if not PLATES:
-        waiting.append('the plates (specs section 11, hand-over 4)')
     rules = []
     for rid in sorted(R, key=lambda k: int(k.split('.')[1])):
         r = R[rid]
@@ -1043,6 +1654,8 @@ def main():
     print(f'chapter 21: {len(ch["rules"])} rules, {len(ctx.specs)} specimens ({total:,} bytes before the kit’s frames); '
           f'model {MODEL_SHA[:16]}')
     if a.check:
+        for sid in sorted(ctx.specs, key=lambda k: [int(x) if x.isdigit() else x for x in re.split(r'(\d+)', k)]):
+            print(f'  {sid}: {len(ctx.specs[sid]["html"].encode()):,} bytes before the kit\u2019s frames')
         return
     if waiting:
         raise SystemExit('not written: plates wait for the kit or for hand-over 4')

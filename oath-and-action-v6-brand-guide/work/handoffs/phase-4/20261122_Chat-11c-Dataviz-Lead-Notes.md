@@ -8,6 +8,9 @@ Data visualization lead, Phase 4, chat 11c, November 22, 2026. Started 21:48 UTC
 - D4-xxx | A range effect code such as "0 to −S at high bite" draws both ends on Rule 13.5's pip scale, joined, with the code whole (R12) | chapter 15's `effect_rows` stops on any range ("draw it before printing it"), and Reform R-23's economic performance row is a range
 - D4-xxx | The 390 px home drawing lists each part's outgoing flows only, so each of the 27 pairs prints once (R7) | listing incoming flows too would print every count twice and break T3's sum
 
+- D4-xxx | A red target on a patterned connection draws its 6 px case on the red's rhythm, each case dash 1 px longer at each end, with the pattern at the drawn width (16 and 8 px at 4 px) and the case Charcoal in both themes (R14) | A solid case reads as a solid line in gray (Rule 13.4's failure); Rule 13.4 states patterns in line widths; Rule 12.5 names a Charcoal edge
+- D4-xxx | T10 checks a contested remedy's stored text whole, in order, split at one sentence, both blocks with the same standing, and prints their lengths without judging them (R15) | DR-37 keeps the stored text; DR-314 and DR-323 set "at the length the record holds"; H08 never set a length
+- D4-xxx | Plan corrections C1 to C5 (below, under Done): "same length" and the H08 citation leave sections 3.3, 5 (Rule 21.4's draft and specifications) and 8 (T10) | They followed Rule 01.22's old words, which DR-314 replaced, and cited a house rule that sets no length
 ## Rulings
 
 Landed in this file by 21:53 UTC (`date -u` read at 21:53:52, straight after the write; corrections at 21:53 UTC). For the design director and the engineer. Every value named here is read from the model at build time; the values in brackets are today's, for checking only (R9).
@@ -175,7 +178,40 @@ Red sits on the drawing only, never on a chip, tag, button, panel, heading or wo
 
 ### R13. The selection rules (DR-55, DR-93; plan 3.6)
 
-I read each view's selection from both sides at sign-off, against plan 3.6's table, and each finding at the grade the model gives it. A view passes when the finding each side may want to skip prints at the same prominence as the rest of its section, with nothing added or softened. Specifically: on the reform page both readings of the contested remedy sit side by side within a line's length of each other (H08, T10); on the loop page the case and the adaptation both print whole as stored; on the Register, Reform R-35 prints with its grade and the atlas's words on what the grade measures, and its route note (the 87% figure) prints as stored where routes print.
+I read each view's selection from both sides at sign-off, against plan 3.6's table, and each finding at the grade the model gives it. A view passes when the finding each side may want to skip prints at the same prominence as the rest of its section, with nothing added or softened. Specifically: on the reform page both readings of the contested remedy sit side by side with the same standing, each at the length the record holds (R15, DR-314, DR-323); on the loop page the case and the adaptation both print whole as stored; on the Register, Reform R-35 prints with its grade and the atlas's words on what the grade measures, and its route note (the 87% figure) prints as stored where routes print.
+
+### R14. A red target on a patterned connection (the engineer's Request 1)
+
+Written 22:26:44 UTC, at the main session's request. Reform R-11's targets on Loop R18 include Connection L15, plausible, drawn dashed. Chapter 15's `conn()` draws a red target only on a solid line, and chapter 15 stays as approved, so the figure step draws this case itself from System 1's `wire_marks(lit=True)` and `fitted()`, as the engineer proposes. Rule 12.5 sets the weights; Rule 13.4 sets the pattern; this ruling fills the gap between them and changes neither.
+
+**(a) The case follows the dashes.** The 6 px Charcoal case dashes on the red line's rhythm, never solid under it. Each case dash runs 1 px past each end of its red dash (the case pattern is the red pattern with each dash 2 px longer and each gap 2 px shorter, offset 1 px back), so every red dash carries Rule 12.5's 1 px edge on its ends as well as its sides. Red on Newsprint measures 2.96 to 1 [Q14], and the edge exists to lift every red edge that meets Newsprint. The gaps show the page's ground.
+
+Why not solid: a solid case leaves an unbroken 6 px Charcoal band at 13.29 to 1 against Newsprint, with the red dashes inside it at 4.49 to 1 against the Charcoal. In gray, and at reading distance in color, that band reads as a solid line, which is the failure Rule 13.4's plate shows: a plausible step looking as firm as a documented one. In gray the ruled form reads as dark-rimmed mid-gray dashes (red's luminance is about 0.20, Charcoal's 0.006, Newsprint's about 0.69) with clear light gaps between them.
+
+**(b) Dash lengths scale with the weight.** Rule 13.4 states every pattern in line widths, so at 4 px the dashed pattern is 4 and 2 line widths: 16 px dash, 8 px gap, flat ends, stretched by `fitted('dashed', 4, run)` to start and end on ink. The 2 px lengths (8 and 4) are not kept: ringed by the case, their gap would close to 2 px and the line would read solid. On L15 today the run after the lead-in and its gap is about 192 px to the line's trimmed end and about 180 px to the 6 px arrowhead's base (measured from the figure step's own path at 22:26 UTC), so the fit to the base gives about 15.7 and 7.8 px for the red and 17.7 and 5.8 px for the case, seven whole periods. The same rule covers the other patterns at 4 px, should a later page need them: dash and dot 16, 6, 4 and 6 px; dots 4 px across, 10 px apart on centers, with 6 px case dots on the same centers.
+
+- **Where the fit ends.** `wire_marks` trims the line 10 px short of the tip for the 2 px arrowhead, and the target's arrowhead is the 6 px one, 22 px long, so the pattern fits the run a reader sees: from the lead-in's gap to the 6 px arrowhead's base, 22 px from the tip, where the last dash ends whole. The solid line under the arrowhead's last 12 px is hidden by it either way.
+- **The lead-in** stays 28 px from the tail at every width (Rule 13.4), solid red on a solid case, carrying the ticks. The pattern then leaves its own gap at 4 px, 8 px, and starts on ink.
+- **The shortest run** counts at the drawn width: 20 line widths, 80 px at 4 px, after the lead-in and gap. L15 clears it. A target step shorter than that prints its grade word beside it, Rule 13.4's own fallback, and one under two whole periods (48 px for dashed) stops the figure step so I can rule.
+
+**(c) Tag, ticks and arrowhead** stay as the approved solid target draws them (chapter 15's `rt` block, Rule 12.5's "arrowheads and sign tags at the 6 px sizes"): the sign tag at its 6 px size (18, 8, 22, 10 and 2 px) in ink with its sign in the surface color; the two delay ticks at the 6 px size, 14 px long and 2 px in ink, on the solid lead-in, the second ending at 18 px from the tail, so the 28 px lead-in keeps its clear line; the arrowhead in red at its 6 px size, 22 by 18 px, with no edge (DR-305). The tag sits where `wire_marks` places it, at the middle of the longest straight run, and covers the pattern under it, as it does on a 2 px dashed line. Nothing marks the grade except the pattern and the grade word, so the grade stays readable in gray and the red stays the target's alone.
+
+**(d) The case is Charcoal in both themes.** Chapter 15's `rt` block strokes the case with `var(--oa-color-graphic-essential)`, which turns Newsprint on a Charcoal surface (`tokens.css`, line 1037), so a dark frame would rim the red in Newsprint. Rule 12.5 names a Charcoal edge and its token, `oa.color.graphic.essential.onNewsprint`. The atlas pages stroke the case with `--oa-color-graphic-essential-on-newsprint` in both themes: on Newsprint it is the edge, and on Charcoal it disappears into the ground, where the red stands at 4.49 to 1 alone [Q14] and the gaps show the ground. This applies to the solid target, L14, as well. I have not checked whether chapter 15's own plates draw a red target on Charcoal; if any does, it is a "Not fixed" item, not a change here.
+
+**For the atlas test:** T2 reads L15's grade from its pattern as on any line, at the drawn width (a dash-to-gap ratio of about 2, counting the red mark, not the case); T6 then passes with D4, L14 and L15 red; T13 measures the red dashes at 3 to 1 or better against what they touch, which on Newsprint is the case.
+
+### R15. T10 and a contested remedy's two readings (the editor's Request 6)
+
+Written 22:26:44 UTC. The plan's T10 asked two readings "within a line's length of each other (H08)". That condition cannot hold for every record without editing the atlas's stored text, which DR-37 forbids, and DR-314 and DR-323 have since set "at the length the record holds" for Rules 01.22 and 13.12. H08 is the house rule on titles and grade verbs; it never set a length, so the plan cited it wrongly. I take the editor's proposal, with the checks made exact:
+
+T10 passes a contested remedy when:
+
+1. **Whole and in order.** The two blocks, read in order, give the stored `remedy_evidence.text` exactly, with whitespace collapsed. Nothing added, cut or moved.
+2. **Split at one sentence.** The split falls at the start of the sentence the content file's `remedy_split` names, counted from 1 by the one splitter both the kit and the test use (System 1's: a break after `.`, `!` or `?` and a space, before a capital, a digit or an opening quotation mark), and each block holds at least one whole sentence. The kit and the test print the sentence list once in their logs, so the index can be read against it.
+3. **The same standing.** At 1440 px the two blocks sit side by side in one row, tops aligned; under the specs' breakpoint they stack in order. Both are open on load, in the same type token, weight and ink, neither in a disclosure, a smaller size or a muted state, and each ends with its link to its source (T9).
+4. **Lengths for the record.** The test's line prints each block's words and its line count at 1440 px, as in `PASS T10 A12 1440-light Reform R-23: remedy contested, two blocks, 42 and 38 words, N and M lines`. Length is reported and never fails the check.
+
+Today only Reform R-23 has a contested remedy. Its stored text splits into four sentences of 8, 21, 13 and 38 words; `remedy_split: 4` gives blocks of 42 and 38 words, and the four sentences rejoin to the stored text exactly (checked by script at 22:26 UTC). Whether a split separates the two readings, rather than cutting one in half, is a judgment the test cannot make; I check it at sign-off, and R-23's split at "Main limitation" does separate them.
 
 ## Contracts
 
@@ -186,13 +222,22 @@ I read each view's selection from both sides at sign-off, against plan 3.6's tab
 
 - Rulings R1 to R13, in this file by 21:53 UTC (`date -u` 21:53:52), five minutes after the start at 21:48.
 - R1 and R2 aligned with the engineer's contract C9 at 21:55:55 UTC: C9's count keys and marks stand, R2 fixes each key's method, and R1 adds directions to `data-atlas-reads`, `data-weakest`, and `data-part` in place of a kind on a part box.
-- **Appendix A rerun (brief 6.2, job 2).** The script copied unchanged from the plan to my scratch (`ch21_queries.py`, SHA-256 84cfd834...), run under the lock from the project folder with `python3 -I` at 21:54:10 UTC, exit 0, on the model with SHA-256 ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2 and `tokens.css` 3ecfb1cb... Its output is **identical, byte for byte, to Appendix B** (30,336 bytes, all 17 queries). No value differs, so the plan needs no correction and none was made.
+- **Appendix A rerun (brief 6.2, job 2).** The script copied unchanged from the plan to my scratch (`ch21_queries.py`, SHA-256 84cfd834...), run under the lock from the project folder with `python3 -I` at 21:54:10 UTC, exit 0, on the model with SHA-256 ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2 and `tokens.css` 3ecfb1cb... Its output is **identical, byte for byte, to Appendix B** (30,336 bytes, all 17 queries). No value differs, so no value in the plan changed. (C1 to C5 below change wording on a contested remedy's length, for R15, not values.)
 - Beyond Appendix A, a second script (`ruling_checks.py` in my scratch, run 21:54:56 UTC, exit 0) checked: the plan's index table in section 3.4 against the model, 13 rows, no mismatch; the plan's D04 connection table, 10 rows (from, to, sign, type, delay in words, grade word, and that each files on D04), no mismatch; R8's weakest-step method on all 20 numbered loops, every one passing its check (R18: L15; R7 and R8 name none); R4's directions on all 20, each ending the way its kind says (17 reinforcing return the same way, 3 balancing the other way), with no authority connection in any loop; R5's figure rule on PW06, where 254% with 2022 finds exactly one claim, CL1340; R7's sums, 27 outgoing lines totalling 81, plus 37 inside, 118; the lit parts of PW06, A, D and EC; the D04 filter, 9 of 20; the red targets of R-23 (EC7, A4) and R-11 (D4, L14, L15), R18's reforms by their own records (R-11, R-15, R-48) and R-35 rejected; and the bare IDs inside the stored prose the four views print. Only Loop R18's grade text (D2, D4, D4, D2, all variables) and its evidence summary (L14, L15, connections) hold any; none is one of the colliding codes B2 to B5.
 - Written: `work/handoffs/phase-4/20261122_Chapter-21-Query-Results.json` (47,105 bytes, valid JSON, written 21:55:13 UTC): the run's details, the comparison, all 17 queries' output lines, and the second script's results.
+- R14 (a red target on a patterned line) and R15 (T10 and a contested remedy), at the main session's request; R13's sign-off line now follows R15. Written by 22:26:44 UTC.
+- **Plan corrections, chat 11c,** each in `work/handoffs/phase-4/20261121_Chapter-21-Plan.md`, with a dated note under its opening paragraph (22:27:15 UTC; C5 at 22:27:48 UTC). A copy of the plan before them is in my scratch, `plan_before_C1-C4.md`. They follow DR-314 and DR-323 (Rule 01.22's and Rule 13.12's "at the length the record holds") and R15; H08 sets title verbs, not length.
+  - C1, section 3.3's Entry: "print both readings at the same length (house rule H08)" becomes "print both readings its record holds, each at the length the record holds (DR-314, DR-323; chat 11c ruling R15)".
+  - C2, section 3.3, item 4: "side by side at the same length" becomes "side by side, the stored text whole and in order, split at one sentence".
+  - C3, Rule 21.4's specifications: "each the same length within a line, each with its source a step away (H08)" becomes "the stored text whole and in order, split at one sentence into two readings, ... each at the length the record holds, each with its source a step away (DR-314, DR-323; R15)".
+  - C4, section 8, T10's pass condition: R15's condition in place of "within a line's length of each other (H08)".
+  - C5, Rule 21.4's draft rule: "print both readings at the same length" becomes the editor's chat 11c words, "set the readings its record holds side by side, in the atlas's own words" (their Request 2). Draft words stay the editor's to finish.
 
 ## Requests
 
-None yet.
+- **1. To the engineer, R14 (written 22:27:48 UTC):** in `work/build/app-kit/tools/atlas_figures.py`, draw L15's red target as R14 sets it: case dashed on the red's rhythm, each case dash 2 px longer and offset 1 px back; the pattern at 4 px (16 and 8 px) fitted to the run from the lead-in's 8 px gap to the 6 px arrowhead's base; the 28 px lead-in solid; tag, ticks and arrowhead as chapter 15's `rt` block draws them; the case stroked with `--oa-color-graphic-essential-on-newsprint` in both themes, on L14's solid target too. Then L15 leaves `not_red`, and T6 should pass on A14.
+- **2. To the engineer, R15:** T10's contested-remedy check as R15's four points, with System 1's sentence splitter shared by the kit and the test, and each block's words and 1440 px line count printed in the line. Length never fails it.
+- **3. To the design director, R15:** `work/handoffs/phase-4/20261122_Atlas-View-Specs.md`, the reform view's row "The remedy" (about line 244): "their lengths within one line of each other at 1440 (T10, H08)" becomes "each at the length the record holds, both with the same standing (R15; DR-314, DR-323)". The split at `remedy_split: 4` stands; it separates the two readings.
 
 ## Not fixed
 
@@ -208,9 +253,15 @@ None yet.
 - Appendix A rerun against Appendix B, byte for byte (21:54:10 UTC): identical.
 - The plan's two tables in section 3.4 against the model, and the rulings' checks listed under Done (21:54:56 UTC).
 - `git status` (21:55 UTC): my only files are this notes file and the query results; no stray file of mine in the project.
+- R-23's stored remedy text split by System 1's splitter (22:26:07 UTC): four sentences of 8, 21, 13 and 38 words, blocks of 42 and 38 at `remedy_split: 4`, rejoining to the stored text exactly; R-23 is the model's only reform whose remedy is graded contested.
+- L15's run in the figure step's A14 output (run under the lock between 22:22 and 22:26 UTC; read by script at 22:26:07): 28 px lead-in, then about 196 px at the 2 px gap; about 192 px to the trimmed end and about 180 px to the 6 px arrowhead's base at 4 px.
+- Chapter 15's `rt` block, `conn()` and System 1's `wire_marks`, `pattern`, `fitted`, `tick_marks`, `TAG` and `ARROW`, read for R14; and the dark theme's `--oa-color-graphic-essential` in `tokens.css`.
+- The plan before and after C1 to C5, by `diff` against my scratch copy: only the five lines and the dated note moved.
 
 ## Not tested
 
 - The plan's prose values outside Appendix B and the two tables of section 3.4 were not parsed one by one; each carries its query tag, and every tagged query's output matches Appendix B exactly.
 - Chapter 15's `effect_rows` was read, not run, for R12's finding that it stops on a range code.
-- No view has landed yet, so no sign-off has run (job 3), and the atlas test is not yet written (job 4).
+- No view has been handed to me for sign-off yet (job 3). The atlas test now exists in the engineer's tree (his notes: run on A12 and A14 in scratch at 22:21 UTC); I have not read it yet (job 4).
+- R14 is not yet drawn, so the gray reading it predicts rests on luminance arithmetic, not on a capture; I check it at sign-off on the A14 frames, in color and in grayscale.
+- Whether chapter 15's own plates draw a red target on Charcoal with a Newsprint case (R14 (d)).

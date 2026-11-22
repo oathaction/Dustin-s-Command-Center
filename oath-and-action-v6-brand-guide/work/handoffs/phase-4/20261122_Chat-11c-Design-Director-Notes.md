@@ -15,7 +15,7 @@ Files I hold this chat: `work/handoffs/phase-4/20261122_Atlas-View-Specs.md` (ne
 - D4-xxx | DD11C-R7: the locator sits at the breadcrumb row's right end from 48em, inside the breadcrumb's navigation, on the reform, Register and loop pages only | Rule 12.7: top right of the view's header, hidden on phones; inside a landmark; a page with no part (home, loop index, How to read) has nothing to locate
 - D4-xxx | DD11C-R8: on a record's page the breadcrumb's last crumb is the record's typed chip, bold, no underline, `aria-current="page"` | Rule 18.24 (no bare code) and Rule 18.7 (bold, no underline) together; T1 reads it as a chip
 - D4-xxx | DD11C-R10: the atlas's stored passages print as quotations in `oa.type.body` with the 2 px rule at their left, never in Lora | Lora Italic (`oa.type.quote`) is for a third party's words on chapter 20's Act page; the atlas is our own record
-- D4-xxx | DD11C-R11: a loop or reform drawing is drawn at its column's width capped at 640 px | Chapter 15's pills keep their size and the arches stay readable; an 867 px two-pill loop would read as two islands
+- D4-xxx | DD11C-R11 (revised 22:25 UTC): a loop or reform drawing is drawn at chapter 15's own artboard, its true size (296 px for the loop), with the ink tags listed beside it | The engineer's request 3: chapter 15's code draws at 296 px and draws no leader for a tag; no frame scales a drawing past its true size (chapter 20's R8), and the free columns beside it hold the tags
 - D4-xxx | DD11C-R12: the loop's and the reform's head panels (facts; status and grades in brief) start on Charcoal, the other candidates off | Estimated first screens near 86 to 88 percent Newsprint without them (Rule 05.1 under DR-310), and neither holds red; C5 confirms or turns them off
 - D4-xxx | DD11C-R9: an atlas plate places chapter 20's `web-site.css` once, as chapter 20's plates do, and adds `atlas-page.css` with only the atlas's `wa-` rules and the chapter 18 code sets its views use | DR-319: the shared style costs chapter 21 nothing on the guide's page
 
@@ -27,6 +27,7 @@ I follow the data lead's R1 to R13 (read whole at 22:08 UTC). My answers to the 
 - **DD-11C-2, How to read on the public page (editor's item 4).** The page's rows carry each mark's meaning alone, with no guide rule number: a reader of our website has no guide. The rule that sets each mark goes in the plate's specification table and its caption, which this generator writes (the extra's plate, section 11). `PAGES['A16']` holds no rule-number template.
 - **DD-11C-3, Outside forces (editor's item 5).** Confirmed: its box prints the plain name, the model's title beneath ("Outside drivers") and its counts, and no question; `PARTS['X']` holds `None` for the question, and the kit leaves the line out.
 - **DD-11C-5, a red target on a patterned connection (the engineer's request, 21:59 UTC), written 22:11 UTC.** (a) The case follows the dashes: it never runs solid under them, since a solid Charcoal case would make a plausible step read as solid, and the pattern is the grade (Rule 13.4). Each case dash is the red dash's path at 6 px, 1 px longer at each end, so the edge closes round every dash: for butt-capped patterns the case's dasharray adds 2 px to each dash and takes 2 px from each gap, offset 1 px back along the line; for dots (round caps) the case is the same dots at 6 px. The 28 px lead-in stays solid, red at 4 px on a 6 px case, as chapter 15's code asks. (b) The lengths scale with the weight, as System 1's `pattern()` already does: at 4 px, dashed 16 and 8 (case 18 and 6), dash and dot 16, 6, 4 and 6 (case 18, 4, 6 and 4), dots 10 px apart; then `fitted()` stretches the red's array so the line starts and ends on ink, and the case's array is derived from the fitted one. Red and case keep one rhythm, so each red dash sits centered on its case. Draw it in the figure step from System 1's `wire_marks(lit=True)` and `fitted()`, leaving chapter 15's file alone, as you propose. L15 then turns red with R-11 chosen, and T6 passes on the loop page.
+- **DD-11C-6, the engineer's requests 1 to 3 (22:25 UTC).** (1) The red on dashed L15: my layout view is DD-11C-5 above; where the data lead's R14 says otherwise about what a mark means, R14 governs. (2) The words: `stepper_ready`, `read_start`, `read_step`, `read_end_same`, `read_end_other` and `dirs` now sit in `PAGES['A14']['page']` (drafts, the editor's to rewrite), and `PAGES['A11']['page']['intro']` reaches the kit with `{variables}`, `{connections}`, `{loops}`, `{reforms}` and `{issues}` unfilled, so the kit fills each with its `data-count` mark (`--page-words A11` checked 22:25 UTC). (3a) Yes: the facts panel is `facts` and the reform's status panel `status` (specs 8.1, 9.1). (3b) Chapter 15's own 296 px, its true size, at cols 5 to 8 (specs 8.1). (3c) Yes: the ink tags as a list beside the drawing, one group a step or target headed by its chip (specs 8.1, 9.1); the editor rewords Rule 21.5's specification to match (Requests). (3d) One row from 48em, set in `atlas-page.css`; chapter 18's two by two under 48em (AL-22).
 - **DD-11C-4, the reform's kicker.** The editor's call stands: the kicker carries the band word as the model stores it, and the status panel quotes the band's definition; my draft map of band names is gone from the word fields.
 
 ## Contracts
@@ -40,7 +41,7 @@ I follow the data lead's R1 to R13 (read whole at 22:08 UTC). My answers to the 
 
 ## Words for the editor
 
-**Handed over 22:09 UTC.** `work/build/scripts/phase-4/phase4_ch21_build.py` exists and runs (`--check` exit 0; `--page-words all` prints A11 to A16). Its word fields are the editor's from now on, and I stay out of them. They sit between the line `# ==== WORDS` and the line `# ==== WORDS FOR THE KIT`, and are, by name:
+**Handed over 22:09 UTC; keys added 22:25 UTC before the editor's first write (`stepper_ready`, `read_start`, `read_step`, `read_end_same`, `read_end_other`, `dirs` in `PAGES['A14']['page']`; `facts`, `status` and `rowl14` in `VIEW_WORDS['parts']`).** `work/build/scripts/phase-4/phase4_ch21_build.py` exists and runs (`--check` exit 0; `--page-words all` prints A11 to A16). Its word fields are the editor's from now on, and I stay out of them. They sit between the line `# ==== WORDS` and the line `# ==== WORDS FOR THE KIT`, and are, by name:
 
 - `W`: `title`, `instruction` (fixed by the architecture map), `intro` (two paragraphs), `groups` (rule, title, line), `opener_caption`, `opener_alt`, `related_chapters`, `sources`.
 - `PARTS`: the eight parts' plain names and questions, Dustin's words (DR-35, DR-41); `X` has no question (DD-11C-3). Change only if Dustin's words differ.
@@ -57,9 +58,12 @@ Rules for the fields: a `{name}` in braces is a fact the build or the kit fills 
 - 21:58 UTC: hand-over 1, the shell (specs sections 0 to 6).
 - 22:09 UTC: the generator `phase4_ch21_build.py` with `--page-words` and `--check`; word fields handed to the editor.
 - 22:20 UTC: hand-overs 3 and 4 (specs sections 10 to 13), with the home drawing's routes proved by a prototype that reads the model (`home_proto.py` and `home_proto.png` in my scratch).
+- 22:25 UTC: the generator's plates: 34 plate functions; the 16 failure plates and the chips plate are drawn (59,721 bytes before the kit's frames); the 17 kit plates wait on A11 to A20 and the atlas test's report, so the generator writes nothing until the kit has drawn them.
 - 22:03 UTC: hand-over 2, the loop and reform views (specs sections 7 to 9).
 
 ## Requests
+
+- **DD11C-Q4, to the editor (22:25 UTC):** `R['21.5']['specs']` still says a tag sits "6 px from the mark" and "Stacked under one leader line"; the kit lists the tags beside the drawing, one group under each mark's chip (specs 8.1, 9.1; DD-11C-6), so please word the Tag and Several tags rows that way. Also `R['21.1']['specs']`, Title bar: the atlas home's head band joins the title bar on Charcoal (specs 12.1), if you want the rule to say so.
 
 - **DD11C-Q2, to the engineer (22:20 UTC):** two crops C9 does not name yet: (1) a phone frame in the open state cropped to a part, key `390-light-open-top` (Rule 21.1's plate; specs 4 gives its height, 421 px); (2) a crop to one row of a table, for Rule 21.7's plate: `data-oa-part="row-l14"` on Connection L14's evidence row on A14 and on its Register line on A13, keys `1440-light-rowl14` (no hyphen in a part's name, as C9 asks). And the four states of section 13, A17 to A20, if you agree they need their own IDs.
 - **DD11C-Q3, to the engineer (22:20 UTC):** the home drawing (specs 12.2) is new geometry with a route table; if the figure step draws it, please print the drawing's closed height at 1440 and its crossings, so I can check them against the prototype (552 px, 7).
@@ -71,11 +75,44 @@ Rules for the fields: a `{name}` in braces is a fact the build or the kit fills 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
 
+## Bytes (D4-63: chapter 21 at 655,000)
+
+Measured 22:27 UTC by `phase4_ch21_build.py --check` (each specimen's own bytes, before the kit's frames; the kit's frames and its `atlas-page.css` are not drawn yet, so the chapter's total waits):
+
+| Plate | Bytes | Plan's estimate |
+|---|---|---|
+| s-21-1-failure | 2,983 | |
+| s-21-2-failure | 3,342 | |
+| s-21-3-failure | 2,453 | |
+| s-21-4-failure | 2,432 | |
+| s-21-5-failure | 3,055 | |
+| s-21-6-failure | 2,468 | |
+| s-21-7-failure | 6,089 | |
+| s-21-8-failure | 5,981 | |
+| s-21-9-failure | 2,465 | |
+| s-21-10-failure | 2,938 | |
+| s-21-11-failure | 3,164 | |
+| s-21-12-failure | 3,094 | |
+| s-21-13-failure | 2,174 | |
+| s-21-14-failure | 3,972 | |
+| s-21-15-failure | 3,432 | |
+| s-21-16-failure | 2,823 | |
+| **16 failure plates** | **52,865** | 80,000 |
+| s-21-chips | 8,583 | 8,000 |
+| **Drawn here, in all** | **61,448** | |
+
+Still to measure once the kit draws A11 to A20: the four view plates, the eleven crop plates, How to read, Rule 21.15's and 21.16's plates, the shared `atlas-page.css` (DR-319: `web-site.css` costs chapter 21 nothing), the rule text, and the chapter's total against 655,000.
+
 ## Tested
 
 - Word widths in the guide's fonts in Chromium (21:51 and 21:54 UTC), by `measure.mjs` in my scratch: the atlas's name 201.5 px (label), subtitle 217 and snapshot 197.5 px (caption), the five views 42.7, 44.4, 60.9, 91.7 and 87.1 px (ui), "Views" 44.3 and "Atlas views" 82.6 px (ui), the breadcrumb's words (body-small) and two chips (data-label, bold).
 - Chapter 20's built masthead heights from the plate `a04.json`: 141 px at 1440 and 1024, 57 px at 390 and 360.
+- `phase4_ch21_build.py --check` under the lock, last at 22:27 UTC: exit 0; 16 rules; 17 specimens drawn; every word field through chapter 02's mechanical checks (`check_words`, `check_chapter`); the 17 kit plates report as waiting. `--page-words all` prints A11 to A16; A14's holds counted by `_holds()`; A11's intro keeps its five count placeholders.
+- The home drawing's routes, by `home_proto.py` (scratch) on the model: 27 pairs, 81 connections between parts and 37 inside (118), 7 crossings, every pair routed; the render `home_proto.png` read by eye.
+- The 17 own-drawn specimens rendered in Chromium with the guide's fonts and tokens (scratch `prev/`, contact sheets read by eye at 22:20 to 22:27 UTC); four fixed after the look: 21.2 redrawn at its true 866 px (its words were 9 px when scaled), 21.5's targets red as on the correct plate, the chips plate's pairs set on one row each, 21.15's names inside the pills and its White bar on a chooser row.
 
 ## Not tested
 
-- The shell is not drawn yet: no frame, no C5 measure, no contrast measure on pixels. The heights in specs section 4 are arithmetic from the measures above.
+- The shell and the views are not drawn yet: no kit frame, no C5 measure, no contrast measure on pixels. The heights in specs sections 4 and 12 are arithmetic from the measures above.
+- The chapter file, its specimens and its manifest are not written: the generator writes only once the kit has drawn A11 to A20 and the atlas test's report exists, so no strict build has run with chapter 21 in it.
+- The failure plates' words are my drafts until the editor writes the fields; the plates were not read by the data lead.
