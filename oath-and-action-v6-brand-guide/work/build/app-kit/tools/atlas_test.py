@@ -559,7 +559,7 @@ LITERAL = re.compile(r"(?<![\w-])(#[0-9a-fA-F]{3,8}\b|rgba?\(|hsla?\()")
 def t13(pg):
     faults, n = [], 0
     for st in pg.soup.find_all("style"):
-        css = st.get_text()
+        css = "".join(str(x) for x in st.contents)
         if "@font-face" in css or "--oa-color-palette-newsprint:" in css:
             continue    # the fonts and tokens.css, the one source of colors
         for m in LITERAL.finditer(css):
@@ -567,7 +567,7 @@ def t13(pg):
             break
     if pg.theme == "dark":
         for st in pg.soup.find_all("style"):
-            css = st.get_text()
+            css = "".join(str(x) for x in st.contents)
             if "@font-face" in css or "--oa-color-palette-newsprint:" in css:
                 continue
             if re.search(r"(muted-mark|selected-bar)[^;{}]*:[^;{}]*(palette-stone|palette-white)", css):
