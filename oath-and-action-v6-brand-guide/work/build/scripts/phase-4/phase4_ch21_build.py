@@ -107,6 +107,8 @@ FACT = {
     'questions': len(M['pathways']),
     'hubs': len(M['hubs']),
     'snapshot': date_words(META['snapshot']),
+    'double': 2 * len(M['links']),                                   # Rule 21.9's failure: each connection filed twice
+    'answer_sources': len(set(next(p for p in M['pathways'] if p['id'] == 'PW06')['source_ids'])),
 }
 assert FACT['variables'] == META['counts']['variables'] and FACT['connections'] == META['counts']['connections'], \
     'the model’s own counts disagree with its records'
@@ -201,6 +203,9 @@ ATLAS = {
     'signs': {'+': 'raises', '-': 'lowers', 'none': 'decides'},
     'delays': {'S': 'under 2 years', 'M': '2 to 10 years', 'L': 'over 10 years'},
     'kinds': {'R': 'Reinforcing', 'B': 'Balancing'},
+    'kind_words': {'variable': 'Variable', 'connection': 'Connection', 'loop': 'Loop', 'reform': 'Reform',
+                   'issue': 'Issue', 'claim': 'Claim', 'domain': 'Domain', 'route': 'Route',
+                   'rule-change': 'Rule change', 'delivery-case': 'Delivery case'},
     'not_checked': 'Not checked',
     'checked': 'Checked {date}',
     'as_of': 'As of {date}',
@@ -238,9 +243,6 @@ PAGES = {
         'current_view': 'Reforms',
         'crumbs': [['Home', '/atlas'], ['Reforms', '/atlas/reforms']],
         'page': {
-            'band_names': {'parameter': 'Changes a number', 'feedback': 'Changes a feedback',
-                           'information': 'Changes who knows what', 'rules': 'Changes the rules',
-                           'power to change the rules': 'Changes who sets the rules', 'goals': 'Changes the goal'},
             'status_label': 'Where it stands',
             'problem': 'The problem',
             'remedy': 'The remedy',
@@ -351,7 +353,6 @@ PAGES = {
         'page': {
             'h1': 'How to read our atlas',
             'intro': 'Every mark our atlas’s pages use, with its words and the rule that sets it.',
-            'rule_word': 'Rule {rule}',
         },
     },
 }
@@ -556,6 +557,11 @@ R['21.6'] = {
     'failure_alt': 'A list headed Variables with three bare codes and names, two of them loops.',
     'fail_label': 'A list of bare codes',
     'fail_head': 'Variables',
+    'chips_plain': 'Plain',
+    'chips_link': 'As a link',
+    'chips_pairs': 'Codes our atlas repeats',
+    'on_newsprint': 'On Newsprint',
+    'on_charcoal': 'On Charcoal',
 }
 R['21.7'] = {
     'title': 'Put the evidence one step from every claim.',
@@ -578,7 +584,7 @@ R['21.7'] = {
                        'step’s chip beside its line in the Register.',
     'correct_alt': 'A short answer with a figure and the chip Claim CL1340, its record open beneath with grade, people, '
                    'place, period and limitation; and the chip Connection L14 beside its row on sheet D04.',
-    'failure_caption': '<strong>Fails Rule 21.7.</strong> The figure points to a list of {n} sources at the foot of the '
+    'failure_caption': '<strong>Fails Rule 21.7.</strong> The figure points to a list of {answer_sources} sources at the foot of the '
                        'page, and a reader cannot tell which one holds it.',
     'failure_alt': 'A short answer with a figure and no chip, and a long numbered list of sources at the foot.',
     'fail_label': 'The answer and its sources at 1440 px',
@@ -791,6 +797,9 @@ R['21.15'] = {
     'failure_alt': 'A dark drawing with gray muted marks and a white selection bar.',
     'fail_label': 'The drawing in the colors of today’s dark kit',
     'ratio_head': ['Mark', 'Token', 'Measured'],
+    'ratio_rows': {'text': 'Text', 'secondary': 'Secondary words and muted marks', 'red': 'The red target',
+                   'hairline': 'A hairline that carries no meaning'},
+    'ratio_value': '{r} to 1',
 }
 R['21.16'] = {
     'title': 'Test every atlas page against the model before it ships.',
@@ -813,6 +822,8 @@ R['21.16'] = {
     'failure_alt': 'A loop step labeled Documented beside a test line beginning FAIL that names the page, the connection, '
                    'the printed grade and the model’s grade.',
     'fail_label': 'The page and the test’s line',
+    'fail_line': 'FAIL T2 A14 1440-light Connection L15: printed {printed}, model {model}',
+    'report_label': 'The atlas test, from the build’s last run',
 }
 
 EXTRA_HOW = {
@@ -824,11 +835,16 @@ EXTRA_HOW = {
            'target, the typed chip and the pressed question.',
 }
 
-# the line above each row of frames: the width, the theme and the state each frame shows
-VIEW_WORDS = {'1440-light': '1440 px, light', '390-light': '390 px, light', '1440-dark': '1440 px, dark',
-              '390-dark': '390 px, dark', '1440-light-screen': '1440 px, light, first screen',
-              '390-light-screen': '390 px, light, first screen', '390-light-open': '390 px, light, views open',
-              '1440-light-top': '1440 px, light', '390-light-open-top': '390 px, light, views open'}
+# the line above each row of frames: the width, the theme and the state each frame shows, composed from a view's key
+# (the engineer's C9: <width>-<theme>, then "screen", "open" or a part's name); joined by commas, rows by middle dots
+VIEW_WORDS = {
+    'px': '{w} px', 'light': 'light', 'dark': 'dark', 'screen': 'first screen', 'open': 'views open',
+    'parts': {'top': 'the top of the page', 'drawing': 'the drawing', 'questions': 'the questions', 'answer': 'the answer',
+              'targets': 'where it acts', 'grades': 'the two grades', 'effects': 'the effects', 'routes': 'the routes',
+              'index': 'the index', 'sheet': 'the open sheet', 'records': 'the issue records',
+              'rejected': 'the rejected option', 'stepper': 'the stepper', 'chooser': 'the chooser',
+              'read': 'the loop read aloud', 'evidence': 'the evidence', 'claim': 'the claim’s record'},
+}
 
 WCAG = {
     '21.1': ['1.3.1', '2.4.1', '2.4.2', '2.4.3', '3.2.3', '3.2.6', '4.1.2'],
@@ -993,7 +1009,7 @@ def build_chapter():
             'id': rid, 'title': r['title'], 'rule': [_fill(x) for x in r['rule']], 'tokens': TOKENS[rid],
             'why': {'text': [_fill(r['why'])], 'basis': r['basis']},
             'correct': {'specimen': correct, 'caption': _fill(r['correct_caption'])},
-            'failure': {'specimen': f's-21-{n}-failure', 'caption': r['failure_caption']},
+            'failure': {'specimen': f's-21-{n}-failure', 'caption': _fill(r['failure_caption'])},
             'specs': specs, 'related': rel, 'related_rules': rr, 'builders': r['builders'],
         })
     ch = {

@@ -2,7 +2,7 @@
 
 Written November 22, 2026 by the design director, from 21:56 UTC, for the engineer, who draws every atlas page in the application kit (`atlas-page`, brief section 6.4), for the data visualization lead, who signs off every view, and for the editor, who writes every word a reader sees. The plan is `work/handoffs/phase-4/20261121_Chapter-21-Plan.md` (sections 3, 5 and 9); chapter 20 as built governs the shell (brief section 5): its specs `work/handoffs/phase-4/20261121_Web-Page-Specs.md` with revisions 10 to 12, and `work/build/app-kit/renderers/web-site.mjs` and `site-parts.mjs` as they stand at commit 2748d7ab.
 
-Hand-over 1 is sections 0 to 6: the shell every atlas page shares (rules, masthead, title bar, breadcrumb and locator, main and footer, style classes, section marks). Hand-overs 2 to 4 add the views (sections 7 to 10) and the rule plates (section 11). Words here are drafts; the editor writes the final words in the generator's word fields (`phase4_ch21_build.py`, read by the kit through `--page-words`). Facts (the atlas's name, subtitle, snapshot date, IDs, counts) are read from the model, `work/extract/atlas-v7-data.json`, at build time and never typed.
+Hand-over 1 is sections 0 to 6: the shell every atlas page shares (rules, masthead, title bar, breadcrumb and locator, main and footer, style classes, section marks). Hand-over 2 is sections 7 to 9 (what the views share, the loop page, the reform page), hand-over 3 sections 10 and 11 (the Register, the loop index, How to read), hand-over 4 sections 12 and 13 (the atlas home and the rule plates). Words here are drafts; the editor writes the final words in the generator's word fields (`phase4_ch21_build.py`, read by the kit through `--page-words`). Facts (the atlas's name, subtitle, snapshot date, IDs, counts) are read from the model, `work/extract/atlas-v7-data.json`, at build time and never typed.
 
 Widths below are measured in Chromium with the guide's fonts (`lib.mjs` `font_css()`), at 21:51 and 21:54 UTC, by a script in my scratch folder.
 
@@ -143,7 +143,7 @@ Measured at 1440 for Loop R18: Home 42.0, Loops 43.6, two separators 21.4 each, 
 | Atlas home, 1440 | 0 to 141 | 141 to 197 | none | 197 | 245 |
 | Atlas home, 390 | 0 to 57 | 57 to 113 | none | 113 | 145 |
 
-The plate for Rule 21.1 (`s-21-1-correct`, section 11) clips the loop page at 1440 x 265 (to 16 px into main) and at 390 x 421 with the views open (57 + 290 + 8 + 44 + 22).
+The plate for Rule 21.1 (`s-21-1-correct`, section 13) clips the loop page at 1440 x 265 (to 16 px into main) and at 390 x 421 with the views open (57 + 290 + 8 + 44 + 22).
 
 ## 5. Style: what the atlas reuses and what it adds (DR-319)
 
@@ -255,3 +255,170 @@ Candidate panels: `Reform`, the status panel, **on**, for the same first-screen 
 ### 9.3 Dark frames
 
 As 8.3.
+
+## 10. The Register, sheet D04 open (A13; plan 3.4; hand-over 3)
+
+**Content file:** `{"view": "register", "open_sheet": "D04", "filter": ["D4"], "panels": ["Index", "Sheet"], "views": ["1440-light", "390-light", "1440-dark", "390-dark"]}` plus `1440-light-screen` and `390-light-screen`.
+
+### 10.1 Sections and blocks, in order
+
+| Section | Block | Contents | Style |
+|---|---|---|---|
+| `Index` | `h1` and intro | "The Register" and the editor's intro | `h1` in `oa.type.section`, cols 1 to 8; intro `oa.type.intro`, cols 1 to 8, 32 px under it |
+| | Index table (`data-oa-part="index"`) | Rule 18.10's table, 48 px under the intro. Rows: Domains D01 to D10, each its linked chip (to its sheet) and its stored title; the two layers by their model titles in words, no chip (Rule 10.8); then "The whole atlas". Columns: Sheet; Variables; Connections; Loops; Reforms; Issue records ("none filed" for the layers, "{n}, one retired" for the whole row); then the five grades in Rule 13.3's order. Every count `data-count`, `data-count-of` by R2 | Cols 1 to 12 from 64em. Sheet column 34 percent of the table (446 px at 1440), the five counts 7 percent each, the five grades 6.2 percent each; cells 12 px of padding at each side, rows 44 px at least, a 1 px `--oa-color-border-hairline` under each; titles in `oa.type.body-small`; counts in `oa.type.body-small` with `tabular-nums`, right-aligned; the whole row in 600 weight under a 2 px `--oa-color-border-strong` rule |
+| | Head row, candidate, **on** | The table's `thead`: each head in `oa.type.data-label`, the five grade heads each with its 40 px line sample (R3: the 2 px line in its pattern, the record square before Documented only) 8 px above its word; the head row at least 64 px tall, cells bottom-aligned | On: `oa-surface-charcoal` on the `thead` row, marks and words in the Charcoal tokens; off: on Newsprint under the 2 px strong rule |
+| | Under 48em | The table restyled by its container as one card a sheet (Rule 18.10 keeps the markup): the sheet's chip and title on a line, then its ten counts as a two-column list of label and value pairs, labels from the head row; a 1 px hairline between cards, 16 px of padding. The `thead` is hidden, so a **grade key** stands before the cards: the five line samples with their words, two to a row, on Charcoal (the candidate's phone form, on with the head row), 24 px of padding | |
+| | Note | The whole row's note, under the table (`oa.type.caption`, secondary), 16 px down | |
+| `Sheet` | Sheet band, candidate, **on** (`data-oa-part="sheet"` holds the band, the variables and the connections) | The `h2`: the chip Domain D04 and its stored title; under it the label "Its everyday question" and the question as stored, in `oa.type.intro` | On: a Charcoal band across cols 1 to 12, padding 32 px (24 below 48em), as chapter 20's home atlas band; off: on Newsprint under the 2 px strong rule |
+| | Its variables | `h3`, then one row a variable: its chip (the row's `id="variable-d1"`, R5), its stored title in `oa.type.body` 600, its `increase_means` sentence in `oa.type.body-small`; a 1 px hairline under each | Cols 1 to 8; 32 px under the band |
+| | Its connections | `h3`, then Rule 18.10's table, one row a connection (`id="register-l10"`, R5): Connection (chip); From, to (two chips, each with the variable's stored title, "to" between them); Sign (Rule 15.3's tag, 16 by 14 px, then "raises" or "lowers"; for authority the open diamond and "decides"); Type (Rule 15.4's word); Delay (Rule 13.5's ticks and words); Grade (the 40 px line sample, R3, then the display word); The atlas's citation (as stored, whole, R9) | Cols 1 to 12 from 64em; widths: Connection 9 percent, From, to 27, Sign 9, Type 8, Delay 11, Grade 12, citation 24; cells `oa.type.body-small`, chips `oa.type.data-label`; rows 44 px at least, 12 px of padding, a hairline under each. Under 48em one block a connection: the chip as the block's head, then six labeled lines |
+| `Rejected` | `h2` | Draft "What our atlas set aside" (the editor's) | |
+| | Rejected option (`data-oa-part="rejected"`) | Per DD-11C-1: the `h3` is the chip Reform R-35 and its stored title, which begins "Rejected option"; the label "Rejected option" prints above it only when a stored title does not. Then its four effects (R12's rows); its two grades, each display word with Rule 13.3's gloss, the remedy's grade followed by the atlas's own words quoted whole as stored (7's quotation form); its routes with their notes as stored, the 87 percent route note among them (R13) | Cols 1 to 8, on Newsprint, a 2 px strong rule above the block; never red (R10) |
+| | Reviewed and not drawn | On a sheet with reviewed connections (D04 has none; D10 has two, Rule 21.10's plate): the `h3` "Reviewed and not drawn", then one row each: "reviewed connection LTR1" in words (R11), its two variables' chips and titles with "to", the atlas's reason quoted; no line of any pattern | As above |
+| `Records` | `h2` (`data-oa-part="records"` on the section) | Draft "Its issue records" | |
+| | Filters | Chapter 18's `c-18-filter-bar`: the Filters button with its count ("Filters, 1 on"), opening a group of check boxes, one a variable of the sheet, each its chip, title and count of records (`records-shown` method, R2); the status line ("9 of 20 issue records", `role="status"`, on change only) | Cols 1 to 8; the button 44 px; the open group on Newsprint with a 1 px strong edge, 16 px of padding; on the plate the group shows open with D4 checked |
+| | Records | One row a record that the filter shows: its chip (`id="issue-i053"`), its stored title, its grade's display word (R11: the issue's stored grade spelling maps to Rule 13.3's word) | Rows 44 px at least, a hairline under each; title `oa.type.body-small`, grade `oa.type.data-label` at the row's right from 48em, under the title below it |
+
+### 10.2 Panels and red
+
+`Index` head row and its phone key, **on**: at 1440 the first screen ends inside the table (its 12 sheet rows run past 900 px), so the whole-atlas row the plan named as the candidate lies below the screen; the head row stands in it and covers about 7 percent of the window. `Sheet` band, **on**. `Rejected`, `Records`: none. No red on the Register (R10): the rejected option's targets stay in ink.
+
+### 10.3 Dark frames
+
+As 8.3; the head row and the band draw their edge on the dark page (`.ws-panel`'s dark rule).
+
+## 11. The loop index (A15; Rule 21.14) and How to read (A16; the extra)
+
+### 11.1 The loop index
+
+**Content file:** `{"view": "loop-index", "panels": ["Reinforcing"], "views": ["1440-light", "390-light"]}` plus `1440-light-screen` and `390-light-screen`. No dark frame (DR-319's spirit: the four view plates show the dark theme).
+
+| Section | Block | Contents | Style |
+|---|---|---|---|
+| `Reinforcing` | `h1` and intro | "Loops" and the editor's intro | As 10.1 |
+| | `h2` | "Reinforcing" and its count of loops (`atlas:loops` by kind) | |
+| | Table | One row a loop of the kind, in the atlas's order: Loop (linked chip to its page); Title (stored, whole, DR-321); Steps; Minus signs; How it closes (stored `closure`); Grade (stored `evidence`, bare variable codes in chips, R11). The three conceptual loops print "no numbered chain" in Steps and Minus signs (Rule 15.18) | Cols 1 to 12 from 64em; widths Loop 9 percent, Title 31, Steps 7, Minus signs 8, How it closes 20, Grade 25; head row as the Register's, candidate **on** for the first table only (one panel a section; the second table's head is on Newsprint under the 2 px rule); under 48em one card a loop, as the Register's |
+| `Balancing` | `h2` and table | "Balancing" and its count, the same table | |
+| | Note | DR-321's note under the last table, `oa.type.caption`, secondary, 16 px down | |
+
+### 11.2 How to read
+
+**Content file:** `{"view": "how-to-read", "panels": [], "views": ["1440-light"]}` plus `1440-light-screen` and `390-light-screen` for C5. One frame on the plate (DR-319: no dark frame).
+
+| Section | Block | Contents | Style |
+|---|---|---|---|
+| `Marks` | `h1` and intro | The editor's words | As 10.1 |
+| | Groups | Five groups, each an `h2` and a list of marks: **Signs and types** (the sign tag raising, the sign tag lowering, the type words, authority's open diamond and "decides"); **Grades** (the five grade lines, each with its word and gloss, and the record square); **Time** (the three delay ticks with their words); **Loops and reforms** (the hollow line, the red target with its edge, the ink tag "aims here", the weakest step's label); **On every page** (the typed chip, plain and linked, and the pressed question beside an unpressed one) | |
+| | A mark's row | At left a 120 by 48 px cell holding the mark, drawn by the figure step at its true size on the page's ground; at right its name (`oa.type.ui`, 600) and its meaning in one or two sentences (`oa.type.body-small`); a 1 px hairline under the row; rows 64 px at least. Per DD-11C-2, no guide rule number on the page | Two columns of rows from 64em (cols 1 to 6 and 7 to 12, each group's rows filling the left column first), one below |
+| | Candidate panel, **off** | The Grades group on Charcoal (its lines in the Charcoal tokens); the red target is in another group, so the panel never holds red | Turned on only if C5 asks |
+
+The plate's specification table (generator, extra) maps each mark to the rule that sets it: Rules 15.3, 15.4, 15.5, 13.3, 13.4, 13.5, 15.7, 12.5, 21.5, 15.13, 13.9 and 17.10.
+
+## 12. The atlas home (A11; plan 3.2; hand-over 4)
+
+**Content file:** `{"view": "home", "pressed_question": "PW06", "every_variable": false, "panels": ["System"], "views": ["1440-light", "390-light", "1440-dark", "390-dark"]}` plus `1440-light-screen`, `390-light-screen`, `390-dark-screen`.
+
+### 12.1 Sections and blocks, in order
+
+| Section | Block | Contents | Style |
+|---|---|---|---|
+| `System` | Head band, candidate, **on** | The `h1` (the editor's words; draft "Who do they answer to?"), the intro (the editor's, its counts filled from the model), and the switch, a toggle button (Rule 18.2, chapter 18's `c-18-toggle`, `aria-pressed`, the selected check when pressed; draft "Show every variable") | On: a Charcoal band from edge to edge directly under the title bar, so the two read as one cover (a 1 px `--oa-color-border-hairline-on-charcoal` between them in both themes); main takes no top padding on the home. Padding 24 px above and below; from 64em one row: the `h1` in `oa.type.h3` at cols 1 to 4, the intro in `oa.type.body` at cols 5 to 10, the switch right-aligned at cols 11 to 12, all top-aligned; under 64em they stack, 16 px apart. Off: the same row on Newsprint under the 2 px strong rule |
+| | Drawing (`data-oa-part="drawing"`) | 12.2's drawing, 24 px under the band; a `role="group"` named by its own `aria-label` (draft "The parts of the system and the connections between them"), followed in the markup by its text equivalent (WCAG 1.1.1): the parts and every flow as a list, visually hidden from 64em and shown as the drawing's phone form below 75em (12.3) | Cols 1 to 12 (1312 px at 1440); the wide form from 75em |
+| | Key | One line under the drawing, 16 px down: a 40 px sample of the essential line with "The main circuit, part to part" (counts on it in bold), a 40 px sample of the subtle line with "Other flows", "Each number counts connections" (draft words, the editor's) | `oa.type.caption`, secondary; the samples in the drawing's own inks |
+| `Questions` | `h2` | Draft "Start from a question" | |
+| | Hubs and questions (`data-oa-part="questions"`) | The five hubs in the model's order, each its name as stored (no chip, Rule 10.8) and its questions as toggle buttons (Rule 18.2) with the question's stored words; one pressed at a time; PW06 pressed on the plates: the selected check, bold words, a 2 px `--oa-color-border-strong` edge, where the others keep 1 px (Rule 17.10, AL-21), `data-pathway` | From 64em five columns of the 12 (cols 1 to 12 split 5 ways by a nested grid, 24 px gutters): the hub name in `oa.type.label`, secondary, then its questions stacked 8 px apart, each button full column width, at least 44 px, `oa.type.body-small`, 8 by 12 px of padding, text left-aligned; under 64em the hubs stack, each its questions full width |
+| | Status line | `role="status"`: the parts the pressed question reaches, in words ("This question reaches Wealth, Checks and Your household."), on press only, never on load (Rule 21.3); the plate shows it as after a press | `oa.type.body-small`, 16 px under the hubs, cols 1 to 8 |
+| | Answer (`data-oa-part="answer"`) | Label "The short answer" (draft), then the pathway's `short_answer` as stored; its figure ("254% of Medicare rates in 2022") followed by the chip Claim CL1340 as a link that opens a disclosure holding the claim's record (R5: claim, display grade, population, jurisdiction, period, limitation, sources in Rule 13.6's parts), closed on load | 32 px under the status line, cols 1 to 8, on Newsprint under the 2 px strong rule; the answer in `oa.type.body` |
+
+The pressed question lights the drawing (12.2) as R6 sets; the lit and muted states belong to the drawing's boxes and the stacked list alike.
+
+### 12.2 The drawing, wide form (from 75em; 1312 px at 1440)
+
+Measured in drawing pixels from the column's left edge and the drawing's top; the prototype is `home_proto.py` in my scratch folder (it reads the model, routes all 27 pairs with this table's points, counts every crossing and renders `home_proto.png`): 27 pairs, 81 connections between parts and 37 inside, matching R2's sums; 7 crossings.
+
+**Boxes.** Square corners, a 1 px `--oa-color-graphic-essential` edge (Rule 15.2's box for a part), no fill, 16 px of padding. Inside, top to bottom: the plain name (`PARTS`) in `oa.type.h4`; the question (`oa.type.body-small`; none for Outside forces); the model's title (`oa.type.caption`, secondary); the lit line, "This question reaches here" (draft) in `oa.type.data-label` 600, on lit boxes only; the counts, "{n} variables" and "{n} connections inside" or "None inside" (`oa.type.data-label`, `data-count`, R2's `part-variables` and `part-inside`) at the box's foot. Muted boxes (R6): edge in `--oa-color-state-muted-mark`, words at regular weight in the text ink.
+
+| Box | x, width | Top, height (closed) |
+|---|---|---|
+| Outside forces (band) | 48, 1216 | 0, 56: name, title and counts on one line |
+| Wealth, Voice, Elections, Checks, Policy | 48, 303, 558, 813, 1068; each 196 (channels 59) | 112, 168 (the core row) |
+| Your household | 48, 706 (to Elections' right edge) | 392, 104 (the lower row) |
+| Technology | 813, 451 (Checks' left edge to Policy's right edge) | 392, 104 |
+
+Rows: the band; gap 1, 56 px; the core row; gap 2, 112 px; the lower row; the bottom lanes, 56 px. Closed height 552 px, so at 1440 the drawing (from y 323 of the window: masthead 141, title bar 56, head band 102, 24 px) ends near y 875, inside the first screen (Rule 21.2). Open (`every_variable`), each box grows to hold its variables as pills (Rule 15.2, chapter 15's pill, by the figure step): core boxes one pill a row, 8 px apart, the full inner width (164 px, labels wrapped by chapter 15's `rows_of`); Your household three columns; Technology two; the band one row of five. Every y below a grown row moves with it, since each lane is set from its row's edges.
+
+**Routes,** one arrow a directed pair (R6), orthogonal, 2 px, chapter 15's arrowhead at the head, corners square. `yb` is the band's foot, `yc` and `ycb` the core row's top and foot, `yl` and `ylb` the lower row's top and foot; a gap-2 lane at `ycb + k`:
+
+| Pair | Path (points in order) | Count at |
+|---|---|---|
+| X to A, B, C, D, E | Straight down from the band's foot to the box's top at A+24, B+24, C+98, D+172, E+172 | 6 px right of the line, baseline at `yc − 10` |
+| X to Your household | Band's left end at y 28, left to x 36, down to `yl + 56`, right into the box | Right of the run, baseline at `yl − 10` |
+| X to Technology | Band's right end at y 28, right to x 1276, down to `yl + 56`, left into the box | Left of the run, baseline at `yl − 10` |
+| B to E | B+120 up from `yc` to `yb + 24`, right to E+40, down | Above the run, centered on its middle |
+| A to B, B to C, C to D, D to E (main) | Across the channel at `yc + 40` | Above the line, centered, bold |
+| C to B, D to C, E to D | Across the channel at `yc + 88`, right to left | Below the line, centered |
+| E to A (main, the return) | E's right edge at `yc + 120`, right to x 1300, down to `ylb + 48`, left to x 12, up to `yc + 120`, right into A | Above the bottom run, centered, bold |
+| E to Your household | E's right edge at `yc + 152`, right to x 1288, down to `ylb + 24`, left to x 700, up into the box's foot | Above the bottom run |
+| D to B | D+16 down to `ycb + 20`, left to B+180, up | Above the run |
+| B to D | B+156 down to `ycb + 40`, right to D+40, up | Above the run |
+| D to Your household | D+100 down to `ycb + 60`, left to x 784 (the lower channel), down to `yl + 28`, left into the box's right edge | Above the run |
+| Technology to B | D+72 up from `yl` to `ycb + 80`, left to B+120, up | Above the run |
+| Technology to A | D+48 up from `yl` to `ycb + 104`, left to A+150, up | Above the run |
+| A to Your household, back | A+60 down; A+100 up | Right of each line, at the gap's middle |
+| D to Technology, back | D+130 down; D+170 up | Right of each line, at the gap's middle |
+| Technology to Your household | Across the lower channel at `yl + 72`, right to left | Above the line |
+
+The five gap-2 lanes keep 20 px apart (24 before the last), so each lane's count fits above it clear of the lane over it. **Crossings, 7, each a break:** the subtle line breaks 6 px either side of the line it meets and the essential line runs on (X to Your household and X to Technology at the return; X to Technology at E to Your household; B to E at X to C and X to D; D to Your household at Technology to A and B). Where two subtle lines cross, the one with the lower count breaks; on a tie, the vertical. No other crossing; the build stops on one it did not expect, and on any pair the model holds with no route in this table (ED-F10: a new pair needs its lane drawn first).
+
+**Inks.** R6: the five main-circuit arrows in `--oa-color-graphic-essential`, counts bold; the other 22 in `--oa-color-graphic-subtle`; every count in the text ink, `oa.type.data-label`, `tabular-nums`. No red.
+
+### 12.3 The phone form (under 75em; captured at 390)
+
+R7 whole: one stacked list of the eight parts in the order effects travel, each a card with a 1 px `--oa-color-graphic-essential` edge and 16 px of padding: the plain name (`oa.type.h4`), the question, the model's title, the lit line where lit, the two counts; then one line for each outgoing pair, "5 to Voice" (the editor's `flow_line`), main-circuit line first and bold; 12 px between cards, no arrows. Muted cards as R6. With `every_variable`, each card lists its pills under its counts.
+
+### 12.4 Panels and red
+
+`System`, the head band, **on** (the first screen at 1440 is otherwise the drawing on Newsprint, which I estimate near 89 percent Newsprint: masthead and title bar 7.7, the drawing's ink near 2). `Questions`: candidate, the answer block on Charcoal, **off**; the hubs' buttons stay on Newsprint so the pressed look is the same as everywhere (Rule 17.10). No red on the home (R10).
+
+## 13. The rule plates (hand-over 4)
+
+Each plate places the kit's frames by placeholder (D4-134) or is a small drawing this generator makes from the tokens and the model. New application states the plates need, which the engineer numbers after A16 (C9: a state a view cannot show is a new application): **A17**, the home with every variable shown (`every_variable: true`, PW06 still pressed); **A18**, the Register with sheet D10 open and no filter; **A19**, Loop R18 with the stepper on step 2 (`step: 2`); **A20**, the home with Claim CL1340's record open. Crop keys follow C9 (`<width>-<theme>-<part>`); the part `top` runs from the frame's top to 16 px into main.
+
+| Plate | Rule | What it holds | Frames (rows) |
+|---|---|---|---|
+| `s-21-home` | Opener | A11, full length | `1440-light`; `390-light 390-dark`; `1440-dark` |
+| `s-21-1-correct` | 21.1 | A14's top, and at 390 the views open | `1440-light-top`; `390-light-open-top` (the open state, cropped to `top`; Request DD11C-Q2) |
+| `s-21-1-failure` | 21.1 | Drawn here: a second banner under the site's masthead, with its own wordmark (L1 from its 24 px master, inlined) and its own copy of the seven parts, no part marked current, and a tab reading "Oath & Action" | One drawing, 1440 by about 180 px, scaled to the column |
+| `s-21-2-correct` | 21.2 | A17's drawing | `1440-light-drawing` |
+| `s-21-2-failure` | 21.2 | Drawn here: the five core boxes with the four forward arrows and the return, each arrow's width set by its count (1 px a connection), no key | 1312 by about 220 px |
+| `s-21-3-correct` | 21.3 | A11's questions and drawing, pressed and lit | `1440-light-drawing`; `1440-light-questions`; `390-light-questions 390-dark-questions` |
+| `s-21-3-failure` | 21.3 | Drawn here: three questions, the pressed one bold only, and three part boxes, two tinted with no words | 390 by about 320 px |
+| `s-21-reform` | 21.4 | A12, full length | as the opener |
+| `s-21-4-failure` | 21.4 | Drawn here: the remedy block with "Well supported" and the first reading alone | 866 by about 260 px |
+| `s-21-5-correct` | 21.5 | A12's drawing with its tags | `1440-light-targets`; `390-light-targets` |
+| `s-21-5-failure` | 21.5 | Drawn here: the two targets and five tags, all in red | 390 by about 300 px |
+| `s-21-chips` | 21.6 | Drawn here from the model: the ten kinds, each a real record (Rule 13.9's kind words), plain and linked, its name after it; the four colliding pairs; on Newsprint and on Charcoal | Two panels, each the column wide |
+| `s-21-6-failure` | 21.6 | Drawn here: the heading "Variables" over three bare codes with their names (B4, D4, R1, two of them loops) | 390 by about 180 px |
+| `s-21-7-correct` | 21.7 | A20's answer with the claim's record open; A14's evidence row for L14 beside A13's line for L14 | `1440-light-answer` (A20); `1440-light-rowl14` (A14, its evidence row) and `1440-light-rowl14` (A13, its Register line) (Request DD11C-Q2) |
+| `s-21-7-failure` | 21.7 | Drawn here: the answer's figure with no chip, and the {answer_sources} sources numbered at the foot | 866 by about 420 px |
+| `s-21-register` | 21.8 | A13, full length | as the opener |
+| `s-21-8-failure` | 21.8 | Drawn here: the twelve sheets with one bar each shaded by grade share, no counts | 866 by about 420 px |
+| `s-21-9-correct` | 21.9 | A18's connections table | `1440-light-sheet` |
+| `s-21-9-failure` | 21.9 | Drawn here: the index's head and its whole-atlas row reading {double} connections | 866 by about 120 px |
+| `s-21-10-correct` | 21.10 | A13's rejected option and A18's reviewed and not drawn | `390-light-rejected` (A13); `390-light-rejected` (A18) |
+| `s-21-10-failure` | 21.10 | Drawn here: sheet D04's reforms with R-35 unlabeled and "Well supported" | 390 by about 260 px |
+| `s-21-11-correct` | 21.11 | A13's records, filtered | `390-light-records 390-dark-records` |
+| `s-21-11-failure` | 21.11 | Drawn here: three tabs, one filled, over titles with no count and no grades | 390 by about 300 px |
+| `s-21-loop` | 21.12 | A14, full length | as the opener |
+| `s-21-12-failure` | 21.12 | Drawn here: the head with "Documented" beside the title and no read-aloud | 866 by about 220 px |
+| `s-21-13-correct` | 21.13 | A19's stepper | `390-light-stepper`; `1440-dark-stepper` |
+| `s-21-13-failure` | 21.13 | Drawn here: Play, Previous step, Next step, Reset, and "3,200 ms a step" | 390 by about 160 px |
+| `s-21-14-correct` | 21.14 | A15, full length | `1440-light`; `390-light` |
+| `s-21-14-failure` | 21.14 | Drawn here: eight loops, each with a bar of a made-up strength, labeled Illustrative | 866 by about 300 px |
+| `s-21-how-to-read` | Extra | A16, full length; the specification table maps each mark to its rule (DD-11C-2) | `1440-light` |
+| `s-21-15-correct` | 21.15 | A14's drawing and chooser in the dark, with a table of the ratios the kit measured on that frame's pixels (from the plate's facts; the plate waits until they exist) | `1440-dark-drawing`; `1440-dark-chooser` |
+| `s-21-15-failure` | 21.15 | Drawn here: the loop drawing on Charcoal with muted marks in Stone and a White selected bar | 640 by about 300 px |
+| `s-21-16-correct` | 21.16 | The atlas test's report, read from `plates/atlas-test.json` (the plate waits until it exists) | Drawn here as a list |
+| `s-21-16-failure` | 21.16 | Drawn here: a step labeled Documented beside the test's FAIL line with both grades | 866 by about 160 px |
+
+Every failure plate carries the do-not-publish band (`Ctx.spec`), draws from tokens and the model, and never copies kit markup.

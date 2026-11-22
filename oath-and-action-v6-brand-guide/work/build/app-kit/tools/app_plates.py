@@ -57,6 +57,7 @@ def reset(plates_dir=None):
     STATE["plates"].clear()
     STATE["words"].clear()
     STATE["symbols"].clear()
+    STATE.pop("atlas_self_test", None)
     STATE["dir"] = Path(plates_dir) if plates_dir else PLATES
 
 
@@ -133,6 +134,14 @@ def expand(src, sid, warn):
                     warn(f"{sid}: the atlas test fails {app_id} {at['fail']} time(s), first: {at.get('first_fail', '')} (Rule 21.16, contract C9)")
                 if at.get("self_test") != "PASS":
                     warn(f"{sid}: the atlas test's self-test did not pass when the kit drew {app_id} ({at.get('self_test')}) (contract C9)")
+            # the self-test again here, once a build, on the plates' own frames (a planted fault a check, caught by its check)
+            if "atlas_self_test" not in STATE:
+                import subprocess
+                r = subprocess.run(["python3", "-I", str(ROOT / "work/build/app-kit/tools/atlas_test.py"), "--self-test", "--plates", str(STATE["dir"])],
+                                   capture_output=True, text=True, cwd=str(ROOT))
+                STATE["atlas_self_test"] = (r.returncode, (r.stdout or r.stderr).strip().splitlines()[-1:] or [""])
+                if r.returncode:
+                    warn(f"{sid}: the atlas test's self-test fails on the plates: {STATE['atlas_self_test'][1][0]} (Rule 21.16, contract C9)")
         # the identity masters the frames draw by <use>, carried once for the page (step 4)
         for sid_, sym in (data.get("symbols") or {}).items():
             if sid_ in STATE["symbols"] and STATE["symbols"][sid_] != sym:
@@ -304,10 +313,15 @@ def self_test():
             a_ = dict(atlas, **({"atlas_test": rec} if rec else {}))
             (d / "a97.json").write_text(json.dumps(a_))
             reset(d)
+            STATE["atlas_self_test"] = (0, ["the fixture's frames hold no atlas page; the self-test's own run is the next case"])
             w = []
             expand('<div data-oa-app="A97"></div>', "s-21-x", w.append)
             check(f"an atlas plate with {name} {'warns' if want else 'is quiet'}", any(want in x for x in w) if want else not w)
         hs2 = head_styles()
+        reset(d)
+        w = []
+        expand('<div data-oa-app="A97"></div>', "s-21-x", w.append)
+        check("the atlas test's self-test runs once on the plates, and a fixture with no atlas page fails it", any("self-test fails on the plates" in x for x in w))
         check("an atlas plate puts the website's style in the head beside its own", ".ws{display:block}" in hs2 and ".wa-tb{display:block}" in hs2)
     reset()
     return bad

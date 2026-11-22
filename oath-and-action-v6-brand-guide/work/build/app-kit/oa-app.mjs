@@ -608,6 +608,36 @@ ${r.head_links || ''}
     fs.writeFileSync(mf, JSON.stringify(manifest, null, 1));
     console.log(`wrote ${manifest.files.length} exports and ${path.relative(ROOT, mf)}`);
   }
+  // chat 11c (contract C9, Rule 21.16): the atlas test on every atlas page this build drew, its working page and its plate's
+  // frames, and its self-test; each atlas plate carries its result, which the strict guide build reads, and a FAIL stops
+  // this build (exit 1) once every file is written
+  const atlas_ids = specs(o).filter((x) => x.type === 'atlas-page').map((x) => x.id);
+  if (atlas_ids.length && o.plates) {
+    const T = path.join(KIT, 'tools/atlas_test.py');
+    const rep = path.join(o.out, 'atlas-test.json');
+    const run = spawnSync('python3', ['-I', T, o.out, '--plates', o.plates, '--json', rep, '--ids', ...atlas_ids], { encoding: 'utf8', cwd: ROOT, maxBuffer: 64 * 1024 * 1024 });
+    const st = spawnSync('python3', ['-I', T, '--self-test', o.out, '--plates', o.plates], { encoding: 'utf8', cwd: ROOT, maxBuffer: 64 * 1024 * 1024 });
+    const lines = (run.stdout || '').split('\n').filter((x) => /^(PASS|FAIL) T\d+ /.test(x));
+    const self = /self-test: PASS/.test(st.stdout || '') ? 'PASS' : 'FAIL';
+    const when = new Date().toISOString();
+    for (const id of atlas_ids) {
+      const pf = path.join(o.plates, `${id.toLowerCase()}.json`);
+      if (!fs.existsSync(pf)) continue;
+      const mine = lines.filter((x) => x.split(' ')[2] === id);
+      const fails = mine.filter((x) => x.startsWith('FAIL'));
+      const pl = JSON.parse(fs.readFileSync(pf, 'utf8'));
+      pl.atlas_test = { ran: when, pass: mine.length - fails.length, fail: fails.length, first_fail: fails[0] || null, self_test: self,
+        self_test_misses: (st.stdout || '').split('\n').filter((x) => x.startsWith('FAIL')).slice(0, 20) };
+      fs.writeFileSync(pf, JSON.stringify(pl, null, 1));
+    }
+    // the report for Rule 21.16's plate: every line of the last run, beside the plates
+    fs.writeFileSync(path.join(o.plates, 'atlas-test.json'), JSON.stringify({ ran: when, by: 'work/build/app-kit/tools/atlas_test.py', ids: atlas_ids,
+      self_test: self, lines }, null, 1));
+    const nf = lines.filter((x) => x.startsWith('FAIL')).length;
+    console.log(`atlas test: ${lines.length - nf} PASS, ${nf} FAIL; self-test ${self}`);
+    lines.filter((x) => x.startsWith('FAIL')).slice(0, 12).forEach((x) => console.log('  ' + x));
+    if (nf || self !== 'PASS') process.exitCode = 1;
+  }
   // the measurement page: a page like the guide's, which already carries the fonts, tokens.css, the chart kit's style and
   // the sprite; each plate sits in a frame of the guide's kind, and its bytes are counted alone
   for (const pl of plates) fs.writeFileSync(path.join(o.out, pl.id.toLowerCase(), 'plate.html'), pl.html);

@@ -82,7 +82,8 @@ const g = (k) => `--c:var(--oa-layout-grid-${k}-columns);--g:var(--oa-layout-gri
 const at = (em, body) => `@container ws (min-width: ${em}em){${body}}`;
 // W2 (the accessibility lead's walk): a rule for the dark page, chosen or by the device, keyed as tokens.css keys the dark
 // tokens: an explicit Dark on the page or the frame, and the device's dark where no Light was chosen
-const dark = (sel, decl) => `[data-oa-theme="dark"] .ws ${sel},.ws[data-oa-theme="dark"] ${sel}{${decl}}`
+// chat 11c: exported for the atlas pages' own dark rules, keyed as the website's
+export const dark = (sel, decl) => `[data-oa-theme="dark"] .ws ${sel},.ws[data-oa-theme="dark"] ${sel}{${decl}}`
   + `@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) ${sel}{${decl}}}`;
 const under = (em, body) => `@container ws (max-width: ${em - 0.001}em){${body}}`;
 
@@ -595,6 +596,26 @@ export function frame_masthead(head, w, open) {
   return head;
 }
 
+// chat 11c: the site's head for a page, the masthead from site-parts.mjs with L3 in its home link, the site's words, the
+// home page's h1 and current link, the menu open for a frame that shows it, and only what a frame's width shows;
+// exported for the atlas pages (renderers/atlas-page.mjs), which draw the same head by import. parts: [{label, href,
+// current}]; sw: the switches' { theme, target, group }
+export function site_head({ pid, parts, site, sw, theme_for = null, home_page = false, open = false, width = null }) {
+  let head = masthead({ pid, parts: parts.map((p) => ({ ...p, href: theme_for ? `#${pid}-main` : p.href })), home: { href: theme_for ? `#${pid}-main` : '/', name: site.home_name }, sw });
+  // L3 from 48em, in the home link with chapter 18's two wordmark masters (spec 2.1)
+  head = head.replace(/(<a class="oa-masthead-home"[^>]*>)/, `$1${mark(L3, { cls: 'ws-l3', width: 282, height: 48, label: site.home_name, red: 'signature' })}`);
+  head = head.replace(/aria-label="Parts of the site"/, `aria-label="${esc(site.nav_label)}"`)
+    .replace(/>Menu<\/span><\/button>/, `>${esc(site.menu.button)}</span></button>`)
+    .replace(/(id="[^"]*-menu-name">)Menu</, `$1${esc(site.menu.title)}<`)
+    .replace(/<span>Close the menu<\/span>/, `<span>${esc(site.menu.close)}</span>`)
+    .replace(/aria-label="Parts of the site, in the menu"/, `aria-label="${esc(site.menu.nav_label)}"`);
+  if (home_page) head = head.replace(/(<a class="oa-masthead-home"[^>]*)>/, '$1 aria-current="page">').replace(/(<a class="oa-masthead-home"[\s\S]*?<\/a>)/, '<h1 class="ws-h1home">$1</h1>');
+  if (open) head = head.replace(/<dialog\b/, '<dialog open');
+  if (width) head = frame_masthead(head, width, open);
+  if (theme_for) head = head.replace(/\saria-controls="([^"]+)"/, ' aria-controls="$1"');
+  return head;
+}
+
 // ---------------------------------------------------------------------------------------------------------------- render
 function columns(spec, w) {
   // the figure's column at a width, for R4 and R8 (spec 5.4, 6.2, 7.2): under 64em the content width; from 64em the spec's
@@ -653,18 +674,7 @@ export async function render(spec) {
   const body = ({ pid, theme, theme_for = null, part = 'page', width = null, vh = null, open = false, fig_w = null } = {}) => {
     const group = `oa-theme-${pid}`;
     const sw = { theme: theme_for ? theme : 'device', target: theme_for, group };
-    let head = masthead({ pid, parts: parts.map((p) => ({ ...p, href: theme_for ? `#${pid}-main` : p.href })), home: { href: theme_for ? `#${pid}-main` : '/', name: site.home_name }, sw });
-    // L3 from 48em, in the home link with chapter 18's two wordmark masters (spec 2.1)
-    head = head.replace(/(<a class="oa-masthead-home"[^>]*>)/, `$1${mark(L3, { cls: 'ws-l3', width: 282, height: 48, label: site.home_name, red: 'signature' })}`);
-    head = head.replace(/aria-label="Parts of the site"/, `aria-label="${esc(site.nav_label)}"`)
-      .replace(/>Menu<\/span><\/button>/, `>${esc(site.menu.button)}</span></button>`)
-      .replace(/(id="[^"]*-menu-name">)Menu</, `$1${esc(site.menu.title)}<`)
-      .replace(/<span>Close the menu<\/span>/, `<span>${esc(site.menu.close)}</span>`)
-      .replace(/aria-label="Parts of the site, in the menu"/, `aria-label="${esc(site.menu.nav_label)}"`);
-    if (page === 'home') head = head.replace(/(<a class="oa-masthead-home"[^>]*)>/, '$1 aria-current="page">').replace(/(<a class="oa-masthead-home"[\s\S]*?<\/a>)/, '<h1 class="ws-h1home">$1</h1>');
-    if (open) head = head.replace(/<dialog\b/, '<dialog open');
-    if (width) head = frame_masthead(head, width, open);
-    if (theme_for) head = head.replace(/\saria-controls="([^"]+)"/, ' aria-controls="$1"');
+    const head = site_head({ pid, parts, site, sw, theme_for, home_page: page === 'home', open, width });
     const fw = width || fig_w;
     const cols = fw ? columns(spec, fw) : null;
     const F = fw && figs_at[fw] ? figs_at[fw] : figs;

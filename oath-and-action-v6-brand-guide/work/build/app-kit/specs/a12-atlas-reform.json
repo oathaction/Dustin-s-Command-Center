@@ -1,0 +1,36 @@
+{
+ "id": "A12",
+ "type": "atlas-page",
+ "guide": true,
+ "view": "reform",
+ "record": "R-23",
+ "panels": [
+  "Reform"
+ ],
+ "remedy_split": 4,
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, sections 0 to 7 and 9; chapter 21's plan, section 3.3",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "390-light",
+  "1440-dark",
+  "390-dark",
+  "1440-light-screen",
+  "390-light-screen"
+ ],
+ "export_name": "Atlas-Reform-R-23-Page",
+ "alt": "Reform R-23’s page in our systems atlas.",
+ "plate_head": "Reform page",
+ "plate_line": "Drawn by the application kit at build."
+}

@@ -429,7 +429,7 @@ def t8(pg):
         if words_date(want) not in text(el):
             faults.append(f"{'Reform ' + rid if rid else 'the snapshot'}: the date {words_date(want)} does not print in words")
     # a frame carries only what its width shows (D4-152), so the title bar's date is read on the working page
-    if not pg.all(".wa-tb [data-status-date]") and pg.kind == "export":
+    if not pg.all(".wa-bar [data-status-date]") and pg.kind == "export":
         faults.append("the title bar prints no snapshot date (Rule 13.10)")
     return faults, n
 
@@ -623,19 +623,19 @@ def t15(pg):
         faults.append(f"the masthead's atlas part takes aria-current={part_.get('aria-current') if part_ else None!r}, DR-316 asks {want!r}")
     if len(pg.all("header.oa-masthead")) != 1:
         faults.append("more than one masthead (AL-17)")
-    nav = pg.all(".wa-tb nav[aria-label]")
-    if not nav and (pg.kind == "export" or not pg.all(".wa-tb-toggle")):
+    nav = pg.root.select("nav.wa-bar[aria-label]")
+    if not nav:
         faults.append("no title bar navigation named for the atlas's views")
-    bc = pg.all('nav.wa-bc[aria-label]')
+    bc = pg.all('nav.wa-crumbs[aria-label]')
     if pg.view != "home" and not bc:
         faults.append("no breadcrumb below the home (AL-09)")
     if pg.view == "home" and bc:
         faults.append("a breadcrumb on the home page")
     foot = pg.root.select_one("footer.ws-foot")
     sw = site_words()
-    if not foot:
+    if not foot and pg.full:
         faults.append("no site footer")
-    elif sw:
+    elif foot and sw:
         heads = [text(h) for h in foot.select("h2")]
         if heads != [g[0] for g in sw["footer"]["groups"]]:
             faults.append(f"the footer's lists read {heads}, the website's {[g[0] for g in sw['footer']['groups']]} (3.2.6)")
@@ -790,7 +790,7 @@ PLANTS = [
     ("T7", "loop", "[data-effect-family]", lambda el, q: el.__setitem__("data-effect-code", "+L"), "an effect code the record does not hold"),
     ("T8", "loop", "[data-route]", lambda el, q: el.__setitem__("data-checked", RF[el["data-atlas-reform"]]["status"]["checked"]), "a route dated from its reform's status"),
     ("T9", "loop", "[data-evidence-href]", lambda el, q: (el.__setitem__("data-evidence-href", "/atlas/register/d01#register-l14"), el.__setitem__("href", "/atlas/register/d01#register-l14") if el.name == "a" else None), "a step's evidence linked to the wrong sheet"),
-    ("T10", "loop", ".wa-grades", lambda el, q: el.append(NavigableString(" well-supported")), "a grade in its stored spelling"),
+    ("T10", "loop", ".wa-gl", lambda el, q: el.append(NavigableString(" well-supported")), "a grade in its stored spelling"),
     ("T11", "loop", ".oa-stepper-step", lambda el, q: el.__setitem__("data-oa-hold", "3200"), "a step held 3,200 ms (registers F-8, F-15)"),
     ("T12", "home", "[data-pathway][aria-pressed=\"true\"]", lambda el, q: [x.decompose() for x in el.select("svg")], "a pressed question with no check"),
     ("T13", "loop", "@style:-soup-contains('.ws ')", lambda el, q: el.append(NavigableString(".x{color:#ffffff}")), "a literal White in the page's style"),

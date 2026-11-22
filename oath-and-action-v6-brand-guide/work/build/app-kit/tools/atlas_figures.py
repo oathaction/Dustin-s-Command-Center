@@ -174,6 +174,20 @@ def var_rec(code):
             "layer": n["layer"]}
 
 
+def id_index():
+    """Every ID of the ten kinds with what a page needs to chip it: its kind word(s) and, for a variable or a connection,
+    the sheet its Register line sits on (R5)."""
+    V = model()
+    out = {}
+    for i, ks in kinds_index().items():
+        out[i] = {"kinds": ks}
+        if i in V["nodes"]:
+            out[i]["sheet"] = sheet(i)
+        if i in V["links"]:
+            out[i]["sheet"] = sheet(V["links"][i]["to"])
+    return out
+
+
 def reform_rec(rid):
     V = model()
     r = V["reforms"][rid]
@@ -185,7 +199,7 @@ def reform_rec(rid):
             "rejected": bool(r.get("rejected")),
             "problem": {"grade": grade(r["problem_evidence"]["grade"]), "text": r["problem_evidence"]["text"]},
             "remedy": {"grade": grade(r["remedy_evidence"]["grade"]), "text": r["remedy_evidence"]["text"]},
-            "effects": [{"family": k, "name": fam[k], "code": r["effects"][k]} for k in ("DQ", "GE", "EP", "EQ")],
+            "effects": [{"family": k, "name": fam[k], "code": r["effects"][k], "pips": pips(r["effects"][k])} for k in ("DQ", "GE", "EP", "EQ")],
             "effects_confidence": r["effects_confidence"],
             "routes": [{"code": x["route"], "name": routes.get(x["route"]), "who": x["who"], "feasibility": x["feasibility"],
                         "note": x["note"], "checked": x["checked"], "checked_words": words_date(x["checked"]) if x["checked"] else None}
@@ -244,12 +258,40 @@ def reads(lid):
 # Figures, by chapter 15's own drawing code
 # ---------------------------------------------------------------------------------------------------------------------
 FIG_CSS_KEYS = ("sv", "id", "sn", "dm", "rt", "rp", "sh", "pp")
+C13_CSS_KEYS = ("ln", "rs")
 
 
 def fig_css():
-    """Chapter 15's rules for its drawings (its CSS table, by key), with nothing of its plate layout."""
+    """Chapter 15's rules for its drawings and chapter 13's for its line samples and record square (their CSS tables, by
+    key), with nothing of either chapter's plate layout."""
     C = c15()
-    return "".join(C.CSS[k] for k in FIG_CSS_KEYS if k in C.CSS)
+    return "".join(C.CSS[k] for k in FIG_CSS_KEYS if k in C.CSS) + "".join(C.C13.CSS[k] for k in C13_CSS_KEYS if k in C.C13.CSS)
+
+
+def pips(code):
+    """Rule 13.5's pips for an effect code, by chapter 13's pips_svg; a range ("0 to -S at high bite") draws both ends on
+    the same scale, joined by a 1 px line in the same ink (the data lead's R12), since pips_svg draws one end only."""
+    C13 = c15().C13
+    ends = re.split(r"\s+to\s+", code)
+    if len(ends) == 1:
+        return C13.pips_svg(code)
+    a, b = (C13.pips_svg(x.strip()) for x in ends[:2])
+    inner = lambda svg: re.search(r"<svg[^>]*>(.*)</svg>", svg, re.S).group(1)
+    xs = [float(x) for x in re.findall(r'cx="([\d.]+)"', a + b)] + [44.0]
+    join = f'<line class="j" x1="{min(xs):g}" y1="11" x2="{max(xs):g}" y2="11" stroke-width="1"/>'
+    body = inner(a) + "".join(x for x in re.findall(r"<(?:circle|rect)[^>]*/>", inner(b)) if x not in inner(a))
+    return re.sub(r"(<svg[^>]*>).*(</svg>)", lambda m: m.group(1) + join + body + m.group(2), a, flags=re.S)
+
+
+def grade_sample(g):
+    """A grade's key sample (Rule 13.4; the data lead's R3), by chapter 13's line_svg at chapter 13's key width, whose
+    pattern runs the shortest run, 40 px on a 2 px line, before the arrowhead (oa.chart.grade.minRun)."""
+    C13 = c15().C13
+    return C13.line_svg(g, w=C13.KEY_W)
+
+
+def record_square():
+    return c15().C13.rsq()
 
 
 def loop_figure(lid, targets=()):
@@ -334,7 +376,10 @@ def view_loop(spec):
     others = {}
     for t in set(sum((V["reforms"][k]["targets"] for k in offered), [])):
         others[t] = [k for k in offered if k != chosen and t in V["reforms"][k]["targets"]]
-    return {"loop": {"id": lid, "kind": fig["kind"], "type": lp["type"], "title": lp["title"], "summary": lp["summary"],
+    gl = [{"grade": grade(m.group(1).replace(" ", "-")), "from": m.group(2), "to": m.group(3)}
+          for m in re.finditer(r"([a-z][a-z_ -]*?) for ([A-Z]{1,3}\d+[a-z]?) to ([A-Z]{1,3}\d+[a-z]?)", lp["evidence"])]
+    need(gl and all(x["from"] in V["nodes"] and x["to"] in V["nodes"] for x in gl), f"Loop {lid}'s grade text no longer reads 'grade for X to Y' (R11)")
+    return {"grade_line": gl, "loop": {"id": lid, "kind": fig["kind"], "type": lp["type"], "title": lp["title"], "summary": lp["summary"],
                      "case": lp["case"], "qualification": lp["qualification"], "adaptation": lp["adaptation"],
                      "closure": lp["closure"], "evidence": lp["evidence"], "evidence_summary": lp["evidence_summary"],
                      "delay": delay(lp["delay"]) if lp.get("delay") in ("S", "M", "L") else lp.get("delay"),
@@ -372,12 +417,13 @@ def build(spec):
     out = {"model": {"sha256": sha(), "title": V["meta"]["title"], "subtitle": V["meta"]["subtitle"],
                      "snapshot": V["meta"]["snapshot"], "snapshot_words": words_date(V["meta"]["snapshot"])},
            "parts": parts(), "kind_words": list(KIND.values()),
-           "effect_words": V["outcomes"]["effect_codes"]}
+           "effect_words": V["outcomes"]["effect_codes"],
+           "grade_samples": {g: grade_sample(g) for g in GRADE_ORDER}, "record_square": record_square(), "ids": id_index()}
     fn = VIEWS.get(spec["view"])
     out["view"] = fn(spec) if fn else {}
     # the locator (Rule 12.7): the parts the page's record sits in
     v = out["view"]
-    codes = [x["id"] for x in v.get("variables", [])] or [t["id"] for t in v.get("targets", []) if "part" in t]
+    codes = [x["id"] for x in v.get("variables", [])] or [t["id"] if "part" in t else t["to"] for t in v.get("targets", [])]
     out["locator"] = sorted({part(c) for c in codes}, key=PART_ORDER.index)
     out["figure_css"] = fig_css()
     # a module loaded from its cached bytecode opens no source file, so each loaded module's source counts as read too
