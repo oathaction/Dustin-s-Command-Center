@@ -243,6 +243,8 @@ PAGES = {
             'variables': '{n} variables',
             'flow_line': '{n} to {part}',
             'questions_heading': 'Start from a question',
+            # the Questions section band's lede (specs 14.1)
+            'questions_lede': 'Press a question to see which parts of the system decide it.',
             'lit': 'This question reaches here',
             'status': 'This question reaches {parts}.',
             'answer_label': 'The short answer',
@@ -269,6 +271,9 @@ PAGES = {
             'aims_here': 'also aim here',
             'aims_here_one': 'also aims here',
             'grades_heading': 'How sure our atlas is',
+            # the Grades section band's lede (specs 14.1)
+            'grades_lede': 'Our atlas grades the evidence that the problem exists and the evidence that the remedy '
+                           'works, each on its own.',
             'source_link': 'Its source',
             'effects_heading': 'What it would change',
             'effects_confidence': 'Our atlas’s confidence in these effects: “{text}”',
@@ -302,6 +307,10 @@ PAGES = {
             'conn_head': ['Connection', 'From, to', 'Sign', 'Type', 'Delay', 'Grade', 'The atlas’s citation'],
             # editor: the h2 over the rejected option and the connections reviewed and not drawn (specs 10.1)
             'rejected_section': 'What our atlas decided against',
+            # the Rejected and Records section bands' ledes (specs 14.1)
+            'rejected_lede': 'The atlas keeps what it rejected on the sheet, with the evidence behind each decision.',
+            'records_lede': 'Each issue record names the variables it touches. Narrow the list to the records for one '
+                            'of them.',
             'rejected_heading': 'Rejected option',
             # our words before the atlas's own sentence, which the kit quotes from the stored text (DR-37)
             'rejected_grade': 'For a rejected option, the grade measures confidence in harm',
@@ -371,6 +380,9 @@ PAGES = {
             'effects_heading': 'What it would change',
             'routes_heading': 'How it could pass',
             'record_heading': 'The loop in our atlas’s words',
+            # the Record section band's lede (specs 14.1)
+            'record_lede': 'Its summary, a case on the record, what it depends on and how it adapts, each as the atlas '
+                           'stores it.',
             'record_labels': {'summary': 'Summary', 'case': 'The case', 'qualification': 'What it depends on',
                               'adaptation': 'How it adapts'},
             'evidence_heading': 'Evidence for each step',
@@ -390,6 +402,11 @@ PAGES = {
                      'order the atlas lists it.',
             'reinforcing': 'Reinforcing',
             'balancing': 'Balancing',
+            # the two section bands' ledes (specs 14.1); conceptual loops have no numbered steps to count
+            'reinforcing_lede': 'Each of these loops feeds itself; where its steps are numbered, an even count of minus '
+                                'signs shows it.',
+            'balancing_lede': 'Each of these loops pushes back on a change; where its steps are numbered, an odd count '
+                              'of minus signs shows it.',
             'head': ['Loop', 'Title', 'Steps', 'Minus signs', 'How it closes', 'Grade'],
             'no_chain': 'No numbered chain',
             # DR-321: the note under the index
@@ -481,7 +498,7 @@ R['21.1'] = {
                         'footer'),
               ('Title bar', 'A Charcoal band 56 px tall from edge to edge, in both themes: the atlas’s name in the label '
                             'style, then its subtitle and snapshot date in the caption style; the five views at the right, '
-                            'in a navigation named Atlas views'),
+                            'in a navigation named Atlas views; on the atlas home, the head band below joins it'),
               ('Views', 'From 64em, in the masthead parts’ style and gap, ending at the parts’ right edge; the current '
                         'view in bold with a 2 px underline (Rule 17.10)'),
               ('Under 64em', 'The name and the snapshot at the left, and a Views button that opens the five views as rows '
@@ -957,9 +974,11 @@ R['21.16'] = {
               ('Self-test', 'One planted fault for each check in a copy of a page, never in the model; it passes only '
                             'when each plant is caught by its own check and the clean pages stay quiet')],
     'builders': ['Run the atlas test on every build, and treat a failure as a stop.'],
-    'correct_caption': 'The atlas test’s report for the atlas pages, one line a check, from the build that drew these '
-                       'plates.',
-    'correct_alt': 'A list of check lines, each beginning PASS, with the check, the page and what it read.',
+    'correct_caption': 'The atlas test’s report from the build that drew these plates: each check against the four '
+                       'views, with how many of each view’s frames and pages it read.',
+    'correct_alt': 'A readable table of the atlas test’s report. Each row is a check, named by its number and what it '
+                   'tests; the four columns are the views Home, Reforms, The Register and Loops. Each cell gives the '
+                   'result, PASS or FAIL, and how many of that view’s frames and pages the check read.',
     'failure_caption': '<strong>Fails Rule 21.16.</strong> The page grades Connection L15 documented. Our atlas grades it '
                        'plausible, and the test stops the page.',
     'failure_alt': 'A loop step labeled Documented beside a test line beginning FAIL that names the page, the connection, '

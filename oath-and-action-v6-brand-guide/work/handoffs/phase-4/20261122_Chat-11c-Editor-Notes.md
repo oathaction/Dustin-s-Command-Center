@@ -578,6 +578,15 @@ On the coordinator's message (the kit's first build of A11 to A20 failed 27 T16 
 - `--check` exit 0 (34 specimens, 88,194 bytes before the kit's frames); `--page-words all` exit 0; holds still 9,250 and 16,000 ms.
 - `node work/build/app-kit/oa-app.mjs build A11 … A20 --date 20261122` under the lock (23:04:01 to 23:05:39 UTC, load 0.21): exit 0, 67 exports; **atlas test 1,264 PASS, 0 FAIL, self-test PASS** (`plates/atlas-test.json`, ran 23:05:39 UTC). No `⟦` left in the six working pages. The exports' titles read "Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath & Action" and "Loop R18, “Weakening watchdogs lowers the cost of further unilateral action” | …".
 
+### Band ledes and Rule 21.16's table words (23:11:47 UTC)
+
+On the design director's DD11C-Q5 and Q8 (and Q4's title bar row), under the lock (23:11:37 UTC), word fields only:
+- Seven ledes for specs 14.1's section bands, each a line that tells a reader what the section holds or how to use it: A11 `questions_lede` "Press a question to see which parts of the system decide it."; A12 `grades_lede` "Our atlas grades the evidence that the problem exists and the evidence that the remedy works, each on its own." (the draft's "apart from" can read as "except"); A13 `rejected_lede` "The atlas keeps what it rejected on the sheet, with the evidence behind each decision." and `records_lede` "Each issue record names the variables it touches. Narrow the list to the records for one of them." ("variables", the page's term, for the draft's "conditions"); A14 `record_lede` "Its summary, a case on the record, what it depends on and how it adapts, each as the atlas stores it." (the draft repeated the heading); A15 `reinforcing_lede` and `balancing_lede`, each "Each of these loops feeds itself [pushes back on a change]; where its steps are numbered, an even [odd] count of minus signs shows it.", since the three conceptual loops in the groups have no numbered steps to count.
+- Rule 21.16's caption and alt describe the plate as it now draws: a live-text table, each check against the four views, each cell PASS or FAIL with how many frames and pages the check read. The alt calls it a readable table and names the four column heads.
+- Rule 21.1's Title bar row adds "on the atlas home, the head band below joins it" (Q4).
+- `whole_issues` stays "{n}, one retired": the generator now fills `{retired}` for its failure plate, but the kit's line 360 still fills `{n}` alone, so the page would print the brace until the engineer adds it.
+- `--check` exit 0 (34 specimens, 87,007 bytes before the kit's frames; `s-21-16-correct` 4,889 bytes); `--page-words all` exit 0, all seven ledes present, holds 9,250 and 16,000 ms. The kit was not rebuilt by me after these words.
+
 ## Requests
 
 Status at 22:38:56 UTC (`date -u`): the word fields were handed over at 22:09 UTC and my words are typed (Done, "B typed"). Items 3 to 5 below are answered by the design director's DD-11C-1 to DD-11C-3; item 6 is the data lead's to rule as R15.
