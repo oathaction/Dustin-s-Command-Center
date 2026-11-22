@@ -484,7 +484,7 @@ li.tocome { font-weight: 700; }
     <div class="fact" role="listitem"><b>{{N20_RULES}}</b><span>rules in chapter 20, shown on {{N20_SPECS}} plates</span></div>
     <div class="fact" role="listitem"><b>41 of 41</b><span>kit exports at their exact sizes, by the size check</span></div>
     <div class="fact" role="listitem"><b>{{N_SCREENS}} of {{N_SCREENS}}</b><span>measured screens inside Rule 05.1&#8217;s color limits</span></div>
-    <div class="fact" role="listitem"><b>181,840</b><span>bytes of room under 16 MB for the projected page, with the chapters still to build</span></div>
+    <div class="fact" role="listitem"><b>181,835</b><span>bytes of room under 16 MB for the projected page, with the chapters still to build</span></div>
   </div>
 
   <section aria-labelledby="h-site">
@@ -548,9 +548,9 @@ li.tocome { font-weight: 700; }
       <div>
         <h3>Checked</h3>
         <ul class="plain">
-          <li>The closing strict build exits 0 with 0 warnings: 13,080,599 bytes, 393 rules and 731 specimens.</li>
-          <li>Chapter 20 weighs 839,154 bytes against its 757,000 allocation, 111 percent. The build reports it and cuts nothing (DR-271).</li>
-          <li>The page weighs 13.08 MB today. With the chapters still to build at their allocations, it projects to 15.82 MB, 181,840 bytes under 16 MB.</li>
+          <li>The closing strict build exits 0 with 0 warnings: 13,080,604 bytes, 393 rules and 731 specimens.</li>
+          <li>Chapter 20 weighs 839,159 bytes against its 757,000 allocation, 111 percent. The build reports it and cuts nothing (DR-271).</li>
+          <li>The page weighs 13.08 MB today. With the chapters still to build at their allocations, it projects to 15.82 MB, 181,835 bytes under 16 MB.</li>
           <li>The chart kit passes 96 of 96 charts, and chapter 14&#8217;s check finds 99 of 99 files current.</li>
           <li>All 41 kit exports match their sizes in the specifications table. Each page plate in the guide matches its export pixel for pixel, 18 of 18.</li>
           <li>On the working pages, axe finds 0 violations at all 18 views. Tab order, the theme kept after a reload, reflow at 320 px and text at 200 percent show 0 faults.</li>
