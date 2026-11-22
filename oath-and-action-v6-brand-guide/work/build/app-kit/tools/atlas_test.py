@@ -667,6 +667,8 @@ def site_words():
 def t15(pg):
     faults, n = [], 1
     head = pg.root.select_one("header.oa-masthead") if pg.root else None
+    if not head and pg.kind == "frame" and not pg.full:
+        return [], 0                       # a crop to a part carries its part alone (DD11C-Q6); the shell is read elsewhere
     if not head:
         return ["no site masthead"], n
     part_ = next((a for a in head.select(".oa-masthead-part, .oa-masthead-row-link") if text(a) == V["meta"]["title"]), None)

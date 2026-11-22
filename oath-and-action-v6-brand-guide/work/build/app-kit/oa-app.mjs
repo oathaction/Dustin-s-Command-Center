@@ -139,9 +139,10 @@ function PRUNE(arg) {
   const flowing = (el) => { const d = getComputedStyle(el).display; return /grid|flex|table/.test(d); };
   const root = document.querySelector('.ws');
   const out = [];
+  const kept = [];   // a careful prune keeps an element whole, its descendants too
   const html = (e) => !(e instanceof SVGElement) || e.ownerSVGElement === null;
   for (const e of root.querySelectorAll('*')) {
-    if (!html(e) || out.some((x) => x.contains(e))) continue;
+    if (!html(e) || out.some((x) => x.contains(e)) || kept.some((x) => x.contains(e))) continue;
     const d = e.parentElement && e.parentElement.closest('details:not([open])');
     if (d && e.parentElement === d && e.tagName !== 'SUMMARY') { out.push(e); continue; }
     // a drawing switched by screen resolution (the end mark's fit and master, a 1x and 2x pair) stays: the guide shows one
@@ -153,7 +154,7 @@ function PRUNE(arg) {
     if (vh && vh.parentElement && vh.parentElement.getBoundingClientRect().top + scrollY < limit) continue;
     if (limit && e.getBoundingClientRect().top + scrollY >= limit) {
       const par = e.parentElement;
-      if (careful && par && flowing(par) && par.getBoundingClientRect().top + scrollY < limit) continue;
+      if (careful && par && flowing(par) && par.getBoundingClientRect().top + scrollY < limit) { kept.push(e); continue; }
       out.push(e);
     }
   }
@@ -603,17 +604,17 @@ ${r.head_links || ''}
           await p.evaluate(() => document.fonts.ready);
           const full = await p.evaluate(() => Math.ceil(document.querySelector('.ws').getBoundingClientRect().height));
           // a crop runs from its part's top to its foot; the part "top" runs from the page's top to 16 px into main (specs 4)
-          let y0 = 0, h = kind === 'screen' || kind === 'open' ? wv.vh : full;
+          let y0 = 0, h = kind === 'screen' || kind === 'open' ? wv.vh : full, box_exact = 0;
           if (crop) {
             const box = await p.evaluate((name) => {
               if (name === 'top') { const m = document.querySelector('.ws main'); return m ? { top: 0, bottom: Math.ceil(m.getBoundingClientRect().top + scrollY + 16) } : null; }
               const e = document.querySelector(`.ws [data-oa-part="${name}"]`);
               if (!e) return null;
               const b = e.getBoundingClientRect();
-              return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY) };
+              return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY), exact: b.top + scrollY };
             }, crop);
             if (!box) throw new Error(`${spec.id} ${key}: the page marks no data-oa-part="${crop}" (contract C9)`);
-            y0 = box.top; h = box.bottom - box.top;
+            y0 = box.top; h = box.bottom - box.top; box_exact = box.exact;
           }
           if (y0 + h > wv.vh) await p.setViewportSize({ width: wv.w, height: Math.max(wv.vh, y0 + h) });
           // a frame is a picture, so it carries only what its width and window can show (bytes; no pixel moves): a closed
@@ -631,7 +632,7 @@ ${r.head_links || ''}
           if (crop && crop !== 'top') {
             await p.goto('file://' + mp, { waitUntil: 'load' });
             await p.evaluate(() => document.fonts.ready);
-            const nb = await p.evaluate((name) => {
+            const nb = await p.evaluate(({ name, exact }) => {
               const part = document.querySelector(`.ws [data-oa-part="${name}"]`);
               const root = document.querySelector('.ws');
               let n = part;
@@ -644,10 +645,15 @@ ${r.head_links || ''}
                 }
                 n = parent;
               }
+              // the part keeps the fraction of a pixel its top had in the whole page, so its words rasterize alike
+              const t1 = part.getBoundingClientRect().top + scrollY;
+              const shift = (((exact % 1) - (t1 % 1)) % 1 + 1) % 1;
+              if (shift > 0.001) document.querySelector('.ws-in').style.paddingTop = `${shift.toFixed(3)}px`;
               const b = part.getBoundingClientRect();
               return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY) };
-            }, crop);
+            }, { name: crop, exact: box_exact });
             const sub = await p.evaluate(PRUNE, 0);
+            if (nb.bottom - nb.top !== h) { facts.subtree = facts.subtree || {}; facts.subtree[key] = { kept_clipped: `the part alone is ${nb.bottom - nb.top} px tall, in the page ${h}` }; }
             if (nb.bottom - nb.top === h) {
               const mine = await p.screenshot({ clip: { x: 0, y: nb.top, width: wv.w, height: h } });
               if (Buffer.compare(before, mine) === 0) {
