@@ -214,7 +214,7 @@ class Page:
         if self.view == "reform":
             return self.record
         c = self.all("input.oa-choice-input[checked]")
-        return c[0].get("value") if c else None
+        return c[0].get("value") if c else self.root.get("data-atlas-chosen")
 
 
 def in_any(el, names):
@@ -376,11 +376,14 @@ def t6(pg):
     chosen = pg.chosen()
     tg = set(RF[chosen]["targets"]) if chosen in RF else set()
     jobs = {el.get("data-red-job") for el in reds}
+    jobs = {el.get("data-red-job") for el in reds if not in_any(el, [".wa-marks"])}
     if len(jobs) > 1:
         faults.append(f"{len(jobs)} working reds of different jobs in one view: {sorted(j or '' for j in jobs)} (Rule 05.3)")
     for el in reds:
         n += 1
         i = el.get("data-atlas-id")
+        if in_any(el, [".wa-marks"]):
+            continue                       # How to read's key sample of the red target names no reform (specs 11.2)
         if pg.view not in ("reform", "loop"):
             faults.append(f"{el.get('data-atlas-kind')} {i}: red on a {pg.view} page, which takes none (R10)")
         elif i not in tg:

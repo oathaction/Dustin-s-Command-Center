@@ -554,7 +554,12 @@ def view_how_to_read(spec):
     m, _, _ = C.BS.wire_marks([(1, 8), (C13.STEP_W - 1, 8)], "documented", None, None, 2, lit=False, authority=True)
     marks["authority"] = (f'<svg class="ln" viewBox="0 0 {C13.STEP_W} 16" width="{C13.STEP_W}" height="16" aria-hidden="true" focusable="false">'
                           + re.sub(r'<path class="ak-case"[^>]*/>', "", m).replace(' fill="none"', "") + "</svg>")
-    return {"marks": marks}
+    # Rule 15.3: a key that shows a sign quotes the atlas's own sentence on what a positive sign means, read from its
+    # glossary entry for the positive sign, the sentence that says what the sign does not mean
+    g = next((x["definition"] for x in model()["glossary"] if x["term"].startswith("Positive sign")), "")
+    note = next((x for x in c15().BS.sentences(g) if "does not mean" in x), None)
+    need(note, "the atlas's glossary no longer says what a positive sign does not mean (Rule 15.3)")
+    return {"marks": marks, "sign_note": note}
 
 
 def view_home(spec):
@@ -757,6 +762,9 @@ def build(spec):
     codes = ([x["id"] for x in v.get("variables", [])] or [t["id"] if "part" in t else t["to"] for t in v.get("targets", [])]
              or [x["id"] for x in (v.get("sheet") or {}).get("variables", [])])
     out["locator"] = sorted({part(c) for c in codes}, key=PART_ORDER.index)
+    # the record's own title, for the page's tab title (AL-01, 2.4.2): {title} in the generator's title words
+    rec = spec.get("record")
+    out["record_title"] = (V["loops"].get(rec) or V["reforms"].get(rec) or {}).get("title") if rec else None
     out["figure_css"] = fig_css()
     # a module loaded from its cached bytecode opens no source file, so each loaded module's source counts as read too
     C = c15()

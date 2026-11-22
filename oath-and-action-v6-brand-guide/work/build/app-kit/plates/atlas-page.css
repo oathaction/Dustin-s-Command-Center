@@ -1,0 +1,1220 @@
+/* Typed ID chip: the kind and the ID together are its name, "Loop R1", never a bare "R1". A chip
+   that opens its record is a link, with hover and focus; one that only names it is text. Reads only
+   tokens.css. */
+.oa-chip-set {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-chip-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-chip-k:first-child {
+  margin-top: 0;
+}
+.oa-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+  margin: 0;
+}
+.oa-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0 var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-data-label);
+  overflow-wrap: anywhere;
+}
+
+/* An ID never breaks at its hyphen. It sets the font's own figures, so "R-04" keeps the hyphen's own width */
+.oa-chip-id {
+  white-space: nowrap;
+}
+.oa-chip--link {
+  min-height: var(--oa-size-target-minimum);
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-chip--link:hover {
+  text-decoration-thickness: var(--oa-border-width-underline-hover);
+}
+.oa-chip--link:focus-visible, .oa-chip-record:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-chip-record {
+  margin: var(--oa-space-300) 0 0;
+  font: var(--oa-type-body-small);
+}
+.oa-chip-record .oa-chip {
+  margin-right: var(--oa-space-050);
+}
+
+@media (forced-colors: active) {
+  .oa-chip {
+    border-color: CanvasText;
+  }
+  .oa-chip--link {
+    border-color: LinkText;
+  }
+}
+
+/* Disclosure: a row that shows and hides what follows it. The chevron points down while closed and
+   up while open; the turn takes the standard motion token, which tokens.css sets to 0 ms when a
+   reader asks for less motion. */
+.oa-disclosure-set {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-disclosure-set [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-disclosure-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-disclosure-k:first-child {
+  margin-top: 0;
+}
+.oa-disclosure-stack {
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-disclosure {
+  margin: 0;
+  padding: 0;
+}
+
+/* The row: the whole width is the target, at least 44 px tall, its words before the chevron */
+.oa-disclosure-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) 0;
+  border: 0;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  list-style: none;
+}
+.oa-disclosure-summary::-webkit-details-marker {
+  display: none;
+}
+.oa-disclosure-label {
+  min-width: 0;
+}
+.oa-disclosure-summary:hover .oa-disclosure-label {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-disclosure-summary:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-disclosure-chevron {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+  transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard);
+}
+.oa-disclosure[open] > .oa-disclosure-summary .oa-disclosure-chevron,
+.oa-disclosure-button[aria-expanded="true"] .oa-disclosure-chevron {
+  transform: rotate(180deg);
+}
+.oa-disclosure-body {
+  padding: 0 0 var(--oa-space-200);
+}
+.oa-disclosure-body[hidden] {
+  display: none;
+}
+.oa-disclosure-body p {
+  margin: 0;
+  max-width: var(--oa-layout-measure-body-max);
+  font: var(--oa-type-body-small);
+}
+.oa-disclosure-body p + p {
+  margin-top: var(--oa-space-100);
+}
+
+/* A source line under real content: where it comes from and when */
+.oa-disclosure-body .oa-disclosure-source {
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+
+@media (forced-colors: active) {
+  .oa-disclosure-summary, .oa-disclosure-stack {
+    border-color: CanvasText;
+  }
+}
+
+/* Loop stepper: Play, Reset the loop, Previous step, Next step. The current step takes the selected
+   band, a 4 px bar and aria-current="step"; the buttons stack when a label would not fit. */
+.oa-stepper {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-stepper [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-stepper-k {
+  margin: 0;
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-stepper-title {
+  margin: var(--oa-space-050) 0 var(--oa-space-100);
+  font: var(--oa-type-h4);
+  letter-spacing: var(--oa-type-h4-letter-spacing);
+  text-wrap: balance;
+}
+
+/* The loop's title is its name, in quotation marks; the line under it gives the atlas's grade for
+   the whole loop */
+.oa-stepper-grade {
+  margin: 0 0 var(--oa-space-150);
+  max-width: var(--oa-layout-measure-body-max);
+  font: var(--oa-type-body-small);
+}
+.oa-stepper-status {
+  margin: 0 0 var(--oa-space-150);
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-stepper-steps {
+  margin: 0 0 var(--oa-space-200);
+  padding: 0;
+  list-style: none;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-stepper-step {
+  padding: var(--oa-space-100) var(--oa-space-150);
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  border-left: var(--oa-border-width-bar) solid transparent;
+  font: var(--oa-type-body-small);
+  overflow-wrap: anywhere;
+}
+.oa-stepper-line {
+  font-weight: var(--oa-font-weight-semibold);
+}
+.oa-stepper-step[aria-current="step"] {
+  background: var(--oa-color-state-selected-band);
+  border-left-color: var(--oa-color-state-selected-bar);
+}
+.oa-stepper-step[aria-current="step"] .oa-stepper-line {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-stepper-step[data-oa-ahead] {
+  color: var(--oa-color-state-muted-text);
+}
+/* The four buttons sit two by two, each column at least half the row, so Next step never wraps
+   alone under the other three. Once a column would fall under 11rem, they stack one a row. */
+.oa-stepper-controls {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(min(100%, max(11rem, calc((100% - var(--oa-space-100)) / 2))), 1fr));
+  gap: var(--oa-space-100);
+}
+.oa-stepper-controls button {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding:
+    var(--oa-space-100) calc(var(--oa-space-200) + 1px) var(--oa-space-100)
+    calc(var(--oa-space-150) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-stepper-controls .oa-stepper-next {
+  justify-content: flex-end;
+  padding:
+    var(--oa-space-100) calc(var(--oa-space-150) + 1px) var(--oa-space-100)
+    calc(var(--oa-space-200) + 1px);
+  text-align: end;
+}
+.oa-stepper-controls button:not([aria-disabled="true"]):hover {
+  border-width: var(--oa-border-width-rule);
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+}
+.oa-stepper-controls .oa-stepper-next:not([aria-disabled="true"]):hover {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-150) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-200);
+}
+.oa-stepper-controls button:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-stepper-controls button[aria-disabled="true"] {
+  border-style: dashed;
+  border-color: var(--oa-color-state-disabled-edge);
+  color: var(--oa-color-state-disabled-text);
+  cursor: not-allowed;
+}
+.oa-stepper-icon {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+
+/* Play and Pause are one button: its icon and word change together */
+.oa-stepper-icon--pause,
+.oa-stepper-play[data-oa-playing] .oa-stepper-icon--play {
+  display: none;
+}
+.oa-stepper-play[data-oa-playing] .oa-stepper-icon--pause {
+  display: block;
+}
+.oa-stepper-why {
+  min-height: 1.6em;
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+.oa-stepper-source {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+
+@media (forced-colors: active) {
+  .oa-stepper-controls button {
+    border-color: ButtonText;
+  }
+  .oa-stepper-controls button[aria-disabled="true"] {
+    border-color: GrayText;
+    color: GrayText;
+  }
+  .oa-stepper-step[aria-current="step"] {
+    border-left-color: Highlight;
+  }
+}
+
+/* Choice: one of a few, through native radio buttons in a fieldset, so Tab enters at the checked
+   choice and the arrow keys move and choose with no script. The checked look: a check before the
+   word, the word in bold and a 2 px edge. */
+.oa-choice {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-choice [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-choice-legend {
+  margin: 0 0 var(--oa-space-100);
+  padding: 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-choice-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+.oa-choice-item {
+  position: relative;
+  display: flex;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+/* The native radio stays in the page for the keyboard and screen readers; the face beside it draws
+   the choice */
+.oa-choice-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.oa-choice-face {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  font: var(--oa-type-ui);
+  overflow-wrap: anywhere;
+}
+.oa-choice-label {
+  min-width: 0;
+}
+.oa-choice-check {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-choice-input:focus-visible + .oa-choice-face {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-choice-item:hover .oa-choice-input:not(:disabled) + .oa-choice-face .oa-choice-label {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-choice-input:checked + .oa-choice-face {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-choice-input:checked + .oa-choice-face .oa-choice-check {
+  display: block;
+}
+
+/* A list of choices, one under another: every choice as wide as the group, and every choice
+   holding the check's place, so the words start at one line whichever is checked and checking a
+   choice moves nothing. Add oa-choice-row--list to the row. */
+.oa-choice-row--list {
+  flex-direction: column;
+  align-items: stretch;
+}
+.oa-choice-row--list .oa-choice-face {
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  padding-inline-start: calc(var(--oa-space-150) + 1px);
+}
+/* Where a choice's longest unbroken run cannot share a line with the check, as with large text
+   on a narrow screen, the words drop under the check rather than run past the edge */
+.oa-choice-row--list .oa-choice-label {
+  flex: 1 1 0;
+  min-width: min-content;
+}
+.oa-choice-row--list .oa-choice-check {
+  display: block;
+  visibility: hidden;
+}
+.oa-choice-row--list .oa-choice-input:checked + .oa-choice-face .oa-choice-check {
+  visibility: visible;
+}
+
+/* An unavailable choice: dashed, in the disabled colors, with its reason in words below the row */
+.oa-choice-item:has(.oa-choice-input:disabled) {
+  cursor: not-allowed;
+}
+.oa-choice-input:disabled + .oa-choice-face {
+  border-style: dashed;
+  border-color: var(--oa-color-state-disabled-edge);
+  color: var(--oa-color-state-disabled-text);
+}
+.oa-choice-why {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+
+@media (forced-colors: active) {
+  .oa-choice-face {
+    border-color: ButtonText;
+  }
+  .oa-choice-input:disabled + .oa-choice-face {
+    border-color: GrayText;
+    color: GrayText;
+  }
+}
+
+/* Toggle button and filter chip: on or off, and chips combine. One pressed look: a check before the
+   word, the word in bold and a 2 px edge. Reads only tokens.css. */
+.oa-toggle-set {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-toggle-set [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-toggle-k {
+  margin: var(--oa-space-300) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-toggle-k:first-child, .oa-toggle-illus + .oa-toggle-k {
+  margin-top: 0;
+}
+
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a
+   1 px edge in the ink) */
+.oa-toggle-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-toggle-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+.oa-toggle-why, .oa-toggle-status {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+  color: var(--oa-color-text-secondary);
+}
+.oa-toggle-status {
+  color: var(--oa-color-text-primary);
+}
+.oa-toggle-status:empty {
+  display: none;
+}
+.oa-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: var(--oa-size-target-touch);
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-toggle-label {
+  min-width: 0;
+}
+.oa-toggle-check {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-toggle:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+
+/* Hover: the label underlines */
+.oa-toggle:not([aria-disabled="true"]):hover .oa-toggle-label {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+
+/* Pressed: the check before the word, the word in bold, a 2 px edge (the padding gives back the
+   extra pixel) */
+.oa-toggle[aria-pressed="true"] {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-toggle[aria-pressed="true"] .oa-toggle-check {
+  display: block;
+}
+
+/* Unavailable: keeps focus, dashed edge, the disabled label, and a reason line it points to */
+.oa-toggle[aria-disabled="true"] {
+  border-style: dashed;
+  border-color: var(--oa-color-state-disabled-edge);
+  color: var(--oa-color-state-disabled-text);
+  cursor: not-allowed;
+}
+
+@media (forced-colors: active) {
+  .oa-toggle {
+    border-color: ButtonText;
+  }
+  .oa-toggle[aria-disabled="true"] {
+    border-color: GrayText;
+    color: GrayText;
+  }
+}
+
+/* Filter bar: Filters opens a sheet of chips that combine; its name counts the chips that are on,
+   and Clear filters shows only while one is on. The result count, with its advice when nothing
+   matches, goes to one status line. */
+.oa-filters {
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-filters [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+.oa-filters-toggle, .oa-filters-clear, .oa-filters-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) calc(var(--oa-space-200) + 1px);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  border-radius: var(--oa-radius-none);
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-filters-toggle {
+  padding-inline: calc(var(--oa-space-150) + 1px);
+}
+.oa-filters-clear[hidden] {
+  display: none;
+}
+.oa-filters-toggle:hover .oa-filters-count,
+.oa-filters-clear:hover,
+.oa-filters-chip:hover .oa-filters-word {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-filters-toggle:focus-visible,
+.oa-filters-clear:focus-visible,
+.oa-filters-chip:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-filters-icon, .oa-filters-chevron, .oa-filters-check {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-filters-count, .oa-filters-word {
+  min-width: 0;
+}
+.oa-filters-chevron {
+  transition: transform var(--oa-motion-duration-standard) var(--oa-motion-easing-standard);
+}
+.oa-filters-toggle[aria-expanded="true"] .oa-filters-chevron {
+  transform: rotate(180deg);
+}
+.oa-filters-sheet {
+  margin-top: var(--oa-space-150);
+  padding-top: var(--oa-space-150);
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-filters-sheet[hidden] {
+  display: none;
+}
+.oa-filters-k {
+  margin: var(--oa-space-200) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-filters-sheet > .oa-filters-k:first-child {
+  margin-top: 0;
+}
+.oa-filters-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--oa-space-100);
+}
+
+/* A chip that is on: the check before its word, the word in bold, a 2 px edge */
+.oa-filters-check {
+  display: none;
+}
+.oa-filters-chip[aria-pressed="true"] {
+  padding:
+    calc(var(--oa-space-100) - 1px) var(--oa-space-200) calc(var(--oa-space-100) - 1px)
+    var(--oa-space-150);
+  border-width: var(--oa-border-width-rule);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-filters-chip[aria-pressed="true"] .oa-filters-check {
+  display: block;
+}
+.oa-filters-status {
+  margin: var(--oa-space-200) 0 0;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-filters-results {
+  margin: var(--oa-space-100) 0 0;
+  padding: 0;
+  list-style: none;
+  font: var(--oa-type-body-small);
+}
+.oa-filters-result {
+  padding: var(--oa-space-050) 0;
+  border-top: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+}
+.oa-filters-result[hidden] {
+  display: none;
+}
+.oa-filters-source {
+  margin: var(--oa-space-150) 0 0;
+  font: var(--oa-type-caption);
+  color: var(--oa-color-text-secondary);
+}
+
+/* Each result is its name, then its typed chip: the type word and the code together, so no code
+   stands bare */
+.oa-filters-result-chip {
+  display: inline-block;
+  margin-left: var(--oa-space-050);
+  padding: 0 var(--oa-space-100);
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong);
+  font: var(--oa-type-data-label);
+}
+
+/* An ID never breaks at its hyphen */
+.oa-filters-result-id {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (forced-colors: active) {
+  .oa-filters-toggle, .oa-filters-clear, .oa-filters-chip {
+    border-color: ButtonText;
+  }
+  .oa-filters-result-chip {
+    border-color: CanvasText;
+  }
+}
+
+/* Table: a native table whose sortable headings hold a button and aria-sort. Under 36rem each row
+   reads as a card. The explicit roles keep the table's meaning where a browser drops it for a table
+   drawn as blocks. */
+.oa-table {
+  container-type: inline-size;
+  font: var(--oa-type-body);
+  color: var(--oa-color-text-primary);
+}
+.oa-table [data-icon] {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--oa-component-icon-utility-line-medium);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.oa-table [data-icon][width="16"] {
+  stroke-width: var(--oa-component-icon-utility-line-small);
+}
+
+/* Illustrative: the label at the head of an invented piece, in the guide's one style (uppercase, a
+   1 px edge in the ink) */
+.oa-table-illus {
+  display: inline-block;
+  margin: 0 0 var(--oa-space-100);
+  padding: 0 .4em;
+  border: var(--oa-border-width-hairline) solid currentColor;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  line-height: 1.5;
+}
+.oa-table-k {
+  margin: var(--oa-space-400) 0 var(--oa-space-100);
+  font: var(--oa-type-label);
+  letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform);
+  color: var(--oa-color-text-secondary);
+}
+.oa-table-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font: var(--oa-type-body-small);
+}
+.oa-table-caption {
+  margin: 0;
+  padding: 0 0 var(--oa-space-100);
+  caption-side: top;
+  text-align: start;
+  font: var(--oa-type-ui);
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-table-th {
+  padding: 0 var(--oa-space-150) 0 0;
+  border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong);
+  text-align: start;
+  vertical-align: bottom;
+  font: var(--oa-type-ui);
+}
+.oa-table-th--plain {
+  padding-block: var(--oa-space-100);
+}
+.oa-table-td {
+  padding: var(--oa-space-100) var(--oa-space-150) var(--oa-space-100) 0;
+  border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  text-align: start;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.oa-table-label {
+  display: none;
+}
+
+/* The sort button: the heading's word, then the 16 px sort mark, or the arrow turned to the order
+   in use */
+.oa-table-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oa-space-100);
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: var(--oa-size-target-touch);
+  margin: 0;
+  padding: var(--oa-space-100) 0;
+  border: 0;
+  background: transparent;
+  color: var(--oa-color-text-primary);
+  font: var(--oa-type-ui);
+  text-align: start;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.oa-table-word {
+  min-width: 0;
+}
+.oa-table-sort:hover .oa-table-word {
+  text-decoration: underline;
+  text-decoration-thickness: var(--oa-border-width-underline);
+  text-underline-offset: .2em;
+}
+.oa-table-sort:focus-visible {
+  outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring);
+  outline-offset: var(--oa-border-focus-offset);
+}
+.oa-table-icon {
+  display: none;
+  flex: none;
+  width: var(--oa-size-icon-small);
+  height: var(--oa-size-icon-small);
+}
+.oa-table-th:not([aria-sort]) .oa-table-icon--can,
+.oa-table-th[aria-sort="none"] .oa-table-icon--can,
+.oa-table-th[aria-sort="ascending"] .oa-table-icon--order,
+.oa-table-th[aria-sort="descending"] .oa-table-icon--order {
+  display: block;
+}
+
+/* the arrow turned to the order in use: up for ascending, down for descending */
+.oa-table-th:not([aria-sort="ascending"]) .oa-table-up,
+.oa-table-th:not([aria-sort="descending"]) .oa-table-down {
+  display: none;
+}
+.oa-table-th[aria-sort="ascending"] .oa-table-word,
+.oa-table-th[aria-sort="descending"] .oa-table-word {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-table-status {
+  margin: var(--oa-space-100) 0 0;
+  font: var(--oa-type-body-small);
+}
+.oa-table-status:empty {
+  display: none;
+}
+
+/* The data's own states, in one cell across the row */
+.oa-table-td--note {
+  padding: var(--oa-space-200) 0;
+}
+.oa-table-loading, .oa-table-empty, .oa-table-error {
+  margin: 0;
+}
+.oa-table-loading {
+  display: flex;
+  align-items: center;
+  gap: var(--oa-space-150);
+  font: var(--oa-type-ui);
+  color: var(--oa-color-state-loading-text);
+}
+
+/* Loading: a still outline and the words, never a pulse */
+.oa-table-still {
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--oa-space-200);
+  height: var(--oa-space-200);
+  border: var(--oa-border-width-rule) solid var(--oa-color-state-loading-mark);
+  border-radius: var(--oa-radius-full);
+}
+
+/* Empty: a dashed region that says what is missing and what to do next */
+.oa-table-empty {
+  padding: var(--oa-space-150);
+  border: var(--oa-border-width-hairline) dashed var(--oa-color-state-empty-edge);
+  color: var(--oa-color-state-empty-text);
+}
+
+/* Error: the mark in ink, "Error:" and the fix, on the Error Band where the surface has one, with
+   the 4 px red bar */
+.oa-table-error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--oa-space-100);
+  padding: var(--oa-space-100) var(--oa-space-150);
+  background: var(--oa-color-state-error-band, transparent);
+  color: var(--oa-color-state-error-text);
+  border-left: var(--oa-border-width-bar) solid var(--oa-color-state-error-bar);
+}
+.oa-table-mark {
+  display: block;
+  flex: none;
+  width: var(--oa-size-icon-medium);
+  height: var(--oa-size-icon-medium);
+}
+.oa-table-error b {
+  font-weight: var(--oa-font-weight-bold);
+}
+.oa-table-error > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Cards, in a narrow column */
+
+@container (max-width: 36rem) {
+  .oa-table-grid,
+  .oa-table-caption,
+  .oa-table-tbody,
+  .oa-table-row,
+  .oa-table-td {
+    display: block;
+  }
+  .oa-table-thead {
+    display: block;
+    margin-bottom: var(--oa-space-100);
+  }
+  .oa-table-thead .oa-table-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--oa-space-300);
+    border-bottom: var(--oa-border-width-rule) solid var(--oa-color-border-strong);
+  }
+  .oa-table-th {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+  .oa-table-th--plain {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .oa-table-tbody .oa-table-row {
+    padding: var(--oa-space-100) 0;
+    border-bottom: var(--oa-border-width-hairline) solid var(--oa-color-border-hairline);
+  }
+  .oa-table-td {
+    display: flex;
+    gap: var(--oa-space-150);
+    padding: var(--oa-space-050) 0;
+    border: 0;
+  }
+  .oa-table-label {
+    display: block;
+    flex: none;
+    width: 4.5em;
+    font-weight: var(--oa-font-weight-bold);
+  }
+  .oa-table-td--note {
+    padding: var(--oa-space-100) 0;
+  }
+}
+
+@media (forced-colors: active) {
+  .oa-table-th, .oa-table-thead .oa-table-row {
+    border-color: CanvasText;
+  }
+  .oa-table-sort {
+    color: ButtonText;
+  }
+  .oa-table-sort .oa-table-word {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+  .oa-table-error, .oa-table-empty {
+    border-color: CanvasText;
+  }
+}
+
+
+/* the title bar (specs 2) */
+.ws.wa .wa-bar{display:block;padding-block:8px}
+[data-oa-theme="dark"] .ws .wa-bar,.ws[data-oa-theme="dark"] .wa-bar{box-shadow:inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)}@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) .wa-bar{box-shadow:inset 0 -1px 0 var(--oa-color-border-hairline-on-charcoal)}}
+.ws.wa .wa-bar-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:32px;min-height:40px;padding-inline:var(--m)}
+.ws.wa .wa-name{display:flex;flex-direction:column;margin:0}
+.ws.wa .wa-name .n{font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);color:var(--oa-color-text-primary)}
+.ws.wa .wa-sub{font-family:var(--oa-type-caption-font-family);font-style:var(--oa-type-caption-font-style);font-weight:var(--oa-type-caption-font-weight);font-size:var(--oa-type-caption-font-size);line-height:var(--oa-type-caption-line-height);letter-spacing:var(--oa-type-caption-letter-spacing);text-transform:var(--oa-type-caption-text-transform);font-variant-numeric:var(--oa-type-caption-font-variant-numeric);color:var(--oa-color-text-secondary)}
+@container ws (max-width: 47.999em){.ws.wa .wa-sub .s1{display:none}}
+.ws.wa .wa-views{list-style:none;margin:0;padding:0}
+.ws.wa .wa-views-btn{margin-left:auto}
+.ws.wa .wa-views-btn .oa-disclosure-chevron{transition:transform var(--oa-motion-duration-standard)}
+.ws.wa .wa-views-btn[aria-expanded="true"] .oa-disclosure-chevron{transform:rotate(180deg)}
+@media (prefers-reduced-motion: reduce){.ws.wa .wa-views-btn .oa-disclosure-chevron{transition:none}}
+@container ws (max-width: 63.999em){.ws.wa .wa-views{flex:0 0 100%;margin-top:8px;border-top:1px solid var(--oa-color-border-hairline)}.ws.wa .wa-views li{border-bottom:1px solid var(--oa-color-border-hairline)}.ws.wa .wa-views a[aria-current]{text-decoration:none}}
+@container ws (min-width: 64em){.ws.wa .wa-views,.ws.wa .wa-views[hidden]{display:flex;gap:0 var(--ws-part-gap,16px)}.ws.wa .wa-views a,.ws.wa .wa-views a[aria-current]{padding:0;background:none;border-left:0}.ws.wa .wa-views a:hover{text-underline-offset:.3em}}
+/* the breadcrumb and the locator (specs 3) */
+.ws.wa .wa-crumbs{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-top:8px;padding-inline:var(--m)}
+.ws.wa .wa-crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;margin:0;padding:0;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-crumbs li{display:flex;align-items:center;min-height:var(--oa-size-target-touch)}
+.ws.wa .wa-crumbs a:not(.oa-chip){display:inline-flex;align-items:center;min-height:var(--oa-size-target-touch);color:var(--oa-color-text-primary);text-decoration-thickness:1px;text-underline-offset:.2em}
+.ws.wa .wa-crumbs a:not(.oa-chip):hover{text-decoration-thickness:2px}
+.ws.wa .wa-crumbs a[aria-current]{font-weight:var(--oa-font-weight-bold);text-decoration:none}
+.ws.wa .wa-crumbs .sep{margin-inline:8px;color:var(--oa-color-text-secondary)}
+.ws.wa .wa-loc{display:none;flex:none;margin-top:2px}
+.ws.wa .wa-loc svg{display:block}
+.ws.wa .wa-loc rect{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-subtle);stroke-width:1px}
+.ws.wa .wa-loc rect[data-current]{fill:var(--oa-color-graphic-essential);stroke:var(--oa-color-graphic-essential)}
+@container ws (min-width: 48em){.ws.wa .wa-loc{display:block}}
+.ws.wa .wa-crumbs+.ws-main{padding-top:24px}
+/* main (specs 7) */
+.ws.wa .wa-sec{display:block}
+.ws.wa .wa-head{row-gap:32px}
+.ws.wa .wa-op>*+*{margin-top:24px !important}
+.ws.wa .wa-op .ws-h1+*{margin-top:32px !important}
+.ws.wa .wa-t1{font-family:var(--oa-type-section-font-family);font-style:var(--oa-type-section-font-style);font-weight:var(--oa-type-section-font-weight);font-size:var(--oa-type-section-font-size);line-height:var(--oa-type-section-line-height);letter-spacing:var(--oa-type-section-letter-spacing);text-transform:var(--oa-type-section-text-transform);font-variant-numeric:var(--oa-type-section-font-variant-numeric);text-wrap:balance}
+.ws.wa .lab{font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);color:var(--oa-color-text-secondary);margin:0 0 8px !important}
+.ws.wa .wa-small{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-cap{font-family:var(--oa-type-caption-font-family);font-style:var(--oa-type-caption-font-style);font-weight:var(--oa-type-caption-font-weight);font-size:var(--oa-type-caption-font-size);line-height:var(--oa-type-caption-line-height);letter-spacing:var(--oa-type-caption-letter-spacing);text-transform:var(--oa-type-caption-text-transform);font-variant-numeric:var(--oa-type-caption-font-variant-numeric);color:var(--oa-color-text-secondary);margin-top:16px !important}
+.ws.wa .wa-facts{padding:24px;align-self:start}
+@container ws (min-width: 48em){.ws.wa .wa-facts{padding:32px}}
+.ws.wa .wa-facts dl{margin:0;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-facts dl>div{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:12px;padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ws.wa .wa-facts dt{font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-facts dd{margin:0}
+.ws.wa .wa-ticks line{stroke:var(--oa-color-graphic-essential);stroke-width:2px}
+.ws.wa .wa-q{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong)}
+.ws.wa .wa-q+.ws-h3{margin-top:32px !important}
+.ws.wa .wa-fig{margin:0}
+.ws.wa .wa-fig .sv{display:block;max-width:100%;height:auto}
+.ws.wa .wa-draw,.ws.wa .wa-read,.ws.wa .wa-note{min-width:0}
+.ws.wa .wa-two{row-gap:24px;margin-top:0}
+.ws.wa .wa-two+.wa-two{margin-top:24px}
+.ws.wa .wa-read>*+*{margin-top:16px !important}
+.ws.wa .wa-tags,.ws.wa .wa-ev,.ws.wa .wa-cl{list-style:none;margin:16px 0 0;padding:0}
+.ws.wa .wa-tag{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.ws.wa .wa-weak{margin-top:8px !important}
+.ws.wa .wa-stepper{min-width:0}
+.ws.wa .wa-choose{margin-top:48px;row-gap:24px}
+.ws.wa .wa-panels .wa-panel{display:none}
+.ws.wa .wa-choose:has(.oa-choice-item:nth-child(1) .oa-choice-input:checked) .wa-panel:nth-child(1),.ws.wa .wa-choose:has(.oa-choice-item:nth-child(2) .oa-choice-input:checked) .wa-panel:nth-child(2),.ws.wa .wa-choose:has(.oa-choice-item:nth-child(3) .oa-choice-input:checked) .wa-panel:nth-child(3),.ws.wa .wa-choose:has(.oa-choice-item:nth-child(4) .oa-choice-input:checked) .wa-panel:nth-child(4),.ws.wa .wa-choose:has(.oa-choice-item:nth-child(5) .oa-choice-input:checked) .wa-panel:nth-child(5){display:block}
+@media print{.ws.wa .wa-panels .wa-panel{display:block}}
+.ws.wa .wa-panels{padding-top:16px;border-top:2px solid var(--oa-color-border-strong)}
+.ws.wa .wa-panel .lab{margin-top:24px !important}
+.ws.wa .wa-ef,.ws.wa .wa-rt{list-style:none;margin:0;padding:0;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-ef li,.ws.wa .wa-rt li{display:flex;flex-wrap:wrap;align-items:center;column-gap:12px;min-height:var(--oa-size-target-touch);padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ws.wa .wa-ef .f{flex:0 0 12em;font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-ef .pp .j{stroke:var(--oa-color-graphic-essential)}
+/* the data lead's R14 (d): a red target's case is Charcoal in both themes, the edge on Newsprint, lost in the dark ground */
+.ws.wa .sv .rt .ak-case{stroke:var(--oa-color-graphic-essential-on-newsprint)}
+/* specs 8.1: the stepper's four buttons in one row from 48em, 8 px apart, over chapter 18's layout (AL-22's order) */
+@container ws (min-width: 48em){.ws.wa .wa-stepper .oa-stepper-controls{display:flex;flex-wrap:nowrap;gap:8px}.ws.wa .wa-stepper .oa-stepper-controls>button{flex:1 1 0;width:auto}}
+.ws.wa .wa-rt .n{flex:0 0 100%;font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-ev li{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding:16px 0;border-bottom:1px solid var(--oa-color-border-hairline);font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-ev .st{font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-ev .gr{display:inline-flex;align-items:center;gap:6px}
+.ws.wa .wa-ev .ct{flex:0 0 100%}
+.ws.wa .wa-recs{margin-top:32px !important}
+.ws.wa .wa-gw{font-family:var(--oa-type-h4-font-family);font-style:var(--oa-type-h4-font-style);font-weight:var(--oa-type-h4-font-weight);font-size:var(--oa-type-h4-font-size);line-height:var(--oa-type-h4-line-height);letter-spacing:var(--oa-type-h4-letter-spacing);text-transform:var(--oa-type-h4-text-transform);font-variant-numeric:var(--oa-type-h4-font-variant-numeric)}
+.ws.wa .wa-grade{row-gap:24px;margin-top:0}
+.ws.wa .wa-grade+.wa-grade{margin-top:48px}
+.ws.wa .wa-where{margin-top:48px;row-gap:24px}
+.ws.wa .wa-note>*+*{margin-top:12px !important}
+.ws.wa .wa-src{margin-top:16px}
+.ws.wa .wa-src ul{margin:0;padding-left:20px}
+@container ws (min-width: 64em){.ws.wa .wa-op{grid-column:1/9}.ws.wa .wa-head>.wa-facts{grid-column:9/13;grid-row:1}
+ .ws.wa .wa-two>:first-child{grid-column:1/5}.ws.wa .wa-two>:last-child{grid-column:5/13}
+ .ws.wa .wa-two .wa-fig .sv{max-width:min(100%,640px)}
+ .ws.wa .wa-choose>fieldset{grid-column:1/5}.ws.wa .wa-choose>.wa-panels{grid-column:5/13}
+ .ws.wa .wa-col7{grid-column:1/8}.ws.wa .wa-col8{grid-column:1/9}
+ .ws.wa .wa-where>.wa-draw{grid-column:1/8}.ws.wa .wa-where>.wa-note{grid-column:8/13}
+ .ws.wa .wa-grade>.wa-gh{grid-column:1/5}.ws.wa .wa-grade>.wa-rd{grid-column:5/13}.ws.wa .wa-remedy>.wa-rd{grid-column:span 4}}
+/* tables (Rule 18.10; specs 10 and 11): chapter 18's grid, its head row on Charcoal where the content file turns it on,
+   restyled as one card a row under 48em with each cell's label from data-k */
+.ws.wa .wa-tablewrap{min-width:0}
+.ws.wa .wa-col12{grid-column:1/-1;min-width:0}
+.ws.wa .oa-table-grid{width:100%;border-collapse:collapse;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .oa-table-grid .oa-table-th,.ws.wa .oa-table-grid .oa-table-td{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ws.wa .oa-table-grid thead .oa-table-th{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);vertical-align:bottom;border-bottom:2px solid var(--oa-color-border-strong)}
+.ws.wa .oa-table-grid .n{text-align:right;font-variant-numeric:tabular-nums}
+@container ws (min-width: 48em){.ws.wa .oa-table-grid{table-layout:fixed}
+ .ws.wa .wa-index th:nth-child(1){width:34%}.ws.wa .wa-index thead th:nth-child(n+2):nth-child(-n+6){width:7%}.ws.wa .wa-index thead th:nth-child(n+7){width:6.2%}
+ .ws.wa .wa-conns thead th:nth-child(1){width:9%}.ws.wa .wa-conns thead th:nth-child(2){width:27%}.ws.wa .wa-conns thead th:nth-child(3){width:9%}.ws.wa .wa-conns thead th:nth-child(4){width:8%}.ws.wa .wa-conns thead th:nth-child(5){width:11%}.ws.wa .wa-conns thead th:nth-child(6){width:12%}.ws.wa .wa-conns thead th:nth-child(7){width:24%}
+ .ws.wa .wa-lix thead th:nth-child(1){width:9%}.ws.wa .wa-lix thead th:nth-child(2){width:31%}.ws.wa .wa-lix thead th:nth-child(3){width:7%}.ws.wa .wa-lix thead th:nth-child(4){width:8%}.ws.wa .wa-lix thead th:nth-child(5){width:20%}.ws.wa .wa-lix thead th:nth-child(6){width:25%}}
+.ws.wa .oa-table-grid .g{min-width:56px}
+.ws.wa .wa-gs{display:inline-flex;align-items:center;gap:4px}
+.ws.wa thead .wa-gs{display:flex;margin-bottom:8px;justify-content:flex-end}
+.ws.wa .wa-headon thead tr{background:var(--oa-color-surface-charcoal)}
+.ws.wa .wa-headon thead .oa-table-th{color:var(--oa-color-text-primary-on-charcoal);border-bottom:0}
+.ws.wa .wa-headon thead .ln .ak-mark{stroke:var(--oa-color-graphic-essential-on-charcoal)}
+.ws.wa .wa-headon thead .ln .hd,.ws.wa .wa-headon thead .rs rect{fill:var(--oa-color-graphic-essential-on-charcoal)}
+.ws.wa .wa-whole>*{font-weight:var(--oa-font-weight-semibold);border-top:2px solid var(--oa-color-border-strong)}
+.ws.wa .wa-gkey{display:none;list-style:none;margin:0 0 16px;padding:24px;font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric)}
+.ws.wa .wa-gkey li{display:flex;align-items:center;gap:8px}
+@container ws (max-width: 47.999em){.ws.wa .oa-table-grid,.ws.wa .oa-table-grid tbody,.ws.wa .oa-table-grid tr,.ws.wa .oa-table-grid th,.ws.wa .oa-table-grid td{display:block;width:auto}
+ .ws.wa .oa-table-grid thead{display:none}.ws.wa .oa-table-grid tr{padding:16px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+ .ws.wa .oa-table-grid .oa-table-th,.ws.wa .oa-table-grid .oa-table-td{padding:2px 0;border:0;text-align:left;white-space:normal;min-width:0}
+ .ws.wa .oa-table-grid td[data-k]::before{content:attr(data-k) ": ";font-weight:var(--oa-font-weight-semibold)}
+ .ws.wa .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px}.ws.wa .wa-gkey li{flex-wrap:wrap;min-width:0}}
+.ws.wa .wa-band{padding:24px;margin-top:80px}
+@container ws (min-width: 48em){.ws.wa .wa-band{padding:32px}}
+.ws.wa .wa-band .ws-h2.wa-bh{margin:0 0 16px !important}
+.ws.wa .wa-vars{list-style:none;margin:16px 0 32px;padding:0}
+.ws.wa .wa-vars li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ws.wa .wa-vars .wa-small{flex:0 0 100%}
+.ws.wa .wa-col8in{max-width:866.7px;margin-top:32px}
+.ws.wa .wa-tagm .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}
+.ws.wa .wa-tagm,.ws.wa .wa-tickm{display:inline-block;vertical-align:middle}
+.ws.wa .wa-rej,.ws.wa .wa-rev{padding-top:16px;border-top:2px solid var(--oa-color-border-strong);margin-top:24px}
+.ws.wa .wa-rej>*+*,.ws.wa .wa-rev>*+*{margin-top:16px !important}
+.ws.wa .wa-dl{margin:0;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-dl>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:12px;padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ws.wa .wa-dl dt{font-weight:var(--oa-font-weight-semibold)}.ws.wa .wa-dl dd{margin:0}
+.ws.wa .wa-revl{list-style:none;margin:0;padding:0}.ws.wa .wa-revl>li+li{margin-top:24px}
+.ws.wa .wa-filters{margin-top:16px}
+.ws.wa .wa-recl{list-style:none;margin:16px 0 0;padding:0}
+.ws.wa .wa-recl li{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;min-height:var(--oa-size-target-touch);padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline);font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-recl li[hidden]{display:none}
+.ws.wa .wa-rg{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);margin-left:auto}
+/* How to read (specs 11.2) */
+.ws.wa .wa-marks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--g)}
+@container ws (min-width: 64em){.ws.wa .wa-marks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ws.wa .wa-marks li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:center;min-height:64px;padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+.ws.wa .wa-marks b{display:block;font-family:var(--oa-type-ui-font-family);font-style:var(--oa-type-ui-font-style);font-weight:var(--oa-type-ui-font-weight);font-size:var(--oa-type-ui-font-size);line-height:var(--oa-type-ui-line-height);letter-spacing:var(--oa-type-ui-letter-spacing);text-transform:var(--oa-type-ui-text-transform);font-variant-numeric:var(--oa-type-ui-font-variant-numeric);font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-mk{display:flex;align-items:center;justify-content:center;width:120px;height:48px}
+/* the home (specs 12) */
+.ws.wa .wa-hband{padding-block:24px;box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)}
+.ws.wa .wa-hband .ws-g{row-gap:16px;align-items:start}
+.ws.wa .wa-hh{font-family:var(--oa-type-h3-font-family);font-style:var(--oa-type-h3-font-style);font-weight:var(--oa-type-h3-font-weight);font-size:var(--oa-type-h3-font-size);line-height:var(--oa-type-h3-line-height);letter-spacing:var(--oa-type-h3-letter-spacing);text-transform:var(--oa-type-h3-text-transform);font-variant-numeric:var(--oa-type-h3-font-variant-numeric);margin:0}
+.ws.wa .wa-hi{margin:0}
+@container ws (min-width: 64em){.ws.wa .wa-hh{grid-column:1/5}.ws.wa .wa-hi{grid-column:5/11}.ws.wa .wa-hs{grid-column:11/13;justify-self:end}}
+.ws.wa[data-atlas-view="home"] .ws-main{padding-top:0}
+.ws.wa .wa-sysw{margin-top:24px}
+.ws.wa .wa-wide{display:none}
+@container ws (min-width: 75em){.ws.wa .wa-wide{display:block}.ws.wa .wa-plist{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
+.ws.wa .wa-sys{position:relative;width:1312px}
+.ws.wa .wa-sysw:has(.wa-switch[aria-pressed="true"]) .wa-sys:not(.wa-sys--open),.ws.wa .wa-sys--open{display:none}
+.ws.wa .wa-sysw:has(.wa-switch[aria-pressed="true"]) .wa-sys--open{display:block}
+.ws.wa .ws-in:has(.wa-switch[aria-pressed="true"]) .wa-sys:not(.wa-sys--open){display:none}
+.ws.wa .ws-in:has(.wa-switch[aria-pressed="true"]) .wa-sys--open{display:block}
+.ws.wa .wa-flows{position:absolute;left:0;top:0}
+.ws.wa .wa-flows .ln{fill:none;stroke-width:2px}
+.ws.wa .wa-flows .mc .ln,.ws.wa .wa-flows .ln.mc{stroke:var(--oa-color-graphic-essential)}.ws.wa .wa-flows .mc .hd{fill:var(--oa-color-graphic-essential)}
+.ws.wa .wa-flows .of .ln,.ws.wa .wa-flows .ln.of{stroke:var(--oa-color-graphic-subtle)}.ws.wa .wa-flows .of .hd{fill:var(--oa-color-graphic-subtle)}
+.ws.wa .wa-flows .cut{fill:var(--oa-color-surface)}
+.ws.wa .wa-flows text{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);font-variant-numeric:tabular-nums;fill:var(--oa-color-text-primary)}
+.ws.wa .wa-flows text.b{font-weight:var(--oa-font-weight-bold)}
+.ws.wa .wa-box{position:absolute;box-sizing:border-box;padding:16px;border:1px solid var(--oa-color-graphic-essential);background:var(--oa-color-surface);display:flex;flex-direction:column;gap:2px}
+.ws.wa .wa-box--band{flex-direction:row;align-items:center;gap:16px;padding-block:8px}
+.ws.wa .wa-box .nm,.ws.wa .wa-card .nm{font-family:var(--oa-type-h4-font-family);font-style:var(--oa-type-h4-font-style);font-weight:var(--oa-type-h4-font-weight);font-size:var(--oa-type-h4-font-size);line-height:var(--oa-type-h4-line-height);letter-spacing:var(--oa-type-h4-letter-spacing);text-transform:var(--oa-type-h4-text-transform);font-variant-numeric:var(--oa-type-h4-font-variant-numeric);margin:0}
+.ws.wa .wa-box .q,.ws.wa .wa-card .q{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+.ws.wa .wa-box .mt,.ws.wa .wa-card .mt{font-family:var(--oa-type-caption-font-family);font-style:var(--oa-type-caption-font-style);font-weight:var(--oa-type-caption-font-weight);font-size:var(--oa-type-caption-font-size);line-height:var(--oa-type-caption-line-height);letter-spacing:var(--oa-type-caption-letter-spacing);text-transform:var(--oa-type-caption-text-transform);font-variant-numeric:var(--oa-type-caption-font-variant-numeric);color:var(--oa-color-text-secondary)}
+.ws.wa .wa-box .lt,.ws.wa .wa-card .lt{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-box .ct,.ws.wa .wa-card .ct{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);margin-top:auto !important}
+.ws.wa .wa-box--band .ct{margin:0 0 0 auto !important}
+.ws.wa [data-lit="false"]{border-color:var(--oa-color-state-muted-mark)}
+.ws.wa [data-lit="false"] :is(.nm,.lt){font-weight:var(--oa-font-weight-regular)}
+.ws.wa .wa-pills{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ws.wa .wa-box--band .wa-pills{flex-direction:row;margin:0}
+.ws.wa [data-part="EC"] .wa-pills,.ws.wa [data-part="TC"] .wa-pills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.ws.wa [data-part="TC"] .wa-pills{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ws.wa .wa-pill{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 12px;border:2px solid var(--oa-color-graphic-essential);border-radius:999px;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric);font-weight:var(--oa-font-weight-semibold)}
+.ws.wa .wa-key{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:16px !important;font-family:var(--oa-type-caption-font-family);font-style:var(--oa-type-caption-font-style);font-weight:var(--oa-type-caption-font-weight);font-size:var(--oa-type-caption-font-size);line-height:var(--oa-type-caption-line-height);letter-spacing:var(--oa-type-caption-letter-spacing);text-transform:var(--oa-type-caption-text-transform);font-variant-numeric:var(--oa-type-caption-font-variant-numeric);color:var(--oa-color-text-secondary)}
+.ws.wa .wa-ks{display:inline-block;width:40px;height:2px;vertical-align:middle;margin-right:-8px}
+.ws.wa .wa-ks.mc{background:var(--oa-color-graphic-essential)}.ws.wa .wa-ks.of{background:var(--oa-color-graphic-subtle)}
+.ws.wa .wa-plist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ws.wa .wa-card{padding:16px;border:1px solid var(--oa-color-graphic-essential);display:flex;flex-direction:column;gap:4px}
+.ws.wa .wa-fl{list-style:none;margin:8px 0 0;padding:0;font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric)}
+.ws.wa .wa-fl .b{font-weight:var(--oa-font-weight-bold)}
+.ws.wa .wa-hubs{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@container ws (min-width: 64em){.ws.wa .wa-hubs{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.ws.wa .wa-qs{display:flex;flex-direction:column;gap:8px}
+.ws.wa .wa-q{width:100%;justify-content:flex-start;text-align:left;min-height:var(--oa-size-target-touch);padding:8px 12px;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
+/* the pressed look is chapter 18's own (the check, bold words, a 2 px edge); How to read's sample draws the same look */
+.ws.wa .wa-qon{border-width:var(--oa-border-width-rule);font-weight:var(--oa-font-weight-bold)}
+.ws.wa .wa-qon .oa-toggle-check{display:block}
+.ws.wa .wa-status{margin-top:16px !important;min-height:1lh}
+.ws.wa .wa-answer{margin-top:32px;padding-top:16px;border-top:2px solid var(--oa-color-border-strong)}
+.ws.wa .wa-answer>*+*{margin-top:12px !important}
+.sv{display:block;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}.sv .t{font-weight:var(--oa-font-weight-semibold)}.sv .v{font-weight:var(--oa-font-weight-regular)}.sv .pl{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .pl.th{stroke-width:1px}.sv .ak-mark{fill:none;stroke:var(--oa-color-graphic-essential)}.sv .hd,.sv .tg polygon{fill:var(--oa-color-graphic-essential)}.sv .tg .sg{fill:var(--oa-color-surface)}.sv .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .rl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1px}.sv .id{font-weight:var(--oa-font-weight-bold)}.sv .kd{font-weight:var(--oa-font-weight-regular)}.sv .sn{font-weight:var(--oa-font-weight-bold)}.sv .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}.sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}.sv .rt .ak-case{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:6px}.sv .rt .hd{fill:var(--oa-color-data-emphasis-red)}.sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}.sv .pl.sh{fill:var(--oa-color-graphic-essential)}.sv .ts{fill:var(--oa-color-surface)}.pp{display:block;flex:none;fill:var(--oa-color-graphic-essential)}.pp .z{stroke:var(--oa-color-graphic-essential);stroke-width:1}.ln{display:block;flex:none;overflow:visible}.ln path{fill:none}.ln .ak-case{stroke:none}.ln .ak-mark{stroke:var(--oa-color-graphic-essential)}.ln .hd,.ln .tg polygon{fill:var(--oa-color-graphic-essential)}.ln .tg .sg{fill:var(--oa-color-surface)}.ln .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.ln .rl{stroke:var(--oa-color-graphic-essential)}.rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}

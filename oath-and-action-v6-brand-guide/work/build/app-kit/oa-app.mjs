@@ -190,7 +190,7 @@ function write_plate(dir, gp, read, R, spec) {
     ...(gp.styles ? { styles: gp.styles } : {}),
     ...(gp.atlas ? { atlas: gp.atlas } : {}),
     ...(gp.symbols && Object.keys(gp.symbols).length ? { symbols: gp.symbols } : {}),
-    views: gp.views.map(({ key, w, h, theme, alt, screens, html }) => ({ key, w, h, theme, alt, ...(screens ? { screens } : {}), html })), inputs };
+    views: gp.views.map(({ key, w, h, theme, alt, screens, contrast, html }) => ({ key, w, h, theme, alt, ...(screens ? { screens } : {}), ...(contrast ? { contrast } : {}), html })), inputs };
   fs.writeFileSync(path.join(dir, `${spec.id.toLowerCase()}.json`), JSON.stringify(out, null, 1));
   console.log(`  plate ${spec.id}: ${gp.views.length} frame(s), ${Object.keys(inputs).length} inputs -> ${path.relative(ROOT, path.join(dir, spec.id.toLowerCase() + '.json'))}`);
 }
@@ -463,7 +463,9 @@ ${r.head_links || ''}
           const pid = `${spec.id.toLowerCase()}-${key}`;
           const part = r.part === 'footer' ? 'footer' : r.part === 'masthead' ? 'masthead' : 'page';
           const html = r.body({ pid, theme: t, theme_for: pid, part, width: wv.w, vh: wv.vh, open: open_ });
-          fs.writeFileSync(mp, head_of(spec.id, null) + `<body>${r.sprite}${html}</body></html>`);
+          // a crop's page takes the frame's theme on its root too, so a crop that ends on a fraction of a pixel shows the
+          // frame's own ground there before and after pruning (chapter 20's frames, which are no crops, keep their page)
+          fs.writeFileSync(mp, head_of(spec.id, crop ? t : null) + `<body>${r.sprite}${html}</body></html>`);
           const p = await browser.newPage({ viewport: { width: wv.w, height: wv.vh }, deviceScaleFactor: 1 });
           await p.goto('file://' + mp, { waitUntil: 'load' });
           await p.evaluate(() => document.fonts.ready);
@@ -524,7 +526,16 @@ ${r.head_links || ''}
           const frame_html = y0 ? `<div class="oa-app-crop" style="margin-top:-${y0}px">${sym.html}</div>` : sym.html;
           // W6 and ED11-4: the application's words end in a period, then the view's own sentence
           const alt = r.view_alt ? r.view_alt(key) : `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark theme'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
-          views.push({ key, w: wv.w, h, theme: t, alt, ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}),
+          // chat 11c (Rule 21.15): an atlas page's full-length view carries the contrast measured on its capture's pixels,
+          // for Rule 21.15's ratio table (tools/atlas_contrast.py)
+          let contrast = null;
+          const cap = spec.type === 'atlas-page' && !kind && facts.views.find((x) => x.width === wv.w && x.theme === t && x.png);
+          if (cap && o.export) {
+            const ac = spawnSync('python3', ['-I', path.join(KIT, 'tools/atlas_contrast.py'), path.join(o.exports, cap.png), t], { encoding: 'utf8' });
+            if (ac.status !== 0) throw new Error('atlas contrast: ' + (ac.stderr || ac.stdout));
+            contrast = JSON.parse(ac.stdout);
+          }
+          views.push({ key, w: wv.w, h, theme: t, alt, ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}), ...(contrast ? { contrast } : {}),
             html: frame({ w: wv.w, h, html: frame_html, alt, page: { id: spec.id, key, type: spec.type } }) });
           heights[key] = h;
         }
@@ -622,11 +633,12 @@ ${r.head_links || ''}
     await browser.close();
   }
   if (o.export && manifest.files.length) {
-    const mf = path.join(o.exports, `${o.date}_Phase-4-Exports-Manifest.json`);
-    // chat 11: one manifest for the folder; a build of some applications replaces their entries and keeps the others'
+    // chat 11: one manifest for the folder; a build of some applications replaces their entries and keeps the others'.
+    // chat 11c: the manifest keeps the date it was first written (CLAUDE.md; D4-231), whatever --date the exports take
     const built = new Set(manifest.files.map((f) => f.spec));
     let prev = null;
     const olds = fs.readdirSync(o.exports).filter((f) => /^\d{8}_Phase-4-Exports-Manifest\.json$/.test(f)).sort();
+    const mf = path.join(o.exports, olds.length ? olds[0] : `${o.date}_Phase-4-Exports-Manifest.json`);
     if (olds.length) prev = JSON.parse(fs.readFileSync(path.join(o.exports, olds[olds.length - 1]), 'utf8'));
     if (prev) manifest.files = prev.files.filter((f) => !built.has(f.spec)).concat(manifest.files);
     for (const f of olds) if (path.join(o.exports, f) !== mf) fs.unlinkSync(path.join(o.exports, f));

@@ -157,7 +157,7 @@ def check_view(view, exports, kind):
             res["faults"].append(f"{len(small)} word run(s) under {view['floor_px']} px")
     working = [r for r in view["reds"] if r == "working"]
     res["red"] = {"working": len(working), "signature": len([r for r in view["reds"] if r == "signature"])}
-    if kind == "web-site" and view.get("vh"):
+    if kind in ("web-site", "atlas-page") and view.get("vh"):
         # chat 11: on a long page a view is one window (Rule 05.3 read as DR-310 reads Rule 05.1): two working reds with
         # different jobs may not stand within one window of each other; marks of one job (the take-part mark and the ask,
         # Rule 11.4) may share a view
@@ -267,7 +267,7 @@ def main(out_dir, exports, report=None):
                 nsh = r["shares"]["newsprint"]
                 if v["sign_off"].get("ground", "newsprint") == "newsprint" and not 60 <= nsh <= 85:
                     r["faults"].append(f"Newsprint covers {nsh} percent, outside Rule 05.1's 60 to 85")
-            if facts["type"] in ("web-page", "web-site") and v.get("vh"):
+            if facts["type"] in ("web-page", "web-site", "atlas-page") and v.get("vh"):
                 # chat 11 (contract C5, DR-310): Rule 05.1 by screen, the first and each section's opening screen
                 r["screens"] = screen_shares.measure(exports / v["png"], v["vh"], v.get("sections") or [], v.get("dark") or [],
                                                      v.get("theme", "light"), v.get("width"))
