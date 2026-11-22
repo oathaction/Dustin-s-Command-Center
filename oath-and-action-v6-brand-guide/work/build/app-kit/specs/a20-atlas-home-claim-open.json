@@ -1,0 +1,34 @@
+{
+ "id": "A20",
+ "type": "atlas-page",
+ "guide": true,
+ "state": true,
+ "of": "A11",
+ "view": "home",
+ "pressed_question": "PW06",
+ "every_variable": false,
+ "claim_open": true,
+ "panels": [
+  "System"
+ ],
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, sections 12 and 13 (Rule 21.7)",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light-answer"
+ ],
+ "export_name": "Atlas-Home-Claim-Open",
+ "alt": "Our systems atlas’s home page with Claim CL1340’s record open.",
+ "plate_head": "Atlas home, a claim open",
+ "plate_line": "Drawn by the application kit at build."
+}

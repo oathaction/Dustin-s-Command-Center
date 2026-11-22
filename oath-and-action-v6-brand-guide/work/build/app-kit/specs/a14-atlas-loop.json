@@ -28,7 +28,12 @@
   "1440-dark",
   "390-dark",
   "1440-light-screen",
-  "390-light-screen"
+  "390-light-screen",
+  "1440-light-top",
+  "390-light-open-top",
+  "1440-light-rowl14",
+  "1440-dark-drawing",
+  "1440-dark-chooser"
  ],
  "export_name": "Atlas-Loop-R18-Page",
  "alt": "Loop R18’s page in our systems atlas.",

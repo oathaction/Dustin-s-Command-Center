@@ -1,0 +1,32 @@
+{
+ "id": "A15",
+ "type": "atlas-page",
+ "guide": true,
+ "view": "loop-index",
+ "panels": [
+  "Reinforcing"
+ ],
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, section 11.1; chapter 21's plan, Rule 21.14",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "390-light",
+  "1440-light-screen",
+  "390-light-screen"
+ ],
+ "export_name": "Atlas-Loop-Index-Page",
+ "alt": "The loop index of our systems atlas.",
+ "plate_head": "Loop index",
+ "plate_line": "Drawn by the application kit at build."
+}

@@ -1,0 +1,44 @@
+{
+ "id": "A13",
+ "type": "atlas-page",
+ "guide": true,
+ "view": "register",
+ "open_sheet": "D04",
+ "filter": [
+  "D4"
+ ],
+ "filters_open": true,
+ "panels": [
+  "Index",
+  "Sheet"
+ ],
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, sections 0 to 7 and 10; chapter 21's plan, section 3.4",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "390-light",
+  "1440-dark",
+  "390-dark",
+  "1440-light-screen",
+  "390-light-screen",
+  "390-light-rejected",
+  "390-light-records",
+  "390-dark-records",
+  "1440-light-rowl14"
+ ],
+ "export_name": "Atlas-Register-D04-Page",
+ "alt": "The Register of our systems atlas, with sheet D04 open.",
+ "plate_head": "The Register",
+ "plate_line": "Drawn by the application kit at build."
+}

@@ -60,6 +60,16 @@ def c15():
         # it has no entry for. The entry is set here, in this process only: no article, singular, as chapter 15 sets for
         # its other policy variables ("presidential action without new legislation rises"). Chapter 15's file is untouched.
         m.SAY.setdefault("D2", ("", False))
+        # chapter 15's conn() draws a red target on a solid line only; the data lead's R14 (and the design director's
+        # DD-11C-5) set the red target on a patterned line, which this process draws through the same call, so every
+        # loop drawing of chapter 15 places it and its words as for a solid target. Chapter 15's file is untouched.
+        orig = m.conn
+
+        def conn(pts, grade=None, sign=None, delay=None, authority=False, hollow=False, w=m.LW, target=False):
+            if target and not hollow and not authority and m.tex(grade) != "solid":
+                return red_patterned(m, pts, grade, sign, delay)
+            return orig(pts, grade, sign, delay, authority=authority, hollow=hollow, w=w, target=target)
+        m.conn = conn
         _C15 = m
     return _C15
 
@@ -67,6 +77,44 @@ def c15():
 def need(cond, msg):
     if not cond:
         raise SystemExit(f"atlas_figures: {msg}")
+
+
+def red_patterned(m, pts, grade, sign, delay):
+    """Rule 12.5's red target on a patterned connection, by the data lead's R14: the 28 px lead-in solid, red at 4 px on
+    the 6 px case, carrying the ticks; then the pattern at 4 px (16 and 8 px dashed), fitted by System 1's fitted() from the
+    lead-in's own gap to the 6 px arrowhead's base; the case on the red's rhythm, each case dash 2 px longer, set 1 px
+    back; tag, ticks and arrowhead at the 6 px sizes from System 1's wire_marks(lit=True), as chapter 15's solid target."""
+    BS = m.BS
+    tex = m.tex(grade)
+    marks, _, _ = BS.wire_marks(pts, grade, sign if sign in ("+", "-") else None, delay, m.LW, lit=True)
+    marks = re.sub(r'<path class="ak-(?:case|mark)"[^>]*/>', "", marks)          # the lines are drawn below
+    full = [tuple(x) for x in pts]
+    total = BS.path_len(full)
+    arr, _ = BS.pattern(tex, 4)
+    need(arr is not None and tex != "dotted", f"R14 draws a dashed or dash-dot red target; {tex} waits for a ruling")
+    gap = arr[-1]
+    s0, end = m.LEAD + gap, total - BS.ARROW[6][0]
+    rest = m.cut(full, s0, end)
+    run = m.rounded_len(rest, m.BEND)
+    need(run >= 20 * 4, f"a red {tex} target runs {run:.0f} px after its lead-in, under 80 px (R14: its grade word goes beside it)")
+    need(run >= 2 * sum(arr), f"a red {tex} target holds under two periods ({run:.0f} px); R14 asks the data lead to rule")
+    red_da = [float(x) for x in BS.fitted(tex, 4, run).split()]
+    case_da = [x + 2 if i % 2 == 0 else x - 2 for i, x in enumerate(red_da)]
+    lead = m.cut(full, 0, m.LEAD)
+    F = BS.f
+    poly = lambda q: f"M{F(q[0][0])} {F(q[0][1])}" + "".join(f"L{F(x)} {F(y)}" for x, y in q[1:])
+    lead_d = poly(lead)
+    da = lambda a: " ".join(f"{x:.2f}" for x in a)
+    # the case rides the red's own path, its pattern set 1 px back (dashoffset 1), so every corner bends alike; the 1 px
+    # before the first dash and after the last, which a path cannot reach behind its ends, are two short straight stubs
+    stubs = poly(m.cut(full, s0 - 1, s0)) + poly(m.cut(full, end, end + 1))
+    lines = (f'<path class="ak-case" d="{lead_d}"/>'
+             f'<path class="ak-case" d="{BS.rounded_d(rest, m.BEND)}" stroke-dasharray="{da(case_da)}" stroke-dashoffset="1"/>'
+             f'<path class="ak-case" d="{stubs}"/>'
+             f'<path class="ak-mark" d="{lead_d}" stroke-width="{m.LW}"/>'
+             f'<path class="ak-mark" d="{BS.rounded_d(rest, m.BEND)}" stroke-width="{m.LW}" stroke-dasharray="{da(red_da)}"/>')
+    marks = lines + marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "").replace('class="rail"', 'class="rl"')
+    return marks, full
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -198,7 +246,9 @@ def reform_rec(rid):
             "band_words": V["leverage"]["bands"].get(r["band"]), "targets": r["targets"], "loops": r["loops"],
             "rejected": bool(r.get("rejected")),
             "problem": {"grade": grade(r["problem_evidence"]["grade"]), "text": r["problem_evidence"]["text"]},
-            "remedy": {"grade": grade(r["remedy_evidence"]["grade"]), "text": r["remedy_evidence"]["text"]},
+            "remedy": {"grade": grade(r["remedy_evidence"]["grade"]), "text": r["remedy_evidence"]["text"],
+                       # the data lead's R15: one sentence splitter for the kit and the test, System 1's sentences()
+                       "sentences": c15().BS.sentences(r["remedy_evidence"]["text"])},
             "effects": [{"family": k, "name": fam[k], "code": r["effects"][k], "pips": pips(r["effects"][k])} for k in ("DQ", "GE", "EP", "EQ")],
             "effects_confidence": r["effects_confidence"],
             "routes": [{"code": x["route"], "name": routes.get(x["route"]), "who": x["who"], "feasibility": x["feasibility"],
@@ -290,6 +340,25 @@ def grade_sample(g):
     return C13.line_svg(g, w=C13.KEY_W)
 
 
+def sign_samples():
+    """Rule 15.3's sign tag at 2 px for a table cell, by System 1's tag_shape, and authority's open diamond (Rule 15.5)."""
+    BS = c15().BS
+    out = {}
+    for sg in ("+", "-"):
+        out[sg] = (f'<svg class="ln wa-tagm" viewBox="0 0 22 16" width="22" height="16" aria-hidden="true" focusable="false">'
+                   + BS.tag_shape(11, 8, 1, 0, sg, 2) + "</svg>")
+    out["none"] = ('<svg class="ln wa-tagm" viewBox="0 0 22 16" width="22" height="16" aria-hidden="true" focusable="false">'
+                   + BS.diamond_shape(18, 8, 1, 0) + "</svg>")
+    return out
+
+
+def tick_samples():
+    """Rule 13.5's delay ticks at 2 px for a table cell, by System 1's tick_marks."""
+    BS = c15().BS
+    return {k: (f'<svg class="ln wa-tickm" viewBox="0 0 28 16" width="28" height="16" aria-hidden="true" focusable="false">'
+                + BS.tick_marks(-8, 8, 1, 0, n, 2) + "</svg>") for k, n in (("S", 1), ("M", 2), ("L", 3))}
+
+
 def record_square():
     return c15().C13.rsq()
 
@@ -306,7 +375,9 @@ def loop_figure(lid, targets=()):
     wk = weakest_step(lid)                       # the data lead's R8
     weakest = lids.index(wk) if wk else None
     kind = "reinforcing" if lp["type"] == "R" else "balancing"
-    drawable = {t for t in targets if t in C.NODE or (t in C.LINK and C.tex(C.link(t)["evidence"]) == "solid")}
+    # every target of the chosen reform turns red: a pill, a solid connection by chapter 15's conn(), a patterned one by
+    # R14's red_patterned() through the same call; a target that is not on this drawing is named in words by the page
+    drawable = {t for t in targets if t in C.NODE or (t in C.LINK and C.tex(C.link(t)["evidence"]) in ("solid", "dashed", "dash-dot"))}
     not_red = [t for t in targets if t not in drawable]
     if len(codes) == 2:
         body, h, _ = C.two_loop(codes, lids, weakest=weakest, inside=(lid, kind), top=4, targets=drawable)
@@ -408,7 +479,264 @@ def view_reform(spec):
             "figure": fig and {k: fig[k] for k in ("svg", "h", "red")}}
 
 
-VIEWS = {"loop": view_loop, "reform": view_reform}
+def sheet_ids():
+    return [d["id"] for d in model()["domains"]] + ["EC", "TC"]
+
+
+def view_register(spec):
+    """The Register (plan 3.4; specs 10): the index by R2's methods, and the open sheet's variables, connections, rejected
+    option, connections reviewed and not drawn, and issue records with their filters."""
+    V = model()
+    N, L, LO, RF, IS = V["nodes"], V["links"], V["loops"], V["reforms"], V["issues"]
+    num = [k for k, x in LO.items() if not x["closure"].startswith("conceptual")]
+    rows = []
+    for sh in sheet_ids():
+        d = next((x for x in V["domains"] if x["id"] == sh), None)
+        vs = [n for n in N if sheet(n) == sh]
+        ls = [k for k, x in L.items() if sheet(x["to"]) == sh]
+        rows.append({"id": sh, "domain": bool(d), "title": d["title"] if d else V["layers"]["economy" if sh == "EC" else "technology"]["title"],
+                     "variables": len(vs), "connections": len(ls),
+                     "loops": sum(1 for k in num if any(c[0] in vs for c in LO[k]["chain"])),
+                     "reforms": sum(1 for r in RF.values() if (set(vs) | set(ls)) & set(r["targets"]) and not r.get("rejected")),
+                     "issues": len(d["issues"]) if d else None,
+                     "grades": {g: sum(1 for k in ls if L[k]["evidence"] == g) for g in GRADE_ORDER}})
+    whole = {"variables": len(N), "connections": len(L), "loops": len(num), "reforms": sum(1 for r in RF.values() if not r.get("rejected")),
+             "issues": len(IS), "retired": sum(1 for x in IS.values() if x.get("retired")),
+             "grades": {g: sum(1 for x in L.values() if x["evidence"] == g) for g in GRADE_ORDER}}
+    sh = spec.get("open_sheet")
+    need(sh in sheet_ids(), f"no sheet {sh}")
+    d = next((x for x in V["domains"] if x["id"] == sh), None)
+    vs = [n for n in N if sheet(n) == sh]
+    ls = [k for k, x in L.items() if sheet(x["to"]) == sh]
+    rej = [reform_rec(k) for k, r in RF.items() if r.get("rejected") and (set(vs) | set(ls)) & set(r["targets"])]
+    reviewed = []
+    for x in V["rejectedLinks"]:
+        a, b = x["from"].split(":")[0], x["to"].split(":")[0]
+        if b in N and sheet(b) == sh:
+            reviewed.append({"id": x["id"], "from": a, "to": b, "from_title": N[a]["title"] if a in N else x["from"],
+                             "to_title": N[b]["title"], "reason": x["reason"], "status": x["status"]})
+    on = [v for v in (spec.get("filter") or []) if v in vs]
+    issues = d["issues"] if d else []
+    recs = [{"id": i, "title": IS[i]["title"], "grade": grade(IS[i]["grade"].replace("_", "-")), "nodes": [n for n in (IS[i]["nodes"] or []) if n in vs],
+             "shown": not on or bool(set(IS[i]["nodes"] or []) & set(on))} for i in issues]
+    return {"rows": rows, "whole": whole, "sheet": {"id": sh, "domain": bool(d), "title": rows[sheet_ids().index(sh)]["title"],
+            "question": d["everyday_question"] if d else None, "variables": [var_rec(n) for n in vs],
+            "connections": [link_rec(k) for k in ls], "rejected": rej, "reviewed": reviewed, "records": recs,
+            "filter": on, "filter_counts": {v: sum(1 for r in recs if v in r["nodes"]) for v in vs},
+            "shown": sum(1 for r in recs if r["shown"])}}
+
+
+def view_loop_index(spec):
+    """The loop index (Rule 21.14; specs 11.1): every loop, reinforcing then balancing, in the atlas's order."""
+    V = model()
+    out = {"R": [], "B": []}
+    for k, lp in V["loops"].items():
+        conc = lp["closure"].startswith("conceptual")
+        out[lp["type"]].append({"id": k, "title": lp["title"], "closure": lp["closure"], "evidence": lp["evidence"], "conceptual": conc,
+                                "steps": None if conc else len(lp["links"]),
+                                "minus": None if conc else sum(1 for x in lp["links"] if V["links"][x]["polarity"] == "-")})
+    return {"groups": [{"type": t, "loops": out[t]} for t in ("R", "B")]}
+
+
+def view_how_to_read(spec):
+    """How to read (specs 11.2): each mark drawn by chapter 13's and 15's code at its true size."""
+    C = c15()
+    C13 = C.C13
+    marks = {
+        "sign_up": C13.line_svg("documented", w=C13.STEP_W, sign="+"), "sign_down": C13.line_svg("documented", w=C13.STEP_W, sign="-"),
+        "authority": re.sub(r"<g class=\"wr\">|</g>$", "", ""),
+        "grades": {g: grade_sample(g) for g in GRADE_ORDER}, "record_square": record_square(),
+        "ticks": {k: C13.line_svg("documented", w=C13.STEP_W, delay=k) for k in ("S", "M", "L")},
+        "hollow": C13.line_svg(None, w=C13.STEP_W, hollow=True),
+        "red": C13.line_svg("documented", w=148, sign="+", target=True),
+    }
+    # authority's open diamond, drawn by System 1's wire_marks on a short line (Rule 15.5)
+    m, _, _ = C.BS.wire_marks([(1, 8), (C13.STEP_W - 1, 8)], "documented", None, None, 2, lit=False, authority=True)
+    marks["authority"] = (f'<svg class="ln" viewBox="0 0 {C13.STEP_W} 16" width="{C13.STEP_W}" height="16" aria-hidden="true" focusable="false">'
+                          + re.sub(r'<path class="ak-case"[^>]*/>', "", m).replace(' fill="none"', "") + "</svg>")
+    return {"marks": marks}
+
+
+def view_home(spec):
+    """The atlas home (plan 3.2; specs 12): the parts, the flows by R2's methods, the hubs and their questions, the pressed
+    question's parts (R6) and its answer's figure, linked to the claim that holds it (R5)."""
+    V = model()
+    ps = parts()
+    fl = flows()
+    pw = None
+    if spec.get("pressed_question"):
+        pw = next((x for x in V["pathways"] if x["id"] == spec["pressed_question"]), None)
+        need(pw, f"no pathway {spec['pressed_question']}")
+    lit = sorted({part(v) for v in pw["model_refs"]["nodes"]}, key=PART_ORDER.index) if pw else []
+    hubs = [{"id": h["id"], "title": h["title"], "questions": [{"id": x["id"], "question": x["question"],
+                                                                "parts": sorted({part(n) for n in x["model_refs"]["nodes"]}, key=PART_ORDER.index)}
+                                                               for x in V["pathways"] if x["hub"] == h["id"]]}
+            for h in V["hubs"]]
+    answer = None
+    if pw:
+        # R5: the figure in the stored answer and the claim among the pathway's claims whose text holds the same figure
+        # and year; none or more than one stops the build
+        figs = []
+        for m in re.finditer(r"(\d[\d,.]*%)( of [^.]*? in (\d{4}))?", pw["short_answer"]):
+            pct, yr = m.group(1), m.group(3)
+            hits = [c for c in pw["claim_ids"] if pct in V["claims"][c]["claim"] and (not yr or yr in V["claims"][c]["claim"])]
+            need(len(hits) == 1, f"the figure {pct} in {pw['id']}'s answer matches {len(hits)} claims (R5)")
+            c = V["claims"][hits[0]]
+            figs.append({"text": m.group(0), "claim": hits[0], "record": {**{k: c[k] for k in ("claim", "population", "jurisdiction", "period", "limitation")},
+                         "grade": grade(c["confidence"]), "sources": [{"id": s_, **{f: V["sources"][s_].get(f) for f in ("publisher", "title", "year", "url")}} for s_ in c["sources"]]}})
+        answer = {"text": pw["short_answer"], "figures": figs, "sources": len(pw["source_ids"])}
+    pills = {}
+    if False:
+        C = c15()
+        for p_ in ps:
+            for v in p_["variables"]:
+                # chapter 15's pill at the box's inner width, its title wrapped by rows_of; chapter 15's own Pill()
+                # refuses a title past three rows (ruling (e)), so the rows are read here and a longer title reported
+                t = N_title(v)
+                rows = C.rows_of(t, 164 - 2 * C.PAD)
+                pills[v] = {"title": t, "h": max(len(rows) * C.LH + 22, 44), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
+    if not pills:                          # the switch on the working page opens every box, so the pills are always drawn
+        C = c15()
+        for p_ in ps:
+            for v in p_["variables"]:
+                t = N_title(v)
+                rows = C.rows_of(t, 164 - 2 * C.PAD)
+                pills[v] = {"title": t, "h": max(len(rows) * C.LH + 22, 44), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
+    closed = home_drawing(fl, False, pills, ps)
+    opened = home_drawing(fl, True, pills, ps)
+    return {"parts": ps, "flows": fl, "lit": lit, "hubs": hubs, "pressed": spec.get("pressed_question"), "answer": answer,
+            "every_variable": bool(spec.get("every_variable")), "pills": pills, "drawing": closed, "drawing_open": opened,
+            "claim_open": bool(spec.get("claim_open"))}
+
+
+def home_drawing(flows_, every=False, pills=None, parts_=None):
+    """The home drawing's wide form (specs 12.2): eight boxes and one orthogonal arrow a directed pair, routed by the design
+    director's table, each count at its place, the main circuit in the essential ink and the rest in the subtle ink, every
+    crossing a break in the line that yields (a main line runs on; else the lower count breaks; on a tie, the vertical).
+    Boxes are returned as rectangles for the page to draw in HTML; the arrows as one SVG. Stops on a pair with no route."""
+    BS = c15().BS
+    F = BS.f
+    pills = pills or {}
+    PW_GAP = 8
+    X0 = {"A": 48, "B": 303, "C": 558, "D": 813, "E": 1068}
+    W = 196
+    vs = {p_["id"]: p_["variables"] for p_ in parts_}
+    ph = lambda v: pills[v]["h"] if every and v in pills else 0
+
+    def stack(ids):                       # one pill a row
+        return sum(ph(v) + PW_GAP for v in ids) if every else 0
+
+    def grid(ids, cols):                  # pills in columns, each row as tall as its tallest
+        if not every:
+            return 0
+        rows = [ids[i:i + cols] for i in range(0, len(ids), cols)]
+        return sum(max(ph(v) for v in r) + PW_GAP for r in rows)
+    band_h = 56 + (max((ph(v) for v in vs["X"]), default=0) + PW_GAP if every else 0)
+    yb = band_h
+    yc = yb + 56
+    hc = 168 + max(stack(vs[k]) for k in X0)
+    ycb = yc + hc
+    yl = ycb + 112
+    hl = 104 + max(grid(vs["EC"], 3), grid(vs["TC"], 2))
+    ylb = yl + hl
+    H = ylb + 56
+    boxes = {"X": (48, 0, 1216, band_h), **{k: (x, yc, W, hc) for k, x in X0.items()}, "EC": (48, yl, 706, hl), "TC": (813, yl, 451, hl)}
+    A, B, C, D, E = (X0[k] for k in "ABCDE")
+    R = {   # pair: (points, count place (x, y, anchor))
+        ("X", "A"): ([(A + 24, yb), (A + 24, yc)], (A + 30, yc - 10, "start")),
+        ("X", "B"): ([(B + 24, yb), (B + 24, yc)], (B + 30, yc - 10, "start")),
+        ("X", "C"): ([(C + 98, yb), (C + 98, yc)], (C + 104, yc - 10, "start")),
+        ("X", "D"): ([(D + 172, yb), (D + 172, yc)], (D + 178, yc - 10, "start")),
+        ("X", "E"): ([(E + 172, yb), (E + 172, yc)], (E + 178, yc - 10, "start")),
+        ("X", "EC"): ([(48, yb / 2), (36, yb / 2), (36, yl + 56), (48, yl + 56)], (42, yl - 10, "start")),
+        ("X", "TC"): ([(1264, yb / 2), (1276, yb / 2), (1276, yl + 56), (1264, yl + 56)], (1270, yl - 10, "end")),
+        ("B", "E"): ([(B + 120, yc), (B + 120, yb + 24), (E + 40, yb + 24), (E + 40, yc)], ((B + 120 + E + 40) / 2, yb + 18, "middle")),
+        ("A", "B"): ([(A + W, yc + 40), (B, yc + 40)], ((A + W + B) / 2, yc + 34, "middle")),
+        ("B", "C"): ([(B + W, yc + 40), (C, yc + 40)], ((B + W + C) / 2, yc + 34, "middle")),
+        ("C", "D"): ([(C + W, yc + 40), (D, yc + 40)], ((C + W + D) / 2, yc + 34, "middle")),
+        ("D", "E"): ([(D + W, yc + 40), (E, yc + 40)], ((D + W + E) / 2, yc + 34, "middle")),
+        ("C", "B"): ([(C, yc + 88), (B + W, yc + 88)], ((B + W + C) / 2, yc + 104, "middle")),
+        ("D", "C"): ([(D, yc + 88), (C + W, yc + 88)], ((C + W + D) / 2, yc + 104, "middle")),
+        ("E", "D"): ([(E, yc + 88), (D + W, yc + 88)], ((D + W + E) / 2, yc + 104, "middle")),
+        ("E", "A"): ([(E + W, yc + 120), (1300, yc + 120), (1300, ylb + 48), (12, ylb + 48), (12, yc + 120), (A, yc + 120)], (656, ylb + 42, "middle")),
+        ("E", "EC"): ([(E + W, yc + 152), (1288, yc + 152), (1288, ylb + 24), (700, ylb + 24), (700, ylb)], (994, ylb + 18, "middle")),
+        ("D", "B"): ([(D + 16, ycb), (D + 16, ycb + 20), (B + 180, ycb + 20), (B + 180, ycb)], ((D + 16 + B + 180) / 2, ycb + 14, "middle")),
+        ("B", "D"): ([(B + 156, ycb), (B + 156, ycb + 40), (D + 40, ycb + 40), (D + 40, ycb)], ((B + 156 + D + 40) / 2, ycb + 34, "middle")),
+        ("D", "EC"): ([(D + 100, ycb), (D + 100, ycb + 60), (784, ycb + 60), (784, yl + 28), (754, yl + 28)], ((D + 100 + 784) / 2, ycb + 54, "middle")),
+        ("TC", "B"): ([(D + 72, yl), (D + 72, ycb + 80), (B + 120, ycb + 80), (B + 120, ycb)], ((D + 72 + B + 120) / 2, ycb + 74, "middle")),
+        ("TC", "A"): ([(D + 48, yl), (D + 48, ycb + 104), (A + 150, ycb + 104), (A + 150, ycb)], ((D + 48 + A + 150) / 2, ycb + 98, "middle")),
+        ("A", "EC"): ([(A + 60, ycb), (A + 60, yl)], (A + 66, (ycb + yl) / 2 + 5, "start")),
+        ("EC", "A"): ([(A + 100, yl), (A + 100, ycb)], (A + 106, (ycb + yl) / 2 + 5, "start")),
+        ("D", "TC"): ([(D + 130, ycb), (D + 130, yl)], (D + 136, (ycb + yl) / 2 + 5, "start")),
+        ("TC", "D"): ([(D + 170, yl), (D + 170, ycb)], (D + 176, (ycb + yl) / 2 + 5, "start")),
+        ("TC", "EC"): ([(813, yl + 72), (754, yl + 72)], ((813 + 754) / 2, yl + 66, "middle")),
+    }
+    by = {(f_["from"], f_["to"]): f_ for f_ in flows_}
+    need(set(by) <= set(R), f"pairs with no route in the specs' table: {sorted(set(by) - set(R))} (specs 12.2, ED-F10)")
+    segs = {k: list(zip(R[k][0], R[k][0][1:])) for k in by}
+
+    def cross(s1, s2):
+        (a, b), (c, d) = s1, s2
+        if (a[0] == b[0]) == (c[0] == d[0]):
+            return None                    # parallel orthogonal runs never cross here
+        v, h = (s1, s2) if a[0] == b[0] else (s2, s1)
+        x, y = v[0][0], h[0][1]
+        if min(h[0][0], h[1][0]) < x < max(h[0][0], h[1][0]) and min(v[0][1], v[1][1]) < y < max(v[0][1], v[1][1]):
+            return (x, y, v is s1)
+        return None
+    keys = sorted(by)
+    crossings = []
+    for i, k1 in enumerate(keys):
+        for k2 in keys[i + 1:]:
+            for s1 in segs[k1]:
+                for s2 in segs[k2]:
+                    c = cross(s1, s2)
+                    if c:
+                        x, y, k1_vertical = c
+                        m1, m2 = by[k1]["main"], by[k2]["main"]
+                        if m1 != m2:
+                            brk = k2 if m1 else k1
+                        elif by[k1]["count"] != by[k2]["count"]:
+                            brk = k1 if by[k1]["count"] < by[k2]["count"] else k2
+                        else:
+                            brk = k1 if k1_vertical else k2
+                        on = k2 if brk == k1 else k1
+                        crossings.append({"at": (x, y), "breaks": brk, "runs_on": on, "vertical_breaks": (brk == k1) == k1_vertical})
+    out = []
+    covers = []
+    for k in keys:
+        pts = R[k][0]
+        (x1, y1), (x2, y2) = pts[-2], pts[-1]
+        ux, uy = BS.unit(x2 - x1, y2 - y1)
+        body = pts[:-1] + [(x2 - ux * BS.ARROW[2][0], y2 - uy * BS.ARROW[2][0])]
+        cls = "mc" if by[k]["main"] else "of"
+        d = "M" + "L".join(f"{F(x)} {F(y)}" for x, y in body)
+        out.append((cls, f'<g class="{cls}" data-flow="{k[0]}>{k[1]}"><path class="ln" d="{d}"/>{BS.head_shape(x2, y2, ux, uy, 2)}</g>'))
+    for c in crossings:
+        x, y = c["at"]
+        # the yielding line stops 6 px either side of the line that runs on: a 14 by 4 px cut of the ground over it,
+        # then the line that runs on drawn again through the cut
+        w_, h_ = (4, 14) if c["vertical_breaks"] else (14, 4)
+        covers.append(f'<rect class="cut" x="{F(x - w_ / 2)}" y="{F(y - h_ / 2)}" width="{w_}" height="{h_}"/>')
+        on = R[c["runs_on"]][0]
+        cls = "mc" if by[c["runs_on"]]["main"] else "of"
+        seg = [(x - 8, y), (x + 8, y)] if c["vertical_breaks"] else [(x, y - 8), (x, y + 8)]
+        covers.append(f'<path class="ln {cls}" d="M{F(seg[0][0])} {F(seg[0][1])}L{F(seg[1][0])} {F(seg[1][1])}"/>')
+    labels = [f'<text class="n{" b" if by[k]["main"] else ""}" x="{F(R[k][1][0])}" y="{F(R[k][1][1])}"'
+              + (f' text-anchor="{R[k][1][2]}"' if R[k][1][2] != "start" else "")
+              + f' data-count="{by[k]["count"]}" data-count-of="flow:{k[0]}>{k[1]}">{by[k]["count"]}</text>' for k in keys]
+    svg = (f'<svg class="wa-flows" viewBox="0 0 1312 {F(H)}" width="1312" height="{F(H)}" aria-hidden="true" focusable="false">'
+           + "".join(x for c_, x in out if c_ == "of") + "".join(x for c_, x in out if c_ == "mc") + "".join(covers) + "".join(labels) + "</svg>")
+    return {"w": 1312, "h": H, "svg": svg, "boxes": {k: {"x": v[0], "y": v[1], "w": v[2], "h": v[3]} for k, v in boxes.items()},
+            "crossings": len(crossings), "crossing_list": [f"{c['breaks'][0]}>{c['breaks'][1]} breaks at {c['runs_on'][0]}>{c['runs_on'][1]}" for c in crossings]}
+
+
+def N_title(v):
+    return model()["nodes"][v]["title"]
+
+
+VIEWS = {"loop": view_loop, "reform": view_reform, "register": view_register, "loop-index": view_loop_index,
+         "how-to-read": view_how_to_read, "home": view_home}
 
 
 def build(spec):
@@ -418,12 +746,16 @@ def build(spec):
                      "snapshot": V["meta"]["snapshot"], "snapshot_words": words_date(V["meta"]["snapshot"])},
            "parts": parts(), "kind_words": list(KIND.values()),
            "effect_words": V["outcomes"]["effect_codes"],
-           "grade_samples": {g: grade_sample(g) for g in GRADE_ORDER}, "record_square": record_square(), "ids": id_index()}
+           "grade_samples": {g: grade_sample(g) for g in GRADE_ORDER}, "record_square": record_square(), "ids": id_index(),
+           "sign_samples": sign_samples(), "tick_samples": tick_samples(),
+           "counts": {"variables": len(V["nodes"]), "connections": len(V["links"]), "loops": len(V["loops"]), "reforms": len(V["reforms"]),
+                      "issues": len(V["issues"])}}
     fn = VIEWS.get(spec["view"])
     out["view"] = fn(spec) if fn else {}
     # the locator (Rule 12.7): the parts the page's record sits in
     v = out["view"]
-    codes = [x["id"] for x in v.get("variables", [])] or [t["id"] if "part" in t else t["to"] for t in v.get("targets", [])]
+    codes = ([x["id"] for x in v.get("variables", [])] or [t["id"] if "part" in t else t["to"] for t in v.get("targets", [])]
+             or [x["id"] for x in (v.get("sheet") or {}).get("variables", [])])
     out["locator"] = sorted({part(c) for c in codes}, key=PART_ORDER.index)
     out["figure_css"] = fig_css()
     # a module loaded from its cached bytecode opens no source file, so each loaded module's source counts as read too

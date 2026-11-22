@@ -1,0 +1,33 @@
+{
+ "id": "A17",
+ "type": "atlas-page",
+ "guide": true,
+ "state": true,
+ "of": "A11",
+ "view": "home",
+ "pressed_question": "PW06",
+ "every_variable": true,
+ "panels": [
+  "System"
+ ],
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, sections 12 and 13 (Rule 21.2)",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light-drawing"
+ ],
+ "export_name": "Atlas-Home-Every-Variable",
+ "alt": "Our systems atlas’s home page with every variable shown.",
+ "plate_head": "Atlas home, every variable",
+ "plate_line": "Drawn by the application kit at build."
+}

@@ -1,0 +1,35 @@
+{
+ "id": "A19",
+ "type": "atlas-page",
+ "guide": true,
+ "state": true,
+ "of": "A14",
+ "view": "loop",
+ "record": "R18",
+ "chosen_reform": "R-11",
+ "step": 2,
+ "panels": [
+  "Loop"
+ ],
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, sections 8 and 13 (Rule 21.13)",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "390-light-stepper",
+  "1440-dark-stepper"
+ ],
+ "export_name": "Atlas-Loop-R18-Step-2",
+ "alt": "Loop R18’s page in our systems atlas, the stepper on step 2.",
+ "plate_head": "Loop page, step 2",
+ "plate_line": "Drawn by the application kit at build."
+}

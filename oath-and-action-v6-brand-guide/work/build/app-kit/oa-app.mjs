@@ -84,6 +84,10 @@ function page_facts() {
     out.red_marks.push({ red: e.getAttribute('data-red'), job: e.getAttribute('data-red-job') || '', rect: [Math.round(r.left + scrollX), Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)] }); } });
   // chat 11 (contract C5): each section's top, from data-oa-section, and each element painted Charcoal or Prussian, the
   // outermost of nested ones, on the page (tools/screen_shares.py keeps those of 1 percent of a screen or more as panels)
+  // chat 11c (the data lead's R15): the lines each of a contested remedy's two readings takes, for the atlas test's report
+  out.readings = [...document.querySelectorAll('[data-reading]')].map((e) => { const r = document.createRange(); r.selectNodeContents(e);
+    return { n: e.getAttribute('data-reading'), reform: e.getAttribute('data-atlas-reform'), top: Math.round(e.getBoundingClientRect().top + scrollY),
+      lines: new Set([...r.getClientRects()].filter((x) => x.height > 4 && x.width > 1).map((x) => Math.round(x.top))).size }; });
   out.sections = [...document.querySelectorAll('[data-oa-section]')].map((e) => ({ name: e.getAttribute('data-oa-section'), top: Math.round(e.getBoundingClientRect().top + scrollY) }));
   const DARK = { 'rgb(18, 18, 18)': 'charcoal', 'rgb(31, 45, 90)': 'prussian' };
   const darkOf = (e) => DARK[getComputedStyle(e).backgroundColor];
@@ -358,11 +362,14 @@ ${r.head_links || ''}
         const page_html = (theme, fig_w = null) => head_of(r.title, theme) + `<body>${r.sprite}${r.body({ pid: 'site', theme: theme || 'device', fig_w }).replace(/id="site-main"/g, 'id="main"').replace(/href="#site-main"/g, 'href="#main"')}<script>${r.scripts.tail}</script></body>
 </html>
 `;
+        // chat 11c (contract C9): a content file marked "state" is a page in one state for a rule plate; it draws its frames
+        // and its facts and writes no export, since its page is the export of the application it is a state of
+        const exp = o.export && !spec.state;
         if (r.part === 'page') {
           const file = stem(spec.export_name) + '.html';
           const html = page_html(null);
           fs.writeFileSync(path.join(dir, 'export.html'), html);
-          if (o.export) { fs.writeFileSync(path.join(o.exports, file), html); manifest.files.push({ file, spec: spec.id, platform: 'website.page_1440', format: 'html', width: 1440, size: 'the working page, at any width', note: 'the working page; every width and theme is captured from it' }); }
+          if (exp) { fs.writeFileSync(path.join(o.exports, file), html); manifest.files.push({ file, spec: spec.id, platform: 'website.page_1440', format: 'html', width: 1440, size: 'the working page, at any width', note: 'the working page; every width and theme is captured from it' }); }
           facts.page_html = file;
         }
         const heights = {};
@@ -377,7 +384,7 @@ ${r.head_links || ''}
             await p.evaluate(() => document.fonts.ready);
             const f = await p.evaluate(page_facts);
             f.width = wv.w; f.vh = wv.vh; f.theme = t; f.checked = await p.evaluate(() => [...document.querySelectorAll('.oa-theme-input:checked')].map((x) => x.value));
-            if (o.export) {
+            if (exp) {
               const file = stem(`${spec.export_name}-${wv.w}-${t === 'light' ? 'Light' : 'Dark'}`) + '.png';
               await p.screenshot({ path: path.join(o.exports, file), fullPage: true });
               const ph = await p.evaluate(() => document.documentElement.scrollHeight);
@@ -397,7 +404,7 @@ ${r.head_links || ''}
             await p.close();
           }
           // R6 (the design director's request): each full-length view's screens by contract C5, for the plate's JSON
-          if (o.export) {
+          if (exp) {
             const items = facts.views.filter((v) => v.png && v.vh).map((v) => ({ key: `${v.width}-${v.theme}`, png: path.join(o.exports, v.png), vh: v.vh, sections: v.sections, dark: v.dark, theme: v.theme, width: v.width }));
             const bi = path.join(dir, 'screens-in.json'), bo = path.join(dir, 'screens-out.json');
             fs.writeFileSync(bi, JSON.stringify(items));
@@ -447,21 +454,38 @@ ${r.head_links || ''}
         const plate_symbols = {};
         const mp = path.join(dir, 'measure-frame.html');
         for (const key of spec.views || []) {
-          const [w, t, kind] = key.split('-');
+          // chat 11c (contract C9): a key may add the open state and a crop to a part, <w>-<theme>[-open][-<part>]
+          const [w, t, ...rest] = key.split('-');
+          const open_ = rest.includes('open');
+          const crop = rest.find((x) => x !== 'open' && x !== 'screen') || null;
+          const kind = rest.includes('screen') ? 'screen' : open_ && !crop ? 'open' : crop ? 'crop' : undefined;
           const wv = r.widths.find((x) => String(x.w) === w);
           const pid = `${spec.id.toLowerCase()}-${key}`;
           const part = r.part === 'footer' ? 'footer' : r.part === 'masthead' ? 'masthead' : 'page';
-          const html = r.body({ pid, theme: t, theme_for: pid, part, width: wv.w, vh: wv.vh, open: kind === 'open' });
+          const html = r.body({ pid, theme: t, theme_for: pid, part, width: wv.w, vh: wv.vh, open: open_ });
           fs.writeFileSync(mp, head_of(spec.id, null) + `<body>${r.sprite}${html}</body></html>`);
           const p = await browser.newPage({ viewport: { width: wv.w, height: wv.vh }, deviceScaleFactor: 1 });
           await p.goto('file://' + mp, { waitUntil: 'load' });
           await p.evaluate(() => document.fonts.ready);
           const full = await p.evaluate(() => Math.ceil(document.querySelector('.ws').getBoundingClientRect().height));
-          const h = kind === 'screen' || kind === 'open' ? wv.vh : full;
+          // a crop runs from its part's top to its foot; the part "top" runs from the page's top to 16 px into main (specs 4)
+          let y0 = 0, h = kind === 'screen' || kind === 'open' ? wv.vh : full;
+          if (crop) {
+            const box = await p.evaluate((name) => {
+              if (name === 'top') { const m = document.querySelector('.ws main'); return m ? { top: 0, bottom: Math.ceil(m.getBoundingClientRect().top + scrollY + 16) } : null; }
+              const e = document.querySelector(`.ws [data-oa-part="${name}"]`);
+              if (!e) return null;
+              const b = e.getBoundingClientRect();
+              return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY) };
+            }, crop);
+            if (!box) throw new Error(`${spec.id} ${key}: the page marks no data-oa-part="${crop}" (contract C9)`);
+            y0 = box.top; h = box.bottom - box.top;
+          }
+          if (y0 + h > wv.vh) await p.setViewportSize({ width: wv.w, height: Math.max(wv.vh, y0 + h) });
           // a frame is a picture, so it carries only what its width and window can show (bytes; no pixel moves): a closed
           // disclosure keeps its summary alone, an element the page sets display:none goes, and a one-window view drops
           // everything that starts below the window. The page is captured before and after, and the two must match.
-          const before = await p.screenshot({ clip: { x: 0, y: 0, width: wv.w, height: h } });
+          const before = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
           const pruned = await p.evaluate((limit) => {
             const root = document.querySelector('.ws');
             const out = [];
@@ -481,22 +505,23 @@ ${r.head_links || ''}
             }
             out.forEach((e) => e.remove());
             return { removed: out.length, html: root.outerHTML };
-          }, kind === 'screen' ? wv.vh : 0);
-          const after = await p.screenshot({ clip: { x: 0, y: 0, width: wv.w, height: h } });
+          }, kind === 'screen' ? wv.vh : crop ? y0 + h : 0);
+          const after = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
           const same = Buffer.compare(before, after) === 0;
           if (!same) throw new Error(`${spec.id} ${key}: pruning what the frame cannot show changed its pixels`);
           // step 4: each identity master by <use> of one symbol the page carries once; captured again, it must match
           const sym = symbolize(pruned.html);
           await p.evaluate(({ html, sprite_ }) => { const ws = document.querySelector('.ws'); ws.insertAdjacentHTML('beforebegin', sprite_); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); }, { html: sym.html, sprite_: identity_sprite(sym.symbols) });
           await p.evaluate(() => document.fonts.ready);
-          const again = await p.screenshot({ clip: { x: 0, y: 0, width: wv.w, height: h } });
+          const again = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
           await p.close();
           const same2 = Buffer.compare(after, again) === 0;
           if (!same2) throw new Error(`${spec.id} ${key}: drawing the identity masters by <use> changed the frame's pixels`);
           facts.pruned = facts.pruned || {};
           facts.pruned[key] = { removed: pruned.removed, bytes_before: Buffer.byteLength(html), bytes_after: Buffer.byteLength(pruned.html), bytes_symbolized: Buffer.byteLength(sym.html), pixels_same: same && same2 };
           Object.assign(plate_symbols, sym.symbols);
-          const frame_html = sym.html;
+          // a crop draws the page moved up by its part's top, inside a frame as tall as the part
+          const frame_html = y0 ? `<div class="oa-app-crop" style="margin-top:-${y0}px">${sym.html}</div>` : sym.html;
           // W6 and ED11-4: the application's words end in a period, then the view's own sentence
           const alt = r.view_alt ? r.view_alt(key) : `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark theme'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
           views.push({ key, w: wv.w, h, theme: t, alt, ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}),

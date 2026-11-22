@@ -55,6 +55,25 @@ FAMILIES = ["DQ", "GE", "EP", "EQ"]
 MINUS = "−"
 
 
+def _system1():
+    """System 1's build_system.py, for its sentences(): the one splitter the kit and this test share (the data lead's R15)."""
+    import importlib.util
+    sp = importlib.util.spec_from_file_location("oa_atlas_build_t", ROOT / "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py")
+    m = importlib.util.module_from_spec(sp)
+    sys.dont_write_bytecode = True
+    sp.loader.exec_module(m)
+    return m
+
+
+_S1 = []
+
+
+def SENTENCES(t):
+    if not _S1:
+        _S1.append(_system1())
+    return _S1[0].sentences(t)
+
+
 def part(v):
     x = N[v]
     return {"economy": "EC", "technology": "TC"}.get(x["layer"], x["cluster"])
@@ -82,6 +101,7 @@ def count_of(key, page):
             if k == "grade":
                 return sum(1 for x in L.values() if x["evidence"] == p[2])
             return {"variables": len(N), "connections": len(L), "loops": len(LO), "loops-numbered": sum(1 for k_ in LO if numbered(k_)),
+                    "loops-reinforcing": sum(1 for x in LO.values() if x["type"] == "R"), "loops-balancing": sum(1 for x in LO.values() if x["type"] == "B"),
                     "reforms": len(RF), "reforms-active": sum(1 for r in RF.values() if not r.get("rejected")), "issues": len(IS),
                     "issues-retired": sum(1 for x in IS.values() if x.get("retired")), "hubs": len(V["hubs"]), "pathways": len(V["pathways"])}[k]
         if p[0] == "hub":
@@ -114,6 +134,9 @@ def count_of(key, page):
             d = domain(p[1])
             on = page.filter_on()
             return sum(1 for i in d["issues"] if not on or set(IS[i]["nodes"] or []) & on)
+        if p[0] == "records-naming":       # the engineer's key, for each filter chip's count (sent to the data lead for R2)
+            d = domain(p[1])
+            return sum(1 for i in d["issues"] if p[2] in (IS[i]["nodes"] or []))
         if p[0] == "records-grade":
             d = domain(p[1])
             return sum(1 for i in d["issues"] if IS[i]["grade"] == p[2])
@@ -185,7 +208,7 @@ class Page:
         return self.root.select(sel) if self.root else []
 
     def filter_on(self):
-        return {i.get("value") for i in self.all('input[type="checkbox"][data-atlas-filter]') if i.has_attr("checked")}
+        return {b.get("data-atlas-filter") for b in self.all('[data-atlas-filter][aria-pressed="true"]')}
 
     def chosen(self):
         if self.view == "reform":
@@ -489,12 +512,38 @@ def t10(pg):
                 faults.append(f"the stored spelling {w!r} prints in place of its display word (Rule 13.3)")
     for el in pg.all("[data-grade]"):
         n += 1
+    # the data lead's R15: a contested remedy's two blocks rejoin to the stored text whole and in order, split at the
+    # sentence remedy_split names by the one splitter the kit uses, side by side at 1440 px, both open, the same type;
+    # each block's words and lines are reported, and length never fails
     pair = pg.all("[data-reading]")
     if pair:
         n += 1
-        ls = [len(text(x)) for x in pair]
-        if len(ls) != 2 or max(ls) - min(ls) > 75:
-            faults.append(f"a contested remedy prints {len(ls)} readings of {ls} characters; two within a line's length (H08)")
+        rid = pair[0].get("data-atlas-reform")
+        rec = RF.get(rid, {}).get("remedy_evidence", {})
+        norm = lambda t: re.sub(r"\s+", " ", t.replace("’", "'")).strip()
+
+        def words_of(b):
+            c = copy.copy(b)
+            for x in c.select(".wa-srcl"):
+                x.decompose()
+            return text(c)
+        blocks = [words_of(b) for b in pair]
+        if len(pair) != 2:
+            faults.append(f"Reform {rid}: the remedy prints in {len(pair)} blocks, two asked (R15)")
+        elif norm(" ".join(blocks)) != norm(rec.get("text", "")):
+            faults.append(f"Reform {rid}: the two blocks do not rejoin to the stored remedy text whole and in order (R15)")
+        else:
+            k = int(pair[0].get("data-split") or 0)
+            sents = SENTENCES(rec["text"])
+            if not 1 < k <= len(sents) or norm(" ".join(sents[:k - 1])) != norm(blocks[0]):
+                faults.append(f"Reform {rid}: the split falls elsewhere than sentence {k} of {len(sents)} by the shared splitter (R15)")
+            if any(in_any(b, ["details", "[hidden]"]) for b in pair) or len({tuple(b.get("class") or []) for b in pair}) != 1:
+                faults.append(f"Reform {rid}: the two blocks do not stand alike, open and in one type (R15)")
+            rd = (pg.facts or {}).get("readings") or []
+            if pg.key.endswith("1440-light") and len(rd) == 2 and rd[0]["top"] != rd[1]["top"]:
+                faults.append(f"Reform {rid}: at 1440 px the two blocks do not sit side by side, tops at {rd[0]['top']} and {rd[1]['top']} (R15)")
+            pg.report = (f"remedy contested, two blocks, {len(blocks[0].split())} and {len(blocks[1].split())} words"
+                         + (f", {rd[0]['lines']} and {rd[1]['lines']} lines" if len(rd) == 2 else ""))
     return faults, n
 
 
@@ -655,6 +704,8 @@ RETIRED = ["Times Explainer", "Yes on 3", "Veterans for All Voters", "Ranked Cho
 def t16(pg):
     faults, n = [], 1
     tx = text(pg.root) if pg.root else ""
+    if "⟦" in tx or "⟦" in str(pg.soup):
+        faults.append(f"a word the generator does not print yet: {sorted(set(re.findall(r'⟦([^⟧]+)⟧', str(pg.soup))))[:6]} (contract C9)")
     for w in RETIRED:
         if w in tx or (pg.title and w in pg.title):
             faults.append(f"{w!r} prints: a newspaper's name (ED-F8) or the editor's disclosure (DR-100)")
@@ -678,7 +729,8 @@ def run_page(pg, only=None):
         if faults:
             out += [(c, False, f"FAIL {c} {pg.where}: {f}") for f in faults]
         else:
-            out.append((c, True, f"PASS {c} {pg.where}: {NAMES[c].lower()}, {n} read"))
+            extra = getattr(pg, "report", None) if c == "T10" else None
+            out.append((c, True, f"PASS {c} {pg.where}: {NAMES[c].lower()}, {n} read" + (f"; {extra}" if extra else "")))
     return out
 
 
@@ -791,6 +843,7 @@ PLANTS = [
     ("T8", "loop", "[data-route]", lambda el, q: el.__setitem__("data-checked", RF[el["data-atlas-reform"]]["status"]["checked"]), "a route dated from its reform's status"),
     ("T9", "loop", "[data-evidence-href]", lambda el, q: (el.__setitem__("data-evidence-href", "/atlas/register/d01#register-l14"), el.__setitem__("href", "/atlas/register/d01#register-l14") if el.name == "a" else None), "a step's evidence linked to the wrong sheet"),
     ("T10", "loop", ".wa-gl", lambda el, q: el.append(NavigableString(" well-supported")), "a grade in its stored spelling"),
+    ("T10", "reform", '[data-reading="2"] .ws-p', lambda el, q: el.append(NavigableString(" An added sentence.")), "a remedy block that no longer rejoins to the stored text"),
     ("T11", "loop", ".oa-stepper-step", lambda el, q: el.__setitem__("data-oa-hold", "3200"), "a step held 3,200 ms (registers F-8, F-15)"),
     ("T12", "home", "[data-pathway][aria-pressed=\"true\"]", lambda el, q: [x.decompose() for x in el.select("svg")], "a pressed question with no check"),
     ("T13", "loop", "@style:-soup-contains('.ws ')", lambda el, q: el.append(NavigableString(".x{color:#ffffff}")), "a literal White in the page's style"),

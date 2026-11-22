@@ -121,54 +121,59 @@ W = {
     'title': 'The atlas',
     'instruction': 'Apply the system to the atlas, with typed IDs and evidence a step from every claim.',
     'intro': [
-        'Our systems atlas, Who Do They Answer To?, lives inside our website, under the site’s masthead, with a '
-        'title bar of its own. This chapter shows its four kinds of page: the home page, which draws the whole system '
-        'and starts from an everyday question; a page for each reform; the Register, which files each of the atlas’s '
-        '{connections} connections once with its evidence; and a page for each loop, which a reader can step through.',
-        'Chapter 15 sets how each mechanism is drawn, and these pages use its rules as they stand. What this chapter '
-        'adds is the page around the drawing. Every ID sits in a typed chip, every claim links to the record that grades '
-        'it, and every page passes the atlas test before it ships.'],
+        'Our systems atlas, Who Do They Answer To?, lives inside our website, under the site’s masthead, with a title '
+        'bar of its own. Its home page draws the whole system and starts from a question a reader brings. Each proposed '
+        'change the atlas weighs, a reform, has a page, and so does each loop, a chain of causes that returns to where it '
+        'started. The Register files every one of the atlas’s {connections} connections, the arrows from one variable to '
+        'another, once and with its evidence. An index lists the loops, and a page called How to read explains every '
+        'mark.',
+        'Chapter 15 sets how each mechanism is drawn, and these pages use its rules as they stand. This chapter covers '
+        'what a page adds around the drawing. A page names every ID in a typed chip, the label that gives the kind of '
+        'record with its code, and links every claim to the record that grades it. Before a page ships, the atlas test '
+        'checks each value it prints against the atlas’s own data.'],
     'groups': [
         ('21.1', 'The atlas in our website',
-         'The atlas sits under the site’s masthead with a title bar of its own, and its home page draws the whole '
-         'system and starts from a reader’s question.'),
+         'Every atlas page sits under the site’s masthead with the atlas’s own title bar, and the home page draws the '
+         'whole system and answers a reader’s question.'),
         ('21.4', 'A page for each record',
-         'A reform’s page reads its own record in the order a reader asks, and every ID on it opens the record it '
-         'names.'),
+         'A reform’s page answers a reader’s questions in order from its own record, and every chip and figure on it '
+         'opens the record behind it.'),
         ('21.8', 'The Register',
-         'The Register files each of the atlas’s connections once, with its sign, its grade and its source, and keeps '
-         'what the atlas rejected in view.'),
+         'The Register files each connection once, on one sheet, with its sign, grade and source, and keeps what the '
+         'atlas rejected in view.'),
         ('21.12', 'Loop pages',
-         'A loop page reads the loop’s signs aloud, names its weakest step and lets a reader step through it at a '
-         'pace they can follow.'),
-        ('21.15', 'The dark mode and the atlas test',
-         'The atlas reads the same on Charcoal, and every page passes one test against the model before it ships.'),
+         'A loop page reads the loop’s signs aloud and names its weakest step, and its stepper moves at a pace a reader '
+         'can follow.'),
+        ('21.15', 'The dark theme and the atlas test',
+         'The atlas keeps every mark on Charcoal, and each page passes one test against the atlas’s data before it '
+         'ships.'),
     ],
-    'opener_caption': 'The home page of our systems atlas inside our website, on Newsprint and in the dark mode at 1440 and '
-                      '390 pixels. A reader has pressed the question “Why can the same care produce different '
-                      'bills?”, and the drawing lights the three parts of the system it reaches.',
-    'opener_alt': 'The atlas home page four times: on a desktop at 1440 px and a phone at 390 px, each on Newsprint and in '
-                  'the dark mode. Each shows the site’s masthead, the atlas’s title bar, the drawing of the '
-                  'eight parts with a count on every flow, and the everyday questions, one of them pressed.',
+    'opener_caption': 'Our systems atlas’s home page inside our website, at 1440 and 390 px in the light and the dark '
+                      'theme. A reader has pressed a question about medical bills, and the drawing keeps the parts it '
+                      'reaches at full strength.',
+    'opener_alt': 'Four frames of the atlas’s home page, at 1440 px and 390 px, each in the light and the dark theme. '
+                  'Under the site’s masthead and the atlas’s Charcoal title bar, the atlas’s eight parts sit as boxes with '
+                  'a count on each arrow between them on the desktop, and as a stacked list on the phone. A question '
+                  'about medical bills is pressed, and the parts it reaches stay in full ink while the others are muted.',
     'related_chapters': [
-        ('05', 'One working red a view, the screens of Rule 05.1 and the marks that keep 3 to 1.'),
-        ('10', 'Rule 10.8: the atlas’s parts named in words, and the encoding glyphs.'),
-        ('12', 'The red target (Rule 12.5) and the atlas locator (Rule 12.7).'),
-        ('13', 'Grade words, the line code, delays, typed chips, dates and source lines.'),
+        ('05', 'One working red a view, and each section’s opening screen measured as Rule 05.1 sets.'),
+        ('10', 'The atlas’s parts named in words, with no icon (Rule 10.8).'),
+        ('12', 'The red target and the locator (Rules 12.5 and 12.7).'),
+        ('13', 'Grade words and lines, delay ticks, typed chips, dates and source lines.'),
         ('15', 'Every mechanism these pages draw.'),
         ('17', 'The pressed, muted and current looks, and the stepper’s motion.'),
         ('18', 'The chip, stepper, chooser, filters, toggle, disclosure and table.'),
-        ('19', 'The WCAG map these pages add to.'),
+        ('19', 'The accessibility map these pages add to.'),
         ('20', 'The masthead, menu, footer and theme switch the atlas sits in.'),
-        ('28', 'The atlas test’s lines in the standards checklist.'),
+        ('28', 'The atlas test’s lines on the standards checklist.'),
     ],
     'sources': [
-        'Source: our systems atlas, Who Do They Answer To?, Atlas V7, snapshot of {snapshot}, as extracted to the '
-        'studio’s model file and read by this chapter’s build.',
+        'Source: Oath & Action, Who Do They Answer To?, our systems atlas, snapshot of {snapshot}, read from its data '
+        'file at each build. Behind every value on the atlas’s pages.',
         'Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, '
-        'as our accessibility lead read and quoted it on November 21, 2026.',
-        'Source: the atlas concepts Field Manual, The Circuit, Who Can Act and Register, October 21, 2026, and the atlas '
-        'editorial systems of November 5, 2026, cited as earlier drawings and never as evidence (Rule 15.25).',
+        'retrieved November 21, 2026. Behind Rules 21.1, 21.3, 21.11 and 21.13.',
+        'Source: our studio’s earlier drawings of the atlas, October 21 and November 5, 2026, which these pages finish; '
+        'cited as drawings and never as evidence (Rule 15.25).',
     ],
 }
 
@@ -193,7 +198,7 @@ ATLAS = {
               ['The Register', '/atlas/register'], ['How to read', '/atlas/how-to-read']],
     'snapshot': 'Snapshot of {date}',
     'breadcrumb_label': 'Breadcrumb',
-    'locator_alt': 'Where this page sits in our atlas: {part}. Atlas home',
+    'locator_alt': 'Atlas home. This page sits in {part}.',
     'title_end': 'Oath & Action',        # the title's third part (AL-01); its second is the model's own title
     'parts': PARTS,
     # the display words for a stored grade (Rule 13.3), and the glosses beside them
@@ -221,14 +226,17 @@ PAGES = {
         'crumbs': None,
         'page': {
             'h1': 'Who do they answer to?',
-            'intro': 'Our atlas maps how power and money move through American government and the economy, and who can '
-                     'change the rules. It holds {variables} variables, {connections} connections between them, {loops} '
-                     'loops, {reforms} reforms and {issues} issue records, each graded by its evidence.',
+            'intro': 'Our systems atlas holds {variables} variables, the quantities and conditions that can rise or fall, '
+                     'and {connections} connections between them. It traces {loops} loops, weighs {reforms} reforms and '
+                     'files {issues} issue records. Start from the drawing of the whole system, or from a question you '
+                     'bring.',
             'switch': 'Show every variable',
             'key_main': 'The main circuit, part to part',
             'key_other': 'Other flows',
+            # editor: the key's third phrase in the specs (12.1); the kit reads it once it draws the home page
+            'key_counts': 'Each number counts connections',
             'inside': '{n} connections inside',
-            'inside_none': 'None inside',
+            'inside_none': 'No connections inside',
             'variables': '{n} variables',
             'flow_line': '{n} to {part}',
             'questions_heading': 'Start from a question',
@@ -239,64 +247,73 @@ PAGES = {
         },
     },
     'A12': {
-        'view': 'Reform R-23, a minimum wage that rises with an index',
+        'view': 'Reform R-23',
         'current_view': 'Reforms',
         'crumbs': [['Home', '/atlas'], ['Reforms', '/atlas/reforms']],
         'page': {
             'status_label': 'Where it stands',
-            'problem': 'The problem',
-            'remedy': 'The remedy',
+            # Rule 15.12's own labels, in the status panel and over the two grades alike
+            'problem': 'Evidence of the problem',
+            'remedy': 'Evidence for the remedy',
             'where_heading': 'Where it acts',
-            'where_note': 'Reform {reform} aims at {targets}.',
-            'touches': 'It touches {loop}, whose chain holds neither target.',
-            'aims_here': 'aims here',
+            'where_note': '{reform} acts where the marks turn red: on {targets}.',
+            'touches': 'Its record names {loop} as a loop it touches. That loop’s steps hold none of the reform’s '
+                       'targets, so the drawing leaves it out.',
+            'aims_here': 'also aim here',
             'grades_heading': 'How sure our atlas is',
             'source_link': 'Its source',
             'effects_heading': 'What it would change',
-            'effects_confidence': 'Our atlas’s confidence: “{text}”',
+            'effects_confidence': 'Our atlas’s confidence in these effects: “{text}”',
             'routes_heading': 'How it could pass',
-            'routes_head': ['Route', 'Who acts', 'How likely', 'Note', 'Checked'],
+            'routes_head': ['Route', 'Who acts', 'Feasibility', 'Note', 'Checked'],
             'complements_heading': 'Works alongside',
             'sources_summary': 'Sources for this page',
         },
     },
     'A13': {
-        'view': 'The Register: Congress, agencies and public services',
+        'view': 'The Register',
         'current_view': 'The Register',
         'crumbs': [['Home', '/atlas']],
         'page': {
             'h1': 'The Register',
-            'intro': 'Every connection in our atlas, filed once on the sheet of the condition it moves, with its sign, '
-                     'its grade and the atlas’s citation.',
+            'intro': 'Every connection in our atlas files once, on the sheet of the variable it moves, with its sign, its '
+                     'grade and the atlas’s citation. Each sheet counts its records and grades, so a reader can check '
+                     'every number here line by line.',
             'index_heading': 'The sheets',
             'index_head': ['Sheet', 'Variables', 'Connections', 'Loops', 'Reforms', 'Issue records'],
             'none_filed': 'none filed',
             'whole': 'The whole atlas',
+            # editor: "one" is the count of retired issue records today (Issue I128); the editor's notes ask for a
+            # {retired} fill from the model, so the word never goes stale
             'whole_issues': '{n}, one retired',
-            'whole_note': 'The last row counts each loop and reform once, though many reach several sheets.',
+            'whole_note': 'The whole atlas counts each loop and reform once, though many reach several sheets, and its '
+                          'reforms leave out those the atlas rejects.',
             'sheet_question_label': 'Its everyday question',
             'variables_heading': 'Its variables',
-            'connections_heading': 'Its connections',
+            'connections_heading': 'Connections filed here',
             'conn_head': ['Connection', 'From, to', 'Sign', 'Type', 'Delay', 'Grade', 'The atlas’s citation'],
+            # editor: the h2 over the rejected option and the connections reviewed and not drawn (specs 10.1)
+            'rejected_section': 'What our atlas decided against',
             'rejected_heading': 'Rejected option',
-            'rejected_grade': 'Here the grade measures confidence in a finding of harm',
+            # our words before the atlas's own sentence, which the kit quotes from the stored text (DR-37)
+            'rejected_grade': 'For a rejected option, the grade measures confidence in harm',
             'reviewed_heading': 'Reviewed and not drawn',
             'records_heading': 'Its issue records',
             'filters': 'Filters',
             'filters_on': 'Filters, {n} on',
-            'showing': '{n} of {total} issue records',
+            'showing': '{n} of {total} issue records.',
         },
     },
     'A14': {
-        'view': 'Loop R18, weakening watchdogs',
+        'view': 'Loop R18',
         'current_view': 'Loops',
         'crumbs': [['Home', '/atlas'], ['Loops', '/atlas/loops']],
         'page': {
             'kind': '{kind} loop',
             'grade_line': '{grade} for {from} to {to}',
             'facts_label': 'This loop',
-            'facts': {'kind': 'Kind', 'steps': 'Steps', 'minus': 'Minus signs', 'closure': 'Closure', 'delay': 'Delay',
-                      'weakest': 'Weakest step'},
+            'facts': {'kind': 'Kind', 'steps': 'Steps', 'minus': 'Minus signs', 'closure': 'How it closes',
+                      'delay': 'Delay', 'weakest': 'Weakest step'},
             'minus_even': '{n}, an even count',
             'minus_odd': '{n}, an odd count',
             'stepper_heading': 'Step through the loop',
@@ -304,37 +321,42 @@ PAGES = {
             # the read-aloud line (R4), composed by the kit from these templates: {var} a variable's chip and title,
             # {conn} a connection's chip, {sign} a word from ATLAS['signs'], {dir} a word from 'dirs'
             'read_start': 'Start with {var} rising.',
-            'read_step': '{conn} {sign} it, so {var} {dir}.',
+            'read_step': 'Along {conn}, which {sign}, {var} {dir}.',
             'read_end_same': 'The loop comes back moving the same way it started.',
-            'read_end_other': 'The loop comes back moving the other way.',
+            'read_end_other': 'The loop comes back moving the other way from how it started.',
             'dirs': {'up': 'rises', 'down': 'falls'},
-            'arithmetic': 'Built from the signs: start with more, flip at each minus.',
-            'parity_even': '{n} minus signs, an even count: the loop feeds itself.',
-            'parity_odd': '{n} minus signs, an odd count: the loop holds itself in check.',
+            'arithmetic': 'This reading starts with a rise and turns at each minus sign.',
+            'parity_even': 'An even count of minus signs, {n} here, makes the loop reinforcing, so it feeds itself.',
+            'parity_odd': 'An odd count of minus signs, {n} here, makes the loop balancing, so it pushes back on the '
+                          'first change.',
             'weakest_label': 'Weakest step',
-            'weakest_line': 'The loop holds only as firmly as this link.',
+            'weakest_line': 'The loop holds only as firmly as this step.',
             'also_aim': '{chips} also aim here',
-            # the stepper's status lines; the kit prefixes "Step n of m: " and the hold counts every word read (AL-24)
+            # editor: the form for one reform alone, for the kit to choose by count (Requests)
+            'also_aim_one': '{chips} also aims here',
+            # the stepper's status lines (Rule 15.19's step words, in the form chapter 15's stepper uses); the kit
+            # prefixes "Step n of m: " and the hold counts every word read (AL-24)
             'steps': [
                 {'line': 'Presidential action without new legislation lowers the ability to investigate and enforce the '
-                         'rules. Firing inspectors general and commissioners, leaving boards without a quorum and cutting '
-                         'staff all reduce what watchdogs can investigate and enforce.'},
+                         'rules. Connection L14 “Presidential removals weaken watchdog agencies”: the atlas grades it '
+                         'documented, and its effect takes under 2 years.'},
                 {'line': 'The ability to investigate and enforce the rules can lower presidential action without new '
-                         'legislation, where the loop began. Audits, lawsuits and enforcement raise the cost of acting '
-                         'without a law, provided the enforcer does not answer to the official being checked. Our atlas '
-                         'grades this step plausible, the least certain in the loop.'},
+                         'legislation. Connection L15 “Independent watchdogs restrain unilateral action”: the atlas '
+                         'grades it plausible, the weaker of the loop’s two steps, and its effect takes 2 to 10 years. '
+                         'The loop is back where it began, and with a minus sign on both steps it is reinforcing.'},
             ],
             'step_prefix': 'Step {n} of {m}:',
-            'stepper_ready': 'Press Play to step through the loop, or move one step at a time.',
+            'stepper_ready': 'Ready. Press Play to step through the loop, or Next step to follow one connection at a '
+                             'time.',
             'chooser_legend': 'Reforms that aim at this loop',
-            'effects_heading': 'Its effects',
+            'effects_heading': 'What it would change',
             'routes_heading': 'How it could pass',
             'record_heading': 'The loop in our atlas’s words',
             'record_labels': {'summary': 'Summary', 'case': 'The case', 'qualification': 'What it depends on',
                               'adaptation': 'How it adapts'},
             'evidence_heading': 'Evidence for each step',
             'step_word': 'Step {n}',
-            'on_sheet': 'Its line on sheet {sheet} of the Register',
+            'on_sheet': 'Its line in the Register, on the sheet for {sheet}',
             'records_line': 'Issue records on this loop: {n}',
         },
     },
@@ -343,15 +365,17 @@ PAGES = {
         'current_view': 'Loops',
         'crumbs': [['Home', '/atlas']],
         'page': {
-            'h1': 'Loops',
-            'intro': 'Every loop in our atlas, the ones that feed themselves and then the ones that hold themselves in '
-                     'check, each in the order the atlas lists it.',
+            'h1': 'Every loop in our atlas',
+            'intro': 'A loop is a chain of causes that returns to where it started. The reinforcing loops, which feed '
+                     'themselves, come first, then the balancing loops, which push back on a change, each group in the '
+                     'order the atlas lists it.',
             'reinforcing': 'Reinforcing',
             'balancing': 'Balancing',
             'head': ['Loop', 'Title', 'Steps', 'Minus signs', 'How it closes', 'Grade'],
-            'no_chain': 'no numbered chain',
+            'no_chain': 'No numbered chain',
             # DR-321: the note under the index
-            'titles_note': 'The atlas’s next version reviews the titles that state an effect.',
+            'titles_note': 'These titles print as our atlas stores them, and its next version reviews the titles that '
+                           'state an effect, among them those of Loop R5 and Loop R11.',
         },
     },
     'A16': {
@@ -360,7 +384,45 @@ PAGES = {
         'crumbs': [['Home', '/atlas']],
         'page': {
             'h1': 'How to read our atlas',
-            'intro': 'Every mark our atlas’s pages use, with its words and the rule that sets it.',
+            'intro': 'Each mark below appears on our atlas’s pages, and its row says what the mark means.',
+            # editor: the five groups and each mark's name and meaning (specs 11.2; DD-11C-2, no rule numbers on the
+            # page); the kit reads them once it draws the page (Requests)
+            'groups': {'signs': 'Signs and types', 'grades': 'Grades', 'delay': 'Delay',
+                       'loops': 'Loops and reforms', 'every': 'On every page'},
+            'marks': {
+                'raises': ['Plus sign, raises', 'The two variables tend to move the same way: when one rises, so does '
+                                                'the other.'],
+                'lowers': ['Minus sign, lowers', 'The two variables tend to move in opposite directions: when one '
+                                                 'rises, the other falls.'],
+                'type': ['Money, information, ownership', 'A word before the verb says what moves along the '
+                                                          'connection. With no such word, the connection is causal: a '
+                                                          'change in one variable changes the other.'],
+                'authority': ['Open diamond, decides', 'One body holds legal power over something, such as setting a '
+                                                       'rate. It carries no sign and never closes a loop.'],
+                'documented': ['Documented', 'On the public record. A solid line, with a filled square before the '
+                                             'word.'],
+                'well-supported': ['Well supported', 'Strong research evidence. A solid line.'],
+                'plausible': ['Plausible', 'Some evidence. A dashed line.'],
+                'plausible_contested': ['Contested', 'Evidence disputed. A line of dashes and dots.'],
+                'hypothesis': ['Hypothesis', 'Not yet tested. A dotted line.'],
+                'record_square': ['Record square', 'The public record itself shows this connection.'],
+                'S': ['One tick', 'The effect takes under 2 years.'],
+                'M': ['Two ticks', 'The effect takes 2 to 10 years.'],
+                'L': ['Three ticks', 'The effect takes over 10 years.'],
+                'hollow': ['Hollow line', 'A step of a loop with no complete chain of numbered connections, which the '
+                                          'atlas describes in words.'],
+                'red': ['Red target', 'Where the chosen reform acts: the connections it changes and the outlines of '
+                                      'the variables it targets. On Newsprint a red connection carries a thin Charcoal '
+                                      'edge.'],
+                'tag': ['Also aim here', 'Other reforms that aim at the same place, in plain ink, so the red stays '
+                                         'with the reform you chose.'],
+                'weakest': ['Weakest step', 'The least certain step in a loop. The loop holds only as firmly as this '
+                                            'step.'],
+                'chip': ['Typed chip', 'The kind of record and its code together, such as Loop R18. A chip with an '
+                                       'underline opens the record.'],
+                'pressed': ['Pressed question', 'A check, bold words and a heavier edge mark the question you '
+                                                'pressed.'],
+            },
         },
     },
 }
@@ -384,103 +446,116 @@ R = {}
 R['21.1'] = {
     'title': 'Set every atlas page under the site’s masthead, with the atlas’s title bar beneath.',
     'rule': ['Our systems atlas is one part of our website, so every atlas page opens with the site’s masthead, with '
-             'Who Do They Answer To? marked as the part the reader is in. Directly under it, the atlas’s title bar '
-             'names the atlas, gives the date of its snapshot and lists its views: Home, Loops, Reforms, The Register '
-             'and How to read. Pages below the home add a breadcrumb, and on wide screens a small locator that shows '
-             'where the page sits in the whole system. Each page’s title names the view first, then the atlas, then '
-             'Oath & Action.'],
+             'Who Do They Answer To? marked as the part the reader is in. Directly under it, the atlas’s title bar gives '
+             'the atlas’s name, the date of its snapshot (Rule 13.10) and its views: Home, Loops, Reforms, The Register '
+             'and How to read.',
+             'Every page below the home adds a breadcrumb, the trail of links from the home to the page, and on wide '
+             'screens a small locator that shows where the page sits in the whole system. Each page’s title names the '
+             'view first, then the atlas, then Oath & Action.'],
     'why': 'A reader who reaches the atlas from a search or a shared link still sees whose site they are on and can '
-           'reach every other part of it. The title bar keeps the atlas’s own views one step away without a second '
-           'masthead.',
-    'basis': 'DR-307; the accessibility lead’s AL-01, AL-09 and AL-17; ED-F8 and D2-65; chapter 20 as built (D4-189); '
-             'design judgment for the title bar, from measured word widths',
-    'specs': [('Order', 'Skip link, the site’s masthead, the atlas’s title bar, the breadcrumb, main, the site’s footer'),
+           'reach every other part of it. The title bar keeps the atlas’s own views one step away, and it is the same '
+           'Charcoal band that opens the atlas’s section on our home page.',
+    'basis': 'The atlas’s place inside our website, under the site’s masthead with a title bar of its own, approved by '
+             'our founder and editor on November 21, 2026; WCAG 2.2 SC 2.4.2 and Technique G88; Rules 12.7, 17.10 and '
+             '20.1; design judgment for the title bar, from measured word widths',
+    'specs': [('Order', 'Skip link, the site’s masthead, the atlas’s title bar, the breadcrumb, the page, the site’s '
+                        'footer'),
               ('Title bar', 'A Charcoal band 56 px tall from edge to edge, in both themes: the atlas’s name in the label '
-                            'style, then its subtitle and snapshot date in the caption style; the five views at the right'),
+                            'style, then its subtitle and snapshot date in the caption style; the five views at the right, '
+                            'in a navigation named Atlas views'),
               ('Views', 'From 64em, in the masthead parts’ style and gap, ending at the parts’ right edge; the current '
-                        'view in bold with a 2 px underline'),
+                        'view in bold with a 2 px underline (Rule 17.10)'),
               ('Under 64em', 'The name and the snapshot at the left, and a Views button that opens the five views as rows '
-                             'in place; the subtitle shows from 48em'),
-              ('Breadcrumb', 'A navigation named Breadcrumb, 8 px under the band; the current page last, bold and not '
-                             'underlined; on a record’s page, the record’s chip'),
+                             'in place (Rule 18.8); the subtitle shows from 48em'),
+              ('Breadcrumb', 'A navigation named Breadcrumb, 8 px under the band; the current page last, in bold with no '
+                             'underline; on a record’s page, the record’s chip'),
               ('Locator', '88 by 41 px at the breadcrumb row’s right end from 48em, the parts as boxes and the page’s '
-                          'own filled in ink; hidden under 48em'),
-              ('Page title', '[view] | Who Do They Answer To? | Oath & Action'),
-              ('Landmarks', 'One banner, the site’s; navigations for the parts, the atlas’s views and the breadcrumb; '
-                            'one main; one contentinfo')],
-    'builders': ['Draw the masthead and footer from the website’s own renderer, add the atlas’s title bar as a '
-                 'navigation of its own, and build each page title from the view’s own words.'],
-    'correct_caption': 'The top of a loop page at 1440 px, and at 390 px with the views open: the site’s masthead with '
-                       'the atlas as the current part, the atlas’s title bar, the breadcrumb and, on the desktop, the '
-                       'locator.',
-    'correct_alt': 'Two crops of a loop page’s top. On the desktop, the masthead with Who Do They Answer To? underlined, '
-                   'a dark title bar naming the atlas with five views, a breadcrumb ending on the chip Loop R18 and a '
-                   'small map of eight boxes with one filled. On the phone, the masthead, the dark title bar open to five '
-                   'rows with Loops marked, and the breadcrumb.',
+                          'own filled in ink; a link to the atlas home; hidden under 48em (Rule 12.7)'),
+              ('Page title', 'The view, then Who Do They Answer To?, then Oath & Action, joined by vertical bars'),
+              ('Landmarks', 'One banner, the site’s; navigations for the site’s parts, the atlas’s views and the '
+                            'breadcrumb; one main; one footer')],
+    'builders': ['Draw the masthead and footer with the website’s own code, add the title bar as a navigation of its own, '
+                 'and build each page title from the view’s own words.'],
+    'correct_caption': 'The top of Loop R18’s page at 1440 px, and at 390 px with the views open: the site’s masthead '
+                       'with the atlas as the current part, the atlas’s title bar, the breadcrumb and, on the desktop, '
+                       'the locator.',
+    'correct_alt': 'Two crops of a loop page’s top. On the desktop, the site’s masthead with Who Do They Answer To? '
+                   'underlined; a Charcoal title bar with the atlas’s name, its subtitle and snapshot date, and five views '
+                   'with Loops underlined; then a breadcrumb ending on the chip Loop R18, and a small map of eight boxes '
+                   'with one filled. On the phone, the masthead, then the Charcoal title bar open to five rows with Loops '
+                   'marked, then the breadcrumb.',
     'failure_caption': '<strong>Fails Rule 21.1.</strong> The atlas brings a masthead of its own, so a reader sees two sets '
-                       'of links and cannot tell which site they are on, and the tab’s title names no page.',
+                       'of links and cannot tell whose site they are on, and the tab’s title names no page.',
     'failure_alt': 'The top of an atlas page with two mastheads: the site’s, with no part marked, and under it a second '
-                   'banner with its own wordmark and its own copy of the site’s parts. The tab reads Oath & Action.',
+                   'banner with its own wordmark and its own copy of the site’s parts. The tab reads Oath & Action alone.',
     'fail_tab': 'Oath & Action',
     'fail_label': 'The top of the page at 1440 px, and its tab',
 }
 R['21.2'] = {
     'title': 'Open the atlas home on the whole system, with a count on every flow.',
-    'rule': ['Start the atlas’s home page with the whole system on the first screen: one box for each part, each with '
-             'its name, its question and the count of connections inside it, and one arrow for each pair of parts that '
-             'connect, with the count of connections it carries. Draw the main circuit in full ink and the other flows '
-             'in a lighter ink, all at one width. A switch opens every box in place to show its variables, and closes '
-             'them again. Draw the system once on the page.'],
+    'rule': ['Start the atlas’s home page with the whole system on the first screen. Each of its eight parts takes a box '
+             'with its name, its question and the count of connections inside it. Where two parts connect, an arrow runs '
+             'each way that connections run, with the count it carries.',
+             'Draw the main circuit, from Wealth through Voice, Elections, Checks and Policy and back to Wealth, in full '
+             'ink with its counts in bold, and the other flows in a lighter ink, every arrow at one width. A switch, Show '
+             'every variable, opens each box in place to list its variables and closes them again, so the page draws the '
+             'system once.'],
     'why': 'A newcomer sees how the parts fit together before reading any one of them, and every number on the drawing is '
            'a count a reader can check in the Register. One drawing that opens in place keeps the first screen short.',
-    'basis': 'Concept 09, The Circuit; System 1’s overview; ED-F3, ED-F9 and ED-F10; DR-35; Rule 15.1; the data '
-             'lead’s rulings R2, R6 and R7',
+    'basis': 'The plain names and questions our founder and editor gave the atlas’s parts, with the model’s titles '
+             'beneath; Rules 15.1, 15.2 and 15.9; the model’s parts and connections, counted by one written method; '
+             'design judgment, from our earlier drawings of the atlas (Rule 15.25)',
     'specs': [('Parts', 'Eight boxes in the order effects travel: Outside forces, Wealth, Voice, Elections, Checks, '
-                        'Policy, Your household, Technology, each with its plain name, its question and the model’s '
+                        'Policy, Your household and Technology, each with its plain name, its question and the model’s '
                         'title beneath'),
-              ('Boxes and pills', 'A part takes a box with square corners; a variable takes a pill (Rule 15.2)'),
+              ('Boxes and pills', 'A part takes a box with square corners, and a variable a pill (Rule 15.2)'),
               ('Counts', 'Inside each box and on each arrow, in the data label style with tabular figures, read at build '
                          'time; the build stops when a count and the model disagree'),
-              ('Ink', 'The main circuit in the essential ink and its counts in bold; the other flows in the subtle ink; one '
-                      'width, 2 px; one arrow for each direction of a pair'),
-              ('Switch', 'A toggle button with its words and aria-pressed'),
-              ('At 390 px', 'A stacked list of the eight parts, each with its counts and a “5 to Voice” line for '
-                            'each flow it sends')],
+              ('Ink', 'The main circuit in the essential ink with its counts in bold; the other flows in the subtle ink; '
+                      'every count in the text’s ink; one width, 2 px; one arrow for each direction of a pair, never a '
+                      'double head'),
+              ('Switch', 'A toggle button, Show every variable, with aria-pressed (Rule 18.2)'),
+              ('At 390 px', 'A stacked list of the eight parts, each with its counts and a “5 to Voice” line for each '
+                            'flow it sends, so each flow prints once')],
     'builders': ['Count every number on the drawing from the model at build time, and stop the build when a count and the '
                  'model disagree.'],
-    'correct_caption': 'The atlas home’s drawing with the switch pressed: every part open to its variables, at 1440 px '
-                       'on Newsprint.',
-    'correct_alt': 'The eight parts of the atlas as boxes, each open to its variables as rounded pills, with arrows '
-                   'between the parts and a count on each arrow.',
+    'correct_caption': 'The atlas home’s drawing with Show every variable pressed, each of the eight parts open to its '
+                       'variables, at 1440 px in the light theme.',
+    'correct_alt': 'The atlas’s eight parts as boxes, each open to list its variables as pills, with arrows between the '
+                   'parts, a count on each arrow and the main circuit drawn darker.',
     'failure_caption': '<strong>Fails Rule 21.2.</strong> The arrows widen with their counts and nothing on the drawing '
                        'says what a width measures, so the eye reads weight where the page prints a number.',
-    'failure_alt': 'The five core parts in a row with arrows between them of different widths, the widest from Your '
-                   'household to Wealth, and no key.',
+    'failure_alt': 'The five core parts and Your household as boxes, with arrows of different widths between them and no '
+                   'key; the widest runs from Your household to Wealth.',
     'fail_label': 'The core row at 1440 px, arrows by count',
 }
 R['21.3'] = {
-    'title': 'Light the parts an everyday question reaches, and say which they are in words.',
-    'rule': ['Offer the atlas’s everyday questions under their hubs, each as a button. When a reader presses one, mark it '
-             'pressed with a check, bold words and a heavier edge, keep the parts its variables sit in at full strength '
-             'with the words This question reaches here, and mute the rest. A status line names the parts in words, and '
-             'the answer opens below with each figure linked to its evidence.'],
+    'title': 'Light the parts an everyday question reaches, and name them in words.',
+    'rule': ['Offer the atlas’s everyday questions under the topics the atlas calls hubs, each question as a button. When '
+             'a reader presses one, it takes the pressed look of Rule 17.10: a check before its words, bold words and a '
+             '2 px edge.',
+             'The parts that hold the question’s variables stay at full strength with the words This question reaches '
+             'here, and the others turn muted (Rule 17.8). A status line names the reached parts in words, and the answer '
+             'opens below, with each figure in it linked to its evidence.'],
     'why': 'A reader who arrives with a bill in hand sees at once which parts of the system decide it. Words carry the '
-           'result, so a reader who cannot see the shading, or who prints the page in gray, gets the same answer.',
-    'basis': 'ED-F5; UX-4 and the accessibility lead’s AL-21; D2-1152; the pathway’s own variables; the data lead’s R6',
-    'specs': [('Question', 'A toggle button, aria-pressed true when pressed; one pressed at a time'),
+           'result too, so a reader who cannot see the shading, or who prints the page in gray, gets the same answer.',
+    'basis': 'Rules 17.8 and 17.10; the variables each question’s own record names in the atlas; WCAG 2.2 SC 1.4.1 and '
+             '4.1.3',
+    'specs': [('Question', 'A toggle button with aria-pressed, one pressed at a time'),
               ('Pressed look', 'The selected check before the words, bold words and a 2 px edge in the strong border '
                                'color, where an unpressed question keeps 1 px (Rule 17.10)'),
-              ('Lit parts', 'The parts that hold the question’s own variables, at full strength with the words This '
-                            'question reaches here; the rest muted'),
-              ('Status line', 'Names the parts in words, once per press, never on load'),
+              ('Lit parts', 'Each part that holds a variable the question’s own record names, at full strength with the '
+                            'words This question reaches here'),
+              ('The rest', 'Muted outlines (Rule 17.8), their words still in the text’s ink'),
+              ('Status line', 'Names the reached parts in words after each press, never on load'),
               ('Hubs', 'Named in words, with no chip (Rule 10.8)')],
-    'builders': ['Light a part only when the question’s own record names a variable in it, and write the same list in '
+    'builders': ['Light a part only where the question’s own record names a variable in it, and write the same parts in '
                  'the status line.'],
-    'correct_caption': 'The question “Why can the same care produce different bills?” pressed beside unpressed '
-                       'questions, and the three parts it reaches lit, at 1440 and 390 px on Newsprint and on Charcoal.',
-    'correct_alt': 'Four crops of the atlas home: a list of questions with one marked by a check, bold words and a heavy '
-                   'edge, and the drawing with Wealth, Checks and Your household in full ink, each labeled This question '
-                   'reaches here, and the other parts muted.',
+    'correct_caption': 'A question about medical bills pressed beside questions left unpressed, and the parts it reaches '
+                       'at full strength, at 1440 and 390 px in the light and the dark theme.',
+    'correct_alt': 'Crops of the atlas home. The drawing, with the parts the question reaches in full ink, each labeled '
+                   'This question reaches here, and the other parts muted; and the questions under their hubs, one marked '
+                   'by a check, bold words and a heavier edge, on the desktop and on a light and a dark phone.',
     'failure_caption': '<strong>Fails Rule 21.3.</strong> Only the weight of its words shows which question is pressed, and '
                        'only a tint shows which parts it reaches, so the answer is lost in gray print and to a reader who '
                        'cannot see the tint.',
@@ -492,77 +567,87 @@ R['21.3'] = {
 # ---- Group 2, a page for each record
 R['21.4'] = {
     'title': 'Build a reform’s page from its own record, in the order a reader asks.',
-    'rule': ['Give each reform a page that answers a reader’s questions in order: what it is and its status, with its '
-             'date; where it acts, drawn at its targets; how sure our atlas is that the problem exists and that the '
-             'remedy works, as two grades; what it would change in each of the four outcome families, one to a row; how '
-             'it could pass, route by route, each with its check date or Not checked; and where its evidence comes from. '
-             'When the atlas grades a remedy contested, print both readings at the same length.'],
-    'why': 'A reader who asks whether a reform would work gets the evidence for that answer before the routes, and a '
-           'contested remedy shows both sides of the dispute, as our atlas records it.',
-    'basis': 'Rules 15.11, 15.12, 15.16, 15.20 and 15.24, applied as one page; house rule H08; Concept 10, Who Can Act, '
-             'without its strand widths; Concept 03’s Detail A',
-    'specs': [('Order', 'Head and status; where it acts; the two grades; the four effects; routes; complements; sources'),
-              ('Contested remedy', 'Two readings side by side at 1440 px and one after the other at 390 px, within a '
-                                   'line’s length of each other, each with its source a step away'),
-              ('Effects', 'Rule 15.16’s rows, codes whole with qualifiers and a true minus; Quality of democracy for DQ'),
-              ('Routes', 'Rule 15.24’s rows, with Not checked where the record holds no date'),
-              ('Status', '“As of” and the date in words')],
-    'builders': ['Read every field from the reform’s own record, and set a contested remedy’s two readings as one '
-                 'pair.'],
-    'correct_caption': 'Reform R-23’s page at 1440 and 390 px, on Newsprint and in the dark mode.',
-    'correct_alt': 'A reform page four times: its head with a status panel, a drawing of its two targets in red, its two '
-                   'grades with the contested remedy’s two readings side by side, four effect rows and four routes.',
-    'failure_caption': '<strong>Fails Rule 21.4.</strong> The panel keeps the finding of little job loss, drops the budget '
-                       'office’s estimate and grades the remedy well supported. Our atlas grades it contested and '
-                       'records both.',
-    'failure_alt': 'A remedy panel headed Well supported with one reading of little job loss and no second reading.',
+    'rule': ['Give each reform a page that answers a reader’s questions in order: what it is and its status, with the '
+             'date; where it acts, drawn at its targets, the variables and connections it acts on; how sure our atlas is '
+             'that the problem exists and that the remedy works, as two grades; what it would change in each outcome '
+             'family, the four groups of results the atlas judges reforms by, one to a row; how it could pass, route by '
+             'route, each with its check date or Not checked; and where its evidence comes from.',
+             'When the atlas grades a remedy contested, set the readings its record holds side by side, in the atlas’s '
+             'own words, so a reader meets both before the routes.'],
+    'why': 'A reader who asks whether a reform would work gets the evidence for the answer before the routes, and a '
+           'contested remedy shows both sides of the dispute as our atlas records them.',
+    'basis': 'Rules 15.11, 15.12, 15.16, 15.20 and 15.24, applied as one page; house rule H08 in chapter 02; Reform '
+             'R-23’s own record in the atlas',
+    'specs': [('Order', 'Head and status; where it acts; the two grades; the four effects; routes; reforms it works '
+                        'alongside; sources'),
+              ('Status', '“As of” and the date in words, from the record’s own check date (Rule 13.10)'),
+              ('Contested remedy', 'The record’s text whole, split at one sentence into its two readings: side by side '
+                                   'from 64em and one after the other below, each with its source a step away (house '
+                                   'rule H08)'),
+              ('Effects', 'Rule 15.16’s rows in the atlas’s order, each code whole with its qualifier and a true minus; '
+                          'Quality of democracy names the first family'),
+              ('Routes', 'Rule 15.24’s rows, each with its check date or Not checked'),
+              ('Sources', 'In a disclosure, closed on load and open on paper (Rule 18.8)')],
+    'builders': ['Read every field from the reform’s own record, and set a contested remedy’s readings as one pair.'],
+    'correct_caption': 'Reform R-23’s page at 1440 and 390 px, in the light and the dark theme.',
+    'correct_alt': 'Reform R-23’s page four times: its head with a Charcoal status panel; a drawing of its two targets '
+                   'outlined in red, with the other reforms that aim at one of them listed in ink; its two grades, the '
+                   'contested remedy’s two readings side by side; its effects, one row a family; its routes, each with '
+                   'its check date or Not checked; and a closed disclosure of sources.',
+    'failure_caption': '<strong>Fails Rule 21.4.</strong> The panel keeps the finding of little job loss, drops the '
+                       'Congressional Budget Office’s estimate and grades the remedy well supported. Our atlas grades it '
+                       'contested and records both.',
+    'failure_alt': 'A remedy panel headed Well supported with one reading, of little job loss, and no second reading.',
     'fail_label': 'The remedy panel at 1440 px',
     'fail_grade': 'Well supported',
 }
 R['21.5'] = {
     'title': 'Tag reforms that share a target in ink, and keep the red for this one.',
-    'rule': ['On a reform’s page, the reform’s own targets turn red. Where other reforms in our atlas aim at the same '
-             'variable or connection, tag that mark with each one’s chip and the words aims here, in the text’s '
-             'ink. On a loop page, where a reader chooses one reform, the others that aim at the loop take the same ink '
-             'tags.'],
-    'why': 'A reader learns that several reforms compete for the same lever, and the one red still shows which reform the '
-           'page is about (Rule 05.3).',
-    'basis': 'ED-F6, from System 4; Rules 05.3 and 12.5; the reforms’ own target lists; the data lead’s R10',
-    'specs': [('Tag', 'The reform’s typed chip and “aims here”, in the data label style, in the text’s ink, '
-                      '6 px from the mark'),
-              ('Several tags', 'Stacked under one leader line; past four, “and [n] more” with a link to the list'),
-              ('Red', 'The page’s own reform only; the tags never take red, an outline or a fill')],
-    'builders': ['Find every reform that names the same target in its own record, and draw its tag in ink.'],
-    'correct_caption': 'Reform R-23’s two targets in red, with the four other reforms that aim at one of them tagged in '
-                       'ink, at 1440 and 390 px on Newsprint.',
-    'correct_alt': 'Two variables joined by one connection, both outlined in red, and beside the second four ink tags, '
-                   'each a reform chip with the words aims here.',
+    'rule': ['On a reform’s page, only that reform’s targets turn red. Where other reforms in our atlas aim at the same '
+             'variable or connection, list them beside the drawing under that mark’s chip, each by its own chip, with the '
+             'words also aim here, in the text’s ink. On a loop page, where a reader chooses one reform, the others that '
+             'aim at the loop take the same tags.'],
+    'why': 'A reader learns that several reforms aim at the same place in the system, and the one red still shows which '
+           'reform the page is about (Rule 05.3).',
+    'basis': 'Rules 05.3 and 12.5; the reforms’ own lists of targets in the atlas; design judgment for the tags',
+    'specs': [('Tags', 'A list beside the drawing, one group for each target or step, headed by its chip: the other '
+                       'reforms’ chips and “also aim here”, in the data label style and the text’s ink'),
+              ('Long lists', 'Past four reforms at one mark, “and [n] more” with a link to the list'),
+              ('Red', 'The page’s own reform only (Rule 12.5); a tag never takes red, an outline or a fill')],
+    'builders': ['Find every reform whose own record names the same target, and list its chip in ink.'],
+    'correct_caption': 'Reform R-23’s two targets in red, with the other reforms that aim at one of them listed in ink, '
+                       'at 1440 and 390 px in the light theme.',
+    'correct_alt': 'Two variables joined by one connection, both outlined in red, and beside them a list headed by the chip '
+                   'Variable A4, holding the chips of the other reforms that aim there and the words also aim here.',
     'failure_caption': '<strong>Fails Rule 21.5.</strong> Five reforms share the red, so the page has five working reds and '
                        'no longer shows which reform it is about.',
-    'failure_alt': 'The same two variables with all five reform tags drawn in red.',
+    'failure_alt': 'The same two variables with every reform’s tag drawn in red, the page’s own among them.',
     'fail_label': 'The targets at 390 px',
 }
 R['21.6'] = {
-    'title': 'Name every record in its typed chip, and let the chip open the record’s page.',
-    'rule': ['Every ID on an atlas page sits in its typed chip, the kind of record in words and its code, such as Loop R18 '
-             'or Reform R-23. A chip that names a record with a page of its own links to that page, and the first time a '
-             'page names a record, its name follows the chip.'],
-    'why': 'Our atlas uses B4 for a variable and for a loop, and R1 sits one hyphen from R-01. The word in the chip says '
-           'which record a reader is looking at, and the link takes them to it.',
-    'basis': 'Rules 13.9 and 18.24; house rule H11; V7.1 item 12; the model’s IDs',
-    'specs': [('Kinds', 'Rule 13.9’s ten words'),
+    'title': 'Name every record in its typed chip, and let the chip open its page.',
+    'rule': ['Every ID on an atlas page sits in its typed chip, the kind of record in words with its code, such as Loop R18 '
+             'or Reform R-23. A chip that names a record with a page of its own links to that page, and a connection’s '
+             'chip links to its line in the Register. The first time a page names a record, its name follows the chip.'],
+    'why': 'Our atlas uses B4 for a variable and for a loop, and Loop R1 sits one hyphen from Reform R-01. The word in the '
+           'chip says which record a reader is looking at, and the link takes them to it.',
+    'basis': 'Rules 13.9 and 18.24; house rule H11 in chapter 02; the codes our atlas repeats across kinds of record',
+    'specs': [('Kinds', 'Rule 13.9’s ten words: Variable, Connection, Loop, Reform, Issue, Claim, Domain, Route, Rule '
+                        'change and Delivery case'),
               ('Chip', 'Rule 18.24’s, plain or as a link with a target at least 24 px tall'),
-              ('Link', 'To the record’s own page, or for a connection to its Register line; the record’s name as the '
-                       'link’s description where the words around it do not name it'),
+              ('Link', 'To the record’s own page, or for a connection to its line in the Register, with the record’s name '
+                       'as the link’s description where the words around it do not name it'),
+              ('Kind word', 'From where the ID lives in the model, never from its letters'),
               ('Check', 'Every chip’s ID exists under its kind in the model (Rule 21.16)')],
     'builders': ['Take each chip’s kind word from where its ID lives in the model, never from its letters.'],
-    'correct_caption': 'One chip for each of the ten kinds of record, plain and as a link, then the four pairs of codes our '
-                       'atlas repeats, on Newsprint and on Charcoal.',
-    'correct_alt': 'Ten typed chips in two rows, plain and underlined, each followed by its record’s name, then four '
-                   'pairs such as Variable B4 and Loop B4, on a light ground and on a dark one.',
+    'correct_caption': 'A chip for each of the ten kinds of record, plain and as a link, each a real record with its name, '
+                       'then the four pairs of codes our atlas repeats across kinds, on Newsprint and on Charcoal.',
+    'correct_alt': 'Two panels, light and dark. In each, ten chips, plain and underlined, from Variable D4 to Delivery case '
+                   'DL05, each followed by its record’s name; then four pairs side by side: Variable B4 and Loop B4, Loop '
+                   'R1 and Reform R-01, Variable D4 and Domain D04, and Variable X1 and Issue X01.',
     'failure_caption': '<strong>Fails Rule 21.6.</strong> Bare codes let a loop pass for a variable: B4 and R1 here are '
                        'loops, filed under Variables.',
-    'failure_alt': 'A list headed Variables with three bare codes and names, two of them loops.',
+    'failure_alt': 'A list headed Variables with three bare codes and their names, B4, D4 and R1; B4 and R1 are loops.',
     'fail_label': 'A list of bare codes',
     'fail_head': 'Variables',
     'chips_plain': 'Plain',
@@ -573,27 +658,27 @@ R['21.6'] = {
 }
 R['21.7'] = {
     'title': 'Put the evidence one step from every claim.',
-    'rule': ['Every claim an atlas page makes links to its evidence in one step. A figure links to the atlas’s claim '
+    'rule': ['Every claim an atlas page makes reaches its evidence in one step. A figure links to the atlas’s claim '
              'record, which gives the claim, its grade, the people and place it covers, its period, its limit and its '
-             'source. A connection’s chip links to its line in the Register, with its grade and citation. A '
-             'reform’s sources sit in a disclosure on its own page.'],
-    'why': 'A reader who doubts a number or a step can check it without leaving the page they are reading, and we never '
-           'ask them to trust a claim we cannot show.',
-    'basis': 'The architecture map’s instruction for chapter 21; Rules 13.6 and 13.12; the model’s claim and source '
-             'records; the data lead’s R5',
-    'specs': [('Figure', 'Its claim’s chip right after it, linked; the claim’s record in a disclosure'),
+             'source. In the Register, a connection’s line gives its grade and citation, and every chip for that '
+             'connection links there. A reform keeps its sources in a disclosure on its own page.'],
+    'why': 'A reader who doubts a number or a step can check it from the page they are reading, and every claim we print '
+           'shows where it comes from.',
+    'basis': 'The instruction for this chapter; Rules 13.6 and 13.9; the atlas’s claim and source records',
+    'specs': [('Figure', 'Its claim’s chip right after it, linked to the claim’s record in a disclosure on the same page'),
               ('Connection', 'Its chip links to its line on its sheet of the Register'),
-              ('Reform', 'Its sources in a disclosure, closed on load, open on paper (Rule 18.8)'),
-              ('Steps', 'One link or one disclosure, never a search'),
-              ('Source lines', 'Rule 13.6’s six parts as the source record holds them')],
+              ('Reform', 'Its sources in a disclosure, closed on load and open on paper (Rule 18.8)'),
+              ('One step', 'One link or one disclosure, never a search'),
+              ('Source lines', 'Rule 13.6’s six parts, as far as the source record holds them')],
     'builders': ['Give every figure and every connection on a page a link to its own record, and fail the build when one '
                  'has none.'],
-    'correct_caption': 'Two one-step paths at 1440 px: the home answer’s figure with its claim record open, and a loop '
-                       'step’s chip beside its line in the Register.',
-    'correct_alt': 'A short answer with a figure and the chip Claim CL1340, its record open beneath with grade, people, '
-                   'place, period and limitation; and the chip Connection L14 beside its row on sheet D04.',
-    'failure_caption': '<strong>Fails Rule 21.7.</strong> The figure points to a list of {answer_sources} sources at the foot of the '
-                       'page, and a reader cannot tell which one holds it.',
+    'correct_caption': 'Two claims one step from their evidence, at 1440 px: the home answer’s figure with its claim '
+                       'record open, and Loop R18’s first step beside its line in the Register.',
+    'correct_alt': 'A short answer with a figure followed by the chip Claim CL1340, its record open beneath with its grade, '
+                   'people, place, period and limit; then the chip Connection L14 in the loop page’s evidence row, beside '
+                   'its line on the Register’s sheet for Domain D04.',
+    'failure_caption': '<strong>Fails Rule 21.7.</strong> The figure points to a list of {answer_sources} sources at the foot '
+                       'of the page, and a reader cannot tell which one holds it.',
     'failure_alt': 'A short answer with a figure and no chip, and a long numbered list of sources at the foot.',
     'fail_label': 'The answer and its sources at 1440 px',
     'fail_sources': 'Sources',
@@ -601,48 +686,57 @@ R['21.7'] = {
 
 # ---- Group 3, the Register
 R['21.8'] = {
-    'title': 'Index the Register by sheet, and count each grade in words.',
-    'rule': ['Open the Register with one row for each of its twelve sheets, one for each domain and one for each of the two '
-             'lower layers, giving the sheet’s variables, connections, loops, reforms and issue records, and then how '
-             'many of its connections carry each grade. A last row counts the whole atlas, each loop and reform once.'],
+    'title': 'Index the Register by sheet, and count each grade under its word.',
+    'rule': ['Open the Register with one row for each of its sheets: one for each of the atlas’s domains, the subject '
+             'areas it files records under, and one each for its economy and technology layers. Each row gives the '
+             'sheet’s variables, connections, loops, reforms and issue records, then how many of its connections carry '
+             'each grade. A last row counts the whole atlas, each loop and reform once.'],
     'why': 'A reader sees where the atlas’s evidence is strong and where it is thin, sheet by sheet, in numbers they can '
            'check line by line.',
-    'basis': 'Concept 11, Register; Rule 15.25’s row on Concept 11’s evidence bars; Rule 13.5; the data lead’s '
-             'count methods (R2)',
+    'basis': 'Rules 13.3, 13.4 and 13.5; the model’s records, counted by one written method',
     'specs': [('Rows', 'Domains D01 to D10 with their chips, then the two layers in words (Rule 10.8), then the whole atlas'),
+              ('Counts', 'Each connection on the sheet of the variable it moves; loops with numbered steps through the '
+                         'sheet’s variables; reforms the atlas has not rejected, with a target on the sheet'),
               ('Grade columns', 'Rule 13.3’s five words in its order, each head with its 40 px line sample (Rule 13.4); '
                                 'never a shade, width or bar'),
-              ('Issue records', '“none filed” for the two layers; the whole row says one is retired'),
-              ('Table', 'Rule 18.10’s markup with tabular figures; at 390 px a card per sheet')],
-    'builders': ['Count every column from the model by one written method, and print it with the table.'],
-    'correct_caption': 'The Register at 1440 and 390 px, on Newsprint and in the dark mode, with its index and sheet D04 open.',
-    'correct_alt': 'The Register four times: an index table of twelve sheets with counts and five grade columns, then sheet '
-                   'D04 with its three variables, ten connection rows, its rejected option and its filtered issue records.',
+              ('Issue records', '“none filed” for the two layers; the whole row says how many are retired'),
+              ('Whole atlas', 'Each loop and reform counted once, with a note under the table that says so'),
+              ('Table', 'Rule 18.10’s markup with tabular figures; at 390 px a card for each sheet, with a grade key '
+                        'before the cards')],
+    'builders': ['Count every column from the model by one written method, and print the method with the table.'],
+    'correct_caption': 'The Register at 1440 and 390 px, in the light and the dark theme: its index of sheets, then the '
+                       'sheet for Domain D04 open below it.',
+    'correct_alt': 'The Register four times: an index table with a row for each sheet and one for the whole atlas, its '
+                   'counts and five grade columns under a Charcoal head row; then the sheet for Domain D04 on a Charcoal '
+                   'band, its variables, its connections with their signs, types, delays, grade lines and citations, the '
+                   'reform the atlas rejects, and its issue records with one filter on.',
     'failure_caption': '<strong>Fails Rule 21.8.</strong> Shading ranks the grades and hides the counts, so a reader cannot '
                        'tell how many connections on a sheet are a hypothesis.',
     'failure_alt': 'An index with one bar for each sheet, shaded from dark to light, and no numbers.',
-    'fail_label': 'The index’s grade column, as Concept 11 drew it',
+    'fail_label': 'The index’s grade column, shaded by grade',
 }
 R['21.9'] = {
     'title': 'File each connection once, on the sheet of the variable it moves.',
-    'rule': ['On each sheet, list every connection that moves one of the sheet’s variables, once, with its chip, the '
-             'variables it joins, its sign as a tag and a word, its type, its delay, its grade as a line and a word, and the '
-             'atlas’s citation. Give each line an address of its own, so a chip anywhere in the atlas can link to it.'],
+    'rule': ['On each sheet, list every connection that moves one of the sheet’s variables, once, with its chip, the two '
+             'variables it joins, its sign as a tag and a word, its type, its delay, its grade as a line and a word, and '
+             'the atlas’s citation. Give each line an address of its own, so a chip anywhere in the atlas can link to '
+             'it.'],
     'why': 'Filed once, every connection has one home a reader can find, and the sheets add up to the atlas’s '
            '{connections}.',
-    'basis': 'Concept 11; Rules 13.4, 13.5, 15.3 to 15.5; the filing method (the data lead’s R2)',
+    'basis': 'Rules 13.4, 13.5 and 15.3 to 15.5; the atlas’s connection records, filed by one written method',
     'specs': [('Filing', 'By the variable the connection moves; a variable in the economy or technology layer files on that '
-                         'layer’s sheet; a variable with two domains files on the first'),
-              ('Columns', 'Chip; from and to by title with chips; sign tag and raises or lowers; type in words; delay ticks '
-                          'and words; grade line and word; citation as stored'),
-              ('Authority', 'Decides and the open diamond, no sign (Rule 15.5)'),
-              ('Address', 'Each line’s id, register- and the connection’s ID')],
-    'builders': ['File each connection by its variable’s sheet and stop the build when the sheets do not sum to the '
+                         'layer’s sheet, and one with two domains on the first'),
+              ('Columns', 'Chip; from and to by title, with chips; sign tag with raises or lowers; type in words (Rule '
+                          '15.4); delay ticks and words; grade line and word; the citation as stored'),
+              ('Authority', 'Decides and the open diamond, with no sign (Rule 15.5)'),
+              ('Address', 'Each line’s own anchor, register- and the connection’s ID')],
+    'builders': ['File each connection by its variable’s sheet, and stop the build when the sheets do not add up to the '
                  'model’s count.'],
-    'correct_caption': 'Sheet D10, taking part, trust and shared norms: its connections at 1440 px on Newsprint, two of them '
-                       'contested.',
-    'correct_alt': 'A table of connection rows, each with its chip, its two variables, a sign tag, type, delay ticks, a '
-                   'grade line and word and a citation; two rows carry the dash and dot of Contested.',
+    'correct_caption': 'The sheet for Domain D10 with its connections at 1440 px in the light theme, its contested lines in '
+                       'the dash and dot with the word Contested.',
+    'correct_alt': 'A table of connections, each row with its chip, its two variables, a sign tag with raises or lowers, '
+                   'its type, delay ticks, a grade line and word, and the atlas’s citation; the contested rows draw dash '
+                   'and dot.',
     'failure_caption': '<strong>Fails Rule 21.9.</strong> Every connection appears on two sheets, so the Register counts '
                        '{double} where our atlas holds {connections}.',
     'failure_alt': 'The whole-atlas row of the index reading twice the atlas’s count of connections.',
@@ -650,26 +744,26 @@ R['21.9'] = {
 }
 R['21.10'] = {
     'title': 'Keep the rejected option and the connections left off the map on their sheets.',
-    'rule': ['Where our atlas rejects a reform, keep it on the sheets its targets file on, under the label Rejected option, '
-             'with its grade read as the atlas reads it: for a rejected option, a strong grade measures confidence in harm. '
-             'Where the atlas reviewed a connection and did not draw it, list it on its sheet under Reviewed and not drawn, '
+    'rule': ['Where our atlas rejects a reform, keep it on the sheets its targets file on, as a rejected option, with its '
+             'grade read as the atlas reads it: for a rejected option, a strong grade measures confidence in harm. Where '
+             'the atlas reviewed a connection and left it off the map, list it on its sheet under Reviewed and not drawn, '
              'with its two variables and the atlas’s reason, and draw no line.'],
     'why': 'What the atlas decided against is evidence too, and a reader who meets a popular idea there sees the finding '
            'behind the decision.',
-    'basis': 'Rule 15.10; the model’s rejected flag and its reviewed connections; Concept 11, which keeps the rejected '
-             'option in the evidence view',
-    'specs': [('Label', '“Rejected option” as the block’s heading, the reform’s title as stored'),
-              ('Grade', 'The atlas’s words quoted under the grade word'),
-              ('Reviewed and not drawn', 'Rule 15.10’s form, from and to with chips, the reason quoted, no line in any '
+    'basis': 'Rules 15.10 and 15.12; the atlas’s rejected reform and the connections it reviewed and left off its map',
+    'specs': [('Heading', 'The reform’s chip and its title as stored; the label Rejected option above it only when the '
+                          'title does not begin with those words'),
+              ('Grade', 'The atlas’s own words on what the grade measures, quoted under the grade word'),
+              ('Reviewed and not drawn', 'Rule 15.10’s form: from and to with chips, the reason quoted, and no line in any '
                                          'pattern'),
-              ('Counts', 'Rejected reforms stay out of the index’s reforms column')],
+              ('Counts', 'A rejected reform stays out of the index’s reforms column')],
     'builders': ['Read the rejected flag and the reviewed connections from the model, and file each on its targets’ '
                  'sheets.'],
-    'correct_caption': 'Sheet D04’s rejected option and sheet D10’s connections reviewed and not drawn, at 390 px on '
-                       'Newsprint.',
-    'correct_alt': 'A block headed Rejected option with Reform R-35, its two effects and a quoted line on what its grade '
-                   'measures; then a block headed Reviewed and not drawn with two connections and their reasons, and no '
-                   'lines.',
+    'correct_caption': 'At 390 px in the light theme: the reform the atlas rejects, on the sheet for Domain D04, and the '
+                       'connections reviewed and not drawn on the sheet for Domain D10, each with the atlas’s reason.',
+    'correct_alt': 'A block headed by the chip Reform R-35 and its title, which opens with Rejected option, holding its '
+                   'effects, its two grades and a quoted line on what its remedy’s grade measures; then a block headed '
+                   'Reviewed and not drawn with its connections, their variables and the atlas’s reasons, and no lines.',
     'failure_caption': '<strong>Fails Rule 21.10.</strong> Term limits read as a well supported remedy, though our atlas '
                        'rejects them on strong evidence of harm.',
     'failure_alt': 'A list of reforms in which Reform R-35 sits with no label and the words Well supported.',
@@ -677,21 +771,25 @@ R['21.10'] = {
 }
 R['21.11'] = {
     'title': 'Filter a sheet’s issue records by variable, and say how many show.',
-    'rule': ['Under each sheet’s connections, list its issue records with their grades. Let a reader narrow the list to the '
-             'records that name one of the sheet’s variables, with one Filters button that says how many filters are '
-             'on, and a line that says how many records show out of how many.'],
+    'rule': ['Under each sheet’s connections, list its issue records with their grades. An issue record is one of the '
+             'atlas’s files on a documented problem, case or policy. Let a reader narrow the list to the records that '
+             'name one of the sheet’s variables, with one Filters button that says how many filters are on, and a line '
+             'that says how many records show out of how many.'],
     'why': 'A sheet can hold twenty or more records, and a reader who cares about one variable finds its records without '
            'reading all of them.',
-    'basis': 'ED-F4; Rule 18.16; the issue records’ own variable lists',
-    'specs': [('Control', 'Rule 18.16’s Filters button with the count of filters on, and one check box per variable, '
-                          'each with its chip and its count of records'),
-              ('Count line', 'A status line on each change, never on load (Rule 18.15)'),
+    'basis': 'Rules 18.15 and 18.16; the variables each issue record names in the atlas',
+    'specs': [('Control', 'Rule 18.16’s Filters button with the count of filters on, such as “Filters, 1 on”, and one '
+                          'check box for each variable, each with its chip and its count of records'),
+              ('Count line', 'A status line after each change, never on load: “[n] of [total] issue records.” (Rule '
+                             '18.15)'),
               ('Each record', 'Chip, title as stored, grade word'),
               ('No variable', 'Records that name none of the sheet’s variables show only with every filter off')],
-    'builders': ['Build the filters from the variables on the sheet and count each from the records’ own variable lists.'],
-    'correct_caption': 'Sheet D04’s issue records with one filter on, at 390 px on Newsprint and in the dark mode.',
-    'correct_alt': 'A Filters button reading one on, a line giving how many of the sheet’s records show, and the records '
-                   'as rows, each with its chip, title and grade word.',
+    'builders': ['Build the filters from the variables on the sheet, and count each from the records’ own lists of '
+                 'variables.'],
+    'correct_caption': 'The sheet for Domain D04 with its issue records narrowed to Variable D4, at 390 px in the light '
+                       'and the dark theme.',
+    'correct_alt': 'A Filters button reading one on, its check boxes open with Variable D4 checked, a line giving how many '
+                   'of the sheet’s records show, and the records as rows, each with its chip, title and grade word.',
     'failure_caption': '<strong>Fails Rule 21.11.</strong> Color alone shows which filter is on, nothing says how many records '
                        'are hidden, and the grades are gone.',
     'failure_alt': 'Three tabs, one filled, over a list of record titles with no count and no grades.',
@@ -701,129 +799,147 @@ R['21.11'] = {
 # ---- Group 4, loop pages
 R['21.12'] = {
     'title': 'Head a loop page with its grade line and the arithmetic of its signs.',
-    'rule': ['Open a loop page with the loop’s chip, its kind and its title from our atlas in quotation marks, and under '
-             'the title the grade of each step from the atlas’s own words. Read the loop aloud in one sentence that '
-             'starts with more of its first variable and turns at each minus sign, and say beside it that an even count '
-             'of minus signs makes a loop that feeds itself. On the drawing, name the weakest step and say that the loop '
-             'holds only as firmly as that step.'],
+    'rule': ['Open a loop page with the loop’s chip, its kind and its title from our atlas in quotation marks. Under the '
+             'title, give the grade of each step in the atlas’s words, and name the weakest step, whose grade the whole '
+             'loop takes.',
+             'Then read the loop aloud, starting with a rise in its first variable and turning at each minus sign, and '
+             'say beside it how the count of minus signs sets the kind: an even count makes a loop that feeds itself, and '
+             'an odd count one that pushes back. Mark the weakest step on the drawing too, and say that the loop holds '
+             'only as firmly as that step.'],
     'why': 'The arithmetic lets a reader check the loop’s kind from its signs, and naming the weakest step keeps the '
-           'loop’s title from claiming more than its least certain link.',
-    'basis': 'ED-F4 and ED-F6, from Systems 3 and 4; Rules 15.6, 15.7, 15.13 and 18.22; the model’s loop record; the '
-             'data lead’s R4 and R8',
-    'specs': [('Head', 'Chip, kind word, title in quotation marks as the h1, grade line in display words with chips'),
-              ('Read aloud', 'One sentence from the signs, built by chapter 15’s read-aloud; the arithmetic line beside it'),
-              ('Weakest step', 'Weakest step under its words where the atlas’s evidence summary names it (Rule 15.13), '
-                               'with the line on how firmly the loop holds'),
-              ('Closure and delay', 'In the atlas’s words (Rule 15.7)')],
+           'loop’s title from claiming more than its least certain step.',
+    'basis': 'Rules 15.6, 15.7, 15.13 and 18.22; the loop’s record and evidence summary in the atlas',
+    'specs': [('Head', 'Chip, kind word and the title in quotation marks as the h1; under it the grade of each step, with '
+                       'chips; beside it the loop’s facts, the weakest step among them'),
+              ('Read aloud', 'Each step in turn from a rise in the first variable: the connection, its sign’s word and the '
+                             'way the next variable moves; then the count of minus signs and the kind'),
+              ('Weakest step', '“Weakest step” where the atlas’s evidence summary names it (Rule 15.13), with the line '
+                               '“The loop holds only as firmly as this step.”'),
+              ('Closure and delay', 'In the atlas’s words (Rule 15.7), the delay as ticks and words')],
     'builders': ['Build the read-aloud line from the signs, and stop the build when the loop’s kind and its count of '
                  'minus signs disagree.'],
-    'correct_caption': 'Loop R18’s page at 1440 and 390 px, on Newsprint and in the dark mode, with Reform R-11 chosen.',
-    'correct_alt': 'A loop page four times: its head with a facts panel, the loop read aloud beside its two-step drawing '
-                   'with the weakest step named, the stepper, the reform chooser and the chosen reform’s effects and '
-                   'routes.',
+    'correct_caption': 'Loop R18’s page at 1440 and 390 px, in the light and the dark theme, with Reform R-11 chosen.',
+    'correct_alt': 'Loop R18’s page four times: its head with the grade of each step and a Charcoal panel of facts that '
+                   'names the weakest step; the loop read aloud beside its two-step drawing, the weakest step marked and '
+                   'Reform R-11’s targets in red; the stepper; the reform chooser with the chosen reform’s effects and '
+                   'routes; the loop in the atlas’s words; and the evidence for each step.',
     'failure_caption': '<strong>Fails Rule 21.12.</strong> The head grades Loop R18 documented, the grade of its first step. '
                        'Our atlas grades the return step plausible, and the loop holds only as firmly as that step.',
-    'failure_alt': 'A loop page’s head with the word Documented beside the title and no reading of its signs.',
+    'failure_alt': 'Loop R18’s head with the word Documented beside its title, no reading of its signs and no weakest '
+                   'step.',
     'fail_label': 'The head at 1440 px',
 }
 R['21.13'] = {
     'title': 'Run the atlas’s stepper in the guide’s order and at the guide’s pace.',
-    'rule': ['Every loop page steps through its loop with the guide’s loop stepper: Play, Reset the loop, Previous step '
-             'and Next step, in that order, on every screen. Play holds each step about a quarter of a second for every '
-             'word the status line reads, and never less than six seconds. Nothing plays until a reader presses Play.'],
-    'why': 'A reader who learns the stepper anywhere in our work finds the same buttons in the same place here, and the '
+    'rule': ['Every loop page steps through its loop with the loop stepper of Rule 18.22, the buttons that walk a reader '
+             'through a loop one step at a time: Play, Reset the loop, Previous step and Next step, in that order, on '
+             'every screen. Play holds each step 250 ms for every word its status line reads, the step’s count included, '
+             'and never less than six seconds, with reduced motion too. Nothing plays until a reader presses Play.'],
+    'why': 'A reader who learns the stepper anywhere in our work finds the same buttons in the same order here, and the '
            'pace lets a reader, or a screen reader, finish each step before the next.',
-    'basis': 'Rule 18.22; D2-1154; the accessibility lead’s AL-22 and AL-24; registers F-8 and F-15',
-    'specs': [('Order and names', 'Play, Reset the loop, Previous step, Next step'),
-              ('Phone', 'A two-by-two grid: Play and Reset the loop, then Previous step and Next step'),
-              ('Hold', '250 ms a word of everything the status line reads, the step’s number included, never under '
-                       '6,000 ms, with reduced motion too; computed by script from the status lines'),
+    'basis': 'Rules 15.19 and 18.22; WCAG 2.2 SC 2.2.2 and 3.2.4',
+    'specs': [('Order and names', 'Play, Reset the loop, Previous step, Next step (Rule 18.22)'),
+              ('Phone', 'Under 48em, a two-by-two grid in reading order: Play and Reset the loop, then Previous step and '
+                        'Next step'),
+              ('Step words', 'The variables’ titles and the sign’s verb, then the connection, its grade and its delay '
+                             '(Rule 15.19)'),
+              ('Hold', '250 ms a word of everything the status line reads, the step’s count included, never under '
+                       '6,000 ms, with reduced motion too; counted by script from the status lines'),
               ('Code', 'Chapter 18’s loop stepper, read from its files')],
     'builders': ['Read the stepper from chapter 18’s files, and time each hold from its status line’s words.'],
-    'correct_caption': 'Loop R18’s stepper on step 2, at 390 px on Newsprint in a two-by-two grid and at 1440 px in the '
-                       'dark mode in one row.',
-    'correct_alt': 'Two steppers, each with a status line on step 2 of 2 and four buttons: Play, Reset the loop, Previous '
-                   'step and Next step, in a grid on the phone and in a row on the desktop.',
+    'correct_caption': 'Loop R18’s stepper on step 2 with its status line, at 390 px in the light theme with its buttons '
+                       'two by two, and at 1440 px in the dark theme with its buttons in one row.',
+    'correct_alt': 'Two steppers on step 2, each with its status line, Step 2 of 2 and the step’s words, and four buttons, '
+                   'Play, Reset the loop, Previous step and Next step: two by two on the phone and in one row on the '
+                   'desktop.',
     'failure_caption': '<strong>Fails Rule 21.13.</strong> The buttons run in another order than the rest of our work, and '
                        'each step moves on after about three seconds, before a reader can finish it.',
-    'failure_alt': 'A stepper with Play, Previous step, Next step and Reset, and a note of 3,200 ms a step.',
+    'failure_alt': 'A stepper with Play, Previous step, Next step and Reset in one row, and a note reading 3,200 ms a step.',
     'fail_label': 'The stepper as the atlas runs it today',
     'fail_buttons': ['Play', 'Previous step', 'Next step', 'Reset'],
     'fail_hold': '3,200 ms a step',
 }
 R['21.14'] = {
     'title': 'List every loop on one index, by kind, closure and grade.',
-    'rule': ['Give the atlas one index of its loops: the reinforcing ones and then the balancing ones, each with its chip, '
-             'its title, its number of steps, its count of minus signs, how it closes in the atlas’s words and its '
-             'grade in the atlas’s words. Order each group as the atlas lists it. Leave out any score or rank of '
-             'strength.'],
+    'rule': ['Give the atlas one index of its loops, the reinforcing ones first and then the balancing ones, each group in '
+             'the order the atlas lists it. Each row gives the loop’s chip, its title, its number of steps, its count of '
+             'minus signs, how it closes and its grade, the last two in the atlas’s words. Print each title as the atlas '
+             'stores it, and leave out any score or rank of strength.'],
     'why': 'A reader can find a loop by its kind and see at a glance which loops rest on a hypothesis or close only in '
            'concept.',
-    'basis': 'ED-F4, System 3’s loop index; Rules 15.6, 15.7, 15.18, 15.21; the model’s loops; DR-321',
-    'specs': [('Groups', 'Reinforcing, then Balancing, each in the atlas’s order'),
-              ('Row', 'Chip, title as stored, steps, minus signs, closure and grade as stored, each a link to the '
-                      'loop’s page'),
-              ('Conceptual loops', '“no numbered chain” with their grade (Rule 15.18)'),
-              ('Titles', 'As the atlas stores them, with a note that its next version reviews titles that state an effect '
-                         '(DR-321)'),
-              ('Never', 'A strength, a score, or a size for a loop (Rule 15.21)')],
+    'basis': 'Rules 15.6, 15.7, 15.18 and 15.21; the atlas’s loop records; every loop title printed as the atlas stores '
+             'it, with a note under the index, approved by our founder and editor on November 22, 2026',
+    'specs': [('Groups', 'Reinforcing, then Balancing, each with its count, in the atlas’s order'),
+              ('Row', 'Chip, title as stored, steps, minus signs, closure and grade as stored, each a link to the loop’s '
+                      'page'),
+              ('Conceptual loops', '“No numbered chain” in the steps and minus signs cells, with their grade (Rule '
+                                   '15.18)'),
+              ('Titles', 'As the atlas stores them, with one line under the index: the atlas’s next version reviews the '
+                         'titles that state an effect'),
+              ('Never', 'A strength, a score or a size for a loop (Rule 15.21)')],
     'builders': ['Read every row from the loop’s own record, in the atlas’s order.'],
-    'correct_caption': 'The index of all {loops} loops, at 1440 and 390 px on Newsprint.',
-    'correct_alt': 'A table of loops in two groups, reinforcing and balancing, each row with its chip, title, steps, minus '
-                   'signs, closure and grade.',
+    'correct_caption': 'The index of all {loops} loops at 1440 and 390 px in the light theme, with its note on the titles.',
+    'correct_alt': 'A table of loops in two groups, reinforcing then balancing, each row with its chip, title, steps, minus '
+                   'signs, how it closes and its grade, and a line under it on the titles.',
     'failure_caption': '<strong>Fails Rule 21.14.</strong> A bar ranks each loop by a strength our atlas does not measure.',
-    'failure_alt': 'A list of loops each with a horizontal bar of a different length.',
+    'failure_alt': 'A list of loops, each with a horizontal bar of a different length, labeled Illustrative.',
     'fail_label': 'A ranked index',
 }
 
-# ---- Group 5, the dark mode and the atlas test
+# ---- Group 5, the dark theme and the atlas test
 R['21.15'] = {
-    'title': 'Draw the atlas’s dark mode from the Charcoal tokens, and measure every mark.',
-    'rule': ['In the dark mode, every atlas page draws on Charcoal from the tokens set for Charcoal: text in Newsprint, '
+    'title': 'Draw the atlas’s dark theme from the Charcoal tokens, and measure every mark.',
+    'rule': ['In the dark theme, every atlas page draws on Charcoal from the tokens set for Charcoal: text in Newsprint, '
              'quieter words and muted marks in Dim Newsprint, the selected bar in Newsprint and the red target in Pillar '
              'Red. Line patterns, sign tags, ticks and chips keep their shapes. Measure every mark on the page’s own '
              'pixels before it ships.'],
-    'why': 'A reader who sets their device to dark reads the same atlas with the same marks, and every mark keeps the '
-           'contrast it needs on Charcoal.',
-    'basis': 'DR-36 and DR-204; ED-F2; register F-14 and the accessibility lead’s AL-23; ratios measured on the '
-             'plate’s pixels by the kit',
+    'why': 'A reader who sets a device to dark reads the same atlas with the same marks, and every mark keeps the contrast '
+           'it needs on Charcoal.',
+    'basis': 'One dark theme for every screen product, with a visible switch that remembers the reader’s choice, approved '
+             'by our founder and editor on November 10, 2026; Rules 05.2, 05.5 and 17.10; ratios measured on each '
+             'frame’s pixels',
     'specs': [('Ground', 'Charcoal'),
-              ('Text', 'Newsprint; secondary words in Dim Newsprint'),
+              ('Text', 'Newsprint; quieter words in Dim Newsprint'),
               ('Marks', 'Essential in Newsprint; muted in Dim Newsprint, never Stone'),
               ('Selected bar', 'Newsprint, never White'),
-              ('Red target', 'Pillar Red on Charcoal, with no edge'),
-              ('Hairlines that carry no meaning', 'Stone'),
-              ('Every color', 'From a token, never a hex in the renderer; checked on the frame’s pixels'),
-              ('Switch', 'The site’s, remembered across a reload')],
+              ('Red target', 'Pillar Red on Charcoal, with no edge; the 1 px Charcoal edge is for Newsprint (Rule 05.5)'),
+              ('Hairlines that carry no meaning', 'Stone (Rule 05.5)'),
+              ('Every color', 'From a token, never a hex in the page’s code; checked on the frame’s pixels'),
+              ('Switch', 'The site’s (Rule 18.4), remembered across a reload')],
     'builders': ['Name a token for every color in a dark view, and check each frame’s pixels with the contrast script.'],
     'correct_caption': 'Loop R18’s drawing with Reform R-11’s targets in red and the chooser beside it, at 1440 px in '
-                       'the dark mode, with the ratios measured on the plate’s pixels.',
-    'correct_alt': 'A dark loop drawing with one connection and one variable outlined in red, a chooser of three reforms, '
-                   'and a table of measured contrast ratios.',
+                       'the dark theme, with the ratios measured on the plate’s pixels.',
+    'correct_alt': 'On Charcoal, a loop drawing with a variable’s outline and both connections in red, a chooser of reforms '
+                   'with one chosen, and a table of contrast ratios measured on the frame.',
     'failure_caption': '<strong>Fails Rule 21.15.</strong> Muted marks in Stone clear 3 to 1 by a tenth, and the selection '
                        'draws in White, a color no token sets on Charcoal.',
     'failure_alt': 'A dark drawing with gray muted marks and a white selection bar.',
-    'fail_label': 'The drawing in the colors of today’s dark kit',
+    'fail_label': 'The drawing with muted marks in Stone and a White selection',
     'ratio_head': ['Mark', 'Token', 'Measured'],
-    'ratio_rows': {'text': 'Text', 'secondary': 'Secondary words and muted marks', 'red': 'The red target',
+    'ratio_rows': {'text': 'Text', 'secondary': 'Quieter words and muted marks', 'red': 'The red target',
                    'hairline': 'A hairline that carries no meaning'},
     'ratio_value': '{r} to 1',
 }
 R['21.16'] = {
     'title': 'Test every atlas page against the model before it ships.',
-    'rule': ['Before any atlas page ships, run the atlas test. It reads the page and the model together and checks every '
-             'ID, sign, type, delay, grade, count and date the page prints against the model, every red mark against the '
-             'chosen reform’s targets, every effect against its family, every link from a claim to its evidence, and '
-             'the stepper’s order and pace. A single failure stops the page.'],
+    'rule': ['Before any atlas page ships, run the atlas test. It reads the page together with the model, the atlas’s '
+             'data, and checks every ID, sign, type, delay, grade, count and date the page prints against the model. It '
+             'also checks every red mark against the chosen reform’s targets, every effect against its family, every '
+             'link from a claim to its evidence, and the stepper’s order and pace. A single failure stops the page.'],
     'why': 'The atlas changes as its evidence changes, and a page that copies a value can drift from the record without '
-           'anyone seeing. The test reads the record each time.',
-    'basis': 'Master Brief section 14 and the architecture map; chapter 15’s generator checks, extended to pages',
-    'specs': [('Checks', 'Sixteen, one line a check and page, each with its pass condition'),
-              ('Output', 'PASS or FAIL, with the page, the record and both values'),
-              ('Stop', 'Any FAIL stops the kit’s build and the strict guide build'),
-              ('Self-test', 'Planted faults, one a check, each caught by its own check')],
+           'anyone seeing. The test reads the record on every build.',
+    'basis': 'The atlas test this chapter carries for the standards checklist in chapter 28; chapter 15’s checks of its '
+             'drawings, extended to pages',
+    'specs': [('Checks', 'Sixteen, one line a check and page: typed IDs, connection marks, counts, loops, authority, red, '
+                         'effects, routes and dates, evidence a step away, grade words, the stepper, pressed and lit '
+                         'parts, colors, type, the site’s frame and retired words'),
+              ('Output', 'PASS or FAIL, with the page, the frame, the record, the value printed and the model’s value'),
+              ('Stop', 'Any FAIL stops the application kit’s build and the guide’s strict build'),
+              ('Self-test', 'One planted fault for each check in a copy of a page, never in the model; it passes only '
+                            'when each plant is caught by its own check and the clean pages stay quiet')],
     'builders': ['Run the atlas test on every build, and treat a failure as a stop.'],
-    'correct_caption': 'The atlas test’s report for the four views, one line a check, from the build’s own run.',
+    'correct_caption': 'The atlas test’s report for the atlas pages, one line a check, from the build that drew these '
+                       'plates.',
     'correct_alt': 'A list of check lines, each beginning PASS, with the check, the page and what it read.',
     'failure_caption': '<strong>Fails Rule 21.16.</strong> The page grades Connection L15 documented. Our atlas grades it '
                        'plausible, and the test stops the page.',
@@ -836,11 +952,12 @@ R['21.16'] = {
 
 EXTRA_HOW = {
     'label': 'How to read our atlas',
-    'caption': 'Our atlas’s How to read page, which lists every mark its pages use with the rule that sets it, at 1440 '
-               'px on Newsprint and at 390 px in the dark mode.',
-    'alt': 'A page listing the atlas’s marks, each with a small drawing, its words and the rule that sets it: sign '
-           'tags, type words, the open diamond, five grade lines, delay ticks, the record square, the hollow line, the red '
-           'target, the typed chip and the pressed question.',
+    'caption': 'Our atlas’s How to read page at 1440 px in the light theme: every mark its pages use, with its meaning. '
+               'The table beside it names the rule that sets each mark.',
+    'alt': 'A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, '
+           'the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; '
+           'the hollow line, the red target, the ink tag and the weakest step; the typed chip and the pressed question. '
+           'Beside it, a table names the rule for each mark.',
 }
 
 # the line above each row of frames: the width, the theme and the state each frame shows, composed from a view's key

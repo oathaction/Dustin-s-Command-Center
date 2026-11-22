@@ -1,0 +1,41 @@
+{
+ "id": "A11",
+ "type": "atlas-page",
+ "guide": true,
+ "view": "home",
+ "pressed_question": "PW06",
+ "every_variable": false,
+ "panels": [
+  "System"
+ ],
+ "spec_source": "work/handoffs/phase-4/20261122_Atlas-View-Specs.md, sections 0 to 7 and 12; chapter 21's plan, section 3.2",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "390-light",
+  "1440-dark",
+  "390-dark",
+  "1440-light-screen",
+  "390-light-screen",
+  "390-dark-screen",
+  "1440-light-drawing",
+  "1440-light-questions",
+  "390-light-questions",
+  "390-dark-questions"
+ ],
+ "export_name": "Atlas-Home-Page",
+ "alt": "Our systems atlas’s home page.",
+ "plate_head": "Atlas home",
+ "plate_line": "Drawn by the application kit at build."
+}
