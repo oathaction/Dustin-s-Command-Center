@@ -587,6 +587,19 @@ On the design director's DD11C-Q5 and Q8 (and Q4's title bar row), under the loc
 - `whole_issues` stays "{n}, one retired": the generator now fills `{retired}` for its failure plate, but the kit's line 360 still fills `{n}` alone, so the page would print the brace until the engineer adds it.
 - `--check` exit 0 (34 specimens, 87,007 bytes before the kit's frames; `s-21-16-correct` 4,889 bytes); `--page-words all` exit 0, all seven ledes present, holds 9,250 and 16,000 ms. The kit was not rebuilt by me after these words.
 
+### The data lead's batch 1, my items (23:22:45 UTC)
+
+Under the lock (23:22:29 UTC), word fields only; `--check` exit 0 (34 specimens, 87,068 bytes before the kit's frames), `--page-words all` exit 0, holds 9,250 and 16,000 ms. I did not rebuild the kit.
+- **5:** A11 `variables` reads "{n} variables," and `inside_none` "no connections inside", so a box's one line reads "6 variables, 6 connections inside" (the kit prints the two keys side by side; two lines would be the engineer's).
+- **7:** A11's key phrases take their stops: "The main circuit, part to part." "Other flows." "Each number counts connections."
+- **8:** new A12 key `conn_note`: "{conn} “{name}” joins them: {sign}, {delay}, {grade}. It stays in ink, since the reform does not act on it." For LE15: "Connection LE15 “Higher income strengthens household security” joins them: raises, under 2 years, Documented. …", the record square before Documented, the chip linked to `#register-le15`.
+- **10:** new `ATLAS['feasibility']`: high, medium, low and very low as "High feasibility", "Medium feasibility", "Low feasibility", "Very low feasibility" (Rule 15.16's form).
+- **16:** new A13 key `rejected_targets`: "It would act on {targets}." ({targets} the linked chips of Connections L18 and L19, joined with "and"); the "As of" over its effects uses the existing `ATLAS['as_of']`.
+- **18:** new A14 keys `chosen_note` "{reform} acts where the marks turn red: on {targets}.", `chosen_off` "Its other targets, {off}, sit off this drawing." (Reform R-15's L16) and `chosen_none` "{reform} acts on {off}, none of which sits on this drawing, so nothing turns red." (Rule 15.20), each changing with the chooser.
+- **22:** A15 `no_chain` reads "None"; Rule 21.14's specification row now says "None" in the two cells and lets the stored closure ("conceptual: no complete numbered chain") say why.
+
+**For the engineer, keys the kit must read** (item numbers from the data lead's batch 1): `ATLAS['feasibility']` in `route_rows` in place of the bare stored word (10); A12 `conn_note` beside the reform drawing for each drawn connection that is not a target (8); A13 `rejected_targets` in the rejected option's block, with `ATLAS['as_of']` over its effects (16); A14 `chosen_note`, `chosen_off` and `chosen_none` beside the loop drawing, filled for the chosen reform and redrawn with the chooser (18).
+
 ## Requests
 
 Status at 22:38:56 UTC (`date -u`): the word fields were handed over at 22:09 UTC and my words are typed (Done, "B typed"). Items 3 to 5 below are answered by the design director's DD-11C-1 to DD-11C-3; item 6 is the data lead's to rule as R15.

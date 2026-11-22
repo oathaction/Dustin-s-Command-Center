@@ -217,6 +217,9 @@ ATLAS = {
     'types': {'causal': 'Causal', 'money': 'Money', 'information': 'Information', 'ownership': 'Ownership',
               'authority': 'Authority'},
     'as_of': 'As of {date}',
+    # a route's feasibility in Rule 15.16's form, by the atlas's stored word (batch 1, item 10)
+    'feasibility': {'high': 'High feasibility', 'medium': 'Medium feasibility', 'low': 'Low feasibility',
+                    'very low': 'Very low feasibility'},
 }
 
 # The words of each page. "view" is the first part of the page's title (AL-01); "current_view" one of ATLAS['views'];
@@ -234,13 +237,14 @@ PAGES = {
                      'files {issues} issue records. Start from the drawing of the whole system, or from a question you '
                      'bring.',
             'switch': 'Show every variable',
-            'key_main': 'The main circuit, part to part',
-            'key_other': 'Other flows',
+            'key_main': 'The main circuit, part to part.',
+            'key_other': 'Other flows.',
             # editor: the key's third phrase in the specs (12.1); the kit reads it once it draws the home page
-            'key_counts': 'Each number counts connections',
+            'key_counts': 'Each number counts connections.',
+            # the box's two counts print in one line, variables first, so a comma sets them apart (batch 1, item 5)
             'inside': '{n} connections inside',
-            'inside_none': 'No connections inside',
-            'variables': '{n} variables',
+            'inside_none': 'no connections inside',
+            'variables': '{n} variables,',
             'flow_line': '{n} to {part}',
             'questions_heading': 'Start from a question',
             # the Questions section band's lede (specs 14.1)
@@ -266,6 +270,11 @@ PAGES = {
             'remedy': 'Evidence for the remedy',
             'where_heading': 'Where it acts',
             'where_note': '{reform} acts where the marks turn red: on {targets}.',
+            # batch 1, item 8: the connection the drawing draws in ink between the targets, with its marks in words;
+            # {conn} its linked chip, {name} its stored name, {sign} ATLAS['signs'], {delay} ATLAS['delays'],
+            # {grade} the display word (the record square before Documented)
+            'conn_note': '{conn} “{name}” joins them: {sign}, {delay}, {grade}. It stays in ink, since the reform does '
+                         'not act on it.',
             'touches': 'Its record names {loop} as a loop it touches. That loop’s steps hold none of the reform’s '
                        'targets, so the drawing leaves it out.',
             'aims_here': 'also aim here',
@@ -314,6 +323,8 @@ PAGES = {
             'rejected_heading': 'Rejected option',
             # our words before the atlas's own sentence, which the kit quotes from the stored text (DR-37)
             'rejected_grade': 'For a rejected option, the grade measures confidence in harm',
+            # batch 1, item 16: its targets, each a linked chip to its line; {targets} joined with "and"
+            'rejected_targets': 'It would act on {targets}.',
             # the rejected option's two grade rows (Rule 15.12's labels)
             'problem': 'Evidence of the problem',
             'remedy': 'Evidence for the remedy',
@@ -377,6 +388,11 @@ PAGES = {
             'stepper_ready': 'Ready. Press Play to step through the loop, or Next step to follow one connection at a '
                              'time.',
             'chooser_legend': 'Reforms that aim at this loop',
+            # batch 1, item 18: the note beside the drawing (Rules 12.5 and 15.20), changing with the choice;
+            # {reform} its chip, {targets} the targets on the drawing, {off} the targets off it, each a chip
+            'chosen_note': '{reform} acts where the marks turn red: on {targets}.',
+            'chosen_off': 'Its other targets, {off}, sit off this drawing.',
+            'chosen_none': '{reform} acts on {off}, none of which sits on this drawing, so nothing turns red.',
             'effects_heading': 'What it would change',
             'routes_heading': 'How it could pass',
             'record_heading': 'The loop in our atlas’s words',
@@ -408,7 +424,8 @@ PAGES = {
             'balancing_lede': 'Each of these loops pushes back on a change; where its steps are numbered, an odd count '
                               'of minus signs shows it.',
             'head': ['Loop', 'Title', 'Steps', 'Minus signs', 'How it closes', 'Grade'],
-            'no_chain': 'No numbered chain',
+            # batch 1, item 22: a word the Steps and Minus signs columns hold; the closure column says why
+            'no_chain': 'None',
             # DR-321: the note under the index
             'titles_note': 'These titles print as our atlas stores them, and its next version reviews the titles that '
                            'state an effect, among them those of Loop R5 and Loop R11.',
@@ -908,7 +925,8 @@ R['21.14'] = {
     'specs': [('Groups', 'Reinforcing, then Balancing, each with its count, in the atlas’s order'),
               ('Row', 'Chip, title as stored, steps, minus signs, closure and grade as stored, each a link to the loop’s '
                       'page'),
-              ('Conceptual loops', '“No numbered chain” in the steps and minus signs cells, with their grade (Rule '
+              ('Conceptual loops', '“None” in the steps and minus signs cells, and the atlas’s closure, which says '
+                                   'the loop has no numbered chain, with their grade (Rule '
                                    '15.18)'),
               ('Titles', 'As the atlas stores them, with one line under the index: the atlas’s next version reviews the '
                          'titles that state an effect'),
