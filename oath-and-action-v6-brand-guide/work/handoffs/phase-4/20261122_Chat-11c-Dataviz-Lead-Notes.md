@@ -15,6 +15,7 @@ Data visualization lead, Phase 4, chat 11c, November 22, 2026. Started 21:48 UTC
 - D4-xxx | Count keys `records-naming:<S>:<V>` and `atlas:loops-reinforcing`/`-balancing` join R2 (R16), the latter over all 23 loops | The engineer's ask; the loop index prints all 23 by kind (DR-321)
 - D4-xxx | The loop index's grade column follows R11's grade-line form for every loop (R18) | It prints the same stored field as Loop R18's grade line, and Rule 13.3 allows no stored spelling on a page
 - D4-xxx | Batch 1 signs off every view's data and holds every view for display faults, requests 4 to 28 | Data matched the model on all 59 pages; the faults are in marks and layout, which the plates show to readers
+- D4-xxx | Batch 2 signs off A12 to A16 and A18 to A20 whole, and holds A11 at 390 px and A17 for requests 29 to 31 | Every batch 1 item but part of 27 is fixed and seen; the three new faults were found on round 2's captures
 
 ## Rulings
 
@@ -301,6 +302,33 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 
 **The self-test** plants one fault a check (17 plants with T10's second) and, on the 23:01 report, catches all 17; it fails only because the clean pages are not quiet while the editor's words are missing. Each plant is the easiest case of its check, so none exercises the gaps above. Plants that would: a plausible step drawn dotted (T2); a minus row whose word reads "raises" (T2); red on a drawn variable the chosen reform does not target, and the chooser's second state (T6); a drawn connection named nowhere (T9); `plausible_contested` in a loop index grade cell (T10); a mark under 3 to 1 (T13); a two-line step label ending on one word (T14).
 
+### Batch 2 (round 2, A11 to A20), November 23, 00:18:32 UTC
+
+**What I checked, and how.**
+- **Data, by my script again** (00:13 UTC), now resolving each frame's `<use>` of a plate symbol to the symbol's own markup (`signoff/pages.py`, `inline_uses`; every `oa-app-wa-*` reference in the ten plates resolved) and reading each chooser state by its `data-atlas-for` wrapper: the six exports and every plate frame, 1,336 IDs, 110 connection marks, 1,733 counts, 5 read-aloud lines, 76 effect rows, 48 routes, 14 holds (L14 9,250 ms, L15 16,000 ms). **0 faults**, no bare ID. Red by state: R-11 lights D4, L14 and L15; R-15 and R-48 light L14 and L15 only; R-23 lights EC7 and A4; How to read's key sample only.
+- **Red, by pixels** (00:13 UTC): as in batch 1, and now How to read's sample is red (434 px at 1440 and at 390).
+- **By eye:** the 1440 px light captures of A11 to A16 at every fixed item; A11 and A14 at 390 light; A13 at 390 light; zooms of How to read's red target and open diamond; a scratch copy of A14's export with Reform R-15 checked, rendered headless (00:15 UTC, load 0.05): D4 in ink, L14 and L15 red, the note and tags changed. A17 and A18 seen as headless renders of the engineer's round 2 exports in his scratch (`r2/out`, 23:58 UTC run; their plates' frame markup matches the repository plates written 00:08 UTC). A19's and A20's frames read in markup.
+- **Lit and muted edges, by pixels,** on A11 at 1440 and 390, light and dark.
+
+**Fixed and seen:** 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 (E11c-2), 18, 19, 20, 21, 22, 23, 24, 25, 26; 27 in part (boxes hold their pills and counts); R16 and R18 in place; A18's "reviewed connection LTR1" (R11); A20's field labels.
+
+**Status by view:**
+
+| View | Status | Still failing |
+|---|---|---|
+| A11 home | **Held at 390 px** (1440 passes) | 29, 30 |
+| A12 reform R-23 | **Signed off whole** | |
+| A13 Register, D04 | **Signed off whole** | (The C5 index screen is the design director's) |
+| A14 loop R18 | **Signed off whole** on my items | (The dark drawing crop is the design director's; R-15's "Its other targets ... sit" singular is the editor's `chosen_off`) |
+| A15 loop index | **Signed off whole** | |
+| A16 How to read | **Signed off whole** | |
+| A17 every variable | **Held** | 31 |
+| A18 Register, D10 | **Signed off whole** | |
+| A19 loop on step 2 | **Signed off whole** | (as A14) |
+| A20 claim open | **Signed off whole** | |
+
+**Job 4 follow-up:** the test's new branches and plants, read by search at about 00:18 UTC (not re-read whole; SHA-256 a3fe5540...), cover each gap request 28 named: hidden row heads (T1), texture by grade, the sign word and the record square (T2), every chooser state and the key's red sample (T6), drawn connections named by a chip (T9), loop grade cells (T10), the plate's measured ratios (T13), the typed-step exception (T14), "Economist Register" (T16). Requests 29 to 31 are not covered by any check; 30 and 31 are visual and would need the kit's measure.
+
 ## Done
 
 - Rulings R1 to R13, in this file by 21:53 UTC (`date -u` 21:53:52), five minutes after the start at 21:48.
@@ -350,6 +378,10 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 - **26. Design director (A16; suggestions):** the "Weakest step" sample is a plain dashed line, the same as Plausible's; add the words "weakest step" under it as the drawings print them. The "Pressed question" sample is a box with a check and no words; Rule 17.10's look is the check, bold words and the 2 px edge.
 - **27. Engineer (A17):** with every variable shown, the Checks box's seventh pill ("Entrenched control of rule-setting institutions") and its count line run past the box's bottom into the flows, and in Policy the first pill's words overflow its outline. Grow the boxes to their pills.
 - **28. Engineer (the atlas test, job 4):** close the gaps in job 4's table, and add the plants it lists, so the test catches requests 8, 13, 15, 17, 21 and 23 to 25 the next time they occur. The most urgent are T6 (every chooser state, and How to read's sample), T9 (drawn connections) and T10 (loop grade lines).
+- **Batch 2 requests, written 00:18:32 UTC.**
+- **29. Engineer and editor (A11 at 390 px):** the list codes the main circuit by weight, bold beside regular, but the key under it still shows two line samples, Charcoal and Stone, which match nothing in the list; at 390 the second sample also sits at the end of the first line, away from its words. At this width the key says what the list draws, such as "Bold: the main circuit, part to part. Regular: other flows. Each number counts connections." (the editor's words), with no line samples.
+- **30. Engineer (A11 at 390 px, light and dark):** with the question pressed, all eight cards keep an ink edge, so the five parts it does not reach are not muted as they are at 1440 (R6, R7; Rule 17.8). Give those cards the muted edge, `--oa-color-state-muted-mark-on-newsprint` and `-on-charcoal`. Measured by pixels at 00:18 UTC: Outside forces, Voice and the lit Wealth all edge in #121212 on Newsprint and #DCD9D2 on Charcoal. I missed this in batch 1.
+- **31. Engineer (A17):** the boxes now hold their pills, but in the narrow Checks and Policy columns a pill's three lines still meet its rounded ends: "organized interests" crosses the outline left and right, and "Policy advantages" and "Presidential action" touch it. An 8 px inset holds on the straight sides only; at a pill's ends the inset must follow the curve (a 76 px pill's ends have a 38 px radius), or the words wrap to a narrower measure on their first and last lines.
 
 ## Not fixed
 
@@ -371,6 +403,7 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 - The plan before and after C1 to C5, by `diff` against my scratch copy: only the five lines and the dated note moved.
 - Batch 1's data check, `signoff/check.py` (23:09 UTC), and its pixel scan, `signoff/redscan.py` (23:08 UTC), in my scratch, as the Sign-offs section lists; the landmark count of the six exports and the stored-text check (both between date reads at 23:09 and 23:14 UTC); headless screenshots of A17 to A20 at 1440 px from the engineer's scratch exports (23:14 UTC, load 0.03, one browser at a time, closed after each).
 - The atlas test read whole (908 lines) against plan section 8; its 23:01:35 UTC report read for every FAIL line.
+- Batch 2 (from 00:12:56 UTC): the data check with symbols and chooser states resolved (00:13:34 UTC); the pixel red scan (00:13:42 UTC); crops of every fixed item; the R-15 chooser state rendered from a scratch copy (00:15 UTC); A17 and A18 rendered from the engineer's `r2/out` exports and A17 to A20's plate pages (00:16 to 00:17 UTC, load under 0.1, one browser at a time); card edges sampled at 390 px (between 00:17 and 00:18:32 UTC).
 
 ## Not tested
 
@@ -381,3 +414,4 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 - Batch 1 looked by eye at the 1440 light captures of A11 to A16, A11 dark and 390 light, A13 and A14 at 390 light, and A14's drawing in dark and gray. The other dark captures (A12, A13 at 1440 and 390; A14 at 390 dark) were checked by pixels for red and inks only, and A11's dark inks by sampled pixels.
 - A17 to A20 were seen only as headless screenshots of the engineer's scratch exports at 1440 px, in their state on load: A19's step 2 and A20's open claim were read in the plates' frame markup, not seen drawn.
 - I ran neither the atlas test nor its self-test; I read its code and its 23:01:35 report.
+- Batch 2: A17 and A18 were seen from the engineer's 23:58 UTC scratch run, not the repository run of 00:06 to 00:08 UTC; their plates' frame markup matched, but I did not render the repository plates themselves (their page needs the guide's styles). A12, A13 and A14 at 390 dark and A12 at 390 light were checked by pixels and markup only. The R-48 state was checked in markup, not rendered. I did not run the atlas test or its self-test, and read the test's new code by search only.
