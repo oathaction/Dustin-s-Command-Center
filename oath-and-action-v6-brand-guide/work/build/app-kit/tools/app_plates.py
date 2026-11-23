@@ -186,6 +186,100 @@ def plate_css():
     return m.group(1).strip() if m else ""
 
 
+# PR-M1 (chat 12): the kit's styles sit in the page's head, so a rule written for a frame's page (".sh", ".ln", ".pp", the
+# component classes) also reached the guide's own plates: the share card's ".sh" drew chapters 14 and 15's shaded pills
+# ("rect.pl.sh") 1200 by 630 px. Every selector of a kit style is now held to elements inside a frame's page by a
+# zero-specificity ":where(.oa-app-art *)" on its subject, so the cascade inside the frames is the same as before.
+ANCHOR = ":where(.oa-app-art *)"
+NEST = ("media", "container", "supports", "layer", "scope", "document")
+LEGACY_PE = (":before", ":after", ":first-line", ":first-letter")
+
+def _split_top(s, sep=","):
+    parts, depth, q, cur = [], 0, None, []
+    for ch in s:
+        if q:
+            cur.append(ch)
+            if ch == q: q = None
+            continue
+        if ch in "\"'": q = ch
+        elif ch in "([": depth += 1
+        elif ch in ")]": depth -= 1
+        elif ch == sep and depth == 0:
+            parts.append("".join(cur)); cur = []; continue
+        cur.append(ch)
+    parts.append("".join(cur))
+    return parts
+
+def scope_selector(sel, anchor=ANCHOR):
+    lead = sel[:len(sel) - len(sel.lstrip())]; trail = sel[len(sel.rstrip()):]
+    s = sel.strip()
+    if not s:
+        return sel
+    # a pseudo-element ends the selector: the anchor goes on the subject before it
+    m = re.search(r"(::[a-zA-Z-]+(?:\([^)]*\))?)$", s)
+    if not m:
+        for pe in LEGACY_PE:
+            if s.endswith(pe) and not s.endswith(":" + pe):
+                m = re.search(re.escape(pe) + "$", s); break
+    if m:
+        return lead + s[:m.start()] + anchor + s[m.start():] + trail
+    return lead + s + anchor + trail
+
+def _block_end(css, i):
+    """css[i] is '{'; the index just past its matching '}' (strings and comments skipped)"""
+    depth, q, n = 0, None, len(css)
+    while i < n:
+        ch = css[i]
+        if q:
+            if ch == "\\": i += 2; continue
+            if ch == q: q = None
+        elif css.startswith("/*", i):
+            i = css.index("*/", i) + 2; continue
+        elif ch in "\"'": q = ch
+        elif ch == "{": depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0: return i + 1
+        i += 1
+    raise ValueError("unbalanced braces")
+
+def scope_css(css, anchor=ANCHOR):
+    """Every style rule's selectors limited to elements inside a kit frame (.oa-app-art), with no specificity added; rules
+    inside @media, @container, @supports and @layer too; @keyframes, @font-face and the like left as they are."""
+    out, i, n = [], 0, len(css)
+    count = 0
+    while i < n:
+        if css.startswith("/*", i):
+            j = css.index("*/", i) + 2; out.append(css[i:j]); i = j; continue
+        if css[i] in " \t\r\n}":
+            out.append(css[i]); i += 1; continue
+        # a prelude runs to '{' or ';'
+        j, q = i, None
+        while j < n:
+            ch = css[j]
+            if q:
+                if ch == q: q = None
+            elif ch in "\"'": q = ch
+            elif ch in "{;": break
+            j += 1
+        prelude = css[i:j]
+        if j >= n or css[j] == ";":
+            out.append(css[i:j + 1]); i = j + 1; continue
+        end = _block_end(css, j)
+        if prelude.lstrip().startswith("@"):
+            name = re.match(r"\s*@([a-zA-Z-]+)", prelude).group(1).lower()
+            if name in NEST:
+                inner, c = scope_css(css[j + 1:end - 1], anchor)
+                out.append(prelude + "{" + inner + "}"); count += c
+            else:
+                out.append(css[i:end])
+        else:
+            sels = _split_top(prelude)
+            out.append(",".join(scope_selector(s, anchor) for s in sels) + css[j:end]); count += len(sels)
+        i = end
+    return "".join(out), count
+
+
 def head_styles():
     """One style per renderer type the page placed, plus the frames' own style, for the page's head."""
     out = []
@@ -196,7 +290,7 @@ def head_styles():
                    "\n.oa-app-title-k{font-weight:var(--oa-font-weight-bold);margin-right:8px}")
         else:
             p = STATE["dir"] / css_file
-            css = p.read_text() if p.exists() else ""
+            css = scope_css(p.read_text())[0] if p.exists() else ""   # PR-M1: held to the frames
         out.append(f'<style data-oa-app-kit="{html.escape(t)}">\n{css}\n</style>')
     return "\n".join(out)
 
@@ -298,7 +392,7 @@ def self_test():
         check("a plate stays fresh while its own words do (another page's words changing), and goes stale when they change",
               fresh == [] and other == [] and mine and "its words" in mine[0])
         hs = hs_kept
-        check("the page's head gets each placed type's style once, and the frames' own", hs.count("<style") == 2 and ".wa{color:red}" in hs and ".oa-app-frame" in hs)
+        check("the page's head gets each placed type's style once, and the frames' own", hs.count("<style") == 2 and ".wa:where(.oa-app-art *){color:red}" in hs and ".oa-app-frame" in hs)
         # chat 11c: one key of an entry, a plate with two generators' words, an atlas plate's styles and its test result
         gen.write_text('import json,sys\nprint(json.dumps({"A06": {"site": {"skip": "Skip"}, "title": "Home"}, "A99": {"title": "Two"}}))\n')
         reset(d)
@@ -328,7 +422,14 @@ def self_test():
         w = []
         expand('<div data-oa-app="A97"></div>', "s-21-x", w.append)
         check("the atlas test's self-test runs once on the plates, and a fixture with no atlas page fails it", any("self-test fails on the plates" in x for x in w))
-        check("an atlas plate puts the website's style in the head beside its own", ".ws{display:block}" in hs2 and ".wa-tb{display:block}" in hs2)
+        check("an atlas plate puts the website's style in the head beside its own", ".ws:where(.oa-app-art *){display:block}" in hs2 and ".wa-tb:where(.oa-app-art *){display:block}" in hs2)
+        # PR-M1 (chat 12): every kit rule in the head is held to the frames, at no added specificity, and @keyframes stay whole
+        sc, n_ = scope_css('.sh{width:1200px}.sh p,.b::before{c:d}@media (min-width:48em){[data-oa-theme="dark"] .ws .x{e:f}}'
+                           '@keyframes k{from{a:b}}.oa-disclosure-summary::-webkit-details-marker{display:none}')
+        check("a kit rule in the head is held to the frames, pseudo-elements and @media included, @keyframes left whole",
+              n_ == 5 and ".sh:where(.oa-app-art *){width:1200px}" in sc and ".sh p:where(.oa-app-art *)," in sc
+              and ".b:where(.oa-app-art *)::before" in sc and '[data-oa-theme="dark"] .ws .x:where(.oa-app-art *){e:f}' in sc
+              and "@keyframes k{from{a:b}}" in sc and ".oa-disclosure-summary:where(.oa-app-art *)::-webkit-details-marker" in sc)
     reset()
     return bad
 

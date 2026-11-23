@@ -644,6 +644,24 @@ def r18(stored):
 STEP_ORDER = [("oa-stepper-play", "Play"), ("oa-stepper-reset", "Reset the loop"), ("oa-stepper-prev", "Previous step"), ("oa-stepper-next", "Next step")]
 
 
+def script_said(box, steps, s, i):
+    """The status line chapter 18's stepper script writes for step i (c-18-loop-stepper.js, show() and count()), read the
+    way the script reads it (AX-1): the nearest data-oa-part at or above the step, when it sits inside the stepper's root or
+    is the root itself, names a loop in a two-loop walk and the line counts within it; else "Step i of n: "."""
+    def part_of(el):
+        for e in [el] + [p for p in el.parents if isinstance(p, Tag)]:
+            if e.has_attr("data-oa-part"):
+                return e.get("data-oa-part") if (e is box or any(p is box for p in e.parents)) else None
+        return None
+    name = part_of(s)
+    if name is None:
+        pre = f"Step {i} of {len(steps)}: "
+    else:
+        own = [x for x in steps if part_of(x) == name]
+        pre = f"{name}, step {own.index(s) + 1} of {len(own)}: "
+    return re.sub(r"\s+", " ", pre + text(s.select_one(".oa-stepper-line") or "") + " " + text(s.select_one(".oa-stepper-more") or "")).strip()
+
+
 def t11(pg):
     faults, n = [], 0
     for box in pg.all("[data-oa-stepper]"):
@@ -654,12 +672,20 @@ def t11(pg):
             faults.append(f"the stepper's buttons read {[g[1] for g in got]}, AL-22 asks {[w for _, w in STEP_ORDER]}")
         steps = box.select(".oa-stepper-step")
         for i, s in enumerate(steps, 1):
-            said = f"Step {i} of {len(steps)}: " + " ".join(text(x) for x in s.select(".oa-stepper-line, .oa-stepper-more"))
+            # AX-1: the hold counts the words the script writes in the status line, not the kit's own words
+            said = script_said(box, steps, s, i)
+            if not said.startswith(f"Step {i} of {len(steps)}: "):
+                faults.append(f"step {i}: the script would say {said[:40]!r}…, the plate prints 'Step {i} of {len(steps)}:' (Rule 21.13; AX-1)")
             want = max(6000, 250 * len(said.split()))
             if s.get("data-oa-hold") != str(want):
-                faults.append(f"step {i}: holds {s.get('data-oa-hold')} ms, its {len(said.split())} words take {want} (AL-24)")
+                faults.append(f"step {i}: holds {s.get('data-oa-hold')} ms, the {len(said.split())} words the status line says take {want} (AL-24)")
             if not s.select(".oa-stepper-more"):
                 faults.append(f"step {i}: no more words for the status line to read (chapter 18's stepper reads line and more)")
+        # a drawn state (A19): the status line the frame prints is the one the script writes at that step
+        at = int(box.get("data-oa-at") or 0)
+        st = box.select_one(".oa-stepper-status")
+        if at and st is not None and text(st) != script_said(box, steps, steps[at - 1], at):
+            faults.append(f"step {at}: the drawn status line reads {text(st)[:50]!r}…, the script writes {script_said(box, steps, steps[at - 1], at)[:50]!r}…")
     return faults, n
 
 
@@ -983,6 +1009,7 @@ PLANTS = [
     ("T10", "loop", ".wa-gl", lambda el, q: el.append(NavigableString(" well-supported")), "a grade in its stored spelling"),
     ("T10", "reform", '[data-reading="2"] .ws-p', lambda el, q: el.append(NavigableString(" An added sentence.")), "a remedy block that no longer rejoins to the stored text"),
     ("T11", "loop", ".oa-stepper-step", lambda el, q: el.__setitem__("data-oa-hold", "3200"), "a step held 3,200 ms (registers F-8, F-15)"),
+    ("T11", "loop", "[data-oa-stepper]", _set(**{"data-oa-part": "stepper"}), "a part name on the stepper's root, which the script says before each step (AX-1)"),
     ("T12", "home", "[data-pathway][aria-pressed=\"true\"]", lambda el, q: [x.decompose() for x in el.select("svg")], "a pressed question with no check"),
     ("T13", "loop", "@style:-soup-contains('.ws ')", lambda el, q: el.append(NavigableString(".x{color:#ffffff}")), "a literal White in the page's style"),
     ("T14", "loop", "main", lambda el, q: setattr(q, "facts", {"words": [{"text": "small words", "size": 12, "color": "rgb(18, 18, 18)", "bg": "rgb(250, 247, 240)", "weight": "400"}]}), "words at 12 px"),

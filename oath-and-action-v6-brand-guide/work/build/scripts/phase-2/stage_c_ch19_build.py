@@ -215,8 +215,8 @@ MAP = {
     '1.2.3': ('met', ['16.12'], ''),  # chat 11
     '1.2.4': ('none', [], 'No product streams live today; chapter 23 if one does.'),
     '1.2.5': ('met', ['16.12'], ''),  # chat 11
-    '1.3.1': ('part', ['18.10', '18.3', '18.17', '18.6', '18.7', '11.5'], 'Tables, forms, lists, landmarks and the current place keep their structure in markup; chapter 20 owes the headings of a whole page.'),
-    '1.3.2': ('part', ['18.22', '18.6'], 'Components keep their order; chapter 20 owes the reading order of a whole page.'),
+    '1.3.1': ('part', ['18.10', '18.3', '18.17', '18.6', '18.7', '21.1', '20.1', '20.3', '11.5'], 'Tables, forms, lists, landmarks and the current place keep their structure in markup, and Rules 20.1, 20.3 and 21.1 name a page’s landmarks; chapter 20 owes the headings of a whole page.'),  # chat 12, AX named place 13
+    '1.3.2': ('part', ['21.1', '18.22', '18.6'], 'Components keep their order, and Rule 21.1 sets an atlas page’s order from the skip link to the footer; chapter 20 owes the reading order of the site’s other pages.'),  # chat 12
     '1.3.3': ('met', ['19.3'], ''),
     '1.3.4': ('met', ['19.6'], ''),
     '1.3.5': ('met', ['18.17'], ''),
@@ -237,10 +237,10 @@ MAP = {
     '2.3.1': ('part', ['17.1', '17.3'], 'Motion plays only on request; chapter 23 owes the flash test for video.'),
     '2.4.1': ('met', ['18.5', '18.6'], ''),
     '2.4.2': ('met', ['20.4'], ''),  # chat 11: Rule 20.4
-    '2.4.3': ('part', ['18.6', '18.16', '18.17', '18.21', '18.22', '18.23'], 'Each component says where focus goes; chapter 20 owes the focus order of a whole page.'),
+    '2.4.3': ('part', ['21.1', '20.2', '18.6', '18.16', '18.17', '18.21', '18.22', '18.23', '21.13'], 'Each component says where focus goes, and Rule 21.1 sets an atlas page’s order; chapter 20 owes the focus order of the site’s other pages.'),  # chat 12
     '2.4.4': ('met', ['18.5', '18.14', '11.15'], ''),
-    '2.4.5': ('part', ['18.15', '18.7'], 'Search and location lists; chapter 20 owes the ways around a whole site.'),
-    '2.4.6': ('part', ['18.17', '18.3', '11.13'], 'Labels; chapter 20 owes the headings of a page.'),
+    '2.4.5': ('part', ['21.1', '21.14', '21.8', '21.6', '18.15', '18.7', '20.1', '20.3'], 'Every atlas page has two ways in: the atlas’s views with the breadcrumb, and the indexes and chips that link each record. Chapter 20 owes a second way to an article, such as a search or its part’s list of pieces.'),  # chat 12
+    '2.4.6': ('met', ['18.17', '20.7', '21.12', '21.10', '18.3', '11.13'], 'Each label names its control and each heading its topic: an article’s headline answers its question, and a record’s page heads with its chip and its stored title.'),  # chat 12
     '2.4.7': ('met', ['17.9', '05.4'], 'Every rule of chapter 18 draws the ring in its states.'),
     '2.4.11': ('met', ['18.6', '18.11'], ''),
     '2.5.1': ('met', ['19.5', '18.23'], ''),
@@ -251,7 +251,7 @@ MAP = {
     '2.5.8': ('met', ['11.7', '18.1'], 'Every rule of chapter 18 gives its target size.'),
     '3.1.1': ('met', ['20.4'], ''),  # chat 11: Rule 20.4
     '3.1.2': ('gap', [], 'Chapter 02 owes the writer’s rule for a passage in another language. Rule 20.4 already gives its markup.'),  # chat 11
-    '3.2.1': ('part', ['18.3', '18.9'], 'No component changes the page on focus; chapter 20 owes the rule for a whole page.'),
+    '3.2.1': ('met', ['18.3', '18.9', '20.2', '21.3', '21.13'], 'Every control acts on a press and never on focus, the website’s menu and the atlas’s questions and stepper included.'),  # chat 12
     '3.2.2': ('met', ['18.3', '18.4', '18.16'], ''),
     '3.2.3': ('met', ['18.6', '18.4'], ''),
     '3.2.4': ('met', ['11.14', '17.10', '18.22'], ''),

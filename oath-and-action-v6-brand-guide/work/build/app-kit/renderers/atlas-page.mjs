@@ -183,6 +183,10 @@ function quoted_title(t) {
   return `<span class="ws-nb">“${esc(w[0])}</span> ${esc(w.slice(1, -1).join(' '))} <span class="ws-nb">${esc(w[w.length - 1])}”</span>`;
 }
 
+// AX-10: an address breaks after its slashes (a <wbr> after each), and anywhere if a part still runs past its column, so
+// a 320 px window never scrolls sideways
+const url_html = (u) => esc(u).replace(/\/(?!\/)/g, '/<wbr>');
+
 // a reform's effects, one family a row (Rule 15.16; the data lead's R12): the family's name, the pips, the code whole
 // with its qualifier and true minus signs, and the model's words for the code; never a total
 function effect_rows(r, F) {
@@ -282,8 +286,10 @@ function view_loop({ pid, P, A, F, panels, spec }) {
     controls_ = controls.replace(/(<button[^>]*class="oa-stepper-(?:prev|reset)")([^>]*?)\saria-disabled="true"/g, '$1$2');
     if (at_ === steps.length) controls_ = controls_.replace(/(<button[^>]*class="oa-stepper-next")/, '$1 aria-disabled="true"');
   }
-  const stepper = `<div class="oa-stepper wa-stepper" data-oa-stepper data-oa-part="stepper"${at_ ? ` data-oa-at="${at_}"` : ''}><p class="oa-stepper-status" role="status" data-oa-ready="${esc(ready)}">${status_}</p>`
-    + controls_ + why + `<ol class="oa-stepper-steps" role="list">${items_}</ol></div>`;
+  // AX-1: the crop's part name sits on a wrapper outside [data-oa-stepper], since chapter 18's script reads a data-oa-part
+  // inside the stepper as the name of a loop in a two-loop walk and would say "stepper, step 1 of 2:"
+  const stepper = `<div class="wa-stw" data-oa-part="stepper"><div class="oa-stepper wa-stepper" data-oa-stepper${at_ ? ` data-oa-at="${at_}"` : ''}><p class="oa-stepper-status" role="status" data-oa-ready="${esc(ready)}">${status_}</p>`
+    + controls_ + why + `<ol class="oa-stepper-steps" role="list">${items_}</ol></div></div>`;
   // the chooser (Rule 15.20), chapter 18's choice, and the chosen reform's panel
   const check = sprite_icons(fs.readFileSync(path.join(CODE, 'c-18-choice.html'), 'utf8').match(/<svg\s+class="oa-choice-check"[\s\S]*?<\/svg>/)[0]).replace(/\s*\n\s*/g, ' ');
   const choices = v.offered.map((r) => `<label class="oa-choice-item"><input class="oa-choice-input" type="radio" name="${pid}-reform" value="${esc(r.id)}"${r.id === v.chosen ? ' checked' : ''}>`
@@ -355,7 +361,7 @@ function view_reform({ pid, P, A, F, panels, spec }) {
   const routes = route_rows(r, A, I);
   const routes_lede = `<p>${esc(P.complements_heading)}: ` + v.complements.map((c) => `${link_chip('Reform', c.id, I)} “${esc(c.title)}”`).join('; ') + `</p>`;
   const srcs = `<details class="oa-disclosure wa-src"><summary class="oa-disclosure-summary"><span class="oa-disclosure-label">${esc(P.sources_summary)}</span>${CHEV()}</summary>`
-    + `<div class="oa-disclosure-body"><ul>` + v.sources.map((s) => `<li id="${pid}-source-${low(s.id)}" class="wa-small">${esc([s.publisher, s.title, s.year].filter(Boolean).join(', '))}${s.url ? `, <span class="ws-nb">${esc(s.url)}</span>` : ''}</li>`).join('')
+    + `<div class="oa-disclosure-body"><ul>` + v.sources.map((s) => `<li id="${pid}-source-${low(s.id)}" class="wa-small">${esc([s.publisher, s.title, s.year].filter(Boolean).join(', '))}${s.url ? `, <span class="wa-url">${url_html(s.url)}</span>` : ''}</li>`).join('')
     + `</ul></div></details>`;
   return sec('Reform', null, null, head + where, ` aria-labelledby="${pid}-h1"`)
     + bsec('Grades', `${pid}-s2`, P.grades_heading, `<p>${esc(wd(P, 'grades_lede', 'A12'))}</p>`, grades, ' data-oa-part="grades"')
@@ -665,7 +671,7 @@ ${W} .wa-read>*+*{margin-top:16px !important}
 ${W} .wa-tags,${W} .wa-ev,${W} .wa-cl{list-style:none;margin:16px 0 0;padding:0}
 ${W} .wa-tag{${type_css('data-label')};display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
 ${W} .wa-weak{margin-top:8px !important}
-${W} .wa-stepper{min-width:0}
+${W} .wa-stepper,${W} .wa-stw{min-width:0}
 ${W} .wa-choose{margin-top:48px;row-gap:24px}
 ${W} .wa-fv:not(.wa-fv--on){display:none}
 ${[1, 2, 3, 4, 5].map((k) => `${W} .ws-in:has(.wa-choose .oa-choice-item:nth-child(${k}) .oa-choice-input:checked) .wa-fv{display:none}${W} .ws-in:has(.wa-choose .oa-choice-item:nth-child(${k}) .oa-choice-input:checked) .wa-fv:nth-child(${k}){display:block}`).join('')}
@@ -698,6 +704,7 @@ ${W} .wa-where{margin-top:48px;row-gap:24px}
 ${W} .wa-note>*+*{margin-top:12px !important}
 ${W} .wa-src{margin-top:16px}
 ${W} .wa-src ul{margin:0;padding-left:20px}
+${W} .wa-url{overflow-wrap:anywhere}
 ${at(BP.desktop, `${W} .wa-op{grid-column:1/9}${W} .wa-head>.wa-facts{grid-column:9/13;grid-row:1}
  ${W} .wa-two>:first-child{grid-column:1/5}${W} .wa-two>:last-child{grid-column:5/13}
  ${W} .wa-two .wa-fig .sv{max-width:min(100%,640px)}
@@ -846,6 +853,8 @@ ${W} .wa-qs{display:flex;flex-direction:column;gap:8px}
 ${W} .wa-q{width:100%;justify-content:flex-start;text-align:left;min-height:var(--oa-size-target-touch);padding:8px 12px;${type_css('body-small')}}
 /* the pressed look is chapter 18's own (the check, bold words, a 2 px edge); How to read's sample draws the same look */
 ${W} .wa-qon{border-width:var(--oa-border-width-rule);font-weight:var(--oa-font-weight-bold)}
+/* AX-2: the pressed question takes chapter 18's bold words and gives back the 2 px edge's pixel, over .wa-q's own type and padding */
+${W} button.wa-q[aria-pressed="true"]{padding:7px 11px;font-weight:var(--oa-font-weight-bold)}
 ${W} .wa-qon .oa-toggle-check{display:block}
 ${W} .wa-status{margin-top:16px !important;min-height:1lh}
 ${W} .wa-answer{margin-top:32px;padding-top:16px;border-top:2px solid var(--oa-color-border-strong)}
