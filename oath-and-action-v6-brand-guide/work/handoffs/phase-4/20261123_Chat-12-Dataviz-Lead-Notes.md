@@ -14,6 +14,7 @@ The main session numbers these.
 - D4-xxx | R22: the name after each chip is the record's stored title (a connection's stored `name`), in quotation marks, never recased | One field per kind, and the pages already print Connection LE15 this way.
 - D4-xxx | R23: Reform R-23's two readings take Rule 01.16's own labels, "One reading" and "The other reading" | Approved matching labels; our words, so DR-37 holds.
 - D4-xxx | R27: the Register's loops column stays numbered loops, headed as such, with the reason in the note | The Register files connections, and a conceptual loop has no complete chain of them.
+- D4-xxx | R29: Reform R-23's remedy splits at sentence 4; R-01's and R-22's contested remedies print whole, from a listed exception the test holds | No sentence boundary in either separates two readings of one question, and the record is Dustin's to change.
 
 ## Rulings
 
@@ -190,6 +191,25 @@ The design director's reading stands, and the evidence reader found the built pa
 
 Rulings R19 to R28 landed in this file by 17:55:41 UTC (`date -u` read straight after the write).
 
+### R29. Where a contested remedy splits (PR-M2, part 3)
+
+Written about 19:40 UTC, at the atlas engineer's ask (his run of the reform template over all 49 active reforms). First, a correction to R15: it said "only Reform R-23 has a contested remedy". The model holds three. R-23's `remedy_evidence.grade` is `contested`, and R-01's and R-22's are `plausible_contested`, which Rule 13.3 (R3) also prints as "Contested". I read each stored text by sentence (System 1's splitter):
+
+| Reform | Sentences (words) | Ruling |
+|---|---|---|
+| R-23 | 8, 21, 13, 38 | **`remedy_split: 4`**, as R15 and R23 set: "One reading" over sentences 1 to 3, "The other reading" over sentence 4 |
+| R-01 | 12, 38, 26 | **Whole.** Sentence 1 says more contested elections and more candidates are "plausible results". Sentence 2 says whether legislators become more moderate "is contested", then cites only evidence of little or conditional effect. Sentence 3 is the limitation. No sentence boundary separates two readings of one question: a split at 2 would set "more competition" against "no moderation" as if they disagreed, and they do not |
+| R-22 | 3, 40, 12 | **Whole.** Both readings sit inside sentence 2 ("Two studies ... disagree on its effects on jobs and prices; an early evaluation by Reich ... reported no detectable job loss"), and only one of the two studies is named. A split would cut a sentence or label a limitation as a reading |
+
+How the template carries it:
+
+1. A contested remedy (stored grade `contested` or `plausible_contested`) needs `remedy_split` in its content file: a sentence number, as R15 counts it, or `"whole"`.
+2. `"whole"` prints the stored text as one block, open on load, with its grade word "Contested" and its gloss as Reform R-23's page prints them, its source link after it, and no reading labels. It is accepted only for the reforms this ruling lists (today R-01 and R-22). The kit and the test carry that list, as they carry R20's.
+3. A contested remedy with neither value, or with `"whole"` and not on the list, fails T10 and names the reform, so a new contested record waits for my reading.
+4. T10 for a whole block: its text equals the stored text whole, whitespace collapsed.
+
+The two stored texts that print whole also go to Dustin (Requests, item 3): R-22's names one side's study and not the other, and R-01's cites evidence on one side of the moderation question only. Under DR-93 a reader on the other side finds their evidence unnamed. The page prints what the record holds; the record is his to change.
+
 ## Contracts
 
 - For the atlas engineer: R19's regions and load state; R20's figure method and its six-item known list; R21's line, disclosure and T7; R22's name table, composition and T1; R23's labels and T10; R27's key `atlas:loops-conceptual`; R28's fill.
@@ -198,7 +218,44 @@ Rulings R19 to R28 landed in this file by 17:55:41 UTC (`date -u` read straight 
 
 ## Sign-offs
 
-To come, in numbered batches, as the views and S04's frames land.
+S04 in chapter 16's frames (CD-S7) was not built this pass, so it has no sign-off (the main session, 19:28 UTC).
+
+### Batch 1: A11 to A20, the build of 19:23:01 to 19:26:09 UTC. Signed at 19:40 UTC, with three items back
+
+Inputs: the six working exports and their 20 PNGs in `work/build/exports/phase-4/` (written 19:23:04 to 19:25:02), the ten atlas plates in `work/build/app-kit/plates/` (19:26:09), and the main session's guide captures of the chapter 21 plates (`captures-fix/newsprint-1x/1440/`, 19:32 to 19:37). Scripts: `dv_signoff.py`, `dv_frames.py`, `dv_text.py` and `dv_tiles.py` in my scratch.
+
+**Against the model and the rulings, by script.** The checks rebuild every expected value from `atlas-v7-data.json` by R2's methods and never read the engineer's test.
+- **The exports** (`dv_signoff.py`): 567 checks, 0 FAIL.
+  - Counts: every count with an R2 method matches the model (A11 139, A13 138, A14 4, A15 40). The home's 27 directed pairs sum to 81.
+  - A11, on load: no question pressed, no part lit, an empty status line. Each of the 16 answer regions is hidden, is headed with its own question, and holds its pathway's stored `short_answer` whole. Its claim chips are exactly R20's table, each at its sentence's end, and each disclosure holds its stored claim. Every box and card carries R24's labelled title. No "flow" appears in reader text, and there is no red.
+  - A12: red only on R-23's targets, EC7 and A4. "One reading" comes before its block and "The other reading" before the second. The first chips are followed by their R22 names. The confidence line is present, and the locator fills Wealth and Your household.
+  - A13: the "Numbered loops" head, with `atlas:loops`, `atlas:loops-conceptual` and `atlas:loops-numbered` all counted. No bare "sheet D04" and no EC or TC printed alone. No red. R-35's confidence line, the names after L18 and L19, and the locator filling Checks.
+  - A14: the grade line by connection (R22 item 4). Each of the three panels carries one confidence line after its fourth row, holding the stored words. Each has a closed disclosure holding the stored remedy text, its grade word and the stored tradeoffs (R21). `data-atlas-reads` reads `D2:rises L14 D4:falls L15 D2:rises` (R4), and the weakest mark is on L15 (R8). Seven red marks: R-11's D4, L14 and L15, and R-15's and R-48's L14 and L15, one figure a reform (R10). The locator fills Checks.
+  - A15: 23 rows. The 37 variable chips in the grade column take their stored titles as descriptions (R22 item 3), and no stored grade spelling prints (R18).
+- **The plate frames** (`dv_frames.py`, all 64 frames of A11 to A20): 88 checks, 0 FAIL.
+  - A pressed frame presses PW06 alone, lights Wealth, Checks and Your household, draws one answer under PW06's question, and names those three parts in its status line. A20's frame opens CL1340, and A17's draws 51 pills.
+  - The drawing symbols carry red on R-23's EC7 and A4 and, with R-11 chosen, on D4, L14 and L15. No home or Register frame carries red.
+  - The locators read A12 Wealth and Your household, A13 Checks, A14 Checks. A18's frames are crops without the locator, so R28's D10 row is not shown there.
+
+**By eye.**
+- **Exports viewed:**
+  - A11: 1440 light (both bands), 1440 dark (the drawing), 390 light (whole).
+  - A12: 1440 light (top and evidence bands), 1440 dark (top), 390 light (whole).
+  - A13: 1440 light and dark (the index), 1440 light (layer rows and note), 390 light (the index's first cards).
+  - A14: 1440 light (three bands), the drawing at twice size in light and dark, 390 light and dark (the first 5,400 px).
+  - A15: 1440 light (top), 390 light (the first 5,400 px).
+  - A16: 1440 light (two bands).
+- **Guide plates viewed** (1440 viewport): `s-21-1-correct`, `s-21-home` (its first band: 1440 light, 390 light, 390 dark) and `s-21-5-correct`.
+- **What I confirmed in them:** the loop's patterned red target with its case dashes in light and none on Charcoal (R14), CD-S10's solid run from L15's last corner into its arrowhead (signed: the dashes carry the run, and the shaft is about as long as the 28 px lead-in at the tail), CR-9's whole-pixel lines, the range pips on R-23's Economic performance (R12), the readings set level with matching labels (R23), the main circuit and the other arrows in their inks in both themes (R6), the 390 cards (R7), and the unpressed home on load with the pressed state kept in the plates (R19).
+
+**Signed off:** A11, A14, A16, A17, A19 and A20 as built. A12, A13 and A15 are signed off for their data. Each also carries a fault sent back below. None of the three changes a value; each changes how a value reads.
+
+**Sent back** (Requests, items 4 to 8):
+1. The guide's plates draw the wordmark's ampersand black in every 390 px masthead, and invisible on Charcoal: 25 uses in 15 plates of chapters 20 and 21 (item 4, Engineer W). This is the locked identity, so it comes first.
+2. A13's phone cards put the five grade counts beside "Issue records" with nothing saying they count connections (item 5).
+3. CR-3's single words in A15's cells, A13's "none filed" and A12's phone lines (item 6).
+4. A12's confidence line sits above its rows, where A13 and A14 set it below (item 7, a Should).
+5. A tag's hyphen in the data-label type renders spaced (item 8, low).
 
 ## Done
 
@@ -211,11 +268,26 @@ To come, in numbered batches, as the views and S04's frames land.
 - DF6: ruled (R26).
 - ST-2: ruled (R27).
 - DD11C-Q1: ruled (R28); the row can close.
+- Sign-off of the changed atlas views, batch 1: A11, A14, A16, A17, A19 and A20 signed off; A12, A13 and A15 signed off for their data, with items 4 to 8 under Requests sent back.
+- PR-M2, part 3 (the contested remedies' splits): ruled (R29); R-23 splits at sentence 4, R-01 and R-22 print whole, and R15's "only R-23" is corrected.
+- CD-S7 (S04 in chapter 16): not built this pass, so no sign-off (main session, 19:28 UTC).
 
 ## Requests
 
 1. **Main session, atlas V7.1 items for Dustin (section 3.8's issue rows).** Six figures in four stored short answers are held by no claim in their pathway, so the pages print them without a link (R20): PW01's "29%" (asking rents, early 2026 against 2020), "$1,240" and "$2,420" (the monthly payment, 2020 and 2025; Claim CL1105 says "nearly doubled" in words); PW09's "about 2.1% a year since 1947" (Claim CL1500 holds 2.1% for late 2019 to mid-2026, a different period, so the answer and the claim disagree); PW10's "7.65%" (the payroll tax rate); PW14's "83%" (the property tax share of local school revenue). Each wants a claim, or a correction, in the next model.
-2. **Atlas engineer, `tools/atlas_figures.py` around line 608:** replace the percent-only pattern and its substring match with R20's method, and carry R20's six-item list. Without it, the 16-answer page stops on PW01 and PW14 and links PW09's 2.1% to the wrong period.
+2. **Atlas engineer, `tools/atlas_figures.py` around line 608:** replace the percent-only pattern and its substring match with R20's method, and carry R20's six-item list. Without it, the 16-answer page stops on PW01 and PW14 and links PW09's 2.1% to the wrong period. **Answered** (his notes, AX-4: R20's table to the letter; batch 1 confirms it).
+3. **Main session, atlas V7.1 items for Dustin (R29):** two contested remedies print whole because their stored texts hold one side's evidence only. Reform R-22's says two studies of California's fast-food wage "disagree" and names only the one that found no detectable job loss. Reform R-01's says the moderation effect "is contested" and cites only evidence of little or conditional effect. Each wants the other side's source named in the next model (DR-93).
+4. **Engineer W, `work/build/app-kit/oa-app.mjs`, PR-M1's frame scoping (batch 1; the locked identity):** in the strict build (`fix/engineer-atlas/guide.html`, 19:26:27) the ampersand's rule is scoped as `.oa-masthead-amp:where(.oa-app-art *)`. The 24 px wordmark is drawn by `<use href="#oa-app-id-chapter-18-wordmark-24px">`, and its symbol sits in the sprite outside `.oa-app-art`, so the selector never matches the symbol's path. The ampersand falls back to black, and on a Charcoal frame it disappears. This is seen in the main session's captures: `s-21-home`'s 390 light and 390 dark frames, and `s-21-1-correct`'s 390 frame. By script, 25 uses in 15 plates: `s-20-opener`, `s-20-1`, `-2`, `-5`, `-6`, `-7`, `-8-correct`, `s-21-opener`, `s-21-home`, `s-21-1-correct`, `s-21-reform`, `s-21-7-correct`, `s-21-register`, `s-21-loop` and `s-21-14-correct`. The exports themselves draw it red. Fix: let the scope reach the plates' symbol sprite (for example `:where(.oa-app-art *, <the sprite's container> *)`, or write the sprite inside an `.oa-app-art` element), then recapture. Add a guide check plant: a kit symbol whose scoped rule no longer reaches it.
+5. **Atlas engineer and editor, `renderers/atlas-page.mjs` and A13's words, the Register's phone cards (batch 1; a reading fault):** at 390 px each card sets "Issue records: 20" and then "Documented: 2", "Well supported: 2" and the rest in two columns. Nothing says those five count connections, and issue records carry grades of their own (D04's are 11 documented, 6 well supported and 3 plausible, R2), so a reader can take "Documented: 2" for two documented issue records. At 1440 px the column heads carry the line samples, which say "connections". Fix: set the five grade counts as their own group after the structure counts, under a label in the editor's words (such as "Its connections by grade"), with each count's line sample before its word as the key above shows it.
+6. **Atlas engineer, `renderers/atlas-page.mjs` and `plates/atlas-page.css`, CR-3 (batch 1):** single words still end lines.
+   - A15, at 1440 and 390: the "How it closes" cells ("closed: every step is a numbered / connection", most rows) and some titles ("... reinforce each / other", "... outside / expertise").
+   - A13, 1440 index: "none / filed" in both layer rows.
+   - A13, 390 cards: sheet titles ("... public / information", "... public / services", "... equal / justice").
+   - A12, 390: the tag line's "also aim / here" and the effect words "no expected effect to small / negative".
+   - Fix: `text-wrap: balance` on the loop index's cells and the cards' titles, `.wa-one` on "none filed", and a held "also aim here" and last pair of effect words (`ws-nb`), as the tag lines already hold a name's last word.
+7. **Atlas engineer, with the design director, A12 (a Should, R12 and R21):** the reform page prints "Our atlas’s confidence in these effects" in the "What it would change" band, above the four rows. The loop panels and the Register's rejected option print it after the fourth row, as R12 sets. Fix: print it after the rows on A12 too, so the line sits in one place on every page.
+8. **Design director, low:** in the tags' data-label type a stored hyphen renders with space around it ("low - earning" in Reform R-25's name on A12, at 1440 and 390). It looks like the type token's figure settings. Fix: say whether stored names inside tags should take `font-variant-numeric: normal`, or accept it.
+9. **Atlas engineer, for the register row (PR-M2):** Reform R-25's partner page draws its target Connection LE14 in ink. T6 fails it, so no page ships that way. Until the other target shapes land, the figure step could print the `where_none` words for a target set it cannot draw wholly red, rather than a drawing with a target missing its red.
 
 ## Not fixed
 
@@ -239,7 +311,12 @@ None of mine. Every code assigned to me is ruled under "Done".
 - The locator's parts for A12, A13, A14 and A18's records.
 - Approved chapter 15's `s-15-20-correct` disclosure contents, read from its specimen file, and chapter 01's `s-01-16-correct.html`, which holds the labels "One reading" and "The other reading".
 
+- Batch 1: `dv_signoff.py` over the six exports (567 checks, 0 FAIL) and `dv_frames.py` over the 64 plate frames (88 checks, 0 FAIL), both rebuilding the expected values from the model. The PNGs and plate captures listed under batch 1 were viewed by eye, with the loop drawing at twice size in both themes.
+- The three contested remedies (R-01, R-22, R-23) read by sentence for R29.
+- The wordmark fault: the scoped rule and the 25 symbol uses counted by script in the 19:26:27 strict build's `guide.html`, and the black ampersand seen in the main session's captures.
+
 ## Not tested
 
-- No page or plate was built or opened in a browser for these rulings; sign-offs follow as the views land.
+- I opened no browser. The sign-off reads the kit's exported PNGs and the main session's guide captures; I pressed no question, chose no reform and stepped no loop myself, so the scripted states are read from the frames' markup and the engineer's own walk.
+- By eye I did not view: A11's 390 dark export; A12's 390 dark; A13's 1440 dark below the index and both 390 exports below the index's first cards; A14's 1440 dark outside the drawing; A15's and A16's lower bands; any plate capture at 390, 1024 or 360 viewports or on Charcoal or in gray (they were still being captured at 19:37); `s-21-reform`, `-register`, `-loop` and the other s-21 plates beyond the three named.
 - I did not check whether any atlas page prints a rule change or delivery case chip today; R22 names their fields for when one does.
