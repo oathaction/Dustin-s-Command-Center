@@ -252,7 +252,7 @@ function view_loop({ pid, P, A, F, panels, spec }) {
     const ch = (t) => (steps.some((s) => s.id === t) || I[t].kinds.includes('Connection') && !I[t].kinds.includes('Variable') ? link_chip('Connection', t, I) : link_chip('Variable', t, I));
     if (!on.length) return `<p class="wa-small wa-acts">${fill_html(wd(P, 'chosen_none', 'A14'), { reform: chip('Reform', r.id), off: listw(off.map(ch)) })}</p>`;
     return `<p class="wa-small wa-acts">${fill_html(wd(P, 'chosen_note', 'A14'), { reform: chip('Reform', r.id), targets: listw(on.map(ch)) })}`
-      + (off.length ? ` ${fill_html(wd(P, 'chosen_off', 'A14'), { off: listw(off.map(ch)) })}` : '') + `</p>`;
+      + (off.length ? ` ${fill_html(wd(P, off.length === 1 ? 'chosen_off_one' : 'chosen_off', 'A14'), { off: listw(off.map(ch)) })}` : '') + `</p>`;
   };
   const tags = v.offered.map((r) => `<div class="wa-fv${r.id === v.chosen ? ' wa-fv--on' : ''}" data-atlas-for="${esc(r.id)}">${acts_for(r)}<ul class="wa-tags">${tags_for(r.id)}</ul></div>`).join('');
   // E11c-2: one drawing a reform the chooser offers, the chosen one shown in the markup, the checked radio's shown by CSS
@@ -394,7 +394,8 @@ function view_register({ pid, P, A, F, panels, spec }) {
     + td(fill_html(wd(P, 'whole_issues', 'A13'), { n: cnt(W_.issues, 'atlas:issues'), retired: esc(nword(W_.retired)) }), ih[5], 'n')
     + GRADES.map((g) => td(cnt(W_.grades[g], `atlas:grade:${g}`), A.grades[g], 'n')).join('') + `</tr>`;
   const key = `<ul class="wa-gkey${panels.includes('Index') ? ' oa-surface-charcoal ws-panel' : ''}">` + GRADES.map((g) => `<li>${F.grade_samples[g]} <span class="ws-nb">${g === 'documented' ? F.record_square : ''}${gw(g)}</span></li>`).join('') + `</ul>`;
-  const index = `<div class="ws-g wa-head"><div class="wa-op"><h1 class="ws-h1 wa-t1" id="${pid}-h1">${esc(wd(P, 'h1', 'A13'))}</h1><p class="ws-intro">${esc(wd(P, 'intro', 'A13'))}</p></div></div>`
+  // specs 14.6 (C8.1): from 64em the h1 and intro sit in a head band on Charcoal joined to the title bar, as How to read's
+  const index = `<div class="wa-rband"><div class="ws-g wa-head"><div class="wa-op"><h1 class="ws-h1 wa-t1" id="${pid}-h1">${esc(wd(P, 'h1', 'A13'))}</h1><p class="ws-intro">${esc(wd(P, 'intro', 'A13'))}</p></div></div></div>`
     + `<div class="ws-g"><div class="wa-col12 wa-tablewrap" data-oa-part="index">${key}`
     + table(`wa-index${panels.includes('Index') ? ' wa-headon' : ''}`, head, rows + whole) + `<p class="wa-cap">${esc(wd(P, 'whole_note', 'A13'))}</p></div></div>`;
   // the open sheet: its band, its variables, its connections, one line each with its own address (Rule 21.9)
@@ -504,7 +505,9 @@ function view_how_to_read({ pid, P, A, F }) {
 function home_box(p_, v, P, A, lit_on, open) {
   const [name, question] = (A.parts && A.parts[p_.id]) || [p_.id, null];
   const lit = v.lit.length ? (v.lit.includes(p_.id) ? 'true' : 'false') : null;
-  const pills = open ? `<ul class="wa-pills">` + p_.variables.map((x) => `<li class="wa-pill" data-atlas-kind="Variable" data-atlas-id="${esc(x)}" style="min-height:${v.pills[x].h}px">${esc(v.pills[x].title)}</li>`).join('') + `</ul>` : '';
+  // the pill's rows as chapter 15's rows_of sets them at its 148 px measure and 18 px leading, so the words clear the
+  // pill's rounded ends as chapter 15's pills do (the data lead's request 31; ED-F9)
+  const pills = open ? `<ul class="wa-pills">` + p_.variables.map((x) => `<li class="wa-pill" data-atlas-kind="Variable" data-atlas-id="${esc(x)}" style="min-height:${v.pills[x].h}px"><span>${(v.pills[x].rows || [v.pills[x].title]).map(esc).join('<br>')}</span></li>`).join('') + `</ul>` : '';
   return `<p class="nm">${esc(name)}</p>` + (question ? `<p class="q">${esc(question)}</p>` : '') + `<p class="mt wa-stored" data-atlas-field="title">${esc(p_.title)}</p>`
     // the lit line in every box, shown where the pressed question lights it, so a question pressed on the working page
     // names its parts in words as the drawn state does, and each box's height is measured with it (requests 4, 27)
@@ -534,9 +537,11 @@ function view_home({ pid, P, A, F, panels, spec, frame }) {
   const cards = v.parts.map((p_) => {
     const out = v.flows.filter((f) => f.from === p_.id).sort((a, b) => b.main - a.main);
     return `<li class="wa-card" data-part="${p_.id}"${lit_of(p_.id)}>${home_box(p_, v, P, A, v.lit, v.every_variable)}<ul class="wa-fl">`
-      + out.map((f) => `<li${f.main ? ' class="b"' : ''}>${fill_html(wd(P, 'flow_line', 'A11'), { n: count(f.count, `flow:${f.from}>${f.to}`, String(f.count)), part: esc(names(f.to)) })}</li>`).join('') + `</ul></li>`;
+      + out.map((f) => `<li${f.main ? ' class="b"' : ''}><span class="wa-ks ${f.main ? 'mc' : 'of'}"></span>${fill_html(wd(P, 'flow_line', 'A11'), { n: count(f.count, `flow:${f.from}>${f.to}`, String(f.count)), part: esc(names(f.to)) })}</li>`).join('') + `</ul></li>`;
   }).join('');
-  const key = `<p class="wa-key"><span class="wa-ks mc"></span>${esc(wd(P, 'key_main', 'A11'))} <span class="wa-ks of"></span>${esc(wd(P, 'key_other', 'A11'))} ${esc(wd(P, 'key_counts', 'A11'))}</p>`;
+  // each sample held to its words, so a phone's narrow key never leaves a line sample at the end of the line before
+  const kp = (cls, t) => `<span class="wa-kp"><span class="wa-ks ${cls}"></span>${esc(t)}</span>`;
+  const key = `<p class="wa-key">${kp('mc', wd(P, 'key_main', 'A11'))} ${kp('of', wd(P, 'key_other', 'A11'))} <span>${esc(wd(P, 'key_counts', 'A11'))}</span></p>`;
   const drawing = `<div class="ws-g"><div class="wa-col12 wa-sysw" role="group" aria-label="${esc(wd(P, 'drawing_label', 'A11'))}" data-oa-part="drawing">`
     + `<div class="wa-wide">${v.every_variable ? draw(v.drawing_open, true) : draw(v.drawing, false) + draw(v.drawing_open, true)}</div>`
     + `<ol class="wa-plist">${cards}</ol>${key}</div></div>`;
@@ -709,11 +714,11 @@ ${W} .wa-lede{${type_css('body-small')};color:var(--oa-color-text-secondary);mar
 ${W} .wa-lede>*+*{margin-top:4px !important}
 ${W} .wa-bsec .wa-sband{grid-column:1/-1}
 /* specs 14.2: a block printed twice, in its panel from a width and after it below, the hidden one display:none */
-${under(BP.tablet, `${W} .wa-wide48{display:none}`)}${at(BP.tablet, `${W} .wa-narrow48{display:none}`)}
+${under(BP.tablet, `${W} .wa-wide48,${W} .wa-facts dl>div.wa-wide48{display:none}`)}${at(BP.tablet, `${W} .wa-narrow48{display:none}`)}
 ${under(BP.desktop, `${W} .wa-wide64{display:none}`)}${at(BP.desktop, `${W} .wa-narrow64{display:none}`)}
 ${W} .wa-after{margin-top:16px}${W} .wa-after>*+*{margin-top:8px !important}
 ${W} .wa-hi2{margin-top:24px}
-${under(BP.tablet, `${W} .wa-facts dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:2px 0;border-bottom:0}${W} .wa-head>.wa-facts{padding:16px 24px}`)}
+${under(BP.tablet, `${W} .wa-facts dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:2px 0;border-bottom:0}${W} .wa-head>.wa-facts{padding:16px 24px}${W} .wa-head>.wa-facts[data-oa-part="facts"]{padding:16px;margin-bottom:32px}${W} .wa-facts[data-oa-part="facts"]>.lab{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}`)}
 ${at(BP.desktop, `${W} .wa-index thead tr{height:88px}${W} .wa-index thead .wa-gs{margin:8px 0}`)}
 ${W} .wa-hband--read{padding-block:32px}
 ${at(BP.desktop, `${W} .wa-hband--read{min-height:160px}${W} .wa-hband--read .wa-hh{grid-column:1/-1}${W} .wa-hband--read .wa-hi{grid-column:1/9}`)}
@@ -735,9 +740,12 @@ ${W} .wa-index thead .g{padding-inline:6px}
 ${W} .oa-table-grid .wa-rh{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;text-align:left}
 ${W} .wa-gs{display:inline-flex;align-items:center;gap:4px}
 ${W} thead .wa-gs{display:flex;margin-bottom:8px;justify-content:flex-end}
-${W} .wa-headon thead tr{background:var(--oa-color-surface-charcoal)}
+${under(BP.desktop, `${W} .wa-headon thead tr{background:var(--oa-color-surface-charcoal)}
 ${W} .wa-headon thead .oa-table-th{color:var(--oa-color-text-primary-on-charcoal);border-bottom:0}
-${W} .wa-headon thead :is(.ln,.rs){--oa-color-graphic-essential:var(--oa-color-graphic-essential-on-charcoal)}
+${W} .wa-headon thead :is(.ln,.rs){--oa-color-graphic-essential:var(--oa-color-graphic-essential-on-charcoal)}`)}
+${at(BP.desktop, `.ws.wa[data-atlas-view="register"] .ws-main{padding-top:0}
+${W} .wa-rband{background-color:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);color-scheme:dark;--oa-color-surface:var(--oa-color-surface-charcoal);--oa-color-text-primary:var(--oa-color-text-primary-on-charcoal);--oa-color-text-secondary:var(--oa-color-text-secondary-on-charcoal);--oa-color-border-hairline:var(--oa-color-border-hairline-on-charcoal);--oa-color-border-strong:var(--oa-color-border-strong-on-charcoal);--oa-color-focus-ring:var(--oa-color-focus-ring-on-charcoal);box-sizing:border-box;min-height:160px;padding-block:32px;margin-bottom:32px;box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal)}
+${W} .wa-rband .wa-op{grid-column:1/-1}${W} .wa-rband .wa-t1{${type_css('h3')};margin:0}${W} .wa-rband .ws-intro{font:var(--oa-type-body);margin:16px 0 0;max-width:calc((100% + var(--g)) * 8 / 12 - var(--g))}`)}
 ${W} .wa-whole>*{font-weight:var(--oa-font-weight-semibold);border-top:2px solid var(--oa-color-border-strong)}
 ${W} .wa-gkey{display:none;list-style:none;margin:0 0 16px;padding:24px;${type_css('data-label')}}
 ${W} .wa-gkey li{display:flex;align-items:center;gap:8px}
@@ -817,15 +825,19 @@ ${W} [data-lit="false"]{border-color:var(--oa-color-state-muted-mark)}
 ${W} [data-lit="false"] :is(.nm,.lt){font-weight:var(--oa-font-weight-regular)}
 ${W} :is(.wa-box,.wa-card):not([data-lit="true"]) .lt{display:none}
 ${W} .wa-pills{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:8px}
-${W} .wa-box--band .wa-pills{flex-direction:row;margin:0}
+${W} .wa-box--band .wa-pills{flex-direction:row;margin:0}${W} .wa-sys--open .wa-box--band,${W} .wa-sys--only .wa-box--band{flex-wrap:wrap;row-gap:8px}${W} .wa-box--band .wa-pills{order:9;flex:1 0 100%}${W} .wa-box--band .wa-pill{flex:0 0 170px}
 ${W} [data-part="EC"] .wa-pills,${W} [data-part="TC"] .wa-pills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 ${W} [data-part="TC"] .wa-pills{grid-template-columns:repeat(2,minmax(0,1fr))}
-${W} .wa-pill{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8px;border:2px solid var(--oa-color-graphic-essential);border-radius:999px;${type_css('body-small')};font-weight:var(--oa-font-weight-semibold)}
+${W} .wa-pill{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px;line-height:18px;white-space:nowrap;border:2px solid var(--oa-color-graphic-essential);border-radius:999px;${type_css('body-small')};font-weight:var(--oa-font-weight-semibold)}
+${W} .wa-pill>span{line-height:18px}
 ${W} .wa-key{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:16px !important;${type_css('caption')};color:var(--oa-color-text-secondary)}
-${W} .wa-ks{display:inline-block;width:40px;height:2px;vertical-align:middle;margin-right:-8px}
+${W} .wa-ks{display:inline-block;width:40px;height:2px;vertical-align:middle;margin-right:8px}
+${W} .wa-kp{display:inline-flex;align-items:center}
+${W} .wa-fl .wa-ks{width:24px}${W} .wa-fl li.b .wa-ks{height:3px}
 ${W} .wa-ks.mc{background:var(--oa-color-graphic-essential)}${W} .wa-ks.of{background:var(--oa-color-graphic-subtle)}
 ${W} .wa-plist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 ${W} .wa-card{padding:16px;border:1px solid var(--oa-color-graphic-essential);display:flex;flex-direction:column;gap:4px}
+${W} .wa-card[data-lit="false"]{border-color:var(--oa-color-state-muted-mark)}
 ${W} .wa-fl{list-style:none;margin:8px 0 0;padding:0;${type_css('data-label')};font-weight:var(--oa-font-weight-regular)}
 ${W} .wa-fl .b{font-weight:var(--oa-font-weight-bold)}
 ${W} .wa-hubs{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}

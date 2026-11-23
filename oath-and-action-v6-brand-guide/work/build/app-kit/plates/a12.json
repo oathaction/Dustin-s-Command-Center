@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T00:07:02.080Z",
+ "written": "2026-11-23T00:30:59.127Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -610,13 +610,13 @@
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
   "work/build/app-kit/oa-app.mjs": "3f5850971eeecc6a774b14cc84f05f3c3614f056bc3f92274c8bd8588583a5cd",
-  "work/build/app-kit/renderers/atlas-page.mjs": "fbf78e260ab562caa226523b171464f78cbbdbd89ca85f0f365948d3dc47e123",
+  "work/build/app-kit/renderers/atlas-page.mjs": "8ad609e7da7c3501fe66795b3bc224ce53b0eb7465c7cffdba7779a95c572cee",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "338f4f1a93503471f2a53be5a88e79bec18022580f0e8e77bf95fd15c706f030",
   "work/build/app-kit/specs/a12-atlas-reform.json": "4e060914163ff4d0b456b3df2f96e08834e316a74c8970cfba16a089cd877548",
   "work/build/app-kit/tools/atlas_contrast.py": "c9f64745108cf08b8bc91dd7023fadd8adacae894330a57f8fa93a0fb60d0a3e",
-  "work/build/app-kit/tools/atlas_figures.py": "c4c6316eeec61d99abb469cad7a4f0f190f7a010fcabd4e2c0af035161c3eea0",
+  "work/build/app-kit/tools/atlas_figures.py": "dc92741bee7b70b1ae1683c13c1f546ded050dff37fa092ca8e2ec2a371b49bd",
   "work/build/app-kit/tools/atlas_test.py": "a3fe5540d68c29767e606811818b95ad0d793832181ec3c3ac30c7161f60515a",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",
   "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg": "90034ceaf3998a2d91217e452b5cbc054bfc4a56e668fd267849ba4fd6f1fef1",
@@ -651,14 +651,14 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "css_pruned": {
-  "full": 66905,
-  "placed": 49937,
-  "rules_kept": 391,
+  "full": 69011,
+  "placed": 52051,
+  "rules_kept": 406,
   "rules_dropped": 98,
   "frames_same": 53
  },
  "atlas_test": {
-  "ran": "2026-11-23T00:08:41.608Z",
+  "ran": "2026-11-23T00:32:41.127Z",
   "pass": 192,
   "fail": 0,
   "first_fail": null,

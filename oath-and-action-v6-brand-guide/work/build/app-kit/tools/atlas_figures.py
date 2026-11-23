@@ -564,6 +564,27 @@ def view_how_to_read(spec):
     return {"marks": marks, "sign_note": note}
 
 
+def pill_h(C, rows, half_w=85, edge=3, ink=7):
+    """A pill's height on the page (the data lead's request 31; ED-F9): chapter 15's own (its rows at 18 px leading, 22 px
+    more, 44 at least), grown 2 px at a time until each row's ink, its words' measured width at the row's height, sits
+    inside the pill's rounded ends: half_w is half the narrowest pill (the open box's 170 px), edge the outline and a
+    pixel, ink half a row's glyphs."""
+    h = max(len(rows) * C.LH + 22, 44)
+    widths = [C.tw(r, 600) for r in rows]
+
+    def clear(h):
+        R = h / 2
+        for k, w in enumerate(widths):
+            dy = abs((k - (len(rows) - 1) / 2) * C.LH) + ink
+            dx = max(0.0, w / 2 - (half_w - R))
+            if dx * dx + dy * dy > (R - edge) ** 2:
+                return False
+        return True
+    while not clear(h) and h < 160:
+        h += 2
+    return h
+
+
 def view_home(spec):
     """The atlas home (plan 3.2; specs 12): the parts, the flows by R2's methods, the hubs and their questions, the pressed
     question's parts (R6) and its answer's figure, linked to the claim that holds it (R5)."""
@@ -608,7 +629,7 @@ def view_home(spec):
             for v in p_["variables"]:
                 t = N_title(v)
                 rows = C.rows_of(t, 172 - 2 * C.PAD)       # specs 14.4: the open box's pill, 172 px
-                pills[v] = {"title": t, "h": max(len(rows) * C.LH + 22, 44), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
+                pills[v] = {"title": t, "h": pill_h(C, rows), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
     closed = home_drawing(fl, False, pills, ps, spec.get("box_need"))
     opened = home_drawing(fl, True, pills, ps, spec.get("box_need"))
     return {"parts": ps, "flows": fl, "lit": lit, "hubs": hubs, "pressed": spec.get("pressed_question"), "answer": answer,

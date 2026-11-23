@@ -1,5 +1,5 @@
 {
- "written": "2026-11-23T00:06:31.179Z",
+ "written": "2026-11-23T00:30:26.736Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -375,7 +375,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 5,195 px"
+   "size": "390 by 5,224 px"
   },
   {
    "file": "20261122_Atlas-Home-Page-390-Dark.png",
@@ -383,7 +383,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 5,195 px"
+   "size": "390 by 5,224 px"
   },
   {
    "file": "20261122_Atlas-Reform-R-23-Page.html",
@@ -441,7 +441,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 5,836 px"
+   "size": "1,440 by 5,845 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page-1440-Dark.png",
@@ -449,7 +449,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 5,836 px"
+   "size": "1,440 by 5,845 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page-390-Light.png",
@@ -498,7 +498,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 6,512 px"
+   "size": "390 by 6,442 px"
   },
   {
    "file": "20261122_Atlas-Loop-R18-Page-390-Dark.png",
@@ -506,7 +506,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 6,512 px"
+   "size": "390 by 6,442 px"
   },
   {
    "file": "20261122_Atlas-Loop-Index-Page.html",

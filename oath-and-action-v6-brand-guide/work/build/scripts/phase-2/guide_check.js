@@ -2748,6 +2748,14 @@ const PLANTS = [
   { key: 'contrast', fault: 'Stone text tint on Newsprint', js: () => { document.querySelector('.rule-text').style.color = 'var(--oa-color-tint-stone-n55)'; } },
   { key: 'redUnmarked', fault: 'a Pillar Red rule with no data-red', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p style="border-top:4px solid var(--oa-color-palette-pillar-red)">Red bar</p>'); } },
   { key: 'redJobs', fault: 'two working-red jobs in the page', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<p data-red="working" data-red-job="ask" style="color:var(--oa-color-palette-charcoal);border-left:4px solid var(--oa-color-palette-pillar-red)">A</p><p data-red="working" data-red-job="error" style="border-left:4px solid var(--oa-color-palette-pillar-red)">B</p>'); } },
+  // chat 11c (round 3): the kit's second hidden sprite at the top of the body, the atlas pages' repeated drawings beside the
+  // identity masters' sprite (<svg data-oa-app-kit="atlas">). Its symbols draw only where a frame's <use> places them, so
+  // a red target, another red job, a mark without data-red or small words inside it are read as the identity sprite's are:
+  // not at all (allowed: must not be flagged).
+  { key: 'redJobs', expect: false, fault: 'the atlas sprite\'s red target with its own job beside one working-red job in the page (allowed: must not be flagged)', js: atlasSpritePlant('jobs') },
+  { key: 'redUnmarked', expect: false, fault: 'a red mark with no data-red inside the atlas sprite\'s symbol (allowed: must not be flagged)', js: atlasSpritePlant('unmarked') },
+  { key: 'under13', expect: false, fault: '12 px words inside the atlas sprite\'s symbol (allowed: must not be flagged)', js: atlasSpritePlant('small') },
+  { key: 'svgNames', expect: false, fault: 'the atlas sprite itself, hidden and named by nothing, as the identity sprite is (allowed: must not be flagged)', js: atlasSpritePlant('plain') },
   { key: 'redJobsSpecimen', fault: 'two working-red jobs inside one specimen', js: () => { document.querySelector('[data-specimen]:not([data-pending])').insertAdjacentHTML('beforeend', '<p data-red="working" data-red-job="ask" style="border-left:4px solid var(--oa-color-palette-pillar-red)">A</p><p data-red="working" data-red-job="point" style="border-left:4px solid var(--oa-color-palette-pillar-red)">B</p>'); } },
   { key: 'redOnPrussian', fault: 'red on a Prussian ground', js: () => { document.querySelector('.rule .why').insertAdjacentHTML('beforeend', '<div style="background:var(--oa-color-palette-prussian);padding:16px"><span data-red="signature" style="display:inline-block;width:20px;height:20px;background:var(--oa-color-palette-pillar-red)"></span></div>'); } },
   // round 2 (call 6): the For builders block
@@ -3127,6 +3135,21 @@ function sgPlant(variant) {
 // chat 11 (contract C4): a stage holding one application kit page frame at 1,024 px as the kit writes it, its fluid title
 // restated in cqi on the page's container (lib.fluid_cqi); variants leave the page open, put the frame in an image stage,
 // or add a line at a size no token takes
+// chat 11c (round 3): the atlas sprite as the kit writes it (app_plates.body_sprite), one symbol of one line sample;
+// 'jobs' adds a working-red job of its own and one in the page, 'unmarked' a red mark with no data-red, 'small' 12 px
+// words
+function atlasSpritePlant(kind) {
+  const mark = '<path d="M0 8H40" style="fill:none;stroke:var(--oa-color-palette-pillar-red);stroke-width:4px"/>';
+  const red = kind === 'unmarked' ? mark : `<g data-red="working" data-red-job="where a reform acts">${mark}</g>`;
+  const words = kind === 'small' ? '<text x="0" y="14" style="font-size:12px;fill:currentColor">2 lowers</text>' : '';
+  const sprite = '<svg data-oa-app-kit="atlas" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">'
+    + `<symbol id="oa-app-wa-fixture" viewBox="0 0 40 16" style="overflow:visible"><g class="ln wa-sym">${red}${words}</g></symbol></svg>`;
+  // the plant runs in the page, so its markup travels inside the function's own text, as pageFramePlant's does
+  const job = kind === 'jobs' ? '<p data-red="working" data-red-job="ask" style="border-left:4px solid var(--oa-color-palette-pillar-red)">A</p>' : '';
+  return new Function(`document.body.insertAdjacentHTML('afterbegin', ${JSON.stringify(sprite)});`
+    + (job ? `document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(job)});` : ''));
+}
+
 function pageFramePlant(variant) {
   // 22:07 call: 'small' sets 12 px words in a 300 px frame drawn at the column's width, so the frame's scale draws them
   // larger than 13 px on screen and only a reading at the frame's own width catches them; 'smallOutside' sets the same

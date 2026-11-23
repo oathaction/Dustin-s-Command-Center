@@ -2,7 +2,7 @@
 
 Engineer, chat 11c, November 22, 2026. Brief: `work/handoffs/phase-4/20261122_Chat-11c-Brief.md`, section 6.4. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/e76584b2-1bba-5266-a75e-730f247433d8/scratchpad/c11c/engineer/`. Started 21:48:21 UTC (`date -u`).
 
-Status: 00:11:49 UTC November 23 (`date -u`). **Round 2 done (weight, the specs' section 14, the fixes and the data lead's batch 1).** Run order kept under the lock: generator, kit A11 to A20 `--date 20261122` (00:06:30 to 00:08:41), generator, strict build (exit 0, 0 warnings, 0 stale plates); chapter 20 redrawn with `--date 20261121` and unmoved. Chapter 21 weighs **1,096,989 bytes** as placed (from 1,539,423); the projected page **16.26 MB**, 262,833 bytes past 16 MB (from 16.71 MB). Atlas test 1,264 PASS, 0 FAIL; self-test 27 of 27 plants caught, on the exports and on the plates alone.
+Status: 00:33:41 UTC November 23 (`date -u`). **Round 3 done** (the data lead's requests 29 to 31, the design director's C8.1 to C8.3, the editor's `chosen_off_one`, the guide check and the atlas sprite). Run order under the lock: generator, kit A11 to A20 `--date 20261122` (00:30:26 to 00:32:35), generator, strict build 00:32:48 to 00:33:02 (exit 0, 0 warnings, 0 stale plates). Chapter 21 weighs **1,106,047 bytes** as placed; the projected page **16.27 MB**, 271,891 bytes past 16 MB. C5: all 57 light screens inside 60 to 85 (61.4 to 85.0). Atlas test 1,264 PASS, 0 FAIL; self-test 27 of 27, on the exports and on the plates alone.
 
 ## Routine calls
 
@@ -175,6 +175,29 @@ Red stays at 0.1 to 0.5 percent on every screen.
 | A15 390-light | 68.8 | Reinforcing 78.5; Balancing 76.9; Footer 79.9 |
 | A16 1440-light | 72.6 | Marks 78.7; Footer 82.3 |
 
+**Round 3 (00:33:41 UTC, November 23).**
+
+17. **The data lead's 29:** each flow line in a phone card starts with the key's own line sample (Charcoal and 3 px for the main circuit beside its bold words, Stone for the rest), and each key sample is held to its words (`.wa-kp`), so the key says what the list draws. **30:** a card the pressed question does not reach takes the muted edge at every width (`--oa-color-state-muted-mark`, which the tokens set to Stone on Newsprint and Dim Newsprint on Charcoal); measured at 390 px: five muted, three ink, light and dark. **31:** a pill's words are chapter 15's rows (`rows_of`, 148 px measure) at its 18 px leading, and the figure step grows each pill 2 px at a time until every row's ink clears the rounded ends (`pill_h`); the band's pills take their own row at 170 px. Checked by geometry in Chromium on A17: 51 pills, 116 rows, none past the curve (8 before).
+18. **C8.1:** from 64em the Register's `h1` and intro sit in a head band on Charcoal joined to the title bar (`.wa-rband`, at least 160 px, the band's own tokens from 64em only), and the index head row is back on Newsprint under the 2 px strong rule; under 64em nothing changes. **C8.2:** under 48em A14's facts panel takes 16 px padding and its label is visually hidden; its "How it closes" row, a twin of the line under the grade line, now hides there as meant (a grid rule outranked the twin's), and the panel keeps 32 px below it, which holds the next section's band out of the Loop screen. **C8.3:** the dark drawing crop stays.
+19. **The editor's `chosen_off_one`** for one target off the drawing (R-15's L16), `chosen_off` for two or more.
+20. **The guide check** (`guide_check.js`): four allowed self-test cases put the kit's atlas sprite at the top of the body, as the kit writes it, with a red target and its own job beside a page job, a red mark with no `data-red`, 12 px words and the sprite itself; the check reads none of them, as it reads none of the identity sprite.
+
+**C5, for the design director** (light full-length frames of the plates written 00:32; every screen inside 60 to 85; dark frames at most 0.7 percent red):
+
+| Page and frame | First screen, then each section's opening screen |
+|---|---|
+| A11 1440-light | first 71.1; System 76.3; Questions 81.4; Footer 81.7 |
+| A11 390-light | first 69.5; System 76.5; Questions 79.6; Footer 80.0 |
+| A12 1440-light | first 72.5; Reform 74.8; Grades 67.9; Effects 69.2; Routes 85.0; Sources 82.4; Footer 82.4 |
+| A12 390-light | first 65.7; Reform 69.0; Grades 76.3; Effects 66.2; Routes 81.0; Sources 80.4; Footer 80.4 |
+| A13 1440-light | first 67.0; Index 73.5; Sheet 78.7; Rejected 83.3; Records 82.1; Footer 81.1 |
+| A13 390-light | first 69.8; Index 76.8; Sheet 70.1; Rejected 75.1; Records 76.1; Footer 80.1 |
+| A14 1440-light | first 64.1; Loop 66.8; Stepper 80.9; Record 83.4; Evidence 78.9; Footer 70.4 |
+| A14 390-light | first 61.4; Loop 61.9; Stepper 76.7; Record 72.6; Evidence 84.2; Footer 80.6 |
+| A15 1440-light | first 75.2; Reinforcing 82.0; Balancing 82.9; Footer 81.7 |
+| A15 390-light | first 68.8; Reinforcing 78.5; Balancing 76.9; Footer 79.9 |
+| A16 1440-light | first 72.6; Marks 78.7; Footer 82.3 |
+
 ## Requests
 
 - **1. Design director and data lead (21:59 UTC): a red target on a patterned connection.** R10 makes Connections L14 and L15 red when Reform R-11 is chosen on Loop R18, and L15 is plausible, drawn dashed. Chapter 15's drawing code refuses a red target on a patterned line (`phase3_ch15_build.py`, `conn()`: "a red target here draws a solid connection; a patterned one needs its lead-in at 6 px"), and Rule 12.5's rows set the red at 4 px on a 6 px Charcoal case without saying how a pattern runs at that weight. I can draw it in the figure step from System 1's own `wire_marks(lit=True)` and `fitted()` pattern at the 4 px weight, the case under it dashed on the same rhythm, with the 28 px lead-in solid, and leave chapter 15's file alone. Please say (a) whether the case follows the dashes or runs solid under them, and (b) the dash lengths at 4 px (System 1's pattern scaled by weight, or the 2 px pattern's lengths kept). Until then the figure step draws L14 and Variable D4 red and names L15 under `not_red`, and the atlas test fails T6 on the loop page, as it should.
@@ -189,6 +212,8 @@ Red stays at 0.1 to 0.5 percent on every screen.
 - **9. Editor (00:11:49 UTC):** A14 `chosen_off` reads "Its other targets, {off}, sit off this drawing."; Reform R-15 has one, so the page prints "Its other targets, Connection L16, sit off this drawing." A one-target form (`chosen_off_one`, draft "Its other target, {off}, sits off this drawing.") lets the kit choose by count, as `also_aim_one` does.
 - **10. Design director (00:11:49 UTC):** (a) C5: A13 `1440-light` Index 85.9 (the head row's words now wrap in their cells) and A14 `390-light` Loop 58.0 (as in round 1) sit outside 60 to 85; the layout calls are yours. (b) DD11C-Q6: A14 `1440-dark-drawing`, drawn from its part alone, shows the drawing's column; the read-aloud column beside it is ground. Name the row (`data-oa-part` on the two-column row) if the crop should carry both.
 - **11. Main session (the guide check, which I do not run):** the page now carries a second hidden sprite at the top of the body, `<svg data-oa-app-kit="atlas">` with 17 symbols (24,708 bytes), beside the identity sprite; atlas frames draw them by `<use href="#oa-app-wa-…">`. A check that counts the kit's sprite or reads `<use>` targets needs to know it.
+
+- **12. Design director (00:33:41 UTC), C8.2:** the 16 px padding and the hidden label alone left A14's `390-light` Loop screen at 58.4, since the next section's Charcoal band rose into the window by what the panel lost. The panel now keeps 32 px below it under 48em (Loop 61.9). Say if you would rather move another part.
 
 ## Not fixed
 
@@ -211,6 +236,8 @@ Red stays at 0.1 to 0.5 percent on every screen.
 - Round 2 (00:11:49 UTC): the run order above, strict build exit 0 with 0 warnings and 0 stale plates (00:09:38 to 00:09:52); `atlas_test.py` 1,264 PASS, 0 FAIL, self-test 27 of 27 on the exports and 27 of 27 on the plates alone; `app_plates.py --self-test`, `atlas_figures.py --self-test`, `guide_charts.py --self-test` all pass; chapter 20: 42 of 42 frames, every plate field but `written` and `inputs`, the three style files and all 41 earlier exports byte for byte the same against HEAD; axe 0 on every working page and width the kit captured (A11 to A16, light and dark).
 - Driven in Chromium on the working exports, 1440 and 390 px (scratch `click.cjs`): A11's questions (one pressed at a time, the lit parts and their lines, the status words, pressing again clears), the switch (open drawing shown, no box overflowing), the claim chip (its record opens); A14's chooser (R-11, R-15, R-48: the red, the note and the tags move with each), the stepper (Next, Previous, Reset, Play; at 390 the buttons two by two); A13's filters (each chip, the count, Clear). No script error on any page; no element overflowing its box at either width after the fixes.
 - Looked at myself: A11 1440 light and 390 dark; A12 1440 light; A13 1440 light and 390 light; A14 1440 light, 390 light and the A19 dark page; A16 1440 light; the A17 and A20 state pages at 1440.
+
+- Round 3 (00:33:41 UTC): the run order above; `check-dimensions.py` 67 of 67; `atlas_test.py --self-test --plates` 27 of 27; chapter 20's 42 frames identical to HEAD and no chapter 20 export changed; A17's pills by geometry; A11's phone cards and key by computed style, light and dark; the A17 and A11 390 captures and A13's and A14's tops looked at.
 
 ## Not tested
 
