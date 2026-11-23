@@ -281,7 +281,7 @@ CALLS = [
     'Page titles name the record: “Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath & Action”.',
 ]
 TESTED = [
-    'The strict build, November 23, 00:46 UTC: exit 0, 0 warnings, 0 stale plates, 14,189,330 bytes, 409 rules, 765 specimens',
+    'The strict build, November 23, 01:41 UTC: exit 0, 0 warnings, 0 stale plates, 14,189,507 bytes, 409 rules, 765 specimens',
     'The atlas test on the final drawing, 00:30 to 00:33 UTC (the engineer’s run): 1,264 checks passed, 0 failed; its self-test '
     'caught all 27 planted faults, on the working pages and on the plates alone',
     'The data visualization lead’s own check of every export and plate frame against the model, in three batches: 0 data '

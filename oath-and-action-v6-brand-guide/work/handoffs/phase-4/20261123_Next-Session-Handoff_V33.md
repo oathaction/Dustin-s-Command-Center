@@ -13,7 +13,7 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 11c (work tracker row `c10c`, d
 - The application kit (C-174): the `atlas-page` renderer inside the website's shell, the figure step importing chapter 15's drawing code, the atlas test (16 checks; self-test 27 of 27 plants), A11 to A20, 26 exports dated 20261122. Chapter 20's frames and exports unchanged.
 - Guide build and check (C-175): the atlas style and sprite placed once; the strict build fails on any atlas test FAIL; the guide check knows the atlas sprite (self-test 163 of 163, 59 of 59 allowed).
 
-**The final build:** strict build November 23, 00:46 UTC, on commit 9e46a269's tree: exit 0, 0 warnings, 0 stale plates, 14,189,330 bytes, 22 chapters, 409 rules, 765 specimens. Chapter 21 1,106,047 bytes against 655,000 (169 percent); chapter 20 839,096. **The projection is 16.27 MB, 271,891 bytes past 16 MB** with every chapter still to come at its allocation; the page itself is 14.19 MB, so no build stops (DR-271). Chart kit 96 of 96, 0 faults; chapter 14's check 99 of 99; exports 67 of 67; atlas test 1,264 PASS, 0 FAIL; Rule 05.1 by screen, 57 of 57 light screens inside 60 to 85 percent. QUICK_CHECK_LINE
+**The final build:** strict build November 23, 01:41 UTC, on commit 2ce328d9's tree: exit 0, 0 warnings, 0 stale plates, 14,189,507 bytes, 22 chapters, 409 rules, 765 specimens. Chapter 21 1,106,224 bytes against 655,000 (169 percent); chapter 20 839,096. **The projection is 16.27 MB, 272,068 bytes past 16 MB** with every chapter still to come at its allocation; the page itself is 14.19 MB, so no build stops (DR-271). Chart kit 96 of 96, 0 faults; chapter 14's check 99 of 99; exports 67 of 67; atlas test 1,264 PASS, 0 FAIL; Rule 05.1 by screen, 57 of 57 light screens inside 60 to 85 percent. QUICK_CHECK_LINE
 
 **Published:** chat 11c's progress board, PROGRESS_URL. The chapters page stays at version 15 (https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF).
 
@@ -42,6 +42,8 @@ As the Gate 3 report's section 9 sets it: the six readings Phase 3 used (statist
 - **A missing word key shows as ⟦key⟧,** and the atlas test's T16 fails it. That tripwire caught nine keys the kit read before the generator printed them.
 - **The atlas test runs from the kit's output folder.** `atlas_test.py OUT_DIR` needs a kit build's `--out` folder; the strict build reads `work/build/app-kit/plates/atlas-test.json` and fails on any FAIL.
 - **The run order for chapter 21:** `phase4_ch21_build.py`, `node work/build/app-kit/oa-app.mjs build A11 A12 A13 A14 A15 A16 A17 A18 A19 A20 --date 20261122`, `phase4_ch21_build.py` again, then the strict build. The generator writes nothing until the kit has drawn every plate it places.
+- **A failure plate that draws a figure at true size scales with the column.** Rules 21.2 and 21.15's failure drawings set their words at 5 px on a phone and failed the quick check; they became pictures whose alts carry every word (D4-299). Make a drawing of a fault a picture from the start.
+- **The quick check's photographs crashed again** (00:53 UTC, "waiting for element to be stable") while a second browser ran; `--quick --no-captures` gave the result, as in chat 10.
 - **Context.** This chat ran four agents and about 20 resumed runs, with no restart.
 
 ## 4. Starting prompt for the new chat
