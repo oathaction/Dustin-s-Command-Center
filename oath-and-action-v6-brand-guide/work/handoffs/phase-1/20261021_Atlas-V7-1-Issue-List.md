@@ -324,7 +324,7 @@ Chapter 21's atlas home now prints all 16 stored short answers (R19). Six figure
 
 | # | Issue | Where | Proposed fix |
 |---|---|---|---|
-| 50 | PW01's short answer prints "29%" (asking rents, early 2026 against 2020), "$1,240" and "$2,420" (the monthly payment, 2020 and 2025) with no claim in its pathway; Claim CL1105 says the payment "nearly doubled" in words only | `pathways[]`, id PW01, its short answer; `claims[]` | Add a claim for each figure with its source and period, or tie the figures to CL1105 with its numbers |
-| 51 | PW09's short answer prints "about 2.1% a year since 1947", while Claim CL1500 holds 2.1 percent for late 2019 to mid-2026, a different period, so answer and claim disagree | `pathways[]`, id PW09; `claims[]`, id CL1500 | Correct the answer's period to CL1500's, or add a claim for the 1947 series with its source |
-| 52 | PW10's short answer prints "7.65%" (the payroll tax rate) with no claim | `pathways[]`, id PW10 | Add a claim citing the statute or the Social Security Administration's rate table |
-| 53 | PW14's short answer prints "83%" (the property tax share of local school revenue) with no claim | `pathways[]`, id PW14 | Add a claim with its source and school year |
+| 50 | PW01's short answer prints "29%" (asking rents, early 2026 against 2020), "$1,240" and "$2,420" (the monthly payment, 2020 and 2025) with no claim in its pathway; Claim CL1105 says the payment "nearly doubled" in words only | `pathways[]`, id PW01, field `short_answer`; `claims[]` | Add a claim for each figure with its source and period, or tie the figures to CL1105 with its numbers |
+| 51 | PW09's short answer prints "about 2.1% a year since 1947", while Claim CL1500 holds 2.1 percent for late 2019 to mid-2026, a different period, so answer and claim disagree | `pathways[]`, id PW09, field `short_answer`; `claims[]`, id CL1500 | Correct the answer's period to CL1500's, or add a claim for the 1947 series with its source |
+| 52 | PW10's short answer prints "7.65%" (the payroll tax rate) with no claim | `pathways[]`, id PW10, field `short_answer` | Add a claim citing the statute or the Social Security Administration's rate table |
+| 53 | PW14's short answer prints "83%" (the property tax share of local school revenue) with no claim | `pathways[]`, id PW14, field `short_answer` | Add a claim with its source and school year |
