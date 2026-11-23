@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirty-third handoff, November 23)
 
-Written November 23, 2026, at the close of chat 11c. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261122_Next-Session-Handoff_V32.md`. V5's sections 3 to 5, section 3 of V8 to V32, and section 3 below hold together. Decision log entries for this chat run from D4-237 to D4-301; Dustin gave no new answers this chat. The change ledger runs to C-177.
+Written November 23, 2026, at the close of chat 11c. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261122_Next-Session-Handoff_V32.md`. V5's sections 3 to 5, section 3 of V8 to V32, and section 3 below hold together. Decision log entries for this chat run from D4-237 to D4-301; Dustin's answer at the close is DR-326, which approves section 2's plan for chat 12. The change ledger runs to C-177.
 
 ## 1. Where things stand
 
@@ -51,7 +51,7 @@ As the Gate 3 report's section 9 sets it: the six readings Phase 3 used (statist
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Phase 4 is active. Chat 11c is done: chapter 21, the atlas, is built with its system test. Start chat 12 as handoff V33 sets it: the review of chapters 16, 20 and 21, the fix pass and the rescore, the creative director's wall test on chapter 21 (DR-315), the accessibility lead's walks of the atlas pages (DR-320), and Phase 4 board 1, with the weight options that keep content.
+Phase 4 is active. Chat 11c is done: chapter 21, the atlas, is built with its system test. Start chat 12 as handoff V33 sets it: the review of chapters 16, 20 and 21, the fix pass and the rescore, the creative director's wall test on chapter 21 (DR-315), the accessibility lead's walks of the atlas pages (DR-320), and Phase 4 board 1, with the weight options that keep content. My answer DR-326 approved that plan as V33 sets it, so start the review after the opening checks without waiting for another go, unless the opening finds something that changes the plan.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-177), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
@@ -90,7 +90,7 @@ How to work with me:
 - The progress board: `work/build/scripts/phase-4/chat_11c_progress_build.py`; `work/boards/phase-4/chat-11c/20261123_Chat-11c-Progress.html` and its `img/` folder
 
 **Modified**
-- `work/ledger/`: the decision log (D4-237 to D4-301), the change ledger (C-171 to C-177), the deferred fixes register (chat 11c's section and its outcomes table)
+- `work/ledger/`: the decision log (D4-237 to D4-301, DR-326), the change ledger (C-171 to C-177), the deferred fixes register (chat 11c's section and its outcomes table)
 - Chapter 13: `work/build/scripts/phase-3/phase3_ch13_build.py`, `13-evidence.json`
 - Chapter 03: `work/build/scripts/phase-2/stage_a_identity_chapters.py`, `03-identity.json`
 - `work/handoffs/phase-4/20261121_Chapter-21-Plan.md` (the data lead's corrections C1 to C6)
