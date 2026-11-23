@@ -78,6 +78,15 @@ How far each could move: chapter 23 most (−85,000 to +635,000), then 22 (−38
 
 ## Routine calls
 
+- D4-xxx | Each option is measured as a transform of the strict build's page in scratch, never by changing a generator or the build | Nothing lands (brief section 5); a transform's bytes are what a build step would write
+- D4-xxx | A pixel proof captures every plate an option touches in the base page and the variant at 1440 and 390 px, device scale 1, reduced motion, the shell's sticky parts hidden, and compares them pixel by pixel; DOM identity with scripts off where the claim is the parser's document | The brief asks pixel for pixel at 1440 and 390 px; a plate is the unit a reader meets
+- D4-xxx | Captures clip a full-page shot to the plate's box, scrolled by script, instead of Playwright's element shot | The element shot waited 45 seconds on plates that never settle (A05's menu plate); the clip takes the same pixels without the wait
+- D4-xxx | No still picture is offered for a wide frame | Measured two to eight times the markup it would replace (option 2d)
+- D4-xxx | The photographs stay as they are | mozjpeg's lossless pass saves 1,008 bytes on one and drops the other's ICC profile
+- D4-xxx | Subsetting the latin faces is not offered | D2-1697: the studio neither subsets nor renames a font, and Lora's license reserves its name; option 3e only leaves out faces no character on the page reaches
+- D4-xxx | Compressed frames inflate with the chart kit's synchronous inflater in a script placed before the shell's, never with `DecompressionStream` | D3-90's reason: an asynchronous inflater lets print outrun it; the shell's scripts then see the frames as built
+- D4-xxx | The re-estimate keeps chat 10's counts of what each chapter draws and changes only the unit prices | The counts come from the Gate 3 report's section 9, which Dustin approved; the prices are what chapters 16, 20 and 21 measured
+
 ## Done
 
 ## Not fixed
