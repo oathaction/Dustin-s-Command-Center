@@ -35,7 +35,7 @@
       "title": "Build every page and product to WCAG 2.2 at level AA.",
       "rule": [
         "WCAG 2.2 sets 55 success criteria at levels A and AA: 31 at A and 24 at AA, six of them new in 2.2. Build every page and product we publish to meet all of them. The list below gives each criterion in W3C’s own words and the rule in this guide that meets it.",
-        "Today a rule meets 42 criteria and six more in part. Two are gaps, each named with the chapter that owes it, and five govern things no product does yet, such as live video or accounts. A gap is open work, and a page that meets the criterion on its own still meets it."
+        "Today a rule meets 45 criteria and three more in part. Two are gaps, each named with the chapter that owes it, and five govern things no product does yet, such as live video or accounts. A gap is open work, and a page that meets the criterion on its own still meets it."
       ],
       "tokens": [],
       "why": {
@@ -67,7 +67,7 @@
         },
         {
           "label": "Met today",
-          "value": "42 by a rule, 6 in part"
+          "value": "45 by a rule, 3 in part"
         },
         {
           "label": "Gaps",

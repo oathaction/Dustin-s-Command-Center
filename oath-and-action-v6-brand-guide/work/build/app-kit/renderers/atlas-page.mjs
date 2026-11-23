@@ -1052,7 +1052,8 @@ export async function render(spec) {
   if (!fn) throw new Error(`the atlas renderer draws no ${spec.view} view yet (its hand-over from the design director)`);
   const kind = { loop: 'Loop', reform: 'Reform' }[spec.view];
   const view_href = (A.views.find(([w]) => w === pw.current_view) || [])[1] || '/atlas';
-  // AX-9 (specs 15.6): a sheet is a page of its own: "The Register" becomes a crumb linking the index, the last crumb is
+  // AX-9 (specs 15.6): a sheet is a page of its own; its tab title fills {chip} and {title} from the page's own sheet (A13
+  // D04, A18 D10), and a layer's sheet takes "title_layer" where the words give it: "The Register" becomes a crumb linking the index, the last crumb is
   // the domain's chip (a layer's stored title, which takes no chip), and the Register stays the current view, "true"
   const S_ = spec.view === 'register' && F.view && F.view.sheet ? F.view.sheet : null;
   const sheet_own = S_ ? (S_.domain ? chip('Domain', S_.id, { href: PATHS.Domain(S_.id), current: true, cls: 'wa-cur' })
@@ -1090,7 +1091,7 @@ export async function render(spec) {
   const js = (n) => fs.readFileSync(path.join(CODE, `c-18-${n}.js`), 'utf8');
   const own_css = comp + '\n' + atlas_css(F.figure_css);
   return {
-    id: spec.id, type, page: spec.view, part: 'page', title: fill(pw.title, { title: F.record_title || (S_ ? S_.title : ''), id: spec.record || (S_ ? S_.id : '') }).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’'), words_from: AWd.__from,
+    id: spec.id, type, page: spec.view, part: 'page', title: fill(S_ && !S_.domain && pw.title_layer ? pw.title_layer : pw.title, { title: F.record_title || (S_ ? S_.title : ''), id: spec.record || (S_ ? S_.id : ''), chip: S_ && S_.domain ? `Domain ${S_.id}` : '' }).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’'), words_from: AWd.__from,
     // the working page's style: the website's, then chapter 18's components and the atlas's own rules
     css: site_css() + '\n' + masthead_css() + '\n' + switch_css() + '\n' + own_css,
     // in the guide the website's style is already in the head (plates/web-site.css); the atlas plate carries its own

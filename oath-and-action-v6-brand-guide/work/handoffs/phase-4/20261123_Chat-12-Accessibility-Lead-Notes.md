@@ -31,9 +31,15 @@ Approved work, so the fix pass does not make these. Each is ruled in my review r
   - 3.2.1: **Met**, on 18.3, 18.9, 20.2, 21.3 and 21.13: "Every control acts on a press and never on focus, the website’s menu and the atlas’s questions and stepper included."
   - Rule 19.1 now reads "Today a rule meets 42 criteria and six more in part" (it read 40 and eight); the gaps and "not used today" counts are unchanged. Run under the lock: the generator (exit 0, "chapter 19: 9 rules, 19 specimens, 100,038 bytes of specimens"), then `--check` ("chapter 19: current", exit 0). `git diff --stat`: only the generator and its four outputs (`19-accessibility.json`, `manifest-accessibility.json`, `s-19-criteria.html`, `s-19-opener.html`), 12 insertions and 12 deletions. Chapter 19's files: 141,801 bytes before, 142,881 after. No other file in `work/build/guide` or `work/build/scripts` prints the old count.
 
+- **Named place 13, second step** (19:05 UTC), after the editor added Rule 20.1's rows "Order" and "Headings" (18:54 UTC, `phase4_ch20_build.py`; read in `20-web.json` at 19:05):
+  - 1.3.1: **Met**, on 20.1, 21.1, 18.10, 18.3, 18.17, 18.6, 18.7, 20.3 and 11.5: "Tables, forms, lists, landmarks and the current place keep their structure in markup, and every page sets its landmarks and its headings in order (Rules 20.1 and 21.1)."
+  - 1.3.2: **Met**, on 20.1, 21.1, 18.22 and 18.6: "A page’s markup runs in the order a reader sees it at every width, and each component keeps its own order."
+  - 2.4.3: **Met**, on 20.1, 21.1, 20.2, 18.6, 18.16, 18.17, 18.21, 18.22, 18.23 and 21.13: "Focus follows the page from the skip link to the footer, and each component says where focus goes."
+  - Rule 19.1 now reads "Today a rule meets 45 criteria and three more in part" (42 and six after the first step; 40 and eight before the pass). The three still in part are 1.4.13, 2.3.1 and 2.4.5; the two gaps (3.1.2, 3.3.4) and the five not used today are unchanged. Under the lock: the generator (exit 0, "chapter 19: 9 rules, 19 specimens, 99,954 bytes of specimens"), then `--check` ("chapter 19: current", exit 0), 19:05:49 to 19:05:50 UTC. `git diff --stat` on the whole tree (the first step was already committed): only the generator and its four outputs, 9 insertions and 9 deletions. Chapter 19's files: 142,881 bytes after the first step, 142,791 now.
+
 ## Requests
 
-- **Design director and editor, Rule 20.1 (`phase4_ch20_build.py`), two specification rows**, in the form Rule 21.1 uses. Order: "Skip link, the masthead, the page, the footer. The markup runs in the order a reader sees at every width, so Tab and a screen reader meet each part in that order." Headings: "One h1 a page, its headline, or on the home page the wordmark’s link; each section an h2 under it, with no level skipped; the masthead holds none, and the footer’s four groups take h2." The pages already do this (walked in the review). When they land, I move 1.3.1, 1.3.2 and 2.4.3 to Met (wording in my review report, named place 13) and rerun chapter 19's generator and `--check`.
+- **Met at 18:54 UTC by the editor.** Design director and editor, Rule 20.1 (`phase4_ch20_build.py`), two specification rows, in the form Rule 21.1 uses. Order: "Skip link, the masthead, the page, the footer. The markup runs in the order a reader sees at every width, so Tab and a screen reader meet each part in that order." Headings: "One h1 a page, its headline, or on the home page the wordmark’s link; each section an h2 under it, with no level skipped; the masthead holds none, and the footer’s four groups take h2." The pages already do this (walked in the review). When they land, I move 1.3.1, 1.3.2 and 2.4.3 to Met (wording in my review report, named place 13) and rerun chapter 19's generator and `--check`.
 - **Atlas engineer:** tell the main session the kit build time of each landing of AX-1 to AX-4 and AX-10, so I rerun the recheck on that build.
 
 ## Second pass: the Musts on the atlas pages
@@ -54,11 +60,11 @@ The baseline reproduces every Must the review found, so the script catches each 
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
-| AX-13a | My review, named place 13 | Chapter 19's map, 1.3.1, 1.3.2, 2.4.3 | They stay Met in part: chapter 20's rules set no page order or heading outline | Rule 20.1's two rows (Requests), then the three entries to Met | Rule 20.1's rows are not assigned in this pass | Open, until the rows land |
+| AX-13a | My review, named place 13 | Chapter 19's map, 1.3.1, 1.3.2, 2.4.3 | They stayed Met in part while chapter 20's rules set no page order or heading outline | Rule 20.1's two rows, then the three entries to Met | | Closed 19:05 UTC: the rows landed (editor, 18:54) and the three read Met (Done) |
 
 ## Tested
 
-- Chapter 19's generator and its `--check`, under the build lock, 17:49:01 UTC; `git diff --stat` on the working tree.
+- Chapter 19's generator and its `--check`, under the build lock, 17:49:01 UTC and again 19:05:49 UTC; `git diff --stat` on the working tree.
 - The recheck's baseline run on the six atlas exports, 17:51 UTC (copies taken 17:49:50, SHA-256 as in the review), one browser, closed after.
 - The strict build to my scratch under the lock, 17:50:27 to 17:50:45 UTC: it wrote 14,190,587 bytes (1,080 more than the 14,189,507 of the review's build, chapter 19's change), 409 rules, 765 specimens, and exited 1 on 34 warnings, every one a chapter 21 kit plate older than `atlas-page.mjs`, which the atlas engineer is editing now; no warning names chapter 19. The strict build that passes is the main session's, after the kit rebuilds.
 
