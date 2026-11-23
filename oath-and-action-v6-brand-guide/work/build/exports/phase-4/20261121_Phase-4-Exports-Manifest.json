@@ -1,5 +1,5 @@
 {
- "written": "2026-11-23T19:50:38.668Z",
+ "written": "2026-11-23T19:58:02.126Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -457,7 +457,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 13,037 px"
+   "size": "390 by 13,430 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page-390-Dark.png",
@@ -465,7 +465,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 13,037 px"
+   "size": "390 by 13,430 px"
   },
   {
    "file": "20261122_Atlas-Loop-R18-Page.html",

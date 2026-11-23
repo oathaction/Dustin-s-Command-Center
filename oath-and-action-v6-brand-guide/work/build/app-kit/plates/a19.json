@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Loop R18, “Weakening watchdogs lowers the cost of further unilateral action” | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:52:58.372Z",
+ "written": "2026-11-23T20:00:24.145Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -94,13 +94,13 @@
  },
  "css_pruned": {
   "full": 78558,
-  "placed": 58607,
-  "rules_kept": 457,
-  "rules_dropped": 106,
+  "placed": 59068,
+  "rules_kept": 458,
+  "rules_dropped": 105,
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:53:43.667Z",
+  "ran": "2026-11-23T20:01:09.532Z",
   "pass": 64,
   "fail": 0,
   "first_fail": null,

@@ -726,6 +726,7 @@
 .ws.wa .wa-index tbody tr>th{grid-column:1/-1}
 .ws.wa .wa-index .wa-gc{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}
 .ws.wa .wa-index .wa-gc1{margin-top:8px}
+.ws.wa .wa-index .wa-g48{flex:0 0 100%;font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);color:var(--oa-color-text-secondary)}
 .ws.wa .wa-index .wa-k48{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font-weight:var(--oa-font-weight-semibold)}}
 @container ws (min-width: 48em){.ws.wa .wa-index :is(.wa-k48,.wa-g48){display:none}}
 @container ws (min-width: 24.375em){.ws.wa .wa-gkey li{flex-wrap:nowrap}}
