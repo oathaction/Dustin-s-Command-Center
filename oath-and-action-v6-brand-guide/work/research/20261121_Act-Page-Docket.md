@@ -97,3 +97,7 @@ The main session read the rule again in govinfo's HTML (FR-2026-11-17, document 
 - **The early notice's condition (NB-3).** In the April 22, 2022 notice FDA said it was likely to propose the rule "if, among other considerations, we did not identify safety-related concerns as we continued to review the available data and information" (as the rule reports it, page 73723, citing 87 FR 24171).
 
 For the page: "What the record shows" prints both reasons, the safety finding and the comment line with its 2022 context (DR-93: the record as it stands, from each side).
+
+## Added November 23, 2026, 18:55 UTC: why NAC was excluded (chat 12's fix pass, CE4)
+
+- **The approval that triggered the exclusion.** "NAC was approved as a new drug under section 505 of the FD&C Act on September 14, 1963, under New Drug Application (NDA) 013601, Mucomyst (acetylcysteine) (see 28 FR 13509, December 13, 1963)" (page 73719). The rule gives this as the reason NAC is excluded "because NAC was approved as a new drug before it was marketed as a dietary supplement or as a food" (page 73719), and adds that FDA is "not aware of any evidence that NAC was marketed as a dietary supplement or as a food before September 14, 1963, but request[s] evidence to the contrary" (page 73719). Read by the main session in govinfo's HTML of the rule.
