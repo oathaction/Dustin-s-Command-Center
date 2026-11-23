@@ -260,3 +260,43 @@ Every other turn 2 code is under "Turn 2 done". The A04 to A08 pages show the ne
 - How the words sound read aloud; my read for triplets, parallel runs and setup and payoff is by hand.
 
 ## Turn 2 done, 18:54 UTC
+
+# Turn 3: chapter 21's word fields again
+
+Started 18:54:47 UTC (`date -u`), on the main session's message: the design director finished `phase4_ch21_build.py` at 18:53 UTC and left it; I take its word fields for the design director's "Words for the editor" items 8 to 13, and the atlas engineer's three word requests in the same fields (`where_none`, `frame_alts`, `whole_issues`). Generator before my first edit: SHA-256 `465dfd4c11684633…` (HEAD `5ab72b02`), copied to scratch `t3/`.
+
+## Turn 3 routine calls
+
+- D4-xxx | The frame names (AX-7) name no stored text and type no count the model holds: "a question about medical bills", "its targets", "its second step", where the design director's drafts quoted the stored question and two stored titles and listed the lit parts | D4-254: captions and alts in the generator carry our words, and the model's values reach a reader through the kit; a typed title or lit part would drift when the model changes. Part names (Wealth, Voice) are our founder and editor's plain names (DR-35), so they stay
+- D4-xxx | `frame_alts` reach the kit through one line in `page_words()`, which passes a page's `frame_alts` beside its other words | The kit's `view_alt` reads `pw.frame_alts` from the page's entry (the atlas engineer's Words for); the design director has left the file, and the line changes no other output
+- D4-xxx | The opener's caption says the whole circuit and its key fit the desktop's first screen "as Rule 21.2 asks", and the phone's stacked list "begins", where the draft said "the whole circuit above the fold" for both | "Above the fold" is studio language, and the phone's first screen holds the start of the list only; CD-S1's fold is built (specs 15.1, the atlas engineer's Done) and signed off with A11 in the data lead's 18:40 batch
+- D4-xxx | How to read's caption and alt say the rule table sits "under" the frame, where they said "beside" | `s21_how()` sets the table after the frame's row
+- D4-xxx | `answer_label` leaves the A11 words | The kit reads `answer_heading`, and the atlas engineer says the old key can go
+- D4-xxx | The retired issue record moves from the whole row's cell to the note under the index: the cell reads "{n}", and the note ends "Its issue records include {retired} the atlas has retired." | The atlas engineer's request 3 and the design director's DD12-R2: the cell printed "194 , one retired" with a space before the comma and broke as "194, one / retired" (CR-3)
+
+## Turn 3 done
+
+All in `phase4_ch21_build.py`'s word fields.
+
+- **Words 8 (CD-S4).** `W['opener_screens_alt']` (the design director's draft, kept: "The atlas home’s first screen twice: …"); `W['opener_screens_caption']`: "The atlas home’s first screen on a desktop in the light theme and on a phone in the dark theme. On the desktop the whole circuit and its key fit the first screen, as Rule 21.2 asks; on the phone the stacked list of parts begins."; `W['home_label']`: "The atlas home, full length". With the keys in place the opener becomes A11's first screens and the whole home leads the rules as an extra under `W['opener_caption']` (the design director's wiring).
+- **Words 9 (CD-S3).** `EXTRA_HOW['marks_caption']`: "Our atlas’s How to read page at 390 px in the light theme, at true size: every mark its pages use, with its meaning. The table under it names the rule that sets each mark."
+- **Words 10 (CD-S2).** `VIEW_WORDS['parts']`: `hub` "the hub with the pressed question", `sheettop` "the sheet’s head and first rows", `marks` "the marks"; `page_parts`: A11 `pair` "Wealth and Voice, Wealth lit", A17 `pair` "Wealth and Voice, open to their variables", A12 `art` "where it acts", A14 `art` "the drawing" (specs 15.2 for what each crop holds).
+- **Words 11 (CR-22).** `VIEW_WORDS['scale']` "shown at {pct} percent" and `VIEW_WORDS['true']` "true size", as chapter 20's.
+- **Words 12 (AX-7).** `frame_alts` in the entries of A11 (for A11, A17, A20), A12, A13 (for A13, A18), A14 (for A14, A19) and A16: 32 names, one for each crop and screen the plates place, each in DD12-C2's form, part and state first, then "At 1440 px, in the light theme." or its width and theme.
+- **Words 13.** Rule 21.7's caption: "Two claims one step from their evidence: the home answer’s figure with its claim record open, at 1440 px, and Loop R18’s first step beside its line in the Register, each at 1440 px beside its 390 px card."
+- **The atlas engineer's word requests.** A12 `where_none` (PR-M2): "{reform} acts on {targets}. This page has no drawing of them."; A13 `whole_issues` "{n}" with the retired record in `whole_note`; A11 `answer_label` removed.
+
+## Turn 3 requests
+
+1. **Atlas engineer:** the kit can now read `frame_alts` (32 names), `where_none` and the new `whole_note`; rebuild A11 to A20, then the generator, as your run order sets.
+2. **For the record, not done here:** AX-9's tab title for a sheet's page (specs 15.6, DD12-R1) needs a fill the kit makes, since A18 draws with A13's words; my words for it are "The sheet for {chip}, {title} | The Register", then the atlas and the site, and for a layer's sheet "{title} | The Register". PR-S5's chapter 20 half (DD12-Q7) is layout code in `phase4_ch20_build.py`, not words, and was not assigned to me.
+
+## Turn 3 proof, tested and not tested
+
+- `--check` under the lock (18:57:52 UTC): exit 0, 16 rules, 35 specimens (the first-screens opener switched on), 91,463 bytes before the kit's frames. `--page-words all`: exit 0; `frame_alts` on A11 (11), A12 (3), A13 (8), A14 (9) and A16 (1), 32 in all, each key a view the kit's plates hold (by script); `answer_label` gone; `whole_issues` "{n}". Script scan of the page words: em and en dashes 0, fillers 0, corporate verbs 0, straight apostrophes 0, "Newsprint" 0, a bare sheet code 0, "dark mode" 0; "never" once, How to read's plain fact.
+- Written under the lock (19:01:02 UTC): exit 0. `git diff --stat`: `phase4_ch21_build.py` (108 insertions, 13 deletions against HEAD `5ab72b02`; SHA-256 now `a8a04c95b0816314…`), `21-atlas.json` (55,258 to 55,652 bytes), `manifest-atlas.json`, 17 specimens and the new `s-21-opener.html` (1,107 bytes). A word diff of each shows only: the scale words on every row of frames, How to read's frame now `390-light-marks` "the marks, true size", the whole row's cell "194", and the new opener and caption entries in the chapter file.
+- Two strict builds in one hold of the lock (19:03:53 to 19:04:27 UTC), the second with HEAD's versions of only my chapter 21 output files, mine restored after (0 mismatches): chapter 21 1,209,983 to 1,249,013 (+39,030), the page 14,326,680 to 14,365,710; no other chapter moved. The growth is the design director's wiring that my words switch on: the opener's two kit frames (A11's first screens) and How to read's legend at 390 px in place of the 1440 px page. Nothing was cut to meet a figure (DR-271).
+- Both builds exit 1. After: 36 warnings, 34 of them kit plates older than `renderers/web-site.mjs`, which Engineer W was rebuilding (A04 to A10 at 19:04 UTC), and two PR-S5 lines asking for the generator to run again after the atlas engineer's kit build of 19:01 to 19:03 UTC. None names my words.
+- Not tested: the new crops' labels (`pair`, `hub`, `art`, `sheettop`) on a plate, since those crops switch on only once Engineer W's crop on both axes lands (`fits()`); the 32 frame names in a screen reader; the guide check; any browser.
+
+## Turn 3 done, 19:05 UTC

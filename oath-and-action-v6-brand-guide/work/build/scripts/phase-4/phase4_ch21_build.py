@@ -159,6 +159,15 @@ W = {
                   'Under the site’s masthead and the atlas’s Charcoal title bar, the atlas’s eight parts sit as boxes with '
                   'a count on each arrow between them on the desktop, and as a stacked list on the phone. A question '
                   'about medical bills is pressed, and the parts it reaches stay in full ink while the others are muted.',
+    # CD-S4: the opener as the home's first screens, and the whole home's label as an extra (the design director's Words 8)
+    'opener_screens_alt': 'The atlas home’s first screen twice: on a desktop at 1440 px in the light theme and on a phone at '
+                          '390 px in the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the '
+                          'desktop shows the whole drawing of the eight parts with a count on each arrow, and the phone the '
+                          'start of the stacked list.',
+    'opener_screens_caption': 'The atlas home’s first screen on a desktop in the light theme and on a phone in the dark '
+                              'theme. On the desktop the whole circuit and its key fit the first screen, as Rule 21.2 asks; '
+                              'on the phone the stacked list of parts begins.',
+    'home_label': 'The atlas home, full length',
     'related_chapters': [
         ('05', 'One working red a view, and each section’s opening screen measured as Rule 05.1 sets.'),
         ('10', 'The atlas’s parts named in words, with no icon (Rule 10.8).'),
@@ -260,7 +269,6 @@ PAGES = {
             'questions_lede': 'Press a question to see which parts of the system decide it.',
             'lit': 'The question you pressed reaches here',
             'status': 'This question reaches {parts}.',
-            'answer_label': 'The short answer',
             # AX-4 and CD-M2: the heading over the pressed question's own short answer, {question} as stored; and the
             # words the answer area shows for a question whose record stores no short answer
             'answer_heading': 'The short answer: {question}',
@@ -271,6 +279,31 @@ PAGES = {
             'claim_labels': {'grade': 'Grade', 'population': 'People', 'jurisdiction': 'Place', 'period': 'Period',
                              'limitation': 'Limit', 'sources': 'Sources'},
             'drawing_label': 'The parts of the system and the connections between them',
+        },
+        # AX-7 (DD12-C2): each crop's own name, part and state first, then its width and theme; the kit composes the rest
+        'frame_alts': {
+            'A11 1440-light-screen': 'The atlas home’s first screen: the site’s masthead, the atlas’s title bar and the whole '
+                                     'drawing of the eight parts with its key. At 1440 px, in the light theme.',
+            'A11 390-dark-screen': 'The atlas home’s first screen on a phone: the masthead, the atlas’s title bar and the '
+                                   'start of the stacked list of parts. At 390 px, in the dark theme.',
+            'A11 1440-light-drawing': 'The drawing of the eight parts, the parts a question about medical bills reaches at '
+                                      'full strength and the others muted. At 1440 px, in the light theme.',
+            'A11 1440-light-pair': 'Two parts of the drawing, Wealth lit for a question about medical bills and Voice muted '
+                                   'beside it, with the arrows and counts between them. At 1440 px, in the light theme.',
+            'A11 1440-light-questions': 'The everyday questions under their hubs, one about medical bills pressed: a check '
+                                        'before its words, bold words and a 2 px edge. At 1440 px, in the light theme.',
+            'A11 1440-light-hub': 'The hub that holds a question about medical bills, that question pressed: a check before '
+                                  'its words, bold words and a 2 px edge. At 1440 px, in the light theme.',
+            'A11 390-light-questions': 'The everyday questions on a phone, one about medical bills pressed: a check, bold '
+                                       'words and a 2 px edge. At 390 px, in the light theme.',
+            'A11 390-dark-questions': 'The everyday questions on a phone, one about medical bills pressed: a check, bold '
+                                      'words and a 2 px edge. At 390 px, in the dark theme.',
+            'A17 1440-light-drawing': 'The drawing with Show every variable pressed, each of the eight parts open to its '
+                                      'variables. At 1440 px, in the light theme.',
+            'A17 1440-light-pair': 'Wealth and Voice open to their variables, with the arrows and counts between them. At '
+                                   '1440 px, in the light theme.',
+            'A20 1440-light-answer': 'The short answer to a question about medical bills, its figure’s claim record open '
+                                     'beneath it. At 1440 px, in the light theme.',
         },
     },
     'A12': {
@@ -291,6 +324,8 @@ PAGES = {
                          'the reform does not act on it.',
             'touches': 'Its record names {loop} as a loop it touches. That loop’s steps hold none of the reform’s '
                        'targets, so the drawing leaves it out.',
+            # PR-M2 (the atlas engineer): for a reform whose targets the kit cannot draw; {targets} each chip and name
+            'where_none': '{reform} acts on {targets}. This page has no drawing of them.',
             'aims_here': 'also aim here',
             'aims_here_one': 'also aims here',
             'grades_heading': 'How sure our atlas is',
@@ -310,6 +345,14 @@ PAGES = {
             'complements_heading': 'Works alongside',
             'sources_summary': 'Sources for this page',
         },
+        'frame_alts': {
+            'A12 1440-light-art': 'Where Reform R-23 acts: its targets outlined in red, joined by a connection in the '
+                                  'drawing’s usual color. At 1440 px, in the light theme.',
+            'A12 1440-light-targets': 'Where Reform R-23 acts: its targets outlined in red, and the other reforms that aim '
+                                      'there listed beside them. At 1440 px, in the light theme.',
+            'A12 390-light-targets': 'Where Reform R-23 acts, on a phone: its targets in red, and the other reforms that '
+                                     'aim there listed under them. At 390 px, in the light theme.',
+        },
     },
     'A13': {
         'view': 'The Register',
@@ -324,15 +367,15 @@ PAGES = {
             'index_head': ['Sheet', 'Variables', 'Connections', 'Numbered loops', 'Reforms', 'Issue records'],
             'none_filed': 'none filed',
             'whole': 'The whole atlas',
-            # editor: "one" is the count of retired issue records today (Issue I128); the editor's notes ask for a
-            # {retired} fill from the model, so the word never goes stale
-            'whole_issues': '{n}, one retired',
+            # the count alone (CR-3); the note says how many are retired, {retired} filled by the kit in words
+            'whole_issues': '{n}',
             # R27 (ST-2): {numbered} atlas:loops-numbered, {loops} atlas:loops, {conceptual} atlas:loops-conceptual in
             # words (house rule H06), each a count span the kit fills from the model; {retired} as before
             'whole_note': 'The whole atlas counts each loop and reform once, though many reach several sheets, and its '
                           'reforms leave out those the atlas rejects. Its loops column counts the {numbered} loops that '
                           'close through numbered connections; the loop index lists all {loops}, since {conceptual} more '
-                          'close only in concept, with no chain of connections to file.',
+                          'close only in concept, with no chain of connections to file. Its issue records include '
+                          '{retired} the atlas has retired.',
             'sheet_question_label': 'Its everyday question',
             'variables_heading': 'Its variables',
             # CE8 and R22: each variable on the sheet, {var} its chip, {name} its stored title, {means} its stored
@@ -367,6 +410,23 @@ PAGES = {
             'showing': '{n} of {total} issue records',
             'records_noun': 'issue records',
             'records_none': 'No issue record matches. Turn a filter off, or clear the filters, to see more.',
+        },
+        'frame_alts': {
+            'A13 390-light-rejected': 'The sheet for Domain D04, its rejected option with the option’s effects and the '
+                                      'atlas’s words on its grade. At 390 px, in the light theme.',
+            'A13 390-light-records': 'The sheet for Domain D04, its issue records narrowed by one filter, with the count of '
+                                     'those that show. At 390 px, in the light theme.',
+            'A13 390-dark-records': 'The sheet for Domain D04, its issue records narrowed by one filter, with the count of '
+                                    'those that show. At 390 px, in the dark theme.',
+            'A13 1440-light-rowl14': 'Connection L14’s line on the sheet for Domain D04: its variables, sign, type, delay, '
+                                     'grade and citation. At 1440 px, in the light theme.',
+            'A13 390-light-rowl14': 'Connection L14’s card on the sheet for Domain D04. At 390 px, in the light theme.',
+            'A18 1440-light-sheet': 'The sheet for Domain D10, its connections, each line with its sign, type, delay, grade '
+                                    'and citation. At 1440 px, in the light theme.',
+            'A18 390-light-rejected': 'The sheet for Domain D10, its connections reviewed and not drawn, each with the '
+                                      'atlas’s reason. At 390 px, in the light theme.',
+            'A18 390-light-sheettop': 'The head of the sheet for Domain D10 and its first connections. At 390 px, in the '
+                                      'light theme.',
         },
     },
     'A14': {
@@ -443,6 +503,24 @@ PAGES = {
             'on_sheet': 'Its line in the Register, on the sheet for {sheet}',
             'records_line': 'Issue records on this loop: {n}',
         },
+        'frame_alts': {
+            'A14 1440-light-top': 'The top of Loop R18’s page: the site’s masthead, the atlas’s title bar, the breadcrumb '
+                                  'and the locator. At 1440 px, in the light theme.',
+            'A14 390-light-open-top': 'The top of Loop R18’s page on a phone, the atlas’s views open as rows. At 390 px, in '
+                                      'the light theme.',
+            'A14 1440-light-rowl14': 'Loop R18’s evidence for its first step, Connection L14, with its grade and citation. '
+                                     'At 1440 px, in the light theme.',
+            'A14 390-light-rowl14': 'Loop R18’s evidence for its first step, Connection L14, on a phone. At 390 px, in the '
+                                    'light theme.',
+            'A14 1440-dark-drawing': 'Loop R18’s drawing with Reform R-11’s targets in red. At 1440 px, in the dark theme.',
+            'A14 1440-dark-art': 'Loop R18’s drawing on its own, with Reform R-11’s targets in red. At 1440 px, in the dark '
+                                 'theme.',
+            'A14 1440-dark-chooser': 'The reforms that aim at Loop R18, Reform R-11 chosen. At 1440 px, in the dark theme.',
+            'A19 390-light-stepper': 'Loop R18’s stepper on its second step, its status line and its four buttons two by '
+                                     'two. At 390 px, in the light theme.',
+            'A19 1440-dark-stepper': 'Loop R18’s stepper on its second step, its status line and its four buttons in one '
+                                     'row. At 1440 px, in the dark theme.',
+        },
     },
     'A15': {
         'view': 'Loops',
@@ -513,6 +591,10 @@ PAGES = {
                 'pressed': ['Pressed question', 'A check, bold words and a heavier edge mark the question you '
                                                 'pressed.'],
             },
+        },
+        'frame_alts': {
+            'A16 390-light-marks': 'Every mark the atlas’s pages use, in five groups, each beside its name and meaning. At '
+                                   '390 px, in the light theme.',
         },
     },
 }
@@ -782,8 +864,9 @@ R['21.7'] = {
               ('Source lines', 'Rule 13.6’s six parts, as far as the source record holds them')],
     'builders': ['Give every figure and every connection on a page a link to its own record, and fail the build when one '
                  'has none.'],
-    'correct_caption': 'Two claims one step from their evidence, at 1440 px: the home answer’s figure with its claim '
-                       'record open, and Loop R18’s first step beside its line in the Register.',
+    'correct_caption': 'Two claims one step from their evidence: the home answer’s figure with its claim record open, at '
+                       '1440 px, and Loop R18’s first step beside its line in the Register, each at 1440 px beside its '
+                       '390 px card.',
     'correct_alt': 'A short answer with a figure followed by the chip Claim CL1340, its record open beneath with its grade, '
                    'people, place, period and limit; then the chip Connection L14 in the loop page’s evidence row, beside '
                    'its line on the Register’s sheet for Domain D04.',
@@ -1074,12 +1157,14 @@ R['21.16'] = {
 EXTRA_HOW = {
     'label': 'How to read our atlas',
     'caption': 'Our atlas’s How to read page at 1440 px in the light theme: every mark its pages use, with its meaning. '
-               'The table beside it names the rule that sets each mark.',
+               'The table under it names the rule that sets each mark.',
+    # CD-S3: the legend at 390 px, true size (the design director's Words 9)
+    'marks_caption': 'Our atlas’s How to read page at 390 px in the light theme, at true size: every mark its pages use, '
+                     'with its meaning. The table under it names the rule that sets each mark.',
     'alt': 'A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, '
            'the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; '
            'the hollow line, the red target, the Also aim here tag and the weakest step; the typed chip and the pressed '
-           'question. '
-           'Beside it, a table names the rule for each mark.',
+           'question. Under it, a table names the rule for each mark.',
 }
 
 # the line above each row of frames: the width, the theme and the state each frame shows, composed from a view's key
@@ -1087,16 +1172,25 @@ EXTRA_HOW = {
 VIEW_WORDS = {
     'px': '{w} px', 'light': 'light', 'dark': 'dark', 'screen': 'first screen', 'open': 'views open',
     # CD-S5: where two pages share a part's key in one plate, each page's own words for it
-    'page_parts': {'A14': {'rowl14': 'Loop R18’s evidence for its first step, Connection L14'},
+    'page_parts': {
                    'A13': {'rowl14': 'Connection L14’s line in the Register',
                            'rejected': 'the rejected option on the sheet for Domain D04'},
-                   'A18': {'rejected': 'reviewed and not drawn, on the sheet for Domain D10'}},
+                   'A18': {'rejected': 'reviewed and not drawn, on the sheet for Domain D10'},
+                   # CD-S2: the new crops, each page's own words (the design director's Words 10)
+                   'A11': {'pair': 'Wealth and Voice, Wealth lit'},
+                   'A17': {'pair': 'Wealth and Voice, open to their variables'},
+                   'A12': {'art': 'where it acts'},
+                   'A14': {'rowl14': 'Loop R18’s evidence for its first step, Connection L14', 'art': 'the drawing'}},
     'parts': {'top': 'the top of the page', 'drawing': 'the drawing', 'questions': 'the questions', 'answer': 'the answer',
               'targets': 'where it acts', 'grades': 'the two grades', 'effects': 'the effects', 'routes': 'the routes',
               'index': 'the index', 'sheet': 'the open sheet', 'records': 'the issue records',
               'rejected': 'the rejected option', 'stepper': 'the stepper', 'chooser': 'the chooser',
               'read': 'the loop read aloud', 'evidence': 'the evidence', 'claim': 'the claim’s record',
-              'facts': 'the loop’s facts', 'status': 'where it stands', 'rowl14': 'Connection L14’s row'},
+              'facts': 'the loop’s facts', 'status': 'where it stands', 'rowl14': 'Connection L14’s row',
+              'hub': 'the hub with the pressed question', 'sheettop': 'the sheet’s head and first rows',
+              'marks': 'the marks'},
+    # CR-22: after a row's views, its scale at a 1440 px window, or true size (as chapter 20's)
+    'scale': 'shown at {pct} percent', 'true': 'true size',
 }
 
 WCAG = {
@@ -1209,6 +1303,7 @@ def page_words(aid):
         'current_view': p['current_view'],
         'crumbs': p['crumbs'],
         'page': page,
+        **({'frame_alts': p['frame_alts']} if p.get('frame_alts') else {}),   # AX-7: the kit's view_alt reads them
     }
 
 

@@ -671,9 +671,12 @@ ${r.head_links || ''}
           if (crop) {
             const box = await p.evaluate((name) => {
               if (name === 'top') { const m = document.querySelector('.ws main'); return m ? { top: 0, bottom: Math.ceil(m.getBoundingClientRect().top + scrollY + 16) } : null; }
-              const e = document.querySelector(`.ws [data-oa-part="${name}"]`);
-              if (!e) return null;
-              const b = e.getBoundingClientRect();
+              // CD-S2 (chat 12, atlas specs 15.2): the part is the union of every element carrying its name
+              const es = [...document.querySelectorAll(`.ws [data-oa-part="${name}"]`)];
+              if (!es.length) return null;
+              const rs = es.map((x) => x.getBoundingClientRect());
+              const b = { top: Math.min(...rs.map((r) => r.top)), bottom: Math.max(...rs.map((r) => r.bottom)),
+                left: Math.min(...rs.map((r) => r.left)), right: Math.max(...rs.map((r) => r.right)) };
               // chat 11c: a crop holds the part's whole pixel rows, so no sliver of what sits above or below it shows
               return { top: Math.ceil(b.top + scrollY - 0.001), bottom: Math.floor(b.bottom + scrollY + 0.001), exact: b.top + scrollY,
                 left: Math.max(0, Math.floor(b.left)), right: Math.min(innerWidth, Math.ceil(b.right)) };
@@ -707,23 +710,28 @@ ${r.head_links || ''}
               await p.goto('file://' + mp, { waitUntil: 'load' });
               await p.evaluate(() => document.fonts.ready);
               const nb = await p.evaluate(({ name, exact, mode }) => {
-                const part = document.querySelector(`.ws [data-oa-part="${name}"]`);
+                // CD-S2 (chat 12): every element carrying the part's name stays, with its ancestors
+                const parts_ = [...document.querySelectorAll(`.ws [data-oa-part="${name}"]`)];
                 const root = document.querySelector('.ws');
+                const keep = new Set();
+                for (const p0 of parts_) for (let x = p0; x && x !== root; x = x.parentElement) keep.add(x);
                 // a sibling in a grid or flex row stays as an empty box of its own tag, classes and height, so the part keeps its
                 // column and its row (a grid places by order); a table's other rows go, its head row stays
                 const TABLE = new Set(['TABLE', 'THEAD', 'TBODY', 'TFOOT', 'TR']);
                 const boxes = [], rows_kept = [];
-                let n = part;
-                while (n && n !== root) {
+                const done_parents = new Set();
+                for (const n of keep) {
                   const parent = n.parentElement;
+                  if (!parent || done_parents.has(parent)) continue;
+                  done_parents.add(parent);
                   const pd = getComputedStyle(parent).display;
                   const laid = /grid|flex/.test(pd);
                   for (const sib of [...parent.children]) {
-                    if (sib === n) continue;
+                    if (keep.has(sib)) continue;
                     if (parent.tagName === 'TABLE' && (sib.tagName === 'THEAD' || sib.tagName === 'COLGROUP')) continue;
                     // the rows either side of a row stay, emptied, at their heights: a collapsed border is shared between two
                     // rows, so the row keeps the border it had (alone, it would take the head's rule and grow half a pixel)
-                    if (sib.tagName === 'TR' && (sib === n.previousElementSibling || sib === n.nextElementSibling)) {
+                    if (sib.tagName === 'TR' && (keep.has(sib.nextElementSibling) || keep.has(sib.previousElementSibling))) {
                       const hh = sib.getBoundingClientRect().height;
                       const tr = document.createElement('tr');
                       if (sib.getAttribute('class')) tr.setAttribute('class', sib.getAttribute('class'));
@@ -738,7 +746,6 @@ ${r.head_links || ''}
                       boxes.push([sib, Math.round(bb.height * 1000) / 1000, /flex/.test(pd) ? Math.round(bb.width * 1000) / 1000 : null]);
                     } else sib.remove();
                   }
-                  n = parent;
                 }
                 for (const [sib, tr] of rows_kept) sib.replaceWith(tr);
                 for (const [sib, hh, ww] of boxes) {
@@ -747,7 +754,7 @@ ${r.head_links || ''}
                   e.setAttribute('style', `height:${hh}px;min-height:0;box-sizing:border-box;padding:0;border:0;overflow:hidden;visibility:hidden${ww != null ? `;width:${ww}px;flex:none` : ''}`);
                   sib.replaceWith(e);
                 }
-                const t1 = part.getBoundingClientRect().top + scrollY;
+                const t1 = Math.min(...parts_.map((x) => x.getBoundingClientRect().top)) + scrollY;
                 const shift = mode === 'place' ? exact - t1 : (((exact % 1) - (t1 % 1)) % 1 + 1) % 1;
                 if (shift > 0.001) document.querySelector('.ws-in').style.paddingTop = `${shift.toFixed(3)}px`;
                 return {};
@@ -756,7 +763,8 @@ ${r.head_links || ''}
               // the part-alone page drawn afresh from its markup, as the frame will be, so the proof reads what the frame shows
               await p.evaluate((html) => { const ws = document.querySelector('.ws'); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); }, sub.html);
               await p.evaluate(() => document.fonts.ready);
-              Object.assign(nb, await p.evaluate((name) => { const b = document.querySelector(`.ws [data-oa-part="${name}"]`).getBoundingClientRect();
+              Object.assign(nb, await p.evaluate((name) => { const rs = [...document.querySelectorAll(`.ws [data-oa-part="${name}"]`)].map((x) => x.getBoundingClientRect());
+                const b = { top: Math.min(...rs.map((r) => r.top)), bottom: Math.max(...rs.map((r) => r.bottom)) };
                 return { top: Math.ceil(b.top + scrollY - 0.001), bottom: Math.floor(b.bottom + scrollY + 0.001) }; }, crop));
               if (nb.bottom - nb.top !== h) { tried.push(`${mode}: the part alone is ${nb.bottom - nb.top} px tall, in the page ${h}`); continue; }
               const mine = await p.screenshot({ clip: { x: 0, y: nb.top, width: wv.w, height: h } });
@@ -818,16 +826,25 @@ ${r.head_links || ''}
             if (t1 && Object.keys(t1.a.symbols).length) atl = { ...t1.a, kept_inline };
             else atl = { html: sym.html, symbols: {}, groups: {}, kept_inline };
           }
+          // CD-S2 (chat 12, atlas specs 15.2, DD12-C1): a crop to a part is cut on both axes: the part's box plus 24 px of the
+          // page each side, clipped to the page; the frame is that box (the part itself was proved above, pixel for pixel)
+          const page_h = await p.evaluate(() => Math.ceil(document.querySelector('.ws').getBoundingClientRect().bottom + scrollY));
           await p.close();
+          let fx = 0, fw = wv.w, fy = y0, fh = h;
+          if (crop && crop !== 'top' && part_x) {
+            fy = Math.max(0, y0 - 24); fh = Math.min(Math.max(page_h, y0 + h), y0 + h + 24) - fy;
+            fx = Math.max(0, part_x.x - 24); fw = Math.min(wv.w, part_x.x + part_x.width + 24) - fx;
+          }
           facts.pruned = facts.pruned || {};
           facts.pruned[key] = { removed: pruned.removed, bytes_before: Buffer.byteLength(html), bytes_after: Buffer.byteLength(pruned.html), bytes_symbolized: Buffer.byteLength(sym.html), pixels_same: same && same2,
             ...(atl ? { bytes_atlas_symbols: Buffer.byteLength(atl.html), atlas_symbol_groups: atl.groups, atlas_kept_inline: atl.kept_inline } : {}) };
           if (atl) { sym.html = atl.html; Object.assign(sym.symbols, atl.symbols); }
           Object.assign(plate_symbols, sym.symbols);
           // a crop draws the page moved up by its part's top, inside a frame as tall as the part
-          const frame_html = y0 ? `<div class="oa-app-crop" style="margin-top:-${y0}px">${sym.html}</div>` : sym.html;
+          // (CD-S2: and moved left by the box's left edge, the page kept at its own width so it lays out as before)
+          const frame_html = fy || fw !== wv.w ? `<div class="oa-app-crop" style="margin-top:-${fy}px${fw !== wv.w ? `;margin-left:-${fx}px;width:${wv.w}px` : ''}">${sym.html}</div>` : sym.html;
           // W6 and ED11-4: the application's words end in a period, then the view's own sentence
-          const alt = r.view_alt ? r.view_alt(key) : `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark theme'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
+          const alt = r.view_alt ? r.view_alt(key) : `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'in the light theme' : 'in the dark theme'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
           // chat 11c (Rule 21.15): an atlas page's full-length view carries the contrast measured on its capture's pixels,
           // for Rule 21.15's ratio table (tools/atlas_contrast.py)
           let contrast = null;
@@ -837,9 +854,10 @@ ${r.head_links || ''}
             if (ac.status !== 0) throw new Error('atlas contrast: ' + (ac.stderr || ac.stdout));
             contrast = JSON.parse(ac.stdout);
           }
-          views.push({ key, w: wv.w, h, theme: t, alt, ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}), ...(contrast ? { contrast } : {}),
-            html: frame({ w: wv.w, h, html: frame_html, alt, page: { id: spec.id, key, type: spec.type } }) });
-          heights[key] = h;
+          views.push({ key, w: fw, h: fh, theme: t, alt, ...(fw !== wv.w ? { page_w: wv.w, box: { x: fx, y: fy } } : {}),
+            ...(facts.screens && facts.screens[key] ? { screens: facts.screens[key] } : {}), ...(contrast ? { contrast } : {}),
+            html: frame({ w: fw, h: fh, html: frame_html, alt, page: { id: spec.id, key, type: spec.type } }) });
+          heights[key] = fh;
         }
         facts.frame_heights = heights;
         // chat 11c: an atlas plate carries only its own rules (r.plate_css) and names the website's style it stands on
@@ -917,7 +935,7 @@ ${r.head_links || ''}
           const key = `${wv.w}-${t}`;
           const pid = `${spec.id.toLowerCase()}-${key}`;
           const body = r.page({ pid, theme: t, theme_for: pid, group: `oa-theme-${pid}` });
-          const alt = (r.view_alt ? r.view_alt(wv, t) : null) || `${r.alt} At ${wv.w} px, ${t === 'light' ? 'on Newsprint' : 'in the dark mode'}.`;
+          const alt = (r.view_alt ? r.view_alt(wv, t) : null) || `${r.alt} At ${wv.w} px, ${t === 'light' ? 'in the light theme' : 'in the dark mode'}.`;
           const html = frame({ w: wv.w, h: heights[wv.w], html: body, alt, page: { id: spec.id, key, type: spec.type } });
           fr.push(html);
           views.push({ key, w: wv.w, h: heights[wv.w], theme: t, alt, html });

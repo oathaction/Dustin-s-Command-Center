@@ -1824,7 +1824,7 @@
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:2/10}
  .ws-act .ws-fig{grid-column:2/10}
- .ws-act .ws-cpanel{grid-column:2/12}}
+ .ws-act .ws-cpanel{grid-column:2/10}}
 @container ws (min-width: 90em){.ws-art .ws-prow-w,.ws-art .ws-kick-w,.ws-art .ws-h1-w{grid-column:3/11}
  .ws-art .ws-lead{grid-column:3/9}
  .ws-art .ws-body{grid-column:3/8}
@@ -1834,9 +1834,9 @@
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:3/9}
  .ws-act .ws-fig{grid-column:3/9}
- .ws-act .ws-cpanel{grid-column:3/11}}
-/* DD12-Q1 (chat 12): the comment panel keeps specs 11.5's wide body columns, cols 3 to 10 (2 to 11 from 64em), which hold
-   the Comment screen inside Rule 05.1; its words stop at the body measure, inside the chart's edge at col 8 (CR-15) */
+ .ws-act .ws-cpanel{grid-column:3/9}}
+/* specs 13.3 and 13.4 (chat 12, CR-15, DD12-Q1): the comment panel at the chart's edge, cols 3 to 8 (2 to 9 from 64em),
+   40 px above and below from 64em, which holds the Comment screen inside Rule 05.1 */
 @container ws (max-width: 63.999em){.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lead2{margin-top:32px}.ws-act .ws-status{margin-top:24px}}
 .ws-lead>*+*{margin-top:32px !important}
 .ws-body>*{max-width:var(--oa-layout-measure-body-ideal)}
@@ -1877,11 +1877,14 @@
 .ws-doc{padding:24px}
 @container ws (min-width: 48em){.ws-doc{padding:32px}}
 .ws-doc .lab{font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);color:var(--oa-color-text-secondary);margin-bottom:8px !important}
-.ws-doc .parts{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric);color:var(--oa-color-text-primary)}
-.ws-doc .dot{margin-inline:8px}
+.ws-doc .parts{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric);color:var(--oa-color-text-primary);list-style:none;padding:0;margin:0}
+@container ws (min-width: 48em){.ws-doc .parts{display:flex;flex-wrap:wrap}.ws-doc .parts li+li::before{content:"·" / "";margin-inline:8px}}
+.ws-runin{font-weight:var(--oa-font-weight-semibold)}
 .ws-sum{margin:32px 0 48px}
 .ws-sum blockquote{border-left:2px solid var(--oa-color-border-strong);padding-left:24px}
-.ws-sum blockquote p{font-family:var(--oa-type-quote-font-family);font-style:var(--oa-type-quote-font-style);font-weight:var(--oa-type-quote-font-weight);font-size:var(--oa-type-quote-font-size);line-height:var(--oa-type-quote-line-height);letter-spacing:var(--oa-type-quote-letter-spacing);text-transform:var(--oa-type-quote-text-transform);font-variant-numeric:var(--oa-type-quote-font-variant-numeric);color:var(--oa-color-text-primary)}
+.ws-sum blockquote p{font-family:var(--oa-type-quote-font-family);font-style:var(--oa-type-quote-font-style);font-weight:var(--oa-type-quote-font-weight);font-size:var(--oa-type-quote-font-size);line-height:var(--oa-type-quote-line-height);letter-spacing:var(--oa-type-quote-letter-spacing);text-transform:var(--oa-type-quote-text-transform);font-variant-numeric:var(--oa-type-quote-font-variant-numeric);color:var(--oa-color-text-primary);text-indent:-0.388em}
+@supports (hanging-punctuation: first){.ws-sum blockquote p{text-indent:0;hanging-punctuation:first}}
+@container ws (min-width: 64em){.ws-act .ws-cpanel{padding-block:40px}}
 .ws-sum .cite{font-family:var(--oa-type-caption-font-family);font-style:var(--oa-type-caption-font-style);font-weight:var(--oa-type-caption-font-weight);font-size:var(--oa-type-caption-font-size);line-height:var(--oa-type-caption-line-height);letter-spacing:var(--oa-type-caption-letter-spacing);text-transform:var(--oa-type-caption-text-transform);font-variant-numeric:var(--oa-type-caption-font-variant-numeric);color:var(--oa-color-text-secondary);margin-top:16px !important}
 @container ws (min-width: 48em){.ws-cpanel{padding:32px}}
 .ws-hinge{display:flex;align-items:center;gap:12px;margin:80px 0 48px;color:var(--oa-color-identity-hinge-divider)}
@@ -3355,8 +3358,9 @@
 .ws.wa .wa-facts dt{font-weight:var(--oa-font-weight-semibold)}
 .ws.wa .wa-facts dd{margin:0}
 .ws.wa .wa-ticks line,.wa-sym.wa-ticks line{stroke:var(--oa-color-graphic-essential);stroke-width:2px}
-.ws.wa .wa-q{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong)}
-.ws.wa .wa-q+.ws-h3{margin-top:32px !important}
+/* specs 15.7 (DD11C-R10): the stored quotations in their own class, the body type, a 2 px rule at the left, 24 px to the text */
+.ws.wa .wa-quote{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong);font-family:var(--oa-type-body-font-family);font-style:var(--oa-type-body-font-style);font-weight:var(--oa-type-body-font-weight);font-size:var(--oa-type-body-font-size);line-height:var(--oa-type-body-line-height);letter-spacing:var(--oa-type-body-letter-spacing);text-transform:var(--oa-type-body-text-transform);font-variant-numeric:var(--oa-type-body-font-variant-numeric)}
+.ws.wa .wa-quote+.ws-h3{margin-top:32px !important}
 .ws.wa .wa-fig,.ws.wa .wa-fig figure{margin:0}
 .ws.wa .wa-fig .sv{display:block;max-width:100%;height:auto}
 .ws.wa .wa-draw,.ws.wa .wa-read,.ws.wa .wa-note{min-width:0}
@@ -3416,7 +3420,21 @@
 /* specs 14.1: the section band */
 .ws.wa .wa-sband{display:flex;flex-direction:column;justify-content:center;min-height:112px;padding:24px;margin-top:80px;margin-bottom:32px}
 @container ws (min-width: 48em){.ws.wa .wa-sband{padding:32px}}
-@container ws (min-width: 64em){.ws.wa .wa-sband{min-height:128px}}
+@container ws (min-width: 64em){.ws.wa .wa-sband{min-height:136px}}
+/* specs 15.7 (C11C-SP): the loop page's "Step through the loop" band on Charcoal from 48em; under 48em its heading and lede
+   sit on Newsprint under the 2 px strong rule, as a candidate band turned off */
+@container ws (min-width: 48em){.ws.wa .wa-sband--c48{background-color:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);color-scheme:dark;--oa-color-surface:var(--oa-color-surface-charcoal);--oa-color-text-primary:var(--oa-color-text-primary-on-charcoal);--oa-color-text-secondary:var(--oa-color-text-secondary-on-charcoal);--oa-color-graphic-essential:var(--oa-color-graphic-essential-on-charcoal);--oa-color-graphic-subtle:var(--oa-color-graphic-subtle-on-charcoal);--oa-color-border-hairline:var(--oa-color-border-hairline-on-charcoal);--oa-color-border-strong:var(--oa-color-border-strong-on-charcoal);--oa-color-focus-ring:var(--oa-color-focus-ring-on-charcoal)}}
+@container ws (max-width: 47.999em){.ws.wa .wa-sband--c48{min-height:0;padding:16px 0 0;border-top:2px solid var(--oa-color-border-strong)}}
+.ws.wa .wa-cap .wa-twl{display:block;margin:0 0 4px !important}
+.ws.wa .wa-cmp{margin-top:24px}
+/* specs 15.7 (CR-11): on the Register and How to read from 64em the breadcrumb row sits on the head band's Charcoal, under
+   the title bar's hairline, and the head band gives back its top padding, so the cover is one block */
+@container ws (min-width: 64em){.ws.wa:is([data-atlas-view="register"],[data-atlas-view="how-to-read"]) .wa-crumbs{margin-top:0;padding-block:8px;box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal);background-color:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);color-scheme:dark;--oa-color-surface:var(--oa-color-surface-charcoal);--oa-color-text-primary:var(--oa-color-text-primary-on-charcoal);--oa-color-text-secondary:var(--oa-color-text-secondary-on-charcoal);--oa-color-graphic-essential:var(--oa-color-graphic-essential-on-charcoal);--oa-color-graphic-subtle:var(--oa-color-graphic-subtle-on-charcoal);--oa-color-border-hairline:var(--oa-color-border-hairline-on-charcoal);--oa-color-border-strong:var(--oa-color-border-strong-on-charcoal);--oa-color-focus-ring:var(--oa-color-focus-ring-on-charcoal)}
+ .ws.wa:is([data-atlas-view="register"],[data-atlas-view="how-to-read"]) .wa-crumbs a:not(.oa-chip){color:var(--oa-color-text-primary)}
+ .ws.wa[data-atlas-view="register"] .wa-rband,.ws.wa[data-atlas-view="how-to-read"] .wa-hband--read{padding-top:0;min-height:108px;box-shadow:none}}
+/* specs 15.7 (CR-12): the loop's h1 hangs its opening quotation mark; the grade line in the body type, its chips at their own size */
+@container ws (min-width: 48em){.ws.wa .wa-hq{margin-left:-0.568em}}
+.ws.wa .wa-gl{font-family:var(--oa-type-body-font-family);font-style:var(--oa-type-body-font-style);font-weight:var(--oa-type-body-font-weight);font-size:var(--oa-type-body-font-size);line-height:var(--oa-type-body-line-height);letter-spacing:var(--oa-type-body-letter-spacing);text-transform:var(--oa-type-body-text-transform);font-variant-numeric:var(--oa-type-body-font-variant-numeric)}
 .ws.wa .wa-sband .ws-h2{margin:0 !important;color:var(--oa-color-text-primary)}
 .ws.wa .wa-lede{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric);color:var(--oa-color-text-secondary);margin-top:8px}
 .ws.wa .wa-lede>*+*{margin-top:4px !important}
@@ -3426,7 +3444,7 @@
 @container ws (max-width: 63.999em){.ws.wa .wa-wide64{display:none}}@container ws (min-width: 64em){.ws.wa .wa-narrow64{display:none}}
 .ws.wa .wa-after{margin-top:16px}.ws.wa .wa-after>*+*{margin-top:8px !important}
 .ws.wa .wa-hi2{margin-top:24px}
-@container ws (max-width: 47.999em){.ws.wa .wa-facts dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:2px 0;border-bottom:0}.ws.wa .wa-head>.wa-facts{padding:16px 24px}.ws.wa .wa-head>.wa-facts[data-oa-part="facts"]{padding:16px;margin-bottom:32px}.ws.wa .wa-facts[data-oa-part="facts"]>.lab{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
+@container ws (max-width: 47.999em){.ws.wa .wa-facts dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:2px 0;border-bottom:0}.ws.wa .wa-head>.wa-facts{padding:16px 24px}.ws.wa .wa-head>.wa-facts[data-oa-part="facts"]{padding:16px;margin-bottom:16px}.ws.wa .wa-facts[data-oa-part="facts"]>.lab{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}}
 @container ws (min-width: 64em){.ws.wa .wa-index thead tr{height:88px}.ws.wa .wa-index thead .wa-gs{margin:8px 0}}
 .ws.wa .wa-hband--read{padding-block:32px}
 @container ws (min-width: 64em){.ws.wa .wa-hband--read{min-height:160px}.ws.wa .wa-hband--read .wa-hh{grid-column:1/-1}.ws.wa .wa-hband--read .wa-hi{grid-column:1/9}}

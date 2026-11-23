@@ -4,8 +4,8 @@
   "title": "The atlas",
   "part": "applications",
   "opener": {
-    "specimen": "s-21-home",
-    "caption": "Our systems atlas’s home page inside our website, at 1440 and 390 px in the light and the dark theme. A reader has pressed a question about medical bills, and the drawing keeps the parts it reaches at full strength."
+    "specimen": "s-21-opener",
+    "caption": "The atlas home’s first screen on a desktop in the light theme and on a phone in the dark theme. On the desktop the whole circuit and its key fit the first screen, as Rule 21.2 asks; on the phone the stacked list of parts begins."
   },
   "instruction": "Apply the system to the atlas, with typed IDs and evidence a step from every claim.",
   "intro": [
@@ -511,7 +511,7 @@
       },
       "correct": {
         "specimen": "s-21-7-correct",
-        "caption": "Two claims one step from their evidence, at 1440 px: the home answer’s figure with its claim record open, and Loop R18’s first step beside its line in the Register."
+        "caption": "Two claims one step from their evidence: the home answer’s figure with its claim record open, at 1440 px, and Loop R18’s first step beside its line in the Register, each at 1440 px beside its 390 px card."
       },
       "failure": {
         "specimen": "s-21-7-failure",
@@ -1166,10 +1166,15 @@
   ],
   "extras": [
     {
+      "specimen": "s-21-home",
+      "caption": "Our systems atlas’s home page inside our website, at 1440 and 390 px in the light and the dark theme. A reader has pressed a question about medical bills, and the drawing keeps the parts it reaches at full strength.",
+      "label": "The atlas home, full length"
+    },
+    {
       "after_rule": "21.14",
       "specimen": "s-21-how-to-read",
       "label": "How to read our atlas",
-      "caption": "Our atlas’s How to read page at 1440 px in the light theme: every mark its pages use, with its meaning. The table beside it names the rule that sets each mark."
+      "caption": "Our atlas’s How to read page at 390 px in the light theme, at true size: every mark its pages use, with its meaning. The table under it names the rule that sets each mark."
     }
   ],
   "related_chapters": [

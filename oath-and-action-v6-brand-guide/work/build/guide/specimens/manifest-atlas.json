@@ -107,7 +107,7 @@
   "notes": "Drawn by the application kit (A14, dark), with the ratios the kit measured on that frame’s pixels.",
   "readable": true,
   "kit_inputs": {
-   "work/build/app-kit/plates/a14.json": "25eecc30ac03003661ffc385780322993a20866e23fa0c8ca0d35bd248a2293c"
+   "work/build/app-kit/plates/a14.json": "c36b5e57d38d6c9a1511575c5455e5c610d1f946ae3bd7c216e9970bfbb25d9f"
   }
  },
  "s-21-15-failure": {
@@ -131,7 +131,7 @@
   "notes": "Read from the atlas test’s report (plates/atlas-test.json, 1,408 lines, self-test PASS), counted by check and view for the four views.",
   "readable": true,
   "kit_inputs": {
-   "work/build/app-kit/plates/atlas-test.json": "2dd5932d53bc158e013012cccbfabff37124caaa19cd424dd127ab803688be09"
+   "work/build/app-kit/plates/atlas-test.json": "a90b9dc77e89ce222b15c57943bb0210cd5bce7feb5aca3f3537cd38e948884c"
   }
  },
  "s-21-16-failure": {
@@ -289,7 +289,7 @@
   "chapter": "21",
   "rule": null,
   "width_px": null,
-  "alt": "A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; the hollow line, the red target, the Also aim here tag and the weakest step; the typed chip and the pressed question. Beside it, a table names the rule for each mark.",
+  "alt": "A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; the hollow line, the red target, the Also aim here tag and the weakest step; the typed chip and the pressed question. Under it, a table names the rule for each mark.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A16, How to read), with the rule that sets each mark listed under it (DD-11C-2: the public page prints meanings alone).",
   "readable": true
@@ -301,6 +301,15 @@
   "alt": "Loop R18’s page four times: its head with the grade of each step and a Charcoal panel of facts that names the weakest step; the loop read aloud beside its two-step drawing, the weakest step marked and Reform R-11’s targets in red; the stepper; the reform chooser with the chosen reform’s effects, the atlas’s confidence in them, a closed disclosure of its assumptions and its routes; the loop in the atlas’s words; and the evidence for each step.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A14, Loop R18’s page), full length at four views.",
+  "readable": true
+ },
+ "s-21-opener": {
+  "chapter": "21",
+  "rule": null,
+  "width_px": null,
+  "alt": "The atlas home’s first screen twice: on a desktop at 1440 px in the light theme and on a phone at 390 px in the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the desktop shows the whole drawing of the eight parts with a count on each arrow, and the phone the start of the stacked list.",
+  "illustrative": false,
+  "notes": "Drawn by the application kit (A11): its first screen at 1440 px light and 390 px dark, one window tall each (CD-S4).",
   "readable": true
  },
  "s-21-reform": {

@@ -211,15 +211,15 @@ const count = (n, key, words) => `<span data-count="${n}" data-count-of="${esc(k
 const sec = (key, h2id, h2, body, extra = '') => `<section class="wa-sec" data-oa-section="${esc(key)}"${h2id ? ` aria-labelledby="${h2id}"` : ''}${extra}>`
   + (h2 ? `<div class="ws-g"><h2 class="ws-h2" id="${h2id}">${esc(h2)}</h2></div>` : '') + body + `</section>`;
 // specs 14.1: the section band, Charcoal across the content width, the section's h2 and its lede
-const sband = (h2id, h2, lede) => `<div class="ws-g"><div class="wa-sband oa-surface-charcoal ws-panel"><h2 class="ws-h2" id="${h2id}">${esc(h2)}</h2>`
+const sband = (h2id, h2, lede, off48 = false) => `<div class="ws-g"><div class="wa-sband ${off48 ? 'wa-sband--c48' : 'oa-surface-charcoal'} ws-panel"><h2 class="ws-h2" id="${h2id}">${esc(h2)}</h2>`
   + (lede ? `<div class="wa-lede">${lede}</div>` : '') + `</div></div>`;
-const bsec = (key, h2id, h2, lede, body, extra = '') => `<section class="wa-sec wa-bsec" data-oa-section="${esc(key)}" aria-labelledby="${h2id}"${extra}>${sband(h2id, h2, lede)}${body}</section>`;
-const quote = (html, field) => `<blockquote class="wa-q" data-atlas-field="${esc(field)}"><p class="ws-p">${html}</p></blockquote>`;
+const bsec = (key, h2id, h2, lede, body, extra = '', off48 = false) => `<section class="wa-sec wa-bsec" data-oa-section="${esc(key)}" aria-labelledby="${h2id}"${extra}>${sband(h2id, h2, lede, off48)}${body}</section>`;
+const quote = (html, field) => `<blockquote class="wa-quote" data-atlas-field="${esc(field)}"><p class="ws-p">${html}</p></blockquote>`;
 // the h1's title in curly quotation marks, held to its first and last words (Rule 18.22)
 function quoted_title(t) {
   const w = String(t).split(' ');
-  if (w.length < 3) return `<span class="ws-nb">“${esc(t)}”</span>`;
-  return `<span class="ws-nb">“${esc(w[0])}</span> ${esc(w.slice(1, -1).join(' '))} <span class="ws-nb">${esc(w[w.length - 1])}”</span>`;
+  if (w.length < 3) return `<span class="ws-nb"><span class="wa-hq">“</span>${esc(t)}”</span>`;
+  return `<span class="ws-nb"><span class="wa-hq">“</span>${esc(w[0])}</span> ${esc(w.slice(1, -1).join(' '))} <span class="ws-nb">${esc(w[w.length - 1])}”</span>`;
 }
 
 // AX-10: an address breaks after its slashes (a <wbr> after each), and anywhere if a part still runs past its column, so
@@ -272,7 +272,7 @@ function view_loop({ pid, P, A, F, panels, spec }) {
     + `</dl></div>`;
   const head = `<div class="ws-g wa-head"><div class="wa-op"><p class="ws-kick">${chip('Loop', lp.id)}<span class="d" aria-hidden="true">·</span><span class="b">${esc(fill(P.kind, { kind: kind_word }))}</span></p>`
     + `<h1 class="ws-h1 wa-t1" id="${pid}-h1">${quoted_title(lp.title)}</h1><p class="ws-intro wa-gl">${gl}</p>`
-    + `<p class="wa-cap wa-narrow48"><span class="wa-stored" data-atlas-field="closure">${stored(lp.closure, I)}</span></p></div>${facts}</div>`;
+    + `<p class="wa-cap wa-narrow48"><span class="lab wa-twl">${esc(P.facts.closure)}</span> <span class="wa-stored" data-atlas-field="closure">${stored(lp.closure, I)}</span></p></div>${facts}</div>`;
   // the read-aloud line (the data lead's R4): each variable's chip with its direction, each connection's chip with its
   // sign's word, in the order the loop runs; its marks name the directions for the atlas test (T4)
   // the editor's templates (DD-11C-6): read_start, read_step for each connection, then read_end_same or read_end_other by
@@ -372,6 +372,8 @@ function view_loop({ pid, P, A, F, panels, spec }) {
 ;
   const recs_line = `<p><a href="/atlas/register?loop=${low(lp.id)}">${count(lp.records.length, `loop:${lp.id}:records`, esc(fill(P.records_line, { n: lp.records.length })))}</a></p>`;
   return sec('Loop', null, null, head, ` aria-labelledby="${pid}-h1"`)
+    // specs 15.7 (C11C-SP): with the band off under 48em the Stepper screen at 390 read 88.2 percent Newsprint (18:59
+    // UTC), so by the spec's own fallback the band stays and a 16 px gap sits under the facts panel
     + bsec('Stepper', `${pid}-s2`, P.stepper_heading, `<p>${esc(P.arithmetic)}</p>`, sec2)
     + bsec('Record', `${pid}-s3`, P.record_heading, `<p>${esc(wd(P, 'record_lede', 'A14'))}</p>`, `<div class="ws-g"><div class="wa-col7">${rec}</div></div>`)
     + bsec('Evidence', `${pid}-s4`, P.evidence_heading, recs_line, `<div class="ws-g"><div class="wa-col8">${ev}</div></div>`);
@@ -410,8 +412,8 @@ function view_reform({ pid, P, A, F, panels, spec }) {
       conn: link_chip('Connection', c.id, I), name: `<span class="wa-stored" data-atlas-field="name">${esc(c.name)}</span>`, sign: esc(A.signs[c.sign]), delay: esc(A.delays[c.delay.key]),
       grade: `<span class="ws-nb">${c.grade.key === 'documented' ? F.record_square : ''}${esc(c.grade.word)}</span>` })}</p>`).join('')
     + (drawn ? v.loops_named : []).filter((l) => !l.drawn).map((l) => `<p class="wa-small">${fill_html(P.touches, { loop: named(link_chip('Loop', l.id, I), 'Loop', l.id, I) })}</p>`).join('') + `</div>`;
-  const where = `<div class="ws-g wa-where" data-oa-part="targets"><div class="wa-draw"><h2 class="ws-h3" data-oa-part="art">${esc(P.where_heading)}</h2>`
-    + (v.figure ? `<figure class="wa-fig" aria-labelledby="${pid}-where" data-oa-part="art">${v.figure.svg}</figure>` : '') + (tags ? `<ul class="wa-tags">${tags}</ul>` : '') + `</div>${note}</div>`;
+  const where = `<div class="ws-g wa-where" data-oa-part="targets"><div class="wa-draw"><div class="wa-art" data-oa-part="art"><h2 class="ws-h3">${esc(P.where_heading)}</h2>`
+    + (v.figure ? `<figure class="wa-fig" aria-labelledby="${pid}-where">${v.figure.svg}</figure>` : '') + `</div>` + (tags ? `<ul class="wa-tags">${tags}</ul>` : '') + `</div>${note}</div>`;
   // the two grades apart (Rule 15.12), the contested remedy's two readings side by side (H08), split where the content
   // file says (remedy_split, the sentence of the stored text that opens the second reading)
   // the data lead's R15: the stored text split at the start of the sentence remedy_split names, by the one splitter the
@@ -440,7 +442,8 @@ function view_reform({ pid, P, A, F, panels, spec }) {
   return sec('Reform', null, null, head + where, ` aria-labelledby="${pid}-h1"`)
     + bsec('Grades', `${pid}-s2`, P.grades_heading, `<p>${esc(wd(P, 'grades_lede', 'A12'))}</p>`, grades, ' data-oa-part="grades"')
     + bsec('Effects', `${pid}-s3`, P.effects_heading, effects_lede, `<div class="ws-g"><div class="wa-col8">${effects}</div></div>`, ' data-oa-part="effects"')
-    + bsec('Routes', `${pid}-s4`, P.routes_heading, routes_lede, `<div class="ws-g"><div class="wa-col8">${routes}</div></div>`, ' data-oa-part="routes"')
+    // CE11: the reforms it works alongside follow the routes, as Rule 21.4's specification orders them
+    + bsec('Routes', `${pid}-s4`, P.routes_heading, '', `<div class="ws-g"><div class="wa-col8">${routes}${routes_lede ? `<div class="wa-cmp">${routes_lede}</div>` : ''}</div></div>`, ' data-oa-part="routes"')
     + sec('Sources', null, null, `<div class="ws-g"><div class="wa-col8">${srcs}</div></div>`);
 }
 
@@ -778,8 +781,9 @@ ${W} .wa-facts dl>div{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,
 ${W} .wa-facts dt{font-weight:var(--oa-font-weight-semibold)}
 ${W} .wa-facts dd{margin:0}
 ${W} .wa-ticks line,.wa-sym.wa-ticks line{stroke:var(--oa-color-graphic-essential);stroke-width:2px}
-${W} .wa-q{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong)}
-${W} .wa-q+.ws-h3{margin-top:32px !important}
+/* specs 15.7 (DD11C-R10): the stored quotations in their own class, the body type, a 2 px rule at the left, 24 px to the text */
+${W} .wa-quote{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong);${type_css('body')}}
+${W} .wa-quote+.ws-h3{margin-top:32px !important}
 ${W} .wa-fig,${W} .wa-fig figure{margin:0}
 ${W} .wa-fig .sv{display:block;max-width:100%;height:auto}
 ${W} .wa-draw,${W} .wa-read,${W} .wa-note{min-width:0}
@@ -839,7 +843,21 @@ ${at(BP.desktop, `${W} .wa-op{grid-column:1/9}${W} .wa-head>.wa-facts{grid-colum
 /* specs 14.1: the section band */
 ${W} .wa-sband{display:flex;flex-direction:column;justify-content:center;min-height:112px;padding:24px;margin-top:80px;margin-bottom:32px}
 ${at(BP.tablet, `${W} .wa-sband{padding:32px}`)}
-${at(BP.desktop, `${W} .wa-sband{min-height:128px}`)}
+${at(BP.desktop, `${W} .wa-sband{min-height:136px}`)}
+/* specs 15.7 (C11C-SP): the loop page's "Step through the loop" band on Charcoal from 48em; under 48em its heading and lede
+   sit on Newsprint under the 2 px strong rule, as a candidate band turned off */
+${at(BP.tablet, `${W} .wa-sband--c48{background-color:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);color-scheme:dark;--oa-color-surface:var(--oa-color-surface-charcoal);--oa-color-text-primary:var(--oa-color-text-primary-on-charcoal);--oa-color-text-secondary:var(--oa-color-text-secondary-on-charcoal);--oa-color-graphic-essential:var(--oa-color-graphic-essential-on-charcoal);--oa-color-graphic-subtle:var(--oa-color-graphic-subtle-on-charcoal);--oa-color-border-hairline:var(--oa-color-border-hairline-on-charcoal);--oa-color-border-strong:var(--oa-color-border-strong-on-charcoal);--oa-color-focus-ring:var(--oa-color-focus-ring-on-charcoal)}`)}
+${under(BP.tablet, `${W} .wa-sband--c48{min-height:0;padding:16px 0 0;border-top:2px solid var(--oa-color-border-strong)}`)}
+${W} .wa-cap .wa-twl{display:block;margin:0 0 4px !important}
+${W} .wa-cmp{margin-top:24px}
+/* specs 15.7 (CR-11): on the Register and How to read from 64em the breadcrumb row sits on the head band's Charcoal, under
+   the title bar's hairline, and the head band gives back its top padding, so the cover is one block */
+${at(BP.desktop, `.ws.wa:is([data-atlas-view="register"],[data-atlas-view="how-to-read"]) .wa-crumbs{margin-top:0;padding-block:8px;box-shadow:inset 0 1px 0 var(--oa-color-border-hairline-on-charcoal);background-color:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);color-scheme:dark;--oa-color-surface:var(--oa-color-surface-charcoal);--oa-color-text-primary:var(--oa-color-text-primary-on-charcoal);--oa-color-text-secondary:var(--oa-color-text-secondary-on-charcoal);--oa-color-graphic-essential:var(--oa-color-graphic-essential-on-charcoal);--oa-color-graphic-subtle:var(--oa-color-graphic-subtle-on-charcoal);--oa-color-border-hairline:var(--oa-color-border-hairline-on-charcoal);--oa-color-border-strong:var(--oa-color-border-strong-on-charcoal);--oa-color-focus-ring:var(--oa-color-focus-ring-on-charcoal)}
+ .ws.wa:is([data-atlas-view="register"],[data-atlas-view="how-to-read"]) .wa-crumbs a:not(.oa-chip){color:var(--oa-color-text-primary)}
+ .ws.wa[data-atlas-view="register"] .wa-rband,.ws.wa[data-atlas-view="how-to-read"] .wa-hband--read{padding-top:0;min-height:108px;box-shadow:none}`)}
+/* specs 15.7 (CR-12): the loop's h1 hangs its opening quotation mark; the grade line in the body type, its chips at their own size */
+${at(BP.tablet, `${W} .wa-hq{margin-left:-0.568em}`)}
+${W} .wa-gl{${type_css('body')}}
 ${W} .wa-sband .ws-h2{margin:0 !important;color:var(--oa-color-text-primary)}
 ${W} .wa-lede{${type_css('body-small')};color:var(--oa-color-text-secondary);margin-top:8px}
 ${W} .wa-lede>*+*{margin-top:4px !important}
@@ -849,7 +867,7 @@ ${under(BP.tablet, `${W} .wa-wide48,${W} .wa-facts dl>div.wa-wide48{display:none
 ${under(BP.desktop, `${W} .wa-wide64{display:none}`)}${at(BP.desktop, `${W} .wa-narrow64{display:none}`)}
 ${W} .wa-after{margin-top:16px}${W} .wa-after>*+*{margin-top:8px !important}
 ${W} .wa-hi2{margin-top:24px}
-${under(BP.tablet, `${W} .wa-facts dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:2px 0;border-bottom:0}${W} .wa-head>.wa-facts{padding:16px 24px}${W} .wa-head>.wa-facts[data-oa-part="facts"]{padding:16px;margin-bottom:32px}${W} .wa-facts[data-oa-part="facts"]>.lab{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}`)}
+${under(BP.tablet, `${W} .wa-facts dl>div{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:2px 0;border-bottom:0}${W} .wa-head>.wa-facts{padding:16px 24px}${W} .wa-head>.wa-facts[data-oa-part="facts"]{padding:16px;margin-bottom:16px}${W} .wa-facts[data-oa-part="facts"]>.lab{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}`)}
 ${at(BP.desktop, `${W} .wa-index thead tr{height:88px}${W} .wa-index thead .wa-gs{margin:8px 0}`)}
 ${W} .wa-hband--read{padding-block:32px}
 ${at(BP.desktop, `${W} .wa-hband--read{min-height:160px}${W} .wa-hband--read .wa-hh{grid-column:1/-1}${W} .wa-hband--read .wa-hi{grid-column:1/9}`)}
@@ -1034,12 +1052,18 @@ export async function render(spec) {
   if (!fn) throw new Error(`the atlas renderer draws no ${spec.view} view yet (its hand-over from the design director)`);
   const kind = { loop: 'Loop', reform: 'Reform' }[spec.view];
   const view_href = (A.views.find(([w]) => w === pw.current_view) || [])[1] || '/atlas';
+  // AX-9 (specs 15.6): a sheet is a page of its own: "The Register" becomes a crumb linking the index, the last crumb is
+  // the domain's chip (a layer's stored title, which takes no chip), and the Register stays the current view, "true"
+  const S_ = spec.view === 'register' && F.view && F.view.sheet ? F.view.sheet : null;
+  const sheet_own = S_ ? (S_.domain ? chip('Domain', S_.id, { href: PATHS.Domain(S_.id), current: true, cls: 'wa-cur' })
+    : `<a href="${esc(PATHS.Domain(S_.id))}" aria-current="page"><b>${curly(S_.title)}</b></a>`) : null;
   const panels = spec.panels || [];
   const body = ({ pid, theme, theme_for = null, part = 'page', width = null, vh = null, open = false } = {}) => {
     const sw = { theme: theme_for ? theme : 'device', target: theme_for, group: `oa-theme-${pid}` };
     const head = site_head({ pid, parts: parts_, site, sw, theme_for, home_page: false, open: false, width });
     const own = record_page ? chip(kind, spec.record, { href: PATHS[kind](spec.record), current: true, cls: 'wa-cur' })
-      : `<a href="${esc(view_href)}" aria-current="page">${esc(pw.current_view)}</a>`;
+      : sheet_own || `<a href="${esc(view_href)}" aria-current="page">${esc(pw.current_view)}</a>`;
+    const crumbs_ = S_ && pw.crumbs ? [...pw.crumbs, [pw.current_view, view_href]] : pw.crumbs;
     const loc = F.locator.length && ['loop', 'reform', 'register'].includes(spec.view) ? locator({ A, filled: F.locator, href: theme_for ? `#${pid}-main` : '/atlas' }) : '';
     NAMES = { pid, used: new Map() };
     NAME_IDX.I = F.ids;
@@ -1049,8 +1073,8 @@ export async function render(spec) {
     NAMES = null;
     main = typo(main);
     const inner = `<a class="ws-skip" href="#${pid}-main">${esc(site.skip)}</a>${head}`
-      + title_bar({ pid, A, M, current: pw.current_view, cur_val: record_page ? 'true' : 'page', open, frame: !!theme_for })
-      + (pw.crumbs ? breadcrumb({ A, crumbs: pw.crumbs, own, loc }) : '')
+      + title_bar({ pid, A, M, current: pw.current_view, cur_val: record_page || S_ ? 'true' : 'page', open, frame: !!theme_for })
+      + (crumbs_ ? breadcrumb({ A, crumbs: crumbs_, own, loc }) : '')
       + `<main id="${pid}-main" class="ws-main" tabindex="-1">${main}</main>`
       + footer(site).replace(/\{pid\}/g, pid);
     const style = vh ? ` style="--ws-vh:${vh}px"` : '';
@@ -1066,7 +1090,7 @@ export async function render(spec) {
   const js = (n) => fs.readFileSync(path.join(CODE, `c-18-${n}.js`), 'utf8');
   const own_css = comp + '\n' + atlas_css(F.figure_css);
   return {
-    id: spec.id, type, page: spec.view, part: 'page', title: fill(pw.title, { title: F.record_title || '', id: spec.record || '' }).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’'), words_from: AWd.__from,
+    id: spec.id, type, page: spec.view, part: 'page', title: fill(pw.title, { title: F.record_title || (S_ ? S_.title : ''), id: spec.record || (S_ ? S_.id : '') }).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’'), words_from: AWd.__from,
     // the working page's style: the website's, then chapter 18's components and the atlas's own rules
     css: site_css() + '\n' + masthead_css() + '\n' + switch_css() + '\n' + own_css,
     // in the guide the website's style is already in the head (plates/web-site.css); the atlas plate carries its own

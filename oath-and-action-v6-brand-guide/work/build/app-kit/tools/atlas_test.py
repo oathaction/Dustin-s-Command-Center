@@ -1013,7 +1013,8 @@ def t15(pg):
         faults.append(f"{len(pg.all('main h1'))} h1 in main, one asked (AL-10)")
     if pg.title is not None:
         p = pg.title.split(" | ")
-        if len(p) != 3 or p[1] != V["meta"]["title"] or p[2] != "Oath & Action":
+        # a sheet's page names its sheet before "The Register" (specs 15.6), so the view may take two parts
+        if len(p) not in (3, 4) or p[-2] != V["meta"]["title"] or p[-1] != "Oath & Action" or (len(p) == 4 and pg.view != "register"):
             faults.append(f"the page title {pg.title!r} is not '[view] | {V['meta']['title']} | Oath & Action' (AL-01)")
         # PR-S9: a record's page names its own record first, its chip's words and its stored title
         kind = {"loop": "Loop", "reform": "Reform"}.get(pg.view)

@@ -298,7 +298,7 @@ ${at(BP.desktop, `.ws-art .ws-head{grid-template-rows:auto auto auto auto 1fr}
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:2/10}
  .ws-act .ws-fig{grid-column:2/10}
- .ws-act .ws-cpanel{grid-column:2/12}`)}
+ .ws-act .ws-cpanel{grid-column:2/10}`)}
 ${at(BP.wide, `.ws-art .ws-prow-w,.ws-art .ws-kick-w,.ws-art .ws-h1-w{grid-column:3/11}
  .ws-art .ws-lead{grid-column:3/9}
  .ws-art .ws-body{grid-column:3/8}
@@ -308,9 +308,9 @@ ${at(BP.wide, `.ws-art .ws-prow-w,.ws-art .ws-kick-w,.ws-art .ws-h1-w{grid-colum
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:3/9}
  .ws-act .ws-fig{grid-column:3/9}
- .ws-act .ws-cpanel{grid-column:3/11}`)}
-/* DD12-Q1 (chat 12): the comment panel keeps specs 11.5's wide body columns, cols 3 to 10 (2 to 11 from 64em), which hold
-   the Comment screen inside Rule 05.1; its words stop at the body measure, inside the chart's edge at col 8 (CR-15) */
+ .ws-act .ws-cpanel{grid-column:3/9}`)}
+/* specs 13.3 and 13.4 (chat 12, CR-15, DD12-Q1): the comment panel at the chart's edge, cols 3 to 8 (2 to 9 from 64em),
+   40 px above and below from 64em, which holds the Comment screen inside Rule 05.1 */
 ${under(BP.desktop, '.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lead2{margin-top:32px}.ws-act .ws-status{margin-top:24px}')}
 .ws-lead>*+*{margin-top:32px !important}
 .ws-body>*{max-width:var(--oa-layout-measure-body-ideal)}
@@ -351,11 +351,16 @@ ${under(BP.desktop, '.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lea
 .ws-doc{padding:24px}
 ${at(BP.tablet, '.ws-doc{padding:32px}')}
 .ws-doc .lab{${type_css('label')};color:var(--oa-color-text-secondary);margin-bottom:8px !important}
-.ws-doc .parts{${type_css('body-small')};color:var(--oa-color-text-primary)}
-.ws-doc .dot{margin-inline:8px}
+.ws-doc .parts{${type_css('body-small')};color:var(--oa-color-text-primary);list-style:none;padding:0;margin:0}
+${at(BP.tablet, '.ws-doc .parts{display:flex;flex-wrap:wrap}.ws-doc .parts li+li::before{content:"·" / "";margin-inline:8px}')}
+.ws-runin{font-weight:var(--oa-font-weight-semibold)}
+.ws-src-in{display:none}
+${at(BP.tablet, '.ws-src-in{display:block}.ws-src-out{display:none}')}
 .ws-sum{margin:32px 0 48px}
 .ws-sum blockquote{border-left:2px solid var(--oa-color-border-strong);padding-left:24px}
-.ws-sum blockquote p{${type_css('quote')};color:var(--oa-color-text-primary)}
+.ws-sum blockquote p{${type_css('quote')};color:var(--oa-color-text-primary);text-indent:-0.388em}
+@supports (hanging-punctuation: first){.ws-sum blockquote p{text-indent:0;hanging-punctuation:first}}
+${at(BP.desktop, '.ws-act .ws-cpanel{padding-block:40px}')}
 .ws-sum .cite{${type_css('caption')};color:var(--oa-color-text-secondary);margin-top:16px !important}
 ${at(BP.tablet, '.ws-cpanel{padding:32px}')}
 .ws-hinge{display:flex;align-items:center;gap:12px;margin:80px 0 48px;color:var(--oa-color-identity-hinge-divider)}
@@ -408,8 +413,10 @@ const out_mark = (w) => `<svg viewBox="0 0 16 16" width="16" height="16" aria-hi
 // code (G22-CG-ISD) and a section citation (201(ff)(3)(B)) stay whole; a one-letter prefix stays with its word (N-acetyl,
 // L-cysteine); a time keeps its "p.m." (a no-break space); a web address breaks only after a slash. Words inside drawings
 // (SVG), styles, scripts and titles are left as they are, and so is every attribute.
-const HOLD_RE = /((?:https?:\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:gov|org|com|net|edu)(?:\/[^\s<]*[^\s<.,;:)])?)|(\b[A-Z]{2,}-\d{4}-[A-Z]-\d{4}(?:-\d{4})?\b)|(\b[A-Z0-9]{2,}(?:-[A-Z0-9]{2,}){2,}\b)|(\b[A-Z]-[a-z]{2,}\b)|(\b\d+(?:\([0-9A-Za-z]{1,3}\)){2,})|(\b\d{1,2}(?::\d{2})?) ([ap]\.m\.)/g;
+const HOLD_RE = /((?:https?:\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:gov|org|com|net|edu)(?:\/[^\s<]*[^\s<.,;:)])?)|(\b[A-Z]{2,}-\d{4}-[A-Z]-\d{4}(?:-\d{4})?\b)|(\b[A-Z0-9]{2,}(?:-[A-Z0-9]{2,}){2,}\b)|(\b[A-Z]-[a-z]{2,}(?:-[A-Z]-[a-z]{2,})*\b)|(\b\d+(?:\([0-9A-Za-z]{1,3}\)){2,})|(\b\d{1,2}(?::\d{2})?) ([ap]\.m\.)/g;
 const nw = (t) => `<span class="ws-nw">${t}</span>`;
+// specs 13.1 (chat 12, CR-12): the last two words of a display line or a quotation joined by a no-break space
+const join_last = (t) => { const s = String(t); const i = s.lastIndexOf(' '); return i > 0 ? `${esc(s.slice(0, i))}&nbsp;${esc(s.slice(i + 1))}` : esc(s); };
 function hold_text(t) {
   return t.replace(HOLD_RE, (m, url, dk, code, pre, cite, hh, ap) => {
     if (url) {
@@ -551,7 +558,11 @@ function article_main(A, figs, pid, cols) {
   // DD-4, 10.3: the Count section's fact box, its one dark panel, after its first paragraph (beside it from 64em)
   const cf = A.count_fact;
   // DD-5, 11.1: the box keeps the figure and its two lines; its source line stands 8 px under it, on Newsprint
-  const fact = cf ? `<div class="ws-fact-w"><div class="ws-fact oa-surface-charcoal ws-panel"><p class="fig">${esc(cf.figure)}</p><p class="l1">${esc(cf.line1)}</p><p class="l2">${esc(cf.line2)}</p></div><p class="ws-fact-src">${esc(cf.source)}</p></div>` : '';
+  // specs 13.3 (chat 12, CR-15): its source line sits inside the box as its last line, as the Count panel's does (11.1's
+  // "under it" withdrawn)
+  // Under 48em the source stands under the box on Newsprint, as 11.1 had it: inside, its six phone lines took the Count
+  // screen to 55.9 percent Newsprint at 390 px, under Rule 05.1's 60 (the design director to confirm)
+  const fact = cf ? `<div class="ws-fact-w"><div class="ws-fact oa-surface-charcoal ws-panel"><p class="fig">${esc(cf.figure)}</p><p class="l1">${esc(cf.line1)}</p><p class="l2">${esc(cf.line2)}</p><p class="src ws-src-in">${esc(cf.source)}</p></div><p class="ws-fact-src ws-src-out">${esc(cf.source)}</p></div>` : '';
   const secs = A.sections.map((s, i) => `<section class="ws-g${s.key === 'Count' && fact ? ' ws-has-fact' : ''}" data-oa-section="${esc(s.key)}" aria-labelledby="${pid}-s${i}">`
     // the section's heading opens the body block of its first paragraphs, so the text sits directly under its heading
     // whatever stands beside it (Rule 07.4; found 21:14: the fact box's height had pushed the paragraph 160 px down)
@@ -594,14 +605,20 @@ function act_main(A, figs, pid, cols, marks) {
   const status = `<div class="ws-status oa-surface-charcoal ws-panel"><p class="lab">${esc(S.label)}</p><ol class="ws-steps${pending ? ' ws-steps--words' : ''}" start="${shown[0].n}">${steps}</ol>`
     + `<div class="ws-box"><p>${runs(S.box)}</p><p class="lab ws-ask-lab">${esc(A.comment.panel_label)}</p>${ask(A)}<p class="ws-addr">${esc(A.ask.address)}</p></div></div>`;
   const by = `<p class="ws-by"><span class="nm">${esc(A.byline[0])}</span><time datetime="${esc(A.byline[2])}">${esc(A.byline[1])}</time></p>`;
-  const head = `<div class="ws-g ws-head"><div class="ws-op ws-open-col">${pillar_row(A.current)}${kicker(A.kicker)}<h1 class="ws-h1">${esc(A.headline)}</h1>`
+  // specs 13.1 (chat 12, CR-12): the heading's last two words held together, so no line of it holds one word
+  const head = `<div class="ws-g ws-head"><div class="ws-op ws-open-col">${pillar_row(A.current)}${kicker(A.kicker)}<h1 class="ws-h1">${join_last(A.headline)}</h1>`
     + `<p class="ws-intro">${esc(A.intro)}</p></div>${status}<div class="ws-op ws-open-col ws-op2"><p class="ws-checked">${esc(A.checked)}</p>${by}</div></div>`;
   const P = A.proposal;
-  const sides = P.sides ? `<div class="ws-body"><h3 class="ws-h3">${esc(P.sides.heading)}</h3>${P.sides.paragraphs.map((x) => `<p class="ws-p">${esc(x)}</p>`).join('')}</div>` : '';
+  // specs 13.2 (chat 12, CR-14): a paragraph that opens on a short sentence of its own ("The request.") sets it as a run-in
+  // head at 600, then a space and the sentence after it at 400
+  const runin = (x) => { const m = String(x).match(/^([^.“”"]{3,40}\.) (.+)$/s); return m ? `<span class="ws-runin">${esc(m[1])}</span> ${esc(m[2])}` : esc(x); };
+  const sides = P.sides ? `<div class="ws-body"><h3 class="ws-h3">${esc(P.sides.heading)}</h3>${P.sides.paragraphs.map((x) => `<p class="ws-p">${runin(x)}</p>`).join('')}</div>` : '';
   // DD-4, 10.4: a document strip, the section's one dark panel, then the agency's summary on Newsprint with a rule at its left
-  const doc = `<div class="ws-doc oa-surface-charcoal ws-panel"><p class="lab">${esc(P.doc_label)}</p><p class="parts">${P.doc_parts.map((x) => `<span class="ws-nb">${esc(x)}</span>`).join('<span class="dot" aria-hidden="true"> · </span>')}</p></div>`;
+  // specs 13.2 (chat 12, CR-14): its four items are one list; from 48em one line with a dot the list draws before each item
+  // after the first, under 48em one item a line and no dot
+  const doc = `<div class="ws-doc oa-surface-charcoal ws-panel"><p class="lab">${esc(P.doc_label)}</p><ul class="parts">${P.doc_parts.map((x) => `<li><span class="ws-nb">${esc(x)}</span></li>`).join('')}</ul></div>`;
   const prop = `<section class="ws-g" data-oa-section="Proposal" aria-labelledby="${pid}-prop"><div class="ws-body"><h2 class="ws-h2 ws-h2--tight" id="${pid}-prop">${esc(P.heading)}</h2></div>`
-    + doc + `<div class="ws-sum"><blockquote cite="${esc(P.cite_href)}"><p>“${esc(P.quote)}”</p></blockquote><p class="cite">${esc(P.cite)}</p></div>`
+    + doc + `<div class="ws-sum"><blockquote cite="${esc(P.cite_href)}"><p>“${join_last(P.quote)}”</p></blockquote><p class="cite">${esc(P.cite)}</p></div>`
     + sides + `<div class="ws-body"><h3 class="ws-h3">${esc(P.decides_heading)}</h3><p class="ws-p">${esc(P.decides)}</p></div>`
     + figure(figs[P.chart], pid, cols ? cols.figure : null) + `</section>`;
   const C = A.comment;
