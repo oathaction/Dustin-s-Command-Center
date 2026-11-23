@@ -60,14 +60,14 @@ What chapter 21 did not tell me: how to make a page at all (content file, words,
 | 6 | The count panel | Rule 20.7 lists a count panel for the article | **Guess 13:** every article has one; I set S04's 27 point gap |
 | 7 | The chart's sizes | A07's content file gives S86 `[621, 328]` | **Guess 14:** the same column sizes serve S04 |
 
-### Drawing the article (17:41 to 17:47 UTC)
+### Drawing the article (17:41 to 17:44 UTC)
 
 | Run | What I ran | What happened |
 |---|---|---|
 | 1 | `node work/build/app-kit/oa-app.mjs build A22 --spec-dir ... --date 20261123` with `a22-web-article-s04.json` (this folder), the studio's generator in place | Stopped: "the generator prints no words for A22" |
 | 2 | The same, with the chapter 20 generator moved aside in my scratch copy and `OA_PAGE_WORDS` naming my words file (`a22-page-words.json`, its site words copied from A07's). **Guess 16:** this is the only way the header leaves a partner, and it means hiding the studio's own file | Drawn: six views and the working page, 7 exports, exit 0. No icon was needed for the kicker (Guess 12 held) |
 | 3 | `python3 -I work/build/app-kit/tools/export_checks.py OUT EXPORTS` (named in `oa-app.mjs`'s header) | FAIL on every light view: the Count section's opening screen holds no dark panel, Newsprint 94.1 percent at 1440 (92.4 at 1024, 87.7 at 390, 86.6 at 360), past Rule 05.1's 85. The first screen, the Step section and the footer pass; contrast's lowest 5.49 to 1; no working red. My Guess 13 left out the fact box, which Rule 20.7 lists, so the check caught a fault of mine, and Rule 20.9 says what to do ("move a panel before you add one") |
-| 4 | Run 2 again with a fact box in my words file (S04's 47.7 percent for citizens 18 to 24) | See the result below |
+| 4 | Run 2 again with a fact box in my words file (S04's 47.7 percent for citizens 18 to 24), then the export checks | Drawn, exit 0. 1024, 390 and 360 px now pass; at 1440 the Count section's opening screen holds the fact box and reads Newsprint 86.9 percent, still 1.9 points past 85. I stopped there: a producer's next step is to move the box or the chart, by Rule 20.9's builders' line. The half-size picture and the checks' output are in this folder |
 
 What the article taught: chapter 20 gives every part of an article and its sizes, and the kit's checks hold a producer to Rule 20.9. What it did not tell me: how to make a page with the kit, where a page's words go, which icon an Elections kicker takes, and that the fact box is what keeps the Count section's opening screen inside Rule 05.1.
 

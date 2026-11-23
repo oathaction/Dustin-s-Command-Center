@@ -22,13 +22,13 @@ Made by the production reader as a simulated producer, from Rules 16.10 to 16.13
 
 | Time (Illustrative) | On screen | Said |
 |---|---|---|
-| 0:00 | Title frame (chapter 23) | — |
+| 0:00 | Title frame (chapter 23) | Nothing said |
 | 0:02 | Dustin Cathcart on camera; name plate "Dustin Cathcart, Founder and Editor" | "How does a federal agency make a rule, and when do you get a say?" |
 | 0:08 | Chart S66, whole, with its source line | "The law sets five steps. The agency drafts a rule, publishes the proposal, takes comments from anyone, publishes the final rule at least 30 days before it takes effect, and then the rule takes effect." |
 | 0:25 | S66's branches: White House review, the Congressional Review Act, courts | "A significant draft goes to the White House's regulatory office, which has 90 days to finish its review. After a rule is final, Congress and the President can strike it down, or a court can set it aside." |
 | 0:40 | S66, step 3 marked | "Step 3 is yours. While a rule is open for comment, anyone may send one." |
 | 0:50 | The step: Dustin on camera | "Find a rule open for comment at Regulations.gov." (a process piece names the step and leaves the position to the viewer, Rule 01.22) |
-| 1:00 | End frame (chapter 23) | — |
+| 1:00 | End frame (chapter 23) | Nothing said |
 
 - **Guess 2:** the step counts and the 90 and 30 days are S66's own words (its alt and notes), read from the chart kit, not from chapter 16.
 - **Guess 3:** S66's source line. Rule 16.10 asks for "its source line on screen while it shows (Rule 13.6)". Chapter 16 does not print S66's; the chart kit's spec gives a grade line ("Documented: the text of the Administrative Procedure Act, the Congressional Review Act and Executive Orders 12866 and 14215, as in force on November 12, 2026") and a measure line, and I took the source line to be the one the kit draws under S66.
