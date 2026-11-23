@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirty-fourth handoff, November 23)
 
-Written November 23, 2026, at the close of chat 12. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261123_Next-Session-Handoff_V33.md`. V5's sections 3 to 5, section 3 of V8 to V33, and section 3 below hold together. Decision log entries for this chat run from D4-302 to D4-413 (the owners' calls are D4-326 to D4-409); the change ledger runs to C-185. Dustin's answer at the close, if he gives one, is logged after D4-413.
+Written November 23, 2026, at the close of chat 12. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261123_Next-Session-Handoff_V33.md`. V5's sections 3 to 5, section 3 of V8 to V33, and section 3 below hold together. Decision log entries for this chat run from D4-302 to D4-413 (the owners' calls are D4-326 to D4-409); the change ledger runs to C-185. Dustin's answers at the close are DR-327 (chat 12b's plan, as section 2 proposes) and DR-328 (Q12-1: keys stay on Round 2).
 
 ## 1. Where things stand
 
@@ -26,7 +26,7 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 12 (work tracker row `c11`, don
 
 **Published:** nothing new this chat. The chapters page stays at version 15 (https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF); chat 11c's progress board stands (https://claude.ai/artifact/ME9M82fLmUk29am9PVqTbT).
 
-**Open with Dustin:** Q12-1 (save the data keys on "Oath & Action" too, by the secure form, or keep choosing Round 2; the studio recommends choosing Round 2).
+**Answered at the close:** DR-327 approves section 2's plan for chat 12b; DR-328 keeps the data keys on Round 2 alone, chosen in the environment menu before the first message.
 
 ## 2. Next, in order: chat 12b
 
@@ -79,7 +79,7 @@ The register's chat 12b rows, the ledgers, handoff V35.
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Phase 4 is active. Chat 12 is done: the review of chapters 16, 20 and 21, the fix pass and the rescore, with 15 of 16 items passing, the wall test passed and the atlas walks done. Start chat 12b as handoff V34 sets it: C16-V's short second pass (the kit's vertical video frame for chart S04) with the five small faults, the weight options measured again on the final page, the four-width guide check, Phase 4 board 1, and the chapters page as version 16.
+Phase 4 is active. Chat 12 is done: the review of chapters 16, 20 and 21, the fix pass and the rescore, with 15 of 16 items passing, the wall test passed and the atlas walks done. Start chat 12b as handoff V34 sets it: C16-V's short second pass (the kit's vertical video frame for chart S04) with the five small faults and A18's sign-off, the weight options measured again on the final page, the four-width guide check, Phase 4 board 1, and the chapters page as version 16. My answer DR-327 approved that plan as V34 sets it, so start after the opening checks without waiting for another go, unless the opening finds something that changes the plan.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-185), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
@@ -89,7 +89,7 @@ This session should run on the "Oath & Action Brand Polish - Round 2" environmen
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); chapters 13, 14 and 15 as approved at Gate 3; and every answer I have given from DR-95 on, including DR-225 to DR-326 and my Gate 3 decisions. Size allocations move as content needs; only the page's 16 MB is fixed (DR-271).
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); chapters 13, 14 and 15 as approved at Gate 3; and every answer I have given from DR-95 on, including DR-225 to DR-328 and my Gate 3 decisions. Size allocations move as content needs; only the page's 16 MB is fixed (DR-271).
 
 Phase 4 covers these channels by name, each with its own applications and specifications (DR-292): Substack, X (Twitter), Threads, Instagram, YouTube, TikTok, LinkedIn and my own website.
 
@@ -116,7 +116,7 @@ How to work with me:
 - Chapter 21's `s-21-opener.html`
 
 **Modified**
-- `work/ledger/`: the decision log (D4-302 to D4-413), the change ledger (C-178 to C-185), the deferred fixes register (chat 12's section and outcomes)
+- `work/ledger/`: the decision log (D4-302 to D4-413, DR-327 and DR-328), the change ledger (C-178 to C-185), the deferred fixes register (chat 12's section and outcomes)
 - Chapters 16, 20 and 21: `work/build/scripts/phase-4/phase4_ch16_build.py`, `phase4_ch20_build.py`, `phase4_ch21_build.py` and their outputs (chapter files, manifests, specimens)
 - Chapter 19: `work/build/scripts/phase-2/stage_c_ch19_build.py` and its four outputs
 - The application kit: `work/build/app-kit/oa-app.mjs`, `renderers/web-site.mjs`, `renderers/atlas-page.mjs`, `tools/app_plates.py`, `tools/atlas_figures.py`, `tools/atlas_test.py`, specs and plates A04 to A20; the exports in `work/build/exports/phase-4/` and their manifest
