@@ -542,7 +542,9 @@ function view_home({ pid, P, A, F, panels, spec, frame }) {
   // the text equivalent and the phone form (R7): each part a card, its outgoing flows one line each, the main one first
   const cards = v.parts.map((p_) => {
     const out = v.flows.filter((f) => f.from === p_.id).sort((a, b) => b.main - a.main);
-    return `<li class="wa-card" data-part="${p_.id}"${lit_of(p_.id)}>${home_box(p_, v, P, A, v.lit, v.every_variable)}<ul class="wa-fl">`
+    // AX-3: each card holds its part's variables, shown when "Show every variable" is pressed, so the switch changes what
+    // every reader gets: on screen in the cards under 75em, and in the visually hidden list beside the drawing above it
+    return `<li class="wa-card" data-part="${p_.id}"${lit_of(p_.id)}>${home_box(p_, v, P, A, v.lit, true)}<ul class="wa-fl">`
       + out.map((f) => `<li${f.main ? ' class="b"' : ''}><span class="wa-ks ${f.main ? 'mc' : 'of'}"></span>${fill_html(wd(P, 'flow_line', 'A11'), { n: count(f.count, `flow:${f.from}>${f.to}`, String(f.count)), part: esc(names(f.to)) })}</li>`).join('') + `</ul></li>`;
   }).join('');
   // each sample held to its words, so a phone's narrow key never leaves a line sample at the end of the line before
@@ -834,6 +836,7 @@ ${W} :is(.wa-box,.wa-card):not([data-lit="true"]) .lt{display:none}
 ${W} .wa-pills{list-style:none;margin:8px 0;padding:0;display:flex;flex-direction:column;gap:8px}
 ${W} .wa-box--band .wa-pills{flex-direction:row;margin:0}${W} .wa-sys--open .wa-box--band,${W} .wa-sys--only .wa-box--band{flex-wrap:wrap;row-gap:8px}${W} .wa-box--band .wa-pills{order:9;flex:1 0 100%}${W} .wa-box--band .wa-pill{flex:0 0 170px}
 ${W} [data-part="EC"] .wa-pills,${W} [data-part="TC"] .wa-pills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+${W} .ws-in:not(:has(.wa-switch[aria-pressed="true"])) .wa-card .wa-pills{display:none}
 ${W} [data-part="TC"] .wa-pills{grid-template-columns:repeat(2,minmax(0,1fr))}
 ${W} .wa-pill{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 4px;line-height:18px;white-space:nowrap;border:2px solid var(--oa-color-graphic-essential);border-radius:999px;${type_css('body-small')};font-weight:var(--oa-font-weight-semibold)}
 ${W} .wa-pill>span{line-height:18px}
