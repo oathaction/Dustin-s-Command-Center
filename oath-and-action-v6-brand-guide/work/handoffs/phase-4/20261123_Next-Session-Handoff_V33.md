@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirty-third handoff, November 23)
 
-Written November 23, 2026, at the close of chat 11c. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261122_Next-Session-Handoff_V32.md`. V5's sections 3 to 5, section 3 of V8 to V32, and section 3 below hold together. Decision log entries for this chat run from D4-237 to D4-297; Dustin gave no new answers this chat. The change ledger runs to C-177.
+Written November 23, 2026, at the close of chat 11c. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261122_Next-Session-Handoff_V32.md`. V5's sections 3 to 5, section 3 of V8 to V32, and section 3 below hold together. Decision log entries for this chat run from D4-237 to D4-301; Dustin gave no new answers this chat. The change ledger runs to C-177.
 
 ## 1. Where things stand
 
@@ -13,9 +13,9 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 11c (work tracker row `c10c`, d
 - The application kit (C-174): the `atlas-page` renderer inside the website's shell, the figure step importing chapter 15's drawing code, the atlas test (16 checks; self-test 27 of 27 plants), A11 to A20, 26 exports dated 20261122. Chapter 20's frames and exports unchanged.
 - Guide build and check (C-175): the atlas style and sprite placed once; the strict build fails on any atlas test FAIL; the guide check knows the atlas sprite (self-test 163 of 163, 59 of 59 allowed).
 
-**The final build:** strict build November 23, 01:41 UTC, on commit 2ce328d9's tree: exit 0, 0 warnings, 0 stale plates, 14,189,507 bytes, 22 chapters, 409 rules, 765 specimens. Chapter 21 1,106,224 bytes against 655,000 (169 percent); chapter 20 839,096. **The projection is 16.27 MB, 272,068 bytes past 16 MB** with every chapter still to come at its allocation; the page itself is 14.19 MB, so no build stops (DR-271). Chart kit 96 of 96, 0 faults; chapter 14's check 99 of 99; exports 67 of 67; atlas test 1,264 PASS, 0 FAIL; Rule 05.1 by screen, 57 of 57 light screens inside 60 to 85 percent. QUICK_CHECK_LINE
+**The final build:** strict build November 23, 01:41 UTC, on commit 2ce328d9's tree: exit 0, 0 warnings, 0 stale plates, 14,189,507 bytes, 22 chapters, 409 rules, 765 specimens. Chapter 21 1,106,224 bytes against 655,000 (169 percent); chapter 20 839,096. **The projection is 16.27 MB, 272,068 bytes past 16 MB** with every chapter still to come at its allocation; the page itself is 14.19 MB, so no build stops (DR-271). Chart kit 96 of 96, 0 faults; chapter 14's check 99 of 99; exports 67 of 67; atlas test 1,264 PASS, 0 FAIL; Rule 05.1 by screen, 57 of 57 light screens inside 60 to 85 percent. The quick guide check at 1440 and 390 px without photographs on that build (01:41 to 02:26 UTC): 409 rules, 821 specimens, 4,889 same-page links, 0 failures; its file is kept in `work/boards/phase-4/chat-11c/`. A first run crashed in its photographs (D4-298) and a second found 8 faults in three failure plates, fixed before the third (D4-299).
 
-**Published:** chat 11c's progress board, PROGRESS_URL. The chapters page stays at version 15 (https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF).
+**Published:** chat 11c's progress board, https://claude.ai/artifact/ME9M82fLmUk29am9PVqTbT (DR-322). The chapters page stays at version 15 (https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF).
 
 ## 2. Next, in order
 
@@ -90,7 +90,7 @@ How to work with me:
 - The progress board: `work/build/scripts/phase-4/chat_11c_progress_build.py`; `work/boards/phase-4/chat-11c/20261123_Chat-11c-Progress.html` and its `img/` folder
 
 **Modified**
-- `work/ledger/`: the decision log (D4-237 to D4-297), the change ledger (C-171 to C-177), the deferred fixes register (chat 11c's section and its outcomes table)
+- `work/ledger/`: the decision log (D4-237 to D4-301), the change ledger (C-171 to C-177), the deferred fixes register (chat 11c's section and its outcomes table)
 - Chapter 13: `work/build/scripts/phase-3/phase3_ch13_build.py`, `13-evidence.json`
 - Chapter 03: `work/build/scripts/phase-2/stage_a_identity_chapters.py`, `03-identity.json`
 - `work/handoffs/phase-4/20261121_Chapter-21-Plan.md` (the data lead's corrections C1 to C6)

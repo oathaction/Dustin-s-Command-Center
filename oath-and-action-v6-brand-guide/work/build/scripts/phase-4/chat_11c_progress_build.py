@@ -201,7 +201,7 @@ def build():
     P('<div class="col"><p>One script reads every atlas page the kit draws, as its standalone page and as each plate’s '
       'frames, together with the model, and checks that each page says what the model holds. Any failure stops the kit’s '
       'build and the strict guide build. Its self-test plants one fault for each check in a copy of a page, never in the '
-      f'model, and passes only when every plant is caught. Run {e(t["ran"][:16].replace("T", " "))} UTC.</p></div>')
+      f'model, and passes only when every plant is caught. Run November 23, {e(t["ran"][11:16])} UTC.</p></div>')
     ids = t['ids']
     P('<div class="tbl"><table class="test"><thead><tr><th>Check</th>' + ''.join(f'<th class="num">{a}</th>' for a in ids)
       + '</tr></thead><tbody>')
@@ -212,7 +212,7 @@ def build():
             cells.append(f'<td class="num">{"none" if not (p_ or f_) else (str(p_) if not f_ else f"{p_} / {f_} failed")}</td>')
         P(f'<tr><th scope="row">{check} {e(names.get(check, ""))}</th>{"".join(cells)}</tr>')
     P('</tbody></table></div>')
-    P('<p class="note">Each cell counts the frames and pages that passed the check for that application. A dash means the '
+    P('<p class="note">Each cell counts the frames and pages that passed the check for that application. “None” means the '
       'application holds nothing that check reads. A11 to A16 are the six pages; A17 to A20 are the states the rule plates '
       'show (every variable open, sheet D10 open, Loop R18 on its second step, and the claim open).</p>')
 
@@ -232,8 +232,8 @@ def build():
       f'With every chapter still to come counted at its own allocation, the page projects to {proj:,} bytes, '
       f'{abs(limit - proj):,} bytes {"over" if proj > limit else "under"} the 16 MB limit. Nothing stops a build today, '
       'since only the page itself past 16 MB does (DR-271).</p>')
-    P(f'<p>The first placement weighed 1,539,423 bytes. The engineer took {1539423 - c21:,} bytes off with no word, frame '
-      'or picture lost: every cropped plate now draws its own part alone, where it had carried the whole page clipped; the '
+    P(f'<p>The first placement weighed 1,539,423 bytes, and chapter 21 now weighs {1539423 - c21:,} bytes less, with no word, '
+      'frame or picture lost: every cropped plate now draws its own part alone, where it had carried the whole page clipped; the '
       'atlas style keeps only the rules a frame uses; and the marks that repeat in every row are drawn once and reused, '
       'proved pixel for pixel on every frame.</p>')
     P('<p>The options that keep content, and what each costs, come to Phase 4 board 1 for your decision. Nothing is cut '
