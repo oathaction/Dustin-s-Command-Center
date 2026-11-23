@@ -1057,5 +1057,483 @@
   "The reference set of civic data pages is described from memory; none opened.",
   "The Federal Register rule for NB-1 not reread; ST-1's and CE1's counts not checked beyond what I saw on screen.",
   "Screen readers, Safari and Firefox (DR-279)."
- ]
+ ],
+ "rescore": {
+  "date": "2026-11-23",
+  "stage": "Phase 4, chat 12, rescore after the fix pass (for DR-191's short second pass)",
+  "basis": "The fix brief and the six owners' notes (Engineer, Engineer-Atlas, Design-Director, Editor, Dataviz-Lead, Accessibility-Lead); the kit's exports rebuilt 19:56 to 20:01 UTC, read at true size; the new capture set captures-fix/newsprint-1x/1440 (plates of chapters 16, 20 and 21, 20:07 to 20:18 UTC) in contact sheets at 0.6 scale with zooms; the wall test rerun by script on the 16 rebuilt atlas PNGs (scratchpad/c12/review/cd/wall2/). The Charcoal, 2x and 390 px capture sets had not landed when I wrote.",
+  "wall_test": "Rerun on the rebuilt views (reading B): still a pass. The atlas home now holds its whole circuit and key on the first screen, unpressed; ED-F1 stays closed.",
+  "items": {
+   "C16-A": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {},
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C16-R": {
+    "scores": {
+     "craft": 4,
+     "clarity": 5,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "evidence_honesty": {
+      "from": 4,
+      "to": 5,
+      "reason": "NB-2 is fixed: s-16-6-failure now credits \"Photograph: Oath & Action.\" with Illustrative beside it, so no real person's name sits on the invented consent failure (seen in captures-fix)."
+     }
+    },
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C16-P": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {},
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C16-V": {
+    "scores": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 3,
+      "reason": "Unchanged: CD-S7 was not built, so s-16-10-correct and s-16-11-correct still draw empty boxes where S04 belongs (the design director's and engineer W's Not fixed rows; seen in captures-fix)."
+     }
+    },
+    "open_should_fix": [
+     "CD-S7"
+    ],
+    "must_fix_open": [],
+    "ready": false
+   },
+   "C16": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {},
+    "open_should_fix": [
+     "CD-S7",
+     "CD-S8"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C20-F": {
+    "scores": {
+     "craft": 5,
+     "clarity": 4,
+     "brand_fidelity": 5,
+     "usefulness": 5,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 4,
+      "to": 5,
+      "reason": "ED11-3 is fixed (Rule 20.3's failure footers drawn as built, only the help link differing), every reduced frame states its scale (\"shown at 50 percent\"), and the wordmark's ampersand is red in every 390 and 360 px masthead (s-20-1-correct, captures-fix)."
+     }
+    },
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C20-P": {
+    "scores": {
+     "craft": 4,
+     "clarity": 5,
+     "brand_fidelity": 5,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "CD-M1 is fixed (\"The rule on the Federal Register\", \"The rule as a PDF on govinfo.gov\", seen at true size on the 19:57 export), \"N-acetyl-L-cysteine\" holds whole and the address breaks after its slashes at 390 px (CD-S11), and S86 draws in the plate."
+     },
+     "evidence_honesty": {
+      "from": 3,
+      "to": 5,
+      "reason": "NB-1 is fixed: \"The concerns in the law\" gives both of the rule's reasons with page 73720, the rule's safety finding (page 73722) and the 2022 context of the comment it quotes; NB-3's condition is in step 1 (read in the export's text)."
+     }
+    },
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C20-B": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 5,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "clarity": {
+      "from": 3,
+      "to": 4,
+      "reason": "CE2 is fixed: the home's first screen reads \"1 panel, counted in the section where it starts\" and the pillar row \"1 panel, its cells meeting as one band\", so the plate agrees with Rule 20.9 (captures-fix)."
+     }
+    },
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C20": {
+    "scores": {
+     "craft": 4,
+     "clarity": 5,
+     "brand_fidelity": 5,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "evidence_honesty": {
+      "from": 4,
+      "to": 5,
+      "reason": "NB-1 and NB-3 are fixed and the Act page now sets out what the record shows from each side, at the length the record holds."
+     }
+    },
+    "open_should_fix": [],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C21-W": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "The whole circuit and its key end at 876 px at 1440 by 900, its last ink row measured on the export (CD-S1), the pressed question takes its bold words (AX-2), and each 1440 px crop now prints at true size or says its scale (CD-S2)."
+     },
+     "clarity": {
+      "from": 3,
+      "to": 4,
+      "reason": "The working page loads with no question pressed and no part lit, and each question opens its own answer under \"The short answer: {question}\"; the opener's first screen still shows the pressed state with its question out of frame (CD-R1)."
+     },
+     "evidence_honesty": {
+      "from": 3,
+      "to": 5,
+      "reason": "Each of the 16 questions shows its own stored short answer whole, with its claim chips by R20's method, and the data lead's 567 checks found no fault (CD-M2 closed)."
+     }
+    },
+    "open_should_fix": [
+     "CD-R1"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C21-R": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 5,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "The tag line now reads chip, name, a held colon, then the reforms joined by commas and \"and\", and the routes print their parts in labelled columns; one nit remains, a stored hyphen in a tagged name set at the data label's tabular width (\"low - earning\", CD-R2)."
+     },
+     "clarity": {
+      "from": 3,
+      "to": 4,
+      "reason": "Every chip is followed by its record's name at first mention (CE1) and the two readings carry \"One reading\" and \"The other reading\" (RP1), seen on the export and in s-21-5-correct."
+     }
+    },
+    "open_should_fix": [
+     "CD-R2"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C21-G": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "The grade samples sit on one line in the index head, both frame labels are each page's own (CD-S5) and lone words are held; one stored quote on the D10 sheet still starts a line with \"), and is small.\" (CD-R3)."
+     }
+    },
+    "open_should_fix": [
+     "CD-R3"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C21-L": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 5,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "The weakest step now runs solid from its last corner into the arrowhead (CD-S10, seen on the export and signed by the data lead), and the stepper crop holds its own column; the loop still draws about 300 px wide beside empty Newsprint (CR-8, a register row), which I weigh as a composition weakness, no longer a fault."
+     },
+     "evidence_honesty": {
+      "from": 3,
+      "to": 5,
+      "reason": "ST-1 is fixed: each of the three reform panels prints the atlas's confidence after its fourth row and Rule 15.20's disclosure with the remedy's evidence and tradeoffs (the data lead's batch 1)."
+     }
+    },
+    "open_should_fix": [
+     "CR-8"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C21-D": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "clarity": {
+      "from": 3,
+      "to": 4,
+      "reason": "How to read's legend now prints at 390 px at true size, every mark with its meaning readable at 1x, with the rule table under it (CD-S3, captures-fix); the 21.15 chooser crop carries about 200 px of empty Charcoal under its three rows (CD-R4)."
+     }
+    },
+    "open_should_fix": [
+     "CD-R4"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "C21": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "The opener is now the home's first screens with a caption (CD-S4), the rule plates print true-size crops or state their scale, and the views' finishing faults are fixed; the nits left are CD-R1 to CD-R5."
+     },
+     "evidence_honesty": {
+      "from": 4,
+      "to": 5,
+      "reason": "The atlas test reads 1,408 PASS and 0 FAIL, the home answers each question with its own stored answer, and the loop panels carry the atlas's confidence."
+     }
+    },
+    "open_should_fix": [
+     "CD-R1",
+     "CD-R2",
+     "CD-R3",
+     "CD-R4",
+     "CR-8"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   },
+   "AK": {
+    "scores": {
+     "craft": 4,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 5,
+     "accessibility": 4
+    },
+    "changed_from_first_pass": {
+     "craft": {
+      "from": 3,
+      "to": 4,
+      "reason": "The collapsed link spaces, the broken weakest step, the run-together rows and the lone words are fixed in the 19:56 to 20:01 exports; the nits left are CD-R2, CD-R3 and engineer W's own flag on A17's dark crop (CD-R5)."
+     },
+     "evidence_honesty": {
+      "from": 4,
+      "to": 5,
+      "reason": "CD-M2 is closed and the atlas test reads 1,408 PASS, 0 FAIL on the final build, with the data lead's independent checks at 0 FAIL."
+     }
+    },
+    "open_should_fix": [
+     "CD-R2",
+     "CD-R3",
+     "CD-R5"
+    ],
+    "must_fix_open": [],
+    "ready": true
+   }
+  },
+  "totals": {
+   "ready": [
+    "C16-A",
+    "C16-R",
+    "C16-P",
+    "C16",
+    "C20-F",
+    "C20-P",
+    "C20-B",
+    "C20",
+    "C21-W",
+    "C21-R",
+    "C21-G",
+    "C21-L",
+    "C21-D",
+    "C21",
+    "AK"
+   ],
+   "not_ready": [
+    "C16-V"
+   ],
+   "under_4": [
+    "C16-V.craft"
+   ],
+   "first_pass_must_fix_closed": [
+    "CD-M1",
+    "CD-M2",
+    "NB-1",
+    "ST-1",
+    "CE1",
+    "CE2",
+    "RP1"
+   ]
+  },
+  "first_pass_should_fix": {
+   "CD-S1": "Done (the drawing and its key end at 876 px at 1440 by 900).",
+   "CD-S2": "Done (true-size crops, or the scale stated in the label).",
+   "CD-S3": "Done (How to read's legend at 390 px, true size).",
+   "CD-S4": "Done (the opener is the home's first screens); CD-R1 left.",
+   "CD-S5": "Done.",
+   "CD-S6": "Done in tag lines; CD-R3 left in stored text.",
+   "CD-S7": "Not fixed (needs a kit renderer, A21); carried to the second pass.",
+   "CD-S8": "Not fixed; a register row puts the files in chapter 27 (Phase 5).",
+   "CD-S9": "Done.",
+   "CD-S10": "Done (the solid run into the arrowhead); the loop's size is CR-8, a register row.",
+   "CD-S11": "Done (held by the kit's hold())."
+  },
+  "second_pass_instructions": {
+   "CD-S7": {
+    "items": [
+     "C16-V",
+     "C16"
+    ],
+    "owner": "engineer W, then the design director to place it and the data visualization lead to sign it off",
+    "instruction": "Build the kit's vertical video frame (A21) as the design director's DD12-Q3 sets it: S04 from the chart kit at 1080 by 1920 with the caption band over the caption-safe area and S04's source line on screen, its words from phase4_ch16_build.py; place it in s-16-11-correct and in s-16-10-correct's two chart frames with the scale stated. If it cannot be built in the second pass, carry C16-V to board 1 under the bar with this instruction."
+   },
+   "CD-R1": {
+    "items": [
+     "C21-W",
+     "C21"
+    ],
+    "owner": "atlas engineer, with the design director",
+    "instruction": "Draw the opener's two first-screen frames (s-21-opener) in the load state, with no question pressed and no part lit, so the chapter's first picture matches the page a reader opens; the pressed state stays in Rule 21.3's plates, where its question is in frame."
+   },
+   "CD-R2": {
+    "items": [
+     "C21-R",
+     "AK"
+    ],
+    "owner": "atlas engineer (atlas-page.css), with the design director's yes (the data lead's item 8)",
+    "instruction": "Set a stored name inside a tag line in proportional figures (font-variant-numeric: normal on the name's span), keeping tabular figures for counts, so \"low-earning\" no longer prints \"low - earning\" at 1440 and 390 px."
+   },
+   "CD-R3": {
+    "items": [
+     "C21-G",
+     "AK"
+    ],
+    "owner": "atlas engineer",
+    "instruction": "Extend CD-S6's hold to stored text: a chip inside parentheses keeps its closing mark and the punctuation after it on its line (A18's Reviewed and not drawn, \"( Connection L47 ), and is small.\" at 390 px)."
+   },
+   "CD-R4": {
+    "items": [
+     "C21-D"
+    ],
+    "owner": "atlas engineer",
+    "instruction": "Cut s-21-15-correct's chooser crop to the list's own height, so the frame does not carry about 200 px of empty Charcoal under its three reforms. Low."
+   },
+   "CD-R5": {
+    "items": [
+     "AK"
+    ],
+    "owner": "engineer W",
+    "instruction": "Engineer W's own flag: A17's 1440-light-pair crop shows a Charcoal band in its top 202 px when the guide is dark; crop it to its part in both themes. Not seen by me; the Charcoal captures had not landed."
+   }
+  },
+  "chapters_16_20_21_finished": "Chapter 20 now reads as a finished chapter a design firm would sign. Chapter 21 does too in its system, evidence and views, with five small nits for the second pass. Chapter 16 is signable in its photograph rules; its video group stays under the bar until S04 is drawn in its frames (CD-S7).",
+  "tested": [
+   "Read the fix brief and every owner's Done and Not fixed rows for my codes and the items I carried (20:07 to 20:12 UTC).",
+   "Reran the wall test covers on the 16 rebuilt atlas PNGs and read the four first screens at 1440 px light, and the home at 1440 by 900 at true size.",
+   "At true size on the 19:57 to 20:01 exports: the Act page's two source links and its 390 px top, R-23's tag row and readings, Loop R18's drawing and tag lines, the home, How to read and the Register at 390 px; the Act page's record section by script.",
+   "In captures-fix, newsprint-1x at 1440 px: chapter 16's changed plates, chapter 20's opener, 20.1, 20.3, 20.4, 20.7 (S86), 20.9 to 20.11, and chapter 21's opener, 21.1, 21.2, 21.3, 21.5, 21.7, 21.9, 21.10, 21.13, 21.15 and How to read; the opener's lit line zoomed."
+  ],
+  "not_tested": [
+   "The Charcoal, 2x and 390 px capture sets (not landed by 20:20 UTC), so engineer W's A17 flag (CD-R5) is unseen by me.",
+   "No browser opened; no keyboard, accessibility tree or axe run (the accessibility lead's second pass governs, 4 of 5).",
+   "The view plates s-21-home, s-21-reform, s-21-register and s-21-loop read only through their exports.",
+   "Bytes not measured; the weight options stay board 1's (C11C-W1)."
+  ]
+ }
 }
