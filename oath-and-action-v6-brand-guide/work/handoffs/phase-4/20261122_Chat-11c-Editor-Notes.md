@@ -604,6 +604,10 @@ Under the lock (23:22:29 UTC), word fields only; `--check` exit 0 (34 specimens,
 
 On the engineer's Request 9, under the lock (00:13:00 UTC), word fields only: new A14 key **`chosen_off_one`**, "Its other target, {off}, sits off this drawing.", for the kit to use when one target sits off the drawing (Reform R-15's Connection L16); `chosen_off` stays the form for two or more. `--check` exit 0, `--page-words all` exit 0.
 
+### Rule 21.15's caption and alt (November 23, 00:13:59 UTC)
+
+On the design director's DD11C-Q9, under the lock, word fields only: Rule 21.15's caption and alt name Reform R-11's three targets in red, Variable D4's outline and Connections L14 and L15, where the alt had said "a variable’s outline and both connections" without naming them. `--check` exit 0.
+
 ## Requests
 
 Status at 22:38:56 UTC (`date -u`): the word fields were handed over at 22:09 UTC and my words are typed (Done, "B typed"). Items 3 to 5 below are answered by the design director's DD-11C-1 to DD-11C-3; item 6 is the data lead's to rule as R15.
