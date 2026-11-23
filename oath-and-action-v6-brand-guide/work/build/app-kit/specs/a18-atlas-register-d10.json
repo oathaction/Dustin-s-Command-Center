@@ -26,7 +26,8 @@
  ],
  "views": [
   "1440-light-sheet",
-  "390-light-rejected"
+  "390-light-rejected",
+  "390-light-sheettop"
  ],
  "export_name": "Atlas-Register-D10",
  "alt": "The Register of our systems atlas, with the sheet for Domain D10 open.",

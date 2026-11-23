@@ -89,7 +89,7 @@
   "width_px": null,
   "alt": "Failure case: do not publish. Two footers side by side. The home page’s ends its lists with Help and Contact us; the Act page’s has no Help group and ends its Oath & Action list with Get in touch.",
   "illustrative": false,
-  "notes": "A drawing of a fault: two footers whose help link moves and changes its words; the help links are set in bold here only so the fault can be found.",
+  "notes": "A drawing of a fault: two footers drawn as the footer is built at a phone’s width (lists on the page’s ground, the Charcoal strip under them), whose help link moves and changes its words; the help links are set in bold here only so the fault can be found.",
   "readable": true
  },
  "s-20-4-correct": {
@@ -189,7 +189,7 @@
   "width_px": null,
   "alt": "Small boxes, one for each first and opening screen of the home page, the article and the Act page at 1440 px, each with its Charcoal panel drawn in place and its measured Newsprint, dark and red shares beside it.",
   "illustrative": false,
-  "notes": "Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5).",
+  "notes": "Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5). Panels that touch side by side at one height (the pillar row’s four cells) draw and count as one band, and a section’s panel already in view in a first screen is drawn there from the 1440 px export (CE2).",
   "readable": true
  },
  "s-20-9-failure": {

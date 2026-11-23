@@ -20,7 +20,8 @@
  "views": [
   "1440-light",
   "1440-light-screen",
-  "390-light-screen"
+  "390-light-screen",
+  "390-light-marks"
  ],
  "export_name": "Atlas-How-To-Read-Page",
  "alt": "Our systems atlas’s How to read page.",

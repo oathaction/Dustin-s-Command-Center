@@ -32,7 +32,9 @@
   "1440-light-drawing",
   "1440-light-questions",
   "390-light-questions",
-  "390-dark-questions"
+  "390-dark-questions",
+  "1440-light-pair",
+  "1440-light-hub"
  ],
  "export_name": "Atlas-Home-Page",
  "alt": "Our systems atlas’s home page.",

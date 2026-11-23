@@ -534,6 +534,9 @@ def t6(pg):
             # the tags under the drawing name the other reforms, never the chosen one (Rule 21.5); the note names the
             # chosen reform and each target the drawing turns red (Rule 12.5; the data lead's request 18)
             box = next((a for a in pg.all(f'.wa-tagsets [data-atlas-for="{chosen}"]')), None)
+            # a crop to the drawing alone ("art", specs 15.2) carries no note; its page's frames and export read it
+            if box is None and not pg.full and not pg.all(".wa-tagsets"):
+                continue
             if box is None:
                 faults.append(f"Reform {chosen} chosen: no note or tags for it beside the drawing (Rule 12.5)")
                 continue
@@ -597,6 +600,8 @@ def t7(pg):
         if len(q) != 1:
             faults.append(f"Reform {rid}: {len(q)} disclosure(s) under the panel; Rule 15.20 asks one")
             continue
+        if pg.kind == "frame":
+            continue                         # a frame draws a closed disclosure's summary alone (D4-152); its body is read on the working page
         qt = unkind(text(q[0]))
         g = GRADE_WORD.get(r["remedy_evidence"]["grade"], "").lower()
         if q[0].has_attr("open") and pg.kind == "export":
@@ -1193,7 +1198,7 @@ PLANTS = [
     ("T10", "reform", '[data-reading-label="2"]', lambda el, q: el.decompose(), "the second reading with no label (RP1, R23)"),
     ("T11", "loop", ".oa-stepper-step", lambda el, q: el.__setitem__("data-oa-hold", "3200"), "a step held 3,200 ms (registers F-8, F-15)"),
     ("T11", "loop", "[data-oa-stepper]", _set(**{"data-oa-part": "stepper"}), "a part name on the stepper's root, which the script says before each step (AX-1)"),
-    ("T12", "home", "[data-pathway][aria-pressed=\"true\"]", lambda el, q: [x.decompose() for x in el.select("svg")], "a pressed question with no check"),
+    ("T12", "home", "[data-pathway][aria-pressed=\"true\"] || [data-pathway]", lambda el, q: (el.__setitem__("aria-pressed", "true"), [x.decompose() for x in el.select("svg")]), "a pressed question with no check"),
     ("T12", "home", '[data-pathway-answer="PW01"] [data-atlas-field="short_answer"] || [data-pathway-answer]:not([hidden])',
      lambda el, q: el.__setitem__("data-pathway-answer", "PW01") if el.has_attr("data-pathway-answer") else setattr(el, "string", V["pathways"][5]["short_answer"]),
      "a question's answer region holding another question's answer (R19, CD-M2)"),

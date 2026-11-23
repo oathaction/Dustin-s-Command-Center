@@ -1,5 +1,5 @@
 {
- "written": "2026-11-23T00:30:26.736Z",
+ "written": "2026-11-23T18:10:06.288Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -151,7 +151,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 5,569 px"
+   "size": "390 by 5,564 px"
   },
   {
    "file": "20261121_Web-Home-Page-390-Dark.png",
@@ -159,7 +159,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 5,569 px"
+   "size": "390 by 5,564 px"
   },
   {
    "file": "20261121_Web-Home-Page-360-Light.png",
@@ -167,7 +167,7 @@
    "platform": "website.page_360",
    "format": "png",
    "theme": "light",
-   "size": "360 by 5,692 px"
+   "size": "360 by 5,686 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts.html",
@@ -184,7 +184,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 3,632 px"
+   "size": "1,440 by 3,627 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-1440-Dark.png",
@@ -192,7 +192,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 3,632 px"
+   "size": "1,440 by 3,627 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-1024-Light.png",
@@ -200,7 +200,7 @@
    "platform": "website.page_1024",
    "format": "png",
    "theme": "light",
-   "size": "1,024 by 3,684 px"
+   "size": "1,024 by 3,678 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-390-Light.png",
@@ -208,7 +208,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 4,946 px"
+   "size": "390 by 4,940 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-390-Dark.png",
@@ -216,7 +216,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 4,946 px"
+   "size": "390 by 4,940 px"
   },
   {
    "file": "20261121_Web-Article-Page-Special-Districts-360-Light.png",
@@ -224,7 +224,7 @@
    "platform": "website.page_360",
    "format": "png",
    "theme": "light",
-   "size": "360 by 5,071 px"
+   "size": "360 by 5,065 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule.html",
@@ -265,7 +265,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 8,670 px"
+   "size": "390 by 8,646 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Dark.png",
@@ -273,7 +273,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 8,670 px"
+   "size": "390 by 8,646 px"
   },
   {
    "file": "20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-360-Light.png",

@@ -71,6 +71,10 @@ def c15():
         orig = m.conn
 
         def conn(pts, grade=None, sign=None, delay=None, authority=False, hollow=False, w=m.LW, target=False):
+            # CR-9: a red target's runs are of even width (the 4 px red on its 6 px case), so each coordinate on a half
+            # pixel moves half a pixel on, and its vertical runs land whole, as its horizontal runs already do
+            if target and not hollow:
+                pts = [tuple(c + 0.5 if abs(c - int(c)) == 0.5 else c for c in p_) for p_ in pts]
             if target and not hollow and not authority and m.tex(grade) != "solid":
                 return red_patterned(m, pts, grade, sign, delay)
             return orig(pts, grade, sign, delay, authority=authority, hollow=hollow, w=w, target=target)
@@ -103,6 +107,14 @@ def red_patterned(m, pts, grade, sign, delay):
     run = m.rounded_len(rest, m.BEND)
     need(run >= 20 * 4, f"a red {tex} target runs {run:.0f} px after its lead-in, under 80 px (R14: its grade word goes beside it)")
     need(run >= 2 * sum(arr), f"a red {tex} target holds under two periods ({run:.0f} px); R14 asks the data lead to rule")
+    # CD-S10 (specs 15.4): the line runs unbroken from its last corner into the arrowhead's shaft, so the pattern never
+    # turns that corner on a gap; the pattern is fitted to the run before the corner, from the lead-in's gap to the bend's
+    # start, where there are two periods or more; else the whole run is patterned as before
+    c = BS.path_len(full[:-1]) - m.BEND if len(full) >= 3 else None
+    tail = None
+    if c is not None and c > s0 and m.rounded_len(m.cut(full, s0, c), m.BEND) >= 2 * sum(arr):
+        rest, tail = m.cut(full, s0, c), m.cut(full, c, end)
+        run = m.rounded_len(rest, m.BEND)
     red_da = [float(x) for x in BS.fitted(tex, 4, run).split()]
     case_da = [x + 2 if i % 2 == 0 else x - 2 for i, x in enumerate(red_da)]
     lead = m.cut(full, 0, m.LEAD)
@@ -113,11 +125,13 @@ def red_patterned(m, pts, grade, sign, delay):
     # the case rides the red's own path, its pattern set 1 px back (dashoffset 1), so every corner bends alike; the 1 px
     # before the first dash and after the last, which a path cannot reach behind its ends, are two short straight stubs
     stubs = poly(m.cut(full, s0 - 1, s0)) + poly(m.cut(full, end, end + 1))
+    tail_case = f'<path class="ak-case" d="{BS.rounded_d(m.cut(full, c - 1, end), m.BEND)}"/>' if tail else ""
+    tail_mark = f'<path class="ak-mark" d="{BS.rounded_d(tail, m.BEND)}" stroke-width="{m.LW}"/>' if tail else ""
     lines = (f'<path class="ak-case" d="{lead_d}"/>'
              f'<path class="ak-case" d="{BS.rounded_d(rest, m.BEND)}" stroke-dasharray="{da(case_da)}" stroke-dashoffset="1"/>'
-             f'<path class="ak-case" d="{stubs}"/>'
+             f'<path class="ak-case" d="{stubs}"/>{tail_case}'
              f'<path class="ak-mark" d="{lead_d}" stroke-width="{m.LW}"/>'
-             f'<path class="ak-mark" d="{BS.rounded_d(rest, m.BEND)}" stroke-width="{m.LW}" stroke-dasharray="{da(red_da)}"/>')
+             f'<path class="ak-mark" d="{BS.rounded_d(rest, m.BEND)}" stroke-width="{m.LW}" stroke-dasharray="{da(red_da)}"/>{tail_mark}')
     marks = lines + marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "").replace('class="rail"', 'class="rl"')
     return marks, full
 
@@ -592,7 +606,7 @@ def view_how_to_read(spec):
     return {"marks": marks, "sign_note": note}
 
 
-def pill_h(C, rows, half_w=85, edge=3, ink=7):
+def pill_h(C, rows, half_w=85, edge=3, ink=7, room=5):
     """A pill's height on the page (the data lead's request 31; ED-F9): chapter 15's own (its rows at 18 px leading, 22 px
     more, 44 at least), grown 2 px at a time until each row's ink, its words' measured width at the row's height, sits
     inside the pill's rounded ends: half_w is half the narrowest pill (the open box's 170 px), edge the outline and a
@@ -605,7 +619,7 @@ def pill_h(C, rows, half_w=85, edge=3, ink=7):
         for k, w in enumerate(widths):
             dy = abs((k - (len(rows) - 1) / 2) * C.LH) + ink
             dx = max(0.0, w / 2 - (half_w - R))
-            if dx * dx + dy * dy > (R - edge) ** 2:
+            if dx * dx + dy * dy > (R - edge - room) ** 2:   # CR-10: each line's ink at least 8 px inside the curve
                 return False
         return True
     while not clear(h) and h < 160:
@@ -728,26 +742,28 @@ def home_drawing(flows_, every=False, pills=None, parts_=None, box_need=None):
     # the data lead's requests 4 and 27: each row grows to the tallest box's words, as the kit measures them at 1440 px
     # with each box's height freed (box_need, whole pixels); the specs' heights stay the floor
     floor = (box_need or {}).get("open" if every else "closed", {})
-    band_h = max(56 + (max((ph(v) for v in vs["X"]), default=0) + PW_GAP if every else 0), floor.get("X", 0))
+    # specs 15.1 (CD-S1, chat 12): the rows 44, 44, 204, 96, 92 and 44 in place of 56, 56, 184, 112, 104 and 56, so the
+    # whole circuit and its key end above 880 px at 1440 by 900; the kit's measure stays each row's floor
+    band_h = max(44 + (max((ph(v) for v in vs["X"]), default=0) + PW_GAP if every else 0), floor.get("X", 0))
     yb = band_h
-    yc = yb + 56
-    hc = max([184 + max(stack(vs[k]) for k in X0)] + [floor.get(k, 0) for k in X0])   # specs 14.4: the core row 184 px
+    yc = yb + 44
+    hc = max([204 + max(stack(vs[k]) for k in X0)] + [floor.get(k, 0) for k in X0])
     ycb = yc + hc
-    yl = ycb + 112
-    hl = max(104 + max(grid(vs["EC"], 3), grid(vs["TC"], 2)), floor.get("EC", 0), floor.get("TC", 0))
+    yl = ycb + 96
+    hl = max(92 + max(grid(vs["EC"], 3), grid(vs["TC"], 2)), floor.get("EC", 0), floor.get("TC", 0))
     ylb = yl + hl
-    H = ylb + 56
+    H = ylb + 44
     boxes = {"X": (48, 0, 1216, band_h), **{k: (x, yc, W, hc) for k, x in X0.items()}, "EC": (48, yl, 706, hl), "TC": (813, yl, 451, hl)}
     A, B, C, D, E = (X0[k] for k in "ABCDE")
     R = {   # pair: (points, count place (x, y, anchor))
-        ("X", "A"): ([(A + 24, yb), (A + 24, yc)], (A + 30, yc - 10, "start")),
-        ("X", "B"): ([(B + 24, yb), (B + 24, yc)], (B + 30, yc - 10, "start")),
-        ("X", "C"): ([(C + 98, yb), (C + 98, yc)], (C + 104, yc - 10, "start")),
-        ("X", "D"): ([(D + 172, yb), (D + 172, yc)], (D + 178, yc - 10, "start")),
-        ("X", "E"): ([(E + 172, yb), (E + 172, yc)], (E + 178, yc - 10, "start")),
-        ("X", "EC"): ([(48, yb / 2), (36, yb / 2), (36, yl + 56), (48, yl + 56)], (42, yl - 10, "start")),
-        ("X", "TC"): ([(1264, yb / 2), (1276, yb / 2), (1276, yl + 56), (1264, yl + 56)], (1270, yl - 10, "end")),
-        ("B", "E"): ([(B + 120, yc), (B + 120, yb + 24), (E + 40, yb + 24), (E + 40, yc)], ((B + 120 + E + 40) / 2, yb + 18, "middle")),
+        ("X", "A"): ([(A + 24, yb), (A + 24, yc)], (A + 30, yc - 8, "start")),
+        ("X", "B"): ([(B + 24, yb), (B + 24, yc)], (B + 30, yc - 8, "start")),
+        ("X", "C"): ([(C + 98, yb), (C + 98, yc)], (C + 104, yc - 8, "start")),
+        ("X", "D"): ([(D + 172, yb), (D + 172, yc)], (D + 178, yc - 8, "start")),
+        ("X", "E"): ([(E + 172, yb), (E + 172, yc)], (E + 178, yc - 8, "start")),
+        ("X", "EC"): ([(48, yb / 2), (36, yb / 2), (36, yl + 46), (48, yl + 46)], (42, yl - 10, "start")),
+        ("X", "TC"): ([(1264, yb / 2), (1276, yb / 2), (1276, yl + 46), (1264, yl + 46)], (1270, yl - 10, "end")),
+        ("B", "E"): ([(B + 120, yc), (B + 120, yb + 18), (E + 40, yb + 18), (E + 40, yc)], ((B + 120 + E + 40) / 2, yb + 15, "middle")),
         ("A", "B"): ([(A + W, yc + 40), (B, yc + 40)], ((A + W + B) / 2, yc + 34, "middle")),
         ("B", "C"): ([(B + W, yc + 40), (C, yc + 40)], ((B + W + C) / 2, yc + 34, "middle")),
         ("C", "D"): ([(C + W, yc + 40), (D, yc + 40)], ((C + W + D) / 2, yc + 34, "middle")),
@@ -755,18 +771,18 @@ def home_drawing(flows_, every=False, pills=None, parts_=None, box_need=None):
         ("C", "B"): ([(C, yc + 88), (B + W, yc + 88)], ((B + W + C) / 2, yc + 104, "middle")),
         ("D", "C"): ([(D, yc + 88), (C + W, yc + 88)], ((C + W + D) / 2, yc + 104, "middle")),
         ("E", "D"): ([(E, yc + 88), (D + W, yc + 88)], ((D + W + E) / 2, yc + 104, "middle")),
-        ("E", "A"): ([(E + W, yc + 120), (1300, yc + 120), (1300, ylb + 48), (12, ylb + 48), (12, yc + 120), (A, yc + 120)], (656, ylb + 42, "middle")),
-        ("E", "EC"): ([(E + W, yc + 152), (1288, yc + 152), (1288, ylb + 24), (700, ylb + 24), (700, ylb)], (994, ylb + 18, "middle")),
-        ("D", "B"): ([(D + 16, ycb), (D + 16, ycb + 20), (B + 180, ycb + 20), (B + 180, ycb)], ((D + 16 + B + 180) / 2, ycb + 14, "middle")),
-        ("B", "D"): ([(B + 156, ycb), (B + 156, ycb + 40), (D + 40, ycb + 40), (D + 40, ycb)], ((B + 156 + D + 40) / 2, ycb + 34, "middle")),
-        ("D", "EC"): ([(D + 100, ycb), (D + 100, ycb + 60), (784, ycb + 60), (784, yl + 28), (754, yl + 28)], ((D + 100 + 784) / 2, ycb + 54, "middle")),
-        ("TC", "B"): ([(D + 72, yl), (D + 72, ycb + 80), (B + 120, ycb + 80), (B + 120, ycb)], ((D + 72 + B + 120) / 2, ycb + 74, "middle")),
-        ("TC", "A"): ([(D + 48, yl), (D + 48, ycb + 104), (A + 150, ycb + 104), (A + 150, ycb)], ((D + 48 + A + 150) / 2, ycb + 98, "middle")),
+        ("E", "A"): ([(E + W, yc + 120), (1300, yc + 120), (1300, ylb + 38), (12, ylb + 38), (12, yc + 120), (A, yc + 120)], (656, ylb + 35, "middle")),
+        ("E", "EC"): ([(E + W, yc + 152), (1288, yc + 152), (1288, ylb + 18), (700, ylb + 18), (700, ylb)], (994, ylb + 15, "middle")),
+        ("D", "B"): ([(D + 16, ycb), (D + 16, ycb + 18), (B + 180, ycb + 18), (B + 180, ycb)], ((D + 16 + B + 180) / 2, ycb + 15, "middle")),
+        ("B", "D"): ([(B + 156, ycb), (B + 156, ycb + 36), (D + 40, ycb + 36), (D + 40, ycb)], ((B + 156 + D + 40) / 2, ycb + 33, "middle")),
+        ("D", "EC"): ([(D + 100, ycb), (D + 100, ycb + 54), (784, ycb + 54), (784, yl + 28), (754, yl + 28)], ((D + 100 + 784) / 2, ycb + 51, "middle")),
+        ("TC", "B"): ([(D + 72, yl), (D + 72, ycb + 72), (B + 120, ycb + 72), (B + 120, ycb)], ((D + 72 + B + 120) / 2, ycb + 69, "middle")),
+        ("TC", "A"): ([(D + 48, yl), (D + 48, ycb + 90), (A + 150, ycb + 90), (A + 150, ycb)], ((D + 48 + A + 150) / 2, ycb + 87, "middle")),
         ("A", "EC"): ([(A + 60, ycb), (A + 60, yl)], (A + 66, (ycb + yl) / 2 + 5, "start")),
         ("EC", "A"): ([(A + 100, yl), (A + 100, ycb)], (A + 106, (ycb + yl) / 2 + 5, "start")),
         ("D", "TC"): ([(D + 130, ycb), (D + 130, yl)], (D + 136, (ycb + yl) / 2 + 5, "start")),
         ("TC", "D"): ([(D + 170, yl), (D + 170, ycb)], (D + 176, (ycb + yl) / 2 + 5, "start")),
-        ("TC", "EC"): ([(813, yl + 72), (754, yl + 72)], ((813 + 754) / 2, yl + 66, "middle")),
+        ("TC", "EC"): ([(813, yl + 64), (754, yl + 64)], ((813 + 754) / 2, yl + 58, "middle")),
     }
     by = {(f_["from"], f_["to"]): f_ for f_ in flows_}
     need(set(by) <= set(R), f"pairs with no route in the specs' table: {sorted(set(by) - set(R))} (specs 12.2, ED-F10)")

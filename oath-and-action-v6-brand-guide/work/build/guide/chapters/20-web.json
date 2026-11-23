@@ -3,7 +3,10 @@
   "anchor": "web",
   "title": "Web",
   "part": "applications",
-  "opener": "s-20-opener",
+  "opener": {
+    "specimen": "s-20-opener",
+    "caption": "The home page’s first screen on a desktop in the light theme and on a phone in the dark theme. On the desktop the pillar row heads one piece for each pillar, the last of them a step a reader can take now; on the phone each pillar heads its own section."
+  },
   "instruction": "Build each web page from the system, opening on the reader’s question.",
   "intro": [
     "This chapter sets how our website looks and works. It covers the masthead, the menu and the footer every page shares; the home page, an article and an Act page; the preview a link shows when someone shares it; and the icon in a browser tab. Every page is built from the tokens and the components in chapter 18, in the light and the dark theme, at the four widths we test.",

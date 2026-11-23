@@ -24,7 +24,8 @@
   }
  ],
  "views": [
-  "1440-light-drawing"
+  "1440-light-drawing",
+  "1440-light-pair"
  ],
  "export_name": "Atlas-Home-Every-Variable",
  "alt": "Our systems atlas’s home page with every variable shown.",

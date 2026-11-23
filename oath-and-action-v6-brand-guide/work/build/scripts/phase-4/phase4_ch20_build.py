@@ -1402,7 +1402,7 @@ def joined(boxes):
 
 def seen_first(aid, own, others):
     """CE2 (chat 12): a section's panel that already shows in the page's first screen, read from the export's pixels at
-    1440 px (Charcoal within 12 levels on most of the panel's width, for the panel's own height), so the first screen's
+    1440 px (Charcoal within 12 levels on 60 percent of the panel's width, on 90 percent of the rows of its own height), so the first screen's
     box draws what a reader sees there. Rule 20.9 counts it with its section (specs, Panels)."""
     from PIL import Image
     p = EXPORTS / EXPORT_1440[aid]
@@ -1419,7 +1419,8 @@ def seen_first(aid, own, others):
             xs = range(x0, x1, max(1, (x1 - x0) // 60))
             dark = [sum(1 for x in xs if max(im.getpixel((x, y))) <= 0x12 + 12) / len(xs) for y in range(vh)]
             top = next((y for y in range(vh) if dark[y] >= 0.6), None)
-            if top is None or sum(dark[top:top + hpx]) / max(1, len(dark[top:top + hpx])) < 0.6:
+            rows_ = dark[top:top + hpx] if top is not None else []
+            if top is None or sum(1 for d in rows_ if d >= 0.6) < 0.9 * len(rows_):
                 continue
             box = {'x': b['x'], 'y': round(top / vh * 100, 2), 'w': b['w'], 'h': round(min(hpx, vh - top) / vh * 100, 2)}
             if not any(o['x'] < box['x'] + box['w'] and box['x'] < o['x'] + o['w'] and o['y'] < box['y'] + box['h']

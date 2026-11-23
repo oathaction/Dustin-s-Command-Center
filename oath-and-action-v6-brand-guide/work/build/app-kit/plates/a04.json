@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "What a special district does | Oath & Action",
  "css": "web-site.css",
- "written": "2026-11-23T18:05:43.963Z",
+ "written": "2026-11-23T18:10:10.247Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -91,7 +91,7 @@
  ],
  "inputs": {
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
-  "work/build/app-kit/oa-app.mjs": "e272632f33b4bf5ce2527196f80d74bdd19b6963126e77e4fa73f72671bf30b6",
+  "work/build/app-kit/oa-app.mjs": "8c2ef8b83296fa70804f3e22530868abe263489de028242a59e7660b6b46afd9",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "6d7c1a7ad8a3cd26604a60dcec53f7eaea99905f94af107ce62e916a66e9ecc9",
