@@ -105,7 +105,10 @@
   "alt": "Loop R18 on Charcoal, with Reform R-11’s three targets in red: the outline of Variable D4 and both of the loop’s connections, L14 and L15. Beside it, a chooser of reforms with R-11 chosen, and a table of contrast ratios measured on the frame.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A14, dark), with the ratios the kit measured on that frame’s pixels.",
-  "readable": true
+  "readable": true,
+  "kit_inputs": {
+   "work/build/app-kit/plates/a14.json": "25eecc30ac03003661ffc385780322993a20866e23fa0c8ca0d35bd248a2293c"
+  }
  },
  "s-21-15-failure": {
   "chapter": "21",
@@ -126,7 +129,10 @@
   "alt": "A readable table of the atlas test’s report. Each row is a check, named by its number and what it tests; the four columns are the views Home, Reforms, The Register and Loops. Each cell gives the result, PASS or FAIL, and how many of that view’s frames and pages the check read.",
   "illustrative": false,
   "notes": "Read from the atlas test’s report (plates/atlas-test.json, 1,408 lines, self-test PASS), counted by check and view for the four views.",
-  "readable": true
+  "readable": true,
+  "kit_inputs": {
+   "work/build/app-kit/plates/atlas-test.json": "2dd5932d53bc158e013012cccbfabff37124caaa19cd424dd127ab803688be09"
+  }
  },
  "s-21-16-failure": {
   "chapter": "21",

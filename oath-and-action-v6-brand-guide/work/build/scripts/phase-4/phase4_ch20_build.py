@@ -122,12 +122,17 @@ REC = {
                   'other concerns',
     'question': 'whether the sale of NAC-containing products labeled as dietary supplements in the United States has '
                 'negatively impacted NAC drug development or is anticipated to in the future',
+    # NB-1 (chat 12): the law's first reason, and the rule's safety finding (the docket file's November 23 section)
+    'first_reason': 'to prevent manufacturers from escaping appropriate safety and efficacy review and FDA oversight for '
+                    'drugs by classifying these products as dietary supplements',
+    'safety': 'a reasonable expectation of safety for the use of NAC in or as a dietary supplement',
 }
 # The rule's step 1, Early notice (Rule 11.9): the FDA's Federal Register notice of April 22, 2022, in which it said it was
 # likely to propose this rule (the rule, page 73723; D4-110). The page prints its date, so the date stands in the file.
 EARLY_NOTICE = {'date': 'April 22, 2022', 'citation': '87 FR 24170'}
 _need(_DK, *REC.values(), '(page 73720)', '(page 73721)', '(page 73723)', '2001, 2010 and July 2020',
-      EARLY_NOTICE['date'], EARLY_NOTICE['citation'], 'was likely to propose', 'January 14, 2026',
+      EARLY_NOTICE['date'], EARLY_NOTICE['citation'], 'was likely to propose', 'January 14, 2026', 'two main reasons',
+      '(page 73722)', 'if, among other considerations, we did not identify safety-related concerns',
       'yeas and nays, 7 to 4', 'lists no committee hearing', where=DOCKET_FILE)
 _m = re.search(r'\*\*The agency.s summary, quoted\.\*\* "(.+?)"\n', _DK)
 if not _m:
@@ -185,7 +190,8 @@ W = {
         'This chapter sets how our website looks and works. It covers the masthead, the menu and the footer every page '
         'shares; the home page, an article and an Act page; the preview a link shows when someone shares it; and the '
         'icon in a browser tab. Every page is built from the tokens and the components in chapter 18, in the '
-        'light and the dark theme, at the four widths we test.',
+        'light and the dark theme, at the four widths we test. Each row of frames says the scale it is shown at, and '
+        'our exports keep every frame at true size.',
         # DR-98: the bill named whole, with both provisions, at its first mention in the chapter
         'The pages here are real. The home page leads with one piece for each pillar: our explainer on special '
         'districts; our tracker for H.R.' + NB + '7008, the Stop Insider Trading Act, a bill that would limit stock '
@@ -287,7 +293,9 @@ PAGES = {
                         [f'On September 30, 2026, a Senate vote to take it up got {SEN_YES} votes, seven short of the 60 '
                          'it needed.', False]],
              'dateline': 'As of November 21, 2026',
-             'source': HR_SOURCE + ' Steps from the bill’s status file on govinfo.gov, retrieved November 21, 2026.',
+             'source': HR_SOURCE + ' Source for the steps: U.S. Government Publishing Office, govinfo, bill status file for '
+                       'H.R.' + NB + '7008, 119th Congress, actions from January 12 to September 30, 2026, file updated '
+                       'October 1, 2026, United States. Retrieved November 21, 2026.',
              'link': None},
             {'pillar': 'connect', 'word': 'Connect', 'icon': 'cl-021',
              'kicker': ['Guide', 'Electric bills'], 'symbol': None,
@@ -308,7 +316,8 @@ PAGES = {
                  'pending': []},
              'status': [['Step 3 of 6: Comments open.', True], ['You can take part now.', True],
                         ['Comments close ' + DOCKET['closes'] + '.', False]],
-             'dateline': None, 'source': None, 'link': ['How to send a comment', '/act/fda-nac-rule#comment']},
+             'dateline': 'As of November 21, 2026', 'source': None,
+             'link': ['How to send a comment', '/act/fda-nac-rule#comment']},
         ],
         'atlas': {
             'label': 'Our systems atlas',
@@ -342,8 +351,8 @@ PAGES = {
             # read your state's summary (the report's page, read by the design director at 19:03 UTC)
             {'key': 'Step', 'heading': 'See which districts your state has', 'blocks': [
                 {'p': 'Each state’s laws decide which kinds of special district it allows and what they may do.'},
-                {'p': 'Read your state’s summary in the Census Bureau’s report {link}. It covers each state and the '
-                      'District of Columbia, arranged by kind of government.',
+                {'p': 'Read your state’s summary, one for each state and the District of Columbia, arranged by kind of '
+                      'government, in the Census Bureau’s report {link}.',
                  'link': [ISD['title'], ISD['url']], 'link_kind': 'another-site', 'end_mark': True}]},
         ],
         'count_fact': {'figure': '5', 'line1': 'years between censuses of governments',
@@ -361,16 +370,19 @@ PAGES = {
         'current': 'Act',
         'kicker': 'Act · How to take part',
         'headline': 'How to comment on the FDA’s proposed rule on NAC',
-        'intro': 'The Food and Drug Administration proposes to let products containing N-acetyl-L-cysteine (NAC) be sold '
-                 'as dietary supplements. Anyone may comment until ' + DOCKET['closes'] + ', and the agency then decides '
-                 'whether to make the rule final.',
-        'checked': 'Checked ' + DOCKET['checked'],
+        'intro': 'The Food and Drug Administration proposes to let products containing N-acetyl-L-cysteine (NAC), which it '
+                 'approved as a drug in 1963, be sold as dietary supplements. Anyone may comment until '
+                 + DOCKET['closes'] + ', and the agency then decides whether to make the rule final. Comments go to the '
+                 'rule’s docket, ' + DOCKET['docket'] + ', its public file of documents and comments.',
+        # DF3: a status takes “As of” (Rule 13.10), as the home page’s tracker does
+        'checked': 'As of ' + DOCKET['checked'],
         'byline': ['Dustin Cathcart, Founder and Editor', 'November 21, 2026', '2026-11-21'],
         'status': {
             'label': 'Where the rule stands',
             'state_words': {'done': 'Done', 'now': 'Now', 'ahead': 'Not yet'},
             'steps': [{'n': 1, 'name': 'Early notice', 'state': 'done',
-                       'note': EARLY_NOTICE['date'] + ': the FDA said it was likely to propose this rule'},
+                       'note': EARLY_NOTICE['date'] + ': the FDA said it was likely to propose this rule if, among other '
+                               'things, its review found no safety concern'},
                       {'n': 2, 'name': 'Proposed', 'state': 'done', 'note': 'Published ' + DOCKET['published']},
                       {'n': 3, 'name': 'Comments open', 'state': 'now', 'note': 'Until ' + DOCKET['closes'],
                        'take_part': True},
@@ -394,23 +406,33 @@ PAGES = {
             'cite_href': DOCKET['rule_url'],
             # Rule 01.22's two sides, as the record holds them (DR-93; D4-108): the request, the law's concern with the
             # FDA's earlier position, the rule's statement that no comment has raised a concern, and the FDA's question
+            # NB-1 (chat 12): both of the law's reasons, the rule's safety finding and the 2022 context of its line on
+            # comments, as the record holds them (DR-93); CE4: why NAC was excluded, from page 73719
             'sides': {'heading': 'What the record shows',
                       'paragraphs': [
                           'The request. The rule says: “' + REC['petitions'] + '” (page 73720).',
-                          'The concern in the law. In 2001, 2010 and 2020, the FDA said products containing NAC are '
-                          'excluded from the dietary supplement definition (pages 73719 to 73720). That exclusion exists in '
-                          'part “' + REC['incentives'] + '” (page 73721). The rule says: “' + REC['no_concern'] + '” (page '
-                          '73723), and it asks commenters “' + REC['question'] + '” (page 73723).']},
+                          'The concerns in the law. The rule says Congress kept some drug ingredients out of the '
+                          'definition of a dietary supplement for two main reasons: “' + REC['first_reason'] + '”, and “'
+                          + REC['incentives'] + '” (page 73720). The FDA approved NAC as a drug on September 14, 1963, '
+                          'before it was sold as a supplement or a food, and in 2001, 2010 and 2020 the FDA said products '
+                          'containing NAC are excluded from the definition (pages 73719 to 73720).',
+                          'What the rule finds. On safety, the rule finds “' + REC['safety'] + '” (page 73722). On drug '
+                          'development, it looks back to its 2022 draft guidance, which took comments for 30 days, and '
+                          'says: “' + REC['no_concern'] + '” (page 73723). It asks commenters on this rule “'
+                          + REC['question'] + '” (page 73723).']},
             'decides_heading': 'Who decides',
             'decides': 'The FDA decides whether to make the rule final. Once it does, Congress and the President can '
-                       'strike the rule down, and a court can set it aside.',
+                       'strike the rule down, and a court can set it aside. The chart numbers the five steps the law '
+                       'sets for every rule. The panel at the top tracks this rule in six steps of its own, from its '
+                       'early notice to the day it would take effect, so the two count their steps differently.',
             'chart': 's66',
         },
         'comment': {
             'heading': 'How to send a comment',
             'steps': ['Open the docket’s comment page on Regulations.gov, the website most federal agencies use for '
                       'comments.',
-                      'Write your comment, and include the docket number, ' + DOCKET['docket'] + '.',
+                      'Write your comment, and include the docket number, ' + DOCKET['docket'] + ', which files your '
+                      'comment with this rule.',
                       'Leave out medical information, Social Security numbers and confidential business information. '
                       'Regulations.gov posts each comment unchanged, with any name or contact details in it.',
                       'Send it by 11:59 p.m. Eastern Time on ' + DOCKET['closes'] + '.'],
@@ -424,11 +446,13 @@ PAGES = {
                       'Management Staff from 9 a.m. to 4 p.m., Monday through Friday (' + DOCKET['phone'] + ').',
             'glance_heading': 'The rule at a glance',
             'glance': [['Agency', 'Food and Drug Administration, Department of Health and Human Services'],
-                       ['Docket', DOCKET['docket']], ['Regulation Identifier Number', DOCKET['rin']],
-                       ['Citation', DOCKET['citation']],
+                       ['Docket', DOCKET['docket'] + ', the rule’s public file of documents and comments'],
+                       ['Regulation Identifier Number', DOCKET['rin'] + ', the government’s tracking number for this rule'],
+                       ['Citation', DOCKET['citation'] + ': volume 91 of the Federal Register, page 73717; the rule '
+                                    'would amend Title 21 of the Code of Federal Regulations, Part 190'],
                        ['Published', DOCKET['published']],
                        ['Comments close', DOCKET['closes'] + ', 11:59 p.m. Eastern Time']],
-            'checked': 'Checked ' + DOCKET['checked'] + '.',
+            'checked': 'As of ' + DOCKET['checked'] + '.',
             'links': [['The rule on the Federal Register', DOCKET['rule_url']],
                       ['The rule as a PDF on govinfo.gov', DOCKET['pdf_url']]],
         },
@@ -446,7 +470,7 @@ R = {}
 # ---- Group 1, the frame every page shares
 R['20.1'] = {
     'title': 'Open every page with the same masthead, and move its parts behind Menu once they no longer fit in the bar.',
-    'rule': ['Every page opens with the same masthead. From 64em, 1,024 px at the default text size, the bar holds L3, the '
+    'rule': ['Every page opens with the same masthead. From 64em, 1024 px at the default text size, the bar holds L3, the '
              'wordmark with the lockmark, at the left and the seven parts of the site at the right, in this order: '
              'Explain, Track, Connect, Act, Who Do They Answer To?, About and Subscribe. The theme switch sits on a row '
              'beneath them, at the right edge.',
@@ -468,15 +492,20 @@ R['20.1'] = {
               ('48em to 64em', 'An 80 px bar with L3 and Menu'),
               ('Under 48em', 'A 56 px bar: L1 from the 24 px master, 221 by 24 px, and Menu; under 24.375em, L1 from '
                              'the 16 px master, 152 by 16 px'),
-              ('Measured', 'The seven parts take 484 px in the interface style, 580 px with their gaps at 1,024 px; with '
+              ('Measured', 'The seven parts take 484 px in the interface style, 580 px with their gaps at 1024 px; with '
                            'L3 and 32 px of space they fill 894 of the 944 px inside the margins'),
               ('Divider', 'A 1 px hairline, 20 px tall, in the gap before Who Do They Answer To?, so the four pillars '
                           'read as a set'),
               ('Current part', 'Bold, with a 2 px underline at 0.3 em, and aria-current'),
               ('Red', 'None of its own: the wordmark’s ampersand and the lockmark’s lever are signature red'),
               ('Sticking', 'Never; the masthead scrolls away, so its lockmark and the footer’s never share a screen'),
-              ('Landmarks', 'One header; the parts in a navigation named “Parts of the site”')],
-    'builders': ['Write the parts once and let the bar or the menu show them. Test the bar at 1,024 px with the longest '
+              ('Landmarks', 'One header; the parts in a navigation named “Parts of the site”'),
+              ('Order', 'Skip link, the masthead, the page, then the footer, in the same order in the markup at every '
+                        'width, so Tab and a screen reader meet each part in the order a reader sees it'),
+              ('Headings', 'One h1 a page: its headline, or on the home page the wordmark’s link. Each section an h2 '
+                           'under it, with no level skipped; no heading in the masthead, and an h2 for each of the '
+                           'footer’s four groups')],
+    'builders': ['Write the parts once and let the bar or the menu show them. Test the bar at 1024 px with the longest '
                  'current part in bold before you add an eighth part.'],
     'correct_caption': 'The masthead at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark '
                        'theme, drawn on the article page, where Explain is the current part.',
@@ -492,8 +521,8 @@ R['20.1'] = {
 }
 R['20.2'] = {
     'title': 'Under 64em, open the parts in a menu that holds focus, with the theme switch at its top.',
-    'rule': ['Menu opens the parts of the site in a dialog that covers the page. Its title, Menu, and Close the menu sit '
-             'at the top, then the theme switch, then the seven parts as rows, with the current part on the selected '
+    'rule': ['Menu opens the parts of the site in a dialog that covers the page. The title Menu and the button Close the '
+             'menu sit at the top, then the theme switch, then the seven parts as rows, with the current part on the selected '
              'band.',
              'Focus moves to the current part, or to Close the menu on a page with no current part. Tab and Shift+Tab '
              'keep focus inside the menu. Escape or Close the menu closes it and returns focus to Menu, and a part opens '
@@ -547,8 +576,8 @@ R['20.3'] = {
               ('Lists', 'Four groups, each a heading in the label style and links in the small body style on 44 px rows; '
                         'four across from 48em, two by two on phones'),
               ('Help', 'The fourth group, with Contact us its first link, on every page'),
-              ('Lockmark row', 'In the strip: the lockmark’s 24 px master, 12 px, and the tagline, on one line at the '
-                               'left'),
+              ('Lockmark row', 'In the strip: the lockmark’s 24 px master, a 12 px gap, then the tagline, on one line at '
+                               'the left'),
               ('Web address', 'At the row’s right end from 48em, and on its own line under the row on phones, in the '
                               'caption style, with the Illustrative label until our address is settled'),
               ('Navigation name', '“Site map”, which differs from the masthead’s')],
@@ -561,7 +590,8 @@ R['20.3'] = {
     'failure_caption': '<strong>Fails Rule 20.3.</strong> Help moves and changes its words from one page to the next, so '
                        'a reader has to hunt for it on the page where they need it most.',
     'failure_alt': 'Two footers side by side. The home page’s ends its lists with Help and Contact us; the Act page’s has '
-                   'no Help group and ends its Oath & Action list with Get in touch.',
+                   'no Help group and ends its Oath & Action list with Get in touch. Both close on the same Charcoal '
+                   'strip with the lockmark, the tagline and the web address.',
     'fail_pages': ['Home page', 'Act page'],
     'fail_other': 'Get in touch',
 }
@@ -640,7 +670,7 @@ R['20.6'] = {
     'title': 'Open the home page on one piece for each pillar, with the step a reader can take now.',
     'rule': ['The home page opens on the pillar row, with one piece under each pillar: an explainer, a tracker, a guide '
              'and a step a reader can take now. Each piece is a card with its kicker, headline, a few lines and its '
-             'date. The Act card carries the take-part mark on its step and the view’s one red.',
+             'date, in an “As of” line or in its source line. The Act card carries the take-part mark on its step and the view’s one red.',
              'Below them, the atlas’s section opens on its title bar, then lists the everyday questions it answers '
              'beside a chart and its source line.'],
     'why': 'A first-time reader sees in one screen what each pillar does and one thing they can do now. The pillar row is '
@@ -648,8 +678,8 @@ R['20.6'] = {
     'basis': 'Rules 01.21, 09.1, 09.4, 11.4, 11.5 and 11.9; design judgment for the layout',
     'specs': [('Pillar row', 'Each pillar section opens with its cell: Charcoal, the 48 px pillar icon in one color, its '
                              'word in the intro style, bold, and an arrow to the next; at 1440 px the four cells meet as '
-                             'one band, at 1,024 px two to a line, and on phones one at the top of each section'),
-              ('Cards', '309 px wide at 1440, 460 at 1,024, 350 at 390 and 328 at 360: kicker, headline in the H3 style, '
+                             'one band, at 1024 px two to a line, and on phones one at the top of each section'),
+              ('Cards', '309 px wide at 1440, 460 at 1024, 350 at 390 and 328 at 360: kicker, headline in the H3 style, '
                         'a few lines in the small body style, and the date or “As of” line'),
               ('Trackers', 'Six circles at 24 px, 60 px apart, 57 px on the 309 px card; steps drawn only from the record'),
               ('The step', 'The take-part mark on step 3 of the rule, “You can take part now.” in bold, the deadline and '
@@ -661,7 +691,7 @@ R['20.6'] = {
     'builders': ['Choose the four pieces by pillar, then check that the Act card’s step is still open on the day the page '
                  'goes up.'],
     'correct_caption': 'The home page at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark '
-                       'theme. At 1,024 px the pillar row breaks after Track, two pillars to a line, as Rule 09.1 sets '
+                       'theme. At 1024 px the pillar row breaks after Track, two pillars to a line, as Rule 09.1 sets '
                        'it.',
     'correct_alt': 'The home page at six sizes. Under the masthead, the pillar row on Charcoal, Explain, Track, Connect '
                    'and Act, with a card under each: an explainer on special districts, a tracker for H.R. 7008, a guide '
@@ -687,10 +717,10 @@ R['20.7'] = {
     'basis': 'Rules 01.21, 02.8, 04.6, 07.3, 09.1 and 14.2; the counts from the Census Bureau’s 2022 Census of '
              'Governments',
     'specs': [('Pillar row', 'The 24 px row in the piece’s header, Explain bold and underlined, every icon in one color'),
-              ('Headline', 'The title style, balanced: 110 px at 1440, 88.6 at 1,024 and 56 on phones'),
+              ('Headline', 'The title style, balanced: 110 px at 1440, 88.6 at 1024 and 56 on phones'),
               ('Count panel', 'Charcoal, beside the intro from 64em and after it on phones: the figure in the figure '
                               'style, two lines on what it counts and the counts’ source line'),
-              ('Body', 'Five of 12 columns at 1440 and seven at 1,024 (Rule 07.3)'),
+              ('Body', 'Five of 12 columns at 1440 and seven at 1024 (Rule 07.3)'),
               ('Fact box', 'Charcoal, beside the Count section’s first paragraph from 64em and after it on phones, its '
                            'source line under it on Newsprint'),
               ('Chart', 'S86, the count of governments by type, whole, six of 12 columns at 1440, each frame carrying '
@@ -715,8 +745,8 @@ R['20.8'] = {
     'title': 'Build an Act page as a process piece that names who decides and by when, with one way to take part in red.',
     'rule': ['An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, '
              'with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s '
-             'own summary, sets out what the record shows from those who asked for the change and on the concern the law '
-             'guards, at the length the record holds, and takes no side.',
+             'own summary, sets out what the record shows, from the request for the change to the concerns the law '
+             'guards and the agency’s own findings, at the length the record holds, and takes no side.',
              'After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read '
              'other comments, and gives the ask again. The ask is a red link to the comment page that names the action '
              'and the place, with the docket number beside it, and the page says the day we checked its facts.'],
@@ -726,7 +756,7 @@ R['20.8'] = {
              'it, retrieved November 21, 2026; the page’s subject approved by our founder and editor on November 21, '
              '2026',
     'specs': [('Opening', 'The 24 px pillar row with Act current, the kicker “Act · How to take part” alone, the headline '
-                          'in the section style, the intro and “Checked November 21, 2026”'),
+                          'in the section style, the intro and “As of November 21, 2026”'),
               ('Status panel', 'Charcoal, beside the opening from 64em: the rule’s six steps down the panel, 28 px '
                                'circles, step 3 with the take-part mark, and under it the deadline and the ask'),
               ('Document strip', 'Charcoal, across the content width from 64em, the section’s one dark panel: the '
@@ -774,7 +804,8 @@ R['20.9'] = {
                                                 'percent, signature red included'),
               ('Sections', 'Marked in the markup, the footer its own'),
               ('A pixel', 'Counts as a color within 3 levels on each channel, or 24 for red'),
-              ('Panels', 'Charcoal or Prussian, counted in the section where the panel’s top falls'),
+              ('Panels', 'Charcoal or Prussian, counted in the section where the panel’s top falls; cells that meet as one '
+                         'band, as the pillar row’s four do at 1440 px, count as one panel'),
               ('Dark frames', 'Shares printed for the record; only the red limit is judged')],
     'builders': ['Run the measure on every light frame before a page goes up, and move a panel before you add one.'],
     'correct_caption': 'Every first and opening screen of the three pages at 1440 px in the light theme, measured on the '
@@ -787,7 +818,9 @@ R['20.9'] = {
     'failure_alt': 'One screen drawn as a box, nearly all Newsprint, with the measure beside it: 88.2 percent Newsprint and '
                    'no dark panel.',
     'screen_words': {'first': 'first screen', 'news': 'Newsprint', 'dark': 'dark', 'red': 'red', 'panel': 'panel',
-                     'panels': 'panels', 'none': 'no panel', 'pct': 'percent'},
+                     'panels': 'panels', 'none': 'no panel', 'pct': 'percent',
+                     # CE2: after “1 panel” where touching cells join, and in a first screen whose panel belongs to a section
+                     'band': 'its cells meeting as one band', 'with_section': 'counted in the section where it starts'},
     # each page and section named as a reader meets it, for the boxes in the correct plate
     'page_words': {'A06': 'Home page', 'A07': 'Article', 'A08': 'Act page'},
     'section_words': {'Explain': 'Explain', 'Track': 'Track', 'Connect': 'Connect', 'Act': 'Act',
@@ -804,7 +837,8 @@ R['20.10'] = {
     'rule': ['Each page shares as a 1200 by 630 card on Newsprint: the page’s kicker in the H3 style, its headline at the '
              'title size, and a Charcoal foot that holds the wordmark at the left and the lockmark’s 96 px sign-off at '
              'the right.',
-             'The card carries no web address until ours is settled, no deck and no icon, and its words go into the '
+             'The card carries no web address until ours is settled, no deck, the line under a headline, and no icon, '
+             'and its words go into the '
              'image’s alt text too.'],
     'why': 'A feed shows the card at about 500 px wide, so only the headline and the marks survive, and the sign-off at '
            '96 px keeps its lever red at that size. The foot puts the card in Rule 05.1’s range and gives every shared '
@@ -839,12 +873,13 @@ R['20.11'] = {
     'why': 'At 16 px, B holds its shape and reads as ours on a light or a dark tab. The lockmark’s nine nodes run together '
            'at that size.',
     'basis': 'Rules 04.7 and 08.2; ampersand B alone on the Charcoal tile for avatars and the app icon, approved by our '
-             'founder and editor on November 7, 2026; the platform rows retrieved November 21, 2026',
+             'founder and editor on November 7, 2026; the platform rows retrieved November 21, 2026; our choice of the '
+             'three sizes in favicon.ico, since the platform sources we read set none',
     'specs': [('SVG favicon', 'B’s 16 px master in a 16 by 16 view, no tile, declared for every size'),
               ('favicon.ico', '16, 32 and 48 px in one file'),
               ('Apple touch icon', '180 by 180 px, B on the Charcoal square'),
-              ('Manifest icons', '192 and 512 px; the 512 px icon maskable, with B inside the circle of 40 percent of its '
-                                 'width'),
+              ('Manifest icons', '192 and 512 px; the 512 px icon maskable, so a phone can crop it to its own shape, with '
+                                 'B inside the center circle whose radius is 40 percent of the icon’s width'),
               ('Head', 'One link for each, and a manifest that names the two manifest icons')],
     'builders': ['Look at the favicon at 16 px on a dark tab before you ship it.'],
     'correct_caption': 'The favicon on a light and a dark tab, and each icon file at its own size.',
@@ -869,7 +904,9 @@ VIEW_WORDS = {'1440-light': '1440 px, light', '1024-light': '1024 px, light', '3
               '360-light': '360 px, light', '1440-dark': '1440 px, dark', '390-dark': '390 px, dark',
               '390-light-open': '390 px, light, menu open', '360-light-open': '360 px, light, menu open',
               '390-dark-open': '390 px, dark, menu open', '1440-light-screen': '1440 px, light, first screen',
-              '390-light-screen': '390 px, light, first screen', '390-dark-screen': '390 px, dark, first screen'}
+              '390-light-screen': '390 px, light, first screen', '390-dark-screen': '390 px, dark, first screen',
+              # CR-22: after a row's views, its scale at a 1440 px window, or true size
+              'scale': 'shown at {pct} percent', 'true': 'true size'}
 
 WCAG = {
     '20.1': ['1.3.1', '2.4.1', '2.4.3', '3.2.3', '3.2.4', '4.1.2'],

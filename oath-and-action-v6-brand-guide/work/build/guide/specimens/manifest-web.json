@@ -87,7 +87,7 @@
   "chapter": "20",
   "rule": "20.3",
   "width_px": null,
-  "alt": "Failure case: do not publish. Two footers side by side. The home page’s ends its lists with Help and Contact us; the Act page’s has no Help group and ends its Oath & Action list with Get in touch.",
+  "alt": "Failure case: do not publish. Two footers side by side. The home page’s ends its lists with Help and Contact us; the Act page’s has no Help group and ends its Oath & Action list with Get in touch. Both close on the same Charcoal strip with the lockmark, the tagline and the web address.",
   "illustrative": false,
   "notes": "A drawing of a fault: two footers drawn as the footer is built at a phone’s width (lists on the page’s ground, the Charcoal strip under them), whose help link moves and changes its words; the help links are set in bold here only so the fault can be found.",
   "readable": true

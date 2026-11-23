@@ -1824,7 +1824,7 @@
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:2/10}
  .ws-act .ws-fig{grid-column:2/10}
- .ws-act .ws-cpanel{grid-column:2/10}}
+ .ws-act .ws-cpanel{grid-column:2/12}}
 @container ws (min-width: 90em){.ws-art .ws-prow-w,.ws-art .ws-kick-w,.ws-art .ws-h1-w{grid-column:3/11}
  .ws-art .ws-lead{grid-column:3/9}
  .ws-art .ws-body{grid-column:3/8}
@@ -1834,8 +1834,9 @@
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:3/9}
  .ws-act .ws-fig{grid-column:3/9}
- .ws-act .ws-cpanel{grid-column:3/9}}
-/* CR-15 (chat 12): the Act page's ask panel takes the chart's edge, cols 3 to 8 from 90em (2 to 9 from 64em) */
+ .ws-act .ws-cpanel{grid-column:3/11}}
+/* DD12-Q1 (chat 12): the comment panel keeps specs 11.5's wide body columns, cols 3 to 10 (2 to 11 from 64em), which hold
+   the Comment screen inside Rule 05.1; its words stop at the body measure, inside the chart's edge at col 8 (CR-15) */
 @container ws (max-width: 63.999em){.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lead2{margin-top:32px}.ws-act .ws-status{margin-top:24px}}
 .ws-lead>*+*{margin-top:32px !important}
 .ws-body>*{max-width:var(--oa-layout-measure-body-ideal)}
@@ -3461,8 +3462,9 @@
  .ws.wa .oa-table-grid thead{display:none}.ws.wa .oa-table-grid tr{padding:16px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
  .ws.wa .oa-table-grid .oa-table-th,.ws.wa .oa-table-grid .oa-table-td{padding:2px 0;border:0;text-align:left;white-space:normal;min-width:0}
  .ws.wa .oa-table-grid td[data-k]::before{content:attr(data-k) ": ";font-weight:var(--oa-font-weight-semibold)}
- .ws.wa .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}.ws.wa .wa-gkey li{flex-wrap:nowrap;min-width:0}
+ .ws.wa .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}.ws.wa .wa-gkey li{flex-wrap:wrap;min-width:0}
  .ws.wa .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}.ws.wa .wa-index tbody tr>th{grid-column:1/-1}}
+@container ws (min-width: 24.375em){.ws.wa .wa-gkey li{flex-wrap:nowrap}}
 .ws.wa .wa-band{padding:24px;margin-top:80px}
 @container ws (min-width: 48em){.ws.wa .wa-band{padding:32px}}
 .ws.wa .wa-band .ws-h2.wa-bh{margin:0 0 16px !important}

@@ -9,7 +9,7 @@
   },
   "instruction": "Build each web page from the system, opening on the reader’s question.",
   "intro": [
-    "This chapter sets how our website looks and works. It covers the masthead, the menu and the footer every page shares; the home page, an article and an Act page; the preview a link shows when someone shares it; and the icon in a browser tab. Every page is built from the tokens and the components in chapter 18, in the light and the dark theme, at the four widths we test.",
+    "This chapter sets how our website looks and works. It covers the masthead, the menu and the footer every page shares; the home page, an article and an Act page; the preview a link shows when someone shares it; and the icon in a browser tab. Every page is built from the tokens and the components in chapter 18, in the light and the dark theme, at the four widths we test. Each row of frames says the scale it is shown at, and our exports keep every frame at true size.",
     "The pages here are real. The home page leads with one piece for each pillar: our explainer on special districts; our tracker for H.R. 7008, the Stop Insider Trading Act, a bill that would limit stock purchases by members of Congress and require photo ID to vote in federal elections; a guide to who sets an electric bill; and a rule open for comment. The Act page walks through commenting on that rule, checked November 21, 2026. Only the web address is a stand-in, labeled Illustrative until our founder and editor settles it."
   ],
   "groups": [
@@ -37,7 +37,7 @@
       "id": "20.1",
       "title": "Open every page with the same masthead, and move its parts behind Menu once they no longer fit in the bar.",
       "rule": [
-        "Every page opens with the same masthead. From 64em, 1,024 px at the default text size, the bar holds L3, the wordmark with the lockmark, at the left and the seven parts of the site at the right, in this order: Explain, Track, Connect, Act, Who Do They Answer To?, About and Subscribe. The theme switch sits on a row beneath them, at the right edge.",
+        "Every page opens with the same masthead. From 64em, 1024 px at the default text size, the bar holds L3, the wordmark with the lockmark, at the left and the seven parts of the site at the right, in this order: Explain, Track, Connect, Act, Who Do They Answer To?, About and Subscribe. The theme switch sits on a row beneath them, at the right edge.",
         "Between 48em and 64em the bar keeps L3 and moves the parts and the switch behind Menu, and under 48em the bar sets L1, the wordmark alone, with Menu beside it. The part the reader is in shows in bold with a 2 px underline. Every part stays in the masthead’s ink, Subscribe included, so the view’s one red stays free for the step a reader can take. On an atlas page, the atlas’s own title bar sits under the masthead."
       ],
       "tokens": [
@@ -81,7 +81,7 @@
         },
         {
           "label": "Measured",
-          "value": "The seven parts take 484 px in the interface style, 580 px with their gaps at 1,024 px; with L3 and 32 px of space they fill 894 of the 944 px inside the margins"
+          "value": "The seven parts take 484 px in the interface style, 580 px with their gaps at 1024 px; with L3 and 32 px of space they fill 894 of the 944 px inside the margins"
         },
         {
           "label": "Divider",
@@ -104,6 +104,14 @@
           "value": "One header; the parts in a navigation named “Parts of the site”"
         },
         {
+          "label": "Order",
+          "value": "Skip link, the masthead, the page, then the footer, in the same order in the markup at every width, so Tab and a screen reader meet each part in the order a reader sees it"
+        },
+        {
+          "label": "Headings",
+          "value": "One h1 a page: its headline, or on the home page the wordmark’s link. Each section an h2 under it, with no level skipped; no heading in the masthead, and an h2 for each of the footer’s four groups"
+        },
+        {
           "label": "WCAG 2.2",
           "value": "1.3.1, 2.4.1, 2.4.3, 3.2.3, 3.2.4, 4.1.2"
         }
@@ -123,14 +131,14 @@
         "20.5"
       ],
       "builders": [
-        "Write the parts once and let the bar or the menu show them. Test the bar at 1,024 px with the longest current part in bold before you add an eighth part."
+        "Write the parts once and let the bar or the menu show them. Test the bar at 1024 px with the longest current part in bold before you add an eighth part."
       ]
     },
     {
       "id": "20.2",
       "title": "Under 64em, open the parts in a menu that holds focus, with the theme switch at its top.",
       "rule": [
-        "Menu opens the parts of the site in a dialog that covers the page. Its title, Menu, and Close the menu sit at the top, then the theme switch, then the seven parts as rows, with the current part on the selected band.",
+        "Menu opens the parts of the site in a dialog that covers the page. The title Menu and the button Close the menu sit at the top, then the theme switch, then the seven parts as rows, with the current part on the selected band.",
         "Focus moves to the current part, or to Close the menu on a page with no current part. Tab and Shift+Tab keep focus inside the menu. Escape or Close the menu closes it and returns focus to Menu, and a part opens its page. If the window widens past 64em while the menu is open, it closes and focus moves to the current part in the bar, or to the home link on a page with none."
       ],
       "tokens": [
@@ -257,7 +265,7 @@
         },
         {
           "label": "Lockmark row",
-          "value": "In the strip: the lockmark’s 24 px master, 12 px, and the tagline, on one line at the left"
+          "value": "In the strip: the lockmark’s 24 px master, a 12 px gap, then the tagline, on one line at the left"
         },
         {
           "label": "Web address",
@@ -436,7 +444,7 @@
       "id": "20.6",
       "title": "Open the home page on one piece for each pillar, with the step a reader can take now.",
       "rule": [
-        "The home page opens on the pillar row, with one piece under each pillar: an explainer, a tracker, a guide and a step a reader can take now. Each piece is a card with its kicker, headline, a few lines and its date. The Act card carries the take-part mark on its step and the view’s one red.",
+        "The home page opens on the pillar row, with one piece under each pillar: an explainer, a tracker, a guide and a step a reader can take now. Each piece is a card with its kicker, headline, a few lines and its date, in an “As of” line or in its source line. The Act card carries the take-part mark on its step and the view’s one red.",
         "Below them, the atlas’s section opens on its title bar, then lists the everyday questions it answers beside a chart and its source line."
       ],
       "tokens": [
@@ -457,7 +465,7 @@
       },
       "correct": {
         "specimen": "s-20-6-correct",
-        "caption": "The home page at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark theme. At 1,024 px the pillar row breaks after Track, two pillars to a line, as Rule 09.1 sets it."
+        "caption": "The home page at 1440, 1024, 390 and 360 px in the light theme, and at 1440 and 390 px in the dark theme. At 1024 px the pillar row breaks after Track, two pillars to a line, as Rule 09.1 sets it."
       },
       "failure": {
         "specimen": "s-20-6-failure",
@@ -466,11 +474,11 @@
       "specs": [
         {
           "label": "Pillar row",
-          "value": "Each pillar section opens with its cell: Charcoal, the 48 px pillar icon in one color, its word in the intro style, bold, and an arrow to the next; at 1440 px the four cells meet as one band, at 1,024 px two to a line, and on phones one at the top of each section"
+          "value": "Each pillar section opens with its cell: Charcoal, the 48 px pillar icon in one color, its word in the intro style, bold, and an arrow to the next; at 1440 px the four cells meet as one band, at 1024 px two to a line, and on phones one at the top of each section"
         },
         {
           "label": "Cards",
-          "value": "309 px wide at 1440, 460 at 1,024, 350 at 390 and 328 at 360: kicker, headline in the H3 style, a few lines in the small body style, and the date or “As of” line"
+          "value": "309 px wide at 1440, 460 at 1024, 350 at 390 and 328 at 360: kicker, headline in the H3 style, a few lines in the small body style, and the date or “As of” line"
         },
         {
           "label": "Trackers",
@@ -552,7 +560,7 @@
         },
         {
           "label": "Headline",
-          "value": "The title style, balanced: 110 px at 1440, 88.6 at 1,024 and 56 on phones"
+          "value": "The title style, balanced: 110 px at 1440, 88.6 at 1024 and 56 on phones"
         },
         {
           "label": "Count panel",
@@ -560,7 +568,7 @@
         },
         {
           "label": "Body",
-          "value": "Five of 12 columns at 1440 and seven at 1,024 (Rule 07.3)"
+          "value": "Five of 12 columns at 1440 and seven at 1024 (Rule 07.3)"
         },
         {
           "label": "Fact box",
@@ -607,7 +615,7 @@
       "id": "20.8",
       "title": "Build an Act page as a process piece that names who decides and by when, with one way to take part in red.",
       "rule": [
-        "An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s own summary, sets out what the record shows from those who asked for the change and on the concern the law guards, at the length the record holds, and takes no side.",
+        "An Act page opens on the step and its date: what the agency proposes, who decides and when comments close, with the rule’s steps beside the opening and the ask under the step that is open. It quotes the agency’s own summary, sets out what the record shows, from the request for the change to the concerns the law guards and the agency’s own findings, at the length the record holds, and takes no side.",
         "After the hinge divider it lists how to comment, online and by mail, what becomes public and how to read other comments, and gives the ask again. The ask is a red link to the comment page that names the action and the place, with the docket number beside it, and the page says the day we checked its facts."
       ],
       "tokens": [
@@ -636,7 +644,7 @@
       "specs": [
         {
           "label": "Opening",
-          "value": "The 24 px pillar row with Act current, the kicker “Act · How to take part” alone, the headline in the section style, the intro and “Checked November 21, 2026”"
+          "value": "The 24 px pillar row with Act current, the kicker “Act · How to take part” alone, the headline in the section style, the intro and “As of November 21, 2026”"
         },
         {
           "label": "Status panel",
@@ -744,7 +752,7 @@
         },
         {
           "label": "Panels",
-          "value": "Charcoal or Prussian, counted in the section where the panel’s top falls"
+          "value": "Charcoal or Prussian, counted in the section where the panel’s top falls; cells that meet as one band, as the pillar row’s four do at 1440 px, count as one panel"
         },
         {
           "label": "Dark frames",
@@ -770,7 +778,7 @@
       "title": "Share every page as a 1200 by 630 card, its headline over a Charcoal foot that holds the sign-off.",
       "rule": [
         "Each page shares as a 1200 by 630 card on Newsprint: the page’s kicker in the H3 style, its headline at the title size, and a Charcoal foot that holds the wordmark at the left and the lockmark’s 96 px sign-off at the right.",
-        "The card carries no web address until ours is settled, no deck and no icon, and its words go into the image’s alt text too."
+        "The card carries no web address until ours is settled, no deck, the line under a headline, and no icon, and its words go into the image’s alt text too."
       ],
       "tokens": [
         "oa.type.title",
@@ -854,7 +862,7 @@
         "text": [
           "At 16 px, B holds its shape and reads as ours on a light or a dark tab. The lockmark’s nine nodes run together at that size."
         ],
-        "basis": "Rules 04.7 and 08.2; ampersand B alone on the Charcoal tile for avatars and the app icon, approved by our founder and editor on November 7, 2026; the platform rows retrieved November 21, 2026"
+        "basis": "Rules 04.7 and 08.2; ampersand B alone on the Charcoal tile for avatars and the app icon, approved by our founder and editor on November 7, 2026; the platform rows retrieved November 21, 2026; our choice of the three sizes in favicon.ico, since the platform sources we read set none"
       },
       "correct": {
         "specimen": "s-20-11-correct",
@@ -879,7 +887,7 @@
         },
         {
           "label": "Manifest icons",
-          "value": "192 and 512 px; the 512 px icon maskable, with B inside the circle of 40 percent of its width"
+          "value": "192 and 512 px; the 512 px icon maskable, so a phone can crop it to its own shape, with B inside the center circle whose radius is 40 percent of the icon’s width"
         },
         {
           "label": "Head",

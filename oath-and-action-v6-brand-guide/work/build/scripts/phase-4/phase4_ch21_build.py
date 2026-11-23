@@ -1319,8 +1319,10 @@ def kit_plate(aid):
 
 
 # ------------------------------------------------------------------------------------------------ style
+# CR-2 (chat 12): the paragraph reset at zero specificity, so .lab's 12 px and the helpers' margins hold (chapters 16 and 20
+# took the same fix in turn 1)
 BASE = (
-    f'.w{{{ty("body")};color:var(--oa-color-text-primary-on-newsprint);max-width:100%}}.w p{{margin:0}}.w *{{box-sizing:border-box}}'
+    f'.w{{{ty("body")};color:var(--oa-color-text-primary-on-newsprint);max-width:100%}}:where(.w) :where(p){{margin:0}}.w *{{box-sizing:border-box}}'
     f'.lab{{{ty("label")};margin:0 0 12px;color:var(--oa-color-text-secondary-on-newsprint)}}'
     f'.sm{{{ty("bodySmall")}}}.cap{{{ty("caption")};color:var(--oa-color-text-secondary-on-newsprint)}}'
     f'.dl{{{ty("dataLabel")}}}.ui{{{ty("ui")}}}'
@@ -1384,9 +1386,14 @@ def prune(html):
     return out.replace('<style></style>', '')
 
 
-def spec(sid, html, rule, alt, **kw_):
+def spec(sid, html, rule, alt, kit_inputs=(), **kw_):
     kw_.setdefault('readable', True)
     ctx.spec(sid, prune(html), CH, rule, alt, **kw_)
+    if kit_inputs:
+        # PR-S5 (chat 12, engineer W's build half): every kit file the plate prints from, with its SHA-256, so the guide
+        # build warns when the kit draws again after this generator ran
+        ctx.specs[sid]['meta']['kit_inputs'] = {str(f.relative_to(ROOT)): hashlib.sha256(f.read_bytes()).hexdigest()
+                                                for f in kit_inputs}
     return sid
 
 
@@ -1397,22 +1404,65 @@ def app(aid, views=None):
     return f'<div data-oa-app="{aid}"{v}></div>'
 
 
+# CD-S2 (chat 12, specs 15.2): the new crop parts take, until the editor names them in VIEW_WORDS['parts'], the words of
+# the part they show: a pair of boxes is the drawing, a hub the questions, a drawing block where it acts or the drawing,
+# the sheet's head the open sheet; How to read's legend needs no part word
+PART_AS = {'pair': 'drawing', 'hub': 'questions', 'sheettop': 'sheet', 'marks': None,
+           'art': {'A12': 'targets', 'A14': 'drawing', 'A19': 'drawing'}}
+
+
 def view_words(key, aid=None):
     bits = key.split('-')
     out = [VIEW_WORDS['px'].format(w=bits[0]), VIEW_WORDS[bits[1]]]
     own = VIEW_WORDS['page_parts'].get(aid, {})                     # CD-S5 (editor, chat 12)
     for b in bits[2:]:
-        out.append(VIEW_WORDS.get(b) if b in ('screen', 'open') else own.get(b) or VIEW_WORDS['parts'].get(b, b))
-    return ', '.join(out)
+        if b in ('screen', 'open'):
+            out.append(VIEW_WORDS.get(b))
+            continue
+        word = own.get(b) or VIEW_WORDS['parts'].get(b)
+        if word is None and b in PART_AS:
+            alias = PART_AS[b].get(aid) if isinstance(PART_AS[b], dict) else PART_AS[b]
+            word = VIEW_WORDS['parts'].get(alias) if alias else ''
+        out.append(word if word is not None else b)
+    return ', '.join(x for x in out if x)
 
 
 ROWS_CSS = '.rw2+.rw2{margin-top:32px}'
 PAGE_ROWS = [['1440-light'], ['390-light', '390-dark'], ['1440-dark']]
+# CR-22 (chat 12): the guide's plate stage gives a flowing plate 722 px at a 1440 px window (measured in the strict build);
+# the frames of a row share it at one scale (app_plates.py: 16 px apart, a 1 px edge each side). 680 px is the wide true
+# size the guide's frames hold (D3-480, specs 15.2).
+STAGE_1440 = 722
+TRUE_MAX = 680
+
+
+def kit_view(aid, key):
+    f = KIT_PLATES / f'{aid.lower()}.json'
+    if not f.exists():
+        return None
+    return next((v for v in json.loads(f.read_text()).get('views', []) if v.get('key') == key), None)
+
+
+def fits(aid, key, min_h=60):
+    """CD-S2: a crop the kit has cut to its part on both axes (engineer W's crop, specs 15.2), narrow enough to show at
+    true size and tall enough to hold its part; until it is, a plate keeps its earlier frames."""
+    v = kit_view(aid, key)
+    return bool(v) and v['w'] <= TRUE_MAX and v['h'] >= min_h
+
+
+def scale_words(aid, keys):
+    vs = [kit_view(aid, k) for k in keys]
+    if 'scale' not in VIEW_WORDS or not all(vs):
+        return ''
+    sc = min(1.0, (STAGE_1440 - 16 * (len(keys) - 1) - 2 * len(keys)) / sum(v['w'] for v in vs))
+    if sc >= 0.995:
+        return ', ' + VIEW_WORDS['true'] if 'true' in VIEW_WORDS else ''
+    return ', ' + VIEW_WORDS['scale'].format(pct=int(5 * round(sc * 100 / 5)))
 
 
 def rows(aid, layout):
-    return ''.join(f'<div class="rw2"><p class="lab">{" · ".join(view_words(v, aid) for v in r)}</p>{app(aid, " ".join(r))}</div>'
-                   for r in layout)
+    return ''.join(f'<div class="rw2"><p class="lab">{" · ".join(view_words(v, aid) for v in r)}{scale_words(aid, r)}</p>'
+                   f'{app(aid, " ".join(r))}</div>' for r in layout)
 
 
 def chip(kind, rid, link=False):
@@ -1435,10 +1485,22 @@ def grade_word(g):
 
 
 # ------------------------------------------------------------------------------------------------ the view plates
+def screens_opener():
+    """CD-S4 (chat 12): the chapter opens on the home's first screens, 1440 px light and 390 px dark, as chapter 20 opens,
+    once the editor writes their alt and caption (W['opener_screens_alt'], W['opener_screens_caption'])."""
+    return bool(W.get('opener_screens_alt')) and bool(kit_view('A11', '1440-light-screen')) and bool(kit_view('A11', '390-dark-screen'))
+
+
 def s_opener():
     html = css(ROWS_CSS) + f'<div class="w">{rows("A11", PAGE_ROWS)}</div>'
-    return spec('s-21-home', html, None, W['opener_alt'],
-                notes='Drawn by the application kit (A11, the atlas home), full length at four views.')
+    spec('s-21-home', html, None, W['opener_alt'],
+         notes='Drawn by the application kit (A11, the atlas home), full length at four views.')
+    if screens_opener():
+        html = css(ROWS_CSS) + f'<div class="w">{rows("A11", [["1440-light-screen"], ["390-dark-screen"]])}</div>'
+        spec('s-21-opener', html, None, W['opener_screens_alt'],
+             notes='Drawn by the application kit (A11): its first screen at 1440 px light and 390 px dark, one window tall '
+                   'each (CD-S4).')
+    return 's-21-home'
 
 
 def s_view(sid, aid, rid, what):
@@ -1470,30 +1532,40 @@ def s21_1_correct():
 
 
 def s21_2_correct():
-    return s_parts('s-21-2-correct', '21.2', [('A17', [['1440-light-drawing']])],
+    lay = [['1440-light-drawing']] + ([['1440-light-pair']] if fits('A17', '1440-light-pair') else [])   # CD-S2
+    return s_parts('s-21-2-correct', '21.2', [('A17', lay)],
                    'Drawn by the application kit (A17, the atlas home with every variable shown).')
 
 
 def s21_3_correct():
-    return s_parts('s-21-3-correct', '21.3', [('A11', [['1440-light-drawing'], ['1440-light-questions'],
-                                                      ['390-light-questions', '390-dark-questions']])],
+    # CD-S2: once the kit cuts them on both axes, a pair of boxes (one lit, one not) and the pressed question's hub at true size
+    if fits('A11', '1440-light-pair') and fits('A11', '1440-light-hub'):
+        lay = [['1440-light-drawing'], ['1440-light-pair'], ['1440-light-hub'], ['390-light-questions', '390-dark-questions']]
+    else:
+        lay = [['1440-light-drawing'], ['1440-light-questions'], ['390-light-questions', '390-dark-questions']]
+    return s_parts('s-21-3-correct', '21.3', [('A11', lay)],
                    'Drawn by the application kit (A11): the pressed question and the lit parts.')
 
 
 def s21_5_correct():
-    return s_parts('s-21-5-correct', '21.5', [('A12', [['1440-light-targets'], ['390-light-targets']])],
+    lay = [['1440-light-art' if fits('A12', '1440-light-art', 200) else '1440-light-targets'], ['390-light-targets']]   # CD-S2
+    return s_parts('s-21-5-correct', '21.5', [('A12', lay)],
                    'Drawn by the application kit (A12): Reform R-23’s targets and the ink tags.')
 
 
 def s21_7_correct():
-    return s_parts('s-21-7-correct', '21.7', [('A20', [['1440-light-answer']]), ('A14', [['1440-light-rowl14']]),
-                                             ('A13', [['1440-light-rowl14']])],
+    # CD-S2: each wide row beside its 390 px card at true size
+    return s_parts('s-21-7-correct', '21.7', [('A20', [['1440-light-answer']]), ('A14', [['1440-light-rowl14'], ['390-light-rowl14']]),
+                                             ('A13', [['1440-light-rowl14'], ['390-light-rowl14']])],
                    'Drawn by the application kit (A20, A14 and A13): a figure’s claim record open, and a step’s '
                    'chip beside its Register line.')
 
 
 def s21_9_correct():
-    return s_parts('s-21-9-correct', '21.9', [('A18', [['1440-light-sheet']])],
+    # CD-S2: the 390 px card of the sheet's head and first rows at true size, once the kit's crop holds the rows (the union
+    # of specs 15.2; at 18:42 UTC it held the band alone, 262 px)
+    lay = [['1440-light-sheet']] + ([['390-light-sheettop']] if fits('A18', '390-light-sheettop', 400) else [])
+    return s_parts('s-21-9-correct', '21.9', [('A18', lay)],
                    'Drawn by the application kit (A18, the Register with the sheet for Domain D10 open).')
 
 
@@ -1523,9 +1595,16 @@ HOW_RULES = [('Sign tag, raises and lowers', '15.3'), ('Type words', '15.4'), ('
              ('Typed chip', '13.9'), ('Pressed question', '17.10')]
 
 
+def how_marks():
+    """CD-S3 (chat 12, specs 15.3): the legend at true size, A16 at 390 px cropped to its five groups, once the editor's
+    caption for it lands (EXTRA_HOW['marks_caption']), since today's caption names the 1440 px page."""
+    return bool(EXTRA_HOW.get('marks_caption')) and fits('A16', '390-light-marks', 400)
+
+
 def s21_how():
     table = ''.join(f'<div><span class="sm">{_esc(a)}</span><span class="cap">Rule {b}</span></div>' for a, b in HOW_RULES)
-    html = (css(ROWS_CSS + '.rows{max-width:40rem}') + f'<div class="w">{rows("A16", [["1440-light"]])}'
+    frames = [['390-light-marks']] if how_marks() else [['1440-light']]
+    html = (css(ROWS_CSS + '.rows{max-width:40rem}') + f'<div class="w">{rows("A16", frames)}'
             f'<div class="rows mt24">{table}</div></div>')
     return spec('s-21-how-to-read', html, None, EXTRA_HOW['alt'],
                 notes='Drawn by the application kit (A16, How to read), with the rule that sets each mark listed under it '
@@ -1541,9 +1620,10 @@ def s21_15_correct():
         raise Waiting('Rule 21.15’s ratio table needs the kit’s measured contrast on A14 1440-dark (views[].contrast)')
     body = ''.join(f'<div><span class="sm">{_esc(r["ratio_rows"].get(k, k))}</span><span class="cap">{_esc(v.get("token", ""))}</span>'
                    f'<span class="dl">{_esc(r["ratio_value"].format(r=v.get("ratio")))}</span></div>' for k, v in ratios.items())
-    html = (css(ROWS_CSS) + '<div class="w">' + rows('A14', [['1440-dark-drawing'], ['1440-dark-chooser']])
+    art = '1440-dark-art' if fits('A14', '1440-dark-art', 200) else '1440-dark-drawing'   # CD-S2
+    html = (css(ROWS_CSS) + '<div class="w">' + rows('A14', [[art], ['1440-dark-chooser']])
             + f'<p class="lab mt24">{" · ".join(r["ratio_head"])}</p><div class="rows">{body}</div></div>')
-    return spec('s-21-15-correct', html, '21.15', r['correct_alt'],
+    return spec('s-21-15-correct', html, '21.15', r['correct_alt'], kit_inputs=[KIT_PLATES / 'a14.json'],
                 notes='Drawn by the application kit (A14, dark), with the ratios the kit measured on that frame’s pixels.')
 
 
@@ -1580,7 +1660,7 @@ def s21_16_correct():
                 'border-bottom:1px solid var(--oa-color-border-hairline-on-newsprint);font-variant-numeric:tabular-nums}'
                 '.fl{font-weight:var(--oa-font-weight-bold)}.blk{max-width:54rem}')
             + f'<div class="w blk"><p class="lab">{_esc(r["report_label"])}</p><div class="g5">{head}</div>{body}</div>')
-    return spec('s-21-16-correct', html, '21.16', r['correct_alt'],
+    return spec('s-21-16-correct', html, '21.16', r['correct_alt'], kit_inputs=[f],
                 notes=f'Read from the atlas test\u2019s report (plates/atlas-test.json, {len(rep_.get("lines") or []):,} lines, '
                       f'self-test {rep_.get("self_test")}), counted by check and view for the four views.')
 
@@ -1729,12 +1809,23 @@ def s21_5_failure():
     r = R['21.5']
     others = sorted(k for k, v in REFORMS.items() if 'A4' in v['targets'])
     tags = ''.join(f'<span class="tg" data-red="working">{chip("reform", k)} {_esc(PAGES["A12"]["page"]["aims_here"])}</span>' for k in others)
-    html = (css(f'.pl{{display:block;padding:10px 16px;border:4px solid var(--oa-color-data-emphasis-red-on-newsprint);box-shadow:0 0 0 1px var(--oa-color-palette-charcoal);border-radius:22px;{ty("bodySmall")}}}'
-                '.ln2{width:2px;height:32px;margin-left:40px;background:var(--oa-color-graphic-essential-on-newsprint)}'
+    # CR-18 (chat 12): the two targets as the correct plate draws them (A12's figure, chapter 15's pill): stadium pills
+    # 172 px wide, labels centered in the UI type at 600, a 4 px red outline and no Charcoal edge, joined by the 2 px
+    # line with its sign tag; only the tags' five reds differ from the correct plate
+    sign = ATLAS['signs']['+']
+    html = (css(f'.pl{{display:flex;align-items:center;justify-content:center;width:172px;min-height:46px;padding:6px 18px;'
+                f'border:4px solid var(--oa-color-data-emphasis-red-on-newsprint);border-radius:999px;text-align:center;'
+                f'{ty("bodySmall")};font-weight:var(--oa-font-weight-semibold);line-height:1.25;text-wrap:balance}}'
+                '.cn{display:flex;align-items:center;gap:8px;width:172px;padding:0 0 0 85px;height:96px}'
+                '.ln2{width:2px;align-self:stretch;background:var(--oa-color-graphic-essential-on-newsprint)}'
+                f'.sg{{display:inline-flex;align-items:center;gap:6px;margin-left:-14px;{ty("bodySmall")}}}'
+                f'.sg b{{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;'
+                f'background:var(--oa-color-graphic-essential-on-newsprint);color:var(--oa-color-surface-newsprint);{ty("dataLabel")}}}'
                 '.tg{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--oa-color-data-emphasis-red-on-newsprint)}'
                 '.tg .chip{border-color:currentColor}.qq{max-width:390px}')
             + f'<div class="w qq"><p class="lab">{_esc(r["fail_label"])}</p><span class="pl" data-red="working">{_esc(NODES["EC7"]["title"])}</span>'
-            f'<div class="ln2"></div><span class="pl" data-red="working">{_esc(NODES["A4"]["title"])}</span><div class="mt8">{tags}</div></div>')
+            f'<div class="cn"><span class="ln2"></span><span class="sg"><b aria-hidden="true">+</b>{_esc(sign)}</span></div>'
+            f'<span class="pl" data-red="working">{_esc(NODES["A4"]["title"])}</span><div class="mt8">{tags}</div></div>')
     return spec('s-21-5-failure', html, '21.5', r['failure_alt'],
                 notes='A drawing of a fault: every reform that names Variable A4 in its own targets tagged in red, so five '
                       'working reds share the view.', exempt=['red', 'contrast'])  # D4-299: its red words are the fault
@@ -1954,13 +2045,21 @@ def build_chapter():
             'failure': {'specimen': f's-21-{n}-failure', 'caption': _fill(r['failure_caption'])},
             'specs': specs, 'related': rel, 'related_rules': rr, 'builders': r['builders'],
         })
+    # CD-S4 (chat 12): with the editor's words for it, the opener is the home's first screens and the whole home leads the
+    # rules as an extra before group 1; until then the whole home stays the opener, now with its caption placed (CR-20's
+    # named place 12, as chapters 13 to 15 and 20 place theirs)
+    if screens_opener():
+        opener = {'specimen': 's-21-opener', 'caption': W.get('opener_screens_caption') or W['opener_caption']}
+        head = [{'specimen': 's-21-home', 'caption': W['opener_caption'], **({'label': W['home_label']} if W.get('home_label') else {})}]
+    else:
+        opener, head = {'specimen': 's-21-home', 'caption': W['opener_caption']}, []
     ch = {
-        'number': CH, 'anchor': 'atlas', 'title': W['title'], 'part': 'applications', 'opener': 's-21-home',
+        'number': CH, 'anchor': 'atlas', 'title': W['title'], 'part': 'applications', 'opener': opener,
         'instruction': W['instruction'], 'intro': [_fill(x) for x in W['intro']],
         'groups': [{'before_rule': b, 'number': i, 'title': t, 'line': l} for i, (b, t, l) in enumerate(W['groups'], 1)],
         'rules': rules,
-        'extras': [{'after_rule': '21.14', 'specimen': 's-21-how-to-read', 'label': EXTRA_HOW['label'],
-                    'caption': EXTRA_HOW['caption']}],
+        'extras': head + [{'after_rule': '21.14', 'specimen': 's-21-how-to-read', 'label': EXTRA_HOW['label'],
+                           'caption': EXTRA_HOW['marks_caption'] if how_marks() else EXTRA_HOW['caption']}],
         'related_chapters': [{'chapter': c, 'reason': t} for c, t in W['related_chapters']],
         'sources': [_fill(s) for s in W['sources']],
     }
@@ -1990,7 +2089,7 @@ def main():
         return
     if waiting:
         raise SystemExit('not written: plates wait for the kit')
-    used = {ch['opener']} | {x['specimen'] for x in ch['extras']}
+    used = {ch['opener']['specimen']} | {x['specimen'] for x in ch['extras']}
     for rr in ch['rules']:
         used |= {rr['correct']['specimen'], rr['failure']['specimen']}
     ours = set(ctx.specs)

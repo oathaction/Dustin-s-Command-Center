@@ -3,7 +3,10 @@
   "anchor": "atlas",
   "title": "The atlas",
   "part": "applications",
-  "opener": "s-21-home",
+  "opener": {
+    "specimen": "s-21-home",
+    "caption": "Our systems atlas’s home page inside our website, at 1440 and 390 px in the light and the dark theme. A reader has pressed a question about medical bills, and the drawing keeps the parts it reaches at full strength."
+  },
   "instruction": "Apply the system to the atlas, with typed IDs and evidence a step from every claim.",
   "intro": [
     "Our systems atlas, Who Do They Answer To?, lives inside our website, under the site’s masthead, with a title bar of its own. Its home page draws the whole system and starts from a question a reader brings. Each proposed change the atlas weighs, a reform, has a page, and so does each loop, a chain of causes that returns to where it started. The Register files every one of the atlas’s 118 connections once, with its evidence. A connection is an arrow from one variable, a quantity or condition that can rise or fall, to another. An index lists the loops, and a page called How to read explains every mark. The plates follow four views chosen in turn across subjects, as chapter 01 rotates examples (Rules 01.9 to 01.12): a question about medical bills, Reform R-23 on the minimum wage, the Register’s sheet on Congress and the agencies, and Loop R18 on presidential power over watchdogs, each with a finding from the record that one side of a debate may want to skip.",

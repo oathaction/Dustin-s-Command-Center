@@ -2,7 +2,9 @@
 
 Design director, chat 12's fix pass, November 23, 2026. Brief: `work/handoffs/phase-4/20261123_Chat-12-Fix-Brief.md`, sections 1, 2, 3.3, 3.6 and 4. Started 17:51 UTC (`date -u`). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/6f635cd3-ba95-5230-9089-d140c7cc1cf8/scratchpad/c12/fix/design-director/`.
 
-Turn 1 (this turn) files: `work/build/scripts/phase-4/phase4_ch16_build.py` and `phase4_ch20_build.py` outside their word fields, with their outputs; `work/handoffs/phase-4/20261121_Web-Page-Specs.md` and `20261122_Atlas-View-Specs.md`; this file. The editor holds `phase4_ch21_build.py` this turn. Turn 1 items: CR-2, CR-17, CR-20 with CD-S9, CR-22, CE2, CD-S7, AX-7 (chapters 16 and 20), and the atlas engineer's specs for CD-S1, CD-S2 and CD-S3.
+Turn 1 files: `work/build/scripts/phase-4/phase4_ch16_build.py` and `phase4_ch20_build.py` outside their word fields, with their outputs; `work/handoffs/phase-4/20261121_Web-Page-Specs.md` and `20261122_Atlas-View-Specs.md`; this file. The editor holds `phase4_ch21_build.py` this turn. Turn 1 items: CR-2, CR-17, CR-20 with CD-S9, CR-22, CE2, CD-S7, AX-7 (chapters 16 and 20), and the atlas engineer's specs for CD-S1, CD-S2 and CD-S3.
+
+Turn 2 (from 18:41 UTC): `phase4_ch21_build.py` outside its word fields, with its outputs, and the two specs files; the editor holds chapters 16 and 20.
 
 ## Routine calls
 
@@ -17,11 +19,21 @@ Turn 1 (this turn) files: `work/build/scripts/phase-4/phase4_ch16_build.py` and 
 - D4-xxx | CD-S1: the home's head band shrinks to 16 px padding with the intro in `oa.type.body-small` across cols 5 to 10, and the drawing's rows to 44, 44, 204, 96, 92, 44 | The only route to 880 px that keeps every count, route and word: the masthead and title bar are chapter 20's, and R24's labelled line and CE9's longer lit line add height to the boxes
 - D4-xxx | CD-S2: a crop is the union of its part's elements plus 24 px of page, cut on both axes; 680 px or less shows at true size | 680 px is the wide true size the guide's frames hold (D3-480); the union lets one crop hold two boxes and the channel between
 - D4-xxx | CD-S3: How to read's legend is drawn at a 680 px window, where its rows are one column | The 1440 legend is two columns of 644 px, past any true-size plate; 680 keeps the rows' own layout at true size
+- D4-xxx | Turn 2: the editor's two code changes in `phase4_ch21_build.py` stay where they are: `view_words()` with `VIEW_WORDS['page_parts']` (CD-S5) and `typo()` for stored apostrophes in failure plates (DF1) | Both are layout code that reads word fields, and both work as written
+- D4-xxx | Chapter 21's new crops (`pair`, `hub`, `art`, `sheettop`, `marks`) print the words of the part they show (`PART_AS`) until the editor names them | No raw key ever reaches a plate's label, and the editor's own words win once written
+- D4-xxx | A plate takes a new crop only when the kit has cut it to its part (680 px wide or less, tall enough to hold it); until then it keeps its earlier frames | Engineer W's crop on both axes (specs 15.2) had not landed at 18:42 UTC, so today's `pair`, `hub` and `art` crops are 1440 px strips that would show worse than the frames they replace
+- D4-xxx | CD-S4 and CD-S3's switches wait on the editor's words (the opener's alt and caption for the first screens; How to read's caption for the 390 px legend) | Today's captions and alts name the frames they describe; a switch without them would print a caption that misdescribes its plate
+- D4-xxx | Chapter 21's opener places its caption, `W['opener_caption']`, as chapter 20's now does | CR-20's named place 12; the words were written and never placed
+- D4-xxx | CR-11: the bands stay; A11's cover drops to 165 px with CD-S1; on A13 and A16 the breadcrumb row takes the head band's ground, so no Newsprint strip sits between two Charcoal bands; section bands at least 136 px from 64em | The wall test passed with the bands (DR-315); the reader's fixes (A11's hero on Newsprint, A13's band off) would put both first screens past Rule 05.1's 85 percent; 136 px answers the atlas engineer's Request 5a (A12 Routes 85.1)
+- D4-xxx | C11C-SP: the 32 px under A14's phone facts panel goes, the duplicate "How it closes" row takes its label, and "Step through the loop"'s band is off under 48em; C5 confirms or the band returns | The craft reader's named place 4: a 112 px gap and an unlabeled stray line; the band's Newsprint replaces the 32 px's for Rule 05.1
+- D4-xxx | CR-15: a fact panel's source sits inside the panel, its last line (web specs 13.3) | Engineer W's request; specs 10.3's first form and the "39,555" panel already draw it so
 
 ## Rulings
 
 - **DD12-R1, AX-9 (18:35 UTC; specs 15.6):** each sheet of the Register is a page of its own, as its chips' addresses already say. On A13 and A18 the title names the sheet first (the editor's words, R26's "the sheet for Domain D04"), the breadcrumb runs Home / The Register / [Domain D04] with "The Register" a link and the domain's chip as the current page, and the views bar keeps "The Register" current with `aria-current="true"`. For the atlas engineer and the editor.
 - I follow the data lead's R19 to R28 (read 18:00 UTC); R24's labelled second line and R25's "arrows" are built into specs 15.1.
+- **DD12-R2, the Register's head "Numbered loops" (R27), checked 18:44 UTC:** in `plates/a13.json` at 1440 the index head reads Sheet, Variables, Connections, Numbered loops, Reforms, Issue records, then the five grade columns, and the column holds 2, 10, 8, 6 on the first four sheets and 20 for the whole atlas (`atlas:loops-numbered`). It sits right. One fault beside it: the whole atlas's issue cell prints "194 , one retired" with a space before the comma, which the editor's `whole_issues` to "{n}" (the atlas engineer's request 3) removes.
+- **DD12-R3, CR-11 and C11C-SP:** specs 15.7.
 
 ## Contracts
 
@@ -31,6 +43,7 @@ Turn 1 (this turn) files: `work/build/scripts/phase-4/phase4_ch16_build.py` and 
   - **15.3, CD-S3:** a new window width for A16 alone, `680-light-marks`, cropped to `marks` (the five groups); fallback `390-light-marks`.
   - **15.4:** a spec line for CR-8 and CD-S10, if the engineer takes them (the loop at 1.5 times chapter 15's geometry from 64em, weights unchanged, the chooser under the read-aloud column).
 - **DD12-C2, the frame names' form (AX-7, for the engineer and the editor):** every frame's name (its SVG's `aria-label`, AL-18) says what that frame shows that its plate's other frames do not. A whole page keeps AL-18's short form ("Loop R18’s page in our systems atlas. At 1440 px, on Newsprint."). A crop or a state names the part and the state first, then the width and the ground: "The everyday questions, with “Why can the same care produce different bills?” pressed. At 1440 px, on Newsprint." The words are the editor's (`--page-words`, by part key); the kit composes them. Chapter 20's state frames follow the same form (see "Done", AX-7).
+- **DD12-C3, turn 2 (18:48 UTC):** atlas specs 15.7 (CR-11's covers, section bands at 136 px, CR-12 on A14 and A19, C11C-SP, the quotations' own class `wa-quote`, A12's `art` part, frame names) for the atlas engineer; web specs section 13 (CR-12 on A08, CR-14's separators and run-in heads, CR-15's one source form, A08's comment screen at 85.8 percent) for engineer W.
 
 ## Words for the editor
 
@@ -44,6 +57,15 @@ Chapters 16 and 20's word fields are the editor's in turn 2. The layout below al
 6. **Rule 20.1's "Order" and "Headings" (the accessibility lead's ask):** `R['20.1']['specs']` is a list of label and value pairs, so two more pairs need no new structure.
 7. **`R['16.10']` and `R['16.11']`:** unchanged; CD-S7 is not built (Not fixed).
 
+**Chapter 21 (turn 2).** I added no key. Each of these is read with `.get()` and switches a plate only once it exists:
+
+8. **CD-S4:** `W['opener_screens_alt']`, `W['opener_screens_caption']` (the opener becomes A11's first screens, 1440 px light and 390 px dark) and `W['home_label']` (the whole home then leads the rules as an extra, under `W['opener_caption']`). Drafts: alt "The atlas home’s first screen twice: on a desktop at 1440 px in the light theme and on a phone at 390 px in the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the desktop shows the whole drawing of the eight parts with a count on each arrow, and the phone the start of the stacked list."; caption "The atlas home’s first screen on a desktop in the light theme and on a phone in the dark theme: the whole circuit above the fold, as Rule 21.2 asks."; label "The atlas home, full length".
+9. **CD-S3:** `EXTRA_HOW['marks_caption']` (the extra then shows the legend at 390 px, true size). Draft: "Our atlas’s How to read page at 390 px in the light theme, at true size: every mark its pages use, with its meaning. The table beside it names the rule that sets each mark."
+10. **CD-S2:** `VIEW_WORDS['parts']` or `page_parts` entries for `pair` (draft "Wealth and Voice, one lit"), `hub` ("the pressed question’s hub"), `art` ("where it acts" on A12, "the drawing" on A14), `sheettop` ("the sheet’s head and first rows"), `marks` ("the marks"); until then the plates print the words of the part each shows.
+11. **CR-22:** `VIEW_WORDS['scale']` and `['true']`, as chapter 20's (Words 3).
+12. **AX-7:** the kit's `frame_alts` (the atlas engineer's "Words for"), one name a crop in DD12-C2's form, part and state first. Drafts: `"A11 1440-light-questions"` "The everyday questions, with “Why can the same care produce different bills?” pressed: a check before its words, bold words and a 2 px edge. At 1440 px, in the light theme."; `"A11 1440-light-drawing"` "The drawing of the eight parts, Wealth, Checks and Your household lit for the pressed question, the others muted. At 1440 px, in the light theme."; `"A12 1440-light-targets"` "Where Reform R-23 acts: Household income and Households’ financial security outlined in red, joined by a connection that raises. At 1440 px, in the light theme."; `"A14 1440-dark-drawing"` "Loop R18’s drawing with Reform R-11’s three targets in red. At 1440 px, in the dark theme."; `"A14 1440-dark-chooser"` "The reforms that aim at Loop R18, Reform R-11 chosen. At 1440 px, in the dark theme."; `"A19 1440-dark-stepper"` "The stepper on step 2 of 2, its status line and four buttons in one row. At 1440 px, in the dark theme."
+13. **`R['21.7']['correct_caption']`:** the plate now sets each wide row beside its 390 px card at true size; the caption says "at 1440 px" only.
+
 ## Done
 
 - **CD-S1, CD-S2, CD-S3 (specs for the atlas engineer), 18:02 UTC:** `20261122_Atlas-View-Specs.md` section 15, summed in Contracts DD12-C1. Built by the atlas engineer; the plates take the new frames in my turn 2.
@@ -56,18 +78,37 @@ Chapters 16 and 20's word fields are the editor's in turn 2. The layout below al
 - **AX-9's statement (the atlas engineer's code, mine to rule first), 18:35 UTC:** specs 15.6 and Rulings DD12-R1.
 - **AX-7, chapters 16 and 20:** read every frame name in `plates/a04.json` to `a10.json` (42 frames, by script: no name repeats within a plate file) and the chapter 16 alts. Chapter 20's state frames already name their state after the width and ground ("its first screen", "the menu open"), and no two frames of one plate share a name; chapter 16 places no kit frame, and each plate's alt describes its own drawing. No change; DD12-C2 sets the form for chapter 21's crops (turn 2).
 
+**Turn 2, chapter 21**
+- **CR-2 in chapter 21:** the same reset (`:where(.w) :where(p)`), so the plate labels' 12 px holds there too; every fragment grew 16 bytes.
+- **CR-18:** Rule 21.5's failure draws its two targets as the correct plate does: stadium pills 172 px wide, labels centered at 600, the 4 px red outline and no Charcoal edge, joined by the 2 px line with its sign tag ("+ raises"); only the five red tags differ. Looked at in my build at 1440 (18:52 UTC).
+- **CD-S2, placed:** Rule 21.7 sets each wide row (A14's evidence row, A13's Register line) beside its 390 px card at true size (the kit's `390-light-rowl14`, looked at); Rules 21.2, 21.3, 21.5, 21.9 and 21.15 take `pair`, `hub`, `art` and `sheettop` as soon as the kit cuts them on both axes (`fits()`), and keep their frames until then. The 1440 px crops stay scaled until engineer W's crop lands.
+- **CD-S3 and CD-S4, wired:** How to read's 390 px legend and the first-screens opener switch on with the editor's captions (Words 8, 9); the kit draws `390-light-marks`, 390 by 2,987 px. Meanwhile the opener now places its caption.
+- **CR-19:** the crops' own margins (24 px of page above the first line, the columns that hold the part) are specs 15.2's crop, engineer W's; 21.13's dark stepper crop now marks the stepper's own block (the atlas engineer). Nothing more in the generator.
+- **CR-22, chapter 21:** the rows compute their scale like chapter 20's and print it once the editor writes the words (Words 11).
+- **CR-11, CR-12, CR-14, C11C-SP:** decided in the specs (atlas 15.7; web 13.1 and 13.2); the kit work is the engineers'. CR-14's 16.8 part landed in turn 1.
+- **AX-7, chapter 21:** the form is DD12-C2; the atlas engineer's `frame_alts` carries the names; drafts for the editor (Words 12).
+- **PR-S5, chapter 21's part:** `s-21-15-correct` and `s-21-16-correct` write `kit_inputs` (`plates/a14.json`, `plates/atlas-test.json`, each with its SHA-256) into their manifest entries, so engineer W's build warns when the kit draws again after the generator.
+- **The atlas engineer's Request 5:** (a) section bands 136 px; (b) quotations under `wa-quote`; (c) AX-9 in 15.6; and A12's `art` crop, 26 px tall, flagged in 15.7.
+- **Engineer W's CR-15 request:** web specs 13.3.
+
 ## Requests
 
 - **DD12-Q1, to engineer W (18:27 UTC): A08's "How to send a comment" screen now measures 85.8 percent Newsprint at 1440 px light,** past Rule 20.9's 85, in `plates/a08.json` (the kit's own fault line: "Newsprint 85.8 percent, outside 60 to 85"); its panel box narrowed from 60.2 to 44.7 percent of the width, so I read it as CR-15's ask panel at cols 3 to 8. Rule 20.9's correct plate prints the figure, so the plate shows a screen that fails its own rule until the kit's page passes again. A taller panel, or the panel back at its width with the text's edge kept at col 8, would bring it under 85.
 - **DD12-Q2, to engineer W (optional):** the kit's screen measure could list, per screen, the panels of other sections that show in it (`panels_seen`), so Rule 20.9's plate reads them from the plate and not from the export's pixels (`seen_first()` in `phase4_ch20_build.py`).
 - **DD12-Q3, to the main session: CD-S7** needs a frame the application kit draws (Not fixed).
 - **DD12-Q4, to the main session (for the record):** snapshot commit 24e77ccd, titled for engineer W's fixes, also carries my 18:12 UTC generator outputs (chapters 16 and 20); `s-16-13-correct.html` and `phase4_ch16_build.py` moved again at 18:38 UTC.
+- **DD12-Q5, to the atlas engineer (18:48 UTC):** specs 15.7 (the covers on A13 and A16, bands at 136 px, CR-12 on A14 and A19, C11C-SP, `wa-quote`), and A12's `art`, which marks the heading alone (26 px). AX-9 is ruled (15.6).
+- **DD12-Q6, to engineer W (18:48 UTC):** web specs 13.1 to 13.4 (A08's heading and quotation, separators, run-in heads, the fact panels' source inside, the comment screen's 85.8). And specs 15.2's crop on both axes (the atlas engineer's Request 1): until it lands, chapter 21's plates keep their scaled crops; once it lands and the kit draws again, a run of `phase4_ch21_build.py` places the new crops with no other change.
+- **DD12-Q7, to the main session:** chapter 21's word fields need a short pass for Words 8 to 13 (the editor's); each switch is wired and waits on its key. PR-S5's chapter 20 half (`s-20-9-correct` reads `plates/a06.json` to `a08.json` and three export PNGs; `s-20-files` reads the exports manifest and its files) belongs to whoever holds `phase4_ch20_build.py`: the same `kit_inputs` meta, about ten lines.
 
 ## Not fixed
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
 | CD-S7 | CD (`20261123_Chat-12-CD-Review.md`) | `s-16-10-correct` (0:08, 0:30), `s-16-11-correct` and `-failure`; `phase4_ch16_build.py` | The storyboard and the vertical frame draw empty boxes ("Placeholder: Dustin’s voice over chart S04") where the guide prints S04 | Draw S04 from the chart kit in those frames, with its source line on screen (Rule 16.10) | The chart kit draws S04 273 px tall at every width from 224 to 452 px (`K.draw`, measured 18:11 UTC), and the quarter-size frame has 281 px above its caption-safe area, so the drawing fits but its source line, which Rule 16.10 puts on screen, cannot; a storyboard frame is 200 by 112 px. The chart kit is approved and draws no reduced picture, and a specimen cannot carry the kit's SVG (`prefix_classes` renames its role classes), while a scaled drawing in a correct plate fails the guide's 13 px floor. The route: the application kit draws a vertical video frame on S04 at 1080 by 1920 (and a 1920 by 1080 frame for the storyboard), as A09 draws the share card, with the chart from the chart kit at video size, the caption band and the source line, its words from `phase4_ch16_build.py`; the plates place it with its scale stated, and the data lead signs it off. About an hour of engineer W's time; its bytes about A09's (one frame each, picture markup) | Open: for the main session to assign (engineer W) or to carry to board 1 |
+| CD-S2 (part) | CD | `s-21-2`, `-3`, `-5`, `-9`, `-15-correct` | The 1440 px crops still print at half size | Crops cut on both axes, true size | Engineer W's crop (specs 15.2) had not landed by 18:52 UTC; the plates switch with `fits()` once it does | Open, waits on engineer W |
+| CD-S3, CD-S4 | CD | `s-21-how-to-read`, the opener | How to read at half size; the opener is the whole home four times | The 390 px legend; the first screens | Wired; each waits on the editor's caption and alt (Words 8, 9), since today's words name the old frames | Open, waits on words |
+| PR-S5 (chapter 20) | Production | `phase4_ch20_build.py` | Two plates print kit outputs with no stale check | `kit_inputs` in their manifest entries | The editor holds that file in turn 2 | Open, Requests DD12-Q7 |
 
 ## Bytes
 
@@ -79,6 +120,8 @@ Each chapter as the strict build weighs it: before, the main session's build of 
 | 20 | 839,096 | 858,352 | +19,256 | +2,523 by arithmetic: the fragments 59,798 to 62,026 (+2,228, of which Rule 20.3's failure footers +2,032 and the reset +352; Rule 20.9's plate −156) and the opener's caption in `20-web.json` (+295). The other 16,733 bytes are engineer W's frames from its A04 to A10 rebuild (18:13 UTC), placed by the same plates |
 
 At 18:38 UTC 16.13's poster rule took `:scope` (Tested), 6 bytes in one fragment, after my strict build. Chapter 16 stays under its 300,000 (79,940 to spare at the build); chapter 20 is 113 percent of its 757,000, reported (DR-271). Nothing was cut to meet a figure.
+
+**Turn 2, chapter 21:** 1,128,286 bytes in my turn 1 build (18:16 UTC) and 1,205,366 in my turn 2 build (18:49 UTC), +77,080. Mine, by arithmetic on the files (my copies before turn 2 against now): the fragments 87,827 to 89,688 (+1,861: the reset's 16 bytes in the 32 other fragments, Rule 21.5's failure +980 and Rule 21.7's two 390 px rows +369, each with its 16; their frames weigh beside it as placed), `21-atlas.json` +258 (the opener's caption) and the manifest +269 (`kit_inputs`). The rest is the atlas engineer's rebuilt frames (16 answers, names, the new crop keys) and its style. Chapter 21 is 184 percent of its 655,000, reported (DR-271); nothing was cut to meet a figure.
 
 ## Tested
 
@@ -93,11 +136,21 @@ At 18:38 UTC 16.13's poster rule took `:scope` (Tested), 6 bytes in one fragment
 - A second browser run after "OK to open one" (18:34 to 18:39 UTC, same build): the Charcoal-stage pictures (the capture set's convention) of 16.8, 16.9 and 16.13, and chapter 20's opener, 20.1, 20.3 failure, 20.5 failure and 20.9 at 390 px, read at true size; the measures by script in the page (`cap/measures.json`): the plate stage 722.7 px wide at 1440; the boxes' gaps, opener caption 12, 16.4 kicker 12, 16.13 title 16; 16.2's photograph frame and placeholder share their top; 16.11's frame and WebVTT box share their top. 16.9's tab shows its Stone edge on Charcoal. **16.13's poster showed no edge there**: the guide scopes a plate's style to its stage (`@scope ([data-specimen])`), and the stage carries the surface class, so my first selector never matched. Fixed at 18:38 UTC with `:scope:where([class~="oa-surface-charcoal"]) .pst`; the generator rewrote `s-16-13-correct.html` alone (`git status`, `git diff --stat`). Checked in a small page of my own with the tokens, the fragment and a Charcoal stage (18:40 UTC): the computed shadow is 1 px of rgb(93, 99, 109), Stone, and the pixels at the poster's edges read Stone. I started that check on a "WAIT" reading by mistake, so for a few seconds three browsers were open.
 - S04 drawn by the chart kit in Node at widths 224 to 452 px (`K.draw`, 18:11 UTC): 273 px tall at every width, no guard fault from 238 px (CD-S7's row).
 
+**Turn 2**
+- `phase4_ch21_build.py --check` under the lock (18:47 UTC): exit 0. Written under the lock at 18:48 and 18:52 UTC. Against my copies taken at 18:44 UTC: every chapter 21 fragment grew the reset's 16 bytes, and only Rules 21.5 (failure) and 21.7 moved more; `21-atlas.json` and the manifest moved; `git status` showed no other file of mine, the rest being the editor's chapters 16 and 20 and the engineers' kit files.
+- The plates' choices by script (18:47 UTC): `fits()` false for A11 `pair` and `hub`, A12 `art` and A14 `art` (1440 px wide), true for A18 `390-light-sheettop` (then gated off: 262 px, the band alone), A13 and A14 `390-light-rowl14`, A16 `390-light-marks`; the labels each new crop would print; `kit_inputs` in both manifest entries.
+- The Register's index head and columns in `plates/a13.json` (18:44 UTC), DD12-R2.
+- Strict build to my scratch under the lock (18:48:47 to 18:49:04 UTC): exit 1 on 62 warnings, every one a kit plate older than an input another owner was editing (chapter 20's words, the editor's turn 2; `atlas-page.mjs`, the atlas engineer's); none from my files. Page 14,309,714 bytes.
+- In Chromium, one browser after "OK to open one" (18:49 to 18:52 UTC, that build at 1440 px): Rules 21.5 (failure), 21.7 and 21.9's plates looked at, and the opener's caption read from the page.
+
 ## Not tested
 
 - 16.13's poster edge in the full guide page after the `:scope` fix: checked in my own small page only; the strict build ran before it.
 - The words the editor will add (Words for the editor 1 to 4): their layout paths ran only with the keys absent.
 - The atlas specs (section 15): not drawn; every figure there is arithmetic from the measured export, to be measured by the kit's C5 once built.
 - The guide check (the main session's), screen readers, forced colors and print.
+- Turn 2: the plates' new crops (`pair`, `hub`, `art`, the legend, the first-screens opener) in a page, since none switched on; their wiring ran with the keys absent, and the labels by script only. Specs 15.7 and web specs 13: not drawn or measured; the engineers' C5 runs measure them.
 
 Turn 1 done, 18:40 UTC
+
+Turn 2 done, 18:53 UTC

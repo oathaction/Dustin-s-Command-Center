@@ -387,7 +387,7 @@ function view_reform({ pid, P, A, F, panels, spec }) {
   // PR-S10: the panel dates the status by the word "Checked", so it never prints "As of" twice where the stored status
   // itself opens "As of ..." (15 of the 50 reforms)
   const status = `<div class="wa-facts${panels.includes('Reform') ? ' oa-surface-charcoal ws-panel' : ''}" data-oa-part="status"><p class="lab">${esc(P.status_label)}</p>`
-    + `<p class="wa-small" data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.checked, { date: r.status.checked_words }))}</p>`
+    + `<p class="wa-small" data-status-date="${esc(r.status.checked || 'none')}" data-atlas-reform="${esc(r.id)}">${esc(r.status.checked ? fill(A.checked, { date: r.status.checked_words }) : A.not_checked)}</p>`
     + `<p class="wa-small wa-stored wa-wide48" data-atlas-field="status">${stored(r.status.text, I)}</p>`
     + `<dl><div><dt>${esc(P.problem)}</dt><dd><a href="#${pid}-problem">${gw(r.problem.grade)}</a></dd></div><div><dt>${esc(P.remedy)}</dt><dd><a href="#${pid}-remedy">${gw(r.remedy.grade)}</a></dd></div></dl>`
     + `<p class="wa-cap wa-wide48">${esc(r.band_words || '')}</p></div>`
@@ -433,7 +433,7 @@ function view_reform({ pid, P, A, F, panels, spec }) {
     + `<p data-effects-confidence="${esc(r.id)}">${fill_html(P.effects_confidence, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`;
   const effects = effect_rows(r, F);
   const routes = route_rows(r, A, I);
-  const routes_lede = `<p>${esc(P.complements_heading)}: ` + v.complements.map((c) => `${link_chip('Reform', c.id, I)} “${esc(c.title)}”`).join('; ') + `</p>`;
+  const routes_lede = v.complements.length ? `<p>${esc(P.complements_heading)}: ` + v.complements.map((c) => (c.id ? `${link_chip('Reform', c.id, I)} “${curly(c.title)}”` : `<span class="wa-stored" data-atlas-field="complements">${stored(c.text, I)}</span>`)).join('; ') + `</p>` : '';
   const srcs = `<details class="oa-disclosure wa-src"><summary class="oa-disclosure-summary"><span class="oa-disclosure-label">${esc(P.sources_summary)}</span>${CHEV()}</summary>`
     + `<div class="oa-disclosure-body"><ul>` + v.sources.map((s) => `<li id="${pid}-source-${low(s.id)}" class="wa-small">${esc([s.publisher, s.title, s.year].filter(Boolean).join(', '))}${s.url ? `, <span class="wa-url">${url_html(s.url)}</span>` : ''}</li>`).join('')
     + `</ul></div></details>`;
@@ -885,8 +885,9 @@ ${under(BP.tablet, `${W} .oa-table-grid,${W} .oa-table-grid tbody,${W} .oa-table
  ${W} .oa-table-grid thead{display:none}${W} .oa-table-grid tr{padding:16px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
  ${W} .oa-table-grid .oa-table-th,${W} .oa-table-grid .oa-table-td{padding:2px 0;border:0;text-align:left;white-space:normal;min-width:0}
  ${W} .oa-table-grid td[data-k]::before{content:attr(data-k) ": ";font-weight:var(--oa-font-weight-semibold)}
- ${W} .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}${W} .wa-gkey li{flex-wrap:nowrap;min-width:0}
+ ${W} .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}${W} .wa-gkey li{flex-wrap:wrap;min-width:0}
  ${W} .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}${W} .wa-index tbody tr>th{grid-column:1/-1}`)}
+${at(BP.phone, `${W} .wa-gkey li{flex-wrap:nowrap}`)}
 ${W} .wa-band{padding:24px;margin-top:80px}
 ${at(BP.tablet, `${W} .wa-band{padding:32px}`)}
 ${W} .wa-band .ws-h2.wa-bh{margin:0 0 16px !important}

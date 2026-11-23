@@ -288,7 +288,8 @@ def reform_rec(rid):
             "routes": [{"code": x["route"], "name": routes.get(x["route"]), "who": x["who"], "feasibility": x["feasibility"],
                         "note": x["note"], "checked": x["checked"], "checked_words": words_date(x["checked"]) if x["checked"] else None}
                        for x in r["routes"]],
-            "status": {"text": r["status"]["text"], "checked": r["status"]["checked"], "checked_words": words_date(r["status"]["checked"])},
+            # PR-M2: a reform whose status the atlas has not dated carries none (14 of the 50), never a stop
+            "status": {"text": r["status"]["text"], "checked": r["status"]["checked"], "checked_words": words_date(r["status"]["checked"]) if r["status"]["checked"] else None},
             "complements": r["complements"], "sources": r["sources"], "tradeoffs": r.get("tradeoffs")}
 
 
@@ -517,7 +518,9 @@ def view_reform(spec):
     return {"reform": r, "targets": [var_rec(t) if t in V["nodes"] else link_rec(t) for t in r["targets"]],
             "between": [link_rec(k) for k in between], "tags": shared,
             "loops_named": [{"id": k, "drawn": bool({c for c, _ in V["loops"][k]["chain"]} & drawn)} for k in r["loops"]],
-            "complements": [{"id": k, "title": V["reforms"][k]["title"]} for k in r["complements"]],
+            # PR-M2: a complement the atlas files as a reform takes its chip and title; any other entry (a policy code, a
+            # stored phrase) prints as stored
+            "complements": [{"id": k, "title": V["reforms"][k]["title"]} if k in V["reforms"] else {"text": k} for k in r["complements"]],
             "sources": [{"id": s, **{f: V["sources"][s].get(f) for f in ("publisher", "title", "year", "url", "kind")}} for s in r["sources"]],
             "figure": fig and {k: fig[k] for k in ("svg", "h", "red")}}
 

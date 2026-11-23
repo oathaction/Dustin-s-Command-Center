@@ -20,7 +20,7 @@
       "before_rule": "16.5",
       "number": 2,
       "title": "The record behind each photograph",
-      "line": "Each photograph runs with a caption a reader can check and alt text for each crop, and our rights ledger records its rights and any consent before it runs."
+      "line": "Each photograph runs with a caption a reader can check and alt text for each crop, and our rights ledger, our record of every picture we use, holds its rights and any consent before it runs."
     },
     {
       "before_rule": "16.8",
@@ -139,7 +139,7 @@
         },
         {
           "label": "For print or an export",
-          "value": "A grayscale conversion made from the original file, never from the 1,200 px copy the page shows"
+          "value": "A grayscale conversion made from the original file; the page’s 1,200 px copy is for screens only"
         },
         {
           "label": "Color",
@@ -456,6 +456,10 @@
         {
           "label": "The rights ledger row",
           "value": "Maker, source, date, place, license or permission, consent, where the caption came from, the file and its original"
+        },
+        {
+          "label": "File",
+          "value": "<code>YYYYMMDD_Photograph-[Subject].jpg</code> for the copy we publish, dated the day it joins the ledger; the original kept as received, its name in the same row"
         }
       ],
       "related": [
@@ -557,7 +561,7 @@
       },
       "correct": {
         "specimen": "s-16-8-correct",
-        "caption": "Two placeholders: a 3:2 frame on Newsprint for an article, and a 4:5 frame on Charcoal for a portrait post in a dark mode. Each says what it waits for in words."
+        "caption": "Two placeholders: a 3:2 frame on Newsprint for an article, and a 4:5 frame on Charcoal for a portrait post. Each says what it waits for in words."
       },
       "failure": {
         "specimen": "s-16-8-failure",
@@ -568,6 +572,10 @@
           "label": "Frame",
           "value": "The photograph’s ratio and display size",
           "token": "oa.color.border.strong.onNewsprint"
+        },
+        {
+          "label": "Display size",
+          "value": "The size the photograph will run at, read from the layout it waits in, such as an article’s column (Rule 20.7) or a report’s grid (Rule 07.3)"
         },
         {
           "label": "Edge",
@@ -630,6 +638,7 @@
       "tokens": [
         "oa.color.surface.charcoal",
         "oa.color.text.primary.onCharcoal",
+        "oa.color.border.hairline.onCharcoal",
         "oa.type.label",
         "oa.type.caption"
       ],
@@ -654,7 +663,7 @@
         },
         {
           "label": "Label on the picture",
-          "value": "“Generated image” on a solid Charcoal tab, top left",
+          "value": "“Generated image” on a solid Charcoal tab, top left, in Newsprint words with a 1 px Stone edge, so it stays a tab over a dark corner of a picture",
           "token": "oa.color.surface.charcoal"
         },
         {
@@ -679,19 +688,19 @@
         },
         {
           "label": "YouTube",
-          "value": "In YouTube Studio’s “AI use” setting, answer Yes for any realistic generated or altered content (YouTube Help, read November 21, 2026)"
+          "value": "In YouTube Studio’s “AI use” setting, answer Yes for any realistic generated or altered content (YouTube Help, retrieved November 21, 2026)"
         },
         {
           "label": "TikTok",
-          "value": "Turn on its label for AI-generated content, which it requires for realistic scenes or people (its Community Guidelines, read November 21, 2026; the label’s wording from a search of TikTok’s help pages, which would not open to us)"
+          "value": "Turn on its label for AI-generated content, which it requires for realistic scenes or people (its Community Guidelines, retrieved November 21, 2026; the label’s wording from a search of TikTok’s help pages, which would not open to us)"
         },
         {
           "label": "Instagram, Threads and Facebook",
-          "value": "Turn on Instagram’s “Label as made with AI” when sharing; Meta shows the label as “AI info” (Meta’s newsroom, read November 21, 2026; Instagram’s help page from a search, since it would not open to us)"
+          "value": "Turn on Instagram’s “Label as made with AI” when sharing; Meta shows the label as “AI info” (Meta’s newsroom, retrieved November 21, 2026; Instagram’s help page from a search, since it would not open to us)"
         },
         {
           "label": "LinkedIn",
-          "value": "No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (LinkedIn Help, read November 21, 2026)"
+          "value": "No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (LinkedIn Help, retrieved November 21, 2026)"
         },
         {
           "label": "X",
@@ -733,7 +742,7 @@
       },
       "correct": {
         "specimen": "s-16-10-correct",
-        "caption": "A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and the step at 0:50, and every figure said is the chart’s own. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
+        "caption": "A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and the step at 0:50. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
       },
       "failure": {
         "specimen": "s-16-10-failure",
@@ -770,7 +779,7 @@
         },
         {
           "label": "Title and end frames",
-          "value": "Chapter 23, at 1920 by 1080 and 1080 by 1920, each with its caption-safe area"
+          "value": "Chapter 23, at 1920 by 1080 and 1080 by 1920, each with its caption-safe area, the part no app button or crop covers (Rule 16.11)"
         },
         {
           "label": "Music",
@@ -797,7 +806,7 @@
       "title": "Caption every video, and have a person check every word.",
       "rule": [
         "Every video carries closed captions, made from the final script and checked word for word against the final cut by a person before it posts. Captions, in the W3C’s words, are a “synchronized visual and/or text alternative for both speech and non-speech audio information needed to understand the media content”. A viewer can turn closed captions on and off in the player. Open captions are burned into the picture itself.",
-        "Upload a caption file, a text file of timed lines, wherever a platform takes one: WebVTT (.vtt) on our own pages, WebVTT or SubRip (.srt) on YouTube, and SubRip on LinkedIn and X. On TikTok and Instagram, where we found no way to upload a file, turn on the app’s own captions and correct every word before publishing. Treat any automatic caption as a first draft. Burn captions in only where a platform offers neither, inside chapter 23’s caption-safe area, the part of the frame no app button or crop covers, and never on top of closed captions. Put a sound that matters, such as a gavel, in square brackets, and name a speaker who is off screen."
+        "Upload a caption file, a text file of timed lines in one of two formats, WebVTT (.vtt) or SubRip (.srt), wherever a platform takes one: WebVTT on our own pages, either on YouTube, and SubRip on LinkedIn and X. On TikTok and Instagram, where we found no way to upload a file, turn on the app’s own captions and correct every word before publishing. Treat any automatic caption as a first draft. Burn captions in only where a platform offers neither, inside chapter 23’s caption-safe area, the part of the frame no app button or crop covers, and leave closed captions off that video, so each line shows once. Put a sound that matters, such as a gavel, in square brackets, and name a speaker who is off screen."
       ],
       "tokens": [
         "oa.color.surface.charcoal",
@@ -826,7 +835,7 @@
         },
         {
           "label": "Files",
-          "value": "WebVTT (<code>.vtt</code>) on our pages; YouTube takes <code>.vtt</code>, <code>.srt</code> and other formats (YouTube Help, read November 21, 2026); LinkedIn takes <code>.srt</code> on desktop (LinkedIn Help, read November 21, 2026); X takes <code>.srt</code> (X Help, from a search, since it would not open to us)"
+          "value": "WebVTT (<code>.vtt</code>) on our pages; YouTube takes <code>.vtt</code>, <code>.srt</code> and other formats (YouTube Help, retrieved November 21, 2026); LinkedIn takes <code>.srt</code> on desktop (LinkedIn Help, retrieved November 21, 2026); X takes <code>.srt</code> (X Help, from a search, since it would not open to us)"
         },
         {
           "label": "TikTok and Instagram",
@@ -838,7 +847,7 @@
         },
         {
           "label": "Burned-in captions",
-          "value": "Only where a platform offers neither, inside chapter 23’s caption-safe area, never doubled"
+          "value": "Only where a platform offers neither, inside chapter 23’s caption-safe area, with closed captions off"
         },
         {
           "label": "Lines",
@@ -953,6 +962,7 @@
         "oa.size.target.touch",
         "oa.color.surface.charcoal",
         "oa.color.text.primary.onCharcoal",
+        "oa.color.border.hairline.onCharcoal",
         "oa.type.h4",
         "oa.type.bodySmall",
         "oa.type.label"
@@ -978,7 +988,7 @@
         },
         {
           "label": "Poster",
-          "value": "A frame from the video, usually its title frame (chapter 23), with alt text that gives its words (Rule 19.4)"
+          "value": "A frame from the video, usually its title frame (chapter 23), with alt text that gives its words (Rule 19.4); on a dark surface, a 1 px Stone edge"
         },
         {
           "label": "Player",

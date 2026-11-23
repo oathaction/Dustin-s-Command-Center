@@ -562,3 +562,24 @@ Ruled 18:35 UTC. The chips already link each sheet at its own address (`/atlas/r
 - **Locator:** unchanged (R28).
 
 A18 (the sheet for Domain D10) takes the same three changes. T1 reads the last crumb as a chip on A13 and A18.
+
+### 15.7 Turn 2: the bands, display type, the loop's phone head, and the atlas engineer's requests (18:48 UTC)
+
+From the craft reader's CR-11, CR-12 and named place 4 (C11C-SP), and the atlas engineer's Request 5 (its notes, 18:40 UTC). For the atlas engineer.
+
+**CR-11, the bands.** The creative director's wall test passed with the Charcoal title bar and the head and section bands as part of what carries the atlas's look (DR-315, CD review), and Rule 05.1 needs a dark element on the home's and the Register's first screens, so the bands stay. Two places change:
+- **A11:** the title bar and the head band stay one cover; with 15.1's band it is 165 px (was 217). The 1 px hairline between them stays: it is the edge of the navigation landmark.
+- **A13 and A16 from 64em (no sandwich):** the breadcrumb row takes the head band's ground. Its row sits on Charcoal (`oa-surface-charcoal`, the band's inks: links Newsprint, separators and the current crumb as on a dark page; the locator in its dark-theme form), directly under the title bar's hairline and directly above the head band, so title bar, crumbs and head read as one cover with no Newsprint strip between two Charcoal bands. The head band's top padding drops by the crumb row's height, so the cover is no taller than today's bar and band together. Under 64em nothing changes (no head band there).
+- **Section bands:** at least **136 px** tall from 64em (was 128; the atlas engineer's Request 5a: A12's Routes screen reads 85.1 percent Newsprint at 1440 since CR-6's rows grew shorter, and the extra 8 px of a full-width band is about 0.8 percent of the window). Under 64em 112 stays.
+
+**CR-12 on A14 (and A19).** The `h1` opens on a quotation mark that hangs, as web specs 13.1 sets (the letters of every line on one left edge). The grade line under it sets in `oa.type.body` with its chips in `oa.type.data-label` at their usual 24 px height, so the chips no longer read as footnotes in a larger line; its line height is the body's.
+
+**C11C-SP, the loop's phone head (A14 and A19 under 48em).** I change the engineer's call (D4-296): the 32 px of space under the facts panel goes; the duplicate "How it closes" row under the panel keeps its place but takes its label, the facts panel's own words for the row, in `oa.type.label`, secondary, so it no longer prints as a stray line; and the "Step through the loop" section band is off under 48em (its `h2` and lede on Newsprint under the 2 px `--oa-color-border-strong` rule, as a candidate turned off), which brings back the Newsprint the 32 px held. C5 measures the Loop and Stepper screens at 390; if either falls outside 60 to 85, the band returns and the 16 px gap under the panel takes its place, and the engineer records the figures.
+
+**Request 5b, quotations and questions share `.wa-q`.** The quotations keep their own rule (DD11C-R10: `oa.type.body`, the 2 px rule at the left, 24 px between rule and text) under a class of their own (`wa-quote`), so the question buttons' padding and type never reach them. A12 to A14's frames move; the data lead signs them off.
+
+**Request 5c, AX-9:** ruled in 15.6.
+
+**A12's `art` crop:** the kit's `1440-light-art` is 26 px tall (`plates/a12.json`, 18:40 UTC), so the part marks the heading alone. `art` belongs on the "Where it acts" heading and the drawing's block together (the union, 15.2), about 330 px tall at 1440. The chapter 21 generator places `art` only once it is at least 200 px tall and 680 px wide or less.
+
+**Frame names for the new crops (AX-7, DD12-C2).** The kit's `frame_alts` (the engineer's "Words for") carries the editor's words; until they land, the kit's composed name stands. Drafts for the editor are in my notes, "Words for the editor".

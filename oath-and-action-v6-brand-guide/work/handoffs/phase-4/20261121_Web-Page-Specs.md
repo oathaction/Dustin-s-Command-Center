@@ -441,3 +441,26 @@ The facts are in `work/research/20261121_Act-Page-Docket.md`, "Added 20:17 to 20
 - **H.R. 7008 (home Track card):** 1 Filed, done; 2 Hearing, never happened (the bill status file lists no hearing; Rule 11.2's slash, never a hearing printed); 3 Committee vote, done (7 to 4, January 14, 2026); 4 First chamber, done; 5 Second chamber, now; 6 President, ahead. "As of November 21, 2026". The card's source line adds the bill status file.
 - **The NAC rule (home Act card and the Act page's status panel):** 1 Early notice, done, note "March 31, 2022: the FDA said it was considering a rule" (page 73720; the agency's own notice, so step 1 under Rule 11.9); 2 Proposed, done; 3 Comments open, now, with the take-part mark; 4 to 6 ahead. No step waits now, so the kit draws every tracker's circles and the take-part mark.
 - **What the record shows (Act page, Proposal section, after the summary):** an `h3` "What the record shows" and two paragraphs, the petitioners' request and the concern the law guards, each quoting the rule with its page. They are not the same length, because the rule records no objector; DR-93 and the main session's D4-108 rule that the page prints what the record holds and invents no counterweight.
+
+## 13. Chat 12's fix pass (design director, November 23, 2026, from 18:48 UTC)
+
+For engineer W (fix brief 3.1), from the craft reader's CR-12, CR-14 and CR-15 (`work/handoffs/phase-4/20261123_Chat-12-Review-Craft-Brand.md`). Where this section and an earlier one differ, this section governs.
+
+### 13.1 The Act page's display type (CR-12)
+
+- **The `h1` (7.3):** from 90em it spans cols 3 to 9 (7 columns, 757 px at 1440) in place of the 644 px column, so "How to comment on the FDA’s proposed rule on NAC" breaks in three lines with no word alone on the last; `text-wrap: balance` stays. From 64em to 90em and on phones, if a single word ends the heading, the kit holds the last two words together with a no-break space (the words stay the editor's; the kit joins the last pair). Check: no line of the `h1` holds one word, at 1440, 1024, 390 and 360 px.
+- **Opening quotation marks hang** in display and quotation type: a heading or a Lora quotation that opens on “ takes `hanging-punctuation: first` where the browser reads it, and otherwise a negative indent on its first line equal to the mark's own width, which the kit measures on the glyph in each face and size (I have not measured it), so the letters of every line share one left edge. The summary quotation's last line keeps at least two words ("Act.”" never alone): the kit joins its last pair as above.
+- The same rule applies to the atlas's Loop R18 `h1` (atlas specs 15.7).
+
+### 13.2 Separators and run-in heads (CR-14)
+
+- **A stacked list drops its separators.** The proposed rule panel's four items ("Food and Drug Administration", the docket, the date, the citation) are one list: from 48em on one line with a middle dot between items; under 48em, one item a line and no dot. Draw the dot as a separator the list's layout owns (each item after the first carries it before itself, hidden when the list stacks), never as a character at a line's end.
+- **Run-in heads at 600:** "The request." and "The concern in the law." in "What the record shows" (and any run-in head the pages print) set in Inter 600, the body's size and ink, followed by a space; the sentence after it at 400.
+
+### 13.3 One form for a fact panel's source (CR-15)
+
+A fact panel's source line sits **inside the panel**, as its last line, 16 px under the text above it, in `oa.type.caption` in the panel's secondary ink (Dim Newsprint on Charcoal), as section 10.3 first set for the fact box and the "39,555" panel draws it. Section 11.1's "source line under it" is withdrawn: the "5" fact box takes its source inside too, so the article's two panels share one form. The ask panel's edge (cols 3 to 8 from 90em) is engineer W's, as built.
+
+### 13.4 A08's comment screen and Rule 20.9
+
+The kit's own measure puts A08's "How to send a comment" opening screen at 85.8 percent Newsprint at 1440 px light after CR-15's narrower ask panel (`plates/a08.json`, its fault line), and Rule 20.9's correct plate prints it. The panel keeps cols 3 to 8; its padding grows from 32 to 40 px above and below from 64em (about 1.5 percent of the window more dark), or the step list above it moves inside the panel's top, whichever brings the screen to 85 or under with the least change; C5 confirms.

@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "The Register | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T18:41:07.693Z",
+ "written": "2026-11-23T18:50:18.075Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -597,11 +597,11 @@
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
   "work/build/app-kit/oa-app.mjs": "8c2ef8b83296fa70804f3e22530868abe263489de028242a59e7660b6b46afd9",
-  "work/build/app-kit/renderers/atlas-page.mjs": "bb9ec7ece8f290e2d392e6ac5b0ffa91caeb319afee3c506cb2179ddd3283634",
+  "work/build/app-kit/renderers/atlas-page.mjs": "1855a46dfecf0abbe365e208774b2abc1dc711dea07f23d905094499120b2222",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
-  "work/build/app-kit/renderers/web-site.mjs": "6d7c1a7ad8a3cd26604a60dcec53f7eaea99905f94af107ce62e916a66e9ecc9",
-  "work/build/app-kit/specs/a13-atlas-register.json": "ec525dd257bd0bdecb17f4bb40244da32d36a5f1b3ac19abb33e2f134d01b22f",
+  "work/build/app-kit/renderers/web-site.mjs": "959a4e05ffd909244652257db30208e1639ec8bf1378fe94dd319b93c9aa3b49",
+  "work/build/app-kit/specs/a13-atlas-register.json": "91493bb75dda33fa51211de0d3a2cd2613f9c3d251ff61f9ac92c2234146190a",
   "work/build/app-kit/tools/atlas_contrast.py": "c9f64745108cf08b8bc91dd7023fadd8adacae894330a57f8fa93a0fb60d0a3e",
   "work/build/app-kit/tools/atlas_figures.py": "67464e9a2ecf2de97ff405faca9a87268f8d06d8f7828d7558252144d4f4bf69",
   "work/build/app-kit/tools/atlas_test.py": "8e5a76d886bf9bd860c3ed9a19e6b0a9f18a0d90b559fcb31bf5633fb563a295",
@@ -640,14 +640,14 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "css_pruned": {
-  "full": 73779,
-  "placed": 55929,
-  "rules_kept": 444,
+  "full": 73851,
+  "placed": 56001,
+  "rules_kept": 445,
   "rules_dropped": 103,
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T18:42:49.473Z",
+  "ran": "2026-11-23T18:52:00.302Z",
   "pass": 240,
   "fail": 0,
   "first_fail": null,

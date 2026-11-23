@@ -128,8 +128,8 @@ W = {
          'A photograph shows people at public work, in black and white unless its color is part of the record, and its '
          'crop and the words around it keep that work in view.'),
         ('16.5', 'The record behind each photograph',
-         'Each photograph runs with a caption a reader can check and alt text for each crop, and our rights ledger '
-         'records its rights and any consent before it runs.'),
+         'Each photograph runs with a caption a reader can check and alt text for each crop, and our rights ledger, our '
+         'record of every picture we use, holds its rights and any consent before it runs.'),
         ('16.8', 'Placeholders and made pictures',
          'A frame that says Placeholder holds the place of a photograph we have yet to make, and a drawn or generated '
          'picture appears only where the table after Rule 16.9 allows, with its label.'),
@@ -223,7 +223,9 @@ R['16.1'] = {
     'table_head': ('Subject', 'Where', 'How', 'Status'),
     'status_have_6': 'In the guide (Rule 01.6)',
     'status_have_8': 'In the guide (Rule 01.8)',
-    'status_todo': 'To commission; a placeholder holds its place (Rule 16.8)',
+    'status_todo': 'To commission',
+    # printed once under the table (the design director's CR-17)
+    'status_note': 'A placeholder holds the place of each photograph still to commission (Rule 16.8).',
     # Subject, Where, How. Rows 3 to 12 take their subjects from our fifth edition's shot list. The How column is the
     # guide's own direction for each shot (editor, chat 10), and the caption says so: three lines keep our fifth edition's
     # words whole (rows 8, 10 and 11), and the rest are written for this guide, so no line passes for a quote of a text
@@ -274,7 +276,7 @@ R['16.2'] = {
              'where color is evidence; design judgment for the reasons',
     'specs': [('Default', 'Black and white, from the color original'),
               ('On screen', '<code>filter: grayscale(1)</code> on the photograph, and nothing else'),
-              ('For print or an export', 'A grayscale conversion made from the original file, never from the 1,200 px copy the page shows'),
+              ('For print or an export', 'A grayscale conversion made from the original file; the page’s 1,200 px copy is for screens only'),
               ('Color', 'Only where it is part of the record, named in the caption'),
               ('Adjust', 'Tone, exposure and contrast, evenly across the frame'),
               ('Never', 'A tint, a duotone in a brand color, a color grade, a vignette or any other effect'),
@@ -436,7 +438,8 @@ R['16.6'] = {
               ('Asked to stop', 'Stop, and leave the picture out'),
               ('Polling places', 'Ask the election official first; leave out every marked ballot and every voter at a booth'),
               ('Matters of state law', 'Recording a conversation’s sound, a person’s likeness and pictures of minors; the Reporters Committee keeps a state-by-state guide to recording. No legal advice'),
-              ('The rights ledger row', 'Maker, source, date, place, license or permission, consent, where the caption came from, the file and its original')],
+              ('The rights ledger row', 'Maker, source, date, place, license or permission, consent, where the caption came from, the file and its original'),
+              ('File', '<code>YYYYMMDD_Photograph-[Subject].jpg</code> for the copy we publish, dated the day it joins the ledger; the original kept as received, its name in the same row')],
     'builders': 'Fill the rights ledger row as you take or find the photograph, and leave the photograph out of any draft '
                 'until the row is complete.',
     'correct_caption': 'The meeting photograph with two markers and its record. The official is named, with his role, from '
@@ -457,14 +460,14 @@ R['16.6'] = {
                ('Agency', 'U.S. Army Corps of Engineers, Sacramento District'),
                ('Date', 'March 27, 2014'),
                ('Place', 'Lake Isabella, Kern County, California'),
-               ('License', 'Public domain in the United States as a work of the federal government (17 U.S.C. 105), read on the Commons file page November 21, 2026'),
+               ('License', 'Public domain in the United States as a work of the federal government (17 U.S.C. 105), retrieved from the Commons file page November 21, 2026'),
                ('Consent', 'None needed: one official at public work, named by his agency; residents unnamed and seen from behind'),
                ('Rights rows', 'pho-04 for the source file and pho-04r for the copy the page shows')],
     'fail_plh': 'Placeholder for this failure: a close portrait of a ninth grader speaking at a school board meeting.',
-    # the credit follows Rule 16.5's form for our own photographs, so the plate shows one fault, the missing permission
+    # NB-2: the photograph is invented, so its credit names no person and carries the Illustrative label beside it, as
+    # Rule 16.9's failure does; the plate shows one fault, the missing permission
     'fail_caption_parts': ('Maya Brooks, 14,', 'a ninth grader at', 'Alder County High School,',
-                           'asks the school board to keep the late bus, April 2026. Photograph: Dustin Cathcart, Oath & '
-                           'Action.'),
+                           'asks the school board to keep the late bus, April 2026.', 'Photograph: Oath & Action.'),
     'fail_record': 'Permission from a parent or guardian: none recorded.',
 }
 
@@ -515,6 +518,7 @@ R['16.8'] = {
     'basis': 'The direction our founder and editor set for this edition’s pictures, which asks every placeholder to '
              'announce itself; WCAG 2.2 success criterion 1.1.1; our October 2026 audit of the fifth edition’s photographs',
     'specs': [('Frame', 'The photograph’s ratio and display size', 'oa.color.border.strong.onNewsprint'),
+              ('Display size', 'The size the photograph will run at, read from the layout it waits in, such as an article’s column (Rule 20.7) or a report’s grid (Rule 07.3)'),
               ('Edge', 'A 1 px keyline in the surface’s strong border, no fill, and four corner crop marks: 1 px, 12 px arms, 6 px off each corner'),
               ('Inside', 'Padding of 24 px; 16 px in a frame 320 px wide or narrower', 'oa.space.300'),
               ('Words', '“Placeholder”, what it waits for, the shot, the ratio and the treatment', 'oa.type.label'),
@@ -526,7 +530,7 @@ R['16.8'] = {
     'builders': 'Draw the frame at the size the photograph will run, write the shot from the shot list (Rule 16.1) and '
                 'leave the caption’s parts open.',
     'correct_caption': 'Two placeholders: a 3:2 frame on Newsprint for an article, and a 4:5 frame on Charcoal for a '
-                       'portrait post in a dark mode. Each says what it waits for in words.',
+                       'portrait post. Each says what it waits for in words.',
     'failure_caption': '<strong>Fails Rule 16.8.</strong> Our fifth edition’s panel looks like a picture still loading, and '
                        'a screen reader announced it as a photograph that never existed.',
     'correct_alt': 'Two placeholder frames with corner crop marks and no fill. On Newsprint, a 3:2 frame: Placeholder, '
@@ -564,16 +568,16 @@ R['16.9'] = {
              'on generated images; Society of Professional Journalists, Code of Ethics, revised October 4, 2026; each '
              'platform’s help or policy page',
     'specs': [('May serve as', 'A conceptual illustration; the setting around our real work in a mockup'),
-              ('Label on the picture', '“Generated image” on a solid Charcoal tab, top left', 'oa.color.surface.charcoal'),
+              ('Label on the picture', '“Generated image” on a solid Charcoal tab, top left, in Newsprint words with a 1 px Stone edge, so it stays a tab over a dark corner of a picture', 'oa.color.surface.charcoal'),
               ('Caption', 'The idea it shows, then “Generated image, [tool], [date]”'),
               ('Alt text', 'Begins “Generated image”'),
               ('Never', 'A real person, a real place on a real day, evidence or documentary imagery'),
               ('File and record', '<code>YYYYMMDD_Generated-[Subject].png</code>; a rights row with the tool, the date, the prompt and the tool’s terms as read'),
               ('Content Credentials', 'Kept in the file'),
-              ('YouTube', 'In YouTube Studio’s “AI use” setting, answer Yes for any realistic generated or altered content (YouTube Help, read November 21, 2026)'),
-              ('TikTok', 'Turn on its label for AI-generated content, which it requires for realistic scenes or people (its Community Guidelines, read November 21, 2026; the label’s wording from a search of TikTok’s help pages, which would not open to us)'),
-              ('Instagram, Threads and Facebook', 'Turn on Instagram’s “Label as made with AI” when sharing; Meta shows the label as “AI info” (Meta’s newsroom, read November 21, 2026; Instagram’s help page from a search, since it would not open to us)'),
-              ('LinkedIn', 'No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (LinkedIn Help, read November 21, 2026)'),
+              ('YouTube', 'In YouTube Studio’s “AI use” setting, answer Yes for any realistic generated or altered content (YouTube Help, retrieved November 21, 2026)'),
+              ('TikTok', 'Turn on its label for AI-generated content, which it requires for realistic scenes or people (its Community Guidelines, retrieved November 21, 2026; the label’s wording from a search of TikTok’s help pages, which would not open to us)'),
+              ('Instagram, Threads and Facebook', 'Turn on Instagram’s “Label as made with AI” when sharing; Meta shows the label as “AI info” (Meta’s newsroom, retrieved November 21, 2026; Instagram’s help page from a search, since it would not open to us)'),
+              ('LinkedIn', 'No label a poster sets; it shows the Content Credentials icon when the file carries that data, so keep it (LinkedIn Help, retrieved November 21, 2026)'),
               ('X', 'We found no label a poster sets; X may add its own “Manipulated media” label, and our tab and caption carry ours (X Help, from a search, since it would not open to us)')],
     'builders': 'Before you make one, check the table after this rule for where a generated picture may appear. Write the '
                 'prompt into the rights row, make the image, and set the tab, caption and alt text before it goes anywhere.',
@@ -589,7 +593,7 @@ R['16.9'] = {
     'head': 'Placeholder · Generated image to make',
     'tab': 'Generated image',
     'prompt': 'A phone lying screen up on a kitchen table beside a folded utility bill and a mug, morning light, seen from '
-              'above. The screen is blank for our page to be placed on. No people, no logos, no words.',
+              'above. The screen is blank for our page to be placed on. Leave out people, logos and words.',
     'caption': 'Mockup: where a reader meets our explainer. The page on the screen is ours, and the scene around it is a '
                'generated image, [tool], [date].',
     'record': 'Rights row: tool, date, prompt, terms read. File: YYYYMMDD_Generated-Mockup-Kitchen-Table-Phone.png',
@@ -643,12 +647,12 @@ R['16.10'] = {
               ('Name plate', '“Dustin Cathcart, Founder and Editor”, the first time he appears; chapter 23 places it in the lower third, clear of each platform’s buttons and the captions'),
               ('Signature', 'L8, the monogram, 24 px in from the frame’s top and side edges (Rule 12.3)'),
               ('Ending', 'The step, then the end frame. A process piece names the step and leaves the position to the viewer (Rule 01.22); a position piece shows its label before the ask (Rule 01.23)'),
-              ('Title and end frames', 'Chapter 23, at 1920 by 1080 and 1080 by 1920, each with its caption-safe area'),
+              ('Title and end frames', 'Chapter 23, at 1920 by 1080 and 1080 by 1920, each with its caption-safe area, the part no app button or crop covers (Rule 16.11)'),
               ('Music', 'Under the voice, and silent while a figure is read')],
     'builders': 'Write the question first, then the one sentence that answers it, and build the script from that '
                 'sentence outward.',
     'correct_caption': 'A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and '
-                       'the step at 0:50, and every figure said is the chart’s own. ' + S04_FIGURES,
+                       'the step at 0:50. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.10.</strong> The question arrives at 0:21, after an animated logo and a '
                        'greeting, so a viewer who scrolls on never learns what the video answers.',
     'correct_alt': 'A storyboard of six video frames with their times and words: the title frame with the question at 0:00; '
@@ -688,22 +692,23 @@ R['16.11'] = {
              'alternative for both speech and non-speech audio information needed to understand the media content”. '
              'A viewer can turn closed captions on and off in the player. Open captions are burned into the picture '
              'itself.',
-             'Upload a caption file, a text file of timed lines, wherever a platform takes one: WebVTT (.vtt) on our own '
-             'pages, WebVTT or SubRip (.srt) on YouTube, and SubRip on LinkedIn and X. On TikTok and Instagram, where we '
+             'Upload a caption file, a text file of timed lines in one of two formats, WebVTT (.vtt) or SubRip (.srt), '
+             'wherever a platform takes one: WebVTT on our own pages, either on YouTube, and SubRip on LinkedIn and X. On '
+             'TikTok and Instagram, where we '
              'found no way to upload a file, turn on the app’s own captions and correct every word before publishing. '
              'Treat any automatic caption as a first draft. Burn captions in only where a platform offers neither, inside '
-             'chapter 23’s caption-safe area, the part of the frame no app button or crop covers, and never on top of '
-             'closed captions. Put a sound that matters, such as a gavel, in square brackets, and name a speaker who is '
+             'chapter 23’s caption-safe area, the part of the frame no app button or crop covers, and leave closed '
+             'captions off that video, so each line shows once. Put a sound that matters, such as a gavel, in square brackets, and name a speaker who is '
              'off screen.'],
     'why': 'Automatic captions mishear names and numbers, and a misheard number tells a viewer who cannot hear something '
            'false. YouTube’s own help page says “You should always review automatic captions and edit any parts that '
            'haven’t been properly transcribed.”',
     'basis': 'WCAG 2.2 success criterion 1.2.2; each platform’s help page',
     'specs': [('Closed captions', 'On every video'),
-              ('Files', 'WebVTT (<code>.vtt</code>) on our pages; YouTube takes <code>.vtt</code>, <code>.srt</code> and other formats (YouTube Help, read November 21, 2026); LinkedIn takes <code>.srt</code> on desktop (LinkedIn Help, read November 21, 2026); X takes <code>.srt</code> (X Help, from a search, since it would not open to us)'),
+              ('Files', 'WebVTT (<code>.vtt</code>) on our pages; YouTube takes <code>.vtt</code>, <code>.srt</code> and other formats (YouTube Help, retrieved November 21, 2026); LinkedIn takes <code>.srt</code> on desktop (LinkedIn Help, retrieved November 21, 2026); X takes <code>.srt</code> (X Help, from a search, since it would not open to us)'),
               ('TikTok and Instagram', 'The app’s own captions, corrected word for word; we found no caption file upload on either (each from a search of its help pages, November 21, 2026)'),
               ('Automatic captions', 'A first draft only'),
-              ('Burned-in captions', 'Only where a platform offers neither, inside chapter 23’s caption-safe area, never doubled'),
+              ('Burned-in captions', 'Only where a platform offers neither, inside chapter 23’s caption-safe area, with closed captions off'),
               ('Lines', 'Two at most, about 42 characters each, broken at a phrase'),
               ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; chapter 23 sets the size for each frame', 'oa.color.surface.charcoal'),
               ('Sounds and speakers', 'Sounds in square brackets when they carry meaning; speakers named when off screen'),
@@ -790,7 +795,7 @@ R['16.13'] = {
     'basis': 'The direction our founder and editor set for this edition’s video; WCAG 2.2 success criteria 1.4.2 and '
              '2.2.2; Rules 17.1 and 17.3',
     'specs': [('Card', 'Poster, title, length, summary, Play, transcript link, platform link'),
-              ('Poster', 'A frame from the video, usually its title frame (chapter 23), with alt text that gives its words (Rule 19.4)'),
+              ('Poster', 'A frame from the video, usually its title frame (chapter 23), with alt text that gives its words (Rule 19.4); on a dark surface, a 1 px Stone edge'),
               ('Player', 'Loads only on Play'),
               ('Playback', 'Never by itself, with sound or without (Rule 17.1)'),
               ('Captions', 'On at the start where the player allows'),
@@ -830,11 +835,13 @@ TOKENS = {
     '16.6': ['oa.color.surface.charcoal', 'oa.color.text.primary.onCharcoal', 'oa.type.label', 'oa.type.bodySmall'],
     '16.7': ['oa.type.label', 'oa.type.bodySmall'],
     '16.8': ['oa.color.border.strong.onNewsprint', 'oa.type.label', 'oa.type.body', 'oa.type.caption', 'oa.space.300'],
-    '16.9': ['oa.color.surface.charcoal', 'oa.color.text.primary.onCharcoal', 'oa.type.label', 'oa.type.caption'],
+    '16.9': ['oa.color.surface.charcoal', 'oa.color.text.primary.onCharcoal', 'oa.color.border.hairline.onCharcoal',
+             'oa.type.label', 'oa.type.caption'],
     '16.10': ['oa.color.surface.charcoal', 'oa.color.surface.newsprint', 'oa.type.label', 'oa.type.caption'],
     '16.11': ['oa.color.surface.charcoal', 'oa.color.text.primary.onCharcoal', 'oa.color.border.hairline.onNewsprint', 'oa.type.label'],
     '16.12': ['oa.type.bodySmall', 'oa.type.label', 'oa.color.border.hairline.onNewsprint'],
-    '16.13': ['oa.size.target.touch', 'oa.color.surface.charcoal', 'oa.color.text.primary.onCharcoal', 'oa.type.h4', 'oa.type.bodySmall', 'oa.type.label'],
+    '16.13': ['oa.size.target.touch', 'oa.color.surface.charcoal', 'oa.color.text.primary.onCharcoal',
+              'oa.color.border.hairline.onCharcoal', 'oa.type.h4', 'oa.type.bodySmall', 'oa.type.label'],
 }
 RELATED = {
     '16.1': (['01', '02'], ['01.6', '01.8', '01.9', '01.10', '01.12', '02.9']),
@@ -1154,10 +1161,10 @@ def s16_6_correct():
 
 def s16_6_failure():
     r = R['16.6']
-    a, b, c_, d = r['fail_caption_parts']
+    a, b, c_, d, e = r['fail_caption_parts']
     inner = f'<p class="lab">{R["16.8"]["label"]}</p><p class="sm">{r["fail_plh"]}</p>'
     html = (css() + '<div class="w"><div class="w240"><div class="out">' + plh('r45', inner, 'tight') + '</div></div>'
-            f'{cap(f"{a} {ILLUS} {b} {c_} {ILLUS} {d}")}<p class="sm mt8">{r["fail_record"]}</p></div>')
+            f'{cap(f"{a} {ILLUS} {b} {c_} {ILLUS} {d} {e} {ILLUS}")}<p class="sm mt8">{r["fail_record"]}</p></div>')
     return spec('s-16-6-failure', html, '16.6', r['failure_alt'], illustrative=True)
 
 
