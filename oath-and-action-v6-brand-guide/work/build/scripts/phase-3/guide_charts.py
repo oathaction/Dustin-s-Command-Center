@@ -68,6 +68,10 @@ PHASE_4_GATE_3 = {"16": 300_000, "20": 500_000, "21": 460_000, "22": 300_000, "2
 # counting what each chapter draws from the Gate 3 report's section 9 tables: 3,284,000 bytes in all, 274,000 more than
 # Gate 3's. The counts and the arithmetic are in work/handoffs/phase-4/20261121_Phase-4-Allocations.md.
 PHASE_4_ALLOCATION = {"16": 300_000, "20": 757_000, "21": 655_000, "22": 277_000, "23": 743_000, "24": 338_000, "25": 214_000}
+# Chat 11c (November 23, 2026): chapter 21 is placed, so the projection counts it at its built bytes (IN_PROGRESS holds a
+# chapter at no less than its allocation): 1,096,989 bytes after round 2's weight steps (crops drawn from their part alone,
+# the atlas style pruned to the rules its frames use, repeated drawings by <use> in a sprite of their own charged to
+# chapter 21), from 1,539,423. The allocation stays the figure G3-07 approved; the overage is reported, never failed (DR-271).
 ALLOCATION = {"13": 0.25 * MB, "14": CHAPTER_14_STOP, "15": 0.60 * MB,
               **PHASE_4_ALLOCATION,
               **{n: 0.40 * MB / 2 for n in ("27", "28")}}

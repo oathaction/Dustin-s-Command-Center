@@ -20,7 +20,7 @@ import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
 import { createRequire } from 'module';
-import { KIT, ROOT, EXPORTS, PLATES, PLATE_CSS, esc, export_page, font_css, frame, identity_sprite, missing_tokens, plate, sha256, symbolize, today, tokens_css, track, untrack } from './lib.mjs';
+import { KIT, ROOT, EXPORTS, PLATES, PLATE_CSS, atlas_symbolize, esc, export_page, font_css, frame, identity_sprite, missing_tokens, plate, sha256, symbolize, today, tokens_css, track, untrack } from './lib.mjs';
 import { words } from './renderers/web-site.mjs';
 
 const require = createRequire(import.meta.url);
@@ -88,6 +88,10 @@ function page_facts() {
   out.readings = [...document.querySelectorAll('[data-reading]')].map((e) => { const r = document.createRange(); r.selectNodeContents(e);
     return { n: e.getAttribute('data-reading'), reform: e.getAttribute('data-atlas-reform'), top: Math.round(e.getBoundingClientRect().top + scrollY),
       lines: new Set([...r.getClientRects()].filter((x) => x.height > 4 && x.width > 1).map((x) => Math.round(x.top))).size }; });
+  // chat 11c (the data lead's request 15): each table row's head on a shown table, and whether a reader sees it, for T1
+  out.rowheads = [...document.querySelectorAll('[role="rowheader"]')].filter((e) => { const t = e.closest('table'); const tr = e.closest('tr'); return t && t.getClientRects().length && (!tr || tr.getClientRects().length) && getComputedStyle(t).display !== 'none' && !t.closest('[hidden]'); })
+    .map((e) => { const r = e.getBoundingClientRect(); const c = getComputedStyle(e);
+      return { text: e.textContent.trim().replace(/\s+/g, ' ').slice(0, 60), shown: r.width > 2 && r.height > 2 && !/inset\(50%/.test(c.clipPath || '') && c.visibility !== 'hidden' }; });
   out.sections = [...document.querySelectorAll('[data-oa-section]')].map((e) => ({ name: e.getAttribute('data-oa-section'), top: Math.round(e.getBoundingClientRect().top + scrollY) }));
   const DARK = { 'rgb(18, 18, 18)': 'charcoal', 'rgb(31, 45, 90)': 'prussian' };
   const darkOf = (e) => DARK[getComputedStyle(e).backgroundColor];
@@ -342,7 +346,7 @@ async function main() {
     for (const spec of specs(o)) {
       const R = await renderer(spec.type);
       const reads = track();   // contract C4: every file read while this application is drawn
-      const r = await R.render(spec);
+      let r = await R.render(spec);
       const dir = path.join(o.out, spec.id.toLowerCase());
       fs.mkdirSync(dir, { recursive: true });
       const facts = { id: spec.id, type: spec.type, views: [] };
@@ -495,6 +499,34 @@ ${r.head_links || ''}
         const page_html = (theme, fig_w = null) => head_of(r.title, theme) + `<body>${r.sprite}${r.body({ pid: 'site', theme: theme || 'device', fig_w }).replace(/id="site-main"/g, 'id="main"').replace(/href="#site-main"/g, 'href="#main"')}<script>${r.scripts.tail}</script></body>
 </html>
 `;
+        // chat 11c (the data lead's requests 4 and 27): the atlas home's boxes grow to hold their words. The page is drawn
+        // once, each box's height read at 1440 px with its height freed and every line it can show shown, in both forms,
+        // and the figure step draws again with those heights as each row's floor
+        if (spec.type === 'atlas-page' && /class="wa-sys/.test(r.body({ pid: 'site', theme: 'light' })) && !spec.box_need) {
+          const mf = path.join(dir, 'measure-boxes.html');
+          fs.writeFileSync(mf, page_html('light', 1440));
+          const p = await browser.newPage({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+          await p.goto('file://' + mf, { waitUntil: 'load' });
+          await p.evaluate(() => document.fonts.ready);
+          spec.box_need = await p.evaluate(() => {
+            const out = {};
+            for (const sys of document.querySelectorAll('.wa-sys')) {
+              const form = sys.classList.contains('wa-sys--open') ? 'open' : 'closed';
+              sys.style.display = 'block';
+              out[form] = {};
+              for (const b of sys.querySelectorAll('.wa-box')) {
+                b.style.height = 'auto';
+                b.querySelectorAll('.lt').forEach((x) => { x.style.display = 'block'; });
+                out[form][b.dataset.part] = Math.ceil(b.getBoundingClientRect().height);
+              }
+            }
+            return out;
+          });
+          await p.close();
+          fs.unlinkSync(mf);
+          console.log(`  ${spec.id}: boxes measured ${JSON.stringify(spec.box_need)}`);
+          r = await R.render(spec);
+        }
         // chat 11c (contract C9): a content file marked "state" is a page in one state for a rule plate; it draws its frames
         // and its facts and writes no export, since its page is the export of the application it is a state of
         const exp = o.export && !spec.state;
@@ -604,70 +636,123 @@ ${r.head_links || ''}
           await p.evaluate(() => document.fonts.ready);
           const full = await p.evaluate(() => Math.ceil(document.querySelector('.ws').getBoundingClientRect().height));
           // a crop runs from its part's top to its foot; the part "top" runs from the page's top to 16 px into main (specs 4)
-          let y0 = 0, h = kind === 'screen' || kind === 'open' ? wv.vh : full, box_exact = 0;
+          let y0 = 0, h = kind === 'screen' || kind === 'open' ? wv.vh : full, box_exact = 0, part_x = null;
           if (crop) {
             const box = await p.evaluate((name) => {
               if (name === 'top') { const m = document.querySelector('.ws main'); return m ? { top: 0, bottom: Math.ceil(m.getBoundingClientRect().top + scrollY + 16) } : null; }
               const e = document.querySelector(`.ws [data-oa-part="${name}"]`);
               if (!e) return null;
               const b = e.getBoundingClientRect();
-              return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY), exact: b.top + scrollY };
+              // chat 11c: a crop holds the part's whole pixel rows, so no sliver of what sits above or below it shows
+              return { top: Math.ceil(b.top + scrollY - 0.001), bottom: Math.floor(b.bottom + scrollY + 0.001), exact: b.top + scrollY,
+                left: Math.max(0, Math.floor(b.left)), right: Math.min(innerWidth, Math.ceil(b.right)) };
             }, crop);
             if (!box) throw new Error(`${spec.id} ${key}: the page marks no data-oa-part="${crop}" (contract C9)`);
             y0 = box.top; h = box.bottom - box.top; box_exact = box.exact;
+            if (crop !== 'top') part_x = { x: box.left, width: box.right - box.left };
           }
           if (y0 + h > wv.vh) await p.setViewportSize({ width: wv.w, height: Math.max(wv.vh, y0 + h) });
           // a frame is a picture, so it carries only what its width and window can show (bytes; no pixel moves): a closed
           // disclosure keeps its summary alone, an element the page sets display:none goes, and a one-window view drops
           // everything that starts below the window. The page is captured before and after, and the two must match.
           const before = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
+          // DD11C-Q6: a crop is its part; the part's own columns are what the part-alone drawing must match
+          const before_part = part_x ? await p.screenshot({ clip: { ...part_x, y: y0, height: h } }) : null;
           const lim = kind === 'screen' ? wv.vh : crop ? y0 + h : 0;
           const pruned = await p.evaluate(PRUNE, spec.type === 'atlas-page' ? { limit: lim, careful: true } : lim);
-          const after = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
+          let after = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
           const same = Buffer.compare(before, after) === 0;
           if (!same) throw new Error(`${spec.id} ${key}: pruning what the frame cannot show changed its pixels`);
           // chat 11c (DD11C-Q6): a crop to a part carries the part's own subtree, its ancestors up to the page's root and,
           // in a table, the head row that sets its columns; every other branch goes. The page is drawn again so, and the
           // part's pixels at its new place must equal its pixels in the whole page, or the crop keeps the clipped page.
           if (crop && crop !== 'top') {
-            await p.goto('file://' + mp, { waitUntil: 'load' });
-            await p.evaluate(() => document.fonts.ready);
-            const nb = await p.evaluate(({ name, exact }) => {
-              const part = document.querySelector(`.ws [data-oa-part="${name}"]`);
-              const root = document.querySelector('.ws');
-              let n = part;
-              while (n && n !== root) {
-                const parent = n.parentElement;
-                for (const sib of [...parent.children]) {
-                  if (sib === n) continue;
-                  if (parent.tagName === 'TABLE' && (sib.tagName === 'THEAD' || sib.tagName === 'COLGROUP')) continue;
-                  sib.remove();
+            // two ways to set the part alone: at the place its top had in the page, to the fraction of a pixel (a dashed
+            // line's edge pixels follow its place on the page), else moved up with its top's fraction kept (a list whose
+            // rows round alike only near the top); the first whose part draws the same pixels is the frame
+            const tried = [];
+            let done = false;
+            for (const mode of ['place', 'fraction']) {
+              await p.goto('file://' + mp, { waitUntil: 'load' });
+              await p.evaluate(() => document.fonts.ready);
+              const nb = await p.evaluate(({ name, exact, mode }) => {
+                const part = document.querySelector(`.ws [data-oa-part="${name}"]`);
+                const root = document.querySelector('.ws');
+                // a sibling in a grid or flex row stays as an empty box of its own tag, classes and height, so the part keeps its
+                // column and its row (a grid places by order); a table's other rows go, its head row stays
+                const TABLE = new Set(['TABLE', 'THEAD', 'TBODY', 'TFOOT', 'TR']);
+                const boxes = [], rows_kept = [];
+                let n = part;
+                while (n && n !== root) {
+                  const parent = n.parentElement;
+                  const pd = getComputedStyle(parent).display;
+                  const laid = /grid|flex/.test(pd);
+                  for (const sib of [...parent.children]) {
+                    if (sib === n) continue;
+                    if (parent.tagName === 'TABLE' && (sib.tagName === 'THEAD' || sib.tagName === 'COLGROUP')) continue;
+                    // the rows either side of a row stay, emptied, at their heights: a collapsed border is shared between two
+                    // rows, so the row keeps the border it had (alone, it would take the head's rule and grow half a pixel)
+                    if (sib.tagName === 'TR' && (sib === n.previousElementSibling || sib === n.nextElementSibling)) {
+                      const hh = sib.getBoundingClientRect().height;
+                      const tr = document.createElement('tr');
+                      if (sib.getAttribute('class')) tr.setAttribute('class', sib.getAttribute('class'));
+                      for (const c of sib.children) { const x = document.createElement(c.tagName.toLowerCase()); if (c.getAttribute('class')) x.setAttribute('class', c.getAttribute('class')); tr.appendChild(x); }
+                      tr.setAttribute('style', `height:${Math.round(hh * 1000) / 1000}px`);
+                      rows_kept.push([sib, tr]);
+                      continue;
+                    }
+                    const cs = getComputedStyle(sib);
+                    if (laid && !TABLE.has(parent.tagName) && cs.display !== 'none' && cs.position !== 'absolute' && cs.position !== 'fixed') {
+                      const bb = sib.getBoundingClientRect();
+                      boxes.push([sib, Math.round(bb.height * 1000) / 1000, /flex/.test(pd) ? Math.round(bb.width * 1000) / 1000 : null]);
+                    } else sib.remove();
+                  }
+                  n = parent;
                 }
-                n = parent;
-              }
-              // the part keeps the fraction of a pixel its top had in the whole page, so its words rasterize alike
-              const t1 = part.getBoundingClientRect().top + scrollY;
-              const shift = (((exact % 1) - (t1 % 1)) % 1 + 1) % 1;
-              if (shift > 0.001) document.querySelector('.ws-in').style.paddingTop = `${shift.toFixed(3)}px`;
-              const b = part.getBoundingClientRect();
-              return { top: Math.floor(b.top + scrollY), bottom: Math.ceil(b.bottom + scrollY) };
-            }, { name: crop, exact: box_exact });
-            const sub = await p.evaluate(PRUNE, 0);
-            if (nb.bottom - nb.top !== h) { facts.subtree = facts.subtree || {}; facts.subtree[key] = { kept_clipped: `the part alone is ${nb.bottom - nb.top} px tall, in the page ${h}` }; }
-            if (nb.bottom - nb.top === h) {
+                for (const [sib, tr] of rows_kept) sib.replaceWith(tr);
+                for (const [sib, hh, ww] of boxes) {
+                  const e = document.createElement(sib.tagName.toLowerCase());
+                  if (sib.getAttribute('class')) e.setAttribute('class', sib.getAttribute('class'));
+                  e.setAttribute('style', `height:${hh}px;min-height:0;box-sizing:border-box;padding:0;border:0;overflow:hidden;visibility:hidden${ww != null ? `;width:${ww}px;flex:none` : ''}`);
+                  sib.replaceWith(e);
+                }
+                const t1 = part.getBoundingClientRect().top + scrollY;
+                const shift = mode === 'place' ? exact - t1 : (((exact % 1) - (t1 % 1)) % 1 + 1) % 1;
+                if (shift > 0.001) document.querySelector('.ws-in').style.paddingTop = `${shift.toFixed(3)}px`;
+                return {};
+              }, { name: crop, exact: box_exact, mode });
+              const sub = await p.evaluate(PRUNE, 0);
+              // the part-alone page drawn afresh from its markup, as the frame will be, so the proof reads what the frame shows
+              await p.evaluate((html) => { const ws = document.querySelector('.ws'); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); }, sub.html);
+              await p.evaluate(() => document.fonts.ready);
+              Object.assign(nb, await p.evaluate((name) => { const b = document.querySelector(`.ws [data-oa-part="${name}"]`).getBoundingClientRect();
+                return { top: Math.ceil(b.top + scrollY - 0.001), bottom: Math.floor(b.bottom + scrollY + 0.001) }; }, crop));
+              if (nb.bottom - nb.top !== h) { tried.push(`${mode}: the part alone is ${nb.bottom - nb.top} px tall, in the page ${h}`); continue; }
               const mine = await p.screenshot({ clip: { x: 0, y: nb.top, width: wv.w, height: h } });
-              if (Buffer.compare(before, mine) === 0) {
-                facts.subtree = facts.subtree || {};
-                facts.subtree[key] = { bytes_clipped: Buffer.byteLength(pruned.html), bytes_subtree: Buffer.byteLength(sub.html), top_before: y0, top_after: nb.top };
-                pruned.html = sub.html; pruned.removed += sub.removed;
-                y0 = nb.top;
-              } else {
-                facts.subtree = facts.subtree || {};
-                facts.subtree[key] = { kept_clipped: 'the part alone did not draw the same pixels' };
-                await p.goto('file://' + mp, { waitUntil: 'load' });
-                await p.evaluate(() => document.fonts.ready);
-                await p.evaluate(PRUNE, { limit: y0 + h, careful: true });
+              const mine_part = await p.screenshot({ clip: { ...part_x, y: nb.top, height: h } });
+              if (Buffer.compare(before_part, mine_part) !== 0) {
+                tried.push(`${mode}: the part alone did not draw the same pixels`);
+                // the two pictures, for a reader to see where they part (the kit's output folder only)
+                fs.writeFileSync(path.join(dir, `crop-${key}-${mode}-page.png`), before);
+                fs.writeFileSync(path.join(dir, `crop-${key}-${mode}-part.png`), mine);
+                continue;
               }
+              facts.subtree = facts.subtree || {};
+              facts.subtree[key] = { bytes_clipped: Buffer.byteLength(pruned.html), bytes_subtree: Buffer.byteLength(sub.html), top_before: y0, top_after: nb.top, mode,
+                part_columns: part_x.width === wv.w ? 'the whole width' : `${part_x.x} to ${part_x.x + part_x.width} px; beside it the frame shows the page's ground`,
+                band_same: Buffer.compare(before, mine) === 0 };
+              pruned.html = sub.html; pruned.removed += sub.removed;
+              y0 = nb.top;
+              after = mine;
+              done = true;
+              break;
+            }
+            if (!done) {
+              facts.subtree = facts.subtree || {};
+              facts.subtree[key] = { kept_clipped: tried.join('; ') };
+              await p.goto('file://' + mp, { waitUntil: 'load' });
+              await p.evaluate(() => document.fonts.ready);
+              await p.evaluate(PRUNE, { limit: y0 + h, careful: true });
             }
           }
           // step 4: each identity master by <use> of one symbol the page carries once; captured again, it must match
@@ -675,11 +760,38 @@ ${r.head_links || ''}
           await p.evaluate(({ html, sprite_ }) => { const ws = document.querySelector('.ws'); ws.insertAdjacentHTML('beforebegin', sprite_); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); }, { html: sym.html, sprite_: identity_sprite(sym.symbols) });
           await p.evaluate(() => document.fonts.ready);
           const again = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
-          await p.close();
           const same2 = Buffer.compare(after, again) === 0;
+          if (!same2) { fs.writeFileSync(path.join(dir, `id-${key}-after.png`), after); fs.writeFileSync(path.join(dir, `id-${key}-again.png`), again); }
           if (!same2) throw new Error(`${spec.id} ${key}: drawing the identity masters by <use> changed the frame's pixels`);
+          // chat 11c (round 2, weight step c): an atlas frame's repeated drawings by <use> of one symbol each, group by group
+          // (a group is the drawings sharing one class list); a group whose symbols move a pixel stays drawn inline
+          let atl = null;
+          if (spec.type === 'atlas-page') {
+            const trial = async (skip) => {
+              const a = atlas_symbolize(sym.html, skip);
+              if (!Object.keys(a.symbols).length) return { a, same: true };
+              await p.evaluate(({ html, sprite_ }) => { document.querySelectorAll('svg[data-oa-app-kit="identity"]').forEach((x) => x.remove()); const ws = document.querySelector('.ws'); ws.insertAdjacentHTML('beforebegin', sprite_); const t = document.createElement('template'); t.innerHTML = html; ws.replaceWith(t.content.firstElementChild); },
+                { html: a.html, sprite_: identity_sprite({ ...sym.symbols, ...a.symbols }) });
+              await p.evaluate(() => document.fonts.ready);
+              const shot = await p.screenshot({ clip: { x: 0, y: y0, width: wv.w, height: h } });
+              return { a, same: Buffer.compare(after, shot) === 0 };
+            };
+            let t1 = await trial(new Set());
+            const kept_inline = [];
+            if (!t1.same) {
+              const all = Object.keys(t1.a.groups);
+              for (const g of all) { const r1 = await trial(new Set(all.filter((x) => x !== g))); if (!r1.same) kept_inline.push(g); }
+              t1 = await trial(new Set(kept_inline));
+              if (!t1.same) { kept_inline.push(...Object.keys(t1.a.groups)); t1 = null; }
+            }
+            if (t1 && Object.keys(t1.a.symbols).length) atl = { ...t1.a, kept_inline };
+            else atl = { html: sym.html, symbols: {}, groups: {}, kept_inline };
+          }
+          await p.close();
           facts.pruned = facts.pruned || {};
-          facts.pruned[key] = { removed: pruned.removed, bytes_before: Buffer.byteLength(html), bytes_after: Buffer.byteLength(pruned.html), bytes_symbolized: Buffer.byteLength(sym.html), pixels_same: same && same2 };
+          facts.pruned[key] = { removed: pruned.removed, bytes_before: Buffer.byteLength(html), bytes_after: Buffer.byteLength(pruned.html), bytes_symbolized: Buffer.byteLength(sym.html), pixels_same: same && same2,
+            ...(atl ? { bytes_atlas_symbols: Buffer.byteLength(atl.html), atlas_symbol_groups: atl.groups, atlas_kept_inline: atl.kept_inline } : {}) };
+          if (atl) { sym.html = atl.html; Object.assign(sym.symbols, atl.symbols); }
           Object.assign(plate_symbols, sym.symbols);
           // a crop draws the page moved up by its part's top, inside a frame as tall as the part
           const frame_html = y0 ? `<div class="oa-app-crop" style="margin-top:-${y0}px">${sym.html}</div>` : sym.html;

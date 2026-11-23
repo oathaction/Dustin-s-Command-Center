@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "Oath & Action | A country that answers to its people.",
  "css": "web-site.css",
- "written": "2026-11-22T22:53:33.688Z",
+ "written": "2026-11-23T00:04:33.555Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -705,8 +705,8 @@
   }
  ],
  "inputs": {
-  "work/build/app-kit/lib.mjs": "f00e4bd3af21e4437d7a110e4d85400be6545e468ff9912afb3a506bf1a10398",
-  "work/build/app-kit/oa-app.mjs": "2cd4719afcfab98788bbafb25e0267e9461a2985847880c1d3610bb717ee390e",
+  "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
+  "work/build/app-kit/oa-app.mjs": "3f5850971eeecc6a774b14cc84f05f3c3614f056bc3f92274c8bd8588583a5cd",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "338f4f1a93503471f2a53be5a88e79bec18022580f0e8e77bf95fd15c706f030",

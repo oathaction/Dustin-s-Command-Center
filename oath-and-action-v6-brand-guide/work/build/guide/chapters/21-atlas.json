@@ -80,7 +80,7 @@
         },
         {
           "label": "Title bar",
-          "value": "A Charcoal band 56 px tall from edge to edge, in both themes: the atlas’s name in the label style, then its subtitle and snapshot date in the caption style; the five views at the right, in a navigation named Atlas views"
+          "value": "A Charcoal band 56 px tall from edge to edge, in both themes: the atlas’s name in the label style, then its subtitle and snapshot date in the caption style; the five views at the right, in a navigation named Atlas views; on the atlas home, the head band below joins it"
         },
         {
           "label": "Views",
@@ -977,7 +977,7 @@
         },
         {
           "label": "Conceptual loops",
-          "value": "“No numbered chain” in the steps and minus signs cells, with their grade (Rule 15.18)"
+          "value": "“None” in the steps and minus signs cells, and the atlas’s closure, which says the loop has no numbered chain, with their grade (Rule 15.18)"
         },
         {
           "label": "Titles",
@@ -1106,7 +1106,7 @@
       },
       "correct": {
         "specimen": "s-21-16-correct",
-        "caption": "The atlas test’s report for the atlas pages, one line a check, from the build that drew these plates."
+        "caption": "The atlas test’s report from the build that drew these plates: each check against the four views, with how many of each view’s frames and pages it read."
       },
       "failure": {
         "specimen": "s-21-16-failure",

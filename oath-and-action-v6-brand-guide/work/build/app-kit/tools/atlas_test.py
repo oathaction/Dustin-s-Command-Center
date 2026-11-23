@@ -199,6 +199,7 @@ class Page:
         self.title = text(t) if t else title
         self.html = html
         self.theme = "light"
+        self.contrast = None
 
     @property
     def where(self):
@@ -232,7 +233,7 @@ def in_any(el, names):
 # The checks. Each returns a list of faults (strings), and a count of what it read; a check that finds nothing of its
 # kind on a full page of a view that must hold it fails ("found nothing to check").
 # ---------------------------------------------------------------------------------------------------------------------
-EXPECT = {"T2": {"loop", "reform", "register"}, "T3": {"home", "register", "loop"}, "T4": {"loop"}, "T6": {"reform", "loop"},
+EXPECT = {"T2": {"loop", "reform", "register"}, "T3": {"home", "register", "loop"}, "T4": {"loop"}, "T6": {"reform", "loop", "how-to-read"},
           "T7": {"reform", "loop"}, "T8": {"reform", "loop"}, "T9": {"home", "reform", "register", "loop"}, "T11": {"loop"}, "T12": {"home"}}
 ID_RE = re.compile(r"(?<![\w/#-])([A-Z]{1,3}-?\d+[a-z]?)(?![\w-])")
 
@@ -250,6 +251,12 @@ def t1(pg):
             faults.append(f"{k} {i}: the chip reads {text(el)!r}")
         if el.has_attr("data-part"):
             faults.append(f"part {el.get('data-part')}: a part's box carries a kind ({k}); a part is no typed record (R1)")
+    # a row's head (its chip and title) shown at every width: a table drawn as cards opens each card with it (specs 10;
+    # the data lead's request 15). Read from the kit's measure of each row head in the captured view
+    for rh in (pg.facts or {}).get("rowheads", []):
+        n += 1
+        if not rh.get("shown"):
+            faults.append(f"the row head {rh.get('text', '')[:40]!r} is hidden at {pg.facts.get('width')} px; each card opens with its row's head (specs 10)")
     for s in pg.root.find_all(string=True) if pg.root else []:
         if isinstance(s, NavigableString) and not in_any(s, [".oa-chip", "svg", "script", "style", "title"]):
             for m in ID_RE.finditer(str(s)):
@@ -264,8 +271,25 @@ def t1(pg):
 
 
 def line_of(g):
+    """The texture of a drawn connection's mark (System 1's pattern(): dashed 4w 2w, dash-dot 4w 1.5w w 1.5w, dotted 0 2.5w)."""
     dash = [p.get("stroke-dasharray") for p in g.select("path.ak-mark") if p.get("stroke-dasharray")]
-    return "solid" if not dash else "patterned"
+    if not dash:
+        return "solid"
+    nums = [float(x) for x in re.split(r"[\s,]+", dash[0].strip()) if x]
+    if nums and nums[0] == 0:
+        return "dotted"
+    return "dashdot" if len(nums) >= 4 else "dashed"
+
+
+def square_first(el, word):
+    """True when the record square (svg.rs) stands right before the word in el."""
+    for sq in el.select("svg.rs"):
+        nxt = sq.next_sibling
+        while isinstance(nxt, NavigableString) and not str(nxt).strip():
+            nxt = nxt.next_sibling
+        if nxt is not None and text(nxt).lower().startswith(word.lower()):
+            return True
+    return False
 
 
 def t2(pg):
@@ -280,15 +304,26 @@ def t2(pg):
             if el.get(a) != want:
                 faults.append(f"Connection {i}: {a} printed {el.get(a)!r}, model {want!r}")
         if el.name == "g":
-            got, want = line_of(el), "solid" if GRADE_LINE[x["evidence"]] == "solid" else "patterned"
+            got, want = line_of(el), GRADE_LINE[x["evidence"]]
             if got != want:
-                faults.append(f"Connection {i}: drawn {got}, its grade {GRADE_WORD[x['evidence']]} takes a {GRADE_LINE[x['evidence']]} line (Rule 13.4)")
-        else:
+                faults.append(f"Connection {i}: drawn {got}, its grade {GRADE_WORD[x['evidence']]} takes a {want} line (Rule 13.4)")
+        elif not el.find_parent("svg"):
             tx = text(el)
+            gw = GRADE_WORD[x["evidence"]]
             for g, w in GRADE_WORD.items():
-                if re.search(r"\b" + w + r"\b", tx) and w != GRADE_WORD[x["evidence"]]:
-                    faults.append(f"Connection {i}: printed {w}, model {GRADE_WORD[x['evidence']]}")
+                if re.search(r"\b" + w + r"\b", tx) and w != gw:
+                    faults.append(f"Connection {i}: printed {w}, model {gw}")
                     break
+            if not re.search(r"\b" + gw + r"\b", tx, re.I):
+                faults.append(f"Connection {i}: its grade {gw} does not print in words (Rule 13.3)")
+            elif x["evidence"] == "documented" and re.search(r"\b" + gw + r"\b", tx) and not square_first(el, gw):
+                # the label's display word (a row, a key); a sentence that says "documented" in its own words takes none
+                faults.append(f"Connection {i}: no record square right before the word {gw} (Rule 13.4, R3)")
+            sw = atlas_words().get("signs", {})
+            own = sw.get(x["polarity"] or "none")
+            other = sw.get({"+": "-", "-": "+"}.get(x["polarity"] or "none", ""), None)
+            if own and x["polarity"] and not re.search(r"\b" + re.escape(own) + r"\b", tx) and other and re.search(r"\b" + re.escape(other) + r"\b", tx):
+                faults.append(f"Connection {i}: printed {other!r}, its sign {x['polarity']} reads {own!r}")
     # a connection chip followed by a grade word (a loop's grade line): the word is the connection's
     for ch in pg.all('.oa-chip[data-atlas-kind="Connection"]'):
         nxt = ch.next_sibling
@@ -372,31 +407,62 @@ def t5(pg):
 
 def t6(pg):
     faults, n = [], 0
-    chosen = pg.chosen()
-    # E11c-2: a loop page carries one drawing a reform it offers; only the chosen one's marks are read
-    mine = lambda el: all(a.get("data-atlas-for") == chosen for a in el.find_parents(attrs={"data-atlas-for": True}))
-    reds = [el for el in pg.all('[data-red="working"]') if mine(el)]
-    tg = set(RF[chosen]["targets"]) if chosen in RF else set()
-    jobs = {el.get("data-red-job") for el in reds}
-    jobs = {el.get("data-red-job") for el in reds if not in_any(el, [".wa-marks"])}
-    if len(jobs) > 1:
-        faults.append(f"{len(jobs)} working reds of different jobs in one view: {sorted(j or '' for j in jobs)} (Rule 05.3)")
-    for el in reds:
-        n += 1
-        i = el.get("data-atlas-id")
-        if in_any(el, [".wa-marks"]):
-            continue                       # How to read's key sample of the red target names no reform (specs 11.2)
-        if pg.view not in ("reform", "loop"):
-            faults.append(f"{el.get('data-atlas-kind')} {i}: red on a {pg.view} page, which takes none (R10)")
-        elif i not in tg:
-            faults.append(f"{el.get('data-atlas-kind')} {i}: red, and Reform {chosen} does not target it (Rule 12.5)")
-        if "oa-chip" in (el.get("class") or []) or in_any(el, [".wa-tag", ".oa-chip", "button", "h1", "h2"]):
-            faults.append(f"{i}: red on a chip, tag, button or heading (R10)")
-    drawn = {el.get("data-atlas-id") for el in pg.all("svg [data-atlas-id]") if mine(el)}
-    for t in sorted(tg & drawn):
-        n += 1
-        if not any(el.get("data-atlas-id") == t for el in reds):
-            faults.append(f"{t}: Reform {chosen}'s target, drawn and not red (Rule 12.5, R10)")
+    # How to read's key sample of the red target names no reform (specs 11.2): it is read for its target style
+    if pg.view == "how-to-read":
+        smp = pg.all(".wa-marks svg.tgt")
+        css = "".join("".join(str(x) for x in st.contents) for st in pg.soup.find_all("style"))
+        n += len(smp)
+        if not smp and pg.full:
+            faults.append("How to read draws no red target sample (svg class tgt) (Rule 12.5's key)")
+        elif not re.search(r"\.tgt\s+\.ak-mark\{[^}]*stroke:var\(--oa-color-data-emphasis-red", css):
+            faults.append("How to read's red target sample takes no red: no rule strokes .tgt .ak-mark in the red token (request 23)")
+        for el in pg.all('[data-red="working"]'):
+            if not in_any(el, [".wa-marks"]):
+                faults.append(f"{el.get('data-atlas-kind')} {el.get('data-atlas-id')}: red on a how-to-read page outside its key (R10)")
+        return faults, n
+    # E11c-2: a loop page carries one drawing, note and tag set a reform it offers; every state is read, as a reader
+    # choosing each reform sees it (the data lead's request 17)
+    states = sorted({a.get("data-atlas-for") for a in pg.all("[data-atlas-for]")}) if pg.view == "loop" else []
+    for chosen in states or [pg.chosen()]:
+        mine = lambda el: all(a.get("data-atlas-for") == chosen for a in el.find_parents(attrs={"data-atlas-for": True})) \
+            and (el.get("data-atlas-for") in (None, chosen))
+        reds = [el for el in pg.all('[data-red="working"]') if mine(el)]
+        tg = set(RF[chosen]["targets"]) if chosen in RF else set()
+        jobs = {el.get("data-red-job") for el in reds}
+        if len(jobs) > 1:
+            faults.append(f"Reform {chosen} chosen: {len(jobs)} working reds of different jobs in one view: {sorted(j or '' for j in jobs)} (Rule 05.3)")
+        for el in reds:
+            n += 1
+            i = el.get("data-atlas-id")
+            if pg.view not in ("reform", "loop"):
+                faults.append(f"{el.get('data-atlas-kind')} {i}: red on a {pg.view} page, which takes none (R10)")
+            elif i not in tg:
+                faults.append(f"{el.get('data-atlas-kind')} {i}: red with Reform {chosen} chosen, and Reform {chosen} does not target it (Rule 12.5)")
+            if "oa-chip" in (el.get("class") or []) or in_any(el, [".wa-tag", ".oa-chip", "button", "h1", "h2"]):
+                faults.append(f"{i}: red on a chip, tag, button or heading (R10)")
+        drawn = {el.get("data-atlas-id") for el in pg.all("svg [data-atlas-id]") if mine(el)}
+        for t in sorted(tg & drawn):
+            n += 1
+            if not any(el.get("data-atlas-id") == t for el in reds):
+                faults.append(f"{t}: Reform {chosen}'s target, drawn and not red with Reform {chosen} chosen (Rule 12.5, R10)")
+        if states:
+            # the tags under the drawing name the other reforms, never the chosen one (Rule 21.5); the note names the
+            # chosen reform and each target the drawing turns red (Rule 12.5; the data lead's request 18)
+            box = next((a for a in pg.all(f'.wa-tagsets [data-atlas-for="{chosen}"]')), None)
+            if box is None:
+                faults.append(f"Reform {chosen} chosen: no note or tags for it beside the drawing (Rule 12.5)")
+                continue
+            for ch in box.select('.wa-tag .oa-chip[data-atlas-kind="Reform"]'):
+                n += 1
+                if ch.get("data-atlas-id") == chosen:
+                    faults.append(f"Reform {chosen} chosen: its own chip among the other reforms' tags (Rule 21.5)")
+            named = {c.get("data-atlas-id") for c in box.select(".wa-acts .oa-chip")}
+            if chosen not in named:
+                faults.append(f"Reform {chosen} chosen: the note beside the drawing does not name it (Rule 12.5)")
+            for t in sorted(tg & drawn):
+                n += 1
+                if t not in named:
+                    faults.append(f"Reform {chosen} chosen: the note does not name {t}, a target the drawing turns red (Rule 12.5)")
     return faults, n
 
 
@@ -504,6 +570,13 @@ def t9(pg):
         if not ch.has_attr("data-evidence-href") and not in_any(ch, ["[data-evidence-href]"]):
             n += 1
             faults.append(f"Connection {ch.get('data-atlas-id')}: a chip with no link to its line in the Register (Rule 21.7)")
+    if pg.full:
+        drawn = {el.get("data-atlas-id") for el in pg.all('svg [data-atlas-kind="Connection"]')}
+        named = {el.get("data-atlas-id") for el in pg.all('.oa-chip[data-atlas-kind="Connection"]') if not el.find_parent("svg")}
+        for i in sorted(drawn):
+            n += 1
+            if i not in named:
+                faults.append(f"Connection {i}: drawn, and no chip on the page names it or links to its line (Rule 21.7)")
     return faults, n
 
 
@@ -517,6 +590,13 @@ def t10(pg):
                 faults.append(f"the stored spelling {w!r} prints in place of its display word (Rule 13.3)")
     for el in pg.all("[data-grade]"):
         n += 1
+    # the data lead's R18: each loop's grade line composed from its stored field, every grade token in its display word
+    # (capitalized at the start and after a semicolon, lowercase elsewhere), every bare variable code its chip
+    for el in pg.all("[data-grade-text]"):
+        n += 1
+        want = r18(el.get("data-grade-text"))
+        if re.sub(r"\s+([;,.:])", r"\1", text(el)) != want:
+            faults.append(f"the grade line {text(el)[:60]!r}, R18 composes {want[:60]!r} from the stored {el.get('data-grade-text')[:40]!r}")
     # the data lead's R15: a contested remedy's two blocks rejoin to the stored text whole and in order, split at the
     # sentence remedy_split names by the one splitter the kit uses, side by side at 1440 px, both open, the same type;
     # each block's words and lines are reported, and length never fails
@@ -550,6 +630,15 @@ def t10(pg):
             pg.report = (f"remedy contested, two blocks, {len(blocks[0].split())} and {len(blocks[1].split())} words"
                          + (f", {rd[0]['lines']} and {rd[1]['lines']} lines" if len(rd) == 2 else ""))
     return faults, n
+
+
+def r18(stored):
+    def word(m):
+        w = GRADE_WORD[m.group(1)]
+        return w if m.start() == 0 or re.search(r";\s*$", stored[:m.start()]) else w.lower()
+    out = re.sub(r"(?<![\w-])(documented|well-supported|plausible_contested|plausible|hypothesis)(?![\w-])", word, stored)
+    out = re.sub(r"\b([A-Z]{1,2}\d+[a-z]?)\b", lambda m: f"Variable {m.group(1)}" if m.group(1) in N else m.group(1), out)
+    return re.sub(r"\s+", " ", out).strip()
 
 
 STEP_ORDER = [("oa-stepper-play", "Play"), ("oa-stepper-reset", "Reset the loop"), ("oa-stepper-prev", "Previous step"), ("oa-stepper-next", "Next step")]
@@ -635,7 +724,19 @@ def t13(pg):
         big = w["size"] >= 24 or (w["size"] >= 18.66 and int(w.get("weight", 400)) >= 700)
         if r < (3 if big else 4.5) - 0.005:
             faults.append(f"{w['text'][:30]!r}: {r:.2f} to 1 on its ground, under {3 if big else 4.5}")
+    # the marks, on the frame's pixels (Rule 21.15): text 4.5 to 1; muted marks and secondary words 3; the red target 3 on
+    # Charcoal, where it takes no edge (on Newsprint it carries DR-305's Charcoal case, read by T6 and R14)
+    for row, least in (("text", 4.5), ("secondary", 3), ("red", 3 if pg.theme == "dark" else None)):
+        c = (pg.contrast or {}).get(row)
+        if not c or c.get("ratio") is None or least is None:
+            continue
+        n += 1
+        if c["ratio"] < least - 0.005:
+            faults.append(f"{row} ({c.get('token')}): {c['ratio']} to 1 measured on the frame's pixels, under {least} (Rule 21.15)")
     return faults, n
+
+
+SIGN_VERBS = {"raises", "lowers", "decides"}     # chapter 15's typed step: "1 money," then "lowers" (approved, ED-F9)
 
 
 def t14(pg):
@@ -646,13 +747,26 @@ def t14(pg):
             faults.append(f"{w['text'][:30]!r}: {w['size']} px, under 13 (ED-F9)")
     for t in pg.all("svg text"):
         spans = t.find_all("tspan", recursive=False)
-        if len(spans) > 1 and len(text(spans[-1]).split()) == 1 and len(text(t).split()) > 1 and not re.match(r"^\d", text(spans[0])):
+        typed_step = re.match(r"^\d", text(spans[0])) if spans else False
+        last = text(spans[-1]) if spans else ""
+        if len(spans) > 1 and len(last.split()) == 1 and len(text(t).split()) > 1 and not (typed_step and last in SIGN_VERBS):
             n += 1
             faults.append(f"the label {text(t)!r} ends its last line on one word (ED-F9)")
     return faults, n
 
 
 SITE = {}
+AW = {}
+
+
+def atlas_words():
+    """Chapter 21's atlas words (signs, delays, grades, the title bar's name), from the generator, as the kit reads them."""
+    if not AW:
+        import subprocess
+        r = subprocess.run(["python3", "-I", str(ROOT / "work/build/scripts/phase-4/phase4_ch21_build.py"), "--page-words", "all"],
+                           capture_output=True, text=True, cwd=str(ROOT))
+        AW.update(json.loads(r.stdout)["A11"]["atlas"] if r.returncode == 0 else {})
+    return AW
 
 
 def site_words():
@@ -682,6 +796,8 @@ def t15(pg):
     nav = pg.root.select("nav.wa-bar[aria-label]")
     if not nav:
         faults.append("no title bar navigation named for the atlas's views")
+    elif atlas_words().get("views_label") and nav[0].get("aria-label") != atlas_words()["views_label"]:
+        faults.append(f"the title bar is named {nav[0].get('aria-label')!r}, the atlas words {atlas_words()['views_label']!r} (R17)")
     bc = pg.all('nav.wa-crumbs[aria-label]')
     if pg.view != "home" and not bc:
         faults.append("no breadcrumb below the home (AL-09)")
@@ -704,7 +820,7 @@ def t15(pg):
     return faults, n
 
 
-RETIRED = ["Times Explainer", "Yes on 3", "Veterans for All Voters", "Ranked Choice Melrose", "Oath & Action's editor works with",
+RETIRED = ["Times Explainer", "Economist Register", "Yes on 3", "Veterans for All Voters", "Ranked Choice Melrose", "Oath & Action's editor works with",
            "Oath & Action’s editor works with"]
 
 
@@ -769,12 +885,26 @@ def pages(out_dir, plates_dir=PLATES, ids=None):
                 pg = Page(app, f"frame {v['key']}", frame_html(inner.group(1) if inner else v["html"], pdata, plates_dir), "frame", fv.get(f"{parts[0]}-{parts[1]}"),
                           title=pdata.get("title"), full=len(parts) == 2)
                 pg.theme = v["theme"]
+                pg.contrast = v.get("contrast")
                 res.append(pg)
     return res
 
 
+USE_RE = re.compile(r'<use href="#(oa-app-wa-[0-9a-f]+)"[^>]*/>')
+
+
+def unuse(html, symbols):
+    """A frame's drawings read whole: each <use> of an atlas symbol (weight step c) replaced by the symbol's content."""
+    def one(m):
+        sym = (symbols or {}).get(m.group(1), "")
+        inner = re.match(r"<symbol\b[^>]*>(.*)</symbol>$", sym, re.S)
+        return inner.group(1) if inner else m.group(0)
+    return USE_RE.sub(one, html)
+
+
 def frame_html(inner, pdata, plates_dir):
     """A frame's page as the guide shows it: its markup, with the kit's styles its plate stands on (contract C4)."""
+    inner = unuse(inner, pdata.get("symbols"))
     css = "".join((Path(plates_dir) / f"{t}.css").read_text() for t in [pdata.get("type")] + (pdata.get("styles") or [])
                   if (Path(plates_dir) / f"{t}.css").exists())
     return f"<html><head><style>{css}</style></head><body>{inner}</body></html>"
@@ -792,6 +922,7 @@ def plate_pages(plates_dir=PLATES, ids=None):
             parts = v["key"].split("-")
             pg = Page(pdata["id"], f"frame {v['key']}", frame_html(inner.group(1) if inner else v["html"], pdata, plates_dir), "frame", None, title=pdata.get("title"), full=len(parts) == 2)
             pg.theme = v["theme"]
+            pg.contrast = v.get("contrast")
             res.append(pg)
     return res
 
@@ -857,6 +988,18 @@ PLANTS = [
     ("T14", "loop", "main", lambda el, q: setattr(q, "facts", {"words": [{"text": "small words", "size": 12, "color": "rgb(18, 18, 18)", "bg": "rgb(250, 247, 240)", "weight": "400"}]}), "words at 12 px"),
     ("T15", "loop", ".oa-masthead-part[aria-current]", lambda el, q: el.attrs.pop("aria-current"), "no current part in the site's masthead"),
     ("T16", "loop", "main", lambda el, q: el.append(BeautifulSoup("<p>Who Do They Answer To? Times Explainer</p>", "lxml").p), "a newspaper's name"),
+    # the data lead's batch 1, job 4: the gaps, one plant each
+    ("T1", "register", "main", lambda el, q: setattr(q, "facts", {**(q.facts or {}), "width": 390, "rowheads": [{"text": "Connection L10", "shown": False}]}), "a row's head hidden on a phone (request 15)"),
+    ("T2", "loop", 'svg g[data-atlas-id="L15"]', lambda el, q: [p.__setitem__("stroke-dasharray", "0 6") for p in el.select("path.ak-mark")], "a plausible step drawn dotted"),
+    ("T2", "register", 'tr[data-sign="-"]', lambda el, q: [s.replace_with(str(s).replace("lowers", "raises")) for s in el.find_all(string=re.compile("lowers"))], "a minus row whose word reads raises"),
+    ("T2", "register", 'tr[data-grade="documented"]', lambda el, q: [x.decompose() for x in el.select("svg.rs")], "a Documented row with no record square (request 13)"),
+    ("T6", "loop", '[data-atlas-for]:not(.wa-fv--on) svg [data-atlas-kind="Variable"] || [data-atlas-for] svg [data-atlas-kind="Variable"][data-atlas-id="D2"]', _set(**{"data-red": "working", "data-red-job": "where a reform acts"}), "red on a variable the second chooser state's reform does not target (request 17)"),
+    ("T6", "how-to-read", ".wa-marks svg.tgt", lambda el, q: el.__setitem__("class", ["ln"]), "How to read's red target sample drawn in ink (request 23)"),
+    ("T9", "reform", '.wa-note [data-atlas-kind="Connection"]', lambda el, q: el.decompose(), "a drawn connection named nowhere (request 8)"),
+    ("T10", "loop-index", "[data-grade-text]", lambda el, q: el.append(NavigableString(" plausible_contested")), "a stored spelling in a loop index grade cell (request 21)"),
+    ("T13", "loop", "main", lambda el, q: setattr(q, "contrast", {"secondary": {"token": "oa.color.state.muted.mark", "ratio": 2.8}}), "a muted mark at 2.8 to 1"),
+    ("T14", "loop", "svg text", lambda el, q: (el.clear(), el.append(q.soup.new_tag("tspan")), el.append(q.soup.new_tag("tspan")),
+                                               el.contents[0].append("2 lowers the"), el.contents[1].append("rules")), "a two-line step label ending on one word"),
 ]
 
 
@@ -875,10 +1018,16 @@ def self_test(out_dir, plates_dir=PLATES):
         return bad, report
     clean = [ln for pg in pgs for ln in run_page(pg) if not ln[1]]
     say(not clean, f"the clean pages stay quiet: {len(pgs)} page(s), {len(clean)} FAIL line(s)" + (f", first: {clean[0][2]}" if clean else ""))
-    for c, view, sel, fn, what in PLANTS:
-        base = next((p for p in pgs if p.view == view and (p.soup.select_one(sel[1:]) if sel.startswith("@") else p.root.select_one(sel))), None)
+    for c, view, sels, fn, what in PLANTS:
+        # a plant may name a second place, " || " apart, for a run on the plates alone: a frame holds the one state it shows
+        # (the chooser's other drawings are not in a frame), so there the plant goes on the shown drawing
+        base, sel = None, None
+        for sel in sels.split(" || "):
+            base = next((p for p in pgs if p.view == view and (p.soup.select_one(sel[1:]) if sel.startswith("@") else p.root.select_one(sel))), None)
+            if base:
+                break
         if not base:
-            say(False, f"{c}: not planted, no {view} page holds {sel!r} ({what})")
+            say(False, f"{c}: not planted, no {view} page holds {sels!r} ({what})")
             continue
         q = _sub(base, sel, fn)
         got = [ln for ln in run_page(q, [c]) if not ln[1]]

@@ -308,7 +308,7 @@ def reads(lid):
 # Figures, by chapter 15's own drawing code
 # ---------------------------------------------------------------------------------------------------------------------
 FIG_CSS_KEYS = ("sv", "id", "sn", "dm", "rt", "rp", "sh", "pp")
-C13_CSS_KEYS = ("ln", "rs")
+C13_CSS_KEYS = ("ln", "rs", "tgt")   # tgt: a red target sample's style (the data lead's request 23)
 
 
 def fig_css():
@@ -550,7 +550,7 @@ def view_how_to_read(spec):
         "grades": {g: grade_sample(g) for g in GRADE_ORDER}, "record_square": record_square(),
         "ticks": {k: C13.line_svg("documented", w=C13.STEP_W, delay=k) for k in ("S", "M", "L")},
         "hollow": C13.line_svg(None, w=C13.STEP_W, hollow=True),
-        "red": C13.line_svg("documented", w=148, sign="+", target=True),
+        "red": C13.line_svg("documented", w=112, sign="+", target=True),
     }
     # authority's open diamond, drawn by System 1's wire_marks on a short line (Rule 15.5)
     m, _, _ = C.BS.wire_marks([(1, 8), (C13.STEP_W - 1, 8)], "documented", None, None, 2, lit=False, authority=True)
@@ -609,14 +609,14 @@ def view_home(spec):
                 t = N_title(v)
                 rows = C.rows_of(t, 172 - 2 * C.PAD)       # specs 14.4: the open box's pill, 172 px
                 pills[v] = {"title": t, "h": max(len(rows) * C.LH + 22, 44), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
-    closed = home_drawing(fl, False, pills, ps)
-    opened = home_drawing(fl, True, pills, ps)
+    closed = home_drawing(fl, False, pills, ps, spec.get("box_need"))
+    opened = home_drawing(fl, True, pills, ps, spec.get("box_need"))
     return {"parts": ps, "flows": fl, "lit": lit, "hubs": hubs, "pressed": spec.get("pressed_question"), "answer": answer,
             "every_variable": bool(spec.get("every_variable")), "pills": pills, "drawing": closed, "drawing_open": opened,
             "claim_open": bool(spec.get("claim_open"))}
 
 
-def home_drawing(flows_, every=False, pills=None, parts_=None):
+def home_drawing(flows_, every=False, pills=None, parts_=None, box_need=None):
     """The home drawing's wide form (specs 12.2): eight boxes and one orthogonal arrow a directed pair, routed by the design
     director's table, each count at its place, the main circuit in the essential ink and the rest in the subtle ink, every
     crossing a break in the line that yields (a main line runs on; else the lower count breaks; on a tie, the vertical).
@@ -638,13 +638,16 @@ def home_drawing(flows_, every=False, pills=None, parts_=None):
             return 0
         rows = [ids[i:i + cols] for i in range(0, len(ids), cols)]
         return sum(max(ph(v) for v in r) + PW_GAP for r in rows)
-    band_h = 56 + (max((ph(v) for v in vs["X"]), default=0) + PW_GAP if every else 0)
+    # the data lead's requests 4 and 27: each row grows to the tallest box's words, as the kit measures them at 1440 px
+    # with each box's height freed (box_need, whole pixels); the specs' heights stay the floor
+    floor = (box_need or {}).get("open" if every else "closed", {})
+    band_h = max(56 + (max((ph(v) for v in vs["X"]), default=0) + PW_GAP if every else 0), floor.get("X", 0))
     yb = band_h
     yc = yb + 56
-    hc = 184 + max(stack(vs[k]) for k in X0)          # specs 14.4: the core row 184 px
+    hc = max([184 + max(stack(vs[k]) for k in X0)] + [floor.get(k, 0) for k in X0])   # specs 14.4: the core row 184 px
     ycb = yc + hc
     yl = ycb + 112
-    hl = 104 + max(grid(vs["EC"], 3), grid(vs["TC"], 2))
+    hl = max(104 + max(grid(vs["EC"], 3), grid(vs["TC"], 2)), floor.get("EC", 0), floor.get("TC", 0))
     ylb = yl + hl
     H = ylb + 56
     boxes = {"X": (48, 0, 1216, band_h), **{k: (x, yc, W, hc) for k, x in X0.items()}, "EC": (48, yl, 706, hl), "TC": (813, yl, 451, hl)}

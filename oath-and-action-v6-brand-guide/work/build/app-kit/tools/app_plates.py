@@ -202,9 +202,10 @@ def head_styles():
 
 
 STYLE_RE = re.compile(r'<style data-oa-app-kit="([^"]+)">.*?</style>', re.S)
-def sprite_span(page):
-    """Where the identity sprite sits in the page, (start, end), counting nested <svg> (L3's master holds one); or None."""
-    i = page.find('<svg data-oa-app-kit="identity"')
+def sprite_span(page, kind="identity"):
+    """Where the identity sprite (or chat 11c's atlas sprite, kind "atlas") sits in the page, (start, end), counting nested
+    <svg> (L3's master holds one); or None."""
+    i = page.find(f'<svg data-oa-app-kit="{kind}"')
     if i < 0:
         return None
     depth = 0
@@ -216,11 +217,16 @@ def sprite_span(page):
 
 
 def body_sprite():
-    """The identity masters every placed frame draws by <use>, once for the page, hidden, for the top of the body."""
+    """The identity masters every placed frame draws by <use>, once for the page, hidden, for the top of the body. Chat 11c
+    (round 2, weight step c): the atlas pages' repeated drawings (oa-app-wa-*) sit in a sprite of their own, so their bytes
+    weigh in the chapter that first draws an atlas page, never in the identity masters' chapter."""
     if not STATE["symbols"]:
         return ""
-    return ('<svg data-oa-app-kit="identity" aria-hidden="true" focusable="false" width="0" height="0" '
-            'style="position:absolute;width:0;height:0;overflow:hidden">' + "".join(STATE["symbols"].values()) + "</svg>")
+    box = 'aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">'
+    ident = "".join(v for k, v in STATE["symbols"].items() if not k.startswith("oa-app-wa-"))
+    atlas = "".join(v for k, v in STATE["symbols"].items() if k.startswith("oa-app-wa-"))
+    return ((f'<svg data-oa-app-kit="identity" {box}{ident}</svg>' if ident else "")
+            + (f'<svg data-oa-app-kit="atlas" {box}{atlas}</svg>' if atlas else ""))
 
 
 def self_test():

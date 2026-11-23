@@ -3462,6 +3462,10 @@ def weigh(page, sprite_bytes):
     sp_ = app_plates.sprite_span(page)
     if sp_:
         app_kit["identity"] = {"bytes": size(page[sp_[0]:sp_[1]]), "chapter": None}
+    # chat 11c (weight step c): the atlas pages' repeated drawings, one sprite, charged to the first atlas page's chapter
+    sa_ = app_plates.sprite_span(page, "atlas")
+    if sa_:
+        app_kit["atlas"] = {"bytes": size(page[sa_[0]:sa_[1]]), "chapter": None}
     marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
     end = page.find("</main>")
     anchors = {a: n for n, a, *_ in CHAPTERS}
@@ -3470,12 +3474,14 @@ def weigh(page, sprite_bytes):
         b = size(page[start:nxt])
         if kind == "chapter" and anchor in anchors:
             for t, rec in app_kit.items():
-                first = page.find('data-oa-page-frame=' if t in ("plate", "identity") else f'data-oa-app-type="{t}"', start, nxt)
+                first = page.find('data-oa-page-frame=' if t in ("plate", "identity") else 'data-oa-app-type="atlas-page"' if t == "atlas"
+                                  else f'data-oa-app-type="{t}"', start, nxt)
                 if rec["chapter"] is None and first >= 0:
                     rec["chapter"] = anchors[anchor]
                     b += rec["bytes"]
-                    R.note(f"application kit: {'its identity masters, drawn once for the page,' if t == 'identity' else f'its {t} style,'} "
-                           f"{rec['bytes']:,} bytes {'at the top of the body' if t == 'identity' else 'in the head'}, weighs in chapter "
+                    what = {"identity": "its identity masters, drawn once for the page,", "atlas": "its atlas pages' repeated drawings, drawn once for the page,"}
+                    R.note(f"application kit: {what.get(t, f'its {t} style,')} "
+                           f"{rec['bytes']:,} bytes {'at the top of the body' if t in what else 'in the head'}, weighs in chapter "
                            f"{anchors[anchor]}, the first to draw it (contract C4)")
             chapters[anchors[anchor]] = b
         elif kind == "appendix":

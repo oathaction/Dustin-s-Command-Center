@@ -295,4 +295,41 @@ export function symbolize(html) {
   }
   return { html: out + html.slice(i), symbols };
 }
+// Chat 11c (round 2, weight step c): an atlas frame draws each repeated drawing (a grade sample, a sign tag, a tick sample,
+// the record square, a loop's drawing, the home's flows) by <use> of one symbol the page carries once, as D4-154 does for
+// the identity masters. SVG only: an <svg> holding a foreignObject, a title, an id or an earlier <use> is left as drawn.
+// A <use> instance takes the document's rules as its symbol matches them where the sprite sits, and inherits every
+// custom property from where it is used, so the symbol's content sits in a <g> carrying the drawing's own classes plus
+// wa-sym (the renderer's scoped figure rules have a .wa-sym twin) and each color still resolves in the frame's theme.
+// skip names the class groups a frame keeps drawn inline; the kit proves each frame's pixels unchanged, group by group.
+export function atlas_symbolize(html, skip = new Set(), min = 150) {
+  const symbols = {}, groups = {};
+  let out = '', i = 0;
+  const open = /<svg\b[^>]*>/g;
+  let m;
+  while ((m = open.exec(html))) {
+    const start = m.index, tag = m[0];
+    const re = /<svg\b|<\/svg>/g;
+    re.lastIndex = start + 1;
+    let depth = 1, mm, end = -1, nested = false;
+    while ((mm = re.exec(html))) { if (mm[0] === '<svg') { nested = true; depth += 1; } else depth -= 1; if (!depth) { end = mm.index; break; } }
+    if (end < 0) break;
+    const inner = html.slice(start + tag.length, end);
+    const vb = (tag.match(/\sviewBox="([^"]+)"/) || [])[1];
+    const cls = ((tag.match(/\sclass="([^"]*)"/) || [])[1] || '').trim();
+    const group = cls.split(/\s+/).filter(Boolean).sort().join('.') || 'plain';
+    if (nested || !vb || inner.length < min || /<foreignObject|<use\b|<title|<desc|\sid="/.test(inner) || /data-oa-master|role="img"|oa-app-scale/.test(tag) || skip.has(group)) {
+      if (nested) { open.lastIndex = start + 1; continue; }
+      open.lastIndex = end; continue;
+    }
+    const id = 'oa-app-wa-' + crypto.createHash('sha256').update(cls + '|' + vb + '|' + inner).digest('hex').slice(0, 12);
+    symbols[id] = `<symbol id="${id}" viewBox="${vb}" style="overflow:visible"><g class="${cls ? cls + ' ' : ''}wa-sym">${inner}</g></symbol>`;
+    groups[group] = (groups[group] || 0) + 1;
+    const [vx, vy, vw, vh] = vb.trim().split(/[\s,]+/);
+    out += html.slice(i, start) + tag + `<use href="#${id}" x="${vx}" y="${vy}" width="${vw}" height="${vh}"/></svg>`;
+    i = end + '</svg>'.length;
+    open.lastIndex = i;
+  }
+  return { html: out + html.slice(i), symbols, groups };
+}
 export const identity_sprite = (symbols) => `<svg data-oa-app-kit="identity" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">${Object.values(symbols).join('')}</svg>`;
