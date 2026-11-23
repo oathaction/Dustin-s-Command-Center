@@ -260,7 +260,9 @@ ${at(BP.wide, `.ws-atlas .intro{grid-column:1/8}.ws-atlas .pair .ws-qs{grid-colu
 .ws-atlas>.ws-g{padding-inline:0}
 /* the article and the Act page (specs 6 and 7) */
 .ws-art .ws-h1{${type_css('title')};text-wrap:balance}
-.ws-act .ws-h1{${type_css('section')};text-wrap:balance}
+.ws-act .ws-h1{${type_css('section')};text-wrap:balance;text-wrap:pretty}
+/* specs 13.1 (chat 12, CR-12): balance alone left "proposed" on a line of its own at 1440, 1024 and 390 px; pretty, where
+   the browser has it, gives every line two words or more at all four widths (balance stays as the fallback) */
 .ws-open-col>*+*{margin-top:24px !important}
 .ws-open-col .ws-kick+.ws-h1{margin-top:24px !important}
 .ws-open-col .ws-h1+*{margin-top:32px !important}
