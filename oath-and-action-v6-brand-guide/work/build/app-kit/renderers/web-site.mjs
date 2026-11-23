@@ -83,7 +83,10 @@ const at = (em, body) => `@container ws (min-width: ${em}em){${body}}`;
 // W2 (the accessibility lead's walk): a rule for the dark page, chosen or by the device, keyed as tokens.css keys the dark
 // tokens: an explicit Dark on the page or the frame, and the device's dark where no Light was chosen
 // chat 11c: exported for the atlas pages' own dark rules, keyed as the website's
-export const dark = (sel, decl) => `[data-oa-theme="dark"] .ws ${sel},.ws[data-oa-theme="dark"] ${sel}{${decl}}`
+// PR-S8 (chat 12): a page that names its own theme keeps it; the root's Dark reaches only a page that names none, so a
+// frame drawn and labeled light stays light when a reader sets the guide dark. The root's arm keeps the old first
+// selector's specificity (0,2,0) by :where(), so the cascade on the working pages is as before.
+export const dark = (sel, decl) => `.ws[data-oa-theme="dark"] ${sel},:where(:root[data-oa-theme="dark"]) .ws:not([data-oa-theme]) ${sel}{${decl}}`
   + `@media (prefers-color-scheme: dark){:root:not([data-oa-theme="light"]) .ws:not([data-oa-theme="light"]) ${sel}{${decl}}}`;
 const under = (em, body) => `@container ws (max-width: ${em - 0.001}em){${body}}`;
 
@@ -175,7 +178,7 @@ ${at(BP.tablet, '.ws-main{padding-top:48px}')}
 .ws-kick{display:flex;align-items:center;flex-wrap:wrap;${type_css('label')}}
 .ws-kick .a{color:var(--oa-color-text-primary)}
 .ws-kick .d{color:var(--oa-color-text-secondary);margin-inline:8px}
-.ws-kick svg{color:var(--oa-component-icon-ink);margin-right:8px}
+.ws-kick svg{color:var(--oa-component-icon-ink);margin-right:8px;margin-block:calc((var(--oa-type-label-line-height) * 1em - 24px) / 2)}
 .ws-kick .b{color:var(--oa-color-text-secondary)}
 /* figures and links */
 .ws-fig{margin-block:48px}
@@ -397,10 +400,13 @@ const cl24 = (id, cls = '') => `<svg viewBox="0 0 24 24" width="24" height="24" 
 const cl48 = (id, cls = '') => `<svg viewBox="0 0 128 128" width="48" height="48" aria-hidden="true" focusable="false"${cls ? ` class="${cls}"` : ''} data-icon="${id.toUpperCase()}"><use href="#oa-sym-${id}"/></svg>`;
 const out_mark = (w) => `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-another-site"><use href="#oa-sym-u-another-site-16px"/></svg><span class="vh"> ${esc(w)}</span>`;
 // an outside link (Rule 11.15): its last word held to the 16 px mark, "(another site)" for screen readers
-function out_link(words_, href, cls = '', another = '(another site)') {
+// CD-M1 and CR-1 (chat 12): `wrap` holds the words in one span, for a link drawn as a flex box (the Act page's source links),
+// where the words before the held last word would be an anonymous flex item and lose their trailing space
+function out_link(words_, href, cls = '', another = '(another site)', wrap = false) {
   const ws = String(words_).split(' ');
   const last = ws.pop();
-  return `<a href="${esc(href)}"${cls ? ` class="${cls}"` : ''}>${esc(ws.join(' '))}${ws.length ? ' ' : ''}<span class="ws-out">${esc(last)}${out_mark(another)}</span></a>`;
+  const inner = `${esc(ws.join(' '))}${ws.length ? ' ' : ''}<span class="ws-out">${esc(last)}${out_mark(another)}</span>`;
+  return `<a href="${esc(href)}"${cls ? ` class="${cls}"` : ''}>${wrap ? `<span>${inner}</span>` : inner}</a>`;
 }
 
 function kicker(k_, symbol) {
@@ -570,7 +576,7 @@ function act_main(A, figs, pid, cols, marks) {
     + `<div class="ws-cpanel oa-surface-charcoal ws-panel"><p class="lab">${esc(C.panel_label)}</p><p class="line">${esc(C.deadline)}</p>${ask(A)}<p class="ws-addr">${esc(A.ask.address)}</p></div>`
     + `<div class="ws-body"><p class="ws-p ws-sec-end">${esc(C.mail)}</p><h3 class="ws-h3">${esc(C.others_heading)}</h3><p class="ws-p ws-sec-end">${esc(C.others)}</p>`
     + `<h3 class="ws-h3">${esc(C.glance_heading)}</h3>${glance}<p class="ws-checked ws-glance-checked">${esc(C.checked)}</p>`
-    + `<ul class="ws-links">${C.links.map(([w, h]) => `<li>${out_link(w, h, '', A.ask.hidden || '(another site)')}</li>`).join('')}</ul></div></section>`;
+    + `<ul class="ws-links">${C.links.map(([w, h]) => `<li>${out_link(w, h, '', A.ask.hidden || '(another site)', true)}</li>`).join('')}</ul></div></section>`;
   return `<article class="ws-act">${head}${prop}${comm}</article>`;
 }
 

@@ -403,7 +403,7 @@ function view_register({ pid, P, A, F, panels, spec }) {
   // specs 14.6 (C8.1): from 64em the h1 and intro sit in a head band on Charcoal joined to the title bar, as How to read's
   const index = `<div class="wa-rband"><div class="ws-g wa-head"><div class="wa-op"><h1 class="ws-h1 wa-t1" id="${pid}-h1">${esc(wd(P, 'h1', 'A13'))}</h1><p class="ws-intro">${esc(wd(P, 'intro', 'A13'))}</p></div></div></div>`
     + `<div class="ws-g"><div class="wa-col12 wa-tablewrap" data-oa-part="index">${key}`
-    + table(`wa-index${panels.includes('Index') ? ' wa-headon' : ''}`, head, rows + whole) + `<p class="wa-cap">${esc(wd(P, 'whole_note', 'A13'))}</p></div></div>`;
+    + table(`wa-index${panels.includes('Index') ? ' wa-headon' : ''}`, head, rows + whole) + `<p class="wa-cap">${fill_html(wd(P, 'whole_note', 'A13'), { retired: esc(nword(W_.retired)) })}</p></div></div>`;
   // the open sheet: its band, its variables, its connections, one line each with its own address (Rule 21.9)
   const band = `<div class="wa-band${panels.includes('Sheet') ? ' oa-surface-charcoal ws-panel' : ''}"><h2 class="ws-h2 wa-bh" id="${pid}-s2">${S.domain ? link_chip('Domain', S.id, I) + ' ' : ''}${esc(S.title)}</h2>`
     + (S.question ? `<p class="lab">${esc(wd(P, 'sheet_question_label', 'A13'))}</p><p class="ws-intro wa-stored" data-atlas-field="everyday_question">${esc(S.question)}</p>` : '') + `</div>`;
@@ -416,8 +416,9 @@ function view_register({ pid, P, A, F, panels, spec }) {
     + td(`${link_chip('Variable', c.from, I)} ${esc(c.from_title)} <span class="wa-to">${esc(wd(P, 'to', 'A13'))}</span> ${link_chip('Variable', c.to, I)} ${esc(c.to_title)}`, ch[1])
     + td(`${F.sign_samples[c.sign] || ''} ${esc(A.signs[c.sign])}`, ch[2])
     + td(esc(A.types ? A.types[c.type] || c.type : c.type), ch[3])
-    + td(`${F.tick_samples[c.delay.key] || ''} ${esc(A.delays[c.delay.key])}`, ch[4])
-    + td(`<span class="wa-gs">${F.grade_samples[c.grade.key]}</span> <span class="ws-nb">${c.grade.key === 'documented' ? F.record_square : ''}${esc(c.grade.word)}</span>`, ch[5])
+    // CR-3: the delay phrase kept whole beside its ticks, and one grade-cell form, the sample then the word on one line
+    + td(`<span class="wa-one">${F.tick_samples[c.delay.key] || ''} ${esc(A.delays[c.delay.key])}</span>`, ch[4])
+    + td(`<span class="wa-one"><span class="wa-gs">${F.grade_samples[c.grade.key]}</span> <span class="ws-nb">${c.grade.key === 'documented' ? F.record_square : ''}${esc(c.grade.word)}</span></span>`, ch[5])
     + td(`<span class="wa-stored" data-atlas-field="citation">${stored(c.citation, I)}</span>`, ch[6]) + `</tr>`;
   const conns = `<h3 class="ws-h3">${esc(wd(P, 'connections_heading', 'A13'))}</h3>` + table('wa-conns', chead, S.connections.map(crow).join(''));
   const sheet = `<div class="ws-g"><div class="wa-col12" data-oa-part="sheet">${band}<div class="wa-col8in">${vars}</div>${conns}</div></div>`;
@@ -518,6 +519,7 @@ function home_box(p_, v, P, A, lit_on, open) {
     // the lit line in every box, shown where the pressed question lights it, so a question pressed on the working page
     // names its parts in words as the drawn state does, and each box's height is measured with it (requests 4, 27)
     + `<p class="lt">${esc(wd(P, 'lit', 'A11'))}</p>` + pills
+    // CR-3: each count is one unit, so a box's count line breaks only between its two counts, never inside a phrase
     + `<p class="ct">${count(p_.variables.length, `part-variables:${p_.id}`, esc(fill(wd(P, 'variables', 'A11'), { n: p_.variables.length })))}`
     + ` ${p_.inside ? count(p_.inside, `part-inside:${p_.id}`, esc(fill(wd(P, 'inside', 'A11'), { n: p_.inside }))) : count(0, `part-inside:${p_.id}`, esc(wd(P, 'inside_none', 'A11')))}</p>`;
 }
@@ -748,6 +750,7 @@ ${W} .oa-table-grid .oa-chip{white-space:nowrap}
 ${W} .wa-index thead .g{padding-inline:6px}
 ${W} .oa-table-grid .wa-rh{position:static;width:auto;height:auto;overflow:visible;clip-path:none;white-space:normal;text-align:left}
 ${W} .wa-gs{display:inline-flex;align-items:center;gap:4px}
+${W} .wa-one{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 ${W} thead .wa-gs{display:flex;margin-bottom:8px;justify-content:flex-end}
 ${under(BP.desktop, `${W} .wa-headon thead tr{background:var(--oa-color-surface-charcoal)}
 ${W} .wa-headon thead .oa-table-th{color:var(--oa-color-text-primary-on-charcoal);border-bottom:0}
@@ -786,7 +789,7 @@ ${W} .wa-rg{${type_css('data-label')};margin-left:auto}
 /* How to read (specs 11.2) */
 ${W} .wa-marks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);column-gap:var(--g)}
 ${at(BP.desktop, `${W} .wa-marks{grid-template-columns:repeat(2,minmax(0,1fr))}`)}
-${W} .wa-marks li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:center;min-height:64px;padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+${W} .wa-marks li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:start;min-height:64px;padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
 ${W} .wa-marks b{display:block;${type_css('ui')};font-weight:var(--oa-font-weight-semibold)}
 ${W} .wa-mk{display:flex;align-items:center;justify-content:center;width:120px;min-height:48px;overflow:hidden}
 ${W} .wa-mkc{display:flex;flex-direction:column;align-items:center;gap:2px}${W} .wa-mkw{${type_css('caption')}}
@@ -829,6 +832,9 @@ ${W} .wa-box .q{${type_css('caption')}}${W} .wa-card .q{${type_css('body-small')
 ${W} .wa-box .mt,${W} .wa-card .mt{${type_css('caption')};color:var(--oa-color-text-secondary)}
 ${W} .wa-box .lt,${W} .wa-card .lt{${type_css('data-label')};font-weight:var(--oa-font-weight-semibold)}
 ${W} .wa-box .ct,${W} .wa-card .ct{${type_css('data-label')};margin-top:auto !important}
+/* CR-3 (ED-F9): no word left alone at a line's end in the drawing's boxes, the cards, the questions and the hub heads */
+${W} :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),${W} .wa-q .oa-toggle-label,${W} .wa-hub>.lab,${W} .wa-marks .wa-small,${W} .wa-ef .f{text-wrap:balance}
+${W} :is(.wa-box,.wa-card) .ct>[data-count]{white-space:nowrap}
 ${W} .wa-box--band .ct{margin:0 0 0 auto !important}
 ${W} [data-lit="false"]{border-color:var(--oa-color-state-muted-mark)}
 ${W} [data-lit="false"] :is(.nm,.lt){font-weight:var(--oa-font-weight-regular)}

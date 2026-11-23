@@ -424,6 +424,25 @@ function audit(page) {
       }
       if (why.length) sp.pageFrameBad.push({ frame: f.getAttribute('data-oa-page-frame'), specimen: stage && stage.getAttribute('data-specimen'), why });
     });
+    // PR-M1 (chat 12): a kit style in the head serves the frames' pages only. Each of its rules is matched against the page;
+    // a rule that reaches an element outside every frame's page (.oa-app-art) is a fault, as the share card's .sh rule once
+    // drew chapters 14 and 15's shaded pills (rect.pl.sh) 1200 by 630 px. The frames' own wrapper style ("plate") is exempt.
+    sp.kitReach = [];
+    const kitSelectors = (list, acc) => { for (const r of list) { if (r.selectorText !== undefined) acc.push(r.selectorText); else if (r.cssRules) kitSelectors(r.cssRules, acc); } return acc; };
+    document.querySelectorAll('head style[data-oa-app-kit]').forEach((st) => {
+      const kind = st.getAttribute('data-oa-app-kit');
+      if (kind === 'plate' || !st.sheet) return;
+      for (const sel of kitSelectors(st.sheet.cssRules, [])) {
+        let hits = [];
+        try { hits = document.querySelectorAll(sel.replace(/::[a-z-]+(\([^)]*\))?|:(before|after|first-line|first-letter)\b/gi, '')); } catch (e) { continue; }
+        const el = [...hits].find((x) => !x.closest('.oa-app-art'));
+        if (el) {
+          const home = el.closest('[data-specimen]');
+          sp.kitReach.push({ style: kind, selector: sel.slice(0, 140), element: el.tagName.toLowerCase() + (el.getAttribute('class') ? '.' + el.getAttribute('class').trim().split(/\s+/).join('.') : ''),
+            specimen: home ? home.getAttribute('data-specimen') : null });
+        }
+      }
+    });
 
     // ---------------- accessible names: no entity text (AX-M2, RP-M4)
     const ENT = /&(?:[a-z][a-z0-9]{1,31}|#\d+|#x[0-9a-f]+);/i;
@@ -753,6 +772,7 @@ function failuresFrom(a, width) {
   if (sp.pictureAltShort.length) add('specimenPicture', `${sp.pictureAltShort.length} image stage(s) hidden behind an alt that lacks a word their picture holds, so a screen reader never hears it: ${sp.pictureAltShort.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureAltShort[0])}`);
   if (sp.pictureControl.length) add('specimenPicture', `${sp.pictureControl.length} image stage(s) whose hidden picture holds a control a keyboard still reaches: ${sp.pictureControl.slice(0, 8).map((x) => x.specimen).join(', ')}; first: ${JSON.stringify(sp.pictureControl[0])}`);
   if (sp.svgUnnamed.length) add('svgNames', `${sp.svgUnnamed.length} inline SVG(s) neither named nor hidden, first: ${JSON.stringify(sp.svgUnnamed[0])}`);
+  if (sp.kitReach && sp.kitReach.length) add('kitReach', `${sp.kitReach.length} rule(s) of the application kit's head styles reach an element outside every frame's page (PR-M1), first: ${JSON.stringify(sp.kitReach[0])}`);
   if (sp.pageFrameBad && sp.pageFrameBad.length) add('pageFrame', `${sp.pageFrameBad.length} of ${sp.pageFrames} application kit page frame(s) not as the kit writes them (contract C4), first: ${JSON.stringify(sp.pageFrameBad[0])}`);
   if (sp.landmarks.length) add('specimenLandmarks', `${sp.landmarks.length} landmark or article element(s) inside stages, in ${[...new Set(sp.landmarks.map((x) => x.specimen))].join(', ')}; first: ${JSON.stringify(sp.landmarks[0])}`);
   if (a.names.count) add('nameEntities', `${a.names.count} accessible name(s) or text(s) holding an entity, first: ${JSON.stringify(a.names.entities[0])}`);
@@ -2719,6 +2739,9 @@ const PLANTS = [
   { key: 'under13', fault: 'the same 12 px words in a page frame\'s stage, outside the frame', js: pageFramePlant('smallOutside') },
   { key: 'pageFrame', fault: 'a page frame whose page is hidden but not inert', js: pageFramePlant('notInert') },
   { key: 'pageFrame', fault: 'a page frame whose alt is empty', js: pageFramePlant('noAlt') },
+  // PR-M1 (chat 12): a kit style in the head reaches only the frames' pages
+  { key: 'kitReach', fault: 'a kit style in the head whose .sh rule is not held to the frames, beside a chapter 15 pill drawn as rect.pl.sh and a share card frame', js: kitReachPlant('open') },
+  { key: 'kitReach', expect: false, fault: 'the same pill and share card frame beside the .sh rule held to the frames, as the build writes it (allowed: must not be flagged)', js: kitReachPlant('scoped') },
   { key: 'duplicateIds', fault: 'two elements with one id', js: () => { const p = document.createElement('p'); p.id = 'contents'; p.textContent = 'Duplicate'; document.querySelector('.chapter .ch-head').append(p); } },
   { key: 'brokenLinks', fault: 'a same-page link to no id', js: () => { const a = document.createElement('a'); a.href = '#nowhere'; a.textContent = 'Nowhere'; document.querySelector('.rule .why').append(a); } },
   { key: 'relatedLinks', fault: 'a Related chapters link that lands on the contents', js: () => { document.querySelector('.rel-inline a').setAttribute('href', '#contents'); } },
@@ -3148,6 +3171,20 @@ function atlasSpritePlant(kind) {
   const job = kind === 'jobs' ? '<p data-red="working" data-red-job="ask" style="border-left:4px solid var(--oa-color-palette-pillar-red)">A</p>' : '';
   return new Function(`document.body.insertAdjacentHTML('afterbegin', ${JSON.stringify(sprite)});`
     + (job ? `document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(job)});` : ''));
+}
+
+function kitReachPlant(variant) {
+  // PR-M1 (chat 12): 'open' writes the share card's rule as the kit once did, unscoped; 'scoped' as the build now writes it
+  const rule = variant === 'open' ? '.sh{width:1200px;height:630px}' : '.sh:where(.oa-app-art *){width:1200px;height:630px}';
+  const style = `<style data-oa-app-kit="share-image">${rule}</style>`;
+  const pill = '<svg viewBox="0 0 120 40" width="120" height="40" aria-hidden="true" focusable="false"><rect class="pl sh" x="2" y="2" width="116" height="36" rx="18"/></svg>';
+  const frame = '<div class="plate-stage" data-specimen="s-demo-share" role="group" aria-label="A share card fixture, specimen"><div class="oa-app-row" data-oa-app="A91">'
+    + '<div class="oa-app-frame" style="flex:1200 1 0;max-width:1200px" data-oa-page-frame="A91 card" data-oa-app-type="share-image" data-w="1200" data-h="630">'
+    + '<svg class="oa-app-scale" viewBox="0 0 1200 630" role="img" aria-label="A share card fixture at 1200 by 630 px." style="display:block;width:100%;height:auto">'
+    + '<foreignObject x="0" y="0" width="1200" height="630"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art" inert aria-hidden="true" data-oa-picture style="width:1200px;height:630px">'
+    + '<div class="sh"><p style="font-size:32px;margin:0">A card.</p></div></div></foreignObject></svg></div></div></div>';
+  return new Function(`document.head.insertAdjacentHTML('beforeend', ${JSON.stringify(style)});`
+    + `document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(pill + frame)});`);
 }
 
 function pageFramePlant(variant) {

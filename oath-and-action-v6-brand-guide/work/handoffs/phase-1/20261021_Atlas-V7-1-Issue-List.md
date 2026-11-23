@@ -317,3 +317,14 @@ Found by chat 12's evidence reader and words reader, and confirmed by the main s
 |---|---|---|---|
 | 48 | Connection L14's citation says "ruled unlawful Sept 24, 2025", while Loop R18's own stored case says the court said the removals "'almost undoubtedly' violated the law" and that "no ruling on the merits had been issued as of October 15, 2026". Read from the right, "ruled unlawful" claims a merits ruling the record says did not happen | `links[]`, id L14, field `citation` | "17 IGs removed Jan 24, 2025; found likely unlawful Sept 24, 2025 (no merits ruling as of Oct 15, 2026); FEC without quorum since May 1, 2025" |
 | 49 | Loop R18's `adaptation` says the 2021 removals of Peter Robb and Andrew Saul "are the other party's instances" and names no party, so a reader must supply one (house rule H10: name the party, or name the act) | `loops[]`, id R18, field `adaptation` | Name the administration that made the 2021 removals, or say "the earlier administration's instances" |
+
+## Rows 50 to 53, added November 23, 2026 (chat 12's fix pass, the data lead's R20)
+
+Chapter 21's atlas home now prints all 16 stored short answers (R19). Six figures in four of them are held by no claim in their pathway, so the guide prints them as stored with no claim chip, from a fixed list the build checks (R20). Read by the data lead's script from the Atlas V7 snapshot of October 15, 2026. Nothing in V7 changed.
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 50 | PW01's short answer prints "29%" (asking rents, early 2026 against 2020), "$1,240" and "$2,420" (the monthly payment, 2020 and 2025) with no claim in its pathway; Claim CL1105 says the payment "nearly doubled" in words only | `pathways[]`, id PW01, its short answer; `claims[]` | Add a claim for each figure with its source and period, or tie the figures to CL1105 with its numbers |
+| 51 | PW09's short answer prints "about 2.1% a year since 1947", while Claim CL1500 holds 2.1 percent for late 2019 to mid-2026, a different period, so answer and claim disagree | `pathways[]`, id PW09; `claims[]`, id CL1500 | Correct the answer's period to CL1500's, or add a claim for the 1947 series with its source |
+| 52 | PW10's short answer prints "7.65%" (the payroll tax rate) with no claim | `pathways[]`, id PW10 | Add a claim citing the statute or the Social Security Administration's rate table |
+| 53 | PW14's short answer prints "83%" (the property tax share of local school revenue) with no claim | `pathways[]`, id PW14 | Add a claim with its source and school year |
