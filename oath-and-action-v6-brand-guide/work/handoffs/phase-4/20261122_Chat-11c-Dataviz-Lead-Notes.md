@@ -16,6 +16,7 @@ Data visualization lead, Phase 4, chat 11c, November 22, 2026. Started 21:48 UTC
 - D4-xxx | The loop index's grade column follows R11's grade-line form for every loop (R18) | It prints the same stored field as Loop R18's grade line, and Rule 13.3 allows no stored spelling on a page
 - D4-xxx | Batch 1 signs off every view's data and holds every view for display faults, requests 4 to 28 | Data matched the model on all 59 pages; the faults are in marks and layout, which the plates show to readers
 - D4-xxx | Batch 2 signs off A12 to A16 and A18 to A20 whole, and holds A11 at 390 px and A17 for requests 29 to 31 | Every batch 1 item but part of 27 is fixed and seen; the three new faults were found on round 2's captures
+- D4-xxx | Batch 3 signs off A11 and A17 whole and rechecks A13 and A14; all ten atlas views are signed off | Requests 29 to 31 are fixed and seen, and round 3's changes to A13 and A14 moved no value or mark
 
 ## Rulings
 
@@ -329,6 +330,21 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 
 **Job 4 follow-up:** the test's new branches and plants, read by search at about 00:18 UTC (not re-read whole; SHA-256 a3fe5540...), cover each gap request 28 named: hidden row heads (T1), texture by grade, the sign word and the record square (T2), every chooser state and the key's red sample (T6), drawn connections named by a chip (T9), loop grade cells (T10), the plate's measured ratios (T13), the typed-step exception (T14), "Economist Register" (T16). Requests 29 to 31 are not covered by any check; 30 and 31 are visual and would need the kit's measure.
 
+### Batch 3 (round 3), November 23, 00:47:53 UTC
+
+**Checked:** the data check over all six exports and every plate frame, symbols and chooser states resolved (from 00:46:34 UTC): **0 faults**, holds 9,250 and 16,000 ms, no bare ID, the red by state unchanged (R-11: D4, L14, L15; R-15 and R-48: L14, L15; R-23: EC7, A4; How to read's key). The pixel red scan of every PNG: unchanged from batch 2. By eye: A11 at 390 light and dark, with card edges sampled; A17 rendered headless from the engineer's 00:29 UTC scratch export, whose frame matches the plate written 00:32 UTC (00:47 UTC, load 0.85, one browser); A13 at 1440 light and dark (head band, index head row); A14 at 390 light and dark (facts panel). Landmarks on A13 and A14: one header, the "Atlas views" nav, a breadcrumb, one h1. R-15's note now reads "Its other target, Connection L16, sits off this drawing."
+
+| View | Final status |
+|---|---|
+| A11 home | **Signed off whole.** 29: each phone flow line opens with the key's own sample, the main circuit's in ink and bold, and the key at 390 shows the same two samples. 30: the five unreached cards edge in Stone on Newsprint and Dim Newsprint on Charcoal; the three lit ones in ink |
+| A12 reform R-23 | Signed off whole (batch 2) |
+| A13 Register, D04 | **Signed off whole, rechecked.** The Charcoal head band and the index head row on Newsprint keep every grade sample in its pattern and the square before Documented, in both themes |
+| A14 loop R18 | **Signed off whole, rechecked.** The phone facts panel prints kind, steps, minus signs, delay and weakest step as the model holds them; the hidden "How it closes" row repeats the closure printed above the panel, so nothing is lost |
+| A15, A16, A18, A19, A20 | Signed off whole (batch 2) |
+| A17 every variable | **Signed off whole.** 31: every pill's words clear its rounded ends, Checks and Policy included; the boxes hold their pills and counts |
+
+No request of mine is open.
+
 ## Done
 
 - Rulings R1 to R13, in this file by 21:53 UTC (`date -u` 21:53:52), five minutes after the start at 21:48.
@@ -404,6 +420,7 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 - Batch 1's data check, `signoff/check.py` (23:09 UTC), and its pixel scan, `signoff/redscan.py` (23:08 UTC), in my scratch, as the Sign-offs section lists; the landmark count of the six exports and the stored-text check (both between date reads at 23:09 and 23:14 UTC); headless screenshots of A17 to A20 at 1440 px from the engineer's scratch exports (23:14 UTC, load 0.03, one browser at a time, closed after each).
 - The atlas test read whole (908 lines) against plan section 8; its 23:01:35 UTC report read for every FAIL line.
 - Batch 2 (from 00:12:56 UTC): the data check with symbols and chooser states resolved (00:13:34 UTC); the pixel red scan (00:13:42 UTC); crops of every fixed item; the R-15 chooser state rendered from a scratch copy (00:15 UTC); A17 and A18 rendered from the engineer's `r2/out` exports and A17 to A20's plate pages (00:16 to 00:17 UTC, load under 0.1, one browser at a time); card edges sampled at 390 px (between 00:17 and 00:18:32 UTC).
+- Batch 3 (00:46:34 to 00:47:53 UTC): the data check, the red scan, A11's 390 px card edges by pixels, A17 rendered headless, and crops of A11, A13 and A14 as listed under Sign-offs.
 
 ## Not tested
 
@@ -415,3 +432,4 @@ Read whole between date reads at 23:14 and 23:19 UTC: `work/build/app-kit/tools/
 - A17 to A20 were seen only as headless screenshots of the engineer's scratch exports at 1440 px, in their state on load: A19's step 2 and A20's open claim were read in the plates' frame markup, not seen drawn.
 - I ran neither the atlas test nor its self-test; I read its code and its 23:01:35 report.
 - Batch 2: A17 and A18 were seen from the engineer's 23:58 UTC scratch run, not the repository run of 00:06 to 00:08 UTC; their plates' frame markup matched, but I did not render the repository plates themselves (their page needs the guide's styles). A12, A13 and A14 at 390 dark and A12 at 390 light were checked by pixels and markup only. The R-48 state was checked in markup, not rendered. I did not run the atlas test or its self-test, and read the test's new code by search only.
+- Batch 3: A17 seen from the engineer's 00:29 UTC scratch export (its frame matches the repository plate), not from the repository plate rendered in the guide; A12, A15, A16 and A18 to A20 not looked at again by eye, only by the data check and the red scan.
