@@ -16,3 +16,39 @@ A staffer at a partner organization who builds one web page a month, working onl
 - Step 1 from chapter 21's words: the views are the atlas home (the question "Why can the same care produce different bills?"), Reform R-23, the Register with sheet D04 open, and Loop R18 with Reform R-11 chosen. Chapter 21 names the domains only in Rule 21.8 ("Domains D01 to D10"), and gives no way to find a reform's domain. **Gap 1:** chapter 21 never says which domain a reform belongs to; a reform has targets, and Rule 21.9 files a target's connection "by the variable the connection moves; ... one with two domains on the first". **Guess 1:** a reform's domains are the first domains of its targets' variables (a connection target counts by the variable it moves), read from the model, `work/extract/atlas-v7-data.json`.
 - Domains the four views show, read from the model with that guess: the home question (pathway PW06's variables) reaches D04, D05, D06, D08, D09, D10 and the economy layer; Reform R-23 acts in the economy layer and D08; the Register shows D04; Loop R18 runs through D04 and D05, and Reform R-11 targets D04 and D05. Shown: D04, D05, D06, D08, D09, D10 and the economy layer. Not shown: D01, D02, D03, D07 and the technology layer.
 - Step 2 and 3: in ID order, Reform R-01's targets all file on D02. **Chosen: Reform R-01**, taken by the rule before reading its title, summary or grades. (DR-223: R-01 is handled like every other reform.)
+
+### Finding how to make the page (17:16 to 17:30 UTC)
+
+| Step | Where I looked | What I found | Guess or gap |
+|---|---|---|---|
+| 1 | Chapter 21, its intro, Rules 21.1 to 21.16 and How to read | What a reform page holds and in what order (Rule 21.4), the chips (21.6), the evidence links (21.7), the test (21.16) | **Gap 2:** no word on how to make a page: no content file, no command, no kit |
+| 2 | Chapter 18 | The components the page uses (chips, disclosures, stepper) | Nothing on the kit |
+| 3 | A README for the application kit | None in `work/build/app-kit/` (the chart kit has one) | **Gap 3** |
+| 4 | `oa-app.mjs`'s header | The command, `node work/build/app-kit/oa-app.mjs build [ID...] [--out DIR] [--exports DIR] [--date YYYYMMDD]`, and "content file (specs/<id>-*.json)" | The header lists no content keys for an atlas page; `--spec-dir` and `--plates` work but the header does not name them |
+| 5 | `renderers/atlas-page.mjs`'s header | Templates: home, reform, register, loop, loop-index, how-to-read; "every word the page adds from chapter 21's generator (phase4_ch21_build.py --page-words all)" | **Gap 4:** a page's words live in the studio's chapter 21 generator, keyed by application ID; a partner has no place to write them |
+| 6 | `specs/a12-atlas-reform.json` | The nearest model: id, type, view "reform", record, panels, remedy_split 4, widths, views, export_name, alt | **Guess 7:** a new page is a copy of A12's file with a new id (A21) and record (R-01). **Guess 8:** `remedy_split` names the sentence where R-23's contested remedy splits; nothing says how to choose it for R-01, so I removed it |
+| 7 | The application ID | Chapter 21 and the kit say nothing about numbering | **Guess 9:** A21, the next free number; chapter 22's applications may want it |
+
+## Task 2: a new article page from chapter 20 alone
+
+| Step | Where I looked | What I found | Guess or gap |
+|---|---|---|---|
+| 1 | Chapter 20, Rule 20.7 and its specifications | The article's order: compact pillar row, kicker, headline that answers the question, intro, byline, count panel, body at five of 12 columns, fact box, chart whole, the step on a Charcoal box ending on B | **Gap 5:** nothing on how to make one with the kit |
+| 2 | Choosing the chart | Rule 20.7 names S86 only | **Guess 10:** chart S04 (reported voting by age), which chapter 16's video plates print; its facts and source line read from the chart kit's `s04.json`, which is outside chapter 20 |
+| 3 | `renderers/web-site.mjs`'s header | "Content keys (layout only; words come from the generator)"; the words from `phase4_ch20_build.py --page-words`, "until it exists, the file OA_PAGE_WORDS names" | **Gap 6:** the content file holds no words. A page's words must be added to the studio's chapter 20 generator, or the generator hidden so the kit reads a stand-in file |
+| 4 | The words' form | Not written anywhere a producer reads; I printed A07's with `--page-words A07` | **Guess 11:** a new article's words take A07's keys (title, current, kicker, symbol, headline, intro, byline, count, sections, count_fact, def_source) |
+| 5 | The kicker's icon | A07 uses `cl-031`; chapter 20 names no icon for an Elections kicker | **Guess 12:** left out, to see whether the kit needs one |
+| 6 | The count panel | Rule 20.7 lists a count panel for the article | **Guess 13:** every article has one; I set S04's 27 point gap |
+| 7 | The chart's sizes | A07's content file gives S86 `[621, 328]` | **Guess 14:** the same column sizes serve S04 |
+
+## Task 3: a photograph to commission and a video, from chapter 16 alone (17:30 UTC)
+
+The files are `20261123_Producer-Commission-Photograph.md`, `20261123_Producer-Placeholder-Frame.html` and `20261123_Producer-Video-S66.md`, with their guesses numbered inside them. What chapter 16 did not tell me:
+
+- The rotation log for settings (Rule 16.1 points to chapter 01).
+- Whether a machine test's marked test ballots count as "marked ballots" (Rule 16.6).
+- An article photograph's display size (Rule 16.8 says "display size" and gives none).
+- A license line for commissioned work, and a file name pattern for a photograph (Rule 16.9 gives one for a generated image only).
+- The token values behind the token names it prints (the placeholder frame uses my guesses for Newsprint and Charcoal).
+- Which charts a video may use and where their source lines are (only S04 is named).
+- The title frame, end frame and name plate: "Chapter 23 draws" them, and chapter 23 is not built.
