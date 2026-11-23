@@ -308,3 +308,12 @@ Found by the data visualization lead in chat 11 while planning chapter 21, and c
 | # | Issue | Where | Proposed fix |
 |---|---|---|---|
 | 47 | Loop R18's valence text has a word missing: "Harmful; this is 's B1b with its true polarity. When the person inspected can remove the inspector, the breaker becomes a bypass." The possessive has no owner before "'s" | `loops[]`, id R18, field `valence` | Restore the missing word before "'s B1b" from the atlas editor's draft, or rewrite the clause as "this is Loop B1b with its true polarity" |
+
+## Rows 48 and 49, added November 23, 2026 (chat 12's review)
+
+Found by chat 12's evidence reader and words reader, and confirmed by the main session from the Atlas V7 snapshot of October 15, 2026 (`work/extract/atlas-v7-data.json`). Both fields print as stored on chapter 21's Loop R18 page and, for row 48, on sheet D04 (DR-37). Nothing in V7 changed.
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 48 | Connection L14's citation says "ruled unlawful Sept 24, 2025", while Loop R18's own stored case says the court said the removals "'almost undoubtedly' violated the law" and that "no ruling on the merits had been issued as of October 15, 2026". Read from the right, "ruled unlawful" claims a merits ruling the record says did not happen | `links[]`, id L14, field `citation` | "17 IGs removed Jan 24, 2025; found likely unlawful Sept 24, 2025 (no merits ruling as of Oct 15, 2026); FEC without quorum since May 1, 2025" |
+| 49 | Loop R18's `adaptation` says the 2021 removals of Peter Robb and Andrew Saul "are the other party's instances" and names no party, so a reader must supply one (house rule H10: name the party, or name the act) | `loops[]`, id R18, field `adaptation` | Name the administration that made the 2021 removals, or say "the earlier administration's instances" |
