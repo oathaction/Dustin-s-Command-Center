@@ -111,10 +111,13 @@
   "chapter": "21",
   "rule": "21.15",
   "width_px": null,
-  "alt": "Failure case: do not publish. A dark drawing with gray muted marks and a white selection bar.",
+  "alt": "Failure case: do not publish. The drawing with muted marks in Stone and a White selection. On Charcoal, two pills joined in a loop by gray lines, one dashed: “Presidential action without new legislation” and “Ability to investigate and enforce the rules”. Below them the chips Reform R-11, Reform R-15 and Reform R-48, the first marked by a White bar.",
   "illustrative": false,
-  "notes": "A drawing of a fault: muted marks in Stone on Charcoal and the chosen reform’s bar in White, the colors of the dark kit today (register F-14); the reforms are those whose own records name Loop R18.",
-  "readable": true
+  "notes": "A drawing of a fault: muted marks in Stone on Charcoal and the chosen reform’s bar in White, the colors of the dark kit today (register F-14); the reforms are those whose own records name Loop R18; shown as a picture whose alt carries every word; its words scale with the column (D4-299).",
+  "check_exempt": [
+   "scale",
+   "size"
+  ]
  },
  "s-21-16-correct": {
   "chapter": "21",
@@ -147,10 +150,13 @@
   "chapter": "21",
   "rule": "21.2",
   "width_px": null,
-  "alt": "Failure case: do not publish. The five core parts and Your household as boxes, with arrows of different widths between them and no key; the widest runs from Your household to Wealth.",
+  "alt": "Failure case: do not publish. The core row at 1440 px, arrows by count. Six boxes, Wealth, Voice, Elections, Checks, Policy and Your household, with arrows of different widths between them and no key; the widest runs from Your household to Wealth.",
   "illustrative": false,
-  "notes": "A drawing of a fault: each arrow 1 px wide for each connection it carries, read from the model, with no key; drawn at 866 px, its true size.",
-  "readable": true
+  "notes": "A drawing of a fault: each arrow 1 px wide for each connection it carries, read from the model, with no key; drawn at 866 px, its true size, so its words scale with the column, and shown as a picture whose alt carries every word (D4-299).",
+  "check_exempt": [
+   "scale",
+   "size"
+  ]
  },
  "s-21-3-correct": {
   "chapter": "21",
@@ -196,7 +202,8 @@
   "illustrative": false,
   "notes": "A drawing of a fault: every reform that names Variable A4 in its own targets tagged in red, so five working reds share the view.",
   "check_exempt": [
-   "red"
+   "red",
+   "contrast"
   ],
   "readable": true
  },

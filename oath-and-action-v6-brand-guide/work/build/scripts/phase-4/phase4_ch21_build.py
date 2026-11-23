@@ -1606,9 +1606,14 @@ def s21_2_failure():
     svg = (f'<svg class="sv" viewBox="0 0 {W2} 262" width="{W2}" height="262" style="--ink:var(--oa-color-graphic-essential-on-newsprint);max-width:100%;height:auto" '
            f'aria-hidden="true" focusable="false">{"".join(out)}</svg>')
     html = css() + f'<div class="w"><p class="lab">{_esc(r["fail_label"])}</p>{svg}</div>'
-    return spec('s-21-2-failure', html, '21.2', r['failure_alt'],
+    # D4-299: a drawing of a fault scales below 13 px in a phone's column, so it is a picture whose alt says every word
+    # it shows (D4-211, D4-212's pattern), its part names read from PARTS
+    names = [PARTS[k][0] for k in ('A', 'B', 'C', 'D', 'E', 'EC')]
+    alt = (f'{r["fail_label"]}. Six boxes, {", ".join(names[:-1])} and {names[-1]}, with arrows of different widths between '
+           f'them and no key; the widest runs from {names[-1]} to {names[0]}.')
+    return spec('s-21-2-failure', html, '21.2', alt, readable=False, exempt=['scale', 'size'],
                 notes='A drawing of a fault: each arrow 1 px wide for each connection it carries, read from the model, with '
-                      'no key; drawn at 866 px, its true size.')
+                      'no key; drawn at 866 px, its true size, so its words scale with the column, and shown as a picture whose alt carries every word (D4-299).')
 
 
 def s21_3_failure():
@@ -1653,7 +1658,7 @@ def s21_5_failure():
             f'<div class="ln2"></div><span class="pl" data-red="working">{_esc(NODES["A4"]["title"])}</span><div class="mt8">{tags}</div></div>')
     return spec('s-21-5-failure', html, '21.5', r['failure_alt'],
                 notes='A drawing of a fault: every reform that names Variable A4 in its own targets tagged in red, so five '
-                      'working reds share the view.', exempt=['red'])
+                      'working reds share the view.', exempt=['red', 'contrast'])  # D4-299: its red words are the fault
 
 
 def s21_6_failure():
@@ -1817,9 +1822,14 @@ def s21_15_failure():
     html = (css('.dkp{padding:16px}.sv .tk{fill:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-data-label)}'
                 '.pk{padding:6px 12px;border-left:4px solid transparent}.pk.on{border-left-color:var(--oa-color-palette-white)}')
             + f'<div class="w"><p class="lab">{_esc(r["fail_label"])}</p><div class="dk dkp">{svg}<div class="mt8">{ch}</div></div></div>')
-    return spec('s-21-15-failure', html, '21.15', r['failure_alt'],
+    # D4-299: a picture whose alt says every word it shows (D4-211, D4-212's pattern), the titles read from the model
+    alt = (f'{r["fail_label"]}. On Charcoal, two pills joined in a loop by gray lines, one dashed: \u201c{a_}\u201d and '
+           f'\u201c{b_}\u201d. Below them the chips '
+           + ', '.join(f'Reform {k}' for k in picks[:-1]) + f' and Reform {picks[-1]}, the first marked by a White bar.')
+    return spec('s-21-15-failure', html, '21.15', alt, readable=False, exempt=['scale', 'size'],
                 notes='A drawing of a fault: muted marks in Stone on Charcoal and the chosen reform\u2019s bar in White, the '
-                      'colors of the dark kit today (register F-14); the reforms are those whose own records name Loop R18.')
+                      'colors of the dark kit today (register F-14); the reforms are those whose own records name Loop R18; '
+                      'shown as a picture whose alt carries every word; its words scale with the column (D4-299).')
 
 
 def s21_16_failure():
