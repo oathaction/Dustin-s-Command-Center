@@ -962,11 +962,11 @@ ${W} :is(.wa-box,.wa-card) .ct>[data-count]{white-space:nowrap}
 ${W} :is(.wa-box:not(.wa-box--band),.wa-card) .ct>[data-count]{display:block}
 ${W} .wa-box:is([data-part="EC"],[data-part="TC"]){padding-block:10px}
 ${at(BP.desktop, `${W} .wa-hband{padding-block:16px}${W} .wa-hband .wa-hi{${type_css('body-small')};max-width:none}`)}
-${W} .wa-box:is([data-part="EC"],[data-part="TC"]){grid-template-columns:minmax(0,1fr) minmax(150px,auto)}
+${W} .wa-box:is([data-part="EC"],[data-part="TC"]){grid-template-columns:minmax(0,1fr) 150px}
 ${W} .wa-box:is([data-part="EC"],[data-part="TC"])>.nm{grid-row:1}${W} .wa-box:is([data-part="EC"],[data-part="TC"])>.q{grid-row:2}${W} .wa-box:is([data-part="EC"],[data-part="TC"])>.mt{grid-row:3}
 ${W} .wa-box:is([data-part="EC"],[data-part="TC"])>.lt{grid-row:1}${W} .wa-box:is([data-part="EC"],[data-part="TC"])>.wa-pills{grid-row:4}${W} .wa-box:is([data-part="EC"],[data-part="TC"])>.ct{grid-row:2/4;align-self:end}
 ${at(BP.desktop, `${W} .wa-ef .f{flex-basis:15em}`)}
-${at(75, `${W} .wa-sysw{margin-top:16px}${W} .wa-sysw .wa-key{margin-top:7px !important}`)}
+${at(75, `${W} .wa-sysw{margin-top:16px}${W} .wa-sysw .wa-key{margin-top:1px !important}`)}
 ${W} .wa-box--band .ct{margin:0 0 0 auto !important}
 ${W} [data-lit="false"]{border-color:var(--oa-color-state-muted-mark)}
 ${W} [data-lit="false"] :is(.nm,.lt){font-weight:var(--oa-font-weight-regular)}

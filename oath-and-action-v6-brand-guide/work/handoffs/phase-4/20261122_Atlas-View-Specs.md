@@ -551,3 +551,14 @@ If the engineer takes CR-8: from 64em A14 and A19 draw the loop at **1.5 times c
 ### 15.5 Not changed here
 
 C11C-SP (A14's phone spacing), CR-11 (the bands), CR-12, CR-14 and CD-S4 are mine in turn 2. Section 12.2's route table stands except for the offsets in 15.1.
+
+### 15.6 AX-9: a sheet is a page of its own (A13, A18)
+
+Ruled 18:35 UTC. The chips already link each sheet at its own address (`/atlas/register/d04#variable-d4`), so **each sheet is a page**, and the Register's page without a sheet open is the index alone. On a sheet's page:
+
+- **Title** (AL-01, WCAG 2.4.2): the sheet's name first, then "The Register", the atlas and the site, in the form `PAGES['A13']['view']` already uses for a record (the editor's words, R26's naming: "The sheet for Domain D04", never "sheet D04"). A layer's sheet takes the layer's stored title by a `{title}` fill.
+- **Breadcrumb:** Home / The Register / [Domain D04], where "The Register" becomes a link to the index and the last crumb is the domain's typed chip, bold, no underline, `aria-current="page"`, as 3.1 sets for a record's page (DD11C-R8). A layer's sheet ends on its stored title in bold with `aria-current="page"`, since a layer takes no chip (R26).
+- **Views bar:** "The Register" stays the current view, with `aria-current="true"` (2.5: inside the view).
+- **Locator:** unchanged (R28).
+
+A18 (the sheet for Domain D10) takes the same three changes. T1 reads the last crumb as a chip on A13 and A18.

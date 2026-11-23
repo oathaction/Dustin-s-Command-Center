@@ -1357,8 +1357,9 @@ def s16_12_failure():
 
 CARD = (f'.vc{{max-width:540px}}.pst{{position:relative;aspect-ratio:16/9;background:var(--oa-color-surface-charcoal);'
         f'color:var(--oa-color-text-primary-on-charcoal);padding:24px;display:flex;align-items:flex-end}}'
-        # CR-17 (chat 12): on a Charcoal stage the poster keeps its edge, 1 px of oa.color.border.hairline.onCharcoal
-        ':where([class~="oa-surface-charcoal"]) .pst{box-shadow:0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}'
+        # CR-17 (chat 12): on a Charcoal stage the poster keeps its edge, 1 px of oa.color.border.hairline.onCharcoal; the
+        # guide scopes a plate's style to its stage (@scope), which carries the surface class, hence :scope
+        ':scope:where([class~="oa-surface-charcoal"]) .pst{box-shadow:0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}'
         f'.pq{{{ty("h3")};max-width:22rem;text-wrap:balance}}'
         '.l8{position:absolute;top:24px;right:24px;line-height:0}'
         f'.vt{{{ty("h4")};margin-top:16px;text-wrap:balance}}'
