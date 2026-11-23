@@ -125,7 +125,7 @@
   "width_px": null,
   "alt": "A readable table of the atlas test’s report. Each row is a check, named by its number and what it tests; the four columns are the views Home, Reforms, The Register and Loops. Each cell gives the result, PASS or FAIL, and how many of that view’s frames and pages the check read.",
   "illustrative": false,
-  "notes": "Read from the atlas test’s report (plates/atlas-test.json, 1,264 lines, self-test PASS), counted by check and view for the four views.",
+  "notes": "Read from the atlas test’s report (plates/atlas-test.json, 1,408 lines, self-test PASS), counted by check and view for the four views.",
   "readable": true
  },
  "s-21-16-failure": {

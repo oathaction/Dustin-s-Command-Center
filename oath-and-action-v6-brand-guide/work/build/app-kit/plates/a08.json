@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "How to comment on the FDA’s proposed rule on NAC | Oath & Action",
  "css": "web-site.css",
- "written": "2026-11-23T18:10:56.907Z",
+ "written": "2026-11-23T18:43:39.208Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -61,22 +61,20 @@
     },
     {
      "name": "Comment",
-     "newsprint": 85.8,
-     "dark": 10.3,
+     "newsprint": 81.8,
+     "dark": 14.4,
      "red": 1,
      "panels": 1,
      "panels_box": [
       {
        "x": 19.9,
        "y": 56.4,
-       "w": 44.7,
+       "w": 60.2,
        "h": 26
       }
      ],
      "judged": "all three limits",
-     "faults": [
-      "Newsprint 85.8 percent, outside 60 to 85"
-     ]
+     "faults": []
     },
     {
      "name": "Footer",
@@ -141,15 +139,15 @@
     },
     {
      "name": "Comment",
-     "newsprint": 79,
-     "dark": 15.9,
+     "newsprint": 74.3,
+     "dark": 20.6,
      "red": 1.7,
      "panels": 1,
      "panels_box": [
       {
        "x": 11.8,
        "y": 65.8,
-       "w": 60.6,
+       "w": 76.5,
        "h": 30.1
       }
      ],
@@ -369,7 +367,7 @@
     {
      "name": "Comment",
      "newsprint": 1.1,
-     "dark": 95,
+     "dark": 94.9,
      "red": 1,
      "panels": 0,
      "panels_box": [],
@@ -452,7 +450,7 @@
   "work/build/app-kit/oa-app.mjs": "8c2ef8b83296fa70804f3e22530868abe263489de028242a59e7660b6b46afd9",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
-  "work/build/app-kit/renderers/web-site.mjs": "6d7c1a7ad8a3cd26604a60dcec53f7eaea99905f94af107ce62e916a66e9ecc9",
+  "work/build/app-kit/renderers/web-site.mjs": "959a4e05ffd909244652257db30208e1639ec8bf1378fe94dd319b93c9aa3b49",
   "work/build/app-kit/specs/a08-web-act.json": "69b95232321fec5eeba59bc20c38132f052f4243d9939d7f48e4bf33167b8764",
   "work/build/assets/identity/ampersand/20261028_Amp-B-24px-Master.svg": "78e237c09788d3c7ffdbedebb4b282d91850134c230b1eba39725cb87885b938",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",

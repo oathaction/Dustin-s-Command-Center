@@ -3,7 +3,7 @@
  "type": "share-image",
  "title": null,
  "css": "share-image.css",
- "written": "2026-11-23T18:10:57.209Z",
+ "written": "2026-11-23T18:43:39.589Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -26,7 +26,7 @@
   "work/build/app-kit/renderers/share-image.mjs": "1f2ff66d37f9427b10f7ba193ff58e63743aa6d3f4afcb8b6ab64a3f412d0b85",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
-  "work/build/app-kit/renderers/web-site.mjs": "6d7c1a7ad8a3cd26604a60dcec53f7eaea99905f94af107ce62e916a66e9ecc9",
+  "work/build/app-kit/renderers/web-site.mjs": "959a4e05ffd909244652257db30208e1639ec8bf1378fe94dd319b93c9aa3b49",
   "work/build/app-kit/specs/a09-web-share-preview.json": "6fe48734cfae82fd56e80aea982634274a91dec8a3a4901cb9de454de847f07a",
   "work/build/assets/fonts/20261111_Font-Manifest.json": "af9eb0878f22ccf83553ebd0c400f5d308c4c6c913a83a558bc379297345d910",
   "work/build/assets/fonts/inter-tight/20261111_Inter-Tight-Latin-Ext.woff2": "27877a44778f7b27708859516c9d9868325a2b185ae3e5bd0f3401861eb5e270",

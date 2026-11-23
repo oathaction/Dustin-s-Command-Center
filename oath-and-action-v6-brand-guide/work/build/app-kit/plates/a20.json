@@ -3,13 +3,13 @@
  "type": "atlas-page",
  "title": "Atlas home | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T00:32:13.433Z",
+ "written": "2026-11-23T18:42:09.835Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
    "generator": "work/build/scripts/phase-4/phase4_ch21_build.py",
    "id": "A11",
-   "sha256": "2d54a1db1d4f0abfac5cd938c86ed7593770be141ccf494971100c28dddf49a6"
+   "sha256": "7ab26102150210214890b495d094057130073229fe90ff83ac08cd4ba941b0f6"
   },
   {
    "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -29,10 +29,10 @@
   {
    "key": "1440-light-answer",
    "w": 1440,
-   "h": 760,
+   "h": 821,
    "theme": "light",
-   "alt": "Our systems atlas’s home page with Claim CL1340’s record open. At 1440 px, on Newsprint.",
-   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A20 1440-light-answer\" data-oa-app-type=\"atlas-page\" data-w=\"1440\" data-h=\"760\"><svg class=\"oa-app-scale\" viewBox=\"0 0 1440 760\" role=\"img\" aria-label=\"Our systems atlas’s home page with Claim CL1340’s record open. At 1440 px, on Newsprint.\"><foreignObject x=\"0\" y=\"0\" width=\"1440\" height=\"760\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:1440px;height:760px\"><div class=\"oa-app-crop\" style=\"margin-top:-1691px\"><div class=\"ws wa\" id=\"a20-1440-light-answer\" data-oa-theme=\"light\" style=\"--ws-vh:900px\" data-oa-application=\"A20\" data-atlas-view=\"home\" data-atlas-model=\"ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2\"><div class=\"ws-in\" style=\"padding-top: 1246.3px;\"><main id=\"a20-1440-light-answer-main\" class=\"ws-main\" tabindex=\"-1\"><section class=\"wa-sec wa-bsec\" data-oa-section=\"Questions\" aria-labelledby=\"a20-1440-light-answer-s2\"><div class=\"ws-g\"><div class=\"wa-col12\" style=\"height:412.188px;min-height:0;box-sizing:border-box;padding:0;border:0;overflow:hidden;visibility:hidden\"></div><div class=\"wa-col8\"><div class=\"wa-answer\" data-oa-part=\"answer\"><p class=\"lab\">The short answer</p><p class=\"ws-p wa-stored\" data-atlas-field=\"short_answer\">Most of a medical bill’s price comes from a private contract. Each insurer or employer plan negotiates its own rates with each hospital and clinician, so a scan can cost widely different amounts within one city. Hospitals with few nearby rivals win higher rates, and Medicare pays more for some services in hospital outpatient departments than in doctors’ offices. RAND, a nonprofit research organization, found private plans paid hospitals 254% of Medicare rates in 2022 <a class=\"oa-chip oa-chip--link wa-claim\" href=\"#a20-1440-light-answer-claim-cl1340\" data-atlas-kind=\"Claim\" data-atlas-id=\"CL1340\" data-evidence-href=\"#a20-1440-light-answer-claim-cl1340\">Claim <span class=\"oa-chip-id\">CL1340</span></a>. For medicines, the manufacturer sets a list price protected by patents, and pharmacy benefit managers negotiate rebates off that price, so a patient’s coinsurance can still be based on the full list price.</p><details class=\"oa-disclosure wa-cl\" id=\"a20-1440-light-answer-claim-cl1340\" open=\"\"><summary class=\"oa-disclosure-summary\"><span class=\"oa-disclosure-label\"><span class=\"oa-chip\" data-atlas-kind=\"Claim\" data-atlas-id=\"CL1340\">Claim <span class=\"oa-chip-id\">CL1340</span></span> in full</span><svg class=\"oa-disclosure-chevron\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\" focusable=\"false\" data-icon=\"U-chevron\" data-icon-family=\"utility\"><use href=\"#oa-sym-u-chevron-24px\"></use></svg></summary><div class=\"oa-disclosure-body\"><p class=\"wa-small wa-stored\" data-atlas-field=\"claim\">In 2022, employers and private insurers paid hospitals 254% of what Medicare would have paid for the same services, with wide differences by state.</p><dl class=\"wa-dl\"><div><dt>Grade</dt><dd><b>Well supported</b>, strong research evidence</dd></div><div><dt>People</dt><dd>Privately insured patients in participating employer and insurer data</dd></div><div><dt>Place</dt><dd>United States, by state</dd></div><div><dt>Period</dt><dd>2020 to 2022</dd></div><div><dt>Limit</dt><dd>Claims come from participating employers and insurers, not a random sample of all private plans.</dd></div><div><dt>Sources</dt><dd>RAND Corporation, Prices Paid to Hospitals by Private Health Plans: Hospital Price Transparency Study, Round 5, 2024</dd></div></dl></div></details></div></div></div></section></main></div></div></div></div></foreignObject></svg></div>"
+   "alt": "Our systems atlas’s home page with Claim CL1340’s record open. At 1440 px, in the light theme.",
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A20 1440-light-answer\" data-oa-app-type=\"atlas-page\" data-w=\"1440\" data-h=\"821\"><svg class=\"oa-app-scale\" viewBox=\"0 0 1440 821\" role=\"img\" aria-label=\"Our systems atlas’s home page with Claim CL1340’s record open. At 1440 px, in the light theme.\"><foreignObject x=\"0\" y=\"0\" width=\"1440\" height=\"821\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:1440px;height:821px\"><div class=\"oa-app-crop\" style=\"margin-top:-1588px\"><div class=\"ws wa\" id=\"a20-1440-light-answer\" data-oa-theme=\"light\" data-wa-live=\"\" style=\"--ws-vh:900px\" data-oa-application=\"A20\" data-atlas-view=\"home\" data-atlas-model=\"ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2\"><div class=\"ws-in\" style=\"padding-top: 1121.55px;\"><main id=\"a20-1440-light-answer-main\" class=\"ws-main\" tabindex=\"-1\"><section class=\"wa-sec wa-bsec\" data-oa-section=\"Questions\" aria-labelledby=\"a20-1440-light-answer-s2\"><div class=\"ws-g\"><div class=\"wa-col12\" style=\"height:434.188px;min-height:0;box-sizing:border-box;padding:0;border:0;overflow:hidden;visibility:hidden\"></div><div class=\"wa-col8\"><div class=\"wa-answers\" data-oa-part=\"answer\"><div class=\"wa-answer\" id=\"a20-1440-light-answer-answer-pw06\" data-pathway-answer=\"PW06\"><h3 class=\"wa-ah\">The short answer: Why can the same care produce different bills?</h3><p class=\"ws-p wa-stored\" data-atlas-field=\"short_answer\">Most of a medical bill’s price comes from a private contract. Each insurer or employer plan negotiates its own rates with each hospital and clinician, so a scan can cost widely different amounts within one city. Hospitals with few nearby rivals win higher rates, and Medicare pays more for some services in hospital outpatient departments than in doctors’ offices. RAND, a nonprofit research organization, found private plans paid hospitals 254% of Medicare rates in 2022 <a class=\"oa-chip oa-chip--link wa-claim\" href=\"#a20-1440-light-answer-claim-cl1340\" data-atlas-kind=\"Claim\" data-atlas-id=\"CL1340\" data-evidence-href=\"#a20-1440-light-answer-claim-cl1340\">Claim <span class=\"oa-chip-id\">CL1340</span></a>. For medicines, the manufacturer sets a list price protected by patents, and pharmacy benefit managers negotiate rebates off that price, so a patient’s coinsurance can still be based on the full list price.</p><details class=\"oa-disclosure wa-cl\" id=\"a20-1440-light-answer-claim-cl1340\" open=\"\"><summary class=\"oa-disclosure-summary\"><span class=\"oa-disclosure-label\"><span class=\"oa-chip\" data-atlas-kind=\"Claim\" data-atlas-id=\"CL1340\">Claim <span class=\"oa-chip-id\">CL1340</span></span> in full</span><svg class=\"oa-disclosure-chevron\" viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" aria-hidden=\"true\" focusable=\"false\" data-icon=\"U-chevron\" data-icon-family=\"utility\"><use href=\"#oa-sym-u-chevron-24px\"></use></svg></summary><div class=\"oa-disclosure-body\"><p class=\"wa-small wa-stored\" data-atlas-field=\"claim\">In 2022, employers and private insurers paid hospitals 254% of what Medicare would have paid for the same services, with wide differences by state.</p><dl class=\"wa-dl\"><div><dt>Grade</dt><dd><b>Well supported</b>, strong research evidence</dd></div><div><dt>People</dt><dd>Privately insured patients in participating employer and insurer data</dd></div><div><dt>Place</dt><dd>United States, by state</dd></div><div><dt>Period</dt><dd>2020 to 2022</dd></div><div><dt>Limit</dt><dd>Claims come from participating employers and insurers, not a random sample of all private plans.</dd></div><div><dt>Sources</dt><dd>RAND Corporation, Prices Paid to Hospitals by Private Health Plans: Hospital Price Transparency Study, Round 5, 2024</dd></div></dl></div></details></div></div></div></div></section></main></div></div></div></div></foreignObject></svg></div>"
   }
  ],
  "inputs": {
@@ -40,15 +40,15 @@
   "work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json": "e8e36a9fbe6100c3a88bfaad14038a2f8797ef5de0e864b465eb1ba538a2f74c",
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
-  "work/build/app-kit/oa-app.mjs": "3f5850971eeecc6a774b14cc84f05f3c3614f056bc3f92274c8bd8588583a5cd",
-  "work/build/app-kit/renderers/atlas-page.mjs": "8ad609e7da7c3501fe66795b3bc224ce53b0eb7465c7cffdba7779a95c572cee",
+  "work/build/app-kit/oa-app.mjs": "8c2ef8b83296fa70804f3e22530868abe263489de028242a59e7660b6b46afd9",
+  "work/build/app-kit/renderers/atlas-page.mjs": "bb9ec7ece8f290e2d392e6ac5b0ffa91caeb319afee3c506cb2179ddd3283634",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
-  "work/build/app-kit/renderers/web-site.mjs": "338f4f1a93503471f2a53be5a88e79bec18022580f0e8e77bf95fd15c706f030",
+  "work/build/app-kit/renderers/web-site.mjs": "959a4e05ffd909244652257db30208e1639ec8bf1378fe94dd319b93c9aa3b49",
   "work/build/app-kit/specs/a20-atlas-home-claim-open.json": "37b9ff3f01bc825256515071345a22571dcb180d79d73482adcc0d0d3528668f",
   "work/build/app-kit/tools/atlas_contrast.py": "c9f64745108cf08b8bc91dd7023fadd8adacae894330a57f8fa93a0fb60d0a3e",
-  "work/build/app-kit/tools/atlas_figures.py": "dc92741bee7b70b1ae1683c13c1f546ded050dff37fa092ca8e2ec2a371b49bd",
-  "work/build/app-kit/tools/atlas_test.py": "a3fe5540d68c29767e606811818b95ad0d793832181ec3c3ac30c7161f60515a",
+  "work/build/app-kit/tools/atlas_figures.py": "67464e9a2ecf2de97ff405faca9a87268f8d06d8f7828d7558252144d4f4bf69",
+  "work/build/app-kit/tools/atlas_test.py": "8e5a76d886bf9bd860c3ed9a19e6b0a9f18a0d90b559fcb31bf5633fb563a295",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",
   "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg": "90034ceaf3998a2d91217e452b5cbc054bfc4a56e668fd267849ba4fd6f1fef1",
   "work/build/data/v7-reconciliation-rows.json": "f26e82455bdd0da82b7b7f597cde02c5521ab0beca559469a11e22a4012dcd66",
@@ -74,6 +74,7 @@
   "work/build/guide/code/c-18-toggle.css": "be593c8d244766953191d432d1d4df28b957b69e4aee2f67993c831421a06e9c",
   "work/build/guide/code/c-18-toggle.html": "7c0e6280a941c626301d94cd9f31f7067e37fe7c0cbf05f6fd221d4d0b3c4395",
   "work/build/guide/shell/guide-shell.css": "2c702c3b2c11ef3d79c29d2b9e392e6e12b4c04b888b342b044fca665cd74080",
+  "work/build/scripts/phase-2/atlas_concepts_common.py": "6eadcd3bc942f562f36acd06963894427cff31354b852ca5caf7ec3a96b02da5",
   "work/build/scripts/phase-3/phase3_ch13_build.py": "cb4c017868286bd038004b7d333ecfdfd7da4f2258bc5fe37f3c78197e44bc46",
   "work/build/scripts/phase-3/phase3_ch15_build.py": "7a07b5bbf6b21447c915bc2c1cea8e319cfbd990a8f846e7a3bce88f99e09033",
   "work/build/tokens/tokens.css": "3ecfb1cb943a8844e55c7bf46dcce934d8ce255dce4f95c47de7074ccf3e3d0d",
@@ -83,14 +84,14 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "css_pruned": {
-  "full": 69011,
-  "placed": 52051,
-  "rules_kept": 406,
-  "rules_dropped": 98,
-  "frames_same": 53
+  "full": 73779,
+  "placed": 55929,
+  "rules_kept": 444,
+  "rules_dropped": 103,
+  "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T00:32:41.127Z",
+  "ran": "2026-11-23T18:42:49.473Z",
   "pass": 32,
   "fail": 0,
   "first_fail": null,
