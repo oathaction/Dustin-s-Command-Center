@@ -257,6 +257,19 @@ Inputs: the six working exports and their 20 PNGs in `work/build/exports/phase-4
 4. A12's confidence line sits above its rows, where A13 and A14 set it below (item 7, a Should).
 5. A tag's hyphen in the data-label type renders spaced (item 8, low).
 
+### Batch 2: A12, A13 and A15 whole, and the sprite fix, on Engineer W's final rebuild (19:56 to 20:01 UTC). Signed at 20:15 UTC
+
+Inputs: the exports written 19:58:04 to 20:00:01, the plates at 20:01:09, and Engineer W's strict build `fix/engineer-w/fx8/guide.html` (20:01:27).
+
+- **By script, again from the model:** `dv_signoff.py` gives 567 checks and 0 FAIL on the six exports. `dv_frames.py` gives 86 checks and 0 FAIL on the plate frames. Against batch 1, A12's text moved one line, the confidence line, which now follows the fourth effect row. A13's index gained 13 "Connections by grade" groups, one a row: ten domains, two layers and the whole atlas.
+- **By eye:**
+  - A12 at 1440 light (effects and routes) and 390 light and dark (whole). The confidence line follows the rows at both widths, as A13 and A14 set it. "also aim here" is held on one line, and so is "small negative".
+  - A13 at 1440 light (the index and note) and 390 light and dark (the first three cards). "none filed" sits on one line. Each phone card sets its five grade counts under "Connections by grade", each with its line sample, apart from the structure counts. The sheet titles break in balance.
+  - A15 at 1440 light (the first eleven rows) and 390 light (the first five cards). The titles and "How it closes" cells break in balance, with no word alone.
+- **The sprite fix:** the scoped rule now reads `.oa-masthead-amp:where(.oa-app-art *,:not(:root *))`. I opened one browser (after `browsers.sh` printed "OK to open one") on the strict build. I shot the 390 px frames of `s-21-home` (dark), `s-21-loop` (light and dark), `s-21-1-correct` (390 light, views open) and `s-20-1-correct` (light and dark). The ampersand paints red in every one, Charcoal included (`b3/amp-sheet.png` in my scratch).
+
+**Signed off:** A12 and A13 whole. A15 is signed off with one low item back (Requests, item 10): at 390 px a chip at a line's end can leave its semicolon to open the next line. Loop R4a's card shows it ("... to Variable C4 / ; Plausible for"). The loop index has nine chips followed by a semicolon (C4, A1, C2, C3, C3, C4, D2, D4, D4). Batch 1's items 4 to 7 are answered and built, and item 8 (the hyphen in the tags) stays with the design director.
+
 ## Done
 
 - CD-M2 and AX-4: ruled (R19, R20).
@@ -271,6 +284,7 @@ Inputs: the six working exports and their 20 PNGs in `work/build/exports/phase-4
 - Sign-off of the changed atlas views, batch 1: A11, A14, A16, A17, A19 and A20 signed off; A12, A13 and A15 signed off for their data, with items 4 to 8 under Requests sent back.
 - PR-M2, part 3 (the contested remedies' splits): ruled (R29); R-23 splits at sentence 4, R-01 and R-22 print whole, and R15's "only R-23" is corrected.
 - CD-S7 (S04 in chapter 16): not built this pass, so no sign-off (main session, 19:28 UTC).
+- Batch 2 (20:15 UTC): A12 and A13 signed off whole, A15 with one low item (Requests, item 10); the plates' red ampersand confirmed at 390 px in light and on Charcoal.
 
 ## Requests
 
@@ -288,6 +302,7 @@ Inputs: the six working exports and their 20 PNGs in `work/build/exports/phase-4
 7. **Atlas engineer, with the design director, A12 (a Should, R12 and R21):** the reform page prints "Our atlas’s confidence in these effects" in the "What it would change" band, above the four rows. The loop panels and the Register's rejected option print it after the fourth row, as R12 sets. Fix: print it after the rows on A12 too, so the line sits in one place on every page.
 8. **Design director, low:** in the tags' data-label type a stored hyphen renders with space around it ("low - earning" in Reform R-25's name on A12, at 1440 and 390). It looks like the type token's figure settings. Fix: say whether stored names inside tags should take `font-variant-numeric: normal`, or accept it.
 9. **Atlas engineer, for the register row (PR-M2):** Reform R-25's partner page draws its target Connection LE14 in ink. T6 fails it, so no page ships that way. Until the other target shapes land, the figure step could print the `where_none` words for a target set it cannot draw wholly red, rather than a drawing with a target missing its red.
+10. **Atlas engineer, A15 at 390 px, low (batch 2):** the grade cells hold a chip and the semicolon after it apart, so a line can open on ";" (Loop R4a's card). Fix: hold each chip with the punctuation that follows it (`ws-nb`), as the tag lines hold a name's last word and its mark.
 
 ## Not fixed
 
@@ -315,8 +330,11 @@ None of mine. Every code assigned to me is ruled under "Done".
 - The three contested remedies (R-01, R-22, R-23) read by sentence for R29.
 - The wordmark fault: the scoped rule and the 25 symbol uses counted by script in the 19:26:27 strict build's `guide.html`, and the black ampersand seen in the main session's captures.
 
+- Batch 2: both scripts on the 19:58 to 20:01 build, the text diffs against batch 1, the PNG crops named under batch 2, and one browser on `fix/engineer-w/fx8/guide.html` shooting seven 390 px masthead frames (`scripts/dv_amp.cjs`).
+
 ## Not tested
 
-- I opened no browser. The sign-off reads the kit's exported PNGs and the main session's guide captures; I pressed no question, chose no reform and stepped no loop myself, so the scripted states are read from the frames' markup and the engineer's own walk.
+- Batch 2 did not view A13's and A15's lower bands, or the plate captures of A12, A13 and A15 (still being captured at 20:09). A15 has no dark export.
+- Batch 1 opened no browser. The sign-off reads the kit's exported PNGs and the main session's guide captures; I pressed no question, chose no reform and stepped no loop myself, so the scripted states are read from the frames' markup and the engineer's own walk.
 - By eye I did not view: A11's 390 dark export; A12's 390 dark; A13's 1440 dark below the index and both 390 exports below the index's first cards; A14's 1440 dark outside the drawing; A15's and A16's lower bands; any plate capture at 390, 1024 or 360 viewports or on Charcoal or in gray (they were still being captured at 19:37); `s-21-reform`, `-register`, `-loop` and the other s-21 plates beyond the three named.
 - I did not check whether any atlas page prints a rule change or delivery case chip today; R22 names their fields for when one does.
