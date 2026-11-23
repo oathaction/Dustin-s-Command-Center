@@ -280,7 +280,19 @@ CALLS = [
     'Sections whose opening screens ran past 85 percent Newsprint open on a compact Charcoal band (Rule 05.1 by screen, DR-310).',
     'Page titles name the record: “Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath & Action”.',
 ]
-TESTED = []
+TESTED = [
+    'The strict build, November 23, 00:46 UTC: exit 0, 0 warnings, 0 stale plates, 14,189,330 bytes, 409 rules, 765 specimens',
+    'The atlas test on the final drawing, 00:30 to 00:33 UTC (the engineer’s run): 1,264 checks passed, 0 failed; its self-test '
+    'caught all 27 planted faults, on the working pages and on the plates alone',
+    'The data visualization lead’s own check of every export and plate frame against the model, in three batches: 0 data '
+    'faults, every view signed off whole',
+    'Every export at its size: 67 of 67',
+    'Rule 05.1 by screen: all 57 light screens between 60 and 85 percent Newsprint',
+    'axe at 0 on all 20 working views; the working pages’ scripts clicked through in Chromium at 1440 and 390 px',
+    'Chapter 20 unchanged: its 42 frames and 41 exports byte for byte',
+    'The chart kit, 96 of 96 charts, 0 faults; chapter 14’s check, 99 of 99',
+    'The guide check’s self-test: 163 of 163 planted faults caught, 59 of 59 allowed cases left alone',
+]
 NOT_TESTED = [
     'Keyboard and screen reader walks of the atlas pages by the accessibility lead (chat 12, DR-320)',
     'The creative director’s wall test and scores (chat 12, DR-315)',

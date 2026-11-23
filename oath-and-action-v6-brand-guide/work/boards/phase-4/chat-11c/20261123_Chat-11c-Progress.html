@@ -1,0 +1,223 @@
+<title>Phase 4, Chat 11c</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@700;800&display=swap">
+<style>
+/* Layout: one reading column on the brand's Newsprint; the atlas captures run to the full width. Tokens are the guide's own. */
+:root {
+  --ground: #DCD9D2;      /* oa.color.palette.newsprint */
+  --ink: #121212;         /* oa.color.palette.charcoal */
+  --quiet: #4E535B;       /* oa.color.derived.deep-stone */
+  --rule: #5D636D;        /* oa.color.palette.stone */
+  --red: #E63946;         /* oa.color.palette.pillar-red, the ampersand only */
+  --card: #E7E5E0;
+  --focus: #4A7C74;       /* oa.color.palette.verdigris */
+  --display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #121212; --ink: #DCD9D2; --quiet: #A3A19C; --rule: #828A9D; --red: #E63946; --card: #232426; --focus: #7FB3A9;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --ground: #121212; --ink: #DCD9D2; --quiet: #A3A19C; --rule: #828A9D; --red: #E63946; --card: #232426; --focus: #7FB3A9;
+  color-scheme: dark }
+body { background: var(--ground); color: var(--ink); font: 400 16px/1.55 var(--text); overflow-wrap: break-word; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 80px; }
+.col { max-width: 44rem; }
+a { color: inherit; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.mast { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px;
+  border-bottom: 1px solid var(--rule); padding-bottom: 12px; }
+.word { font: 800 22px/1 var(--display); letter-spacing: -0.01em; }
+.word .amp { color: var(--red); }
+.kick { font: 700 13px/1.3 var(--text); letter-spacing: 0.06em; text-transform: uppercase; color: var(--quiet); }
+h1 { font: 800 clamp(34px, 6vw, 56px)/1.04 var(--display); letter-spacing: -0.02em; margin: 40px 0 16px; text-wrap: balance; }
+h2 { font: 800 clamp(24px, 3.4vw, 32px)/1.1 var(--display); letter-spacing: -0.01em; margin: 64px 0 12px; text-wrap: balance; }
+h4 { font: 700 13px/1.3 var(--text); letter-spacing: 0.06em; text-transform: uppercase; color: var(--quiet); margin: 0 0 8px; }
+p { margin: 0 0 12px; }
+ul { padding-left: 1.2em; margin: 0 0 12px; } li { margin-bottom: 6px; }
+.lede { font-size: 19px; line-height: 1.5; }
+.note { font-size: 14px; color: var(--quiet); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px; margin: 24px 0; }
+.fact { border-top: 3px solid var(--ink); padding-top: 10px; min-width: 0; }
+.fact b { display: block; font: 800 32px/1.05 var(--display); font-variant-numeric: tabular-nums; }
+.fact span { font-size: 14px; color: var(--quiet); }
+figure { margin: 0; min-width: 0; }
+.shot img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); background: #DCD9D2; }
+figcaption { font-size: 14px; color: var(--quiet); margin-top: 8px; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; margin-top: 24px; align-items: start; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 300px)); gap: 24px; margin-top: 24px; align-items: start; }
+details { margin-top: 20px; } summary { cursor: pointer; font-weight: 600; }
+.tbl { overflow-x: auto; margin-top: 16px; }
+table { border-collapse: collapse; font-size: 14px; min-width: 100%; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+thead th { font-weight: 700; border-bottom: 2px solid var(--ink); }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.test th[scope="row"] { font-weight: 600; white-space: nowrap; }
+</style>
+<div class="wrap">
+<header class="mast"><span class="word">OATH <span class="amp">&amp;</span> ACTION</span><span class="kick">Edition 06 · Phase 4 · Chat 11c · November 23, 2026</span></header>
+<main>
+<h1>Chapter 21, the atlas, as built</h1>
+<div class="col"><p class="lede">Our systems atlas, Who Do They Answer To?, now sits inside our website, under the site’s masthead with a title bar of its own. The application kit draws its four kinds of page from the atlas model alone, and the atlas test holds every page to the model before it ships. This page shows what was built. It asks you for no decision; the review, the creative director’s wall test and the keyboard walks come in chat 12, and the choices go to Phase 4 board 1.</p></div>
+<div class="facts">
+<div class="fact"><b>4</b><span>views, each at 1440 and 390 px, light and dark</span></div>
+<div class="fact"><b>1,264</b><span>atlas test checks passed, 0 failed; self-test PASS</span></div>
+<div class="fact"><b>1,106,047</b><span>bytes for chapter 21, against its 655,000</span></div>
+<div class="fact"><b>16.27 MB</b><span>the page projected with every chapter still to come; the limit is 16 MB</span></div>
+</div>
+<h2 id="home">The atlas home</h2><div class="col"><p>The whole system drawn as eight parts with a count on every flow, and the question “Why can the same care produce different bills?” pressed, which lights the three parts it reaches.</p></div>
+<div class="pair">
+<figure class="shot"><a href="img/home-1440-light.webp"><img src="img/home-1440-light-first.webp" alt="The atlas home, first screen at 1440 px, light theme." loading="lazy"></a><figcaption>1440 px, light. First screen; the picture opens the whole page, 2,634 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/home-1440-dark.webp"><img src="img/home-1440-dark-first.webp" alt="The atlas home, first screen at 1440 px, dark theme." loading="lazy"></a><figcaption>1440 px, dark. First screen; the picture opens the whole page, 2,634 px tall.</figcaption></figure>
+</div>
+<div class="phones">
+<figure class="shot"><a href="img/home-390-light.webp"><img src="img/home-390-light-first.webp" alt="The atlas home, first screen at 390 px, light theme." loading="lazy"></a><figcaption>390 px, light. First screen; the picture opens the whole page, 5,224 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/home-390-dark.webp"><img src="img/home-390-dark-first.webp" alt="The atlas home, first screen at 390 px, dark theme." loading="lazy"></a><figcaption>390 px, dark. First screen; the picture opens the whole page, 5,224 px tall.</figcaption></figure>
+</div>
+<details><summary>Rule 05.1 by screen, light theme (contract C5)</summary><div class="tbl"><table><thead><tr><th>Width</th><th>Screen</th><th>Newsprint</th><th>Red</th><th>Inside the limits</th></tr></thead><tbody>
+<tr><td>1440 px</td><td>first</td><td class="num">71.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>System</td><td class="num">76.3</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Questions</td><td class="num">81.4</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Footer</td><td class="num">81.7</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>first</td><td class="num">69.5</td><td class="num">0.1</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>System</td><td class="num">76.5</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Questions</td><td class="num">79.6</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Footer</td><td class="num">80.0</td><td class="num">0.0</td><td>Yes</td></tr>
+</tbody></table></div></details>
+<h2 id="reform">Reform R-23</h2><div class="col"><p>A minimum wage that rises with an index: its two targets in red, the other reforms at the same mark in ink, its two grades apart, its four effects one to a row, and its routes with their check dates.</p></div>
+<div class="pair">
+<figure class="shot"><a href="img/reform-1440-light.webp"><img src="img/reform-1440-light-first.webp" alt="Reform R-23, first screen at 1440 px, light theme." loading="lazy"></a><figcaption>1440 px, light. First screen; the picture opens the whole page, 3,181 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/reform-1440-dark.webp"><img src="img/reform-1440-dark-first.webp" alt="Reform R-23, first screen at 1440 px, dark theme." loading="lazy"></a><figcaption>1440 px, dark. First screen; the picture opens the whole page, 3,181 px tall.</figcaption></figure>
+</div>
+<div class="phones">
+<figure class="shot"><a href="img/reform-390-light.webp"><img src="img/reform-390-light-first.webp" alt="Reform R-23, first screen at 390 px, light theme." loading="lazy"></a><figcaption>390 px, light. First screen; the picture opens the whole page, 4,838 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/reform-390-dark.webp"><img src="img/reform-390-dark-first.webp" alt="Reform R-23, first screen at 390 px, dark theme." loading="lazy"></a><figcaption>390 px, dark. First screen; the picture opens the whole page, 4,838 px tall.</figcaption></figure>
+</div>
+<details><summary>Rule 05.1 by screen, light theme (contract C5)</summary><div class="tbl"><table><thead><tr><th>Width</th><th>Screen</th><th>Newsprint</th><th>Red</th><th>Inside the limits</th></tr></thead><tbody>
+<tr><td>1440 px</td><td>first</td><td class="num">72.5</td><td class="num">0.1</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Reform</td><td class="num">74.8</td><td class="num">0.1</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Grades</td><td class="num">67.9</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Effects</td><td class="num">69.2</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Routes</td><td class="num">85.0</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Sources</td><td class="num">82.4</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Footer</td><td class="num">82.4</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>first</td><td class="num">65.7</td><td class="num">0.1</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Reform</td><td class="num">69.0</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Grades</td><td class="num">76.3</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Effects</td><td class="num">66.2</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Routes</td><td class="num">81.0</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Sources</td><td class="num">80.4</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Footer</td><td class="num">80.4</td><td class="num">0.0</td><td>Yes</td></tr>
+</tbody></table></div></details>
+<h2 id="register">The Register, sheet D04</h2><div class="col"><p>The index of twelve sheets with each grade counted in words, then sheet D04 open: its ten connections one to a row, the rejected option, and its issue records filtered to Variable D4.</p></div>
+<div class="pair">
+<figure class="shot"><a href="img/register-1440-light.webp"><img src="img/register-1440-light-first.webp" alt="The Register, sheet D04, first screen at 1440 px, light theme." loading="lazy"></a><figcaption>1440 px, light. First screen; the picture opens the whole page, 5,845 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/register-1440-dark.webp"><img src="img/register-1440-dark-first.webp" alt="The Register, sheet D04, first screen at 1440 px, dark theme." loading="lazy"></a><figcaption>1440 px, dark. First screen; the picture opens the whole page, 5,845 px tall.</figcaption></figure>
+</div>
+<div class="phones">
+<figure class="shot"><a href="img/register-390-light.webp"><img src="img/register-390-light-first.webp" alt="The Register, sheet D04, first screen at 390 px, light theme." loading="lazy"></a><figcaption>390 px, light. First screen; the picture opens the whole page, 13,239 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/register-390-dark.webp"><img src="img/register-390-dark-first.webp" alt="The Register, sheet D04, first screen at 390 px, dark theme." loading="lazy"></a><figcaption>390 px, dark. First screen; the picture opens the whole page, 13,239 px tall.</figcaption></figure>
+</div>
+<details><summary>Rule 05.1 by screen, light theme (contract C5)</summary><div class="tbl"><table><thead><tr><th>Width</th><th>Screen</th><th>Newsprint</th><th>Red</th><th>Inside the limits</th></tr></thead><tbody>
+<tr><td>1440 px</td><td>first</td><td class="num">67.0</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Index</td><td class="num">73.5</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Sheet</td><td class="num">78.7</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Rejected</td><td class="num">83.3</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Records</td><td class="num">82.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Footer</td><td class="num">81.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>first</td><td class="num">69.8</td><td class="num">0.1</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Index</td><td class="num">76.8</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Sheet</td><td class="num">70.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Rejected</td><td class="num">75.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Records</td><td class="num">76.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Footer</td><td class="num">80.1</td><td class="num">0.0</td><td>Yes</td></tr>
+</tbody></table></div></details>
+<h2 id="loop">Loop R18</h2><div class="col"><p>Weakening watchdogs: the grade line, the signs read aloud, the two-step drawing with its weakest step, the stepper, and Reform R-11 chosen, with its three targets in red.</p></div>
+<div class="pair">
+<figure class="shot"><a href="img/loop-1440-light.webp"><img src="img/loop-1440-light-first.webp" alt="Loop R18, first screen at 1440 px, light theme." loading="lazy"></a><figcaption>1440 px, light. First screen; the picture opens the whole page, 4,356 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/loop-1440-dark.webp"><img src="img/loop-1440-dark-first.webp" alt="Loop R18, first screen at 1440 px, dark theme." loading="lazy"></a><figcaption>1440 px, dark. First screen; the picture opens the whole page, 4,356 px tall.</figcaption></figure>
+</div>
+<div class="phones">
+<figure class="shot"><a href="img/loop-390-light.webp"><img src="img/loop-390-light-first.webp" alt="Loop R18, first screen at 390 px, light theme." loading="lazy"></a><figcaption>390 px, light. First screen; the picture opens the whole page, 6,442 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/loop-390-dark.webp"><img src="img/loop-390-dark-first.webp" alt="Loop R18, first screen at 390 px, dark theme." loading="lazy"></a><figcaption>390 px, dark. First screen; the picture opens the whole page, 6,442 px tall.</figcaption></figure>
+</div>
+<details><summary>Rule 05.1 by screen, light theme (contract C5)</summary><div class="tbl"><table><thead><tr><th>Width</th><th>Screen</th><th>Newsprint</th><th>Red</th><th>Inside the limits</th></tr></thead><tbody>
+<tr><td>1440 px</td><td>first</td><td class="num">64.1</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Loop</td><td class="num">66.8</td><td class="num">0.2</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Stepper</td><td class="num">80.9</td><td class="num">0.2</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Record</td><td class="num">83.4</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Evidence</td><td class="num">78.9</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>1440 px</td><td>Footer</td><td class="num">70.4</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>first</td><td class="num">61.4</td><td class="num">0.1</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Loop</td><td class="num">61.9</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Stepper</td><td class="num">76.7</td><td class="num">0.7</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Record</td><td class="num">72.6</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Evidence</td><td class="num">84.2</td><td class="num">0.0</td><td>Yes</td></tr>
+<tr><td>390 px</td><td>Footer</td><td class="num">80.6</td><td class="num">0.0</td><td>Yes</td></tr>
+</tbody></table></div></details>
+<h2 id="more">The loop index and How to read</h2>
+<div class="pair">
+<figure class="shot"><a href="img/index-1440-light.webp"><img src="img/index-1440-light-first.webp" alt="The loop index, first screen at 1440 px, light theme." loading="lazy"></a><figcaption><strong>The loop index.</strong> All 23 loops by kind, closure and grade, titles as the atlas stores them, with DR-321’s note under the index. The picture opens the whole page, 3,690 px tall.</figcaption></figure>
+<figure class="shot"><a href="img/read-1440-light.webp"><img src="img/read-1440-light-first.webp" alt="How to read, first screen at 1440 px, light theme." loading="lazy"></a><figcaption><strong>How to read.</strong> Every mark the atlas’s pages use, each with its words. The picture opens the whole page, 2,497 px tall.</figcaption></figure>
+</div>
+<h2 id="test">The atlas test</h2>
+<div class="col"><p>One script reads every atlas page the kit draws, as its standalone page and as each plate’s frames, together with the model, and checks that each page says what the model holds. Any failure stops the kit’s build and the strict guide build. Its self-test plants one fault for each check in a copy of a page, never in the model, and passes only when every plant is caught. Run 2026-11-23 00:32 UTC.</p></div>
+<div class="tbl"><table class="test"><thead><tr><th>Check</th><th class="num">A11</th><th class="num">A12</th><th class="num">A13</th><th class="num">A14</th><th class="num">A15</th><th class="num">A16</th><th class="num">A17</th><th class="num">A18</th><th class="num">A19</th><th class="num">A20</th></tr></thead><tbody>
+<tr><th scope="row">T1 typed ids</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T2 connection marks</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T3 counts</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T4 loops</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T5 authority</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T6 red</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T7 effects</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T8 routes and dates</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T9 evidence a step away</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T10 grades in words</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T11 stepper</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T12 pressed and lit</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T13 colors</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T14 type</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T15 site frame</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+<tr><th scope="row">T16 words the atlas retired</th><td class="num">15</td><td class="num">12</td><td class="num">14</td><td class="num">15</td><td class="num">6</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+</tbody></table></div>
+<p class="note">Each cell counts the frames and pages that passed the check for that application. A dash means the application holds nothing that check reads. A11 to A16 are the six pages; A17 to A20 are the states the rule plates show (every variable open, sheet D10 open, Loop R18 on its second step, and the claim open).</p>
+<h2 id="answers">Your answers, applied</h2><div class="tbl"><table><thead><tr><th>Answer</th><th>What it set</th><th>Where it landed</th></tr></thead><tbody>
+<tr><td>DR-319</td><td>The atlas pages share chapter 20’s website style wherever the rules match, and How to read drops its dark frame</td><td>The atlas adds only its own small style; chapter 20’s plates and exports did not move by a byte</td></tr>
+<tr><td>DR-320</td><td>The keyboard walks move to chat 12; the atlas test and axe cover order, names, colors and pace by script</td><td>axe at 0 on all 20 working views; the test checks the stepper’s order and pace</td></tr>
+<tr><td>DR-321</td><td>The loop index prints all 23 titles as stored, with a note that the atlas’s next version reviews them</td><td>Rule 21.14 and the loop index page</td></tr>
+<tr><td>DR-322</td><td>This board, built by the main session, asking nothing</td><td>This page</td></tr>
+<tr><td>DR-323</td><td>Rule 13.12: “sets out what the record shows from each side, at the length the record holds”</td><td>Chapter 13, word for word; chapter 14’s check 99 of 99</td></tr>
+<tr><td>DR-324</td><td>Rule 03.6: L1 from the 16 px master under 24.375em, and the row “Site, from 24.375em to 48em”</td><td>Chapter 03, word for word</td></tr>
+<tr><td>DR-325</td><td>Rule 03.6’s file list adds the 16 px wordmark master</td><td>Chapter 03</td></tr>
+</tbody></table></div>
+<h2 id="calls">Calls the studio made inside the plan</h2><div class="col"><ul>
+<li>The atlas’s title bar is a Charcoal band in both themes, as chapter 20’s home page already draws it; the plan had set it on the page’s own ground. The data lead ruled that it stands (R17): each page still has one header and one navigation named “Atlas views”. Chat 12’s accessibility lead checks it.</li>
+<li>A contested remedy prints the atlas’s stored text whole, split at one sentence, side by side. The plan had asked the two readings to match in length, which only an edit of the atlas’s text could promise; the test now prints each block’s length and never fails on it (R15), in line with your answers DR-314 and DR-323.</li>
+<li>Connection L15 on Loop R18 is plausible, so it is dashed, and Reform R-11 targets it, so it is red. Its Charcoal edge follows the dashes, so in gray it still reads as plausible (R14).</li>
+<li>Sections whose opening screens ran past 85 percent Newsprint open on a compact Charcoal band (Rule 05.1 by screen, DR-310).</li>
+<li>Page titles name the record: “Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath &amp; Action”.</li>
+</ul></div>
+<h2 id="weight">Weight</h2><div class="col">
+<p>The page weighs 14,189,330 bytes today. Chapter 21 weighs 1,106,047 bytes against its allocation of 655,000. With every chapter still to come counted at its own allocation, the page projects to 16,271,891 bytes, 271,891 bytes over the 16 MB limit. Nothing stops a build today, since only the page itself past 16 MB does (DR-271).</p>
+<p>The first placement weighed 1,539,423 bytes. The engineer took 433,376 bytes off with no word, frame or picture lost: every cropped plate now draws its own part alone, where it had carried the whole page clipped; the atlas style keeps only the rules a frame uses; and the marks that repeat in every row are drawn once and reused, proved pixel for pixel on every frame.</p>
+<p>The options that keep content, and what each costs, come to Phase 4 board 1 for your decision. Nothing is cut before you answer.</p></div>
+<h2 id="tested">Tested and not tested</h2><div class="pair"><div><h4>Tested</h4><ul>
+<li>The strict build, November 23, 00:46 UTC: exit 0, 0 warnings, 0 stale plates, 14,189,330 bytes, 409 rules, 765 specimens</li>
+<li>The atlas test on the final drawing, 00:30 to 00:33 UTC (the engineer’s run): 1,264 checks passed, 0 failed; its self-test caught all 27 planted faults, on the working pages and on the plates alone</li>
+<li>The data visualization lead’s own check of every export and plate frame against the model, in three batches: 0 data faults, every view signed off whole</li>
+<li>Every export at its size: 67 of 67</li>
+<li>Rule 05.1 by screen: all 57 light screens between 60 and 85 percent Newsprint</li>
+<li>axe at 0 on all 20 working views; the working pages’ scripts clicked through in Chromium at 1440 and 390 px</li>
+<li>Chapter 20 unchanged: its 42 frames and 41 exports byte for byte</li>
+<li>The chart kit, 96 of 96 charts, 0 faults; chapter 14’s check, 99 of 99</li>
+<li>The guide check’s self-test: 163 of 163 planted faults caught, 59 of 59 allowed cases left alone</li>
+<li>Quick guide check at 1440 and 390 px: result to come.</li>
+</ul></div><div><h4>Not tested</h4><ul>
+<li>Keyboard and screen reader walks of the atlas pages by the accessibility lead (chat 12, DR-320)</li>
+<li>The creative director’s wall test and scores (chat 12, DR-315)</li>
+<li>Safari, Firefox, real screen readers and real phones (listed at Gate 4, DR-279)</li>
+</ul></div></div>
+<p class="note">Built by the main session from the kit’s exports (DR-322). Every picture on this page is a capture of a working page the kit exported.</p>
+</main></div>
