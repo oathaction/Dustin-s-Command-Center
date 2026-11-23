@@ -1,0 +1,37 @@
+{
+ "id": "A21",
+ "type": "atlas-page",
+ "guide": true,
+ "view": "reform",
+ "record": "R-01",
+ "panels": [
+  "Reform"
+ ],
+ "spec_source": "The production reader's simulated producer, from chapter 21 alone (chat 12)",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "390-light",
+  "1440-dark",
+  "390-dark",
+  "1440-light-screen",
+  "390-light-screen",
+  "1440-light-targets",
+  "390-light-targets"
+ ],
+ "export_name": "Producer-Test-Atlas-Reform-R-01-Page",
+ "alt": "Reform R-01’s page in our systems atlas.",
+ "plate_head": "Reform page (producer test)",
+ "plate_line": "Drawn by the application kit at build."
+}

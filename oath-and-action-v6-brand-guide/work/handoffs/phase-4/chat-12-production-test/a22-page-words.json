@@ -1,0 +1,62 @@
+{
+ "A22": {
+  "site": "(the site words chapter 20 prints for A07, copied)",
+  "article": {
+   "title": "Which age groups told the Census Bureau they voted | Oath & Action",
+   "current": "Explain",
+   "kicker": [
+    "Explainer",
+    "Elections"
+   ],
+   "headline": "Reported voting fell most among the youngest citizens in 2024",
+   "intro": "Every two years the Census Bureau asks people whether they voted. In 2024, citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points from 2020, while those 65 and over stayed near 75 percent.",
+   "byline": [
+    "Dustin Cathcart, Founder and Editor",
+    "November 23, 2026",
+    "2026-11-23"
+   ],
+   "count": {
+    "figure": "27",
+    "line1": "points between the youngest and oldest citizens’ reported voting in 2024",
+    "line2": "up from 23 points in 2020",
+    "source": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
+   },
+   "sections": [
+    {
+     "key": "Count",
+     "heading": "What the survey found",
+     "blocks": [
+      {
+       "p": "The gap between citizens 18 to 24 and those 65 and over grew from 23.1 points in 2020 to 27.0 in 2024. It grew 3.9 points, more than the change’s margin of error of about 2.0."
+      },
+      {
+       "chart": "s04"
+      },
+      {
+       "p": "These rates are what people told a Census survey, which runs higher than counted ballots."
+      }
+     ]
+    },
+    {
+     "key": "Step",
+     "heading": "Check that you are registered",
+     "blocks": [
+      {
+       "p": "Your state’s election office can tell you whether you are registered to vote."
+      },
+      {
+       "p": "Start from the federal government’s page {link}, which sends you to your state’s own office.",
+       "link": [
+        "Register to vote and check your registration",
+        "https://vote.gov/"
+       ],
+       "link_kind": "another-site",
+       "end_mark": true
+      }
+     ]
+    }
+   ],
+   "def_source": "Source for the figures: the chart’s, as its source line gives it."
+  }
+ }
+}

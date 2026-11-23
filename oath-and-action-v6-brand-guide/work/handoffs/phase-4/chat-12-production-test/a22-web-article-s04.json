@@ -1,0 +1,48 @@
+{
+ "id": "A22",
+ "type": "web-site",
+ "page": "article",
+ "part": "page",
+ "guide": true,
+ "spec_source": "The production reader's simulated producer, from chapter 20 alone (chat 12)",
+ "widths": [
+  {
+   "w": 1440,
+   "vh": 900,
+   "platform": "website.page_1440"
+  },
+  {
+   "w": 1024,
+   "vh": 768,
+   "platform": "website.page_1024"
+  },
+  {
+   "w": 390,
+   "vh": 844,
+   "platform": "website.page_390"
+  },
+  {
+   "w": 360,
+   "vh": 780,
+   "platform": "website.page_360"
+  }
+ ],
+ "views": [
+  "1440-light",
+  "1024-light",
+  "390-light",
+  "360-light",
+  "1440-dark",
+  "390-dark"
+ ],
+ "export_name": "Producer-Test-Article-Reported-Voting-By-Age",
+ "charts": {
+  "s04": [
+   621,
+   328
+  ]
+ },
+ "alt": "The website’s article page, Which age groups told the Census Bureau they voted.",
+ "plate_head": "Article page (producer test)",
+ "plate_line": "Drawn by the application kit at build."
+}

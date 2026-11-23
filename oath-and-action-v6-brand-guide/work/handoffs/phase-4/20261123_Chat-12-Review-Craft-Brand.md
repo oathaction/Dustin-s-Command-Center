@@ -14,7 +14,7 @@ Pending. Early findings sit in section 2a until the review sorts them.
 
 ## 2a. Early findings (exports at true size, A11 to A14, 17:12 to 17:18 UTC)
 
-- A14 Loop R18: the weakest step's red arrowhead floats about 20 px clear of its dashed line at the bottom left corner (1440 and 390 px). The dashes end at the corner and the up run to the arrowhead carries no ink.
+- A14 Loop R18 (corrected at 17:33 UTC by a pixel map; my first read from a zoom said the arrowhead floated, which is wrong): a 15 px dash joins the arrowhead, and the pattern's 6 px gap falls on the bottom left bend, so the weakest step turns its corner on no ink. Both targets' vertical runs sit on the half pixel: the 1 px Charcoal edge prints as two gray columns (119, 117, 114) and the red's outer columns blend to (124, 37, 44); the horizontal runs land whole.
 - A11 home 1440: "This question reaches / here" ends on one word in Wealth and Checks; "6 variables, 6 / connections inside" and "2 variables, no / connections inside" break inside a phrase; Policy's wrapped question drops its model title 21 px below its row's.
 - A11 home: question buttons sit 8 px inside their category heads at every width; "Public services where you / live" ends on one word; three phone buttons end on one word ("up?", "long?", "get?").
 - A12 R-23: the chip row under the drawing reads "Variable A4 : Reform R-24 Reform R-25 Reform R-26 Reform R-31 also aim here", a detached colon and no commas; one view prints "Households’" and "Households'" both.
