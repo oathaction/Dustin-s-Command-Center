@@ -1382,6 +1382,52 @@ def screens():
     return out
 
 
+EXPORT_1440 = {'A06': '20261121_Web-Home-Page-1440-Light.png',
+               'A07': '20261121_Web-Article-Page-Special-Districts-1440-Light.png',
+               'A08': '20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Light.png'}
+
+
+def joined(boxes):
+    """CE2 (chat 12): panels that touch side by side at one height are one band on the screen (Rules 20.5 and 20.6: the
+    pillar row's four cells meet as one band at 1440 px), so they draw and count as one."""
+    out = []
+    for b in sorted(boxes, key=lambda b: (b['y'], b['h'], b['x'])):
+        if out and abs(out[-1]['y'] - b['y']) < 0.2 and abs(out[-1]['h'] - b['h']) < 0.2 \
+                and abs(out[-1]['x'] + out[-1]['w'] - b['x']) < 0.2:
+            out[-1] = {**out[-1], 'w': b['x'] + b['w'] - out[-1]['x']}
+        else:
+            out.append(dict(b))
+    return out
+
+
+def seen_first(aid, own, others):
+    """CE2 (chat 12): a section's panel that already shows in the page's first screen, read from the export's pixels at
+    1440 px (Charcoal within 12 levels on most of the panel's width, for the panel's own height), so the first screen's
+    box draws what a reader sees there. Rule 20.9 counts it with its section (specs, Panels)."""
+    from PIL import Image
+    p = EXPORTS / EXPORT_1440[aid]
+    if not p.exists():
+        return []
+    with Image.open(p) as im0:
+        im = im0.convert('RGB')
+        W, H = im.size
+        vh = min(900, H)
+        found = []
+        for b in others:
+            x0, x1 = round(b['x'] / 100 * W) + 2, round((b['x'] + b['w']) / 100 * W) - 2
+            hpx = round(b['h'] / 100 * 900)
+            xs = range(x0, x1, max(1, (x1 - x0) // 60))
+            dark = [sum(1 for x in xs if max(im.getpixel((x, y))) <= 0x12 + 12) / len(xs) for y in range(vh)]
+            top = next((y for y in range(vh) if dark[y] >= 0.6), None)
+            if top is None or sum(dark[top:top + hpx]) / max(1, len(dark[top:top + hpx])) < 0.6:
+                continue
+            box = {'x': b['x'], 'y': round(top / vh * 100, 2), 'w': b['w'], 'h': round(min(hpx, vh - top) / vh * 100, 2)}
+            if not any(o['x'] < box['x'] + box['w'] and box['x'] < o['x'] + o['w'] and o['y'] < box['y'] + box['h']
+                       and box['y'] < o['y'] + o['h'] for o in own + found):
+                found.append(box)
+        return found
+
+
 def s20_9_correct():
     r = R['20.9']
     sw = r['screen_words']
@@ -1390,6 +1436,8 @@ def s20_9_correct():
         raise Waiting('Rule 20.9’s correct plate needs the kit’s screen shares (C5) in plates/a06.json to a08.json')
     def nm(names):
         return ', '.join(r['section_words'].get(x.strip(), x.strip()) for x in names.split(','))
+    def count(n, extra=''):
+        return sw['none'] if n == 0 else f'{n} {sw["panel"] if n == 1 else sw["panels"]}{extra}'
     cells = []
     for aid, scr0 in data:
         # sections that open on the same screen (the home page's four pillars at 1440 px) share one box
@@ -1403,17 +1451,27 @@ def s20_9_correct():
             else:
                 scr.append(s)
         for s in scr:
+            boxes = joined(s.get('panels_box', []))
+            extra = ''
+            if s['name'] == 'first':
+                # CE2: the first screen draws, and counts as seen, a section's panel already in view (the pillar row)
+                seen = seen_first(aid, boxes, [b for t in scr if t['name'] != 'first' for b in joined(t.get('panels_box', []))])
+                if seen and not boxes:
+                    extra = (', ' + sw['with_section']) if sw.get('with_section') else ''
+                boxes = boxes + seen
+            elif len(boxes) < len(s.get('panels_box', [])) and sw.get('band'):
+                extra = ', ' + sw['band']
             pn = ''.join(f'<span class="pnl" style="left:{p["x"]:.2f}%;top:{p["y"]:.2f}%;width:{p["w"]:.2f}%;'
-                         f'height:{p["h"]:.2f}%"></span>' for p in s.get('panels_box', []))
-            n = s.get('panels', 0)
+                         f'height:{p["h"]:.2f}%"></span>' for p in boxes)
             cells.append(f'<div class="scb"><div class="box" aria-hidden="true">{pn}</div>'
                          f'<p class="sub">{r["page_words"][aid]}, {sw["first"] if s["name"] == "first" else nm(s["name"])}</p>'
                          f'<p class="fig">{s["newsprint"]:.1f} {sw["pct"]} {sw["news"]}</p>'
-                         f'<p class="sub">{s["dark"]:.1f} {sw["dark"]}, {s["red"]:.1f} {sw["red"]}; '
-                         f'{sw["none"] if n == 0 else (str(n) + " " + (sw["panel"] if n == 1 else sw["panels"]))}</p></div>')
+                         f'<p class="sub">{s["dark"]:.1f} {sw["dark"]}, {s["red"]:.1f} {sw["red"]}; {count(len(boxes), extra)}</p></div>')
     html = css(SCR) + f'<div class="w"><div class="strips">{"".join(cells)}</div></div>'
     return spec('s-20-9-correct', html, '20.9', r['correct_alt'],
-                notes='Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5).')
+                notes='Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5). Panels '
+                      'that touch side by side at one height (the pillar row’s four cells) draw and count as one band, and a '
+                      'section’s panel already in view in a first screen is drawn there from the 1440 px export (CE2).')
 
 
 def s20_9_failure():
