@@ -107,7 +107,7 @@
   "notes": "Drawn by the application kit (A14, dark), with the ratios the kit measured on that frame’s pixels.",
   "readable": true,
   "kit_inputs": {
-   "work/build/app-kit/plates/a14.json": "78b0ef2db32a09f1967e82901f652f33f763836b6f53a2e3a4329a1c2a7e2c54"
+   "work/build/app-kit/plates/a14.json": "a71219adf9115bd39113da5397291d19305e3a95db08c2585fe7edbaf209d1bf"
   }
  },
  "s-21-15-failure": {
@@ -131,7 +131,7 @@
   "notes": "Read from the atlas test’s report (plates/atlas-test.json, 1,408 lines, self-test PASS), counted by check and view for the four views.",
   "readable": true,
   "kit_inputs": {
-   "work/build/app-kit/plates/atlas-test.json": "5965e716136dbb0abcee3f407a211b94a8d9d0aa24c61f5f2f277d0281e23ee3"
+   "work/build/app-kit/plates/atlas-test.json": "e46cdff12762de0e2488ddb9a6adb5ec7d671f005cddac377b74188475eb8c18"
   }
  },
  "s-21-16-failure": {

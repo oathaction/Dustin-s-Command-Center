@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Loops | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:25:00.455Z",
+ "written": "2026-11-23T19:34:58.910Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -319,7 +319,7 @@
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:26:09.492Z",
+  "ran": "2026-11-23T19:36:08.103Z",
   "pass": 96,
   "fail": 0,
   "first_fail": null,

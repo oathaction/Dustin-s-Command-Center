@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:23:46.933Z",
+ "written": "2026-11-23T19:33:45.058Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -667,7 +667,7 @@
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:26:09.492Z",
+  "ran": "2026-11-23T19:36:08.103Z",
   "pass": 208,
   "fail": 0,
   "first_fail": null,

@@ -1,15 +1,15 @@
 {
  "id": "A18",
  "type": "atlas-page",
- "title": "The Register | Who Do They Answer To? | Oath & Action",
+ "title": "The sheet for Domain D10, Taking part, trust and shared norms | The Register | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:25:20.029Z",
+ "written": "2026-11-23T19:35:18.226Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
    "generator": "work/build/scripts/phase-4/phase4_ch21_build.py",
    "id": "A13",
-   "sha256": "ca7d218a7a65d6330e2d442b084afafe0871bb6244aa9bf075d7b5823e412aae"
+   "sha256": "f8d2cef2f8894c674081755fb6d07d3d5bd128945abe1a5be3e804541d22f174"
   },
   {
    "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -112,7 +112,7 @@
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:26:09.492Z",
+  "ran": "2026-11-23T19:36:08.103Z",
   "pass": 80,
   "fail": 0,
   "first_fail": null,
