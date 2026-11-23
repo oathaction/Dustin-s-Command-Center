@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "The Register | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:03:07.017Z",
+ "written": "2026-11-23T19:08:11.959Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -65,7 +65,7 @@
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
   "work/build/app-kit/oa-app.mjs": "899aceae03dadab1c455b57cc65b30e95dcc25aadbf761e58847c6e79fe81f16",
-  "work/build/app-kit/renderers/atlas-page.mjs": "bf3315d0939fd38d4107c49ac3d0666ecc5ed17d2bf5057f3c976f49b38d4418",
+  "work/build/app-kit/renderers/atlas-page.mjs": "938e48eea252a50dd3db21a49fd93d219602068e1326c3ff69a73f74609d5ffe",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "daa149ff1b434a8c5b83c935ee9a0252604d8600db10ad7e1adee66458514d40",
@@ -115,7 +115,7 @@
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:03:53.467Z",
+  "ran": "2026-11-23T19:09:02.726Z",
   "pass": 80,
   "fail": 0,
   "first_fail": null,

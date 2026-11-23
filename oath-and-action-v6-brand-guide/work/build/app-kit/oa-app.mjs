@@ -234,7 +234,9 @@ async function prune_atlas_css(browser, o, fonts, tokens, sprite_) {
   const plates_ = fs.readdirSync(o.plates).filter((f) => /^a\d+\.json$/.test(f)).map((f) => JSON.parse(fs.readFileSync(path.join(o.plates, f), 'utf8')))
     .filter((x) => x.type === 'atlas-page');
   const syms = Object.assign({}, ...plates_.map((x) => x.symbols || {}));
-  const web = fs.readFileSync(path.join(o.plates, 'web-site.css'), 'utf8');
+  // PR-M2 (chat 12): a build into a fresh plates folder takes the website's style from the kit's own plates
+  const web_f = fs.existsSync(path.join(o.plates, 'web-site.css')) ? path.join(o.plates, 'web-site.css') : path.join(PLATES, 'web-site.css');
+  const web = fs.readFileSync(web_f, 'utf8');
   const frames = plates_.flatMap((x) => x.views.map((v) => ({ id: `${x.id} ${v.key}`, w: v.w, html: v.html })));
   const page = (css) => `<!doctype html><html lang="en"><head><meta charset="utf-8"><style>${fonts}</style><style>${tokens}</style><style>${PLATE_CSS}</style>`
     + `<style>${web}</style><style id="atlas">${css}</style><style>body{margin:0;background:var(--oa-color-surface)}.f{display:block}</style></head><body>${sprite_}${identity_sprite(syms)}`

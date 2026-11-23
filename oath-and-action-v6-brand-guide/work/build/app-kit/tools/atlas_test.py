@@ -735,6 +735,9 @@ def t10(pg):
                 x.decompose()
             return text(c)
         blocks = [words_of(b) for b in pair]
+        contested = rec.get("grade") in ("plausible_contested", "contested")
+        if len(pair) == 1 and not contested:
+            return faults, n                 # PR-M2: a remedy the atlas does not grade contested prints whole, as stored
         if len(pair) != 2:
             faults.append(f"Reform {rid}: the remedy prints in {len(pair)} blocks, two asked (R15)")
         elif norm(" ".join(blocks)) != norm(rec.get("text", "")):
@@ -937,7 +940,9 @@ def t14(pg):
             faults.append(f"{w['text'][:30]!r}: {w['size']} px, under 13 (ED-F9)")
     for t in pg.all("svg text"):
         spans = t.find_all("tspan", recursive=False)
-        typed_step = re.match(r"^\d", text(spans[0])) if spans else False
+        # chapter 15's typed step ("1 money," then "lowers"), and its card's typed label with no number ("money," then
+        # "raises"), approved under ED-F9
+        typed_step = (re.match(r"^\d", text(spans[0])) or text(spans[0]).endswith(",")) if spans else False
         last = text(spans[-1]) if spans else ""
         if len(spans) > 1 and len(last.split()) == 1 and len(text(t).split()) > 1 and not (typed_step and last in SIGN_VERBS):
             n += 1
@@ -1053,7 +1058,10 @@ def run_page(pg, only=None):
     out = []
     for c in only or CHECKS:
         faults, n = FNS[c](pg)
-        if not faults and not n and pg.full and pg.view in EXPECT.get(c, set()):
+        # PR-M2: a reform page with no drawing (its targets are a shape chapter 15's kit does not draw) holds no
+        # connection mark and no red, and says so in words (where_none)
+        no_art = pg.view == "reform" and c in ("T2", "T6") and not pg.all("figure.wa-fig")
+        if not faults and not n and pg.full and pg.view in EXPECT.get(c, set()) and not no_art:
             faults = [f"found nothing to check on a {pg.view} page, which must hold it"]
         if faults:
             out += [(c, False, f"FAIL {c} {pg.where}: {f}") for f in faults]

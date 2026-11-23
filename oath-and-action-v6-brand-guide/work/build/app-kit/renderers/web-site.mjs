@@ -410,8 +410,9 @@ const cl48 = (id, cls = '') => `<svg viewBox="0 0 128 128" width="48" height="48
 const out_mark = (w) => `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-another-site"><use href="#oa-sym-u-another-site-16px"/></svg><span class="vh"> ${esc(w)}</span>`;
 // an outside link (Rule 11.15): its last word held to the 16 px mark, "(another site)" for screen readers
 // CR-13 and CD-S11 (chat 12): a page's text breaks only where a reader would. A docket (FDA-2025-N-2699-0001), a report
-// code (G22-CG-ISD) and a section citation (201(ff)(3)(B)) stay whole; a one-letter prefix stays with its word (N-acetyl,
-// L-cysteine); a time keeps its "p.m." (a no-break space); a web address breaks only after a slash. Words inside drawings
+// code (G22-CG-ISD) and a section citation (201(ff)(3)(B)) stay whole; a chemical name built on one-letter prefixes stays
+// whole (N-acetyl-L-cysteine, CD-S11: the fonts hold no non-breaking hyphen); a time keeps its "p.m." (a no-break space); a
+// web address breaks only after a slash. Words inside drawings
 // (SVG), styles, scripts and titles are left as they are, and so is every attribute.
 const HOLD_RE = /((?:https?:\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:gov|org|com|net|edu)(?:\/[^\s<]*[^\s<.,;:)])?)|(\b[A-Z]{2,}-\d{4}-[A-Z]-\d{4}(?:-\d{4})?\b)|(\b[A-Z0-9]{2,}(?:-[A-Z0-9]{2,}){2,}\b)|(\b[A-Z]-[a-z]{2,}(?:-[A-Z]-[a-z]{2,})*\b)|(\b\d+(?:\([0-9A-Za-z]{1,3}\)){2,})|(\b\d{1,2}(?::\d{2})?) ([ap]\.m\.)/g;
 const nw = (t) => `<span class="ws-nw">${t}</span>`;
