@@ -1,0 +1,32 @@
+FAIL 20261123_Producer-Test-Article-Reported-Voting-By-Age-1440-Light.png: 91 word runs, lowest contrast 5.49; Newsprint 81.6%, Charcoal 15.2%, red 0.01%; reds 0 working, 2 signature
+  PASS 1440 light, first screen (0 to 900 px): Newsprint 81.7, dark 15.5, red 0.02; 1 panel(s)
+  FAIL 1440 light, Count (1155 to 2055 px): Newsprint 86.9, dark 9.8, red 0.0; 1 panel(s); Newsprint 86.9 percent, outside 60 to 85
+  PASS 1440 light, Step (2780 to 3680 px): Newsprint 73.2, dark 25.4, red 0.0; 1 panel(s)
+  PASS 1440 light, Footer (2819 to 3719 px): Newsprint 68.8, dark 29.7, red 0.0; 1 panel(s)
+  - Count: Newsprint 86.9 percent, outside 60 to 85
+PASS 20261123_Producer-Test-Article-Reported-Voting-By-Age-1440-Dark.png: 91 word runs, lowest contrast 7.26; Newsprint 3.3%, Charcoal 93.3%, red 0.01%; reds 0 working, 2 signature
+  PASS 1440 dark, first screen (0 to 900 px): Newsprint 10.4, dark 86.8, red 0.02; 1 panel(s)
+  PASS 1440 dark, Count (1155 to 2055 px): Newsprint 2.0, dark 94.6, red 0.0; 0 panel(s)
+  PASS 1440 dark, Step (2780 to 3680 px): Newsprint 0.8, dark 97.4, red 0.0; 0 panel(s)
+  PASS 1440 dark, Footer (2819 to 3719 px): Newsprint 0.8, dark 97.3, red 0.0; 0 panel(s)
+PASS 20261123_Producer-Test-Article-Reported-Voting-By-Age-1024-Light.png: 91 word runs, lowest contrast 5.49; Newsprint 80.2%, Charcoal 15.5%, red 0.01%; reds 0 working, 2 signature
+  PASS 1024 light, first screen (0 to 768 px): Newsprint 80.6, dark 15.7, red 0.04; 1 panel(s)
+  PASS 1024 light, Count (1169 to 1937 px): Newsprint 83.7, dark 11.5, red 0.0; 1 panel(s)
+  PASS 1024 light, Step (2851 to 3619 px): Newsprint 80.5, dark 17.5, red 0.0; 1 panel(s)
+  PASS 1024 light, Footer (3020 to 3788 px): Newsprint 63.9, dark 34.3, red 0.0; 1 panel(s)
+PASS 20261123_Producer-Test-Article-Reported-Voting-By-Age-390-Light.png: 81 word runs, lowest contrast 5.49; Newsprint 71.6%, Charcoal 20.0%, red 0.01%; reds 0 working, 2 signature
+  PASS 390 light, first screen (0 to 844 px): Newsprint 76.9, dark 17.0, red 0.07; 1 panel(s)
+  PASS 390 light, Count (1335 to 2179 px): Newsprint 66.9, dark 24.2, red 0.0; 1 panel(s)
+  PASS 390 light, Step (3570 to 4414 px): Newsprint 79.9, dark 15.8, red 0.0; 1 panel(s)
+  PASS 390 light, Footer (3866 to 4710 px): Newsprint 72.5, dark 23.9, red 0.01; 1 panel(s)
+PASS 20261123_Producer-Test-Article-Reported-Voting-By-Age-390-Dark.png: 81 word runs, lowest contrast 7.26; Newsprint 3.6%, Charcoal 87.8%, red 0.01%; reds 0 working, 2 signature
+  PASS 390 dark, first screen (0 to 844 px): Newsprint 10.8, dark 82.9, red 0.07; 1 panel(s)
+  PASS 390 dark, Count (1335 to 2179 px): Newsprint 4.0, dark 86.9, red 0.0; 0 panel(s)
+  PASS 390 dark, Step (3570 to 4414 px): Newsprint 1.7, dark 93.6, red 0.0; 0 panel(s)
+  PASS 390 dark, Footer (3866 to 4710 px): Newsprint 0.9, dark 95.0, red 0.01; 0 panel(s)
+PASS 20261123_Producer-Test-Article-Reported-Voting-By-Age-360-Light.png: 81 word runs, lowest contrast 5.49; Newsprint 70.7%, Charcoal 20.4%, red 0.01%; reds 0 working, 2 signature
+  PASS 360 light, first screen (0 to 780 px): Newsprint 81.1, dark 11.9, red 0.04; 1 panel(s)
+  PASS 360 light, Count (1335 to 2115 px): Newsprint 66.5, dark 24.9, red 0.0; 1 panel(s)
+  PASS 360 light, Step (3637 to 4417 px): Newsprint 74.4, dark 20.5, red 0.0; 1 panel(s)
+  PASS 360 light, Footer (4024 to 4804 px): Newsprint 76.9, dark 19.9, red 0.01; 1 panel(s)
+5 of 6 views pass

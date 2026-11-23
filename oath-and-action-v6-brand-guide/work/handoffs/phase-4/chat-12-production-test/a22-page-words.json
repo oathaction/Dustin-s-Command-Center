@@ -56,7 +56,13 @@
      ]
     }
    ],
-   "def_source": "Source for the figures: the chart’s, as its source line gives it."
+   "def_source": "Source for the figures: the chart’s, as its source line gives it.",
+   "count_fact": {
+    "figure": "47.7",
+    "line1": "percent of citizens 18 to 24 reported voting in 2024",
+    "line2": "down 3.7 points from 2020, past the change’s margin of error of 1.7",
+    "source": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over."
+   }
   }
  }
 }
