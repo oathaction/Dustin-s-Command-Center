@@ -226,13 +226,15 @@ function quoted_title(t) {
 // a 320 px window never scrolls sideways
 const url_html = (u) => esc(u).replace(/\/(?!\/)/g, '/<wbr>');
 
+// CR-3: words whose last two are held together, so no line ends on one word
+const held_last = (t) => { const w = String(t).split(' '); return w.length < 3 ? `<span class="ws-nb">${esc(t)}</span>` : `${esc(w.slice(0, -2).join(' '))} <span class="ws-nb">${esc(w.slice(-2).join(' '))}</span>`; };
 // a reform's effects, one family a row (Rule 15.16; the data lead's R12): the family's name, the pips, the code whole
 // with its qualifier and true minus signs, and the model's words for the code; never a total
 function effect_rows(r, F) {
   const words = F.effect_words || {};
   const say = (code) => String(code).split(/\s+to\s+/).map((c) => words[(c.match(/^[+\-]?[SML0?]/) || [''])[0]] || '').filter(Boolean).join(' to ');
   return `<ul class="wa-ef">` + r.effects.map((e) => `<li data-effect-family="${esc(e.family)}" data-effect-code="${esc(e.code)}" data-atlas-reform="${esc(r.id)}">`
-    + `<span class="f">${esc(e.name)}</span>${e.pips || ''}<span class="c"><b>${esc(String(e.code).replace(/-/g, MINUS))}</b>${say(e.code) ? `, ${esc(say(e.code))}` : ''}</span></li>`).join('') + `</ul>`;
+    + `<span class="f">${esc(e.name)}</span>${e.pips || ''}<span class="c"><b>${esc(String(e.code).replace(/-/g, MINUS))}</b>${say(e.code) ? `, ${held_last(say(e.code))}` : ''}</span></li>`).join('') + `</ul>`;
 }
 // a reform's routes, each with its own check date or "Not checked" (Rules 13.10, 15.24), never the reform's status date
 // CR-6: each route a row of columns from 64em (who acts, feasibility, note, check) and a labelled list below, the labels
@@ -401,7 +403,7 @@ function view_reform({ pid, P, A, F, panels, spec }) {
   // CE1 and CR-5: the target named, a colon held to its name, then each other reform named, joined by commas and "and"
   const tkind = (t) => (I[t] && I[t].kinds.includes('Variable') ? 'Variable' : 'Connection');
   const tags = Object.entries(v.tags).filter(([, rs]) => rs.length).map(([t, rs]) => `<li class="wa-tag"><span>${named(link_chip(tkind(t), t, I), tkind(t), t, I, ':')} `
-    + `${and_list(rs.map((x) => named(chip('Reform', x, { href: PATHS.Reform(x) }), 'Reform', x, I)))} ${esc(rs.length === 1 ? wd(P, 'aims_here_one', 'A12') : P.aims_here)}</span></li>`).join('');
+    + `${and_list(rs.map((x) => named(chip('Reform', x, { href: PATHS.Reform(x) }), 'Reform', x, I)))} <span class="ws-nb">${esc(rs.length === 1 ? wd(P, 'aims_here_one', 'A12') : P.aims_here)}</span></span></li>`).join('');
   // PR-M2: the note names every target the record holds, a connection by its chip and stored name as a variable by its
   // chip and title; a reform whose targets chapter 15's kit cannot draw says so in words and prints no line about a drawing
   const targets_words = and_list(r.targets.map((t) => { const k = I[t] && I[t].kinds.includes('Variable') ? 'Variable' : 'Connection'; return named(link_chip(k, t, I), k, t, I); }));
@@ -419,7 +421,8 @@ function view_reform({ pid, P, A, F, panels, spec }) {
   // the data lead's R15: the stored text split at the start of the sentence remedy_split names, by the one splitter the
   // kit and the test share (System 1's sentences(), through the figure step), rejoining to the stored text whole
   const sents = r.remedy.sentences;
-  const k = (spec.remedy_split || 0) - 1;
+  // R29: a contested remedy splits where its content file says, or prints whole ("whole") where the data lead's list has it
+  const k = spec.remedy_split === 'whole' ? -1 : (spec.remedy_split || 0) - 1;
   const readings = k > 0 && k < sents.length ? [sents.slice(0, k).join(' '), sents.slice(k).join(' ')] : [r.remedy.text];
   if (readings.some((x) => !x)) throw new Error('remedy_split leaves a reading empty (the specs, section 9)');
   // RP1 (the data lead's R23): Rule 01.16's matching labels over the two readings, outside the blocks that hold the stored text
@@ -431,9 +434,10 @@ function view_reform({ pid, P, A, F, panels, spec }) {
     + `<div class="ws-g wa-grade wa-remedy">${rhead(P.remedy, r.remedy.grade, `${pid}-remedy`)}`
     + readings.map((x, i) => `<div class="wa-rd">${readings.length === 2 ? `<p class="lab wa-rl" data-reading-label="${i + 1}">${esc(RL[i])}</p>` : ''}`
       + `<div class="wa-rdq" data-reading="${i + 1}" data-split="${esc(spec.remedy_split || '')}" data-atlas-reform="${esc(r.id)}">${quote(stored(x, I) + reading_src(i), 'remedy')}</div></div>`).join('') + `</div>`;
-  const effects_lede = (r.status.checked ? `<p data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>` : '')
-    + `<p data-effects-confidence="${esc(r.id)}">${fill_html(P.effects_confidence, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`;
-  const effects = effect_rows(r, F);
+  const effects_lede = (r.status.checked ? `<p data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>` : '');
+  // R12 and the data lead's request 7: the confidence line after the four rows, as the loop panels and the Register print it
+  const effects = effect_rows(r, F)
+    + `<p class="wa-small wa-conf" data-effects-confidence="${esc(r.id)}">${fill_html(P.effects_confidence, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`;
   const routes = route_rows(r, A, I);
   const routes_lede = v.complements.length ? `<p>${esc(P.complements_heading)}: ` + v.complements.map((c) => (c.id ? `${link_chip('Reform', c.id, I)} “${curly(c.title)}”` : `<span class="wa-stored" data-atlas-field="complements">${stored(c.text, I)}</span>`)).join('; ') + `</p>` : '';
   const srcs = `<details class="oa-disclosure wa-src"><summary class="oa-disclosure-summary"><span class="oa-disclosure-label">${esc(P.sources_summary)}</span>${CHEV()}</summary>`
@@ -464,18 +468,24 @@ function view_register({ pid, P, A, F, panels, spec }) {
   const head = th(esc(wd(ih, 0, 'A13.index_head'))) + [1, 2, 3, 4, 5].map((i) => th(esc(wd(ih, i, 'A13.index_head')), 'n')).join('')
     + GRADES.map((g) => th(`<span class="wa-gs">${F.grade_samples[g]}</span>${g === 'documented' ? `<span class="ws-nb">${F.record_square}${gw(g)}</span>` : gw(g)}`, 'n g')).join('');
   const cnt = (n, key) => count(n, key, String(n));
+  // the data lead's request 5: on a phone card the grade counts follow the structure counts as their own group, under the
+  // editor's label (grades_label, where the words give it), each count after its line sample and grade word, as the key
+  // above draws them; from 48em the column heads carry both, so the in-cell label hides
+  const glab = P.grades_label ? `<span class="wa-g48">${esc(P.grades_label)}</span>` : '';
+  const gtd = (g, i, html) => `<td class="oa-table-td n wa-gc${i === 0 ? ' wa-gc1' : ''}" role="cell">${i === 0 ? glab : ''}<span class="wa-k48">`
+    + `<span class="wa-gs">${F.grade_samples[g]}</span> ${g === 'documented' ? F.record_square : ''}${gw(g)}: </span>${html}</td>`;
   const rows = v.rows.map((r) => `<tr class="oa-table-row" role="row"><th class="oa-table-th wa-rh" role="rowheader" scope="row">`
     + (r.domain ? `${link_chip('Domain', r.id, I)} ${esc(r.title)}` : esc(r.title)) + `</th>`
     + td(cnt(r.variables, `sheet:${r.id}:variables`), ih[1], 'n') + td(cnt(r.connections, `sheet:${r.id}:connections`), ih[2], 'n')
     + td(cnt(r.loops, `sheet:${r.id}:loops`), ih[3], 'n') + td(cnt(r.reforms, `sheet:${r.id}:reforms`), ih[4], 'n')
-    + td(r.issues == null ? count(0, `sheet:${r.id}:issues`, esc(wd(P, 'none_filed', 'A13'))) : cnt(r.issues, `sheet:${r.id}:issues`), ih[5], 'n')
-    + GRADES.map((g) => td(cnt(r.grades[g], `sheet:${r.id}:grade:${g}`), A.grades[g], 'n')).join('') + `</tr>`).join('');
+    + td(r.issues == null ? count(0, `sheet:${r.id}:issues`, `<span class="wa-one">${esc(wd(P, 'none_filed', 'A13'))}</span>`) : cnt(r.issues, `sheet:${r.id}:issues`), ih[5], 'n')
+    + GRADES.map((g, i) => gtd(g, i, cnt(r.grades[g], `sheet:${r.id}:grade:${g}`))).join('') + `</tr>`).join('');
   const W_ = v.whole;
   const whole = `<tr class="oa-table-row wa-whole" role="row"><th class="oa-table-th wa-rh" role="rowheader" scope="row">${esc(wd(P, 'whole', 'A13'))}</th>`
     + td(cnt(W_.variables, 'atlas:variables'), ih[1], 'n') + td(cnt(W_.connections, 'atlas:connections'), ih[2], 'n')
     + td(cnt(W_.loops, 'atlas:loops-numbered'), ih[3], 'n') + td(cnt(W_.reforms, 'atlas:reforms-active'), ih[4], 'n')
     + td(fill_html(wd(P, 'whole_issues', 'A13'), { n: cnt(W_.issues, 'atlas:issues'), retired: esc(nword(W_.retired)) }), ih[5], 'n')
-    + GRADES.map((g) => td(cnt(W_.grades[g], `atlas:grade:${g}`), A.grades[g], 'n')).join('') + `</tr>`;
+    + GRADES.map((g, i) => gtd(g, i, cnt(W_.grades[g], `atlas:grade:${g}`))).join('') + `</tr>`;
   const key = `<ul class="wa-gkey${panels.includes('Index') ? ' oa-surface-charcoal ws-panel' : ''}">` + GRADES.map((g) => `<li>${F.grade_samples[g]} <span class="ws-nb">${g === 'documented' ? F.record_square : ''}${gw(g)}</span></li>`).join('') + `</ul>`;
   // specs 14.6 (C8.1): from 64em the h1 and intro sit in a head band on Charcoal joined to the title bar, as How to read's
   const index = `<div class="wa-rband"><div class="ws-g wa-head"><div class="wa-op"><h1 class="ws-h1 wa-t1" id="${pid}-h1">${esc(wd(P, 'h1', 'A13'))}</h1><p class="ws-intro">${esc(wd(P, 'intro', 'A13'))}</p></div></div></div>`
@@ -908,7 +918,11 @@ ${under(BP.tablet, `${W} .oa-table-grid,${W} .oa-table-grid tbody,${W} .oa-table
  ${W} .oa-table-grid .oa-table-th,${W} .oa-table-grid .oa-table-td{padding:2px 0;border:0;text-align:left;white-space:normal;min-width:0}
  ${W} .oa-table-grid td[data-k]::before{content:attr(data-k) ": ";font-weight:var(--oa-font-weight-semibold)}
  ${W} .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}${W} .wa-gkey li{flex-wrap:wrap;min-width:0}
- ${W} .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}${W} .wa-index tbody tr>th{grid-column:1/-1}`)}
+ ${W} .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}${W} .wa-index tbody tr>th{grid-column:1/-1}
+ ${W} .wa-index .wa-gc{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}${W} .wa-index .wa-gc1{margin-top:8px}
+ ${W} .wa-index .wa-g48{flex:0 0 100%;${type_css('label')};color:var(--oa-color-text-secondary)}
+ ${W} .wa-index .wa-k48{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font-weight:var(--oa-font-weight-semibold)}`)}
+${at(BP.tablet, `${W} .wa-index :is(.wa-k48,.wa-g48){display:none}`)}
 ${at(BP.phone, `${W} .wa-gkey li{flex-wrap:nowrap}`)}
 ${W} .wa-band{padding:24px;margin-top:80px}
 ${at(BP.tablet, `${W} .wa-band{padding:32px}`)}
@@ -978,7 +992,7 @@ ${W} .wa-box .mt,${W} .wa-card .mt{${type_css('caption')};color:var(--oa-color-t
 ${W} .wa-box .lt,${W} .wa-card .lt{${type_css('data-label')};font-weight:var(--oa-font-weight-semibold)}
 ${W} .wa-box .ct,${W} .wa-card .ct{${type_css('data-label')};margin-top:auto !important}
 /* CR-3 (ED-F9): no word left alone at a line's end in the drawing's boxes, the cards, the questions and the hub heads */
-${W} :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),${W} .wa-q .oa-toggle-label,${W} .wa-hub>.lab,${W} .wa-marks .wa-small,${W} .wa-ef .f{text-wrap:balance}
+${W} :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),${W} .wa-q .oa-toggle-label,${W} .wa-hub>.lab,${W} .wa-marks .wa-small,${W} .wa-ef .f,${W} .wa-lix .oa-table-td,${W} .wa-index .wa-rh{text-wrap:balance}
 ${W} :is(.wa-box,.wa-card) .ct>[data-count]{white-space:nowrap}
 /* specs 15.1 (CD-S1) with CR-3: the counts as two fixed lines in the boxes and cards ("6 variables" over "6 connections
    inside"), one line in the band; the lower row's boxes 10 px above and below; the band, the gap and the key closer */

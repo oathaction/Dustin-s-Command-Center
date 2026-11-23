@@ -656,7 +656,6 @@
 .ws.wa .wa-gl{font-family:var(--oa-type-body-font-family);font-style:var(--oa-type-body-font-style);font-weight:var(--oa-type-body-font-weight);font-size:var(--oa-type-body-font-size);line-height:var(--oa-type-body-line-height);letter-spacing:var(--oa-type-body-letter-spacing);text-transform:var(--oa-type-body-text-transform);font-variant-numeric:var(--oa-type-body-font-variant-numeric)}
 .ws.wa .wa-sband .ws-h2{margin:0 !important;color:var(--oa-color-text-primary)}
 .ws.wa .wa-lede{font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric);color:var(--oa-color-text-secondary);margin-top:8px}
-.ws.wa .wa-lede>*+*{margin-top:4px !important}
 .ws.wa .wa-bsec .wa-sband{grid-column:1/-1}
 @container ws (max-width: 47.999em){.ws.wa .wa-wide48,.ws.wa .wa-facts dl>div.wa-wide48{display:none}}
 @container ws (min-width: 48em){.ws.wa .wa-narrow48{display:none}}
@@ -724,7 +723,11 @@
 .ws.wa .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}
 .ws.wa .wa-gkey li{flex-wrap:wrap;min-width:0}
 .ws.wa .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}
-.ws.wa .wa-index tbody tr>th{grid-column:1/-1}}
+.ws.wa .wa-index tbody tr>th{grid-column:1/-1}
+.ws.wa .wa-index .wa-gc{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}
+.ws.wa .wa-index .wa-gc1{margin-top:8px}
+.ws.wa .wa-index .wa-k48{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font-weight:var(--oa-font-weight-semibold)}}
+@container ws (min-width: 48em){.ws.wa .wa-index :is(.wa-k48,.wa-g48){display:none}}
 @container ws (min-width: 24.375em){.ws.wa .wa-gkey li{flex-wrap:nowrap}}
 .ws.wa .wa-band{padding:24px;margin-top:80px}
 @container ws (min-width: 48em){.ws.wa .wa-band{padding:32px}}
@@ -797,7 +800,7 @@
 .ws.wa .wa-box .mt,.ws.wa .wa-card .mt{font-family:var(--oa-type-caption-font-family);font-style:var(--oa-type-caption-font-style);font-weight:var(--oa-type-caption-font-weight);font-size:var(--oa-type-caption-font-size);line-height:var(--oa-type-caption-line-height);letter-spacing:var(--oa-type-caption-letter-spacing);text-transform:var(--oa-type-caption-text-transform);font-variant-numeric:var(--oa-type-caption-font-variant-numeric);color:var(--oa-color-text-secondary)}
 .ws.wa .wa-box .lt,.ws.wa .wa-card .lt{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);font-weight:var(--oa-font-weight-semibold)}
 .ws.wa .wa-box .ct,.ws.wa .wa-card .ct{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);margin-top:auto !important}
-.ws.wa :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),.ws.wa .wa-q .oa-toggle-label,.ws.wa .wa-hub>.lab,.ws.wa .wa-marks .wa-small,.ws.wa .wa-ef .f{text-wrap:balance}
+.ws.wa :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),.ws.wa .wa-q .oa-toggle-label,.ws.wa .wa-hub>.lab,.ws.wa .wa-marks .wa-small,.ws.wa .wa-ef .f,.ws.wa .wa-lix .oa-table-td,.ws.wa .wa-index .wa-rh{text-wrap:balance}
 .ws.wa :is(.wa-box,.wa-card) .ct>[data-count]{white-space:nowrap}
 .ws.wa :is(.wa-box:not(.wa-box--band),.wa-card) .ct>[data-count]{display:block}
 .ws.wa .wa-box:is([data-part="EC"],[data-part="TC"]){padding-block:10px}

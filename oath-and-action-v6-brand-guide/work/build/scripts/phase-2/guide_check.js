@@ -3187,7 +3187,7 @@ function atlasSpritePlant(kind) {
 
 function kitReachPlant(variant) {
   // PR-M1 (chat 12): 'open' writes the share card's rule as the kit once did, unscoped; 'scoped' as the build now writes it
-  const rule = variant === 'open' ? '.sh{width:1200px;height:630px}' : '.sh:where(.oa-app-art *){width:1200px;height:630px}';
+  const rule = variant === 'open' ? '.sh{width:1200px;height:630px}' : '.sh:where(.oa-app-art *,:not(:root *)){width:1200px;height:630px}';
   const style = `<style data-oa-app-kit="share-image">${rule}</style>`;
   const pill = '<svg viewBox="0 0 120 40" width="120" height="40" aria-hidden="true" focusable="false"><rect class="pl sh" x="2" y="2" width="116" height="36" rx="18"/></svg>';
   const frame = '<div class="plate-stage" data-specimen="s-demo-share" role="group" aria-label="A share card fixture, specimen"><div class="oa-app-row" data-oa-app="A91">'

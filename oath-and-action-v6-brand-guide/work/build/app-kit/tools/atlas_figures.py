@@ -513,6 +513,11 @@ def view_reform(spec):
     tv = [t for t in r["targets"] if t in V["nodes"]]
     between = [k for k, x in V["links"].items() if {x["from"], x["to"]} == set(tv)] if len(tv) == 2 else []
     fig = target_figure(V["links"][between[0]]["from"], V["links"][between[0]]["to"], between[0], tv) if between else None
+    # the data lead's request 9 (R29's batch): chapter 15's card turns only its pills red, so a target set it cannot draw
+    # wholly red (a connection among the targets, R-25's LE14) takes the page's no-drawing words, never a drawing with a
+    # target in ink
+    if fig and set(r["targets"]) - set(fig["red"]):
+        fig = None
     shared = {t: [k for k, v in V["reforms"].items() if t in v["targets"] and k != rid] for t in r["targets"]}
     drawn = set(tv) | set(between)
     return {"reform": r, "targets": [var_rec(t) if t in V["nodes"] else link_rec(t) for t in r["targets"]],

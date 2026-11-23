@@ -736,8 +736,15 @@ def t10(pg):
             return text(c)
         blocks = [words_of(b) for b in pair]
         contested = rec.get("grade") in ("plausible_contested", "contested")
-        if len(pair) == 1 and not contested:
-            return faults, n                 # PR-M2: a remedy the atlas does not grade contested prints whole, as stored
+        if len(pair) == 1 and (not contested or rid in WHOLE):
+            # PR-M2 and R29: a remedy the atlas does not grade contested, or a contested one on the data lead's list, prints
+            # whole, its text the stored text whole
+            if norm(words_of(pair[0])) != norm(rec.get("text", "")):
+                faults.append(f"Reform {rid}: the remedy printed whole does not equal the stored text (R29)")
+            return faults, n
+        if len(pair) == 1:
+            faults.append(f"Reform {rid}: a contested remedy printed whole, and R29 lists only {sorted(WHOLE)} to print whole; the data lead reads it first")
+            return faults, n
         if len(pair) != 2:
             faults.append(f"Reform {rid}: the remedy prints in {len(pair)} blocks, two asked (R15)")
         elif norm(" ".join(blocks)) != norm(rec.get("text", "")):
@@ -760,6 +767,10 @@ def t10(pg):
             pg.report = (f"remedy contested, two blocks, {len(blocks[0].split())} and {len(blocks[1].split())} words"
                          + (f", {rd[0]['lines']} and {rd[1]['lines']} lines" if len(rd) == 2 else ""))
     return faults, n
+
+
+# R29: the contested remedies the data lead rules print whole (no sentence boundary separates two readings)
+WHOLE = {"R-01", "R-22"}
 
 
 def r18(stored):

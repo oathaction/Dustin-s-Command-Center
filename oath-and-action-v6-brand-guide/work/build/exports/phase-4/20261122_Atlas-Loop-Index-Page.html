@@ -3487,7 +3487,11 @@
  .ws.wa .oa-table-grid .oa-table-th,.ws.wa .oa-table-grid .oa-table-td{padding:2px 0;border:0;text-align:left;white-space:normal;min-width:0}
  .ws.wa .oa-table-grid td[data-k]::before{content:attr(data-k) ": ";font-weight:var(--oa-font-weight-semibold)}
  .ws.wa .wa-gkey{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;margin-top:32px}.ws.wa .wa-gkey li{flex-wrap:wrap;min-width:0}
- .ws.wa .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}.ws.wa .wa-index tbody tr>th{grid-column:1/-1}}
+ .ws.wa .wa-index tbody tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}.ws.wa .wa-index tbody tr>th{grid-column:1/-1}
+ .ws.wa .wa-index .wa-gc{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;column-gap:6px}.ws.wa .wa-index .wa-gc1{margin-top:8px}
+ .ws.wa .wa-index .wa-g48{flex:0 0 100%;font-family:var(--oa-type-label-font-family);font-style:var(--oa-type-label-font-style);font-weight:var(--oa-type-label-font-weight);font-size:var(--oa-type-label-font-size);line-height:var(--oa-type-label-line-height);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);font-variant-numeric:var(--oa-type-label-font-variant-numeric);color:var(--oa-color-text-secondary)}
+ .ws.wa .wa-index .wa-k48{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;font-weight:var(--oa-font-weight-semibold)}}
+@container ws (min-width: 48em){.ws.wa .wa-index :is(.wa-k48,.wa-g48){display:none}}
 @container ws (min-width: 24.375em){.ws.wa .wa-gkey li{flex-wrap:nowrap}}
 .ws.wa .wa-band{padding:24px;margin-top:80px}
 @container ws (min-width: 48em){.ws.wa .wa-band{padding:32px}}
@@ -3557,7 +3561,7 @@
 .ws.wa .wa-box .lt,.ws.wa .wa-card .lt{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);font-weight:var(--oa-font-weight-semibold)}
 .ws.wa .wa-box .ct,.ws.wa .wa-card .ct{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);margin-top:auto !important}
 /* CR-3 (ED-F9): no word left alone at a line's end in the drawing's boxes, the cards, the questions and the hub heads */
-.ws.wa :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),.ws.wa .wa-q .oa-toggle-label,.ws.wa .wa-hub>.lab,.ws.wa .wa-marks .wa-small,.ws.wa .wa-ef .f{text-wrap:balance}
+.ws.wa :is(.wa-box,.wa-card) :is(.nm,.q,.mt,.lt),.ws.wa .wa-q .oa-toggle-label,.ws.wa .wa-hub>.lab,.ws.wa .wa-marks .wa-small,.ws.wa .wa-ef .f,.ws.wa .wa-lix .oa-table-td,.ws.wa .wa-index .wa-rh{text-wrap:balance}
 .ws.wa :is(.wa-box,.wa-card) .ct>[data-count]{white-space:nowrap}
 /* specs 15.1 (CD-S1) with CR-3: the counts as two fixed lines in the boxes and cards ("6 variables" over "6 connections
    inside"), one line in the band; the lower row's boxes 10 px above and below; the band, the gap and the key closer */

@@ -190,12 +190,14 @@ def plate_css():
 # component classes) also reached the guide's own plates: the share card's ".sh" drew chapters 14 and 15's shaded pills
 # ("rect.pl.sh") 1200 by 630 px. Every selector of a kit style is now held to elements inside a frame's page by a
 # zero-specificity ":where(.oa-app-art *)" on its subject, so the cascade inside the frames is the same as before.
-ANCHOR = ":where(.oa-app-art *)"
-# The atlas pages' repeated drawings sit as symbols in a hidden sprite and are drawn by <use>; Chromium styles a <use>
-# copy inside its own shadow tree, where no ancestor outside the symbol is seen, so the atlas style's ".wa-sym" twin rules
-# reach them through the symbol's root group (lib.mjs atlas_symbolize writes <g class="… wa-sym">). The atlas style's
-# anchor lets those through; no guide element carries "wa-sym" (the guide check's kitReach test holds that).
-ANCHOR_ATLAS = ":where(.oa-app-art *,.wa-sym,.wa-sym *)"
+# The identity masters (the wordmark with its ampersand, chapter 18's masthead marks) and the atlas pages' repeated drawings
+# sit as symbols in hidden sprites at the top of the body and are drawn by <use>. Chromium styles a <use> copy inside its
+# own shadow tree, where no ancestor outside the symbol is seen, so ".oa-app-art *" never reaches it: the first anchor drew
+# the wordmark's ampersand black in every 390 px masthead (the data lead's batch 1, 19:26 UTC). ":not(:root *)" matches an
+# element no ancestor of which is the document's root, which in the light DOM is the root alone and in a <use> copy is
+# every element: so the kit's rules reach the copies, as they did before PR-M1, and no guide element in the page.
+ANCHOR = ":where(.oa-app-art *,:not(:root *))"
+ANCHOR_ATLAS = ANCHOR
 NEST = ("media", "container", "supports", "layer", "scope", "document")
 LEGACY_PE = (":before", ":after", ":first-line", ":first-letter")
 
@@ -397,7 +399,7 @@ def self_test():
         check("a plate stays fresh while its own words do (another page's words changing), and goes stale when they change",
               fresh == [] and other == [] and mine and "its words" in mine[0])
         hs = hs_kept
-        check("the page's head gets each placed type's style once, and the frames' own", hs.count("<style") == 2 and ".wa:where(.oa-app-art *){color:red}" in hs and ".oa-app-frame" in hs)
+        check("the page's head gets each placed type's style once, and the frames' own", hs.count("<style") == 2 and ".wa:where(.oa-app-art *,:not(:root *)){color:red}" in hs and ".oa-app-frame" in hs)
         # chat 11c: one key of an entry, a plate with two generators' words, an atlas plate's styles and its test result
         gen.write_text('import json,sys\nprint(json.dumps({"A06": {"site": {"skip": "Skip"}, "title": "Home"}, "A99": {"title": "Two"}}))\n')
         reset(d)
@@ -427,14 +429,14 @@ def self_test():
         w = []
         expand('<div data-oa-app="A97"></div>', "s-21-x", w.append)
         check("the atlas test's self-test runs once on the plates, and a fixture with no atlas page fails it", any("self-test fails on the plates" in x for x in w))
-        check("an atlas plate puts the website's style in the head beside its own", ".ws:where(.oa-app-art *){display:block}" in hs2 and ".wa-tb:where(.oa-app-art *,.wa-sym,.wa-sym *){display:block}" in hs2)
+        check("an atlas plate puts the website's style in the head beside its own", ".ws:where(.oa-app-art *,:not(:root *)){display:block}" in hs2 and ".wa-tb:where(.oa-app-art *,:not(:root *)){display:block}" in hs2)
         # PR-M1 (chat 12): every kit rule in the head is held to the frames, at no added specificity, and @keyframes stay whole
         sc, n_ = scope_css('.sh{width:1200px}.sh p,.b::before{c:d}@media (min-width:48em){[data-oa-theme="dark"] .ws .x{e:f}}'
                            '@keyframes k{from{a:b}}.oa-disclosure-summary::-webkit-details-marker{display:none}')
         check("a kit rule in the head is held to the frames, pseudo-elements and @media included, @keyframes left whole",
-              n_ == 5 and ".sh:where(.oa-app-art *){width:1200px}" in sc and ".sh p:where(.oa-app-art *)," in sc
-              and ".b:where(.oa-app-art *)::before" in sc and '[data-oa-theme="dark"] .ws .x:where(.oa-app-art *){e:f}' in sc
-              and "@keyframes k{from{a:b}}" in sc and ".oa-disclosure-summary:where(.oa-app-art *)::-webkit-details-marker" in sc)
+              n_ == 5 and f".sh{ANCHOR}{{width:1200px}}" in sc and f".sh p{ANCHOR}," in sc
+              and f".b{ANCHOR}::before" in sc and f'[data-oa-theme="dark"] .ws .x{ANCHOR}{{e:f}}' in sc
+              and "@keyframes k{from{a:b}}" in sc and f".oa-disclosure-summary{ANCHOR}::-webkit-details-marker" in sc)
     reset()
     return bad
 

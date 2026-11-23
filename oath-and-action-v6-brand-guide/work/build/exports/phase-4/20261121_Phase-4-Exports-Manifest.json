@@ -1,5 +1,5 @@
 {
- "written": "2026-11-23T19:04:27.376Z",
+ "written": "2026-11-23T19:50:38.668Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -400,7 +400,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 3,286 px"
+   "size": "1,440 by 3,295 px"
   },
   {
    "file": "20261122_Atlas-Reform-R-23-Page-1440-Dark.png",
@@ -408,7 +408,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 3,286 px"
+   "size": "1,440 by 3,295 px"
   },
   {
    "file": "20261122_Atlas-Reform-R-23-Page-390-Light.png",
@@ -416,7 +416,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 5,255 px"
+   "size": "390 by 5,263 px"
   },
   {
    "file": "20261122_Atlas-Reform-R-23-Page-390-Dark.png",
@@ -424,7 +424,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 5,255 px"
+   "size": "390 by 5,263 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page.html",
@@ -441,7 +441,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 5,723 px"
+   "size": "1,440 by 5,675 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page-1440-Dark.png",
@@ -449,7 +449,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "dark",
-   "size": "1,440 by 5,723 px"
+   "size": "1,440 by 5,675 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page-390-Light.png",
@@ -457,7 +457,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 11,841 px"
+   "size": "390 by 13,037 px"
   },
   {
    "file": "20261122_Atlas-Register-D04-Page-390-Dark.png",
@@ -465,7 +465,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "dark",
-   "size": "390 by 11,841 px"
+   "size": "390 by 13,037 px"
   },
   {
    "file": "20261122_Atlas-Loop-R18-Page.html",
@@ -523,7 +523,7 @@
    "platform": "website.page_1440",
    "format": "png",
    "theme": "light",
-   "size": "1,440 by 3,701 px"
+   "size": "1,440 by 3,702 px"
   },
   {
    "file": "20261122_Atlas-Loop-Index-Page-390-Light.png",
@@ -531,7 +531,7 @@
    "platform": "website.page_390",
    "format": "png",
    "theme": "light",
-   "size": "390 by 8,009 px"
+   "size": "390 by 8,010 px"
   },
   {
    "file": "20261122_Atlas-How-To-Read-Page.html",
