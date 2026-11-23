@@ -355,7 +355,9 @@ PAGES = {
         },
     },
     'A13': {
-        'view': 'The Register',
+        # AX-9 (DD12-R1): a sheet is a page; the kit fills {chip} and {title} from the page's own sheet (the editor's words, 19:06 UTC)
+        'view': 'The sheet for {chip}, {title} | The Register',
+        'view_layer': '{title} | The Register',
         'current_view': 'The Register',
         'crumbs': [['Home', '/atlas']],
         'page': {
@@ -1294,11 +1296,12 @@ def page_words(aid):
     if aid == 'A14':
         page['steps'] = [{'line': s['line'], 'hold': s['hold']} for s in page['steps']]
     view = p['view']
-    if '{title}' in view:
+    if '{title}' in view and '{chip}' not in view:   # a sheet's {chip} and {title} stay for the kit (AX-9)
         kind, rid = record_of(aid)
         view = view.replace('{title}', {'loop': LOOPS_M, 'reform': REFORMS_M}[kind][rid]['title'])
     return {
         'title': f'{view} | {META["title"]} | {ATLAS["title_end"]}',
+        **({'title_layer': f'{p["view_layer"]} | {META["title"]} | {ATLAS["title_end"]}'} if p.get('view_layer') else {}),
         'atlas': {k: v for k, v in ATLAS.items() if k != 'title_end'},
         'current_view': p['current_view'],
         'crumbs': p['crumbs'],
