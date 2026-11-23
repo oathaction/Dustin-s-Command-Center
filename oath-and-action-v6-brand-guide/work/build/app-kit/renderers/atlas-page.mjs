@@ -358,7 +358,7 @@ function view_loop({ pid, P, A, F, panels, spec }) {
     + `<p class="wa-small" data-atlas-field="tradeoffs">${fill_html(wd(P, 'assumptions_tradeoffs', 'A14'), { text: `<span class="wa-stored">${stored(r.tradeoffs || '', I)}</span>` })}</p></div></details>`;
   const panels_ = v.offered.map((r) => `<div class="wa-panel" data-oa-panel="${esc(r.id)}"><h3 class="ws-h3">${chip('Reform', r.id, { href: PATHS.Reform(r.id) })} “${esc(r.title)}”</h3>`
     + `<p class="wa-small">${esc(r.band_words || '')}</p>`
-    + `<p class="lab">${esc(P.effects_heading)}</p><p class="wa-small" data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>${effect_rows(r, F)}`
+    + `<p class="lab">${esc(P.effects_heading)}</p>${r.status.checked ? `<p class="wa-small" data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>` : ''}${effect_rows(r, F)}`
     + `<p class="wa-small wa-conf" data-effects-confidence="${esc(r.id)}">${fill_html(conf_t, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`
     + `<p class="lab">${esc(P.routes_heading)}</p>${route_rows(r, A, I)}${qual(r)}</div>`).join('');
   const chooser = `<div class="ws-g wa-choose"><fieldset class="oa-choice" data-oa-part="chooser"><legend class="oa-choice-legend">${esc(P.chooser_legend)}</legend>`
@@ -429,7 +429,7 @@ function view_reform({ pid, P, A, F, panels, spec }) {
     + `<div class="ws-g wa-grade wa-remedy">${rhead(P.remedy, r.remedy.grade, `${pid}-remedy`)}`
     + readings.map((x, i) => `<div class="wa-rd">${readings.length === 2 ? `<p class="lab wa-rl" data-reading-label="${i + 1}">${esc(RL[i])}</p>` : ''}`
       + `<div class="wa-rdq" data-reading="${i + 1}" data-split="${esc(spec.remedy_split || '')}" data-atlas-reform="${esc(r.id)}">${quote(stored(x, I) + reading_src(i), 'remedy')}</div></div>`).join('') + `</div>`;
-  const effects_lede = `<p data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>`
+  const effects_lede = (r.status.checked ? `<p data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>` : '')
     + `<p data-effects-confidence="${esc(r.id)}">${fill_html(P.effects_confidence, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`;
   const effects = effect_rows(r, F);
   const routes = route_rows(r, A, I);

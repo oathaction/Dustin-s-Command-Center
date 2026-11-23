@@ -636,10 +636,13 @@ def t8(pg):
     for el in pg.all("[data-status-date]"):
         n += 1
         rid = el.get("data-atlas-reform")
-        want = RF[rid]["status"]["checked"] if rid in RF else V["meta"]["snapshot"]
+        want = (RF[rid]["status"]["checked"] or "none") if rid in RF else V["meta"]["snapshot"]
         if el.get("data-status-date") != want:
             faults.append(f"{'Reform ' + rid if rid else 'the snapshot'}: dated {el.get('data-status-date')!r}, model {want!r}")
-        if words_date(want) not in text(el):
+        if want == "none":
+            if "Not checked" not in text(el):
+                faults.append(f"Reform {rid}: its status has no check date and the panel does not say Not checked (Rule 13.10)")
+        elif words_date(want) not in text(el):
             faults.append(f"{'Reform ' + rid if rid else 'the snapshot'}: the date {words_date(want)} does not print in words")
     # a frame carries only what its width shows (D4-152), so the title bar's date is read on the working page
     if not pg.all(".wa-bar [data-status-date]") and pg.kind == "export":

@@ -231,3 +231,32 @@ Chapter 20, `phase4_ch20_build.py`:
 |---|---|---|---|---|---|---|
 | CE11 | Words and readers report | A12, Reform R-23's page | "Works alongside" sits inside "How it could pass", above the routes | Its own block after the routes, under its heading, as Rule 21.4's specification orders | The words are right; the place is the kit's, and chapter 21 is not mine this turn | Open: the atlas engineer (Words for, item 5) |
 | CD-S11 | Creative director's review | A08 at 390 px | "N-acetyl-L-cysteine" can break after "N-" | A no-wrap span in the kit | A non-breaking hyphen in the words would draw from a fallback font, since the subset fonts hold none | Open: Engineer W (Words for, item 2); the docket address's breaks are Engineer W's CR-13 |
+
+Every other turn 2 code is under "Turn 2 done". The A04 to A08 pages show the new page words once Engineer W rebuilds them (Words for, item 1).
+
+## Turn 2 proof and bytes
+
+- `git diff --stat` on my files, 18:52 UTC: `phase4_ch16_build.py` and `phase4_ch20_build.py` (2 files, 118 insertions, 74 deletions, against HEAD `d271acc2`, which holds the design director's turn 1 and none of mine), `16-photography.json`, `20-web.json`, `manifest-web.json`, four chapter 16 specimens (`s-16-1-correct`, `-6-correct`, `-6-failure`, `-9-correct`) and nine chapter 20 specimens (`s-20-1`, `-2`, `-3`, `-5`, `-6`, `-7`, `-8`, `-9-correct` and `s-20-opener`). A word diff of each shows only the changes under "Turn 2 done": the status words and note (16.1), the license line (16.6), the credit and its label (16.6 failure), the prompt (16.9), the scale words on every row of frames (chapter 20), and Rule 20.9's two clauses. `manifest-photography.json` did not move. The other files moving in the tree are the design director's and the atlas engineer's (chapter 21, the kit, the specs, their notes).
+- Chapter files: `16-photography.json` 54,238 to 55,051 bytes; `20-web.json` 44,608 to 45,579.
+- In the built page, two strict builds inside one hold of the lock (18:53:20 to 18:53:55 UTC), the second with HEAD's versions of only my chapter 16 and 20 output files, mine restored after and checked byte for byte (0 mismatches): chapter 16 220,066 to 221,670 (+1,604), chapter 20 858,353 to 859,973 (+1,620), the page 14,307,916 to 14,311,140 (+3,224); no other chapter moved. Chapter 16 stays under its 300,000; chapter 20 is over its 757,000, as before, reported (DR-271). Nothing was cut to meet a figure.
+
+## Turn 2 tested
+
+- `phase4_ch16_build.py --check` under the lock (18:46:26 UTC): exit 0, 13 rules, 28 specimens, 84,248 bytes. `phase4_ch20_build.py --check` (18:48:45 UTC): exit 0, 11 rules, 24 specimens, 62,591 bytes before the kit's frames, with the new `_need` checks on the research note passing.
+- Chapter 20's page words, after against before (the pre-turn generator run from scratch with its folder pointed at the real one, under the lock): no key removed; one added (the record's third paragraph); 14 values changed, all listed under "Turn 2 done".
+- Both generators written under the lock (18:49:12 to 18:52:01 UTC, waiting on the atlas engineer's kit build): exit 0 each.
+- The rule's text from govinfo's HTML, by script with its page marks: the two reasons (page 73720), NAC's approval as a new drug on September 14, 1963, before it was marketed as a supplement or a food (73719), the safety finding (73722), the 2022 guidance's 30-day comment period before "To date, …" and the early notice's condition (73723), and "we propose that 21 CFR part 190 be amended".
+- The four subset fonts' character maps for U+2010 and U+2011 (fontTools): none holds either.
+- Rule 20.9's plate after the write: "1 panel, counted in the section where it starts" on the home page's first screen and "1 panel, its cells meeting as one band" on the pillar row's screen; 16.1's plate prints its note once and "To commission" in ten rows.
+- Script scan of chapter 20's page words: em and en dashes 0, fillers 0, corporate verbs 0, straight apostrophes 0, "Checked" 0, "1,024" 0, "dark mode" 0; "never" once, a tracker state's key. The `--check` runs apply chapter 02's mechanical checks to every chapter field.
+- A full read of every changed chapter string from the diff of both chapter files, and of the Act page's new words from the page words.
+- The strict build pair: exit 1 both times, 25 warnings each, every one a chapter 20 kit plate whose words I changed (A04 to A10; A10's plate hashes A06's words too); none in chapters 16 or 21. 409 rules and 765 specimens in both.
+
+## Turn 2 not tested
+
+- A clean strict build: it waits on Engineer W's rebuild of A04 to A10 with the new words.
+- The new words on drawn pages: no kit frame of A04 to A08 carries them yet, so their widths, wraps and Rule 20.9's measures with them are unmeasured. I opened no browser.
+- The guide check, which the main session runs.
+- How the words sound read aloud; my read for triplets, parallel runs and setup and payoff is by hand.
+
+## Turn 2 done, 18:54 UTC
