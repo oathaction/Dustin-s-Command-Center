@@ -4,6 +4,8 @@ Started November 23, 2026, 17:48 UTC (read with `date -u`). Owner: oa-ux-accessi
 
 ## Where I am
 
+19:31 UTC: the second pass is done (below). Every Must is closed; AX-5 to AX-8 are closed; AX-9 stays open in part (the tab title).
+
 17:49 UTC: item 1 done (chapter 19's six entries). Item 2: the recheck script for AX-1 to AX-4 and AX-10 is written and run once on the exports as they stand, as a baseline; the atlas engineer had landed nothing by 17:49 (its notes' "Done" was empty). I rerun it on each kit build the atlas engineer reports.
 
 ## Routine calls
@@ -42,27 +44,51 @@ Approved work, so the fix pass does not make these. Each is ruled in my review r
 - **Met at 18:54 UTC by the editor.** Design director and editor, Rule 20.1 (`phase4_ch20_build.py`), two specification rows, in the form Rule 21.1 uses. Order: "Skip link, the masthead, the page, the footer. The markup runs in the order a reader sees at every width, so Tab and a screen reader meet each part in that order." Headings: "One h1 a page, its headline, or on the home page the wordmark’s link; each section an h2 under it, with no level skipped; the masthead holds none, and the footer’s four groups take h2." The pages already do this (walked in the review). When they land, I move 1.3.1, 1.3.2 and 2.4.3 to Met (wording in my review report, named place 13) and rerun chapter 19's generator and `--check`.
 - **Atlas engineer:** tell the main session the kit build time of each landing of AX-1 to AX-4 and AX-10, so I rerun the recheck on that build.
 
-## Second pass: the Musts on the atlas pages
+## Recheck baseline, before the fixes landed
 
 The recheck (`recheck.cjs` in my scratch) reads, on fresh copies of the working exports: AX-1, the live status line starts "Step n of m:" and each hold is at least 250 ms a word of it (6,000 ms at least); AX-2, a pressed question's words compute to 700 or more, an unpressed one's under 700, with the check and the 2 px edge; AX-3, pressing "Show every variable" adds lines to the accessibility tree and changes the screen at each width where the switch shows; AX-4, each question's answer shows only with its question, names the question, and differs from the others' (or one answer only, labeled); AX-10, every atlas page at 320 by 256 with every disclosure open keeps a page width of 320.
 
-| Code | Baseline, 17:51 UTC, on the exports as they stood (the same SHA-256 as the review's copies; the kit had not been rebuilt) | After the atlas engineer's landing |
+| Code | Baseline, 17:51 UTC, on the exports as they stood (the same SHA-256 as the review's copies; the kit had not been rebuilt) | After the fix pass |
 |---|---|---|
-| AX-1 | FAIL: "stepper, step 1 of 2:" and "stepper, step 2 of 2:"; holds 9,250 and 16,000 ms where 38 and 65 words ask 9,500 and 16,250 (1440 and 390 px) | not landed |
-| AX-2 | FAIL: pressed question's words at 400, the same as unpressed; check shown, 2 px edge (1440 and 390 px) | not landed |
-| AX-3 | FAIL: pressing the switch adds no line to the accessibility tree (1440 and 390 px) | not landed |
-| AX-4 | FAIL: one question pressed on load; the same medical-bill answer under all 16 questions, naming none of them, with no `aria-controls` | not landed |
-| AX-10 | FAIL on Reform R-23 (page width 494 at 320 with the sources open); PASS on the other five pages | not landed |
+| AX-1 | FAIL: "stepper, step 1 of 2:" and "stepper, step 2 of 2:"; holds 9,250 and 16,000 ms where 38 and 65 words ask 9,500 and 16,250 (1440 and 390 px) | Closed (Second pass) |
+| AX-2 | FAIL: pressed question's words at 400, the same as unpressed; check shown, 2 px edge (1440 and 390 px) | Closed (Second pass) |
+| AX-3 | FAIL: pressing the switch adds no line to the accessibility tree (1440 and 390 px) | Closed (Second pass) |
+| AX-4 | FAIL: one question pressed on load; the same medical-bill answer under all 16 questions, naming none of them, with no `aria-controls` | Closed (Second pass) |
+| AX-10 | FAIL on Reform R-23 (page width 494 at 320 with the sources open); PASS on the other five pages | Closed (Second pass) |
 
 The baseline reproduces every Must the review found, so the script catches each fault before it is fixed. AX-3's screen comparison now reads the drawing's own part, so the switch's pressed look does not count as a change.
+
+## Second pass
+
+19:28 to 19:31 UTC, on the working pages of the atlas engineer's last full build (A11 to A20, 19:23:01 to 19:26:09 UTC), copied to my scratch at 19:28:57 (SHA-256 starting `e0d65634cd86d8f4` A11, `25c4f4d280e1ba4f` A12, `6cb9efcfdfccaf23` A13, `b829a84ccce25ddc` A14, `a39a9999feac904b` A15, `6089d90933933ac8` A16), and the plates in my own strict build of 19:29:51 (exit 0, 0 warnings, 14,386,242 bytes, 409 rules, 766 specimens). One browser at a time, each batch started on "OK to open one" and closed after.
+
+| Code | Now | What I saw |
+|---|---|---|
+| AX-1 | **Closed; F-15 closes** | The live line reads "Step 1 of 2: Presidential action …" and "Step 2 of 2: The ability …" at 1440 and 390 px; 37 and 64 words, holds 9,250 and 16,000 ms, each exactly 250 ms a word; Play moved to step 2 after 9,252 ms, and 9,255 ms with reduced motion; focus stays on the button, which reads "Play again" at the end |
+| AX-2 | **Closed; UX-4 closes** | A pressed question's words compute to 700 and an unpressed one's to 400, with the check and the 2 px edge against 1 px, on all 16 questions at 1440 and 390 px, light and dark; the look holds in forced colors (capture looked at) |
+| AX-3 | **Closed** | Pressing Show every variable adds eight lists named "Variables in {part}" with 51 items to the accessibility tree at 1440 and 390 px, and shows the variables in the phone cards (capture looked at) |
+| AX-4 | **Closed** | The page loads with nothing pressed, nothing lit, no answer shown and an empty status line. Each of the 16 questions controls its own region (`aria-controls`), which shows alone when it is pressed, under the heading "The short answer: {question}" (h3); 16 different answers; pressing again clears the answer, the lit parts and the status line; focus stays on the question; light and dark, 1440 and 390 px |
+| AX-10 | **Closed** | Every atlas page at 320 by 256 with every disclosure open is 320 px wide; Reform R-23's sources were 494 |
+| AX-5 | **Closed** | Loop R18's drawing is a figure named by the Read aloud line and its reform's note; Reform R-23's is named by its "acts where the marks turn red" line. No unnamed figure on any atlas page |
+| AX-6 | **Closed** | The title bar's text reads "The Oath & Action Systems Atlas Snapshot of October 15, 2026" in the tree on all six pages |
+| AX-7 | **Closed for chapter 21** | Each crop now names its part and state, for example "The hub that holds a question about medical bills, that question pressed: a check before its words, bold words and a 2 px edge. At 1440 px, in the light theme." and "Loop R18’s stepper on its second step, its status line and its four buttons two by two. At 390 px, in the light theme." 95 picture frames in chapters 16, 20 and 21, all named; no landmark in a plate; 12 live controls in plates (caption links and the two "Show the safe areas" boxes), all named |
+| AX-8 | **Closed** | Scripts off, at 390 and 1440 px on all six pages: the five views show as links and the Views button is hidden; the stepper's buttons and status, the questions and the switch are hidden, and the steps and all answers show as text; the chooser still works through CSS. Left as it is: the Register's Filters button shows with scripts off and does nothing (chapter 18's filter bar; not in my finding) |
+| AX-9 | **Open, in part** | The breadcrumb now ends on the domain's chip, "Domain D04", bold, `aria-current="page"`, after a link to the Register, and the views bar marks The Register "true". **Both Register pages still read "The Register &#124; Who Do They Answer To? &#124; Oath & Action" in the tab**: A13's working page, and A13's and A18's plates (`a13.json`, `a18.json`). The engineer's notes say the title fills the sheet's chip and stored title once the editor's words land; they had not landed in this build |
+
+Across the six pages, rerun after the build: axe at 0 violations and 0 best-practice violations on 24 views (1440 and 390 px, light and dark from the device); the Tab walks (26 to 87 stops at 1440, 15 to 76 at 390) with every stop named, ringed (3.37 on Newsprint, 13.29 on Charcoal) and uncovered; every visible text run at or above its ratio (lowest 5.49 light, 7.26 dark); no target under 24 px outside 2.5.8's spacing exception; 200 percent page zoom at 720 CSS px with no sideways scroll; the menu at 390 px (focus to the atlas's part, "true"; Escape back to Menu with `aria-expanded` "false"); the theme chosen in the menu and kept after a reload; the Views list opened and closed with the current view marked.
+
+**Score:** my lens moves from 3 to 4 of 5. Every Must is closed and UX-4, F-8, F-14 and F-15 close; one Should stays open (AX-9's tab title), and screen readers, Safari and Firefox stay untested.
 
 ## Not fixed
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
+| AX-9 | My review | A13 and A18, the tab title (`atlas-page.mjs` fill and the editor's `title` words) | Both Register pages read "The Register &#124; Who Do They Answer To? &#124; Oath & Action", so a sheet's page is not named in its tab (AL-01, 2.4.2) | Fill the sheet's chip and stored title, as the engineer's notes set out | The editor's words had not landed by the 19:23 build | Open |
 | AX-13a | My review, named place 13 | Chapter 19's map, 1.3.1, 1.3.2, 2.4.3 | They stayed Met in part while chapter 20's rules set no page order or heading outline | Rule 20.1's two rows, then the three entries to Met | | Closed 19:05 UTC: the rows landed (editor, 18:54) and the three read Met (Done) |
 
 ## Tested
+
+- Second pass, 19:28 to 19:31 UTC: the recheck of AX-1 to AX-4 and AX-10 (`recheck.cjs`), the axe, Tab, contrast and target walk (`walk1.cjs`) on 24 views, the Shoulds and interaction walk (`walk5.cjs`), and the plate read (`plates.py`) on my strict build of 19:29:51; captures of the pressed question (light and forced colors) and the phone cards with the switch on, looked at.
 
 - Chapter 19's generator and its `--check`, under the build lock, 17:49:01 UTC and again 19:05:49 UTC; `git diff --stat` on the working tree.
 - The recheck's baseline run on the six atlas exports, 17:51 UTC (copies taken 17:49:50, SHA-256 as in the review), one browser, closed after.

@@ -6,7 +6,9 @@ What I walked: the six atlas working exports and the three website exports in `w
 
 ## Score
 
-**3 of 5.** The atlas pages are built well where it counts most (one banner, named navigations, a skip link that works, every stop named and ringed, the stepper in the guide's order, the filters and the theme switch as chapter 18 sets them, axe at 0 on 24 views, no text under its ratio), but five faults on the working pages keep UX-4 and F-15 from closing, leave the atlas home's variables out of the accessibility tree and break reflow on Reform R-23's sources.
+**After the fix pass (19:31 UTC): 4 of 5.** Every Must is closed on the atlas engineer's build of 19:23 to 19:26 UTC, UX-4 and F-15 close with F-8 and F-14, and AX-5 to AX-8 are closed; AX-9's tab title stays open, and screen readers, Safari and Firefox stay untested. The second pass is in `20261123_Chat-12-Accessibility-Lead-Notes.md`, "Second pass".
+
+**At review: 3 of 5.** The atlas pages are built well where it counts most (one banner, named navigations, a skip link that works, every stop named and ringed, the stepper in the guide's order, the filters and the theme switch as chapter 18 sets them, axe at 0 on 24 views, no text under its ratio), but five faults on the working pages keep UX-4 and F-15 from closing, leave the atlas home's variables out of the accessibility tree and break reflow on Reform R-23's sources.
 
 ## Must fix
 
