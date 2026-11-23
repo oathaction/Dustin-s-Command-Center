@@ -471,3 +471,13 @@ The core row grows from 168 to **184 px**, and every box's padding drops to 12 p
 ### 14.5 Unchanged
 
 The loop and reform first screens at 1440 (72.5 and 73.7), the Register's `Sheet` band, the footers, every dark frame (red at most 0.5 percent) and every phone screen not listed here pass as drawn.
+
+
+### 14.6 After round 2 (DD-8, 00:13 UTC; the engineer's Request 10)
+
+C5 on round 2 (00:11 UTC) leaves two screens outside 60 to 85 percent Newsprint:
+
+- **A13 `Index` at 1440, 85.9** (the head row's words now wrap in their cells). From 64em the Register opens as How to read does (14.3): its `h1` and intro in a head band from edge to edge joined to the title bar, at least 160 px tall, `h1` then intro; the index table's head row goes back to Newsprint under the 2 px `--oa-color-border-strong` rule, its line samples and words in the page's inks (one panel a section). Under 64em nothing changes: no head band, the grade key stays on Charcoal. Estimates at 1440: first screen near 71 (79.6 now), `Index` near 77. Bytes: the band's wrapper in each A13 frame that shows the head, about 120 bytes a frame, and a few rules in `atlas-page.css`, under 1,000 in all.
+- **A14 `Loop` at 390, 58.0.** Under 48em the facts panel's padding drops to 16 px and its label "This loop" stays in the markup, visually hidden (`.vh`), so the list keeps its name; the panel loses about 42 px of height, near 5 percent of a 390 by 844 window. Estimates: `Loop` near 63, first screen near 64 (61.2 now). Bytes: a few dozen in `atlas-page.css`; no markup changes.
+
+**A14's dark drawing crop (`1440-dark-drawing`) stays as drawn,** the drawing's own column. Rule 21.15's plate is about the marks on Charcoal: the drawing with Reform R-11's red targets beside the chooser crop. The read-aloud text adds nothing to that, and leaving it out keeps the crop smaller. Its caption stands. Its alt, the editor's, should say the red falls on two connections and one variable (D4, L14 and L15; R10), not "one connection and one variable".
