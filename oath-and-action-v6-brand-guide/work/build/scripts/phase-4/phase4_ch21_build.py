@@ -392,6 +392,7 @@ PAGES = {
             # {reform} its chip, {targets} the targets on the drawing, {off} the targets off it, each a chip
             'chosen_note': '{reform} acts where the marks turn red: on {targets}.',
             'chosen_off': 'Its other targets, {off}, sit off this drawing.',
+            'chosen_off_one': 'Its other target, {off}, sits off this drawing.',   # one target off the drawing
             'chosen_none': '{reform} acts on {off}, none of which sits on this drawing, so nothing turns red.',
             'effects_heading': 'What it would change',
             'routes_heading': 'How it could pass',

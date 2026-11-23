@@ -600,6 +600,10 @@ Under the lock (23:22:29 UTC), word fields only; `--check` exit 0 (34 specimens,
 
 **For the engineer, keys the kit must read** (item numbers from the data lead's batch 1): `ATLAS['feasibility']` in `route_rows` in place of the bare stored word (10); A12 `conn_note` beside the reform drawing for each drawn connection that is not a target (8); A13 `rejected_targets` in the rejected option's block, with `ATLAS['as_of']` over its effects (16); A14 `chosen_note`, `chosen_off` and `chosen_none` beside the loop drawing, filled for the chosen reform and redrawn with the chooser (18).
 
+### The one-target form of `chosen_off` (November 23, 00:13:05 UTC)
+
+On the engineer's Request 9, under the lock (00:13:00 UTC), word fields only: new A14 key **`chosen_off_one`**, "Its other target, {off}, sits off this drawing.", for the kit to use when one target sits off the drawing (Reform R-15's Connection L16); `chosen_off` stays the form for two or more. `--check` exit 0, `--page-words all` exit 0.
+
 ## Requests
 
 Status at 22:38:56 UTC (`date -u`): the word fields were handed over at 22:09 UTC and my words are typed (Done, "B typed"). Items 3 to 5 below are answered by the design director's DD-11C-1 to DD-11C-3; item 6 is the data lead's to rule as R15.
