@@ -367,6 +367,9 @@ PAGES = {
                      'check every number here line by line.',
             'index_heading': 'The sheets',
             'index_head': ['Sheet', 'Variables', 'Connections', 'Numbered loops', 'Reforms', 'Issue records'],
+            # the label over each phone card's five grade counts (the data lead's batch 1): they count the sheet's
+            # connections, not its issue records
+            'grades_label': 'Connections by grade',
             'none_filed': 'none filed',
             'whole': 'The whole atlas',
             # the count alone (CR-3); the note says how many are retired, {retired} filled by the kit in words
