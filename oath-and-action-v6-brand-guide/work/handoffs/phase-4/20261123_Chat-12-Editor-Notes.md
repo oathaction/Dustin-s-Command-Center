@@ -300,3 +300,7 @@ All in `phase4_ch21_build.py`'s word fields.
 - Not tested: the new crops' labels (`pair`, `hub`, `art`, `sheettop`) on a plate, since those crops switch on only once Engineer W's crop on both axes lands (`fits()`); the 32 frame names in a screen reader; the guide check; any browser.
 
 ## Turn 3 done, 19:05 UTC
+
+## After turn 3: A13's `grades_label` (19:55 UTC)
+
+On the main session's message: new A13 page key `grades_label`, "Connections by grade", the label over each phone card's five grade counts (the data lead's batch 1: they count the sheet's connections, not its issue records). Generator written under the lock (19:55:17 UTC, exit 0); `git diff --stat` shows `phase4_ch21_build.py` alone (3 insertions), since the key reaches only the kit through `--page-words`, and no output file moved. Engineer W's rebuild of A04 to A20 carries it.
