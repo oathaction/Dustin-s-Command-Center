@@ -133,14 +133,14 @@ def build():
     P('<h1>Chapter 21, the atlas, as built</h1>')
     P('<div class="col"><p class="lede">Our systems atlas, Who Do They Answer To?, now sits inside our website, under the '
       'site’s masthead with a title bar of its own. The application kit draws its four kinds of page from the atlas model '
-      'alone, and the atlas test holds every page to the model before it ships. This page shows what was built. It asks '
-      'you for no decision; the review, the creative director’s wall test and the keyboard walks come in chat 12, and the '
-      'choices go to Phase 4 board 1.</p></div>')
+      'alone, and the atlas test holds every page to the model before it ships. Nothing here asks you for a decision. The '
+      'review, the creative director’s wall test and the keyboard walks come in chat 12, and the choices go to Phase 4 '
+      'board 1.</p></div>')
     t, by, names = test_table()
     total_pass = sum(v[0] for c in by.values() for v in c.values())
     total_fail = sum(v[1] for c in by.values() for v in c.values())
     P('<div class="facts">')
-    P(f'<div class="fact"><b>{len(VIEWS)}</b><span>views, each at 1440 and 390 px, light and dark</span></div>')
+    P(f'<div class="fact"><b>{len(VIEWS) * 4}</b><span>frames: {n(len(VIEWS))} views, each at 1440 and 390 px, light and dark</span></div>')
     P(f'<div class="fact"><b>{total_pass:,}</b><span>atlas test checks passed, {total_fail:,} failed; self-test {e(t["self_test"])}</span></div>')
     P(f'<div class="fact"><b>{c21:,}</b><span>bytes for chapter 21, against its 655,000</span></div>')
     P(f'<div class="fact"><b>{proj / 1e6:.2f} MB</b><span>the page projected with every chapter still to come; the limit is 16 MB</span></div>')
@@ -209,7 +209,7 @@ def build():
         cells = []
         for a in ids:
             p_, f_ = by[check].get(a, [0, 0])
-            cells.append(f'<td class="num">{"—" if not (p_ or f_) else (str(p_) if not f_ else f"{p_} / {f_} failed")}</td>')
+            cells.append(f'<td class="num">{"none" if not (p_ or f_) else (str(p_) if not f_ else f"{p_} / {f_} failed")}</td>')
         P(f'<tr><th scope="row">{check} {e(names.get(check, ""))}</th>{"".join(cells)}</tr>')
     P('</tbody></table></div>')
     P('<p class="note">Each cell counts the frames and pages that passed the check for that application. A dash means the '
