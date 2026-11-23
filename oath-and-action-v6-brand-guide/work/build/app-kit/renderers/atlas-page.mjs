@@ -484,7 +484,7 @@ function view_register({ pid, P, A, F, panels, spec }) {
       numbered: count(W_.loops, 'atlas:loops-numbered', String(W_.loops)), loops: count(W_.loops_all, 'atlas:loops', String(W_.loops_all)),
       conceptual: count(W_.loops_conceptual, 'atlas:loops-conceptual', esc(nword(W_.loops_conceptual))) })}</p></div></div>`;
   // the open sheet: its band, its variables, its connections, one line each with its own address (Rule 21.9)
-  const band = `<div class="wa-band${panels.includes('Sheet') ? ' oa-surface-charcoal ws-panel' : ''}" data-oa-part="sheettop"><h2 class="ws-h2 wa-bh" id="${pid}-s2">${S.domain ? link_chip('Domain', S.id, I) + ' ' : ''}${esc(S.title)}</h2>`
+  const band = `<div class="wa-band${panels.includes('Sheet') ? ' oa-surface-charcoal ws-panel' : ''}"><h2 class="ws-h2 wa-bh" id="${pid}-s2">${S.domain ? link_chip('Domain', S.id, I) + ' ' : ''}${esc(S.title)}</h2>`
     + (S.question ? `<p class="lab">${esc(wd(P, 'sheet_question_label', 'A13'))}</p><p class="ws-intro wa-stored" data-atlas-field="everyday_question">${esc(S.question)}</p>` : '') + `</div>`;
   // CE8 and R22: each variable's chip, its stored name in quotation marks and what a higher value means, in the editor's line
   const vars = `<h3 class="ws-h3">${esc(wd(P, 'variables_heading', 'A13'))}</h3><ul class="wa-vars">` + S.variables.map((x) => `<li id="${pid === 'site' ? '' : pid + '-'}variable-${low(x.id)}" data-atlas-kind="Variable" data-atlas-id="${esc(x.id)}">`
@@ -500,9 +500,11 @@ function view_register({ pid, P, A, F, panels, spec }) {
     + td(`<span class="wa-one">${F.tick_samples[c.delay.key] || ''} ${esc(A.delays[c.delay.key])}</span>`, ch[4])
     + td(`<span class="wa-one"><span class="wa-gs">${F.grade_samples[c.grade.key]}</span> <span class="ws-nb">${c.grade.key === 'documented' ? F.record_square : ''}${esc(c.grade.word)}</span></span>`, ch[5])
     + td(`<span class="wa-stored" data-atlas-field="citation">${stored(c.citation, I)}</span>`, ch[6]) + `</tr>`;
-  // specs 15.2: the first three rows in a body of their own, marked "sheettop" with the sheet's band, for one crop
+  // specs 15.2: the first three rows in a body of their own, marked "sheettop" with the heading above them, for one crop
   const crows = S.connections.map(crow);
-  const conns = `<h3 class="ws-h3">${esc(wd(P, 'connections_heading', 'A13'))}</h3>`
+  // specs 15.2's "sheettop": the connections' heading and the table's first three rows, in a body of their own; the
+  // sheet's band sits a whole variables list above them on a phone, so the band leaves the part (the crop 1,884 px tall)
+  const conns = `<h3 class="ws-h3" data-oa-part="sheettop">${esc(wd(P, 'connections_heading', 'A13'))}</h3>`
     + table('wa-conns', chead, crows.slice(0, 3).join('')).replace('<tbody role="rowgroup">', '<tbody role="rowgroup" data-oa-part="sheettop">')
       .replace(/<\/tbody><\/table>$/, `</tbody>${crows.length > 3 ? `<tbody role="rowgroup">${crows.slice(3).join('')}</tbody>` : ''}</table>`);
   const sheet = `<div class="ws-g"><div class="wa-col12" data-oa-part="sheet">${band}<div class="wa-col8in">${vars}</div>${conns}</div></div>`;
@@ -785,6 +787,8 @@ ${W} .wa-ticks line,.wa-sym.wa-ticks line{stroke:var(--oa-color-graphic-essentia
 ${W} .wa-quote{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong);${type_css('body')}}
 ${W} .wa-quote+.ws-h3{margin-top:32px !important}
 ${W} .wa-fig,${W} .wa-fig figure{margin:0}
+/* specs 15.2: the parts "art" hold the drawing at its own width, so a crop to them is true size (A12 about 469 px, A14 344) */
+${W} .wa-art,${W} .wa-draw>.wa-fig{width:fit-content;max-width:100%}
 ${W} .wa-fig .sv{display:block;max-width:100%;height:auto}
 ${W} .wa-draw,${W} .wa-read,${W} .wa-note{min-width:0}
 ${W} .wa-two{row-gap:24px;margin-top:0}

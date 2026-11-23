@@ -580,6 +580,7 @@
 .ws.wa .wa-quote{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong);font-family:var(--oa-type-body-font-family);font-style:var(--oa-type-body-font-style);font-weight:var(--oa-type-body-font-weight);font-size:var(--oa-type-body-font-size);line-height:var(--oa-type-body-line-height);letter-spacing:var(--oa-type-body-letter-spacing);text-transform:var(--oa-type-body-text-transform);font-variant-numeric:var(--oa-type-body-font-variant-numeric)}
 .ws.wa .wa-quote+.ws-h3{margin-top:32px !important}
 .ws.wa .wa-fig,.ws.wa .wa-fig figure{margin:0}
+.ws.wa .wa-art,.ws.wa .wa-draw>.wa-fig{width:fit-content;max-width:100%}
 .ws.wa .wa-fig .sv{display:block;max-width:100%;height:auto}
 .ws.wa .wa-draw,.ws.wa .wa-read,.ws.wa .wa-note{min-width:0}
 .ws.wa .wa-two{row-gap:24px;margin-top:0}

@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Atlas home | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:18:21.268Z",
+ "written": "2026-11-23T19:23:23.899Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -501,10 +501,10 @@
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
   "work/build/app-kit/oa-app.mjs": "4499b0877be35e48878cd37014d0c4f0d6b4f471652c28d3d7aabb0637096883",
-  "work/build/app-kit/renderers/atlas-page.mjs": "938e48eea252a50dd3db21a49fd93d219602068e1326c3ff69a73f74609d5ffe",
+  "work/build/app-kit/renderers/atlas-page.mjs": "cf0eb42c4f036ebee10eacfca48a45de1c0b35101e9cb284cf87cd241688afa5",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
-  "work/build/app-kit/renderers/web-site.mjs": "154df4dd684266a2afb749460deaa6d0cde4685ead54eab78d678c872d953175",
+  "work/build/app-kit/renderers/web-site.mjs": "23e5d9b1d944363d9c75e961d0d888d061864a6618b93548c3d345286359b808",
   "work/build/app-kit/specs/a11-atlas-home.json": "f89e994b6059a3584dd973da35b5a2e38455e41df5fccb2bd31c1ddeebe9628b",
   "work/build/app-kit/tools/atlas_contrast.py": "c9f64745108cf08b8bc91dd7023fadd8adacae894330a57f8fa93a0fb60d0a3e",
   "work/build/app-kit/tools/atlas_figures.py": "2c43242d9eda7d7ab03af4f96da7ac57a08e9737ba8b5e6b7981edd3a276e19d",
@@ -544,14 +544,14 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "css_pruned": {
-  "full": 77477,
-  "placed": 58164,
-  "rules_kept": 453,
+  "full": 77678,
+  "placed": 58237,
+  "rules_kept": 454,
   "rules_dropped": 104,
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:21:07.474Z",
+  "ran": "2026-11-23T19:26:09.492Z",
   "pass": 272,
   "fail": 0,
   "first_fail": null,

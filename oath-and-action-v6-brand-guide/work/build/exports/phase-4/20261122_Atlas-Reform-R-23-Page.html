@@ -1786,7 +1786,9 @@
 .ws-atlas>.ws-g{padding-inline:0}
 /* the article and the Act page (specs 6 and 7) */
 .ws-art .ws-h1{font-family:var(--oa-type-title-font-family);font-style:var(--oa-type-title-font-style);font-weight:var(--oa-type-title-font-weight);font-size:var(--oa-type-title-font-size);line-height:var(--oa-type-title-line-height);letter-spacing:var(--oa-type-title-letter-spacing);text-transform:var(--oa-type-title-text-transform);font-variant-numeric:var(--oa-type-title-font-variant-numeric);text-wrap:balance}
-.ws-act .ws-h1{font-family:var(--oa-type-section-font-family);font-style:var(--oa-type-section-font-style);font-weight:var(--oa-type-section-font-weight);font-size:var(--oa-type-section-font-size);line-height:var(--oa-type-section-line-height);letter-spacing:var(--oa-type-section-letter-spacing);text-transform:var(--oa-type-section-text-transform);font-variant-numeric:var(--oa-type-section-font-variant-numeric);text-wrap:balance}
+.ws-act .ws-h1{font-family:var(--oa-type-section-font-family);font-style:var(--oa-type-section-font-style);font-weight:var(--oa-type-section-font-weight);font-size:var(--oa-type-section-font-size);line-height:var(--oa-type-section-line-height);letter-spacing:var(--oa-type-section-letter-spacing);text-transform:var(--oa-type-section-text-transform);font-variant-numeric:var(--oa-type-section-font-variant-numeric);text-wrap:balance;text-wrap:pretty}
+/* specs 13.1 (chat 12, CR-12): balance alone left "proposed" on a line of its own at 1440, 1024 and 390 px; pretty, where
+   the browser has it, gives every line two words or more at all four widths (balance stays as the fallback) */
 .ws-open-col>*+*{margin-top:24px !important}
 .ws-open-col .ws-kick+.ws-h1{margin-top:24px !important}
 .ws-open-col .ws-h1+*{margin-top:32px !important}
@@ -3364,6 +3366,8 @@
 .ws.wa .wa-quote{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong);font-family:var(--oa-type-body-font-family);font-style:var(--oa-type-body-font-style);font-weight:var(--oa-type-body-font-weight);font-size:var(--oa-type-body-font-size);line-height:var(--oa-type-body-line-height);letter-spacing:var(--oa-type-body-letter-spacing);text-transform:var(--oa-type-body-text-transform);font-variant-numeric:var(--oa-type-body-font-variant-numeric)}
 .ws.wa .wa-quote+.ws-h3{margin-top:32px !important}
 .ws.wa .wa-fig,.ws.wa .wa-fig figure{margin:0}
+/* specs 15.2: the parts "art" hold the drawing at its own width, so a crop to them is true size (A12 about 469 px, A14 344) */
+.ws.wa .wa-art,.ws.wa .wa-draw>.wa-fig{width:fit-content;max-width:100%}
 .ws.wa .wa-fig .sv{display:block;max-width:100%;height:auto}
 .ws.wa .wa-draw,.ws.wa .wa-read,.ws.wa .wa-note{min-width:0}
 .ws.wa .wa-two{row-gap:24px;margin-top:0}

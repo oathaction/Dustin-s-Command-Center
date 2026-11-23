@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Loop R18, “Weakening watchdogs lowers the cost of further unilateral action” | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:19:47.857Z",
+ "written": "2026-11-23T19:24:49.051Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -597,11 +597,11 @@
   },
   {
    "key": "1440-dark-art",
-   "w": 915,
+   "w": 345,
    "h": 286,
    "theme": "dark",
    "alt": "Loop R18’s drawing on its own, with Reform R-11’s targets in red. At 1440 px, in the dark theme.",
-   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A14 1440-dark-art\" data-oa-app-type=\"atlas-page\" data-w=\"915\" data-h=\"286\"><svg class=\"oa-app-scale\" viewBox=\"0 0 915 286\" role=\"img\" aria-label=\"Loop R18’s drawing on its own, with Reform R-11’s targets in red. At 1440 px, in the dark theme.\"><foreignObject x=\"0\" y=\"0\" width=\"915\" height=\"286\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:915px;height:286px\"><div class=\"oa-app-crop\" style=\"margin-top:-962px;margin-left:-485px;width:1440px\"><div class=\"ws wa\" id=\"a14-1440-dark-art\" data-oa-theme=\"dark\" data-wa-live=\"\" style=\"--ws-vh:900px\" data-oa-application=\"A14\" data-atlas-view=\"loop\" data-atlas-record=\"R18\" data-atlas-chosen=\"R-11\" data-atlas-model=\"ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2\"><div class=\"ws-in\" style=\"padding-top: 937.828px;\"><main id=\"a14-1440-dark-art-main\" class=\"ws-main\" tabindex=\"-1\"><section class=\"wa-sec wa-bsec\" data-oa-section=\"Stepper\" aria-labelledby=\"a14-1440-dark-art-s2\"><div class=\"ws-g wa-two\"><div class=\"wa-read\" style=\"height:261.313px;min-height:0;box-sizing:border-box;padding:0;border:0;overflow:hidden;visibility:hidden\"></div><div class=\"wa-draw\" data-oa-part=\"drawing\"><div class=\"wa-fig\" data-oa-part=\"art\"><figure class=\"wa-fv wa-fv--on\" data-atlas-for=\"R-11\" aria-labelledby=\"a14-1440-dark-art-reads a14-1440-dark-art-acts-r-11\"><svg class=\"sv\" viewBox=\"0 0 296 261\" width=\"296\" height=\"261\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#oa-app-wa-293dd4e5dbf2\" x=\"0\" y=\"0\" width=\"296\" height=\"261\"/></svg></figure></div></div></div></section></main></div></div></div></div></foreignObject></svg></div>"
+   "html": "<div class=\"oa-app-frame\" data-oa-page-frame=\"A14 1440-dark-art\" data-oa-app-type=\"atlas-page\" data-w=\"345\" data-h=\"286\"><svg class=\"oa-app-scale\" viewBox=\"0 0 345 286\" role=\"img\" aria-label=\"Loop R18’s drawing on its own, with Reform R-11’s targets in red. At 1440 px, in the dark theme.\"><foreignObject x=\"0\" y=\"0\" width=\"345\" height=\"286\"><div xmlns=\"http://www.w3.org/1999/xhtml\" class=\"oa-app-art\" inert aria-hidden=\"true\" data-oa-picture style=\"width:345px;height:286px\"><div class=\"oa-app-crop\" style=\"margin-top:-962px;margin-left:-485px;width:1440px\"><div class=\"ws wa\" id=\"a14-1440-dark-art\" data-oa-theme=\"dark\" data-wa-live=\"\" style=\"--ws-vh:900px\" data-oa-application=\"A14\" data-atlas-view=\"loop\" data-atlas-record=\"R18\" data-atlas-chosen=\"R-11\" data-atlas-model=\"ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2\"><div class=\"ws-in\" style=\"padding-top: 937.828px;\"><main id=\"a14-1440-dark-art-main\" class=\"ws-main\" tabindex=\"-1\"><section class=\"wa-sec wa-bsec\" data-oa-section=\"Stepper\" aria-labelledby=\"a14-1440-dark-art-s2\"><div class=\"ws-g wa-two\"><div class=\"wa-read\" style=\"height:261.313px;min-height:0;box-sizing:border-box;padding:0;border:0;overflow:hidden;visibility:hidden\"></div><div class=\"wa-draw\" data-oa-part=\"drawing\"><div class=\"wa-fig\" data-oa-part=\"art\"><figure class=\"wa-fv wa-fv--on\" data-atlas-for=\"R-11\" aria-labelledby=\"a14-1440-dark-art-reads a14-1440-dark-art-acts-r-11\"><svg class=\"sv\" viewBox=\"0 0 296 261\" width=\"296\" height=\"261\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#oa-app-wa-293dd4e5dbf2\" x=\"0\" y=\"0\" width=\"296\" height=\"261\"/></svg></figure></div></div></div></section></main></div></div></div></div></foreignObject></svg></div>"
   }
  ],
  "inputs": {
@@ -610,7 +610,7 @@
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
   "work/build/app-kit/oa-app.mjs": "4499b0877be35e48878cd37014d0c4f0d6b4f471652c28d3d7aabb0637096883",
-  "work/build/app-kit/renderers/atlas-page.mjs": "938e48eea252a50dd3db21a49fd93d219602068e1326c3ff69a73f74609d5ffe",
+  "work/build/app-kit/renderers/atlas-page.mjs": "cf0eb42c4f036ebee10eacfca48a45de1c0b35101e9cb284cf87cd241688afa5",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "23e5d9b1d944363d9c75e961d0d888d061864a6618b93548c3d345286359b808",
@@ -654,14 +654,14 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "css_pruned": {
-  "full": 77477,
-  "placed": 58164,
-  "rules_kept": 453,
+  "full": 77678,
+  "placed": 58237,
+  "rules_kept": 454,
   "rules_dropped": 104,
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-23T19:21:07.474Z",
+  "ran": "2026-11-23T19:26:09.492Z",
   "pass": 272,
   "fail": 0,
   "first_fail": null,
