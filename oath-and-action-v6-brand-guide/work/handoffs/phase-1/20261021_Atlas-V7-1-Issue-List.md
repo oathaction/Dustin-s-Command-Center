@@ -328,3 +328,12 @@ Chapter 21's atlas home now prints all 16 stored short answers (R19). Six figure
 | 51 | PW09's short answer prints "about 2.1% a year since 1947", while Claim CL1500 holds 2.1 percent for late 2019 to mid-2026, a different period, so answer and claim disagree | `pathways[]`, id PW09, field `short_answer`; `claims[]`, id CL1500 | Correct the answer's period to CL1500's, or add a claim for the 1947 series with its source |
 | 52 | PW10's short answer prints "7.65%" (the payroll tax rate) with no claim | `pathways[]`, id PW10, field `short_answer` | Add a claim citing the statute or the Social Security Administration's rate table |
 | 53 | PW14's short answer prints "83%" (the property tax share of local school revenue) with no claim | `pathways[]`, id PW14, field `short_answer` | Add a claim with its source and school year |
+
+## Rows 54 and 55, added November 23, 2026 (chat 12's second pass, the data lead's R29)
+
+Reforms R-01 and R-22 carry a contested remedy whose stored text the guide prints whole, since no sentence break separates two readings in it (R29). Read by the data lead from the Atlas V7 snapshot of October 15, 2026. Under DR-93 a reader on the other side finds their evidence unnamed; the guide prints the record as it stands (DR-37). Nothing in V7 changed.
+
+| # | Issue | Where | Proposed fix |
+|---|---|---|---|
+| 54 | Reform R-22's contested remedy says two studies of California's fast-food wage "disagree" on its effects on jobs and prices, and names only the one that reported no detectable job loss | `reforms[]`, id R-22, its remedy's evidence text | Name the second study with its source, so each reading carries its evidence, and set the two readings in separate sentences |
+| 55 | Reform R-01's contested remedy says the moderation effect "is contested" and cites only evidence of little or conditional effect | `reforms[]`, id R-01, its remedy's evidence text | Cite the evidence for the other reading with its source, and set the two readings in separate sentences |
