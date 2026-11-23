@@ -7689,3 +7689,17 @@ The main session posted chat 11b's plan for chapter 21 with four questions (Q11b
 | # | Decision | Source |
 |---|---|---|
 | DR-326 | Chat 12 proceeds as handoff V33 proposes (its section 2): the review of chapters 16, 20 and 21 with the fix pass and the rescore, the creative director's wall test on chapter 21 (DR-315), the accessibility lead's walks of the atlas pages (DR-320), the weight options that keep content (register row C11C-W1), and Phase 4 board 1. Chat 12 starts its review after the opening checks without another go, unless the opening finds something that changes the plan | Dustin, November 23: "Let's continue as proposed." |
+
+## Chat 12, November 23, 2026 (Phase 4)
+
+### Main session, opening
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-302 | Chat 12 opened on `claude/oath-action-phase-4-chat-12-bcb7yy`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `bc91667e`, handoff V33) and works on it, as Dustin's opening message sets. V11's three setup steps ran on the fresh container; the atlas extract's SHA-256 begins ef1028ac87e402e3 | V19: fetch the remote tip first; V11's setup |
+| D4-303 | The three key tests fail (17:04 UTC): api.open.fec.gov 403, api.congress.gov 403, `CENSUS_API_KEY` unset. This session runs on "Oath & Action", not on "Oath & Action Brand Polish - Round 2" as DR-300 set, a fourth time. The review needs no key: its figures are checked against the saved research files, govinfo, federalregister.gov and the Census API without a key, so the plan holds (DR-326) and the review starts; Dustin is told | Dustin's "test each with one request before use"; his opening message starts the review unless the opening changes the plan |
+| D4-304 | The strict build passes as committed (17:05 UTC, to scratch): exit 0, 0 warnings, 14,189,507 bytes, 22 chapters, 409 rules, 765 specimens, the figures V33 records; the working tree stays clean | V33 section 1's figures |
+| D4-305 | The work tracker's row `c11` is set active | V33 section 2A |
+| D4-306 | The six readings run as five readers (evidence and balance; accessibility with DR-320's walks; words and readers with the simulated panel; craft and brand; production), with the creative director (DR-315's wall test and the scores) and the engineer (C11C-W1's measurements) beside them, seven agents under `work/handoffs/phase-4/20261123_Chat-12-Review-Brief.md` | Dustin asks for lean agent runs; every reading DR-326 approved still runs, statistics with nonpartisanship and craft with brand, as their lenses share sources |
+| D4-307 | The shared capture set is made from a review page holding chapters 16, 20 and 21 alone (`guide_build.py --chapters`, 3.2 MB), with the full strict build kept as the page of record | Element captures on the 14 MB page take 1 to 36 seconds each (V27); the plates draw the same from the same specimen files |
+| D4-308 | The engineer starts on C11C-W1's measurements at once, in a scratch copy, landing nothing, and is resumed for the fix pass | The measurement needs no reader's report; V33 asks for options with their bytes at board 1 (DR-271) |
