@@ -184,6 +184,7 @@ ${at(BP.tablet, '.ws-main{padding-top:48px}')}
 .ws-fig{margin-block:48px}
 .ws-fig .oac-fig{margin:0}
 .ws-out{white-space:nowrap}
+.ws-nw{white-space:nowrap}
 .ws-out svg{width:16px;height:16px;margin-left:4px;vertical-align:-2px}
 .ws-end{white-space:nowrap}
 .ws-end svg{margin-left:.5em}
@@ -400,6 +401,40 @@ const cl24 = (id, cls = '') => `<svg viewBox="0 0 24 24" width="24" height="24" 
 const cl48 = (id, cls = '') => `<svg viewBox="0 0 128 128" width="48" height="48" aria-hidden="true" focusable="false"${cls ? ` class="${cls}"` : ''} data-icon="${id.toUpperCase()}"><use href="#oa-sym-${id}"/></svg>`;
 const out_mark = (w) => `<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false" data-icon="U-another-site"><use href="#oa-sym-u-another-site-16px"/></svg><span class="vh"> ${esc(w)}</span>`;
 // an outside link (Rule 11.15): its last word held to the 16 px mark, "(another site)" for screen readers
+// CR-13 and CD-S11 (chat 12): a page's text breaks only where a reader would. A docket (FDA-2025-N-2699-0001), a report
+// code (G22-CG-ISD) and a section citation (201(ff)(3)(B)) stay whole; a one-letter prefix stays with its word (N-acetyl,
+// L-cysteine); a time keeps its "p.m." (a no-break space); a web address breaks only after a slash. Words inside drawings
+// (SVG), styles, scripts and titles are left as they are, and so is every attribute.
+const HOLD_RE = /((?:https?:\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:gov|org|com|net|edu)(?:\/[^\s<]*[^\s<.,;:)])?)|(\b[A-Z]{2,}-\d{4}-[A-Z]-\d{4}(?:-\d{4})?\b)|(\b[A-Z0-9]{2,}(?:-[A-Z0-9]{2,}){2,}\b)|(\b[A-Z]-[a-z]{2,}\b)|(\b\d+(?:\([0-9A-Za-z]{1,3}\)){2,})|(\b\d{1,2}(?::\d{2})?) ([ap]\.m\.)/g;
+const nw = (t) => `<span class="ws-nw">${t}</span>`;
+function hold_text(t) {
+  return t.replace(HOLD_RE, (m, url, dk, code, pre, cite, hh, ap) => {
+    if (url) {
+      // each run of the address up to and with its slash stays whole; a break may follow a slash that ends a run
+      const runs = url.match(/[^/]*\/+|[^/]+$/g) || [url];
+      return runs.map((r, i) => nw(r) + (i < runs.length - 1 ? '<wbr>' : '')).join('');
+    }
+    if (hh) return `${hh}&nbsp;${ap}`;
+    return nw(m);
+  });
+}
+export function hold(html_) {
+  // the text between tags, outside <svg>, <style>, <script>, <title> and <textarea>
+  let svg = 0, raw = null;
+  return html_.split(/(<[^>]+>)/).map((part) => {
+    if (part.startsWith('<')) {
+      const t = (part.match(/^<\/?([a-zA-Z][\w:-]*)/) || [])[1];
+      const tag = t ? t.toLowerCase() : '';
+      const close = part.startsWith('</');
+      if (raw) { if (close && tag === raw) raw = null; return part; }
+      if (tag === 'svg' && !part.endsWith('/>')) svg += close ? -1 : 1;
+      else if (!close && ['style', 'script', 'title', 'textarea'].includes(tag)) raw = tag;
+      return part;
+    }
+    return raw || svg > 0 || !part.trim() ? part : hold_text(part);
+  }).join('');
+}
+
 // CD-M1 and CR-1 (chat 12): `wrap` holds the words in one span, for a link drawn as a flex box (the Act page's source links),
 // where the words before the held last word would be an anonymous flex item and lose their trailing space
 function out_link(words_, href, cls = '', another = '(another site)', wrap = false) {
@@ -688,6 +723,7 @@ export async function render(spec) {
     // W3 (2.1.1): on a working page each chart table's scroll frame is a Tab stop, a named group (the guide's pattern,
     // D4-92); a guide frame is a picture and takes none
     if (!width) main = main.replace(/<div class="oac-tw" role="group"/g, '<div class="oac-tw" role="group" tabindex="0"');
+    main = hold(main);   // CR-13, CD-S11
     const parts_ = {
       masthead: head,
       main: `<main id="${pid}-main" class="ws-main" tabindex="-1">${main}</main>`,
