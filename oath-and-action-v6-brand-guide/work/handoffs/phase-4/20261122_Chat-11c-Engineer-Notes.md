@@ -238,6 +238,7 @@ Red stays at 0.1 to 0.5 percent on every screen.
 - Looked at myself: A11 1440 light and 390 dark; A12 1440 light; A13 1440 light and 390 light; A14 1440 light, 390 light and the A19 dark page; A16 1440 light; the A17 and A20 state pages at 1440.
 
 - Round 3 (00:33:41 UTC): the run order above; `check-dimensions.py` 67 of 67; `atlas_test.py --self-test --plates` 27 of 27; chapter 20's 42 frames identical to HEAD and no chapter 20 export changed; A17's pills by geometry; A11's phone cards and key by computed style, light and dark; the A17 and A11 390 captures and A13's and A14's tops looked at.
+- Round 3: `guide_check.js --self-test` (00:30:10 to 00:45:41 UTC, results in my scratch `gc-self.json`): **PASS**, the clean demo passes, 163 of 163 planted faults caught, 59 of 59 allowed cases left alone, the four atlas sprite cases among them (read 00:45:55 UTC).
 
 ## Not tested
 
