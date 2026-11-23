@@ -29,6 +29,25 @@ A staffer at a partner organization who builds one web page a month, working onl
 | 6 | `specs/a12-atlas-reform.json` | The nearest model: id, type, view "reform", record, panels, remedy_split 4, widths, views, export_name, alt | **Guess 7:** a new page is a copy of A12's file with a new id (A21) and record (R-01). **Guess 8:** `remedy_split` names the sentence where R-23's contested remedy splits; nothing says how to choose it for R-01, so I removed it |
 | 7 | The application ID | Chapter 21 and the kit say nothing about numbering | **Guess 9:** A21, the next free number; chapter 22's applications may want it |
 
+### Drawing the reform page (17:35 to 17:39 UTC)
+
+All runs in the production reader's scratch copy, under the build lock, with `--spec-dir`, `--out`, `--exports` and `--plates` pointed at scratch folders, so nothing reached the repository.
+
+| Run | What I ran | What happened |
+|---|---|---|
+| 1 | `node work/build/app-kit/oa-app.mjs build A21 --spec-dir ... --date 20261123` with `a21-atlas-reform-r-01.json` (this folder) | Stopped: "the atlas page words hold no entry for A21 (contract C9)". A partner cannot go further without writing into the studio's chapter 21 generator |
+| 2 | The same, with `"of": "A12"` added. **Guess 15:** I found the key in A17's content file and in `render()`'s code, not in any header: a page that is a state of another takes that page's words | The kit drew the page and its four exports, then stopped: "ENOENT ... pplates/web-site.css". **Gap 7:** `--plates` must name a folder that already holds the kit's styles; a fresh folder fails after the drawing |
+| 3 | The atlas test on run 2's output: `python3 -I work/build/app-kit/tools/atlas_test.py OUT --plates PLATES --ids A21` | 168 PASS, 24 FAIL: T2 and T6 on every view ("found nothing to check on a reform page, which must hold it") and T10 ("the remedy prints in 1 blocks, two asked (R15)"). The test stopped the page, as Rule 21.16 says it must |
+
+What the drawn page shows (`20261123_Producer-Test-Atlas-Reform-R-01-Page-1440-Light.png` in the scratch exports):
+
+- The tab title reads "Reform R-23, Minimum wage that rises with an index | Who Do They Answer To? | Oath & Action" on Reform R-01's page, since the words came from A12. The atlas test passed it: T15 checks the title's three parts, not that the first names the page's own record.
+- "Where it acts" has no drawing. Its note names one target, "Variable C2", where R-01's record names three (Variable C2 and Connections L25 and L08), and two lines below say "the drawing leaves it out" of a drawing the page does not hold. The figure step draws a reform only when its targets are exactly two variables joined by one connection (`atlas_figures.py`, `view_reform`), which 12 of the atlas's 50 reforms are; 33 of the 50 name a connection among their targets, and the renderer prints only the variable targets (`atlas-page.mjs`, `tv = v.targets.filter((t) => 'part' in t)`).
+- R-01's remedy is graded plausible and contested, so Rule 21.4 asks for its two readings side by side. The content file's `remedy_split` sets where the stored text splits, and no rule or header says how to choose it, so it printed whole (T10's failure).
+- The status panel reads "As of October 15, 2026" and then the stored text, which itself begins "As of October 15, 2026, two measures ...". 15 of the 50 reforms' stored statuses begin "As of".
+
+What chapter 21 did not tell me: how to make a page at all (content file, words, command, application number), a reform's domain, how a contested remedy's split is chosen, and that the reform page draws only one shape of reform.
+
 ## Task 2: a new article page from chapter 20 alone
 
 | Step | Where I looked | What I found | Guess or gap |

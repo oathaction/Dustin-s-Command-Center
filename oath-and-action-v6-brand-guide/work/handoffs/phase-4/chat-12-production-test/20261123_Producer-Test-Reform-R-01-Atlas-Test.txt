@@ -1,0 +1,193 @@
+PASS T1 A21 export 1440-dark: typed ids, 16 read
+FAIL T2 A21 export 1440-dark: found nothing to check on a reform page, which must hold it
+PASS T3 A21 export 1440-dark: counts, 0 read
+PASS T4 A21 export 1440-dark: loops, 0 read
+PASS T5 A21 export 1440-dark: authority, 0 read
+FAIL T6 A21 export 1440-dark: found nothing to check on a reform page, which must hold it
+PASS T7 A21 export 1440-dark: effects, 4 read
+PASS T8 A21 export 1440-dark: routes and dates, 7 read
+PASS T9 A21 export 1440-dark: evidence a step away, 3 read
+FAIL T10 A21 export 1440-dark: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 export 1440-dark: stepper, 0 read
+PASS T12 A21 export 1440-dark: pressed and lit, 0 read
+PASS T13 A21 export 1440-dark: colors, 141 read
+PASS T14 A21 export 1440-dark: type, 141 read
+PASS T15 A21 export 1440-dark: site frame, 1 read
+PASS T16 A21 export 1440-dark: words the atlas retired, 1 read
+PASS T1 A21 export 1440-light: typed ids, 16 read
+FAIL T2 A21 export 1440-light: found nothing to check on a reform page, which must hold it
+PASS T3 A21 export 1440-light: counts, 0 read
+PASS T4 A21 export 1440-light: loops, 0 read
+PASS T5 A21 export 1440-light: authority, 0 read
+FAIL T6 A21 export 1440-light: found nothing to check on a reform page, which must hold it
+PASS T7 A21 export 1440-light: effects, 4 read
+PASS T8 A21 export 1440-light: routes and dates, 7 read
+PASS T9 A21 export 1440-light: evidence a step away, 3 read
+FAIL T10 A21 export 1440-light: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 export 1440-light: stepper, 0 read
+PASS T12 A21 export 1440-light: pressed and lit, 0 read
+PASS T13 A21 export 1440-light: colors, 141 read
+PASS T14 A21 export 1440-light: type, 141 read
+PASS T15 A21 export 1440-light: site frame, 1 read
+PASS T16 A21 export 1440-light: words the atlas retired, 1 read
+PASS T1 A21 export 390-dark: typed ids, 16 read
+FAIL T2 A21 export 390-dark: found nothing to check on a reform page, which must hold it
+PASS T3 A21 export 390-dark: counts, 0 read
+PASS T4 A21 export 390-dark: loops, 0 read
+PASS T5 A21 export 390-dark: authority, 0 read
+FAIL T6 A21 export 390-dark: found nothing to check on a reform page, which must hold it
+PASS T7 A21 export 390-dark: effects, 4 read
+PASS T8 A21 export 390-dark: routes and dates, 7 read
+PASS T9 A21 export 390-dark: evidence a step away, 3 read
+FAIL T10 A21 export 390-dark: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 export 390-dark: stepper, 0 read
+PASS T12 A21 export 390-dark: pressed and lit, 0 read
+PASS T13 A21 export 390-dark: colors, 130 read
+PASS T14 A21 export 390-dark: type, 130 read
+PASS T15 A21 export 390-dark: site frame, 1 read
+PASS T16 A21 export 390-dark: words the atlas retired, 1 read
+PASS T1 A21 export 390-light: typed ids, 16 read
+FAIL T2 A21 export 390-light: found nothing to check on a reform page, which must hold it
+PASS T3 A21 export 390-light: counts, 0 read
+PASS T4 A21 export 390-light: loops, 0 read
+PASS T5 A21 export 390-light: authority, 0 read
+FAIL T6 A21 export 390-light: found nothing to check on a reform page, which must hold it
+PASS T7 A21 export 390-light: effects, 4 read
+PASS T8 A21 export 390-light: routes and dates, 7 read
+PASS T9 A21 export 390-light: evidence a step away, 3 read
+FAIL T10 A21 export 390-light: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 export 390-light: stepper, 0 read
+PASS T12 A21 export 390-light: pressed and lit, 0 read
+PASS T13 A21 export 390-light: colors, 130 read
+PASS T14 A21 export 390-light: type, 130 read
+PASS T15 A21 export 390-light: site frame, 1 read
+PASS T16 A21 export 390-light: words the atlas retired, 1 read
+PASS T1 A21 frame 1440-light: typed ids, 16 read
+FAIL T2 A21 frame 1440-light: found nothing to check on a reform page, which must hold it
+PASS T3 A21 frame 1440-light: counts, 0 read
+PASS T4 A21 frame 1440-light: loops, 0 read
+PASS T5 A21 frame 1440-light: authority, 0 read
+FAIL T6 A21 frame 1440-light: found nothing to check on a reform page, which must hold it
+PASS T7 A21 frame 1440-light: effects, 4 read
+PASS T8 A21 frame 1440-light: routes and dates, 7 read
+PASS T9 A21 frame 1440-light: evidence a step away, 3 read
+FAIL T10 A21 frame 1440-light: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 frame 1440-light: stepper, 0 read
+PASS T12 A21 frame 1440-light: pressed and lit, 0 read
+PASS T13 A21 frame 1440-light: colors, 143 read
+PASS T14 A21 frame 1440-light: type, 141 read
+PASS T15 A21 frame 1440-light: site frame, 1 read
+PASS T16 A21 frame 1440-light: words the atlas retired, 1 read
+PASS T1 A21 frame 390-light: typed ids, 16 read
+FAIL T2 A21 frame 390-light: found nothing to check on a reform page, which must hold it
+PASS T3 A21 frame 390-light: counts, 0 read
+PASS T4 A21 frame 390-light: loops, 0 read
+PASS T5 A21 frame 390-light: authority, 0 read
+FAIL T6 A21 frame 390-light: found nothing to check on a reform page, which must hold it
+PASS T7 A21 frame 390-light: effects, 4 read
+PASS T8 A21 frame 390-light: routes and dates, 7 read
+PASS T9 A21 frame 390-light: evidence a step away, 3 read
+FAIL T10 A21 frame 390-light: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 frame 390-light: stepper, 0 read
+PASS T12 A21 frame 390-light: pressed and lit, 0 read
+PASS T13 A21 frame 390-light: colors, 132 read
+PASS T14 A21 frame 390-light: type, 130 read
+PASS T15 A21 frame 390-light: site frame, 1 read
+PASS T16 A21 frame 390-light: words the atlas retired, 1 read
+PASS T1 A21 frame 1440-dark: typed ids, 16 read
+FAIL T2 A21 frame 1440-dark: found nothing to check on a reform page, which must hold it
+PASS T3 A21 frame 1440-dark: counts, 0 read
+PASS T4 A21 frame 1440-dark: loops, 0 read
+PASS T5 A21 frame 1440-dark: authority, 0 read
+FAIL T6 A21 frame 1440-dark: found nothing to check on a reform page, which must hold it
+PASS T7 A21 frame 1440-dark: effects, 4 read
+PASS T8 A21 frame 1440-dark: routes and dates, 7 read
+PASS T9 A21 frame 1440-dark: evidence a step away, 3 read
+FAIL T10 A21 frame 1440-dark: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 frame 1440-dark: stepper, 0 read
+PASS T12 A21 frame 1440-dark: pressed and lit, 0 read
+PASS T13 A21 frame 1440-dark: colors, 144 read
+PASS T14 A21 frame 1440-dark: type, 141 read
+PASS T15 A21 frame 1440-dark: site frame, 1 read
+PASS T16 A21 frame 1440-dark: words the atlas retired, 1 read
+PASS T1 A21 frame 390-dark: typed ids, 16 read
+FAIL T2 A21 frame 390-dark: found nothing to check on a reform page, which must hold it
+PASS T3 A21 frame 390-dark: counts, 0 read
+PASS T4 A21 frame 390-dark: loops, 0 read
+PASS T5 A21 frame 390-dark: authority, 0 read
+FAIL T6 A21 frame 390-dark: found nothing to check on a reform page, which must hold it
+PASS T7 A21 frame 390-dark: effects, 4 read
+PASS T8 A21 frame 390-dark: routes and dates, 7 read
+PASS T9 A21 frame 390-dark: evidence a step away, 3 read
+FAIL T10 A21 frame 390-dark: Reform R-01: the remedy prints in 1 blocks, two asked (R15)
+PASS T11 A21 frame 390-dark: stepper, 0 read
+PASS T12 A21 frame 390-dark: pressed and lit, 0 read
+PASS T13 A21 frame 390-dark: colors, 133 read
+PASS T14 A21 frame 390-dark: type, 130 read
+PASS T15 A21 frame 390-dark: site frame, 1 read
+PASS T16 A21 frame 390-dark: words the atlas retired, 1 read
+PASS T1 A21 frame 1440-light-screen: typed ids, 2 read
+PASS T2 A21 frame 1440-light-screen: connection marks, 0 read
+PASS T3 A21 frame 1440-light-screen: counts, 0 read
+PASS T4 A21 frame 1440-light-screen: loops, 0 read
+PASS T5 A21 frame 1440-light-screen: authority, 0 read
+PASS T6 A21 frame 1440-light-screen: red, 0 read
+PASS T7 A21 frame 1440-light-screen: effects, 0 read
+PASS T8 A21 frame 1440-light-screen: routes and dates, 2 read
+PASS T9 A21 frame 1440-light-screen: evidence a step away, 0 read
+PASS T10 A21 frame 1440-light-screen: grades in words, 0 read
+PASS T11 A21 frame 1440-light-screen: stepper, 0 read
+PASS T12 A21 frame 1440-light-screen: pressed and lit, 0 read
+PASS T13 A21 frame 1440-light-screen: colors, 141 read
+PASS T14 A21 frame 1440-light-screen: type, 141 read
+PASS T15 A21 frame 1440-light-screen: site frame, 1 read
+PASS T16 A21 frame 1440-light-screen: words the atlas retired, 1 read
+PASS T1 A21 frame 390-light-screen: typed ids, 2 read
+PASS T2 A21 frame 390-light-screen: connection marks, 0 read
+PASS T3 A21 frame 390-light-screen: counts, 0 read
+PASS T4 A21 frame 390-light-screen: loops, 0 read
+PASS T5 A21 frame 390-light-screen: authority, 0 read
+PASS T6 A21 frame 390-light-screen: red, 0 read
+PASS T7 A21 frame 390-light-screen: effects, 0 read
+PASS T8 A21 frame 390-light-screen: routes and dates, 2 read
+PASS T9 A21 frame 390-light-screen: evidence a step away, 0 read
+PASS T10 A21 frame 390-light-screen: grades in words, 0 read
+PASS T11 A21 frame 390-light-screen: stepper, 0 read
+PASS T12 A21 frame 390-light-screen: pressed and lit, 0 read
+PASS T13 A21 frame 390-light-screen: colors, 130 read
+PASS T14 A21 frame 390-light-screen: type, 130 read
+PASS T15 A21 frame 390-light-screen: site frame, 1 read
+PASS T16 A21 frame 390-light-screen: words the atlas retired, 1 read
+PASS T1 A21 frame 1440-light-targets: typed ids, 7 read
+PASS T2 A21 frame 1440-light-targets: connection marks, 0 read
+PASS T3 A21 frame 1440-light-targets: counts, 0 read
+PASS T4 A21 frame 1440-light-targets: loops, 0 read
+PASS T5 A21 frame 1440-light-targets: authority, 0 read
+PASS T6 A21 frame 1440-light-targets: red, 0 read
+PASS T7 A21 frame 1440-light-targets: effects, 0 read
+PASS T8 A21 frame 1440-light-targets: routes and dates, 0 read
+PASS T9 A21 frame 1440-light-targets: evidence a step away, 3 read
+PASS T10 A21 frame 1440-light-targets: grades in words, 0 read
+PASS T11 A21 frame 1440-light-targets: stepper, 0 read
+PASS T12 A21 frame 1440-light-targets: pressed and lit, 0 read
+PASS T13 A21 frame 1440-light-targets: colors, 141 read
+PASS T14 A21 frame 1440-light-targets: type, 141 read
+PASS T15 A21 frame 1440-light-targets: site frame, 0 read
+PASS T16 A21 frame 1440-light-targets: words the atlas retired, 1 read
+PASS T1 A21 frame 390-light-targets: typed ids, 7 read
+PASS T2 A21 frame 390-light-targets: connection marks, 0 read
+PASS T3 A21 frame 390-light-targets: counts, 0 read
+PASS T4 A21 frame 390-light-targets: loops, 0 read
+PASS T5 A21 frame 390-light-targets: authority, 0 read
+PASS T6 A21 frame 390-light-targets: red, 0 read
+PASS T7 A21 frame 390-light-targets: effects, 0 read
+PASS T8 A21 frame 390-light-targets: routes and dates, 0 read
+PASS T9 A21 frame 390-light-targets: evidence a step away, 3 read
+PASS T10 A21 frame 390-light-targets: grades in words, 0 read
+PASS T11 A21 frame 390-light-targets: stepper, 0 read
+PASS T12 A21 frame 390-light-targets: pressed and lit, 0 read
+PASS T13 A21 frame 390-light-targets: colors, 130 read
+PASS T14 A21 frame 390-light-targets: type, 130 read
+PASS T15 A21 frame 390-light-targets: site frame, 0 read
+PASS T16 A21 frame 390-light-targets: words the atlas retired, 1 read
+atlas test: 168 PASS, 24 FAIL
