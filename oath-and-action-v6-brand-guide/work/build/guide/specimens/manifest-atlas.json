@@ -162,7 +162,7 @@
   "chapter": "21",
   "rule": "21.3",
   "width_px": null,
-  "alt": "Crops of the atlas home. The drawing, with the parts the question reaches in full ink, each labeled This question reaches here, and the other parts muted; and the questions under their hubs, one marked by a check, bold words and a heavier edge, on the desktop and on a light and a dark phone.",
+  "alt": "Crops of the atlas home. The drawing, with the parts the question reaches in full ink, each labeled “The question you pressed reaches here”, and the other parts muted; and the questions under their hubs, one marked by a check, bold words and a heavier edge, on the desktop and on a light and a dark phone.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A11): the pressed question and the lit parts.",
   "readable": true
@@ -189,7 +189,7 @@
   "chapter": "21",
   "rule": "21.5",
   "width_px": null,
-  "alt": "Two variables joined by one connection, both outlined in red, and beside them a list headed by the chip Variable A4, holding the chips of the other reforms that aim there and the words also aim here.",
+  "alt": "Two variables joined by one connection, both outlined in red, and beside them a list headed by the chip Variable A4 and its name, holding the other reforms that aim there, each by its chip and name, and the words also aim here.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A12): Reform R-23’s targets and the ink tags.",
   "readable": true
@@ -249,7 +249,7 @@
   "width_px": null,
   "alt": "A table of connections, each row with its chip, its two variables, a sign tag with raises or lowers, its type, delay ticks, a grade line and word, and the atlas’s citation; the contested rows draw dash and dot.",
   "illustrative": false,
-  "notes": "Drawn by the application kit (A18, the Register with sheet D10 open).",
+  "notes": "Drawn by the application kit (A18, the Register with the sheet for Domain D10 open).",
   "readable": true
  },
  "s-21-9-failure": {
@@ -265,9 +265,9 @@
   "chapter": "21",
   "rule": "21.6",
   "width_px": null,
-  "alt": "Two panels, light and dark. In each, ten chips, plain and underlined, from Variable D4 to Delivery case DL05, each followed by its record’s name; then four pairs side by side: Variable B4 and Loop B4, Loop R1 and Reform R-01, Variable D4 and Domain D04, and Variable X1 and Issue X01.",
+  "alt": "Two panels, light and dark. In each, ten chips, plain and underlined, from Variable D4 to Delivery case DL05, nine of them followed by the record’s name or stored sentence; then four pairs side by side: Variable B4 and Loop B4, Loop R1 and Reform R-01, Variable D4 and Domain D04, and Variable X1 and Issue X01.",
   "illustrative": false,
-  "notes": "Drawn here from the model: each chip’s kind from where its ID lives, each name as stored; claim, rule change and delivery case records store a sentence, not a name, so their chips stand alone.",
+  "notes": "Drawn here from the model: each chip’s kind from where its ID lives, each name as stored, a rule change’s and a delivery case’s stored sentence as their name (R22); a claim has no name, so its chip stands alone.",
   "readable": true
  },
  "s-21-home": {
@@ -283,7 +283,7 @@
   "chapter": "21",
   "rule": null,
   "width_px": null,
-  "alt": "A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; the hollow line, the red target, the ink tag and the weakest step; the typed chip and the pressed question. Beside it, a table names the rule for each mark.",
+  "alt": "A page of the atlas’s marks in five groups, each mark drawn small beside its name and meaning: the sign tags, the type words and authority’s open diamond; the five grade lines and the record square; the delay ticks; the hollow line, the red target, the Also aim here tag and the weakest step; the typed chip and the pressed question. Beside it, a table names the rule for each mark.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A16, How to read), with the rule that sets each mark listed under it (DD-11C-2: the public page prints meanings alone).",
   "readable": true
@@ -292,7 +292,7 @@
   "chapter": "21",
   "rule": "21.12",
   "width_px": null,
-  "alt": "Loop R18’s page four times: its head with the grade of each step and a Charcoal panel of facts that names the weakest step; the loop read aloud beside its two-step drawing, the weakest step marked and Reform R-11’s targets in red; the stepper; the reform chooser with the chosen reform’s effects and routes; the loop in the atlas’s words; and the evidence for each step.",
+  "alt": "Loop R18’s page four times: its head with the grade of each step and a Charcoal panel of facts that names the weakest step; the loop read aloud beside its two-step drawing, the weakest step marked and Reform R-11’s targets in red; the stepper; the reform chooser with the chosen reform’s effects, the atlas’s confidence in them, a closed disclosure of its assumptions and its routes; the loop in the atlas’s words; and the evidence for each step.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A14, Loop R18’s page), full length at four views.",
   "readable": true
@@ -301,7 +301,7 @@
   "chapter": "21",
   "rule": "21.4",
   "width_px": null,
-  "alt": "Reform R-23’s page four times: its head with a Charcoal status panel; a drawing of its two targets outlined in red, with the other reforms that aim at one of them listed in ink; its two grades, the contested remedy’s two readings side by side; its effects, one row a family; its routes, each with its check date or Not checked; and a closed disclosure of sources.",
+  "alt": "Reform R-23’s page four times: its head with a Charcoal status panel; a drawing of its two targets outlined in red, with the other reforms that aim at one of them listed in ink; its two grades, the contested remedy’s two readings side by side under the labels One reading and The other reading; its effects, one row a family; its routes, each with its check date or Not checked; and a closed disclosure of sources.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A12, Reform R-23’s page), full length at four views.",
   "readable": true
@@ -312,7 +312,7 @@
   "width_px": null,
   "alt": "The Register four times: an index table with a row for each sheet and one for the whole atlas, its counts and five grade columns under a Charcoal head row; then the sheet for Domain D04 on a Charcoal band, its variables, its connections with their signs, types, delays, grade lines and citations, the reform the atlas rejects, and its issue records with one filter on.",
   "illustrative": false,
-  "notes": "Drawn by the application kit (A13, the Register with sheet D04 open), full length at four views.",
+  "notes": "Drawn by the application kit (A13, the Register with the sheet for Domain D04 open), full length at four views.",
   "readable": true
  }
 }

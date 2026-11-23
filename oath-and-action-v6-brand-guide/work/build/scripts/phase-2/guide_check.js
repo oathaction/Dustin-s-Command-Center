@@ -416,6 +416,8 @@ function audit(page) {
       if (!stage) why.push('outside a specimen');
       else if (stage.getAttribute('role') === 'img') why.push('inside an image stage (set "readable": true)');
       if (!svg || svg.getAttribute('role') !== 'img' || norm(svg.getAttribute('aria-label')).length < 15) why.push('its picture is not named by an alt of 15 characters or more');
+      // PR-S6 (d), chat 12: one page to a frame; a second .oa-app-art would be skipped by the live tests and the text check
+      if (svg && svg.querySelectorAll('.oa-app-art').length > 1) why.push(`${svg.querySelectorAll('.oa-app-art').length} pages (.oa-app-art) in one frame`);
       if (!art) why.push('no .oa-app-art inside its foreignObject');
       else {
         if (!art.hasAttribute('inert')) why.push('its page is not inert');
@@ -435,7 +437,8 @@ function audit(page) {
       for (const sel of kitSelectors(st.sheet.cssRules, [])) {
         let hits = [];
         try { hits = document.querySelectorAll(sel.replace(/::[a-z-]+(\([^)]*\))?|:(before|after|first-line|first-letter)\b/gi, '')); } catch (e) { continue; }
-        const el = [...hits].find((x) => !x.closest('.oa-app-art'));
+        // a frame's page, and the kit's own hidden sprites (their symbols draw only inside frames), are where kit rules belong
+        const el = [...hits].find((x) => !x.closest('.oa-app-art') && !x.closest('svg[data-oa-app-kit]'));
         if (el) {
           const home = el.closest('[data-specimen]');
           sp.kitReach.push({ style: kind, selector: sel.slice(0, 140), element: el.tagName.toLowerCase() + (el.getAttribute('class') ? '.' + el.getAttribute('class').trim().split(/\s+/).join('.') : ''),
@@ -2739,6 +2742,15 @@ const PLANTS = [
   { key: 'under13', fault: 'the same 12 px words in a page frame\'s stage, outside the frame', js: pageFramePlant('smallOutside') },
   { key: 'pageFrame', fault: 'a page frame whose page is hidden but not inert', js: pageFramePlant('notInert') },
   { key: 'pageFrame', fault: 'a page frame whose alt is empty', js: pageFramePlant('noAlt') },
+  // PR-S6 (chat 12): (a) a word at low contrast inside a frame fails at the frame's own width; (b) a glyph-only control is
+  // left alone inside a frame's inert page and caught beside the frame; (c) an atlas page's frame is read as a web page's
+  // frame is; (d) a second page inside one frame is caught
+  { key: 'contrast', fault: 'Stone-on-Newsprint words, 1.2 to 1, inside a page frame', js: pageFramePlant('lowContrast') },
+  { key: 'controlNames', expect: false, fault: 'a glyph-only button named "Settings" inside a page frame\'s inert, hidden page (allowed: must not be flagged)', js: pageFramePlant('glyphInside') },
+  { key: 'controlNames', fault: 'the same glyph-only button in the frame\'s stage, beside the frame', js: pageFramePlant('glyphBeside') },
+  { key: 'specimenHeadings', expect: false, fault: 'an atlas page\'s h1 and h2 inside its page frame (data-oa-app-type="atlas-page"), inert and hidden (allowed: must not be flagged)', js: pageFramePlant('atlas') },
+  { key: 'pageFrame', expect: false, fault: 'an atlas page\'s frame as the kit writes it (allowed: must not be flagged)', js: pageFramePlant('atlas') },
+  { key: 'pageFrame', fault: 'a second page (.oa-app-art), hidden and not marked a picture, inside one frame', js: pageFramePlant('twoArts') },
   // PR-M1 (chat 12): a kit style in the head reaches only the frames' pages
   { key: 'kitReach', fault: 'a kit style in the head whose .sh rule is not held to the frames, beside a chapter 15 pill drawn as rect.pl.sh and a share card frame', js: kitReachPlant('open') },
   { key: 'kitReach', expect: false, fault: 'the same pill and share card frame beside the .sh rule held to the frames, as the build writes it (allowed: must not be flagged)', js: kitReachPlant('scoped') },
@@ -3195,11 +3207,18 @@ function pageFramePlant(variant) {
   const hidden = variant === 'open' ? '' : variant === 'notInert' ? ' aria-hidden="true" data-oa-picture' : ' inert aria-hidden="true" data-oa-picture';
   const role = variant === 'imageStage' ? 'role="img" aria-label="A web page fixture at 1,024 px, a picture."' : 'role="group" aria-label="A web page fixture, specimen"';
   const alt = variant === 'noAlt' ? '' : 'A fixture web page at 1,024 px, on Newsprint.';
+  // PR-S6 (chat 12): 'lowContrast' faint words in the page; 'glyphInside' and 'glyphBeside' a glyph-only button in the page
+  // and in the stage; 'atlas' the frame typed as an atlas page's; 'twoArts' a second page in the foreignObject
+  const glyph = '<button type="button" aria-label="Settings" style="min-width:44px;min-height:44px"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="6" fill="currentColor"/></svg></button>';
   const off = variant === 'offScale' ? '<p style="font-size:21.3px;margin:0">A line at a size no token takes.</p>'
-    : variant === 'small' ? '<p style="font-size:12px;margin:0">Small words in the page.</p>' : '';
-  const beside = variant === 'smallOutside' ? '<p style="font-size:12px;margin:0">Small words in the page.</p>' : '';
+    : variant === 'small' ? '<p style="font-size:12px;margin:0">Small words in the page.</p>'
+    : variant === 'lowContrast' ? '<p style="font-size:17px;margin:0;color:#C9C6BF">Faint words of the page.</p>'
+    : variant === 'glyphInside' ? glyph : '';
+  const beside = variant === 'smallOutside' ? '<p style="font-size:12px;margin:0">Small words in the page.</p>' : variant === 'glyphBeside' ? glyph : '';
+  const second = variant === 'twoArts' ? `<div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art" aria-hidden="true" hidden style="width:${W}px;height:600px"><p style="font-size:17px;margin:0">A second page.</p></div>` : '';
+  const type = variant === 'atlas' ? 'atlas-page' : 'web-page';
   const html = `<div class="plate-stage oa-surface-newsprint" data-specimen="s-demo-app" ${role}>`
-    + `<div class="oa-app-row" data-oa-app="A90"><div class="oa-app-frame" style="${W === 1024 ? 'flex:1024 1 0;max-width:1024px' : 'max-width:none'}" data-oa-page-frame="A90 ${W}-light" data-oa-app-type="web-page" data-w="${W}" data-h="600">`
+    + `<div class="oa-app-row" data-oa-app="A90"><div class="oa-app-frame" style="${W === 1024 ? 'flex:1024 1 0;max-width:1024px' : 'max-width:none'}" data-oa-page-frame="A90 ${W}-light" data-oa-app-type="${type}" data-w="${W}" data-h="600">`
     + `<svg class="oa-app-scale" viewBox="0 0 ${W} 600" role="img" aria-label="${alt}" style="display:block;width:100%;height:auto">`
     + `<foreignObject x="0" y="0" width="${W}" height="600"><div xmlns="http://www.w3.org/1999/xhtml" class="oa-app-art"${hidden} style="width:${W}px;height:600px">`
     + '<div class="wa" style="container:wa/inline-size;--oa-type-title-font-size:clamp(3.5rem, 2.2464rem + 5.1429cqi, 6.875rem);background:var(--oa-color-surface);color:var(--oa-color-text-primary)">'
@@ -3208,7 +3227,7 @@ function pageFramePlant(variant) {
     + `<p style="font-size:17px;margin:0">Words of the page.</p>${off}`
     + '<svg viewBox="0 0 240 24" width="240" height="24" style="display:block"><text x="0" y="18" style="font-size:15px;fill:currentColor">A 15 px label</text></svg>'
     + '</main><footer><p style="font-size:15px;margin:0">A footer.</p></footer></div>'
-    + `</div></foreignObject></svg></div></div>${beside}</div>`;
+    + `</div>${second}</foreignObject></svg></div></div>${beside}</div>`;
   return new Function(`document.querySelector('.rule .why').insertAdjacentHTML('beforeend', ${JSON.stringify(html)});`);
 }
 

@@ -100,13 +100,48 @@ export const PATHS = {
 
 // A typed chip (Rule 18.24, chapter 18's c-18-id-chip): the kind word and the ID, plain or as a link, with the marks the
 // atlas test reads. The kind is the one the model files the ID under, given by the caller from the record it reads.
-export function chip(kind, id, { href = null, evidence = false, cls = '', current = false } = {}) {
+export function chip(kind, id, { href = null, evidence = false, cls = '', current = false, describe = false } = {}) {
   const ev = evidence && href ? ` data-evidence-href="${esc(href)}"` : '';
-  const a = ` data-atlas-kind="${esc(kind)}" data-atlas-id="${esc(id)}"${ev}`;
+  const a = ` data-atlas-kind="${esc(kind)}" data-atlas-id="${esc(id)}"${ev}${describe ? described(kind, id) : ''}`;
   const inner = `${esc(kind)} <span class="oa-chip-id">${esc(id)}</span>`;
   return href ? `<a class="oa-chip oa-chip--link${cls ? ' ' + cls : ''}" href="${esc(href)}"${current ? ' aria-current="page"' : ''}${a}>${inner}</a>`
     : `<span class="oa-chip${cls ? ' ' + cls : ''}"${a}>${inner}</span>`;
 }
+// CE1 (the data lead's R22): a chip whose name the words around it do not print, in a table cell or in stored text, takes
+// the record's stored name as its description; the names sit once a page in a hidden list at the end of main
+let NAMES = null;
+const NAME_IDX = { I: null };
+const slug = (x) => low(x).replace(/[^a-z0-9]+/g, '-');
+function described(kind, id) {
+  const nm = NAME_IDX.I && NAME_IDX.I[id] && (NAME_IDX.I[id].names || {})[kind];
+  if (!NAMES || !nm) return '';
+  const key = `${NAMES.pid}-nm-${slug(kind)}-${slug(id)}`;
+  NAMES.used.set(key, nm);
+  return ` aria-describedby="${key}"`;
+}
+const curly = (t) => esc(t).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’');
+// DF1 and CR-4 (fix brief, section 2): every straight mark the atlas stores prints as the typographer's pair in the words a
+// reader meets, as approved chapter 15 prints the same titles; only text between tags changes, never an attribute, a style
+// or a script, and the stored data and exports keep the marks as stored (DR-37)
+function typo(html) {
+  let skip = false;
+  return html.split(/(<[^>]*>)/).map((seg) => {
+    if (seg.startsWith('<')) { if (/^<(style|script)\b/i.test(seg)) skip = true; else if (/^<\/(style|script)>/i.test(seg)) skip = false; return seg; }
+    return skip || !seg.includes("'") ? seg : seg.replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’');
+  }).join('');
+}
+const name_of = (kind, id, I) => ((I[id] || {}).names || {})[kind] || '';
+// a chip followed by its record's stored name in quotation marks (R22), the name's last word held to the closing mark and
+// any punctuation after it (CD-S6), so a line never starts with a mark or ends on a lone chip
+function named(chip_html, kind, id, I, after = '') {
+  const nm = name_of(kind, id, I);
+  if (!nm) return `<span class="ws-nb">${chip_html}${after}</span>`;
+  const w = curly(nm).split(' ');
+  const last = `<span class="ws-nb">${w[w.length - 1]}”${after}</span>`;
+  return `${chip_html} “${w.slice(0, -1).join(' ')}${w.length > 1 ? ' ' : ''}${last}`;
+}
+// a list joined by commas and "and" (R22, item 2)
+const and_list = (xs, and = 'and') => (xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + ` ${and} ` + xs[xs.length - 1]);
 // a linked chip for a record of one of the kinds with a page or a line (R5); a connection's and a variable's link is its
 // evidence, the line that grades it
 const link_chip = (kind, id, I, opts = {}) => chip(kind, id, { href: PATHS[kind] ? PATHS[kind](id, I) : null, evidence: kind === 'Connection' || kind === 'Variable', ...opts });
@@ -128,7 +163,7 @@ function stored(text, I) {
       kind = ks[0];
     }
     if (!rec.kinds.includes(kind)) return m;
-    return link_chip(kind, id, I);
+    return link_chip(kind, id, I, { describe: true });
   });
 }
 
@@ -138,16 +173,20 @@ const CHEV = () => sprite_icons(fs.readFileSync(path.join(CODE, 'c-18-disclosure
 
 // the title bar (specs 2): a Charcoal band with the atlas's name, its subtitle and snapshot, and the five views; under
 // 64em the views sit behind chapter 18's button-built disclosure, closed on load
-function title_bar({ pid, A, M, current, cur_val, open }) {
+function title_bar({ pid, A, M, current, cur_val, open, frame = false }) {
+  // AX-8: on the working page the views list is written open and its button hidden, and the atlas's script closes the
+  // list behind the button, so a reader with scripts off still reaches every view; a frame draws the scripted state
+  const nojs = !frame && !open;
   need(A, ['views_label', 'views_button', 'views', 'snapshot'], 'the title bar');
   const date = `<time datetime="${esc(M.snapshot)}">${esc(M.snapshot_words)}</time>`;
   const links = A.views.map(([w, href]) => `<li><a class="oa-masthead-row-link oa-masthead-part" href="${esc(href)}"${w === current ? ` aria-current="${cur_val}"` : ''}>${esc(w)}</a></li>`).join('');
   return `<nav class="wa-bar oa-surface-charcoal" aria-label="${esc(A.views_label)}" data-oa-disclosure><div class="wa-bar-in">`
-    + `<p class="wa-name"><span class="n">${esc(M.title)}</span><span class="wa-sub"><span class="ws-nb s1">${esc(M.subtitle)}</span><span class="dot s1" aria-hidden="true"> · </span>`
+    // AX-6: the spaces sit outside the hidden dot, so the bar's words never run together for a screen reader
+    + `<p class="wa-name"><span class="n">${esc(M.title)}</span><span class="wa-sub"><span class="ws-nb s1">${esc(M.subtitle)}</span> <span class="dot s1" aria-hidden="true">·</span> `
     + `<span class="ws-nb" data-status-date="${esc(M.snapshot)}">${fill_html(A.snapshot, { date })}</span></span></p>`
-    + `<button type="button" class="oa-masthead-menu oa-disclosure-button wa-views-btn" aria-expanded="${open ? 'true' : 'false'}" aria-controls="${pid}-views">`
+    + `<button type="button" class="oa-masthead-menu oa-disclosure-button wa-views-btn" aria-expanded="${open ? 'true' : 'false'}" aria-controls="${pid}-views"${nojs ? ' hidden' : ''}>`
     + `<span>${esc(A.views_button)}</span>${CHEV()}</button>`
-    + `<ul class="wa-views" id="${pid}-views"${open ? '' : ' hidden'}>${links}</ul></div></nav>`;
+    + `<ul class="wa-views" id="${pid}-views"${open || nojs ? '' : ' hidden'}>${links}</ul></div></nav>`;
 }
 
 // the locator (Rule 12.7; specs 3.2): eight boxes on whole pixels, the page's parts filled in ink
@@ -213,7 +252,10 @@ function view_loop({ pid, P, A, F, panels, spec }) {
   const steps = v.steps;
   const sc = (s) => link_chip('Connection', s.id, I);
   // head (specs 7 and 8.1)
-  const gl = v.grade_line.map((g) => fill_html(P.grade_line || '{grade} for {from} to {to}', { grade: esc(g.grade.word), from: link_chip('Variable', g.from, I), to: link_chip('Variable', g.to, I) })).join('; ');
+  // CE1 (the data lead's R22, item 4): each span of the stored grade text names the loop's one connection from X to Y,
+  // its chip and its stored name; {from} and {to} stay for a template that still names the variables
+  const gl = v.grade_line.map((g) => fill_html(P.grade_step || P.grade_line || '{grade} for {conn}', { grade: esc(g.grade.word), conn: named(link_chip('Connection', g.conn, I), 'Connection', g.conn, I),
+    from: named(link_chip('Variable', g.from, I), 'Variable', g.from, I), to: named(link_chip('Variable', g.to, I), 'Variable', g.to, I) })).join('; ');
   const even = v.minus % 2 === 0;
   const weak = steps.find((s) => s.id === v.weakest);
   const facts = `<div class="wa-facts${panels.includes('Loop') ? ' oa-surface-charcoal ws-panel' : ''}" data-oa-part="facts"><p class="lab">${esc(P.facts_label)}</p><dl>`
@@ -234,34 +276,42 @@ function view_loop({ pid, P, A, F, panels, spec }) {
   const toks = v.reads.split(' ');
   const dirw = (d) => esc((P.dirs || {})[d === 'rises' ? 'up' : 'down'] || d);
   const vtitle = (id) => (v.variables.find((x) => x.id === id) || {}).title || '';
-  const vchip = (t) => { const id = t.split(':')[0]; const tt = vtitle(id); return `${link_chip('Variable', id, I)} ${esc(tt.charAt(0).toLowerCase() + tt.slice(1))}`; };
+  // CE1 and CE8 (R22, item 1): a variable's first mention in the line takes its stored name, unrecased, set off by commas
+  const said = new Set();
+  const vchip = (t) => { const id = t.split(':')[0]; if (said.has(id)) return link_chip('Variable', id, I); said.add(id);
+    return `${link_chip('Variable', id, I)}, “${curly(vtitle(id))}”,`; };
   let line = fill_html(wd(P, 'read_start', 'A14'), { var: vchip(toks[0]) });
   for (let i = 1; i < toks.length; i += 2) {
     const st = steps.find((x) => x.id === toks[i]);
     line += ' ' + fill_html(wd(P, 'read_step', 'A14'), { conn: link_chip('Connection', toks[i], I), sign: esc(A.signs[st.sign]), var: vchip(toks[i + 1]), dir: dirw(toks[i + 1].split(':')[1]) });
   }
   line += ' ' + esc(wd(P, toks[toks.length - 1].endsWith(':rises') ? 'read_end_same' : 'read_end_other', 'A14'));
-  const read = `<div class="wa-read" data-oa-part="read"><p class="lab">${esc(P.read_label)}</p><p class="ws-p" data-atlas-reads="${esc(v.reads)}">${line}</p>`
+  line = line.replace(/,(<\/a>)?,/g, ',$1').replace(/”,(\s*[.;:])/g, '”$1');
+  const read = `<div class="wa-read" data-oa-part="read"><p class="lab">${esc(P.read_label)}</p><p class="ws-p" id="${pid}-reads" data-atlas-reads="${esc(v.reads)}">${line}</p>`
     + `<p class="wa-small">${count(v.minus, `loop:${lp.id}:minus`, esc(fill(even ? P.parity_even : P.parity_odd, { n: nword(v.minus) })))}</p></div>`;
   // the drawing, chapter 15's loop by the figure step, with the other reforms' ink tags under it (Rule 21.5)
   const tags_for = (rid) => {
     const others = v.offered.filter((r) => r.id !== rid).map((r) => r.id);
     return steps.map((s) => [s, others.filter((o) => v.offered.find((r) => r.id === o).targets.includes(s.id))]).filter(([, rs]) => rs.length)
-      .map(([s, rs]) => `<li class="wa-tag">${sc(s)} ${fill_html(rs.length === 1 ? wd(P, 'also_aim_one', 'A14') : P.also_aim, { chips: rs.map((r) => chip('Reform', r)).join(' and ') })}</li>`).join('');
+      .map(([s, rs]) => `<li class="wa-tag"><span><span class="ws-nb">${sc(s)}:</span> ${fill_html(rs.length === 1 ? wd(P, 'also_aim_one', 'A14') : P.also_aim, { chips: and_list(rs.map((r) => named(chip('Reform', r), 'Reform', r, I))) })}</span></li>`).join('');
   };
   const listw = (xs) => (xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + ' and ' + xs[xs.length - 1]);
   const acts_for = (r) => {
     const on = r.targets.filter((t) => steps.some((s) => s.id === t) || v.variables.some((x) => x.id === t));
     const off = r.targets.filter((t) => !on.includes(t));
     const ch = (t) => (steps.some((s) => s.id === t) || I[t].kinds.includes('Connection') && !I[t].kinds.includes('Variable') ? link_chip('Connection', t, I) : link_chip('Variable', t, I));
-    if (!on.length) return `<p class="wa-small wa-acts">${fill_html(wd(P, 'chosen_none', 'A14'), { reform: chip('Reform', r.id), off: listw(off.map(ch)) })}</p>`;
-    return `<p class="wa-small wa-acts">${fill_html(wd(P, 'chosen_note', 'A14'), { reform: chip('Reform', r.id), targets: listw(on.map(ch)) })}`
-      + (off.length ? ` ${fill_html(wd(P, off.length === 1 ? 'chosen_off_one' : 'chosen_off', 'A14'), { off: listw(off.map(ch)) })}` : '') + `</p>`;
+    // CE1: the reform named in its note, and a target off the drawing named, since the page names it nowhere else
+    const chn = (t) => { const k = steps.some((s) => s.id === t) || I[t].kinds.includes('Connection') && !I[t].kinds.includes('Variable') ? 'Connection' : 'Variable'; return named(ch(t), k, t, I); };
+    const rn = named(chip('Reform', r.id), 'Reform', r.id, I);
+    if (!on.length) return `<p class="wa-small wa-acts" id="${pid}-acts-${low(r.id)}">${fill_html(wd(P, 'chosen_none', 'A14'), { reform: rn, off: listw(off.map(chn)) })}</p>`;
+    return `<p class="wa-small wa-acts" id="${pid}-acts-${low(r.id)}">${fill_html(wd(P, 'chosen_note', 'A14'), { reform: rn, targets: listw(on.map(ch)) })}`
+      + (off.length ? ` ${fill_html(wd(P, off.length === 1 ? 'chosen_off_one' : 'chosen_off', 'A14'), { off: listw(off.map(chn)) })}` : '') + `</p>`;
   };
   const tags = v.offered.map((r) => `<div class="wa-fv${r.id === v.chosen ? ' wa-fv--on' : ''}" data-atlas-for="${esc(r.id)}">${acts_for(r)}<ul class="wa-tags">${tags_for(r.id)}</ul></div>`).join('');
   // E11c-2: one drawing a reform the chooser offers, the chosen one shown in the markup, the checked radio's shown by CSS
-  const figs = v.offered.map((r) => `<div class="wa-fv${r.id === v.chosen ? ' wa-fv--on' : ''}" data-atlas-for="${esc(r.id)}">${v.figures[r.id]}</div>`).join('');
-  const drawing = `<div class="wa-draw" data-oa-part="drawing"><figure class="wa-fig">${figs}</figure>`
+  // AX-5: each reform's drawing a figure named by the words that read it, the read-aloud line and that reform's own note
+  const figs = v.offered.map((r) => `<figure class="wa-fv${r.id === v.chosen ? ' wa-fv--on' : ''}" data-atlas-for="${esc(r.id)}" aria-labelledby="${pid}-reads ${pid}-acts-${low(r.id)}">${v.figures[r.id]}</figure>`).join('');
+  const drawing = `<div class="wa-draw" data-oa-part="drawing"><div class="wa-fig">${figs}</div>`
     + (weak ? `<p class="wa-small wa-weak">${sc(weak)} ${esc(P.weakest_line)}</p>` : '') + `<div class="wa-tagsets">${tags}</div></div>`;
   // the stepper, chapter 18's code set read from its files (Rule 21.13; AL-22, AL-24)
   if (P.steps.length !== steps.length) throw new Error(`the loop page's words hold ${P.steps.length} stepper lines for ${steps.length} steps (contract C9)`);
@@ -294,10 +344,19 @@ function view_loop({ pid, P, A, F, panels, spec }) {
   const check = sprite_icons(fs.readFileSync(path.join(CODE, 'c-18-choice.html'), 'utf8').match(/<svg\s+class="oa-choice-check"[\s\S]*?<\/svg>/)[0]).replace(/\s*\n\s*/g, ' ');
   const choices = v.offered.map((r) => `<label class="oa-choice-item"><input class="oa-choice-input" type="radio" name="${pid}-reform" value="${esc(r.id)}"${r.id === v.chosen ? ' checked' : ''}>`
     + `<span class="oa-choice-face">${check}<span class="oa-choice-label">${chip('Reform', r.id)} “${esc(r.title)}”</span></span></label>`).join('');
+  // ST-1 (the data lead's R21): under each panel's four effect rows, the atlas's confidence in them quoted as stored, once,
+  // in the reform page's line; under the panel, Rule 15.20's disclosure, closed, holding the remedy's evidence with its
+  // grade word and the stored tradeoffs whole
+  const P12 = (atlas_words().A12 || {}).page || {};
+  const conf_t = P.effects_confidence || P12.effects_confidence || wd(P, 'effects_confidence', 'A14');
+  const qual = (r) => `<details class="oa-disclosure wa-qual" data-atlas-reform="${esc(r.id)}"><summary class="oa-disclosure-summary"><span class="oa-disclosure-label">${fill_html(wd(P, 'assumptions_summary', 'A14'), { reform: chip('Reform', r.id) })}</span>${CHEV()}</summary>`
+    + `<div class="oa-disclosure-body"><p class="wa-small" data-atlas-field="remedy">${fill_html(wd(P, 'assumptions_remedy', 'A14'), { grade: `<span data-grade-word="${esc(r.remedy.grade.key)}">${esc(r.remedy.grade.word.toLowerCase())}</span>`, text: `<span class="wa-stored">${stored(r.remedy.text, I)}</span>` })}</p>`
+    + `<p class="wa-small" data-atlas-field="tradeoffs">${fill_html(wd(P, 'assumptions_tradeoffs', 'A14'), { text: `<span class="wa-stored">${stored(r.tradeoffs || '', I)}</span>` })}</p></div></details>`;
   const panels_ = v.offered.map((r) => `<div class="wa-panel" data-oa-panel="${esc(r.id)}"><h3 class="ws-h3">${chip('Reform', r.id, { href: PATHS.Reform(r.id) })} “${esc(r.title)}”</h3>`
     + `<p class="wa-small">${esc(r.band_words || '')}</p>`
     + `<p class="lab">${esc(P.effects_heading)}</p><p class="wa-small" data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>${effect_rows(r, F)}`
-    + `<p class="lab">${esc(P.routes_heading)}</p>${route_rows(r, A, I)}</div>`).join('');
+    + `<p class="wa-small wa-conf" data-effects-confidence="${esc(r.id)}">${fill_html(conf_t, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`
+    + `<p class="lab">${esc(P.routes_heading)}</p>${route_rows(r, A, I)}${qual(r)}</div>`).join('');
   const chooser = `<div class="ws-g wa-choose" data-oa-part="chooser"><fieldset class="oa-choice"><legend class="oa-choice-legend">${esc(P.chooser_legend)}</legend>`
     + `<div class="oa-choice-row oa-choice-row--list">${choices}</div></fieldset><div class="wa-panels">${panels_}</div></div>`;
   const sec2 = `<div class="ws-g wa-two">${read}${drawing}</div><div class="ws-g wa-two"><div></div>${stepper}</div>${chooser}`;
@@ -331,16 +390,19 @@ function view_reform({ pid, P, A, F, panels, spec }) {
     + `<h1 class="ws-h1 wa-t1" id="${pid}-h1">${esc(r.title)}</h1><p class="ws-intro wa-stored" data-atlas-field="summary">${stored(r.summary, I)}</p></div>${status}</div>`;
   // where it acts: the figure step's drawing of the targets, red, with the other reforms' ink tags (Rules 12.5, 21.5)
   const tv = v.targets.filter((t) => 'part' in t);
-  const tags = Object.entries(v.tags).filter(([, rs]) => rs.length).map(([t, rs]) => `<li class="wa-tag"><span class="ws-nb">${link_chip('Variable', t, I)}:</span> ${rs.map((x) => chip('Reform', x, { href: PATHS.Reform(x) })).join(' ')} ${esc(rs.length === 1 ? wd(P, 'aims_here_one', 'A12') : P.aims_here)}</li>`).join('');
+  // CE1 and CR-5: the target named, a colon held to its name, then each other reform named, joined by commas and "and"
+  const tkind = (t) => (I[t] && I[t].kinds.includes('Variable') ? 'Variable' : 'Connection');
+  const tags = Object.entries(v.tags).filter(([, rs]) => rs.length).map(([t, rs]) => `<li class="wa-tag"><span>${named(link_chip(tkind(t), t, I), tkind(t), t, I, ':')} `
+    + `${and_list(rs.map((x) => named(chip('Reform', x, { href: PATHS.Reform(x) }), 'Reform', x, I)))} ${esc(rs.length === 1 ? wd(P, 'aims_here_one', 'A12') : P.aims_here)}</span></li>`).join('');
   const targets_words = tv.map((t) => `${link_chip('Variable', t.id, I)} “${esc(t.title)}”`).join(' and ');
-  const note = `<div class="wa-note"><p class="wa-small">${fill_html(P.where_note, { reform: chip('Reform', r.id), targets: targets_words })}</p>`
-    + tv.map((t) => `<p class="wa-small">${link_chip('Variable', t.id, I)} <span class="wa-stored" data-atlas-field="increase_means">${stored(t.increase_means, I)}</span></p>`).join('')
+  const note = `<div class="wa-note"><p class="wa-small" id="${pid}-where">${fill_html(P.where_note, { reform: chip('Reform', r.id), targets: targets_words })}</p>`
+    + tv.map((t) => `<p class="wa-small">${fill_html(wd(P, 'means_line', 'A12'), { var: link_chip('Variable', t.id, I), means: `<span class="wa-stored" data-atlas-field="increase_means">${stored(t.increase_means, I)}</span>` })}</p>`).join('')
     + v.between.filter((c) => !r.targets.includes(c.id)).map((c) => `<p class="wa-small" data-atlas-kind="Connection" data-atlas-id="${esc(c.id)}">${fill_html(wd(P, 'conn_note', 'A12'), {
       conn: link_chip('Connection', c.id, I), name: `<span class="wa-stored" data-atlas-field="name">${esc(c.name)}</span>`, sign: esc(A.signs[c.sign]), delay: esc(A.delays[c.delay.key]),
       grade: `<span class="ws-nb">${c.grade.key === 'documented' ? F.record_square : ''}${esc(c.grade.word)}</span>` })}</p>`).join('')
-    + v.loops_named.filter((l) => !l.drawn).map((l) => `<p class="wa-small">${fill_html(P.touches, { loop: link_chip('Loop', l.id, I) })}</p>`).join('') + `</div>`;
+    + v.loops_named.filter((l) => !l.drawn).map((l) => `<p class="wa-small">${fill_html(P.touches, { loop: named(link_chip('Loop', l.id, I), 'Loop', l.id, I) })}</p>`).join('') + `</div>`;
   const where = `<div class="ws-g wa-where" data-oa-part="targets"><div class="wa-draw"><h2 class="ws-h3">${esc(P.where_heading)}</h2>`
-    + (v.figure ? `<figure class="wa-fig">${v.figure.svg}</figure>` : '') + (tags ? `<ul class="wa-tags">${tags}</ul>` : '') + `</div>${note}</div>`;
+    + (v.figure ? `<figure class="wa-fig" aria-labelledby="${pid}-where">${v.figure.svg}</figure>` : '') + (tags ? `<ul class="wa-tags">${tags}</ul>` : '') + `</div>${note}</div>`;
   // the two grades apart (Rule 15.12), the contested remedy's two readings side by side (H08), split where the content
   // file says (remedy_split, the sentence of the stored text that opens the second reading)
   // the data lead's R15: the stored text split at the start of the sentence remedy_split names, by the one splitter the
@@ -349,14 +411,17 @@ function view_reform({ pid, P, A, F, panels, spec }) {
   const k = (spec.remedy_split || 0) - 1;
   const readings = k > 0 && k < sents.length ? [sents.slice(0, k).join(' '), sents.slice(k).join(' ')] : [r.remedy.text];
   if (readings.some((x) => !x)) throw new Error('remedy_split leaves a reading empty (the specs, section 9)');
+  // RP1 (the data lead's R23): Rule 01.16's matching labels over the two readings, outside the blocks that hold the stored text
+  const RL = readings.length === 2 ? [wd(P, 'reading_one', 'A12'), wd(P, 'reading_other', 'A12')] : [];
   const src_of = v.sources.map((s) => s.id);
   const rhead = (lbl, g, id) => `<div class="wa-gh" id="${id}"><p class="lab">${esc(lbl)}</p><p class="wa-gw">${esc(g.word)}</p><p class="wa-small">${esc(g.gloss)}</p></div>`;
   const reading_src = (i) => (src_of[i + 1] ? ` <a class="wa-srcl" href="#${pid}-source-${low(src_of[i + 1])}">${esc(P.source_link)}</a>` : '');
   const grades = `<div class="ws-g wa-grade">${rhead(P.problem, r.problem.grade, `${pid}-problem`)}<div class="wa-rd">${quote(stored(r.problem.text, I), 'problem')}</div></div>`
     + `<div class="ws-g wa-grade wa-remedy">${rhead(P.remedy, r.remedy.grade, `${pid}-remedy`)}`
-    + readings.map((x, i) => `<div class="wa-rd" data-reading="${i + 1}" data-split="${esc(spec.remedy_split || '')}" data-atlas-reform="${esc(r.id)}">${quote(stored(x, I) + reading_src(i), 'remedy')}</div>`).join('') + `</div>`;
+    + readings.map((x, i) => `<div class="wa-rd">${readings.length === 2 ? `<p class="lab wa-rl" data-reading-label="${i + 1}">${esc(RL[i])}</p>` : ''}`
+      + `<div class="wa-rdq" data-reading="${i + 1}" data-split="${esc(spec.remedy_split || '')}" data-atlas-reform="${esc(r.id)}">${quote(stored(x, I) + reading_src(i), 'remedy')}</div></div>`).join('') + `</div>`;
   const effects_lede = `<p data-status-date="${esc(r.status.checked)}" data-atlas-reform="${esc(r.id)}">${esc(fill(A.as_of, { date: r.status.checked_words }))}</p>`
-    + `<p>${esc(fill(P.effects_confidence, { text: r.effects_confidence }))}</p>`;
+    + `<p data-effects-confidence="${esc(r.id)}">${fill_html(P.effects_confidence, { text: `<span class="wa-stored">${stored(r.effects_confidence, I)}</span>` })}</p>`;
   const effects = effect_rows(r, F);
   const routes = route_rows(r, A, I);
   const routes_lede = `<p>${esc(P.complements_heading)}: ` + v.complements.map((c) => `${link_chip('Reform', c.id, I)} “${esc(c.title)}”`).join('; ') + `</p>`;
@@ -403,16 +468,19 @@ function view_register({ pid, P, A, F, panels, spec }) {
   // specs 14.6 (C8.1): from 64em the h1 and intro sit in a head band on Charcoal joined to the title bar, as How to read's
   const index = `<div class="wa-rband"><div class="ws-g wa-head"><div class="wa-op"><h1 class="ws-h1 wa-t1" id="${pid}-h1">${esc(wd(P, 'h1', 'A13'))}</h1><p class="ws-intro">${esc(wd(P, 'intro', 'A13'))}</p></div></div></div>`
     + `<div class="ws-g"><div class="wa-col12 wa-tablewrap" data-oa-part="index">${key}`
-    + table(`wa-index${panels.includes('Index') ? ' wa-headon' : ''}`, head, rows + whole) + `<p class="wa-cap">${fill_html(wd(P, 'whole_note', 'A13'), { retired: esc(nword(W_.retired)) })}</p></div></div>`;
+    + table(`wa-index${panels.includes('Index') ? ' wa-headon' : ''}`, head, rows + whole) + `<p class="wa-cap">${fill_html(wd(P, 'whole_note', 'A13'), { retired: count(W_.retired, 'atlas:issues-retired', esc(nword(W_.retired))),
+      numbered: count(W_.loops, 'atlas:loops-numbered', String(W_.loops)), loops: count(W_.loops_all, 'atlas:loops', String(W_.loops_all)),
+      conceptual: count(W_.loops_conceptual, 'atlas:loops-conceptual', esc(nword(W_.loops_conceptual))) })}</p></div></div>`;
   // the open sheet: its band, its variables, its connections, one line each with its own address (Rule 21.9)
   const band = `<div class="wa-band${panels.includes('Sheet') ? ' oa-surface-charcoal ws-panel' : ''}"><h2 class="ws-h2 wa-bh" id="${pid}-s2">${S.domain ? link_chip('Domain', S.id, I) + ' ' : ''}${esc(S.title)}</h2>`
     + (S.question ? `<p class="lab">${esc(wd(P, 'sheet_question_label', 'A13'))}</p><p class="ws-intro wa-stored" data-atlas-field="everyday_question">${esc(S.question)}</p>` : '') + `</div>`;
+  // CE8 and R22: each variable's chip, its stored name in quotation marks and what a higher value means, in the editor's line
   const vars = `<h3 class="ws-h3">${esc(wd(P, 'variables_heading', 'A13'))}</h3><ul class="wa-vars">` + S.variables.map((x) => `<li id="${pid === 'site' ? '' : pid + '-'}variable-${low(x.id)}" data-atlas-kind="Variable" data-atlas-id="${esc(x.id)}">`
-    + `${chip('Variable', x.id)} <b>${esc(x.title)}</b><span class="wa-small wa-stored" data-atlas-field="increase_means">${stored(x.increase_means, I)}</span></li>`).join('') + `</ul>`;
+    + `<p class="wa-vl">${fill_html(wd(P, 'variable_line', 'A13'), { var: chip('Variable', x.id), name: `<b>${curly(x.title)}</b>`, means: `<span class="wa-stored" data-atlas-field="increase_means">${stored(x.increase_means, I)}</span>` })}</p></li>`).join('') + `</ul>`;
   const ch = P.conn_head || [];
   const chead = [0, 1, 2, 3, 4, 5, 6].map((i) => th(esc(wd(ch, i, 'A13.conn_head')))).join('');
   const crow = (c) => `<tr class="oa-table-row" role="row" id="${pid === 'site' ? '' : pid + '-'}register-${low(c.id)}" data-oa-part="row${low(c.id)}" data-atlas-kind="Connection" data-atlas-id="${esc(c.id)}" data-sign="${esc(c.sign)}" data-type="${esc(c.type)}" data-delay="${esc(c.delay.key)}" data-grade="${esc(c.grade.key)}">`
-    + `<th class="oa-table-th wa-rh" role="rowheader" scope="row">${chip('Connection', c.id, { href: `#${pid === 'site' ? '' : pid + '-'}register-${low(c.id)}`, evidence: true })}</th>`
+    + `<th class="oa-table-th wa-rh" role="rowheader" scope="row">${chip('Connection', c.id, { href: `#${pid === 'site' ? '' : pid + '-'}register-${low(c.id)}`, evidence: true, describe: true })}</th>`
     + td(`${link_chip('Variable', c.from, I)} ${esc(c.from_title)} <span class="wa-to">${esc(wd(P, 'to', 'A13'))}</span> ${link_chip('Variable', c.to, I)} ${esc(c.to_title)}`, ch[1])
     + td(`${F.sign_samples[c.sign] || ''} ${esc(A.signs[c.sign])}`, ch[2])
     + td(esc(A.types ? A.types[c.type] || c.type : c.type), ch[3])
@@ -425,7 +493,7 @@ function view_register({ pid, P, A, F, panels, spec }) {
   // what the atlas set aside: the rejected option under its stored title (DD-11C-1) and the reviewed connections (Rule 21.10)
   const rej = S.rejected.map((r) => {
     const label = /^Rejected option/.test(r.title) ? '' : `<p class="lab">${esc(wd(P, 'rejected_heading', 'A13'))}</p>`;
-    const tg = (r.targets || []).map((t) => (I[t] && I[t].kinds.includes('Variable') ? link_chip('Variable', t, I) : link_chip('Connection', t, I)));
+    const tg = (r.targets || []).map((t) => { const k = I[t] && I[t].kinds.includes('Variable') ? 'Variable' : 'Connection'; return named(link_chip(k, t, I), k, t, I); });
     const tl = tg.length < 2 ? tg.join('') : tg.slice(0, -1).join(', ') + ' and ' + tg[tg.length - 1];
     return `<div class="wa-rej" data-oa-part="rejected">${label}<h3 class="ws-h3">${link_chip('Reform', r.id, I)} ${esc(r.title)}</h3>`
       + (tg.length ? `<p class="wa-small">${fill_html(wd(P, 'rejected_targets', 'A13'), { targets: tl })}</p>` : '')
@@ -468,7 +536,7 @@ function view_loop_index({ pid, P, A, F, panels }) {
   // R18: the display word capitalized at the field's start and after a semicolon, lowercase elsewhere
   const grade_html = (g) => esc(g).replace(new RegExp(`(?<![\\w-])(${GKEYS.map((k) => k.replace(/[-_]/g, (c) => '\\' + c)).join('|')})(?![\\w-])`, 'g'),
     (m, k, at, all) => { const w = A.grades[m] || m; return at === 0 || /;\s*$/.test(all.slice(0, at)) ? esc(w) : esc(w.toLowerCase()); })
-    .replace(/\b([A-Z]{1,2}\d+[a-z]?)\b/g, (m) => (I[m] && I[m].kinds.includes('Variable') ? link_chip('Variable', m, I) : m));
+    .replace(/\b([A-Z]{1,2}\d+[a-z]?)\b/g, (m) => (I[m] && I[m].kinds.includes('Variable') ? link_chip('Variable', m, I, { describe: true }) : m));
   const group = (gr, i) => {
     const word = gr.type === 'R' ? wd(P, 'reinforcing', 'A15') : wd(P, 'balancing', 'A15');
     const rows = gr.loops.map((l) => `<tr class="oa-table-row" role="row"><th class="oa-table-th wa-rh" role="rowheader" scope="row">${link_chip('Loop', l.id, I)}</th>`
@@ -492,13 +560,13 @@ function view_how_to_read({ pid, P, A, F }) {
   const rows = P.rows || [];
   const cell = (k) => ({ sign_up: M.sign_up, sign_down: M.sign_down, authority: M.authority, record_square: M.record_square, hollow: M.hollow, red: M.red,
     ticks_S: M.ticks.S, ticks_M: M.ticks.M, ticks_L: M.ticks.L, ...Object.fromEntries(GRADES.map((g) => [`grade_${g}`, M.grades[g] + (g === 'documented' ? M.record_square : '')])),
-    chip: chip('Loop', 'R18'), chip_link: chip('Loop', 'R18', { href: PATHS.Loop('R18') }) }[k] || '');
+    chip: chip('Loop', 'R18', { describe: true }), chip_link: chip('Loop', 'R18', { href: PATHS.Loop('R18'), describe: true }) }[k] || '');
   const G = P.groups || {}, MK = P.marks || {};
   const LAYOUT = { signs: ['raises', 'lowers', 'type', 'authority'], grades: [...GRADES, 'record_square'], delay: ['S', 'M', 'L'], loops: ['hollow', 'red', 'tag', 'weakest'], every: ['chip', 'pressed'] };
   const CELL = { raises: 'sign_up', lowers: 'sign_down', S: 'ticks_S', M: 'ticks_M', L: 'ticks_L', ...Object.fromEntries(GRADES.map((g) => [g, `grade_${g}`])) };
   const nm_of = (k) => (MK[k] || [k])[0];
   const extra_cells = { type: M.grades['well-supported'], weakest: `<span class="wa-mkc">${M.grades.plausible}<span class="wa-mkw">${esc(nm_of('weakest').toLowerCase())}</span></span>`,
-    tag: `${chip('Reform', 'R-48')}`, pressed: `<span class="oa-toggle wa-q wa-qs wa-qon" aria-hidden="true">${CHECK()}<span class="oa-toggle-label">${esc(nm_of('pressed'))}</span></span>`,
+    tag: `${chip('Reform', 'R-48', { describe: true })}`, pressed: `<span class="oa-toggle wa-q wa-qs wa-qon" aria-hidden="true">${CHECK()}<span class="oa-toggle-label">${esc(nm_of('pressed'))}</span></span>`,
     documented: M.grades.documented };
   const sign_note = F.view.sign_note ? `<p class="wa-small wa-stored" data-atlas-field="glossary">${esc(F.view.sign_note)}</p>` : '';
   const groups = Object.entries(LAYOUT).map(([gk, keys], i) => `<div class="ws-g"><h2 class="ws-h2" id="${pid}-m${i}">${esc(wd(G, gk, 'A16.groups'))}</h2></div>` + (`<div class="ws-g"><ul class="wa-marks wa-col12">`
@@ -511,11 +579,11 @@ function view_how_to_read({ pid, P, A, F }) {
 // ---------------------------------------------------------------------------------------------------------------- home
 function home_box(p_, v, P, A, lit_on, open) {
   const [name, question] = (A.parts && A.parts[p_.id]) || [p_.id, null];
-  const lit = v.lit.length ? (v.lit.includes(p_.id) ? 'true' : 'false') : null;
   // the pill's rows as chapter 15's rows_of sets them at its 148 px measure and 18 px leading, so the words clear the
   // pill's rounded ends as chapter 15's pills do (the data lead's request 31; ED-F9)
-  const pills = open ? `<ul class="wa-pills">` + p_.variables.map((x) => `<li class="wa-pill" data-atlas-kind="Variable" data-atlas-id="${esc(x)}" style="min-height:${v.pills[x].h}px"><span>${(v.pills[x].rows || [v.pills[x].title]).map(esc).join('<br>')}</span></li>`).join('') + `</ul>` : '';
-  return `<p class="nm">${esc(name)}</p>` + (question ? `<p class="q">${esc(question)}</p>` : '') + `<p class="mt wa-stored" data-atlas-field="title">${esc(p_.title)}</p>`
+  const pills = open ? `<ul class="wa-pills" aria-label="${esc(fill(wd(P, 'variables_list', 'A11'), { part: name }))}">` + p_.variables.map((x) => `<li class="wa-pill" data-atlas-kind="Variable" data-atlas-id="${esc(x)}" style="min-height:${v.pills[x].h}px"><span>${(v.pills[x].rows || [v.pills[x].title]).map(esc).join('<br>')}</span></li>`).join('') + `</ul>` : '';
+  const mt = P.part_title ? fill_html(P.part_title, { title: `<span class="wa-stored" data-atlas-field="title">${curly(p_.title)}</span>` }) : `<span class="wa-stored" data-atlas-field="title">${curly(p_.title)}</span>`;
+  return `<p class="nm">${esc(name)}</p>` + (question ? `<p class="q">${esc(question)}</p>` : '') + `<p class="mt">${mt}</p>`
     // the lit line in every box, shown where the pressed question lights it, so a question pressed on the working page
     // names its parts in words as the drawn state does, and each box's height is measured with it (requests 4, 27)
     + `<p class="lt">${esc(wd(P, 'lit', 'A11'))}</p>` + pills
@@ -525,7 +593,10 @@ function home_box(p_, v, P, A, lit_on, open) {
 }
 function view_home({ pid, P, A, F, panels, spec, frame }) {
   const v = F.view, I = F.ids;
-  const lit_of = (id) => (v.lit.length ? ` data-lit="${v.lit.includes(id)}"` : '');
+  // R19 (CD-M2): the working page loads with no question pressed and every part at full strength; the content file's
+  // pressed question is the plates' state (frames)
+  const lit_now = frame ? v.lit : [];
+  const lit_of = (id) => (lit_now.length ? ` data-lit="${lit_now.includes(id)}"` : '');
   const intro = fill_html(wd(P, 'intro', 'A11'), {
     variables: count(F.counts.variables, 'atlas:variables', String(F.counts.variables)), connections: count(F.counts.connections, 'atlas:connections', String(F.counts.connections)),
     loops: count(F.counts.loops, 'atlas:loops', String(F.counts.loops)), reforms: count(F.counts.reforms, 'atlas:reforms', String(F.counts.reforms)),
@@ -556,30 +627,42 @@ function view_home({ pid, P, A, F, panels, spec, frame }) {
     + `<div class="wa-wide">${v.every_variable ? draw(v.drawing_open, true) : draw(v.drawing, false) + draw(v.drawing_open, true)}</div>`
     + `<ol class="wa-plist">${cards}</ol>${key}</div></div>`;
   // the questions under their hubs (Rule 21.3): toggles, one pressed at a time, the parts each lights in data-parts
-  const pressed = v.pressed;
+  const pressed = frame ? v.pressed : null;
+  const aid = (q) => `${pid}-answer-${low(q)}`;
   const say_parts = (q) => { const ps_ = q.parts.map(names); return ps_.length < 2 ? ps_.join('') : ps_.slice(0, -1).join(', ') + ' and ' + ps_[ps_.length - 1]; };
   const hubs = `<div class="wa-hubs" data-oa-part="questions">` + v.hubs.map((h) => `<div class="wa-hub"><p class="lab">${esc(h.title)}</p><div class="wa-qs" role="group" aria-label="${esc(h.title)}">`
-    + h.questions.map((q) => `<button type="button" class="oa-toggle wa-q" aria-pressed="${q.id === pressed}" data-pathway="${esc(q.id)}" data-parts="${esc(q.parts.join(' '))}"`
+    + h.questions.map((q) => `<button type="button" class="oa-toggle wa-q" aria-pressed="${q.id === pressed}" aria-controls="${aid(q.id)}" data-pathway="${esc(q.id)}" data-parts="${esc(q.parts.join(' '))}"`
       + ` data-say="${esc(fill(wd(P, 'status', 'A11'), { parts: say_parts(q) }))}">${tcheck}<span class="oa-toggle-label wa-stored" data-atlas-field="question">${esc(q.question)}</span></button>`).join('')
     + `</div></div>`).join('') + `</div>`;
   const pq = v.hubs.flatMap((h) => h.questions).find((q) => q.id === pressed);
   const status = `<p class="wa-small wa-status" role="status">${frame && pq ? esc(fill(wd(P, 'status', 'A11'), { parts: say_parts(pq) })) : ''}</p>`;
-  let answer = '';
-  if (v.answer) {
-    let txt = esc(v.answer.text).replace(/'/g, '’');
-    const discs = [];
-    for (const f of v.answer.figures) {
-      const id = `${pid}-claim-${low(f.claim)}`;
-      txt = txt.replace(esc(f.text), `${esc(f.text)} <a class="oa-chip oa-chip--link wa-claim" href="#${id}" data-atlas-kind="Claim" data-atlas-id="${esc(f.claim)}" data-evidence-href="#${id}">Claim <span class="oa-chip-id">${esc(f.claim)}</span></a>`);
-      const r = f.record;
-      discs.push(`<details class="oa-disclosure wa-cl" id="${id}"${v.claim_open ? ' open' : ''}><summary class="oa-disclosure-summary"><span class="oa-disclosure-label">${chip('Claim', f.claim)} ${esc(wd(P, 'claim_summary', 'A11'))}</span>${CHEV()}</summary>`
-        + `<div class="oa-disclosure-body"><p class="wa-small wa-stored" data-atlas-field="claim">${esc(r.claim)}</p><dl class="wa-dl">`
-        + [['grade', `<b>${esc(r.grade.word)}</b>, ${esc(r.grade.gloss)}`], ['population', esc(r.population)], ['jurisdiction', esc(r.jurisdiction)], ['period', esc(r.period)], ['limitation', esc(r.limitation)],
-          ['sources', r.sources.map((s_) => esc([s_.publisher, s_.title, s_.year].filter(Boolean).join(', '))).join('; ')]]
-          .map(([k, val]) => `<div><dt>${esc(wd(P.claim_labels || {}, k, 'A11.claim_labels'))}</dt><dd>${val}</dd></div>`).join('') + `</dl></div></details>`);
-    }
-    answer = `<div class="wa-answer" data-oa-part="answer"><p class="lab">${esc(wd(P, 'answer_label', 'A11'))}</p><p class="ws-p wa-stored" data-atlas-field="short_answer">${txt}</p>${discs.join('')}</div>`;
-  }
+  // R19 and R20: each question's own stored answer under a heading that names it, hidden until its question is pressed,
+  // its claim chips one a claim a sentence at the sentence's end, each claim's record in a disclosure under its answer;
+  // a frame draws the pressed question's answer alone (it shows no other)
+  const curl = (t) => esc(t).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’');
+  const region = (a) => {
+    const q = v.hubs.flatMap((h) => h.questions).find((x) => x.id === a.id);
+    const head = P.answer_heading ? fill_html(P.answer_heading, { question: curl(a.question) })
+      : `<span class="lab">${esc(wd(P, 'answer_label', 'A11'))}</span><span class="vh">: </span><span class="wa-aq">${curl(a.question)}</span>`;
+    if (!a.sentences.length) return `<div class="wa-answer" id="${aid(a.id)}" data-pathway-answer="${esc(a.id)}"${a.id === pressed ? '' : ' hidden'}><h3 class="wa-ah">${head}</h3><p class="ws-p">${esc(wd(P, 'answer_none', 'A11'))}</p></div>`;
+    const txt = a.sentences.map((x) => {
+      let t = curl(x.text);
+      if (!x.claims.length) return t;
+      const chips = x.claims.map((c) => { const id = `${pid}-claim-${low(c)}`; return `<a class="oa-chip oa-chip--link wa-claim" href="#${id}" data-atlas-kind="Claim" data-atlas-id="${esc(c)}" data-evidence-href="#${id}">Claim <span class="oa-chip-id">${esc(c)}</span></a>`; }).join(' ');
+      const m = t.match(/([.!?][”’)]*)$/);
+      return m ? `${t.slice(0, t.length - m[1].length)} ${chips}${m[1]}` : `${t} ${chips}`;
+    }).join(' ');
+    const discs = a.claims.map(({ claim, record: r }) => { const id = `${pid}-claim-${low(claim)}`;
+      return `<details class="oa-disclosure wa-cl" id="${id}"${v.claim_open && a.id === pressed ? ' open' : ''}><summary class="oa-disclosure-summary"><span class="oa-disclosure-label">${chip('Claim', claim)} ${esc(wd(P, 'claim_summary', 'A11'))}</span>${CHEV()}</summary>`
+        + `<div class="oa-disclosure-body"><p class="wa-small wa-stored" data-atlas-field="claim">${curl(r.claim)}</p><dl class="wa-dl">`
+        + [['grade', `<b>${esc(r.grade.word)}</b>, ${esc(r.grade.gloss)}`], ['population', curl(r.population)], ['jurisdiction', curl(r.jurisdiction)], ['period', curl(r.period)], ['limitation', curl(r.limitation)],
+          ['sources', r.sources.map((s_) => curl([s_.publisher, s_.title, s_.year].filter(Boolean).join(', '))).join('; ')]]
+          .map(([k, val]) => `<div><dt>${esc(wd(P.claim_labels || {}, k, 'A11.claim_labels'))}</dt><dd>${val}</dd></div>`).join('') + `</dl></div></details>`; }).join('');
+    return `<div class="wa-answer" id="${aid(a.id)}" data-pathway-answer="${esc(a.id)}"${a.id === pressed ? '' : ' hidden'}><h3 class="wa-ah">${head}</h3>`
+      + `<p class="ws-p wa-stored" data-atlas-field="short_answer">${txt}</p>${discs}</div>`;
+  };
+  const shown = frame ? (v.answers || []).filter((a) => a.id === pressed) : (v.answers || []);
+  const answer = shown.length ? `<div class="wa-answers" data-oa-part="answer">${shown.map(region).join('')}</div>` : '';
   return `<section class="wa-sec" data-oa-section="System" aria-labelledby="${pid}-h1">${band}${drawing}</section>`
     + bsec('Questions', `${pid}-s2`, wd(P, 'questions_heading', 'A11'), `<p>${esc(wd(P, 'questions_lede', 'A11'))}</p>`, `<div class="ws-g"><div class="wa-col12">${hubs}${status}</div><div class="wa-col8">${answer}</div></div>`);
 }
@@ -588,6 +671,13 @@ function view_home({ pid, P, A, F, panels, spec, frame }) {
 // them on press (Rule 21.3); the switch that opens every box (Rule 21.2); a claim's chip opening its record (Rule 21.7)
 export const atlas_js = () => `(function () {
   document.querySelectorAll('.ws.wa').forEach(function (page) {
+    // AX-8: the controls work from here; the views list closes behind its button
+    page.setAttribute('data-wa-live', '');
+    page.querySelectorAll('.wa-views-btn').forEach(function (b) {
+      var l = document.getElementById(b.getAttribute('aria-controls'));
+      if (l && b.getAttribute('aria-expanded') !== 'true') l.hidden = true;
+      b.hidden = false;
+    });
     var qs = page.querySelectorAll('.wa-q');
     var status = page.querySelector('.wa-status');
     qs.forEach(function (q) {
@@ -601,6 +691,7 @@ export const atlas_js = () => `(function () {
           if (on) b.setAttribute('data-lit', String(parts.indexOf(b.getAttribute('data-part')) >= 0)); else b.removeAttribute('data-lit');
         });
         if (status) status.textContent = on ? q.getAttribute('data-say') : '';
+        page.querySelectorAll('[data-pathway-answer]').forEach(function (a) { a.hidden = !(on && a.id === q.getAttribute('aria-controls')); });
       });
     });
     var sw = page.querySelector('.wa-switch');
@@ -629,6 +720,11 @@ ${W} .wa-sub{${type_css('caption')};color:var(--oa-color-text-secondary)}
 ${under(BP.tablet, `${W} .wa-sub .s1{display:none}`)}
 ${W} .wa-views{list-style:none;margin:0;padding:0}
 ${W} .wa-views-btn{margin-left:auto}
+${W} .wa-views-btn[hidden]{display:none}
+/* AX-8: with scripts off the stepper's buttons, the questions and the switch do nothing, so they wait for the script; the
+   step list stays, and every answer shows under its question */
+.ws.wa:not([data-wa-live]) :is(.oa-stepper-controls,.oa-stepper-why,.oa-stepper-status,.wa-hubs,.wa-hs,.wa-status){display:none}
+.ws.wa:not([data-wa-live]) .wa-answer[hidden]{display:block}
 ${W} .wa-views-btn .oa-disclosure-chevron{transition:transform var(--oa-motion-duration-standard)}
 ${W} .wa-views-btn[aria-expanded="true"] .oa-disclosure-chevron{transform:rotate(180deg)}
 @media (prefers-reduced-motion: reduce){${W} .wa-views-btn .oa-disclosure-chevron{transition:none}}
@@ -666,7 +762,7 @@ ${W} .wa-facts dd{margin:0}
 ${W} .wa-ticks line,.wa-sym.wa-ticks line{stroke:var(--oa-color-graphic-essential);stroke-width:2px}
 ${W} .wa-q{margin:0;padding-left:24px;border-left:2px solid var(--oa-color-border-strong)}
 ${W} .wa-q+.ws-h3{margin-top:32px !important}
-${W} .wa-fig{margin:0}
+${W} .wa-fig,${W} .wa-fig figure{margin:0}
 ${W} .wa-fig .sv{display:block;max-width:100%;height:auto}
 ${W} .wa-draw,${W} .wa-read,${W} .wa-note{min-width:0}
 ${W} .wa-two{row-gap:24px;margin-top:0}
@@ -685,6 +781,7 @@ ${[1, 2, 3, 4, 5].map((k) => `${W} .wa-choose:has(.oa-choice-item:nth-child(${k}
 @media print{${W} .wa-panels .wa-panel{display:block}}
 ${W} .wa-panels{padding-top:16px;border-top:2px solid var(--oa-color-border-strong)}
 ${W} .wa-panel .lab{margin-top:24px !important}
+${W} .wa-conf{margin-top:8px !important}${W} .wa-qual{margin-top:24px}
 ${W} .wa-ef,${W} .wa-rt{list-style:none;margin:0;padding:0;${type_css('body-small')}}
 ${W} .wa-ef li,${W} .wa-rt li{display:flex;flex-wrap:wrap;align-items:center;column-gap:12px;min-height:var(--oa-size-target-touch);padding:8px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
 ${W} .wa-ef .f{flex:0 0 12em;font-weight:var(--oa-font-weight-semibold)}
@@ -770,8 +867,8 @@ ${W} .wa-band{padding:24px;margin-top:80px}
 ${at(BP.tablet, `${W} .wa-band{padding:32px}`)}
 ${W} .wa-band .ws-h2.wa-bh{margin:0 0 16px !important}
 ${W} .wa-vars{list-style:none;margin:16px 0 32px;padding:0}
-${W} .wa-vars li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
-${W} .wa-vars .wa-small{flex:0 0 100%}
+${W} .wa-vars li{padding:12px 0;border-bottom:1px solid var(--oa-color-border-hairline)}
+${W} .wa-vl{margin:0;${type_css('body-small')}}
 ${W} .wa-col8in{max-width:866.7px;margin-top:32px}
 ${W} .wa-tagm .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}
 ${W} .wa-tagm,${W} .wa-tickm{display:inline-block;vertical-align:middle}
@@ -867,6 +964,8 @@ ${W} button.wa-q[aria-pressed="true"]{padding:7px 11px;font-weight:var(--oa-font
 ${W} .wa-qon .oa-toggle-check{display:block}
 ${W} .wa-status{margin-top:16px !important;min-height:1lh}
 ${W} .wa-answer{margin-top:32px;padding-top:16px;border-top:2px solid var(--oa-color-border-strong)}
+${W} .wa-answer[hidden]{display:none}
+${W} .wa-ah{margin:0;${type_css('h4')}}${W} .wa-ah .lab{display:block}
 ${W} .wa-answer>*+*{margin-top:12px !important}
 ${fig_css}
 `;
@@ -900,22 +999,32 @@ export async function render(spec) {
     const own = record_page ? chip(kind, spec.record, { href: PATHS[kind](spec.record), current: true, cls: 'wa-cur' })
       : `<a href="${esc(view_href)}" aria-current="page">${esc(pw.current_view)}</a>`;
     const loc = F.locator.length && ['loop', 'reform', 'register'].includes(spec.view) ? locator({ A, filled: F.locator, href: theme_for ? `#${pid}-main` : '/atlas' }) : '';
-    const main = fn({ pid, P: pw.page, A, F, panels, spec, width, frame: !!theme_for });
+    NAMES = { pid, used: new Map() };
+    NAME_IDX.I = F.ids;
+    let main = fn({ pid, P: pw.page, A, F, panels, spec, width, frame: !!theme_for });
+    // the stored names the page's described chips point to (CE1, R22 item 3), once a page, hidden
+    if (NAMES.used.size) main += `<div hidden data-atlas-names>${[...NAMES.used].map(([k, nm]) => `<span id="${k}">${curly(nm)}</span>`).join('')}</div>`;
+    NAMES = null;
+    main = typo(main);
     const inner = `<a class="ws-skip" href="#${pid}-main">${esc(site.skip)}</a>${head}`
-      + title_bar({ pid, A, M, current: pw.current_view, cur_val: record_page ? 'true' : 'page', open })
+      + title_bar({ pid, A, M, current: pw.current_view, cur_val: record_page ? 'true' : 'page', open, frame: !!theme_for })
       + (pw.crumbs ? breadcrumb({ A, crumbs: pw.crumbs, own, loc }) : '')
       + `<main id="${pid}-main" class="ws-main" tabindex="-1">${main}</main>`
       + footer(site).replace(/\{pid\}/g, pid);
     const style = vh ? ` style="--ws-vh:${vh}px"` : '';
-    return `<div class="ws wa" id="${pid}"${theme_for ? ` data-oa-theme="${theme}"` : ''}${style} data-oa-application="${esc(spec.id)}"`
+    // AX-8: data-wa-live marks a page whose controls work (the atlas's script sets it; a frame draws the scripted state)
+    return `<div class="ws wa" id="${pid}"${theme_for ? ` data-oa-theme="${theme}" data-wa-live` : ''}${style} data-oa-application="${esc(spec.id)}"`
       + ` data-atlas-view="${esc(spec.view)}"${spec.record ? ` data-atlas-record="${esc(spec.record)}"` : ''}${spec.chosen_reform ? ` data-atlas-chosen="${esc(spec.chosen_reform)}"` : ''} data-atlas-model="${esc(M.sha256)}"><div class="ws-in">${inner}</div></div>`;
   };
   const comp = ['id-chip', 'disclosure', 'loop-stepper', 'choice', 'toggle', 'filter-bar', 'table'].map((c) => component_css(c)).join('\n');
-  const syms = [...UTILITY_SPRITE, 'oa-sym-u-chevron-24px', 'oa-sym-u-play-24px', 'oa-sym-u-pause-24px', 'oa-sym-u-reset-24px', 'oa-sym-u-arrow-24px'];
+  // CR-21: the page's sprite holds every symbol its markup draws (the Register's filter icon was missing), read from a
+  // drawing of the page itself, besides the ones the scripts swap in (pause)
+  const used = [...new Set([...body({ pid: 'probe', theme: 'light' }).matchAll(/href="#(oa-sym-[\w-]+)"/g)].map((m) => m[1]))];
+  const syms = [...UTILITY_SPRITE, 'oa-sym-u-chevron-24px', 'oa-sym-u-play-24px', 'oa-sym-u-pause-24px', 'oa-sym-u-reset-24px', 'oa-sym-u-arrow-24px', ...used];
   const js = (n) => fs.readFileSync(path.join(CODE, `c-18-${n}.js`), 'utf8');
   const own_css = comp + '\n' + atlas_css(F.figure_css);
   return {
-    id: spec.id, type, page: spec.view, part: 'page', title: fill(pw.title, { title: F.record_title || '' }), words_from: AWd.__from,
+    id: spec.id, type, page: spec.view, part: 'page', title: fill(pw.title, { title: F.record_title || '' }).replace(/(^|[\s(“—])'/g, '$1‘').replace(/'/g, '’'), words_from: AWd.__from,
     // the working page's style: the website's, then chapter 18's components and the atlas's own rules
     css: site_css() + '\n' + masthead_css() + '\n' + switch_css() + '\n' + own_css,
     // in the guide the website's style is already in the head (plates/web-site.css); the atlas plate carries its own
@@ -926,6 +1035,15 @@ export async function render(spec) {
     // contract C4 and C9: the plate's words are chapter 21's entry for this page and chapter 20's site words
     words_records: [{ generator: GEN, id: wid }, { generator: SITE_GEN, id: 'A06:site' }],
     atlas: { model: M.sha256, view: spec.view, record: spec.record || null },
+    // a frame's name (AL-18): the editor's own words for a view where the page words give them (AX-7, frame_alts keyed
+    // "<ID> <view key>"), else the application's words and the view's width and theme (DF5: "in the light theme")
+    view_alt: (key) => {
+      const own = (pw.frame_alts || {})[`${spec.id} ${key}`];
+      if (own) return own;
+      const [w, t, ...rest] = String(key).split('-');
+      const kind = rest[0] === 'open' ? ', the menu open' : rest[0] === 'screen' ? ', its first screen' : '';
+      return `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'in the light theme' : 'in the dark theme'}${kind}.`;
+    },
     plate: { head: spec.plate_head, line: spec.plate_line },
   };
 }

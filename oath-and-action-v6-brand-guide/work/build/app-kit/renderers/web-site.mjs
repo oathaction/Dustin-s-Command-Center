@@ -9,9 +9,10 @@
 // switch and their scripts are read from their files (site-parts.mjs); the chart kit draws S10, S66 and S86 by its own code
 // (web-page.mjs chart_figure), and a frame keeps only the drawing its width shows (R4); icons come from the guide's sprite.
 //
-// Content keys (layout only; words come from the generator): id, type "web-site", page, part ("page", "masthead" or
-// "footer"), guide, widths [{w, vh, platform}], views [C4 keys: "1440-light", "390-light-screen", "390-light-open"],
-// export_name, charts {id: [desk, phone]}, plate_head, plate_line.
+// Content keys (layout; words come from the generator unless words_file names a file): id, type "web-site", page, part
+// ("page", "masthead" or "footer"), guide, widths [{w, vh, platform}], views [C4 keys: "1440-light", "390-light-screen",
+// "390-light-open"], export_name, export_date (YYYYMMDD, PR-S2), words_file (PR-M2: a file holding the generator's entry
+// shape for this page, with "site" or without it), charts {id: [desk, phone]}, plate_head, plate_line.
 import fs from 'fs';
 import path from 'path';
 import { spawnSync } from 'child_process';
@@ -297,7 +298,7 @@ ${at(BP.desktop, `.ws-art .ws-head{grid-template-rows:auto auto auto auto 1fr}
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:2/10}
  .ws-act .ws-fig{grid-column:2/10}
- .ws-act .ws-cpanel{grid-column:2/12}`)}
+ .ws-act .ws-cpanel{grid-column:2/10}`)}
 ${at(BP.wide, `.ws-art .ws-prow-w,.ws-art .ws-kick-w,.ws-art .ws-h1-w{grid-column:3/11}
  .ws-art .ws-lead{grid-column:3/9}
  .ws-art .ws-body{grid-column:3/8}
@@ -307,7 +308,8 @@ ${at(BP.wide, `.ws-art .ws-prow-w,.ws-art .ws-kick-w,.ws-art .ws-h1-w{grid-colum
  .ws-act .ws-doc{grid-column:1/13}
  .ws-act .ws-sum{grid-column:3/9}
  .ws-act .ws-fig{grid-column:3/9}
- .ws-act .ws-cpanel{grid-column:3/11}`)}
+ .ws-act .ws-cpanel{grid-column:3/9}`)}
+/* CR-15 (chat 12): the Act page's ask panel takes the chart's edge, cols 3 to 8 from 90em (2 to 9 from 64em) */
 ${under(BP.desktop, '.ws-art .ws-count{margin-top:32px}.ws-art .ws-count+.ws-lead2{margin-top:32px}.ws-act .ws-status{margin-top:24px}')}
 .ws-lead>*+*{margin-top:32px !important}
 .ws-body>*{max-width:var(--oa-layout-measure-body-ideal)}
@@ -668,8 +670,23 @@ function columns(spec, w) {
   return { figure: w - 2 * m, atlas: w - 2 * m };
 }
 
+// PR-M2, the web half (chat 12): a page's words may come from its own content file. "words_file" names a JSON file (from
+// the project folder, or absolute) holding the entry the generator prints for a page: the page's own words, and "site" for
+// the masthead and footer. Without "site" the page takes the studio site's words from the generator; without "words_file"
+// every word comes from the generator, as for the studio's own pages (DD-3).
+function own_words(spec) {
+  if (!spec.words_file) return null;
+  const f = path.isAbsolute(spec.words_file) ? spec.words_file : path.join(ROOT, spec.words_file);
+  if (!fs.existsSync(f)) throw new Error(`${spec.id}: its words file ${spec.words_file} is not there (PR-M2)`);
+  const e = JSON.parse(fs.readFileSync(f, 'utf8'));   // read through fs, so the file is one of the plate's inputs (C4)
+  return { e, from: spec.words_file };
+}
+
 export async function render(spec) {
-  const W = words();
+  const own = own_words(spec);
+  const W = own && own.e.site ? { [spec.id]: own.e, __from: own.from }
+    : own ? (() => { const G = words(); return { [spec.id]: { ...own.e, site: (G.A07 || G[Object.keys(G).find((k) => G[k] && G[k].site)]).site }, __from: own.from }; })()
+    : words();
   const page = spec.page;
   const pw = page_words(W, spec.id, page);
   const site = pw.site;

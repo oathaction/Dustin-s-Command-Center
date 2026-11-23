@@ -6,8 +6,8 @@
   "opener": "s-21-home",
   "instruction": "Apply the system to the atlas, with typed IDs and evidence a step from every claim.",
   "intro": [
-    "Our systems atlas, Who Do They Answer To?, lives inside our website, under the site’s masthead, with a title bar of its own. Its home page draws the whole system and starts from a question a reader brings. Each proposed change the atlas weighs, a reform, has a page, and so does each loop, a chain of causes that returns to where it started. The Register files every one of the atlas’s 118 connections, the arrows from one variable to another, once and with its evidence. An index lists the loops, and a page called How to read explains every mark.",
-    "Chapter 15 sets how each mechanism is drawn, and these pages use its rules as they stand. This chapter covers what a page adds around the drawing. A page names every ID in a typed chip, the label that gives the kind of record with its code, and links every claim to the record that grades it. Before a page ships, the atlas test checks each value it prints against the atlas’s own data."
+    "Our systems atlas, Who Do They Answer To?, lives inside our website, under the site’s masthead, with a title bar of its own. Its home page draws the whole system and starts from a question a reader brings. Each proposed change the atlas weighs, a reform, has a page, and so does each loop, a chain of causes that returns to where it started. The Register files every one of the atlas’s 118 connections once, with its evidence. A connection is an arrow from one variable, a quantity or condition that can rise or fall, to another. An index lists the loops, and a page called How to read explains every mark. The plates follow four views chosen in turn across subjects, as chapter 01 rotates examples (Rules 01.9 to 01.12): a question about medical bills, Reform R-23 on the minimum wage, the Register’s sheet on Congress and the agencies, and Loop R18 on presidential power over watchdogs, each with a finding from the record that one side of a debate may want to skip.",
+    "Chapter 15 sets how each mechanism is drawn, and these pages use its rules as they stand. This chapter covers what a page adds around the drawing. A page names every ID in a typed chip, the label that gives the kind of record with its code, and links every claim to the record that grades its evidence, on Rule 13.3’s scale from documented to hypothesis. Before a page ships, the atlas test checks each value it prints against the atlas’s own data."
   ],
   "groups": [
     {
@@ -26,7 +26,7 @@
       "before_rule": "21.8",
       "number": 3,
       "title": "The Register",
-      "line": "The Register files each connection once, on one sheet, with its sign, grade and source, and keeps what the atlas rejected in view."
+      "line": "The Register files each connection once, with its sign, grade and source, on the sheet for one of the atlas’s subject areas, and keeps what the atlas rejected in view."
     },
     {
       "before_rule": "21.12",
@@ -133,10 +133,10 @@
     },
     {
       "id": "21.2",
-      "title": "Open the atlas home on the whole system, with a count on every flow.",
+      "title": "Open the atlas home on the whole system, with a count on every arrow.",
       "rule": [
         "Start the atlas’s home page with the whole system on the first screen. Each of its eight parts takes a box with its name, its question and the count of connections inside it. Where two parts connect, an arrow runs each way that connections run, with the count it carries.",
-        "Draw the main circuit, from Wealth through Voice, Elections, Checks and Policy and back to Wealth, in full ink with its counts in bold, and the other flows in a lighter ink, every arrow at one width. A switch, Show every variable, opens each box in place to list its variables and closes them again, so the page draws the system once."
+        "Draw the main circuit, from Wealth through Voice, Elections, Checks and Policy and back to Wealth, in the essential ink with its counts in bold, and the other arrows in the subtle ink, every arrow at one width. A switch, Show every variable, opens each box in place to list its variables and closes them again, so the page draws the system once."
       ],
       "tokens": [
         "oa.color.graphic.essential.onNewsprint",
@@ -162,7 +162,7 @@
       "specs": [
         {
           "label": "Parts",
-          "value": "Eight boxes in the order effects travel: Outside forces, Wealth, Voice, Elections, Checks, Policy, Your household and Technology, each with its plain name, its question and the model’s title beneath"
+          "value": "Eight boxes in the order effects travel: Outside forces, Wealth, Voice, Elections, Checks, Policy, Your household and Technology, each with its plain name, its question and, on a line labeled “In our atlas”, the atlas’s own title for the part"
         },
         {
           "label": "Boxes and pills",
@@ -174,15 +174,15 @@
         },
         {
           "label": "Ink",
-          "value": "The main circuit in the essential ink with its counts in bold; the other flows in the subtle ink; every count in the text’s ink; one width, 2 px; one arrow for each direction of a pair, never a double head"
+          "value": "The main circuit in the essential ink with its counts in bold; the other arrows in the subtle ink; every count in the text’s ink; one width, 2 px; one single-headed arrow for each direction of a pair"
         },
         {
           "label": "Switch",
-          "value": "A toggle button, Show every variable, with aria-pressed (Rule 18.2)"
+          "value": "A toggle button, Show every variable, with aria-pressed (Rule 18.2); pressed, it opens each part’s list of variables for every reader, in the boxes on wide screens, in the cards on phones and in the parts list a screen reader reads"
         },
         {
           "label": "At 390 px",
-          "value": "A stacked list of the eight parts, each with its counts and a “5 to Voice” line for each flow it sends, so each flow prints once"
+          "value": "A stacked list of the eight parts, each with its counts and one line for each part its connections reach, such as “5 to Voice”, so each count prints once"
         },
         {
           "label": "WCAG 2.2",
@@ -212,7 +212,7 @@
       "title": "Light the parts an everyday question reaches, and name them in words.",
       "rule": [
         "Offer the atlas’s everyday questions under the topics the atlas calls hubs, each question as a button. When a reader presses one, it takes the pressed look of Rule 17.10: a check before its words, bold words and a 2 px edge.",
-        "The parts that hold the question’s variables stay at full strength with the words This question reaches here, and the others turn muted (Rule 17.8). A status line names the reached parts in words, and the answer opens below, with each figure in it linked to its evidence."
+        "The parts that hold the question’s variables stay at full strength with the words “The question you pressed reaches here”, and the others turn muted (Rule 17.8). A status line names the reached parts in words, and the question’s own short answer opens below, headed by the question, with each figure in it linked to its evidence. The page loads with no question pressed and every part at full strength."
       ],
       "tokens": [
         "oa.color.border.strong.onNewsprint",
@@ -246,7 +246,7 @@
         },
         {
           "label": "Lit parts",
-          "value": "Each part that holds a variable the question’s own record names, at full strength with the words This question reaches here"
+          "value": "Each part that holds a variable the question’s own record names, at full strength with the words “The question you pressed reaches here”"
         },
         {
           "label": "The rest",
@@ -254,7 +254,11 @@
         },
         {
           "label": "Status line",
-          "value": "Names the reached parts in words after each press, never on load"
+          "value": "Names the reached parts in words after each press, and stays silent on load"
+        },
+        {
+          "label": "Answer",
+          "value": "The pressed question’s own short answer, headed by the question and tied to it by aria-controls; where its record stores none, words that say so; hidden while no question is pressed"
         },
         {
           "label": "Hubs",
@@ -319,7 +323,7 @@
         },
         {
           "label": "Contested remedy",
-          "value": "The record’s text whole, split at one sentence into its two readings: side by side from 64em and one after the other below, each with its source a step away (house rule H08)"
+          "value": "The record’s text whole, split at one sentence into its two readings under Rule 01.16’s matching labels, One reading and The other reading: side by side from 64em and one after the other below, each with its source a step away, printed as stored; house rule H08 governs our own sentences about the grade"
         },
         {
           "label": "Effects",
@@ -362,7 +366,7 @@
       "id": "21.5",
       "title": "Tag reforms that share a target in ink, and keep the red for this one.",
       "rule": [
-        "On a reform’s page, only that reform’s targets turn red. Where other reforms in our atlas aim at the same variable or connection, list them beside the drawing under that mark’s chip, each by its own chip, with the words also aim here, in the text’s ink. On a loop page, where a reader chooses one reform, the others that aim at the loop take the same tags."
+        "On a reform’s page, only that reform’s targets turn red. Where other reforms in our atlas aim at the same variable or connection, list them beside the drawing under that mark’s chip, each by its own chip and name, joined by commas and “and”, with the words also aim here, in the text’s ink. On a loop page, where a reader chooses one reform, the others that aim at the loop take the same tags."
       ],
       "tokens": [
         "oa.type.dataLabel",
@@ -386,7 +390,7 @@
       "specs": [
         {
           "label": "Tags",
-          "value": "A list beside the drawing, one group for each target or step, headed by its chip: the other reforms’ chips and “also aim here”, in the data label style and the text’s ink"
+          "value": "A list beside the drawing, one group for each target or step, headed by its chip: the other reforms’ chips, each with its name at its first mention on the page, and “also aim here”, in the data label style and the text’s ink"
         },
         {
           "label": "Long lists",
@@ -394,7 +398,7 @@
         },
         {
           "label": "Red",
-          "value": "The page’s own reform only (Rule 12.5); a tag never takes red, an outline or a fill"
+          "value": "The page’s own reform only (Rule 12.5); a tag stays in the text’s ink, with no outline or fill"
         },
         {
           "label": "WCAG 2.2",
@@ -421,7 +425,7 @@
       "id": "21.6",
       "title": "Name every record in its typed chip, and let the chip open its page.",
       "rule": [
-        "Every ID on an atlas page sits in its typed chip, the kind of record in words with its code, such as Loop R18 or Reform R-23. A chip that names a record with a page of its own links to that page, and a connection’s chip links to its line in the Register. The first time a page names a record, its name follows the chip."
+        "Every ID on an atlas page sits in its typed chip, the kind of record in words with its code, such as Loop R18 or Reform R-23. A chip that names a record with a page of its own links to that page, and a connection’s chip links to its line in the Register. The first time a page names a record, its name follows the chip, and for a rule change or a delivery case, the sentence the atlas stores for it. A claim has no name, so the sentence that holds its figure names it."
       ],
       "tokens": [
         "oa.type.dataLabel",
@@ -436,7 +440,7 @@
       },
       "correct": {
         "specimen": "s-21-chips",
-        "caption": "A chip for each of the ten kinds of record, plain and as a link, each a real record with its name, then the four pairs of codes our atlas repeats across kinds, on Newsprint and on Charcoal."
+        "caption": "A chip for each of the ten kinds of record, plain and as a link, each a real record followed by its name as the atlas stores it, all but the claim, which a figure’s own sentence names; then the four pairs of codes our atlas repeats across kinds, on Newsprint and on Charcoal."
       },
       "failure": {
         "specimen": "s-21-6-failure",
@@ -456,8 +460,12 @@
           "value": "To the record’s own page, or for a connection to its line in the Register, with the record’s name as the link’s description where the words around it do not name it"
         },
         {
+          "label": "First mention",
+          "value": "The record’s name as the atlas stores it, in quotation marks after the chip, set off by commas where the sentence runs on; a list of chips joined by commas and “and”, each with its name; later mentions on the page take the chip alone"
+        },
+        {
           "label": "Kind word",
-          "value": "From where the ID lives in the model, never from its letters"
+          "value": "From where the ID lives in the model, since the same letters name different kinds, as B4 does"
         },
         {
           "label": "Check",
@@ -478,7 +486,7 @@
         "18.24"
       ],
       "builders": [
-        "Take each chip’s kind word from where its ID lives in the model, never from its letters."
+        "Take each chip’s kind word from where its ID lives in the model, since the same letters name different kinds, as B4 does."
       ]
     },
     {
@@ -521,7 +529,7 @@
         },
         {
           "label": "One step",
-          "value": "One link or one disclosure, never a search"
+          "value": "One link or one disclosure, with no search between"
         },
         {
           "label": "Source lines",
@@ -553,7 +561,7 @@
       "id": "21.8",
       "title": "Index the Register by sheet, and count each grade under its word.",
       "rule": [
-        "Open the Register with one row for each of its sheets: one for each of the atlas’s domains, the subject areas it files records under, and one each for its economy and technology layers. Each row gives the sheet’s variables, connections, loops, reforms and issue records, then how many of its connections carry each grade. A last row counts the whole atlas, each loop and reform once."
+        "Open the Register with one row for each of its sheets: one for each of the atlas’s domains, the subject areas it files records under, and one each for its economy and technology layers. Each row gives the sheet’s variables, connections, numbered loops, reforms and issue records, then how many of its connections carry each grade. An issue record is one of the atlas’s files on a documented problem, case or policy. A last row counts the whole atlas, each loop and reform once."
       ],
       "tokens": [
         "oa.type.dataLabel",
@@ -587,7 +595,7 @@
         },
         {
           "label": "Grade columns",
-          "value": "Rule 13.3’s five words in its order, each head with its 40 px line sample (Rule 13.4); never a shade, width or bar"
+          "value": "Rule 13.3’s five words in its order, each head with its 40 px line sample (Rule 13.4), and no shade, width or bar"
         },
         {
           "label": "Issue records",
@@ -595,7 +603,7 @@
         },
         {
           "label": "Whole atlas",
-          "value": "Each loop and reform counted once, with a note under the table that says so"
+          "value": "Each loop and reform counted once, with a note under the table that says so and gives the loop index’s count beside the numbered loops"
         },
         {
           "label": "Table",
@@ -752,7 +760,7 @@
       "id": "21.11",
       "title": "Filter a sheet’s issue records by variable, and say how many show.",
       "rule": [
-        "Under each sheet’s connections, list its issue records with their grades. An issue record is one of the atlas’s files on a documented problem, case or policy. Let a reader narrow the list to the records that name one of the sheet’s variables, with one Filters button that says how many filters are on, and a line that says how many records show out of how many."
+        "Under each sheet’s connections, list its issue records with their grades. Let a reader narrow the list to the records that name one of the sheet’s variables, with one Filters button that says how many filters are on, and a line that says how many records show out of how many."
       ],
       "tokens": [
         "oa.size.target.touch",
@@ -780,7 +788,7 @@
         },
         {
           "label": "Count line",
-          "value": "A status line after each change, never on load: “[n] of [total] issue records.” (Rule 18.15)"
+          "value": "A status line after each change, silent on load: “[n] of [total] issue records.” (Rule 18.15)"
         },
         {
           "label": "Each record",
@@ -809,10 +817,10 @@
     },
     {
       "id": "21.12",
-      "title": "Head a loop page with its grade line and the arithmetic of its signs.",
+      "title": "Head a loop page with the grade of each step and the arithmetic of its signs.",
       "rule": [
         "Open a loop page with the loop’s chip, its kind and its title from our atlas in quotation marks. Under the title, give the grade of each step in the atlas’s words, and name the weakest step, whose grade the whole loop takes.",
-        "Then read the loop aloud, starting with a rise in its first variable and turning at each minus sign, and say beside it how the count of minus signs sets the kind: an even count makes a loop that feeds itself, and an odd count one that pushes back. Mark the weakest step on the drawing too, and say that the loop holds only as firmly as that step."
+        "Then read the loop aloud, starting with a rise in its first variable and turning at each minus sign, and say beside it how the count of minus signs sets the kind: an even count makes a reinforcing loop, one that feeds itself, and an odd count a balancing loop, one that pushes back. Mark the weakest step on the drawing too, and say that the loop holds only as firmly as that step."
       ],
       "tokens": [
         "oa.type.section",
@@ -837,7 +845,7 @@
       "specs": [
         {
           "label": "Head",
-          "value": "Chip, kind word and the title in quotation marks as the h1; under it the grade of each step, with chips; beside it the loop’s facts, the weakest step among them"
+          "value": "Chip, the loop’s kind (Reinforcing or Balancing) and the title in quotation marks as the h1; under it the grade of each step, by its connection’s chip and name; beside it the loop’s facts, the weakest step among them"
         },
         {
           "label": "Read aloud",
@@ -850,6 +858,10 @@
         {
           "label": "Closure and delay",
           "value": "In the atlas’s words (Rule 15.7), the delay as ticks and words"
+        },
+        {
+          "label": "Chosen reform",
+          "value": "Rule 15.20’s panel, with the atlas’s confidence in its effects quoted once under the four rows, as on a reform’s page, and its qualifications and assumptions in a disclosure under the panel"
         },
         {
           "label": "WCAG 2.2",
@@ -877,7 +889,7 @@
       "id": "21.13",
       "title": "Run the atlas’s stepper in the guide’s order and at the guide’s pace.",
       "rule": [
-        "Every loop page steps through its loop with the loop stepper of Rule 18.22, the buttons that walk a reader through a loop one step at a time: Play, Reset the loop, Previous step and Next step, in that order, on every screen. Play holds each step 250 ms for every word its status line reads, the step’s count included, and never less than six seconds, with reduced motion too. Nothing plays until a reader presses Play."
+        "Every loop page steps through its loop with the loop stepper of Rule 18.22, the buttons that walk a reader through a loop one step at a time: Play, Reset the loop, Previous step and Next step, in that order, on every screen. Play holds each step 250 ms for every word its status line reads, the step’s count included, and at least six seconds, with reduced motion too. Nothing plays until a reader presses Play."
       ],
       "tokens": [
         "oa.size.target.touch",
@@ -914,7 +926,7 @@
         },
         {
           "label": "Hold",
-          "value": "250 ms a word of everything the status line reads, the step’s count included, never under 6,000 ms, with reduced motion too; counted by script from the status lines"
+          "value": "250 ms a word of everything the status line reads, the step’s count included, and at least 6,000 ms, with reduced motion too; counted by script from the status lines"
         },
         {
           "label": "Code",
@@ -1046,11 +1058,11 @@
         },
         {
           "label": "Marks",
-          "value": "Essential in Newsprint; muted in Dim Newsprint, never Stone"
+          "value": "Essential in Newsprint; muted in Dim Newsprint"
         },
         {
           "label": "Selected bar",
-          "value": "Newsprint, never White"
+          "value": "Newsprint"
         },
         {
           "label": "Red target",
@@ -1062,7 +1074,7 @@
         },
         {
           "label": "Every color",
-          "value": "From a token, never a hex in the page’s code; checked on the frame’s pixels"
+          "value": "From a token named in the page’s code; checked on the frame’s pixels"
         },
         {
           "label": "Switch",
@@ -1127,7 +1139,7 @@
         },
         {
           "label": "Self-test",
-          "value": "One planted fault for each check in a copy of a page, never in the model; it passes only when each plant is caught by its own check and the clean pages stay quiet"
+          "value": "One planted fault for each check in a copy of a page, with the model untouched; it passes only when each plant is caught by its own check and the clean pages stay quiet"
         }
       ],
       "related": [
@@ -1202,6 +1214,6 @@
   "sources": [
     "Source: Oath & Action, Who Do They Answer To?, our systems atlas, snapshot of October 15, 2026, read from its data file at each build. Behind every value on the atlas’s pages.",
     "Source: W3C, “Web Content Accessibility Guidelines (WCAG) 2.2”, W3C Recommendation, December 12, 2024, retrieved November 21, 2026. Behind Rules 21.1, 21.3, 21.11 and 21.13.",
-    "Source: our studio’s earlier drawings of the atlas, October 21 and November 5, 2026, which these pages finish; cited as drawings and never as evidence (Rule 15.25)."
+    "Source: our studio’s earlier drawings of the atlas, October 21 and November 5, 2026, which these pages finish; they stand as drawings and support no claim (Rule 15.25)."
   ]
 }

@@ -44,6 +44,7 @@ The build never stops on content problems. It prints each one as a warning and w
 import argparse
 import base64
 import datetime
+import hashlib
 import html
 import io
 import json
@@ -3608,6 +3609,17 @@ def build(args):
         why = palette_spec_stale(specs.files.get(PALETTE_SPEC_ID))
         if why:
             R.warn(specs.used[PALETTE_SPEC_ID], why)
+    # PR-S5 (chat 12): a specimen a generator printed from the application kit's own outputs (a plate's figures, the exports
+    # manifest, the atlas test's report) names each file it read with its SHA-256 in its manifest entry ("kit_inputs"); a
+    # file that has changed since means the kit drew again after the generator ran, so the plate prints old figures
+    for sid in sorted(specs.used):
+        ki = (specs.manifest.get(sid) or {}).get("kit_inputs") or {}
+        for rel, want in sorted(ki.items()):
+            f = ROOT / rel
+            have = hashlib.sha256(f.read_bytes()).hexdigest() if f.is_file() else None
+            if have != want:
+                R.warn(specs.used[sid], f"{sid} printed {rel} as it was before the kit's last build "
+                                        f"({'missing now' if have is None else 'changed since'}); run its generator again (PR-S5)")
     for sid in specs.manifest:
         if sid not in specs.used and not sid.startswith("s-proofs-") and not sid.startswith("s-demo-"):
             R.warn(specs.origin.get(sid, "manifest"), f"specimen {sid} is listed but no chapter places it")

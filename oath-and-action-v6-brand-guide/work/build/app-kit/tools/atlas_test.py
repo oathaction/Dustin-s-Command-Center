@@ -101,6 +101,7 @@ def count_of(key, page):
             if k == "grade":
                 return sum(1 for x in L.values() if x["evidence"] == p[2])
             return {"variables": len(N), "connections": len(L), "loops": len(LO), "loops-numbered": sum(1 for k_ in LO if numbered(k_)),
+                    "loops-conceptual": sum(1 for x in LO.values() if x["closure"].startswith("conceptual")),
                     "loops-reinforcing": sum(1 for x in LO.values() if x["type"] == "R"), "loops-balancing": sum(1 for x in LO.values() if x["type"] == "B"),
                     "reforms": len(RF), "reforms-active": sum(1 for r in RF.values() if not r.get("rejected")), "issues": len(IS),
                     "issues-retired": sum(1 for x in IS.values() if x.get("retired")), "hubs": len(V["hubs"]), "pathways": len(V["pathways"])}[k]
@@ -267,7 +268,91 @@ def t1(pg):
         for m in ID_RE.finditer(tx):
             if m.group(1) in ALL_IDS and not re.search(r"(Variable|Connection|Loop|Reform|Issue|Claim|Domain)\s+" + re.escape(m.group(1)), tx):
                 faults.append(f"{m.group(1)}: a code in a drawing with no kind word before it")
+    # CE1 (the data lead's R22, item 6): the first chip of each record in main, in document order, is followed by the
+    # record's stored name, or sits in a row or heading whose text prints it, or takes it as its link's description
+    if pg.full:
+        for k, i, why in unnamed_first(pg):
+            n += 1
+            faults.append(f"{k} {i}: first named on the page with no name after its chip ({why}); Rule 21.6 and R22 ask its stored name")
     return faults, n
+
+
+def name_of(kind, i):
+    """R22's table: the stored name that follows a chip of each kind (Claim: none)."""
+    if kind == "Variable":
+        return (N.get(i) or {}).get("title")
+    if kind == "Connection":
+        return (L.get(i) or {}).get("name")
+    if kind == "Loop":
+        return (LO.get(i) or {}).get("title")
+    if kind == "Reform":
+        return (RF.get(i) or {}).get("title")
+    if kind == "Issue":
+        return (IS.get(i) or {}).get("title")
+    if kind == "Domain":
+        return next((d["title"] for d in V["domains"] if d["id"] == i), None)
+    if kind == "Route":
+        return next((r["name"] for r in V["routes"]["items"] if r["code"] == i), None)
+    if kind == "Rule change":
+        return next((r["rule"] for r in V["repairLog"]["rows"] if r["id"] == i), None)
+    if kind == "Delivery case":
+        return next((r["what_was_done"] for r in V["deliveryLog"]["rows"] if r["id"] == i), None)
+    return None
+
+
+def norm(s):
+    """Whitespace collapsed; quotation marks and apostrophes read as one straight form, for comparing names (R22)."""
+    s = re.sub(r"[‘’′]", "'", re.sub(r"[“”]", '"', str(s)))
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def unkind(s):
+    """Stored text compared with its page's words: a chip's kind word before an ID dropped on both sides (R11 sets each
+    bare ID in its typed chip, taking a kind word the stored text gives)."""
+    return re.sub(r"\b(variable|connection|loop|reform|issue|claim|domain)\s+(?=[A-Z]{1,3}-?\d)", "", norm(s), flags=re.I)
+
+
+def unnamed_first(pg):
+    """The first chip of each record in main that R22's item 6 finds unnamed: (kind, id, what follows it)."""
+    main = pg.root.select_one("main") if pg.root else None
+    if main is None:
+        return []
+    h1 = norm(text(pg.root.select_one("main h1") or ""))
+    seen, out = set(), []
+    for el in main.select(".oa-chip[data-atlas-kind]"):
+        k, i = el.get("data-atlas-kind"), el.get("data-atlas-id")
+        if (k, i) in seen or k == "Claim":
+            continue
+        seen.add((k, i))
+        nm = name_of(k, i)
+        if not nm:
+            continue
+        nm_ = norm(nm).strip('"')
+        # the page's own record, its name the page's h1
+        if i == pg.record and nm_ in h1:
+            continue
+        # its link's accessible description
+        d = el.get("aria-describedby")
+        if d and any(nm_ == norm(text(t)).strip('"') for t in pg.soup.select(f"#{d}")):
+            continue
+        # a frame is a picture and drops the page's hidden list of names; its working page carries them, read above
+        if d and pg.kind == "frame" and not pg.soup.select(f"#{d}"):
+            continue
+        # a row or heading whose own text prints the name
+        hold = el.find_parent(["tr", "li", "h1", "h2", "h3", "h4", "label", "summary"])
+        if hold is not None and nm_ in norm(text(hold)):
+            continue
+        # the name right after the chip, in the same run, past nothing but a space or a comma
+        after = ""
+        for sib in el.next_siblings:
+            after += text(sib) if isinstance(sib, Tag) else str(sib)
+            if len(after) > len(nm) + 8:
+                break
+        a = norm(after)
+        if re.match(r'^[\s,]*"?' + re.escape(nm_), a):
+            continue
+        out.append((k, i, repr(a[:30])))
+    return out
 
 
 def line_of(g):
@@ -490,6 +575,35 @@ def t7(pg):
                 faults.append(f"Reform {rid} {f}: code {r.get('data-effect-code')!r}, model {want!r}")
             if want and code_words(want) not in text(r):
                 faults.append(f"Reform {rid} {f}: the row does not print {code_words(want)!r} whole, with a true minus")
+    # ST-1 (the data lead's R21): the atlas's confidence in a reform's effects, quoted as stored, once a reform; on a loop
+    # page each panel's line after its fourth row and Rule 15.20's disclosure under it, closed on load, holding the remedy's
+    # evidence whole with its grade word and the stored tradeoffs whole
+    for rid in by:
+        if rid not in RF:
+            continue
+        r = RF[rid]
+        lines = pg.all(f'[data-effects-confidence="{rid}"]')
+        if len(lines) != 1 or unkind(r["effects_confidence"]) not in unkind(text(lines[0])):
+            faults.append(f"Reform {rid}: {len(lines)} confidence line(s); R12 and R21 ask one, quoting {r['effects_confidence']!r}")
+        if pg.view != "loop":
+            continue
+        panel = pg.root.select_one(f'[data-oa-panel="{rid}"]')
+        if panel is None:
+            continue
+        last = panel.select("[data-effect-family]")[-1:]
+        if lines and last and lines[0] not in [x for x in last[0].find_all_next() if isinstance(x, Tag)]:
+            faults.append(f"Reform {rid}: the confidence line does not follow the fourth effect row (R21)")
+        q = panel.select("details.wa-qual")
+        if len(q) != 1:
+            faults.append(f"Reform {rid}: {len(q)} disclosure(s) under the panel; Rule 15.20 asks one")
+            continue
+        qt = unkind(text(q[0]))
+        g = GRADE_WORD.get(r["remedy_evidence"]["grade"], "").lower()
+        if q[0].has_attr("open") and pg.kind == "export":
+            faults.append(f"Reform {rid}: its disclosure opens on load (Rule 15.20)")
+        for what, want in (("the remedy's evidence", r["remedy_evidence"]["text"]), ("its tradeoffs", r.get("tradeoffs") or ""), ("the remedy's grade", g)):
+            if unkind(want) not in qt:
+                faults.append(f"Reform {rid}: the disclosure does not hold {what} whole ({norm(want)[:40]!r}; R21)")
     for el in pg.all("[data-effect-family]"):
         if re.search(r"\b(total|average|score|sum)\b", text(el.parent), re.I):
             faults.append(f"Reform {el.get('data-atlas-reform')}: the effects carry a total, average or score (Rule 15.16)")
@@ -624,6 +738,11 @@ def t10(pg):
                 faults.append(f"Reform {rid}: the split falls elsewhere than sentence {k} of {len(sents)} by the shared splitter (R15)")
             if any(in_any(b, ["details", "[hidden]"]) for b in pair) or len({tuple(b.get("class") or []) for b in pair}) != 1:
                 faults.append(f"Reform {rid}: the two blocks do not stand alike, open and in one type (R15)")
+            # RP1 (R23): Rule 01.16's matching labels, one over each block, outside it, in order and in one type
+            labs = [b.find_previous_sibling(attrs={"data-reading-label": True}) for b in pair]
+            if any(x is None for x in labs) or [x.get("data-reading-label") for x in labs] != ["1", "2"] \
+                    or len({tuple(x.get("class") or []) for x in labs}) != 1 or any(not text(x) or "⟦" in text(x) for x in labs):
+                faults.append(f"Reform {rid}: the two readings do not carry matching labels over them, in order (Rule 01.16, R23)")
             rd = (pg.facts or {}).get("readings") or []
             if pg.key.endswith("1440-light") and len(rd) == 2 and rd[0]["top"] != rd[1]["top"]:
                 faults.append(f"Reform {rid}: at 1440 px the two blocks do not sit side by side, tops at {rd[0]['top']} and {rd[1]['top']} (R15)")
@@ -707,6 +826,43 @@ def t12(pg):
         lit = {b.get("data-part") for b in pg.all('[data-part][data-lit="true"]')}
         if pg.full and lit != want:
             faults.append(f"question {q.get('data-pathway')}: lit parts {sorted(lit)}, its variables sit in {sorted(want)}")
+    # R19 (CD-M2, AX-4): each question names its own answer region, which holds its own stored answer under a heading that
+    # names it; the working page loads with none pressed and no answer shown; a frame shows the pressed question's alone
+    if pg.view == "home" and qs:
+        if pg.kind == "export" and pressed:
+            faults.append(f"the working page loads with {pressed[0].get('data-pathway')} pressed; R19 asks none")
+        regions = pg.all("[data-pathway-answer]")
+        shown = [r for r in regions if not r.has_attr("hidden")]
+        want_shown = [q.get("data-pathway") for q in pressed]
+        if pg.full and [r.get("data-pathway-answer") for r in shown] != want_shown:
+            faults.append(f"answers shown {[r.get('data-pathway-answer') for r in shown]}, the pressed question asks {want_shown} (R19)")
+        for q in qs:
+            pid_ = q.get("data-pathway")
+            pw = next((x for x in V["pathways"] if x["id"] == pid_), None)
+            if not pw:
+                faults.append(f"question {pid_}: no pathway in the model")
+                continue
+            parts_ = set((q.get("data-parts") or "").split())
+            if parts_ != {part(v) for v in pw["model_refs"]["nodes"]}:
+                faults.append(f"question {pid_}: lights {sorted(parts_)}, its variables sit in {sorted({part(v) for v in pw['model_refs']['nodes']})} (R6)")
+            if pg.kind == "frame":
+                continue                     # a frame draws the pressed question's answer alone
+            tgt = pg.soup.find(id=q.get("aria-controls")) if q.get("aria-controls") else None
+            if tgt is None or tgt.get("data-pathway-answer") != pid_:
+                faults.append(f"question {pid_}: names no answer region of its own (aria-controls {q.get('aria-controls')!r}; R19)")
+                continue
+            body = copy.copy(tgt.select_one('[data-atlas-field="short_answer"]'))
+            got = ""
+            if body is not None:
+                body = BeautifulSoup(str(body), "lxml")
+                for c in body.select(".oa-chip"):
+                    c.decompose()
+                got = norm(text(body)).replace(" .", ".").replace(" ?", "?")
+            if got != norm(pw["short_answer"]):
+                faults.append(f"question {pid_}: its answer region reads {got[:50]!r}…, the stored answer {norm(pw['short_answer'])[:50]!r}… (R19)")
+            h = tgt.select_one("h3")
+            if h is None or norm(pw["question"]) not in norm(text(h)):
+                faults.append(f"question {pid_}: its answer's heading does not name the question (AX-4)")
     return faults, n
 
 
@@ -837,12 +993,27 @@ def t15(pg):
         heads = [text(h) for h in foot.select("h2")]
         if heads != [g[0] for g in sw["footer"]["groups"]]:
             faults.append(f"the footer's lists read {heads}, the website's {[g[0] for g in sw['footer']['groups']]} (3.2.6)")
+    # CR-21: on a working page every <use> draws a symbol the page holds
+    if pg.kind == "export":
+        ids = {e.get("id") for e in pg.soup.select("[id]")}
+        for u in pg.soup.select("use"):
+            h = u.get("href") or u.get("xlink:href") or ""
+            if h.startswith("#") and h[1:] not in ids:
+                faults.append(f"a <use> draws {h}, a symbol the page does not hold (CR-21)")
+                break
     if pg.full and len(pg.all("main h1")) != 1:
         faults.append(f"{len(pg.all('main h1'))} h1 in main, one asked (AL-10)")
     if pg.title is not None:
         p = pg.title.split(" | ")
         if len(p) != 3 or p[1] != V["meta"]["title"] or p[2] != "Oath & Action":
             faults.append(f"the page title {pg.title!r} is not '[view] | {V['meta']['title']} | Oath & Action' (AL-01)")
+        # PR-S9: a record's page names its own record first, its chip's words and its stored title
+        kind = {"loop": "Loop", "reform": "Reform"}.get(pg.view)
+        if kind and pg.record:
+            rec = (LO if kind == "Loop" else RF).get(pg.record, {})
+            want = norm(f"{kind} {pg.record}, {rec.get('title', '')}")
+            if norm(p[0]).replace('"', '') != want.replace('"', ''):
+                faults.append(f"the page title opens {p[0]!r}; the page's own record reads {want!r} (AL-01, 2.4.2; PR-S9)")
     return faults, n
 
 
@@ -995,8 +1166,18 @@ def _text(new):
     return f
 
 
+def _chips_only(el):
+    """A plant: the element keeps its chips alone, its names and words gone."""
+    chips = [copy.copy(c) for c in el.select(".oa-chip")]
+    el.clear()
+    for c in chips:
+        el.append(c)
+        el.append(NavigableString(" "))
+
+
 PLANTS = [
     # (check, view the plant needs, selector, change, what it plants)
+    ("T1", "reform", ".wa-tag", lambda el, q: _chips_only(el), "a chip whose record the page never names (CE1, R22)"),
     ("T1", "loop", '.oa-chip[data-atlas-kind="Connection"]', lambda el, q: (el.__setitem__("data-atlas-kind", "Variable"), el.contents.__setitem__(0, NavigableString("Variable "))), "a connection's chip under the kind Variable"),
     ("T2", "loop", '[data-atlas-kind="Connection"][data-atlas-id="L15"][data-grade]', _set(**{"data-grade": "documented"}), "Connection L15 printed as documented [Q09]"),
     ("T3", "loop", "[data-count]", lambda el, q: (el.__setitem__("data-count", str(int(el["data-count"]) + 1))), "a count one higher than the model's"),
@@ -1004,16 +1185,22 @@ PLANTS = [
     ("T5", "loop", 'svg [data-atlas-kind="Connection"]', _set(**{"data-type": "authority"}), "a loop's step drawn as authority with its sign"),
     ("T6", "loop", ".wa-tag .oa-chip", _set(**{"data-red": "working", "data-red-job": "where a reform acts"}), "another reform's tag in red"),
     ("T7", "loop", "[data-effect-family]", lambda el, q: el.__setitem__("data-effect-code", "+L"), "an effect code the record does not hold"),
+    ("T7", "loop", "[data-effects-confidence]", lambda el, q: el.decompose(), "a loop panel with no confidence line (ST-1, R21)"),
     ("T8", "loop", "[data-route]", lambda el, q: el.__setitem__("data-checked", RF[el["data-atlas-reform"]]["status"]["checked"]), "a route dated from its reform's status"),
     ("T9", "loop", "[data-evidence-href]", lambda el, q: (el.__setitem__("data-evidence-href", "/atlas/register/d01#register-l14"), el.__setitem__("href", "/atlas/register/d01#register-l14") if el.name == "a" else None), "a step's evidence linked to the wrong sheet"),
     ("T10", "loop", ".wa-gl", lambda el, q: el.append(NavigableString(" well-supported")), "a grade in its stored spelling"),
     ("T10", "reform", '[data-reading="2"] .ws-p', lambda el, q: el.append(NavigableString(" An added sentence.")), "a remedy block that no longer rejoins to the stored text"),
+    ("T10", "reform", '[data-reading-label="2"]', lambda el, q: el.decompose(), "the second reading with no label (RP1, R23)"),
     ("T11", "loop", ".oa-stepper-step", lambda el, q: el.__setitem__("data-oa-hold", "3200"), "a step held 3,200 ms (registers F-8, F-15)"),
     ("T11", "loop", "[data-oa-stepper]", _set(**{"data-oa-part": "stepper"}), "a part name on the stepper's root, which the script says before each step (AX-1)"),
     ("T12", "home", "[data-pathway][aria-pressed=\"true\"]", lambda el, q: [x.decompose() for x in el.select("svg")], "a pressed question with no check"),
+    ("T12", "home", '[data-pathway-answer="PW01"] [data-atlas-field="short_answer"] || [data-pathway-answer]:not([hidden])',
+     lambda el, q: el.__setitem__("data-pathway-answer", "PW01") if el.has_attr("data-pathway-answer") else setattr(el, "string", V["pathways"][5]["short_answer"]),
+     "a question's answer region holding another question's answer (R19, CD-M2)"),
     ("T13", "loop", "@style:-soup-contains('.ws ')", lambda el, q: el.append(NavigableString(".x{color:#ffffff}")), "a literal White in the page's style"),
     ("T14", "loop", "main", lambda el, q: setattr(q, "facts", {"words": [{"text": "small words", "size": 12, "color": "rgb(18, 18, 18)", "bg": "rgb(250, 247, 240)", "weight": "400"}]}), "words at 12 px"),
     ("T15", "loop", ".oa-masthead-part[aria-current]", lambda el, q: el.attrs.pop("aria-current"), "no current part in the site's masthead"),
+    ("T15", "reform", "main", lambda el, q: setattr(q, "title", "Reform R-01, " + RF["R-01"]["title"] + " | " + V["meta"]["title"] + " | Oath & Action"), "a reform page whose tab title names another record (PR-S9)"),
     ("T16", "loop", "main", lambda el, q: el.append(BeautifulSoup("<p>Who Do They Answer To? Times Explainer</p>", "lxml").p), "a newspaper's name"),
     # the data lead's batch 1, job 4: the gaps, one plant each
     ("T1", "register", "main", lambda el, q: setattr(q, "facts", {**(q.facts or {}), "width": 390, "rowheads": [{"text": "Connection L10", "shown": False}]}), "a row's head hidden on a phone (request 15)"),

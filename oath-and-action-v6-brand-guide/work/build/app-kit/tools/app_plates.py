@@ -191,6 +191,11 @@ def plate_css():
 # ("rect.pl.sh") 1200 by 630 px. Every selector of a kit style is now held to elements inside a frame's page by a
 # zero-specificity ":where(.oa-app-art *)" on its subject, so the cascade inside the frames is the same as before.
 ANCHOR = ":where(.oa-app-art *)"
+# The atlas pages' repeated drawings sit as symbols in a hidden sprite and are drawn by <use>; Chromium styles a <use>
+# copy inside its own shadow tree, where no ancestor outside the symbol is seen, so the atlas style's ".wa-sym" twin rules
+# reach them through the symbol's root group (lib.mjs atlas_symbolize writes <g class="… wa-sym">). The atlas style's
+# anchor lets those through; no guide element carries "wa-sym" (the guide check's kitReach test holds that).
+ANCHOR_ATLAS = ":where(.oa-app-art *,.wa-sym,.wa-sym *)"
 NEST = ("media", "container", "supports", "layer", "scope", "document")
 LEGACY_PE = (":before", ":after", ":first-line", ":first-letter")
 
@@ -290,7 +295,7 @@ def head_styles():
                    "\n.oa-app-title-k{font-weight:var(--oa-font-weight-bold);margin-right:8px}")
         else:
             p = STATE["dir"] / css_file
-            css = scope_css(p.read_text())[0] if p.exists() else ""   # PR-M1: held to the frames
+            css = scope_css(p.read_text(), ANCHOR_ATLAS if t == "atlas-page" else ANCHOR)[0] if p.exists() else ""   # PR-M1
         out.append(f'<style data-oa-app-kit="{html.escape(t)}">\n{css}\n</style>')
     return "\n".join(out)
 
@@ -422,7 +427,7 @@ def self_test():
         w = []
         expand('<div data-oa-app="A97"></div>', "s-21-x", w.append)
         check("the atlas test's self-test runs once on the plates, and a fixture with no atlas page fails it", any("self-test fails on the plates" in x for x in w))
-        check("an atlas plate puts the website's style in the head beside its own", ".ws:where(.oa-app-art *){display:block}" in hs2 and ".wa-tb:where(.oa-app-art *){display:block}" in hs2)
+        check("an atlas plate puts the website's style in the head beside its own", ".ws:where(.oa-app-art *){display:block}" in hs2 and ".wa-tb:where(.oa-app-art *,.wa-sym,.wa-sym *){display:block}" in hs2)
         # PR-M1 (chat 12): every kit rule in the head is held to the frames, at no added specificity, and @keyframes stay whole
         sc, n_ = scope_css('.sh{width:1200px}.sh p,.b::before{c:d}@media (min-width:48em){[data-oa-theme="dark"] .ws .x{e:f}}'
                            '@keyframes k{from{a:b}}.oa-disclosure-summary::-webkit-details-marker{display:none}')

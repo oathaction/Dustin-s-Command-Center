@@ -3,7 +3,7 @@
  "type": "web-site",
  "title": "What a special district does | Oath & Action",
  "css": "web-site.css",
- "written": "2026-11-23T00:04:20.390Z",
+ "written": "2026-11-23T18:05:45.931Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -57,11 +57,11 @@
  ],
  "inputs": {
   "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
-  "work/build/app-kit/oa-app.mjs": "3f5850971eeecc6a774b14cc84f05f3c3614f056bc3f92274c8bd8588583a5cd",
+  "work/build/app-kit/oa-app.mjs": "e272632f33b4bf5ce2527196f80d74bdd19b6963126e77e4fa73f72671bf30b6",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
-  "work/build/app-kit/renderers/web-site.mjs": "338f4f1a93503471f2a53be5a88e79bec18022580f0e8e77bf95fd15c706f030",
-  "work/build/app-kit/specs/a05-web-footer.json": "30b2ca46cbbe73007b476a63e6cf5a3223fa5e7fbb2891d0caf566f3c32d16db",
+  "work/build/app-kit/renderers/web-site.mjs": "6d7c1a7ad8a3cd26604a60dcec53f7eaea99905f94af107ce62e916a66e9ecc9",
+  "work/build/app-kit/specs/a05-web-footer.json": "e9367728732e55c0075ccf773cbe793cfb4df1331418bbc61d158763042d3d3e",
   "work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg": "f8a2aedcea4e135009cc75e50db6b55c5fc1246a77502d8ef6edca3072a0617d",
   "work/build/assets/identity/ampersand/20261109_Amp-B-14px-End-Mark-Fit-B.svg": "42d921bf1ec95c5e587afbb1dbc5338488a8028718e50e3bebeac537354eeccd",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",

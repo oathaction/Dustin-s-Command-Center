@@ -923,8 +923,10 @@ def ty(name):
     return ctx.ty(name)
 
 
+# CR-2 (chat 12): the paragraph reset sits at zero specificity, as chapter 15's BASE does, so a class's own margin
+# (.cap, .lab, .kick, .mt8 and the rest) wins over it
 BASE = (
-    f'.w{{{ty("body")};color:var(--oa-color-text-primary);max-width:100%}}.w p{{margin:0}}.w *{{box-sizing:border-box}}'
+    f'.w{{{ty("body")};color:var(--oa-color-text-primary);max-width:100%}}:where(.w) :where(p){{margin:0}}.w *{{box-sizing:border-box}}'
     f'.lab{{{ty("label")};margin:0 0 12px}}.sec{{color:var(--oa-color-text-secondary)}}'
     f'.sm{{{ty("bodySmall")}}}.cap{{{ty("caption")};color:var(--oa-color-text-secondary)}}'
     '.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}.mt32{margin-top:32px}'
@@ -1011,6 +1013,7 @@ AMP16 = 'work/build/assets/identity/ampersand/20261028_Amp-B-16px-Master.svg'
 AMP_DISPLAY = 'work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg'
 LOCK16 = 'work/build/assets/identity/lockmark/20261028_Lockmark-16px-Master.svg'
 LOCK48 = 'work/build/assets/identity/lockmark/20261109_Lockmark-48px-Master-Outline.svg'
+LOCK24 = 'work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg'   # the footer's (Rule 08.2)
 WM_DISPLAY = 'work/build/assets/identity/wordmark/20261028_Wordmark-Display-Master.svg'
 INK_NEWS = ('color:var(--oa-color-text-primary-on-newsprint);--amp:var(--oa-color-identity-signature-on-newsprint);'
             '--lever:var(--oa-color-identity-signature-on-newsprint);--link:var(--oa-color-palette-stone);'
@@ -1040,10 +1043,36 @@ FOOT_ROWS = [['1440-light'], ['1440-dark'], ['1024-light'], ['390-light', '360-l
 ROWS_CSS = '.rw2+.rw2{margin-top:32px}'
 
 
+# CR-22 (chat 12): the guide's plate stage gives a flowing plate 722 px at a 1440 px window (measured in the strict build,
+# chat 12), and the frames of one row share it at one scale (app_plates.py: each grows by its true width, 16 px apart, a
+# 1 px edge each side). The row's line says that scale, rounded to 5 percent, or true size, in the editor's words.
+STAGE_1440 = 722
+
+
+def row_scale(aid, keys):
+    f = KIT_PLATES / f'{aid.lower()}.json'
+    if not f.exists():
+        return None
+    by = {v['key']: v for v in json.loads(f.read_text()).get('views', [])}
+    if any(k not in by for k in keys):
+        return None
+    room = STAGE_1440 - 16 * (len(keys) - 1) - 2 * len(keys)
+    return min(1.0, room / sum(by[k]['w'] for k in keys))
+
+
+def scale_words(aid, keys):
+    sc = row_scale(aid, keys)
+    if sc is None or 'scale' not in VIEW_WORDS:
+        return ''
+    if sc >= 0.995:
+        return ', ' + VIEW_WORDS['true'] if 'true' in VIEW_WORDS else ''
+    return ', ' + VIEW_WORDS['scale'].format(pct=int(5 * round(sc * 100 / 5)))
+
+
 def rows(aid, layout):
-    """One placeholder a row, each under a line naming its views."""
-    return ''.join(f'<div class="rw2"><p class="lab sec">{" · ".join(VIEW_WORDS[v] for v in r)}</p>{app(aid, " ".join(r))}</div>'
-                   for r in layout)
+    """One placeholder a row, each under a line naming its views and, from the editor's words, its scale (CR-22)."""
+    return ''.join(f'<div class="rw2"><p class="lab sec">{" · ".join(VIEW_WORDS[v] for v in r)}{scale_words(aid, r)}</p>'
+                   f'{app(aid, " ".join(r))}</div>' for r in layout)
 
 
 # ------------------------------------------------------------------------------------------------ the plates
@@ -1125,28 +1154,40 @@ def s20_3_correct():
                 notes='Drawn by the application kit (A05): the footer at five views.')
 
 
-FAIL_FOOT = ('.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:24px}'
-             '.ft{padding:24px 20px 20px}.ft .g{margin-top:16px}'
-             f'.ft .gh{{{ty("label")};color:var(--oa-color-text-secondary-on-charcoal)}}'
-             f'.ft .ln{{{ty("bodySmall")};padding-top:6px}}.ft .ln.hit{{font-weight:var(--oa-font-weight-bold)}}')
+# CR-20, CD-S9 (chat 12): each footer is the footer as built at a phone's width (specs 10.1): a 2 px rule, the four
+# groups two by two on the page's ground, then the Charcoal strip with the lockmark, the tagline and the address, so the
+# two footers differ only in the help link's place and words
+FAIL_FOOT = ('.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:24px 32px;align-items:start}'
+             '.ft{border-top:2px solid var(--oa-color-border-strong)}'
+             '.gr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px;padding:24px 20px 0}'
+             f'.ft .gh{{{ty("label")};color:var(--oa-color-text-secondary);margin-bottom:8px}}'
+             f'.ft .ln{{{ty("bodySmall")};padding:4px 0}}.ft .ln.hit{{font-weight:var(--oa-font-weight-bold)}}'
+             '.strip{margin-top:32px;padding:24px 20px}'
+             f'.lr{{display:flex;align-items:center;gap:12px;{ty("bodySmall")}}}.lr .mk img{{display:block}}'
+             f'.ad{{margin-top:8px;{ty("caption")};display:flex;flex-wrap:wrap;align-items:center;gap:8px}}')
 
 
 def s20_3_failure():
     r = R['20.3']
     g = SITE['footer']['groups']
 
+    lock = master(LOCK24, 24, 24, INK_CHAR)
+
     def foot(groups):
-        return '<div class="ft dk">' + ''.join(
-            f'<div class="g"><p class="gh">{h}</p>' + ''.join(
+        return ('<div class="ft"><div class="gr">' + ''.join(
+            f'<div><p class="gh">{h}</p>' + ''.join(
                 f'<p class="ln{" hit" if w in ("Contact us", r["fail_other"]) else ""}">{w}</p>' for w, _ in links)
             + '</div>' for h, links in groups) + '</div>'
+            f'<div class="strip dk"><p class="lr">{lock}<span>{TAGLINE}</span></p>'
+            f'<p class="ad sec"><span>{ADDRESS}</span>{ILLUS}</p></div></div>')
     act = [g[0], g[1], [g[2][0], g[2][1] + [[r['fail_other'], '/contact']]]]
     html = (css(FAIL_FOOT) + '<div class="w"><div class="pair">'
             f'<div><p class="lab sec">{r["fail_pages"][0]}</p>{foot(g)}</div>'
             f'<div><p class="lab sec">{r["fail_pages"][1]}</p>{foot(act)}</div></div></div>')
     return spec('s-20-3-failure', html, '20.3', r['failure_alt'],
-                notes='A drawing of a fault: two footers whose help link moves and changes its words; the help links are '
-                      'set in bold here only so the fault can be found.')
+                notes='A drawing of a fault: two footers drawn as the footer is built at a phone’s width (lists on the '
+                      'page’s ground, the Charcoal strip under them), whose help link moves and changes its words; the help '
+                      'links are set in bold here only so the fault can be found.')
 
 
 # 20.4
@@ -1516,7 +1557,8 @@ def build_chapter():
             'specs': specs, 'related': rel, 'related_rules': rr, 'builders': r['builders'],
         })
     ch = {
-        'number': CH, 'anchor': 'web', 'title': W['title'], 'part': 'applications', 'opener': 's-20-opener',
+        'number': CH, 'anchor': 'web', 'title': W['title'], 'part': 'applications',
+        'opener': {'specimen': 's-20-opener', 'caption': W['opener_caption']},   # CR-20, CD-S9 (chat 12)
         'instruction': W['instruction'], 'intro': W['intro'],
         'groups': [{'before_rule': b, 'number': i, 'title': t, 'line': l} for i, (b, t, l) in enumerate(W['groups'], 1)],
         'rules': rules,
@@ -1569,7 +1611,7 @@ def main():
     B.check_chapter(ch)
     for w in waiting:
         print(f'  waiting: {w}')
-    used = {ch['opener']} | {x['specimen'] for x in ch['extras']}
+    used = {ch['opener']['specimen']} | {x['specimen'] for x in ch['extras']}
     for rr in ch['rules']:
         used |= {rr['correct']['specimen'], rr['failure']['specimen']}
     ours = set(ctx.specs)

@@ -858,12 +858,14 @@ def ty(name):
 
 
 V = ctx.v
+# CR-2 (chat 12): the paragraph reset sits at zero specificity, as chapter 15's BASE does, so a class's own margin
+# (.cap, .lab, .kick, .mt8 and the rest) wins over it
 BASE = (
-    f'.w{{{ty("body")};color:var(--oa-color-text-primary);max-width:100%}}.w p{{margin:0}}.w *{{box-sizing:border-box}}'
+    f'.w{{{ty("body")};color:var(--oa-color-text-primary);max-width:100%}}:where(.w) :where(p){{margin:0}}.w *{{box-sizing:border-box}}'
     '.row{display:flex;flex-wrap:wrap;gap:24px 32px;align-items:flex-start}'
     '.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:32px;align-items:start}'
     '.w576{max-width:576px}.w540{max-width:540px}.w480{max-width:480px}.w420{max-width:420px}.w360{max-width:360px}.w320{max-width:320px}.w280{max-width:280px}'
-    '.w270{max-width:270px}.w240{max-width:240px}.fig{width:100%}'
+    '.w336{max-width:336px}.w270{max-width:270px}.w240{max-width:240px}.fig{width:100%}'
     '.ph{display:block;width:100%;height:auto;filter:grayscale(1)}'
     '.c32{aspect-ratio:3/2;object-fit:cover;object-position:50% 50%}'
     '.c169{aspect-ratio:16/9;object-fit:cover;object-position:50% 20%}'
@@ -872,7 +874,7 @@ BASE = (
     f'.cap{{{ty("caption")};color:var(--oa-color-text-secondary);margin-top:12px;max-width:34rem;text-wrap:pretty}}'
     f'.lab{{{ty("label")}}}.sec{{color:var(--oa-color-text-secondary)}}'
     f'.sm{{{ty("bodySmall")}}}.num{{font-variant-numeric:tabular-nums}}'
-    '.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}'
+    '.mt8{margin-top:8px}.mt16{margin-top:16px}.mt19{margin-top:19px}.mt24{margin-top:24px}'
     # the placeholder frame (Rule 16.8): keyline, no fill, four corner crop marks 6 px off each corner
     '.plh{position:relative;margin:19px 0;border:1px solid var(--oa-color-border-strong);padding:24px;display:flex;'
     'flex-direction:column;justify-content:space-between;gap:16px}'
@@ -881,7 +883,7 @@ BASE = (
     '.cmh{width:12px;height:1px}.cmv{width:1px;height:12px}'
     '.tlh{top:-1px;left:-19px}.tlv{top:-19px;left:-1px}.trh{top:-1px;right:-19px}.trv{top:-19px;right:-1px}'
     '.blh{bottom:-1px;left:-19px}.blv{bottom:-19px;left:-1px}.brh{bottom:-1px;right:-19px}.brv{bottom:-19px;right:-1px}'
-    '.out{margin:0}'
+    '.out{margin:0}.blk{display:block}'
     # Charcoal panel and its tokens
     '.dk{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);padding:24px}'
     '.dk .plh{border-color:var(--oa-color-border-strong-on-charcoal)}.dk .cm{background:var(--oa-color-border-strong-on-charcoal)}'
@@ -1001,8 +1003,11 @@ def s16_1_correct():
     h = r['table_head']
     rows = ''.join(f'<tr><td class="k" data-k="{h[0]}">{s}</td><td data-k="{h[1]}">{wh}</td><td data-k="{h[2]}">{how}</td>'
                    f'<td data-k="{h[3]}">{st[k]}</td></tr>' for s, wh, how, k in r['rows'])
+    # CR-17 (chat 12): "To commission" in each cell and the placeholder sentence once under the table, once the editor
+    # writes R['16.1']['status_note']
+    note = f'<p class="sm sec mt16">{r["status_note"]}</p>' if r.get('status_note') else ''
     html = (css() + '<div class="w"><table class="tb"><thead><tr>' + ''.join(f'<th scope="col">{x}</th>' for x in h)
-            + f'</tr></thead><tbody>{rows}</tbody></table></div>')
+            + f'</tr></thead><tbody>{rows}</tbody></table>{note}</div>')
     return spec('s-16-1-correct', html, '16.1', r['correct_alt'],
                 notes='Live text. Rows 3 to 12 take their subjects from our fifth edition’s shot list (Phase 0 census, '
                       'photography entries 30 to 49), with a level and a region added; the How lines are the guide’s own direction.')
@@ -1021,8 +1026,10 @@ def s16_2_correct():
     inner = (f'<div><p class="lab">{r["plh_label"]}</p><p class="lab sec">{r["plh_kind"]}</p></div>'
              f'<p class="sm">{r["plh_shot"]}</p><p class="sm sec">{r["plh_note"]}</p>')
     html = (css() + '<div class="w"><div class="row">'
-            f'<div class="fig w360">{photo("rotunda-2005", W["alt_rotunda"], "ph", (60, 0, 1080, 720))}{cap(W["cap_rotunda"])}</div>'
-            f'<div class="fig w320"><div class="out">{plh("r32", inner, "tight")}</div></div>'
+            # CR-17 (chat 12): the placeholder takes the photograph's ratio and display size (Rule 16.8), 336 by 224 both,
+            # and the photograph drops 19 px so its top meets the keyline's, the crop marks standing above both
+            f'<div class="fig w336 mt19">{photo("rotunda-2005", W["alt_rotunda"], "ph", (60, 0, 1080, 720))}{cap(W["cap_rotunda"])}</div>'
+            f'<div class="fig w336"><div class="out">{plh("r32", inner, "tight")}</div></div>'
             '</div></div>')
     return spec('s-16-2-correct', html, '16.2', r['correct_alt'])
 
@@ -1136,7 +1143,9 @@ def s16_6_correct():
     html = (css(extra) + '<div class="w"><div class="fig w540"><div class="mkw">'
             f'{photo("lake-isabella-2014", W["alt_lake"], "ph c32")}'
             '<span class="mk on" style="left:36%;top:12%" aria-hidden="true">1</span>'
-            '<span class="mk on" style="left:66%;top:72%" aria-hidden="true">2</span></div>'
+            # CR-17 (chat 12): marker 2 sits on the resident's light hair, not her dark coat, where the Charcoal disc sank
+            # and left its rim alone, so both markers read as the key's filled disc
+            '<span class="mk on" style="left:64%;top:26%" aria-hidden="true">2</span></div>'
             f'{cap(W["cap_lake"])}</div><ol class="keys">{keys}</ol>'
             f'<p class="lab mt24">{r["record_head"]}</p><dl class="rec">{rec}</dl></div>')
     return spec('s-16-6-correct', html, '16.6', r['correct_alt'],
@@ -1175,7 +1184,10 @@ def s16_7_failure():
 
 
 # 16.8
-def plh_words(r, meta):
+def plh_words(r, meta, stack=False):
+    # CR-14 (chat 12): in a narrow frame the metadata's parts stack, one a line, so no middle dot ends a line
+    if stack:
+        meta = ''.join(f'<span class="blk">{x}</span>' for x in meta.split(' · '))
     return (f'<div><p class="lab">{r["label"]}</p><p class="lab sec">{r["kind"]}</p></div>'
             f'<p class="sm">{r["shot"]}</p><p class="lab sec">{meta}</p>')
 
@@ -1184,9 +1196,9 @@ def s16_8_correct():
     r = R['16.8']
     html = (css() + '<div class="w"><div class="row">'
             f'<div class="fig w540"><div class="out">{plh("r32", plh_words(r, r["meta"]))}</div>{cap(r["cap"])}</div>'
-            f'<div class="dk"><div class="fig w240"><div class="out">{plh("r45", plh_words(r, r["meta_45"]), "tight")}</div>'
+            f'<div class="dk"><div class="fig w240"><div class="out">{plh("r45", plh_words(r, r["meta_45"], stack=True), "tight")}</div>'
             f'<p class="cap sec">{r["cap"]}</p></div></div></div></div>')
-    return spec('s-16-8-correct', html, '16.8', r['correct_alt'])
+    return spec('s-16-8-correct', html, '16.8', r['correct_alt'], notes='The 4:5 frame stacks its metadata one part a line (CR-14).')
 
 
 def s16_8_failure():
@@ -1201,8 +1213,11 @@ def s16_8_failure():
 
 
 # 16.9
+# CR-17 (chat 12): the Charcoal tab carries a 1 px Stone edge (oa.color.border.hairline.onCharcoal), so it stays a tab
+# over a dark corner of a picture or on a dark ground
 TAB = (f'.tab{{position:absolute;top:0;left:0;padding:4px 8px;background:var(--oa-color-surface-charcoal);'
-       f'color:var(--oa-color-text-primary-on-charcoal);{ty("label")}}}.pt48{{padding-top:48px}}')
+       f'color:var(--oa-color-text-primary-on-charcoal);box-shadow:0 0 0 1px var(--oa-color-border-hairline-on-charcoal);'
+       f'{ty("label")}}}.pt48{{padding-top:48px}}')
 
 
 def s16_9_correct():
@@ -1268,7 +1283,7 @@ def frame(t, kind, label, said, r):
 def s16_10_correct():
     r = R['16.10']
     cells = ''.join(frame(t, k, lab, s, r) for t, k, lab, s in r['frames'])
-    html = css(VF) + f'<div class="w"><p class="mt8" style="margin-bottom:16px">{ILLUS}</p><div class="sb">{cells}</div></div>'
+    html = css(VF) + f'<div class="w"><p style="margin-bottom:16px">{ILLUS}</p><div class="sb">{cells}</div></div>'
     return spec('s-16-10-correct', html, '16.10', r['correct_alt'], illustrative=True,
                 notes='The video is not made, so the plate carries the Illustrative label at its head; every figure is '
                       'chart S04’s (work/build/chart-kit/specs/s04.json). The step frame holds the view’s one working red.')
@@ -1288,7 +1303,7 @@ CAPF = ('.v9{position:relative;width:270px;max-width:100%;aspect-ratio:9/16;bord
         '.safe .lab{color:var(--oa-color-text-secondary);text-transform:none;letter-spacing:0}'
         f'.cb{{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);padding:4px;white-space:nowrap;'
         f'{ty("dataLabel")};text-align:center}}'
-        f'.code{{margin:0;padding:16px;border:1px solid var(--oa-color-border-hairline);{ty("bodySmall")};white-space:pre;'
+        f'.code{{margin:8px 0 0;padding:16px;border:1px solid var(--oa-color-border-hairline);{ty("bodySmall")};white-space:pre;'
         'font-variant-numeric:tabular-nums;overflow-x:auto;max-width:100%}')
 
 
@@ -1342,6 +1357,8 @@ def s16_12_failure():
 
 CARD = (f'.vc{{max-width:540px}}.pst{{position:relative;aspect-ratio:16/9;background:var(--oa-color-surface-charcoal);'
         f'color:var(--oa-color-text-primary-on-charcoal);padding:24px;display:flex;align-items:flex-end}}'
+        # CR-17 (chat 12): on a Charcoal stage the poster keeps its edge, 1 px of oa.color.border.hairline.onCharcoal
+        ':where([class~="oa-surface-charcoal"]) .pst{box-shadow:0 0 0 1px var(--oa-color-border-hairline-on-charcoal)}'
         f'.pq{{{ty("h3")};max-width:22rem;text-wrap:balance}}'
         '.l8{position:absolute;top:24px;right:24px;line-height:0}'
         f'.vt{{{ty("h4")};margin-top:16px;text-wrap:balance}}'

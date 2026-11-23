@@ -45,6 +45,11 @@ def _audit(event, args):
 
 sys.addaudithook(_audit)
 sys.dont_write_bytecode = True
+# PR-S4: every module this step loads is read from its source, never from a cached .pyc, so the audit hook hears each
+# source file opened and a change to any of them stales the plates (a cache outside the project, empty for each run)
+import atexit, shutil, tempfile  # noqa: E401,E402
+sys.pycache_prefix = tempfile.mkdtemp(prefix="oa-atlas-pyc-")
+atexit.register(shutil.rmtree, sys.pycache_prefix, True)
 
 _C15 = None
 
@@ -228,12 +233,27 @@ def id_index():
     V = model()
     out = {}
     for i, ks in kinds_index().items():
-        out[i] = {"kinds": ks}
+        out[i] = {"kinds": ks, "names": {k: name_of(k, i) for k in ks if name_of(k, i)}}
         if i in V["nodes"]:
             out[i]["sheet"] = sheet(i)
         if i in V["links"]:
             out[i]["sheet"] = sheet(V["links"][i]["to"])
     return out
+
+
+def name_of(kind, i):
+    """The data lead's R22: the stored name that follows a chip of each kind, as stored (a claim takes none)."""
+    V = model()
+    f = {"Variable": lambda: V["nodes"][i]["title"], "Connection": lambda: V["links"][i]["name"], "Loop": lambda: V["loops"][i]["title"],
+         "Reform": lambda: V["reforms"][i]["title"], "Issue": lambda: V["issues"][i]["title"],
+         "Domain": lambda: next(d["title"] for d in V["domains"] if d["id"] == i),
+         "Route": lambda: next(r["name"] for r in V["routes"]["items"] if r["code"] == i),
+         "Rule change": lambda: next(r["rule"] for r in V["repairLog"]["rows"] if r["id"] == i),
+         "Delivery case": lambda: next(r["what_was_done"] for r in V["deliveryLog"]["rows"] if r["id"] == i)}.get(kind)
+    try:
+        return f() if f else None
+    except (KeyError, StopIteration):
+        return None
 
 
 def reform_rec(rid):
@@ -450,6 +470,13 @@ def view_loop(spec):
     gl = [{"grade": grade(m.group(1).replace(" ", "-")), "from": m.group(2), "to": m.group(3)}
           for m in re.finditer(r"([a-z][a-z_ -]*?) for ([A-Z]{1,3}\d+[a-z]?) to ([A-Z]{1,3}\d+[a-z]?)", lp["evidence"])]
     need(gl and all(x["from"] in V["nodes"] and x["to"] in V["nodes"] for x in gl), f"Loop {lid}'s grade text no longer reads 'grade for X to Y' (R11)")
+    # the data lead's R22, item 4: each "X to Y" span names the one connection among the loop's own that runs from X to Y,
+    # whose own grade gives the span's word; none, more than one, or another word stops the build
+    for x in gl:
+        cs = [k for k in lp["links"] if V["links"][k]["from"] == x["from"] and V["links"][k]["to"] == x["to"]]
+        need(len(cs) == 1, f"Loop {lid}'s grade span {x['from']} to {x['to']} maps to {len(cs)} of its connections (R22)")
+        need(grade(V["links"][cs[0]]["evidence"])["word"] == x["grade"]["word"], f"Loop {lid}'s span {x['from']} to {x['to']} reads {x['grade']['word']}, Connection {cs[0]} is {V['links'][cs[0]]['evidence']} (R22)")
+        x["conn"] = cs[0]
     return {"grade_line": gl, "loop": {"id": lid, "kind": fig["kind"], "type": lp["type"], "title": lp["title"], "summary": lp["summary"],
                      "case": lp["case"], "qualification": lp["qualification"], "adaptation": lp["adaptation"],
                      "closure": lp["closure"], "evidence": lp["evidence"], "evidence_summary": lp["evidence_summary"],
@@ -503,6 +530,7 @@ def view_register(spec):
                      "issues": len(d["issues"]) if d else None,
                      "grades": {g: sum(1 for k in ls if L[k]["evidence"] == g) for g in GRADE_ORDER}})
     whole = {"variables": len(N), "connections": len(L), "loops": len(num), "reforms": sum(1 for r in RF.values() if not r.get("rejected")),
+             "loops_all": len(V["loops"]), "loops_conceptual": sum(1 for x in V["loops"].values() if x["closure"].startswith("conceptual")),
              "issues": len(IS), "retired": sum(1 for x in IS.values() if x.get("retired")),
              "grades": {g: sum(1 for x in L.values() if x["evidence"] == g) for g in GRADE_ORDER}}
     sh = spec.get("open_sheet")
@@ -600,19 +628,10 @@ def view_home(spec):
                                                                 "parts": sorted({part(n) for n in x["model_refs"]["nodes"]}, key=PART_ORDER.index)}
                                                                for x in V["pathways"] if x["hub"] == h["id"]]}
             for h in V["hubs"]]
-    answer = None
-    if pw:
-        # R5: the figure in the stored answer and the claim among the pathway's claims whose text holds the same figure
-        # and year; none or more than one stops the build
-        figs = []
-        for m in re.finditer(r"(\d[\d,.]*%)( of [^.]*? in (\d{4}))?", pw["short_answer"]):
-            pct, yr = m.group(1), m.group(3)
-            hits = [c for c in pw["claim_ids"] if pct in V["claims"][c]["claim"] and (not yr or yr in V["claims"][c]["claim"])]
-            need(len(hits) == 1, f"the figure {pct} in {pw['id']}'s answer matches {len(hits)} claims (R5)")
-            c = V["claims"][hits[0]]
-            figs.append({"text": m.group(0), "claim": hits[0], "record": {**{k: c[k] for k in ("claim", "population", "jurisdiction", "period", "limitation")},
-                         "grade": grade(c["confidence"]), "sources": [{"id": s_, **{f: V["sources"][s_].get(f) for f in ("publisher", "title", "year", "url")}} for s_ in c["sources"]]}})
-        answer = {"text": pw["short_answer"], "figures": figs, "sources": len(pw["source_ids"])}
+    # R19: every question's own stored answer, each with its claim chips by R20; the content file's pressed question sets
+    # the plates' state only (the working page loads with none pressed)
+    answers = [answer_of(x) for x in V["pathways"]]
+    answer = next((a for a in answers if pw and a["id"] == pw["id"]), None)
     pills = {}
     if False:
         C = c15()
@@ -632,9 +651,56 @@ def view_home(spec):
                 pills[v] = {"title": t, "h": pill_h(C, rows), "rows": rows, "over_three_rows": len(rows) > C.MAX_ROWS}
     closed = home_drawing(fl, False, pills, ps, spec.get("box_need"))
     opened = home_drawing(fl, True, pills, ps, spec.get("box_need"))
-    return {"parts": ps, "flows": fl, "lit": lit, "hubs": hubs, "pressed": spec.get("pressed_question"), "answer": answer,
+    return {"parts": ps, "flows": fl, "lit": lit, "hubs": hubs, "pressed": spec.get("pressed_question"), "answer": answer, "answers": answers,
             "every_variable": bool(spec.get("every_variable")), "pills": pills, "drawing": closed, "drawing_open": opened,
             "claim_open": bool(spec.get("claim_open"))}
+
+
+# R20 (the data lead's, chat 12): R5's figure method made exact. A figure is a dollar amount, a number with % or "percent",
+# or a number with million, billion or trillion; a claim holds it whole (no digit, point, comma or dollar sign touching
+# its start, no digit after it); the first year after it in its sentence must be in the claim too; a tie goes to the claim
+# holding most of the sentence's figures; still tied, or none, no chip. One chip a claim a sentence, at the sentence's end
+FIG = re.compile(r"(?<![\d.,$])(?:\$\d[\d,]*(?:\.\d+)?(?: (?:million|billion|trillion))?|\d[\d,]*(?:\.\d+)?(?:%| percent\b| (?:million|billion|trillion)\b))")
+YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
+# R20's six figures the method cannot link, as a known list: the build stops on any other unlinked figure, and on any of
+# these that starts to link, so the list stays true when the model changes (the six go to atlas V7.1, the data lead's notes)
+UNLINKED = {("PW01", "29%"), ("PW01", "$1,240"), ("PW01", "$2,420"), ("PW09", "2.1%"), ("PW10", "7.65%"), ("PW14", "83%")}
+
+
+def holds(text, f):
+    return re.search(r"(?<![\d.,$])" + re.escape(f) + r"(?![\d])", text) is not None
+
+
+def answer_of(pw):
+    """One question's short answer (R19), as stored, split into System 1's sentences, each with the claims its figures
+    link to (R20) and each claim's record for its disclosure (R5)."""
+    V = model()
+    C = V["claims"]
+    sents, recs = [], {}
+    for snt in c15().BS.sentences(pw["short_answer"] or ""):
+        figs = [m.group(0) for m in FIG.finditer(snt)]
+        cl = []
+        for m in FIG.finditer(snt):
+            f = m.group(0)
+            y = YEAR.search(snt[m.end():])
+            y = y.group(0) if y else None
+            hits = [c for c in pw["claim_ids"] if holds(C[c]["claim"], f) and (not y or y in C[c]["claim"])]
+            if len(hits) > 1:
+                best = max(sum(holds(C[c]["claim"], g) for g in figs) for c in hits)
+                hits = [c for c in hits if sum(holds(C[c]["claim"], g) for g in figs) == best]
+            known = (pw["id"], f) in UNLINKED
+            need(len(hits) == 1 or known, f"the figure {f} in {pw['id']}'s answer links to {len(hits)} claims and is not on R20's list")
+            need(not (len(hits) == 1 and known), f"the figure {f} in {pw['id']}'s answer now links to {hits[:1]}; take it off R20's list")
+            if len(hits) == 1 and hits[0] not in cl:
+                cl.append(hits[0])
+        for c in cl:
+            if c not in recs:
+                x = C[c]
+                recs[c] = {"claim": c, "record": {**{k: x[k] for k in ("claim", "population", "jurisdiction", "period", "limitation")},
+                           "grade": grade(x["confidence"]), "sources": [{"id": s_, **{f: V["sources"][s_].get(f) for f in ("publisher", "title", "year", "url")}} for s_ in x["sources"]]}}
+        sents.append({"text": snt, "claims": cl})
+    return {"id": pw["id"], "question": pw["question"], "text": pw["short_answer"], "sentences": sents, "claims": list(recs.values()),
+            "sources": len(pw["source_ids"])}
 
 
 def home_drawing(flows_, every=False, pills=None, parts_=None, box_need=None):

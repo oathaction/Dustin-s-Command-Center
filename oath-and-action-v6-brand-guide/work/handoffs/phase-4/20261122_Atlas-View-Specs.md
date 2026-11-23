@@ -481,3 +481,73 @@ C5 on round 2 (00:11 UTC) leaves two screens outside 60 to 85 percent Newsprint:
 - **A14 `Loop` at 390, 58.0.** Under 48em the facts panel's padding drops to 16 px and its label "This loop" stays in the markup, visually hidden (`.vh`), so the list keeps its name; the panel loses about 42 px of height, near 5 percent of a 390 by 844 window. Estimates: `Loop` near 63, first screen near 64 (61.2 now). Bytes: a few dozen in `atlas-page.css`; no markup changes.
 
 **A14's dark drawing crop (`1440-dark-drawing`) stays as drawn,** the drawing's own column. Rule 21.15's plate is about the marks on Charcoal: the drawing with Reform R-11's red targets beside the chooser crop. The read-aloud text adds nothing to that, and leaving it out keeps the crop smaller. Its caption stands. Its alt, the editor's, should say the red falls on two connections and one variable (D4, L14 and L15; R10), not "one connection and one variable".
+
+
+## 15. Chat 12's fix pass: the fold, true-size crops and How to read (CD-S1, CD-S2, CD-S3)
+
+Written November 23, 2026 by chat 12's design director, from 18:00 UTC, for the atlas engineer (fix brief 3.2), from the creative director's CD-S1 to CD-S3 (`work/handoffs/phase-4/20261123_Chat-12-CD-Review.md`, `20261123_Chat-12-CD-Scores.json`), the craft reader's CR-3, CR-19 and CR-22, and the data lead's R19, R24 and R25 (`20261123_Chat-12-Dataviz-Lead-Notes.md`). Measures at 1440 are read from `work/build/exports/phase-4/20261122_Atlas-Home-Page-1440-Light.png` (17:58 UTC, by script): masthead 0 to 140, title bar 141 to 201, head band 202 to 357 (156 px), 24 px of Newsprint, the drawing 382 to 959 (578 px: band 56, gap 57, core row 200, gap 113, lower row 104, bottom lanes 49), the key's line 984 to 1001. The chapter 21 generator wires the new frames into the plates in my turn 2; this section is what the kit draws. Where a number here and an earlier section differ, this section governs.
+
+### 15.1 CD-S1: the home's whole circuit and its key above the fold (A11, A17, A20 from 75em)
+
+**Target.** At 1440 by 900, on the working page as it loads (CD-M2 and R19: no question pressed) and on the plates' pressed state alike, the drawing's last ink and the key's last line end at **y 880 or above**. The boxes keep one height in both states, so pressing a question never moves the page. The 2 px essential ink, the 1 px subtle ink, every count and every route of 12.2 stay.
+
+**Head band (`System`, from 64em).** Padding **16 px above** (the 1 px hairline still joins it to the title bar) and **16 px below**, in place of 24 and 24. One row, top-aligned, as now: the `h1` in `oa.type.h3` at cols 1 to 4; the intro in **`oa.type.body-small`** (15 px on a 24 px line) at cols 5 to 10, its measure the six columns (668 px at 1440); the switch at cols 11 to 12. With the intro in three lines the band is 104 px. **Word budget for the editor:** the intro at most three lines there, about 270 characters (today's 265 fit). Under 64em, 14.2 stands (the intro on Newsprint under the band).
+
+**Gaps.** 16 px of Newsprint between the band and the drawing (was 24). The key's line sits **12 px** under the drawing's last ink (was about 25).
+
+**The drawing's rows (closed),** top to bottom, in place of 12.2 and 14.4's 56, 56, 184, 112, 104, 56:
+
+| Row | Height | What sets it |
+|---|---|---|
+| Outside forces band | **44** | name (`oa.type.h4`), the labelled second line (R24) and the counts on one line, 8 px padding above and below |
+| Gap 1 | **44** | B to E's lane at `yb + 18`; the five X counts' baseline at `yc − 8` |
+| Core row | **204** | the worst box (below) |
+| Gap 2 | **96** | five lanes, 18 px apart: D to B `ycb + 18`, B to D `ycb + 36`, D to Your household `ycb + 54`, Technology to B `ycb + 72`, Technology to A `ycb + 90`; each count's baseline 3 px above its run |
+| Lower row | **92** | 10 px padding above and below; name, question and the labelled title at the left (three lines: the boxes are wide enough for the title on one line); the lit line and the counts at the right, as 14.4 |
+| Bottom lanes | **44** | E to Your household at `ylb + 18`, the return E to A at `ylb + 38` |
+| **Closed height** | **524** | was 578 as drawn |
+
+Routes whose points move with these rows: X to Your household and X to Technology enter at `yl + 46` (the lower row's middle); Technology to Your household crosses the lower channel at `yl + 64`; D to Your household enters at `yl + 28` (unchanged). The core row's own lanes (`yc + 40`, `yc + 88`, `yc + 120`, `yc + 152`) stay. The seven crossings and their breaks stay as 12.2 sets them; the build still stops on a crossing it did not expect.
+
+**The core box (inner width 172 px: 12 px of side padding on a 196 px box).** Top to bottom: 12 px; the plain name (`oa.type.h4`, 28 px line); 2; the question (`oa.type.caption`, `text-wrap: balance`, at most two lines; only Policy's takes two); 2; R24's labelled second line (`oa.type.caption`, secondary, at most two lines; the label and the title in one run, "In our atlas: Economic structure", the editor's words); 6; the lit line (`oa.type.data-label` 600, at most two lines, `text-wrap: balance` so no word ends a line alone, CR-3); 6; the counts as **two fixed lines**, "6 variables" over "6 connections inside" (CR-3; `oa.type.data-label`, `tabular-nums`), pinned to the box's foot; 12 px. The worst box (one line of question, two of title, two of lit line) needs 200 px, so the row is 204. If the editor's lit line fits one line in 172 px (about 22 characters of `oa.type.data-label` 600; CE9's draft "The question you pressed reaches here" takes two), the row drops to 186 and the drawing to 506.
+
+**The sum at 1440 by 900:** 202 (masthead and title bar) + 104 (band) + 16 + 524 (drawing) + 12 + 20 (key) = **878**. The key stays one line; R25's words ("Other arrows between parts", the editor's) fit it.
+
+**Rule 05.1:** the dark share of the first screen falls from about 24 to 18 percent (title bar 61 px and band 104 px of 900), so the screen sits near 80 percent Newsprint, inside 60 to 85. C5 measures it again.
+
+**The open drawing (A17)** keeps these rows' rules; its boxes grow with their pills as 14.4 says, and nothing in it has a fold target.
+
+**Check:** C5's `1440-light-screen` of A11 reports the drawing's and the key's bottoms; both at 880 or above, or the build says which row to take from.
+
+### 15.2 CD-S2: crops at true size
+
+**What a crop holds (changes C9's crop).** A crop frame `<width>-<theme>-<part>` is now cut on both axes: its box is the **union of the boxes of every element that carries `data-oa-part="<part>"`**, plus **24 px of the page on every side** (CR-19: the page's own spacing above the first line shows), clipped to the page. The frame's width is that box's width, and its `viewBox` starts at the box's left edge, so the guide places it at its true width (`app_plates.py` never grows a frame past it). A crop to the part `top` keeps the page's full width, as now. Parts on more than one element let one crop hold two boxes and the space between them. The part-alone drawing of DD11C-Q6 stays: the frame carries the part's subtree, its ancestors and a table's head row, and its pixels must equal the page's in the crop box.
+
+**True size or stated scale.** A crop **680 px wide or less** shows at true size on the guide's page (680 px is the wide true size the guide's frames hold from D3-480). A wider crop, or a whole 1440 px frame, shows reduced to the column; the plate then says its scale in the row's label (CR-22; the generator writes it in my turn 2) and sets a 390 px frame at true size beside it. The kit writes each frame's true width and height into the plate as today; the generator reads them.
+
+**The parts and frames the plates need** (new parts in bold; "true" is true size on the guide's page):
+
+| Plate | Rule teaches | Frames (rows), with the crop's element | Width |
+|---|---|---|---|
+| `s-21-1-correct` | The title bar under the masthead | `1440-light-top` (A14), unchanged, scale stated; `390-light-open-top`, unchanged | 1440 (stated); 390 true |
+| `s-21-2-correct` | The open drawing | `1440-light-drawing` (A17), scale stated; **`1440-light-pair`** (A17): **`pair`** on the Wealth and Voice boxes, so the crop holds both, the channel between them with its arrows and counts, and the X arrows above them | about 500 true |
+| `s-21-3-correct` | A pressed question and the parts it lights | **`1440-light-pair`** (A11, PW06 pressed: Wealth lit beside Voice unlit); **`1440-light-hub`** (A11): **`hub`** on the column of the hub that holds the pressed question, from its name to its last question; `390-light-questions` and `390-dark-questions`, unchanged. The `1440-light-drawing` and `1440-light-questions` crops leave this plate (the opener shows the whole page) | pair about 500, hub about 291, true |
+| `s-21-5-correct` | The red targets and their tags | **`1440-light-art`** (A12): **`art`** on the "Where it acts" heading and the drawing's own block (the drawing and its chip row, cols 1 to 4), not the tags far right; `390-light-targets`, unchanged (it holds the tags under the drawing at true size) | about 469 true; 390 true |
+| `s-21-7-correct` | One record cited one way | `1440-light-answer` (A20): the answer block takes the body measure, `max-width: 37.37rem` (`--oa-layout-measure-body-max`), so its crop is about 646 px and true; `1440-light-rowl14` (A14 and A13), scale stated; **`390-light-rowl14`** (A14 and A13), the same rows as cards at true size | 646 true; 1360 stated; 390 true |
+| `s-21-9-correct` | The sheet's connections table | `1440-light-sheet` (A18), scale stated; **`390-light-sheettop`** (A18): **`sheettop`** on the sheet's band and its first three connection rows | 1360 stated; 390 true |
+| `s-21-13-correct` | The stepper | `390-light-stepper`, unchanged; `1440-dark-stepper` (A19) with `stepper` on the stepper's own block (cols 5 to 12), so the empty Charcoal column to its left leaves the crop (CR-19), scale stated | 390 true; about 914 stated |
+| `s-21-15-correct` | Marks on Charcoal | `1440-dark-art` (A14): **`art`** on the loop drawing's own block (with CR-8, 15.4, its width follows the drawing); `1440-dark-chooser` (A14) with `chooser` on the list of reforms alone (cols 1 to 4) | about 344 and 469 true |
+
+Every crop above keeps its theme's ground in its 24 px margins. A crop that cuts through a box or a word fails the frame (the kit's pixel match already compares the part's columns).
+
+### 15.3 CD-S3: How to read at true size (A16)
+
+**A new width, 680, for How to read only:** **`680-light-marks`**, A16 drawn in a 680 px window and cropped to **`marks`**, the union of its five groups (Signs and types, Grades, Time, Loops and reforms, On every page) from the first group's `h2` to the last row's hairline. Under 64em the rows are one column (11.2), each a 120 by 48 px mark cell beside its name and meaning, so the legend reads at true size and fits the plate: the crop is 680 px wide (24 px margins clipped to the window) and about as tall as the groups. No masthead, title bar or footer is in it. `s-21-how-to-read` then places `680-light-marks` in place of `1440-light`, with the specification table that maps each mark to its rule (the generator's, turn 2). The 1440 and 390 exports and their screens stay for C5 and the exports manifest. If the kit cannot draw a 680 window, `390-light-marks` (the same part at 390) is the fallback, also at true size.
+
+### 15.4 With CR-8 and CD-S10 (the engineer's, for the loop drawing at 1440)
+
+If the engineer takes CR-8: from 64em A14 and A19 draw the loop at **1.5 times chapter 15's geometry** (about 444 px wide), with Rule 12.5's weights, the type and the tags unchanged (the positions grow, the strokes do not), every vertical run on whole pixels (CR-9), and the reform chooser moved up to sit under the read-aloud column, so the left column holds no 500 px hole. The weakest step's dashed line runs unbroken from its corner into the arrowhead's shaft (CD-S10; R14's fitted pattern). `art`'s crop follows the drawing's width (about 492 px, still true size). The data lead signs off the drawing.
+
+### 15.5 Not changed here
+
+C11C-SP (A14's phone spacing), CR-11 (the bands), CR-12, CR-14 and CD-S4 are mine in turn 2. Section 12.2's route table stands except for the offsets in 15.1.

@@ -3,6 +3,7 @@
 // static markup, with the guide's own fonts and tokens, and writes its exports, its plate and its checks' inputs.
 //
 //   node work/build/app-kit/oa-app.mjs build [ID...] [--all] [--out DIR] [--exports DIR] [--date YYYYMMDD] [--no-export]
+//   (OUT defaults to $TMPDIR/oa-app-out; the exports' date to each content file's export_date, else today; --date overrides)
 //
 // For each content file (specs/<id>-*.json, or --all):
 //   1. the renderer for its type (renderers/<type>.mjs) draws it at true size;
@@ -17,6 +18,7 @@
 // Then run tools/export_checks.py on OUT for the pixel checks, and check-dimensions.py on EXPORTS.
 // It never writes into the repository except the exports folder.
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { spawnSync } from 'child_process';
 import { createRequire } from 'module';
@@ -24,7 +26,9 @@ import { KIT, ROOT, EXPORTS, PLATES, PLATE_CSS, atlas_symbolize, esc, export_pag
 import { words } from './renderers/web-site.mjs';
 
 const require = createRequire(import.meta.url);
-const SCRATCH = process.env.OA_APP_OUT || '/tmp/claude-0/-home-user-Dustin-s-Command-Center/ac32a0f7-d562-5d93-9aba-0ef59f7ca891/scratchpad/c11/engineer/app-out';
+// PR-S3 (chat 12): the default output folder sits under the session's own temporary folder (TMPDIR), never an old chat's
+// scratch; OA_APP_OUT or --out still name it
+const SCRATCH = process.env.OA_APP_OUT || path.join(process.env.TMPDIR || os.tmpdir(), 'oa-app-out');
 const AXE = path.join(ROOT, 'work/build/node_modules/axe-core/axe.min.js');
 
 function args(argv) {
@@ -34,7 +38,7 @@ function args(argv) {
     if (a === '--all') o.all = true;
     else if (a === '--out') o.out = path.resolve(argv[++i]);
     else if (a === '--exports') o.exports = path.resolve(argv[++i]);
-    else if (a === '--date') o.date = argv[++i];
+    else if (a === '--date') { o.date = argv[++i]; o.date_set = true; }
     else if (a === '--no-export') o.export = false;
     else if (a === '--plates') o.plates = path.resolve(argv[++i]);
     else if (a === '--no-plates') o.plates = null;
@@ -156,13 +160,21 @@ function PRUNE(arg) {
     // shows keeps its steps' states in words (A-5); it draws nothing
     const vh = e.closest('.vh');
     if (vh && vh.parentElement && vh.parentElement.getBoundingClientRect().top + scrollY < limit) continue;
+    // CR-13 (chat 12): a held run of words (.ws-nw) is text, as it was before it was held; taking it out of a paragraph
+    // that starts inside the window would reflow the lines the window shows
+    if (e.classList.contains('ws-nw')) continue;
     if (limit && e.getBoundingClientRect().top + scrollY >= limit) {
       const par = e.parentElement;
       if (careful && par && flowing(par) && par.getBoundingClientRect().top + scrollY < limit) { kept.push(e); continue; }
       out.push(e);
     }
   }
+  // chat 12: a one-window view keeps its page's ground to the window's last row: if taking out what starts below the window
+  // would leave the page shorter than the window (A06 390-dark-screen, once CR-16 moved the page up 6 px), the page keeps
+  // the window's height
+  const h0 = root.getBoundingClientRect().height;
   out.forEach((e) => e.remove());
+  if (limit && root.getBoundingClientRect().height < Math.min(h0, limit)) root.style.minHeight = `${Math.ceil(Math.min(h0, limit))}px`;
   return { removed: out.length, html: root.outerHTML };
 }
 
@@ -273,6 +285,7 @@ function imports_of(rel, seen = new Set()) {
   return seen;
 }
 
+const PREV_PLATE = {};   // PR-S1: each plate's time and atlas test record before this build rewrote it
 // Contract C4: the plate the guide build places for a data-oa-app placeholder, with every input's hash so the build can tell
 // a stale drawing. The renderer type's style goes beside it once (plates/<type>.css), for the page's head.
 function write_plate(dir, gp, read, R, spec) {
@@ -310,6 +323,11 @@ function write_plate(dir, gp, read, R, spec) {
     // whose generator is not written yet (stand-in words, a provisional plate) is left out
     for (const g of GENS) read.delete(g);
     words_rec = gp.words_records.filter((w) => fs.existsSync(path.join(ROOT, w.generator))).map((w) => hash_of(w.generator, w.id));
+  } else if (read.has(GEN) && spec.words_file) {
+    // PR-M2 (chat 12): a page with its own words file prints none of the generator's entries but the site's, so its words
+    // record is the site's page (A07) and its words file is one of its inputs
+    read.delete(GEN);
+    words_rec = hash_of(GEN, 'A07');
   } else if (read.has(GEN)) {
     read.delete(GEN);
     // the entries the plate prints: its own, and for the favicon plate's tab the home page's title too
@@ -328,7 +346,18 @@ function write_plate(dir, gp, read, R, spec) {
     ...(gp.atlas ? { atlas: gp.atlas } : {}),
     ...(gp.symbols && Object.keys(gp.symbols).length ? { symbols: gp.symbols } : {}),
     views: gp.views.map(({ key, w, h, theme, alt, screens, contrast, html }) => ({ key, w, h, theme, alt, ...(screens ? { screens } : {}), ...(contrast ? { contrast } : {}), html })), inputs };
-  fs.writeFileSync(path.join(dir, `${spec.id.toLowerCase()}.json`), JSON.stringify(out, null, 1));
+  // PR-S1 (chat 12): a plate keeps its time while what it holds is the same, so a rerun of a run order is a clean git diff;
+  // the atlas test's record (added after the drawing) is kept aside for the same comparison below
+  const pfile = path.join(dir, `${spec.id.toLowerCase()}.json`);
+  let prev = null;
+  try { prev = JSON.parse(fs.readFileSync(pfile, 'utf8')); } catch (e) { prev = null; }
+  if (prev) {
+    PREV_PLATE[spec.id] = { written: prev.written, atlas_test: prev.atlas_test || null };
+    const { written: _w1, atlas_test: _a1, ...was } = prev;
+    const { written: _w2, ...now } = out;
+    if (prev.written && JSON.stringify(was) === JSON.stringify(now)) out.written = prev.written;
+  }
+  fs.writeFileSync(pfile, JSON.stringify(out, null, 1));
   console.log(`  plate ${spec.id}: ${gp.views.length} frame(s), ${Object.keys(inputs).length} inputs -> ${path.relative(ROOT, path.join(dir, spec.id.toLowerCase() + '.json'))}`);
 }
 
@@ -354,7 +383,9 @@ async function main() {
         ((r.fig && r.fig.css) || '') + (r.kit_css || ''));
       facts.missing_tokens = miss;
       if (miss.length) console.log(`  ~ ${spec.id}: tokens not in tokens.css: ${miss.join(', ')}`);
-      const stem = (n) => `${o.date}_${n}`;
+      // PR-S2 (chat 12): a content file names its exports' date (export_date), so a run order needs no --date to reproduce
+      // them; --date still overrides it, and a content file with none takes today's
+      const stem = (n) => `${o.date_set ? o.date : (spec.export_date || o.date)}_${n}`;
       if (spec.type === 'social-post' || spec.type === 'report-page' || spec.type === 'share-image') {
         const html = export_page({ title: r.title || spec.plate_head, w: r.w, h: r.h, html: r.html, css: r.css, page: r.print || null });
         const pf = path.join(dir, 'export.html');
@@ -914,6 +945,11 @@ ${r.head_links || ''}
     const mf = path.join(o.exports, olds.length ? olds[0] : `${o.date}_Phase-4-Exports-Manifest.json`);
     if (olds.length) prev = JSON.parse(fs.readFileSync(path.join(o.exports, olds[olds.length - 1]), 'utf8'));
     if (prev) manifest.files = prev.files.filter((f) => !built.has(f.spec)).concat(manifest.files);
+    // PR-S1 (chat 12): entries in spec order (each spec's files in the order the kit wrote them), and the manifest keeps its
+    // time while the list is the same, so a rerun of a run order leaves it untouched
+    const by_spec = (a) => Number(String(a.spec).replace(/\D/g, '')) || 0;
+    manifest.files = manifest.files.map((f, i) => [f, i]).sort((a, b) => by_spec(a[0]) - by_spec(b[0]) || a[1] - b[1]).map(([f]) => f);
+    if (prev && JSON.stringify(prev.files) === JSON.stringify(manifest.files)) manifest.written = prev.written;
     for (const f of olds) if (path.join(o.exports, f) !== mf) fs.unlinkSync(path.join(o.exports, f));
     fs.writeFileSync(mf, JSON.stringify(manifest, null, 1));
     console.log(`wrote ${manifest.files.length} exports and ${path.relative(ROOT, mf)}`);
@@ -930,19 +966,31 @@ ${r.head_links || ''}
     const lines = (run.stdout || '').split('\n').filter((x) => /^(PASS|FAIL) T\d+ /.test(x));
     const self = /self-test: PASS/.test(st.stdout || '') ? 'PASS' : 'FAIL';
     const when = new Date().toISOString();
+    // PR-S1 (chat 12): a plate whose drawing and result are both unchanged keeps the time its test last ran, and so does the
+    // report when every plate kept its time and the lines are the same; any change takes this run's time
+    let all_kept = true;
     for (const id of atlas_ids) {
       const pf = path.join(o.plates, `${id.toLowerCase()}.json`);
       if (!fs.existsSync(pf)) continue;
       const mine = lines.filter((x) => x.split(' ')[2] === id);
       const fails = mine.filter((x) => x.startsWith('FAIL'));
       const pl = JSON.parse(fs.readFileSync(pf, 'utf8'));
-      pl.atlas_test = { ran: when, pass: mine.length - fails.length, fail: fails.length, first_fail: fails[0] || null, self_test: self,
+      const rec = { ran: when, pass: mine.length - fails.length, fail: fails.length, first_fail: fails[0] || null, self_test: self,
         self_test_misses: (st.stdout || '').split('\n').filter((x) => x.startsWith('FAIL')).slice(0, 20) };
+      const was = PREV_PLATE[id];
+      const same = was && was.atlas_test && was.written === pl.written
+        && JSON.stringify({ ...was.atlas_test, ran: null }) === JSON.stringify({ ...rec, ran: null });
+      if (same) rec.ran = was.atlas_test.ran; else all_kept = false;
+      pl.atlas_test = rec;
       fs.writeFileSync(pf, JSON.stringify(pl, null, 1));
     }
     // the report for Rule 21.16's plate: every line of the last run, beside the plates
-    fs.writeFileSync(path.join(o.plates, 'atlas-test.json'), JSON.stringify({ ran: when, by: 'work/build/app-kit/tools/atlas_test.py', ids: atlas_ids,
-      self_test: self, lines }, null, 1));
+    const repf = path.join(o.plates, 'atlas-test.json');
+    let old_rep = null;
+    try { old_rep = JSON.parse(fs.readFileSync(repf, 'utf8')); } catch (e) { old_rep = null; }
+    const rep_rec = { ran: when, by: 'work/build/app-kit/tools/atlas_test.py', ids: atlas_ids, self_test: self, lines };
+    if (all_kept && old_rep && JSON.stringify({ ...old_rep, ran: null }) === JSON.stringify({ ...rep_rec, ran: null })) rep_rec.ran = old_rep.ran;
+    fs.writeFileSync(repf, JSON.stringify(rep_rec, null, 1));
     const nf = lines.filter((x) => x.startsWith('FAIL')).length;
     console.log(`atlas test: ${lines.length - nf} PASS, ${nf} FAIL; self-test ${self}`);
     lines.filter((x) => x.startsWith('FAIL')).slice(0, 12).forEach((x) => console.log('  ' + x));
