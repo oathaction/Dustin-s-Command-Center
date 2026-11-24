@@ -192,3 +192,11 @@ Started 02:04:14 UTC (`date -u`), on the main session's message after the creati
 - CD12b-S2 is the design director's; its words (the failure plate's caption text box, the basis sentence moved into the caption) were not asked of me this pass.
 
 Turn 2c done, 02:07 UTC
+
+# Turn 2d: Rule 16.11's Type row for the landscape frames
+
+On the main session's message (03:26 UTC): since D4-421's extension (built 02:14 UTC) the 1920 by 1080 frames' captions draw at 40 px on a 46 px line, so the Type row's landscape phrase reads "40 px on a 46 px line in a 1920 by 1080 frame, the same step drawn twice" (was "32 px on a 44 px line in a 1920 by 1080 frame").
+
+Tested: `--page-words all` before and after, byte for byte the same (`cmp`); `--check` and the plain run under the lock (03:26:34 to 03:26:37 UTC), exit 0 each; MD5 of every file under `work/build` before and after the hold: only `16-photography.json` moved (its manifest did not). `git diff --stat` at 03:26 UTC shows `16-photography.json` alone, because the main session's snapshot `e6a8ddd9` (03:26:36) took the generator's one-line change; against `3ddc48a1` the change is the generator and that file. Not tested: the kit, a browser, the guide check.
+
+Turn 2d done, 03:26 UTC
