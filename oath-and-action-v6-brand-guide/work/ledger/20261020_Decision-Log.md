@@ -8075,3 +8075,22 @@ Dustin's words, given at the close of chat 12b and pasted into chat 13's opening
 | D4-533 | Chat 13 opened on `claude/oath-action-phase-4-chat-13-0g4dm4`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `ab99862f`, chat 12b's close) and works on it, as Dustin's opening message sets. V11's three setup steps ran on the fresh container; the atlas extract's SHA-256 begins ef1028ac87e402e3 | V19: fetch the remote tip first; V11's setup |
 | D4-534 | This session runs on "Oath & Action", not on "Oath & Action Brand Polish - Round 2" as DR-300 and DR-328 set, the fifth time. The three key tests fail (15:04 UTC): api.open.fec.gov 403, api.congress.gov 403, `CENSUS_API_KEY` unset. `get_environment` reports Round 2 as not switchable, since a running session is not moved onto an unrestricted network. Put to Dustin as Q13-1 | Dustin's "test each with one request before use"; V30 to V34 |
 | D4-535 | The strict build passes as committed (15:05 UTC, to scratch): exit 0, 0 warnings, 0 stale plates, 14,444,549 bytes, 22 chapters, 409 rules, 766 specimens, the figures V35 records; it differs from version 16's file only in the colophon's build time | V35 section 1's figures |
+
+### Dustin's answers to chat 13's questions, November 24, 2026
+
+Dustin's words: "As recommended, please give me the next handout prompt, please."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-341 | Q13-1: chat 13's work reads no data key. Dustin asked for the handoff prompt at once, so the work moves to a new chat, chat 13b, which starts on "Oath & Action Brand Polish - Round 2" as DR-300 and DR-328 set; this session on "Oath & Action" closes after logging the answers and writing handoff V36 | Dustin, November 24, as recommended, with his request for the handoff prompt |
+| DR-342 | Q13-2: Oath & Action's Substack takes free subscriptions only, so chapter 22 writes the free and the imported welcome emails and names the paid and founding emails as not used; chapter 22 builds for Substack's Classic theme | Dustin, November 24, as recommended |
+| DR-343 | Q13-3: the working HTML email is sender-neutral; its merge fields and the postal address that US law asks a commercial email's footer to carry print as labeled Illustrative slots, the law named and cited by the research lead | Dustin, November 24, as recommended |
+| DR-344 | Q13-4: no `brotli` install. Chapter 25's print preflight in chat 15 reads the system's static Inter files (`/usr/share/fonts/opentype/inter/`) and says so | Dustin, November 24, as recommended |
+| DR-345 | Chat 13's plan as posted: (A) board 1's answers applied, Engineer M on C1, item 1's build settings and the forecast for chapters 22 to 28, Engineer A on items 2, 4, 5, 6 and 12, the editor on items 7 and 8 and the words items 2 and 4 need; (B) chapter 22 and chapter 23's X, Threads and Instagram, with the research lead first, the accessibility lead's rulings, the design director, Engineer S on the new renderers, the editor and the data lead; (C) a clerk, the quick check without screenshots, a progress board that asks nothing, and the handoff. Chapter 23's three channels move to a chat of their own if they do not fit once chapter 22 lands. The review, the scores and Phase 4 board 2 stay in chat 14 | Dustin, November 24, as recommended |
+
+### Main session, the handoff
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-536 | At Dustin's request this session hands off before any build: handoff V36 carries DR-329 to DR-345 and chat 13's plan to chat 13b, and the work tracker's row `c12` notes it | Dustin's request for the handoff prompt (DR-341) |
+| D4-537 | The register's chat 12 rows held for board 1 take their outcomes in a short "Chat 13" section: each is answered (DR-329 to DR-340) and waits for chat 13b's apply pass, with items 9 and 10 closed and item 11 held for Phase 5 | DR-282: the register shows each row's state at every handoff |

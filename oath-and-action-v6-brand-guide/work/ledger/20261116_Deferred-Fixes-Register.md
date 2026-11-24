@@ -920,3 +920,25 @@ Rows from chat 12b's notes (`work/handoffs/phase-4/20261124_Chat-12b-*-Notes.md`
 | PR-S7 | Option 3i measured again: 81,008 bytes of chapters 20 and 21's frames that no reader meets on the final page (81,031 on the opening page, 65,323 in chat 12), in 270 parts | Held for Dustin (Phase 4 board 1), with C11C-W1 |
 | DD10-NF1, E11b-1, E11b-2, C11C-R14d, Rule 15.16's confidence sentence, Rules 01.16 and 13.2's "same length", S66's source line, Rule 13.4's dashed line, PR-M1's before and after, Prussian beside the red target, and C11-1 | Each is placed on board 1 with the original beside the proposal at true size and the studio's recommendation; the reply takes the six items that change settled work by name, each marked on the board (D4-428) | Held for Dustin (Phase 4 board 1; D4-501 to D4-521; commits 86530b07 and 8e94df1b) |
 | Rule 16.11's landscape caption size | The editor's turn 2d gives "40 px on a 46 px line in a 1920 by 1080 frame, the same step drawn twice", read on the page of record | Closed (D4-528; commit abbc5d9e) |
+
+## Chat 13: board 1's answers logged, the handoff (November 24, 2026)
+
+This session logged Dustin's answers to Phase 4 board 1 (DR-329 to DR-340) and to its four questions (DR-341 to DR-345), and handed off before any build at Dustin's request (D4-536). It made no fix and found none, so it adds no new row. The rows held for board 1 take these outcomes; chat 13b applies them (handoff V36, section 2B).
+
+### Outcomes of earlier rows
+
+| Code | Outcome | Status |
+|---|---|---|
+| Chapters 16, 20 and 21 (board 1 item 1) | Approved as built (DR-329) | Closed; the build's in-progress list changes in chat 13b |
+| DD10-NF1 (item 2) | Approved by name: Rule 05.3's keyline inside ampersand B in a hinge headline on Newsprint (DR-330) | Answered; to apply in chat 13b (Rule 04.3's plate, the identity proofs' link card, A01) |
+| C11C-W1 and PR-S7 (item 3) | C1 lands, then the forecast, then wide frames as exports for frames met at half size or smaller; 3i waits, 3e held, 4a the reserve (DR-331) | Answered; C1 to apply in chat 13b; PR-S7 (3i) stays open, held for later |
+| C11-1, and "C11-1's label at 390 px" (chat 12b) (item 4) | Under 48em, phone frames first and each wide frame a line to its export at true size (DR-332) | Answered; to apply in chat 13b |
+| E11b-1 and E11b-2 (item 5) | One change to chapter 18's masthead code set (DR-333) | Answered; to apply in chat 13b |
+| C11C-R14d (item 6) | The case takes the on-Newsprint ink token (DR-334) | Answered; to apply in chat 13b |
+| Rule 15.16's confidence sentence (item 7) | The sentence as the board printed it (DR-335) | Answered; to apply in chat 13b |
+| Rules 01.16 and 13.2's "same length" (item 8) | Rule 01.16's Length row gains the board's words; Rule 13.2's Contested row cites it, in the editor's final words (DR-336) | Answered; to apply in chat 13b |
+| PR-M1's before and after (item 9) | The fix stays; no file changes (DR-337) | Closed |
+| Prussian beside the red target (item 10) | Chapter 18's selected look stays (DR-338) | Closed |
+| Rule 13.4's dashed line (item 11) | Both meanings stay; one sentence for Rule 13.4 at Phase 5, in the editor's words (DR-339) | Held for Phase 5 |
+| S66's source line (item 12) | "Steps as the law sets them; how long an agency takes is its own practice." (DR-340) | Answered; to apply in chat 13b |
+| The editor's `brotli` install | No install; chapter 25's preflight reads the system's static Inter files (DR-344) | Closed (DR-344); the caption widths stay estimates, low |
