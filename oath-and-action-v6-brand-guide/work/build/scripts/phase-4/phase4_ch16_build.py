@@ -638,6 +638,15 @@ EXTRA_KINDS = {
 CUE_0_08 = ('Citizens 18 to 24 reported voting', 'at 47.7 percent, down 3.7 points')
 # at 0:30, the first sentence said, broken between its subject and its verb
 CUE_0_30 = ('So the gap between the youngest and the oldest', 'grew from 23 points to 27.')
+# The video's one script at its chart moments (chat 12b, editor, E12b-1): Rule 16.10's storyboard prints these words
+# under its 0:08 and 0:30 frames, and Rule 16.12's script and transcript quote them, so the same video reads one way.
+# At 0:30 the voice names the survey, as Rule 16.12 asks ("say whose source it is")
+SAID_0_08 = ('Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points from 2020.',
+             'Those 65 and over stayed near 75 percent.')
+SAID_0_30 = ('So the gap between the youngest and the oldest grew from 23 points to 27.',
+             'These are answers to the Census Bureau’s survey, which run higher than counted ballots.')
+if ' '.join(CUE_0_30) != SAID_0_30[0] or not SAID_0_08[0].startswith(' '.join(CUE_0_08)):
+    raise SystemExit('the captions at 0:08 and 0:30 no longer match the words said; reread Rules 16.10 to 16.12')
 # What A21's frames show of chart S04 (the kit draws it; DD12b-R1: no title, measure line or notes on the frame), for
 # their alts: the legend's dots as S04's chart note names them, the scale's ends, then each row's 2020 and 2024 rates
 # (census-cps-reported-voting.csv through S04's where filter) and its row words, as the drawing prints them
@@ -686,12 +695,8 @@ R['16.10'] = {
         ('0:00', 'title', 'Title frame', ''),
         ('0:02', 'host', 'Placeholder: Dustin Cathcart on camera',
          'Which age groups told the Census Bureau they voted in 2024?'),
-        ('0:08', 'chart', '',
-         'Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points from 2020. Those 65 and over stayed near 75 '
-         'percent.'),
-        ('0:30', 'gap', '',
-         'So the gap between the youngest and the oldest grew from 23 points to 27. These are answers to a survey, which '
-         'run higher than counted ballots.'),
+        ('0:08', 'chart', '', ' '.join(SAID_0_08)),
+        ('0:30', 'gap', '', ' '.join(SAID_0_30)),
         ('0:50', 'step', 'Check your registration',
          'Your state’s election office can tell you whether you are registered.'),
         ('1:00', 'end', 'End frame', ''),
@@ -716,9 +721,10 @@ R['16.10'] = {
                           f'“{S04_SOURCE}” Across the foot of the frame, a Charcoal band holds the captions, '
                           f'“{CUE_0_30[0]} {CUE_0_30[1]}”',
     },
-    # the scale in the 0:08 and 0:30 cells' labels: {pct} is the frame's width in its 200 px cell over 1,920 px, which
-    # holds at a 1440 px window; on a phone the cell is wider, so the words name where the figure holds (CR-22)
-    'frame_scale': 'shown at {pct} percent on a 1440 px screen',
+    # the storyboard's one scale line, over its cells (CR-22: a row states its scale once): {pct} is the frame's width in
+    # its 200 px cell over 1,920 px, which holds at a 1440 px window; on a phone the cell is wider, so the words name
+    # where the figure holds
+    'frame_scale': 'The 0:08 and 0:30 frames, shown at {pct} percent on a 1440 px screen',
 }
 
 R['16.11'] = {
@@ -828,17 +834,16 @@ R['16.12'] = {
     'failure_alt': 'The same script with one row: the chart on screen, and the voice saying As you can see, young people '
                    'dropped off right here.',
     'head': ('On screen', 'Said'),
+    # the storyboard's words at 0:08 and 0:30 (SAID_0_08, SAID_0_30); at 0:30 the chart is unchanged, since S04 has no
+    # states, and the caption says the gap
     'rows': [('Chart S04: a dot for 2020 and one for 2024 in each age group; citizens 18 to 24 at the left.',
-              'Citizens 18 to 24 reported voting at 47.7 percent in 2024, down 3.7 points from 2020, in the Census Bureau’s survey.'),
-             ('The gap between the youngest and oldest groups, marked.',
-              'The gap between the youngest and the oldest grew from 23 points to 27.'),
-             ('S04’s source line.',
-              'These are answers to a Census survey, which run higher than counted ballots.')],
+              ' '.join(SAID_0_08)),
+             ('Chart S04, still on screen.', SAID_0_30[0]),
+             ('S04’s source line.', SAID_0_30[1])],
     'bad_row': ('Chart S04: a dot for 2020 and one for 2024 in each age group.', 'As you can see, young people dropped off right here.'),
     'transcript_head': 'Transcript, from 0:08',
-    'transcript': '[0:08] Dustin Cathcart: Citizens 18 to 24 reported voting at 47.7 percent in 2024, down 3.7 points '
-                  'from 2020, in the Census Bureau’s survey. [On screen: a dot chart of reported voting by age group, 2020 '
-                  'and 2024, with its source line.]',
+    'transcript': f'[0:08] Dustin Cathcart: {" ".join(SAID_0_08)} [On screen: a dot chart of reported voting by age '
+                  'group, 2020 and 2024, with its source line.]',
     'link': 'The chart’s table, Rule 14.19',
 }
 
@@ -1329,8 +1334,8 @@ VF = (f'.sb{{display:grid;grid-template-columns:minmax(0,1fr);gap:24px 16px;alig
 
 
 # CD-S7 (chat 12b, ruling DD12b-R1): the storyboard's chart moments are the application kit's A21 frames at 1920 by 1080,
-# chart S04 drawn by the chart kit with its source line and caption band; each sits in its 200 px cell, so its label
-# states the scale at a 1440 px window: (200 - 2 px of frame edge) / 1920, rounded to 5 percent
+# chart S04 drawn by the chart kit with its source line and caption band; each sits in its 200 px cell, and one line
+# over the cells states the scale at a 1440 px window (E12b-2): (200 - 2 px of frame edge) / 1920, rounded to 5 percent
 A21_KEYS = {'chart': '1920-light-chart', 'gap': '1920-light-gap'}
 SB_CELL = 200
 SB_PCT = int(5 * round((SB_CELL - 2) / 1920 * 100 / 5))
@@ -1339,9 +1344,8 @@ SB_PCT = int(5 * round((SB_CELL - 2) / 1920 * 100 / 5))
 def frame(t, kind, label, said, r):
     """One storyboard frame at 16:9: its start time above, its picture in type and tokens, the words said below."""
     if kind in A21_KEYS:
-        scale = r.get('frame_scale', 'at {pct} percent').format(pct=SB_PCT)
         words = f'<p class="said sm">{said}</p>' if said else ''
-        return (f'<div><p class="lab num">{t} · {scale}</p><div class="mt8">{a21(A21_KEYS[kind], switch="none")}</div>'
+        return (f'<div><p class="lab num">{t}</p><div class="mt8">{a21(A21_KEYS[kind], switch="none")}</div>'
                 f'{words}</div>')
     if kind == 'title':
         box = f'<div class="vf dkf"><span>{r["question"]}</span><span class="slot">{r["slot"]}</span></div>'
@@ -1363,7 +1367,10 @@ def frame(t, kind, label, said, r):
 def s16_10_correct():
     r = R['16.10']
     cells = ''.join(frame(t, k, lab, s, r) for t, k, lab, s in r['frames'])
-    html = css(VF) + f'<div class="w"><p style="margin-bottom:16px">{ILLUS}</p><div class="sb">{cells}</div></div>'
+    # E12b-2 (editor, chat 12b): the scale once, over the cells, so each cell's label holds its time alone (CR-22)
+    scale = r.get('frame_scale', 'at {pct} percent').format(pct=SB_PCT)
+    html = (css(VF) + f'<div class="w"><p style="margin-bottom:16px">{ILLUS}</p>'
+            f'<p class="lab sec" style="margin-bottom:16px">{scale}</p><div class="sb">{cells}</div></div>')
     return spec('s-16-10-correct', html, '16.10', r['correct_alt'], illustrative=True,
                 notes='The video is not made, so the plate carries the Illustrative label at its head; every figure is '
                       'chart S04’s (work/build/chart-kit/specs/s04.json). The 0:08 and 0:30 cells are the application '
