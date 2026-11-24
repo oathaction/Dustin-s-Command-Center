@@ -3468,7 +3468,9 @@ def weigh(page, sprite_bytes):
     if sa_:
         app_kit["atlas"] = {"bytes": size(page[sa_[0]:sa_[1]]), "chapter": None}
     marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
-    end = page.find("</main>")
+    # chat 12b (Engineer M's find): the guide's own </main> is the page's last; chapter 20's kit frames hold pages with a
+    # <main> of their own, and find() stopped at the first of those, so the proofs appendix after it weighed nothing
+    end = page.rfind("</main>")
     anchors = {a: n for n, a, *_ in CHAPTERS}
     chapters = {}
     for (start, kind, anchor), nxt in zip(marks, [m[0] for m in marks[1:]] + [end]):
