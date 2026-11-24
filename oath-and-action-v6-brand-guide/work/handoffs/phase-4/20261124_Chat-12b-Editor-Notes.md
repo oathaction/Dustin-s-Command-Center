@@ -82,8 +82,8 @@ No new term. "Caption-safe area" (Rule 16.11) and "L8, the monogram" (Rule 16.10
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
-| E12b-1 | Editor, chat 12b | `phase4_ch16_build.py`, `R['16.10']['frames']` (0:08, 0:30) and `R['16.12']['rows']`, `['transcript']`; plates `s-16-10-correct`, `s-16-12-correct` | The same video says different words at the same moments. At 0:08 the storyboard says "at 47.7 percent, down 3.7 points from 2020", and Rule 16.12's script and transcript say "at 47.7 percent in 2024, down 3.7 points from 2020, in the Census Bureau’s survey". At 0:30 the storyboard says "So the gap …" and "answers to a survey"; the script says "The gap …" and "answers to a Census survey". Rule 16.12 asks a transcript for every word spoken | Give the three rules one script: Rule 16.12's rows and transcript quote the storyboard's words, with the storyboard's 0:30 line naming the Census survey, so the source is said while the chart shows | It changes Rule 16.12's two plates and the said words under two storyboard frames, beyond this turn's items | Open: main session |
-| E12b-2 | Editor, chat 12b | `s-16-10-correct`, the 0:08 and 0:30 cell labels | The longer scale words wrap to about three lines in a 200 px cell, so those frames sit lower than their row's other frames at 1440 px (estimate) | The scale on its own line under the frame, or labels of one height in each grid row | Layout, the design director's | Open: design director (Request 2) |
+| E12b-1 | Editor, chat 12b | `phase4_ch16_build.py`, `R['16.10']['frames']` (0:08, 0:30) and `R['16.12']['rows']`, `['transcript']`; plates `s-16-10-correct`, `s-16-12-correct` | The same video says different words at the same moments. At 0:08 the storyboard says "at 47.7 percent, down 3.7 points from 2020", and Rule 16.12's script and transcript say "at 47.7 percent in 2024, down 3.7 points from 2020, in the Census Bureau’s survey". At 0:30 the storyboard says "So the gap …" and "answers to a survey"; the script says "The gap …" and "answers to a Census survey". Rule 16.12 asks a transcript for every word spoken | Give the three rules one script: Rule 16.12's rows and transcript quote the storyboard's words, with the storyboard's 0:30 line naming the Census survey, so the source is said while the chart shows | It changes Rule 16.12's two plates and the said words under two storyboard frames, beyond this turn's items | Done in turn 2b, on the main session's message |
+| E12b-2 | Editor, chat 12b | `s-16-10-correct`, the 0:08 and 0:30 cell labels | The longer scale words wrap to about three lines in a 200 px cell, so those frames sit lower than their row's other frames at 1440 px (estimate) | The scale on its own line under the frame, or labels of one height in each grid row | Layout, the design director's | Done in turn 2b, on the main session's message (one line of layout code, logged) |
 
 ## Bytes
 
@@ -127,3 +127,33 @@ Pattern violations remaining in my strings, by type: em dashes 0; en dashes 0; f
 - How the words sound read aloud; my read for triplets, parallel runs and setup and payoff is by hand.
 
 Turn 2 done, 01:18 UTC
+
+# Turn 2b: E12b-1 and E12b-2
+
+Started 01:19:44 UTC (`date -u`), on the main session's message, in `phase4_ch16_build.py`, which I still hold. Generator before: SHA-256 `f89d393503244a27…` (copied to scratch `t2b/`), the version the main session committed as `5c887bee` at 01:18:38 UTC; after: `4d4690f209ff4a05…`.
+
+## Turn 2b routine calls
+
+- D4-xxx | E12b-1: the words said at 0:08 and 0:30 sit once in the word fields (`SAID_0_08`, `SAID_0_30`), and Rule 16.10's storyboard and Rule 16.12's script and transcript take them from there; a check stops the generator if the 0:08 or 0:30 caption stops matching them | The same video now reads one way in three rules, and cannot drift apart again
+- D4-xxx | The storyboard's 0:30 line names the survey: "These are answers to the Census Bureau’s survey, which run higher than counted ballots." (was "a survey") | With Rule 16.12's script quoting the storyboard, the old words would have left its correct plate saying no survey by name, which its own rule ("say whose source it is") and its failure caption ("never learns … in which survey") fault. The 0:30 caption shows the first sentence only, so A21's words do not move
+- D4-xxx | Rule 16.12's script: row 1 says the storyboard's two 0:08 sentences, row 2 "So the gap …" with the On screen cell "Chart S04, still on screen." (was "The gap between the youngest and oldest groups, marked."), row 3 the survey sentence; the transcript's 0:08 line quotes the storyboard | S04 has no states, so the 0:30 frame draws the chart unmarked (DD12b-R1), and "marked" described a frame the plates no longer show. "In 2024" leaves row 1 and the transcript, since the storyboard asks about 2024 at 0:02
+- D4-xxx | E12b-2: the storyboard states its scale once, in a label line over its cells, "The 0:08 and 0:30 frames, shown at 10 percent on a 1440 px screen" (`R['16.10']['frame_scale']`), and the 0:08 and 0:30 labels hold their times alone, as the other four do | CR-22: a row states its scale once. Layout, the smallest change, made because the design director has finished (D4-374's precedent): `frame()` drops the scale from the two labels, and `s16_10_correct()` adds one `<p class="lab sec">` after the Illustrative label. The line runs about 543 px on a 1440 px screen (Inter Bold advance widths at 13 px with the label's tracking), inside the plate
+
+## Turn 2b done
+
+- **E12b-1.** Rule 16.12's rows and transcript and Rule 16.10's 0:30 words, as above. Every figure is still S04's (47.7, 3.7, near 75, 23 to 27).
+- **E12b-2.** The scale line over the storyboard; the cell labels read "0:08" and "0:30".
+- Requests 2 and 3 of turn 2 are answered by these.
+
+## Turn 2b tested
+
+- `--page-words all` before (01:19 UTC) and after: byte for byte the same (`cmp`), so A21's words, and its plate, do not move.
+- `--check` under the lock (01:20:45 UTC): exit 0, 13 rules, 28 specimens, 82,189 bytes. The plain run in the same hold: exit 0. An MD5 list of every file under `work/build` before and after the hold: only `s-16-10-correct.html` and `s-16-12-correct.html` moved; `16-photography.json` and the manifest did not.
+- `git diff --stat` at 01:20:51 UTC against `5c887bee`: `phase4_ch16_build.py` (29 insertions, 22 deletions), `s-16-10-correct.html`, `s-16-12-correct.html`, and the data lead's notes, which are not mine. A word diff of the two plates shows only the scale line, the two labels, the 0:30 survey words and Rule 16.12's rows and transcript.
+- A script scan of the strings this pass added (28 strings): em and en dashes 0, fillers 0, corporate verbs 0, hedges 0, straight apostrophes 0; one "no", in the generator's own stop message, not reader text.
+
+## Turn 2b not tested
+
+- The two plates in a browser: the line's width is a font-metric estimate, and the cells' level tops follow from equal one-line labels, not from a look. The guide check and a strict build were not run this pass.
+
+Turn 2b done, 01:21 UTC
