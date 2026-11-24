@@ -7875,3 +7875,17 @@ The main session posted chat 11b's plan for chapter 21 with four questions (Q11b
 |---|---|---|
 | DR-327 | Chat 12b proceeds as handoff V34 proposes (its section 2): C16-V's short second pass (the kit's vertical video frame for chart S04) with CD-R1 to CD-R5, CD-S6, A18's `sheettop` crop and A18's sign-off by name; the weight options measured again on the final page; the guide check's self-test and the four-width guide check; Phase 4 board 1; the chapters page as version 16. Chat 12b starts after the opening checks without another go, unless the opening finds something that changes the plan | Dustin, November 23: "Let's proceed as recommended." |
 | DR-328 | Q12-1: the data keys stay on "Oath & Action Brand Polish - Round 2" alone; Dustin chooses that environment in the menu before each chat's first message, and no form saves them on "Oath & Action" | Dustin, November 23, as recommended |
+
+## Chat 12b, November 24, 2026 (Phase 4)
+
+### Main session, opening
+
+| # | Decision | Reason |
+|---|---|---|
+| D4-414 | CD-R2: a stored name inside an atlas tag line takes proportional figures (`font-variant-numeric: normal` on the name), and the data-label token keeps its tabular figures for numbers | The tabular setting spaced the stored hyphen in "low-earning" as "low - earning"; the stored word prints as stored (DR-37), and tabular figures exist for numbers in columns (Rule 06.3) |
+| D4-415 | Chat 12b opened on `claude/affectionate-euler-vqcnoo`; it fetched `claude/friendly-brahmagupta-tonmfa` (tip `74a731a2`, Dustin's answers at chat 12's close) and works on it, as Dustin's opening message sets. V11's three setup steps ran on the fresh container; the atlas extract's SHA-256 begins ef1028ac87e402e3 | V19: fetch the remote tip first; V11's setup |
+| D4-416 | This session runs on "Oath & Action Brand Polish - Round 2", as DR-300 and DR-328 set. The three key tests pass (23:57 UTC, November 23): api.open.fec.gov 200, api.congress.gov 200, and `CENSUS_API_KEY` set, with api.census.gov 200 | Dustin's "test each with one request before use" |
+| D4-417 | The strict build passes as committed (23:58 UTC, November 23, to scratch): exit 0, 0 warnings, 0 stale plates, 14,395,945 bytes, 22 chapters, 409 rules, 766 specimens, the figures V34 records; the working tree stays clean | V34 section 1's figures |
+| D4-418 | The work tracker's row `c11b` is set active | V34 section 2A |
+| D4-419 | Seven owners run under `work/handoffs/phase-4/20261124_Chat-12b-Brief.md`: Engineer W (A21, the video frame), Engineer A (CD-R1 to CD-R5, CD-S6, `sheettop`, CE16's chapter 21 part), the design director (rulings, A21's placement, the opener, in turn 1), the editor (turn 2), Engineer M (the weight options, in scratch), and the board builder from the start on the parts that wait on no fix; the data lead and the creative director start when the builds land | DR-327; lean runs: the board and the weight table start early so the board is built once, after the last fix |
+| D4-420 | The clone is deepened by 60 commits so the board builder can build commit bc91667e's page in scratch, for PR-M1's "before" on Rule 15.15's plate | V34: the clone is shallow; a scratch build from `git archive` shows the page as it was carried, with no checkout |
