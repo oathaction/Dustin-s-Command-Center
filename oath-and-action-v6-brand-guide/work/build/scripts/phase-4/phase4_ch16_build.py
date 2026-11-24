@@ -3,6 +3,9 @@
 Usage:
     python3 -I work/build/scripts/phase-4/phase4_ch16_build.py           write the chapter, specimens and manifest
     python3 -I work/build/scripts/phase-4/phase4_ch16_build.py --check   build everything in memory and report, write nothing
+    python3 -I work/build/scripts/phase-4/phase4_ch16_build.py --page-words A21
+                                                                         print A21's words as JSON (A21 or "all"), for
+                                                                         the application kit's video frames; writes nothing
 
 Writes:
     work/build/guide/chapters/16-photography.json      the chapter, in the content contract chapter 17 follows
@@ -33,6 +36,7 @@ Specimen checks are stage_a_systems_build.Ctx.spec(): no heading or landmark ele
 px font size; every class is prefixed sx-.
 """
 import argparse
+import csv
 import importlib.util
 import json
 import pathlib
@@ -1268,8 +1272,21 @@ VF = (f'.sb{{display:grid;grid-template-columns:minmax(0,1fr);gap:24px 16px;alig
       '.said{margin-top:8px}')
 
 
+# CD-S7 (chat 12b, ruling DD12b-R1): the storyboard's chart moments are the application kit's A21 frames at 1920 by 1080,
+# chart S04 drawn by the chart kit with its source line and caption band; each sits in its 200 px cell, so its label
+# states the scale at a 1440 px window: (200 - 2 px of frame edge) / 1920, rounded to 5 percent
+A21_KEYS = {'chart': '1920-light-chart', 'gap': '1920-light-gap'}
+SB_CELL = 200
+SB_PCT = int(5 * round((SB_CELL - 2) / 1920 * 100 / 5))
+
+
 def frame(t, kind, label, said, r):
     """One storyboard frame at 16:9: its start time above, its picture in type and tokens, the words said below."""
+    if kind in A21_KEYS:
+        scale = r.get('frame_scale', 'at {pct} percent').format(pct=SB_PCT)
+        words = f'<p class="said sm">{said}</p>' if said else ''
+        return (f'<div><p class="lab num">{t} · {scale}</p><div class="mt8">{a21(A21_KEYS[kind], switch="none")}</div>'
+                f'{words}</div>')
     if kind == 'title':
         box = f'<div class="vf dkf"><span>{r["question"]}</span><span class="slot">{r["slot"]}</span></div>'
     elif kind == 'end':
@@ -1293,7 +1310,9 @@ def s16_10_correct():
     html = css(VF) + f'<div class="w"><p style="margin-bottom:16px">{ILLUS}</p><div class="sb">{cells}</div></div>'
     return spec('s-16-10-correct', html, '16.10', r['correct_alt'], illustrative=True,
                 notes='The video is not made, so the plate carries the Illustrative label at its head; every figure is '
-                      'chart S04’s (work/build/chart-kit/specs/s04.json). The step frame holds the view’s one working red.')
+                      'chart S04’s (work/build/chart-kit/specs/s04.json). The 0:08 and 0:30 cells are the application '
+                      f'kit’s A21 frames at 1920 by 1080 (views 1920-light-chart and 1920-light-gap), shown at {SB_PCT} '
+                      'percent. The step frame holds the view’s one working red.')
 
 
 def s16_10_failure():
@@ -1303,39 +1322,36 @@ def s16_10_failure():
     return spec('s-16-10-failure', html, '16.10', r['failure_alt'], illustrative=True)
 
 
-CAPF = ('.v9{position:relative;width:270px;max-width:100%;aspect-ratio:9/16;border:1px solid var(--oa-color-border-strong);flex:none}'
-        '.v9 .in{position:absolute;left:16px;right:16px;top:16px}'
-        '.safe{position:absolute;left:4%;right:4%;top:62%;bottom:20%;border:1px solid var(--oa-color-border-hairline);'
-        'display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:6px}'
-        '.safe .lab{color:var(--oa-color-text-secondary);text-transform:none;letter-spacing:0}'
-        f'.cb{{background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);padding:4px;white-space:nowrap;'
-        f'{ty("dataLabel")};text-align:center}}'
+# CD-S7 (chat 12b, ruling DD12b-R1): Rule 16.11's frame is the application kit's A21 at 1080 by 1920, placed in a 270 px
+# wrapper, so it shows at a quarter (contract W-C3: the frame grows to its wrapper and never past its true width); the
+# failure plate places the same frame with the automatic caption, so the caption is its one fault (CD-S9)
+CAPF = ('.v9{width:270px;max-width:100%;flex:none}'
         f'.code{{margin:8px 0 0;padding:16px;border:1px solid var(--oa-color-border-hairline);{ty("bodySmall")};white-space:pre;'
         'font-variant-numeric:tabular-nums;overflow-x:auto;max-width:100%}')
 
 
-def vertical(r, lines, bad=False):
-    cap_lines = '<br>'.join(lines)
-    ill = f' {ILLUS}' if bad else ''
-    return (f'<div><p class="lab">{r["scale_note"]}</p><div class="v9 mt8"><p class="in sm">{r["plh"]}</p>'
-            f'<div class="safe"><p class="lab">{r["safe"]}</p><p class="cb">{cap_lines}</p></div></div>'
-            + (f'<p class="mt8">{ill.strip()}</p>' if bad else '') + '</div>')
+def vertical(r, key, bad=False):
+    return (f'<div><p class="lab">{r["scale_note"]}</p><div class="v9 mt8">{a21(key, switch="on")}</div>'
+            + (f'<p class="mt8">{ILLUS}</p>' if bad else '') + '</div>')
 
 
 def s16_11_correct():
     r = R['16.11']
-    html = (css(CAPF) + '<div class="w"><div class="row">' + vertical(r, r['lines'])
+    html = (css(CAPF) + '<div class="w"><div class="row">' + vertical(r, '1080-light')
             + f'<div style="min-width:0;max-width:26rem"><p class="lab">{r["file_head"]}</p><pre class="code mt8" tabindex="0" role="group" aria-label="{r["file_head"]}"><code>{r["vtt"]}</code></pre></div>'
             '</div></div>')
     return spec('s-16-11-correct', html, '16.11', r['correct_alt'], illustrative=True,
-                notes='Drawn at a quarter of 1080 by 1920, so the caption band’s 13 px words stand for about 52 px on the '
-                      'real frame; chapter 23 sets the real size. The video is not made.')
+                notes='The application kit’s A21 frame, 1080 by 1920 (view 1080-light), shown at a quarter: chart S04 from '
+                      'the chart kit, its source line and the caption band inside the vertical safe area (DD12b-R1). The '
+                      'frame is a picture whose alt carries every word (D4-211). The video is not made.')
 
 
 def s16_11_failure():
     r = R['16.11']
-    html = css(CAPF) + '<div class="w">' + vertical(r, r['bad_lines'], bad=True) + '</div>'
-    return spec('s-16-11-failure', html, '16.11', r['failure_alt'], illustrative=True)
+    html = css(CAPF) + '<div class="w">' + vertical(r, '1080-light-misheard', bad=True) + '</div>'
+    return spec('s-16-11-failure', html, '16.11', r['failure_alt'], illustrative=True,
+                notes='The same A21 frame with the automatic caption (view 1080-light-misheard), so the caption is the '
+                      'one fault.')
 
 
 TR = (f'.tx{{margin-top:24px;max-width:40rem}}.tx .lnk{{text-decoration:underline;text-underline-offset:0.2em}}')
@@ -1405,6 +1421,116 @@ def s16_13_failure():
                 notes='Picture of a fault: Stone words on Charcoal, 3.10 to 1, as the empty player it copies.')
 
 
+# ------------------------------------------------------------------------------------------------ A21's words (CD-S7)
+# The application kit's video frames on chart S04 (A21, Engineer W's renderers/video-frame.mjs) read their words from
+# this file through --page-words, as chapter 20's pages do (contract W-C2 in 20261124_Chat-12b-Engineer-W-Notes.md;
+# ruling DD12b-R1 in 20261124_Chat-12b-Design-Director-Notes.md). Every word is the editor's, from R['16.10'] and
+# R['16.11']. Where the editor has not yet written a frame's own words (R['16.10']['frame_captions'] by time,
+# R[...]['frame_alts'] by view key; R['16.11']['safe_labels'], ['switch'] and ['signature'] pass through when written), the
+# layout composes them from the words
+# already stored, and the entry lists each composed key under 'composed', so nothing passes as written.
+S04_SPEC = json.loads((ROOT / 'work/build/chart-kit/specs/s04.json').read_text())
+# view key: (the rule whose plate places it, the moment, the stored caption lines it shows)
+A21_VIEWS = {
+    '1080-light': ('16.11', '0:08', 'lines'),
+    '1080-light-misheard': ('16.11', '0:08', 'bad_lines'),
+    '1920-light-chart': ('16.10', '0:08', None),
+    '1920-light-gap': ('16.10', '0:30', None),
+}
+FUNCTION_WORDS = {'a', 'an', 'and', 'or', 'the', 'of', 'to', 'from', 'in', 'on', 'at', 'by', 'for', 'with', 'between'}
+
+
+def two_lines(sentence, most=46):
+    """A sentence broken in two near its middle, never after a function word, each line within `most` characters."""
+    words = sentence.split(' ')
+    best = None
+    for i in range(1, len(words)):
+        a, b = ' '.join(words[:i]), ' '.join(words[i:])
+        if len(a) > most or len(b) > most or words[i - 1].lower().strip(',') in FUNCTION_WORDS:
+            continue
+        cost = abs(len(a) - len(b))
+        if best is None or cost < best[0]:
+            best = (cost, [a, b])
+    return best[1] if best else [sentence]
+
+
+def a21_caption(key, composed):
+    rid, t, stored = A21_VIEWS[key]
+    if stored:
+        return list(R[rid][stored])
+    own = R['16.10'].get('frame_captions', {}).get(t)
+    if own:
+        return list(own)
+    composed.append(f'frames.{key}.caption')
+    h, m, s = R['16.11']['vtt'].split('\n')[2].split(' --> ')[0].split(':')    # the WebVTT cue's start, 00:00:08.000
+    if t == f'{int(h) * 60 + int(m)}:{int(float(s)):02d}':                     # is the moment "0:08": the same lines
+        return list(R['16.11']['lines'])
+    said = next(s for tt, _, _, s in R['16.10']['frames'] if tt == t)
+    return two_lines(said.split('. ')[0].rstrip('.') + '.')
+
+
+def a21_alt(key, lines, composed):
+    rid, t, _ = A21_VIEWS[key]
+    own = R[rid].get('frame_alts', {}).get(key)
+    if own:
+        return own
+    composed.append(f'frames.{key}.alt')
+    lab, wh = S04_SPEC['labels'], S04_SPEC['where']
+    rates = {}                                        # the drawing prints each row's two rates, so the alt gives them
+    with open(ROOT / f'work/build/data/{S04_SPEC["dataset"][0]}.csv', newline='') as fh:
+        for row in csv.DictReader(fh):
+            if row['base'] == wh['base'] and row['age_group'] in wh['age_group'] and int(row['year']) in wh['year']:
+                rates[(row['age_group'], int(row['year']))] = f'{float(row["voted_pct"]):.1f}'
+    y0, y1 = wh['year']
+    rows = '; '.join(f'{lab["categories"][k]}, {rates[(k, y0)]} in {y0} and {rates[(k, y1)]} in {y1}, {lab["row_words"][k]}'
+                     for k in lab['categories'])
+    kind = 'A vertical video frame, 1080 by 1920,' if key.startswith('1080') else 'A video frame, 1920 by 1080,'
+    return (f'{kind} at {t}, L8 in its top right corner. Chart S04: {S04_SPEC["alt"]} Its rows: {rows}. '
+            f'{S04_SPEC["measure_line"]}. On screen under the chart: {S04_SPEC["source_line"]} '
+            f'The caption band reads: {" ".join(lines)}')
+
+
+def page_words(aid):
+    if aid == 'all':
+        return {'A21': page_words('A21')}
+    if aid != 'A21':
+        raise SystemExit(f'no application {aid} in chapter 16; use A21 or all')
+    composed, frames = [], {}
+    for key, (rid, t, _) in A21_VIEWS.items():
+        lines = a21_caption(key, composed)
+        frames[key] = {'time': t, 'caption': lines, 'alt': a21_alt(key, lines, composed)}
+    out = {'frames': frames, 'source': S04_SPEC['source_line'], 'name_plate': None}
+    for k in ('safe_labels', 'switch', 'signature'):          # the kit's defaults stand until the editor writes these
+        if R['16.11'].get(k):
+            out[k] = R['16.11'][k]
+    out['composed'] = composed
+    for key, f in frames.items():
+        for i, x in enumerate(f['caption'] + [f['alt']]):
+            C.check_copy(x, f'A21 {key} [{i}]')
+    return out
+
+
+# The plates that place A21 wait for the kit (contract W-C3): until plates/a21.json holds every view a plate names,
+# the generator writes nothing
+A21_PLATE = ROOT / 'work/build/app-kit/plates/a21.json'
+
+
+class Waiting(Exception):
+    """A plate that places a kit frame the kit has not drawn yet."""
+
+
+def a21(key, switch=None):
+    """The kit's placeholder for one A21 view (contract W-C3), placed only once the kit has drawn that view. `switch`:
+    "none" (no safe-area switch: a 200 px storyboard cell has no room for one; the exports carry the overlay) or "on" (the
+    switch starts on: Rule 16.11 teaches the caption-safe area), DD12b-Q3 as Engineer W answered it."""
+    if not A21_PLATE.exists():
+        raise Waiting('the kit has not drawn A21 yet (work/build/app-kit/plates/a21.json)')
+    if key not in {v.get('key') for v in json.loads(A21_PLATE.read_text()).get('views', [])}:
+        raise Waiting(f'the kit has not drawn A21 {key} yet')
+    sw = f' data-oa-app-switch="{switch}"' if switch else ''
+    return f'<div data-oa-app="A21" data-oa-app-views="{key}"{sw}></div>'
+
+
 PLATES = [s_opener, s16_1_correct, s16_1_failure, s16_2_correct, s16_2_failure, s16_3_correct, s16_3_failure,
           s16_4_correct, s16_4_failure, s16_5_correct, s16_5_failure, s16_6_correct, s16_6_failure, s16_7_correct,
           s16_7_failure, s16_8_correct, s16_8_failure, s16_9_correct, s16_9_failure, s16_kinds, s16_10_correct,
@@ -1413,8 +1539,12 @@ PLATES = [s_opener, s16_1_correct, s16_1_failure, s16_2_correct, s16_2_failure, 
 
 # ------------------------------------------------------------------------------------------------ the chapter
 def build_chapter():
+    waiting = []
     for f in PLATES:
-        f()
+        try:
+            f()
+        except Waiting as e:
+            waiting.append(str(e))
     rules = []
     for rid in sorted(R, key=lambda k: int(k.split('.')[1])):
         r = R[rid]
@@ -1445,19 +1575,30 @@ def build_chapter():
         'related_chapters': [{'chapter': c, 'reason': t} for c, t in W['related_chapters']],
         'sources': W['sources'],
     }
-    return ch
+    return ch, waiting
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--check', action='store_true', help='build in memory and report; write nothing')
+    ap.add_argument('--page-words', metavar='ID', help='print one application’s words as JSON (A21, or all)')
     a = ap.parse_args()
-    ch = build_chapter()
+    if a.page_words:
+        print(json.dumps(page_words(a.page_words), ensure_ascii=False, indent=1))
+        return
+    ch, waiting = build_chapter()
     B.check_chapter(ch)
+    for w in waiting:
+        print(f'  waiting: {w}')
     used = {ch['opener']} | {x['specimen'] for x in ch['extras']}
     for rr in ch['rules']:
         used |= {rr['correct']['specimen'], rr['failure']['specimen']}
     ours = set(ctx.specs)
+    if waiting:
+        if a.check:
+            print(f'  {len(waiting)} plate(s) wait for the kit; nothing would be written')
+            return
+        raise SystemExit('not written: plates wait for the kit (A21)')
     if used - ours or ours - used:
         raise SystemExit(f'specimens missing {sorted(used - ours)} unused {sorted(ours - used)}')
     for sid, s in ctx.specs.items():

@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "The sheet for Domain D04, Congress, agencies and public services | The Register | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-23T19:59:21.030Z",
+ "written": "2026-11-24T00:28:50.036Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -602,16 +602,16 @@
   "work/boards/phase-2/atlas-editorial/01-times-explainer/build_system.py": "d2e305429df32e8eeff73ed187524786a1e9be8e8baef2595ff659521d555e7f",
   "work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json": "e8e36a9fbe6100c3a88bfaad14038a2f8797ef5de0e864b465eb1ba538a2f74c",
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
-  "work/build/app-kit/lib.mjs": "0cd9ee87f6982640087617d6272d5259171f4aa09966dabc57acf37da0ce1670",
-  "work/build/app-kit/oa-app.mjs": "4499b0877be35e48878cd37014d0c4f0d6b4f471652c28d3d7aabb0637096883",
-  "work/build/app-kit/renderers/atlas-page.mjs": "e5c3ef3c0660bfa1a47b19ac60ae53d1e2b278bf713ca17e8a6c9b26fc5bbc15",
+  "work/build/app-kit/lib.mjs": "846b7680f4351b0dfcea7141e407f9ce3c1c4a333c757c10ced115e39497dcb6",
+  "work/build/app-kit/oa-app.mjs": "5ebcbacf8e4ea85d2b0e8ad1b79733fa3b065a898992e5b04b03cd35ae223b8f",
+  "work/build/app-kit/renderers/atlas-page.mjs": "29d5bc1fa1415e5da72ffa3c5c7fc8053ce75df0f5a6f6997cfbeab5f8c740f7",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "23e5d9b1d944363d9c75e961d0d888d061864a6618b93548c3d345286359b808",
   "work/build/app-kit/specs/a13-atlas-register.json": "91493bb75dda33fa51211de0d3a2cd2613f9c3d251ff61f9ac92c2234146190a",
   "work/build/app-kit/tools/atlas_contrast.py": "c9f64745108cf08b8bc91dd7023fadd8adacae894330a57f8fa93a0fb60d0a3e",
   "work/build/app-kit/tools/atlas_figures.py": "db5754cac8ddda90b9c2d6976c02abe9bb01997412e5ac4af3c2ee20b07fffa1",
-  "work/build/app-kit/tools/atlas_test.py": "ac65248046945ec58c5c655f6792b7bb25a1ef4cf68353a384136b3699999f99",
+  "work/build/app-kit/tools/atlas_test.py": "7488aecf15daaad6fe9e07ad70c8ac2f2d54522ed9afccb73a714c084cd6aa3a",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",
   "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg": "90034ceaf3998a2d91217e452b5cbc054bfc4a56e668fd267849ba4fd6f1fef1",
   "work/build/data/v7-reconciliation-rows.json": "f26e82455bdd0da82b7b7f597cde02c5521ab0beca559469a11e22a4012dcd66",
@@ -645,20 +645,5 @@
   "work/extract/atlas-v7-data.json": "ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2",
   "work/handoffs/phase-3/20261111_Palette-Proposal.json": "8f86bead8cb0c7f9df535ab3558ba8befd6a1062f2f5df8ff693806499086f5f",
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
- },
- "css_pruned": {
-  "full": 78558,
-  "placed": 59068,
-  "rules_kept": 458,
-  "rules_dropped": 105,
-  "frames_same": 62
- },
- "atlas_test": {
-  "ran": "2026-11-23T20:01:09.532Z",
-  "pass": 240,
-  "fail": 0,
-  "first_fail": null,
-  "self_test": "PASS",
-  "self_test_misses": []
  }
 }

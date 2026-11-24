@@ -107,7 +107,8 @@ export const PLATE_CSS = `
 // The overlay, in the application's own units (px), from named layers, each drawn as a 2 px dashed edge (scaled with the
 // drawing) with its name on a chip in the label style:
 //   { x, y, w, h, label, kind: 'edge' (dashed, default) | 'solid' | 'shade' (dims what lies outside the box) | 'hatch'
-//     (hatches what lies outside the box) | 'cols' (cols: [[x, w], ...] columns of the box), sw (stroke width, default 2),
+//     (hatches what lies outside the box) | 'hatch-in' (hatches the box itself, with a solid edge; chat 12b) | 'label' (the
+//     chip alone; chat 12b) | 'cols' (cols: [[x, w], ...] columns of the box), sw (stroke width, default 2),
 //     ls (label size, default 26), lx, ly (label place) }
 export function overlay(w, h, layers = []) {
   if (!layers.length) return '';
@@ -117,16 +118,19 @@ export function overlay(w, h, layers = []) {
     const out = `M0 0H${w}V${h}H0Z M${L.x} ${L.y}V${L.y + L.h}H${L.x + L.w}V${L.y}Z`;
     if (L.kind === 'shade') p.push(`<path class="shade" fill-rule="evenodd" d="${out}"/>`);
     if (L.kind === 'hatch') p.push(`<path class="hatch" fill-rule="evenodd" d="${out}"/>`);
+    // chat 12b (A21): a box hatched inside, such as an app's button column, with a solid edge
+    if (L.kind === 'hatch-in') p.push(`<rect class="hatch" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}"/><rect class="solid" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}" stroke-width="${sw}"/>`);
     if (L.kind === 'cols') for (const [cx, cw] of L.cols) p.push(`<rect class="col" x="${cx}" y="${L.y}" width="${cw}" height="${L.h}"/>`);
     // chat 11: a circle (a maskable icon's safe circle): cx, cy, r
     if (L.kind === 'circle') p.push(`<circle class="edge" cx="${L.cx}" cy="${L.cy}" r="${L.r}" stroke-width="${sw}" stroke-dasharray="${6 * sw} ${4 * sw}"/>`);
-    if (L.kind !== 'cols' && L.kind !== 'circle') p.push(`<rect class="${L.kind === 'solid' ? 'solid' : 'edge'}" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}" stroke-width="${sw}"${L.kind === 'solid' ? '' : ` stroke-dasharray="${6 * sw} ${4 * sw}"`}/>`);
+    // chat 12b: 'label' is a chip alone (an inset's figure), with no box of its own
+    if (L.kind !== 'cols' && L.kind !== 'circle' && L.kind !== 'hatch-in' && L.kind !== 'label') p.push(`<rect class="${L.kind === 'solid' ? 'solid' : 'edge'}" x="${L.x}" y="${L.y}" width="${L.w}" height="${L.h}" stroke-width="${sw}"${L.kind === 'solid' ? '' : ` stroke-dasharray="${6 * sw} ${4 * sw}"`}/>`);
     if (L.label) {
       const tx = L.lx ?? L.x + 8, ty = L.ly ?? L.y + 8, tw = Math.round(L.label.length * ls * 0.68 + ls * 0.8);
       p.push(`<rect class="chip" x="${tx}" y="${ty}" width="${tw}" height="${Math.round(ls * 1.6)}"/><text x="${tx + ls * 0.4}" y="${ty + ls * 1.12}" font-size="${ls}">${esc(L.label)}</text>`);
     }
   }
-  const hatch = layers.some((L) => L.kind === 'hatch') ? '<defs><pattern id="oa-app-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="3" height="8" style="fill:var(--oa-color-text-primary);fill-opacity:.45"/></pattern></defs>' : '';
+  const hatch = layers.some((L) => L.kind === 'hatch' || L.kind === 'hatch-in') ? '<defs><pattern id="oa-app-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="3" height="8" style="fill:var(--oa-color-text-primary);fill-opacity:.45"/></pattern></defs>' : '';
   return `<g class="oa-app-safe" aria-hidden="true">${hatch}${p.join('')}</g>`;
 }
 

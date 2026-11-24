@@ -190,7 +190,15 @@
   "alt": "Small boxes, one for each first and opening screen of the home page, the article and the Act page at 1440 px, each with its Charcoal panel drawn in place and its measured Newsprint, dark and red shares beside it.",
   "illustrative": false,
   "notes": "Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5). Panels that touch side by side at one height (the pillar row’s four cells) draw and count as one band, and a section’s panel already in view in a first screen is drawn there from the 1440 px export (CE2).",
-  "readable": true
+  "readable": true,
+  "kit_inputs": {
+   "work/build/app-kit/plates/a06.json": "aca5382cc10e7b070f8bb458116b79f3f53294859233a736822354b5b9e0cca8",
+   "work/build/app-kit/plates/a07.json": "72b58e21c04373d362428c0b8bfcfe4c560e22b61d7f735ae0dc5a56dbf1ceeb",
+   "work/build/app-kit/plates/a08.json": "0523f0b92cc05ad643ca78d0f46e9cc8c332830ff1baf6b1b9e4ce97f1963d6f",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-1440-Light.png": "098160c6f9d5bd87015490655ccb9d2116015f57c3bbf8b47bd31e88096b9317",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-1440-Light.png": "f68f67839c75c49bb1498115ca4d3f446612b63a3c66441829a527a7a1a3b1db",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Light.png": "363b8009e8ebeb948b2c5ac5881064ad78363449945353208cfd23e1483a5fd1"
+  }
  },
  "s-20-9-failure": {
   "chapter": "20",
@@ -208,7 +216,36 @@
   "alt": "A table of the chapter’s export files: each application, its file name and its pixel size.",
   "illustrative": false,
   "notes": "Read from the kit’s exports manifest; each size read from its file.",
-  "readable": true
+  "readable": true,
+  "kit_inputs": {
+   "work/build/exports/phase-4/20261121_Phase-4-Exports-Manifest.json": "aad71643daf98ad5509efba3ca6dca92cbf905cf1f8c4149f558516c39af0e04",
+   "work/build/exports/phase-4/20261121_Web-Menu-Open-360-Light.png": "8e9a6e42e04b0566e6819b85199e7a1bb982bad0fac13c0ed5f507a5930ad5be",
+   "work/build/exports/phase-4/20261121_Web-Menu-Open-390-Dark.png": "45cf78e09fc2736de8952af346a9d0a0d8144b84c0a26817dedcb9343f5d2d74",
+   "work/build/exports/phase-4/20261121_Web-Menu-Open-390-Light.png": "03ec01f78113ef040e55769e7822676dbcae49cb64a27545c194c8651359889f",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-1024-Light.png": "ada3a4fa0cbeff74c985b42e1352813daa440cbe3273ca0931a4c3c20c1b8cdf",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-1440-Dark.png": "191334bd4545b9281407d9e4ed809b11795baccb9dd4921952c23d070b8a0138",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-1440-Light.png": "098160c6f9d5bd87015490655ccb9d2116015f57c3bbf8b47bd31e88096b9317",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-360-Light.png": "6697caf641928429df227d5ec0078899e35d17ea30ee8454deff87762a7fb1d3",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-390-Dark.png": "130f421efd20e77b5239584c3011f9ca2a9bf834f8356e1b74772674e181cd29",
+   "work/build/exports/phase-4/20261121_Web-Home-Page-390-Light.png": "4c71b9303177c6a0d5bea1dcc82faae882f37df011a4d7a2cc844b50c786a865",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-1024-Light.png": "e24f6157b33c33b48ce1f04b8a6d426328d8e9deea0ee1bcffdcaa7192bb30ff",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-1440-Dark.png": "d2f31d7144ae874677e37590b0dfc73e3525690b57ac60c0bdedd5559b44b172",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-1440-Light.png": "f68f67839c75c49bb1498115ca4d3f446612b63a3c66441829a527a7a1a3b1db",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-360-Light.png": "e808762a328ca0c21cdedefcb5d691d48a0bfce2dfbcbd0f250d064acc5e0407",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-390-Dark.png": "67e749fd1d445a22c3fa2d51b06883eeef8df22ddb383329332a2b8bfc455098",
+   "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-390-Light.png": "5270c09365ae985446e058a8a527dbc16706df52ac71f447e25fc49c3fc4245f",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1024-Light.png": "227d1d8674819b2da80213985732274ddcd816bb151503672200444a99589ea4",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Dark.png": "bffce124aeafb9a953273eba19e4285040d1954efd1095ad9a4fcce1771cde58",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Light.png": "363b8009e8ebeb948b2c5ac5881064ad78363449945353208cfd23e1483a5fd1",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-360-Light.png": "32afd20d4acbeaafc5cd567619d1f8a8ab3d2d6ac6740729e903467eff7bd076",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Dark.png": "600d8233aa061a4346d890128a006f671fceb604c8e57eaadde36d622c7fc00a",
+   "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-390-Light.png": "9344a29f6a68e2cad810ba77a8adab5effba607d3a1263f662f171279b67b3f0",
+   "work/build/exports/phase-4/20261121_Web-Share-Preview-Special-Districts-1200x630.png": "54f8cb8974d9a2fff0d0b3867b18fa4cc36a2f57872ae4c293d24075ade7da8d",
+   "work/build/exports/phase-4/20261121_Web-Apple-Touch-Icon-180.png": "9d3a8cdfd65176ed4656b0bab93fc34d646c96e0087577cffff1c6d3790a6795",
+   "work/build/exports/phase-4/20261121_Web-Favicon-16-32-48.ico": "1610106b2fb69d0646d98c3795a15bd70b59f77011801d6f0aba7e4ae0ef4169",
+   "work/build/exports/phase-4/20261121_Web-Manifest-Icon-192.png": "3558f95799f3ffa6151c5fe414b71bb67feade0c2c2e77dead4d3628c15e140a",
+   "work/build/exports/phase-4/20261121_Web-Manifest-Icon-512-Maskable.png": "3702de1906048ea9ea15ea024c835337911ce44aad538b61e875ddddafa8824d"
+  }
  },
  "s-20-opener": {
   "chapter": "20",

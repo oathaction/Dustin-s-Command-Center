@@ -25,6 +25,8 @@ PLACEHOLDER = re.compile(r'<div data-oa-app="(A\d{2,3})"((?:\s+data-oa-app-[a-z]
 ATTR = re.compile(r'data-oa-app-([a-z]+)="([^"]*)"')
 FRAME_ATTR = "data-oa-page-frame"
 # a page frame as the kit writes it, from its opening tag to the end of its svg, for the checks that leave it alone
+# a frame's overlay as lib.mjs overlay() writes it, the last child of the frame's svg (chat 12b, DD12b-Q3)
+OVERLAY_RE = re.compile(r'<g class="oa-app-safe" aria-hidden="true">.*?</g>(?=</svg></div>$)', re.S)
 FRAME_RE = re.compile(r'<div class="oa-app-frame[^"]*"[^>]*\sdata-oa-page-frame="[^"]*"[^>]*>.*?</foreignObject>.*?</svg></div>', re.S)
 
 STATE = {"types": {}, "plates": {}, "dir": PLATES, "words": {}, "symbols": {}}
@@ -96,7 +98,13 @@ def expand(src, sid, warn):
     def repl(m):
         attrs = dict(ATTR.findall(m.group(2) or ""))
         app_id, views = m.group(1), attrs.get("views", "").split()
-        unknown_attrs = sorted(set(attrs) - {"views", "title"})
+        unknown_attrs = sorted(set(attrs) - {"views", "title", "switch"})
+        # chat 12b (DD12b-Q3): data-oa-app-switch="none" places the frames without their overlays and with no switch (a frame
+        # too small for one, whose overlay is in the exports); "on" starts the plate's switch checked, so the overlay shows
+        # when the page loads and a reader can still switch it off
+        sw = attrs.get("switch")
+        if sw is not None and sw not in ("none", "on"):
+            warn(f"{sid}: data-oa-app-switch=\"{sw}\" for {app_id}; the hook reads \"none\" or \"on\" (DD12b-Q3)")
         if unknown_attrs:
             warn(f"{sid}: the placeholder for {app_id} carries data-oa-app-{unknown_attrs[0]}, which the hook does not read (contract C4)")
         data = _load(app_id)
@@ -152,6 +160,8 @@ def expand(src, sid, warn):
         for v in chosen:
             # one scale for the row: each frame grows by its true width and never past it
             fr = v["html"].replace('<div class="oa-app-frame"', f'<div class="oa-app-frame" style="flex:{v["w"]} 1 0;max-width:{v["w"]}px"', 1)
+            if sw == "none":
+                fr = OVERLAY_RE.sub("", fr)
             frames.append(fr)
         title = ""
         if "title" in attrs:
@@ -165,8 +175,9 @@ def expand(src, sid, warn):
             # contract C3: a frame with an overlay takes the plate's switch, a native checkbox that shows it by keyboard
             # with scripts off (PLATE_CSS's :has() rule reads it inside .oa-app-plate)
             words_ = html.escape(data.get("switch_words") or "Show the safe areas")
+            on = " checked" if sw == "on" else ""
             return (f'<div class="oa-app-plate" data-oa-app-switch="{html.escape(app_id)}">{title}<label class="oa-app-switch">'
-                    f'<input type="checkbox" name="{html.escape(sid)}-safe">{words_}</label>{row}</div>')
+                    f'<input type="checkbox" name="{html.escape(sid)}-safe"{on}>{words_}</label>{row}</div>')
         return title + row
     return PLACEHOLDER.sub(repl, src)
 
@@ -383,6 +394,23 @@ def self_test():
         w = []
         expand('<div data-oa-app="A99" data-oa-app-size="2"></div>', "s-20-x", w.append)
         check("an attribute the hook does not read warns", any("data-oa-app-size" in x for x in w))
+        # chat 12b (DD12b-Q3): the switch attribute; a frame with an overlay gets a switch, "none" takes both away, "on" checks it
+        data = json.loads((d / "a99.json").read_text())
+        ov = '<g class="oa-app-safe" aria-hidden="true"><rect class="edge" x="1" y="1" width="9" height="9"/></g>'
+        data["views"][0]["html"] = frame.replace("</foreignObject></svg></div>", "</foreignObject>" + ov + "</svg></div>")
+        (d / "a99.json").write_text(json.dumps(data))
+        reset(d)
+        w = []
+        out = expand('<div data-oa-app="A99" data-oa-app-views="390-light"></div>', "s-16-x", w.append)
+        check("a frame with an overlay brings the plate's switch, off", 'class="oa-app-switch"' in out and ov in out and " checked" not in out)
+        out = expand('<div data-oa-app="A99" data-oa-app-views="390-light" data-oa-app-switch="none"></div>', "s-16-x", w.append)
+        check('data-oa-app-switch="none" places the frame with no overlay and no switch', 'oa-app-switch' not in out and 'oa-app-safe' not in out
+              and out.count(FRAME_ATTR) == 1 and out.rstrip().endswith("</svg></div></div>"))
+        w = []
+        out = expand('<div data-oa-app="A99" data-oa-app-views="390-light" data-oa-app-switch="on"></div>', "s-16-x", w.append)
+        check('data-oa-app-switch="on" starts the switch checked', '-safe" checked>' in out and ov in out and not any("switch" in x for x in w))
+        expand('<div data-oa-app="A99" data-oa-app-switch="off"></div>', "s-16-x", w.append)
+        check("a switch value the hook does not read warns", any('data-oa-app-switch="off"' in x for x in w))
         hs_kept = head_styles()
         # the words: a plate whose generator now prints other words for it is stale; another page's words do not touch it
         gen = d / "gen.py"

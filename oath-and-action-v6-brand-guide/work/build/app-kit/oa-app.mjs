@@ -15,6 +15,7 @@
 //      the reds, a web page's height per width and its axe, keyboard, theme and reflow results;
 //   5. its plate (the drawing at true size in a frame that scales it, with its overlay) goes to OUT/<id>/plate.html, and a
 //      measurement page, OUT/measure.html, holds every plate on a page like the guide's.
+// A renderer that exports build() (chat 12b: video-frame, A21) does steps 2 to 5 itself and hands back its plates.
 // Then run tools/export_checks.py on OUT for the pixel checks, and check-dimensions.py on EXPORTS.
 // It never writes into the repository except the exports folder.
 import fs from 'fs';
@@ -313,7 +314,7 @@ function write_plate(dir, gp, read, R, spec) {
   // contract C4: the words a plate takes from the chapter generator are checked by their own hash (words_hash), so an edit
   // to another page's words leaves this plate fresh; the generator file itself is no input
   const GEN = 'work/build/scripts/phase-4/phase4_ch20_build.py';
-  const GENS = [GEN, 'work/build/scripts/phase-4/phase4_ch21_build.py'];
+  const GENS = [GEN, 'work/build/scripts/phase-4/phase4_ch21_build.py', 'work/build/scripts/phase-4/phase4_ch16_build.py'];
   const hash_of = (generator, ids) => {
     const wh = spawnSync('python3', ['-I', path.join(KIT, 'tools/app_plates.py'), '--words-hash', ids, '--generator', generator], { encoding: 'utf8', cwd: ROOT });
     if (wh.status !== 0 || !wh.stdout.trim()) throw new Error(`words hash for ${ids} in ${generator}: ${(wh.stderr || wh.stdout).trim()}`);
@@ -388,7 +389,19 @@ async function main() {
       // PR-S2 (chat 12): a content file names its exports' date (export_date), so a run order needs no --date to reproduce
       // them; --date still overrides it, and a content file with none takes today's
       const stem = (n) => `${o.date_set ? o.date : (spec.export_date || o.date)}_${n}`;
-      if (spec.type === 'social-post' || spec.type === 'report-page' || spec.type === 'share-image') {
+      if (typeof R.build === 'function') {
+        // chat 12b (A21, contract W-C4): a renderer that captures its own exports, runs its own checks and writes its own
+        // plate views (renderers/video-frame.mjs); a frame with a fault places no plate, and the build exits 1
+        const out = await R.build({ r, spec, o, browser, dir, facts, manifest, stem, fonts, tokens });
+        plates.push(...(out.plates || []));
+        if (out.kit_css) extra_page.kit_css = extra_page.kit_css || out.kit_css;
+        if (out.sprite) extra_page.sprite.push(out.sprite);
+        if (out.faults && out.faults.length) {
+          console.log(`  ~ ${spec.id}: ${out.faults.length} fault(s); no plate placed`);
+          out.faults.slice(0, 20).forEach((x) => console.log('    ' + x));
+          process.exitCode = 1;
+        } else if (spec.guide && out.guide) guide_plates.push({ spec, ...out.guide });
+      } else if (spec.type === 'social-post' || spec.type === 'report-page' || spec.type === 'share-image') {
         const html = export_page({ title: r.title || spec.plate_head, w: r.w, h: r.h, html: r.html, css: r.css, page: r.print || null });
         const pf = path.join(dir, 'export.html');
         fs.writeFileSync(pf, html);

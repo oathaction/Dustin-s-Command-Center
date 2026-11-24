@@ -343,11 +343,18 @@ def unnamed_first(pg):
         if hold is not None and nm_ in norm(text(hold)):
             continue
         # the name right after the chip, in the same run, past nothing but a space or a comma
-        after = ""
-        for sib in el.next_siblings:
-            after += text(sib) if isinstance(sib, Tag) else str(sib)
-            if len(after) > len(nm) + 8:
-                break
+        after, node = "", el
+        while node is not None:
+            for sib in node.next_siblings:
+                after += text(sib) if isinstance(sib, Tag) else str(sib)
+                if len(after) > len(nm) + 8:
+                    break
+            # CD-R3: a chip held to its marks sits in a ws-nb span, and the run reads on past the span
+            par = node.parent
+            if len(after) <= len(nm) + 8 and par is not None and par.name == "span" and "ws-nb" in (par.get("class") or []):
+                node = par
+                continue
+            break
         a = norm(after)
         if re.match(r'^[\s,]*"?' + re.escape(nm_), a):
             continue
@@ -840,6 +847,18 @@ def t12(pg):
             faults.append(f"question {q.get('data-pathway')}: no aria-pressed")
     if len(pressed) > 1:
         faults.append(f"{len(pressed)} questions pressed at once")
+    # CD-R1 (R19, item 2): with no question pressed, as the working page loads and as a load-state frame draws it, no part
+    # is lit and the status line is empty; and a home page's first screen draws that state, since its window never holds
+    # the questions, so a lit drawing there would answer a question the reader cannot see pressed
+    if pg.view == "home" and qs and not pressed:
+        lit0 = sorted({b.get("data-part") for b in pg.all('[data-part][data-lit="true"]')})
+        if lit0:
+            faults.append(f"no question pressed, and {', '.join(lit0)} lit (R19, CD-R1)")
+        st0 = pg.all(".wa-status")
+        if st0 and text(st0[0]):
+            faults.append(f"no question pressed, and the status line reads {text(st0[0])[:40]!r} (R19, CD-R1)")
+    if pg.view == "home" and pg.kind == "frame" and pg.key.endswith("-screen") and pressed:
+        faults.append(f"a first screen drawn with {pressed[0].get('data-pathway')} pressed, its question out of the window (CD-R1)")
     for q in pressed:
         if not q.select("svg use[href*='selected-check'], svg.oa-toggle-check"):
             faults.append(f"question {q.get('data-pathway')}: pressed with no check (AL-21)")
@@ -986,9 +1005,12 @@ def site_words():
 
 def t15(pg):
     faults, n = [], 1
+    # CD-R5 (PR-S8): a frame's page names the theme its view draws, so the guide's own theme never reaches into it
+    if pg.kind == "frame" and pg.root is not None and pg.root.get("data-oa-theme") != pg.theme:
+        faults.append(f"the frame's page names the theme {pg.root.get('data-oa-theme')!r} and its view draws {pg.theme!r}, so the guide's theme reaches it (PR-S8, CD-R5)")
     head = pg.root.select_one("header.oa-masthead") if pg.root else None
     if not head and pg.kind == "frame" and not pg.full:
-        return [], 0                       # a crop to a part carries its part alone (DD11C-Q6); the shell is read elsewhere
+        return faults, 1                   # a crop to a part carries its part alone (DD11C-Q6); the shell is read elsewhere
     if not head:
         return ["no site masthead"], n
     part_ = next((a for a in head.select(".oa-masthead-part, .oa-masthead-row-link") if text(a) == V["meta"]["title"]), None)
@@ -1064,6 +1086,11 @@ def t16(pg):
 FNS = {f"T{i}": f for i, f in enumerate([t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13, t14, t15, t16], 1)}
 
 
+def line_name(c):
+    """A check's name inside its line, in lower case after the code, an initialism keeping its capitals (CE16: "typed IDs")."""
+    return " ".join(w if re.match(r"^[A-Z]{2,}", w) else w.lower() for w in NAMES[c].split(" "))
+
+
 def run_page(pg, only=None):
     """One line a check for the page: (check, ok, line)."""
     out = []
@@ -1078,7 +1105,7 @@ def run_page(pg, only=None):
             out += [(c, False, f"FAIL {c} {pg.where}: {f}") for f in faults]
         else:
             extra = getattr(pg, "report", None) if c == "T10" else None
-            out.append((c, True, f"PASS {c} {pg.where}: {NAMES[c].lower()}, {n} read" + (f"; {extra}" if extra else "")))
+            out.append((c, True, f"PASS {c} {pg.where}: {line_name(c)}, {n} read" + (f"; {extra}" if extra else "")))
     return out
 
 
@@ -1225,10 +1252,17 @@ PLANTS = [
     ("T12", "home", '[data-pathway-answer="PW01"] [data-atlas-field="short_answer"] || [data-pathway-answer]:not([hidden])',
      lambda el, q: el.__setitem__("data-pathway-answer", "PW01") if el.has_attr("data-pathway-answer") else setattr(el, "string", V["pathways"][5]["short_answer"]),
      "a question's answer region holding another question's answer (R19, CD-M2)"),
+    ("T12", "home", '.wa-box[data-part]:not([data-lit]) || [data-part][data-lit="false"]', _set(**{"data-lit": "true"}),
+     "a part lit with no question pressed (R19, CD-R1)"),
+    ("T12", "home", "[data-pathway]", lambda el, q: (setattr(q, "key", "frame 1440-light-screen"), setattr(q, "kind", "frame"), setattr(q, "full", False),
+                                                     [x.__setitem__("aria-pressed", "false") for x in q.all("[data-pathway]")], el.__setitem__("aria-pressed", "true")),
+     "a first screen drawn with a question pressed out of its window (CD-R1)"),
     ("T13", "loop", "@style:-soup-contains('.ws ')", lambda el, q: el.append(NavigableString(".x{color:#ffffff}")), "a literal White in the page's style"),
     ("T14", "loop", "main", lambda el, q: setattr(q, "facts", {"words": [{"text": "small words", "size": 12, "color": "rgb(18, 18, 18)", "bg": "rgb(250, 247, 240)", "weight": "400"}]}), "words at 12 px"),
     ("T15", "loop", ".oa-masthead-part[aria-current]", lambda el, q: el.attrs.pop("aria-current"), "no current part in the site's masthead"),
     ("T15", "reform", "main", lambda el, q: setattr(q, "title", "Reform R-01, " + RF["R-01"]["title"] + " | " + V["meta"]["title"] + " | Oath & Action"), "a reform page whose tab title names another record (PR-S9)"),
+    ("T15", "home", "main", lambda el, q: (setattr(q, "kind", "frame"), setattr(q, "full", False), setattr(q, "theme", "light"), q.root.attrs.pop("data-oa-theme", None)),
+     "a light frame whose page names no theme, so the guide's dark reaches it (PR-S8, CD-R5)"),
     ("T16", "loop", "main", lambda el, q: el.append(BeautifulSoup("<p>Who Do They Answer To? Times Explainer</p>", "lxml").p), "a newspaper's name"),
     # the data lead's batch 1, job 4: the gaps, one plant each
     ("T1", "register", "main", lambda el, q: setattr(q, "facts", {**(q.facts or {}), "width": 390, "rowheads": [{"text": "Connection L10", "shown": False}]}), "a row's head hidden on a phone (request 15)"),

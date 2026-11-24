@@ -3375,6 +3375,8 @@
 .ws.wa .wa-read>*+*{margin-top:16px !important}
 .ws.wa .wa-tags,.ws.wa .wa-ev,.ws.wa .wa-cl{list-style:none;margin:16px 0 0;padding:0}
 .ws.wa .wa-tag{font-family:var(--oa-type-data-label-font-family);font-style:var(--oa-type-data-label-font-style);font-weight:var(--oa-type-data-label-font-weight);font-size:var(--oa-type-data-label-font-size);line-height:var(--oa-type-data-label-line-height);letter-spacing:var(--oa-type-data-label-letter-spacing);text-transform:var(--oa-type-data-label-text-transform);font-variant-numeric:var(--oa-type-data-label-font-variant-numeric);display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+/* CD-R2 (D4-414): a stored name in a tag line takes proportional figures; the data-label token keeps tabular figures for numbers */
+.ws.wa .wa-tag .wa-nm{font-variant-numeric:normal}
 .ws.wa .wa-weak{margin-top:8px !important}
 .ws.wa .wa-stepper,.ws.wa .wa-stw{min-width:0}
 .ws.wa .wa-choose{margin-top:48px;row-gap:24px}
@@ -3419,7 +3421,7 @@
 @container ws (min-width: 64em){.ws.wa .wa-op{grid-column:1/9}.ws.wa .wa-head>.wa-facts{grid-column:9/13;grid-row:1}
  .ws.wa .wa-two>:first-child{grid-column:1/5}.ws.wa .wa-two>:last-child{grid-column:5/13}
  .ws.wa .wa-two .wa-fig .sv{max-width:min(100%,640px)}
- .ws.wa .wa-choose>fieldset{grid-column:1/5}.ws.wa .wa-choose>.wa-panels{grid-column:5/13}
+ .ws.wa .wa-choose>fieldset{grid-column:1/5;align-self:start}.ws.wa .wa-choose>.wa-panels{grid-column:5/13}
  .ws.wa .wa-col7{grid-column:1/8}.ws.wa .wa-col8{grid-column:1/9}
  .ws.wa .wa-where>.wa-draw{grid-column:1/8}.ws.wa .wa-where>.wa-note{grid-column:8/13}
  .ws.wa .wa-grade>.wa-gh{grid-column:1/5}.ws.wa .wa-grade>.wa-rd{grid-column:5/13}.ws.wa .wa-remedy>.wa-rd{grid-column:span 4}}

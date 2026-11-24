@@ -6,6 +6,12 @@
  "view": "home",
  "pressed_question": "PW06",
  "every_variable": false,
+ "load_views": [
+  "1440-light-screen",
+  "390-light-screen",
+  "390-dark-screen"
+ ],
+ "load_views_why": "CD-R1: a first screen draws the page as it loads (R19: nothing pressed, nothing lit, no answer); the other frames keep pressed_question",
  "panels": [
   "System"
  ],

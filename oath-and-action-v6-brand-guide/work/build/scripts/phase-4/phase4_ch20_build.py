@@ -38,6 +38,7 @@ font size; every class is prefixed sx-.
 """
 import argparse
 import csv
+import hashlib
 import html as _html
 import importlib.util
 import json
@@ -1060,9 +1061,14 @@ INK_CHAR = ('color:var(--oa-color-text-primary-on-charcoal);--amp:var(--oa-color
             '--line:var(--oa-color-text-primary-on-charcoal)')
 
 
-def spec(sid, html, rule, alt, **kw):
+def spec(sid, html, rule, alt, kit_inputs=(), **kw):
     kw.setdefault('readable', True)
     ctx.spec(sid, prune(html), CH, rule, alt, **kw)
+    if kit_inputs:
+        # PR-S5 (chat 12b, chapter 20's half, as s21_16_correct() passes them): every kit file the plate prints from, with
+        # its SHA-256, so the guide build warns when the kit draws again after this generator ran
+        ctx.specs[sid]['meta']['kit_inputs'] = {str(f.relative_to(ROOT)): hashlib.sha256(f.read_bytes()).hexdigest()
+                                                for f in kit_inputs}
     return sid
 
 
@@ -1506,7 +1512,9 @@ def s20_9_correct():
                          f'<p class="fig">{s["newsprint"]:.1f} {sw["pct"]} {sw["news"]}</p>'
                          f'<p class="sub">{s["dark"]:.1f} {sw["dark"]}, {s["red"]:.1f} {sw["red"]}; {count(len(boxes), extra)}</p></div>')
     html = css(SCR) + f'<div class="w"><div class="strips">{"".join(cells)}</div></div>'
-    return spec('s-20-9-correct', html, '20.9', r['correct_alt'],
+    read = [KIT_PLATES / f'{a.lower()}.json' for a in ('A06', 'A07', 'A08')] + \
+        [EXPORTS / f for f in EXPORT_1440.values() if (EXPORTS / f).exists()]           # seen_first() reads the PNGs
+    return spec('s-20-9-correct', html, '20.9', r['correct_alt'], kit_inputs=read,
                 notes='Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5). Panels '
                       'that touch side by side at one height (the pillar row’s four cells) draw and count as one band, and a '
                       'section’s panel already in view in a first screen is drawn there from the 1440 px export (CE2).')
@@ -1567,7 +1575,9 @@ def s20_files():
                    f'<td class="n" data-k="{h[2]}">{_size_words(f["file"])}</td></tr>' for f in files)
     html = (css(FILES) + '<div class="w"><table class="tb"><thead><tr>' + ''.join(f'<th scope="col">{x}</th>' for x in h)
             + f'</tr></thead><tbody>{rows}</tbody></table></div>')
-    return spec('s-20-files', html, None, EXTRA_FILES['alt'],
+    read = [man[-1]] + [EXPORTS / f['file'] for f in files                           # _size_words() reads PNG and ICO files
+            if f['file'].endswith(('.png', '.ico')) and (EXPORTS / f['file']).exists()]
+    return spec('s-20-files', html, None, EXTRA_FILES['alt'], kit_inputs=read,
                 notes='Read from the kit’s exports manifest; each size read from its file.')
 
 

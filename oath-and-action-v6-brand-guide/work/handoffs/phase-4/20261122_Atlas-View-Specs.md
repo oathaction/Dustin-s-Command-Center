@@ -534,7 +534,7 @@ Routes whose points move with these rows: X to Your household and X to Technolog
 | `s-21-3-correct` | A pressed question and the parts it lights | **`1440-light-pair`** (A11, PW06 pressed: Wealth lit beside Voice unlit); **`1440-light-hub`** (A11): **`hub`** on the column of the hub that holds the pressed question, from its name to its last question; `390-light-questions` and `390-dark-questions`, unchanged. The `1440-light-drawing` and `1440-light-questions` crops leave this plate (the opener shows the whole page) | pair about 500, hub about 291, true |
 | `s-21-5-correct` | The red targets and their tags | **`1440-light-art`** (A12): **`art`** on the "Where it acts" heading and the drawing's own block (the drawing and its chip row, cols 1 to 4), not the tags far right; `390-light-targets`, unchanged (it holds the tags under the drawing at true size) | about 469 true; 390 true |
 | `s-21-7-correct` | One record cited one way | `1440-light-answer` (A20): the answer block takes the body measure, `max-width: 37.37rem` (`--oa-layout-measure-body-max`), so its crop is about 646 px and true; `1440-light-rowl14` (A14 and A13), scale stated; **`390-light-rowl14`** (A14 and A13), the same rows as cards at true size | 646 true; 1360 stated; 390 true |
-| `s-21-9-correct` | The sheet's connections table | `1440-light-sheet` (A18), scale stated; **`390-light-sheettop`** (A18): **`sheettop`** on the sheet's band and its first three connection rows | 1360 stated; 390 true |
+| `s-21-9-correct` | The sheet's connections table | `1440-light-sheet` (A18), scale stated; **`390-light-sheettop`** (A18): **`sheettop`** on the connections section's heading and its first three connection rows (the band left the part, 16.1) | 1360 stated; 390 true |
 | `s-21-13-correct` | The stepper | `390-light-stepper`, unchanged; `1440-dark-stepper` (A19) with `stepper` on the stepper's own block (cols 5 to 12), so the empty Charcoal column to its left leaves the crop (CR-19), scale stated | 390 true; about 914 stated |
 | `s-21-15-correct` | Marks on Charcoal | `1440-dark-art` (A14): **`art`** on the loop drawing's own block (with CR-8, 15.4, its width follows the drawing); `1440-dark-chooser` (A14) with `chooser` on the list of reforms alone (cols 1 to 4) | about 344 and 469 true |
 
@@ -583,3 +583,24 @@ From the craft reader's CR-11, CR-12 and named place 4 (C11C-SP), and the atlas 
 **A12's `art` crop:** the kit's `1440-light-art` is 26 px tall (`plates/a12.json`, 18:40 UTC), so the part marks the heading alone. `art` belongs on the "Where it acts" heading and the drawing's block together (the union, 15.2), about 330 px tall at 1440. The chapter 21 generator places `art` only once it is at least 200 px tall and 680 px wide or less.
 
 **Frame names for the new crops (AX-7, DD12-C2).** The kit's `frame_alts` (the engineer's "Words for") carries the editor's words; until they land, the kit's composed name stands. Drafts for the editor are in my notes, "Words for the editor".
+
+## 16. Chat 12b: `sheettop`, the joined cover, the opener's load state and the chooser crop (design director, 00:16 UTC)
+
+From `work/handoffs/phase-4/20261124_Chat-12b-Brief.md`, 3.2 and 3.3, and the rulings in `20261124_Chat-12b-Design-Director-Notes.md` (DD12b-R2, DD12b-R3). For the atlas engineer.
+
+### 16.1 `sheettop` (A18, DD12b-R2)
+
+The part is the sheet's connections section: its heading ("Connections filed here") through the hairline under its third connection, plus 24 px of page on every side (15.2's crop). The sheet's head band is not in it. At 390 px the band sits a whole variables list above the rows, so the union of band and rows ran 1,884 px; the plate's `1440-light-sheet` frame beside the crop already shows the band and the whole sheet. Three rows stay, so the crop shows the card repeating and holds both kinds of connection the sheet files (L09 and L20 Causal, L27 Information). The kit's last frame (390 by 1,035 px) already holds exactly this; nothing to redraw unless CD-R3 or CD-S6 move its lines.
+
+### 16.2 Touching dark bands count as one panel (CR-11, DD12b-R3)
+
+Two or more dark elements (Charcoal or Prussian) count as one panel when they meet along one edge with a gap of 1 px or less and their shared edge runs the full length of the shorter element's side (stacked bands of one width; cells of one height side by side). The joined panel counts in the section where its top falls, and its box is the union. Any Newsprint between them keeps them two. A13's and A16's covers at 1440 px (title bar, breadcrumb row on the head band's ground, head band) then count once. The measure is `tools/screen_shares.py` with the gathering in `tools/export_checks.py`, Engineer W's files in chat 12b: ask there, or draw the crumb row and the head band as one element; the shares do not move.
+
+### 16.3 The opener's load state (CD-R1)
+
+The opener shows A11's first screen with nothing pressed, at 1440 px light and 390 px dark, one window tall each (1440 by 900, 390 by 844): the masthead, the title bar, the head band, and at 1440 the whole drawing with its key above y 880 (15.1), every box at full strength and no lit line ("This question reaches here") anywhere, since no question is pressed. Name the views so the plate can tell them from the pressed `1440-light-screen` (for example `1440-light-screen-load` and `390-dark-screen-load`, or a `state` field on the view), write them in your Contracts, and keep the pressed views for C5 and the rule plates. The chapter 21 generator switches the opener once both exist.
+
+### 16.4 The chooser crop (CD-R4)
+
+`1440-dark-chooser` on A14 holds the list of reforms alone: its legend ("Reforms that aim at this loop") through the last reform's row, plus 24 px of the page's Charcoal on every side, and no more. Today it is 470 by 674 px with about 200 px of empty Charcoal under the list. The chosen reform's panel is not in it (it sits beside the chooser, and `s-21-15-correct` teaches marks on Charcoal with the drawing's `art` crop and the ratio table). The plate places it as it is, at true size; no generator change is needed beyond a run once the kit draws it.
+
