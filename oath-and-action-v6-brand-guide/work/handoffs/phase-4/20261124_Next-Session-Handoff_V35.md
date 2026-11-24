@@ -1,6 +1,6 @@
 # Handoff for the next session: Oath & Action Edition 06 (thirty-fifth handoff, November 24)
 
-Written November 24, 2026, at the close of chat 12b. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261123_Next-Session-Handoff_V34.md`. V5's sections 3 to 5, section 3 of V8 to V34, and section 3 below hold together. Decision log entries for this chat run from D4-414 to D4-__LASTD4__ (the owners' calls are D4-431 to D4-521; the main session's are D4-414 to D4-430 and D4-522 on); the change ledger runs to C-__LASTC__. No new DR this chat: Dustin's answers to Phase 4 board 1 open the next one.
+Written November 24, 2026, at the close of chat 12b. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-4/20261123_Next-Session-Handoff_V34.md`. V5's sections 3 to 5, section 3 of V8 to V34, and section 3 below hold together. Decision log entries for this chat run from D4-414 to D4-532 (the owners' calls are D4-431 to D4-521; the main session's are D4-414 to D4-430 and D4-522 on); the change ledger runs to C-196. No new DR this chat: Dustin's answers to Phase 4 board 1 open the next one.
 
 ## 1. Where things stand
 
@@ -12,11 +12,11 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 12b (work tracker row `c11b`, d
 
 **Weight, measured again on the final page** (Engineer M, `work/handoffs/phase-4/20261124_Chat-12b-Engineer-Weight-Notes.md`): C1 (1a, 3a, 3b, 3c, 3d) saves 937,678 bytes and projects 15,509,989, 490,011 under 16 MB, proved pixel for pixel at 1440 and 390 px (764 of 764 identical). One command reruns every option on a new page (`scripts/run.sh` in the notes). `guide_build.py`'s `weigh()` now ends the last section at the page's last `</main>`, so the proofs appendix (140,940 bytes) is counted.
 
-**The checks.** The guide check's self-test passed on commit 8ac73595's tree (167 of 167 planted faults caught, 63 of 63 allowed cases left alone). The four-width check ran three times on the final pages, without its own screenshots: the first crashed taking a screenshot (D4-522, not counted); the second failed one test, A21's safe-area labels at 13.4 px between the type scale's 13 and 14 px steps (D4-523); the labels went to 57 exported px (D4-524) and __CHECK__ A21's own build reports 0 faults in its four views.
+**The checks.** The guide check's self-test passed on commit 8ac73595's tree (167 of 167 planted faults caught, 63 of 63 allowed cases left alone). The four-width check ran three times on the final pages, without its own screenshots: the first crashed taking a screenshot (D4-522, not counted); the second failed one test, A21's safe-area labels at 13.4 px between the type scale's 13 and 14 px steps (D4-523); the labels went to 57 exported px (D4-524) and the third run passed on the page of record itself, commit dc19b290’s build, from 04:35 to 05:41 UTC: four widths, 409 rules, 822 specimens, 4,915 same-page links, 0 failures (D4-529). A21's own build reports 0 faults in its four views.
 
 **The final build:** strict build of commit dc19b290, November 24, 04:32 UTC: exit 0, 0 warnings, 0 stale plates, 14,444,549 bytes, 22 chapters, 409 rules, 766 specimens. Chapter 16 279,826 bytes against 300,000; chapter 20 860,755 against 757,000 (114 percent); chapter 21 1,278,128 against 655,000 (195 percent). **The projection is 16,466,622 bytes, 466,622 past 16 MB**; the page itself is 14.44 MB, so no build stops (DR-271). C1 brings the projection under 16 MB once Dustin approves it.
 
-**Phase 4 board 1** (`work/boards/phase-4/board-1/20261124_Phase-4-Board-1.html`, built by `work/build/scripts/phase-4/board1_build.py`; published privately at __BOARD_URL__) asks twelve decisions, ranked, each with its original beside the proposal at true size and a recommendation:
+**Phase 4 board 1** (`work/boards/phase-4/board-1/20261124_Phase-4-Board-1.html`, built by `work/build/scripts/phase-4/board1_build.py`; published privately at https://claude.ai/artifact/51DCjuwjxqj4RNisSFuFfd) asks twelve decisions, ranked, each with its original beside the proposal at true size and a recommendation:
 1. Chapters 16, 20 and 21 as built.
 2. Ampersand B in a hinge headline on Newsprint: Rule 05.3's 1 px Charcoal keyline inside B (locked identity, its own named approval).
 3. The page's weight: C1 first, then allocations from measured units, then wide frames as exports for the frames a reader meets.
@@ -32,7 +32,7 @@ Phase 4 is active (Gate 3, G3-01 to G3-09). Chat 12b (work tracker row `c11b`, d
 
 The one-line reply splits the six that change settled work (D4-428): "Board 1: items 1, 3, 4, 5, 9 and 10 as recommended; and by name, items 2, 6, 7, 8, 11 and 12 as recommended."
 
-**Published:** board 1 (above); the chapters page as version 16 at its address, https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (__V16__). Version 16's file is `work/boards/phase-4/chat-12b/20261124_Guide-Preview-V16.html`, the page of record; its text was read by script against version 15 (no dash, no filler word).
+**Published:** board 1 (above); the chapters page as version 16 at its address, https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (published 05:44 UTC, D4-531). Version 16's file is `work/boards/phase-4/chat-12b/20261124_Guide-Preview-V16.html`, the page of record; its text was read by script against version 15 (no dash, no filler word).
 
 **Held for Dustin outside the board:** the `brotli` install the permission check refused twice (D4-08, the editor's turn 2c). Chapter 25's print preflight in chat 15 needs it or Dustin's word on another way to read the guide's WOFF2 fonts; it was not retried.
 
@@ -74,7 +74,7 @@ Phase 4 is active. Chat 12b is done: A21's video frame placed and C16-V passing,
 My answers to Phase 4 board 1: [paste the reply line, or each item's answer]
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-__LASTC__), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from "## Gate 3, approved by Dustin" to the end, with G3-01 to G3-09, D4-01 to the end and DR-300 on), the change ledger (to C-196), the open questions, and the Gate 3 report (work/ledger/20261120_Gate-3-Report.md), sections 9 and 10.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-4/20261124_Next-Session-Handoff_V35.md, then section 3 of V5 to V34's handoffs, the chat 12b brief (work/handoffs/phase-4/20261124_Chat-12b-Brief.md), the creative director's rescore (20261124_Chat-12b-CD-Rescore.md), board 1 (work/boards/phase-4/board-1/20261124_Phase-4-Board-1.html, its decisions section), the platform specifications (work/research/*_Platform-Specifications.md), the Phase 4 prompt (brief/phase-prompts/20261020_V6-Phase-4-Applications-And-Reports.md), Master Brief sections 6, 16, 18 and 22, and the deferred fixes register (work/ledger/20261116_Deferred-Fixes-Register.md): the sections for chats 12 and 12b.
 
 This session should run on the "Oath & Action Brand Polish - Round 2" environment (DR-300). Data keys are saved there: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
@@ -110,7 +110,7 @@ How to work with me:
 - `work/boards/phase-4/chat-12b/20261124_Guide-Preview-V16.html` and `20261124_Guide-Preview-V16-Build-Report.json`
 
 **Modified**
-- `work/ledger/`: the decision log (D4-414 to D4-__LASTD4__), the change ledger (C-186 to C-__LASTC__), the deferred fixes register (chat 12b's section and outcomes)
+- `work/ledger/`: the decision log (D4-414 to D4-532), the change ledger (C-186 to C-196), the deferred fixes register (chat 12b's section and outcomes)
 - Chapters 16, 20 and 21: `work/build/scripts/phase-4/phase4_ch16_build.py`, `phase4_ch20_build.py`, `phase4_ch21_build.py` and their outputs (chapter files, manifests, specimens)
 - The application kit: `work/build/app-kit/oa-app.mjs`, `lib.mjs`, `renderers/atlas-page.mjs`, `plates/atlas-page.css`, `tools/app_plates.py`, `tools/atlas_test.py`, `tools/screen_shares.py`, plates A04 to A21; the exports in `work/build/exports/phase-4/` and their manifest
 - The guide build: `work/build/scripts/phase-2/guide_build.py` (`weigh()`)
