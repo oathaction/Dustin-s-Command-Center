@@ -845,9 +845,13 @@ ${r.head_links || ''}
           // page each side, clipped to the page; the frame is that box (the part itself was proved above, pixel for pixel)
           const page_h = await p.evaluate(() => Math.ceil(document.querySelector('.ws').getBoundingClientRect().bottom + scrollY));
           await p.close();
-          let fx = 0, fw = wv.w, fy = y0, fh = h;
+          let fx = 0, fw = wv.w, fy = y0, fh = h, pad_foot = 0;
           if (crop && crop !== 'top' && part_x) {
-            fy = Math.max(0, y0 - 24); fh = Math.min(Math.max(page_h, y0 + h), y0 + h + 24) - fy;
+            // chat 12b (Engineer A's request 2, DD12b-R2): 24 px of the page under the part even where the part ends its
+            // part-alone page (A18's sheettop); the crop's wrapper carries the page's ground, by its theme's surface class,
+            // that far below the page's foot
+            pad_foot = Math.max(0, Math.ceil(y0 + h + 24 - Math.max(page_h, y0 + h)));
+            fy = Math.max(0, y0 - 24); fh = y0 + h + 24 - fy;
             fx = Math.max(0, part_x.x - 24); fw = Math.min(wv.w, part_x.x + part_x.width + 24) - fx;
           }
           facts.pruned = facts.pruned || {};
@@ -857,7 +861,7 @@ ${r.head_links || ''}
           Object.assign(plate_symbols, sym.symbols);
           // a crop draws the page moved up by its part's top, inside a frame as tall as the part
           // (CD-S2: and moved left by the box's left edge, the page kept at its own width so it lays out as before)
-          const frame_html = fy || fw !== wv.w ? `<div class="oa-app-crop" style="margin-top:-${fy}px${fw !== wv.w ? `;margin-left:-${fx}px;width:${wv.w}px` : ''}">${sym.html}</div>` : sym.html;
+          const frame_html = fy || fw !== wv.w || pad_foot ? `<div class="oa-app-crop${pad_foot ? ` oa-surface-${t === 'dark' ? 'charcoal' : 'newsprint'}` : ''}" style="margin-top:-${fy}px${fw !== wv.w ? `;margin-left:-${fx}px;width:${wv.w}px` : ''}${pad_foot ? `;padding-bottom:${pad_foot}px` : ''}">${sym.html}</div>` : sym.html;
           // W6 and ED11-4: the application's words end in a period, then the view's own sentence
           const alt = r.view_alt ? r.view_alt(key) : `${String(spec.alt).replace(/\.?$/, '.')} At ${w} px, ${t === 'light' ? 'in the light theme' : 'in the dark theme'}${kind === 'open' ? ', the menu open' : kind === 'screen' ? ', its first screen' : ''}.`;
           // chat 11c (Rule 21.15): an atlas page's full-length view carries the contrast measured on its capture's pixels,

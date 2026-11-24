@@ -8,7 +8,7 @@ A screen is one window's height at the page's width. The first screen runs from 
 screen runs from the section's top edge (an element marked data-oa-section) one window down, and for a section that starts
 within a window of the page's end it is the page's last window, since a reader can scroll no further. A dark panel is an
 element painted Charcoal or Prussian, the outermost of nested ones, of 1 percent of a screen's area or more (a button or a
-chip is no panel); it counts in the section whose element holds it, and an element in no section counts with the first
+chip is no panel), with elements that touch along a whole side joined into one first (CR-11, DD12b-R3: join_panels); it counts in the section whose element holds it, and an element in no section counts with the first
 screen (where the kit gives no section, in the section where its top falls).
 
 A light page is judged on all three limits; a dark page (DR-204's dark mode) is printed in full and judged on red alone,
@@ -54,6 +54,44 @@ def shares(px):
             "red": round(float(near(px, RED, RED_TOL).sum()) / n * 100, 2)}
 
 
+JOIN_GAP = 1   # CR-11 (DD12b-R3): dark elements this close along one edge read as one panel
+
+
+def join_panels(dark):
+    """CR-11, by DD12b-R3: dark elements that meet along one edge, with a gap of JOIN_GAP px or less, where the shared edge
+    runs the length of the shorter element's side (stacked bands share their width, side-by-side cells their height), are
+    one panel: its box is the union, and it counts in the section of the element whose top is highest. Two elements with
+    Newsprint wider than JOIN_GAP between them stay two."""
+    items = [dict(d, rect=list(d["rect"]), joined=1) for d in dark]
+
+    def meets(a, b):
+        ax, ay, aw, ah = a["rect"]; bx, by, bw, bh = b["rect"]
+        xo = min(ax + aw, bx + bw) - max(ax, bx)          # overlap along x
+        yo = min(ay + ah, by + bh) - max(ay, by)          # along y
+        gy = max(by - (ay + ah), ay - (by + bh))          # the gap between them, stacked
+        gx = max(bx - (ax + aw), ax - (bx + bw))          # side by side
+        stacked = -JOIN_GAP <= gy <= JOIN_GAP and xo >= min(aw, bw) - JOIN_GAP
+        beside = -JOIN_GAP <= gx <= JOIN_GAP and yo >= min(ah, bh) - JOIN_GAP
+        return stacked or beside
+    changed = True
+    while changed:
+        changed = False
+        for i in range(len(items)):
+            for j in range(i + 1, len(items)):
+                a, b = items[i], items[j]
+                if meets(a, b):
+                    x0 = min(a["rect"][0], b["rect"][0]); y0 = min(a["rect"][1], b["rect"][1])
+                    x1 = max(a["rect"][0] + a["rect"][2], b["rect"][0] + b["rect"][2]); y1 = max(a["rect"][1] + a["rect"][3], b["rect"][1] + b["rect"][3])
+                    top = a if a["rect"][1] <= b["rect"][1] else b
+                    m = dict(top, rect=[x0, y0, x1 - x0, y1 - y0], joined=a["joined"] + b["joined"])
+                    items = [x for k, x in enumerate(items) if k not in (i, j)] + [m]
+                    changed = True
+                    break
+            if changed:
+                break
+    return items
+
+
 def measure(png, vh, sections=(), dark=(), theme="light", width=None):
     """Shares and panels for the first screen and each section's opening screen. sections: [{name, top}]; dark: [{rect:
     [x, y, w, h], color, tag, cls}] as the kit gathers them. Returns a list of screens, each with its verdict."""
@@ -61,7 +99,7 @@ def measure(png, vh, sections=(), dark=(), theme="light", width=None):
     H, W = px.shape[:2]
     width = width or W
     area_min = PANEL_MIN * width * vh
-    panels = [d for d in dark if d["rect"][2] * d["rect"][3] >= area_min]
+    panels = [d for d in join_panels(dark) if d["rect"][2] * d["rect"][3] >= area_min]
     secs = sorted(({"name": s["name"], "top": int(s["top"])} for s in sections), key=lambda s: s["top"])
     starts = [{"name": "first screen", "top": 0}] + [s for s in secs if s["top"] > 0]
     out = []
@@ -133,6 +171,19 @@ def self_test():
         held = [dict(x, section=s) for x, s in zip(dark, [None, "A", "B", "A"])]
         r = measure(p, 1000, [{"name": "A", "top": 1000}, {"name": "B", "top": 1000}], held)
         check("a panel counts in the section that holds it, side-by-side sections apart", r[1]["panels"] == 1 and r[2]["panels"] == 1 and r[0]["panels"] == 1)
+        # CR-11 (DD12b-R3): touching bands are one panel; a 2 px Newsprint gap keeps two; cells side by side join on their
+        # height; a short cell beside a tall one, sharing only part of its side, stays apart
+        two = [{"rect": [0, 0, 100, 60], "color": "charcoal"}, {"rect": [0, 60, 100, 60], "color": "charcoal"}]
+        r = measure(p, 1000, [], two)
+        check("two Charcoal bands that touch count as one panel (DD12b-R3)", r[0]["panels"] == 1)
+        r = measure(p, 1000, [], [two[0], {"rect": [0, 61, 100, 60], "color": "charcoal"}])
+        check("a 1 px seam between them keeps them one", r[0]["panels"] == 1)
+        r = measure(p, 1000, [], [two[0], {"rect": [0, 62, 100, 60], "color": "charcoal"}])
+        check("a 2 px Newsprint gap keeps them two", r[0]["panels"] == 2)
+        r = measure(p, 1000, [], [{"rect": [0, 300, 50, 100], "color": "charcoal"}, {"rect": [50, 300, 50, 100], "color": "prussian"}])
+        check("cells side by side that share their height count as one", r[0]["panels"] == 1)
+        r = measure(p, 1000, [], [{"rect": [0, 300, 50, 100], "color": "charcoal"}, {"rect": [50, 380, 50, 100], "color": "charcoal"}])
+        check("cells that touch along part of a side stay two", r[0]["panels"] == 2)
         im[:] = NEWSPRINT
         im[0:1000, 0:6] = RED
         Image.fromarray(im).save(p)

@@ -108,9 +108,10 @@ export async function render(spec) {
 .vf21-stack{position:absolute}
 .vf21-stack .oac-svg{display:block;max-width:none}
 .vf21 .oac-source{max-width:none}
-.vf21-band{position:absolute;box-sizing:border-box;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);text-align:center}
+.vf21 .ws-nb{white-space:nowrap}
+.vf21-band{position:absolute;box-sizing:border-box;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal)}
 .vf21-band.c{left:0;right:0;margin:0 auto;width:fit-content}
-.vf21-cap{font-family:var(--oa-type-body-font-family);font-weight:600;color:var(--oa-color-text-primary-on-charcoal)}
+.vf21-cap{font-family:var(--oa-type-body-font-family);font-weight:600;color:var(--oa-color-text-primary-on-charcoal);text-align:center}
 .vf21-cap .ln{display:block;white-space:nowrap}
 .vf21-np{position:absolute;box-sizing:border-box;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font-family:var(--oa-type-body-font-family);font-weight:600}
 .vf21-sign{position:absolute;display:block;color:var(--oa-color-text-primary-on-newsprint);--amp:var(--oa-color-identity-signature-on-newsprint)}
@@ -133,17 +134,41 @@ export async function render(spec) {
     kit_css = dr.css;
     const s = v.source || {};
     const parts = [];
-    // the chart and its source line in one column, so the line sits its gap under the drawing whatever the kit's height
-    parts.push(`<div class="vf21-stack" data-vf21-part="stack" style="left:${q(c.x ?? safe[0])}px;top:${q(c.y ?? safe[1])}px;width:${q(s.w ?? safe[2])}px">`
-      + `<div data-vf21-part="chart" style="width:${dr.w}px;height:${dr.h}px">${dr.svg}</div>`
-      + `<div data-vf21-part="source" style="margin-top:${q(s.gap ?? 24)}px;width:${q(s.w ?? safe[2])}px">${dr.src || ''}</div></div>`);
+    // DD12b-R1a: the frame's copy of the source line holds a table's code together ("Table A-1"), the words as the spec has them
+    const src = (dr.src || '').replace(/\b([A-Z])-(\d+)\b/g, '<span class="ws-nb">$1-$2</span>');
     const b = v.band || {};
     const cap = fw.caption || [];
     if (cap.length > 2) throw new Error(`${spec.id} ${v.key}: ${cap.length} caption lines; Rule 16.11 allows two`);
-    if (cap.length) {
-      const place = b.center ? `bottom:${q(PH - b.bottom)}px;max-width:${q(b.max_w)}px` : `left:${q(b.x)}px;width:${q(b.w)}px;bottom:${q(PH - b.bottom)}px`;
-      parts.push(`<div class="vf21-band oa-surface-charcoal${b.center ? ' c' : ''}" data-vf21-part="band" style="${place};padding:${q(b.pad_y ?? 16)}px ${q(b.pad_x ?? 24)}px">`
-        + `<p class="vf21-cap" style="font-size:${q(b.size || 32)}px;line-height:${q(b.lh || 44)}px">${cap.map((l) => `<span class="ln">${esc(l)}</span>`).join('')}</p></div>`);
+    const capp = `<p class="vf21-cap" data-vf21-part="captions" STYLE>${cap.map((l) => `<span class="ln">${esc(l)}</span>`).join('')}</p>`;
+    const cap_type = `font-size:${q(b.size || 32)}px;line-height:${q(b.lh || 44)}px`;
+    if (b.full && s.in_band) {
+      // the vertical frame (DD12b-R1a): one full-bleed Charcoal band from 16 px under the chart's last ink to the safe foot,
+      // holding the source line 24 px down and the captions 16 px above its foot, each from x 120 to 780; the band's top is
+      // set from the ink the build measures (build(), the second pass); here from the drawing's box
+      parts.push(`<div class="vf21-stack" data-vf21-part="stack" style="left:${q(c.x ?? safe[0])}px;top:${q(c.y ?? safe[1])}px">`
+        + `<div data-vf21-part="chart" style="width:${dr.w}px;height:${dr.h}px">${dr.svg}</div></div>`);
+      const top = r2(q(c.y ?? safe[1]) + dr.h + q(b.from_ink ?? 16));
+      const foot = q(b.foot);
+      parts.push(`<div class="vf21-band oa-surface-charcoal" data-vf21-part="band" style="left:0;top:${top}px;width:${w}px;height:${r2(foot - top)}px">`
+        + `<div data-vf21-part="source" style="position:absolute;left:${q(b.x)}px;top:${q(b.src_top ?? 24)}px;width:${q(b.w)}px">${src}</div>`
+        + capp.replace('STYLE', `style="position:absolute;left:${q(b.x)}px;width:${q(b.w)}px;bottom:${q(b.pad_foot ?? 16)}px;${cap_type}"`) + `</div>`);
+    } else {
+      // the chart and its source line in one column on Newsprint, so the line sits its gap under the drawing
+      parts.push(`<div class="vf21-stack" data-vf21-part="stack" style="left:${q(c.x ?? safe[0])}px;top:${q(c.y ?? safe[1])}px;width:${q(s.w ?? safe[2])}px">`
+        + `<div data-vf21-part="chart" style="width:${dr.w}px;height:${dr.h}px">${dr.svg}</div>`
+        + `<div data-vf21-part="source" style="margin-top:${q(s.gap ?? 24)}px;width:${q(s.w ?? safe[2])}px">${src}</div></div>`);
+      if (cap.length && b.full) {
+        // the storyboard's (DD12b-R1a): a full-bleed Charcoal band from 16 px above the first caption line's box to the
+        // frame's foot, the lines centered, the last line's box ending at lines_foot
+        const lh = b.lh || 44;
+        const top = b.lines_foot - cap.length * lh - (b.pad_top ?? 16);
+        parts.push(`<div class="vf21-band oa-surface-charcoal" data-vf21-part="band" style="left:0;top:${q(top)}px;width:${w}px;height:${r2(h - q(top))}px">`
+          + capp.replace('STYLE', `style="position:absolute;left:${q(safe[0])}px;width:${q(safe[2])}px;top:${q(b.pad_top ?? 16)}px;${cap_type}"`) + `</div>`);
+      } else if (cap.length) {
+        const place = b.center ? `bottom:${q(PH - b.bottom)}px;max-width:${q(b.max_w)}px` : `left:${q(b.x)}px;width:${q(b.w)}px;bottom:${q(PH - b.bottom)}px`;
+        parts.push(`<div class="vf21-band oa-surface-charcoal${b.center ? ' c' : ''}" data-vf21-part="band" style="${place};padding:${q(b.pad_y ?? 16)}px ${q(b.pad_x ?? 24)}px">`
+          + capp.replace('STYLE', `style="${cap_type}"`) + `</div>`);
+      }
     }
     if (v.name_plate && W.name_plate) {
       const np = v.name_plate === true ? {} : v.name_plate;
@@ -202,7 +227,8 @@ export async function render(spec) {
     views.push({ key: v.key, w, h, px: [PW, PH], scale: k, theme: 'light', platform: row.id, moment: fw.time || v.moment || null,
       html: sym.html, raw, alt: fw.alt, layers, live: safe, exclude: excl, sign, floor_px: v.floor_px || null, chart_px: dr.w, chart_h: dr.h,
       export_name: v.export_name, overlay_name: v.overlay_name || null, caption: cap, safe_basis: v.safe_basis || 'platform',
-      source_gap: q(s.gap ?? 24), min_gap_band: v.min_gap_band ?? 16 });
+      source_gap: q(s.gap ?? 24), min_gap_band: v.min_gap_band ?? 16,
+      band_from_ink: b.full && s.in_band ? q(b.from_ink ?? 16) : null, gap_src_cap: b.gap ?? 24 });
   }
   const gen = spec.words_generator || GEN16;
   const from_gen = WORDS.__from === gen;
@@ -247,7 +273,21 @@ function frame_facts() {
   });
   // the chart's ink: the drawing's own box of marks and words, inside its svg
   const svg = root.querySelector('[data-vf21-part="chart"] svg');
-  if (svg) { const sb = svg.getBoundingClientRect(); let y1 = -1; svg.querySelectorAll('text, circle, rect, line, path, polyline').forEach((x) => { const b = x.getBoundingClientRect(); if (b.height || b.width) y1 = Math.max(y1, b.bottom); }); out.chart_ink_bottom = y1; out.chart_box = [sb.left, sb.top, sb.width, sb.height]; }
+  if (svg) {
+    const sb = svg.getBoundingClientRect(); let x0 = 1e9, y0 = 1e9, x1 = -1, y1 = -1;
+    svg.querySelectorAll('text, circle, rect, line, path, polyline').forEach((x) => { const b = x.getBoundingClientRect(); if (b.height || b.width) { x0 = Math.min(x0, b.left); y0 = Math.min(y0, b.top); x1 = Math.max(x1, b.right); y1 = Math.max(y1, b.bottom); } });
+    out.chart_ink_bottom = y1; out.chart_box = [sb.left, sb.top, sb.width, sb.height]; out.parts.ink = [x0, y0, x1 - x0, y1 - y0];
+  }
+  // Rule 05.1's dark panels: each element painted Charcoal or Prussian, the outermost of nested ones, as the kit gathers them
+  const DARK = { 'rgb(18, 18, 18)': 'charcoal', 'rgb(31, 45, 90)': 'prussian' };
+  const darkOf = (e) => DARK[getComputedStyle(e).backgroundColor];
+  out.dark = [];
+  root.querySelectorAll('*').forEach((e) => {
+    const k = darkOf(e); if (!k) return;
+    for (let q = e.parentElement; q && q !== root.parentElement; q = q.parentElement) if (darkOf(q)) return;
+    const b = e.getBoundingClientRect(); if (b.width < 1 || b.height < 1) return;
+    out.dark.push({ color: k, tag: e.tagName.toLowerCase(), cls: String(e.getAttribute('class') || '').slice(0, 40), rect: [b.left, b.top, b.width, b.height] });
+  });
   return out;
 }
 
@@ -308,10 +348,25 @@ ${r.css}${extra}</style>
     let f = await p.evaluate(frame_facts);
     // DD12b-R1: the source line sits its gap under the chart's last ink, not under the drawing's box, which the kit pads;
     // the margin is set from the ink measured here, the page written again and measured again
-    if (f.chart_ink_bottom > 0 && f.parts.source) {
+    // DD12b-R1a: on the vertical frame the band's top sits from_ink under the ink, its foot where it was
+    const band_re = /(data-vf21-part="band" style="left:0;top:)(-?[\d.]+)(px;width:[\d.]+px;height:)(-?[\d.]+)(px)/;
+    if (f.chart_ink_bottom > 0 && v.band_from_ink != null && f.parts.band && band_re.test(v.html)) {
+      const want = +(f.chart_ink_bottom + v.band_from_ink).toFixed(3), now = f.parts.band[1];
+      if (Math.abs(want - now) > 0.01) {
+        const m = v.html.match(band_re); const foot = +m[2] + +m[4];
+        const fix = (h) => h.replace(band_re, `$1${want}$3${+(foot - want).toFixed(3)}$5`);
+        v.html = fix(v.html); v.raw = fix(v.raw);
+        fs.writeFileSync(pf, head() + `<body>${sprite}<div class="oa-app-art">${v.html}</div></body>\n</html>\n`);
+        await p.goto('file://' + pf, { waitUntil: 'load' });
+        await p.evaluate(() => document.fonts.ready);
+        f = await p.evaluate(frame_facts);
+      }
+    }
+    const src_re = /(data-vf21-part="source" style="margin-top:)(-?[\d.]+)(px)/;
+    if (f.chart_ink_bottom > 0 && f.parts.source && src_re.test(v.html)) {
       const want = +(f.chart_ink_bottom + v.source_gap).toFixed(3), now = f.parts.source[1];
       if (Math.abs(want - now) > 0.01) {
-        const re = /(data-vf21-part="source" style="margin-top:)(-?[\d.]+)(px)/;
+        const re = src_re;
         const m0 = +v.html.match(re)[2];
         const fix = (h) => h.replace(re, `$1${+(m0 + want - now).toFixed(3)}$3`);
         v.html = fix(v.html); v.raw = fix(v.raw);
@@ -336,29 +391,48 @@ ${r.css}${extra}</style>
       if (v.floor_px && x.size * v.scale < v.floor_px - 0.01) vf.push(`"${x.text.slice(0, 40)}" at ${x.size * v.scale} px, under the ${v.floor_px} px floor`);
       if (!x.svg) { const cr = ratio(x.color, x.bg); if (cr !== null && cr < 4.5) vf.push(`"${x.text.slice(0, 40)}" at ${cr.toFixed(2)} to 1`); }
     }
-    const pnames = ['chart', 'source', 'band', 'name-plate'].filter((k) => parts[k]);
+    // the parts that hold words (the chart's ink, the source line, the captions, a name plate) keep clear of each other; the
+    // band is a ground, so it may run to the frame's edges and under the app's buttons (DD12b-R1a), and is judged by its gaps
+    const pnames = ['ink', 'source', 'captions', 'name-plate'].filter((k) => parts[k]);
     for (let i = 0; i < pnames.length; i++) for (let j = i + 1; j < pnames.length; j++) {
       if (hits(parts[pnames[i]], parts[pnames[j]])) vf.push(`the ${pnames[i]} and the ${pnames[j]} overlap`);
     }
-    for (const k of pnames) {
-      if (k !== 'chart' && !inside(parts[k], live)) vf.push(`the ${k} leaves the safe area`);
+    for (const k of pnames.filter((x) => x !== 'ink')) {
+      if (!inside(parts[k], live)) vf.push(`the ${k} leaves the safe area`);
       if (v.exclude.some((e) => hits(parts[k], e))) vf.push(`the ${k} meets an excluded box`);
     }
+    const from_ink = v.band_from_ink != null ? v.band_from_ink * v.scale : 16;   // exported px
+    if (parts.band && parts.ink && parts.band[1] < parts.ink[1] + parts.ink[3] + from_ink - 0.5) vf.push(`the band starts ${(parts.band[1] - parts.ink[1] - parts.ink[3]).toFixed(1)} px under the chart's ink, under ${from_ink}`);
+    if (parts.captions && parts.source && parts.source[1] < parts.captions[1] && parts.captions[1] - (parts.source[1] + parts.source[3]) < (v.gap_src_cap ?? 24) - 0.5)
+      vf.push(`the source line ends ${(parts.captions[1] - parts.source[1] - parts.source[3]).toFixed(1)} px above the captions, under ${v.gap_src_cap ?? 24}: the stack overflows; take the next scale (DD12b-R1a)`);
     const am = alt_misses(words, v.alt);
     if (am.length) vf.push(`the alt lacks ${am.length} of the frame's words: ${am.slice(0, 8).map((x) => `"${x.slice(0, 50)}"`).join(', ')}`);
     if (!v.alt || norm(v.alt).length < 15) vf.push('no alt of 15 characters or more');
     const src_words = words.filter((x) => x.part === 'source');
     const src_end = src_words.length ? Math.max(...src_words.flatMap((x) => x.rects.map((rr) => rr[1] + rr[3]))) : null;
-    if (parts.band && src_end != null && parts.band[1] - src_end < v.min_gap_band - 0.01) vf.push(`the source line ends ${(parts.band[1] - src_end).toFixed(1)} px above the caption band, under ${v.min_gap_band}`);
+    if (parts.band && src_end != null && src_end <= parts.band[1] + 0.5 && parts.band[1] - src_end < v.min_gap_band - 0.01) vf.push(`the source line ends ${(parts.band[1] - src_end).toFixed(1)} px above the caption band, under ${v.min_gap_band}`);
     const rec = { key: v.key, platform: v.platform, layout: [W, H], scale: v.scale, px: v.px, live, exclude: v.exclude, parts,
       chart_ink_bottom: f.chart_ink_bottom != null ? +(f.chart_ink_bottom * v.scale).toFixed(2) : null, source_end: src_end,
       source_lines: src_words.length ? new Set(src_words.flatMap((x) => x.rects.map((rr) => Math.round(rr[1])))).size : 0,
       gap_source_band: parts.band && src_end != null ? +(parts.band[1] - src_end).toFixed(2) : null,
       sizes: [...new Set(words.map((x) => +(x.size * v.scale).toFixed(2)))].sort((a, b) => a - b), words: words.length, faults: vf };
+    // DD12b-R1a: Rule 05.1 on the light frame, as C5 judges a page: Newsprint 60 to 85 percent of the whole frame, one dark
+    // panel at most, Pillar Red within 5 percent (L8's red counted), by tools/screen_shares.py on the frame at its pixels
+    const shot = path.join(dir, `frame-${v.key}.png`);
+    await p.screenshot({ path: shot, clip: { x: 0, y: 0, width: W, height: H } });
+    const bi = path.join(dir, `shares-${v.key}.in.json`), bo = path.join(dir, `shares-${v.key}.out.json`);
+    fs.writeFileSync(bi, JSON.stringify([{ png: shot, vh: v.px[1], width: v.px[0], theme: 'light', dark: f.dark.map((d) => ({ ...d, rect: X(d.rect).map(Math.round) })) }]));
+    const sr = spawnSync('python3', ['-I', path.join(ROOT, 'work/build/app-kit/tools/screen_shares.py'), '--batch', bi, bo], { encoding: 'utf8' });
+    if (sr.status !== 0) vf.push('the Rule 05.1 measure did not run: ' + (sr.stderr || sr.stdout).trim().slice(0, 200));
+    else {
+      const scr = JSON.parse(fs.readFileSync(bo, 'utf8'))[0][0];
+      rec.rule_05_1 = { newsprint: scr.newsprint, dark: scr.dark, red: scr.red, panels: scr.panels };
+      vf.push(...scr.faults.map((x) => `Rule 05.1: ${x}`));
+    }
     // the exports: the frame at the row's pixels, and the same with the safe areas drawn on
     if (o.export && v.export_name) {
       const file = stem(v.export_name) + '.png';
-      await p.screenshot({ path: path.join(o.exports, file), clip: { x: 0, y: 0, width: W, height: H } });
+      fs.copyFileSync(shot, path.join(o.exports, file));
       manifest.files.push({ file, spec: spec.id, platform: v.platform, format: 'png', theme: 'light', size: `${v.px[0].toLocaleString('en-US')} by ${v.px[1].toLocaleString('en-US')} px`,
         view: v.key, device_scale: v.scale, ...(v.safe_basis === 'studio' ? { safe_basis: 'studio' } : {}) });
       rec.png = file;
@@ -380,8 +454,9 @@ ${r.css}${extra}</style>
     const fr = L.frame({ w: W, h: H, html: v.html, alt: v.alt, layers: v.layers, page: { id: spec.id, key: v.key, type: spec.type } })
       .replace(/<rect class="hatch" /g, '<rect class="hatch" style="fill:url(#oa-app-hatch)" ');
     frames.push(fr);
-    views.push({ key: v.key, w: W, h: H, theme: 'light', alt: v.alt, html: fr });
-    console.log(`  ${spec.id} ${v.key}: ${W} by ${H} px at ${v.scale} (${v.px.join(' by ')}), source line ends ${src_end} px over ${rec.source_lines} lines, band at ${parts.band ? Math.round(parts.band[1]) : '-'}; ${vf.length} fault(s)`);
+    views.push({ key: v.key, w: W, h: H, theme: 'light', alt: v.alt, html: fr, ...(rec.rule_05_1 ? { screens: [{ screen: 'the whole frame', ...rec.rule_05_1 }] } : {}) });
+    const r5 = rec.rule_05_1 || {};
+    console.log(`  ${spec.id} ${v.key}: ${W} by ${H} px at ${v.scale} (${v.px.join(' by ')}); ink to ${rec.chart_ink_bottom}, band ${parts.band ? parts.band.map(Math.round).join(',') : '-'}, source ${parts.source ? Math.round(parts.source[1]) + ' to ' + src_end : '-'} (${rec.source_lines} lines), captions ${parts.captions ? Math.round(parts.captions[1]) + ' to ' + Math.round(parts.captions[1] + parts.captions[3]) : '-'}; Newsprint ${r5.newsprint}, dark ${r5.dark}, red ${r5.red}, ${r5.panels} panel(s); ${vf.length} fault(s)`);
   }
   facts.faults = faults;
   return {

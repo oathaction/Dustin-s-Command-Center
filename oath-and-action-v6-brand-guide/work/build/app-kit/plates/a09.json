@@ -3,7 +3,7 @@
  "type": "share-image",
  "title": null,
  "css": "share-image.css",
- "written": "2026-11-24T00:23:27.615Z",
+ "written": "2026-11-24T00:47:57.132Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": {
   "generator": "work/build/scripts/phase-4/phase4_ch20_build.py",
@@ -22,7 +22,7 @@
  ],
  "inputs": {
   "work/build/app-kit/lib.mjs": "846b7680f4351b0dfcea7141e407f9ce3c1c4a333c757c10ced115e39497dcb6",
-  "work/build/app-kit/oa-app.mjs": "5ebcbacf8e4ea85d2b0e8ad1b79733fa3b065a898992e5b04b03cd35ae223b8f",
+  "work/build/app-kit/oa-app.mjs": "24608782e35193771502a04eb6d1de408719ae40a9d6198f6a261a9e9e0e52ad",
   "work/build/app-kit/renderers/share-image.mjs": "1f2ff66d37f9427b10f7ba193ff58e63743aa6d3f4afcb8b6ab64a3f412d0b85",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",

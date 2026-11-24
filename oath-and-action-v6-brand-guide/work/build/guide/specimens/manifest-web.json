@@ -192,9 +192,9 @@
   "notes": "Each screen’s shares and panels are read from the kit’s plates, measured on its captures (C5). Panels that touch side by side at one height (the pillar row’s four cells) draw and count as one band, and a section’s panel already in view in a first screen is drawn there from the 1440 px export (CE2).",
   "readable": true,
   "kit_inputs": {
-   "work/build/app-kit/plates/a06.json": "aca5382cc10e7b070f8bb458116b79f3f53294859233a736822354b5b9e0cca8",
-   "work/build/app-kit/plates/a07.json": "72b58e21c04373d362428c0b8bfcfe4c560e22b61d7f735ae0dc5a56dbf1ceeb",
-   "work/build/app-kit/plates/a08.json": "0523f0b92cc05ad643ca78d0f46e9cc8c332830ff1baf6b1b9e4ce97f1963d6f",
+   "work/build/app-kit/plates/a06.json": "fd0ed4ca5c88aab60208bd27154d399e7b253f78512e99be5122217c1179e383",
+   "work/build/app-kit/plates/a07.json": "373515412b1ee321840b80f08bdb59aab803f4ea05a40c744b154b04a11ea520",
+   "work/build/app-kit/plates/a08.json": "120b4a2150c4ebd078b5cb0608b78ba5f9e21b4c3a9f535ca0892d5839d75235",
    "work/build/exports/phase-4/20261121_Web-Home-Page-1440-Light.png": "098160c6f9d5bd87015490655ccb9d2116015f57c3bbf8b47bd31e88096b9317",
    "work/build/exports/phase-4/20261121_Web-Article-Page-Special-Districts-1440-Light.png": "f68f67839c75c49bb1498115ca4d3f446612b63a3c66441829a527a7a1a3b1db",
    "work/build/exports/phase-4/20261121_Web-Act-Page-Comment-On-A-Proposed-Rule-1440-Light.png": "363b8009e8ebeb948b2c5ac5881064ad78363449945353208cfd23e1483a5fd1"
@@ -218,7 +218,7 @@
   "notes": "Read from the kit’s exports manifest; each size read from its file.",
   "readable": true,
   "kit_inputs": {
-   "work/build/exports/phase-4/20261121_Phase-4-Exports-Manifest.json": "fd0b9c0c451fe38583dd229bbb041fdca20523e68f94d38e6845c79b10d6d423",
+   "work/build/exports/phase-4/20261121_Phase-4-Exports-Manifest.json": "7b4223c1813ff1eebe5852a87e5a33b7067fe585cc6b4824aab10eec5f4bbaad",
    "work/build/exports/phase-4/20261121_Web-Menu-Open-360-Light.png": "8e9a6e42e04b0566e6819b85199e7a1bb982bad0fac13c0ed5f507a5930ad5be",
    "work/build/exports/phase-4/20261121_Web-Menu-Open-390-Dark.png": "45cf78e09fc2736de8952af346a9d0a0d8144b84c0a26817dedcb9343f5d2d74",
    "work/build/exports/phase-4/20261121_Web-Menu-Open-390-Light.png": "03ec01f78113ef040e55769e7822676dbcae49cb64a27545c194c8651359889f",

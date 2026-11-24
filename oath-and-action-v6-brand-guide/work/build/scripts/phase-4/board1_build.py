@@ -24,8 +24,8 @@ bc91667e | tar -x -C <scratch>`, never a checkout) for PR-M1's before. Every pro
 sketch: the change is made in the browser's copy of the page, and no chapter's file changes.
 
 Late parts are slots until they land: chapter 16's video plates after A21 (CH16_VIDEO_FINAL), the rescore of C16-V
-(C16V_RESCORE), the wall test's covered pictures (--wall), CD-R1's load-state frames and Engineer M's final weight
-table (WEIGHT_TABLE). Each slot prints a marked line saying what will fill it.
+(C16V_RESCORE), the wall test's covered pictures (--wall), A21's final frames (A21_FINAL), chapter 21's opener after
+CD-R1 (OPENERS_FINAL) and Engineer M's final weight table (WEIGHT_TABLE). Each slot prints a marked line saying what will fill it.
 """
 import argparse
 import html
@@ -53,6 +53,7 @@ VH = {1440: 900, 1024: 768, 390: 844, 360: 780}   # one window's height at each 
 
 e = html.escape
 META = {}   # the captures' measures (caps.json), read in main()
+CAPS = Path('.')   # the captures folder, set in main()
 
 
 def n(v):
@@ -72,7 +73,22 @@ def num(v):
 CH16_VIDEO_FINAL = False   # True once the captures of Rules 16.10 and 16.11 are taken from a page with A21 placed
 C16V_RESCORE = None        # {'scores': {...six criteria...}, 'ready': bool, 'note': str} from 20261124_Chat-12b-CD-Rescore.md
 WEIGHT_TABLE = None        # Engineer M's final table: {'page': int, 'rows': [...], 'combos': [...], 'note': str}
-CD_R1_FRAMES = []          # CD-R1's load-state first screens, once Engineer A exports them: [(file stem, label, alt)]
+A21_FINAL = False          # True once A21's frames carry the editor's words and the data lead's sign-off
+OPENERS_FINAL = False      # True once the opener captures come from a page built after CD-R1 (chapter 21's load state)
+
+# A21, the application kit's video frame with chart S04 (Engineer W), as exported; alt text read from the frames
+A21 = [
+    ('20261124_Video-Frame-S04-Vertical-1080x1920', 'Vertical frame, 1080 by 1920 px', 360,
+     'The vertical video frame on Newsprint: chart S04, reported voting by age in 2020 and 2024, drawn by the chart kit across the upper half. 18 to 24 at 47.7 percent, down 3.7 points from 51.4; 25 to 44 at 60.2, down 2.4 from 62.6; 45 to 64 at 70.0 against 71.0, too close to call; 65 and over at 74.7 against 74.5, no clear change. S04’s source line sits under the chart, then a Charcoal caption band, Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points. A small O&A mark at the top right.'),
+    ('20261124_Video-Frame-S04-Vertical-Safe-Areas-1080x1920', 'Vertical frame with its safe areas', 360,
+     'The same vertical frame with the safe-area overlay switched on: a dashed box marks the area clear of the app’s buttons, labeled 120 px and 269 px at the top and 672 px at the foot, and a hatched band at the right marks the button column.'),
+    ('20261124_Video-Frame-S04-Vertical-Misheard-Caption-1080x1920', 'Failure: a misheard caption', 360,
+     'The vertical frame as a failure: the caption band reads Citizens 18 to 24 reported voting at 47.7 percent, down 37 points, where the chart says 3.7.'),
+    ('20261124_Video-Frame-S04-Storyboard-0-08-1920x1080', 'Storyboard at 0:08, 1920 by 1080 px', 640,
+     'The storyboard frame at 0:08 on Newsprint: chart S04 at video size across the upper left, its source line under it, and the Charcoal caption band, Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points, centered low in the frame.'),
+    ('20261124_Video-Frame-S04-Storyboard-0-30-Safe-Areas-1920x1080', 'Storyboard at 0:30, with its safe areas', 640,
+     'The storyboard frame at 0:30 with its safe areas shown: the same chart and source line, the caption band reading So the gap between the youngest and the oldest grew from 23 points to 27, a dashed box 96 px in from the left and 54 px from the top, and a hatched band 54 px tall across the foot.'),
+]
 
 # ================================================================ the decisions, ranked
 
@@ -514,8 +530,7 @@ def sec_approved(caps, meta, rep):
     # ---- R14d
     S.append(
         '<article class="xitem" id="x-r14d"><h3>Decision 6: chapter 15’s red target case on Charcoal (C11C-R14d)</h3>'
-        '<p>Rule 15.12’s correct plate, cropped to its red target, at true size. On Newsprint the proposal changes no '
-        'pixel: the two Newsprint pictures are identical by script. Under a Charcoal stage, the case today draws a light '
+        '<p>Rule 15.12’s correct plate, cropped to its red target, at true size. ' + r14d_same(caps) + ' Under a Charcoal stage, the case today draws a light '
         'rim on each side of the red line; with the on-Newsprint ink the rim goes. The Charcoal stage and the proposal are '
         'studio sketches in the browser’s copy of the page.</p>')
     sid = 's-15-12-correct'
@@ -617,6 +632,25 @@ def sec_approved(caps, meta, rep):
             + ''.join(S) + '</section>')
 
 
+def same_pixels(a, b):
+    if not (a.exists() and b.exists()):
+        return None
+    from PIL import ImageChops
+    x, y = Image.open(a).convert('RGB'), Image.open(b).convert('RGB')
+    return x.size == y.size and ImageChops.difference(x, y).getbbox() is None
+
+
+def r14d_same(caps):
+    res = [same_pixels(caps / f'r14d-{sid}-newsprint.png', caps / f'r14d-{sid}-newsprint-proposal.png')
+           for sid in CAPTURE_CFG.get('r14d', [])]
+    res = [r for r in res if r is not None]
+    META['r14d-same'] = res
+    if res and all(res):
+        return (f'On Newsprint the proposal changes no pixel: today’s and the proposal’s pictures are identical by script on '
+                f'{"both" if len(res) == 2 else num(len(res))} plates checked.')
+    return 'On Newsprint the two pictures were compared by script and differ; see the notes.'
+
+
 def cap_item(caps, key, name, dpr, alt, cap, pixel=False):
     p = caps / f'{key}.png'
     if not p.exists():
@@ -703,6 +737,8 @@ def sec_ch16(caps, meta, ch, rep):
         if rid in groups:
             g = groups[rid]
             out.append(f'<h3 class="grp">Group {g["number"]}: {e(g["title"])}</h3><p>{e(g["line"])}</p>')
+        if rid == '16.10':
+            out.append(a21_block())
         video = rid in ('16.10', '16.11')
         out.append(f'<div class="rule"><p class="rid">Rule {rid}</p><p class="rt">{e(words[rid]["title"])}</p>')
         if video and not CH16_VIDEO_FINAL:
@@ -740,6 +776,36 @@ def sec_ch16(caps, meta, ch, rep):
     return ''.join(out)
 
 
+def a21_block():
+    have = [a for a in A21 if (EXP / f'{a[0]}.png').exists()]
+    if not have:
+        return slot('A21, the application kit’s video frame with chart S04 drawn in it (CD-S7), as Engineer W exports it.')
+    head = ('<h4>A21, chart S04 in the video frames</h4><p>The application kit’s new video frame draws chart S04 from the chart '
+            'kit at video size, with the caption band over the caption-safe area and S04’s source line on screen (CD-S7). '
+            'Each frame is shown at a third of its size; open it for true size.</p>')
+    if not A21_FINAL:
+        head += ('<p class="note"><span class="label">In progress</span>These are the frames as Engineer W exported them at '
+                 '00:40 UTC. The editor’s words, the design director’s placement in Rules 16.10 and 16.11, the data lead’s '
+                 'sign-off and the creative director’s rescore follow, and the board is built again from the final '
+                 'frames.</p>')
+    figs = []
+    for stem, label, cw, alt in have:
+        fn, pw, ph = save_webp(EXP / f'{stem}.png', stem.split('_', 1)[1])
+        figs.append(fig(fn, cw, round(ph * cw / pw), alt, labels('A21', label), link=fn))
+    return head + '<div class="cmp">' + ''.join(figs) + '</div>'
+
+
+def opener(caps, n_, title):
+    row = []
+    for w in (1440, 390):
+        p = caps / f'opener-{n_}-{w}.png'
+        if p.exists():
+            fn, pw, ph = save_webp(p, f'Chapter-{n_}-Opening-{w}')
+            row.append(fig(fn, pw, ph, f'Chapter {n_}’s opening as the guide prints it at {w} px: its title, introduction and opening figure.',
+                           labels(f'Chapter {n_}’s opening', f'{w} px'), link=fn))
+    return f'<div class="cmp">{"".join(row)}</div>' if row else ''
+
+
 def sec_web(rep):
     out = ['<section aria-labelledby="h-web" id="web"><h2 id="h-web">Chapter 20, your website</h2>',
            '<p>The website chapter 20 teaches, drawn by the application kit and exported at true size: the home page, an '
@@ -748,6 +814,9 @@ def sec_web(rep):
            'page.</p>']
     built = rep['weight']['projection']['phase_4_built']['20']
     out.append(f'<p class="note">Chapter 20 carries {n(built["bytes"])} bytes against an allocation of {n(built["allocation"])}.</p>')
+    out.append('<h3>Chapter 20 in the guide</h3><p>The chapter’s opening as the guide prints it, at 1440 and 390 px; the '
+               'guide itself stays on Newsprint (D2-1133), and its plates show the dark theme in their frames.</p>'
+               + opener(CAPS, '20', 'Web'))
     for key, stem, label in WEB_PAGES:
         out.append(f'<h3>{e(label)}</h3>')
         figs = {}
@@ -781,15 +850,13 @@ def sec_atlas(rep, atest, ch, wall):
            'then How to read and the loop index. Each picture is the view’s first screen; open it for the whole page.</p>',
            f'<p class="note">Chapter 21 carries {n(built["bytes"])} bytes against an allocation of {n(built["allocation"])}, '
            f'{round(100 * built["bytes"] / built["allocation"])} percent. Its {len(ch["rules"])} rules sit in five groups.</p>']
-    if CD_R1_FRAMES:
-        out.append('<h3>The opener’s first screens, nothing pressed (CD-R1)</h3><div class="pair">')
-        for stem, label, alt in CD_R1_FRAMES:
-            fn, pw, ph = save_webp(EXP / f'{stem}.png', stem.split('_', 1)[1])
-            out.append(fig(fn, pw, ph, alt, labels(label), link=fn))
-        out.append('</div>')
-    else:
-        out.append(slot('CD-R1’s load-state first screens of the atlas home, at 1440 px light and 390 px dark, the frames '
-                        'chapter 21’s opener takes once Engineer A exports them.'))
+    out.append('<h3>Chapter 21 in the guide</h3><p>The chapter’s opening as the guide prints it, at 1440 and 390 px: the '
+               'atlas home’s first screens, 1440 px light and 390 px dark.</p>')
+    if not OPENERS_FINAL:
+        out.append('<p class="note"><span class="label">Before CD-R1</span>Captured from the page as it stood before '
+                   'Engineer A’s fixes; CD-R1 draws these frames with nothing pressed, and the board is built again from '
+                   'the final page.</p>')
+    out.append(opener(CAPS, '21', 'The atlas'))
     for key, stem, label, views in ATLAS_VIEWS:
         out.append(f'<h3>{e(label)}</h3>')
         figs = []
@@ -911,8 +978,8 @@ def sec_rescore(scores):
                 note = f' <span class="label">Rescored in chat 12b</span>'
             else:
                 note = ' <span class="label">Rescore to come</span>'
-        cells = ''.join(f'<td class="num{" low" if sc[c] < 4 else ""}">{sc[c]}</td>' for c in crit)
-        rows.append(f'<tr><th scope="row">{e(item)}{note}</th>{cells}<td>{"Yes" if v["ready"] else "Not yet"}</td></tr>')
+        cells = ''.join(f'<td class="num{" low" if sc[c] < 4 else ""}" data-k="{h}">{sc[c]}</td>' for c, h in zip(crit, heads))
+        rows.append(f'<tr><th scope="row">{e(item)}{note}</th>{cells}<td data-k="Ready">{"Yes" if v["ready"] else "Not yet"}</td></tr>')
     th = ''.join(f'<th scope="col" class="num">{h}</th>' for h in heads)
     tail = (f'<p>{e(C16V_RESCORE["note"])}</p>' if C16V_RESCORE else slot(
         'The creative director’s rescore of C16-V alone, once A21 is placed and the data lead signs it off (DR-191), with '
@@ -928,20 +995,22 @@ def sec_rescore(scores):
 def sec_tested(meta, caps):
     return ('<section aria-labelledby="h-tested" id="tested"><h2 id="h-tested">What the studio checked for this board</h2>'
             '<div class="twocol"><div><h3>Tested</h3><ul class="plain">'
-            '<li>Today’s strict build in scratch: exit 0, 0 warnings, 14,395,945 bytes, 409 rules and 766 specimens, the '
-            'figures of the page of record.</li>'
-            '<li>Commit bc91667e’s page built in scratch from <code>git archive</code>: 14,189,507 bytes, the page of record '
-            'at chat 12’s opening, for PR-M1’s before.</li>'
-            '<li>Every original on this board captured from those pages in Chromium at device scale 1 or 2, with reduced '
-            'motion; every proposal drawn as a studio sketch in the browser’s copy, and no chapter file changed.</li>'
-            '<li>C11C-R14d on Newsprint: the proposal’s picture is identical to today’s, pixel for pixel, by script.</li>'
-            '<li>This page: every picture has alt text, no em or en dash, none of chapter 02’s filler or corporate words, '
-            'and every picture in <code>img/</code> is referenced, by the script that writes it.</li></ul></div>'
+            '<li>Today’s page was built in scratch with the strict build: exit 0, 0 warnings, 14,395,945 bytes, 409 rules '
+            'and 766 specimens, the figures of the page of record.</li>'
+            '<li>Commit bc91667e’s page was built in scratch from <code>git archive</code>, with no checkout. It weighs '
+            '14,189,507 bytes, the page of record at chat 12’s opening, and gives PR-M1’s before.</li>'
+            '<li>Every original here was captured from those pages in Chromium with reduced motion, and every proposal is a '
+            'studio sketch drawn in the browser’s copy of the page. No chapter file changed.</li>'
+            '<li>For C11C-R14d, a script compared today’s and the proposal’s Newsprint pictures pixel by pixel.</li>'
+            '<li>The board itself was opened at 1440, 1024, 390 and 360 px, light and dark: no sideways scroll, no broken '
+            'picture, and axe found no violation at 1440, 390 and 360 px. The script that writes it stops on an em or en '
+            'dash, chapter 02’s filler and corporate words, a picture without alt text, and a picture it does not '
+            'use.</li></ul></div>'
             '<div><h3>Not tested</h3><ul class="plain">'
-            '<li>Real screen readers, Safari and Firefox (DR-279).</li>'
-            '<li>The proposals as built: each is a sketch, so its code, its contrast in every place and its effect on the '
-            'guide check are tested when the change is made.</li>'
-            '<li>The weight options on the final page, which Engineer M measures.</li></ul></div></div></section>')
+            '<li>Real screen readers, Safari and Firefox were not tried (DR-279).</li>'
+            '<li>Each proposal is a sketch, so its code, its contrast in every place it appears and its effect on the guide '
+            'check are tested when the change is made.</li>'
+            '<li>The weight options on the final page wait for Engineer M’s table.</li></ul></div></div></section>')
 
 
 # ================================================================ page
@@ -1044,9 +1113,14 @@ details.spec summary .count { font-weight: 400; color: var(--quiet); font-size: 
   table.stack th, table.stack td { border: 0; padding: 2px 0 }
   table.stack td[data-k]::before { content: attr(data-k) ": "; font-weight: 700 }
   table.stack td:empty { display: none }
-  .scores th, .scores td { padding-right: 6px; font-size: 14px }
+  table.scores thead { display: none }
+  table.scores, table.scores tbody { display: block }
+  table.scores tr { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 2px 12px; padding: 10px 0; border-bottom: 1px solid var(--rule) }
+  table.scores th { grid-column: 1 / -1; border: 0; padding: 0 0 4px }
+  table.scores td { border: 0; padding: 0; text-align: left; font-size: 14px }
+  table.scores td[data-k]::before { content: attr(data-k) " "; color: var(--quiet); font-weight: 400 }
 }
-@media (max-width: 480px) { table { font-size: 14px } th, td { padding-right: 8px } .scores thead th { letter-spacing: 0; font-size: 11px } }
+@media (max-width: 480px) { table { font-size: 14px } th, td { padding-right: 8px } }
 .tablewrap { max-width: 100% }
 ul.plain { padding-left: 20px; margin: 0 0 12px } ul.plain li { margin-bottom: 6px; max-width: 44rem }
 .foot { margin-top: 72px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--quiet) }
@@ -1075,16 +1149,17 @@ def page(body, rep):
     for k, v in tokens().items():
         css = css.replace('{' + k + '}', v)
     w = rep['weight']
-    return ('<title>Phase 4 Board 1</title>\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+    return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Phase 4 Board 1</title>\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@700;800&display=swap">\n'
-            f'<style>{css}</style>\n<div class="wrap">'
+            f'<style>{css}</style>\n</head>\n<body>\n<div class="wrap">'
             '<header class="mast"><span class="word" role="img" aria-label="Oath &amp; Action">OATH<span class="amp">&amp;</span>ACTION</span>'
             '<span class="kick">Edition 06, Phase 4 board 1, November 24, 2026</span></header><main>'
             '<p class="kick" style="margin-top:32px">For Dustin Cathcart, Founder and Editor</p>'
             '<h1>Phase 4 board 1: chapters 16, 20 and 21, and the changes they ask of approved work</h1>'
             '<p class="lede">Chats 10 to 12b built and reviewed three chapters: photography, illustration and video; your '
-            'website; and the atlas inside it. This board shows them as built and asks you to decide twelve items, ranked, '
+            'website; and the atlas inside it. This board shows them as built and asks you to decide 12 items, ranked, '
             'each with the studio’s recommendation. One reply at the end of the list takes every recommendation.</p>'
             '<nav class="toc" aria-label="On this board"><ol>'
             '<li><a href="#h-decide">What you decide</a></li><li><a href="#h-approved">Changes to approved work</a></li>'
@@ -1094,7 +1169,7 @@ def page(body, rep):
             + body +
             f'</main><footer class="foot"><p>Built by <code>work/build/scripts/phase-4/board1_build.py</code> from the exports, '
             f'today’s strict build ({n(w["bytes"])} bytes) and the studio’s notes. Board builder’s notes: '
-            '<code>work/handoffs/phase-4/20261124_Chat-12b-Board-Builder-Notes.md</code>.</p></footer></div>\n')
+            '<code>work/handoffs/phase-4/20261124_Chat-12b-Board-Builder-Notes.md</code>.</p></footer></div>\n</body>\n</html>\n')
 
 
 # ================================================================ checks on the written page
@@ -1536,6 +1611,8 @@ def main():
         return
     rep, scores, specs, atest, chapters, caps, meta = load_inputs(args)
     META.update(meta)
+    global CAPS
+    CAPS = caps
     OUT.mkdir(parents=True, exist_ok=True)
     if IMG.exists():
         shutil.rmtree(IMG)

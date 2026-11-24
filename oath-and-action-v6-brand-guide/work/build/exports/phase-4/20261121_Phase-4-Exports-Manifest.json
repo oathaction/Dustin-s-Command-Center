@@ -1,5 +1,5 @@
 {
- "written": "2026-11-24T00:31:34.384Z",
+ "written": "2026-11-24T00:48:09.619Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -566,7 +566,7 @@
    "theme": "light",
    "size": "1,080 by 1,920 px",
    "view": "1080-light",
-   "device_scale": 2
+   "device_scale": 1.875
   },
   {
    "file": "20261124_Video-Frame-S04-Vertical-Safe-Areas-1080x1920.png",
@@ -576,7 +576,7 @@
    "theme": "light",
    "size": "1,080 by 1,920 px",
    "view": "1080-light",
-   "device_scale": 2,
+   "device_scale": 1.875,
    "overlay": "safe areas"
   },
   {
@@ -587,7 +587,7 @@
    "theme": "light",
    "size": "1,080 by 1,920 px",
    "view": "1080-light-misheard",
-   "device_scale": 2
+   "device_scale": 1.875
   },
   {
    "file": "20261124_Video-Frame-S04-Storyboard-0-08-1920x1080.png",

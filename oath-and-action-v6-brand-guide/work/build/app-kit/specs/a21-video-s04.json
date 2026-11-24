@@ -3,7 +3,7 @@
  "export_date": "20261124",
  "type": "video-frame",
  "guide": true,
- "spec_source": "work/handoffs/phase-4/20261124_Chat-12b-Design-Director-Notes.md, DD12b-R1; contracts W-C1 to W-C4 in 20261124_Chat-12b-Engineer-W-Notes.md",
+ "spec_source": "work/handoffs/phase-4/20261124_Chat-12b-Design-Director-Notes.md, DD12b-R1 and DD12b-R1a; contracts W-C1 to W-C4 in 20261124_Chat-12b-Engineer-W-Notes.md",
  "chart": "s04",
  "charts": {
   "s04": [
@@ -16,30 +16,31 @@
   {
    "key": "1080-light",
    "platform": "video.vertical",
-   "scale": 2,
+   "scale": 1.875,
    "moment": "0:08",
    "safe_basis": "platform",
    "basis_key": "vertical",
    "export_name": "Video-Frame-S04-Vertical-1080x1920",
    "overlay_name": "Video-Frame-S04-Vertical-Safe-Areas-1080x1920",
    "chart": {
-    "px": 420,
+    "px": 448,
     "x": 120,
     "y": 269
    },
    "source": {
-    "gap": 24,
-    "x": 120,
-    "w": 660
+    "in_band": true
    },
    "band": {
+    "full": true,
+    "from_ink": 16,
+    "foot": 1248,
+    "src_top": 24,
+    "gap": 24,
+    "pad_foot": 16,
     "x": 120,
     "w": 660,
-    "bottom": 1248,
     "size": 32,
-    "lh": 44,
-    "pad_y": 16,
-    "pad_x": 24
+    "lh": 44
    },
    "sign": {
     "w": 96,
@@ -50,29 +51,30 @@
   {
    "key": "1080-light-misheard",
    "platform": "video.vertical",
-   "scale": 2,
+   "scale": 1.875,
    "moment": "0:08",
    "safe_basis": "platform",
    "basis_key": "vertical",
    "export_name": "Video-Frame-S04-Vertical-Misheard-Caption-1080x1920",
    "chart": {
-    "px": 420,
+    "px": 448,
     "x": 120,
     "y": 269
    },
    "source": {
-    "gap": 24,
-    "x": 120,
-    "w": 660
+    "in_band": true
    },
    "band": {
+    "full": true,
+    "from_ink": 16,
+    "foot": 1248,
+    "src_top": 24,
+    "gap": 24,
+    "pad_foot": 16,
     "x": 120,
     "w": 660,
-    "bottom": 1248,
     "size": 32,
-    "lh": 44,
-    "pad_y": 16,
-    "pad_x": 24
+    "lh": 44
    },
    "sign": {
     "w": 96,
@@ -115,13 +117,11 @@
     "w": 1360
    },
    "band": {
-    "center": true,
-    "max_w": 1200,
-    "bottom": 972,
+    "full": true,
+    "lines_foot": 956,
+    "pad_top": 16,
     "size": 32,
-    "lh": 44,
-    "pad_y": 16,
-    "pad_x": 24
+    "lh": 44
    },
    "sign": {
     "w": 96,
@@ -164,13 +164,11 @@
     "w": 1360
    },
    "band": {
-    "center": true,
-    "max_w": 1200,
-    "bottom": 972,
+    "full": true,
+    "lines_foot": 956,
+    "pad_top": 16,
     "size": 32,
-    "lh": 44,
-    "pad_y": 16,
-    "pad_x": 24
+    "lh": 44
    },
    "sign": {
     "w": 96,
