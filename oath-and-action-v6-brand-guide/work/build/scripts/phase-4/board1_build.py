@@ -106,6 +106,15 @@ WEIGHT_TABLE = {
 }
 A21_FINAL = True           # True once A21's frames carry the editor's words and the data lead's sign-off
 OPENERS_FINAL = True       # True once the opener captures come from a page built after CD-R1 (chapter 21's load state)
+# The guide check's runs on the final page (the main session, from $S/check/selftest.json and $S/check5/run.log)
+GUIDE_CHECK = {
+    'selftest': ('The guide check’s self-test, on the tree of commit 8ac73595 from 01:21 to 01:38 UTC, caught 167 of 167 '
+                 'planted faults and left 63 of 63 allowed cases alone.'),
+    'four_widths': 'PENDING',
+    'not_tested': ('The four-width check ran with its own screenshots turned off. Its first run stopped at 03:21 UTC when a '
+                   'screenshot timed out on a photograph, so that run is not counted. Every test other than the '
+                   'screenshots ran.'),
+}
 
 # A21, the application kit's video frame with chart S04 (Engineer W), as exported; alt text read from the frames
 A21 = [
@@ -1085,12 +1094,15 @@ def sec_tested(meta, caps, rep):
             '<li>The board itself was opened at 1440, 1024, 390 and 360 px, light and dark: no sideways scroll, no broken '
             'picture, and axe found no violation at 1440, 390 and 360 px. The script that writes it stops on an em or en '
             'dash, chapter 02’s filler and corporate words, a picture without alt text, and a picture it does not '
-            'use.</li></ul></div>'
+            'use.</li>'
+            f'<li>{GUIDE_CHECK["selftest"]}</li>'
+            f'<li>{GUIDE_CHECK["four_widths"]}</li></ul></div>'
             '<div><h3>Not tested</h3><ul class="plain">'
             '<li>Real screen readers, Safari and Firefox were not tried (DR-279).</li>'
             '<li>Each proposal is a sketch, so its code, its contrast in every place it appears and its effect on the guide '
             'check are tested when the change is made.</li>'
-            '<li>The board ran no weight measure of its own; its weight table is Engineer M’s, copied from his notes.</li></ul></div></div></section>')
+            f'<li>{GUIDE_CHECK["not_tested"]}</li>'
+            '<li>The board ran no weight measure of its own. Its weight table is copied from Engineer M’s notes.</li></ul></div></div></section>')
 
 
 # ================================================================ page
