@@ -39,8 +39,8 @@
     "pad_foot": 16,
     "x": 120,
     "w": 660,
-    "size": 32,
-    "lh": 44,
+    "size": 40,
+    "lh": 54,
     "align": "left"
    },
    "sign": {
@@ -74,8 +74,8 @@
     "pad_foot": 16,
     "x": 120,
     "w": 660,
-    "size": 32,
-    "lh": 44,
+    "size": 40,
+    "lh": 54,
     "align": "left"
    },
    "sign": {

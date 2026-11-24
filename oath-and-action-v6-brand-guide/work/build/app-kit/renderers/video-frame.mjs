@@ -306,7 +306,9 @@ const hits = (a, b, tol = 0.5) => a[0] < b[0] + b[2] - tol && b[0] < a[0] + a[2]
 // on Newsprint and change nothing; over the band they draw the outline and the hatch in Newsprint. lib.mjs is untouched.
 const NC = 'var(--oa-color-surface-newsprint)';
 export function overlay_two_inks(svg) {
-  let out = svg.replace(/<rect class="edge" x="([\d.-]+)" y="([\d.-]+)" width="([\d.-]+)" height="([\d.-]+)" stroke-width="([\d.]+)" stroke-dasharray="([\d.]+) ([\d.]+)"\/>/g,
+  // CD12b-R8: the overlay takes the frame's light theme, never the guide's: its chips and inks resolve Newsprint's tokens
+  let out = svg.replace(/<g class="oa-app-safe" aria-hidden="true">/g, '<g class="oa-app-safe oa-surface-newsprint" data-oa-theme="light" aria-hidden="true">');
+  out = out.replace(/<rect class="edge" x="([\d.-]+)" y="([\d.-]+)" width="([\d.-]+)" height="([\d.-]+)" stroke-width="([\d.]+)" stroke-dasharray="([\d.]+) ([\d.]+)"\/>/g,
     (m, x, y, w, h, sw, on, off) => m + `<rect x="${x}" y="${y}" width="${w}" height="${h}" style="fill:none;stroke:${NC};stroke-width:${sw};stroke-dasharray:${off} ${on};stroke-dashoffset:${off}"/>`);
   out = out.replace(/<rect class="hatch" style="fill:url\(#oa-app-hatch\)" x="([\d.-]+)" y="([\d.-]+)" width="([\d.-]+)" height="([\d.-]+)"\/><rect class="solid" x="[\d.-]+" y="[\d.-]+" width="[\d.-]+" height="[\d.-]+" stroke-width="([\d.]+)"\/>/g,
     (m, x, y, w, h, sw) => m + `<rect x="${x}" y="${y}" width="${w}" height="${h}" style="fill:url(#oa-app-hatch-nc)"/>`
