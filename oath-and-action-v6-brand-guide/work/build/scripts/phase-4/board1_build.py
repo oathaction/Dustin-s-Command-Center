@@ -70,24 +70,25 @@ def num(v):
 
 # ================================================================ late parts (slots until they land)
 
-CH16_VIDEO_FINAL = False   # True once the captures of Rules 16.10 and 16.11 are taken from a page with A21 placed
-C16V_RESCORE = None        # {'scores': {...six criteria...}, 'ready': bool, 'note': str} from 20261124_Chat-12b-CD-Rescore.md
+CH16_VIDEO_FINAL = True    # True once the captures of Rules 16.10 and 16.11 are taken from a page with A21 placed
+C16V_RESCORE = None        # read in main() from 20261124_Chat-12b-CD-Scores.json, block rescore_12b, key c16v_for_board
+CD12B = {}                 # that rescore block, for its notes on CD-R1 to CD-R5 and the risk it names
 WEIGHT_TABLE = None        # Engineer M's final table: {'page': int, 'rows': [...], 'combos': [...], 'note': str}
-A21_FINAL = False          # True once A21's frames carry the editor's words and the data lead's sign-off
-OPENERS_FINAL = False      # True once the opener captures come from a page built after CD-R1 (chapter 21's load state)
+A21_FINAL = True           # True once A21's frames carry the editor's words and the data lead's sign-off
+OPENERS_FINAL = True       # True once the opener captures come from a page built after CD-R1 (chapter 21's load state)
 
 # A21, the application kit's video frame with chart S04 (Engineer W), as exported; alt text read from the frames
 A21 = [
     ('20261124_Video-Frame-S04-Vertical-1080x1920', 'Vertical frame, 1080 by 1920 px', 360,
-     'The vertical video frame on Newsprint: chart S04, reported voting by age in 2020 and 2024, drawn by the chart kit across the upper half. 18 to 24 at 47.7 percent, down 3.7 points from 51.4; 25 to 44 at 60.2, down 2.4 from 62.6; 45 to 64 at 70.0 against 71.0, too close to call; 65 and over at 74.7 against 74.5, no clear change. S04’s source line sits under the chart, then a Charcoal caption band, Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points. A small O&A mark at the top right.'),
+     'The vertical video frame on Newsprint, with chart S04 drawn by the chart kit in its upper part: reported voting by age in 2020 and 2024. 18 to 24 at 47.7 percent, down 3.7 points from 51.4; 25 to 44 at 60.2, down 2.4 from 62.6; 45 to 64 at 70.0 against 71.0, too close to call; 65 and over at 74.7 against 74.5, no clear change. A full-width Charcoal band holds S04’s source line and the caption Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points. A small O&A mark at the top right.'),
     ('20261124_Video-Frame-S04-Vertical-Safe-Areas-1080x1920', 'Vertical frame with its safe areas', 360,
-     'The same vertical frame with the safe-area overlay switched on: a dashed box marks the area clear of the app’s buttons, labeled 120 px and 269 px at the top and 672 px at the foot, and a hatched band at the right marks the button column.'),
+     'The same vertical frame with its safe-area overlay switched on: a dashed box marks the area clear of the app, labeled 120 px and 269 px at the top and 672 px at the foot, a hatched column at the right marks TikTok’s buttons, and words under the box name TikTok’s and Instagram’s ad guides, retrieved November 21, 2026.'),
     ('20261124_Video-Frame-S04-Vertical-Misheard-Caption-1080x1920', 'Failure: a misheard caption', 360,
-     'The vertical frame as a failure: the caption band reads Citizens 18 to 24 reported voting at 47.7 percent, down 37 points, where the chart says 3.7.'),
+     'The vertical frame as a failure: the caption reads Citizens 18 to 24 reported voting at 47.7 percent, down 37 points, where the chart says 3.7.'),
     ('20261124_Video-Frame-S04-Storyboard-0-08-1920x1080', 'Storyboard at 0:08, 1920 by 1080 px', 640,
-     'The storyboard frame at 0:08 on Newsprint: chart S04 at video size across the upper left, its source line under it, and the Charcoal caption band, Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points, centered low in the frame.'),
+     'The storyboard frame at 0:08 on Newsprint: chart S04 at video size across the upper left with its source line under it, and a full-width Charcoal caption band at the foot, Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points.'),
     ('20261124_Video-Frame-S04-Storyboard-0-30-Safe-Areas-1920x1080', 'Storyboard at 0:30, with its safe areas', 640,
-     'The storyboard frame at 0:30 with its safe areas shown: the same chart and source line, the caption band reading So the gap between the youngest and the oldest grew from 23 points to 27, a dashed box 96 px in from the left and 54 px from the top, and a hatched band 54 px tall across the foot.'),
+     'The storyboard frame at 0:30 with its safe areas shown: the same chart and source line, the caption So the gap between the youngest and the oldest grew from 23 points to 27, a dashed box 96 px in from the left and 54 px from the top labeled Our margin until chapter 23 sets one, and a hatched band 54 px tall across the foot labeled The player’s controls.'),
 ]
 
 # ================================================================ the decisions, ranked
@@ -101,7 +102,8 @@ DECISIONS = [
         'codes': 'Gate 3 report, section 9; C16-V (DR-191)',
         'what': 'Chapter 16, Photography, illustration and video; chapter 20, Web, which draws your website; and chapter '
                 '21, The atlas. After chat 12’s review and fix pass, the creative director passed 15 of their 16 items '
-                'at 4 or more on all six criteria. C16-V, the video rules 16.10 to 16.13, took this chat’s second pass.',
+                'at 4 or more on all six criteria. C16-V, the video rules 16.10 to 16.13, took this chat’s second pass: '
+                'chart S04 now fills the video frames, and C16-V reaches 4 on every criterion, so all 16 items pass.',
         'rec': 'Approve chapter 16’s rules, the website’s look at its four widths in both themes, and the atlas’s views.',
         'see': 'ch16',
     },
@@ -255,11 +257,11 @@ WEB_ALT = {
     },
     'act': {
         (1440, 'Light'): f'The Act page’s first screen at 1440 px on Newsprint: {HEAD_WIDE}, Act underlined as the current part. The headline How to comment on the FDA’s proposed rule on NAC in display type, and a paragraph saying anyone may comment until January 19, 2027, with the docket FDA-2025-N-2699. A Charcoal panel at the right, Where the rule stands, lists six steps: Early notice, done, April 22, 2022; Proposed, done, November 17, 2026; Comments open, now, until January 19, 2027, marked with a red dot; then Comments closed, Final rule and In effect, not yet. Under them, You can take part now, and the docket number.',
-        (1024, 'Light'): f'The Act page’s first screen at 1024 px on Newsprint: {HEAD_WIDE}, Act current. The headline, the opening paragraph and the status panel Where the rule stands with its six steps.',
-        (390, 'Light'): f'The Act page’s first screen at 390 px on Newsprint: {HEAD_PHONE}. The pillar row with Act current, the headline on several lines, the opening paragraph and the top of the status panel.',
-        (360, 'Light'): f'The Act page’s first screen at 360 px on Newsprint: {HEAD_PHONE}, from the smaller master. The headline, the opening paragraph and the top of the status panel.',
+        (1024, 'Light'): f'The Act page’s first screen at 1024 px on Newsprint: {HEAD_WIDE}, Act current. The headline, the opening paragraph and the status panel Where the rule stands, its steps running to the window’s foot with step 3, Comments open, marked by a red dot.',
+        (390, 'Light'): f'The Act page’s first screen at 390 px on Newsprint: {HEAD_PHONE}. The pillar row with Act current, the headline on four lines, the opening paragraph and the head of the status panel, Where the rule stands.',
+        (360, 'Light'): f'The Act page’s first screen at 360 px on Newsprint: {HEAD_PHONE}, from the smaller master. The headline on five lines, the opening paragraph and the top edge of the status panel.',
         (1440, 'Dark'): 'The Act page’s first screen at 1440 px in the dark theme, Dark chosen: the headline and paragraph in light type on Charcoal, and the status panel edged by a thin rule, its step 3 marked with a red dot.',
-        (390, 'Dark'): 'The Act page’s first screen at 390 px in the dark theme: the headline, the opening paragraph and the top of the status panel edged by a thin rule.',
+        (390, 'Dark'): 'The Act page’s first screen at 390 px in the dark theme: the headline on four lines, the opening paragraph and the head of the status panel, edged by a thin rule.',
     },
 }
 WEB_STILLS = [
@@ -377,7 +379,7 @@ def rule_words(ch):
         d = {'title': r['title'], 'rule': plain(rule)}
         for k in ('correct', 'failure'):
             c = r.get(k) or {}
-            d[k] = {'caption_text': plain(c.get('caption', '')).replace('Fails Rule', 'fails Rule')}
+            d[k] = {'caption_text': re.sub(r'^Fails Rule \d+\.\d+\.\s*', '', plain(c.get('caption', '')))}
         out[r['id']] = d
     return out
 
@@ -403,8 +405,8 @@ def sec_decisions(rep):
                 d['what'] = (f'On a 390 px phone, Rule 20.7’s plate draws the 1440 px article page {a["shown"]} px wide, '
                              f'{pa} percent of its size, and its three phone frames side by side at {b["shown"]} px each, '
                              f'{pb} percent, so a 16 px line of the page prints between 3 and 4 px. The label over the '
-                             'first frame says “shown at 50 percent”, the scale at a desktop width. Chapters 20 and 21’s '
-                             'other page plates draw the same way.')
+                             'first frame reads “1440 px, light, shown at 50 percent on a 1440 px screen” (D4-422), so it '
+                             'states its scale on a desktop. Chapters 20 and 21’s other page plates draw the same way.')
             else:
                 d['what'] = 'On a 390 px phone the guide draws chapters 20 and 21’s wide page frames at about a fifth of their size.'
     items = []
@@ -496,7 +498,7 @@ def sec_approved(caps, meta, rep):
         'stop at the first 1,100 px of the plate.</p>')
     S.append(cmp_row([
         cap_item(caps, 'c111-today', 'C11-1-Rule-20-7-390-Today', 2,
-                 'Rule 20.7’s plate on a 390 px phone today: under the label 1440 px, light, shown at 50 percent, the whole article page drawn about 290 px wide, its words too small to read, then the start of the 1024 px frame.',
+                 'Rule 20.7’s plate on a 390 px phone today: under the label 1440 px, light, shown at 50 percent on a 1440 px screen, the whole article page drawn about 290 px wide, its words too small to read, then the start of the 1024 px frame.',
                  labels('Today', '390 px') + 'The 1440 px frame first, about a fifth of its size.'),
         cap_item(caps, 'c111-proposal', 'C11-1-Rule-20-7-390-Proposal', 2,
                  'The same plate in the studio sketch: the 390 px article page first, its masthead, headline, paragraph and count panel readable, and further down a list of the wider pages, each a line that opens it at true size.',
@@ -788,6 +790,12 @@ def a21_block():
                  '00:40 UTC. The editor’s words, the design director’s placement in Rules 16.10 and 16.11, the data lead’s '
                  'sign-off and the creative director’s rescore follow, and the board is built again from the final '
                  'frames.</p>')
+    risk = [r for r in CD12B.get('risks_for_dustin', []) if 'vertical frame' in r]
+    if risk:
+        head += ('<p class="note"><span class="label">For chapter 23</span>The creative director names one cost to settle '
+                 'at chapter 23: in the vertical frame S04’s words draw at about 9 px on a 390 px phone, since its '
+                 'full source line stays on screen. Only a shorter on-screen source line frees that room, against Rule '
+                 '13.6’s six parts.</p>')
     figs = []
     for stem, label, cw, alt in have:
         fn, pw, ph = save_webp(EXP / f'{stem}.png', stem.split('_', 1)[1])
@@ -801,7 +809,8 @@ def opener(caps, n_, title):
         p = caps / f'opener-{n_}-{w}.png'
         if p.exists():
             fn, pw, ph = save_webp(p, f'Chapter-{n_}-Opening-{w}')
-            row.append(fig(fn, pw, ph, f'Chapter {n_}’s opening as the guide prints it at {w} px: its title, introduction and opening figure.',
+            fig_words = {'20': 'the website’s home page in its frames', '21': 'the atlas home’s first screens as they load with nothing pressed, at 1440 px light and 390 px dark, then the rules by group'}.get(n_, 'its opening figure')
+            row.append(fig(fn, pw, ph, f'Chapter {n_}’s opening as the guide prints it at {w} px: its title, its introduction and {fig_words}.',
                            labels(f'Chapter {n_}’s opening', f'{w} px'), link=fn))
     return f'<div class="cmp">{"".join(row)}</div>' if row else ''
 
@@ -913,15 +922,34 @@ def sec_wall(wall):
         return head + slot('The covered pictures, which the creative director makes again for this board: the four views '
                            'at 1440 px light and dark and at 390 px light, covered as in reading B, beside chapter 20’s '
                            'home page covered.')
-    out = [head, '<div class="phones">']
-    for p in sorted(Path(wall).glob('*.png')):
-        stem = p.stem
-        fn, pw, ph = save_webp(p, 'Wall-Test-' + re.sub(r'[^A-Za-z0-9]+', '-', stem).strip('-').title())
-        words = stem.replace('-', ' ').replace('_', ' ')
-        cw = min(pw, 720)
-        out.append(fig(fn, cw, round(ph * cw / pw), f'Wall test, reading B: {words}, with the wordmark, the lockmark and the atlas’s name covered by patches of the ground.',
-                       labels('Wall test', 'Covered') + e(words), link=fn))
-    out.append('</div>')
+    wall = Path(wall)
+    what = {
+        'Atlas-Home': ('The atlas home', 'the drawing of the whole system, Outside forces over Wealth, Voice, Elections, Checks and Policy, with Your household and Technology beneath, under the Charcoal title band'),
+        'Atlas-Reform-R-23': ('Reform R-23', 'the chip Reform R-23, the title Minimum wage that rises with an index in display type, and the Charcoal Where it stands panel with its two grades'),
+        'Atlas-Register-D04': ('The Register, sheet D04', 'the title The Register on its Charcoal band and the index of sheets, each grade column headed by its line sample'),
+        'Atlas-Loop-R18': ('Loop R18', 'the quoted title on Weakening watchdogs in display type, the grade line with its chips and the Charcoal This loop panel'),
+        'Chapter-20-Web-Home-Control': ('Chapter 20’s home page, the control', 'the Charcoal pillar row, Explain, Track, Connect and Act, over the four pieces with the red dot on the NAC rule’s step'),
+    }
+    out = [head, '<p>Reading B covers the masthead’s wordmark and lockmark, the footer’s lockmark, the atlas’s own name and '
+           'subtitle in its title bar, and the footer’s column head “Oath & Action”. Each picture is the view’s first '
+           'screen, covered; open it for the whole page covered. The creative director’s method and every patch are in '
+           '<code>20261124_Chat-12b-CD-Rescore.md</code>.</p>']
+    for key, (label, desc) in what.items():
+        figs = []
+        for w, t in ((1440, 'Light'), (1440, 'Dark'), (390, 'Light')):
+            whole = wall / f'{key}-{w}-{t}-Reading-B.png'
+            first = wall / 'first-screens' / f'{key}-{w}-{t}-Reading-B-First-Screen.png'
+            if not first.exists():
+                continue
+            ffn, pw, ph = save_webp(first, f'Wall-Test-{key}-{w}-{t}-First-Screen')
+            link = save_webp(whole, f'Wall-Test-{key}-{w}-{t}')[0] if whole.exists() else ffn
+            theme = 'on Newsprint' if t == 'Light' else 'in the dark theme'
+            alt = (f'{label}, first screen at {w} px {theme}, covered for the wall test: the wordmark, the lockmark and the '
+                   f'atlas’s name replaced by flat patches of the ground, leaving {desc}.')
+            cw = pw if w == 390 else 720
+            figs.append(fig(ffn, cw, round(ph * cw / pw), alt, labels('Covered', f'{w} px', t) + ('Shown at half size.' if cw < pw else 'True size.'), link=link))
+        if figs:
+            out.append(f'<h4>{e(label)}</h4><div class="cmp">{"".join(figs)}</div>')
     return ''.join(out)
 
 
@@ -944,7 +972,7 @@ def sec_specs(specs):
             size = f'{size} {r["unit"]}' if size else 'Any size'
             src = (r.get('source') or '').split(' ; ')[0].strip()
             link = f'<a href="{e(src)}" rel="noopener" target="_blank">Source</a>' if src.startswith('http') else ''
-            app = re.sub(r'`([^`]+)`', r'<code>\1</code>', e(r['application']))
+            app = re.sub(r'`([^`]+)`', r'<code>\1</code>', e(r['application'].replace(chr(39), '’')))   # typographic apostrophes
             trs.append(f'<tr><th scope="row">{app}</th><td data-k="Size">{e(size)}</td><td data-k="Aspect">{e(r["aspect"] or "")}</td>'
                        f'<td data-k="Fits">{e(r["match"])}</td><td data-k="Safe area">{"Yes" if r["safe_area"] else "No"}</td>'
                        f'<td data-k="Status">{e(status.get(r["status"], r["status"]))}</td><td data-k="Page">{link}</td></tr>')
@@ -981,22 +1009,30 @@ def sec_rescore(scores):
         cells = ''.join(f'<td class="num{" low" if sc[c] < 4 else ""}" data-k="{h}">{sc[c]}</td>' for c, h in zip(crit, heads))
         rows.append(f'<tr><th scope="row">{e(item)}{note}</th>{cells}<td data-k="Ready">{"Yes" if v["ready"] else "Not yet"}</td></tr>')
     th = ''.join(f'<th scope="col" class="num">{h}</th>' for h in heads)
-    tail = (f'<p>{e(C16V_RESCORE["note"])}</p>' if C16V_RESCORE else slot(
+    closed = [c for c, v in CD12B.get('chat_12_second_pass_codes', {}).items() if v.get('closed')]
+    closed_p = (f'<p>The creative director also saw {e(", ".join(closed[:-1]))} and {e(closed[-1])} closed on the rebuilt '
+                'frames, and the wall test pass again.</p>') if len(closed) > 1 else ''
+    ready = sum(1 for item, v in rs.items() if (C16V_RESCORE['ready'] if item == 'C16-V' and C16V_RESCORE else v['ready']))
+    tail = (f'<p><strong>{ready} of {len(rs)} items are ready.</strong> {e(C16V_RESCORE["note"].replace(chr(39), "’"))}</p>{closed_p}' if C16V_RESCORE else slot(
         'The creative director’s rescore of C16-V alone, once A21 is placed and the data lead signs it off (DR-191), with '
         'whether the five small faults, CD-R1 to CD-R5, and CD-S6 are closed.'))
     return ('<section aria-labelledby="h-rescore" id="rescore"><h2 id="h-rescore">The creative director’s rescore</h2>'
-            '<p>Each item scored from 1 to 5 on six criteria after chat 12’s fix pass; an item ships at 4 or more on all six. '
+            '<p>Each item scored from 1 to 5 on six criteria after chat 12’s fix pass, and C16-V again after this chat’s '
+            'second pass; an item ships at 4 or more on all six. '
             'C stands for chapter, then the chapter’s number and its group: C16-A covers Rules 16.1 to 16.4, C20-P the '
             'website’s three pages, C21-L the loop pages, and AK the application kit. Scores under 4 are marked.</p>'
             f'<div class="tablewrap"><table class="scores"><thead><tr><th scope="col">Item</th>{th}<th scope="col">Ready</th></tr></thead>'
             f'<tbody>{"".join(rows)}</tbody></table></div>{tail}</section>')
 
 
-def sec_tested(meta, caps):
+def sec_tested(meta, caps, rep):
+    w = rep['weight']
     return ('<section aria-labelledby="h-tested" id="tested"><h2 id="h-tested">What the studio checked for this board</h2>'
             '<div class="twocol"><div><h3>Tested</h3><ul class="plain">'
-            '<li>Today’s page was built in scratch with the strict build: exit 0, 0 warnings, 14,395,945 bytes, 409 rules '
-            'and 766 specimens, the figures of the page of record.</li>'
+            f'<li>The final page, from the main session’s strict build: {len(rep["warnings"])} warnings in its report, {n(w["bytes"])} '
+            f'bytes, {rep["rules"] if isinstance(rep["rules"], int) else len(rep["rules"])} rules and '
+            f'{rep["specimens_placed"] if isinstance(rep["specimens_placed"], int) else len(rep["specimens_placed"])} specimens. '
+            'Every guide picture on this board comes from it.</li>'
             '<li>Commit bc91667e’s page was built in scratch from <code>git archive</code>, with no checkout. It weighs '
             '14,189,507 bytes, the page of record at chat 12’s opening, and gives PR-M1’s before.</li>'
             '<li>Every original here was captured from those pages in Chromium with reduced motion, and every proposal is a '
@@ -1185,7 +1221,7 @@ def check(page_html):
         sys.exit('an em or en dash is on the page')
     text = re.sub(r'<style.*?</style>', ' ', page_html, flags=re.S)
     text = re.sub(r'<code>.*?</code>', ' ', text, flags=re.S)
-    text = re.sub(r'<[^>]+>', ' ', text)
+    text = html.unescape(re.sub(r'<[^>]+>', ' ', text))
     bad = re.findall(BANNED, text, re.I)
     if bad:
         sys.exit(f'filler or corporate words on the page: {sorted(set(b[0] if isinstance(b, tuple) else b for b in bad))}')
@@ -1611,6 +1647,11 @@ def main():
         return
     rep, scores, specs, atest, chapters, caps, meta = load_inputs(args)
     META.update(meta)
+    global C16V_RESCORE, CD12B
+    sc12b = ROOT / 'work/handoffs/phase-4/20261124_Chat-12b-CD-Scores.json'
+    if sc12b.exists():
+        CD12B = json.loads(sc12b.read_text()).get('rescore_12b', {})
+        C16V_RESCORE = CD12B.get('c16v_for_board')
     global CAPS
     CAPS = caps
     OUT.mkdir(parents=True, exist_ok=True)
@@ -1619,7 +1660,7 @@ def main():
     IMG.mkdir(parents=True)
     body = (sec_decisions(rep) + sec_approved(caps, meta, rep) + sec_ch16(caps, meta, chapters['16'], rep)
             + sec_web(rep) + sec_atlas(rep, atest, chapters['21'], args.wall) + sec_specs(specs) + sec_rescore(scores)
-            + sec_tested(meta, caps))
+            + sec_tested(meta, caps, rep))
     html_out = page(body, rep)
     check(html_out)
     PAGE.write_text(html_out)
