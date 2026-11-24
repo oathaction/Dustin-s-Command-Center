@@ -122,8 +122,8 @@
     "full": true,
     "lines_foot": 956,
     "pad_top": 16,
-    "size": 32,
-    "lh": 44
+    "size": 40,
+    "lh": 46
    },
    "sign": {
     "w": 96,
@@ -169,8 +169,8 @@
     "full": true,
     "lines_foot": 956,
     "pad_top": 16,
-    "size": 32,
-    "lh": 44
+    "size": 40,
+    "lh": 46
    },
    "sign": {
     "w": 96,
