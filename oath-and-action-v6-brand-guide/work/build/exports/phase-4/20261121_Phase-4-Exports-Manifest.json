@@ -1,5 +1,5 @@
 {
- "written": "2026-11-23T19:58:02.126Z",
+ "written": "2026-11-24T00:31:34.384Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -557,6 +557,83 @@
    "format": "png",
    "theme": "light",
    "size": "390 by 4,017 px"
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Vertical-1080x1920.png",
+   "spec": "A21",
+   "platform": "video.vertical",
+   "format": "png",
+   "theme": "light",
+   "size": "1,080 by 1,920 px",
+   "view": "1080-light",
+   "device_scale": 2
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Vertical-Safe-Areas-1080x1920.png",
+   "spec": "A21",
+   "platform": "video.vertical",
+   "format": "png",
+   "theme": "light",
+   "size": "1,080 by 1,920 px",
+   "view": "1080-light",
+   "device_scale": 2,
+   "overlay": "safe areas"
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Vertical-Misheard-Caption-1080x1920.png",
+   "spec": "A21",
+   "platform": "video.vertical",
+   "format": "png",
+   "theme": "light",
+   "size": "1,080 by 1,920 px",
+   "view": "1080-light-misheard",
+   "device_scale": 2
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Storyboard-0-08-1920x1080.png",
+   "spec": "A21",
+   "platform": "video.landscape",
+   "format": "png",
+   "theme": "light",
+   "size": "1,920 by 1,080 px",
+   "view": "1920-light-chart",
+   "device_scale": 2,
+   "safe_basis": "studio"
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Storyboard-0-08-Safe-Areas-1920x1080.png",
+   "spec": "A21",
+   "platform": "video.landscape",
+   "format": "png",
+   "theme": "light",
+   "size": "1,920 by 1,080 px",
+   "view": "1920-light-chart",
+   "device_scale": 2,
+   "overlay": "safe areas",
+   "safe_basis": "studio"
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Storyboard-0-30-1920x1080.png",
+   "spec": "A21",
+   "platform": "video.landscape",
+   "format": "png",
+   "theme": "light",
+   "size": "1,920 by 1,080 px",
+   "view": "1920-light-gap",
+   "device_scale": 2,
+   "safe_basis": "studio"
+  },
+  {
+   "file": "20261124_Video-Frame-S04-Storyboard-0-30-Safe-Areas-1920x1080.png",
+   "spec": "A21",
+   "platform": "video.landscape",
+   "format": "png",
+   "theme": "light",
+   "size": "1,920 by 1,080 px",
+   "view": "1920-light-gap",
+   "device_scale": 2,
+   "overlay": "safe areas",
+   "safe_basis": "studio"
   }
  ]
 }

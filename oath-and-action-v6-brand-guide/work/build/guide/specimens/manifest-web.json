@@ -218,7 +218,7 @@
   "notes": "Read from the kit’s exports manifest; each size read from its file.",
   "readable": true,
   "kit_inputs": {
-   "work/build/exports/phase-4/20261121_Phase-4-Exports-Manifest.json": "aad71643daf98ad5509efba3ca6dca92cbf905cf1f8c4149f558516c39af0e04",
+   "work/build/exports/phase-4/20261121_Phase-4-Exports-Manifest.json": "fd0b9c0c451fe38583dd229bbb041fdca20523e68f94d38e6845c79b10d6d423",
    "work/build/exports/phase-4/20261121_Web-Menu-Open-360-Light.png": "8e9a6e42e04b0566e6819b85199e7a1bb982bad0fac13c0ed5f507a5930ad5be",
    "work/build/exports/phase-4/20261121_Web-Menu-Open-390-Dark.png": "45cf78e09fc2736de8952af346a9d0a0d8144b84c0a26817dedcb9343f5d2d74",
    "work/build/exports/phase-4/20261121_Web-Menu-Open-390-Light.png": "03ec01f78113ef040e55769e7822676dbcae49cb64a27545c194c8651359889f",

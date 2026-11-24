@@ -164,24 +164,35 @@ export async function render(spec) {
     // the overlay, on the layout page: the safe area's outline (2 px dashed at the exported size), each excluded box
     // hatched, each inset's figure in exported px, and the basis the page words name
     const L = W.safe_labels || {};
-    const ls = q(28);
+    // the chips' words at overlay_label exported px (DD12b-Q3: a plate that opens with its overlay shown keeps them at 13 px
+    // or more at its scale, so 16.11's frame, placed at half its layout page, sets them at 52 exported px, 26 on the page)
+    const ls = q(v.overlay_label || 28);
     const chip_w = (t) => Math.round(t.length * ls * 0.68 + ls * 0.8);
+    const chip_h = r2(ls * 1.6);
     const [sx, sy, sw_, sh_] = safe.map(q);
     const basis = L[v.basis_key || (v.platform === 'video.vertical' ? 'vertical' : 'landscape')] || (v.safe_basis !== 'studio' ? L.safe : null) || null;
     const ins = srow.safe_area || {};
     const fig = (n) => `${n} px`;
-    const chip_h = r2(ls * 1.6);
-    // the top inset holds the figures' row (the sides' figure at the left, the top's centered) and, where it has room for
-    // a second row, the basis under them; else the basis follows the sides' figure on the same row
-    const two = sy >= 2 * chip_h + q(48);
-    const row1 = two ? r2(sy / 2 - chip_h - q(4)) : r2(Math.max(q(2), sy / 2 - chip_h / 2));
+    // the figures' row in the top inset: the sides' figure at the left, the top's centered
+    const row1 = r2(Math.max(q(2), sy / 2 - chip_h / 2));
     const layers = [{ x: sx, y: sy, w: sw_, h: sh_, kind: 'edge', sw: q(2), ls }];
     if (ins.left) layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: fig(ins.left), lx: q(8), ly: row1 });
     if (ins.right && ins.right !== ins.left) layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: fig(ins.right), lx: r2(w - q(8) - chip_w(fig(ins.right))), ly: row1 });
     if (ins.top) layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: fig(ins.top), lx: r2(w / 2 - chip_w(fig(ins.top)) / 2), ly: row1 });
-    if (basis) layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: basis,
-      lx: two ? q(8) : r2(q(8) + (ins.left ? chip_w(fig(ins.left)) + q(16) : 0)), ly: two ? r2(row1 + chip_h + q(8)) : row1 });
-    if (ins.bottom) layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: fig(ins.bottom), lx: r2(w / 2 - chip_w(fig(ins.bottom)) / 2), ly: r2(sy + sh_ + (h - sy - sh_) / 2 - chip_h / 2) });
+    if (ins.bottom) layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: fig(ins.bottom), lx: r2(w / 2 - chip_w(fig(ins.bottom)) / 2), ly: r2(h - q(8) - chip_h) });
+    // the basis: in the bottom inset, a chip a line, under any excluded box's name, where the inset has room; else on the
+    // figures' row after the sides' figure
+    if (basis) {
+      const per = Math.max(8, Math.floor((w - 2 * q(16)) / (ls * 0.68)) - 2);
+      const lines = [];
+      for (const word of basis.split(' ')) { const last = lines[lines.length - 1]; if (last && (last + ' ' + word).length <= per) lines[lines.length - 1] = last + ' ' + word; else lines.push(word); }
+      const below = Math.max(sy + sh_, ...excl.map((e) => q(e[1] + e[3]) + q(8) + chip_h)) + q(16);
+      if (h - below - q(16) - chip_h >= lines.length * (chip_h + q(8))) {
+        lines.forEach((t, i) => layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: t, lx: q(8), ly: r2(below + i * (chip_h + q(8))) }));
+      } else {
+        layers.push({ x: 0, y: 0, w: 0, h: 0, kind: 'label', ls, label: basis, lx: r2(q(8) + (ins.left ? chip_w(fig(ins.left)) + q(16) : 0)), ly: row1 });
+      }
+    }
     for (const e of excl) {
       const [ex, ey, ew, eh] = e.map(q);
       const what = ew >= w * 0.9 ? (L.controls || null) : (L.buttons || null);
@@ -364,7 +375,10 @@ ${r.css}${extra}</style>
     await p.close();
     facts.views.push(rec);
     faults.push(...vf.map((x) => `${v.key}: ${x}`));
-    const fr = L.frame({ w: W, h: H, html: v.html, alt: v.alt, layers: v.layers, page: { id: spec.id, key: v.key, type: spec.type } });
+    // the guide build gives every id in a specimen its specimen's prefix and rewrites url(#...) in the fragment, but not the
+    // plate style's .hatch rule in the head, so a hatched box names its pattern inline (an inline style beats that rule)
+    const fr = L.frame({ w: W, h: H, html: v.html, alt: v.alt, layers: v.layers, page: { id: spec.id, key: v.key, type: spec.type } })
+      .replace(/<rect class="hatch" /g, '<rect class="hatch" style="fill:url(#oa-app-hatch)" ');
     frames.push(fr);
     views.push({ key: v.key, w: W, h: H, theme: 'light', alt: v.alt, html: fr });
     console.log(`  ${spec.id} ${v.key}: ${W} by ${H} px at ${v.scale} (${v.px.join(' by ')}), source line ends ${src_end} px over ${rec.source_lines} lines, band at ${parts.band ? Math.round(parts.band[1]) : '-'}; ${vf.length} fault(s)`);

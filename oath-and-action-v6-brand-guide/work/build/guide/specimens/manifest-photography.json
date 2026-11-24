@@ -23,7 +23,7 @@
   "width_px": null,
   "alt": "A storyboard of six video frames with their times and words: the title frame with the question at 0:00; Dustin on camera with his name plate at 0:02; chart S04 with its source line at 0:08; the gap marked at 0:30; the step at 0:50; the end frame at 1:00.",
   "illustrative": true,
-  "notes": "The video is not made, so the plate carries the Illustrative label at its head; every figure is chart S04’s (work/build/chart-kit/specs/s04.json). The step frame holds the view’s one working red.",
+  "notes": "The video is not made, so the plate carries the Illustrative label at its head; every figure is chart S04’s (work/build/chart-kit/specs/s04.json). The 0:08 and 0:30 cells are the application kit’s A21 frames at 1920 by 1080 (views 1920-light-chart and 1920-light-gap), shown at 10 percent. The step frame holds the view’s one working red.",
   "readable": true
  },
  "s-16-10-failure": {
@@ -41,7 +41,7 @@
   "width_px": null,
   "alt": "A 9:16 video frame drawn at a quarter size: a placeholder for Dustin’s voice over chart S04, an outlined caption-safe area, and inside it two caption lines on a Charcoal band, Citizens 18 to 24 reported voting, at 47.7 percent, down 3.7 points. Beside it, the WebVTT file with the same lines and their times.",
   "illustrative": true,
-  "notes": "Drawn at a quarter of 1080 by 1920, so the caption band’s 13 px words stand for about 52 px on the real frame; chapter 23 sets the real size. The video is not made.",
+  "notes": "The application kit’s A21 frame, 1080 by 1920 (view 1080-light), shown at a quarter: chart S04 from the chart kit, its source line and the caption band inside the vertical safe area (DD12b-R1). The frame is a picture whose alt carries every word (D4-211). The video is not made.",
   "readable": true
  },
  "s-16-11-failure": {
@@ -50,7 +50,7 @@
   "width_px": null,
   "alt": "Failure case: do not publish. The same frame with an automatic caption that reads down 37 points.",
   "illustrative": true,
-  "notes": "",
+  "notes": "The same A21 frame with the automatic caption (view 1080-light-misheard), so the caption is the one fault.",
   "readable": true
  },
  "s-16-12-correct": {
