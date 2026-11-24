@@ -3457,7 +3457,10 @@
 .ws.wa .wa-hband--read{padding-block:32px}
 @container ws (min-width: 64em){.ws.wa .wa-hband--read{min-height:160px}.ws.wa .wa-hband--read .wa-hh{grid-column:1/-1}.ws.wa .wa-hband--read .wa-hi{grid-column:1/9}}
 /* tables (Rule 18.10; specs 10 and 11): chapter 18's grid, its head row on Charcoal where the content file turns it on,
-   restyled as one card a row under 48em with each cell's label from data-k */
+   restyled as one card a row under 48em with each cell's label from data-k. Chat 12b (the data lead's item 1): the
+   connections table's first column is 12 percent, since at 10 its widest chip (LT15) ran 7.4 px past its box at 1440 and at
+   11 (as before chat 12) its words still ran 2.3 px into the chip's right padding; the last column gives the points. The atlas test's T14 fails a chip whose
+   words pass its box. */
 .ws.wa .wa-tablewrap{min-width:0}
 .ws.wa .wa-col12{grid-column:1/-1;min-width:0}
 .ws.wa .oa-table-grid{width:100%;border-collapse:collapse;font-family:var(--oa-type-body-small-font-family);font-style:var(--oa-type-body-small-font-style);font-weight:var(--oa-type-body-small-font-weight);font-size:var(--oa-type-body-small-font-size);line-height:var(--oa-type-body-small-line-height);letter-spacing:var(--oa-type-body-small-letter-spacing);text-transform:var(--oa-type-body-small-text-transform);font-variant-numeric:var(--oa-type-body-small-font-variant-numeric)}
@@ -3466,7 +3469,7 @@
 .ws.wa .oa-table-grid .n{text-align:right;font-variant-numeric:tabular-nums}
 @container ws (min-width: 48em){.ws.wa .oa-table-grid{table-layout:fixed}
  .ws.wa .wa-index th:nth-child(1){width:34%}.ws.wa .wa-index thead th:nth-child(n+2){width:6.6%}.ws.wa .wa-index thead .g{vertical-align:top}
- .ws.wa .wa-conns thead th:nth-child(1){width:10%}.ws.wa .wa-conns thead th:nth-child(2){width:25%}.ws.wa .wa-conns thead th:nth-child(3){width:9%}.ws.wa .wa-conns thead th:nth-child(4){width:8%}.ws.wa .wa-conns thead th:nth-child(5){width:12%}.ws.wa .wa-conns thead th:nth-child(6){width:15%}.ws.wa .wa-conns thead th:nth-child(7){width:21%}
+ .ws.wa .wa-conns thead th:nth-child(1){width:12%}.ws.wa .wa-conns thead th:nth-child(2){width:25%}.ws.wa .wa-conns thead th:nth-child(3){width:9%}.ws.wa .wa-conns thead th:nth-child(4){width:8%}.ws.wa .wa-conns thead th:nth-child(5){width:12%}.ws.wa .wa-conns thead th:nth-child(6){width:15%}.ws.wa .wa-conns thead th:nth-child(7){width:19%}
  .ws.wa .wa-lix thead th:nth-child(1){width:9%}.ws.wa .wa-lix thead th:nth-child(2){width:31%}.ws.wa .wa-lix thead th:nth-child(3){width:7%}.ws.wa .wa-lix thead th:nth-child(4){width:8%}.ws.wa .wa-lix thead th:nth-child(5){width:20%}.ws.wa .wa-lix thead th:nth-child(6){width:25%}}
 .ws.wa .oa-table-grid .g{min-width:0;overflow-wrap:normal}
 .ws.wa .oa-table-grid .oa-chip{white-space:nowrap}

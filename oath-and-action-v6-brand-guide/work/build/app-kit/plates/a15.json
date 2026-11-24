@@ -3,7 +3,7 @@
  "type": "atlas-page",
  "title": "Loops | Who Do They Answer To? | Oath & Action",
  "css": "atlas-page.css",
- "written": "2026-11-24T00:49:59.969Z",
+ "written": "2026-11-24T01:28:59.481Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "words": [
   {
@@ -269,15 +269,15 @@
   "work/boards/phase-2/atlas-editorial/shared/20261105_Atlas-Editorial-Data.json": "e8e36a9fbe6100c3a88bfaad14038a2f8797ef5de0e864b465eb1ba538a2f74c",
   "work/boards/phase-2/maps/20261028_Maps-Model-Data.json": "dbbe26c447ef55eda25ca013b34294a6171f6c453ef7a280fb73df8a5e4ce1fc",
   "work/build/app-kit/lib.mjs": "846b7680f4351b0dfcea7141e407f9ce3c1c4a333c757c10ced115e39497dcb6",
-  "work/build/app-kit/oa-app.mjs": "24608782e35193771502a04eb6d1de408719ae40a9d6198f6a261a9e9e0e52ad",
-  "work/build/app-kit/renderers/atlas-page.mjs": "29d5bc1fa1415e5da72ffa3c5c7fc8053ce75df0f5a6f6997cfbeab5f8c740f7",
+  "work/build/app-kit/oa-app.mjs": "8806714283bf5acfe3ba8e5469eb9915127413305a82c6e4742eca9d9ac20d98",
+  "work/build/app-kit/renderers/atlas-page.mjs": "7f3513f92c80c405790086b81287295cb7d710f8d00ab32d50a6c9fc87aa688f",
   "work/build/app-kit/renderers/site-parts.mjs": "5912e7b18f0c358f225ff2c2eb38b34c62744c848c4160138dc7235e10f85104",
   "work/build/app-kit/renderers/web-page.mjs": "4dab23d75f507860dfb2e0927240624418138b1f9281f3ec1cf05948182d77a9",
   "work/build/app-kit/renderers/web-site.mjs": "23e5d9b1d944363d9c75e961d0d888d061864a6618b93548c3d345286359b808",
   "work/build/app-kit/specs/a15-atlas-loop-index.json": "8de742ad4959b0b4880100ba774595d10f486c921e3e94c5213d57457c8e9fcc",
   "work/build/app-kit/tools/atlas_contrast.py": "c9f64745108cf08b8bc91dd7023fadd8adacae894330a57f8fa93a0fb60d0a3e",
   "work/build/app-kit/tools/atlas_figures.py": "db5754cac8ddda90b9c2d6976c02abe9bb01997412e5ac4af3c2ee20b07fffa1",
-  "work/build/app-kit/tools/atlas_test.py": "7488aecf15daaad6fe9e07ad70c8ac2f2d54522ed9afccb73a714c084cd6aa3a",
+  "work/build/app-kit/tools/atlas_test.py": "52728addd31a10af673614cf19879f003b5b3af4ca4b892e001790c583edfc27",
   "work/build/assets/identity/lockmark/20261109_Lockmark-24px-Master-Outline.svg": "209ec533cd490ee4c7047c9b22a2a4169b64593fb4c2dad32a66c96f526dbc8a",
   "work/build/assets/identity/lockups/20261110_L3-Horizontal-Master.svg": "90034ceaf3998a2d91217e452b5cbc054bfc4a56e668fd267849ba4fd6f1fef1",
   "work/build/data/v7-reconciliation-rows.json": "f26e82455bdd0da82b7b7f597cde02c5521ab0beca559469a11e22a4012dcd66",
@@ -312,14 +312,14 @@
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
  },
  "css_pruned": {
-  "full": 78759,
+  "full": 79105,
   "placed": 59136,
   "rules_kept": 459,
   "rules_dropped": 105,
   "frames_same": 62
  },
  "atlas_test": {
-  "ran": "2026-11-24T00:51:02.285Z",
+  "ran": "2026-11-24T01:30:02.867Z",
   "pass": 96,
   "fail": 0,
   "first_fail": null,

@@ -97,6 +97,23 @@ function page_facts() {
   out.rowheads = [...document.querySelectorAll('[role="rowheader"]')].filter((e) => { const t = e.closest('table'); const tr = e.closest('tr'); return t && t.getClientRects().length && (!tr || tr.getClientRects().length) && getComputedStyle(t).display !== 'none' && !t.closest('[hidden]'); })
     .map((e) => { const r = e.getBoundingClientRect(); const c = getComputedStyle(e);
       return { text: e.textContent.trim().replace(/\s+/g, ' ').slice(0, 60), shown: r.width > 2 && r.height > 2 && !/inset\(50%/.test(c.clipPath || '') && c.visibility !== 'hidden' }; });
+  // chat 12b (the data lead's item 1): each chip's words against its own content box, for the atlas test's T14; a
+  // visually hidden word (clipped to 1 px) is no part of what a reader sees
+  out.chips = [...document.querySelectorAll('.oa-chip')].filter((e) => e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden').map((e) => {
+    const r = e.getBoundingClientRect(); const cs = getComputedStyle(e);
+    const left = r.left + parseFloat(cs.borderLeftWidth) + parseFloat(cs.paddingLeft), right = r.right - parseFloat(cs.borderRightWidth) - parseFloat(cs.paddingRight);
+    let x0 = Infinity, x1 = -Infinity;
+    const tw = document.createTreeWalker(e, NodeFilter.SHOW_TEXT);
+    for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+      if (!n.textContent.trim()) continue;
+      const pr = n.parentElement.getBoundingClientRect(); if (pr.width <= 1 || pr.height <= 1) continue;
+      const g = document.createRange(); g.selectNodeContents(n);
+      for (const q of g.getClientRects()) { if (q.width < 0.5) continue; x0 = Math.min(x0, q.left); x1 = Math.max(x1, q.right); }
+    }
+    if (!isFinite(x0)) return null;
+    return { text: e.textContent.trim().replace(/\s+/g, ' ').slice(0, 40), box: +r.width.toFixed(2), inner: +(right - left).toFixed(2),
+      over: +Math.max(x1 - right, left - x0).toFixed(2), at: [Math.round(r.left + scrollX), Math.round(r.top + scrollY)] };
+  }).filter(Boolean);
   out.sections = [...document.querySelectorAll('[data-oa-section]')].map((e) => ({ name: e.getAttribute('data-oa-section'), top: Math.round(e.getBoundingClientRect().top + scrollY) }));
   const DARK = { 'rgb(18, 18, 18)': 'charcoal', 'rgb(31, 45, 90)': 'prussian' };
   const darkOf = (e) => DARK[getComputedStyle(e).backgroundColor];

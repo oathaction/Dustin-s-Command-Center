@@ -902,7 +902,10 @@ ${at(BP.desktop, `${W} .wa-index thead tr{height:88px}${W} .wa-index thead .wa-g
 ${W} .wa-hband--read{padding-block:32px}
 ${at(BP.desktop, `${W} .wa-hband--read{min-height:160px}${W} .wa-hband--read .wa-hh{grid-column:1/-1}${W} .wa-hband--read .wa-hi{grid-column:1/9}`)}
 /* tables (Rule 18.10; specs 10 and 11): chapter 18's grid, its head row on Charcoal where the content file turns it on,
-   restyled as one card a row under 48em with each cell's label from data-k */
+   restyled as one card a row under 48em with each cell's label from data-k. Chat 12b (the data lead's item 1): the
+   connections table's first column is 12 percent, since at 10 its widest chip (LT15) ran 7.4 px past its box at 1440 and at
+   11 (as before chat 12) its words still ran 2.3 px into the chip's right padding; the last column gives the points. The atlas test's T14 fails a chip whose
+   words pass its box. */
 ${W} .wa-tablewrap{min-width:0}
 ${W} .wa-col12{grid-column:1/-1;min-width:0}
 ${W} .oa-table-grid{width:100%;border-collapse:collapse;${type_css('body-small')}}
@@ -911,7 +914,7 @@ ${W} .oa-table-grid thead .oa-table-th{${type_css('data-label')};vertical-align:
 ${W} .oa-table-grid .n{text-align:right;font-variant-numeric:tabular-nums}
 ${at(BP.tablet, `${W} .oa-table-grid{table-layout:fixed}
  ${W} .wa-index th:nth-child(1){width:34%}${W} .wa-index thead th:nth-child(n+2){width:6.6%}${W} .wa-index thead .g{vertical-align:top}
- ${[10, 25, 9, 8, 12, 15, 21].map((w_, i) => `${W} .wa-conns thead th:nth-child(${i + 1}){width:${w_}%}`).join('')}
+ ${[12, 25, 9, 8, 12, 15, 19].map((w_, i) => `${W} .wa-conns thead th:nth-child(${i + 1}){width:${w_}%}`).join('')}
  ${[9, 31, 7, 8, 20, 25].map((w_, i) => `${W} .wa-lix thead th:nth-child(${i + 1}){width:${w_}%}`).join('')}`)}
 ${W} .oa-table-grid .g{min-width:0;overflow-wrap:normal}
 ${W} .oa-table-grid .oa-chip{white-space:nowrap}

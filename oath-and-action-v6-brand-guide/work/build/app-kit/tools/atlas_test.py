@@ -968,6 +968,11 @@ def t14(pg):
         n += 1
         if w["size"] < 13 - 0.01:
             faults.append(f"{w['text'][:30]!r}: {w['size']} px, under 13 (ED-F9)")
+    # chat 12b (the data lead's item 1): a chip's words stay inside its own box, as the kit measures each captured view
+    for c in (pg.facts or {}).get("chips", []):
+        n += 1
+        if c["over"] > 0.5:
+            faults.append(f"the chip {c['text']!r} runs {c['over']} px past its {c['inner']} px box at {c.get('at')} (the data lead's item 1)")
     for t in pg.all("svg text"):
         spans = t.find_all("tspan", recursive=False)
         # chapter 15's typed step ("1 money," then "lowers"), and its card's typed label with no number ("money," then
@@ -1259,6 +1264,8 @@ PLANTS = [
      "a first screen drawn with a question pressed out of its window (CD-R1)"),
     ("T13", "loop", "@style:-soup-contains('.ws ')", lambda el, q: el.append(NavigableString(".x{color:#ffffff}")), "a literal White in the page's style"),
     ("T14", "loop", "main", lambda el, q: setattr(q, "facts", {"words": [{"text": "small words", "size": 12, "color": "rgb(18, 18, 18)", "bg": "rgb(250, 247, 240)", "weight": "400"}]}), "words at 12 px"),
+    ("T14", "register", "main", lambda el, q: setattr(q, "facts", {"words": [], "chips": [{"text": "Connection LT15", "box": 107.2, "inner": 99.2, "over": 7.4, "at": [64, 900]}]}),
+     "a chip whose words run past its box (the data lead's item 1)"),
     ("T15", "loop", ".oa-masthead-part[aria-current]", lambda el, q: el.attrs.pop("aria-current"), "no current part in the site's masthead"),
     ("T15", "reform", "main", lambda el, q: setattr(q, "title", "Reform R-01, " + RF["R-01"]["title"] + " | " + V["meta"]["title"] + " | Oath & Action"), "a reform page whose tab title names another record (PR-S9)"),
     ("T15", "home", "main", lambda el, q: (setattr(q, "kind", "frame"), setattr(q, "full", False), setattr(q, "theme", "light"), q.root.attrs.pop("data-oa-theme", None)),
