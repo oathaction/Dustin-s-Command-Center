@@ -110,7 +110,7 @@ OPENERS_FINAL = True       # True once the opener captures come from a page buil
 GUIDE_CHECK = {
     'selftest': ('The guide check’s self-test, on the tree of commit 8ac73595 from 01:21 to 01:38 UTC, caught 167 of 167 '
                  'planted faults and left 63 of 63 allowed cases alone.'),
-    'four_widths': 'PENDING',
+    'four_widths': ('The four-width guide check passed on the page of record, built from commit dc19b290, from 04:35 to 05:41 UTC: 1440, 1024, 390 and 360 px, 409 rules, 822 specimens and 4,915 same-page links, with 0 failures. The run before it failed on one point. Rule 16.11’s safe-area labels drew at 13.4 px, between two steps on the type scale. The labels went to 57 exported px, which draws them at 14 px in both frames, and the check ran again from the start.'),
     'not_tested': ('The four-width check ran with its own screenshots turned off. Its first run stopped at 03:21 UTC when a '
                    'screenshot timed out on a photograph, so that run is not counted. Every test other than the '
                    'screenshots ran.'),

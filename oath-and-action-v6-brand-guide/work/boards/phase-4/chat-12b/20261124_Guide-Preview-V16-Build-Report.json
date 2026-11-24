@@ -1,6 +1,6 @@
 {
- "page": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/ade8e70b-f71c-536b-8654-9b651b94da3a/scratchpad/c12b/record/guide.html",
- "built": "2026-11-24T03:27:20",
+ "page": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/ade8e70b-f71c-536b-8654-9b651b94da3a/scratchpad/c12b/final2/guide.html",
+ "built": "2026-11-24T04:32:16",
  "chapters": [
   "01",
   "02",
@@ -30,9 +30,9 @@
  "specimens_placed": 766,
  "tokens": "tokens.css",
  "demo": false,
- "bytes": 14444717,
+ "bytes": 14444549,
  "weight": {
-  "bytes": 14444717,
+  "bytes": 14444549,
   "budget_page": 15500000.0,
   "limit": 16000000,
   "parts": {
@@ -107,7 +107,7 @@
     "budget": 600000.0
    },
    "16": {
-    "bytes": 279994,
+    "bytes": 279826,
     "budget": 300000
    },
    "17": {
@@ -368,7 +368,7 @@
    }
   },
   "pass": {
-   "before": 14504011,
+   "before": 14503843,
    "css": {
     "bytes_saved": 58738,
     "blocks": 868
@@ -378,7 +378,7 @@
     "images": 9,
     "shown_pngs": 13
    },
-   "after": 14444717,
+   "after": 14444549,
    "bytes_saved": 59294
   },
   "sprites": {
@@ -389,7 +389,7 @@
   },
   "fonts_files": 255920,
   "projection": {
-   "page_bytes": 14444717,
+   "page_bytes": 14444549,
    "unbuilt": {
     "22": 277000,
     "23": 743000,
@@ -400,7 +400,7 @@
    },
    "held_to_allocation": {
     "15": 29899,
-    "16": 20006
+    "16": 20174
    },
    "projected_bytes": 16466622,
    "budget": 15500000.0,
@@ -420,9 +420,9 @@
    },
    "phase_4_built": {
     "16": {
-     "bytes": 279994,
+     "bytes": 279826,
      "allocation": 300000,
-     "room": 20006
+     "room": 20174
     },
     "20": {
      "bytes": 860755,
@@ -493,7 +493,7 @@
     "room_under_16mb": -466622,
     "room_under_15_5mb": -966622,
     "built_chapters_median": 394285,
-    "built_chapters_mean": 476348,
+    "built_chapters_mean": 476340,
     "built_chapters_counted": 21
    },
    "past_15_5mb": true
@@ -1485,12 +1485,12 @@
   "application kit: its atlas-page style, 75,896 bytes in the head, weighs in chapter 21, the first to draw it (contract C4)",
   "application kit: its atlas pages' repeated drawings, drawn once for the page, 24,661 bytes at the top of the body, weighs in chapter 21, the first to draw it (contract C4)",
   "page weight: chart kit weighs 571,236 bytes, over its budget of 560,000, reported (DR-271)",
-  "chapter 16: weighs 279,994 bytes against its allocation of 300,000 (93 percent), 20,006 bytes to spare",
+  "chapter 16: weighs 279,826 bytes against its allocation of 300,000 (93 percent), 20,174 bytes to spare",
   "chapter 20: weighs 860,755 bytes against its allocation of 757,000 (114 percent), over it, reported (DR-271)",
   "chapter 21: weighs 1,278,128 bytes against its allocation of 655,000 (195 percent), over it, reported (DR-271)",
   "chapter 14: with the chart kit weighs 2,855,926 bytes (2.856 MB), over its stop of 2,803,941 bytes (DR-227, raised by DR-238), reported; the studio raises it and logs the raise (DR-271)",
   "chapter 14: round 5's plates as placed, with their frames: s-14-selection-guide 152,269 bytes; s-14-palette-spec 84,937 bytes; Rule 14.142 34,757 bytes; Rule 14.143 45,653 bytes; Rule 14.144 69,866 bytes",
-  "page weight: Phase 4's 4 chapters still to build are projected at their own allocations (22: 277,000; 23: 743,000; 24: 338,000; 25: 214,000), 1,572,000 bytes in all; for the page to stay under 16 MB they may average 276,344 bytes each, and 151,344 to stay under the 15.5 MB warning; today's 21 built chapters other than 14 weigh 394,285 bytes at the median and 476,348 on average (ST-S10)",
+  "page weight: Phase 4's 4 chapters still to build are projected at their own allocations (22: 277,000; 23: 743,000; 24: 338,000; 25: 214,000), 1,572,000 bytes in all; for the page to stay under 16 MB they may average 276,344 bytes each, and 151,344 to stay under the 15.5 MB warning; today's 21 built chapters other than 14 weigh 394,285 bytes at the median and 476,340 on average (ST-S10)",
   "page weight: early warning: the projected page weighs 16.47 MB (today's 14.44 MB plus 1.97 MB for the chapters not yet built and 0.05 MB still to come in chapters being built), past the 15.5 MB line, 966,622 bytes over it and -466,622 under the 16 MB limit; reported, not failed (Gate 3 report, section 9; DR-271)",
   "chapter 14's plates: all 95 finished specimens are placed, none still to come; -199,320 bytes of room under its 2,803,941 byte stop, after the renderer grown to 97 forms, 571,236, the parts that are not plates, 280,452, and the chapter as built, 2,151,573",
   "chart s-14-s05 weighs 30,312 bytes, over three times its tier's average of 8,192; approved on board 1 at up to 31,961 bytes, so listed here and not failed",
