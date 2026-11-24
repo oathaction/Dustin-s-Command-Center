@@ -151,7 +151,7 @@ export async function render(spec) {
       const foot = q(b.foot);
       parts.push(`<div class="vf21-band oa-surface-charcoal" data-vf21-part="band" style="left:0;top:${top}px;width:${w}px;height:${r2(foot - top)}px">`
         + `<div data-vf21-part="source" style="position:absolute;left:${q(b.x)}px;top:${q(b.src_top ?? 24)}px;width:${q(b.w)}px">${src}</div>`
-        + capp.replace('STYLE', `style="position:absolute;left:${q(b.x)}px;width:${q(b.w)}px;bottom:${q(b.pad_foot ?? 16)}px;${cap_type}"`) + `</div>`);
+        + capp.replace('STYLE', `style="position:absolute;left:${q(b.x)}px;width:${q(b.w)}px;bottom:${q(b.pad_foot ?? 16)}px;${cap_type}${b.align ? `;text-align:${b.align}` : ''}"`) + `</div>`);
     } else {
       // the chart and its source line in one column on Newsprint, so the line sits its gap under the drawing
       parts.push(`<div class="vf21-stack" data-vf21-part="stack" style="left:${q(c.x ?? safe[0])}px;top:${q(c.y ?? safe[1])}px;width:${q(s.w ?? safe[2])}px">`
@@ -298,6 +298,23 @@ const ratio = (a, b) => { const x = lum(a), y = lum(b); if (x == null || y == nu
 const inside = (r, b, tol = 0.75) => r[0] >= b[0] - tol && r[1] >= b[1] - tol && r[0] + r[2] <= b[0] + b[2] + tol && r[1] + r[3] <= b[1] + b[3] + tol;
 const hits = (a, b, tol = 0.5) => a[0] < b[0] + b[2] - tol && b[0] < a[0] + a[2] - tol && a[1] < b[1] + b[3] - tol && b[1] < a[1] + a[3] - tol;
 
+// DD12b-Q5b (W12b-3): the overlay that lib.mjs draws in Charcoal ink vanishes where it crosses A21's full-bleed Charcoal
+// band. The overlay sits in the frame's outer svg, outside the page (.oa-app-art), where the renderer's own style cannot
+// reach it (the guide holds every kit style to .oa-app-art, PR-M1), so the renderer adds a Newsprint twin to each line in
+// the overlay's markup, with inline styles from tokens: the dashed outline's twin dashes in its gaps, the hatched box's
+// twin hatch between its lines and a Newsprint edge just inside its Charcoal one. Over Newsprint the twins are Newsprint
+// on Newsprint and change nothing; over the band they draw the outline and the hatch in Newsprint. lib.mjs is untouched.
+const NC = 'var(--oa-color-surface-newsprint)';
+export function overlay_two_inks(svg) {
+  let out = svg.replace(/<rect class="edge" x="([\d.-]+)" y="([\d.-]+)" width="([\d.-]+)" height="([\d.-]+)" stroke-width="([\d.]+)" stroke-dasharray="([\d.]+) ([\d.]+)"\/>/g,
+    (m, x, y, w, h, sw, on, off) => m + `<rect x="${x}" y="${y}" width="${w}" height="${h}" style="fill:none;stroke:${NC};stroke-width:${sw};stroke-dasharray:${off} ${on};stroke-dashoffset:${off}"/>`);
+  out = out.replace(/<rect class="hatch" style="fill:url\(#oa-app-hatch\)" x="([\d.-]+)" y="([\d.-]+)" width="([\d.-]+)" height="([\d.-]+)"\/><rect class="solid" x="[\d.-]+" y="[\d.-]+" width="[\d.-]+" height="[\d.-]+" stroke-width="([\d.]+)"\/>/g,
+    (m, x, y, w, h, sw) => m + `<rect x="${x}" y="${y}" width="${w}" height="${h}" style="fill:url(#oa-app-hatch-nc)"/>`
+      + `<rect x="${+x + 2 * sw}" y="${+y + 2 * sw}" width="${Math.max(0, w - 4 * sw)}" height="${Math.max(0, h - 4 * sw)}" style="fill:none;stroke:${NC};stroke-width:${sw}"/>`);
+  if (out.includes('url(#oa-app-hatch-nc)')) out = out.replace('</pattern></defs>', `</pattern><pattern id="oa-app-hatch-nc" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect x="4" width="3" height="8" style="fill:${NC};fill-opacity:.6"/></pattern></defs>`);
+  return out;
+}
+
 // every word the frame shows must be in its alt (D4-211, D4-299); axis numbers between the first and last tick count as
 // carried when the alt gives both ends of the scale
 const pct = (s) => s.replace(/(\d)\s*%/g, '$1 percent');
@@ -438,7 +455,8 @@ ${r.css}${extra}</style>
       rec.png = file;
       if (v.overlay_name) {
         await p.addStyleTag({ content: L.PLATE_CSS + '.oa-app-safe{display:inline}' });
-        await p.evaluate(({ svg }) => { document.querySelector('.oa-app-art').insertAdjacentHTML('beforeend', svg); }, { svg: `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="position:absolute;left:0;top:0" aria-hidden="true">${L.overlay(W, H, v.layers)}</svg>` });
+        const ov = overlay_two_inks(L.overlay(W, H, v.layers).replace(/<rect class="hatch" /g, '<rect class="hatch" style="fill:url(#oa-app-hatch)" '));
+        await p.evaluate(({ svg }) => { document.querySelector('.oa-app-art').insertAdjacentHTML('beforeend', svg); }, { svg: `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="position:absolute;left:0;top:0" aria-hidden="true">${ov}</svg>` });
         const of = stem(v.overlay_name) + '.png';
         await p.screenshot({ path: path.join(o.exports, of), clip: { x: 0, y: 0, width: W, height: H } });
         manifest.files.push({ file: of, spec: spec.id, platform: v.platform, format: 'png', theme: 'light', size: `${v.px[0].toLocaleString('en-US')} by ${v.px[1].toLocaleString('en-US')} px`,
@@ -451,8 +469,8 @@ ${r.css}${extra}</style>
     faults.push(...vf.map((x) => `${v.key}: ${x}`));
     // the guide build gives every id in a specimen its specimen's prefix and rewrites url(#...) in the fragment, but not the
     // plate style's .hatch rule in the head, so a hatched box names its pattern inline (an inline style beats that rule)
-    const fr = L.frame({ w: W, h: H, html: v.html, alt: v.alt, layers: v.layers, page: { id: spec.id, key: v.key, type: spec.type } })
-      .replace(/<rect class="hatch" /g, '<rect class="hatch" style="fill:url(#oa-app-hatch)" ');
+    const fr = overlay_two_inks(L.frame({ w: W, h: H, html: v.html, alt: v.alt, layers: v.layers, page: { id: spec.id, key: v.key, type: spec.type } })
+      .replace(/<rect class="hatch" /g, '<rect class="hatch" style="fill:url(#oa-app-hatch)" '));
     frames.push(fr);
     views.push({ key: v.key, w: W, h: H, theme: 'light', alt: v.alt, html: fr, ...(rec.rule_05_1 ? { screens: [{ screen: 'the whole frame', ...rec.rule_05_1 }] } : {}) });
     const r5 = rec.rule_05_1 || {};
