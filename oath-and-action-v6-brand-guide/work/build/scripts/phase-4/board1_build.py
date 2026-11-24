@@ -313,7 +313,7 @@ def save_webp(src, name, crop=None, scale=None):
     if scale:
         im = im.resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
     fn = f'{DAY}_{name}.webp'
-    im.save(IMG / fn, 'WEBP', lossless=True, quality=100, method=6, exact=True)
+    im.save(IMG / fn, 'WEBP', lossless=True, quality=80, method=4, exact=True)   # lossless; quality sets effort only
     return fn, im.width, im.height
 
 
@@ -1117,7 +1117,7 @@ def check(page_html):
     for m in re.finditer(r'<img\b[^>]*>', page_html):
         if not re.search(r'\balt="[^"]{12,}"', m.group(0)):
             sys.exit(f'an image without real alt text: {m.group(0)[:160]}')
-    refs = set(re.findall(r'img/([^"\s]+)', page_html))
+    refs = set(re.findall(r'(?:src|href)="img/([^"]+)"', page_html))
     files = {p.name for p in IMG.iterdir()}
     missing, unused = refs - files, files - refs
     if missing:
