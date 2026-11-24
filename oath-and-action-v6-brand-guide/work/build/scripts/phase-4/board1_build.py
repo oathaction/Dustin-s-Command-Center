@@ -73,7 +73,37 @@ def num(v):
 CH16_VIDEO_FINAL = True    # True once the captures of Rules 16.10 and 16.11 are taken from a page with A21 placed
 C16V_RESCORE = None        # read in main() from 20261124_Chat-12b-CD-Scores.json, block rescore_12b, key c16v_for_board
 CD12B = {}                 # that rescore block, for its notes on CD-R1 to CD-R5 and the risk it names
-WEIGHT_TABLE = None        # Engineer M's final table: {'page': int, 'rows': [...], 'combos': [...], 'note': str}
+# Engineer M's final table: work/handoffs/phase-4/20261124_Chat-12b-Engineer-Weight-Notes.md, "On the final page"
+# (the strict build of commit 84163752, 14,444,690 bytes). Figures copied from that table; reader loss in its words.
+WEIGHT_TABLE = {
+    'note': ('Engineer M measured every option on the final page, 14,444,690 bytes, each as a variant page built whole and '
+             'weighed the way the build weighs it. “Approved” chapters are those a gate approved. With 4a or 2a, chapters '
+             '20 and 21 fall under their allocations, and the build holds part of the saving until those chapters leave '
+             'its list of chapters in progress: C3’s projection holds 594,413 bytes that way.'),
+    'rows': [
+        {'option': '1a. Release chapter 15’s hold, which Gate 3’s approval left in the build', 'saved': '29,899 off the projection', 'loss': 'None', 'touches': 'The build’s settings only', 'proof': 'The build report’s hold'},
+        {'option': '1b. Chapters 22 to 25, 27 and 28 estimated again from units measured on this page', 'saved': 'None; a forecast', 'loss': 'None', 'touches': 'None', 'proof': 'Mid 2,269,789 and high 3,895,739 against the 1,972,000 allocated'},
+        {'option': '2a. Every 1440 and 1024 px frame of a page that also has a phone frame becomes a line naming its export', 'saved': '643,013', 'loss': 'A desktop reader no longer sees those pages’ desktop and tablet layouts, light or dark; the export opens only where the asset package sits beside the guide', 'touches': '20, 21', 'proof': 'Changes the screen by design'},
+        {'option': '2b. Only the 1024 px frames and the 1440 px dark frames', 'saved': '326,796', 'loss': 'The tablet width of chapter 20’s pages and every page’s dark desktop', 'touches': '20, 21', 'proof': 'Changes the screen by design'},
+        {'option': '2c. Only the 1440 px dark frames', 'saved': '236,683', 'loss': 'The dark desktop; dark stays at 390 px', 'touches': '20, 21', 'proof': 'Changes the screen by design'},
+        {'option': '3a. Each plate style drawn once, shared by every plate that repeats it', 'saved': '799,531', 'loss': 'None', 'touches': 'Every chapter but 14 and 15, approved ones among them (their output, never their sources)', 'proof': 'Inside C1’s 764 of 764 identical captures'},
+        {'option': '3b. The page’s PNGs compressed again without loss', 'saved': '40,600', 'loss': 'None', 'touches': '04, 09, 10, 17 (approved)', 'proof': 'Decoded pixels the same; inside C1’s captures'},
+        {'option': '3c. Chapter 20’s repeated drawings drawn once and placed by reference', 'saved': '58,999', 'loss': 'None', 'touches': '20', 'proof': 'Inside C1’s captures'},
+        {'option': '3d. Quote marks and angle brackets written as themselves where the page escapes them', 'saved': '38,548', 'loss': 'None', 'touches': '18 and 26 mostly (approved)', 'proof': 'The same document in Chromium, character for character'},
+        {'option': '3e. The latin-ext font faces left out', 'saved': '193,255', 'loss': 'None on this page; a later chapter printing an accented name outside Latin-1 would get a fallback font', 'touches': 'Every chapter’s type', 'proof': 'No character on the page in their ranges'},
+        {'option': '3i. The frame parts no reader meets left out (PR-S7)', 'saved': '81,008', 'loss': 'None on screen; a frame stops matching its export’s markup word for word', 'touches': '20, 21', 'proof': 'Measured by computed style; not built'},
+        {'option': '4a. Chapters 20 and 21’s frames carried compressed and opened at load', 'saved': '1,284,042', 'loss': 'A sighted reader with scripts off sees each plate’s label over an empty stage; a screen reader still hears each frame’s alt', 'touches': '20, 21', 'proof': 'Measured; not proved this chat'},
+        {'option': '4c. The two token downloads carried compressed', 'saved': '516,489', 'loss': 'A reader with scripts off cannot download tokens.css or tokens.json', 'touches': '26 (approved), the colophon', 'proof': 'Bytes only'},
+    ],
+    'combos': [
+        {'name': 'Today', 'page': '14,444,690', 'projection': '16,466,622'},
+        {'name': 'C1, keeps everything: 1a, 3a, 3b, 3c and 3d', 'page': '13,507,012', 'projection': '15,509,989'},
+        {'name': 'C2: C1 and 3e', 'page': '13,313,757', 'projection': '15,316,734'},
+        {'name': 'C3: C2 without 3c, and 4a', 'page': '12,089,362', 'projection': '14,686,752'},
+        {'name': '4a alone', 'page': '13,160,648', 'projection': '15,740,130'},
+        {'name': '2a alone', 'page': '13,801,677', 'projection': '16,002,621'},
+    ],
+}
 A21_FINAL = True           # True once A21's frames carry the editor's words and the data lead's sign-off
 OPENERS_FINAL = True       # True once the opener captures come from a page built after CD-R1 (chapter 21's load state)
 
@@ -93,8 +123,7 @@ A21 = [
 
 # ================================================================ the decisions, ranked
 
-REPLY = ('Board 1 approved with all recommendations, and DD10-NF1’s Charcoal keyline inside ampersand B in a hinge '
-         'headline approved by name.')
+REPLY = None   # written from DECISIONS (D4-428): the settled items are named one by one
 
 DECISIONS = [
     {
@@ -108,7 +137,7 @@ DECISIONS = [
         'see': 'ch16',
     },
     {
-        'id': 'd-nf1', 'title': 'Ampersand B in a hinge headline, on Newsprint',
+        'id': 'd-nf1', 'byname': True, 'title': 'Ampersand B in a hinge headline, on Newsprint',
         'codes': 'DD10-NF1; locked identity, so its own named approval (CLAUDE.md gate rule 4)',
         'what': 'In a hinge headline such as “The zoning code & the rent.”, B stands for the word “and” in a line a '
                 'reader must read, so the accessibility lead rules it is text. Pillar Red on Newsprint measures 2.96 to '
@@ -130,7 +159,8 @@ DECISIONS = [
                'shown as a forecast beside the projection; then wide frames as exports, only for the frames a reader '
                'meets today at half size or smaller (C11-1, the next decision). C1 changes the bytes of approved '
                'chapters’ output with no pixel moved, so it needs your word. Leave PR-S7’s strip, the frame parts no '
-               'reader meets, for later, since a frame would then differ from its export’s markup.',
+               'reader meets, for later, since a frame would then differ from its export’s markup. Hold 3e, the '
+               'latin-ext faces, until chapters 22 to 25 are written, and keep 4a, the compressed frames, as the reserve.',
         'see': 'x-weight',
     },
     {
@@ -156,7 +186,7 @@ DECISIONS = [
         'see': 'x-e11b',
     },
     {
-        'id': 'd-r14d', 'title': 'Chapter 15’s red target case on a dark page',
+        'id': 'd-r14d', 'byname': True, 'title': 'Chapter 15’s red target case on a dark page',
         'codes': 'C11C-R14d, approved chapter 15 (G3-01)',
         'what': 'Seven of chapter 15’s drawings draw the 6 px case under a red target in the surface’s essential ink. '
                 'Every guide plate sits on Newsprint, where that ink is Charcoal, so no reader meets a fault today. A '
@@ -167,7 +197,7 @@ DECISIONS = [
         'see': 'x-r14d',
     },
     {
-        'id': 'd-1516', 'title': 'One sentence for Rule 15.16 on the effects’ confidence',
+        'id': 'd-1516', 'byname': True, 'title': 'One sentence for Rule 15.16 on the effects’ confidence',
         'codes': 'Rule 15.16’s confidence sentence, approved chapter 15',
         'what': 'Rules 15.16 and 15.20 do not name the confidence words the atlas stores for a reform’s effects. The data '
                 'lead requires them (R12), and chapter 21’s reform and loop pages print them, so the next builder of a '
@@ -177,7 +207,7 @@ DECISIONS = [
         'see': 'x-1516',
     },
     {
-        'id': 'd-length', 'title': '“The same length” in Rules 01.16 and 13.2',
+        'id': 'd-length', 'byname': True, 'title': '“The same length” in Rules 01.16 and 13.2',
         'codes': 'Rules 01.16 and 13.2, approved chapters 01 and 13',
         'what': 'Both rules ask for the two readings of a contested claim at the same length. Chapter 21 prints the '
                 'atlas’s stored readings at the length the record holds (D4-253), so a reader who sets Rule 01.16 beside '
@@ -207,7 +237,7 @@ DECISIONS = [
         'see': 'x-prussian',
     },
     {
-        'id': 'd-134', 'title': 'Two meanings of a dashed line',
+        'id': 'd-134', 'byname': True, 'title': 'Two meanings of a dashed line',
         'codes': 'Rule 13.4, approved chapter 13',
         'what': 'A dashed line means plausible in chapters 13, 15 and 21. A dashed edge means unavailable or empty in '
                 'chapters 17 and 18. On Loop R18’s page the two sit about 300 px apart: the weakest step, and the '
@@ -217,7 +247,7 @@ DECISIONS = [
         'see': 'x-134',
     },
     {
-        'id': 'd-s66', 'title': 'Chart S66’s source line',
+        'id': 'd-s66', 'byname': True, 'title': 'Chart S66’s source line',
         'codes': 'S66’s source line, the approved chart kit (G3-02); low',
         'what': 'The line ends “Steps as the law sets them, not how long agencies take.”, the turn chapter 02’s W09 '
                 'removes. It prints under chart S66 in chapter 14 and on the Act page.',
@@ -394,8 +424,13 @@ def sec_decisions(rep):
         if d['id'] == 'd-weight':
             d['what'] = (f'The page of record weighs {n(w["bytes"])} bytes. The build projects {n(pr["projected_bytes"])} '
                          f'once chapters 22 to 25, 27 and 28 reach their allocations, {n(over)} bytes past the page’s '
-                         '16 MB limit, the only figure that stops a build (DR-271). Nothing was cut. Chapters 20 and 21 '
-                         'ran past their allocations; Engineer M measures every option again on this chat’s final page.')
+                         '16 MB limit, the only figure that stops a build (DR-271). Nothing was cut. Combination C1 saves '
+                         '937,678 bytes, keeps every word, form and picture, and brings the projection to 15,509,989, '
+                         '490,011 under 16 MB; 764 of 764 plate captures came out identical. C2, which also leaves out '
+                         'the latin-ext font faces, reaches 15,316,734, and C3, which also carries chapters 20 and 21’s '
+                         'frames compressed, reaches 14,686,752 at a cost to readers with scripts off. Estimated again '
+                         'from units measured on this page, chapters 22 to 28 could need 2,269,789 bytes, or 3,895,739 at '
+                         'the high estimate, against the 1,972,000 allocated.')
     sc = {f['frame'].split(' ')[1]: f for f in META.get('c111-scale', [])}
     for d in DECISIONS:
         if d['id'] == 'd-c111':
@@ -409,11 +444,18 @@ def sec_decisions(rep):
                              'states its scale on a desktop. Chapters 20 and 21’s other page plates draw the same way.')
             else:
                 d['what'] = 'On a 390 px phone the guide draws chapters 20 and 21’s wide page frames at about a fifth of their size.'
+    def listed(xs):
+        xs = [str(x) for x in xs]
+        return xs[0] if len(xs) == 1 else ', '.join(xs[:-1]) + ' and ' + xs[-1]
+    plain_ = [i for i, d in enumerate(DECISIONS, 1) if not d.get('byname')]
+    named = [i for i, d in enumerate(DECISIONS, 1) if d.get('byname')]
+    reply = f'Board 1: items {listed(plain_)} as recommended; and by name, items {listed(named)} as recommended.'
     items = []
     for i, d in enumerate(DECISIONS, 1):
         items.append(
             f'<li class="dec" id="{d["id"]}"><div class="dec-n" aria-hidden="true">{i}</div><div class="dec-b">'
             f'<h3><span class="vh">Decision {i}: </span>{e(d["title"])}</h3><p class="code">{e(d["codes"])}</p>'
+            + ('<p><span class="label">Settled work: needs your answer by name</span></p>' if d.get('byname') else '') +
             f'<p>{e(d["what"])}</p>'
             f'<p class="rec"><strong>The studio recommends:</strong> {e(d["rec"])}</p>'
             f'<p class="seelink"><a href="#{d["see"]}">See the pictures and figures</a></p></div></li>')
@@ -425,7 +467,9 @@ def sec_decisions(rep):
         'board, with the original beside the proposal at true size.</p>'
         f'<ol class="decs">{"".join(items)}</ol>'
         '<div class="reply" id="reply"><p class="reply-k">One reply that takes every recommendation</p>'
-        f'<p class="reply-t">“{e(REPLY)}”</p>'
+        f'<p class="reply-t">“{e(reply)}”</p>'
+        f'<p class="note">Items {listed(named)} change settled work: locked identity, or a chapter or kit you have '
+        'already approved. Each needs your answer by name, so the reply names them.</p>'
         '<p class="note">To answer an item another way, name its number and your answer, as in “3: hold C1”.</p>'
         '</div></section>')
 
@@ -1046,7 +1090,7 @@ def sec_tested(meta, caps, rep):
             '<li>Real screen readers, Safari and Firefox were not tried (DR-279).</li>'
             '<li>Each proposal is a sketch, so its code, its contrast in every place it appears and its effect on the guide '
             'check are tested when the change is made.</li>'
-            '<li>The weight options on the final page wait for Engineer M’s table.</li></ul></div></div></section>')
+            '<li>The board ran no weight measure of its own; its weight table is Engineer M’s, copied from his notes.</li></ul></div></div></section>')
 
 
 # ================================================================ page
@@ -1103,7 +1147,7 @@ nav.toc ol { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex
 .reply { background: var(--panel); color: var(--on-panel); padding: 24px; margin-top: 24px; max-width: 60rem }
 .reply .reply-k { font: 700 13px/1.3 var(--text); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px }
 .reply .reply-t { font: 800 clamp(20px, 2.6vw, 26px)/1.25 var(--display); margin: 0 0 12px }
-.reply .note { color: inherit; opacity: 0.85; margin: 0 }
+.reply .note { color: inherit; opacity: 0.85; margin: 0 0 8px }
 .xitem { margin-top: 48px; padding-top: 8px; border-top: 1px solid var(--rule) }
 figure { margin: 0; min-width: 0 }
 .pic img { display: block; max-width: 100%; height: auto; border: 1px solid var(--rule); background: #DCD9D2 }

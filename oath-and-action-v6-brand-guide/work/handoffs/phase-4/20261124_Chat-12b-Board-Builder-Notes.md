@@ -2,7 +2,7 @@
 
 Started November 24, 2026 at 00:01 UTC; first draft written at 00:47 UTC (each time read with `date -u`). Work: Phase 4 board 1, under `work/handoffs/phase-4/20261124_Chat-12b-Brief.md` section 3.8. Script `work/build/scripts/phase-4/board1_build.py`; output `work/boards/phase-4/board-1/20261124_Phase-4-Board-1.html` (title "Phase 4 Board 1") and `img/`. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/ade8e70b-f71c-536b-8654-9b651b94da3a/scratchpad/c12b/board-builder/`.
 
-Status: **first draft built (00:47 UTC)**, 153 files, 11,479,860 bytes. **Rebuilt from the final page at 02:27 UTC** (strict build of commit 84163752, 14,444,690 bytes, `scratchpad/c12b/final/guide.html`): 187 files, 14,359,648 bytes (page 169,288 bytes). Four slots are filled (Rules 16.10 and 16.11 with A21, C16-V's rescore, the wall test's covered pictures, chapter 21's opener after CD-R1); Engineer M's weight table stays a slot until the main session says it has landed.
+Status: **first draft built (00:47 UTC)**, 153 files, 11,479,860 bytes. **Rebuilt from the final page at 02:27 UTC** (strict build of commit 84163752, 14,444,690 bytes, `scratchpad/c12b/final/guide.html`): 187 files, 14,359,648 bytes (page 169,288 bytes). All five slots are filled: Rules 16.10 and 16.11 with A21, C16-V's rescore, the wall test's covered pictures, chapter 21's opener after CD-R1 and, at 03:16 UTC, Engineer M's weight table (no browser opened for it). The reply follows D4-428.
 
 ## Routine calls
 
@@ -25,6 +25,9 @@ Status: **first draft built (00:47 UTC)**, 153 files, 11,479,860 bytes. **Rebuil
 - D4-xxx | Straight apostrophes in quoted records (the C16-V note, the specification rows) print as typographic ones; the check now reads the page's text unescaped | The first check missed `&#x27;`
 - D4-xxx | No decision added from the register: every chat 12 row "Held for Dustin (Phase 4 board 1)" is placed (rows 816 to 826, 836, 841, 845, 846, 851, 854, 872); the register has no chat 12b section yet; the older rows held for board 1 (C16-CD-01, ED11-1, ED11-2, DD11-NF1) were answered by DR-312 to DR-318, and C21-1 closed with ED-F1 (DR-315) | The coordinator asked for any held row not yet placed
 - D4-xxx | The weight decision's recommendation follows the creative director's order and leaves PR-S7 (3i) for later | C1 reaches the projection without it, and a frame would stop matching its export's markup; provisional until Engineer M's table
+
+- D4-xxx | (03:16 UTC, the main session's message) `WEIGHT_TABLE` filled from Engineer M's "On the final page"; decision 3 states C1's 937,678 bytes and 15,509,989 projection, C2, C3 and 1b's mid and high, and drops the line that Engineer M would measure again | The table landed
+- D4-xxx | D4-428: the reply names the six items that change settled work, “Board 1: items 1, 3, 4, 5, 9 and 10 as recommended; and by name, items 2, 6, 7, 8, 11 and 12 as recommended.”, and each of those six cards carries “Settled work: needs your answer by name” | The main session's call; written from the decisions' data, so the numbers follow the ranking
 
 ## Contracts
 
@@ -68,10 +71,11 @@ How the late parts reach the board (constants and arguments in `board1_build.py`
 
 - **Final rebuild, 02:17 to 02:28 UTC.** Captures from the final page after `browsers.sh` printed "OK to open one" (02:17): 77 PNGs in 356 seconds; C11-1's scale the same (294 px and 90 px); E11b-1 six rules changed; E11b-2 focus on Explainers with `:focus-visible` true; the Prussian row `rgb(31, 45, 90)` with six red marks above it. C11C-R14d's Newsprint pictures identical again, by script. The board build: exit 0 with every check above. The board in Chromium (02:27): no sideways scroll at 1440, 1024, 390 and 360 px in either theme, 133 pictures, none broken, axe 0 violations at 1440, 390 and 360 px, light and dark.
 - **Alts read again** against the final pictures: contact sheets of the 18 web first screens (exports of 01:23 to 01:29; four Act page alts rewritten for the steps and line counts they show), the 20 atlas first screens (unchanged in what they show), A21's five frames of 02:14 (all five rewritten: the full-width Charcoal band now holds the source line and caption, and the overlays name TikTok's buttons, the ad guides, "Our margin until chapter 23 sets one" and "The player's controls"), Rules 16.10 and 16.11's four plates (their alts are the chapter's captions), chapter 21's opener (the load state; its alt now says so), and the wall test's covered first screens.
+- **03:16 UTC rebuild (no captures, no browser):** the board's text read by script after the build: 0 em or en dashes, 0 of chapter 02's filler or corporate words, 0 straight apostrophes between letters, 0 slots left, six cards marked "Settled work: needs your answer by name".
 
 ## Not tested
 
 - The board read aloud, or with a screen reader; Safari and Firefox.
-- Engineer M's final weight table, not yet on the board.
+- The weight figures: the board copies Engineer M's table ("On the final page") and ran no measure of its own.
 - The proposals as built changes: their contrast in every place, their code and the guide check.
 - The board as a published artifact (the main session publishes).
