@@ -160,13 +160,13 @@ W = {
                   'a count on each arrow between them on the desktop, and as a stacked list on the phone. A question '
                   'about medical bills is pressed, and the parts it reaches stay in full ink while the others are muted.',
     # CD-S4: the opener as the home's first screens, and the whole home's label as an extra (the design director's Words 8)
-    'opener_screens_alt': 'The atlas home’s first screen twice: on a desktop at 1440 px in the light theme and on a phone at '
-                          '390 px in the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the '
-                          'desktop shows the whole drawing of the eight parts with a count on each arrow, and the phone the '
-                          'start of the stacked list.',
-    'opener_screens_caption': 'The atlas home’s first screen on a desktop in the light theme and on a phone in the dark '
-                              'theme. On the desktop the whole circuit and its key fit the first screen, as Rule 21.2 asks; '
-                              'on the phone the stacked list of parts begins.',
+    'opener_screens_alt': 'The atlas home’s first screen twice, as it loads with no question pressed: on a desktop at 1440 '
+                          'px in the light theme and on a phone at 390 px in the dark theme. Under the site’s masthead and '
+                          'the atlas’s Charcoal title bar, the desktop shows the whole drawing of the eight parts at full '
+                          'strength with a count on each arrow, and the phone the start of the stacked list.',
+    'opener_screens_caption': 'The atlas home’s first screen as it loads, before a reader presses a question, on a desktop '
+                              'in the light theme and on a phone in the dark theme. On the desktop the whole circuit and its '
+                              'key fit the first screen, as Rule 21.2 asks; on the phone the stacked list of parts begins.',
     'home_label': 'The atlas home, full length',
     'related_chapters': [
         ('05', 'One working red a view, and each section’s opening screen measured as Rule 05.1 sets.'),
@@ -282,10 +282,12 @@ PAGES = {
         },
         # AX-7 (DD12-C2): each crop's own name, part and state first, then its width and theme; the kit composes the rest
         'frame_alts': {
-            'A11 1440-light-screen': 'The atlas home’s first screen: the site’s masthead, the atlas’s title bar and the whole '
-                                     'drawing of the eight parts with its key. At 1440 px, in the light theme.',
-            'A11 390-dark-screen': 'The atlas home’s first screen on a phone: the masthead, the atlas’s title bar and the '
-                                   'start of the stacked list of parts. At 390 px, in the dark theme.',
+            'A11 1440-light-screen': 'The atlas home’s first screen with no question pressed: the site’s masthead, the '
+                                     'atlas’s title bar and the whole drawing of the eight parts at full strength, with its '
+                                     'key. At 1440 px, in the light theme.',
+            'A11 390-dark-screen': 'The atlas home’s first screen on a phone with no question pressed: the masthead, the '
+                                   'atlas’s title bar and the start of the stacked list of parts. At 390 px, in the dark '
+                                   'theme.',
             'A11 1440-light-drawing': 'The drawing of the eight parts, the parts a question about medical bills reaches at '
                                       'full strength and the others muted. At 1440 px, in the light theme.',
             'A11 1440-light-pair': 'Two parts of the drawing, Wealth lit for a question about medical bills and Voice muted '
@@ -430,7 +432,7 @@ PAGES = {
                                     'and citation. At 1440 px, in the light theme.',
             'A18 390-light-rejected': 'The sheet for Domain D10, its connections reviewed and not drawn, each with the '
                                       'atlas’s reason. At 390 px, in the light theme.',
-            'A18 390-light-sheettop': 'The head of the sheet for Domain D10 and its first connections. At 390 px, in the '
+            'A18 390-light-sheettop': 'The first three connections filed on the sheet for Domain D10. At 390 px, in the '
                                       'light theme.',
         },
     },
@@ -933,10 +935,11 @@ R['21.9'] = {
     'builders': ['File each connection by its variable’s sheet, and stop the build when the sheets do not add up to the '
                  'model’s count.'],
     'correct_caption': 'The sheet for Domain D10 with its connections at 1440 px in the light theme, its contested lines in '
-                       'the dash and dot with the word Contested.',
+                       'the dash and dot with the word Contested. Under it, the sheet’s first three connections at 390 px, '
+                       'each a card with the same parts.',
     'correct_alt': 'A table of connections, each row with its chip, its two variables, a sign tag with raises or lowers, '
                    'its type, delay ticks, a grade line and word, and the atlas’s citation; the contested rows draw dash '
-                   'and dot.',
+                   'and dot. Under it, the first three of those connections on a phone, each a card with the same parts.',
     'failure_caption': '<strong>Fails Rule 21.9.</strong> Every connection appears on two sheets, so the Register counts '
                        '{double} where our atlas holds {connections}.',
     'failure_alt': 'The whole-atlas row of the index reading twice the atlas’s count of connections.',
@@ -1192,10 +1195,11 @@ VIEW_WORDS = {
               'rejected': 'the rejected option', 'stepper': 'the stepper', 'chooser': 'the chooser',
               'read': 'the loop read aloud', 'evidence': 'the evidence', 'claim': 'the claim’s record',
               'facts': 'the loop’s facts', 'status': 'where it stands', 'rowl14': 'Connection L14’s row',
-              'hub': 'the hub with the pressed question', 'sheettop': 'the sheet’s head and first rows',
+              'hub': 'the hub with the pressed question', 'sheettop': 'the sheet’s first three connections',
               'marks': 'the marks'},
-    # CR-22: after a row's views, its scale at a 1440 px window, or true size (as chapter 20's)
-    'scale': 'shown at {pct} percent', 'true': 'true size',
+    # CR-22: after a row's views, its scale at a 1440 px window, or true size (as chapter 20's); each says where it
+    # holds, since a phone shows the same frames smaller (editor, chat 12b)
+    'scale': 'shown at {pct} percent on a 1440 px screen', 'true': 'true size on a 1440 px screen',
 }
 
 WCAG = {

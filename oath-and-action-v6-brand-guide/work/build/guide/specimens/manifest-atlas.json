@@ -253,7 +253,7 @@
   "chapter": "21",
   "rule": "21.9",
   "width_px": null,
-  "alt": "A table of connections, each row with its chip, its two variables, a sign tag with raises or lowers, its type, delay ticks, a grade line and word, and the atlas’s citation; the contested rows draw dash and dot.",
+  "alt": "A table of connections, each row with its chip, its two variables, a sign tag with raises or lowers, its type, delay ticks, a grade line and word, and the atlas’s citation; the contested rows draw dash and dot. Under it, the first three of those connections on a phone, each a card with the same parts.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A18, the Register with the sheet for Domain D10 open).",
   "readable": true
@@ -307,7 +307,7 @@
   "chapter": "21",
   "rule": null,
   "width_px": null,
-  "alt": "The atlas home’s first screen twice: on a desktop at 1440 px in the light theme and on a phone at 390 px in the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the desktop shows the whole drawing of the eight parts with a count on each arrow, and the phone the start of the stacked list.",
+  "alt": "The atlas home’s first screen twice, as it loads with no question pressed: on a desktop at 1440 px in the light theme and on a phone at 390 px in the dark theme. Under the site’s masthead and the atlas’s Charcoal title bar, the desktop shows the whole drawing of the eight parts at full strength with a count on each arrow, and the phone the start of the stacked list.",
   "illustrative": false,
   "notes": "Drawn by the application kit (A11): its first screen at 1440 px light and 390 px dark, one window tall each (CD-S4).",
   "readable": true

@@ -5,7 +5,7 @@
   "part": "applications",
   "opener": {
     "specimen": "s-21-opener",
-    "caption": "The atlas home’s first screen on a desktop in the light theme and on a phone in the dark theme. On the desktop the whole circuit and its key fit the first screen, as Rule 21.2 asks; on the phone the stacked list of parts begins."
+    "caption": "The atlas home’s first screen as it loads, before a reader presses a question, on a desktop in the light theme and on a phone in the dark theme. On the desktop the whole circuit and its key fit the first screen, as Rule 21.2 asks; on the phone the stacked list of parts begins."
   },
   "instruction": "Apply the system to the atlas, with typed IDs and evidence a step from every claim.",
   "intro": [
@@ -653,7 +653,7 @@
       },
       "correct": {
         "specimen": "s-21-9-correct",
-        "caption": "The sheet for Domain D10 with its connections at 1440 px in the light theme, its contested lines in the dash and dot with the word Contested."
+        "caption": "The sheet for Domain D10 with its connections at 1440 px in the light theme, its contested lines in the dash and dot with the word Contested. Under it, the sheet’s first three connections at 390 px, each a card with the same parts."
       },
       "failure": {
         "specimen": "s-21-9-failure",

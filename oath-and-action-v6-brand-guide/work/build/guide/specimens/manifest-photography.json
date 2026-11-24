@@ -21,7 +21,7 @@
   "chapter": "16",
   "rule": "16.10",
   "width_px": null,
-  "alt": "A storyboard of six video frames with their times and words: the title frame with the question at 0:00; Dustin on camera with his name plate at 0:02; chart S04 with its source line at 0:08; the gap marked at 0:30; the step at 0:50; the end frame at 1:00.",
+  "alt": "A storyboard of six video frames with their times and words: the title frame with the question at 0:00; Dustin on camera with his name plate at 0:02; at 0:08 and 0:30, chart S04 with its source line under it and the captions on a Charcoal band, the 0:30 captions saying the gap grew from 23 points to 27; the step at 0:50; the end frame at 1:00.",
   "illustrative": true,
   "notes": "The video is not made, so the plate carries the Illustrative label at its head; every figure is chart S04’s (work/build/chart-kit/specs/s04.json). The 0:08 and 0:30 cells are the application kit’s A21 frames at 1920 by 1080 (views 1920-light-chart and 1920-light-gap), shown at 10 percent. The step frame holds the view’s one working red.",
   "readable": true
@@ -39,7 +39,7 @@
   "chapter": "16",
   "rule": "16.11",
   "width_px": null,
-  "alt": "A 9:16 video frame drawn at a quarter size: a placeholder for Dustin’s voice over chart S04, an outlined caption-safe area, and inside it two caption lines on a Charcoal band, Citizens 18 to 24 reported voting, at 47.7 percent, down 3.7 points. Beside it, the WebVTT file with the same lines and their times.",
+  "alt": "A vertical video frame at a quarter of 1080 by 1920: chart S04 near the top, the L8 monogram at the top right, and under the chart a Charcoal band that holds the chart’s source line and two caption lines, Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points. The safe areas show when the page loads, and a switch hides them. A dashed outline runs 269 px in from the top, 120 px from each side and 672 px from the bottom, from TikTok’s and Instagram’s ad guides, and a hatched box marks TikTok’s button column at the right. Beside the frame, the WebVTT file with these two lines, the next two and their times.",
   "illustrative": true,
   "notes": "The application kit’s A21 frame, 1080 by 1920 (view 1080-light), shown at a quarter: chart S04 from the chart kit, its source line and the caption band inside the vertical safe area (DD12b-R1). The frame is a picture whose alt carries every word (D4-211). The video is not made.",
   "readable": true
@@ -48,7 +48,7 @@
   "chapter": "16",
   "rule": "16.11",
   "width_px": null,
-  "alt": "Failure case: do not publish. The same frame with an automatic caption that reads down 37 points.",
+  "alt": "Failure case: do not publish. The same frame, where the automatic captions read Citizens 18 to 24 reported voting at 47.7 percent, down 37 points.",
   "illustrative": true,
   "notes": "The same A21 frame with the automatic caption (view 1080-light-misheard), so the caption is the one fault.",
   "readable": true

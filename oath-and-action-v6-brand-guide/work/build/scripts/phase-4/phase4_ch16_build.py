@@ -632,6 +632,18 @@ EXTRA_KINDS = {
 
 # ---- Group 4, the video example: chart S04 (Rule 14.19), every figure from its spec; the video is not made, so each
 # plate carries the Illustrative label, and each caption carries the chart's source line
+# The caption on screen at 0:08 (chat 12b, editor): the first two lines of the WebVTT file, word for word the start of
+# what the storyboard says at 0:08, so the cue stops before "from 2020", which the next cue carries. A21's vertical frame
+# and the storyboard's 0:08 frame show these lines, and the misheard frame changes only "3.7" (Rule 16.11's failure).
+CUE_0_08 = ('Citizens 18 to 24 reported voting', 'at 47.7 percent, down 3.7 points')
+# at 0:30, the first sentence said, broken between its subject and its verb
+CUE_0_30 = ('So the gap between the youngest and the oldest', 'grew from 23 points to 27.')
+# What A21's frames show of chart S04 (the kit draws it; DD12b-R1: no title, measure line or notes on the frame), for
+# their alts: the legend's dots as S04's chart note names them, the scale's ends, then each row's 2020 and 2024 rates
+# (census-cps-reported-voting.csv through S04's where filter) and its row words, as the drawing prints them
+S04_DRAWN = ('reported voting by age group, an open dot for 2020 and a solid dot for 2024 on a scale from 40 to 80 percent: '
+             '18 to 24, 51.4 in 2020 and 47.7 in 2024, down 3.7 points; 25 to 44, 62.6 and 60.2, down 2.4 points; 45 to '
+             '64, 71.0 and 70.0, too close to call (−1.0); 65 and over, 74.5 and 74.7, no clear change (+0.2)')
 R['16.10'] = {
     'title': 'Make each video answer one question, from its title frame to its step.',
     'rule': ['Each video answers one question a viewer could ask, such as “Which age groups reported voting in 2024?” It '
@@ -656,24 +668,28 @@ R['16.10'] = {
     'builders': 'Write the question first, then the one sentence that answers it, and build the script from that '
                 'sentence outward.',
     'correct_caption': 'A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and '
-                       'the step at 0:50. ' + S04_FIGURES,
+                       'the step at 0:50. We drew the 0:08 and 0:30 frames at 1920 by 1080 px, with the chart, its source '
+                       'line and the captions, and our exports keep them at that size. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.10.</strong> The question arrives at 0:21, after an animated logo and a '
                        'greeting, so a viewer who scrolls on never learns what the video answers.',
     'correct_alt': 'A storyboard of six video frames with their times and words: the title frame with the question at 0:00; '
-                   'Dustin on camera with his name plate at 0:02; chart S04 with its source line at 0:08; the gap marked at '
-                   '0:30; the step at 0:50; the end frame at 1:00.',
+                   'Dustin on camera with his name plate at 0:02; at 0:08 and 0:30, chart S04 with its source line under '
+                   'it and the captions on a Charcoal band, the 0:30 captions saying the gap grew from 23 points to 27; the '
+                   'step at 0:50; the end frame at 1:00.',
     'failure_alt': 'The same storyboard with the logo animating to music at 0:00, a greeting at 0:08 and the question only '
                    'at 0:21.',
     'question': 'Which age groups reported voting in 2024?',
     'slot': 'Drawn in chapter 23',
+    # the chart and gap frames are A21's (CD-S7), so they print no label of their own here; their words are the
+    # frame_captions and frame_alts below
     'frames': [
         ('0:00', 'title', 'Title frame', ''),
         ('0:02', 'host', 'Placeholder: Dustin Cathcart on camera',
          'Which age groups told the Census Bureau they voted in 2024?'),
-        ('0:08', 'chart', 'Chart S04, with its source line',
+        ('0:08', 'chart', '',
          'Citizens 18 to 24 reported voting at 47.7 percent, down 3.7 points from 2020. Those 65 and over stayed near 75 '
          'percent.'),
-        ('0:30', 'gap', 'The gap, 23 points to 27',
+        ('0:30', 'gap', '',
          'So the gap between the youngest and the oldest grew from 23 points to 27. These are answers to a survey, which '
          'run higher than counted ballots.'),
         ('0:50', 'step', 'Check your registration',
@@ -687,6 +703,22 @@ R['16.10'] = {
         ('0:08', 'host', 'Placeholder: Dustin Cathcart on camera', 'Hey everyone, welcome back.'),
         ('0:21', 'host', 'Placeholder: Dustin Cathcart on camera', 'Today: which age groups reported voting in 2024?'),
     ],
+    # A21's storyboard frames (CD-S7, DD12b-R1): the captions on screen at each moment, two lines broken at a phrase
+    'frame_captions': {'0:08': CUE_0_08, '0:30': CUE_0_30},
+    # each frame's alt carries every word it shows, since the cell shows it at a tenth (D4-211)
+    'frame_alts': {
+        '1920-light-chart': 'A still from the video at 0:08, a frame 1920 by 1080 px, with the L8 monogram at its top '
+                            f'right. At the left, chart S04 shows {S04_DRAWN}. Under the chart, its source line reads '
+                            f'“{S04_SOURCE}” Across the foot of the frame, a Charcoal band holds the captions, '
+                            f'“{CUE_0_08[0]} {CUE_0_08[1]}”.',
+        '1920-light-gap': 'A still from the video at 0:30, a frame 1920 by 1080 px, with the L8 monogram at its top '
+                          f'right. At the left, chart S04 shows {S04_DRAWN}. Under the chart, its source line reads '
+                          f'“{S04_SOURCE}” Across the foot of the frame, a Charcoal band holds the captions, '
+                          f'“{CUE_0_30[0]} {CUE_0_30[1]}”',
+    },
+    # the scale in the 0:08 and 0:30 cells' labels: {pct} is the frame's width in its 200 px cell over 1,920 px, which
+    # holds at a 1440 px window; on a phone the cell is wider, so the words name where the figure holds (CR-22)
+    'frame_scale': 'shown at {pct} percent on a 1440 px screen',
 }
 
 R['16.11'] = {
@@ -714,27 +746,51 @@ R['16.11'] = {
               ('Automatic captions', 'A first draft only'),
               ('Burned-in captions', 'Only where a platform offers neither, inside chapter 23’s caption-safe area, with closed captions off'),
               ('Lines', 'Two at most, about 42 characters each, broken at a phrase'),
-              ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; chapter 23 sets the size for each frame', 'oa.color.surface.charcoal'),
+              ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; 32 px on a 44 px line in our 1080 by 1920 and 1920 by 1080 frames, and chapter 23 sets the size for any other frame', 'oa.color.surface.charcoal'),
               ('Sounds and speakers', 'Sounds in square brackets when they carry meaning; speakers named when off screen'),
               ('Checked by', 'A person, against the final cut, before posting'),
               ('Live', 'A live stream needs live captions (WCAG 2.2 success criterion 1.2.4); we stream nothing live as of November 2026')],
     'builders': 'Make the caption file from the final script, play the final cut beside it, and correct every line before '
                 'it uploads.',
-    'correct_caption': 'A vertical frame at a quarter of 1080 by 1920, its captions on a Charcoal band inside the '
-                       'caption-safe area, beside the WebVTT lines that make them. ' + S04_FIGURES,
+    'correct_caption': 'A vertical frame at a quarter of 1080 by 1920, showing chart S04 with its source line and, inside '
+                       'the caption-safe area, its captions on a Charcoal band. Beside it, the WebVTT file; the frame shows '
+                       'its first two lines. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.11.</strong> Nobody checked the automatic caption, so a fall of 3.7 points '
                        'reads as 37.',
-    'correct_alt': 'A 9:16 video frame drawn at a quarter size: a placeholder for Dustin’s voice over chart S04, an outlined '
-                   'caption-safe area, and inside it two caption lines on a Charcoal band, Citizens 18 to 24 reported voting, '
-                   'at 47.7 percent, down 3.7 points. Beside it, the WebVTT file with the same lines and their times.',
-    'failure_alt': 'The same frame with an automatic caption that reads down 37 points.',
-    'plh': 'Placeholder: Dustin’s voice over chart S04',
-    'safe': 'Caption-safe area, set in chapter 23',
-    'lines': ('Citizens 18 to 24 reported voting', 'at 47.7 percent, down 3.7 points.'),
-    'bad_lines': ('Citizens 18 to 24 reported voting', 'at 47.7 percent, down 37 points.'),
+    'correct_alt': 'A vertical video frame at a quarter of 1080 by 1920: chart S04 near the top, the L8 monogram at the top '
+                   'right, and under the chart a Charcoal band that holds the chart’s source line and two caption lines, '
+                   f'{CUE_0_08[0]} {CUE_0_08[1]}. The safe areas show when the page loads, and a switch hides them. A '
+                   'dashed outline runs 269 px in from the top, 120 px from each side and 672 px from the bottom, from '
+                   'TikTok’s and Instagram’s ad guides, and a hatched box marks TikTok’s button column at the right. '
+                   'Beside the frame, the WebVTT file with these two lines, the next two and their times.',
+    'failure_alt': f'The same frame, where the automatic captions read {CUE_0_08[0]} at 47.7 percent, down 37 points.',
+    'lines': CUE_0_08,
+    'bad_lines': (CUE_0_08[0], 'at 47.7 percent, down 37 points'),
     'file_head': 'The caption file, WebVTT',
-    'vtt': 'WEBVTT\n\n00:00:08.000 --> 00:00:11.500\nCitizens 18 to 24 reported voting\nat 47.7 percent, down 3.7 points.',
-    'scale_note': 'Drawn at a quarter of 1080 by 1920',
+    # two cues: the frame shows the first, and the second finishes the sentence the storyboard says at 0:08
+    'vtt': ('WEBVTT\n\n00:00:08.000 --> 00:00:11.500\n' + '\n'.join(CUE_0_08)
+            + '\n\n00:00:11.500 --> 00:00:15.000\nfrom 2020.\nThose 65 and over stayed near 75 percent.'),
+    # holds at every width measured: the frame keeps its 270 px wrapper at 1440 and 390 px (Engineer W, 268 px drawn)
+    'scale_note': 'Shown at a quarter of 1080 by 1920',
+    # A21's vertical frames (CD-S7, DD12b-R1), by view key: each alt carries every word the frame shows (D4-211)
+    'frame_alts': {
+        '1080-light': 'A still from the video at 0:08, a vertical frame 1080 by 1920 px, with the L8 monogram at its top '
+                      f'right. Near the top, chart S04 shows {S04_DRAWN}. Under the chart, a Charcoal band holds the '
+                      f'chart’s source line and then the captions. The source line reads “{S04_SOURCE}” The captions '
+                      f'read “{CUE_0_08[0]} {CUE_0_08[1]}”.',
+        '1080-light-misheard': 'A still from the video at 0:08, a vertical frame 1080 by 1920 px, with the L8 monogram at '
+                               f'its top right. Near the top, chart S04 shows {S04_DRAWN}. Under the chart, a Charcoal '
+                               'band holds the chart’s source line and then the automatic captions. The source line '
+                               f'reads “{S04_SOURCE}” The automatic captions read “{CUE_0_08[0]} at 47.7 percent, down '
+                               '37 points”.',
+    },
+    # the overlay's words (lib.mjs overlay, W-C2): the basis of each safe area, the app's buttons, the player's controls
+    'safe_labels': {'vertical': 'TikTok’s and Instagram’s ad guides, retrieved November 21, 2026',
+                    'landscape': 'Our margin until chapter 23 sets one',
+                    'buttons': 'TikTok’s buttons',
+                    'controls': 'The player’s controls'},
+    'switch': 'Show the safe areas',
+    'signature': 'Oath & Action',                             # L8's name, the name of what it signs
 }
 
 R['16.12'] = {

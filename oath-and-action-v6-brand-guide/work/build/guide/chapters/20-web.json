@@ -752,7 +752,7 @@
         },
         {
           "label": "Panels",
-          "value": "Charcoal or Prussian, counted in the section where the panel’s top falls; cells that meet as one band, as the pillar row’s four do at 1440 px, count as one panel"
+          "value": "Charcoal or Prussian, counted in the section where the panel’s top falls; panels that meet along a whole side, as the pillar row’s four cells do at 1440 px, count as one"
         },
         {
           "label": "Dark frames",

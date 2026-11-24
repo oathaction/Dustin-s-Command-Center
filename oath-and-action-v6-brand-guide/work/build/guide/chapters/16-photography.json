@@ -742,7 +742,7 @@
       },
       "correct": {
         "specimen": "s-16-10-correct",
-        "caption": "A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and the step at 0:50. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
+        "caption": "A storyboard for a one-minute video on chart S04. The question comes in the first two seconds and the step at 0:50. We drew the 0:08 and 0:30 frames at 1920 by 1080 px, with the chart, its source line and the captions, and our exports keep them at that size. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
       },
       "failure": {
         "specimen": "s-16-10-failure",
@@ -822,7 +822,7 @@
       },
       "correct": {
         "specimen": "s-16-11-correct",
-        "caption": "A vertical frame at a quarter of 1080 by 1920, its captions on a Charcoal band inside the caption-safe area, beside the WebVTT lines that make them. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
+        "caption": "A vertical frame at a quarter of 1080 by 1920, showing chart S04 with its source line and, inside the caption-safe area, its captions on a Charcoal band. Beside it, the WebVTT file; the frame shows its first two lines. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
       },
       "failure": {
         "specimen": "s-16-11-failure",
@@ -855,7 +855,7 @@
         },
         {
           "label": "Type",
-          "value": "Inter 600 in Newsprint on a Charcoal band, 13.29 to 1; chapter 23 sets the size for each frame",
+          "value": "Inter 600 in Newsprint on a Charcoal band, 13.29 to 1; 32 px on a 44 px line in our 1080 by 1920 and 1920 by 1080 frames, and chapter 23 sets the size for any other frame",
           "token": "oa.color.surface.charcoal"
         },
         {

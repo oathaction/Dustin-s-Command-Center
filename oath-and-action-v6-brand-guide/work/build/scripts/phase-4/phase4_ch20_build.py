@@ -805,8 +805,8 @@ R['20.9'] = {
                                                 'percent, signature red included'),
               ('Sections', 'Marked in the markup, the footer its own'),
               ('A pixel', 'Counts as a color within 3 levels on each channel, or 24 for red'),
-              ('Panels', 'Charcoal or Prussian, counted in the section where the panel’s top falls; cells that meet as one '
-                         'band, as the pillar row’s four do at 1440 px, count as one panel'),
+              ('Panels', 'Charcoal or Prussian, counted in the section where the panel’s top falls; panels that meet '
+                         'along a whole side, as the pillar row’s four cells do at 1440 px, count as one'),
               ('Dark frames', 'Shares printed for the record; only the red limit is judged')],
     'builders': ['Run the measure on every light frame before a page goes up, and move a panel before you add one.'],
     'correct_caption': 'Every first and opening screen of the three pages at 1440 px in the light theme, measured on the '
@@ -906,8 +906,9 @@ VIEW_WORDS = {'1440-light': '1440 px, light', '1024-light': '1024 px, light', '3
               '390-light-open': '390 px, light, menu open', '360-light-open': '360 px, light, menu open',
               '390-dark-open': '390 px, dark, menu open', '1440-light-screen': '1440 px, light, first screen',
               '390-light-screen': '390 px, light, first screen', '390-dark-screen': '390 px, dark, first screen',
-              # CR-22: after a row's views, its scale at a 1440 px window, or true size
-              'scale': 'shown at {pct} percent', 'true': 'true size'}
+              # CR-22: after a row's views, its scale at a 1440 px window, or true size; each says where it holds,
+              # since a phone shows the same frames smaller (editor, chat 12b)
+              'scale': 'shown at {pct} percent on a 1440 px screen', 'true': 'true size on a 1440 px screen'}
 
 WCAG = {
     '20.1': ['1.3.1', '2.4.1', '2.4.3', '3.2.3', '3.2.4', '4.1.2'],
