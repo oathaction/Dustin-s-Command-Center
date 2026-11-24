@@ -1116,10 +1116,10 @@ R['21.15'] = {
               ('Switch', 'The site’s (Rule 18.4), remembered across a reload')],
     'builders': ['Name a token for every color in a dark view, and check each frame’s pixels with the contrast script.'],
     'correct_caption': 'Loop R18’s drawing with Reform R-11’s three targets in red, Variable D4 and Connections L14 and '
-                       'L15, and the chooser beside it, at 1440 px in the dark theme, with the ratios measured on the '
+                       'L15, and the chooser under it, at 1440 px in the dark theme, with the ratios measured on the '
                        'plate’s pixels.',
     'correct_alt': 'Loop R18 on Charcoal, with Reform R-11’s three targets in red: the outline of Variable D4 and both of '
-                   'the loop’s connections, L14 and L15. Beside it, a chooser of reforms with R-11 chosen, and a table '
+                   'the loop’s connections, L14 and L15. Under it, a chooser of reforms with R-11 chosen, and a table '
                    'of contrast ratios measured on the frame.',
     'failure_caption': '<strong>Fails Rule 21.15.</strong> Muted marks in Stone clear 3 to 1 by a tenth, and the selection '
                        'draws in White, a color no token sets on Charcoal.',

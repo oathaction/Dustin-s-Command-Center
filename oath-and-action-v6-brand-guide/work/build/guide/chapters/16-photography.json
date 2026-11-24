@@ -822,7 +822,7 @@
       },
       "correct": {
         "specimen": "s-16-11-correct",
-        "caption": "A vertical frame at a quarter of 1080 by 1920, showing chart S04 with its source line and, inside the caption-safe area, its captions on a Charcoal band. Beside it, the WebVTT file; the frame shows its first two lines. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
+        "caption": "A vertical frame of chart S04 with its source line, at a quarter of 1080 by 1920, for a platform that takes no caption file and draws no captions of its own. We burned its captions in from the checked WebVTT file beside it, inside the caption-safe area on a Charcoal band, and left closed captions off. Until chapter 23 sets each platform’s safe area, the frame keeps to the larger of TikTok’s and Instagram’s margins and clear of TikTok’s buttons. The figures are chart S04’s, reported voting by age (Rule 14.19). Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose."
       },
       "failure": {
         "specimen": "s-16-11-failure",
@@ -851,11 +851,11 @@
         },
         {
           "label": "Lines",
-          "value": "Two at most, about 42 characters each, broken at a phrase"
+          "value": "Two at most, broken at a phrase, about 34 characters each in a 1080 by 1920 frame and about 42 in a 1920 by 1080 frame"
         },
         {
           "label": "Type",
-          "value": "Inter 600 in Newsprint on a Charcoal band, 13.29 to 1; 32 px on a 44 px line in our 1080 by 1920 and 1920 by 1080 frames, and chapter 23 sets the size for any other frame",
+          "value": "Inter 600 in Newsprint on a Charcoal band, 13.29 to 1; 37.5 px on a 43.125 px line in a 1080 by 1920 frame, the type scale’s 20 px phone step and its 1.15 line height drawn 1.875 times, so a 390 px phone plays it at 13.5 px; 32 px on a 44 px line in a 1920 by 1080 frame; chapter 23 sets the size for any other frame",
           "token": "oa.color.surface.charcoal"
         },
         {

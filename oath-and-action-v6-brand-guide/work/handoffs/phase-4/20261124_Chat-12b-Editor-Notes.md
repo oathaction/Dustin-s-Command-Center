@@ -157,3 +157,38 @@ Started 01:19:44 UTC (`date -u`), on the main session's message, in `phase4_ch16
 - The two plates in a browser: the line's width is a font-metric estimate, and the cells' level tops follow from equal one-line labels, not from a look. The guide check and a strict build were not run this pass.
 
 Turn 2b done, 01:21 UTC
+
+# Turn 2c: CD12b-S1, CD12b-R7 and CD12b-S3's words
+
+Started 02:04:14 UTC (`date -u`), on the main session's message after the creative director's rescore (`20261124_Chat-12b-CD-Rescore.md`, Required changes), with its amendment to item 3 (D4-421: 37.5 px, not 40). Generators before, copied to scratch `t2c/` with their page words: `phase4_ch16_build.py` `4d4690f209ff4a05…`, `phase4_ch21_build.py` `d763681fc79e6547…` (equal to HEAD `8fd770f5`, the main session's snapshot); after: `c631a5fb7ce910ce…` and `deb47b1955fb8283…`.
+
+## Turn 2c routine calls
+
+- D4-xxx | CD12b-S1: Rule 16.11's correct caption and alt name the case, a platform that takes no caption file and draws no captions of its own, with the captions burned in from the checked WebVTT file and closed captions left off (D4-29) | The creative director's draft, recast in active voice ("We burned its captions in …")
+- D4-xxx | The overlay's words stay ("TikTok’s and Instagram’s ad guides, retrieved November 21, 2026"; "TikTok’s buttons"), and the caption says why they appear: "Until chapter 23 sets each platform’s safe area, the frame keeps to the larger of TikTok’s and Instagram’s margins and clear of TikTok’s buttons." | The overlay names where the margins come from, not where the video posts, so with the caption it no longer reads as a TikTok or Instagram frame. CD12b-S2 keeps "TikTok’s buttons" in the overlay, and the frame's words (A21's page words) stay as the kit will draw them
+- D4-xxx | CD12b-S3 as D4-421 sets it: Rule 16.11's Type row gives 37.5 px on a 43.125 px line in a 1080 by 1920 frame ("the type scale’s 20 px phone step and its 1.15 line height drawn 1.875 times, so a 390 px phone plays it at 13.5 px") and keeps 32 on 44 px for 1920 by 1080; the Lines row gives about 34 characters a line in a vertical frame and about 42 in a landscape one | The main session's amended call; the step and line height are h4's floor in `tokens.json` (1.25 rem, 1.15), as Engineer W's 02:06 note records; 37.5 × 390 / 1080 = 13.5
+- D4-xxx | The WebVTT file's second cue rebreaks: "from 2020. Those 65 and over" / "stayed near 75 percent." (was "from 2020." / "Those 65 and over stayed near 75 percent.") | The captions are burned into the vertical frame from this file, and "Those 65 and over stayed near 75 percent." runs 41 characters, about 779 px at 37.5 px, past the 660 px column; the new lines run 28 and 23 characters (about 552 and 431 px), broken between a subject and its verb. The file's text still reads word for word as the storyboard's 0:08 speech (checked by script)
+- D4-xxx | CD12b-R7: `s-21-15-correct`'s caption says "the chooser under it", and its alt "Under it, a chooser of reforms …" (both said "beside") | `s21_15_correct()` places the drawing's row, then the chooser's row, then the ratio table
+
+## Turn 2c done
+
+- **CD12b-S1.** Caption: "A vertical frame of chart S04 with its source line, at a quarter of 1080 by 1920, for a platform that takes no caption file and draws no captions of its own. We burned its captions in from the checked WebVTT file beside it, inside the caption-safe area on a Charcoal band, and left closed captions off. Until chapter 23 sets each platform’s safe area, the frame keeps to the larger of TikTok’s and Instagram’s margins and clear of TikTok’s buttons." (then the figures' line). Alt: opens "A vertical video frame at a quarter of 1080 by 1920, for a platform that takes no caption file and draws no captions of its own: …", says "two caption lines burned into the picture", and ends "Beside the frame, the checked WebVTT file the captions come from, with these two lines, the next two and their times."
+- **CD12b-R7.** Rule 21.15's caption and alt, "under".
+- **CD12b-S3's words.** Rule 16.11's Type and Lines rows. **The four A21 caption lines fit and none is rebroken:** at 37.5 px "Citizens 18 to 24 reported voting" (33 characters) runs about 590 px, "at 47.7 percent, down 3.7 points" (32) about 586 and the misheard "at 47.7 percent, down 37 points" (31) about 574, each inside the 660 px column. The one line rebroken is the WebVTT file's, which no A21 frame draws.
+- **A21's `--page-words` output did not change** (chapters 16 and 21 compared byte for byte before and after with `cmp`), so this pass stales no kit plate.
+
+## Turn 2c tested
+
+- `--page-words all` of both generators before (02:05 UTC) and after: byte for byte the same.
+- The WebVTT file's text, cue lines joined, against `SAID_0_08`: equal; its longest line 33 characters.
+- Caption widths at 37.5 px: Inter SemiBold advance widths from the system's copy of Inter (`/usr/share/fonts/opentype/inter/`), not the guide's subset fonts. I tried to install the `brotli` module into scratch to read the guide's own WOFF2 files, and the session's permission check refused it; I did not retry. The figures are estimates, with 70 px or more to spare.
+- `--check` under the lock (02:07:00 UTC): chapter 16 exit 0 (13 rules, 28 specimens, 82,189 bytes), chapter 21 exit 0 (16 rules, 35 specimens). The plain runs in the same hold: exit 0 each. MD5 of every file under `work/build` before and after: `16-photography.json`, `21-atlas.json`, the two manifests and `s-16-11-correct.html` moved, nothing else.
+- `git diff --stat` at 02:07:03 UTC: 7 files, the two generators and those five outputs, 25 insertions and 20 deletions; a word diff shows only the changes above.
+
+## Turn 2c not tested
+
+- The captions at 37.5 px drawn in the frame: Engineer W's build and its checks, which I did not run.
+- The guide's own fonts for the widths (above); a browser; the guide check; a strict build.
+- CD12b-S2 is the design director's; its words (the failure plate's caption text box, the basis sentence moved into the caption) were not asked of me this pass.
+
+Turn 2c done, 02:07 UTC

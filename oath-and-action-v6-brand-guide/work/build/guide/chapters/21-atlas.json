@@ -1044,7 +1044,7 @@
       },
       "correct": {
         "specimen": "s-21-15-correct",
-        "caption": "Loop R18’s drawing with Reform R-11’s three targets in red, Variable D4 and Connections L14 and L15, and the chooser beside it, at 1440 px in the dark theme, with the ratios measured on the plate’s pixels."
+        "caption": "Loop R18’s drawing with Reform R-11’s three targets in red, Variable D4 and Connections L14 and L15, and the chooser under it, at 1440 px in the dark theme, with the ratios measured on the plate’s pixels."
       },
       "failure": {
         "specimen": "s-21-15-failure",

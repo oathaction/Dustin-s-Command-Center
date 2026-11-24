@@ -751,31 +751,36 @@ R['16.11'] = {
               ('TikTok and Instagram', 'The app’s own captions, corrected word for word; we found no caption file upload on either (each from a search of its help pages, November 21, 2026)'),
               ('Automatic captions', 'A first draft only'),
               ('Burned-in captions', 'Only where a platform offers neither, inside chapter 23’s caption-safe area, with closed captions off'),
-              ('Lines', 'Two at most, about 42 characters each, broken at a phrase'),
-              ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; 32 px on a 44 px line in our 1080 by 1920 and 1920 by 1080 frames, and chapter 23 sets the size for any other frame', 'oa.color.surface.charcoal'),
+              ('Lines', 'Two at most, broken at a phrase, about 34 characters each in a 1080 by 1920 frame and about 42 in a 1920 by 1080 frame'),
+              ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; 37.5 px on a 43.125 px line in a 1080 by 1920 frame, the type scale’s 20 px phone step and its 1.15 line height drawn 1.875 times, so a 390 px phone plays it at 13.5 px; 32 px on a 44 px line in a 1920 by 1080 frame; chapter 23 sets the size for any other frame', 'oa.color.surface.charcoal'),
               ('Sounds and speakers', 'Sounds in square brackets when they carry meaning; speakers named when off screen'),
               ('Checked by', 'A person, against the final cut, before posting'),
               ('Live', 'A live stream needs live captions (WCAG 2.2 success criterion 1.2.4); we stream nothing live as of November 2026')],
     'builders': 'Make the caption file from the final script, play the final cut beside it, and correct every line before '
                 'it uploads.',
-    'correct_caption': 'A vertical frame at a quarter of 1080 by 1920, showing chart S04 with its source line and, inside '
-                       'the caption-safe area, its captions on a Charcoal band. Beside it, the WebVTT file; the frame shows '
-                       'its first two lines. ' + S04_FIGURES,
+    'correct_caption': 'A vertical frame of chart S04 with its source line, at a quarter of 1080 by 1920, for a platform '
+                       'that takes no caption file and draws no captions of its own. We burned its captions in from the '
+                       'checked WebVTT file beside it, inside the caption-safe area on a Charcoal band, and left closed '
+                       'captions off. Until chapter 23 sets each platform’s safe area, the frame keeps to the larger of '
+                       'TikTok’s and Instagram’s margins and clear of TikTok’s buttons. ' + S04_FIGURES,
     'failure_caption': '<strong>Fails Rule 16.11.</strong> Nobody checked the automatic caption, so a fall of 3.7 points '
                        'reads as 37.',
-    'correct_alt': 'A vertical video frame at a quarter of 1080 by 1920: chart S04 near the top, the L8 monogram at the top '
-                   'right, and under the chart a Charcoal band that holds the chart’s source line and two caption lines, '
-                   f'{CUE_0_08[0]} {CUE_0_08[1]}. The safe areas show when the page loads, and a switch hides them. A '
+    'correct_alt': 'A vertical video frame at a quarter of 1080 by 1920, for a platform that takes no caption file and '
+                   'draws no captions of its own: chart S04 near the top, the L8 monogram at the top right, and under the '
+                   'chart a Charcoal band that holds the chart’s source line and two caption lines burned into the '
+                   f'picture, {CUE_0_08[0]} {CUE_0_08[1]}. The safe areas show when the page loads, and a switch hides '
+                   'them. A '
                    'dashed outline runs 269 px in from the top, 120 px from each side and 672 px from the bottom, from '
                    'TikTok’s and Instagram’s ad guides, and a hatched box marks TikTok’s button column at the right. '
-                   'Beside the frame, the WebVTT file with these two lines, the next two and their times.',
+                   'Beside the frame, the checked WebVTT file the captions come from, with these two lines, the next two '
+                   'and their times.',
     'failure_alt': f'The same frame, where the automatic captions read {CUE_0_08[0]} at 47.7 percent, down 37 points.',
     'lines': CUE_0_08,
     'bad_lines': (CUE_0_08[0], 'at 47.7 percent, down 37 points'),
     'file_head': 'The caption file, WebVTT',
     # two cues: the frame shows the first, and the second finishes the sentence the storyboard says at 0:08
     'vtt': ('WEBVTT\n\n00:00:08.000 --> 00:00:11.500\n' + '\n'.join(CUE_0_08)
-            + '\n\n00:00:11.500 --> 00:00:15.000\nfrom 2020.\nThose 65 and over stayed near 75 percent.'),
+            + '\n\n00:00:11.500 --> 00:00:15.000\nfrom 2020. Those 65 and over\nstayed near 75 percent.'),
     # holds at every width measured: the frame keeps its 270 px wrapper at 1440 and 390 px (Engineer W, 268 px drawn)
     'scale_note': 'Shown at a quarter of 1080 by 1920',
     # A21's vertical frames (CD-S7, DD12b-R1), by view key: each alt carries every word the frame shows (D4-211)
