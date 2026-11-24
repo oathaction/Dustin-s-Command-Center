@@ -658,5 +658,20 @@
   "work/extract/atlas-v7-data.json": "ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2",
   "work/handoffs/phase-3/20261111_Palette-Proposal.json": "8f86bead8cb0c7f9df535ab3558ba8befd6a1062f2f5df8ff693806499086f5f",
   "work/research/20261111_Policy-Workflow-Sources.md": "efe97540bced4f0567f078af19c2721c07c6894c618fb04b39fc3b9846f2ad75"
+ },
+ "css_pruned": {
+  "full": 78759,
+  "placed": 59136,
+  "rules_kept": 459,
+  "rules_dropped": 105,
+  "frames_same": 62
+ },
+ "atlas_test": {
+  "ran": "2026-11-24T00:51:02.285Z",
+  "pass": 208,
+  "fail": 0,
+  "first_fail": null,
+  "self_test": "PASS",
+  "self_test_misses": []
  }
 }

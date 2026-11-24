@@ -75,6 +75,8 @@ The joined panel counts in the section where its top falls (Rule 20.9's Panels r
 - D4-xxx | Until the editor writes them, A21's alts, the storyboard's 0:30 caption lines and the cells' scale words are composed by the layout from stored words, and the hook lists each under `composed` | The kit needs words to draw now (Engineer W's build is turn 1); the editor's keys win as soon as they exist, and nothing composed passes as written
 - D4-xxx | Chapter 16's A21 plates keep `readable=True` with no exemption, against W-C3's `readable=False` | `guide_build.py` warns on a specimen holding kit page frames that is not readable; chapter 20's kit plates keep the default
 - D4-xxx | PR-S5 lists as `kit_inputs` only the files a plate reads: chapter 20's three plates and three 1440 px PNGs for Rule 20.9, and the exports manifest with its PNG and ICO files for the extra | A file the plate never reads would stale it for nothing
+- D4-xxx | A21's caption band widens into one full-bleed Charcoal band: on the vertical frame from under the chart to the safe foot, holding the source line and the captions; on the storyboard from the captions to the frame's foot (DD12b-R1a) | The first exports read 93.0 to 93.7 percent Newsprint, past Rule 05.1's 85, which D3-907 applies to a frame a chart is published in; D4-33 put the social card's source line on such a band; rebuilt, 74.3 and 75.8
+- D4-xxx | The storyboard cells' scale stays stated at a 1440 px window, as chapters 20 and 21 state theirs (CR-22), and the editor's words name that basis | At 390 px the cell draws the frame 292 px wide (15 percent, Engineer W's W12b-2); a cell held at 198 px on a phone would leave the chart frames narrower than the other storyboard boxes in one column
 
 ## Contracts
 
@@ -103,7 +105,7 @@ The editor's in turn 2 (`phase4_ch16_build.py` and `phase4_ch21_build.py`, word 
 
 1. **`R['16.10']['frame_captions']`, new** (A21's storyboard captions, by time): `{'0:30': [line, line]}`, two lines broken at a phrase, about 42 characters each (Rule 16.11). Today the layout breaks the sentence said at 0:30 near its middle: "So the gap between the youngest" / "and the oldest grew from 23 points to 27." Draft at the phrase: "So the gap between the youngest and the oldest" / "grew from 23 points to 27." (46 and 26 characters; the storyboard band holds up to about 64 at 32 px). `'0:08'` is optional: without it the frame shows the WebVTT cue's lines.
 2. **`R['16.11']['frame_alts']` and `R['16.10']['frame_alts']`, new** (by view key: `1080-light`, `1080-light-misheard`; `1920-light-chart`, `1920-light-gap`): each frame's alt, carrying every word the frame shows (D4-211), since it shows reduced. Today the layout composes each from S04's alt, rows, measure line and source line and the caption (`--page-words A21` prints them, 1,303 to 1,312 characters each, with each row's two rates since 00:26 UTC). Engineer W's alt check names any word missing.
-3. **`R['16.10']['frame_scale']`, new**: the scale words in the 0:08 and 0:30 cells' labels, with `{pct}` (filled with 10 today: 198 of 1,920 px at a 1440 px window). Today the label reads "0:08 · at 10 percent" from the layout's default. Draft: `'shown at {pct} percent of 1920 by 1080'`.
+3. **`R['16.10']['frame_scale']`, new**: the scale words in the 0:08 and 0:30 cells' labels, with `{pct}` (filled with 10 today: 198 of 1,920 px at a 1440 px window). Today the label reads "0:08 · at 10 percent" from the layout's default. The figure holds at a 1440 px window (198 of 1,920 px); at 390 px the cell draws the frame 292 px wide, 15 percent (Engineer W's W12b-2), so the words name the basis, as chapters 20 and 21 state theirs. Draft: `'shown at {pct} percent on a wide screen'`.
 4. **`R['16.10']['correct_alt']`**: the 0:08 and 0:30 frames now show chart S04 drawn by the chart kit, its source line under it and the caption band, not boxes with labels.
 5. **`R['16.10']['frames']`**: the labels of the `chart` and `gap` frames ("Chart S04, with its source line", "The gap, 23 points to 27") no longer print; keep them as notes or remove them. The said words still print under each cell.
 6. **`R['16.10']['correct_caption']`** (optional): it can say the two chart frames are the application kit's, at a tenth of 1920 by 1080, and that the exports hold them at true size.
@@ -136,6 +138,9 @@ The editor's in turn 2 (`phase4_ch16_build.py` and `phase4_ch21_build.py`, word 
 - **CR-11 (DD12b-R3):** ruled; atlas view specs 16.2. The measure's join is in `tools/screen_shares.py` (Engineer W's file in chat 12b): Engineer A asked for it (A's Request 1, 00:27 UTC). No pixel moves, so no Newsprint share changes.
 - **Atlas view specs, section 16 (00:16 UTC):** 16.1 `sheettop`, 16.2 the joined cover, 16.3 the opener's load state, 16.4 the chooser crop.
 
+- **CD-S7, placed and measured (00:31 to 00:53 UTC):** after Engineer W's first A21 build (00:31), `phase4_ch16_build.py` under the lock at 00:31:59 UTC wrote; `git diff --stat -- work/build/guide/` moved for chapter 16 only `s-16-10-correct.html`, `s-16-11-correct.html`, `s-16-11-failure.html` and `manifest-photography.json` (`16-photography.json` unchanged; the other files in the stat were Engineer A's and W's runs of chapters 20 and 21). The 28 fragments went from 84,248 to 82,009 bytes (the drawn 9:16 frame's CSS left). In my strict build of 00:51 the four frames as placed weigh 38,562 bytes (vertical 10,163 and 10,179; storyboard 9,106 and 9,114), and the three plates as figures 24,097 (16.10), 13,907 (16.11) and 12,880 (16.11's failure). Rule 05.1 on the exports, the whole frame, with the kit's measure: first build 93.1 (vertical, both), 93.7 (0:08), 93.0 (0:30) percent Newsprint, past 85, so I ruled DD12b-R1a; Engineer W's 00:48 build carries it: vertical 74.3 percent Newsprint, 22.8 dark, 0.02 red (both); storyboard 75.8, 21.2 and 21.1 dark, 0.02 red. Looked at: the four exports reduced, and the three plates in Chromium at 1440 px from my 00:51 build (the storyboard's chart cells at 198 px, 16:9 like their neighbors; 16.11's frames at a quarter with the safe areas shown; the failure's one difference "down 37 points"). "Table A-1" now holds together.
+- **CR-11, landed in the measure:** Engineer W's `join_panels()` in `tools/screen_shares.py` (committed 00:49 UTC). I ran its self-test (00:51 UTC): every case passes, among them "a 1 px seam between them keeps them one", "a 2 px Newsprint gap keeps them two", "cells that touch along part of a side stay two". Read from the plates: A13's first screen at 1440 px light 63.2 percent Newsprint, 1 panel (2 before); A16's 71.6, 1 panel (2 before); A11's 76.4, 1 panel. No share moved.
+
 ## Requests
 
 - **DD12b-Q1, to Engineer W (00:15 UTC): chapter 16's generator now waits for A21.** Since 00:14 UTC `phase4_ch16_build.py` places A21's four views and writes nothing until `work/build/app-kit/plates/a21.json` holds every one (it prints "waiting: the kit has not drawn A21 yet" and exits 1 with "not written: plates wait for the kit (A21)"; `--check` exits 0). So in your run order the first generator run stops there; `--page-words A21` works throughout. After `oa-app.mjs build A21`, the second run writes.
@@ -144,11 +149,44 @@ The editor's in turn 2 (`phase4_ch16_build.py` and `phase4_ch21_build.py`, word 
 
 - **DD12b-Q4, to Engineer W (00:35 UTC): DD12b-R1a.** Your 00:31 exports measure 93.0 to 93.7 percent Newsprint (Rule 05.1's ceiling is 85; D3-907 reads it for a frame a chart is published in). Rulings, DD12b-R1a: the vertical frame's caption band becomes a full-bleed Charcoal band from 16 px under the chart's ink to y 1248 holding the source line and the captions (D4-33's form); the storyboard's becomes a full-bleed band from the captions' top to the frame's foot; the build judges each light frame on Rule 05.1; and "Table A-1" holds together in the frame's source line. The plates need no change from me: a kit rebuild and a run of `phase4_ch16_build.py` place it.
 
+- **DD12b-Q5, to Engineer W (00:54 UTC, low), seen on the 00:48 exports and the 16.11 plates:** (a) on the vertical frames, set the caption lines flush left at x 120, on the source line's edge: centered in the 660 px column they sit 120 px left of the frame's center and read as a near miss, now that the band runs full bleed; the storyboard's stay centered on the frame. (b) With the overlay on, its dashed outline and the button column's hatch vanish over the Charcoal band (dark ink on Charcoal); draw them in an ink that reads on both grounds, as the inset figures do. Neither blocks the rescore.
+
 ## Not fixed
 
 | Code | Source | Where | What is wrong | Suggested fix | Why not made | Status |
 |---|---|---|---|---|---|---|
+| DD12b-Q5a | Design director, on Engineer W's 00:48 exports | A21 `1080-light` and `1080-light-misheard` (`specs/a21-video-s04.json`, `renderers/video-frame.mjs`) | The caption lines sit centered in the 660 px column left of the button column, so 120 px off the frame's center under a full-bleed band | Flush left at x 120, on the source line's edge | Engineer W's files; found at 00:52 UTC, after W's build | Open, low, for Engineer W |
+| DD12b-Q5b | The same | A21's overlay (`lib.mjs` `overlay()`, or the renderer) | With the safe areas shown, the dashed outline and the button column's hatch vanish over the Charcoal band | An ink that reads on Newsprint and on Charcoal | The same | Open, low, for Engineer W |
+
+## Bytes
+
+Each chapter as the strict build weighs it. Before: the main session's page of record, 23:58 UTC (`scratchpad/c12b/main/guide-Build-Report.json`, 14,395,945 bytes). After: my strict build of 00:51 UTC (`scratchpad/c12b/design-director/guide-Build-Report.json`, 14,439,886 bytes, exit 0, 0 warnings, 409 rules, 766 specimens).
+
+| Chapter | Before | After | Change | Mine |
+|---|---|---|---|---|
+| 16 | 221,670 | 276,828 | +55,158 | All of it is CD-S7's placement: the four A21 frames as placed, 38,562; the kit's video-frame style in the head, 1,504 (the build's note); the plates' own fragments −2,239 (84,248 to 82,009); the rest the frames' wrappers and the two 16.11 switches. Engineer W's renderer sets the frames' bytes |
+| 20 | 875,699 | 860,267 | −15,432 | 0: PR-S5 writes only manifest entries (`kit_inputs`), and the 24 fragments stay 62,591 bytes. The drop is not mine and I have not traced it; Engineer W's fix to the weight report's section ends (`rfind`, 00:27 UTC) and W's A04 to A10 rebuild both landed between the two builds |
+| 21 | 1,272,737 | 1,276,951 | +4,214 | 0: my run of `phase4_ch21_build.py` (00:35 UTC) left its 37 outputs byte for byte as Engineer A's run had; the change is Engineer A's (CD-R1 to CD-R4, CD-S6, CE16) |
 
 ## Tested
 
+- `phase4_ch16_build.py --page-words A21` and `--page-words all` (00:11, 00:18, 00:26 UTC): valid JSON, W-C2's keys, `source` equal to `s04.json`'s `source_line`, `check_copy` on every caption line and alt; the composed alts carry each row's two rates (51.4, 47.7; 62.6, 60.2; 71.0, 70.0; 74.5, 74.7), and Engineer W's alt check passed on them from 00:31.
+- `phase4_ch16_build.py --check` before A21 existed (00:14 UTC): three plates "waiting", nothing would be written, exit 0. After A21: the plain run wrote, under the lock (00:31:59 UTC), `git diff --stat` as in Done.
+- `phase4_ch20_build.py --check` and a run under the lock (00:12:37 UTC): only `manifest-web.json` moved; its two entries read back with their `kit_inputs`.
+- `phase4_ch21_build.py` under the lock (00:35:35 UTC): md5 of its 37 outputs before and after, unchanged.
+- Two strict builds under the lock to my scratch: 00:32:16 (14,438,403 bytes) and 00:51:25 UTC (14,439,886 bytes), each exit 0, 0 warnings, 409 rules, 766 specimens, 0 stale plates.
+- `screen_shares.py --self-test` (00:51 UTC), all pass; the first-screen panel counts of A11, A13 and A16 read from their plates.
+- Newsprint, dark and red shares with the kit's own `shares()` on: the four A21 exports (00:33 and 00:51 UTC); the opener's two frames and the chooser crop captured at true size in Chromium from the 23:58 page and my 00:32 page.
+- Chromium, four runs, one browser each, each after its own "OK to open one" (gate read at 00:41:25, 00:42:14 and 00:52:23 UTC, and once more before the run ending 00:53:48): the frame captures above, and `s-16-10-correct`, `s-16-11-correct` and `s-16-11-failure` at 1440 px, looked at. The run ending 00:53:17 timed out on a bad selector and closed its browser.
+- Looked at, reduced: the vertical and 0:30 storyboard exports of 00:31 and 00:48, the 1440 px opener before and after, the chooser crop after.
+
 ## Not tested
+
+- The guide check and its self-test (the main session's), axe, keyboard, screen readers, forced colors, print and 200 percent zoom on chapter 16's plates.
+- Chapter 16's plates at 1024, 390 and 360 px and in the guide's dark theme (Engineer W measured 1440 and 390; I looked at 1440 only).
+- The plain run of `phase4_ch16_build.py` while it waited: I ran only `--check`; the plain run's stop (exit 1, "not written: plates wait for the kit (A21)") is read from the code, not run.
+- A13's and A16's covers in a picture after CR-11's join: the panel count is read from the plates, not seen.
+- The editor's words (Words for 1 to 13): each key's layout path ran only with the key absent. The data lead's sign-off of A21 and the creative director's rescore are theirs.
+- DD12b-Q5's two refinements: asked, not made.
+
+Turn 1 done, 00:55 UTC
