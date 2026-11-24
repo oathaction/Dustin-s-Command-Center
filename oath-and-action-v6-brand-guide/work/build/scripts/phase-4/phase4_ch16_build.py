@@ -752,7 +752,7 @@ R['16.11'] = {
               ('Automatic captions', 'A first draft only'),
               ('Burned-in captions', 'Only where a platform offers neither, inside chapter 23’s caption-safe area, with closed captions off'),
               ('Lines', 'Two at most, broken at a phrase, about 34 characters each in a 1080 by 1920 frame and about 42 in a 1920 by 1080 frame'),
-              ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; 37.5 px on a 43.125 px line in a 1080 by 1920 frame, the type scale’s 20 px phone step and its 1.15 line height drawn 1.875 times, so a 390 px phone plays it at 13.5 px; 32 px on a 44 px line in a 1920 by 1080 frame; chapter 23 sets the size for any other frame', 'oa.color.surface.charcoal'),
+              ('Type', f'Inter 600 in Newsprint on a Charcoal band, {R_NC} to 1; 37.5 px on a 43.125 px line in a 1080 by 1920 frame, the type scale’s 20 px phone step and its 1.15 line height drawn 1.875 times, so a 390 px phone plays it at 13.5 px; 40 px on a 46 px line in a 1920 by 1080 frame, the same step drawn twice; chapter 23 sets the size for any other frame', 'oa.color.surface.charcoal'),
               ('Sounds and speakers', 'Sounds in square brackets when they carry meaning; speakers named when off screen'),
               ('Checked by', 'A person, against the final cut, before posting'),
               ('Live', 'A live stream needs live captions (WCAG 2.2 success criterion 1.2.4); we stream nothing live as of November 2026')],
