@@ -3,7 +3,7 @@
 // (work/handoffs/phase-4/20261121_Web-Page-Specs.md): the identity proofs' link-preview card (s-proofs-social) on Newsprint
 // with a Charcoal foot band, the card's one dark panel. The kicker at the H3 style's 32 px, its lead in the text's ink and its
 // tail in the secondary ink; the headline at the title style's 110 px, line height 0.95, where {B} would set ampersand B as
-// its "and" in the card's one working red; in the band, the wordmark's display master 44 px tall at the left, centered on the
+// its "and" in the card's one working red, with Rule 05.3's keyline inside it on Newsprint (DR-330); in the band, the wordmark's display master 44 px tall at the left, centered on the
 // sign-off, and Rule 08.2's sign-off at the right, the 48 px master drawn at exactly twice its size (96 px), on whole pixels,
 // in the dark card's paints (the links take the nodes' color).
 //
@@ -12,6 +12,7 @@
 // key for this id (DD-3), or from the content file itself.
 import { esc, mark, platform, type_css } from '../lib.mjs';
 import { words } from './web-site.mjs';
+import { keyline } from './hinge-keyline.mjs';
 
 export const type = 'share-image';
 const AMP_DISPLAY = 'work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg';
@@ -31,7 +32,8 @@ export function render(spec) {
   const wm_w = +(398.57 * WM_H / 44).toFixed(2), wm_y = Math.round(sign_y + SIGN / 2 - WM_H / 2);
   const cap = 0.7275 * HL;
   const bw = +(93.29 * cap / 100).toFixed(2), bh = +(102.69 * cap / 100).toFixed(2);
-  const B = mark(AMP_DISPLAY, { cls: 'sh-b', width: bw, height: bh, label: 'and', red: 'working', attrs: `data-red-job="${esc(spec.hinge_job || 'the one point the headline names')}"` });
+  // chat 13b (DR-330): the card is Newsprint, so a hinge headline's B takes Rule 05.3's keyline
+  const B = keyline(mark(AMP_DISPLAY, { cls: 'sh-b', width: bw, height: bh, label: 'and', red: 'working', attrs: `data-red-job="${esc(spec.hinge_job || 'the one point the headline names')}"` }), 'sh-b-keyline');
   const wm = mark(WORDMARK, { cls: 'sh-wm', width: wm_w, height: WM_H, label: 'Oath & Action', red: 'signature' });
   const sign = mark(LOCK48, { cls: 'sh-sign', width: SIGN, height: SIGN, red: 'signature', attrs: 'data-oa-sign-off="lockmark-48-at-96" shape-rendering="crispEdges"' });
   const line = (s) => `<span class="ln">${s.split('{B}').map((x) => esc(x).replace(/ /g, '&nbsp;')).join(B)}</span>`;

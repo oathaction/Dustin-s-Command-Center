@@ -587,7 +587,10 @@ SPECS01 = {
               {"label": "Leave out", "value": "Fight, battle, front, war and game plan"},
               {"label": "Series names", "value": "As Rule 02.26 spells them, such as Dispatch"}],
     "01.16": [{"label": "When", "value": "Only for a claim graded contested"},
-              {"label": "Length", "value": "The same number of words in each reading"},
+              # DR-336 (board 1, item 8): the Length row gains Dustin's sentence. Its decision codes (DR-37, DR-93) stay
+              # out, since no row of the guide prints a decision code and H11's check refuses one in reader text.
+              {"label": "Length", "value": "The same number of words in each reading. Readings quoted from a record print "
+                                           "at the length the record holds; readings we write run the same length"},
               {"label": "Form", "value": "The same verbs, type and labels, and each holder named by role and affiliation"},
               {"label": "Layout", "value": "Two columns side by side, stacking on a phone"}],
     "01.17": [{"label": "Test", "value": "A supporter of the rule would accept every word of the description"},

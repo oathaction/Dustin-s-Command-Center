@@ -14,7 +14,14 @@ as wide as the text it divides (DR-96, C-M2); "reports the bill out" is glossed 
 
 Promotion, November 10, 2026 (DR-180): the end mark draws B's pixel master, fit B, on a 1x screen in 17 and 15 px text,
 and the 16 px master at the cap height on every other screen, switched by screen resolution (end_mark, END_CSS); Rule
-04.6's plate adds a line of 15 px text."""
+04.6's plate adds a line of 15 px text.
+
+Chat 13b, November 25, 2026 (DR-330, board 1's item 2, locked identity approved by name): on Newsprint, ampersand B in a
+hinge headline takes Rule 05.3's keyline, a 1 px Charcoal edge drawn inside the mark (keyline_b). B keeps its Pillar Red,
+its shape and its size; on White and Charcoal it takes none. Rule 04.3's correct plate and the identity proofs' link
+card ask for it (keyline=True); every other plate draws as before."""
+import re
+
 from stage_a_identity_lib import (E, ID_DIR, AMP, AMP_END, BADGE, HINGE, LORA, WM, fragment, mark, wordmark, amp, illus, head_label,
                                   tag, svg_file, ink, ink2, hair, pal, tv, sig, strong, ground, ty, raster_png, inline_master, dnp,
                                   figures)
@@ -37,10 +44,35 @@ CAP = 0.7275   # Inter Tight cap height, in em
 PHONE = 358    # a 390 px phone's column after 16 px margins: the width a phone shows a card or a feed preview
 
 
-def hinge_amp(font_px, surface="newsprint", red=True, job="the one point the headline names"):
+KEYLINE = "var(--oa-color-border-strong-on-newsprint)"   # Rule 05.3: Charcoal, the control edge that keylines red
+_KL = [0]
+
+
+def keyline_b(path, h, style):
+    """DR-330: ampersand B with Rule 05.3's keyline, a 1 px Charcoal edge drawn inside the mark. The master's own outline
+    is stroked 2 px wide at any scale and clipped to the mark, so its inner pixel shows and B keeps its Pillar Red, its
+    shape and its size: the method of board 1's pictures (DD10-NF1). The SVG is the one the guide build makes of a master
+    placed by reference (guide_build.svg_inline: the same attributes, size and style), with the outline placed once and
+    drawn by <use> for the fill, the clip and the edge; its ids are local, and the build prefixes them per plate."""
+    s = path.read_text()
+    vb = re.search(r'viewBox="([^"]+)"', s).group(1)
+    d = re.findall(r'<path\b[^>]*\sd="([^"]+)"', s)
+    assert len(d) == 1, f"{path.name}: one outline expected"
+    vbw, vbh = (float(x) for x in vb.replace(",", " ").split()[2:4])
+    w, h = float(f"{h * vbw / vbh:.2f}"), float(f"{h:.2f}")      # as svg_file writes them and svg_inline reads them
+    _KL[0] += 1
+    k = f"oai-kl{_KL[0]}"
+    return (f'<svg aria-hidden="true" focusable="false" class="oai-svg " width="{w:g}" height="{h:g}" style="{style}" '
+            f'xmlns="http://www.w3.org/2000/svg" viewBox="{vb}"><defs><path id="{k}" d="{d[0]}" vector-effect="non-scaling-stroke"/>'
+            f'<clipPath id="{k}c"><use href="#{k}"/></clipPath></defs><use href="#{k}" fill="currentColor"/>'
+            f'<use href="#{k}" fill="none" clip-path="url(#{k}c)" stroke-width="2" style="stroke:{KEYLINE}"/></svg>')
+
+
+def hinge_amp(font_px, surface="newsprint", red=True, job="the one point the headline names", keyline=False):
     """B set inside a line of Inter Tight 800 at a font size: its cap band on the text's cap band, its baseline on the
     baseline. The 16 and 24 px masters fill their box with 1 px of overshoot top and bottom (14 and 22 px capitals);
-    the display master's box runs 1.34 units above the cap line and 1.35 below the baseline (cap height 100)."""
+    the display master's box runs 1.34 units above the cap line and 1.35 below the baseline (cap height 100). With
+    keyline, a red B on Newsprint takes Rule 05.3's keyline (DR-330)."""
     cap = font_px * CAP
     if cap < 24:                 # Rule 04.1's ranges: 16 px master to 23 px, 24 px master to 47 px, display from 48 px
         f, h, below = AMP[16], cap * 16 / 14, cap / 14
@@ -49,18 +81,22 @@ def hinge_amp(font_px, surface="newsprint", red=True, job="the one point the hea
     else:
         f, h, below = AMP["display"], cap * 1.0269, cap * 0.0135
     color = (tv("color-palette-pillar-red") if red else ink(surface))
-    svg = svg_file(ID_DIR / f, h=h, decorative=True, style=f"color:{color};display:inline-block;vertical-align:{-below:.2f}px")
+    style = f"color:{color};display:inline-block;vertical-align:{-below:.2f}px"
+    if keyline and red and surface == "newsprint":
+        svg = keyline_b(ID_DIR / f, h, style)
+    else:
+        svg = svg_file(ID_DIR / f, h=h, decorative=True, style=style)
     if red:
         return f'<span class="oai-red" data-red="working" data-red-job="{E(job)}" style="line-height:0">{svg}</span>'
     return svg
 
 
-def headline(text_a, text_b, style="h3", board=600, surface="newsprint", red=True, extra_style="", br=True):
+def headline(text_a, text_b, style="h3", board=600, surface="newsprint", red=True, extra_style="", br=True, keyline=False):
     """A hinge headline in a style of the type scale at its fixed size on a board of a given width (D2-254). It breaks
-    at the hinge, so B leads the second line and a line break never splits a noun phrase (C-S14)."""
+    at the hinge, so B leads the second line and a line break never splits a noun phrase (C-S14). keyline: DR-330."""
     from stage_a_identity_lib import FLOOR, CEIL
     px = (CEIL if board >= 1200 else FLOOR)[style]
-    a = hinge_amp(px, surface, red)
+    a = hinge_amp(px, surface, red, keyline=keyline)
     first = E(text_a).replace(" ", "&nbsp;") if br else E(text_a)
     b = E(text_b).replace(" ", "&nbsp;")
     return (f'<p style="{ty(style, board)};{extra_style}">'
@@ -221,9 +257,9 @@ def s_04_3_correct():
     def lab(t):
         return f'<p class="oai-tag" style="margin-top:6px">{E(t)}</p>'
     body = ('<div class="oai-panel oai-s-newsprint"><div class="oai-stack" style="gap:28px">'
-            f'<div>{headline("The zoning code", "the rent.", "title")}{lab("Title style, 56 px")}</div>'
-            f'<div>{headline("The filing deadline", "the ballot.", "section")}{lab("Section style, 44 px")}</div>'
-            f'<div>{headline("The records law", "the answer.", "h3")}{lab("H3 style, 26 px")}</div>'
+            f'<div>{headline("The zoning code", "the rent.", "title", keyline=True)}{lab("Title style, 56 px")}</div>'
+            f'<div>{headline("The filing deadline", "the ballot.", "section", keyline=True)}{lab("Section style, 44 px")}</div>'
+            f'<div>{headline("The records law", "the answer.", "h3", keyline=True)}{lab("H3 style, 26 px")}</div>'
             '</div></div>')
     alt = ("Three hinge headlines at true size in heavy type, each naming a rule and then what it produces, joined by a red "
            "ampersand B that leads the second line: The zoning code & the rent. at 56 pixels, The filing deadline & the "

@@ -155,16 +155,17 @@ SOCIAL_SPECS = [
 ]
 
 
-def _social(surface="newsprint", sign=SIGN_OFF["social"]):
+def _social(surface="newsprint", sign=SIGN_OFF["social"], keyline=False):
     """The link-preview card. surface draws the same card on another approved ground for the feed test on dark cards
     (stage C, CD-N12); the guide's proof draws it on Newsprint. On Prussian, B in the headline goes White (Rule 05.3).
     sign: the sign-off's size, 96 px since promotion C (DR-211), the 48 px master at exactly twice its size. The scripts
-    that measured the card before ask for 48, so a rerun keeps their records."""
+    that measured the card before ask for 48, so a rerun keeps their records. keyline: on Newsprint, B takes Rule 05.3's
+    keyline (DR-330, chat 13b); the guide's proof asks for it, and the scripts that measured the card before do not."""
     s = surface
     lk = sign_off("social", surface=s, label="Lockmark") if sign == SIGN_OFF["social"] else lockmark(sign, surface=s, label="Lockmark")
     return (f'<div class="oai-s-{s}" style="position:relative;width:1200px;height:630px;padding:72px;border:1px solid {hair(s)}">'
             f'<p style="{ty("h3", 1200)};color:{ink(s)}">Explainer<span style="color:{ink2(s)}"> · Zoning</span></p>'
-            f'{headline("The zoning code", "the rent.", "title", board=1200, surface=s, red=s != "prussian", extra_style="margin-top:24px")}'
+            f'{headline("The zoning code", "the rent.", "title", board=1200, surface=s, red=s != "prussian", extra_style="margin-top:24px", keyline=keyline)}'
             f'<div style="position:absolute;left:72px;bottom:72px">{mark(WM["display"], h=44, surface=s, label="Oath & Action")}</div>'
             f'<div style="position:absolute;right:72px;bottom:72px;line-height:0">{lk}</div></div>')
 
@@ -187,7 +188,7 @@ def s_proofs_social():
                        ".oai-sp{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:8px 0;border-top:1px solid var(--oa-color-border-hairline-on-newsprint);font-size:14px;line-height:1.5}"
                        ".oai-sp dt{font-weight:700}.oai-sp dd{margin:0}")
     body = ('<div class="oai-pad"><div class="oai-stackpair">'
-            f'<div>{plabel("Link-preview card", "1200 by 630 px")}{_social()}</div>'
+            f'<div>{plabel("Link-preview card", "1200 by 630 px")}{_social(keyline=True)}</div>'
             f'<div style="width:1200px"><p class="oai-pl">Specifications</p><dl class="oai-spl">{specs}</dl></div>'
             '</div></div>')
     alt = ("A social card at actual size, 1200 by 630 pixels, on Newsprint: the kicker Explainer · Zoning, its label in "

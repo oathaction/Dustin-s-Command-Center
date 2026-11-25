@@ -710,7 +710,7 @@
     },
     {
      "label": "Length",
-     "value": "The same number of words in each reading"
+     "value": "The same number of words in each reading. Readings quoted from a record print at the length the record holds; readings we write run the same length"
     },
     {
      "label": "Form",

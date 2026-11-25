@@ -142,7 +142,7 @@
     },
     {
      "label": "Contested",
-     "value": "Both readings at the same length (Rule 01.16)"
+     "value": "Both readings at the same length, except a reading quoted from a record, which prints at the length the record holds (Rule 01.16)"
     },
     {
      "label": "Hypothesis",

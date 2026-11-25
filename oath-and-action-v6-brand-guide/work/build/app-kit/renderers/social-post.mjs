@@ -3,6 +3,7 @@
 // sizes from the platform row the content file names (instagram.portrait for the studio sample: 1080 by 1350 px).
 // render(spec) returns the application at true size as static markup with its CSS, its overlay layers and its exports.
 import { esc, mark, platform, safe_boxes, type_css } from '../lib.mjs';
+import { keyline } from './hinge-keyline.mjs';
 
 export const type = 'social-post';
 const AMP_DISPLAY = 'work/build/assets/identity/ampersand/20261028_Amp-B-Display-Master.svg';
@@ -17,8 +18,9 @@ export function render(spec) {
   const W = row.width, H = row.height;
   const cap = 0.7275 * 110;                         // ampersand B's cap height at the headline's 110 px
   const bw = +(93.29 * cap / 100).toFixed(2), bh = +(102.69 * cap / 100).toFixed(2);
-  const B = mark(AMP_DISPLAY, { cls: 'sp-b', width: bw, height: bh, label: 'and', red: 'working',
-    attrs: `data-red-job="${esc(spec.hinge_job)}"` });
+  // chat 13b (DR-330): the card is Newsprint, so its hinge headline's B takes Rule 05.3's keyline
+  const B = keyline(mark(AMP_DISPLAY, { cls: 'sp-b', width: bw, height: bh, label: 'and', red: 'working',
+    attrs: `data-red-job="${esc(spec.hinge_job)}"` }), 'sp-b-keyline');
   // the sign-off: the 48 px master's own paints set to tokens for a dark ground (Rule 08.2's dark card: the links take the
   // nodes' color), as the chart kit's social card paints it, on whole pixels
   const sign = mark(LOCK48, { cls: 'sp-sign', width: SIGN, height: SIGN, red: 'signature',

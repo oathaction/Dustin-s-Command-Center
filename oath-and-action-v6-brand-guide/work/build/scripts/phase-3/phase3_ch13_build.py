@@ -735,7 +735,9 @@ def rule_13_2(book):
             {"label": "Documented", "value": "Record words: passed, ruled, set, stood at, reported"},
             {"label": "Well supported", "value": "A direct verb: raises, lowers"},
             {"label": "Plausible", "value": "“Can” or “may”, once, with no other softener"},
-            {"label": "Contested", "value": "Both readings at the same length (Rule 01.16)"},
+            # DR-336 (board 1, item 8): the row cites Rule 01.16's Length row, in the editor's final words (chat 13b).
+            {"label": "Contested", "value": "Both readings at the same length, except a reading quoted from a record, which "
+                                            "prints at the length the record holds (Rule 01.16)"},
             {"label": "Hypothesis", "value": "“Untested” in the title’s first words"},
             {"label": "An atlas name", "value": "In quotation marks after its chip, as the atlas writes it"},
             {"label": "Where the grade comes from", "value": "The atlas record the title states, read by script, or Rule 13.1 for an outside figure"},
