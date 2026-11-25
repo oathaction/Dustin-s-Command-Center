@@ -119,7 +119,7 @@
    },
    "correct": {
     "specimen": "s-04-3-correct",
-    "caption": "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height."
+    "caption": "Three hinge headlines from Rule 02.27 at three sizes of the type scale, at true size: the title style at 56 px, the section style at 44 and H3 at 26. Each B comes from the master whose range holds that cap height, with a 1 px Charcoal keyline drawn inside it on Newsprint."
    },
    "failure": {
     "specimen": "s-04-3-failure",
@@ -145,6 +145,11 @@
     {
      "label": "Master",
      "value": "16 px master for capitals 16 to 23 px tall, 24 px master from 24 to 47 px, display master from 48 px"
+    },
+    {
+     "label": "B’s keyline",
+     "value": "On Newsprint, a 1 px Charcoal edge drawn inside the mark, 13.29 to 1, as Rule 05.3 sets; none on White or Charcoal",
+     "token": "oa.color.border.strong.onNewsprint"
     }
    ],
    "files": [],

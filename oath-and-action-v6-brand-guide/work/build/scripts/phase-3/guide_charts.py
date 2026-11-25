@@ -67,7 +67,12 @@ PHASE_4_GATE_3 = {"16": 300_000, "20": 500_000, "21": 460_000, "22": 300_000, "2
 # page at four widths and two themes 187,145, a report page 11,355, a rule's words and frames 6,726 at today's median),
 # counting what each chapter draws from the Gate 3 report's section 9 tables: 3,284,000 bytes in all, 274,000 more than
 # Gate 3's. The counts and the arithmetic are in work/handoffs/phase-4/20261121_Phase-4-Allocations.md.
-PHASE_4_ALLOCATION = {"16": 300_000, "20": 757_000, "21": 655_000, "22": 277_000, "23": 743_000, "24": 338_000, "25": 214_000}
+PHASE_4_CHAT_10 = {"16": 300_000, "20": 757_000, "21": 655_000, "22": 277_000, "23": 743_000, "24": 338_000, "25": 214_000}
+# Chat 13b (DR-331, Phase 4 board 1 item 3, Engineer M's call): chapters 22 and 23 take 1b's mid figures, estimated from units
+# measured on the page with C1 in place (work/build/scripts/phase-4/weight/forecast.py), rounded to the thousand, in place of chat
+# 10's 277,000 and 743,000. The build prints the whole forecast (low, mid and high for chapters 22 to 25, 27 and 28) beside the
+# projection. Chapters 24 and 25 keep chat 10's figures until their own chats measure them.
+PHASE_4_ALLOCATION = {**PHASE_4_CHAT_10, "22": 386_000, "23": 875_000}
 # Chat 11c (November 23, 2026): chapter 21 is placed, so the projection counts it at its built bytes (IN_PROGRESS holds a
 # chapter at no less than its allocation): 1,096,989 bytes after round 2's weight steps (crops drawn from their part alone,
 # the atlas style pruned to the rules its frames use, repeated drawings by <use> in a sprite of their own charged to
@@ -169,7 +174,12 @@ def element_at(text, start, tag):
 # Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends.
 # Chat 10: Phase 4's seven join them, since each is built across chats and reviewed at a board; a chapter in place counts
 # at its bytes or its allocation, whichever is more, until Gate 4
-IN_PROGRESS = ("14", "15") + PHASE_4
+# Chat 13b (DR-329, board 1 item 1, option 1a): a chapter Dustin has approved leaves the list and counts at its bytes. Chapters
+# 16, 20 and 21 were approved as built on Phase 4 board 1 (DR-329); chapters 14 and 15 at Gate 3, so chapter 15's hold goes, and
+# chapter 14 leaves with it (it weighs more than its allocation with the chart kit, so it held nothing; its stop is still reported
+# against 2,803,941 bytes above). Chapters 22 to 25 stay until their boards.
+APPROVED = ("14", "15", "16", "20", "21")
+IN_PROGRESS = tuple(n for n in ("14", "15") + PHASE_4 if n not in APPROVED)
 ENTRY_PLATE = re.compile(r"^s-14-s\d+$")   # an entry's specimen (R1-C3); a chapter-wide rule's plates (s-14-1-line) count under NOT_PLATES
 KIT_SIZES = {}                   # set by expand(): the kit's parts as the page carries them, from oa-chart.mjs fragments
 METHODS = ("lean", "load", "load-trim", "load-table")
@@ -514,36 +524,36 @@ def self_test():
     _, rec, _ = run(w, {}, 300_000, {"01", "02", "03"})
     p4 = rec.get("phase_4") or {}
     rest = rec["projected_bytes"] - sum(PHASE_4_ALLOCATION.values())
-    ok = (p4.get("chapters") == sorted(PHASE_4) and p4.get("allocations") == PHASE_4_ALLOCATION and p4.get("allocated") == sum(PHASE_4_ALLOCATION.values()) == 3_284_000
+    ok = (p4.get("chapters") == sorted(PHASE_4) and p4.get("allocations") == PHASE_4_ALLOCATION and p4.get("allocated") == sum(PHASE_4_ALLOCATION.values()) == 3_525_000
           and abs(p4["break_even_each_16mb"] - (PAGE_LIMIT - rest) / 7) <= 1
           and abs(p4["break_even_each_15_5mb"] - (PAGE_BUDGET - rest) / 7) <= 1 and p4["built_chapters_median"] == 400_000 and p4["built_chapters_mean"] == 400_000
-          and any("Phase 4's 7 chapters" in n and "(ST-S10)" in n and "23: 743,000" in n and "3,284,000 bytes in all" in n for n in run.noted))
+          and any("Phase 4's 7 chapters" in n and "(ST-S10)" in n and "23: 875,000" in n and "3,525,000 bytes in all" in n for n in run.noted))
     print(f"{'pass' if ok else 'FAIL'} ST-S10: Phase 4's seven allocations, their sum, the break-even under 16 MB and 15.5 MB, and the built chapters' median and mean, reported")
     bad += not ok
     # chat 10 (G3-07): the seven figures the Gate 3 report approved, and each built Phase 4 chapter reported against its own
-    ok = (sum(PHASE_4_GATE_3.values()) == 3_010_000 and PHASE_4_ALLOCATION == {"16": 300_000, "20": 757_000, "21": 655_000, "22": 277_000, "23": 743_000, "24": 338_000, "25": 214_000}
-          and all(ALLOCATION[n] == PHASE_4_ALLOCATION[n] for n in PHASE_4) and set(PHASE_4) <= set(IN_PROGRESS))
-    print(f"{'pass' if ok else 'FAIL'} G3-07: Phase 4's seven chapters at their re-sized allocations, 3,284,000 bytes in all (Gate 3's 3,010,000 kept as the record), each held to it while built")
+    ok = (sum(PHASE_4_GATE_3.values()) == 3_010_000 and sum(PHASE_4_CHAT_10.values()) == 3_284_000
+          and PHASE_4_ALLOCATION == {"16": 300_000, "20": 757_000, "21": 655_000, "22": 386_000, "23": 875_000, "24": 338_000, "25": 214_000}
+          and all(ALLOCATION[n] == PHASE_4_ALLOCATION[n] for n in PHASE_4) and IN_PROGRESS == ("22", "23", "24", "25"))
+    print(f"{'pass' if ok else 'FAIL'} G3-07 and chat 13b: Phase 4's seven allocations, 3,525,000 bytes in all, chapters 22 and 23 at 1b's mid "
+          "(chat 10's 3,284,000 and Gate 3's 3,010,000 kept as the record); chapters 22 to 25 held while built (DR-329)")
     bad += not ok
-    w = json.loads(json.dumps(base)); w["chapters"]["16"] = {"bytes": 250_000}; w["chapters"]["23"] = {"bytes": 743_001}
-    _, rec, got = run(w, {}, 300_000, {"16", "23"})
-    ok = (rec["phase_4_built"] == {"16": {"bytes": 250_000, "allocation": 300_000, "room": 50_000}, "23": {"bytes": 743_001, "allocation": 743_000, "room": -1}}
-          and any(n.startswith("chapter 16: weighs 250,000 bytes against its allocation of 300,000 (83 percent), 50,000 bytes to spare") for n in run.noted)
-          and any(n.startswith("chapter 23: weighs 743,001 bytes against its allocation of 743,000") and "over it, reported (DR-271)" in n for n in run.noted)
-          and not any("chapter 23" in g for g in got) and rec["held_to_allocation"].get("16") == 50_000 and "23" not in rec["held_to_allocation"]
-          and rec["phase_4"]["chapters"] == ["20", "21", "22", "24", "25"])
-    print(f"{'pass' if ok else 'FAIL'} G3-07: a built Phase 4 chapter is reported against its own allocation (under it, and one byte over), and held to it in the projection")
+    w = json.loads(json.dumps(base)); w["chapters"]["22"] = {"bytes": 336_000}; w["chapters"]["23"] = {"bytes": 875_001}
+    _, rec, got = run(w, {}, 300_000, {"22", "23"})
+    ok = (rec["phase_4_built"] == {"22": {"bytes": 336_000, "allocation": 386_000, "room": 50_000}, "23": {"bytes": 875_001, "allocation": 875_000, "room": -1}}
+          and any(n.startswith("chapter 22: weighs 336,000 bytes against its allocation of 386,000 (87 percent), 50,000 bytes to spare") for n in run.noted)
+          and any(n.startswith("chapter 23: weighs 875,001 bytes against its allocation of 875,000") and "over it, reported (DR-271)" in n for n in run.noted)
+          and not any("chapter 23" in g for g in got) and rec["held_to_allocation"].get("22") == 50_000 and "23" not in rec["held_to_allocation"]
+          and rec["phase_4"]["chapters"] == ["16", "20", "21", "24", "25"])
+    print(f"{'pass' if ok else 'FAIL'} G3-07: a Phase 4 chapter being built is reported against its own allocation (under it, and one byte over), and held to it in the projection")
     bad += not ok
-    # a chapter still being built counts at its allocation in the projection, and at its bytes once past it
-    w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 200_000}
-    _, rec, _ = run(w, {}, 300_000, {"15"})
-    ok = rec["held_to_allocation"].get("15") == 400_000 and rec["projected_bytes"] == round(w["bytes"] + sum(a for n, a in ALLOCATION.items() if n != "15") - 100_000 + 400_000)
-    print(f"{'pass' if ok else 'FAIL'} chapter 15 built in part (0.20 MB) still projects at its 0.60 MB allocation")
-    bad += not ok
-    w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 590_000}; w["chapters"]["14"] = {"bytes": 1_000_000}
-    _, rec, _ = run(w, {}, 300_000, {"14", "15"})
-    ok = rec["held_to_allocation"] == {"14": round(CHAPTER_14_STOP - 1_100_000), "15": 10_000}
-    print(f"{'pass' if ok else 'FAIL'} chapter 14 in part counts with its kit against its allocation")
+    # DR-329 (chat 13b): an approved chapter counts at its bytes, under its allocation or not; one still being built at no less
+    w = json.loads(json.dumps(base))
+    for n, b in (("14", 1_000_000), ("15", 200_000), ("16", 250_000), ("20", 700_000), ("21", 600_000), ("24", 100_000)):
+        w["chapters"][n] = {"bytes": b}
+    _, rec, _ = run(w, {}, 300_000, {"14", "15", "16", "20", "21", "24"})
+    ok = (rec["held_to_allocation"] == {"24": 238_000}
+          and rec["projected_bytes"] == round(w["bytes"] + sum(a for n, a in ALLOCATION.items() if n not in ("14", "15", "16", "20", "21", "24")) - 0 + 238_000))
+    print(f"{'pass' if ok else 'FAIL'} DR-329: chapters 14, 15, 16, 20 and 21, approved, count at their bytes under their allocations; chapter 24, being built, is held to its own")
     bad += not ok
     # the stop's figure, its allocation in the projection, and the per-plate share's arithmetic
     ok = CEILING[HARD_STOP] == 2_803_941 and ALLOCATION["14"] == 2_803_941 and HARD_STOP == "14"

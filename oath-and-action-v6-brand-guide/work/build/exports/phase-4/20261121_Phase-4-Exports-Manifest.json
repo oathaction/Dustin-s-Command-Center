@@ -1,5 +1,5 @@
 {
- "written": "2026-11-24T01:24:19.300Z",
+ "written": "2026-11-25T00:35:38.151Z",
  "by": "work/build/app-kit/oa-app.mjs",
  "specs": "work/research/20261121_Platform-Specifications.json",
  "files": [
@@ -8,7 +8,8 @@
    "spec": "A01",
    "platform": "instagram.portrait",
    "format": "png",
-   "theme": "light"
+   "theme": "light",
+   "size": "1,080 by 1,350 px"
   },
   {
    "file": "20261121_Studio-Sample-Article-1440-Light.png",

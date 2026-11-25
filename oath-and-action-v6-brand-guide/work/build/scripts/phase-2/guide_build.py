@@ -61,6 +61,11 @@ import weight_pass  # noqa: E402   Phase 3 weight pass: CSS white space and PNG 
 # Chat 10 (P4-5): the photographs the page carries once, which any plate shows by name (contract C1, engineer notes)
 sys.path.insert(0, str(ROOT / "work/build/scripts/phase-4"))
 import guide_photos  # noqa: E402
+# Chat 13b (DR-331, Phase 4 board 1 item 3): C1's four build steps (3a plate styles once, 3b PNGs from the lossless cache,
+# 3c chapter 20's repeated drawings by <use>, 3d three characters as themselves); --no-c1 builds the same tree without them
+sys.path.insert(0, str(ROOT / "work/build/scripts/phase-4/weight"))
+import c1 as c1_steps  # noqa: E402
+import forecast as weight_forecast  # noqa: E402   1b: chapters 22 to 25, 27 and 28 from units measured on the page
 # Chat 11 (contract C4): the application kit's plates, placed by the hook in the kit's own folder
 sys.path.insert(0, str(ROOT / "work/build/app-kit/tools"))
 import app_plates  # noqa: E402
@@ -3822,13 +3827,40 @@ def build(args):
     pass_record = None
     if not getattr(args, "no_weight_pass", False):
         page, pass_record = weight_pass.run(page)
+    # Chat 13b (DR-331, Phase 4 board 1 item 3): combination C1, four steps that take bytes off the page and change no pixel,
+    # proved by work/build/scripts/phase-4/weight/run.sh --proof (C1 off and on from one tree). --no-c1 skips them.
+    c1_record = None
+    if not getattr(args, "no_c1", False) and (not C1_ASKED_ONLY or getattr(args, "c1", False)):
+        page, c1_record = c1_steps.run(page, anchor=CHAPTER["20"][1])
+        b = c1_record["3b"]
+        if b["refused"]:
+            R.warn("page weight", f"C1 3b: {len(b['refused'])} file(s) in work/build/cache/png/ decode to other pixels than the PNG they are "
+                                  f"named for (first {b['refused'][0][:16]}...); the page keeps the PNG as it was. Fill the cache again "
+                                  "(c1.py --fill-cache)")
+        if b["not_in_cache"]:
+            R.note(f"page weight: C1 3b: {len(b['not_in_cache'])} PNG(s) the page shows have no entry in work/build/cache/png/ and stay as the "
+                   "weight pass left them; work/build/scripts/phase-4/weight/c1.py --fill-cache adds them")
+        a = c1_record["3a"]
+        R.note(f"page weight: C1 (DR-331) took {c1_record['bytes_saved']:,} bytes off the page: 3a plate styles drawn once "
+               f"{a['bytes_saved']:,} ({a['blocks_dropped']} of {a['blocks']} blocks; {len(a['specimens_kept_whole_by_the_cascade_check'])} "
+               f"specimen(s) keep their own, where moving a block would change the order of their scoped rules), 3b PNGs from the lossless "
+               f"cache {b['bytes_saved']:,} ({b['images_replaced']} images), 3c chapter 20's repeated drawings by <use> "
+               f"{c1_record['3c']['bytes_saved']:,} ({c1_record['3c']['groups']} drawings, {c1_record['3c']['copies_by_use']} copies), "
+               f"3d three characters as themselves {c1_record['3d']['bytes_saved']:,}; --no-c1 builds without them")
     weights = weigh(page, sprite_bytes)
     weights["pass"] = pass_record
+    weights["c1"] = c1_record
     weights["sprites"] = sprite_counts
     weights["fonts_files"] = fonts.bytes
     # DR-271: allocations come back as notes; the page's 16 MB limit stops the build, and the projection still warns
     stop, projection = guide_charts.gates(weights, charts, fonts.bytes if fonts.ok else 0, present, R.warn, lambda w, m: R.note(f"{w}: {m}"))
     weights["projection"] = projection
+    # Chat 13b (DR-331, option 1b): chapters 22 to 25, 27 and 28 estimated from units measured on this page, low, mid and high,
+    # with the projection each gives, printed beside the build's projection (work/build/scripts/phase-4/weight/forecast.py)
+    fc = weight_forecast.beside(page, weights, projection, guide_charts.ALLOCATION, guide_charts.IN_PROGRESS) if not stop else None
+    if fc:
+        R.note(weight_forecast.line(fc))
+    weights["forecast"] = fc
     # board 1 apply (item 3): chapter 14's share per plate, printed with every build that carries the chart kit
     if projection.get("chapter_14_per_plate"):
         R.note(projection["chapter_14_per_plate"]["line"])
@@ -3885,6 +3917,11 @@ def build(args):
 # Self-test (apply pass, November 7, 2026): fixture chapters in a temporary folder, one scenario per check, each with
 # the warnings it must raise and the ones it must not. The fixtures are throwaway; nothing in the repository changes.
 # ---------------------------------------------------------------------------------------------------------------
+# Chat 13b: the self-test's fixtures build without C1 unless a scenario asks for it ("c1": True), since their expectations
+# read the page's markup as the build assembles it; C1 has its own self-test (c1.py --self-test) and its pixel proof
+C1_ASKED_ONLY = False
+
+
 def css_written(frag):
     """A fragment of CSS as the weight pass leaves it on the page; text that is no CSS comes back as it was."""
     try:
@@ -3894,6 +3931,16 @@ def css_written(frag):
 
 
 def self_test():
+    """The fixtures build without C1 unless a scenario asks for it (C1_ASKED_ONLY, above)."""
+    global C1_ASKED_ONLY
+    C1_ASKED_ONLY = True
+    try:
+        return _self_test()
+    finally:
+        C1_ASKED_ONLY = False
+
+
+def _self_test():
     import shutil
     import tempfile
     global R, LEGACY_FILE, SPRITE_ROOT, CONSTRUCTION
@@ -4708,6 +4755,27 @@ def self_test():
                     ("the identity masters the frames draw sit once in the page, hidden, at the top of the body", lambda pg:
                         pg.count('<symbol id="oa-app-id-fixture-mark"') == 1 and re.search(r'<body[^>]*><svg data-oa-app-kit="identity" aria-hidden="true"', pg) is not None)]}),
     ]
+    # chat 13b (DR-331): C1 on a fixture page: two plates with the same style draw it once from a scope list, a text's quotation
+    # marks are written as themselves, and the build notes the bytes; the same fixture without "c1" keeps both blocks
+    c1_specs = {"s-c1-a.html": '<style>.k { color: var(--oa-color-text-primary) }</style><p class="k">One &quot;quoted&quot; line.</p>',
+                "s-c1-b.html": '<style>.k { color: var(--oa-color-text-primary) }</style><p class="k">Another line.</p>'}
+    c1_man = {"s-c1-a": {"chapter": "08", "rule": "08.1", "alt": "A fixture line in quotation marks.", "notes": "fixture"},
+              "s-c1-b": {"chapter": "08", "rule": "08.1", "alt": "Another fixture line.", "notes": "fixture"}}
+    c1_08 = chapter("08", "lockmark", "The lockmark", [rule("08.1", {"correct": {"specimen": "s-c1-a", "caption": "A fixture."},
+                                                                       "failure": {"specimen": "s-c1-b", "caption": "A fixture."}})])
+    scenarios += [
+        ("chat 13b: C1 draws a repeated plate style once from a scope list and writes a text's quotation marks as themselves (DR-331)",
+         {"08-lockmark.json": c1_08}, {"specimens": c1_specs, "manifest": c1_man, "c1": True},
+         {"note": ["C1 (DR-331) took", "3a plate styles drawn once"],
+          "tests": [("one block carries both plates' scope", lambda pg: pg.count('@scope ([data-specimen="s-c1-a"],[data-specimen="s-c1-b"])') == 1
+                     and '@scope ([data-specimen="s-c1-b"])' not in pg),
+                    ("the text's quotation marks are written as themselves", lambda pg: 'One "quoted" line.' in pg and "&quot;quoted" not in pg)]}),
+        ("chat 13b: the same fixture without C1 keeps each plate's own style block",
+         {"08-lockmark.json": c1_08}, {"specimens": c1_specs, "manifest": c1_man},
+         {"absent": ["C1 (DR-331) took"],
+          "tests": [("each plate keeps its own block", lambda pg: '@scope ([data-specimen="s-c1-a"])' in pg and '@scope ([data-specimen="s-c1-b"])' in pg),
+                    ("the reference stays", lambda pg: "&quot;quoted&quot;" in pg)]}),
+    ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
         roots = {k: Path(tmp) / f"families-{k}" for k in ("full", "faulty", "fits")}
@@ -4739,7 +4807,8 @@ def self_test():
             out = base / "page.html"
             try:
                 build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
-                                         code=str(base / "code"), demo=False, strict=False, quiet=True, app_plates=str(base / "plates")))
+                                         code=str(base / "code"), demo=False, strict=False, quiet=True, app_plates=str(base / "plates"),
+                                         c1=extra.get("c1", False)))
             finally:
                 LEGACY_FILE, SPRITE_ROOT, CONSTRUCTION = kept_legacy, kept_root, kept_list
             warns = [f"[{w['where']}] {w['message']}" for w in R.warnings]
@@ -4939,6 +5008,8 @@ def main():
     ap.add_argument("--self-test", action="store_true", help="prove the build's checks on fixtures in a temporary folder")
     ap.add_argument("--pilot", help="Phase 3: a folder whose chapters/ and specimens/ join the page (the drawing-method pilot)")
     ap.add_argument("--no-weight-pass", action="store_true", help="Phase 3: build without the weight pass, to compare (it changes no pixel)")
+    ap.add_argument("--no-c1", action="store_true", help="chat 13b (DR-331): build without C1's four steps (3a, 3b, 3c, 3d), the proof's "
+                                                         "other page (they change no pixel)")
     ap.add_argument("--chart-method", choices=guide_charts.METHODS, help=f"Phase 3: how charts are drawn (default {guide_charts.DEFAULT_METHOD})")
     ap.add_argument("--app-plates", help="chat 11: the folder of the application kit's plates (default work/build/app-kit/plates)")
     args = ap.parse_args()

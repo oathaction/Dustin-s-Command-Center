@@ -1,7 +1,7 @@
 {
  "title": "Platform specifications for Phase 4",
- "checked": "2026-11-21",
- "made_by": "Research lead, chat 10",
+ "checked": "2026-11-25",
+ "made_by": "Research lead, chat 10; rows read again by the research lead, chat 13b",
  "markdown": "work/research/20261121_Platform-Specifications.md",
  "contract": {
   "file": "work/research/20261121_Platform-Specifications.json",
@@ -17,12 +17,17 @@
    "safe_area": "null, or an object: {'type': 'insets', 'top', 'right', 'bottom', 'left'} in the row's unit, with an optional 'exclude' list of boxes {'x', 'y', 'width', 'height'} measured from the top left that must also stay clear; {'type': 'box', 'width', 'height'} centered; {'type': 'circle', 'radius_pct'} centered, as a percent of the width",
    "smallest_shown_px": "The smallest size, in CSS px, at which the platform's own page says it shows the item, or null where the page does not say",
    "source": "The official page's address",
-   "checked": "2026-11-21",
-   "status": "read, search-result or not-found",
+   "checked": "The date the row's sources were last read: 2026-11-21, or 2026-11-25 where chat 13b read them again",
+   "status": "read, search-result, not-found, or measured (the studio measured the figure by capture on a public page, on the 'checked' date; the note names the page, window and time)",
    "match": "exact (the export must be this size), min (this size or larger, same ratio), max (this size or smaller), or ratio (any size at the aspect)",
    "basis": "platform (the platform states the figure) or studio-choice (the studio sets the figure, inside any platform limits the note names)",
    "note": "Plain words on anything a script should not assume",
-   "bleed": "Print rows only: the bleed on each side, in inches. width and height are the trim size. A PDF passes when its TrimBox equals the trim size and its BleedBox (or MediaBox) equals the trim plus twice the bleed (8.75 x 11.25 in for Letter). Null on every other row"
+   "bleed": "Print rows only: the bleed on each side, in inches. width and height are the trim size. A PDF passes when its TrimBox equals the trim size and its BleedBox (or MediaBox) equals the trim plus twice the bleed (8.75 x 11.25 in for Letter). Null on every other row",
+   "first_checked": "On rows read again: the date first read (2026-11-21)",
+   "read_at_utc": "On rows read again: the time or times (UTC, from date -u) the row's pages were read or measured on the 'checked' date",
+   "shown_measured": "Optional: the size in CSS px at which the studio measured the platform drawing the item, keyed by window width in px, for example {'1440': 84, '390': 64}. A measurement, not the platform's statement",
+   "alt_text_max_chars": "Optional: the most characters the platform's own page allows in an image's alt text, or null where no page states it",
+   "post_text_max_chars": "Optional: the most characters the platform's own page allows in the post's text or caption that carries the image"
   },
   "check": "A dimension script compares an export's pixel or page size to width and height by 'match'. Rows with status other than 'read' still check, and the script should print their status beside the result so a reader sees which figures rest on a search result."
  },
@@ -65,12 +70,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image (now redirects to https://docs.x.com/overview)",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "min",
    "basis": "platform",
-   "note": "Largest 4096 x 4096. X's stated minimum, 300 x 157, is not exactly 2:1; it is recorded as stated. Only the first frame of an animated GIF shows, per the search result. Not an export target: the website's 1200 x 630 image serves, and X crops it to 2:1.",
-   "bleed": null
+   "note": "Largest 4096 x 4096. X's stated minimum, 300 x 157, is not exactly 2:1; it is recorded as stated. Only the first frame of an animated GIF shows, per the search result. Not an export target: the website's 1200 x 630 image serves, and X crops it to 2:1. Checked again November 25, 2026: The address still redirects to https://docs.x.com/overview; no card page on docs.x.com was found.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:25"
   },
   {
    "id": "website.favicon_search",
@@ -306,12 +313,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"256×256 px or larger, transparent background\". Website editor, Assets, Logo.",
-   "bleed": null
+   "note": "\"256×256 px or larger, transparent background\". Website editor, Assets, Logo. Checked again November 25, 2026: \"256×256 px or larger, transparent background\" (4408381685268, edited 2026-11-12); the website editor page (360055169471, edited 2026-11-12) calls it \"A square image\".",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35, 00:17:04"
   },
   {
    "id": "substack.wordmark",
@@ -326,12 +335,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"1344×256 px or larger (a wide, horizontal image)\". Replaces the text name in the site header.",
-   "bleed": null
+   "note": "\"1344×256 px or larger (a wide, horizontal image)\". Replaces the text name in the site header. Checked again November 25, 2026: \"1344×256 px or larger (a wide, horizontal image)\"; it \"replaces the text name in your header\" (360055169471).",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35, 00:17:04"
   },
   {
    "id": "substack.cover",
@@ -346,12 +357,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"1600 px wide or wider\". Website editor, Header card, Layout: Cover. Height not stated.",
-   "bleed": null
+   "note": "\"1600 px wide or wider\". Website editor, Header card, Layout: Cover. Height not stated. Checked again November 25, 2026: \"1600 px wide or wider\", \"(Classic theme only)\", set under Header card, Layout: Cover.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35"
   },
   {
    "id": "substack.welcome_image",
@@ -366,12 +379,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "\"600×600 px or larger\".",
-   "bleed": null
+   "note": "\"600×600 px or larger\". Checked again November 25, 2026: \"600×600 pixels or larger\"; GIF allowed; skip link \"up to 25 characters\" (7999279240212 and 360051505352, edited 2026-11-12). \"the formatting of the Welcome page can't be modified\".",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35, 00:17:05, 00:17:06"
   },
   {
    "id": "substack.email_banner",
@@ -388,12 +403,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360056142311",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "exact",
    "basis": "platform",
-   "note": "\"1100×220 px PNG, transparent background\"; \"Image must be in PNG format.\" Optional. Shows in emails only.",
-   "bleed": null
+   "note": "\"1100×220 px PNG, transparent background\"; \"Image must be in PNG format.\" Optional. Shows in emails only. Checked again November 25, 2026: \"1100×220 px PNG, transparent background\"; optional; \"Banners only appear in emails, not on posts\" (360056142311, edited 2026-06-05); \"Image must be in PNG format\" (360037832971).",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35, 00:16:36, 00:16:37"
   },
   {
    "id": "substack.social_preview",
@@ -412,15 +429,21 @@
     "webp"
    ],
    "max_bytes": null,
-   "safe_area": null,
+   "safe_area": {
+    "type": "box",
+    "width": 630,
+    "height": 630
+   },
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360039016992 ; https://support.substack.com/hc/en-us/articles/55331495866772",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "min",
    "basis": "platform",
-   "note": "Substack crops it to portrait, square and landscape thumbnails; set the crop and focal point on the web, or Substack picks \"the area of the image with the most detail or highest contrast\".",
-   "bleed": null
+   "note": "Substack crops it to portrait, square and landscape thumbnails; set the crop and focal point on the web, or Substack picks \"the area of the image with the most detail or highest contrast\". Checked again November 25, 2026: Substack's ratio table (4408381685268, edited 2026-11-12, updated 2026-11-21) lists \"Portrait 9:16\", \"Square 1:1\", \"Landscape 16:9\" and post thumbnails \"3:2\". On a 1200 x 630 image those crops are 354 x 630 (portrait, used only for the publisher's Share Center assets), 630 x 630 (square: Top Posts, the app's Posts tab), 1120 x 630 (landscape: Notes, the desktop dashboard, home page layouts) and 945 x 630 (thumbnail). Studio choice: keep the focal point at the center and every word and mark a reader must see inside the centered 630 x 630 square, which all reader-facing crops keep. The portrait crop keeps only the centered 354 px.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35, 00:16:36, 00:16:37"
   },
   {
    "id": "substack.post_thumbnail",
@@ -435,12 +458,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "ratio",
    "basis": "platform",
-   "note": "Ratio only; drawn from the social preview image.",
-   "bleed": null
+   "note": "Ratio only; drawn from the social preview image. Checked again November 25, 2026: \"Substack posts thumbnails 3:2\" in the ratio table.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35"
   },
   {
    "id": "substack.post_image_full",
@@ -462,18 +487,20 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360037832971",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "ratio",
    "basis": "platform",
-   "note": "\"Up to 1:1; taller images are cropped to 1:1\". Width not stated; chapter 22 measures the body width on a published post.",
-   "bleed": null
+   "note": "\"Up to 1:1; taller images are cropped to 1:1\". Width not stated; chapter 22 measures the body width on a published post. Checked again November 25, 2026: \"Up to 1:1; taller images are cropped to 1:1\". Substack's stylesheet (substackcdn.com, read with the measured post) draws a full-width image at the window's width (`.image2-inset.image2-full-screen{width:100vw}`); no published post found uses one (808 images in 206 public posts), so it is not measured. An image at normal size is capped at the body width (substack.body_width) by Substack's stylesheet, and a \"large\" image at the window's width less 30 px (`img.sizing-large{max-width:calc(100vw - 30px)}`): on https://on.substack.com/p/a-guide-to-gift-subscriptions-and its large image's box ran 1200 px at 1440 (its set width) and 360 px at 390 (00:32:53 and 00:33:05 UTC), with the image itself not loaded (HTTP 404 to the browser).",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:35, 00:16:37, 00:21:01, 00:32:53, 00:33:05"
   },
   {
    "id": "substack.body_width",
    "channel": "substack",
    "application": "Post body width (for a chart image)",
-   "width": null,
+   "width": 728,
    "height": null,
    "unit": "px",
    "aspect": null,
@@ -481,13 +508,52 @@
    "max_bytes": null,
    "safe_area": null,
    "smallest_shown_px": null,
-   "source": "No Substack help page states it (searched support.substack.com, November 21, 2026)",
-   "checked": "2026-11-21",
-   "status": "not-found",
+   "source": "Studio's measure, https://on.substack.com/p/your-substack-now-with-more-ways (Substack's own publication, a Classic layout: homepage type \"newspaper\"); no Substack help page states it",
+   "checked": "2026-11-25",
+   "status": "measured",
    "match": "exact",
    "basis": "platform",
-   "note": "Measure on a published post in chat 13 and record as the studio's measurement.",
-   "bleed": null
+   "note": "Checked again November 25, 2026: The text column (.body.markup) measured 728 px at a 1440 x 900 window (left edge 356) and 358 px at 390 x 844 (16 px each side), in Chromium at device scale 1. Substack's stylesheet caps an image at normal size at the column's width (computed max-width 100%); the capture could not confirm an image's drawn width, since Substack's image server answered the browser's image requests with HTTP 404 and the images drew as broken boxes. Substack serves post images at up to 1456 px wide (w_1456), twice 728. A chart made 1456 px wide draws at 0.492 of its desktop size on a 390 px phone. The row is the column, not an export size: see substack.post_chart.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:21:01, 00:21:08",
+   "shown_measured": {
+    "1440": 728,
+    "390": 358
+   }
+  },
+  {
+   "id": "substack.post_chart",
+   "channel": "substack",
+   "application": "Chart image in a post (a still)",
+   "width": 1456,
+   "height": 1456,
+   "unit": "px",
+   "aspect": null,
+   "formats": [
+    "avif",
+    "gif",
+    "jpg",
+    "jpeg",
+    "png",
+    "webp"
+   ],
+   "max_bytes": null,
+   "safe_area": null,
+   "smallest_shown_px": null,
+   "source": "https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360037832971 ; studio's measure (substack.body_width)",
+   "checked": "2026-11-25",
+   "first_checked": "2026-11-25",
+   "read_at_utc": "00:16:35, 00:16:37, 00:21:01, 00:21:08",
+   "status": "measured",
+   "match": "max",
+   "basis": "studio-choice",
+   "note": "Studio choice from the measured column: export a chart in a post 1456 px wide (twice the 728 px column) and no taller than wide, since Substack crops a taller image to 1:1 (read). It is drawn no wider than the measured column, 728 CSS px on a desktop window and 358 on a 390 px phone (Substack's stylesheet caps a normal image at the column; the drawn image itself was not captured), so check its smallest type at 358. Substack takes no custom HTML in a post, so a chart we draw goes in as an image with alt text and a caption (read, 360037832971 and 4414829453204).",
+   "bleed": null,
+   "shown_measured": {
+    "1440": 728,
+    "390": 358
+   }
   },
   {
    "id": "instagram.avatar",
@@ -505,12 +571,14 @@
    },
    "smallest_shown_px": null,
    "source": "No Instagram page found; https://www.facebook.com/help/125379114252045 gives 320 x 320 for Facebook Pages only",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Upload size is the studio's. The app shows it in a circle; keep the mark inside the inscribed circle.",
-   "bleed": null
+   "note": "Upload size is the studio's. The app shows it in a circle; keep the mark inside the inscribed circle. Checked again November 25, 2026: Studio's capture of https://www.instagram.com/instagram/ was refused: the browser was sent to the login page with HTTP 429 at 1440 and 390 px, so the shown size is not measured. Still no Instagram page states the upload or shown size.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:22:44"
   },
   {
    "id": "instagram.square",
@@ -528,12 +596,16 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "Width 1080 from the help page (search-result). The publishing page (read) allows JPEG up to 8 MB, 320 to 1440 px wide.",
-   "bleed": null
+   "note": "Width 1080 from the help page (search-result). The publishing page (read) allows JPEG up to 8 MB, 320 to 1440 px wide. Checked again November 25, 2026: The publishing page, read today as markdown (https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media.md): \"JPEG\", \"8 MB maximum\", \"Must be within a 4:5 to 1.91:1 range\", width 320 to 1440, sRGB; alt_text \"up to 1000 character, for an image\", single images and images in a carousel only, not reels or stories; caption \"Maximum 2200 characters, 30 hashtags, and 20 @ tags\". help.instagram.com refused a plain download (HTTP 400, 00:17:26 UTC); a search for its image page showed only the \"1.91:1 and 4:5\" wording, widths 320 to 1080.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:26 to 00:18:37",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 2200
   },
   {
    "id": "instagram.portrait",
@@ -555,12 +627,16 @@
    },
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-feed",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "4:5 is inside every version of the help page and the publishing page's 4:5 to 1.91:1 range (read). The safe box is the studio's: the center 3:4 crop the grid may take.",
-   "bleed": null
+   "note": "4:5 is inside every version of the help page and the publishing page's 4:5 to 1.91:1 range (read). The safe box is the studio's: the center 3:4 crop the grid may take. Checked again November 25, 2026: The publishing page, read today as markdown (https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media.md): \"JPEG\", \"8 MB maximum\", \"Must be within a 4:5 to 1.91:1 range\", width 320 to 1440, sRGB; alt_text \"up to 1000 character, for an image\", single images and images in a carousel only, not reels or stories; caption \"Maximum 2200 characters, 30 hashtags, and 20 @ tags\". help.instagram.com refused a plain download (HTTP 400, 00:17:26 UTC); a search for its image page showed only the \"1.91:1 and 4:5\" wording, widths 320 to 1080.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:26 to 00:18:37",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 2200
   },
   {
    "id": "instagram.portrait_3x4",
@@ -575,12 +651,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1631821640426723",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "One version of the help page allows 3:4; the publishing page (read) does not. Do not build to it until it is confirmed.",
-   "bleed": null
+   "note": "One version of the help page allows 3:4; the publishing page (read) does not. Do not build to it until it is confirmed. Checked again November 25, 2026: Today's search for the help page showed only the 4:5 wording, and the publishing page (read) still says 4:5 to 1.91:1. Press reports of May 2025 say the app takes 3:4 photos; no Instagram page found says so. Do not build to it.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:26 to 00:18:22 (search)"
   },
   {
    "id": "instagram.landscape",
@@ -595,12 +673,16 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "1.91:1 is the wide limit in the help page and the publishing page.",
-   "bleed": null
+   "note": "1.91:1 is the wide limit in the help page and the publishing page. Checked again November 25, 2026: The publishing page, read today as markdown (https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media.md): \"JPEG\", \"8 MB maximum\", \"Must be within a 4:5 to 1.91:1 range\", width 320 to 1440, sRGB; alt_text \"up to 1000 character, for an image\", single images and images in a carousel only, not reels or stories; caption \"Maximum 2200 characters, 30 hashtags, and 20 @ tags\". help.instagram.com refused a plain download (HTTP 400, 00:17:26 UTC); a search for its image page showed only the \"1.91:1 and 4:5\" wording, widths 320 to 1080.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:26 to 00:18:37",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 2200
   },
   {
    "id": "instagram.carousel",
@@ -619,12 +701,16 @@
    },
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1631821640426723 ; https://help.instagram.com/117838865078314/",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "Every item in a post takes the one orientation chosen for it (help page \"Crop your photo on Instagram\", search-result). The studio builds carousels at 4:5.",
-   "bleed": null
+   "note": "Every item in a post takes the one orientation chosen for it (help page \"Crop your photo on Instagram\", search-result). The studio builds carousels at 4:5. Checked again November 25, 2026: The publishing page, read today as markdown (https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media.md): \"JPEG\", \"8 MB maximum\", \"Must be within a 4:5 to 1.91:1 range\", width 320 to 1440, sRGB; alt_text \"up to 1000 character, for an image\", single images and images in a carousel only, not reels or stories; caption \"Maximum 2200 characters, 30 hashtags, and 20 @ tags\". help.instagram.com refused a plain download (HTTP 400, 00:17:26 UTC); a search for its image page showed only the \"1.91:1 and 4:5\" wording, widths 320 to 1080. Carousels: \"up to 20 total images, videos, or a mix of the two\"; the caption sits on the carousel, not its items.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:26 to 00:18:37",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 2200
   },
   {
    "id": "instagram.grid",
@@ -639,12 +725,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "No Instagram or Meta page found; leads: press reports of January 2025",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "not-found",
    "match": "ratio",
    "basis": "platform",
-   "note": "Reported as 3:4 by Kapwing and 4:5 by the Inquirer; Substack's page says 4:5. Unconfirmed.",
-   "bleed": null
+   "note": "Reported as 3:4 by Kapwing and 4:5 by the Inquirer; Substack's page says 4:5. Unconfirmed. Checked again November 25, 2026: A search today found no Instagram or Meta page on the grid; press reports (January 2025) still give 3:4 and quote Adam Mosseri, Instagram's head, from an Ask Me Anything. Unconfirmed.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:28:12 to 00:28:52 (search)"
   },
   {
    "id": "instagram.story",
@@ -668,12 +756,14 @@
    },
    "smallest_shown_px": null,
    "source": "https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-story",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "9:16 recommended by the publishing page (read); 1080 x 1920 from an older Instagram creator page (search-result). Safe zones from Meta's ads guide (read): 14 percent top, 35 percent bottom, 6 percent each side.",
-   "bleed": null
+   "note": "9:16 recommended by the publishing page (read); 1080 x 1920 from an older Instagram creator page (search-result). Safe zones from Meta's ads guide (read): 14 percent top, 35 percent bottom, 6 percent each side. Checked again November 25, 2026: The publishing page (read) does not support alt text on stories. Meta's ads guide refused a plain download today (HTTP 400, 00:28:11 UTC), so the safe zones stand as read on November 21.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:37; 00:28:11 (refused)"
   },
   {
    "id": "instagram.reel",
@@ -697,12 +787,14 @@
    },
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-reels",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "Help page (search-result): 1.91:1 to 9:16, at least 720 px and 30 fps. Publishing page (read): up to 1920 px across, 300 MB, 3 seconds to 15 minutes. Safe zones from the ads guide (read).",
-   "bleed": null
+   "note": "Help page (search-result): 1.91:1 to 9:16, at least 720 px and 30 fps. Publishing page (read): up to 1920 px across, 300 MB, 3 seconds to 15 minutes. Safe zones from the ads guide (read). Checked again November 25, 2026: Publishing page (read): alt text is not supported on reels. Meta's ads guide refused a plain download today (HTTP 400), so the safe zones stand as read on November 21.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:37; 00:28:12 (refused)"
   },
   {
    "id": "instagram.reel_cover",
@@ -723,12 +815,14 @@
    },
    "smallest_shown_px": null,
    "source": "https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "The help page recommends 420 x 654 (1:1.55) (search-result). The publishing page (read) recommends 9:16 and crops \"the middle most 9:16 rectangle\". The studio builds the cover at 1080 x 1920 with its words inside the center 1080 x 1676 (the 1:1.55 crop) and inside the reel's safe zone.",
-   "bleed": null
+   "note": "The help page recommends 420 x 654 (1:1.55) (search-result). The publishing page (read) recommends 9:16 and crops \"the middle most 9:16 rectangle\". The studio builds the cover at 1080 x 1920 with its words inside the center 1080 x 1676 (the 1:1.55 crop) and inside the reel's safe zone. Checked again November 25, 2026: The publishing page (read) adds: \"If you share a reel to your feed, we crop the image and use the middle most 1:1 square as the cover photo for your feed post.\" A cover's words that must show in the feed belong inside its centered 1080 x 1080 square as well.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:37"
   },
   {
    "id": "threads.avatar",
@@ -746,12 +840,19 @@
    },
    "smallest_shown_px": null,
    "source": "No Threads page found",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "not-found",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Shared with Instagram's avatar.",
-   "bleed": null
+   "note": "Shared with Instagram's avatar. Checked again November 25, 2026: Still no Threads page states the upload size. Studio's measure of https://www.threads.com/@threads, which opened without a login under a login prompt: no banner; the profile photo is a circle at the top right of the profile column, 84 x 84 px at a 1440 x 900 window and 64 x 64 px at 390 x 844; each post's avatar in the feed is 36 x 36 px at both.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:22:18, 00:22:26",
+   "shown_measured": {
+    "1440": 84,
+    "390": 64,
+    "feed": 36
+   }
   },
   {
    "id": "threads.image",
@@ -769,12 +870,16 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://developers.facebook.com/docs/threads/overview",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "Threads accepts 320 px wide up to 4096 x 4096 at a ratio up to 10:1 (read). 1080 x 1350 is the studio's, to match Instagram.",
-   "bleed": null
+   "note": "Threads accepts 320 px wide up to 4096 x 4096 at a ratio up to 10:1 (read). 1080 x 1350 is the studio's, to match Instagram. Checked again November 25, 2026: Read today as markdown at https://developers.facebook.com/documentation/threads/overview.md and posts.md (the HTML pages refuse a plain download, HTTP 400): \"JPEG and PNG\", \"8 MB maximum\", \"Aspect Ratio Limit: 10:1\", \"Minimum Width: 320\", larger than 4096 x 4096 \"scaled down to fit\", and \"Images with an aspect ratio of 2:1 or wider are scaled down to about 16.8 megapixels\". \"Text posts are limited to 500 characters.\" alt_text \"maximum length ... is 1,000 characters\" (reference/publishing.md); alt text works on image, video and carousel posts, not text-only ones (posts/accessibility.md).",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:24 to 00:18:26",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 500
   },
   {
    "id": "threads.carousel",
@@ -792,12 +897,16 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://developers.facebook.com/docs/threads/overview",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "2 to 20 items (read).",
-   "bleed": null
+   "note": "2 to 20 items (read). Checked again November 25, 2026: Read today as markdown at https://developers.facebook.com/documentation/threads/overview.md and posts.md (the HTML pages refuse a plain download, HTTP 400): \"JPEG and PNG\", \"8 MB maximum\", \"Aspect Ratio Limit: 10:1\", \"Minimum Width: 320\", larger than 4096 x 4096 \"scaled down to fit\", and \"Images with an aspect ratio of 2:1 or wider are scaled down to about 16.8 megapixels\". \"Text posts are limited to 500 characters.\" alt_text \"maximum length ... is 1,000 characters\" (reference/publishing.md); alt text works on image, video and carousel posts, not text-only ones (posts/accessibility.md). Carousels: \"a maximum of 20 children and a minimum of 2\".",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:24 to 00:18:26",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 500
   },
   {
    "id": "threads.video",
@@ -815,12 +924,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://developers.facebook.com/docs/threads/overview",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "max",
    "basis": "platform",
-   "note": "9:16 recommended; up to 1920 px across; 5 minutes; 1 GB (read).",
-   "bleed": null
+   "note": "9:16 recommended; up to 1920 px across; 5 minutes; 1 GB (read). Checked again November 25, 2026: \"Maximum Columns (horizontal pixels): 1920\", \"we recommend 9:16\", \"300 seconds (5 minutes) maximum\", \"1 GB maximum\" (overview.md, read).",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:25"
   },
   {
    "id": "threads.link_preview",
@@ -835,12 +946,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "No Threads page found",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "not-found",
    "match": "min",
    "basis": "studio-choice",
-   "note": "Uses the website's Open Graph image.",
-   "bleed": null
+   "note": "Uses the website's Open Graph image. Checked again November 25, 2026: posts.md (read): a link card (link_attachment) works on text-only posts; otherwise \"the first URL in the text field is used as the link preview\"; \"The number of links is restricted to 5 or fewer\", enforced \"Since December 22, 2025\". The card's image size is still not stated.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:18:26"
   },
   {
    "id": "x.avatar",
@@ -862,12 +975,14 @@
    },
    "smallest_shown_px": null,
    "source": "https://help.x.com/en/managing-your-account/how-to-customize-your-profile ; https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "min",
    "basis": "platform",
-   "note": "No animated GIF. Shown in a circle.",
-   "bleed": null
+   "note": "No animated GIF. Shown in a circle. Checked again November 25, 2026: help.x.com refused a plain download today (HTTP 403, a Cloudflare challenge, 00:17:24 UTC); a search for the profile page still shows \"400x400 pixels\", \"JPG, GIF, or PNG\", no animated GIFs, \"2MB\" at most.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:24 to 00:17:54 (search)"
   },
   {
    "id": "x.header",
@@ -892,12 +1007,14 @@
    },
    "smallest_shown_px": null,
    "source": "https://help.x.com/en/managing-your-account/how-to-customize-your-profile",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "platform",
-   "note": "About 60 px at the top and bottom may be cropped by screen and browser (search-result). The profile photo sits over the lower left of the header; its exact footprint is not stated and is measured by capture in chapter 23.",
-   "bleed": null
+   "note": "About 60 px at the top and bottom may be cropped by screen and browser (search-result). The profile photo sits over the lower left of the header; its exact footprint is not stated and is measured by capture in chapter 23. Checked again November 25, 2026: help.x.com refused a plain download today (HTTP 403, a Cloudflare challenge, 00:17:24 UTC); a search still shows \"1500x500 pixels\" and \"60 pixels on the top and bottom could be cropped\". The profile photo's footprint over the header is still not stated; the studio tried to measure https://x.com/X at 1440 and 390 px at 00:22:00 UTC and X answered the browser with HTTP 403, so it is not measured.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:24 to 00:17:54 (search); 00:22:00 (capture refused)"
   },
   {
    "id": "x.post_image",
@@ -917,12 +1034,16 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://help.x.com/en/using-x/posting-gifs-and-pictures ; https://docs.x.com/x-api/media/quickstart/best-practices",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "exact",
    "basis": "studio-choice",
-   "note": "X shows a single photo whole between 2:1 and 3:4 (search-result); 1600 x 900 is the studio's starting size inside that range. 5 MB and the four formats are read on docs.x.com.",
-   "bleed": null
+   "note": "X shows a single photo whole between 2:1 and 3:4 (search-result); 1600 x 900 is the studio's starting size inside that range. 5 MB and the four formats are read on docs.x.com. Checked again November 25, 2026: docs.x.com read: images 5 MB for every account; up to 4 photos a post; alt text maxLength 1000 (create-media-metadata); \"Posts on X can contain up to 280 characters\", a link counts 23 (counting-characters). Image descriptions \"1000 characters\" also by search result for help.x.com/en/using-x/picture-descriptions. The 2:1 to 3:4 display range stays a November 21 search result.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:24, 00:17:25",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 280
   },
   {
    "id": "x.post_four",
@@ -937,12 +1058,16 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://help.x.com/en/using-x/posting-gifs-and-pictures",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "not-found",
    "match": "ratio",
    "basis": "platform",
-   "note": "Up to four photos a post (read on docs.x.com). How the grid crops them is not stated.",
-   "bleed": null
+   "note": "Up to four photos a post (read on docs.x.com). How the grid crops them is not stated. Checked again November 25, 2026: \"You may attach up to 4 photos, 1 animated GIF or 1 video in a Post\" (docs.x.com, read). The grid's crop is still not stated.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:24",
+   "alt_text_max_chars": 1000,
+   "post_text_max_chars": 280
   },
   {
    "id": "x.link_card",
@@ -957,12 +1082,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "search-result",
    "match": "min",
    "basis": "studio-choice",
-   "note": "The website's share image (website.share_preview) through the summary_large_image card.",
-   "bleed": null
+   "note": "The website's share image (website.share_preview) through the summary_large_image card. Checked again November 25, 2026: The old card page still redirects to https://docs.x.com/overview.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:17:25"
   },
   {
    "id": "youtube.avatar",
@@ -1702,12 +1829,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "https://mailchimp.com/help/about-template-widths/ ; https://mailchimp.com/help/about-html-email/",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "read",
    "match": "max",
    "basis": "studio-choice",
-   "note": "An email service's guidance (Mailchimp), not a platform rule.",
-   "bleed": null
+   "note": "An email service's guidance (Mailchimp), not a platform rule. Checked again November 25, 2026: Mailchimp's two pages still say \"no greater than 600px wide\" and \"Set email width to 600px or less.\"",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:28:10, 00:28:11"
   },
   {
    "id": "email.phone_check",
@@ -1742,12 +1871,14 @@
    "safe_area": null,
    "smallest_shown_px": null,
    "source": "No Google page found; figure from https://support.substack.com/hc/en-us/articles/360038866571 (read)",
-   "checked": "2026-11-21",
+   "checked": "2026-11-25",
    "status": "not-found",
    "match": "exact",
    "basis": "platform",
-   "note": "\"Gmail clips emails larger than about 102KB\" (Substack). The whole message's HTML counts.",
-   "bleed": null
+   "note": "\"Gmail clips emails larger than about 102KB\" (Substack). The whole message's HTML counts. Checked again November 25, 2026: Substack's page (360038866571, edited 2026-09-29) still says \"Gmail clips emails larger than about 102KB\" and that \"Links, images, and any text your publication adds to the top or bottom of every email all count toward the size.\" A search found no Google page stating a size; vendor pages say the figure counts the message's HTML, not its images.",
+   "bleed": null,
+   "first_checked": "2026-11-21",
+   "read_at_utc": "00:16:37"
   }
  ]
 }

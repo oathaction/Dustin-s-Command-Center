@@ -262,7 +262,7 @@ def s_04_3_correct():
             f'<div>{headline("The records law", "the answer.", "h3", keyline=True)}{lab("H3 style, 26 px")}</div>'
             '</div></div>')
     alt = ("Three hinge headlines at true size in heavy type, each naming a rule and then what it produces, joined by a red "
-           "ampersand B that leads the second line: The zoning code & the rent. at 56 pixels, The filing deadline & the "
+           "ampersand B that leads the second line and carries a thin Charcoal edge: The zoning code & the rent. at 56 pixels, The filing deadline & the "
            "ballot. at 44, and The records law & the answer. at 26.")
     return rec("s-04-3-correct", "04.3", 600, alt, body,
                notes="Headlines from Rule 02.27's correct list (BE-M6, CP-M4), in the title, section and H3 styles at the phone floor "

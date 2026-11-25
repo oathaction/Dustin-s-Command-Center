@@ -2,11 +2,14 @@
 
 Research lead, chat 10, November 21, 2026. These are the sizes and limits Phase 4 builds to, read from each platform's own help or developer pages on November 21, 2026 (DR-292). The same rows sit in `work/research/20261121_Platform-Specifications.json` for scripts. Handles print with the Illustrative label until Dustin names them (DR-298, DR-302).
 
+Research lead, chat 13b, November 25, 2026: sections 1 (X's card row), 2 to 5 and 12 read again today from the same official addresses, each row marked "checked again November 25, 2026" in its Checked cell and given its time read (UTC, from `date -u`) in the JSON's `read_at_utc`. What changed is listed under "What changed on November 25, 2026" below, and what could not be read today under "Could not read on November 25, 2026" at the end.
+
 How to read the Status column:
 
 - **read**: the page's own text was downloaded from the official domain on November 21, 2026 and read.
 - **search-result**: the official page refused an automated reader or draws its text by script, so the figure comes from what a search showed for that official address. A figure from a third-party site is never the source; where one pointed to an official page, the official page is named.
 - **not-found**: no official page stated the figure. Where the studio sets it, the row says "Studio choice".
+- **measured** (added November 25, 2026): no official page states the figure, so the studio measured it by capture on a public page in one Chromium window, one tab, at device scale 1; the row's note names the page, the window and the time.
 
 Byte limits a page writes in MB or KB are stored here as decimal bytes (1 MB = 1,000,000), the smaller reading, so a file that passes passes either way.
 
@@ -23,6 +26,17 @@ Smallest shown: of the pages read, only YouTube states the size at which it show
 - Gmail's clipping size: no Google page states it; the 102 KB figure is Substack's statement about Gmail.
 - Unchanged: the website's 1200 x 630 share preview, X's 400 x 400 avatar and 1500 x 500 header (both by search result), Instagram's 1080 x 1080, 1080 x 1350 and 1080 x 1920, YouTube's 2560 x 1440 banner and 1920 x 1080 video, LinkedIn's 1584 x 396 personal banner, the 1920 x 1080 slide, US Letter.
 
+## What changed on November 25, 2026
+
+- Substack's post body width is now measured: the text column is 728 px at a 1440 px window and 358 px at 390 px, and Substack's stylesheet caps an image at normal size at that column. A new row, `substack.post_chart`, sets the studio's export for a chart in a post: 1,456 px wide (twice 728), no taller than wide.
+- Substack's share image: Substack's dimensions article now carries a ratio table listing Portrait 9:16, Square 1:1 and Landscape 16:9, with post thumbnails at 3:2 (November 21's row said "3:2 landscape"). The studio reads the first three as the crop tool's three previews; the article does not tie them together in words. On a 1200 x 630 image the reader-facing crops all keep the centered 630 x 630 square, so the row now carries that box as its safe area (studio choice); the portrait crop, 354 x 630, is used only for the publisher's Share Center assets.
+- Substack's emails "use email-safe fonts and a standard background", so the site's web fonts and background do not reach the inbox (Substack's test email page). November 21 left this open.
+- Threads: Meta's developer pages now answer as markdown, so the Threads rows are read today. New: images 2:1 or wider are "scaled down to about 16.8 megapixels"; alt text up to 1,000 characters; 5 links at most a post since December 22, 2025. The profile is measured: no banner, an avatar circle of 84 px at 1440 and 64 px at 390, feed avatars of 36 px.
+- Instagram: the publishing page is read today. New: alt text up to 1,000 characters on single images and carousel images, captions up to 2,200 characters, carousels up to 20 items, and a reel cover shared to the feed shows its centered 1:1 square. Today's search for the help page showed only the 4:5 limit, not 3:4.
+- X: alt text up to 1,000 characters (read on docs.x.com) and posts of 280 characters with a link counted as 23 (read). The profile could not be measured: X answered the browser with HTTP 403.
+- Image rows for X, Threads and Instagram gain `alt_text_max_chars` and `post_text_max_chars` in the JSON.
+- Unchanged: every pixel size in sections 2 to 5 and 12, Gmail's "about 102KB" (still Substack's figure; no Google page), the 600 px email body.
+
 ## 1. The Oath & Action website (chapter 20)
 
 The share preview is the picture a link shows when someone posts it. The Open Graph protocol names the tags and sets no size; Meta's developer page and X's card documentation set the sizes. The favicon set follows the HTML standard, Google Search, Apple and web.dev. The four page widths are the studio's own test widths, so they carry "Studio choice".
@@ -30,7 +44,7 @@ The share preview is the picture a link shows when someone posts it. The Open Gr
 | Application | Size | Ratio | Type | Limit | Safe area or crop | Smallest shown | Source page | Checked | Status |
 |---|---|---|---|---|---|---|---|---|---|
 | Share preview, Open Graph image (`og:image`) | 1,200 x 630 px or larger | 1.91:1 | Not stated | 8,000,000 bytes | Keep words and marks off the top and bottom 15 px at 1200 wide, since X's card is 2:1 | Not stated | https://developers.facebook.com/docs/sharing/webmasters/images/ ; https://ogp.me/ | 2026-11-21 | read |
-| X card, `summary_large_image` | 300 x 157 px or larger, 4096 x 4096 px at most | 2:1 | jpg, png, webp, gif | 5,000,000 bytes | Not stated | Not stated | https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image (now redirects to https://docs.x.com/overview) | 2026-11-21 | search-result |
+| X card, `summary_large_image` | 300 x 157 px or larger, 4096 x 4096 px at most | 2:1 | jpg, png, webp, gif | 5,000,000 bytes | Not stated | Not stated | https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image (now redirects to https://docs.x.com/overview) | 2026-11-21; checked again November 25, 2026 | search-result |
 | Favicon in Google Search results | 8 x 8 px at least; larger than 48 x 48 px recommended | 1:1 | bmp, gif, ico, png, jpeg, ppm, tiff | Not stated | Not stated | Not stated | https://developers.google.com/search/docs/appearance/favicon-in-search | 2026-11-21 | read |
 | favicon.ico at the site's root (browser tab fallback) | 16, 32 and 48 px in one file (studio choice) | 1:1 | ico | Not stated | Not stated | Not stated | https://html.spec.whatwg.org/multipage/links.html#rel-icon | 2026-11-21 | not-found |
 | SVG favicon (`sizes="any"`) | Any (vector) (studio choice) | 1:1 | svg | Not stated | Not stated | Not stated | https://html.spec.whatwg.org/multipage/links.html#rel-icon | 2026-11-21 | read |
@@ -58,15 +72,16 @@ Substack's help center (support.substack.com) answers an automated reader throug
 
 | Application | Size | Ratio | Type | Limit | Safe area or crop | Smallest shown | Source page | Checked | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| Publication logo | 256 x 256 px or larger | 1:1 | Not stated; transparent background asked for | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21 | read |
-| Wordmark | 1,344 x 256 px or larger | 21:4 | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21 | read |
-| Header cover photo (Classic theme only) | 1,600 px wide or wider | Not stated | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21 | read |
-| Welcome page image | 600 x 600 px or larger | 1:1 | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21 | read |
-| Email header banner | 1,100 x 220 px | 5:1 | png | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360056142311 | 2026-11-21 | read |
-| Social and post preview image | 1,200 x 630 px or larger | 1.91:1 | avif, gif, jpg, jpeg, png, webp | Not stated | Cropped by Substack to portrait, square and 3:2 landscape around a focal point the publisher sets | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360039016992 ; https://support.substack.com/hc/en-us/articles/55331495866772 | 2026-11-21 | read |
-| Post thumbnail | Ratio only | 3:2 | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21 | read |
-| Full-width image in a post | Width not stated | 1:1 at most | avif, gif, jpg, jpeg, png, webp | Not stated | Taller than square is cropped to 1:1 | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360037832971 | 2026-11-21 | read |
-| Post body width (for a chart image) | Not stated | Not stated | Not stated | Not stated | Not stated | Not stated | No Substack help page states it (searched support.substack.com, November 21, 2026) | 2026-11-21 | not-found |
+| Publication logo | 256 x 256 px or larger | 1:1 | Not stated; transparent background asked for | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21; checked again November 25, 2026 | read |
+| Wordmark | 1,344 x 256 px or larger | 21:4 | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21; checked again November 25, 2026 | read |
+| Header cover photo (Classic theme only) | 1,600 px wide or wider | Not stated | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21; checked again November 25, 2026 | read |
+| Welcome page image | 600 x 600 px or larger | 1:1 | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21; checked again November 25, 2026 | read |
+| Email header banner | 1,100 x 220 px | 5:1 | png | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360056142311 | 2026-11-21; checked again November 25, 2026 | read |
+| Social and post preview image | 1,200 x 630 px or larger | 1.91:1 | avif, gif, jpg, jpeg, png, webp | Not stated | Cropped by Substack around a focal point the publisher sets: Portrait 9:16, Square 1:1, Landscape 16:9 (ratio table), thumbnails 3:2. Studio choice: keep what a reader must see inside the centered 630 x 630 square | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360039016992 ; https://support.substack.com/hc/en-us/articles/55331495866772 | 2026-11-21; checked again November 25, 2026 | read |
+| Post thumbnail | Ratio only | 3:2 | Not stated | Not stated | Not stated | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 | 2026-11-21; checked again November 25, 2026 | read |
+| Full-width image in a post | Width not stated; Substack's stylesheet draws it at the window's width (100vw); not measured on a post | 1:1 at most | avif, gif, jpg, jpeg, png, webp | Not stated | Taller than square is cropped to 1:1 | Not stated | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360037832971 | 2026-11-21; checked again November 25, 2026 | read |
+| Post body width (for a chart image) | 728 px column at a 1440 px window; 358 px at 390 px (studio's measure) | Not stated | Not stated | Not stated | Not stated | 728 px at 1440, 358 px at 390 (measured) | Studio's measure on https://on.substack.com/p/your-substack-now-with-more-ways (a Classic layout); no Substack help page states it | 2026-11-21; checked again November 25, 2026 | measured |
+| Chart image in a post (a still), new November 25, 2026 | 1,456 px wide; no taller than wide (studio choice from the measured column) | 1:1 at most | avif, gif, jpg, jpeg, png, webp | Not stated | Taller than square is cropped to 1:1 | No wider than the measured column: 728 px at 1440, 358 px at 390 | https://support.substack.com/hc/en-us/articles/4408381685268 ; https://support.substack.com/hc/en-us/articles/360037832971 ; studio's measure | 2026-11-25 | measured |
 
 Notes:
 
@@ -78,22 +93,30 @@ Notes:
 - Substack's post body width is not stated on any help page read. Chapter 22 measures it on a published post before it sizes a chart image, and records the measurement as the studio's.
 - Difference from the Gate 3 report: the report left Substack's sizes to its help center; they are now set. The share preview is a minimum (1200 x 630 or larger) and takes Substack's own crop to portrait, square and landscape, so the image needs a focal point that survives all three.
 
+Checked again November 25, 2026 (support.substack.com's public article interface, 00:16:35 to 00:17:07 UTC; the measure at 00:21:01 and 00:21:08 UTC):
+
+- Every size in the table is unchanged. The dimensions article (edited 2026-11-12, updated 2026-11-21) now carries a ratio table: "Portrait 9:16", "Square 1:1", "Landscape 16:9", "Substack posts thumbnails 3:2", and its readings of "Instagram profile grid 4:5", "LinkedIn 1.91:1" and "X 2:1". The crop article (edited 2026-11-05) names where each crop shows: Portrait in the Share Center's image assets, Square in "Top Posts" and the app's Posts tab, Landscape in Notes, the desktop dashboard and home page layouts.
+- The parts a publisher sets on the Classic theme, from "How do I set a custom theme for my Substack?" (360055169471, edited 2026-11-12) and the articles above: logo and wordmark (Assets); the header cover photo (Classic only); colors "Background, Accent, Welcome, Header, Footer, Secondary footer, and Subscribe"; fonts "Wordmark, Post titles, Body, and Section titles" from Substack's list, with "Font size is set automatically for post titles and body text" and the publication name resizable on Classic (360037833231); the header (wordmark or title and its size, navigation, links as text or buttons); the footer (layout "Default, Centered, Two Column, or Three Column", a name banner, social links to "Instagram, TikTok, YouTube, Facebook, LinkedIn, or Bluesky", background, wordmark); post image corners and cropping (Classic); the post page (link style, drop caps, bylines, previous and next links); the welcome page (image, name and description shown or hidden, a skip link of "up to 25 characters", a background color; "the formatting of the Welcome page can't be modified", 7999279240212); the email banner, the email header and footer for free and paid subscribers, the sender name and the mailing address (360056142311, 360037829711); four welcome emails (free, paid, imported, founding; paid and founding need payments, 24034796625428).
+- What reaches the inbox: "emails use email-safe fonts and a standard background ... a custom web font, for example, may appear in a default system font in the email" (360037832371, edited 2026-09-16). Whether the Accent color reaches the email's buttons is not stated.
+- The mailing address: "A mailing address is shown at the bottom of all emails. It can be a PO Box. You can edit that in the Details section of your settings page." (360056142311)
+- Body width, the studio's measure: Substack's own post "Your Substack, now with more ways to customize" (published 2026-11-12), on a publication whose homepage type is "newspaper", a Classic layout. Its `.body.markup` column was 728 px wide at 1440 x 900 (from x 356) and 358 px at 390 x 844 (16 px each side); Substack's stylesheet caps an image at normal size at the column (computed max-width 100%), though the capture could not show a drawn image, since Substack's image server answered the browser's image requests with HTTP 404; body type on that publication was 20 px on 32 px lines and 18 px on 28.8 px lines. Image addresses on the page top out at `w_1456`. No published post found uses a full-width image (808 images in 206 public posts on six publications), so its width comes only from Substack's stylesheet, `.typography .image2-inset.image2-full-screen{width:100vw}`. A "large" image is capped at the window less 30 px (`img.sizing-large{max-width:calc(100vw - 30px)}`); on https://on.substack.com/p/a-guide-to-gift-subscriptions-and its box ran 1,200 px at 1440 and 360 px at 390 (00:32:53 and 00:33:05 UTC), the image itself not loaded.
+
 ## 3. Instagram (chapter 23)
 
 Instagram's help center refuses an automated reader (HTTP 400, and a fetch reader sees only the words "Help Center"), so its own sizes come from search results for its pages. Meta's developer page for publishing to Instagram and Meta's ads guide were read, and they back the help center's figures where they overlap. The ads guide is written for ads; its safe zones are the only ones Meta publishes for Stories and Reels, so the studio uses them for organic posts and says so.
 
 | Application | Size | Ratio | Type | Limit | Safe area or crop | Smallest shown | Source page | Checked | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| Profile photo (ampersand B on the Charcoal tile) | 1,080 x 1,080 px (studio choice) | 1:1 | Not stated | Not stated | Inscribed circle | Not stated | No Instagram page found; https://www.facebook.com/help/125379114252045 gives 320 x 320 for Facebook Pages only | 2026-11-21 | not-found |
-| Square post | 1,080 x 1,080 px | 1:1 | JPEG through the publishing interface; JPG or PNG in the ads guide | 8,000,000 bytes | Not stated | Not stated | https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | 2026-11-21 | search-result |
-| Portrait post (the studio sample) | 1,080 x 1,350 px | 4:5 | JPEG through the publishing interface; JPG or PNG in the ads guide | 8,000,000 bytes | Words and marks inside the center 1,012 x 1,350 px (a 3:4 grid crop; studio choice) | Not stated | https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-feed | 2026-11-21 | search-result |
-| Taller portrait post, if 3:4 is current | 1,080 x 1,440 px | 3:4 | Not stated | Not stated | Not stated | Not stated | https://help.instagram.com/1631821640426723 | 2026-11-21 | search-result |
-| Landscape post | 1,080 x 566 px | 1.91:1 | Not stated | Not stated | Not stated | Not stated | https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | 2026-11-21 | search-result |
-| Carousel post | 1,080 x 1,350 px | 4:5 | Not stated | Not stated | As the portrait post | Not stated | https://help.instagram.com/1631821640426723 ; https://help.instagram.com/117838865078314/ | 2026-11-21 | search-result |
-| Profile grid crop | Not stated | 3:4 (reported) | Not stated | Not stated | Center crop, reported | Not stated | No Instagram or Meta page found; leads: press reports of January 2025 | 2026-11-21 | not-found |
-| Story | 1,080 x 1,920 px | 9:16 | jpg, png | 8,000,000 bytes | Top 269 px, bottom 672 px, sides 65 px kept clear (Meta's ads guide) | Not stated | https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-story | 2026-11-21 | search-result |
-| Reel (video) | 1,080 x 1,920 px | 9:16 | mp4, mov | 300,000,000 bytes | Top 269 px, bottom 672 px, sides 65 px kept clear (Meta's ads guide) | Not stated | https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-reels | 2026-11-21 | search-result |
-| Reel cover | 1,080 x 1,920 px (studio choice); the help page recommends 420 x 654 px (1:1.55) | 9:16 | jpg | 8,000,000 bytes | Center 1,080 x 1,676 px (the 1:1.55 crop), and the reel's safe zone | Not stated | https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | 2026-11-21 | search-result |
+| Profile photo (ampersand B on the Charcoal tile) | 1,080 x 1,080 px (studio choice) | 1:1 | Not stated | Not stated | Inscribed circle | Not stated | No Instagram page found; https://www.facebook.com/help/125379114252045 gives 320 x 320 for Facebook Pages only | 2026-11-21; checked again November 25, 2026 | not-found |
+| Square post | 1,080 x 1,080 px | 1:1 | JPEG through the publishing interface; JPG or PNG in the ads guide | 8,000,000 bytes; alt text 1,000 characters; caption 2,200 characters | Not stated | Not stated | https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | 2026-11-21; checked again November 25, 2026 | search-result |
+| Portrait post (the studio sample) | 1,080 x 1,350 px | 4:5 | JPEG through the publishing interface; JPG or PNG in the ads guide | 8,000,000 bytes; alt text 1,000 characters; caption 2,200 characters | Words and marks inside the center 1,012 x 1,350 px (a 3:4 grid crop; studio choice) | Not stated | https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-feed | 2026-11-21; checked again November 25, 2026 | search-result |
+| Taller portrait post, if 3:4 is current | 1,080 x 1,440 px | 3:4 | Not stated | Not stated | Not stated | Not stated | https://help.instagram.com/1631821640426723 | 2026-11-21; checked again November 25, 2026 | search-result |
+| Landscape post | 1,080 x 566 px | 1.91:1 | Not stated | Not stated; alt text 1,000 characters; caption 2,200 characters | Not stated | Not stated | https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | 2026-11-21; checked again November 25, 2026 | search-result |
+| Carousel post | 1,080 x 1,350 px | 4:5 | Not stated | Up to 20 items; alt text 1,000 characters each; one caption, 2,200 characters | As the portrait post | Not stated | https://help.instagram.com/1631821640426723 ; https://help.instagram.com/117838865078314/ | 2026-11-21; checked again November 25, 2026 | search-result |
+| Profile grid crop | Not stated | 3:4 (reported) | Not stated | Not stated | Center crop, reported | Not stated | No Instagram or Meta page found; leads: press reports of January 2025 | 2026-11-21; checked again November 25, 2026 | not-found |
+| Story | 1,080 x 1,920 px | 9:16 | jpg, png | 8,000,000 bytes | Top 269 px, bottom 672 px, sides 65 px kept clear (Meta's ads guide) | Not stated | https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-story | 2026-11-21; checked again November 25, 2026 | search-result |
+| Reel (video) | 1,080 x 1,920 px | 9:16 | mp4, mov | 300,000,000 bytes | Top 269 px, bottom 672 px, sides 65 px kept clear (Meta's ads guide) | Not stated | https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-reels | 2026-11-21; checked again November 25, 2026 | search-result |
+| Reel cover | 1,080 x 1,920 px (studio choice); the help page recommends 420 x 654 px (1:1.55) | 9:16 | jpg | 8,000,000 bytes | Center 1,080 x 1,676 px (the 1:1.55 crop), and the reel's safe zone | Not stated | https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media | 2026-11-21; checked again November 25, 2026 | search-result |
 
 Notes:
 
@@ -104,17 +127,25 @@ Notes:
 - The profile photo: no Instagram page found states its size. Facebook's help page for Facebook Pages gives 320 x 320, which is Facebook's, not Instagram's. The studio uploads the avatar (ampersand B on the Charcoal tile, DR-116) at 1080 x 1080 and keeps the mark inside the circle the app draws. Smallest shown: not stated on any page found.
 - Differences from the Gate 3 report: the portrait post may now run to 3:4 (1080 x 1440) if the newer help text is current; the studio keeps 1080 x 1350, which every version accepts. The grid's crop is unconfirmed; the report asked for it from the help page, and no help page states it. The avatar's "320 x 320 shown" has no Instagram source.
 
+Checked again November 25, 2026:
+
+- help.instagram.com refused a plain download again (HTTP 400, 00:17:26 UTC). A search (00:17:54 to 00:18:22 UTC) for its image page (1631821640426723) showed only the "between 1.91:1 and 4:5" wording, widths 320 to 1080; the 3:4 version did not show. A search for its alt text page (iphone-app/503708446705527) shows the path, Advanced Settings then Write Alt Text, and no limit.
+- Meta's publishing page answered as markdown (https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media.md, read 00:18:37 UTC): images "JPEG", "8 MB maximum", "Must be within a 4:5 to 1.91:1 range", width 320 to 1440, sRGB; `alt_text`, introduced "March 24, 2025": "Alternative text, up to 1000 character, for an image. Only supported on a single image or image media in a carousel. Reels and stories are not supported."; caption "Maximum 2200 characters, 30 hashtags, and 20 @ tags", not on carousel items; carousels "up to 20 total images, videos, or a mix of the two"; reel cover: "the middle most 9:16 rectangle", and "If you share a reel to your feed, we crop the image and use the middle most 1:1 square as the cover photo for your feed post."
+- Meta's ads guide refused a plain download (HTTP 400, 00:28:11 UTC), so the Story and Reel safe zones stand as read on November 21.
+- The grid: a search (00:28:12 to 00:28:52 UTC) found no Instagram or Meta page; press reports still give 3:4. Unconfirmed, as before.
+- The profile as a reader meets it: the studio's capture of https://www.instagram.com/instagram/ at 1440 and 390 px (00:22:44 UTC) was sent to the login page with HTTP 429, so the avatar's shown size and the grid are not measured.
+
 ## 4. Threads (chapter 23)
 
 Threads has no size page of its own in Instagram's help center that a search found. Meta's developer page for publishing to Threads was read and gives the limits a post must meet. The avatar and link preview are not stated anywhere found.
 
 | Application | Size | Ratio | Type | Limit | Safe area or crop | Smallest shown | Source page | Checked | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| Profile photo | 1,080 x 1,080 px (studio choice) | 1:1 | Not stated | Not stated | Inscribed circle | Not stated | No Threads page found | 2026-11-21 | not-found |
-| Single image post | 1,080 x 1,350 px (studio choice inside Threads' limits) | 4:5 | jpg, png | 8,000,000 bytes | Not stated | Not stated | https://developers.facebook.com/docs/threads/overview | 2026-11-21 | read |
-| Carousel post (2 to 20 items) | 1,080 x 1,350 px each (studio choice) | 4:5 | jpg, png | 8,000,000 bytes | Not stated | Not stated | https://developers.facebook.com/docs/threads/overview | 2026-11-21 | read |
-| Video post | 1,080 x 1,920 px at most | 9:16 | mp4, mov | 1,000,000,000 bytes | Not stated | Not stated | https://developers.facebook.com/docs/threads/overview | 2026-11-21 | read |
-| Link preview | The website's 1,200 x 630 px share image (studio choice) | 1.91:1 | Not stated | Not stated | Not stated | Not stated | No Threads page found | 2026-11-21 | not-found |
+| Profile photo | 1,080 x 1,080 px (studio choice) | 1:1 | Not stated | Not stated | Inscribed circle | Shown at 84 px (1440) and 64 px (390) on the profile, 36 px beside each post (studio's measure) | No Threads page found | 2026-11-21; checked again November 25, 2026 | not-found |
+| Single image post | 1,080 x 1,350 px (studio choice inside Threads' limits) | 4:5 | jpg, png | 8,000,000 bytes; alt text 1,000 characters; post text 500 characters | Not stated | Not stated | https://developers.facebook.com/docs/threads/overview | 2026-11-21; checked again November 25, 2026 | read |
+| Carousel post (2 to 20 items) | 1,080 x 1,350 px each (studio choice) | 4:5 | jpg, png | 8,000,000 bytes; alt text 1,000 characters; post text 500 characters (each item's alt text) | Not stated | Not stated | https://developers.facebook.com/docs/threads/overview | 2026-11-21; checked again November 25, 2026 | read |
+| Video post | 1,080 x 1,920 px at most | 9:16 | mp4, mov | 1,000,000,000 bytes | Not stated | Not stated | https://developers.facebook.com/docs/threads/overview | 2026-11-21; checked again November 25, 2026 | read |
+| Link preview | The website's 1,200 x 630 px share image (studio choice) | 1.91:1 | Not stated | Not stated | Not stated | Not stated | No Threads page found | 2026-11-21; checked again November 25, 2026 | not-found |
 
 Notes:
 
@@ -123,17 +154,23 @@ Notes:
 - The Threads profile photo and the link preview's image size are not stated on any page found. The studio uses the Instagram avatar and the website's 1200 x 630 share image, as the Gate 3 report planned.
 - Difference from the Gate 3 report: none; the report's plan (Instagram's sizes and the website's share image) stands, now with Threads' own limits beside it.
 
+Checked again November 25, 2026:
+
+- Meta's developer site refused a plain download of its HTML pages (HTTP 400, 00:17:25 UTC) but serves each as markdown, read 00:18:22 to 00:18:27 UTC: https://developers.facebook.com/documentation/threads/overview.md , posts.md , reference/publishing.md and posts/accessibility.md . Images: "JPEG and PNG", "8 MB maximum", "Aspect Ratio Limit: 10:1", "Minimum Width: 320", "Images larger than 4096 x 4096 pixels are scaled down to fit. Images with an aspect ratio of 2:1 or wider are scaled down to about 16.8 megapixels." Carousels: "a maximum of 20 children and a minimum of 2". "Text posts are limited to 500 characters." Alt text: "The maximum length of `alt_text` is 1,000 characters"; it works on image, video and carousel posts and not on text-only posts. Links: a link card (`link_attachment`) on text-only posts; otherwise "the first URL in the `text` field is used as the link preview"; "The number of links is restricted to 5 or fewer", enforced "Since December 22, 2025".
+- The profile as a reader meets it, the studio's measure: https://www.threads.com/@threads opened without a login, under a login prompt, at 1440 x 900 (00:22:18 UTC) and 390 x 844 (00:22:26 UTC). No banner. The profile photo is a circle at the top right of the profile column, beside the name, 84 x 84 px at 1440 and 64 x 64 px at 390. Each post in the feed below carries a 36 x 36 px avatar at both widths. The profile column ran from x 259 to 897 at 1440. One landscape image in a post drew 537.5 x 430 px at 1440 and 318 x 254.4 px at 390.
+- Still not stated: the profile photo's upload size and how the feed crops a tall image.
+
 ## 5. X (chapter 23)
 
 X's help center (help.x.com) and its business pages answer an automated reader with HTTP 403, so every help-center figure below is a search result for X's own address. X's developer documentation (docs.x.com) was read, and it gives the upload limits for images and video.
 
 | Application | Size | Ratio | Type | Limit | Safe area or crop | Smallest shown | Source page | Checked | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| Profile photo (ampersand B on the Charcoal tile) | 400 x 400 px or larger | 1:1 | jpg, gif, png | 2,000,000 bytes | Inscribed circle | Not stated | https://help.x.com/en/managing-your-account/how-to-customize-your-profile ; https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo | 2026-11-21 | search-result |
-| Header | 1,500 x 500 px | 3:1 | jpg, gif, png | Not stated | Top and bottom 60 px may crop; profile photo overlaps the lower left (footprint not stated) | Not stated | https://help.x.com/en/managing-your-account/how-to-customize-your-profile | 2026-11-21 | search-result |
-| Single image post | 1,600 x 900 px (studio choice; shown whole from 2:1 to 3:4) | 16:9 | jpg, png, gif, webp | 5,000,000 bytes | Not stated | Not stated | https://help.x.com/en/using-x/posting-gifs-and-pictures ; https://docs.x.com/x-api/media/quickstart/best-practices | 2026-11-21 | search-result |
-| Four-image post | Not stated | Not stated | Not stated | Not stated | Not stated | Not stated | https://help.x.com/en/using-x/posting-gifs-and-pictures | 2026-11-21 | not-found |
-| Link card | The website's 1,200 x 630 px share image (studio choice) | 1.91:1 (shown at 2:1) | Not stated | Not stated | Not stated | Not stated | https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image | 2026-11-21 | search-result |
+| Profile photo (ampersand B on the Charcoal tile) | 400 x 400 px or larger | 1:1 | jpg, gif, png | 2,000,000 bytes | Inscribed circle | Not stated | https://help.x.com/en/managing-your-account/how-to-customize-your-profile ; https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo | 2026-11-21; checked again November 25, 2026 | search-result |
+| Header | 1,500 x 500 px | 3:1 | jpg, gif, png | Not stated | Top and bottom 60 px may crop; profile photo overlaps the lower left (footprint not stated; capture refused November 25, 2026) | Not stated | https://help.x.com/en/managing-your-account/how-to-customize-your-profile | 2026-11-21; checked again November 25, 2026 | search-result |
+| Single image post | 1,600 x 900 px (studio choice; shown whole from 2:1 to 3:4) | 16:9 | jpg, png, gif, webp | 5,000,000 bytes; alt text 1,000 characters; post text 280 characters, a link counted as 23 | Not stated | Not stated | https://help.x.com/en/using-x/posting-gifs-and-pictures ; https://docs.x.com/x-api/media/quickstart/best-practices | 2026-11-21; checked again November 25, 2026 | search-result |
+| Four-image post | Not stated | Not stated | Not stated | Up to 4 photos; alt text 1,000 characters each | Not stated | Not stated | https://help.x.com/en/using-x/posting-gifs-and-pictures | 2026-11-21; checked again November 25, 2026 | not-found |
+| Link card | The website's 1,200 x 630 px share image (studio choice) | 1.91:1 (shown at 2:1) | Not stated | Not stated | Not stated | Not stated | https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image | 2026-11-21; checked again November 25, 2026 | search-result |
 
 Notes:
 
@@ -143,6 +180,13 @@ Notes:
 - Link card: the website's share image serves through the `summary_large_image` card (section 1, search-result). X's ads documentation (docs.x.com/x-ads-api/creatives, read) gives a separate rule for website cards in ads: at least 800 px wide, 1:1 or 1.91:1, 3 MB or less, BMP, JPEG or PNG. Oath & Action's posts are not ads, so the ads rule is recorded and not built to.
 - Captions: .srt upload on the web composer (search-result; see the notes file's chapter 16 facts).
 - Differences from the Gate 3 report: the report's "post image 1600 x 900" has no X source; X shows a single image whole anywhere from 2:1 to 3:4, so 1600 x 900 stays as the studio's choice and a 4:5 post also shows whole. The report's link card at 1200 x 628 comes from X's ads pages; the organic card is 2:1 by search result.
+
+Checked again November 25, 2026:
+
+- help.x.com refused a plain download (HTTP 403 with a Cloudflare challenge page, 00:17:24 UTC) for the profile, profile photo, photo posting and image description pages. A search (00:17:26 to 00:17:54 UTC) for the profile page still shows "1500x500 pixels" for the header, "400x400 pixels" for the profile photo, "JPG, GIF, or PNG", no animated GIFs, "2MB" at most for the profile photo, and "60 pixels on the top and bottom could be cropped". A search for https://help.x.com/en/using-x/picture-descriptions and add-image-descriptions shows image descriptions of up to "1000 characters", and none on videos.
+- docs.x.com, read: "You may attach up to 4 photos, 1 animated GIF or 1 video in a Post"; images 5 MB for default and Premium accounts alike (https://docs.x.com/x-api/media/quickstart/best-practices, 00:17:24 UTC); `alt_text` with `"maxLength":1000` (https://docs.x.com/x-api/media/create-media-metadata, 00:17:25 UTC); "Posts on X can contain up to 280 characters" and a link counts "23 characters, regardless of the original length" (https://docs.x.com/fundamentals/counting-characters, between 00:17:54 and 00:18:22 UTC).
+- The old card page still redirects to https://docs.x.com/overview (00:17:25 UTC).
+- The profile as a reader meets it: the studio tried https://x.com/X at 1440 and 390 px (00:22:00 UTC) and X answered the browser with HTTP 403 and an empty page, so the avatar's footprint over the header is not measured. A plain download of the same address returns the page's script shell only.
 
 ## 6. YouTube (chapter 23)
 
@@ -260,9 +304,9 @@ No mail program publishes a body width, and no Google page found states Gmail's 
 
 | Application | Size | Ratio | Type | Limit | Safe area or crop | Smallest shown | Source page | Checked | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| HTML email body | 600 px wide at most (studio choice) | Not stated | Not stated | Not stated | Not stated | Not stated | https://mailchimp.com/help/about-template-widths/ ; https://mailchimp.com/help/about-html-email/ | 2026-11-21 | read |
+| HTML email body | 600 px wide at most (studio choice) | Not stated | Not stated | Not stated | Not stated | Not stated | https://mailchimp.com/help/about-template-widths/ ; https://mailchimp.com/help/about-html-email/ | 2026-11-21; checked again November 25, 2026 | read |
 | Email phone check | 375 px wide (studio choice) | Not stated | Not stated | Not stated | Not stated | Not stated | Gate 3 report, section 9 | 2026-11-21 | not-found |
-| Gmail's clipping size for one message | Not a size | Not stated | Not stated | About 102 KB (Substack's figure; no Google page) | Not stated | Not stated | No Google page found; figure from https://support.substack.com/hc/en-us/articles/360038866571 (read) | 2026-11-21 | not-found |
+| Gmail's clipping size for one message | Not a size | Not stated | Not stated | About 102 KB (Substack's figure; no Google page) | Not stated | Not stated | No Google page found; figure from https://support.substack.com/hc/en-us/articles/360038866571 (read) | 2026-11-21; checked again November 25, 2026 | not-found |
 
 Notes:
 
@@ -270,6 +314,13 @@ Notes:
 - Gmail's clipping size: no Google help page found states it (searched support.google.com and Google's developer pages). Substack's help page "Why does it say 'Your post may be truncated'" (edited 2026-09-29, read) says "Gmail clips emails larger than about 102KB" and that "Links, images, and any text your publication adds to the top or bottom of every email all count toward the size." The figure is Substack's statement about Gmail, recorded as such. The studio keeps the working email's HTML well under it and reads 102 KB as 102,000 bytes.
 - Check widths: the working email is checked at 600 and 375 px (Gate 3 report), the second being the studio's phone width.
 - Difference from the Gate 3 report: none; the report asked the research lead to confirm Gmail's limit, and no Google page confirms it.
+
+Checked again November 25, 2026:
+
+- Mailchimp's two pages (00:28:10 and 00:28:11 UTC) still read "Mailchimp templates are designed to be no greater than 600px wide to fit the display capabilities of most email clients." and "Set email width to 600px or less."
+- Substack's page (360038866571, edited 2026-09-29, 00:16:37 UTC) still reads "Gmail clips emails larger than about 102KB" and "Links, images, and any text your publication adds to the top or bottom of every email all count toward the size." A search found no Google page stating a size; vendor pages say the figure counts the message's HTML, not its images.
+- Substack's own emails: sent from "[subdomain]@substack.com", which cannot change (360037829711); "emails use email-safe fonts and a standard background" (360037832371); a mailing address at the bottom of every email, which "can be a PO Box" (360056142311).
+- The law on the postal address a commercial email carries (DR-343): 15 U.S.C. 7704(a)(5)(A)(iii), "a valid physical postal address of the sender", read at govinfo.gov (USCODE-2023) and Cornell's Legal Information Institute; 16 CFR 316.2(p): "'Valid physical postal address' means the sender's current street address, a Post Office box the sender has accurately registered with the United States Postal Service, or a private mailbox the sender has accurately registered with a commercial mail receiving agency that is established pursuant to United States Postal Service regulations.", read through eCFR's own interface and at Cornell. The research lead's chat 13b notes (F7) give the times and the definitions of "sender" and "commercial electronic mail message".
 
 ## Could not verify
 
@@ -281,7 +332,8 @@ Every row not marked read, with what stands in for the official page.
 - `website.page_1024` (not-found, studio choice): The guide's own test width. Source: Gate 3 report, section 9
 - `website.page_390` (not-found, studio choice): The guide's own test width. Source: Gate 3 report, section 9
 - `website.page_360` (not-found, studio choice): The guide's own test width. Source: Gate 3 report, section 9
-- `substack.body_width` (not-found): Measure on a published post in chat 13 and record as the studio's measurement. Source: No Substack help page states it (searched support.substack.com, November 21, 2026)
+- `substack.body_width` (measured November 25, 2026): 728 px at 1440 and 358 px at 390 on Substack's own post; no Substack page states it, so the figure is the studio's measure. A full-width image's width comes from Substack's stylesheet (100vw) and was not measured on a post.
+- `substack.post_chart` (measured, studio choice, new November 25, 2026): 1,456 px wide, no taller than wide, from the measured column and Substack's 1:1 rule.
 - `instagram.avatar` (not-found, studio choice): Upload size is the studio's. The app shows it in a circle; keep the mark inside the inscribed circle. Source: No Instagram page found; https://www.facebook.com/help/125379114252045 gives 320 x 320 for Facebook Pages only
 - `instagram.square` (search-result): Width 1080 from the help page (search-result). The publishing page (read) allows JPEG up to 8 MB, 320 to 1440 px wide. Source: https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media
 - `instagram.portrait` (search-result): 4:5 is inside every version of the help page and the publishing page's 4:5 to 1.91:1 range (read). The safe box is the studio's: the center 3:4 crop the grid may take. Source: https://help.instagram.com/1631821640426723 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-feed
@@ -292,10 +344,10 @@ Every row not marked read, with what stands in for the official page.
 - `instagram.story` (search-result): 9:16 recommended by the publishing page (read); 1080 x 1920 from an older Instagram creator page (search-result). Safe zones from Meta's ads guide (read): 14 percent top, 35 percent bottom, 6 percent each side. Source: https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-story
 - `instagram.reel` (search-result): Help page (search-result): 1.91:1 to 9:16, at least 720 px and 30 fps. Publishing page (read): up to 1920 px across, 300 MB, 3 seconds to 15 minutes. Safe zones from the ads guide (read). Source: https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media ; https://www.facebook.com/business/ads-guide/update/image/instagram-reels
 - `instagram.reel_cover` (search-result, studio choice): The help page recommends 420 x 654 (1:1.55) (search-result). The publishing page (read) recommends 9:16 and crops "the middle most 9:16 rectangle". The studio builds the cover at 1080 x 1920 with its words inside the center 1080 x 1676 (the 1:1.55 crop) and inside the reel's safe zone. Source: https://help.instagram.com/1038071743007909 ; https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-user/media
-- `threads.avatar` (not-found, studio choice): Shared with Instagram's avatar. Source: No Threads page found
+- `threads.avatar` (not-found, studio choice): Shared with Instagram's avatar. Source: No Threads page found. Shown at 84 px (1440) and 64 px (390) on the profile, 36 px in the feed: the studio's measure, November 25, 2026.
 - `threads.link_preview` (not-found, studio choice): Uses the website's Open Graph image. Source: No Threads page found
 - `x.avatar` (search-result): No animated GIF. Shown in a circle. Source: https://help.x.com/en/managing-your-account/how-to-customize-your-profile ; https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo
-- `x.header` (search-result): About 60 px at the top and bottom may be cropped by screen and browser (search-result). The profile photo sits over the lower left of the header; its exact footprint is not stated and is measured by capture in chapter 23. Source: https://help.x.com/en/managing-your-account/how-to-customize-your-profile
+- `x.header` (search-result): About 60 px at the top and bottom may be cropped by screen and browser (search-result). The profile photo sits over the lower left of the header; its exact footprint is not stated, and X refused the studio's capture on November 25, 2026 (HTTP 403), so it is not measured. Source: https://help.x.com/en/managing-your-account/how-to-customize-your-profile
 - `x.post_image` (search-result, studio choice): X shows a single photo whole between 2:1 and 3:4 (search-result); 1600 x 900 is the studio's starting size inside that range. 5 MB and the four formats are read on docs.x.com. Source: https://help.x.com/en/using-x/posting-gifs-and-pictures ; https://docs.x.com/x-api/media/quickstart/best-practices
 - `x.post_four` (not-found): Up to four photos a post (read on docs.x.com). How the grid crops them is not stated. Source: https://help.x.com/en/using-x/posting-gifs-and-pictures
 - `x.link_card` (search-result, studio choice): The website's share image (website.share_preview) through the summary_large_image card. Source: https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
@@ -309,3 +361,19 @@ Every row not marked read, with what stands in for the official page.
 - `slides.layout` (not-found, studio choice): The studio's export size. PowerPoint's own widescreen page is the row below. Source: Gate 3 report, section 10, P4-2 (G3-08)
 - `email.phone_check` (not-found, studio choice): The studio's phone width for the check. Source: Gate 3 report, section 9
 - `email.gmail_clip` (not-found): "Gmail clips emails larger than about 102KB" (Substack). The whole message's HTML counts. Source: No Google page found; figure from https://support.substack.com/hc/en-us/articles/360038866571 (read)
+
+## Could not read on November 25, 2026
+
+Kept apart from the rows above, as the chat 13b brief asks. Each line names the page, what it answered and what stands in for it.
+
+- help.x.com, four pages (profile, profile photo, posting photos, image descriptions): HTTP 403 with a Cloudflare challenge, 00:17:24 UTC. Search results for the same addresses stand in.
+- https://x.com/X in a browser at 1440 and 390 px: HTTP 403, an empty page, 00:22:00 UTC. The X profile's layout is not measured.
+- help.instagram.com (1631821640426723, 503708446705527): HTTP 400, 00:17:26 UTC. Search results stand in.
+- https://www.instagram.com/instagram/ in a browser at 1440 and 390 px: sent to the login page with HTTP 429, 00:22:44 UTC. The Instagram profile's layout, the avatar's shown size and the grid are not measured.
+- developers.facebook.com HTML pages (Threads overview and posts, Instagram's publishing page): HTTP 400, 00:17:25 UTC. The same pages' markdown at developers.facebook.com/documentation/... was read and stands in, as the official text.
+- Meta's ads guide for Instagram Stories and Reels: HTTP 400, 00:28:11 UTC. The safe zones read on November 21 stand.
+- www.ecfr.gov's page for 16 CFR part 316 sent the reader to a bot check (unblock.federalregister.gov), 00:18:49 UTC; eCFR's own rendering interface (www.ecfr.gov/api/renderer/...) was read instead, and Cornell's copy agrees.
+- uscode.house.gov's address for 15 U.S.C. 7704 answered HTTP 404, 00:18:48 UTC; govinfo.gov's USCODE-2023 edition was read instead, and Cornell's copy agrees.
+- No published Substack post found with a full-width image (808 images in 206 public posts): that width rests on Substack's stylesheet alone.
+- Substack's image server (substackcdn.com) answered the browser's image requests with HTTP 404 (00:33:58 UTC), though a plain download of the same images returns them, so no drawn image in a post was captured; image widths come from Substack's stylesheet and the boxes it lays out.
+- No Google page states Gmail's clipping size (searched again): the figure stays Substack's.
